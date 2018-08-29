@@ -40,13 +40,9 @@ class EnterModel extends WlModelAbstract
   public $s_notepad=null;
 
   /**
-   * User password.
+   * Hash of user password.
    *
-   * <tt>sha1($s_notepad.sha1($s_password))</tt> hash should be passed here (40 hexadecimal digits, all lowercase).
-   *
-   * <tt>$s_password</tt> is user password.
-   *
-   * <tt>$s_notepad</tt> is notepad returned by {@link \WellnessLiving\Core\Passport\Login\Enter\NotepadModel::$s_notepad}.
+   * Use {@link \WellnessLiving\Core\Passport\Login\Enter\NotepadModel::hash()} to evaluate password hash.
    *
    * @post post
    * @var string|null

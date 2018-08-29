@@ -19,6 +19,7 @@ try
 
   // Retrieve notepad (it is a separate step of user sign in process)
   $o_notepad=new NotepadModel($o_config);
+  $o_notepad->s_login='/** Put your login here */';
   $o_notepad->get();
 
   // Sign in a user
@@ -26,7 +27,7 @@ try
   $o_enter->cookieSet($o_notepad->cookieGet()); // Keep cookies to keep session.
   $o_enter->s_login='/** Put your login here */';
   $o_enter->s_notepad=$o_notepad->s_notepad;
-  $o_enter->s_password=sha1($o_notepad->s_notepad.sha1('/** Put your password here */'));
+  $o_enter->s_password=$o_notepad->hash('/** Put your password here */');
   $o_enter->post();
 
   $o_report=new DataModel($o_config);
