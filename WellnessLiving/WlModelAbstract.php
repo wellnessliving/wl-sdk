@@ -139,14 +139,8 @@ class WlModelAbstract
           case 'post':
           case 'put':
           case 'delete':
-            WlAssertException::assertTrue(!isset($a_field_this[$s_value]),[
-              's_class' => $s_class,
-              's_field' => $o_property->name,
-              's_method' => $s_value,
-              'text_message' => 'Duplicate definition of request method.',
-            ]);
-
-            $a_field_this[$s_value]=[];
+            if(!isset($a_field_this[$s_value]))
+              $a_field_this[$s_value]=[];
             $a_operation=explode(',',$a_match[3][$i_match]);
             foreach($a_operation as $s_operation)
             {
@@ -156,6 +150,14 @@ class WlModelAbstract
                 's_mode' => $s_value,
                 's_operation' => $s_operation,
                 'text_message' => 'Invalid operation name.',
+              ]);
+
+              WlAssertException::assertTrue(!isset($a_field_this[$s_value][$s_operation]),[
+                's_class' => $s_class,
+                's_field' => $o_property->name,
+                's_method' => $s_value,
+                's_operation' => $s_operation,
+                'text_message' => 'Duplicate definition of an operation within a request method.',
               ]);
 
               $a_field_this[$s_value][$s_operation]=true;

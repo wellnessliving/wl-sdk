@@ -175,7 +175,8 @@ class WlModelRequest
         continue;
       }
 
-      \AAssert::fail('Invalid value.',[
+      WlAssertException::fail([
+        'text_message' => 'Invalid value.',
         'x_value' => $x_value
       ]);
     }
