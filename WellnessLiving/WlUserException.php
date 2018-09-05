@@ -64,7 +64,7 @@ class WlUserException extends \Exception
   public function __construct($s_code = '',$s_message = '',array $a_data=[])
   {
     $this->a_data=$a_data;
-    parent::__construct($s_message,$s_code);
+    parent::__construct($s_message,0);
   }
 
   /**
