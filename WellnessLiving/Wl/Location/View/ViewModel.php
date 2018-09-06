@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Location\View;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * FIXME Information about locations.
+ * Information about locations.
  */
 class ViewModel extends WlModelAbstract
 {
