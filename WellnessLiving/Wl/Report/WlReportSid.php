@@ -89,8 +89,6 @@ abstract class WlReportSid
 
   /**
    * Report with the list of all businesses.
-   *
-   * @see \Wl\Business\All\Report
    */
   const BUSINESS_ALL = 107;
 
