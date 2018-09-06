@@ -9,12 +9,12 @@ class ExampleConfig extends WlConfigAbstract
   /**
    * @inheritDoc
    */
-  public const AUTHORIZE_CODE='/** Put your authorization code here */';
+  public const AUTHORIZE_CODE='6bojq1cRDaVJAFGKPFegaxvI1pmuofESgy6ZWVcY';
 
   /**
    * @inheritDoc
    */
-  public const AUTHORIZE_ID='/** Put your application ID here */';
+  public const AUTHORIZE_ID='raa-87rwbkeuwo5ykd9u';
 }
 
 ?>
