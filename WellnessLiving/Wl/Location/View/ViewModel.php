@@ -18,7 +18,7 @@ class ViewModel extends WlModelAbstract
    * <tt>null</tt> if not set.
    *
    * @get result
-   * @var array
+   * @var array|null
    */
   public $a_logo = null;
 
@@ -59,7 +59,6 @@ class ViewModel extends WlModelAbstract
    *
    * @get result
    * @var string
-   * @see Wl_Location_View_ViewModel.html_description_full FIXME
    */
   public $html_description_preview = '';
 
