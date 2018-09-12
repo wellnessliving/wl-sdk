@@ -15,7 +15,7 @@ class StaffViewModel extends WlModelAbstract
    * <tt>null</tt> if data is not loaded yet.
    *
    * @get result
-   * @var array
+   * @var array|null
    */
   public $a_class_day = null;
 
@@ -25,7 +25,7 @@ class StaffViewModel extends WlModelAbstract
    * <tt>null</tt> if data is not loaded yet.
    *
    * @get result
-   * @var array
+   * @var array|null
    */
   public $a_staff = null;
 
@@ -35,7 +35,7 @@ class StaffViewModel extends WlModelAbstract
    * <tt>null</tt> if not set yet.
    *
    * @get get
-   * @var string
+   * @var string|null
    */
   public $k_business = null;
 
@@ -45,7 +45,7 @@ class StaffViewModel extends WlModelAbstract
    * <tt>null</tt> if not set yet.
    *
    * @get get
-   * @var string
+   * @var string|null
    */
   public $k_staff = null;
 }

@@ -29,7 +29,7 @@ class ListModel extends WlModelAbstract
    * <tt>null</tt> if not set yet.
    *
    * @get get
-   * @var string
+   * @var string|null
    */
   public $k_business = null;
 }
