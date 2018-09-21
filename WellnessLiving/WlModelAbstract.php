@@ -433,11 +433,11 @@ class WlModelAbstract
    */
   protected function resource():string
   {
-    WlAssertException::assertNotEmpty(!!preg_match('~^WellnessLiving\\\\([A-Za-z\\\\]+[A-Za-z]+)Model$~',get_class($this),$a_match),[
+    WlAssertException::assertNotEmpty(!!preg_match('~^WellnessLiving\\\\(([A-Za-z]+\\\\)*)([A-Za-z]+_)?([A-Za-z]+)Model$~',get_class($this),$a_match),[
       's_class' => get_class($this),
       's_message' => 'API model class name is invalid. `Model` suffix is missing.'
     ]);
 
-    return str_replace('\\','/',$a_match[1]).'.json';
+    return str_replace('\\','/',$a_match[1].$a_match[4]).'.json';
   }
 }
