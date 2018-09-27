@@ -34,7 +34,7 @@ class ContractModel extends WlModelAbstract
   public $f_manual_discount = 0;
 
   /**
-   * ID of purchase option type. Member of {@link RsPurchaseItemSid}.
+   * ID of purchase option type. Member of {@link WlPurchaseItemSid}.
    *
    * @get get
    * @var int
@@ -42,7 +42,7 @@ class ContractModel extends WlModelAbstract
   public $id_purchase_item = 0;
 
   /**
-   * ID of purchase option in database. Table depends on <tt>Wl_Profile_ContractSpa.id_purchase_item</tt>.
+   * ID of purchase option in database.
    *
    * @get get
    * @var string

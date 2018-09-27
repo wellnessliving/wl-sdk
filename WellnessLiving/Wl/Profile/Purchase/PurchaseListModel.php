@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Profile\Purchase;
 
+use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -22,7 +23,7 @@ class PurchaseListModel extends WlModelAbstract
    * @var array
    */
   public $a_filter = [
-    'id_active' => 3//\AFlagSid::ON
+    'id_active' => AFlagSid::ON
   ];
 
   /**
