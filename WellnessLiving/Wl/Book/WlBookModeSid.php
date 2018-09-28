@@ -3,7 +3,7 @@
 namespace WellnessLiving\Wl\Book;
 
 /**
- * A list of reports.
+ * A list of constants describing the nature of an SDK connection.
  */
 abstract class WlBookModeSid
 {

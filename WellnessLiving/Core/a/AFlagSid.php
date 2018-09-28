@@ -1,5 +1,7 @@
 <?php
 
+namespace WellnessLiving\Core\a;
+
 /**
  * States of the filter for the flag field.
  * For example, filter for the field "<tt>is_active</tt>" always have three states: Only active, only inactive, All.

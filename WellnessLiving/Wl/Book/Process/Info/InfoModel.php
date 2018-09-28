@@ -136,7 +136,7 @@ class InfoModel extends WlModelAbstract
   public $i_duration = null;
 
   /**
-   * WellnessLiving mode type, one of {@link WellnessLiving\Wl\Book\Process\Info\WlInfoSid} constants.
+   * WellnessLiving mode type, one of {@link \WellnessLiving\Wl\Book\WlBookModeSid} constants.
    *
    * @post post
    * @var int
