@@ -114,7 +114,9 @@ class NotepadModel extends WlModelAbstract
       'Lh9Fl5989crMU4E7P6E'
     ];
 
-    return hash('sha3-512', implode($s_password,$a_delimiter).$s_password,true);
+    // Unlike server side, in JS only HEX hash is supported.
+    // For this reason, API expects HEX string and not a raw hash.
+    return hash('sha3-512', implode($s_password,$a_delimiter).$s_password,/*Important! See comment above.*/false);
   }
 }
 
