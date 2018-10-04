@@ -38,26 +38,6 @@ class AssetListModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * ID of an asset category to show information for.
-   *
-   * <tt>null</tt> if not set yet.
-   *
-   * @get get
-   * @var string|null
-   */
-  public $k_resource_category = null;
-
-  /**
-   * ID of assets' layout.
-   *
-   * <tt>null</tt> if is not initialized.
-   *
-   * @get result
-   * @var string|null
-   */
-  public $k_resource_layout = null;
-
-  /**
    * Class tab ID to filter assets.
    *
    * <tt>null</tt> if not set yet or select only elements with not specified class tab.
@@ -76,6 +56,26 @@ class AssetListModel extends WlModelAbstract
    * @var string|null
    */
   public $k_location = null;
+
+  /**
+   * ID of an asset category to show information for.
+   *
+   * <tt>null</tt> if not set yet.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $k_resource_category = null;
+
+  /**
+   * ID of assets' layout.
+   *
+   * <tt>null</tt> if is not initialized.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $k_resource_layout = null;
 }
 
 ?>

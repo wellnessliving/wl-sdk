@@ -1,6 +1,6 @@
 <?php
 
-namespace WellnessLiving\Wl\Appointment\Book\Schedule;
+namespace WellnessLiving\Wl\Appointment\Book\Service;
 
 use WellnessLiving\WlModelAbstract;
 

@@ -71,7 +71,7 @@ class PaymentModel extends WlModelAbstract
    * @var array
    */
   public $a_visit = [];
-  
+
   /**
    * Date/time of session is booked.
    *
@@ -84,7 +84,7 @@ class PaymentModel extends WlModelAbstract
   public $dt_date_gmt = null;
 
   /**
-   * WellnessLiving mode type, one of {@link \Wl\Mode\ModeSid} constants.
+   * WellnessLiving mode type, one of the{@link WlBookModeSid} constants.
    *
    * @post post
    * @var int

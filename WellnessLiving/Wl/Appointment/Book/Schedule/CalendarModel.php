@@ -63,16 +63,6 @@ class CalendarModel extends WlModelAbstract
   public $id_gender_staff = null;
 
   /**
-   * Staff ID to show what days are available for booking.
-   *
-   * <tt>null</tt> if not set yet.
-   *
-   * @get get
-   * @var string|null
-   */
-  public $k_staff = null;
-
-  /**
    * Location ID to show what days are available for booking.
    *
    * <tt>null</tt> if not set yet.
@@ -101,6 +91,16 @@ class CalendarModel extends WlModelAbstract
    * @var string|null
    */
   public $k_service = null;
+
+  /**
+   * Staff ID to show what days are available for booking.
+   *
+   * <tt>null</tt> if not set yet.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $k_staff = null;
 
   /**
    * List of service add-ons. Serialized to be usable as model key.
