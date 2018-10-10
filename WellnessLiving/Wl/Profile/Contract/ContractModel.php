@@ -48,7 +48,7 @@ class ContractModel extends WlModelAbstract
    * @var string
    */
   public $k_id = '0';
-  
+
   /**
    * ID of a business to show information for.
    *
