@@ -5,24 +5,24 @@ namespace WellnessLiving\Studio\Service\Cid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Allows to register a new CID class.
+ * Allows to rename a class associated with a CID.
  *
  * This API endpoint is only available for Studio personnel and bots.
  */
-class StudioCid_RegisterModel extends WlModelAbstract
+class StudioCid_RenameModel extends WlModelAbstract
 {
   /**
-   * Name of the class to register.
+   * New name to assign to a CID.
    *
-   * @post post
+   * @put post
    * @var string
    */
   public $s_class;
 
   /**
-   * CID of registered class.
+   * CID of the class to rename.
    *
-   * @post result
+   * @put get
    * @var int
    */
   public $cid;
