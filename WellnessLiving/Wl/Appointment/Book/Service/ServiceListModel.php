@@ -67,7 +67,6 @@ class ServiceListModel extends WlModelAbstract
    * @var string|null
    */
   public $uid = null;
-
 }
 
 ?>

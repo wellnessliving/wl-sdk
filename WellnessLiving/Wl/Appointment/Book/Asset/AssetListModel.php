@@ -22,7 +22,7 @@ class AssetListModel extends WlModelAbstract
   /**
    * A list of information about periods for the current asset category.
    *
-   * <tt>null</tt> if not initialized yet.
+   * <tt>null</tt> if it is not loaded yet.
    *
    * @get result
    * @var array|null
@@ -70,7 +70,7 @@ class AssetListModel extends WlModelAbstract
   /**
    * ID of assets' layout.
    *
-   * <tt>null</tt> if is not initialized.
+   * <tt>null</tt> if it is not loaded yet.
    *
    * @get result
    * @var string|null

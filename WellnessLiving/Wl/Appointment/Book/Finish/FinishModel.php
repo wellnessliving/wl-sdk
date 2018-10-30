@@ -4,7 +4,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Finish;
 
 use WellnessLiving\Wl\Book\WlBookModeSid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Appointment\RsAppointmentPaySid;
+use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 
 /**
  * Model to complete booking appointment.
@@ -64,7 +64,7 @@ class FinishModel extends WlModelAbstract
   public $a_visit = [];
 
   /**
-   * WellnessLiving mode type, one of {@link \Wl\Mode\ModeSid} constants.
+   * WellnessLiving mode type, one of {@link WlBookModeSid} constants.
    *
    * @post post
    * @var int
@@ -72,12 +72,12 @@ class FinishModel extends WlModelAbstract
   public $id_mode = WlBookModeSid::APP_FRONTEND;
 
   /**
-   * Payment type for the appointment, one of {@link RsAppointmentPaySid} constants.
+   * Payment type for the appointment, one of {@link WlAppointmentPaySid} constants.
    *
    * @post get
    * @var string|null
    */
-  public $id_pay = RsAppointmentPaySid::NONE;
+  public $id_pay = WlAppointmentPaySid::NONE;
 
   /**
    * Appointment ID.

@@ -61,7 +61,7 @@ class StoreModel extends WlModelAbstract
   public $dt_date_gmt = null;
 
   /**
-   * WellnessLiving mode type, one of {@link \Wl\Mode\ModeSid} constants.
+   * WellnessLiving mode type, one of {@link WlBookModeSid} constants.
    *
    * @post post
    * @var int

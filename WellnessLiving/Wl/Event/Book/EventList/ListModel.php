@@ -9,7 +9,6 @@ use WellnessLiving\WlModelAbstract;
  */
 class ListModel extends WlModelAbstract
 {
-
   /**
    * List of event identifiers.
    *

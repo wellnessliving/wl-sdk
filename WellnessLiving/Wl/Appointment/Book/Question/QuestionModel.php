@@ -9,7 +9,6 @@ use WellnessLiving\WlModelAbstract;
  */
 class QuestionModel extends WlModelAbstract
 {
-
   /**
    * A list of questions for the current service.
    *
@@ -27,7 +26,6 @@ class QuestionModel extends WlModelAbstract
    * @var string|null
    */
   public $k_service = null;
-
 }
 
 ?>

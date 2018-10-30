@@ -9,7 +9,6 @@ use WellnessLiving\WlModelAbstract;
  */
 class ServiceModel extends WlModelAbstract
 {
-
   /**
    * List of busy assets.
    *

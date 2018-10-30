@@ -44,7 +44,7 @@ class PurchaseListModel extends WlModelAbstract
    * <li>String <tt>k_purchase</tt> ID of ordinary purchase.
    * Not empty only if <tt>k_code</tt> is empty.</li>
    * <li>String <tt>k_purchase_item</tt> ID of ordinary purchase item.
-   * Not empty only if <tt>k_code</tt> is empty.</li><
+   * Not empty only if <tt>k_code</tt> is empty.</li>
    * <li>String [<tt>k_session_pass</tt>] ID of makeup to attend event.
    * Presents for repeat purchase of event.</li>
    * <li>String <tt>s_title</tt> ID of makeup to attend event.

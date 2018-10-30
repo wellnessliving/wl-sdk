@@ -125,7 +125,6 @@ class DayTimeModel extends WlModelAbstract
    * @var string|null
    */
   public $uid = null;
-
 }
 
 ?>

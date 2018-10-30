@@ -79,7 +79,7 @@ class ResourceModel extends WlModelAbstract
   public $dt_date_gmt = null;
 
   /**
-   * WellnessLiving mode type. One of {@link Wl_Mode_ModeSid} constants.
+   * WellnessLiving mode type. One of {@link WlBookModeSid} constants.
    *
    * @post post
    * @var int

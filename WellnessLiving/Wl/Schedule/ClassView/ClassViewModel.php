@@ -78,7 +78,6 @@ class ClassViewModel extends WlModelAbstract
    * @var string|null
    */
   public $uid = null;
-
 }
 
 ?>

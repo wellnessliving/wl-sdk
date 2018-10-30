@@ -10,14 +10,6 @@ use WellnessLiving\WlModelAbstract;
 class ContractModel extends WlModelAbstract
 {
   /**
-   * Text of contract.
-   *
-   * @get result
-   * @type {String}
-   */
-  public $html_contract = '';
-
-  /**
    * Custom promotion start date.
    *
    * @get get
@@ -34,20 +26,20 @@ class ContractModel extends WlModelAbstract
   public $f_manual_discount = 0;
 
   /**
+   * Text of contract.
+   *
+   * @get result
+   * @var string
+   */
+  public $html_contract = '';
+
+  /**
    * ID of purchase option type. Member of {@link WlPurchaseItemSid}.
    *
    * @get get
    * @var int
    */
   public $id_purchase_item = 0;
-
-  /**
-   * ID of purchase option in database.
-   *
-   * @get get
-   * @var string
-   */
-  public $k_id = '0';
 
   /**
    * ID of a business to show information for.
@@ -57,6 +49,14 @@ class ContractModel extends WlModelAbstract
    * @var string
    */
   public $k_business = '0';
+
+  /**
+   * ID of purchase option in database.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_id = '0';
 
   /**
    * ID of selected a location.

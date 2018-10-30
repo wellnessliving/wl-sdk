@@ -26,7 +26,7 @@ class PurchaseModel extends WlModelAbstract
    *     One of {@link RsProgramCategorySid} constants.
    *   </li>
    *   <li>Number [<tt>id_program_type</tt>] Actual only for promotions. ID of promotion program type.
-   *     One of {@link RsProgramTypeSid} constants.
+   *     One of {@link WlProgramTypeSid} constants.
    *   </li>
    *   <li>Number <tt>id_purchase_item</tt> ID of purchase option type. One of {@link RsPurchaseItemSid} constants.</li>
    *   <li>Boolean <tt>is_contract</tt> <tt>true</tt> - purchase option requires assignment of contract; <tt>false</tt> - does not require assignment.</li>

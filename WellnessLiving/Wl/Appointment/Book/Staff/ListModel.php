@@ -9,7 +9,6 @@ use WellnessLiving\WlModelAbstract;
  */
 class ListModel extends WlModelAbstract
 {
-
   /**
    * A list of staff members.
    *

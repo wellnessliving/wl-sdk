@@ -24,7 +24,7 @@ class PaymentModel extends WlModelAbstract
    * @see RsPurchaseItemSid
    */
   public $a_item = [];
-  
+
   /**
    * IDs of user's activity which correspond to books are made. Not empty when booking process is finished.
    *
@@ -32,7 +32,7 @@ class PaymentModel extends WlModelAbstract
    * @var array
    */
   public $a_login_activity_book = [];
-  
+
   /**
    * A list of payment sources.
    *

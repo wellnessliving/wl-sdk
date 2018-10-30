@@ -10,7 +10,6 @@ use WellnessLiving\WlModelAbstract;
  */
 class CalendarModel extends WlModelAbstract
 {
-
   /**
    * List with all calendar days in specified month with
    * available and unavailable appointment booking schedule.

@@ -9,7 +9,6 @@ use WellnessLiving\WlModelAbstract;
  */
 class ProcessModel extends WlModelAbstract
 {
-  
   /**
    * Full wizard data from all steps.
    *

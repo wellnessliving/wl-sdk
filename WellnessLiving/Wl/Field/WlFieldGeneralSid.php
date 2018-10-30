@@ -5,15 +5,11 @@ namespace WellnessLiving\Wl\Field;
 /**
  * List of general fields in user's profile.
  *
- * Term "field" is not equal to "input". Field can contain multiple inputs, e.g. "birthday" field contains 3 selects
- * (day, month, year). All fields listed in this sid (except manual fields) have class that process them. Class name
- * has the following pattern: rs.profile.field.[<tt>sid_file</tt>].php
+ * The term "field" is not equal to "input". A field can contain multiple inputs, e.g. the "birthday" field contains 3
+ * selects (day, month, year). All fields listed in this sid (except manual fields) have class that process them.
  *
  * Manual fields have only constant in this sid. They have no associated class and processed separately in view, e.g.
  * user email/password field that has its own widget.
- *
- * If you add new field, you must add inputs of this field to controller {@link RsLoginRegisterController} as POST
- * fields.
  *
  * Last used ID: 12.
  */

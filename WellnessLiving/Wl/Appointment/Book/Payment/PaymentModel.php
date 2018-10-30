@@ -81,7 +81,7 @@ class PaymentModel extends WlModelAbstract
   public $a_pay_form = [];
 
   /**
-   * Payment type for the appointment, one of {@link RsAppointmentPaySid} constants.
+   * Payment type for the appointment, one of {@link WlAppointmentPaySid} constants.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -91,7 +91,7 @@ class PaymentModel extends WlModelAbstract
   public $id_pay = null;
 
   /**
-   * Purchase item ID.
+   * Purchase item ID. One of the {@link WlPurchaseItemSid} constants.
    *
    * <tt>null</tt> if not set yet.
    *

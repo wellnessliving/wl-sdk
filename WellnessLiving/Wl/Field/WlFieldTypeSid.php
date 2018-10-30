@@ -9,14 +9,11 @@ namespace WellnessLiving\Wl\Field;
  *
  * When you add a new field type, do not forget to test synchronization with electronic mail list managers. Search for
  * other constants in this class. You need to add your new constant in bulk places where other constants are found.
- *
- * @copyright 2012 - 2015, WellnessLiving Inc, www.wellnessliving.com.
  */
 class RsFieldTypeSid
 {
   /**
-   * Checkbox field. Field {@link RsFieldValue}.<tt>s_value</tt> for this type of fields can be 1 if checkbox is checked
-   * and 0 otherwise.
+   * Checkbox field. The <tt>s_value</tt> for this type of field can be 1 if checkbox is checked and 0 otherwise.
    */
   const CHECKBOX = 2;
 
