@@ -12,7 +12,7 @@ class RegionModel extends WlModelAbstract
   /**
    * List of regions.
    * Grouped by countries.
-   * Every element has keys:
+   * Every element has the keys:
    * <ul><li>array <b>a_region</b> List of region in country. Every element has keys:
    * <ul><li>int <b>k_geo</b> Region ID.</li>
    * <li>string <b>s_title</b> Name of region.</li></ul></li>

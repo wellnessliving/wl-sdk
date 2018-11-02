@@ -12,7 +12,7 @@ class ReviewModel extends WlModelAbstract
   /**
    * Selected rate, the number of stars of the review (1-5).
    *
-   * <tt>null</tt> if not set yet.
+   * <tt>null</tt> if not loaded yet.
    *
    * @post post
    * @var int|null
@@ -22,7 +22,7 @@ class ReviewModel extends WlModelAbstract
   /**
    * ID of a location.
    *
-   * <tt>null</tt> if not set yet.
+   * <tt>null</tt> if not loaded yet.
    *
    * @post post
    * @var string|null
@@ -32,7 +32,7 @@ class ReviewModel extends WlModelAbstract
   /**
    * ID of writing review activity. Empty if review was saved but not published.
    *
-   * <tt>null</tt> if not set yet.
+   * <tt>null</tt> if not loaded yet.
    *
    * @post result
    * @var string|null
@@ -42,7 +42,7 @@ class ReviewModel extends WlModelAbstract
   /**
    * The text of review.
    *
-   * <tt>null</tt> if not set yet.
+   * <tt>null</tt> if not loaded yet.
    *
    * @post post
    * @var string|null

@@ -22,7 +22,7 @@ class ProfileModel extends WlModelAbstract
   /**
    * ID of GEO country.
    *
-   * <tt>null</tt> if not selected.
+   * <tt>null</tt> if not yet loaded.
    *
    * @get result
    * @var string|null
@@ -32,7 +32,7 @@ class ProfileModel extends WlModelAbstract
   /**
    * ID of GEO region.
    *
-   * <tt>null</tt> if not selected.
+   * <tt>null</tt> if not yet loaded.
    *
    * @get result
    * @var string|null
@@ -42,7 +42,7 @@ class ProfileModel extends WlModelAbstract
   /**
    * Name of the city.
    *
-   * <tt>null</tt> if city is not selected.
+   * <tt>null</tt> if city is yet loaded.
    *
    * @get result
    * @var string|null
@@ -52,7 +52,7 @@ class ProfileModel extends WlModelAbstract
   /**
    * User name.
    *
-   * <tt>null</tt> if not entered.
+   * <tt>null</tt> if not yet loaded.
    *
    * @get result
    * @var string|null
@@ -62,7 +62,7 @@ class ProfileModel extends WlModelAbstract
   /**
    * Phone number.
    *
-   * <tt>null</tt> if not entered.
+   * <tt>null</tt> if not yet loaded.
    *
    * @get result
    * @var string|null
@@ -72,7 +72,7 @@ class ProfileModel extends WlModelAbstract
   /**
    * Postal or ZIP code.
    *
-   * <tt>null</tt> if not entered.
+   * <tt>null</tt> if not yet loaded.
    *
    * @get result
    * @var string|null
@@ -82,7 +82,7 @@ class ProfileModel extends WlModelAbstract
   /**
    * Street address line 1.
    *
-   * <tt>null</tt> if not entered.
+   * <tt>null</tt> if not yet loaded.
    *
    * @get result
    * @var string|null
@@ -92,7 +92,7 @@ class ProfileModel extends WlModelAbstract
   /**
    * Street address line 2.
    *
-   * <tt>null</tt> if not entered.
+   * <tt>null</tt> if not yet loaded.
    *
    * @get result
    * @var string|null
