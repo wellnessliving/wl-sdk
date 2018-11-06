@@ -16,7 +16,7 @@ class ListModel extends WlModelAbstract
    * If the query is empty, the recent users will be loaded.
    *
    * @get result
-   * @type {String[]}
+   * @var array
    */
   public $a_list = [];
 
@@ -24,7 +24,7 @@ class ListModel extends WlModelAbstract
    * Whether staff has access to the Client Add page or not.
    *
    * @get result
-   * @type {Boolean}
+   * @var bool
    */
   public $can_add = false;
 
@@ -32,7 +32,7 @@ class ListModel extends WlModelAbstract
    * Business ID.
    *
    * @get get
-   * @type {String}
+   * @var string
    */
   public $k_business = '';
 
@@ -40,15 +40,15 @@ class ListModel extends WlModelAbstract
    * Search query.
    *
    * @get get
-   * @type {String}
+   * @var string
    */
   public $text_search = '';
 
   /**
-   * User ID that searches.
+   * User ID for the user performing the search.
    *
    * @get get
-   * @type {String}
+   * @var string
    */
   public $uid = '';
 }
