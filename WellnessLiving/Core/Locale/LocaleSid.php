@@ -7,7 +7,7 @@ namespace WellnessLiving\Core\Locale;
  *
  * Last used ID: 10
  */
-abstract class LocaleSid
+class LocaleSid
 {
   /**
    * Australia.

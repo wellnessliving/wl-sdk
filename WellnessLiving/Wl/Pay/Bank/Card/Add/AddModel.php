@@ -18,7 +18,7 @@ class AddModel extends WlModelAbstract
    *     array <var>a_pay_address</var>
    *   </dt>
    *   <dd>
-   *     Payment address for {@link RsPayAddressSelectWidget} address edit widget:
+   *     Payment address information with the following fields:
    *     <dl><dt>bool <var>is_new</var></dt><dd><tt>true</tt> - add new address; <tt>false</tt> - use existing address.
    *     </dd>
    *     <dt>string <var>k_pay_address</var></dt><dd>Chosen payment address ID. It will be set even if the user decided
