@@ -14,8 +14,9 @@ class RegionModel extends WlModelAbstract
    * Grouped by countries.
    * Every element has the keys:
    * <ul><li>array <b>a_region</b> List of region in country. Every element has keys:
-   * <ul><li>int <b>k_geo</b> Region ID.</li>
-   * <li>string <b>s_title</b> Name of region.</li></ul></li>
+   *   <ul><li>int <b>k_geo</b> Region ID.</li>
+   *   <li>string <b>s_title</b> Name of region.</li></ul></li>
+   * <li>string <b>k_geo_country</b> The geo ID of the country, this is different than the LocaleSid constant.</li></ul>
    * <li>string <b>s_title</b> Name of country.</li></ul>
    *
    * @get result
