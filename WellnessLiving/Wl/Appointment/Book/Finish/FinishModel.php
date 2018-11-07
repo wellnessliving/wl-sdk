@@ -12,7 +12,7 @@ use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 class FinishModel extends WlModelAbstract
 {
   /**
-   * A list of answers for the questions from {@link Wl_Appointment_Book_Payment_PaymentModel.a_question}.
+   * A list of answers for the questions from {@link \WellnessLiving\Wl\Appointment\Book\Question\QuestionModel::a_question}.
    * Key - hash of the question, value - answer for the question.
    *
    * @post post

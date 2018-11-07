@@ -10,9 +10,20 @@ use WellnessLiving\WlModelAbstract;
 class PaymentModel extends WlModelAbstract
 {
   /**
-   * The data of the prepaid promotion.
+   * Information about any prepaid promotions.
    *
-   * See description of <tt>\Wl\Appointment\Book\Payment\PaymentApi::get()</tt> at PHP side for structure of this array.
+   *   <dt>string <var>i_limit</var></dt>
+   *   <dd>The limit of total visits.</dd>
+   *
+   *   <dt>int <var>i_remain</var></dt>
+   *   <dd>The number of remaining visits.</dd>
+   *
+   *   <dt>string <var>s_expire</var></dt>
+   *   <dd>The expiration date.</dd>
+   *
+   *   <dt>string <var>s_title</var></dt>
+   *   <dd>The title of promotion.</dd>
+   * </dl>
    *
    * @get result
    * @var array
@@ -21,14 +32,39 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * Information about selected purchase items.
+   *
    * Fields - string in format <tt>id_purchase_item-k_id</tt>.
    * Values - array with next stricture:
    * <ul>
    *   <li>
-   *     {} <tt>a_tax</tt>
-   *     A list of tax for the sale item.
-   *     See description of <tt>\Wl\Appointment\Book\Payment\PaymentApi::get()</tt> at PHP side
-   *     for structure of this array.
+   *     <dt>array <var>a_tax</var></dt>
+   *     <dd>Contains information about taxes in the following format. A list of taxes to apply. The array keys are
+   *       k_tax IDs. Taxes are sorted by name, each element contains the following fields:<dl>
+   *
+   *       <dt>float <var>f_value</var></dt>
+   *       <dd>Tax rate. Meaning of this field depends on value of <var>id_tax</var>.</dd>
+   *
+   *       <dt>int <var>id_tax</var></dt>
+   *       <dd>Type of the tax. One of {@link WlTaxSid} constants.</dd>
+   *
+   *       <dt>int <var>k_tax</var></dt>
+   *       <dd>ID of the tax.</dd>
+   *
+   *       <dt>string <var>s_tax</var></dt>
+   *       <dd>Name of the tax.</dd>
+   *
+   *       <dt>decimal <var>f_tax</var></dt>
+   *       <dd>Amount of tax applied by this rule.
+   *
+   *       <dt>string <var>f_tax_discount</var></dt>
+   *       <dd>Amount of applied tax considering all discounts.</dd>
+   *
+   *       <dt>string <var>f_tax_discount_login</var></dt>
+   *       <dd>Amount of applied tax considering only discount via client/member type.</dd>
+   *
+   *       <tt>null</tt> if tax rules are not loaded yet.
+   *       </dd>
+   *     </dl>
    *   </li>
    *   <li>
    *     String <tt>m_discount</tt>
@@ -60,7 +96,7 @@ class PaymentModel extends WlModelAbstract
   public $a_purchase_item = null;
 
   /**
-   * All data from the provider model {@link Wl_Appointment_Book_ProviderModel}.
+   * Information detailing an appointment booking.
    *
    * @get get
    * @post get
@@ -71,9 +107,18 @@ class PaymentModel extends WlModelAbstract
   /**
    * A list of payment sources.
    *
-   * See description of <tt>\Wl\Pay\Form\FormApiTrait::$a_pay_form</tt> at PHP side for structure of this array.
+   * Value of this field is gathered from payment form.
    *
-   * Value of this field is gathered from payment form with {@link Wl_Pay_FormModelMixin.paySet()}.
+   * This is an indexed array where each element corresponds to a single selected payment method.
+   *
+   * Each source contains:<ul>
+   * <li>decimal <var>f_amount</var> Amount of money to withdraw with this payment source.</li>
+   * <li>int <var>id_pay_method</var> Payment method ID. One of the {@link WlPayMethodSid} constants.</li>
+   * <li>bool <var>is_hide</var> Whether this payment method is hidden.
+   *   Payment methods will be hidden if they are not enabled for the business.</li>
+   * <li>bool [<var>is_success</var>=<tt>false</tt>] Whether this source was successfully charged.</li>
+   * <li>string <var>s_index</var> Index of this form. This corresponds the key this item is written in this array with.</li>
+   * </ul>
    *
    * @post post
    * @var array

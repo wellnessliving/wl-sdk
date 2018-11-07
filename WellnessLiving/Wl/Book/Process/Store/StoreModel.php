@@ -6,7 +6,7 @@ use WellnessLiving\Wl\Book\WlBookModeSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Booking Wizard for page "Class and Location".
+ * Booking Wizard for page "Purchase Options".
  */
 class StoreModel extends WlModelAbstract
 {
