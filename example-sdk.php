@@ -34,7 +34,7 @@ try
   $o_report->cookieSet($o_notepad->cookieGet()); // Keep cookies to keep session.
   $o_report->id_report_group=WlReportGroupSid::DAY;
   $o_report->id_report=WlReportSid::PURCHASE_ITEM_ACCRUAL_CASH;
-  $o_report->k_business='2149'; // Put your business key here
+  $o_report->k_business='/** Put your business ID here */'; // Put your business key here
   $o_report->filterSet([
     'dt_date' => '2018-08-21'
   ]);
@@ -44,7 +44,7 @@ try
   foreach($o_report->a_data['a_row'] as $a_row)
   {
     $i++;
-    echo $i.'. '.$a_row['dt_date'].' '.$a_row['f_total']['m_amount'].' '.$a_row['o_user']['text_name'].' '.$a_row['s_item']."\r\n";
+    echo $i.'. '.$a_row['dt_date'].' '.$a_row['m_paid']['m_amount'].' '.$a_row['o_user']['text_name'].' '.$a_row['s_item']."\r\n";
   }
 }
 catch(WlAssertException $e)
