@@ -1,0 +1,9 @@
+Problem: response error 'group-empty'
+Reason: tables core_request_api_application_group, core_request_api_application_member or core_request_api_application
+  are not filled on server side.
+
+Problem: response error 'signature-mismatch'
+Reasons:
+- invalid application code/id in your config file
+- invalid server URL in your config file
+- invalid cookies names in your config file
