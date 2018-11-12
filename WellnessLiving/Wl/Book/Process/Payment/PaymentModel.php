@@ -40,15 +40,15 @@ class PaymentModel extends WlModelAbstract
    *
    * This is an indexed array where each element corresponds to a single selected payment method.
    *
-   * Each source contains:<ul>
-   * <li>decimal <var>f_amount</var> Amount of money to withdraw with this payment source.</li>
-   * <li>int <var>id_pay_method</var> Payment method ID. One of the {@link WlPayMethodSid} constants.</li>
-   * <li>bool <var>is_hide</var> Whether this payment method is hidden.
-   *   Payment methods will be hidden if they are not enabled for the business.</li>
-   * <li>bool [<var>is_success</var>=<tt>false</tt>] Whether this source was successfully charged.</li>
-   * <li>string <var>s_index</var> Index of this form. This corresponds the key this item is written in this array with.</li>
-   * <li>Data required by payment method of this source.</li>
-   * </ul>
+   * Each source contains:<dl>
+   * <dt>string <var>f_amount</var></dt><dd>Amount of money to withdraw with this payment source.</dd>
+   * <dt>int <var>id_pay_method</var></dt><dd>Payment method ID. One of the {@link WlPayMethodSid} constants.</dd>
+   * <dt>bool <var>is_hide</var></dt><dd> Whether this payment method is hidden.
+   *   Payment methods will be hidden if they are not enabled for the business.</dd>
+   * <dt>bool [<var>is_success</var>=<tt>false</tt>]</dt><dd>Whether this source was successfully charged.</dd>
+   * <dt>string <var>s_index</var></dt><dd>
+   *   Index of this form. This corresponds the key this item is written in this array with.</dd>
+   * </dl>
    *
    * @post post
    * @var array
