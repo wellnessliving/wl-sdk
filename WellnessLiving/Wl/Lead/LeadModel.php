@@ -11,7 +11,8 @@ class LeadModel extends WlModelAbstract
 {
   /**
    * List of user's fields to save.
-   * Keys - field keys; values - field values.
+   * Keys - field keys (which are returned for every element of
+   * {@link \WellnessLiving\Wl\Lead\LeadModel::$a_field_list}); values - field values.
    *
    * @post post
    * @var array
@@ -95,6 +96,7 @@ class LeadModel extends WlModelAbstract
 
   /**
    * Key of skin to use.
+   * Empty to use system default skin.
    *
    * @get get
    * @post get
@@ -104,6 +106,7 @@ class LeadModel extends WlModelAbstract
 
   /**
    * Characters to pass captcha test.
+   * Not necessary if GET method has returned empty {@link \WellnessLiving\Wl\Lead\LeadModel::$url_captcha}.
    *
    * @post post
    * @var string
@@ -112,6 +115,7 @@ class LeadModel extends WlModelAbstract
 
   /**
    * URL to load image with captcha test.
+   * Empty string if it is not necessary to pass captcha test.
    *
    * @get result
    * @var string
