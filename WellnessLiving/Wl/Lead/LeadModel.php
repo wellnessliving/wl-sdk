@@ -114,6 +114,14 @@ class LeadModel extends WlModelAbstract
   public $s_captcha = '';
 
   /**
+   * Key of captured user.
+   *
+   * @post result
+   * @var string
+   */
+  public $uid;
+
+  /**
    * URL to load image with captcha test.
    * Empty string if it is not necessary to pass captcha test.
    *
