@@ -32,11 +32,11 @@ class LeadModel extends WlModelAbstract
    *     <dt>string <var>text_title</var></dt><dd>Option title.</dd></dl>
    *   </dd>
    *   <dt>
-   *     int|null <var>id_field_general</var>
+   *     int <var>id_field_general</var>
    *   </dt>
    *   <dd>
    *     Type of general field. One of constants {@link \WellnessLiving\Wl\Field\WlFieldGeneralSid}.
-   *     Not <tt>null</tt> for fields <tt>general</tt> only.
+   *     Not empty for fields <tt>general</tt> only.
    *   </dd>
    *   <dt>
    *     int <var>id_field_type</var>
