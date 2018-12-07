@@ -31,7 +31,11 @@ class WlAssertException extends \Exception
   {
     $this->a_data=$a_data;
 
-    parent::__construct($a_data['text_message']??'Assertion without message is thrown.', $a_data['s_assert']??'assert',$e_previous);
+    parent::__construct(
+      isset($a_data['text_message'])?$a_data['text_message']:'Assertion without message is thrown.',
+      isset($a_data['s_assert'])?$a_data['s_assert']:'assert',
+      $e_previous
+    );
   }
 
   /**

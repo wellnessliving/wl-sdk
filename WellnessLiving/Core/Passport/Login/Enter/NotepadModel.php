@@ -70,7 +70,7 @@ class NotepadModel extends WlModelAbstract
    * @param string $s_password Plain user password.
    * @return string Password hash, depends on hash, solt, type of the hash and plain user password.
    */
-  public function hash(string $s_password):string
+  public function hash($s_password)
   {
     $s_hash=null;
     $s_sha1=null;
@@ -100,7 +100,7 @@ class NotepadModel extends WlModelAbstract
    * @param string $s_password Plain user password.
    * @return string Hashed user password.
    */
-  public static function passwordHash(string $s_password):string
+  public static function passwordHash($s_password)
   {
     static $a_delimiter=[
       'r',
