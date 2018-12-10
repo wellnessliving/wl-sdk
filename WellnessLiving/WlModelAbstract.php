@@ -2,6 +2,8 @@
 
 namespace WellnessLiving;
 
+use ReflectionClass;
+
 /**
  * Represents base class for all models.
  */
@@ -50,7 +52,7 @@ class WlModelAbstract
    *
    * @return WlModelCookie|null Cookies object. <tt>null</tt> if not initialized yet.
    */
-  public function cookieGet():?WlModelCookie
+  public function cookieGet()
   {
     return $this->_o_cookie;
   }
@@ -60,7 +62,7 @@ class WlModelAbstract
    *
    * @param WlModelCookie $o_cookie Cookies to set.
    */
-  public function cookieSet(WlModelCookie $o_cookie):void
+  public function cookieSet(WlModelCookie $o_cookie)
   {
     $this->_o_cookie = $o_cookie;
   }
@@ -71,8 +73,9 @@ class WlModelAbstract
    * @return WlModelRequest Object with complete request data.
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
+   * @throws \ReflectionException
    */
-  public function delete():WlModelRequest
+  public function delete()
   {
     return $this->request('delete');
   }
@@ -106,7 +109,7 @@ class WlModelAbstract
    *   </dl>
    * @throws WlAssertException In a case of an assertion.
    */
-  private static function fieldConfig():array
+  private static function fieldConfig()
   {
     $s_class = get_called_class();
     if(isset(WlModelAbstract::$_a_field[$s_class]))
@@ -114,7 +117,7 @@ class WlModelAbstract
 
     try
     {
-      $o_class = new \ReflectionClass($s_class);
+      $o_class = new ReflectionClass($s_class);
     }
     catch (\ReflectionException $e)
     {
@@ -212,8 +215,9 @@ class WlModelAbstract
    * @return WlModelRequest Object with complete request data.
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
+   * @throws \ReflectionException
    */
-  public function get():WlModelRequest
+  public function get()
   {
     return $this->request('get');
   }
@@ -224,8 +228,9 @@ class WlModelAbstract
    * @return WlModelRequest Object with complete request data.
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
+   * @throws \ReflectionException
    */
-  public function post():WlModelRequest
+  public function post()
   {
     return $this->request('post');
   }
@@ -236,8 +241,9 @@ class WlModelAbstract
    * @return WlModelRequest Object with complete request data.
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
+   * @throws \ReflectionException
    */
-  public function put():WlModelRequest
+  public function put()
   {
     return $this->request('put');
   }
@@ -249,18 +255,22 @@ class WlModelAbstract
    * @return WlModelRequest Object with complete request data.
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
+   * @throws \ReflectionException
    */
-  private function request(string $s_method):WlModelRequest
+  private function request($s_method)
   {
+    $o_config_reflection = new \ReflectionClass($this->_o_config);
+    $a_config_constant = $o_config_reflection->getConstants();
+
     $o_request = new WlModelRequest();
 
     $o_request->o_config = $this->_o_config;
     $o_request->s_resource = $this->resource();
-    $o_request->url = $this->_o_config::URL.$o_request->s_resource;
+    $o_request->url = $a_config_constant['URL'].$o_request->s_resource;
 
     $o_request->dt_request = WlTool::dateNowMysql();
     $o_request->a_header_request['Date'] = WlTool::dateMysqlHttp($o_request->dt_request);
-    $o_request->a_header_request['User-Agent'] = $this->_o_config::AGENT;
+    $o_request->a_header_request['User-Agent'] = $a_config_constant['AGENT'];
     $o_request->s_method = $s_method;
 
     $a_field=$this::fieldConfig();
@@ -355,8 +365,8 @@ class WlModelAbstract
     curl_setopt($r_curl,CURLOPT_HEADER,true);
     curl_setopt($r_curl,CURLOPT_HTTPHEADER,$o_request->headerCurl());
     curl_setopt($r_curl,CURLOPT_RETURNTRANSFER,true);
-    curl_setopt($r_curl,CURLOPT_CONNECTTIMEOUT,$this->_o_config::TIMEOUT_CONNECT);
-    curl_setopt($r_curl,CURLOPT_TIMEOUT,$this->_o_config::TIMEOUT_READ);
+    curl_setopt($r_curl,CURLOPT_CONNECTTIMEOUT,$a_config_constant['TIMEOUT_CONNECT']);
+    curl_setopt($r_curl,CURLOPT_TIMEOUT,$a_config_constant['TIMEOUT_READ']);
     curl_setopt($r_curl,CURLOPT_VERBOSE,true);
     curl_setopt($r_curl,CURLINFO_HEADER_OUT,true);
 
@@ -431,7 +441,7 @@ class WlModelAbstract
    * @return string URI of current model.
    * @throws WlAssertException In a case of an assertion.
    */
-  protected function resource():string
+  protected function resource()
   {
     WlAssertException::assertNotEmpty(!!preg_match('~^WellnessLiving\\\\(([A-Za-z]+\\\\)*)([A-Za-z]+_)?([A-Za-z]+)Model$~',get_class($this),$a_match),[
       's_class' => get_class($this),

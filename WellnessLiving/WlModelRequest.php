@@ -103,9 +103,13 @@ class WlModelRequest
    * Authorizes current request.
    *
    * @throws WlAssertException In a case of an assertion.
+   * @throws \ReflectionException
    */
-  public function authorize():void
+  public function authorize()
   {
+    $o_config_reflection = new \ReflectionClass($this->o_config);
+    $a_config_constant = $o_config_reflection->getConstants();
+
     WlAssertException::assertNotEmpty($this->o_config,[
       'text_message' => 'Configuration object should be set before call to authorize().'
     ]);
@@ -118,16 +122,16 @@ class WlModelRequest
       'a_header' => [],
       'a_variable' => $this->a_variable,
       'dt_time' => $this->dt_request,
-      's_code' => $this->o_config::AUTHORIZE_CODE,
-      's_cookie_persistent' => $this->o_cookie->cookieGet($this->o_config::COOKIE_PERSISTENT),
-      's_cookie_transient' => $this->o_cookie->cookieGet($this->o_config::COOKIE_TRANSIENT),
+      's_code' => $a_config_constant['AUTHORIZE_CODE'],
+      's_cookie_persistent' => $this->o_cookie->cookieGet($a_config_constant['COOKIE_PERSISTENT']),
+      's_cookie_transient' => $this->o_cookie->cookieGet($a_config_constant['COOKIE_TRANSIENT']),
       's_host' => $a_url['host'],
-      's_id' => $this->o_config::AUTHORIZE_ID,
+      's_id' => $a_config_constant['AUTHORIZE_ID'],
       's_method' => strtoupper($this->s_method),
       's_resource' => $this->s_resource,
     ];
 
-    $this->a_header_request['Authorization'] = '20150518,'.$this->o_config::AUTHORIZE_ID.',,'.WlModelRequest::signatureCompute($a_signature);
+    $this->a_header_request['Authorization'] = '20150518,'.$a_config_constant['AUTHORIZE_ID'].',,'.WlModelRequest::signatureCompute($a_signature);
   }
 
   /**
@@ -135,7 +139,7 @@ class WlModelRequest
    *
    * @return array List of headers in appropriate format for a request.
    */
-  public function headerCurl():array
+  public function headerCurl()
   {
     $a_header = [];
     foreach($this->a_header_request as $s_key => $s_value)
