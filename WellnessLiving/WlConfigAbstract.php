@@ -12,53 +12,53 @@ abstract class WlConfigAbstract
   /**
    * URL of the server (including trailing slash).
    */
-  const AGENT='WellnessLiving SDK/1.0 (WellnessLiving SDK)';
+  public const AGENT='WellnessLiving SDK/1.0 (WellnessLiving SDK)';
 
   /**
    * Secret code to authorize application.
    *
    * @var string
    */
-  const AUTHORIZE_CODE=null;
+  public const AUTHORIZE_CODE=null;
 
   /**
    * Application ID.
    *
    * @var string
    */
-  const AUTHORIZE_ID=null;
+  public const AUTHORIZE_ID=null;
 
   /**
    * Name of a persistent cookie.
    */
-  const COOKIE_PERSISTENT='sp';
+  public const COOKIE_PERSISTENT='sp';
 
   /**
    * Name of a transient cookie.
    */
-  const COOKIE_TRANSIENT='st';
+  public const COOKIE_TRANSIENT='st';
 
   /**
    * Timeout to wait for connection to establish.
    */
-  const TIMEOUT_CONNECT=20;
+  public const TIMEOUT_CONNECT=20;
 
   /**
    * Timeout to wait for data reading from an established connection.
    */
-  const TIMEOUT_READ=60;
+  public const TIMEOUT_READ=60;
 
   /**
    * URL of the server (including trailing slash).
    */
-  const URL='http://staging.wellnessliving.com/';
+  public const URL='http://staging.wellnessliving.com/';
 
   /**
    * Asserts that configuration object is configured correctly.
    *
    * @throws WlAssertException In a case of an error with configuration settings.
    */
-  public function assertValid()
+  public function assertValid():void
   {
     WlAssertException::assertTrue(is_string($this::COOKIE_PERSISTENT)&&$this::COOKIE_PERSISTENT,[
       'text_message' => get_class($this).'::COOKIE_PERSISTENT is not set.'

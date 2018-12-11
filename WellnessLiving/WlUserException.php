@@ -73,18 +73,15 @@ class WlUserException extends \Exception
    * @param array $a_result Result, as returned by API endpoint server.
    * @return WlUserException User exception object.
    */
-  public static function createApi($a_result)
+  public static function createApi(array $a_result):WlUserException
   {
-    $a_error=(empty($a_result['a_error'])?[]:$a_result['a_error']);
-    $a_error_0=(empty($a_error[0])?[]:$a_error[0]);
+    $a_error=$a_result['a_error']??[];
+    $a_error_0=$a_error[0]??[];
 
-    $e=new WlUserException(
-      (!empty($a_error_0['sid'])?$a_error_0['sid']:'unknown-error'),
-      (!empty($a_error_0['s_message'])?$a_error_0['s_message']:'Unknown error.')
-    );
+    $e=new WlUserException($a_error_0['sid']??'unknown-error',$a_error_0['s_message']??'Unknown error.');
     $e->a_error=$a_error;
     $e->a_result=$a_result;
-    $e->s_class=(empty($a_result['class'])?null:$a_result['class']);
+    $e->s_class=$a_result['class']??null;
 
     return $e;
   }
