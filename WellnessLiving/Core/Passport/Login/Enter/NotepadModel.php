@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Core\Passport\Login\Enter;
 
+use WellnessLiving\Sha3;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -69,6 +70,7 @@ class NotepadModel extends WlModelAbstract
    *
    * @param string $s_password Plain user password.
    * @return string Password hash, depends on hash, solt, type of the hash and plain user password.
+   * @throws \Exception
    */
   public function hash($s_password)
   {
@@ -80,7 +82,7 @@ class NotepadModel extends WlModelAbstract
     {
       $s_hash=NotepadModel::passwordHash($s_password);
       if($this->s_hash==='sha3')
-        $s_sha3=hash('sha3-512',$this->s_notepad.$s_hash);
+        $s_sha3=Sha3::hash($this->s_notepad.$s_hash,512);
     }
     if($this->s_hash!=='sha3')
       $s_sha1=sha1($this->s_notepad.sha1($s_password));
@@ -99,6 +101,7 @@ class NotepadModel extends WlModelAbstract
    *
    * @param string $s_password Plain user password.
    * @return string Hashed user password.
+   * @throws \Exception
    */
   public static function passwordHash($s_password)
   {
@@ -116,7 +119,7 @@ class NotepadModel extends WlModelAbstract
 
     // Unlike server side, in JS only HEX hash is supported.
     // For this reason, API expects HEX string and not a raw hash.
-    return hash('sha3-512', implode($s_password,$a_delimiter).$s_password,/*Important! See comment above.*/false);
+    return Sha3::hash(implode($s_password,$a_delimiter).$s_password/*Important! See comment above.*/,512,false);
   }
 }
 
