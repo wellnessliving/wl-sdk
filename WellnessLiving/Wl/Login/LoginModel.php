@@ -11,7 +11,7 @@ use WellnessLiving\WlModelAbstract;
 class LoginModel extends WlModelAbstract
 {
   /**
-   * Gender.
+   * Gender. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
    *
    * @get result
    * @var int
