@@ -1,5 +1,7 @@
 <?php
 
+namespace WellnessLiving\Core\a;
+
 /**
  * String identifiers for gender.
  */

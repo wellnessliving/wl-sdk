@@ -12,6 +12,8 @@ class ListModel extends WlModelAbstract
   /**
    * List of locations of current business. Fields - location's IDs. Values - object with fields:
    * <ul>
+   *   <li>String <b>f_latitude</b> Latitude coordinate.</li>
+   *   <li>String <b>f_longitude</b> Longitude coordinate.</li>
    *   <li>String <b>i_order</b> Display Order.</li>
    *   <li>String <b>k_location</b> Location ID.</li>
    *   <li>String <b>s_title</b> Location title.</li>
