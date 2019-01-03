@@ -1,5 +1,7 @@
 <?php
 
+namespace WellnessLiving;
+
 /**
  * Identifiers for services types.
  *
