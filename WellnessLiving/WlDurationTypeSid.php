@@ -1,7 +1,9 @@
 <?php
 
+namespace WellnessLiving;
+
 /**
- * Class to process string identifiers for duration types
+ * Class to process string identifiers for duration types.
  */
 class WlDurationTypeSid
 {

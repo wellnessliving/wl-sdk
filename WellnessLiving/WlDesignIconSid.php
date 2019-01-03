@@ -1,5 +1,7 @@
 <?php
 
+namespace WellnessLiving;
+
 /**
  * List of available design icons.
  * Name of the class with this icon will be wl-icon-[sid]
