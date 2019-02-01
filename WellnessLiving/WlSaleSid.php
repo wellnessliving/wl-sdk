@@ -1,5 +1,7 @@
 <?php
 
+namespace WellnessLiving;
+
 /**
  * List of sale categories on the store page.
  *
