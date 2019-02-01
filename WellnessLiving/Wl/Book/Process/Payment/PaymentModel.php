@@ -91,7 +91,7 @@ class PaymentModel extends WlModelAbstract
    * @post get
    * @var string|null
    */
-  public $dt_date_gmt = null;
+  public $dt_date_utc = null;
 
   /**
    * WellnessLiving mode type, one of the {@link WlBookModeSid} constants.
