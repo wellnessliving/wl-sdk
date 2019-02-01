@@ -83,6 +83,18 @@ class InfoModel extends WlModelAbstract
 
   /**
    * Date/time of the session that user is booking now.
+   * In MySQL format. In GMT.
+   *
+   * <tt>null</tt> if not set yet.
+   *
+   * @get get
+   * @post get
+   * @var string|null
+   */
+  public $dt_date_gmt = null;
+
+  /**
+   * Date/time of the session that user is booking now.
    * In MySQL format. In local timezone.
    *
    * <tt>null</tt> if not set yet.
@@ -91,18 +103,6 @@ class InfoModel extends WlModelAbstract
    * @var string|null
    */
   public $dt_date_local = null;
-
-  /**
-   * Date/time of the session that user is booking now.
-   * In MySQL format. In UTC.
-   *
-   * <tt>null</tt> if not set yet.
-   *
-   * @get get
-   * @post get
-   * @var string|null
-   */
-  public $dt_date_utc = null;
 
   /**
    * Text of contract which user needs to agree before book this session.
