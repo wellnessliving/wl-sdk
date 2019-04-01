@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Profile\Setting;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves a list of user settings.
+ * Retrieves a list of user settings from profile.
  */
 class SettingModel extends WlModelAbstract
 {
