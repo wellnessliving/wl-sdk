@@ -14,7 +14,7 @@ class CatalogListModel extends WlModelAbstract
    *
    * Every element has the next fields:
    * <dl>
-   *   <dt>string <tt>a_shop_category</tt></dt><dd>List of online store category IDs.</dd>
+   *   <dt>array <tt>a_shop_category</tt></dt><dd>List of online store category IDs.</dd>
    *   <dt>string <tt>text_description</tt></dt><dd>Category description.</dd>
    *   <dt>string <tt>text_title</tt></dt><dd>Category title.</dd>
    * </dl>
