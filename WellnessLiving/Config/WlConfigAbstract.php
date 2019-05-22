@@ -1,6 +1,6 @@
 <?php
 
-namespace WellnessLiving;
+namespace WellnessLiving\Config;
 
 /**
  * Contains WellnessLiving SDK configuration.

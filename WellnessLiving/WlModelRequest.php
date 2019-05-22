@@ -2,6 +2,8 @@
 
 namespace WellnessLiving;
 
+use WellnessLiving\Config\WlConfigAbstract;
+
 /**
  * Contains all information about API model request.
  */

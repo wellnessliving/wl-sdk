@@ -2,6 +2,8 @@
 
 namespace WellnessLiving;
 
+use WellnessLiving\Config\WlConfigAbstract;
+
 /**
  * Represents base class for all models.
  */
