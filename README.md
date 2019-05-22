@@ -50,3 +50,28 @@ Include our autoloader as it is made in our example:
 When you are ready to switch to production, change your connection configuration class to inherit from 
 `\WellnessLiving\Config\WlConfigProduction` (by default it inherits `\WellnessLiving\Config\WlConfigStaging`) which
 leads to staging.
+
+## Notes about our release rollout process
+
+We have three development branches:
+
+* Trunk
+* Staging
+* Production
+
+Trunk is where our development team develops new features. Most changes are made in the trunk.
+
+For about 2 weeks before release to production, staging is recreated from the trunk.
+Staging is used by our QA team to find bugs.
+Also, we use staging to present our new features to our customers so that they may be sure that new features work as
+they expect before those features come to production.
+
+**Important note:** Our API and SDK is subject to change at any time without additional notices.
+
+Look after changes in SDK repository to see if there are some incompatible changes.
+
+It is required that you write integration tests so that you may be sure that your application is fully compatible with
+our new version of SDK and staging.
+
+Make sure that you get notifications about when a staging was recreated from trunk so that you can run your integration
+tests and fix all incompatibilities.
