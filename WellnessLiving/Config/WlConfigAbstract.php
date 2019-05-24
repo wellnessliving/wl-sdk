@@ -2,6 +2,8 @@
 
 namespace WellnessLiving\Config;
 
+use WellnessLiving\WlAssertException;
+
 /**
  * Contains WellnessLiving SDK configuration.
  *
