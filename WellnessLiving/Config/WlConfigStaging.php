@@ -7,17 +7,17 @@ class WlConfigStaging extends WlConfigAbstract
   /**
    * @inheritDoc
    */
-  public const COOKIE_PERSISTENT='sp';
+  const COOKIE_PERSISTENT='sp';
 
   /**
    * @inheritDoc
    */
-  public const COOKIE_TRANSIENT='st';
+  const COOKIE_TRANSIENT='st';
 
   /**
    * @inheritDoc
    */
-  public const URL='http://staging.wellnessliving.com/';
+  const URL='http://staging.wellnessliving.com/';
 }
 
 ?>
