@@ -59,9 +59,11 @@ class FinishModel extends WlModelAbstract
    * Data to create new user.
    * Specify if <var>$uid</var> is empty.
    * Must contain keys:
-   * <dl><dt>string <var>text_mail</var></dt><dd>Mail.</dd>
+   * <dl><dt>string[] <var>a_note</var></dt><dd>List of notes to add to user.</dd>
+   * <dt>string <var>text_mail</var></dt><dd>Mail.</dd>
    * <dt>string <var>text_name_first</var></dt><dd>First name.</dd>
-   * <dt>string <var>text_name_last</var></dt><dd>Last name.</dd></dl>
+   * <dt>string <var>text_name_last</var></dt><dd>Last name.</dd>
+   * <dt>string <var>text_phone</var></dt><dd>Phone.</dd></dl>
    *
    * @get get
    * @post get
