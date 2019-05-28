@@ -20,7 +20,7 @@ class StudioCid_InfoModel extends WlModelAbstract
   public $s_class;
 
   /**
-   * CID of the class to retrieve informaion for.
+   * CID of the class to retrieve information for.
    *
    * @get get
    * @var int
