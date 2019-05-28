@@ -1,6 +1,8 @@
 <?php
 
-namespace WellnessLiving;
+namespace WellnessLiving\Config;
+
+use WellnessLiving\WlAssertException;
 
 /**
  * Contains WellnessLiving SDK configuration.
