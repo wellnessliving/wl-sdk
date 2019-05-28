@@ -56,6 +56,20 @@ class FinishModel extends WlModelAbstract
   public $a_purchase_item = null;
 
   /**
+   * Data to create new user.
+   * Specify if <var>$uid</var> is empty.
+   * Must contain keys:
+   * <dl><dt>string <var>text_mail</var></dt><dd>Mail.</dd>
+   * <dt>string <var>text_name_first</var></dt><dd>First name.</dd>
+   * <dt>string <var>text_name_last</var></dt><dd>Last name.</dd></dl>
+   *
+   * @get get
+   * @post get
+   * @var array
+   */
+  public $a_user = [];
+
+  /**
    * IDs of visits.
    *
    * @post result
