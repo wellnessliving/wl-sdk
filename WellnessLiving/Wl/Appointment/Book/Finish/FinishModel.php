@@ -130,7 +130,7 @@ class FinishModel extends WlModelAbstract
    * A sun paid for a deposit.
    *
    * @post post
-   * @car string
+   * @var string
    */
   public $m_pay = '';
 

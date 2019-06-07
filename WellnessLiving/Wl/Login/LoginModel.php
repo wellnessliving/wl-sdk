@@ -24,7 +24,7 @@ class LoginModel extends WlModelAbstract
    * <tt>null</tt> if not set yet or if we need system-wide information.
    *
    * @get get
-   * @car string|null
+   * @var string|null
    */
   public $k_business = null;
 

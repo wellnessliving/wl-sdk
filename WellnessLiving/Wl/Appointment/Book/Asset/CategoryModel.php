@@ -15,7 +15,7 @@ class CategoryModel extends WlModelAbstract
    * <tt>null</tt> if not initialized yet.
    *
    * @get result
-   * @car array|null
+   * @var array|null
    */
   public $a_category = null;
 
