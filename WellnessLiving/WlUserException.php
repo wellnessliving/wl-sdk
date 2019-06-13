@@ -93,7 +93,7 @@ class WlUserException extends \Exception
    * @return string|null String representation of a error code of the very first error in the exception.
    * <tt>null</tt> if no errors were added.
    */
-  public function sid($i_index = 0)
+  public function sid(int $i_index = 0):?string
   {
     if(!$this->a_error)
       return null;
