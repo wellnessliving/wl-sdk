@@ -89,17 +89,17 @@ class WlUserException extends \Exception
   /**
    * Returns string representation of a error code of the very first error in the exception.
    *
+   * @param int $i_index Index of error to return error code for.
    * @return string|null String representation of a error code of the very first error in the exception.
    * <tt>null</tt> if no errors were added.
    */
-  public function sid()
+  public function sid($i_index = 0)
   {
     if(!$this->a_error)
       return null;
 
-    if(!empty($this->a_error[0]['sid']))
-      return $this->a_error[0]['sid'];
+    if(!empty($this->a_error[$i_index]['sid']))
+      return $this->a_error[$i_index]['sid'];
     return null;
-
   }
 }

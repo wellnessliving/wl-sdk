@@ -21,6 +21,18 @@ class ReviewListModel extends WlModelAbstract
   public $a_review = [];
 
   /**
+   * Quantity of last reviews information about which is required.
+   *
+   * <tt>0</tt> to get all review. In this case only review keys must be returned.
+   *
+   * If not <tt>0</tt>, information of each review must be returned.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_quantity = 0;
+
+  /**
    * Business ID to show information for.
    *
    * <tt>null</tt> if not set yet.
