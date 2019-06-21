@@ -43,12 +43,12 @@ abstract class WlConfigAbstract
   /**
    * Timeout to wait for connection to establish.
    */
-  public const TIMEOUT_CONNECT=20;
+  public const TIMEOUT_CONNECT=60;
 
   /**
    * Timeout to wait for data reading from an established connection.
    */
-  public const TIMEOUT_READ=60;
+  public const TIMEOUT_READ=600;
 
   /**
    * URL of the server (including trailing slash).
