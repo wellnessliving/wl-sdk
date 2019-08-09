@@ -10,13 +10,6 @@ use WellnessLiving\WlModelAbstract;
 class ClassListModel extends WlModelAbstract
 {
   /**
-   * Filter for the model.
-   *
-   * @var array
-   */
-  public $a_filter = [];
-
-  /**
    * List of classes sessions starting with the date {@link Wl_Schedule_ClassList_ClassListModel.dt_date} and
    * in the 30 days ahead.
    *
