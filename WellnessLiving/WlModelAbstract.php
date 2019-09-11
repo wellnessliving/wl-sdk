@@ -2,6 +2,8 @@
 
 namespace WellnessLiving;
 
+use WellnessLiving\Config\WlConfigAbstract;
+
 /**
  * Represents base class for all models.
  */
@@ -378,7 +380,6 @@ class WlModelAbstract
 
     if($s_error)
     {
-      var_dump($s_error);
       throw new WlUserException('request-error','Error executing request to WellnessLiving API (error is reported by network).',[
         's_class' => get_class($this),
         's_error' => $s_error,
@@ -400,7 +401,6 @@ class WlModelAbstract
 
     if(!$o_request->a_result||!is_array($o_request->a_result)||!isset($o_request->a_result['status']))
     {
-      var_dump($o_request->a_result);
       throw new WlUserException('request-parse','Error executing request to WellnessLiving API (could not parse response).',[
         'a_result' => $o_request->a_result,
         's_result' => $s_response,

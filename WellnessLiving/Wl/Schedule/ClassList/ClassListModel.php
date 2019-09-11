@@ -26,7 +26,7 @@ class ClassListModel extends WlModelAbstract
   public $a_session = [];
 
   /**
-   * Date of list start in MySQL format. List of sessions will be formed for 30 days period starting from this date.
+   * Date of list start in UTC.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -34,6 +34,16 @@ class ClassListModel extends WlModelAbstract
    * @var string|null
    */
   public $dt_date = null;
+
+  /**
+   * Date of list end in UTC.
+   *
+   * <tt>null</tt> to end after 62 days after {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_date}.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dt_end = null;
 
   /**
    * <tt>true</tt> - list of sessions contains sessions from different timezones; <tt>false</tt> - otherwise.

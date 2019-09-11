@@ -1,6 +1,8 @@
 <?php
 
-namespace WellnessLiving;
+namespace WellnessLiving\Config;
+
+use WellnessLiving\WlAssertException;
 
 /**
  * Contains WellnessLiving SDK configuration.
@@ -41,12 +43,12 @@ abstract class WlConfigAbstract
   /**
    * Timeout to wait for connection to establish.
    */
-  const TIMEOUT_CONNECT=20;
+  const TIMEOUT_CONNECT=60;
 
   /**
    * Timeout to wait for data reading from an established connection.
    */
-  const TIMEOUT_READ=60;
+  const TIMEOUT_READ=600;
 
   /**
    * URL of the server (including trailing slash).

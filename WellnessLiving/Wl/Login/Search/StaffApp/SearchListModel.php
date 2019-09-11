@@ -13,7 +13,7 @@ class SearchListModel extends WlModelAbstract
    * A list of users.
    *
    * The list depends on the search query.
-   * If the query is empty, the recent users will be loaded.
+   * If the query is empty then recent users will be loaded.
    *
    * @get result
    * @type {String[]}
