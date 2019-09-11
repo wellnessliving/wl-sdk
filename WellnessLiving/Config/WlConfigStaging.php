@@ -17,7 +17,7 @@ class WlConfigStaging extends WlConfigAbstract
   /**
    * @inheritDoc
    */
-  public const URL='http://staging.wellnessliving.com/';
+  public const URL='https://staging.wellnessliving.com/';
 }
 
 ?>
