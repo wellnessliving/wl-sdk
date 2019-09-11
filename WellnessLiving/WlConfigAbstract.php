@@ -51,7 +51,7 @@ abstract class WlConfigAbstract
   /**
    * URL of the server (including trailing slash).
    */
-  const URL='http://staging.wellnessliving.com/';
+  const URL='https://staging.wellnessliving.com/';
 
   /**
    * Asserts that configuration object is configured correctly.
