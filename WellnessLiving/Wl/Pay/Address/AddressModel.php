@@ -4,7 +4,7 @@ namespace WellnessLiving\Wl\Pay\Address;
 
 use WellnessLiving\WlModelAbstract;
 
-class AddressApiModel extends WlModelAbstract
+class AddressModel extends WlModelAbstract
 {
   /**
    * Object result
