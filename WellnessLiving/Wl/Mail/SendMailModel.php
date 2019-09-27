@@ -9,7 +9,7 @@ class SendMailModel extends WlModelAbstract
   /**
    * Business id.
    *
-   * @post post
+   * @post get
    * @var string
    */
   public $k_business = '0';
