@@ -4,14 +4,15 @@ namespace WellnessLiving\Wl\Mail;
 
 use WellnessLiving\WlModelAbstract;
 
-class SendMailModel extends WlModelAbstract {
+class SendMailModel extends WlModelAbstract
+{
   /**
-   * Result object
+   * Business id.
    *
-   * @get result
+   * @post post
    * @var string
    */
-  public $s_status_send = null;
+  public $k_business = '0';
 
   /**
    * Business mail.
@@ -44,6 +45,14 @@ class SendMailModel extends WlModelAbstract {
    * @var string
    */
   public $s_campaign = '';
+
+  /**
+   * Message recipient.
+   *
+   * @post post
+   * @var string
+   */
+  public $s_mail = '';
 
   /**
    * Message recipient.
