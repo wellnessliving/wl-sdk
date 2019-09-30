@@ -56,6 +56,16 @@ class RegisterModel extends WlModelAbstract
    * @var string
    */
   public $s_password_confirm = '';
+
+  /**
+   * URL to confirmation page. This link is used in a confirmation email.
+   *
+   * If empty, URL to default page is used.
+   *
+   * @post post
+   * @var string
+   */
+  public $url_confirm = '';
 }
 
 ?>
