@@ -19,7 +19,8 @@ class EditEmailModel extends WlModelAbstract
   public $a_user = [];
 
   /**
-   * <tt>true</tt> - quantity of request is exhausted; <tt>false</tt> - otherwise.
+   * Quantity of request is exhausted.
+   * <tt>true</tt> - yes; <tt>false</tt> - no.
    *
    * @get result
    * @var bool
@@ -27,7 +28,8 @@ class EditEmailModel extends WlModelAbstract
   public $is_limit = false;
 
   /**
-   * <tt>true</tt> - specified email is occupied; <tt>false</tt> - otherwise.
+   * Specified email is occupied.
+   * <tt>true</tt> - yes; <tt>false</tt> - no.
    *
    * @get result
    * @var bool
@@ -35,7 +37,7 @@ class EditEmailModel extends WlModelAbstract
   public $is_use = false;
 
   /**
-   * Business where check must be performed
+   * Business where check must be performed.
    *
    * @get get
    * @post get
