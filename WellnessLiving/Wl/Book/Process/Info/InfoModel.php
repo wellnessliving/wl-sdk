@@ -138,7 +138,8 @@ class InfoModel extends WlModelAbstract
   /**
    * WellnessLiving mode type, one of {@link \WellnessLiving\Wl\Book\WlBookModeSid} constants.
    *
-   * @post post
+   * @get get
+   * @post get
    * @var int
    */
   public $id_mode = WlBookModeSid::APP_FRONTEND;

@@ -81,7 +81,8 @@ class ResourceModel extends WlModelAbstract
   /**
    * WellnessLiving mode type. One of {@link WlBookModeSid} constants.
    *
-   * @post post
+   * @get get
+   * @post get
    * @var int
    */
   public $id_mode =  WlBookModeSid::APP_FRONTEND;
