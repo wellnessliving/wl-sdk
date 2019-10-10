@@ -76,6 +76,7 @@ class ElementModel extends WlModelAbstract
 
   /**
    * ID of item category.
+   * One of {@link \WellnessLiving\WlSaleSid} constants.
    *
    * @get get
    * @var int
