@@ -12,13 +12,45 @@ class ElementModel extends WlModelAbstract
   /**
    * Additional information specific for the item.
    *
+   * The structure may be different depending on the item category.
+   *
+   * For example, for a product it contains inventory information. For a gift card - possible amounts.
+   * For a pass/membership/package - information about starting and stopping.
+   *
    * @get result
    * @var array
    */
   public $a_data = null;
 
   /**
-   * Image information.
+   * Image information:
+   * <dl>
+   *   <dt>
+   *     int <var>i_height</var>
+   *   </dt>
+   *   <dd>
+   *     Height in pixels.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_width</var>
+   *   </dt>
+   *   <dd>
+   *     Width in pixels.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_empty</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> - item has no image (in this case ignore another keys of this array).
+   *     <tt>false</tt> - item has an image.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_url</var>
+   *   </dt>
+   *   <dd>
+   *     Image URL.
+   *   </dd>
+   * </dl>
    *
    * @get result
    * @var array
@@ -26,36 +58,14 @@ class ElementModel extends WlModelAbstract
   public $a_image = null;
 
   /**
-   * Tax information.
+   * List of item taxes.
+   * Keys - unique tax keys.
+   * Values - amounts.
    *
    * @get result
    * @var array
    */
   public $a_tax = null;
-
-  /**
-   * Price on the price tag.
-   *
-   * @get result
-   * @var string
-   */
-  public $f_price = null;
-
-  /**
-   * Price including taxes.
-   *
-   * @get result
-   * @var string
-   */
-  public $f_price_include = null;
-
-  /**
-   * Amount of texes.
-   *
-   * @get result
-   * @var string
-   */
-  public $f_tax = null;
 
   /**
    * ID of purchase item category.
@@ -67,7 +77,7 @@ class ElementModel extends WlModelAbstract
   public $id_purchase_item = null;
 
   /**
-   * ID of item view category.
+   * ID of item view category. One of {@link \WellnessLiving\Wl\Catalog\PurchaseOptionViewSid} constants.
    *
    * @get result
    * @var int
@@ -93,6 +103,7 @@ class ElementModel extends WlModelAbstract
 
   /**
    * Item key.
+   * You can get it from {@link \WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel::$a_shop_product}.
    *
    * @get get
    * @var string
@@ -124,6 +135,30 @@ class ElementModel extends WlModelAbstract
   public $m_discount_login = null;
 
   /**
+   * Price on the price tag.
+   *
+   * @get result
+   * @var string
+   */
+  public $m_price = null;
+
+  /**
+   * Price including taxes.
+   *
+   * @get result
+   * @var string
+   */
+  public $m_price_include = null;
+
+  /**
+   * Amount of texes.
+   *
+   * @get result
+   * @var string
+   */
+  public $m_tax = null;
+
+  /**
    * Additional comment.
    *
    * @get result
@@ -132,12 +167,12 @@ class ElementModel extends WlModelAbstract
   public $s_comment = null;
 
   /**
-   * Price of price tag with currency sign.
+   * Price on price tag with currency sign.
    *
    * @get result
    * @var string
    */
-  public $s_price = null;
+  public $text_price = null;
 
   /**
    * Title of item category.
@@ -145,7 +180,7 @@ class ElementModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $s_sate = null;
+  public $text_sale = null;
 
   /**
    * Item title.
@@ -153,7 +188,7 @@ class ElementModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $s_title = null;
+  public $text_title = null;
 
   /**
    * Detailed description.
