@@ -1,6 +1,6 @@
 <?php
 
-namespace WellnessLiving\Wl\Profile\Edit;
+namespace WellnessLiving\Wl\Schedule\ScheduleList\StaffApp;
 
 use WellnessLiving\WlModelAbstract;
 
