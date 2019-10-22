@@ -58,6 +58,17 @@ class ElementModel extends WlModelAbstract
   public $a_image = null;
 
   /**
+   * List of requested goods information.
+   * Every element contains keys that correspond to each another field with <tt>&#64;get result</tt> in this class.
+   *
+   * <tt>null</tt> until loaded. And if {@link ElementModel::$text_item} is empty.
+   *
+   * @get result
+   * @var array[]|null
+   */
+  public $a_item = null;
+
+  /**
    * List of item taxes.
    * Keys - unique tax keys.
    * Values - amounts.
@@ -119,6 +130,14 @@ class ElementModel extends WlModelAbstract
   public $k_location = null;
 
   /**
+   * Product option key.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $k_shop_product_option = null;
+
+  /**
    * Discount amount for a discount code.
    *
    * @get result
@@ -165,6 +184,28 @@ class ElementModel extends WlModelAbstract
    * @var string
    */
   public $s_comment = null;
+
+  /**
+   * List of goods to get information for. Every element must contain next keys:
+   * <dl>
+   *   <dt>int <var>id_sale</var></dt>
+   *   <dd>ID of item category. One of {@link \WellnessLiving\WlSaleSid} constants.</dd>
+   *   <dt>string <var>k_id</var></dt>
+   *   <dd>Key of item.</dd>
+   *   <dt>string <var>k_shop_product_option</var></dt>
+   *   <dd>Key of product option. <tt>0</tt> if item is not a product.</dd>
+   * </dl>
+   * Must be serialized via JSON.
+   *
+   * If you specify this field, you must NOT specify fields {@link ElementModel::$id_sale}, {@link ElementModel::$k_id},
+   * {@link ElementModel::$k_shop_product_option}.
+   *
+   * <tt>null</tt> to get information of only 1 item.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $text_item = null;
 
   /**
    * Price on price tag with currency sign.
