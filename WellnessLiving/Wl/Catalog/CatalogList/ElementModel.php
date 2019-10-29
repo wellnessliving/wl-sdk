@@ -80,7 +80,7 @@ class ElementModel extends WlModelAbstract
 
   /**
    * ID of purchase item category.
-   * One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
+   * One of {@link \WellnessLiving\WlPurchaseItemSid} constants.
    *
    * @get result
    * @var int
