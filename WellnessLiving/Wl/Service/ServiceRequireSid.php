@@ -10,7 +10,7 @@ class ServiceRequireSid
   /**
    * Some part of the price is required. Type of the deposit can be flat or percentage.
    * Type of the deposit depends on <var>is_deposit_percent</var>.
-   * Size of the deposit is specified in <var>f_deposit</var>
+   * Size of the deposit is specified in <var>f_deposit</var>.
    */
   const ADVANCE = 4;
 
