@@ -150,28 +150,77 @@ class PaymentModel extends WlModelAbstract
    *   <dd>
    *     Payment cart information:
    *     <dl>
-   *       <dt>bool <var>is_new</var></dt>
-   *       <dd><tt>1</tt> to add a new card; <tt>0</tt> to use saved card.</dd>
-   *       <dt>string [<var>k_geo_country</var>]</dt>
-   *       <dd>Key of country for payment address. Specify to add a new card.</dd>
-   *       <dt>string [<var>k_geo_region</var>]</dt>
-   *       <dd>Key of region for payment address. Specify to add a new card.</dd>
-   *       <dt>string [<var>k_pay_bank</var>]</dt>
-   *       <dd>Key of a card. Specify to use saved card.</dd>
-   *       <dt>string [<var>s_city</var>]</dt>
-   *       <dd>City for payment address. Specify to add a new card.</dd>
-   *       <dt>string [<var>s_comment</var>]</dt>
-   *       <dd>Optional comment. Specify to add a new card.</dd>
-   *       <dt>string [<var>s_name</var>]</dt>
-   *       <dd>Card name. Specify to add a new card.</dd>
-   *       <dt>string [<var>s_postal</var>]</dt>
-   *       <dd>Postal code for payment address. Specify to add a new card.</dd>
-   *       <dt>string [<var>s_phone</var>]</dt>
-   *       <dd>Payment phone. Specify to add a new card.</dd>
-   *       <dt>string [<var>s_street1</var>]</dt>
-   *       <dd>Payment address. Specify to add a new card.</dd>
-   *       <dt>string [<var>s_street2</var>]</dt>
-   *       <dd>Optional payment address. Specify to add a new card.</dd></dl>
+   *       <dt>
+   *         array <var>a_pay_address</var>
+   *       </dt>
+   *       <dd>
+   *         Payment address:
+   *         <dl>
+   *           <dt>bool <var>is_new</var></dt>
+   *           <dd><tt>1</tt> to add a new payment address; <tt>0</tt> to use a saved payment address.</dd>
+   *           <dt>string [<var>k_geo_country</var>]</dt>
+   *           <dd>Key of country for payment address. Specify to add a new address.</dd>
+   *           <dt>string [<var>k_geo_region</var>]</dt>
+   *           <dd>Key of region for payment address. Specify to add a new address.</dd>
+   *           <dt>string [<var>k_pay_address</var>]</dt>
+   *           <dd>Key of already saves payment address. Specify to use a saved address.</dd>
+   *           <dt>string [<var>s_city</var>]</dt>
+   *           <dd>City for payment address. Specify to add a new address.</dd>
+   *           <dt>string [<var>s_name</var>]</dt>
+   *           <dd>Card name. Specify to add a new address.</dd>
+   *           <dt>string [<var>s_phone</var>]</dt>
+   *           <dd>Payment phone. Specify to add a new address.</dd>
+   *           <dt>string [<var>s_postal</var>]</dt>
+   *           <dd>Postal code for payment address. Specify to add a new address.</dd>
+   *           <dt>string [<var>s_street1</var>]</dt>
+   *           <dd>Payment address. Specify to add a new address.</dd>
+   *           <dt>string [<var>s_street2</var>]</dt>
+   *           <dd>Optional payment address. Specify to add a new address.</dd>
+   *         </dl>
+   *       </dd>
+   *       <dt>
+   *         int [<var>i_csc</var>]
+   *       </dt>
+   *       <dd>
+   *         Card CSC. Specify to add a new card.
+   *       </dd>
+   *       <dt>
+   *         int [<var>i_month</var>]
+   *       </dt>
+   *       <dd>
+   *         Card expiration month. Specify to add a new card.
+   *       </dd>
+   *       <dt>
+   *         int [<var>i_year</var>]
+   *       </dt>
+   *       <dd>
+   *         Card expiration year. Specify to add a new card.
+   *       </dd>
+   *       <dt>
+   *         bool <var>is_new</var>
+   *       </dt>
+   *       <dd>
+   *         <tt>1</tt> to add a new card; <tt>0</tt> to use saved card.
+   *       </dd>
+   *       <dt>
+   *         string [<var>k_pay_bank</var>]
+   *       </dt>
+   *       <dd>
+   *         Key of a card. Specify to use saved card.
+   *       </dd>
+   *       <dt>
+   *         string [<var>s_comment</var>]
+   *       </dt>
+   *       <dd>
+   *         Optional comment. Specify to add a new card.
+   *       </dd>
+   *       <dt>
+   *         string [<var>s_number</var>]
+   *       </dt>
+   *       <dd>
+   *         Card number. Specify to add a new card.
+   *       </dd>
+   *     </dl>
    *   </dd>
    *   <dt>
    *     string <var>f_amount</var>
@@ -202,7 +251,8 @@ class PaymentModel extends WlModelAbstract
    *     string <var>sid_pay_method</var>
    *   </dt>
    *   <dd>
-   *     Payment method ID. One of the {@link WlPayMethodSid} constants.
+   *     Payment method ID. String representation of one of the {@link WlPayMethodSid} constants.
+   *     For example, if payment method is {@link WlPayMethodSid::ECOMMERCE}, specify string <tt>ecommerce</tt>.
    *   </dd>
    * </dl>
    *
