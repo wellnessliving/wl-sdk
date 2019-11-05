@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business\AuthorizePartner;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Model for response to request enter into business location.
+ * Model to give members of a franchisor access to a franchisee.
  */
 class AuthorizePartnerModel extends WlModelAbstract
 {
