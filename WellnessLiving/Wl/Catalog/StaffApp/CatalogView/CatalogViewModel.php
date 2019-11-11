@@ -10,10 +10,20 @@ use WellnessLiving\WlModelAbstract;
 class CatalogViewModel extends WlModelAbstract
 {
   /**
-   * Information about item.
+   * Information about item, which can specify prorate amounts.
    *
+   * If set these values will change the values returned by the endpoint call.
+   *
+   * <dl>
+   *   <dt>float <var>f_promote</var></dt>
+   *   <dd>The amount to prorate the item by.</dd>
+   *   <dt>bool <var>is_prorate</var></dt>
+   *   <dd>If <tt>true</tt> this item is prorated.</dd>
+   *   <dt>string <var>m_prorate_custom</var></dt>
+   *   <dd>The custom prorate amount.</dd>
+   * </dl>
    * @get get
-   * @var array|null
+   * @var array
    */
   public $a_config = [];
 
@@ -25,13 +35,13 @@ class CatalogViewModel extends WlModelAbstract
    * The key is tax identifier and the value are:
    * <dl>
    *   <dt>string <var>k_tax</var></dt>
-   *   <dd>Tax identifier, primary key in {@link \RsTaxSql}.
+   *   <dd>Tax ID,
    *   <dt>string <var>m_tax_custom</dt>
    *   <dd>Amount of custom tax.</dd>
    * </dl>
    *
    * @get get
-   * @var array
+   * @var array|null
    */
   public $a_tax = null;
 
@@ -41,27 +51,19 @@ class CatalogViewModel extends WlModelAbstract
    * <tt>null</tt> if not set yet.
    *
    * @get result
-   * @var array
+   * @var array|null
    */
   public $a_tax_data = null;
 
   /**
    * Quantity of items.
    *
+   * <tt>null</tt> if there is no limit of items at the location.
+   *
    * @get get
    * @var int|null
    */
   public $i_quantity = null;
-
-  /**
-   * ID of sale category.
-   *
-   * <tt>null</tt> if not set yet.
-   *
-   * @get get
-   * @var int|null
-   */
-  public $id_sale = null;
 
   /**
    * Purchase item ID.
@@ -72,6 +74,16 @@ class CatalogViewModel extends WlModelAbstract
    * @var int|null
    */
   public $id_purchase_item = null;
+
+  /**
+   * ID of sale category.
+   *
+   * <tt>null</tt> if not set yet.
+   *
+   * @get get
+   * @var int|null
+   */
+  public $id_sale = null;
 
   /**
    * Business ID.
