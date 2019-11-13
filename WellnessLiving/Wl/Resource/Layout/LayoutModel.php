@@ -10,7 +10,23 @@ use WellnessLiving\WlModelAbstract;
 class LayoutModel extends WlModelAbstract
 {
   /**
-   * Assets.
+   * Assets. Every element contains next keys:
+   * <dl>
+   *   <dt>array <var>a_image</var></dt>
+   *   <dd>Asset appearance information.</dd>
+   *   <dt>int <var>i_cell_x</var></dt>
+   *   <dd>Vertical cell number. Not empty if assets are snapped to grid.</dd>
+   *   <dt>int <var>i_cell_y</var></dt>
+   *   <dd>Horizontal cell number. Not empty if assets are snapped to grid.</dd>
+   *   <dt>int <var>i_index</var></dt>
+   *   <dd>Asset number.</dd>
+   *   <dt>int <var>i_left</var></dt>
+   *   <dd>Horizontal offset in pixels. Not empty if assets are NOT snapped to grid.</dd>
+   *   <dt>string <var>k_resource</var></dt>
+   *   <dd>Asset key.</dd>
+   *   <dt>string <var>s_title</var></dt>
+   *   <dd>Asset title.</dd>
+   * </dl>
    *
    * @get result
    * @type {array[]}
