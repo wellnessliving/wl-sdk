@@ -67,6 +67,12 @@ class ServiceListModel extends WlModelAbstract
    *     Required payment type. One of {@link \WellnessLiving\Wl\Service\ServiceRequireSid} constants.
    *   </dd>
    *   <dt>
+   *     bool <var>is_book_repeat_client</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> if allow client to book classes and appointments recurrently, <tt>false</tt> otherwise.
+   *   </dd>
+   *   <dt>
    *     bool <var>is_deposit_percent</var>
    *   </dt>
    *   <dd>
