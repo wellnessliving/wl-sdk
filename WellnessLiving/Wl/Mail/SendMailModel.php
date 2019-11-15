@@ -4,6 +4,9 @@ namespace WellnessLiving\Wl\Mail;
 
 use WellnessLiving\WlModelAbstract;
 
+/**
+ * Tool to send email.
+ */
 class SendMailModel extends WlModelAbstract
 {
   /**
