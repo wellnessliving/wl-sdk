@@ -29,6 +29,12 @@ class PaymentModel extends WlModelAbstract
    *         Prorate date. For memberships only.
    *       </dd>
    *       <dt>
+   *         string [<var>dt_send</var>]
+   *       </dt>
+   *       <dd>
+   *         Date when gift card must be send. For gft cards only.
+   *       </dd>
+   *       <dt>
    *         string [<var>dt_start</var>]
    *       </dt>
    *       <dd>
@@ -65,6 +71,12 @@ class PaymentModel extends WlModelAbstract
    *         Appointment key. For appointment add-ons only.
    *       </dd>
    *       <dt>
+   *         string [<var>k_coupon_amount</var>]
+   *       </dt>
+   *       <dd>
+   *         Key of gift card amount. For gift cards only.
+   *       </dd>
+   *       <dt>
    *         string [<var>k_staff</var>]
    *       </dt>
    *       <dd>
@@ -81,6 +93,24 @@ class PaymentModel extends WlModelAbstract
    *       </dt>
    *       <dd>
    *         Gift card code. Required for gift card.
+   *       </dd>
+   *       <dt>
+   *         string [<var>s_mail</var>]
+   *       </dt>
+   *       <dd>
+   *         Gift card receiver email. Required for gift card.
+   *       </dd>
+   *       <dt>
+   *         string [<var>s_recipient</var>]
+   *       </dt>
+   *       <dd>
+   *         Gift card receiver name. Required for gift card.
+   *       </dd>
+   *       <dt>
+   *         string [<var>s_sender</var>]
+   *       </dt>
+   *       <dd>
+   *         Gift card sender name. Required for gift card.
    *       </dd>
    *     </dl>
    *   </dd>
