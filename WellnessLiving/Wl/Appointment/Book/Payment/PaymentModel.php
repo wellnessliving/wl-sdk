@@ -127,7 +127,7 @@ class PaymentModel extends WlModelAbstract
   public $a_purchase_item = null;
 
   /**
-   * Key of source mode. One of {@link \\WellnessLiving\WlModeSid} constants.
+   * Key of source mode. One of {@link \WellnessLiving\Wl\Book\WlBookModeSid} constants.
    *
    * @post get
    * @var int
