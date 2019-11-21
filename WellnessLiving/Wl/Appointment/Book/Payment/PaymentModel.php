@@ -10,6 +10,37 @@ use WellnessLiving\WlModelAbstract;
 class PaymentModel extends WlModelAbstract
 {
   /**
+   * Information detailing an appointment booking.
+   *
+   * @get get
+   * @post get
+   * @var array
+   */
+  public $a_book_data = [];
+
+  /**
+   * A list of payment sources.
+   *
+   * Value of this field is gathered from payment form.
+   *
+   * This is an indexed array where each element corresponds to a single selected payment method.
+   *
+   * Each source contains:<dl>
+   * <dt>string <var>f_amount</var></dt><dd>Amount of money to withdraw with this payment source.</dd>
+   * <dt>int <var>id_pay_method</var></dt><dd>Payment method ID. One of the {@link WlPayMethodSid} constants.</dd>
+   * <dt>bool <var>is_hide</var></dt><dd> Whether this payment method is hidden.
+   *   Payment methods will be hidden if they are not enabled for the business.</dd>
+   * <dt>bool [<var>is_success</var>=<tt>false</tt>]</dt><dd>Whether this source was successfully charged.</dd>
+   * <dt>string <var>s_index</var></dt><dd>
+   *   Index of this form. This corresponds the key this item is written in this array with.</dd>
+   * </dl>
+   *
+   * @post post
+   * @var array
+   */
+  public $a_pay_form = [];
+
+  /**
    * Information about any prepaid promotions.
    *
    *   <dt>string <var>i_limit</var></dt>
@@ -96,35 +127,12 @@ class PaymentModel extends WlModelAbstract
   public $a_purchase_item = null;
 
   /**
-   * Information detailing an appointment booking.
+   * Key of source mode. One of {@link \\WellnessLiving\WlModeSid} constants.
    *
-   * @get get
    * @post get
-   * @var array
+   * @var int
    */
-  public $a_book_data = [];
-
-  /**
-   * A list of payment sources.
-   *
-   * Value of this field is gathered from payment form.
-   *
-   * This is an indexed array where each element corresponds to a single selected payment method.
-   *
-   * Each source contains:<dl>
-   * <dt>string <var>f_amount</var></dt><dd>Amount of money to withdraw with this payment source.</dd>
-   * <dt>int <var>id_pay_method</var></dt><dd>Payment method ID. One of the {@link WlPayMethodSid} constants.</dd>
-   * <dt>bool <var>is_hide</var></dt><dd> Whether this payment method is hidden.
-   *   Payment methods will be hidden if they are not enabled for the business.</dd>
-   * <dt>bool [<var>is_success</var>=<tt>false</tt>]</dt><dd>Whether this source was successfully charged.</dd>
-   * <dt>string <var>s_index</var></dt><dd>
-   *   Index of this form. This corresponds the key this item is written in this array with.</dd>
-   * </dl>
-   *
-   * @post post
-   * @var array
-   */
-  public $a_pay_form = [];
+  public $id_mode;
 
   /**
    * Payment type for the appointment, one of {@link WlAppointmentPaySid} constants.
