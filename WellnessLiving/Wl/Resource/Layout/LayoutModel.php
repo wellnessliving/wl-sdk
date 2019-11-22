@@ -31,10 +31,85 @@ class LayoutModel extends WlModelAbstract
    * @get result
    * @type {array[]}
    */
-   public  $a_resource = [];
+  public $a_resource = [];
 
   /**
-   * Custom shapes.
+   * List of custom shapes. Every element - array with keys:
+   * <dl>
+   *   <dt>
+   *     float <var>f_height</var>
+   *   </dt>
+   *   <dd>
+   *     Height for shape {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::RECTANGLE}. Empty for another shapes.
+   *   </dd>
+   *   <dt>
+   *     float <var>f_width</var>
+   *   </dt>
+   *   <dd>
+   *     Width for shape {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::RECTANGLE}. Empty for another shapes.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_degree_from</var>
+   *   </dt>
+   *   <dd>
+   *     Start angle for shape {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::PIE}. Empty for another shapes.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_degree_to</var>
+   *   </dt>
+   *   <dd>
+   *     End angle for shape {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::PIE}. Empty for another shapes.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_left</var>
+   *   </dt>
+   *   <dd>
+   *     Position of shape by horizontal axis.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_radius</var>
+   *   </dt>
+   *   <dd>
+   *     Radius for shapes {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::PIE} and
+   *     {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::CIRCLE}. Empty for another shapes.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_top</var>
+   *   </dt>
+   *   <dd>
+   *     Position of shape by vertical axis.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_resource_layout_shape</var>
+   *   </dt>
+   *   <dd>
+   *     Shape type. One of {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid} constants.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_resource_layout_shape</var>
+   *   </dt>
+   *   <dd>
+   *     Shape ID. Primary key in {@link \Wl\Resource\Layout\Shape\Sql} table.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_color_background</var>
+   *   </dt>
+   *   <dd>
+   *     Shape background color.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_color_foreground</var>
+   *   </dt>
+   *   <dd>
+   *     Shape foreground color.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_text</var>
+   *   </dt>
+   *   <dd>
+   *     Shape title.
+   *   </dd>
+   * </dl>
    *
    * @get result
    * @type {array[]}
@@ -42,7 +117,19 @@ class LayoutModel extends WlModelAbstract
   public $a_shape_custom = [];
 
   /**
-   * Icon shapes.
+   * List of shapes-icons. Every element - array with keys:
+   * <dl>
+   *   <dt>int <var>i_cell_x</var></dt>
+   *   <dd>Number of cell. Position by horizontal axis. Empty if grid is turned off.</dd>
+   *   <dt>int <var>i_cell_y</var></dt>
+   *   <dd>Number of cell. Position by vertical axis. Empty if grid is turned off.</dd>
+   *   <dt>int <var>i_left</var></dt>
+   *   <dd>Horizontal position in pixels. Empty if grid is turned on.</dd>
+   *   <dt>int <var>i_top</var></dt>
+   *   <dd>Vertical position in pixels. Empty if grid is turned on.</dd>
+   *   <dt>int <var>id_shape_icon</var></dt>
+   *   <dd>Icon ID. One of constants {@link \WellnessLiving\Wl\Resource\Image\ImageIconSid}.</dd>
+   * </dl>
    *
    * @get result
    * @type {array[]}
