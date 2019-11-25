@@ -209,6 +209,15 @@ class PaymentModel extends WlModelAbstract
   public $m_total = null;
 
   /**
+   * Discount code to be applied to purchase.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
+   public $text_discount_code = '';
+
+  /**
    * User ID.
    *
    * <tt>null</tt> if not set yet.
