@@ -13,7 +13,7 @@ class ProcessModel extends WlModelAbstract
    * All steps to be done to make book. Every element has next keys:
    * <dl>
    *   <dt>int <var>id_book_process</var></dt>
-   *   <dd>Step ID. One of {@link \RsBookProcessSid} constants.</dd>
+   *   <dd>Step ID. One of {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid} constants.</dd>
    *   <dt>bool [<var>is_current</var>]</dt>
    *   <dd>
    *     <tt>true</tt> - this item is current;
