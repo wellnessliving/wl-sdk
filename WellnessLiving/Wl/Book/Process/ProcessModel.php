@@ -10,41 +10,21 @@ use WellnessLiving\WlModelAbstract;
 class ProcessModel extends WlModelAbstract
 {
   /**
-   * Full wizard data from all steps.
-   *
-   * @var array
-   */
-  public $a_data = [];
-
-  /**
-   * IDs of user's activity which correspond to books are made. Not empty when booking process is finished.
-   *
-   * @var array
-   */
-  public $a_login_activity_book = [];
-
-  /**
-   * All steps to be done to make book. Depends on many factors. Initialized in constructor.
+   * All steps to be done to make book. Every element has next keys:
+   * <dl>
+   *   <dt>int <var>id_book_process</var></dt>
+   *   <dd>Step ID. One of {@link \RsBookProcessSid} constants.</dd>
+   *   <dt>bool [<var>is_current</var>]</dt>
+   *   <dd>
+   *     <tt>true</tt> - this item is current;
+   *     <tt>false</tt> or is not set - is not current.
+   *   </dd>
+   * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
   public $a_path = [];
-
-  /**
-   * List of purchases which are available for session(s) which is(are) being booked.
-   *
-   * @var array
-   * @see Wl_Book_Process_Purchase_PurchaseModel.a_purchase
-   */
-  public $a_purchase = [];
-
-  /**
-   * IDs of books which are made. Not empty when booking process is finished.
-   *
-   * @var array
-   */
-  public $a_visit = [];
 
   /**
    * Date of the session that user is booking now.
@@ -53,15 +33,22 @@ class ProcessModel extends WlModelAbstract
    * <tt>null</tt> if not set yet.
    *
    * @get get
-   * @post get
    * @var string|null
    */
   public $dt_date_gmt = null;
 
   /**
+   * Mode type. One of {@link \WellnessLiving\Wl\Book\WlBookModeSid} constants.
+   *
+   * @get get
+   * @var int
+   */
+  public $id_mode = 0;
+
+  /**
    * Purchase rule ID.
    *
-   * One of {@link Wl_Classes_RequirePaySid} constants.
+   * One of {@link \WellnessLiving\Wl\Classes\RequirePaySid} constants.
    *
    * @get result
    * @var int
@@ -69,7 +56,7 @@ class ProcessModel extends WlModelAbstract
   public $id_pay_require = false;
 
   /**
-   * Does booked session is event.
+   * <tt>true</tt> - session which is being booked is event, <tt>false</tt> - is not event.
    *
    * @get result
    * @var bool
@@ -77,7 +64,7 @@ class ProcessModel extends WlModelAbstract
   public $is_event = false;
 
   /**
-   * Does client can select several session per booking.
+   * <tt>true</tt> - client can select several session per booking, <tt>false</tt> - can not select.
    *
    * @get result
    * @var bool
@@ -85,16 +72,7 @@ class ProcessModel extends WlModelAbstract
   public $is_session = false;
 
   /**
-   * Whether to skip form validation.
-   * <tt>true</tt> if user pressed 'Pay later'.
-   * <tt>false</tt> if user pressed 'Pay now'.
-   *
-   * @var bool
-   */
-  public $is_force_pay_later = false;
-
-  /**
-   * Does user can be placed to waitlist.
+   * <tt>true</tt> - user can be placed to wait list, <tt>false</tt> - can not be.
    *
    * @get result
    * @var bool
@@ -102,26 +80,17 @@ class ProcessModel extends WlModelAbstract
   public $is_wait = false;
 
   /**
-   * ID of session which is booked.
+   * Key of session which is booked.
    *
    * <tt>null</tt> if not set yet.
    *
    * @get get
-   * @post get
    * @var string|null
    */
   public $k_class_period = null;
 
   /**
-   * ID of user's activity which corresponds to purchase is made. Not empty when booking process is finished.
-   *
-   * @post result
-   * @var string
-   */
-  public $k_login_activity_purchase = '0';
-
-  /**
-   * ID of location where session is booked.
+   * Key of location where session is booked.
    *
    * @get result
    * @var string
@@ -129,15 +98,14 @@ class ProcessModel extends WlModelAbstract
   public $k_location = '';
 
   /**
-   * ID of a user who is making a book.
+   * Key of a user who is making a book.
    *
    * <tt>null</tt> if not set yet.
    *
    * @get get
-   * @post get
    * @var string|null
    */
-  public $uid=null;
+  public $uid = null;
 }
 
 ?>
