@@ -1,5 +1,7 @@
 <?php
 
+namespace WellnessLiving\Wl\Purchase\Receipt;
+
 use WellnessLiving\WlModelAbstract;
 
 /**
