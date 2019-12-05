@@ -129,6 +129,7 @@ class PaymentModel extends WlModelAbstract
   /**
    * Key of source mode. One of {@link \WellnessLiving\Wl\Book\WlBookModeSid} constants.
    *
+   * @get get
    * @post get
    * @var int
    */
