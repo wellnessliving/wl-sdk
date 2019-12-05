@@ -68,6 +68,14 @@ class DataModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
+   * Business key obtained by security token.
+   *
+   * @get result
+   * @var string
+   */
+  public $k_business_token = '0';
+
+  /**
    * Reply-to email address.
    *
    * <tt>null</tt> until loaded.
@@ -96,6 +104,15 @@ class DataModel extends WlModelAbstract
    * @var string|null
    */
   public $text_office_address = null;
+
+  /**
+   * Authorization token.
+   * May be used instead of {@link \WellnessLiving\Wl\Business\DataModel::$k_business}.
+   *
+   * @get get
+   * @var string
+   */
+  public $text_token = '';
 
   /**
    * Business title.
