@@ -23,9 +23,9 @@ class CatalogCartModel extends WlModelAbstract
      *   <dt>bool <var>is_prorate_only</var></dt>
      *   <dd>Should client pay for the first period now or not.</dd>
      *   <dt>string <var>k_coupon</var></dt>
-     *   <dd>Coupon ID.</dd>
+     *   <dd>Coupon key.</dd>
      *   <dt>string <var>k_coupon_amount</var></dt>
-     *   <dd>Coupon amount ID.</dd>
+     *   <dd>Coupon amount key.</dd>
      *   <dt>string <var>m_prorate_custom</var></dt>
      *   <dd>Amount of money for prorate period. Should be passed only in a case of manual entering.</dd>
      * </dl></dd>
@@ -35,7 +35,7 @@ class CatalogCartModel extends WlModelAbstract
      *   <dt>string <var>f_tax</var></dt>
      *   <dd>Tax amount.</dd>
      *   <dt>string <var>k_tax</var></dt>
-     *   <dd>Tax identifiers.</dd>
+     *   <dd>Tax keys.</dd>
      * </dl></dd>
      * <dt>int [<var>f_discount_percent</var>]</dt>
      * <dd>Percent discount, applied to current item.</dd>
@@ -44,7 +44,7 @@ class CatalogCartModel extends WlModelAbstract
      * <dt>int <var>id_sale</var></dt>
      * <dd>Sale item type.</dd>
      * <dt>string <var>k_id</var></dt>
-     * <dd>Sale item ID.</dd>
+     * <dd>Sale item key.</dd>
      * <dt>string <var>k_shop_product_option</var></dt>
      * <dd>Shop product option. <tt>null</tt> if sale item has no options.</dd>
      * <dt>string [<var>m_discount_fix</var>]</dt>
