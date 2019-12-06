@@ -23,17 +23,7 @@ class PaymentModel extends WlModelAbstract
    *
    * Value of this field is gathered from payment form.
    *
-   * This is an indexed array where each element corresponds to a single selected payment method.
-   *
-   * Each source contains:<dl>
-   * <dt>string <var>f_amount</var></dt><dd>Amount of money to withdraw with this payment source.</dd>
-   * <dt>int <var>id_pay_method</var></dt><dd>Payment method ID. One of the {@link WlPayMethodSid} constants.</dd>
-   * <dt>bool <var>is_hide</var></dt><dd> Whether this payment method is hidden.
-   *   Payment methods will be hidden if they are not enabled for the business.</dd>
-   * <dt>bool [<var>is_success</var>=<tt>false</tt>]</dt><dd>Whether this source was successfully charged.</dd>
-   * <dt>string <var>s_index</var></dt><dd>
-   *   Index of this form. This corresponds the key this item is written in this array with.</dd>
-   * </dl>
+   * See {@link \WellnessLiving\Wl\Catalog\Payment\PaymentModel::$a_pay_form} for detailed description.
    *
    * @post post
    * @var array
@@ -129,6 +119,7 @@ class PaymentModel extends WlModelAbstract
   /**
    * Key of source mode. One of {@link \WellnessLiving\Wl\Book\WlBookModeSid} constants.
    *
+   * @get get
    * @post get
    * @var int
    */
