@@ -15,7 +15,7 @@ class ListModel extends WlModelAbstract
    *   <dt>string <var>s_title</var></dt>
    *   <dd>Payment method name.</dd>
    *   <dt>int <var>id_pay_method</var></dt>
-   *   <dd>Payment method type id.</dd>
+   *   <dd>Payment method type id. One of {@link WlPayMethodSid} constants.</dd>
    * </dl>
    *
    * @get result
