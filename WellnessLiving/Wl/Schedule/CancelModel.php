@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class CancelModel extends WlModelAbstract
 {
   /**
-   * Date of the schedule.
+   * Date of the session in UTC.
    *
    * <tt>null</tt> if not set yet.
    *

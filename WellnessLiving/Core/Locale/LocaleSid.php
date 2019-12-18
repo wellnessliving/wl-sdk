@@ -20,7 +20,7 @@ class LocaleSid
   public const CANADA = 2;
 
   /**
-   * United States of America.
+   * Cayman Islands.
    */
   public const CAYMAN = 5;
 
