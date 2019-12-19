@@ -43,6 +43,22 @@ class WellnessProgramModel extends WlModelAbstract
    * @var array[]
    */
   public $a_wellness_program;
+
+  /**
+   * ID of business.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_business = null;
+
+  /**
+   * ID of promotion.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_promotion = null;
 }
 
 ?>
