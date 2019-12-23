@@ -37,7 +37,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * List of asset layouts. Every element has next keys:
    * <dl>
    *   <dt>array <var>a_client</var></dt>
-   *   <dd>List of List of clients who occupy assets of class.</dd>
+   *   <dd>List of clients who occupy assets of class.</dd>
    *   <dt>string[] <var>a_resource_available</var></dt>
    *   <dd>Keys of assets.</dd>
    *   <dt>string <var>k_resource_layout</var></dt>
@@ -98,6 +98,8 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    *
    * Empty if notes are disabled to the session.
    *
+   * One of {@link \WlVisitNoteSid} constants.
+   *
    * @get result
    * @var int
    */
@@ -105,6 +107,8 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
 
   /**
    * Service type ID.
+   *
+   * One of {@link \WellnessLiving\WlServiceSid} constants.
    *
    * @get result
    * @var int
@@ -161,7 +165,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * Not empty for the case of an appointment only.
    *
    * @get result
-   * @tvar string
+   * @var string
    */
   public $k_service = '0';
 
