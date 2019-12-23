@@ -10,11 +10,11 @@ use WellnessLiving\WlModelAbstract;
 class CancelModel extends WlModelAbstract
 {
   /**
-   * Date of the schedule.
+   * Date of the session in UTC.
    *
    * <tt>null</tt> if not set yet.
    *
-   * @get get
+   * @post get
    * @var string|null
    */
   public $dt_date = null;
@@ -24,7 +24,7 @@ class CancelModel extends WlModelAbstract
    *
    * <tt>null</tt> if not set yet.
    *
-   * @get get
+   * @post get
    * @var string|null
    */
   public $k_appointment = null;
@@ -34,7 +34,7 @@ class CancelModel extends WlModelAbstract
    *
    * <tt>null</tt> if not set yet.
    *
-   * @get get
+   * @post get
    * @var string|null
    */
   public $k_class_period = null;
@@ -44,7 +44,7 @@ class CancelModel extends WlModelAbstract
    *
    * <tt>null</tt> if not set yet.
    *
-   * @get get
+   * @post get
    * @var string|null
    */
   public $uid = null;
