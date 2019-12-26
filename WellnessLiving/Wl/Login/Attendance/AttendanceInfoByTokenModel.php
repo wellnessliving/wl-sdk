@@ -37,7 +37,10 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * List of asset layouts. Every element has next keys:
    * <dl>
    *   <dt>array <var>a_client</var></dt>
-   *   <dd>List of clients who occupy assets of class.</dd>
+   *   <dd>
+   *     List of clients who occupy assets of class.
+   *     Keys - assets' keys; sub keys - asset index; values - user's name.
+   *   </dd>
    *   <dt>string[] <var>a_resource_available</var></dt>
    *   <dd>Keys of assets.</dd>
    *   <dt>string <var>k_resource_layout</var></dt>
