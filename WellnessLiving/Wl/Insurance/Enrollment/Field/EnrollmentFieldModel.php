@@ -1,13 +1,11 @@
 <?php
 
-namespace WellnessLiving\Wl\Insurance\Catalog;
-
-use WellnessLiving\WlModelAbstract;
+namespace WellnessLiving\Wl\Insurance\Enrollment\Field;
 
 /**
  * Retrieves a list of partner field for model.
  */
-class WellnessProgramFieldModel extends WlModelAbstract
+class EnrollmentFieldModel
 {
   /**
    * Partner field list.
