@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Insurance\Enrollment\Field;
 /**
  * Retrieves a list of partner field for model.
  */
-class EnrollmentFieldModel
+class EnrollmentFieldListModel
 {
   /**
    * Partner field list.
