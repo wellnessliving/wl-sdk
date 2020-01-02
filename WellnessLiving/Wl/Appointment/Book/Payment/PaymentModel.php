@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Appointment\Book\Payment;
 
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -17,18 +18,6 @@ class PaymentModel extends WlModelAbstract
    * @var array
    */
   public $a_book_data = [];
-
-  /**
-   * A list of payment sources.
-   *
-   * Value of this field is gathered from payment form.
-   *
-   * See {@link \WellnessLiving\Wl\Catalog\Payment\PaymentModel::$a_pay_form} for detailed description.
-   *
-   * @post post
-   * @var array
-   */
-  public $a_pay_form = [];
 
   /**
    * Information about any prepaid promotions.
@@ -56,50 +45,34 @@ class PaymentModel extends WlModelAbstract
    *
    * Fields - string in format <tt>id_purchase_item-k_id</tt>.
    * Values - array with next stricture:
-   * <ul>
-   *   <li>
-   *     <dt>array <var>a_tax</var></dt>
-   *     <dd>Contains information about taxes in the following format. A list of taxes to apply. The array keys are
-   *       k_tax IDs. Taxes are sorted by name, each element contains the following fields:<dl>
+   * <dl>
+   *   <dt>array <var>a_tax</var></dt>
+   *   <dd>Contains information about taxes in the following format. A list of taxes to apply.
+   *     The array keys are <tt>k_tax</tt> keys. Each element contains the following fields: <dl>
    *
-   *       <dt>float <var>f_value</var></dt>
-   *       <dd>Tax rate. Meaning of this field depends on value of <var>id_tax</var>.</dd>
+   *       <dt>float <var>m_tax</var></dt>
+   *       <dd>Tax rate.</dd>
    *
-   *       <dt>int <var>id_tax</var></dt>
-   *       <dd>Type of the tax. One of {@link WlTaxSid} constants.</dd>
-   *
-   *       <dt>int <var>k_tax</var></dt>
-   *       <dd>ID of the tax.</dd>
-   *
-   *       <dt>string <var>s_tax</var></dt>
+   *       <dt>string <var>text_title</var></dt>
    *       <dd>Name of the tax.</dd>
-   *
-   *       <dt>string <var>f_tax</var></dt>
-   *       <dd>Amount of tax applied by this rule.
-   *
-   *       <dt>string <var>f_tax_discount</var></dt>
-   *       <dd>Amount of applied tax considering all discounts.</dd>
-   *
-   *       <dt>string <var>f_tax_discount_login</var></dt>
-   *       <dd>Amount of applied tax considering only discount via client/member type.</dd>
-   *
-   *       <tt>null</tt> if tax rules are not loaded yet.
-   *       </dd>
    *     </dl>
-   *   </li>
-   *   <li>
-   *     String <tt>m_discount</tt>
-   *     The value of the discount used for purchase.
-   *   </li>
-   *   <li>
-   *     String <tt>m_pay</tt>
-   *     The payment for the promotion or single visit without taxes.
-   *   </li>
-   *   <li>
-   *     String <tt>m_price</tt>
-   *     The price of the promotion or single visit.
-   *   </li>
-   * </ul>
+   *   </dd>
+   *
+   *   <dt>string <var>id_purchase_item</var></dt>
+   *   <dd>Purchase item ID. One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constant.</dd>
+   *
+   *   <dt>string <var>k_id</var></dt>
+   *   <dd>The value of the discount used for purchase.</dd>
+   *
+   *   <dt>string <var>m_discount</var></dt>
+   *   <dd>The value of the discount used for purchase.</dd>
+   *
+   *   <dt>string <var>m_pay</var></dt>
+   *   <dd>The payment for the promotion or single visit without taxes.</dd>
+   *
+   *   <dt>string <var>m_price</var></dt>
+   *   <dd>The price of the promotion or single visit.</dd>
+   * </dl>
    *
    * @get result
    * @var array
