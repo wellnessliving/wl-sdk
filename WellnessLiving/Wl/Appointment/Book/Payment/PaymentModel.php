@@ -20,6 +20,18 @@ class PaymentModel extends WlModelAbstract
   public $a_book_data = [];
 
   /**
+   * A list of payment sources.
+   *
+   * Value of this field is gathered from payment form.
+   *
+   * See {@link \WellnessLiving\Wl\Catalog\Payment\PaymentModel::$a_pay_form} for detailed description.
+   *
+   * @post post
+   * @var array
+   */
+  public $a_pay_form = [];
+
+  /**
    * Information about any prepaid promotions.
    *
    *   <dt>string <var>i_limit</var></dt>
