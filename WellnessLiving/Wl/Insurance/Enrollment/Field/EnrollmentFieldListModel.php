@@ -2,10 +2,12 @@
 
 namespace WellnessLiving\Wl\Insurance\Enrollment\Field;
 
+use WellnessLiving\WlModelAbstract;
+
 /**
  * Retrieves a list of partner field for model.
  */
-class EnrollmentFieldListModel
+class EnrollmentFieldListModel extends WlModelAbstract
 {
   /**
    * Partner field list.
@@ -56,6 +58,7 @@ class EnrollmentFieldListModel
    * @var array
    */
   public $a_field_list;
+
   /**
    * Business key.
    *
