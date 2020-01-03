@@ -187,8 +187,7 @@ class PaymentModel extends WlModelAbstract
   /**
    * Discount code to be applied to purchase.
    *
-   * @get get
-   * @post get
+   * @post post
    * @var string
    */
   public $text_discount_code = '';
