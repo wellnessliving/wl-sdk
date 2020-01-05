@@ -6,13 +6,49 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * Retrieves a list of partner field for model.
+ *
+ * Use the GET method to load list of fields.
+ *
+ * Use the POST method to validate the fields before sending to payment API.
  */
 class EnrollmentFieldListModel extends WlModelAbstract
 {
   /**
+   * Reimbursement account information.
+   *
+   * Keys - field key.
+   * Values - value entered by user.
+   *
+   * Validation is performed vid POST method.
+   *
+   * @post
+   * @var array
+   */
+  public $a_account;
+
+  /**
+   * List of fields that the user has filled in for enrollment.
+   *
+   * Keys - field key.
+   * Values - value entered by user.
+   *
+   * Validation is performed via POST method.
+   *
+   * @post
+   * @var array
+   */
+  public $a_field;
+
+  /**
    * Partner field list.
    * <dl>
-   *  <dt>array <var>a_field_list</var></dt>
+   *  <dt>array <var>a_account</var></dt>
+   *  <dd>
+   *    List of reimbursement account fields.
+   *    If the program does not require reimbursement, this list will be empty.
+   *    The description of the list of fields is similar to the <var>a_field</var>.
+   *  </dd>
+   *  <dt>array <var>a_field</var></dt>
    *  <dd>
    *    Partner field info.
    *    <dl>
@@ -36,8 +72,8 @@ class EnrollmentFieldListModel extends WlModelAbstract
    *      <dt>bool <var>is_required</var></dt>
    *      <dd>Whether this field is required.</dd>
    *
-   *      <dt>string <var>k_partner</var></dt>
-   *      <dd>Partner key.</dd>
+   *      <dt>string <var>k_field</var></dt>
+   *      <dd>Field key.</dd>
    *
    *      <dt>string <var>s_regular</var></dt>
    *      <dd>Regular expression validation for field.</dd>
@@ -63,6 +99,7 @@ class EnrollmentFieldListModel extends WlModelAbstract
    * Business key.
    *
    * @get get
+   * @post get
    * @var string
    */
   public $k_business;
@@ -71,6 +108,7 @@ class EnrollmentFieldListModel extends WlModelAbstract
    * Wellness Program key.
    *
    * @get get
+   * @post get
    * @var string
    */
   public $k_wellness_program;
