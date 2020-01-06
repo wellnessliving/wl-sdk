@@ -29,7 +29,7 @@ class ComboboxModel extends WlModelAbstract
    * Locale ID that is used as a filter.
    *
    * <tt>0</tt> means to search in all locales.
-   * Locales are listed in {@link \Core\Locale\LocaleSid}
+   * Locales are listed in {@link \Core\Locale\LocaleSid}.
    *
    * @get get
    * @var int
