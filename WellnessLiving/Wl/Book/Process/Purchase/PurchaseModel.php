@@ -23,7 +23,7 @@ class PurchaseModel extends WlModelAbstract
    *   </li>
    *   <li>Number [<tt>i_session</tt>] Number of sessions which is booked simultaneously.</li>
    *   <li>Number [<tt>id_program_category</tt>] Actual only for promotions. ID of promotion program category.
-   *     One of {@link RsProgramCategorySid} constants.
+   *     One of {@link WlProgramCategorySid} constants.
    *   </li>
    *   <li>Number [<tt>id_program_type</tt>] Actual only for promotions. ID of promotion program type.
    *     One of {@link WlProgramTypeSid} constants.
