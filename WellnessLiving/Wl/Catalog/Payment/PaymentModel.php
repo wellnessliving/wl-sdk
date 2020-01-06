@@ -23,6 +23,17 @@ class PaymentModel extends WlModelAbstract
    *     Additional configuration. May contain next keys:
    *     <dl>
    *       <dt>
+   *         array [<var>a_wellness_program</var>]
+   *       </dt>
+   *       <dd>
+   *          <dl>
+   *            <dt></dt>
+   *            <dd></dd>
+   *            <dt></dt>
+   *            <dd></dd>
+   *          </dl>
+   *       </dd>
+   *       <dt>
    *         string [<var>dt_prorate</var>]
    *       </dt>
    *       <dd>
@@ -79,6 +90,12 @@ class PaymentModel extends WlModelAbstract
    *       <dt>
    *         string [<var>k_staff</var>]
    *       </dt>
+   *       <dt>
+   *         string [<var>k_wellness_program</var>]
+   *       </dt>
+   *       <dd>
+   *
+   *       </dd>
    *       <dd>
    *         Staff member key. For appointment tips only.
    *       </dd>
