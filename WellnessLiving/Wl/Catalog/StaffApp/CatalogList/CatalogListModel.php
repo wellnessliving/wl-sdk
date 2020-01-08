@@ -35,7 +35,7 @@ class CatalogListModel extends WlModelAbstract
    */
   public $a_shop_product = [];
 
-  /**ss
+  /**
    * Whether staff has access to the Client Add page or not.
    *
    * @get result
