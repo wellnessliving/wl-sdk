@@ -9,21 +9,21 @@ use WellnessLiving\WlModelAbstract;
  */
 class TermModel extends WlModelAbstract
 {
-	/**
-	 * ID of current business.
-	 *
-	 * @post get
-	 * @var string
-	 */
-	public $k_business = '0';
+  /**
+   * ID of current business.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_business = '0';
 
-	/**
-	 * ID of a user to show information for.
-	 *
-	 * @post get
-	 * @var string
-	 */
-	public $uid = '0';
+  /**
+   * ID of a user to show information for.
+   *
+   * @get get
+   * @var string
+   */
+  public $uid = '0';
 }
 
 ?>
