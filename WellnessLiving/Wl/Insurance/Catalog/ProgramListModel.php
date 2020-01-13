@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * Retrieves a list of programs info.
  */
-class ProgramModel extends WlModelAbstract
+class ProgramListModel extends WlModelAbstract
 {
   /**
    * List of active programs.
