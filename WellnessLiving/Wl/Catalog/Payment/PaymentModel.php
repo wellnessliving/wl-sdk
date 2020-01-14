@@ -106,7 +106,7 @@ class PaymentModel extends WlModelAbstract
    *
    *          <p>Use the following models to work with this type of promotion:</p>
    *          <ul>
-   *            <li>{@link \WellnessLiving\Wl\Insurance\Catalog\ProgramModel} to obtain list of active programs.</li>
+   *            <li>{@link \WellnessLiving\Wl\Insurance\Catalog\ProgramListModel} to obtain list of active programs.</li>
    *            <li>{@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} to get and validate fields for a given program.</li>
    *          </ul>
    *       </dd>

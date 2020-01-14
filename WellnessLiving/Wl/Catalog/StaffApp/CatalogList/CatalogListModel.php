@@ -21,7 +21,7 @@ class CatalogListModel extends WlModelAbstract
    *      Program ID. Set for promotions.
    *      <p>If id_program = {@link \WellnessLiving\WlProgramSid::INSURANCE_MEMBERSHIP} then, use:</p>
    *      <ul>
-   *        <li>{@link \WellnessLiving\Wl\Insurance\Catalog\ProgramModel} to obtain list of active programs.</li>
+   *        <li>{@link \WellnessLiving\Wl\Insurance\Catalog\ProgramListModel} to obtain list of active programs.</li>
    *        <li>{@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} to get and validate fields for a given program.</li>
    *        <li>{@link \WellnessLiving\Wl\Catalog\Payment\PaymentModel} for program purchase.</li>
    *      </ul>
