@@ -7,6 +7,9 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * Information about payments for an appointment.
+ * For send post query use {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentPostModel} model.
+ *
+ * @see \WellnessLiving\Wl\Appointment\Book\Payment\PaymentPostModel
  */
 class PaymentModel extends WlModelAbstract
 {
