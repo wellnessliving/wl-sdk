@@ -11,6 +11,24 @@ use WellnessLiving\WlModelAbstract;
 class ImageUploadModel extends WlModelAbstract
 {
   /**
+   * Height of thumbnail image.
+   * <tt>null</tt> until loaded from server.
+   *
+   * @put result
+   * @var int|null
+   */
+  public $i_thumbnail_height = null;
+
+  /**
+   * Width of thumbnail image.
+   * <tt>null</tt> until loaded from server.
+   *
+   * @put result
+   * @var int|null
+   */
+  public $i_thumbnail_width = null;
+
+  /**
    * Key of image within {@link ImageUploadModel::$s_class}.
    *
    * @put get
@@ -33,6 +51,15 @@ class ImageUploadModel extends WlModelAbstract
    * @var string
    */
   public $s_command = '';
+
+  /**
+   * URL of thumbnail of the image.
+   * <tt>null</tt> until loaded from server.
+   *
+   * @put result
+   * @var string
+   */
+  public $url_thumbnail = null;
 
   /**
    * Forms command to delete image.
