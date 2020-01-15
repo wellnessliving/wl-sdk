@@ -59,7 +59,7 @@ class WlModelAbstract
    */
   private function _fileCheck(&$x_data):bool
   {
-    if(is_object($x_data)&&($x_data instanceof WLFile))
+    if(is_object($x_data)&&($x_data instanceof WlFile))
     {
       $x_data = curl_file_create($x_data->name(),$x_data->mime(),$x_data->postname());
       return true;

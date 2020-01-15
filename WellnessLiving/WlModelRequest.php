@@ -165,7 +165,7 @@ class WlModelRequest
         $a_result[strtolower($s_key)] = $x_value;
         continue;
       }
-      if(is_object($x_value)&&($x_value instanceof WLFile))
+      if(is_object($x_value)&&($x_value instanceof WlFile))
       {
         $a_result[strtolower($s_key)] = hash_file('sha256',$x_value->name(),true);
         continue;

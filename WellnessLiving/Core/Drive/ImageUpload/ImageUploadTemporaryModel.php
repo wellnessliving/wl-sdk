@@ -2,12 +2,13 @@
 
 namespace WellnessLiving\Core\Drive\ImageUpload;
 
-use WellnessLiving\WLFile;
+use WellnessLiving\WlFile;
 use WellnessLiving\WlModelAbstract;
 
 /**
  * Tool to upload a raw image into server.
- * Then this image will be cut, and original will be remover.
+ *
+ * Then you must save this image by {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadModel}.
  */
 class ImageUploadTemporaryModel extends WlModelAbstract
 {
@@ -16,7 +17,7 @@ class ImageUploadTemporaryModel extends WlModelAbstract
    * <tt>null</tt> until set.
    *
    * @post post
-   * @var WLFile|null
+   * @var WlFile|null
    */
   public $f_image = null;
 
@@ -93,15 +94,24 @@ class ImageUploadTemporaryModel extends WlModelAbstract
   public $is_resize = null;
 
   /**
-   * Image link.
+   * Key of image within {@link ImageUploadTemporaryModel::$s_class}.
    *
-   * Must have the next format: <tt>{Class name}-{unique key}</tt>.
-   * For example, for photo of a user with key "4" use <tt>PassportLoginImage-4</tt>.
+   * For example, for user's photo specify user's key here.
    *
    * @post get
    * @var string
    */
-  public $s_link = '';
+  public $k_id = '';
+
+  /**
+   * Name of class that manages this image.
+   *
+   * For example, for user's photo specify string <tt>PassportLoginImage</tt> here.
+   *
+   * @post get
+   * @var string
+   */
+  public $s_class = '';
 
   /**
    * URL to resized and rotated image in file storage.

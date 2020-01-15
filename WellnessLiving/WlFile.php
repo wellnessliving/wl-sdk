@@ -5,7 +5,7 @@ namespace WellnessLiving;
 /**
  * File to be sent with a model.
  */
-class WLFile
+class WlFile
 {
   /**
    * Mimetype of the file. <tt>null</tt> if not set.
