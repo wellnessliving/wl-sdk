@@ -80,6 +80,16 @@ class ElementModel extends WlModelAbstract
   public $dt_start = null;
 
   /**
+   * Special instruction for event.
+   *
+   * <tt>null</tt> if not loaded yet.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $html_special = null;
+
+  /**
    * Session count.
    *
    * <tt>null</tt> if not set yet.
@@ -187,16 +197,6 @@ class ElementModel extends WlModelAbstract
    * @var string|null
    */
   public $xml_description = null;
-
-  /**
-   * Special instruction for event.
-   *
-   * <tt>null</tt> if not loaded yet.
-   *
-   * @get result
-   * @var string|null
-   */
-  public $xml_special_instruction = null;
 }
 
 ?>
