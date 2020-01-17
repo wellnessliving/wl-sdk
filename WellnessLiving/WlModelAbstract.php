@@ -2,6 +2,8 @@
 
 namespace WellnessLiving;
 
+use ReflectionClass;
+use ReflectionException;
 use WellnessLiving\Config\WlConfigAbstract;
 
 /**
@@ -45,6 +47,36 @@ class WlModelAbstract
     $o_config->assertValid();
     $this->resource(); // Just to check that resource is set correctly.
     $this->_o_config=$o_config;
+  }
+
+  /**
+   * Checks if posted data contains files to be uploaded.
+   *
+   * Converts found files to objects of <tt>CURLFile</tt> class.
+   *
+   * @param mixed $x_data Posted data.
+   * @return bool <tt>true</tt> if posted data contains at least 1 file; <tt>false</tt> otherwise.
+   */
+  private function _fileCheck(&$x_data):bool
+  {
+    if(is_object($x_data)&&($x_data instanceof WlFile))
+    {
+      $x_data = curl_file_create($x_data->name(),$x_data->mime(),$x_data->postname());
+      return true;
+    }
+
+    if(!is_array($x_data))
+      return false;
+
+    $is_file = false;
+    foreach($x_data as &$x_value)
+    {
+      if($this->_fileCheck($x_value))
+        $is_file = true;
+    }
+    unset($x_value);
+
+    return $is_file;
   }
 
   /**
@@ -116,9 +148,9 @@ class WlModelAbstract
 
     try
     {
-      $o_class = new \ReflectionClass($s_class);
+      $o_class = new ReflectionClass($s_class);
     }
-    catch (\ReflectionException $e)
+    catch (ReflectionException $e)
     {
       throw new WlAssertException([
         'e' => $e,
@@ -317,6 +349,10 @@ class WlModelAbstract
     $s_cookie = $this->_o_cookie->toHeader();
     if($s_cookie)
       $o_request->a_header_request['Cookie'] = $s_cookie;
+
+    // If posted data contains files, type of request content may be only 'multipart/form-data'.
+    if($this->_fileCheck($a_post))
+      $o_request->a_header_request['Content-Type'] = 'multipart/form-data';
 
     if($s_method==='put')
     {
