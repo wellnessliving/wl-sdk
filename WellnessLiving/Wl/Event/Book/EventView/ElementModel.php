@@ -110,6 +110,17 @@ class ElementModel extends WlModelAbstract
   public $is_book = null;
 
   /**
+   * <tt>true</tt> if there are no free spots in the event; booking is available only into wait list.
+   * <tt>false</tt> otherwise.
+   *
+   * <tt>null</tt> until got from server.
+   *
+   * @get result
+   * @var bool|null
+   */
+  public $is_full = null;
+
+  /**
    * ID of session which should be used to go to booking wizard.
    *
    * <tt>null</tt> if not set yet.
