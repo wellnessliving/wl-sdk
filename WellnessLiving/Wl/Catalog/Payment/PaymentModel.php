@@ -203,7 +203,11 @@ class PaymentModel extends WlModelAbstract
   public $a_item = [];
 
   /**
-   * A list of payment sources. Every element must contain next keys:
+   * A list of payment sources.
+   * Key is string representation of one of the {@link WlPayMethodSid} constants.
+   * For example, if payment method is {@link WlPayMethodSid::ECOMMERCE}, specify string <tt>ecommerce</tt>.
+   *
+   * Values contain next keys:
    * <dl>
    *   <dt>
    *     array [<var>a_pay_card</var>]
