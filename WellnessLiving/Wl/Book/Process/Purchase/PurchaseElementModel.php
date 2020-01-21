@@ -58,14 +58,6 @@ class PurchaseElementModel extends WlModelAbstract {
   public $m_tax = null;
 
   /**
-   * Number of sessions which are booked simultaneously.
-   *
-   * @get get
-   * @var int
-   */
-  public $i_session = 0;
-
-  /**
    * ID of purchase item type. Member of {@link \RsPurchaseItemSid}.
    *
    * @get get
@@ -75,7 +67,7 @@ class PurchaseElementModel extends WlModelAbstract {
 
   /**
    * ID of certain purchase item in database.
-   * Name of table in database depends on {@link \Wl\Book\Process\ProcessPurchaseElementApi::$id_purchase_item}.
+   * Name of table in database depends on {@link \WellnessLiving\Wl\Book\Process\Purchase\PurchaseElementModel::$id_purchase_item}.
    *
    * @get get
    * @var string
