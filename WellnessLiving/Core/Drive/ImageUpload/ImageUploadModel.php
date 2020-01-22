@@ -14,6 +14,7 @@ class ImageUploadModel extends WlModelAbstract
    * Height of thumbnail image.
    * <tt>null</tt> until loaded from server.
    *
+   * @get result
    * @put result
    * @var int|null
    */
@@ -23,14 +24,25 @@ class ImageUploadModel extends WlModelAbstract
    * Width of thumbnail image.
    * <tt>null</tt> until loaded from server.
    *
+   * @get result
    * @put result
    * @var int|null
    */
   public $i_thumbnail_width = null;
 
   /**
+   * <tt>true</tt> if image deleting is allowed; <tt>false</tt> otherwise.
+   * <tt>null</tt> until loaded from server.
+   *
+   * @get result
+   * @var bool|null
+   */
+  public $is_delete_allow = null;
+
+  /**
    * Key of image within {@link ImageUploadModel::$s_class}.
    *
+   * @get get
    * @put get
    * @var string
    */
@@ -39,6 +51,7 @@ class ImageUploadModel extends WlModelAbstract
   /**
    * Name of class that manages this image.
    *
+   * @get get
    * @put get
    * @var string
    */
@@ -56,6 +69,7 @@ class ImageUploadModel extends WlModelAbstract
    * URL of thumbnail of the image.
    * <tt>null</tt> until loaded from server.
    *
+   * @get result
    * @put result
    * @var string
    */
