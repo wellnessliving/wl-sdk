@@ -66,12 +66,21 @@ class ImageUploadModel extends WlModelAbstract
   public $s_command = '';
 
   /**
+   * URL of the image that should be shown in a case image is not uploaded.
+   * <tt>null</tt> until loaded from server.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $url_empty = null;
+
+  /**
    * URL of thumbnail of the image.
    * <tt>null</tt> until loaded from server.
    *
    * @get result
    * @put result
-   * @var string
+   * @var string|null
    */
   public $url_thumbnail = null;
 
