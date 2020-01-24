@@ -4,7 +4,6 @@ namespace WellnessLiving\Wl\Book\Process\Purchase;
 
 use WellnessLiving\WlModelAbstract;
 
-
 /**
  * Model of 1 purchase item.
  */

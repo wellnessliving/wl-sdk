@@ -20,6 +20,21 @@ class ElementModel extends WlModelAbstract
   public $a_class_logo = null;
 
   /**
+   * Information for a bulk of events.
+   *
+   * Received only if {@link ElementModel::$s_event} has been specified. In this case other fields are not receiver.
+   *
+   * Keys of this array - event keys.
+   * Values of this array - sub arrays with keys that corresponds to all fields in this table that may be received.
+   *
+   * <tt>null</tt> until received from server.
+   *
+   * @get result
+   * @var array|null
+   */
+  public $a_event = null;
+
+  /**
    * List of event sessions.
    *
    * <tt>null</tt> if not loaded yet.
@@ -132,6 +147,7 @@ class ElementModel extends WlModelAbstract
 
   /**
    * Event identifier.
+   * You can specify {@Link ElementModel::$s_event} instead to get information for a bulk of events.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -180,6 +196,15 @@ class ElementModel extends WlModelAbstract
    * @var string|null
    */
   public $s_deny_reason = null;
+
+  /**
+   * List of events keys serialized with JSON.
+   * Specify instead of {@link ElementModel::$k_event} to get information for a bulk of events.
+   *
+   * @get get
+   * @var string
+   */
+  public $s_event = '';
 
   /**
    * Title of the event.
