@@ -21,7 +21,7 @@ class PurchaseElementModel extends WlModelAbstract
   /**
    * Number of sessions which are booked simultaneously.
    *
-   * @get
+   * @get get
    * @var int
    */
   public $i_session = 0;
