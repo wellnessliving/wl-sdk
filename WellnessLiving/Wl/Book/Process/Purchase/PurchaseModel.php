@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Book\Process\Purchase;
 
+use WellnessLiving\Wl\Book\WlBookModeSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -90,6 +91,14 @@ class PurchaseModel extends WlModelAbstract
    * @var string|null
    */
   public $k_business = null;
+
+  /**
+   * WellnessLiving mode type. One of {@link WlBookModeSid} constants.
+   *
+   * @get get
+   * @var int
+   */
+  public $id_mode =  WlBookModeSid::APP_FRONTEND;
 
   /**
    * ID of a user who is making the book.
