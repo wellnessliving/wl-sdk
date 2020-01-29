@@ -36,6 +36,7 @@ class CouponModel extends WlModelAbstract
   /**
    * Amount of gift card.
    *
+   * @get result
    * @var string
    */
   public $m_amount;
