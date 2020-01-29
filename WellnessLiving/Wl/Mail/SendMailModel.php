@@ -18,12 +18,20 @@ class SendMailModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
+   * Message recipient.
+   *
+   * @post post
+   * @var string
+   */
+  public $s_subject = '';
+
+  /**
    * Business mail.
    *
    * @post post
    * @var string
    */
-  public $s_business_mail = '';
+  public $text_business_mail = '';
 
   /**
    * Business name.
@@ -31,7 +39,7 @@ class SendMailModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $s_business_name = '';
+  public $text_business_name = '';
 
   /**
    * Business reply.
@@ -39,7 +47,7 @@ class SendMailModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $s_business_reply = '';
+  public $text_business_reply = '';
 
   /**
    * Company name.
@@ -47,7 +55,7 @@ class SendMailModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $s_campaign = '';
+  public $text_campaign = '';
 
   /**
    * Message recipient.
@@ -55,15 +63,7 @@ class SendMailModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $s_mail = '';
-
-  /**
-   * Message recipient.
-   *
-   * @post post
-   * @var string
-   */
-  public $s_subject = '';
+  public $text_mail = '';
 
   /**
    * Message content.
