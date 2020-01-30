@@ -18,14 +18,6 @@ class SendMailModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Message recipient.
-   *
-   * @post post
-   * @var string
-   */
-  public $s_subject = '';
-
-  /**
    * Business mail.
    *
    * @post post
@@ -64,6 +56,14 @@ class SendMailModel extends WlModelAbstract
    * @var string
    */
   public $text_mail = '';
+
+  /**
+   * Message recipient.
+   *
+   * @post post
+   * @var string
+   */
+  public $text_subject = '';
 
   /**
    * Message content.
