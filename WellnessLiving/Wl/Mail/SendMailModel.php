@@ -23,7 +23,7 @@ class SendMailModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $text_business_mail = '';
+  public $s_business_mail = '';
 
   /**
    * Business name.
@@ -31,7 +31,7 @@ class SendMailModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $text_business_name = '';
+  public $s_business_name = '';
 
   /**
    * Business reply.
@@ -39,7 +39,7 @@ class SendMailModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $text_business_reply = '';
+  public $s_business_reply = '';
 
   /**
    * Company name.
@@ -47,7 +47,7 @@ class SendMailModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $text_campaign = '';
+  public $s_campaign = '';
 
   /**
    * Message recipient.
@@ -55,7 +55,7 @@ class SendMailModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $text_mail = '';
+  public $s_mail = '';
 
   /**
    * Message recipient.
@@ -63,7 +63,7 @@ class SendMailModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $text_subject = '';
+  public $s_subject = '';
 
   /**
    * Message content.
