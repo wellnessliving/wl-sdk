@@ -124,7 +124,7 @@ class ScheduleListModel extends WlModelAbstract
    *     string <var>k_service</var>
    *   </dt>
    *   <dd>
-   *     For appointments of service - service service.
+   *     The appointment key. This is the type of appointment, while k_appointment is the specific instance.
    *     For other cases - always <tt>0</tt>.
    *   </dd>
    *   <dt>
