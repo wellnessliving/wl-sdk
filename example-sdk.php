@@ -2,13 +2,11 @@
 
 namespace WlSdkExample;
 
-use DateTime;
 use WellnessLiving\Core\Passport\Login\Enter\EnterModel;
 use WellnessLiving\Core\Passport\Login\Enter\NotepadModel;
-use WellnessLiving\Wl\Field\WlFieldGeneralSid;
-use WellnessLiving\Wl\Field\WlFieldTypeSid;
-use WellnessLiving\Wl\Profile\Edit\EditModel;
-use WellnessLiving\Wl\Schedule\ClassView\ClassViewModel;
+use WellnessLiving\Wl\Report\DataModel;
+use WellnessLiving\Wl\Report\WlReportGroupSid;
+use WellnessLiving\Wl\Report\WlReportSid;
 use WellnessLiving\WlAssertException;
 use WellnessLiving\WlUserException;
 
@@ -21,61 +19,32 @@ try
 
   // Retrieve notepad (it is a separate step of user sign in process)
   $o_notepad=new NotepadModel($o_config);
-  $o_notepad->s_login='1449191219@mail.com';
+  $o_notepad->s_login='/** Put your login here */';
   $o_notepad->get();
 
   // Sign in a user
   $o_enter=new EnterModel($o_config);
   $o_enter->cookieSet($o_notepad->cookieGet()); // Keep cookies to keep session.
-  $o_enter->s_login='1449191219@mail.com';
+  $o_enter->s_login='/** Put your login here */';
   $o_enter->s_notepad=$o_notepad->s_notepad;
-  $o_enter->s_password=$o_notepad->hash('1111');
+  $o_enter->s_password=$o_notepad->hash('/** Put your password here */');
   $o_enter->post();
 
-  $o_user = new EditModel($o_config);
-  $o_user->cookieSet($o_notepad->cookieGet());
-  $o_user->k_business = '1';
-  $o_user->uid = '15';
-  $o_user->get();
+  $o_report=new DataModel($o_config);
+  $o_report->cookieSet($o_notepad->cookieGet()); // Keep cookies to keep session.
+  $o_report->id_report_group=WlReportGroupSid::DAY;
+  $o_report->id_report=WlReportSid::PURCHASE_ITEM_ACCRUAL_CASH;
+  $o_report->k_business='/** Put your business ID here */'; // Put your business key here
+  $o_report->filterSet([
+    'dt_date' => '2018-08-21'
+  ]);
+  $o_report->get();
 
-  $dl_birthday = null;
-  foreach($o_user->a_structure as $a_field)
+  $i=0;
+  foreach($o_report->a_data['a_row'] as $a_row)
   {
-    if($a_field['id_field_type']==WlFieldTypeSid::GENERAL&&$a_field['id_field_general']==WlFieldGeneralSid::BIRTHDAY)
-    {
-      $dl_birthday = $a_field['x_value'];
-      break;
-    }
-  }
-
-  if($dl_birthday&&$dl_birthday!=='0000-00-00')
-  {
-    $dt_now = new DateTime('now');
-    $dt_birth = new DateTime($dl_birthday);
-
-    $i_age = $dt_now->diff($dt_birth)->y;
-  }
-  else
-  {
-    $i_age = null;
-  }
-
-  $o_class = new ClassViewModel($o_config);
-  $o_class->cookieSet($o_notepad->cookieGet());
-  $o_class->dt_date = '2020-02-06 06:00:00';
-  $o_class->k_class_period = '20';
-  $o_class->uid = '15';
-  $o_class->get();
-
-  if(
-    !$o_class->a_class['can_book']&&
-    $o_class->a_class['i_age_from']!=null&&
-    $o_class->a_class['i_age_to']!=null&&
-    ($i_age==null||$i_age>$o_class->a_class['i_age_to']||$i_age<$o_class->a_class['i_age_from'])
-  )
-  {
-    echo 'Your age is '.$i_age." years\n";
-    echo 'Allowed age is from '.$o_class->a_class['i_age_from'].' to '.$o_class->a_class['i_age_to']." years\n";
+    $i++;
+    echo $i.'. '.$a_row['dt_date'].' '.$a_row['m_paid']['m_amount'].' '.$a_row['o_user']['text_name'].' '.$a_row['s_item']."\r\n";
   }
 }
 catch(WlAssertException $e)
@@ -85,7 +54,7 @@ catch(WlAssertException $e)
 }
 catch(WlUserException $e)
 {
-  echo $e;
+  echo $e->getMessage()."\n";
   return;
 }
 
