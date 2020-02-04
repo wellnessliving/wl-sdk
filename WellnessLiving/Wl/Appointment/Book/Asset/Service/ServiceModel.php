@@ -12,6 +12,15 @@ class ServiceModel extends WlModelAbstract
   /**
    * List of busy assets.
    *
+   * Keys of 1st level - asset keys; keys 2nd level - asset numbers;
+   * values - keys of appointment books that occupy this asset.
+   *
+   * For example, if you want to check if 10th asset with key '15' is busy,
+   * you have to check if <tt>a_resource_busy['15']['10']</tt> is not empty.
+   *
+   * If you are making rebook of appointment check value of <tt>a_resource_busy['15']['10']</tt>.
+   * If it is equal to key of your current appointment book, consider it available.
+   *
    * @get result
    * @var array
    */
