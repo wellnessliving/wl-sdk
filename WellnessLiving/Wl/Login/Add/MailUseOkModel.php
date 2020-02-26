@@ -11,6 +11,22 @@ use WellnessLiving\WlModelAbstract;
 class MailUseOkModel extends WlModelAbstract
 {
   /**
+   * The list of fields missing information.
+   * Each element is an array containing the following data:<dl>
+   *   <dt>string <var>html_message</var></dt>
+   *   <dd>The error message.</dd>
+   *   <dt>string|null <var>s_field</var></dt>
+   *   <dd>The name of the field which is missing information.
+   *     Given in the format 'k_field.name'.
+   *   </dd>
+   * </dl>
+   *
+   * @post result
+   * @var array
+   */
+  public $a_error = [];
+
+  /**
    * Whether this is a lead. <tt>true</tt> if this is the lead. <tt>false</tt> otherwise.
    *
    * @post post
