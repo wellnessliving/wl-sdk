@@ -7,6 +7,9 @@ use WellnessLiving\WlModelAbstract;
 /**
  * Registers existing user in current business.
  * If user already member of current business then do nothing.
+ *
+ * After a profile edit there can be a delay while the data replicates to our caches where you will receive
+ * a 'profile-field-empty' status code. This delay is less than 20 seconds in most cases.
  */
 class MailUseOkModel extends WlModelAbstract
 {
@@ -30,7 +33,7 @@ class MailUseOkModel extends WlModelAbstract
    * Whether this is a lead. <tt>true</tt> if this is the lead. <tt>false</tt> otherwise.
    *
    * @post post
-   * @var string
+   * @var bool
    */
   public $is_lead = 0;
 
@@ -67,7 +70,7 @@ class MailUseOkModel extends WlModelAbstract
   public $s_message = '';
 
   /**
-   * User ID.
+   * User key.
    *
    * @post post
    * @var string
