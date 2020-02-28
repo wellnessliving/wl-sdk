@@ -43,7 +43,7 @@ class RegionModel extends WlModelAbstract
    * @get get
    * @var bool
    */
-  public $is_locale_all = false;
+  public $is_locale_all = 0;
 }
 
 ?>
