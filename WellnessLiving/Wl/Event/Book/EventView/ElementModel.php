@@ -36,6 +36,60 @@ class ElementModel extends WlModelAbstract
 
   /**
    * List of event sessions.
+   * List of event sessions. Every element has next keys:
+   * <dl>
+   *   <dt>
+   *     array <var>a_day</var>
+   *   </dt>
+   *   <dd>
+   *     List of week days when session is occurred.
+   *     Keys - numbers of week day (0 - Sunday, 6 - Saturday); values - always <tt>true</tt>.
+   *   </dd>
+   *   <dt>
+   *     array[] <var>a_staff</var>
+   *   </dt>
+   *   <dd>
+   *     List of staff who conduct session. Every element has next keys:
+   *     <dl>
+   *       <dt>string <var>k_staff</var></dt>
+   *       <dd>Staff key.</dd>
+   *       <dt>string <var>s_name</var></dt>
+   *       <dd>Staff name.</dd>
+   *       <dt>string <var>s_surname</var></dt>
+   *       <dd>First letter of staff surname.</dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>
+   *     string <var>dt_end</var>
+   *   </dt>
+   *   <dd>
+   *     End date of session.
+   *   </dd>
+   *   <dt>
+   *     string <var>dt_start</var>
+   *   </dt>
+   *   <dd>
+   *     Start date of session.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_duration</var>
+   *   </dt>
+   *   <dd>
+   *     Duration of class in seconds.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_location</var>
+   *   </dt>
+   *   <dd>
+   *     Location title.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_time</var>
+   *   </dt>
+   *   <dd>
+   *     Time when session is occurred.
+   *    </dd>
+   * </dl>
    *
    * <tt>null</tt> if not loaded yet.
    *
