@@ -35,7 +35,6 @@ class ElementModel extends WlModelAbstract
   public $a_event = null;
 
   /**
-   * List of event sessions.
    * List of event sessions. Every element has next keys:
    * <dl>
    *   <dt>
@@ -43,7 +42,7 @@ class ElementModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     List of week days when session is occurred.
-   *     Keys - numbers of week day (0 - Sunday, 6 - Saturday); values - always <tt>true</tt>.
+   *     Keys - a number corresponding to a week day (0 - Sunday, 6 - Saturday). The value is always <tt>true</tt>.
    *   </dd>
    *   <dt>
    *     array[] <var>a_staff</var>
@@ -64,12 +63,14 @@ class ElementModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     End date of session.
+   *     Local date without time.
    *   </dd>
    *   <dt>
    *     string <var>dt_start</var>
    *   </dt>
    *   <dd>
    *     Start date of session.
+   *     Local date without time.
    *   </dd>
    *   <dt>
    *     int <var>i_duration</var>
@@ -88,7 +89,8 @@ class ElementModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     Time when session is occurred.
-   *    </dd>
+   *     A textual representation of the start and end time of a session. Example: <tt>10:00 am - 11:00 am<tt>
+   *   </dd>
    * </dl>
    *
    * <tt>null</tt> if not loaded yet.
