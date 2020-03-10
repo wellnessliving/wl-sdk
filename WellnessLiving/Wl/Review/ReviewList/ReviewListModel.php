@@ -76,7 +76,7 @@ class ReviewListModel extends WlModelAbstract
    * Page number.
    * <tt>null</tt> if need load only keys of review.
    *
-   * @get
+   * @get get
    * @var int
    */
   public $i_page = null;
@@ -85,6 +85,7 @@ class ReviewListModel extends WlModelAbstract
    * Review order ID. One of {@link ReviewOrderSid} constants.
    * <tt>null</tt> if not passed and use default order.
    *
+   * @get get
    * @var int|null
    */
   public $id_order = null;
