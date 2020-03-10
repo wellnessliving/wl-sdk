@@ -4,6 +4,9 @@ namespace WellnessLiving\Wl\Review;
 
 use WellnessLiving\WlModelAbstract;
 
+/**
+ * Api for add reply of review.
+ */
 class ReviewReplyModel extends WlModelAbstract
 {
   /**
