@@ -21,7 +21,7 @@ class EnrollmentFieldListModel extends WlModelAbstract
    *
    * Validation is performed vid POST method.
    *
-   * @post
+   * @post post
    * @var array
    */
   public $a_account;
@@ -34,7 +34,7 @@ class EnrollmentFieldListModel extends WlModelAbstract
    *
    * Validation is performed via POST method.
    *
-   * @post
+   * @post post
    * @var array
    */
   public $a_field;
