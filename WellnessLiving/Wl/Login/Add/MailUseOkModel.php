@@ -67,7 +67,7 @@ class MailUseOkModel extends WlModelAbstract
   public $s_message = '';
 
   /**
-   * User ID.
+   * User key.
    *
    * @post post
    * @var string

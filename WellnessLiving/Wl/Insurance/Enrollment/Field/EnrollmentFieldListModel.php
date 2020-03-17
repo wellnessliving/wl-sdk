@@ -19,7 +19,7 @@ class EnrollmentFieldListModel extends WlModelAbstract
    * Keys - field key.
    * Values - value entered by user.
    *
-   * Validation is performed vid POST method.
+   * Validation is performed via POST method.
    *
    * @post post
    * @var array

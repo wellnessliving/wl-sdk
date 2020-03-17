@@ -18,7 +18,7 @@ class ResponseModel extends WlModelAbstract
   public $is_grant = false;
 
   /**
-   * ID of the location to access.
+   * Key of the location to access.
    *
    * @get get
    * @var string
@@ -26,7 +26,7 @@ class ResponseModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
-   * ID of the user to grant access .
+   * Key of the user to grant access .
    *
    * @get get
    * @var string

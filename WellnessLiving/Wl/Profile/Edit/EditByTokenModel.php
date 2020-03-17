@@ -11,7 +11,7 @@ use WellnessLiving\WlModelAbstract;
 class EditByTokenModel extends WlModelAbstract
 {
   /**
-   * Values and structure of all fields. Keys are field ids (<tt>k_field</tt>).
+   * Values and structure of all fields. Keys are field keys (<tt>k_field</tt>).
    * Values are field values and structure, arrays with the following keys:
    * <dl>
    *   <dt>
