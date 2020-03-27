@@ -10,9 +10,11 @@ use WellnessLiving\WlModelAbstract;
 class AuthorizePartnerModel extends WlModelAbstract
 {
   /**
-   * <tt>true</tt> - grant access; <tt>false</tt> - deny access.
+   * Whether the user will be granted access or if access will be revoked.
+   * If <tt>true</tt> - then grant access; If <tt>false</tt> - then revoke access.
+   * Revoking access is a scheduled task set to be run within the next 15 minutes.
    *
-   * @get get
+   * @post get
    * @var bool
    */
   public $is_grant = false;
@@ -20,7 +22,7 @@ class AuthorizePartnerModel extends WlModelAbstract
   /**
    * Key of the Franchisee location to enter.
    *
-   * @get get
+   * @post get
    * @var string
    */
   public $k_location = '0';
@@ -28,7 +30,7 @@ class AuthorizePartnerModel extends WlModelAbstract
   /**
    * Key of user who will be granted access.
    *
-   * @get get
+   * @post get
    * @var string
    */
   public $uid = '0';

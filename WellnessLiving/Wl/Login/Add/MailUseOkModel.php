@@ -15,7 +15,7 @@ class MailUseOkModel extends WlModelAbstract
    * Each element is an array containing the following data:<dl>
    *   <dt>string <var>html_message</var></dt>
    *   <dd>The error message.</dd>
-   *   <dt>string|null <var>s_field</var></dt>
+   *   <dt>string <var>s_field</var></dt>
    *   <dd>The name of the field which is missing information.
    *     Given in the format 'k_field.name'.
    *   </dd>
