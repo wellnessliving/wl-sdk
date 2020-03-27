@@ -43,7 +43,7 @@ class MailUseOkModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * Lead Widget skin key used to add the lead.
+   * Lead Widget skin key. Only needed if the user is a lead and not using the default skin for the business.
    *
    * @post post
    * @var string
@@ -64,7 +64,7 @@ class MailUseOkModel extends WlModelAbstract
    * @post result
    * @var string
    */
-  public $s_message = '';
+  public $text_message = '';
 
   /**
    * User key.
