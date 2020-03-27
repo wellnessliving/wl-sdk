@@ -10,6 +10,21 @@ use WellnessLiving\WlModelAbstract;
 class ElementModel extends WlModelAbstract
 {
   /**
+   * Retrieves information about event item.
+   *
+   * Received only if {@link ElementModel::$k_event} has been specified. In this case other fields are not receiver.
+   *
+   * Keys of this array - event keys.
+   * Values of this array - sub arrays with keys that corresponds to all fields in this table that may be received.
+   *
+   * <tt>null</tt> until received from server.
+   *
+   * @get result
+   * @var array|null
+   */
+  public $a_book_available = null;
+
+  /**
    * Logo of event.
    *
    * <tt>null</tt> if not loaded yet.
