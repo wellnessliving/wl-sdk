@@ -14,7 +14,7 @@ class AuthorizePartnerModel extends WlModelAbstract
    * If <tt>true</tt> - then grant access; If <tt>false</tt> - then revoke access.
    * Revoking access is a scheduled task set to be run within the next 15 minutes.
    *
-   * @post get
+   * @get get
    * @var bool
    */
   public $is_grant = false;
@@ -22,7 +22,7 @@ class AuthorizePartnerModel extends WlModelAbstract
   /**
    * Key of the Franchisee location to enter.
    *
-   * @post get
+   * @get get
    * @var string
    */
   public $k_location = '0';
@@ -30,7 +30,7 @@ class AuthorizePartnerModel extends WlModelAbstract
   /**
    * Key of user who will be granted access.
    *
-   * @post get
+   * @get get
    * @var string
    */
   public $uid = '0';
