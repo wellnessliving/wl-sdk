@@ -20,6 +20,16 @@ class StaffViewModel extends WlModelAbstract
   public $a_class_day = null;
 
   /**
+   * Result staff list.
+   *
+   * <tt>null</tt> if data is not loaded yet.
+   *
+   * @get result
+   * @var array|null
+   */
+  public $a_result_list = null;
+
+  /**
    * Staff data.
    *
    * <tt>null</tt> if data is not loaded yet.
@@ -28,6 +38,16 @@ class StaffViewModel extends WlModelAbstract
    * @var array|null
    */
   public $a_staff = null;
+
+  /**
+   * List of staff keys.
+   *
+   * <tt>null</tt> if not set yet.
+   *
+   * @get get
+   * @var string[]|null
+   */
+  public $a_staff_list = null;
 
   /**
    * ID of a business to show information for.
