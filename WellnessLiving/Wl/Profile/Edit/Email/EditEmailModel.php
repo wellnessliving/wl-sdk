@@ -37,7 +37,7 @@ class EditEmailModel extends WlModelAbstract
   public $is_use = false;
 
   /**
-   * Business where check must be performed.
+   * Business key where check must be performed.
    *
    * @get get
    * @post get
@@ -54,7 +54,7 @@ class EditEmailModel extends WlModelAbstract
   public $text_mail = '';
 
   /**
-   * ID of user who occupies specified email.
+   * Key of user who occupies specified email.
    * <tt>0</tt> if email is free or if quantity of requests is exhausted.
    *
    * @get result
@@ -63,7 +63,7 @@ class EditEmailModel extends WlModelAbstract
   public $uid_result = '0';
 
   /**
-   * ID of user whose email we try to edit.
+   * Key of user whose email we try to edit.
    * <tt>0</tt> for a case of new user creation.
    *
    * @get get

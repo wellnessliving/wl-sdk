@@ -98,6 +98,14 @@ class EditModel extends WlModelAbstract
   public $k_business = '';
 
   /**
+   * Password to be set for a new user.
+   *
+   * @post post
+   * @var string
+   */
+  public $text_password = '';
+
+  /**
    * ID of a user to manipulate with.
    *
    * If empty then an empty form will be displayed to add a new user.

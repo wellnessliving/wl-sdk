@@ -23,6 +23,23 @@ class PaymentModel extends WlModelAbstract
    *     Additional configuration. May contain next keys:
    *     <dl>
    *       <dt>
+   *         array [<var>a_wellness_program</var>]
+   *       </dt>
+   *       <dd>
+   *          "Wellness Program" fields.
+   *
+   *          <var>k_wellness_program<var/> must be passed along with this array. See description below.
+   *
+   *          <dl>
+   *            <dt>array <var>a_account</var></dt>
+   *            <dd>See {@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel::$a_account} for a full description.</dd>
+   *            <dt>array <var>a_field</var></dt>
+   *            <dd>See {@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel::$a_field} for a full description.</dd>
+   *          </dl>
+   *
+   *          It is recommended to validate the fields using the POST method of the {@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} model.
+   *       </dd>
+   *       <dt>
    *         string [<var>dt_prorate</var>]
    *       </dt>
    *       <dd>
@@ -79,6 +96,20 @@ class PaymentModel extends WlModelAbstract
    *       <dt>
    *         string [<var>k_staff</var>]
    *       </dt>
+   *       <dt>
+   *         string [<var>k_wellness_program</var>]
+   *       </dt>
+   *       <dd>
+   *          "Wellness Program" key. Set for insurance membership promotion.
+   *
+   *          <var>a_wellness_program<var/> array must be passed along with the key. See array description above.
+   *
+   *          <p>Use the following models to work with this type of promotion:</p>
+   *          <ul>
+   *            <li>{@link \WellnessLiving\Wl\Insurance\Catalog\ProgramListModel} to obtain list of active programs.</li>
+   *            <li>{@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} to get and validate fields for a given program.</li>
+   *          </ul>
+   *       </dd>
    *       <dd>
    *         Staff member key. For appointment tips only.
    *       </dd>
@@ -172,7 +203,11 @@ class PaymentModel extends WlModelAbstract
   public $a_item = [];
 
   /**
-   * A list of payment sources. Every element must contain next keys:
+   * A list of payment sources.
+   * Key is string representation of one of the {@link WlPayMethodSid} constants.
+   * For example, if payment method is {@link WlPayMethodSid::ECOMMERCE}, specify string <tt>ecommerce</tt>.
+   *
+   * Values contain next keys:
    * <dl>
    *   <dt>
    *     array [<var>a_pay_card</var>]

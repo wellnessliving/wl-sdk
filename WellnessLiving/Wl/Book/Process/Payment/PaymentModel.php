@@ -56,6 +56,69 @@ class PaymentModel extends WlModelAbstract
   public $a_pay_form = [];
 
   /**
+   * Information about purchase items.
+   *
+   * Fields - string in format <tt>id_purchase_item-k_id</tt>.
+   * Values - array with next stricture:
+   * <ul>
+   *   <li>
+   *     <dt>array <var>a_tax</var></dt>
+   *     <dd>Contains information about taxes in the following format. A list of taxes to apply. The array keys are
+   *       k_tax IDs. Taxes are sorted by name, each element contains the following fields:<dl>
+   *
+   *       <dt>float <var>f_value</var></dt>
+   *       <dd>Tax rate. Meaning of this field depends on value of <var>id_tax</var>.</dd>
+   *
+   *       <dt>int <var>id_tax</var></dt>
+   *       <dd>Type of the tax. One of {@link WlTaxSid} constants.</dd>
+   *
+   *       <dt>int <var>k_tax</var></dt>
+   *       <dd>ID of the tax.</dd>
+   *
+   *       <dt>string <var>s_tax</var></dt>
+   *       <dd>Name of the tax.</dd>
+   *
+   *       <dt>string <var>f_tax</var></dt>
+   *       <dd>Amount of tax applied by this rule.
+   *
+   *       <dt>string <var>f_tax_discount</var></dt>
+   *       <dd>Amount of applied tax considering all discounts.</dd>
+   *
+   *       <dt>string <var>f_tax_discount_login</var></dt>
+   *       <dd>Amount of applied tax considering only discount via client/member type.</dd>
+   *
+   *       <tt>null</tt> if tax rules are not loaded yet.
+   *       </dd>
+   *     </dl>
+   *   </li>
+   *   <li>
+   *     String <tt>k_id</tt>
+   *     Purchase ID. One of {@link \RsPurchaseSid}.
+   *   </li>
+   *   <li>
+   *     String <tt>id_purchase_item</tt>
+   *     Purchase item ID. One of {@link \RsPurchaseItemSid}.
+   *   </li>
+   *   <li>
+   *     String <tt>m_discount</tt>
+   *     The value of the discount used for purchase.
+   *   </li>
+   *   <li>
+   *     String <tt>m_pay</tt>
+   *     The payment for the promotion or single visit without taxes.
+   *   </li>
+   *   <li>
+   *     String <tt>m_price</tt>
+   *     The price of the promotion or single visit.
+   *   </li>
+   * </ul>
+   *
+   * @get result
+   * @var array
+   */
+  public $a_purchase = [];
+
+  /**
    * List of assets which are being booked. Every element has next keys:
    * <ul><li>Number <tt>i_index</tt> Number of asset. Actual for assets with quantity greater <tt>1</tt>.</li>
    * <li>String <tt>k_resource</tt> ID of asset.</li></ul>
@@ -120,6 +183,14 @@ class PaymentModel extends WlModelAbstract
    * @var string
    */
   public $k_login_activity_purchase = '0';
+
+  /**
+   * Discount code to be applied to purchase.
+   *
+   * @post post
+   * @var string
+   */
+  public $text_discount_code = '';
 
   /**
    * User ID.

@@ -162,6 +162,8 @@ class PurchaseReceiptModel extends WlModelAbstract
    *   <dd>Additional information about the purchase item.</dd>
    *   <dt>string <var>text_title</var></dt>
    *   <dd>Name of the purchase item.</dd>
+   *   <dt>string <var>text_description</var></dt>
+   *   <dd>Description of the purchase item.</dd>
    * </dl>
    *
    * @get result
