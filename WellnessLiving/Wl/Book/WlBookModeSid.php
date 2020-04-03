@@ -16,4 +16,9 @@ abstract class WlBookModeSid
    * Client booked session from app frontend.
    */
   const APP_FRONTEND = 3;
+
+  /**
+   * Client booked session on My Presence Site.
+   */
+  const MY_PRESENCE_SITE = 13;
 }
