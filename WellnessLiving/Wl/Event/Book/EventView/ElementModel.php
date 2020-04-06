@@ -126,6 +126,28 @@ class ElementModel extends WlModelAbstract
   public $a_staff_logo = null;
 
   /**
+   * Book available end date.
+   * If is set and {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$dl_book_available_start} is set list of
+   *   sessions available for booking {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$a_book_available}
+   *   should match given date range.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dl_book_available_end = null;
+
+  /**
+   * Book available start date.
+   * If is set and {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$dl_book_available_end} is set list of
+   *   sessions available for booking {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$a_book_available}
+   *   should match given date range.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dl_book_available_start = null;
+
+  /**
    * Date which should be used to go to booking wizard.
    *
    * <tt>null</tt> if not loaded yet.
