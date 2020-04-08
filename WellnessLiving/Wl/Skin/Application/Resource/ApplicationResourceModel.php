@@ -32,15 +32,16 @@ class ApplicationResourceModel extends WlModelAbstract
   /**
    * Sets application ID in a certain file.
    *
+   * @param string $k_business Key of a business for that sources are making.
    * @param string $s_sources Path to directory with sources that must be processed.
    * @param string $s_file File name.
    * @throws WlAssertException In a case of an error.
    */
-  private function _id(string $s_sources, string $s_file):void
+  private function _id(string $k_business,string $s_sources, string $s_file):void
   {
     $s_id = '[ID]';
 
-    if(empty($this->a_application[0]['text_domain']))
+    if(empty($this->a_application[$k_business]['text_domain']))
     {
       throw new WlAssertException([
         'text_message' => 'Application ID has not been returned by server.'
@@ -66,7 +67,7 @@ class ApplicationResourceModel extends WlModelAbstract
       ]);
     }
 
-    $text_content = str_replace($s_id,$this->a_application[0]['text_domain'],$text_content);
+    $text_content = str_replace($s_id,$this->a_application[$k_business]['text_domain'],$text_content);
 
     file_put_contents($s_file,$text_content);
   }
@@ -74,14 +75,15 @@ class ApplicationResourceModel extends WlModelAbstract
   /**
    * Sets application name.
    *
+   * @param string $k_business Key of a business for that sources are making.
    * @param string $s_sources Path to directory with sources that must be processed.
    * @throws WlAssertException In a case of an error.
    */
-  private function _name(string $s_sources):void
+  private function _name(string $k_business,string $s_sources):void
   {
     $s_name = '[NAME]';
 
-    if(empty($this->a_application[0]['text_name']))
+    if(empty($this->a_application[$k_business]['text_name']))
     {
       throw new WlAssertException([
         'text_message' => 'Application name has not been returned by server.'
@@ -107,7 +109,7 @@ class ApplicationResourceModel extends WlModelAbstract
       ]);
     }
 
-    $text_content = str_replace($s_name,$this->a_application[0]['text_name'],$text_content);
+    $text_content = str_replace($s_name,$this->a_application[$k_business]['text_name'],$text_content);
 
     file_put_contents($s_file,$text_content);
   }
@@ -115,10 +117,11 @@ class ApplicationResourceModel extends WlModelAbstract
   /**
    * Sets application resources.
    *
+   * @param string $k_business Key of a business for that sources are making.
    * @param string $s_sources Path to directory with sources that must be processed.
    * @throws WlAssertException In a case of an error.
    */
-  private function _resource(string $s_sources):void
+  private function _resource(string $k_business,string $s_sources):void
   {
     $s_resource = $s_sources.'res/';
 
@@ -130,13 +133,13 @@ class ApplicationResourceModel extends WlModelAbstract
       ]);
     }
 
-    if(empty($this->a_application[0]['a_resource']))
+    if(empty($this->a_application[$k_business]['a_resource']))
     {
       throw new WlAssertException([
         'text_message' => 'Resources information has not been returned by server.'
       ]);
     }
-    $a_resource_list = $this->a_application[0]['a_resource'];
+    $a_resource_list = $this->a_application[$k_business]['a_resource'];
 
     foreach($a_resource_list as $a_resource)
     {
@@ -237,14 +240,27 @@ class ApplicationResourceModel extends WlModelAbstract
     if($s_destination[strlen($s_destination)-1]!=='/')
       $s_destination .= '/';
 
-    AFolder::clear($s_destination);
-    AFolder::copy($s_source,$s_destination);
+    foreach($this->a_application as $k_business => $a_application)
+    {
+      if(empty($a_application['text_domain']))
+      {
+        throw new WlAssertException([
+          'text_message' => 'Application ID has not been returned by server.'
+        ]);
+      }
 
-    $this->_resource($s_destination);
-    $this->_id($s_destination,'config.xml');
-    $this->_id($s_destination,'www/index.html');
-    $this->_id($s_destination,'www/js/communication.js');
-    $this->_name($s_destination);
+      $s_destination_application = $s_destination.$k_business.'-'.$a_application['text_domain'].'/';
+
+      mkdir($s_destination_application);
+
+      AFolder::copy($s_source,$s_destination_application);
+
+      $this->_resource($k_business,$s_destination_application);
+      $this->_id($k_business,$s_destination_application,'config.xml');
+      $this->_id($k_business,$s_destination_application,'www/index.html');
+      $this->_id($k_business,$s_destination_application,'www/js/communication.js');
+      $this->_name($k_business,$s_destination_application);
+    }
   }
 }
 
