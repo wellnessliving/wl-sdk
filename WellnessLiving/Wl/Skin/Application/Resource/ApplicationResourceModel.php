@@ -149,7 +149,9 @@ class ApplicationResourceModel extends WlModelAbstract
             if(!$a_image['url_link'])
               continue;
 
-            $r_image = fopen($a_image['url_link'], 'r');
+            $r_image = fopen($this->config()::URL.$a_image['url_link'], 'r');
+            if(!$r_image)
+              continue;
 
             foreach($a_image['a_file'] as $s_file)
             {
@@ -183,7 +185,10 @@ class ApplicationResourceModel extends WlModelAbstract
                 continue;
             }
 
-            $r_file = fopen($a_file['url_link'],'r');
+            $r_file = fopen($this->config()::URL.$a_file['url_link'],'r');
+            if(!$r_file)
+              continue;
+
             file_put_contents($s_sources.$a_file['s_file'],$r_file);
             fclose($r_file);
           }

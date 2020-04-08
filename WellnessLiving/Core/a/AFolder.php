@@ -65,13 +65,18 @@ class AFolder
     $r_directory = opendir($s_source);
     while(($s_file=readdir($r_directory))!==false)
     {
-      if($s_file==='.'||$s_file==='..')
+      if($s_file==='.'||$s_file==='..'||$s_file==='.idea'||$s_file==='.svn')
         continue;
 
       if(is_dir($s_source.'/'.$s_file))
+      {
+        mkdir($s_destination.'/'.$s_file);
         static::copy($s_source.'/'.$s_file,$s_destination.'/'.$s_file);
+      }
       else
+      {
         copy($s_source.'/'.$s_file,$s_destination.'/'.$s_file);
+      }
     }
     closedir($r_directory);
   }
