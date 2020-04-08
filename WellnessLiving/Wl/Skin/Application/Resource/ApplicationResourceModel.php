@@ -6,6 +6,9 @@ use WellnessLiving\Core\a\AFolder;
 use WellnessLiving\WlAssertException;
 use WellnessLiving\WlModelAbstract;
 
+/**
+ * Information to generate application sources.
+ */
 class ApplicationResourceModel extends WlModelAbstract
 {
   /**
@@ -27,13 +30,97 @@ class ApplicationResourceModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
+   * Sets application ID in a certain file.
+   *
+   * @param string $s_sources Path to directory with sources that must be processed.
+   * @param string $s_file File name.
+   * @throws WlAssertException In a case of an error.
+   */
+  private function _id(string $s_sources, string $s_file):void
+  {
+    $s_id = '[ID]';
+
+    if(empty($this->a_application[0]['text_domain']))
+    {
+      throw new WlAssertException([
+        'text_message' => 'Application ID has not been returned by server.'
+      ]);
+    }
+
+    $s_file = $s_sources.$s_file;
+    if(!file_exists($s_file))
+    {
+      throw new WlAssertException([
+        's_file' => $s_file,
+        'text_message' => 'File does not exist.'
+      ]);
+    }
+
+    $text_content = file_get_contents($s_file);
+
+    if(strpos($text_content,$s_id)===false)
+    {
+      throw new WlAssertException([
+        'text_content' => $text_content,
+        'text_message' => 'File does not contain placeholder for application ID.'
+      ]);
+    }
+
+    $text_content = str_replace($s_id,$this->a_application[0]['text_domain'],$text_content);
+
+    file_put_contents($s_file,$text_content);
+  }
+
+  /**
+   * Sets application name.
+   *
+   * @param string $s_sources Path to directory with sources that must be processed.
+   * @throws WlAssertException In a case of an error.
+   */
+  private function _name(string $s_sources):void
+  {
+    $s_name = '[NAME]';
+
+    if(empty($this->a_application[0]['text_name']))
+    {
+      throw new WlAssertException([
+        'text_message' => 'Application name has not been returned by server.'
+      ]);
+    }
+
+    $s_file = $s_sources.'config.xml';
+    if(!file_exists($s_file))
+    {
+      throw new WlAssertException([
+        's_file' => $s_file,
+        'text_message' => 'File does not exist.'
+      ]);
+    }
+
+    $text_content = file_get_contents($s_file);
+
+    if(strpos($text_content,$s_name)===false)
+    {
+      throw new WlAssertException([
+        'text_content' => $text_content,
+        'text_message' => 'File does not contain placeholder for application name.'
+      ]);
+    }
+
+    $text_content = str_replace($s_name,$this->a_application[0]['text_name'],$text_content);
+
+    file_put_contents($s_file,$text_content);
+  }
+
+  /**
    * Sets application resources.
    *
-   * @param string $s_source Path to directory with sources that must be processed.
+   * @param string $s_sources Path to directory with sources that must be processed.
+   * @throws WlAssertException In a case of an error.
    */
-  private function _resource(string $s_source):void
+  private function _resource(string $s_sources):void
   {
-    $s_resource = $s_source.'res/';
+    $s_resource = $s_sources.'res/';
 
     if(!file_exists($s_resource))
     {
@@ -92,12 +179,12 @@ class ApplicationResourceModel extends WlModelAbstract
             if($i_directory!==false)
             {
               $s_directory = substr($a_file['s_file'],0,$i_directory+1);
-              if(!file_exists($s_source.$s_directory))
+              if(!file_exists($s_sources.$s_directory))
                 continue;
             }
 
             $r_file = fopen($a_file['url_link'],'r');
-            file_put_contents($s_source.$a_file['s_file'],$r_file);
+            file_put_contents($s_sources.$a_file['s_file'],$r_file);
             fclose($r_file);
           }
         }
@@ -105,6 +192,13 @@ class ApplicationResourceModel extends WlModelAbstract
     }
   }
 
+  /**
+   * Generate sources for application.
+   *
+   * @param string $s_source Directory with raw sources.
+   * @param string $s_destination Directory with ready sources for certain application.
+   * @throws WlAssertException In a case of an error.
+   */
   public function sources(string $s_source,string $s_destination):void
   {
     if(!is_dir($s_source))
@@ -133,11 +227,19 @@ class ApplicationResourceModel extends WlModelAbstract
       ]);
     }
 
+    if($s_source[strlen($s_source)-1]!=='/')
+      $s_source .= '/';
+    if($s_destination[strlen($s_destination)-1]!=='/')
+      $s_destination .= '/';
+
     AFolder::clear($s_destination);
     AFolder::copy($s_source,$s_destination);
 
     $this->_resource($s_destination);
-
+    $this->_id($s_destination,'config.xml');
+    $this->_id($s_destination,'www/index.html');
+    $this->_id($s_destination,'www/js/communication.js');
+    $this->_name($s_destination);
   }
 }
 
