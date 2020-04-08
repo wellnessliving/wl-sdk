@@ -251,7 +251,8 @@ class ApplicationResourceModel extends WlModelAbstract
 
       $s_destination_application = $s_destination.$k_business.'-'.$a_application['text_domain'].'/';
 
-      mkdir($s_destination_application);
+      if(!is_dir($s_destination_application))
+        mkdir($s_destination_application);
 
       AFolder::copy($s_source,$s_destination_application);
 

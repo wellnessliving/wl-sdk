@@ -60,6 +60,12 @@ class AFolder
     return !$has_file;
   }
 
+  /**
+   * Copies content from one folder to another.
+   *
+   * @param string $s_source Source folder.
+   * @param string $s_destination Destination folder.
+   */
   public static function copy(string $s_source,string $s_destination):void
   {
     $r_directory = opendir($s_source);
@@ -68,14 +74,17 @@ class AFolder
       if($s_file==='.'||$s_file==='..'||$s_file==='.idea'||$s_file==='.svn')
         continue;
 
+      $s_destination_file = $s_destination.'/'.$s_file;
+
       if(is_dir($s_source.'/'.$s_file))
       {
-        mkdir($s_destination.'/'.$s_file);
-        static::copy($s_source.'/'.$s_file,$s_destination.'/'.$s_file);
+        if(!is_dir($s_destination_file))
+          mkdir($s_destination_file);
+        static::copy($s_source.'/'.$s_file,$s_destination_file);
       }
       else
       {
-        copy($s_source.'/'.$s_file,$s_destination.'/'.$s_file);
+        copy($s_source.'/'.$s_file,$s_destination_file);
       }
     }
     closedir($r_directory);
