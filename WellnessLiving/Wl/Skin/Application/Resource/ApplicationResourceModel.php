@@ -243,17 +243,14 @@ class ApplicationResourceModel extends WlModelAbstract
     foreach($this->a_application as $k_business => $a_application)
     {
       if(empty($a_application['text_domain']))
-      {
-        throw new WlAssertException([
-          'text_message' => 'Application ID has not been returned by server.'
-        ]);
-      }
+        continue;
 
       $s_destination_application = $s_destination.$k_business.'-'.$a_application['text_domain'].'/';
 
       if(!is_dir($s_destination_application))
         mkdir($s_destination_application);
 
+      AFolder::clear($s_destination_application);
       AFolder::copy($s_source,$s_destination_application);
 
       $this->_resource($k_business,$s_destination_application);
