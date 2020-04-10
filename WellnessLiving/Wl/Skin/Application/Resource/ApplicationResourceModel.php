@@ -152,9 +152,7 @@ class ApplicationResourceModel extends WlModelAbstract
             if(!$a_image['url_link'])
               continue;
 
-            $r_image = fopen($this->config()::URL.$a_image['url_link'], 'r');
-            if(!$r_image)
-              continue;
+            $s_image = file_get_contents($a_image['url_link']);
 
             foreach($a_image['a_file'] as $s_file)
             {
@@ -166,10 +164,11 @@ class ApplicationResourceModel extends WlModelAbstract
                   continue;
               }
 
-              file_put_contents($s_resource.$s_file,$r_image);
-            }
+              file_put_contents($s_resource.$s_file,$s_image);
 
-            fclose($r_image);
+              if($s_file==='screen/ios/Default@3x~iphone~comany.png')
+                file_put_contents($s_sources.'www/icon.png',$s_image);
+            }
           }
         }
 
@@ -188,7 +187,7 @@ class ApplicationResourceModel extends WlModelAbstract
                 continue;
             }
 
-            $r_file = fopen($this->config()::URL.$a_file['url_link'],'r');
+            $r_file = fopen($a_file['url_link'],'rb');
             if(!$r_file)
               continue;
 
@@ -247,6 +246,7 @@ class ApplicationResourceModel extends WlModelAbstract
 
       $s_destination_application = $s_destination.$k_business.'-'.$a_application['text_domain'].'/';
 
+      echo $s_destination_application."\n";
       if(!is_dir($s_destination_application))
         mkdir($s_destination_application);
 
