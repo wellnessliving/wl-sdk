@@ -43,7 +43,7 @@ class UserInfoModel extends WlModelAbstract
   public $dt_birth = '';
 
   /**
-   * ID of user's gender. One of the {@link \AGenderSid} constants.
+   * ID of user's gender. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
    *
    * This will be <tt>null</tt> If gender is not set.
    *
