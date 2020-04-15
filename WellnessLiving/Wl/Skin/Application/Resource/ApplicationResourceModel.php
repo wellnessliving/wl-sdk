@@ -12,6 +12,11 @@ use WellnessLiving\WlModelAbstract;
 class ApplicationResourceModel extends WlModelAbstract
 {
   /**
+   * Placeholder of application ID.
+   */
+  private const ID = '[ID]';
+
+  /**
    * Application data.
    *
    * <tt>null</tt> until loaded.
@@ -30,22 +35,75 @@ class ApplicationResourceModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Sets application ID in a certain file.
+   * Updates file `www/js/communication.js`.
    *
    * @param string $k_business Key of a business for that sources are making.
    * @param string $s_sources Path to directory with sources that must be processed.
-   * @param string $s_file File name.
    * @throws WlAssertException In a case of an error.
    */
-  private function _id(string $k_business,string $s_sources, string $s_file):void
+  private function _communication(string $k_business,string $s_sources):void
   {
-    $s_id = '[ID]';
+    $this->_file($k_business,$s_sources,'www/js/communication.js',[
+      [
+        's_key' => 'text_domain',
+        's_placeholder' => static::ID
+      ]
+    ]);
+  }
 
-    if(empty($this->a_application[$k_business]['text_domain']))
+  /**
+   * Updates content of file `config.xml`.
+   *
+   * @param string $k_business Key of a business for that sources are making.
+   * @param string $s_sources Path to directory with sources that must be processed.
+   * @throws WlAssertException In a case of an error.
+   */
+  private function _config(string $k_business,string $s_sources):void
+  {
+    $this->_file($k_business,$s_sources,'config.xml',[
+      [
+        's_key' => 'i_version',
+        's_placeholder' => '[VERSION_CODE]'
+      ],
+      [
+        's_key' => 'text_domain',
+        's_placeholder' => static::ID
+      ],
+      [
+        's_key' => 'text_name',
+        's_placeholder' => '[NAME]'
+      ]
+    ]);
+  }
+
+  /**
+   * Updates a specified file.
+   *
+   * @param string $k_business Key of a business for that sources are making.
+   * @param string $s_sources Path to directory with sources that must be processed.
+   * @param string $s_file File to be updated.
+   * @param array[] $a_data Data to be updated. Every element has next keys:
+   * <dl>
+   *   <dt>string <var>s_key</var></dt>
+   *   <dd>Key of data in {@link ApplicationResourceModel::$a_application} field.</dd>
+   *   <dt>string <var>s_placeholder</var></dt>
+   *   <dd>Placeholder in source file to be replaced by data.</dd>
+   * </dl>
+   * @throws WlAssertException In a case of an error.
+   */
+  private function _file(string $k_business,string $s_sources,string $s_file,array $a_data):void
+  {
+    $a_replace = [];
+    foreach($a_data as $a_data_item)
     {
-      throw new WlAssertException([
-        'text_message' => 'Application ID has not been returned by server.'
-      ]);
+      if(empty($this->a_application[$k_business][$a_data_item['s_key']]))
+      {
+        throw new WlAssertException([
+          's_data' => $a_data_item['s_key'],
+          'text_message' => 'Data has not been returned by server.'
+        ]);
+      }
+      $a_replace[] = $this->a_application[$k_business][$a_data_item['s_key']];
     }
 
     $s_file = $s_sources.$s_file;
@@ -59,59 +117,42 @@ class ApplicationResourceModel extends WlModelAbstract
 
     $text_content = file_get_contents($s_file);
 
-    if(strpos($text_content,$s_id)===false)
+    foreach($a_data as $a_data_item)
     {
-      throw new WlAssertException([
-        'text_content' => $text_content,
-        'text_message' => 'File does not contain placeholder for application ID.'
-      ]);
+      if(strpos($text_content,$a_data_item['s_placeholder'])===false)
+      {
+        throw new WlAssertException([
+          's_placeholder' => $a_data_item['s_placeholder'],
+          'text_content' => $text_content,
+          'text_message' => 'File does not contain placeholder.'
+        ]);
+      }
     }
 
-    $text_content = str_replace($s_id,$this->a_application[$k_business]['text_domain'],$text_content);
+    $text_content = str_replace(
+      array_column($a_data,'s_placeholder'),
+      $a_replace,
+      $text_content
+    );
 
     file_put_contents($s_file,$text_content);
   }
 
   /**
-   * Sets application name.
+   * Updates content of file `www/index.html`.
    *
    * @param string $k_business Key of a business for that sources are making.
    * @param string $s_sources Path to directory with sources that must be processed.
    * @throws WlAssertException In a case of an error.
    */
-  private function _name(string $k_business,string $s_sources):void
+  private function _index(string $k_business,string $s_sources):void
   {
-    $s_name = '[NAME]';
-
-    if(empty($this->a_application[$k_business]['text_name']))
-    {
-      throw new WlAssertException([
-        'text_message' => 'Application name has not been returned by server.'
-      ]);
-    }
-
-    $s_file = $s_sources.'config.xml';
-    if(!file_exists($s_file))
-    {
-      throw new WlAssertException([
-        's_file' => $s_file,
-        'text_message' => 'File does not exist.'
-      ]);
-    }
-
-    $text_content = file_get_contents($s_file);
-
-    if(strpos($text_content,$s_name)===false)
-    {
-      throw new WlAssertException([
-        'text_content' => $text_content,
-        'text_message' => 'File does not contain placeholder for application name.'
-      ]);
-    }
-
-    $text_content = str_replace($s_name,$this->a_application[$k_business]['text_name'],$text_content);
-
-    file_put_contents($s_file,$text_content);
+    $this->_file($k_business,$s_sources,'www/index.html',[
+      [
+        's_key' => 'text_domain',
+        's_placeholder' => static::ID
+      ]
+    ]);
   }
 
   /**
@@ -152,7 +193,8 @@ class ApplicationResourceModel extends WlModelAbstract
             if(!$a_image['url_link'])
               continue;
 
-            $s_image = file_get_contents($a_image['url_link']);
+            $s_prefix = substr($a_image['url_link'],0,4)==='http'?'':$this->config()::URL;
+            $s_image = file_get_contents($s_prefix.$a_image['url_link']);
 
             foreach($a_image['a_file'] as $s_file)
             {
@@ -187,7 +229,8 @@ class ApplicationResourceModel extends WlModelAbstract
                 continue;
             }
 
-            $r_file = fopen($a_file['url_link'],'rb');
+            $s_prefix = substr($a_file['url_link'],0,4)==='http'?'':$this->config()::URL;
+            $r_file = fopen($s_prefix.$a_file['url_link'],'rb');
             if(!$r_file)
               continue;
 
@@ -254,10 +297,9 @@ class ApplicationResourceModel extends WlModelAbstract
       AFolder::copy($s_source,$s_destination_application);
 
       $this->_resource($k_business,$s_destination_application);
-      $this->_id($k_business,$s_destination_application,'config.xml');
-      $this->_id($k_business,$s_destination_application,'www/index.html');
-      $this->_id($k_business,$s_destination_application,'www/js/communication.js');
-      $this->_name($k_business,$s_destination_application);
+      $this->_config($k_business,$s_destination_application);
+      $this->_index($k_business,$s_destination_application);
+      $this->_communication($k_business,$s_destination_application);
     }
   }
 }
