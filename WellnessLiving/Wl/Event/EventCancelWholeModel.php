@@ -17,7 +17,7 @@ class EventCancelWholeModel extends WlModelAbstract
    * @post get
    * @var string|null
    */
-  public $k_event = null;
+  public $k_class = null;
 
   /**
    * User ID.
