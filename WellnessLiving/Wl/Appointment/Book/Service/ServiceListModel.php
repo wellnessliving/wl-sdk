@@ -43,6 +43,18 @@ class ServiceListModel extends WlModelAbstract
    *     Online price.
    *   </dd>
    *   <dt>
+   *     int <var>i_age_from</var>
+   *   </dt>
+   *   <dd>
+   *     Required minimal client age to book an appointment.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_age_to</var>
+   *   </dt>
+   *   <dd>
+   *     Required maximal client age to book an appointment.
+   *   </dd>
+   *   <dt>
    *     int <var>i_price</var>
    *   </dt>
    *   <dd>
