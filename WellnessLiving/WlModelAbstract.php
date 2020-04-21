@@ -296,6 +296,39 @@ class WlModelAbstract
    */
   private function request(string $s_method):WlModelRequest
   {
+    $a_request = $this->requestPrepare($s_method);
+
+    $s_response = curl_exec($a_request['r_curl']);
+
+    return $this->requestResult($s_method, $a_request['r_curl'], $a_request['o_request'], $a_request['a_field'], $s_response);
+  }
+
+  /**
+   * Returns URI of current model.
+   *
+   * @return string URI of current model.
+   * @throws WlAssertException In a case of an assertion.
+   */
+  protected function resource():string
+  {
+    WlAssertException::assertNotEmpty(!!preg_match('~^WellnessLiving\\\\(([A-Za-z]+\\\\)*)([A-Za-z]+_)?([A-Za-z]+)Model$~',get_class($this),$a_match),[
+      's_class' => get_class($this),
+      's_message' => 'API model class name is invalid. `Model` suffix is missing.'
+    ]);
+
+    return str_replace('\\','/',$a_match[1].$a_match[4]).'.json';
+  }
+
+  /**
+   * Prepares the Curl request.
+   *
+   * @param string $s_method
+   * @return array
+   * @throws WlAssertException
+   * @throws WlUserException
+   */
+  protected function requestPrepare(string $s_method) : array
+  {
     $o_request = new WlModelRequest();
 
     $o_request->o_config = $this->_o_config;
@@ -408,9 +441,27 @@ class WlModelAbstract
     curl_setopt($r_curl,CURLOPT_VERBOSE,true);
     curl_setopt($r_curl,CURLINFO_HEADER_OUT,true);
 
-    $s_response = curl_exec($r_curl);
-    $s_error = curl_error($r_curl);
+    return [
+      'a_field' => $a_field,
+      'o_request' => $o_request,
+      'r_curl' => $r_curl
+    ];
+  }
 
+  /**
+   * Returns the result object from executed Curl
+   *
+   * @param string $s_method
+   * @param $r_curl
+   * @param WlModelRequest $o_request
+   * @param array $a_field
+   * @param string $s_response
+   * @return WlModelRequest
+   * @throws WlUserException
+   */
+  protected function requestResult(string $s_method, $r_curl, WlModelRequest $o_request, array $a_field, string $s_response) : WlModelRequest
+  {
+    $s_error = curl_error($r_curl);
     $i_header=curl_getinfo($r_curl,CURLINFO_HEADER_SIZE);
     $s_header=substr($s_response,0,$i_header);
     $s_body=substr($s_response,$i_header);
@@ -421,7 +472,7 @@ class WlModelAbstract
     foreach($a_match[1] as $i => $s_name)
       $this->_o_cookie->cookieSet($s_name,$a_match[2][$i]);
 
-    curl_close($r_curl);
+    $this->closeCurl($r_curl);
 
     if($s_error)
     {
@@ -446,6 +497,7 @@ class WlModelAbstract
 
     if(!$o_request->a_result||!is_array($o_request->a_result)||!isset($o_request->a_result['status']))
     {
+
       throw new WlUserException('request-parse','Error executing request to WellnessLiving API (could not parse response).',[
         'a_result' => $o_request->a_result,
         's_result' => $s_response,
@@ -454,8 +506,11 @@ class WlModelAbstract
       ]);
     }
 
-    if($o_request->a_result['status']!=='ok')
+    if($o_request->a_result['status']!=='ok'){
       throw WlUserException::createApi($o_request->a_result);
+    }
+
+
 
     foreach($a_field as $s_field => $a_method)
     {
@@ -474,18 +529,14 @@ class WlModelAbstract
   }
 
   /**
-   * Returns URI of current model.
+   * Closes curl resource.
    *
-   * @return string URI of current model.
-   * @throws WlAssertException In a case of an assertion.
+   * @param $r_curl
    */
-  protected function resource():string
+  protected function closeCurl($r_curl):void
   {
-    WlAssertException::assertNotEmpty(!!preg_match('~^WellnessLiving\\\\(([A-Za-z]+\\\\)*)([A-Za-z]+_)?([A-Za-z]+)Model$~',get_class($this),$a_match),[
-      's_class' => get_class($this),
-      's_message' => 'API model class name is invalid. `Model` suffix is missing.'
-    ]);
-
-    return str_replace('\\','/',$a_match[1].$a_match[4]).'.json';
+    curl_close($r_curl);
   }
 }
+
+?>
