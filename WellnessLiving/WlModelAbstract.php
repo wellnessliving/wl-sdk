@@ -80,6 +80,16 @@ class WlModelAbstract
   }
 
   /**
+   * Gets model configuration.
+   *
+   * @return WlConfigAbstract Model configuration.
+   */
+  public function config():WlConfigAbstract
+  {
+    return $this->_o_config;
+  }
+
+  /**
    * Returns cookies object.
    *
    * @return WlModelCookie|null Cookies object. <tt>null</tt> if not initialized yet.
