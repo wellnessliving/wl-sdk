@@ -20,15 +20,6 @@ class CancelModel extends WlModelAbstract
   public $dt_date = null;
 
   /**
-   * <tt>true</tt> if API is being used from backend, <tt>false</tt> otherwise.
-   * Here backend is staff or admin side of business.
-   *
-   * @post get
-   * @var bool
-   */
-  public $is_backend = false;
-
-  /**
    * Appointment key.
    *
    * <tt>null</tt> if not set yet.
