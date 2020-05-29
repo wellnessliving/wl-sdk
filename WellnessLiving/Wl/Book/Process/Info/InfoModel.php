@@ -51,12 +51,10 @@ class InfoModel extends WlModelAbstract
    * Fields - IDs of sessions in database.
    * Values - arrays of date/time when session is occurred. In MySQL format. In GMT.
    *
-   * <tt>null</tt> if is not set.
-   *
    * @post post
    * @var array
    */
-  public $a_session_select = null;
+  public $a_session_select = [];
 
   /**
    * Staff who conduct session. Every element has keys:
@@ -148,12 +146,10 @@ class InfoModel extends WlModelAbstract
    * Does user agree liability release?
    * <tt>true</tt> - user agrees; <tt>false</tt> - user does not agree or agreement not required.
    *
-   * <tt>null</tt> if not set yet.
-   *
    * @post post
    * @var bool
    */
-  public $is_agree = false;
+  public $is_agree = 0;
 
   /**
    * <tt>true</tt> if need next steps of wizard (need to purchase something to book selected session);
