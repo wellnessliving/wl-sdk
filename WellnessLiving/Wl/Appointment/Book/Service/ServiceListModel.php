@@ -151,7 +151,7 @@ class ServiceListModel extends WlModelAbstract
    * <tt>true</tt> - find in all tab;
    * <tt>false</tt> - find only on selected book tab.
    *
-   * @get
+   * @get get
    * @var bool
    */
   public $is_tab_all = false;
@@ -159,7 +159,7 @@ class ServiceListModel extends WlModelAbstract
   /**
    * Class tab key to filter services. If empty or <tt>'0'</tt> find on standard book tab.
    *
-   * @get
+   * @get get
    * @var string
    */
   public $k_class_tab = '0';
