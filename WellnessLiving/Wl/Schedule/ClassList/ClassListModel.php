@@ -24,7 +24,7 @@ class ClassListModel extends WlModelAbstract
    * <tt>null</tt> if not set yet.
    *
    * @get get
-   * @var ?string
+   * @var string|null
    */
   public $dt_date = null;
 
@@ -34,7 +34,7 @@ class ClassListModel extends WlModelAbstract
    * <tt>null</tt> to end after 62 days after {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_date}.
    *
    * @get get
-   * @var ?string
+   * @var string|null
    */
   public $dt_end = null;
 
@@ -52,7 +52,7 @@ class ClassListModel extends WlModelAbstract
    * <tt>null</tt> if not set yet.
    *
    * @get get
-   * @var ?string
+   * @var string|null
    */
   public $k_business = null;
 
@@ -62,7 +62,7 @@ class ClassListModel extends WlModelAbstract
    * <tt>null</tt> if not set yet.
    *
    * @get get
-   * @var ?string
+   * @var string|null
    */
   public $k_class_tab = null;
 
