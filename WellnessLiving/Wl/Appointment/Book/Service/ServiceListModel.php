@@ -148,14 +148,21 @@ class ServiceListModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * Class tab ID to filter services.
-   *
-   * <tt>null</tt> if not set yet.
+   * <tt>true</tt> - find in all tab;
+   * <tt>false</tt> - find only on selected book tab.
    *
    * @get get
-   * @var string|null
+   * @var bool
    */
-  public $k_class_tab = null;
+  public $is_tab_all = false;
+
+  /**
+   * Class tab key to filter services. If empty or <tt>'0'</tt> find on standard book tab.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_class_tab = '0';
 
   /**
    * ID of a location.

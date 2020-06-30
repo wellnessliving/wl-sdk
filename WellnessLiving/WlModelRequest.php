@@ -183,6 +183,7 @@ class WlModelRequest
       }
 
       WlAssertException::fail([
+        's_key' => $s_key,
         'text_message' => 'Invalid value.',
         'x_value' => $x_value
       ]);

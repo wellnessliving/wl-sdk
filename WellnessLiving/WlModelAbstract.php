@@ -263,6 +263,38 @@ class WlModelAbstract
   }
 
   /**
+   * Normalizes value for sending over HTTP.
+   *
+   * @param string $s_name Name of a field which value is normalized.
+   * @param mixed $x_value Value to normalize.
+   * @return array|string Normalized value.
+   */
+  private function normalizeValue(string $s_name,$x_value)
+  {
+    if(is_string($x_value))
+      return $x_value;
+    if($x_value===true)
+      return '1';
+    if($x_value===false)
+      return '';
+    if(is_object($x_value)&&($x_value instanceof WlFile))
+      return $x_value;
+
+    WlAssertException::assertTrue(is_array($x_value),[
+      's_class' => get_class($this),
+      's_property' => $s_name,
+      'text_message' => 'Invalid value in a field of an SDK model. Only strings, boolean and arrays are allowed.',
+      'x_value' => $x_value
+    ]);
+
+    foreach($x_value as $s_key => &$x_element)
+      $x_element=$this->normalizeValue($s_name.'.'.$s_key,$x_element);
+    unset($x_element);
+
+    return $x_value;
+  }
+
+  /**
    * Performs request with POST method.
    *
    * @return WlModelRequest Object with complete request data.
@@ -352,6 +384,8 @@ class WlModelAbstract
       $x_value=$this->$s_field;
       if($x_value===null)
         continue;
+
+      $x_value=$this->normalizeValue($s_field,$x_value);
 
       if(!empty($a_method[$s_method]['get']))
       {

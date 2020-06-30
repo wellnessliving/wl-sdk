@@ -53,6 +53,16 @@ class PageElementModel extends WlModelAbstract
   public $dt_date_local = null;
 
   /**
+   * Special instructions for service.
+   *
+   * <tt>null</tt> if not loaded yet.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $html_special = null;
+
+  /**
    * Duration (in minutes).
    *
    * <tt>null</tt> if not loaded yet.

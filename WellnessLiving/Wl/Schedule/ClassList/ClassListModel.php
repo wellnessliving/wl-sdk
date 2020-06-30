@@ -64,7 +64,18 @@ class ClassListModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  var $k_class_tab = null;
+  public $k_class_tab = null;
+
+  /**
+   * Whether canceled class periods will be displayed or not.
+   *
+   * <tt>true</tt> - canceled class periods will be displayed;
+   * <tt>false</tt> - canceled class periods will not be displayed.
+   *
+   * @get get
+   * @var bool
+   */
+  public $show_cancel = false;
 
   /**
    * User ID.
