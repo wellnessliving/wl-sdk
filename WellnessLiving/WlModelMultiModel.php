@@ -2,6 +2,9 @@
 
 namespace WellnessLiving;
 
+/**
+ * This class represents service model witch allows to execute multi curl request for the set of other models.
+ */
 final class WlModelMultiModel extends WlModelAbstract
 {
   private $a_model = [];
