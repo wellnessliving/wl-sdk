@@ -533,7 +533,6 @@ class WlModelAbstract
 
     if(!$o_request->a_result||!is_array($o_request->a_result)||!isset($o_request->a_result['status']))
     {
-
       throw new WlUserException('request-parse','Error executing request to WellnessLiving API (could not parse response).',[
         'a_result' => $o_request->a_result,
         's_result' => $s_response,
@@ -545,8 +544,6 @@ class WlModelAbstract
     if($o_request->a_result['status']!=='ok'){
       throw WlUserException::createApi($o_request->a_result);
     }
-
-
 
     foreach($a_field as $s_field => $a_method)
     {
