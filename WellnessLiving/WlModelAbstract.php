@@ -273,6 +273,8 @@ class WlModelAbstract
   {
     if(is_string($x_value))
       return $x_value;
+    if(is_numeric($x_value))
+      return (string)$x_value;
     if($x_value===true)
       return '1';
     if($x_value===false)
