@@ -10,22 +10,6 @@ use WellnessLiving\WlModelAbstract;
 class AlertModel extends WlModelAbstract
 {
   /**
-   * Key of current business.
-   *
-   * @get get
-   * @var string
-   */
-  public $k_business = '0';
-
-  /**
-   * Key of a user to show information for.
-   *
-   * @get get
-   * @var string
-   */
-  public $uid = '0';
-
-  /**
    * List of alerts. Every element array with keys:
    * <dl>
    *   <dt>string|null <var>dt_date</var></dt>
@@ -38,7 +22,7 @@ class AlertModel extends WlModelAbstract
    *   <dt>string [<var>k_pay_account</var>]</dt>
    *   <dd>ID of user's account. Primary key in {@link RsPayAccountSql} table.</dd>
    *   <dt>string [<var>k_purchase_item</var>]</dt>
-   *   <dd>ID of purchase item. Primary key in {@link RsPurchaseItemSql} table.</dd>
+   *   <dd>ID of purchase item. Primary  key in {@link RsPurchaseItemSql} table.</dd>
    *   <dt>string <var>s_text</var></dt>
    *   <dd>Text of alert.</dd>
    * </dl>
@@ -71,6 +55,22 @@ class AlertModel extends WlModelAbstract
    *
    */
   public $a_warning = null;
+
+  /**
+   * Key of current business.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_business = '0';
+
+  /**
+   * Key of a user to show information for.
+   *
+   * @get get
+   * @var string
+   */
+  public $uid = '0';
 }
 
 ?>
