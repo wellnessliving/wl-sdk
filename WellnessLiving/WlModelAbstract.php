@@ -290,7 +290,12 @@ class WlModelAbstract
     ]);
 
     foreach($x_value as $s_key => &$x_element)
-      $x_element=$this->normalizeValue($s_name.'.'.$s_key,$x_element);
+    {
+      if($x_element===null)
+        unset($x_value[$s_key]);
+      else
+        $x_element=$this->normalizeValue($s_name.'.'.$s_key,$x_element);
+    }
     unset($x_element);
 
     return $x_value;
