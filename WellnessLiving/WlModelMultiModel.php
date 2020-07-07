@@ -4,18 +4,33 @@ namespace WellnessLiving;
 
 /**
  * This class represents service model witch allows to execute multi curl request for the set of other models.
+ *
+ * You can use this model in case you need to make more than one request with special method to the API.
+ * For example, if you have some models, and you need to make "get" requests at parallel (with multi_curl),
+ * just create new WlModelMultiModel, and pass your models to WlModelMultiModel using method add().
+ * Then call method getMulti() to trigger multi curl request for all your added models.
+ *
+ * @example WellnessLiving/multi-model.md
  */
 final class WlModelMultiModel extends WlModelAbstract
 {
+  /**
+   * List of WlModelAbstract objects.
+   * @var array
+   */
   private $a_model = [];
+
+  /**
+   * Curl resource.
+   * @var resource
+   */
   private $r_multi_curl;
 
   /**
-   * Adds a model to multi Curl request
-   *
-   * @param WlModelAbstract $o_model
+   * Adds a model to multi Curl request.
+   * @param WlModelAbstract $o_model Model to be part of multi curl request.
    */
-  public function add(WlModelAbstract $o_model)
+  public function add(WlModelAbstract $o_model):void
   {
     $this->a_model[] = $o_model;
   }
@@ -23,11 +38,11 @@ final class WlModelMultiModel extends WlModelAbstract
   /**
    * This method executes the multi Curl request
    *
-   * @param string $s_method
+   * @param string $s_method Request method. One of <tt>'get'</tt>, <tt>'post'</tt>, <tt>'put'</tt>, <tt>'delete'</tt>.
    * @throws WlAssertException
    * @throws WlUserException
    */
-  private function requestMulti(string $s_method)
+  private function requestMulti(string $s_method):void
   {
     $a_request_prepare = [];
     $this->r_multi_curl = curl_multi_init();
@@ -94,7 +109,7 @@ final class WlModelMultiModel extends WlModelAbstract
   /**
    * Closes multi curl resource.
    *
-   * @param $r_curl
+   * @param resource $r_curl Curl resource to be closed.
    */
   protected function closeCurl($r_curl):void
   {

@@ -18,7 +18,7 @@ class SubscribeModel extends WlModelAbstract
    * <tt>null</tt> until loaded.
    *
    * @get result
-   * @put put
+   * @put get
    * @var bool|null
    */
   public $is_subscribe = null;

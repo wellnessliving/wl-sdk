@@ -361,10 +361,16 @@ class WlModelAbstract
   /**
    * Prepares the Curl request.
    *
-   * @param string $s_method
-   * @return array
-   * @throws WlAssertException
-   * @throws WlUserException
+   * @param string $s_method Method of the request. One of the next values: 'get', 'post', 'put', 'delete'.
+   * @return array Data with prepared request with the following structure:
+   * <ul>
+   *   <li>array [<tt>a_field</tt>] List of all prepared fields to be send via CURL.</li>
+   *   <li>@var WlModelRequest <tt>o_request</tt> Object with complete request data.</li>
+   *   <li>resource <tt>r_curl</tt> Curl resource.</li>
+   * </ul>
+   *
+   * @throws WlAssertException In a case of an assertion.
+   * @throws WlUserException  In a case of error with user data.
    */
   protected function requestPrepare(string $s_method) : array
   {
@@ -490,15 +496,16 @@ class WlModelAbstract
   }
 
   /**
-   * Returns the result object from executed Curl
+   * Returns the result object from executed Curl.
    *
-   * @param string $s_method
-   * @param $r_curl
-   * @param WlModelRequest $o_request
-   * @param array $a_field
-   * @param string $s_response
-   * @return WlModelRequest
-   * @throws WlUserException
+   * @param string $s_method Method of the request. One of the next values: 'get', 'post', 'put', 'delete'.
+   * @param resource $r_curl Curl resource.
+   * @param WlModelRequest $o_request Object with request data.
+   * @param array $a_field List of all prepared fields to be send via CURL.
+   * @param string $s_response CURL response string.
+   * @return WlModelRequest Object with complete request data.
+   *
+   * @throws WlUserException  In a case of error with user data.
    */
   protected function requestResult(string $s_method, $r_curl, WlModelRequest $o_request, array $a_field, string $s_response) : WlModelRequest
   {
@@ -569,7 +576,7 @@ class WlModelAbstract
   /**
    * Closes curl resource.
    *
-   * @param $r_curl
+   * @param resource $r_curl Curl resource.
    */
   protected function closeCurl($r_curl):void
   {
