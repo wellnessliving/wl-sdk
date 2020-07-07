@@ -13,6 +13,16 @@ class ElementModel extends WlModelAbstract
    * Additional information specific for the item.
    *
    * The structure may be different depending on the item category.
+   * <dl>
+   *   <dt>
+   *     bool <var>is_renew_public</var>
+   *   </dt>
+   *   <dd>
+   *     Only for promotions.
+   *     <tt>true</tt> - client can set promotion auto renew.
+   *     <tt>false</tt> - client can not set promotion auto renew.
+   *   </dd>
+   * </dl>
    *
    * For example, for a product it contains inventory information. For a gift card - possible amounts.
    * For a pass/membership/package - information about starting and stopping.
