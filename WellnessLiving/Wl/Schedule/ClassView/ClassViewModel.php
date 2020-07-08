@@ -91,16 +91,6 @@ class ClassViewModel extends WlModelAbstract
   public $a_session_request = null;
 
   /**
-   * List of sessions to get information for.
-   * Serialized array; for structure see {@link ClassViewModel::$a_session_request}.
-   * Serialization and sending by POST is necessary to sent big lists.
-   *
-   * @post post
-   * @var string|null
-   */
-  public $s_session_request = null;
-
-  /**
    * List of sessions information received in a multiple session mode.
    * Every element has next keys:
    * <dl><dt>array <var>a_class</var></dt><dd>Class information.</dd>
@@ -136,16 +126,6 @@ class ClassViewModel extends WlModelAbstract
   public $dt_date = null;
 
   /**
-   * ID of a business to show information for.
-   *
-   * <tt>null</tt> if not set yet.
-   *
-   * @get get
-   * @var string|null
-   */
-  public $k_business = null;
-
-  /**
    * Class Period ID.
    *
    * <tt>null</tt> if not set yet.
@@ -154,6 +134,16 @@ class ClassViewModel extends WlModelAbstract
    * @var string|null
    */
   public $k_class_period = null;
+
+  /**
+   * List of sessions to get information for.
+   * Serialized array; for structure see {@link ClassViewModel::$a_session_request}.
+   * Serialization and sending by POST is necessary to sent big lists.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $s_session_request = null;
 
   /**
    * User ID.

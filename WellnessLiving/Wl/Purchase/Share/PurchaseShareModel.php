@@ -12,7 +12,7 @@ class PurchaseShareModel extends WlModelAbstract
   /**
    * Social network. One of {@link \WellnessLiving\Core\a\ASocialSid} constants.
    *
-   * @post get
+   * @post post
    * @var int
    */
   public $id_social = 0;
@@ -20,7 +20,7 @@ class PurchaseShareModel extends WlModelAbstract
   /**
    * Key of the purchase.
    *
-   * @post get
+   * @post post
    * @var string
    */
   public $k_purchase = '0';

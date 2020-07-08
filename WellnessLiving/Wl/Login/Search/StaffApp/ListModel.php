@@ -43,14 +43,6 @@ class ListModel extends WlModelAbstract
    * @var string
    */
   public $text_search = '';
-
-  /**
-   * User ID for the user performing the search.
-   *
-   * @get get
-   * @var string
-   */
-  public $uid = '';
 }
 
 ?>

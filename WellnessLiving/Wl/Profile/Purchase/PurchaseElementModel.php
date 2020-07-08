@@ -163,15 +163,6 @@ class PurchaseElementModel extends WlModelAbstract
   public $i_limit = 0;
 
   /**
-   * Not <tt>0</tt> only for promotions with limited number of minutes.
-   * How many minuses this promotion gives in general.
-   *
-   * @get result
-   * @var int
-   */
-  public $i_limit_duration = 0;
-
-  /**
    * Not <tt>0</tt> only for not sequential promotions.
    * How many books by this promotion is left.
    *

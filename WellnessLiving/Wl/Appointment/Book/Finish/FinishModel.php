@@ -39,7 +39,6 @@ class FinishModel extends WlModelAbstract
   /**
    * All data from the provider model {@link Wl_Appointment_Book_ProviderModel}.
    *
-   * @get get
    * @post get
    * @var array
    */
@@ -92,7 +91,6 @@ class FinishModel extends WlModelAbstract
    * <dt>string <var>text_name_last</var></dt><dd>Last name.</dd>
    * <dt>string <var>text_phone</var></dt><dd>Phone.</dd></dl>
    *
-   * @get get
    * @post get
    * @var array
    */

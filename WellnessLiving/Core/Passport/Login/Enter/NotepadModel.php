@@ -12,47 +12,10 @@ class NotepadModel extends WlModelAbstract
   /**
    * Type of the hash.
    *
-   * <tt>'sha1'</tt> to send sha-1 hash (it is used by stale client applications which do not accept this field).
-   * <tt>'sha3'</tt> to send sha-3 hash (this should be used after completion of migration process).
-   * <tt>'sha1,sha3'</tt> to send both hashes.
-   *
-   * Currently, we are in process of migration of how user passwords are stored.
-   * Previously, user passwords were stored as SHA1 hash. New hashing algorithm in SHA3.
-   *
-   * If user did not update his password, you should send password in <tt>'sha1'</tt> or <tt>'sha1,sha3'</tt> format.
-   * If you send <tt>'sha1,sha3'</tt>, user password will be updated automatically.
-   *
-   * If user password is updated, only <tt>sha3</tt> is accepted.
-   *
-   * When hash migration process will be completed, only <tt>sha3</tt> hashes will be accepted.
-   *
-   * Use {@link \WellnessLiving\Core\Passport\Login\Enter\NotepadModel::hash()} to set password correctly.
-   *
-   * TODO wl-14702: Remove this.
-   *
    * @get result
    * @var string|null
    */
   public $s_hash=null;
-
-  /**
-   * User login.
-   *
-   * If specified, additional information about user password is returned (specifically,
-   * {@link \WellnessLiving\Core\Passport\Login\Enter\NotepadModel::$s_hash} is returned).
-   *
-   * <tt>null</tt> if additional information is not needed (old code).
-   *
-   * Although this field is not required, your application should set it.
-   * It is required to retrieve value of {@link \WellnessLiving\Core\Passport\Login\Enter\NotepadModel::$s_hash} which
-   * is required to derive user password hash correctly.
-   *
-   * TODO wl-14702: This only used to learn if new hash should be sent to server. Remove this feature.
-   *
-   * @get get
-   * @type {String|null}
-   */
-  public $s_login=null;
 
   /**
    * Value of notepad to hash user password. 20 lowercase hexadecimal digits.

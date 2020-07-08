@@ -80,6 +80,16 @@ class WlModelAbstract
   }
 
   /**
+   * Closes curl resource.
+   *
+   * @param resource $r_curl Curl resource.
+   */
+  protected function closeCurl($r_curl):void
+  {
+    curl_close($r_curl);
+  }
+
+  /**
    * Gets model configuration.
    *
    * @return WlConfigAbstract Model configuration.
@@ -343,22 +353,6 @@ class WlModelAbstract
   }
 
   /**
-   * Returns URI of current model.
-   *
-   * @return string URI of current model.
-   * @throws WlAssertException In a case of an assertion.
-   */
-  protected function resource():string
-  {
-    WlAssertException::assertNotEmpty(!!preg_match('~^WellnessLiving\\\\(([A-Za-z]+\\\\)*)([A-Za-z]+_)?([A-Za-z]+)Model$~',get_class($this),$a_match),[
-      's_class' => get_class($this),
-      's_message' => 'API model class name is invalid. `Model` suffix is missing.'
-    ]);
-
-    return str_replace('\\','/',$a_match[1].$a_match[4]).'.json';
-  }
-
-  /**
    * Prepares the Curl request.
    *
    * @param string $s_method Method of the request. One of the next values: 'get', 'post', 'put', 'delete'.
@@ -574,13 +568,19 @@ class WlModelAbstract
   }
 
   /**
-   * Closes curl resource.
+   * Returns URI of current model.
    *
-   * @param resource $r_curl Curl resource.
+   * @return string URI of current model.
+   * @throws WlAssertException In a case of an assertion.
    */
-  protected function closeCurl($r_curl):void
+  protected function resource():string
   {
-    curl_close($r_curl);
+    WlAssertException::assertNotEmpty(!!preg_match('~^WellnessLiving\\\\(([A-Za-z]+\\\\)*)([A-Za-z]+_)?([A-Za-z]+)Model$~',get_class($this),$a_match),[
+      's_class' => get_class($this),
+      's_message' => 'API model class name is invalid. `Model` suffix is missing.'
+    ]);
+
+    return str_replace('\\','/',$a_match[1].$a_match[4]).'.json';
   }
 }
 

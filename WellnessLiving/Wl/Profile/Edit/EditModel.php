@@ -68,7 +68,6 @@ class EditModel extends WlModelAbstract
    * The form display mode. Short or full.
    * Assumes use only in user registration mode.
    *
-   * @get get
    * @get result
    * @post get
    * @var bool

@@ -52,12 +52,11 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   /**
    * Determines which locations should be returned.
    *
-   * One of the {@link \Wl\Business\Franchise\Location\BusinessFranchiseLocationSid} constants.
+   * One of the {@link \WellnessLiving\Wl\Business\Franchise\Location\BusinessFranchiseLocationFormSid} constants.
    *
    * <tt>null</tt> if not set yet.
    *
    * @get get
-   * @post get
    * @var int|null
    */
   public $id_business_franchise_location = null;
@@ -68,7 +67,6 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
    * <tt>null</tt> if not set yet.
    *
    * @get get
-   * @post get
    * @var string|null
    */
   public $k_business = null;

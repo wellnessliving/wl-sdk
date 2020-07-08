@@ -135,17 +135,6 @@ class PaymentModel extends WlModelAbstract
   public $id_purchase_item = null;
 
   /**
-   * Business ID.
-   *
-   * <tt>null</tt> if not set yet.
-   *
-   * @get get
-   * @post get
-   * @var string|null
-   */
-  public $k_business = null;
-
-  /**
    * Item ID.
    *
    * <tt>null</tt> if not set yet.

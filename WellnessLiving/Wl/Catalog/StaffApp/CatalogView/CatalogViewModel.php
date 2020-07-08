@@ -66,16 +66,6 @@ class CatalogViewModel extends WlModelAbstract
   public $i_quantity = null;
 
   /**
-   * Purchase item ID.
-   *
-   * <tt>null</tt> if not set yet.
-   *
-   * @get result
-   * @var int|null
-   */
-  public $id_purchase_item = null;
-
-  /**
    * ID of sale category.
    *
    * <tt>null</tt> if not set yet.
