@@ -6,43 +6,46 @@ namespace WellnessLiving;
  * This class represents service model witch allows to execute multi curl request for the set of other models.
  *
  * You can use this model in case you need to make more than one request with special method to the API.
- * For example, if you have some models, and you need to make "get" requests at parallel (with multi_curl),
- * just create new WlModelMultiModel, and pass your models to WlModelMultiModel using method add().
- * Then call method getMulti() to trigger multi curl request for all your added models.
+ * For example, if you have some models, and you need to make "get" requests at parallel (with {@link \curl_multi_exec()}),
+ * just create new {@link WlModelMultiModel}, and pass your models to {@link WlModelMultiModel} using method {@link \WlModelMultiModel::add()}.
+ * Then call method {@link \WlModelMultiModel::getMulti()} to trigger multi curl request for all your added models.
  *
  * @example WellnessLiving/doc/multi-model.md
  */
 final class WlModelMultiModel extends WlModelAbstract
 {
   /**
-   * List of WlModelAbstract objects.
-   * @var array
+   * List of {@link WlModelAbstract} objects.
+   *
+   * @var WlModelAbstract[]
    */
   private $a_model = [];
 
   /**
    * Curl resource.
+   *
    * @var resource
    */
   private $r_multi_curl;
 
   /**
    * Adds a model to multi Curl request.
+   *
    * @param WlModelAbstract $o_model Model to be part of multi curl request.
    */
-  public function add(WlModelAbstract $o_model):void
+  public function add(WlModelAbstract $o_model): void
   {
     $this->a_model[] = $o_model;
   }
 
   /**
-   * This method executes the multi Curl request
+   * This method executes the multi Curl request.
    *
    * @param string $s_method Request method. One of <tt>'get'</tt>, <tt>'post'</tt>, <tt>'put'</tt>, <tt>'delete'</tt>.
-   * @throws WlAssertException
-   * @throws WlUserException
+   * @throws WlAssertException In a case of an assertion.
+   * @throws WlUserException In a case of a user-level error.
    */
-  private function requestMulti(string $s_method):void
+  private function requestMulti(string $s_method): void
   {
     $a_request_prepare = [];
     $this->r_multi_curl = curl_multi_init();
@@ -65,12 +68,10 @@ final class WlModelMultiModel extends WlModelAbstract
     foreach($a_request_prepare as $a_request)
     {
       $s_response = curl_multi_getcontent($a_request['r_curl']);
-      /** @var WlModelAbstract $o_model */
-      $a_request['o_model']->requestResult($s_method, $a_request['r_curl'], $a_request['o_request'], $a_request['a_field'], $s_response);
 
+      $a_request['o_model']->requestResult($s_method, $a_request['r_curl'], $a_request['o_request'], $a_request['a_field'], $s_response);
     }
     curl_multi_close($this->r_multi_curl);
-
   }
 
   /**
@@ -79,7 +80,7 @@ final class WlModelMultiModel extends WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  public function getMulti():void
+  public function getMulti(): void
   {
     $this->requestMulti('get');
   }
@@ -90,7 +91,7 @@ final class WlModelMultiModel extends WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  public function postMulti():void
+  public function postMulti(): void
   {
     $this->requestMulti('post');
   }
@@ -101,7 +102,7 @@ final class WlModelMultiModel extends WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  public function putMulti():void
+  public function putMulti(): void
   {
     $this->requestMulti('put');
   }
@@ -111,7 +112,7 @@ final class WlModelMultiModel extends WlModelAbstract
    *
    * @param resource $r_curl Curl resource to be closed.
    */
-  protected function closeCurl($r_curl):void
+  protected function closeCurl($r_curl): void
   {
     curl_multi_remove_handle($this->r_multi_curl, $r_curl);
   }

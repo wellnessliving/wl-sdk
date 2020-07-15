@@ -357,16 +357,16 @@ class WlModelAbstract
    *
    * @param string $s_method Method of the request. One of the next values: 'get', 'post', 'put', 'delete'.
    * @return array Data with prepared request with the following structure:
-   * <ul>
-   *   <li>array [<tt>a_field</tt>] List of all prepared fields to be send via CURL.</li>
-   *   <li>@var WlModelRequest <tt>o_request</tt> Object with complete request data.</li>
-   *   <li>resource <tt>r_curl</tt> Curl resource.</li>
-   * </ul>
+   * <dl>
+   *   <dt>array <var>a_field</var> List of all prepared fields to be send via CURL.</dt>
+   *   <dt>{@link WlModelRequest} <var>o_request</var> Object with complete request data.</dt>
+   *   <dt>resource <var>r_curl</var> Curl resource.</dt>
+   * </dl>
    *
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException  In a case of error with user data.
    */
-  protected function requestPrepare(string $s_method) : array
+  protected function requestPrepare(string $s_method): array
   {
     $o_request = new WlModelRequest();
 
@@ -496,12 +496,12 @@ class WlModelAbstract
    * @param resource $r_curl Curl resource.
    * @param WlModelRequest $o_request Object with request data.
    * @param array $a_field List of all prepared fields to be send via CURL.
-   * @param string $s_response CURL response string.
+   * @param string $s_response Curl response string.
    * @return WlModelRequest Object with complete request data.
    *
    * @throws WlUserException  In a case of error with user data.
    */
-  protected function requestResult(string $s_method, $r_curl, WlModelRequest $o_request, array $a_field, string $s_response) : WlModelRequest
+  protected function requestResult(string $s_method, $r_curl, WlModelRequest $o_request, array $a_field, string $s_response): WlModelRequest
   {
     $s_error = curl_error($r_curl);
     $i_header=curl_getinfo($r_curl,CURLINFO_HEADER_SIZE);
