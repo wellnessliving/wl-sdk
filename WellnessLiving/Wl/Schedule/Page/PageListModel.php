@@ -20,6 +20,26 @@ class PageListModel extends WlModelAbstract
   public $a_visit = [];
 
   /**
+   * If date set, return a list of services before this date.
+   * Date must be provided in GMT format, yyyy-MM-dd HH:mm:ss
+   * If left as <tt>null</tt> then return a list of services, which will not be limited to the end date.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dt_end = null;
+
+  /**
+   * If date set, return a list of services after this date.
+   * Date must be provided in GMT format, yyyy-MM-dd HH:mm:ss
+   * If left as <tt>null</tt> then return a list of services, which will not be limited to the start date.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dt_start = null;
+
+  /**
    * If set to true, return a list of past services.
    * If left as <tt>null</tt> then return a list of upcoming services.
    *
