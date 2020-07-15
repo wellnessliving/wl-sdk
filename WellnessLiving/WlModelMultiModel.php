@@ -10,7 +10,7 @@ namespace WellnessLiving;
  * just create new WlModelMultiModel, and pass your models to WlModelMultiModel using method add().
  * Then call method getMulti() to trigger multi curl request for all your added models.
  *
- * @example WellnessLiving/multi-model.md
+ * @example WellnessLiving/doc/multi-model.md
  */
 final class WlModelMultiModel extends WlModelAbstract
 {
