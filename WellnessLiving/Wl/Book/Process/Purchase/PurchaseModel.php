@@ -13,10 +13,19 @@ class PurchaseModel extends WlModelAbstract
   /**
    * List of purchase options which are available for session(s) which is(are) being booked.
    * Keys - unique string IDs. Values - arrays with next keys:
-   *   <ul><li>{}[] [<tt>a_visit_limit</tt>] Actual only for promotions. List of limits on booking by promotion.
+   *   <ul><li>{}[] <tt>a_installment_template</tt> A list of installment plans.
+   *     Every element has next keys:
+   *     <ul>
+   *       <li>String <tt>k_currency</tt> Payment currency ID.</li>
+   *       <li>String <tt>m_amount</tt> Amount of installment plan.</li>
+   *       <li>String <tt>s_duration</tt> Title of installment plan.</li>
+   *     </ul>
+   *   </li>
+   *   <li>{}[] [<tt>a_visit_limit</tt>] Actual only for promotions. List of limits on booking by promotion.
    *     Every element has next keys:
    *     <ul><li>String <tt>s_title</tt> Description of limit.</li></ul>
-   *   </li><li>String <tt>f_price</tt> Price.</li>
+   *   </li>
+   *   <li>String <tt>f_price</tt> Price.</li>
    *   <li>String [<tt>f_price_early</tt>] Price which is actual for early bookings.</li>
    *   <li>Number [<tt>i_limit</tt>] Limit of sessions which may be booked by purchase options.</li>
    *   <li>Number [<tt>i_payment_period</tt>] Actual only for promotions with program 'membership'.
