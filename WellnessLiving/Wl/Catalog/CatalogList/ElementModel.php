@@ -18,7 +18,7 @@ class ElementModel extends WlModelAbstract
    *     bool <var>is_renew_public</var>
    *   </dt>
    *   <dd>
-   *     Only for promotions
+   *     Only for promotions.
    *     <tt>true</tt> - client can set promotion auto renew.
    *     <tt>false</tt> - client can not set promotion auto renew.
    *   </dd>
