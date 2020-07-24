@@ -18,7 +18,7 @@ class PurchaseModel extends WlModelAbstract
    *     <ul>
    *       <li>String <tt>k_currency</tt> Payment currency ID.</li>
    *       <li>String <tt>m_amount</tt> Amount of installment plan.</li>
-   *       <li>String <tt>s_duration</tt> Title of installment plan.</li>
+   *       <li>String <tt>s_duration</tt> Title of installment plan</li>
    *     </ul>
    *   </li>
    *   <li>{}[] [<tt>a_visit_limit</tt>] Actual only for promotions. List of limits on booking by promotion.
