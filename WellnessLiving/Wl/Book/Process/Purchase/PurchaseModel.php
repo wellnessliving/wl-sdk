@@ -23,7 +23,7 @@ class PurchaseModel extends WlModelAbstract
    *         string <var>k_currency</var>
    *       </dt>
    *       <dd>
-   *         Payment currency ID.
+   *         Payment currency key.
    *       </dd>
    *       <dt>
    *         string <var>m_amount</var>
@@ -135,13 +135,13 @@ class PurchaseModel extends WlModelAbstract
    *     string <var>k_id</var>
    *   </dt>
    *   <dd>
-   *     ID of purchase option in database. Table depends on <var>id_purchase_item</var>.
+   *     Key of purchase option in database. Table depends on <var>id_purchase_item</var>.
    *   </dd>
    *   <dt>
    *     string [<var>k_login_prize</var>]
    *   </dt>
    *   <dd>
-   *     ID of user's prize which can be used instead purchase option to book session.
+   *     Key of user's prize which can be used instead purchase option to book session.
    *   </dd>
    *   <dt>
    *     string [<var>s_contract</var>]
