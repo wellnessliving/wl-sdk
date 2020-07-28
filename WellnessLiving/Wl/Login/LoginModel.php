@@ -19,14 +19,12 @@ class LoginModel extends WlModelAbstract
   public $id_gender = AGenderSid::FEMALE;
 
   /**
-   * ID of business.
-   *
-   * <tt>null</tt> if not set yet or if we need system-wide information.
+   * Key of business.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_business = null;
+  public $k_business = '';
 
   /**
    * User's ID as staff member.
