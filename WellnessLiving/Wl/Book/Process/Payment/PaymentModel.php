@@ -122,6 +122,14 @@ class PaymentModel extends WlModelAbstract
   public $k_login_activity_purchase = '0';
 
   /**
+   * Installment template key.
+   *
+   * @post post
+   * @var string
+   */
+  public $k_pay_installment_template;
+
+  /**
    * Discount code to be applied to purchase.
    *
    * @post post
