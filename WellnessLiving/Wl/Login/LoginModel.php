@@ -9,7 +9,8 @@ use WellnessLiving\WlModelAbstract;
  * Retrieves information about Wellnessliving user.
  *
  * Can return public information about the staff.
- * To obtain full user information, you must have access to the requested user, otherwise there will be an access error.
+ * Can return user`s logo.
+ * To obtain full user information, you should have access to the requested user.
  */
 class LoginModel extends WlModelAbstract
 {
