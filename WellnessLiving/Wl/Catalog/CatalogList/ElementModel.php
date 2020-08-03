@@ -68,6 +68,58 @@ class ElementModel extends WlModelAbstract
   public $a_image = null;
 
   /**
+   * A list of installment plans. Each element has next keys:
+   * <dl>
+   *   <dt>
+   *     int <var>i_count</var>
+   *   </dt>
+   *   <dd>
+   *      Number of payments.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_duration</var>
+   *   </dt>
+   *   <dd>
+   *      Duration of a single period.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_period</var>
+   *   </dt>
+   *   <dd>
+   *      Number of periods specified by <var>id_period</var> between individual payments.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_currency</var>
+   *   </dt>
+   *   <dd>
+   *     Payment currency Key.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_pay_installment_template</var>
+   *   </dt>
+   *   <dd>
+   *      Key of installment plan template.
+   *   </dd>
+   *   <dt>
+   *     string <var>m_amount</var>
+   *   </dt>
+   *   <dd>
+   *     Amount of installment plan.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_duration</var>
+   *   </dt>
+   *   <dd>
+   *     Title of installment plan.
+   *   </dd>
+   * </dl>
+   *
+   * @get result
+   * @var array[]
+   */
+  public $a_installment_template;
+
+  /**
    * List of requested goods information.
    * Every element contains keys that correspond to each another field with <tt>&#64;get result</tt> in this class.
    *

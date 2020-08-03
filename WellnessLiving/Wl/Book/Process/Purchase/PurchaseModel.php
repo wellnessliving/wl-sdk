@@ -20,10 +20,34 @@ class PurchaseModel extends WlModelAbstract
    *     A list of installment plans. Every element has next keys:
    *     <dl>
    *       <dt>
+   *         int <var>i_count</var>
+   *       </dt>
+   *       <dd>
+   *          Number of payments.
+   *       </dd>
+   *       <dt>
+   *         int <var>id_duration</var>
+   *       </dt>
+   *       <dd>
+   *          Duration of a single period.
+   *       </dd>
+   *       <dt>
+   *         int <var>i_period</var>
+   *       </dt>
+   *       <dd>
+   *          Number of periods specified by <var>id_period</var> between individual payments.
+   *       </dd>
+   *       <dt>
    *         string <var>k_currency</var>
    *       </dt>
    *       <dd>
-   *         Payment currency key.
+   *         Payment currency Key.
+   *       </dd>
+   *       <dt>
+   *         string <var>k_pay_installment_template</var>
+   *       </dt>
+   *       <dd>
+   *          Key of installment plan template.
    *       </dd>
    *       <dt>
    *         string <var>m_amount</var>
