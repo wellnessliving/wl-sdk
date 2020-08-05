@@ -381,6 +381,15 @@ class PaymentModel extends WlModelAbstract
   public $k_location = '';
 
   /**
+   * Installment template key.
+   * This property is optional. <tt>null</tt> if installment plan doesn't exists or doesn't set for bought item.
+   *
+   * @post post
+   * @var string
+   */
+  public $k_pay_installment_template;
+
+  /**
    * Key of purchase that was created during payment.
    *
    * <tt>null</tt> if result is not returned yet, or request was not successful.
