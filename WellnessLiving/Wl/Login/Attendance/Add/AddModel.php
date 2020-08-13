@@ -147,7 +147,7 @@ class AddModel extends WlModelAbstract
   public $m_rest = null;
 
   /**
-   * Current user ID.
+   * Current user key.
    *
    * @get get
    * @post get
