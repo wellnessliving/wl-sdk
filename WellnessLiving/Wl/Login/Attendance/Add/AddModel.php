@@ -89,7 +89,7 @@ class AddModel extends WlModelAbstract
   public $is_paid = false;
 
   /**
-   * Class period identifier.
+   * Class period key.
    *
    * <tt>null</tt> means not set.
    *
@@ -119,7 +119,7 @@ class AddModel extends WlModelAbstract
   public $k_session_pass = '0';
 
   /**
-   * Booked visit ID.
+   * Booked visit key.
    *
    * @post result
    * @var string
