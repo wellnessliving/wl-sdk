@@ -17,7 +17,7 @@ class SubscribeModel extends WlModelAbstract
    * <tt>true</tt> if subscribe user on business, <tt>false</tt> is unsubscribe user on business.
    * <tt>null</tt> until loaded.
    *
-   * @get get
+   * @get result
    * @put get
    * @var bool|null
    */
