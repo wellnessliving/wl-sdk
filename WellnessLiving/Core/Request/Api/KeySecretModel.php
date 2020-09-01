@@ -5,10 +5,10 @@ namespace WellnessLiving\Core\Request\Api;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Point to get a private key for request subscribing.
+ * Point to get a secret key for request signing.
  * It is necessary in a case of CORS request.
  */
-class KeyPrivateModel extends WlModelAbstract
+class KeySecretModel extends WlModelAbstract
 {
   /**
    * CSRF code of a client side.
@@ -19,21 +19,21 @@ class KeyPrivateModel extends WlModelAbstract
   public $s_csrf = '';
 
   /**
-   * Private key for request subscribing.
+   * Secret key for request signing.
    * <tt>null</tt> if not loaded.
    *
    * @get result
    * @var string|null
    */
-  public $s_key_private = null;
+  public $s_key_secret = null;
 
   /**
-   * Public client key.
+   * Session key.
    *
    * @get get
    * @var string
    */
-  public $s_key_public = '';
+  public $s_key_session = '';
 
   /**
    * Origin for client requests.
