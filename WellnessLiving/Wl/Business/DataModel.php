@@ -20,6 +20,14 @@ class DataModel extends WlModelAbstract
   public $a_tip_predefine = null;
 
   /**
+   * Locale ID, to search geo items
+   *
+   * @get result
+   * @var int
+  */
+  public $id_locale = 0;
+
+  /**
    * <tt>true</tt> if clients can enter progress log; <tt>false</tt> otherwise.
    *
    * <tt>null</tt> until loaded.
