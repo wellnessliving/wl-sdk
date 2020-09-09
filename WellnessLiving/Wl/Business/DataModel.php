@@ -20,7 +20,7 @@ class DataModel extends WlModelAbstract
   public $a_tip_predefine = null;
 
   /**
-   * Locale ID, to search geo items
+   * Locale ID, to search geo items.
    *
    * @get result
    * @var int
