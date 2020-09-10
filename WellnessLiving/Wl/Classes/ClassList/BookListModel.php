@@ -12,6 +12,9 @@ class BookListModel extends WlModelAbstract
   /**
    * Class list. Every element has next structure:
    * <dl>
+   *   <dt>array <var>a_class_tab</var></dt>
+   *   <dd>The list of tab keys for class.</dd>
+   *
    *   <dt>bool <var>is_active</var></dt>
    *   <dd><tt>true</tt> if class is active; <tt>false</tt> otherwise.</dd>
    *
