@@ -46,7 +46,7 @@ class PaymentModel extends WlModelAbstract
    *         Prorate date. For memberships only.
    *       </dd>
    *       <dt>
-   *         string [<var>dt_send</var>]
+   *         string [<var>dt_send_local</var>]
    *       </dt>
    *       <dd>
    *         Date when gift card must be send. For gft cards only.
@@ -123,7 +123,15 @@ class PaymentModel extends WlModelAbstract
    *         string [<var>s_code</var>]
    *       </dt>
    *       <dd>
-   *         Gift card code. Required for gift card.
+   *         Custom code for a gift card. If empty, random gift card code will be generated.
+   *         Specify it for gift cards only.
+   *       </dd>
+   *       <dt>
+   *         string [<var>s_image</var>]
+   *       </dt>
+   *       <dd>
+   *         Key of an image for a gift card. If empty, first of gift card images of the business will be used.
+   *         Specify it for gift cards only.
    *       </dd>
    *       <dt>
    *         string [<var>s_mail</var>]
