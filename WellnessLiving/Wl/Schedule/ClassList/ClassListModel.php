@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class ClassListModel extends WlModelAbstract
 {
   /**
-   * List of classes sessions starting with the date {@link Wl_Schedule_ClassList_ClassListModel.dt_date} and
+   * List of classes sessions starting with the date {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_date} and
    * in the 30 days ahead.
    *
    * @get result
