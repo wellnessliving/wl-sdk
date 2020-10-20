@@ -481,6 +481,7 @@ class WlModelAbstract
     curl_setopt($r_curl,CURLOPT_TIMEOUT,$this->_o_config::TIMEOUT_READ);
     curl_setopt($r_curl,CURLOPT_VERBOSE,true);
     curl_setopt($r_curl,CURLINFO_HEADER_OUT,true);
+	curl_setopt($r_curl, CURLOPT_FOLLOWLOCATION, true);
 
     return [
       'a_field' => $a_field,
