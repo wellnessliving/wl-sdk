@@ -124,6 +124,14 @@ class PaymentModel extends WlModelAbstract
   public $id_pay = null;
 
   /**
+   * Set if the operations are performed under the staff.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_staff = false;
+
+  /**
    * Purchase item ID. One of the {@link WlPurchaseItemSid} constants.
    *
    * <tt>null</tt> if not set yet.
@@ -183,6 +191,16 @@ class PaymentModel extends WlModelAbstract
    * @var string|null
    */
   public $m_total = null;
+
+  /**
+   * Manual surcharge amount.
+   *
+   * Empty string means automatic surcharge amount.
+   *
+   * @post post
+   * @var string
+   */
+  public $m_surcharge = '';
 
   /**
    * Discount code to be applied to purchase.
