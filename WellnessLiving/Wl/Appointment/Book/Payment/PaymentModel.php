@@ -183,16 +183,6 @@ class PaymentModel extends WlModelAbstract
   public $k_login_promotion = null;
 
   /**
-   * Total cost of a purchase.
-   *
-   * <tt>null</tt> if not set yet.
-   *
-   * @get result
-   * @var string|null
-   */
-  public $m_total = null;
-
-  /**
    * Manual surcharge amount.
    *
    * Empty string means automatic surcharge amount.
@@ -201,6 +191,16 @@ class PaymentModel extends WlModelAbstract
    * @var string
    */
   public $m_surcharge = '';
+
+  /**
+   * Total cost of a purchase.
+   *
+   * <tt>null</tt> if not set yet.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $m_total = null;
 
   /**
    * Discount code to be applied to purchase.
