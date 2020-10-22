@@ -114,12 +114,12 @@ class PaymentModel extends WlModelAbstract
   public $k_class_period = null;
 
   /**
-   * Set if the operations are performed under the staff.
+   * Set if the operations are performed by the staff.
    *
    * @post post
    * @var bool
    */
-  public $is_staff = false;
+  public $is_staff = 0;
 
   /**
    * ID of user's activity which corresponds to purchase is made. Not empty when booking process is finished.
