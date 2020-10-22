@@ -19,7 +19,6 @@ try
 
   // Retrieve notepad (it is a separate step of user sign in process)
   $o_notepad=new NotepadModel($o_config);
-  $o_notepad->s_login='/** Put your login here */';
   $o_notepad->get();
 
   // Sign in a user
