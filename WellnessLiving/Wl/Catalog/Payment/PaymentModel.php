@@ -424,16 +424,6 @@ class PaymentModel extends WlModelAbstract
   public $m_discount_flat = '';
 
   /**
-   * Manual surcharge amount.
-   *
-   * Empty string means automatic surcharge amount.
-   *
-   * @post post
-   * @var string
-   */
-  public $m_surcharge = '';
-
-  /**
    * Amount of tips. Optional.
    *
    * @post post
