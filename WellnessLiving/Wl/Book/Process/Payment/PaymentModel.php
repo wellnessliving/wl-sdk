@@ -114,14 +114,6 @@ class PaymentModel extends WlModelAbstract
   public $k_class_period = null;
 
   /**
-   * Set if the operations are performed by the staff.
-   *
-   * @post post
-   * @var bool
-   */
-  public $is_staff = 0;
-
-  /**
    * ID of user's activity which corresponds to purchase is made. Not empty when booking process is finished.
    *
    * @post result
@@ -138,16 +130,6 @@ class PaymentModel extends WlModelAbstract
    * @var string
    */
   public $k_pay_installment_template;
-
-  /**
-   * Manual surcharge amount.
-   *
-   * Empty string means automatic surcharge amount.
-   *
-   * @post post
-   * @var string
-   */
-  public $m_surcharge = '';
 
   /**
    * Discount code to be applied to purchase.
