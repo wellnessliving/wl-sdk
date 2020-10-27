@@ -314,6 +314,12 @@ class PaymentModel extends WlModelAbstract
    *     Whether this source was successfully charged.
    *   </dd>
    *   <dt>
+   *     string [<var>m_surcharge</var>]
+   *   </dt>
+   *   <dd>
+   *     Fixed surcharge amount.
+   *   </dd>
+   *   <dt>
    *     string [<var>s_index</var>]
    *   </dt>
    *   <dd>

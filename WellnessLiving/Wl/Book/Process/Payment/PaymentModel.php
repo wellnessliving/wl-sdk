@@ -46,6 +46,7 @@ class PaymentModel extends WlModelAbstract
    * <dt>bool <var>is_hide</var></dt><dd> Whether this payment method is hidden.
    *   Payment methods will be hidden if they are not enabled for the business.</dd>
    * <dt>bool [<var>is_success</var>=<tt>false</tt>]</dt><dd>Whether this source was successfully charged.</dd>
+   * <dt>string [<var>m_surcharge]</dt><dd>Fixed surcharge amount.</dd>
    * <dt>string <var>s_index</var></dt><dd>
    *   Index of this form. This corresponds the key this item is written in this array with.</dd>
    * </dl>
