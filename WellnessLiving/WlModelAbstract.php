@@ -474,7 +474,7 @@ class WlModelAbstract
         curl_setopt($r_curl,$s_option,$x_value);
     }
 
-    $s_rule = $this->_o_config::SDK_RULES[get_class($this)] ?? $this->_o_config::SDK_RULES[''] ?? null;
+    $s_rule = $this->_o_config::RESULT_CONVERSION_RULES[get_class($this)] ?? $this->_o_config::RESULT_CONVERSION_RULES[''] ?? null;
     if($s_rule)
       $o_request->a_header_request['X-Error-Rules'] = $s_rule;
 

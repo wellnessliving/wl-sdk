@@ -43,12 +43,14 @@ abstract class WlConfigAbstract
   /**
    * List of rules, which is used to convert error codes to HTTP codes.
    *
-   * Keys is name of class model or empty string. If has rules for specific model, they will used or will used default rules.
-   * Value is string with rules. Each rule are separated by commas.
+   * Keys are names of class model or empty string.
+   * * Empty string in a case if this is default rule.
+   * * Class name in a case if there are specific rules for particular class. Class specific rules will override default rules.
    *
-   * Format of rules: <ul>
+   * Value is a string with list of rules separated by comma. Each rule has next format: <ul>
    *   <li>
    *     <tt>default</tt>
+   *     Special rule with already predefined list of rules.
    *   </li>
    *   <li>
    *     <tt>[http code] [rule]</tt>
@@ -70,7 +72,7 @@ abstract class WlConfigAbstract
    *
    * @var array
    */
-  public const SDK_RULES = [];
+  public const RESULT_CONVERSION_RULES = [];
 
   /**
    * Timeout to wait for connection to establish.
