@@ -12,6 +12,38 @@ use WellnessLiving\WlAssertException;
 abstract class WlConfigAbstract
 {
   /**
+   * List of rules, which is used to convert error codes to HTTP codes.
+   *
+   * Keys is name of class model or empty string. If has rules for specific model, they will used or will used default rules.
+   * Value is string with rules. Each rule are separated by commas.
+   *
+   * Format of rules: <ul>
+   *   <li>
+   *     <tt>default</tt>
+   *   </li>
+   *   <li>
+   *     <tt>[http code] [rule]</tt>
+   *     Allow only 4xx codes. Check the list here: {@link https://en.wikipedia.org/wiki/List_of_HTTP_status_codes}.
+   *     Rules can be in next format:<dl>
+   *       <dt>[status]</dt>
+   *       <dd>Exact value of the status.</dd>
+   *       <dt>-[value]</dt>
+   *       <dd>Can be used for any status, which ends with -[value].</dd>
+   *       <dt>-[value]-/dt>
+   *       <dd>Can be used for any status, which includes -[value]-.</dd>
+   *       <dt>[value]-/dt>
+   *       <dd>Can be used for any status, which starts with [value]-.</dd>
+   *       <dt>-</dt>
+   *       <dd>Code, which should be set, if status is not <tt>ok</tt>,but we do not have any corresponding code in the rules.</dd>
+   *     </dl>
+   *   </li>
+   * </ul>
+   *
+   * @var array
+   */
+  public const SDK_RULES = [];
+
+  /**
    * URL of the server (including trailing slash).
    */
   public const AGENT='WellnessLiving SDK/1.0 (WellnessLiving SDK)';

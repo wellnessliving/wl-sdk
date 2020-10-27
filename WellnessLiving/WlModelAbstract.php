@@ -474,6 +474,10 @@ class WlModelAbstract
         curl_setopt($r_curl,$s_option,$x_value);
     }
 
+    $s_rule = $this->_o_config::SDK_RULES[get_class($this)] ?? $this->_o_config::SDK_RULES[''] ?? null;
+    if($s_rule)
+      $o_request->a_header_request['X-Error-Rules'] = $s_rule;
+
     curl_setopt($r_curl,CURLOPT_HEADER,true);
     curl_setopt($r_curl,CURLOPT_HTTPHEADER,$o_request->headerCurl());
     curl_setopt($r_curl,CURLOPT_RETURNTRANSFER,true);
@@ -481,7 +485,7 @@ class WlModelAbstract
     curl_setopt($r_curl,CURLOPT_TIMEOUT,$this->_o_config::TIMEOUT_READ);
     curl_setopt($r_curl,CURLOPT_VERBOSE,true);
     curl_setopt($r_curl,CURLINFO_HEADER_OUT,true);
-	curl_setopt($r_curl, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($r_curl,CURLOPT_FOLLOWLOCATION,true);
 
     return [
       'a_field' => $a_field,
