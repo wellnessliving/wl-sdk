@@ -12,7 +12,7 @@ class EnvironmentModel extends WlModelAbstract
   /**
    * A list of supported bank card systems.
    * Keys are card type based on its number, see {@link \WellnessLiving\Core\a\ACardSystemSid},
-   * and values are IDs of card systems, one of {@link \WellnessLiving\Core\a\ACardSystemSid} constants.
+   * and values are Keys of card systems, one of {@link \WellnessLiving\Core\a\ACardSystemSid} constants.
    *
    * @get result
    * @var array
@@ -33,11 +33,11 @@ class EnvironmentModel extends WlModelAbstract
    * Each element of the array has the following structure:
    * <dl>
    *   <dt>int <var>id_pay_method</var></dt>
-   *   <dd>ID of type of payment method. One of {@link WlPayMethodSid} constants.</dd>
+   *   <dd>Key of the payment method type. One of {@link WlPayMethodSid} constants.</dd>
    *   <dt>bool [<var>is_client</var>]</dt>
    *   <dd>Whether this method is available for clients. This field is only returned for custom payment methods.</dd>
    *   <dt>string|null <var>k_pay_method</var></dt>
-   *   <dd>ID of custom payment method.
+   *   <dd>Key of custom payment method.
    *     <tt>null</tt> if this payment method is not custom.</dd>
    *   <dt>string [<var>s_method</var>]</dt>
    *   <dd>Name of payment method. This field is only returned for custom payment methods.</dd>
@@ -58,8 +58,8 @@ class EnvironmentModel extends WlModelAbstract
   public $a_mobile_config = null;
 
   /**
-   * Array, where keys are payment methods type IDs, one of {@link WlPayMethodSid} constants,
-   * and values are IDs of payment processors, one of {@link WlPayProcessorSid} constants.
+   * Array, where keys are payment methods type Keys, one of {@link WlPayMethodSid} constants,
+   * and values are Keys of payment processors, one of {@link WlPayProcessorSid} constants.
    * `null` if no processors are set up.
    *
    * @get result
@@ -95,7 +95,7 @@ class EnvironmentModel extends WlModelAbstract
   public $is_save_source = null;
 
   /**
-   * ID of business to retrieve payment information for.
+   * Key of business to retrieve payment information for.
    *
    * <tt>'0'</tt> if not set yet.
    * Empty string if payment is performed with system merchant.
@@ -106,7 +106,7 @@ class EnvironmentModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * ID of currency to retrieve payment information for.
+   * Key of currency to retrieve payment information for.
    *
    * <tt>'0'</tt> if not set yet.
    * @get get
@@ -115,7 +115,7 @@ class EnvironmentModel extends WlModelAbstract
   public $k_currency = '0';
 
   /**
-   * ID of a location to retrieve payment information for.
+   * Key of the location to retrieve payment information for.
    *
    * <tt>'0'</tt> if not set yet.
    * @get get
