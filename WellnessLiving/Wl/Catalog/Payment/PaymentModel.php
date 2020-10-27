@@ -317,7 +317,7 @@ class PaymentModel extends WlModelAbstract
    *     string [<var>m_surcharge</var>]
    *   </dt>
    *   <dd>
-   *     Fixed surcharge amount.
+   *     Optional. Fixed surcharge amount.
    *   </dd>
    *   <dt>
    *     string [<var>s_index</var>]
