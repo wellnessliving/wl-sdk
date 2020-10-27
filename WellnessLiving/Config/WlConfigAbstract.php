@@ -70,6 +70,13 @@ abstract class WlConfigAbstract
    *   </li>
    * </ul>
    *
+   * Example: <code>
+   *   public const RESULT_CONVERSION_RULES = [
+   *     '' => 'default',
+   *     \WellnessLiving\Core\Passport\User\LoginModel::class => '418 code-teapot, 451 agreement-empty'
+   *   ];
+   * </code>
+   *
    * @var array
    */
   public const RESULT_CONVERSION_RULES = [];
