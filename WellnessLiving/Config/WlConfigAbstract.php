@@ -12,6 +12,35 @@ use WellnessLiving\WlAssertException;
 abstract class WlConfigAbstract
 {
   /**
+   * URL of the server (including trailing slash).
+   */
+  public const AGENT='WellnessLiving SDK/1.0 (WellnessLiving SDK)';
+
+  /**
+   * Secret code to authorize application.
+   *
+   * @var string
+   */
+  public const AUTHORIZE_CODE=null;
+
+  /**
+   * Application ID.
+   *
+   * @var string
+   */
+  public const AUTHORIZE_ID=null;
+
+  /**
+   * Name of a persistent cookie.
+   */
+  public const COOKIE_PERSISTENT='sp';
+
+  /**
+   * Name of a transient cookie.
+   */
+  public const COOKIE_TRANSIENT='st';
+
+  /**
    * List of rules, which is used to convert error codes to HTTP codes.
    *
    * Keys is name of class model or empty string. If has rules for specific model, they will used or will used default rules.
@@ -42,35 +71,6 @@ abstract class WlConfigAbstract
    * @var array
    */
   public const SDK_RULES = [];
-
-  /**
-   * URL of the server (including trailing slash).
-   */
-  public const AGENT='WellnessLiving SDK/1.0 (WellnessLiving SDK)';
-
-  /**
-   * Secret code to authorize application.
-   *
-   * @var string
-   */
-  public const AUTHORIZE_CODE=null;
-
-  /**
-   * Application ID.
-   *
-   * @var string
-   */
-  public const AUTHORIZE_ID=null;
-
-  /**
-   * Name of a persistent cookie.
-   */
-  public const COOKIE_PERSISTENT='sp';
-
-  /**
-   * Name of a transient cookie.
-   */
-  public const COOKIE_TRANSIENT='st';
 
   /**
    * Timeout to wait for connection to establish.
