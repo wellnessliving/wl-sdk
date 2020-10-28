@@ -317,7 +317,7 @@ class PaymentModel extends WlModelAbstract
    *     string [<var>m_surcharge</var>]
    *   </dt>
    *   <dd>
-   *     Optional. Fixed surcharge amount. See {@link EnvironmentModel::$m_surcharge}
+   *     Client-side calculated surcharge value. See {@link EnvironmentModel}
    *   </dd>
    *   <dt>
    *     string [<var>s_index</var>]
