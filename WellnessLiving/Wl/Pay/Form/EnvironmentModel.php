@@ -12,7 +12,7 @@ class EnvironmentModel extends WlModelAbstract
   /**
    * A list of supported bank card systems.
    * Keys are card type based on its number, see {@link \WellnessLiving\Core\a\ACardSystemSid},
-   * and values are Keys of card systems, one of {@link \WellnessLiving\Core\a\ACardSystemSid} constants.
+   * and values are IDs of card systems, one of {@link \WellnessLiving\Core\a\ACardSystemSid} constants.
    *
    * @get result
    * @var array
@@ -33,7 +33,7 @@ class EnvironmentModel extends WlModelAbstract
    * Each element of the array has the following structure:
    * <dl>
    *   <dt>int <var>id_pay_method</var></dt>
-   *   <dd>Key of the payment method type. One of {@link WlPayMethodSid} constants.</dd>
+   *   <dd>ID of type of payment method. One of {@link WlPayMethodSid} constants.</dd>
    *   <dt>bool [<var>is_client</var>]</dt>
    *   <dd>Whether this method is available for clients. This field is only returned for custom payment methods.</dd>
    *   <dt>string|null <var>k_pay_method</var></dt>
@@ -58,8 +58,8 @@ class EnvironmentModel extends WlModelAbstract
   public $a_mobile_config = null;
 
   /**
-   * Array, where keys are payment methods type Keys, one of {@link WlPayMethodSid} constants,
-   * and values are Keys of payment processors, one of {@link WlPayProcessorSid} constants.
+   * Array, where keys are payment methods type IDs, one of {@link WlPayMethodSid} constants,
+   * and values are IDs of payment processors, one of {@link WlPayProcessorSid} constants.
    * `null` if no processors are set up.
    *
    * @get result
