@@ -76,3 +76,5 @@ class WlAssertException extends \Exception
     throw new WlAssertException($a_data);
   }
 }
+
+?>
