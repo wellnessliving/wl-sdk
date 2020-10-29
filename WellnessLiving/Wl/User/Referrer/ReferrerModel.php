@@ -54,7 +54,7 @@ class ReferrerModel extends WlModelAbstract
   public $s_email;
 
   /**
-   * The business client key of the referrer.
+   * The business client ID of the referrer.
    *
    * @get result
    * @var string
