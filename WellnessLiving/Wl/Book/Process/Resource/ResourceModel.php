@@ -39,10 +39,16 @@ class ResourceModel extends WlModelAbstract
    *       <dd>Title of asset.</dd>
    *     </dl>
    *   </dd>
+   *   <dt>bool <var>has_current</var></dt>
+   *   <dd><tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise.</dd>
+   *   <dt>bool <var>is_client_select</var></dt>
+   *   <dd><tt>true</tt> - client selected resource from current group; <tt>false</tt> otherwise.</dd>
    *   <dt>bool <var>is_share</var></dt>
    *   <dd>Key resource use type</dd>
    *   <tt>true</tt> resources in this category do not belong to certain users, but to the entire session
    *   <tt>false</tt> belong to specific users
+   *   <dt>bool <var>is_select</var></dt>
+   *   <dd><tt>true</tt> - has selected resources; <tt>false</tt> - otherwise.</dd>
    *   <dt>string <var>k_resource_layout</var></dt>
    *   <dd>Key of asset layout.</li>
    *   <dt>string <var>k_resource_type</var></dt>
