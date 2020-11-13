@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Mode;
 /**
  * The source of visit.
  *
- * Last used ID: 14.
+ * Last used ID: 16.
  */
 class ModeSid
 {
@@ -60,6 +60,16 @@ class ModeSid
    * Means that we did not define mode.
    */
   public const UNDEFINED = 6;
+
+  /**
+   * Client booked session from Attendance Web App.
+   */
+  public const WEB_APP_ATTENDANCE = 16;
+
+  /**
+   * Client checked-in for the session through Check-In Web App.
+   */
+  public const WEB_APP_CHECK_IN = 15;
 
   /**
    * Staff booked session for client from website backend.
