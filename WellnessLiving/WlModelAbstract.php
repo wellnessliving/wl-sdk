@@ -198,7 +198,11 @@ class WlModelAbstract
             $a_operation=explode(',',$a_match[3][$i_match]);
             foreach($a_operation as $s_operation)
             {
-              WlAssertException::assertTrue($s_operation==='get'||$s_operation==='post'||$s_operation==='result',[
+              WlAssertException::assertTrue($s_operation==='delete'||
+                $s_operation==='get'||
+                $s_operation==='post'||
+                $s_operation==='put'||
+                $s_operation==='result',[
                 's_class' => $s_class,
                 's_field' => $o_property->name,
                 's_mode' => $s_value,
@@ -438,7 +442,18 @@ class WlModelAbstract
     if($this->_fileCheck($a_post))
       $o_request->a_header_request['Content-Type'] = 'multipart/form-data';
 
-    if($s_method==='put')
+    if($s_method==='delete')
+    {
+      curl_setopt($r_curl,CURLOPT_CUSTOMREQUEST,'DELETE');
+      if(count($a_post))
+      {
+        // If we are doing PUT request need to specify a content-length header and set post fields as a string.
+        $s_post = http_build_query($a_post);
+        $o_request->a_header_request['Content-Length']=strlen($s_post);
+        curl_setopt($r_curl,CURLOPT_POSTFIELDS,$s_post);
+      }
+    }
+    elseif($s_method==='put')
     {
       curl_setopt($r_curl,CURLOPT_CUSTOMREQUEST,'PUT');
       if(count($a_post))

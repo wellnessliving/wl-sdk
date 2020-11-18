@@ -13,7 +13,7 @@ class PromotionPayPauseModel extends WlModelAbstract
 
   /**
    * End date of pause period in login promotion timezone. Can be set to special value
-   * {@link PromotionPayPauseApi::DATE_END_INDEFINITE} to make the period indefinite until further action.
+   * {@link PromotionPayPauseModel::DATE_END_INDEFINITE} to make the period indefinite until further action.
    *
    * <tt>null</tt> if it shouldn't be updated.
    *
@@ -37,16 +37,6 @@ class PromotionPayPauseModel extends WlModelAbstract
   public $dt_start = null;
 
   /**
-   * Key of business to which currently handled pause period or login promotion belongs.
-   * Primary key in {@link \RsBusinessSql} table.
-   *
-   * <tt>null</tt> if not initialized.
-   *
-   * @var string|null
-   */
-  private $k_business = null;
-
-  /**
    * Key of login promotion to create pause for.
    * Primary key in {@link \RsLoginPromotionSql} table.
    *
@@ -60,16 +50,6 @@ class PromotionPayPauseModel extends WlModelAbstract
    * @var string|null
    */
   public $k_login_promotion = null;
-
-  /**
-   * Key of promotion to which login promotion or its pause period is linked.
-   * Primary key in {@link \RsPromotionSql} table.
-   *
-   * <tt>null</tt> if not initialized.
-   *
-   * @var string|null
-   */
-  private $k_promotion = null;
 
   /**
    * Key of the payment pause period to read or update.
@@ -96,16 +76,6 @@ class PromotionPayPauseModel extends WlModelAbstract
    * @var string|null
    */
   public $text_note = null;
-
-  /**
-   * Key of the client to which login promotion or its pause period belongs.
-   * Primary key in {@link \PassportLoginSql} table.
-   *
-   * <tt>null</tt> if not initialized.
-   *
-   * @var string|null
-   */
-  private $uid = null;
 }
 
 ?>
