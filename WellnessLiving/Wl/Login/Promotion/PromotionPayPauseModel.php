@@ -72,7 +72,7 @@ class PromotionPayPauseModel extends WlModelAbstract
    *
    * @get result
    * @post post
-   * @put put
+   * @put post
    * @var string|null
    */
   public $text_note = null;
