@@ -9,6 +9,9 @@ use WellnessLiving\WlModelAbstract;
  */
 class PromotionPayPauseModel extends WlModelAbstract
 {
+  /**
+   * End date value indicating indefinite pause period.
+   */
   public const DATE_END_INDEFINITE = '0000-00-00';
 
   /**
