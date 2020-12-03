@@ -83,6 +83,14 @@ class PageElementModel extends WlModelAbstract
   public $id_visit = null;
 
   /**
+   * <tt>true</tt> - if client can cancel session; <tt>false</tt> - otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_enable_client_cancel = null;
+
+  /**
    * Determines that current element of schedule can be check-in now.
    *
    * <tt>null</tt> if not loaded yet.
