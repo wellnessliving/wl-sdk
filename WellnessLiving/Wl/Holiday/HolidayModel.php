@@ -44,3 +44,5 @@ class HolidayModel extends WlModelAbstract
   public $k_business;
 
 }
+
+?>
