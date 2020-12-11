@@ -43,6 +43,14 @@ class HolidayModel extends WlModelAbstract
    */
   public $k_business;
 
+  /**
+   * Message of the closed day of business on date {@link \WellnessLiving\Wl\Holiday\HolidayApi::$dl_work}.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_business_title = '';
+
 }
 
 ?>
