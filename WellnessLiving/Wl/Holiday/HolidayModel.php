@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class HolidayModel extends WlModelAbstract
 {
   /**
-   * List of location keys which have a closed day by date {@link \WellnessLiving\Wl\Holiday\HolidayApi::$dl_work}.
+   * List of location's closed day titles by location keys on date {@link \WellnessLiving\Wl\Holiday\HolidayApi::$dl_work}.
    *
    * @get result
    * @var string[]
@@ -42,6 +42,14 @@ class HolidayModel extends WlModelAbstract
    * @var string
    */
   public $k_business;
+
+  /**
+   * Message of the closed day of business on date {@link \WellnessLiving\Wl\Holiday\HolidayApi::$dl_work}.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_business_title = '';
 
 }
 
