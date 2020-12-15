@@ -13,7 +13,7 @@ class HolidayModel extends WlModelAbstract
    * List of location's closed day titles by location keys on date {@link \WellnessLiving\Wl\Holiday\HolidayApi::$dl_work}.
    *
    * @get result
-   * @var string[]
+   * @var array
    */
   public $a_location_holiday;
 
