@@ -65,6 +65,14 @@ class PurchaseElementModel extends WlModelAbstract
   public $can_renew = false;
 
   /**
+   * Start date. Not empty only for passes/memberships.
+   *
+   * @get result
+   * @var string
+   */
+  public $dl_start = '';
+
+  /**
    * Not empty only for promotions.
    * Expiration date of promotion.
    *
