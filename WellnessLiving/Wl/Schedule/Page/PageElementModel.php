@@ -103,6 +103,14 @@ class PageElementModel extends WlModelAbstract
   public $is_checkin = null;
 
   /**
+   * <tt>true</tt> - if client can cancel session; <tt>false</tt> - otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_enable_client_cancel = null;
+
+  /**
    * <tt>true</tt> - this element belongs to whole event; <tt>false</tt> - belongs to class or to session event.
    *
    * <tt>null</tt> if not loaded yet.

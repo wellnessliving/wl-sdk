@@ -84,6 +84,16 @@ class DataModel extends WlModelAbstract
   public $k_business_token = '0';
 
   /**
+   * Currency key of the given business or system currency if business not passed.
+   *
+   * <tt>null</tt> until loaded.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $k_currency = null;
+
+  /**
    * Reply-to email address.
    *
    * <tt>null</tt> until loaded.
