@@ -47,7 +47,7 @@ class ClassListModel extends WlModelAbstract
   public $is_timezone_different = false;
 
   /**
-   * <tt>true</tt> - If exist at least one virtual event by specific
+   * <tt>true</tt> - If there exists at least one virtual service by a specified
    * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_business} and
    * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_class_tab},
    * <tt>false</tt> - otherwise.
