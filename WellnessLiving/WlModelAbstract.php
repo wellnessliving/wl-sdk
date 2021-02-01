@@ -438,7 +438,7 @@ class WlModelAbstract
       curl_setopt($r_curl,CURLOPT_CUSTOMREQUEST,strtoupper($s_method));
       if(count($a_post))
       {
-        // If we are doing PUT/Delete request need to specify a content-length header and set post fields as a string.
+        // If we are doing PUT/DELETE request need to specify a content-length header and set post fields as a string.
         $s_post = http_build_query($a_post);
         $o_request->a_header_request['Content-Length']=strlen($s_post);
         curl_setopt($r_curl,CURLOPT_POSTFIELDS,$s_post);
