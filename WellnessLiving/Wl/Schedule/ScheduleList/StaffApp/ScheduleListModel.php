@@ -153,6 +153,26 @@ class ScheduleListModel extends WlModelAbstract
   public $a_schedule = [];
 
   /**
+   * End date of the range from which list of schedule should be retrieved.
+   *
+   * <tt>null</tt> if range has no end date.
+   *
+   * @get get
+   * @var string
+   */
+  public $dl_end;
+
+  /**
+   * Start date of the range from which list of schedule should be retrieved.
+   *
+   * <tt>null</tt> if range has no start date.
+   *
+   * @get get
+   * @var string
+   */
+  public $dl_start;
+
+  /**
    * Date to show information for.
    * In MySQL format.
    *

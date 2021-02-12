@@ -228,11 +228,6 @@ class WlModelAbstract
               's_field' => $o_property->name,
               'text_message' => 'It is not allowed to specify POST operation for GET method.'
             ]);
-            WlAssertException::assertTrue($s_value!=='delete'||empty($a_field_this[$s_value]['post']),[
-              's_class' => $s_class,
-              's_field' => $o_property->name,
-              'text_message' => 'It is not allowed to specify POST operation for DELETE method.'
-            ]);
             WlAssertException::assertTrue(empty($a_field_this[$s_value]['get'])||empty($a_field_this[$s_value]['post']),[
               's_class' => $s_class,
               's_field' => $o_property->name,
@@ -438,12 +433,12 @@ class WlModelAbstract
     if($this->_fileCheck($a_post))
       $o_request->a_header_request['Content-Type'] = 'multipart/form-data';
 
-    if($s_method==='delete'||$s_method==='put')
+    if($s_method==='put'||$s_method==='delete')
     {
       curl_setopt($r_curl,CURLOPT_CUSTOMREQUEST,strtoupper($s_method));
       if(count($a_post))
       {
-        // If we are doing PUT request need to specify a content-length header and set post fields as a string.
+        // If we are doing PUT/DELETE request need to specify a content-length header and set post fields as a string.
         $s_post = http_build_query($a_post);
         $o_request->a_header_request['Content-Length']=strlen($s_post);
         curl_setopt($r_curl,CURLOPT_POSTFIELDS,$s_post);
