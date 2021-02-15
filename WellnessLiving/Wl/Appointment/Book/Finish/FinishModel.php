@@ -8,6 +8,8 @@ use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 
 /**
  * Model to complete booking appointment.
+ * 
+ * @deprecated Use {@link FinishModel_47} instead.
  */
 class FinishModel extends WlModelAbstract
 {
