@@ -88,6 +88,12 @@ class ElementModel extends WlModelAbstract
    *     Local date without time.
    *   </dd>
    *   <dt>
+   *     int <var>i_capacity</var>
+   *   </dt>
+   *   <dd>
+   *     Class capacity.
+   *   </dd>
+   *   <dt>
    *     int <var>i_duration</var>
    *   </dt>
    *   <dd>
