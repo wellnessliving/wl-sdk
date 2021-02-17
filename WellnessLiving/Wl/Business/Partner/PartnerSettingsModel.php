@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Wl\Business\Partner;
 
@@ -12,20 +12,21 @@ use WellnessLiving\WlModelAbstract;
 class PartnerSettingsModel extends WlModelAbstract
 {
   /**
+   * Home page tour of the business. Depends on type.
+   *
+   * @get result
+   * @var int
+   * @see \WellnessLiving\RsHomeTourSid
+   */
+  public $id_business_tour = 0;
+
+  /**
    * Business key.
    *
    * @get result
    * @var string
    */
   public $k_business = '';
-
-  /**
-   * Home page tour of the business. Depends on type.
-   *
-   * @get result
-   * @var string
-   */
-  public $text_business_tour = '';
 
   /**
    * Unique code that business can give other businesses to tell them about system.
@@ -60,7 +61,7 @@ class PartnerSettingsModel extends WlModelAbstract
   public $text_position;
 
   /**
-   * Review from the business representative.
+   * Text of the review about wellnessliving system.
    *
    * @get result
    * @var string
