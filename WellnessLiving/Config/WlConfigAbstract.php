@@ -113,4 +113,21 @@ abstract class WlConfigAbstract
       'text_message' => get_class($this).'::URL is not set.'
     ]);
   }
+
+  /**
+   * Returns CSRF code.
+   *
+   * @param string $s_session_key Session key.
+   * @return string Returns CSRF code based on specified session key.
+   * @throws WlAssertException In a case of an error with configuration settings.
+   */
+  final public function csrfCode(string $s_session_key): string
+  {
+    WlAssertException::assertTrue(is_string($this::AUTHORIZE_CODE)&&$this::AUTHORIZE_CODE,[
+      'text_message' => get_class($this).'::AUTHORIZE_CODE is not set.'
+    ]);
+
+    $t_time = time();
+    return hash('sha3-512',$s_session_key.'::'.$this::AUTHORIZE_CODE.'::'.$t_time).'.'.$t_time.'.'.substr($s_session_key,0,5);
+  }
 }
