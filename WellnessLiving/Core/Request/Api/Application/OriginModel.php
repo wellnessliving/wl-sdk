@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Core\Request\Api\Application;
 
@@ -21,14 +21,17 @@ class OriginModel extends WlModelAbstract
   /**
    * A list of origins.
    *
-   * One element of the array is link on the site, where API is allowed.
+   * Key is link on the site, where API is allowed.
+   *
+   * Value is a domain which used to make API requests.
+   * May be <tt>null</tt> and in this case the API requests are made directly to WL web server.</tt>
    *
    * <tt>null</tt> if is not initialized yet.
    *
    * @delete post
    * @get result
    * @put post
-   * @var string[]|null
+   * @var array|null
    */
   public $a_list;
 }
