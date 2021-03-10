@@ -23,7 +23,7 @@ class PaymentModel extends WlModelAbstract
    *     Additional configuration. May contain next keys:
    *     <dl>
    *       <dt>
-   *         array [<var>a_coupon_component</var>]
+   *         array [<var>a_quick_gift</var>]
    *       </dt>
    *       <dd>
    *         List of components to be added to the client. For quick gift cards only: <dl>
