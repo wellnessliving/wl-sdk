@@ -23,6 +23,18 @@ class PaymentModel extends WlModelAbstract
    *     Additional configuration. May contain next keys:
    *     <dl>
    *       <dt>
+   *         array [<var>a_coupon_component</var>]
+   *       </dt>
+   *       <dd>
+   *         List of components to be added to the client. For quick gift cards only: <dl>
+   *         <dt>int <var>i_count</var></dt>
+   *         <dd>Quantity of elements.</dd>
+   *         <dt>int <var>id_purchase_item</var></dt>
+   *         <dd>Purchase type of the element. One of {@link WlPurchaseItemSid} constants.</dd>
+   *         <dt>string <var>k_id</var></dt>
+   *         <dd>Primary key of the element depends on type of the element.</dd></dl>
+   *       </dd>
+   *       <dt>
    *         array [<var>a_wellness_program</var>]
    *       </dt>
    *       <dd>
