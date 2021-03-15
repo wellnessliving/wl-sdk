@@ -13,6 +13,12 @@ class ListModel extends WlModelAbstract
    * List of gift cards. Every element has the following keys:
    * <dl>
    *   <dt>
+   *     string <var>id_type</var>
+   *   </dt>
+   *   <dd>
+   *     Type of coupon. One of {@link WlTypeSid} constants.
+   *   </dd>
+   *   <dt>
    *     string <var>k_coupon</var>
    *   </dt>
    *   <dd>
