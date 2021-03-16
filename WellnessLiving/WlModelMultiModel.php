@@ -51,7 +51,6 @@ final class WlModelMultiModel extends WlModelAbstract
     $this->r_multi_curl = curl_multi_init();
     foreach($this->a_model as $o_model)
     {
-      /** @var WlModelAbstract $o_model */
       $a_request = $o_model->requestPrepare($s_method);
       $a_request['o_model'] = $o_model;
       $a_request_prepare[] = $a_request;

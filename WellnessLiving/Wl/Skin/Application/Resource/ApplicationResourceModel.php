@@ -66,6 +66,10 @@ class ApplicationResourceModel extends WlModelAbstract
         's_placeholder' => '[VERSION_CODE]'
       ],
       [
+        's_key' => 's_google_revers',
+        's_placeholder' => '[GOOGLE_REVERSED_CLIENT_ID]'
+      ],
+      [
         's_key' => 'text_domain',
         's_placeholder' => static::ID
       ],
@@ -136,6 +140,23 @@ class ApplicationResourceModel extends WlModelAbstract
     );
 
     file_put_contents($s_file,$text_content);
+  }
+
+  /**
+   * Updates file `www/js/google.plus.js`.
+   *
+   * @param string $k_business Key of a business for that sources are making.
+   * @param string $s_sources Path to directory with sources that must be processed.
+   * @throws WlAssertException In a case of an error.
+   */
+  private function _google(string $k_business,string $s_sources):void
+  {
+    $this->_file($k_business,$s_sources,'www/js/google.plus.js',[
+      [
+        's_key' => 's_google_id',
+        's_placeholder' => '[GOOGLE_CLIENT_ID]'
+      ]
+    ]);
   }
 
   /**
@@ -300,6 +321,7 @@ class ApplicationResourceModel extends WlModelAbstract
       $this->_config($k_business,$s_destination_application);
       $this->_index($k_business,$s_destination_application);
       $this->_communication($k_business,$s_destination_application);
+      $this->_google($k_business,$s_destination_application);
     }
   }
 }
