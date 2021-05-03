@@ -66,7 +66,7 @@ class ApplicationResourceModel extends WlModelAbstract
         's_placeholder' => '[VERSION_CODE]'
       ],
       [
-        's_key' => 's_google_revers',
+        's_key' => 's_google_reverse',
         's_placeholder' => '[GOOGLE_REVERSED_CLIENT_ID]'
       ],
       [
