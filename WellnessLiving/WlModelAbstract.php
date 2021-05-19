@@ -510,7 +510,7 @@ class WlModelAbstract
     $o_request->s_response=$s_response;
 
     // Extract cookies.
-    preg_match_all('~Set-Cookie: ([a-zA-Z]+)=([a-zA-Z0-9]+)~',$s_header,$a_match);
+    preg_match_all('~Set-Cookie: ([a-zA-Z]+)=([a-zA-Z0-9]+)~i',$s_header,$a_match);
     foreach($a_match[1] as $i => $s_name)
       $this->_o_cookie->cookieSet($s_name,$a_match[2][$i]);
 
