@@ -1,29 +1,31 @@
-<?php
+<?php 
 
 namespace WellnessLiving\Social\Facebook\Login;
 
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Tool to sing in/up with Facebook.
+ * A class is for authorizing user with facebook.
  */
 class LoginModel extends WlModelAbstract
 {
   /**
    * Application ID.
    *
+   * <tt>null</tt> for use application, which makes request. And use credential of application from {@link FacebookCredential} class for authorization user.
+   *
    * @post post
-   * @var string
+   * @var string|null
    */
-  public $s_application = '';
+  public $s_application;
 
   /**
-   * Facebook authorization token.
+   * Facebook token.
    *
    * @post post
    * @var string
    */
-  public $s_token = '';
+  public $s_token;
 }
 
 ?>
