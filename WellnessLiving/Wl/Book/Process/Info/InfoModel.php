@@ -213,16 +213,6 @@ class InfoModel extends WlModelAbstract
   public $s_time = null;
 
   /**
-   * Display special instructions for the class, <tt>false</tt> to hide them.
-   *
-   * <tt>null</tt> if not set yet.
-   *
-   * @get result
-   * @var bool|null
-   */
-  public $show_special_instructions;
-
-  /**
    * ID of a user who is making the book.
    *
    * <tt>null</tt> if not set yet.
