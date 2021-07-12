@@ -83,6 +83,16 @@ class PageElementModel extends WlModelAbstract
   public $id_note = null;
 
   /**
+   * Virtual provider ID. One of {@link \Wl\Virtual\VirtualProviderSid} constants.
+   *
+   * <tt>null</tt> for not virtual classes.
+   *
+   * @get result
+   * @var int|null
+   */
+  public $id_virtual_provider = null;
+
+  /**
    * ID of visit state. One of the {@link VisitSid} constants.
    *
    * <tt>null</tt> if not loaded yet.

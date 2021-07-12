@@ -214,6 +214,16 @@ class ElementModel extends WlModelAbstract
   public $i_session = null;
 
   /**
+   * Virtual provider ID. One of {@link \Wl\Virtual\VirtualProviderSid} constants.
+   *
+   * <tt>null</tt> for not virtual events.
+   *
+   * @get result
+   * @var int|null
+   */
+  public $id_virtual_provider=null;
+
+  /**
    * <tt>true</tt> - event is already booked; <tt>false</tt> - event is not booked.
    *
    * <tt>null</tt> if not set yet.
