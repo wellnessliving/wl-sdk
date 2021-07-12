@@ -50,6 +50,14 @@ class BusinessLeadModel extends WlModelAbstract
   public $text_phone;
 
   /**
+   * Business partner promo code.
+   *
+   * @post post
+   * @var string
+   */
+  public $text_promo_code;
+
+  /**
    * Web-site URL.
    *
    * @post post
