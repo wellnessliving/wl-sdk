@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Finish;
 /**
  * Model to complete booking appointment.
  */
-class Finish_47Model extends FinishModel
+class Finish47Model extends FinishModel
 {
   /**
    * All data from the provider model {@link Wl_Appointment_Book_ProviderModel}.
