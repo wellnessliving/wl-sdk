@@ -5,7 +5,9 @@ namespace WellnessLiving\Wl\Staff;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Api to add\change staff members in the business.
+ * This API can create a new staff in the business or edit specified staff.
+ * Access for this actions has logged user with specified permissions or guest during process of registration a new
+ * business (see {@link \WellnessLiving\Wl\Business\BusinessModel}).
  */
 class StaffElementModel extends WlModelAbstract
 {
@@ -21,12 +23,11 @@ class StaffElementModel extends WlModelAbstract
 
     /**
      * Key of the business to get\change staff member in.
+     * Field is required.
      *
      * Primary key in the {@link \RsBusinessSql}.
      *
-     * <tt>null</tt> if video does not have thumbnail image.
-     *
-     * @post get
+     * @post post
      * @var string
      */
     public $k_business;
@@ -45,6 +46,9 @@ class StaffElementModel extends WlModelAbstract
 
     /**
      * Staff email.
+     * Field is required for creating a new staff.
+     *
+     * `null` means to not change the current value of the field.
      *
      * @post post
      * @var string|null
@@ -53,6 +57,9 @@ class StaffElementModel extends WlModelAbstract
 
     /**
      * Staff first name.
+     * Field is required for creating a new staff.
+     *
+     * `null` means to not change the current value of the field.
      *
      * @post post
      * @var string|null
@@ -62,6 +69,8 @@ class StaffElementModel extends WlModelAbstract
     /**
      * Staff last name.
      *
+     * `null` means to not change the current value of the field.
+     *
      * @post post
      * @var string|null
      */
@@ -69,6 +78,9 @@ class StaffElementModel extends WlModelAbstract
 
     /**
      * Password.
+     * Field is required for creating a new staff.
+     *
+     * `null` means to not change the current value of the field.
      *
      * @post post
      * @var string|null
@@ -77,6 +89,9 @@ class StaffElementModel extends WlModelAbstract
 
     /**
      * Confirmation of password.
+     * Field is required for creating a new staff.
+     *
+     * `null` means to not change the current value of the field.
      *
      * @post post
      * @var string|null
@@ -86,18 +101,12 @@ class StaffElementModel extends WlModelAbstract
     /**
      * Staff job title.
      *
+     * `null` means to not change the current value of the field.
+     *
      * @post post
      * @var string|null
      */
     public $text_position;
-
-    /**
-     * User key. Primary key in {@link \PassportLoginSql} table.
-     *
-     * @get get
-     * @var string
-     */
-    public $uid;
 }
 
 ?>
