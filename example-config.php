@@ -2,9 +2,9 @@
 
 namespace WlSdkExample;
 
-use WellnessLiving\Config\WlConfigStaging;
+use WellnessLiving\Config\WlConfigAbstract;
 
-class ExampleConfig extends WlConfigStaging
+class ExampleConfig extends WlConfigAbstract
 {
   /**
    * @inheritDoc
