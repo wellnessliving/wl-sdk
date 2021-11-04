@@ -203,6 +203,11 @@ class ApplicationResourceModel extends WlModelAbstract
     }
     $a_resource_list = $this->a_application[$k_business]['a_resource'];
 
+    // We check the existence of a <tt>url()</tt>method in the configuration object for backward compatibility
+    // with the WellnessLiving SDK.
+    $o_config_sdk = $this->config();
+    $url_sdk = method_exists($o_config_sdk,'url') ? $o_config_sdk->url() : $o_config_sdk::URL;
+
     foreach($a_resource_list as $a_resource)
     {
       foreach($a_resource['a_group'] as $a_group)
@@ -214,7 +219,7 @@ class ApplicationResourceModel extends WlModelAbstract
             if(!$a_image['url_link'])
               continue;
 
-            $s_prefix = substr($a_image['url_link'],0,4)==='http'?'':$this->config()::URL;
+            $s_prefix = substr($a_image['url_link'],0,4)==='http'?'':$url_sdk;
             $s_image = file_get_contents($s_prefix.$a_image['url_link']);
 
             foreach($a_image['a_file'] as $s_file)
@@ -250,7 +255,7 @@ class ApplicationResourceModel extends WlModelAbstract
                 continue;
             }
 
-            $s_prefix = substr($a_file['url_link'],0,4)==='http'?'':$this->config()::URL;
+            $s_prefix = substr($a_file['url_link'],0,4)==='http'?'':$url_sdk;
             $r_file = fopen($s_prefix.$a_file['url_link'],'rb');
             if(!$r_file)
               continue;

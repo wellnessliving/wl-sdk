@@ -8,6 +8,7 @@ use WellnessLiving\Wl\Report\DataModel;
 use WellnessLiving\Wl\Report\WlReportGroupSid;
 use WellnessLiving\Wl\Report\WlReportSid;
 use WellnessLiving\WlAssertException;
+use WellnessLiving\WlRegionSid;
 use WellnessLiving\WlUserException;
 
 require_once __DIR__.'/WellnessLiving/wl-autoloader.php';
@@ -15,7 +16,7 @@ require_once __DIR__.'/example-config.php';
 
 try
 {
-  $o_config=new ExampleConfig();
+  $o_config=new ExampleConfig::create(WlRegionSid::US_EAST_1,true);
 
   // Retrieve notepad (it is a separate step of user sign in process)
   $o_notepad=new NotepadModel($o_config);
