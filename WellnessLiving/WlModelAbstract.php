@@ -367,7 +367,7 @@ class WlModelAbstract
 
     $o_request->o_config = $this->_o_config;
     $o_request->s_resource = $this->resource();
-    $o_request->url = $this->_o_config::URL.$o_request->s_resource;
+    $o_request->url = $this->_o_config->url().$o_request->s_resource;
 
     $o_request->dt_request = WlTool::dateNowMysql();
     $o_request->a_header_request['Date'] = WlTool::dateMysqlHttp($o_request->dt_request);
