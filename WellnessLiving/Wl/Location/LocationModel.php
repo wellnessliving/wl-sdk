@@ -25,7 +25,7 @@ class LocationModel extends WlModelAbstract
    * Field is required for creating a new location.
    *
    * @post post
-   * @var string
+   * @var string|null
    */
   public $k_city;
 
@@ -34,7 +34,7 @@ class LocationModel extends WlModelAbstract
    * <tt>null</tt> if need to create a new location.
    *
    * @post post,result
-   * @var string
+   * @var string|null
    */
   public $k_location;
 
@@ -43,6 +43,7 @@ class LocationModel extends WlModelAbstract
    * Field is optionally.
    *
    * @post post
+   * @var string|null
    */
   public $k_timezone;
 
@@ -51,16 +52,40 @@ class LocationModel extends WlModelAbstract
    * Field is required for creating a new location.
    *
    * @post post
-   * @var string
+   * @var string|null
    */
   public $text_address;
+
+  /**
+   * Mail address.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $text_email;
+
+  /**
+   * Phone number.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $text_phone;
+
+  /**
+   * Postal code.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $text_postal;
 
   /**
    * Title of the location.
    * Field is required for creating a new location.
    *
    * @post post
-   * @var string
+   * @var string|null
    */
   public $text_title;
 }
