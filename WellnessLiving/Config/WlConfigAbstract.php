@@ -111,7 +111,7 @@ abstract class WlConfigAbstract
    *
    * @var string|null
    */
-  private ?string $s_cookie_persistent;
+  private $s_cookie_persistent;
 
   /**
    * Name of a transient cookie in the current configuration.
@@ -121,7 +121,7 @@ abstract class WlConfigAbstract
    *
    * @var string|null
    */
-  private ?string $s_cookie_transient;
+  private $s_cookie_transient;
 
   /**
    * URL of the server in the current configuration (including trailing slash).
@@ -132,7 +132,7 @@ abstract class WlConfigAbstract
    * @var string|null
    * @see \WellnessLiving\Config\WlConfigAbstract::url()
    */
-  private ?string $url_host;
+  private $url_host;
 
   /**
    * Asserts that configuration object is configured correctly.
