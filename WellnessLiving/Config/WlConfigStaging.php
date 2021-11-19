@@ -2,11 +2,12 @@
 
 namespace WellnessLiving\Config;
 
+use WellnessLiving\WlRegionSid;
+
 /**
- * @deprecated Use direct inheritance from the {@link \WellnessLiving\Config\WlConfigAbstract} class and
- * {@link \WellnessLiving\Config\WlConfigAbstract::create()} method to create a configuration object.
+ * Base class for all testing configurations.
  */
-class WlConfigStaging extends WlConfigAbstract
+abstract class WlConfigStaging extends WlConfigAbstract
 {
   /**
    * @inheritDoc
@@ -21,7 +22,10 @@ class WlConfigStaging extends WlConfigAbstract
   /**
    * @inheritDoc
    */
-  public const URL='https://staging.wellnessliving.com/';
+  protected const REGION_URL = [
+    WlRegionSid::AP_SOUTHEAST_2 => 'https://demo.wellnessliving.com/',
+    WlRegionSid::US_EAST_1 => 'https://staging.wellnessliving.com/',
+  ];
 }
 
 ?>

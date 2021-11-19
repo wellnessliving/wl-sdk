@@ -201,12 +201,9 @@ class ApplicationResourceModel extends WlModelAbstract
         'text_message' => 'Resources information has not been returned by server.'
       ]);
     }
-    $a_resource_list = $this->a_application[$k_business]['a_resource'];
 
-    // We check the existence of a <tt>url()</tt>method in the configuration object for backward compatibility
-    // with the WellnessLiving SDK.
-    $o_config_sdk = $this->config();
-    $url_sdk = method_exists($o_config_sdk,'url') ? $o_config_sdk->url() : $o_config_sdk::URL;
+    $a_resource_list = $this->a_application[$k_business]['a_resource'];
+    $url_sdk = $this->config()->url();
 
     foreach($a_resource_list as $a_resource)
     {

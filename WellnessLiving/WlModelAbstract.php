@@ -44,7 +44,6 @@ class WlModelAbstract
    */
   public function __construct(WlConfigAbstract $o_config)
   {
-    $o_config->assertValid();
     $this->resource(); // Just to check that resource is set correctly.
     $this->_o_config=$o_config;
   }

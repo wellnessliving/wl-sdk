@@ -10,12 +10,12 @@ namespace WellnessLiving;
 class WlRegionSid
 {
   /**
-   * Sydney.
+   * Sydney, Australia.
    */
   public const AP_SOUTHEAST_2=2;
 
   /**
-   * North Virginia.
+   * North Virginia, USA.
    */
   public const US_EAST_1=1;
 
