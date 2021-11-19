@@ -38,6 +38,14 @@ class ListModel extends WlModelAbstract
    * @var string|null
    */
   public $k_class_tab = null;
+
+  /**
+   * User's key.
+   *
+   * @get get
+   * @var string
+   */
+  public $uid = '0';
 }
 
 ?>

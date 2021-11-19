@@ -5,12 +5,12 @@ namespace WellnessLiving;
 /**
  * Program type categories.
  */
-class RsProgramCategorySid
+class WlProgramCategorySid
 {
   /**
    * Purchase options to fill user's account:
    * <ul>
-   *   <li>{@link \RsProgramSid::ACCOUNT_PASS}</li>
+   *   <li>{@link \WellnessLiving\WlProgramSid::::ACCOUNT_PASS}</li>
    * </ul>
    */
   const ACCOUNT = 7;
@@ -18,9 +18,9 @@ class RsProgramCategorySid
   /**
    * Purchase options to pay for classes, events and enrollments:
    * <ul>
-   *   <li>{@link \RsProgramSid::CLASS_LIMIT}</li>
-   *   <li>{@link \RsProgramSid::CLASS_MEMBESHIP}</li>
-   *   <li>{@link \RsProgramSid::CLASS_PASS}</li>
+   *   <li>{@link \WellnessLiving\WlProgramSid::CLASS_LIMIT}</li>
+   *   <li>{@link \WellnessLiving\WlProgramSid::CLASS_MEMBESHIP}</li>
+   *   <li>{@link \WellnessLiving\WlProgramSid::CLASS_PASS}</li>
    * </ul>
    */
   const CLASSES = 1;
@@ -35,10 +35,10 @@ class RsProgramCategorySid
    *
    * This is a category grouped next program sids:
    * <ul>
-   *   <li>{@link \RsProgramSid::RESOURCE_DURATION}</li>
-   *   <li>{@link \RsProgramSid::RESOURCE_LIMIT}</li>
-   *   <li>{@link \RsProgramSid::RESOURCE_MEMBESHIP}</li>
-   *   <li>{@link \RsProgramSid::RESOURCE_PASS}</li>
+   *   <li>{@link \WellnessLiving\WlProgramSid::RESOURCE_DURATION}</li>
+   *   <li>{@link \WellnessLiving\WlProgramSid::RESOURCE_LIMIT}</li>
+   *   <li>{@link \WellnessLiving\WlProgramSid::RESOURCE_MEMBESHIP}</li>
+   *   <li>{@link \WellnessLiving\WlProgramSid::RESOURCE_PASS}</li>
    * </ul>
    */
   const RESOURCE = 6;
@@ -46,9 +46,9 @@ class RsProgramCategorySid
   /**
    * Purchase options to pay for appointments:
    * <ul>
-   *   <li>{@link \RsProgramSid::SERVICE_LIMIT}</li>
-   *   <li>{@link \RsProgramSid::SERVICE_MEMBESHIP}</li>
-   *   <li>{@link \RsProgramSid::SERVICE_PASS}</li>
+   *   <li>{@link \WellnessLiving\WlProgramSid::SERVICE_LIMIT}</li>
+   *   <li>{@link \WellnessLiving\WlProgramSid::SERVICE_MEMBESHIP}</li>
+   *   <li>{@link \WellnessLiving\WlProgramSid::SERVICE_PASS}</li>
    * </ul>
    */
   const SERVICE = 3;
@@ -56,9 +56,9 @@ class RsProgramCategorySid
   /**
    * Purchase options to pay for gym visits:
    * <ul>
-   *   <li>{@link \RsProgramSid::VISIT_LIMIT}</li>
-   *   <li>{@link \RsProgramSid::VISIT_MEMBESHIP}</li>
-   *   <li>{@link \RsProgramSid::VISIT_PASS}</li>
+   *   <li>{@link \WellnessLiving\WlProgramSid::VISIT_LIMIT}</li>
+   *   <li>{@link \WellnessLiving\WlProgramSid::VISIT_MEMBESHIP}</li>
+   *   <li>{@link \WellnessLiving\WlProgramSid::VISIT_PASS}</li>
    * </ul>
    */
   const VISIT = 2;

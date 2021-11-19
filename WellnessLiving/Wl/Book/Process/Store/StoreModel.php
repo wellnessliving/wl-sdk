@@ -63,21 +63,11 @@ class StoreModel extends WlModelAbstract
   /**
    * WellnessLiving mode type, one of {@link WlBookModeSid} constants.
    *
-   * @post post
+   * @get get
+   * @post get
    * @var int
    */
   public $id_mode = WlBookModeSid::APP_FRONTEND;
-
-  /**
-   * Does user agree liability release?
-   * <tt>true</tt> - user agrees; <tt>false</tt> - user does not agree or agreement not required.
-   *
-   * <tt>null</tt> if not set yet.
-   *
-   * @post post
-   * @var bool
-   */
-  public $is_agree = false;
 
   /**
    * <tt>true</tt> if need next steps of wizard (need to purchase something to book selected session);

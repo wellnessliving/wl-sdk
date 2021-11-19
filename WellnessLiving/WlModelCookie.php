@@ -32,6 +32,7 @@ class WlModelCookie
    *
    * @param string $s_name Name of the cookie.
    * @param string $s_value Value of the cookie.
+   * @see \Core\Request\Api\Test\ApiModelCookie\cookieGet
    */
   public function cookieSet($s_name,$s_value)
   {

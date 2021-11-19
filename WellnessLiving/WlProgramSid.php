@@ -5,72 +5,113 @@ namespace WellnessLiving;
 /**
  * Program types.
  */
-class RsProgramSid
+class WlProgramSid
 {
   /**
    * Special Membership that does not allow client to visit anything but fill client's account after purchase
    * and after renew.
    */
   const ACCOUNT_MEMBERSHIP = 21;
-  
+
   /**
    * Special Time-Based pass that does not allow client to visit anything but fill client's account after purchase
    * and after renew.
    */
   const ACCOUNT_PASS = 20;
-  
-  /** Class Pass. */
+
+  /**
+   * Class Pass.
+   */
   const CLASS_LIMIT = 1;
-  
-  /** Class Membership. */
+
+  /**
+   * Class Membership.
+   */
   const CLASS_MEMBERSHIP = 5;
-  
-  /** Class Time-Based pass. */
+
+  /**
+   * Class Time-Based pass.
+   */
   const CLASS_PASS = 6;
-  
-  /** WellnessLiving Promotion. */
+
+  /**
+   * WellnessLiving Promotion.
+   */
   const CLASS_PROSPECT = 4;
-  
-  /** Daily Deal Integration: not for sale, only redemption codes. */
+
+  /**
+   * Daily Deal Integration: not for sale, only redemption codes.
+   */
   const DEAL = 7;
-  
-  /** Enrollment. */
+
+  /**
+   * Enrollment.
+   */
   const ENROLLMENT = 14;
-  
-  /** Package. */
+
+  /**
+   * "Wellness Program" membership.
+   */
+  const INSURANCE_MEMBERSHIP = 22;
+
+  /**
+   * Package.
+   */
   const PACKAGE = 3;
-  
-  /** Resource Duration Pass. */
+
+  /**
+   * Resource Duration Pass.
+   */
   const RESOURCE_DURATION = 19;
-  
-  /** Resource Limit Pass. */
+
+  /**
+   * Resource Limit Pass.
+   */
   const RESOURCE_LIMIT = 15;
-  
-  /** Resource Membership. */
+
+  /**
+   * Resource Membership.
+   */
   const RESOURCE_MEMBERSHIP = 16;
-  
-  /** Resource Time-Based pass. */
+
+  /**
+   * Resource Time-Based pass.
+   */
   const RESOURCE_PASS = 17;
-  
-  /** Appointment Duration Pass. */
+
+  /**
+   * Appointment Duration Pass.
+   */
   const SERVICE_DURATION = 18;
-  
-  /** Appointment session pass. */
+
+  /**
+   * Appointment session pass.
+   */
   const SERVICE_LIMIT = 11;
-  
-  /** Appointment membership. */
+
+  /**
+   * Appointment membership.
+   */
   const SERVICE_MEMBERSHIP = 12;
-  
-  /** Appointment Time-Based pass. */
+
+  /**
+   * Appointment Time-Based pass.
+   */
   const SERVICE_PASS = 13;
-  
-  /** Gym Pass. */
+
+  /**
+   * Gym Pass.
+   */
   const VISIT_LIMIT = 8;
-  
-  /** Gym Membership. */
+
+  /**
+   * Gym Membership.
+   */
   const VISIT_MEMBERSHIP = 9;
-  
-  /** Gym Time-Based pass. */
+
+  /**
+   * Gym Time-Based pass.
+   */
   const VISIT_PASS = 10;
 }
 

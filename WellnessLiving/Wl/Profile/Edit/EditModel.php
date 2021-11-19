@@ -68,7 +68,6 @@ class EditModel extends WlModelAbstract
    * The form display mode. Short or full.
    * Assumes use only in user registration mode.
    *
-   * @get get
    * @get result
    * @post get
    * @var bool
@@ -96,6 +95,14 @@ class EditModel extends WlModelAbstract
    * @var string
    */
   public $k_business = '';
+
+  /**
+   * Password to be set for a new user.
+   *
+   * @post post
+   * @var string
+   */
+  public $text_password = '';
 
   /**
    * ID of a user to manipulate with.

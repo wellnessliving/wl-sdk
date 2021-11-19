@@ -10,67 +10,58 @@ use WellnessLiving\WlModelAbstract;
 class SettingModel extends WlModelAbstract
 {
   /**
-   * Whether 'Booking Confirmation Email' group is enabled.
+   * Whether email notifications related to purchases, contracts, and other activity in a client's account are enabled.
    *
    * @get result
    * @post post
    * @var bool
    */
-  public $is_email_booking_confirmation = 1;
+  public $is_account_management_email = 1;
 
   /**
-   * Whether 'Booking Reminder Email' group is enabled.
+   * Whether sms notifications related to purchases, contracts, and other activity in a client's account are enabled.
    *
    * @get result
    * @post post
    * @var bool
    */
-  public $is_email_booking_reminder = 1;
+  public $is_account_management_sms = 1;
 
   /**
-   * Whether 'Company News Email' group is enabled.
+   * Whether email notifications related to news and updates from the business regarding their services, availability and promotions are enabled.
    *
    * @get result
    * @post post
    * @var bool
    */
-  public $is_email_news = 1;
+  public $is_news_and_updates_email = 1;
 
   /**
-   * Whether all emails enabled.
+   * Whether sms notifications related to news and updates from the business regarding their services, availability and promotions are enabled.
    *
    * @get result
    * @post post
    * @var bool
    */
-  public $is_email_notification = 1;
+  public $is_news_and_updates_sms = 1;
 
   /**
-   * Whether 'Review Request Email' group is enabled.
+   * Whether email notifications related to the services a client has booked are enabled.
    *
    * @get result
    * @post post
    * @var bool
    */
-  public $is_email_review = 1;
+  public $is_schedule_and_reminders_email = 1;
 
   /**
-   * Whether all Push is enabled.
+   * Whether sms notifications related to the services a client has booked are enabled.
    *
    * @get result
    * @post post
    * @var bool
    */
-  public $is_push_notification = 1;
-
-  /**
-   * Whether all SMS is enabled.
-   *
-   * @get result
-   * @post post
-   * @var bool
-   */
-  public $is_sms_notification = 1;
+  public $is_schedule_and_reminders_sms = 1;
 
   /**
    * ID of a business to show information for.

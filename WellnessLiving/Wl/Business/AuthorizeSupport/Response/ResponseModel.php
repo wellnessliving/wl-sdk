@@ -10,7 +10,9 @@ use WellnessLiving\WlModelAbstract;
 class ResponseModel extends WlModelAbstract
 {
   /**
-   * <tt>true</tt> - grant access; <tt>false</tt> - deny access.
+   * Whether the user will be granted access or if access will be revoked.
+   * If <tt>true</tt> - then grant access; If <tt>false</tt> - then revoke access.
+   * Revoking access is a scheduled task set to be run within the next 15 minutes.
    *
    * @get get
    * @var bool
@@ -18,7 +20,7 @@ class ResponseModel extends WlModelAbstract
   public $is_grant = false;
 
   /**
-   * ID of the location to access.
+   * Key of the location to access.
    *
    * @get get
    * @var string
@@ -26,7 +28,7 @@ class ResponseModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
-   * ID of the user to grant access .
+   * Key of the user to grant access .
    *
    * @get get
    * @var string

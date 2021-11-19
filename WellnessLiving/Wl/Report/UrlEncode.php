@@ -366,7 +366,7 @@ class UrlEncode
    *   This value should be in range [0..<tt>$i_volume</tt>-1].
    * @throws WlAssertException In a case of an error with source data (<tt>i_value</tt> is out of range).
    */
-  protected function _binary_add($i_volume,$i_value)
+  protected function _binary_add($i_volume,$i_value):void
   {
     WlAssertException::assertTrue(!$i_volume||$i_value<$i_volume,[
       'i_value' => $i_value,
@@ -414,7 +414,7 @@ class UrlEncode
    *
    * @param string $s_value A value to add.
    */
-  protected function _dictionary_add($s_value)
+  protected function _dictionary_add(string $s_value):void
   {
     if(!isset($this->a_dictionary[$s_value]))
       $this->a_dictionary[$s_value] = true;
@@ -425,7 +425,7 @@ class UrlEncode
    *
    * @throws WlAssertException In a case of an assertion.
    */
-  protected function _dictionary_encode()
+  protected function _dictionary_encode():void
   {
     $i_dictionary = count($this->a_dictionary);
     WlAssertException::assertTrue($i_dictionary<=65535,[

@@ -20,6 +20,26 @@ class PageListModel extends WlModelAbstract
   public $a_visit = [];
 
   /**
+   * If date set, return a list of services before this date.
+   * Date and time in UTC timezone in MySQL format.
+   * If left as <tt>null</tt> then return a list of services, which will not be limited to the end date.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dtu_end = null;
+
+  /**
+   * If date set, return a list of services after this date.
+   * Date and time in UTC timezone in MySQL format.
+   * If left as <tt>null</tt> then return a list of services, which will not be limited to the start date.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dtu_start = null;
+
+  /**
    * If set to true, return a list of past services.
    * If left as <tt>null</tt> then return a list of upcoming services.
    *

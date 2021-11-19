@@ -2,8 +2,9 @@
 
 namespace WellnessLiving\Wl\Book\Process\Payment;
 
-use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Book\WlBookModeSid;
+use WellnessLiving\Wl\Pay\Form\EnvironmentModel;
+use WellnessLiving\WlModelAbstract;
 
 /**
  * Booking wizard for page "Pay / Billing info".
@@ -46,6 +47,7 @@ class PaymentModel extends WlModelAbstract
    * <dt>bool <var>is_hide</var></dt><dd> Whether this payment method is hidden.
    *   Payment methods will be hidden if they are not enabled for the business.</dd>
    * <dt>bool [<var>is_success</var>=<tt>false</tt>]</dt><dd>Whether this source was successfully charged.</dd>
+   * <dt>string [<var>m_surcharge]</dt><dd>Client-side calculated surcharge value. See {@link EnvironmentModel}</dd>
    * <dt>string <var>s_index</var></dt><dd>
    *   Index of this form. This corresponds the key this item is written in this array with.</dd>
    * </dl>
@@ -96,7 +98,8 @@ class PaymentModel extends WlModelAbstract
   /**
    * WellnessLiving mode type, one of the {@link WlBookModeSid} constants.
    *
-   * @post post
+   * @get get
+   * @post get
    * @var int
    */
   public $id_mode = WlBookModeSid::APP_FRONTEND;
@@ -119,6 +122,24 @@ class PaymentModel extends WlModelAbstract
    * @var string
    */
   public $k_login_activity_purchase = '0';
+
+  /**
+   * Installment template key.
+   * This property is optional. <tt>null</tt> if installment plan doesn't exists for bought item.
+   * <tt>0</tt> if installment plan doesn't selected for bought item from the list of installment plans.
+   *
+   * @post post
+   * @var string
+   */
+  public $k_pay_installment_template;
+
+  /**
+   * Discount code to be applied to purchase.
+   *
+   * @post post
+   * @var string
+   */
+  public $text_discount_code = '';
 
   /**
    * User ID.

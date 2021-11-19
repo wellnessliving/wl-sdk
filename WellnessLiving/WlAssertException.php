@@ -27,13 +27,13 @@ class WlAssertException extends \Exception
    * @param array $a_data Data to write to exception object in a case of failure.
    * @param Throwable $e_previous The previous throwable used for the exception chaining.
    */
-  public function __construct(array $a_data,\Throwable $e_previous=null)
+  public function __construct(array $a_data,$e_previous=null)
   {
     $this->a_data=$a_data;
 
     parent::__construct(
       isset($a_data['text_message'])?$a_data['text_message']:'Assertion without message is thrown.',
-      isset($a_data['s_assert'])?$a_data['s_assert']:'assert',
+      isset($a_data['i_code'])?$a_data['i_code']:0,
       $e_previous
     );
   }
@@ -76,3 +76,5 @@ class WlAssertException extends \Exception
     throw new WlAssertException($a_data);
   }
 }
+
+?>
