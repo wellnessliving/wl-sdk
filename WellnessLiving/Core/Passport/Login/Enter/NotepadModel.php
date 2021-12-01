@@ -35,24 +35,13 @@ class NotepadModel extends WlModelAbstract
    */
   public function hash($s_password)
   {
-    $s_hash=null;
-    $s_sha1=null;
-    $s_sha3=null;
-
-    if($this->s_hash==='sha3'||$this->s_hash==='sha1,sha3')
+    if($this->s_hash==='sha3')
     {
       $s_hash=NotepadModel::passwordHash($s_password);
-      if($this->s_hash==='sha3')
-        $s_sha3=hash('sha3-512',$this->s_notepad.$s_hash);
+      return hash('sha3-512',$this->s_notepad.$s_hash);
     }
-    if($this->s_hash!=='sha3')
-      $s_sha1=sha1($this->s_notepad.sha1($s_password));
 
-    if($s_hash&&$s_sha1)
-      return $s_sha1.' '.$s_hash;
-    if($s_sha3)
-      return $s_sha3;
-    return $s_sha1;
+    return sha1($this->s_notepad.sha1($s_password));
   }
 
   /**
