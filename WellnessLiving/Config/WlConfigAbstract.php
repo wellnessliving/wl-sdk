@@ -12,9 +12,9 @@ use WellnessLiving\WlRegionSid;
  * Your config class must inherit from {@link \WellnessLiving\Config\WlConfigStaging} or
  * {@link \WellnessLiving\Config\WlConfigProduction}.
  *
- * In your class the configurations must be overridden
- * the {@link \WellnessLiving\Config\WlConfigAbstract::AUTHORIZE_CODE} and
- * {@link \WellnessLiving\Config\WlConfigAbstract::AUTHORIZE_ID} constants.
+ * The following constants should be overridden in your class:
+ * * {@link \WellnessLiving\Config\WlConfigAbstract::AUTHORIZE_CODE};
+ * * {@link \WellnessLiving\Config\WlConfigAbstract::AUTHORIZE_ID}.
  *
  * To create a configuration object, use the {@link \WellnessLiving\Config\WlConfigAbstract::create()} method
  * on behalf of your class configuration class. For example:<code>
@@ -29,7 +29,7 @@ use WellnessLiving\WlRegionSid;
 abstract class WlConfigAbstract
 {
   /**
-   * URL of the server (including trailing slash).
+   * The agent name in the http-request header.
    */
   public const AGENT='WellnessLiving SDK/1.1 (WellnessLiving SDK)';
 
@@ -186,44 +186,45 @@ abstract class WlConfigAbstract
   final public static function create(int $id_region): WlConfigAbstract
   {
     WlAssertException::assertTrue(is_string(static::AUTHORIZE_CODE) && strlen(static::AUTHORIZE_CODE)>0,[
-      'static::class' => static::class,
+      'text_class' => static::class,
       'text_message' => 'The AUTHORIZE_CODE constant is not set. You need to override this constant in your configuration class.'
     ]);
 
     WlAssertException::assertTrue(is_string(static::AUTHORIZE_ID) && strlen(static::AUTHORIZE_ID)>0,[
-      'static::class' => static::class,
+      'text_class' => static::class,
       'text_message' => 'The AUTHORIZE_ID constant is not set. You need to override this constant in your configuration class.'
     ]);
 
     WlAssertException::assertTrue(is_string(static::COOKIE_TRANSIENT) && strlen(static::COOKIE_TRANSIENT)>0,[
-      'static::class' => static::class,
+      'text_class' => static::class,
       'text_message' => 'The COOKIE_TRANSIENT constant is not set. Use the correct parent class: WlConfigStaging or WlConfigProduction.'
     ]);
 
     WlAssertException::assertTrue(is_string(static::COOKIE_PERSISTENT) && strlen(static::COOKIE_PERSISTENT)>0,[
-      'static::class' => static::class,
+      'text_class' => static::class,
       'text_message' => 'The COOKIE_PERSISTENT constant is not set. Use the correct parent class: WlConfigStaging or WlConfigProduction.'
     ]);
 
-    WlAssertException::assertTrue(is_string(static::COOKIE_TRANSIENT) && strlen(static::COOKIE_TRANSIENT)>0,[
-      'static::class' => static::class,
-      'text_message' => 'The COOKIE_TRANSIENT constant is not set. Use the correct parent class: WlConfigStaging or WlConfigProduction.'
+    WlAssertException::assertTrue(is_array(static::REGION_URL),[
+      'text_class' => static::class,
+      'text_message' => 'The REGION_URL constant is not set. Use the correct parent class: WlConfigStaging or WlConfigProduction.'
     ]);
 
-    WlAssertException::assertTrue(is_array(static::REGION_URL),[
-      'static::class' => static::class,
-      'text_message' => 'The REGION_URL constant is not set. Use the correct parent class: WlConfigStaging or WlConfigProduction.'
+    WlAssertException::assertTrue(is_int($id_region),[
+      'id_region' => $id_region,
+      'text_class' => static::class,
+      'text_message' => 'The region identifier must be an integer. Please enter the correct region from "\WellnessLiving\WlRegionSid" class.'
     ]);
 
     $a_region_all = WlRegionSid::all();
     WlAssertException::assertTrue(in_array($id_region,$a_region_all),[
       'id_region' => $id_region,
-      'static::class' => static::class,
+      'text_class' => static::class,
       'text_message' => 'Region does not exist. Please enter the correct region from "\WellnessLiving\WlRegionSid" class.'
     ]);
 
     WlAssertException::assertTrue(isset(static::REGION_URL[$id_region]),[
-      'static::class' => static::class,
+      'text_class' => static::class,
       'text_message' => 'The URL endpoint API is not set for the requested region id. Let the developers know about it.'
     ]);
 
@@ -242,10 +243,6 @@ abstract class WlConfigAbstract
    */
   final public function csrfCode(string $s_session_key): string
   {
-    WlAssertException::assertTrue(is_string($this::AUTHORIZE_CODE)&&$this::AUTHORIZE_CODE,[
-      'text_message' => get_class($this).'::AUTHORIZE_CODE is not set.'
-    ]);
-
     $t_time = time();
     return hash('sha3-512',$s_session_key.'::'.$this::AUTHORIZE_CODE.'::'.$t_time).'.'.$t_time.'.'.substr($s_session_key,0,5);
   }
