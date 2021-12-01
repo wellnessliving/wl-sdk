@@ -9,7 +9,7 @@ use WellnessLiving\WlRegionSid;
  * Contains WellnessLiving SDK configuration.
  *
  * This class cannot be used as a parent of your config class.
- * Your config class must inherit from {@link \WellnessLiving\Config\WlConfigStaging} or
+ * Your config class must inherit from {@link \WellnessLiving\Config\WlConfigDeveloper} or
  * {@link \WellnessLiving\Config\WlConfigProduction}.
  *
  * In your class the configurations must be overridden
@@ -59,7 +59,7 @@ abstract class WlConfigAbstract
    * The value `null` is not valid. This constant must be overridden in inherited classes.
    *
    * @see \WellnessLiving\Config\WlConfigProduction
-   * @see \WellnessLiving\Config\WlConfigStaging
+   * @see \WellnessLiving\Config\WlConfigDeveloper
    */
   const COOKIE_PERSISTENT=null;
 
@@ -69,7 +69,7 @@ abstract class WlConfigAbstract
    * The value `null` is not valid. This constant must be overridden in inherited classes.
    *
    * @see \WellnessLiving\Config\WlConfigProduction
-   * @see \WellnessLiving\Config\WlConfigStaging
+   * @see \WellnessLiving\Config\WlConfigDeveloper
    */
   const COOKIE_TRANSIENT=null;
 
@@ -84,7 +84,7 @@ abstract class WlConfigAbstract
    *
    * @var string[]|null
    * @see \WellnessLiving\Config\WlConfigProduction
-   * @see \WellnessLiving\Config\WlConfigStaging
+   * @see \WellnessLiving\Config\WlConfigDeveloper
    */
   protected static $REGION_URL=null;
 
@@ -198,22 +198,17 @@ abstract class WlConfigAbstract
 
     WlAssertException::assertTrue(is_string(static::COOKIE_TRANSIENT) && strlen(static::COOKIE_TRANSIENT)>0,[
       'static::class' => static::class,
-      'text_message' => 'The COOKIE_TRANSIENT constant is not set. Use the correct parent class: WlConfigStaging or WlConfigProduction.'
+      'text_message' => 'The COOKIE_TRANSIENT constant is not set. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
     ]);
 
     WlAssertException::assertTrue(is_string(static::COOKIE_PERSISTENT) && strlen(static::COOKIE_PERSISTENT)>0,[
       'static::class' => static::class,
-      'text_message' => 'The COOKIE_PERSISTENT constant is not set. Use the correct parent class: WlConfigStaging or WlConfigProduction.'
-    ]);
-
-    WlAssertException::assertTrue(is_string(static::COOKIE_TRANSIENT) && strlen(static::COOKIE_TRANSIENT)>0,[
-      'static::class' => static::class,
-      'text_message' => 'The COOKIE_TRANSIENT constant is not set. Use the correct parent class: WlConfigStaging or WlConfigProduction.'
+      'text_message' => 'The COOKIE_PERSISTENT constant is not set. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
     ]);
 
     WlAssertException::assertTrue(is_array(static::$REGION_URL),[
       'static::class' => static::class,
-      'text_message' => 'The REGION_URL constant is not set. Use the correct parent class: WlConfigStaging or WlConfigProduction.'
+      'text_message' => 'The REGION_URL constant is not set. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
     ]);
 
     $a_region_all = WlRegionSid::all();

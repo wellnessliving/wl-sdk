@@ -48,7 +48,7 @@ Include our autoloader as it is made in our example:
 ## When you are ready to switch to production
 
 When you are ready to switch to production, change your connection configuration class to inherit from 
-`\WellnessLiving\Config\WlConfigProduction` (by default it inherits `\WellnessLiving\Config\WlConfigStaging`) which
+`\WellnessLiving\Config\WlConfigProduction` (by default it inherits `\WellnessLiving\Config\WlConfigDeveloper`) which
 leads to staging.
 
 ## Notes about our release rollout process
