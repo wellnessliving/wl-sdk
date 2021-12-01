@@ -24,7 +24,7 @@ abstract class WlConfigProduction extends WlConfigAbstract
    */
   protected static $REGION_URL = [
     WlRegionSid::AP_SOUTHEAST_2 => 'https://au.wellnessliving.com/',
-    WlRegionSid::US_EAST_1 => 'https://wellnessliving.com/',
+    WlRegionSid::US_EAST_1 => 'https://us.wellnessliving.com/',
   ];
 }
 
