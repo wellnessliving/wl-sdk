@@ -2,8 +2,6 @@
 
 namespace WellnessLiving;
 
-use Throwable;
-
 /**
  * This exception is thrown in a case of a programmatic client-side error.
  *
@@ -25,7 +23,7 @@ class WlAssertException extends \Exception
    * Constructs a new assertion exception.
    *
    * @param array $a_data Data to write to exception object in a case of failure.
-   * @param Throwable $e_previous The previous throwable used for the exception chaining.
+   * @param \Exception $e_previous The previous exception used for the exception chaining.
    */
   public function __construct(array $a_data,$e_previous=null)
   {
