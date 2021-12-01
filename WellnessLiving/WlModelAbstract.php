@@ -2,8 +2,6 @@
 
 namespace WellnessLiving;
 
-use ReflectionClass;
-use ReflectionException;
 use WellnessLiving\Config\WlConfigAbstract;
 
 /**
@@ -167,9 +165,9 @@ class WlModelAbstract
 
     try
     {
-      $o_class = new ReflectionClass($s_class);
+      $o_class = new \ReflectionClass($s_class);
     }
-    catch (ReflectionException $e)
+    catch (\ReflectionException $e)
     {
       throw new WlAssertException([
         'e' => $e,
