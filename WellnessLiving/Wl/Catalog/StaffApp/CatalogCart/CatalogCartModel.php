@@ -75,6 +75,33 @@ class CatalogCartModel extends WlModelAbstract
     public $is_check_cart_item = false;
 
     /**
+     * Whether business applied commission at checkout.
+     *
+     * @get result
+     * @var bool
+     */
+    public $is_commission = false;
+
+    /**
+     * Whether display custom receipt notes at checkout.
+     *
+     * @get result
+     * @var bool
+     */
+    public $is_receipt_note = false;
+
+    /**
+     * Business key.
+     *
+     * <b>This field is not used directly and described for correct auto generation JavaScript.</b>
+     *
+     * @get get
+     * @var string
+     * @see \RsBusinessSql
+     */
+    public $k_business = '';
+
+    /**
      * Business location key.
      *
      * @get get
@@ -157,6 +184,23 @@ class CatalogCartModel extends WlModelAbstract
      * @var string|null
      */
     public $text_error_code = null;
+
+    /**
+     * Custom receipt note text.
+     *
+     * @get result
+     * @var string
+     */
+    public $text_receipt_note = '';
+
+    /**
+     * Current user key.
+     *
+     * @get get
+     * @var string
+     * @see \PassportLoginSql
+     */
+    public $uid_current = '';
 
     /**
      * User ID, who performs purchase.
