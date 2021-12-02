@@ -67,6 +67,14 @@ class CatalogCartModel extends WlModelAbstract
     public $f_discount_percent = 0;
 
     /**
+     * `true` to enable checking every item at the cart; `false` to disable.
+     *
+     * @get get
+     * @var bool
+     */
+    public $is_check_cart_item = false;
+
+    /**
      * Business location key.
      *
      * @get get
