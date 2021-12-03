@@ -119,7 +119,7 @@ abstract class WlConfigAbstract
    * </ul>
    *
    * Example: <code>
-   *   public const RESULT_CONVERSION_RULES = [
+   *   const RESULT_CONVERSION_RULES = [
    *     '' => 'default',
    *     \WellnessLiving\Core\Passport\User\LoginModel::class => '418 code-teapot,451 signature-empty'
    *   ];
