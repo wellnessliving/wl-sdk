@@ -79,7 +79,7 @@ abstract class WlConfigAbstract
    * The value `null` is not valid. This constant must be overridden in inherited classes.
    *
    * The correct value for the constant is an array.
-   * The key of array is region id. One of {@link \WellnessLiving\WlRegionSid} constant.
+   * The key of array is data center region id. One of {@link \WellnessLiving\WlRegionSid} constant.
    * The value is URL of the API endpoint for region.
    *
    * @see \WellnessLiving\Config\WlConfigProduction
@@ -178,7 +178,7 @@ abstract class WlConfigAbstract
   /**
    * Creates a configuration object.
    *
-   * @param int $id_region ID of a region in which information about this business is stored.
+   * @param int $id_region ID of a data center region in which information about this business is stored.
    *   One of {@link \WellnessLiving\WlRegionSid} constants.
    * @return WlConfigAbstract Configuration object.
    * @throws WlAssertException In a case of an error with argument.
@@ -213,7 +213,7 @@ abstract class WlConfigAbstract
     WlAssertException::assertTrue(is_int($id_region),[
       'id_region' => $id_region,
       'text_class' => static::class,
-      'text_message' => 'The region identifier must be an integer. Please enter the correct region from "\WellnessLiving\WlRegionSid" class.'
+      'text_message' => 'The data center region identifier must be an integer. Please enter the correct region from "\WellnessLiving\WlRegionSid" class.'
     ]);
 
     $a_region_all = WlRegionSid::all();
@@ -225,7 +225,7 @@ abstract class WlConfigAbstract
 
     WlAssertException::assertTrue(isset(static::REGION_URL[$id_region]),[
       'text_class' => static::class,
-      'text_message' => 'The URL endpoint API is not set for the requested region id. Let the developers know about it.'
+      'text_message' => 'The URL endpoint API is not set for the requested data center region id. Let the developers know about it.'
     ]);
 
     $o_config = new static();
