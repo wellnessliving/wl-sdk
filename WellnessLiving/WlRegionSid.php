@@ -3,12 +3,13 @@
 namespace WellnessLiving;
 
 /**
- * List of available regions.
+ * List of available data center regions.
  *
- * The business independently chooses the region in which it will be registered.
- * The choice of the region does not depend on the actual location of the business.
+ * The business independently chooses the data center region in which it will be registered.
+ * The choice of the data center region does not depend on the actual location of the business.
  * The region determines the data center in which the Wellnessliving system operates.
  * The region should be chosen based on the access speed to the data center from business clients.
+ * Business from any region can be registered in any data center, but only in one.
  *
  * All businesses registered before December 2021 belong to the {@link \WellnessLiving\WlRegionSid::US_EAST_1} region.
  *
@@ -27,9 +28,9 @@ class WlRegionSid
   const US_EAST_1=1;
 
   /**
-   * Returns a list of region identifiers.
+   * Returns a list of data center region identifiers.
    *
-   * @return int[] List of region identifiers.
+   * @return int[] List of data center region identifiers.
    */
   public static function all()
   {
