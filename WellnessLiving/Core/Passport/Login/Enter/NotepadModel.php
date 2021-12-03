@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Core\Passport\Login\Enter;
 
+use WellnessLiving\Sha3;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -9,14 +10,6 @@ use WellnessLiving\WlModelAbstract;
  */
 class NotepadModel extends WlModelAbstract
 {
-  /**
-   * Type of the hash.
-   *
-   * @get result
-   * @var string|null
-   */
-  public $s_hash=null;
-
   /**
    * Value of notepad to hash user password. 20 lowercase hexadecimal digits.
    *
@@ -35,13 +28,7 @@ class NotepadModel extends WlModelAbstract
    */
   public function hash($s_password)
   {
-    if($this->s_hash==='sha3')
-    {
-      $s_hash=NotepadModel::passwordHash($s_password);
-      return hash('sha3-512',$this->s_notepad.$s_hash);
-    }
-
-    return sha1($this->s_notepad.sha1($s_password));
+    return Sha3::hash($this->s_notepad.NotepadModel::passwordHash($s_password),512);
   }
 
   /**
