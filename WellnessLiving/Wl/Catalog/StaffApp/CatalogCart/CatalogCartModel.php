@@ -72,7 +72,7 @@ class CatalogCartModel extends WlModelAbstract
      * @get get
      * @var bool
      */
-    public $is_check_cart_item = false;
+    public $is_check_cart_item = 0;
 
     /**
      * Whether business applied commission at checkout.
@@ -80,7 +80,7 @@ class CatalogCartModel extends WlModelAbstract
      * @get result
      * @var bool
      */
-    public $is_commission = false;
+    public $is_commission = 0;
 
     /**
      * Whether display custom receipt notes at checkout.
@@ -88,7 +88,7 @@ class CatalogCartModel extends WlModelAbstract
      * @get result
      * @var bool
      */
-    public $is_receipt_note = false;
+    public $is_receipt_note = 0;
 
     /**
      * Business key.
