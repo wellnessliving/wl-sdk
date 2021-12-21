@@ -33,6 +33,17 @@ class RegionModel extends WlModelAbstract
    * @var int
    */
   public $id_locale = null;
+
+  /**
+   * Whether to get regions for all locales.
+   *
+   * <tt>true</tt> - to get regions for all locales, <tt>false</tt> - otherwise.
+   * By default <tt>false</tt>.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_locale_all = 0;
 }
 
 ?>

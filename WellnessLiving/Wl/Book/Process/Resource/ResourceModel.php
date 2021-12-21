@@ -20,13 +20,42 @@ class ResourceModel extends WlModelAbstract
 
   /**
    * List of asset categories which are available for specified session. Every element has next keys:
-   * <ul><li>{}[] <tt>a_resource_list</tt> List of available assets. Every element has next keys:
-   *   <ul><li>Number <tt>i_index</tt> Number of asset. Actual for assets with quantity more than <tt>1</tt>.</li>
-   *     <li>String <tt>k_resource</tt> ID of asset in database.</li>
-   *     <li>String <tt>s_resource</tt> Title of asset.
-   *   </li></ul></li><li>String <tt>k_resource_layout</tt> ID of asset layout.</li>
-   *   <li>String <tt>k_resource_type</tt> ID of asset category.</li>
-   *   <li>String <tt>s_resource_type</tt> Title of asset category.</li></ul>
+   * <dl>
+   *   <dt>array <var>a_client</var></dt>
+   *   <dd>
+   *     List of client who have already occupied assets for this session.
+   *     1st level keys - asset keys; 2nd level keys - numbers of asset.
+   *     For example, if you want to check if 10th asset with key '125' if free,
+   *     you have to check if <tt>a_client['125']['10']</tt> is empty.
+   *   </dd>
+   *   <dt>array[] <var>a_resource_list</var></dt>
+   *   <dd>List of available assets. Every element has next keys:
+   *     <dl>
+   *       <dt>int <var>i_index</var></dt>
+   *       <dd>Number of asset. Actual for assets with quantity more than <tt>1</tt>.</dd>
+   *       <dt>string <var>k_resource</var></dt>
+   *       <dd>Key of asset in database.</dd>
+   *       <dt>string <var>s_resource</var></dt>
+   *       <dd>Title of asset.</dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>bool <var>has_current</var></dt>
+   *   <dd><tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise.</dd>
+   *   <dt>bool <var>is_client_select</var></dt>
+   *   <dd><tt>true</tt> - client selected resource from current group; <tt>false</tt> otherwise.</dd>
+   *   <dt>bool <var>is_select</var></dt>
+   *   <dd><tt>true</tt> - has selected resources; <tt>false</tt> - otherwise.</dd>
+   *   <dt>bool <var>is_share</var></dt>
+   *   <dd>Key resource use type</dd>
+   *   <tt>true</tt> resources in this category do not belong to certain users, but to the entire session
+   *   <tt>false</tt> belong to specific users
+   *   <dt>string <var>k_resource_layout</var></dt>
+   *   <dd>Key of asset layout.</li>
+   *   <dt>string <var>k_resource_type</var></dt>
+   *   <dd>Key of asset category.</dd>
+   *   <dt>string <var>s_resource_type</var></dt>
+   *   <dd>Title of asset category.</dd>
+   * </dl>
    *
    * <tt>null</tt> if not set yet.
    *
@@ -81,7 +110,8 @@ class ResourceModel extends WlModelAbstract
   /**
    * WellnessLiving mode type. One of {@link WlBookModeSid} constants.
    *
-   * @post post
+   * @get get
+   * @post get
    * @var int
    */
   public $id_mode =  WlBookModeSid::APP_FRONTEND;

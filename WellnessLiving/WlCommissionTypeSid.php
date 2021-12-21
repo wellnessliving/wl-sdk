@@ -17,4 +17,5 @@ class WlCommissionTypeSid
    */
   const PERCENT = 2;
 }
+
 ?>

@@ -42,9 +42,58 @@ class WlModelAbstract
    */
   public function __construct(WlConfigAbstract $o_config)
   {
-    $o_config->assertValid();
     $this->resource(); // Just to check that resource is set correctly.
     $this->_o_config=$o_config;
+  }
+
+  /**
+   * Checks if posted data contains files to be uploaded.
+   *
+   * Converts found files to objects of <tt>CURLFile</tt> class.
+   *
+   * @param mixed $x_data Posted data.
+   * @return bool <tt>true</tt> if posted data contains at least 1 file; <tt>false</tt> otherwise.
+   */
+  private function _fileCheck(&$x_data)
+  {
+    if(is_object($x_data)&&($x_data instanceof WlFile))
+    {
+      $x_data = curl_file_create($x_data->name(),$x_data->mime(),$x_data->postname());
+      return true;
+    }
+
+    if(!is_array($x_data))
+      return false;
+
+    $is_file = false;
+    foreach($x_data as &$x_value)
+    {
+      if($this->_fileCheck($x_value))
+        $is_file = true;
+    }
+    unset($x_value);
+
+    return $is_file;
+  }
+
+  /**
+   * Closes curl resource.
+   *
+   * @param resource $r_curl Curl resource.
+   */
+  protected function closeCurl($r_curl)
+  {
+    curl_close($r_curl);
+  }
+
+  /**
+   * Gets model configuration.
+   *
+   * @return WlConfigAbstract Model configuration.
+   */
+  public function config()
+  {
+    return $this->_o_config;
   }
 
   /**
@@ -176,11 +225,6 @@ class WlModelAbstract
               's_field' => $o_property->name,
               'text_message' => 'It is not allowed to specify POST operation for GET method.'
             ]);
-            WlAssertException::assertTrue($s_value!=='delete'||empty($a_field_this[$s_value]['post']),[
-              's_class' => $s_class,
-              's_field' => $o_property->name,
-              'text_message' => 'It is not allowed to specify POST operation for DELETE method.'
-            ]);
             WlAssertException::assertTrue(empty($a_field_this[$s_value]['get'])||empty($a_field_this[$s_value]['post']),[
               's_class' => $s_class,
               's_field' => $o_property->name,
@@ -221,6 +265,45 @@ class WlModelAbstract
   }
 
   /**
+   * Normalizes value for sending over HTTP.
+   *
+   * @param string $s_name Name of a field which value is normalized.
+   * @param mixed $x_value Value to normalize.
+   * @return array|string Normalized value.
+   */
+  private function normalizeValue($s_name,$x_value)
+  {
+    if(is_string($x_value))
+      return $x_value;
+    if(is_numeric($x_value))
+      return (string)$x_value;
+    if($x_value===true)
+      return '1';
+    if($x_value===false)
+      return '';
+    if(is_object($x_value)&&($x_value instanceof WlFile))
+      return $x_value;
+
+    WlAssertException::assertTrue(is_array($x_value),[
+      's_class' => get_class($this),
+      's_property' => $s_name,
+      'text_message' => 'Invalid value in a field of an SDK model. Only strings, boolean and arrays are allowed.',
+      'x_value' => $x_value
+    ]);
+
+    foreach($x_value as $s_key => &$x_element)
+    {
+      if($x_element===null)
+        unset($x_value[$s_key]);
+      else
+        $x_element=$this->normalizeValue($s_name.'.'.$s_key,$x_element);
+    }
+    unset($x_element);
+
+    return $x_value;
+  }
+
+  /**
    * Performs request with POST method.
    *
    * @return WlModelRequest Object with complete request data.
@@ -254,16 +337,41 @@ class WlModelAbstract
    */
   private function request($s_method)
   {
+    $a_request = $this->requestPrepare($s_method);
+
+    $s_response = curl_exec($a_request['r_curl']);
+
+    return $this->requestResult($s_method, $a_request['r_curl'], $a_request['o_request'], $a_request['a_field'], $s_response);
+  }
+
+  /**
+   * Prepares the Curl request.
+   *
+   * @param string $s_method Method of the request. One of the next values: 'get', 'post', 'put', 'delete'.
+   * @return array Data with prepared request with the following structure:
+   * <dl>
+   *   <dt>array <var>a_field</var> List of all prepared fields to be send via CURL.</dt>
+   *   <dt>{@link WlModelRequest} <var>o_request</var> Object with complete request data.</dt>
+   *   <dt>resource <var>r_curl</var> Curl resource.</dt>
+   * </dl>
+   *
+   * @throws WlAssertException In a case of an assertion.
+   * @throws WlUserException  In a case of error with user data.
+   */
+  protected function requestPrepare($s_method)
+  {
     $o_request = new WlModelRequest();
+
+    /** @var WlConfigAbstract $s_config_class */
+    $s_config_class = get_class($this->_o_config);
 
     $o_request->o_config = $this->_o_config;
     $o_request->s_resource = $this->resource();
-    $o_config=$this->_o_config;
-    $o_request->url = $o_config::URL.$o_request->s_resource;
+    $o_request->url = $this->_o_config->url().$o_request->s_resource;
 
     $o_request->dt_request = WlTool::dateNowMysql();
     $o_request->a_header_request['Date'] = WlTool::dateMysqlHttp($o_request->dt_request);
-    $o_request->a_header_request['User-Agent'] = $o_config::AGENT;
+    $o_request->a_header_request['User-Agent'] = $s_config_class::AGENT;
     $o_request->s_method = $s_method;
 
     $a_field=$this::fieldConfig();
@@ -278,6 +386,8 @@ class WlModelAbstract
       $x_value=$this->$s_field;
       if($x_value===null)
         continue;
+
+      $x_value=$this->normalizeValue($s_field,$x_value);
 
       if(!empty($a_method[$s_method]['get']))
       {
@@ -319,12 +429,16 @@ class WlModelAbstract
     if($s_cookie)
       $o_request->a_header_request['Cookie'] = $s_cookie;
 
-    if($s_method==='put')
+    // If posted data contains files, type of request content may be only 'multipart/form-data'.
+    if($this->_fileCheck($a_post))
+      $o_request->a_header_request['Content-Type'] = 'multipart/form-data';
+
+    if($s_method==='put'||$s_method==='delete')
     {
-      curl_setopt($r_curl,CURLOPT_CUSTOMREQUEST,'PUT');
+      curl_setopt($r_curl,CURLOPT_CUSTOMREQUEST,strtoupper($s_method));
       if(count($a_post))
       {
-        // If we are doing PUT request need to specify a content-length header and set post fields as a string.
+        // If we are doing PUT/DELETE request need to specify a content-length header and set post fields as a string.
         $s_post = http_build_query($a_post);
         $o_request->a_header_request['Content-Length']=strlen($s_post);
         curl_setopt($r_curl,CURLOPT_POSTFIELDS,$s_post);
@@ -355,28 +469,59 @@ class WlModelAbstract
         curl_setopt($r_curl,$s_option,$x_value);
     }
 
+    $s_rule = isset($s_config_class::$RESULT_CONVERSION_RULES[get_class($this)]) ?
+      $s_config_class::$RESULT_CONVERSION_RULES[get_class($this)] :
+      (
+        isset($s_config_class::$RESULT_CONVERSION_RULES['']) ?
+          $s_config_class::$RESULT_CONVERSION_RULES[''] :
+          null
+      );
+
+    if($s_rule)
+      $o_request->a_header_request['X-Error-Rules'] = $s_rule;
+
     curl_setopt($r_curl,CURLOPT_HEADER,true);
     curl_setopt($r_curl,CURLOPT_HTTPHEADER,$o_request->headerCurl());
     curl_setopt($r_curl,CURLOPT_RETURNTRANSFER,true);
-    curl_setopt($r_curl,CURLOPT_CONNECTTIMEOUT,$o_config::TIMEOUT_CONNECT);
-    curl_setopt($r_curl,CURLOPT_TIMEOUT,$o_config::TIMEOUT_READ);
+    curl_setopt($r_curl,CURLOPT_CONNECTTIMEOUT,$s_config_class::TIMEOUT_CONNECT);
+    curl_setopt($r_curl,CURLOPT_TIMEOUT,$s_config_class::TIMEOUT_READ);
     curl_setopt($r_curl,CURLOPT_VERBOSE,true);
     curl_setopt($r_curl,CURLINFO_HEADER_OUT,true);
+    curl_setopt($r_curl,CURLOPT_FOLLOWLOCATION,true);
 
-    $s_response = curl_exec($r_curl);
+    return [
+      'a_field' => $a_field,
+      'o_request' => $o_request,
+      'r_curl' => $r_curl
+    ];
+  }
+
+  /**
+   * Returns the result object from executed Curl.
+   *
+   * @param string $s_method Method of the request. One of the next values: 'get', 'post', 'put', 'delete'.
+   * @param resource $r_curl Curl resource.
+   * @param WlModelRequest $o_request Object with request data.
+   * @param array $a_field List of all prepared fields to be send via CURL.
+   * @param string $s_response Curl response string.
+   * @return WlModelRequest Object with complete request data.
+   *
+   * @throws WlUserException  In a case of error with user data.
+   */
+  protected function requestResult($s_method, $r_curl, WlModelRequest $o_request, array $a_field, $s_response)
+  {
     $s_error = curl_error($r_curl);
-
     $i_header=curl_getinfo($r_curl,CURLINFO_HEADER_SIZE);
     $s_header=substr($s_response,0,$i_header);
     $s_body=substr($s_response,$i_header);
     $o_request->s_response=$s_response;
 
     // Extract cookies.
-    preg_match_all('~Set-Cookie: ([a-zA-Z]+)=([a-zA-Z0-9]+)~',$s_header,$a_match);
+    preg_match_all('~Set-Cookie: ([a-zA-Z]+)=([a-zA-Z0-9]+)~i',$s_header,$a_match);
     foreach($a_match[1] as $i => $s_name)
       $this->_o_cookie->cookieSet($s_name,$a_match[2][$i]);
 
-    curl_close($r_curl);
+    $this->closeCurl($r_curl);
 
     if($s_error)
     {
@@ -409,8 +554,9 @@ class WlModelAbstract
       ]);
     }
 
-    if($o_request->a_result['status']!=='ok')
+    if($o_request->a_result['status']!=='ok'){
       throw WlUserException::createApi($o_request->a_result);
+    }
 
     foreach($a_field as $s_field => $a_method)
     {
@@ -436,7 +582,7 @@ class WlModelAbstract
    */
   protected function resource()
   {
-    WlAssertException::assertNotEmpty(!!preg_match('~^WellnessLiving\\\\(([A-Za-z]+\\\\)*)([A-Za-z]+_)?([A-Za-z]+)Model$~',get_class($this),$a_match),[
+    WlAssertException::assertNotEmpty(!!preg_match('~^WellnessLiving\\\\(([A-Za-z]+\\\\)*)([A-Za-z]+_)?([A-Za-z0-9]+)Model$~',get_class($this),$a_match),[
       's_class' => get_class($this),
       's_message' => 'API model class name is invalid. `Model` suffix is missing.'
     ]);
@@ -444,3 +590,5 @@ class WlModelAbstract
     return str_replace('\\','/',$a_match[1].$a_match[4]).'.json';
   }
 }
+
+?>

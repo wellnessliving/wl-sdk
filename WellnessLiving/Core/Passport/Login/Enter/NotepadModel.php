@@ -25,7 +25,6 @@ class NotepadModel extends WlModelAbstract
    *
    * @param string $s_password Plain user password.
    * @return string Password hash, depends on hash, solt, type of the hash and plain user password.
-   * @throws \Exception
    */
   public function hash($s_password)
   {
@@ -39,7 +38,6 @@ class NotepadModel extends WlModelAbstract
    *
    * @param string $s_password Plain user password.
    * @return string Hashed user password.
-   * @throws \Exception
    */
   public static function passwordHash($s_password)
   {
@@ -57,7 +55,7 @@ class NotepadModel extends WlModelAbstract
 
     // Unlike server side, in JS only HEX hash is supported.
     // For this reason, API expects HEX string and not a raw hash.
-    return Sha3::hash(implode($s_password,$a_delimiter).$s_password/*Important! See comment above.*/,512,false);
+    return hash('sha3-512', implode($s_password,$a_delimiter).$s_password,/*Important! See comment above.*/false);
   }
 }
 

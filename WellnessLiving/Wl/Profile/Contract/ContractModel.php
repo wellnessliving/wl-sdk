@@ -62,7 +62,6 @@ class ContractModel extends WlModelAbstract
    * ID of selected a location.
    *
    * @get get
-   * @post get
    * @var string
    */
   public $k_location = '0';

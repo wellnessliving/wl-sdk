@@ -7,6 +7,10 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * Retrieves information about Wellnessliving user.
+ *
+ * Can return public information about the staff.
+ * Can return user`s logo.
+ * To obtain full user information, you should have access to the requested user.
  */
 class LoginModel extends WlModelAbstract
 {
@@ -19,17 +23,15 @@ class LoginModel extends WlModelAbstract
   public $id_gender = AGenderSid::FEMALE;
 
   /**
-   * ID of business.
-   *
-   * <tt>null</tt> if not set yet or if we need system-wide information.
+   * Key of business.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_business = null;
+  public $k_business = '';
 
   /**
-   * User's ID as staff member.
+   * User's key as staff member.
    *
    * @get result
    * @var string
@@ -51,6 +53,61 @@ class LoginModel extends WlModelAbstract
    * @var string
    */
   public $s_last_name = '';
+
+  /**
+   * Client`s mail.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_mail_client;
+
+  /**
+   * Staff`s mail.
+   * Will be set if user is staff ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   *
+   * @get result
+   * @var string
+   */
+  public $text_mail_staff;
+
+  /**
+   * Staff`s first name.
+   * Will be set if user is staff ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   *
+   * @get result
+   * @var string
+   */
+  public $text_name_first_staff;
+
+  /**
+   * User login is returned in a case neither first name, nor last name specified.
+   * An empty string is returned in a case neither first name, nor last name specified, nor login.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_name_full_client;
+
+  /**
+   * Full staff name.
+   * User login is returned in a case neither first name, nor last name specified.
+   * An empty string is returned in a case neither first name, nor last name specified, nor login.
+   * Will be set if user is staff ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   *
+   * @get result
+   * @var string
+   */
+  public $text_name_full_staff;
+
+  /**
+   * Staff`s last name.
+   * Will be set if user is staff ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   *
+   * @get result
+   * @var string
+   */
+  public $text_name_last_staff;
 
   /**
    * ID of user.

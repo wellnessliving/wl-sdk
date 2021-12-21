@@ -20,16 +20,6 @@ class AssetListModel extends WlModelAbstract
   public $a_asset = null;
 
   /**
-   * A list of information about periods for the current asset category.
-   *
-   * <tt>null</tt> if it is not loaded yet.
-   *
-   * @get result
-   * @var array|null
-   */
-  public $a_asset_period = null;
-
-  /**
    * <tt>true</tt> - load asset categories for backend mode; <tt>false</tt> - for frontend mode.
    *
    * @get get

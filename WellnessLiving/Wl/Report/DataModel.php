@@ -21,6 +21,14 @@ class DataModel extends WlModelAbstract
   public $a_data=[];
 
   /**
+   * Page number. Starts from zero!
+   *
+   * @get get
+   * @var int
+   */
+  public $i_page = 0;
+
+  /**
    * Report ID. One of {@link \WellnessLiving\Wl\Report\WlReportSid} constants.
    *
    * @get get

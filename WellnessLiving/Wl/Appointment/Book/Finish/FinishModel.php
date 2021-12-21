@@ -8,6 +8,8 @@ use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 
 /**
  * Model to complete booking appointment.
+ *
+ * @deprecated Use {@link Finish47Model} instead.
  */
 class FinishModel extends WlModelAbstract
 {
@@ -39,11 +41,37 @@ class FinishModel extends WlModelAbstract
   /**
    * All data from the provider model {@link Wl_Appointment_Book_ProviderModel}.
    *
-   * @get get
    * @post get
    * @var array
    */
   public $a_book_data = [];
+
+  /**
+   * A list of payment sources to pay with.
+   *
+   * Structure of this array corresponds structure of {@link \RsPayForm::$a_pay_source}.
+   *
+   * @post post
+   * @var array[]
+   */
+  public $a_pay_form = [];
+
+  /**
+   * Data required for payment. Has next structure:<dl>
+   *   <dt>int <var>id_purchase_item</var></dt>
+   *   <dd>Type of the purchase item. One of the {@link \RsPurchaseItemSid} constants.</dd>
+   *   <dt>string <var>k_id</var></dt>
+   *   <dd>Promotion key or appointment key. Depends on <var>id_purchase_item</var> of this array.</dd>
+   *   <dt>string <var>k_login_promotion</var></dt>
+   *   <dd>Login promotion key. Primary key in the {@link \RsLoginPromotionSql} table.</dd>
+   *   <dt>string <var>text_discount_code</var></dt>
+   *   <dd>Discount code.</dd>
+   * </dl>
+   *
+   * @post post
+   * @var array
+   */
+  public $a_payment_data = [];
 
   /**
    * Purchase item IDs from the database.
@@ -65,7 +93,6 @@ class FinishModel extends WlModelAbstract
    * <dt>string <var>text_name_last</var></dt><dd>Last name.</dd>
    * <dt>string <var>text_phone</var></dt><dd>Phone.</dd></dl>
    *
-   * @get get
    * @post get
    * @var array
    */

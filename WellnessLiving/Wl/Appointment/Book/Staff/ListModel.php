@@ -36,13 +36,13 @@ class ListModel extends WlModelAbstract
   public $is_gender_different = false;
 
   /**
-   * <tt>true</tt> - return service categories which has no staff members to conduct it;
-   * <tt>false</tt> - return only service categories which has staff members.
+   * <tt>1</tt> - return service categories which has no staff members to conduct it;
+   * <tt>0</tt> - return only service categories which has staff members.
    *
    * @get get
    * @var bool
    */
-  public $is_unavailable = false;
+  public $is_unavailable = 0;
 
   /**
    * Whether you want to select gender for the appointment.

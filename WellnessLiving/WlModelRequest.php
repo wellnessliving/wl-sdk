@@ -115,23 +115,24 @@ class WlModelRequest
       'text_message' => '$url should be set before call to authorize().'
     ]);
 
-    $o_config=$this->o_config;
+    /** @var WlConfigAbstract $s_config_class */
+    $s_config_class = get_class($this->o_config);
 
     $a_url = parse_url($this->url);
     $a_signature = [
       'a_header' => [],
       'a_variable' => $this->a_variable,
       'dt_time' => $this->dt_request,
-      's_code' => $o_config::AUTHORIZE_CODE,
-      's_cookie_persistent' => $this->o_cookie->cookieGet($o_config::COOKIE_PERSISTENT),
-      's_cookie_transient' => $this->o_cookie->cookieGet($o_config::COOKIE_TRANSIENT),
+      's_code' => $s_config_class::AUTHORIZE_CODE,
+      's_cookie_persistent' => $this->o_cookie->cookieGet($this->o_config->cookiePersistent()),
+      's_cookie_transient' => $this->o_cookie->cookieGet($this->o_config->cookieTransient()),
       's_host' => $a_url['host'],
-      's_id' => $o_config::AUTHORIZE_ID,
+      's_id' => $s_config_class::AUTHORIZE_ID,
       's_method' => strtoupper($this->s_method),
       's_resource' => $this->s_resource,
     ];
 
-    $this->a_header_request['Authorization'] = '20150518,'.$o_config::AUTHORIZE_ID.',,'.WlModelRequest::signatureCompute($a_signature);
+    $this->a_header_request['Authorization'] = '20150518,'.$s_config_class::AUTHORIZE_ID.',,'.WlModelRequest::signatureCompute($a_signature);
   }
 
   /**
@@ -167,6 +168,11 @@ class WlModelRequest
         $a_result[strtolower($s_key)] = $x_value;
         continue;
       }
+      if(is_object($x_value)&&($x_value instanceof WlFile))
+      {
+        $a_result[strtolower($s_key)] = hash_file('sha256',$x_value->name(),false);
+        continue;
+      }
       if(is_array($x_value))
       {
         $a_array_a=[];
@@ -180,6 +186,7 @@ class WlModelRequest
       }
 
       WlAssertException::fail([
+        's_key' => $s_key,
         'text_message' => 'Invalid value.',
         'x_value' => $x_value
       ]);

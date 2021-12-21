@@ -10,14 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class ClassListModel extends WlModelAbstract
 {
   /**
-   * Filter for the model.
-   *
-   * @var array
-   */
-  public $a_filter = [];
-
-  /**
-   * List of classes sessions starting with the date {@link Wl_Schedule_ClassList_ClassListModel.dt_date} and
+   * List of classes sessions starting with the date {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_date} and
    * in the 30 days ahead.
    *
    * @get result
@@ -46,12 +39,35 @@ class ClassListModel extends WlModelAbstract
   public $dt_end = null;
 
   /**
+   * Whether need to retrieve list of classes sessions regardless tab specified in
+   *   {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_class_tab}.
+   *
+   * * <tt>true</tt> - retrieve list regardless specified tab.
+   * * <tt>false</tt> - retrieve list only for specific tab.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_tab_all = false;
+
+  /**
    * <tt>true</tt> - list of sessions contains sessions from different timezones; <tt>false</tt> - otherwise.
    *
    * @get result
    * @var bool
    */
   public $is_timezone_different = false;
+
+  /**
+   * <tt>true</tt> - If there exists at least one virtual service by a specified
+   * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_business} and
+   * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_class_tab},
+   * <tt>false</tt> - otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_virtual_service;
 
   /**
    * Business ID.
@@ -67,11 +83,23 @@ class ClassListModel extends WlModelAbstract
    * ID of category tab in database.
    *
    * <tt>null</tt> if not set yet.
+   * ## Will be ignored if {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$is_tab_all} is <tt>true</tt>.
    *
    * @get get
    * @var string|null
    */
-  var $k_class_tab = null;
+  public $k_class_tab = null;
+
+  /**
+   * Whether canceled class periods will be displayed or not.
+   *
+   * <tt>true</tt> - canceled class periods will be displayed;
+   * <tt>false</tt> - canceled class periods will not be displayed.
+   *
+   * @get get
+   * @var bool
+   */
+  public $show_cancel = false;
 
   /**
    * User ID.

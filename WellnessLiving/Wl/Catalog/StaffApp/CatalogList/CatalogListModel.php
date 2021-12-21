@@ -14,9 +14,20 @@ class CatalogListModel extends WlModelAbstract
    *
    * Every element has the next fields:
    * <dl>
-   *   <dt>array <tt>a_shop_category</tt></dt><dd>List of online store category IDs.</dd>
-   *   <dt>string <tt>text_description</tt></dt><dd>Category description.</dd>
-   *   <dt>string <tt>text_title</tt></dt><dd>Category title.</dd>
+   *   <dt>array <tt>a_shop_category</tt></dt>
+   *   <dd>List of online store category IDs.</dd>
+   *   <dt>int <var>[id_program]</var></dt>
+   *   <dd>
+   *      Program ID. Set for promotions.
+   *      <p>If id_program = {@link \WellnessLiving\WlProgramSid::INSURANCE_MEMBERSHIP} then, use:</p>
+   *      <ul>
+   *        <li>{@link \WellnessLiving\Wl\Insurance\Catalog\ProgramListModel} to obtain list of active programs.</li>
+   *        <li>{@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} to get and validate fields for a given program.</li>
+   *        <li>{@link \WellnessLiving\Wl\Catalog\Payment\PaymentModel} for program purchase.</li>
+   *      </ul>
+   *   </dd>
+   *   <dt>string <tt>text_title</tt></dt>
+   *   <dd>Category title.</dd>
    * </dl>
    *
    * @get result

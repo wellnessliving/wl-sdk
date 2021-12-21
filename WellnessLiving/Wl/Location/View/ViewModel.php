@@ -103,6 +103,22 @@ class ViewModel extends WlModelAbstract
   public $s_title = '';
 
   /**
+   * System name of the timezone.
+   *
+   * @get result
+   * @var string
+   */
+  public $s_timezone = '';
+
+  /**
+   * Email address.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_mail = '';
+
+  /**
    * URL to load map, where location is marked.
    *
    * @get result

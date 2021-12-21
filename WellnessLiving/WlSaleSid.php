@@ -40,7 +40,7 @@ abstract class WlSaleSid
   const ENROLLMENT = 3;
 
   /**
-   * Promotions with program {@link RsProgramSid::PACKAGE}.
+   * Promotions with program {@link WlProgramSid::PACKAGE}.
    */
   const PACKAGE = 5;
 
@@ -50,17 +50,17 @@ abstract class WlSaleSid
   const PRODUCT = 4;
 
   /**
-   * Promotions with program category {@link RsProgramCategorySid::CLASS} and {@link RsProgramCategorySid::VISIT}.
+   * Promotions with program category {@link WlProgramCategorySid::CLASS} and {@link WlProgramCategorySid::VISIT}.
    */
   const PROMOTION_CLASS = 1;
 
   /**
-   * Promotions with program category {@link RsProgramCategorySid::RESOURCE}.
+   * Promotions with program category {@link WlProgramCategorySid::RESOURCE}.
    */
   const PROMOTION_RESOURCE = 9;
 
   /**
-   * Promotions with program category {@link RsProgramCategorySid::SERVICE}.
+   * Promotions with program category {@link WlProgramCategorySid::SERVICE}.
    */
   const PROMOTION_SERVICE = 2;
 
