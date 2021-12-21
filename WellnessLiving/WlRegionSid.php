@@ -11,8 +11,6 @@ namespace WellnessLiving;
  * The region should be chosen based on the access speed to the data center from business clients.
  * Business from any region can be registered in any data center, but only in one.
  *
- * All businesses registered before December 2021 belong to the {@link \WellnessLiving\WlRegionSid::US_EAST_1} region.
- *
  * Last ID: 2.
  */
 class WlRegionSid
