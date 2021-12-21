@@ -210,12 +210,6 @@ abstract class WlConfigAbstract
       'text_message' => 'The REGION_URL constant is not set. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
     ]);
 
-    WlAssertException::assertTrue(is_int($id_region),[
-      'id_region' => $id_region,
-      'text_class' => static::class,
-      'text_message' => 'The data center region identifier must be an integer. Please enter the correct region from "\WellnessLiving\WlRegionSid" class.'
-    ]);
-
     $a_region_all = WlRegionSid::all();
     WlAssertException::assertTrue(in_array($id_region,$a_region_all),[
       'id_region' => $id_region,
