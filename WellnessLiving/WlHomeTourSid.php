@@ -5,7 +5,7 @@ namespace WellnessLiving;
 /**
  * List of different types  for landing pages based on business types.
  */
-class RsHomeTourSid
+class WlHomeTourSid
 {
   /**
    * Boot camps.

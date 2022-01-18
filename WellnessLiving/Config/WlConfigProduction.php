@@ -2,7 +2,12 @@
 
 namespace WellnessLiving\Config;
 
-class WlConfigProduction extends WlConfigAbstract
+use WellnessLiving\WlRegionSid;
+
+/**
+ * Base class for all production configurations.
+ */
+abstract class WlConfigProduction extends WlConfigAbstract
 {
   /**
    * @inheritDoc
@@ -17,7 +22,10 @@ class WlConfigProduction extends WlConfigAbstract
   /**
    * @inheritDoc
    */
-  public const URL='https://www.wellnessliving.com/';
+  protected const REGION_URL = [
+    WlRegionSid::AP_SOUTHEAST_2 => 'https://au.wellnessliving.com/',
+    WlRegionSid::US_EAST_1 => 'https://us.wellnessliving.com/',
+  ];
 }
 
 ?>

@@ -2,8 +2,6 @@
 
 namespace WellnessLiving;
 
-use ReflectionClass;
-use ReflectionException;
 use WellnessLiving\Config\WlConfigAbstract;
 
 /**
@@ -44,7 +42,6 @@ class WlModelAbstract
    */
   public function __construct(WlConfigAbstract $o_config)
   {
-    $o_config->assertValid();
     $this->resource(); // Just to check that resource is set correctly.
     $this->_o_config=$o_config;
   }
@@ -168,9 +165,9 @@ class WlModelAbstract
 
     try
     {
-      $o_class = new ReflectionClass($s_class);
+      $o_class = new \ReflectionClass($s_class);
     }
-    catch (ReflectionException $e)
+    catch (\ReflectionException $e)
     {
       throw new WlAssertException([
         'e' => $e,
@@ -367,7 +364,7 @@ class WlModelAbstract
 
     $o_request->o_config = $this->_o_config;
     $o_request->s_resource = $this->resource();
-    $o_request->url = $this->_o_config::URL.$o_request->s_resource;
+    $o_request->url = $this->_o_config->url().$o_request->s_resource;
 
     $o_request->dt_request = WlTool::dateNowMysql();
     $o_request->a_header_request['Date'] = WlTool::dateMysqlHttp($o_request->dt_request);

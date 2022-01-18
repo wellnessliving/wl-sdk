@@ -201,7 +201,9 @@ class ApplicationResourceModel extends WlModelAbstract
         'text_message' => 'Resources information has not been returned by server.'
       ]);
     }
+
     $a_resource_list = $this->a_application[$k_business]['a_resource'];
+    $url_sdk = $this->config()->url();
 
     foreach($a_resource_list as $a_resource)
     {
@@ -214,7 +216,7 @@ class ApplicationResourceModel extends WlModelAbstract
             if(!$a_image['url_link'])
               continue;
 
-            $s_prefix = substr($a_image['url_link'],0,4)==='http'?'':$this->config()::URL;
+            $s_prefix = substr($a_image['url_link'],0,4)==='http'?'':$url_sdk;
             $s_image = file_get_contents($s_prefix.$a_image['url_link']);
 
             foreach($a_image['a_file'] as $s_file)
@@ -250,7 +252,7 @@ class ApplicationResourceModel extends WlModelAbstract
                 continue;
             }
 
-            $s_prefix = substr($a_file['url_link'],0,4)==='http'?'':$this->config()::URL;
+            $s_prefix = substr($a_file['url_link'],0,4)==='http'?'':$url_sdk;
             $r_file = fopen($s_prefix.$a_file['url_link'],'rb');
             if(!$r_file)
               continue;

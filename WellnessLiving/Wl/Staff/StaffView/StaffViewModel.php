@@ -26,7 +26,7 @@ class StaffViewModel extends WlModelAbstract
    *     <dd>Class name.</dd>
    *   </dl></dd>
    *   <dt>int <var>i_day</var></dt>
-   *   <dd>Day of week. One of {@link ADateWeekSid} constants.</dd>
+   *   <dd>Day of week. One of {@link \WellnessLiving\Core\a\ADateWeekSid} constants.</dd>
    * </dl>
    *
    * <tt>null</tt> if data is not loaded yet.
@@ -54,7 +54,7 @@ class StaffViewModel extends WlModelAbstract
    *         <dd>Class name.</dd>
    *       </dl></dd>
    *       <dt>int <var>i_day</var></dt>
-   *       <dd>Day of week. One of {@link ADateWeekSid} constants.</dd>
+   *       <dd>Day of week. One of {@link \WellnessLiving\Core\a\ADateWeekSid} constants.</dd>
    *     </dl>
    *   </dd>
    *   <dt>array <var>a_staff</var></dt>
@@ -62,7 +62,7 @@ class StaffViewModel extends WlModelAbstract
    *     Staff information:
    *     <dl>
    *       <dt>int <var>id_gender</var></dt>
-   *       <dd>Staff member's gender. One of {@link \AGenderSid} constants.</dd>
+   *       <dd>Staff member's gender. One of {@link \WellnessLiving\Core\a\AGenderSid} constants.</dd>
    *       <dt>string <var>s_biography</var></dt>
    *       <dd>Staff biography.</dd>
    *       <dt>string <var>s_family</var></dt>

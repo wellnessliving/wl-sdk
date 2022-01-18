@@ -67,6 +67,41 @@ class CatalogCartModel extends WlModelAbstract
     public $f_discount_percent = 0;
 
     /**
+     * `true` to enable checking every item at the cart; `false` to disable.
+     *
+     * @get get
+     * @var bool
+     */
+    public $is_check_cart_item = 0;
+
+    /**
+     * Whether business applied commission at checkout.
+     *
+     * @get result
+     * @var bool
+     */
+    public $is_commission = 0;
+
+    /**
+     * Whether display custom receipt notes at checkout.
+     *
+     * @get result
+     * @var bool
+     */
+    public $is_receipt_note = 0;
+
+    /**
+     * Business key.
+     *
+     * <b>This field is not used directly and described for correct auto generation JavaScript.</b>
+     *
+     * @get get
+     * @var string
+     * @see \RsBusinessSql
+     */
+    public $k_business = '';
+
+    /**
      * Business location key.
      *
      * @get get
@@ -149,6 +184,23 @@ class CatalogCartModel extends WlModelAbstract
      * @var string|null
      */
     public $text_error_code = null;
+
+    /**
+     * Custom receipt note text.
+     *
+     * @get result
+     * @var string
+     */
+    public $text_receipt_note = '';
+
+    /**
+     * Current user key.
+     *
+     * @get get
+     * @var string
+     * @see \PassportLoginSql
+     */
+    public $uid_current = '';
 
     /**
      * User ID, who performs purchase.
