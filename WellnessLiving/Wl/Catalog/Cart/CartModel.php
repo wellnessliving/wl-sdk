@@ -30,6 +30,16 @@ class CartModel extends WlModelAbstract
     public $k_location = '0';
 
     /**
+     * Custom amount for a gift card which user entered.
+     *
+     * <tt>null</tt> if not set yet.
+     *
+     * @get result
+     * @var string|null
+     */
+    public $m_custom = null;
+
+    /**
      * Full discount of the cart.
      *
      * <tt>null</tt> if not calculated yet.
