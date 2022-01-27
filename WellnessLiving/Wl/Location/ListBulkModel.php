@@ -86,7 +86,7 @@ class ListBulkModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public array $a_location_full = [];
+  public $a_location_full = [];
 
   /**
    * Bulk of businesses. Business primary keys serialized with JSON.
