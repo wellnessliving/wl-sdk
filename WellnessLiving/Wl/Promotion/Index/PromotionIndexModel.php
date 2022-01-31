@@ -13,6 +13,7 @@ class PromotionIndexModel extends WlModelAbstract
   /**
    * Item list. Every element has keys:
    * <dl><dt>array <var>a_image</var></dt><dd>Image data.</dd>
+   * <dt>bool <var>is_introductory</var></dt><dd>If <tt>true</tt> this promotion is for introductory clients.</dd>
    * <dt>string <var>k_promotion</var></dt><dd>Item key.</dd>
    * <dt>string <var>m_price</var></dt><dd>Price.</dd>
    * <dt>string <var>text_description</var></dt><dd>Description.</dd>
