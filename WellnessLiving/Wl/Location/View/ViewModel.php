@@ -10,6 +10,32 @@ use WellnessLiving\WlModelAbstract;
 class ViewModel extends WlModelAbstract
 {
   /**
+   * List of ages, which are suitable for visiting this location.
+   *
+   * @get result
+   * @see \RsAgeSid
+   * @var int[]
+   */
+  public array $a_age = [];
+
+  /**
+   * List of facilities, which are available in this location
+   *
+   * @get result
+   * @see \RsFacilitySid
+   * @var int[]
+   */
+  public array $a_amenities = [];
+
+  /**
+   * List of levels, which are suitable for visiting this location.
+   *
+   * @get result
+   * @var string[]
+   */
+  public array $a_level = [];
+
+  /**
    * Location logo:
    * <ul><li>Number <tt>i_height</tt> Height.</li>
    * <li>Number <tt>i_width</tt> Width.</li>
@@ -47,6 +73,22 @@ class ViewModel extends WlModelAbstract
   public $a_work = [];
 
   /**
+   * Latitude coordinate of the location.
+   *
+   * @get result
+   * @var float
+   */
+  public float $f_latitude = 0;
+
+  /**
+   * Longitude coordinate of the location.
+   *
+   * @get result
+   * @var float
+   */
+  public float $f_longitude = 0;
+
+  /**
    * Description of location. HTML code ready to putting on page.
    *
    * @get result
@@ -61,6 +103,32 @@ class ViewModel extends WlModelAbstract
    * @var string
    */
   public $html_description_preview = '';
+
+  /**
+   * Industry of the business.
+   *
+   * @get result
+   * @var int|null
+   * @see \RsHomeTourSid
+   */
+  public ?int $id_industry = 0;
+
+  /**
+   * `true` if WellnessLiving thinks that this is a top choice location.
+   * `false` - otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public bool $is_top_choice = false;
+
+  /**
+   * Key of business this location belongs to.
+   *
+   * @get result
+   * @var string
+   */
+  public string $k_business = '0';
 
   /**
    * Location ID.
@@ -111,6 +179,47 @@ class ViewModel extends WlModelAbstract
   public $s_timezone = '';
 
   /**
+   * Adress of the location.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_address_individual;
+
+  /**
+   * Name of the business type.
+   *
+   * @get result
+   * @var string
+   */
+  public string $text_business_type = '';
+
+  /**
+   * City name of the location.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_city;
+
+  /**
+   * Country name of the location.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_country;
+
+  /**
+   * Name of the industry of the business.
+   *
+   * @get result
+   * @var string
+   * @see \RsHomeTourSid
+   */
+  public string $text_industry = '';
+
+  /**
    * Email address.
    *
    * @get result
@@ -119,12 +228,52 @@ class ViewModel extends WlModelAbstract
   public $text_mail = '';
 
   /**
+   * Postal code of the location.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_postal;
+
+  /**
+   * Region name of the location.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_region;
+
+  /**
+   * Facebook url.
+   *
+   * @get result
+   * @var string
+   */
+  public string $url_facebook = '';
+
+  /**
+   * Instagram url.
+   *
+   * @get result
+   * @var string
+   */
+  public string $url_instagram = '';
+
+  /**
+   * Linked In url.
+   *
+   * @get result
+   * @var string
+   */
+  public string $url_linkedin = '';
+
+  /**
    * URL to load map, where location is marked.
    *
    * @get result
    * @var string
    */
-  public $url_map = '';
+  public $url_map;
 
   /**
    * URL to location site.
@@ -132,7 +281,15 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $url_microsite = '';
+  public $url_microsite;
+
+  /**
+   * Website url.
+   *
+   * @get result
+   * @var string
+   */
+  public string $url_site = '';
 }
 
 ?>

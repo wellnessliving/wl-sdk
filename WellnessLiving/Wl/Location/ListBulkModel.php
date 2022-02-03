@@ -89,6 +89,17 @@ class ListBulkModel extends WlModelAbstract
   public $a_location_full = [];
 
   /**
+   * ID of the directory if locations should be filtered by directory integration turned on.
+   *
+   * `0` if directory filter is not required.
+   *
+   * @get get
+   * @see \WellnessLiving\WlProjectSid
+   * @var int
+   */
+  public int $id_directory = 0;
+
+  /**
    * Bulk of businesses. Business primary keys serialized with JSON.
    *
    * Empty string if you need all locations in the system.
