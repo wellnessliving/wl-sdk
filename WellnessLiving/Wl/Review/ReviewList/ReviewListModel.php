@@ -46,6 +46,9 @@ class ReviewListModel extends WlModelAbstract
    *       <dt>string <var>s_text</var></dt>
    *       <dd>Review text.</dd>
    *
+   *       <dt>string <var>text_city</var></dt>
+   *       <dd>City from the profile of the user, who left review.</dd>
+   *
    *       <dt>string <var>text_reply_first</var></dt>
    *       <dd>First name of staff who replied of review. Can be empty string if no one replied.</dd>
    *
