@@ -4,6 +4,9 @@ namespace WellnessLiving;
 
 /**
  * Program types.
+ *
+ * @see WlProgramCategorySid
+ * @see WlProgramTypeSid
  */
 class WlProgramSid
 {
