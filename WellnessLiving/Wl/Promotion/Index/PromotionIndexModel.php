@@ -30,7 +30,7 @@ class PromotionIndexModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    *   <dt>
-   *     int <var>dl_expire</var>
+   *     string <var>dl_expire</var>
    *   </dt>
    *   <dd>
    *     Local expiration date. This is the last day, when purchase option is active.
