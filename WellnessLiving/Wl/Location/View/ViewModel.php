@@ -16,7 +16,7 @@ class ViewModel extends WlModelAbstract
    * @see \RsAgeSid
    * @var int[]
    */
-  public array $a_age = [];
+  public $a_age = [];
 
   /**
    * List of facilities, which are available in this location
@@ -25,7 +25,7 @@ class ViewModel extends WlModelAbstract
    * @see \RsFacilitySid
    * @var int[]
    */
-  public array $a_amenities = [];
+  public $a_amenities = [];
 
   /**
    * List of levels, which are suitable for visiting this location.
@@ -33,7 +33,7 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var string[]
    */
-  public array $a_level = [];
+  public $a_level = [];
 
   /**
    * Location logo:
@@ -78,7 +78,7 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var float
    */
-  public float $f_latitude = 0;
+  public $f_latitude = 0;
 
   /**
    * Longitude coordinate of the location.
@@ -86,7 +86,7 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var float
    */
-  public float $f_longitude = 0;
+  public $f_longitude = 0;
 
   /**
    * Description of location. HTML code ready to putting on page.
@@ -111,7 +111,7 @@ class ViewModel extends WlModelAbstract
    * @var int|null
    * @see \RsHomeTourSid
    */
-  public ?int $id_industry = 0;
+  public $id_industry = 0;
 
   /**
    * `true` if WellnessLiving thinks that this is a top choice location.
@@ -120,7 +120,7 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public bool $is_top_choice = false;
+  public $is_top_choice = false;
 
   /**
    * Key of business this location belongs to.
@@ -128,7 +128,7 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public string $k_business = '0';
+  public $k_business = '0';
 
   /**
    * Location ID.
@@ -192,7 +192,7 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public string $text_business_type = '';
+  public $text_business_type = '';
 
   /**
    * City name of the location.
@@ -217,7 +217,7 @@ class ViewModel extends WlModelAbstract
    * @var string
    * @see \RsHomeTourSid
    */
-  public string $text_industry = '';
+  public $text_industry = '';
 
   /**
    * Email address.
@@ -249,7 +249,7 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public string $url_facebook = '';
+  public $url_facebook = '';
 
   /**
    * Instagram url.
@@ -257,7 +257,7 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public string $url_instagram = '';
+  public $url_instagram = '';
 
   /**
    * Linked In url.
@@ -265,7 +265,7 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public string $url_linkedin = '';
+  public $url_linkedin = '';
 
   /**
    * URL to load map, where location is marked.
@@ -289,7 +289,7 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public string $url_site = '';
+  public $url_site = '';
 }
 
 ?>
