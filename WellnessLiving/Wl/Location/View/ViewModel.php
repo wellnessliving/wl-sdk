@@ -187,6 +187,16 @@ class ViewModel extends WlModelAbstract
   public $text_address_individual;
 
   /**
+   * Special system name, which can be used in custom location links.
+   * It is usually based on name of the location, where extra characters are removed.
+   * But also can be fully custom.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_alias;
+
+  /**
    * Name of the business type.
    *
    * @get result
