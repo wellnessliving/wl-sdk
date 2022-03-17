@@ -81,6 +81,13 @@ class WlModelRequest
   public $s_method;
 
   /**
+   * Full HTTP request.
+   *
+   * @var string
+   */
+  public $s_request;
+
+  /**
    * Full HTTP response.
    *
    * @var string
@@ -146,6 +153,18 @@ class WlModelRequest
     foreach($this->a_header_request as $s_key => $s_value)
       $a_header[] = $s_key.': '.$s_value;
     return $a_header;
+  }
+
+  /**
+   * Returns full HTTP protocol of the request and response.
+   *
+   * THis HTTP protocol includes headers and bodies of the both request and response.
+   *
+   * @return string Full HTTP protocol of the request and response.
+   */
+  public function httpProtocol()
+  {
+    return $this->s_request."\r\n\r\n".$this->s_response;
   }
 
   /**

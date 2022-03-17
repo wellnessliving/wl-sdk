@@ -35,6 +35,15 @@ class WlModelAbstract
   private $_o_cookie = null;
 
   /**
+   * The last request that was performed with this model.
+   *
+   * `null` if there were no requests performed with this model.
+   *
+   * @var WlModelRequest|null
+   */
+  private $_o_request=null;
+
+  /**
    * Constructs a new model object.
    *
    * @param WlConfigAbstract $o_config WellnessLiving SDK configuration object.
@@ -180,7 +189,7 @@ class WlModelAbstract
     foreach($a_property as $o_property)
     {
       $s_comment = $o_property->getDocComment();
-      preg_match_all('~@([a-z]+)( +([0-9A-Za-z_\\-\\., \\\\\\]\\[]+))?~',$s_comment,$a_match);
+      preg_match_all('~@([a-z]+)( +([0-9A-Za-z_\\-., \\\\\\]\\[]+))?~',$s_comment,$a_match);
       $a_field_this=[];
       foreach($a_match[1] as $i_match => $s_value)
       {
@@ -316,6 +325,16 @@ class WlModelAbstract
   }
 
   /**
+   * Returns the last request object with was performed with this API model.
+   *
+   * @return WlModelRequest|null The last request object with was performed with this API model.
+   */
+  public function lastRequest()
+  {
+    return $this->_o_request;
+  }
+
+  /**
    * Performs request with PUT method.
    *
    * @return WlModelRequest Object with complete request data.
@@ -361,6 +380,7 @@ class WlModelAbstract
   protected function requestPrepare($s_method)
   {
     $o_request = new WlModelRequest();
+    $this->_o_request=$o_request;
 
     /** @var WlConfigAbstract $s_config_class */
     $s_config_class = get_class($this->_o_config);
@@ -409,6 +429,7 @@ class WlModelAbstract
     if(!$r_curl)
     {
       throw new WlUserException('request-connect','Could not connect WellnessLiving API.',[
+        'o_request' => $o_request,
         's_class' => get_class($this),
         'url' => $o_request->url
       ]);
@@ -433,6 +454,7 @@ class WlModelAbstract
     if($this->_fileCheck($a_post))
       $o_request->a_header_request['Content-Type'] = 'multipart/form-data';
 
+    $s_post='';
     if($s_method==='put'||$s_method==='delete')
     {
       curl_setopt($r_curl,CURLOPT_CUSTOMREQUEST,strtoupper($s_method));
@@ -448,7 +470,7 @@ class WlModelAbstract
     {
       curl_setopt($r_curl,CURLOPT_POST,true);
 
-      // Some requests requires data to be passed as string and some requires an array.
+      // Some requests require data to be passed as string and some requires an array.
       // when data passed as an array Content-type automatically set to "multipart/form-data".
       // To indicate that we want to pass array we should specify content type in specific model otherwise data will be
       // passed as a string
@@ -457,8 +479,9 @@ class WlModelAbstract
         $o_request->a_header_request['Content-Type']!=='multipart/form-data'
       )
       {
-        $a_post = http_build_query($a_post);
-        $o_request->a_header_request['Content-Length']=strlen($a_post);
+        $s_post = http_build_query($a_post);
+        $o_request->a_header_request['Content-Length']=strlen($s_post);
+        $a_post=$s_post;
       }
       curl_setopt($r_curl,CURLOPT_POSTFIELDS,$a_post);
     }
@@ -514,6 +537,7 @@ class WlModelAbstract
     $i_header=curl_getinfo($r_curl,CURLINFO_HEADER_SIZE);
     $s_header=substr($s_response,0,$i_header);
     $s_body=substr($s_response,$i_header);
+    $o_request->s_request=curl_getinfo($r_curl,CURLINFO_HEADER_OUT).$s_post;
     $o_request->s_response=$s_response;
 
     // Extract cookies.
@@ -526,6 +550,7 @@ class WlModelAbstract
     if($s_error)
     {
       throw new WlUserException('request-error','Error executing request to WellnessLiving API (error is reported by network).',[
+        'o_request' => $o_request,
         's_class' => get_class($this),
         's_error' => $s_error,
         's_result' => $s_response,
@@ -536,6 +561,7 @@ class WlModelAbstract
     if(!$s_response||!$s_body)
     {
       throw new WlUserException('request-empty','Error executing request to WellnessLiving API (an empty response is returned).',[
+        'o_request' => $o_request,
         's_class' => get_class($this),
         's_result' => $s_response,
         'url' => $o_request->url
@@ -548,15 +574,15 @@ class WlModelAbstract
     {
       throw new WlUserException('request-parse','Error executing request to WellnessLiving API (could not parse response).',[
         'a_result' => $o_request->a_result,
+        'o_request' => $o_request,
         's_result' => $s_response,
         's_class' => get_class($this),
         'url' => $o_request->url
       ]);
     }
 
-    if($o_request->a_result['status']!=='ok'){
-      throw WlUserException::createApi($o_request->a_result);
-    }
+    if($o_request->a_result['status']!=='ok')
+      throw WlUserException::createApi($o_request);
 
     foreach($a_field as $s_field => $a_method)
     {
