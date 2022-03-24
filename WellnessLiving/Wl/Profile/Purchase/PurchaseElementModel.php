@@ -10,30 +10,6 @@ use WellnessLiving\WlModelAbstract;
 class PurchaseElementModel extends WlModelAbstract
 {
   /**
-   * Information necessary to match this purchase with an item in the catalog.
-   * <dl>
-   *   <dt>
-   *     int <var>id_sale</var>
-   *   </dt>
-   *   <dd>
-   *     The category this purchase would appear as in the store. One of the {@link \RsSaleSid} constants.
-   *     This value will be 0 if the purchase would not be available in the catalog, like a code.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_id</var>
-   *   </dt>
-   *   <dd>
-   *     Sale item ID.
-   *     This value will be 0 if the purchase would not be available in the catalog, like a code.
-   *   </dd>
-   * </dl>
-   *
-   * @get result
-   * @var array
-   */
-  public $a_catalog;
-
-  /**
    * Image of purchase item:
    * <dl>
    *   <dt>int <var>i_height</var></dt>
