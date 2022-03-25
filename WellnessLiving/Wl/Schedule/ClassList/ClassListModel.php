@@ -10,8 +10,96 @@ use WellnessLiving\WlModelAbstract;
 class ClassListModel extends WlModelAbstract
 {
   /**
-   * List of classes sessions starting with the date {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_date} and
-   * in the 30 days ahead.
+   * List of classes sessions starting with the date {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_date}
+   * and in the 62 days ahead (or up to {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_end}). Every
+   * element has next keys:
+   * <dl>
+   *   <dt>
+   *     string[] <var>a_staff</var>
+   *   </dt>
+   *   <dd>
+   *     Staff keys for the staff who conduct the session.
+   *   </dd>
+   *   <dt>
+   *     string[] <var>a_virtual_location</var>
+   *   </dt>
+   *   <dd>
+   *     List of virtual locations keys. Each value is a location key.
+   *   </dd>
+   *   <dt>
+   *     string <var>dt_date</var>
+   *   </dt>
+   *   <dd>
+   *     Date/time of the session start in UTC.
+   *   </dd>
+   *   <dt>
+   *     string <var>dt_time</var>
+   *   </dt>
+   *   <dd>
+   *     Time of the session start in the local timezone.
+   *   </dd>
+   *   <dt>
+   *     string <var>dtl_date</var>
+   *   </dt>
+   *   <dd>
+   *     Date/time of session start in the location's timezone.
+   *   </dd>
+   *   <dt>
+   *     bool <var>hide_application</var>
+   *   </dt>
+   *   <dd>
+   *      Whether class will be hidden in the White Label mobile application.
+   *      <tt>true</tt> means that class will not be displayed, <tt>false</tt> otherwise.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_day</var>
+   *   </dt>
+   *   <dd>
+   *     Day of the week when session is occurred. Constant from {@link \WellnessLiving\Core\a\ADateWeekSid}.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_duration</var>
+   *   </dt>
+   *   <dd>
+   *     Day of the week when session is occurred. Constant from {@link \WellnessLiving\Core\a\ADateWeekSid}.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_cancel</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> if this class period was cancelled; <tt>false</tt> otherwise.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_virtual</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> if the class is virtual, <tt>false</tt> otherwise.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_class</var>
+   *   </dt>
+   *   <dd>
+   *     Class key.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_class_period</var>
+   *   </dt>
+   *   <dd>
+   *     Session key.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_location</var>
+   *   </dt>
+   *   <dd>
+   *     Key of the session's location.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_title</var>
+   *   </dt>
+   *   <dd>
+   *     Title of the session.
+   *   </dd>
+   * </dl>
    *
    * @get result
    * @var array
