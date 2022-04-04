@@ -11,22 +11,6 @@ use WellnessLiving\WlModelAbstract;
 class PurchaseListModel extends WlModelAbstract
 {
   /**
-   * Criteria for list filtering:
-   * <ul><li>Number [<tt>id_active</tt>] Active or inactive purchase items show. One of the {@link AFlagSid} constants.
-   * </li>
-   * <li>Number [<tt>id_sale</tt>] Type of good. One of the {@link RsSaleSid} constants.
-   * </li>
-   * <li>Number [<tt>id_sale_exclude</tt>] Type of good which must be excluded. One of the {@link RsSaleSid} constants.
-   * </li>
-   * <li>String [<tt>s_search</tt>] Title (or part of title) of purchase item.
-   * </li></ul>
-   * @var array
-   */
-  public $a_filter = [
-    'id_active' => AFlagSid::ON
-  ];
-
-  /**
    * User's purchases:
    * <dl>
    *   <dt>
