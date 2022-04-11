@@ -42,21 +42,21 @@ class AttendanceListModel extends WlModelAbstract
   public $dt_date_local = null;
 
   /**
-   * If <tt>true</tt> then return the purchase used to pay for session.
-   * Otherwise <tt>false</tt>, do not return any purchase information.
-   *
-   * @get get
-   * @var bool
-   */
-  public $is_purchase_return=false;
-
-  /**
    * Service capacity.
    *
    * @get result
    * @var int
    */
   public $i_capacity = null;
+
+  /**
+   * If <tt>true</tt> then return the purchase used to pay for session.
+   * Otherwise <tt>false</tt>, do not return any purchase information.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_purchase_info_return=false;
 
   /**
    * Appointment key.
