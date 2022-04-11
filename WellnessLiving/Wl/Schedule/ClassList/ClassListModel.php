@@ -61,7 +61,7 @@ class ClassListModel extends WlModelAbstract
    *     int <var>i_duration</var>
    *   </dt>
    *   <dd>
-   *     Day of the week when session is occurred. Constant from {@link \WellnessLiving\Core\a\ADateWeekSid}.
+   *     The duration of the session in minutes.
    *   </dd>
    *   <dt>
    *     bool <var>is_cancel</var>
