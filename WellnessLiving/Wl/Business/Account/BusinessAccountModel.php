@@ -5,17 +5,17 @@ namespace WellnessLiving\Wl\Business\Account;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * API to get list of active businesses
+ * API to get list of active businesses.
  */
 class BusinessAccountModel extends WlModelAbstract
 {
   /**
-   * List of business Ids (k_business)
+   * List of business keys.
    *
    * @get result
-   * @var int[]
+   * @var string[]
    */
-  public $a_business_ids = [];
+  public $a_business_keys = [];
 }
 
 ?>
