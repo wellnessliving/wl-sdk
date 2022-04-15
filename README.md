@@ -17,9 +17,14 @@ As a result of registration we'll provide you the following:
 We'll provide you with data for connecting our staging and production environments.
 Application ID and secret code differs at staging and production.
 
-## Download our SDK here:
+## Download 
 
-  https://github.com/wellnessliving/wl-sdk
+ Our SDK is available for download here at https://github.com/wellnessliving/wl-sdk
+
+ You could also use this bash one-liner to install the SDK with composer:
+```shell
+([ ! -f composer.json ] && echo '{"name":"sdk/project"}' > composer.json); composer config repositories.wellnessliving/wl-sdk git https://github.com/wellnessliving/wl-sdk && composer require 'wellnessliving/wl-sdk:>=1.0.0' && composer install
+```
 
   Try to run example script that is placed in the root of WellnessLiving SDK.
 
