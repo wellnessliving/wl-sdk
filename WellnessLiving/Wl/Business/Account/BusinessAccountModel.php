@@ -16,6 +16,14 @@ class BusinessAccountModel extends WlModelAbstract
    * @var string[]
    */
   public $a_business_keys = [];
+
+  /**
+   * Specifies if only businesses having published locations should be returned.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_published = false;
 }
 
 ?>
