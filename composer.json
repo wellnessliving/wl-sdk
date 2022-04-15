@@ -1,0 +1,8 @@
+{
+  "name": "wellnessliving/wl-sdk",
+  "description": "Wellenessliving API SDK",
+  "license": "proprietary",
+  "require": {
+    "php": ">=7.4"
+  }
+}
