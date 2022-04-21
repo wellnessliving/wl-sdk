@@ -1,10 +1,8 @@
-<?php
+<?php 
 
 namespace WellnessLiving\Wl\Promotion\Index;
 
-use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\WlProgramTypeSid;
 
 /**
  * Point to get packages/passes/memberships available in a certain location.
@@ -56,21 +54,21 @@ class PromotionIndexModel extends WlModelAbstract
    *   <dd>
    *     Type of periods for the duration type "Period".
    *     For example, if duration of the purchase option is 12 months, this field will be equal id of the Month.
-   *     See all possible options here: {@link ADurationSid}.
+   *     See all possible options here: {@link \ADurationSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_duration_type</var>
    *   </dt>
    *   <dd>
    *     Type of the duration. Can be "Without End", 'Expires on a certain date', 'Period'.
-   *     See more information here: {@link \WellnessLiving\WlDurationTypeSid}.
+   *     See more information here: {@link \RsDurationTypeSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program</var>
    *   </dt>
    *   <dd>
    *     Type of the purchase options.
-   *     See more information here: {@link \WellnessLiving\WlProgramSid}.
+   *     See more information here: {@link \RsProgramSid}.
    *   </dd>
    *   <dt>
    *     bool <var>is_introductory</var>
@@ -88,7 +86,7 @@ class PromotionIndexModel extends WlModelAbstract
    *     string <var>k_promotion</var>
    *   </dt>
    *   <dd>
-   *     Primary key of the purchase option.
+   *     Promotion primary key in {@link \RsPromotionSql} table.
    *   </dd>
    *   <dt>
    *     string <var>m_price</var>
@@ -108,16 +106,22 @@ class PromotionIndexModel extends WlModelAbstract
    *   <dd>
    *     Title.
    *   </dd>
+   *   <dt>
+   *     string <var>url_buy</var>
+   *   </dt>
+   *   <dd>
+   *     Direct URL to the promotion purchase page.
+   *   </dd>
    * </dl>
    *
    * @get result
-   * @var array[]|null
+   * @var array[]
    */
-  public $a_promotion = null;
+  public $a_promotion;
 
   /**
    * Program type to get items of.
-   * One of {@link WlProgramTypeSid} constants.
+   * One of {@link \RsProgramTypeSid} constants.
    *
    * `0` to not filter purchase options with type of the purchase option.
    *
@@ -127,7 +131,7 @@ class PromotionIndexModel extends WlModelAbstract
   public $id_program_type = 0;
 
   /**
-   * Location key.
+   * Location primary key if {@link \RsLocationSql} table.
    *
    * @get get
    * @var string
