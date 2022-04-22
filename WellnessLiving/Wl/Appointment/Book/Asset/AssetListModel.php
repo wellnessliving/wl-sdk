@@ -20,6 +20,16 @@ class AssetListModel extends WlModelAbstract
   public $a_asset = null;
 
   /**
+   * Selected date and time of asset booking.
+   *   It is actual in case when business booking policy allows clients to select a date and time,
+   *   then the available asset.
+   *
+   * @get get
+   * @var string
+   */
+  public $dtl_date = false;
+
+  /**
    * <tt>true</tt> - load asset categories for backend mode; <tt>false</tt> - for frontend mode.
    *
    * @get get
