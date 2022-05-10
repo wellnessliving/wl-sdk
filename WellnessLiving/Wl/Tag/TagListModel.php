@@ -14,7 +14,7 @@ class TagListModel extends WlModelAbstract
    *
    * Each element has next structure:<dl>
    * <dt>string <var>k_tag</var> </dt>
-   * <dd>Tag key. Primary key in the {@link \RsTagSql} table.</dd>
+   * <dd>Tag key.
    * <dt>string <var>text_title</var></dt>
    * <dd>Tag title.</dd>
    * </dl>
