@@ -5,8 +5,7 @@ namespace WellnessLiving\Wl\Integration\Autymate;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves all daily transactions for a business using the All Transactions report and the DataApi endpoint.
- * This endpoint is a streamlined interface for easier access.
+ * Retrieves all daily transactions for a business using the All Transactions report.
  */
 class ReportModel extends WlModelAbstract
 {
@@ -75,7 +74,7 @@ class ReportModel extends WlModelAbstract
   public $is_more;
 
   /**
-   * ID of business for which report must be generated.
+   * Key of the business for which report must be generated.
    *
    * @get get
    * @var string
@@ -83,9 +82,7 @@ class ReportModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * User's ID.
-   *
-   * Primary key in {@link \PassportLoginSql}.
+   * User's key.
    *
    * @get get
    * @var string
