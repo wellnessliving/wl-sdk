@@ -14,7 +14,7 @@ class ApplicationResourceModel extends WlModelAbstract
   /**
    * Placeholder of application ID.
    */
-  private const ID = '[ID]';
+  const ID = '[ID]';
 
   /**
    * Application data.
@@ -41,7 +41,7 @@ class ApplicationResourceModel extends WlModelAbstract
    * @param string $s_sources Path to directory with sources that must be processed.
    * @throws WlAssertException In a case of an error.
    */
-  private function _communication(string $k_business,string $s_sources):void
+  private function _communication($k_business,$s_sources)
   {
     $this->_file($k_business,$s_sources,'www/js/communication.js',[
       [
@@ -58,7 +58,7 @@ class ApplicationResourceModel extends WlModelAbstract
    * @param string $s_sources Path to directory with sources that must be processed.
    * @throws WlAssertException In a case of an error.
    */
-  private function _config(string $k_business,string $s_sources):void
+  private function _config($k_business,$s_sources)
   {
     $this->_file($k_business,$s_sources,'config.xml',[
       [
@@ -95,7 +95,7 @@ class ApplicationResourceModel extends WlModelAbstract
    * </dl>
    * @throws WlAssertException In a case of an error.
    */
-  private function _file(string $k_business,string $s_sources,string $s_file,array $a_data):void
+  private function _file($k_business,$s_sources,$s_file,array $a_data)
   {
     $a_replace = [];
     foreach($a_data as $a_data_item)
@@ -149,7 +149,7 @@ class ApplicationResourceModel extends WlModelAbstract
    * @param string $s_sources Path to directory with sources that must be processed.
    * @throws WlAssertException In a case of an error.
    */
-  private function _google(string $k_business,string $s_sources):void
+  private function _google($k_business,$s_sources)
   {
     $this->_file($k_business,$s_sources,'www/js/google.plus.js',[
       [
@@ -166,7 +166,7 @@ class ApplicationResourceModel extends WlModelAbstract
    * @param string $s_sources Path to directory with sources that must be processed.
    * @throws WlAssertException In a case of an error.
    */
-  private function _index(string $k_business,string $s_sources):void
+  private function _index($k_business,$s_sources)
   {
     $this->_file($k_business,$s_sources,'www/index.html',[
       [
@@ -183,7 +183,7 @@ class ApplicationResourceModel extends WlModelAbstract
    * @param string $s_sources Path to directory with sources that must be processed.
    * @throws WlAssertException In a case of an error.
    */
-  private function _resource(string $k_business,string $s_sources):void
+  private function _resource($k_business,$s_sources)
   {
     $s_resource = $s_sources.'res/';
 
@@ -272,7 +272,7 @@ class ApplicationResourceModel extends WlModelAbstract
    * @param string $s_destination Directory with ready sources for certain application.
    * @throws WlAssertException In a case of an error.
    */
-  public function sources(string $s_source,string $s_destination):void
+  public function sources($s_source,$s_destination)
   {
     if(!is_dir($s_source))
     {

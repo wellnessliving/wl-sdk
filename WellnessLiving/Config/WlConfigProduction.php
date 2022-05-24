@@ -12,17 +12,17 @@ abstract class WlConfigProduction extends WlConfigAbstract
   /**
    * @inheritDoc
    */
-  public const COOKIE_PERSISTENT='p';
+  const COOKIE_PERSISTENT='p';
 
   /**
    * @inheritDoc
    */
-  public const COOKIE_TRANSIENT='t';
+  const COOKIE_TRANSIENT='t';
 
   /**
    * @inheritDoc
    */
-  protected const REGION_URL = [
+  protected static $REGION_URL = [
     WlRegionSid::AP_SOUTHEAST_2 => 'https://au.wellnessliving.com/',
     WlRegionSid::US_EAST_1 => 'https://us.wellnessliving.com/',
   ];

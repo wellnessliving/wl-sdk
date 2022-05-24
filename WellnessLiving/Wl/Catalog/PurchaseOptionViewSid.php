@@ -10,47 +10,47 @@ class PurchaseOptionViewSid
   /**
    * Single appointment reservation.
    */
-  public const APPOINTMENT = 1;
+  const APPOINTMENT = 1;
 
   /**
    * Single class reservation.
    */
-  public const CLASS_PERIOD = 2;
+  const CLASS_PERIOD = 2;
 
   /**
    * Gift card.
    */
-  public const COUPON = 3;
+  const COUPON = 3;
 
   /**
    * Enrollments.
    */
-  public const ENROLLMENT = 4;
+  const ENROLLMENT = 4;
 
   /**
    * Memberships.
    */
-  public const MEMBERSHIP = 8;
+  const MEMBERSHIP = 8;
 
   /**
    * Packages.
    */
-  public const PACKAGE = 5;
+  const PACKAGE = 5;
 
   /**
    * Products: water, t-shirts, etc.
    */
-  public const PRODUCT = 6;
+  const PRODUCT = 6;
 
   /**
    * Passes.
    */
-  public const PROMOTION = 7;
+  const PROMOTION = 7;
 
   /**
    * Goods that available for quick buy.
    */
-  public const QUICK_BUY = 9;
+  const QUICK_BUY = 9;
 }
 
 ?>

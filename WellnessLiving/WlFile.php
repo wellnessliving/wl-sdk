@@ -47,7 +47,7 @@ class WlFile
    *
    * @return string|null Mimetype of the file. <tt>null</tt> if not set.
    */
-  public function mime():?string
+  public function mime()
   {
     return $this->s_mime;
   }
@@ -57,7 +57,7 @@ class WlFile
    *
    * @return string Path to the file which will be uploaded.
    */
-  public function name():string
+  public function name()
   {
     return $this->s_name;
   }
@@ -67,7 +67,7 @@ class WlFile
    *
    * @return string|null Name of the file. <tt>null</tt> if not set.
    */
-  public function postname():?string
+  public function postname()
   {
     return $this->s_postname;
   }

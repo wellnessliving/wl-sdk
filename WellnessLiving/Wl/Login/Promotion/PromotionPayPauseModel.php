@@ -12,7 +12,7 @@ class PromotionPayPauseModel extends WlModelAbstract
   /**
    * End date value indicating indefinite pause period.
    */
-  public const DATE_END_INDEFINITE = '0000-00-00';
+  const DATE_END_INDEFINITE = '0000-00-00';
 
   /**
    * End date of pause period in login promotion timezone. Can be set to special value

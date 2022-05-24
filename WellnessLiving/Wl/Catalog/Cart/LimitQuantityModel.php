@@ -28,7 +28,7 @@ class LimitQuantityModel extends WlModelAbstract
    * @get get
    * @var array[]
    */
-  public array $a_item = [];
+  public $a_item = [];
 
   /**
    * Quantity if already purchased promotions by current user.

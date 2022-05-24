@@ -26,7 +26,7 @@ class NotepadModel extends WlModelAbstract
    * @param string $s_password Plain user password.
    * @return string Password hash, depends on hash, solt, type of the hash and plain user password.
    */
-  public function hash(string $s_password):string
+  public function hash($s_password)
   {
     return Sha3::hash($this->s_notepad.NotepadModel::passwordHash($s_password),512);
   }
@@ -39,7 +39,7 @@ class NotepadModel extends WlModelAbstract
    * @param string $s_password Plain user password.
    * @return string Hashed user password.
    */
-  public static function passwordHash(string $s_password):string
+  public static function passwordHash($s_password)
   {
     static $a_delimiter=[
       'r',

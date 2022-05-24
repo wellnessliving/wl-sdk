@@ -87,7 +87,7 @@ class ImageUploadModel extends WlModelAbstract
   /**
    * Forms command to delete image.
    */
-  public function commandDelete():void
+  public function commandDelete()
   {
     $this->s_command = 'delete';
   }
@@ -95,7 +95,7 @@ class ImageUploadModel extends WlModelAbstract
   /**
    * Forms command to save uploaded image.
    */
-  public function commandSave():void
+  public function commandSave()
   {
     $this->s_command = 'save';
   }
@@ -109,7 +109,7 @@ class ImageUploadModel extends WlModelAbstract
    * @param int $i_height Height to crop.
    * @param int $i_rotation Rotation angle.
    */
-  public function commandUpload(int $i_offset_left,int $i_offset_top,int $i_width,int $i_height,int $i_rotation = 0):void
+  public function commandUpload($i_offset_left,$i_offset_top,$i_width,$i_height,$i_rotation = 0)
   {
     $this->s_command = 'upload '.$i_offset_left.' '.$i_offset_top.' '.$i_width.' '.$i_height.' '.$i_rotation;
   }

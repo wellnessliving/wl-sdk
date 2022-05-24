@@ -82,6 +82,7 @@ abstract class WlConfigAbstract
    * The key of array is data center region id. One of {@link \WellnessLiving\WlRegionSid} constant.
    * The value is URL of the API endpoint for region.
    *
+   * @var string[]|null
    * @see \WellnessLiving\Config\WlConfigProduction
    * @see \WellnessLiving\Config\WlConfigDeveloper
    */
@@ -118,7 +119,7 @@ abstract class WlConfigAbstract
    * </ul>
    *
    * Example: <code>
-   *   public const RESULT_CONVERSION_RULES = [
+   *   const RESULT_CONVERSION_RULES = [
    *     '' => 'default',
    *     \WellnessLiving\Core\Passport\User\LoginModel::class => '418 code-teapot,451 signature-empty'
    *   ];
@@ -217,7 +218,7 @@ abstract class WlConfigAbstract
       'text_message' => 'Region does not exist. Please enter the correct region from "\WellnessLiving\WlRegionSid" class.'
     ]);
 
-    WlAssertException::assertTrue(isset(static::REGION_URL[$id_region]),[
+    WlAssertException::assertTrue(isset(static::$REGION_URL[$id_region]),[
       'text_class' => static::class,
       'text_message' => 'The URL endpoint API is not set for the requested data center region id. Let the developers know about it.'
     ]);
