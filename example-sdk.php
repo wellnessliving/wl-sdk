@@ -20,7 +20,10 @@ try
 
   // Retrieve notepad (it is a separate step of user sign in process)
   $o_notepad=new NotepadModel($o_config);
-  $o_notepad->get();
+  $o_request=$o_notepad->get();
+
+  // Approach to get debugging information.
+  echo $o_request->httpProtocol()."\r\n\r\n";
 
   // Sign in a user
   $o_enter=new EnterModel($o_config);
@@ -29,6 +32,9 @@ try
   $o_enter->s_notepad=$o_notepad->s_notepad;
   $o_enter->s_password=$o_notepad->hash('/** Put your password here */');
   $o_enter->post();
+
+  // Another approach to get debugging information.
+  echo $o_enter->lastRequest()->httpProtocol()."\r\n\r\n";
 
   $o_report=new DataModel($o_config);
   $o_report->cookieSet($o_notepad->cookieGet()); // Keep cookies to keep session.
@@ -55,6 +61,10 @@ catch(WlAssertException $e)
 catch(WlUserException $e)
 {
   echo $e->getMessage()."\n";
+
+  // Approach to get debugging information in a case of exception.
+  if($e->request())
+    echo "\r\n\r\n".$e->request()->httpProtocol()."\r\n";
   return;
 }
 
