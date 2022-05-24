@@ -10,17 +10,17 @@ abstract class AddOptionSid
   /**
    * Add client to attendance list and charge his account.
    */
-  const DEBIT = 2;
+  public const DEBIT = 2;
 
   /**
    * Add client to attendance list and pay now.
    */
-  const PAY = 3;
+  public const PAY = 3;
 
   /**
    * Add client to attendance list without payment.
    */
-  const UNPAID = 1;
+  public const UNPAID = 1;
 }
 
 ?>

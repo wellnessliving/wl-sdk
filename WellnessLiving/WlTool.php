@@ -14,7 +14,7 @@ class WlTool
    * @return string A date/time in HTTP format.
    * @throws WlAssertException In a case of an assertion.
    */
-  public static function dateMysqlHttp($dt_mysql)
+  public static function dateMysqlHttp(string $dt_mysql):string
   {
     $a_date = preg_split('/[^0-9]+/',$dt_mysql.' 0 0 0 0 0 0',7);
 
@@ -64,7 +64,7 @@ class WlTool
    *
    * @return string Current date in MySQL format.
    */
-  public static function dateNowMysql()
+  public static function dateNowMysql():string
   {
     return gmdate('Y-m-d H:i:s',time());
   }

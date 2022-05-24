@@ -63,7 +63,7 @@ class WlModelAbstract
    * @param mixed $x_data Posted data.
    * @return bool <tt>true</tt> if posted data contains at least 1 file; <tt>false</tt> otherwise.
    */
-  private function _fileCheck(&$x_data)
+  private function _fileCheck(&$x_data):bool
   {
     if(is_object($x_data)&&($x_data instanceof WlFile))
     {
@@ -90,7 +90,7 @@ class WlModelAbstract
    *
    * @param resource $r_curl Curl resource.
    */
-  protected function closeCurl($r_curl)
+  protected function closeCurl($r_curl):void
   {
     curl_close($r_curl);
   }
@@ -479,9 +479,8 @@ class WlModelAbstract
         $o_request->a_header_request['Content-Type']!=='multipart/form-data'
       )
       {
-        $s_post = http_build_query($a_post);
-        $o_request->a_header_request['Content-Length']=strlen($s_post);
-        $a_post=$s_post;
+        $a_post = http_build_query($a_post);
+        $o_request->a_header_request['Content-Length']=strlen($a_post);
       }
       curl_setopt($r_curl,CURLOPT_POSTFIELDS,$a_post);
     }
@@ -492,14 +491,7 @@ class WlModelAbstract
         curl_setopt($r_curl,$s_option,$x_value);
     }
 
-    $s_rule = isset($s_config_class::$RESULT_CONVERSION_RULES[get_class($this)]) ?
-      $s_config_class::$RESULT_CONVERSION_RULES[get_class($this)] :
-      (
-        isset($s_config_class::$RESULT_CONVERSION_RULES['']) ?
-          $s_config_class::$RESULT_CONVERSION_RULES[''] :
-          null
-      );
-
+    $s_rule = $s_config_class::RESULT_CONVERSION_RULES[get_class($this)] ?? $s_config_class::RESULT_CONVERSION_RULES[''] ?? null;
     if($s_rule)
       $o_request->a_header_request['X-Error-Rules'] = $s_rule;
 

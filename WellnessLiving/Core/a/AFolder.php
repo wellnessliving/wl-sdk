@@ -16,7 +16,7 @@ class AFolder
    * @param bool $is_dir <tt>true</tt> to delete subdirectories, <tt>false</tt> otherwise.
    * @return bool <tt>true</tt> if ok, <tt>false</tt> if error occurred.
    */
-  public static function clear($s_path,$is_recursive = true,$is_file = true,$is_dir = true)
+  public static function clear(string $s_path,bool $is_recursive = true,bool $is_file = true,bool $is_dir = true):bool
   {
     if(empty($s_path))
       return true;
@@ -66,7 +66,7 @@ class AFolder
    * @param string $s_source Source folder.
    * @param string $s_destination Destination folder.
    */
-  public static function copy($s_source,$s_destination)
+  public static function copy(string $s_source,string $s_destination):void
   {
     $r_directory = opendir($s_source);
     while(($s_file=readdir($r_directory))!==false)
