@@ -68,7 +68,9 @@ final class WlModelMultiModel extends WlModelAbstract
     {
       $s_response = curl_multi_getcontent($a_request['r_curl']);
 
-      $a_request['o_model']->requestResult($s_method, $a_request['r_curl'], $a_request['o_request'], $a_request['a_field'], $s_response);
+      /** @var WlModelAbstract $o_model */
+      $o_model=$a_request['o_model'];
+      $o_model->requestResult($s_method, $a_request['r_curl'], $a_request['o_request'], $a_request['a_field'], $s_response, $a_request['s_post']);
     }
     curl_multi_close($this->r_multi_curl);
   }
