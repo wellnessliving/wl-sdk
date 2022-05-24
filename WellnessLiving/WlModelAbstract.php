@@ -360,7 +360,7 @@ class WlModelAbstract
 
     $s_response = curl_exec($a_request['r_curl']);
 
-    return $this->requestResult($s_method, $a_request['r_curl'], $a_request['o_request'], $a_request['a_field'], $s_response);
+    return $this->requestResult($s_method, $a_request['r_curl'], $a_request['o_request'], $a_request['a_field'], $s_response, $a_request['s_post']);
   }
 
   /**
@@ -479,8 +479,9 @@ class WlModelAbstract
         $o_request->a_header_request['Content-Type']!=='multipart/form-data'
       )
       {
-        $a_post = http_build_query($a_post);
-        $o_request->a_header_request['Content-Length']=strlen($a_post);
+        $s_post = http_build_query($a_post);
+        $o_request->a_header_request['Content-Length']=strlen($s_post);
+        $a_post=$s_post;
       }
       curl_setopt($r_curl,CURLOPT_POSTFIELDS,$a_post);
     }
@@ -507,6 +508,7 @@ class WlModelAbstract
     return [
       'a_field' => $a_field,
       'o_request' => $o_request,
+      's_post' => $s_post,
       'r_curl' => $r_curl
     ];
   }
@@ -517,13 +519,13 @@ class WlModelAbstract
    * @param string $s_method Method of the request. One of the next values: 'get', 'post', 'put', 'delete'.
    * @param resource $r_curl Curl resource.
    * @param WlModelRequest $o_request Object with request data.
-   * @param array $a_field List of all prepared fields to be send via CURL.
+   * @param array $a_field List of all prepared fields to be sent via CURL.
    * @param string $s_response Curl response string.
+   * @param string $s_post Contents of the request body.
    * @return WlModelRequest Object with complete request data.
-   *
    * @throws WlUserException  In a case of error with user data.
    */
-  protected function requestResult(string $s_method, $r_curl, WlModelRequest $o_request, array $a_field, string $s_response): WlModelRequest
+  protected function requestResult(string $s_method, $r_curl, WlModelRequest $o_request, array $a_field, string $s_response, $s_post): WlModelRequest
   {
     $s_error = curl_error($r_curl);
     $i_header=curl_getinfo($r_curl,CURLINFO_HEADER_SIZE);
