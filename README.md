@@ -56,7 +56,7 @@ When you are ready to switch to production, change your connection configuration
 `\WellnessLiving\Config\WlConfigProduction` (by default it inherits `\WellnessLiving\Config\WlConfigDeveloper`) which
 leads to staging.
 
-## Notes about our release rollout process
+## Notes about our release rollout process and versioning
 
 We have three development branches:
 
@@ -70,6 +70,13 @@ For about 2 weeks before release to production, staging is recreated from the tr
 Staging is used by our QA team to find bugs.
 Also, we use staging to present our new features to our customers so that they may be sure that new features work as
 they expect before those features come to production.
+
+### Versioning
+Versioning scheme is based on Semantic Versioning (https://semver.org).
+* Trunk releases are tagged with `dev` suffix (e.g. v1.0.4-dev).
+* Staging releases are tagged with `staging` suffix (e.g. v1.0.3-staging).
+* Production releases are tagged without special suffix (e.g. v1.0.0).
+Hence if you are checking out a version with specific suffix, changes in the API code are  only available on the proper backend server (demo, stable or production respectively) or a lower one (staging version is auto-merged into development, but not vice versa).
 
 **Important note:** Our API and SDK is subject to change at any time without additional notices.
 
