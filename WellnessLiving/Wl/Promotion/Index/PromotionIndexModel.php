@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Wl\Promotion\Index;
 
@@ -12,6 +12,28 @@ class PromotionIndexModel extends WlModelAbstract
   /**
    * Item list. Every element has keys:
    * <dl>
+   *   <dt>
+   *     array <var>a_access</var>
+   *   </dt>
+   *   <dd>
+   *     Information about services, which can be visited with this pass or membership.
+   *     <dl>
+   *       <dt>array[] <var>a_class</var></dt>
+   *       <dd>List of available classes and events. Each element has key k_class, where primary key of the class or event
+   *         can be found.</dd>
+   *       <dt>array[] <var>a_resource</var></dt>
+   *       <dd>List of available assets. Each element has key k_resource, where primary key of the asset can be found.</dd>
+   *       <dt>array[] <var>a_service</var></dt>
+   *       <dd>List of available appointment types. Each element has key k_service, where primary key of the
+   *         appointment type can be found.</dd>
+   *       <dt>bool <var>is_class_all</var></dt>
+   *       <dd>`true` if any class in the business can be visited with this PO. `false` if only selected classes.
+   *         Selected classes can be found in the list of available classes and events.</dd>
+   *       <dt>bool <var>is_event_all</var></dt>
+   *       <dd>`true` if any event in the business can be visited with this PO. `false` if only selected events.
+   *         Selected events can be found in the list of available classes and events.</dd>
+   *     </dl>
+   *   </dd>
    *   <dt>
    *     array <var>a_image</var>
    *   </dt>
