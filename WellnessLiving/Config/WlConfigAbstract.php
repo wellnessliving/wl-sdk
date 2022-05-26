@@ -86,7 +86,7 @@ abstract class WlConfigAbstract
    * @see \WellnessLiving\Config\WlConfigProduction
    * @see \WellnessLiving\Config\WlConfigDeveloper
    */
-  protected const REGION_URL=null;
+  protected $REGION_URL=null;
 
   /**
    * List of rules, which is used to convert error codes to HTTP codes.
@@ -206,7 +206,7 @@ abstract class WlConfigAbstract
       'text_message' => 'The COOKIE_PERSISTENT constant is not set. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
     ]);
 
-    WlAssertException::assertTrue(is_array(static::REGION_URL),[
+    WlAssertException::assertTrue(is_array(static::$REGION_URL),[
       'text_class' => static::class,
       'text_message' => 'The REGION_URL constant is not set. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
     ]);
@@ -218,7 +218,7 @@ abstract class WlConfigAbstract
       'text_message' => 'Region does not exist. Please enter the correct region from "\WellnessLiving\WlRegionSid" class.'
     ]);
 
-    WlAssertException::assertTrue(isset(static::REGION_URL[$id_region]),[
+    WlAssertException::assertTrue(isset(static::$REGION_URL[$id_region]),[
       'text_class' => static::class,
       'text_message' => 'The URL endpoint API is not set for the requested data center region id. Let the developers know about it.'
     ]);
@@ -249,6 +249,6 @@ abstract class WlConfigAbstract
    */
   final public function url(): string
   {
-    return static::REGION_URL[$this->id_region];
+    return static::$REGION_URL[$this->id_region];
   }
 }
