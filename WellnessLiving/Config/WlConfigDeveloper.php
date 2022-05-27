@@ -27,7 +27,7 @@ abstract class WlConfigDeveloper extends WlConfigAbstract
   /**
    * @inheritDoc
    */
-  protected $REGION_URL = [
+  protected static $REGION_URL = [
     WlRegionSid::AP_SOUTHEAST_2 => 'https://demo.wellnessliving.com/',
     WlRegionSid::US_EAST_1 => 'https://staging.wellnessliving.com/',
   ];

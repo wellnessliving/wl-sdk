@@ -86,7 +86,7 @@ abstract class WlConfigAbstract
    * @see \WellnessLiving\Config\WlConfigProduction
    * @see \WellnessLiving\Config\WlConfigDeveloper
    */
-  protected $REGION_URL=null;
+  protected static $REGION_URL=null;
 
   /**
    * List of rules, which is used to convert error codes to HTTP codes.
