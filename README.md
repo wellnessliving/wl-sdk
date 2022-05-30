@@ -72,10 +72,10 @@ Also, we use staging to present our new features to our customers so that they m
 they expect before those features come to production.
 
 ### Versioning
-Versioning scheme is based on Semantic Versioning (https://semver.org).
-* Trunk releases are tagged with `dev` suffix (e.g. v1.0.4-dev).
-* Staging releases are tagged with `staging` suffix (e.g. v1.0.3-staging).
-* Production releases are tagged without special suffix (e.g. v1.0.0).
+Versioning scheme is based on [Semantic Versioning](https://semver.org). And version suffixes are added in accordance to [Composer version stability policy](https://getcomposer.org/doc/articles/versions.md#stabilities). 
+* Trunk (development) releases are tagged with just numbers, without any special suffix (e.g. v1.0.4).
+* Staging releases are tagged with `rc` suffix (e.g. v1.0.3-rc).
+* Production releases are tagged with `stable` suffix (e.g. v1.0.0-stable).
 Hence if you are checking out a version with specific suffix, changes in the API code are  only available on the proper backend server (demo, stable or production respectively) or a lower one (staging version is auto-merged into development, but not vice versa).
 
 **Important note:** Our API and SDK is subject to change at any time without additional notices.
