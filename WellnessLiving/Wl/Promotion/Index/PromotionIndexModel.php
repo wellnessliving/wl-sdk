@@ -19,7 +19,10 @@ class PromotionIndexModel extends WlModelAbstract
    *     Information about services, which can be visited with this pass or membership.
    *     <dl>
    *       <dt>array[] <var>a_class</var></dt>
-   *       <dd>List of available classes and events. Each element has key k_class, where primary key of the class or event
+   *       <dd>List of available classes. Each element has key k_class, where primary key of the class
+   *         can be found.</dd>
+   *       <dt>array[] <var>a_event</var></dt>
+   *       <dd>List of available events. Each element has key k_class, where primary key of the event
    *         can be found.</dd>
    *       <dt>array[] <var>a_resource</var></dt>
    *       <dd>List of available assets. Each element has key k_resource, where primary key of the asset can be found.</dd>
