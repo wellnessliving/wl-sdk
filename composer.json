@@ -3,6 +3,9 @@
   "description": "Wellenessliving API SDK",
   "license": "proprietary",
   "require": {
-    "php": ">=7.4"
+    "ext-bcmath": "*",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "php": ">=5.5"
   }
 }
