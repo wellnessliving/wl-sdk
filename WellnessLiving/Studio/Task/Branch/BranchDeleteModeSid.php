@@ -10,17 +10,17 @@ class BranchDeleteModeSid
   /**
    * Deleting branch without merging changes.
    */
-  public const DELETE_NO_MERGE = 3;
+  const DELETE_NO_MERGE = 3;
 
   /**
    * Changes are merged. Branch is not deleted.
    */
-  public const MERGE_ONLY = 2;
+  const MERGE_ONLY = 2;
 
   /**
    * Deleting branch with merging changes.
    */
-  public const STANDARD = 1;
+  const STANDARD = 1;
 }
 
 ?>

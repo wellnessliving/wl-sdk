@@ -10,50 +10,50 @@ class WlPayTransactionStatusSid
   /**
    * The authorization or store transaction is being performed now.
    */
-  public const AUTHORIZE_ACTIVE = 8;
+  const AUTHORIZE_ACTIVE = 8;
 
   /**
    * Authorization or store transaction is completed with errors.
    */
-  public const AUTHORIZE_ERROR = 10;
+  const AUTHORIZE_ERROR = 10;
 
   /**
    * Authorization or store transaction is completed successfully.
    */
-  public const AUTHORIZE_OK = 9;
+  const AUTHORIZE_OK = 9;
 
   /**
    * The transaction is being performed now.
    */
-  public const PURCHASE_ACTIVE = 1;
+  const PURCHASE_ACTIVE = 1;
 
   /**
    * Transaction is completed with errors.
    */
-  public const PURCHASE_ERROR = 3;
+  const PURCHASE_ERROR = 3;
 
   /**
    * Transaction is completed successfully.
    */
-  public const PURCHASE_OK = 2;
+  const PURCHASE_OK = 2;
 
   /**
    * Transaction is completed successfully, but should be hidden from reports.
    *
    * This status is set only in specific cases during import.
    */
-  public const PURCHASE_OK_HIDDEN = 14;
+  const PURCHASE_OK_HIDDEN = 14;
 
   /**
    * We are waiting when financial institution (e.g. bank) will process our transaction. For example, cheques or bank
    * account transactions can be processed not immediately but after some time (e.g. 3-4 days).
    */
-  public const PURCHASE_WAIT = 11;
+  const PURCHASE_WAIT = 11;
 
   /**
    * Transaction is being refunded now, and previous status was successful payment.
    */
-  public const REFUND_ACTIVE = 5;
+  const REFUND_ACTIVE = 5;
 
   /**
    * Transaction is being refunded now.
@@ -62,7 +62,7 @@ class WlPayTransactionStatusSid
    * {@link WlPayTransactionStatusSid::PURCHASE_WAIT}. In a case of error during refund, this status is changed to
    * {@link WlPayTransactionStatusSid::PURCHASE_WAIT}.
    */
-  public const REFUND_ACTIVE_WAIT = 13;
+  const REFUND_ACTIVE_WAIT = 13;
 
   /**
    * Refund operation has failed.
@@ -75,14 +75,14 @@ class WlPayTransactionStatusSid
    * **Important note** If a transaction is refunded partially, it will stay in
    * {@link WlPayTransactionStatusSid::REFUND_PARTIAL} even after an unsuccessful attempt to refund more.
    */
-  public const REFUND_ERROR = 6;
+  const REFUND_ERROR = 6;
 
   /**
    * Transaction was refunded fully.
    *
    * @see WlPayTransactionStatusSid::REFUND_PARTIAL
    */
-  public const REFUND_FULL = 4;
+  const REFUND_FULL = 4;
 
   /**
    * Transaction was refunded partially.
@@ -92,7 +92,7 @@ class WlPayTransactionStatusSid
    * @see RsPayTransactionRefundSql
    * @see RsPayTransactionStatusSid::REFUND_FULL
    */
-  public const REFUND_PARTIAL = 7;
+  const REFUND_PARTIAL = 7;
 
   /**
    * Transaction was refunded fully and purchase has been cancelled.
@@ -116,7 +116,7 @@ class WlPayTransactionStatusSid
    * @see RsPayTransactionStatusSid::REFUND_FULL
    * @see RsPayTransactionStatusSid::REFUND_PARTIAL
    */
-  public const VOID = 12;
+  const VOID = 12;
 }
 
 ?>

@@ -18,19 +18,19 @@ class WlRegionSid
   /**
    * Sydney, Australia.
    */
-  public const AP_SOUTHEAST_2=2;
+  const AP_SOUTHEAST_2=2;
 
   /**
    * North Virginia, USA.
    */
-  public const US_EAST_1=1;
+  const US_EAST_1=1;
 
   /**
    * Returns a list of data center region identifiers.
    *
    * @return int[] List of data center region identifiers.
    */
-  public static function all(): array
+  public static function all()
   {
     return [
       static::US_EAST_1,

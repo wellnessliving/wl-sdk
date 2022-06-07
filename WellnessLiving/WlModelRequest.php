@@ -113,7 +113,7 @@ class WlModelRequest
    *
    * @throws WlAssertException In a case of an assertion.
    */
-  public function authorize():void
+  public function authorize()
   {
     WlAssertException::assertNotEmpty($this->o_config,[
       'text_message' => 'Configuration object should be set before call to authorize().'
@@ -147,7 +147,7 @@ class WlModelRequest
    *
    * @return array List of headers in appropriate format for a request.
    */
-  public function headerCurl():array
+  public function headerCurl()
   {
     $a_header = [];
     foreach($this->a_header_request as $s_key => $s_value)

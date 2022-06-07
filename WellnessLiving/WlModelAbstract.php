@@ -63,7 +63,7 @@ class WlModelAbstract
    * @param mixed $x_data Posted data.
    * @return bool <tt>true</tt> if posted data contains at least 1 file; <tt>false</tt> otherwise.
    */
-  private function _fileCheck(&$x_data):bool
+  private function _fileCheck(&$x_data)
   {
     if(is_object($x_data)&&($x_data instanceof WlFile))
     {
@@ -90,7 +90,7 @@ class WlModelAbstract
    *
    * @param resource $r_curl Curl resource.
    */
-  protected function closeCurl($r_curl):void
+  protected function closeCurl($r_curl)
   {
     curl_close($r_curl);
   }
@@ -100,7 +100,7 @@ class WlModelAbstract
    *
    * @return WlConfigAbstract Model configuration.
    */
-  public function config():WlConfigAbstract
+  public function config()
   {
     return $this->_o_config;
   }
@@ -110,7 +110,7 @@ class WlModelAbstract
    *
    * @return WlModelCookie|null Cookies object. <tt>null</tt> if not initialized yet.
    */
-  public function cookieGet():?WlModelCookie
+  public function cookieGet()
   {
     return $this->_o_cookie;
   }
@@ -120,7 +120,7 @@ class WlModelAbstract
    *
    * @param WlModelCookie $o_cookie Cookies to set.
    */
-  public function cookieSet(WlModelCookie $o_cookie):void
+  public function cookieSet(WlModelCookie $o_cookie)
   {
     $this->_o_cookie = $o_cookie;
   }
@@ -132,7 +132,7 @@ class WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  public function delete():WlModelRequest
+  public function delete()
   {
     return $this->request('delete');
   }
@@ -166,7 +166,7 @@ class WlModelAbstract
    *   </dl>
    * @throws WlAssertException In a case of an assertion.
    */
-  private static function fieldConfig():array
+  private static function fieldConfig()
   {
     $s_class = get_called_class();
     if(isset(WlModelAbstract::$_a_field[$s_class]))
@@ -268,7 +268,7 @@ class WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  public function get():WlModelRequest
+  public function get()
   {
     return $this->request('get');
   }
@@ -280,7 +280,7 @@ class WlModelAbstract
    * @param mixed $x_value Value to normalize.
    * @return array|string Normalized value.
    */
-  private function normalizeValue(string $s_name,$x_value)
+  private function normalizeValue($s_name,$x_value)
   {
     if(is_string($x_value))
       return $x_value;
@@ -319,7 +319,7 @@ class WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  public function post():WlModelRequest
+  public function post()
   {
     return $this->request('post');
   }
@@ -341,7 +341,7 @@ class WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  public function put():WlModelRequest
+  public function put()
   {
     return $this->request('put');
   }
@@ -354,7 +354,7 @@ class WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  private function request(string $s_method):WlModelRequest
+  private function request($s_method)
   {
     $a_request = $this->requestPrepare($s_method);
 
@@ -377,7 +377,7 @@ class WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException  In a case of error with user data.
    */
-  protected function requestPrepare(string $s_method): array
+  protected function requestPrepare($s_method)
   {
     $o_request = new WlModelRequest();
     $this->_o_request=$o_request;
@@ -492,7 +492,14 @@ class WlModelAbstract
         curl_setopt($r_curl,$s_option,$x_value);
     }
 
-    $s_rule = $s_config_class::RESULT_CONVERSION_RULES[get_class($this)] ?? $s_config_class::RESULT_CONVERSION_RULES[''] ?? null;
+    $s_rule = isset($s_config_class::$RESULT_CONVERSION_RULES[get_class($this)]) ?
+      $s_config_class::$RESULT_CONVERSION_RULES[get_class($this)] :
+      (
+      isset($s_config_class::$RESULT_CONVERSION_RULES['']) ?
+        $s_config_class::$RESULT_CONVERSION_RULES[''] :
+        null
+      );
+
     if($s_rule)
       $o_request->a_header_request['X-Error-Rules'] = $s_rule;
 
@@ -525,7 +532,7 @@ class WlModelAbstract
    * @return WlModelRequest Object with complete request data.
    * @throws WlUserException  In a case of error with user data.
    */
-  protected function requestResult(string $s_method, $r_curl, WlModelRequest $o_request, array $a_field, string $s_response, $s_post): WlModelRequest
+  protected function requestResult($s_method, $r_curl, WlModelRequest $o_request, array $a_field, $s_response, $s_post)
   {
     $s_error = curl_error($r_curl);
     $i_header=curl_getinfo($r_curl,CURLINFO_HEADER_SIZE);
@@ -600,7 +607,7 @@ class WlModelAbstract
    * @return string URI of current model.
    * @throws WlAssertException In a case of an assertion.
    */
-  protected function resource():string
+  protected function resource()
   {
     WlAssertException::assertNotEmpty(!!preg_match('~^WellnessLiving\\\\(([A-Za-z]+\\\\)*)([A-Za-z]+_)?([A-Za-z0-9]+)Model$~',get_class($this),$a_match),[
       's_class' => get_class($this),

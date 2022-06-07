@@ -11,20 +11,20 @@ class WlTypeSid
    * Amount Gift Card.
    * Only one card of this type can be created in one business.
    */
-  public const AMOUNT = 2;
+  const AMOUNT = 2;
 
   /**
    * Product Gift Card.
    * Many cards of this type can be create in one business.
    * Each card contains list of products.
    */
-  public const COMPONENT = 1;
+  const COMPONENT = 1;
 
   /**
    * Quick Gift Card.
    * Only one card of this type can be created in one business.
    */
-  public const QUICK = 3;
+  const QUICK = 3;
 }
 
 ?>

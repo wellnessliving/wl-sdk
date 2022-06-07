@@ -12,12 +12,12 @@ abstract class WlConfigProduction extends WlConfigAbstract
   /**
    * @inheritDoc
    */
-  public const COOKIE_PERSISTENT='p';
+  const COOKIE_PERSISTENT='p';
 
   /**
    * @inheritDoc
    */
-  public const COOKIE_TRANSIENT='t';
+  const COOKIE_TRANSIENT='t';
 
   /**
    * @inheritDoc

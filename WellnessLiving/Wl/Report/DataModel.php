@@ -86,7 +86,7 @@ class DataModel extends WlModelAbstract
    * @param array $a_filter Report filters. Key is filter variable name, value is its value.
    * @throws WlAssertException In a case of an assertion.
    */
-  public function filterSet(array $a_filter):void
+  public function filterSet(array $a_filter)
   {
     if(count($a_filter))
       $this->s_filter=UrlEncode::encode($a_filter);

@@ -10,7 +10,7 @@ class WlProjectSid
   /**
    * WellnessLiving Explorer.
    */
-  public const WELLNESSLIVING = 4;
+  const WELLNESSLIVING = 4;
 }
 
 ?>

@@ -10,22 +10,22 @@ class WlAgeSid
   /**
    * An adult.
    */
-  public const ADULT=2;
+  const ADULT=2;
 
   /**
    * A kid.
    */
-  public const KID=1;
+  const KID=1;
 
   /**
    * Natal.
    */
-  public const NATAL=4;
+  const NATAL=4;
 
   /**
    * Senior.
    */
-  public const SENIOR=3;
+  const SENIOR=3;
 }
 
 ?>

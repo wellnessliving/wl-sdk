@@ -17,7 +17,7 @@ class ReportGeneratorStatusSid
    * * `ABORTED` => `DELETING` when a background task finds that this report is old and should be deleted.
    * * `ABORTED` => `QUEUED` if user clicks to regenerate this report.
    */
-  public const ABORTED=6;
+  const ABORTED=6;
 
   /**
    * Current operation is being aborted now.
@@ -28,7 +28,7 @@ class ReportGeneratorStatusSid
    *   This transition is performed in two places: before the beginning of the actual generation,
    *   and after completion of the generation.
    */
-  public const ABORTING=5;
+  const ABORTING=5;
 
   /**
    * This report is being deleted now.
@@ -37,7 +37,7 @@ class ReportGeneratorStatusSid
    *
    * * `DELETING` => (report does not exist anymore) when deletion of this report completes.
    */
-  public const DELETING=4;
+  const DELETING=4;
 
   /**
    * This report is being generated now.
@@ -55,7 +55,7 @@ class ReportGeneratorStatusSid
    *   This transition is performed when generation
    *   completes successfully.
    */
-  public const GENERATING=2;
+  const GENERATING=2;
 
   /**
    * Generation of this report is queued.
@@ -71,7 +71,7 @@ class ReportGeneratorStatusSid
    *    there is some data left from the previous generation of this report.
    * * `QUEUED` => `GENERATING` when there is a free thread slot to start generation of this report immediately.
    */
-  public const QUEUED=1;
+  const QUEUED=1;
 
   /**
    * Generation of this report is now completed.
@@ -81,7 +81,7 @@ class ReportGeneratorStatusSid
    * * `READY` => `DELETING` when a background tasks identifies that this report is old and starts deleting it.
    * * `READY` => `QUEUED` when user clicks to regenerate this report
    */
-  public const READY=3;
+  const READY=3;
 }
 
 ?>

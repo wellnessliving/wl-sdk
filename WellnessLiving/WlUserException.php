@@ -85,7 +85,7 @@ class WlUserException extends \Exception
    * @param string $text_message User-friendly message.
    * @param array $a_data Additional data for debugging purposes.
    */
-  public function __construct($s_code = '',$text_message = '',array $a_data=[])
+  public function __construct($s_code = '',$text_message = '',$a_data=[])
   {
     $this->a_data=$a_data;
     $this->o_request=isset($a_data['o_request'])?$a_data['o_request']:null;
@@ -122,17 +122,17 @@ class WlUserException extends \Exception
    * @param WlModelRequest $o_request Request object.
    * @return WlUserException User exception object.
    */
-  public static function createApi(WlModelRequest $o_request):WlUserException
+  public static function createApi(WlModelRequest $o_request)
   {
     $a_result=$o_request->a_result;
-    $a_error=$a_result['a_error']??[];
-    $a_error_0=$a_error[0]??[];
+    $a_error=isset($a_result['a_error'])?$a_result['a_error']:[];
+    $a_error_0=isset($a_error[0])?$a_error[0]:[];
 
-    $e=new WlUserException($a_error_0['sid']??'unknown-error',$a_error_0['s_message']??'Unknown error.');
+    $e=new WlUserException(isset($a_error_0['sid'])?$a_error_0['sid']:'unknown-error',$a_error_0['s_message']?$a_error_0['s_message']:'Unknown error.');
     $e->a_error=$a_error;
     $e->a_result=$a_result;
     $e->o_request=$o_request;
-    $e->s_class=$a_result['class']??null;
+    $e->s_class=isset($a_result['class'])?$a_result['class']:null;
 
     return $e;
   }
@@ -155,7 +155,7 @@ class WlUserException extends \Exception
    * @return string|null String representation of a error code of the very first error in the exception.
    * <tt>null</tt> if no errors were added.
    */
-  public function sid(int $i_index = 0):?string
+  public function sid($i_index = 0)
   {
     if(!$this->a_error)
       return null;

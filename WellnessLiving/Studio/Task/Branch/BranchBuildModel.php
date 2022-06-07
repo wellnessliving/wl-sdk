@@ -23,7 +23,7 @@ class BranchBuildModel extends WlModelAbstract
    * @post get
    * @var string[]
    */
-  public array $a_path = [];
+  public $a_path = [];
 
   /**
    * Build key that creates a branch for the specified task.
@@ -34,7 +34,7 @@ class BranchBuildModel extends WlModelAbstract
    * @put get
    * @var string
    */
-  public string $k_build = '';
+  public $k_build = '';
 
   /**
    * Task link of the branch.
@@ -46,7 +46,7 @@ class BranchBuildModel extends WlModelAbstract
    * @put get
    * @var string
    */
-  public string $s_task_link = '';
+  public $s_task_link = '';
 }
 
 ?>

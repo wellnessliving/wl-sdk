@@ -97,7 +97,7 @@ class ListBulkModel extends WlModelAbstract
    * @see \WellnessLiving\WlProjectSid
    * @var int
    */
-  public int $id_directory = 0;
+  public $id_directory = 0;
 
   /**
    * Bulk of businesses. Business primary keys serialized with JSON.
