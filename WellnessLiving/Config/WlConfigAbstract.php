@@ -31,7 +31,7 @@ abstract class WlConfigAbstract
   /**
    * The agent name in the http-request header.
    */
-  public const AGENT='WellnessLiving SDK/1.1 (WellnessLiving SDK)';
+  const AGENT='WellnessLiving SDK/1.1 (WellnessLiving SDK)';
 
   /**
    * Secret code to authorize application.
@@ -41,7 +41,7 @@ abstract class WlConfigAbstract
    * @var string
    * @see \WlSdkExample\ExampleConfig
    */
-  public const AUTHORIZE_CODE=null;
+  const AUTHORIZE_CODE=null;
 
   /**
    * Application ID.
@@ -51,7 +51,7 @@ abstract class WlConfigAbstract
    * @var string
    * @see \WlSdkExample\ExampleConfig
    */
-  public const AUTHORIZE_ID=null;
+  const AUTHORIZE_ID=null;
 
   /**
    * Name of a persistent cookie.
@@ -61,7 +61,7 @@ abstract class WlConfigAbstract
    * @see \WellnessLiving\Config\WlConfigProduction
    * @see \WellnessLiving\Config\WlConfigDeveloper
    */
-  protected const COOKIE_PERSISTENT=null;
+  const COOKIE_PERSISTENT=null;
 
   /**
    * Name of a transient cookie.
@@ -71,7 +71,7 @@ abstract class WlConfigAbstract
    * @see \WellnessLiving\Config\WlConfigProduction
    * @see \WellnessLiving\Config\WlConfigDeveloper
    */
-  protected const COOKIE_TRANSIENT=null;
+  const COOKIE_TRANSIENT=null;
 
   /**
    * URL of the API endpoint by regions.
@@ -119,7 +119,7 @@ abstract class WlConfigAbstract
    * </ul>
    *
    * Example: <code>
-   *   public const RESULT_CONVERSION_RULES = [
+   *   public static $RESULT_CONVERSION_RULES = [
    *     '' => 'default',
    *     \WellnessLiving\Core\Passport\User\LoginModel::class => '418 code-teapot,451 signature-empty'
    *   ];
@@ -127,17 +127,17 @@ abstract class WlConfigAbstract
    *
    * @var array
    */
-  public const RESULT_CONVERSION_RULES = [];
+  public static $RESULT_CONVERSION_RULES = [];
 
   /**
    * Timeout to wait for connection to establish.
    */
-  public const TIMEOUT_CONNECT=60;
+  const TIMEOUT_CONNECT=60;
 
   /**
    * Timeout to wait for data reading from an established connection.
    */
-  public const TIMEOUT_READ=600;
+  const TIMEOUT_READ=600;
 
   /**
    * ID of a region in which information about this business is stored.
@@ -161,7 +161,7 @@ abstract class WlConfigAbstract
    *
    * @return string The name of a persistent cookie in the current configuration.
    */
-  final public function cookiePersistent(): string
+  final public function cookiePersistent()
   {
     return static::COOKIE_PERSISTENT;
   }
@@ -171,7 +171,7 @@ abstract class WlConfigAbstract
    *
    * @return string The name of a transient cookie in the current configuration.
    */
-  final public function cookieTransient(): string
+  final public function cookieTransient()
   {
     return static::COOKIE_TRANSIENT;
   }
@@ -184,7 +184,7 @@ abstract class WlConfigAbstract
    * @return WlConfigAbstract Configuration object.
    * @throws WlAssertException In a case of an error with argument.
    */
-  final public static function create(int $id_region): WlConfigAbstract
+  final public static function create($id_region)
   {
     WlAssertException::assertTrue(is_string(static::AUTHORIZE_CODE) && strlen(static::AUTHORIZE_CODE)>0,[
       'text_class' => static::class,
@@ -236,7 +236,7 @@ abstract class WlConfigAbstract
    * @return string Returns CSRF code based on specified session key.
    * @throws WlAssertException In a case of an error with configuration settings.
    */
-  final public function csrfCode(string $s_session_key): string
+  final public function csrfCode($s_session_key)
   {
     $t_time = time();
     return hash('sha3-512',$s_session_key.'::'.$this::AUTHORIZE_CODE.'::'.$t_time).'.'.$t_time.'.'.substr($s_session_key,0,5);
@@ -247,7 +247,7 @@ abstract class WlConfigAbstract
    *
    * @return string URL of the server in the current configuration (including trailing slash).
    */
-  final public function url(): string
+  final public function url()
   {
     return static::$REGION_URL[$this->id_region];
   }
