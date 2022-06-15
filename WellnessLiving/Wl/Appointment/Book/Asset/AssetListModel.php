@@ -12,6 +12,62 @@ class AssetListModel extends WlModelAbstract
   /**
    * A list of information about assets.
    *
+   * <dl>
+   *   <dt>
+   *     array[] <var>a_direct_link</var>
+   *   </dt>
+   *   <dd>
+   *     List of links to start booking from a direct link.
+   *     It cannot be one link, because the same resource can be available in several booking tabs.
+   *     So, each booking tab as own direct booking link.
+   *     Each element has two values:
+   *     <dl>
+   *       <dt>string <var>k_class_tab</var></dt>
+   *       <dd>Key of the book now tab.</dd>
+   *       <dt>string <var>url_tab</var></dt>
+   *       <dd></dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>array[] <var>a_image</var></dt>
+   *   <dd>Information about asset logo:
+   *     <dl>
+   *       <dt>int <var>i_angle</var></dt>
+   *       <dd>Angle of shape rotation. Is set only if image kind equals to <tt>shape</tt>.</dd>
+   *       <dt>bool <var>is_empty</var></dt>
+   *       <dd>Whether asset logo is empty.</dd>
+   *       <dt>string <var>sid_image_icon</var></dt>
+   *       <dd>Icon name. String representation of one of {@link \Wl\Resource\Image\ImageIconSid} constants. Is set only if image kind equals to <tt>image</tt>.</dd>
+   *       <dt>string <var>sid_image_shape</var></dt>
+   *       <dd>Shape name. String representation of one of {@link \Wl\Resource\Image\ImageShapeSid} constants. Is set only if image kind equals to <tt>shape</tt>.</dd>
+   *       <dt>string <var>url</var></dt><dd>Asset logo URL.</dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>array[] <var>a_period</var></dt>
+   *   <dd>A list of asset periods with information about them:
+   *     <dl>
+   *       <dt>string <var>html_duration</var></dt><dd>Duration of asset to paste into view.</dd>
+   *       <dt>string <var>html_price</var></dt><dd>Formatted price of the asset period to paste into view.</dd>
+   *       <dt>int <var>i_duration</var></dt><dd>Duration of asset in minutes.</dd>
+   *       <dt>int <var>id_price</var></dt><dd>Asset period price type. One of {@link \RsServicePriceSid} constants.</dd>
+   *       <dt>sting <var>m_price</var></dt><dd>Price of the asset period.</dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>bool <var>hide_application</var></dt>
+   *   <dd>Whether asset will be hidden in the White Label mobile application. `true` means that asset will not be displayed, `false` otherwise.</dd>
+   *   <dt>string <var>html_age_restriction</var></dt>
+   *   <dd>Resource age restriction</dd>
+   *   <dt>string <var>html_title</var></dt>
+   *   <dd>Title of resource.</dd>
+   *   <dt>int <var>id_service_require</var></dt>
+   *   <dd>Purchase rule. One of {@link \RsServiceRequireSid} constants.</dd>
+   *   <dt>bool <var>is_age_restricted</var></dt>
+   *   <dd>Whether this service cannot be booked due to age restrictions.</dd>
+   *   <dt>string <var>k_resource</var></dt>
+   *   <dd>Resource key, primary key in {@link \RsResourceSql} table.</dd>
+   *   <dt>string <var>k_resource_category</var></dt>
+   *   <dd>Resource category key, primary key in {@link \RsResourceTypeSql} table.</dd>
+   * </dl>
+   *
    * <tt>null</tt> if not initialized yet.
    *
    * @get result

@@ -99,6 +99,12 @@ class ClassListModel extends WlModelAbstract
    *   <dd>
    *     Title of the session.
    *   </dd>
+   *   <dt>
+   *     string <var>url_book</var>
+   *   </dt>
+   *   <dd>
+   *     Direct link to start booking on wellnessliving site.
+   *   </dd>
    * </dl>
    *
    * @get result

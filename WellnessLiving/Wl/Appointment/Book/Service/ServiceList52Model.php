@@ -35,6 +35,21 @@ class ServiceList52Model extends WlModelAbstract
    *     The list of tab keys for service.
    *   </dd>
    *   <dt>
+   *     array[] <var>a_direct_link</var>
+   *   </dt>
+   *   <dd>
+   *     List of links to start booking from a direct link.
+   *     It cannot be one link, because the same appointment can be available in several booking tabs.
+   *     So, each booking tab as own direct booking link.
+   *     Each element has two values:
+   *     <dl>
+   *       <dt>string <var>k_class_tab</var></dt>
+   *       <dd>Key of the book now tab.</dd>
+   *       <dt>string <var>url_tab</var></dt>
+   *       <dd></dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>
    *     array <var>a_image</var>
    *   </dt>
    *   <dd>
