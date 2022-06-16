@@ -312,6 +312,7 @@ class ViewModel extends WlModelAbstract
   /**
    * Youtube url.
    *
+   * @get result
    * @var string
    */
   public $url_youtube = '';
