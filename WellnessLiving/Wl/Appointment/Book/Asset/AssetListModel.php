@@ -19,13 +19,13 @@ class AssetListModel extends WlModelAbstract
    *   <dd>
    *     List of links to start booking from a direct link.
    *     It cannot be one link, because the same resource can be available in several booking tabs.
-   *     So, each booking tab as own direct booking link.
+   *     So, each booking tab has own direct booking link.
    *     Each element has two values:
    *     <dl>
    *       <dt>string <var>k_class_tab</var></dt>
    *       <dd>Key of the book now tab.</dd>
    *       <dt>string <var>url_tab</var></dt>
-   *       <dd></dd>
+   *       <dd>Booking URL. Will open booking wizard under related booking tab.</dd>
    *     </dl>
    *   </dd>
    *   <dt>array[] <var>a_image</var></dt>
