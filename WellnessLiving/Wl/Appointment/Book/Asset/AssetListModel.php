@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Asset;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves an information about assets in the current asset category.
+ * Retrieves information about assets in the current asset category.
  */
 class AssetListModel extends WlModelAbstract
 {
@@ -20,9 +20,9 @@ class AssetListModel extends WlModelAbstract
   public $a_asset = null;
 
   /**
-   * Selected date and time of asset booking.
-   *   It is actual in case when business booking policy allows clients to select a date and time,
-   *   then the available asset.
+   * The selected date and time of the asset booking.
+   *   The date and time you have selected. This value is only used when the business booking policy allows clients to
+   *   select a date and time first, then the available asset second.
    *
    * @get get
    * @var string
@@ -38,9 +38,9 @@ class AssetListModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * Class tab ID to filter assets.
+   * The class tab ID to filter assets.
    *
-   * <tt>null</tt> if not set yet or select only elements with not specified class tab.
+   * <tt>null</tt> if not set yet or select only elements with no specified class tab.
    *
    * @get get
    * @var string|null
@@ -48,7 +48,7 @@ class AssetListModel extends WlModelAbstract
   public $k_class_tab = null;
 
   /**
-   * ID of a location.
+   * The ID of a location.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -58,7 +58,7 @@ class AssetListModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * ID of an asset category to show information for.
+   * The ID of an asset category to show information for.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -68,7 +68,7 @@ class AssetListModel extends WlModelAbstract
   public $k_resource_category = null;
 
   /**
-   * ID of assets' layout.
+   * The ID of an asset's layout.
    *
    * <tt>null</tt> if it is not loaded yet.
    *
