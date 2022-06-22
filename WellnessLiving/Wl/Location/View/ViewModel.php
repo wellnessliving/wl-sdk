@@ -300,6 +300,22 @@ class ViewModel extends WlModelAbstract
    * @var string
    */
   public $url_site = '';
+
+  /**
+   * URL to wellnessliving web application of the business.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_web = '';
+
+  /**
+   * Youtube url.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_youtube = '';
 }
 
 ?>
