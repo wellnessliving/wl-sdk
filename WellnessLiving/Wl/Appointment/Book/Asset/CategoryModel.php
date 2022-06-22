@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Asset;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves information about asset categories.
+ * Retrieves an information about asset categories.
  */
 class CategoryModel extends WlModelAbstract
 {
@@ -28,7 +28,17 @@ class CategoryModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * The ID of a location to show information for.
+   * Class tab ID to filter services.
+   *
+   * <tt>null</tt> if not set yet or select only elements with not specified class tab.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $k_class_tab = null;
+
+  /**
+   * ID of a location to show information for.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -36,16 +46,6 @@ class CategoryModel extends WlModelAbstract
    * @var string|null
    */
   public $k_location = null;
-
-  /**
-   * The class tab ID to filter services.
-   *
-   * <tt>null</tt> if not set yet or select only elements with unspecified class tab.
-   *
-   * @get get
-   * @var string|null
-   */
-  public $k_class_tab = null;
 }
 
 ?>
