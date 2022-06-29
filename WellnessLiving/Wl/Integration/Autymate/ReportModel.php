@@ -82,6 +82,14 @@ class ReportModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
+   * Randomly generated 32 character string use to authenticate requests.
+   *
+   * @get get
+   * @var string
+   */
+  public $s_guid = '';
+
+  /**
    * User's key.
    *
    * @get get
