@@ -146,6 +146,23 @@ class ElementModel extends WlModelAbstract
   public $a_staff_logo = null;
 
   /**
+   * List of classes and events, which client should visit before this one.
+   *
+   * <dl>
+   *   <dt>int <var>i_count</var></dt>
+   *   <dd>Number of visits.</dd>
+   *   <dt>string <var>k_class</var></dt>
+   *   <dd>Key of the class or event.</dd>
+   *   <dt>string <var>text_title</var></dt>
+   *   <dd>Name of the class or event.</dd>
+   * </dl>
+   *
+   * @get get
+   * @var array[]
+   */
+  public $a_visits_required;
+
+  /**
    * Book available end date.
    * If is set and {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$dl_book_available_start} is set list of
    *   sessions available for booking {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$a_book_available}
