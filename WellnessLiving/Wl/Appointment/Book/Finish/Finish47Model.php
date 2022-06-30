@@ -3,7 +3,7 @@
 namespace WellnessLiving\Wl\Appointment\Book\Finish;
 
 /**
- * Model to complete booking appointment.
+ * A model to complete an appointment booking.
  */
 class Finish47Model extends FinishModel
 {
