@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Event\Book\EventView;
 
+use WellnessLiving\Wl\Business\Config\BusinessConfigModel;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -23,6 +24,19 @@ class ElementModel extends WlModelAbstract
    * @var array|null
    */
   public $a_book_available = null;
+
+  /**
+   * All business policies connected to clients and bookings.
+   *
+   * Has the same structure as this property {@link BusinessConfigModel::$a_business_policy}.
+   *
+   * If policies are overwritten for the certain event, then this event policies will be in the result.
+   * Business policies will be otherwise.
+   *
+   * @get result
+   * @var array
+   */
+  public $a_business_policy = [];
 
   /**
    * Logo of event.
