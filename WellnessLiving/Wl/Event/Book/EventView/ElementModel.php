@@ -276,6 +276,23 @@ class ElementModel extends WlModelAbstract
   public $is_full = null;
 
   /**
+   * `true` if event can be paid with pricing option only.
+   * `false` if full event purchase or single session purchase are allowed.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_promotion_only;
+
+  /**
+   * Whether this event allows paying for single session.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_single_session_buy;
+
+  /**
    * ID of session which should be used to go to booking wizard.
    *
    * <tt>null</tt> if not set yet.
