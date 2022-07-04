@@ -151,6 +151,8 @@ class ElementModel extends WlModelAbstract
    * <dl>
    *   <dt>int <var>i_count</var></dt>
    *   <dd>Number of visits.</dd>
+   *   <dt>bool <var>is_event</var></dt>
+   *   <dd>`true` if this is an event, `false` if this is a class.</dd>
    *   <dt>string <var>k_class</var></dt>
    *   <dd>Key of the class or event.</dd>
    *   <dt>string <var>text_title</var></dt>
