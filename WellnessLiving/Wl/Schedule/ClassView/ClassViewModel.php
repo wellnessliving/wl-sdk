@@ -116,6 +116,25 @@ class ClassViewModel extends WlModelAbstract
   public $a_staff = null;
 
   /**
+   * List of classes and events, which client should visit before this one.
+   *
+   * <dl>
+   *   <dt>int <var>i_count</var></dt>
+   *   <dd>Number of visits.</dd>
+   *   <dt>bool <var>is_event</var></dt>
+   *   <dd>`true` if this is an event, `false` if this is a class.</dd>
+   *   <dt>string <var>k_class</var></dt>
+   *   <dd>Key of the class or event.</dd>
+   *   <dt>string <var>text_title</var></dt>
+   *   <dd>Name of the class or event.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array[]
+   */
+  public $a_visits_required = [];
+
+  /**
    * Date/time of the class start in GMT.
    *
    * <tt>null</tt> if date is not loaded yet.
