@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Event\Book\EventView;
 
+use WellnessLiving\Wl\Business\Config\BusinessConfigModel;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -23,6 +24,19 @@ class ElementModel extends WlModelAbstract
    * @var array|null
    */
   public $a_book_available = null;
+
+  /**
+   * All business policies connected to clients and bookings.
+   *
+   * Has the same structure as this property {@link BusinessConfigModel::$a_business_policy}.
+   *
+   * If policies are overwritten for the certain event, then this event policies will be in the result.
+   * Business policies will be otherwise.
+   *
+   * @get result
+   * @var array
+   */
+  public $a_business_policy = [];
 
   /**
    * Logo of event.
@@ -130,6 +144,25 @@ class ElementModel extends WlModelAbstract
    * @var array|null
    */
   public $a_staff_logo = null;
+
+  /**
+   * List of classes and events, which client should visit before this one.
+   *
+   * <dl>
+   *   <dt>int <var>i_count</var></dt>
+   *   <dd>Number of visits.</dd>
+   *   <dt>bool <var>is_event</var></dt>
+   *   <dd>`true` if this is an event, `false` if this is a class.</dd>
+   *   <dt>string <var>k_class</var></dt>
+   *   <dd>Key of the class or event.</dd>
+   *   <dt>string <var>text_title</var></dt>
+   *   <dd>Name of the class or event.</dd>
+   * </dl>
+   *
+   * @get get
+   * @var array[]
+   */
+  public $a_visits_required;
 
   /**
    * Book available end date.
@@ -243,6 +276,23 @@ class ElementModel extends WlModelAbstract
    * @var bool|null
    */
   public $is_full = null;
+
+  /**
+   * `true` if event can be paid with pricing option only.
+   * `false` if full event purchase or single session purchase are allowed.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_promotion_only;
+
+  /**
+   * Whether this event allows paying for single session.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_single_session_buy;
 
   /**
    * ID of session which should be used to go to booking wizard.
