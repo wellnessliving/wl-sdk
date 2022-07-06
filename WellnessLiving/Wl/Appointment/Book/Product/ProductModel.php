@@ -20,7 +20,7 @@ class ProductModel extends WlModelAbstract
   public $a_product = null;
 
   /**
-   * ID of a service to show information for.
+   * The ID of a service for which to show information.
    *
    * @get get
    * @var string
