@@ -45,7 +45,7 @@ class ReportModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $dtl_date = '';
+  public $dl_date = '';
 
   /**
    * The page of the report, starting from 0.
