@@ -366,6 +366,7 @@ class WlModelAbstract
   /**
    * Prepares the Curl request.
    *
+   *
    * @param string $s_method Method of the request. One of the next values: 'get', 'post', 'put', 'delete'.
    * @return array Data with prepared request with the following structure:
    * <dl>
