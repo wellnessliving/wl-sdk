@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Appointment\Book\Purchase;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves an information about service categories.
+ * Retrieves information about service categories.
  */
 class PurchaseModel extends WlModelAbstract
 {
   /**
-   * Array with information about purchase available purchase options.
+   * An array with information about available Purchase Options.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -20,7 +20,7 @@ class PurchaseModel extends WlModelAbstract
   public $a_purchase = null;
 
   /**
-   * Date to check purchase options expiration.
+   * The date to use to check for expiration of Purchase Options.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -30,7 +30,7 @@ class PurchaseModel extends WlModelAbstract
   public $dt_date = null;
 
   /**
-   * Duration of the asset.
+   * The duration of the asset booking.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -40,8 +40,8 @@ class PurchaseModel extends WlModelAbstract
   public $i_duration = null;
 
   /**
-   * <tt>true</tt> - get all promotions suitable for appointment;
-   * <tt>false</tt> - get only promotions available for client.
+   * <tt>true</tt> - get all promotions suitable for appointment.
+   * <tt>false</tt> - get only promotions available for the client.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -51,7 +51,7 @@ class PurchaseModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * Location ID to select available purchase options.
+   * The location ID used to select available Purchase Options (Purchase Options the client already owns).
    *
    * <tt>null</tt> if not set yet.
    *
@@ -61,9 +61,9 @@ class PurchaseModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * Promotion ID to pay for the appointment.
+   * The promotion ID used to pay for the appointment.
    *
-   * <tt>null</tt> if client does not have suitable promotion.
+   * <tt>null</tt> if the client doesn't have a suitable promotion.
    *
    * @get result
    * @var string|null
@@ -71,7 +71,7 @@ class PurchaseModel extends WlModelAbstract
   public $k_login_promotion = null;
 
   /**
-   * Resource ID.
+   * The resource ID.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -81,7 +81,7 @@ class PurchaseModel extends WlModelAbstract
   public $k_resource = null;
 
   /**
-   * Service ID to select available purchase options.
+   * The service ID used to select available Purchase Options.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -91,7 +91,7 @@ class PurchaseModel extends WlModelAbstract
   public $k_service = null;
 
   /**
-   * User ID.
+   * The user ID.
    *
    * <tt>null</tt> if not set yet.
    *
