@@ -18,7 +18,7 @@ try
 {
   $o_config=ExampleConfig::create(WlRegionSid::US_EAST_1);
 
-  // Retrieve notepad (it is a separate step of user sign in process).
+  // Retrieve notepad (it is a separate step of user sign in process)
   $o_notepad=new NotepadModel($o_config);
   $o_request=$o_notepad->get();
 
