@@ -25,7 +25,7 @@ try
   // Approach to get debugging information.
   echo $o_request->httpProtocol()."\r\n\r\n";
 
-  // Sign in a user
+  // Sign in a user.
   $o_enter=new EnterModel($o_config);
   $o_enter->cookieSet($o_notepad->cookieGet()); // Keep cookies to keep session.
   $o_enter->s_login='/** Put your login here */';
