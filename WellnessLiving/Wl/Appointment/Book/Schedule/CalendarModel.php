@@ -5,13 +5,13 @@ namespace WellnessLiving\Wl\Appointment\Book\Schedule;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves a list with all calendar days in specified month with
+ * Retrieves a list with all calendar days in a specified month with
  * available and unavailable appointment booking schedule.
  */
 class CalendarModel extends WlModelAbstract
 {
   /**
-   * List with all calendar days in specified month with
+   * A list with all calendar days in specified month with
    * available and unavailable appointment booking schedule.
    *
    * <tt>null</tt> if not set yet.
@@ -22,7 +22,7 @@ class CalendarModel extends WlModelAbstract
   public $a_date = null;
 
   /**
-   * Date to determine what month to display.
+   * The date to determine what month to display.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -32,7 +32,7 @@ class CalendarModel extends WlModelAbstract
   public $dt_date = null;
 
   /**
-   * Duration of the asset.
+   * The duration of the asset.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -42,9 +42,9 @@ class CalendarModel extends WlModelAbstract
   public $i_duration = null;
 
   /**
-   * Index of selected asset.
+   * An index of the selected asset.
    *
-   * <tt>null</tt> if not set yet. Or if asset is not on layout.
+   * <tt>null</tt> if not set yet or if asset isn't on layout.
    *
    * @get get
    * @var int|null
@@ -52,7 +52,7 @@ class CalendarModel extends WlModelAbstract
   public $i_index = null;
 
   /**
-   * Staff gender.
+   * The staff member's gender.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -62,7 +62,7 @@ class CalendarModel extends WlModelAbstract
   public $id_gender_staff = null;
 
   /**
-   * Location ID to show what days are available for booking.
+   * The location ID to show what days are available for booking.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -72,7 +72,7 @@ class CalendarModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * Resource ID to show what days are available for booking.
+   * The resource ID to show what days are available for booking.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -82,7 +82,7 @@ class CalendarModel extends WlModelAbstract
   public $k_resource = null;
 
   /**
-   * Service ID to show what days are available for booking.
+   * The service ID to show what days are available for booking.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -92,7 +92,7 @@ class CalendarModel extends WlModelAbstract
   public $k_service = null;
 
   /**
-   * Staff ID to show what days are available for booking.
+   * The staff ID to show what days are available for booking.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -102,7 +102,7 @@ class CalendarModel extends WlModelAbstract
   public $k_staff = null;
 
   /**
-   * List of service add-ons. Serialized to be usable as model key.
+   * A list of service add-ons. Serialized to be usable as model key.
    *
    * @get get
    * @var string
@@ -110,7 +110,7 @@ class CalendarModel extends WlModelAbstract
   public $s_product = '';
 
   /**
-   * User ID.
+   * The user ID.
    *
    * <tt>null</tt> if not set yet.
    *

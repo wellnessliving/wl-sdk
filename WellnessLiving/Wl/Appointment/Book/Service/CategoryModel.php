@@ -20,8 +20,9 @@ class CategoryModel extends WlModelAbstract
   public $a_category = null;
 
   /**
-   * <tt>true</tt> - return all service categories of certain location;
-   * <tt>false</tt> - return only service categories which has staff members and are bound to certain book tab.
+   * <tt>true</tt> - return all service categories for a certain location.
+   * <tt>false</tt> - return only service categories which have staff members able to conduct them and are associated
+   * to a certain book tab.
    *
    * @get get
    * @var bool
@@ -29,7 +30,7 @@ class CategoryModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * Class tab ID to filter services.
+   * The class tab ID to filter services.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -39,7 +40,7 @@ class CategoryModel extends WlModelAbstract
   public $k_class_tab = null;
 
   /**
-   * ID of a location to show information for.
+   * The ID of a location for which to show information.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -49,7 +50,7 @@ class CategoryModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * ID of user to get information for.
+   * The ID of a user for whom to get information.
    *
    * <tt>null</tt> if not set yet.
    *
