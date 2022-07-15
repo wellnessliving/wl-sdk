@@ -74,6 +74,20 @@ class ReportModel extends WlModelAbstract
   public $is_more;
 
   /**
+   * Whether this report should be refreshed.
+   *
+   * `true` to refresh this report if it is already generated.
+   * Refreshing of the report may not be queried while report is being generated.
+   *
+   * `false` to only return contents of the report.
+   * If report is not yet generated, it automatically starts the generation in the background.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_refresh;
+
+  /**
    * Key of the business for which report must be generated.
    *
    * @get get
