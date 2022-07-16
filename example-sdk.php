@@ -30,7 +30,7 @@ try
   $o_enter->cookieSet($o_notepad->cookieGet()); // Keep cookies to keep session.
   $o_enter->s_login='/** Put your login here */';
   $o_enter->s_notepad=$o_notepad->s_notepad;
-  $o_enter->s_password=$o_notepad->hash('/** Put your password here */');
+  $o_enter->s_password=$o_notepad->hash('/** Put your password here. */');
   $o_enter->post();
 
   // Another approach to get debugging information.
