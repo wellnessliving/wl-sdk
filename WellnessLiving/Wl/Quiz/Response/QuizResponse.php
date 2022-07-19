@@ -10,7 +10,7 @@ class QuizResponse
   /**
    * Special value if quiz is skipped during booking or purchase.
    */
-  public const RESPONSE_SKIP = 'skip';
+  const RESPONSE_SKIP = 'skip';
 }
 
 ?>

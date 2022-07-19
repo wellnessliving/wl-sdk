@@ -15,7 +15,7 @@ class QuizModel extends WlModelAbstract
    * @post result
    * @var string[]
    */
-  public array $a_login_activity = [];
+  public $a_login_activity = [];
 
   /**
    * List of purchase items. Each element has format <tt>[id_purchase_item]::[k_id]</tt>, where<dl>
@@ -30,7 +30,7 @@ class QuizModel extends WlModelAbstract
    * @get get
    * @var string[]
    */
-  public array $a_purchase_item = [];
+  public $a_purchase_item = [];
 
   /**
    * List of quizzes. Each element has next structure:<dl>
@@ -43,7 +43,7 @@ class QuizModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public array $a_quiz = [];
+  public $a_quiz = [];
 
   /**
    * List of quiz response keys.
@@ -53,7 +53,7 @@ class QuizModel extends WlModelAbstract
    * @post post
    * @var array
    */
-  public array $a_quiz_response = [];
+  public $a_quiz_response = [];
 
   /**
    * Selected assets.
@@ -66,7 +66,7 @@ class QuizModel extends WlModelAbstract
    * @var array[]
    * @see \RsResourceSql
    */
-  public array $a_resource = [];
+  public $a_resource = [];
 
   /**
    * Selected sessions.
@@ -77,7 +77,7 @@ class QuizModel extends WlModelAbstract
    * @post post
    * @var array
    */
-  public array $a_session_select = [];
+  public $a_session_select = [];
 
   /**
    * Keys of books are made.
@@ -85,7 +85,7 @@ class QuizModel extends WlModelAbstract
    * @post result
    * @var string[]
    */
-  public array $a_visit = [];
+  public $a_visit = [];
 }
 
 ?>

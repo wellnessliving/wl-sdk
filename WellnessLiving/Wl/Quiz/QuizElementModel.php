@@ -18,7 +18,7 @@ class QuizElementModel extends WlModelAbstract
    * @post post
    * @var array
    */
-  public array $a_element = [];
+  public $a_element = [];
 
   /**
    * `true` if don't check user authorization, `false` otherwise.
@@ -27,7 +27,7 @@ class QuizElementModel extends WlModelAbstract
    * @post get
    * @var bool
    */
-  public bool $can_anonymous = false;
+  public $can_anonymous = false;
 
   /**
    * Quiz active status.
@@ -38,7 +38,7 @@ class QuizElementModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public bool $is_active = true;
+  public $is_active = true;
 
   /**
    * Business key within which quiz is managed.
@@ -46,9 +46,8 @@ class QuizElementModel extends WlModelAbstract
    * @get get
    * @post get
    * @var string
-   * @see \RsBusinessSql
    */
-  public string $k_business = '';
+  public $k_business = '';
 
   /**
    * Quiz key.
@@ -57,7 +56,7 @@ class QuizElementModel extends WlModelAbstract
    * @post get,result
    * @var string
    */
-  public string $k_quiz = '';
+  public $k_quiz = '';
 
   /**
    * Whether to show numbering of the form elements that supports numbering.
@@ -69,7 +68,7 @@ class QuizElementModel extends WlModelAbstract
    * @post post
    * @var bool
    */
-  public bool $show_numbering = true;
+  public $show_numbering = true;
 
   /**
    * Quiz form title.
@@ -78,7 +77,7 @@ class QuizElementModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public string $text_title = '';
+  public $text_title = '';
 }
 
 ?>
