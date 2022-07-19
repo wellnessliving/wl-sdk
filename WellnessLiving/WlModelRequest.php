@@ -164,7 +164,7 @@ class WlModelRequest
    */
   public function httpProtocol()
   {
-    return $this->s_request."\r\n\r\n".$this->s_response;
+    return $this->s_request. PHP_EOL . PHP_EOL .$this->s_response;
   }
 
   /**
