@@ -50,6 +50,8 @@ class ClassViewModel extends WlModelAbstract
    *   <dd>Whether current class was booked by current client.</dd>
    *   <dt>bool <var>is_cancel</var></dt>
    *   <dd><tt>true</tt> if class period was cancelled; <tt>false</tt> otherwise.</dd>
+   *   <dt>bool <var>is_promotion_only</var></dt>
+   *   <dd><tt>true</tt> if this class can be paid with promotion only; <tt>false</tt> otherwise.</dd>
    *   <dt>bool <var>is_wait_list</var></dt>
    *   <dd><tt>true</tt> if user can take place in wait list only; <tt>false</tt> otherwise.</dd>
    *   <dt>string <var>m_price</var></dt>
