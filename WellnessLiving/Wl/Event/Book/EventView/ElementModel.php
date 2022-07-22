@@ -11,6 +11,26 @@ use WellnessLiving\WlModelAbstract;
 class ElementModel extends WlModelAbstract
 {
   /**
+   * Information about age restrictions for this event.
+   *
+   * Empty array if there are no restrictions based on the age.
+   *
+   * <dl>
+   *   <dt>int|null <var>i_age_from</var></dt>
+   *   <dd>Age from that event is allowed. <tt>null</tt> if minimal age is not limited or information is not available.</dd>
+   *   <dt>int|null <var>i_age_to</var></dt>
+   *   <dd>Age till that event is allowed. <tt>null</tt> if minimal age is not limited or information is not available.</dd>
+   *   <dt>bool <var>is_age_public</var></dt>
+   *   <dd>`true` if age restrictions are public and available, `false` if they are hidden.
+   *     When restrictions are hidden and current user is not a staff member, age range will be empty.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array
+   */
+  public $a_age_restrictions = [];
+
+  /**
    * Retrieves information about event item.
    *
    * Received only if {@link ElementModel::$k_event} has been specified. In this case other fields are not receiver.
