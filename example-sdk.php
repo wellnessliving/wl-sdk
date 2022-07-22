@@ -23,9 +23,9 @@ try
   $o_request=$o_notepad->get();
 
   // Approach to get debugging information.
-  echo $o_request->httpProtocol()."\r\n\r\n";
+  echo $o_request->httpProtocol() . PHP_EOL . PHP_EOL;
 
-  // Sign in a user
+  // Sign in a user.
   $o_enter=new EnterModel($o_config);
   $o_enter->cookieSet($o_notepad->cookieGet()); // Keep cookies to keep session.
   $o_enter->s_login='/** Put your login here */';
@@ -34,7 +34,7 @@ try
   $o_enter->post();
 
   // Another approach to get debugging information.
-  echo $o_enter->lastRequest()->httpProtocol()."\r\n\r\n";
+  echo $o_enter->lastRequest()->httpProtocol(). PHP_EOL;
 
   $o_report=new DataModel($o_config);
   $o_report->cookieSet($o_notepad->cookieGet()); // Keep cookies to keep session.
@@ -50,12 +50,13 @@ try
   foreach($o_report->a_data['a_row'] as $a_row)
   {
     $i++;
-    echo $i.'. '.$a_row['dt_date'].' '.$a_row['m_paid']['m_amount'].' '.$a_row['o_user']['text_name'].' '.$a_row['s_item']."\r\n";
+    echo $i.'. '.$a_row['dt_date'].' '.$a_row['m_paid']['m_amount'].' '.$a_row['o_user']['text_name'].' '.$a_row['s_item']. PHP_EOL;
   }
 }
 catch(WlAssertException $e)
 {
   echo $e;
+  echo PHP_EOL;
   return;
 }
 catch(WlUserException $e)
@@ -63,9 +64,12 @@ catch(WlUserException $e)
   echo $e->getMessage()."\n";
 
   // Approach to get debugging information in a case of exception.
-  if($e->request())
-    echo "\r\n\r\n".$e->request()->httpProtocol()."\r\n";
+  if ($e->request()) {
+    echo PHP_EOL . PHP_EOL . $e->request()->httpProtocol() . PHP_EOL;
+  }
+  echo PHP_EOL;
   return;
 }
 
+echo PHP_EOL;
 ?>

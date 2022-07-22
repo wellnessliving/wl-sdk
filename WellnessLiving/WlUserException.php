@@ -105,13 +105,17 @@ class WlUserException extends \Exception
     if($this->s_class)
       $text_exception.=' / '.$this->s_class;
     $text_exception.=' is thrown with error message: '.$this->getMessage();
-    if($this->a_result)
-      $text_exception.="\r\n".var_export($this->a_result,true);
+    if($this->a_result) {
+      $text_exception .= PHP_EOL . var_export($this->a_result, true);
+    }
     elseif($this->a_error) // If Both, a_result and a_error specified, it is likely that a_result contains a_error inside.
-      $text_exception.="\r\n".var_export($this->a_error,true);
+    {
+      $text_exception .= PHP_EOL . var_export($this->a_error, true);
+    }
 
-    if($this->a_data)
-      $text_exception.="\r\n".var_export($this->a_data,true);
+    if($this->a_data) {
+      $text_exception .= PHP_EOL . var_export($this->a_data, true);
+    }
 
     return $text_exception;
   }
