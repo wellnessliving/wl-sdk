@@ -13,6 +13,22 @@ class AssetListModel extends WlModelAbstract
    * A list of information about assets.
    *
    * <dl>
+   *   <dt>array <var>a_age_restrictions</var</dt>
+   *   <dd>
+   *     Information about age restrictions for this event.
+   *
+   *     Empty array if there are no restrictions based on the age.
+   *
+   *     <dl>
+   *       <dt>int|null <var>i_age_from</var></dt>
+   *       <dd>Age from that event is allowed. <tt>null</tt> if minimal age is not limited or information is not available.</dd>
+   *       <dt>int|null <var>i_age_to</var></dt>
+   *       <dd>Age till that event is allowed. <tt>null</tt> if minimal age is not limited or information is not available.</dd>
+   *       <dt>bool <var>is_age_public</var></dt>
+   *       <dd>`true` if age restrictions are public and available, `false` if they are hidden.
+   *         When restrictions are hidden and current user is not a staff member, age range will be empty.</dd>
+   *     </dl>
+   *   </dd>
    *   <dt>
    *     array[] <var>a_direct_link</var>
    *   </dt>
