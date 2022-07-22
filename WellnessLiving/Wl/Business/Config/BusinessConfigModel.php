@@ -85,7 +85,3 @@ class BusinessConfigModel extends WlModelAbstract
 }
 
 ?>
-
-
-
-
