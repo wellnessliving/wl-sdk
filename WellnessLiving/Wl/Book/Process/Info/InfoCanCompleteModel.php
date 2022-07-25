@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Book\Process\Info;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Checker for <tt>next</tt>, <tt>complete</tt> buttons in booking process.
+ * A checker for <tt>next</tt>, <tt>complete</tt> buttons in the booking process.
  */
 class InfoCanCompleteModel extends WlModelAbstract
 {
     /**
-     * Whether user can complete booking process from info step.
+     * Determines whether users can complete the booking process from the info step.
      *
      * <tt>null</tt> if not loaded yet.
      *
@@ -21,12 +21,12 @@ class InfoCanCompleteModel extends WlModelAbstract
     public $can_complete = null;
 
     /**
-     * List of sessions of event that can be booked together.
+     * A list of sessions of an event that can be booked together.
      *
      * Same as {@link Wl_Book_Process_Info_InfoCanCompleteModel.a_session_select_post}, but is limited by query string
-     * length and might fail if the user is booking >50 sessions at once, so usage of POST method is preferable.
+     * length and might fail if the user is booking >50 sessions at once. Therefore, usage of POST method is preferable.
      *
-     * Every element has next keys:<ul>
+     * Every element has the next keys:<ul>
      *   <li>String <tt>dt_date</tt> Date and time in MySQL forma in GMT, when session starts.</li>
      *   <li>Boolean <tt>is_select</tt> <tt>true</tt> if this session should be booked; <tt>false</tt> otherwise.</li>
      *   <li>String <tt>k_class_period</tt> Class period ID.</li>
@@ -38,10 +38,10 @@ class InfoCanCompleteModel extends WlModelAbstract
     public $a_session_select = [];
 
     /**
-     * List of sessions of event that can be booked together.
+     * A list of sessions of an event that can be booked together.
      *
-     * Every element has next keys:<ul>
-     *   <li>String <tt>dt_date</tt> Date and time in MySQL forma in GMT, when session starts.</li>
+     * Every element has the next keys:<ul>
+     *   <li>String <tt>dt_date</tt> Date and time in MySQL forma in GMT, when the session starts.</li>
      *   <li>Boolean <tt>is_select</tt> <tt>true</tt> if this session should be booked; <tt>false</tt> otherwise.</li>
      *   <li>String <tt>k_class_period</tt> Class period ID.</li>
      * </ul>
@@ -52,10 +52,10 @@ class InfoCanCompleteModel extends WlModelAbstract
     public $a_session_select_post = [];
 
     /**
-     * Date and time of the session that user is booking now.
-     * In MySQL format. In GMT.
+     * The date and time of the session that user is booking now.
+     * Returned in MySQL format and in GMT.
      *
-     * Empty string means not set yet.
+     * An empty string means it's not set yet.
      *
      * @get get
      * @post get
@@ -64,9 +64,9 @@ class InfoCanCompleteModel extends WlModelAbstract
     public $dt_date_gmt = '';
 
     /**
-     * Class period ID, that user started to book.
+     * The class period ID that the user started to book.
      *
-     * Empty string means not set yet.
+     * An empty string means it's not set yet.
      *
      * @get get
      * @post get
@@ -75,7 +75,7 @@ class InfoCanCompleteModel extends WlModelAbstract
     public $k_class_period = '';
 
     /**
-     * Unique booking process key.
+     * The unique booking process key.
      *
      * @get get
      * @post get
@@ -84,7 +84,7 @@ class InfoCanCompleteModel extends WlModelAbstract
     public $s_id = '';
 
     /**
-     * ID of a user who is making the book.
+     * The ID of a user who is making the booking.
      *
      * <tt>null</tt> if not set yet.
      *
