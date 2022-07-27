@@ -48,6 +48,36 @@ class ReportModel extends WlModelAbstract
   public $dl_date = '';
 
   /**
+   * Date and time when this report has completed generation.
+   *
+   * `null` if generation of this report is not completed.
+   *
+   * @get result
+   * @var string
+   */
+  public $dtu_complete;
+
+  /**
+   * Date and time when this report was put in the generation queue.
+   *
+   * Effectively, this is the time when a user clicked to view this report or the report for this day was first called.
+   *
+   * @get result
+   * @var string
+   */
+  public $dtu_queue;
+
+  /**
+   * Date and time when generation of this report was started.
+   *
+   * `null` if generation of this report has not started.
+   *
+   * @get result
+   * @var string
+   */
+  public $dtu_start;
+
+  /**
    * The page of the report, starting from 0.
    *
    * @get get
@@ -86,6 +116,20 @@ class ReportModel extends WlModelAbstract
    * @var bool
    */
   public $is_refresh;
+
+  /**
+   * Whether this report is complete. If this report is accessed on the current day, or is returning
+   * a result that was cached on the current day it could be incomplete as not all the transactions for the day
+   * are present.
+   *
+   * If `true` then this report will be complete.
+   *
+   * If `false` then this report could be incomplete.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_report_complete=false;
 
   /**
    * Key of the business for which report must be generated.
