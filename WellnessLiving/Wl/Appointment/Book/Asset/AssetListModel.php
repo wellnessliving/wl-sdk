@@ -21,9 +21,9 @@ class AssetListModel extends WlModelAbstract
    *
    *     <dl>
    *       <dt>int|null <var>i_age_from</var></dt>
-   *       <dd>Age from that event is allowed. <tt>null</tt> if minimal age is not limited or information is not available.</dd>
+   *       <dd>Age from that event is allowed. `null` if minimal age is not limited or information is not available.</dd>
    *       <dt>int|null <var>i_age_to</var></dt>
-   *       <dd>Age till that event is allowed. <tt>null</tt> if minimal age is not limited or information is not available.</dd>
+   *       <dd>Age till that event is allowed. `null` if minimal age is not limited or information is not available.</dd>
    *       <dt>bool <var>is_age_public</var></dt>
    *       <dd>`true` if age restrictions are public and available, `false` if they are hidden.
    *         When restrictions are hidden and current user is not a staff member, age range will be empty.</dd>
@@ -84,7 +84,7 @@ class AssetListModel extends WlModelAbstract
    *   <dd>Resource category key, primary key in {@link \RsResourceTypeSql} table.</dd>
    * </dl>
    *
-   * <tt>null</tt> if not initialized yet.
+   * `null` if not initialized yet.
    *
    * @get result
    * @var array|null
@@ -112,7 +112,7 @@ class AssetListModel extends WlModelAbstract
   /**
    * Class tab ID to filter assets.
    *
-   * <tt>null</tt> if not set yet or select only elements with not specified class tab.
+   * `null` if not set yet or select only elements with not specified class tab.
    *
    * @get get
    * @var string|null
@@ -122,7 +122,7 @@ class AssetListModel extends WlModelAbstract
   /**
    * ID of a location.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -132,7 +132,7 @@ class AssetListModel extends WlModelAbstract
   /**
    * ID of an asset category to show information for.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -142,7 +142,7 @@ class AssetListModel extends WlModelAbstract
   /**
    * ID of assets' layout.
    *
-   * <tt>null</tt> if it is not loaded yet.
+   * `null` if it is not loaded yet.
    *
    * @get result
    * @var string|null

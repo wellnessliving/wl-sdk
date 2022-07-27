@@ -17,9 +17,9 @@ class ElementModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>int|null <var>i_age_from</var></dt>
-   *   <dd>Age from that event is allowed. <tt>null</tt> if minimal age is not limited or information is not available.</dd>
+   *   <dd>Age from that event is allowed. `null` if minimal age is not limited or information is not available.</dd>
    *   <dt>int|null <var>i_age_to</var></dt>
-   *   <dd>Age till that event is allowed. <tt>null</tt> if minimal age is not limited or information is not available.</dd>
+   *   <dd>Age till that event is allowed. `null` if minimal age is not limited or information is not available.</dd>
    *   <dt>bool <var>is_age_public</var></dt>
    *   <dd>`true` if age restrictions are public and available, `false` if they are hidden.
    *     When restrictions are hidden and current user is not a staff member, age range will be empty.</dd>
@@ -38,7 +38,7 @@ class ElementModel extends WlModelAbstract
    * Keys of this array - event keys.
    * Values of this array - sub arrays with keys that corresponds to all fields in this table that may be received.
    *
-   * <tt>null</tt> until received from server.
+   * `null` until received from server.
    *
    * @get result
    * @var array|null
@@ -61,7 +61,7 @@ class ElementModel extends WlModelAbstract
   /**
    * Logo of event.
    *
-   * <tt>null</tt> if not loaded yet.
+   * `null` if not loaded yet.
    *
    * @get result
    * @var array|null
@@ -76,7 +76,7 @@ class ElementModel extends WlModelAbstract
    * Keys of this array - event keys.
    * Values of this array - sub arrays with keys that corresponds to all fields in this table that may be received.
    *
-   * <tt>null</tt> until received from server.
+   * `null` until received from server.
    *
    * @get result
    * @var array|null
@@ -148,7 +148,7 @@ class ElementModel extends WlModelAbstract
    *   </dd>
    * </dl>
    *
-   * <tt>null</tt> if not loaded yet.
+   * `null` if not loaded yet.
    *
    * @get result
    * @var array|null
@@ -158,7 +158,7 @@ class ElementModel extends WlModelAbstract
   /**
    * Photos of staff. Keys - IDs of staff; values - {@link Wl_Event_Book_EventView_ElementModel_a_staff_logo} objects.
    *
-   * <tt>null</tt> if not loaded yet.
+   * `null` if not loaded yet.
    *
    * @get result
    * @var array|null
@@ -209,7 +209,7 @@ class ElementModel extends WlModelAbstract
   /**
    * Date which should be used to go to booking wizard.
    *
-   * <tt>null</tt> if not loaded yet.
+   * `null` if not loaded yet.
    *
    * @get result
    * @var string|null
@@ -219,7 +219,7 @@ class ElementModel extends WlModelAbstract
   /**
    * Early date of the event.
    *
-   * <tt>null</tt> if not loaded yet.
+   * `null` if not loaded yet.
    *
    * @get result
    * @var string|null
@@ -229,7 +229,7 @@ class ElementModel extends WlModelAbstract
   /**
    * End date of the event.
    *
-   * <tt>null</tt> if not loaded yet.
+   * `null` if not loaded yet.
    *
    * @get result
    * @var string|null
@@ -239,7 +239,7 @@ class ElementModel extends WlModelAbstract
   /**
    * Start date of the event.
    *
-   * <tt>null</tt> if not loaded yet.
+   * `null` if not loaded yet.
    *
    * @get result
    * @var string|null
@@ -249,7 +249,7 @@ class ElementModel extends WlModelAbstract
   /**
    * Special instruction for event.
    *
-   * <tt>null</tt> if not loaded yet.
+   * `null` if not loaded yet.
    *
    * @get result
    * @var string|null
@@ -259,7 +259,7 @@ class ElementModel extends WlModelAbstract
   /**
    * Session count.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @get result
    * @var int|null
@@ -269,7 +269,7 @@ class ElementModel extends WlModelAbstract
   /**
    * Virtual provider ID. One of {@link \Wl\Virtual\VirtualProviderSid} constants.
    *
-   * <tt>null</tt> for not virtual events.
+   * `null` for not virtual events.
    *
    * @get result
    * @var int|null
@@ -279,7 +279,7 @@ class ElementModel extends WlModelAbstract
   /**
    * <tt>true</tt> - event is already booked; <tt>false</tt> - event is not booked.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @get result
    * @var bool|null
@@ -290,7 +290,7 @@ class ElementModel extends WlModelAbstract
    * <tt>true</tt> if there are no free spots in the event; booking is available only into wait list.
    * <tt>false</tt> otherwise.
    *
-   * <tt>null</tt> until got from server.
+   * `null` until got from server.
    *
    * @get result
    * @var bool|null
@@ -317,7 +317,7 @@ class ElementModel extends WlModelAbstract
   /**
    * ID of session which should be used to go to booking wizard.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -328,7 +328,7 @@ class ElementModel extends WlModelAbstract
    * Event identifier.
    * You can specify {@Link ElementModel::$s_event} instead to get information for a bulk of events.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -338,7 +338,7 @@ class ElementModel extends WlModelAbstract
   /**
    * Price of the single session of the event.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -348,7 +348,7 @@ class ElementModel extends WlModelAbstract
   /**
    * Price of the all sessions of the event.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -358,7 +358,7 @@ class ElementModel extends WlModelAbstract
   /**
    * Early price of the all sessions of the event.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -369,7 +369,7 @@ class ElementModel extends WlModelAbstract
    * Reason why event can not be booked.
    * Empty if {@link Wl_Event_Book_EventView_ElementModel.k_class_period} is not empty.
    *
-   * <tt>null</tt> if not loaded yet.
+   * `null` if not loaded yet.
    *
    * @get result
    * @var string|null
@@ -388,7 +388,7 @@ class ElementModel extends WlModelAbstract
   /**
    * Title of the event.
    *
-   * <tt>null</tt> if not loaded yet.
+   * `null` if not loaded yet.
    *
    * @get result
    * @var string|null
@@ -406,7 +406,7 @@ class ElementModel extends WlModelAbstract
   /**
    * Description of the event.
    *
-   * <tt>null</tt> if not loaded yet.
+   * `null` if not loaded yet.
    *
    * @get result
    * @var string|null
