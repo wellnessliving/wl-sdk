@@ -1,6 +1,6 @@
 <?php
 
-namespace Wl\Integration\Autymate;
+namespace WellnessLiving\Wl\Integration\Autymate;
 
 /**
  * List of statuses of an Autymate enrollment notification.
