@@ -6,60 +6,60 @@ use WellnessLiving\Wl\Book\WlBookModeSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about purchase options which allow to book specified session(s).
+ * Information about Purchase Options that can book specified session(s).
  */
 class PurchaseModel extends WlModelAbstract
 {
   /**
-   * List of purchase options which are available for session(s) which is(are) being booked. Keys - unique string IDs. Values - arrays with next keys:
+   * A list of Purchase Options which are available for session(s) that are being booked. Keys - unique string IDs. Values - arrays with the next keys:
    * <dl>
    *   <dt>
    *     array[] <var>a_installment_template</var>.
    *   </dt>
    *   <dd>
-   *     A list of installment plans. Every element has next keys:
+   *     A list of installment plans. Every element has the next keys:
    *     <dl>
    *       <dt>
    *         int <var>i_count</var>
    *       </dt>
    *       <dd>
-   *          Number of payments.
+   *          The number of payments.
    *       </dd>
    *       <dt>
    *         int <var>id_duration</var>
    *       </dt>
    *       <dd>
-   *          Duration of a single period.
+   *          The duration of a single period.
    *       </dd>
    *       <dt>
    *         int <var>i_period</var>
    *       </dt>
    *       <dd>
-   *          Number of periods specified by <var>id_period</var> between individual payments.
+   *          The number of periods specified by <var>id_period</var> between individual payments.
    *       </dd>
    *       <dt>
    *         string <var>k_currency</var>
    *       </dt>
    *       <dd>
-   *         Payment currency Key.
+   *         The payment currency key.
    *       </dd>
    *       <dt>
    *         string <var>k_pay_installment_template</var>
    *       </dt>
    *       <dd>
-   *          Key of installment plan template.
+   *          The key of the installment plan template.
    *       </dd>
    *       <dt>
    *         string <var>m_amount</var>
    *       </dt>
    *       <dd>
-   *         Amount of installment plan.
+   *         The amount of the installment plan.
    *       </dd>
    *       <dt>
    *         string <var>s_duration</var>
    *       </dt>
    *       <dd>
-   *         Title of installment plan.
+   *         The title of the installment plan.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -67,13 +67,13 @@ class PurchaseModel extends WlModelAbstract
    *     array[] [<var>a_visit_limit</var>]
    *   </dt>
    *   <dd>
-   *     Actual only for promotions. List of limits on booking by promotion. Every element has next keys:
+   *     Actual only for promotions. A list of limits on booking by the promotion. Every element has the next keys:
    *     <dl>
    *       <dt>
    *         string <var>s_title</var>
    *       </dt>
    *       <dd>
-   *         Description of limit.
+   *         A description of the limit.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -81,121 +81,121 @@ class PurchaseModel extends WlModelAbstract
    *     string <var>f_price</var>
    *   </dt>
    *   <dd>
-   *     Price.
+   *     The price.
    *   </dd>
    *   <dt>
    *     string [<var>f_price_early</var>]
    *   </dt>
    *   <dd>
-   *     Price which is actual for early bookings.
+   *     The price for early bookings.
    *   </dd>
    *   <dt>
    *     string <var>html_description</var>
    *   </dt>
    *   <dd>
-   *     Description. Ready to paste in browser.
+   *     The description, ready to paste in a browser.
    *   </dd>
    *   <dt>
    *     int [<var>i_limit</var>]
    *   </dt>
    *   <dd>
-   *     Limit of sessions which may be booked by purchase options.
+   *     The limit of sessions which may be booked by Purchase Options.
    *   </dd>
    *   <dt>
    *     int [<var>i_payment_period</var>]
    *   </dt>
    *   <dd>
-   *     Actual only for promotions with program 'membership'. Duration of regular payment interval.
+   *     Actual only for promotions with program 'membership'. The duration of the regular payment interval.
    *   </dd>
    *   <dt>
    *     int [<var>i_session</var>]
    *   </dt>
    *   <dd>
-   *     Actual only for buy of single sessions. Number of sessions which is booked simultaneously.
+   *     Actual only for purchases of single sessions. The number of sessions which are booked simultaneously.
    *   </dd>
    *   <dt>
    *     int [<var>id_program_category</var>]
    *   </dt>
    *   <dd>
-   *     Actual only for promotions. ID of promotion program category. One of {@link RsProgramCategorySid} constants.
+   *     Actual only for promotions. The ID of the promotion program category. One of {@link RsProgramCategorySid} constants.
    *   </dd>
    *   <dt>
    *     int [<var>id_program_type</var>]
    *   </dt>
    *   <dd>
-   *     Actual only for promotions. ID of promotion program type. One of {@link RsProgramTypeSid} constants.
+   *     Actual only for promotions. The ID of the promotion program type. One of {@link RsProgramTypeSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     ID of purchase option type. One of {@link RsPurchaseItemSid} constants.
+   *     The ID of Purchase Option type. One of {@link RsPurchaseItemSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_contract</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - purchase option requires assignment of contract; <tt>false</tt> - does not require assignment.
+   *     <tt>true</tt> - The Purchase Option requires a contract assignment; <tt>false</tt> - doesn't require assignment.
    *   </dd>
    *   <dt>
    *     bool [<var>is_convert</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - after expiration purchase option should be converted to certain anther instance; <tt>false</tt> - otherwise.
+   *     <tt>true</tt> - after expiration, the Purchase Option should be converted to another instance; <tt>false</tt> - otherwise.
    *   </dd>
    *   <dt>
    *     bool [<var>is_renew</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - purchase option is renewable; <tt>false</tt> - otherwise.
+   *     <tt>true</tt> - the Purchase Option is renewable; <tt>false</tt> - otherwise.
    *   </dd>
    *   <dt>
    *     bool [<var>is_renew_check</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - purchase option is renewable and option "auto-renew" should be turned on by default; <tt>false</tt> - otherwise.
+   *     <tt>true</tt> - the Purchase Option is renewable and the "auto-renew" option should be turned on by default; <tt>false</tt> - otherwise.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>
    *   </dt>
    *   <dd>
-   *     Key of purchase option in database. Table depends on <var>id_purchase_item</var>.
+   *     The key of the Purchase Option in the database. Table depends on <var>id_purchase_item</var>.
    *   </dd>
    *   <dt>
    *     string [<var>k_login_prize</var>]
    *   </dt>
    *   <dd>
-   *     Key of user's prize which can be used instead purchase option to book session.
+   *     The key of the user's prize which can be used instead a Purchase Option to book the session.
    *   </dd>
    *   <dt>
    *     string [<var>s_contract</var>]
    *   </dt>
    *   <dd>
-   *     Contract of purchase option. Is set only if <var>is_contract</var> is <tt>true</tt>.
+   *     The contract of the Purchase Option. This is only set if <var>is_contract</var> is <tt>true</tt>.
    *   </dd>
    *   <dt>
    *     string [<var>s_payment_duration</var>]
    *   </dt>
    *   <dd>
-   *     Actual only for promotions with program 'membership'. Measurement unit of <var>i_payment_period</var>.
+   *     Actual only for promotions with program 'membership'. The measurement unit of <var>i_payment_period</var>.
    *   </dd>
    *   <dt>
    *     string [<var>s_promotion_convert</var>]
    *   </dt>
    *   <dd>
-   *     Actual only if <var>is_convert</var> is <tt>true</tt>. Title of promotion to which purchase option should be converted after expiration.
+   *     Actual only if <var>is_convert</var> is <tt>true</tt>. The title of the promotion to which the Purchase Option should be converted after expiration.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
    *   </dt>
    *   <dd>
-   *     Title.
+   *     The title.
    *   </dd>
    *   <dt>
    *     string <var>s_value</var>
    *   </dt>
    *   <dd>
-   *     Unique identifier.
+   *     The unique identifier.
    *   </dd>
    * </dl>
    *
@@ -207,7 +207,7 @@ class PurchaseModel extends WlModelAbstract
   public $a_purchase = null;
 
   /**
-   * List of session is being booked. Keys - IDs of sessions. Values - lists of date/time when sessions are occurred.
+   * A list of sessions being booked. Keys - IDs of sessions. Values - lists of date/time when sessions are occurred.
    *
    * @get get
    * @var array|null
@@ -215,8 +215,7 @@ class PurchaseModel extends WlModelAbstract
   public $a_session = null;
 
   /**
-   * Date/time of the session that user is booking now.
-   * In MySQL format. In GMT.
+   * The date/time of the session the user is booking now in MySQL format and in GMT.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -226,7 +225,7 @@ class PurchaseModel extends WlModelAbstract
   public $dt_date_gmt = null;
 
   /**
-   * ID of session which is booked.
+   * The ID of the session which is booked.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -236,7 +235,7 @@ class PurchaseModel extends WlModelAbstract
   public $k_class_period = null;
 
   /**
-   * Business ID.
+   * The business ID.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -254,7 +253,7 @@ class PurchaseModel extends WlModelAbstract
   public $id_mode =  WlBookModeSid::APP_FRONTEND;
 
   /**
-   * ID of a user who is making the book.
+   * The ID of a user who is making the book.
    *
    * <tt>null</tt> if not set yet.
    *
