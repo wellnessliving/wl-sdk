@@ -8,17 +8,17 @@ namespace WellnessLiving\Wl\Book;
 abstract class WlBookModeSid
 {
   /**
-   * Staff booked session from app backend.
+   * A staff member booked the session from the app's backend.
    */
   const APP_BACKEND = 4;
 
   /**
-   * Client booked session from app frontend.
+   * A client booked the session from the app's frontend.
    */
   const APP_FRONTEND = 3;
 
   /**
-   * Client booked session on My Presence Site.
+   * A client booked the session on the My Presence Site.
    */
   const MY_PRESENCE_SITE = 13;
 }
