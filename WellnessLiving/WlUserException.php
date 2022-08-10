@@ -105,13 +105,17 @@ class WlUserException extends \Exception
     if($this->s_class)
       $text_exception.=' / '.$this->s_class;
     $text_exception.=' is thrown with error message: '.$this->getMessage();
-    if($this->a_result)
-      $text_exception.="\r\n".var_export($this->a_result,true);
+    if($this->a_result) {
+      $text_exception .= PHP_EOL . var_export($this->a_result, true);
+    }
     elseif($this->a_error) // If Both, a_result and a_error specified, it is likely that a_result contains a_error inside.
-      $text_exception.="\r\n".var_export($this->a_error,true);
+    {
+      $text_exception .= PHP_EOL . var_export($this->a_error, true);
+    }
 
-    if($this->a_data)
-      $text_exception.="\r\n".var_export($this->a_data,true);
+    if($this->a_data) {
+      $text_exception .= PHP_EOL . var_export($this->a_data, true);
+    }
 
     return $text_exception;
   }
@@ -128,7 +132,7 @@ class WlUserException extends \Exception
     $a_error=isset($a_result['a_error'])?$a_result['a_error']:[];
     $a_error_0=isset($a_error[0])?$a_error[0]:[];
 
-    $e=new WlUserException(isset($a_error_0['sid'])?$a_error_0['sid']:'unknown-error',$a_error_0['s_message']?$a_error_0['s_message']:'Unknown error.');
+    $e=new WlUserException(isset($a_error_0['sid'])?$a_error_0['sid']:'unknown-error',isset($a_error_0['s_message'])?$a_error_0['s_message']:'Unknown error.');
     $e->a_error=$a_error;
     $e->a_result=$a_result;
     $e->o_request=$o_request;

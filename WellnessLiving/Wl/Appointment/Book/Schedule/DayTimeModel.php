@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class DayTimeModel extends WlModelAbstract
 {
   /**
-   * Array with schedule of available appointment booking time.
+   * An array with a schedule of available appointment booking times.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -20,7 +20,7 @@ class DayTimeModel extends WlModelAbstract
   public $a_time = null;
 
   /**
-   * Date to show available appointment booking schedule.
+   * The date to show available appointment booking schedule.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -30,7 +30,7 @@ class DayTimeModel extends WlModelAbstract
   public $dt_date = null;
 
   /**
-   * Duration of the asset.
+   * The duration of the asset booking.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -40,7 +40,7 @@ class DayTimeModel extends WlModelAbstract
   public $i_duration = null;
 
   /**
-   * Index of selected asset.
+   * An index of the selected asset.
    *
    * <tt>null</tt> if not set yet. Or if asset is not on layout.
    *
@@ -50,7 +50,7 @@ class DayTimeModel extends WlModelAbstract
   public $i_index = null;
 
   /**
-   * Staff gender.
+   * The staff member's gender.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -60,8 +60,8 @@ class DayTimeModel extends WlModelAbstract
   public $id_gender_staff = null;
 
   /**
-   * <tt>1</tt> - return service categories which has no staff members to conduct it;
-   * <tt>0</tt> - return only service categories which has staff members.
+   * <tt>1</tt> - return service categories which have no staff members able to conduct them.
+   * <tt>0</tt> - return only service categories which have staff members able to conduct them.
    *
    * @get get
    * @var bool
@@ -69,7 +69,7 @@ class DayTimeModel extends WlModelAbstract
   public $is_unavailable = 0;
 
   /**
-   * Location ID to show available appointment booking schedule.
+   * The location ID to show available appointment booking schedule.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -79,7 +79,7 @@ class DayTimeModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * Resource ID to show what days are available for booking.
+   * The resource ID to show what days are available for booking.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -89,7 +89,7 @@ class DayTimeModel extends WlModelAbstract
   public $k_resource = null;
 
   /**
-   * Service ID to show available appointment booking schedule.
+   * The service ID to show available appointment booking schedule.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -99,7 +99,7 @@ class DayTimeModel extends WlModelAbstract
   public $k_service = null;
 
   /**
-   * Staff ID to show available appointment booking schedule..
+   * The staff ID to show available appointment booking schedule.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -109,7 +109,7 @@ class DayTimeModel extends WlModelAbstract
   public $k_staff = null;
 
   /**
-   * List of service add-ons. Serialized to be usable as model key.
+   * A list of service add-ons. Serialized to be usable as model key.
    *
    * @get get
    * @var string
@@ -117,7 +117,7 @@ class DayTimeModel extends WlModelAbstract
   public $s_product = '';
 
   /**
-   * User ID.
+   * The user ID.
    *
    * <tt>null</tt> if not set yet.
    *
