@@ -47,6 +47,22 @@ class ElementModel extends WlModelAbstract
    * @var array
    */
   public $a_schedule = [];
+
+  /**
+   * Business key.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_business = '';
+
+  /**
+   * Class key.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_class = '';
 }
 
 ?>
