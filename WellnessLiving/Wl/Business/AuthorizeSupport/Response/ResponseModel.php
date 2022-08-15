@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Business\AuthorizeSupport\Response;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Model for response to request enter into business location.
+ * A model for a response when a user is requesting to enter into business location.
  */
 class ResponseModel extends WlModelAbstract
 {
   /**
-   * Whether the user will be granted access or if access will be revoked.
+   * Determines whether the user will be granted access or if access will be revoked.
    * If <tt>true</tt> - then grant access; If <tt>false</tt> - then revoke access.
    * Revoking access is a scheduled task set to be run within the next 15 minutes.
    *
@@ -20,7 +20,7 @@ class ResponseModel extends WlModelAbstract
   public $is_grant = false;
 
   /**
-   * Key of the location to access.
+   * The key of the location to access.
    *
    * @get get
    * @var string
@@ -28,7 +28,7 @@ class ResponseModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
-   * Key of the user to grant access .
+   * The key of the user who will be granted access.
    *
    * @get get
    * @var string

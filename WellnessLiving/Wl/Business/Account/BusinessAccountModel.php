@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Business\Account;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * API to get list of active businesses.
+ * An API used to get a list of active businesses.
  */
 class BusinessAccountModel extends WlModelAbstract
 {
   /**
-   * List of business keys.
+   * A list of business keys.
    *
    * @get result
    * @var string[]
