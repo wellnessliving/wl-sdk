@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Book\Process;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Booking Wizard.
+ * The Booking Wizard.
  */
 class ProcessModel extends WlModelAbstract
 {
   /**
-   * All steps to be done to make book. Every element has next keys:
+   * All steps to be done to make a booking. Every element has the next keys:
    * <dl>
    *   <dt>int <var>id_book_process</var></dt>
    *   <dd>Step ID. One of {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid} constants.</dd>
@@ -27,8 +27,7 @@ class ProcessModel extends WlModelAbstract
   public $a_path = [];
 
   /**
-   * Date of the session that user is booking now.
-   * In MySQL format. In GMT.
+   * The date of the session that the user is booking now, in MySQL format and in GMT.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -38,7 +37,7 @@ class ProcessModel extends WlModelAbstract
   public $dt_date_gmt = null;
 
   /**
-   * Mode type. One of {@link \WellnessLiving\Wl\Book\WlBookModeSid} constants.
+   * The mode type. One of {@link \WellnessLiving\Wl\Book\WlBookModeSid} constants.
    *
    * @get get
    * @var int
@@ -46,7 +45,7 @@ class ProcessModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * Purchase rule ID.
+   * The purchase rule ID.
    *
    * One of {@link \WellnessLiving\Wl\Classes\RequirePaySid} constants.
    *
@@ -56,7 +55,7 @@ class ProcessModel extends WlModelAbstract
   public $id_pay_require = false;
 
   /**
-   * <tt>true</tt> - session which is being booked is event, <tt>false</tt> - is not event.
+   * <tt>true</tt> - the session which is being booked is an event, <tt>false</tt> - if not an event.
    *
    * @get result
    * @var bool
@@ -64,7 +63,7 @@ class ProcessModel extends WlModelAbstract
   public $is_event = false;
 
   /**
-   * <tt>true</tt> - client can select several session per booking, <tt>false</tt> - can not select.
+   * <tt>true</tt> - the client can select several sessions per booking, <tt>false</tt> - the client can't select several sessions.
    *
    * @get result
    * @var bool
@@ -72,7 +71,7 @@ class ProcessModel extends WlModelAbstract
   public $is_session = false;
 
   /**
-   * <tt>true</tt> - user can be placed to wait list, <tt>false</tt> - can not be.
+   * <tt>true</tt> - the user can be placed on a wait list, <tt>false</tt> - the user can't be placed on a wait list.
    *
    * @get result
    * @var bool
@@ -80,7 +79,7 @@ class ProcessModel extends WlModelAbstract
   public $is_wait = false;
 
   /**
-   * Key of session which is booked.
+   * The key of session which is booked.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -90,7 +89,7 @@ class ProcessModel extends WlModelAbstract
   public $k_class_period = null;
 
   /**
-   * Key of location where session is booked.
+   * The key of the location where the session is booked.
    *
    * @get result
    * @var string
@@ -98,7 +97,7 @@ class ProcessModel extends WlModelAbstract
   public $k_location = '';
 
   /**
-   * Key of a user who is making a book.
+   * The key of the user who is making the booking.
    *
    * <tt>null</tt> if not set yet.
    *
