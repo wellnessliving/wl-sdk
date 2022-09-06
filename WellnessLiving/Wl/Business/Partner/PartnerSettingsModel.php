@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Business\Partner;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Works with partner settings of the business: name of the business owner, review about wellnessliving and other.
- * This information staff member enters, when enrolls into partner program and is used on custom landing page, which
- * is available by special business url.
+ * An endpoint that works with partner settings of the business: the name of the business owner, review(s) about WellnessLiving, and more.
+ * This information is entered by a staff member when a client enrolls into Partner Program and uses a custom landing page, which
+ * is available by special business URL.
  */
 class PartnerSettingsModel extends WlModelAbstract
 {
   /**
-   * Home page tour of the business. Depends on type.
+   * The homepage tour of the business, which depends on the type.
    *
    * @get result
    * @var int
@@ -21,7 +21,7 @@ class PartnerSettingsModel extends WlModelAbstract
   public $id_business_tour = 0;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @get result
    * @var string
@@ -29,7 +29,7 @@ class PartnerSettingsModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * Unique code that business can give other businesses to tell them about system.
+   * The unique code that a business can provide other businesses to tell them about system.
    *
    * @get get
    * @var string
@@ -37,7 +37,7 @@ class PartnerSettingsModel extends WlModelAbstract
   public $text_code = '';
 
   /**
-   * First name of the business representative.
+   * The first name of the business representative.
    *
    * @get result
    * @var string
@@ -45,7 +45,7 @@ class PartnerSettingsModel extends WlModelAbstract
   public $text_name_first;
 
   /**
-   * Last name of the business representative.
+   * The last name of the business representative.
    *
    * @get result
    * @var string
@@ -53,7 +53,7 @@ class PartnerSettingsModel extends WlModelAbstract
   public $text_name_last;
 
   /**
-   * Job title of the business representative.
+   * The job title of the business representative.
    *
    * @get result
    * @var string
@@ -61,7 +61,7 @@ class PartnerSettingsModel extends WlModelAbstract
   public $text_position;
 
   /**
-   * Text of the review about wellnessliving system.
+   * The text of the review about the WellnessLiving system.
    *
    * @get result
    * @var string
@@ -69,7 +69,7 @@ class PartnerSettingsModel extends WlModelAbstract
   public $text_review;
 
   /**
-   * Link to the photo of the business representative.
+   * A link to the photo of the business representative.
    *
    * @get result
    * @var string
