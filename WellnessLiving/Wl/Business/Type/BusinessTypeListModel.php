@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Business\Type;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Api to get list of business types.
+ * An API endpoint that retrieves a list of business types.
  */
 class BusinessTypeListModel extends WlModelAbstract
 {
   /**
-   * List of business types. Each element has next structure: <dl>
+   * A list of business types. Each element has the next structure: <dl>
    *  <dt>string <var>k_business_type</var></dt>
    *  <dd>Key of business type.</dd>
    *  <dt>string <var>text_title</var></dt>

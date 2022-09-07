@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Business\Lead;
 use WellnessLiving\WlModelAbstract;
 
 /**
- *  Creates new business lead request within partner program.
+ *  An endpoint that creates a new business lead request within the Partner Program.
  */
 class BusinessLeadModel extends WlModelAbstract
 {
   /**
-   * Business partner key.
+   * The business's partner key.
    *
    * @post post
    * @var string
@@ -18,7 +18,7 @@ class BusinessLeadModel extends WlModelAbstract
   public $k_business_partner;
 
   /**
-   * Business name.
+   * The business's name.
    *
    * @post post
    * @var string
@@ -26,7 +26,7 @@ class BusinessLeadModel extends WlModelAbstract
   public $text_business_name;
 
   /**
-   * Client's full name.
+   * The client's full name.
    *
    * @post post
    * @var string
@@ -34,7 +34,7 @@ class BusinessLeadModel extends WlModelAbstract
   public $text_client_name;
 
   /**
-   * Client's email.
+   * The client's email.
    *
    * @post post
    * @var string
@@ -42,7 +42,7 @@ class BusinessLeadModel extends WlModelAbstract
   public $text_email;
 
   /**
-   * Client's phone.
+   * The client's phone number.
    *
    * @post post
    * @var string
@@ -50,7 +50,7 @@ class BusinessLeadModel extends WlModelAbstract
   public $text_phone;
 
   /**
-   * Business partner promo code.
+   * The business's partner promo code.
    *
    * @post post
    * @var string
@@ -58,7 +58,7 @@ class BusinessLeadModel extends WlModelAbstract
   public $text_promo_code;
 
   /**
-   * Web-site URL.
+   * The website URL.
    *
    * @post post
    * @var string
