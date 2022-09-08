@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Business\Franchise\Location;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Manage franchisor locations.
+ * Manages franchisor locations.
  */
 class BusinessFranchiseLocationModel extends WlModelAbstract
 {
   /**
-   * City list.
+   * The city list.
    *
    * @get result
    * @var array|null
@@ -18,7 +18,7 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   public $a_city_list = null;
 
   /**
-   * Country list.
+   * The country list.
    *
    * @get result
    * @var array|null
@@ -26,7 +26,7 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   public $a_country_list = null;
 
   /**
-   * Location list.
+   * The location list.
    *
    * @get result
    * @var array|null
@@ -34,7 +34,7 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   public $a_location_list = null;
 
   /**
-   * Region list.
+   * The region list.
    *
    * @get result
    * @var array|null
@@ -42,7 +42,7 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   public $a_region_list = null;
 
   /**
-   * State list.
+   * The state list.
    *
    * @get result
    * @var array|null
@@ -62,7 +62,7 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   public $id_business_franchise_location = null;
 
   /**
-   * Business key.
+   * The business key.
    *
    * <tt>null</tt> if not set yet.
    *
