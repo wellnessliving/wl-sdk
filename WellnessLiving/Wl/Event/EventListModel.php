@@ -38,9 +38,13 @@ class EventListModel extends WlModelAbstract
   public $dl_start;
 
   /**
-   * Defines how flag filter should be applied.
+   * Defines how event availability flag filter should be applied.
    *
    * One of {@link \WellnessLiving\Core\a\AFlagSid} constants.
+   *
+   * * {@link \WellnessLiving\Core\a\AFlagSid::ON} to show only available events.
+   * * {@link \WellnessLiving\Core\a\AFlagSid::OFF} to show only not available events.
+   * * {@link \WellnessLiving\Core\a\AFlagSid::ALL} to show all events (available and not available).
    *
    * @get get
    * @var int

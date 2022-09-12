@@ -15,8 +15,6 @@ class ElementModel extends WlModelAbstract
    *   <dt>array <var>a_schedule</var></dt>
    *   <dd>List of class schedules. Each element has next structure:
    *     <dl>
-   *       <dt>int[] <var>a_day</var></dt>
-   *       <dd>List of days of the week where class schedule exist. # 1 - Monday, 7 - Sunday.</dd>
    *       <dt>array <var>a_repeat</var></dt>
    *       <dd>Schedule repeat options:
    *         <dl>
@@ -35,8 +33,12 @@ class ElementModel extends WlModelAbstract
    *       </dd>
    *       <dt>string <var>dl_start</var></dt>
    *       <dd>Start date of the schedule in locale timezone of the location.</dd>
+   *       <dt>int <var>i_day</var></dt>
+   *       <dd>Day of the week where class schedule exist. # 1 - Monday, 7 - Sunday.</dd>
    *       <dt>int <var>i_duration</var></dt>
    *       <dd>Duration of the schedule sessions in a minutes.</dd>
+   *       <dt>int <var>is_cancel</var></dt>
+   *       <dd>Defines whether schedule cancelled or not.</dd>
    *       <dt>string <var>k_location</var></dt>
    *       <dd>Location key of the schedule.</dd>
    *       <dt>string <var>m_price</var></dt>
@@ -71,6 +73,16 @@ class ElementModel extends WlModelAbstract
    * @var string
    */
   public $k_class = '';
+
+  /**
+   * Defines if cancelled schedules should be included in result.
+   *
+   * `true` to show cancelled schedules, `false` otherwise.
+   *
+   * @get get
+   * @var bool
+   */
+  public $show_cancelled = '';
 }
 
 ?>

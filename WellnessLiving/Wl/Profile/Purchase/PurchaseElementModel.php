@@ -524,6 +524,25 @@ class PurchaseElementModel extends WlModelAbstract
   public $s_code = '';
 
   /**
+   * Not empty only for gift cards. Code to redeem gift card.
+   *
+   * Can be auto-generated or custom (entered manually by the staff member during purchase).
+   * Max length - 20 characters. Can include numbers and letters.
+   *
+   * @get result
+   * @var string
+   */
+  public $s_gift_code = '';
+
+  /**
+   * Not empty only for gift cards. Name of gift recipient.
+   *
+   * @get result
+   * @var string
+   */
+  public $s_gift_recipient = '';
+
+  /**
    * Name of staff who disabled usage of purchase item.
    * Empty if usage of purchase item is enabled.
    *
