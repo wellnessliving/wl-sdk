@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Business;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Creates new business.
+ * Creates a new business.
  */
 class BusinessModel extends WlModelAbstract
 {
   /**
-   * Business locale. One of {@link \WellnessLiving\Core\Locale\LocaleSid} constants.
+   * The business locale. One of {@link \WellnessLiving\Core\Locale\LocaleSid} constants.
    *
    * @post post
    * @var int
@@ -18,7 +18,7 @@ class BusinessModel extends WlModelAbstract
   public $id_locale;
 
   /**
-   * Key of created business.
+   * The key of the created business.
    *
    * @post result
    * @var string
@@ -26,7 +26,7 @@ class BusinessModel extends WlModelAbstract
   public $k_business;
 
   /**
-   * Key of business type.
+   * The key of the business type.
    *
    * @post post
    * @var string
@@ -34,7 +34,7 @@ class BusinessModel extends WlModelAbstract
   public $k_business_type;
 
   /**
-   * City key of the business.
+   * The city key of the business.
    *
    * @post post
    * @var string
@@ -42,7 +42,7 @@ class BusinessModel extends WlModelAbstract
   public $k_office_city;
 
   /**
-   * Address of the business.
+   * The address of the business.
    *
    * @post post
    * @var string
@@ -50,7 +50,7 @@ class BusinessModel extends WlModelAbstract
   public $text_office_address;
 
   /**
-   * Postal code of the business.
+   * The postal code of the business.
    *
    * @post post
    * @var string
@@ -58,7 +58,7 @@ class BusinessModel extends WlModelAbstract
   public $text_office_postal;
 
   /**
-   * Phone number of the business.
+   * The phone number of the business.
    *
    * @post post
    * @var string
@@ -66,7 +66,7 @@ class BusinessModel extends WlModelAbstract
   public $text_phone;
 
   /**
-   * Title of the business.
+   * The title of the business.
    *
    * @post post
    * @var string
