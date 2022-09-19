@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Catalog\Cart;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about cart in the catalog.
+ * Information about the cart in the catalog.
  *
  * @augments Core_Spa_Model
  * @mixes Core_Spa_Model
@@ -14,7 +14,7 @@ use WellnessLiving\WlModelAbstract;
 class CartModel extends WlModelAbstract
 {
     /**
-     * List of items in the cart.
+     * A list of items in the cart.
      *
      * @get get
      * @var array
@@ -22,7 +22,7 @@ class CartModel extends WlModelAbstract
     public $a_item = [];
 
     /**
-     * Location key.
+     * The location key.
      *
      * @get get
      * @var string
@@ -30,7 +30,7 @@ class CartModel extends WlModelAbstract
     public $k_location = '0';
 
     /**
-     * Full discount of the cart.
+     * The full discount of the cart.
      *
      * <tt>null</tt> if not calculated yet.
      *
@@ -40,7 +40,7 @@ class CartModel extends WlModelAbstract
     public $m_discount = null;
 
     /**
-     * Total amount in the catalog cart without tax.
+     * The total amount in the catalog cart without tax.
      *
      * <tt>null</tt> if not set yet.
      *
@@ -50,7 +50,7 @@ class CartModel extends WlModelAbstract
     public $m_subtotal = null;
 
     /**
-     * Amount of tax.
+     * The amount of tax.
      *
      * <tt>null</tt> if not set yet.
      *
@@ -60,7 +60,7 @@ class CartModel extends WlModelAbstract
     public $m_tax = null;
 
     /**
-     * Total amount in the catalog cart.
+     * The total amount in the catalog cart.
      *
      * <tt>null</tt> if not set yet.
      *
@@ -70,9 +70,9 @@ class CartModel extends WlModelAbstract
     public $m_total = null;
 
     /**
-     * Discount code.
+     * The discount code.
      *
-     * <tt>null</tt> Means that discount code has been reset.
+     * <tt>null</tt> means that the discount code has been reset.
      *
      * @get get
      * @var string|null
@@ -80,7 +80,7 @@ class CartModel extends WlModelAbstract
     public $text_discount_code = '';
 
     /**
-     * ID of a user
+     * The user ID.
      *
      * @get get
      * @var string

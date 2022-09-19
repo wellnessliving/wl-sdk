@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Catalog\CatalogList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about certain item of store.
+ * Information about a certain item in the store.
  */
 class ElementModel extends WlModelAbstract
 {
@@ -19,13 +19,13 @@ class ElementModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     Only for promotions.
-   *     <tt>true</tt> - client can set promotion auto renew.
-   *     <tt>false</tt> - client can not set promotion auto renew.
+   *     <tt>true</tt> - client can set promotion auto-renew.
+   *     <tt>false</tt> - client can't set promotion auto-renew.
    *   </dd>
    * </dl>
    *
-   * For example, for a product it contains inventory information. For a gift card - possible amounts.
-   * For a pass/membership/package - information about starting and stopping.
+   * For example, for a product it contains inventory information. For a gift card, it contains possible amounts.
+   * For a pass/membership/package, it contains information about starting and stopping.
    *
    * @get result
    * @var array
@@ -39,26 +39,26 @@ class ElementModel extends WlModelAbstract
    *     int <var>i_height</var>
    *   </dt>
    *   <dd>
-   *     Height in pixels.
+   *     The height in pixels.
    *   </dd>
    *   <dt>
    *     int <var>i_width</var>
    *   </dt>
    *   <dd>
-   *     Width in pixels.
+   *     The width in pixels.
    *   </dd>
    *   <dt>
    *     bool <var>is_empty</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - item has no image (in this case ignore another keys of this array).
+   *     <tt>true</tt> - item has no image (in this case ignore other keys of this array).
    *     <tt>false</tt> - item has an image.
    *   </dd>
    *   <dt>
    *     string <var>s_url</var>
    *   </dt>
    *   <dd>
-   *     Image URL.
+   *     The image URL.
    *   </dd>
    * </dl>
    *
@@ -68,49 +68,49 @@ class ElementModel extends WlModelAbstract
   public $a_image = null;
 
   /**
-   * A list of installment plans. Each element has next keys:
+   * A list of installment plans. Each element has the following next keys:
    * <dl>
    *   <dt>
    *     int <var>i_count</var>
    *   </dt>
    *   <dd>
-   *      Number of payments.
+   *      The number of payments.
    *   </dd>
    *   <dt>
    *     int <var>id_duration</var>
    *   </dt>
    *   <dd>
-   *      Duration of a single period.
+   *      The duration of a single period.
    *   </dd>
    *   <dt>
    *     int <var>i_period</var>
    *   </dt>
    *   <dd>
-   *      Number of periods specified by <var>id_period</var> between individual payments.
+   *      The number of periods specified by <var>id_period</var> between individual payments.
    *   </dd>
    *   <dt>
    *     string <var>k_currency</var>
    *   </dt>
    *   <dd>
-   *     Payment currency Key.
+   *     The payment currency Key.
    *   </dd>
    *   <dt>
    *     string <var>k_pay_installment_template</var>
    *   </dt>
    *   <dd>
-   *      Key of installment plan template.
+   *      The key of the installment plan template.
    *   </dd>
    *   <dt>
    *     string <var>m_amount</var>
    *   </dt>
    *   <dd>
-   *     Amount of installment plan.
+   *     The amount of the installment plan.
    *   </dd>
    *   <dt>
    *     string <var>s_duration</var>
    *   </dt>
    *   <dd>
-   *     Title of installment plan.
+   *     The title of the installment plan.
    *   </dd>
    * </dl>
    *
@@ -120,8 +120,8 @@ class ElementModel extends WlModelAbstract
   public $a_installment_template;
 
   /**
-   * List of requested goods information.
-   * Every element contains keys that correspond to each another field with <tt>&#64;get result</tt> in this class.
+   * A list of requested goods information.
+   * Every element contains keys that correspond to another field with <tt>&#64;get result</tt> in this class.
    *
    * <tt>null</tt> until loaded. And if {@link ElementModel::$text_item} is empty.
    *
@@ -131,7 +131,7 @@ class ElementModel extends WlModelAbstract
   public $a_item = null;
 
   /**
-   * List of item taxes.
+   * A list of the item's taxes.
    * Keys - unique tax keys.
    * Values - amounts.
    *
@@ -141,7 +141,7 @@ class ElementModel extends WlModelAbstract
   public $a_tax = null;
 
   /**
-   * ID of purchase item category.
+   * The ID of the purchase item category.
    * One of {@link \WellnessLiving\WlPurchaseItemSid} constants.
    *
    * @get result
@@ -150,7 +150,7 @@ class ElementModel extends WlModelAbstract
   public $id_purchase_item = null;
 
   /**
-   * ID of item view category. One of {@link \WellnessLiving\Wl\Catalog\PurchaseOptionViewSid} constants.
+   * The ID of the item view category. One of {@link \WellnessLiving\Wl\Catalog\PurchaseOptionViewSid} constants.
    *
    * @get result
    * @var int
@@ -158,7 +158,7 @@ class ElementModel extends WlModelAbstract
   public $id_purchase_option_view = null;
 
   /**
-   * ID of item category.
+   * The ID of item category.
    * One of {@link \WellnessLiving\WlSaleSid} constants.
    *
    * @get get
@@ -175,7 +175,7 @@ class ElementModel extends WlModelAbstract
   public $is_contract = null;
 
   /**
-   * Item key.
+   * The item key.
    * You can get it from {@link \WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel::$a_shop_product}.
    *
    * @get get
@@ -184,7 +184,7 @@ class ElementModel extends WlModelAbstract
   public $k_id = null;
 
   /**
-   * Location key.
+   * The location key.
    *
    * @get get
    * @var string
@@ -192,7 +192,7 @@ class ElementModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * Product option key.
+   * The product option key.
    *
    * @get get
    * @var string|null
@@ -200,7 +200,7 @@ class ElementModel extends WlModelAbstract
   public $k_shop_product_option = null;
 
   /**
-   * Discount amount for a discount code.
+   * The discount amount for a discount code.
    *
    * @get result
    * @var string
@@ -208,7 +208,7 @@ class ElementModel extends WlModelAbstract
   public $m_discount_code = null;
 
   /**
-   * Discount amount for a user's type.
+   * The discount amount for a user's type.
    *
    * @get result
    * @var string
@@ -216,7 +216,7 @@ class ElementModel extends WlModelAbstract
   public $m_discount_login = null;
 
   /**
-   * Price on the price tag.
+   * The price on the price tag.
    *
    * @get result
    * @var string
@@ -224,7 +224,7 @@ class ElementModel extends WlModelAbstract
   public $m_price = null;
 
   /**
-   * Price including taxes.
+   * The price including taxes.
    *
    * @get result
    * @var string
@@ -232,7 +232,7 @@ class ElementModel extends WlModelAbstract
   public $m_price_include = null;
 
   /**
-   * Amount of texes.
+   * The amount of taxes.
    *
    * @get result
    * @var string
@@ -240,7 +240,7 @@ class ElementModel extends WlModelAbstract
   public $m_tax = null;
 
   /**
-   * Additional comment.
+   * Additional comment(s).
    *
    * @get result
    * @var string
@@ -248,21 +248,21 @@ class ElementModel extends WlModelAbstract
   public $s_comment = null;
 
   /**
-   * List of goods to get information for. Every element must contain next keys:
+   * A list of goods to get information for. Every element must contain the next keys:
    * <dl>
    *   <dt>int <var>id_sale</var></dt>
-   *   <dd>ID of item category. One of {@link \WellnessLiving\WlSaleSid} constants.</dd>
+   *   <dd>The ID of the item category. One of {@link \WellnessLiving\WlSaleSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
-   *   <dd>Key of item.</dd>
+   *   <dd>The key of the item.</dd>
    *   <dt>string <var>k_shop_product_option</var></dt>
-   *   <dd>Key of product option. <tt>0</tt> if item is not a product.</dd>
+   *   <dd>The key of the product option. <tt>0</tt> if the item is not a product.</dd>
    * </dl>
    * Must be serialized via JSON.
    *
    * If you specify this field, you must NOT specify fields {@link ElementModel::$id_sale}, {@link ElementModel::$k_id},
    * {@link ElementModel::$k_shop_product_option}.
    *
-   * <tt>null</tt> to get information of only 1 item.
+   * <tt>null</tt> to get information of only one item.
    *
    * @get get
    * @var string|null
@@ -270,7 +270,7 @@ class ElementModel extends WlModelAbstract
   public $text_item = null;
 
   /**
-   * Price on price tag with currency sign.
+   * The price on the price tag with currency sign.
    *
    * @get result
    * @var string
@@ -278,7 +278,7 @@ class ElementModel extends WlModelAbstract
   public $text_price = null;
 
   /**
-   * Title of item category.
+   * The title of the item category.
    *
    * @get result
    * @var string
@@ -286,7 +286,7 @@ class ElementModel extends WlModelAbstract
   public $text_sale = null;
 
   /**
-   * Item title.
+   * The item title.
    *
    * @get result
    * @var string
@@ -294,7 +294,7 @@ class ElementModel extends WlModelAbstract
   public $text_title = null;
 
   /**
-   * Detailed description.
+   * A detailed description.
    *
    * @get result
    * @var string
