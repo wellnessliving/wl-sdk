@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class DataModel extends WlModelAbstract
 {
   /**
-   * Float values of predefined tips.
+   * The float values of predefined tips.
    *
    * <tt>null</tt> until loaded.
    *
@@ -20,7 +20,7 @@ class DataModel extends WlModelAbstract
   public $a_tip_predefine = null;
 
   /**
-   * Locale ID, to search geo items.
+   * The Locale ID, used to search geo items.
    *
    * @get result
    * @var int
@@ -38,7 +38,7 @@ class DataModel extends WlModelAbstract
   public $is_progress_client = null;
 
   /**
-   * <tt>true</tt> if verification of progress log by staff member is required; <tt>false</tt> otherwise.
+   * <tt>true</tt> if verification of the progress log by a staff member is required; <tt>false</tt> otherwise.
    *
    * <tt>null</tt> until loaded.
    *
@@ -58,7 +58,7 @@ class DataModel extends WlModelAbstract
   public $is_tip = null;
 
   /**
-   * <tt>true</tt> if the business allow “No tip” option to display; <tt>false</tt> otherwise.
+   * <tt>true</tt> if the business has the “No tip” option displayed; <tt>false</tt> otherwise.
    *
    * <tt>null</tt> until loaded.
    *
@@ -68,7 +68,7 @@ class DataModel extends WlModelAbstract
   public $is_tip_deny = null;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @get get
    * @var string
@@ -76,7 +76,7 @@ class DataModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Business key obtained by security token.
+   * The business key obtained by the security token.
    *
    * @get result
    * @var string
@@ -84,7 +84,7 @@ class DataModel extends WlModelAbstract
   public $k_business_token = '0';
 
   /**
-   * Currency key of the given business or system currency if business not passed.
+   * The currency key of the given business or system currency if the business didn't pass.
    *
    * <tt>null</tt> until loaded.
    *
@@ -94,7 +94,7 @@ class DataModel extends WlModelAbstract
   public $k_currency = null;
 
   /**
-   * Reply-to email address.
+   * The reply-to email address.
    *
    * <tt>null</tt> until loaded.
    *
@@ -104,7 +104,7 @@ class DataModel extends WlModelAbstract
   public $s_reply_mail = null;
 
   /**
-   * Reply-to business name.
+   * The reply-to business name.
    *
    * <tt>null</tt> until loaded.
    *
@@ -114,7 +114,7 @@ class DataModel extends WlModelAbstract
   public $s_reply_name = null;
 
   /**
-   * Business address.
+   * The business address.
    *
    * <tt>null</tt> until loaded.
    *
@@ -124,7 +124,7 @@ class DataModel extends WlModelAbstract
   public $text_office_address = null;
 
   /**
-   * Authorization token.
+   * The authorization token.
    * May be used instead of {@link \WellnessLiving\Wl\Business\DataModel::$k_business}.
    *
    * @get get
@@ -133,7 +133,7 @@ class DataModel extends WlModelAbstract
   public $text_token = '';
 
   /**
-   * Business title.
+   * The business title.
    *
    * <tt>null</tt> until loaded.
    *
@@ -143,7 +143,7 @@ class DataModel extends WlModelAbstract
   public $text_title = null;
 
   /**
-   * Facebook page.
+   * The Facebook page.
    *
    * <tt>null</tt> until loaded.
    *
@@ -153,7 +153,7 @@ class DataModel extends WlModelAbstract
   public $url_facebook = null;
 
   /**
-   * Google+ page.
+   * The Google+ page.
    *
    * <tt>null</tt> until loaded.
    *
@@ -163,7 +163,7 @@ class DataModel extends WlModelAbstract
   public $url_google = null;
 
   /**
-   * Logo URL.
+   * The logo URL.
    *
    * <tt>null</tt> until loaded.
    *
@@ -173,7 +173,7 @@ class DataModel extends WlModelAbstract
   public $url_logo = null;
 
   /**
-   * Twitter page.
+   * The Twitter page.
    *
    * <tt>null</tt> until loaded.
    *
