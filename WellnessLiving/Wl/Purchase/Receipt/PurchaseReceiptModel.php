@@ -293,7 +293,7 @@ class PurchaseReceiptModel extends WlModelAbstract
    *     Count of items in the purchase.
    *   </dd>
    *   <dt>
-   *     int <var>k_purchase_item</var>
+   *     string <var>k_purchase_item</var>
    *   </dt>
    *   <dd>
    *     Purchase item key. Primary key in {@link \RsPurchaseItemSql} table.
