@@ -123,6 +123,24 @@ class ServiceList52Model extends WlModelAbstract
    *     The required payment type. One of {@link \RsServiceRequireSid} constants.
    *   </dd>
    *   <dt>
+   *     bool <var>is_age_public</var>
+   *   </dt>
+   *   <dd>
+   *     `true` if age restrictions are public, `false` if they should be hidden from clients.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_age_restricted</var>
+   *   </dt>
+   *   <dd>
+   *     Whether this service cannot be booked due to age restrictions.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_back_to_back</var>
+   *   </dt>
+   *   <dd>
+   *      Whether this service supports back to back booking.
+   *   </dd>
+   *   <dt>
    *     bool <var>is_book_repeat_client</var>
    *   </dt>
    *   <dd>
