@@ -52,7 +52,7 @@ class MemberByPromotionModel extends WlModelAbstract
    * @var string
    * @get get
    */
-  public $k_business;
+  public $k_business = '';
 
   /**
    * Separated with comma list of keys of the purchase options, which should have clients to be returned.
