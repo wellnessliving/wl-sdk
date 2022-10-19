@@ -17,21 +17,15 @@ class DebtListModel extends WlModelAbstract
    *   <dt>string <var>dl_client_birth</var></dt>
    *   <dd>Birth date of the debtor client.</dd>
    *   <dt>string <var>dtu_client_since</var></dt>
-   *   <dd>Date since debtor client is a member of the business.</dd>
+   *   <dd>Date and time in UTC since which debtor client is a member of the business.</dd>
    *   <dt>string <var>dtu_due</var></dt>
-   *   <dd>Date of the last payment on the debtor's account.</dd>
+   *   <dd>Date and time in UTC of the last payment on the debtor's account.</dd>
    *   <dt>string <var>dtu_add</var></dt>
-   *   <dd>Date and time in UTC when user was added to the list of debtors.</dd>
+   *   <dd>Date and time in UTC when client was added to the list of debtors.</dd>
    *   <dt>string <var>dtu_cease</var></dt>
    *   <dd>Date and time in UTC when debt was fully ceased.</dd>
    *   <dt>int <var>id_currency</var></dt>
-   *   <dd>Debt currency ID.</dd>
-   *   <dt>bool <var>is_collect</var></dt>
-   *   <dd>
-   *     Whether debt was sent to collections already or still pending.
-   *      `true` if collections already notified with debt.
-   *      `false` if user is debtor only in system and collections are not notified.
-   *   </dd>
+   *   <dd>Debt currency ID. One of {@link \WellnessLiving\Core\Locale\CurrencySid} constants.</dd>
    *   <dt>string <var>k_business</var></dt>
    *   <dd>Business key where debt occurred.</dd>
    *   <dt>string <var>k_collector_debt</var></dt>
@@ -68,14 +62,12 @@ class DebtListModel extends WlModelAbstract
   public $a_debt;
 
   /**
-   * Business key of debts.
-   * Primary key in {@link \RsBusinessSql}.
+   * Business key for which debts should be returned.
    *
    * @get get
    * @var string
    */
   public $k_business;
-
 }
 
 ?>

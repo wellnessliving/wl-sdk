@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Collector;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Performs payment for specific debt.
+ * Registers debt payment, that was performed beyond Wellnessliving, and credits client's account balance on given amount.
  */
 class DebtPayModel extends WlModelAbstract
 {
   /**
-   * Currency of the payment. One of {@link CurrencySid} constants.
+   * Currency of the payment. One of {@link \WellnessLiving\Core\Locale\CurrencySid} constants.
    *
    * @post get
    * @var int
@@ -18,9 +18,9 @@ class DebtPayModel extends WlModelAbstract
   public $id_currency;
 
   /**
-   * Payment method of the payment. One of {@link \RsPayMethodSid} constants.
+   * Payment method of the payment. One of {@link \WellnessLiving\WlPayMethodSid} constants.
    *
-   * `null` if payment method is unknown. In this case {@link \RsPayMethodSid::ACCOUNT} would be used.
+   * `null` if payment method is unknown. In this case {@link \WellnessLiving\WlPayMethodSid::ACCOUNT} would be used.
    *
    * @post post
    * @var int|null
@@ -29,7 +29,6 @@ class DebtPayModel extends WlModelAbstract
 
   /**
    * Business key of the debt.
-   * Primary key in {@link \RsBusinessSql}.
    *
    * @post get
    * @var string
@@ -38,7 +37,6 @@ class DebtPayModel extends WlModelAbstract
 
   /**
    * Debt key towards which payment was performed.
-   * Primary key in {@link CollectorDebtSql}.
    *
    * @post post
    * @var string
@@ -47,7 +45,6 @@ class DebtPayModel extends WlModelAbstract
 
   /**
    * Transaction key that was generated to register payment.
-   * Primary key in {@link \RsPayTransactionSql}.
    *
    * @post result
    * @var string
@@ -64,7 +61,6 @@ class DebtPayModel extends WlModelAbstract
 
   /**
    * Business key of the debt.
-   * Primary key in {@link \PassportLoginSql}.
    *
    * @post get
    * @var string
