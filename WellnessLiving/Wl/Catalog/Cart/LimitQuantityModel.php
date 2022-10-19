@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Catalog\Cart;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about quantity limit when a promotion ia added to the cart.
+ * Information about the quantity limit when a promotion is added to the cart.
  *
  * @augments Core_Spa_Model
  * @mixes Core_Spa_Model
@@ -14,15 +14,15 @@ use WellnessLiving\WlModelAbstract;
 class LimitQuantityModel extends WlModelAbstract
 {
   /**
-   * Cart items list with next structure: <dl>
+   * The cart items list with the next structure: <dl>
    *   <dt>int <var>i_quantity</var></dt>
-   *   <dd>Quantity of sale items.</dd>
+   *   <dd>The quantity of sale items.</dd>
    *   <dt>int <var>id_sale</var></dt>
-   *   <dd>Sale item type, one of {@link \RsSaleSid}.</dd>
+   *   <dd>The sale item type, one of {@link \RsSaleSid}.</dd>
    *   <dt>string <var>k_id</var></dt>
-   *   <dd>Sale item ID.</dd>
+   *   <dd>The sale item ID.</dd>
    *   <dt>string <var>k_shop_product_option</var></dt>
-   *   <dd>Shop product option. <tt>null</tt> if sale item has no options.</dd>
+   *   <dd>The shop product option. <tt>null</tt> if sale item has no options.</dd>
    * </dl>
    *
    * @get get
@@ -31,7 +31,7 @@ class LimitQuantityModel extends WlModelAbstract
   public $a_item = [];
 
   /**
-   * Quantity if already purchased promotions by current user.
+   * The quantity if promotions have already been purchased by the current user.
    *  `true` if exceeded, `false` - otherwise.
    *
    * @get result
@@ -39,14 +39,14 @@ class LimitQuantityModel extends WlModelAbstract
    */
   public $i_purchase_already = null;
   /**
-   * Current quantity of a promotion with limit quantity in the cart.
+   * The current quantity of a promotion with the quantity limit in the cart.
    *
    * @get result
    * @var int|null
    */
   public $i_purchase_current = null;
   /**
-   * Quantity limit of a promotion.
+   * The quantity limit of a promotion.
    *
    * @get result
    * @var int
@@ -54,7 +54,7 @@ class LimitQuantityModel extends WlModelAbstract
   public $i_quantity_limit;
 
   /**
-   * Whether limit quantity is exceeded.
+   * Determines whether the limit quantity has been exceeded.
    *  `true` if exceeded, `false` - otherwise.
    *
    * @get result
@@ -63,7 +63,7 @@ class LimitQuantityModel extends WlModelAbstract
   public $is_limit_exceeded;
 
   /**
-   * Business in which the purchase is made.
+   * The business in which the purchase is made.
    *
    * @get get
    * @var string
@@ -81,7 +81,7 @@ class LimitQuantityModel extends WlModelAbstract
   public $k_promotion_select = '0';
 
   /**
-   * UID of a user.
+   * The user ID.
    *
    * @get get
    * @var string
