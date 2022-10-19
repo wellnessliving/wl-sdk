@@ -10,15 +10,19 @@ use WellnessLiving\WlModelAbstract;
 class DebtPayModel extends WlModelAbstract
 {
   /**
-   * Currency of the payment. One of {@link \WellnessLiving\Core\Locale\CurrencySid} constants.
+   * Currency of the payment.
+   * One of {@link \WellnessLiving\Core\Locale\CurrencySid} constants.
    *
-   * @post get
+   * !!! Important !!! Currency should coincide with currency of debt that was sent to collections.
+   *
+   * @post post
    * @var int
    */
   public $id_currency;
 
   /**
-   * Payment method of the payment. One of {@link \WellnessLiving\WlPayMethodSid} constants.
+   * Payment method of the payment.
+   * One of {@link \WellnessLiving\WlPayMethodSid} constants.
    *
    * `null` if payment method is unknown. In this case {@link \WellnessLiving\WlPayMethodSid::ACCOUNT} would be used.
    *
