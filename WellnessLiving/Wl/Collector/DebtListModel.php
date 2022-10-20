@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Collector;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Returns list of debtors added within previous month.
+ * Returns list of debts added within previous month.
  */
 class DebtListModel extends WlModelAbstract
 {
