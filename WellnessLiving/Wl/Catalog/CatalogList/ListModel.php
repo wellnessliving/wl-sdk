@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class ListModel extends WlModelAbstract
 {
   /**
-   * List of all sale items.
+   * A list of all sale items.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -20,7 +20,7 @@ class ListModel extends WlModelAbstract
   public $a_product = null;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @get get
    * @var string
@@ -28,7 +28,7 @@ class ListModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Key of a location.
+   * The key of a location.
    *
    * @get get
    * @var string
@@ -36,7 +36,7 @@ class ListModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
-   * Key of user.
+   * The key of user.
    *
    * @get get
    * @var string
