@@ -27,7 +27,7 @@ class LocaleSid
   /**
    * Cyprus.
    */
-  public CYPRUS = 13;
+  const CYPRUS = 13;
 
   /**
    * Egypt.
