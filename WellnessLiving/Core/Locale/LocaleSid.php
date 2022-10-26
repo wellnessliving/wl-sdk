@@ -25,6 +25,11 @@ class LocaleSid
   const CAYMAN = 5;
 
   /**
+   * Cyprus.
+   */
+  public const CYPRUS = 13;
+
+  /**
    * Egypt.
    */
   const EGYPT = 8;
