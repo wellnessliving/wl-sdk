@@ -97,7 +97,6 @@ class CatalogCartModel extends WlModelAbstract
      *
      * @get get
      * @var string
-     * @see \RsBusinessSql
      */
     public $k_business = '';
 
@@ -198,7 +197,6 @@ class CatalogCartModel extends WlModelAbstract
      *
      * @get get
      * @var string
-     * @see \PassportLoginSql
      */
     public $uid_current = '';
 
