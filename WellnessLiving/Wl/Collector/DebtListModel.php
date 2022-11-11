@@ -43,7 +43,9 @@ class DebtListModel extends WlModelAbstract
    *   <dt>string <var>text_client_name</var></dt>
    *   <dd>Full name of the debtor client.</dd>
    *   <dt>string <var>text_client_address</var></dt>
-   *   <dd>Address of the debtor client.</dd>
+   *   <dd>Street address of the debtor client.</dd>
+   *   <dt>string <var>text_client_city</var></dt>
+   *   <dd>City address of the debtor client.</dd>
    *   <dt>string <var>text_client_mail</var></dt>
    *   <dd>Email address of the debtor client.</dd>
    *   <dt>string <var>text_client_phone</var></dt>
