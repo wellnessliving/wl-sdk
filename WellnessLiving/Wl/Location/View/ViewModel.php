@@ -136,7 +136,7 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public string $k_business_type = '0';
+  public $k_business_type = '0';
 
   /**
    * Location ID.
