@@ -131,6 +131,14 @@ class ViewModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
+   * Key of the business type this location belongs to.
+   *
+   * @get result
+   * @var string
+   */
+  public string $k_business_type = '0';
+
+  /**
    * Location ID.
    *
    * @get get
