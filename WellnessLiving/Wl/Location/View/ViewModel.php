@@ -310,7 +310,7 @@ class ViewModel extends WlModelAbstract
   public $url_site = '';
 
     /**
-     * Twitter url.
+     * Location Twitter account url.
      *
      * @get result
      * @var string
