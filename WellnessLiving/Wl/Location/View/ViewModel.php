@@ -309,6 +309,14 @@ class ViewModel extends WlModelAbstract
    */
   public $url_site = '';
 
+    /**
+     * Location Twitter account url.
+     *
+     * @get result
+     * @var string
+     */
+    public $url_twitter = '';
+
   /**
    * URL to wellnessliving web application of the business.
    *
