@@ -3,22 +3,22 @@
 namespace WellnessLiving\Wl\Catalog;
 
 /**
- * List of purchase options view types.
+ * A list of Purchase Option view types.
  */
 class PurchaseOptionViewSid
 {
   /**
-   * Single appointment reservation.
+   * A single appointment reservation.
    */
   const APPOINTMENT = 1;
 
   /**
-   * Single class reservation.
+   * A single class reservation.
    */
   const CLASS_PERIOD = 2;
 
   /**
-   * Gift card.
+   * A gift card.
    */
   const COUPON = 3;
 
@@ -38,17 +38,17 @@ class PurchaseOptionViewSid
   const PACKAGE = 5;
 
   /**
-   * Products: water, t-shirts, etc.
+   * Products (such as water, t-shirts, etc.).
    */
   const PRODUCT = 6;
 
   /**
-   * Passes.
+   * Session passes.
    */
   const PROMOTION = 7;
 
   /**
-   * Goods that available for quick buy.
+   * Products available for quick buy.
    */
   const QUICK_BUY = 9;
 }
