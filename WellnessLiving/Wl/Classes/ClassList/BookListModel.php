@@ -5,33 +5,33 @@ namespace WellnessLiving\Wl\Classes\ClassList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Point to get all classes of location.
+ * The endpoint to get all the classes for a location.
  */
 class BookListModel extends WlModelAbstract
 {
   /**
-   * Class list. Every element has next structure:
+   * A class list. Every element has the following structure:
    * <dl>
    *   <dt>array <var>a_class_tab</var></dt>
-   *   <dd>The list of tab keys for class.</dd>
+   *   <dd>The list of tab keys for the class.</dd>
    *
    *   <dt>bool <var>is_active</var></dt>
-   *   <dd><tt>true</tt> if class is active; <tt>false</tt> otherwise.</dd>
+   *   <dd><tt>true</tt> if the class is active; <tt>false</tt> otherwise.</dd>
    *
    *   <dt>bool <var>is_event</var></dt>
    *   <dd><tt>true</tt> for events; <tt>false</tt> for classes.</dd>
    *
    *   <dt>sting <var>k_class</var></dt>
-   *   <dd>Class key. Primary key in {@link \RsClassSql} table.</dd>
+   *   <dd>The class key. The primary key in {@link \RsClassSql} table.</dd>
    *
    *   <dt>sting <var>k_enrollment_block</var></dt>
-   *   <dd>Enrollment block key. Primary key in {@link \RsEnrollmentBlockSql} table.</dd>
+   *   <dd>The enrollment block key. The primary key in {@link \RsEnrollmentBlockSql} table.</dd>
    *
    *   <dt>sting <var>text_description</var></dt>
-   *   <dd>Description of the class.</dd></dl>
+   *   <dd>The description of the class.</dd></dl>
    *
    *   <dt>sting <var>text_title</var></dt>
-   *   <dd>Name of the class.</dd>
+   *   <dd>The name of the class.</dd>
    * </dl>
    *
    * <tt>null</tt> if not yet loaded.
@@ -42,7 +42,7 @@ class BookListModel extends WlModelAbstract
   public $a_class = null;
 
   /**
-   * Location key.
+   * The location key.
    *
    * @get get
    * @var string
