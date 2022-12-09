@@ -5,55 +5,55 @@ namespace WellnessLiving\Wl\Collector;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Returns list of debts added within previous month.
+ * An endpoint that returns list of debts added within the previous month.
  */
 class DebtListModel extends WlModelAbstract
 {
   /**
-   * List of debts for given business added within previous month.
+   * A list of debts for the given business added within the previous month.
    *
-   * Each value is array with next structure:
+   * Each value is an array with the next structure:
    * <dl>
    *   <dt>string <var>dl_client_birth</var></dt>
-   *   <dd>Birth date of the debtor client.</dd>
+   *   <dd>The birth date of the debtor client.</dd>
    *   <dt>string <var>dtu_client_since</var></dt>
-   *   <dd>Date and time in UTC since which debtor client is a member of the business.</dd>
+   *   <dd>The date and time in UTC from which the debtor client is a member of the business.</dd>
    *   <dt>string <var>dtu_due</var></dt>
-   *   <dd>Date and time in UTC of the last payment on the debtor's account.</dd>
+   *   <dd>The date and time in UTC of the last payment on the debtor client's account.</dd>
    *   <dt>string <var>dtu_add</var></dt>
-   *   <dd>Date and time in UTC when client was added to the list of debtors.</dd>
+   *   <dd>The date and time in UTC when the client was added to the list of debtors.</dd>
    *   <dt>string <var>dtu_cease</var></dt>
-   *   <dd>Date and time in UTC when debt was fully ceased.</dd>
+   *   <dd>The date and time in UTC when the debt was fully ceased.</dd>
    *   <dt>int <var>id_currency</var></dt>
-   *   <dd>Debt currency ID. One of {@link \WellnessLiving\Core\Locale\CurrencySid} constants.</dd>
+   *   <dd>The debt currency ID. One of {@link \WellnessLiving\Core\Locale\CurrencySid} constants.</dd>
    *   <dt>string <var>k_business</var></dt>
-   *   <dd>Business key where debt occurred.</dd>
+   *   <dd>The business key where the debt occurred.</dd>
    *   <dt>string <var>k_collector_debt</var></dt>
-   *   <dd>Debt key. Should be used for debt payment.</dd>
+   *   <dd>The debt key, which should be used for debt payment.</dd>
    *   <dt>string <var>k_pay_transaction_debt</var></dt>
-   *   <dd>Transaction key after which debt occurred.</dd>
+   *   <dd>The transaction key after which the debt occurred.</dd>
    *   <dt>string <var>k_pay_transaction_last</var></dt>
-   *   <dd>Last transaction key on account after debt occurred.</dd>
+   *   <dd>The last transaction key on account after the debt occurred.</dd>
    *   <dt>string <var>m_amount_debt</var></dt>
-   *   <dd>Initial amount of debt.</dd>
+   *   <dd>The initial amount of the debt.</dd>
    *   <dt>string <var>m_amount_paid</var></dt>
-   *   <dd>Amount that is paid for debt.</dd>
+   *   <dd>The amount paid for debt.</dd>
    *   <dt>string <var>text_business_title</var></dt>
-   *   <dd>Title of the business.</dd>
+   *   <dd>The title of the business.</dd>
    *   <dt>string <var>text_client_name</var></dt>
-   *   <dd>Full name of the debtor client.</dd>
+   *   <dd>The full name of the debtor client.</dd>
    *   <dt>string <var>text_client_address</var></dt>
-   *   <dd>Address of the debtor client.</dd>
+   *   <dd>The address of the debtor client.</dd>
    *   <dt>string <var>text_client_mail</var></dt>
-   *   <dd>Email address of the debtor client.</dd>
+   *   <dd>The email address of the debtor client.</dd>
    *   <dt>string <var>text_client_phone</var></dt>
-   *   <dd>Phone number of the client who is a debtor.</dd>
+   *   <dd>The phone number of the debtor client.</dd>
    *   <dt>string <var>text_client_zip</var></dt>
-   *   <dd>ZIP code of the debtor client.</dd>
+   *   <dd>The ZIP code of the debtor client.</dd>
    *   <dt>string <var>text_skip</var></dt>
-   *   <dd>Notification message in a case of debt skipped.</dd>
+   *   <dd>The notification message sent when the debt payment is missed.</dd>
    *   <dt>string <var>uid</var></dt>
-   *   <dd>User key who is debt owner.</dd>
+   *   <dd>The user key of the debt owner.</dd>
    * </dl>
    *
    * @get result
@@ -62,7 +62,7 @@ class DebtListModel extends WlModelAbstract
   public $a_debt;
 
   /**
-   * Business key for which debts should be returned.
+   * The business key to which debts should be returned.
    *
    * @get get
    * @var string
