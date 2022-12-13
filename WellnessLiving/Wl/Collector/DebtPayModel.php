@@ -5,15 +5,15 @@ namespace WellnessLiving\Wl\Collector;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Registers debt payment, that was performed beyond Wellnessliving, and credits client's account balance on given amount.
+ * An endpoint that registers a debt payment that was performed beyond Wellnessliving, with a specified credit amount applied to a client's account balance.
  */
 class DebtPayModel extends WlModelAbstract
 {
   /**
-   * Currency of the payment.
+   * The currency of the payment.
    * One of {@link \WellnessLiving\Core\Locale\CurrencySid} constants.
    *
-   * !!! Important !!! Currency should coincide with currency of debt that was sent to collections.
+   * Important! The currency must coincide with currency of the debt that was sent to collections.
    *
    * @post post
    * @var int
@@ -21,10 +21,10 @@ class DebtPayModel extends WlModelAbstract
   public $id_currency;
 
   /**
-   * Payment method of the payment.
+   * The payment method.
    * One of {@link \WellnessLiving\WlPayMethodSid} constants.
    *
-   * `null` if payment method is unknown. In this case {@link \WellnessLiving\WlPayMethodSid::ACCOUNT} would be used.
+   * `null` if the payment method is unknown. In such cases, {@link \WellnessLiving\WlPayMethodSid::ACCOUNT} would be used.
    *
    * @post post
    * @var int|null
@@ -32,7 +32,7 @@ class DebtPayModel extends WlModelAbstract
   public $id_pay_method;
 
   /**
-   * Business key of the debt.
+   * The key of the business from which the debt originates.
    *
    * @post get
    * @var string
@@ -40,7 +40,7 @@ class DebtPayModel extends WlModelAbstract
   public $k_business;
 
   /**
-   * Debt key towards which payment was performed.
+   * The debt key towards which the payment was performed.
    *
    * @post post
    * @var string
@@ -48,7 +48,7 @@ class DebtPayModel extends WlModelAbstract
   public $k_collector_debt;
 
   /**
-   * Transaction key that was generated to register payment.
+   * The transaction key generated to register the payment.
    *
    * @post result
    * @var string
@@ -56,7 +56,7 @@ class DebtPayModel extends WlModelAbstract
   public $k_pay_transaction;
 
   /**
-   * Amount of money that has been paid towards the debt.
+   * The amount of money that's been paid towards the debt.
    *
    * @post post
    * @var string
@@ -64,13 +64,12 @@ class DebtPayModel extends WlModelAbstract
   public $m_amount;
 
   /**
-   * Business key of the debt.
+   * The ID of the user with the debt.
    *
    * @post get
    * @var string
    */
   public $uid;
-
 }
 
 ?>
