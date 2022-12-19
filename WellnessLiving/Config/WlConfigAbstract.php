@@ -148,6 +148,17 @@ abstract class WlConfigAbstract
   private $id_region;
 
   /**
+   * User-agent to use in API requests.
+   *
+   * If set, this value overrides value of {@link \WellnessLiving\Config\WlConfigAbstract::AGENT}.
+   *
+   * `null` to use {@link \WellnessLiving\Config\WlConfigAbstract::AGENT}.
+   *
+   * @var string|null
+   */
+  public $text_agent=null;
+
+  /**
    * Prevents manual creation of a configuration object.
    *
    * @see \WellnessLiving\Config\WlConfigAbstract::create()
