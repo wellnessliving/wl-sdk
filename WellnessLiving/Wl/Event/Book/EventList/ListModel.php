@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Event\Book\EventList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves a list of events.
+ * An endpoint that retrieves a list of events.
  */
 class ListModel extends WlModelAbstract
 {
   /**
-   * List of event identifiers.
+   * A list of event identifiers.
    *
-   * Order of items in this array is the order in which elements should be shown.
+   * The order of items in this array matches the order in which elements should be displayed.
    *
    * @get result
    * @var array
@@ -20,7 +20,7 @@ class ListModel extends WlModelAbstract
   public $a_event = [];
 
   /**
-   * ID of a business to show information for.
+   * The ID of the business to show information for.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -30,7 +30,7 @@ class ListModel extends WlModelAbstract
   public $k_business=null;
 
   /**
-   * ID of category tab.
+   * The ID of the category tab.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -40,7 +40,7 @@ class ListModel extends WlModelAbstract
   public $k_class_tab = null;
 
   /**
-   * User's key.
+   * The user's key.
    *
    * @get get
    * @var string
