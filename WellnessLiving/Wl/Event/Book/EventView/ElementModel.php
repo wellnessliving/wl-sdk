@@ -156,8 +156,17 @@ class ElementModel extends WlModelAbstract
   public $a_schedule = null;
 
   /**
-   * Photos of staff members. Keys are IDs of staff members; values are {@link Wl_Event_Book_EventView_ElementModel_a_staff_logo} objects.
-   *
+   * Photos of staff members. Keys are the keys of staff members. The values are the following:
+   * <dl>
+   *   <dt>int <var>i_height</var></dt>
+   *   <dd>Image height.</dd>
+   *   <dt>int <var>i_width</var></dt>
+   *   <dd>Image width.</dd>
+   *   <dt>string <var>uid</var></dt>
+   *   <dd>Key of the user.</dd>
+   *   <dt>string <var>url_logo</var></dt>
+   *   <dd>URL to image.</dd>
+   * </dl>
    * `null` if not loaded yet.
    *
    * @get result
@@ -267,7 +276,7 @@ class ElementModel extends WlModelAbstract
   public $i_session = null;
 
   /**
-   * The virtual provider ID. One of the{@link \Wl\Virtual\VirtualProviderSid} constants.
+   * The virtual provider ID. One of the{@link \WellnessLiving\Wl\Virtual\VirtualProviderSid} constants.
    *
    * `null` if an in-person event.
    *
