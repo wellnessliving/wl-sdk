@@ -96,6 +96,14 @@ class PromotionIndexModel extends WlModelAbstract
    *     See more information here: {@link \RsProgramSid}.
    *   </dd>
    *   <dt>
+   *     bool <var>is_direct_buy_only</var>
+   *   </dt>
+   *   <dd>
+   *     `true` if pricing option can be sold only by direct link. This means it should not be shown in online store or
+   *   explorer.
+   *     `false` - otherwise.
+   *   </dd>
+   *   <dt>
    *     bool <var>is_introductory</var>
    *   </dt>
    *   <dd>
