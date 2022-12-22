@@ -45,10 +45,46 @@ class ElementModel extends WlModelAbstract
    *       <dd>The price of a single session of the schedule.</dd>
    *       <dt>string <var>text_time</var></dt>
    *       <dd>The time of the session in the following format: `[start_time] - [end_time]` in locale timezone.</dd>
-   *      </dl>
+   *     </dl>
    *   </dd>
+   *   <dt>array <var>a_search_tag</var></dt>
+   *   <dd>Tags for quick search.</dd>
+   *   <dt>array <var>a_visits_required</var></dt>
+   *   <dd>Information about visits that should be visited prior to visit this class/event.</dd>
+   *   <dt>string <var>html_description</var></dt>
+   *   <dd>Description safe to be inserted to browser.</dd>
+   *   <dt>string <var>html_special_instruction</var></dt>
+   *   <dd>Special instructions safe to be inserted to browser.</dd>
+   *   <dt>int <var>i_age_from</var></dt>
+   *   <dd>Minimum age restriction.</dd>
+   *   <dt>int <var>i_age_to</var></dt>
+   *   <dd>Maximum age restriction.</dd>
+   *   <dt>bool <var>is_age_public</var></dt>
+   *   <dd>Whether age restriction exist and should be taken into account prior to booking of this class/event.</dd>
+   *   <dt>bool <var>is_bookable</var></dt>
+   *   <dd>Whether clients can book class or event online or not.</dd
+   *   <dt>bool <var>is_online_private</var></dt>
+   *   <dd>
+   *     `true` means to show class only for clients who can book online,
+   *     `false` means to show class for all clients.
+   *   </dd>
+   *   <dt>bool <var>is_promotion_only</var></dt>
+   *   <dd>Whether the item can be booked only using promotions.</dd>
+   *   <dt>bool <var>is_virtual</var></dt>
+   *   <dd>Whether the item is virtual.</dd>
+   *   <dt>bool <var>is_event</var></dt>
+   *   <dd>Whether the item is event or class instance. `true` if item is event instance, `false` otherwise.</dd>
    *   <dt>string <var>k_class</var></dt>
-   *   <dd>The class key. The primary key in {@link \RsClassSql} table.</dd>
+   *   <dd>The class key.</dd>
+   *   <dt>bool <var>show_special_instructions</var></dt>
+   *   <dd>`true` if special instructions can be public, `false` if they should be shown only to the clients, who booked the class.</dd>
+   *   <dt>string <var>xml_description</var></dt>
+   *   <dd>Item description.</dd>
+   *   <dt>string <var>xml_special_instruction</var></dt>
+   *   <dd>Item special instructions.</dd>
+   *   <dt>string <var>url_image</var></dt>
+   *   <dd>Url link to item image.</dd>
+
    * </dl>
    *
    * @get result
