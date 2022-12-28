@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Event;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Cancels whole event booked by client.
+ * An endpoint that cancels a whole event booked by a client.
  */
 class EventCancelWholeModel extends WlModelAbstract
 {
   /**
-   * Event key.
+   * An event key.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -20,7 +20,7 @@ class EventCancelWholeModel extends WlModelAbstract
   public $k_class = null;
 
   /**
-   * User ID.
+   * A user ID.
    *
    * @post post
    * @var string|null
