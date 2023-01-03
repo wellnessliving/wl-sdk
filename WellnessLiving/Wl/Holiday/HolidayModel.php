@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Holiday;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about locations/business holiday.
+ * An endpoint displaying information about locations' business holidays.
  */
 class HolidayModel extends WlModelAbstract
 {
   /**
-   * List of location's closed day titles by location keys on date {@link \WellnessLiving\Wl\Holiday\HolidayApi::$dl_work}.
+   * A list of the location's closed day titles by location keys on the date {@link \WellnessLiving\Wl\Holiday\HolidayApi::$dl_work}.
    *
    * @get result
    * @var array
@@ -18,8 +18,8 @@ class HolidayModel extends WlModelAbstract
   public $a_location_holiday;
 
   /**
-   * Date for which working hours are required.
-   * In business timezone.
+   * The date working hours are required for.
+   * Set in the business's timezone.
    *
    * @get get
    * @var string
@@ -27,7 +27,7 @@ class HolidayModel extends WlModelAbstract
   public $dl_work = '';
 
   /**
-   * <tt>true</tt> If business has closed day by date {@link \WellnessLiving\Wl\Holiday\HolidayModel::$dl_work}, <tt>false</tt> - otherwise.
+   * <tt>true</tt> if the business has a closed day on the date {@link \WellnessLiving\Wl\Holiday\HolidayModel::$dl_work}, <tt>false</tt> if otherwise.
    *
    * @get result
    * @var bool
@@ -35,8 +35,7 @@ class HolidayModel extends WlModelAbstract
   public $is_business_holiday;
 
   /**
-   * Business key.
-   * Primary key in {@link RsBusinessSql} table.
+   * The business key.
    *
    * @get get
    * @var string
@@ -44,7 +43,7 @@ class HolidayModel extends WlModelAbstract
   public $k_business;
 
   /**
-   * Message of the closed day of business on date {@link \WellnessLiving\Wl\Holiday\HolidayApi::$dl_work}.
+   * The message used for the business's closed day on the date {@link \WellnessLiving\Wl\Holiday\HolidayApi::$dl_work}.
    *
    * @get result
    * @var string
