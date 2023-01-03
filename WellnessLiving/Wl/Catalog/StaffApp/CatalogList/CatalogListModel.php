@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Catalog\StaffApp\CatalogList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * A list of products in selected shop category for staff application.
+ * Returns a list of all products available for a business’s shop at a particular location.
  */
 class CatalogListModel extends WlModelAbstract
 {
@@ -36,7 +36,7 @@ class CatalogListModel extends WlModelAbstract
   public $a_shop_product = [];
 
   /**
-   * Determines whether staff members have access to the Client Add page or not.
+   * If `true` then the current user is able to add the purchased item to the account.
    *
    * @get result
    * @type {Boolean}
@@ -44,7 +44,7 @@ class CatalogListModel extends WlModelAbstract
   public $can_add = false;
 
   /**
-   * Determines whether the user currently selected is a new client and has access to introductory offers.
+   * If `true` then currently selected user is a new client and has access to introductory offers.
    *
    * @var bool
    */

@@ -5,19 +5,17 @@ namespace WellnessLiving\Wl\Insurance\Enrollment\Field;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves a list of partner field for model.
+ * Retrieves a list of insurance partner fields and then validates them
  *
- * Use the GET method to load list of fields.
+ * Use the GET method to load a list of required fields.
  *
- * Use the POST method to validate the fields before sending to payment API.
+ * Use the POST method to validate the fields before sending them to the payment API.
  */
 class EnrollmentFieldListModel extends WlModelAbstract
 {
   /**
-   * Reimbursement account information.
-   *
-   * Keys - field key.
-   * Values - value entered by user.
+   * A list of reimbursement account fields. If the program does not require reimbursement,
+   * this list will be empty. The description of the list of fields is the same as <var>$a_field</var>.
    *
    * Validation is performed via POST method.
    *
@@ -27,7 +25,8 @@ class EnrollmentFieldListModel extends WlModelAbstract
   public $a_account;
 
   /**
-   * List of fields that the user has filled in for enrollment.
+   * The list of fields that the user has filled in for enrollment.
+   * The array keys will be the field key. The array values are the values entered by the user.
    *
    * Keys - field key.
    * Values - value entered by user.
@@ -40,17 +39,17 @@ class EnrollmentFieldListModel extends WlModelAbstract
   public $a_field;
 
   /**
-   * Partner field list.
+   * The partner field list.
    * <dl>
    *  <dt>array <var>a_account</var></dt>
    *  <dd>
-   *    List of reimbursement account fields.
+   *    The list of reimbursement account fields.
    *    If the program does not require reimbursement, this list will be empty.
    *    The description of the list of fields is similar to the <var>a_field</var>.
    *  </dd>
    *  <dt>array <var>a_field</var></dt>
    *  <dd>
-   *    Partner field info.
+   *    The partner field info.
    *    <dl>
    *      <dt>array <var>a_config</var></dt>
    *      <dd>
@@ -64,7 +63,7 @@ class EnrollmentFieldListModel extends WlModelAbstract
    *      </dd>
    *
    *      <dt>int <var>i_length</var></dt>
-   *      <dd>Length of field.</dd>
+   *      <dd>The length of field.</dd>
    *
    *      <dt>bool <var>is_disable</var></dt>
    *      <dd>Whether this field is enabled.</dd>
@@ -73,19 +72,19 @@ class EnrollmentFieldListModel extends WlModelAbstract
    *      <dd>Whether this field is required.</dd>
    *
    *      <dt>string <var>k_field</var></dt>
-   *      <dd>Field key.</dd>
+   *      <dd>The field key.</dd>
    *
    *      <dt>string <var>s_regular</var></dt>
-   *      <dd>Regular expression validation for field.</dd>
+   *      <dd>The regular expression validation for field.</dd>
    *
    *      <dt>string <var>text_display_name</var></dt>
-   *      <dd>Label text for field.</dd>
+   *      <dd>The label text for field.</dd>
    *
    *      <dt>string <var>text_error_message</var></dt>
-   *      <dd>Error message if value in field is not valid.</dd>
+   *      <dd>The error message if value in field is not valid.</dd>
    *
    *      <dt>string <var>text_field_name</var></dt>
-   *      <dd>Name of field.</dd>
+   *      <dd>The name of field.</dd>
    *    </dl>
    *  </dd>
    * </dl>
@@ -96,7 +95,7 @@ class EnrollmentFieldListModel extends WlModelAbstract
   public $a_field_list;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @get get
    * @post get
@@ -105,7 +104,7 @@ class EnrollmentFieldListModel extends WlModelAbstract
   public $k_business;
 
   /**
-   * Wellness Program key.
+   * The Wellness Program insurer key.
    *
    * @get get
    * @post get

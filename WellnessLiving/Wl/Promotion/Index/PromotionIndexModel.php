@@ -5,12 +5,13 @@ namespace WellnessLiving\Wl\Promotion\Index;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Point to get packages/passes/memberships available in a certain location.
+ * Gets a list of introductory promotion offers of a specified type available at a given location.
  */
 class PromotionIndexModel extends WlModelAbstract
 {
   /**
-   * Item list. Every element has keys:
+   * A list of introductory promotion offers available at the location.
+   * Every element is an array with the following keys:
    * <dl>
    *   <dt>
    *     array <var>a_access</var>
@@ -153,8 +154,7 @@ class PromotionIndexModel extends WlModelAbstract
   public $a_promotion;
 
   /**
-   * Program type to get items of.
-   * One of {@link \RsProgramTypeSid} constants.
+   * The program type ID, which will be one of the {@link \RsProgramTypeSid} constants.
    *
    * `0` to not filter purchase options with type of the purchase option.
    *
@@ -164,7 +164,7 @@ class PromotionIndexModel extends WlModelAbstract
   public $id_program_type = 0;
 
   /**
-   * Location primary key if {@link \RsLocationSql} table.
+   * The location key.
    *
    * @get get
    * @var string

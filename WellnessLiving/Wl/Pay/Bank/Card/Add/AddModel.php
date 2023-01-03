@@ -5,20 +5,23 @@ namespace WellnessLiving\Wl\Pay\Bank\Card\Add;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Interface to create bank card of user or business.
+ * Adds a payment card to a user’s account.
+ * The GET method retrieves an HTML code that contains the fields necessary to provide the information needed to
+ * add the payment card.
+ * The POST method will actually add the payment card.
  */
 class AddModel extends WlModelAbstract
 {
   
   /**
-   * Bank card data:
+   * An array containing payment card information with the following fields:
    *
    * <dl>
    *   <dt>
    *     array <var>a_pay_address</var>
    *   </dt>
    *   <dd>
-   *     Payment address information with the following fields:
+   *     Address information in the same format as returned by Pay\Address\ProfileModel:
    *     <dl><dt>bool <var>is_new</var></dt><dd><tt>true</tt> - add new address; <tt>false</tt> - use existing address.
    *     </dd>
    *     <dt>string <var>k_pay_address</var></dt><dd>Chosen payment address ID. It will be set even if the user decided
@@ -36,31 +39,31 @@ class AddModel extends WlModelAbstract
    *     int <var>i_csc</var>
    *   </dt>
    *   <dd>
-   *     Card CSC code.
+   *     The payment card’s security code, also known as the CVC or CVV.
    *   </dd>
    *   <dt>
    *     int <var>i_month</var>
    *   </dt>
    *   <dd>
-   *     Card expiration month.
+   *     The number of the month when the payment card expires. 1=January and 12=December.
    *   </dd>
    *   <dt>
    *     int <var>i_year</var>
    *   </dt>
    *   <dd>
-   *     Card expiration year.
+   *     The last two digits of the year when the payment card expires.
    *   </dd>
    *   <dt>
    *     string <var>s_name</var>
    *   </dt>
    *   <dd>
-   *     Card nickname.
+   *     The name as it appears on the payment card.
    *   </dd>
    *   <dt>
    *     string <var>s_number</var>
    *   </dt>
    *   <dd>
-   *     Card number.
+   *     The payment card number with no spaces or dashes.
    *   </dd>
    * </dl>
    *
@@ -70,7 +73,7 @@ class AddModel extends WlModelAbstract
   public $a_card_detail = [];
 
   /**
-   * Code of bank card widget.
+   * HTML form containing the fields required to add a card.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -80,7 +83,7 @@ class AddModel extends WlModelAbstract
   public $html_widget = null;
 
   /**
-   * Business ID.
+   * The business ID number used internally by WellnessLiving.
    *
    * @get get
    * @post get
@@ -89,7 +92,7 @@ class AddModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Location ID.
+   * The location ID.
    *
    * @get get
    * @post get
@@ -98,7 +101,7 @@ class AddModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
-   * Bank card owner ID.
+   * The payment owner ID. This is different that the user ID, it can be found with the Pay\Owner\OwnerModel.
    *
    * @get get
    * @post get

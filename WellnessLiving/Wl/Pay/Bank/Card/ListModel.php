@@ -5,32 +5,36 @@ namespace WellnessLiving\Wl\Pay\Bank\Card;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Lists user's bank cards.
+ * Gets information about any payment cards belonging to a user.
  */
 class ListModel extends WlModelAbstract
 {
   /**
-   * List of bank cards.
-   * Every element has the following keys:
+   * A list of bank cards.
+   * The array keys are the card’s k_pay_bank IDs.
+   * Each element has the following keys:
    * <dl>
    *   <dt>int <var>i_month</var></dt>
-   *   <dd>Month when card expires.</dd>
+   *   <dd>The number of the month when the payment card expires. 1=January and 12=December.</dd>
    *   <dt>int <var>i_year</var></dt>
-   *   <dd>Year when card expires.</dd>
+   *   <dd>The last two digits of the year when the payment card expires.</dd>
    *   <dt>int <var>id_card_system</var></dt>
-   *   <dd>ID of card system.</dd>
+   *   <dd>The card system ID. This is one of the ACardSystemSid constants.</dd>
    *   <dt>bool <var>is_default</var></dt>
-   *   <dd><tt>true</tt> - this is the default card; <tt>false</tt> - this is not the default card.</dd>
+   *   <dd>If `true`, then this card is the user’s default card.
+   *     If `false`, then this is not the user’s default card.</dd>
    *   <dt>string <var>k_pay_address</var></dt>
-   *   <dd>ID of payment address.</dd>
+   *   <dd>The payment address ID. This refers to a physical address associated with a payment card.</dd>
    *   <dt>string <var>k_pay_bank</var></dt>
-   *   <dd>Account ID.</dd>
+   *   <dd>The payment method ID. Each payment card for each user will have its own ID.</dd>
    *   <dt>string <var>text_name_card</var></dt>
-   *   <dd>Card name.</dd>
+   *   <dd>The payment card descriptor. This is typically the company name and the last 4 digits of the card
+   *     (e.g., visa-5903).</dd>
    *   <dt>string <var>text_name_holder</var></dt>
-   *   <dd>Card holder name.</dd>
+   *   <dd>The name of the card owner as it appears on the card.</dd>
    *   <dt>string <var>text_number</var></dt>
-   *   <dd>Account number.</dd>
+   *   <dd>A portion of the payment card number, used to identify the card.
+   *     This is typically the last 4 digits of the card number.</dd>
    * </dl>
    *
    * @get result
@@ -39,7 +43,7 @@ class ListModel extends WlModelAbstract
   public $a_bank_card = [];
 
   /**
-   * ID of a business to show information for.
+   * The business ID number used internally by WellnessLiving.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -49,7 +53,7 @@ class ListModel extends WlModelAbstract
   public $k_business = null;
 
   /**
-   * Location to show information for.
+   * The key of the location to show information for.
    * <tt>0</tt> to use user's home location.
    *
    * <tt>null</tt> if not set yet.
@@ -60,7 +64,7 @@ class ListModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * ID of user to show information for.
+   * The key of the user to show information for.
    *
    * <tt>null</tt> if not set yet.
    *

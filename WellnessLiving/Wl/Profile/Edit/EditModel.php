@@ -5,18 +5,43 @@ namespace WellnessLiving\Wl\Profile\Edit;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Client profile information.
+ * Gets information about a client profile. Alternatively edits or creates a profile.
+ *
+ * The GET method returns the profile fields for a specified user or a blank set of fields for a new user of the
+ * given business:
+ *
+ * * If the GET method is used with a valid uid greater than 0, the method will return a list of fields with the
+ *   values of the specified user.
+ * * If the GET method is used with the uid set to 0, a list of profile fields will be returned for the specified
+ *   business. A user in WellnessLiving can be in multiple businesses, there are some fields common among all business
+ *   and others specific to one business.
+ *
+ * The type of field is described in id_field_type, which will be one of the WlFieldTypeSid constants.
+ * Some fields have a general type which can have a specific format:
+ * * Address - An array containing the following keys: k_city, s_address, s_city, and s_postal.
+ * The k_city value can be retrieved via the Core\Geo\ComboboxModel endpoint. The following is an example address array:
+ *
+ * <pre>
+ * $o_edit_model->a_change[13] = [
+ *   'k_city' => '4934', // Toronto's k_city value.
+ *   's_address' => 'Canada',
+ *   's_city' => 'Toronto, ON, Canada',
+ *   's_postal' => 'M5X1E5'
+ *];
+ * </pre>
+ *
+ * * Birthday -  A string containing the date in MySQL format (eg ‘1987-06-05’).
+ * * Email Address - An array containing the following keys: is_inherit and s_mail. The is_inherit value is whether the
+ * user shares the email address with another user. Typically this is done for children, they will use their parent’s
+ * email (is_inherit=1). In the general case and most others use is_inherit=0. The s_mail value is simply the new
+ * email address.
  */
 class EditModel extends WlModelAbstract
 {
   /**
-   * Field values to save.
-   *
-   * Keys are field IDs.
-   *
-   * Values are new field values. Specific values depend on individual type of field. For some fields, there may be a string, for some fields there may be an array.
-   *
-   * If a composite field is changed, all fields should be specified (for example, if you change address you should obligatorily specify city).
+   * A list of fields to change. Values are the new field values. Specific values depend on an individual field type.
+   * Some fields may be strings, others are arrays. If a composite field is changed, all fields should be specified
+   * (e.g., if you change your address you will need to specify the city). Keys are the k_field values.
    *
    * @put post
    * @var array
@@ -33,7 +58,9 @@ class EditModel extends WlModelAbstract
   public $a_new = [];
 
   /**
-   * Field values already saved.
+   * Field values that have already been saved. After load, these values are retrieved from a_structure.
+   * After a save, these values are updated from a_change.
+   * The structure of a_old corresponds to the structure of a_change.
    *
    * After load these values are retrieved from {@link Wl_Profile_Edit_EditModel.a_structure} with
    * {@link Wl_Profile_Field_FieldElementView.configValue()}.
@@ -47,16 +74,18 @@ class EditModel extends WlModelAbstract
   public $a_old = [];
 
   /**
-   * Values and structure of all fields. Keys are field ids (<tt>k_field</tt>).
-   *   Values are field values and structure, arrays with the following structure:<ul>
-   *   <li>int [<tt>id_field_general</tt>] ID of a system field. One of {@link RsFieldGeneralSid} constants.
+   * Values and structure of all fields. Array keys are field IDs (k_field).
+   * Array values are the field values. The array has the following structure:
+   * <ul>
+   *   <li>int [<var>id_field_general</var>] The ID of a system field. One of {@link RsFieldGeneralSid} constants.
    *
-   *     This value is only defined if <tt>id_field_type</tt>={@link RsFieldTypeSid.GENERAL}.</li>
-   *   <li>Boolean <tt>is_require</tt> Whether value of this field is required. '1' if required, '0' if field is optional.</dd>
-   *   <li>int <tt>id_field_type</tt> Type of the field. One of {@link RsFieldTypeSid} constants.</li>
-   *   <li>String <tt>k_field</tt> Field ID (<tt>k_field</tt>). Copy of key of this array element.</li>
-   *   <li>string <tt>s_title</tt> Title of the field.</li>
-   *   <li>mixed <tt>x_value</tt> Value of the field. This value is completely defined by individual fields.</li>
+   *     This value is only defined if <var>id_field_type</var>={@link RsFieldTypeSid.GENERAL}.</li>
+   *   <li>bool <var>is_require</var> Indicates whether the value of this field is required. `1`
+   *     if required, `0` if field is optional.</dd>
+   *   <li>int <var>id_field_type</var> The type of field. This is one of the {@link RsFieldTypeSid} constants.</li>
+   *   <li>string <var>k_field</var>The Field ID (<var>k_field</var>). A copy of key of this array element.</li>
+   *   <li>string <var>s_title</var> The title of the field.</li>
+   *   <li>mixed <var>x_value</var> The value of the field. This value is defined by individual fields.</li>
    * </ul>
    *
    * @get result
@@ -65,8 +94,8 @@ class EditModel extends WlModelAbstract
   public $a_structure = [];
 
   /**
-   * The form display mode. Short or full.
-   * Assumes use only in user registration mode.
+   * Indicates whether to display the full profile edit form or the short version.
+   * This is assumed to be used only in user registration mode.
    *
    * @get result
    * @post get
@@ -75,7 +104,8 @@ class EditModel extends WlModelAbstract
   public $is_short = 0;
 
   /**
-   * How we want to see this page. As a staff or as a user.
+   * Indicates whether to display the form as a user or as a staff member.
+   * Staff members may have access to different fields than the user.
    *
    * @get get
    * @post get
@@ -85,9 +115,9 @@ class EditModel extends WlModelAbstract
   public $is_staff = 0;
 
   /**
-   * ID of a business to manipulate with.
+   * The key of the business to manipulate.
    *
-   * Empty value to manipulate with system-wide fields.
+   * An empty value will return the system-wide fields.
    *
    * @get get
    * @post get
@@ -105,7 +135,7 @@ class EditModel extends WlModelAbstract
   public $text_password = '';
 
   /**
-   * ID of a user to manipulate with.
+   * The key of the user to manipulate.
    *
    * If empty then an empty form will be displayed to add a new user.
    *

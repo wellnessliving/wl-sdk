@@ -5,14 +5,15 @@ namespace WellnessLiving\Wl\Review;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Creates a review using the login of the user signed into the API.
+ * Adds a review for a location. The review consists of a rating from 1 to 5 stars and text.
+ * The review will be attributed to the user who is signed into the API.
  */
 class ReviewModel extends WlModelAbstract
 {
   /**
-   * Selected rate, the number of stars of the review (1-5).
+   * The rating given to the location (1 to 5 stars).
    *
-   * <tt>null</tt> if not loaded yet.
+   * It is `null` if not loaded yet.
    *
    * @post post
    * @var int|null
@@ -20,9 +21,9 @@ class ReviewModel extends WlModelAbstract
   public $i_rate = null;
 
   /**
-   * ID of a location.
+   * The key of a location.
    *
-   * <tt>null</tt> if not loaded yet.
+   * It is `null` if not loaded yet.
    *
    * @post post
    * @var string|null
@@ -30,9 +31,9 @@ class ReviewModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * ID of writing review activity. Empty if review was saved but not published.
+   * The key of the review writing activity. Empty if review was saved but not published.
    *
-   * <tt>null</tt> if not loaded yet.
+   * It is `null` if not loaded yet.
    *
    * @post result
    * @var string|null
@@ -40,9 +41,9 @@ class ReviewModel extends WlModelAbstract
   public $k_login_activity = null;
 
   /**
-   * The text of review.
+   * The text of the review.
    *
-   * <tt>null</tt> if not loaded yet.
+   * It is `null` if not loaded yet.
    *
    * @post post
    * @var string|null

@@ -5,35 +5,35 @@ namespace WellnessLiving\Wl\Member\Purchase;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Returns list of clients with given purchase options.
+ * Returns a list of active clients with the given active Purchase Options.
  *
- * Returns only active clients with only active purchase options from the given list.
+ * This endpoint returns only active clients with only active purchase options from the given list.
  */
 class MemberByPromotionModel extends WlModelAbstract
 {
   /**
-   * List of clients with the given active purchase options.
+   * The list of active clients with the given active Purchase Options.
    *
    * <dl>
    *   <dt>array[] <var>a_purchase_options</var></dt>
    *   <dd>
-   *     List of purchase options. Each element has:
+   *     The list of active Purchase Options. Each element has:
    *
    *     <dl>
    *       <dt>string|null <var>dl_end</var></dt>
-   *       <dd>Local date in location timezone, when purchase option expires.
-   *          `null` if it does not expire.</dd>
+   *       <dd>The local date in the location’s timezone, when Purchase Option expires.
+   *           It will be `null` if it doesn’t expire.</dd>
    *       <dt>string <var>dtu_purchase</var></dt>
-   *       <dd>Global date and time, when purchase option was sold.</dd>
+   *       <dd>The global date and time, when the Purchase Option was sold.</dd>
    *       <dt>string|null <var>dl_start</var></dt>
-   *       <dd>Local date in location timezone, when purchase option starts.
-   *          `null` if this date is not defined yet. Can be, for example, if starting date is a date of the first visit and
-   *          there were no visits yet.</dd>
+   *       <dd>The local date in location timezone, when Purchase Option starts. It will be `null` if this date isn’t
+   *           defined yet. Can be, for example, if starting date is a date of the first visit and there were no visits
+   *           yet.</dd>
    *       <dt>string|null <var>dl_terminate</var></dt>
-   *       <dd>Local date in location timezone, when purchase option will be terminated.
-   *          `null` if it's not scheduled to be terminated.</dd>
+   *       <dd>The local date in location’s timezone when the Purchase Option will be terminated. It will be `null` if
+   *           it isn’t scheduled to be terminated.</dd>
    *       <dt>string <var>k_promotion</var></dt>
-   *       <dd>Key of the purchase option.</dd>
+   *       <dd>The key of the Purchase Option.</dd>
    *     </dl>
    *   </dd>
    *
@@ -47,7 +47,7 @@ class MemberByPromotionModel extends WlModelAbstract
   public $a_clients = [];
 
   /**
-   * Key of the business to find clients in.
+   * The key of the business for which to get a list of clients.
    *
    * @var string
    * @get get
@@ -55,7 +55,8 @@ class MemberByPromotionModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * Separated with comma list of keys of the purchase options, which should have clients to be returned.
+   * The comma separated list of the Purchase Option keys.
+   * Only active clients with at least one active Purchase Option from this list will be returned.
    *
    * For example: '324,123,11,556'
    *

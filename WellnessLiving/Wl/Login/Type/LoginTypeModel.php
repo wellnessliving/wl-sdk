@@ -6,11 +6,14 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * Retrieves information about login types.
+ *
+ * A login type is basically a client type.
+ * This information can be used to filter clients by their client type in the All Clients report.
  */
 class LoginTypeModel extends WlModelAbstract
 {
   /**
-   * Information about login types. Each element is an array with the following information:
+   * A list of login types, keys, and information. Each element is an array with the following information:
    *
    * <dl>
    *   <dt>bool <var>is_member</var></dt>
@@ -29,7 +32,7 @@ class LoginTypeModel extends WlModelAbstract
   public $a_login_type_list = [];
 
   /**
-   * Business key to get login types for.
+   * The business ID used internally by WellnessLiving.
    *
    * @get get
    * @var string

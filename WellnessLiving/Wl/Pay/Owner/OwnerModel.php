@@ -5,12 +5,13 @@ namespace WellnessLiving\Wl\Pay\Owner;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Payment owner data model.
+ * Gets the payment owner ID.
  */
 class OwnerModel extends WlModelAbstract
 {
   /**
-   * Payment owner type.
+   * The type of user for which transactions can be made. It is not necessary to set this variable.
+   * This is one of the WlPayOwnerSid constants.
    *
    * @get result
    * @var int
@@ -18,7 +19,7 @@ class OwnerModel extends WlModelAbstract
   public $id_pay_owner = 0;
 
   /**
-   * ID of the purchase owner.
+   * The payment owner’s ID. This is used for financial transactions.
    *
    * @get result
    * @var string
@@ -26,7 +27,7 @@ class OwnerModel extends WlModelAbstract
   public $k_pay_owner = '0';
 
   /**
-   * ID of user to show information for.
+   * The current user’s ID.
    *
    * @get get
    * @var string

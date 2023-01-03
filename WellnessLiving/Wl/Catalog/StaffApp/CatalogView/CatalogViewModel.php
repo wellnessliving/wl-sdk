@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Catalog\StaffApp\CatalogView;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * A model to calculate price information for a sale item.
+ * Returns information about an item’s price after taxes.
  */
 class CatalogViewModel extends WlModelAbstract
 {
   /**
-   * Information about an item, which can specify prorated amounts.
+   * Configuration information about the item, which can specify prorated amounts.
    *
    * If set, these values will change the values returned by the endpoint call.
    *
@@ -30,7 +30,7 @@ class CatalogViewModel extends WlModelAbstract
   /**
    * Contains information about edited taxes.
    *
-   * <tt>null</tt> if not set yet or taxes are default.
+   * It is `null` if not set yet or taxes are default.
    *
    * The key is the tax identifier and the value is:
    * <dl>
@@ -48,7 +48,7 @@ class CatalogViewModel extends WlModelAbstract
   /**
    * Contains information about calculated taxes. The structure of this array is described in {@link \RsTax::$a_tax}.
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @get result
    * @var array|null
@@ -58,7 +58,7 @@ class CatalogViewModel extends WlModelAbstract
   /**
    * The quantity of items.
    *
-   * <tt>null</tt> if there is no limit of items at the location.
+   * It is `null` if there is no limit of items at the location.
    *
    * @get get
    * @var int|null
@@ -66,9 +66,9 @@ class CatalogViewModel extends WlModelAbstract
   public $i_quantity = null;
 
   /**
-   * The ID of sale category.
+   * The ID of the sale category.
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @get get
    * @var int|null
@@ -85,8 +85,10 @@ class CatalogViewModel extends WlModelAbstract
 
   /**
    * The ID of the sale item.
+   * It can be retrieved with the (@link WellnessLiving\Wl\CatalogList\CatalogListMode} endpoint (see the
+   * <var>$a_shop_product parameter</var>).
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -96,7 +98,7 @@ class CatalogViewModel extends WlModelAbstract
   /**
    * The ID of the product option.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -106,7 +108,7 @@ class CatalogViewModel extends WlModelAbstract
   /**
    * The custom price of the sale item.
    *
-   * <tt>null</tt> if not set yet or if price default.
+   * It is `null` if not set yet or if price default.
    *
    * @get get
    * @var string|null
@@ -116,7 +118,7 @@ class CatalogViewModel extends WlModelAbstract
   /**
    * The prorated amount.
    *
-   * <tt>null</tt> if not calculated yet.
+   * It is `null` if not calculated yet.
    *
    * @get result
    * @var string
@@ -126,7 +128,7 @@ class CatalogViewModel extends WlModelAbstract
   /**
    * The calculated amount of the sale item, including taxes.
    *
-   * <tt>null</tt> if not calculated yet.
+   * It is `null` if not calculated yet.
    *
    * @get result
    * @var string|null
@@ -136,7 +138,7 @@ class CatalogViewModel extends WlModelAbstract
   /**
    * The calculated amount of tax.
    *
-   * <tt>null</tt> if not calculated yet.
+   * `null` if not calculated yet.
    *
    * @get result
    * @var string|null
