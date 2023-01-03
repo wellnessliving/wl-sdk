@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Schedule;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * A model for staff to cancel sessions.
+ * Cancels either an appointment, class, or event session for the client.
  */
 class CancelModel extends WlModelAbstract
 {
   /**
-   * Date of the session in UTC.
+   * The date of the session in UTC.
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @post get
    * @var string|null
@@ -29,9 +29,9 @@ class CancelModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * Appointment key.
+   * The appointment key. It will be `null` if not set yet or if a class or event is canceled.
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @post get
    * @var string|null
@@ -39,9 +39,9 @@ class CancelModel extends WlModelAbstract
   public $k_appointment = null;
 
   /**
-   * Class period key.
+   * The class period key. It will be `null` if not set yet or if an appointment is canceled.
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @post get
    * @var string|null
@@ -49,9 +49,9 @@ class CancelModel extends WlModelAbstract
   public $k_class_period = null;
 
   /**
-   * User key.
+   * The user key.
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @post get
    * @var string|null

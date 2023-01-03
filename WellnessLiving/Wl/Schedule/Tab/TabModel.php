@@ -5,39 +5,44 @@ namespace WellnessLiving\Wl\Schedule\Tab;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * List of tabs for "Book now".
+ * Gets a list of tabs for bookable services specific to the user and the location.
+ *
+ * The names and contents of these tabs can be customized by the business. For example, a business may have tabs named
+ * ‘Appointments’, ‘Group Appointments’, and ‘Room Rentals’.
  */
 class TabModel extends WlModelAbstract
 {
   /**
-   * List of "Book now" tabs. Every element has next keys:
+   * An array containing information about tabs to present to the user.
+   * Each array index corresponds to a tab.
+   * Each array element is an array that contains the following fields:
    * <dl>
    *   <dt>
    *     int <var>id_class_tab_object</var>
    *   </dt>
    *   <dd>
-   *     ID of tab type. Member of {@link \WellnessLiving\Wl\Classes\Tab\TabSid}.
+   *     The tab type’s ID which is one of the {@link \WellnessLiving\Wl\Classes\Tab\TabSid} constants.
    *   </dd>
    *   <dt>
    *     int|null <var>id_class_tab_system</var>
    *   </dt>
    *   <dd>
-   *     If this tab redefines default system tab, ID of tab type.
-   *     Member of {@link \WellnessLiving\Wl\Classes\Tab\TabSid}.
-   *     <tt>null</tt> otherwise.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_id</var>
-   *   </dt>
-   *   <dd>
-   *     Unique identifier in list.
+   *     If this tab has redefined a default system Class Tab then it references a constant defined in
+   *     {@link \WellnessLiving\Wl\Classes\Tab\TabSid}.
+   *
+   *     It is `null` otherwise.
    *   </dd>
    *   <dt>
    *     string|null <var>k_class_tab</var>
    *   </dt>
    *   <dd>
-   *     If this tab is system default, <tt>null</tt>.
-   *     Tab key otherwise.
+   *     The Class Tab key. It is `null` if it is a system Tab.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_id</var>
+   *   </dt>
+   *   <dd>
+   *     A unique identifier in the list.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
@@ -47,7 +52,7 @@ class TabModel extends WlModelAbstract
    *   </dd>
    * </dl>
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @get result
    * @var array|null
@@ -55,9 +60,9 @@ class TabModel extends WlModelAbstract
   public $a_tab = null;
 
   /**
-   * Current business ID.
+   * The key of the current business.
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -65,9 +70,9 @@ class TabModel extends WlModelAbstract
   public $k_business = null;
 
   /**
-   * Current location ID.
+   * The key of the current location.
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -75,14 +80,13 @@ class TabModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * Current user ID.
-   * It is not used on server side.
-   * But server side uses current user to build list of tabs.
-   * So, model must depend on current user ID.
-   * If we change to relative (current user is changed, but application is not restarted),
-   * we will request information about book tabs for this user-relative.
+   * The key of the current user.
+   * It is not used on server side as the server side uses the current user to build a list of tabs.
+   * So the model must depend on the current user ID.
+   * If we change to a relative (the current user is changed, but the application is not restarted),
+   * we will request information about the booking tabs for this user's relative.
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @get get
    * @var string|null

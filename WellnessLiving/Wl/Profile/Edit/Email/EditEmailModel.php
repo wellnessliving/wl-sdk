@@ -5,13 +5,15 @@ namespace WellnessLiving\Wl\Profile\Edit\Email;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Entry point to check or edit a user's email.
+ * Checks a user’s email to either see if it’s in use or change a user’s login email address.
+ *
+ * This endpoint may be limited in number of uses. If the limit is exceeded, it will not return user information.
  */
 class EditEmailModel extends WlModelAbstract
 {
   /**
-   * Information about user who already occupies specified email.
-   * Empty if email is free or if quantity of requests is exhausted.
+   * Information about the user who occupies the specified email.
+   * This will be empty if the email is free or if number of requests is exhausted.
    *
    * @get result
    * @var array
@@ -19,8 +21,7 @@ class EditEmailModel extends WlModelAbstract
   public $a_user = [];
 
   /**
-   * Quantity of request is exhausted.
-   * <tt>true</tt> - yes; <tt>false</tt> - no.
+   * If `true` then the number of requests has exceeded the limit.
    *
    * @get result
    * @var bool
@@ -28,8 +29,7 @@ class EditEmailModel extends WlModelAbstract
   public $is_limit = false;
 
   /**
-   * Specified email is occupied.
-   * <tt>true</tt> - yes; <tt>false</tt> - no.
+   * If `true` then the specified email is in use.
    *
    * @get result
    * @var bool
@@ -37,7 +37,7 @@ class EditEmailModel extends WlModelAbstract
   public $is_use = false;
 
   /**
-   * Business key where check must be performed.
+   * The business key where check must be performed.
    *
    * @get get
    * @post get
@@ -46,7 +46,7 @@ class EditEmailModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Email to be checked.
+   * The email address to be checked.
    *
    * @get get
    * @var string
@@ -54,8 +54,8 @@ class EditEmailModel extends WlModelAbstract
   public $text_mail = '';
 
   /**
-   * Key of user who occupies specified email.
-   * <tt>0</tt> if email is free or if quantity of requests is exhausted.
+   * The key of user who has the specified email.
+   * It will be `0` if the email is free or if quantity of requests is exhausted.
    *
    * @get result
    * @var string
@@ -63,8 +63,8 @@ class EditEmailModel extends WlModelAbstract
   public $uid_result = '0';
 
   /**
-   * Key of user whose email we try to edit.
-   * <tt>0</tt> for a case of new user creation.
+   * The key of user whose email we try to edit.
+   * It will be `0` in the case of new user creation.
    *
    * @get get
    * @post get

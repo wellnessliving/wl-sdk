@@ -5,14 +5,16 @@ namespace WellnessLiving\Wl\Schedule\Page;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves items of the schedule for the client.
+ * Returns a list of either previous or upcoming visits for a specific user.
+ *
+ * A visit can be for an appointment, class, or an event.
  */
 class PageListModel extends WlModelAbstract
 {
   /**
-   * List of schedule items. Every element has next field:
-   * <ul><li>String <tt>k_visit</tt> ID of book/visit.</li></ul>
-   * Order of items in this array is the order in which elements should be shown.
+   * A list of visits IDs. Each element is an array with the following element:
+   * <ul><li>string <tt>k_visit</tt> the key of the book or visit.</li></ul>
+   * The order of items in this array is the order in which elements should be shown.
    *
    * @get result
    * @var array
@@ -20,9 +22,9 @@ class PageListModel extends WlModelAbstract
   public $a_visit = [];
 
   /**
-   * If date set, return a list of services before this date.
-   * Date and time in UTC timezone in MySQL format.
-   * If left as <tt>null</tt> then return a list of services, which will not be limited to the end date.
+   * If the date set, return a list of services before this date.
+   * The date and time is in UTC and in MySQL format.
+   * If left as `null` then return a list of services which will not be limited to the end date.
    *
    * @get get
    * @var string|null
@@ -30,9 +32,9 @@ class PageListModel extends WlModelAbstract
   public $dtu_end = null;
 
   /**
-   * If date set, return a list of services after this date.
-   * Date and time in UTC timezone in MySQL format.
-   * If left as <tt>null</tt> then return a list of services, which will not be limited to the start date.
+   * If the date is set, return a list of services after this date.
+   * The date and time is in UTC and in MySQL format.
+   * If left as `null` then return a list of services which will not be limited to the start date.
    *
    * @get get
    * @var string|null
@@ -40,8 +42,8 @@ class PageListModel extends WlModelAbstract
   public $dtu_start = null;
 
   /**
-   * If set to true, return a list of past services.
-   * If left as <tt>null</tt> then return a list of upcoming services.
+   * If `true` then get all the client’s previous visits.
+   * If `false` or left as null, then get all the client’s upcoming visits.
    *
    * @get get
    * @var bool|null
@@ -49,9 +51,9 @@ class PageListModel extends WlModelAbstract
   public $is_past = null;
 
   /**
-   * Business ID.
+   * The business key.
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -59,9 +61,9 @@ class PageListModel extends WlModelAbstract
   public $k_business = null;
 
   /**
-   * User ID.
+   * The user key.
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @get get
    * @var string|null

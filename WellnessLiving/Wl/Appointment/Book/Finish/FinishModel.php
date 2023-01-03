@@ -7,7 +7,11 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 
 /**
- * Model to complete booking appointment.
+ * Completes the booking process for a service.
+ *
+ * This endpoint can be used with an existing client by specifying their uid. It can also be used to create a new
+ * client by specifying user details in a_user and omitting any uid. This endpoint can be accessed anonymously without
+ * authentication but only when creating clients.
  *
  * @deprecated Use {@link Finish47Model} instead.
  */

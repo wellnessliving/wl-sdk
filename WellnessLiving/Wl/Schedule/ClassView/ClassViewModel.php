@@ -5,68 +5,72 @@ namespace WellnessLiving\Wl\Schedule\ClassView;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves information about class.
+ * Gets further information about a specified class session.
+ *
+ * A class listing can be retrieved from the {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel} endpoint.
  */
 class ClassViewModel extends WlModelAbstract
 {
   /**
-   * Class data. <dl>
+   * Detailed information about the class. When loaded it contains the following fields:
+   * <dl>
    *   <dt>array <var>a_image</var></dt>
-   *   <dd>Class image data:<dl>
+   *   <dd>Information describing a class’s image.<dl>
    *     <dt>int <var>i_height</var></dt>
-   *     <dd>Image height.</dd>
+   *     <dd>The image height.</dd>
    *     <dt>int <var>i_width</var></dt>
-   *     <dd>Image width.</dd>
+   *     <dd>The image width.</dd>
    *     <dt>bool <var>is_empty</var></dt>
-   *     <dd>Whether current image is empty.</dd>
+   *     <dd>This will be `true` if there is no image and a default is used.</dd>
    *     <dt>string <var>s_url</var></dt>
-   *     <dd>Url link to image.</dd>
+   *     <dd>The url link to the image.</dd>
    *   </dl></dd>
    *   <dt>int[] <var>a_tag</var></dt>
-   *   <dd>List of tags.</dd>
+   *   <dd>A List of tags that can be used to describe the class in the catalog.</dd>
    *   <dt>bool <var>can_book</var></dt>
-   *   <dd>Whether current client can book class.</dd>
+   *   <dd>Whether the current client can book this class.</dd>
    *   <dt>string <var>dt_date_global</var></dt>
-   *   <dd>Session date/time in UTC.</dd>
+   *   <dd>The session date/time in UTC.</dd>
    *   <dt>string <var>dt_date_local</var></dt>
-   *   <dd>Start date in local time.</dd>
+   *   <dd>The start date in the local timezone.</dd>
    *   <dt>string <var>html_deny_reason</var></dt>
-   *   <dd>Reason why client can not book class. Not empty only if <var>can_book</var> is <tt>false</tt>.</dd>
+   *   <dd>The reason why the client can not book this class.
+   *     This will be set only if <var>can_book</var> is <tt>false</tt>.</dd>
    *   <dt>string <var>html_description</var></dt>
-   *   <dd>Class description.</dd>
+   *   <dd>The class description.</dd>
    *   <dt>string <var>html_special</var></dt>
-   *   <dd>Special instructions.</dd>
+   *   <dd>The special instructions.</dd>
    *   <dt>int|null <var>i_age_from</var></dt>
-   *   <dd>Age from that class is allowed. <tt>null</tt> if information is not available.</dd>
+   *   <dd>The lower bound of age that is allowed in the class. If will be `null` there is no age limit.</dd>
    *   <dt>int|null <var>i_age_to</var></dt>
-   *   <dd>Age to that class is allowed. <tt>null</tt> if information is not available.</dd>
+   *   <dd>The upper bound of age that is allowed in the class. If will be `null` there is no age limit.</dd>
    *   <dt>int <var>i_book</var></dt>
-   *   <dd>Count of booked visits.</dd>
+   *   <dd>The count of booked visits.</dd>
    *   <dt>int <var>i_capacity</var></dt>
-   *   <dd>Class capacity.</dd>
+   *   <dd>The class capacity.</dd>
    *   <dt>int <var>i_duration</var></dt>
-   *   <dd>Class duration. In number of minutes.</dd>
+   *   <dd>The class duration in minutes.</dd>
    *   <dt>bool <var>is_book</var></dt>
-   *   <dd>Whether current class was booked by current client.</dd>
+   *   <dd>This will be `true` if the current class was booked by the current client.</dd>
    *   <dt>bool <var>is_cancel</var></dt>
-   *   <dd><tt>true</tt> if class period was cancelled; <tt>false</tt> otherwise.</dd>
+   *   <dd>This will be `true` if the class period was cancelled; `false` otherwise.</dd>
    *   <dt>bool <var>is_promotion_only</var></dt>
-   *   <dd><tt>true</tt> if this class can be paid with promotion only; <tt>false</tt> otherwise.</dd>
+   *   <dd>This will be `true` if this class can be paid for with promotion only; `false` otherwise.</dd>
    *   <dt>bool <var>is_wait_list</var></dt>
-   *   <dd><tt>true</tt> if user can take place in wait list only; <tt>false</tt> otherwise.</dd>
+   *   <dd>This will be `true` if user is only on the wait list; `false` otherwise.</dd>
    *   <dt>bool <var>is_wait_list_enabled</var></dt>
-   *   <dd>`true` if wait list is enabled for class; `false` otherwise.</dd>
+   *   <dd>This will be `true` if the wait list is enabled for this class; `false` otherwise.</dd>
    *   <dt>string <var>m_price</var></dt>
-   *   <dd>Session price.</dd>
+   *   <dd>The session price.</dd>
    *   <dt>string <var>s_duration</var></dt>
-   *   <dd>Class duration. In human readable format.</dd>
+   *   <dd>The class duration in a human readable format.</dd>
    *   <dt>string <var>s_title</var></dt>
-   *   <dd>Class name.</dd>
+   *   <dd>The class name.</dd>
    *   <dt>string <var>text_room</var></dt>
-   *   <dd>Class room.</dd>
+   *   <dd>The class room.</dd>
    * </dl>
    *
-   * <tt>null</tt> if data is not loaded yet.
+   * It is `null` if data is not loaded yet.
    *
    * @get result
    * @var array|null
@@ -76,7 +80,7 @@ class ClassViewModel extends WlModelAbstract
   /**
    * Location data.
    *
-   * <tt>null</tt> if data is not loaded yet.
+   * It is `null` if data is not loaded yet.
    *
    * @get result
    * @var array|null
@@ -87,7 +91,7 @@ class ClassViewModel extends WlModelAbstract
    * List of sessions to get information for. Every element has next keys:
    * <dl><dt>string <var>dt_date</var></dt><dd>Date/time of the session in UTC.</dd>
    * <dt>string <var>k_class_period</var></dt><dd>Session primary key in {@link RsClassPeriodSql} table.</dd></dl>
-   * <tt>null</tt> for mode of single session.
+   * `null` for mode of single session.
    *
    * @get get
    * @var array[]|null
@@ -112,7 +116,7 @@ class ClassViewModel extends WlModelAbstract
   /**
    * Staff list data.
    *
-   * <tt>null</tt> if data is not loaded yet.
+   * It is `null` if data is not loaded yet.
    *
    * @get result
    * @var array|null
@@ -139,9 +143,8 @@ class ClassViewModel extends WlModelAbstract
   public $a_visits_required = [];
 
   /**
-   * Date/time of the class start in GMT.
-   *
-   * <tt>null</tt> if date is not loaded yet.
+   * The datetime of the session.
+   * This endpoint does not test that this value corresponds to an actual class. Any datetime will return a result.
    *
    * @get get
    * @var string|null
@@ -149,9 +152,7 @@ class ClassViewModel extends WlModelAbstract
   public $dt_date = null;
 
   /**
-   * Class Period ID.
-   *
-   * <tt>null</tt> if not set yet.
+   * The class period key.
    *
    * @get get
    * @var string|null
@@ -169,9 +170,7 @@ class ClassViewModel extends WlModelAbstract
   public $s_session_request = null;
 
   /**
-   * User ID.
-   *
-   * <tt>null</tt> if not set yet.
+   * The user key.
    *
    * @get get
    * @post get

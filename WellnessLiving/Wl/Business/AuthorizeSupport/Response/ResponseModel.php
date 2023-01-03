@@ -5,7 +5,11 @@ namespace WellnessLiving\Wl\Business\AuthorizeSupport\Response;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * A model for a response when a user is requesting to enter into business location.
+ * An endpoint to request entrance into a business location.
+ *
+ * This endpoint is similar to Business\AuthorizePartner\AuthorizePartnerModel but not identical. To grant a user
+ * access the SDK sign-in account, the Manage Business permission is required. The associated accounts will receive an
+ * email regarding when they are given access and when that access expires. Access will be granted for 24 hours.
  */
 class ResponseModel extends WlModelAbstract
 {

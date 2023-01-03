@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Profile\Activity;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves information about a login activity element.
+ * Returns detailed information about a single client activity.
  */
 class ElementModel extends WlModelAbstract
 {
   /**
-   * Date of activity in GMT.
+   * The date of the activity in GMT.
    *
-   * <tt>null</tt> if not loaded yet.
+   * It is `null` if not loaded yet.
    *
    * @get result
    * @var string|null
@@ -20,9 +20,9 @@ class ElementModel extends WlModelAbstract
   public $dt_date_gmt = null;
 
   /**
-   * Date of activity in local user timezone.
+   * The date of the activity in the local user timezone.
    *
-   * <tt>null</tt> if not loaded yet.
+   * It is `null` if not loaded yet.
    *
    * @get result
    * @var string|null
@@ -30,9 +30,9 @@ class ElementModel extends WlModelAbstract
   public $dt_date_local = null;
 
   /**
-   * Total amount of points user got for the activity.
+   * The total amount of rewards points the user got for the activity.
    *
-   * <tt>null</tt> if not loaded yet.
+   * It is `null` if not loaded yet.
    *
    * @get result
    * @var int|null
@@ -40,9 +40,9 @@ class ElementModel extends WlModelAbstract
   public $i_score = null;
 
   /**
-   * Points spent to redeem a prize.
+   * The rewards points spent to redeem a prize.
    *
-   * <tt>null</tt> if not loaded yet.
+   * It is `null` if not loaded yet.
    *
    * See server-side documentation for additional links.
    *
@@ -52,11 +52,11 @@ class ElementModel extends WlModelAbstract
   public $i_spend = null;
 
   /**
-   * ID of icon which must be used for this activity.
+   * The ID of the icon that should be shown for this activity;
    * One of {@link WlDesignIconSid} constants.
-   * Empty if there are no special icons for this activity.
+   * This will be empty if there are no special icons for this activity.
    *
-   * <tt>null</tt> if not loaded yet.
+   * It is `null` if not loaded yet.
    *
    * @get result
    * @var int|null
@@ -64,10 +64,10 @@ class ElementModel extends WlModelAbstract
   public $id_icon = null;
 
   /**
-   * Activity type.
+   * The ID of the activity item that is returned by this model.
    * One of {@link WlLoginActivityTypeSid} constants.
    *
-   * <tt>null</tt> if not loaded yet.
+   * It is `null` if not loaded yet.
    *
    * @get result
    * @var int|null
@@ -75,9 +75,9 @@ class ElementModel extends WlModelAbstract
   public $id_type = null;
 
   /**
-   * ID of activity item that is represented by this model.
+   * The key of the activity item that is being represented by this model.
    *
-   * <tt>null</tt> if ID is not yet selected.
+   * It is `null` if ID is not yet selected.
    *
    * @get get
    * @var string|null
@@ -85,9 +85,9 @@ class ElementModel extends WlModelAbstract
   public $k_login_activity = null;
 
   /**
-   * Description of the action, who and what did.
+   * The description of the activity. It should include who was involved and the nature of the activity.
    *
-   * <tt>null</tt> if not loaded yet.
+   * It is `null` if not loaded yet.
    *
    * @get result
    * @var string|null
