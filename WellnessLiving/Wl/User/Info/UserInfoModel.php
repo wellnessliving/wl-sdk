@@ -35,7 +35,7 @@ class UserInfoModel extends WlModelAbstract
   public $dt_add = '';
 
   /**
-   * The user's birthday. This will be <tt>null</tt> if the birthday is not set.
+   * The user's birthday. This will be `null` if the birthday is not set.
    *
    * @get result
    * @var string
@@ -43,9 +43,9 @@ class UserInfoModel extends WlModelAbstract
   public $dt_birth = '';
 
   /**
-   * ID of user's gender. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
+   * The ID of the user's gender. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
    *
-   * This will be <tt>null</tt> If gender is not set.
+   * This will be `null` If gender is not set.
    *
    * @get result
    * @var int
@@ -53,8 +53,8 @@ class UserInfoModel extends WlModelAbstract
   public $id_gender = 0;
 
   /**
-   * This will be <tt>true</tt> if the user has never made purchases or reservations in this business.
-   * It will be <tt>false</tt> otherwise.
+   * This will be `true` if the user has never made purchases or reservations in this business.
+   * It will be `false` otherwise.
    *
    * @get result
    * @var int
@@ -62,7 +62,7 @@ class UserInfoModel extends WlModelAbstract
   public $is_customer_new = [];
 
   /**
-   * This will be <tt>true</tt> if the user is a traveller. A traveller is someone who's home Franchisee is
+   * This will be `true` if the user is a traveller. A traveller is someone who's home Franchisee is
    * not the current Franchisee.
    *
    * @get result
@@ -71,7 +71,7 @@ class UserInfoModel extends WlModelAbstract
   public $is_traveller = [];
 
   /**
-   * Key of the business.
+   * The key of the business.
    * This may be empty if we need system-wide information.
    *
    * @get get
@@ -113,7 +113,7 @@ class UserInfoModel extends WlModelAbstract
 
   /**
    * The user's Member ID in the business. Also referred to as the Client ID in the client's profile. This value
-   * is set by the business and is separate from the uid value.
+   * is set by the business and is separate from the <var>uid</var> value.
    *
    * @get result
    * @var string

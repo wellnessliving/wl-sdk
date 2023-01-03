@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class TaxListModel extends WlModelAbstract
 {
   /**
-   * List of taxes.
+   * A list of taxes.
    *
    * Each element has the following structure:<dl>
    * <dt>float <var>f_value</var> </dt>
@@ -29,7 +29,7 @@ class TaxListModel extends WlModelAbstract
   public $a_list;
 
   /**
-   * The key of the business to get a list of taxes for.
+   * The key of the business for which to get a list of taxes.
    *
    * @get get
    * @var string

@@ -5,15 +5,16 @@ namespace WellnessLiving\Wl\Staff\StaffView;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves information about a staff member.
+ * Returns information about a specified staff member.
  *
- * This method can accept or one staff key {@link StaffViewApi::$k_staff} or staff list
+ * This method can accept one staff key {@link StaffViewApi::$k_staff} or a staff list
  * {@link StaffViewApi::$a_staff_list} but not both (exception would be thrown).
  */
 class StaffViewModel extends WlModelAbstract
 {
   /**
-   * Contains staff schedule of classes per day.
+   * An array containing information about the classes this staff member is running.
+   * Each element contains another array with three elements:
    *
    * <dl>
    *   <dt>array <var>a_class_period</var></dt>
@@ -37,7 +38,7 @@ class StaffViewModel extends WlModelAbstract
   public $a_class_day = null;
 
   /**
-   * Staff list of staff data and class day.
+   * An array listing the class sessions the staff member provides at each location.
    *
    * <dl>
    *   <dt>array <var>a_class_day</var></dt>
@@ -62,17 +63,18 @@ class StaffViewModel extends WlModelAbstract
    *     Staff information:
    *     <dl>
    *       <dt>int <var>id_gender</var></dt>
-   *       <dd>Staff member's gender. One of {@link \WellnessLiving\Core\a\AGenderSid} constants.</dd>
+   *       <dd>Staff member's gender. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.</dd>
    *       <dt>string <var>s_biography</var></dt>
-   *       <dd>Staff biography.</dd>
+   *       <dd>A description of the staff member. This description can include HTML tags.</dd>
    *       <dt>string <var>s_family</var></dt>
-   *       <dd>1st letter of surname.</dd>
+   *       <dd>The staff member’s surname.</dd>
    *       <dt>string <var>s_name</var></dt>
-   *       <dd>Staff name.</dd>
+   *       <dd>The staff member’s first name.</dd>
    *       <dt>string <var>s_position</var></dt>
-   *       <dd>Staff job name.</dd>
+   *       <dd>The staff member’s position in the organization.</dd>
    *       <dt>string <var>uid</var></dt>
-   *       <dd>Staff user ID.</dd>
+   *       <dd>User ID. Each staff member in WellnessLiving can also access the system as a client of their business.
+   *       This is the ID number used to represent the staff member as a client.</dd>
    *     </dl>
    *   </dd>
    * </dl>
@@ -85,21 +87,22 @@ class StaffViewModel extends WlModelAbstract
   public $a_result_list = null;
 
   /**
-   * Staff information.
+   * An array containing information about the staff member.
    *
    * <dl>
    *   <dt>int <var>id_gender</var></dt>
-   *   <dd>Staff member's gender. One of {@link \AGenderSid} constants.</dd>
+   *   <dd>Staff member's gender. One of the {@link \AGenderSid} constants.</dd>
    *   <dt>string <var>s_biography</var></dt>
-   *   <dd>Staff biography.</dd>
+   *   <dd>A description of the staff member. This description can include HTML tags.</dd>
    *   <dt>string <var>s_family</var></dt>
-   *   <dd>1st letter of surname.</dd>
+   *   <dd>The staff member’s surname.</dd>
    *   <dt>string <var>s_name</var></dt>
-   *   <dd>Staff name.</dd>
+   *   <dd>The staff member’s first name.</dd>
    *   <dt>string <var>s_position</var></dt>
-   *   <dd>Staff job name.</dd>
+   *   <dd>The staff member’s position in the organization.</dd>
    *   <dt>string <var>uid</var></dt>
-   *   <dd>Staff user ID.</dd>
+   *   <dd>User ID. Each staff member in WellnessLiving can also access the system as a client of their business.
+   *   This is the ID number used to represent the staff member as a client.</dd>
    * </dl>
    *
    * <tt>null</tt> if data is not loaded yet.
@@ -120,7 +123,7 @@ class StaffViewModel extends WlModelAbstract
   public $a_staff_list = null;
 
   /**
-   * ID of a business to show information for.
+   * The key of the business to show information for.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -130,7 +133,8 @@ class StaffViewModel extends WlModelAbstract
   public $k_business = null;
 
   /**
-   * Staff ID.
+   * The staff member’s ID number. A staff member can work for more than one business. This ID can be found using the
+   * Staff\StaffList\StaffListModel endpoint.
    *
    * <tt>null</tt> if not set yet.
    *

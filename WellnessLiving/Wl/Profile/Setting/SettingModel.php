@@ -5,7 +5,9 @@ namespace WellnessLiving\Wl\Profile\Setting;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves a list of user settings from profile.
+ * Retrieves the user’s notification settings.
+ *
+ * Alternatively it can be used to change a user’s notification settings.
  */
 class SettingModel extends WlModelAbstract
 {
@@ -64,9 +66,9 @@ class SettingModel extends WlModelAbstract
   public $is_schedule_and_reminders_sms = 1;
 
   /**
-   * ID of a business to show information for.
+   * The key of the business to show information for.
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @get get
    * @post get
@@ -75,9 +77,9 @@ class SettingModel extends WlModelAbstract
   public $k_business = null;
 
   /**
-   * ID of a user to show information for.
+   * The key of the user to show information for.
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @get get
    * @post get
