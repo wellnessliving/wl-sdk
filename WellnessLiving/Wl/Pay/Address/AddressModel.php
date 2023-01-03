@@ -4,6 +4,9 @@ namespace WellnessLiving\Wl\Pay\Address;
 
 use WellnessLiving\WlModelAbstract;
 
+/**
+ * An endpoint to get information about a user's payment addresses.
+ */
 class AddressModel extends WlModelAbstract
 {
   /**

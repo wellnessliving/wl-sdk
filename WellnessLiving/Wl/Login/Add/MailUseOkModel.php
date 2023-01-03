@@ -5,8 +5,14 @@ namespace WellnessLiving\Wl\Login\Add;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Registers existing user in current business.
- * If user already member of current business then do nothing.
+ * Registers an existing user in the specified Franchisee.
+ *
+ * If the user is already a member of the business, then this endpoint will do nothing. After a profile edit there can
+ * be a delay while the data replicates to our caches where you will receive a 'profile-field-empty' status code. This
+ * delay is less than 20 seconds in most cases.
+ *
+ * If your business uses Franchise Cloud, there is a restriction where a client can only be a member in one Franchisee,
+ * they will be a traveller in all other Franchisees.
  */
 class MailUseOkModel extends WlModelAbstract
 {
@@ -27,7 +33,7 @@ class MailUseOkModel extends WlModelAbstract
   public $a_error = [];
 
   /**
-   * Whether this is a lead. <tt>true</tt> if this is the lead. <tt>false</tt> otherwise.
+   * This value is `true` if this is a lead, otherwise this value is `false` .
    *
    * @post post
    * @var string
@@ -35,7 +41,7 @@ class MailUseOkModel extends WlModelAbstract
   public $is_lead = 0;
 
   /**
-   * Business key.
+   * The business ID used internally by WellnessLiving.
    *
    * @post post
    * @var string
@@ -43,7 +49,7 @@ class MailUseOkModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * Lead Widget skin key. Only needed if the user is a lead and not using the default skin for the business.
+   * The lead widget skin key, this is used only if a lead was added.
    *
    * @post post
    * @var string
@@ -67,7 +73,7 @@ class MailUseOkModel extends WlModelAbstract
   public $text_message = '';
 
   /**
-   * User key.
+   * The user key.
    *
    * @post post
    * @var string

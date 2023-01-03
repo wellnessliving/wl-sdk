@@ -10,31 +10,31 @@ use WellnessLiving\WlModelAbstract;
 class MemberModel extends WlModelAbstract
 {
   /**
-   * Businesses, member of which is user. Every element has next keys:
+   * A list of businesses where the client is present. Every element is an array with the following keys:
    * <dl>
    *   <dt>
    *     bool <var>is_franchisee</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if business is franchisee; <tt>false</tt> otherwise.
+   *     If `true`, then the business is a franchisee. Otherwise, it is `false`.
    *   </dd>
    *   <dt>
    *     string <var>k_business</var>
    *   </dt>
    *   <dd>
-   *     Business key.
+   *     The business key.
    *   </dd>
    *   <dt>
    *     string <var>k_business_franchisor</var>
    *   </dt>
    *   <dd>
-   *     Corporate account of the business franchise.
+   *     The business key of the franchise’s corporate account (if applicable).
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Title of business.
+   *     The title of the business.
    *   </dd>
    * </dl>
    *
@@ -44,7 +44,7 @@ class MemberModel extends WlModelAbstract
   public $a_business;
 
   /**
-   * User key.
+   * The user's key.
    *
    * @get get
    * @var string

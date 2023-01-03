@@ -6,16 +6,16 @@ use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves information about Wellnessliving user.
+ * Returns the profile information for a specific user.
  *
- * Can return public information about the staff.
- * Can return user`s logo.
- * To obtain full user information, you should have access to the requested user.
+ * Can return public information about a staff member.
+ * Can return user`s image.
+ * To obtain the user's full information you will need access to the requested user.
  */
 class LoginModel extends WlModelAbstract
 {
   /**
-   * Gender. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
+   * The gender ID. It will be one of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
    *
    * @get result
    * @var int
@@ -23,7 +23,8 @@ class LoginModel extends WlModelAbstract
   public $id_gender = AGenderSid::FEMALE;
 
   /**
-   * Key of business.
+   * The key of the business. Users can be in multiple businesses.
+   * This can be left as null to retrieve system wide information.
    *
    * @get get
    * @var string
@@ -31,7 +32,7 @@ class LoginModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * User's key as staff member.
+   * The user's staff key for the specified business.
    *
    * @get result
    * @var string
@@ -39,7 +40,7 @@ class LoginModel extends WlModelAbstract
   public $k_staff = '0';
 
   /**
-   * User first name.
+   * The first name of the user.
    *
    * @get result
    * @var string
@@ -47,7 +48,7 @@ class LoginModel extends WlModelAbstract
   public $s_first_name = '';
 
   /**
-   * User last name.
+   * The surname of the user.
    *
    * @get result
    * @var string
@@ -110,7 +111,7 @@ class LoginModel extends WlModelAbstract
   public $text_name_last_staff;
 
   /**
-   * ID of user.
+   * The ID of the user.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -120,7 +121,7 @@ class LoginModel extends WlModelAbstract
   public $uid = null;
 
   /**
-   * Photo URL of a user that is currently signed in.
+   * The URL where the user’s photo can be retrieved.
    *
    * @get result
    * @var string

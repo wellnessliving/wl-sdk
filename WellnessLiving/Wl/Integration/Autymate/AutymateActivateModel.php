@@ -12,7 +12,7 @@ class AutymateActivateModel extends WlModelAbstract
   /**
    * The mode of the request.
    *
-   * One of {@link \WellnessLiving\Wl\Integration\Autymate\AutymateAccessModeSid} constants.
+   * One of the {@link \WellnessLiving\Wl\Integration\Autymate\AutymateAccessModeSid} constants.
    *
    * @get get
    * @var int
@@ -30,7 +30,7 @@ class AutymateActivateModel extends WlModelAbstract
   public $id_status = 0;
 
   /**
-   * Key of the business.
+   * The key of the business.
    *
    * @get get
    * @var string
@@ -46,7 +46,7 @@ class AutymateActivateModel extends WlModelAbstract
   public $s_guid = '';
 
   /**
-   * User key.
+   * The user key.
    *
    * @get get
    * @var string
