@@ -77,6 +77,7 @@ class RegisterModel extends WlModelAbstract
   /**
    * The confirm password field (its contents should match s_password).
    *
+   * @deprecated Discontinued.
    * @post post
    * @var string
    */
