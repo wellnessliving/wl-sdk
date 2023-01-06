@@ -32,7 +32,7 @@ class ListModel extends WlModelAbstract
   /**
    * The business ID number used internally by WellnessLiving.
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @get get
    * @var string|null

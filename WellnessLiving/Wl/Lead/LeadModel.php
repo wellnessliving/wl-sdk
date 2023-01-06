@@ -75,14 +75,16 @@ class LeadModel extends WlModelAbstract
 
   /**
    * The skin configuration:
-   * <dl><dt>array <var>a_style</var></dt><dd>The general style settings.</dd>
-   * <dt>array <var>background</var></dt><dd>The background settings.</dd>
-   * <dt>array <var>field-font</var></dt><dd>The font settings.</dd>
-   * <dt>array <var>header-text</var></dt><dd>The header settings.</dd>
-   * <dt>array <var>info-show</var></dt><dd>The information settings.</dd>
-   * <dt>array <var>submit-background</var></dt><dd>The settings for the submit button background.</dd>
-   * <dt>array <var>submit-font</var></dt><dd>The settings for the submit button font.</dd>
-   * <dt>array <var>submit-text</var></dt><dd>The settings for the submit button text.</dd></dl>
+   * <dl>
+   *   <dt>array <var>a_style</var></dt><dd>The general style settings.</dd>
+   *   <dt>array <var>background</var></dt><dd>The background settings.</dd>
+   *   <dt>array <var>field-font</var></dt><dd>The font settings.</dd>
+   *   <dt>array <var>header-text</var></dt><dd>The header settings.</dd>
+   *   <dt>array <var>info-show</var></dt><dd>The information settings.</dd>
+   *   <dt>array <var>submit-background</var></dt><dd>The settings for the submit button background.</dd>
+   *   <dt>array <var>submit-font</var></dt><dd>The settings for the submit button font.</dd>
+   *   <dt>array <var>submit-text</var></dt><dd>The settings for the submit button text.</dd>
+   * </dl>
    *
    * @get result
    * @var array

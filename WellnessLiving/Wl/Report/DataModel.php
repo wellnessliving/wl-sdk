@@ -39,13 +39,13 @@ class DataModel extends WlModelAbstract
    * Report ID. One of the {@link \WellnessLiving\Wl\Report\WlReportSid} contants. The following reports are currently
    * available:
    * <table>
-   * <tr><td>ID Name</td><td>ID Number</td><td>Name and Description</td></tr>
-   * <tr><td>LOGIN_LIST</td><td>22</td><td>All Clients Report (Reports tab, features date search)</td></tr>
-   * <tr><td>LOGIN_LIST_ALL</td><td>33</td><td>All Clients Report (Clients tab) Batch Report</td></tr>
-   * <tr><td>PAY_TRANSACTION_BATCH</td><td>77</td><td>Batch Report</td></tr>
-   * <tr><td>PURCHASE_ITEM_LIST_USER</td><td>118</td><td>Sales per Client</td></tr>
-   * <tr><td>PURCHASE_ITEM_ACCRUAL_CASH</td><td>123</td><td>All Sales Report</td></tr>
-   * <tr><td>PURCHASE_ITEM_ACCRUAL_SUMMARY</td><td>133</td><td>Sales Summary</td></tr>
+   *   <tr><td>ID Name</td><td>ID Number</td><td>Name and Description</td></tr>
+   *   <tr><td>LOGIN_LIST</td><td>22</td><td>All Clients Report (Reports tab, features date search)</td></tr>
+   *   <tr><td>LOGIN_LIST_ALL</td><td>33</td><td>All Clients Report (Clients tab) Batch Report</td></tr>
+   *   <tr><td>PAY_TRANSACTION_BATCH</td><td>77</td><td>Batch Report</td></tr>
+   *   <tr><td>PURCHASE_ITEM_LIST_USER</td><td>118</td><td>Sales per Client</td></tr>
+   *   <tr><td>PURCHASE_ITEM_ACCRUAL_CASH</td><td>123</td><td>All Sales Report</td></tr>
+   *   <tr><td>PURCHASE_ITEM_ACCRUAL_SUMMARY</td><td>133</td><td>Sales Summary</td></tr>
    * </table>
    *
    * @get get

@@ -17,7 +17,7 @@ class ComboboxModel extends WlModelAbstract
    *   <dt>string <var>s_value</var></dt>
    *   <dd>The human-readable name of the city including state/province and country.</dd>
    *   <dt>string <var>s_key</var></dt>
-   *   <dd>The <vat>k_city</var> value for the city.</dd>
+   *   <dd>The <var>k_city</var> value for the city.</dd>
    * </dl>
    *
    * @get result

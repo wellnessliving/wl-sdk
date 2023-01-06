@@ -27,7 +27,7 @@ class FinishModel extends WlModelAbstract
   public $a_answer = [];
 
   /**
-   * Booked appointments.
+   * The keys of the booked appointments.
    *
    * @post result
    * @var array
@@ -35,7 +35,7 @@ class FinishModel extends WlModelAbstract
   public $a_appointment = [];
 
   /**
-   * IDs of activity of books are made.
+   * The activity keys of the bookings that were made.
    *
    * @post result
    * @var array
@@ -78,9 +78,9 @@ class FinishModel extends WlModelAbstract
   public $a_payment_data = [];
 
   /**
-   * Purchase item IDs from the database.
+   * The purchase item keys.
    *
-   * <tt>null</tt> if not set yet.
+   * It is <tt>null</tt> if not set yet.
    *
    * @post post
    * @var array|null
@@ -90,7 +90,7 @@ class FinishModel extends WlModelAbstract
   /**
    * Data to create new user.
    * Specify if <var>$uid</var> is empty.
-   * Must contain keys:
+   * Must contain the following keys:
    * <dl><dt>string[] <var>a_note</var></dt><dd>List of notes to add to user.</dd>
    * <dt>string <var>text_mail</var></dt><dd>Mail.</dd>
    * <dt>string <var>text_name_first</var></dt><dd>First name.</dd>
@@ -103,7 +103,7 @@ class FinishModel extends WlModelAbstract
   public $a_user = [];
 
   /**
-   * IDs of visits.
+   * The keys of visits.
    *
    * @post result
    * @var array
@@ -111,7 +111,7 @@ class FinishModel extends WlModelAbstract
   public $a_visit = [];
 
   /**
-   * WellnessLiving mode type, one of {@link WlBookModeSid} constants.
+   * The WellnessLiving booking mode type, one of the {@link WlBookModeSid} constants.
    *
    * @post post
    * @var int
@@ -119,7 +119,7 @@ class FinishModel extends WlModelAbstract
   public $id_mode = WlBookModeSid::APP_FRONTEND;
 
   /**
-   * Payment type for the appointment, one of {@link WlAppointmentPaySid} constants.
+   * The Payment type for the appointment, one of the {@link WlAppointmentPaySid} constants.
    *
    * @post get
    * @var string|null
@@ -127,10 +127,10 @@ class FinishModel extends WlModelAbstract
   public $id_pay = WlAppointmentPaySid::NONE;
 
   /**
-   * Appointment ID.
-   * Set to rebook existing appointment.
+   * The appointment key.
+   * This should be set if you are rebooking an existing appointment.
    *
-   * <tt>null</tt> to book new appointment.
+   * Otherwise use <tt>null</tt> to book a new appointment.
    *
    * @post get
    * @var string|null
@@ -138,9 +138,9 @@ class FinishModel extends WlModelAbstract
   public $k_appointment = null;
 
   /**
-   * Business ID.
+   * The business key.
    *
-   * <tt>null</tt> if not set yet.
+   * It is <tt>null</tt> if not set yet.
    *
    * @post get
    * @var string|null
@@ -148,7 +148,7 @@ class FinishModel extends WlModelAbstract
   public $k_business = null;
 
   /**
-   * Location ID.
+   * The location key.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -158,7 +158,7 @@ class FinishModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * A sun paid for a deposit.
+   * The sum paid for a deposit.
    *
    * @post post
    * @var string
@@ -166,9 +166,9 @@ class FinishModel extends WlModelAbstract
   public $m_pay = '';
 
   /**
-   * User ID.
+   * The user key.
    *
-   * <tt>null</tt> if not set yet.
+   * It is <tt>null</tt> if not set yet.
    *
    * @get get
    * @post get
