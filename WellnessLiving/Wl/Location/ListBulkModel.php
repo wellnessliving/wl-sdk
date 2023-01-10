@@ -108,6 +108,14 @@ class ListBulkModel extends WlModelAbstract
    * @var string
    */
   public $s_business = '';
+
+  /**
+   * Bulk of locations. Location primary keys serialized with JSON.
+   *
+   * @get get
+   * @var string
+   */
+  public $s_location = '';
 }
 
 ?>
