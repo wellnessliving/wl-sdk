@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Integration\Autymate;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Checks or changes the status of Autymate enrollments.
+ * An endpoint that checks or changes the status of Autymate enrollments.
  */
 class AutymateActivateModel extends WlModelAbstract
 {
@@ -20,7 +20,7 @@ class AutymateActivateModel extends WlModelAbstract
   public $id_mode = AutymateAccessModeSid::ENROLL;
 
   /**
-   * The new status of the enrollment. If 0 then return the current status.
+   * The new status of the enrollment. If 0, the current status is returned.
    *
    * One of {@link \WellnessLiving\Wl\Integration\Autymate\AutymateStatusSid} constants.
    *
@@ -38,7 +38,7 @@ class AutymateActivateModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The randomly generated 32 character string used to authenticate Autymate requests for the business
+   * The randomly generated 32 character string used to authenticate Autymate requests for the business.
    *
    * @get get
    * @var string
