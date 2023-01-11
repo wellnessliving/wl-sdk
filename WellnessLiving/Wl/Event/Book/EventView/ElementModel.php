@@ -69,6 +69,16 @@ class ElementModel extends WlModelAbstract
   public $a_class_logo = null;
 
   /**
+   * The list of tab keys for the class.
+   *
+   * `null` if not loaded yet.
+   *
+   * @get result
+   * @var array|null
+   */
+  public $a_class_tab = null;
+
+  /**
    * Displays information for a bulk of events.
    *
    * Received only if {@link ElementModel::$s_event} has been specified. In this case, other fields aren't receivers.
