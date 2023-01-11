@@ -80,7 +80,7 @@ class FinishModel extends WlModelAbstract
   /**
    * The purchase item keys.
    *
-   * It is <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @post post
    * @var array|null
@@ -130,7 +130,7 @@ class FinishModel extends WlModelAbstract
    * The appointment key.
    * This should be set if you are rebooking an existing appointment.
    *
-   * Otherwise use <tt>null</tt> to book a new appointment.
+   * Otherwise use `null` to book a new appointment.
    *
    * @post get
    * @var string|null
@@ -140,7 +140,7 @@ class FinishModel extends WlModelAbstract
   /**
    * The business key.
    *
-   * It is <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @post get
    * @var string|null
@@ -150,7 +150,7 @@ class FinishModel extends WlModelAbstract
   /**
    * The location key.
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @post get
    * @var string|null
@@ -168,7 +168,7 @@ class FinishModel extends WlModelAbstract
   /**
    * The user key.
    *
-   * It is <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @get get
    * @post get

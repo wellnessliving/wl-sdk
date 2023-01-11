@@ -54,9 +54,9 @@ class EnterModel extends WlModelAbstract
    *
    * The accepted values are as follows:
    * <ul>
-   *   <li><tt>''</tt> Empty line (default value) if you do not want to remember anything.</li>
-   *   <li><tt>'login'</tt> Remember only user login.</li>
-   *   <li><tt>'password'</tt> Remember user login and password.</li>
+   *   <li>`''` Empty line (default value) if you do not want to remember anything.</li>
+   *   <li>`'login'` Remember only user login.</li>
+   *   <li>`'password'` Remember user login and password.</li>
    * </ul>
    *
    * @post post
