@@ -50,6 +50,12 @@ class ServiceList52Model extends WlModelAbstract
    *     </dl>
    *   </dd>
    *   <dt>
+   *     array <var>a_config</var>
+   *   </dt>
+   *   <dd>
+   *     Appointment specific business policies. <tt>null</tt> in case when using business policy.
+   *   </dd>
+   *   <dt>
    *     array <var>a_image</var>
    *   </dt>
    *   <dd>
