@@ -47,6 +47,8 @@ class ElementModel extends WlModelAbstract
    *       <dd>The time of the session in the following format: `[start_time] - [end_time]` in locale timezone.</dd>
    *     </dl>
    *   </dd>
+   *   <dt>array <var>a_config</var></dt>
+   *   <dd>Class specific business policies. <tt>null</tt> in case when using business policy.</dd>
    *   <dt>array <var>a_search_tag</var></dt>
    *   <dd>Tags for quick search.</dd>
    *   <dt>array <var>a_visits_required</var></dt>

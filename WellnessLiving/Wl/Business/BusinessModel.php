@@ -10,6 +10,16 @@ use WellnessLiving\WlModelAbstract;
 class BusinessModel extends WlModelAbstract
 {
   /**
+   * Business category ID of the business.
+   *
+   * Constant from {@link BusinessCategorySid}.
+   *
+   * @get result
+   * @var int
+   */
+  public $id_category;
+
+  /**
    * The business locale. One of {@link \WellnessLiving\Core\Locale\LocaleSid} constants.
    *
    * @post post
