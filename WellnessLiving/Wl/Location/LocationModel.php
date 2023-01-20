@@ -5,15 +5,15 @@ namespace WellnessLiving\Wl\Location;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * This API can create a new location in the business or edit specified location.
- * Access for this actions has logged user with specified permissions or guest during process of registration a new
- * business (see {@link \WellnessLiving\Wl\Business\BusinessModel}).
+ * An endpoint that creates a new location in the business or edits a specified location.
+ * Access to this endpoint is logged with specified permissions. It can also be accessed by guests during the
+ * registration process for new businesses (see {@link \WellnessLiving\Wl\Business\BusinessModel}).
  */
 class LocationModel extends WlModelAbstract
 {
   /**
-   * Key of the business.
-   * Field is required.
+   * The key of the business.
+   * This field is required.
    *
    * @post post
    * @var string
@@ -21,8 +21,8 @@ class LocationModel extends WlModelAbstract
   public $k_business;
 
   /**
-   * Key of the city.
-   * Field is required for creating a new location.
+   * The key of the city.
+   * This field is required for creating a new location.
    *
    * @post post
    * @var string|null
@@ -30,8 +30,8 @@ class LocationModel extends WlModelAbstract
   public $k_city;
 
   /**
-   * Key of the location.
-   * <tt>null</tt> if need to create a new location.
+   * The key of the location.
+   * This will be `null` if it's being used to create a new location.
    *
    * @post post,result
    * @var string|null
@@ -39,8 +39,8 @@ class LocationModel extends WlModelAbstract
   public $k_location;
 
   /**
-   * Key of the timezone.
-   * Field is optionally.
+   * The key of the time zone.
+   * This field is optional.
    *
    * @post post
    * @var string|null
@@ -48,8 +48,8 @@ class LocationModel extends WlModelAbstract
   public $k_timezone;
 
   /**
-   * Address of the location.
-   * Field is required for creating a new location.
+   * The address of the location.
+   * This field is required for creating a new location.
    *
    * @post post
    * @var string|null
@@ -57,7 +57,7 @@ class LocationModel extends WlModelAbstract
   public $text_address;
 
   /**
-   * Mail address.
+   * The mail address.
    *
    * @post post
    * @var string|null
@@ -65,7 +65,7 @@ class LocationModel extends WlModelAbstract
   public $text_email;
 
   /**
-   * Phone number.
+   * The phone number.
    *
    * @post post
    * @var string|null
@@ -73,7 +73,7 @@ class LocationModel extends WlModelAbstract
   public $text_phone;
 
   /**
-   * Postal code.
+   * The postal code.
    *
    * @post post
    * @var string|null
@@ -81,8 +81,8 @@ class LocationModel extends WlModelAbstract
   public $text_postal;
 
   /**
-   * Title of the location.
-   * Field is required for creating a new location.
+   * The title of the location.
+   * This field is required for creating a new location.
    *
    * @post post
    * @var string|null

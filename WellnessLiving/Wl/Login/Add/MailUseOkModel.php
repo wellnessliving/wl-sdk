@@ -5,24 +5,24 @@ namespace WellnessLiving\Wl\Login\Add;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Registers an existing user in the specified Franchisee.
+ * An endpoint that registers an existing user in the specified Enterprise Headquarters account.
  *
- * If the user is already a member of the business, then this endpoint will do nothing. After a profile edit there can
- * be a delay while the data replicates to our caches where you will receive a 'profile-field-empty' status code. This
- * delay is less than 20 seconds in most cases.
+ * This endpoint isn't applicable for users who are already members of the business. After a profile is edited, there can
+ * be a delay while the data replicates to system caches. As a result, you may see a 'profile-field-empty' status code. In most
+ * cases, this delay is less than 20 seconds.
  *
- * If your business uses Franchise Cloud, there is a restriction where a client can only be a member in one Franchisee,
- * they will be a traveller in all other Franchisees.
+ * For Enterprise Cloud in WellnessLiving, clients can only be members in one Enterprise Location.
+ * In all other Enterprise Locations, they'll be treated as travelers in the system.
  */
 class MailUseOkModel extends WlModelAbstract
 {
   /**
-   * The list of fields missing information.
+   * The list of fields with missing information.
    * Each element is an array containing the following data:<dl>
    *   <dt>string <var>html_message</var></dt>
    *   <dd>The error message.</dd>
    *   <dt>string <var>s_field</var></dt>
-   *   <dd>The name of the field which is missing information.
+   *   <dd>The name of the field missing information.
    *     Given in the format 'k_field.name'.
    *   </dd>
    * </dl>
@@ -33,7 +33,7 @@ class MailUseOkModel extends WlModelAbstract
   public $a_error = [];
 
   /**
-   * This value is `true` if this is a lead, otherwise this value is `false` .
+   * This value is `true` if this is a lead. `false` if otherwise.
    *
    * @post post
    * @var string
@@ -49,7 +49,7 @@ class MailUseOkModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * The lead widget skin key, this is used only if a lead was added.
+   * The Lead Capture Widget skin key. This is used only if a lead was added.
    *
    * @post post
    * @var string
