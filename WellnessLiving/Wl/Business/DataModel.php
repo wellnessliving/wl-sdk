@@ -20,6 +20,16 @@ class DataModel extends WlModelAbstract
   public $a_tip_predefine = null;
 
   /**
+   * Business category ID of the business.
+   *
+   * Constant from {@link BusinessCategorySid}.
+   *
+   * @get result
+   * @var int
+   */
+  public $id_category;
+
+  /**
    * The Locale ID, used to search geo items.
    *
    * @get result
