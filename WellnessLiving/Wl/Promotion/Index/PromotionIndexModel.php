@@ -97,6 +97,13 @@ class PromotionIndexModel extends WlModelAbstract
    *     See more information here: {@link \RsProgramSid}.
    *   </dd>
    *   <dt>
+   *     int <var>id_program_type</var>
+   *   </dt>
+   *   <dd>
+   *     Type of the purchase option.
+   *     See more information here: {@link \RsProgramTypeSid}.
+   *   </dd>
+   *   <dt>
    *     bool <var>is_direct_buy_only</var>
    *   </dt>
    *   <dd>
