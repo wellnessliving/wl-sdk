@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Login\Member;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about members of businesses.
+ * An endpoint that displays information about members of businesses.
  */
 class MemberModel extends WlModelAbstract
 {
@@ -16,7 +16,7 @@ class MemberModel extends WlModelAbstract
    *     bool <var>is_franchisee</var>
    *   </dt>
    *   <dd>
-   *     If `true`, then the business is a franchisee. Otherwise, it is `false`.
+   *     If `true`, then the business is a franchisee. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     string <var>k_business</var>
@@ -28,7 +28,7 @@ class MemberModel extends WlModelAbstract
    *     string <var>k_business_franchisor</var>
    *   </dt>
    *   <dd>
-   *     The business key of the franchise’s corporate account (if applicable).
+   *     The business key of the Enterprise Headquarters account (if applicable).
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>

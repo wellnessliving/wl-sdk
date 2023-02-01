@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Login\Attendance;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves information about the clients attending a class, appointment, or event session.
+ * An endpoint that retrieves information about clients attending a class, appointment, or event session.
  */
 class AttendanceListModel extends WlModelAbstract
 {
   /**
-   * The list of clients in the active attendance list who have not confirmed or cancelled.
+   * The list of clients in the active attendance list who haven't confirmed or canceled.
    * Each element is an array with the following fields:
    * <dl>
    *   <dt>bool <var>can_profile</var></dt>
@@ -22,7 +22,7 @@ class AttendanceListModel extends WlModelAbstract
    *   <dt>string <var>html_tooltip_book_by</var></dt>
    *   <dd>Who, when, and where this visit was booked.</dd>
    *   <dt>string <var>id_visit</var></dt>
-   *   <dd>The visit status, one of the \Wl\Visit\VisitSid constants.</dd>
+   *   <dd>The visit status. One of the \Wl\Visit\VisitSid constants.</dd>
    *   <dt>string <var>k_visit</var></dt>
    *   <dd>The key of the visit.</dd>
    *   <dt>array <var>[o_purchase_item]</var></dt>
@@ -55,7 +55,7 @@ class AttendanceListModel extends WlModelAbstract
   public $a_list_confirm = [];
 
   /**
-   * The list of clients who are on the waiting list.
+   * The list of clients who are on the wait list.
    *
    * @get result
    * @var array
@@ -71,7 +71,7 @@ class AttendanceListModel extends WlModelAbstract
   public $dt_date_local = null;
 
   /**
-   * The maximum capacity of this class or event session.
+   * The maximum capacity of the class or event session.
    *
    * @get result
    * @var int
@@ -79,7 +79,7 @@ class AttendanceListModel extends WlModelAbstract
   public $i_capacity = null;
 
   /**
-   * If <tt>true</tt> then return the purchase used to pay for session.
+   * If <tt>true</tt>, then return the purchase used to pay for session.
    * Otherwise <tt>false</tt>, do not return any purchase information.
    *
    * @get get
