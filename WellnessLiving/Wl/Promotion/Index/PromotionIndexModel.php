@@ -75,6 +75,18 @@ class PromotionIndexModel extends WlModelAbstract
    *     `0` if purchase option has unlimited visits.
    *   </dd>
    *   <dt>
+   *     int <var>i_limit_duration</var>
+   *   </dt>
+   *   <dd>
+   *     Maximum number of minutes or hours depends on <var>id_limit_duration</var> that current promotion can be used.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_limit_duration</var>
+   *   </dt>
+   *   <dd>
+   *     Type of <var>i_limit_duration</var> {@link \ADurationSid::MINUTE} or {@link \ADurationSid::HOUR}.
+   *   </dd>
+   *   <dt>
    *     int <var>id_duration</var>
    *   </dt>
    *   <dd>
