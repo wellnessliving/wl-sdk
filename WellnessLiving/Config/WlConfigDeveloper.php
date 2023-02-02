@@ -17,12 +17,18 @@ abstract class WlConfigDeveloper extends WlConfigAbstract
   /**
    * @inheritDoc
    */
-  const COOKIE_PERSISTENT='sp';
+  protected static $COOKIE_PERSISTENT=[
+    WlRegionSid::AP_SOUTHEAST_2 => 'dp',
+    WlRegionSid::US_EAST_1 => 'sp',
+  ];
 
   /**
    * @inheritDoc
    */
-  const COOKIE_TRANSIENT='st';
+  protected static $COOKIE_TRANSIENT=[
+    WlRegionSid::AP_SOUTHEAST_2 => 'dt',
+    WlRegionSid::US_EAST_1 => 'st',
+  ];
 
   /**
    * @inheritDoc
