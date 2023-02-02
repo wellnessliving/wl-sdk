@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Login\Search\StaffApp;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Gets a list of clients whose names match a search string.
+ * An endpoint that gets a list of clients whose names match a search string.
  */
 class ListModel extends WlModelAbstract
 {
@@ -13,7 +13,7 @@ class ListModel extends WlModelAbstract
    * A list of users matching the search string.
    *
    * The list depends on the search query.
-   * If the query is empty, the recent users will be loaded.
+   * If the query is empty, recent users will be returned.
    *
    * Each element is an array with the following keys:
    * <dl>
@@ -29,7 +29,7 @@ class ListModel extends WlModelAbstract
   public $a_list = [];
 
   /**
-   * If `true`, then this user can add users via the Add Client page.
+   * If `true`, then this user can add other users via the Add Client page.
    *
    * @get result
    * @var bool
@@ -45,7 +45,7 @@ class ListModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * The search string, clients can be matched by name or email.
+   * The search string. Clients can be matched by name or email.
    *
    * @get get
    * @var string

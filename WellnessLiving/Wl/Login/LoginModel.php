@@ -6,11 +6,10 @@ use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Returns the profile information for a specific user.
+ * An endpoint that returns the profile information for a specific user.
  *
- * Can return public information about a staff member.
- * Can return user`s image.
- * To obtain the user's full information you will need access to the requested user.
+ * This endpoint can be used to return public information about a staff member or a user`s image. To obtain the
+ * user's full information, you'll need access to the requested user.
  */
 class LoginModel extends WlModelAbstract
 {
@@ -24,7 +23,7 @@ class LoginModel extends WlModelAbstract
 
   /**
    * The key of the business. Users can be in multiple businesses.
-   * This can be left as null to retrieve system wide information.
+   * This can be left as `null` to retrieve system-wide information.
    *
    * @get get
    * @var string
@@ -56,7 +55,7 @@ class LoginModel extends WlModelAbstract
   public $s_last_name = '';
 
   /**
-   * Client`s mail.
+   * The client`s mailing address.
    *
    * @get result
    * @var string
@@ -64,8 +63,8 @@ class LoginModel extends WlModelAbstract
   public $text_mail_client;
 
   /**
-   * Staff`s mail.
-   * Will be set if user is staff ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   * The staff member's mailing address.
+   * This will be set if the user is a staff member ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
    *
    * @get result
    * @var string
@@ -73,8 +72,8 @@ class LoginModel extends WlModelAbstract
   public $text_mail_staff;
 
   /**
-   * Staff`s first name.
-   * Will be set if user is staff ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   * The staff member's first name.
+   * This will be set if the user is a staff member ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
    *
    * @get result
    * @var string
@@ -82,8 +81,8 @@ class LoginModel extends WlModelAbstract
   public $text_name_first_staff;
 
   /**
-   * User login is returned in a case neither first name, nor last name specified.
-   * An empty string is returned in a case neither first name, nor last name specified, nor login.
+   * The user's login name. This is returned in cases when neither the first name nor the last name have been specified.
+   * An empty string is returned in cases where neither the first name, last name, nor login have been specified.
    *
    * @get result
    * @var string
@@ -91,10 +90,10 @@ class LoginModel extends WlModelAbstract
   public $text_name_full_client;
 
   /**
-   * Full staff name.
-   * User login is returned in a case neither first name, nor last name specified.
-   * An empty string is returned in a case neither first name, nor last name specified, nor login.
-   * Will be set if user is staff ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   * The staff member's full name.
+   * The user login is returned in cases where neither the first name nor the last name have been specified.
+   * An empty string is returned in cases where neither the first name, last name, nor login have been specified.
+   * This will be set if the user is a staff member ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
    *
    * @get result
    * @var string
@@ -102,8 +101,8 @@ class LoginModel extends WlModelAbstract
   public $text_name_full_staff;
 
   /**
-   * Staff`s last name.
-   * Will be set if user is staff ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   * The staff member's last name.
+   * This will be set if the user is a staff member ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
    *
    * @get result
    * @var string
@@ -113,7 +112,7 @@ class LoginModel extends WlModelAbstract
   /**
    * The ID of the user.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null

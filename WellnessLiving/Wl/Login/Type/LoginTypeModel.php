@@ -5,10 +5,10 @@ namespace WellnessLiving\Wl\Login\Type;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves information about login types.
+ * An endpoint that retrieves information about login types.
  *
  * A login type is basically a client type.
- * This information can be used to filter clients by their client type in the All Clients report.
+ * This information can be used to filter clients by their client type in the All Clients Report.
  */
 class LoginTypeModel extends WlModelAbstract
 {
@@ -17,9 +17,9 @@ class LoginTypeModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>bool <var>is_member</var></dt>
-   *   <dd>It will be <tt>1</tt> if the record contains a type of member.
-   *     It will be <tt>0<tt> if record contains some other type of client.
-   *     It will be <tt>null</tt> if the record contains some type of prospect.</dd>
+   *   <dd>It will be `1` if the record contains a type of member.
+   *     It will be `0` if record contains some other type of client.
+   *     It will be `null` if the record contains some type of prospect.</dd>
    *   <dt>string <var>k_login_type</var></dt>
    *   <dd>The login type key.</dd>
    *   <dt>string <var>s_title</var></dt>

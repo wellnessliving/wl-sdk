@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Appointment\Book\Schedule;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves a list of information about available appointment booking schedule.
+ * An endpoint that retrieves a list of information about the booking schedule for available appointments.
  */
 class DayTimeModel extends WlModelAbstract
 {
   /**
    * An array with a schedule of available appointment booking times.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var array
@@ -20,9 +20,9 @@ class DayTimeModel extends WlModelAbstract
   public $a_time = null;
 
   /**
-   * The date to show available appointment booking schedule.
+   * The date to show the available appointment booking schedule for.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -32,7 +32,7 @@ class DayTimeModel extends WlModelAbstract
   /**
    * The duration of the asset booking.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var int|null
@@ -42,7 +42,7 @@ class DayTimeModel extends WlModelAbstract
   /**
    * An index of the selected asset.
    *
-   * <tt>null</tt> if not set yet. Or if asset is not on layout.
+   * This will be `null` if not set yet or if the asset isn't on the layout.
    *
    * @get get
    * @var int|null
@@ -52,7 +52,7 @@ class DayTimeModel extends WlModelAbstract
   /**
    * The staff member's gender.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var int|null
@@ -60,8 +60,8 @@ class DayTimeModel extends WlModelAbstract
   public $id_gender_staff = null;
 
   /**
-   * <tt>1</tt> - return service categories which have no staff members able to conduct them.
-   * <tt>0</tt> - return only service categories which have staff members able to conduct them.
+   * `1` - return service categories that have no staff members able to conduct them.
+   * `0` - return only service categories that have staff members able to conduct them.
    *
    * @get get
    * @var bool
@@ -69,9 +69,9 @@ class DayTimeModel extends WlModelAbstract
   public $is_unavailable = 0;
 
   /**
-   * The location ID to show available appointment booking schedule.
+   * The location ID used for showing the available appointment booking schedule.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -81,7 +81,7 @@ class DayTimeModel extends WlModelAbstract
   /**
    * The resource ID to show what days are available for booking.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -89,9 +89,9 @@ class DayTimeModel extends WlModelAbstract
   public $k_resource = null;
 
   /**
-   * The service ID to show available appointment booking schedule.
+   * The service ID used for showing the available appointment booking schedule.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -99,9 +99,9 @@ class DayTimeModel extends WlModelAbstract
   public $k_service = null;
 
   /**
-   * The staff ID to show available appointment booking schedule.
+   * The staff member ID used for showing the available appointment booking schedule.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -119,7 +119,7 @@ class DayTimeModel extends WlModelAbstract
   /**
    * The user ID.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
