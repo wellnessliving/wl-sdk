@@ -58,12 +58,14 @@ abstract class WlConfigAbstract
    *
    * The value `null` is not valid. This property must be overridden in inherited classes.
    *
-   * The correct value for the property is an array.
-   * The key of array is data center region id. One of {@link \WellnessLiving\WlRegionSid} constant.
-   * The value is name of a persistent cookie for that region.
+   * The correct value for the property is an array of strings.
+   * The keys of the array are the region IDs of the corresponding data centers. One of {@link \WellnessLiving\WlRegionSid} constant.
+   * The values are the names of transient cookies for these regions.
+   * E.g. ['us-east-1' => 'sp', 'ap-southeast-2' => 'dp'].
    *
    * @see \WellnessLiving\Config\WlConfigProduction
    * @see \WellnessLiving\Config\WlConfigDeveloper
+   * @var string[]|null
    */
   protected static $COOKIE_PERSISTENT=null;
 
@@ -72,12 +74,14 @@ abstract class WlConfigAbstract
    *
    * The value `null` is not valid. This property must be overridden in inherited classes.
    *
-   * The correct value for the property is an array.
-   * The key of array is data center region id. One of {@link \WellnessLiving\WlRegionSid} constant.
-   * The value is name of a transient cookie for that region.
+   * The correct value for the property is an array of strings.
+   * The keys of the array are the region IDs of the corresponding data centers. One of {@link \WellnessLiving\WlRegionSid} constant.
+   * The values are the names of transient cookies for these regions.
+   * E.g. ['us-east-1' => 'st', 'ap-southeast-2' => 'dt'].
    *
    * @see \WellnessLiving\Config\WlConfigProduction
    * @see \WellnessLiving\Config\WlConfigDeveloper
+   * @var string[]|null
    */
   protected static $COOKIE_TRANSIENT=null;
 
@@ -86,9 +90,11 @@ abstract class WlConfigAbstract
    *
    * The value `null` is not valid. This property must be overridden in inherited classes.
    *
-   * The correct value for the property is an array.
-   * The key of array is data center region id. One of {@link \WellnessLiving\WlRegionSid} constant.
-   * The value is URL of the API endpoint for region.
+   * The correct value for the property is an array of strings.
+   * The keys of the array are the region IDs of the corresponding data centers. One of {@link \WellnessLiving\WlRegionSid} constant.
+   * The values are the URLs of the API endpoints for these regions.
+   * E.g. ['us-east-1' => 'https://api.wellnessliving.com', 'ap-southeast-2' => 'https://api.wellnessliving.com.au'].
+   *
    *
    * @var string[]|null
    * @see \WellnessLiving\Config\WlConfigProduction
@@ -99,11 +105,11 @@ abstract class WlConfigAbstract
   /**
    * List of rules, which is used to convert error codes to HTTP codes.
    *
-   * Keys are names of class model or empty string.
-   * * Empty string in a case if this is default rule.
-   * * Class name in a case if there are specific rules for particular class. Class specific rules will override default rules.
+   * Keys are names of class models or are empty strings.
+   * * Empty string in case if this is the default rule.
+   * * Class name in case if there are specific rules for particular class. Class specific rules will override default rules.
    *
-   * Value is a string with list of rules separated by comma. Each rule has the following format: <ul>
+   * Value is a string with a list of rules separated by commas. Each rule has the following format: <ul>
    *   <li>
    *     <tt>default</tt>
    *     Special rule with already predefined list of rules.
@@ -230,7 +236,7 @@ abstract class WlConfigAbstract
     ]);
     WlAssertException::assertTrue(isset(static::$COOKIE_PERSISTENT[$id_region]),[
       'text_class' => static::class,
-      'text_message' => 'The COOKIE_PERSISTENT property does not contain name of a cookie for the requested datacenter region ID. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
+      'text_message' => 'The COOKIE_PERSISTENT property does not contain the name of the cookie for the requested datacenter region ID. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
     ]);
 
     WlAssertException::assertTrue(is_array(static::$REGION_URL),[
