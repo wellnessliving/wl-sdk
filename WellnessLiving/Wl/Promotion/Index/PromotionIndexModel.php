@@ -75,6 +75,18 @@ class PromotionIndexModel extends WlModelAbstract
    *     `0` if purchase option has unlimited visits.
    *   </dd>
    *   <dt>
+   *     int <var>i_limit_duration</var>
+   *   </dt>
+   *   <dd>
+   *     Maximum number of minutes or hours depends on <var>id_limit_duration</var> that current promotion can be used.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_limit_duration</var>
+   *   </dt>
+   *   <dd>
+   *     Type of <var>i_limit_duration</var> {@link \ADurationSid::MINUTE} or {@link \ADurationSid::HOUR}.
+   *   </dd>
+   *   <dt>
    *     int <var>id_duration</var>
    *   </dt>
    *   <dd>
@@ -93,14 +105,23 @@ class PromotionIndexModel extends WlModelAbstract
    *     int <var>id_program</var>
    *   </dt>
    *   <dd>
-   *     Type of the purchase options.
+   *     Type of the purchase options. The <var>id_program</var> relates to only one <var>id_program_type</var> and one
+   *     <var>id_program_category</var>.
    *     See more information here: {@link \RsProgramSid}.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_program_category</var>
+   *   </dt>
+   *   <dd>
+   *     Category of the program for promotions. The <var>id_program_category</var> relates to more than one
+   *     <var>id_program</var>.
+   *     See more information here: {@link \RsProgramCategorySid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program_type</var>
    *   </dt>
    *   <dd>
-   *     Type of the purchase option.
+   *     ID of promotion program type. The <var>id_program_type</var> relates to more than one <var>id_program</var>.
    *     See more information here: {@link \RsProgramTypeSid}.
    *   </dd>
    *   <dt>
