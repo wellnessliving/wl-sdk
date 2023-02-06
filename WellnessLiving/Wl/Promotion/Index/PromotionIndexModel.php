@@ -54,6 +54,12 @@ class PromotionIndexModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    *   <dt>
+   *     string <var>a_visit_limit</var>
+   *   </dt>
+   *   <dd>
+   *     Attending restrictions, if available. Empty array if unavailable.
+   *   </dd>
+   *   <dt>
    *     string <var>dl_expire</var>
    *   </dt>
    *   <dd>
