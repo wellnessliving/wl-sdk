@@ -103,6 +103,16 @@ class ElementModel extends WlModelAbstract
    *     A list of days of the week when the session has occurred.
    *     Keys - a number corresponding to a day of the week (0 - Sunday, 6 - Saturday). The value is always <tt>true</tt>.
    *   </dd>
+   *   <dt>array <var>a_repeat</var></dt>
+   *   <dd>
+   *     Repeat periodicity instructions.
+   *     <dl>
+   *       <dt>int <var>i_repeat</var></dt>
+   *       <dd>Count of the periods which specified in <var>id_repeat</var>.</dd>
+   *       <dt>int <var>id_repeat</var></dt>
+   *       <dd>Measuring unit of <var>i_repeat</var> (week, month, year).</dd>
+   *     </dl>
+   *   </dl>
    *   <dt>
    *     array[] <var>a_staff</var>
    *   </dt>
