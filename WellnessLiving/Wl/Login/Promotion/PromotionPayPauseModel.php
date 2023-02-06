@@ -5,25 +5,25 @@ namespace WellnessLiving\Wl\Login\Promotion;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Manages or retrieves information about holds on purchase options.
+ * An endpoint that manages or retrieves information about holds on Purchase Options.
  *
  * The DELETE method can remove a hold.
- * The GET method only returns information about holds that are currently active.
+ * The GET method only returns information about active holds.
  * The POST method can create or edit a hold.
  * The PUT method can edit a hold.
  */
 class PromotionPayPauseModel extends WlModelAbstract
 {
   /**
-   * End date value indicating indefinite pause period.
+   * The end date value indicating an indefinite pause period.
    */
   const DATE_END_INDEFINITE = '0000-00-00';
 
   /**
-   * The end date of the current hold, in the local timezone. Can be set to a special value
+   * The end date of the current hold, in the local time zone. This can be set to a special value
    * {@link PromotionPayPauseModel::DATE_END_INDEFINITE} to make the period indefinite until further action.
    *
-   * <tt>null</tt> if it shouldn't be updated.
+   * `null` if it shouldn't be updated.
    *
    * @get get,result
    * @post get
@@ -33,9 +33,9 @@ class PromotionPayPauseModel extends WlModelAbstract
   public $dt_end = null;
 
   /**
-   * The start date of the current hold, in the local timezone.
+   * The start date of the current hold, in the local time zone.
    *
-   * <tt>null</tt> if it shouldn't be updated.
+   * `null` if it shouldn't be updated.
    *
    * @get get,result
    * @post get
@@ -45,12 +45,12 @@ class PromotionPayPauseModel extends WlModelAbstract
   public $dt_start = null;
 
   /**
-   * The purchase option key. If this key is used it will create a new hold the endpoint will return a ‘start-cross’
+   * The Purchase Option key. If this key is used, a new hold will be created. The endpoint will return a ‘start-cross’
    * status code if a hold is already in place.
    *
    * Ignored if {@link $k_promotion_pay_pause} is provided.
    *
-   * <tt>null</tt> if not initialized.
+   * `null` if not yet initialized.
    *
    * @delete get
    * @get get,result
@@ -61,9 +61,9 @@ class PromotionPayPauseModel extends WlModelAbstract
 
   /**
    * The promotion payment hold key. If this key is used, it will edit an existing hold.
-   * This key will be empty if there is no active hold in place or if a scheduled hold is not in effect.
+   * This key will be empty if there's no active hold in place or if a scheduled hold isn't in effect.
    *
-   * <tt>null</tt> if not initialized or request is based on {@link $k_login_promotion}.
+   * `null` if not yet initialized or if the request is based on {@link $k_login_promotion}.
    *
    * @delete get
    * @get get,result
@@ -75,9 +75,9 @@ class PromotionPayPauseModel extends WlModelAbstract
 
   /**
    * Additional notes for the promotion payment pause period.
-   * Leave this field as null if the note should not be updated.
+   * Leave this field as `null` if the note shouldn't be updated.
    *
-   * <tt>null</tt> if it shouldn't be updated.
+   * `null` if it shouldn't be updated.
    *
    * @get result
    * @post post

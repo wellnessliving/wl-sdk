@@ -1,17 +1,16 @@
-<?php
+<?php 
 
-namespace WellnessLiving\Wl\Promotion\Index;
+namespace WellnessLiving\Wl\Promotion;
 
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Gets a list of introductory promotion offers of a specified type available at a given location.
+ * API point to get promotion by the specified business and promotion keys.
  */
-class PromotionIndexModel extends WlModelAbstract
+class PromotionModel extends WlModelAbstract
 {
   /**
-   * A list of introductory promotion offers available at the location.
-   * Every element is an array with the following keys:
+   * Promotion information.
    * <dl>
    *   <dt>
    *     array <var>a_access</var>
@@ -20,16 +19,13 @@ class PromotionIndexModel extends WlModelAbstract
    *     Information about services, which can be visited with this pass or membership.
    *     <dl>
    *       <dt>array[] <var>a_class</var></dt>
-   *       <dd>List of available classes. Each element has key k_class, where primary key of the class
-   *         can be found.</dd>
+   *       <dd>List of available classes. Each element has primary key from {@link \RsClassSql} table.</dd>
    *       <dt>array[] <var>a_event</var></dt>
-   *       <dd>List of available events. Each element has key k_class, where primary key of the event
-   *         can be found.</dd>
+   *       <dd>List of available events. Each element has primary key from {@link \RsClassSql} table.</dd>
    *       <dt>array[] <var>a_resource</var></dt>
-   *       <dd>List of available assets. Each element has key k_resource, where primary key of the asset can be found.</dd>
+   *       <dd>List of available assets. Each element has primary key from table {@link \RsResourceSql}.</dd>
    *       <dt>array[] <var>a_service</var></dt>
-   *       <dd>List of available appointment types. Each element has key k_service, where primary key of the
-   *         appointment type can be found.</dd>
+   *       <dd>List of available appointment types. Each element has primary key from {@link \RsServiceSql} table.</dd>
    *       <dt>bool <var>is_class_all</var></dt>
    *       <dd>`true` if any class in the business can be visited with this PO. `false` if only selected classes.
    *         Selected classes can be found in the list of available classes and events.</dd>
@@ -75,18 +71,6 @@ class PromotionIndexModel extends WlModelAbstract
    *     `0` if purchase option has unlimited visits.
    *   </dd>
    *   <dt>
-   *     int <var>i_limit_duration</var>
-   *   </dt>
-   *   <dd>
-   *     Maximum number of minutes or hours depends on <var>id_limit_duration</var> that current promotion can be used.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_limit_duration</var>
-   *   </dt>
-   *   <dd>
-   *     Type of <var>i_limit_duration</var> {@link \ADurationSid::MINUTE} or {@link \ADurationSid::HOUR}.
-   *   </dd>
-   *   <dt>
    *     int <var>id_duration</var>
    *   </dt>
    *   <dd>
@@ -105,32 +89,8 @@ class PromotionIndexModel extends WlModelAbstract
    *     int <var>id_program</var>
    *   </dt>
    *   <dd>
-   *     Type of the purchase options. The <var>id_program</var> relates to only one <var>id_program_type</var> and one
-   *     <var>id_program_category</var>.
+   *     Type of the purchase options.
    *     See more information here: {@link \RsProgramSid}.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_program_category</var>
-   *   </dt>
-   *   <dd>
-   *     Category of the program for promotions. The <var>id_program_category</var> relates to more than one
-   *     <var>id_program</var>.
-   *     See more information here: {@link \RsProgramCategorySid}.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_program_type</var>
-   *   </dt>
-   *   <dd>
-   *     ID of promotion program type. The <var>id_program_type</var> relates to more than one <var>id_program</var>.
-   *     See more information here: {@link \RsProgramTypeSid}.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_direct_buy_only</var>
-   *   </dt>
-   *   <dd>
-   *     `true` if pricing option can be sold only by direct link. This means it should not be shown in online store or
-   *   explorer.
-   *     `false` - otherwise.
    *   </dd>
    *   <dt>
    *     bool <var>is_introductory</var>
@@ -163,12 +123,6 @@ class PromotionIndexModel extends WlModelAbstract
    *     Description.
    *   </dd>
    *   <dt>
-   *     int <var>text_program</var>
-   *   </dt>
-   *   <dd>
-   *     Localised promotion program name corresponding to the value of <var>id_program</var>.
-   *   </dd>
-   *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
@@ -188,22 +142,20 @@ class PromotionIndexModel extends WlModelAbstract
   public $a_promotion;
 
   /**
-   * The program type ID, which will be one of the {@link \RsProgramTypeSid} constants.
-   *
-   * `0` to not filter purchase options with type of the purchase option.
-   *
-   * @get get
-   * @var int
-   */
-  public $id_program_type = 0;
-
-  /**
-   * The location key.
+   * Business primary key in {@link \RsBusinessSql} table.
    *
    * @get get
    * @var string
    */
-  public $k_location = '0';
+  public $k_business = '0';
+
+  /**
+   * Promotion primary key in {@link \RsPromotionSql} table.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_promotion = '0';
 }
 
 ?>

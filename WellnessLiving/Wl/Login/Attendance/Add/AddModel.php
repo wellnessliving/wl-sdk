@@ -5,13 +5,13 @@ namespace WellnessLiving\Wl\Login\Attendance\Add;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Adds a client to the attendance list.
- * Can also be used to get a list of purchase options suitable to pay for the session.
+ * An endpoint that adds a client to an attendance list.
+ * This endpoint can also be used to get a list of Purchase Options suitable to pay for the session in question.
  */
 class AddModel extends WlModelAbstract
 {
   /**
-   * Any of the client’s memberships which are suitable to pay for the session.
+   * Any of the client’s memberships that can be used to pay for the session.
    * Every element is an array with the following keys:
    * <dl>
    *   <dt>string <var>k_login_promotion</var></dt>
@@ -26,8 +26,8 @@ class AddModel extends WlModelAbstract
   public $a_login_promotion = [];
 
   /**
-   * Any user's sessions passes which are suitable to pay for the session.
-   * Every element is an array has the following keys:
+   * Any user's session passes that can be used to pay for the session.
+   * Every element is an array with the following keys:
    * <dl>
    *   <dt>string <var>k_session_pass</var></dt>
    *   <dd>The session pass key, available to pay for the session.</dd>
@@ -41,9 +41,9 @@ class AddModel extends WlModelAbstract
   public $a_session_pass = [];
 
   /**
-   * The start date and time of the class in GMT and in MySQL format.
+   * The start date and time of the class in GMT and MySQL format.
    *
-   * <tt>null</tt> means not set.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @post get
@@ -52,7 +52,7 @@ class AddModel extends WlModelAbstract
   public $dt_date_global = null;
 
   /**
-   * How payment was handled for the session.
+   * Determines how the payment was handled for the session.
    * One of the {@link \WellnessLiving\Wl\Login\Attendance\AddOptionSid} constants.
    *
    * @post post
@@ -61,7 +61,7 @@ class AddModel extends WlModelAbstract
   public $id_add_option = 0;
 
   /**
-   * How the session was booked. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * Determines how the session was booked. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    * We recommend using the `WEB_BACKEND` value.
    *
    * @post post
@@ -78,7 +78,7 @@ class AddModel extends WlModelAbstract
   public $id_visit = 0;
 
   /**
-   * If `true` then the session is free with no ways to pay. If `false`, then the session can be paid for.
+   * If `true`, the session is free with no methods of payment. If `false`, the session can be paid for.
    *
    * @get result
    * @var boolean
@@ -86,8 +86,8 @@ class AddModel extends WlModelAbstract
   public $is_free = false;
 
   /**
-   * If `true`, then the visit was automatically paid for in any available way during the booking.
-   * If `false`, then the visit was not automatically paid for.
+   * If `true`, the visit was automatically paid for in any available way during the booking.
+   * If `false`, the visit wasn't automatically paid for.
    *
    * @post result
    * @var boolean
@@ -97,7 +97,7 @@ class AddModel extends WlModelAbstract
   /**
    * The class period key.
    *
-   * <tt>null</tt> means not set.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @post get
@@ -106,7 +106,7 @@ class AddModel extends WlModelAbstract
   public $k_class_period = null;
 
   /**
-   * Key of user's promotion to be used for booking.
+   * The key of the user's promotion to be used for booking.
    * If empty, use any suitable user's promotion.
    *
    * @post post
@@ -136,7 +136,7 @@ class AddModel extends WlModelAbstract
   /**
    * The price of the session, including any taxes and discounts.
    *
-   * <tt>null</tt> means not loaded yet.
+   * If `null`, the price of the session hasn't been loaded yet.
    *
    * @get result
    * @var string
@@ -144,9 +144,9 @@ class AddModel extends WlModelAbstract
   public $m_price = null;
 
   /**
-   * The user's account balance if they were charged the m_price amount.
+   * The user's account balance if they were charged the {@link m_price} amount.
    *
-   * <tt>null</tt> means not loaded yet.
+   * If `null`, the account balance hasn't been loaded yet.
    *
    * @get result
    * @var string
@@ -163,9 +163,9 @@ class AddModel extends WlModelAbstract
   public $uid_client = '0';
 
   /**
-   * The URL link to the store, to allow for the payment of the visit.
+   * The URL link to the store to allow for the payment of the visit.
    *
-   * This link is for Web only.
+   * This link is for web only.
    *
    * @post result
    * @var string

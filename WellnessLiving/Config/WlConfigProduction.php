@@ -12,12 +12,18 @@ abstract class WlConfigProduction extends WlConfigAbstract
   /**
    * @inheritDoc
    */
-  const COOKIE_PERSISTENT='p';
+  protected static $COOKIE_PERSISTENT=[
+    WlRegionSid::AP_SOUTHEAST_2 => 'ap',
+    WlRegionSid::US_EAST_1 => 'p',
+  ];
 
   /**
    * @inheritDoc
    */
-  const COOKIE_TRANSIENT='t';
+  protected static $COOKIE_TRANSIENT=[
+    WlRegionSid::AP_SOUTHEAST_2 => 'at',
+    WlRegionSid::US_EAST_1 => 't',
+  ];
 
   /**
    * @inheritDoc

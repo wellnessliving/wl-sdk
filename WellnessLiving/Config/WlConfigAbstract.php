@@ -54,31 +54,39 @@ abstract class WlConfigAbstract
   const AUTHORIZE_ID=null;
 
   /**
-   * Name of a persistent cookie.
+   * Names of persistent cookies by regions.
    *
-   * The value `null` is not valid. This constant must be overridden in inherited classes.
+   * The value `null` is not valid. This property must be overridden in inherited classes.
+   *
+   * The correct value for the property is an array.
+   * The key of array is data center region id. One of {@link \WellnessLiving\WlRegionSid} constant.
+   * The value is name of a persistent cookie for that region.
    *
    * @see \WellnessLiving\Config\WlConfigProduction
    * @see \WellnessLiving\Config\WlConfigDeveloper
    */
-  const COOKIE_PERSISTENT=null;
+  protected static $COOKIE_PERSISTENT=null;
 
   /**
    * Name of a transient cookie.
    *
-   * The value `null` is not valid. This constant must be overridden in inherited classes.
+   * The value `null` is not valid. This property must be overridden in inherited classes.
+   *
+   * The correct value for the property is an array.
+   * The key of array is data center region id. One of {@link \WellnessLiving\WlRegionSid} constant.
+   * The value is name of a transient cookie for that region.
    *
    * @see \WellnessLiving\Config\WlConfigProduction
    * @see \WellnessLiving\Config\WlConfigDeveloper
    */
-  const COOKIE_TRANSIENT=null;
+  protected static $COOKIE_TRANSIENT=null;
 
   /**
    * URL of the API endpoint by regions.
    *
-   * The value `null` is not valid. This constant must be overridden in inherited classes.
+   * The value `null` is not valid. This property must be overridden in inherited classes.
    *
-   * The correct value for the constant is an array.
+   * The correct value for the property is an array.
    * The key of array is data center region id. One of {@link \WellnessLiving\WlRegionSid} constant.
    * The value is URL of the API endpoint for region.
    *
@@ -174,7 +182,7 @@ abstract class WlConfigAbstract
    */
   final public function cookiePersistent()
   {
-    return static::COOKIE_PERSISTENT;
+    return static::$COOKIE_PERSISTENT[$this->id_region];
   }
 
   /**
@@ -184,7 +192,7 @@ abstract class WlConfigAbstract
    */
   final public function cookieTransient()
   {
-    return static::COOKIE_TRANSIENT;
+    return static::$COOKIE_TRANSIENT[$this->id_region];
   }
 
   /**
@@ -207,14 +215,22 @@ abstract class WlConfigAbstract
       'text_message' => 'The AUTHORIZE_ID constant is not set. You need to override this constant in your configuration class.'
     ]);
 
-    WlAssertException::assertTrue(is_string(static::COOKIE_TRANSIENT) && strlen(static::COOKIE_TRANSIENT)>0,[
+    WlAssertException::assertTrue(is_array(static::$COOKIE_TRANSIENT),[
       'text_class' => static::class,
-      'text_message' => 'The COOKIE_TRANSIENT constant is not set. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
+      'text_message' => 'The COOKIE_TRANSIENT property is not set. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
+    ]);
+    WlAssertException::assertTrue(isset(static::$COOKIE_TRANSIENT[$id_region]),[
+      'text_class' => static::class,
+      'text_message' => 'The COOKIE_TRANSIENT property does not contain name of a cookie for the requested datacenter region ID. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
     ]);
 
-    WlAssertException::assertTrue(is_string(static::COOKIE_PERSISTENT) && strlen(static::COOKIE_PERSISTENT)>0,[
+    WlAssertException::assertTrue(is_array(static::$COOKIE_PERSISTENT),[
       'text_class' => static::class,
-      'text_message' => 'The COOKIE_PERSISTENT constant is not set. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
+      'text_message' => 'The COOKIE_PERSISTENT property is not set. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
+    ]);
+    WlAssertException::assertTrue(isset(static::$COOKIE_PERSISTENT[$id_region]),[
+      'text_class' => static::class,
+      'text_message' => 'The COOKIE_PERSISTENT property does not contain name of a cookie for the requested datacenter region ID. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
     ]);
 
     WlAssertException::assertTrue(is_array(static::$REGION_URL),[
