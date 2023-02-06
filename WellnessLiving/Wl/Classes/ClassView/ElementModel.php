@@ -70,14 +70,26 @@ class ElementModel extends WlModelAbstract
    *     `true` means to show class only for clients who can book online,
    *     `false` means to show class for all clients.
    *   </dd>
+   *   <dt>bool <var>is_promotion_client</var></dt>
+   *   <dd>Whether clients of the business can see list of applicable purchase options.</dd>
    *   <dt>bool <var>is_promotion_only</var></dt>
    *   <dd>Whether the item can be booked only using promotions.</dd>
+   *   <dt>bool <var>is_promotion_staff</var></dt>
+   *   <dd>Whether staff members of the business can see list of applicable purchase options.</dd>
+   *   <dt>bool <var>is_single_buy</var></dt>
+   *   <dd>
+   *     Whether the item can be paid with Drop In or not.
+   *     If it can be paid with Drop In, then `m_price` shows price for one visit.
+   *     If can be `0`, this means that class is free.
+   *   </dd>
    *   <dt>bool <var>is_virtual</var></dt>
    *   <dd>Whether the item is virtual.</dd>
    *   <dt>bool <var>is_event</var></dt>
    *   <dd>Whether the item is event or class instance. `true` if item is event instance, `false` otherwise.</dd>
    *   <dt>string <var>k_class</var></dt>
    *   <dd>The class key.</dd>
+   *   <dt>string <var>m_price</var></dt>
+   *   <dd>Drop In price, if class allows to pay for one visit.</dd>
    *   <dt>bool <var>show_special_instructions</var></dt>
    *   <dd>`true` if special instructions can be public, `false` if they should be shown only to the clients, who booked the class.</dd>
    *   <dt>string <var>xml_description</var></dt>

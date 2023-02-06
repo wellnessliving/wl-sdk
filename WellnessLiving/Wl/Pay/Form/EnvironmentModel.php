@@ -111,6 +111,7 @@ class EnvironmentModel extends WlModelAbstract
    * The key of the currency to retrieve payment information for.
    *
    * This will be `0` if not set yet.
+   *
    * @get get
    * @var string
    */
@@ -120,6 +121,7 @@ class EnvironmentModel extends WlModelAbstract
    * The key of the location to retrieve payment information for.
    *
    * This will be `0` if not set yet.
+   *
    * @get get
    * @var string
    */
@@ -134,6 +136,6 @@ class EnvironmentModel extends WlModelAbstract
    * @var string|null
    */
   public $m_surcharge = null;
-
-
 }
+
+?>

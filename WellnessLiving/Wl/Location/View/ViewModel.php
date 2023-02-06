@@ -262,6 +262,14 @@ class ViewModel extends WlModelAbstract
   public $text_region;
 
   /**
+   * Region 2 or 3 letters abbreviation of the location. Can be empty, if abbreviation for region is not set.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_region_code;
+
+  /**
    * The Facebook URL of the location.
    *
    * @get result

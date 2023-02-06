@@ -50,7 +50,7 @@ class DayTimeModel extends WlModelAbstract
   public $i_index = null;
 
   /**
-   * The staff member's gender.
+   * The ID of the staff member's gender. It is one of the {@link AGenderSid} constants.
    *
    * This will be `null` if not set yet.
    *
@@ -79,7 +79,7 @@ class DayTimeModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * The resource ID to show what days are available for booking.
+   * The resource key to show which days are available for booking.
    *
    * This will be `null` if not set yet.
    *
@@ -117,7 +117,7 @@ class DayTimeModel extends WlModelAbstract
   public $s_product = '';
 
   /**
-   * The user ID.
+   * The user's key.
    *
    * This will be `null` if not set yet.
    *

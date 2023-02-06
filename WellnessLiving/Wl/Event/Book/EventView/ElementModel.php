@@ -69,12 +69,14 @@ class ElementModel extends WlModelAbstract
   public $a_class_logo = null;
 
   /**
-   * The list of tab keys for the class.
+   * The list of keys from class tab.+
+   *
+   * Primary keys in {@link \RsClassTabAr} table.
    *
    * `null` if not loaded yet.
    *
    * @get result
-   * @var array|null
+   * @var string[]|null
    */
   public $a_class_tab = null;
 
@@ -103,6 +105,16 @@ class ElementModel extends WlModelAbstract
    *     A list of days of the week when the session has occurred.
    *     Keys - a number corresponding to a day of the week (0 - Sunday, 6 - Saturday). The value is always <tt>true</tt>.
    *   </dd>
+   *   <dt>array <var>a_repeat</var></dt>
+   *   <dd>
+   *     Repeat periodicity instructions.
+   *     <dl>
+   *       <dt>int <var>i_repeat</var></dt>
+   *       <dd>Count of the periods which specified in <var>id_repeat</var>.</dd>
+   *       <dt>int <var>id_repeat</var></dt>
+   *       <dd>Measuring unit of <var>i_repeat</var> (week, month, year).</dd>
+   *     </dl>
+   *   </dl>
    *   <dt>
    *     array[] <var>a_staff</var>
    *   </dt>
