@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Login\Search\StaffApp;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves a list of users.
+ * An endpoint that retrieves a list of users.
  */
 class SearchListModel extends WlModelAbstract
 {
@@ -13,7 +13,7 @@ class SearchListModel extends WlModelAbstract
    * A list of users.
    *
    * The list depends on the search query.
-   * If the query is empty then recent users will be loaded.
+   * If the query is empty, recent users will be returned.
    *
    * @get result
    * @type {String[]}
@@ -21,7 +21,7 @@ class SearchListModel extends WlModelAbstract
   public $a_list = [];
 
   /**
-   * Whether staff has access to the Client Add page or not.
+   * Determines whether the staff member has access to the Client Add page.
    *
    * @get result
    * @type {Boolean}
@@ -29,7 +29,7 @@ class SearchListModel extends WlModelAbstract
   public $can_add = false;
 
   /**
-   * Business ID.
+   * The business ID.
    *
    * @get get
    * @type {String}
@@ -37,7 +37,7 @@ class SearchListModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * Search query.
+   * The search query.
    *
    * @get get
    * @type {String}
@@ -45,7 +45,7 @@ class SearchListModel extends WlModelAbstract
   public $text_search = '';
 
   /**
-   * User ID that searches.
+   * The ID of the user performing the search.
    *
    * @get get
    * @type {String}

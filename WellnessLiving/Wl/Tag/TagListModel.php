@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Tag;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint to get tags.
+ * An endpoint that gets tags for a business.
  */
 class TagListModel extends WlModelAbstract
 {
   /**
    * The tag list.
    *
-   * Each element has the following structure:<dl>
+   * Each element has the next structure:<dl>
    * <dt>string <var>k_tag</var> </dt>
    * <dd>The tag key.
    * <dt>string <var>text_title</var></dt>
@@ -25,7 +25,7 @@ class TagListModel extends WlModelAbstract
   public $a_list;
 
   /**
-   * The key of the business for the the tags.
+   * The business key of the tags.
    *
    * @get get
    * @var string
