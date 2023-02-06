@@ -69,12 +69,14 @@ class ElementModel extends WlModelAbstract
   public $a_class_logo = null;
 
   /**
-   * The list of tab keys for the class.
+   * The list of keys from class tab.+
+   *
+   * Primary keys in {@link \RsClassTabAr} table.
    *
    * `null` if not loaded yet.
    *
    * @get result
-   * @var array|null
+   * @var string[]|null
    */
   public $a_class_tab = null;
 
