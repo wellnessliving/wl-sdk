@@ -23,9 +23,8 @@ class AccountModel extends WlModelAbstract
   public $a_account = null;
 
   /**
-   * `true` - get information for the account of the money owner (another user could be the owner of the specified
-   * user's money).
-   *`false` - get information certainly for the specified user.
+   * `true` - get information for the account's owner. Clients can be configured to pay for a relative's expenses. A parent can pay for their child for instance.
+   *`false` - get information strictly for the specified user.
    *
    * @get get
    * @var bool
