@@ -11,8 +11,8 @@ The following cookies are important for API:
 
 * `\WellnessLiving\Config\WlConfigAbstract::$COOKIE_PERSISTENT`
   Note that this cookie is configuration-specific and datacenter-specific.
-  Name is overridden for production and different for different datacenters.
+  Name is overridden for production and is different for different datacenters.
 * `\WellnessLiving\Config\WlConfigAbstract::$COOKIE_TRANSIENT`
   Note that this cookie is configuration-specific and datacenter-specific.
-  Name is overridden for production and different for different datacenters.
+  Name is overridden for production and is different for different datacenters.
 * `AWSELB`
