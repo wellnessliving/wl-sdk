@@ -5,15 +5,14 @@ namespace WellnessLiving\Wl\Pay\Transaction\Report;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Entry point to get data from "All Transactions" report - {@link TransactionAllPaymentReport}.
- * This endpoint is an interface for giving data from "All Transactions" report.
+ * An endpoint that can retrieve information from the All Transactions Report.
  */
 class TransactionAllPaymentModel extends WlModelAbstract
 {
   /**
-   * A list of fields in this report.
+   * A list of fields in the report.
    *
-   * This array is effectively a title row for table that is returned in {@link TransactionAllPaymentApi}.
+   * This array is effectively a title row for the table returned in {@link TransactionAllPaymentModel}.
    *
    * @get result
    * @var string[]
@@ -21,11 +20,11 @@ class TransactionAllPaymentModel extends WlModelAbstract
   public $a_field = [];
 
   /**
-   * Report data.
+   * The report data.
    *
-   * This is an indexed array in which one row is an indexed array also.
+   * This is an indexed array in which one row is also an indexed array.
    *
-   * Indexes of the columns correspond columns in {@link TransactionAllPaymentApi::$a_field}.
+   * Indexes of the columns correspond to the columns in {@link TransactionAllPaymentModel::$a_field}.
    *
    * @get result
    * @var array
@@ -33,7 +32,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
   public $a_row = [];
 
   /**
-   * Warning list of the report.
+   * The warning list of the report.
    *
    * @get result
    * @var string[]
@@ -41,7 +40,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
   public $a_warning = [];
 
   /**
-   * Date in local time to retrieve transactions for.
+   * The end date in local time to retrieve transactions for.
    *
    * @get get
    * @var string
@@ -49,7 +48,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
   public $dl_date_end = '';
 
   /**
-   * Date in local time to retrieve transactions for.
+   * The start date in local time to retrieve transactions for.
    *
    * @get get
    * @var string
@@ -57,9 +56,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
   public $dl_date_start = '';
 
   /**
-   * Date and time when this report has completed generation and `null` otherwise.
-   *
-   * See {@link \Wl\Report\Generator\ReportStorageListSql}.`dtu_complete` for additional details.
+   * The date and time if the report has completed generation. Otherwise, this will be `null`.
    *
    * @get result
    * @var string|null
@@ -67,9 +64,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
   public $dtu_complete;
 
   /**
-   * Date and time when this report was put on generation queue and `null` otherwise.
-   *
-   * See {@link \Wl\Report\Generator\ReportStorageListSql}.`dtu_queue` for additional details.
+   * The date and time if this report has been put in the generation queue. Otherwise, this will be `null`.
    *
    * @get result
    * @var string|null
@@ -77,9 +72,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
   public $dtu_queue;
 
   /**
-   * Date and time when generation of this report has started and `null` otherwise.
-   *
-   * See {@link \Wl\Report\Generator\ReportStorageListSql}.`dtu_start` for additional details.
+   * The date and time if generation of this report has started. Otherwise, this will be `null`.
    *
    * @get result
    * @var string|null
@@ -88,7 +81,6 @@ class TransactionAllPaymentModel extends WlModelAbstract
 
   /**
    * The page of the report, starting from 0.
-   * Each page will contain a maximum of {@link TransactionAllPaymentApi::LIMIT} rows.
    *
    * @get get
    * @var int
@@ -96,7 +88,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
   public $i_page = 0;
 
   /**
-   * Status of the report.
+   * The report status.
    *
    * One of {@link \Wl\Report\Generator\ReportGeneratorStatusSid} constants.
    *
@@ -106,10 +98,10 @@ class TransactionAllPaymentModel extends WlModelAbstract
   public $id_report_status = 0;
 
   /**
-   * Whether to show more rows in the report.
+   * Determines whether to show more rows in the report.
    *
-   * `true` in a case when there are more report rows to get and
-   * `false` when all rows in the report.
+   * If `true`, there are more report rows to get. Otherwise, `false` to indicate that all rows in the report have
+   * already been retrieved.
    *
    * @get result
    * @var bool
@@ -117,13 +109,12 @@ class TransactionAllPaymentModel extends WlModelAbstract
   public $is_more = false;
 
   /**
-   * Whether this report should be refreshed.
+   * Determines whether the report should be refreshed.
    *
-   * `true` to refresh this report if it is already generated.
-   * A report refresh cannot be requested while the report is being generated.
+   * If `true`, this report should be refreshed. A report refresh can't be requested while the report is being generated.
+   * Otherwise, `false` to only return contents of the report.
    *
-   * `false` to only return contents of the report.
-   * If the report has not yet been generated, it automatically starts generation in the background.
+   * If the report hasn't yet been generated, it will automatically start generating in the background.
    *
    * @get get
    * @var bool
@@ -131,11 +122,12 @@ class TransactionAllPaymentModel extends WlModelAbstract
   public $is_refresh = false;
 
   /**
-   * Whether this report is complete. If this report is accessed on the current day, or is returning
-   * a result that was cached on the current day it could be incomplete as not all the transactions for the day
-   * are present.
+   * Determines whether the report is complete.
    *
-   * `true` when this report has been completed and `false` otherwise.
+   * If the report is accessed on the current day, or is returning a result that was cached on the current day, it could
+   * be incomplete as not all the transactions for the day are present.
+   *
+   * If `true`, the report has been completed. Otherwise, `false`.
    *
    * @get result
    * @var bool
@@ -143,8 +135,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
   public $is_report_complete = false;
 
   /**
-   * Key of the business for which report should be generated.
-   * Primary key in {@link \RsBusinessSql} table.
+   * The key of the business for which report should be generated.
    *
    * @get get
    * @var string
