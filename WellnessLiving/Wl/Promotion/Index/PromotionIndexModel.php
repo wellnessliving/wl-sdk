@@ -2,6 +2,8 @@
 
 namespace WellnessLiving\Wl\Promotion\Index;
 
+use WellnessLiving\Wl\Event\EventListModel;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -36,6 +38,35 @@ class PromotionIndexModel extends WlModelAbstract
    *       <dt>bool <var>is_event_all</var></dt>
    *       <dd>`true` if any event in the business can be visited with this PO. `false` if only selected events.
    *         Selected events can be found in the list of available classes and events.</dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>
+   *     array[] <var>a_component</var>
+   *   </dt>
+   *   <dd>
+   *     List of components, which are included in the PO, if this PO is a package.
+   *     If it's not a package, list will be always empty.
+   *     If it's a package, list still can be empty, if all components were deactivated.
+   *     This means that this array cannot be used to determine, whether this is a package or not.
+   *     Check `id_program` or `id_program_type` value instead.
+   *     There can be three types of components: events, purchase options and products.
+   *     Some fields can be different depending on type of the component, but each element of the array includes:
+   *     <dl>
+   *       <dt>int <var>id_purchase_item</var></dt>
+   *       <dd>Type of the component. Can be only {@link WlPurchaseItemSid::ENROLLMENT},
+   *          {@link WlPurchaseItemSid::PROMOTION} or {@link WlPurchaseItemSid::PRODUCT}.</dd>
+   *       <dt>string <var>k_id</var></dt>
+   *       <dd>
+   *         Primary key of the component in the related table. Depends on the type of the component.
+   *         Key of the event for {@link WlPurchaseItemSid::ENROLLMENT}, key of the purchase option for the
+   *         {@link WlPurchaseItemSid::PROMOTION}, key of the product option for the {@link WlPurchaseItemSid::PRODUCT}.
+   *         Full information about events can be taken from the {@link EventListModel}, purchase options from the {@link PromotionIndexModel}.
+   *         Full information about products are not available at this moment though API.
+   *       </dd>
+   *       <dt>int <var>i_quantity</var></dt>
+   *       <dd>Quantity. If empty, it means quantity is 1.</dd>
+   *       <dt>string <var>text_title</var></dt>
+   *       <dd>Name of the component.</dd>
    *     </dl>
    *   </dd>
    *   <dt>
