@@ -85,10 +85,39 @@ class PromotionIndexModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    *   <dt>
-   *     string <var>a_visit_limit</var>
+   *     array <var>a_visit_limit</var>
    *   </dt>
    *   <dd>
-   *     Attending restrictions, if available. Empty array if unavailable.
+   *     Attending restrictions, if available. Empty array if unavailable. Every element has a key which is a type of
+   *     the time period {@link \ADurationSid::DAY}, {@link \ADurationSid::WEEK}, {@link \ADurationSid::MONTH},
+   *     {@link \ADurationSid::YEAR}. Values are:
+   *     <dl>
+   *       <dt>int <var>i_limit</var></dt>
+   *       <dd>Quantity of sessions every <var>i_period</var>.</dd>
+   *       <dt>int <var>i_period</var></dt>
+   *       <dd>Duration of the time period. It depends on a key of <var>a_visit_limit</var> array.</dd>
+   *       <dt>int <var>i_roll_over_cap</var></dt>
+   *       <dd>Limit number of rollover sessions.</dd>
+   *       <dt>int <var>i_roll_over_expire</var></dt>
+   *       <dd>Duration of the time period after which rolled over session will be expired.</dd>
+   *       <dt>int <var>id_roll_over_expire</var></dt>
+   *       <dd>
+   *         Type of <var>i_roll_over_expire</var> {@link \ADurationSid::DAY}, {@link \ADurationSid::WEEK},
+   *         {@link \ADurationSid::MONTH}, {@link \ADurationSid::YEAR}.
+   *       </dd>
+   *       <dt>int <var>id_limit_cycle</var></dt>
+   *       <dd>Type of the limit cycle {@link \Wl\Promotion\Edit\Limit\Cycle\Sid}.</dd>
+   *       <dt>bool <var>is_reconcile_visit</var></dt>
+   *       <dd>Whether to reconcile unpaid sessions on restrictions reset.</dd>
+   *       <dt>bool <var>is_roll_over_expire</var></dt>
+   *       <dd>Is rolled over session expire.</dd>
+   *       <dt>bool <var>is_roll_over_renew</var></dt>
+   *       <dd>Whether to rollover sessions upon auto renew.</dd>
+   *       <dt>bool <var>is_rollup</var></dt>
+   *       <dd>Whether to rollover session.</dd>
+   *       <dt>bool <var>is_visit_conversion</var></dt>
+   *       <dd>Whether to convert remaining visits.</dd>
+   *     </dl>
    *   </dd>
    *   <dt>
    *     string <var>dl_expire</var>
