@@ -5,13 +5,14 @@ namespace WellnessLiving\Wl\Pay\Owner;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Gets the payment owner ID.
+ * An endpoint that gets the payment owner ID.
  */
 class OwnerModel extends WlModelAbstract
 {
   /**
-   * The type of user for which transactions can be made. It is not necessary to set this variable.
-   * This is one of the WlPayOwnerSid constants.
+   * The type of user for which transactions can be made (this property is optional).
+   *
+   * This is one of the {@link \WellnessLiving\WlPayOwnerSid} constants.
    *
    * @get result
    * @var int
