@@ -5,10 +5,10 @@ namespace WellnessLiving\Wl\Profile\Contract;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Gets information about a pass or membership with a contract.
+ * An endpoint that gets information about a session pass or membership with a contract.
  *
- * The Post method allows the completion of the purchase of a purchase option requiring a contract.
- * The method that WellnessLiving uses to encode a signature into a string is not currently available in the SDK
+ * The POST method will complete a sale of a Purchase Option requiring a contract.
+ * The method that WellnessLiving uses to encode a signature into a string isn't currently available in the SDK.
  */
 class ContractModel extends WlModelAbstract
 {
@@ -37,7 +37,7 @@ class ContractModel extends WlModelAbstract
   public $html_contract = '';
 
   /**
-   * The type of purchase item. It is one of the {@link WlPurchaseItemSid} contracts.
+   * The type of purchase item. This is one of the {@link WlPurchaseItemSid} constants.
    *
    * @get get
    * @var int
@@ -62,7 +62,7 @@ class ContractModel extends WlModelAbstract
   public $k_id = '0';
 
   /**
-   * The key of the selected a location.
+   * The key of the selected location.
    *
    * @get get
    * @var string
@@ -98,7 +98,7 @@ class ContractModel extends WlModelAbstract
    * An encoded version of the client’s signature.
    * This is different from the signature needed to communicate with an endpoint.
    *
-   * It is `null` if not signed yet.
+   * This will be `null` if not signed yet.
    *
    * @post post
    * @var string|null
