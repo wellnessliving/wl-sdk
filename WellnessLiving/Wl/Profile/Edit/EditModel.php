@@ -23,20 +23,25 @@ use WellnessLiving\WlModelAbstract;
  * * Address - An array containing the following keys: `k_city`, `s_address`, `s_city`, and `s_postal`.
  * The `k_city` value can be retrieved via the {@link \WellnessLiving\Core\Geo\ComboboxModel} endpoint. The following is an example address array:
  *
- * <pre>
+ *   <pre>
  *     $o_edit_model->a_change[13] = [
  *       'k_city' => '4934', // Toronto's k_city value.
  *       's_address' => 'Canada',
  *       's_city' => 'Toronto, ON, Canada',
  *       's_postal' => 'M5X1E5'
  *     ];
- * </pre>
+ *   </pre>
  *
  * * Birthday -  A string containing the date in MySQL format (for example, `1987-06-05`).
- * * Email Address - An array containing the following keys: `is_inherit` and `s_mail`. The `is_inherit` value determines whether the
- * user shares the email address with another user. This is typically done for children who use their parent’s
- * email (is_inherit=1). In general, most other cases use (is_inherit=0). The `s_mail` value is simply the new
- * email address.
+ * * Email Address - An array containing the following keys:
+ * <dl>
+ *   <dt>bool <var>is_inherit</var></dt>
+ *   <dd>Whether the user shares the email address with another user.
+ *   This is typically done for children who use their parent’s email (is_inherit=1).
+ *   In general, most other cases use (is_inherit=0).</dd>
+ *   <dt>bool <var>s_mail</var></dt>
+ *   <dd>The new email address.</dd>
+ * </dl>
  */
 class EditModel extends WlModelAbstract
 {
