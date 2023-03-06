@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Wl\Profile\PurchaseList;
 
@@ -256,6 +256,24 @@ class PurchaseListElementModel extends WlModelAbstract
    * @var int
    */
   public $i_duration;
+
+  /**
+   * Image Height in pixels. Please specify this value if you need purchase image to be returned in specific size.
+   * In case this value is not specified returned image will have default purchase size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_height = 0;
+
+  /**
+   * Image Width in pixels. Please specify this value if you need purchase image to be returned in specific size.
+   * In case this value is not specified returned image will have default purchase size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_width = 0;
 
   /**
    * The number of bookings left with this promotion. This value is used only for non-sequential promotions.
