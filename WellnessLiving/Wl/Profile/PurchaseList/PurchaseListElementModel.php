@@ -346,7 +346,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $i_use_duration;
 
   /**
-   * The activation mode. One of the {@link \RsActivationSid} constants. This field is only added for promotions.
+   * The activation mode. One of the {@link WlActivationSid} constants. This field is only added for promotions.
    *
    * @get result
    * @var int
