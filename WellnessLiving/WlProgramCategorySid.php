@@ -14,7 +14,7 @@ class WlProgramCategorySid
    * </ul>
    */
   const ACCOUNT = 7;
-  
+
   /**
    * Purchase options to pay for classes, events and enrollments:
    * <ul>
@@ -24,12 +24,17 @@ class WlProgramCategorySid
    * </ul>
    */
   const CLASSES = 1;
-  
+
+  /**
+   * Special "Wellness Program" purchase option.
+   */
+  public const INSURANCE = 8;
+
   /**
    * Packages and daily deals.
    */
   const OTHER = 5;
-  
+
   /**
    * Resource category.
    *
@@ -42,7 +47,7 @@ class WlProgramCategorySid
    * </ul>
    */
   const RESOURCE = 6;
-  
+
   /**
    * Purchase options to pay for appointments:
    * <ul>
@@ -52,7 +57,14 @@ class WlProgramCategorySid
    * </ul>
    */
   const SERVICE = 3;
-  
+
+  /**
+   * Purchase options to pay for videos:<ui>
+   *   <li>{@link \RsProgramSid::VIDEO_MEMBERSHIP}</li>
+   * </ui>
+   */
+  public const VIDEO = 9;
+
   /**
    * Purchase options to pay for gym visits:
    * <ul>
