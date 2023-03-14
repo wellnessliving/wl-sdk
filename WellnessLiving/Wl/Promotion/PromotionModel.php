@@ -2,10 +2,12 @@
 
 namespace WellnessLiving\Wl\Promotion;
 
+use WellnessLiving\WlDurationTypeSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlProgramSid;
 
 /**
- * API point to get promotion by the specified business and promotion keys.
+ * An endpoint that gets promotions for the specified business and promotion keys.
  */
 class PromotionModel extends WlModelAbstract
 {
@@ -16,123 +18,124 @@ class PromotionModel extends WlModelAbstract
    *     array <var>a_access</var>
    *   </dt>
    *   <dd>
-   *     Information about services, which can be visited with this pass or membership.
+   *     Information about services that can be attended with this pass or membership.
    *     <dl>
    *       <dt>array[] <var>a_class</var></dt>
-   *       <dd>List of available classes. Each element has primary key from {@link \RsClassSql} table.</dd>
+   *       <dd>A list of available classes.</dd>
    *       <dt>array[] <var>a_event</var></dt>
-   *       <dd>List of available events. Each element has primary key from {@link \RsClassSql} table.</dd>
+   *       <dd>A list of available events.</dd>
    *       <dt>array[] <var>a_resource</var></dt>
-   *       <dd>List of available assets. Each element has primary key from table {@link \RsResourceSql}.</dd>
+   *       <dd>A list of available assets.</dd>
    *       <dt>array[] <var>a_service</var></dt>
-   *       <dd>List of available appointment types. Each element has primary key from {@link \RsServiceSql} table.</dd>
+   *       <dd>A list of available appointment types.</dd>
    *       <dt>bool <var>is_class_all</var></dt>
-   *       <dd>`true` if any class in the business can be visited with this PO. `false` if only selected classes.
-   *         Selected classes can be found in the list of available classes and events.</dd>
+   *       <dd>This will be `true` if any class in the business can be visited with this Purchase Option. Otherwise, this
+   *         will be `false` if only selected classes can be visited with this Purchase Option. Selected classes can be found
+   *         in the list of available classes and events.</dd>
    *       <dt>bool <var>is_event_all</var></dt>
-   *       <dd>`true` if any event in the business can be visited with this PO. `false` if only selected events.
-   *         Selected events can be found in the list of available classes and events.</dd>
+   *       <dd>This will be `true` if any event in the business can be visited with this Purchase Option. Otherwise, this
+   *         will be `false` if only selected events can be visited with this Purchase Option. Selected events can be found
+   *         in the list of available classes and events.</dd>
    *     </dl>
    *   </dd>
    *   <dt>
    *     array <var>a_image</var>
    *   </dt>
    *   <dd>
-   *     Empty array, if purchase option does not have image.
-   *     Information about purchase option image otherwise:
+   *     Information about Purchase Option image. This will be an empty array if the Purchase Option doesn't have an image.
    *     <dl>
    *       <dt>string <var>i_height</var></dt>
-   *       <dd>Height of the image.</dd>
+   *       <dd>The height of the image.</dd>
    *       <dt>string <var>i_width</var></dt>
-   *       <dd>Width of the image.</dd>
+   *       <dd>The width of the image.</dd>
    *       <dt>string <var>url-thumbnail</var></dt>
-   *       <dd>Link to the image.</dd>
+   *       <dd>The link to the image.</dd>
    *     </dl>
    *   </dd>
    *   <dt>
    *     string <var>dl_expire</var>
    *   </dt>
    *   <dd>
-   *     Local expiration date. This is the last day, when purchase option is active.
-   *     Is used only, when duration type "Expires on a certain date". Should be ignored otherwise.
+   *     The local expiration date. This is the last day when the Purchase Option is active.
+   *     This is used only when the 'Expires on a certain date' duration type is set.
    *   </dd>
    *   <dt>
    *     int <var>i_duration</var>
    *   </dt>
    *   <dd>
-   *     Number of periods for the duration type "Period".
-   *     For example, if duration of the purchase option is 12 months, this field will be equal 12.
+   *     The number of periods for the 'Period' duration type.
+   *     For example, if the duration of the Purchase Option is 12 months, this field will be 12.
    *   </dd>
    *   <dt>
    *     int <var>i_limit</var>
    *   </dt>
    *   <dd>
-   *     Number of visits, which can use owner of the purchase option.
-   *     `0` if purchase option has unlimited visits.
+   *     The number of visits that the owner can use for the Purchase Option.
+   *     This will be `0` if the Purchase Option allows for unlimited visits.
    *   </dd>
    *   <dt>
    *     int <var>id_duration</var>
    *   </dt>
    *   <dd>
-   *     Type of periods for the duration type "Period".
-   *     For example, if duration of the purchase option is 12 months, this field will be equal id of the Month.
-   *     See all possible options here: {@link \ADurationSid}.
+   *     The type of period for the 'Period' duration type.
+   *     For example, if the duration of the Purchase Option is 12 months, this field will display the ID of the month.
+   *     For all possible options, see {@link ADurationSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_duration_type</var>
    *   </dt>
    *   <dd>
-   *     Type of the duration. Can be "Without End", 'Expires on a certain date', 'Period'.
-   *     See more information here: {@link \RsDurationTypeSid}.
+   *     The duration type. Possible duration types can be 'Without End', 'Expires on a certain date', 'Period'.
+   *     For more information, see {@link WlDurationTypeSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program</var>
    *   </dt>
    *   <dd>
-   *     Type of the purchase options.
-   *     See more information here: {@link \RsProgramSid}.
+   *     The Purchase Option type.
+   *     For more information, see {@link WlProgramSid}.
    *   </dd>
    *   <dt>
    *     bool <var>is_introductory</var>
    *   </dt>
    *   <dd>
-   *     If <tt>true</tt> this promotion is for introductory clients. Otherwise - <tt>false</tt>.
+   *     If `true`, this promotion is for introductory clients. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     bool <var>is_online</var>
    *   </dt>
    *   <dd>
-   *     If <tt>true</tt> this promotion is available for online purchase. Otherwise - <tt>false</tt>.
+   *     If `true`, this promotion is available for online purchase. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     string <var>k_promotion</var>
    *   </dt>
    *   <dd>
-   *     Promotion primary key in {@link \RsPromotionSql} table.
+   *     The key of the promotion.
    *   </dd>
    *   <dt>
    *     string <var>m_price</var>
    *   </dt>
    *   <dd>
-   *     Price.
+   *     The price.
    *   </dd>
    *   <dt>
    *     string <var>text_description</var>
    *   </dt>
    *   <dd>
-   *     Description.
+   *     The description of the Purchase Option.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Title.
+   *     The title of the Purchase Option.
    *   </dd>
    *   <dt>
    *     string <var>url_buy</var>
    *   </dt>
    *   <dd>
-   *     Direct URL to the promotion purchase page.
+   *     The direct URL to the promotion purchase page.
    *   </dd>
    * </dl>
    *
@@ -142,7 +145,7 @@ class PromotionModel extends WlModelAbstract
   public $a_promotion;
 
   /**
-   * Business primary key in {@link \RsBusinessSql} table.
+   * The key of the business.
    *
    * @get get
    * @var string
@@ -150,7 +153,7 @@ class PromotionModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Promotion primary key in {@link \RsPromotionSql} table.
+   * The key of the promotion.
    *
    * @get get
    * @var string

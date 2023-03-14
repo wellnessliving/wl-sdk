@@ -5,30 +5,30 @@ namespace WellnessLiving\Wl\Promotion;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * API point to get promotion list of the specified business.
+ * An endpoint that gets a promotion list of the specified business.
  */
 class PromotionListModel extends WlModelAbstract
 {
   /**
-   * List of promotions.
+   * A list of promotions.
    * <dl>
    *   <dt>
    *     int <var>id_program</var>
    *   </dt>
    *   <dd>
-   *     Promotion program. One of {@link \RsProgramSid} constants.
+   *     The promotion program. One of the {@link WlProgramSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_promotion</var>
    *   </dt>
    *   <dd>
-   *     ID of promotion, primary key in {@link \RsPromotionSql}.
+   *     The key of the promotion.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Title of promotion.
+   *     The title of the promotion.
    *   </dd>
    * </dl>
    *
@@ -38,8 +38,8 @@ class PromotionListModel extends WlModelAbstract
   public $a_promotion;
 
   /**
-   * Whether to return franchisee-created promotions (if business is franchisor).
-   * <tt>true</tt> to include franchisee-created promotions.
+   * Determines whether to return promotions created by Enterprise Locations (for Enterprise Cloud businesses only).
+   * If `true`, promotions created by Enterprise Locations are included. Otherwise, this will be `false`.
    *
    * @get get
    * @var bool
@@ -47,8 +47,7 @@ class PromotionListModel extends WlModelAbstract
   public $is_franchise = false;
 
   /**
-   * Business key to get promotions.
-   * Primary key in the {@link \RsBusinessSql} table.
+   * The business key used to get the promotions.
    *
    * @get get
    * @var string
