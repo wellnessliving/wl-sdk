@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Profile\Term;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about online waiver.
+ * An endpoint that displays information about online waiver.
  */
 class TermModel extends WlModelAbstract
 {
   /**
-   * ID of current business.
+   * The ID of the current business.
    *
    * @get get
    * @var string
@@ -18,7 +18,7 @@ class TermModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * ID of a user to show information for.
+   * The ID of the user to show information for.
    *
    * @get get
    * @var string
@@ -26,7 +26,7 @@ class TermModel extends WlModelAbstract
   public $uid = '0';
 
   /**
-   * Date/time of the waiver confirmation.
+   * The date/time of the waiver confirmation.
    *
    * @get result
    * @var string
@@ -34,7 +34,7 @@ class TermModel extends WlModelAbstract
   public $dt_agree = '';
 
   /**
-   * Text of online waiver.
+   * The text of the online waiver.
    *
    * @get result
    * @var string
@@ -50,7 +50,7 @@ class TermModel extends WlModelAbstract
   public $ip_agree = '';
 
   /**
-   * User's name.
+   * The user's name.
    *
    * @get result
    * @var string
@@ -58,7 +58,7 @@ class TermModel extends WlModelAbstract
   public $s_name = '';
 
   /**
-   * URL to image with client's signature.
+   * The URL to the image with the client's signature.
    *
    * @get result
    * @var string
