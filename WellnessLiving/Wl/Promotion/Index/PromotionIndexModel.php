@@ -110,7 +110,7 @@ class PromotionIndexModel extends WlModelAbstract
    *         {@link \WellnessLiving\Core\a\ADurationSid::MONTH}, {@link \WellnessLiving\Core\a\ADurationSid::YEAR}.
    *       </dd>
    *       <dt>int <var>id_limit_cycle</var></dt>
-   *       <dd>The type of the limit cycle {@link \Wl\Promotion\Edit\Limit\Cycle\Sid}.</dd>
+   *       <dd>The type of the limit cycle {@link \WellnessLiving\Wl\Promotion\Edit\Limit\Cycle\Sid}.</dd>
    *       <dt>bool <var>is_reconcile_visit</var></dt>
    *       <dd>Determines whether to reconcile unpaid sessions on restrictions reset.</dd>
    *       <dt>bool <var>is_roll_over_expire</var></dt>
