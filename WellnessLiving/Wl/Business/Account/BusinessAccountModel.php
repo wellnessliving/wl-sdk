@@ -26,6 +26,7 @@ class BusinessAccountModel extends WlModelAbstract
    *
    * Test and churned businesses are never returned.
    *
+   * @get get
    * @var bool
    */
   public $is_prospects = false;
