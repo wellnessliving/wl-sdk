@@ -4,10 +4,14 @@ namespace WellnessLiving\Wl\Promotion\Index;
 
 use WellnessLiving\Wl\Event\EventListModel;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\WlDurationTypeSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlProgramCategorySid;
+use WellnessLiving\WlProgramSid;
+use WellnessLiving\WlProgramTypeSid;
 
 /**
- * Gets a list of introductory promotion offers of a specified type available at a given location.
+ * An endpoint that gets a list of introductory promotion offers of a specified type available at a given location.
  */
 class PromotionIndexModel extends WlModelAbstract
 {
@@ -19,24 +23,24 @@ class PromotionIndexModel extends WlModelAbstract
    *     array <var>a_access</var>
    *   </dt>
    *   <dd>
-   *     Information about services, which can be visited with this pass or membership.
+   *     Information about services that can be attended with this pass or membership.
    *     <dl>
    *       <dt>array[] <var>a_class</var></dt>
-   *       <dd>List of available classes. Each element has key k_class, where primary key of the class
+   *       <dd>A list of available classes. Each element has the key `k_class`, where the primary key of the class
    *         can be found.</dd>
    *       <dt>array[] <var>a_event</var></dt>
-   *       <dd>List of available events. Each element has key k_class, where primary key of the event
+   *       <dd>A list of available events. Each element has the key `k_class`, where the primary key of the event
    *         can be found.</dd>
    *       <dt>array[] <var>a_resource</var></dt>
-   *       <dd>List of available assets. Each element has key k_resource, where primary key of the asset can be found.</dd>
+   *       <dd>A list of available assets. Each element has the key `k_resource`, where the primary key of the asset can be found.</dd>
    *       <dt>array[] <var>a_service</var></dt>
-   *       <dd>List of available appointment types. Each element has key k_service, where primary key of the
+   *       <dd>A list of available appointment types. Each element has the key `k_service`, where the primary key of the
    *         appointment type can be found.</dd>
    *       <dt>bool <var>is_class_all</var></dt>
-   *       <dd>`true` if any class in the business can be visited with this PO. `false` if only selected classes.
+   *       <dd>If `true`, any class in the business can be visited with this Purchase Option. If `false`, only selected classes can be visited.
    *         Selected classes can be found in the list of available classes and events.</dd>
    *       <dt>bool <var>is_event_all</var></dt>
-   *       <dd>`true` if any event in the business can be visited with this PO. `false` if only selected events.
+   *       <dd>If `true`, if any event in the business can be visited with this Purchase Option. If `false`, if only selected events can be visited.
    *         Selected events can be found in the list of available classes and events.</dd>
    *     </dl>
    *   </dd>
@@ -44,207 +48,206 @@ class PromotionIndexModel extends WlModelAbstract
    *     array[] <var>a_component</var>
    *   </dt>
    *   <dd>
-   *     List of components, which are included in the PO, if this PO is a package.
-   *     If it's not a package, list will be always empty.
-   *     If it's a package, list still can be empty, if all components were deactivated.
-   *     This means that this array cannot be used to determine, whether this is a package or not.
-   *     Check `id_program` or `id_program_type` value instead.
-   *     There can be three types of components: events, purchase options and products.
+   *     A list of components included in the Purchase Option if this Purchase Option is a package.
+   *     If it's not a package, the list will be always empty.
+   *     If it's a package, the list can still be empty if all its components were deactivated.
+   *     This means that this array can't be used to determine whether this is a package or not (check `id_program` or `id_program_type`
+   *     value instead).
+   *     There can be three types of components: events, Purchase Options, and products.
    *     Some fields can be different depending on type of the component, but each element of the array includes:
    *     <dl>
    *       <dt>int <var>id_purchase_item</var></dt>
-   *       <dd>Type of the component. Can be only {@link WlPurchaseItemSid::ENROLLMENT},
+   *       <dd>The type of the component. This can only be {@link WlPurchaseItemSid::ENROLLMENT},
    *          {@link WlPurchaseItemSid::PROMOTION} or {@link WlPurchaseItemSid::PRODUCT}.</dd>
    *       <dt>string <var>k_id</var></dt>
    *       <dd>
-   *         Primary key of the component in the related table. Depends on the type of the component.
-   *         Key of the event for {@link WlPurchaseItemSid::ENROLLMENT}, key of the purchase option for the
-   *         {@link WlPurchaseItemSid::PROMOTION}, key of the product option for the {@link WlPurchaseItemSid::PRODUCT}.
-   *         Full information about events can be taken from the {@link EventListModel}, purchase options from the {@link PromotionIndexModel}.
+   *         The primary key of the component in the related table. This depends on the type of the component.
+   *         The key of the event for {@link WlPurchaseItemSid::ENROLLMENT}, the key of the Purchase Option for the
+   *         {@link WlPurchaseItemSid::PROMOTION}, the key of the product option for the {@link WlPurchaseItemSid::PRODUCT}.
+   *         Full information about events can be taken from the {@link EventListModel}. Purchase Options from the {@link PromotionIndexModel}.
    *         Full information about products are not available at this moment though API.
    *       </dd>
    *       <dt>int <var>i_quantity</var></dt>
-   *       <dd>Quantity. If empty, it means quantity is 1.</dd>
+   *       <dd>The quantity. If empty, it means the quantity is 1.</dd>
    *       <dt>string <var>text_title</var></dt>
-   *       <dd>Name of the component.</dd>
+   *       <dd>The name of the component.</dd>
    *     </dl>
    *   </dd>
    *   <dt>
    *     array <var>a_image</var>
    *   </dt>
    *   <dd>
-   *     Empty array, if purchase option does not have image.
-   *     Information about purchase option image otherwise:
+   *     This will be an empty array if the Purchase Option doesn't have image.
+   *     Otherwise, this will display the following information about the Purchase Option image:
    *     <dl>
    *       <dt>string <var>i_height</var></dt>
-   *       <dd>Height of the image.</dd>
+   *       <dd>The height of the image.</dd>
    *       <dt>string <var>i_width</var></dt>
-   *       <dd>Width of the image.</dd>
+   *       <dd>The width of the image.</dd>
    *       <dt>string <var>url-thumbnail</var></dt>
-   *       <dd>Link to the image.</dd>
+   *       <dd>The link to the image.</dd>
    *     </dl>
    *   </dd>
    *   <dt>
    *     array <var>a_visit_limit</var>
    *   </dt>
    *   <dd>
-   *     Attending restrictions, if available. Empty array if unavailable. Every element has a key which is a type of
-   *     the time period {@link \ADurationSid::DAY}, {@link \ADurationSid::WEEK}, {@link \ADurationSid::MONTH},
-   *     {@link \ADurationSid::YEAR}. Values are:
+   *     Attendance restrictions, if available. If unavailable, this will be an empty array. Every element has a key, which is a type of
+   *     the time period {@link \WellnessLiving\Core\a\ADurationSid::DAY}, {@link \WellnessLiving\Core\a\ADurationSid::WEEK}, {@link \WellnessLiving\Core\a\ADurationSid::MONTH},
+   *     {@link \WellnessLiving\Core\a\ADurationSid::YEAR}. The values are:
    *     <dl>
    *       <dt>int <var>i_limit</var></dt>
-   *       <dd>Quantity of sessions every <var>i_period</var>.</dd>
+   *       <dd>The quantity of sessions every <var>i_period</var>.</dd>
    *       <dt>int <var>i_period</var></dt>
-   *       <dd>Duration of the time period. It depends on a key of <var>a_visit_limit</var> array.</dd>
+   *       <dd>The duration of the time period. This depends on a key of <var>a_visit_limit</var> array.</dd>
    *       <dt>int <var>i_roll_over_cap</var></dt>
-   *       <dd>Limit number of rollover sessions.</dd>
+   *       <dd>The limit number of rollover sessions.</dd>
    *       <dt>int <var>i_roll_over_expire</var></dt>
-   *       <dd>Duration of the time period after which rolled over session will be expired.</dd>
+   *       <dd>The duration of the time period after which rolled over session will expire.</dd>
    *       <dt>int <var>id_roll_over_expire</var></dt>
    *       <dd>
-   *         Type of <var>i_roll_over_expire</var> {@link \ADurationSid::DAY}, {@link \ADurationSid::WEEK},
-   *         {@link \ADurationSid::MONTH}, {@link \ADurationSid::YEAR}.
+   *         The type of <var>i_roll_over_expire</var> {@link \WellnessLiving\Core\a\ADurationSid::DAY}, {@link \WellnessLiving\Core\a\ADurationSid::WEEK},
+   *         {@link \WellnessLiving\Core\a\ADurationSid::MONTH}, {@link \WellnessLiving\Core\a\ADurationSid::YEAR}.
    *       </dd>
    *       <dt>int <var>id_limit_cycle</var></dt>
-   *       <dd>Type of the limit cycle {@link \Wl\Promotion\Edit\Limit\Cycle\Sid}.</dd>
+   *       <dd>The type of the limit cycle {@link \WellnessLiving\Wl\Promotion\Edit\Limit\Cycle\Sid}.</dd>
    *       <dt>bool <var>is_reconcile_visit</var></dt>
-   *       <dd>Whether to reconcile unpaid sessions on restrictions reset.</dd>
+   *       <dd>Determines whether to reconcile unpaid sessions on restrictions reset.</dd>
    *       <dt>bool <var>is_roll_over_expire</var></dt>
-   *       <dd>Is rolled over session expire.</dd>
+   *       <dd>Determines if the rolled over session is expired.</dd>
    *       <dt>bool <var>is_roll_over_renew</var></dt>
-   *       <dd>Whether to rollover sessions upon auto renew.</dd>
+   *       <dd>Determines whether to rollover sessions upon auto-renew.</dd>
    *       <dt>bool <var>is_rollup</var></dt>
-   *       <dd>Whether to rollover session.</dd>
+   *       <dd>Determines Whether to rollover sessions.</dd>
    *       <dt>bool <var>is_visit_conversion</var></dt>
-   *       <dd>Whether to convert remaining visits.</dd>
+   *       <dd>Determines whether to convert remaining visits.</dd>
    *     </dl>
    *   </dd>
    *   <dt>
    *     string <var>dl_expire</var>
    *   </dt>
    *   <dd>
-   *     Local expiration date. This is the last day, when purchase option is active.
-   *     Is used only, when duration type "Expires on a certain date". Should be ignored otherwise.
+   *     The local expiration date. This is the last day when Purchase Option is active.
+   *     This is used only for the "Expires on a certain date" duration type. Otherwise, this should be ignored.
    *   </dd>
    *   <dt>
    *     int <var>i_duration</var>
    *   </dt>
    *   <dd>
-   *     Number of periods for the duration type "Period".
-   *     For example, if duration of the purchase option is 12 months, this field will be equal 12.
+   *     The number of periods for the "Period" duration type.
+   *     For example, if the duration of the Purchase Option is 12 months, this field will be 12.
    *   </dd>
    *   <dt>
    *     int <var>i_limit</var>
    *   </dt>
    *   <dd>
-   *     Number of visits, which can use owner of the purchase option.
-   *     `0` if purchase option has unlimited visits.
+   *     The number of visits that the owner of the Purchase Option can use.
+   *     This will be `0` if the Purchase Option has unlimited visits.
    *   </dd>
    *   <dt>
    *     int <var>i_limit_duration</var>
    *   </dt>
    *   <dd>
-   *     Maximum number of minutes or hours depends on <var>id_limit_duration</var> that current promotion can be used.
+   *     The maximum number of minutes or hours depending on <var>id_limit_duration</var> that the current promotion can be used in.
    *   </dd>
    *   <dt>
    *     int <var>id_limit_duration</var>
    *   </dt>
    *   <dd>
-   *     Type of <var>i_limit_duration</var> {@link \ADurationSid::MINUTE} or {@link \ADurationSid::HOUR}.
+   *     The type of <var>i_limit_duration</var> {@link \WellnessLiving\Core\a\ADurationSid::MINUTE} or {@link \WellnessLiving\Core\a\ADurationSid::HOUR}.
    *   </dd>
    *   <dt>
    *     int <var>id_duration</var>
    *   </dt>
    *   <dd>
-   *     Type of periods for the duration type "Period".
-   *     For example, if duration of the purchase option is 12 months, this field will be equal id of the Month.
-   *     See all possible options here: {@link \ADurationSid}.
+   *     The type of periods for the duration type "Period".
+   *     For example, if the duration of the Purchase Option is 12 months, this field will be the ID of the month.
+   *     See all the possible options here: {@link \WellnessLiving\Core\a\ADurationSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_duration_type</var>
    *   </dt>
    *   <dd>
-   *     Type of the duration. Can be "Without End", 'Expires on a certain date', 'Period'.
-   *     See more information here: {@link \RsDurationTypeSid}.
+   *     The type of the duration. Ths can be "Without End", "Expires on a certain date", "Period".
+   *     See more information here: {@link WlDurationTypeSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program</var>
    *   </dt>
    *   <dd>
-   *     Type of the purchase options. The <var>id_program</var> relates to only one <var>id_program_type</var> and one
+   *     The type of the Purchase Option. The <var>id_program</var> relates to only one <var>id_program_type</var> and one
    *     <var>id_program_category</var>.
-   *     See more information here: {@link \RsProgramSid}.
+   *     See more information here: {@link WlProgramSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program_category</var>
    *   </dt>
    *   <dd>
-   *     Category of the program for promotions. The <var>id_program_category</var> relates to more than one
+   *     The category of the program for promotions. The <var>id_program_category</var> relates to more than one
    *     <var>id_program</var>.
-   *     See more information here: {@link \RsProgramCategorySid}.
+   *     See more information here: {@link WlProgramCategorySid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program_type</var>
    *   </dt>
    *   <dd>
-   *     ID of promotion program type. The <var>id_program_type</var> relates to more than one <var>id_program</var>.
-   *     See more information here: {@link \RsProgramTypeSid}.
+   *     The ID of the promotion program type. The <var>id_program_type</var> relates to more than one <var>id_program</var>.
+   *     See more information here: {@link WlProgramTypeSid}.
    *   </dd>
    *   <dt>
    *     bool <var>is_direct_buy_only</var>
    *   </dt>
    *   <dd>
-   *     `true` if pricing option can be sold only by direct link. This means it should not be shown in online store or
-   *   explorer.
-   *     `false` - otherwise.
+   *     If `true`, the pricing option can be sold only by direct link. This means it shouldn't be shown in the store or
+   *     explorer. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     bool <var>is_introductory</var>
    *   </dt>
    *   <dd>
-   *     If <tt>true</tt> this promotion is for introductory clients. Otherwise - <tt>false</tt>.
+   *     If `true`, this promotion is for introductory clients. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     bool <var>is_online</var>
    *   </dt>
    *   <dd>
-   *     If <tt>true</tt> this promotion is available for online purchase. Otherwise - <tt>false</tt>.
+   *     If `true` this promotion is available for online purchase. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     string <var>k_promotion</var>
    *   </dt>
    *   <dd>
-   *     Promotion primary key in {@link \RsPromotionSql} table.
+   *     The promotion key.
    *   </dd>
    *   <dt>
    *     string <var>m_price</var>
    *   </dt>
    *   <dd>
-   *     Price.
+   *     The price.
    *   </dd>
    *   <dt>
    *     string <var>text_description</var>
    *   </dt>
    *   <dd>
-   *     Description.
+   *     The description.
    *   </dd>
    *   <dt>
    *     int <var>text_program</var>
    *   </dt>
    *   <dd>
-   *     Localised promotion program name corresponding to the value of <var>id_program</var>.
+   *     THe localized promotion program name corresponding to the value of <var>id_program</var>.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Title.
+   *     The title.
    *   </dd>
    *   <dt>
    *     string <var>url_buy</var>
    *   </dt>
    *   <dd>
-   *     Direct URL to the promotion purchase page.
+   *     The direct URL to the promotion purchase page.
    *   </dd>
    * </dl>
    *
@@ -254,9 +257,9 @@ class PromotionIndexModel extends WlModelAbstract
   public $a_promotion;
 
   /**
-   * The program type ID, which will be one of the {@link \RsProgramTypeSid} constants.
+   * The program type ID, which will be one of the {@link WlProgramTypeSid} constants.
    *
-   * `0` to not filter purchase options with type of the purchase option.
+   * `0` to not filter Purchase Options with type of the Purchase Option.
    *
    * @get get
    * @var int
