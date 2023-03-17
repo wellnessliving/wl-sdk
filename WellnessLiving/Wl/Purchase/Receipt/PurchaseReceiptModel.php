@@ -10,13 +10,13 @@ use WellnessLiving\WlModelAbstract;
 class PurchaseReceiptModel extends WlModelAbstract
 {
   /**
-   * Information about rest amount on personal user account after payment of purchase. Every element has the following keys:
+   * Information about the account balance for a user's account after payment for the purchase. Every element has the following keys:
    * <dl>
    *   <dt>
    *     string <var>m_amount</var>
    *   </dt>
    *   <dd>
-   *     Rest amount on the user's account.
+   *     The account balance on the user's account.
    *   </dd>
    *   <dt>
    *     string <var>text_currency</var>
@@ -44,7 +44,7 @@ class PurchaseReceiptModel extends WlModelAbstract
    *     array <var>a_logo</var>
    *   </dt>
    *   <dd>
-   *     The business logo
+   *     The business logo.
    *     <dl>
    *       <dt>
    *         int <var>i_height</var>
@@ -76,19 +76,19 @@ class PurchaseReceiptModel extends WlModelAbstract
    *     string <var>text_address</var>
    *   </dt>
    *   <dd>
-   *     The business address.
+   *     The business's address.
    *   </dd>
    *   <dt>
    *     string <var>text_mail</var>
    *   </dt>
    *   <dd>
-   *     The business mail.
+   *     The business's email address.
    *   </dd>
    *   <dt>
    *     string <var>text_phone</var>
    *   </dt>
    *   <dd>
-   *     The business phone.
+   *     The business's phone number.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>

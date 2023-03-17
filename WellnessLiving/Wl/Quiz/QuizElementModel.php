@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Quiz;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Api endpoint to manage single quiz.
+ * An endpoint that manages a single quiz.
  */
 class QuizElementModel extends WlModelAbstract
 {
   /**
-   * List of quiz elements.
+   * A list of quiz elements.
    *
-   * Order of the element in array corresponds to order of elements on the form.
+   * The order of the element in the array that corresponds to the order of the elements on the form.
    *
    * @get result
    * @post post
@@ -21,7 +21,7 @@ class QuizElementModel extends WlModelAbstract
   public $a_element = [];
 
   /**
-   * `true` if don't check user authorization, `false` otherwise.
+   * This will be `true` if the endpoint doesn't check for user authorization. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -30,10 +30,9 @@ class QuizElementModel extends WlModelAbstract
   public $can_anonymous = false;
 
   /**
-   * Quiz active status.
+   * Determines whether the quiz is active.
    *
-   * `true` if quiz is active.
-   * `false` if quiz is not active.
+   * This will be `true` if the quiz is active. Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
@@ -41,7 +40,7 @@ class QuizElementModel extends WlModelAbstract
   public $is_active = true;
 
   /**
-   * Business key within which quiz is managed.
+   * The business key within which the quiz is managed.
    *
    * @get get
    * @post get
@@ -50,7 +49,7 @@ class QuizElementModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * Quiz key.
+   * The quiz's key.
    *
    * @get get
    * @post get,result
@@ -59,10 +58,9 @@ class QuizElementModel extends WlModelAbstract
   public $k_quiz = '';
 
   /**
-   * Whether to show numbering of the form elements that supports numbering.
+   * Determines whether to display numbering of the form elements that support numbering.
    *
-   * `true` to show numbering on the form for elements that supports numbering.
-   * `false` to not show numbering.
+   * This will be `true` if numbering for elements is displayed. Otherwise, this will be `false`.
    *
    * @get result
    * @post post
@@ -71,7 +69,7 @@ class QuizElementModel extends WlModelAbstract
   public $show_numbering = true;
 
   /**
-   * Quiz form title.
+   * The quiz's form title.
    *
    * @get result
    * @post post
