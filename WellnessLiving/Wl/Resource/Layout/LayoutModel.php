@@ -5,27 +5,27 @@ namespace WellnessLiving\Wl\Resource\Layout;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about asset layout.
+ * An endpoint that displays information about an asset layout.
  */
 class LayoutModel extends WlModelAbstract
 {
   /**
-   * Assets. Every element contains next keys:
+   * The asset(s). Every element contains the following keys:
    * <dl>
    *   <dt>array <var>a_image</var></dt>
-   *   <dd>Asset appearance information.</dd>
+   *   <dd>The asset's appearance information.</dd>
    *   <dt>int <var>i_cell_x</var></dt>
-   *   <dd>Vertical cell number. Not empty if assets are snapped to grid.</dd>
+   *   <dd>The vertical cell number. Not empty if assets are snapped to grid.</dd>
    *   <dt>int <var>i_cell_y</var></dt>
-   *   <dd>Horizontal cell number. Not empty if assets are snapped to grid.</dd>
+   *   <dd>The horizontal cell number. Not empty if assets are snapped to grid.</dd>
    *   <dt>int <var>i_index</var></dt>
    *   <dd>Asset number.</dd>
    *   <dt>int <var>i_left</var></dt>
-   *   <dd>Horizontal offset in pixels. Not empty if assets are NOT snapped to grid.</dd>
+   *   <dd>The horizontal offset in pixels. Not empty if assets aren't snapped to grid.</dd>
    *   <dt>string <var>k_resource</var></dt>
-   *   <dd>Asset key.</dd>
+   *   <dd>The asset key.</dd>
    *   <dt>string <var>s_title</var></dt>
-   *   <dd>Asset title.</dd>
+   *   <dd>The asset title.</dd>
    * </dl>
    *
    * @get result
@@ -34,80 +34,80 @@ class LayoutModel extends WlModelAbstract
   public $a_resource = [];
 
   /**
-   * List of custom shapes. Every element - array with keys:
+   * A list of custom shapes. Every element is an array with the following keys:
    * <dl>
    *   <dt>
    *     float <var>f_height</var>
    *   </dt>
    *   <dd>
-   *     Height for shape {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::RECTANGLE}. Empty for another shapes.
+   *     The height for the shape {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::RECTANGLE}. Empty for other shapes.
    *   </dd>
    *   <dt>
    *     float <var>f_width</var>
    *   </dt>
    *   <dd>
-   *     Width for shape {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::RECTANGLE}. Empty for another shapes.
+   *     The width for the shape {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::RECTANGLE}. Empty for other shapes.
    *   </dd>
    *   <dt>
    *     int <var>i_degree_from</var>
    *   </dt>
    *   <dd>
-   *     Start angle for shape {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::PIE}. Empty for another shapes.
+   *     The start angle for the shape {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::PIE}. Empty for other shapes.
    *   </dd>
    *   <dt>
    *     int <var>i_degree_to</var>
    *   </dt>
    *   <dd>
-   *     End angle for shape {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::PIE}. Empty for another shapes.
+   *     The start angle for shape {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::PIE}. Empty for other shapes.
    *   </dd>
    *   <dt>
    *     int <var>i_left</var>
    *   </dt>
    *   <dd>
-   *     Position of shape by horizontal axis.
+   *     The position of the shape by horizontal axis.
    *   </dd>
    *   <dt>
    *     int <var>i_radius</var>
    *   </dt>
    *   <dd>
-   *     Radius for shapes {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::PIE} and
-   *     {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::CIRCLE}. Empty for another shapes.
+   *     The radius for shapes {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::PIE} and
+   *     {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::CIRCLE}. Empty for other shapes.
    *   </dd>
    *   <dt>
    *     int <var>i_top</var>
    *   </dt>
    *   <dd>
-   *     Position of shape by vertical axis.
+   *     The position of the shape by vertical axis.
    *   </dd>
    *   <dt>
    *     int <var>id_resource_layout_shape</var>
    *   </dt>
    *   <dd>
-   *     Shape type. One of {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid} constants.
+   *     The shape type. One of the {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_resource_layout_shape</var>
    *   </dt>
    *   <dd>
-   *     Shape ID. Primary key in {@link \Wl\Resource\Layout\Shape\Sql} table.
+   *     The shape ID.
    *   </dd>
    *   <dt>
    *     string <var>s_color_background</var>
    *   </dt>
    *   <dd>
-   *     Shape background color.
+   *     The shape's background color.
    *   </dd>
    *   <dt>
    *     string <var>s_color_foreground</var>
    *   </dt>
    *   <dd>
-   *     Shape foreground color.
+   *     The shape's foreground color.
    *   </dd>
    *   <dt>
    *     string <var>s_text</var>
    *   </dt>
    *   <dd>
-   *     Shape title.
+   *     The shape's title.
    *   </dd>
    * </dl>
    *
@@ -117,18 +117,18 @@ class LayoutModel extends WlModelAbstract
   public $a_shape_custom = [];
 
   /**
-   * List of shapes-icons. Every element - array with keys:
+   * A list of shapes and icons. Every element is an array with the following keys:
    * <dl>
    *   <dt>int <var>i_cell_x</var></dt>
-   *   <dd>Number of cell. Position by horizontal axis. Empty if grid is turned off.</dd>
+   *   <dd>The cell number, positioned by the horizontal axis. Empty if grid is turned off.</dd>
    *   <dt>int <var>i_cell_y</var></dt>
-   *   <dd>Number of cell. Position by vertical axis. Empty if grid is turned off.</dd>
+   *   <dd>The cell number, positioned by the vertical axis. Empty if grid is turned off.</dd>
    *   <dt>int <var>i_left</var></dt>
-   *   <dd>Horizontal position in pixels. Empty if grid is turned on.</dd>
+   *   <dd>The horizontal position in pixels. Empty if grid is turned on.</dd>
    *   <dt>int <var>i_top</var></dt>
-   *   <dd>Vertical position in pixels. Empty if grid is turned on.</dd>
+   *   <dd>The vertical position in pixels. Empty if grid is turned on.</dd>
    *   <dt>int <var>id_shape_icon</var></dt>
-   *   <dd>Icon ID. One of constants {@link \WellnessLiving\Wl\Resource\Image\ImageIconSid}.</dd>
+   *   <dd>The icon ID. One of the {@link \WellnessLiving\Wl\Resource\Image\ImageIconSid} constants.</dd>
    * </dl>
    *
    * @get result
@@ -137,7 +137,7 @@ class LayoutModel extends WlModelAbstract
   public $a_shape_icon = [];
 
   /**
-   * Grid size.
+   * The grid size.
    *
    * @get result
    * @type {int}
@@ -145,7 +145,7 @@ class LayoutModel extends WlModelAbstract
   public $i_grid = 0;
 
   /**
-   * <tt>true</tt> - snap to grid; <tt>false</tt> - otherwise.
+   * This will be `true` if snap to grid is enabled. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -153,9 +153,9 @@ class LayoutModel extends WlModelAbstract
   public $is_grid = false;
 
   /**
-   * ID of layout.
+   * The ID of the layout.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @type {string|null}
@@ -163,7 +163,7 @@ class LayoutModel extends WlModelAbstract
   public $k_resource_layout = null;
 
   /**
-   * ID of asset category.
+   * The ID of the asset category.
    *
    * @get result
    * @type {string}
@@ -171,7 +171,7 @@ class LayoutModel extends WlModelAbstract
   public $k_resource_type = '0';
 
   /**
-   * Color for active assets. Hex encoding with prefix <tt>#</tt>.
+   * The color for active assets. Hex encoding with prefix `#`.
    *
    * @get result
    * @type {string}
@@ -179,7 +179,7 @@ class LayoutModel extends WlModelAbstract
   public $s_color_active = '';
 
   /**
-   * <tt>true</tt> - show assets names; <tt>false</tt> - otherwise.
+   * This will be `true` if asset names are displayed. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -187,7 +187,7 @@ class LayoutModel extends WlModelAbstract
   public $show_name = false;
 
   /**
-   * <tt>true</tt> - show assets numbers; <tt>false</tt> - otherwise.
+   * This will be `true` if asset numbers are displayed. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}

@@ -42,7 +42,6 @@ class DataModel extends WlModelAbstract
    *   <tr><td>PAY_TRANSACTION_BATCH</td><td>77</td><td>Batch Report</td></tr>
    *   <tr><td>PURCHASE_ITEM_LIST_USER</td><td>118</td><td>Sales per Client Report</td></tr>
    *   <tr><td>PURCHASE_ITEM_ACCRUAL_CASH</td><td>123</td><td>All Sales Report</td></tr>
-   *   <tr><td>PURCHASE_ITEM_ACCRUAL_SUMMARY</td><td>133</td><td>Sales Summary</td></tr>
    * </table>
    *
    * @get get

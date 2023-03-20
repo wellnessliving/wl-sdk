@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Purchase\Share;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Shares the purchase to specified social network.
+ * An endpoint that shares a purchase to a specified social network.
  */
 class PurchaseShareModel extends WlModelAbstract
 {
   /**
-   * Social network. One of {@link \WellnessLiving\Core\a\ASocialSid} constants.
+   * The social network. One of the {@link \WellnessLiving\Core\a\ASocialSid} constants.
    *
    * @post post
    * @var int
@@ -18,7 +18,7 @@ class PurchaseShareModel extends WlModelAbstract
   public $id_social = 0;
 
   /**
-   * Key of the purchase.
+   * The key of the purchase.
    *
    * @post post
    * @var string
@@ -26,7 +26,7 @@ class PurchaseShareModel extends WlModelAbstract
   public $k_purchase = '0';
 
   /**
-   * Url to sharing page.
+   * The URL to the sharing page.
    *
    * @post result
    * @var string
