@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Review;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Api for add reply of review.
+ * An endpoint that adds a review reply.
  */
 class ReviewReplyModel extends WlModelAbstract
 {
   /**
-   * Review key.
+   * The review key.
    *
    * @post post
    * @var string
@@ -18,7 +18,7 @@ class ReviewReplyModel extends WlModelAbstract
   public $k_review;
 
   /**
-   * Reply text for review.
+   * The reply text for review.
    *
    * @post post
    * @var string
