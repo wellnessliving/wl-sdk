@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Review\ReviewList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Returns information about a review.
+ * An endpoint that returns information about a review.
  */
 class ReviewElementModel extends WlModelAbstract
 {
@@ -28,10 +28,10 @@ class ReviewElementModel extends WlModelAbstract
    *     bool <var>is_verify</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if review is verified, <tt>false</tt> otherwise.
+   *     If `true`, the review is verified. Otherwise, this will be `false`.
    *   </dd>
    *   <dd>
-   *     Review rate.
+   *     The review rate.
    *   </dd>
    *   <dt>
    *     string <var>s_firstname</var>
@@ -49,8 +49,8 @@ class ReviewElementModel extends WlModelAbstract
    *     string <var>s_reply</var>
    *   </dt>
    *   <dd>
-   *     The staff members of the business have the option to reply to reviews. This is the text of the reply; if there
-   *     is no reply, then this willl be an empty string.
+   *     The staff members of the business who have the option to reply to reviews. This is the text of the reply. If there
+   *     is no reply, then this will be an empty string.
    *   </dd>
    *   <dt>
    *     string <var>s_text</var>
@@ -68,7 +68,7 @@ class ReviewElementModel extends WlModelAbstract
    *     string <var>url_logo</var>
    *   </dt>
    *   <dd>
-   *     User logo.
+   *     The user logo.
    *   </dd>
    * </dl>
    *
@@ -78,7 +78,7 @@ class ReviewElementModel extends WlModelAbstract
   public $a_review;
 
   /**
-   * Key of the business to which the review belongs.
+   * The key of the business to which the review belongs.
    *
    * @get get
    * @var string
@@ -96,7 +96,7 @@ class ReviewElementModel extends WlModelAbstract
   /**
    * The user key.
    *
-   * May be empty for a case of quest.
+   * May be empty in the case of a request.
    *
    * @get get
    * @var string
