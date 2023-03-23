@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Schedule\ScheduleList\StaffApp;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Gets information about sessions (both classes and appointments) at a business on a given day.
+ * An endpoint that gets information about sessions (both classes and appointments) at a business on a given day.
  */
 class ScheduleListModel extends WlModelAbstract
 {
   /**
-   * The sessions of the schedule. They are sorted in chronological order and in ascending order.
+   * The sessions present on the business schedule. These are sorted chronologically in ascending order.
    * Every element has the following keys:
    * <dl>
    *   <dt>
@@ -29,7 +29,7 @@ class ScheduleListModel extends WlModelAbstract
    *     string[] <var>a_user</var>
    *   </dt>
    *   <dd>
-   *     For Appointments, this is a list of the names of users who are scheduled to attend the session.
+   *     For appointments, this is a list of the names of users who are scheduled to attend the session.
    *   </dd>
    *   <dt>
    *     string <var>dt_date</var>
@@ -41,7 +41,7 @@ class ScheduleListModel extends WlModelAbstract
    *     string <var>dt_date_cancel</var>
    *   </dt>
    *   <dd>
-   *     The date/time when the session was cancelled in UTC. Only used for Appointments.
+   *     The date/time when the session was canceled in UTC. Only used for appointments.
    *   </dd>
    *   <dt>
    *     string <var>dt_date_local</var>
@@ -71,20 +71,20 @@ class ScheduleListModel extends WlModelAbstract
    *     int <var>i_padding_after</var>
    *   </dt>
    *   <dd>
-   *     The padding time after the session in minutes. Only used for Appointments.
+   *     The padding time after the session in minutes. Only used for appointments.
    *   </dd>
    *   <dt>
    *     int <var>i_padding_before</var>
    *   </dt>
    *   <dd>
-   *     The padding time before the session in minutes. Only used for Appointments.
+   *     The padding time before the session in minutes. Only used for appointments.
    *   </dd>
    *   <dt>
    *     int <var>i_start</var>
    *   </dt>
    *   <dd>
-   *     The start time in minutes.
-   *     A Class starting at 10:30 in the morning local time will have an i_start value of 630.
+   *     The start time in minutes after midnight.
+   *     For example, a class starting at 10:30 in the morning local time will have an `i_start` value of 630.
    *   </dd>
    *   <dt>
    *     int <var>id_service</var>
@@ -96,19 +96,19 @@ class ScheduleListModel extends WlModelAbstract
    *     string <var>k_appointment</var>
    *   </dt>
    *   <dd>
-   *     The appointment key. If the session is not an Appointment, this will be `0`.
+   *     The appointment key. If the session isn't an appointment, this will be `0`.
    *   </dd>
    *   <dt>
    *     string <var>k_class</var>
    *   </dt>
    *   <dd>
-   *     The class key. If the session is not a Class, this will be `0`.
+   *     The class key. If the session isn't a class, this will be `0`.
    *   </dd>
    *   <dt>
    *     string <var>k_class_period</var>
    *   </dt>
    *   <dd>
-   *     The class period key. If the session is not a Class, this will be `0`.
+   *     The class period key. If the session isn't a class, this will be `0`.
    *   </dd>
    *   <dt>
    *     string <var>k_location</var>
@@ -120,8 +120,8 @@ class ScheduleListModel extends WlModelAbstract
    *     string <var>k_service</var>
    *   </dt>
    *   <dd>
-   *     This is the key of the appointment type, while k_appointment is the specific instance.
-   *     For other cases it will be `0`.
+   *     This is the key of the appointment type, while `k_appointment` is the specific instance.
+   *     For other cases, this will be `0`.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
@@ -149,9 +149,9 @@ class ScheduleListModel extends WlModelAbstract
   public $a_schedule = [];
 
   /**
-   * End date of the range from which list of schedule should be retrieved.
+   * The end date of the range from which the list of schedule sessions should be retrieved.
    *
-   * <tt>null</tt> if range has no end date.
+   * This will be `null` if the range has no end date.
    *
    * @get get
    * @var string
@@ -159,9 +159,9 @@ class ScheduleListModel extends WlModelAbstract
   public $dl_end;
 
   /**
-   * Start date of the range from which list of schedule should be retrieved.
+   * The start date of the range from which the list of scheduled sessions should be retrieved.
    *
-   * <tt>null</tt> if range has no start date.
+   * This will be `null` if the range has no start date.
    *
    * @get get
    * @var string
@@ -169,7 +169,7 @@ class ScheduleListModel extends WlModelAbstract
   public $dl_start;
 
   /**
-   * The date of the sessions in Coordinated Universal Time (UTC) in MySQL format.
+   * The date of the sessions in Coordinated Universal Time (UTC) and MySQL format.
    *
    * @get get
    * @var string
