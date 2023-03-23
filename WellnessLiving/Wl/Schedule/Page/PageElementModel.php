@@ -5,18 +5,18 @@ namespace WellnessLiving\Wl\Schedule\Page;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Returns information about a specified visit.
+ * An endpoint that returns information about a specified visit.
  */
 class PageElementModel extends WlModelAbstract
 {
   /**
    * A list of staff members involved in the visit.
    * Each element is an array with the following elements:
-   * <ul><li>String <tt>k_staff</tt> The staff member’s ID.</li>
-   * <li>String <tt>s_family</tt> The surname of the staff member.</li>
-   * <li>String <tt>s_name</tt> The first name of the staff member.</li></ul>
+   * <ul><li>String `k_staff` The staff member’s ID.</li>
+   * <li>String `s_family` The surname of the staff member.</li>
+   * <li>String `s_name` The first name of the staff member.</li></ul>
    *
-   * It is `null` if not loaded yet.
+   * This will be `null` if not loaded yet.
    *
    * @get result
    * @var array|null
@@ -24,9 +24,9 @@ class PageElementModel extends WlModelAbstract
   public $a_staff = null;
 
   /**
-   * The latest date and time for when the visit can be cancelled without penalty.
+   * The latest date and time for when the visit can be canceled without penalty.
    *
-   * It is `null` if not loaded yet.
+   * This will be `null` if not loaded yet.
    *
    * @get result
    * @var string|null
@@ -36,7 +36,7 @@ class PageElementModel extends WlModelAbstract
   /**
    * The date and time of the visit in UTC.
    *
-   * It is `null` if not loaded yet.
+   * This will be `null` if not loaded yet.
    *
    * @get result
    * @var string|null
@@ -46,7 +46,7 @@ class PageElementModel extends WlModelAbstract
   /**
    * The date and time of the visit in the local time zone.
    *
-   * It is `null` if not loaded yet.
+   * This will be `null` if not loaded yet.
    *
    * @get result
    * @var string|null
@@ -54,9 +54,9 @@ class PageElementModel extends WlModelAbstract
   public $dt_date_local = null;
 
   /**
-   * The special instructions for service.
+   * The special instructions for the service.
    *
-   * It is `null` if not loaded yet.
+   * This will be `null` if not loaded yet.
    *
    * @get result
    * @var string|null
@@ -66,7 +66,7 @@ class PageElementModel extends WlModelAbstract
   /**
    * The scheduled duration of the visit.
    *
-   * It is `null` if not loaded yet.
+   * This will be `null` if not loaded yet.
    *
    * @get result
    * @var int|null
@@ -74,10 +74,10 @@ class PageElementModel extends WlModelAbstract
   public $i_duration = null;
 
   /**
-   * The note type; this will be set to `null` if notes are not allowed.
+   * The note type. This will be set to `null` if notes aren't allowed.
    * This is one of the {@link WlVisitNoteSid} constants.
    *
-   * It is `null` if notes not allowed.
+   * This will be `null` if notes aren't allowed.
    *
    * @get result
    * @var int|null
@@ -85,9 +85,9 @@ class PageElementModel extends WlModelAbstract
   public $id_note = null;
 
   /**
-   * Virtual provider ID. One of {@link \Wl\Virtual\VirtualProviderSid} constants.
+   * The virtual provider ID. One of the {@link \WellnessLiving\Wl\Virtual\VirtualProviderSid} constants.
    *
-   * It is `null` for not virtual classes.
+   * This will be `null` for non-virtual services.
    *
    * @get result
    * @var int|null
@@ -97,7 +97,7 @@ class PageElementModel extends WlModelAbstract
   /**
    * The visit type. One of the {@link VisitSid} constants.
    *
-   * It is `null` if not loaded yet.
+   * This will be `null` if not loaded yet.
    *
    * @get result
    * @var int|null
@@ -105,9 +105,9 @@ class PageElementModel extends WlModelAbstract
   public $id_visit = null;
 
   /**
-   * If `true`, then this visit is ready to be checked in. If `false` then this visit cannot be checked in.
+   * If `true`, then this visit is ready to be checked in. If `false`, then this visit can't be checked in.
    *
-   * It is `null` if not loaded yet.
+   * This will be `null` if not loaded yet.
    *
    * @get result
    * @var bool|null
@@ -115,7 +115,7 @@ class PageElementModel extends WlModelAbstract
   public $is_checkin = null;
 
   /**
-   * <tt>true</tt> - if client can cancel session; <tt>false</tt> - otherwise.
+   * This will be `true` if clients can cancel the session. Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
@@ -123,9 +123,9 @@ class PageElementModel extends WlModelAbstract
   public $is_enable_client_cancel = null;
 
   /**
-   * If `true` then this visit is a part of a larger event. If `false` then this visit is an individual session.
+   * If `true`, then this visit is a part of a larger event. If `false`, then this visit is an individual session.
    *
-   * It is `null` if not loaded yet.
+   * This will be `null` if not loaded yet.
    *
    * @get result
    * @var bool|null
@@ -136,7 +136,7 @@ class PageElementModel extends WlModelAbstract
    * The appointment ID.
    * This will be set only if the visit is an appointment. If the visit is a class or event, this will be `null`.
    *
-   * It is `null` if not loaded yet.
+   * This will be `null` if not loaded yet.
    *
    * @get result
    * @var string|null
@@ -145,9 +145,9 @@ class PageElementModel extends WlModelAbstract
 
   /**
    * The class period ID. This will be set only if the visit is a class or an event.
-   * If the visit is an appointment, this is null.
+   * If the visit is an appointment, this will be `null`.
    *
-   * It is `null` if not loaded yet.
+   * This will be `null` if not loaded yet.
    *
    * @get result
    * @var string|null
@@ -155,9 +155,9 @@ class PageElementModel extends WlModelAbstract
   public $k_class_period = null;
 
   /**
-   * Location ID.
+   * The location ID.
    *
-   * It is `null` if not loaded yet.
+   * This will be `null` if not loaded yet.
    *
    * @get result
    * @var string|null
@@ -167,7 +167,7 @@ class PageElementModel extends WlModelAbstract
   /**
    * The sale item key.
    *
-   * It is `null` if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -177,7 +177,7 @@ class PageElementModel extends WlModelAbstract
   /**
    * The name of class or service.
    *
-   * It is `null` if not loaded yet.
+   * This will be `null` if not loaded yet.
    *
    * @get result
    * @var string|null
@@ -185,9 +185,9 @@ class PageElementModel extends WlModelAbstract
   public $s_title = null;
 
   /**
-   * User ID.
+   * The user ID.
    *
-   * It is `null` if not loaded yet.
+   * This will be `null` if not loaded yet.
    *
    * @get result
    * @var string|null
