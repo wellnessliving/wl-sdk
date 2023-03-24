@@ -30,6 +30,15 @@ class CategoryModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
+   * <tt>true</tt> - find in all tab;
+   * <tt>false</tt> - find only on selected book tab.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_tab_all = false;
+
+  /**
    * The class tab ID to filter services.
    *
    * <tt>null</tt> if not set yet.
