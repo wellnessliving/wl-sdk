@@ -6,27 +6,27 @@ use WellnessLiving\Wl\Business\BusinessCategorySid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Returns list of all existing in the system search tags.
+ * An endpoint that returns a list of all existing search tags in the system.
  *
- * Search tags can be used for quick search between businesses and services. Mainly in the directories.
+ * Search tags can be used for quick searches between businesses and services (mainly in the directories).
  */
 class SearchTagListModel extends WlModelAbstract
 {
   /**
-   * List of all tags.
+   * A list of all the search tags.
    *
-   * Each element is an array:
+   * Each element is an array with the following keys:
    * <dl>
    *   <dt>int <var>id_business_category</var></dt>
    *   <dd>
-   *     Category of the business, which can use this search tag.
+   *     The business category that can use this search tag.
    *     One of the {@link BusinessCategorySid} constants.
-   *     Can be found in business information here {@link \WellnessLiving\Wl\Business\DataModel::$id_category}.
+   *     This can be found in the business information found in {@link \WellnessLiving\Wl\Business\DataModel::$id_category}.
    *   </dd>
    *   <dt>string <var>k_search_tag</var></dt>
-   *   <dd>Key of the tag, primary key in the table of tags.</dd>
+   *   <dd>The key of the tag. The primary key in the table of tags.</dd>
    *   <dt>string <var>text_title</var></dt>
-   *   <dd>Name of the tag.</dd>
+   *   <dd>The name of the tag.</dd>
    * </dl>
    *
    * @get result
