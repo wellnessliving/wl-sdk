@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Shop\Category;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Returns a list of all categories in a particular business’s shop.
+ * An endpoint that returns a list of all categories in a business’s store.
  */
 class CategoryModel extends WlModelAbstract
 {
   /**
-   * An array containing information about all shop categories.
+   * An array containing information about all store categories.
    * Each array element is an array containing the following fields:
    * <dl>
    *   <dt>int <var>i_order</var></dt>
@@ -28,9 +28,9 @@ class CategoryModel extends WlModelAbstract
   public $a_shop_category=[];
 
   /**
-   * The business key of the business to get shop categories for.
+   * The key of the business to get shop categories for.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
