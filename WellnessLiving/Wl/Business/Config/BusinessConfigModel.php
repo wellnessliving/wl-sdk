@@ -58,6 +58,8 @@ class BusinessConfigModel extends WlModelAbstract
    *   <dd>The timezone from get.timezone table.</dd>
    *   <dt>string <var>m_payment_penalty</var></dt>
    *   <dd>The penalty amount to charge after the final auto-payment attempt.</dd>
+   *   <dt>string <var>url_custom</var></dt>
+   *   <dd>Custom URL from Business URLs.</dd>
    * </dl>
    *
    * @get result
