@@ -68,6 +68,8 @@ class AssetListModel extends WlModelAbstract
    *       <dt>sting <var>m_price</var></dt><dd>Price of the asset period.</dd>
    *     </dl>
    *   </dd>
+   *   <dt>array <var>a_search_tag</var></dt>
+   *   <dd>QUICK Search Tag Ids.</dd>
    *   <dt>bool <var>hide_application</var></dt>
    *   <dd>Whether asset will be hidden in the White Label mobile application. `true` means that asset will not be displayed, `false` otherwise.</dd>
    *   <dt>string <var>html_age_restriction</var></dt>
