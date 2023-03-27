@@ -20,7 +20,7 @@ abstract class AGenderSid
   /**
    * Gender is undefined in case when user prefer not to say.
    */
-  public const UNDEFINED = 3;
+  const UNDEFINED = 3;
 }
 
 ?>
