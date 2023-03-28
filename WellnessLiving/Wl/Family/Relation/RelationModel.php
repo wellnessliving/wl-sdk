@@ -33,6 +33,15 @@ class RelationModel extends WlModelAbstract
    * <dl>
    *   <dt>int <var>id_family_relation</var></dt>
    *   <dd>Type of family relation. One of {@link WlFamilyRelationSid} constants.</dd>
+   *   <dt>int <var>id_family_relation_reverse</var></dt>
+   *   <dd>The type fo reciprocated relationship. One of {@link WlFamilyRelationSid} constants.</dd>
+   *   <dt>string <var>text_name</var></dt>
+   *   <dd>The name of the relation.</dd>
+   *   <dt>string <var>text_name_first</var></dt>
+   *   <dd>The first name of the relation.</dd>
+   *   <dt>string <var>uid</var></dt>
+   *   <dd>The key of the related user.</dd>
+
    * </d;>
    *
    * @delete result
