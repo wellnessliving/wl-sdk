@@ -24,9 +24,10 @@ class PurchaseModel extends WlModelAbstract
    * <dl>
    *   <dt>array <var>a_login_promotion_info</var></dt>
    *   <dd>
+   *      Information about the Purchase Option. It contains the following information:
    *      <dl>
    *        <dt>int <var>i_limit</var></dt>
-   *        <dd>The count of visits that purchase option allows to make.</dd>
+   *        <dd>The count of visits that the purchase option allows the client to make.</dd>
    *        <dt>int|null <var>i_limit_duration</var></dt>
    *        <dd>The maximum number of minutes that current promotion can be used.</dd>
    *        <dt>int <var>i_remain</var></dt>
@@ -41,31 +42,31 @@ class PurchaseModel extends WlModelAbstract
    *   <dd>The data about the shortest restriction period:
    *     <dl>
    *       <dt>int <var>i_limit</var></dt>
-   *       <dd>The limit of visits for shortest restriction period.</dd>
+   *       <dd>The limit of visits for the shortest restriction period.</dd>
    *       <dt>int <var>i_remain</var></dt>
-   *       <dd>The number of remain visits for shortest restriction period.</dd>
+   *       <dd>The number of remaining visits for the shortest restriction period.</dd>
    *       <dt>string <var>text_restriction</var></dt>
-   *       <dd>The description of shortest restriction period, for example "this week" or "for 4 day period".</dd>
+   *       <dd>The description of the shortest restriction period, for example "this week" or "for a 4 day period".</dd>
    *     </dl>
    *   </dd>
    *   <dt>array[] <var>a_restrict_data</var></dt>
-   *   <dd>The data about all restriction periods. Given as an array, where each record has following structure:
+   *   <dd>The data about all restriction periods. Given as an array, where each record has the following structure:
    *     <dl>
    *       <dt>int <var>i_book</var></dt>
    *       <dd>The count of future sessions that are paid with this promotion.</dd>
    *       <dt>int <var>i_limit</var></dt>
-   *       <dd>The limit of visits for restriction period.</dd>
+   *       <dd>The limit of visits for the restriction period.</dd>
    *       <dt>int <var>i_remain</var></dt>
-   *       <dd>The number of remain visits for restriction period.</dd>
+   *       <dd>The number of remaining visits for the restriction period.</dd>
    *       <dt>int <var>i_use</var></dt>
    *       <dd>The count of usage of the promotion.</dd>
    *       <dt>int <var>i_visit_past</var></dt>
    *       <dd>
    *         The count of attended sessions before the last renewal.
-   *         `0` if no sessions before the last renew or the promotion does not auto-renew.
+   *         `0` if no sessions before the last renewal or the promotion does not auto-renew.
    *       </dd>
    *       <dt>string <var>text_restriction</var></dt>
-   *       <dd>The description of restriction period, for example "this week" or "for 4 day period".</dd>
+   *       <dd>The description of restriction period, for example "this week" or "for a 4 day period".</dd>
    *     </dl>
    *   </dd>
    *   <dt>int <var>i_limit</var></dt>

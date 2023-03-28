@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Family\Relation;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Data about user's family.
+ * Data about the user's family.
  */
 class RelationModel extends WlModelAbstract
 {
@@ -29,7 +29,7 @@ class RelationModel extends WlModelAbstract
   public $a_new = [];
 
   /**
-   * Information about user's family relations. Every element has next fields:
+   * Information about user's family relations. Every element has the following fields:
    * <dl>
    *   <dt>int <var>id_family_relation</var></dt>
    *   <dd>Type of family relation. One of {@link WlFamilyRelationSid} constants.</dd>
@@ -62,7 +62,7 @@ class RelationModel extends WlModelAbstract
   public $k_business;
 
   /**
-   * They key of the user whose relatives we will work with.
+   * The key of the user whose relatives we will work with.
    *
    * @delete get
    * @get get

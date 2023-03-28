@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information of a certain business.
+ * Information for a specified business.
  */
 class DataModel extends WlModelAbstract
 {
@@ -22,7 +22,7 @@ class DataModel extends WlModelAbstract
   /**
    * Business category ID of the business.
    *
-   * Constant from {@link BusinessCategorySid}.
+   * A constant from {@link BusinessCategorySid}.
    *
    * @get result
    * @var int
@@ -135,7 +135,8 @@ class DataModel extends WlModelAbstract
 
   /**
    * The authorization token.
-   * May be used instead of {@link \WellnessLiving\Wl\Business\DataModel::$k_business}.
+   * This may be used instead of {@link \WellnessLiving\Wl\Business\DataModel::$k_business} to
+   * identify a business.
    *
    * @get get
    * @var string
