@@ -23,7 +23,6 @@ class PermissionModel extends WlModelAbstract
      *
      * @post get
      * @var string
-     * @see \RsLoginPromotionSql
      */
     public $k_login_promotion = '0';
 }
