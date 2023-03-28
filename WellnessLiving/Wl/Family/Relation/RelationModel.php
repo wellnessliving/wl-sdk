@@ -29,12 +29,12 @@ class RelationModel extends WlModelAbstract
   public $a_new = [];
 
   /**
-   * Information about user's family relations. Every element has the following fields:
+   * Information about the user's family relations. Every element has the following fields:
    * <dl>
    *   <dt>int <var>id_family_relation</var></dt>
    *   <dd>Type of family relation. One of {@link WlFamilyRelationSid} constants.</dd>
    *   <dt>int <var>id_family_relation_reverse</var></dt>
-   *   <dd>The type fo reciprocated relationship. One of {@link WlFamilyRelationSid} constants.</dd>
+   *   <dd>The type of reciprocated relationship. One of {@link WlFamilyRelationSid} constants.</dd>
    *   <dt>string <var>text_name</var></dt>
    *   <dd>The name of the relation.</dd>
    *   <dt>string <var>text_name_first</var></dt>
