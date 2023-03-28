@@ -12,14 +12,14 @@ use WellnessLiving\WlModelAbstract;
 class ApplicationResourceModel extends WlModelAbstract
 {
   /**
-   * The placeholder of application ID.
+   * The application ID placeholder.
    */
   const ID = '[ID]';
 
   /**
    * The application data.
    *
-   * This will be `null` until loaded.
+   * This will be `null` if not loaded yet.
    *
    * @get result
    * @var array[]|null
@@ -39,7 +39,7 @@ class ApplicationResourceModel extends WlModelAbstract
    *
    * @param string $k_business The key of a business for that sources are making.
    * @param string $s_sources The path to the directory with the sources that must be processed.
-   * @throws WlAssertException Used in a case of an error.
+   * @throws WlAssertException in the case of an error.
    */
   private function _communication($k_business,$s_sources)
   {
@@ -56,7 +56,7 @@ class ApplicationResourceModel extends WlModelAbstract
    *
    * @param string $k_business The key of a business for that sources are making.
    * @param string $s_sources The path to the directory with the sources that must be processed.
-   * @throws WlAssertException Used in a case of an error.
+   * @throws WlAssertException in the case of an error.
    */
   private function _config($k_business, $s_sources)
   {
@@ -93,7 +93,7 @@ class ApplicationResourceModel extends WlModelAbstract
    *   <dt>string <var>s_placeholder</var></dt>
    *   <dd>The placeholder in the source file to be replaced by data.</dd>
    * </dl>
-   * @throws WlAssertException Used in a case of an error.
+   * @throws WlAssertException in the case of an error.
    */
   private function _file($k_business, $s_sources, $s_file, $a_data)
   {
@@ -147,7 +147,7 @@ class ApplicationResourceModel extends WlModelAbstract
    *
    * @param string $k_business Key of a business for that sources are making.
    * @param string $s_sources The path to the directory with the sources that must be processed.
-   * @throws WlAssertException Used in a case of an error.
+   * @throws WlAssertException in the case of an error.
    */
   private function _google($k_business, $s_sources)
   {
@@ -164,7 +164,7 @@ class ApplicationResourceModel extends WlModelAbstract
    *
    * @param string $k_business Key of a business for that sources are making.
    * @param string $s_sources The path to the directory with the sources that must be processed.
-   * @throws WlAssertException Used in a case of an error.
+   * @throws WlAssertException in the case of an error.
    */
   private function _index($k_business, $s_sources)
   {
@@ -181,7 +181,7 @@ class ApplicationResourceModel extends WlModelAbstract
    *
    * @param string $k_business Key of a business for that sources are making.
    * @param string $s_sources The path to the directory with the sources that must be processed.
-   * @throws WlAssertException Used in a case of an error.
+   * @throws WlAssertException in the case of an error.
    */
   private function _resource($k_business, $s_sources)
   {
@@ -270,7 +270,7 @@ class ApplicationResourceModel extends WlModelAbstract
    *
    * @param string $s_source The directory with raw sources.
    * @param string $s_destination The directory with ready sources for certain application.
-   * @throws WlAssertException Used in a case of an error.
+   * @throws WlAssertException in the case of an error.
    */
   public function sources($s_source, $s_destination)
   {
