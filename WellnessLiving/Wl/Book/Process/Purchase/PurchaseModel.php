@@ -32,11 +32,11 @@ class PurchaseModel extends WlModelAbstract
    *   <dd>The data about the shortest restriction period:
    *     <dl>
    *       <dt>int <var>i_limit</var></dt>
-   *       <dd>The limit of visits for shortest restriction period</dd>
+   *       <dd>The limit of visits for shortest restriction period.</dd>
    *       <dt>int <var>i_remain</var></dt>
-   *       <dd>The number of remain visits for shortest restriction period</dd>
+   *       <dd>The number of remain visits for shortest restriction period.</dd>
    *       <dt>string <var>text_restriction</var></dt>
-   *       <dd>The description of shortest restriction period, for example "this week" or "for 4 day period"</dd>
+   *       <dd>The description of shortest restriction period, for example "this week" or "for 4 day period".</dd>
    *     </dl>
    *   </dd>
    *   <dt>array[] <var>a_restrict_data</var></dt>
@@ -45,9 +45,9 @@ class PurchaseModel extends WlModelAbstract
    *       <dt>int <var>i_book</var></dt>
    *       <dd>The count of future sessions that are paid with this promotion.</dd>
    *       <dt>int <var>i_limit</var></dt>
-   *       <dd>The limit of visits for restriction period</dd>
+   *       <dd>The limit of visits for restriction period.</dd>
    *       <dt>int <var>i_remain</var></dt>
-   *       <dd>The number of remain visits for restriction period</dd>
+   *       <dd>The number of remain visits for restriction period.</dd>
    *       <dt>int <var>i_use</var></dt>
    *       <dd>The count of usage of the promotion.</dd>
    *       <dt>int <var>i_visit_past</var></dt>
@@ -56,7 +56,7 @@ class PurchaseModel extends WlModelAbstract
    *         `0` if no sessions before the last renew or the promotion does not auto-renew.
    *       </dd>
    *       <dt>string <var>text_restriction</var></dt>
-   *       <dd>The description of restriction period, for example "this week" or "for 4 day period"</dd>
+   *       <dd>The description of restriction period, for example "this week" or "for 4 day period".</dd>
    *     </dl>
    *   </dd>
    *   <dt>int <var>i_limit</var></dt>
