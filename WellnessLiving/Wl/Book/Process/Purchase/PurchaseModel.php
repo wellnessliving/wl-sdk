@@ -83,7 +83,7 @@ class PurchaseModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public array $a_login_promotion = [];
+  public $a_login_promotion = [];
 
   /**
    * A list of Purchase Options which are available for session(s) that are being booked. Keys - unique string IDs. Values - arrays with the next keys:
