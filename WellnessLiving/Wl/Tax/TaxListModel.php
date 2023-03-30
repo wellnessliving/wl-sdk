@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Tax;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves a list of taxes for a business.
+ * An endpoint that retrieves a list of taxes for a business.
  */
 class TaxListModel extends WlModelAbstract
 {
