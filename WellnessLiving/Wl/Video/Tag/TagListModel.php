@@ -5,16 +5,16 @@ namespace WellnessLiving\Wl\Video\Tag;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Api for get video tags.
+ * An endpoint that retrieves video tags.
  */
 class TagListModel extends WlModelAbstract
 {
   /**
-   * List of video tags. Has next structure: <dl>
+   * A list of video tags with the following structure: <dl>
    *   <dt>string <var>k_video_tag</var></dt>
-   *   <dd>Video tag key.</dd>
+   *   <dd>The video tag key.</dd>
    *   <dt>string <var>text_title</var></dt>
-   *   <dd>Title of the video tag.</dd>
+   *   <dd>The video tag title.</dd>
    * </dl>
    *
    * @get result
@@ -23,7 +23,7 @@ class TagListModel extends WlModelAbstract
   public $a_tag_list = [];
 
   /**
-   * Business key.
+   * The business key.
    *
    * @get get
    * @var string

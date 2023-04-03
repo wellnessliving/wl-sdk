@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Video\Watch;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Saves information about watch video.
+ * An endpoint that saves information about a watched video.
  */
 class WatchModel extends WlModelAbstract
 {
   /**
-   * Current time in seconds at which the user is at in the video.
+   * The current time in seconds the user is at in the video.
    *
    * @post post
    * @put post
@@ -19,7 +19,7 @@ class WatchModel extends WlModelAbstract
   public $i_current_time;
 
   /**
-   * Duration in seconds which user has watched the video.
+   * The duration in seconds the user has watched the video for.
    *
    * @put post
    * @var int
@@ -27,7 +27,7 @@ class WatchModel extends WlModelAbstract
   public $i_watched;
 
   /**
-   * Source ID.
+   * The source ID.
    *
    * @post post
    * @var int
@@ -35,7 +35,7 @@ class WatchModel extends WlModelAbstract
   public $id_source;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @post post
    * @put post
@@ -44,7 +44,7 @@ class WatchModel extends WlModelAbstract
   public $k_business;
 
   /**
-   * String key of the video.
+   * The video string key.
    *
    * @post post
    * @var string
@@ -52,7 +52,7 @@ class WatchModel extends WlModelAbstract
   public $k_video;
 
   /**
-   * Video watch key.
+   * The video watch key.
    *
    * @post result
    * @put post
