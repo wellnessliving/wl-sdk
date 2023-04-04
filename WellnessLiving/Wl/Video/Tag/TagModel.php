@@ -5,13 +5,12 @@ namespace WellnessLiving\Wl\Video\Tag;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Api for retrieves/change/delete video tag.
+ * An endpoint that retrieves, changes, or deletes a video tag.
  */
 class TagModel extends WlModelAbstract
 {
   /**
-   * <tt>true</tt> if confirmation for delete video tag which currently
-   * associated to one or more videos, <tt>false</tt> otherwise.
+   * If `true`, confirmation is required to delete videos. Otherwise, this will be `false`.
    *
    * @delete get
    * @var bool
@@ -19,7 +18,7 @@ class TagModel extends WlModelAbstract
   public $is_delete_confirm;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @delete get
    * @get get
@@ -30,7 +29,7 @@ class TagModel extends WlModelAbstract
   public $k_business;
 
   /**
-   * Video tag key.
+   * The video tag key.
    *
    * @delete get
    * @get get
@@ -41,7 +40,7 @@ class TagModel extends WlModelAbstract
   public $k_video_tag;
 
   /**
-   * Title of the video tag.
+   * The video tag title.
    *
    * @post post
    * @put post
