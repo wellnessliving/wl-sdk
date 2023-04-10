@@ -33,16 +33,20 @@ class DataModel extends WlModelAbstract
   public $i_page = 0;
 
   /**
-   * The report ID. One of the {@link \WellnessLiving\Wl\Report\WlReportSid} constants. The following reports are currently
+   * The report ID. One of the {@link WlReportSid} constants. The following reports are currently
    * available:
-   * <table>
-   *   <tr><th>ID Name</td><th>ID Number</th><th>Name and Description</th></tr>
-   *   <tr><td>LOGIN_LIST</td><td>22</td><td>All Clients Report (Reports tab, features date search)</td></tr>
-   *   <tr><td>LOGIN_LIST_ALL</td><td>33</td><td>All Clients Report (Clients tab) Batch Report</td></tr>
-   *   <tr><td>PAY_TRANSACTION_BATCH</td><td>77</td><td>Batch Report</td></tr>
-   *   <tr><td>PURCHASE_ITEM_LIST_USER</td><td>118</td><td>Sales per Client Report</td></tr>
-   *   <tr><td>PURCHASE_ITEM_ACCRUAL_CASH</td><td>123</td><td>All Sales Report</td></tr>
-   * </table>
+   * <dl>
+   *   <dt>LOGIN_LIST (ID 22)</dt>
+   *   <dd>All Clients Report (Reports tab, features date search)</dd>
+   *   <dt>LOGIN_LIST_ALL (ID 33)</dt>
+   *   <dd>All Clients Report (Clients tab) Batch Report</dd>
+   *   <dt>PAY_TRANSACTION_BATCH (ID 77)</dt>
+   *   <dd>Batch Report</dd>
+   *   <dt>PURCHASE_ITEM_LIST_USER (ID 118)</dt>
+   *   <dd>Sales per Client Report</dd>
+   *   <dt>PURCHASE_ITEM_ACCRUAL_CASH (ID 123)</dt>
+   *   <dd>All Sales Report</dd>
+   * </dl>
    *
    * @get get
    * @var int
@@ -50,7 +54,7 @@ class DataModel extends WlModelAbstract
   public $id_report = 0;
 
   /**
-   * The report group ID. One of the {@link \WellnessLiving\Wl\Report\WlReportGroupSid} constants that describes the time
+   * The report group ID. One of the {@link WlReportGroupSid} constants that describes the time
    * period (day, week, month, or year) for the report to cover.
    *
    * @get get
@@ -59,7 +63,7 @@ class DataModel extends WlModelAbstract
   public $id_report_group = 0;
 
   /**
-   * The report view ID. One of the {@link \WellnessLiving\Wl\Report\WlReportChartViewSid} constants.
+   * The report view ID. One of the {@link WlReportChartViewSid} constants.
    *
    * @get get
    * @var int
@@ -77,7 +81,7 @@ class DataModel extends WlModelAbstract
   /**
    * Filter settings in an encoded format.
    *
-   * Don't set this field directly. Use {@link \WellnessLiving\Wl\Report\DataModel::filterSet()} to set the filter.
+   * Don't set this field directly. Use {@link DataModel::filterSet()} to set the filter.
    *
    * @get get
    * @var string
