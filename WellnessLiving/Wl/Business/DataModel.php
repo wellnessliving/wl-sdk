@@ -10,6 +10,15 @@ use WellnessLiving\WlModelAbstract;
 class DataModel extends WlModelAbstract
 {
   /**
+   * List of all business services and their availability data.
+   *
+   * @get result
+   * @var array Array, where keys are sids from {@link \WellnessLiving\WlServiceSid} and values are boolean:
+   * <tt>true</tt> - if service is enabled in the business, <tt>false</tt> otherwise.
+   */
+  public $a_service_list = array();
+
+  /**
    * The float values of predefined tips.
    *
    * <tt>null</tt> until loaded.
