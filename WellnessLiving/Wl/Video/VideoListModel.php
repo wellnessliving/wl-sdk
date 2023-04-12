@@ -98,7 +98,7 @@ class VideoListModel extends WlModelAbstract
 
   /**
    * The sorting type.
-   * A constant from {@link \WellnessLiving\Wl\Video\Catalog\Filter\Sort\FilterSortSid}.
+   * A constant from {@link FilterSortSid}.
    *
    * @get get
    * @var int
