@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Asset;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves an information about assets in the current asset category.
+ * An endpoint that retrieves information about assets in the current asset category.
  */
 class AssetListModel extends WlModelAbstract
 {
@@ -17,76 +17,77 @@ class AssetListModel extends WlModelAbstract
    *   <dd>
    *     Information about age restrictions for this event.
    *
-   *     Empty array if there are no restrictions based on the age.
+   *     This will be an empty array if there aren't any age restrictions.
    *
    *     <dl>
    *       <dt>int|null <var>i_age_from</var></dt>
-   *       <dd>Age from that event is allowed. `null` if minimal age is not limited or information is not available.</dd>
+   *       <dd>The minimum age permitted for the event. This will be `null` if a minimum age isn't set or available.</dd>
    *       <dt>int|null <var>i_age_to</var></dt>
-   *       <dd>Age till that event is allowed. `null` if minimal age is not limited or information is not available.</dd>
+   *       <dd>The maximum age permitted for the event. This will be `null` if a maximum age isn't set or available.</dd>
    *       <dt>bool <var>is_age_public</var></dt>
-   *       <dd>`true` if age restrictions are public and available, `false` if they are hidden.
-   *         When restrictions are hidden and current user is not a staff member, age range will be empty.</dd>
+   *       <dd>This will be `true` if age restrictions are public and available. Otherwise, this will be `false` if they're hidden.
+   *         When restrictions are hidden and current user isn't a staff member, the age range will be empty.</dd>
    *     </dl>
    *   </dd>
    *   <dt>
    *     array[] <var>a_direct_link</var>
    *   </dt>
    *   <dd>
-   *     List of links to start booking from a direct link.
-   *     It cannot be one link, because the same resource can be available in several booking tabs.
-   *     So, each booking tab has own direct booking link.
+   *     A list of links to create a booking from a direct link (direct booking URL).
+   *     The system needs to know what tab is associated with the booking. Therefore, there needs to be one link
+   *     per tab.
    *     Each element has two values:
    *     <dl>
    *       <dt>string <var>k_class_tab</var></dt>
-   *       <dd>Key of the book now tab.</dd>
+   *       <dd>The key of the book now tab.</dd>
    *       <dt>string <var>url_tab</var></dt>
-   *       <dd>Booking URL. Will open booking wizard under related booking tab.</dd>
+   *       <dd>The direct booking URL. This will open the booking wizard under the related booking tab.</dd>
    *     </dl>
    *   </dd>
    *   <dt>array[] <var>a_image</var></dt>
-   *   <dd>Information about asset logo:
+   *   <dd>Information about the asset logo:
    *     <dl>
    *       <dt>int <var>i_angle</var></dt>
-   *       <dd>Angle of shape rotation. Is set only if image kind equals to <tt>shape</tt>.</dd>
+   *       <dd>The angle of the shape rotation. This is only set if the image kind equals to `shape`.</dd>
    *       <dt>bool <var>is_empty</var></dt>
-   *       <dd>Whether asset logo is empty.</dd>
+   *       <dd>Determines if the asset logo is empty.</dd>
    *       <dt>string <var>sid_image_icon</var></dt>
-   *       <dd>Icon name. String representation of one of {@link \Wl\Resource\Image\ImageIconSid} constants. Is set only if image kind equals to <tt>image</tt>.</dd>
+   *       <dd>The icon name. String representation of one of the {@link \WellnessLiving\Wl\Resource\Image\ImageIconSid} constants. This is only set if the image kind equals to `image`.</dd>
    *       <dt>string <var>sid_image_shape</var></dt>
-   *       <dd>Shape name. String representation of one of {@link \Wl\Resource\Image\ImageShapeSid} constants. Is set only if image kind equals to <tt>shape</tt>.</dd>
-   *       <dt>string <var>url</var></dt><dd>Asset logo URL.</dd>
+   *       <dd>The shape name. String representation of one of the {@link \WellnessLiving\Wl\Resource\Image\ImageShapeSid} constants. This is set only if the image kind equals to `shape`.</dd>
+   *       <dt>string <var>url</var></dt><dd>The asset logo URL.</dd>
    *     </dl>
    *   </dd>
    *   <dt>array[] <var>a_period</var></dt>
-   *   <dd>A list of asset periods with information about them:
+   *   <dd>A list of asset periods with the following information:
    *     <dl>
-   *       <dt>string <var>html_duration</var></dt><dd>Duration of asset to paste into view.</dd>
-   *       <dt>string <var>html_price</var></dt><dd>Formatted price of the asset period to paste into view.</dd>
-   *       <dt>int <var>i_duration</var></dt><dd>Duration of asset in minutes.</dd>
-   *       <dt>int <var>id_price</var></dt><dd>Asset period price type. One of {@link \RsServicePriceSid} constants.</dd>
-   *       <dt>sting <var>m_price</var></dt><dd>Price of the asset period.</dd>
+   *       <dt>string <var>html_duration</var></dt><dd>The HTML code used to display the asset duration.</dd>
+   *       <dt>string <var>html_price</var></dt><dd>The HTML code used to display the formatted price.</dd>
+   *       <dt>int <var>i_duration</var></dt><dd>The asset duration in minutes.</dd>
+   *       <dt>int <var>id_price</var></dt><dd>The asset period price type. One of {@link \WellnessLiving\Wl\Service\ServicePriceSid} constants.</dd>
+   *       <dt>sting <var>m_price</var></dt><dd>The asset period price.</dd>
    *     </dl>
    *   </dd>
    *   <dt>array <var>a_search_tag</var></dt>
-   *   <dd>QUICK Search Tag Ids.</dd>
+   *   <dd>QUICK Search tag IDs.</dd>
    *   <dt>bool <var>hide_application</var></dt>
-   *   <dd>Whether asset will be hidden in the White Label mobile application. `true` means that asset will not be displayed, `false` otherwise.</dd>
+   *   <dd>Determines whether the asset will be hidden in the White Label mobile apps.
+   *     If `true`, the asset won't be displayed. Otherwise, this will be `false`.</dd>
    *   <dt>string <var>html_age_restriction</var></dt>
-   *   <dd>Resource age restriction</dd>
+   *   <dd>The resource age restriction</dd>
    *   <dt>string <var>html_title</var></dt>
-   *   <dd>Title of resource.</dd>
+   *   <dd>The resource name.</dd>
    *   <dt>int <var>id_service_require</var></dt>
-   *   <dd>Purchase rule. One of {@link \RsServiceRequireSid} constants.</dd>
+   *   <dd>The purchase rule. One of the {@link \WellnessLiving\Wl\Service\ServiceRequireSid} constants.</dd>
    *   <dt>bool <var>is_age_restricted</var></dt>
-   *   <dd>Whether this service cannot be booked due to age restrictions.</dd>
+   *   <dd>Determines whether this service can't be booked due to age restrictions.</dd>
    *   <dt>string <var>k_resource</var></dt>
-   *   <dd>Resource key, primary key in {@link \RsResourceSql} table.</dd>
+   *   <dd>The resource key.</dd>
    *   <dt>string <var>k_resource_category</var></dt>
-   *   <dd>Resource category key, primary key in {@link \RsResourceTypeSql} table.</dd>
+   *   <dd>The resource category key.</dd>
    * </dl>
    *
-   * `null` if not initialized yet.
+   * This will be `null` if not initialized yet.
    *
    * @get result
    * @var array|null
@@ -94,9 +95,8 @@ class AssetListModel extends WlModelAbstract
   public $a_asset = null;
 
   /**
-   * Selected date and time of asset booking.
-   *   It is actual in case when business booking policy allows clients to select a date and time,
-   *   then the available asset.
+   * The selected date and time of the asset booking. It is used in cases when the business booking policy allows
+   * clients to select a date and time, and then the available asset.
    *
    * @get get
    * @var string
@@ -104,7 +104,7 @@ class AssetListModel extends WlModelAbstract
   public $dtl_date = false;
 
   /**
-   * <tt>true</tt> - load asset categories for backend mode; <tt>false</tt> - for frontend mode.
+   * This is `true` if asset categories are loaded for back-end mode. Otherwise, this will be `false` for front-end mode.
    *
    * @get get
    * @var bool
@@ -112,9 +112,9 @@ class AssetListModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * Class tab ID to filter assets.
+   * The class tab ID used to filter assets.
    *
-   * `null` if not set yet or select only elements with not specified class tab.
+   * This will be `null` if not set yet or if elements with no specified class tab are selected.
    *
    * @get get
    * @var string|null
@@ -122,9 +122,9 @@ class AssetListModel extends WlModelAbstract
   public $k_class_tab = null;
 
   /**
-   * ID of a location.
+   * The location ID.
    *
-   * `null` if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -132,9 +132,9 @@ class AssetListModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * ID of an asset category to show information for.
+   * The asset category ID to show information for.
    *
-   * `null` if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -142,9 +142,9 @@ class AssetListModel extends WlModelAbstract
   public $k_resource_category = null;
 
   /**
-   * ID of assets' layout.
+   * The asset layout ID.
    *
-   * `null` if it is not loaded yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
