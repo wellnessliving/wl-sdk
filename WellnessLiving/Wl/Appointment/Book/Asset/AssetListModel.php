@@ -48,7 +48,7 @@ class AssetListModel extends WlModelAbstract
    *   <dd>Information about the asset logo:
    *     <dl>
    *       <dt>int <var>i_angle</var></dt>
-   *       <dd>The angle of the shape rotation. This is only set if the image kind equals to `shape`.</dd>
+   *       <dd>The angle of the shape rotation. This is set only if the image is one of the default shapes.</dd>
    *       <dt>bool <var>is_empty</var></dt>
    *       <dd>Determines if the asset logo is empty.</dd>
    *       <dt>string <var>sid_image_icon</var></dt>
