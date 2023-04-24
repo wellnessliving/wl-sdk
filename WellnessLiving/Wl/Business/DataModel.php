@@ -47,12 +47,13 @@ class DataModel extends WlModelAbstract
   public $id_locale = 0;
 
   /**
-   * Region ID, which defines datacenter, where information about business is stored.
-   * Is one of {@link \WellnessLiving\WlRegionSid} constants.
+   * The region ID. This indicates the data center where the information about the business is stored.
+   * One of the {@link \WellnessLiving\WlRegionSid} constants.
    *
-   * If business is stored in one region and requests are made to a different, this can lead to responses, like business
-   * or elements or the business do not exists. This is because databases on different datacenters are independent and
-   * requesting in the USA, for example, classes for business, which is stored on the AU cluster, you can get empty list.
+   * Requests made to different regions can lead to known issues such as responses indicating that the
+   * business (or its elements) doesn't exist. This is because databases on different data centers are
+   * independent. For example, performing a request to the US cluster for a list of classes for an AU
+   * cluster business will return an empty list.
    *
    * @get result
    * @var int
