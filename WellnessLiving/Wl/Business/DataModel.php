@@ -47,6 +47,19 @@ class DataModel extends WlModelAbstract
   public $id_locale = 0;
 
   /**
+   * Region ID, which defines datacenter, where information about business is stored.
+   * Is one of {@link \WellnessLiving\WlRegionSid} constants.
+   *
+   * If business is stored in one region and requests are made to a different, this can lead to responses, like business
+   * or elements or the business do not exists. This is because databases on different datacenters are independent and
+   * requesting in the USA, for example, classes for business, which is stored on the AU cluster, you can get empty list.
+   *
+   * @get result
+   * @var int
+   */
+  public $id_region;
+
+  /**
    * <tt>true</tt> if clients can enter progress log; <tt>false</tt> otherwise.
    *
    * <tt>null</tt> until loaded.
@@ -65,19 +78,6 @@ class DataModel extends WlModelAbstract
    * @var bool|null
    */
   public $is_progress_verify = null;
-
-  /**
-   * Region ID, which defines datacenter, where information about business is stored.
-   * Is one of {@link \WellnessLiving\WlRegionSid} constants.
-   *
-   * If business is stored in one region and requests are made to a different, this can lead to responses, like business
-   * or elements or the business do not exists. This is because databases on different datacenters are independent and
-   * requesting in the USA, for example, classes for business, which is stored on the AU cluster, you can get empty list.
-   *
-   * @get result
-   * @var int
-   */
-  public $id_region;
 
   /**
    * <tt>true</tt> if tips are available in the business; <tt>false</tt> otherwise.
