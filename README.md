@@ -2,88 +2,86 @@
 
 ## Register your application in our system
 
-To register your application, we'll need the following information:
+To register your application, please contact WellnessLiving Support and provide the following information:
 
-* Name of your application.
-* Other information that may help us understand what your application will do.
+* The name of your application.
+* Information about what your application does.
 
-Please, contact our support team and provide them information listed above to register your application. 
+After registering, we'll send you the following information:
 
-As a result of registration we'll provide you the following:
+* The application ID
+* The secret code (authorization code)
+* An example staff member in staging
+* Your staging business ID for testing
 
-* Application ID;
-* Secret code (authorization code).
-
-We'll provide you with data for connecting our staging and production environments.
-Application ID and secret code differs at staging and production.
+We'll also provide you with data to connect to our staging and production environments.
+Unique application IDs and secret codes are required for both environments.
 
 ## Download 
 
- Our SDK is available for download here at https://github.com/wellnessliving/wl-sdk
+Our SDK can be downloaded at https://github.com/wellnessliving/wl-sdk.
 
- You could also use this bash one-liner to install the SDK with composer:
+You can also use this bash one-liner to install the SDK with composer:
 ```shell
 ([ ! -f composer.json ] && echo '{"name":"sdk/project"}' > composer.json); composer config repositories.wellnessliving/wl-sdk git https://github.com/wellnessliving/wl-sdk && composer require 'wellnessliving/wl-sdk:>=1.0.0' && composer install
 ```
 
-  Try to run example script that is placed in the root of WellnessLiving SDK.
-
-  For this, follow instructions placed in the following chapter.
-
 ## How to run example script
 
-To run example script, do the following:
+After the SDK has been downloaded, try to run the example script placed in the root directory of the WellnessLiving SDK.
 
-1. Put application ID and secret key in `example-config.php`.
-2. Put login/password of your example staff member in `example-sdk.php`.
-3. Run the following command in command line:
+To run the example script, perform the following actions:
+
+1. Put your application ID and secret key in `example-config.php`.
+2. Put your login/password of your example staff member in `example-sdk.php`.
+3. Run the following command using your command-line interface:
 
        php example-sdk.php
 
 ## Embed our SDK in your code
 
-To work in your code, you actually only need `WellnessLiving/` directory from the root of WellnessLiving SDK.
+To work with our SDK in your code, you'll need the `WellnessLiving/` directory from the root directory of the WellnessLiving SDK.
 
-You may remove example files from your project.
+You can remove example files from your project to suit your business needs.
 
-Include our autoloader as it is made in our example:
+We recommend using our autoloader that's included in our example:
 
     require_once __DIR__.'/WellnessLiving/wl-autoloader.php';
 
-## When you are ready to switch to production
+## Moving to production
 
-When you are ready to switch to production, change your connection configuration class to inherit from 
-`\WellnessLiving\Config\WlConfigProduction` (by default it inherits `\WellnessLiving\Config\WlConfigDeveloper`) which
-leads to staging.
+When you're ready to switch to the production environment, change your connection configuration class in your config file to inherit from 
+`\WellnessLiving\Config\WlConfigProduction`. By default, the connection configuration class inherits `\WellnessLiving\Config\WlConfigDeveloper`, which
+points to the staging environment.
 
-## Notes about our release rollout process and versioning
+## Notes about our release process
 
-We have three development branches:
+We maintain three development branches:
 
 * Trunk
 * Staging
 * Production
 
-Trunk is where our development team develops new features. Most changes are made in the trunk.
+Trunk is where our Engineering Department develops new features. Most changes are made in the trunk.
 
-For about 2 weeks before release to production, staging is recreated from the trunk.
-Staging is used by our QA team to find bugs.
-Also, we use staging to present our new features to our customers so that they may be sure that new features work as
-they expect before those features come to production.
+For about two weeks before the release to production, staging is recreated from the trunk.
+Staging is used by our QA Team to find bugs.
+Also, we use staging to present our new features to our customers so that they can be sure new features work as
+they expected before new features move to production.
 
 ### Versioning
-Versioning scheme is based on [Semantic Versioning](https://semver.org). And version suffixes are added in accordance to [Composer version stability policy](https://getcomposer.org/doc/articles/versions.md#stabilities). 
-* Trunk (development) releases are tagged with just numbers, without any special suffix (e.g. v1.0.4).
-* Staging releases are tagged with `rc` suffix (e.g. v1.0.3-rc).
-* Production releases are tagged with `stable` suffix (e.g. v1.0.0-stable).
-Hence if you are checking out a version with specific suffix, changes in the API code are  only available on the proper backend server (demo, stable or production respectively) or a lower one (staging version is auto-merged into development, but not vice versa).
+The versioning scheme we use is based on [Semantic Versioning](https://semver.org), wherein version suffixes are added in accordance to [Composer's version stability protocols](https://getcomposer.org/doc/articles/versions.md#stabilities). 
+* Trunk (development) releases are tagged with only numbers, without any special suffix (for example, v1.0.4).
+* Staging releases are tagged with `rc` suffix (for example, v1.0.3-rc).
+* Production releases are tagged with `stable` suffix (for example, v1.0.0-stable).
+If you're checking out a version with a specific suffix, changes in the API code are only available on the proper backend server (demo, stable, or production respectively) or a lower one (staging version is auto-merged into development, but not vice versa).
 
-**Important note:** Our API and SDK is subject to change at any time without additional notices.
+**Note:** Our API and SDK is subject to change at any time without notice.
 
-Look after changes in SDK repository to see if there are some incompatible changes.
+Review changes in the SDK repository to determine if there are any incompatible changes.
 
-It is required that you write integration tests so that you may be sure that your application is fully compatible with
+You must also write integration tests to be sure that your application is fully compatible with
 our new version of SDK and staging.
 
-Make sure that you get notifications about when a staging was recreated from trunk so that you can run your integration
-tests and fix all incompatibilities.
+Finally, make sure that you get notifications about when a staging release was recreated from trunk so that you can run your integration
+tests and fix any incompatibilities.
