@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Appointment\Book\Asset;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves an information about asset categories.
+ * An endpoint that retrieves information about asset categories.
  */
 class CategoryModel extends WlModelAbstract
 {
   /**
    * A list of information about asset categories.
    *
-   * <tt>null</tt> if not initialized yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var array|null
@@ -20,7 +20,8 @@ class CategoryModel extends WlModelAbstract
   public $a_category = null;
 
   /**
-   * <tt>true</tt> - load asset categories for backend mode; <tt>false</tt> - for frontend mode.
+   * If `true`, asset categories are loaded for backend mode. Otherwise, this will be `false` if asset categories
+   * are loaded for frontend mode.
    *
    * @get get
    * @var bool
@@ -28,9 +29,9 @@ class CategoryModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * Class tab ID to filter services.
+   * The class tab ID to use for filtering services.
    *
-   * <tt>null</tt> if not set yet or select only elements with not specified class tab.
+   * This will be `null` if not set yet or if elements without a specified class tab have only been selected.
    *
    * @get get
    * @var string|null
@@ -38,9 +39,9 @@ class CategoryModel extends WlModelAbstract
   public $k_class_tab = null;
 
   /**
-   * ID of a location to show information for.
+   * The ID of the location to show information for.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
