@@ -82,6 +82,3 @@ Review changes in the SDK repository to determine if there are any incompatible 
 
 You must also write integration tests to be sure that your application is fully compatible with
 our new version of SDK and staging.
-
-Finally, make sure that you get notifications about when a staging release was recreated from trunk so that you can run your integration
-tests and fix any incompatibilities.

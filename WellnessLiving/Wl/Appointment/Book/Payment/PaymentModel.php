@@ -7,7 +7,8 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * An endpoint that displays information about payments for an appointment.
- * The POST method for this endpoint is implemented as a separate endpoint (see {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentPostModel}).
+ * The POST method for this endpoint is implemented as a separate endpoint (see
+ * {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentPostModel}).
  */
 class PaymentModel extends WlModelAbstract
 {
@@ -56,18 +57,19 @@ class PaymentModel extends WlModelAbstract
   /**
    * Information about selected purchase items.
    *
-   * Fields - a string in format `id_purchase_item-k_id`.
-   * Values - an array with next structure:
+   * Indexes are strings in the format `id_purchase_item-k_id`.
+   *
+   * Values are an array with the following structure:
+   *
    * <dl>
    *   <dt>array <var>a_tax</var></dt>
    *   <dd>Contains information about taxes in the following format. A list of taxes to apply.
    *     The array keys are `k_tax` keys. Each element contains the following fields: <dl>
-   *
    *       <dt>float <var>m_tax</var></dt>
-   *       <dd>Tax rate.</dd>
+   *       <dd>The tax rate.</dd>
    *
    *       <dt>string <var>text_title</var></dt>
-   *       <dd>Name of the tax.</dd>
+   *       <dd>The name of the tax.</dd>
    *     </dl>
    *   </dd>
    *

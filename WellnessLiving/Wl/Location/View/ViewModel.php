@@ -37,11 +37,11 @@ class ViewModel extends WlModelAbstract
 
   /**
    * Information about the location’s logo used in WellnessLiving:
-   * <ul><li>Number <tt>i_height</tt> Height.</li>
-   * <li>Number <tt>i_width</tt> Width.</li>
-   * <li>String <tt>s_url</tt> URL to image.</li></ul>
+   * <dl><dt>int <var>i_height</var></dt><dd>The image height.</dd>
+   * <dt>int <var>i_width</var></dt><dd>The image width.</dd>
+   * <dt>string <var>s_url</var></dt><dd>The URL to the image.</dd></dl>
    *
-   * <tt>null</tt> if not set.
+   * This will be `null` if not set.
    *
    * @get result
    * @var array|null
@@ -139,7 +139,7 @@ class ViewModel extends WlModelAbstract
   public $k_business_type = '0';
 
   /**
-   * The location ID number that can be found with the {@link WellnessLiving\Wl\Location\ListModel} endpoint.
+   * The location ID number that can be found with the {@link \WellnessLiving\Wl\Location\ListModel} endpoint.
    *
    * @get get
    * @var string
