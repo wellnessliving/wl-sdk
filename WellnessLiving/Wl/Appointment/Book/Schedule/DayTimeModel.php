@@ -50,7 +50,7 @@ class DayTimeModel extends WlModelAbstract
   public $i_index = null;
 
   /**
-   * The ID of the staff member's gender. It is one of the {@link AGenderSid} constants.
+   * The ID of the staff member's gender. One of the {@link AGenderSid} constants.
    *
    * This will be `null` if not set yet.
    *
@@ -60,8 +60,9 @@ class DayTimeModel extends WlModelAbstract
   public $id_gender_staff = null;
 
   /**
-   * `1` - return service categories that have no staff members able to conduct them.
-   * `0` - return only service categories that have staff members able to conduct them.
+   * <b>1</b> - return service categories that have no staff members able to conduct them.
+   *
+   * <b>0</b> - return only service categories that have staff members able to conduct them.
    *
    * @get get
    * @var bool
