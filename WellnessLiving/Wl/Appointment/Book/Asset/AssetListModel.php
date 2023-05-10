@@ -104,12 +104,30 @@ class AssetListModel extends WlModelAbstract
   public $dtl_date = false;
 
   /**
+   * Mode type, one of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   *
+   * @get get
+   * @var int
+   */
+  public $id_mode = 0;
+
+  /**
    * This is `true` if asset categories are loaded for back-end mode. Otherwise, this will be `false` for front-end mode.
    *
    * @get get
    * @var bool
    */
   public $is_backend = false;
+
+  /**
+   * Business key.
+   *
+   * If not set, location's business will be used.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_business = '0';
 
   /**
    * The class tab ID used to filter assets.
@@ -150,6 +168,26 @@ class AssetListModel extends WlModelAbstract
    * @var string|null
    */
   public $k_resource_layout = null;
+
+  /**
+   * Timezone of date and time of asset booking.
+   *
+   * Empty if {@link AssetListModel::$dtl_date} not set or client can't change in which timezone dates should be shown.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_timezone = '';
+
+  /**
+   * Client to get information for.
+   *
+   * If client not set, returns full asset list without client restrictions.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $uid = null;
 }
 
 ?>
