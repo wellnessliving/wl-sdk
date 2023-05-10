@@ -180,7 +180,9 @@ class AssetListModel extends WlModelAbstract
   public $k_timezone = '';
 
   /**
-   * User to get information for.
+   * Client to get information for.
+   *
+   * If client not set, returns full asset list without client restrictions.
    *
    * @get get
    * @var string|null
