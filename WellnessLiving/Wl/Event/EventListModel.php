@@ -73,7 +73,7 @@ class EventListModel extends WlModelAbstract
   /**
    * The event business key to retrieve a list of all event sessions in business.
    *
-   * ## Required if {@link EventListApi::$k_location} isn't specified.
+   * Required if {@link EventListApi::$k_location} isn't specified.
    *
    * @get get
    * @var string
@@ -92,7 +92,7 @@ class EventListModel extends WlModelAbstract
    * The class tab key to retrieve a list of event sessions from a specific tab only.
    * An empty value to retrieve a list of event sessions that don't belong to any tab.
    *
-   * ## Will be ignored in next cases:
+   * Will be ignored in next cases:
    * * {@link EventListApi::$k_skin} specified.
    * * {@link EventListApi::$is_tab_all} is <tt>true</tt>.
    *
@@ -104,7 +104,7 @@ class EventListModel extends WlModelAbstract
   /**
    * The event location key to retrieve a list of all event sessions in a specific location.
    *
-   * ## Required if {@link EventListApi::$k_business} isn't specified.
+   * Required if {@link EventListApi::$k_business} isn't specified.
    *
    * @get get
    * @var string
