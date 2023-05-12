@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Appointment\Book\Staff;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves information about staff members for the current service.
+ * An endpoint that retrieves information about staff members for the current service.
  */
 class ListModel extends WlModelAbstract
 {
   /**
    * A list of staff members.
    *
-   * <tt>null</tt> if not initialized yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var array|null
@@ -36,8 +36,9 @@ class ListModel extends WlModelAbstract
   public $is_gender_different = false;
 
   /**
-   * <tt>1</tt> - returns service categories which have no staff members available to conduct them;
-   * <tt>0</tt> - returns only service categories which have staff members available to conduct them.
+   * <b>1</b> - returns service categories that have no staff members available to conduct them.
+   *
+   * <b>0</b> - returns only service categories that have staff members available to conduct them.
    *
    * @get get
    * @var bool
@@ -63,7 +64,7 @@ class ListModel extends WlModelAbstract
   /**
    * The ID of a location.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -73,7 +74,7 @@ class ListModel extends WlModelAbstract
   /**
    * The ID of a service for which to show information.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null

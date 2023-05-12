@@ -3,9 +3,9 @@
 namespace WellnessLiving\Wl\Book\Process\Info;
 
 /**
- * Wizard of booking. Page "Class and Location".
+ * An endpoint that offers functionality for the class booking wizard on the "Class and Location" page.
  *
- * Take into account {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid::QUIZ} step.
+ * When using this endpoint, take into account the {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid::QUIZ} step.
  */
 class Info54Model extends InfoModel
 {
