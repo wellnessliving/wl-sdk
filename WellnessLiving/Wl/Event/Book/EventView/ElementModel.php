@@ -114,7 +114,6 @@ class ElementModel extends WlModelAbstract
    *       <dt>int <var>id_repeat</var></dt>
    *       <dd>Measuring unit of <var>i_repeat</var> (week, month, year).</dd>
    *     </dl>
-   *   </dl>
    *   <dt>
    *     array[] <var>a_staff</var>
    *   </dt>
@@ -144,6 +143,12 @@ class ElementModel extends WlModelAbstract
    *     The local date without time.
    *   </dd>
    *   <dt>
+   *     string <var>f_price</var>
+   *   </dt>
+   *   <dd>
+   *     The price of the session, if it can be purchased separately.
+   *   </dd>
+   *   <dt>
    *     int <var>i_capacity</var>
    *   </dt>
    *   <dd>
@@ -154,6 +159,24 @@ class ElementModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The duration of the class in seconds.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_virtual</var>
+   *   </dt>
+   *   <dd>
+   *     This will be `true` if the session is not held in person but offered remotely. If will be `false` otherwise.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_class_period</var>
+   *   </dt>
+   *   <dd>
+   *     The key of the class period.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_location</var>
+   *   </dt>
+   *   <dd>
+   *     The key of the location where the session is held.
    *   </dd>
    *   <dt>
    *     string <var>s_location</var>
@@ -167,6 +190,12 @@ class ElementModel extends WlModelAbstract
    *   <dd>
    *     The time when session occurred.
    *     A textual representation of the start and end time of a session. Example: <tt>10:00 am - 11:00 am<tt>
+   *   </dd>
+   *   <dt>
+   *     string <var>s_timezone</var>
+   *   </dt>
+   *   <dd>
+   *     The name of the timezone in which the session is held.
    *   </dd>
    * </dl>
    *
