@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Event\Book\EventList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves a list of events.
+ * An endpoint that retrieves a list of events for a given class tab.
  */
 class ListModel extends WlModelAbstract
 {

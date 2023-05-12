@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Event;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves a list of events.
+ * An endpoint that retrieves a list of events that fit the given filter parameters.
  */
 class EventListModel extends WlModelAbstract
 {
