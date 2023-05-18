@@ -7,22 +7,23 @@ use WellnessLiving\Wl\Pay\Form\EnvironmentModel;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * The booking wizard for the "Pay/Billing info" page.
+ * An endpoint that acts as the booking wizard for the "Pay/Billing info" page.
  */
 class PaymentModel extends WlModelAbstract
 {
   /**
    * A list of items to be bought. Every element has the next fields:
-   * <ul>
-   *   <li>Number <tt>id_purchase_item</tt> The ID of purchase item type. One of {@link WlPurchaseItemSid} constants.</li>
-   *   <li>Boolean [<tt>is_renew</tt>] <tt>true</tt> - item should be set to "auto-renew"; <tt>false</tt> - otherwise. If is not set - use default option for this item.</li>
-   *   <li>String <tt>k_id</tt> ID of the purchase item in the database.</li>
-   *   <li>String [<tt>s_signature</tt>] The signature of Purchase Option contract. Not set if the Purchase Option doesn't require a contract assignment.</li>
-   * </ul>
+   * <dl>
+   *   <dt>int <var>id_purchase_item</var></dt><dd>The ID of purchase item type. One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.</dd>
+   *   <dt>boolean [<var>is_renew</var>]</dt><dd><tt>true</tt> if the item should be set to auto-renew; <tt>false</tt> if otherwise.
+   *   If not set yet, use the default option for this item.</dd>
+   *   <dt>string <var>k_id</var></dt><dd>The ID of the purchase item in the database.</dd>
+   *   <dt>string [<var>s_signature</var>]</dt><dd>The signature of the Purchase Option contract. This won't be set if the
+   *   Purchase Option doesn't require a contract assignment.</dd>
+   * </dl>
    *
    * @post post
    * @var array
-   * @see RsPurchaseItemSid
    */
   public $a_item = [];
 
@@ -58,9 +59,11 @@ class PaymentModel extends WlModelAbstract
   public $a_pay_form = [];
 
   /**
-   * A list of assets which are being booked. Every element has the next keys:
-   * <ul><li>Number <tt>i_index</tt> The number of asset(s). Actual for assets with quantity greater <tt>1</tt>.</li>
-   * <li>String <tt>k_resource</tt> The ID of asset.</li></ul>
+   * A list of assets being booked. Every element has the next keys:
+   * <dl>
+   *   <dt>int <var>i_index</var></dt><dd>The number of asset(s). The actual number is returned for assets with a quantity greater than <tt>1</tt>.</dd>
+   *   <dt>string <var>k_resource</var></dt><dd>The ID of the asset.</dd>
+   * </dl>
    *
    * @post post
    * @var array
@@ -68,8 +71,8 @@ class PaymentModel extends WlModelAbstract
   public $a_resource = [];
 
   /**
-   * A list of sessions which are being booked.
-   * Keys - IDs of sessions in the database; values - lists of session date/time.
+   * A list of sessions being booked.
+   * Keys refer to IDs of sessions in the database, while values refer to lists of session dates/times.
    *
    * @post post
    * @var array
@@ -87,7 +90,7 @@ class PaymentModel extends WlModelAbstract
   /**
    * The date/time of the session booked.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @post get
@@ -96,7 +99,7 @@ class PaymentModel extends WlModelAbstract
   public $dt_date_gmt = null;
 
   /**
-   * The WellnessLiving mode type, one of the {@link WlBookModeSid} constants.
+   * The WellnessLiving mode type. One of the {@link WlBookModeSid} constants.
    *
    * @get get
    * @post get
@@ -107,7 +110,7 @@ class PaymentModel extends WlModelAbstract
   /**
    * The ID of the session.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @post get
@@ -116,7 +119,7 @@ class PaymentModel extends WlModelAbstract
   public $k_class_period = null;
 
   /**
-   * The ID of the user's activity corresponding to purchase made. Not empty when the booking process is finished.
+   * The ID of the user's activity corresponding to the purchase made. This won't be empty when the booking process is finished.
    *
    * @post result
    * @var string
@@ -125,8 +128,8 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * The installment template key.
-   * This property is optional. <tt>null</tt> if installment plan doesn't exist for the purchased item.
-   * <tt>0</tt> if installment plan isn't selected for the purchased item from the list of installment plans.
+   * This property is optional and it will be `null` if an installment plan doesn't exist for the purchased item.
+   * This will be `0` if an installment plan isn't selected for the purchased item from the list of installment plans.
    *
    * @post post
    * @var string
@@ -144,7 +147,7 @@ class PaymentModel extends WlModelAbstract
   /**
    * The user ID.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @post get

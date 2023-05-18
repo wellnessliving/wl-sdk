@@ -15,14 +15,14 @@ class PurchaseElementListModel  extends WlModelAbstract
    *   <dt>int [<var>i_session</var>]</dt>
    *   <dd>The number of sessions which are booked simultaneously.</dd>
    *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>The ID of the purchase item type. One of {@link \RsPurchaseItemSid}.</dd>
+   *   <dd>The ID of the purchase item type. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The key of the purchase item in the database. The name of the table in the database depends on <var>id_purchase_item</var></dd>
    *   <dt>string [<var>k_login_prize</var>]</dt>
-   *   <dd>The key of the user's prize. The primary key in {@link \RsLoginPrizeSql} table.</dd>
+   *   <dd>The key of the user's prize.</dd>
    * </dl>
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var array[]|null
@@ -34,7 +34,7 @@ class PurchaseElementListModel  extends WlModelAbstract
    * Every element has the next keys:
    * <dl>
    *   <dt>array <var>a_tax</var></dt>
-   *   <dd>Information about taxes. Key - tax key (primary key in {@link \RsTaxSql} table); value - tax amount.</dd>
+   *   <dd>Information about taxes. The key refers to the tax key, and the value refers to the tax amount.</dd>
    *   <dt>string <var>id_purchase_item</var></dt><dd>The ID of purchase item type.</dd>
    *   <dt>string <var>k_id</var></dt><dd>The key of the purchase item in the database.</dd>
    *   <dt>string <var>m_cost</var></dt><dd>The cost of the purchase item (with taxes).</dd>
@@ -51,9 +51,8 @@ class PurchaseElementListModel  extends WlModelAbstract
 
   /**
    * The key of the business in which the purchase is made.
-   * The primary key in the table {@link \RsBusinessSql}.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -63,9 +62,8 @@ class PurchaseElementListModel  extends WlModelAbstract
   /**
    * The key of the location in which the purchase is made.
    * This is also the booking process location.
-   * The primary key in table {@link \RsLocationSql}.
    *
-   * <tt>null</tt> if not set yet or if the location can't be defined for some reason.
+   * This will be `null` if not set yet or if the location can't be defined for some reason.
    *
    * @get get
    * @var string|null
@@ -82,9 +80,8 @@ class PurchaseElementListModel  extends WlModelAbstract
 
   /**
    * The key of the user making the purchase.
-   * The primary key in table {@link \PassportLoginSql}.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
