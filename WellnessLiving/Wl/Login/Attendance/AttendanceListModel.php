@@ -20,27 +20,27 @@ class AttendanceListModel extends WlModelAbstract
    *     <dt>int <var>i_width</var></dt>
    *     <dd>The width of the photo.</dd>
    *     <dt>string <var>is_empty</var></dt>
-   *     <dd>This will be <tt>true</tt> if there is no photo set.</dd>
+   *     <dd>This will be <tt>true</tt> if a photo hasn't been set yet.</dd>
    *     <dt>string <var>s_url</var></dt>
    *     <dd>The URL of the photo.</dd>
    *     </dl>
    *   </dd>
    *   <dt>array <var>a_progress</var></dt>
-   *   <dd>Information about a user's current progress. By default, this information is not sent.</dd>
+   *   <dd>Information about a user's current progress. By default, this information isn't sent.</dd>
    *   <dt>array <var>a_resource</var></dt>
    *   <dd>A list of information for any associated resources for this visit.</dd>
    *   <dt>array <var>a_wait_confirm</var></dt>
-   *   <dd>The list of visit keys for clients who are on the wait list.</dd>
+   *   <dd>The list of visit keys for clients on the wait list.</dd>
    *   <dt>array <var>a_wearable</var></dt>
    *   <dd>A list of information pertaining to the client's wearables.</dd>
    *   <dt>bool <var>can_profile</var></dt>
-   *   <dd>If `true`, the current user can access this client’s profile.</dd>
+   *   <dd>If <tt>true</tt>, the current user can access this client’s profile.</dd>
    *   <dt>string <var>dt_book</var></dt>
    *   <dd>The date the session was booked, in UTC.</dd>
    *   <dt>string <var>dt_date</var></dt>
-   *   <dd>The date the session, in UTC.</dd>
+   *   <dd>The date of the session, in UTC.</dd>
    *   <dt>string <var>dt_expire</var></dt>
-   *   <dd>The date the Purchase Option used will expire, in UTC.</dd>
+   *   <dd>The date the Purchase Option that was used will expire, in UTC.</dd>
    *   <dt>string <var>dt_register</var></dt>
    *   <dd>The date the client checked in for the visit, in UTC.</dd>
    *   <dt>string <var>html_age</var></dt>
@@ -52,32 +52,32 @@ class AttendanceListModel extends WlModelAbstract
    *   <dt>string <var>html_member</var></dt>
    *   <dd>The client's member ID, if set.</dd>
    *   <dt>string <var>html_tooltip_book_by</var></dt>
-   *   <dd>Who, when, and where this visit was booked.</dd>
+   *   <dd>When and where this visit was booked, along with who booked it.</dd>
    *   <dt>int <var>i</var></dt>
-   *   <dd>The default place in the list to show this client. This is a deprecated copy of the i_order field.</dd>
+   *   <dd>The default place in the list to show this client. This is a deprecated copy of the <tt>i_order</tt> field.</dd>
    *   <dt>int <var>i_left</var></dt>
-   *   <dd>The number of visits left on this Purchase Option. It will be <tt>NULL</tt> if there is no limit.</dd>
+   *   <dd>The number of visits left on this Purchase Option. This will be <tt>NULL</tt> if there's no limit.</dd>
    *   <dt>int <var>i_order</var></dt>
    *   <dd>The default place in the list to show this client.</dd>
    *   <dt>int <var>i_total</var></dt>
    *   <dd>The total visits available from this Purchase Option.</dd>
    *   <dt>int <var>id_gender</var></dt>
-   *   <dd>The gender ID of the client, one of the {@link \WellnessLiving\Core\a\AGenderSid} constants.</dd>
+   *   <dd>The gender ID of the client. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.</dd>
    *   <dt>int <var>id_pass_prospect</var></dt>
-   *   <dd>If this visit was paid for by an external system this ID will be set, it will be <tt>0</tt> otherwise.</dd>
+   *   <dd>If this visit was paid for by an external system, this ID will be set. Otherwise, it will be <tt>0</tt>.</dd>
    *   <dt>int <var>id_program</var></dt>
-   *   <dd>The program ID of the Purchase Option, one of the {@link \WellnessLiving\WlProgramSid} constants.</dd>
+   *   <dd>The program ID of the Purchase Option. One of the {@link \WellnessLiving\WlProgramSid} constants.</dd>
    *   <dt>int <var>id_visit</var></dt>
-   *   <dd>The status of the visit, one of the {@link \Wl\Visit\VisitSid} constants.</dd>
+   *   <dd>The status of the visit. One of the {@link \Wl\Visit\VisitSid} constants.</dd>
    *   <dt>bool <var>is_attend</var></dt>
    *   <dd>This will be <tt>true</tt> if the client has attended the visit.</dd>
    *   <dt>bool <var>is_duration_pass</var></dt>
-   *   <dd>This will be <tt>true</tt> if Purchase Option used is a duration pass.</dd>
+   *   <dd>This will be <tt>true</tt> if the Purchase Option used is a duration pass.</dd>
    *   <dt>bool <var>is_deposit</var></dt>
    *   <dd>This will be <tt>true</tt> if the client has paid a deposit for the visit.</dd>
    *   <dt>bool <var>is_early</var></dt>
-   *   <dd>This will be <tt>true</tt> if the client has cancelled the visit early, incurring no penalty.
-   *     This will be <tt>false</tt> if cancelled late or if not cancelled at all.
+   *   <dd>This will be <tt>true</tt> if the client has canceled the visit early, incurring no penalty.
+   *     This will be <tt>false</tt> if canceled late or if not canceled at all.
    *   </dd>
    *   <dt>bool <var>is_free</var></dt>
    *   <dd>This will be <tt>true</tt> if the visit is free.</dd>
@@ -91,11 +91,9 @@ class AttendanceListModel extends WlModelAbstract
    *   <dd>This will be <tt>true</tt> if this was the latest visit for the Purchase Option used.</dd>
    *   <dt>bool <var>is_unlimited</var></dt>
    *   <dd>This will be <tt>true</tt> if the Purchase Option used has no usage limits.</dd>
-   *   <dt>bool <var>is_unlimited</var></dt>
-   *   <dd>This will be <tt>true</tt> if the Purchase Option used has no usage limits.</dd>
    *   <dt>bool <var>is_visit</var></dt>
    *   <dd>This will be <tt>true</tt> if this visit is still considered valid.
-   *     If visit was removed by the system or staff it will be <tt>false</tt>.</dd>
+   *     If visit was removed by the system or a staff member, this will be <tt>false</tt>.</dd>
    *   <dt>bool <var>is_wait</var></dt>
    *   <dd>This will be <tt>true</tt> if the visit is on the waiting list.</dd>
    *   <dt>bool <var>is_wait_confirm</var></dt>
@@ -115,7 +113,7 @@ class AttendanceListModel extends WlModelAbstract
    *   <dt>string <var>s_firstname</var></dt>
    *   <dd>The client's first name. This field is deprecated, use the text_ version instead.</dd>
    *   <dt>string <var>s_lastname</var></dt>
-   *   <dd>The client's lastname. This field is deprecated, use the text_ version instead.</dd>
+   *   <dd>The client's last name. This field is deprecated, use the text_ version instead.</dd>
    *   <dt>string <var>s_note</var></dt>
    *   <dd>Any notes tied to the client. This field is deprecated, use the text_ version instead.</dd>
    *   <dt>string <var>s_promotion</var></dt>
@@ -142,17 +140,17 @@ class AttendanceListModel extends WlModelAbstract
    *   <dd>The client’s user key.</dd>
    *   <dt>string <var>uid_book</var></dt>
    *   <dd>The key of the user who made the booking.
-   *     If differing from <tt>uid</tt> the booking could be made by a staff or family member.</dd>
+   *     If differing from <tt>uid</tt>, the booking could have been made by a staff or family member.</dd>
    *   <dt>string <var>url-cancel</var></dt>
-   *   <dd>The url that can be used to cancel the visit.</dd>
+   *   <dd>The URL that can be used to cancel the visit.</dd>
    *   <dt>string <var>url-cancel-admin</var></dt>
-   *   <dd>The url that can be used by an admin to cancel the visit.</dd>
+   *   <dd>The URL that can be used by an admin to cancel the visit.</dd>
    *   <dt>string <var>url-login-view</var></dt>
-   *   <dd>The url that for the user's page.</dd>
+   *   <dd>The URL that for the user's page.</dd>
    *   <dt>string <var>url-mail</var></dt>
-   *   <dd>The url to a page for sending an email to the client.</dd>
+   *   <dd>The URL to a page for sending an email to the client.</dd>
    *   <dt>string <var>url-profile</var></dt>
-   *   <dd>The url that for the client's profile.</dd>
+   *   <dd>The URL that for the client's profile.</dd>
    * </dl>
    *
    * @get result
