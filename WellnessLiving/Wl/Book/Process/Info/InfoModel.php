@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Book\WlBookModeSid;
 
 /**
- * The booking wizard for the "Class and Location" page.
+ * An endpoint that offers functionality for the class booking wizard on the "Class and Location" page.
  */
 class InfoModel extends WlModelAbstract
 {
@@ -19,9 +19,9 @@ class InfoModel extends WlModelAbstract
   public $a_login_activity = [];
 
   /**
-   * A list of assets which are being booked. Every element has the next keys:
-   * <ul><li>Number <tt>i_index</tt> Number of asset. Actual for assets with quantity greater <tt>1</tt>.</li>
-   * <li>String <tt>k_resource</tt> ID of asset.</li></ul>
+   * A list of assets being booked. Every element has the next keys:
+   * <dl><dt>int <var>i_index</var></dt><dd>The number of asset(s). This is the actual number for assets with quantity greater <tt>1</tt>.</dd>
+   * <dt>string <var>k_resource</var></dt><dd>The ID of asset.</dd></dl>
    *
    * @post post
    * @var array
@@ -29,16 +29,16 @@ class InfoModel extends WlModelAbstract
   public $a_resource = [];
 
   /**
-   * A list of all class sessions which can be booked together. Every element has the next keys:
-   * <ul><li>String <tt>dt_date</tt> Date/time when session starts in MySQL format and in GMT.</li>
-   * <li>Boolean <tt>is_select</tt> <tt>true</tt> if this session should be selected when page is initialized;
-   *   <tt>false</tt> otherwise.
-   * </li>
-   * <li>String <tt>k_class_period</tt> The ID of the session in the database.</li>
-   * <li>String <tt>s_location</tt> The name of the location where the session occurred.</li>
-   * <li>String <tt>s_start</tt> The date/time when the session starts in human readable format.
-   *   In the timezone of location.
-   * </li></ul>
+   * A list of all class sessions that can be booked together. Every element has the next keys:
+   * <dl>
+   * <dt>string <var>dt_date</var></dt><dd>The date/time when session starts in MySQL format and in GMT.</dd>
+   * <dt>boolean <var>is_select</var></dt><dd><tt>true</tt> if this session should be selected when page is initialized;
+   *   <tt>false</tt> if otherwise.</dd>
+   * <dt>string <var>k_class_period</var></dt><dd>The ID of the session in the database.</dd>
+   * <dt>string <var>s_location</var></dt><dd>The name of the location where the session occurred.</dd>
+   * <dt>string <var>s_start</var></dt><dd>The date/time when the session starts in human-readable format.
+   *   Returned in the time zone of the location.</dd>
+   * </dl>
    *
    * @get result
    * @var array
@@ -48,8 +48,9 @@ class InfoModel extends WlModelAbstract
   /**
    * The selected sessions.
    *
-   * Fields - The IDs of the sessions in the database.
-   * Values - Arrays of date/time when the session occurred in MySQL format and in GMT.
+   * <b>Fields -</b> The IDs of the sessions in the database.
+   *
+   * <b>Values -</b> Arrays of date/time when the session occurred in MySQL format and in GMT.
    *
    * @post post
    * @var array
@@ -58,13 +59,16 @@ class InfoModel extends WlModelAbstract
 
   /**
    * The staff member conducting the session. Every element has the next keys:
-   * <ul><li>{} <tt>a_logo</tt> Staff photo:
-   *   <ul><li>Number <tt>i_height</tt> Height.</li>
-   *   <li>Number <tt>i_width</tt> Width.</li>
-   *   <li>String <tt>s_url</tt> URL.</li></ul>
-   *   </li><li>String <tt>s_family</tt> The first letter of staff member surname.</li>
-   *   <li>String <tt>s_staff</tt> The staff member's name.</li>
-   * </ul>
+   * <dl>
+   * <dt>array <var>a_logo</var></dt><dd>The staff member photo:
+   *   <dl>
+   *     <dt>int <var>i_height</var></dt><dd>The image height.</dd>
+   *     <dt>int <var>i_width</var></dt><dd>The image width.</dd>
+   *     <dt>string <var>s_url</var></dt><dd>The image URL.</dd>
+   *   </dl></dd>
+   * <dt>string <var>s_family</var></dt><dd>The first letter of staff member surname.</dd>
+   * <dt>string <var>s_staff</var></dt><dd>The staff member's name.</dd>
+   * </dl>
    *
    * @get result
    * @var array
@@ -82,7 +86,7 @@ class InfoModel extends WlModelAbstract
   /**
    * The date/time of the session the user is booking in MySQL format and GMT.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @post get
@@ -93,7 +97,7 @@ class InfoModel extends WlModelAbstract
   /**
    * The date/time of the session the user is booking in MySQL format in the location's timezone.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -103,7 +107,7 @@ class InfoModel extends WlModelAbstract
   /**
    * The text of the contract to which the user must agree before book this session.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -113,7 +117,7 @@ class InfoModel extends WlModelAbstract
   /**
    * The special instructions for the class.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -123,7 +127,7 @@ class InfoModel extends WlModelAbstract
   /**
    * The duration of the session in minutes.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var int|null
@@ -131,7 +135,7 @@ class InfoModel extends WlModelAbstract
   public $i_duration = null;
 
   /**
-   * The WellnessLiving mode type, one of {@link \WellnessLiving\Wl\Book\WlBookModeSid} constants.
+   * The WellnessLiving mode type, one of the {@link \WellnessLiving\Wl\Book\WlBookModeSid} constants.
    *
    * @get get
    * @post get
@@ -140,8 +144,8 @@ class InfoModel extends WlModelAbstract
   public $id_mode = WlBookModeSid::APP_FRONTEND;
 
   /**
-   * Does user agree to the liability release?
-   * <tt>true</tt> - user agrees; <tt>false</tt> - user doesn't agree or the agreement isn't required.
+   * Determines if the user has agreed to the liability release.
+   * If `true`, the user has agreed. Otherwise, this will be `false` if the user hasn't agreed or the agreement isn't required.
    *
    * @post post
    * @var bool
@@ -149,8 +153,9 @@ class InfoModel extends WlModelAbstract
   public $is_agree = 0;
 
   /**
-   * <tt>true</tt> if next steps of the wizard needed (need to purchase something to book the selected session);
-   * <tt>false</tt> if no need for next steps (all that's needed already purchased).
+   * <b>true</b> - next steps of the wizard are needed (for example, to purchase something to book the selected session).
+   *
+   * <b>false</b> - no need for next steps (all that's needed has already been purchased).
    *
    * @post result
    * @var bool
@@ -158,9 +163,9 @@ class InfoModel extends WlModelAbstract
   public $is_next = false;
 
   /**
-   * The ID of session which is booked.
+   * The ID of session booked.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @post get
@@ -171,7 +176,7 @@ class InfoModel extends WlModelAbstract
   /**
    * The class title.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -181,7 +186,7 @@ class InfoModel extends WlModelAbstract
   /**
    * The location address.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -191,7 +196,7 @@ class InfoModel extends WlModelAbstract
   /**
    * The location title.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -199,9 +204,9 @@ class InfoModel extends WlModelAbstract
   public $s_location_title = null;
 
   /**
-   * The time when the session takes place in the location's timezone.
+   * The time when the session takes place in the location's time zone.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -210,9 +215,8 @@ class InfoModel extends WlModelAbstract
 
   /**
    * The ID of the user making the booking.
-   * The ID of the user making the booking.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @post get

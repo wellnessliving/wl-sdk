@@ -103,6 +103,11 @@ class WlProgramSid
   const SERVICE_PASS = 13;
 
   /**
+   * Video Membership.
+   */
+  public const VIDEO_MEMBERSHIP = 23;
+
+  /**
    * Gym Pass.
    */
   const VISIT_LIMIT = 8;

@@ -6,114 +6,122 @@ use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves a list of purchases to show in user profile.
+ * An endpoint that gets a list of purchases for a user.
  */
 class PurchaseListModel extends WlModelAbstract
 {
   /**
-   * User's purchases:
+   * A list of purchased items. Every element contains a sub-array with the following fields:
    * <dl>
    *   <dt>
    *     bool[] <var>a_active</var>
    *   </dt>
    *   <dd>
-   *     Value of <var>a_purchase['is_active']</var>. For packages also contains values of <var>a_purchase['is_active']</var> of every component.
+   *     The value of <var>a_purchase['is_active']</var>. For packages, this also contains the values of <var>a_purchase['is_active']</var> of every component.
    *   </dd>
    *   <dt>
    *     int[] <var>a_sale</var>
    *   </dt>
    *   <dd>
-   *     Value of <var>a_purchase['id_sale']</var>. For packages also contains values of <var>a_purchase['id_sale']</var> of every component.
+   *     The value of <var>a_purchase['id_sale']</var>. For packages, this also contains the values of <var>a_purchase['id_sale']</var> of every component.
    *   </dd>
    *   <dt>
    *     string <var>dt_add</var>
    *   </dt>
    *   <dd>
-   *     Date of purchase adding.
+   *     The date that the purchase was added.
    *   </dd>
    *   <dt>
    *     int <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     ID of purchase type. One of constants {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid}.
+   *     The ID of the purchase type. One of the constants {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_sale</var>
    *   </dt>
    *   <dd>
-   *     ID of sale category in store. One of constants {@link \WellnessLiving\WlSaleSid}.
+   *     The ID of the sale category in the store. One of the constants {@link \WellnessLiving\WlSaleSid}.
    *   </dd>
    *   <dt>
    *     bool <var>is_active</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - purchase item is active; <tt>false</tt> - purchase item is not active.
+   *     If `true`, then the purchase item is active. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     bool [<var>is_component</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if purchase item is a package component; <tt>false</tt> otherwise.
+   *     If `true`, then the purchase item is a package component. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     string <var>k_code</var>
    *   </dt>
    *   <dd>
-   *     ID of redemption code which was used to obtain some goods. Not empty only if <var>k_purchase</var> and <var>k_purchase_item</var> is empty.
+   *     The redemption code key that was used to make a purchase.
+   *     This is used only if <var>k_login_promotion</var> and <var>k_purchase</var> are empty.
    *   </dd>
    *   <dt>
    *     string [<var>k_enrollment_book</var>]
    *   </dt>
    *   <dd>
-   *     ID of whole event book. Is returner only for purchases of whole events which are components of package.
+   *     The key of an event that requires clients to book every session at once.
+   *     This is used only if the event is part of a package.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>
    *   </dt>
    *   <dd>
-   *     ID of purchase type. Primary key in different tables.
+   *     The key of the purchase type referring to different types of keys depending on the value of <var>id_sale</var>.
    *   </dd>
    *   <dt>
    *     string [<var>k_login_product</var>]
    *   </dt>
    *   <dd>
-   *     ID of purchased product. Is returned only for purchases of products which are components of package. Primary key in {@link \RsLoginProductSql} table.
+   *     The key of the purchased product.
+   *     This is used only if the event is part of a package.
    *   </dd>
    *   <dt>
    *     string <var>k_login_promotion</var>
    *   </dt>
    *   <dd>
-   *     ID of user's promotion.
+   *     The key of the user's existing purchase options.
+   *     This is used only if `k_code` and `k_purchase` are empty.
    *   </dd>
    *   <dt>
    *     string <var>k_purchase</var>
    *   </dt>
    *   <dd>
-   *     ID of ordinary purchase. Not empty only if <var>k_code</var> is empty.
+   *     The key of a purchase where no special case rules are in effect.
+   *     This is used only used if `k_code` is empty.
    *   </dd>
    *   <dt>
    *     string <var>k_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     ID of ordinary purchase item. Not empty only if <var>k_code</var> is empty.
+   *     The key of a purchase item where no special case rules are in effect.
+   *     This is used only if <var>k_code</var> is empty.
    *   </dd>
    *   <dt>
    *     string [<var>k_session_pass</var>]
    *   </dt>
    *   <dd>
-   *     ID of makeup to attend event. Is returned for repeat purchase of event.
+   *     In certain cases a session can be canceled and makeup sessions can be granted to a client in lieu of
+   *     other compensation. This is the key of one of the makeup sessions used to attend an event. This is also
+   *     present for a repeat purchase of an event.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
    *   </dt>
    *   <dd>
-   *     Title of purchase item.
+   *     The name of the purchase item.
    *   </dd>
    *   <dt>
    *     string <var>uid</var>
    *   </dt>
    *   <dd>
-   *     ID of purchase owner.
+   *     The ID of the purchase owner.
    *   </dd>
    * </dl>
    *
@@ -123,9 +131,9 @@ class PurchaseListModel extends WlModelAbstract
   public $a_purchase = [];
 
   /**
-   * ID of a business to show information for.
+   * The key of a business to show information for.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -133,9 +141,9 @@ class PurchaseListModel extends WlModelAbstract
   public $k_business = null;
 
   /**
-   * ID of a user to show information for.
+   * The key of a user to show information for.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null

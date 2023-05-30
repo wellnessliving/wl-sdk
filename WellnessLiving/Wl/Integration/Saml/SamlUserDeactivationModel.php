@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Integration\Saml;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Api for gets status of the user in business.
+ * An endpoint that retrieves user statuses in the business.
  */
 class SamlUserDeactivationModel extends WlModelAbstract
 {
   /**
-   * List of saml identifier.
+   * A list of SAML identifiers.
    *
    * @post post
    * @var string[]
@@ -18,9 +18,9 @@ class SamlUserDeactivationModel extends WlModelAbstract
   public $a_id;
 
   /**
-   * Key is saml identifier.
+   * The key of the SAML identifier.
    *
-   * Value is `true` if user is found and activated in business, `false` otherwise.
+   * This value is `true` if an active user is found in the business, `false` if otherwise.
    *
    * @post result
    * @var bool[]

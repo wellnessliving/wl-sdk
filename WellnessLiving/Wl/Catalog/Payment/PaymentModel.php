@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Catalog\Payment;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * A model to complete a payment in online store.
+ * Model to purchase an item and perform the payment in the online store.
  */
 class PaymentModel extends WlModelAbstract
 {
   /**
-   * A list of items in the cart.
+   * The list of items in the cart.
    *
-   * <b>Required!</b>
+   * This parameter is required.
    *
    * Every element must have the following keys:
    * <dl>
@@ -20,7 +20,7 @@ class PaymentModel extends WlModelAbstract
    *     array [<var>a_config</var>]
    *   </dt>
    *   <dd>
-   *     Additional configuration. May contain the next keys:
+   *     Additional configuration information. May contain the next keys:
    *     <dl>
    *       <dt>
    *         array [<var>a_quick_gift</var>]
@@ -55,55 +55,55 @@ class PaymentModel extends WlModelAbstract
    *         string [<var>dt_prorate</var>]
    *       </dt>
    *       <dd>
-   *         Prorate date. For memberships only.
+   *         The prorate date. For memberships only.
    *       </dd>
    *       <dt>
    *         string [<var>dt_send_local</var>]
    *       </dt>
    *       <dd>
-   *         The date when gift card must be send (for gift cards only).
+   *         The date when the gift card will be sent. This is used for gift cards only.
    *       </dd>
    *       <dt>
    *         string [<var>dt_start</var>]
    *       </dt>
    *       <dd>
-   *         The start date (for memberships only).
+   *         The start date. For memberships only.
    *       </dd>
    *       <dt>
    *         bool [<var>is_prorate</var>]
    *       </dt>
    *       <dd>
-   *         <tt>true</tt> to use prorate; <tt>false</tt> otherwise (for memberships only).
+   *         If set to `1` then this purchase will use the prorate rule. Set to `0` otherwise. For memberships only.
    *       </dd>
    *       <dt>
    *         bool [<var>is_prorate_fix</var>]
    *       </dt>
    *       <dd>
-   *         <tt>true</tt> to use a custom prorated amount; <tt>false</tt> otherwise (for memberships only).
+   *         If set to `1` then use the custom prorate amount. Set to `0` otherwise. For memberships only.
    *       </dd>
    *       <dt>
    *         bool [<var>is_prorate_only</var>]
    *       </dt>
    *       <dd>
-   *         <tt>true</tt> to pay for the prorated amount only; <tt>false</tt> otherwise (for memberships only).
+   *         If set to `1` this purchase is prorate only. Set to `0` otherwise. For memberships only.
    *       </dd>
    *       <dt>
    *         bool [<var>is_renew</var>]
    *       </dt>
    *       <dd>
-   *         <tt>true</tt> to enable auto-renew for the item; <tt>false</tt> otherwise (for memberships/passes only).
+   *         Setting this to `1` will enable auto-renew for the item. Set to `0` otherwise. For memberships/passes only.
    *       </dd>
    *       <dt>
    *         string [<var>k_appointment</var>]
    *       </dt>
    *       <dd>
-   *         The appointment key (for appointment add-ons only).
+   *         The appointment key. For appointment add-ons only.
    *       </dd>
    *       <dt>
    *         string [<var>k_coupon_amount</var>]
    *       </dt>
    *       <dd>
-   *         The key of gift card amount (for gift cards only).
+   *         The key of the gift card amount. For gift cards only.
    *       </dd>
    *       <dt>
    *         string [<var>k_staff</var>]
@@ -129,13 +129,13 @@ class PaymentModel extends WlModelAbstract
    *         string [<var>m_prorate_custom</var>]
    *       </dt>
    *       <dd>
-   *         The custom prorated price (for memberships only). Applies only if <var>is_prorate_fix</var> is <tt>true</tt>.
+   *         The custom prorate price. For memberships only. This is only used if <var>is_prorate_fix</var> is true.
    *       </dd>
    *       <dt>
    *         string [<var>s_code</var>]
    *       </dt>
    *       <dd>
-   *         The custom code for a gift card. If empty, a random gift card code will be generated (specify for gift cards only).
+   *         The gift card code. This is required for gift cards.
    *       </dd>
    *       <dt>
    *         string [<var>s_image</var>]
@@ -147,19 +147,19 @@ class PaymentModel extends WlModelAbstract
    *         string [<var>s_mail</var>]
    *       </dt>
    *       <dd>
-   *         The gift card recipient's email (required for gift cards).
+   *         The gift card receiver email. This is required for gift cards.
    *       </dd>
    *       <dt>
    *         string [<var>s_recipient</var>]
    *       </dt>
    *       <dd>
-   *         The gift card recipient's name (required for gift cards).
+   *         The gift card receiver name. This is required for gift cards.
    *       </dd>
    *       <dt>
    *         string [<var>s_sender</var>]
    *       </dt>
    *       <dd>
-   *         The gift card sender's name (required for gift cards).
+   *         The gift card sender name. This is required for gift cards.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -211,7 +211,7 @@ class PaymentModel extends WlModelAbstract
    *     string <var>[s_signature]</var>
    *   </dt>
    *   <dd>
-   *     The signature (mandatory for items that require contract signing only).
+   *     The client’s signature. This is only used for items that require a signed contract.
    *   </dd>
    * </dl>
    *
@@ -223,7 +223,7 @@ class PaymentModel extends WlModelAbstract
   /**
    * A list of payment sources.
    * The key is a string representation of one of the {@link WlPayMethodSid} constants.
-   * For example, if the payment method is {@link WlPayMethodSid::ECOMMERCE}, specify the string <tt>ecommerce</tt>.
+   * For example, if the payment method is {@link WlPayMethodSid::ECOMMERCE}, then specify the string <tt>ecommerce</tt>.
    *
    * Values contain the following keys:
    * <dl>
@@ -231,7 +231,7 @@ class PaymentModel extends WlModelAbstract
    *     array [<var>a_pay_card</var>]
    *   </dt>
    *   <dd>
-   *     The payment cart information:
+   *     The payment card information:
    *     <dl>
    *       <dt>
    *         array <var>a_pay_address</var>
@@ -240,7 +240,7 @@ class PaymentModel extends WlModelAbstract
    *         The payment address:
    *         <dl>
    *           <dt>bool <var>is_new</var></dt>
-   *           <dd><tt>1</tt> to add a new payment address; <tt>0</tt> to use a saved payment address.</dd>
+   *           <dd>Set this value is `1` to add a new payment address or to `0` to use a saved payment address.</dd>
    *           <dt>string [<var>k_geo_country</var>]</dt>
    *           <dd>The key of the country used for the payment address. Specify to add a new address.</dd>
    *           <dt>string [<var>k_geo_region</var>]</dt>
@@ -350,7 +350,7 @@ class PaymentModel extends WlModelAbstract
   public $a_pay_form = [];
 
   /**
-   * The discount as a percentage (optional).
+   * The discount as a percentage. Optional.
    *
    * @post post
    * @var float
@@ -358,7 +358,7 @@ class PaymentModel extends WlModelAbstract
   public $f_discount_percent = 0;
 
   /**
-   * The WellnessLiving mode type, one of {@link WlBookModeSid} constants (required).
+   * The WellnessLiving mode type, one of the {@link WlBookModeSid} constants (required).
    *
    * @post get
    * @var int
@@ -366,7 +366,7 @@ class PaymentModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * The payment owner is an anonymous user (optional).
+   * The payment owner is an anonymous user. Optional.
    *
    * @post get
    * @var bool
@@ -374,7 +374,7 @@ class PaymentModel extends WlModelAbstract
   public $is_guest = 0;
 
   /**
-   * Set if the operations are performed under the staff member (optional).
+   * Set if the operations are performed under the staff member. Optional.
    *
    * @post get
    * @var bool
@@ -382,7 +382,7 @@ class PaymentModel extends WlModelAbstract
   public $is_staff = 0;
 
   /**
-   * The business key (required).
+   * The business key. Required.
    *
    * @post get
    * @var string
@@ -390,7 +390,7 @@ class PaymentModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * The location key (required).
+   * The location key. Required.
    *
    * @post get
    * @var string
@@ -409,7 +409,7 @@ class PaymentModel extends WlModelAbstract
   /**
    * The key of the purchase that was created during payment.
    *
-   * <tt>null</tt> if the result isn't returned yet or the request wasn't successful.
+   * This will be `null` if the result isn't returned yet or the request wasn't successful.
    *
    * @post result
    * @var string|null
@@ -417,7 +417,7 @@ class PaymentModel extends WlModelAbstract
   public $k_purchase = null;
 
   /**
-   * The key of the visit to be paid (optional).
+   * The key of the visit to be paid. Optional.
    *
    * @post post
    * @var string
@@ -425,7 +425,7 @@ class PaymentModel extends WlModelAbstract
   public $k_visit = '';
 
   /**
-   * The discount amount (optional).
+   * The amount of money to discount. Optional.
    *
    * @post post
    * @var string
@@ -433,7 +433,7 @@ class PaymentModel extends WlModelAbstract
   public $m_discount_flat = '';
 
   /**
-   * The tip amount (optional).
+   * The tip amount. Optional.
    *
    * @post post
    * @var string
@@ -441,7 +441,7 @@ class PaymentModel extends WlModelAbstract
   public $m_tip = '0';
 
   /**
-   * The discount code (optional).
+   * The discount code. Optional.
    *
    * @post post
    * @var string
@@ -449,7 +449,7 @@ class PaymentModel extends WlModelAbstract
   public $text_discount_code = '';
 
   /**
-   * The user's key (required).
+   * The user's key. Required.
    *
    * @post get
    * @var string

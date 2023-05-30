@@ -5,12 +5,15 @@ namespace WellnessLiving\Wl\Profile\Contract;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about purchase option contract.
+ * An endpoint that gets information about a session pass or membership with a contract.
+ *
+ * The POST method will complete a sale of a Purchase Option requiring a contract.
+ * The method that WellnessLiving uses to encode a signature into a string isn't currently available in the SDK.
  */
 class ContractModel extends WlModelAbstract
 {
   /**
-   * Custom promotion start date.
+   * The start date of the contract.
    *
    * @get get
    * @var string
@@ -18,7 +21,7 @@ class ContractModel extends WlModelAbstract
   public $dt_start = '';
 
   /**
-   * Discount in percents.
+   * The percentage discount for the item.
    *
    * @get get
    * @var int
@@ -26,7 +29,7 @@ class ContractModel extends WlModelAbstract
   public $f_manual_discount = 0;
 
   /**
-   * Text of contract.
+   * The text of the contract.
    *
    * @get result
    * @var string
@@ -34,7 +37,7 @@ class ContractModel extends WlModelAbstract
   public $html_contract = '';
 
   /**
-   * ID of purchase option type. Member of {@link WlPurchaseItemSid}.
+   * The type of purchase item. This is one of the {@link WlPurchaseItemSid} constants.
    *
    * @get get
    * @var int
@@ -42,7 +45,7 @@ class ContractModel extends WlModelAbstract
   public $id_purchase_item = 0;
 
   /**
-   * ID of a business to show information for.
+   * The key of the business to show information for.
    *
    * @get get
    * @post get
@@ -51,7 +54,7 @@ class ContractModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * ID of purchase option in database.
+   * The key of the purchase item in the database.
    *
    * @get get
    * @var string
@@ -59,7 +62,7 @@ class ContractModel extends WlModelAbstract
   public $k_id = '0';
 
   /**
-   * ID of selected a location.
+   * The key of the selected location.
    *
    * @get get
    * @var string
@@ -67,7 +70,7 @@ class ContractModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
-   * ID of certain purchase item.
+   * The ID of the selected purchase item.
    *
    * @get get
    * @post get
@@ -76,7 +79,7 @@ class ContractModel extends WlModelAbstract
   public $k_purchase_item = '0';
 
   /**
-   * Custom price of the item.
+   * The custom price of the item.
    *
    * @get get
    * @var string
@@ -84,7 +87,7 @@ class ContractModel extends WlModelAbstract
   public $m_price_custom = '';
 
   /**
-   * Discount code.
+   * The discount code used for the item.
    *
    * @get get
    * @var string
@@ -92,9 +95,10 @@ class ContractModel extends WlModelAbstract
   public $s_discount_code = '';
 
   /**
-   * Customer signature.
+   * An encoded version of the client’s signature.
+   * This is different from the signature needed to communicate with an endpoint.
    *
-   * <tt>null</tt> if not signed yet.
+   * This will be `null` if not signed yet.
    *
    * @post post
    * @var string|null
@@ -102,7 +106,7 @@ class ContractModel extends WlModelAbstract
   public $s_signature = null;
 
   /**
-   * ID of current user.
+   * The key of the current user.
    *
    * @get get
    * @post get

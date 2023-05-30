@@ -3,12 +3,12 @@
 namespace WellnessLiving\Wl\Appointment\Book\Finish;
 
 /**
- * A model to complete an appointment booking.
+ * An endpoint that completes an appointment booking.
  */
 class Finish47Model extends FinishModel
 {
   /**
-   * All data from the provider model {@link Wl_Appointment_Book_ProviderModel}.
+   * All data from the appointment booking provider model.
    *
    * @post post
    * @var array

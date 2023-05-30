@@ -5,18 +5,24 @@ namespace WellnessLiving\Wl\Login\Add;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Registers existing user in current business.
- * If user already member of current business then do nothing.
+ * An endpoint that registers an existing user in the specified Enterprise Headquarters account.
+ *
+ * This endpoint isn't applicable for users who are already members of the business. After a profile is edited, there can
+ * be a delay while the data replicates to system caches. As a result, you may see a 'profile-field-empty' status code. In most
+ * cases, this delay is less than 20 seconds.
+ *
+ * For Enterprise Cloud in WellnessLiving, clients can only be members in one Enterprise Location.
+ * In all other Enterprise Locations, they'll be treated as travelers in the system.
  */
 class MailUseOkModel extends WlModelAbstract
 {
   /**
-   * The list of fields missing information.
+   * The list of fields with missing information.
    * Each element is an array containing the following data:<dl>
    *   <dt>string <var>html_message</var></dt>
    *   <dd>The error message.</dd>
    *   <dt>string <var>s_field</var></dt>
-   *   <dd>The name of the field which is missing information.
+   *   <dd>The name of the field missing information.
    *     Given in the format 'k_field.name'.
    *   </dd>
    * </dl>
@@ -27,7 +33,7 @@ class MailUseOkModel extends WlModelAbstract
   public $a_error = [];
 
   /**
-   * Whether this is a lead. <tt>true</tt> if this is the lead. <tt>false</tt> otherwise.
+   * This value is `true` if this is a lead. `false` if otherwise.
    *
    * @post post
    * @var string
@@ -35,7 +41,7 @@ class MailUseOkModel extends WlModelAbstract
   public $is_lead = 0;
 
   /**
-   * Business key.
+   * The business ID used internally by WellnessLiving.
    *
    * @post post
    * @var string
@@ -43,7 +49,7 @@ class MailUseOkModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * Lead Widget skin key. Only needed if the user is a lead and not using the default skin for the business.
+   * The Lead Capture Widget skin key. This is used only if a lead was added.
    *
    * @post post
    * @var string
@@ -67,7 +73,7 @@ class MailUseOkModel extends WlModelAbstract
   public $text_message = '';
 
   /**
-   * User key.
+   * The user key.
    *
    * @post post
    * @var string

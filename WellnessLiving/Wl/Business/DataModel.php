@@ -5,10 +5,19 @@ namespace WellnessLiving\Wl\Business;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information of a certain business.
+ * Information for a specified business.
  */
 class DataModel extends WlModelAbstract
 {
+  /**
+   * List of all business services and their availability data.
+   *
+   * @get result
+   * @var array Array, where keys are sids from {@link \WellnessLiving\WlServiceSid} and values are boolean:
+   * <tt>true</tt> - if service is enabled in the business, <tt>false</tt> otherwise.
+   */
+  public $a_service_list = array();
+
   /**
    * The float values of predefined tips.
    *
@@ -20,12 +29,36 @@ class DataModel extends WlModelAbstract
   public $a_tip_predefine = null;
 
   /**
+   * Business category ID of the business.
+   *
+   * A constant from {@link BusinessCategorySid}.
+   *
+   * @get result
+   * @var int
+   */
+  public $id_category;
+
+  /**
    * The Locale ID, used to search geo items.
    *
    * @get result
    * @var int
   */
   public $id_locale = 0;
+
+  /**
+   * The region ID. This indicates the data center where the information about the business is stored.
+   * One of the {@link \WellnessLiving\WlRegionSid} constants.
+   *
+   * Requests made to different regions can lead to known issues such as responses indicating that the
+   * business (or its elements) doesn't exist. This is because databases on different data centers are
+   * independent. For example, performing a request to the US cluster for a list of classes for an AU
+   * cluster business will return an empty list.
+   *
+   * @get result
+   * @var int
+   */
+  public $id_region;
 
   /**
    * <tt>true</tt> if clients can enter progress log; <tt>false</tt> otherwise.
@@ -125,7 +158,8 @@ class DataModel extends WlModelAbstract
 
   /**
    * The authorization token.
-   * May be used instead of {@link \WellnessLiving\Wl\Business\DataModel::$k_business}.
+   * This may be used instead of {@link \WellnessLiving\Wl\Business\DataModel::$k_business} to
+   * identify a business.
    *
    * @get get
    * @var string

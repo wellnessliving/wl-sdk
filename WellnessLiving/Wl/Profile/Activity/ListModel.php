@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Profile\Activity;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves a list of activity items to show in user profile.
+ * An endpoint that returns a list of client activities.
  */
 class ListModel extends WlModelAbstract
 {
   /**
-   * ID of activity items to show.
+   * An array listing client activities, where each activity is provided as an ID number.
    *
-   * Order of items in this array is the order in which elements should be shown.
+   * The order of items in this array is the order in which the elements should be displayed.
    *
    * @get result
    * @var array
@@ -20,9 +20,9 @@ class ListModel extends WlModelAbstract
   public $a_activity = [];
 
   /**
-   * ID of a business to show information for.
+   * The key of the business to show information for.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -30,9 +30,9 @@ class ListModel extends WlModelAbstract
   public $k_business = null;
 
   /**
-   * ID of a user to show information for.
+   * The ID of the client to show information for.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null

@@ -3,12 +3,12 @@
 namespace WellnessLiving\Wl\Quiz\Response;
 
 /**
- * Class with methods and constants for quiz response.
+ * A class for quiz responses.
  */
 class QuizResponse
 {
   /**
-   * Special value if quiz is skipped during booking or purchase.
+   * The special value if the quiz is skipped during the booking or purchase process.
    */
   const RESPONSE_SKIP = 'skip';
 }

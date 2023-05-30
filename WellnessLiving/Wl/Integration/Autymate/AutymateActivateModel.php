@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Integration\Autymate;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Checks or changes the status of Autymate enrollments.
+ * An endpoint that checks or changes the status of Autymate enrollments.
  */
 class AutymateActivateModel extends WlModelAbstract
 {
   /**
    * The mode of the request.
    *
-   * One of {@link \WellnessLiving\Wl\Integration\Autymate\AutymateAccessModeSid} constants.
+   * One of the {@link \WellnessLiving\Wl\Integration\Autymate\AutymateAccessModeSid} constants.
    *
    * @get get
    * @var int
@@ -20,7 +20,7 @@ class AutymateActivateModel extends WlModelAbstract
   public $id_mode = AutymateAccessModeSid::ENROLL;
 
   /**
-   * The new status of the enrollment. If 0 then return the current status.
+   * The new status of the enrollment. If 0, the current status is returned.
    *
    * One of {@link \WellnessLiving\Wl\Integration\Autymate\AutymateStatusSid} constants.
    *
@@ -30,7 +30,7 @@ class AutymateActivateModel extends WlModelAbstract
   public $id_status = 0;
 
   /**
-   * Key of the business.
+   * The key of the business.
    *
    * @get get
    * @var string
@@ -38,7 +38,7 @@ class AutymateActivateModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The randomly generated 32 character string used to authenticate Autymate requests for the business
+   * The randomly generated 32 character string used to authenticate Autymate requests for the business.
    *
    * @get get
    * @var string
@@ -46,7 +46,7 @@ class AutymateActivateModel extends WlModelAbstract
   public $s_guid = '';
 
   /**
-   * User key.
+   * The user key.
    *
    * @get get
    * @var string

@@ -6,10 +6,9 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about payments for an appointment.
- * For send post query, use {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentPostModel} model.
- *
- * @see \WellnessLiving\Wl\Appointment\Book\Payment\PaymentPostModel
+ * An endpoint that displays information about payments for an appointment.
+ * The POST method for this endpoint is implemented as a separate endpoint (see
+ * {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentPostModel}).
  */
 class PaymentModel extends WlModelAbstract
 {
@@ -27,7 +26,7 @@ class PaymentModel extends WlModelAbstract
    *
    * The value of this field is gathered from the payment form.
    *
-   * See {@link \WellnessLiving\Wl\Catalog\Payment\PaymentModel::$a_pay_form} for detailed description.
+   * See {@link \WellnessLiving\Wl\Catalog\Payment\PaymentModel::$a_pay_form} for a detailed description.
    *
    * @post post
    * @var array
@@ -35,7 +34,7 @@ class PaymentModel extends WlModelAbstract
   public $a_pay_form = [];
 
   /**
-   * Information about any prepaid promotions.
+   * Information about any prepaid Purchase Options.
    *
    *   <dt>string <var>i_limit</var></dt>
    *   <dd>The limit of total visits.</dd>
@@ -47,7 +46,7 @@ class PaymentModel extends WlModelAbstract
    *   <dd>The expiration date.</dd>
    *
    *   <dt>string <var>s_title</var></dt>
-   *   <dd>The title of the promotion.</dd>
+   *   <dd>The title of the Purchase Option.</dd>
    * </dl>
    *
    * @get result
@@ -58,18 +57,19 @@ class PaymentModel extends WlModelAbstract
   /**
    * Information about selected purchase items.
    *
-   * Fields - a string in format <tt>id_purchase_item-k_id</tt>.
-   * Values - an array with next stricture:
+   * Indexes are strings in the format `id_purchase_item-k_id`.
+   *
+   * Values are an array with the following structure:
+   *
    * <dl>
    *   <dt>array <var>a_tax</var></dt>
    *   <dd>Contains information about taxes in the following format. A list of taxes to apply.
-   *     The array keys are <tt>k_tax</tt> keys. Each element contains the following fields: <dl>
-   *
+   *     The array keys are `k_tax` keys. Each element contains the following fields: <dl>
    *       <dt>float <var>m_tax</var></dt>
-   *       <dd>Tax rate.</dd>
+   *       <dd>The tax rate.</dd>
    *
    *       <dt>string <var>text_title</var></dt>
-   *       <dd>Name of the tax.</dd>
+   *       <dd>The name of the tax.</dd>
    *     </dl>
    *   </dd>
    *
@@ -77,16 +77,16 @@ class PaymentModel extends WlModelAbstract
    *   <dd>The purchase item ID. A constant of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid}.</dd>
    *
    *   <dt>string <var>k_id</var></dt>
-   *   <dd>The value of the discount used for purchase.</dd>
+   *   <dd>The value of the discount used for the purchase.</dd>
    *
    *   <dt>string <var>m_discount</var></dt>
-   *   <dd>The value of the discount used for purchase.</dd>
+   *   <dd>The value of the discount used for the purchase.</dd>
    *
    *   <dt>string <var>m_pay</var></dt>
-   *   <dd>The payment for the promotion or single visit without taxes.</dd>
+   *   <dd>The payment for the Purchase Option or single visit without taxes.</dd>
    *
    *   <dt>string <var>m_price</var></dt>
-   *   <dd>The price of the promotion or single visit.</dd>
+   *   <dd>The price of the Purchase Option or single visit.</dd>
    * </dl>
    *
    * @get result
@@ -95,9 +95,9 @@ class PaymentModel extends WlModelAbstract
   public $a_purchase = [];
 
   /**
-   * Purchase item IDs from the database.
+   * The purchase item IDs from the database.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @post result
    * @var array|null
@@ -114,9 +114,9 @@ class PaymentModel extends WlModelAbstract
   public $id_mode;
 
   /**
-   * The payment type for the appointment, a constant of {@link WlAppointmentPaySid}.
+   * The payment type for the appointment. A constant of {@link WlAppointmentPaySid}.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @post result
    * @var int
@@ -126,7 +126,7 @@ class PaymentModel extends WlModelAbstract
   /**
    * The purchase item ID. A constant of {@link WlPurchaseItemSid}.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @post get
@@ -137,7 +137,7 @@ class PaymentModel extends WlModelAbstract
   /**
    * The item ID.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @post get
@@ -148,7 +148,7 @@ class PaymentModel extends WlModelAbstract
   /**
    * The location ID.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @post get
@@ -167,7 +167,7 @@ class PaymentModel extends WlModelAbstract
   /**
    * The login promotion ID.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -175,9 +175,9 @@ class PaymentModel extends WlModelAbstract
   public $k_login_promotion = null;
 
   /**
-   * The total cost of a purchase.
+   * The total cost of the purchase.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -185,7 +185,7 @@ class PaymentModel extends WlModelAbstract
   public $m_total = null;
 
   /**
-   * The discount code to be applied to purchase.
+   * The discount code to be applied to the purchase.
    *
    * @get get
    * @post get
@@ -196,7 +196,7 @@ class PaymentModel extends WlModelAbstract
   /**
    * The user ID.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @post get

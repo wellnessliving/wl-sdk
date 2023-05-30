@@ -5,71 +5,72 @@ namespace WellnessLiving\Wl\Location;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Point to get location lists for a bulk of business.
+ * An endpoint that gets all locations for a list of businesses.
  *
- * Can be used to get all locations from all businesses, but should be used accurately because
- * list of all locations in the system can be pretty big.
+ * This can be used to get all locations from all businesses. When using this endpoint, note that it will return
+ * a list of all locations in the system, potentially using substantial system resources. Using this endpoint can
+ * potentially result in larger API calls than average calls made for other endpoints.
  */
 class ListBulkModel extends WlModelAbstract
 {
   /**
-   * Short information about locations.
+   * Short-form information about locations.
    *
-   * Keys - location primary keys; values - sub arrays with keys:
+   * Keys refer to location primary keys. Values refer to sub-arrays with the next keys:
    * <dl>
    *   <dt>
    *     float <var>f_latitude</var>
    *   </dt>
    *   <dd>
-   *     Coordinate latitude.
+   *     The latitude coordinate.
    *   </dd>
    *   <dt>
    *     float <var>f_longitude</var>
    *   </dt>
    *   <dd>
-   *     Coordinate longitude.
+   *     The longitude coordinate.
    *   </dd>
    *   <dt>
    *     float <var>f_rate</var>
    *   </dt>
    *   <dd>
-   *     Location rate.
+   *     The location rate.
    *   </dd>
    *   <dt>
    *     int <var>i_order</var>
    *   </dt>
    *   <dd>
-   *     Order number.
+   *     The order number.
    *   </dd>
    *   <dt>
    *     string <var>k_business</var>
    *   </dt>
    *   <dd>
-   *     Business primary key.
+   *     The business's primary key.
    *   </dd>
    *   <dt>
    *     string <var>k_location</var>
    *   </dt>
    *   <dd>
-   *     Location primary key.
+   *     The location's primary key.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
    *   </dt>
    *   <dd>
-   *     Location title.
+   *     The location title.
    *   </dd>
    *   <dt>
    *     string <var>text_address</var>
    *   </dt>
    *   <dd>
-   *     Full location address.
+   *     The full location address.
    *   </dd>
    *   <dt>
    *     string [<var>url_logo</var>]
    *   </dt>
    *   <dd>
-   *     Location logo.
+   *     The location logo.
    *   </dd>
    * </dl>
    *
@@ -79,7 +80,7 @@ class ListBulkModel extends WlModelAbstract
   public $a_location = [];
 
   /**
-   * List of models with full information about each location.
+   * A list of models with full information about each location.
    *
    * Every element is an object of the {@link \WellnessLiving\Wl\Location\View\ViewModel}.
    *
@@ -89,9 +90,9 @@ class ListBulkModel extends WlModelAbstract
   public $a_location_full = [];
 
   /**
-   * ID of the directory if locations should be filtered by directory integration turned on.
+   * The ID of the directory if locations should be filtered by enabling directory integration.
    *
-   * `0` if directory filter is not required.
+   * `0` if a directory filter isn't required.
    *
    * @get get
    * @see \WellnessLiving\WlProjectSid
@@ -100,7 +101,7 @@ class ListBulkModel extends WlModelAbstract
   public $id_directory = 0;
 
   /**
-   * Bulk of businesses. Business primary keys serialized with JSON.
+   * A list of businesses. Business primary keys are serialized with JSON.
    *
    * Empty string if you need all locations in the system.
    *
@@ -108,6 +109,14 @@ class ListBulkModel extends WlModelAbstract
    * @var string
    */
   public $s_business = '';
+
+  /**
+   * A list of locations. Location primary keys are serialized with JSON.
+   *
+   * @get get
+   * @var string
+   */
+  public $s_location = '';
 }
 
 ?>

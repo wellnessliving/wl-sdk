@@ -6,14 +6,18 @@ use WellnessLiving\WlAssertException;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Report information.
+ * An endpoint that returns information from a WellnessLiving report.
+ *
+ * There are two All Clients Reports that can be used to find user IDs. The results from each report can be filtered by different
+ * fields. The two reports are similar, but not exactly the same. The `LOGIN_LIST` (ID 22) report requires filters to be set to
+ * retrieve information. The `LOGIN_LIST_ALL` (ID 33) doesn’t require any filters to be set when specifying a date range.
  */
 class DataModel extends WlModelAbstract
 {
   /**
-   * Report content information.
+   * The report contents.
    *
-   * Content of this array completely depends on the report that is loaded.
+   * Contents of this array can vary based on the report that's loaded.
    *
    * @get result
    * @var array
@@ -21,7 +25,7 @@ class DataModel extends WlModelAbstract
   public $a_data=[];
 
   /**
-   * Page number. Starts from zero!
+   * The page of results to show, starting at zero. The API will return 256 results per page.
    *
    * @get get
    * @var int
@@ -29,7 +33,20 @@ class DataModel extends WlModelAbstract
   public $i_page = 0;
 
   /**
-   * Report ID. One of {@link \WellnessLiving\Wl\Report\WlReportSid} constants.
+   * The report ID. One of the {@link WlReportSid} constants. The following reports are currently
+   * available:
+   * <dl>
+   *   <dt>LOGIN_LIST (ID 22)</dt>
+   *   <dd>All Clients Report (Reports tab, features date search)</dd>
+   *   <dt>LOGIN_LIST_ALL (ID 33)</dt>
+   *   <dd>All Clients Report (Clients tab) Batch Report</dd>
+   *   <dt>PAY_TRANSACTION_BATCH (ID 77)</dt>
+   *   <dd>Batch Report</dd>
+   *   <dt>PURCHASE_ITEM_LIST_USER (ID 118)</dt>
+   *   <dd>Sales per Client Report</dd>
+   *   <dt>PURCHASE_ITEM_ACCRUAL_CASH (ID 123)</dt>
+   *   <dd>All Sales Report</dd>
+   * </dl>
    *
    * @get get
    * @var int
@@ -37,7 +54,8 @@ class DataModel extends WlModelAbstract
   public $id_report = 0;
 
   /**
-   * Report group ID. One of {@link \WellnessLiving\Wl\Report\WlReportGroupSid} constants.
+   * The report group ID. One of the {@link WlReportGroupSid} constants that describes the time
+   * period (day, week, month, or year) for the report to cover.
    *
    * @get get
    * @var int
@@ -45,7 +63,7 @@ class DataModel extends WlModelAbstract
   public $id_report_group = 0;
 
   /**
-   * Report view ID. One of {@link \WellnessLiving\Wl\Report\WlReportChartViewSid} constants.
+   * The report view ID. One of the {@link WlReportChartViewSid} constants.
    *
    * @get get
    * @var int
@@ -53,7 +71,7 @@ class DataModel extends WlModelAbstract
   public $id_report_view = 0;
 
   /**
-   * Key of business for which report must be generated.
+   * The key of business for which the report must be generated.
    *
    * @get get
    * @var string
@@ -61,9 +79,9 @@ class DataModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Filter settings in encoded format.
+   * Filter settings in an encoded format.
    *
-   * Do not set this field directly. Use {@link \WellnessLiving\Wl\Report\DataModel::filterSet()} to set filter.
+   * Don't set this field directly. Use {@link DataModel::filterSet()} to set the filter.
    *
    * @get get
    * @var string
@@ -71,7 +89,7 @@ class DataModel extends WlModelAbstract
   public $s_filter = '';
 
   /**
-   * Way for sorting report data.
+   * The field to use for sorting report data.
    *
    * @get get
    * @var string
@@ -83,8 +101,8 @@ class DataModel extends WlModelAbstract
    *
    * Specific filters depend on specific reports.
    *
-   * @param array $a_filter Report filters. Key is filter variable name, value is its value.
-   * @throws WlAssertException In a case of an assertion.
+   * @param array $a_filter The report filters. The key is the filter variable name, and the value is its value.
+   * @throws WlAssertException Used in case of an assertion.
    */
   public function filterSet(array $a_filter)
   {

@@ -5,30 +5,30 @@ namespace WellnessLiving\Wl\Coupon\CouponList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves a list of gift cards.
+ * An endpoint that retrieves a list of gift cards.
  */
 class ListModel extends WlModelAbstract
 {
   /**
-   * List of gift cards. Every element has the following keys:
+   * A list of gift cards. Every element has the following keys:
    * <dl>
    *   <dt>
    *     int <var>id_type</var>
    *   </dt>
    *   <dd>
-   *     Type of coupon. One of {@link WlTypeSid} constants.
+   *     The type of coupon. One of {@link WlTypeSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_coupon</var>
    *   </dt>
    *   <dd>
-   *     A Gift card key.
+   *     The gift card key.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Title of a gift card.
+   *     The title of the gift card.
    *   </dd>
    * </dl>
    *
@@ -38,7 +38,7 @@ class ListModel extends WlModelAbstract
   public $a_coupon = [];
 
   /**
-   * Business key to retrieve list of all gift cards in a business.
+   * The business key to retrieve a list of all the gift cards in a business.
    *
    * @get get
    * @var string

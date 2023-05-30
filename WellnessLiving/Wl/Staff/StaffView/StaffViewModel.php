@@ -5,31 +5,32 @@ namespace WellnessLiving\Wl\Staff\StaffView;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves information about a staff member.
+ * An endpoint that returns information about a specified staff member.
  *
- * This method can accept or one staff key {@link StaffViewApi::$k_staff} or staff list
- * {@link StaffViewApi::$a_staff_list} but not both (exception would be thrown).
+ * This method can accept one staff key {@link StaffViewModel::$k_staff} or a staff list
+ * {@link StaffViewModel::$a_staff_list} but not both (an exception would be thrown).
  */
 class StaffViewModel extends WlModelAbstract
 {
   /**
-   * Contains staff schedule of classes per day.
+   * An array containing information about the classes this staff member is running.
+   * Each element contains another array with three elements:
    *
    * <dl>
    *   <dt>array <var>a_class_period</var></dt>
-   *   <dd>List of sessions in day:<dl>
+   *   <dd>A list of sessions in the day:<dl>
    *     <dt>string <var>dt_time</var></dt>
-   *     <dd>Session start time in MySQL format.</dd>
+   *     <dd>The session start time in MySQL format.</dd>
    *     <dt>int <var>i_duration</var></dt>
-   *     <dd>Session duration in seconds.</dd>
+   *     <dd>The session duration in seconds.</dd>
    *     <dt>string <var>s_title</var></dt>
-   *     <dd>Class name.</dd>
+   *     <dd>The class name.</dd>
    *   </dl></dd>
    *   <dt>int <var>i_day</var></dt>
-   *   <dd>Day of week. One of {@link \WellnessLiving\Core\a\ADateWeekSid} constants.</dd>
+   *   <dd>The day of week. One of {@link \WellnessLiving\Core\a\ADateWeekSid} constants.</dd>
    * </dl>
    *
-   * <tt>null</tt> if data is not loaded yet.
+   * This will be `null` if data isn't loaded yet.
    *
    * @get result
    * @var array|null
@@ -37,24 +38,24 @@ class StaffViewModel extends WlModelAbstract
   public $a_class_day = null;
 
   /**
-   * Staff list of staff data and class day.
+   * An array listing the class sessions the staff member provides at each location.
    *
    * <dl>
    *   <dt>array <var>a_class_day</var></dt>
    *   <dd>
-   *     Contains schedule of classes per day:
+   *     Contains a schedule of classes per day:
    *     <dl>
    *       <dt>array <var>a_class_period</var></dt>
-   *       <dd>List of sessions in day:<dl>
+   *       <dd>A list of sessions in the day:<dl>
    *         <dt>string <var>dt_time</var></dt>
-   *         <dd>Session start time in MySQL format.</dd>
+   *         <dd>The session start time in MySQL format.</dd>
    *         <dt>int <var>i_duration</var></dt>
-   *         <dd>Session duration in seconds.</dd>
+   *         <dd>The session duration in seconds.</dd>
    *         <dt>string <var>s_title</var></dt>
-   *         <dd>Class name.</dd>
+   *         <dd>The class name.</dd>
    *       </dl></dd>
    *       <dt>int <var>i_day</var></dt>
-   *       <dd>Day of week. One of {@link \WellnessLiving\Core\a\ADateWeekSid} constants.</dd>
+   *       <dd>The day of week. One of {@link \WellnessLiving\Core\a\ADateWeekSid} constants.</dd>
    *     </dl>
    *   </dd>
    *   <dt>array <var>a_staff</var></dt>
@@ -62,22 +63,23 @@ class StaffViewModel extends WlModelAbstract
    *     Staff information:
    *     <dl>
    *       <dt>int <var>id_gender</var></dt>
-   *       <dd>Staff member's gender. One of {@link \WellnessLiving\Core\a\AGenderSid} constants.</dd>
+   *       <dd>The staff member's gender. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.</dd>
    *       <dt>string <var>s_biography</var></dt>
-   *       <dd>Staff biography.</dd>
+   *       <dd>A description of the staff member. This description can include HTML tags.</dd>
    *       <dt>string <var>s_family</var></dt>
-   *       <dd>1st letter of surname.</dd>
+   *       <dd>The staff member’s surname.</dd>
    *       <dt>string <var>s_name</var></dt>
-   *       <dd>Staff name.</dd>
+   *       <dd>The staff member’s first name.</dd>
    *       <dt>string <var>s_position</var></dt>
-   *       <dd>Staff job name.</dd>
+   *       <dd>The staff member’s position in the organization.</dd>
    *       <dt>string <var>uid</var></dt>
-   *       <dd>Staff user ID.</dd>
+   *       <dd>The user ID. Each staff member in WellnessLiving can also access the system as a client of their business.
+   *       This is the ID number used to represent the staff member as a client.</dd>
    *     </dl>
    *   </dd>
    * </dl>
    *
-   * <tt>null</tt> if data is not loaded yet.
+   * This will be `null` if data isn't loaded yet.
    *
    * @get result
    * @var array|null
@@ -85,24 +87,25 @@ class StaffViewModel extends WlModelAbstract
   public $a_result_list = null;
 
   /**
-   * Staff information.
+   * An array containing information about the staff member.
    *
    * <dl>
    *   <dt>int <var>id_gender</var></dt>
-   *   <dd>Staff member's gender. One of {@link \AGenderSid} constants.</dd>
+   *   <dd>The staff member's gender. One of the {@link AGenderSid} constants.</dd>
    *   <dt>string <var>s_biography</var></dt>
-   *   <dd>Staff biography.</dd>
+   *   <dd>A description of the staff member. This description can include HTML tags.</dd>
    *   <dt>string <var>s_family</var></dt>
-   *   <dd>1st letter of surname.</dd>
+   *   <dd>The staff member’s surname.</dd>
    *   <dt>string <var>s_name</var></dt>
-   *   <dd>Staff name.</dd>
+   *   <dd>The staff member’s first name.</dd>
    *   <dt>string <var>s_position</var></dt>
-   *   <dd>Staff job name.</dd>
+   *   <dd>The staff member’s position in the organization.</dd>
    *   <dt>string <var>uid</var></dt>
-   *   <dd>Staff user ID.</dd>
+   *   <dd>The user ID. Each staff member in WellnessLiving can also access the system as a client of their business.
+   *   This is the ID number used to represent the staff member as a client.</dd>
    * </dl>
    *
-   * <tt>null</tt> if data is not loaded yet.
+   * This will be `null` if data isn't loaded yet.
    *
    * @get result
    * @var array|null
@@ -110,9 +113,9 @@ class StaffViewModel extends WlModelAbstract
   public $a_staff = null;
 
   /**
-   * List of staff keys.
+   * A list of staff keys.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string[]|null
@@ -120,9 +123,9 @@ class StaffViewModel extends WlModelAbstract
   public $a_staff_list = null;
 
   /**
-   * ID of a business to show information for.
+   * The key of the business to show information for.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -130,9 +133,10 @@ class StaffViewModel extends WlModelAbstract
   public $k_business = null;
 
   /**
-   * Staff ID.
+   * The staff member’s ID number. A staff member can work for more than one business. This ID can be found using the
+   * {@link \WellnessLiving\Wl\Staff\StaffList\StaffListModel} endpoint.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null

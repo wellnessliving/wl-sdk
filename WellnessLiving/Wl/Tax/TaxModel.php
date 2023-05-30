@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Tax;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Tax information.
+ * An endpoint that returns tax information for a business.
  */
 class TaxModel extends WlModelAbstract
 {
   /**
-   * Tax title.
+   * The tax title.
    *
    * @get result
    * @var string
@@ -18,9 +18,9 @@ class TaxModel extends WlModelAbstract
   public $text_tax = '';
 
   /**
-   * Tax ID to get information for.
+   * The tax ID to get information for.
    *
-   * <tt>'0'</tt> if not set yet.
+   * This will be `0` if not set yet.
    *
    * @get get
    * @var string

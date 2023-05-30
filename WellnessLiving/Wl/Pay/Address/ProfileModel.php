@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Pay\Address;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves default payment address data that is retrieved from user profile.
+ * An endpoint that retrieves a client’s physical address from their profile.
  */
 class ProfileModel extends WlModelAbstract
 {
   /**
-   * The business identifier in which editing is performed.
+   * The business ID number used internally by WellnessLiving.
    *
-   * <tt>null</tt> if we are in the system business.
+   * This will be `null` if you're in the system business.
    *
    * @get get
    * @var string|null
@@ -20,9 +20,9 @@ class ProfileModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * ID of GEO country.
+   * The country ID. This is different from the values used in LocaleSid.
    *
-   * <tt>null</tt> if not yet loaded.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -30,9 +30,9 @@ class ProfileModel extends WlModelAbstract
   public $k_geo_country = null;
 
   /**
-   * ID of GEO region.
+   * The region ID.
    *
-   * <tt>null</tt> if not yet loaded.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -40,9 +40,9 @@ class ProfileModel extends WlModelAbstract
   public $k_geo_region = null;
 
   /**
-   * Name of the city.
+   * The name of the city in the address.
    *
-   * <tt>null</tt> if city is yet loaded.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -50,9 +50,9 @@ class ProfileModel extends WlModelAbstract
   public $s_city = null;
 
   /**
-   * User name.
+   * The client’s name as listed in their address.
    *
-   * <tt>null</tt> if not yet loaded.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -60,9 +60,9 @@ class ProfileModel extends WlModelAbstract
   public $s_name = null;
 
   /**
-   * Phone number.
+   * The client’s phone number.
    *
-   * <tt>null</tt> if not yet loaded.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -70,9 +70,9 @@ class ProfileModel extends WlModelAbstract
   public $s_phone = null;
 
   /**
-   * Postal or ZIP code.
+   * The client’s postal or zip code.
    *
-   * <tt>null</tt> if not yet loaded.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -80,9 +80,9 @@ class ProfileModel extends WlModelAbstract
   public $s_postal = null;
 
   /**
-   * Street address line 1.
+   * The first line of the client’s address.
    *
-   * <tt>null</tt> if not yet loaded.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -90,9 +90,9 @@ class ProfileModel extends WlModelAbstract
   public $s_street1 = null;
 
   /**
-   * Street address line 2.
+   * The second line of the client’s address.
    *
-   * <tt>null</tt> if not yet loaded.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
@@ -100,7 +100,7 @@ class ProfileModel extends WlModelAbstract
   public $s_street2 = null;
 
   /**
-   * ID of a user whose data should be retrieved.
+   * The key of the user whose data should be retrieved.
    *
    * @get get
    * @var string

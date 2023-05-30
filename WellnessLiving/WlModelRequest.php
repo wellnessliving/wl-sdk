@@ -182,7 +182,7 @@ class WlModelRequest
     $a_result = [];
     foreach($a_array as $s_key => $x_value)
     {
-      if(is_string($x_value)||is_numeric($x_value))
+      if(is_string($x_value)||is_numeric($x_value)||is_null($x_value))
       {
         $a_result[strtolower($s_key)] = $x_value;
         continue;
@@ -247,7 +247,7 @@ class WlModelRequest
     $a_variable=WlModelRequest::signatureArray($a_data['a_variable']);
     ksort($a_variable);
     foreach($a_variable as $s_key => $s_value)
-      $a_signature[]=$s_key.'='.$s_value;
+      $a_signature[] = $s_key.($s_value===null?' is null':'='.$s_value);
 
     $a_header=[];
     foreach($a_data['a_header'] as $s_key => $s_value)

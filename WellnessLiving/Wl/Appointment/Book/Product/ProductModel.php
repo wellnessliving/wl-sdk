@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Appointment\Book\Product;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about service add-ons.
+ * An endpoint that returns information about service add-ons.
  */
 class ProductModel extends WlModelAbstract
 {
   /**
    * A list service add-ons.
    *
-   * <tt>null</tt> if not initialized yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var array|null
@@ -20,7 +20,7 @@ class ProductModel extends WlModelAbstract
   public $a_product = null;
 
   /**
-   * The ID of a service for which to show information.
+   * The ID of a service to show information for.
    *
    * @get get
    * @var string

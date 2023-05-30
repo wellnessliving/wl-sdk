@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Location\Flag;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information if a user is flagged in a location.
+ * An endpoint that retrieves information if a user is flagged in a location.
  */
 class FlagModel extends WlModelAbstract
 {
   /**
-   * <tt>true</tt> if user is flagged; <tt>false</tt> otherwise.
+   * <tt>true</tt> if the user is flagged, <tt>false</tt> if otherwise.
    *
    * <tt>null</tt> until loaded.
    *
@@ -20,7 +20,7 @@ class FlagModel extends WlModelAbstract
   public $is_flag = null;
 
   /**
-   * Location key.
+   * The location key.
    *
    * @get get
    * @var string
@@ -28,7 +28,7 @@ class FlagModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
-   * User's key.
+   * The user's key.
    *
    * @get get
    * @var string

@@ -5,14 +5,18 @@ namespace WellnessLiving\Wl\Lead;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Tool to get information for "Lead capture" widget and save user from this widget.
+ * An endpoint that gets information from the Lead Capture widget and saves a new user’s information.
+ *
+ * A user can be added to a second business by adding them first as a lead. If your business uses Enterprise Cloud,
+ * there may be a restriction where clients can only be members in one enterprise location (travellers in all
+ * other enterprise locations).
  */
 class LeadModel extends WlModelAbstract
 {
   /**
-   * List of user's fields to save.
-   * Keys - field keys (which are returned for every element of
-   * {@link \WellnessLiving\Wl\Lead\LeadModel::$a_field_list}); values - field values.
+   * A list of fields containing the lead’s information.
+   * The keys are the field keys and values are field values from
+   * {@link \WellnessLiving\Wl\Lead\LeadModel::$a_field_list}.
    *
    * @post post
    * @var array
@@ -20,47 +24,47 @@ class LeadModel extends WlModelAbstract
   public $a_field_data = [];
 
   /**
-   * List of profile fields in business. Every element has next keys:
+   * A list of profile fields in the business. Every element has the following keys:
    * <dl>
    *   <dt>
    *      array[] <var>a_item</var>
    *   </dt>
    *   <dd>
-   *     List of possible options for a field value. Not empty for fields <tt>select</tt> only.
-   *     Every element has next keys:
-   *     <dl><dt>string <var>s_id</var></dt><dd>Option ID.</dd>
-   *     <dt>string <var>text_title</var></dt><dd>Option title.</dd></dl>
+   *     A list of possible options for an HTML select field. This value is only used if this field is an HTML select.
+   *     Every element has the following keys:
+   *     <dl><dt>string <var>s_id</var></dt><dd>The option ID.</dd>
+   *     <dt>string <var>text_title</var></dt><dd>The option title.</dd></dl>
    *   </dd>
    *   <dt>
    *     int <var>id_field_general</var>
    *   </dt>
    *   <dd>
-   *     Type of general field. One of constants {@link \WellnessLiving\Wl\Field\WlFieldGeneralSid}.
-   *     Not empty for fields <tt>general</tt> only.
+   *     The type of the general field. This is one of the {@link \WellnessLiving\Wl\Field\WlFieldGeneralSid}.
+   *     This value is only set if the field is one of the general fields.
    *   </dd>
    *   <dt>
    *     int <var>id_field_type</var>
    *   </dt>
    *   <dd>
-   *     Field type. One of constants {@link \WellnessLiving\Wl\Field\RsFieldTypeSid}.
+   *     The field type. This is one of the @link \WellnessLiving\Wl\Field\RsFieldTypeSid} constants.
    *   </dd>
    *   <dt>
    *     bool <var>is_require</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if field is mandatory; <tt>false</tt> otherwise.
+   *     If `true`, then the field is mandatory. If `false`, then the field isn't mandatory.
    *   </dd>
    *   <dt>
    *     string <var>k_field</var>
    *   </dt>
    *   <dd>
-   *     Field key.
+   *     The field key.
    *   </dd>
    *   <dt>
    *     string <var>text_field</var>
    *   </dt>
    *   <dd>
-   *     Field title.
+   *     The field title.
    *   </dd>
    * </dl>
    *
@@ -70,15 +74,17 @@ class LeadModel extends WlModelAbstract
   public $a_field_list = [];
 
   /**
-   * Skin configuration:
-   * <dl><dt>array <var>a_style</var></dt><dd>General style settings.</dd>
-   * <dt>array <var>background</var></dt><dd>Background settings.</dd>
-   * <dt>array <var>field-font</var></dt><dd>Font settings.</dd>
-   * <dt>array <var>header-text</var></dt><dd>Header settings.</dd>
-   * <dt>array <var>info-show</var></dt><dd>Information settings.</dd>
-   * <dt>array <var>submit-background</var></dt><dd>Settings of submit button background.</dd>
-   * <dt>array <var>submit-font</var></dt><dd>Settings of submit button font.</dd>
-   * <dt>array <var>submit-text</var></dt><dd>Settings of submit button text.</dd></dl>
+   * The skin configuration:
+   * <dl>
+   *   <dt>array <var>a_style</var></dt><dd>The general style settings.</dd>
+   *   <dt>array <var>background</var></dt><dd>The background settings.</dd>
+   *   <dt>array <var>field-font</var></dt><dd>The font settings.</dd>
+   *   <dt>array <var>header-text</var></dt><dd>The header settings.</dd>
+   *   <dt>array <var>info-show</var></dt><dd>The information settings.</dd>
+   *   <dt>array <var>submit-background</var></dt><dd>The settings for the submit button background.</dd>
+   *   <dt>array <var>submit-font</var></dt><dd>The settings for the submit button font.</dd>
+   *   <dt>array <var>submit-text</var></dt><dd>The settings for the submit button text.</dd>
+   * </dl>
    *
    * @get result
    * @var array
@@ -86,7 +92,7 @@ class LeadModel extends WlModelAbstract
   public $a_skin = [];
 
   /**
-   * Key of business to which new user must be captured.
+   * The key of business to which the new user must be captured.
    *
    * @get get
    * @post get
@@ -95,8 +101,10 @@ class LeadModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Key of skin to use.
-   * Empty to use system default skin.
+   * The ID of the widget skin. If left empty, then the default skin is used.
+   * This will be the Lead Capture widget skin with ‘Use this widget for the Add Lead form’ selected.
+   * If your business doesn't have a skin selected, this endpoint will default to the system-wide default,
+   * which may lack fields your business requires when adding a lead or a client.
    *
    * @get get
    * @post get
@@ -105,8 +113,10 @@ class LeadModel extends WlModelAbstract
   public $k_skin = '0';
 
   /**
-   * Characters to pass captcha test.
-   * Not necessary if GET method has returned empty {@link \WellnessLiving\Wl\Lead\LeadModel::$url_captcha}.
+   * The characters entered by the lead for the captcha test.
+   * This isn't necessary if the GET method returned an empty url_captcha.
+   * This field isn't necessary if the GET method returned an empty
+   * {@link \WellnessLiving\Wl\Lead\LeadModel::$url_captcha}.
    *
    * @post post
    * @var string
@@ -114,7 +124,7 @@ class LeadModel extends WlModelAbstract
   public $s_captcha = '';
 
   /**
-   * Key of captured user.
+   * The key of the new user.
    *
    * @post result
    * @var string
@@ -122,8 +132,8 @@ class LeadModel extends WlModelAbstract
   public $uid;
 
   /**
-   * URL to load image with captcha test.
-   * Empty string if it is not necessary to pass captcha test.
+   * The URL to load the image with a captcha test.
+   * This string is empty if it's not necessary to pass a captcha test.
    *
    * @get result
    * @var string

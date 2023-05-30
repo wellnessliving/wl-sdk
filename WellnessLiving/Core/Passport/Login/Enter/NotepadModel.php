@@ -6,14 +6,14 @@ use WellnessLiving\Sha3;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Generates notepad for user sign in form.
+ * Retrieve the notepad value from the server which is used to log someone in to the SDK.
  */
 class NotepadModel extends WlModelAbstract
 {
   /**
-   * Value of notepad to hash user password. 20 lowercase hexadecimal digits.
+   * The notepad value, it is used to hash user's the password. 20 lowercase hexadecimal digits.
    *
-   * <tt>null</tt> if notepad is not loaded yet.
+   * It is `null` if notepad is not loaded yet.
    *
    * @get result
    * @var string|null

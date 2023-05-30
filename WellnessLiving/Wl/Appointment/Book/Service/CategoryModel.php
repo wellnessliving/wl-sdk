@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Appointment\Book\Service;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves an information about service categories.
+ * An endpoint that retrieves information about service categories.
  */
 class CategoryModel extends WlModelAbstract
 {
   /**
    * A list of information about service categories.
    *
-   * <tt>null</tt> if not initialized yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var array|null
@@ -20,9 +20,10 @@ class CategoryModel extends WlModelAbstract
   public $a_category = null;
 
   /**
-   * <tt>true</tt> - return all service categories for a certain location.
-   * <tt>false</tt> - return only service categories which have staff members able to conduct them and are associated
-   * to a certain book tab.
+   * <b>true</b> - return all service categories for a certain location.
+   *
+   * <b>false</b> - return only service categories that are associated with a book tab and with staff members
+   * able to conduct them.
    *
    * @get get
    * @var bool
@@ -30,9 +31,19 @@ class CategoryModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * The class tab ID to filter services.
+   * <b>true</b> - search in all tabs.
    *
-   * <tt>null</tt> if not set yet.
+   * <b>false</b> - search only for the selected book tab.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_tab_all = false;
+
+  /**
+   * The class tab ID used to filter services.
+   *
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -40,9 +51,9 @@ class CategoryModel extends WlModelAbstract
   public $k_class_tab = null;
 
   /**
-   * The ID of a location for which to show information.
+   * The ID of a location to show information for.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -50,9 +61,9 @@ class CategoryModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * The ID of a user for whom to get information.
+   * The ID of a user to get information for.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null

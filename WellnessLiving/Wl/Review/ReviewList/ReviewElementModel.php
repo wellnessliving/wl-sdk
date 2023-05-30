@@ -5,66 +5,70 @@ namespace WellnessLiving\Wl\Review\ReviewList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves information about review item.
+ * An endpoint that returns information about a review.
  */
 class ReviewElementModel extends WlModelAbstract
 {
   /**
-   * Review data:
+   * An array containing information about the review with the following fields:
    * <dl>
    *   <dt>
    *     string <var>dt_add</var>
    *   </dt>
    *   <dd>
-   *     Date when review was added by user.
+   *     The date the review was added.
    *   </dd>
    *   <dt>
    *     float <var>f_rate</var>
    *   </dt>
+   *   <dd>
+   *     The review rating (1-5 stars).
+   *   </dd>
    *   <dt>
    *     bool <var>is_verify</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if review is verified, <tt>false</tt> otherwise.
+   *     If `true`, the review is verified. Otherwise, this will be `false`.
    *   </dd>
    *   <dd>
-   *     Review rate.
+   *     The review rate.
    *   </dd>
    *   <dt>
    *     string <var>s_firstname</var>
    *   </dt>
    *   <dd>
-   *     Client's first name who added review.
+   *     The first name of the user leaving the review.
    *   </dd>
    *   <dt>
    *     string <var>s_lastname</var>
    *   </dt>
    *   <dd>
-   *     Client's last name who added review.
+   *     The surname of the user leaving the review.
    *   </dd>
    *   <dt>
    *     string <var>s_reply</var>
    *   </dt>
    *   <dd>
-   *     Staff reply. Can be empty.
+   *     The staff members of the business who have the option to reply to reviews. This is the text of the reply. If there
+   *     is no reply, then this will be an empty string.
    *   </dd>
    *   <dt>
    *     string <var>s_text</var>
    *   </dt>
    *   <dd>
-   *     Review text.
+   *     The text of the review.
    *   </dd>
    *   <dt>
    *     string <var>uid</var>
    *   </dt>
    *   <dd>
-   *     User key.
+   *     The user ID of the user leaving the review.
    *   </dd>
    *   <dt>
    *     string <var>url_logo</var>
    *   </dt>
    *   <dd>
-   *     User logo.
+   *     The user logo.
    *   </dd>
    * </dl>
    *
@@ -74,7 +78,7 @@ class ReviewElementModel extends WlModelAbstract
   public $a_review;
 
   /**
-   * Key of the business to which the review belongs.
+   * The key of the business to which the review belongs.
    *
    * @get get
    * @var string
@@ -82,7 +86,7 @@ class ReviewElementModel extends WlModelAbstract
   public $k_business;
 
   /**
-   * Review primary key in {@link \RsReviewSql}.
+   * The review key.
    *
    * @get get
    * @var string
@@ -90,9 +94,9 @@ class ReviewElementModel extends WlModelAbstract
   public $k_review = '0';
 
   /**
-   * User primary key in {@link \PassportLoginSql}.
+   * The user key.
    *
-   * May be empty for a case of quest.
+   * May be empty in the case of a request.
    *
    * @get get
    * @var string

@@ -5,16 +5,16 @@ namespace WellnessLiving\Wl\Appointment\Book\Schedule;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves a list with all calendar days in a specified month with
- * available and unavailable appointment booking schedule.
+ * An endpoint that retrieves a list of all calendar days in a specified month with
+ * available and unavailable appointment bookings in the schedule.
  */
 class CalendarModel extends WlModelAbstract
 {
   /**
-   * A list with all calendar days in specified month with
-   * available and unavailable appointment booking schedule.
+   * A list with all calendar days in the specified month with
+   * available and unavailable appointment bookings in the schedule.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var array|null
@@ -24,7 +24,7 @@ class CalendarModel extends WlModelAbstract
   /**
    * The date to determine what month to display.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get,result
    * @var string|null
@@ -34,7 +34,7 @@ class CalendarModel extends WlModelAbstract
   /**
    * The duration of the asset.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var int|null
@@ -44,7 +44,7 @@ class CalendarModel extends WlModelAbstract
   /**
    * An index of the selected asset.
    *
-   * <tt>null</tt> if not set yet or if asset isn't on layout.
+   * This will be `null` if not set yet or if the asset isn't on the layout.
    *
    * @get get
    * @var int|null
@@ -54,7 +54,7 @@ class CalendarModel extends WlModelAbstract
   /**
    * The staff member's gender.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var int|null
@@ -64,7 +64,7 @@ class CalendarModel extends WlModelAbstract
   /**
    * The location ID to show what days are available for booking.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -74,7 +74,7 @@ class CalendarModel extends WlModelAbstract
   /**
    * The resource ID to show what days are available for booking.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -84,7 +84,7 @@ class CalendarModel extends WlModelAbstract
   /**
    * The service ID to show what days are available for booking.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -94,7 +94,7 @@ class CalendarModel extends WlModelAbstract
   /**
    * The staff ID to show what days are available for booking.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -102,7 +102,7 @@ class CalendarModel extends WlModelAbstract
   public $k_staff = null;
 
   /**
-   * A list of service add-ons. Serialized to be usable as model key.
+   * A list of service add-ons, serialized to be usable as a model key.
    *
    * @get get
    * @var string
@@ -112,7 +112,7 @@ class CalendarModel extends WlModelAbstract
   /**
    * The user ID.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null

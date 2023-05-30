@@ -5,7 +5,10 @@ namespace WellnessLiving\Wl\Business\AuthorizePartner;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * A model to give members of a franchisor access to a franchisee.
+ * Endpoint to give members of a franchisor access to a franchisee.
+ *
+ * To grant a user access the SDK sign-in account, the Manage Franchise Location permission is required.
+ * Access will be granted for 24 hours.
  */
 class AuthorizePartnerModel extends WlModelAbstract
 {
