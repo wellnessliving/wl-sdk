@@ -22,6 +22,51 @@ class CalendarModel extends WlModelAbstract
   public $a_date = null;
 
   /**
+   * Information about timezone.
+   * <dl>
+   *   <dt>array|null <var>a_timezone</var></dt>
+   *   <dd>
+   *     `null` if business settings doesn't allow client to adjust timezone, otherwise list of timezones:
+   *     <dl>
+   *       <dt>int <var>i_order</var></dt>
+   *       <dd>Timezone order</dd>
+   *       <dt>int <var>i_shift</var></dt>
+   *       <dd>Timezone shift from UTC in hours</dd>
+   *       <dt>bool <var>is_select</var></dt>
+   *       <dd>`true` for selected timezone - from {@link $k_timezone} param or client's default timezone when param not set.</dd>
+   *       <dt>string <var>k_timezone</var></dt>
+   *       <dd>Timezone key</dd>
+   *       <dt>string <var>s_title</var></dt>
+   *       <dd>Timezone name</dd>
+   *       <dt>string <var>text_abbr</var></dt>
+   *       <dd>Timezone abbreviation</dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>string|null <var>name</var></dt>
+   *   <dd>`null` if business settings doesn't allow client to adjust timezone, otherwise timezone input name.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array
+   */
+  public $a_timezone_data = [];
+
+  /**
+   * Array with short week day's names (2 letters, i.e. 'Fr') for calendar month view. Week days order according to business's settings.
+   *
+   * <dl>
+   *   <dt>int <var>i_day</var></dt>
+   *   <dd>Week day, one of the {@link \WellnessLiving\Core\a\ADateWeekSid} constants.</dd>
+   *   <dt>string <var>html_week_day</var></dt>
+   *   <dd>Short week day's name (2 letters, i.e. 'Fr')</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array
+   */
+  public $a_week_name = [];
+
+  /**
    * The date to determine what month to display.
    *
    * This will be `null` if not set yet.
@@ -100,6 +145,16 @@ class CalendarModel extends WlModelAbstract
    * @var string|null
    */
   public $k_staff = null;
+
+  /**
+   * Key of timezone.
+   *
+   * If not set then default client's profile timezone is used.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $k_timezone = null;
 
   /**
    * A list of service add-ons, serialized to be usable as a model key.
