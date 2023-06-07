@@ -60,14 +60,6 @@ class ResponseListModel extends WlModelAbstract
   public $a_quiz_response = [];
 
   /**
-   * `true` if API is being used from backend, `false` otherwise.
-   *
-   * @get get
-   * @var bool
-   */
-  public $is_backend = false;
-
-  /**
    * Key of a business to show information for.
    *
    * @get get
