@@ -141,6 +141,42 @@ class ElementModel extends WlModelAbstract
   public $a_tax = null;
 
   /**
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_width = 0;
+
+  /**
+   * Promotion image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_promotion_image_height = 0;
+
+  /**
+   * Promotion image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_promotion_image_width = 0;
+
+  /**
    * The ID of the purchase item category.
    * One of {@link \WellnessLiving\WlPurchaseItemSid} constants.
    *
