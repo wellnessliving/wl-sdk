@@ -33,7 +33,7 @@ class CalendarModel extends WlModelAbstract
    *       <dt>int <var>i_shift</var></dt>
    *       <dd>Timezone shift from UTC in hours</dd>
    *       <dt>bool <var>is_select</var></dt>
-   *       <dd>`true` for selected timezone - from {@link $k_timezone} param or client's default timezone when param not set.</dd>
+   *       <dd>`true` for selected timezone - from {@link CalendarModel::$k_timezone} param or client's default timezone when param not set.</dd>
    *       <dt>string <var>k_timezone</var></dt>
    *       <dd>Timezone key</dd>
    *       <dt>string <var>s_title</var></dt>
