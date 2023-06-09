@@ -115,6 +115,24 @@ class PurchaseModel extends WlModelAbstract
   public $i_duration = null;
 
   /**
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size {@link \RsLoginLogo::THUMBNAIL_HEIGHT}.
+   *
+   * @get get
+   * @var int|null
+   */
+  public $i_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size {@link \RsLoginLogo::THUMBNAIL_WIDTH}.
+   *
+   * @get get
+   * @var int|null
+   */
+  public $i_width = 0;
+
+  /**
    * <b>true</b> - get all Purchase Options suitable for appointment.
    *
    * <b>false</b> - get only Purchase Options available for the client.
