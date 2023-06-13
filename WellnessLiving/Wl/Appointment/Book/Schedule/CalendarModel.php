@@ -29,17 +29,17 @@ class CalendarModel extends WlModelAbstract
    *     `null` if business settings doesn't allow client to adjust timezone, otherwise list of timezones:
    *     <dl>
    *       <dt>int <var>i_order</var></dt>
-   *       <dd>Timezone order</dd>
+   *       <dd>Timezone order.</dd>
    *       <dt>int <var>i_shift</var></dt>
-   *       <dd>Timezone shift from UTC in hours</dd>
+   *       <dd>Timezone shift from UTC in hours.</dd>
    *       <dt>bool <var>is_select</var></dt>
-   *       <dd>`true` for selected timezone - from {@link $k_timezone} param or client's default timezone when param not set.</dd>
+   *       <dd>`true` for selected timezone - from {@link CalendarModel::$k_timezone} param or client's default timezone when param not set.</dd>
    *       <dt>string <var>k_timezone</var></dt>
-   *       <dd>Timezone key</dd>
+   *       <dd>Timezone key.</dd>
    *       <dt>string <var>s_title</var></dt>
-   *       <dd>Timezone name</dd>
+   *       <dd>Timezone name.</dd>
    *       <dt>string <var>text_abbr</var></dt>
-   *       <dd>Timezone abbreviation</dd>
+   *       <dd>Timezone abbreviation.</dd>
    *     </dl>
    *   </dd>
    *   <dt>string|null <var>name</var></dt>
@@ -58,7 +58,7 @@ class CalendarModel extends WlModelAbstract
    *   <dt>int <var>i_day</var></dt>
    *   <dd>Week day, one of the {@link \WellnessLiving\Core\a\ADateWeekSid} constants.</dd>
    *   <dt>string <var>html_week_day</var></dt>
-   *   <dd>Short week day's name (2 letters, i.e. 'Fr')</dd>
+   *   <dd>Short week day's name (2 letters, i.e. 'Fr').</dd>
    * </dl>
    *
    * @get result
@@ -149,7 +149,7 @@ class CalendarModel extends WlModelAbstract
   /**
    * Key of timezone.
    *
-   * If not set then default client's profile timezone is used.
+   * `null` if not set to use client's profile timezone.
    *
    * @get get
    * @var string|null
