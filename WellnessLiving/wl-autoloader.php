@@ -1,6 +1,6 @@
 <?php
 
-spl_autoload_register(function (string $s_class)
+spl_autoload_register(function ($s_class)
 {
   if(substr($s_class,0,15)==='WellnessLiving\\')
   {

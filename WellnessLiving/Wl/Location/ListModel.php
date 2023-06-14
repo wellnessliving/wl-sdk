@@ -5,21 +5,23 @@ namespace WellnessLiving\Wl\Location;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * List of locations available for selection.
+ * An endpoint that returns information for all locations belonging to a business.
  */
 class ListModel extends WlModelAbstract
 {
   /**
-   * List of locations of current business. Fields - location's IDs. Values - object with fields:
+   * An array containing information about all locations.
+   * Each array index corresponds to the internal location key.
+   * Each array element is an array containing the following fields:
    * <ul>
-   *   <li>String <b>f_latitude</b> Latitude coordinate.</li>
-   *   <li>String <b>f_longitude</b> Longitude coordinate.</li>
-   *   <li>String <b>i_order</b> Display Order.</li>
-   *   <li>String <b>k_location</b> Location ID.</li>
-   *   <li>String <b>s_title</b> Location title.</li>
-   *   <li>String <b>text_address</b> Location's physical address.</li>
-   *   <li>String <b>url_logo</b> Location logotype.</li>
-   *   <li>String <b>url_slide</b> First image from location photo slider.</li>
+   *   <li>String <b>f_latitude</b>The latitude coordinate of the location.</li>
+   *   <li>String <b>f_longitude</b>The longitude coordinate of the location.</li>
+   *   <li>String <b>i_order</b>The display order for the location.</li>
+   *   <li>String <b>k_location</b>The location ID number.</li>
+   *   <li>String <b>s_title</b>The location name.</li>
+   *   <li>String <b>text_address</b>The street address of the location.</li>
+   *   <li>String <b>url_logo</b>The URL for the location logo image.</li>
+   *   <li>String <b>url_slide</b>The first image from the location photo slider.</li>
    * </ul>
    *
    * @get result
@@ -28,9 +30,9 @@ class ListModel extends WlModelAbstract
   public $a_location = [];
 
   /**
-   * ID of a business to show information for.
+   * The business ID number used internally by WellnessLiving.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @get get
    * @var string|null

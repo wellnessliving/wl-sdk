@@ -8,6 +8,7 @@ use WellnessLiving\Wl\Report\DataModel;
 use WellnessLiving\Wl\Report\WlReportGroupSid;
 use WellnessLiving\Wl\Report\WlReportSid;
 use WellnessLiving\WlAssertException;
+use WellnessLiving\WlRegionSid;
 use WellnessLiving\WlUserException;
 
 require_once __DIR__.'/WellnessLiving/wl-autoloader.php';
@@ -15,19 +16,25 @@ require_once __DIR__.'/example-config.php';
 
 try
 {
-  $o_config=new ExampleConfig();
+  $o_config=ExampleConfig::create(WlRegionSid::US_EAST_1);
 
   // Retrieve notepad (it is a separate step of user sign in process)
   $o_notepad=new NotepadModel($o_config);
-  $o_notepad->get();
+  $o_request=$o_notepad->get();
 
-  // Sign in a user
+  // Approach to get debugging information.
+  echo $o_request->httpProtocol() . PHP_EOL . PHP_EOL;
+
+  // Sign in a user.
   $o_enter=new EnterModel($o_config);
   $o_enter->cookieSet($o_notepad->cookieGet()); // Keep cookies to keep session.
   $o_enter->s_login='/** Put your login here */';
   $o_enter->s_notepad=$o_notepad->s_notepad;
   $o_enter->s_password=$o_notepad->hash('/** Put your password here */');
   $o_enter->post();
+
+  // Another approach to get debugging information.
+  echo $o_enter->lastRequest()->httpProtocol(). PHP_EOL;
 
   $o_report=new DataModel($o_config);
   $o_report->cookieSet($o_notepad->cookieGet()); // Keep cookies to keep session.
@@ -43,18 +50,26 @@ try
   foreach($o_report->a_data['a_row'] as $a_row)
   {
     $i++;
-    echo $i.'. '.$a_row['dt_date'].' '.$a_row['m_paid']['m_amount'].' '.$a_row['o_user']['text_name'].' '.$a_row['s_item']."\r\n";
+    echo $i.'. '.$a_row['dt_date'].' '.$a_row['m_paid']['m_amount'].' '.$a_row['o_user']['text_name'].' '.$a_row['s_item']. PHP_EOL;
   }
 }
 catch(WlAssertException $e)
 {
   echo $e;
+  echo PHP_EOL;
   return;
 }
 catch(WlUserException $e)
 {
   echo $e->getMessage()."\n";
+
+  // Approach to get debugging information in a case of exception.
+  if ($e->request()) {
+    echo PHP_EOL . PHP_EOL . $e->request()->httpProtocol() . PHP_EOL;
+  }
+  echo PHP_EOL;
   return;
 }
 
+echo PHP_EOL;
 ?>

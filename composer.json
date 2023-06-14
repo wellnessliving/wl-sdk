@@ -1,0 +1,11 @@
+{
+  "name": "wellnessliving/wl-sdk",
+  "description": "Wellenessliving API SDK",
+  "license": "proprietary",
+  "require": {
+    "ext-bcmath": "*",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "php": ">=5.5"
+  }
+}

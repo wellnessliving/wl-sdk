@@ -2,8 +2,6 @@
 
 namespace WellnessLiving;
 
-use ReflectionClass;
-use ReflectionException;
 use WellnessLiving\Config\WlConfigAbstract;
 
 /**
@@ -37,6 +35,15 @@ class WlModelAbstract
   private $_o_cookie = null;
 
   /**
+   * The last request that was performed with this model.
+   *
+   * `null` if there were no requests performed with this model.
+   *
+   * @var WlModelRequest|null
+   */
+  private $_o_request=null;
+
+  /**
    * Constructs a new model object.
    *
    * @param WlConfigAbstract $o_config WellnessLiving SDK configuration object.
@@ -44,7 +51,6 @@ class WlModelAbstract
    */
   public function __construct(WlConfigAbstract $o_config)
   {
-    $o_config->assertValid();
     $this->resource(); // Just to check that resource is set correctly.
     $this->_o_config=$o_config;
   }
@@ -57,7 +63,7 @@ class WlModelAbstract
    * @param mixed $x_data Posted data.
    * @return bool <tt>true</tt> if posted data contains at least 1 file; <tt>false</tt> otherwise.
    */
-  private function _fileCheck(&$x_data):bool
+  private function _fileCheck(&$x_data)
   {
     if(is_object($x_data)&&($x_data instanceof WlFile))
     {
@@ -84,7 +90,7 @@ class WlModelAbstract
    *
    * @param resource $r_curl Curl resource.
    */
-  protected function closeCurl($r_curl):void
+  protected function closeCurl($r_curl)
   {
     curl_close($r_curl);
   }
@@ -94,7 +100,7 @@ class WlModelAbstract
    *
    * @return WlConfigAbstract Model configuration.
    */
-  public function config():WlConfigAbstract
+  public function config()
   {
     return $this->_o_config;
   }
@@ -104,7 +110,7 @@ class WlModelAbstract
    *
    * @return WlModelCookie|null Cookies object. <tt>null</tt> if not initialized yet.
    */
-  public function cookieGet():?WlModelCookie
+  public function cookieGet()
   {
     return $this->_o_cookie;
   }
@@ -114,7 +120,7 @@ class WlModelAbstract
    *
    * @param WlModelCookie $o_cookie Cookies to set.
    */
-  public function cookieSet(WlModelCookie $o_cookie):void
+  public function cookieSet(WlModelCookie $o_cookie)
   {
     $this->_o_cookie = $o_cookie;
   }
@@ -126,7 +132,7 @@ class WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  public function delete():WlModelRequest
+  public function delete()
   {
     return $this->request('delete');
   }
@@ -160,7 +166,7 @@ class WlModelAbstract
    *   </dl>
    * @throws WlAssertException In a case of an assertion.
    */
-  private static function fieldConfig():array
+  private static function fieldConfig()
   {
     $s_class = get_called_class();
     if(isset(WlModelAbstract::$_a_field[$s_class]))
@@ -168,9 +174,9 @@ class WlModelAbstract
 
     try
     {
-      $o_class = new ReflectionClass($s_class);
+      $o_class = new \ReflectionClass($s_class);
     }
-    catch (ReflectionException $e)
+    catch (\ReflectionException $e)
     {
       throw new WlAssertException([
         'e' => $e,
@@ -183,7 +189,7 @@ class WlModelAbstract
     foreach($a_property as $o_property)
     {
       $s_comment = $o_property->getDocComment();
-      preg_match_all('~@([a-z]+)( +([0-9A-Za-z_\\-\\., \\\\\\]\\[]+))?~',$s_comment,$a_match);
+      preg_match_all('~@([a-z]+)( +([0-9A-Za-z_\\-., \\\\\\]\\[]+))?~',$s_comment,$a_match);
       $a_field_this=[];
       foreach($a_match[1] as $i_match => $s_value)
       {
@@ -228,11 +234,6 @@ class WlModelAbstract
               's_field' => $o_property->name,
               'text_message' => 'It is not allowed to specify POST operation for GET method.'
             ]);
-            WlAssertException::assertTrue($s_value!=='delete'||empty($a_field_this[$s_value]['post']),[
-              's_class' => $s_class,
-              's_field' => $o_property->name,
-              'text_message' => 'It is not allowed to specify POST operation for DELETE method.'
-            ]);
             WlAssertException::assertTrue(empty($a_field_this[$s_value]['get'])||empty($a_field_this[$s_value]['post']),[
               's_class' => $s_class,
               's_field' => $o_property->name,
@@ -267,7 +268,7 @@ class WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  public function get():WlModelRequest
+  public function get()
   {
     return $this->request('get');
   }
@@ -279,7 +280,7 @@ class WlModelAbstract
    * @param mixed $x_value Value to normalize.
    * @return array|string Normalized value.
    */
-  private function normalizeValue(string $s_name,$x_value)
+  private function normalizeValue($s_name,$x_value)
   {
     if(is_string($x_value))
       return $x_value;
@@ -289,7 +290,7 @@ class WlModelAbstract
       return '1';
     if($x_value===false)
       return '';
-    if(is_object($x_value)&&($x_value instanceof WlFile))
+    if($x_value instanceof WlFile)
       return $x_value;
 
     WlAssertException::assertTrue(is_array($x_value),[
@@ -318,9 +319,19 @@ class WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  public function post():WlModelRequest
+  public function post()
   {
     return $this->request('post');
+  }
+
+  /**
+   * Returns the last request object with was performed with this API model.
+   *
+   * @return WlModelRequest|null The last request object with was performed with this API model.
+   */
+  public function lastRequest()
+  {
+    return $this->_o_request;
   }
 
   /**
@@ -330,7 +341,7 @@ class WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  public function put():WlModelRequest
+  public function put()
   {
     return $this->request('put');
   }
@@ -343,13 +354,13 @@ class WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  private function request(string $s_method):WlModelRequest
+  private function request($s_method)
   {
     $a_request = $this->requestPrepare($s_method);
 
     $s_response = curl_exec($a_request['r_curl']);
 
-    return $this->requestResult($s_method, $a_request['r_curl'], $a_request['o_request'], $a_request['a_field'], $s_response);
+    return $this->requestResult($s_method, $a_request['r_curl'], $a_request['o_request'], $a_request['a_field'], $s_response, $a_request['s_post']);
   }
 
   /**
@@ -366,17 +377,21 @@ class WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException  In a case of error with user data.
    */
-  protected function requestPrepare(string $s_method): array
+  protected function requestPrepare($s_method)
   {
     $o_request = new WlModelRequest();
+    $this->_o_request=$o_request;
+
+    /** @var WlConfigAbstract $s_config_class */
+    $s_config_class = get_class($this->_o_config);
 
     $o_request->o_config = $this->_o_config;
     $o_request->s_resource = $this->resource();
-    $o_request->url = $this->_o_config::URL.$o_request->s_resource;
+    $o_request->url = $this->_o_config->url().$o_request->s_resource;
 
     $o_request->dt_request = WlTool::dateNowMysql();
     $o_request->a_header_request['Date'] = WlTool::dateMysqlHttp($o_request->dt_request);
-    $o_request->a_header_request['User-Agent'] = $this->_o_config::AGENT;
+    $o_request->a_header_request['User-Agent'] = $this->_o_config->text_agent?:$s_config_class::AGENT;
     $o_request->s_method = $s_method;
 
     $a_field=$this::fieldConfig();
@@ -414,6 +429,7 @@ class WlModelAbstract
     if(!$r_curl)
     {
       throw new WlUserException('request-connect','Could not connect WellnessLiving API.',[
+        'o_request' => $o_request,
         's_class' => get_class($this),
         'url' => $o_request->url
       ]);
@@ -438,12 +454,13 @@ class WlModelAbstract
     if($this->_fileCheck($a_post))
       $o_request->a_header_request['Content-Type'] = 'multipart/form-data';
 
-    if($s_method==='put')
+    $s_post='';
+    if($s_method==='put'||$s_method==='delete')
     {
-      curl_setopt($r_curl,CURLOPT_CUSTOMREQUEST,'PUT');
+      curl_setopt($r_curl,CURLOPT_CUSTOMREQUEST,strtoupper($s_method));
       if(count($a_post))
       {
-        // If we are doing PUT request need to specify a content-length header and set post fields as a string.
+        // If we are doing PUT/DELETE request need to specify a content-length header and set post fields as a string.
         $s_post = http_build_query($a_post);
         $o_request->a_header_request['Content-Length']=strlen($s_post);
         curl_setopt($r_curl,CURLOPT_POSTFIELDS,$s_post);
@@ -453,7 +470,7 @@ class WlModelAbstract
     {
       curl_setopt($r_curl,CURLOPT_POST,true);
 
-      // Some requests requires data to be passed as string and some requires an array.
+      // Some requests require data to be passed as string and some requires an array.
       // when data passed as an array Content-type automatically set to "multipart/form-data".
       // To indicate that we want to pass array we should specify content type in specific model otherwise data will be
       // passed as a string
@@ -462,8 +479,9 @@ class WlModelAbstract
         $o_request->a_header_request['Content-Type']!=='multipart/form-data'
       )
       {
-        $a_post = http_build_query($a_post);
-        $o_request->a_header_request['Content-Length']=strlen($a_post);
+        $s_post = http_build_query($a_post);
+        $o_request->a_header_request['Content-Length']=strlen($s_post);
+        $a_post=$s_post;
       }
       curl_setopt($r_curl,CURLOPT_POSTFIELDS,$a_post);
     }
@@ -474,15 +492,22 @@ class WlModelAbstract
         curl_setopt($r_curl,$s_option,$x_value);
     }
 
-    $s_rule = $this->_o_config::RESULT_CONVERSION_RULES[get_class($this)] ?? $this->_o_config::RESULT_CONVERSION_RULES[''] ?? null;
+    $s_rule = isset($s_config_class::$RESULT_CONVERSION_RULES[get_class($this)]) ?
+      $s_config_class::$RESULT_CONVERSION_RULES[get_class($this)] :
+      (
+      isset($s_config_class::$RESULT_CONVERSION_RULES['']) ?
+        $s_config_class::$RESULT_CONVERSION_RULES[''] :
+        null
+      );
+
     if($s_rule)
       $o_request->a_header_request['X-Error-Rules'] = $s_rule;
 
     curl_setopt($r_curl,CURLOPT_HEADER,true);
     curl_setopt($r_curl,CURLOPT_HTTPHEADER,$o_request->headerCurl());
     curl_setopt($r_curl,CURLOPT_RETURNTRANSFER,true);
-    curl_setopt($r_curl,CURLOPT_CONNECTTIMEOUT,$this->_o_config::TIMEOUT_CONNECT);
-    curl_setopt($r_curl,CURLOPT_TIMEOUT,$this->_o_config::TIMEOUT_READ);
+    curl_setopt($r_curl,CURLOPT_CONNECTTIMEOUT,$s_config_class::TIMEOUT_CONNECT);
+    curl_setopt($r_curl,CURLOPT_TIMEOUT,$s_config_class::TIMEOUT_READ);
     curl_setopt($r_curl,CURLOPT_VERBOSE,true);
     curl_setopt($r_curl,CURLINFO_HEADER_OUT,true);
     curl_setopt($r_curl,CURLOPT_FOLLOWLOCATION,true);
@@ -490,6 +515,7 @@ class WlModelAbstract
     return [
       'a_field' => $a_field,
       'o_request' => $o_request,
+      's_post' => $s_post,
       'r_curl' => $r_curl
     ];
   }
@@ -500,22 +526,23 @@ class WlModelAbstract
    * @param string $s_method Method of the request. One of the next values: 'get', 'post', 'put', 'delete'.
    * @param resource $r_curl Curl resource.
    * @param WlModelRequest $o_request Object with request data.
-   * @param array $a_field List of all prepared fields to be send via CURL.
+   * @param array $a_field List of all prepared fields to be sent via CURL.
    * @param string $s_response Curl response string.
+   * @param string $s_post Contents of the request body.
    * @return WlModelRequest Object with complete request data.
-   *
    * @throws WlUserException  In a case of error with user data.
    */
-  protected function requestResult(string $s_method, $r_curl, WlModelRequest $o_request, array $a_field, string $s_response): WlModelRequest
+  protected function requestResult($s_method, $r_curl, WlModelRequest $o_request, array $a_field, $s_response, $s_post)
   {
     $s_error = curl_error($r_curl);
     $i_header=curl_getinfo($r_curl,CURLINFO_HEADER_SIZE);
     $s_header=substr($s_response,0,$i_header);
     $s_body=substr($s_response,$i_header);
+    $o_request->s_request=curl_getinfo($r_curl,CURLINFO_HEADER_OUT).$s_post;
     $o_request->s_response=$s_response;
 
     // Extract cookies.
-    preg_match_all('~Set-Cookie: ([a-zA-Z]+)=([a-zA-Z0-9]+)~',$s_header,$a_match);
+    preg_match_all('~Set-Cookie: ([a-zA-Z]+)=([a-zA-Z0-9]+)~i',$s_header,$a_match);
     foreach($a_match[1] as $i => $s_name)
       $this->_o_cookie->cookieSet($s_name,$a_match[2][$i]);
 
@@ -524,6 +551,7 @@ class WlModelAbstract
     if($s_error)
     {
       throw new WlUserException('request-error','Error executing request to WellnessLiving API (error is reported by network).',[
+        'o_request' => $o_request,
         's_class' => get_class($this),
         's_error' => $s_error,
         's_result' => $s_response,
@@ -534,6 +562,7 @@ class WlModelAbstract
     if(!$s_response||!$s_body)
     {
       throw new WlUserException('request-empty','Error executing request to WellnessLiving API (an empty response is returned).',[
+        'o_request' => $o_request,
         's_class' => get_class($this),
         's_result' => $s_response,
         'url' => $o_request->url
@@ -546,15 +575,15 @@ class WlModelAbstract
     {
       throw new WlUserException('request-parse','Error executing request to WellnessLiving API (could not parse response).',[
         'a_result' => $o_request->a_result,
+        'o_request' => $o_request,
         's_result' => $s_response,
         's_class' => get_class($this),
         'url' => $o_request->url
       ]);
     }
 
-    if($o_request->a_result['status']!=='ok'){
-      throw WlUserException::createApi($o_request->a_result);
-    }
+    if($o_request->a_result['status']!=='ok')
+      throw WlUserException::createApi($o_request);
 
     foreach($a_field as $s_field => $a_method)
     {
@@ -578,9 +607,9 @@ class WlModelAbstract
    * @return string URI of current model.
    * @throws WlAssertException In a case of an assertion.
    */
-  protected function resource():string
+  protected function resource()
   {
-    WlAssertException::assertNotEmpty(!!preg_match('~^WellnessLiving\\\\(([A-Za-z]+\\\\)*)([A-Za-z]+_)?([A-Za-z]+)Model$~',get_class($this),$a_match),[
+    WlAssertException::assertNotEmpty(!!preg_match('~^WellnessLiving\\\\(([A-Za-z]+\\\\)*)([A-Za-z]+_)?([A-Za-z0-9]+)Model$~',get_class($this),$a_match),[
       's_class' => get_class($this),
       's_message' => 'API model class name is invalid. `Model` suffix is missing.'
     ]);

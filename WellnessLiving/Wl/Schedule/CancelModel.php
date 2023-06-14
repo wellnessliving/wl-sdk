@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Schedule;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * A model for staff to cancel sessions.
+ * An endpoint that cancels either an appointment, class, or event session for the client.
  */
 class CancelModel extends WlModelAbstract
 {
   /**
-   * Date of the session in UTC.
+   * The date of the session in UTC.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @post get
    * @var string|null
@@ -20,8 +20,8 @@ class CancelModel extends WlModelAbstract
   public $dt_date = null;
 
   /**
-   * <tt>true</tt> if API is being used from backend, <tt>false</tt> otherwise.
-   * Here backend is staff or admin side of business.
+   * This will be `true` if the API is being used from the back end. Otherwise, this will be `false`.
+   * Here, the back end refers to either a staff member or admin from the side of the business.
    *
    * @post get
    * @var bool
@@ -29,9 +29,9 @@ class CancelModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * Appointment key.
+   * The appointment key. This will be `null` if not set yet or if a class or event is canceled.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @post get
    * @var string|null
@@ -39,9 +39,9 @@ class CancelModel extends WlModelAbstract
   public $k_appointment = null;
 
   /**
-   * Class period key.
+   * The class period key. This will be `null` if not set yet or if an appointment is canceled.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @post get
    * @var string|null
@@ -49,9 +49,9 @@ class CancelModel extends WlModelAbstract
   public $k_class_period = null;
 
   /**
-   * User key.
+   * The user key.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @post get
    * @var string|null

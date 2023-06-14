@@ -24,4 +24,5 @@ class WlPurchaseRestrictionSid
    */
   const TYPE = 3;
 }
+
 ?>

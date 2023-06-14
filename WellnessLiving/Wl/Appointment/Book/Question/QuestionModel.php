@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Appointment\Book\Question;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Model to retrieve questions for the current service.
+ * An endpoint that retrieves questions for a selected service.
  */
 class QuestionModel extends WlModelAbstract
 {
   /**
-   * A list of questions for the current service.
+   * A list of questions for the service.
    *
    * @get result
    * @var array
@@ -18,9 +18,9 @@ class QuestionModel extends WlModelAbstract
   public $a_question = [];
 
   /**
-   * Service ID for getting the questions.
+   * The service ID used for retrieving questions.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null

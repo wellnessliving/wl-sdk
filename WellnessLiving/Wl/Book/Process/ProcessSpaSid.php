@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Book\Process;
 /**
  * Event booking process sid class
  *
- * Last used ID: 6.
+ * Last used ID: 7.
  */
 abstract class ProcessSpaSid
 {
@@ -25,9 +25,14 @@ abstract class ProcessSpaSid
   const PASSPORT = 1;
 
   /**
-   * Card data and confirming the book.
+   * Card data and the booking confirmation.
    */
   const PAYMENT = 5;
+
+  /**
+   * Quizzes attached to the class.
+   */
+  const QUIZ = 7;
 
   /**
    * Selection of assets.
@@ -35,7 +40,7 @@ abstract class ProcessSpaSid
   const RESOURCE = 6;
 
   /**
-   * List of possible purchase options to be bought.
+   * A list of possible Purchase Options to be bought.
    */
   const STORE = 3;
 }

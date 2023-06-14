@@ -4,6 +4,9 @@ namespace WellnessLiving;
 
 /**
  * Program types.
+ *
+ * @see WlProgramCategorySid
+ * @see WlProgramTypeSid
  */
 class WlProgramSid
 {
@@ -11,108 +14,113 @@ class WlProgramSid
    * Special Membership that does not allow client to visit anything but fill client's account after purchase
    * and after renew.
    */
-  public const ACCOUNT_MEMBERSHIP = 21;
+  const ACCOUNT_MEMBERSHIP = 21;
 
   /**
    * Special Time-Based pass that does not allow client to visit anything but fill client's account after purchase
    * and after renew.
    */
-  public const ACCOUNT_PASS = 20;
+  const ACCOUNT_PASS = 20;
 
   /**
    * Class Pass.
    */
-  public const CLASS_LIMIT = 1;
+  const CLASS_LIMIT = 1;
 
   /**
    * Class Membership.
    */
-  public const CLASS_MEMBERSHIP = 5;
+  const CLASS_MEMBERSHIP = 5;
 
   /**
    * Class Time-Based pass.
    */
-  public const CLASS_PASS = 6;
+  const CLASS_PASS = 6;
 
   /**
    * WellnessLiving Promotion.
    */
-  public const CLASS_PROSPECT = 4;
+  const CLASS_PROSPECT = 4;
 
   /**
    * Daily Deal Integration: not for sale, only redemption codes.
    */
-  public const DEAL = 7;
+  const DEAL = 7;
 
   /**
    * Enrollment.
    */
-  public const ENROLLMENT = 14;
+  const ENROLLMENT = 14;
 
   /**
    * "Wellness Program" membership.
    */
-  public const INSURANCE_MEMBERSHIP = 22;
+  const INSURANCE_MEMBERSHIP = 22;
 
   /**
    * Package.
    */
-  public const PACKAGE = 3;
+  const PACKAGE = 3;
 
   /**
    * Resource Duration Pass.
    */
-  public const RESOURCE_DURATION = 19;
+  const RESOURCE_DURATION = 19;
 
   /**
    * Resource Limit Pass.
    */
-  public const RESOURCE_LIMIT = 15;
+  const RESOURCE_LIMIT = 15;
 
   /**
    * Resource Membership.
    */
-  public const RESOURCE_MEMBERSHIP = 16;
+  const RESOURCE_MEMBERSHIP = 16;
 
   /**
    * Resource Time-Based pass.
    */
-  public const RESOURCE_PASS = 17;
+  const RESOURCE_PASS = 17;
 
   /**
    * Appointment Duration Pass.
    */
-  public const SERVICE_DURATION = 18;
+  const SERVICE_DURATION = 18;
 
   /**
    * Appointment session pass.
    */
-  public const SERVICE_LIMIT = 11;
+  const SERVICE_LIMIT = 11;
 
   /**
    * Appointment membership.
    */
-  public const SERVICE_MEMBERSHIP = 12;
+  const SERVICE_MEMBERSHIP = 12;
 
   /**
    * Appointment Time-Based pass.
    */
-  public const SERVICE_PASS = 13;
+  const SERVICE_PASS = 13;
+
+  /**
+   * Video Membership.
+   */
+  public const VIDEO_MEMBERSHIP = 23;
 
   /**
    * Gym Pass.
    */
-  public const VISIT_LIMIT = 8;
+  const VISIT_LIMIT = 8;
 
   /**
    * Gym Membership.
    */
-  public const VISIT_MEMBERSHIP = 9;
+  const VISIT_MEMBERSHIP = 9;
 
   /**
    * Gym Time-Based pass.
    */
-  public const VISIT_PASS = 10;
+  const VISIT_PASS = 10;
 }
 
 ?>

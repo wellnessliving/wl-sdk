@@ -2,22 +2,36 @@
 
 namespace WellnessLiving\Config;
 
-class WlConfigProduction extends WlConfigAbstract
+use WellnessLiving\WlRegionSid;
+
+/**
+ * Base class for all production configurations.
+ */
+abstract class WlConfigProduction extends WlConfigAbstract
 {
   /**
    * @inheritDoc
    */
-  public const COOKIE_PERSISTENT='p';
+  protected static $COOKIE_PERSISTENT=[
+    WlRegionSid::AP_SOUTHEAST_2 => 'ap',
+    WlRegionSid::US_EAST_1 => 'p',
+  ];
 
   /**
    * @inheritDoc
    */
-  public const COOKIE_TRANSIENT='t';
+  protected static $COOKIE_TRANSIENT=[
+    WlRegionSid::AP_SOUTHEAST_2 => 'at',
+    WlRegionSid::US_EAST_1 => 't',
+  ];
 
   /**
    * @inheritDoc
    */
-  public const URL='https://www.wellnessliving.com/';
+  protected static $REGION_URL = [
+    WlRegionSid::AP_SOUTHEAST_2 => 'https://au.wellnessliving.com/',
+    WlRegionSid::US_EAST_1 => 'https://us.wellnessliving.com/',
+  ];
 }
 
 ?>

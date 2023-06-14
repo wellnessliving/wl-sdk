@@ -4,22 +4,30 @@ namespace WellnessLiving\Wl\Profile\Purchase;
 
 use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlSaleSid;
 
 /**
- * Retrieves a list of purchases to show in user profile.
+ * An endpoint that gets a list of purchases for a user.
+ *
+ * This endpoint is still available but has been superseded by {@link \WellnessLiving\Wl\Profile\PurchaseList\PurchaseListModel}.
  */
 class PurchaseListModel extends WlModelAbstract
 {
   /**
-   * Criteria for list filtering:
-   * <ul><li>Number [<tt>id_active</tt>] Active or inactive purchase items show. One of the {@link AFlagSid} constants.
-   * </li>
-   * <li>Number [<tt>id_sale</tt>] Type of good. One of the {@link RsSaleSid} constants.
-   * </li>
-   * <li>Number [<tt>id_sale_exclude</tt>] Type of good which must be excluded. One of the {@link RsSaleSid} constants.
-   * </li>
-   * <li>String [<tt>s_search</tt>] Title (or part of title) of purchase item.
-   * </li></ul>
+   * An array of parameters with which you can filter results. The following parameters are available:
+   * <dl>
+   *   <dt>int [<var>id_active</var>]</dt>
+   *   <dd>Determines whether to display active or inactive purchases.
+   *     One of the {@link \WellnessLiving\Core\a\AFlagSid} constants.</dd>
+   *   <dt>int [<var>id_sale</var>]</dt>
+   *   <dd>The type of product to search for. One of the {@link WlSaleSid} constants.</dd>
+   *   <dt>int [<var>id_sale_exclude</var>]</dt>
+   *   <dd>The type of product to be excluded from the search.
+   *     One of the {@link WlSaleSid} constants.</dd>
+   *   <dt>int [<var>s_search</var>]</dt>
+   *   <dd>The name or a part of the name to search for.</dd>
+   * </dl>
+   *
    * @var array
    */
   public $a_filter = [
@@ -27,30 +35,43 @@ class PurchaseListModel extends WlModelAbstract
   ];
 
   /**
-   * Purchase items to show. Every element - sub array:
-   * <ul><li>bool[] <tt>a_active</tt> For packages may contain a lot of values; for other purchase items - only 1 value.
-   * Sense of values: <tt>true</tt> - is active; <tt>false</tt> - is inactive.</li>
-   * <li>bool[] <tt>a_sale</tt> For packages may contain a lot of values; for other purchase items - only 1 value.
-   * Sense of values: IDs of purchase item type in store (constants of {@link RsSaleSid}).</li>
-   * <li>String <tt>dt_add</tt> Date of purchase adding.</li>
-   * <li>String <tt>k_code</tt> ID of redemption code which was used to obtain some goods.
-   * Not empty only if <tt>k_login_promotion</tt> and <tt>k_purchase</tt> is empty.</li>
-   * <li>String [<tt>k_enrollment_book</tt>] ID of whole event book.
-   * Presents only for purchases of whole events which are components of package.</li>
-   * <li>String [<tt>k_login_product</tt>] ID of purchased product.
-   * Presents only for purchases of products which are components of package.</li>
-   * <li>String <tt>k_login_promotion</tt> ID of user's promotion without purchase.
-   * Not empty only if <tt>k_code</tt> and <tt>k_purchase</tt> is empty.</li>
-   * <li>String <tt>k_purchase</tt> ID of ordinary purchase.
-   * Not empty only if <tt>k_code</tt> is empty.</li>
-   * <li>String <tt>k_purchase_item</tt> ID of ordinary purchase item.
-   * Not empty only if <tt>k_code</tt> is empty.</li>
-   * <li>String [<tt>k_session_pass</tt>] ID of makeup to attend event.
-   * Presents for repeat purchase of event.</li>
-   * <li>String <tt>s_title</tt> ID of makeup to attend event.
-   * Title of purchase item.</li></ul>
+   * A list of purchased items. Every element contains a sub-array with the following fields:
+   * <dl>
+   *   <dt>bool[] <var>a_active</var></dt>
+   *   <dd>Most purchases will have one value. However, packages may contain a large number
+   *     of values. If `true`, then the purchase is active. If `false`, then the purchase is inactive.</dd>
+   *   <dt>bool[] <var>a_sale</var></dt>
+   *   <dd>Most purchases will have one value. However, packages may contain a large number of
+   *     values. The array values are the IDs of the purchase item types, which are {@link WlSaleSid} constants.</dd>
+   *   <dt>string <var>dt_add</var></dt>
+   *   <dd>The date that the purchase was added.</dd>
+   *   <dt>string <var>k_code</var></dt>
+   *   <dd>The redemption code ID that was used to make a purchase. This value is used only if
+   *     <var>k_login_promotion</var> and <var>k_purchase</var> are empty.</dd>
+   *   <dt>string [<var>k_enrollment_book</var>]</dt>
+   *   <dd>The key of an event that requires clients to book every session at once.
+   *     This is only used if the event is a part of a package.</dd>
+   *   <dt>string [<var>k_login_product</var>]</dt>
+   *   <dd>The key of the purchased product.
+   *     This is only used if the event is a part of a package.</dd>
+   *   <dt>string <var>k_login_promotion</var></dt>
+   *   <dd>The key of the user's existing Purchase Options.
+   *     This value is used only if <var>k_code</var> and <var>k_purchase</var> are empty.</dd>
+   *   <dt>string <var>k_purchase</var></dt>
+   *   <dd>.The key of a purchase where no special case rules are in effect.
+   *     Only used if <var>k_code</var> is empty.</dd>
+   *   <dt>string <var>k_purchase_item</var></dt>
+   *   <dd>The ID of a purchase item where no special case rules are in effect.
+   *     Only used if <var>k_code</var> is empty.</dd>
+   *   <dt>string [<var>k_session_pass</var>]</dt>
+   *   <dd>In certain cases a session can be cancelled and make-up sessions can be
+   *     granted to a client in lieu of other compensation. This is the ID of one of make-up sessions used to attend an
+   *     event. This is also present for a repeat purchase of an event.</dd>
+   *   <dt>string <var>s_title</var></dt>
+   *   <dd>The name of the purchase item.</dd>
+   * </dl>
    *
-   * Order of items in this array is the order in which elements should be shown.
+   * The order of items in this array is the order in which elements should be displayed.
    *
    * @get result
    * @var array
@@ -58,9 +79,9 @@ class PurchaseListModel extends WlModelAbstract
   public $a_purchase = [];
 
   /**
-   * ID of a business to show information for.
+   * The business ID number used internally by WellnessLiving.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -68,9 +89,9 @@ class PurchaseListModel extends WlModelAbstract
   public $k_business = null;
 
   /**
-   * ID of a user to show information for.
+   * The key of the user to show information for.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null

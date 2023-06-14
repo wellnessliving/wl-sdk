@@ -3,8 +3,7 @@
 namespace WellnessLiving\Wl\Appointment\Book\Payment;
 
 /**
- * {@inheritdoc}
- * Model for send post query.
+ * An endpoint that sends payments for an appointment booking.
  */
 class PaymentPostModel extends PaymentModel
 {

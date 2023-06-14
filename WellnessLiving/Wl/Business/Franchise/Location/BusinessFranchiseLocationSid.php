@@ -10,28 +10,28 @@ namespace WellnessLiving\Wl\Business\Franchise\Location;
 class BusinessFranchiseLocationFormSid
 {
   /**
-   * Tab country.
+   * The tab country.
    *
    * @title country
    */
   const COUNTRY = 1;
   
   /**
-   * Tab location.
+   * The tab location.
    *
    * @title location
    */
   const LOCATION = 2;
   
   /**
-   * Tab region.
+   * The tab region.
    *
    * @title region
    */
   const REGION = 3;
   
   /**
-   * Tab state/province.
+   * The tab state/province.
    *
    * @title state/province
    */

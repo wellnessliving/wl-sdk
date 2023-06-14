@@ -2,19 +2,22 @@
 
 namespace WlSdkExample;
 
-use WellnessLiving\Config\WlConfigStaging;
+use WellnessLiving\Config\WlConfigDeveloper;
 
-class ExampleConfig extends WlConfigStaging
+/**
+ * The example config class.
+ */
+class ExampleConfig extends WlConfigDeveloper
 {
   /**
    * @inheritDoc
    */
-  public const AUTHORIZE_CODE='/** Put your authorization code here */';
+  const AUTHORIZE_CODE='/** Put your authorization code here */';
 
   /**
    * @inheritDoc
    */
-  public const AUTHORIZE_ID='/** Put your application ID here */';
+  const AUTHORIZE_ID='/** Put your application ID here */';
 }
 
 ?>

@@ -5,14 +5,14 @@ namespace WellnessLiving\Core\Passport\Login;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about user that is currently signed in.
+ * Gets the user ID for the current user and a password reset URL.
  */
 class InfoModel extends WlModelAbstract
 {
   /**
-   * ID of a user that is currently signed in.
+   * The current user’s ID.
    *
-   * <tt>null</tt> if user is not signed in.
+   * It is `null` if user is not signed in.
    *
    * @get result
    * @var string|null
@@ -20,9 +20,9 @@ class InfoModel extends WlModelAbstract
   public $uid=null;
 
   /**
-   * URL to change password.
+   * A URL that a user can visit to reset their password.
    *
-   * Is <tt>null</tt> if it is not set yet.
+   * It is `null` if it is not set yet.
    *
    * @get result
    * @var string|null

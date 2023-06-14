@@ -7,19 +7,19 @@ use WellnessLiving\WlAssertException;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information to generate application sources.
+ * An endpoint that returns information used to generate application sources.
  */
 class ApplicationResourceModel extends WlModelAbstract
 {
   /**
-   * Placeholder of application ID.
+   * The application ID placeholder.
    */
-  private const ID = '[ID]';
+  const ID = '[ID]';
 
   /**
-   * Application data.
+   * The application data.
    *
-   * <tt>null</tt> until loaded.
+   * This will be `null` if not loaded yet.
    *
    * @get result
    * @var array[]|null
@@ -27,7 +27,7 @@ class ApplicationResourceModel extends WlModelAbstract
   public $a_application = null;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @get get
    * @var string
@@ -35,13 +35,13 @@ class ApplicationResourceModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Updates file `www/js/communication.js`.
+   * Updates the `www/js/communication.js` file.
    *
-   * @param string $k_business Key of a business for that sources are making.
-   * @param string $s_sources Path to directory with sources that must be processed.
-   * @throws WlAssertException In a case of an error.
+   * @param string $k_business The key of a business for that sources are making.
+   * @param string $s_sources The path to the directory with the sources that must be processed.
+   * @throws WlAssertException in the case of an error.
    */
-  private function _communication(string $k_business,string $s_sources):void
+  private function _communication($k_business,$s_sources)
   {
     $this->_file($k_business,$s_sources,'www/js/communication.js',[
       [
@@ -52,18 +52,22 @@ class ApplicationResourceModel extends WlModelAbstract
   }
 
   /**
-   * Updates content of file `config.xml`.
+   * Updates the content of the `config.xml` file.
    *
-   * @param string $k_business Key of a business for that sources are making.
-   * @param string $s_sources Path to directory with sources that must be processed.
-   * @throws WlAssertException In a case of an error.
+   * @param string $k_business The key of a business for that sources are making.
+   * @param string $s_sources The path to the directory with the sources that must be processed.
+   * @throws WlAssertException in the case of an error.
    */
-  private function _config(string $k_business,string $s_sources):void
+  private function _config($k_business, $s_sources)
   {
     $this->_file($k_business,$s_sources,'config.xml',[
       [
         's_key' => 'i_version',
         's_placeholder' => '[VERSION_CODE]'
+      ],
+      [
+        's_key' => 's_google_reverse',
+        's_placeholder' => '[GOOGLE_REVERSED_CLIENT_ID]'
       ],
       [
         's_key' => 'text_domain',
@@ -79,19 +83,19 @@ class ApplicationResourceModel extends WlModelAbstract
   /**
    * Updates a specified file.
    *
-   * @param string $k_business Key of a business for that sources are making.
-   * @param string $s_sources Path to directory with sources that must be processed.
+   * @param string $k_business The key of a business for that sources are making.
+   * @param string $s_sources The path to the directory with the sources that must be processed.
    * @param string $s_file File to be updated.
-   * @param array[] $a_data Data to be updated. Every element has next keys:
+   * @param array[] $a_data The data to be updated. Every element has the following keys:
    * <dl>
    *   <dt>string <var>s_key</var></dt>
-   *   <dd>Key of data in {@link ApplicationResourceModel::$a_application} field.</dd>
+   *   <dd>The key of the data in the {@link ApplicationResourceModel::$a_application} field.</dd>
    *   <dt>string <var>s_placeholder</var></dt>
-   *   <dd>Placeholder in source file to be replaced by data.</dd>
+   *   <dd>The placeholder in the source file to be replaced by data.</dd>
    * </dl>
-   * @throws WlAssertException In a case of an error.
+   * @throws WlAssertException in the case of an error.
    */
-  private function _file(string $k_business,string $s_sources,string $s_file,array $a_data):void
+  private function _file($k_business, $s_sources, $s_file, $a_data)
   {
     $a_replace = [];
     foreach($a_data as $a_data_item)
@@ -139,13 +143,30 @@ class ApplicationResourceModel extends WlModelAbstract
   }
 
   /**
-   * Updates content of file `www/index.html`.
+   * Updates the `www/js/google.plus.js` file.
    *
    * @param string $k_business Key of a business for that sources are making.
-   * @param string $s_sources Path to directory with sources that must be processed.
-   * @throws WlAssertException In a case of an error.
+   * @param string $s_sources The path to the directory with the sources that must be processed.
+   * @throws WlAssertException in the case of an error.
    */
-  private function _index(string $k_business,string $s_sources):void
+  private function _google($k_business, $s_sources)
+  {
+    $this->_file($k_business,$s_sources,'www/js/google.plus.js',[
+      [
+        's_key' => 's_google_id',
+        's_placeholder' => '[GOOGLE_CLIENT_ID]'
+      ]
+    ]);
+  }
+
+  /**
+   * Updates the content of the `www/index.html` file.
+   *
+   * @param string $k_business Key of a business for that sources are making.
+   * @param string $s_sources The path to the directory with the sources that must be processed.
+   * @throws WlAssertException in the case of an error.
+   */
+  private function _index($k_business, $s_sources)
   {
     $this->_file($k_business,$s_sources,'www/index.html',[
       [
@@ -159,10 +180,10 @@ class ApplicationResourceModel extends WlModelAbstract
    * Sets application resources.
    *
    * @param string $k_business Key of a business for that sources are making.
-   * @param string $s_sources Path to directory with sources that must be processed.
-   * @throws WlAssertException In a case of an error.
+   * @param string $s_sources The path to the directory with the sources that must be processed.
+   * @throws WlAssertException in the case of an error.
    */
-  private function _resource(string $k_business,string $s_sources):void
+  private function _resource($k_business, $s_sources)
   {
     $s_resource = $s_sources.'res/';
 
@@ -180,7 +201,9 @@ class ApplicationResourceModel extends WlModelAbstract
         'text_message' => 'Resources information has not been returned by server.'
       ]);
     }
+
     $a_resource_list = $this->a_application[$k_business]['a_resource'];
+    $url_sdk = $this->config()->url();
 
     foreach($a_resource_list as $a_resource)
     {
@@ -193,7 +216,7 @@ class ApplicationResourceModel extends WlModelAbstract
             if(!$a_image['url_link'])
               continue;
 
-            $s_prefix = substr($a_image['url_link'],0,4)==='http'?'':$this->config()::URL;
+            $s_prefix = substr($a_image['url_link'],0,4)==='http'?'':$url_sdk;
             $s_image = file_get_contents($s_prefix.$a_image['url_link']);
 
             foreach($a_image['a_file'] as $s_file)
@@ -229,7 +252,7 @@ class ApplicationResourceModel extends WlModelAbstract
                 continue;
             }
 
-            $s_prefix = substr($a_file['url_link'],0,4)==='http'?'':$this->config()::URL;
+            $s_prefix = substr($a_file['url_link'],0,4)==='http'?'':$url_sdk;
             $r_file = fopen($s_prefix.$a_file['url_link'],'rb');
             if(!$r_file)
               continue;
@@ -243,13 +266,13 @@ class ApplicationResourceModel extends WlModelAbstract
   }
 
   /**
-   * Generate sources for application.
+   * Generates sources for the application.
    *
-   * @param string $s_source Directory with raw sources.
-   * @param string $s_destination Directory with ready sources for certain application.
-   * @throws WlAssertException In a case of an error.
+   * @param string $s_source The directory with raw sources.
+   * @param string $s_destination The directory with ready sources for certain application.
+   * @throws WlAssertException in the case of an error.
    */
-  public function sources(string $s_source,string $s_destination):void
+  public function sources($s_source, $s_destination)
   {
     if(!is_dir($s_source))
     {
@@ -300,6 +323,7 @@ class ApplicationResourceModel extends WlModelAbstract
       $this->_config($k_business,$s_destination_application);
       $this->_index($k_business,$s_destination_application);
       $this->_communication($k_business,$s_destination_application);
+      $this->_google($k_business,$s_destination_application);
     }
   }
 }

@@ -1,0 +1,46 @@
+<?php
+
+namespace WellnessLiving\Core\a;
+
+/**
+ * Week days.
+ */
+class ADateWeekSid
+{
+  /**
+   * Friday.
+   */
+  const FRIDAY = 5;
+
+  /**
+   * Monday.
+   */
+  const MONDAY = 1;
+
+  /**
+   * Saturday.
+   */
+  const SATURDAY = 6;
+
+  /**
+   * Sunday.
+   */
+  const SUNDAY = 7;
+
+  /**
+   * Thursday.
+   */
+  const THURSDAY = 4;
+
+  /**
+   * Tuesday.
+   */
+  const TUESDAY = 2;
+
+  /**
+   * Wednesday.
+   */
+  const WEDNESDAY = 3;
+}
+
+?>

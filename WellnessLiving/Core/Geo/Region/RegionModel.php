@@ -5,19 +5,20 @@ namespace WellnessLiving\Core\Geo\Region;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Gets a list of regions.
+ * Gets a list of regions for a specified country or a list of regions for all countries.
+ * A region is a political subdivision like a state, province, or territory.
  */
 class RegionModel extends WlModelAbstract
 {
   /**
-   * List of regions.
-   * Grouped by countries.
-   * Every element has the keys:
+   * A list of regions, grouped by their countries.
+   * Each key is a different country starting from zero.
+   * Each element has the following keys:
    * <ul><li>array <b>a_region</b> List of region in country. Every element has keys:
-   *   <ul><li>int <b>k_geo</b> Region ID.</li>
-   *   <li>string <b>s_title</b> Name of region.</li></ul></li>
+   *   <ul><li>int <b>k_geo</b> The region ID.</li>
+   *   <li>string <b>s_title</b> The name of the region.</li></ul></li>
    * <li>string <b>k_geo_country</b> The geo ID of the country, this is different than the LocaleSid constant.</li></ul>
-   * <li>string <b>s_title</b> Name of country.</li></ul>
+   * <li>string <b>s_title</b> The name of the country.</li></ul>
    *
    * @get result
    * @var array
@@ -25,9 +26,9 @@ class RegionModel extends WlModelAbstract
   public $a_region = [];
   
   /**
-   * ID of locale to get regions for.
+   * The ID of the locale to find regions for. This is one of the {@link \WellnessLiving\Core\Locale\LocaleSid} constants.
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @get get
    * @var int
@@ -35,10 +36,10 @@ class RegionModel extends WlModelAbstract
   public $id_locale = null;
 
   /**
-   * Whether to get regions for all locales.
+   * Whether to get the regions for all locales.
    *
-   * <tt>true</tt> - to get regions for all locales, <tt>false</tt> - otherwise.
-   * By default <tt>false</tt>.
+   * If `true` then get regions for all locales, `false` - otherwise.
+   * By default it is `false`.
    *
    * @get get
    * @var bool

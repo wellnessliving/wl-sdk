@@ -5,13 +5,13 @@ namespace WellnessLiving\Wl\Login\Attendance;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Attendance list data.
+ * An endpoint that displays attendance list data.
  * Version for validation by token.
  */
 class AttendanceListByTokenModel extends WlModelAbstract
 {
   /**
-   * List of clients who are in active attendance list.
+   * A list of active clients in the attendance list.
    *
    * @get result
    * @var array
@@ -19,7 +19,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
   public $a_list_active = [];
 
   /**
-   * List of clients that requires confirmation from client to move to attendance list.
+   * A list of clients that require confirmation before moving to the attendance list.
    *
    * @get result
    * @var array
@@ -27,7 +27,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
   public $a_list_confirm = [];
 
   /**
-   * List of clients who are in wait list.
+   * A list of clients on the wait list.
    *
    * @get result
    * @var array
@@ -35,7 +35,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
   public $a_list_wait = [];
 
   /**
-   * Start date and time of the class in MySQL format in the location timezone.
+   * The start date and time of the class in MySQL format in the location's time zone.
    *
    * @get get
    * @var string
@@ -43,7 +43,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
   public $dt_date_local = '';
 
   /**
-   * Service capacity.
+   * The service capacity.
    *
    * @get result
    * @var int
@@ -51,7 +51,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
   public $i_capacity = null;
 
   /**
-   * Appointment key.
+   * The appointment key.
    *
    * @get get
    * @var string
@@ -59,7 +59,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
   public $k_appointment = '0';
 
   /**
-   * Business key.
+   * The business key.
    *
    * @get get
    * @var string
@@ -67,7 +67,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Class session key.
+   * The class session key.
    *
    * @get get
    * @var string
@@ -75,7 +75,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
   public $k_class_period = '0';
 
   /**
-   * Location key.
+   * The location key.
    *
    * @get result
    * @var string
@@ -83,7 +83,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * Security token.
+   * The security token.
    *
    * @get get
    * @var string

@@ -22,9 +22,9 @@ class WlModelCookie
    * @param string $s_name Name of the cookie.
    * @return string|null Value of the cookie or <tt>null</tt> if cookie is not set.
    */
-  public function cookieGet(string $s_name):?string
+  public function cookieGet($s_name)
   {
-    return $this->a_cookie[$s_name]??null;
+    return isset($this->a_cookie[$s_name])?$this->a_cookie[$s_name]:null;
   }
 
   /**
@@ -34,7 +34,7 @@ class WlModelCookie
    * @param string $s_value Value of the cookie.
    * @see \Core\Request\Api\Test\ApiModelCookie\cookieGet
    */
-  public function cookieSet(string $s_name,string $s_value):void
+  public function cookieSet($s_name,$s_value)
   {
     $this->a_cookie[$s_name] = $s_value;
   }
@@ -44,7 +44,7 @@ class WlModelCookie
    *
    * @return string String prepared for sending in HTTP headers.
    */
-  public function toHeader():string
+  public function toHeader()
   {
     $a_cookie = [];
     foreach($this->a_cookie as $s_name => $s_value)

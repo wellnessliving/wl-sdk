@@ -33,7 +33,7 @@ final class WlModelMultiModel extends WlModelAbstract
    *
    * @param WlModelAbstract $o_model Model to be part of multi curl request.
    */
-  public function add(WlModelAbstract $o_model): void
+  public function add(WlModelAbstract $o_model)
   {
     $this->a_model[] = $o_model;
   }
@@ -45,13 +45,12 @@ final class WlModelMultiModel extends WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  private function requestMulti(string $s_method): void
+  private function requestMulti($s_method)
   {
     $a_request_prepare = [];
     $this->r_multi_curl = curl_multi_init();
     foreach($this->a_model as $o_model)
     {
-      /** @var WlModelAbstract $o_model */
       $a_request = $o_model->requestPrepare($s_method);
       $a_request['o_model'] = $o_model;
       $a_request_prepare[] = $a_request;
@@ -69,7 +68,9 @@ final class WlModelMultiModel extends WlModelAbstract
     {
       $s_response = curl_multi_getcontent($a_request['r_curl']);
 
-      $a_request['o_model']->requestResult($s_method, $a_request['r_curl'], $a_request['o_request'], $a_request['a_field'], $s_response);
+      /** @var WlModelAbstract $o_model */
+      $o_model=$a_request['o_model'];
+      $o_model->requestResult($s_method, $a_request['r_curl'], $a_request['o_request'], $a_request['a_field'], $s_response, $a_request['s_post']);
     }
     curl_multi_close($this->r_multi_curl);
   }
@@ -80,7 +81,7 @@ final class WlModelMultiModel extends WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  public function getMulti(): void
+  public function getMulti()
   {
     $this->requestMulti('get');
   }
@@ -91,7 +92,7 @@ final class WlModelMultiModel extends WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  public function postMulti(): void
+  public function postMulti()
   {
     $this->requestMulti('post');
   }
@@ -102,7 +103,7 @@ final class WlModelMultiModel extends WlModelAbstract
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  public function putMulti(): void
+  public function putMulti()
   {
     $this->requestMulti('put');
   }
@@ -112,7 +113,7 @@ final class WlModelMultiModel extends WlModelAbstract
    *
    * @param resource $r_curl Curl resource to be closed.
    */
-  protected function closeCurl($r_curl): void
+  protected function closeCurl($r_curl)
   {
     curl_multi_remove_handle($this->r_multi_curl, $r_curl);
   }

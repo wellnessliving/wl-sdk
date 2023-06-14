@@ -5,14 +5,14 @@ namespace WellnessLiving\Core\Passport\Login\Enter;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Signs user in.
+ * Signs a user in.
  */
 class EnterModel extends WlModelAbstract
 {
   /**
-   * Captcha (if needed).
+   * Answer to the captcha if needed. (if needed).
    *
-   * <tt>null</tt> if not needed.
+   * It is `null` if not needed.
    *
    * @post post
    * @var string|null
@@ -20,9 +20,9 @@ class EnterModel extends WlModelAbstract
   public $s_captcha=null;
 
   /**
-   * User login.
+   * The user's login.
    *
-   * <tt>null</tt> if not set yet.
+   * It is `null` if not set yet.
    *
    * @post post
    * @var string|null
@@ -30,7 +30,7 @@ class EnterModel extends WlModelAbstract
   public $s_login=null;
 
   /**
-   * Copy of notepad that was used to hash user password.
+   * A copy of notepad that was used to hash user password.
    *
    * See {@link \WellnessLiving\Core\Passport\Login\Enter\EnterModel::$s_password} for details.
    *
@@ -40,7 +40,7 @@ class EnterModel extends WlModelAbstract
   public $s_notepad=null;
 
   /**
-   * Hash of user password.
+   * The hash of the user’s password.
    *
    * Use {@link \WellnessLiving\Core\Passport\Login\Enter\NotepadModel::hash()} to evaluate password hash.
    *
@@ -50,12 +50,13 @@ class EnterModel extends WlModelAbstract
   public $s_password=null;
 
   /**
-   * Whether and how user login and password should be remembered.
+   * Whether and how the user’s login and password should be remembered.
    *
-   * Allowed values:<ul>
-   * <li><tt>''</tt> Empty line (default value) if you do not want to remember anything.</li>
-   * <li><tt>'login'</tt> To remember only user login.</li>
-   * <li><tt>'password'</tt> To remember user login and password.</li>
+   * The accepted values are as follows:
+   * <ul>
+   *   <li>`''` Empty line (default value) if you do not want to remember anything.</li>
+   *   <li>`'login'` Remember only user login.</li>
+   *   <li>`'password'` Remember user login and password.</li>
    * </ul>
    *
    * @post post

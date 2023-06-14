@@ -46,6 +46,15 @@ class WlUserException extends \Exception
   private $a_result;
 
   /**
+   * Request object with which this exception was created.
+   *
+   * `null` if this exception was created without request object.
+   *
+   * @var WlModelRequest|null
+   */
+  private $o_request;
+
+  /**
    * Name of server-side exception class.
    *
    * <tt>null</tt> if information is not provided.
@@ -67,20 +76,21 @@ class WlUserException extends \Exception
    *
    * @var string|null
    */
-  private $s_code='';
+  private $s_code;
 
   /**
    * Constructs a user-level error.
    *
    * @param string $s_code Error code.
-   * @param string $s_message User-friendly message.
+   * @param string $text_message User-friendly message.
    * @param array $a_data Additional data for debugging purposes.
    */
-  public function __construct($s_code = '',$s_message = '',array $a_data=[])
+  public function __construct($s_code = '',$text_message = '',$a_data=[])
   {
     $this->a_data=$a_data;
+    $this->o_request=isset($a_data['o_request'])?$a_data['o_request']:null;
     $this->s_code=$s_code;
-    parent::__construct($s_message,0);
+    parent::__construct($text_message,0);
   }
 
   /**
@@ -95,13 +105,17 @@ class WlUserException extends \Exception
     if($this->s_class)
       $text_exception.=' / '.$this->s_class;
     $text_exception.=' is thrown with error message: '.$this->getMessage();
-    if($this->a_result)
-      $text_exception.="\r\n".var_export($this->a_result,true);
+    if($this->a_result) {
+      $text_exception .= PHP_EOL . var_export($this->a_result, true);
+    }
     elseif($this->a_error) // If Both, a_result and a_error specified, it is likely that a_result contains a_error inside.
-      $text_exception.="\r\n".var_export($this->a_error,true);
+    {
+      $text_exception .= PHP_EOL . var_export($this->a_error, true);
+    }
 
-    if($this->a_data)
-      $text_exception.="\r\n".var_export($this->a_data,true);
+    if($this->a_data) {
+      $text_exception .= PHP_EOL . var_export($this->a_data, true);
+    }
 
     return $text_exception;
   }
@@ -109,20 +123,33 @@ class WlUserException extends \Exception
   /**
    * Creates a new API model exception object.
    *
-   * @param array $a_result Result, as returned by API endpoint server.
+   * @param WlModelRequest $o_request Request object.
    * @return WlUserException User exception object.
    */
-  public static function createApi(array $a_result):WlUserException
+  public static function createApi(WlModelRequest $o_request)
   {
-    $a_error=$a_result['a_error']??[];
-    $a_error_0=$a_error[0]??[];
+    $a_result=$o_request->a_result;
+    $a_error=isset($a_result['a_error'])?$a_result['a_error']:[];
+    $a_error_0=isset($a_error[0])?$a_error[0]:[];
 
-    $e=new WlUserException($a_error_0['sid']??'unknown-error',$a_error_0['s_message']??'Unknown error.');
+    $e=new WlUserException(isset($a_error_0['sid'])?$a_error_0['sid']:'unknown-error',isset($a_error_0['s_message'])?$a_error_0['s_message']:'Unknown error.');
     $e->a_error=$a_error;
     $e->a_result=$a_result;
-    $e->s_class=$a_result['class']??null;
+    $e->o_request=$o_request;
+    $e->s_class=isset($a_result['class'])?$a_result['class']:null;
 
     return $e;
+  }
+
+  /**
+   * Returns request object with which this exception was created.
+   *
+   * @return WlModelRequest|null Request object with which this exception was created.
+   *   `null` if this exception object was created without request object.
+   */
+  public function request()
+  {
+    return $this->o_request;
   }
 
   /**
@@ -132,7 +159,7 @@ class WlUserException extends \Exception
    * @return string|null String representation of a error code of the very first error in the exception.
    * <tt>null</tt> if no errors were added.
    */
-  public function sid(int $i_index = 0):?string
+  public function sid($i_index = 0)
   {
     if(!$this->a_error)
       return null;

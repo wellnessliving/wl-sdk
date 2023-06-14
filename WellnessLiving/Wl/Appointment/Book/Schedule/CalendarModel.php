@@ -5,16 +5,16 @@ namespace WellnessLiving\Wl\Appointment\Book\Schedule;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves a list with all calendar days in specified month with
- * available and unavailable appointment booking schedule.
+ * An endpoint that retrieves a list of all calendar days in a specified month with
+ * available and unavailable appointment bookings in the schedule.
  */
 class CalendarModel extends WlModelAbstract
 {
   /**
-   * List with all calendar days in specified month with
-   * available and unavailable appointment booking schedule.
+   * A list with all calendar days in the specified month with
+   * available and unavailable appointment bookings in the schedule.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var array|null
@@ -22,9 +22,54 @@ class CalendarModel extends WlModelAbstract
   public $a_date = null;
 
   /**
-   * Date to determine what month to display.
+   * Information about timezone.
+   * <dl>
+   *   <dt>array|null <var>a_timezone</var></dt>
+   *   <dd>
+   *     `null` if business settings doesn't allow client to adjust timezone, otherwise list of timezones:
+   *     <dl>
+   *       <dt>int <var>i_order</var></dt>
+   *       <dd>Timezone order.</dd>
+   *       <dt>int <var>i_shift</var></dt>
+   *       <dd>Timezone shift from UTC in hours.</dd>
+   *       <dt>bool <var>is_select</var></dt>
+   *       <dd>`true` for selected timezone - from {@link CalendarModel::$k_timezone} param or client's default timezone when param not set.</dd>
+   *       <dt>string <var>k_timezone</var></dt>
+   *       <dd>Timezone key.</dd>
+   *       <dt>string <var>s_title</var></dt>
+   *       <dd>Timezone name.</dd>
+   *       <dt>string <var>text_abbr</var></dt>
+   *       <dd>Timezone abbreviation.</dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>string|null <var>name</var></dt>
+   *   <dd>`null` if business settings doesn't allow client to adjust timezone, otherwise timezone input name.</dd>
+   * </dl>
    *
-   * <tt>null</tt> if not set yet.
+   * @get result
+   * @var array
+   */
+  public $a_timezone_data = [];
+
+  /**
+   * Array with short week day's names (2 letters, i.e. 'Fr') for calendar month view. Week days order according to business's settings.
+   *
+   * <dl>
+   *   <dt>int <var>i_day</var></dt>
+   *   <dd>Week day, one of the {@link \WellnessLiving\Core\a\ADateWeekSid} constants.</dd>
+   *   <dt>string <var>html_week_day</var></dt>
+   *   <dd>Short week day's name (2 letters, i.e. 'Fr').</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array
+   */
+  public $a_week_name = [];
+
+  /**
+   * The date to determine what month to display.
+   *
+   * This will be `null` if not set yet.
    *
    * @get get,result
    * @var string|null
@@ -32,9 +77,9 @@ class CalendarModel extends WlModelAbstract
   public $dt_date = null;
 
   /**
-   * Duration of the asset.
+   * The duration of the asset.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var int|null
@@ -42,9 +87,9 @@ class CalendarModel extends WlModelAbstract
   public $i_duration = null;
 
   /**
-   * Index of selected asset.
+   * An index of the selected asset.
    *
-   * <tt>null</tt> if not set yet. Or if asset is not on layout.
+   * This will be `null` if not set yet or if the asset isn't on the layout.
    *
    * @get get
    * @var int|null
@@ -52,9 +97,9 @@ class CalendarModel extends WlModelAbstract
   public $i_index = null;
 
   /**
-   * Staff gender.
+   * The staff member's gender.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var int|null
@@ -62,9 +107,9 @@ class CalendarModel extends WlModelAbstract
   public $id_gender_staff = null;
 
   /**
-   * Location ID to show what days are available for booking.
+   * The location ID to show what days are available for booking.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -72,9 +117,9 @@ class CalendarModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * Resource ID to show what days are available for booking.
+   * The resource ID to show what days are available for booking.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -82,9 +127,9 @@ class CalendarModel extends WlModelAbstract
   public $k_resource = null;
 
   /**
-   * Service ID to show what days are available for booking.
+   * The service ID to show what days are available for booking.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -92,9 +137,9 @@ class CalendarModel extends WlModelAbstract
   public $k_service = null;
 
   /**
-   * Staff ID to show what days are available for booking.
+   * The staff ID to show what days are available for booking.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -102,7 +147,17 @@ class CalendarModel extends WlModelAbstract
   public $k_staff = null;
 
   /**
-   * List of service add-ons. Serialized to be usable as model key.
+   * Key of timezone.
+   *
+   * `null` if not set to use client's profile timezone.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $k_timezone = null;
+
+  /**
+   * A list of service add-ons, serialized to be usable as a model key.
    *
    * @get get
    * @var string
@@ -110,9 +165,9 @@ class CalendarModel extends WlModelAbstract
   public $s_product = '';
 
   /**
-   * User ID.
+   * The user ID.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null

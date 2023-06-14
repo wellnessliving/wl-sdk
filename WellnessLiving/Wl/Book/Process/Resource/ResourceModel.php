@@ -11,7 +11,7 @@ use WellnessLiving\WlModelAbstract;
 class ResourceModel extends WlModelAbstract
 {
   /**
-   * IDs of user's activity.
+   * The IDs of a user's activity.
    *
    * @post result
    * @var array
@@ -19,36 +19,42 @@ class ResourceModel extends WlModelAbstract
   public $a_login_activity = [];
 
   /**
-   * List of asset categories which are available for specified session. Every element has next keys:
+   * A list of asset categories which are available for specified session. Every element has next keys:
    * <dl>
    *   <dt>array <var>a_client</var></dt>
    *   <dd>
-   *     List of client who have already occupied assets for this session.
-   *     1st level keys - asset keys; 2nd level keys - numbers of asset.
-   *     For example, if you want to check if 10th asset with key '125' if free,
+   *     A list of clients who have already occupied assets for this session.
+   *     1st level keys - asset keys; 2nd level keys - asset number.
+   *     For example, if you want to check if 10th asset with key '125' is free,
    *     you have to check if <tt>a_client['125']['10']</tt> is empty.
    *   </dd>
    *   <dt>array[] <var>a_resource_list</var></dt>
-   *   <dd>List of available assets. Every element has next keys:
+   *   <dd>A list of available assets. Every element has next keys:
    *     <dl>
    *       <dt>int <var>i_index</var></dt>
-   *       <dd>Number of asset. Actual for assets with quantity more than <tt>1</tt>.</dd>
+   *       <dd>The asset number. Actual for assets with a quantity more than <tt>1</tt>.</dd>
    *       <dt>string <var>k_resource</var></dt>
-   *       <dd>Key of asset in database.</dd>
+   *       <dd>The key of the asset in database.</dd>
    *       <dt>string <var>s_resource</var></dt>
-   *       <dd>Title of asset.</dd>
+   *       <dd>The title of the asset.</dd>
    *     </dl>
    *   </dd>
+   *   <dt>bool <var>has_current</var></dt>
+   *   <dd><tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise.</dd>
+   *   <dt>bool <var>is_client_select</var></dt>
+   *   <dd><tt>true</tt> - the client selected the resource from the current group; <tt>false</tt> otherwise.</dd>
+   *   <dt>bool <var>is_select</var></dt>
+   *   <dd><tt>true</tt> - has selected resources; <tt>false</tt> - otherwise.</dd>
    *   <dt>bool <var>is_share</var></dt>
-   *   <dd>Key resource use type</dd>
-   *   <tt>true</tt> resources in this category do not belong to certain users, but to the entire session
-   *   <tt>false</tt> belong to specific users
+   *   <dd>The key resource use type</dd>
+   *   <tt>true</tt> resources in this category don't belong to certain users, but to the entire session.
+   *   <tt>false</tt> belong to specific users.
    *   <dt>string <var>k_resource_layout</var></dt>
-   *   <dd>Key of asset layout.</li>
+   *   <dd>The key of the asset layout.</li>
    *   <dt>string <var>k_resource_type</var></dt>
-   *   <dd>Key of asset category.</dd>
+   *   <dd>The key of the asset category.</dd>
    *   <dt>string <var>s_resource_type</var></dt>
-   *   <dd>Title of asset category.</dd>
+   *   <dd>The title of the asset category.</dd>
    * </dl>
    *
    * <tt>null</tt> if not set yet.
@@ -59,9 +65,9 @@ class ResourceModel extends WlModelAbstract
   public $a_resource_all = null;
 
   /**
-   * Selected assets. Every element has next keys:
-   * <ul><li>Number <tt>i_index</tt> Number of asset. Actual for assets with quantity greater <tt>1</tt>.</li>
-   * <li>String <tt>k_resource</tt> ID of asset.</li></ul>
+   * The selected assets. Every element has the next keys:
+   * <ul><li>Number <tt>i_index</tt> The asset number. Actual for assets with quantity greater <tt>1</tt>.</li>
+   * <li>String <tt>k_resource</tt> The ID of the asset.</li></ul>
    *
    * @post post
    * @var array
@@ -69,11 +75,11 @@ class ResourceModel extends WlModelAbstract
   public $a_resource_select = [];
 
   /**
-   * Selected sessions.
+   * The selected sessions.
    * Not empty only for session mode.
    *
-   * Fields - IDs of sessions in database.
-   * Values - arrays of date/time when session is occurred. In MySQL format. In GMT.
+   * Fields - the IDs of the sessions in the database.
+   * Values - the arrays of date/time when the session is occurred in MySQL format and in GMT.
    *
    * @get get
    * @post get
@@ -82,7 +88,7 @@ class ResourceModel extends WlModelAbstract
   public $a_session = [];
 
   /**
-   * IDs of books are made.
+   * The IDs of the bookings that have been made.
    *
    * @post result
    * @var array
@@ -90,8 +96,7 @@ class ResourceModel extends WlModelAbstract
   public $a_visit = [];
 
   /**
-   * Date/time when session occurs.
-   * In MySQL format. In GMT.
+   * The date/time when session occurs in MySQL format and in GMT.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -102,7 +107,7 @@ class ResourceModel extends WlModelAbstract
   public $dt_date_gmt = null;
 
   /**
-   * WellnessLiving mode type. One of {@link WlBookModeSid} constants.
+   * The WellnessLiving mode type. One of {@link WlBookModeSid} constants.
    *
    * @get get
    * @post get
@@ -111,8 +116,8 @@ class ResourceModel extends WlModelAbstract
   public $id_mode =  WlBookModeSid::APP_FRONTEND;
 
   /**
-   * <tt>true</tt> if need next steps of wizard (need to purchase something to book selected session);
-   * <tt>false</tt> if no need next steps (all that need was already bought).
+   * <tt>true</tt> if next steps of wizard are needed (for example. to purchase something to book the selected session);
+   * <tt>false</tt> if no next steps are needed (all that was needed was already bought).
    *
    * @post result
    * @var bool
@@ -120,7 +125,7 @@ class ResourceModel extends WlModelAbstract
   public $is_next = false;
 
   /**
-   * ID of session which is being booked.
+   * The ID of the session which is being booked.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -131,7 +136,7 @@ class ResourceModel extends WlModelAbstract
   public $k_class_period = null;
 
   /**
-   * ID of a user who is making the book.
+   * The ID of the user who is making the booking.
    *
    * <tt>null</tt> if not set yet.
    *

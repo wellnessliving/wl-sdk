@@ -81,6 +81,13 @@ class WlModelRequest
   public $s_method;
 
   /**
+   * Full HTTP request.
+   *
+   * @var string
+   */
+  public $s_request;
+
+  /**
    * Full HTTP response.
    *
    * @var string
@@ -106,7 +113,7 @@ class WlModelRequest
    *
    * @throws WlAssertException In a case of an assertion.
    */
-  public function authorize():void
+  public function authorize()
   {
     WlAssertException::assertNotEmpty($this->o_config,[
       'text_message' => 'Configuration object should be set before call to authorize().'
@@ -115,21 +122,24 @@ class WlModelRequest
       'text_message' => '$url should be set before call to authorize().'
     ]);
 
+    /** @var WlConfigAbstract $s_config_class */
+    $s_config_class = get_class($this->o_config);
+
     $a_url = parse_url($this->url);
     $a_signature = [
       'a_header' => [],
       'a_variable' => $this->a_variable,
       'dt_time' => $this->dt_request,
-      's_code' => $this->o_config::AUTHORIZE_CODE,
-      's_cookie_persistent' => $this->o_cookie->cookieGet($this->o_config::COOKIE_PERSISTENT),
-      's_cookie_transient' => $this->o_cookie->cookieGet($this->o_config::COOKIE_TRANSIENT),
+      's_code' => $s_config_class::AUTHORIZE_CODE,
+      's_cookie_persistent' => $this->o_cookie->cookieGet($this->o_config->cookiePersistent()),
+      's_cookie_transient' => $this->o_cookie->cookieGet($this->o_config->cookieTransient()),
       's_host' => $a_url['host'],
-      's_id' => $this->o_config::AUTHORIZE_ID,
+      's_id' => $s_config_class::AUTHORIZE_ID,
       's_method' => strtoupper($this->s_method),
       's_resource' => $this->s_resource,
     ];
 
-    $this->a_header_request['Authorization'] = '20150518,'.$this->o_config::AUTHORIZE_ID.',,'.WlModelRequest::signatureCompute($a_signature);
+    $this->a_header_request['Authorization'] = '20150518,'.$s_config_class::AUTHORIZE_ID.',,'.WlModelRequest::signatureCompute($a_signature);
   }
 
   /**
@@ -137,12 +147,24 @@ class WlModelRequest
    *
    * @return array List of headers in appropriate format for a request.
    */
-  public function headerCurl():array
+  public function headerCurl()
   {
     $a_header = [];
     foreach($this->a_header_request as $s_key => $s_value)
       $a_header[] = $s_key.': '.$s_value;
     return $a_header;
+  }
+
+  /**
+   * Returns full HTTP protocol of the request and response.
+   *
+   * THis HTTP protocol includes headers and bodies of the both request and response.
+   *
+   * @return string Full HTTP protocol of the request and response.
+   */
+  public function httpProtocol()
+  {
+    return $this->s_request. PHP_EOL . PHP_EOL .$this->s_response;
   }
 
   /**
@@ -160,14 +182,14 @@ class WlModelRequest
     $a_result = [];
     foreach($a_array as $s_key => $x_value)
     {
-      if(is_string($x_value)||is_numeric($x_value))
+      if(is_string($x_value)||is_numeric($x_value)||is_null($x_value))
       {
         $a_result[strtolower($s_key)] = $x_value;
         continue;
       }
       if(is_object($x_value)&&($x_value instanceof WlFile))
       {
-        $a_result[strtolower($s_key)] = hash_file('sha256',$x_value->name(),true);
+        $a_result[strtolower($s_key)] = hash_file('sha256',$x_value->name(),false);
         continue;
       }
       if(is_array($x_value))
@@ -225,7 +247,7 @@ class WlModelRequest
     $a_variable=WlModelRequest::signatureArray($a_data['a_variable']);
     ksort($a_variable);
     foreach($a_variable as $s_key => $s_value)
-      $a_signature[]=$s_key.'='.$s_value;
+      $a_signature[] = $s_key.($s_value===null?' is null':'='.$s_value);
 
     $a_header=[];
     foreach($a_data['a_header'] as $s_key => $s_value)

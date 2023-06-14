@@ -2,8 +2,6 @@
 
 namespace WellnessLiving;
 
-use Throwable;
-
 /**
  * This exception is thrown in a case of a programmatic client-side error.
  *
@@ -25,15 +23,15 @@ class WlAssertException extends \Exception
    * Constructs a new assertion exception.
    *
    * @param array $a_data Data to write to exception object in a case of failure.
-   * @param Throwable $e_previous The previous throwable used for the exception chaining.
+   * @param \Throwable|null $e_previous The previous throwable used for the exception chaining.
    */
   public function __construct(array $a_data,\Throwable $e_previous=null)
   {
     $this->a_data=$a_data;
 
     parent::__construct(
-      $a_data['text_message']??'Assertion without message is thrown.',
-      $a_data['i_code']??0,
+      isset($a_data['text_message'])?$a_data['text_message']:'Assertion without message is thrown.',
+      isset($a_data['i_code'])?$a_data['i_code']:0,
       $e_previous
     );
   }

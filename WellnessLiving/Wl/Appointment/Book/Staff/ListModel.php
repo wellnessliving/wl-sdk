@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Appointment\Book\Staff;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves an information about staff members for the current service.
+ * An endpoint that retrieves information about staff members for the current service.
  */
 class ListModel extends WlModelAbstract
 {
   /**
    * A list of staff members.
    *
-   * <tt>null</tt> if not initialized yet.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var array|null
@@ -20,7 +20,7 @@ class ListModel extends WlModelAbstract
   public $a_staff = null;
 
   /**
-   * Date/time of appointment selected by user. In location timezone.
+   * The date/time of the appointment selected by user, returned in the location's time zone.
    *
    * @get get
    * @var string
@@ -28,7 +28,7 @@ class ListModel extends WlModelAbstract
   public $dt_date = '';
 
   /**
-   * Determines that staff list has male and female members.
+   * Determines if the staff list has male and female members.
    *
    * @get result
    * @var bool
@@ -36,8 +36,9 @@ class ListModel extends WlModelAbstract
   public $is_gender_different = false;
 
   /**
-   * <tt>1</tt> - return service categories which has no staff members to conduct it;
-   * <tt>0</tt> - return only service categories which has staff members.
+   * <b>1</b> - returns service categories that have no staff members available to conduct them.
+   *
+   * <b>0</b> - returns only service categories that have staff members available to conduct them.
    *
    * @get get
    * @var bool
@@ -45,7 +46,7 @@ class ListModel extends WlModelAbstract
   public $is_unavailable = 0;
 
   /**
-   * Whether you want to select gender for the appointment.
+   * Determines whether to select the staff member's gender for the appointment.
    *
    * @get result
    * @var bool
@@ -53,7 +54,7 @@ class ListModel extends WlModelAbstract
   public $has_gender = false;
 
   /**
-   * Whether you want to select staff member for the appointment.
+   * Determines whether to select staff member(s) for the appointment.
    *
    * @get result
    * @var bool
@@ -61,9 +62,9 @@ class ListModel extends WlModelAbstract
   public $has_staff = false;
 
   /**
-   * ID of a location.
+   * The ID of a location.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
@@ -71,9 +72,9 @@ class ListModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * ID of a service to show information for.
+   * The ID of a service for which to show information.
    *
-   * <tt>null</tt> if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null

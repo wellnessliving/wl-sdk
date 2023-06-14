@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Skin\Application;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Point to get skin settings for customisation of client application.
+ * An endpoint that retrieves customized skin settings for the client view.
  */
 class SkinModel extends WlModelAbstract
 {
   /**
    * Skin information.
    *
-   * <tt>null</tt> until loaded.
+   * This will be `null` if not loaded yet.
    *
    * @get result
    * @var array|null
@@ -20,7 +20,7 @@ class SkinModel extends WlModelAbstract
   public $a_skin = null;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @get get
    * @var string

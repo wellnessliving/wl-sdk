@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\User\Info;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves information about a WellnessLiving user.
+ * An endpoint that retrieves information about a WellnessLiving user.
  */
 class UserInfoModel extends WlModelAbstract
 {
   /**
-   * Information about the user's photo. It has the following structure:<dl>
+   * Information about the user's photo. The information returned has the following structure:<dl>
    *   <dt>int <var>i_height</var></dt>
    *   <dd>The height of the photo.</dd>
    *
@@ -35,7 +35,7 @@ class UserInfoModel extends WlModelAbstract
   public $dt_add = '';
 
   /**
-   * The user's birthday. This will be <tt>null</tt> if the birthday is not set.
+   * The user's birthday. This will be `null` if the birthday isn't set yet.
    *
    * @get result
    * @var string
@@ -43,9 +43,9 @@ class UserInfoModel extends WlModelAbstract
   public $dt_birth = '';
 
   /**
-   * ID of user's gender. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
+   * The ID of the user's gender. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
    *
-   * This will be <tt>null</tt> If gender is not set.
+   * This will be `null` if the gender isn't set yet.
    *
    * @get result
    * @var int
@@ -53,8 +53,8 @@ class UserInfoModel extends WlModelAbstract
   public $id_gender = 0;
 
   /**
-   * This will be <tt>true</tt> if the user has never made purchases or reservations in this business.
-   * It will be <tt>false</tt> otherwise.
+   * This will be `true` if the user has never made purchases or reservations in this business.
+   * Otherwise, this will be `false`.
    *
    * @get result
    * @var int
@@ -62,8 +62,8 @@ class UserInfoModel extends WlModelAbstract
   public $is_customer_new = [];
 
   /**
-   * This will be <tt>true</tt> if the user is a traveller. A traveller is someone who's home Franchisee is
-   * not the current Franchisee.
+   * This will be `true` if the user is a traveler. A traveler is someone whose home location isn't the current location
+   * in the Enterprise business.
    *
    * @get result
    * @var int
@@ -71,8 +71,8 @@ class UserInfoModel extends WlModelAbstract
   public $is_traveller = [];
 
   /**
-   * Key of the business.
-   * This may be empty if we need system-wide information.
+   * The key of the business.
+   * This may be empty if system-wide information is needed.
    *
    * @get get
    * @var string
@@ -80,7 +80,7 @@ class UserInfoModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The key of the login type. The login type describes what type of client this user is in this business.
+   * The key of the login type. The login type describes the user's client type in this business.
    *
    * @get result
    * @var string
@@ -112,8 +112,8 @@ class UserInfoModel extends WlModelAbstract
   public $s_mail = [];
 
   /**
-   * The user's Member ID in the business. Also referred to as the Client ID in the client's profile. This value
-   * is set by the business and is separate from the uid value.
+   * The user's member ID in the business. Also referred to as the client ID in the client's profile. This value
+   * is set by the business and separate from the <var>uid</var> value.
    *
    * @get result
    * @var string
