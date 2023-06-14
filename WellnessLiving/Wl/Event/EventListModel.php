@@ -60,6 +60,14 @@ class EventListModel extends WlModelAbstract
   public $is_backend;
 
   /**
+   * `true` to show even event restricted by booking policies; `false` to show available events only.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_ignore_requirement = false;
+
+  /**
    * Determines whether you need to retrieve a list of event sessions regardless of the tab specified in {@link EventListApi::$k_class_tab}.
    *
    * * <tt>true</tt> - retrieves a list regardless of the specified tab.
