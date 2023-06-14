@@ -317,6 +317,24 @@ class ElementModel extends WlModelAbstract
   public $html_special = null;
 
   /**
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_width = 0;
+
+  /**
    * The session count.
    *
    * `null` if not set yet.
@@ -325,6 +343,24 @@ class ElementModel extends WlModelAbstract
    * @var int|null
    */
   public $i_session = null;
+
+  /**
+   * Staff image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_staff_image_height = 0;
+
+  /**
+   * Staff image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_staff_image_width = 0;
 
   /**
    * The virtual provider ID. One of the{@link \WellnessLiving\Wl\Virtual\VirtualProviderSid} constants.
