@@ -172,6 +172,17 @@ class PaymentMultipleModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
+   * The location key.
+   *
+   * This will be `null` if not set yet.
+   *
+   * @get get
+   * @post get
+   * @var string|null
+   */
+  public $k_location = null;
+
+  /**
    * Kye of activity of purchase is made. Empty if no purchase is made.
    *
    * @post result
@@ -236,6 +247,17 @@ class PaymentMultipleModel extends WlModelAbstract
    * @var string
    */
   public $text_discount_code = '';
+
+  /**
+   * The user's key.
+   *
+   * This will be `null` if not set yet.
+   *
+   * @get get
+   * @post get
+   * @var string|null
+   */
+  public $uid = null;
 }
 
 ?>
