@@ -15,29 +15,37 @@ class ListModel extends WlModelAbstract
    * The order of items in this array matches the order in which elements should be displayed.
    *
    * @get result
-   * @var array
+   * @var string[]
    */
-  public $a_event = [];
+  public $a_event;
 
   /**
-   * The ID of the business to show information for.
+   * <tt>true</tt> if exist at least one virtual event
+   * by specific {@link \Wellnessliving\Wl\Event\Book\EventList\ListModel::$k_business} and
+   * {@link \Wellnessliving\Wl\Event\Book\EventList\ListModel::$k_class_tab},
+   * <tt>false</tt> otherwise.
    *
-   * <tt>null</tt> if not set yet.
-   *
-   * @get get
-   * @var string|null
+   * @get result
+   * @var bool
    */
-  public $k_business=null;
+  public $is_virtual_service;
 
   /**
-   * The ID of the category tab.
-   *
-   * <tt>null</tt> if not set yet.
+   * The key of the business to show information for.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_class_tab = null;
+  public $k_business = '0';
+
+  /**
+   * The key of the category tab.
+   * If empty, select only elements with not specified book tab.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_class_tab = '0';
 
   /**
    * The user's key.

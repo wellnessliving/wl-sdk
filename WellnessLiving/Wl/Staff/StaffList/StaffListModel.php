@@ -11,30 +11,85 @@ class StaffListModel extends WlModelAbstract
 {
   /**
    * Information about staff members.
-   * Each array index is the staff member’s internal ID number in WellnessLiving.
+   * Each array index is the staff member keys.
    * Each array element is an array containing the following fields:
-   * <ul><li>string[] `a_pay_rate` A list of internal pay rate IDs applicable to the staff member.</li>
-   * <li>string `k_staff` A staff member ID in WellnessLiving (this should be the same as the `a_staff` array index).</li>
-   * <li>string `s_name` The staff member’s first name</li>
-   * <li>string `s_position` The staff member’s position in the organization.</li>
-   * <li>string `s_surname` The first letter of the staff member’s surname.</li>
-   * <li>string|null `s_surname_full` The entire surname of the staff member. This will be `null` if private staff member information isn't accessible.</li>
-   * <li>string `uid` The user ID. Each staff member in WellnessLiving can also access the system as a client of their business. This is the ID number used to represent the staff member as a client.</li></ul>
+   * <dl>
+   *   <dt>
+   *     string[] <var>a_pay_rate</var>
+   *   </dt>
+   *   <dd>
+   *     A list of internal pay rate keys applicable to the staff member.
+   *   </dd>
+   *   <dt>
+   *     string <var>html_name</var>
+   *   </dt>
+   *   <dd>
+   *     Staff name.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_order</var>
+   *   </dt>
+   *   <dd>
+   *     Order for sorting.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_staff</var>
+   *   </dt>
+   *   <dd>
+   *     Staff key; primary key in {@link \RsStaffSql} table.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_name</var>
+   *   </dt>
+   *   <dd>
+   *     The staff member first name.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_position</var>
+   *   </dt>
+   *   <dd>
+   *     The staff member position in the organization.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_surname</var>
+   *   </dt>
+   *   <dd>
+   *     The first letter of the staff member surname.
+   *   </dd>
+   *   <dt>
+   *     string|null <var>s_surname_full</var>
+   *   </dt>
+   *   <dd>
+   *     The entire surname of the staff member. This will be `null` if private staff member information isn't accessible.
+   *   </dd>
+   *   <dt>
+   *     string <var>uid</var>
+   *   </dt>
+   *   <dd>
+   *     The user key.
+   *     Each staff member in WellnessLiving can also access the system as a client of their business.
+   *     This is the key used to represent the staff member as a client.
+   *   </dd>
+   *   <dt>
+   *     string <var>url_image</var>
+   *   </dt>
+   *   <dd>
+   *     Url link to user photo, or empty string, if photo is not loaded.
+   *   </dd>
+   * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
-  public $a_staff = [];
+  public $a_staff;
 
   /**
    * The key of the business to show information for.
    *
-   * This will be `null` if not set yet.
-   *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_business = null;
+  public $k_business = '0';
 }
 
 ?>

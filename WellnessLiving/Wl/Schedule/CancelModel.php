@@ -12,51 +12,59 @@ class CancelModel extends WlModelAbstract
   /**
    * The date of the session in UTC.
    *
-   * This will be `null` if not set yet.
-   *
+   * @get get
    * @post get
-   * @var string|null
+   * @var string
    */
-  public $dt_date = null;
+  public $dt_date = '';
 
   /**
    * This will be `true` if the API is being used from the back end. Otherwise, this will be `false`.
    * Here, the back end refers to either a staff member or admin from the side of the business.
    *
+   * @get get
    * @post get
    * @var bool
    */
   public $is_backend = false;
 
   /**
-   * The appointment key. This will be `null` if not set yet or if a class or event is canceled.
+   * The appointment key.
+   * This will be `null` if not set yet or if a class or event is canceled.
    *
-   * This will be `null` if not set yet.
-   *
+   * @get get
    * @post get
    * @var string|null
    */
-  public $k_appointment = null;
+  public $k_appointment;
 
   /**
-   * The class period key. This will be `null` if not set yet or if an appointment is canceled.
+   * Key of the business within which the action is performed.
    *
-   * This will be `null` if not set yet.
+   * @get get
+   * @post get
+   * @var string
+   */
+  public $k_business;
+
+  /**
+   * The class period key.
+   * This will be `null` if not set yet or if an appointment is canceled.
    *
+   * @get get
    * @post get
    * @var string|null
    */
-  public $k_class_period = null;
+  public $k_class_period;
 
   /**
    * The user key.
    *
-   * This will be `null` if not set yet.
-   *
+   * @get get
    * @post get
-   * @var string|null
+   * @var string
    */
-  public $uid = null;
+  public $uid = '0';
 }
 
 ?>

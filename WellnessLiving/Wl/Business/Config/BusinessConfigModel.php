@@ -3,7 +3,6 @@
 namespace WellnessLiving\Wl\Business\Config;
 
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\WlServiceSid;
 
 /**
  * Manages business configurations for clients, bookings, payments, and related things.
@@ -15,7 +14,7 @@ class BusinessConfigModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>int <var>a_wait_service</var></dt>
-   *   <dd>The keys are listed as IDs from {@link WlServiceSid}, and values are flags outlining whether wait listing is allowed.</dd>
+   *   <dd>The keys are listed as IDs from {@link \WellnessLiving\WlServiceSid}, and values are flags outlining whether wait listing is allowed.</dd>
    *   <dt>int <var>i_book_before</var></dt>
    *   <dd>The minimum hours|days|months before a class can be booked.</dd>
    *   <dt>int <var>i_book_future</var></dt>
@@ -27,19 +26,23 @@ class BusinessConfigModel extends WlModelAbstract
    *   <dt>int <var>i_reattempt_count</var></dt>
    *   <dd>The number of failed auto-payment reattempts.</dd>
    *   <dt>int <var>id_book_before</var></dt>
-   *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
+   *   <dd>Hours|days|months from {@link \WellnessLiving\Core\a\ADurationSid}.</dd>
    *   <dt>int <var>id_book_future</var></dt>
-   *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
+   *   <dd>Hours|days|months from {@link \WellnessLiving\Core\a\ADurationSid}.</dd>
    *   <dt>int <var>id_cancel</var></dt>
-   *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
+   *   <dd>Hours|days|months from {@link \WellnessLiving\Core\a\ADurationSid}.</dd>
    *   <dt>int <var>id_promote</var></dt>
-   *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
+   *   <dd>Hours|days|months from {@link \WellnessLiving\Core\a\ADurationSid}.</dd>
    *   <dt>bool <var>is_book_inside_active_pay_period</var></dt>
-   *   <dd>if `true` - clients with Purchase Options are only allowed
-   *     to book sessions within their current paid period, `false` - during Purchase Option's duration.</dd>
+   *   <dd>
+   *     if `true` - clients with Purchase Options are only allowed
+   *     to book sessions within their current paid period, `false` - during Purchase Option's duration.
+   *   </dd>
    *   <dt>int <var>is_disable_promotion</var></dt>
-   *   <dd>1 if a client's automatic payment fails, their account should not be
-   *     debited and their Purchase Option becomes inactive, 0 - otherwise. Default 0.</dd>
+   *   <dd>
+   *     `true` if a client's automatic payment fails, their account should not be
+   *     debited and their Purchase Option becomes inactive, `false` - otherwise. Default `false`.
+   *   </dd>
    *   <dt>bool <var>is_enable_payment_penalty</var></dt>
    *   <dd>Determines whether to charge a penalty after the final auto-payment attempt.</dd>
    *   <dt>bool <var>is_enable_payment_reattempt</var></dt>
@@ -47,7 +50,7 @@ class BusinessConfigModel extends WlModelAbstract
    *   <dt>bool <var>is_enable_staff_ip_restriction</var></dt>
    *   <dd>Determines whether to restrict which IP addresses staff can login from.</dd>
    *   <dt>int <var>is_prevent_booking</var></dt>
-   *   <dd>1 if booking for a client with negative balance is disabled, 0 - otherwise. Default 0.</dd>
+   *   <dd>`true` if booking for a client with negative balance is disabled, `false` - otherwise. Default `false`.</dd>
    *   <dt>bool <var>is_staff_restrict</var></dt>
    *   <dd>If true, clients can't choose a provider in the appointment wizard.</dd>
    *   <dt>bool <var>is_wait</var></dt>
@@ -78,7 +81,7 @@ class BusinessConfigModel extends WlModelAbstract
   public $is_location_select;
 
   /**
-   * The business key. The primary key in {@link \RsBusinessSql} table.
+   * The business key.
    *
    * @get get
    * @var string

@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Wl\Report;
 
-use WellnessLiving\WlAssertException;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -22,7 +21,7 @@ class DataModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public $a_data=[];
+  public $a_data;
 
   /**
    * The page of results to show, starting at zero. The API will return 256 results per page.
@@ -33,20 +32,7 @@ class DataModel extends WlModelAbstract
   public $i_page = 0;
 
   /**
-   * The report ID. One of the {@link WlReportSid} constants. The following reports are currently
-   * available:
-   * <dl>
-   *   <dt>LOGIN_LIST (ID 22)</dt>
-   *   <dd>All Clients Report (Reports tab, features date search)</dd>
-   *   <dt>LOGIN_LIST_ALL (ID 33)</dt>
-   *   <dd>All Clients Report (Clients tab) Batch Report</dd>
-   *   <dt>PAY_TRANSACTION_BATCH (ID 77)</dt>
-   *   <dd>Batch Report</dd>
-   *   <dt>PURCHASE_ITEM_LIST_USER (ID 118)</dt>
-   *   <dd>Sales per Client Report</dd>
-   *   <dt>PURCHASE_ITEM_ACCRUAL_CASH (ID 123)</dt>
-   *   <dd>All Sales Report</dd>
-   * </dl>
+   * The report ID. One of the {@link \Wellnessliving\RsReportSid} constants.
    *
    * @get get
    * @var int
@@ -54,7 +40,7 @@ class DataModel extends WlModelAbstract
   public $id_report = 0;
 
   /**
-   * The report group ID. One of the {@link WlReportGroupSid} constants that describes the time
+   * The report group ID. One of the {@link \Wellnessliving\RsReportGroupSid} constants that describes the time
    * period (day, week, month, or year) for the report to cover.
    *
    * @get get
@@ -63,7 +49,7 @@ class DataModel extends WlModelAbstract
   public $id_report_group = 0;
 
   /**
-   * The report view ID. One of the {@link WlReportChartViewSid} constants.
+   * The report view ID. One of the {@link \Wellnessliving\RsReportChartViewSid} constants.
    *
    * @get get
    * @var int
@@ -79,9 +65,7 @@ class DataModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Filter settings in an encoded format.
-   *
-   * Don't set this field directly. Use {@link DataModel::filterSet()} to set the filter.
+   * Filter settings in encoded format. May be decoded by {@link Core\Tool\UrlEncode\UrlDecode::decode()}.
    *
    * @get get
    * @var string
@@ -95,22 +79,6 @@ class DataModel extends WlModelAbstract
    * @var string
    */
   public $s_sort = '';
-
-  /**
-   * Sets report filters.
-   *
-   * Specific filters depend on specific reports.
-   *
-   * @param array $a_filter The report filters. The key is the filter variable name, and the value is its value.
-   * @throws WlAssertException Used in case of an assertion.
-   */
-  public function filterSet(array $a_filter)
-  {
-    if(count($a_filter))
-      $this->s_filter=UrlEncode::encode($a_filter);
-    else
-      $this->s_filter='';
-  }
 }
 
 ?>

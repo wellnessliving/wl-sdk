@@ -12,7 +12,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
   /**
    * A list of fields in the report.
    *
-   * This array is effectively a title row for the table returned in {@link TransactionAllPaymentModel}.
+   * This array is effectively a title row for the table returned in {@link \Wellnessliving\Wl\Pay\Transaction\Report\TransactionAllPaymentModel::$a_row}.
    *
    * @get result
    * @var string[]
@@ -24,7 +24,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
    *
    * This is an indexed array in which one row is also an indexed array.
    *
-   * Indexes of the columns correspond to the columns in {@link TransactionAllPaymentModel::$a_field}.
+   * Indexes of the columns correspond to the columns in {@link \Wellnessliving\Wl\Pay\Transaction\Report\TransactionAllPaymentModel::$a_field}.
    *
    * @get result
    * @var array
@@ -48,7 +48,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
   public $dl_date_end = '';
 
   /**
-   * The start date in local time to retrieve transactions for.
+   * The end date in local time to retrieve transactions for.
    *
    * @get get
    * @var string
@@ -81,6 +81,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
 
   /**
    * The page of the report, starting from 0.
+   * Each page will contain a maximum of {@link \Wellnessliving\Wl\Pay\Transaction\Report\TransactionAllPaymentModel::LIMIT} rows.
    *
    * @get get
    * @var int
@@ -90,7 +91,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
   /**
    * The report status.
    *
-   * One of {@link \Wl\Report\Generator\ReportGeneratorStatusSid} constants.
+   * One of {@link \Wellnessliving\Wl\Report\Generator\ReportGeneratorStatusSid} constants.
    *
    * @get result
    * @var int

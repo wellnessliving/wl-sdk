@@ -24,7 +24,7 @@ class OriginModel extends WlModelAbstract
    * Key is link on the site, where API is allowed.
    *
    * Value is a domain which used to make API requests.
-   * May be <tt>null</tt> and in this case the API requests are made directly to WL web server.</tt>
+   * May be <tt>null</tt> and in this case the API requests are made directly to WL web server.
    *
    * <tt>null</tt> if is not initialized yet.
    *

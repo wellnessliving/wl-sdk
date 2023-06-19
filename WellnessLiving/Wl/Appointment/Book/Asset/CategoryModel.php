@@ -5,19 +5,37 @@ namespace WellnessLiving\Wl\Appointment\Book\Asset;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about asset categories.
+ * Retrieves a list of information about asset categories on the appointment booking page.
  */
 class CategoryModel extends WlModelAbstract
 {
   /**
-   * A list of information about asset categories.
-   *
-   * This will be `null` if not set yet.
+   * A list of information about service categories.
+   * <dl>
+   *   <dt>
+   *     boolean <var>hide_application</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> - all resources are hidden in this category for White Label mobile application. <tt>false</tt> - otherwise.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_resource_type</var>
+   *   </dt>
+   *   <dd>
+   *     Resource type ID.
+   *   </dd>
+   *   <dt>
+   *     string <var>html_title</var>
+   *   </dt>
+   *   <dd>
+   *     Title of resource type.
+   *   </dd>
+   * </dl>
    *
    * @get result
-   * @var array|null
+   * @var array[]
    */
-  public $a_category = null;
+  public $a_category;
 
   /**
    * If `true`, asset categories are loaded for backend mode. Otherwise, this will be `false` if asset categories
@@ -29,24 +47,20 @@ class CategoryModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * The class tab ID to use for filtering services.
-   *
-   * This will be `null` if not set yet or if elements without a specified class tab have only been selected.
+   * The class tab key to use for filtering services.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_class_tab = null;
+  public $k_class_tab = '0';
 
   /**
-   * The ID of the location to show information for.
-   *
-   * This will be `null` if not set yet.
+   * The key of the location to show information for.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_location = null;
+  public $k_location = '0';
 }
 
 ?>

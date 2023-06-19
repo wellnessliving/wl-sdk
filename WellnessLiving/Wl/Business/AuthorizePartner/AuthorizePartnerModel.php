@@ -23,7 +23,7 @@ class AuthorizePartnerModel extends WlModelAbstract
   public $is_grant = false;
 
   /**
-   * The key of the Franchisee location to enter.
+   * The key of the franchisee location to enter.
    *
    * @get get
    * @var string

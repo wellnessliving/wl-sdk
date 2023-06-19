@@ -6,83 +6,142 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * An endpoint that displays information for certain sessions.
- * Version for validation by token.
+ * Version of {@link \Wellnessliving\Wl\Login\Attendance\AttendanceInfoModel} for access validation by security token.
  */
 class AttendanceInfoByTokenModel extends WlModelAbstract
 {
   /**
-   * The service image.
-   *
+   * Service logo information:
    * <dl>
-   *   <dt>Boolean <var>is_empty</var></dt>
-   *   <dd>Determines whether the service image is empty.</dd>
-   *   <dt>string <var>s_url</var></dt>
-   *   <dd>The URL link to the image.</dd>
+   *   <dt>
+   *     bool <var>is_empty</var>
+   *   </dt>
+   *   <dd>
+   *     Whether service image is empty.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_url</var>
+   *   </dt>
+   *   <dd>
+   *     Url link to image.
+   *   </dd>
    * </dl>
    *
    * @get result
    * @var array
    */
-  public $a_logo = [];
+  public $a_logo;
 
   /**
-   * The keys of the assets associated to this session.
+   * Assets which are bound to this session.
    *
    * @get result
    * @var string[]
    */
-  public $a_resource = [];
+  public $a_resource;
 
   /**
-   * A list of asset layouts. Every element has the next keys:
+   * Asset layouts of session:
    * <dl>
-   *   <dt>array <var>a_client</var></dt>
+   *   <dt>
+   *     array <var>a_client</var>
+   *   </dt>
    *   <dd>
-   *     A list of clients who occupy assets of the class.
-   *     Each element is a nested array. The outer key is the asset key. The value is the nested array.
-   *     The key of the nested array is the asset index and the value is the user's name.
+   *     List of clients who occupy assets of class.
+   *     It is a double nesting array.
+   *     Keys - primary keys of assets in {@link \RsResourceSql} table; sub keys - asset index;
+   *     values - sub array with keys:
+   *     <dl><dt>string <var>text_client</var></dt><dd>User's name.</dd>
+   *     <dt>string <var>uid</var></dt><dd>User's primary key.</dd></dl>
    *   </dd>
-   *   <dt>string[] <var>a_resource_available</var></dt>
-   *   <dd>The keys of the assets.</dd>
-   *   <dt>string <var>k_resource_layout</var></dt>
-   *   <dd>The key of the layout.</dd>
-   *   <dt>string <var>text_resource_type</var></dt>
-   *   <dd>The title of the asset category.</dd>
+   *   <dt>
+   *     string[] <var>a_resource_available</var>
+   *   </dt>
+   *   <dd>
+   *   </dd>
+   *   <dt>
+   *     string <var>k_resource_layout</var>
+   *   </dt>
+   *   <dd>
+   *     Key of layout in {@link \Wl\Resource\Layout\Sql} table.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_resource_type</var>
+   *   </dt>
+   *   <dd>
+   *     Title of asset category.
+   *   </dd>
    * </dl>
    *
    * @get result
    * @var array[]
    */
-  public $a_resource_layout = [];
+  public $a_resource_layout;
 
   /**
-   * A list of staff members who provide this service. Every element has the next keys:
+   * List of staff members who provide service:
    * <dl>
-   *   <dt>string <var>k_staff</var></dt>
-   *   <dd>The staff member's key.</dd>
-   *   <dt>string <var>text_firstname</var></dt>
-   *   <dd>The staff member's first name.</dd>
-   *   <dt>string <var>text_lastname</var></dt>
-   *   <dd>The staff member's last name.</dd>
+   *   <dt>
+   *     array <var>a_logo</var>
+   *   </dt>
+   *   <dd>
+   *     Data of staff member's photo. Empty if staff has no photo. Otherwise contains next keys:
+   *     <dl>
+   *       <dt>
+   *         int <var>i_height</var>
+   *       </dt>
+   *       <dd>
+   *         Height in pixels.
+   *       </dd>
+   *       <dt>
+   *         int <var>i_width</var>
+   *       </dt>
+   *       <dd>
+   *         Width in pixels.
+   *       </dd>
+   *       <dt>
+   *         string <var>url_logo</var>
+   *       </dt>
+   *       <dd>
+   *         Image URL.
+   *       </dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>
+   *     string <var>k_staff</var>
+   *   </dt>
+   *   <dd>
+   *     Staff key, primary key in {@link \RsStaffSql}.
+   *   </dd>
+   *   <dt>
+   *     string <var>html_firstname</var>
+   *   </dt>
+   *   <dd>
+   *     Staff member's first name.
+   *   </dd>
+   *   <dt>
+   *     string <var>html_lastname</var>
+   *   </dt>
+   *   <dd>
+   *     Staff member's last name.
+   *   </dd>
    * </dl>
-   *
-   * This should be empty for asset reservations.
    *
    * @get result
    * @var array[]
    */
-  public $a_staff = [];
+  public $a_staff;
 
   /**
-   * The start date and time of the class in MySQL format in UTC time.
+   * Start date of ste session in MySQL format in GMT.
    *
    * @get result
    * @var string
    */
-  public $dt_date_global = '';
+  public $dt_date_global;
 
   /**
-   * The start date and time of the class in MySQL format in the location's time zone.
+   * Start date of the class in MySQL format in local time.
    *
    * @get get
    * @var string
@@ -90,37 +149,50 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   public $dt_date_local = '';
 
   /**
-   * Determines whether notes have been added to the session.
+   * Date and time in UTC when the visit is promoted from wait list to active list.
+   * Not empty for appointments.
+   *
+   * @get result
+   * @var string
+   */
+  public $dtu_wait_promote = '';
+
+  /**
+   * Whether notes added to visit.
    *
    * @get result
    * @var bool
    */
-  public $has_note = '';
+  public $has_note;
 
   /**
-   * The type of notes.
+   * Type of note. One of {@link \Wellnessliving\Wl\Visit\Note\Sid\NoteSid} constants. <tt>false</tt> if notes not allowed.
    *
-   * This will be empty if notes are disabled for the session.
-   *
-   * One of {@link \WlVisitNoteSid} constants.
+   * @get result
+   * @var int|false
+   */
+  public $id_note;
+
+  /**
+   * Service type, one of {@link \WellnessLiving\WlServiceSid}.
    *
    * @get result
    * @var int
    */
-  public $id_note = 0;
+  public $id_service;
 
   /**
-   * The service type ID.
-   *
-   * One of {@link \WellnessLiving\WlServiceSid} constants.
+   * Whether this service be carried out in Zoom.
+   * <tt>true</tt> - If the service can be carried out in Zoom.
+   * <tt>false</tt> - otherwise.
    *
    * @get result
-   * @var int
+   * @var bool
    */
-  public $id_service = 0;
+  public $is_start_virtual_service = false;
 
   /**
-   * The appointment session key.
+   * ID of appointment to get information for.
    *
    * @get get
    * @var string
@@ -128,17 +200,23 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   public $k_appointment = '0';
 
   /**
-   * The class key.
+   * ID of business to get information for.
    *
-   * Not empty for class session only.
+   * @get get
+   * @var string
+   */
+  public $k_business = '0';
+
+  /**
+   * Class identifier, primary key in {@link \RsClassSql}. Not empty if service is class/event reservation.
    *
    * @get result
    * @var string
    */
-  public $k_class = '0';
+  public $k_class;
 
   /**
-   * The class session key.
+   * ID of class period to get information for.
    *
    * @get get
    * @var string
@@ -146,64 +224,60 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   public $k_class_period = '0';
 
   /**
-   * The location key.
+   * Location identifier, primary key in {@link \RsLocationSql}.
    *
    * @get result
    * @var string
    */
-  public $k_location = '0';
+  public $k_location;
 
   /**
-   * The resource key.
-   *
-   * Not empty for asset book only.
+   * Resource identifier, primary key in {@link \RsResourceSql}. Not empty if service is asset reservation.
    *
    * @get result
    * @var string
    */
-  public $k_resource = '0';
+  public $k_resource;
 
   /**
-   * The appointment key.
-   *
-   * Not empty for the case of an appointment only.
+   * Service identifier, primary key in {@link \RsServiceSql}. Not empty if service is appointment reservation.
    *
    * @get result
    * @var string
    */
-  public $k_service = '0';
+  public $k_service;
 
   /**
-   * The location name.
+   * Location name.
    *
    * @get result
    * @var string
    */
-  public $text_location = '';
+  public $text_location;
 
   /**
-   * The end time of the session in the format of '10:30AM'.
+   * Time when service starts in format <tt>8:00AM</tt>.
    *
    * @get result
    * @var string
    */
-  public $text_time_end = '';
+  public $text_time_end;
 
   /**
-   * The start time of the session in the format of '10:30AM'.
+   * Start time of the session in format '9:30AM'.
    *
    * @get result
    * @var string
    */
-  public $text_time_start = '';
+  public $text_time_start;
 
   /**
-   * The title of the service.
+   * Title of the appointment.
    *
    * @get result
    * @var string
    */
-  public $text_title = '';
+  public $text_title;
 
   /**
    * The security token.
@@ -211,7 +285,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $text_token = '0';
+  public $text_token = '';
 }
 
 ?>

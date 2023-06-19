@@ -34,20 +34,20 @@ class ProgramListModel extends WlModelAbstract
   public $a_wellness_program;
 
   /**
-   * The ID of the business.
+   * The key of the franchisee business.
    *
    * @get get
    * @var string
    */
-  public $k_business = null;
+  public $k_business = '';
 
   /**
-   * The ID of the promotion.
+   * The key of the promotion.
    *
    * @get get
    * @var string
    */
-  public $k_promotion = null;
+  public $k_promotion = '';
 }
 
 ?>

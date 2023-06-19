@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Wl\Video;
 
@@ -89,6 +89,15 @@ class VideoElementModel extends WlModelAbstract
   public $dtl_upload;
 
   /**
+   * Video file.
+   * This property is not used, but need for correct generate model.
+   *
+   * @post post
+   * @var array
+   */
+  public $file_video;
+
+  /**
    * The count of burned calories associated with the video.
    *
    * @get result
@@ -114,7 +123,7 @@ class VideoElementModel extends WlModelAbstract
   public $i_current_time;
 
   /**
-   * The video duration.
+   * The video duration in seconds.
    *
    * @get result
    * @post post
@@ -127,8 +136,8 @@ class VideoElementModel extends WlModelAbstract
    *
    * If the file will be uploaded in parts, its size will be set.
    *
-   * In this case, the file won't be uploaded to WellnessLiving using this endpoint and the POST method
-   * won't return the result.
+   * In this case, the file will not be uploaded to this API.
+   * Method {@link \Wellnessliving\Wl\Video\VideoElementModel::_fileVideoGet()} will not return the result.
    *
    * @post post
    * @var int|string
@@ -144,8 +153,8 @@ class VideoElementModel extends WlModelAbstract
   public $i_watch;
 
   /**
-   * {@link YesNoSid::NO} if the video is available in all locations.
-   * {@link YesNoSid::YES} if the video is available only in certain locations.
+   * {@link \Wellnessliving\Core\Sid\YesNoSid::NO} if the video is available in all locations.
+   * {@link \Wellnessliving\Core\Sid\YesNoSid::YES} if the video is available only in certain locations.
    *
    * @get result
    * @post post
@@ -249,11 +258,11 @@ class VideoElementModel extends WlModelAbstract
   public $s_command = '';
 
   /**
-   * The uploaded file ID.
-   * If the file will be uploaded in parts, the upload ID will be set.
+   * ID of the uploaded file.
+   * If the file will be uploaded in parts, upload ID will be set.
    *
-   * In this case, the file won't be uploaded to this API and the POST method won't
-   * return the result.
+   * In this case, the file will not be uploaded to this API.
+   * Method {@link \Wellnessliving\Wl\Video\VideoElementModel::_fileVideoGet()} will not return the result.
    *
    * @post post
    * @var string

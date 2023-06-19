@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Wl\Login;
 
-use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -14,21 +13,125 @@ use WellnessLiving\WlModelAbstract;
 class LoginModel extends WlModelAbstract
 {
   /**
+   * List of information about users:
+   * <dl>
+   *   <dt>
+   *     int <var>id_gender</var>
+   *   </dt>
+   *   <dd>
+   *     User's gender. One of {@link \WellnessLiving\Core\a\AGenderSid} constants.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_staff</var>
+   *   </dt>
+   *   <dd>
+   *     User's key as staff member.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_first_name</var>
+   *   </dt>
+   *   <dd>
+   *     User first name.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_last_name</var>
+   *   </dt>
+   *   <dd>
+   *     First letter of user last name.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_mail_client</var>
+   *   </dt>
+   *   <dd>
+   *     Client`s mail.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_mail_staff</var>
+   *   </dt>
+   *   <dd>
+   *     Staff`s mail.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_name_first_staff</var>
+   *   </dt>
+   *   <dd>
+   *     Staff`s first name.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_name_full_client</var>
+   *   </dt>
+   *   <dd>
+   *     Full client name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login. See
+   *     description of the {@link Wl\User\Info\UserInfo::nameFullText()} method.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_name_full_staff</var>
+   *   </dt>
+   *   <dd>
+   *     Full staff name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login.
+   *   </dd>`
+   *   <dt>
+   *     string <var>text_name_last_staff</var>
+   *   </dt>
+   *   <dd>
+   *     Staff`s last name.
+   *   </dd>
+   *   <dt>
+   *     string <var>url_photo</var>
+   *   </dt>
+   *   <dd>
+   *     User photo URL.
+   *   </dd>
+   * </dl>
+   *
+   * @post result
+   * @var array[]
+   */
+  public $a_login;
+
+  /**
+   * Whether this user can send postcards.
+   *
+   * @get result
+   * @var bool
+   */
+  public $can_postcard;
+
+  /**
+   * The height of the requested photo.
+   *
+   * @get get
+   * @post get
+   * @var int
+   */
+  public $i_photo_height = 0;
+
+  /**
+   * The width of the requested photo.
+   *
+   * @get get
+   * @post get
+   * @var int
+   */
+  public $i_photo_width = 0;
+
+  /**
    * The gender ID. It will be one of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
    *
    * @get result
    * @var int
    */
-  public $id_gender = AGenderSid::FEMALE;
+  public $id_gender;
 
   /**
    * The key of the business. Users can be in multiple businesses.
    * This can be left as `null` to retrieve system-wide information.
    *
    * @get get
+   * @post get
    * @var string
    */
-  public $k_business = '';
+  public $k_business;
 
   /**
    * The user's staff key for the specified business.
@@ -36,7 +139,7 @@ class LoginModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $k_staff = '0';
+  public $k_staff;
 
   /**
    * The first name of the user.
@@ -44,7 +147,7 @@ class LoginModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $s_first_name = '';
+  public $s_first_name;
 
   /**
    * The surname of the user.
@@ -52,7 +155,7 @@ class LoginModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $s_last_name = '';
+  public $s_last_name;
 
   /**
    * The client`s mailing address.
@@ -64,7 +167,7 @@ class LoginModel extends WlModelAbstract
 
   /**
    * The staff member's mailing address.
-   * This will be set if the user is a staff member ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   * This will be set if the user is a staff member ({@link \Wellnessliving\Wl\Login\LoginModel::$k_staff}).
    *
    * @get result
    * @var string
@@ -73,7 +176,7 @@ class LoginModel extends WlModelAbstract
 
   /**
    * The staff member's first name.
-   * This will be set if the user is a staff member ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   * This will be set if the user is a staff member ({@link \Wellnessliving\Wl\Login\LoginModel::$k_staff}).
    *
    * @get result
    * @var string
@@ -93,7 +196,7 @@ class LoginModel extends WlModelAbstract
    * The staff member's full name.
    * The user login is returned in cases where neither the first name nor the last name have been specified.
    * An empty string is returned in cases where neither the first name, last name, nor login have been specified.
-   * This will be set if the user is a staff member ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   * This will be set if the user is a staff member ({@link \Wellnessliving\Wl\Login\LoginModel::$k_staff}).
    *
    * @get result
    * @var string
@@ -102,7 +205,7 @@ class LoginModel extends WlModelAbstract
 
   /**
    * The staff member's last name.
-   * This will be set if the user is a staff member ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   * This will be set if the user is a staff member ({@link \Wellnessliving\Wl\Login\LoginModel::$k_staff}).
    *
    * @get result
    * @var string
@@ -110,22 +213,32 @@ class LoginModel extends WlModelAbstract
   public $text_name_last_staff;
 
   /**
-   * The ID of the user.
+   * List of users to get information for. Serialized as JSON string.
    *
-   * This will be `null` if not set yet.
+   * <tt>null</tt> for mode of single user.
    *
-   * @get get
+   * @post post
    * @var string|null
    */
-  public $uid = null;
+  public $text_uid;
 
   /**
-   * The URL where the user’s photo can be retrieved.
+   * The key of the user.
+   *
+   * `null` on case when is walk-in client.
+   *
+   * @get get,result
+   * @var string|null
+   */
+  public $uid = '0';
+
+  /**
+   * The URL where the user photo can be retrieved.
    *
    * @get result
    * @var string
    */
-  public $url_photo='';
+  public $url_photo;
 }
 
 ?>

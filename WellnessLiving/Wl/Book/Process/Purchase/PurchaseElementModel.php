@@ -13,43 +13,37 @@ class PurchaseElementModel extends WlModelAbstract
    * A list of taxes for one purchase item. Keys - tax keys (primary key in {@link \RsTaxSql} table); values - tax amount.
    *
    * @get result
-   * @var array|null
+   * @var array
    */
-  public $a_tax = null;
+  public $a_tax;
 
   /**
    * The number of sessions which are booked simultaneously.
    *
-   * <tt>null</tt> if not set.
-   *
    * @get get
-   * @var int|null
+   * @var int
    */
-  public $i_session = null;
+  public $i_session = 0;
 
   /**
-   * The ID of the purchase item type. One of {@link \RsPurchaseItemSid}.
-   *
-   * <tt>null</tt> if not set yet.
+   * The ID of the purchase item type. One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid}.
    *
    * @get get
-   * @var int|null
+   * @var int
    */
-  public $id_purchase_item = null;
+  public $id_purchase_item = 0;
 
   /**
-   * The ID of the purchase item in the database.
-   * The name of the table in the database depends on {@link \WellnessLiving\Wl\Book\Process\Purchase\PurchaseElementModel::$id_purchase_item}.
-   *
-   * <tt>null</tt> if not set yet.
+   * The key of the purchase item in the database.
+   * The name of the table in the database depends on {@link \Wellnessliving\Wl\Book\Process\ProcessPurchaseElementModel::$id_purchase_item}.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_id = null;
+  public $k_id = '0';
 
   /**
-   * The ID of the location in which the purchase is made.
+   * The key of the location in which the purchase is made.
    * This is also the booking process location.
    *
    * @get get
@@ -60,67 +54,96 @@ class PurchaseElementModel extends WlModelAbstract
   /**
    * The key of the user's prize.
    * Not empty only if the user wants to make a free visit from the prize.
-   * The primary key in {@link RsLoginPrizeSql} table.
    *
-   * <tt>null</tt> if not set.
+   * @get get
+   * @var string
+   */
+  public $k_login_prize = '0';
+
+  /**
+   * Installment template key.
+   * This property is optional. `null` if installment plan doesn't exist for bought item.
+   * `0` if installment plan doesn't selected for bought item from the list of installment plans.
    *
    * @get get
    * @var string|null
    */
-  public $k_login_prize = null;
+  public $k_pay_installment_template;
 
   /**
    * The cost of one purchase item (with taxes).
    *
    * @get result
-   * @var null
+   * @var string
    */
-  public $m_cost = null;
+  public $m_cost;
 
   /**
    * The amount of the whole discount of one purchase item.
    *
    * @get result
-   * @var null
+   * @var string
    */
-  public $m_discount = null;
+  public $m_discount;
+
+  /**
+   * Amount of discount for discount code of 1 purchase item.
+   *
+   * @get result
+   * @var string
+   */
+  public $m_discount_code;
 
   /**
    * The discount amount for the client type of one purchase item.
    *
    * @get result
-   * @var null
+   * @var string
    */
-  public $m_discount_login = null;
+  public $m_discount_login;
 
   /**
    * The price of the purchase item (with or without taxes, depending on regional standards).
    *
    * @get result
-   * @var null
+   * @var string
    */
-  public $m_price = null;
+  public $m_price;
 
   /**
-   * The amount of taxes for the purchase item.
+   * Remaining price of 1 purchase item. (With or without taxes. It depends on regional standards.)
    *
    * @get result
-   * @var null
+   * @var string
    */
-  public $m_tax = null;
+  public $m_price_remaining;
+
+  /**
+   * Amount of subtotal for 1 purchase item.
+   *
+   * @get result
+   * @var string
+   */
+  public $m_subtotal;
+
+  /**
+   * The amount of taxes for the one purchase item.
+   *
+   * @get result
+   * @var string
+   */
+  public $m_tax;
 
   /**
    * The discount code.
    *
-   * <tt>null</tt> if not set or for multiple purchase item mode.
-   *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $text_discount_code = null;
+  public $text_discount_code = '';
 
   /**
-   * The key of the current user. The primary key in the table {@link \PassportLoginSql}.
+   * The key of the current user.
    *
    * @get get
    * @var string

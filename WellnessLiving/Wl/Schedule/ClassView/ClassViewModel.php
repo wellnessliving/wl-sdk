@@ -7,15 +7,24 @@ use WellnessLiving\WlModelAbstract;
 /**
  * An endpoint that gets information about a specified class session.
  *
- * A class listing can be retrieved from the {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel} endpoint.
+ * A class listing can be retrieved from the {@link \Wellnessliving\Wl\Schedule\ClassList\ClassListModel} endpoint.
  */
 class ClassViewModel extends WlModelAbstract
 {
   /**
+   * Asset list data.
+   *
+   * @get result
+   * @post result
+   * @var array[]|null
+   */
+  public $a_asset;
+
+  /**
    * Detailed information about the class. When loaded, it contains the following fields:
    * <dl>
    *   <dt>array <var>a_image</var></dt>
-   *   <dd>Information describing a class’s image.<dl>
+   *   <dd>Information describing a class image.<dl>
    *     <dt>int <var>i_height</var></dt>
    *     <dd>The image height.</dd>
    *     <dt>int <var>i_width</var></dt>
@@ -73,9 +82,10 @@ class ClassViewModel extends WlModelAbstract
    * This will be `null` if data isn't loaded yet.
    *
    * @get result
+   * @post result
    * @var array|null
    */
-  public $a_class = null;
+  public $a_class;
 
   /**
    * Location data.
@@ -83,35 +93,49 @@ class ClassViewModel extends WlModelAbstract
    * This will be `null` if data isn't loaded yet.
    *
    * @get result
+   * @post result
    * @var array|null
    */
-  public $a_location = null;
+  public $a_location;
 
   /**
    * A list of sessions to get information for. Every element has the following keys:
-   * <dl><dt>string <var>dt_date</var></dt><dd>The date/time of the session in UTC.</dd>
-   * <dt>string <var>k_class_period</var></dt><dd>The session key.</dd></dl>
-   * This array will be `null` if requesting a single session.
+   * <dl>
+   *   <dt>string <var>dt_date</var></dt>
+   *   <dd>The date/time of the session in UTC.</dd>
+   *   <dt>string <var>k_class_period</var></dt>
+   *   <dd>The session key.</dd>
+   * </dl>
+   *
+   * `null` if requesting a single session.
    *
    * @get get
+   * @post get
    * @var array[]|null
    */
-  public $a_session_request = null;
+  public $a_session_request;
 
   /**
    * A list of sessions with information, received in a multiple session mode.
    * Every element has the following keys:
-   * <dl><dt>array <var>a_class</var></dt><dd>Class information.</dd>
-   * <dt>array <var>a_location</var></dt><dd>Location information.</dd>
-   * <dt>array <var>a_staff</var></dt><dd>Staff member information.</dd>
-   * <dt>array <var>dt_date</var></dt><dd>The session date/time in UTC.</dd>
-   * <dt>array <var>k_class_period</var></dt><dd>The session key.</dd></dl>
+   * <dl>
+   *   <dt>array <var>a_class</var></dt>
+   *   <dd>Class information.</dd>
+   *   <dt>array <var>a_location</var></dt>
+   *   <dd>Location information.</dd>
+   *   <dt>array <var>a_staff</var></dt>
+   *   <dd>Staff member information.</dd>
+   *   <dt>array <var>dt_date</var></dt>
+   *   <dd>The session date/time in UTC.</dd>
+   *   <dt>array <var>k_class_period</var></dt>
+   *   <dd>The session key.</dd>
+   * </dl>
    *
    * @get result
    * @post result
-   * @var array[]|null
+   * @var array[]
    */
-  public $a_session_result = null;
+  public $a_session_result;
 
   /**
    * Staff member list data.
@@ -119,9 +143,10 @@ class ClassViewModel extends WlModelAbstract
    * This will be `null` if data isn't loaded yet.
    *
    * @get result
-   * @var array|null
+   * @post result
+   * @var array[]|null
    */
-  public $a_staff = null;
+  public $a_staff;
 
   /**
    * A list of classes and events that clients should visit before this one.
@@ -144,39 +169,40 @@ class ClassViewModel extends WlModelAbstract
 
   /**
    * The date/time of the session.
-   * This endpoint doesn't test if this value corresponds to an actual class. Any date/time will return a result.
    *
    * @get get
-   * @var string|null
+   * @post get
+   * @var string
    */
-  public $dt_date = null;
+  public $dt_date = '';
 
   /**
    * The class period key.
    *
    * @get get
-   * @var string|null
+   * @post get
+   * @var string
    */
-  public $k_class_period = null;
+  public $k_class_period = '0';
 
   /**
    * A list of sessions to get information for.
-   * A serialized array. See {@link ClassViewModel::$a_session_request} for the array structure.
+   * A serialized array. See {@link \Wellnessliving\Wl\Schedule\ClassView\ClassViewModel::$a_session_request} for the array structure.
    * Serialization and sending by POST is necessary to send big lists.
    *
    * @post post
-   * @var string|null
+   * @var string
    */
-  public $s_session_request = null;
+  public $s_session_request = '';
 
   /**
    * The user key.
    *
    * @get get
    * @post get
-   * @var string|null
+   * @var string
    */
-  public $uid = null;
+  public $uid = '0';
 }
 
 ?>

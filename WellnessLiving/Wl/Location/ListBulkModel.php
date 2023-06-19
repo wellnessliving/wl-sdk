@@ -77,12 +77,12 @@ class ListBulkModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public $a_location = [];
+  public $a_location;
 
   /**
    * A list of models with full information about each location.
    *
-   * Every element is an object of the {@link \WellnessLiving\Wl\Location\View\ViewModel}.
+   * Every element is an object of the {@link \Wellnessliving\Wl\Location\View\ViewModel}.
    *
    * @get result
    * @var array[]

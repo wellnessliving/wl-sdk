@@ -24,7 +24,7 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public $a_photo = [];
+  public $a_photo;
 
   /**
    * The date the user was added, given in UTC time.
@@ -32,7 +32,7 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $dt_add = '';
+  public $dt_add;
 
   /**
    * The user's birthday. This will be `null` if the birthday isn't set yet.
@@ -40,7 +40,7 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $dt_birth = '';
+  public $dt_birth;
 
   /**
    * The ID of the user's gender. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
@@ -50,25 +50,25 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var int
    */
-  public $id_gender = 0;
+  public $id_gender;
 
   /**
    * This will be `true` if the user has never made purchases or reservations in this business.
    * Otherwise, this will be `false`.
    *
    * @get result
-   * @var int
+   * @var bool
    */
-  public $is_customer_new = [];
+  public $is_customer_new;
 
   /**
    * This will be `true` if the user is a traveler. A traveler is someone whose home location isn't the current location
    * in the Enterprise business.
    *
    * @get result
-   * @var int
+   * @var bool
    */
-  public $is_traveller = [];
+  public $is_traveller;
 
   /**
    * The key of the business.
@@ -85,7 +85,7 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $k_login_type = [];
+  public $k_login_type;
 
   /**
    * The user's first name.
@@ -93,7 +93,7 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $s_first_name = [];
+  public $s_first_name;
 
   /**
    * The user's last name.
@@ -101,7 +101,7 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $s_last_name = [];
+  public $s_last_name;
 
   /**
    * The user's email address.
@@ -109,7 +109,7 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $s_mail = [];
+  public $s_mail;
 
   /**
    * The user's member ID in the business. Also referred to as the client ID in the client's profile. This value
@@ -118,7 +118,7 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $s_member = [];
+  public $s_member;
 
   /**
    * The user's phone number.
@@ -126,7 +126,7 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $s_phone = [];
+  public $s_phone;
 
   /**
    * The key of the user.
@@ -142,8 +142,7 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $url_photo = [];
-
+  public $url_photo;
 }
 
 ?>

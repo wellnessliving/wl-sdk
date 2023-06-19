@@ -10,14 +10,37 @@ use WellnessLiving\WlModelAbstract;
 class FlagModel extends WlModelAbstract
 {
   /**
-   * <tt>true</tt> if the user is flagged, <tt>false</tt> if otherwise.
-   *
-   * <tt>null</tt> until loaded.
+   * Array with structure:<dl>
+   *   <dt>string <var>uid</var></dt>
+   *   <dd>Key:</dd>
+   *   <dt>bool <var>is_flag</var></dt>
+   *   <dd>Value: <tt>true</tt> if user is flagged; <tt>false</tt> otherwise.</dd>
+   * </dl>
+   * <tt>null</tt> until loaded or when <var>a_uid</var> was not set.
    *
    * @get result
-   * @var boolean
+   * @var array
    */
-  public $is_flag = null;
+  public $a_flag;
+
+  /**
+   * User keys. Each element is a primary key in the {@link \PassportLoginSql} table.
+   * <tt>null</tt> if not set.
+   *
+   * @get get
+   * @var string[]|null
+   */
+  public $a_uid;
+
+  /**
+   * <tt>true</tt> if the user is flagged, <tt>false</tt> if otherwise.
+   *
+   * <tt>null</tt> until loaded or when {@link \Wellnessliving\Wl\Location\Flag\FlagModel::$a_uid} was not set.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_flag;
 
   /**
    * The location key.
@@ -25,15 +48,16 @@ class FlagModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $k_location = '0';
+  public $k_location;
 
   /**
    * The user's key.
+   * <tt>null</tt> if not set.
    *
    * @get get
-   * @var string
+   * @var string|null
    */
-  public $uid = '0';
+  public $uid;
 }
 
 ?>

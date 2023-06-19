@@ -12,17 +12,17 @@ class AutymateActivateModel extends WlModelAbstract
   /**
    * The mode of the request.
    *
-   * One of the {@link \WellnessLiving\Wl\Integration\Autymate\AutymateAccessModeSid} constants.
+   * One of {@link \Wellnessliving\Wl\Integration\Autymate\AutymateAccessModeSid} constants.
    *
    * @get get
    * @var int
    */
-  public $id_mode = AutymateAccessModeSid::ENROLL;
+  public $id_mode = 1;
 
   /**
-   * The new status of the enrollment. If 0, the current status is returned.
+   * The new status of the enrollment. If `0`, the current status is returned.
    *
-   * One of {@link \WellnessLiving\Wl\Integration\Autymate\AutymateStatusSid} constants.
+   * One of {@link \Wellnessliving\Wl\Integration\Autymate\AutymateStatusSid} constants.
    *
    * @get get,result
    * @var int
@@ -53,4 +53,5 @@ class AutymateActivateModel extends WlModelAbstract
    */
   public $uid = '0';
 }
+
 ?>

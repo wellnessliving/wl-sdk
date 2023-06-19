@@ -11,29 +11,43 @@ class DataModel extends WlModelAbstract
 {
   /**
    * List of all business services and their availability data.
+   * Array, where keys are sids from {@link \Wellnessliving\Wl\Service\ServiceSid} and values are boolean:
+   * <tt>true</tt> - if service is enabled in the business, <tt>false</tt> otherwise.
    *
    * @get result
-   * @var array Array, where keys are sids from {@link \WellnessLiving\WlServiceSid} and values are boolean:
-   * <tt>true</tt> - if service is enabled in the business, <tt>false</tt> otherwise.
+   * @var array
    */
-  public $a_service_list = array();
+  public $a_service_list;
 
   /**
-   * The float values of predefined tips.
-   *
-   * <tt>null</tt> until loaded.
+   * The list of predefined tips in percentages.
    *
    * @get result
-   * @var float[]|null
+   * @var float[]
    */
-  public $a_tip_predefine = null;
+  public $a_tip_predefine;
+
+  /**
+   * Maximum business image height.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_logo_height = 100;
+
+  /**
+   * Maximum business image width.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_logo_width = 220;
 
   /**
    * Business category ID of the business.
    *
-   * A constant from {@link BusinessCategorySid}.
-   *
    * @get result
+   * @see \Wellnessliving\RsBusinessCategorySid
    * @var int
    */
   public $id_category;
@@ -42,9 +56,22 @@ class DataModel extends WlModelAbstract
    * The Locale ID, used to search geo items.
    *
    * @get result
+   * @see \Wellnessliving\LocaleSid
    * @var int
-  */
-  public $id_locale = 0;
+   */
+  public $id_locale;
+
+  /**
+   * Rank type ID of the business.
+   *
+   * Constant from {@link \Wellnessliving\RsRankTypeSid}.
+   *
+   * <tt>null</tt> if business does not have a rank type.
+   *
+   * @get result
+   * @var int|null
+   */
+  public $id_rank_type;
 
   /**
    * The region ID. This indicates the data center where the information about the business is stored.
@@ -61,44 +88,69 @@ class DataModel extends WlModelAbstract
   public $id_region;
 
   /**
-   * <tt>true</tt> if clients can enter progress log; <tt>false</tt> otherwise.
-   *
-   * <tt>null</tt> until loaded.
+   * Whether surcharges to client payments are enabled in the business.
    *
    * @get result
-   * @var bool|null
+   * @var bool
    */
-  public $is_progress_client = null;
+  public $is_apply_surcharge = false;
+
+  /**
+   * Whether business is multiple location.
+   * Including inactive locations.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_location_multiple;
+
+  /**
+   * <tt>true</tt> if clients can enter progress log; <tt>false</tt> otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_progress_client;
 
   /**
    * <tt>true</tt> if verification of the progress log by a staff member is required; <tt>false</tt> otherwise.
    *
-   * <tt>null</tt> until loaded.
+   * @get result
+   * @var bool
+   */
+  public $is_progress_verify;
+
+  /**
+   * Whether quizzes available in the business.
    *
    * @get result
-   * @var bool|null
+   * @var bool
    */
-  public $is_progress_verify = null;
+  public $is_quiz_available = false;
 
   /**
    * <tt>true</tt> if tips are available in the business; <tt>false</tt> otherwise.
    *
-   * <tt>null</tt> until loaded.
-   *
    * @get result
-   * @var bool|null
+   * @var bool
    */
-  public $is_tip = null;
+  public $is_tip;
 
   /**
-   * <tt>true</tt> if the business has the “No tip” option displayed; <tt>false</tt> otherwise.
-   *
-   * <tt>null</tt> until loaded.
+   * <tt>true</tt> if the business has the "No tip" option displayed; <tt>false</tt> otherwise.
    *
    * @get result
-   * @var bool|null
+   * @var bool
    */
-  public $is_tip_deny = null;
+  public $is_tip_deny;
+
+  /**
+   * <tt>true</tt> if client must to sign after selecting the tip; <tt>false</tt> otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_tip_sign;
 
   /**
    * The business key.
@@ -109,56 +161,57 @@ class DataModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The business key obtained by the security token.
+   * The business key obtained by the security token {@link \Wellnessliving\Wl\Business\DataModel::$text_token}.
+   * Client side can use this way if it does not know business key but knows authorization token.
    *
    * @get result
    * @var string
    */
-  public $k_business_token = '0';
+  public $k_business_token;
 
   /**
    * The currency key of the given business or system currency if the business didn't pass.
    *
-   * <tt>null</tt> until loaded.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $k_currency = null;
+  public $k_currency;
 
   /**
    * The reply-to email address.
    *
-   * <tt>null</tt> until loaded.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $s_reply_mail = null;
+  public $s_reply_mail;
 
   /**
    * The reply-to business name.
    *
-   * <tt>null</tt> until loaded.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $s_reply_name = null;
+  public $s_reply_name;
 
   /**
    * The business address.
    *
-   * <tt>null</tt> until loaded.
+   * @get result
+   * @var string
+   */
+  public $text_office_address;
+
+  /**
+   * The business title.
    *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $text_office_address = null;
+  public $text_title;
 
   /**
    * The authorization token.
-   * This may be used instead of {@link \WellnessLiving\Wl\Business\DataModel::$k_business} to
+   * This may be used instead of {@link \Wellnessliving\Wl\Business\DataModel::$k_business} to
    * identify a business.
    *
    * @get get
@@ -167,54 +220,79 @@ class DataModel extends WlModelAbstract
   public $text_token = '';
 
   /**
-   * The business title.
-   *
-   * <tt>null</tt> until loaded.
-   *
-   * @get result
-   * @var string|null
-   */
-  public $text_title = null;
-
-  /**
    * The Facebook page.
    *
-   * <tt>null</tt> until loaded.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $url_facebook = null;
+  public $url_facebook;
 
   /**
    * The Google+ page.
    *
-   * <tt>null</tt> until loaded.
+   * @get result
+   * @var string
+   */
+  public $url_google;
+
+  /**
+   * Instagram page.
+   * {@link Wl\Business\BusinessInfo::$url_instagram}.
    *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $url_google = null;
+  public $url_instagram = '';
+
+  /**
+   * Linkedin profile.
+   * {@link Wl\Business\BusinessInfo::$url_linkedin}.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_linkedin = '';
 
   /**
    * The logo URL.
    *
-   * <tt>null</tt> until loaded.
+   * @get result
+   * @var string
+   */
+  public $url_logo;
+
+  /**
+   * Image stub in case the business logo is not loaded.
    *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $url_logo = null;
+  public $url_logo_empty;
 
   /**
    * The Twitter page.
    *
-   * <tt>null</tt> until loaded.
+   * @get result
+   * @var string
+   */
+  public $url_twitter;
+
+  /**
+   * Business website.
    *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $url_twitter = null;
+  public $url_website;
+
+  /**
+   * YouTube website.
+   * {@link Wl\Business\BusinessInfo::$url_youtube}.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_youtube = '';
 }
 
 ?>

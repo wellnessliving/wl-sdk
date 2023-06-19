@@ -12,7 +12,58 @@ class ScheduleListModel extends WlModelAbstract
   /**
    * The sessions present on the business schedule. These are sorted chronologically in ascending order.
    * Every element has the following keys:
+   *
    * <dl>
+   *   <dt>
+   *     string[] <var>a_note</var>
+   *   </dt>
+   *   <dd>
+   *     List of notes.
+   *   </dd>
+   *   <dt>
+   *     array <var>a_appointment_visit_info</var>
+   *   </dt>
+   *   <dd>
+   *     Additional visit information about this appointment. Empty array if it's a class.
+   *     <dl>
+   *       <dt>
+   *         int <var>id_visit</var>
+   *       </dt>
+   *       <dd>
+   *         Visit id. One of {@link \Wellnessliving\Wl\Visit\VisitSid} constants.
+   *       </dd>
+   *       <dt>
+   *         bool <var>is_confirmed</var>
+   *       </dt>
+   *       <dd>
+   *         `true` means that appointment was requested and confirmed by the staff.
+   *       </dd>
+   *       <dt>
+   *         bool <var>is_deny</var>
+   *       </dt>
+   *       <dd>
+   *         `true` means that appointment was requested and denied by the staff.
+   *       </dd>
+   *       <dt>
+   *         bool <var>is_notify_request_accept</var>
+   *       </dt>
+   *       <dd>
+   *         `true` means that the client will receive a notification, if appointment will be confirmed by the staff.
+   *       </dd>
+   *       <dt>
+   *         bool <var>is_notify_request_deny</var>
+   *       </dt>
+   *       <dd>
+   *         `true` means that the client will receive a notification, if appointment will be denied by the staff.
+   *       </dd>
+   *       <dt>
+   *         bool <var>is_request</var>
+   *       </dt>
+   *       <dd>
+   *         `true` means that appointment was requested, but not confirmed by the staff.
+   *       </dd>
+   *     </dl>
+   *   </dd>
    *   <dt>
    *     string[] <var>a_resource</var>
    *   </dt>
@@ -24,12 +75,46 @@ class ScheduleListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     A list of staff members who will conduct the session.
+   *     Deprecated, use <var>a_staff_list</var> instead.
+   *   </dd>
+   *   <dt>
+   *     array <var>a_staff_info</var>
+   *   </dt>
+   *   <dd>
+   *     Information about staff members who conduct this session. The keys are primary keys in {@link \RsStaffSql} table.
+   *     Values are array with data:
+   *     <dl>
+   *       <dt>
+   *         string <var>text_staff</var>
+   *       </dt>
+   *       <dd>
+   *         Staff full name.
+   *       </dd>
+   *       <dt>
+   *         bool <var>is_staff_change</var>
+   *       </dt>
+   *       <dd>
+   *         <tt>true</tt> means staff is substituted, <tt>false</tt> simple staff member.
+   *       </dd>
+   *       <dt>
+   *         string <var>k_staff</var>
+   *       </dt>
+   *       <dd>
+   *         Staff key.
+   *       </dd>
+   *     </dl>
    *   </dd>
    *   <dt>
    *     string[] <var>a_user</var>
    *   </dt>
    *   <dd>
    *     For appointments, this is a list of the names of users who are scheduled to attend the session.
+   *   </dd>
+   *   <dt>
+   *     string[] <var>a_virtual_location</var>
+   *   </dt>
+   *   <dd>
+   *     List of virtual locations. Each value is primary key in {@link \RsLocationSql} table.
    *   </dd>
    *   <dt>
    *     string <var>dt_date</var>
@@ -87,28 +172,58 @@ class ScheduleListModel extends WlModelAbstract
    *     For example, a class starting at 10:30 in the morning local time will have an `i_start` value of 630.
    *   </dd>
    *   <dt>
+   *     int <var>i_wait</var>
+   *   </dt>
+   *   <dd>
+   *     Count clients on waitlist.
+   *   </dd>
+   *   <dt>
    *     int <var>id_service</var>
    *   </dt>
    *   <dd>
-   *     The key of the service type. One of the {@link \WellnessLiving\WlServiceSid} constants.
+   *     The ID of the service type. One of {@link \WellnessLiving\WlServiceSid} constants.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_arrive</var>
+   *   </dt>
+   *   <dd>
+   *     For appointments: <tt>true</tt> if user has checked-in; <tt>false</tt> otherwise.
+   *     For classes always <tt>null</tt>.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_pay</var>
+   *   </dt>
+   *   <dd>
+   *     For appointments: <tt>true</tt> if appointment is paid; <tt>false</tt> otherwise.
+   *     For classes always <tt>null</tt>.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_repeat</var>
+   *   </dt>
+   *   <dd>
+   *     For appointments: <tt>true</tt> if appointment is recurring; <tt>false</tt> otherwise.
+   *     For classes always <tt>null</tt>.
    *   </dd>
    *   <dt>
    *     string <var>k_appointment</var>
    *   </dt>
    *   <dd>
-   *     The appointment key. If the session isn't an appointment, this will be `0`.
+   *     The appointment key.
+   *     If the session isn't an appointment, this will be `0`.
    *   </dd>
    *   <dt>
    *     string <var>k_class</var>
    *   </dt>
    *   <dd>
-   *     The class key. If the session isn't a class, this will be `0`.
+   *     The class key.
+   *     If the session isn't a class, this will be `0`.
    *   </dd>
    *   <dt>
    *     string <var>k_class_period</var>
    *   </dt>
    *   <dd>
-   *     The class period key. If the session isn't a class, this will be `0`.
+   *     The class period key.
+   *     If the session isn't a class, this will be `0`.
    *   </dd>
    *   <dt>
    *     string <var>k_location</var>
@@ -130,6 +245,12 @@ class ScheduleListModel extends WlModelAbstract
    *     The name of the session.
    *   </dd>
    *   <dt>
+   *     string <var>text_alert</var>
+   *   </dt>
+   *   <dd>
+   *     Alert message.
+   *   </dd>
+   *   <dt>
    *     string <var>text_color_background</var>
    *   </dt>
    *   <dd>
@@ -141,12 +262,24 @@ class ScheduleListModel extends WlModelAbstract
    *   <dd>
    *     The border color in hex representation as used on WellnessLiving.
    *   </dd>
+   *   <dt>
+   *     bool<var>is_virtual_service</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> - If the business has at least one virtual service, <tt>false</tt> - otherwise.
+   *   </dd>
+   *   <dt>
+   *     string<var>url_image</var>
+   *   </dt>
+   *   <dd>
+   *     URL to image. Empty if image not exist.
+   *   </dd>
    * </dl>
    *
    * @get result
    * @var array[]
    */
-  public $a_schedule = [];
+  public $a_schedule;
 
   /**
    * The end date of the range from which the list of schedule sessions should be retrieved.
@@ -177,20 +310,34 @@ class ScheduleListModel extends WlModelAbstract
   public $dt_date = '';
 
   /**
-   * The key of the business to show information for.
+   * <tt>true</tt> - If the business has at least one virtual service, <tt>false</tt> - otherwise.
    *
-   * @get get
-   * @var string
+   * @get result
+   * @var bool
    */
-  public $k_business = '0';
+  public $is_virtual_service;
 
   /**
-   * The key of the user to show information for.
+   * Business key.
    *
+   * @delete get
    * @get get
+   * @post get
+   * @put get
    * @var string
    */
-  public $uid = '0';
+  public $k_business;
+
+  /**
+   * User key.
+   *
+   * @delete get
+   * @get get
+   * @post get
+   * @put get
+   * @var string
+   */
+  public $uid;
 }
 
 ?>

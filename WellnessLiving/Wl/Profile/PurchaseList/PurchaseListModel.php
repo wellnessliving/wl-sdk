@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Wl\Profile\PurchaseList;
 
-use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -126,29 +125,25 @@ class PurchaseListModel extends WlModelAbstract
    * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
-  public $a_purchase = [];
+  public $a_purchase;
 
   /**
    * The key of a business to show information for.
    *
-   * This will be `null` if not set yet.
-   *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_business = null;
+  public $k_business = '0';
 
   /**
    * The key of a user to show information for.
    *
-   * This will be `null` if not set yet.
-   *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $uid = null;
+  public $uid = '0';
 }
 
 ?>

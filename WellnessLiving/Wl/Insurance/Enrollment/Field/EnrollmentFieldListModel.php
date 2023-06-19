@@ -14,29 +14,32 @@ use WellnessLiving\WlModelAbstract;
 class EnrollmentFieldListModel extends WlModelAbstract
 {
   /**
-   * A list of reimbursement account fields. If the program doesn't require reimbursement,
-   * this list will be empty. The description of the list of fields is the same as <var>$a_field</var>.
+   * Reimbursement account information.
    *
-   * Validation is performed by using the POST method.
+   * Keys - field name.
+   * Values - value entered by user.
+   *
+   * Validation is performed by {@link Wl\Insurance\Enrollment\Field\EnrollmentFieldList::setAccountForm()} method.
    *
    * @post post
+   * @put post
    * @var array
    */
-  public $a_account;
+  public $a_account = [];
 
   /**
-   * The list of fields that the user has filled in for enrollment.
-   * The array keys will be the field key. The array values are the values entered by the user.
+   * List of fields that the user has filled in for enrollment.
    *
-   * Keys refer specifically to field keys.
-   * Values refer specifically to values entered by the user.
+   * Keys - field key in the database. See {@link \Wl\Integration\Curves\PartnerFieldSql} table for more details.
+   * Values - value entered by user.
    *
-   * Validation is performed using the POST method.
+   * Validation is performed by {@link Wl\Insurance\Enrollment\Field\EnrollmentFieldList::setFieldForm()} method.
    *
    * @post post
+   * @put post
    * @var array
    */
-  public $a_field;
+  public $a_field = [];
 
   /**
    * The partner field list.
@@ -95,22 +98,24 @@ class EnrollmentFieldListModel extends WlModelAbstract
   public $a_field_list;
 
   /**
-   * The business key.
+   * The key of the business in which the enrollment is performed.
    *
    * @get get
    * @post get
+   * @put get
    * @var string
    */
-  public $k_business;
+  public $k_business = '';
 
   /**
-   * The Wellness Program insurer key.
+   * "Wellness Program" key.
    *
    * @get get
    * @post get
+   * @put get
    * @var string
    */
-  public $k_wellness_program;
+  public $k_wellness_program = '';
 }
 
 ?>

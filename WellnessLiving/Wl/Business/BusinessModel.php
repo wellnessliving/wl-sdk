@@ -10,9 +10,10 @@ use WellnessLiving\WlModelAbstract;
 class BusinessModel extends WlModelAbstract
 {
   /**
-   * The business locale. One of {@link \WellnessLiving\Core\Locale\LocaleSid} constants.
+   * The business locale.
    *
    * @post post
+   * @see \Wellnessliving\Core\Locale\LocaleSid
    * @var int
    */
   public $id_locale;

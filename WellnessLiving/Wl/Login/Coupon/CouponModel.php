@@ -10,14 +10,6 @@ use WellnessLiving\WlModelAbstract;
 class CouponModel extends WlModelAbstract
 {
   /**
-   * The gift card.
-   *
-   * @get get
-   * @var string
-   */
-  public $s_code;
-
-  /**
    * The business key.
    *
    * @get get
@@ -41,6 +33,14 @@ class CouponModel extends WlModelAbstract
    * @var string
    */
   public $m_amount;
+
+  /**
+   * The gift card.
+   *
+   * @get get
+   * @var string
+   */
+  public $s_code;
 }
 
 ?>

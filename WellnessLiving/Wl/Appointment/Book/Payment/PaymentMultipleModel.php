@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * Allows to pay an appointment or appointment purchase option for the client.
  *
- * Only difference from {@link PaymentModel} is possibility to pay for a lot of appointments at the same time.
+ * Only difference from {@link \Wellnessliving\Wl\Appointment\Book\Payment\PaymentModel} is possibility to pay for a lot of appointments at the same time.
  */
 class PaymentMultipleModel extends WlModelAbstract
 {
@@ -34,12 +34,22 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_book_data_post = [];
 
   /**
-   * Payment type for the appointment, one of {@link WlAppointmentPaySid} constants.
+   * Payment type for the appointment, one of {@link \Wellnessliving\RsAppointmentPaySid} constants.
    *
    * @post result
    * @var int[]
    */
   public $a_pay;
+
+  /**
+   * A list of payment sources to pay with.
+   *
+   * Structure of this array corresponds structure of {@link RsPayForm::$a_pay_source}.
+   *
+   * @post post
+   * @var array[]
+   */
+  public $a_pay_form = [];
 
   /**
    * Information about selected login promotion.
@@ -103,7 +113,7 @@ class PaymentMultipleModel extends WlModelAbstract
    *     string <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     Purchase item ID. One of {@link \RsPurchaseItemSid} constant.
+   *     Purchase item ID. One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constant.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>
@@ -146,8 +156,8 @@ class PaymentMultipleModel extends WlModelAbstract
 
   /**
    * List of quiz response keys.
-   * Key is a quiz key.
-   * Value is a response key.
+   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
+   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table.
    *
    * @post post
    * @var array
@@ -163,7 +173,17 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_total;
 
   /**
-   * Key of source mode. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * There may be empty values in this list, which means that this is a walk-in.
+   *
+   * @get get
+   * @post get
+   * @var string[]
+   */
+  public $a_uid = [];
+
+  /**
+   * Key of source mode. One of {@link \Wellnessliving\Wl\Mode\ModeSid} constants.
    *
    * @get get
    * @post get
@@ -172,18 +192,25 @@ class PaymentMultipleModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * The location key.
-   *
-   * This will be `null` if not set yet.
+   * `true` if client is walk-in, otherwise `false`.
    *
    * @get get
    * @post get
-   * @var string|null
+   * @var bool
    */
-  public $k_location = null;
+  public $is_walk_in = false;
 
   /**
-   * Kye of activity of purchase is made. Empty if no purchase is made.
+   * Location to show available appointment booking schedule.
+   *
+   * @get get,result
+   * @post get
+   * @var string
+   */
+  public $k_location = '0';
+
+  /**
+   * ID of activity of purchase is made. Empty if no purchase is made.
    *
    * @post result
    * @var string
@@ -249,15 +276,13 @@ class PaymentMultipleModel extends WlModelAbstract
   public $text_discount_code = '';
 
   /**
-   * The user's key.
-   *
-   * This will be `null` if not set yet.
+   * User to get information for.
    *
    * @get get
    * @post get
-   * @var string|null
+   * @var string
    */
-  public $uid = null;
+  public $uid = '0';
 }
 
 ?>

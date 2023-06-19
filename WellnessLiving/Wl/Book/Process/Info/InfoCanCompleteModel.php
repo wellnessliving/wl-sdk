@@ -9,89 +9,91 @@ use WellnessLiving\WlModelAbstract;
  */
 class InfoCanCompleteModel extends WlModelAbstract
 {
-    /**
-     * Determines whether users can complete the booking process from the info step.
-     *
-     * This will be `null` if not set yet.
-     *
-     * @get result
-     * @post result
-     * @var bool|null
-     */
-    public $can_complete = null;
+  /**
+   * A list of sessions of an event that can be booked together.
+   *
+   * This is the same as {@link \Wellnessliving\Wl\Book\Process\Info\InfoCanCompleteModel::$a_session_select_post}, but limited by query string
+   * length and might fail if the user is booking more than 50 sessions at once. Therefore, using the POST method is preferable.
+   *
+   * @deprecated Use {@link \Wellnessliving\Wl\Book\Process\Info\InfoCanCompleteModel::$a_session_select_post} along with POST call instead.
+   * @get get
+   * @var array[]
+   */
+  public $a_session_select = [];
 
-    /**
-     * A list of sessions of an event that can be booked together.
-     *
-     * This is the same as {@link \WellnessLiving\Wl\Book\Process\Info\InfoCanCompleteModel::a_session_select_post}, but limited by query string
-     * length and might fail if the user is booking more than 50 sessions at once. Therefore, using the POST method is preferable.
-     *
-     * Every element has the next keys:<ul>
-     *   <li>String `dt_date` The date and time in MySQL format in GMT when the session starts.</li>
-     *   <li>Boolean `is_select` `true` if this session should be booked; `false` otherwise.</li>
-     *   <li>String `k_class_period` The class period ID.</li>
-     * </ul>
-     *
-     * @get get
-     * @var bool|string
-     */
-    public $a_session_select = [];
+  /**
+   * A list of sessions of an event that can be booked together.
+   *
+   * Every element has the next structure:
+   * <dl>
+   *   <dt>string <var>dt_date</var></dt>
+   *   <dd>The date and time in MySQL format in GMT when the session starts.</dd>
+   *   <dt>bool <var>is_select</var></dt>
+   *   <dd>`true` if this session should be booked, `false` otherwise.</dd>
+   *   <dt>string <var>k_class_period</var></dt>
+   *   <dd>The class period key.</dd>
+   * </dl>
+   *
+   * @post post
+   * @var array[]
+   */
+  public $a_session_select_post = [];
 
-    /**
-     * A list of sessions of an event that can be booked together.
-     *
-     * Every element has the next keys:<ul>
-     *   <li>String `dt_date` The date and time in MySQL format in GMT when the session starts.</li>
-     *   <li>Boolean `is_select` `true` if this session should be booked; `false` otherwise.</li>
-     *   <li>String `k_class_period` The class period ID.</li>
-     * </ul>
-     *
-     * @post post
-     * @var bool|string
-     */
-    public $a_session_select_post = [];
+  /**
+   * Determines whether users can complete the booking process from the info step.
+   *
+   * @get result
+   * @post result
+   * @var bool
+   */
+  public $can_complete;
 
-    /**
-     * The date and time of the session that the user is booking, returned in MySQL format and in GMT.
-     *
-     * This will be an empty string if not set yet.
-     *
-     * @get get
-     * @post get
-     * @var string
-     */
-    public $dt_date_gmt = '';
+  /**
+   * The date and time of the session that the user is booking, returned in MySQL format and in GMT.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
+  public $dt_date_gmt = '';
 
-    /**
-     * The class period ID that the user started to book.
-     *
-     * This will be an empty string if not set yet.
-     *
-     * @get get
-     * @post get
-     * @var string
-     */
-    public $k_class_period = '';
+  /**
+   * `true` if price for the individual session should be hidden, if client has applicable pricing option to pay for this
+   * booking.
+   * `false` if price should be shown always.
+   *
+   * @get result
+   * @var bool
+   */
+  public $hide_price = '';
 
-    /**
-     * The unique booking process key.
-     *
-     * @get get
-     * @post get
-     * @var string
-     */
-    public $s_id = '';
+  /**
+   * The class period ID that the user started to book.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
+  public $k_class_period = '';
 
-    /**
-     * The ID of a user who is making the booking.
-     *
-     * This will be `null` if not set yet.
-     *
-     * @get get
-     * @post get
-     * @var string|null
-     */
-    public $uid = null;
+  /**
+   * The unique booking process key.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
+  public $s_id = '';
+
+  /**
+   * The key of a user who is making the booking.
+   * Empty if user is guest.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
+  public $uid = '';
 }
 
 ?>

@@ -10,47 +10,51 @@ use WellnessLiving\WlModelAbstract;
 class EnterModel extends WlModelAbstract
 {
   /**
-   * Answer to the captcha if needed. (if needed).
-   *
-   * It is `null` if not needed.
+   * Additional data for user authorization.
    *
    * @post post
-   * @var string|null
+   * @var array
    */
-  public $s_captcha=null;
+  public $json_data = [];
+
+  /**
+   * Answer to the captcha if needed.
+   *
+   * @post post
+   * @var string
+   */
+  public $s_captcha = '';
 
   /**
    * The user's login.
    *
-   * It is `null` if not set yet.
-   *
    * @post post
-   * @var string|null
+   * @var string
    */
-  public $s_login=null;
+  public $s_login = '';
 
   /**
    * A copy of notepad that was used to hash user password.
    *
-   * See {@link \WellnessLiving\Core\Passport\Login\Enter\EnterModel::$s_password} for details.
+   * See {@link \Wellnessliving\Core\Passport\Login\Enter\EnterModel::$s_password} for details.
    *
    * @post post
-   * @var string|null
+   * @var string
    */
-  public $s_notepad=null;
+  public $s_notepad = '';
 
   /**
-   * The hash of the user’s password.
+   * The hash of the user password.
    *
-   * Use {@link \WellnessLiving\Core\Passport\Login\Enter\NotepadModel::hash()} to evaluate password hash.
+   * Use `Core_Passport_Login_Enter_NotepadModel.hash()` to evaluate password hash.
    *
    * @post post
-   * @var string|null
+   * @var string
    */
-  public $s_password=null;
+  public $s_password = '';
 
   /**
-   * Whether and how the user’s login and password should be remembered.
+   * Whether and how the user login and password should be remembered.
    *
    * The accepted values are as follows:
    * <ul>
@@ -62,7 +66,25 @@ class EnterModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $s_remember='';
+  public $s_remember = '';
+
+  /**
+   * Optional URL to get captcha image.
+   *
+   * This field is filled in a case when a captcha code is required to sign in.
+   *
+   * @post error
+   * @var string
+   */
+  public $url_captcha;
+
+  /**
+   * Optional url for redirection after sign in in web application.
+   *
+   * @post result
+   * @var string
+   */
+  public $url_redirect;
 }
 
 ?>

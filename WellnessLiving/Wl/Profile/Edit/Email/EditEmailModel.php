@@ -14,11 +14,47 @@ class EditEmailModel extends WlModelAbstract
   /**
    * Information about the user who occupies the specified email.
    * This will be empty if the email is free or if the rate limit has been reached.
+   * Otherwise, has next keys:
+   * <dl>
+   *   <dt>
+   *     string <var>text_firstname</var>
+   *   </dt>
+   *   <dd>
+   *     First name.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_lastname</var>
+   *   </dt>
+   *   <dd>
+   *     Last name.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_phone</var>
+   *   </dt>
+   *   <dd>
+   *     Phone.
+   *   </dd>
+   *   <dt>
+   *     string <var>url_photo</var>
+   *   </dt>
+   *   <dd>
+   *     URL to photo.
+   *   </dd>
+   * </dl>
    *
    * @get result
    * @var array
    */
-  public $a_user = [];
+  public $a_user;
+
+  /**
+   * Shows, whether client was registered in the business: <tt>true</tt> if user was added to the business,
+   * <tt>false</tt> if staff only received temporary access, because mandatory fields must be specified first.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_added = false;
 
   /**
    * If `true`, then the number of requests has exceeded the rate limit. Otherwise, this will be `false`.
@@ -26,7 +62,7 @@ class EditEmailModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public $is_limit = false;
+  public $is_limit;
 
   /**
    * If `true`, then the specified email is in use. Otherwise, this will be `false`.
@@ -34,7 +70,7 @@ class EditEmailModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public $is_use = false;
+  public $is_use;
 
   /**
    * The business key where the check must be performed.
@@ -60,7 +96,7 @@ class EditEmailModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $uid_result = '0';
+  public $uid_result;
 
   /**
    * The key of user whose email will be edited.

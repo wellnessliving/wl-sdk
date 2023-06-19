@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * An endpoint that retrieves information about services in the current service category.
  *
- * This is a new version of the {@link \WellnessLiving\WL\Appointment\Book\Service\ServiceListModel} endpoint.
+ * This is a new version of the {@link \Wellnessliving\Wl\Appointment\Book\Service\ServiceListModel} endpoint.
  * It allows for filtering a list of services by multiple book now tabs.
  */
 class ServiceList52Model extends WlModelAbstract
@@ -59,7 +59,21 @@ class ServiceList52Model extends WlModelAbstract
    *     array <var>a_image</var>
    *   </dt>
    *   <dd>
-   *     The appointment image.
+   *     The appointment image. See {@link RsServiceLogo::data()} for details.
+   *   </dd>
+   *   <dt>
+   *     string[] <var>a_login_type_restriction</var>
+   *   </dt>
+   *   <dd>
+   *     List of login type titles for current service.
+   *     Clients that have one of these types can book service.
+   *   </dd>
+   *   <dt>
+   *     string[] <var>a_member_group_restriction</var>
+   *   </dt>
+   *   <dd>
+   *     List of member groups titles for current service.
+   *     Clients that belongs to these groups can book service.
    *   </dd>
    *   <dt>
    *     string <var>f_deposit</var>
@@ -108,7 +122,7 @@ class ServiceList52Model extends WlModelAbstract
    *     int <var>i_price</var>
    *   </dt>
    *   <dd>
-   *     The price type. One of {@link \WellnessLiving\Wl\Service\ServicePriceSid} constants.
+   *     The price type ID. One of {@link \Wellnessliving\RsServicePriceSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>i_duration</var>
@@ -120,13 +134,13 @@ class ServiceList52Model extends WlModelAbstract
    *     int <var>id_book_flow</var>
    *   </dt>
    *   <dd>
-   *     The type of client booking flow. One of {@link \WellnessLiving\Wl\Service\ServiceBookFlowSid} constants.
+   *     The type of client booking flow. One of {@link \Wellnessliving\Wl\Service\ServiceBookFlowSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_service_require</var>
    *   </dt>
    *   <dd>
-   *     The required payment type. One of {@link \WellnessLiving\Wl\Service\ServiceRequireSid} constants.
+   *     The required payment type ID. One of {@link \Wellnessliving\RsServiceRequireSid} constants.
    *   </dd>
    *   <dt>
    *     bool <var>is_age_public</var>
@@ -145,6 +159,12 @@ class ServiceList52Model extends WlModelAbstract
    *   </dt>
    *   <dd>
    *      Determines whether this service supports back-to-back booking.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_bookable</var>
+   *   </dt>
+   *   <dd>
+   *     Whether this appointment can be booked online.
    *   </dd>
    *   <dt>
    *     bool <var>is_book_repeat_client</var>
@@ -233,10 +253,28 @@ class ServiceList52Model extends WlModelAbstract
    *     The appointment title.
    *   </dd>
    *   <dt>
-   *     string <var>xml_describe</var>
+   *     string <var>text_age_restriction</var>
    *   </dt>
    *   <dd>
-   *     The appointment description.
+   *     Age restriction header.
+   *   </dd>
+   *   <dt>
+   *     string <var>xml_description</var>
+   *   </dt>
+   *   <dd>
+   *     Appointment description.
+   *   </dd>
+   *   <dt>
+   *     string <var>xml_description_short</var>
+   *   </dt>
+   *   <dd>
+   *     Appointment short description.
+   *   </dd>
+   *   <dt>
+   *     string <var>xml_special</var>
+   *   </dt>
+   *   <dd>
+   *      Special instructions.
    *   </dd>
    * </dl>
    *
@@ -246,9 +284,36 @@ class ServiceList52Model extends WlModelAbstract
   public $a_service;
 
   /**
-   * <b>true</b> - return all active services for a certain location.
+   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * There may be empty values in this list, which means that this is a walk-in.
    *
-   * <b>false</b> - return only services that are associated with a book now tab.
+   * @get get
+   * @post get
+   * @var string[]
+   */
+  public $a_uid = [];
+
+  /**
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int|null
+   */
+  public $i_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int|null
+   */
+  public $i_width = 0;
+
+  /**
+   * `true` - return all active services for a certain location.
+   * `false` - return only services that are associated with a book now tab.
    *
    * @get get
    * @var bool
@@ -256,9 +321,16 @@ class ServiceList52Model extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * <b>true</b> - search in all tabs.
+   * Whether services allow multiple appointment booking.
    *
-   * <b>false</b> - search only on the selected book now tab.
+   * @get result
+   * @var bool
+   */
+  public $is_multiple_booking;
+
+  /**
+   * `true` - search in all tabs.
+   * `false` - search only on the selected book now tab.
    *
    * @get get
    * @var bool
@@ -266,7 +338,16 @@ class ServiceList52Model extends WlModelAbstract
   public $is_tab_all = false;
 
   /**
-   * The location to show the available appointments' booking schedule for.
+   * `true` if client is walk-in, otherwise `false`.
+   *
+   * @get get
+   * @post get
+   * @var bool
+   */
+  public $is_walk_in = false;
+
+  /**
+   * Location to show available appointment booking schedule.
    *
    * @get get,result
    * @post get
@@ -283,7 +364,7 @@ class ServiceList52Model extends WlModelAbstract
   public $k_service_category = '0';
 
   /**
-   * The user to get information for.
+   * User to get information for.
    *
    * @get get
    * @post get

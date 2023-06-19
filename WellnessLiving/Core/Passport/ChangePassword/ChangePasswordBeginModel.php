@@ -19,7 +19,15 @@ class ChangePasswordBeginModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $text_captcha = null;
+  public $text_captcha = '';
+
+  /**
+   * Error code. Empty string if mail is sent successfully.
+   *
+   * @post result
+   * @var string
+   */
+  public $text_error;
 
   /**
    * User's email.
@@ -29,17 +37,17 @@ class ChangePasswordBeginModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $text_mail = null;
+  public $text_mail = '';
 
   /**
    * URL to password reset page. This link will be used in a password reset email.
    *
-   * Specify only if you want to send user to a custom password reset page.
+   * Specify only if you want to send user to a custom password reset page, if empty, URL to default page will be used.
    *
    * @post post
    * @var string
    */
-  public $url_reset = null;
+  public $url_reset = '';
 }
 
 ?>

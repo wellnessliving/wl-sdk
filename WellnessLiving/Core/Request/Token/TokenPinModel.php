@@ -6,28 +6,25 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * Point to create one-time pin code.
+ * This code must be used for a security token generation.
  */
 class TokenPinModel extends WlModelAbstract
 {
   /**
    * Date/time of pin code expiration.
    *
-   * <tt>null</tt> until received.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $dtu_expire = null;
+  public $dtu_expire;
 
   /**
    * Pin code.
    *
-   * <tt>null</tt> until received.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $text_pin = null;
+  public $text_pin;
 
   /**
    * ID to send a security code by push notification.

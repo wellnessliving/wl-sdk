@@ -12,14 +12,24 @@ use WellnessLiving\WlModelAbstract;
 class PageListModel extends WlModelAbstract
 {
   /**
-   * A list of visits IDs. Each element is an array with the following element:
-   * <ul><li>string `k_visit` the key of the book or visit.</li></ul>
-   * The order of items in this array is the order in which elements should be shown.
+   * Elements of user's schedule. Every element has next keys:
+   * <dl>
+   *   <dt>string <var>k_business</var></dt>
+   *   <dd>
+   *     Key of the business in which this visit was made.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_visit</var>
+   *   </dt>
+   *   <dd>
+   *     Key of a book/visit.
+   *   </dd>
+   * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
-  public $a_visit = [];
+  public $a_visit;
 
   /**
    * If the date is set, a list of services before this date will be returned.
@@ -29,7 +39,7 @@ class PageListModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $dtu_end = null;
+  public $dtu_end;
 
   /**
    * If the date is set, a list of services after this date will be returned.
@@ -39,36 +49,32 @@ class PageListModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $dtu_start = null;
+  public $dtu_start;
 
   /**
-   * If `true`, then all the client’s previous visits will be retrieved.
-   * If `false` or left as `null`, then all the client’s upcoming visits will be retrieved.
+   * If `true`, then all the client previous visits will be retrieved.
+   * If `false` or left as `null`, then all the client upcoming visits will be retrieved.
    *
    * @get get
-   * @var bool|null
+   * @var bool
    */
-  public $is_past = null;
+  public $is_past = false;
 
   /**
    * The business key.
    *
-   * This will be `null` if not set yet.
-   *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_business = null;
+  public $k_business = '0';
 
   /**
    * The user key.
    *
-   * This will be `null` if not set yet.
-   *
    * @get get
    * @var string|null
    */
-  public $uid = null;
+  public $uid = '0';
 }
 
 ?>

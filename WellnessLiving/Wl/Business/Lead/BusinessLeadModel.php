@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business\Lead;
 use WellnessLiving\WlModelAbstract;
 
 /**
- *  An endpoint that creates a new business lead request within the Partner Program.
+ * An endpoint that creates a new business lead request within the Partner Program.
  */
 class BusinessLeadModel extends WlModelAbstract
 {

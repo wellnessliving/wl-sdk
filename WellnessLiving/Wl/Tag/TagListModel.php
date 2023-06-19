@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Wl\Tag;
 
@@ -14,7 +14,7 @@ class TagListModel extends WlModelAbstract
    *
    * Each element has the next structure:<dl>
    * <dt>string <var>k_tag</var> </dt>
-   * <dd>The tag key.
+   * <dd>The tag key.</dd>
    * <dt>string <var>text_title</var></dt>
    * <dd>The tag title.</dd>
    * </dl>
