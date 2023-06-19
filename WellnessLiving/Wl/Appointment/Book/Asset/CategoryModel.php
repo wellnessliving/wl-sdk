@@ -47,6 +47,15 @@ class CategoryModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
+   * `true` - search in all tabs.
+   * `false` - search only for the selected book tab.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_tab_all = false;
+
+  /**
    * The class tab key to use for filtering services.
    *
    * @get get
