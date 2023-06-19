@@ -11,8 +11,19 @@ use WellnessLiving\WlModelAbstract;
 class CalendarModel extends WlModelAbstract
 {
   /**
-   * A list with all calendar days in the specified month with
-   * available and unavailable appointment bookings in the schedule.
+   * Array with calendar schedule days and appointment availability.
+   * <dl>
+   *   <dt>string <var>dt_date</var></dt><dd>Date item of the calendar.</dd>
+   *   <dt>int <var>i_week</var></dt><dd>Number of day in week.</dd>
+   *   <dt>bool <var>is_available</var></dt><dd>Whether booking is available for this day.</dd>
+   *   <dt>bool <var>is_current</var></dt><dd>Whether date is current.</dd>
+   *   <dt>bool <var>is_out</var></dt><dd>Whether date is out of current month or it's business/location closed date.</dd>
+   *   <dt>bool <var>is_waitlist_only</var></dt><dd>Whether booking for this day available only in wait list.</dd>
+   *   <dt>bool <var>is_week_end</var></dt><dd>Whether date is last day of the week.</dd>
+   *   <dt>bool <var>is_week_start</var></dt><dd>Whether date is first day of the week.</dd>
+   *   <dt>string <var>s_day</var></dt><dd>String representation of day number with leading zeroes.</dd>
+   *   <dt>string <var>s_week</var></dt><dd>String representation of week day (one letter, i.e. "F").</dd>
+   * </dl>
    *
    * This will be `null` if not set yet.
    *

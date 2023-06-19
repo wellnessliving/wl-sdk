@@ -107,6 +107,24 @@ class ElementModel extends WlModelAbstract
   public $a_class_list = [];
 
   /**
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_width = 0;
+
+  /**
    * The business key.
    *
    * @get get
