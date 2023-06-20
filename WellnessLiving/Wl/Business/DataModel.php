@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Business;
 
+use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
