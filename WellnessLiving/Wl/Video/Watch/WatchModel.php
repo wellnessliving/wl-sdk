@@ -30,7 +30,7 @@ class WatchModel extends WlModelAbstract
    * The source ID.
    *
    * @post post
-   * @see \Wellnessliving\WatchSourceSid
+   * @see \Wellnessliving\Wl\Video\Watch\WatchSourceSid
    * @var int
    */
   public $id_source;

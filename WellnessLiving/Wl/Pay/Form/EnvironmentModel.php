@@ -99,7 +99,7 @@ class EnvironmentModel extends WlModelAbstract
    * The locale ID of the business.
    *
    * @get result
-   * @see \Wellnessliving\LocaleSid
+   * @see \Wellnessliving\Core\Locale\LocaleSid
    * @var int|null
    */
   public $id_locale;

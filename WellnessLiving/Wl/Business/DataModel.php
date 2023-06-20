@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Wl\Business;
 
-use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -57,7 +56,7 @@ class DataModel extends WlModelAbstract
    * The Locale ID, used to search geo items.
    *
    * @get result
-   * @see \Wellnessliving\LocaleSid
+   * @see \Wellnessliving\Core\Locale\LocaleSid
    * @var int
    */
   public $id_locale;
