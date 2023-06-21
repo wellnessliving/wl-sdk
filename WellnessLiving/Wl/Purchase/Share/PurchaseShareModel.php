@@ -15,7 +15,7 @@ class PurchaseShareModel extends WlModelAbstract
    * @post post
    * @var int
    */
-  public $id_social = 0;
+  public $id_social;
 
   /**
    * The key of the purchase.
@@ -23,7 +23,7 @@ class PurchaseShareModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $k_purchase = '0';
+  public $k_purchase;
 
   /**
    * The URL to the sharing page.
@@ -31,7 +31,7 @@ class PurchaseShareModel extends WlModelAbstract
    * @post result
    * @var string
    */
-  public $url_share = '';
+  public $url_share;
 }
 
 ?>

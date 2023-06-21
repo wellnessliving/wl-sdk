@@ -17,16 +17,20 @@ class ListModel extends WlModelAbstract
    *
    * Each element is an array with the following keys:
    * <dl>
+   *   <dt>string <var>text_name_first</var></dt>
+   *   <dd>Client's first name.</dd>
+   *   <dt>string <var>text_name_last</var></dt>
+   *   <dd>Client's last name.</dd>
    *   <dt>string <var>text_title</var></dt>
-   *   <dd>The client’s name.</dd>
+   *   <dd>The client name.</dd>
    *   <dt>string <var>uid</var></dt>
-   *   <dd>The client’s ID.</dd>
+   *   <dd>The client key.</dd>
    * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
-  public $a_list = [];
+  public $a_list;
 
   /**
    * If `true`, then this user can add other users via the Add Client page.
@@ -34,10 +38,18 @@ class ListModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public $can_add = false;
+  public $can_add;
 
   /**
-   * The business ID number used internally by WellnessLiving.
+   * <tt>true</tt> - search among whole franchise; <tt>false</tt> - search in specified business only.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_franchisee_search_wide = false;
+
+  /**
+   * The business key number used internally by WellnessLiving.
    *
    * @get get
    * @var string

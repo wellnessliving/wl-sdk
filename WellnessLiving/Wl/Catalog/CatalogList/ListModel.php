@@ -12,12 +12,22 @@ class ListModel extends WlModelAbstract
   /**
    * A list of all sale items.
    *
-   * <tt>null</tt> if not set yet.
+   * @get result
+   * @var array
+   */
+  public $a_product;
+
+  /**
+   * List of products to show with duplicates.
+   *
+   * Products have their own order within every category. On the other hand they can be related to several shop
+   * categories. Due to the fact that sorting realization in browser would be rather complicated It was decided to
+   * sort products in backend using duplicates for every shop category.
    *
    * @get result
-   * @var array|null
+   * @var array
    */
-  public $a_product = null;
+  public $a_product_duplicate;
 
   /**
    * The business key.

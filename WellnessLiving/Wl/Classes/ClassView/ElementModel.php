@@ -64,7 +64,7 @@ class ElementModel extends WlModelAbstract
    *   <dt>bool <var>is_age_public</var></dt>
    *   <dd>Whether age restriction exist and should be taken into account prior to booking of this class/event.</dd>
    *   <dt>bool <var>is_bookable</var></dt>
-   *   <dd>Whether clients can book class or event online or not.</dd
+   *   <dd>Whether clients can book class or event online or not.</dd>
    *   <dt>bool <var>is_online_private</var></dt>
    *   <dd>
    *     `true` means to show class only for clients who can book online,
@@ -98,7 +98,6 @@ class ElementModel extends WlModelAbstract
    *   <dd>Item special instructions.</dd>
    *   <dt>string <var>url_image</var></dt>
    *   <dd>Url link to item image.</dd>
-
    * </dl>
    *
    * @get result
@@ -150,7 +149,7 @@ class ElementModel extends WlModelAbstract
    * @get get
    * @var bool
    */
-  public $show_cancelled = '';
+  public $show_cancelled = false;
 }
 
 ?>

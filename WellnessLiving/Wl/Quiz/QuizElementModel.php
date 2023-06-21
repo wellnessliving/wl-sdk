@@ -10,9 +10,9 @@ use WellnessLiving\WlModelAbstract;
 class QuizElementModel extends WlModelAbstract
 {
   /**
-   * A list of quiz elements.
+   * List of quiz elements.
    *
-   * The order of the element in the array that corresponds to the order of the elements on the form.
+   * Order of the element in array corresponds to order of elements on the form.
    *
    * @get result
    * @post post
@@ -21,7 +21,16 @@ class QuizElementModel extends WlModelAbstract
   public $a_element = [];
 
   /**
-   * This will be `true` if the endpoint doesn't check for user authorization. Otherwise, this will be `false`.
+   * Quiz settings. Array representation of {@link \Wellnessliving\Wl\Quiz\QuizElementModel::$o_setting}.
+   *
+   * @get result
+   * @post post
+   * @var array
+   */
+  public $a_setting = [];
+
+  /**
+   * `true` if don't check user authorization, `false` otherwise.
    *
    * @get get
    * @post get
@@ -30,37 +39,62 @@ class QuizElementModel extends WlModelAbstract
   public $can_anonymous = false;
 
   /**
-   * Determines whether the quiz is active.
-   *
-   * This will be `true` if the quiz is active. Otherwise, this will be `false`.
+   * Number of responses for specific quiz.
    *
    * @get result
+   * @var int
+   */
+  public $i_responses = 0;
+
+  /**
+   * Quiz active status.
+   *
+   * `true` if quiz is active.
+   * `false` if quiz is not active.
+   *
+   * @get result
+   * @post post
+   * @put post
    * @var bool
    */
   public $is_active = true;
 
   /**
-   * The business key within which the quiz is managed.
+   * Business key within which quiz is managed.
    *
+   * @delete get
    * @get get
    * @post get
+   * @put get
    * @var string
    */
   public $k_business = '';
 
   /**
-   * The quiz's key.
+   * Quiz key.
    *
+   * @delete get
    * @get get
    * @post get,result
+   * @put get
    * @var string
    */
   public $k_quiz = '';
 
   /**
-   * Determines whether to display numbering of the form elements that support numbering.
+   * Quiz login key.
    *
-   * This will be `true` if numbering for elements is displayed. Otherwise, this will be `false`.
+   * @post get
+   * @put get
+   * @var string
+   */
+  public $k_quiz_login = '';
+
+  /**
+   * Whether to show numbering of the form elements that supports numbering.
+   *
+   * `true` to show numbering on the form for elements that supports numbering.
+   * `false` to not show numbering.
    *
    * @get result
    * @post post
@@ -69,7 +103,7 @@ class QuizElementModel extends WlModelAbstract
   public $show_numbering = true;
 
   /**
-   * The quiz's form title.
+   * Quiz form title.
    *
    * @get result
    * @post post

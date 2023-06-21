@@ -15,12 +15,12 @@ class ProductModel extends WlModelAbstract
    * This will be `null` if not set yet.
    *
    * @get result
-   * @var array|null
+   * @var array[]
    */
-  public $a_product = null;
+  public $a_product;
 
   /**
-   * The ID of a service to show information for.
+   * The key of a service to show information for.
    *
    * @get get
    * @var string

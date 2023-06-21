@@ -25,7 +25,7 @@ class DebtListModel extends WlModelAbstract
    *   <dt>string <var>dtu_cease</var></dt>
    *   <dd>The date and time in UTC when the debt was fully ceased.</dd>
    *   <dt>int <var>id_currency</var></dt>
-   *   <dd>The debt currency ID. One of {@link \WellnessLiving\Core\Locale\CurrencySid} constants.</dd>
+   *   <dd>The debt currency ID. One of {@link \Wellnessliving\Core\Locale\CurrencySid} constants.</dd>
    *   <dt>string <var>k_business</var></dt>
    *   <dd>The business key where the debt occurred.</dd>
    *   <dt>string <var>k_collector_debt</var></dt>
@@ -59,7 +59,29 @@ class DebtListModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_debt;
+  public $a_debt = [];
+
+  /**
+   * Date before which debts should be returned.
+   *
+   * If `null` and {@link \Wellnessliving\Wl\Collector\DebtListModel::$dl_start} specified will return debts before current date.
+   * If `null` and {@link \Wellnessliving\Wl\Collector\DebtListModel::$dl_start} also `null` will return debts from previous month.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dl_end;
+
+  /**
+   * Date since which debts should be returned.
+   *
+   * If `null` and {@link \Wellnessliving\Wl\Collector\DebtListModel::$dl_end} specified will return debts since the beginning of time.
+   * If `null` and {@link \Wellnessliving\Wl\Collector\DebtListModel::$dl_end} also `null` will return debts from previous month.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dl_start;
 
   /**
    * The business key to which debts should be returned.
@@ -67,7 +89,7 @@ class DebtListModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $k_business;
+  public $k_business = '';
 }
 
 ?>

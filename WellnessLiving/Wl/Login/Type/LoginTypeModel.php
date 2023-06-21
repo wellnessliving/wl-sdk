@@ -17,22 +17,26 @@ class LoginTypeModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>bool <var>is_member</var></dt>
-   *   <dd>It will be `1` if the record contains a type of member.
+   *   <dd>
+   *     It will be `1` if the record contains a type of member.
    *     It will be `0` if record contains some other type of client.
-   *     It will be `null` if the record contains some type of prospect.</dd>
+   *     It will be `null` if the record contains some type of prospect.
+   *   </dd>
    *   <dt>string <var>k_login_type</var></dt>
    *   <dd>The login type key.</dd>
    *   <dt>string <var>s_title</var></dt>
    *   <dd>The name of the login type.</dd>
+   *   <dt>string <var>text_title</var></dt>
+   *   <dd>Same as <var>s_title</var> offset.</dd>
    * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
-  public $a_login_type_list = [];
+  public $a_login_type_list;
 
   /**
-   * The business ID used internally by WellnessLiving.
+   * The business key used internally by WellnessLiving.
    *
    * @get get
    * @var string

@@ -12,7 +12,6 @@ use WellnessLiving\WlModelAbstract;
  */
 class AddModel extends WlModelAbstract
 {
-  
   /**
    * An array containing payment card information with the following fields:
    *
@@ -21,25 +20,35 @@ class AddModel extends WlModelAbstract
    *     array <var>a_pay_address</var>
    *   </dt>
    *   <dd>
-   *     Address information in the same format as returned by {@link \WellnessLiving\Wl\Pay\Address\ProfileModel}:
-   *     <dl><dt>bool <var>is_new</var></dt><dd>`true` - add new address. <br>`false` - use existing address.
-   *     </dd>
-   *     <dt>string <var>k_pay_address</var></dt><dd>The chosen payment address ID. THis will be set even if the user decided
-   *     to add a new address.</dd>
-   *     <dt>string <var>k_geo_country</var></dt><dd>The country ID.</dd>
-   *     <dt>string <var>k_geo_region</var></dt><dd>The region ID.</dd>
-   *     <dt>string <var>s_city</var></dt><dd>The city name.</dd>
-   *     <dt>string <var>s_name</var></dt><dd>The user name.</dd>
-   *     <dt>string <var>s_street1</var></dt><dd>The first address line.</dd>
-   *     <dt>string <var>s_street2</var></dt><dd>The second address line.</dd>
-   *     <dt>string <var>s_phone</var></dt><dd>The phone number.</dd>
-   *     <dt>string <var>s_postal</var></dt><dd>The postal code.</dd></dl>
+   *     Address information:
+   *     <dl>
+   *       <dt>bool <var>is_new</var></dt>
+   *       <dd>`true` - add new address. `false` - use existing address.</dd>
+   *       <dt>string <var>k_pay_address</var></dt>
+   *       <dd>The chosen payment address ID. THis will be set even if the user decided to add a new address.</dd>
+   *       <dt>string <var>k_geo_country</var></dt>
+   *       <dd>The country key.</dd>
+   *       <dt>string <var>k_geo_region</var></dt>
+   *       <dd>The region key.</dd>
+   *       <dt>string <var>s_city</var></dt>
+   *       <dd>The city name.</dd>
+   *       <dt>string <var>s_name</var></dt>
+   *       <dd>The user name.</dd>
+   *       <dt>string <var>s_street1</var></dt>
+   *       <dd>The first address line.</dd>
+   *       <dt>string <var>s_street2</var></dt>
+   *       <dd>The second address line.</dd>
+   *       <dt>string <var>s_phone</var></dt>
+   *       <dd>The phone number.</dd>
+   *       <dt>string <var>s_postal</var></dt>
+   *       <dd>The postal code.</dd>
+   *     </dl>
    *   </dd>
    *   <dt>
    *     int <var>i_csc</var>
    *   </dt>
    *   <dd>
-   *     The payment card’s security code, also known as the CVC or CVV.
+   *     The payment card security code, also known as the CVC or CVV.
    *   </dd>
    *   <dt>
    *     int <var>i_month</var>
@@ -52,6 +61,19 @@ class AddModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The last two digits of the year when the payment card expires.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_pay_actor</var>
+   *   </dt>
+   *   <dd>
+   *     Pay actor id. One of {@link \Wellnessliving\RsPayActorSid} constants.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_pay_bank</var>
+   *   </dt>
+   *   <dd>
+   *     Key of existing payment source in case of editing.
+   *     Empty if new pay source is being added.
    *   </dd>
    *   <dt>
    *     string <var>s_name</var>
@@ -75,16 +97,15 @@ class AddModel extends WlModelAbstract
   /**
    * The HTML form containing the fields required to add a card.
    *
-   * This will be `null` if not set yet.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $html_widget = null;
+  public $html_widget;
 
   /**
-   * The business ID number used internally by WellnessLiving.
+   * The business key number used internally by WellnessLiving.
    *
+   * @delete get
    * @get get
    * @post get
    * @var string
@@ -92,7 +113,7 @@ class AddModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The location ID.
+   * The location key.
    *
    * @get get
    * @post get
@@ -101,8 +122,16 @@ class AddModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
+   * Pay bank key to delete.
+   *
+   * @delete get
+   * @var string
+   */
+  public $k_pay_bank = '0';
+
+  /**
    * The payment owner ID. This is different from the user ID. It can be found with
-   * the {@link \WellnessLiving\Wl\Pay\Owner\OwnerModel}.
+   * the {@link \Wellnessliving\Wl\Pay\Owner\OwnerModel}.
    *
    * @get get
    * @post get

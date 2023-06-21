@@ -28,7 +28,7 @@ class WlProgramCategorySid
   /**
    * Special "Wellness Program" purchase option.
    */
-  public const INSURANCE = 8;
+  const INSURANCE = 8;
 
   /**
    * Packages and daily deals.
@@ -63,7 +63,7 @@ class WlProgramCategorySid
    *   <li>{@link \RsProgramSid::VIDEO_MEMBERSHIP}</li>
    * </ui>
    */
-  public const VIDEO = 9;
+  const VIDEO = 9;
 
   /**
    * Purchase options to pay for gym visits:

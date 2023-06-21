@@ -12,37 +12,37 @@ class WlFamilyRelationSid
   /**
    * Child of the parent.
    */
-  public const CHILD = 5;
+  const CHILD = 5;
 
   /**
    * Friend.
    */
-  public const FRIEND = 2;
+  const FRIEND = 2;
 
   /**
    * Guardian.
    */
-  public const GUARDIAN = 7;
+  const GUARDIAN = 7;
 
   /**
    * Not specified custom relationship.
    */
-  public const OTHER = 6;
+  const OTHER = 6;
 
   /**
    * Parent of the child.
    */
-  public const PARENT = 3;
+  const PARENT = 3;
 
   /**
    * Sibling. A brother or sister.
    */
-  public const SIBLING = 4;
+  const SIBLING = 4;
 
   /**
    * Spouse. A husband or wife.
    */
-  public const SPOUSE = 1;
+  const SPOUSE = 1;
 }
 
 ?>

@@ -11,18 +11,51 @@ class CategoryModel extends WlModelAbstract
 {
   /**
    * A list of information about service categories.
-   *
-   * This will be `null` if not set yet.
+   * <dl>
+   *   <dt>
+   *     bool <var>hide_application</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> - all services are hidden in this category for White Label mobile application. <tt>false</tt> - otherwise.
+   *   </dd>
+   *   <dt>
+   *     bool <var>i_sort</var>
+   *   </dt>
+   *   <dd>
+   *     Sort key for category. Used to sort categories on category list page.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_service_category</var>
+   *   </dt>
+   *   <dd>
+   *     Service category key.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_title</var>
+   *   </dt>
+   *   <dd>
+   *     Service category title.
+   *   </dd>
+   * </dl>
    *
    * @get result
-   * @var array|null
+   * @var array
    */
-  public $a_category = null;
+  public $a_category = [];
 
   /**
-   * <b>true</b> - return all service categories for a certain location.
+   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * There may be empty values in this list, which means that this is a walk-in.
    *
-   * <b>false</b> - return only service categories that are associated with a book tab and with staff members
+   * @get get
+   * @post get
+   * @var string[]
+   */
+  public $a_uid = [];
+
+  /**
+   * `true` - return all service categories for a certain location.
+   * `false` - return only service categories that are associated with a book tab and with staff members
    * able to conduct them.
    *
    * @get get
@@ -31,9 +64,16 @@ class CategoryModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * <b>true</b> - search in all tabs.
+   * <tt>true</tt> - if client has a flag, <tt>false</tt> - otherwise.
    *
-   * <b>false</b> - search only for the selected book tab.
+   * @get result
+   * @var bool
+   */
+  public $is_client_flag;
+
+  /**
+   * `true` - search in all tabs.
+   * `false` - search only for the selected book tab.
    *
    * @get get
    * @var bool
@@ -41,34 +81,39 @@ class CategoryModel extends WlModelAbstract
   public $is_tab_all = false;
 
   /**
-   * The class tab ID used to filter services.
-   *
-   * This will be `null` if not set yet.
+   * `true` if client is walk-in, otherwise `false`.
    *
    * @get get
-   * @var string|null
+   * @post get
+   * @var bool
    */
-  public $k_class_tab = null;
+  public $is_walk_in = false;
 
   /**
-   * The ID of a location to show information for.
-   *
-   * This will be `null` if not set yet.
+   * The class tab key used to filter services.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_location = null;
+  public $k_class_tab = '0';
 
   /**
-   * The ID of a user to get information for.
+   * Location to show available appointment booking schedule.
    *
-   * This will be `null` if not set yet.
+   * @get get,result
+   * @post get
+   * @var string
+   */
+  public $k_location = '0';
+
+  /**
+   * User to get information for.
    *
    * @get get
-   * @var string|null
+   * @post get
+   * @var string
    */
-  public $uid = null;
+  public $uid = '0';
 }
 
 ?>

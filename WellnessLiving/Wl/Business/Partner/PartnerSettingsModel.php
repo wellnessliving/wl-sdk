@@ -16,8 +16,8 @@ class PartnerSettingsModel extends WlModelAbstract
    * The homepage tour of the business, which depends on the type.
    *
    * @get result
+   * @see \WellnessLiving\WlHomeTourSid
    * @var int
-   * @see \WellnessLiving\RsHomeTourSid
    */
   public $id_business_tour = 0;
 
@@ -72,8 +72,10 @@ class PartnerSettingsModel extends WlModelAbstract
   /**
    * A link to the photo of the business representative.
    *
+   * `null` in case when image is not uploaded.
+   *
    * @get result
-   * @var string
+   * @var string|null
    */
   public $url_photo;
 }

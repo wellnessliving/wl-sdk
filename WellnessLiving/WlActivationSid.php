@@ -12,37 +12,37 @@ abstract class WlActivationSid
   /**
    * Number of a day of the month or of the week.
    */
-  public const DAY = 7;
+  const DAY = 7;
 
   /**
    * Custom date.
    */
-  public const FIXED = 3;
+  const FIXED = 3;
 
   /**
    * The first day of month.
    */
-  public const MONTH_FIRST = 4;
+  const MONTH_FIRST = 4;
 
   /**
    * The 15th day of the month.
    */
-  public const MONTH_HALF = 6;
+  const MONTH_HALF = 6;
 
   /**
    * The last day of the month.
    */
-  public const MONTH_LAST = 5;
+  const MONTH_LAST = 5;
 
   /**
    * Date of the sale.
    */
-  public const SALE = 1;
+  const SALE = 1;
 
   /**
    * Date of the first visit.
    */
-  public const VISIT = 2;
+  const VISIT = 2;
 
 }
 

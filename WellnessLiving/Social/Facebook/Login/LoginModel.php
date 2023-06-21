@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Social\Facebook\Login;
 
@@ -12,7 +12,7 @@ class LoginModel extends WlModelAbstract
   /**
    * Application ID.
    *
-   * <tt>null</tt> for use application, which makes request. And use credential of application from {@link FacebookCredential} class for authorization user.
+   * <tt>null</tt> for use application, which makes request. And use credential of application from {@link \Wellnessliving\Core\Request\Model\Application\Credential\FacebookCredential} class for authorization user.
    *
    * @post post
    * @var string|null

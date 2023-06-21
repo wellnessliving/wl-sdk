@@ -18,30 +18,38 @@ class MailUseOkModel extends WlModelAbstract
 {
   /**
    * The list of fields with missing information.
-   * Each element is an array containing the following data:<dl>
-   *   <dt>string <var>html_message</var></dt>
-   *   <dd>The error message.</dd>
-   *   <dt>string <var>s_field</var></dt>
-   *   <dd>The name of the field missing information.
-   *     Given in the format 'k_field.name'.
+   * Each element is an array containing the following data:
+   * <dl>
+   *   <dt>
+   *     string <var>html_message</var>
+   *   </dt>
+   *   <dd>
+   *     The error message.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_field</var>
+   *   </dt>
+   *   <dd>
+   *     The name of the field missing information.
+   *     Given in the format `k_field.name`.
    *   </dd>
    * </dl>
    *
    * @post result
    * @var array
    */
-  public $a_error = [];
+  public $a_error;
 
   /**
-   * This value is `true` if this is a lead. `false` if otherwise.
+   * This value is `true` if this user is a lead. `false` if otherwise.
    *
    * @post post
-   * @var string
+   * @var bool
    */
-  public $is_lead = 0;
+  public $is_lead = false;
 
   /**
-   * The business ID used internally by WellnessLiving.
+   * The business key used internally by WellnessLiving.
    *
    * @post post
    * @var string
@@ -62,7 +70,7 @@ class MailUseOkModel extends WlModelAbstract
    * @post result
    * @var string
    */
-  public $s_code = '';
+  public $s_code;
 
   /**
    * The result message of the request.
@@ -70,7 +78,7 @@ class MailUseOkModel extends WlModelAbstract
    * @post result
    * @var string
    */
-  public $text_message = '';
+  public $text_message;
 
   /**
    * The user key.

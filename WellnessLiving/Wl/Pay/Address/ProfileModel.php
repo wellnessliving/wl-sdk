@@ -10,24 +10,22 @@ use WellnessLiving\WlModelAbstract;
 class ProfileModel extends WlModelAbstract
 {
   /**
-   * The business ID number used internally by WellnessLiving.
-   *
-   * This will be `null` if you're in the system business.
+   * The business key number used internally by WellnessLiving.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
   public $k_business = '';
 
   /**
-   * The country ID. This is different from the values used in LocaleSid.
+   * The country key.
    *
    * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
    */
-  public $k_geo_country = null;
+  public $k_geo_country;
 
   /**
    * The region ID.
@@ -37,7 +35,7 @@ class ProfileModel extends WlModelAbstract
    * @get result
    * @var string|null
    */
-  public $k_geo_region = null;
+  public $k_geo_region;
 
   /**
    * The name of the city in the address.
@@ -47,57 +45,57 @@ class ProfileModel extends WlModelAbstract
    * @get result
    * @var string|null
    */
-  public $s_city = null;
+  public $s_city;
 
   /**
-   * The client’s name as listed in their address.
+   * The client name as listed in their address.
    *
    * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
    */
-  public $s_name = null;
+  public $s_name;
 
   /**
-   * The client’s phone number.
+   * The client phone number.
    *
    * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
    */
-  public $s_phone = null;
+  public $s_phone;
 
   /**
-   * The client’s postal or zip code.
+   * The client postal or zip code.
    *
    * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
    */
-  public $s_postal = null;
+  public $s_postal;
 
   /**
-   * The first line of the client’s address.
+   * The first line of the client address.
    *
    * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
    */
-  public $s_street1 = null;
+  public $s_street1;
 
   /**
-   * The second line of the client’s address.
+   * The second line of the client address.
    *
    * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
    */
-  public $s_street2 = null;
+  public $s_street2;
 
   /**
    * The key of the user whose data should be retrieved.

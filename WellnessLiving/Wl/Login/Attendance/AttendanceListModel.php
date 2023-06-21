@@ -14,15 +14,17 @@ class AttendanceListModel extends WlModelAbstract
    * Each element is an array with the following fields:
    * <dl>
    *   <dt>array <var>a_photo</var></dt>
-   *   <dd>Information about the user's photo. The information returned has the following structure:<dl>
-   *     <dt>int <var>i_height</var></dt>
-   *     <dd>The height of the photo.</dd>
-   *     <dt>int <var>i_width</var></dt>
-   *     <dd>The width of the photo.</dd>
-   *     <dt>string <var>is_empty</var></dt>
-   *     <dd>This will be <tt>true</tt> if a photo hasn't been set yet.</dd>
-   *     <dt>string <var>s_url</var></dt>
-   *     <dd>The URL of the photo.</dd>
+   *   <dd>
+   *     Information about the user's photo. The information returned has the following structure:
+   *     <dl>
+   *       <dt>int <var>i_height</var></dt>
+   *       <dd>The height of the photo.</dd>
+   *       <dt>int <var>i_width</var></dt>
+   *       <dd>The width of the photo.</dd>
+   *       <dt>string <var>is_empty</var></dt>
+   *       <dd>This will be <tt>true</tt> if a photo hasn't been set yet.</dd>
+   *       <dt>string <var>s_url</var></dt>
+   *       <dd>The URL of the photo.</dd>
    *     </dl>
    *   </dd>
    *   <dt>array <var>a_progress</var></dt>
@@ -34,7 +36,7 @@ class AttendanceListModel extends WlModelAbstract
    *   <dt>array <var>a_wearable</var></dt>
    *   <dd>A list of information pertaining to the client's wearables.</dd>
    *   <dt>bool <var>can_profile</var></dt>
-   *   <dd>If <tt>true</tt>, the current user can access this client’s profile.</dd>
+   *   <dd>If <tt>true</tt>, the current user can access this client profile.</dd>
    *   <dt>string <var>dt_book</var></dt>
    *   <dd>The date the session was booked, in UTC.</dd>
    *   <dt>string <var>dt_date</var></dt>
@@ -44,7 +46,7 @@ class AttendanceListModel extends WlModelAbstract
    *   <dt>string <var>dt_register</var></dt>
    *   <dd>The date the client checked in for the visit, in UTC.</dd>
    *   <dt>string <var>html_age</var></dt>
-   *   <dd>The client’s age.</dd>
+   *   <dd>The client age.</dd>
    *   <dt>string <var>html_book_by</var></dt>
    *   <dd>The name of the person who booked this visit.</dd>
    *   <dt>string <var>html_gender_class</var></dt>
@@ -68,7 +70,7 @@ class AttendanceListModel extends WlModelAbstract
    *   <dt>int <var>id_program</var></dt>
    *   <dd>The program ID of the Purchase Option. One of the {@link \WellnessLiving\WlProgramSid} constants.</dd>
    *   <dt>int <var>id_visit</var></dt>
-   *   <dd>The status of the visit. One of the {@link \Wl\Visit\VisitSid} constants.</dd>
+   *   <dd>The status of the visit. One of the {@link \Wellnessliving\Wl\Visit\VisitSid} constants.</dd>
    *   <dt>bool <var>is_attend</var></dt>
    *   <dd>This will be <tt>true</tt> if the client has attended the visit.</dd>
    *   <dt>bool <var>is_duration_pass</var></dt>
@@ -107,7 +109,7 @@ class AttendanceListModel extends WlModelAbstract
    *   <dt>string <var>k_visit</var></dt>
    *   <dd>The key of the visit.</dd>
    *   <dt>array <var>[o_purchase_item]</var></dt>
-   *   <dd>The purchase used to pay for the session./dd>
+   *   <dd>The purchase used to pay for the session.</dd>
    *   <dt>string <var>s_expire</var></dt>
    *   <dd>The expiry information for the Purchase Option. This field is deprecated, use the text_ version instead.</dd>
    *   <dt>string <var>s_firstname</var></dt>
@@ -121,9 +123,9 @@ class AttendanceListModel extends WlModelAbstract
    *   <dt>string <var>text_expire</var></dt>
    *   <dd>The expiry information for the Purchase Option.</dd>
    *   <dt>string <var>text_firstname</var></dt>
-   *   <dd>The client’s first name.</dd>
+   *   <dd>The client first name.</dd>
    *   <dt>string <var>text_lastname</var></dt>
-   *   <dd>The client’s last name.</dd>
+   *   <dd>The client last name.</dd>
    *   <dt>string <var>text_note</var></dt>
    *   <dd>Any notes tied to the client.</dd>
    *   <dt>string <var>text_promotion</var></dt>
@@ -137,10 +139,12 @@ class AttendanceListModel extends WlModelAbstract
    *   <dt>string <var>text_wearable</var></dt>
    *   <dd>The wearable device ID.</dd>
    *   <dt>string <var>uid</var></dt>
-   *   <dd>The client’s user key.</dd>
+   *   <dd>The client user key.</dd>
    *   <dt>string <var>uid_book</var></dt>
-   *   <dd>The key of the user who made the booking.
-   *     If differing from <tt>uid</tt>, the booking could have been made by a staff or family member.</dd>
+   *   <dd>
+   *     The key of the user who made the booking.
+   *     If differing from <tt>uid</tt>, the booking could have been made by a staff or family member.
+   *   </dd>
    *   <dt>string <var>url-cancel</var></dt>
    *   <dd>The URL that can be used to cancel the visit.</dd>
    *   <dt>string <var>url-cancel-admin</var></dt>
@@ -154,33 +158,35 @@ class AttendanceListModel extends WlModelAbstract
    * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
-  public $a_list_active = [];
+  public $a_list_active;
 
   /**
    * The list of clients who have confirmed their attendance.
+   * Has the same structure as {@link \Wellnessliving\Wl\Login\Attendance\AttendanceListModel::$a_list_active} property.
    *
    * @get result
-   * @var array
+   * @var array[]
    */
-  public $a_list_confirm = [];
+  public $a_list_confirm;
 
   /**
    * The list of clients who are on the wait list.
+   * Has the same structure as {@link \Wellnessliving\Wl\Login\Attendance\AttendanceListModel::$a_list_active} property.
    *
    * @get result
-   * @var array
+   * @var array[]
    */
-  public $a_list_wait = [];
+  public $a_list_wait;
 
   /**
-   * The date of the class or event session.
+   * The local date of the class or event session.
    *
    * @get get
    * @var string
    */
-  public $dt_date_local = null;
+  public $dt_date_local = '';
 
   /**
    * The maximum capacity of the class or event session.
@@ -188,7 +194,15 @@ class AttendanceListModel extends WlModelAbstract
    * @get result
    * @var int
    */
-  public $i_capacity = null;
+  public $i_capacity;
+
+  /**
+   * Count client on the attendance.
+   *
+   * @get result
+   * @var int
+   */
+  public $i_client;
 
   /**
    * If <tt>true</tt>, then return the purchase used to pay for session.
@@ -197,7 +211,7 @@ class AttendanceListModel extends WlModelAbstract
    * @get get
    * @var bool
    */
-  public $is_purchase_info_return=false;
+  public $is_purchase_info_return = false;
 
   /**
    * The appointment key. Not used if requesting information for a class or event session.
@@ -205,7 +219,7 @@ class AttendanceListModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $k_appointment = null;
+  public $k_appointment = '0';
 
   /**
    * The business key.
@@ -213,7 +227,7 @@ class AttendanceListModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $k_business = null;
+  public $k_business = '0';
 
   /**
    * The class period key. Not used if requesting information for an appointment.
@@ -221,7 +235,7 @@ class AttendanceListModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $k_class_period = null;
+  public $k_class_period = '0';
 
   /**
    * The Location key.
@@ -229,7 +243,7 @@ class AttendanceListModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $k_location = null;
+  public $k_location;
 }
 
 ?>

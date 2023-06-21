@@ -15,29 +15,25 @@ class ListModel extends WlModelAbstract
    * The order of items in this array is the order in which the elements should be displayed.
    *
    * @get result
-   * @var array
+   * @var string[]
    */
-  public $a_activity = [];
+  public $a_activity;
 
   /**
    * The key of the business to show information for.
    *
-   * This will be `null` if not set yet.
-   *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_business = null;
+  public $k_business = '0';
 
   /**
-   * The ID of the client to show information for.
-   *
-   * This will be `null` if not set yet.
+   * The key of the client to show information for.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $uid = null;
+  public $uid = '0';
 }
 
 ?>

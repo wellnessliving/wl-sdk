@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Wl\Video\Category;
 
@@ -18,7 +18,7 @@ class CategoryListModel extends WlModelAbstract
   public $a_order;
 
   /**
-   * The business video library categories as found in {@link CategoryListModel::k_business}.
+   * The business video library categories as found in {@link \Wellnessliving\Wl\Video\Category\CategoryListModel::$k_business}.
    *
    * Each element has the following structure: <dl>
    *   <dt>bool <var>can_delete</var></dt>

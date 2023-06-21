@@ -105,7 +105,7 @@ class WlProgramSid
   /**
    * Video Membership.
    */
-  public const VIDEO_MEMBERSHIP = 23;
+  const VIDEO_MEMBERSHIP = 23;
 
   /**
    * Gym Pass.

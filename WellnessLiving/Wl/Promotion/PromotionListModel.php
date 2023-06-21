@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Wl\Promotion;
 
@@ -16,7 +16,7 @@ class PromotionListModel extends WlModelAbstract
    *     int <var>id_program</var>
    *   </dt>
    *   <dd>
-   *     The promotion program. One of the {@link WlProgramSid} constants.
+   *     The promotion program. One of the {@link \WellnessLiving\WlProgramSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_promotion</var>

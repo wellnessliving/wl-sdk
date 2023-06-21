@@ -20,7 +20,7 @@ class BusinessTypeListModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_business_type;
+  public $a_business_type = [];
 }
 
 ?>
