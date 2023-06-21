@@ -2,6 +2,8 @@
 
 namespace WellnessLiving\Wl\Appointment\Book\Payment;
 
+use WellnessLiving\Wl\Classes\Tab\TabSid;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -12,10 +14,113 @@ use WellnessLiving\WlModelAbstract;
 class PaymentMultipleModel extends WlModelAbstract
 {
   /**
-   * Structure of this array corresponds to the structure of
-   * the <tt>Wl_Appointment_Book_ProviderAbstractModel</tt> class in JavaScript,
-   * which is normally used as its subclass <tt>Wl_Appointment_Book_ProviderModel</tt>.
-   * Property of the object is stored as an element of this array with the same name.
+   * Booking process information:
+   * <dl>
+   *   <dt>
+   *     array[] <var>a_provider</var>.
+   *   </dt>
+   *   <dd>
+   *     Batch of appointments to be booked. Each element has values:
+   *     <dl>
+   *       <dt>
+   *         array <var>a_product</var>
+   *       </dt>
+   *       <dd>
+   *         Add-on list.
+   *         Keys are add-on keys.
+   *         Values are add-on quantity.
+   *       </dd>
+   *       <dt>
+   *         int <var>i_duration</var>
+   *       </dt>
+   *       <dd>
+   *         Asset duration in minutes. Not empty for asset booking only.
+   *       </dd>
+   *       <dt>
+   *         int <var>id_purchase_item</var>
+   *       </dt>
+   *       <dd>
+   *         ID of item to purchase. One of {@link WlPurchaseItemSid} constants.
+   *         Not empty for new options purchase.
+   *       </dd>
+   *       <dt>
+   *         bool <var>is_pay_later</var>
+   *       </dt>
+   *       <dd>
+   *         <tt>true</tt> if customer wants to on visit; <tt>false</tt> if user wants to pay now.
+   *       </dd>
+   *       <dt>
+   *         bool <var>is_purchase_previous</var>
+   *       </dt>
+   *       <dd>
+   *         <tt>true</tt> if purchase option that was selected for another appointment from the batch
+   *         must be used for this appointment; <tt>false</tt> otherwise.
+   *       </dd>
+   *       <dt>
+   *         bool <var>is_wait_list_unpaid</var>
+   *       </dt>
+   *       <dd>
+   *         <tt>true</tt> if customer is booking to wait list and don't have to pay;
+   *         <tt>false</tt> if customer is booking to active list or wait list should be paid.
+   *       </dd>
+   *       <dt>
+   *         string <var>k_id</var>
+   *       </dt>
+   *       <dd>
+   *         Key of option to purchase.
+   *         Not empty for new option purchase.
+   *       </dd>
+   *       <dt>
+   *         string <var>k_login_prize</var>
+   *       </dt>
+   *       <dd>
+   *         Key of customer's prize to pay for booking. Not empty for free booking by prize.
+   *       </dd>
+   *       <dt>
+   *         string <var>k_login_promotion</var>
+   *       </dt>
+   *       <dd>
+   *         Key of already purchased option. Not empty to use already purchase option.
+   *       </dd>
+   *       <dt>
+   *         string <var>k_resource</var>
+   *       </dt>
+   *       <dd>
+   *         Key of booking asset.
+   *         Not empty only for asset booking.
+   *       </dd>
+   *       <dt>
+   *         string <var>k_service</var>
+   *       </dt>
+   *       <dd>
+   *         Key of booking appointment.
+   *         Not empty only for appointment booking.
+   *       </dd>
+   *       <dt>
+   *         string <var>s_signature</var>
+   *       </dt>
+   *       <dd>
+   *         Signature for purchase option contract.
+   *         Data from canvas html element or signature pad.
+   *         Not empty only if purchase option requires contract signing.
+   *       </dd>
+   *     </dl>
+   *   </dt>
+   *   <dt>
+   *     int <var>id_class_tab</var>
+   *   </dt>
+   *   <dd>
+   *     "Book now" tab. One of {@link TabSid} constants.
+   *   </dd>
+   *   <dt>
+   *     string <var>m_tip_appointment</var>
+   *   </dt>
+   *   <dd>
+   *     Tips amount.
+   *   </dd>
+   * </dl>
+   *
+   * Set this field value in a case of GET request.
    *
    * @get get
    * @var array
@@ -23,10 +128,9 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_book_data = [];
 
   /**
-   * Structure of this array corresponds to the structure of
-   * the <tt>Wl_Appointment_Book_ProviderAbstractModel</tt> class in JavaScript,
-   * which is normally used as its subclass <tt>Wl_Appointment_Book_ProviderModel</tt>.
-   * Property of the object is stored as an element of this array with the same name.
+   * Copy of <var>$a_book_data</var>.
+   *
+   * Set this field value in a case of POST request.
    *
    * @post post
    * @var array
@@ -34,7 +138,9 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_book_data_post = [];
 
   /**
-   * Payment type for the appointment, one of {@link WlAppointmentPaySid} constants.
+   * Payment conditions of booked appointments.
+   *
+   * Each element is one of {@link WlAppointmentPaySid} constants.
    *
    * @post result
    * @var int[]
@@ -137,10 +243,13 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_purchase;
 
   /**
-   * Purchase item IDs from the database.
+   * Keys of purchased items.
+   *
+   * 1st level array is list of appointments from batch.
+   * 2nd level array is list of items purchased for this appointment.
    *
    * @post result
-   * @var string[]|null
+   * @var string[][]|null
    */
   public $a_purchase_item;
 
@@ -155,15 +264,15 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_quiz_response = [];
 
   /**
-   * The price of service with the tax without surcharge.
+   * List of amount to pay for appointments from batch with the tax without surcharge.
    *
    * @get result
-   * @var string
+   * @var string[]
    */
   public $a_total;
 
   /**
-   * Key of source mode. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * ID of source mode. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    *
    * @get get
    * @post get
@@ -215,7 +324,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $m_surcharge;
 
   /**
-   * The tax of service.
+   * The amount of tax to pay.
    *
    * @get result
    * @var string
