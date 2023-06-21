@@ -17,7 +17,7 @@ class PaymentMultipleModel extends WlModelAbstract
    * Booking process information:
    * <dl>
    *   <dt>
-   *     array[] <var>a_provider</var>.
+   *     array[] <var>a_provider</var>
    *   </dt>
    *   <dd>
    *     Batch of appointments to be booked. Each element has values:
@@ -146,6 +146,18 @@ class PaymentMultipleModel extends WlModelAbstract
    * @var int[]
    */
   public $a_pay;
+
+  /**
+   * A list of payment sources.
+   *
+   * The value of this field is gathered from the payment form.
+   *
+   * See {@link \WellnessLiving\Wl\Catalog\Payment\PaymentModel::$a_pay_form} for a detailed description.
+   *
+   * @post post
+   * @var array
+   */
+  public $a_pay_form = [];
 
   /**
    * Information about selected login promotion.
