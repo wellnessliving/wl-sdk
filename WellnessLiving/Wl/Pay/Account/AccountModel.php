@@ -18,7 +18,7 @@ class AccountModel extends WlModelAbstract
    *     int <var>id_currency</var>
    *   </dt>
    *   <dd>
-   *     Currency ID. One of {@link \Wellnessliving\RsCurrencySid} constant.
+   *     Currency ID. One of {@link \WellnessLiving\RsCurrencySid} constant.
    *   </dd>
    *   <dt>
    *     string <var>k_currency</var>

@@ -5,12 +5,12 @@ namespace WellnessLiving\Core\Drive\ImageUpload;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Performs final action action to image uploaded with {@link \Wellnessliving\Core\Drive\ImageUpload\ImageUploadTemporaryModel}.
+ * Performs final action action to image uploaded with {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadTemporaryModel}.
  */
 class ImageUploadModel extends WlModelAbstract
 {
   /**
-   * Image information for every ID. Every element contains values like {@link \Wellnessliving\Core\Drive\ImageUpload\ImageUploadModel::_get()} result.
+   * Image information for every ID. Every element contains values like {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadModel::_get()} result.
    *
    * @post result
    * @var array[]
@@ -120,7 +120,7 @@ class ImageUploadModel extends WlModelAbstract
   public $is_temporary = false;
 
   /**
-   * ID of image within {@link \Wellnessliving\Core\Drive\ImageUpload\ImageUploadModel::$s_class}.
+   * ID of image within {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadModel::$s_class}.
    *
    * @get get
    * @put get
@@ -165,7 +165,7 @@ class ImageUploadModel extends WlModelAbstract
   public $s_link;
 
   /**
-   * List of image IDs within {@link \Wellnessliving\Core\Drive\ImageUpload\ImageUploadModel::$s_class}. Serialised via JSON.
+   * List of image IDs within {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadModel::$s_class}. Serialised via JSON.
    *
    * <tt>null</tt> if no data sent from client.
    *

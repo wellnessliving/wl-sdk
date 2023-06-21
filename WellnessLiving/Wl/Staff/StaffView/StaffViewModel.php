@@ -7,8 +7,8 @@ use WellnessLiving\WlModelAbstract;
 /**
  * An endpoint that returns information about a specified staff member.
  *
- * This method can accept one staff key {@link \Wellnessliving\Wl\Staff\StaffView\StaffViewModel::$k_staff} or a staff list
- * {@link \Wellnessliving\Wl\Staff\StaffView\StaffViewModel::$a_staff_list} but not both (an exception would be thrown).
+ * This method can accept one staff key {@link \WellnessLiving\Wl\Staff\StaffView\StaffViewModel::$k_staff} or a staff list
+ * {@link \WellnessLiving\Wl\Staff\StaffView\StaffViewModel::$a_staff_list} but not both (an exception would be thrown).
  */
 class StaffViewModel extends WlModelAbstract
 {
@@ -154,7 +154,7 @@ class StaffViewModel extends WlModelAbstract
   /**
    * The staff member key.
    * A staff member can work for more than one business. This key can be found using the
-   * {@link \Wellnessliving\Wl\Staff\StaffList\StaffListModel} endpoint.
+   * {@link \WellnessLiving\Wl\Staff\StaffList\StaffListModel} endpoint.
    *
    * @get get
    * @var string

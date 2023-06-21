@@ -11,7 +11,7 @@ class PaymentPostModel extends WlModelAbstract
 {
   /**
    * Information detailing an appointment booking.
-   * Same as {@link \Wellnessliving\Wl\Appointment\Book\Payment\PaymentModel::$a_book_data}.
+   * Same as {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentModel::$a_book_data}.
    *
    * @post post
    * @var array
@@ -121,7 +121,7 @@ class PaymentPostModel extends WlModelAbstract
   public $a_uid = [];
 
   /**
-   * The key of source mode. A constant of {@link \Wellnessliving\Wl\Mode\ModeSid}.
+   * The key of source mode. A constant of {@link \WellnessLiving\Wl\Mode\ModeSid}.
    *
    * @get get
    * @post get
@@ -130,7 +130,7 @@ class PaymentPostModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * The payment type for the appointment. A constant of {@link \Wellnessliving\RsAppointmentPaySid}.
+   * The payment type for the appointment. A constant of {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid}.
    *
    * @post result
    * @var int
@@ -156,7 +156,7 @@ class PaymentPostModel extends WlModelAbstract
   public $is_walk_in = false;
 
   /**
-   * The item key. Depends of {@link \Wellnessliving\Wl\Appointment\Book\Payment\PaymentModel::$id_purchase_item} property.
+   * The item key. Depends of {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentModel::$id_purchase_item} property.
    *
    * @get get
    * @post get
@@ -240,7 +240,7 @@ class PaymentPostModel extends WlModelAbstract
 
   /**
    * Variable price. Is set only during booking an appointment with variable type of the price
-   *   {@link \Wellnessliving\RsServicePriceSid::VARIES} from spa backend {@link \Wellnessliving\Wl\Mode\ModeSid::SPA_BACKEND}.
+   *   {@link \WellnessLiving\RsServicePriceSid::VARIES} from spa backend {@link \WellnessLiving\Wl\Mode\ModeSid::SPA_BACKEND}.
    *
    * @get get
    * @var string

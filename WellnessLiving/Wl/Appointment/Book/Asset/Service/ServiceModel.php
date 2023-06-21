@@ -102,7 +102,7 @@ class ServiceModel extends WlModelAbstract
   public $dt_start = '';
 
   /**
-   * Mode type, one of {@link \Wellnessliving\Wl\Mode\ModeSid} constants.
+   * Mode type, one of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    *
    * @get get
    * @var int

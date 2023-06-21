@@ -50,7 +50,7 @@ class ListModel extends WlModelAbstract
 
   /**
    * List of bank cards.
-   * Duplicate of the {@link \Wellnessliving\Wl\Pay\Bank\Card\ListModel::$a_bank_card}.
+   * Duplicate of the {@link \WellnessLiving\Wl\Pay\Bank\Card\ListModel::$a_bank_card}.
    *
    * @get result
    * @var array

@@ -37,7 +37,7 @@ class AddressModel extends WlModelAbstract
 
   /**
    * The primary key of a payment owner.
-   * This could be the business of the user depending on a {@link \Wellnessliving\Wl\Pay\Address\AddressModel::$id_pay_owner} value.
+   * This could be the business of the user depending on a {@link \WellnessLiving\Wl\Pay\Address\AddressModel::$id_pay_owner} value.
    *
    * @get get
    * @var string

@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class BulkBusinessHolidayModel extends WlModelAbstract
 {
   /**
-   * An array consisting of the business's closed day data for all locations by holiday keys {@link \Wellnessliving\Wl\Holiday\HolidayModel::$dl_work}.
+   * An array consisting of the business's closed day data for all locations by holiday keys {@link \WellnessLiving\Wl\Holiday\HolidayModel::$dl_work}.
    *
    * List of holidays. Values are arrays of holidays as follows:
    * <dl>

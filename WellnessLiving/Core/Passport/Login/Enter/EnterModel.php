@@ -36,7 +36,7 @@ class EnterModel extends WlModelAbstract
   /**
    * A copy of notepad that was used to hash user password.
    *
-   * See {@link \Wellnessliving\Core\Passport\Login\Enter\EnterModel::$s_password} for details.
+   * See {@link \WellnessLiving\Core\Passport\Login\Enter\EnterModel::$s_password} for details.
    *
    * @post post
    * @var string

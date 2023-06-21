@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * An endpoint that retrieves information about services in the current service category.
  *
- * This is a new version of the {@link \Wellnessliving\Wl\Appointment\Book\Service\ServiceListModel} endpoint.
+ * This is a new version of the {@link \WellnessLiving\Wl\Appointment\Book\Service\ServiceListModel} endpoint.
  * It allows for filtering a list of services by multiple book now tabs.
  */
 class ServiceList52Model extends WlModelAbstract
@@ -122,7 +122,7 @@ class ServiceList52Model extends WlModelAbstract
    *     int <var>i_price</var>
    *   </dt>
    *   <dd>
-   *     The price type ID. One of {@link \Wellnessliving\RsServicePriceSid} constants.
+   *     The price type ID. One of {@link \WellnessLiving\RsServicePriceSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>i_duration</var>
@@ -134,13 +134,13 @@ class ServiceList52Model extends WlModelAbstract
    *     int <var>id_book_flow</var>
    *   </dt>
    *   <dd>
-   *     The type of client booking flow. One of {@link \Wellnessliving\Wl\Service\ServiceBookFlowSid} constants.
+   *     The type of client booking flow. One of {@link \WellnessLiving\Wl\Service\ServiceBookFlowSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_service_require</var>
    *   </dt>
    *   <dd>
-   *     The required payment type ID. One of {@link \Wellnessliving\RsServiceRequireSid} constants.
+   *     The required payment type ID. One of {@link \WellnessLiving\RsServiceRequireSid} constants.
    *   </dd>
    *   <dt>
    *     bool <var>is_age_public</var>

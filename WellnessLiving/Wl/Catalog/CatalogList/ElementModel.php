@@ -152,7 +152,7 @@ class ElementModel extends WlModelAbstract
    *   <dd>Contains information about taxes. Structure of this array is described in {@link RsTax::$a_tax}.</dd>
    *
    *   <dt>string <var>id_purchase_option_view</var></dt>
-   *   <dd>Purchase option view type, one of {@link \Wellnessliving\Wl\Catalog\PurchaseOptionViewSid}.</dd>
+   *   <dd>Purchase option view type, one of {@link \WellnessLiving\Wl\Catalog\PurchaseOptionViewSid}.</dd>
    *
    *   <dt>string <var>m_discount_code</var></dt>
    *   <dd>Amount of discount code.</dd>
@@ -300,7 +300,7 @@ class ElementModel extends WlModelAbstract
   public $id_purchase_item;
 
   /**
-   * The ID of the item view category. One of {@link \Wellnessliving\Wl\Catalog\PurchaseOptionViewSid} constants.
+   * The ID of the item view category. One of {@link \WellnessLiving\Wl\Catalog\PurchaseOptionViewSid} constants.
    *
    * @get result
    * @var int
@@ -435,8 +435,8 @@ class ElementModel extends WlModelAbstract
    * </dl>
    * Must be serialized via JSON.
    *
-   * If you specify this field, you must NOT specify fields {@link \Wellnessliving\Wl\Catalog\CatalogList\ElementModel::$id_sale}, {@link \Wellnessliving\Wl\Catalog\CatalogList\ElementModel::$k_id},
-   * {@link \Wellnessliving\Wl\Catalog\CatalogList\ElementModel::$k_shop_product_option}.
+   * If you specify this field, you must NOT specify fields {@link \WellnessLiving\Wl\Catalog\CatalogList\ElementModel::$id_sale}, {@link \WellnessLiving\Wl\Catalog\CatalogList\ElementModel::$k_id},
+   * {@link \WellnessLiving\Wl\Catalog\CatalogList\ElementModel::$k_shop_product_option}.
    *
    * <tt>null</tt> to get information of only one item.
    *

@@ -12,10 +12,10 @@ class InfoCanCompleteModel extends WlModelAbstract
   /**
    * A list of sessions of an event that can be booked together.
    *
-   * This is the same as {@link \Wellnessliving\Wl\Book\Process\Info\InfoCanCompleteModel::$a_session_select_post}, but limited by query string
+   * This is the same as {@link \WellnessLiving\Wl\Book\Process\Info\InfoCanCompleteModel::$a_session_select_post}, but limited by query string
    * length and might fail if the user is booking more than 50 sessions at once. Therefore, using the POST method is preferable.
    *
-   * @deprecated Use {@link \Wellnessliving\Wl\Book\Process\Info\InfoCanCompleteModel::$a_session_select_post} along with POST call instead.
+   * @deprecated Use {@link \WellnessLiving\Wl\Book\Process\Info\InfoCanCompleteModel::$a_session_select_post} along with POST call instead.
    * @get get
    * @var array[]
    */

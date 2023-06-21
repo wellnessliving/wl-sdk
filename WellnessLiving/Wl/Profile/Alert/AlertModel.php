@@ -29,7 +29,7 @@ class AlertModel extends WlModelAbstract
    *     int <var>id_profile_note</var>
    *   </dt>
    *   <dd>
-   *     ID of alert type. One of {@link \Wellnessliving\RsProfileNoteSid} constants.
+   *     ID of alert type. One of {@link \WellnessLiving\RsProfileNoteSid} constants.
    *   </dd>
    *   <dt>
    *     string [<var>k_pay_account</var>]

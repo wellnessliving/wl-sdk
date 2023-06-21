@@ -54,9 +54,9 @@ class AssetListModel extends WlModelAbstract
    *       <dt>bool <var>is_empty</var></dt>
    *       <dd>Determines if the asset logo is empty.</dd>
    *       <dt>string <var>sid_image_icon</var></dt>
-   *       <dd>The icon name. String representation of one of the {@link \Wellnessliving\Wl\Resource\Image\ImageIconSid} constants. This is only set if the image kind equals to `image`.</dd>
+   *       <dd>The icon name. String representation of one of the {@link \WellnessLiving\Wl\Resource\Image\ImageIconSid} constants. This is only set if the image kind equals to `image`.</dd>
    *       <dt>string <var>sid_image_shape</var></dt>
-   *       <dd>The shape name. String representation of one of the {@link \Wellnessliving\Wl\Resource\Image\ImageShapeSid} constants. This is set only if the image kind equals to `shape`.</dd>
+   *       <dd>The shape name. String representation of one of the {@link \WellnessLiving\Wl\Resource\Image\ImageShapeSid} constants. This is set only if the image kind equals to `shape`.</dd>
    *       <dt>string <var>url</var></dt>
    *       <dd>The asset logo URL.</dd>
    *     </dl>
@@ -71,7 +71,7 @@ class AssetListModel extends WlModelAbstract
    *       <dt>int <var>i_duration</var></dt>
    *       <dd>The asset duration in minutes.</dd>
    *       <dt>int <var>id_price</var></dt>
-   *       <dd>The asset period price type. One of {@link \Wellnessliving\RsServicePriceSid} constants.</dd>
+   *       <dd>The asset period price type. One of {@link \WellnessLiving\RsServicePriceSid} constants.</dd>
    *       <dt>sting <var>m_price</var></dt>
    *       <dd>The asset period price.</dd>
    *     </dl>
@@ -88,7 +88,7 @@ class AssetListModel extends WlModelAbstract
    *   <dt>string <var>html_title</var></dt>
    *   <dd>The resource name.</dd>
    *   <dt>int <var>id_service_require</var></dt>
-   *   <dd>The purchase rule. One of the {@link \Wellnessliving\RsServiceRequireSid} constants.</dd>
+   *   <dd>The purchase rule. One of the {@link \WellnessLiving\RsServiceRequireSid} constants.</dd>
    *   <dt>bool <var>is_age_restricted</var></dt>
    *   <dd>Determines whether this service can't be booked due to age restrictions.</dd>
    *   <dt>string <var>k_class_tab</var></dt>
@@ -114,7 +114,7 @@ class AssetListModel extends WlModelAbstract
   public $dtl_date = false;
 
   /**
-   * Mode type, one of {@link \Wellnessliving\Wl\Mode\ModeSid} constants.
+   * Mode type, one of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    *
    * @get get
    * @var int
@@ -177,7 +177,7 @@ class AssetListModel extends WlModelAbstract
   /**
    * Timezone of date and time of asset booking.
    *
-   * Empty if {@link \Wellnessliving\Wl\Appointment\Book\Asset\AssetListModel::$dtl_date} not set or client can't change in which timezone dates should be shown.
+   * Empty if {@link \WellnessLiving\Wl\Appointment\Book\Asset\AssetListModel::$dtl_date} not set or client can't change in which timezone dates should be shown.
    *
    * @get get
    * @var string

@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * An endpoint that returns information about a business schedule for a specified date.
- * Version of {@link \Wellnessliving\Wl\Schedule\ScheduleList\StaffApp\ScheduleListModel} for access validation by security token.
+ * Version of {@link \WellnessLiving\Wl\Schedule\ScheduleList\StaffApp\ScheduleListModel} for access validation by security token.
  */
 class ScheduleListByTokenModel extends WlModelAbstract
 {
@@ -31,7 +31,7 @@ class ScheduleListByTokenModel extends WlModelAbstract
    *         int <var>id_visit</var>
    *       </dt>
    *       <dd>
-   *         Visit id. One of {@link \Wellnessliving\Wl\Visit\VisitSid} constants.
+   *         Visit id. One of {@link \WellnessLiving\Wl\Visit\VisitSid} constants.
    *       </dd>
    *       <dt>
    *         bool <var>is_confirmed</var>

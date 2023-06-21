@@ -35,7 +35,7 @@ class FlagModel extends WlModelAbstract
   /**
    * <tt>true</tt> if the user is flagged, <tt>false</tt> if otherwise.
    *
-   * <tt>null</tt> until loaded or when {@link \Wellnessliving\Wl\Location\Flag\FlagModel::$a_uid} was not set.
+   * <tt>null</tt> until loaded or when {@link \WellnessLiving\Wl\Location\Flag\FlagModel::$a_uid} was not set.
    *
    * @get result
    * @var bool

@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * Information about Purchase Options that can book specified session(s).
  *
- * @deprecated Use {@link \Wellnessliving\Wl\Book\Process\Purchase\Purchase56Model} instead.
+ * @deprecated Use {@link \WellnessLiving\Wl\Book\Process\Purchase\Purchase56Model} instead.
  */
 class PurchaseModel extends WlModelAbstract
 {
@@ -405,7 +405,7 @@ class PurchaseModel extends WlModelAbstract
   public $i_image_width = 0;
 
   /**
-   * Mode type. One of {@link \Wellnessliving\Wl\Mode\ModeSid} constants.
+   * Mode type. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    *
    * @get get
    * @post get

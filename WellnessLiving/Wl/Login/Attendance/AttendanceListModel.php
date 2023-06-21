@@ -70,7 +70,7 @@ class AttendanceListModel extends WlModelAbstract
    *   <dt>int <var>id_program</var></dt>
    *   <dd>The program ID of the Purchase Option. One of the {@link \WellnessLiving\WlProgramSid} constants.</dd>
    *   <dt>int <var>id_visit</var></dt>
-   *   <dd>The status of the visit. One of the {@link \Wellnessliving\Wl\Visit\VisitSid} constants.</dd>
+   *   <dd>The status of the visit. One of the {@link \WellnessLiving\Wl\Visit\VisitSid} constants.</dd>
    *   <dt>bool <var>is_attend</var></dt>
    *   <dd>This will be <tt>true</tt> if the client has attended the visit.</dd>
    *   <dt>bool <var>is_duration_pass</var></dt>
@@ -164,7 +164,7 @@ class AttendanceListModel extends WlModelAbstract
 
   /**
    * The list of clients who have confirmed their attendance.
-   * Has the same structure as {@link \Wellnessliving\Wl\Login\Attendance\AttendanceListModel::$a_list_active} property.
+   * Has the same structure as {@link \WellnessLiving\Wl\Login\Attendance\AttendanceListModel::$a_list_active} property.
    *
    * @get result
    * @var array[]
@@ -173,7 +173,7 @@ class AttendanceListModel extends WlModelAbstract
 
   /**
    * The list of clients who are on the wait list.
-   * Has the same structure as {@link \Wellnessliving\Wl\Login\Attendance\AttendanceListModel::$a_list_active} property.
+   * Has the same structure as {@link \WellnessLiving\Wl\Login\Attendance\AttendanceListModel::$a_list_active} property.
    *
    * @get result
    * @var array[]

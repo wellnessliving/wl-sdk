@@ -50,7 +50,7 @@ class ElementModel extends WlModelAbstract
   public $html_message;
 
   /**
-   * Total amount of account credits user got for {@link \Wellnessliving\Wl\Profile\Activity\ElementModel::$k_login_activity}. This field is a copy of result of {@link RsLoginActivity::reward()}.
+   * Total amount of account credits user got for {@link \WellnessLiving\Wl\Profile\Activity\ElementModel::$k_login_activity}. This field is a copy of result of {@link RsLoginActivity::reward()}.
    *
    * @get result
    * @var int
@@ -84,7 +84,7 @@ class ElementModel extends WlModelAbstract
   public $id_icon;
 
   /**
-   * The ID of the activity item returned by this endpoint. One of {@link \Wellnessliving\RsLoginActivityTypeSid} constants.
+   * The ID of the activity item returned by this endpoint. One of {@link \WellnessLiving\RsLoginActivityTypeSid} constants.
    *
    * @get result
    * @var int

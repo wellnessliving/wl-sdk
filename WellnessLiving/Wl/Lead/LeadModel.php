@@ -42,14 +42,14 @@ class LeadModel extends WlModelAbstract
    *     int <var>id_field_general</var>
    *   </dt>
    *   <dd>
-   *     The type of the general field. This is one of the {@link \Wellnessliving\RsFieldGeneralSid}.
+   *     The type of the general field. This is one of the {@link \WellnessLiving\RsFieldGeneralSid}.
    *     This value is only set if the field is one of the general fields.
    *   </dd>
    *   <dt>
    *     int <var>id_field_type</var>
    *   </dt>
    *   <dd>
-   *     The field type. This is one of the {@link \Wellnessliving\RsFieldTypeSid} constants.
+   *     The field type. This is one of the {@link \WellnessLiving\RsFieldTypeSid} constants.
    *   </dd>
    *   <dt>
    *     bool <var>is_require</var>
@@ -117,8 +117,8 @@ class LeadModel extends WlModelAbstract
 
   /**
    * The characters entered by the lead for the captcha test.
-   * This isn't necessary if the GET method returned an empty {@link \Wellnessliving\Wl\Lead\LeadModel::$url_captcha}.
-   * This field isn't necessary if the GET method returned an empty {@link \Wellnessliving\Wl\Lead\LeadModel::$url_captcha}.
+   * This isn't necessary if the GET method returned an empty {@link \WellnessLiving\Wl\Lead\LeadModel::$url_captcha}.
+   * This field isn't necessary if the GET method returned an empty {@link \WellnessLiving\Wl\Lead\LeadModel::$url_captcha}.
    *
    * @post post
    * @var string

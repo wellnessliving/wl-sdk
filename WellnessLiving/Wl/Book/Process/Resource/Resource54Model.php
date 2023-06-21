@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * Select assets for making a booking.
  *
- * Take into account {@link \Wellnessliving\Wl\Book\Process\ProcessSpaSid::QUIZ} step.
+ * Take into account {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid::QUIZ} step.
  */
 class Resource54Model extends WlModelAbstract
 {
@@ -239,7 +239,7 @@ class Resource54Model extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * Mode type. One of {@link \Wellnessliving\Wl\Mode\ModeSid} constants.
+   * Mode type. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    *
    * @get get
    * @post get

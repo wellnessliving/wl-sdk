@@ -8,7 +8,7 @@ use WellnessLiving\WlModelAbstract;
  * An endpoint that gets the details of a specified purchase.
  *
  * This endpoint may require different IDs to be specified for different types of purchases. The IDs required for a
- * specific item will be the same IDs returned from the {@link \Wellnessliving\Wl\Profile\PurchaseList\PurchaseListModel} endpoint.
+ * specific item will be the same IDs returned from the {@link \WellnessLiving\Wl\Profile\PurchaseList\PurchaseListModel} endpoint.
  */
 class PurchaseListElementModel extends WlModelAbstract
 {
@@ -342,7 +342,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $i_use_duration;
 
   /**
-   * The activation mode. One of the {@link \Wellnessliving\RsActivationSid} constants. This field is only added for promotions.
+   * The activation mode. One of the {@link \WellnessLiving\RsActivationSid} constants. This field is only added for promotions.
    *
    * @get result
    * @var int
@@ -550,7 +550,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $k_enrollment_book = '0';
 
   /**
-   * The key of the item. This can correspond to one of many values depending on {@link \Wellnessliving\Wl\Profile\PurchaseList\PurchaseListElementModel::$id_sale}.
+   * The key of the item. This can correspond to one of many values depending on {@link \WellnessLiving\Wl\Profile\PurchaseList\PurchaseListElementModel::$id_sale}.
    *
    * @get result
    * @var string

@@ -14,7 +14,7 @@ class ResponseListModel extends WlModelAbstract
    *  <dt>string <var>dtl_date</var></dt>
    *  <dd>Date of the request to fill out a quiz form.</dd>
    *  <dt>int <var>id_source</var></dt>
-   *  <dd>Place where request to fill out a quiz form occurred. One of {@link \Wellnessliving\Wl\Quiz\Response\SourceSid} constants.</dd>
+   *  <dd>Place where request to fill out a quiz form occurred. One of {@link \WellnessLiving\Wl\Quiz\Response\SourceSid} constants.</dd>
    *  <dt>bool <var>is_private</var></dt>
    *  <dd>
    *    Whether form can be viewed by staff member only after confirmation.
@@ -39,7 +39,7 @@ class ResponseListModel extends WlModelAbstract
    *  <dt>string <var>dtl_date</var></dt>
    *  <dd>Date of a request to fill out a quiz form.</dd>
    *  <dt>int <var>id_source</var></dt>
-   *  <dd>Place where request to fill out a quiz form occurred. One of {@link \Wellnessliving\Wl\Quiz\Response\SourceSid} constants.</dd>
+   *  <dd>Place where request to fill out a quiz form occurred. One of {@link \WellnessLiving\Wl\Quiz\Response\SourceSid} constants.</dd>
    *  <dt>bool <var>is_private</var></dt>
    *  <dd>
    *    Whether form can be viewed by staff member only after confirmation.

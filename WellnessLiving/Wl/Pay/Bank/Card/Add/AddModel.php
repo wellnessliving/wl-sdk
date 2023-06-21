@@ -66,7 +66,7 @@ class AddModel extends WlModelAbstract
    *     int <var>id_pay_actor</var>
    *   </dt>
    *   <dd>
-   *     Pay actor id. One of {@link \Wellnessliving\RsPayActorSid} constants.
+   *     Pay actor id. One of {@link \WellnessLiving\RsPayActorSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_pay_bank</var>
@@ -131,7 +131,7 @@ class AddModel extends WlModelAbstract
 
   /**
    * The payment owner ID. This is different from the user ID. It can be found with
-   * the {@link \Wellnessliving\Wl\Pay\Owner\OwnerModel}.
+   * the {@link \WellnessLiving\Wl\Pay\Owner\OwnerModel}.
    *
    * @get get
    * @post get

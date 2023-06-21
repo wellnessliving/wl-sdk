@@ -57,12 +57,12 @@ class PaymentModel extends WlModelAbstract
    *
    *          <dl>
    *            <dt>array <var>a_account</var></dt>
-   *            <dd>See {@link \Wellnessliving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel::$a_account} for a full description.</dd>
+   *            <dd>See {@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel::$a_account} for a full description.</dd>
    *            <dt>array <var>a_field</var></dt>
-   *            <dd>See {@link \Wellnessliving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel::$a_field} for a full description.</dd>
+   *            <dd>See {@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel::$a_field} for a full description.</dd>
    *          </dl>
    *
-   *          It's recommended to validate the fields using the POST method of the {@link \Wellnessliving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} model.
+   *          It's recommended to validate the fields using the POST method of the {@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} model.
    *       </dd>
    *       <dt>
    *         string [<var>dt_prorate</var>]
@@ -131,8 +131,8 @@ class PaymentModel extends WlModelAbstract
    *
    *          <p>Use the following models to work with this type of promotion:</p>
    *          <ul>
-   *            <li>{@link \Wellnessliving\Wl\Insurance\Catalog\ProgramListModel} to obtain list of active programs.</li>
-   *            <li>{@link \Wellnessliving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} to get and validate fields for a given program.</li>
+   *            <li>{@link \WellnessLiving\Wl\Insurance\Catalog\ProgramListModel} to obtain list of active programs.</li>
+   *            <li>{@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} to get and validate fields for a given program.</li>
    *          </ul>
    *       </dd>
    *       <dd>
@@ -263,7 +263,7 @@ class PaymentModel extends WlModelAbstract
   public $f_discount_percent = 0;
 
   /**
-   * The WellnessLiving mode type, one of the {@link \Wellnessliving\Wl\Mode\ModeSid} constants (required).
+   * The WellnessLiving mode type, one of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants (required).
    *
    * @post get
    * @var int

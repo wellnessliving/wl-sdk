@@ -278,12 +278,12 @@ class PurchaseModel extends WlModelAbstract
   public $a_reward_prize;
 
   /**
-   * List of selected services without current {@link \Wellnessliving\Wl\Appointment\Book\Purchase\PurchaseModel::$k_service}.
+   * List of selected services without current {@link \WellnessLiving\Wl\Appointment\Book\Purchase\PurchaseModel::$k_service}.
    *
    * The list of these services directly affects the list of selected promotions.
    * Depending on the number and order of services, there may be different results.
    *
-   * The current {@link \Wellnessliving\Wl\Appointment\Book\Purchase\PurchaseModel::$k_service} will be added to the end of this list.
+   * The current {@link \WellnessLiving\Wl\Appointment\Book\Purchase\PurchaseModel::$k_service} will be added to the end of this list.
    * It is worth considering this list as a list of previously selected services.
    *
    * Each element has the following structure:
@@ -419,7 +419,7 @@ class PurchaseModel extends WlModelAbstract
 
   /**
    * The service key used to select available Purchase Options.
-   * If multiple services are selected, they should be specified in {@link \Wellnessliving\Wl\Appointment\Book\Purchase\PurchaseModel::$a_service} array.
+   * If multiple services are selected, they should be specified in {@link \WellnessLiving\Wl\Appointment\Book\Purchase\PurchaseModel::$a_service} array.
    *
    * @get get
    * @var string

@@ -35,7 +35,7 @@ class PurchaseElementModel extends WlModelAbstract
 
   /**
    * The key of the purchase item in the database.
-   * The name of the table in the database depends on {@link \Wellnessliving\Wl\Book\Process\ProcessPurchaseElementModel::$id_purchase_item}.
+   * The name of the table in the database depends on {@link \WellnessLiving\Wl\Book\Process\ProcessPurchaseElementModel::$id_purchase_item}.
    *
    * @get get
    * @var string

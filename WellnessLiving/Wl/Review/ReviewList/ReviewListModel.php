@@ -13,7 +13,7 @@ use WellnessLiving\WlModelAbstract;
 class ReviewListModel extends WlModelAbstract
 {
   /**
-   * List of reviews. If passed {@link \Wellnessliving\Wl\Review\ReviewList\ReviewListModel::$i_page} then the result will be full, otherwise in result will be keys: <tt>k_review</tt>, <tt>uid</tt>.
+   * List of reviews. If passed {@link \WellnessLiving\Wl\Review\ReviewList\ReviewListModel::$i_page} then the result will be full, otherwise in result will be keys: <tt>k_review</tt>, <tt>uid</tt>.
    * <dl>
    *   <dt>
    *     bool <var>can_reply</var>
@@ -136,9 +136,9 @@ class ReviewListModel extends WlModelAbstract
   public $i_page;
 
   /**
-   * The order in which the review should be arranged. One of the {@link \Wellnessliving\Wl\Review\ReviewList\ReviewOrderSid} constants.
+   * The order in which the review should be arranged. One of the {@link \WellnessLiving\Wl\Review\ReviewList\ReviewOrderSid} constants.
    *
-   * If not passed use default order {@link \Wellnessliving\Wl\Review\ReviewList\ReviewOrderSid::LATEST}.
+   * If not passed use default order {@link \WellnessLiving\Wl\Review\ReviewList\ReviewOrderSid::LATEST}.
    *
    * @get get
    * @var int|null

@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * An endpoint that gets a list of purchases for a user.
  *
- * @deprecated Use {@link \Wellnessliving\Wl\Profile\PurchaseList\PurchaseListModel} instead.
+ * @deprecated Use {@link \WellnessLiving\Wl\Profile\PurchaseList\PurchaseListModel} instead.
  */
 class PurchaseListModel extends WlModelAbstract
 {

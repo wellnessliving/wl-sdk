@@ -39,16 +39,16 @@ class CatalogListModel extends WlModelAbstract
    *      The program ID, sets for promotions. One of {@link \WellnessLiving\WlProgramSid} constants. Set for promotions.
    *      <p>If `id_program` is {@link \WellnessLiving\WlProgramSid::INSURANCE_MEMBERSHIP}, then use:</p>
    *      <ul>
-   *        <li>{@link \Wellnessliving\Wl\Insurance\Catalog\ProgramListModel} to obtain a list of active programs.</li>
-   *        <li>{@link \Wellnessliving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} to get and validate fields for a given program.</li>
-   *        <li>{@link \Wellnessliving\Wl\Catalog\Payment\PaymentModel} for a program purchase.</li>
+   *        <li>{@link \WellnessLiving\Wl\Insurance\Catalog\ProgramListModel} to obtain a list of active programs.</li>
+   *        <li>{@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} to get and validate fields for a given program.</li>
+   *        <li>{@link \WellnessLiving\Wl\Catalog\Payment\PaymentModel} for a program purchase.</li>
    *      </ul>
    *   </dd>
    *   <dt>
    *     int <var>id_restriction</var>
    *   </dt>
    *   <dd>
-   *     Restriction ID. One of {@link \Wellnessliving\Wl\Shop\Product\PurchaseRestrictionSid} constants.
+   *     Restriction ID. One of {@link \WellnessLiving\Wl\Shop\Product\PurchaseRestrictionSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_sale</var>
@@ -66,8 +66,8 @@ class CatalogListModel extends WlModelAbstract
    *     bool <var>is_visit</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if this purchase option is suitable to pay for visit {@link \Wellnessliving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel::$k_visit}; <tt>false</tt> otherwise.
-   *     If {@link \Wellnessliving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel::$k_visit} is empty, always false.
+   *     <tt>true</tt> if this purchase option is suitable to pay for visit {@link \WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel::$k_visit}; <tt>false</tt> otherwise.
+   *     If {@link \WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel::$k_visit} is empty, always false.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>

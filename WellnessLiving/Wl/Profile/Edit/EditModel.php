@@ -16,10 +16,10 @@ use WellnessLiving\WlModelAbstract;
  *   business. A user in WellnessLiving can be in multiple businesses. There are some fields common among all business
  *   and others specific to one business.
  *
- * The type of field is described in `id_field_type`, which will be one of the {@link \Wellnessliving\RsFieldTypeSid} constants.
+ * The type of field is described in `id_field_type`, which will be one of the {@link \WellnessLiving\RsFieldTypeSid} constants.
  * Some fields have a general type which can have a specific format:
  * * Address - An array containing the following keys: `k_city`, `s_address`, `s_city`, and `s_postal`.
- * The `k_city` value can be retrieved via the {@link \Wellnessliving\Core\Geo\ComboboxModel} endpoint. The following is an example address array:
+ * The `k_city` value can be retrieved via the {@link \WellnessLiving\Core\Geo\ComboboxModel} endpoint. The following is an example address array:
  *
  * * Birthday -  A string containing the date in MySQL format (for example, `1987-06-05`).
  * * Email Address - An array containing the following keys:
@@ -67,7 +67,7 @@ class EditModel extends WlModelAbstract
   public $a_image_upload = [];
 
   /**
-   * A copy of the {@link \Wellnessliving\Wl\Profile\Edit\EditModel::$a_change}.
+   * A copy of the {@link \WellnessLiving\Wl\Profile\Edit\EditModel::$a_change}.
    * This is used for POST requests when creating a new user.
    *
    * @post post
@@ -80,11 +80,11 @@ class EditModel extends WlModelAbstract
    * Array values are the field values. The array has the following structure:
    * <dl>
    *   <dt>int [<var>id_field_general</var>]</dt>
-   *   <dd>The ID of a system field. One of {@link \Wellnessliving\RsFieldGeneralSid} constants. This value is only defined if <var>id_field_type</var>={@link \Wellnessliving\RsFieldTypeSid::GENERAL}.</dd>
+   *   <dd>The ID of a system field. One of {@link \WellnessLiving\RsFieldGeneralSid} constants. This value is only defined if <var>id_field_type</var>={@link \WellnessLiving\RsFieldTypeSid::GENERAL}.</dd>
    *   <dt>bool <var>is_require</var></dt>
    *   <dd>Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional.</dd>
    *   <dt>int <var>id_field_type</var></dt>
-   *   <dd>The type of field. This is one of the {@link \Wellnessliving\RsFieldTypeSid} constants.</dd>
+   *   <dd>The type of field. This is one of the {@link \WellnessLiving\RsFieldTypeSid} constants.</dd>
    *   <dt>string <var>k_field</var></dt>
    *   <dd>The field ID (<var>k_field</var>). A copy of the key of this array element.</dd>
    *   <dt>string <var>s_title</var></dt>
@@ -99,8 +99,8 @@ class EditModel extends WlModelAbstract
   public $a_structure;
 
   /**
-   * ID of registration source. One of {@link \Wellnessliving\Wl\Profile\RegisterSourceSid} constants.
-   * If empty {@link \Wellnessliving\Wl\Profile\RegisterSourceSid::SELF} is used.
+   * ID of registration source. One of {@link \WellnessLiving\Wl\Profile\RegisterSourceSid} constants.
+   * If empty {@link \WellnessLiving\Wl\Profile\RegisterSourceSid::SELF} is used.
    *
    * @get get
    * @post get

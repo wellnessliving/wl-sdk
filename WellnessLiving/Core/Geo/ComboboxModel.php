@@ -28,7 +28,7 @@ class ComboboxModel extends WlModelAbstract
   /**
    * The Locale ID that is used as a filter. Generally a locale is a country.
    *
-   * One of {@link \Wellnessliving\Core\Locale\LocaleSid} constants.
+   * One of {@link \WellnessLiving\Core\Locale\LocaleSid} constants.
    *
    * `0` means to search in all locales.
    *

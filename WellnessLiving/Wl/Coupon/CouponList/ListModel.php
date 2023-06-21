@@ -16,7 +16,7 @@ class ListModel extends WlModelAbstract
    *     int <var>id_type</var>
    *   </dt>
    *   <dd>
-   *     The type of coupon. One of {@link \Wellnessliving\Wl\Coupon\TypeSid} constants.
+   *     The type of coupon. One of {@link \WellnessLiving\Wl\Coupon\TypeSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_coupon</var>

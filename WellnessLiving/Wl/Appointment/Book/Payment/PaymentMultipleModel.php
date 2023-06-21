@@ -2,14 +2,12 @@
 
 namespace WellnessLiving\Wl\Appointment\Book\Payment;
 
-use WellnessLiving\Wl\Classes\Tab\TabSid;
-use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
  * Allows to pay an appointment or appointment purchase option for the client.
  *
- * Only difference from {@link PaymentModel} is possibility to pay for a lot of appointments at the same time.
+ * Only difference from {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentModel} is possibility to pay for a lot of appointments at the same time.
  */
 class PaymentMultipleModel extends WlModelAbstract
 {
@@ -40,7 +38,7 @@ class PaymentMultipleModel extends WlModelAbstract
    *         int <var>id_purchase_item</var>
    *       </dt>
    *       <dd>
-   *         ID of item to purchase. One of {@link WlPurchaseItemSid} constants.
+   *         ID of item to purchase. One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
    *         Not empty for new options purchase.
    *       </dd>
    *       <dt>
@@ -105,12 +103,12 @@ class PaymentMultipleModel extends WlModelAbstract
    *         Not empty only if purchase option requires contract signing.
    *       </dd>
    *     </dl>
-   *   </dt>
+   *   </dd>
    *   <dt>
    *     int <var>id_class_tab</var>
    *   </dt>
    *   <dd>
-   *     "Book now" tab. One of {@link TabSid} constants.
+   *     "Book now" tab. One of {@link \WellnessLiving\Wl\Classes\Tab\TabSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>m_tip_appointment</var>
@@ -128,7 +126,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_book_data = [];
 
   /**
-   * Copy of <var>$a_book_data</var>.
+   * Copy of {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentMultipleModel::$a_book_data}.
    *
    * Set this field value in a case of POST request.
    *
@@ -138,9 +136,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_book_data_post = [];
 
   /**
-   * Payment conditions of booked appointments.
-   *
-   * Each element is one of {@link WlAppointmentPaySid} constants.
+   * Payment type for the appointment, one of {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid} constants.
    *
    * @post result
    * @var int[]
@@ -150,7 +146,7 @@ class PaymentMultipleModel extends WlModelAbstract
   /**
    * A list of payment sources to pay with.
    *
-   * Structure of this array corresponds structure of {@link \WellnessLiving\Wl\Catalog\Payment\PaymentModel::$a_pay_form} for a detailed description.
+   * Structure of this array corresponds structure of {@link RsPayForm::$a_pay_source}.
    *
    * @post post
    * @var array[]
@@ -219,7 +215,7 @@ class PaymentMultipleModel extends WlModelAbstract
    *     string <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     Purchase item ID. One of {@link WlPurchaseItemSid} constant.
+   *     Purchase item ID. One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constant.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>
@@ -253,10 +249,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_purchase;
 
   /**
-   * Keys of purchased items.
-   *
-   * 1st level array is list of appointments from batch.
-   * 2nd level array is list of items purchased for this appointment.
+   * Purchase item IDs from the database.
    *
    * @post result
    * @var string[][]|null
@@ -265,8 +258,8 @@ class PaymentMultipleModel extends WlModelAbstract
 
   /**
    * List of quiz response keys.
-   * Key is a quiz key.
-   * Value is a response key.
+   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
+   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table.
    *
    * @post post
    * @var array

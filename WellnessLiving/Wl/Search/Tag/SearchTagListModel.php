@@ -19,8 +19,8 @@ class SearchTagListModel extends WlModelAbstract
    *   <dt>int <var>id_business_category</var></dt>
    *   <dd>
    *     The business category that can use this search tag.
-   *     One of the {@link \Wellnessliving\RsBusinessCategorySid} constants.
-   *     This can be found in the business information found in {@link \Wellnessliving\Wl\Business\DataModel::$id_category}.
+   *     One of the {@link \WellnessLiving\RsBusinessCategorySid} constants.
+   *     This can be found in the business information found in {@link \WellnessLiving\Wl\Business\DataModel::$id_category}.
    *   </dd>
    *   <dt>string <var>k_search_tag</var></dt>
    *   <dd>The key of the tag. The primary key in the table of tags.</dd>
