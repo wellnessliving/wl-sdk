@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Core\Passport\Login\Enter;
 
+use WellnessLiving\Sha3;
 use WellnessLiving\WlModelAbstract;
 
 /**
