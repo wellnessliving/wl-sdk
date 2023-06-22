@@ -69,16 +69,6 @@ class EnterModel extends WlModelAbstract
   public $s_remember = '';
 
   /**
-   * Optional URL to get captcha image.
-   *
-   * This field is filled in a case when a captcha code is required to sign in.
-   *
-   * @post error
-   * @var string
-   */
-  public $url_captcha;
-
-  /**
    * Optional url for redirection after sign in in web application.
    *
    * @post result
