@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class Finish47Model extends WlModelAbstract
 {
   /**
-   * A list of answers for the questions from {@link \Wellnessliving\Wl\Appointment\Book\Question\QuestionModel::$a_question}.
+   * A list of answers for the questions from {@link \WellnessLiving\Wl\Appointment\Book\Question\QuestionModel::$a_question}.
    * Key - hash of the question, value - answer for the question.
    *
    * @post post
@@ -36,7 +36,7 @@ class Finish47Model extends WlModelAbstract
   public $a_appointment;
 
   /**
-   * The documentation is the same as in {@link \Wellnessliving\Wl\Appointment\Book\Finish\FinishModel::$a_book_data}.
+   * The documentation is the same as in {@link \WellnessLiving\Wl\Appointment\Book\Finish\FinishModel::$a_book_data}.
    *
    * @post post
    * @var array
@@ -140,7 +140,7 @@ class Finish47Model extends WlModelAbstract
   public $a_visit;
 
   /**
-   * The booking mode ID. One of the {@link \Wellnessliving\Wl\Mode\ModeSid} constants.
+   * The booking mode ID. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    *
    * @post post
    * @var int
@@ -148,7 +148,7 @@ class Finish47Model extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * The payment type ID for the appointment. One of the {@link \Wellnessliving\RsAppointmentPaySid} constants.
+   * The payment type ID for the appointment. One of the {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid} constants.
    *
    * @post get
    * @var int

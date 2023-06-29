@@ -19,7 +19,7 @@ class NotepadModel extends WlModelAbstract
   public $s_hash;
 
   /**
-   * The notepad value, it is used to hash user's the password. Length is {@link \Wellnessliving\Core\Passport\Login\Enter\NotepadModel::NONCE_LENGTH} characters.
+   * The notepad value, it is used to hash user's the password. Length is {@link \WellnessLiving\Core\Passport\Login\Enter\NotepadModel::NONCE_LENGTH} characters.
    *
    * @get result
    * @var string

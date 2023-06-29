@@ -57,12 +57,12 @@ class PaymentModel extends WlModelAbstract
    *
    *          <dl>
    *            <dt>array <var>a_account</var></dt>
-   *            <dd>See {@link \Wellnessliving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel::$a_account} for a full description.</dd>
+   *            <dd>See {@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel::$a_account} for a full description.</dd>
    *            <dt>array <var>a_field</var></dt>
-   *            <dd>See {@link \Wellnessliving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel::$a_field} for a full description.</dd>
+   *            <dd>See {@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel::$a_field} for a full description.</dd>
    *          </dl>
    *
-   *          It's recommended to validate the fields using the POST method of the {@link \Wellnessliving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} model.
+   *          It's recommended to validate the fields using the POST method of the {@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} model.
    *       </dd>
    *       <dt>
    *         string [<var>dt_prorate</var>]
@@ -131,8 +131,8 @@ class PaymentModel extends WlModelAbstract
    *
    *          <p>Use the following models to work with this type of promotion:</p>
    *          <ul>
-   *            <li>{@link \Wellnessliving\Wl\Insurance\Catalog\ProgramListModel} to obtain list of active programs.</li>
-   *            <li>{@link \Wellnessliving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} to get and validate fields for a given program.</li>
+   *            <li>{@link \WellnessLiving\Wl\Insurance\Catalog\ProgramListModel} to obtain list of active programs.</li>
+   *            <li>{@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} to get and validate fields for a given program.</li>
    *          </ul>
    *       </dd>
    *       <dd>
@@ -236,7 +236,123 @@ class PaymentModel extends WlModelAbstract
   /**
    * A list of payment sources to pay with.
    *
-   * Structure of this array corresponds structure of {@link RsPayForm::$a_pay_source}.
+   * Each element has next keys:
+   * <dl>
+   *   <dt>
+   *     array [<var>a_pay_card</var>]
+   *   </dt>
+   *   <dd>
+   *     The payment card information:
+   *     <dl>
+   *       <dt>
+   *         array <var>a_pay_address</var>
+   *       </dt>
+   *       <dd>
+   *         The payment address:
+   *         <dl>
+   *           <dt>boolean <var>is_new</var></dt>
+   *           <dd>Set this value is <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
+   *           <dt>string [<var>k_geo_country</var>]</dt>
+   *           <dd>The key of the country used for the payment address. Specify to add a new address.</dd>
+   *           <dt>string [<var>k_geo_region</var>]</dt>
+   *           <dd>The key of the region for the payment address. Specify to add a new address.</dd>
+   *           <dt>string [<var>k_pay_address</var>]</dt>
+   *           <dd>The key of the saved payment address. Specify to use a saved address.</dd>
+   *           <dt>string [<var>s_city</var>]</dt>
+   *           <dd>The city used for the payment address. Specify to add a new address.</dd>
+   *           <dt>string [<var>s_name</var>]</dt>
+   *           <dd>The card name. Specify to add a new address.</dd>
+   *           <dt>string [<var>s_phone</var>]</dt>
+   *           <dd>The payment phone. Specify to add a new address.</dd>
+   *           <dt>string [<var>s_postal</var>]</dt>
+   *           <dd>The postal code for the payment address. Specify to add a new address.</dd>
+   *           <dt>string [<var>s_street1</var>]</dt>
+   *           <dd>The payment address. Specify to add a new address.</dd>
+   *           <dt>string [<var>s_street2</var>]</dt>
+   *           <dd>The optional payment address. Specify to add a new address.</dd>
+   *         </dl>
+   *       </dd>
+   *       <dt>
+   *         int [<var>i_csc</var>]
+   *       </dt>
+   *       <dd>
+   *         The credit card CSC. Specify to add a new card.
+   *       </dd>
+   *       <dt>
+   *         int [<var>i_month</var>]
+   *       </dt>
+   *       <dd>
+   *         The credit card expiration month. Specify to add a new card.
+   *       </dd>
+   *       <dt>
+   *         int [<var>i_year</var>]
+   *       </dt>
+   *       <dd>
+   *         The credit card expiration year. Specify to add a new card.
+   *       </dd>
+   *       <dt>
+   *         boolean <var>is_new</var>
+   *       </dt>
+   *       <dd>
+   *         <tt>1</tt> to add a new card; <tt>0</tt> to use a saved card.
+   *       </dd>
+   *       <dt>
+   *         string [<var>k_pay_bank</var>]
+   *       </dt>
+   *       <dd>
+   *         The key of a credit card. Specify to use saved card.
+   *       </dd>
+   *       <dt>
+   *         string [<var>s_comment</var>]
+   *       </dt>
+   *       <dd>
+   *         Optional comment(s). Specify to add a new card.
+   *       </dd>
+   *       <dt>
+   *         string [<var>s_number</var>]
+   *       </dt>
+   *       <dd>
+   *         The card number. Specify to add a new card.
+   *       </dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>
+   *     string <var>f_amount</var>
+   *   </dt>
+   *   <dd>
+   *     The amount of money to withdraw with this payment source.
+   *   </dd>
+   *   <dt>
+   *     boolean [<var>is_hide</var>]
+   *   </dt>
+   *   <dd>
+   *     Whether this payment method is hidden.
+   *   </dd>
+   *   <dt>
+   *     boolean [<var>is_success</var>=<tt>false</tt>]
+   *   </dt>
+   *   <dd>
+   *     Identifies whether this source was successfully charged.
+   *   </dd>
+   *   <dt>
+   *     string [<var>m_surcharge</var>]
+   *   </dt>
+   *   <dd>
+   *     The client-side calculated surcharge.
+   *   </dd>
+   *   <dt>
+   *     string [<var>s_index</var>]
+   *   </dt>
+   *   <dd>
+   *     The index of this form (optional).
+   *   </dd>
+   *   <dt>
+   *     string <var>sid_pay_method</var>
+   *   </dt>
+   *   <dd>
+   *     The payment method ID.
+   *   </dd>
+   * </dl>
    *
    * @post post
    * @var array[]
@@ -263,7 +379,7 @@ class PaymentModel extends WlModelAbstract
   public $f_discount_percent = 0;
 
   /**
-   * The WellnessLiving mode type, one of the {@link \Wellnessliving\Wl\Mode\ModeSid} constants (required).
+   * The WellnessLiving mode type, one of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants (required).
    *
    * @post get
    * @var int

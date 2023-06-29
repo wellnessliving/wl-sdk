@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * An endpoint that offers functionality for the class booking wizard on the "Class and Location" page.
  *
- * @deprecated Use {@link \Wellnessliving\Wl\Book\Process\Info\Info54Model} instead.
+ * @deprecated Use {@link \WellnessLiving\Wl\Book\Process\Info\Info54Model} instead.
  */
 class InfoModel extends WlModelAbstract
 {
@@ -171,7 +171,7 @@ class InfoModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     String representation of session duration.
-   *     Duration formatting method {@link \Wellnessliving\Wl\Book\Process\Info\InfoModel::_classDurationFormat()}.
+   *     Duration formatting method {@link \WellnessLiving\Wl\Book\Process\Info\InfoModel::_classDurationFormat()}.
    *   </dd>
    * </dl>
    *
@@ -355,7 +355,7 @@ class InfoModel extends WlModelAbstract
   public $i_wait_spot = 0;
 
   /**
-   * Mode type. One of {@link \Wellnessliving\Wl\Mode\ModeSid} constants.
+   * Mode type. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    *
    * @get get
    * @post get
@@ -394,7 +394,7 @@ class InfoModel extends WlModelAbstract
    *
    * The verification is based on the search for client's promotions and other features of the class/event.
    * But it does not take into account the presence of other mandatory steps.
-   * Their presence will be indicated by the {@link \Wellnessliving\Wl\Book\Process\Info\InfoModel::$is_next} flag.
+   * Their presence will be indicated by the {@link \WellnessLiving\Wl\Book\Process\Info\InfoModel::$is_next} flag.
    *
    * @post result
    * @var bool
@@ -567,7 +567,7 @@ class InfoModel extends WlModelAbstract
 
   /**
    * Text representation of the list of staffs.
-   * List of staff see {@link \Wellnessliving\Wl\Book\Process\Info\InfoModel::$a_staff}.
+   * List of staff see {@link \WellnessLiving\Wl\Book\Process\Info\InfoModel::$a_staff}.
    *
    * @get result
    * @var string

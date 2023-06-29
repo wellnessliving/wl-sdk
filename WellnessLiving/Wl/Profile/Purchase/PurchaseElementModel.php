@@ -8,10 +8,10 @@ use WellnessLiving\WlModelAbstract;
  * An endpoint that gets details of a specified purchase.
  *
  * This endpoint may require different IDs to be specified for different types of purchases.
- * The IDs required for a specific item will be the same IDs returned from the {@link \Wellnessliving\Wl\Profile\PurchaseList\PurchaseListModel}
+ * The IDs required for a specific item will be the same IDs returned from the {@link \WellnessLiving\Wl\Profile\PurchaseList\PurchaseListModel}
  * endpoint.
  *
- * @deprecated Use {@link \Wellnessliving\Wl\Profile\PurchaseList\PurchaseListElementModel} instead. It provides the same functionality
+ * @deprecated Use {@link \WellnessLiving\Wl\Profile\PurchaseList\PurchaseListElementModel} instead. It provides the same functionality
 and more.
  */
 class PurchaseElementModel extends WlModelAbstract
@@ -270,7 +270,7 @@ class PurchaseElementModel extends WlModelAbstract
   public $i_use;
 
   /**
-   * Activation mode. One on {@link \Wellnessliving\RsActivationSid} constants. This field is only added for promotions.
+   * Activation mode. One on {@link \WellnessLiving\RsActivationSid} constants. This field is only added for promotions.
    *
    * @get result
    * @var int

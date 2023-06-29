@@ -32,7 +32,7 @@ class DataModel extends WlModelAbstract
   public $i_page = 0;
 
   /**
-   * The report ID. One of the {@link \Wellnessliving\RsReportSid} constants.
+   * The report ID. One of the {@link \WellnessLiving\RsReportSid} constants.
    *
    * @get get
    * @var int
@@ -40,7 +40,7 @@ class DataModel extends WlModelAbstract
   public $id_report = 0;
 
   /**
-   * The report group ID. One of the {@link \Wellnessliving\RsReportGroupSid} constants that describes the time
+   * The report group ID. One of the {@link \WellnessLiving\RsReportGroupSid} constants that describes the time
    * period (day, week, month, or year) for the report to cover.
    *
    * @get get
@@ -49,7 +49,7 @@ class DataModel extends WlModelAbstract
   public $id_report_group = 0;
 
   /**
-   * The report view ID. One of the {@link \Wellnessliving\RsReportChartViewSid} constants.
+   * The report view ID. One of the {@link \WellnessLiving\RsReportChartViewSid} constants.
    *
    * @get get
    * @var int

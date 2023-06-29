@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * Select assets for making a booking.
  *
- * @deprecated Use {@link \Wellnessliving\Wl\Book\Process\Resource\Resource54Model} instead.
+ * @deprecated Use {@link \WellnessLiving\Wl\Book\Process\Resource\Resource54Model} instead.
  */
 class ResourceModel extends WlModelAbstract
 {
@@ -239,7 +239,7 @@ class ResourceModel extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * Mode type. One of {@link \Wellnessliving\Wl\Mode\ModeSid} constants.
+   * Mode type. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    *
    * @get get
    * @post get

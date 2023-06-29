@@ -8,15 +8,15 @@ use WellnessLiving\WlModelAbstract;
  * Completes the booking process for a service.
  *
  * This endpoint can be used with an existing client by specifying their uid. It can also be used to create a new
- * client by specifying user details in {@link \Wellnessliving\Wl\Appointment\Book\Finish\FinishModel::$a_user} and omitting any uid. This endpoint can be accessed anonymously without
+ * client by specifying user details in {@link \WellnessLiving\Wl\Appointment\Book\Finish\FinishModel::$a_user} and omitting any uid. This endpoint can be accessed anonymously without
  * authentication but only when creating clients.
  *
- * @deprecated Use {@link \Wellnessliving\Wl\Appointment\Book\Finish\Finish47Model} instead.
+ * @deprecated Use {@link \WellnessLiving\Wl\Appointment\Book\Finish\Finish47Model} instead.
  */
 class FinishModel extends WlModelAbstract
 {
   /**
-   * A list of answers for the questions from {@link \Wellnessliving\Wl\Appointment\Book\Question\QuestionModel::$a_question}.
+   * A list of answers for the questions from {@link \WellnessLiving\Wl\Appointment\Book\Question\QuestionModel::$a_question}.
    * Key - hash of the question, value - answer for the question.
    *
    * @post post
@@ -140,7 +140,7 @@ class FinishModel extends WlModelAbstract
    *     int <var>id_class_tab</var>
    *   </dt>
    *   <dd>
-   *     Kind of booking service. One of {@link \Wellnessliving\Wl\Classes\Tab\TabSid} constants.
+   *     Kind of booking service. One of {@link \WellnessLiving\Wl\Classes\Tab\TabSid} constants.
    *   </dd>
    *   <dt>
    *     int [<var>id_gender_staff</var>]
@@ -290,7 +290,7 @@ class FinishModel extends WlModelAbstract
   public $a_visit;
 
   /**
-   * The booking mode ID. One of the {@link \Wellnessliving\Wl\Mode\ModeSid} constants.
+   * The booking mode ID. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    *
    * @post post
    * @var int
@@ -298,7 +298,7 @@ class FinishModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * The payment type ID for the appointment. One of the {@link \Wellnessliving\RsAppointmentPaySid} constants.
+   * The payment type ID for the appointment. One of the {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid} constants.
    *
    * @post get
    * @var int

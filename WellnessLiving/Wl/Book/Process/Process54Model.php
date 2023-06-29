@@ -7,13 +7,13 @@ use WellnessLiving\WlModelAbstract;
 /**
  * Wizard of booking.
  *
- * Include {@link \Wellnessliving\Wl\Book\Process\ProcessSpaSid::QUIZ} step, if it is need.
+ * Include {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid::QUIZ} step, if it is need.
  */
 class Process54Model extends WlModelAbstract
 {
   /**
    * Relationships who clients are allowed to book for.
-   * Constants of {@link \Wellnessliving\RsFamilyRelationSid}.
+   * Constants of {@link \WellnessLiving\RsFamilyRelationSid}.
    *
    * `null` if clients are not allowed to book for their relationships.
    *
@@ -29,7 +29,7 @@ class Process54Model extends WlModelAbstract
    *     int <var>id_book_process</var>
    *   </dt>
    *   <dd>
-   *     Step ID. One of {@link \Wellnessliving\Wl\Book\Process\ProcessSpaSid} constants.
+   *     Step ID. One of {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_current</var>]
@@ -116,7 +116,7 @@ class Process54Model extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * Mode type. One of {@link \Wellnessliving\Wl\Mode\ModeSid} constants.
+   * Mode type. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    *
    * @get get
    * @post get
@@ -126,7 +126,7 @@ class Process54Model extends WlModelAbstract
 
   /**
    * The purchase rule ID.
-   * One of {@link \Wellnessliving\Wl\Classes\RequirePaySid} constants.
+   * One of {@link \WellnessLiving\Wl\Classes\RequirePaySid} constants.
    *
    * @get result
    * @var int

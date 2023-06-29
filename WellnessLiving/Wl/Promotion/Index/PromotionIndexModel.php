@@ -64,7 +64,7 @@ class PromotionIndexModel extends WlModelAbstract
    *         The primary key of the component in the related table. This depends on the type of the component.
    *         The key of the event for {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid::ENROLLMENT}, the key of the Purchase Option for the
    *         {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid::PROMOTION}, the key of the product option for the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid::PRODUCT}.
-   *         Full information about events can be taken from the {@link \Wellnessliving\Wl\Event\EventListModel}. Purchase Options from the {@link \Wellnessliving\Wl\Promotion\Index\PromotionIndexModel}.
+   *         Full information about events can be taken from the {@link \WellnessLiving\Wl\Event\EventListModel}. Purchase Options from the {@link \WellnessLiving\Wl\Promotion\Index\PromotionIndexModel}.
    *         Full information about products are not available at this moment though API.
    *       </dd>
    *       <dt>int <var>i_quantity</var></dt>
@@ -111,7 +111,7 @@ class PromotionIndexModel extends WlModelAbstract
    *         {@link \WellnessLiving\Core\a\ADurationSid::MONTH}, {@link \WellnessLiving\Core\a\ADurationSid::YEAR}.
    *       </dd>
    *       <dt>int <var>id_limit_cycle</var></dt>
-   *       <dd>The type of the limit cycle {@link \Wellnessliving\Wl\Promotion\Edit\Limit\Cycle\Sid}.</dd>
+   *       <dd>The type of the limit cycle {@link \WellnessLiving\Wl\Promotion\Edit\Limit\Cycle\Sid}.</dd>
    *       <dt>bool <var>is_reconcile_visit</var></dt>
    *       <dd>Determines whether to reconcile unpaid sessions on restrictions reset.</dd>
    *       <dt>bool <var>is_roll_over_expire</var></dt>

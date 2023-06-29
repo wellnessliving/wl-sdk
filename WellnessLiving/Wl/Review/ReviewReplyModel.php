@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class ReviewReplyModel extends WlModelAbstract
 {
   /**
-   * Status of the Review, one of {@link \Wellnessliving\RsReviewStatusSid} constants.
+   * Status of the Review, one of {@link \WellnessLiving\RsReviewStatusSid} constants.
    *
    * `null` until passed to the api when admin replies to the review.
    *

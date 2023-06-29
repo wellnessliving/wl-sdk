@@ -164,9 +164,9 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
   /**
    * Determines which locations should be returned.
    *
-   * One of the {@link \Wellnessliving\Wl\Business\Franchise\Location\BusinessFranchiseLocationSid} constants.
+   * One of the {@link \WellnessLiving\Wl\Business\Franchise\Location\BusinessFranchiseLocationSid} constants.
    *
-   * <tt>null</tt> means that {@link \Wellnessliving\Wl\Business\Franchise\Location\BusinessFranchiseLocationSid::ALL} is used.
+   * <tt>null</tt> means that {@link \WellnessLiving\Wl\Business\Franchise\Location\BusinessFranchiseLocationSid::ALL} is used.
    *
    * @get get
    * @var int
@@ -176,7 +176,7 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
   /**
    * Determines report for which data should be returned.
    *
-   * One of the {@link \Wellnessliving\RsReportSid} constants.
+   * One of the {@link \WellnessLiving\RsReportSid} constants.
    *
    * <tt>null</tt> means that report is not set.
    *

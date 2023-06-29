@@ -46,7 +46,7 @@ class ContractModel extends WlModelAbstract
 
   /**
    * The type of purchase item. This is one of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
-   * Optional if {@link \Wellnessliving\Wl\Profile\Contract\ContractModel::$k_purchase_item} is not empty.
+   * Optional if {@link \WellnessLiving\Wl\Profile\Contract\ContractModel::$k_purchase_item} is not empty.
    *
    * @get get
    * @var int
@@ -74,7 +74,7 @@ class ContractModel extends WlModelAbstract
 
   /**
    * The key of the purchase item in the database.
-   * The item key. Depends of {@link \Wellnessliving\Wl\Profile\Contract\ContractModel::$id_purchase_item} property.
+   * The item key. Depends of {@link \WellnessLiving\Wl\Profile\Contract\ContractModel::$id_purchase_item} property.
    *
    * @get get
    * @var string

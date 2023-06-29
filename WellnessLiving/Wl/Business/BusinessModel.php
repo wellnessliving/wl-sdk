@@ -13,7 +13,7 @@ class BusinessModel extends WlModelAbstract
    * The business locale.
    *
    * @post post
-   * @see \Wellnessliving\Core\Locale\LocaleSid
+   * @see \WellnessLiving\Core\Locale\LocaleSid
    * @var int
    */
   public $id_locale;

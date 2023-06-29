@@ -98,7 +98,7 @@ class VideoListModel extends WlModelAbstract
 
   /**
    * The sorting type.
-   * A constant from {@link \Wellnessliving\Wl\Video\Catalog\Filter\Sort\FilterSortSid}.
+   * A constant from {@link \WellnessLiving\Wl\Video\Catalog\Filter\Sort\FilterSortSid}.
    *
    * @get get
    * @var int
@@ -136,7 +136,7 @@ class VideoListModel extends WlModelAbstract
    *
    * `null` if user is not signed in.
    *
-   * *NOTE: Not used directly in API, needed for {@link \Wellnessliving\Wl\Video\VideoListModel::KEY} constant.
+   * *NOTE: Not used directly in API, needed for {@link \WellnessLiving\Wl\Video\VideoListModel::KEY} constant.
    *
    * @get get
    * @var string|null

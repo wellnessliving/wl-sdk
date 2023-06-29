@@ -174,7 +174,7 @@ class QuizModel extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * Mode type. One of {@link \Wellnessliving\Wl\Mode\ModeSid} constants.
+   * Mode type. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    *
    * @get get
    * @post get

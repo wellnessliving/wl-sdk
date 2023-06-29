@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * An endpoint that displays information for certain sessions.
- * Version of {@link \Wellnessliving\Wl\Login\Attendance\AttendanceInfoModel} for access validation by security token.
+ * Version of {@link \WellnessLiving\Wl\Login\Attendance\AttendanceInfoModel} for access validation by security token.
  */
 class AttendanceInfoByTokenModel extends WlModelAbstract
 {
@@ -166,7 +166,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   public $has_note;
 
   /**
-   * Type of note. One of {@link \Wellnessliving\Wl\Visit\Note\Sid\NoteSid} constants. <tt>false</tt> if notes not allowed.
+   * Type of note. One of {@link \WellnessLiving\Wl\Visit\Note\Sid\NoteSid} constants. <tt>false</tt> if notes not allowed.
    *
    * @get result
    * @var int|false

@@ -11,7 +11,7 @@ class DataModel extends WlModelAbstract
 {
   /**
    * List of all business services and their availability data.
-   * Array, where keys are sids from {@link \Wellnessliving\Wl\Service\ServiceSid} and values are boolean:
+   * Array, where keys are sids from {@link \WellnessLiving\Wl\Service\ServiceSid} and values are boolean:
    * <tt>true</tt> - if service is enabled in the business, <tt>false</tt> otherwise.
    *
    * @get result
@@ -47,7 +47,7 @@ class DataModel extends WlModelAbstract
    * Business category ID of the business.
    *
    * @get result
-   * @see \Wellnessliving\RsBusinessCategorySid
+   * @see \WellnessLiving\RsBusinessCategorySid
    * @var int
    */
   public $id_category;
@@ -56,7 +56,7 @@ class DataModel extends WlModelAbstract
    * The Locale ID, used to search geo items.
    *
    * @get result
-   * @see \Wellnessliving\Core\Locale\LocaleSid
+   * @see \WellnessLiving\Core\Locale\LocaleSid
    * @var int
    */
   public $id_locale;
@@ -64,7 +64,7 @@ class DataModel extends WlModelAbstract
   /**
    * Rank type ID of the business.
    *
-   * Constant from {@link \Wellnessliving\RsRankTypeSid}.
+   * Constant from {@link \WellnessLiving\RsRankTypeSid}.
    *
    * <tt>null</tt> if business does not have a rank type.
    *
@@ -161,7 +161,7 @@ class DataModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The business key obtained by the security token {@link \Wellnessliving\Wl\Business\DataModel::$text_token}.
+   * The business key obtained by the security token {@link \WellnessLiving\Wl\Business\DataModel::$text_token}.
    * Client side can use this way if it does not know business key but knows authorization token.
    *
    * @get result
@@ -211,7 +211,7 @@ class DataModel extends WlModelAbstract
 
   /**
    * The authorization token.
-   * This may be used instead of {@link \Wellnessliving\Wl\Business\DataModel::$k_business} to
+   * This may be used instead of {@link \WellnessLiving\Wl\Business\DataModel::$k_business} to
    * identify a business.
    *
    * @get get

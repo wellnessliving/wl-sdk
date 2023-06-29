@@ -19,7 +19,7 @@ class ListModel extends WlModelAbstract
   public $a_business = [];
 
   /**
-   * List of locations of business {@link \Wellnessliving\Wl\Location\ListModel::$k_business}. Keys - location keys; primary keys in {@link \RsLocationSql} table. Values - sub array with next keys:
+   * List of locations of business {@link \WellnessLiving\Wl\Location\ListModel::$k_business}. Keys - location keys; primary keys in {@link \RsLocationSql} table. Values - sub array with next keys:
    * <dl>
    *   <dt>
    *     float <var>f_latitude</var>

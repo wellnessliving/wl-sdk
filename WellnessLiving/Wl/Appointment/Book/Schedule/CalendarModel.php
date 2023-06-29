@@ -76,7 +76,7 @@ class CalendarModel extends WlModelAbstract
    *       <dt>int <var>i_shift</var></dt>
    *       <dd>Timezone shift from UTC in hours.</dd>
    *       <dt>bool <var>is_select</var></dt>
-   *       <dd>`true` for selected timezone - from {@link \Wellnessliving\Wl\Appointment\Book\Schedule\CalendarModel::$k_timezone} param or client's default timezone when param not set.</dd>
+   *       <dd>`true` for selected timezone - from {@link \WellnessLiving\Wl\Appointment\Book\Schedule\CalendarModel::$k_timezone} param or client's default timezone when param not set.</dd>
    *       <dt>string <var>k_timezone</var></dt>
    *       <dd>Timezone key.</dd>
    *       <dt>string <var>s_title</var></dt>
@@ -279,7 +279,7 @@ class CalendarModel extends WlModelAbstract
   /**
    * Empty string for single appointment/asset booking.
    *
-   * For back-to-back booking ({@link \Wellnessliving\Wl\Appointment\Book\Schedule\DayTimeModel::$is_back_to_back} == `true`): array of appointments for back-to-back booking.
+   * For back-to-back booking ({@link \WellnessLiving\Wl\Appointment\Book\Schedule\DayTimeModel::$is_back_to_back} == `true`): array of appointments for back-to-back booking.
    * Converted to JSON string to be usable as model key. Each item is an array with next structure:
    * <dl>
    * <dt>array <var>a_addon</var></dt><dd>Array of appointment addons. Each value is primary key in {@link \RsShopProductSql} table.</dd>
@@ -289,7 +289,7 @@ class CalendarModel extends WlModelAbstract
    * <dt>string <var>k_staff</var></dt><dd>Staff key. Zero means any available staff.</dd>
    * </dl>
    *
-   * For multiple appointment booking ({@link \Wellnessliving\Wl\Appointment\Book\Schedule\DayTimeModel::$is_back_to_back} == `false`): array of previously booked appointments.
+   * For multiple appointment booking ({@link \WellnessLiving\Wl\Appointment\Book\Schedule\DayTimeModel::$is_back_to_back} == `false`): array of previously booked appointments.
    * Converted to JSON string to be usable as model key. Each item is an array with next structure:
    * <dl>
    * <dt>string <var>dtl_date</var></dt><dd>Local date and time of appointment start in MySQL format.</dd>

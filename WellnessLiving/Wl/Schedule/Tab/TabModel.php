@@ -21,14 +21,14 @@ class TabModel extends WlModelAbstract
    *     int <var>id_class_tab_object</var>
    *   </dt>
    *   <dd>
-   *     The tab type ID which is one of the {@link \Wellnessliving\Wl\Classes\Tab\TabSid} constants.
+   *     The tab type ID which is one of the {@link \WellnessLiving\Wl\Classes\Tab\TabSid} constants.
    *   </dd>
    *   <dt>
    *     int|null <var>id_class_tab_system</var>
    *   </dt>
    *   <dd>
    *     If this tab has redefined a default system Class Tab then it references a constant defined in
-   *     {@link \Wellnessliving\Wl\Classes\Tab\TabSid}.
+   *     {@link \WellnessLiving\Wl\Classes\Tab\TabSid}.
    *
    *     Otherwise, this will be `null`.
    *   </dd>

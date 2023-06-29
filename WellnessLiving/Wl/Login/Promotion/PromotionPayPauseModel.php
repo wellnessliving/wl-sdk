@@ -39,7 +39,7 @@ class PromotionPayPauseModel extends WlModelAbstract
    *   <dd>Key of a user that has created hold period. <tt>null</tt> for old records.</dd>
    * </dl>
    *
-   * <tt>null</tt> if {@link \Wellnessliving\Wl\Login\Promotion\PromotionPayPauseModel::$is_list} is false.
+   * <tt>null</tt> if {@link \WellnessLiving\Wl\Login\Promotion\PromotionPayPauseModel::$is_list} is false.
    *
    * @get result
    * @var array[]|null
@@ -73,10 +73,10 @@ class PromotionPayPauseModel extends WlModelAbstract
 
   /**
    * Whether need to get all pause periods for the login promotion.
-   * If <tt>true</tt> then {@link \Wellnessliving\Wl\Login\Promotion\PromotionPayPauseModel::$a_pay_pause_list} will be returned.
-   * If <tt>false</tt> then information about specified {@link \Wellnessliving\Wl\Login\Promotion\PromotionPayPauseModel::$k_promotion_pay_pause} or
-   * currently active pause period will be returned ({@link \Wellnessliving\Wl\Login\Promotion\PromotionPayPauseModel::$dt_start},
-   * {@link \Wellnessliving\Wl\Login\Promotion\PromotionPayPauseModel::$dt_end} and {@link \Wellnessliving\Wl\Login\Promotion\PromotionPayPauseModel::$text_note}).
+   * If <tt>true</tt> then {@link \WellnessLiving\Wl\Login\Promotion\PromotionPayPauseModel::$a_pay_pause_list} will be returned.
+   * If <tt>false</tt> then information about specified {@link \WellnessLiving\Wl\Login\Promotion\PromotionPayPauseModel::$k_promotion_pay_pause} or
+   * currently active pause period will be returned ({@link \WellnessLiving\Wl\Login\Promotion\PromotionPayPauseModel::$dt_start},
+   * {@link \WellnessLiving\Wl\Login\Promotion\PromotionPayPauseModel::$dt_end} and {@link \WellnessLiving\Wl\Login\Promotion\PromotionPayPauseModel::$text_note}).
    *
    * @get get
    * @var bool
@@ -100,7 +100,7 @@ class PromotionPayPauseModel extends WlModelAbstract
    * The Purchase Option key. If this key is used, a new hold will be created. The endpoint will return a `start-cross`
    * status code if a hold is already in place.
    *
-   * Ignored if {@link \Wellnessliving\Wl\Login\Promotion\PromotionPayPauseModel::$k_promotion_pay_pause} is provided.
+   * Ignored if {@link \WellnessLiving\Wl\Login\Promotion\PromotionPayPauseModel::$k_promotion_pay_pause} is provided.
    *
    * `null` if not yet initialized.
    *
@@ -115,7 +115,7 @@ class PromotionPayPauseModel extends WlModelAbstract
    * The promotion payment hold key. If this key is used, it will edit an existing hold.
    * This key will be empty if there's no active hold in place or if a scheduled hold isn't in effect.
    *
-   * `null` if not yet initialized or if the request is based on {@link \Wellnessliving\Wl\Login\Promotion\PromotionPayPauseModel::$k_login_promotion}.
+   * `null` if not yet initialized or if the request is based on {@link \WellnessLiving\Wl\Login\Promotion\PromotionPayPauseModel::$k_login_promotion}.
    *
    * @delete get
    * @get get,result

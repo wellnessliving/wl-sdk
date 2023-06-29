@@ -11,7 +11,7 @@ class DebtPayModel extends WlModelAbstract
 {
   /**
    * The currency of the payment.
-   * One of {@link \Wellnessliving\Core\Locale\CurrencySid} constants.
+   * One of {@link \WellnessLiving\Core\Locale\CurrencySid} constants.
    *
    * Important! The currency must coincide with currency of the debt that was sent to collections.
    *

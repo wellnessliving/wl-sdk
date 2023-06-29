@@ -2,14 +2,12 @@
 
 namespace WellnessLiving\Wl\Appointment\Book\Payment;
 
-use WellnessLiving\Wl\Classes\Tab\TabSid;
-use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
  * Allows to pay an appointment or appointment purchase option for the client.
  *
- * Only difference from {@link PaymentModel} is possibility to pay for a lot of appointments at the same time.
+ * Only difference from {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentModel} is possibility to pay for a lot of appointments at the same time.
  */
 class PaymentMultipleModel extends WlModelAbstract
 {
@@ -40,7 +38,7 @@ class PaymentMultipleModel extends WlModelAbstract
    *         int <var>id_purchase_item</var>
    *       </dt>
    *       <dd>
-   *         ID of item to purchase. One of {@link WlPurchaseItemSid} constants.
+   *         ID of item to purchase. One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
    *         Not empty for new options purchase.
    *       </dd>
    *       <dt>
@@ -105,12 +103,12 @@ class PaymentMultipleModel extends WlModelAbstract
    *         Not empty only if purchase option requires contract signing.
    *       </dd>
    *     </dl>
-   *   </dt>
+   *   </dd>
    *   <dt>
    *     int <var>id_class_tab</var>
    *   </dt>
    *   <dd>
-   *     "Book now" tab. One of {@link TabSid} constants.
+   *     "Book now" tab. One of {@link \WellnessLiving\Wl\Classes\Tab\TabSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>m_tip_appointment</var>
@@ -128,7 +126,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_book_data = [];
 
   /**
-   * Copy of <var>$a_book_data</var>.
+   * Copy of {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentMultipleModel::$a_book_data}.
    *
    * Set this field value in a case of POST request.
    *
@@ -138,9 +136,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_book_data_post = [];
 
   /**
-   * Payment conditions of booked appointments.
-   *
-   * Each element is one of {@link WlAppointmentPaySid} constants.
+   * Payment type for the appointment, one of {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid} constants.
    *
    * @post result
    * @var int[]
@@ -150,7 +146,123 @@ class PaymentMultipleModel extends WlModelAbstract
   /**
    * A list of payment sources to pay with.
    *
-   * Structure of this array corresponds structure of {@link \WellnessLiving\Wl\Catalog\Payment\PaymentModel::$a_pay_form} for a detailed description.
+   * Each element has next keys:
+   * <dl>
+   *   <dt>
+   *     array [<var>a_pay_card</var>]
+   *   </dt>
+   *   <dd>
+   *     The payment card information:
+   *     <dl>
+   *       <dt>
+   *         array <var>a_pay_address</var>
+   *       </dt>
+   *       <dd>
+   *         The payment address:
+   *         <dl>
+   *           <dt>boolean <var>is_new</var></dt>
+   *           <dd>Set this value is <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
+   *           <dt>string [<var>k_geo_country</var>]</dt>
+   *           <dd>The key of the country used for the payment address. Specify to add a new address.</dd>
+   *           <dt>string [<var>k_geo_region</var>]</dt>
+   *           <dd>The key of the region for the payment address. Specify to add a new address.</dd>
+   *           <dt>string [<var>k_pay_address</var>]</dt>
+   *           <dd>The key of the saved payment address. Specify to use a saved address.</dd>
+   *           <dt>string [<var>s_city</var>]</dt>
+   *           <dd>The city used for the payment address. Specify to add a new address.</dd>
+   *           <dt>string [<var>s_name</var>]</dt>
+   *           <dd>The card name. Specify to add a new address.</dd>
+   *           <dt>string [<var>s_phone</var>]</dt>
+   *           <dd>The payment phone. Specify to add a new address.</dd>
+   *           <dt>string [<var>s_postal</var>]</dt>
+   *           <dd>The postal code for the payment address. Specify to add a new address.</dd>
+   *           <dt>string [<var>s_street1</var>]</dt>
+   *           <dd>The payment address. Specify to add a new address.</dd>
+   *           <dt>string [<var>s_street2</var>]</dt>
+   *           <dd>The optional payment address. Specify to add a new address.</dd>
+   *         </dl>
+   *       </dd>
+   *       <dt>
+   *         int [<var>i_csc</var>]
+   *       </dt>
+   *       <dd>
+   *         The credit card CSC. Specify to add a new card.
+   *       </dd>
+   *       <dt>
+   *         int [<var>i_month</var>]
+   *       </dt>
+   *       <dd>
+   *         The credit card expiration month. Specify to add a new card.
+   *       </dd>
+   *       <dt>
+   *         int [<var>i_year</var>]
+   *       </dt>
+   *       <dd>
+   *         The credit card expiration year. Specify to add a new card.
+   *       </dd>
+   *       <dt>
+   *         boolean <var>is_new</var>
+   *       </dt>
+   *       <dd>
+   *         <tt>1</tt> to add a new card; <tt>0</tt> to use a saved card.
+   *       </dd>
+   *       <dt>
+   *         string [<var>k_pay_bank</var>]
+   *       </dt>
+   *       <dd>
+   *         The key of a credit card. Specify to use saved card.
+   *       </dd>
+   *       <dt>
+   *         string [<var>s_comment</var>]
+   *       </dt>
+   *       <dd>
+   *         Optional comment(s). Specify to add a new card.
+   *       </dd>
+   *       <dt>
+   *         string [<var>s_number</var>]
+   *       </dt>
+   *       <dd>
+   *         The card number. Specify to add a new card.
+   *       </dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>
+   *     string <var>f_amount</var>
+   *   </dt>
+   *   <dd>
+   *     The amount of money to withdraw with this payment source.
+   *   </dd>
+   *   <dt>
+   *     boolean [<var>is_hide</var>]
+   *   </dt>
+   *   <dd>
+   *     Whether this payment method is hidden.
+   *   </dd>
+   *   <dt>
+   *     boolean [<var>is_success</var>=<tt>false</tt>]
+   *   </dt>
+   *   <dd>
+   *     Identifies whether this source was successfully charged.
+   *   </dd>
+   *   <dt>
+   *     string [<var>m_surcharge</var>]
+   *   </dt>
+   *   <dd>
+   *     The client-side calculated surcharge.
+   *   </dd>
+   *   <dt>
+   *     string [<var>s_index</var>]
+   *   </dt>
+   *   <dd>
+   *     The index of this form (optional).
+   *   </dd>
+   *   <dt>
+   *     string <var>sid_pay_method</var>
+   *   </dt>
+   *   <dd>
+   *     The payment method ID.
+   *   </dd>
+   * </dl>
    *
    * @post post
    * @var array[]
@@ -219,7 +331,7 @@ class PaymentMultipleModel extends WlModelAbstract
    *     string <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     Purchase item ID. One of {@link WlPurchaseItemSid} constant.
+   *     Purchase item ID. One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constant.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>
@@ -265,8 +377,8 @@ class PaymentMultipleModel extends WlModelAbstract
 
   /**
    * List of quiz response keys.
-   * Key is a quiz key.
-   * Value is a response key.
+   * Key is quiz key.
+   * Value is response key.
    *
    * @post post
    * @var array

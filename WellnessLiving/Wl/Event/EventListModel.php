@@ -108,7 +108,7 @@ class EventListModel extends WlModelAbstract
   public $is_ignore_requirement = false;
 
   /**
-   * Determines whether you need to retrieve a list of event sessions regardless of the tab specified in {@link \Wellnessliving\Wl\Event\EventListModel::$k_class_tab}.
+   * Determines whether you need to retrieve a list of event sessions regardless of the tab specified in {@link \WellnessLiving\Wl\Event\EventListModel::$k_class_tab}.
    *
    * * <tt>true</tt> - retrieves a list regardless of the specified tab.
    * * <tt>false</tt> - retrieves a list only for the specific tab.
@@ -121,7 +121,7 @@ class EventListModel extends WlModelAbstract
   /**
    * The event business key to retrieve a list of all event sessions in business.
    *
-   * Required if {@link \Wellnessliving\Wl\Event\EventListModel::$k_location} isn't specified.
+   * Required if {@link \WellnessLiving\Wl\Event\EventListModel::$k_location} isn't specified.
    *
    * @get get
    * @var string
@@ -141,8 +141,8 @@ class EventListModel extends WlModelAbstract
    * An empty value to retrieve a list of event sessions that don't belong to any tab.
    *
    * Will be ignored in next cases:
-   * * {@link \Wellnessliving\Wl\Event\EventListModel::$k_skin} specified.
-   * * {@link \Wellnessliving\Wl\Event\EventListModel::$is_tab_all} is <tt>true</tt>.
+   * * {@link \WellnessLiving\Wl\Event\EventListModel::$k_skin} specified.
+   * * {@link \WellnessLiving\Wl\Event\EventListModel::$is_tab_all} is <tt>true</tt>.
    *
    * @get get
    * @var string
@@ -152,7 +152,7 @@ class EventListModel extends WlModelAbstract
   /**
    * The event location key to retrieve a list of all event sessions in a specific location.
    *
-   * Required if {@link \Wellnessliving\Wl\Event\EventListModel::$k_business} isn't specified.
+   * Required if {@link \WellnessLiving\Wl\Event\EventListModel::$k_business} isn't specified.
    *
    * @get get
    * @var string
@@ -162,7 +162,7 @@ class EventListModel extends WlModelAbstract
   /**
    * The skin key if an event list is used for widget mode.
    *
-   * {@link \Wellnessliving\Wl\Event\EventListModel::$k_class_tab} will be ignored for widget mode.
+   * {@link \WellnessLiving\Wl\Event\EventListModel::$k_class_tab} will be ignored for widget mode.
    *
    * @get get
    * @var string

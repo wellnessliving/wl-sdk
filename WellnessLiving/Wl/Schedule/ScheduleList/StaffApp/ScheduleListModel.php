@@ -30,7 +30,7 @@ class ScheduleListModel extends WlModelAbstract
    *         int <var>id_visit</var>
    *       </dt>
    *       <dd>
-   *         Visit id. One of {@link \Wellnessliving\Wl\Visit\VisitSid} constants.
+   *         Visit id. One of {@link \WellnessLiving\Wl\Visit\VisitSid} constants.
    *       </dd>
    *       <dt>
    *         bool <var>is_confirmed</var>

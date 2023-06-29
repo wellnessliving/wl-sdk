@@ -81,7 +81,7 @@ class CatalogViewModel extends WlModelAbstract
 
   /**
    * The key of the sale item.
-   * It can be retrieved with the {@link \Wellnessliving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel} endpoint (see the
+   * It can be retrieved with the {@link \WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel} endpoint (see the
    * <var>a_shop_product</var> parameter).
    *
    * @get get

@@ -52,7 +52,7 @@ class RegionModel extends WlModelAbstract
   public $a_region;
 
   /**
-   * The ID of the locale to find regions for. One of the {@link \Wellnessliving\Core\Locale\LocaleSid} constants.
+   * The ID of the locale to find regions for. One of the {@link \WellnessLiving\Core\Locale\LocaleSid} constants.
    *
    * @get get
    * @var int

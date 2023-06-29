@@ -23,7 +23,7 @@ class DebtTransactionModel extends WlModelAbstract
    *   <dt>bool <var>is_pay_collections</var></dt>
    *   <dd>Defines whether the payment was performed via a third party service.
    *     `true` if the payment was performed via a third party service and this transaction is
-   *     responsible for an account credit transaction for that payment. See {@link \Wellnessliving\Wl\Collector\DebtPayModel}.
+   *     responsible for an account credit transaction for that payment. See {@link \WellnessLiving\Wl\Collector\DebtPayModel}.
    *     `false` if the payment was performed within the Wellnessliving system.
    *   </dd>
    *   <dt>bool <var>is_debt_paid</var></dt>

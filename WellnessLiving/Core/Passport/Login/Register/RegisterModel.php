@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * Allows new clients to be registered.
  *
- * WellnessLiving recommends using the {@link \Wellnessliving\Wl\Lead\LeadModel} endpoint to register new users.
+ * WellnessLiving recommends using the {@link \WellnessLiving\Wl\Lead\LeadModel} endpoint to register new users.
  * This endpoint is not enabled by default. Contact WellnessLiving to enable this endpoint for your business.
  */
 class RegisterModel extends WlModelAbstract
