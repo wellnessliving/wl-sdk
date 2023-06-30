@@ -1,10 +1,8 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Wl\Promotion;
 
-use WellnessLiving\WlDurationTypeSid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\WlProgramSid;
 
 /**
  * An endpoint that gets promotions for the specified business and promotion keys.
@@ -21,13 +19,13 @@ class PromotionModel extends WlModelAbstract
    *     Information about services that can be attended with this pass or membership.
    *     <dl>
    *       <dt>array[] <var>a_class</var></dt>
-   *       <dd>A list of available classes.</dd>
+   *       <dd>A list of available classes. Each element is primary key from {@link \RsClassSql} table.</dd>
    *       <dt>array[] <var>a_event</var></dt>
-   *       <dd>A list of available events.</dd>
+   *       <dd>A list of available events. Each element is primary key from {@link \RsClassSql} table.</dd>
    *       <dt>array[] <var>a_resource</var></dt>
-   *       <dd>A list of available assets.</dd>
+   *       <dd>A list of available assets. Each element is primary key from {@link \RsResourceSql} table.</dd>
    *       <dt>array[] <var>a_service</var></dt>
-   *       <dd>A list of available appointment types.</dd>
+   *       <dd>A list of available appointment types. Each element is primary key from {@link \RsServiceSql} table.</dd>
    *       <dt>bool <var>is_class_all</var></dt>
    *       <dd>This will be `true` if any class in the business can be visited with this Purchase Option. Otherwise, this
    *         will be `false` if only selected classes can be visited with this Purchase Option. Selected classes can be found
@@ -79,21 +77,21 @@ class PromotionModel extends WlModelAbstract
    *   <dd>
    *     The type of period for the 'Period' duration type.
    *     For example, if the duration of the Purchase Option is 12 months, this field will display the ID of the month.
-   *     For all possible options, see {@link ADurationSid}.
+   *     For all possible options, see {@link \WellnessLiving\Core\a\ADurationSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_duration_type</var>
    *   </dt>
    *   <dd>
    *     The duration type. Possible duration types can be 'Without End', 'Expires on a certain date', 'Period'.
-   *     For more information, see {@link WlDurationTypeSid}.
+   *     For more information, see {@link \WellnessLiving\WlDurationTypeSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program</var>
    *   </dt>
    *   <dd>
    *     The Purchase Option type.
-   *     For more information, see {@link WlProgramSid}.
+   *     For more information, see {@link \WellnessLiving\WlProgramSid}.
    *   </dd>
    *   <dt>
    *     bool <var>is_introductory</var>

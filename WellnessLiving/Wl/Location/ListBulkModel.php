@@ -77,7 +77,7 @@ class ListBulkModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public $a_location = [];
+  public $a_location;
 
   /**
    * A list of models with full information about each location.

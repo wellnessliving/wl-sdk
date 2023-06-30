@@ -59,7 +59,29 @@ class DebtListModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_debt;
+  public $a_debt = [];
+
+  /**
+   * Date before which debts should be returned.
+   *
+   * If `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} specified will return debts before current date.
+   * If `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} also `null` will return debts from previous month.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dl_end;
+
+  /**
+   * Date since which debts should be returned.
+   *
+   * If `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} specified will return debts since the beginning of time.
+   * If `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} also `null` will return debts from previous month.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dl_start;
 
   /**
    * Date before which debts should be returned.
@@ -99,7 +121,7 @@ class DebtListModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $k_business;
+  public $k_business = '';
 }
 
 ?>

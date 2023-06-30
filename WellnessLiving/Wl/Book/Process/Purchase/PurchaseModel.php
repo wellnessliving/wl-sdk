@@ -2,11 +2,12 @@
 
 namespace WellnessLiving\Wl\Book\Process\Purchase;
 
-use WellnessLiving\Wl\Book\WlBookModeSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
  * Information about Purchase Options that can book specified session(s).
+ *
+ * @deprecated Use {@link \WellnessLiving\Wl\Book\Process\Purchase\Purchase56Model} instead.
  */
 class PurchaseModel extends WlModelAbstract
 {
@@ -104,7 +105,7 @@ class PurchaseModel extends WlModelAbstract
    *         int <var>id_duration</var>
    *       </dt>
    *       <dd>
-   *          The duration of a single period.
+   *          The duration of a single period. One of {@link \WellnessLiving\Core\a\ADurationSid} constants.
    *       </dd>
    *       <dt>
    *         int <var>i_period</var>
@@ -165,6 +166,12 @@ class PurchaseModel extends WlModelAbstract
    *     The price for early bookings.
    *   </dd>
    *   <dt>
+   *     string <var>html_payment_period</var>
+   *   </dt>
+   *   <dd>
+   *     Actual only for promotions with program 'membership'. Measurement unit of <var>i_payment_period</var> in short form.
+   *   </dd>
+   *   <dt>
    *     string <var>html_description</var>
    *   </dt>
    *   <dd>
@@ -192,19 +199,19 @@ class PurchaseModel extends WlModelAbstract
    *     int [<var>id_program_category</var>]
    *   </dt>
    *   <dd>
-   *     Actual only for promotions. The ID of the promotion program category. One of {@link RsProgramCategorySid} constants.
+   *     Actual only for promotions. The ID of the promotion program category. One of {@link \WellnessLiving\WlProgramCategorySid} constants.
    *   </dd>
    *   <dt>
    *     int [<var>id_program_type</var>]
    *   </dt>
    *   <dd>
-   *     Actual only for promotions. The ID of the promotion program type. One of {@link RsProgramTypeSid} constants.
+   *     Actual only for promotions. The ID of the promotion program type. One of {@link \WellnessLiving\WlProgramTypeSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     The ID of Purchase Option type. One of {@link RsPurchaseItemSid} constants.
+   *     The ID of Purchase Option type. One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_contract</var>]
@@ -274,68 +281,200 @@ class PurchaseModel extends WlModelAbstract
    *   </dd>
    * </dl>
    *
-   * <tt>null</tt> if not set yet.
+   * @get result
+   * @var array[]
+   */
+  public $a_purchase = [];
+
+  /**
+   * Information about recurring booking:
+   * <dl>
+   *   <dt>
+   *     int[] [<var>a_week</var>]
+   *   </dt>
+   *   <dd>
+   *     Days of week when appointment must repeat. Constants of {@link \WellnessLiving\Core\a\ADateWeekSid} class.
+   *     Empty if appointment must not repeat weekly.
+   *   </dd>
+   *   <dt>
+   *     string [<var>dl_end</var>]
+   *   </dt>
+   *   <dd>
+   *     Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
+   *   </dd>
+   *   <dt>
+   *     int [<var>i_occurrence</var>]
+   *   </dt>
+   *   <dd>
+   *     Number of occurrences after that appointment repeat must stop.
+   *     Empty if repeat must not stop after a certain number of occurrences.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_period</var>
+   *   </dt>
+   *   <dd>
+   *     Frequency of appointment repeating.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_period</var>
+   *   </dt>
+   *   <dd>
+   *     Measurement unit of `i_period`. One of {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *   </dd>
+   *   <dt>
+   *     bool [<var>is_month</var>]
+   *   </dt>
+   *   <dd>
+   *     `true` if appointment must repeat monthly at the same date.
+   *     `false` if appointment must repeat monthly at the same week day.
+   *     `null` if appointment must not repeat monthly.
+   *   </dd>
+   * </dl>
+   *
+   * `null` if booking must be not recurring.
+   *
+   * @post post
+   * @var array|null
+   */
+  public $a_repeat;
+
+  /**
+   * A list of sessions being booked.
+   * <b>Keys</b> - The class period keys.
+   * <b>Values</b> - List of date/time when the session occurred.
+   *
+   * @get get
+   * @var array
+   */
+  public $a_session = [];
+
+  /**
+   * List of session passes that might be used in booking process.
    *
    * @get result
-   * @var array|null
+   * @var array
    */
-  public $a_purchase = null;
+  public $a_session_pass = [];
 
   /**
-   * A list of sessions being booked. Keys - IDs of sessions. Values - lists of date/time when sessions are occurred.
+   * Selected sessions on the waiting list without pay.
+   *
+   * Keys - session IDs.
+   *
+   * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
    *
    * @get get
-   * @var array|null
+   * @var array
    */
-  public $a_session = null;
+  public $a_session_wait_list_unpaid = [];
 
   /**
-   * The date/time of the session the user is booking now in MySQL format and in GMT.
+   * Whether the class/event can be booked at this step or not.
+   * External process control flag.
    *
-   * <tt>null</tt> if not set yet.
+   * @post post
+   * @var bool
+   */
+  public $can_book = true;
+
+  /**
+   * Date/time to which session is booked.
    *
    * @get get
-   * @var string|null
+   * @post get
+   * @var string
    */
-  public $dt_date_gmt = null;
+  public $dt_date_gmt = '';
 
   /**
-   * The ID of the session which is booked.
-   *
-   * <tt>null</tt> if not set yet.
-   *
-   * @get get
-   * @var string|null
-   */
-  public $k_class_period = null;
-
-  /**
-   * The business ID.
-   *
-   * <tt>null</tt> if not set yet.
-   *
-   * @get get
-   * @var string|null
-   */
-  public $k_business = null;
-
-  /**
-   * WellnessLiving mode type. One of {@link WlBookModeSid} constants.
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
    *
    * @get get
    * @var int
    */
-  public $id_mode =  WlBookModeSid::APP_FRONTEND;
+  public $i_image_height = 0;
 
   /**
-   * The ID of a user who is making the book.
-   *
-   * <tt>null</tt> if not set yet.
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
    *
    * @get get
-   * @var string|null
+   * @var int
    */
-  public $uid = null;
+  public $i_image_width = 0;
+
+  /**
+   * Mode type. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   *
+   * @get get
+   * @post get
+   * @var int
+   */
+  public $id_mode = 0;
+
+  /**
+   * If client must authorize credit card.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_card_authorize = false;
+
+  /**
+   * `true` if user pressed 'Pay later'.
+   * `false` if user pressed 'Pay now'.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_force_pay_later = false;
+
+  /**
+   * The business key.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_business = '';
+
+  /**
+   * Key of session which is booked.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
+  public $k_class_period = '0';
+
+  /**
+   * Login promotion to be used to book a class.
+   *
+   * Primary key from {@link  \RsLoginProductSql}.
+   *
+   * @post post
+   * @var string
+   */
+  public $k_login_promotion = '';
+
+  /**
+   * Session pass to be used to book a class.
+   *
+   * Primary key from {@link  \Wl\Session\Pass\Sql}.
+   *
+   * @post post
+   * @var string
+   */
+  public $k_session_pass = '';
+
+  /**
+   * Key of a user who is making a book.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
+  public $uid = '0';
 }
 
 ?>

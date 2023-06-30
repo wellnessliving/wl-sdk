@@ -14,87 +14,78 @@ class ImageUploadTemporaryModel extends WlModelAbstract
 {
   /**
    * Image to be uploaded.
-   * <tt>null</tt> until set.
    *
    * @post post
-   * @var WlFile|null
+   * @var WlFile
    */
-  public $f_image = null;
+  public $f_image;
 
   /**
    * <tt>true</tt> - crop is used. <tt>false</tt> - crop is not used (the image is saved in the original size).
-   * <tt>null</tt> until loaded from server.
    *
    * @post result
-   * @var bool|null
+   * @var bool
    */
-  public $has_crop = null;
+  public $has_crop;
 
   /**
    * Actual height of thumbnail image.
-   * <tt>null</tt> until loaded from server.
    *
    * @post result
-   * @var int|null
+   * @var int
    */
-  public $i_height = null;
+  public $i_height;
 
   /**
    * Height of original image.
-   * <tt>null</tt> until loaded from server.
    *
    * @post result
-   * @var int|null
+   * @var int
    */
-  public $i_height_src = null;
+  public $i_height_src;
 
   /**
    * Angle on which image was rotated compared to the original.
-   * <tt>null</tt> until loaded from server.
    *
    * @post result
-   * @var int|null
+   * @var int
    */
-  public $i_rotate = null;
+  public $i_rotate;
 
   /**
    * Actual width of thumbnail image.
-   * <tt>null</tt> until loaded from server.
    *
    * @post result
-   * @var int|null
+   * @var int
    */
-  public $i_width = null;
+  public $i_width;
 
   /**
    * Width of original image.
-   * <tt>null</tt> until loaded from server.
    *
    * @post result
-   * @var int|null
+   * @var int
    */
-  public $i_width_src = null;
+  public $i_width_src;
 
   /**
-   * Image type ID.
-   * <tt>null</tt> until loaded from server.
+   * Image type ID. One of {@link \WellnessLiving\Core\Drive\DriveTypeSid} constants.
    *
    * @post result
-   * @var int|null
+   * @var int
    */
-  public $id_type_src = null;
+  public $id_type_src;
 
   /**
    * <tt>true</tt> if thumbnail is a resized variant of original image.
-   * <tt>null</tt> until loaded from server.
    *
    * @post result
-   * @var bool|null
+   * @var bool
    */
-  public $is_resize = null;
+  public $is_resize;
 
   /**
-   * Key of image within {@link ImageUploadTemporaryModel::$s_class}.
+   * Key of image within {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadTemporaryModel::$s_class}.
    *
    * For example, for user's photo specify user's key here.
    *
@@ -115,21 +106,19 @@ class ImageUploadTemporaryModel extends WlModelAbstract
 
   /**
    * URL to resized and rotated image in file storage.
-   * <tt>null</tt> until loaded from server.
    *
    * @post result
-   * @var string|null
+   * @var string
    */
-  public $url_thumbnail = null;
+  public $url_thumbnail;
 
   /**
    * URL to original image in file storage.
-   * <tt>null</tt> until loaded from server.
    *
    * @post result
-   * @var string|null
+   * @var string
    */
-  public $url_view = null;
+  public $url_view;
 }
 
 ?>

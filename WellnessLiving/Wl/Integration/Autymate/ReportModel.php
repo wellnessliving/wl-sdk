@@ -5,7 +5,10 @@ namespace WellnessLiving\Wl\Integration\Autymate;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves all daily transactions for a business using the All Transactions report.
+ * An endpoint that retrieves all daily transactions for a business using the All Transactions report from the
+ * {@link \WellnessLiving\Wl\Report\Generator\QueryModel} endpoint. This endpoint is a streamlined interface and adds
+ * additional columns to the report for Autymate.
+ * Autymate will have one user to access all businesses, this user will require the wl.integration.autymate.report privilege.
  */
 class ReportModel extends WlModelAbstract
 {
@@ -17,7 +20,17 @@ class ReportModel extends WlModelAbstract
    * @get result
    * @var string[]
    */
-  public $a_field;
+  public $a_field = [];
+
+  /**
+   * List of payment methods to filter out in the report. Each element is one of the {@line \WellnessLiving\WlPayMethodSid} constants.
+   *
+   * @get get
+   * @var int[]
+   */
+  public $a_pay_method_remove = array (
+  0 => 7,
+);
 
   /**
    * The report data.
@@ -29,7 +42,7 @@ class ReportModel extends WlModelAbstract
    * @get result
    * @var string[][]
    */
-  public $a_row;
+  public $a_row = [];
 
   /**
    * The warning list of the report, if applicable.
@@ -37,7 +50,7 @@ class ReportModel extends WlModelAbstract
    * @get result
    * @var string[]
    */
-  public $a_warning;
+  public $a_warning = [];
 
   /**
    * The date in local time to retrieve transactions for.
@@ -52,8 +65,10 @@ class ReportModel extends WlModelAbstract
    *
    * `null` if generation of this report isn't completed.
    *
+   * See {@link \Wl\Report\Generator\ReportStorageListSql}.<tt>dtu_complete</tt> for additional details.
+   *
    * @get result
-   * @var string
+   * @var string|null
    */
   public $dtu_complete;
 
@@ -62,8 +77,10 @@ class ReportModel extends WlModelAbstract
    *
    * Effectively, this is the time when a user clicked to view this report or the report for this day was first called.
    *
+   * See {@link \Wl\Report\Generator\ReportStorageListSql}.<tt>dtu_queue</tt> for additional details.
+   *
    * @get result
-   * @var string
+   * @var string|null
    */
   public $dtu_queue;
 
@@ -72,28 +89,31 @@ class ReportModel extends WlModelAbstract
    *
    * `null` if generation of this report hasn't started.
    *
+   * See {@link \Wl\Report\Generator\ReportStorageListSql}.<tt>dtu_start</tt> for additional details.
+   *
    * @get result
-   * @var string
+   * @var string|null
    */
   public $dtu_start;
 
   /**
    * The page of the report, starting from 0.
+   * Each page will contain a maximum of {@link \WellnessLiving\Wl\Integration\Autymate\ReportModel::LIMIT} rows.
    *
    * @get get
    * @var int
    */
-  public $i_page=0;
+  public $i_page = 0;
 
   /**
    * The status of the report.
    *
-   * One of the {@link \Wl\Report\Generator\ReportGeneratorStatusSid} constants.
+   * One of the {@link \WellnessLiving\Wl\Report\Generator\ReportGeneratorStatusSid} constants.
    *
    * @get result
    * @var int
    */
-  public $id_report_status;
+  public $id_report_status = 0;
 
   /**
    * If <tt>true</tt> then there are more report rows to get. Otherwise, <tt>false</tt> if all rows have been sent.
@@ -101,7 +121,7 @@ class ReportModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public $is_more;
+  public $is_more = false;
 
   /**
    * Determines whether this report should be refreshed.
@@ -115,7 +135,7 @@ class ReportModel extends WlModelAbstract
    * @get get
    * @var bool
    */
-  public $is_refresh;
+  public $is_refresh = false;
 
   /**
    * Determines whether this report is complete. If this report is accessed on the current day, or is returning
@@ -129,7 +149,7 @@ class ReportModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public $is_report_complete=false;
+  public $is_report_complete = false;
 
   /**
    * The key of the business for which the report must be generated.
@@ -137,7 +157,7 @@ class ReportModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $k_business = '0';
+  public $k_business = '';
 
   /**
    * The randomly generated 32 character string used to authenticate requests.
@@ -146,13 +166,6 @@ class ReportModel extends WlModelAbstract
    * @var string
    */
   public $s_guid = '';
-
-  /**
-   * The user's key.
-   *
-   * @get get
-   * @var string
-   */
-  public $uid = '0';
 }
+
 ?>

@@ -5,11 +5,54 @@ namespace WellnessLiving\Core\Drive\ImageUpload;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Performs final action action to image uploaded with
- * {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadTemporaryModel}.
+ * Performs final action action to image uploaded with {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadTemporaryModel}.
  */
 class ImageUploadModel extends WlModelAbstract
 {
+  /**
+   * Image information for every ID. Every element contains values like {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadModel::_get()} result.
+   *
+   * @post result
+   * @var array[]
+   */
+  public $a_image;
+
+  /**
+   * Information about text on the empty upload image. See PHP-side to get more information about this.
+   *
+   * @get result
+   * @put result
+   * @var array|null
+   */
+  public $a_text_empty;
+
+  /**
+   * Html string to use as the image recommendation.
+   *
+   * @get result
+   * @put result
+   * @var string
+   */
+  public $html_image_hint;
+
+  /**
+   * Maximum height of image.
+   *
+   * @get result
+   * @put result
+   * @var int|null
+   */
+  public $i_height_max;
+
+  /**
+   * Minimum height of image.
+   *
+   * @get result
+   * @put result
+   * @var int|null
+   */
+  public $i_height_min;
+
   /**
    * Height of thumbnail image.
    * <tt>null</tt> until loaded from server.
@@ -18,7 +61,7 @@ class ImageUploadModel extends WlModelAbstract
    * @put result
    * @var int|null
    */
-  public $i_thumbnail_height = null;
+  public $i_thumbnail_height;
 
   /**
    * Width of thumbnail image.
@@ -28,19 +71,56 @@ class ImageUploadModel extends WlModelAbstract
    * @put result
    * @var int|null
    */
-  public $i_thumbnail_width = null;
+  public $i_thumbnail_width;
+
+  /**
+   * Maximum width of image.
+   *
+   * @get result
+   * @put result
+   * @var int|null
+   */
+  public $i_width_max;
+
+  /**
+   * Minimum width of image.
+   *
+   * @get result
+   * @put result
+   * @var int|null
+   */
+  public $i_width_min;
+
+  /**
+   * <tt>true</tt> if image is treated as circular; <tt>false</tt> otherwise.
+   *
+   * @get result
+   * @put result
+   * @var bool|null
+   */
+  public $is_circular;
 
   /**
    * <tt>true</tt> if image deleting is allowed; <tt>false</tt> otherwise.
    * <tt>null</tt> until loaded from server.
    *
    * @get result
+   * @put result
    * @var bool|null
    */
-  public $is_delete_allow = null;
+  public $is_delete_allow;
 
   /**
-   * Key of image within {@link ImageUploadModel::$s_class}.
+   * <tt>true</tt> if temporary image to be retrieved; <tt>false</tt> otherwise.
+   *
+   * @get get
+   * @put get
+   * @var bool
+   */
+  public $is_temporary = false;
+
+  /**
+   * ID of image within {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadModel::$s_class}.
    *
    * @get get
    * @put get
@@ -52,10 +132,20 @@ class ImageUploadModel extends WlModelAbstract
    * Name of class that manages this image.
    *
    * @get get
+   * @post get
    * @put get
    * @var string
    */
   public $s_class = '';
+
+  /**
+   * Link protection code.
+   *
+   * @get result
+   * @put result
+   * @var string|null
+   */
+  public $s_code;
 
   /**
    * Action that must be done to image.
@@ -66,13 +156,33 @@ class ImageUploadModel extends WlModelAbstract
   public $s_command = '';
 
   /**
+   * Image link.
+   *
+   * @get result
+   * @put result
+   * @var string|null
+   */
+  public $s_link;
+
+  /**
+   * List of image IDs within {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadModel::$s_class}. Serialised via JSON.
+   *
+   * <tt>null</tt> if no data sent from client.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $text_id;
+
+  /**
    * URL of the image that should be shown in a case image is not uploaded.
    * <tt>null</tt> until loaded from server.
    *
    * @get result
+   * @put result
    * @var string|null
    */
-  public $url_empty = null;
+  public $url_empty;
 
   /**
    * URL of thumbnail of the image.
@@ -82,7 +192,25 @@ class ImageUploadModel extends WlModelAbstract
    * @put result
    * @var string|null
    */
-  public $url_thumbnail = null;
+  public $url_thumbnail;
+
+  /**
+   * URL the script where new image should be uploaded.
+   *
+   * @get result
+   * @put result
+   * @var string|null
+   */
+  public $url_upload;
+
+  /**
+   * URL of the full image.
+   *
+   * @get result
+   * @put result
+   * @var string|null
+   */
+  public $url_view;
 
   /**
    * Forms command to delete image.

@@ -35,6 +35,16 @@ class ClassPromotionModel extends WlModelAbstract
   public $is_event = false;
 
   /**
+   * `true` if login type or group restrictions are ignored and all pricing options will be returned.
+   *   This will require staff or admin access level.
+   * `false` if api should return only pricing options, which are available for the current user.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_login_type_ignore = false;
+
+  /**
    * `true` if promotions should only be returned if they're related to the given class or event.
    * `false` if all promotions should be returned, even if they aren't related to the given class or event.
    *
@@ -59,7 +69,16 @@ class ClassPromotionModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $k_class = null;
+  public $k_class;
+
+  /**
+   * Default promotion key.
+   * `null` if `k_class` was not provided, or if the class has no default promotion.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $k_promotion_default;
 }
 
 ?>

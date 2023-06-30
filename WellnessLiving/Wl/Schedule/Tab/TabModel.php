@@ -21,7 +21,7 @@ class TabModel extends WlModelAbstract
    *     int <var>id_class_tab_object</var>
    *   </dt>
    *   <dd>
-   *     The tab type’s ID which is one of the {@link \WellnessLiving\Wl\Classes\Tab\TabSid} constants.
+   *     The tab type ID which is one of the {@link \WellnessLiving\Wl\Classes\Tab\TabSid} constants.
    *   </dd>
    *   <dt>
    *     int|null <var>id_class_tab_system</var>
@@ -36,7 +36,7 @@ class TabModel extends WlModelAbstract
    *     string|null <var>k_class_tab</var>
    *   </dt>
    *   <dd>
-   *     The Class Tab key. This will be `null` if it's a system tab.
+   *     The class tab key. This will be `null` if it's a system tab.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>
@@ -52,32 +52,34 @@ class TabModel extends WlModelAbstract
    *   </dd>
    * </dl>
    *
-   * This will be `null` if not set yet.
-   *
    * @get result
-   * @var array|null
+   * @var array[]
    */
-  public $a_tab = null;
+  public $a_tab;
+
+  /**
+   * Whether we are inside the widget or not.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_widget = false;
 
   /**
    * The key of the current business.
    *
-   * This will be `null` if not set yet.
-   *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_business = null;
+  public $k_business = '0';
 
   /**
    * The key of the current location.
    *
-   * This will be `null` if not set yet.
-   *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_location = null;
+  public $k_location;
 
   /**
    * The key of the current user.
@@ -89,9 +91,9 @@ class TabModel extends WlModelAbstract
    * This will be `null` if not set yet.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $uid = null;
+  public $uid = '0';
 }
 
 ?>

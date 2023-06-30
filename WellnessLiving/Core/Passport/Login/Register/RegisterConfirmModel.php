@@ -36,12 +36,10 @@ class RegisterConfirmModel extends WlModelAbstract
   /**
    * Key of new registered user.
    *
-   * <tt>null</tt> until is loaded.
-   *
    * @post result
-   * @var string|null
+   * @var string
    */
-  public $uid = null;
+  public $uid;
 }
 
 ?>

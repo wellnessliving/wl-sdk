@@ -23,16 +23,16 @@ class PrivilegeListModel extends WlModelAbstract
   public $a_privilege_passport;
 
   /**
-   * List of privileges, if the given user is a staff member in the give business..
+   * List of privileges, if the given user is a staff member in the give business.
    *
    * @get result
-   * @var int[]
    * @see \WlPrivilegeSid
+   * @var int[]
    */
   public $a_privilege_staff;
 
   /**
-   * ID of business to get privileges for.
+   * Key of business to get privileges for.
    *
    * @get get
    * @var string

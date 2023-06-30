@@ -21,15 +21,16 @@ class ComboboxModel extends WlModelAbstract
    * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
-  public $a_list = [];
+  public $a_list;
 
   /**
    * The Locale ID that is used as a filter. Generally a locale is a country.
    *
+   * One of {@link \WellnessLiving\Core\Locale\LocaleSid} constants.
+   *
    * `0` means to search in all locales.
-   * Locales are listed in {@link \Core\Locale\LocaleSid}.
    *
    * @get get
    * @var int
@@ -39,12 +40,10 @@ class ComboboxModel extends WlModelAbstract
   /**
    * The city name or a fragment of the name used to search for a city.
    *
-   * It is `null` if not set yet.
-   *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $s_value = null;
+  public $s_value = '';
 }
 
 ?>

@@ -41,7 +41,7 @@ class DebtTransactionModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_transaction;
+  public $a_transaction = [];
 
   /**
    * The business key of the debt.
@@ -49,7 +49,7 @@ class DebtTransactionModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $k_business;
+  public $k_business = '';
 }
 
 ?>

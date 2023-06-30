@@ -43,7 +43,7 @@ class RegisterModel extends WlModelAbstract
   public $s_application = '';
 
   /**
-   * The new client’s email address.
+   * The new client email address.
    *
    * @post post
    * @var string
@@ -51,7 +51,7 @@ class RegisterModel extends WlModelAbstract
   public $s_mail = '';
 
   /**
-   * The new client’s given name.
+   * The new client given name.
    *
    * @post post
    * @var string
@@ -59,7 +59,7 @@ class RegisterModel extends WlModelAbstract
   public $s_name_first = '';
 
   /**
-   * The new client’s surname.
+   * The new client surname.
    *
    * @post post
    * @var string
@@ -67,21 +67,12 @@ class RegisterModel extends WlModelAbstract
   public $s_name_last = '';
 
   /**
-   * The new client’s password.
+   * The new client password.
    *
    * @post post
    * @var string
    */
   public $s_password = '';
-
-  /**
-   * The confirm password field (its contents should match s_password).
-   *
-   * @deprecated Discontinued.
-   * @post post
-   * @var string
-   */
-  public $s_password_confirm = '';
 
   /**
    * The URL to the confirmation page. This link is used in a confirmation email.

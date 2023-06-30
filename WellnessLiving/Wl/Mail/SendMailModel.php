@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class SendMailModel extends WlModelAbstract
 {
   /**
-   * The business ID.
+   * The business key.
    *
    * @post get
    * @var string
@@ -73,3 +73,5 @@ class SendMailModel extends WlModelAbstract
    */
   public $z_html = '';
 }
+
+?>

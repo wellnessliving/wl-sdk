@@ -19,15 +19,14 @@ class ApplicationResourceModel extends WlModelAbstract
   /**
    * The application data.
    *
-   * This will be `null` if not loaded yet.
-   *
    * @get result
-   * @var array[]|null
+   * @var array
    */
-  public $a_application = null;
+  public $a_application;
 
   /**
    * The business key.
+   * Empty to get data for all businesses.
    *
    * @get get
    * @var string

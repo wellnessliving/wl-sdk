@@ -10,12 +10,52 @@ use WellnessLiving\WlModelAbstract;
 class EventListModel extends WlModelAbstract
 {
   /**
-   * A list of events corresponding to requested parameters.
+   * List of class keys applied by filter.
+   *
+   * @get get
+   * @var string[]|null
+   */
+  public $a_class_filter;
+
+  /**
+   * List of enrollment blocks keys applied by filter.
+   *
+   * @get get
+   * @var string[]|null
+   */
+  public $a_enrollment_block_filter;
+
+  /**
+   * List of available enrollment blocks correspond to requested parameters.
    *
    * @get result
    * @var array
    */
+  public $a_enrollment_block_list = [];
+
+  /**
+   * A list of events corresponding to requested parameters.
+   *
+   * @get result
+   * @var array[]
+   */
   public $a_event_list = [];
+
+  /**
+   * List of location keys applied by filter.
+   *
+   * @get get
+   * @var string[]|null
+   */
+  public $a_location;
+
+  /**
+   * List of staff keys applied by filter.
+   *
+   * @get get
+   * @var string[]|null
+   */
+  public $a_staff;
 
   /**
    * The end date of the range from which a list of events should be retrieved.
@@ -49,7 +89,7 @@ class EventListModel extends WlModelAbstract
    * @get get
    * @var int
    */
-  public $id_flag = \WellnessLiving\Core\a\AFlagSid::ON;
+  public $id_flag = 3;
 
   /**
    * Determines whether the endpoint is used for backend mode.
@@ -60,7 +100,15 @@ class EventListModel extends WlModelAbstract
   public $is_backend;
 
   /**
-   * Determines whether you need to retrieve a list of event sessions regardless of the tab specified in {@link EventListApi::$k_class_tab}.
+   * `true` to show even event restricted by booking policies; `false` to show available events only.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_ignore_requirement = false;
+
+  /**
+   * Determines whether you need to retrieve a list of event sessions regardless of the tab specified in {@link \WellnessLiving\Wl\Event\EventListModel::$k_class_tab}.
    *
    * * <tt>true</tt> - retrieves a list regardless of the specified tab.
    * * <tt>false</tt> - retrieves a list only for the specific tab.
@@ -73,7 +121,7 @@ class EventListModel extends WlModelAbstract
   /**
    * The event business key to retrieve a list of all event sessions in business.
    *
-   * Required if {@link EventListApi::$k_location} isn't specified.
+   * Required if {@link \WellnessLiving\Wl\Event\EventListModel::$k_location} isn't specified.
    *
    * @get get
    * @var string
@@ -93,8 +141,8 @@ class EventListModel extends WlModelAbstract
    * An empty value to retrieve a list of event sessions that don't belong to any tab.
    *
    * Will be ignored in next cases:
-   * * {@link EventListApi::$k_skin} specified.
-   * * {@link EventListApi::$is_tab_all} is <tt>true</tt>.
+   * * {@link \WellnessLiving\Wl\Event\EventListModel::$k_skin} specified.
+   * * {@link \WellnessLiving\Wl\Event\EventListModel::$is_tab_all} is <tt>true</tt>.
    *
    * @get get
    * @var string
@@ -104,7 +152,7 @@ class EventListModel extends WlModelAbstract
   /**
    * The event location key to retrieve a list of all event sessions in a specific location.
    *
-   * Required if {@link EventListApi::$k_business} isn't specified.
+   * Required if {@link \WellnessLiving\Wl\Event\EventListModel::$k_business} isn't specified.
    *
    * @get get
    * @var string
@@ -114,12 +162,20 @@ class EventListModel extends WlModelAbstract
   /**
    * The skin key if an event list is used for widget mode.
    *
-   * {@link EventListApi::$k_class_tab} will be ignored for widget mode.
+   * {@link \WellnessLiving\Wl\Event\EventListModel::$k_class_tab} will be ignored for widget mode.
    *
    * @get get
    * @var string
    */
   public $k_skin;
+
+  /**
+   * Search string to filter events by name.
+   *
+   * @get get
+   * @var string
+   */
+  public $text_search = '';
 
   /**
    * The user key.

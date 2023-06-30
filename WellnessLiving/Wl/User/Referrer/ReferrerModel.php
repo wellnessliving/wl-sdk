@@ -101,3 +101,5 @@ class ReferrerModel extends WlModelAbstract
    */
   public $uid_referrer;
 }
+
+?>

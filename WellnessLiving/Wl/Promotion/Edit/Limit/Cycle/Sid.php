@@ -10,11 +10,11 @@ class Sid
   /**
    * Attendance Restriction is applied at the start of the calendar cycle.
    */
-  public const CALENDAR = 1;
+  const CALENDAR = 1;
 
   /**
    * Attendance Restriction is applied at the start of the payment cycle.
    */
-  public const PAYMENT = 2;
+  const PAYMENT = 2;
 }
 ?>

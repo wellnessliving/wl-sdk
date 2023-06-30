@@ -12,39 +12,62 @@ class RegionModel extends WlModelAbstract
 {
   /**
    * A list of regions, grouped by their countries.
-   * Each key is a different country starting from zero.
-   * Each element has the following keys:
-   * <ul><li>array <b>a_region</b> List of region in country. Every element has keys:
-   *   <ul><li>int <b>k_geo</b> The region ID.</li>
-   *   <li>string <b>s_title</b> The name of the region.</li></ul></li>
-   * <li>string <b>k_geo_country</b> The geo ID of the country, this is different than the LocaleSid constant.</li></ul>
-   * <li>string <b>s_title</b> The name of the country.</li></ul>
+   * <dl>
+   *   <dt>
+   *     string[] <var>a_region</var>
+   *   </dt>
+   *   <dd>
+   *     List of region in country. Every element has keys: <dl>
+   *       <dt>
+   *         string <var>k_geo</var>
+   *       </dt>
+   *       <dd>
+   *         The region key.
+   *       </dd>
+   *       <dt>
+   *         string <var>s_title</var>
+   *       </dt>
+   *       <dd>
+   *         The name of the region.
+   *       </dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>
+   *     string <var>k_geo_country</var>
+   *   </dt>
+   *   <dd>
+   *     The country key.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_title</var>
+   *   </dt>
+   *   <dd>
+   *     The name of the country
+   *   </dd>
+   * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
-  public $a_region = [];
-  
+  public $a_region;
+
   /**
-   * The ID of the locale to find regions for. This is one of the {@link \WellnessLiving\Core\Locale\LocaleSid} constants.
-   *
-   * It is `null` if not set yet.
+   * The ID of the locale to find regions for. One of the {@link \WellnessLiving\Core\Locale\LocaleSid} constants.
    *
    * @get get
    * @var int
    */
-  public $id_locale = null;
+  public $id_locale = 0;
 
   /**
    * Whether to get the regions for all locales.
    *
    * If `true` then get regions for all locales, `false` - otherwise.
-   * By default it is `false`.
    *
    * @get get
    * @var bool
    */
-  public $is_locale_all = 0;
+  public $is_locale_all = false;
 }
 
 ?>

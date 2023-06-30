@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Core\Request\Api\Application\Credential;
 
@@ -14,11 +14,11 @@ class CredentialModel extends WlModelAbstract
    * Accepted values: <ul>
    *   <li>
    *     <tt>972</tt> - Google credential.
-   *     Use {@link GoogleCredentialData} object for send credential.
+   *     Use {@link \WellnessLiving\Core\Request\Model\Application\Credential\GoogleCredentialData} object for send credential.
    *   </li>
    *   <li>
    *     <tt>973</tt> - Facebook credential.
-   *     Use {@link FacebookCredentialData} object for send credential.
+   *     Use {@link \WellnessLiving\Core\Request\Model\Application\Credential\FacebookCredentialData} object for send credential.
    *   </li>
    * </ul>
    *

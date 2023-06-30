@@ -28,18 +28,16 @@ class BookListModel extends WlModelAbstract
    *   <dd>The enrollment block key. The primary key in {@link \RsEnrollmentBlockSql} table.</dd>
    *
    *   <dt>sting <var>text_description</var></dt>
-   *   <dd>The description of the class.</dd></dl>
+   *   <dd>The description of the class.</dd>
    *
    *   <dt>sting <var>text_title</var></dt>
    *   <dd>The name of the class.</dd>
    * </dl>
    *
-   * <tt>null</tt> if not yet loaded.
-   *
    * @get result
-   * @var array[]|null
+   * @var array[]
    */
-  public $a_class = null;
+  public $a_class;
 
   /**
    * The location key.

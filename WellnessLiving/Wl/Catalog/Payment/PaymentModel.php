@@ -10,6 +10,19 @@ use WellnessLiving\WlModelAbstract;
 class PaymentModel extends WlModelAbstract
 {
   /**
+   * Commission which staff earns for this purchase. If not empty, has next fields: <dl>
+   *   <dt>string <var>k_staff</var></dt>
+   *   <dd>Staff key.</dd>
+   *   <dt>string <var>k_staff_pay</var></dt>
+   *   <dd>Payment schema key.</dd>
+   * </dl>
+   *
+   * @post get
+   * @var array
+   */
+  public $a_commission = [];
+
+  /**
    * The list of items in the cart.
    *
    * This parameter is required.
@@ -30,7 +43,7 @@ class PaymentModel extends WlModelAbstract
    *         <dt>int <var>i_count</var></dt>
    *         <dd>The quantity of elements.</dd>
    *         <dt>int <var>id_purchase_item</var></dt>
-   *         <dd>The purchase type of the element. One of {@link WlPurchaseItemSid} constants.</dd>
+   *         <dd>The purchase type of the element. One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.</dd>
    *         <dt>string <var>k_id</var></dt>
    *         <dd>The primary key of the element depends on type of the element.</dd></dl>
    *       </dd>
@@ -40,7 +53,7 @@ class PaymentModel extends WlModelAbstract
    *       <dd>
    *          "Wellness Program" fields.
    *
-   *          <var>k_wellness_program<var/> must be passed along with this array. See description below.
+   *          <var>k_wellness_program</var> must be passed along with this array. See description below.
    *
    *          <dl>
    *            <dt>array <var>a_account</var></dt>
@@ -114,7 +127,7 @@ class PaymentModel extends WlModelAbstract
    *       <dd>
    *          The "Wellness Program" key. Set for insurance membership promotion.
    *
-   *          <var>a_wellness_program<var/> array must be passed along with the key. See the array description above.
+   *          <var>a_wellness_program</var> array must be passed along with the key. See the array description above.
    *
    *          <p>Use the following models to work with this type of promotion:</p>
    *          <ul>
@@ -211,7 +224,7 @@ class PaymentModel extends WlModelAbstract
    *     string <var>[s_signature]</var>
    *   </dt>
    *   <dd>
-   *     The client’s signature. This is only used for items that require a signed contract.
+   *     The client signature. This is only used for items that require a signed contract.
    *   </dd>
    * </dl>
    *
@@ -221,11 +234,9 @@ class PaymentModel extends WlModelAbstract
   public $a_item = [];
 
   /**
-   * A list of payment sources.
-   * The key is a string representation of one of the {@link WlPayMethodSid} constants.
-   * For example, if the payment method is {@link WlPayMethodSid::ECOMMERCE}, then specify the string <tt>ecommerce</tt>.
+   * A list of payment sources to pay with.
    *
-   * Values contain the following keys:
+   * Each element has next keys:
    * <dl>
    *   <dt>
    *     array [<var>a_pay_card</var>]
@@ -239,8 +250,8 @@ class PaymentModel extends WlModelAbstract
    *       <dd>
    *         The payment address:
    *         <dl>
-   *           <dt>bool <var>is_new</var></dt>
-   *           <dd>Set this value is `1` to add a new payment address or to `0` to use a saved payment address.</dd>
+   *           <dt>boolean <var>is_new</var></dt>
+   *           <dd>Set this value is <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
    *           <dt>string [<var>k_geo_country</var>]</dt>
    *           <dd>The key of the country used for the payment address. Specify to add a new address.</dd>
    *           <dt>string [<var>k_geo_region</var>]</dt>
@@ -280,7 +291,7 @@ class PaymentModel extends WlModelAbstract
    *         The credit card expiration year. Specify to add a new card.
    *       </dd>
    *       <dt>
-   *         bool <var>is_new</var>
+   *         boolean <var>is_new</var>
    *       </dt>
    *       <dd>
    *         <tt>1</tt> to add a new card; <tt>0</tt> to use a saved card.
@@ -312,13 +323,13 @@ class PaymentModel extends WlModelAbstract
    *     The amount of money to withdraw with this payment source.
    *   </dd>
    *   <dt>
-   *     bool [<var>is_hide</var>]
+   *     boolean [<var>is_hide</var>]
    *   </dt>
    *   <dd>
    *     Whether this payment method is hidden.
    *   </dd>
    *   <dt>
-   *     bool [<var>is_success</var>=<tt>false</tt>]
+   *     boolean [<var>is_success</var>=<tt>false</tt>]
    *   </dt>
    *   <dd>
    *     Identifies whether this source was successfully charged.
@@ -327,7 +338,7 @@ class PaymentModel extends WlModelAbstract
    *     string [<var>m_surcharge</var>]
    *   </dt>
    *   <dd>
-   *     The client-side calculated surcharge. See {@link EnvironmentModel}
+   *     The client-side calculated surcharge.
    *   </dd>
    *   <dt>
    *     string [<var>s_index</var>]
@@ -339,8 +350,7 @@ class PaymentModel extends WlModelAbstract
    *     string <var>sid_pay_method</var>
    *   </dt>
    *   <dd>
-   *     The payment method ID. A string representation of one of the {@link WlPayMethodSid} constants.
-   *     For example, if the payment method is {@link WlPayMethodSid::ECOMMERCE}, specify the string <tt>ecommerce</tt>.
+   *     The payment method ID.
    *   </dd>
    * </dl>
    *
@@ -348,6 +358,17 @@ class PaymentModel extends WlModelAbstract
    * @var array[]
    */
   public $a_pay_form = [];
+
+  /**
+   * List of quiz response keys.
+   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
+   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table or
+   * special value from {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} constant.
+   *
+   * @post post
+   * @var array
+   */
+  public $a_quiz_response = [];
 
   /**
    * The discount as a percentage. Optional.
@@ -358,7 +379,7 @@ class PaymentModel extends WlModelAbstract
   public $f_discount_percent = 0;
 
   /**
-   * The WellnessLiving mode type, one of the {@link WlBookModeSid} constants (required).
+   * The WellnessLiving mode type, one of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants (required).
    *
    * @post get
    * @var int
@@ -371,7 +392,7 @@ class PaymentModel extends WlModelAbstract
    * @post get
    * @var bool
    */
-  public $is_guest = 0;
+  public $is_guest = false;
 
   /**
    * Set if the operations are performed under the staff member. Optional.
@@ -379,7 +400,7 @@ class PaymentModel extends WlModelAbstract
    * @post get
    * @var bool
    */
-  public $is_staff = 0;
+  public $is_staff = false;
 
   /**
    * The business key. Required.
@@ -387,7 +408,7 @@ class PaymentModel extends WlModelAbstract
    * @post get
    * @var string
    */
-  public $k_business = '';
+  public $k_business = '0';
 
   /**
    * The location key. Required.
@@ -395,7 +416,17 @@ class PaymentModel extends WlModelAbstract
    * @post get
    * @var string
    */
-  public $k_location = '';
+  public $k_location = '0';
+
+  /**
+   * Key of login activity.
+   *
+   * <tt>null</tt> if not set yet.
+   *
+   * @post result
+   * @var string|null
+   */
+  public $k_login_activity;
 
   /**
    * The installment template key.
@@ -409,12 +440,10 @@ class PaymentModel extends WlModelAbstract
   /**
    * The key of the purchase that was created during payment.
    *
-   * This will be `null` if the result isn't returned yet or the request wasn't successful.
-   *
    * @post result
-   * @var string|null
+   * @var string
    */
-  public $k_purchase = null;
+  public $k_purchase;
 
   /**
    * The key of the visit to be paid. Optional.
@@ -422,7 +451,7 @@ class PaymentModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $k_visit = '';
+  public $k_visit = '0';
 
   /**
    * The amount of money to discount. Optional.
@@ -430,7 +459,17 @@ class PaymentModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $m_discount_flat = '';
+  public $m_discount_flat = '0';
+
+  /**
+   * Manual surcharge amount.
+   *
+   * Empty string means automatic surcharge amount.
+   *
+   * @post post
+   * @var string
+   */
+  public $m_surcharge;
 
   /**
    * The tip amount. Optional.
@@ -449,13 +488,20 @@ class PaymentModel extends WlModelAbstract
   public $text_discount_code = '';
 
   /**
+   * Custom receipt note.
+   *
+   * @post post
+   * @var string
+   */
+  public $text_receipt_note = '';
+
+  /**
    * The user's key. Required.
    *
    * @post get
    * @var string
    */
-  public $uid = '';
-
+  public $uid = '0';
 }
 
 ?>

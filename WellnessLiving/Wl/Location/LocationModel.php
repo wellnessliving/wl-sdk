@@ -7,7 +7,12 @@ use WellnessLiving\WlModelAbstract;
 /**
  * An endpoint that creates a new location in the business or edits a specified location.
  * Access to this endpoint is logged with specified permissions. It can also be accessed by guests during the
- * registration process for new businesses (see {@link \WellnessLiving\Wl\Business\BusinessModel}).
+ * registration process for new businesses (see {@link \WellnessLiving\Wl\Business\BusinessModel::sessionKey()}).
+ *
+ * Field <tt>k_business</tt> is required.
+ * Other fields are optionally if the location should be edited. This means if a field is not specified it is not be changed.
+ * If <tt>k_location</tt> is not specified that new location will be created. In this case <tt>k_city</tt>,
+ * <tt>text_address</tt> and <tt>text_title</tt> are required.
  */
 class LocationModel extends WlModelAbstract
 {

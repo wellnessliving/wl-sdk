@@ -64,7 +64,7 @@ class ElementModel extends WlModelAbstract
    *   <dt>bool <var>is_age_public</var></dt>
    *   <dd>Whether age restriction exist and should be taken into account prior to booking of this class/event.</dd>
    *   <dt>bool <var>is_bookable</var></dt>
-   *   <dd>Whether clients can book class or event online or not.</dd
+   *   <dd>Whether clients can book class or event online or not.</dd>
    *   <dt>bool <var>is_online_private</var></dt>
    *   <dd>
    *     `true` means to show class only for clients who can book online,
@@ -98,13 +98,30 @@ class ElementModel extends WlModelAbstract
    *   <dd>Item special instructions.</dd>
    *   <dt>string <var>url_image</var></dt>
    *   <dd>Url link to item image.</dd>
-
    * </dl>
    *
    * @get result
    * @var array
    */
   public $a_class_list = [];
+
+  /**
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_width = 0;
 
   /**
    * The business key.
@@ -132,7 +149,7 @@ class ElementModel extends WlModelAbstract
    * @get get
    * @var bool
    */
-  public $show_cancelled = '';
+  public $show_cancelled = false;
 }
 
 ?>

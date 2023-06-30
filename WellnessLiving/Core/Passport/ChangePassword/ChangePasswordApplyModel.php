@@ -7,8 +7,8 @@ use WellnessLiving\WlModelAbstract;
 /**
  * Point to finish password change procedure.
  *
- * It advance post {@link ChangePasswordBeginModel} model.
- * Set into {@link ChangePasswordBeginModel::$url_reset} field URL to page
+ * It advance post {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordBeginModel} endpoint.
+ * Set into {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordBeginModel::$url_reset} field URL to page
  * where you go to get new password from user.
  * It will send to user mail with "reset password" link.
  *
@@ -16,10 +16,9 @@ use WellnessLiving\WlModelAbstract;
  *
  * Post this model to set a password for user.
  *
- * Use <tt>text_mail</tt> as value for {@link ChangePasswordApplyModel::$text_login} and
- * {@link ChangePasswordApplyModel::$text_mail},
- * <tt>text_code</tt> - for {@link ChangePasswordApplyModel::$text_code}.
- *
+ * Use <tt>text_mail</tt> as value for {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordApplyModel::$text_login} and
+ * {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordApplyModel::$text_mail},
+ * <tt>text_code</tt> - for {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordApplyModel::$text_code}.
  */
 class ChangePasswordApplyModel extends WlModelAbstract
 {
@@ -33,7 +32,7 @@ class ChangePasswordApplyModel extends WlModelAbstract
    * @post get
    * @var string
    */
-  public $text_code = null;
+  public $text_code = '';
 
   /**
    * User's login.
@@ -45,7 +44,7 @@ class ChangePasswordApplyModel extends WlModelAbstract
    * @post get
    * @var string
    */
-  public $text_login = null;
+  public $text_login = '';
 
   /**
    * User's email.
@@ -57,7 +56,7 @@ class ChangePasswordApplyModel extends WlModelAbstract
    * @post get
    * @var string
    */
-  public $text_mail = null;
+  public $text_mail = '';
 
   /**
    * New password.
@@ -67,5 +66,7 @@ class ChangePasswordApplyModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $text_password = null;
+  public $text_password = '';
 }
+
+?>

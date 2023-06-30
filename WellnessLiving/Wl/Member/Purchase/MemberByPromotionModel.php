@@ -8,6 +8,8 @@ use WellnessLiving\WlModelAbstract;
  * An endpoint that returns a list of active clients with the given Purchase Options.
  *
  * This endpoint returns only active clients using active Purchase Options from the given list.
+ *
+ * Does not return clients, to which currently signed-in user does not have access to.
  */
 class MemberByPromotionModel extends WlModelAbstract
 {
@@ -21,7 +23,7 @@ class MemberByPromotionModel extends WlModelAbstract
    *
    *     <dl>
    *       <dt>string|null <var>dl_end</var></dt>
-   *       <dd>The date in the location’s time zone when the Purchase Option expires.
+   *       <dd>The date in the location time zone when the Purchase Option expires.
    *           This will be `null` if the Purchase Option doesn't expire.</dd>
    *       <dt>string <var>dtu_purchase</var></dt>
    *       <dd>The global date and time when the Purchase Option was sold.</dd>
@@ -30,8 +32,8 @@ class MemberByPromotionModel extends WlModelAbstract
    *           This will be `null` if not defined yet. For example, if the starting date is the date of the first visit
    *           and there haven't been any visits yet.</dd>
    *       <dt>string|null <var>dl_terminate</var></dt>
-   *       <dd>The date in location’s time zone when the Purchase Option will be terminated.
-   *           This will be `null` if the Purchase Option isn’t scheduled to be terminated.</dd>
+   *       <dd>The date in location time zone when the Purchase Option will be terminated.
+   *           This will be `null` if the Purchase Option isn't scheduled to be terminated.</dd>
    *       <dt>string <var>k_promotion</var></dt>
    *       <dd>The key of the Purchase Option.</dd>
    *     </dl>
@@ -41,16 +43,16 @@ class MemberByPromotionModel extends WlModelAbstract
    *   <dd>The key of the client.</dd>
    * </dl>
    *
-   * @var array[]
    * @get result
+   * @var array[]
    */
   public $a_clients = [];
 
   /**
    * The key of the business for which to get a list of clients.
    *
-   * @var string
    * @get get
+   * @var string
    */
   public $k_business = '';
 
@@ -60,11 +62,10 @@ class MemberByPromotionModel extends WlModelAbstract
    *
    * For example: '324,123,11,556'
    *
-   * @var string
    * @get get
+   * @var string
    */
   public $s_promotion_keys = '';
 }
-
 
 ?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Wl\Video;
 
@@ -54,7 +54,7 @@ class VideoListModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_list;
+  public $a_list = [];
 
   /**
    * A list of locations to show videos from.
@@ -130,6 +130,18 @@ class VideoListModel extends WlModelAbstract
    * @var string
    */
   public $text_search;
+
+  /**
+   * UID of the client who request list of videos.
+   *
+   * `null` if user is not signed in.
+   *
+   * *NOTE: Not used directly in API, needed for {@link \WellnessLiving\Wl\Video\VideoListModel::KEY} constant.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $uid;
 }
 
 ?>

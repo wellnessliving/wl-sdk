@@ -15,6 +15,12 @@ class ResponseListModel extends WlModelAbstract
    *  <dd>Date of the request to fill out a quiz form.</dd>
    *  <dt>int <var>id_source</var></dt>
    *  <dd>Place where request to fill out a quiz form occurred. One of {@link \WellnessLiving\Wl\Quiz\Response\SourceSid} constants.</dd>
+   *  <dt>bool <var>is_private</var></dt>
+   *  <dd>
+   *    Whether form can be viewed by staff member only after confirmation.
+   *    `true` if form can be viewed only after confirmation
+   *    `false` if form can be viewed always
+   *  </dd>
    *  <dt>string <var>k_quiz</var></dt>
    *  <dd>Quiz key.</dd>
    *  <dt>string <var>k_quiz_login</var></dt>
@@ -34,6 +40,12 @@ class ResponseListModel extends WlModelAbstract
    *  <dd>Date of a request to fill out a quiz form.</dd>
    *  <dt>int <var>id_source</var></dt>
    *  <dd>Place where request to fill out a quiz form occurred. One of {@link \WellnessLiving\Wl\Quiz\Response\SourceSid} constants.</dd>
+   *  <dt>bool <var>is_private</var></dt>
+   *  <dd>
+   *    Whether form can be viewed by staff member only after confirmation.
+   *    `true` if form can be viewed only after confirmation
+   *    `false` if form can be viewed always
+   *  </dd>
    *  <dt>string <var>k_quiz</var></dt>
    *  <dd>Quiz key.</dd>
    *  <dt>string <var>k_quiz_login</var></dt>
@@ -48,12 +60,20 @@ class ResponseListModel extends WlModelAbstract
   public $a_quiz_response = [];
 
   /**
+   * `true` if API is being used from backend, `false` otherwise.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_backend = false;
+
+  /**
    * Key of a business to show information for.
    *
    * @get get
    * @var string
    */
-  public  $k_business = '';
+  public $k_business = '';
 
   /**
    * Key of a user to show information for.

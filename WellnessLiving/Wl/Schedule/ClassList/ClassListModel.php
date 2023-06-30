@@ -10,20 +10,16 @@ use WellnessLiving\WlModelAbstract;
 class ClassListModel extends WlModelAbstract
 {
   /**
-   * The list’s start date in UTC and in MySQL format.
-   *
-   * It is `null` if not set yet.
-   *
-   * @get get
-   * @var string|null
-   */
-  public $dt_date = null;
-
-  /**
    * A list of classes sessions starting with the date {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_date}
-   * and in the 62 days ahead (or up to {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_end}). Every
-   * element has the following keys:
+   * and in the 62 days ahead (or up to {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_end}).
+   * Every element has the following keys:
    * <dl>
+   *   <dt>
+   *     string[] <var>a_class_tab</var>
+   *   </dt>
+   *   <dd>
+   *     Keys of class tab.
+   *   </dd>
    *   <dt>
    *     string[] <var>a_staff</var>
    *   </dt>
@@ -118,19 +114,27 @@ class ClassListModel extends WlModelAbstract
    * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
-  public $a_session = [];
+  public $a_session;
 
   /**
-   * The list’s end date in UTC and in MySQL format.
-   * If left `null`, the default duration is 62 days after
+   * The list start date in UTC and in MySQL format.
+   *
+   * @get get
+   * @var string
+   */
+  public $dt_date = '';
+
+  /**
+   * The list end date in UTC and in MySQL format.
+   * If left empty, the default duration is {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::DEFAULT_PERIOD} days after
    * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_date}.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $dt_end = null;
+  public $dt_end = '';
 
   /**
    * If `true`, sessions from every class tab are returned. If `false`, use the
@@ -147,12 +151,11 @@ class ClassListModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public $is_timezone_different = false;
+  public $is_timezone_different;
 
   /**
    * If `true`, there exists at least one virtual service by a specified
-   * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_business} and
-   * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_class_tab},
+   * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_business} and {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_class_tab},
    * Otherwise, this will be `false`.
    *
    * @get result
@@ -163,12 +166,10 @@ class ClassListModel extends WlModelAbstract
   /**
    * The business key.
    *
-   * This will be `null` if not set yet.
-   *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_business = null;
+  public $k_business = '0';
 
   /**
    * The category tab key.
@@ -177,9 +178,9 @@ class ClassListModel extends WlModelAbstract
    * This will be ignored if {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$is_tab_all} is `true`.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_class_tab = null;
+  public $k_class_tab = '0';
 
   /**
    * If `true`, canceled sessions will be returned. If `false`, canceled sessions won't be returned.
@@ -192,11 +193,10 @@ class ClassListModel extends WlModelAbstract
   /**
    * The user key.
    *
-   * This will be `null` if not set yet.
-   *
-   * @var string|null
+   * @get get
+   * @var string
    */
-  public $uid = null;
+  public $uid;
 }
 
 ?>

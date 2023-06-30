@@ -14,9 +14,8 @@ use WellnessLiving\WlModelAbstract;
 class LeadModel extends WlModelAbstract
 {
   /**
-   * A list of fields containing the lead’s information.
-   * The keys are the field keys and values are field values from
-   * {@link \WellnessLiving\Wl\Lead\LeadModel::$a_field_list}.
+   * A list of fields containing the lead information.
+   * The keys are the field keys and values are field values.
    *
    * @post post
    * @var array
@@ -32,21 +31,25 @@ class LeadModel extends WlModelAbstract
    *   <dd>
    *     A list of possible options for an HTML select field. This value is only used if this field is an HTML select.
    *     Every element has the following keys:
-   *     <dl><dt>string <var>s_id</var></dt><dd>The option ID.</dd>
-   *     <dt>string <var>text_title</var></dt><dd>The option title.</dd></dl>
+   *     <dl>
+   *       <dt>string <var>s_id</var></dt>
+   *       <dd>The option ID.</dd>
+   *       <dt>string <var>text_title</var></dt>
+   *       <dd>The option title.</dd>
+   *     </dl>
    *   </dd>
    *   <dt>
    *     int <var>id_field_general</var>
    *   </dt>
    *   <dd>
-   *     The type of the general field. This is one of the {@link \WellnessLiving\Wl\Field\WlFieldGeneralSid}.
+   *     The type of the general field. This is one of the {@link \WellnessLiving\RsFieldGeneralSid}.
    *     This value is only set if the field is one of the general fields.
    *   </dd>
    *   <dt>
    *     int <var>id_field_type</var>
    *   </dt>
    *   <dd>
-   *     The field type. This is one of the @link \WellnessLiving\Wl\Field\RsFieldTypeSid} constants.
+   *     The field type. This is one of the {@link \WellnessLiving\RsFieldTypeSid} constants.
    *   </dd>
    *   <dt>
    *     bool <var>is_require</var>
@@ -71,7 +74,7 @@ class LeadModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_field_list = [];
+  public $a_field_list;
 
   /**
    * The skin configuration:
@@ -89,7 +92,7 @@ class LeadModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public $a_skin = [];
+  public $a_skin;
 
   /**
    * The key of business to which the new user must be captured.
@@ -101,8 +104,8 @@ class LeadModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The ID of the widget skin. If left empty, then the default skin is used.
-   * This will be the Lead Capture widget skin with ‘Use this widget for the Add Lead form’ selected.
+   * The key of the widget skin. If left empty, then the default skin is used.
+   * This will be the Lead Capture widget skin with "Use this widget for the Add Lead form" selected.
    * If your business doesn't have a skin selected, this endpoint will default to the system-wide default,
    * which may lack fields your business requires when adding a lead or a client.
    *
@@ -114,9 +117,8 @@ class LeadModel extends WlModelAbstract
 
   /**
    * The characters entered by the lead for the captcha test.
-   * This isn't necessary if the GET method returned an empty url_captcha.
-   * This field isn't necessary if the GET method returned an empty
-   * {@link \WellnessLiving\Wl\Lead\LeadModel::$url_captcha}.
+   * This isn't necessary if the GET method returned an empty {@link \WellnessLiving\Wl\Lead\LeadModel::$url_captcha}.
+   * This field isn't necessary if the GET method returned an empty {@link \WellnessLiving\Wl\Lead\LeadModel::$url_captcha}.
    *
    * @post post
    * @var string
@@ -138,7 +140,7 @@ class LeadModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $url_captcha = '';
+  public $url_captcha;
 }
 
 ?>

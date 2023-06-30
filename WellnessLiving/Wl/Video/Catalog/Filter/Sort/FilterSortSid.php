@@ -14,21 +14,21 @@ class FilterSortSid
    *
    * @title Alphabetical
    */
-  public const ALPHABET = 1;
+  const ALPHABET = 1;
 
   /**
    * Sort by most recently added.
    *
    * @title Most Recent
    */
-  public const RECENT = 2;
+  const RECENT = 2;
 
   /**
    * Sorted by number of views.
    *
    * @title Views
    */
-  public const VIEW = 3;
+  const VIEW = 3;
 }
 
 ?>

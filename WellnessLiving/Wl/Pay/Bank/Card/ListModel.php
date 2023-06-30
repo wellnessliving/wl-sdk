@@ -11,7 +11,7 @@ class ListModel extends WlModelAbstract
 {
   /**
    * A list of bank cards.
-   * The array keys are the card’s `k_pay_bank` IDs.
+   * The array keys are the card `k_pay_bank` IDs.
    * Each element has the following keys:
    * <dl>
    *   <dt>int <var>i_month</var></dt>
@@ -21,20 +21,26 @@ class ListModel extends WlModelAbstract
    *   <dt>int <var>id_card_system</var></dt>
    *   <dd>The card system ID. This is one of the {@link \WellnessLiving\Core\a\ACardSystemSid} constants.</dd>
    *   <dt>bool <var>is_default</var></dt>
-   *   <dd>If `true`, then this card is the user’s default card.
-   *     If `false`, then this isn't the user’s default card.</dd>
+   *   <dd>
+   *     If `true`, then this card is the user default card.
+   *     If `false`, then this isn't the user default card.
+   *   </dd>
    *   <dt>string <var>k_pay_address</var></dt>
    *   <dd>The payment address ID. This refers to a physical address associated with a payment card.</dd>
    *   <dt>string <var>k_pay_bank</var></dt>
    *   <dd>The payment method ID. Each payment card for each user will have its own ID.</dd>
    *   <dt>string <var>text_name_card</var></dt>
-   *   <dd>The payment card descriptor. This is typically the company name and the last 4 digits of the card
-   *     (for example, visa-5903).</dd>
+   *   <dd>
+   *     The payment card descriptor. This is typically the company name and the last 4 digits of the card
+   *     (for example, visa-5903).
+   *   </dd>
    *   <dt>string <var>text_name_holder</var></dt>
    *   <dd>The name of the card owner as it appears on the card.</dd>
    *   <dt>string <var>text_number</var></dt>
-   *   <dd>A portion of the payment card number, used to identify the card.
-   *     This is typically the last 4 digits of the card number.</dd>
+   *   <dd>
+   *     A portion of the payment card number, used to identify the card.
+   *     This is typically the last 4 digits of the card number.
+   *   </dd>
    * </dl>
    *
    * @get result
@@ -43,35 +49,50 @@ class ListModel extends WlModelAbstract
   public $a_bank_card = [];
 
   /**
-   * The business ID number used internally by WellnessLiving.
+   * List of bank cards.
+   * Duplicate of the {@link \WellnessLiving\Wl\Pay\Bank\Card\ListModel::$a_bank_card}.
    *
-   * This will be `null` if not set yet.
-   *
-   * @get get
-   * @var string|null
+   * @get result
+   * @var array
    */
-  public $k_business = null;
+  public $a_list = [];
 
   /**
-   * The key of the location to show information for.
-   * `0` to use user's home location.
+   * Whether new card can be added.
    *
-   * This will be `null` if not set yet.
+   * `true` if new cards can be added.
+   * `false` if new cards can not be added.
    *
-   * @get get
-   * @var string|null
+   * @get result
+   * @var bool
    */
-  public $k_location = null;
+  public $can_add = false;
 
   /**
-   * The key of the user to show information for.
-   *
-   * This will be `null` if not set yet.
+   * ID of current business.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $uid = null;
+  public $k_business;
+
+  /**
+   * Location to show information for.
+   *
+   * <tt>0</tt> to use user's home location.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_location;
+
+  /**
+   * ID of a user to show information for.
+   *
+   * @get get
+   * @var string
+   */
+  public $uid;
 }
 
 ?>

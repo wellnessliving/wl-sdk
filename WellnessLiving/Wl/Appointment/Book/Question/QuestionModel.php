@@ -15,17 +15,15 @@ class QuestionModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public $a_question = [];
+  public $a_question;
 
   /**
-   * The service ID used for retrieving questions.
-   *
-   * This will be `null` if not set yet.
+   * The service key used for retrieving questions.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_service = null;
+  public $k_service = '0';
 }
 
 ?>

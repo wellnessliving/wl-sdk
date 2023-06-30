@@ -13,6 +13,13 @@ class MemberModel extends WlModelAbstract
    * A list of businesses where the client is present. Every element is an array with the following keys:
    * <dl>
    *   <dt>
+   *     bool <var>can_enter</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> if user is allowed to sign in into this business; <tt>false</tt> otherwise.
+   *     This value is based on {@link Wl\Login\Disable\LoginDisableSql} table.
+   *   </dd>
+   *   <dt>
    *     bool <var>is_franchisee</var>
    *   </dt>
    *   <dd>

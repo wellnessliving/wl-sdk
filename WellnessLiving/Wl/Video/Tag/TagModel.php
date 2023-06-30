@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Wl\Video\Tag;
 

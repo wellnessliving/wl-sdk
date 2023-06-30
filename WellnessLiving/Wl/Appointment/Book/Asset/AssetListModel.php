@@ -10,10 +10,10 @@ use WellnessLiving\WlModelAbstract;
 class AssetListModel extends WlModelAbstract
 {
   /**
-   * A list of information about assets.
+   * A list of information about assets:
    *
    * <dl>
-   *   <dt>array <var>a_age_restrictions</var</dt>
+   *   <dt>array <var>a_age_restrictions</var></dt>
    *   <dd>
    *     Information about age restrictions for this event.
    *
@@ -29,6 +29,8 @@ class AssetListModel extends WlModelAbstract
    *         When restrictions are hidden and current user isn't a staff member, the age range will be empty.</dd>
    *     </dl>
    *   </dd>
+   *   <dt>array <var>a_class_tab</var></dt>
+   *   <dd>Keys are primary key in {@link \RsClassSql} table, values are primary key in {@link \Wl\Classes\Tab\Sql\ClassTab\Sql}.</dd>
    *   <dt>
    *     array[] <var>a_direct_link</var>
    *   </dt>
@@ -55,44 +57,52 @@ class AssetListModel extends WlModelAbstract
    *       <dd>The icon name. String representation of one of the {@link \WellnessLiving\Wl\Resource\Image\ImageIconSid} constants. This is only set if the image kind equals to `image`.</dd>
    *       <dt>string <var>sid_image_shape</var></dt>
    *       <dd>The shape name. String representation of one of the {@link \WellnessLiving\Wl\Resource\Image\ImageShapeSid} constants. This is set only if the image kind equals to `shape`.</dd>
-   *       <dt>string <var>url</var></dt><dd>The asset logo URL.</dd>
+   *       <dt>string <var>url</var></dt>
+   *       <dd>The asset logo URL.</dd>
    *     </dl>
    *   </dd>
    *   <dt>array[] <var>a_period</var></dt>
    *   <dd>A list of asset periods with the following information:
    *     <dl>
-   *       <dt>string <var>html_duration</var></dt><dd>The HTML code used to display the asset duration.</dd>
-   *       <dt>string <var>html_price</var></dt><dd>The HTML code used to display the formatted price.</dd>
-   *       <dt>int <var>i_duration</var></dt><dd>The asset duration in minutes.</dd>
-   *       <dt>int <var>id_price</var></dt><dd>The asset period price type. One of {@link \WellnessLiving\Wl\Service\ServicePriceSid} constants.</dd>
-   *       <dt>sting <var>m_price</var></dt><dd>The asset period price.</dd>
+   *       <dt>string <var>html_duration</var></dt>
+   *       <dd>The HTML code used to display the asset duration.</dd>
+   *       <dt>string <var>html_price</var></dt>
+   *       <dd>The HTML code used to display the formatted price.</dd>
+   *       <dt>int <var>i_duration</var></dt>
+   *       <dd>The asset duration in minutes.</dd>
+   *       <dt>int <var>id_price</var></dt>
+   *       <dd>The asset period price type. One of {@link \WellnessLiving\RsServicePriceSid} constants.</dd>
+   *       <dt>sting <var>m_price</var></dt>
+   *       <dd>The asset period price.</dd>
    *     </dl>
    *   </dd>
    *   <dt>array <var>a_search_tag</var></dt>
-   *   <dd>QUICK Search tag IDs.</dd>
+   *   <dd>QUICK Search tag keys.</dd>
    *   <dt>bool <var>hide_application</var></dt>
-   *   <dd>Determines whether the asset will be hidden in the White Label mobile apps.
-   *     If `true`, the asset won't be displayed. Otherwise, this will be `false`.</dd>
+   *   <dd>
+   *     Determines whether the asset will be hidden in the White Label mobile apps.
+   *     If `true`, the asset won't be displayed. Otherwise, this will be `false`.
+   *   </dd>
    *   <dt>string <var>html_age_restriction</var></dt>
    *   <dd>The resource age restriction</dd>
    *   <dt>string <var>html_title</var></dt>
    *   <dd>The resource name.</dd>
    *   <dt>int <var>id_service_require</var></dt>
-   *   <dd>The purchase rule. One of the {@link \WellnessLiving\Wl\Service\ServiceRequireSid} constants.</dd>
+   *   <dd>The purchase rule. One of the {@link \WellnessLiving\RsServiceRequireSid} constants.</dd>
    *   <dt>bool <var>is_age_restricted</var></dt>
    *   <dd>Determines whether this service can't be booked due to age restrictions.</dd>
+   *   <dt>string <var>k_class_tab</var></dt>
+   *   <dd>Quick book tab key.</dd>
    *   <dt>string <var>k_resource</var></dt>
    *   <dd>The resource key.</dd>
    *   <dt>string <var>k_resource_category</var></dt>
    *   <dd>The resource category key.</dd>
    * </dl>
    *
-   * This will be `null` if not initialized yet.
-   *
    * @get result
-   * @var array|null
+   * @var array[]
    */
-  public $a_asset = null;
+  public $a_asset;
 
   /**
    * The selected date and time of the asset booking. It is used in cases when the business booking policy allows
@@ -130,49 +140,44 @@ class AssetListModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The class tab ID used to filter assets.
+   * The class tab key used to filter assets.
    *
    * This will be `null` if not set yet or if elements with no specified class tab are selected.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_class_tab = null;
+  public $k_class_tab = '0';
 
   /**
-   * The location ID.
-   *
-   * This will be `null` if not set yet.
+   * The location key.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_location = null;
+  public $k_location = '0';
 
   /**
-   * The asset category ID to show information for.
-   *
-   * This will be `null` if not set yet.
+   * The asset category key to show information for.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_resource_category = null;
+  public $k_resource_category = '0';
 
   /**
-   * The asset layout ID.
-   *
-   * This will be `null` if not set yet.
+   * The asset layout key.
+   * May be empty if asset category has no layout.
    *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $k_resource_layout = null;
+  public $k_resource_layout;
 
   /**
    * Timezone of date and time of asset booking.
    *
-   * Empty if {@link AssetListModel::$dtl_date} not set or client can't change in which timezone dates should be shown.
+   * Empty if {@link \WellnessLiving\Wl\Appointment\Book\Asset\AssetListModel::$dtl_date} not set or client can't change in which timezone dates should be shown.
    *
    * @get get
    * @var string
@@ -187,7 +192,7 @@ class AssetListModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $uid = null;
+  public $uid;
 }
 
 ?>
