@@ -62,10 +62,42 @@ class DebtListModel extends WlModelAbstract
   public $a_debt;
 
   /**
-   * The business key to which debts should be returned.
+   * Date before which debts should be returned.
+   *
+   * If `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} specified will return debts before current date.
+   * If `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} also `null` will return debts from previous month.
    *
    * @get get
-   * @var string
+   * @var string|null
+   */
+  public $dl_end;
+
+  /**
+   * Date since which debts should be returned.
+   *
+   * If `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} specified will return debts since the beginning of time.
+   * If `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} also `null` will return debts from previous month.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dl_start;
+
+  /**
+   * Defines whether debts for test or real businesses should be returned.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_test;
+
+  /**
+   * The business key to which debts should be returned.
+   *
+   * `null` in a case if debts for all businesses should be returned.
+   *
+   * @get get
+   * @var string|null
    */
   public $k_business;
 }
