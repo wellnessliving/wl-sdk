@@ -299,6 +299,14 @@ class PaymentPostModel extends WlModelAbstract
   public $k_login_activity_purchase;
 
   /**
+   * Login prize key. In case when appointment paid by reward prize, there is the key of redeemed login prize. Empty otherwise.
+   *
+   * @post result
+   * @var string
+   */
+  public $k_login_prize = '0';
+
+  /**
    * The login promotion key.
    *
    * @get get
