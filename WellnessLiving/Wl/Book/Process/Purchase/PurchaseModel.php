@@ -439,7 +439,7 @@ class PurchaseModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * Default promotion key. Primary key in {@link \RsPromotionSql} table.
+   * Default promotion key.
    * Empty if the class has no default promotion.
    *
    * @get result

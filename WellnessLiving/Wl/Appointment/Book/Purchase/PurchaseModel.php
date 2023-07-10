@@ -410,7 +410,7 @@ class PurchaseModel extends WlModelAbstract
   public $k_login_promotion;
 
   /**
-   * Default promotion key. Primary key in {@link \RsPromotionSql} table.
+   * Default promotion key.
    * Empty if the appointment has no default promotion.
    *
    * @get result
