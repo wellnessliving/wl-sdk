@@ -258,6 +258,24 @@ class PromotionIndexModel extends WlModelAbstract
   public $a_promotion;
 
   /**
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_width = 0;
+
+  /**
    * The program type ID, which will be one of the {@link \WellnessLiving\WlProgramTypeSid} constants.
    *
    * `0` to not filter Purchase Options with type of the Purchase Option.
