@@ -4,6 +4,9 @@ namespace WellnessLiving\Wl\Book\Process\Relation;
 
 use WellnessLiving\WlModelAbstract;
 
+/**
+ * Point to add a relative while booking process.
+ */
 class RelationModel extends WlModelAbstract
 {
   /**
