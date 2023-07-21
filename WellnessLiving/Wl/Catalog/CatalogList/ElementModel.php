@@ -470,6 +470,14 @@ class ElementModel extends WlModelAbstract
   public $text_title;
 
   /**
+   * UID of a customer user for whom purchase is performed. Is used in backend to calculate discounts.
+   *
+   * @get get
+   * @var string
+   */
+  public $uid_customer;
+
+  /**
    * A detailed description.
    *
    * @deprecated Use `html_description`.
