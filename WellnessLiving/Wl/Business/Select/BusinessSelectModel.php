@@ -13,9 +13,10 @@ class BusinessSelectModel extends WlModelAbstract
    * Configuration data used to determine the list of businesses returned. This array has the following keys:
    * <dl>
    *   <dt>bool <var>is_role</var></dt>
-   *   <dd>This will be `true` if we are checking for businesses where the user is a staff member.</dd>
+   *   <dd>This will be `true` if we are checking for businesses where the user is a staff member.
+   *     This will be `false` if we are checking for businesses where the user is a client.</dd>
    *   <dt>string <var>[k_business]</var></dt>
-   *   <dd>The business key. </dd>
+   *   <dd>The business key.</dd>
    * </dl>
    *
    * @get get
