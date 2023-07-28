@@ -54,6 +54,7 @@ class CategoryModel extends WlModelAbstract
    * The key of the business to get shop categories for.
    *
    * @get get
+   * @post get
    * @var string
    */
   public $k_business = '0';

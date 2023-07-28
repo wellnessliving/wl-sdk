@@ -84,10 +84,20 @@ class DebtListModel extends WlModelAbstract
   public $dl_start;
 
   /**
-   * The business key to which debts should be returned.
+   * Defines whether debts for test or real businesses should be returned.
    *
    * @get get
-   * @var string
+   * @var bool
+   */
+  public $is_test;
+
+  /**
+   * The business key to which debts should be returned.
+   *
+   * `null` in a case if debts for all businesses should be returned.
+   *
+   * @get get
+   * @var string|null
    */
   public $k_business = '';
 }

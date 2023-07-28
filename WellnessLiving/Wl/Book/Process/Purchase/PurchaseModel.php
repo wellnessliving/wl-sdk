@@ -439,6 +439,15 @@ class PurchaseModel extends WlModelAbstract
   public $k_business = '';
 
   /**
+   * Default promotion key.
+   * Empty if the class has no default promotion.
+   *
+   * @get result
+   * @var string
+   */
+  public $k_promotion_default = '';
+
+  /**
    * Key of session which is booked.
    *
    * @get get

@@ -10,6 +10,27 @@ use WellnessLiving\WlModelAbstract;
 class ElementModel extends WlModelAbstract
 {
   /**
+   * Age restriction config.
+   *
+   * Age restrictions for item fills when they are configured for specific item and API requested from back side,
+   * or when age restriction are public.
+   *
+   * <dl>
+   *   <dt>int|null <var>i_age_from</var></dt>
+   *   <dd>The minimum age permitted for the event. This will be `null` if a minimum age isn't set or available.</dd>
+   *   <dt>int|null <var>i_age_to</var></dt>
+   *   <dd>The maximum age permitted for the event. This will be `null` if a maximum age isn't set or available.</dd>
+   *   <dt>bool <var>is_age_public</var></dt>
+   *   <dd>This will be `true` if age restrictions are public and available. Otherwise, this will be `false` if they're hidden.
+   *     When restrictions are hidden and current user isn't a staff member, the age range will be empty.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array
+   */
+  public $a_age_restriction;
+
+  /**
    * Additional information specific for the item.
    *
    * The structure may be different depending on the item category.
@@ -317,12 +338,29 @@ class ElementModel extends WlModelAbstract
   public $id_sale = 0;
 
   /**
+   * Whether API is called in the backend mode.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_backend = false;
+
+
+  /**
    * <tt>true</tt> if the item requires a contract, <tt>false</tt> otherwise.
    *
    * @get result
    * @var bool
    */
   public $is_contract;
+
+  /**
+   * Business key.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_business = '0';
 
   /**
    * The item key.
@@ -468,6 +506,14 @@ class ElementModel extends WlModelAbstract
    * @var string
    */
   public $text_title;
+
+  /**
+   * UID of a customer user for whom purchase is performed. Is used in backend to calculate discounts.
+   *
+   * @get get
+   * @var string
+   */
+  public $uid_customer;
 
   /**
    * A detailed description.

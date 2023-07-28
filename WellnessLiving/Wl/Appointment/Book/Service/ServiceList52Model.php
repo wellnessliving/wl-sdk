@@ -59,7 +59,21 @@ class ServiceList52Model extends WlModelAbstract
    *     array <var>a_image</var>
    *   </dt>
    *   <dd>
-   *     The appointment image. See {@link RsServiceLogo::data()} for details.
+   *     Information about the appointment image. An array with the following values:
+   *     <dl>
+   *       <dt>int <var>i_height</var></dt>
+   *       <dd>The height of the image.</dd>
+   *       <dt>int <var>i_width</var></dt>
+   *       <dd>The width of the image.</dd>
+   *       <dt>bool <var>is_empty</var></dt>
+   *       <dd>This will be `true` if the image is not set.</dd>
+   *       <dt>string <var>k_service</var></dt>
+   *       <dd>The service key.</dd>
+   *       <dt>string <var>s_service</var></dt>
+   *       <dd>The name of the service.</dd>
+   *       <dt>string <var>s_url</var></dt>
+   *       <dd>The URL to the image.</dd>
+   *     </dl>
    *   </dd>
    *   <dt>
    *     string[] <var>a_login_type_restriction</var>
