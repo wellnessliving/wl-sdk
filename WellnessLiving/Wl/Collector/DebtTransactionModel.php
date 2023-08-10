@@ -47,7 +47,7 @@ class DebtTransactionModel extends WlModelAbstract
    * If set, this is the end of the date window. Only debt payments before or on this date will be shown.
    *
    * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} specified only debt payments before the current date will be returned.
-   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} is also `null` this will return debt payments from previous month.
+   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} is also `null` this will return debt payments from the previous month.
    *
    * @get get
    * @var string|null
@@ -58,7 +58,7 @@ class DebtTransactionModel extends WlModelAbstract
    * If set, this is the start of the date window. Only debt payments on or after this date will be shown.
    *
    * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} specified will return debt payments since the beginning of time.
-   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} is also `null` this will return debt payments from previous month.
+   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} is also `null` this will return debt payments from the previous month.
    *
    * @get get
    * @var string|null

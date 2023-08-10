@@ -64,8 +64,8 @@ class DebtListModel extends WlModelAbstract
   /**
    * If set, this is the end of the date window. Only debts added before or on this date will be shown.
    *
-   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} specified only debts before the current date will be returned.
-   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} is also `null`, this will return debts from the previous month.
+   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} specified only debts added before the current date will be returned.
+   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} is also `null`, this will return debts added in the previous month.
    *
    * @get get
    * @var string|null
@@ -75,8 +75,8 @@ class DebtListModel extends WlModelAbstract
   /**
    * If set, this is the start of the date window. Only debts added on or after this date will be shown.
    *
-   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} specified will return debts since the beginning of time.
-   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} is also `null`, this will return debts from the previous month.
+   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} specified will return debts added since the beginning of time.
+   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} is also `null`, this will return debts added in the previous month.
    *
    * @get get
    * @var string|null
