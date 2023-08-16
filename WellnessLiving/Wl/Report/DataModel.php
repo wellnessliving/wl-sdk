@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Report;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlAssertException;
 
 /**
  * An endpoint that returns information from a WellnessLiving report.
@@ -79,6 +80,22 @@ class DataModel extends WlModelAbstract
    * @var string
    */
   public $s_sort = '';
+
+  /**
+   * Sets report filters.
+   *
+   * Specific filters depend on specific reports.
+   *
+   * @param array $a_filter The report filters. The key is the filter variable name, and the value is its value.
+   * @throws WlAssertException Used in case of an assertion.
+   */
+  public function filterSet(array $a_filter)
+  {
+    if(count($a_filter))
+      $this->s_filter=UrlEncode::encode($a_filter);
+    else
+      $this->s_filter='';
+  }
 }
 
 ?>
