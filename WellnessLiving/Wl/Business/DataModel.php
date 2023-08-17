@@ -53,6 +53,15 @@ class DataModel extends WlModelAbstract
   public $id_category;
 
   /**
+   * Currency ID of the given business or system currency ID if the business didn't pass.
+   *
+   * @get result
+   * @see \WellnessLiving\Core\Locale\CurrencySid
+   * @var int
+   */
+  public $id_currency;
+
+  /**
    * The Locale ID, used to search geo items.
    *
    * @get result
@@ -172,6 +181,7 @@ class DataModel extends WlModelAbstract
   /**
    * The currency key of the given business or system currency if the business didn't pass.
    *
+   * @deprecated Use {@link \WellnessLiving\Wl\Business\DataModel::$id_currency} instead.
    * @get result
    * @var string
    */

@@ -44,7 +44,40 @@ class DebtTransactionModel extends WlModelAbstract
   public $a_transaction = [];
 
   /**
-   * The business key of the debt.
+   * If set, this is the end of the date window. Only debt payments added before or on this date will be shown.
+   *
+   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} has been specified only debt payments added before this date, the current date will be returned.
+   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} is also `null`, this will return debt payments from the previous month.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dl_end=null;
+
+  /**
+   * If set, this is the start of the date window. Only debt payments added on or after this date will be shown.
+   *
+   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} has been specified, this will return debt payments since the beginning of time.
+   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} is also `null`, this will return debt payments from the previous month.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dl_start=null;
+
+  /**
+   * If `true`, debt payments from test businesses will be returned. Otherwise, this will be `false` if only
+   * debt payments from real businesses will be returned.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_test;
+
+  /**
+   * The business key for which debt payments should be returned.
+   *
+   * Use `null` if debt payments from all businesses should be returned.
    *
    * @get get
    * @var string

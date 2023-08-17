@@ -136,6 +136,14 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_book_data_post = [];
 
   /**
+   * List of redeemed prizes.
+   *
+   * @post result
+   * @var string[]
+   */
+  public $a_login_prize;
+
+  /**
    * Payment type for the appointment, one of {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid} constants.
    *
    * @post result
