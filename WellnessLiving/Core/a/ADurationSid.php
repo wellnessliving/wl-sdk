@@ -3,9 +3,7 @@
 namespace WellnessLiving\Core\a;
 
 /**
- * Class for manage time intervals.
- *
- * Last ID: 8.
+ * A class for managing time intervals.
  */
 class ADurationSid
 {
