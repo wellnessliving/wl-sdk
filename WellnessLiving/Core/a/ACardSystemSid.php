@@ -3,7 +3,7 @@
 namespace WellnessLiving\Core\a;
 
 /**
- * A list of card systems.
+ * A class for a list of card systems.
  */
 class ACardSystemSid
 {
@@ -13,12 +13,12 @@ class ACardSystemSid
   const AMERICAN_EXPRESS = 1;
 
   /**
-   *  Bank of Montreal.
+   *  Bank of Montreal (BMO).
    */
   const BMO = 2;
 
   /**
-   * Canadian Imperial Bank of Commerce.
+   * Canadian Imperial Bank of Commerce (CIBC).
    */
   const CIBC = 3;
 
@@ -30,27 +30,23 @@ class ACardSystemSid
   /**
    * Discover.
    *
-   * @link https://www.discover.com/
    */
   const DISCOVER = 5;
 
   /**
    * HSBC Bank Canada.
    *
-   * @link http://en.wikipedia.org/wiki/HSBC_Bank_Canada
    */
   const HSBC_CANADA = 6;
 
   /**
-   * Japan Credit Bureau.
+   * Japan Credit Bureau (JCB).
    *
-   * @link http://www.jcbcorporate.com/
-   * @link https://en.wikipedia.org/wiki/JCB_Co.,_Ltd.
    */
   const JCB = 7;
 
   /**
-   * Master Card.
+   * Mastercard.
    */
   const MASTERCARD = 8;
 
@@ -61,21 +57,16 @@ class ACardSystemSid
 
   /**
    * Scotiabank.
-   *
-   * @link http://en.wikipedia.org/wiki/Scotiabank
    */
   const SCOTIBANK = 10;
 
   /**
    * TD Canada Trust.
-   *
-   * @link http://en.wikipedia.org/wiki/TD_Canada_Trust
-   * @link https://www.tdcanadatrust.com/
    */
   const TD_CANADA = 11;
 
   /**
-   * Card system can not be determined.
+   * The card system can't be determined.
    */
   const UNDEFINED = 13;
 
