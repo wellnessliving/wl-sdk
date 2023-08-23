@@ -13,7 +13,7 @@ class ProcessModel extends WlModelAbstract
 {
   /**
    * Relationships who clients are allowed to book for.
-   * Constants of {@link \WellnessLiving\RsFamilyRelationSid}.
+   * Constants of {@link \WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid}.
    *
    * `null` if clients are not allowed to book for their relationships.
    *

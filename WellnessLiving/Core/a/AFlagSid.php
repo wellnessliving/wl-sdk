@@ -3,8 +3,8 @@
 namespace WellnessLiving\Core\a;
 
 /**
- * States of the filter for the flag field.
- * For example, filter for the field "<tt>is_active</tt>" always have three states: Only active, only inactive, All.
+ * A class for filter states for flagged fields.
+ * For example, the filter for the field "<tt>is_active</tt>" always has three states: Only active, Only inactive, and All.
  */
 class AFlagSid
 {
@@ -14,12 +14,12 @@ class AFlagSid
   const ALL = 1;
   
   /**
-   * Records with flag turned off.
+   * Records with the flag turned off.
    */
   const OFF = 2;
   
   /**
-   * Records with flag turned on.
+   * Records with the flag turned on.
    */
   const ON = 3;
 }
