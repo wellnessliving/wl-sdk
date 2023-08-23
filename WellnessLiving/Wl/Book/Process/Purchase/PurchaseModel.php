@@ -431,6 +431,14 @@ class PurchaseModel extends WlModelAbstract
   public $is_force_pay_later = false;
 
   /**
+   * Indicates if drop-in rate should be the default purchase option.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_single_default = false;
+
+  /**
    * The business key.
    *
    * @get get

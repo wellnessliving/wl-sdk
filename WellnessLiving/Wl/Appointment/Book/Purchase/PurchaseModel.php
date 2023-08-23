@@ -382,6 +382,14 @@ class PurchaseModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
+   * Indicates if drop-in rate should be the default purchase option.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_single_default = false;
+
+  /**
    * `true` if client is walk-in, otherwise `false`.
    *
    * @get get
