@@ -394,6 +394,22 @@ class PurchaseReceiptModel extends WlModelAbstract
    * @var string
    */
   public $text_receipt;
+
+  /**
+   * The URL for printing on a normal printer.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_print;
+
+  /**
+   * The URL for printing on a receipt printer.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_print_receipt;
 }
 
 ?>
