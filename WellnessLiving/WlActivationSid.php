@@ -1,5 +1,7 @@
 <?php
 
+namespace WellnessLiving;
+
 /**
  * Promotion or package date start rule.
  *

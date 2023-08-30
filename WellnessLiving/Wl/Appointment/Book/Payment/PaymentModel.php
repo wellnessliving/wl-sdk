@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Payment;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that displays information about available ways to pay for an appointment.
+ * An endpoint that displays information about payments for an appointment.
  * The POST method for this endpoint is implemented as a separate endpoint (see
  * {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentPostModel}).
  *
@@ -14,7 +14,7 @@ use WellnessLiving\WlModelAbstract;
 class PaymentModel extends WlModelAbstract
 {
   /**
-   * All data from the provider <tt>Wl_Appointment_Book_ProviderModel</tt> model.
+   * Information detailing an appointment booking.
    *
    * @get get
    * @post get
@@ -23,7 +23,7 @@ class PaymentModel extends WlModelAbstract
   public $a_book_data = [];
 
   /**
-   * A list of payment sources to pay with.
+   * A list of payment sources.
    *
    * Each element has next keys:
    * <dl>
@@ -149,8 +149,8 @@ class PaymentModel extends WlModelAbstract
   public $a_pay_form = [];
 
   /**
-   * Information about selected Purchase Options.
-   * <dl>
+   * Information about any prepaid Purchase Options.
+   *
    *   <dt>string <var>i_limit</var></dt>
    *   <dd>The limit of total visits.</dd>
    *

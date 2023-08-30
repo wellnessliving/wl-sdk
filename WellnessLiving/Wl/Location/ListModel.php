@@ -79,7 +79,7 @@ class ListModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Primary keys of businesses in {@link \RsBusinessSql} table.
+   * Primary keys of selected businesses.
    * You can specify it instead of <var>$k_business</var> to load data for a lot of businesses by 1 query.
    *
    * The same as <var>$a_business</var>, but serialized with JSON (to make URL shorter).

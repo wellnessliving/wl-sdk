@@ -38,7 +38,7 @@ class ElementModel extends WlModelAbstract
    *   <dt>string <var>dt_date</var></dt>
    *   <dd>Date/time when session starts. In UTC.</dd>
    *   <dt>string <var>k_class_period</var></dt>
-   *   <dd>Class session primary keys in table {@link \RsClassPeriodSql}.</dd>
+   *   <dd>Class session primary keys.</dd>
    * </dl>
    *
    * @get result
@@ -222,7 +222,7 @@ class ElementModel extends WlModelAbstract
    *   <dt>int <var>i_width</var></dt>
    *   <dd>Image width.</dd>
    *   <dt>string <var>uid</var></dt>
-   *   <dd>Key of the user. Primary key from {@link \PassportLoginSql} table</dd>
+   *   <dd>Key of the user.</dd>
    *   <dt>string <var>url_logo</var></dt>
    *   <dd>URL to image.</dd>
    * </dl>

@@ -139,7 +139,7 @@ class ElementModel extends WlModelAbstract
    *     string <var>k_pay_installment_template</var>
    *   </dt>
    *   <dd>
-   *      The key of the installment plan template. Primary key in {@link \Wl\Pay\Installment\Template\Sql}
+   *      The key of the installment plan template.
    *   </dd>
    *   <dt>
    *     string <var>m_amount</var>

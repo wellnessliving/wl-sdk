@@ -30,7 +30,7 @@ class ServiceModel extends WlModelAbstract
   /**
    * A list of assets required for the service booking.
    * Keys refer the asset category key(s).
-   * Values refer to sub-arrays with next structure:
+   * Values refer to sub-arrays with next key(s).
    * <dl>
    *   <dt>
    *     array[] <var>a_resource</var>
@@ -42,7 +42,7 @@ class ServiceModel extends WlModelAbstract
    *         array <var>a_image</var>
    *       </dt>
    *       <dd>
-   *         The asset's image data. See {@link RsResourceImage::data()} for details.
+   *         The asset's image data.
    *       </dd>
    *       <dt>
    *         bool <var>is_available</var>

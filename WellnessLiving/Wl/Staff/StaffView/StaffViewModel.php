@@ -92,7 +92,7 @@ class StaffViewModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>array <var>a_photo</var></dt>
-   *   <dd>Staff`s photo. See {@link RsStaffImage::data()}.</dd>
+   *   <dd>Staff`s photo.</dd>
    *   <dt>int <var>id_gender</var></dt>
    *   <dd>The staff member's gender. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.</dd>
    *   <dt>string <var>k_location</var></dt>

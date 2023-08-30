@@ -87,7 +87,7 @@ class InfoCanCompleteModel extends WlModelAbstract
 
   /**
    * The key of a user who is making the booking.
-   * Empty if user is guest.
+   * Empty if user is a guest.
    *
    * @get get
    * @post get

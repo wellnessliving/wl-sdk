@@ -204,8 +204,6 @@ class FinishModel extends WlModelAbstract
   /**
    * A list of payment sources to pay with.
    *
-   * Structure of this array corresponds structure of {@link RsPayForm::$a_pay_source}.
-   *
    * @post post
    * @var array[]
    */
@@ -350,7 +348,7 @@ class FinishModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Location to show available appointment booking schedule.
+   * The location key.
    *
    * @get get,result
    * @post get
@@ -385,7 +383,7 @@ class FinishModel extends WlModelAbstract
   public $s_id = '';
 
   /**
-   * User to get information for.
+   * The user key.
    *
    * @get get
    * @post get

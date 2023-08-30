@@ -46,8 +46,9 @@ class DataModel extends WlModelAbstract
   /**
    * Business category ID of the business.
    *
+   * A constant from {@link BusinessCategorySid}.
+   *
    * @get result
-   * @see \WellnessLiving\RsBusinessCategorySid
    * @var int
    */
   public $id_category;

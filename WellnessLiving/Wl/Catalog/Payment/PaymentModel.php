@@ -361,8 +361,8 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * List of quiz response keys.
-   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
-   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table or
+   * Key is a quiz key.
+   * Value is response or
    * special value from {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} constant.
    *
    * @post post

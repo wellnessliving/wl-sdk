@@ -265,7 +265,7 @@ class PaymentModel extends WlModelAbstract
   public $a_resource = [];
 
   /**
-   * A list of sessions being booked.
+   * A list of sessions which are being booked.
    * <b>Keys</b> - The class period keys.
    * <b>Values</b> - List of date/time when the session occurred.
    *
@@ -377,8 +377,6 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * Session pass to be used to book a class.
-   *
-   * Primary key from {@link  \Wl\Session\Pass\Sql}.
    *
    * @post post
    * @var string
