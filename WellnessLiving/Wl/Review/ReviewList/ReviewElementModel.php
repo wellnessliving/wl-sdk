@@ -111,7 +111,7 @@ class ReviewElementModel extends WlModelAbstract
   /**
    * The user key.
    *
-   * May be empty in the case of a request.
+   * May be empty in the case of a guest.
    *
    * @get get
    * @var string
