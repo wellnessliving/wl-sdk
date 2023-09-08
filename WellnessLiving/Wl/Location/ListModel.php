@@ -10,8 +10,8 @@ use WellnessLiving\WlModelAbstract;
 class ListModel extends WlModelAbstract
 {
   /**
-   * Primary keys of businesses in {@link \RsBusinessSql} table.
-   * You can specify it instead of <var>$k_business</var> to load data for a lot of businesses by 1 query.
+   * A list of business keys.
+   * You can specify this instead of <var>$k_business</var> to load data for many businesses in one call.
    *
    * @get get
    * @var string[]
@@ -19,49 +19,50 @@ class ListModel extends WlModelAbstract
   public $a_business = [];
 
   /**
-   * List of locations of business {@link \WellnessLiving\Wl\Location\ListModel::$k_business}. Keys - location keys; primary keys in {@link \RsLocationSql} table. Values - sub array with next keys:
+   * Information about the business's location(s). If you've specified multiple businesses for this endpoint, this will
+   * return location information for multiple businesses. Keys refer to location keys. Values refer to subarrays with the next keys:
    * <dl>
    *   <dt>
    *     float <var>f_latitude</var>
    *   </dt>
    *   <dd>
-   *     Location latitude.
+   *     The location latitude.
    *   </dd>
    *   <dt>
    *     float <var>f_longitude</var>
    *   </dt>
    *   <dd>
-   *     Location longitude.
+   *     The location longitude.
    *   </dd>
    *   <dt>
    *     string <var>k_business</var>
    *   </dt>
    *   <dd>
-   *     Business key.
+   *     The business key.
    *   </dd>
    *   <dt>
    *     string <var>k_location</var>
    *   </dt>
    *   <dd>
-   *     Location key.
+   *     The location key.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
    *   </dt>
    *   <dd>
-   *     Location title.
+   *     The location title.
    *   </dd>
    *   <dt>
    *     string <var>text_address</var>
    *   </dt>
    *   <dd>
-   *     Location full address.
+   *     The location's full address.
    *   </dd>
    *   <dt>
    *     string [<var>url_logo</var>]
    *   </dt>
    *   <dd>
-   *     Location logo URL. Is set only if location has logo.
+   *     The location logo's URL. This will only be set if the location has a logo.
    *   </dd>
    * </dl>
    *
@@ -79,10 +80,10 @@ class ListModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Primary keys of selected businesses.
-   * You can specify it instead of <var>$k_business</var> to load data for a lot of businesses by 1 query.
+   * The primary keys of the selected businesses.
+   * You can specify this instead of <var>$k_business</var> to load data for many businesses in one call.
    *
-   * The same as <var>$a_business</var>, but serialized with JSON (to make URL shorter).
+   * This is the same as <var>$a_business</var>, but serialized with JSON (to make the URL shorter).
    *
    * @get get
    * @var string
@@ -90,7 +91,7 @@ class ListModel extends WlModelAbstract
   public $s_business = '';
 
   /**
-   * Whether removed locations should be returned.
+   * Determines whether removed locations should be returned.
    *
    * @get get
    * @var bool
