@@ -106,6 +106,14 @@ class DataModel extends WlModelAbstract
   public $is_apply_surcharge = false;
 
   /**
+   * True if business is a franchisor or franchisee.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_franchise = false;
+
+  /**
    * Whether business is multiple location.
    * Including inactive locations.
    *
@@ -155,7 +163,7 @@ class DataModel extends WlModelAbstract
   public $is_tip_deny;
 
   /**
-   * <tt>true</tt> if client must to sign after selecting the tip; <tt>false</tt> otherwise.
+   * <tt>true</tt> if client must sign after selecting the tip; <tt>false</tt> otherwise.
    *
    * @get result
    * @var bool
@@ -169,6 +177,15 @@ class DataModel extends WlModelAbstract
    * @var string
    */
   public $k_business = '0';
+
+  /**
+   * The franchisor business key. Empty if this business is the franchisor.
+   *
+   * @get result
+   * @var string
+   * @see \RsBusinessSql
+   */
+  public $k_business_franchisor = '';
 
   /**
    * The business key obtained by the security token {@link \WellnessLiving\Wl\Business\DataModel::$text_token}.
