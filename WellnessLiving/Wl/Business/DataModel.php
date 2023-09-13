@@ -179,11 +179,10 @@ class DataModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The franchisor business key. Empty if this business is the franchisor.
+   * The franchisor business key. Empty if this business is the franchisor or not in a franchise.
    *
    * @get result
    * @var string
-   * @see \RsBusinessSql
    */
   public $k_business_franchisor = '';
 
