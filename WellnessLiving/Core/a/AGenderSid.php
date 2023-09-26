@@ -18,7 +18,7 @@ abstract class AGenderSid
   const MALE = 1;
 
   /**
-   * Gender is undefined in case when user prefer not to say.
+   * Gender is undefined in cases where the user preferred not to identify their gender.
    */
   const UNDEFINED = 3;
 }
