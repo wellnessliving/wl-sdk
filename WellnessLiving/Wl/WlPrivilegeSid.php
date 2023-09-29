@@ -1,6 +1,7 @@
 <?php
 
 namespace WellnessLiving\Wl;
+
 /**
  * Wellnessliving-wide privileges.
  */
