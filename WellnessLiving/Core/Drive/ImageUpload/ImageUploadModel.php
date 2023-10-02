@@ -2,12 +2,10 @@
 
 namespace WellnessLiving\Core\Drive\ImageUpload;
 
-use WellnessLiving\WlModelAbstract;
-
 /**
  * Performs the final action to an image uploaded with {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadTemporaryModel}.
  */
-class ImageUploadModel extends WlModelAbstract
+class ImageUploadModel extends \WellnessLiving\Custom\Core\Drive\ImageUpload\ImageUploadModel
 {
   /**
    * Image information for every ID. Every element contains values such as the
@@ -214,36 +212,6 @@ class ImageUploadModel extends WlModelAbstract
    * @var string|null
    */
   public $url_view;
-
-  /**
-   * The forms command used to delete an image.
-   */
-  public function commandDelete()
-  {
-    $this->s_command = 'delete';
-  }
-
-  /**
-   * The forms command used to save an uploaded image.
-   */
-  public function commandSave()
-  {
-    $this->s_command = 'save';
-  }
-
-  /**
-   * The forms command used to crop and save an uploaded image.
-   *
-   * @param int $i_offset_left Left offset to crop.
-   * @param int $i_offset_top Top offset to crop.
-   * @param int $i_width The width to crop.
-   * @param int $i_height The height to crop.
-   * @param int $i_rotation The rotation angle.
-   */
-  public function commandUpload($i_offset_left, $i_offset_top, $i_width, $i_height, $i_rotation = 0)
-  {
-    $this->s_command = 'upload '.$i_offset_left.' '.$i_offset_top.' '.$i_width.' '.$i_height.' '.$i_rotation;
-  }
 }
 
 ?>

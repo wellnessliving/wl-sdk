@@ -2,8 +2,6 @@
 
 namespace WellnessLiving\Wl\Report;
 
-use WellnessLiving\WlModelAbstract;
-
 /**
  * An endpoint that returns information from a WellnessLiving report.
  *
@@ -11,7 +9,7 @@ use WellnessLiving\WlModelAbstract;
  * fields. The two reports are similar, but not exactly the same. The `LOGIN_LIST` (ID 22) report requires filters to be set to
  * retrieve information. The `LOGIN_LIST_ALL` (ID 33) doesn’t require any filters to be set when specifying a date range.
  */
-class DataModel extends WlModelAbstract
+class DataModel extends \WellnessLiving\Custom\Wl\Report\DataModel
 {
   /**
    * The report contents.
@@ -78,7 +76,7 @@ class DataModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Filter settings in encoded format. May be decoded by {@link Core\Tool\UrlEncode\UrlDecode::decode()}.
+   * Filter settings in encoded format. May be decoded by {@link \WellnessLiving\Custom\Wl\Report\UrlEncode::decode()}.
    *
    * @get get
    * @var string
@@ -92,21 +90,6 @@ class DataModel extends WlModelAbstract
    * @var string
    */
   public $s_sort = '';
-
-  /**
-   * Sets report filters.
-   *
-   * Specific filters depend on specific reports.
-   *
-   * @param array $a_filter The report filters. The key is the filter variable name, and the value is its value.
-   */
-  public function filterSet($a_filter)
-  {
-    if(count($a_filter))
-      $this->s_filter=UrlEncode::encode($a_filter);
-    else
-      $this->s_filter='';
-  }
 }
 
 ?>
