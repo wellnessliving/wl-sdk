@@ -6,6 +6,10 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * An endpoint that acts as the booking wizard for the "Pay/Billing info" page.
+ *
+ * This endpoint using captcha check.
+ * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
+ * For this API an action is {@link Wl\Business\BusinessPaymentCaptcha::CID}.
  */
 class PaymentModel extends WlModelAbstract
 {
@@ -265,7 +269,7 @@ class PaymentModel extends WlModelAbstract
   public $a_resource = [];
 
   /**
-   * A list of sessions which are being booked.
+   * A list of sessions being booked.
    * <b>Keys</b> - The class period keys.
    * <b>Values</b> - List of date/time when the session occurred.
    *

@@ -9,6 +9,10 @@ use WellnessLiving\WlModelAbstract;
  * The POST method for this endpoint is implemented as a separate endpoint (see
  * {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentPostModel}).
  *
+ * This endpoint using captcha check.
+ * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
+ * For this API an action is {@link Wl\Business\BusinessPaymentCaptcha::CID}.
+ *
  * @deprecated Use {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentPostModel} instead.
  */
 class PaymentModel extends WlModelAbstract
@@ -23,7 +27,7 @@ class PaymentModel extends WlModelAbstract
   public $a_book_data = [];
 
   /**
-   * A list of payment sources.
+   * A list of payment sources to pay with.
    *
    * Each element has next keys:
    * <dl>
@@ -149,8 +153,8 @@ class PaymentModel extends WlModelAbstract
   public $a_pay_form = [];
 
   /**
-   * Information about any prepaid Purchase Options.
-   *
+   * Information about selected Purchase Options.
+   * <dl>
    *   <dt>string <var>i_limit</var></dt>
    *   <dd>The limit of total visits.</dd>
    *
@@ -301,6 +305,14 @@ class PaymentModel extends WlModelAbstract
    * @var string
    */
   public $k_login_activity_purchase;
+
+  /**
+   * Login prize key. In case when appointment paid by reward prize, there is the key of redeemed login prize. Empty otherwise.
+   *
+   * @post result
+   * @var string
+   */
+  public $k_login_prize = '0';
 
   /**
    * The login promotion key.

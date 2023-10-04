@@ -8,6 +8,10 @@ use WellnessLiving\WlModelAbstract;
  * Allows to pay an appointment or appointment purchase option for the client.
  *
  * Only difference from {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentModel} is possibility to pay for a lot of appointments at the same time.
+ *
+ * This endpoint using captcha check.
+ * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
+ * For this API an action is {@link Wl\Business\BusinessPaymentCaptcha::CID}.
  */
 class PaymentMultipleModel extends WlModelAbstract
 {
@@ -141,7 +145,7 @@ class PaymentMultipleModel extends WlModelAbstract
    * @post result
    * @var string[]
    */
-  public $a_login_prize;
+  public $a_login_prize = [];
 
   /**
    * Payment type for the appointment, one of {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid} constants.
