@@ -6,6 +6,9 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * Api to store captcha user token.
+ *
+ * Site keys for initialize Google captcha:
+ * * Demo/Staging - `6Ldqwe0gAAAAANve1TEPFb_Yxgb9wsoIfrNL6-2Z`
  */
 class GoogleCaptchaModel extends WlModelAbstract
 {
