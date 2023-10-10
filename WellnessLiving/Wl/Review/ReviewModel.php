@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
  *
  * This endpoint using captcha check.
  * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
- * For this API an action is {@link Wl\Review\ReviewCaptcha::CID}.
+ * For this API an action is `1066`.
  */
 class ReviewModel extends WlModelAbstract
 {
