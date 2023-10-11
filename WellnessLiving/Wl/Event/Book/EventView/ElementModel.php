@@ -377,6 +377,15 @@ class ElementModel extends WlModelAbstract
   public $id_virtual_provider;
 
   /**
+   * `true` if the event availability was checked; `false` if the event has too many sessions and calculating
+   *  the availability of each one takes a lot of time.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_availability_checked;
+
+  /**
    * <tt>true</tt> if the event is already booked; <tt>false</tt> if the event isn't booked.
    *
    * @get result
