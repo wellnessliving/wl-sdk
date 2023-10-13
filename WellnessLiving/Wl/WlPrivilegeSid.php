@@ -597,8 +597,8 @@ class WlPrivilegeSid
   const PURCHASE_VIEW = 92;
 
   /**
-     * Allow to see alerts.
-     */
+   * Allow to see alerts.
+   */
   const RECEIVE_ALERT = 193;
 
   /**
