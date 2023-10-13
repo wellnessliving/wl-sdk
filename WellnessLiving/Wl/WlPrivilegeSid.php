@@ -597,6 +597,11 @@ class WlPrivilegeSid
   const PURCHASE_VIEW = 92;
 
   /**
+   * Allow to see alerts.
+   */
+  const RECEIVE_ALERT = 193;
+
+  /**
    * Access to view reports for all staff.
    *
    * If staff has no this privilege then he can view only reports for them self.
