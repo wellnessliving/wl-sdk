@@ -65,8 +65,6 @@ class ReportModel extends WlModelAbstract
    *
    * `null` if generation of this report isn't completed.
    *
-   * See {@link \Wl\Report\Generator\ReportStorageListSql}.<tt>dtu_complete</tt> for additional details.
-   *
    * @get result
    * @var string|null
    */
@@ -77,8 +75,6 @@ class ReportModel extends WlModelAbstract
    *
    * Effectively, this is the time when a user clicked to view this report or the report for this day was first called.
    *
-   * See {@link \Wl\Report\Generator\ReportStorageListSql}.<tt>dtu_queue</tt> for additional details.
-   *
    * @get result
    * @var string|null
    */
@@ -88,8 +84,6 @@ class ReportModel extends WlModelAbstract
    * The date and time when generation of this report was started.
    *
    * `null` if generation of this report hasn't started.
-   *
-   * See {@link \Wl\Report\Generator\ReportStorageListSql}.<tt>dtu_start</tt> for additional details.
    *
    * @get result
    * @var string|null

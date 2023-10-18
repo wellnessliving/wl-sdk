@@ -6,6 +6,10 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * Model to purchase an item and perform the payment in the online store.
+ *
+ * This endpoint using captcha check.
+ * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
+ * For this API an action is `1064`.
  */
 class PaymentModel extends WlModelAbstract
 {
@@ -361,9 +365,8 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * List of quiz response keys.
-   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
-   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table or
-   * special value from {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} constant.
+   * Key is a quiz key.
+   * Value is response or special value from {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} constant.
    *
    * @post post
    * @var array

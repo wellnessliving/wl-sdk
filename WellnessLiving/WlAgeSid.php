@@ -3,29 +3,13 @@
 namespace WellnessLiving;
 
 /**
- * List of ages, which are suitable for visiting this location.
+ * @deprecated from 2023-09-11.
+ * Will be deleted after 2024-01-01.
+ * Use class {@link \WellnessLiving\Wl\WlAgeSid} instead.
  */
-class WlAgeSid
+class WlAgeSid extends \WellnessLiving\Wl\WlAgeSid
 {
-  /**
-   * An adult.
-   */
-  const ADULT=2;
 
-  /**
-   * A kid.
-   */
-  const KID=1;
-
-  /**
-   * Natal.
-   */
-  const NATAL=4;
-
-  /**
-   * Senior.
-   */
-  const SENIOR=3;
 }
 
 ?>

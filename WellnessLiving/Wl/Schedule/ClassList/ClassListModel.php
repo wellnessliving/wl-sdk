@@ -183,6 +183,15 @@ class ClassListModel extends WlModelAbstract
   public $k_class_tab = '0';
 
   /**
+   * The list of staff members to filter.
+   * A comma seperated list of staff keys.
+   *
+   * @get get
+   * @var string
+   */
+  public $s_staff = '';
+
+  /**
    * If `true`, canceled sessions will be returned. If `false`, canceled sessions won't be returned.
    *
    * @get get

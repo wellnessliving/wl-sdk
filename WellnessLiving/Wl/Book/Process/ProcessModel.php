@@ -220,8 +220,6 @@ class ProcessModel extends WlModelAbstract
   /**
    * Session pass to be used to book a class.
    *
-   * Primary key from {@link  \Wl\Session\Pass\Sql}.
-   *
    * @post post
    * @var string
    */

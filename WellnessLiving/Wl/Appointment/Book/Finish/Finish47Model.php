@@ -36,7 +36,7 @@ class Finish47Model extends WlModelAbstract
   public $a_appointment;
 
   /**
-   * The documentation is the same as in {@link \WellnessLiving\Wl\Appointment\Book\Finish\FinishModel::$a_book_data}.
+   * All data from the appointment booking provider model.
    *
    * @post post
    * @var array

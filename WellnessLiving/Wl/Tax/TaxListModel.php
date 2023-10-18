@@ -16,7 +16,7 @@ class TaxListModel extends WlModelAbstract
    * <dt>float <var>f_value</var> </dt>
    * <dd>The amount of the tax.</dd>
    * <dt>string <var>k_tax</var> </dt>
-   * <dd>The type of the tax, one of the {@link \WellnessLiving\RsTaxSid} constants.</dd>
+   * <dd>The type of the tax, one of the {@link \WellnessLiving\Wl\Tax\WlTaxSid} constants.</dd>
    * <dt>string <var>k_tax</var> </dt>
    * <dd>The tax key.</dd>
    * <dt>string <var>text_title</var></dt>

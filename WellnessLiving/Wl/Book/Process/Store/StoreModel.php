@@ -171,8 +171,6 @@ class StoreModel extends WlModelAbstract
   /**
    * Login promotion to be used to book a class.
    *
-   * Primary key from {@link  \RsLoginProductSql}.
-   *
    * @post post
    * @var string
    */
@@ -180,8 +178,6 @@ class StoreModel extends WlModelAbstract
 
   /**
    * Session pass to be used to book a class.
-   *
-   * Primary key from {@link  \Wl\Session\Pass\Sql}.
    *
    * @post post
    * @var string

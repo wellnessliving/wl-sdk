@@ -3,18 +3,18 @@
 namespace WellnessLiving\Core\a;
 
 /**
- * Functions to work with folders.
+ * Functions used when working with folders.
  */
 class AFolder
 {
   /**
    * Delete files and folders in the specified directory.
    *
-   * @param string $s_path Path to delete data.
-   * @param bool $is_recursive Is recursive delete?
-   * @param bool $is_file <tt>true</tt> to delete files, <tt>false</tt> otherwise.
-   * @param bool $is_dir <tt>true</tt> to delete subdirectories, <tt>false</tt> otherwise.
-   * @return bool <tt>true</tt> if ok, <tt>false</tt> if error occurred.
+   * @param string $s_path The path to delete data for.
+   * @param bool $is_recursive Determines if this is a recursive deletion.
+   * @param bool $is_file If <tt>true</tt>, this delete files. Otherwise, this will be <tt>false</tt>.
+   * @param bool $is_dir If <tt>true</tt>, this deletes subdirectories. Otherwise, this will be <tt>false</tt>.
+   * @return bool If <tt>true</tt>, there aren't any errors. Otherwise, this will be <tt>false</tt> if an error occurred.
    */
   public static function clear($s_path,$is_recursive = true,$is_file = true,$is_dir = true)
   {
@@ -63,8 +63,8 @@ class AFolder
   /**
    * Copies content from one folder to another.
    *
-   * @param string $s_source Source folder.
-   * @param string $s_destination Destination folder.
+   * @param string $s_source The source folder.
+   * @param string $s_destination The destination folder.
    */
   public static function copy($s_source,$s_destination)
   {

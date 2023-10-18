@@ -81,7 +81,7 @@ class ScheduleListModel extends WlModelAbstract
    *     array <var>a_staff_info</var>
    *   </dt>
    *   <dd>
-   *     Information about staff members who conduct this session. The keys are primary keys in {@link \RsStaffSql} table.
+   *     Information about staff members who conduct this session.
    *     Values are array with data:
    *     <dl>
    *       <dt>
@@ -114,7 +114,7 @@ class ScheduleListModel extends WlModelAbstract
    *     string[] <var>a_virtual_location</var>
    *   </dt>
    *   <dd>
-   *     List of virtual locations. Each value is primary key in {@link \RsLocationSql} table.
+   *     List of virtual locations.
    *   </dd>
    *   <dt>
    *     string <var>dt_date</var>

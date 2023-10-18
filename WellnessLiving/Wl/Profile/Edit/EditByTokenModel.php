@@ -56,11 +56,11 @@ class EditByTokenModel extends WlModelAbstract
    * Array values are the field values. The array has the following structure:
    * <dl>
    *   <dt>int [<var>id_field_general</var>]</dt>
-   *   <dd>The ID of a system field. One of {@link \WellnessLiving\RsFieldGeneralSid} constants. This value is only defined if <var>id_field_type</var>={@link \WellnessLiving\RsFieldTypeSid::GENERAL}.</dd>
+   *   <dd>The ID of a system field. One of {@link \WellnessLiving\Wl\Field\WlFieldGeneralSid} constants. This value is only defined if <var>id_field_type</var>={@link \WellnessLiving\RsFieldTypeSid::GENERAL}.</dd>
    *   <dt>bool <var>is_require</var></dt>
    *   <dd>Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional.</dd>
    *   <dt>int <var>id_field_type</var></dt>
-   *   <dd>The type of field. This is one of the {@link \WellnessLiving\RsFieldTypeSid} constants.</dd>
+   *   <dd>The type of field. This is one of the {@link \WellnessLiving\Wl\Field\WlFieldTypeSid} constants.</dd>
    *   <dt>string <var>k_field</var></dt>
    *   <dd>The field ID (<var>k_field</var>). A copy of the key of this array element.</dd>
    *   <dt>string <var>s_title</var></dt>

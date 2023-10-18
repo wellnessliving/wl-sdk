@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Appointment\Book\Asset;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves a list of information about asset categories on the appointment booking page.
+ * An endpoint that retrieves information about asset categories.
  */
 class CategoryModel extends WlModelAbstract
 {
   /**
-   * A list of information about service categories.
+   * A list of information about asset categories.
    * <dl>
    *   <dt>
    *     boolean <var>hide_application</var>

@@ -270,7 +270,7 @@ class PurchaseElementModel extends WlModelAbstract
   public $i_use;
 
   /**
-   * Activation mode. One on {@link \WellnessLiving\RsActivationSid} constants. This field is only added for promotions.
+   * Activation mode. One on {@link \WellnessLiving\WlActivationSid} constants. This field is only added for promotions.
    *
    * @get result
    * @var int

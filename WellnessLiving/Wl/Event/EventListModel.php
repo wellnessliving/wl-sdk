@@ -34,8 +34,138 @@ class EventListModel extends WlModelAbstract
   public $a_enrollment_block_list = [];
 
   /**
-   * A list of events corresponding to requested parameters.
-   *
+   * A list of events corresponding to requested parameters. Each event will have the following keys: <dl>
+   *   <dt>array <var>a_class_tab</var></dt>
+   *   <dd>The list of class tab keys that contain this event.</dd>
+   *   <dt>array <var>a_logo</var></dt>
+   *   <dd>Information about the event's logo. It will contain the following keys:
+   *   <dl>
+   *     <dt>int <var>i_height</var></dt>
+   *     <dd>The image height.</dd>
+   *     <dt>int <var>i_height_src</var></dt>
+   *     <dd>The source image's height.</dd>
+   *     <dt>int <var>i_rotate</var></dt>
+   *     <dd>The angle which image was rotated compared to the original.</dd>
+   *     <dt>int <var>i_width</var></dt>
+   *     <dd>The image width.</dd>
+   *     <dt>int <var>i_width_src</var></dt>
+   *     <dd>The source image's width.</dd>
+   *     <dt>int <var>id_type_src</var></dt>
+   *     <dd>The image type ID. One of the {@link \WellnessLiving\Core\Drive\DriveTypeSid} constants.</dd>
+   *     <dt>bool <var>is_resize</var></dt>
+   *     <dd>This will be `true` if the image has been resized. `false` otherwise.</dd>
+   *     <dt>bool <var>is_old</var></dt>
+   *     <dd>This will be `true` if the image is old. `false` otherwise.</dd>
+   *     <dt>string <var>s_url</var></dt>
+   *     <dd>The URL to the image.</dd>
+   *     <dt>string <var>url-view</var></dt>
+   *     <dd>The URL to the image.</dd>
+   *     <dt>string <var>url-thumbnail</var></dt>
+   *     <dd>The URL to the image's thumbnail.</dd>
+   *   </dl>
+   *   </dd>
+   *   <dt>array <var>a_schedule</var></dt>
+   *   <dd>Information about the event's schedule. It is a list of instances, each instance will contain the following keys:
+   *   <dl>
+   *     <dt>array <var>a_day</var></dt>
+   *     <dd>The days when the event is scheduled (0 - Sunday, 6 - Saturday).</dd>
+   *     <dt>array <var>a_staff_member</var></dt>
+   *     <dd>Information about the staff member(s) conducting the event. This is a list of staff, each element is an array
+   *     with the following keys
+   *       <dl>
+   *         <dt>string <var>k_staff_member</var></dt>
+   *         <dd>The staff member key.</dd>
+   *         <dt>string <var>text_business_role</var></dt>
+   *         <dd>The name of the staff member's business role.</dd>
+   *         <dt>string <var>text_mail</var></dt>
+   *         <dd>The staff member's email address.</dd>
+   *         <dt>string <var>text_name_first</var></dt>
+   *         <dd>The staff member's first name.</dd>
+   *         <dt>string <var>text_name_full</var></dt>
+   *         <dd>The staff member's full name.</dd>
+   *         <dt>string <var>text_name_last</var></dt>
+   *         <dd>The staff member's last name.</dd>
+   *         <dt>string <var>uid</var></dt>
+   *         <dd>The staff member's user key.</dd>
+   *       </dl>
+   *     </dd>
+   *     <dt>string <var>dl_end</var></dt>
+   *     <dd>The ending date of the event series.</dd>
+   *     <dt>string <var>dl_start</var></dt>
+   *     <dd>The starting date of the event series.</dd>
+   *     <dt>bool <var>is_day</var></dt>
+   *     <dd>This will be `true` if the event starts and ends on the same day.</dd>
+   *     <dt>string <var>k_class_period</var></dt>
+   *     <dd>The class period key.</dd>
+   *     <dt>string <var>k_location</var></dt>
+   *     <dd>The location key.</dd>
+   *     <dt>string <var>text_location</var></dt>
+   *     <dd>The name of the location.</dd>
+   *     <dt>string <var>text_time</var></dt>
+   *     <dd>The human readable version of the event time.</dd>
+   *   </dl>
+   *   </dd>
+   *   <dt>array <var>a_search_tag</var></dt>
+   *   <dd>The list of search tags for this event.</dd>
+   *   <dt>bool <var>can_cancel</var></dt>
+   *   <dd>Whether the current user can cancel already booked event.</dd>
+   *   <dt>string <var>dl_early</var></dt>
+   *   <dd>The early cancel date</dd>
+   *   <dt>string <var>dl_end</var></dt>
+   *   <dd>The ending date of the event.</dd>
+   *   <dt>string <var>dl_start</var></dt>
+   *   <dd>The starting date of the event.</dd>
+   *   <dt>string <var>dtu_session</var></dt>
+   *   <dd>Date of the closest session of the event.</dd>
+   *   <dt>int <var>i_session_all</var></dt>
+   *   <dd>Number of all sessions in the event.</dd>
+   *   <dt>int <var>i_session_future</var></dt>
+   *   <dd>Number of all sessions in the future.</dd>
+   *   <dt>int <var>i_session_past</var></dt>
+   *   <dd>Number of all sessions in the past.</dd>
+   *   <dt>bool <var>is_age_restrict</var></dt>
+   *   <dd>`true` if the event is age restricted, `false` if the event is not.</dd>
+   *   <dt>bool <var>is_block</var></dt>
+   *   <dd>`true` if the event is a block event, `false` if the event is not.</dd>
+   *   <dt>bool <var>is_bookable</var></dt>
+   *   <dd>`true` if the event is can be booked by the current user, `false` if the event is not.</dd>
+   *   <dt>bool <var>is_booked</var></dt>
+   *   <dd>`true` if the user has booked the event, `false` if the event is not.</dd>
+   *   <dt>bool <var>is_closed</var></dt>
+   *   <dd>`true` if booking the event is closed, `false` if the event is not.</dd>
+   *   <dt>bool <var>is_full</var></dt>
+   *   <dd>`true` if the event is full, `false` if the event is not.</dd>
+   *   <dt>bool <var>is_online</var></dt>
+   *   <dd>`true` if the event is available online, `false` if the event is not.</dd>
+   *   <dt>bool <var>is_online_private</var></dt>
+   *   <dd>`true` if the event is online and private, `false` if the event is not.</dd>
+   *   <dt>bool <var>is_open</var></dt>
+   *   <dd>`true` if the event is open to be booked, `false` if the event is not.</dd>
+   *   <dt>bool <var>is_prorate</var></dt>
+   *   <dd>`true` if the event is prorated, `false` if the event is not.</dd>
+   *   <dt>bool <var>is_virtual</var></dt>
+   *   <dd>`true` if the event is only held virtually, `false` if the event is not.</dd>
+   *   <dt>string <var>k_class</var></dt>
+   *   <dd>The class key.</dd>
+   *   <dt>string <var>k_class_period</var></dt>
+   *   <dd>The class period key.</dd>
+   *   <dt>string <var>k_enrollment_block</var></dt>
+   *   <dd>The enrollment block key.</dd>
+   *   <dt>string <var>k_location</var></dt>
+   *   <dd>The location key.</dd>
+   *   <dt>string <var>m_price_total</var></dt>
+   *   <dd>The total price of booking a session.</dd>
+   *   <dt>string <var>m_price_total_early</var></dt>
+   *   <dd>The total price if booked early.</dd>
+   *   <dt>string <var>text_age_restrict</var></dt>
+   *   <dd>The age description.</dd>
+   *   <dt>string <var>text_title</var></dt>
+   *   <dd>The name of the event.</dd>
+   *   <dt>string <var>url_book</var></dt>
+   *   <dd>The direct booking url.</dd>
+   *   <dt>string <var>xml_description</var></dt>
+   *   <dd>The description of the event.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

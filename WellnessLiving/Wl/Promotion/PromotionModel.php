@@ -19,13 +19,13 @@ class PromotionModel extends WlModelAbstract
    *     Information about services that can be attended with this pass or membership.
    *     <dl>
    *       <dt>array[] <var>a_class</var></dt>
-   *       <dd>A list of available classes. Each element is primary key from {@link \RsClassSql} table.</dd>
+   *       <dd>A list of available classes.</dd>
    *       <dt>array[] <var>a_event</var></dt>
-   *       <dd>A list of available events. Each element is primary key from {@link \RsClassSql} table.</dd>
+   *       <dd>A list of available events.</dd>
    *       <dt>array[] <var>a_resource</var></dt>
-   *       <dd>A list of available assets. Each element is primary key from {@link \RsResourceSql} table.</dd>
+   *       <dd>A list of available assets.</dd>
    *       <dt>array[] <var>a_service</var></dt>
-   *       <dd>A list of available appointment types. Each element is primary key from {@link \RsServiceSql} table.</dd>
+   *       <dd>A list of available appointment types.</dd>
    *       <dt>bool <var>is_class_all</var></dt>
    *       <dd>This will be `true` if any class in the business can be visited with this Purchase Option. Otherwise, this
    *         will be `false` if only selected classes can be visited with this Purchase Option. Selected classes can be found

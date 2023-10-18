@@ -30,8 +30,8 @@ class EnrollmentFieldListModel extends WlModelAbstract
   /**
    * List of fields that the user has filled in for enrollment.
    *
-   * Keys - field key in the database. See {@link \Wl\Integration\Curves\PartnerFieldSql} table for more details.
-   * Values - value entered by user.
+   * Keys refer specifically to field keys.
+   * Values refer specifically to values entered by the user.
    *
    * Validation is performed by {@link Wl\Insurance\Enrollment\Field\EnrollmentFieldList::setFieldForm()} method.
    *

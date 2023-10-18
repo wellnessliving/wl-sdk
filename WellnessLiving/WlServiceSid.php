@@ -3,36 +3,13 @@
 namespace WellnessLiving;
 
 /**
- * Identifiers for services types.
- *
- * Last used ID: 5.
+ * @deprecated from 2023-09-11.
+ * Will be deleted after 2024-01-01.
+ * Use class {@link \WellnessLiving\Wl\WlServiceSid} instead.
  */
-class WlServiceSid
+class WlServiceSid extends \WellnessLiving\Wl\WlServiceSid
 {
-  /**
-   * Appointments.
-   */
-  const APPOINTMENT = 1;
 
-  /**
-   * Classes.
-   */
-  const CLASSES = 2; // Can not use single form class because this is an internal php word
-
-  /**
-   * Enrolments.
-   */
-  const ENROLLMENT = 3;
-
-  /**
-   * Resources.
-   */
-  const RESOURCE = 5;
-
-  /**
-   * Visits.
-   */
-  const VISIT = 4;
 }
 
 ?>

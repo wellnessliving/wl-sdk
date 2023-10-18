@@ -121,7 +121,7 @@ class DayTimeModel extends WlModelAbstract
   public $is_walk_in = false;
 
   /**
-   * Location to show available appointment booking schedule.
+   * The location key used for showing the available appointment booking schedule.
    *
    * @get get,result
    * @post get
