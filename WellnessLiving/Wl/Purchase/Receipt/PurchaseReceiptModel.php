@@ -376,7 +376,7 @@ class PurchaseReceiptModel extends WlModelAbstract
    * allows access to the print receipt without a login. `false` otherwise.
    *
    * @get get
-   * @var boolS
+   * @var bool
    */
   public $is_url_public = false;
 
