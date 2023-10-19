@@ -224,7 +224,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   public $k_class_period = '0';
 
   /**
-   * Location identifier, primary key in {@link \RsLocationSql}.
+   * The location key.
    *
    * @get result
    * @var string
@@ -232,7 +232,9 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   public $k_location;
 
   /**
-   * Resource identifier, primary key in {@link \RsResourceSql}. Not empty if service is asset reservation.
+   * The resource key.
+   *
+   * Not empty for asset book only.
    *
    * @get result
    * @var string
@@ -240,7 +242,9 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   public $k_resource;
 
   /**
-   * Service identifier, primary key in {@link \RsServiceSql}. Not empty if service is appointment reservation.
+   * The appointment key.
+   *
+   * Not empty for the case of an appointment only.
    *
    * @get result
    * @var string

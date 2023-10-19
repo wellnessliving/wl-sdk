@@ -3,24 +3,13 @@
 namespace WellnessLiving;
 
 /**
- * A list of money owners from which account money can be transferred.
+ * @deprecated from 2023-09-11.
+ * Will be deleted after 2024-01-01.
+ * Use class {@link \WellnessLiving\Wl\WlPayOwnerSid} instead.
  */
-class WlPayOwnerSid
+class WlPayOwnerSid extends \WellnessLiving\Wl\WlPayOwnerSid
 {
-  /**
-   * System user.
-   */
-  const USER = 1;
-  
-  /**
-   * Business.
-   */
-  const BUSINESS = 2;
-  
-  /**
-   * Anonymous user (Walk-In).
-   */
-  const ANONYMOUS = 3;
+
 }
 
 ?>

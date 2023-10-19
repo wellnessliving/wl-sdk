@@ -84,7 +84,7 @@ class ListModel extends WlModelAbstract
   public $k_appointment_ignore = '0';
 
   /**
-   * The key of a location.
+   * The key of the location.
    *
    * @get get
    * @var string

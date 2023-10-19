@@ -3,23 +3,12 @@
 namespace WellnessLiving;
 
 /**
- * Class to process string identifiers for duration types.
+ * @deprecated from 2023-09-11.
+ * Will be deleted after 2024-01-01.
+ * Use class {@link \WellnessLiving\Wl\WlDurationTypeSid} instead.
  */
-class WlDurationTypeSid
+class WlDurationTypeSid extends \WellnessLiving\Wl\WlDurationTypeSid
 {
-  /**
-   * Specific date. Example, 2013-12-24.
-   */
-  const DATE = 2;
 
-  /**
-   * No ending date.
-   */
-  const ETERNAL = 3;
-
-  /**
-   * Examples: 12 days, 2 months, 2 hours etc.
-   */
-  const PERIOD = 1;
 }
 ?>

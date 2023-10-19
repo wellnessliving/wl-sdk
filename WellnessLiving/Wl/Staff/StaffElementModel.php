@@ -13,7 +13,7 @@ use WellnessLiving\WlModelAbstract;
 class StaffElementModel extends WlModelAbstract
 {
   /**
-   * Lis of locations where the staff member works. Each element is primary key from {@link \RsLocationSql} table.
+   * The list of locations where the staff member works. Each element is a location key.
    *
    * `null` means to not change the current value of the field.
    *

@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class PurchaseModel extends WlModelAbstract
 {
   /**
-   * Data about login prize which can be used to pay for service.
+   * Data about the login prize which can be used to pay for service.
    * <dl>
    *   <dt>int <var>i_count</var></dt><dd>Login prize remaining quantity.</dd>
    *   <dt>string <var>k_login_prize</var></dt><dd>Key of login prize.</dd>
@@ -444,9 +444,9 @@ class PurchaseModel extends WlModelAbstract
   public $k_service = '0';
 
   /**
-   * Key of timezone.
+   * The timezone key.
    *
-   * `null` if not set then use default client timezone {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null

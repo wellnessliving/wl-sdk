@@ -277,7 +277,7 @@ class CalendarModel extends WlModelAbstract
   public $k_timezone;
 
   /**
-   * Empty string for single appointment/asset booking.
+   * The staff key to show what days are available for booking.
    *
    * For back-to-back booking ({@link \WellnessLiving\Wl\Appointment\Book\Schedule\DayTimeModel::$is_back_to_back} == `true`): array of appointments for back-to-back booking.
    * Converted to JSON string to be usable as model key. Each item is an array with next structure:
