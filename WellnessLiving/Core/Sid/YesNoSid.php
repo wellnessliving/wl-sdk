@@ -1,17 +1,17 @@
 <?php
 
 /**
- * List of two answers on any question: Yes or No.
+ * A list of two answers for any question: Yes or No.
  */
 class YesNoSid
 {
   /**
-   * Answer is "no".
+   * The answer is "no".
    */
   const NO = 2;
 
   /**
-   * Answer is "yes".
+   * The answer is "yes".
    */
   const YES = 1;
 }

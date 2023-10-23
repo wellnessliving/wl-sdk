@@ -5,13 +5,13 @@ namespace WellnessLiving\Core\Request\Token;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Point to create one-time pin code.
- * This code must be used for a security token generation.
+ * An endpoint to create a one-time PIN code.
+ * This code must be used for generating a security token.
  */
 class TokenPinModel extends WlModelAbstract
 {
   /**
-   * Date/time of pin code expiration.
+   * The expiration date/time of the PIN code.
    *
    * @get result
    * @var string
@@ -19,7 +19,7 @@ class TokenPinModel extends WlModelAbstract
   public $dtu_expire;
 
   /**
-   * Pin code.
+   * The PIN code.
    *
    * @get result
    * @var string
@@ -27,7 +27,7 @@ class TokenPinModel extends WlModelAbstract
   public $text_pin;
 
   /**
-   * ID to send a security code by push notification.
+   * The ID to use to send a security code via a push notification.
    *
    * @get get
    * @var string

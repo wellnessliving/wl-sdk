@@ -5,18 +5,18 @@ namespace WellnessLiving\Core\Google;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Api to store captcha user token.
+ * An endpoint to store the user token CAPTCHA.
  *
- * Site keys for initialize Google reCAPTCHA v2:
- * * Demo/Staging - `6Ldqwe0gAAAAANve1TEPFb_Yxgb9wsoIfrNL6-2Z`
+ * Site keys for initializing Google reCAPTCHA v2:
+ * Demo/Staging key - `6Ldqwe0gAAAAANve1TEPFb_Yxgb9wsoIfrNL6-2Z`
  */
 class GoogleCaptchaModel extends WlModelAbstract
 {
   /**
-   * Action name.
+   * The action name.
    *
-   * Used for determinate place where captcha needed,
-   * in documentation for APIs which used captcha says which action it use.
+   * Used to determine the place where the CAPTCHA is needed in documentation for endpoints that used
+   * the CAPTCHA.
    *
    * @put post
    * @var string
@@ -24,7 +24,7 @@ class GoogleCaptchaModel extends WlModelAbstract
   public $text_action;
 
   /**
-   * Captcha user token.
+   * The user token CAPTCHA.
    *
    * @put post
    * @var string

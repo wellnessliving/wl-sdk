@@ -5,29 +5,22 @@ namespace WellnessLiving\Core\Passport\ChangePassword;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Point to finish password change procedure.
+ * An endpoint to finish the password change procedure for a user.
  *
- * It advance post {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordBeginModel} endpoint.
- * Set into {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordBeginModel::$url_reset} field URL to page
- * where you go to get new password from user.
- * It will send to user mail with "reset password" link.
+ * This endpoint advances the {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordBeginModel} endpoint.
+ * Set your desired password in the {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordBeginModel::$url_reset}
+ * field, where you use the "reset password" link via email to get the user's new password for this endpoint.
  *
- * When user follows to your page, get <tt>text_mail</tt> and <tt>text_code</tt> from URL.
+ * When the user goes to your page, get <tt>text_mail</tt> and <tt>text_code</tt> from the URL, then post this model to set a password for user.
  *
- * Post this model to set a password for user.
- *
- * Use <tt>text_mail</tt> as value for {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordApplyModel::$text_login} and
+ * Use <tt>text_mail</tt> as the value for {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordApplyModel::$text_login} and
  * {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordApplyModel::$text_mail},
- * <tt>text_code</tt> - for {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordApplyModel::$text_code}.
+ * and <tt>text_code</tt> as the value for {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordApplyModel::$text_code}.
  */
 class ChangePasswordApplyModel extends WlModelAbstract
 {
   /**
-   * Verification code.
-   *
-   * <b>Required!</b>
-   *
-   * Get it from link to "password reset" page.
+   * The verification code, which can be obtained from the "reset password" email link. This is a required value.
    *
    * @post get
    * @var string
@@ -35,11 +28,7 @@ class ChangePasswordApplyModel extends WlModelAbstract
   public $text_code = '';
 
   /**
-   * User's login.
-   *
-   * <b>Required!</b>
-   *
-   * Get it from link to "password reset" page.
+   * The user's login, which can be obtained from the "reset password" email link. This is a required value.
    *
    * @post get
    * @var string
@@ -47,11 +36,7 @@ class ChangePasswordApplyModel extends WlModelAbstract
   public $text_login = '';
 
   /**
-   * User's email.
-   *
-   * <b>Required!</b>
-   *
-   * Get it from link to "password reset" page.
+   * The user's email address, which can be obtained from the "reset password" email link. This is a required value.
    *
    * @post get
    * @var string
@@ -59,9 +44,7 @@ class ChangePasswordApplyModel extends WlModelAbstract
   public $text_mail = '';
 
   /**
-   * New password.
-   *
-   * <b>Required!</b>
+   * The user's new password. This is a required value.
    *
    * @post post
    * @var string

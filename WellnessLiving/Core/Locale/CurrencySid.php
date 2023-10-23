@@ -3,7 +3,7 @@
 namespace WellnessLiving\Core\Locale;
 
 /**
- * List of currencies.
+ * A list of currencies.
  *
  * Last used ID: 13.
  */
