@@ -5,14 +5,14 @@ namespace WellnessLiving\Core\Passport\Login;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Gets the user ID for the current user and a password reset URL.
+ * An endpoint that gets the user ID for the current user and a password reset URL.
  */
 class InfoModel extends WlModelAbstract
 {
   /**
    * The current user key.
    *
-   * It is `null` if user is not signed in.
+   * This will be `null` if the user isn't signed in.
    *
    * @get result
    * @var string|null
@@ -28,7 +28,7 @@ class InfoModel extends WlModelAbstract
   public $url_password_change;
 
   /**
-   * URL to register page.
+   * The URL to the registration page.
    *
    * @get result
    * @var string
