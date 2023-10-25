@@ -123,6 +123,15 @@ class DataModel extends WlModelAbstract
   public $is_location_multiple;
 
   /**
+   * `true` if clients of business can select a custom timezone in their profile;
+   * `false` if location or business timezone is used.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_profile_timezone;
+
+  /**
    * <tt>true</tt> if clients can enter progress log; <tt>false</tt> otherwise.
    *
    * @get result
@@ -264,7 +273,6 @@ class DataModel extends WlModelAbstract
 
   /**
    * Instagram page.
-   * {@link Wl\Business\BusinessInfo::$url_instagram}.
    *
    * @get result
    * @var string
@@ -273,7 +281,6 @@ class DataModel extends WlModelAbstract
 
   /**
    * Linkedin profile.
-   * {@link Wl\Business\BusinessInfo::$url_linkedin}.
    *
    * @get result
    * @var string
@@ -314,7 +321,6 @@ class DataModel extends WlModelAbstract
 
   /**
    * YouTube website.
-   * {@link Wl\Business\BusinessInfo::$url_youtube}.
    *
    * @get result
    * @var string
