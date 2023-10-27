@@ -52,6 +52,12 @@ class PaymentModel extends WlModelAbstract
    *         <dd>The primary key of the element depends on type of the element.</dd></dl>
    *       </dd>
    *       <dt>
+   *         array [<var>a_uid_share</var>]
+   *       </dt>
+   *       <dd>
+   *         An array of UIDs. The list of users a purchase option should be shared with.
+   *       </dd>
+   *       <dt>
    *         array [<var>a_wellness_program</var>]
    *       </dt>
    *       <dd>
@@ -83,6 +89,13 @@ class PaymentModel extends WlModelAbstract
    *       <dt>
    *         string [<var>dt_start</var>]
    *       </dt>
+   *       <dt>
+   *         bool [<var>is_pay_when_start</var>]
+   *       </dt>
+   *       <dd>
+   *         If `true` the client won't be charged for this item until its start date, `false` otherwise.
+   *         The purchase option must have a specified start date.
+   *       </dd>
    *       <dd>
    *         The start date. For memberships only.
    *       </dd>
@@ -177,6 +190,12 @@ class PaymentModel extends WlModelAbstract
    *       </dt>
    *       <dd>
    *         The gift card sender name. This is required for gift cards.
+   *       </dd>
+   *       <dt>
+   *         string <var>[uid_to]</var>
+   *       </dt>
+   *       <dd>
+   *         Specifies the recipient user when a purchase option is to be transferred.
    *       </dd>
    *     </dl>
    *   </dd>
