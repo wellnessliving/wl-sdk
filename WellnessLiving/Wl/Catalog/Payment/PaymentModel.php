@@ -55,7 +55,7 @@ class PaymentModel extends WlModelAbstract
    *         array [<var>a_uid_share</var>]
    *       </dt>
    *       <dd>
-   *         An array of UIDs. The list of users a purchase option should be shared with.
+   *         An array of UIDs. The client's relatives that will share the purchase option.
    *       </dd>
    *       <dt>
    *         array [<var>a_wellness_program</var>]
@@ -195,7 +195,7 @@ class PaymentModel extends WlModelAbstract
    *         string <var>[uid_to]</var>
    *       </dt>
    *       <dd>
-   *         Specifies the recipient user when a purchase option is to be transferred.
+   *         Specifies the recipient of a transfer purchase option.
    *       </dd>
    *     </dl>
    *   </dd>
