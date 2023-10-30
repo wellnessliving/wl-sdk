@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Drive\ImageUpload;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Performs the final action to an image uploaded with {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadTemporaryModel}.
+ * An endpoint that performs the final action to an image uploaded with {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadTemporaryModel}.
  */
 class ImageUploadModel extends WlModelAbstract
 {
@@ -19,7 +19,7 @@ class ImageUploadModel extends WlModelAbstract
   public $a_image;
 
   /**
-   * Information about text for an empty image upload. See the PHP side for more information.
+   * Information about the text for an empty image upload. See the PHP side for more information.
    *
    * @get result
    * @put result
