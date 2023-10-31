@@ -5,20 +5,20 @@ namespace WellnessLiving\Core\Request\Api\Application\Credential;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Api for manage credential fro application.
+ * An endpoint that manages credentials for the application.
  */
 class CredentialModel extends WlModelAbstract
 {
   /**
-   * CID of the credential.
+   * The CID of the credential.
    * Accepted values: <ul>
    *   <li>
-   *     <tt>972</tt> - Google credential.
-   *     Use {@link \WellnessLiving\Core\Request\Model\Application\Credential\GoogleCredentialData} object for send credential.
+   *     <tt>972</tt> - The Google credential.
+   *     Use the {@link \WellnessLiving\Core\Request\Model\Application\Credential\GoogleCredentialData} object to send the credential.
    *   </li>
    *   <li>
-   *     <tt>973</tt> - Facebook credential.
-   *     Use {@link \WellnessLiving\Core\Request\Model\Application\Credential\FacebookCredentialData} object for send credential.
+   *     <tt>973</tt> - The Facebook credential.
+   *     Use the {@link \WellnessLiving\Core\Request\Model\Application\Credential\FacebookCredentialData} object to send the credential.
    *   </li>
    * </ul>
    *
@@ -30,7 +30,7 @@ class CredentialModel extends WlModelAbstract
   public $cid_credential;
 
   /**
-   * Array with credential.
+   * An array with the credential.
    *
    * @get result
    * @put post
