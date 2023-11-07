@@ -10,10 +10,9 @@ use WellnessLiving\WlModelAbstract;
  * The only difference between this endpoint and {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentModel} is
  * that this endpoint is capable of paying for multiple appointments at the same time.
  *
- * This endpoint using a CAPTCHA check.
- * To pass the CAPTCHA, you'll need to study the documentation of the captcha API. In the documentation, you'll find
- * that you need to send a CAPTCHA for a specific action.
- * For this API, the action is `1064`.
+ * This endpoint uses a CAPTCHA check.
+ * To pass the CAPTCHA, you'll need to study the documentation of the CAPTCHA base class. In the documentation, you'll
+ * find that you need to send a CAPTCHA for a specific action. For this API, the action is `1064`.
  */
 class PaymentMultipleModel extends WlModelAbstract
 {
