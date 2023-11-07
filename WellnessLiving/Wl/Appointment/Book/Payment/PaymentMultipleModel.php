@@ -5,106 +5,109 @@ namespace WellnessLiving\Wl\Appointment\Book\Payment;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Allows to pay an appointment or appointment purchase option for the client.
+ * An endpoint that completes the payment for an appointment or appointment Purchase Option for a client.
  *
- * Only difference from {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentModel} is possibility to pay for a lot of appointments at the same time.
+ * The only difference between this endpoint and {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentModel} is
+ * that this endpoint is capable of paying for multiple appointments at the same time.
  *
- * This endpoint using captcha check.
- * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
- * For this API an action is `1064`.
+ * This endpoint using a CAPTCHA check.
+ * To pass the CAPTCHA, you'll need to study the documentation of the captcha API. In the documentation, you'll find
+ * that you need to send a CAPTCHA for a specific action.
+ * For this API, the action is `1064`.
  */
 class PaymentMultipleModel extends WlModelAbstract
 {
   /**
-   * Booking process information:
+   * The booking process information:
    * <dl>
    *   <dt>
    *     array[] <var>a_provider</var>
    *   </dt>
    *   <dd>
-   *     Batch of appointments to be booked. Each element has values:
+   *     The batch of appointments to be booked. Each element has the next values:
    *     <dl>
    *       <dt>
    *         array <var>a_product</var>
    *       </dt>
    *       <dd>
-   *         Add-on list.
-   *         Keys are add-on keys.
-   *         Values are add-on quantity.
+   *         The add-on list.
+   *         Keys refer to add-on keys, and values refer to the add-on quantities.
    *       </dd>
    *       <dt>
    *         int <var>i_duration</var>
    *       </dt>
    *       <dd>
-   *         Asset duration in minutes. Not empty for asset booking only.
+   *         The asset duration in minutes. This won't be empty for asset bookings.
    *       </dd>
    *       <dt>
    *         int <var>id_purchase_item</var>
    *       </dt>
    *       <dd>
-   *         ID of item to purchase. One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
-   *         Not empty for new options purchase.
+   *         The ID of the purchase item. One of the the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
+   *         This won't be empty for new options purchased.
    *       </dd>
    *       <dt>
    *         bool <var>is_pay_later</var>
    *       </dt>
    *       <dd>
-   *         <tt>true</tt> if customer wants to on visit; <tt>false</tt> if user wants to pay now.
+   *         This will be <tt>true</tt> if the customer wants to pay upon their visit. Otherwise, this will be <tt>false</tt>
+   *         if the user wants to pay now.
    *       </dd>
    *       <dt>
    *         bool <var>is_purchase_previous</var>
    *       </dt>
    *       <dd>
-   *         <tt>true</tt> if purchase option that was selected for another appointment from the batch
-   *         must be used for this appointment; <tt>false</tt> otherwise.
+   *         This will be <tt>true</tt> if the Purchase Option that was selected for another appointment from the batch
+   *         must be used for this appointment. Otherwise, this will be <tt>false</tt>.
    *       </dd>
    *       <dt>
    *         bool <var>is_wait_list_unpaid</var>
    *       </dt>
    *       <dd>
-   *         <tt>true</tt> if customer is booking to wait list and don't have to pay;
-   *         <tt>false</tt> if customer is booking to active list or wait list should be paid.
+   *         This will be <tt>true</tt> if the customer is booked into the wait list and doesn't have to pay.
+   *         Otherwise, this will be <tt>false</tt> if the customer is booking to an active list (or if the wait list booking
+   *         should be paid now).
    *       </dd>
    *       <dt>
    *         string <var>k_id</var>
    *       </dt>
    *       <dd>
-   *         Key of option to purchase.
-   *         Not empty for new option purchase.
+   *         The key of the purchase item.
+   *         This won't be empty for new options purchased.
    *       </dd>
    *       <dt>
    *         string <var>k_login_prize</var>
    *       </dt>
    *       <dd>
-   *         Key of customer's prize to pay for booking. Not empty for free booking by prize.
+   *         The key of the customer's prize used to pay for the booking. This won't be empty for bookings made using prizes.
    *       </dd>
    *       <dt>
    *         string <var>k_login_promotion</var>
    *       </dt>
    *       <dd>
-   *         Key of already purchased option. Not empty to use already purchase option.
+   *         The key of the Purchase Option. This won't be empty when using a Purchase Option that's already been purchased.
    *       </dd>
    *       <dt>
    *         string <var>k_resource</var>
    *       </dt>
    *       <dd>
-   *         Key of booking asset.
-   *         Not empty only for asset booking.
+   *         The key of the asset booking.
+   *         This is only used for asset bookings.
    *       </dd>
    *       <dt>
    *         string <var>k_service</var>
    *       </dt>
    *       <dd>
-   *         Key of booking appointment.
-   *         Not empty only for appointment booking.
+   *         The key of the appointment booking service.
+   *         This is only used for appointment bookings.
    *       </dd>
    *       <dt>
    *         string <var>s_signature</var>
    *       </dt>
    *       <dd>
-   *         Signature for purchase option contract.
-   *         Data from canvas html element or signature pad.
-   *         Not empty only if purchase option requires contract signing.
+   *         The signature for the Purchase Option contract.
+   *         The data is returned from the canvas HTML element or the signature pad.
+   *         This won't be empty if the Purchase Option requires contract signing.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -112,17 +115,17 @@ class PaymentMultipleModel extends WlModelAbstract
    *     int <var>id_class_tab</var>
    *   </dt>
    *   <dd>
-   *     "Book now" tab. One of {@link \WellnessLiving\Wl\Classes\Tab\TabSid} constants.
+   *     The "Book now" tab. One of the {@link \WellnessLiving\Wl\Classes\Tab\TabSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>m_tip_appointment</var>
    *   </dt>
    *   <dd>
-   *     Tips amount.
+   *     The tips amount.
    *   </dd>
    * </dl>
    *
-   * Set this field value in a case of GET request.
+   * Set this field value for GET requests.
    *
    * @get get
    * @var array
@@ -130,9 +133,9 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_book_data = [];
 
   /**
-   * Copy of {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentMultipleModel::$a_book_data}.
+   * A copy of {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentMultipleModel::$a_book_data}.
    *
-   * Set this field value in a case of POST request.
+   * Set this field value for POST requests.
    *
    * @post post
    * @var array
@@ -140,7 +143,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_book_data_post = [];
 
   /**
-   * List of redeemed prizes.
+   * The list of redeemed prizes.
    *
    * @post result
    * @var string[]
@@ -148,7 +151,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_login_prize = [];
 
   /**
-   * Payment type for the appointment, one of {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid} constants.
+   * The payment type for the appointment. One of the {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid} constants.
    *
    * @post result
    * @var int[]
@@ -158,7 +161,7 @@ class PaymentMultipleModel extends WlModelAbstract
   /**
    * A list of payment sources to pay with.
    *
-   * Each element has next keys:
+   * Each element has the next keys:
    * <dl>
    *   <dt>
    *     array [<var>a_pay_card</var>]
@@ -173,68 +176,68 @@ class PaymentMultipleModel extends WlModelAbstract
    *         The payment address:
    *         <dl>
    *           <dt>boolean <var>is_new</var></dt>
-   *           <dd>Set this value is <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
+   *           <dd>Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
    *           <dt>string [<var>k_geo_country</var>]</dt>
-   *           <dd>The key of the country used for the payment address. Specify to add a new address.</dd>
+   *           <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>k_geo_region</var>]</dt>
-   *           <dd>The key of the region for the payment address. Specify to add a new address.</dd>
+   *           <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>k_pay_address</var>]</dt>
-   *           <dd>The key of the saved payment address. Specify to use a saved address.</dd>
+   *           <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
    *           <dt>string [<var>s_city</var>]</dt>
-   *           <dd>The city used for the payment address. Specify to add a new address.</dd>
+   *           <dd>The city used for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_name</var>]</dt>
-   *           <dd>The card name. Specify to add a new address.</dd>
+   *           <dd>The card name. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_phone</var>]</dt>
-   *           <dd>The payment phone. Specify to add a new address.</dd>
+   *           <dd>The payment phone. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_postal</var>]</dt>
-   *           <dd>The postal code for the payment address. Specify to add a new address.</dd>
+   *           <dd>The postal code for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_street1</var>]</dt>
-   *           <dd>The payment address. Specify to add a new address.</dd>
+   *           <dd>The payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_street2</var>]</dt>
-   *           <dd>The optional payment address. Specify to add a new address.</dd>
+   *           <dd>The optional payment address. Specify this to add a new address.</dd>
    *         </dl>
    *       </dd>
    *       <dt>
    *         int [<var>i_csc</var>]
    *       </dt>
    *       <dd>
-   *         The credit card CSC. Specify to add a new card.
+   *         The credit card CSC. Specify this to add a new card.
    *       </dd>
    *       <dt>
    *         int [<var>i_month</var>]
    *       </dt>
    *       <dd>
-   *         The credit card expiration month. Specify to add a new card.
+   *         The credit card expiration month. Specify this to add a new card.
    *       </dd>
    *       <dt>
    *         int [<var>i_year</var>]
    *       </dt>
    *       <dd>
-   *         The credit card expiration year. Specify to add a new card.
+   *         The credit card expiration year. Specify this to add a new card.
    *       </dd>
    *       <dt>
    *         boolean <var>is_new</var>
    *       </dt>
    *       <dd>
-   *         <tt>1</tt> to add a new card; <tt>0</tt> to use a saved card.
+   *         Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
    *       </dd>
    *       <dt>
    *         string [<var>k_pay_bank</var>]
    *       </dt>
    *       <dd>
-   *         The key of a credit card. Specify to use saved card.
+   *         The key of the credit card. Specify this to use saved card.
    *       </dd>
    *       <dt>
    *         string [<var>s_comment</var>]
    *       </dt>
    *       <dd>
-   *         Optional comment(s). Specify to add a new card.
+   *         Optional comment(s). Specify this to add a new card.
    *       </dd>
    *       <dt>
    *         string [<var>s_number</var>]
    *       </dt>
    *       <dd>
-   *         The card number. Specify to add a new card.
+   *         The card number. Specify this to add a new card.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -248,7 +251,7 @@ class PaymentMultipleModel extends WlModelAbstract
    *     boolean [<var>is_hide</var>]
    *   </dt>
    *   <dd>
-   *     Whether this payment method is hidden.
+   *     Determines whether this payment method is hidden.
    *   </dd>
    *   <dt>
    *     boolean [<var>is_success</var>=<tt>false</tt>]
@@ -282,20 +285,20 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_pay_form = [];
 
   /**
-   * Information about selected login promotion.
+   * Information about the selected login promotion.
    *
    * <dl>
    *   <dt>
    *     int <var>i_limit</var>
    *   </dt>
    *   <dd>
-   *      Limit on the visit count of the promotion.
+   *      The visit count limit of the promotion.
    *   </dd>
    *   <dt>
    *     int <var>i_remain</var>
    *   </dt>
    *   <dd>
-   *     Count of remaining visits.
+   *     The count of remaining visits.
    *   </dd>
    *   <dt>
    *     string <var>s_expire</var>
@@ -307,7 +310,7 @@ class PaymentMultipleModel extends WlModelAbstract
    *     string <var>s_title</var>
    *   </dt>
    *   <dd>
-   *     The title of promotion.
+   *     The title of the promotion.
    *   </dd>
    * </dl>
    *
@@ -317,25 +320,26 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_promotion_data;
 
   /**
-   * Fields - string in format <tt>id_purchase_item-k_id</tt>. Values - array with next stricture:
+   * Fields refer to strings in the format <tt>id_purchase_item-k_id</tt>. Values refer to an array with the next stricture:
    * <dl>
    *   <dt>
    *     array <var>a_tax</var>
    *   </dt>
    *   <dd>
-   *     Contains information about taxes in the following format. A list of taxes to apply. The array keys are <tt>k_tax</tt> keys. Each element contains the following fields:
+   *     A list of taxes to apply containing information about taxes.
+   *     The array keys are <tt>k_tax</tt> keys. Each element contains the following fields:
    *     <dl>
    *       <dt>
    *         float <var>m_tax</var>
    *       </dt>
    *       <dd>
-   *         Tax rate.
+   *         The tax rate.
    *       </dd>
    *       <dt>
    *         string <var>text_title</var>
    *       </dt>
    *       <dd>
-   *         Name of the tax.
+   *         The name of the tax.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -343,31 +347,31 @@ class PaymentMultipleModel extends WlModelAbstract
    *     string <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     Purchase item ID. One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constant.
+   *     The purchase item ID. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>
    *   </dt>
    *   <dd>
-   *     The value of the discount used for purchase.
+   *     The value of the discount used for the purchase.
    *   </dd>
    *   <dt>
    *     string <var>m_discount</var>
    *   </dt>
    *   <dd>
-   *     The value of the discount used for purchase.
+   *     The value of the discount used for the purchase.
    *   </dd>
    *   <dt>
    *     string <var>m_pay</var>
    *   </dt>
    *   <dd>
-   *     The payment for the promotion or single visit without taxes.
+   *     The payment for the promotion (or single visit) without taxes.
    *   </dd>
    *   <dt>
    *     string <var>m_price</var>
    *   </dt>
    *   <dd>
-   *     The price of the promotion or single visit.
+   *     The price of the promotion (or single visit).
    *   </dd>
    * </dl>
    *
@@ -377,10 +381,10 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_purchase;
 
   /**
-   * Keys of purchased items.
+   * The keys of purchased items.
    *
-   * 1st level array is list of appointments from batch.
-   * 2nd level array is list of items purchased for this appointment.
+   * The first level of the array is the list of appointments from the batch.
+   * The second level of the array is the list of items purchased for this appointment.
    *
    * @post result
    * @var string[][]|null
@@ -388,9 +392,8 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_purchase_item;
 
   /**
-   * List of quiz response keys.
-   * Key is quiz key.
-   * Value is response key.
+   * The list of quiz response keys.
+   * Keys refer to quiz keys, and values refer to response keys.
    *
    * @post post
    * @var array
@@ -398,7 +401,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_quiz_response = [];
 
   /**
-   * List of amount to pay for appointments from batch with the tax without surcharge.
+   * The list of amounts to pay for appointments from the batch, with taxes and without surcharges.
    *
    * @get result
    * @var string[]
@@ -406,8 +409,8 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_total;
 
   /**
-   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
-   * There may be empty values in this list, which means that this is a walk-in.
+   * The list of user keys to book appointments with.
+   * Empty values signify walk-ins.
    *
    * @get get
    * @post get
@@ -416,7 +419,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_uid = [];
 
   /**
-   * ID of source mode. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The ID of the source mode. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    *
    * @get get
    * @post get
@@ -425,7 +428,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * `true` if client is walk-in, otherwise `false`.
+   * This will be `true` if the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -434,7 +437,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $is_walk_in = false;
 
   /**
-   * Location to show available appointment booking schedule.
+   * The location to show the available appointment booking schedule for.
    *
    * @get get,result
    * @post get
@@ -443,7 +446,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
-   * Key of activity of purchase is made. Empty if no purchase is made.
+   * Key of the activity for the purchase made. This will be empty if no purchase has been made.
    *
    * @post result
    * @var string
@@ -451,7 +454,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $k_login_activity_purchase;
 
   /**
-   * Gift card amount.
+   * The gift card amount.
    *
    * @get result
    * @var string
@@ -459,7 +462,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $m_coupon;
 
   /**
-   * Discount amount.
+   * The discount amount.
    *
    * @get result
    * @var string
@@ -467,7 +470,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $m_discount;
 
   /**
-   * Surcharge amount.
+   * The surcharge amount.
    *
    * @get result
    * @var string
@@ -483,7 +486,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $m_tax;
 
   /**
-   * The price of service with the tax without surcharge.
+   * The price of the service, with taxes and without surcharges.
    *
    * @get result
    * @var string
@@ -491,7 +494,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $m_total;
 
   /**
-   * Gift card code.
+   * The gift card code.
    *
    * @get get
    * @post get
@@ -500,7 +503,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $text_coupon_code = '';
 
   /**
-   * Discount code.
+   * The discount code.
    *
    * @get get
    * @post get
@@ -509,7 +512,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $text_discount_code = '';
 
   /**
-   * User to get information for.
+   * The user to get information for.
    *
    * @get get
    * @post get
