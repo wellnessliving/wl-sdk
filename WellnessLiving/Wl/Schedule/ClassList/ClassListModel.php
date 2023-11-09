@@ -10,6 +10,27 @@ use WellnessLiving\WlModelAbstract;
 class ClassListModel extends WlModelAbstract
 {
   /**
+   * Keys are dates of the days inside requested date range, when there is at least one class in the business.
+   * If, locations are sent as a parameter, then at least one class in the given locations.
+   *
+   * Values are empty arrays for now. This is done to make possible to add some information about certain dates, if we need this.
+   *
+   * @get result
+   * @var array[]
+   */
+  public $a_calendar = [];
+
+  /**
+   * The list of location keys to filter results.
+   * If it's empty, schedule for all locations will be returned.
+   * All given locations should be from the same business, which is sent in {@link ClassListModel::$k_business}.
+   *
+   * @get get
+   * @var string[]
+   */
+  public $a_location = [];
+
+  /**
    * A list of classes sessions starting with the date {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_date}
    * and in the 62 days ahead (or up to {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_end}).
    * Every element has the following keys:
@@ -135,6 +156,16 @@ class ClassListModel extends WlModelAbstract
    * @var string
    */
   public $dt_end = '';
+
+  /**
+   * `true` means to not generate {@link ClassListModel::$a_session} result.
+   * Can be used, if you do not need full information about existing classes and result in {@link ClassListModel::$a_calendar} is enough.
+   * any classes in the business.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_response_short = false;
 
   /**
    * If `true`, sessions from every class tab are returned. If `false`, use the
