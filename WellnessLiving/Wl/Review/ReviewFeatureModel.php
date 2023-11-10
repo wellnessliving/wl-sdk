@@ -22,7 +22,6 @@ class ReviewFeatureModel extends WlModelAbstract
    *
    * @post post
    * @var string
-   * @see \RsBusinessSql
    */
   public $k_business='';
 
@@ -31,7 +30,6 @@ class ReviewFeatureModel extends WlModelAbstract
    *
    * @post post
    * @var string
-   * @see \RsReviewSql
    */
   public $k_review='';
 }
