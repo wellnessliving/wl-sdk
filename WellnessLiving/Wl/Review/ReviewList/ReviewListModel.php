@@ -40,6 +40,12 @@ class ReviewListModel extends WlModelAbstract
    *     Rate of review.
    *   </dd>
    *   <dt>
+   *     bool <var>is_featured</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> if review is featured, <tt>false</tt> otherwise.
+   *   </dd>
+   *   <dt>
    *     bool <var>is_verify</var>
    *   </dt>
    *   <dd>
