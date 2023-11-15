@@ -160,7 +160,6 @@ class ClassListModel extends WlModelAbstract
   /**
    * `true` means to not generate {@link ClassListModel::$a_session} result.
    * Can be used, if you do not need full information about existing classes and result in {@link ClassListModel::$a_calendar} is enough.
-   * any classes in the business.
    *
    * @get get
    * @var bool
