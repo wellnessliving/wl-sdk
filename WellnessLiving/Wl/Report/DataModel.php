@@ -62,6 +62,15 @@ class DataModel extends WlModelAbstract
   public $id_report_group = 0;
 
   /**
+   * The report page ID. One of the {@link WlReportPageSid} constants.
+   * If set, the collection of that page will be used, otherwise a collection of single report will be used.
+   *
+   * @get get
+   * @var int|null
+   */
+  public $id_report_page = null;
+
+  /**
    * The report view ID. One of the {@link \WellnessLiving\Wl\Report\WlReportChartViewSid} constants.
    *
    * @get get
