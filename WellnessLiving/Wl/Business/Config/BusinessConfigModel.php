@@ -81,6 +81,16 @@ class BusinessConfigModel extends WlModelAbstract
   public $is_location_select;
 
   /**
+   * Determines whether business has white label setting enabled in admin settings.
+   *
+   * `true` - enabled, `false` - otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_white_label;
+
+  /**
    * The business key.
    *
    * @get get
