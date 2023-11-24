@@ -1,6 +1,6 @@
 <?php
 
-namespace WellnessLiving\Custom\Wl;
+namespace WellnessLiving\Wl;
 
 /**
  * List of available data center regions.
