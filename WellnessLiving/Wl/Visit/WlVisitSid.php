@@ -1,10 +1,8 @@
 <?php
 // libs/rs/Sid.php
-// (c) KOINS, Dec 2012, koins.com.ua
-// Created by Alex Titov, Dec 2012, alexandr.titov@koins.com.ua
 // Class
 
-namespace Wl\Visit;
+namespace WellnessLiving\Wl\Visit;
 
 /**
  * Possible states of the visit: book, attended, cancelled, etc.
