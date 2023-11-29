@@ -62,29 +62,41 @@ class DebtListModel extends WlModelAbstract
   public $a_debt = [];
 
   /**
-   * Date before which debts should be returned.
+   * If set, this is the end of the date window. Only debts added before or on this date will be shown.
    *
-   * If `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} specified will return debts before current date.
-   * If `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} also `null` will return debts from previous month.
-   *
-   * @get get
-   * @var string|null
-   */
-  public $dl_end;
-
-  /**
-   * Date since which debts should be returned.
-   *
-   * If `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} specified will return debts since the beginning of time.
-   * If `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} also `null` will return debts from previous month.
+   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} has been specified, only debts added after the start date will be returned.
+   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} is also `null`, this will return debts from the previous month.
    *
    * @get get
    * @var string|null
    */
-  public $dl_start;
+  public $dl_end=null;
 
   /**
-   * Defines whether debts for test or real businesses should be returned.
+   * If set, this is the start of the date window. Only debts added on or after this date will be shown.
+   *
+   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} has been specified will return debts added since the beginning of time.
+   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} is also `null`, this will return debts from the previous month.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dl_start=null;
+
+  /**
+   * Defines whether new debts should be returned or only previously sent debts.
+   *
+   * If `true` then return new debts only.
+   * If `false` then return previously sent debts only.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_request_debt = false;
+
+  /**
+   * If `true`, debts from test businesses will be returned. Otherwise, this will be `false` if only
+   * debts from real businesses will be returned.
    *
    * @get get
    * @var bool
@@ -92,14 +104,14 @@ class DebtListModel extends WlModelAbstract
   public $is_test;
 
   /**
-   * The business key to which debts should be returned.
+   * The business key for which debts should be returned.
    *
-   * `null` in a case if debts for all businesses should be returned.
+   * Use `null` if debt payments from all businesses should be returned.
    *
    * @get get
    * @var string|null
    */
-  public $k_business = '';
+  public $k_business = null;
 }
 
 ?>

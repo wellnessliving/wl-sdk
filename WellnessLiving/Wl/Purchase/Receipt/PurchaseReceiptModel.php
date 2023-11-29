@@ -372,6 +372,15 @@ class PurchaseReceiptModel extends WlModelAbstract
   public $html_receipt;
 
   /**
+   * Whether the print receipt URL requires authentication. If `true`, the URL contains a token that temporarily
+   * allows access to the print receipt without a login. `false` otherwise.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_url_public = false;
+
+  /**
    * The key of the purchase.
    *
    * @get get
@@ -394,6 +403,22 @@ class PurchaseReceiptModel extends WlModelAbstract
    * @var string
    */
   public $text_receipt;
+
+  /**
+   * The URL for printing on a normal printer.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_print;
+
+  /**
+   * The URL for printing on a receipt printer.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_print_receipt;
 }
 
 ?>

@@ -9,12 +9,16 @@ use WellnessLiving\WlModelAbstract;
  * The POST method for this endpoint is implemented as a separate endpoint (see
  * {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentPostModel}).
  *
+ * This endpoint using captcha check.
+ * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
+ * For this API an action is `1064`.
+ *
  * @deprecated Use {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentPostModel} instead.
  */
 class PaymentModel extends WlModelAbstract
 {
   /**
-   * All data from the provider <tt>Wl_Appointment_Book_ProviderModel</tt> model.
+   * Information detailing an appointment booking.
    *
    * @get get
    * @post get
@@ -301,6 +305,14 @@ class PaymentModel extends WlModelAbstract
    * @var string
    */
   public $k_login_activity_purchase;
+
+  /**
+   * Login prize key. In case when appointment paid by reward prize, there is the key of redeemed login prize. Empty otherwise.
+   *
+   * @post result
+   * @var string
+   */
+  public $k_login_prize = '0';
 
   /**
    * The login promotion key.

@@ -6,6 +6,10 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * Model to purchase an item and perform the payment in the online store.
+ *
+ * This endpoint using captcha check.
+ * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
+ * For this API an action is `1064`.
  */
 class PaymentModel extends WlModelAbstract
 {
@@ -48,6 +52,12 @@ class PaymentModel extends WlModelAbstract
    *         <dd>The primary key of the element depends on type of the element.</dd></dl>
    *       </dd>
    *       <dt>
+   *         array [<var>a_uid_share</var>]
+   *       </dt>
+   *       <dd>
+   *         An array of UIDs. The client's relatives that will share the purchase option.
+   *       </dd>
+   *       <dt>
    *         array [<var>a_wellness_program</var>]
    *       </dt>
    *       <dd>
@@ -79,6 +89,13 @@ class PaymentModel extends WlModelAbstract
    *       <dt>
    *         string [<var>dt_start</var>]
    *       </dt>
+   *       <dt>
+   *         bool [<var>is_pay_when_start</var>]
+   *       </dt>
+   *       <dd>
+   *         If `true` the client won't be charged for this item until its start date, `false` otherwise.
+   *         The purchase option must have a specified start date.
+   *       </dd>
    *       <dd>
    *         The start date. For memberships only.
    *       </dd>
@@ -173,6 +190,12 @@ class PaymentModel extends WlModelAbstract
    *       </dt>
    *       <dd>
    *         The gift card sender name. This is required for gift cards.
+   *       </dd>
+   *       <dt>
+   *         string <var>[uid_to]</var>
+   *       </dt>
+   *       <dd>
+   *         Specifies the recipient of a transfer purchase option.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -361,9 +384,8 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * List of quiz response keys.
-   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
-   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table or
-   * special value from {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} constant.
+   * Key is a quiz key.
+   * Value is response or special value from {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} constant.
    *
    * @post post
    * @var array

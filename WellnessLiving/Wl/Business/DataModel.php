@@ -46,8 +46,9 @@ class DataModel extends WlModelAbstract
   /**
    * Business category ID of the business.
    *
+   * A constant from {@link BusinessCategorySid}.
+   *
    * @get result
-   * @see \WellnessLiving\RsBusinessCategorySid
    * @var int
    */
   public $id_category;
@@ -105,6 +106,14 @@ class DataModel extends WlModelAbstract
   public $is_apply_surcharge = false;
 
   /**
+   * True if business is a franchisor or franchisee.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_franchise = false;
+
+  /**
    * Whether business is multiple location.
    * Including inactive locations.
    *
@@ -112,6 +121,15 @@ class DataModel extends WlModelAbstract
    * @var bool
    */
   public $is_location_multiple;
+
+  /**
+   * `true` if clients of business can select a custom timezone in their profile;
+   * `false` if location or business timezone is used.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_profile_timezone;
 
   /**
    * <tt>true</tt> if clients can enter progress log; <tt>false</tt> otherwise.
@@ -154,7 +172,7 @@ class DataModel extends WlModelAbstract
   public $is_tip_deny;
 
   /**
-   * <tt>true</tt> if client must to sign after selecting the tip; <tt>false</tt> otherwise.
+   * <tt>true</tt> if client must sign after selecting the tip; <tt>false</tt> otherwise.
    *
    * @get result
    * @var bool
@@ -168,6 +186,14 @@ class DataModel extends WlModelAbstract
    * @var string
    */
   public $k_business = '0';
+
+  /**
+   * The franchisor business key. Empty if this business is the franchisor or not in a franchise.
+   *
+   * @get result
+   * @var string
+   */
+  public $k_business_franchisor = '';
 
   /**
    * The business key obtained by the security token {@link \WellnessLiving\Wl\Business\DataModel::$text_token}.
@@ -247,7 +273,6 @@ class DataModel extends WlModelAbstract
 
   /**
    * Instagram page.
-   * {@link Wl\Business\BusinessInfo::$url_instagram}.
    *
    * @get result
    * @var string
@@ -256,7 +281,6 @@ class DataModel extends WlModelAbstract
 
   /**
    * Linkedin profile.
-   * {@link Wl\Business\BusinessInfo::$url_linkedin}.
    *
    * @get result
    * @var string
@@ -297,7 +321,6 @@ class DataModel extends WlModelAbstract
 
   /**
    * YouTube website.
-   * {@link Wl\Business\BusinessInfo::$url_youtube}.
    *
    * @get result
    * @var string

@@ -2,12 +2,18 @@
 
 namespace WellnessLiving\Wl\Profile\Edit\Email;
 
+use WellnessLiving\Wl\Profile\Edit\EditModel;
 use WellnessLiving\WlModelAbstract;
 
 /**
  * An endpoint that checks if a user's email address is already used or changes a user’s login email address.
  *
  * This endpoint is rate limited. If the rate limit is exceeded, it won't return user information.
+ *
+ * While `get` request allows to check, whether user with the given email exists on the site, `post` allows to add it
+ *   to the certain business, if it's not added yet. If client has all required by this business fields filled, it will
+ *   be added right away. Otherwise it will add temporary access to this client, and you need to send all necessary fields
+ *   with {@link EditModel} endpoint.
  */
 class EditEmailModel extends WlModelAbstract
 {
@@ -52,6 +58,7 @@ class EditEmailModel extends WlModelAbstract
    * <tt>false</tt> if staff only received temporary access, because mandatory fields must be specified first.
    *
    * @get result
+   * @post result
    * @var bool
    */
   public $is_added = false;

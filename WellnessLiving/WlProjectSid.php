@@ -3,14 +3,13 @@
 namespace WellnessLiving;
 
 /**
- * List of different directories, which can use wellnessliving as a source of data.
+ * @deprecated from 2023-09-11.
+ * 
+ * Use class {@link \WellnessLiving\Wl\WlProjectSid} instead.
  */
-class WlProjectSid
+class WlProjectSid extends \WellnessLiving\Wl\WlProjectSid
 {
-  /**
-   * WellnessLiving Explorer.
-   */
-  const WELLNESSLIVING = 4;
+
 }
 
 ?>

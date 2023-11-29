@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Passport\Login\Enter;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Signs a user in.
+ * An endpoint that signs a user in.
  */
 class EnterModel extends WlModelAbstract
 {
@@ -18,7 +18,7 @@ class EnterModel extends WlModelAbstract
   public $json_data = [];
 
   /**
-   * Answer to the captcha if needed.
+   * The answer to the captcha, if needed.
    *
    * @post post
    * @var string
@@ -34,7 +34,7 @@ class EnterModel extends WlModelAbstract
   public $s_login = '';
 
   /**
-   * A copy of notepad that was used to hash user password.
+   * A copy of the notepad that was used to hash the user password.
    *
    * See {@link \WellnessLiving\Core\Passport\Login\Enter\EnterModel::$s_password} for details.
    *
@@ -46,7 +46,7 @@ class EnterModel extends WlModelAbstract
   /**
    * The hash of the user password.
    *
-   * Use `Core_Passport_Login_Enter_NotepadModel.hash()` to evaluate password hash.
+   * Use `Core_Passport_Login_Enter_NotepadModel.hash()` to evaluate the password hash.
    *
    * @post post
    * @var string
@@ -54,9 +54,9 @@ class EnterModel extends WlModelAbstract
   public $s_password = '';
 
   /**
-   * Whether and how the user login and password should be remembered.
+   * Determines whether the user login and password should be remembered, and how they should be remembered.
    *
-   * The accepted values are as follows:
+   * The accepted values are:
    * <ul>
    *   <li>`''` Empty line (default value) if you do not want to remember anything.</li>
    *   <li>`'login'` Remember only user login.</li>
@@ -69,7 +69,7 @@ class EnterModel extends WlModelAbstract
   public $s_remember = '';
 
   /**
-   * Optional url for redirection after sign in in web application.
+   * An optional URL for redirection after the user has signed in to the web application.
    *
    * @post result
    * @var string

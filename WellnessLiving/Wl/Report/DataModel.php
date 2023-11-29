@@ -32,7 +32,20 @@ class DataModel extends WlModelAbstract
   public $i_page = 0;
 
   /**
-   * The report ID. One of the {@link \WellnessLiving\RsReportSid} constants.
+   * The report ID. One of the {@link \WellnessLiving\Wl\Report\WlReportSid} constants.
+   * The following reports are currently available via the API:
+   * <dl>
+   *   <dt>LOGIN_LIST (ID 22)</dt>
+   *   <dd>All Clients Report (Reports tab, features date search)</dd>
+   *   <dt>LOGIN_LIST_ALL (ID 33)</dt>
+   *   <dd>All Clients Report (Clients tab) Batch Report</dd>
+   *   <dt>PAY_TRANSACTION_BATCH (ID 77)</dt>
+   *   <dd>Batch Report</dd>
+   *   <dt>PURCHASE_ITEM_LIST_USER (ID 118)</dt>
+   *   <dd>Sales per Client Report</dd>
+   *   <dt>PURCHASE_ITEM_ACCRUAL_CASH (ID 123)</dt>
+   *   <dd>All Sales Report</dd>
+   * </dl>
    *
    * @get get
    * @var int
@@ -40,7 +53,7 @@ class DataModel extends WlModelAbstract
   public $id_report = 0;
 
   /**
-   * The report group ID. One of the {@link \WellnessLiving\RsReportGroupSid} constants that describes the time
+   * The report group ID. One of the {@link \WellnessLiving\Wl\Report\WlReportGroupSid} constants that describes the time
    * period (day, week, month, or year) for the report to cover.
    *
    * @get get
@@ -49,7 +62,7 @@ class DataModel extends WlModelAbstract
   public $id_report_group = 0;
 
   /**
-   * The report view ID. One of the {@link \WellnessLiving\RsReportChartViewSid} constants.
+   * The report view ID. One of the {@link \WellnessLiving\Wl\Report\WlReportChartViewSid} constants.
    *
    * @get get
    * @var int
@@ -79,6 +92,21 @@ class DataModel extends WlModelAbstract
    * @var string
    */
   public $s_sort = '';
+
+  /**
+   * Sets report filters.
+   *
+   * Specific filters depend on specific reports.
+   *
+   * @param array $a_filter The report filters. The key is the filter variable name, and the value is its value.
+   */
+  public function filterSet($a_filter)
+  {
+    if(count($a_filter))
+      $this->s_filter=UrlEncode::encode($a_filter);
+    else
+      $this->s_filter='';
+  }
 }
 
 ?>

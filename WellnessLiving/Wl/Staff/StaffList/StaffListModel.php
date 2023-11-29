@@ -36,7 +36,7 @@ class StaffListModel extends WlModelAbstract
    *     string <var>k_staff</var>
    *   </dt>
    *   <dd>
-   *     Staff key; primary key in {@link \RsStaffSql} table.
+   *     The staff key.
    *   </dd>
    *   <dt>
    *     string <var>s_name</var>

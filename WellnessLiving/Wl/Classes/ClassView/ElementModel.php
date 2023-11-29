@@ -53,6 +53,13 @@ class ElementModel extends WlModelAbstract
    *   <dd>Tags for quick search.</dd>
    *   <dt>array <var>a_visits_required</var></dt>
    *   <dd>Information about visits that should be visited prior to visit this class/event.</dd>
+   *   <dt>bool|null <var>has_own_image</var></dt>
+   *   <dd>
+   *     This field will be `true` if the image used for the class is an image uploaded in class setup.
+   *     If the image is not uploaded in the class setup, but there is at least one image in Setup->Locations image slider,
+   *     this field will be `false`.
+   *     `null` if class image is not uploaded, and there are no images in location slider, in this case empty image is used.
+   *   </dd>
    *   <dt>string <var>html_description</var></dt>
    *   <dd>Description safe to be inserted to browser.</dd>
    *   <dt>string <var>html_special_instruction</var></dt>

@@ -17,7 +17,6 @@ class MemberModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     <tt>true</tt> if user is allowed to sign in into this business; <tt>false</tt> otherwise.
-   *     This value is based on {@link Wl\Login\Disable\LoginDisableSql} table.
    *   </dd>
    *   <dt>
    *     bool <var>is_franchisee</var>
