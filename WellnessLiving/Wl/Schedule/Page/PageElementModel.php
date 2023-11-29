@@ -259,6 +259,15 @@ class PageElementModel extends WlModelAbstract
   public $k_business;
 
   /**
+   * The class key. This will be set only if the visit is a class or an event.
+   * If the visit is an appointment, this will be `null`.
+   *
+   * @get result
+   * @var ?string
+   */
+  public $k_class;
+
+  /**
    * The class period key. This will be set only if the visit is a class or an event.
    * If the visit is an appointment, this will be `null`.
    *
