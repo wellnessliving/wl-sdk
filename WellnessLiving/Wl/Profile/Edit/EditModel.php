@@ -207,6 +207,14 @@ class EditModel extends WlModelAbstract
    * @var string
    */
   public $uid = '';
+
+  /**
+   * UID of already existed in another business user to add to current business.
+   *
+   * @post get
+   * @var string
+   */
+  public $uid_existed = '';
 }
 
 ?>
