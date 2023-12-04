@@ -18,6 +18,14 @@ use WellnessLiving\WlModelAbstract;
 class EditEmailModel extends WlModelAbstract
 {
   /**
+   * List of business keys where a user is already a member.
+   *
+   * @get result
+   * @var array
+   */
+  public array $a_business_member_key = [];
+
+  /**
    * Information about the user who occupies the specified email.
    * This will be empty if the email is free or if the rate limit has been reached.
    * Otherwise, has next keys:
@@ -64,12 +72,28 @@ class EditEmailModel extends WlModelAbstract
   public $is_added = false;
 
   /**
+   * If `true`, user is already a member of current business, `false` - otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public bool $is_current_member = false;
+
+  /**
    * If `true`, then the number of requests has exceeded the rate limit. Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
    */
   public $is_limit;
+
+  /**
+   * If `true`, user, who has the specified email, is staff, `false` - otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public bool $is_staff = false;
 
   /**
    * If `true`, then the specified email is in use. Otherwise, this will be `false`.
