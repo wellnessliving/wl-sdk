@@ -2,10 +2,12 @@
 
 namespace WellnessLiving\Social\Microsoft;
 
+use WellnessLiving\WlModelAbstract;
+
 /**
  * API point to perform primitive Microsoft authorization actions.
  */
-class LoginModel extends Api
+class LoginModel extends WlModelAbstract
 {
   /**
    * `true` is a given user has bound Microsoft account; `false` otherwise.
