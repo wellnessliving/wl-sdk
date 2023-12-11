@@ -150,6 +150,14 @@ class ProcessModel extends WlModelAbstract
   public $is_event;
 
   /**
+   * Whether clients allowed to book for their relationships without switching profiles.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_family_relation_book;
+
+  /**
    * `true` if user pressed 'Pay later'.
    * `false` if user pressed 'Pay now'.
    *

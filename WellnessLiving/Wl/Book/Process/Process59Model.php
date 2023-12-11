@@ -1,17 +1,16 @@
 <?php
 
-namespace WellnessLiving\Wl\Book\Process;
+namespace Wl\Book\Process;
 
 use WellnessLiving\WlModelAbstract;
 
 /**
  * Wizard of booking.
  *
- * Include {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid::QUIZ} step, if it is need.
- *
- * @deprecated Use {@link \Wl\Book\Process\Process59Model} instead.
+ * Includes changes to the list of steps if the service is already booked for the currently selected client.
+ * Only if {@link Process59Model::$is_family_relation_book} is set to `true`.
  */
-class Process54Model extends WlModelAbstract
+class Process59Model extends WlModelAbstract
 {
   /**
    * Relationships who clients are allowed to book for.
