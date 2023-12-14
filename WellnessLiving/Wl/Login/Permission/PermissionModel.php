@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Login\Permission;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Make purchased promotion auto-renewable.
+ * An endpoint that makes a purchased promotion auto-renewable.
  *
- * The POST method make auto-renewable or not auto-renewable based on {@link \WellnessLiving\Wl\Login\Permission\PermissionModel::$is_renew} parameter.
+ * The POST method makes the promotion auto-renewable based on the {@link \WellnessLiving\Wl\Login\Permission\PermissionModel::$is_renew} parameter.
  */
 class PermissionModel extends WlModelAbstract
 {
   /**
-   * <tt>true</tt> - make purchased promotion auto-renewable; <tt>false</tt> - otherwise.
+   * If `true`, the purchased promotion has been made auto-renewable. Otherwise, this will be <tt>false</tt>.
    *
    * @post post
    * @var bool
@@ -20,7 +20,7 @@ class PermissionModel extends WlModelAbstract
   public $is_renew = false;
 
   /**
-   * Key of purchased promotion.
+   * The key of the purchased promotion.
    *
    * @post get
    * @var string

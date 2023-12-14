@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Catalog\StaffApp\CatalogView;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Returns information about an item’s price after taxes.
+ * An endpoint that returns information about an item’s price after taxes.
  */
 class CatalogViewModel extends WlModelAbstract
 {
@@ -18,7 +18,7 @@ class CatalogViewModel extends WlModelAbstract
    *   <dt>float <var>f_promote</var></dt>
    *   <dd>The amount to prorate the item by.</dd>
    *   <dt>bool <var>is_prorate</var></dt>
-   *   <dd>If <tt>true</tt> this item is prorated.</dd>
+   *   <dd>If <tt>true</tt>, this item is prorated.</dd>
    *   <dt>string <var>m_prorate_custom</var></dt>
    *   <dd>The custom prorate amount.</dd>
    * </dl>
@@ -31,9 +31,9 @@ class CatalogViewModel extends WlModelAbstract
   /**
    * Contains information about edited taxes.
    *
-   * It is `null` if not set yet or taxes are default.
+   * This will be `null` if not set yet or default taxes are used.
    *
-   * The key is the tax identifier and the value is:
+   * The key is the tax identifier, where the value is:
    * <dl>
    *   <dt>string <var>k_tax</var></dt>
    *   <dd>The tax ID.</dd>
@@ -63,7 +63,7 @@ class CatalogViewModel extends WlModelAbstract
   public $i_quantity = '';
 
   /**
-   * The ID of the sale category. One of {@link \WellnessLiving\WlSaleSid} constants.
+   * The ID of the sale category. One of the {@link \WellnessLiving\WlSaleSid} constants.
    *
    * @get get
    * @var int
@@ -72,7 +72,7 @@ class CatalogViewModel extends WlModelAbstract
 
   /**
    * The business key.
-   * `null` means system business.
+   * This will be `null` for the system business.
    *
    * @get get
    * @var string
@@ -81,7 +81,7 @@ class CatalogViewModel extends WlModelAbstract
 
   /**
    * The key of the sale item.
-   * It can be retrieved with the {@link \WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel} endpoint (see the
+   * This can be retrieved with the {@link \WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel} endpoint (see the
    * <var>a_shop_product</var> parameter).
    *
    * @get get
@@ -90,7 +90,7 @@ class CatalogViewModel extends WlModelAbstract
   public $k_id = '';
 
   /**
-   * The key of the product option.
+   * The product option key.
    *
    * @get get
    * @var string
@@ -114,7 +114,7 @@ class CatalogViewModel extends WlModelAbstract
   public $m_prorate;
 
   /**
-   * Amount of sale item without taxes.
+   * The amount of the sale item, excluding taxes.
    *
    * @get result
    * @var string
