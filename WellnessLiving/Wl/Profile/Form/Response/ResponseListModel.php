@@ -5,28 +5,28 @@ namespace WellnessLiving\Wl\Profile\Form\Response;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves list of user's quiz responses.
+ * An endpoint that retrieves a list of a user's quiz responses.
  */
 class ResponseListModel extends WlModelAbstract
 {
   /**
-   * List of uncompleted quiz responses. Each element has the next structure: <dl>
+   * The list of uncompleted quiz responses. Each element has the next structure: <dl>
    *  <dt>string <var>dtl_date</var></dt>
-   *  <dd>Date of the request to fill out a quiz form.</dd>
+   *  <dd>The date of the request to fill out a quiz form.</dd>
    *  <dt>int <var>id_source</var></dt>
-   *  <dd>Place where request to fill out a quiz form occurred. One of {@link \WellnessLiving\Wl\Quiz\Response\SourceSid} constants.</dd>
+   *  <dd>The place where the request to fill out a quiz form occurred. One of the {@link \WellnessLiving\Wl\Quiz\Response\SourceSid} constants.</dd>
    *  <dt>bool <var>is_private</var></dt>
    *  <dd>
-   *    Whether form can be viewed by staff member only after confirmation.
-   *    `true` if form can be viewed only after confirmation
-   *    `false` if form can be viewed always
+   *    Determines whether the form can be viewed by staff member only after confirmation.
+   *    `true` — the form can be viewed only after confirmation.
+   *    `false` — the form can always be viewed.
    *  </dd>
    *  <dt>string <var>k_quiz</var></dt>
-   *  <dd>Quiz key.</dd>
+   *  <dd>The quiz key.</dd>
    *  <dt>string <var>k_quiz_login</var></dt>
-   *  <dd>Key of the request.</dd>
+   *  <dd>The key of the request.</dd>
    *  <dt>string <var>text_title</var></dt>
-   *  <dd>Title of the quiz.</dd>
+   *  <dd>The quiz title.</dd>
    * </dl>
    *
    * @get result
@@ -35,23 +35,23 @@ class ResponseListModel extends WlModelAbstract
   public $a_quiz_login = [];
 
   /**
-   * List of completed quiz responses. Each element has the next structure: <dl>
+   * The list of completed quiz responses. Each element has the next structure: <dl>
    *  <dt>string <var>dtl_date</var></dt>
-   *  <dd>Date of a request to fill out a quiz form.</dd>
+   *  <dd>The date of the request to fill out a quiz form.</dd>
    *  <dt>int <var>id_source</var></dt>
-   *  <dd>Place where request to fill out a quiz form occurred. One of {@link \WellnessLiving\Wl\Quiz\Response\SourceSid} constants.</dd>
+   *  <dd>The place where the request to fill out the quiz form occurred. One of the {@link \WellnessLiving\Wl\Quiz\Response\SourceSid} constants.</dd>
    *  <dt>bool <var>is_private</var></dt>
    *  <dd>
-   *    Whether form can be viewed by staff member only after confirmation.
-   *    `true` if form can be viewed only after confirmation
-   *    `false` if form can be viewed always
+   *    Determines whether the form can be viewed by staff member only after confirmation.
+   *    `true` — the form can be viewed only after confirmation.
+   *    `false` — the form can always be viewed.
    *  </dd>
    *  <dt>string <var>k_quiz</var></dt>
-   *  <dd>Quiz key.</dd>
+   *  <dd>The quiz key.</dd>
    *  <dt>string <var>k_quiz_login</var></dt>
-   *  <dd>Quiz response key.</dd>
+   *  <dd>The quiz response key.</dd>
    *  <dt>string <var>text_title</var></dt>
-   *  <dd>Title of the quiz.</dd>
+   *  <dd>The quiz title.</dd>
    * </dl>
    *
    * @get result
@@ -60,7 +60,7 @@ class ResponseListModel extends WlModelAbstract
   public $a_quiz_response = [];
 
   /**
-   * `true` if API is being used from backend, `false` otherwise.
+   * This will be `true` if the API is being used from the backend. Otherwise, this will be `false`.
    *
    * @get get
    * @var bool
@@ -68,7 +68,7 @@ class ResponseListModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * Key of a business to show information for.
+   * The key of the business to show information for.
    *
    * @get get
    * @var string
@@ -76,7 +76,7 @@ class ResponseListModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * Key of a user to show information for.
+   * The key of the user to show information for.
    *
    * @get get
    * @var string

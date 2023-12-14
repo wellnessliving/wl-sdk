@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Review;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Change status of review is featured.
+ * An endpoint that changes the status of a featured review.
  */
 class ReviewFeatureModel extends WlModelAbstract
 {
   /**
-   * If is review is featured.
+   * Determines if the review is featured.
    *
    * @post post
    * @var bool
@@ -18,7 +18,7 @@ class ReviewFeatureModel extends WlModelAbstract
   public $is_featured=true;
 
   /**
-   * Key of the business.
+   * The business key.
    *
    * @post post
    * @var string
