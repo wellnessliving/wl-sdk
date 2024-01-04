@@ -1,6 +1,6 @@
 <?php
 
-namespace Wl\Book\Process;
+namespace WellnessLiving\Wl\Book\Process;
 
 use WellnessLiving\WlModelAbstract;
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace Social\Apple\Login;
+namespace WellnessLiving\Social\Apple\Login;
 
 use WellnessLiving\WlModelAbstract;
 
 /**
  * Tool to authorize user with Apple.
  */
-class AppleLoginApi extends WlModelAbstract
+class AppleLoginModel extends WlModelAbstract
 {
   /**
    * Application ID.

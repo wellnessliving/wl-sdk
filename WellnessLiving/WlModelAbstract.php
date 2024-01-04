@@ -611,7 +611,7 @@ class WlModelAbstract
   {
     WlAssertException::assertNotEmpty(!!preg_match('~^WellnessLiving\\\\(([A-Za-z]+\\\\)*)([A-Za-z]+_)?([A-Za-z0-9]+)Model$~',get_class($this),$a_match),[
       's_class' => get_class($this),
-      's_message' => 'API model class name is invalid. `Model` suffix is missing.'
+      'text_message' => 'API model class name is invalid. `Model` suffix is missing.'
     ]);
 
     return str_replace('\\','/',$a_match[1].$a_match[4]).'.json';
