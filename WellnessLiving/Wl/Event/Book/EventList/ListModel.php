@@ -23,7 +23,12 @@ class ListModel extends WlModelAbstract
   /**
    * Event availability value.
    *
-   * Unavailable events are those that cannot be booked, but they are shown to the client.
+   * Unavailable events are those that cannot be booked,
+   *  but they can be shown to the client (for example, under the "not available" filter).
+   *
+   * The array contains:
+   * * Key - Class (event) key.
+   * * Value - Event availability value: `true` - available, `false` - not available.
    *
    * @get result
    * @var array
