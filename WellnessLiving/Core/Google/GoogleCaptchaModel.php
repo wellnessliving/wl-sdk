@@ -8,7 +8,8 @@ use WellnessLiving\WlModelAbstract;
  * An endpoint to store the user token CAPTCHA.
  *
  * Site keys for initializing Google reCAPTCHA v2:
- * Demo/Staging key - `6Ldqwe0gAAAAANve1TEPFb_Yxgb9wsoIfrNL6-2Z`
+ * * Demo/Staging key - `6Ldqwe0gAAAAANve1TEPFb_Yxgb9wsoIfrNL6-2Z`
+ * * Production - `6LeOGp4hAAAAACDoQeLUxnu2TAXXZWhdSm118auy`
  */
 class GoogleCaptchaModel extends WlModelAbstract
 {
