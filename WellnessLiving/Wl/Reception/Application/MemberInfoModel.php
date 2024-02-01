@@ -43,7 +43,6 @@ class MemberInfoModel extends WlModelAbstract
    *
    * @get get
    * @var string
-   * @see \RsLocationSql
    */
   public $k_location = '';
 
