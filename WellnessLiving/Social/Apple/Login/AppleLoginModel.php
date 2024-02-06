@@ -5,12 +5,12 @@ namespace WellnessLiving\Social\Apple\Login;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Tool to authorize user with Apple.
+ * An endpoint that authorizes a user with Apple.
  */
 class AppleLoginModel extends WlModelAbstract
 {
   /**
-   * Application ID.
+   * The application ID.
    *
    * @post post
    * @var string
@@ -18,7 +18,7 @@ class AppleLoginModel extends WlModelAbstract
   public $text_application = '';
 
   /**
-   * Authorization code.
+   * The authorization code.
    *
    * @post post
    * @var string

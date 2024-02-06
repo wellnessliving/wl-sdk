@@ -5,12 +5,12 @@ namespace WellnessLiving\Social\Microsoft;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * API point to perform primitive Microsoft authorization actions.
+ * An endpoint that performs preliminary authorization actions with Microsoft.
  */
 class LoginModel extends WlModelAbstract
 {
   /**
-   * `true` is a given user has bound Microsoft account; `false` otherwise.
+   * If `true`, the user has a bound Microsoft account. Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
@@ -52,7 +52,7 @@ class LoginModel extends WlModelAbstract
   public $uid = '';
 
   /**
-   * Microsoft OAuth 2.0 authorization link.
+   * The Microsoft OAuth 2.0 authorization link.
    *
    * @get result
    * @var string
@@ -60,14 +60,15 @@ class LoginModel extends WlModelAbstract
   public $url_login = '';
 
   /**
-   * Redirect URI for external applications.
-   * Link to the page on which Microsoft will return the result after authorization.
+   * The Redirect URI for external applications.
+   * The link to the page on which Microsoft will return the result after authorization.
    *
    * * All possible links must be registered in the Microsoft application used for authorization.
-   * * WARNING: Do not use this link for a direct redirect. This will lead to vulnerability.
+   * * WARNING: Do not use this link for a direct redirect. This will present a vulnerability.
    *
-   * * An {@link LoginModel::$url_login} link will be generated along with this redirect URI.
-   * * When checking the received {@link LoginModel::$s_code} from Microsoft, the link must be sent along with it to the {@link LoginModel::post()} method.
+   * * A {@link LoginModel::$url_login} link will be generated along with this redirect URI.
+   * * When checking the received {@link LoginModel::$s_code} from Microsoft, the link must be sent along with it
+   * to the {@link LoginModel::post()} method.
    *
    * @get get
    * @post get
