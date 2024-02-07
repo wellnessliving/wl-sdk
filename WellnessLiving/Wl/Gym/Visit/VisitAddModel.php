@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Gym\Visit;
 
 use WellnessLiving\WlModelAbstract;
+
 /**
  * An endpoint for adding a gym visit.
  */
