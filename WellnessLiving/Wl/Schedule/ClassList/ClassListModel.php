@@ -230,6 +230,14 @@ class ClassListModel extends WlModelAbstract
   public $show_cancel = false;
 
   /**
+   * If `true`, events are also returned. If `false`, only classes are returned.
+   *
+   * @get get
+   * @var bool
+   */
+  public $show_event = false;
+
+  /**
    * The user key.
    *
    * @get get
