@@ -9,7 +9,7 @@ namespace WellnessLiving\Wl\Visit;
  *
  * Last used ID: 7.
  */
-class VisitSid
+class WlVisitSid
 {
   /**
    * Client has attended the session.

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Visit;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Visit status processing.
+ * An endpoint to view or change the visit status.
  */
 class VisitStatusModel extends WlModelAbstract
 {
@@ -32,7 +32,7 @@ class VisitStatusModel extends WlModelAbstract
   public $a_staff = [];
 
   /**
-   * Visit date and time in MySQL format.
+   * Visit date and time in UTC and in MySQL format.
    *
    * @get result
    * @var string
@@ -40,7 +40,7 @@ class VisitStatusModel extends WlModelAbstract
   public $dt_date = '';
 
   /**
-   * Visit local date and time in MySQL format.
+   * Visit date in the location's timezone and in MySQL format.
    *
    * @get result
    * @var string
@@ -64,17 +64,18 @@ class VisitStatusModel extends WlModelAbstract
   public $i_wait_spot = 0;
 
   /**
-   * Visit source.
+   * The source of the visit or the visit change.
    * One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * If unsure about the value to use, keep the default value.
    *
    * @get result
    * @post post
    * @var int
    */
-  public $id_mode = 0;
+  public $id_mode = \WellnessLiving\Wl\Mode\ModeSid::SPA_BACKEND;
 
   /**
-   * Visit status.
+   * The status of the visit.
    * One of the {@link \WellnessLiving\Wl\Visit\VisitSid} constants.
    *
    * @get result
@@ -98,6 +99,8 @@ class VisitStatusModel extends WlModelAbstract
 
   /**
    * A staff decision to charge or not charge a penalty when a customer meets late cancel/no-show requirements.
+   * If `true` a late cancel fee should be charged.
+   * If `false` a late cancel fee should not be charged.
    *
    * @post get
    * @var bool
@@ -113,7 +116,7 @@ class VisitStatusModel extends WlModelAbstract
   public $is_event = false;
 
   /**
-   * ID of business.
+   * The key of the business.
    *
    * @get get
    * @post get
@@ -122,7 +125,7 @@ class VisitStatusModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Key of class.
+   * The key of the class.
    *
    * @get result
    * @var string
@@ -130,7 +133,7 @@ class VisitStatusModel extends WlModelAbstract
   public $k_class = '';
 
   /**
-   * Key of class period.
+   * The key of the class period.
    *
    * @get result
    * @var string
@@ -138,7 +141,7 @@ class VisitStatusModel extends WlModelAbstract
   public $k_class_period = '';
 
   /**
-   * Key of the mail pattern.
+   * The key of the mail pattern.
    * `null` when live mail pattern should not be used.
    *
    * @post get
@@ -147,8 +150,8 @@ class VisitStatusModel extends WlModelAbstract
   public $k_mail_pattern_live = null;
 
   /**
-   * Service key.
-   * 'null' if visit is not from appointment.
+   * The service key.
+   * 'null' if visit is not from an appointment.
    *
    * @get result
    * @var ?string
@@ -156,7 +159,7 @@ class VisitStatusModel extends WlModelAbstract
   public $k_service = null;
 
   /**
-   * Key of staff who provide appointment.
+   * The key of the staff who provide appointment.
    * `null` if visit is not from appointment, for example visit is from asset.
    *
    * @get result
@@ -165,7 +168,7 @@ class VisitStatusModel extends WlModelAbstract
   public $k_staff = null;
 
   /**
-   * Key of timezone.
+   * The key of the timezone.
    *
    * `null` if not set then use default timezone client.
    *
@@ -175,7 +178,7 @@ class VisitStatusModel extends WlModelAbstract
   public $k_timezone = null;
 
   /**
-   * Visit ID to get status for.
+   * The visit key.
    *
    * @get get
    * @post get
@@ -192,7 +195,7 @@ class VisitStatusModel extends WlModelAbstract
   public $s_calendar_file_content = '';
 
   /**
-   * Text abbr of timezone.
+   * Text abbreviation of the timezone.
    *
    * @get result
    * @var string
@@ -200,7 +203,7 @@ class VisitStatusModel extends WlModelAbstract
   public $text_abbr_timezone = '';
 
   /**
-   * This is not the name of the location, this is the full address of the visit.
+   * This is not the name of the location, this is the full address of the location for the visit.
    *
    * @get result
    * @var string
@@ -208,7 +211,7 @@ class VisitStatusModel extends WlModelAbstract
   public $text_location = '';
 
   /**
-   * Reason of visit cancelling.
+   * The reason the visit was cancelled.
    *
    * @post get
    * @var string
@@ -225,7 +228,7 @@ class VisitStatusModel extends WlModelAbstract
   public $text_staff = '';
 
   /**
-   * Title of the service.
+   * The title of the service.
    *
    * @get result
    * @var string
