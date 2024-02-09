@@ -5,9 +5,9 @@ namespace WellnessLiving\Wl\Book\Process;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Wizard of booking.
+ * An endpoint that performs the booking wizard steps.
  *
- * Include {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid::QUIZ} step, if it is need.
+ * Include the {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid::QUIZ} step, if needed.
  *
  * @deprecated Use {@link \Wl\Book\Process\Process59Model} instead.
  */
@@ -15,9 +15,9 @@ class Process54Model extends WlModelAbstract
 {
   /**
    * Relationships who clients are allowed to book for.
-   * Constants of {@link \WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid}.
+   * One of the {@link \WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid} constants.
    *
-   * `null` if clients are not allowed to book for their relationships.
+   * This will be `null` if clients aren't allowed to book for their relationships.
    *
    * @get result
    * @var int[]|null
@@ -25,20 +25,20 @@ class Process54Model extends WlModelAbstract
   public $a_family_relation_login_allow;
 
   /**
-   * All steps to be done to make a booking. Every element has the next keys:
+   * All the steps to be performed to make a booking. Every element has the next keys:
    * <dl>
    *   <dt>
    *     int <var>id_book_process</var>
    *   </dt>
    *   <dd>
-   *     Step ID. One of {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid} constants.
+   *     The step ID. One of the {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_current</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - this item is current;
-   *     <tt>false</tt> or is not set - is not current.
+   *     <tt>true</tt> — this item is current.
+   *     <tt>false</tt> — this item isn't current or not set yet.
    *   </dd>
    * </dl>
    *
@@ -48,51 +48,51 @@ class Process54Model extends WlModelAbstract
   public $a_path = [];
 
   /**
-   * Information about recurring booking:
+   * Information about the recurring booking:
    * <dl>
    *   <dt>
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     Days of week when appointment must repeat. Constants of {@link \WellnessLiving\Core\a\ADateWeekSid} class.
-   *     Empty if appointment must not repeat weekly.
+   *     The days of week when the appointment repeat. One of the {@link \WellnessLiving\Core\a\ADateWeekSid} constants.
+   *     This will be empty if the appointment doesn't repeat weekly.
    *   </dd>
    *   <dt>
    *     string [<var>dl_end</var>]
    *   </dt>
    *   <dd>
-   *     Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
+   *     The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
    *   </dd>
    *   <dt>
    *     int [<var>i_occurrence</var>]
    *   </dt>
    *   <dd>
-   *     Number of occurrences after that appointment repeat must stop.
-   *     Empty if repeat must not stop after a certain number of occurrences.
+   *     The number of occurrences after which the appointment's repeat cycle stops.
+   *     This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
    *   </dd>
    *   <dt>
    *     int <var>i_period</var>
    *   </dt>
    *   <dd>
-   *     Frequency of appointment repeating.
+   *     The frequency of the appointment's repeat cycle.
    *   </dd>
    *   <dt>
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     Measurement unit of `i_period`. One of {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *     The measurement unit of `i_period`. One of the {@link \WellnessLiving\Core\a\ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     `true` if appointment must repeat monthly at the same date.
-   *     `false` if appointment must repeat monthly at the same week day.
-   *     `null` if appointment must not repeat monthly.
+   *     <tt>true</tt> — the appointment repeats monthly on the same date.
+   *     <tt>false</tt> — the appointment repeats monthly on the same day of the week.
+   *     <tt>null</tt> — the appointment doesn't repeat monthly.
    *   </dd>
    * </dl>
    *
-   * `null` if booking must be not recurring.
+   * This will be `null` if the booking isn't recurring.
    *
    * @post post
    * @var array|null
@@ -100,8 +100,8 @@ class Process54Model extends WlModelAbstract
   public $a_repeat;
 
   /**
-   * Whether the class/event can be booked at this step or not.
-   * External process control flag.
+   * Determines whether the class/event can be booked at this step or not.
+   * This is an external process control flag.
    *
    * @post post
    * @var bool
@@ -109,7 +109,7 @@ class Process54Model extends WlModelAbstract
   public $can_book = true;
 
   /**
-   * Date/time to which session is booked.
+   * The date/time the session is booked for.
    *
    * @get get
    * @post get
@@ -118,7 +118,7 @@ class Process54Model extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * Mode type. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The mode type. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    *
    * @get get
    * @post get
@@ -128,7 +128,7 @@ class Process54Model extends WlModelAbstract
 
   /**
    * The purchase rule ID.
-   * One of {@link \WellnessLiving\Wl\Classes\RequirePaySid} constants.
+   * One of the {@link \WellnessLiving\Wl\Classes\RequirePaySid} constants.
    *
    * @get result
    * @var int
@@ -136,7 +136,7 @@ class Process54Model extends WlModelAbstract
   public $id_pay_require;
 
   /**
-   * If client must authorize credit card.
+   * Determines if the client must authorize the credit card.
    *
    * @get result
    * @var bool
@@ -144,7 +144,7 @@ class Process54Model extends WlModelAbstract
   public $is_card_authorize = false;
 
   /**
-   * <tt>true</tt> - the session which is being booked is an event, <tt>false</tt> - if not an event.
+   * If `true`, the session being booked is an event. Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
@@ -152,7 +152,7 @@ class Process54Model extends WlModelAbstract
   public $is_event;
 
   /**
-   * Whether clients allowed to book for their relationships without switching profiles.
+   * Determines whether clients are allowed to book for their relationships without switching profiles.
    *
    * @get result
    * @var bool
@@ -160,8 +160,9 @@ class Process54Model extends WlModelAbstract
   public $is_family_relation_book;
 
   /**
-   * `true` if user pressed 'Pay later'.
-   * `false` if user pressed 'Pay now'.
+   * `true` — the user pressed 'Pay later'.
+   *
+   * `false` — the user pressed 'Pay now'.
    *
    * @post post
    * @var bool
@@ -169,7 +170,7 @@ class Process54Model extends WlModelAbstract
   public $is_force_pay_later = false;
 
   /**
-   * Whether class/event is free or not (it's just about the price).
+   * Determines whether the class/event is free (price).
    *
    * @get result
    * @var bool
@@ -177,7 +178,7 @@ class Process54Model extends WlModelAbstract
   public $is_free = false;
 
   /**
-   * The client has a credit card `true`, if not `false`.
+   * If `true`, the client has a credit card. Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
@@ -185,7 +186,9 @@ class Process54Model extends WlModelAbstract
   public $is_have_credit_card = false;
 
   /**
-   * <tt>true</tt> - the client can select several sessions per booking, <tt>false</tt> - the client can't select several sessions.
+   * `true` — the client can select several sessions per booking.
+   *
+   * `false` — the client can't select several sessions.
    *
    * @get result
    * @var bool
@@ -193,7 +196,7 @@ class Process54Model extends WlModelAbstract
   public $is_session;
 
   /**
-   * <tt>true</tt> - the user can be placed on a wait list, <tt>false</tt> - the user can't be placed on a wait list.
+   * If `true`, the user can be placed on a wait list. Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
@@ -201,7 +204,7 @@ class Process54Model extends WlModelAbstract
   public $is_wait;
 
   /**
-   * Key of session which is booked.
+   * The key of the booked session.
    *
    * @get get
    * @post get
@@ -218,9 +221,7 @@ class Process54Model extends WlModelAbstract
   public $k_location;
 
   /**
-   * Login promotion to be used to book a class.
-   *
-   * Primary key from {@link  \RsLoginProductSql}.
+   * The login promotion used to book the class.
    *
    * @post post
    * @var string
@@ -228,9 +229,7 @@ class Process54Model extends WlModelAbstract
   public $k_login_promotion = '';
 
   /**
-   * Session pass to be used to book a class.
-   *
-   * Primary key from {@link  \Wl\Session\Pass\Sql}.
+   * The session pass used to book the class.
    *
    * @post post
    * @var string
@@ -238,7 +237,7 @@ class Process54Model extends WlModelAbstract
   public $k_session_pass = '';
 
   /**
-   * Key of a user who is making a book.
+   * The key of the user making the booking.
    *
    * @get get
    * @post get
