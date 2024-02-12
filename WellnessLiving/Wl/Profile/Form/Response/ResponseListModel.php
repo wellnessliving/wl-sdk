@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Profile\Form\Response;
 
+use WellnessLiving\Wl\Quiz\Response\SourceSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -14,7 +15,7 @@ class ResponseListModel extends WlModelAbstract
    *  <dt>string <var>dtl_date</var></dt>
    *  <dd>The date of the request to fill out a quiz form.</dd>
    *  <dt>int <var>id_source</var></dt>
-   *  <dd>The place where the request to fill out a quiz form occurred. One of the {@link \WellnessLiving\Wl\Quiz\Response\SourceSid} constants.</dd>
+   *  <dd>The place where the request to fill out a quiz form occurred. One of the {@link SourceSid} constants.</dd>
    *  <dt>bool <var>is_private</var></dt>
    *  <dd>
    *    Determines whether the form can be viewed by staff member only after confirmation.
@@ -39,7 +40,9 @@ class ResponseListModel extends WlModelAbstract
    *  <dt>string <var>dtl_date</var></dt>
    *  <dd>The date of the request to fill out a quiz form.</dd>
    *  <dt>int <var>id_source</var></dt>
-   *  <dd>The place where the request to fill out the quiz form occurred. One of the {@link \WellnessLiving\Wl\Quiz\Response\SourceSid} constants.</dd>
+   *  <dd>The place where the request to fill out the quiz form occurred. One of the {@link SourceSid} constants.</dd>
+   *  <dt>int <var>id_status</var></dt>
+   *  <dd>Status of the response. One of {@link ResponseStatusSid} constants.</dd>
    *  <dt>bool <var>is_private</var></dt>
    *  <dd>
    *    Determines whether the form can be viewed by staff member only after confirmation.
