@@ -5,18 +5,18 @@ namespace WellnessLiving\Wl\Visit;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint to view or change the visit status.
+ * An endpoint that views or changes the visit status.
  */
 class VisitStatusModel extends WlModelAbstract
 {
   /**
-   * Array of service resources.
+   * An array of service resources.
    *
-   * Key is the `k_resource_type`
-   * Value is array with the following Key: `k_resource`,
-   * Value is array with the resource's `i_index` and `i_quantity`.
+   * The key refers to the `k_resource_type`.
+   * The value is an array with the following key: `k_resource`.
+   * The array element contains a nested array with `i_index` and `i_quantity`.
    *
-   * Empty if not set yet.
+   * This will be empty if not set yet.
    *
    * @get result
    * @var ?array[]
@@ -24,7 +24,7 @@ class VisitStatusModel extends WlModelAbstract
   public $a_resource = [];
 
   /**
-   * List of staff member keys that instruct the class.
+   * The list of keys of staff members that conduct the class.
    *
    * @get result
    * @var string[]
@@ -32,7 +32,7 @@ class VisitStatusModel extends WlModelAbstract
   public $a_staff = [];
 
   /**
-   * Visit date and time in UTC and in MySQL format.
+   * The visit date and time in UTC and in MySQL format.
    *
    * @get result
    * @var string
@@ -40,7 +40,7 @@ class VisitStatusModel extends WlModelAbstract
   public $dt_date = '';
 
   /**
-   * Visit date in the location's timezone and in MySQL format.
+   * The visit date in the location's time zone and in MySQL format.
    *
    * @get result
    * @var string
@@ -48,15 +48,15 @@ class VisitStatusModel extends WlModelAbstract
   public $dtl_date = '';
 
   /**
-   * Service duration (in minutes).
+   * The service duration (in minutes).
    *
    * @get result
    * @var int
    */
-  public int $i_duration = 0;
+  public $i_duration = 0;
 
   /**
-   * Place in a waiting list.
+   * The client's place in a waiting list.
    *
    * @get result
    * @var int
@@ -66,7 +66,7 @@ class VisitStatusModel extends WlModelAbstract
   /**
    * The source of the visit or the visit change.
    * One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
-   * If unsure about the value to use, keep the default value.
+   * If you're unsure about the value to use, keep the default value.
    *
    * @get result
    * @post post
@@ -85,12 +85,12 @@ class VisitStatusModel extends WlModelAbstract
   public $id_visit = '0';
 
   /**
-   * The status of the visit from which the transition is made. One of the {@link \WellnessLiving\Wl\Visit\VisitSid} constants.
+   * The status of the visit from which the transition is made. One of the {@link \WellnessLiving\Wl\Visit\WlVisitSid} constants.
    *
-   * If visit status is passed it will be used to check with actual status in database.
-   * <tt>null</tt> means not passed.
+   * If the visit status is passed, it will be used to check with the actual status in the database.
+   * If `null`, the visit hasn't yet passed.
    *
-   * If the status from is expired this field will be filled with actual status in database.
+   * If the status of this parameter is out of date, the API call will refresh it.
    *
    * @post post
    * @var ?string
@@ -98,9 +98,9 @@ class VisitStatusModel extends WlModelAbstract
   public $id_visit_from = null;
 
   /**
-   * A staff decision to charge or not charge a penalty when a customer meets late cancel/no-show requirements.
-   * If `true` a late cancel fee should be charged.
-   * If `false` a late cancel fee should not be charged.
+   * The staff decision to charge (or not charge) a penalty when a client meets late cancel/no-show requirements.
+   *
+   * If `true`, a late cancel fee should be charged. Otherwise, this will be `false`.
    *
    * @post get
    * @var bool
@@ -108,7 +108,7 @@ class VisitStatusModel extends WlModelAbstract
   public $is_charge_fee = true;
 
   /**
-   * Whether the visit is from an event.
+   * Determines whether the visit is from an event.
    *
    * @get result
    * @var bool
@@ -116,7 +116,7 @@ class VisitStatusModel extends WlModelAbstract
   public $is_event = false;
 
   /**
-   * The key of the business.
+   * The business key.
    *
    * @get get
    * @post get
@@ -125,7 +125,7 @@ class VisitStatusModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The key of the class.
+   * The class key.
    *
    * @get result
    * @var string
@@ -133,7 +133,7 @@ class VisitStatusModel extends WlModelAbstract
   public $k_class = '';
 
   /**
-   * The key of the class period.
+   * The class period key.
    *
    * @get result
    * @var string
@@ -141,8 +141,8 @@ class VisitStatusModel extends WlModelAbstract
   public $k_class_period = '';
 
   /**
-   * The key of the mail pattern.
-   * `null` when live mail pattern should not be used.
+   * The email pattern key.
+   * If `null`, the live email pattern shouldn't be used.
    *
    * @post get
    * @var string|null
@@ -151,7 +151,7 @@ class VisitStatusModel extends WlModelAbstract
 
   /**
    * The service key.
-   * 'null' if visit is not from an appointment.
+   * If 'null', the visit isn't from an appointment.
    *
    * @get result
    * @var ?string
@@ -159,8 +159,8 @@ class VisitStatusModel extends WlModelAbstract
   public $k_service = null;
 
   /**
-   * The key of the staff who provide appointment.
-   * `null` if visit is not from appointment, for example visit is from asset.
+   * The key of the staff providing the appointment.
+   * If `null`, the visit isn't from an appointment (for example, the visit is from an asset).
    *
    * @get result
    * @var string|null
@@ -168,9 +168,9 @@ class VisitStatusModel extends WlModelAbstract
   public $k_staff = null;
 
   /**
-   * The key of the timezone.
+   * The time zone key.
    *
-   * `null` if not set then use default timezone client.
+   * This will be `null` if not set yet (use the client's default time zone).
    *
    * @get get
    * @var null|string
@@ -187,7 +187,7 @@ class VisitStatusModel extends WlModelAbstract
   public $k_visit = '0';
 
   /**
-   * ics file for adding service to phone calendar.
+   * The .ics file for adding the service to a phone calendar.
    *
    * @get result
    * @var string
@@ -195,7 +195,7 @@ class VisitStatusModel extends WlModelAbstract
   public $s_calendar_file_content = '';
 
   /**
-   * Text abbreviation of the timezone.
+   * The text abbreviation of the time zone.
    *
    * @get result
    * @var string
@@ -203,7 +203,7 @@ class VisitStatusModel extends WlModelAbstract
   public $text_abbr_timezone = '';
 
   /**
-   * This is not the name of the location, this is the full address of the location for the visit.
+   * The full address of the location for the visit (not the name of the location).
    *
    * @get result
    * @var string
@@ -211,7 +211,7 @@ class VisitStatusModel extends WlModelAbstract
   public $text_location = '';
 
   /**
-   * The reason the visit was cancelled.
+   * The reason the visit was canceled.
    *
    * @post get
    * @var string
@@ -219,8 +219,8 @@ class VisitStatusModel extends WlModelAbstract
   public $text_reason = '';
 
   /**
-   * The full name of the staff who conducts this visit,
-   *  if there are several staffs, their names will be listed separated by commas.
+   * The full name of the staff member who conducts this visit.
+   * If there are several staff members conducting the visit, their names will all be listed and separated by commas.
    *
    * @get result
    * @var string
@@ -228,7 +228,7 @@ class VisitStatusModel extends WlModelAbstract
   public $text_staff = '';
 
   /**
-   * The title of the service.
+   * The service title.
    *
    * @get result
    * @var string
