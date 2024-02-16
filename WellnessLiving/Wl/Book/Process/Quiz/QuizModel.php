@@ -5,12 +5,14 @@ namespace WellnessLiving\Wl\Book\Process\Quiz;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Manages quizzes for the class or event and selected purchase option during booking process.
+ * An endpoint that manages quizzes and a selected Purchase Option for a class or event during the booking process.
+ *
+ * Note that the terms "Purchase Option" and "promotion" are used interchangeably.
  */
 class QuizModel extends WlModelAbstract
 {
   /**
-   * Keys of user's activity.
+   * The user's activity keys.
    *
    * @post result
    * @var string[]
@@ -18,14 +20,14 @@ class QuizModel extends WlModelAbstract
   public $a_login_activity = [];
 
   /**
-   * List of purchase items. Each element has format <tt>[id_purchase_item]::[k_id]</tt>, where: <dl>
+   * The list of purchase items. Each element has the format <tt>[id_purchase_item]::[k_id]</tt>, where: <dl>
    *  <dt>int <var>id_purchase_item</var></dt>
-   *  <dd>ID of the purchase item. One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid}.</dd>
+   *  <dd>The ID of the purchase item. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.</dd>
    *  <dt>string <var>k_id</var></dt>
-   *  <dd>Key of the item. Depends on <var>id_purchase_item</var> of this array.</dd>
+   *  <dd>The item key. This depends on <var>id_purchase_item</var> of this array.</dd>
    * </dl>
    *
-   * Empty if no purchases are made for booking.
+   * This will be empty if no purchases are made for the booking.
    *
    * @get get
    * @var string[]
@@ -33,11 +35,11 @@ class QuizModel extends WlModelAbstract
   public $a_purchase_item = [];
 
   /**
-   * List of quizzes. Each element has next structure:<dl>
+   * The list of quizzes. Each element has the next structure:<dl>
    *  <dt>bool <var>is_require</var></dt>
-   *  <dd>Whether the quiz is required and can not be skipped.</dd>
+   *  <dd>Determines whether the quiz is required.</dd>
    *  <dt>string <var>k_quiz</var></dt>
-   *  <dd>Quiz key.</dd>
+   *  <dd>The quiz key.</dd>
    * </dl>
    *
    * @get result
@@ -46,10 +48,10 @@ class QuizModel extends WlModelAbstract
   public $a_quiz = [];
 
   /**
-   * List of quiz response keys.
-   * <b>Key</b> is quiz key.
-   * <b>Value</b> is response key  or
-   * special value from {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} constant.
+   * The list of quiz response keys.
+   *
+   * Keys refer to quiz keys, and values refer to response keys or special values from the
+   * {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} constant.
    *
    * @post post
    * @var array
@@ -57,51 +59,51 @@ class QuizModel extends WlModelAbstract
   public $a_quiz_response = [];
 
   /**
-   * Information about recurring booking:
+   * Information about the recurring booking:
    * <dl>
    *   <dt>
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     Days of week when appointment must repeat. Constants of {@link \WellnessLiving\Core\a\ADateWeekSid} class.
-   *     Empty if appointment must not repeat weekly.
+   *     The days of the week when the appointment repeats. One of the {@link \WellnessLiving\Core\a\ADateWeekSid} constants.
+   *     This will be empty if the appointment doesn't repeat weekly.
    *   </dd>
    *   <dt>
    *     string [<var>dl_end</var>]
    *   </dt>
    *   <dd>
-   *     Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
+   *     The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
    *   </dd>
    *   <dt>
    *     int [<var>i_occurrence</var>]
    *   </dt>
    *   <dd>
-   *     Number of occurrences after that appointment repeat must stop.
-   *     Empty if repeat must not stop after a certain number of occurrences.
+   *     The number of occurrences after which the appointment's repeat cycle stops.
+   *     This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
    *   </dd>
    *   <dt>
    *     int <var>i_period</var>
    *   </dt>
    *   <dd>
-   *     Frequency of appointment repeating.
+   *     The frequency of the appointment's repeat cycle.
    *   </dd>
    *   <dt>
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     Measurement unit of `i_period`. One of {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *     The measurement unit of `i_period`. One of the {@link \WellnessLiving\Core\a\ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     `true` if appointment must repeat monthly at the same date.
-   *     `false` if appointment must repeat monthly at the same week day.
-   *     `null` if appointment must not repeat monthly.
+   *     `true` — the appointment repeats monthly on the same date.<br>
+   *     `false` — the appointment repeats monthly on the same week day.<br>
+   *     `null` — the appointment doesn't repeat monthly.
    *   </dd>
    * </dl>
    *
-   * `null` if booking must be not recurring.
+   * This will be `null` if the booking isn't recurring.
    *
    * @post post
    * @var array|null
@@ -109,14 +111,14 @@ class QuizModel extends WlModelAbstract
   public $a_repeat;
 
   /**
-   * Selected assets.
+   * The selected assets.
    *
-   * Every element has keys:
+   * Every element has the next keys:
    * <dl>
    *   <dt>int <var>i_index</var></dt>
-   *   <dd>Order number of the asset (may be from 1 to asset quantity).</dd>
+   *   <dd>The order number of the asset (could be from 1 to the asset quantity).</dd>
    *   <dt>string <var>k_resource</var></dt>
-   *   <dd>Asset key.</dd>
+   *   <dd>The asset key.</dd>
    * </dl>
    *
    * @post post
@@ -125,10 +127,9 @@ class QuizModel extends WlModelAbstract
   public $a_resource = [];
 
   /**
-   * Selected sessions.
+   * The selected sessions.
    *
-   * <b>Keys</b> - The class period keys.
-   * <b>Values</b> - List of date/time when the session occurred.
+   * Keys refer to class period keys, and values refer to the list of dates/times when the session occurred.
    *
    * @post post
    * @var array
@@ -136,11 +137,9 @@ class QuizModel extends WlModelAbstract
   public $a_session_select = [];
 
   /**
-   * Selected sessions on the waiting list without pay.
+   * The selected sessions on the wait list that are unpaid.
    *
-   * Keys - session IDs.
-   *
-   * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
+   * Keys refer to session IDs, and values refer to index arrays of dates/times when session occurred (n MySQL format and in GMT).
    *
    * @post post
    * @var array
@@ -148,7 +147,7 @@ class QuizModel extends WlModelAbstract
   public $a_session_wait_list_unpaid = [];
 
   /**
-   * Keys of books are made.
+   * The keys the bookings that have been made.
    *
    * @post result
    * @var string[]
@@ -156,8 +155,8 @@ class QuizModel extends WlModelAbstract
   public $a_visit = [];
 
   /**
-   * Whether the class/event can be booked at this step or not.
-   * External process control flag.
+   * Determines whether the class/event can be booked at this step or not.
+   * This is an external process control flag.
    *
    * @post post
    * @var bool
@@ -165,7 +164,7 @@ class QuizModel extends WlModelAbstract
   public $can_book = true;
 
   /**
-   * Date/time to which session is booked.
+   * The dates/times the session is booked for.
    *
    * @get get
    * @post get
@@ -174,7 +173,7 @@ class QuizModel extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * Mode type. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The mode type. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    *
    * @get get
    * @post get
@@ -183,8 +182,9 @@ class QuizModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * `true` if user pressed 'Pay later'.
-   * `false` if user pressed 'Pay now'.
+   * `true` — the user selected 'Pay later'.
+   *
+   * `false` — the user selected 'Pay now'.
    *
    * @post post
    * @var bool
@@ -192,7 +192,7 @@ class QuizModel extends WlModelAbstract
   public $is_force_pay_later = false;
 
   /**
-   * `true` if need next steps of wizard (need to purchase something to book selected session); `false` if no need next steps (all that need was already bought).
+   * If `true`, the next steps of the booking wizard are required for the purchase or booking. Otherwise, this will be `false`.
    *
    * @post result
    * @var bool
@@ -200,7 +200,7 @@ class QuizModel extends WlModelAbstract
   public $is_next;
 
   /**
-   * Key of session which is booked.
+   * The key of the booked session.
    *
    * @get get
    * @post get
@@ -209,9 +209,7 @@ class QuizModel extends WlModelAbstract
   public $k_class_period = '0';
 
   /**
-   * Login promotion to be used to book a class.
-   *
-   * Primary key from {@link  \RsLoginProductSql}.
+   * The login promotion used to book a class.
    *
    * @post post
    * @var string
@@ -219,9 +217,7 @@ class QuizModel extends WlModelAbstract
   public $k_login_promotion = '';
 
   /**
-   * Session pass to be used to book a class.
-   *
-   * Primary key from {@link  \Wl\Session\Pass\Sql}.
+   * The session pass used to book a class.
    *
    * @post post
    * @var string
@@ -229,7 +225,7 @@ class QuizModel extends WlModelAbstract
   public $k_session_pass = '';
 
   /**
-   * Key of a user who is making a book.
+   * The key of the user making the booking.
    *
    * @get get
    * @post get
