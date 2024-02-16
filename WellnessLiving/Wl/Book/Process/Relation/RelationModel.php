@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Book\Process\Relation;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Point to add a relative while booking process.
+ * An endpoint that adds a relative during the booking process.
  */
 class RelationModel extends WlModelAbstract
 {
   /**
-   * Date/time of session to check booking availability.
+   * The date/time of the session to check for booking availability.
    *
    * @get get
    * @var string
@@ -18,8 +18,8 @@ class RelationModel extends WlModelAbstract
   public $dtu_date = '';
 
   /**
-   * Relation type.
-   * One of {@link \WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid} constants.
+   * The relation type.
+   * One of the {@link \WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid} constants.
    *
    * @post post
    * @var int
@@ -27,8 +27,9 @@ class RelationModel extends WlModelAbstract
   public $id_relation = 0;
 
   /**
-   * `true` if new relative uses email of <var>uid_from</var>.
-   * `false` if new relative has his own email.
+   * `true` — the new relative uses the email from <var>uid_from</var>.
+   *
+   * `false` — the new relative has their own email.
    *
    * @post post
    * @var bool
@@ -36,8 +37,9 @@ class RelationModel extends WlModelAbstract
   public $is_mail_inherit = false;
 
   /**
-   * `true` if new relative pays for him self.
-   * `false` if <var>uid_from</var> pays for new relative.
+   * `true` — the new relative pays for themself.
+   *
+   * `false` — <var>uid_from</var> pays for the new relative.
    *
    * @post post
    * @var bool
@@ -45,7 +47,7 @@ class RelationModel extends WlModelAbstract
   public $is_pay_self = false;
 
   /**
-   * Business where <var>uid_from</var> creates new relative.
+   * The business where <var>uid_from</var> creates the new relative.
    *
    * @get get
    * @post get
@@ -54,7 +56,7 @@ class RelationModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Key of session to check booking availability.
+   * The key of the session to check for booking availability.
    *
    * @get get
    * @var string
@@ -62,7 +64,7 @@ class RelationModel extends WlModelAbstract
   public $k_class_period = '0';
 
   /**
-   * New relative's email.
+   * The new relative's email.
    *
    * @post post
    * @var string
@@ -70,7 +72,7 @@ class RelationModel extends WlModelAbstract
   public $text_mail = '';
 
   /**
-   * New relative's first name.
+   * The new relative's first name.
    *
    * @post post
    * @var string
@@ -78,7 +80,7 @@ class RelationModel extends WlModelAbstract
   public $text_name_first = '';
 
   /**
-   * New relative's last name.
+   * The new relative's last name.
    *
    * @post post
    * @var string
@@ -86,7 +88,7 @@ class RelationModel extends WlModelAbstract
   public $text_name_last = '';
 
   /**
-   * New added relative.
+   * The newly added relative.
    *
    * @post result
    * @var string
@@ -94,7 +96,7 @@ class RelationModel extends WlModelAbstract
   public $uid_create;
 
   /**
-   * User who adds new relative for himself.
+   * The user who's adding the new relative.
    *
    * @get get
    * @post get
