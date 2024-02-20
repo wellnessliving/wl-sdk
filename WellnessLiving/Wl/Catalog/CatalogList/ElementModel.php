@@ -252,6 +252,22 @@ class ElementModel extends WlModelAbstract
   public $f_price_include;
 
   /**
+   * Retail price of product. Empty if not a product.
+   *
+   * @get result
+   * @var string
+   */
+  public $f_price_retail_product = '';
+
+  /**
+   * Full price of event. Empty if not an event.
+   *
+   * @get result
+   * @var string
+   */
+  public $f_price_total_enrollment = '';
+
+  /**
    * Amount of tax.
    *
    * @get result
