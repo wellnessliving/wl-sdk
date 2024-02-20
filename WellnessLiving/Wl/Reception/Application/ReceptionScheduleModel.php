@@ -31,7 +31,7 @@ class ReceptionScheduleModel extends WlModelAbstract
    *   <dt>int <var>i_duration</var></dt>
    *   <dd>Duration of the session in minutes.</dd>
    *   <dt>int <var>id_service</var></dt>
-   *   <dd>service ID. One of {@link \WellnessLiving\Wl\WlServiceSid}</dd>
+   *   <dd>Service ID. One of the {@link \WellnessLiving\Wl\Service\ServiceSid} constants.</dd>
    *   <dt>bool <var>is_auto</var></dt>
    *   <dd>`true` if the session can be checked in automatically, `false` otherwise.</dd>
    *   <dt>string|null <var>k_appointment</var></dt>
@@ -52,6 +52,91 @@ class ReceptionScheduleModel extends WlModelAbstract
    * @var array
    */
   public $a_class = [];
+
+  /**
+   * Data for the confirmation screen. Contains:
+   * <dl>
+   *   <dt>array <var>a_payment</var></dt>
+   *   <dd>Data for the promotion payment informational card. Each element contains:<dl>
+   *     <dt>array <var>a_restrict</var></dt>
+   *     <dd>Calendar restrictions. A duration pass will only have elements if the limit has been met. Contains: <dl>
+   *       <dt>int <var>i_limit</var></dt><dd>Count of possible visits.</dd>
+   *       <dt>int <var>i_remain</var></dt><dd>Count of remaining visits.</dd>
+   *       <dt>bool <var>s_date</var></dt><dd>Name of the calendar period.</dd>
+   *     </dl></dd>
+   *     <dt>bool <var>has_visit_past</var></dt>
+   *     <dd>`true` if the promotion was renewed in the past, `false` otherwise.</dd>
+   *     <dt>bool <var>hide_visit_additional_info</var></dt>
+   *     <dd>`true` if additional info should be excluded, `false otherwise.</dd>
+   *     <dt>int <var>i_book</var></dt><dd>Count of upcoming uses of the promotion.</dd>
+   *     <dt>int <var>i_book_duration</var></dt>
+   *     <dd>
+   *       Number of minutes used for upcoming visits.
+   *       Has sense only for promotions of program type {@link \WellnessLiving\Wl\WlProgramTypeSid::DURATION}.
+   *     </dd>
+   *     <dt>int <var>i_limit</var></dt><dd>Limit on the visit count of the promotion.</dd>
+   *     <dt>int <var>i_remain</var></dt><dd>Remaining count of visits.</dd>
+   *     <dt>int <var>i_remain_duration</var></dt>
+   *     <dd>
+   *       Number of minutes left in this promotion.
+   *       Has sense only for promotions of program type {@link \WellnessLiving\Wl\WlProgramTypeSid::DURATION}.
+   *     </dd>
+   *     <dt>int <var>i_use</var></dt><dd>Count of held uses in the pass.</dd>
+   *     <dt>int <var>i_use_duration</var></dt>
+   *     <dd>
+   *       Number of minutes used for past visits by this promotion.
+   *       Has sense only for promotions of program type {@link \WellnessLiving\Wl\WlProgramTypeSid::DURATION}.
+   *     </dd>
+   *     <dt>int <var>i_visit_past</var></dt>
+   *     <dd>
+   *       Count of attended sessions before last renew.
+   *       `0` if there are no sessions before last renew or promotion is not auto-renew.
+   *     </dd>
+   *     <dt>int <var>id_program_type</var></dt><dd>ID of the promotion's program type.</dd>
+   *     <dt>bool <var>is_last_use</var></dt>
+   *     <dd>`true` if the promotion has a usage limit and no remaining visits. `false` otherwise.</dd>
+   *     <dt>bool <var>is_package</var></dt><dd>`true` if promotion is a package, `false` otherwise.</dd>
+   *     <dt>bool <var>is_restrict_multiply</var></dt>
+   *     <dd>`true` if there is more than 1 calendar restriction on the pass, `false` otherwise.</dd>
+   *     <dt>string <var>k_login_promotion</var></dt>
+   *     <dd>Login promotion key.</dd>
+   *     <dt>string <var>s_remain_measure</var></dt><dd>The formatted remaining duration on the promotion.</dd>
+   *     <dt>bool <var>show_remain</var></dt>
+   *     <dd>`true` if there is rollover on a pass with calendar restrictions, `false` otherwise.</dd>
+   *     <dt>string <var>sid_program_type</var></dt><dd>SID of the promotion's program type.</dd>
+   *   </dl></dd>
+   *   <dt>array <var>a_resources_not_shared</var></dt>
+   *   <dd>List of assets reserved individually at the time of booking. Contains:<dl>
+   *       <dt>int <var>i_index</var></dt><dd>Busy resource index.</dd>
+   *       <dt>string <var>s_title</var></dt><dd>Resource name.</dd>
+   *   </dl></dd>
+   *   <dt>string <var>dl_renew</var></dt>
+   *   <dd>Promotion renewal date in local time.</dd>
+   *   <dt>int <var>i_visits</var></dt>
+   *   <dd>The total workouts attended.</dd>
+   *   <dt>string <var>s_expire</var></dt>
+   *   <dd>Short format of the promotion expiration date.</dd>
+   *   <dt>string <var>s_payment</var></dt>
+   *   <dd>The payment method used to book (free, unpaid, single buy or promotion name).</dd>
+   *   <dt>string <var>s_renew</var></dt>
+   *   <dd>Short format of the promotion renewal date.</dd>
+   *   <dt>string <var>show_visits</var></dt>
+   *   <dd>Whether to show the client's total workouts attended on the confirmation screen.</dd>
+   * </dl>
+   *
+   * @post result
+   * @var array
+   */
+  public $a_confirmation_data = [];
+
+  /**
+   * All types of services that appear in the schedule.
+   * Keys are constants from {@link \WellnessLiving\Wl\Service\ServiceSid}. Values are the HTML classes associated with that service.
+   *
+   * @get result
+   * @var array
+   */
+  public $a_schedule_class_all;
 
   /**
    * Date and time in UTC in MySQL format of the visit.
