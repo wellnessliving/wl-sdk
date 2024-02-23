@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business\Config;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Manages business configurations for clients, bookings, payments, and related things.
+ * An endpoint that manages business configurations for clients, bookings, payments, and related things.
  */
 class BusinessConfigModel extends WlModelAbstract
 {
@@ -26,22 +26,22 @@ class BusinessConfigModel extends WlModelAbstract
    *   <dt>int <var>i_reattempt_count</var></dt>
    *   <dd>The number of failed auto-payment reattempts.</dd>
    *   <dt>int <var>id_book_before</var></dt>
-   *   <dd>Hours|days|months from {@link \WellnessLiving\Core\a\ADurationSid}.</dd>
+   *   <dd>The hours|days|months from {@link \WellnessLiving\Core\a\ADurationSid}.</dd>
    *   <dt>int <var>id_book_future</var></dt>
-   *   <dd>Hours|days|months from {@link \WellnessLiving\Core\a\ADurationSid}.</dd>
+   *   <dd>The hours|days|months from {@link \WellnessLiving\Core\a\ADurationSid}.</dd>
    *   <dt>int <var>id_cancel</var></dt>
-   *   <dd>Hours|days|months from {@link \WellnessLiving\Core\a\ADurationSid}.</dd>
+   *   <dd>The hours|days|months from {@link \WellnessLiving\Core\a\ADurationSid}.</dd>
    *   <dt>int <var>id_promote</var></dt>
-   *   <dd>Hours|days|months from {@link \WellnessLiving\Core\a\ADurationSid}.</dd>
+   *   <dd>The hours|days|months from {@link \WellnessLiving\Core\a\ADurationSid}.</dd>
    *   <dt>bool <var>is_book_inside_active_pay_period</var></dt>
    *   <dd>
-   *     if `true` - clients with Purchase Options are only allowed
-   *     to book sessions within their current paid period, `false` - during Purchase Option's duration.
+   *     `true` — clients with Purchase Options are only allowed to book sessions within their current paid period.<br>
+   *     `false` — clients with Purchase Options are only allowed to book sessions during the Purchase Option's duration.
    *   </dd>
    *   <dt>int <var>is_disable_promotion</var></dt>
    *   <dd>
-   *     `true` if a client's automatic payment fails, their account should not be
-   *     debited and their Purchase Option becomes inactive, `false` - otherwise. Default `false`.
+   *     If `true`, a client's automatic payment fails, their account shouldn't be debited, and their Purchase Option becomes inactive.
+   *     Otherwise, this will be `false` (the default value).
    *   </dd>
    *   <dt>bool <var>is_enable_payment_penalty</var></dt>
    *   <dd>Determines whether to charge a penalty after the final auto-payment attempt.</dd>
@@ -50,19 +50,19 @@ class BusinessConfigModel extends WlModelAbstract
    *   <dt>bool <var>is_enable_staff_ip_restriction</var></dt>
    *   <dd>Determines whether to restrict which IP addresses staff can login from.</dd>
    *   <dt>int <var>is_prevent_booking</var></dt>
-   *   <dd>`true` if booking for a client with negative balance is disabled, `false` - otherwise. Default `false`.</dd>
+   *   <dd>If `true`, booking for a client with negative balance is disabled. Otherwise, this will be `false` (the default value).</dd>
    *   <dt>bool <var>is_staff_restrict</var></dt>
-   *   <dd>If true, clients can't choose a provider in the appointment wizard.</dd>
+   *   <dd>If true, clients can't choose a provider in the appointment wizard. Otherwise, this will be `false`.</dd>
    *   <dt>bool <var>is_wait</var></dt>
-   *   <dd>Enable\disable wait list.</dd>
+   *   <dd>Determines whether to enable or disable the wait list.</dd>
    *   <dt>int <var>k_currency</var></dt>
-   *   <dd>The currency from rs.currency table.</dd>
+   *   <dd>The currency.</dd>
    *   <dt>int <var>k_timezone</var></dt>
-   *   <dd>The timezone from get.timezone table.</dd>
+   *   <dd>The time zone.</dd>
    *   <dt>string <var>m_payment_penalty</var></dt>
    *   <dd>The penalty amount to charge after the final auto-payment attempt.</dd>
    *   <dt>string <var>url_custom</var></dt>
-   *   <dd>Custom URL from Business URLs.</dd>
+   *   <dd>The custom URL from Business URLs.</dd>
    * </dl>
    *
    * @get result
@@ -73,7 +73,7 @@ class BusinessConfigModel extends WlModelAbstract
   /**
    * Determines whether staff members should select a location at checkout.
    *
-   * `true` - staff members should select a location at checkout, `false` - otherwise.
+   * If `true`, staff members should select a location at checkout. Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
@@ -81,9 +81,9 @@ class BusinessConfigModel extends WlModelAbstract
   public $is_location_select;
 
   /**
-   * Determines whether business has white label setting enabled in admin settings.
+   * Determines whether the business has white label setting enabled in the admin settings.
    *
-   * `true` - enabled, `false` - otherwise.
+   * If `true`, admin settings are enabled. Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
