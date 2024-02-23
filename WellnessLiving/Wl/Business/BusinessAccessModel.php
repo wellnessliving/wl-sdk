@@ -6,13 +6,13 @@ use WellnessLiving\Wl\WlRegionSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about business of given staff member.
+ * An endpoint that returns information about a given staff member's business.
  */
 class BusinessAccessModel extends WlModelAbstract
 {
   /**
-   * Businesses where giver user is a staff member. Primary keys in table {@link \RsBusinessSql}.
-   * Leaving this field for backwards compatibility.
+   * The businesses the staff member belongs to.
+   * Note that this field is here for backwards compatibility.
    *
    * @get result
    * @var string[]
@@ -20,18 +20,18 @@ class BusinessAccessModel extends WlModelAbstract
   public $a_business = [];
 
   /**
-   * The list of accessible businesses with their corresponding data, each value is an array of structure:
+   * The list of accessible businesses with their corresponding data. Each value is an array with the next structure:
    * <dl>
    *   <dt>int <var>id_region</var></dt>
-   *   <dd>Business region, one of {@link WlRegionSid} constants, `null` if no regions are set as current.</dd>
+   *   <dd>The business region. One of the {@link WlRegionSid} constants. This will be `null` if no regions are currently set.</dd>
    *   <dt>string <var>k_business</var></dt>
-   *   <dd>Business key.</dd>
+   *   <dd>The business key.</dd>
    *   <dt>string <var>text_office_address</var></dt>
-   *   <dd>Business address.</dd>
+   *   <dd>The business address.</dd>
    *   <dt>string <var>text_title</var></dt>
-   *   <dd>Business title.</dd>
+   *   <dd>The business title.</dd>
    *   <dt>string <var>url_logo</var></dt>
-   *   <dd>Business logo url. Empty if there is no logo in business.</dd>
+   *   <dd>The business logo URL. This will be empty if the business hasn't added a logo.</dd>
    * </dl>
    *
    * @get result
@@ -40,7 +40,7 @@ class BusinessAccessModel extends WlModelAbstract
   public $a_business_data = [];
 
   /**
-   * `true` if API is being used from backend, `false` otherwise.
+   * This will be `true` if the API is being used from the backend. Otherwise, this will be `false`.
    *
    * @get get
    * @var bool
@@ -48,8 +48,8 @@ class BusinessAccessModel extends WlModelAbstract
   public $is_backend = true;
 
   /**
-   * User Facebook id. Not empty if user is logging with facebook.
-   * Empty if uid is already known or user is logging in another way.
+   * The staff member's Facebook ID. This won't be empty if the staff member is logging in with Facebook.
+   * This will be empty if the UID is already known or the staff member is logging in another way.
    *
    * @get get
    * @var string
@@ -57,8 +57,8 @@ class BusinessAccessModel extends WlModelAbstract
   public $s_facebook_id = '';
 
   /**
-   * Key of Microsoft user.
-   * Not empty if user is logging with Microsoft.
+   * The staff member's Microsoft key.
+   * This won't be empty if the staff member is logging in with Microsoft.
    *
    * @get get
    * @var string
@@ -66,8 +66,8 @@ class BusinessAccessModel extends WlModelAbstract
   public $s_microsoft_id = '';
 
   /**
-   * User apple authorization code. Not empty if user is logging with apple.
-   * Empty if uid is already known or user is logging in another way.
+   * The staff member's Apple authorization code. This won't be empty if the staff member is logging in with Apple.
+   * This will be empty if the UID is already known or the staff member is logging in another way.
    *
    * @get get
    * @var string
@@ -75,22 +75,13 @@ class BusinessAccessModel extends WlModelAbstract
   public $text_authorization_apple = '';
 
   /**
-   * Google plus user id. Not empty if user is logging with Google.
-   * Empty if uid is already known or user is logging in another way.
+   * The Google Plus user ID. This won't be empty if the staff member is logging in with Google.
+   * This will be empty if the UID is already known or the staff member is logging in another way.
    *
    * @get get
    * @var string
    */
   public $text_google_plus = '';
-
-  /**
-   * User's email to determine uid. Not empty if user is logging with email or with Google.
-   * Empty if uid is already known or user is logging in another way.
-   *
-   * @get get
-   * @var string
-   */
-  public $text_mail = '';
 
   /**
    * User key. Empty if user is not logged in, but their authorization data is known.
@@ -101,7 +92,16 @@ class BusinessAccessModel extends WlModelAbstract
   public $uid = '';
 
   /**
-   * User key, determined by user email. Empty if uid is not empty.
+   * The staff member's email to determine their UID. This won't be empty if the staff member is logging in with email or with Google.
+   * This will be empty if the UID is already known or the staff member is logging in another way.
+   *
+   * @get get
+   * @var string
+   */
+  public $text_mail = '';
+
+  /**
+   * The staff member key, determined by their email. This will be empty if the UID isn't empty.
    *
    * @get result
    * @var string
