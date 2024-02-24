@@ -10,6 +10,11 @@ use WellnessLiving\Config\WlConfigAbstract;
 class WlModelRequest
 {
   /**
+   * SDK version number.
+   */
+  const VERSION='202402241120';
+
+  /**
    * A list of headers for the API request. See {@link CURLOPT_HTTPHEADER}.
    *
    * @var array
@@ -259,7 +264,11 @@ class WlModelRequest
     foreach($a_header as $s_key => $s_value)
       $a_signature[]=$s_key.':'.$s_value;
 
-    return hash('sha256',implode("\n",$a_signature));
+    $a_signature_check = [];
+    foreach($a_signature as $s_element)
+      $a_signature_check[] = substr(hash('sha256',$s_element!==null ? $s_element : ''),0,1);
+
+    return hash('sha256',implode("\n",$a_signature)).'.1.'.implode('',$a_signature_check).'.'.PHP_VERSION_ID.'.'.static::VERSION;
   }
 }
 
