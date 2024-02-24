@@ -132,7 +132,10 @@ class WlModelRequest
 
     $a_url = parse_url($this->url);
     $a_signature = [
-      'a_header' => [],
+      'a_header' => [
+        'Date' => $this->a_header_request['Date'],
+        'User-Agent' => $this->a_header_request['User-Agent']
+      ],
       'a_variable' => $this->a_variable,
       'dt_time' => $this->dt_request,
       's_code' => $s_config_class::AUTHORIZE_CODE,
@@ -145,7 +148,7 @@ class WlModelRequest
       's_resource' => $this->s_resource,
     ];
 
-    $this->a_header_request['Authorization'] = '20150518,'.$s_config_class::AUTHORIZE_ID.',,'.WlModelRequest::signatureCompute($a_signature);
+    $this->a_header_request['Authorization'] = '20150518,'.$s_config_class::AUTHORIZE_ID.',date;user-agent,'.WlModelRequest::signatureCompute($a_signature);
   }
 
   /**

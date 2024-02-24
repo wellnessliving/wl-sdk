@@ -391,7 +391,7 @@ class WlModelAbstract
 
     $o_request->dt_request = WlTool::dateNowMysql();
     $o_request->a_header_request['Date'] = WlTool::dateMysqlHttp($o_request->dt_request);
-    $o_request->a_header_request['User-Agent'] = $this->_o_config->text_agent?:$s_config_class::AGENT;
+    $o_request->a_header_request['User-Agent'] = $this->_o_config->text_agent?:(str_replace('[PHP_VERSION]',PHP_VERSION,$s_config_class::AGENT));
     $o_request->s_method = $s_method;
 
     $a_field=$this::fieldConfig();
