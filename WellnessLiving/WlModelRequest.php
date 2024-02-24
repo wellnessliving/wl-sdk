@@ -133,6 +133,7 @@ class WlModelRequest
       's_code' => $s_config_class::AUTHORIZE_CODE,
       's_cookie_persistent' => $this->o_cookie->cookieGet($this->o_config->cookiePersistent()),
       's_cookie_transient' => $this->o_cookie->cookieGet($this->o_config->cookieTransient()),
+      's_cookie_global' => $this->o_config->cookieGlobal()?$this->o_cookie->cookieGet($this->o_config->cookieGlobal()):null,
       's_host' => $a_url['host'],
       's_id' => $s_config_class::AUTHORIZE_ID,
       's_method' => strtoupper($this->s_method),
@@ -243,6 +244,8 @@ class WlModelRequest
     $a_signature[]=$a_data['s_resource'];
     $a_signature[]=$a_data['s_cookie_persistent'];
     $a_signature[]=$a_data['s_cookie_transient'];
+    if(!empty($a_data['s_cookie_global']))
+      $a_signature[]=$a_data['s_cookie_global'];
 
     $a_variable=WlModelRequest::signatureArray($a_data['a_variable']);
     ksort($a_variable);

@@ -54,6 +54,17 @@ abstract class WlConfigAbstract
   const AUTHORIZE_ID=null;
 
   /**
+   * Name of the global cookie.
+   *
+   * The value `null` is not valid. This property must be overridden in inherited classes.
+   *
+   * @see \WellnessLiving\Config\WlConfigProduction
+   * @see \WellnessLiving\Config\WlConfigDeveloper
+   * @var string|null
+   */
+  protected static $COOKIE_GLOBAL=null;
+
+  /**
    * Names of persistent cookies by regions.
    *
    * The value `null` is not valid. This property must be overridden in inherited classes.
@@ -179,6 +190,16 @@ abstract class WlConfigAbstract
    */
   protected function __construct()
   {
+  }
+
+  /**
+   * Returns name of the global cookie in the current configuration.
+   *
+   * @return string Name of the global cookie in the current configuration.
+   */
+  final public function cookieGlobal()
+  {
+    return static::$COOKIE_GLOBAL;
   }
 
   /**
