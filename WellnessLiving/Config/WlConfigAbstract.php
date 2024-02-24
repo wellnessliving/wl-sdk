@@ -31,7 +31,7 @@ abstract class WlConfigAbstract
   /**
    * The agent name in the http-request header.
    */
-  const AGENT='WellnessLiving SDK/1.1.202402241151 (PHP [PHP_VERSION])';
+  const AGENT='WellnessLiving SDK/[SDK_VERSION] (PHP [PHP_VERSION])';
 
   /**
    * Secret code to authorize application.
