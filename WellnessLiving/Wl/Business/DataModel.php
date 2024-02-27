@@ -5,14 +5,14 @@ namespace WellnessLiving\Wl\Business;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information for a specified business.
+ * An endpoint that displays information for a specified business.
  */
 class DataModel extends WlModelAbstract
 {
   /**
-   * List of all business services and their availability data.
-   * Array, where keys are sids from {@link \WellnessLiving\Wl\Service\ServiceSid} and values are boolean:
-   * <tt>true</tt> - if service is enabled in the business, <tt>false</tt> otherwise.
+   * A list of all business services and their availability data.
+   * This is presented as an array, where keys are SIDs from {@link \WellnessLiving\Wl\Service\ServiceSid} and values are Boolean.
+   * If `true`, at least one service is enabled in the business. Otherwise, this will be `false`.
    *
    * @get result
    * @var array
@@ -28,7 +28,7 @@ class DataModel extends WlModelAbstract
   public $a_tip_predefine;
 
   /**
-   * Maximum business image height.
+   * The maximum height of the business image (in pixels).
    *
    * @get get
    * @var int
@@ -36,7 +36,7 @@ class DataModel extends WlModelAbstract
   public $i_logo_height = 100;
 
   /**
-   * Maximum business image width.
+   * The maximum width of the business image (in pixels).
    *
    * @get get
    * @var int
@@ -44,9 +44,9 @@ class DataModel extends WlModelAbstract
   public $i_logo_width = 220;
 
   /**
-   * Business category ID of the business.
+   * The business category ID of the business.
    *
-   * A constant from {@link BusinessCategorySid}.
+   * One of the {@link BusinessCategorySid} constants.
    *
    * @get result
    * @var int
@@ -54,7 +54,7 @@ class DataModel extends WlModelAbstract
   public $id_category;
 
   /**
-   * Currency ID of the given business or system currency ID if the business didn't pass.
+   * The currency ID of the given business (or the system currency ID if the business didn't pass).
    *
    * @get result
    * @see \WellnessLiving\Core\Locale\CurrencySid
@@ -72,11 +72,11 @@ class DataModel extends WlModelAbstract
   public $id_locale;
 
   /**
-   * Rank type ID of the business.
+   * The rank type ID of the business.
    *
-   * Constant from {@link \WellnessLiving\RsRankTypeSid}.
+   * One of the {@link \WellnessLiving\RsRankTypeSid} constants.
    *
-   * <tt>null</tt> if business does not have a rank type.
+   * This will be `null` if the business doesn't have a rank type.
    *
    * @get result
    * @var int|null
@@ -98,7 +98,7 @@ class DataModel extends WlModelAbstract
   public $id_region;
 
   /**
-   * Whether surcharges to client payments are enabled in the business.
+   * Determines whether surcharges to client payments are enabled in the business.
    *
    * @get result
    * @var bool
@@ -106,7 +106,7 @@ class DataModel extends WlModelAbstract
   public $is_apply_surcharge = false;
 
   /**
-   * True if business is a franchisor or franchisee.
+   * `true` if business is a franchisor or franchisee.
    *
    * @get result
    * @var bool
@@ -114,8 +114,7 @@ class DataModel extends WlModelAbstract
   public $is_franchise = false;
 
   /**
-   * Whether business is multiple location.
-   * Including inactive locations.
+   * Determines whether the business has multiple locations (including inactive locations).
    *
    * @get result
    * @var bool
@@ -123,8 +122,9 @@ class DataModel extends WlModelAbstract
   public $is_location_multiple;
 
   /**
-   * `true` if clients of business can select a custom timezone in their profile;
-   * `false` if location or business timezone is used.
+   * `true` — clients of the business can select a custom time zone in their profile.
+   *
+   * `false` — the location or business time zone is used.
    *
    * @get result
    * @var bool
@@ -132,7 +132,7 @@ class DataModel extends WlModelAbstract
   public $is_profile_timezone;
 
   /**
-   * <tt>true</tt> if clients can enter progress log; <tt>false</tt> otherwise.
+   * If `true`, clients can enter the progress log. Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
@@ -140,7 +140,7 @@ class DataModel extends WlModelAbstract
   public $is_progress_client;
 
   /**
-   * <tt>true</tt> if verification of the progress log by a staff member is required; <tt>false</tt> otherwise.
+   * If `true`, verification of the progress log by a staff member is required. Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
@@ -148,7 +148,7 @@ class DataModel extends WlModelAbstract
   public $is_progress_verify;
 
   /**
-   * Whether quizzes available in the business.
+   * Determines whether quizzes are available in the business.
    *
    * @get result
    * @var bool
@@ -156,7 +156,7 @@ class DataModel extends WlModelAbstract
   public $is_quiz_available = false;
 
   /**
-   * <tt>true</tt> if tips are available in the business; <tt>false</tt> otherwise.
+   * If `true`, tips are available in the business. Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
@@ -164,7 +164,7 @@ class DataModel extends WlModelAbstract
   public $is_tip;
 
   /**
-   * <tt>true</tt> if the business has the "No tip" option displayed; <tt>false</tt> otherwise.
+   * If `true`, the business has the "No tip" option displayed. Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
@@ -172,7 +172,7 @@ class DataModel extends WlModelAbstract
   public $is_tip_deny;
 
   /**
-   * <tt>true</tt> if client must sign after selecting the tip; <tt>false</tt> otherwise.
+   * If `true`, the client must sign after selecting the tip. Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
@@ -188,7 +188,7 @@ class DataModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The franchisor business key. Empty if this business is the franchisor or not in a franchise.
+   * The franchisor business key. This will be empty if this business is the franchisor or not in a franchise.
    *
    * @get result
    * @var string
@@ -197,7 +197,8 @@ class DataModel extends WlModelAbstract
 
   /**
    * The business key obtained by the security token {@link \WellnessLiving\Wl\Business\DataModel::$text_token}.
-   * Client side can use this way if it does not know business key but knows authorization token.
+   * This can be used on the client side if authorization token should be used instead of the business key
+   * (the business key isn't available).
    *
    * @get result
    * @var string
@@ -205,7 +206,7 @@ class DataModel extends WlModelAbstract
   public $k_business_token;
 
   /**
-   * The currency key of the given business or system currency if the business didn't pass.
+   * The currency key of the given business, or the system currency if the business didn't pass.
    *
    * @deprecated Use {@link \WellnessLiving\Wl\Business\DataModel::$id_currency} instead.
    * @get result
@@ -272,7 +273,7 @@ class DataModel extends WlModelAbstract
   public $url_google;
 
   /**
-   * Instagram page.
+   * The Instagram page.
    *
    * @get result
    * @var string
@@ -280,7 +281,7 @@ class DataModel extends WlModelAbstract
   public $url_instagram = '';
 
   /**
-   * Linkedin profile.
+   * The LinkedIn profile.
    *
    * @get result
    * @var string
@@ -296,7 +297,7 @@ class DataModel extends WlModelAbstract
   public $url_logo;
 
   /**
-   * Image stub in case the business logo is not loaded.
+   * The image stub (in cases where the business logo isn't loaded).
    *
    * @get result
    * @var string
@@ -312,7 +313,7 @@ class DataModel extends WlModelAbstract
   public $url_twitter;
 
   /**
-   * Business website.
+   * The business website.
    *
    * @get result
    * @var string
@@ -320,7 +321,7 @@ class DataModel extends WlModelAbstract
   public $url_website;
 
   /**
-   * YouTube website.
+   * The YouTube website.
    *
    * @get result
    * @var string
