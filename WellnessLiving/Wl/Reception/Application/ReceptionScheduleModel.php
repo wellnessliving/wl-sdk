@@ -34,6 +34,10 @@ class ReceptionScheduleModel extends WlModelAbstract
    *   <dd>Service ID. One of the {@link \WellnessLiving\Wl\Service\ServiceSid} constants.</dd>
    *   <dt>bool <var>is_auto</var></dt>
    *   <dd>`true` if the session can be checked in automatically, `false` otherwise.</dd>
+   *   <dt>bool <var>is_book</var></dt>
+   *   <dd>`true` if client should be notified that the visit is booked. `false` otherwise.</dd>
+   *   <dt>bool <var>is_wait</var></dt>
+   *   <dd>`true` if client should be notified that they are on the waitlist. `false` otherwise.</dd>
    *   <dt>string|null <var>k_appointment</var></dt>
    *   <dd>Appointment key. `null` if not an appointment.</dd>
    *   <dt>string|null <var>k_class_period</var></dt>
@@ -59,7 +63,7 @@ class ReceptionScheduleModel extends WlModelAbstract
    *   <dt>array <var>a_payment</var></dt>
    *   <dd>Data for the promotion payment informational card. Each element contains:<dl>
    *     <dt>array <var>a_restrict</var></dt>
-   *     <dd>Calendar restrictions. A duration pass will only have elements if the limit has been met. Contains: <dl>
+   *     <dd>Calendar restrictions. A duration pass will only have elements if a restriction has been met. Contains: <dl>
    *       <dt>int <var>i_limit</var></dt><dd>Count of possible visits.</dd>
    *       <dt>int <var>i_remain</var></dt><dd>Count of remaining visits.</dd>
    *       <dt>bool <var>s_date</var></dt><dd>Name of the calendar period.</dd>
