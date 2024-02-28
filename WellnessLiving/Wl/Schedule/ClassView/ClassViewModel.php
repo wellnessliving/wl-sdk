@@ -64,6 +64,12 @@ class ClassViewModel extends WlModelAbstract
    *   <dd>The class capacity.</dd>
    *   <dt>int <var>i_duration</var></dt>
    *   <dd>The class duration in minutes.</dd>
+   *   <dt>
+   *     int <var>id_deny_reason</var>
+   *   </dt>
+   *   <dd>
+   *     ID of deny reason. One of {@link \Wl\Schedule\ClassView\DenyReasonSid} constants.
+   *   </dd>
    *   <dt>bool <var>is_book</var></dt>
    *   <dd>This will be `true` if the current class was booked by the current client.</dd>
    *   <dt>bool <var>is_cancel</var></dt>
