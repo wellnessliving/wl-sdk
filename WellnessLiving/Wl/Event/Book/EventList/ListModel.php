@@ -2,10 +2,11 @@
 
 namespace WellnessLiving\Wl\Event\Book\EventList;
 
+use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves a list of events.
+ * An endpoint that retrieves a list of events for a given class tab.
  */
 class ListModel extends WlModelAbstract
 {
@@ -15,29 +16,66 @@ class ListModel extends WlModelAbstract
    * The order of items in this array matches the order in which elements should be displayed.
    *
    * @get result
+   * @var string[]
+   */
+  public $a_event;
+
+  /**
+   * Event availability value.
+   *
+   * Unavailable events are those that cannot be booked,
+   *  but they can be shown to the client (for example, under the "not available" filter).
+   *
+   * The array contains:
+   * * Key - Class (event) key.
+   * * Value - Event availability value: `true` - available, `false` - not available.
+   *
+   * @get result
    * @var array
    */
-  public $a_event = [];
+  public $a_event_available = [];
 
   /**
-   * The ID of the business to show information for.
+   * Defines how the event availability flag filter should be applied.
    *
-   * <tt>null</tt> if not set yet.
+   * One of {@link AFlagSid} constants.
+   *
+   * * {@link AFlagSid::ON} to show only available events.
+   * * {@link AFlagSid::OFF} to show only unavailable events.
+   * * {@link AFlagSid::ALL} to show all events (available and unavailable).
    *
    * @get get
-   * @var string|null
+   * @var int
    */
-  public $k_business=null;
+  public $id_status = AFlagSid::ON;
 
   /**
-   * The ID of the category tab.
+   * <tt>true</tt> if exist at least one virtual event
+   * by specific {@link \WellnessLiving\Wl\Event\Book\EventList\ListModel::$k_business} and
+   * {@link \WellnessLiving\Wl\Event\Book\EventList\ListModel::$k_class_tab},
+   * <tt>false</tt> otherwise.
    *
-   * <tt>null</tt> if not set yet.
+   * @get result
+   * @var bool
+   */
+  public $is_virtual_service;
+
+  /**
+   * The key of the business to show information for.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_class_tab = null;
+  public $k_business = '0';
+
+  /**
+   * The key of the category tab.
+   * If empty, select only elements with not specified book tab.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_class_tab = '0';
 
   /**
    * The user's key.

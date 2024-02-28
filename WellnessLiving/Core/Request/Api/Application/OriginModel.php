@@ -5,28 +5,27 @@ namespace WellnessLiving\Core\Request\Api\Application;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Allows to get, delete and add origins for application.
+ * An endpoint that gets, deletes, and adds origins for the application.
  *
- * Origins are links on the sites, where API can be used sign CORS authorization - from client's browser.
- * If site is not in the list, you can use API only for requests between two servers. Requests directly from client's
- * browser are restricted.
+ * Origins are links on the sites where the API can be used sign CORS authorizations from a client's browser.
+ * If the site isn't in the list, you can only use the API for requests between two servers. Requests directly from
+ * a client's browser are restricted.
  *
- * Origin should be exact full link on the site.
+ * Origins should appear as a full link in the same manner they appear on the site.
  *
- * Important to understand that application can add allowed sites only for itself and cannot add for another application.
- * This means that you need to call this API point using only the application, which you are going to use on the sites.
+ * It's important to understand that the application can add allowed sites only for itself and can't add sites for another application.
+ * This means that you need to call this endpoint using only the application that you're using on the sites.
  */
 class OriginModel extends WlModelAbstract
 {
   /**
    * A list of origins.
    *
-   * Key is link on the site, where API is allowed.
+   * The key is the URL on the site where API calls can be made.
    *
-   * Value is a domain which used to make API requests.
-   * May be <tt>null</tt> and in this case the API requests are made directly to WL web server.</tt>
-   *
-   * <tt>null</tt> if is not initialized yet.
+   * The value is a domain used to make API requests.
+   * This will be `null` in cases where the API requests are made directly to the WellnessLiving web server or if
+   * it isn't initialized yet.
    *
    * @delete post
    * @get result

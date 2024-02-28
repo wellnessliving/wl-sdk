@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Tax;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves a list of taxes for a business.
+ * An endpoint that retrieves a list of taxes for a business.
  */
 class TaxListModel extends WlModelAbstract
 {
@@ -16,7 +16,7 @@ class TaxListModel extends WlModelAbstract
    * <dt>float <var>f_value</var> </dt>
    * <dd>The amount of the tax.</dd>
    * <dt>string <var>k_tax</var> </dt>
-   * <dd>The type of the tax, one of the {@link WlTaxSid} constants.</dd>
+   * <dd>The type of the tax, one of the {@link \WellnessLiving\Wl\Tax\WlTaxSid} constants.</dd>
    * <dt>string <var>k_tax</var> </dt>
    * <dd>The tax key.</dd>
    * <dt>string <var>text_title</var></dt>

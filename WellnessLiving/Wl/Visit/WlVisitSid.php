@@ -1,17 +1,15 @@
 <?php
 // libs/rs/Sid.php
-// (c) KOINS, Dec 2012, koins.com.ua
-// Created by Alex Titov, Dec 2012, alexandr.titov@koins.com.ua
 // Class
 
-namespace Wl\Visit;
+namespace WellnessLiving\Wl\Visit;
 
 /**
  * Possible states of the visit: book, attended, cancelled, etc.
  *
  * Last used ID: 7.
  */
-class VisitSid
+class WlVisitSid
 {
   /**
    * Client has attended the session.

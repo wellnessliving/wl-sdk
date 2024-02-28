@@ -5,39 +5,98 @@ namespace WellnessLiving\Wl\Location;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Returns information on all locations belonging to a business.
+ * An endpoint that returns information for all locations belonging to a business.
  */
 class ListModel extends WlModelAbstract
 {
   /**
-   * An array containing information about all locations.
-   * Each array index corresponds to the internal location key.
-   * Each array element is an array containing the following fields:
-   * <ul>
-   *   <li>String <b>f_latitude</b>The latitude of the location.</li>
-   *   <li>String <b>f_longitude</b>The longitude of the location.</li>
-   *   <li>String <b>i_order</b>The display order for the location.</li>
-   *   <li>String <b>k_location</b>The location ID number.</li>
-   *   <li>String <b>s_title</b>The location name.</li>
-   *   <li>String <b>text_address</b>The street address of the location.</li>
-   *   <li>String <b>url_logo</b>The url to the location logo image.</li>
-   *   <li>String <b>url_slide</b>The first image from the location photo slider.</li>
-   * </ul>
-   *
-   * @get result
-   * @var array
-   */
-  public $a_location = [];
-
-  /**
-   * The business ID number used internally by WellnessLiving.
-   *
-   * <tt>null</tt> if not set yet.
+   * A list of business keys.
+   * You can specify this instead of <var>$k_business</var> to load data for many businesses in one call.
    *
    * @get get
-   * @var string|null
+   * @var string[]
    */
-  public $k_business = null;
+  public $a_business = [];
+
+  /**
+   * Information about the business's location(s). If you've specified multiple businesses for this endpoint, this will
+   * return location information for multiple businesses. Keys refer to location keys. Values refer to subarrays with the next keys:
+   * <dl>
+   *   <dt>
+   *     float <var>f_latitude</var>
+   *   </dt>
+   *   <dd>
+   *     The location latitude.
+   *   </dd>
+   *   <dt>
+   *     float <var>f_longitude</var>
+   *   </dt>
+   *   <dd>
+   *     The location longitude.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_business</var>
+   *   </dt>
+   *   <dd>
+   *     The business key.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_location</var>
+   *   </dt>
+   *   <dd>
+   *     The location key.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_title</var>
+   *   </dt>
+   *   <dd>
+   *     The location title.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_address</var>
+   *   </dt>
+   *   <dd>
+   *     The location's full address.
+   *   </dd>
+   *   <dt>
+   *     string [<var>url_logo</var>]
+   *   </dt>
+   *   <dd>
+   *     The location logo's URL. This will only be set if the location has a logo.
+   *   </dd>
+   * </dl>
+   *
+   * @get result
+   * @var array[]
+   */
+  public $a_location;
+
+  /**
+   * The business key used internally by WellnessLiving.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_business = '0';
+
+  /**
+   * The primary keys of the selected businesses.
+   * You can specify this instead of <var>$k_business</var> to load data for many businesses in one call.
+   *
+   * This is the same as <var>$a_business</var>, but serialized with JSON (to make the URL shorter).
+   *
+   * @get get
+   * @var string
+   */
+  public $s_business = '';
+
+  /**
+   * Determines whether removed locations should be returned.
+   *
+   * @get get
+   * @var bool
+   */
+  public $show_remove = false;
 }
 
 ?>

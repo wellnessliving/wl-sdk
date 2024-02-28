@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\User\Info;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves information about a WellnessLiving user.
+ * An endpoint that retrieves information about a WellnessLiving user.
  */
 class UserInfoModel extends WlModelAbstract
 {
   /**
-   * Information about the user's photo. It has the following structure:<dl>
+   * Information about the user's photo. The information returned has the following structure:<dl>
    *   <dt>int <var>i_height</var></dt>
    *   <dd>The height of the photo.</dd>
    *
@@ -24,7 +24,7 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public $a_photo = [];
+  public $a_photo;
 
   /**
    * The date the user was added, given in UTC time.
@@ -32,47 +32,47 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $dt_add = '';
+  public $dt_add;
 
   /**
-   * The user's birthday. This will be `null` if the birthday is not set.
+   * The user's birthday. This will be `null` if the birthday isn't set yet.
    *
    * @get result
    * @var string
    */
-  public $dt_birth = '';
+  public $dt_birth;
 
   /**
    * The ID of the user's gender. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
    *
-   * This will be `null` If gender is not set.
+   * This will be `null` if the gender isn't set yet.
    *
    * @get result
    * @var int
    */
-  public $id_gender = 0;
+  public $id_gender;
 
   /**
    * This will be `true` if the user has never made purchases or reservations in this business.
-   * It will be `false` otherwise.
+   * Otherwise, this will be `false`.
    *
    * @get result
-   * @var int
+   * @var bool
    */
-  public $is_customer_new = [];
+  public $is_customer_new;
 
   /**
-   * This will be `true` if the user is a traveller. A traveller is someone who's home Franchisee is
-   * not the current Franchisee.
+   * This will be `true` if the user is a traveler. A traveler is someone whose home location isn't the current location
+   * in the Enterprise business.
    *
    * @get result
-   * @var int
+   * @var bool
    */
-  public $is_traveller = [];
+  public $is_traveller;
 
   /**
    * The key of the business.
-   * This may be empty if we need system-wide information.
+   * This may be empty if system-wide information is needed.
    *
    * @get get
    * @var string
@@ -80,12 +80,12 @@ class UserInfoModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The key of the login type. The login type describes what type of client this user is in this business.
+   * The key of the login type. The login type describes the user's client type in this business.
    *
    * @get result
    * @var string
    */
-  public $k_login_type = [];
+  public $k_login_type;
 
   /**
    * The user's first name.
@@ -93,7 +93,7 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $s_first_name = [];
+  public $s_first_name;
 
   /**
    * The user's last name.
@@ -101,7 +101,7 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $s_last_name = [];
+  public $s_last_name;
 
   /**
    * The user's email address.
@@ -109,16 +109,16 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $s_mail = [];
+  public $s_mail;
 
   /**
-   * The user's Member ID in the business. Also referred to as the Client ID in the client's profile. This value
-   * is set by the business and is separate from the <var>uid</var> value.
+   * The user's member ID in the business. Also referred to as the client ID in the client's profile. This value
+   * is set by the business and separate from the <var>uid</var> value.
    *
    * @get result
    * @var string
    */
-  public $s_member = [];
+  public $s_member;
 
   /**
    * The user's phone number.
@@ -126,7 +126,7 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $s_phone = [];
+  public $s_phone;
 
   /**
    * The key of the user.
@@ -142,8 +142,7 @@ class UserInfoModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $url_photo = [];
-
+  public $url_photo;
 }
 
 ?>

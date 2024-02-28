@@ -1,18 +1,16 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Wl\Video;
 
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Api to return list of video categories.
- *
- * Results of the methods can be viewed in the model.
+ * An endpoint that returns a list of video categories.
  */
 class VideoElementModel extends WlModelAbstract
 {
   /**
-   * Keys of the locations, where this video is available.
+   * The keys of the locations where this video is available.
    *
    * @get result
    * @post post
@@ -21,7 +19,7 @@ class VideoElementModel extends WlModelAbstract
   public $a_location;
 
   /**
-   * Keys of the staff members, who are on the video.
+   * The keys of the staff members who are on the video.
    *
    * @get result
    * @post post
@@ -30,11 +28,11 @@ class VideoElementModel extends WlModelAbstract
   public $a_staff;
 
   /**
-   * List of staff members to show videos with. Every item has next structure:<dl>
+   * A list of staff members associated with the video. Every item has the following structure:<dl>
    *   <dt>string <var>k_staff</var></dt>
-   *   <dd>Key of the staff. Primary key in {@link \RsStaffSql} table.</dd>
+   *   <dd>The staff member key.</dd>
    *   <dt>string <var>text_name</var></dt>
-   *   <dd>Full staff name.</dd>
+   *   <dd>The staff member's full name.</dd>
    * </dl>
    *
    * @get result
@@ -43,7 +41,7 @@ class VideoElementModel extends WlModelAbstract
   public $a_staff_info;
 
   /**
-   * Keys of the video category, where these video can be found.
+   * The video category keys where this video can be found.
    *
    * @get result
    * @post post
@@ -52,7 +50,7 @@ class VideoElementModel extends WlModelAbstract
   public $a_video_category;
 
   /**
-   * Keys of the video tag.
+   * The video tag keys.
    *
    * @get result
    * @post post
@@ -61,9 +59,9 @@ class VideoElementModel extends WlModelAbstract
   public $a_video_tag;
 
   /**
-   * Date and time when video published
+   * The date and time when the video was published.
    *
-   * <tt>null</tt> if published date is not set.
+   * This will be `null` if the published date is not set yet.
    *
    * @get result
    * @post post
@@ -72,9 +70,9 @@ class VideoElementModel extends WlModelAbstract
   public $dtl_publish;
 
   /**
-   * Date and time when video unpublished
+   * The date and time when the video was unpublished.
    *
-   * <tt>null</tt> if unpublished date is not set.
+   * This will be `null` if the unpublished date is not set yet.
    *
    * @get result
    * @post post
@@ -83,7 +81,7 @@ class VideoElementModel extends WlModelAbstract
   public $dtl_unpublish;
 
   /**
-   * Date when video upload.
+   * The date when the video was uploaded.
    *
    * @get result
    * @var string
@@ -100,7 +98,7 @@ class VideoElementModel extends WlModelAbstract
   public $file_video;
 
   /**
-   * Count of burned calories.
+   * The count of burned calories associated with the video.
    *
    * @get result
    * @post post
@@ -109,7 +107,7 @@ class VideoElementModel extends WlModelAbstract
   public $i_calorie = 0;
 
   /**
-   * Current time as a percentage of the video duration at which the user is at in the video.
+   * The current time as a percentage of the video duration at which the user is at in the video.
    *
    * @get result
    * @var int
@@ -117,7 +115,7 @@ class VideoElementModel extends WlModelAbstract
   public $i_current_percent;
 
   /**
-   * Current time in seconds at which the user is at in the video.
+   * The current time in seconds at which the user is at in the video.
    *
    * @get result
    * @var int
@@ -125,7 +123,7 @@ class VideoElementModel extends WlModelAbstract
   public $i_current_time;
 
   /**
-   * Duration of video.
+   * The video duration in seconds.
    *
    * @get result
    * @post post
@@ -134,12 +132,12 @@ class VideoElementModel extends WlModelAbstract
   public $i_duration;
 
   /**
-   * Size of the uploaded file.
+   * The size of the uploaded file.
    *
-   * If the file will be uploaded in parts, size will be set.
+   * If the file will be uploaded in parts, its size will be set.
    *
    * In this case, the file will not be uploaded to this API.
-   * Method {@link VideoElementApi::_fileVideoGet()} will not return the result.
+   * Method {@link \WellnessLiving\Wl\Video\VideoElementModel::_fileVideoGet()} will not return the result.
    *
    * @post post
    * @var int|string
@@ -147,7 +145,7 @@ class VideoElementModel extends WlModelAbstract
   public $i_file_upload_size = '';
 
   /**
-   * Number of video views.
+   * The number of video views.
    *
    * @get result
    * @var int
@@ -155,8 +153,8 @@ class VideoElementModel extends WlModelAbstract
   public $i_watch;
 
   /**
-   * {@link YesNoSid::NO} if video is available in all locations.
-   * {@link YesNoSid::YES} if video is available only in certain locations.
+   * {@link \WellnessLiving\Core\Sid\YesNoSid::NO} if the video is available in all locations.
+   * {@link \WellnessLiving\Core\Sid\YesNoSid::YES} if the video is available only in certain locations.
    *
    * @get result
    * @post post
@@ -165,7 +163,7 @@ class VideoElementModel extends WlModelAbstract
   public $id_location_select;
 
   /**
-   * <tt>true</tt> if API is being used from backend, <tt>false</tt> otherwise.
+   * If `true`, the API is being used from backend. Otherwise, this will be `false`.
    *
    * @delete get
    * @get get
@@ -175,8 +173,8 @@ class VideoElementModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * <tt>true</tt> if display calories on video.
-   * <tt>false</tt> if hide calories on video.
+   * If `true`, the calorie count will be displayed on the video.
+   * If `false`, the calorie count will be hidden on the video.
    *
    * @get result
    * @post post
@@ -185,8 +183,8 @@ class VideoElementModel extends WlModelAbstract
   public $is_calorie;
 
   /**
-   * `true` if video is converted.
-   * `false` if video is not converted.
+   * If `true`, the video is converted.
+   * If `false`, the video isn't converted.
    *
    * @get result
    * @post get
@@ -195,7 +193,7 @@ class VideoElementModel extends WlModelAbstract
   public $is_converted;
 
   /**
-   * <tt>true</tt> if video is published, <tt>false</tt> otherwise.
+   * If `true`, the video is published. Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
@@ -203,8 +201,8 @@ class VideoElementModel extends WlModelAbstract
   public $is_published;
 
   /**
-   * <tt>true</tt> if enable video level for video.
-   * <tt>false</tt> if disable video level for video.
+   * If `true`, the video level for the video is enabled.
+   * If `false`, the video level for the video is disabled.
    *
    * @get result
    * @post post
@@ -213,7 +211,7 @@ class VideoElementModel extends WlModelAbstract
   public $is_video_level;
 
   /**
-   * Business key from {@link \RsBusinessSql}.
+   * The business key.
    *
    * @delete get
    * @get get
@@ -223,7 +221,7 @@ class VideoElementModel extends WlModelAbstract
   public $k_business;
 
   /**
-   * Video key from {@link VideoSql}.
+   * The video key.
    *
    * @delete get
    * @get get
@@ -233,7 +231,7 @@ class VideoElementModel extends WlModelAbstract
   public $k_video;
 
   /**
-   * Video category primary key.
+   * The video category primary key.
    *
    * @get result
    * @post post
@@ -242,8 +240,8 @@ class VideoElementModel extends WlModelAbstract
   public $k_video_category_primary;
 
   /**
-   * Video level key.
-   * <tt>0</tt> if select <tt>All Levels</tt>
+   * The video level key.
+   * This will be `0` if `All Levels` is selected.
    *
    * @get result
    * @post post
@@ -252,7 +250,7 @@ class VideoElementModel extends WlModelAbstract
   public $k_video_level;
 
   /**
-   * Name of the command that had been executing when exception occurred.
+   * The name of the command that has been executing when the exception occurred.
    *
    * @post post
    * @var string
@@ -264,7 +262,7 @@ class VideoElementModel extends WlModelAbstract
    * If the file will be uploaded in parts, upload ID will be set.
    *
    * In this case, the file will not be uploaded to this API.
-   * Method {@link VideoElementApi::_fileVideoGet()} will not return the result.
+   * Method {@link \WellnessLiving\Wl\Video\VideoElementModel::_fileVideoGet()} will not return the result.
    *
    * @post post
    * @var string
@@ -274,10 +272,10 @@ class VideoElementModel extends WlModelAbstract
   /**
    * The real name of the uploaded file.
    *
-   * If the file will be uploaded in parts, the name will be set.
+   * If the file will be uploaded in parts, its name will be set.
    *
-   * In this case, the file will not be uploaded to this API.
-   * Method {@link VideoElementApi::_fileVideoGet()} will not return the result.
+   * In this case, the file won't be uploaded to this API and the POST method won't
+   * return the result.
    *
    * @post post
    * @var string
@@ -285,9 +283,9 @@ class VideoElementModel extends WlModelAbstract
   public $s_file_upload_name = '';
 
   /**
-   * String representation of video's key.
+   * The string representation of the video's key.
    *
-   * <tt>null</tt> if video does not have thumbnail image.
+   * This will be `null` if the video doesn't have a thumbnail image.
    *
    * @get result
    * @var string|null
@@ -295,7 +293,7 @@ class VideoElementModel extends WlModelAbstract
   public $s_preview_video_key;
 
   /**
-   * Thumbnail of video.
+   * The video thumbnail.
    *
    * @post post
    * @var string
@@ -303,7 +301,7 @@ class VideoElementModel extends WlModelAbstract
   public $s_thumbnail;
 
   /**
-   * <tt>false</tt> if number of calorie on videos is hidden, <tt>true</tt> - otherwise.
+   * If `false`, the calorie count for videos is hidden. Otherwise, this will be `true`.
    *
    * @get result
    * @var bool
@@ -311,7 +309,7 @@ class VideoElementModel extends WlModelAbstract
   public $show_calorie;
 
   /**
-   * <tt>false</tt> if levels of videos is hidden, <tt>true</tt> - otherwise.
+   * If `false`, video levels are hidden. Otherwise, this will be `true`.
    *
    * @get result
    * @var bool
@@ -319,7 +317,7 @@ class VideoElementModel extends WlModelAbstract
   public $show_level;
 
   /**
-   * <tt>false</tt> if number of views on videos is hidden, <tt>true</tt> - otherwise.
+   * If `false`, the number of views for videos is hidden. Otherwise, this will be `true`.
    *
    * @get result
    * @var bool
@@ -327,7 +325,7 @@ class VideoElementModel extends WlModelAbstract
   public $show_view;
 
   /**
-   * Name of video level.
+   * The video level name.
    *
    * @get result
    * @var string
@@ -335,7 +333,7 @@ class VideoElementModel extends WlModelAbstract
   public $text_level_title;
 
   /**
-   * Name of the video.
+   * The video name.
    *
    * @get result
    * @post post
@@ -344,7 +342,7 @@ class VideoElementModel extends WlModelAbstract
   public $text_title;
 
   /**
-   * Url of the thumbnail for video.
+   * The URL of the video thumbnail.
    *
    * @get result
    * @var string
@@ -352,7 +350,7 @@ class VideoElementModel extends WlModelAbstract
   public $url_thumbnail;
 
   /**
-   * Url of the video.
+   * The URL of the video on a WellnessLiving page.
    *
    * @get result
    * @var string|null
@@ -360,7 +358,7 @@ class VideoElementModel extends WlModelAbstract
   public $url_video;
 
   /**
-   * Direct url of the video.
+   * The direct URL of the video.
    *
    * @get result
    * @var string
@@ -368,7 +366,7 @@ class VideoElementModel extends WlModelAbstract
   public $url_video_direct;
 
   /**
-   * Description of the video.
+   * The video description.
    *
    * @get result
    * @post post

@@ -1,18 +1,16 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Wl\Video\Category;
 
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Api to save video categories.
- *
- * Results of the methods can be viewed in the model.
+ * An endpoint that saves video categories.
  */
 class CategoryElementModel extends WlModelAbstract
 {
   /**
-   * List of client and member types, who can access videos from the category.
+   * A list of client and member types who can access videos from the category.
    *
    * @get result
    * @put post
@@ -21,7 +19,7 @@ class CategoryElementModel extends WlModelAbstract
   public $a_login_type;
 
   /**
-   * List of member groups, who can access videos from the category.
+   * A list of member groups who can access videos from the category.
    *
    * @get result
    * @put post
@@ -30,7 +28,7 @@ class CategoryElementModel extends WlModelAbstract
   public $a_member_group;
 
   /**
-   * Place of the category in the list of categories of the business.
+   * The category's placement in the business's list of categories.
    *
    * @get result
    * @var int
@@ -38,8 +36,7 @@ class CategoryElementModel extends WlModelAbstract
   public $i_order;
 
   /**
-   * <tt>true</tt> if video category is for cloud session recordings.
-   * Otherwise <tt>false</tt> if video category is not for cloud session recordings.
+   * This will be `true` if the video category is for cloud session recordings. Otherwise, this will be `false`.
    *
    * @get result
    * @put post
@@ -48,7 +45,8 @@ class CategoryElementModel extends WlModelAbstract
   public $is_cloud_recording = false;
 
   /**
-   * <tt>true</tt> if some client or member types can grant access to the video category, <tt>false</tt> otherwise.
+   * This will be `true` if some client or member types can grant access to the video category. Otherwise, this will be
+   * `false`.
    *
    * @get result
    * @put post
@@ -57,8 +55,8 @@ class CategoryElementModel extends WlModelAbstract
   public $is_login_type;
 
   /**
-   * <tt>true</tt> if some member groups can grant access to the video category.
-   * Otherwise <tt>false</tt> if none of the member groups can grant access to the video category.
+   * This will be `true` if some member groups can grant access to the video category.
+   * Otherwise, this will be `false` if no member groups can grant access to the video category.
    *
    * @get result
    * @put post
@@ -67,7 +65,7 @@ class CategoryElementModel extends WlModelAbstract
   public $is_member_group = false;
 
   /**
-   * Business key from {@link \RsBusinessSql}.
+   * The business key.
    *
    * @delete get
    * @get get
@@ -77,7 +75,7 @@ class CategoryElementModel extends WlModelAbstract
   public $k_business;
 
   /**
-   * Category key from {@link VideoCategorySql}.
+   * The category key.
    *
    * @delete get
    * @get get,result
@@ -87,7 +85,7 @@ class CategoryElementModel extends WlModelAbstract
   public $k_video_category;
 
   /**
-   * Name of the category.
+   * The category name.
    *
    * @get result
    * @put post

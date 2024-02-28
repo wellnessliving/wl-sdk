@@ -5,24 +5,58 @@ namespace WellnessLiving\Wl\Appointment\Book\Service;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves an information about service categories.
+ * An endpoint that retrieves information about service categories.
  */
 class CategoryModel extends WlModelAbstract
 {
   /**
    * A list of information about service categories.
-   *
-   * <tt>null</tt> if not initialized yet.
+   * <dl>
+   *   <dt>
+   *     bool <var>hide_application</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> - all services are hidden in this category for White Label mobile application. <tt>false</tt> - otherwise.
+   *   </dd>
+   *   <dt>
+   *     bool <var>i_sort</var>
+   *   </dt>
+   *   <dd>
+   *     Sort key for category. Used to sort categories on category list page.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_service_category</var>
+   *   </dt>
+   *   <dd>
+   *     Service category key.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_title</var>
+   *   </dt>
+   *   <dd>
+   *     Service category title.
+   *   </dd>
+   * </dl>
    *
    * @get result
-   * @var array|null
+   * @var array
    */
-  public $a_category = null;
+  public $a_category = [];
 
   /**
-   * <tt>true</tt> - return all service categories for a certain location.
-   * <tt>false</tt> - return only service categories which have staff members able to conduct them and are associated
-   * to a certain book tab.
+   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * There may be empty values in this list, which means that this is a walk-in.
+   *
+   * @get get
+   * @post get
+   * @var string[]
+   */
+  public $a_uid = [];
+
+  /**
+   * `true` - return all service categories for a certain location.
+   * `false` - return only service categories that are associated with a book tab and with staff members
+   * able to conduct them.
    *
    * @get get
    * @var bool
@@ -30,34 +64,56 @@ class CategoryModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * The class tab ID to filter services.
+   * <tt>true</tt> - if client has a flag, <tt>false</tt> - otherwise.
    *
-   * <tt>null</tt> if not set yet.
-   *
-   * @get get
-   * @var string|null
+   * @get result
+   * @var bool
    */
-  public $k_class_tab = null;
+  public $is_client_flag;
 
   /**
-   * The ID of a location for which to show information.
-   *
-   * <tt>null</tt> if not set yet.
+   * `true` - search in all tabs.
+   * `false` - search only for the selected book tab.
    *
    * @get get
-   * @var string|null
+   * @var bool
    */
-  public $k_location = null;
+  public $is_tab_all = false;
 
   /**
-   * The ID of a user for whom to get information.
-   *
-   * <tt>null</tt> if not set yet.
+   * `true` if client is walk-in, otherwise `false`.
    *
    * @get get
-   * @var string|null
+   * @post get
+   * @var bool
    */
-  public $uid = null;
+  public $is_walk_in = false;
+
+  /**
+   * The class tab key used to filter services.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_class_tab = '0';
+
+  /**
+   * Location to show available appointment booking schedule.
+   *
+   * @get get,result
+   * @post get
+   * @var string
+   */
+  public $k_location = '0';
+
+  /**
+   * User to get information for.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
+  public $uid = '0';
 }
 
 ?>

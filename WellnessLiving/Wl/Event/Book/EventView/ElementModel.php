@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Wl\Event\Book\EventView;
 
-use WellnessLiving\Wl\Business\Config\BusinessConfigModel;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -33,22 +32,24 @@ class ElementModel extends WlModelAbstract
   /**
    * Retrieves information about an event item.
    *
-   * Received only if {@link ElementModel::$k_event} has been specified. In this case other fields aren't receivers.
+   * Received only if {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$k_event} has been specified. In this case other fields aren't receivers.
    *
-   * The event keys of this array.
-   * The values of this array and sub arrays with keys that correspond to all fields in this table that may be received.
-   *
-   * `null` until received from the server.
+   * <dl>
+   *   <dt>string <var>dt_date</var></dt>
+   *   <dd>Date/time when session starts. In UTC.</dd>
+   *   <dt>string <var>k_class_period</var></dt>
+   *   <dd>Class session primary keys.</dd>
+   * </dl>
    *
    * @get result
-   * @var array|null
+   * @var array[]
    */
-  public $a_book_available = null;
+  public $a_book_available;
 
   /**
    * Displays all business policies connected to clients and bookings.
    *
-   * Contains the same structure as the {@link BusinessConfigModel::$a_business_policy} property.
+   * Contains the same structure as the {@link \WellnessLiving\Wl\Business\Config\BusinessConfigModel::$a_business_policy} property.
    *
    * If policies are overwritten for a certain event, the impacted event's policies will be in this result.
    * Otherwise, the result will display the business policies.
@@ -56,32 +57,46 @@ class ElementModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public $a_business_policy = [];
+  public $a_business_policy;
 
   /**
    * The logo of event.
-   *
-   * `null` if not loaded yet.
+   * <dl>
+   *   <dt>int [<var>i_height</var>]</dt>
+   *   <dd>Is returned only if staff has photo. Image height.</dd>
+   *   <dt>int [<var>i_width</var>]</dt>
+   *   <dd>Is returned only if staff has photo. Image width.</dd>
+   *   <dt>int [<var>id_gender</var>] </dt>
+   *   <dd>Is returned only if staff does not have photo. ID of staff gender. One of {@link \WellnessLiving\Core\a\AGenderSid} constants.</dd>
+   *   <dt>string [<var>url_logo</var>]</dt>
+   *   <dd>Is returned only if staff has photo. URL to image.</dd>
+   * </dl>
    *
    * @get result
-   * @var array|null
+   * @var array
    */
-  public $a_class_logo = null;
+  public $a_class_logo;
+
+  /**
+   * The list of keys from class tab.+
+   *
+   * @get result
+   * @var string[]
+   */
+  public $a_class_tab;
 
   /**
    * Displays information for a bulk of events.
    *
-   * Received only if {@link ElementModel::$s_event} has been specified. In this case, other fields aren't receivers.
+   * Received only if {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$s_event} has been specified. In this case, other fields aren't receivers.
    *
    * The event keys of this array.
    * Values of this array and sub arrays with keys that correspond to all fields in this table that may be received.
    *
-   * `null` until received from the server.
-   *
    * @get result
-   * @var array|null
+   * @var array
    */
-  public $a_event = null;
+  public $a_event;
 
   /**
    * A list of event sessions. Every element has the following next keys:
@@ -92,6 +107,16 @@ class ElementModel extends WlModelAbstract
    *   <dd>
    *     A list of days of the week when the session has occurred.
    *     Keys - a number corresponding to a day of the week (0 - Sunday, 6 - Saturday). The value is always <tt>true</tt>.
+   *   </dd>
+   *   <dt>array <var>a_repeat</var></dt>
+   *   <dd>
+   *     Repeat periodicity instructions.
+   *     <dl>
+   *       <dt>int <var>i_repeat</var></dt>
+   *       <dd>Count of the periods which specified in <var>id_repeat</var>.</dd>
+   *       <dt>int <var>id_repeat</var></dt>
+   *       <dd>Measuring unit of <var>i_repeat</var> (week, month, year).</dd>
+   *     </dl>
    *   </dd>
    *   <dt>
    *     array[] <var>a_staff</var>
@@ -106,6 +131,12 @@ class ElementModel extends WlModelAbstract
    *       <dt>string <var>s_surname</var></dt>
    *       <dd>The first letter of staff member's surname.</dd>
    *     </dl>
+   *   </dd>
+   *   <dt>
+   *     string[] <var>a_virtual_location</var>
+   *   </dt>
+   *   <dd>
+   *     List of virtual locations.
    *   </dd>
    *   <dt>
    *     string <var>dt_end</var>
@@ -134,6 +165,30 @@ class ElementModel extends WlModelAbstract
    *     The duration of the class in seconds.
    *   </dd>
    *   <dt>
+   *     bool <var>is_virtual</var>
+   *   </dt>
+   *   <dd>
+   *     This will be `true` if the session is not held in person but offered remotely. If will be `false` otherwise.
+   *   </dd>
+   *   <dt>
+   *     string <var>f_price</var>
+   *   </dt>
+   *   <dd>
+   *     The price of the session, if it can be purchased separately.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_class_period</var>
+   *   </dt>
+   *   <dd>
+   *     The key of the class period.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_location</var>
+   *   </dt>
+   *   <dd>
+   *     The key of the location where the session is held.
+   *   </dd>
+   *   <dt>
    *     string <var>s_location</var>
    *   </dt>
    *   <dd>
@@ -144,16 +199,20 @@ class ElementModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The time when session occurred.
-   *     A textual representation of the start and end time of a session. Example: <tt>10:00 am - 11:00 am<tt>
+   *     A textual representation of the start and end time of a session. Example: <tt>10:00 am - 11:00 am</tt>
+   *   </dd>
+   *   <dt>
+   *     string <var>s_timezone</var>
+   *   </dt>
+   *   <dd>
+   *     The name of the timezone in which the session is held.
    *   </dd>
    * </dl>
    *
-   * `null` if not loaded yet.
-   *
    * @get result
-   * @var array|null
+   * @var array[]
    */
-  public $a_schedule = null;
+  public $a_schedule;
 
   /**
    * Photos of staff members. Keys are the keys of staff members. The values are the following:
@@ -167,12 +226,11 @@ class ElementModel extends WlModelAbstract
    *   <dt>string <var>url_logo</var></dt>
    *   <dd>URL to image.</dd>
    * </dl>
-   * `null` if not loaded yet.
    *
    * @get result
-   * @var array|null
+   * @var array
    */
-  public $a_staff_logo = null;
+  public $a_staff_logo;
 
   /**
    * A list of classes and events that clients should attend before this one.
@@ -188,7 +246,7 @@ class ElementModel extends WlModelAbstract
    *   <dd>The name of the class or event.</dd>
    * </dl>
    *
-   * @get get
+   * @get result
    * @var array[]
    */
   public $a_visits_required;
@@ -202,7 +260,7 @@ class ElementModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $dl_book_available_end = null;
+  public $dl_book_available_end;
 
   /**
    * The first available date for booking.
@@ -213,67 +271,100 @@ class ElementModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $dl_book_available_start = null;
+  public $dl_book_available_start;
 
   /**
    * That date that should be used to go to the booking wizard.
    *
-   * `null` if not loaded yet.
-   *
    * @get result
    * @var string|null
    */
-  public $dt_book_date = null;
+  public $dt_book_date;
 
   /**
    * The early registration date of the event.
    *
-   * `null` if not loaded yet.
-   *
    * @get result
    * @var string|null
    */
-  public $dt_early = null;
+  public $dt_early;
 
   /**
    * The end date of the event.
    *
-   * `null` if not loaded yet.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $dt_end = null;
+  public $dt_end;
 
   /**
    * The start date of the event.
    *
-   * `null` if not loaded yet.
+   * @get result
+   * @var string
+   */
+  public $dt_start;
+
+  /**
+   * Whether event will be hidden in the White Label mobile application.
+   * <tt>true</tt> means that event will not be displayed, <tt>false</tt> otherwise.
    *
    * @get result
-   * @var string|null
+   * @var bool
    */
-  public $dt_start = null;
+  public $hide_application;
 
   /**
    * Special instruction for the event.
    *
-   * `null` if not loaded yet.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $html_special = null;
+  public $html_special;
+
+  /**
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_width = 0;
 
   /**
    * The session count.
    *
-   * `null` if not set yet.
-   *
    * @get result
-   * @var int|null
+   * @var int
    */
-  public $i_session = null;
+  public $i_session;
+
+  /**
+   * Staff image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_staff_image_height = 0;
+
+  /**
+   * Staff image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_staff_image_width = 0;
 
   /**
    * The virtual provider ID. One of the{@link \WellnessLiving\Wl\Virtual\VirtualProviderSid} constants.
@@ -283,28 +374,33 @@ class ElementModel extends WlModelAbstract
    * @get result
    * @var int|null
    */
-  public $id_virtual_provider=null;
+  public $id_virtual_provider;
+
+  /**
+   * `true` if the event availability was checked; `false` if the event has too many sessions and calculating
+   *  the availability of each one takes a lot of time.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_availability_checked;
 
   /**
    * <tt>true</tt> if the event is already booked; <tt>false</tt> if the event isn't booked.
    *
-   * `null` if not set yet.
-   *
    * @get result
-   * @var bool|null
+   * @var bool
    */
-  public $is_book = null;
+  public $is_book;
 
   /**
    * <tt>true</tt> if there are no free spots in the event; booking is available only into the wait list.
    * <tt>false</tt> otherwise.
    *
-   * `null` until received from the server.
-   *
    * @get result
-   * @var bool|null
+   * @var bool
    */
-  public $is_full = null;
+  public $is_full;
 
   /**
    * `true` if the event can be paid with a Purchase Option only.
@@ -324,70 +420,66 @@ class ElementModel extends WlModelAbstract
   public $is_single_session_buy;
 
   /**
-   * The ID of the session which should be used to go to the booking wizard.
-   *
-   * `null` if not set yet.
+   * <tt>true</tt> -if event is virtual; <tt>false</tt> - otherwise.
    *
    * @get result
-   * @var string|null
+   * @var bool
    */
-  public $k_book_class_period = null;
+  public $is_virtual;
 
   /**
-   * The event identifier.
-   * You can specify {@Link ElementModel::$s_event} instead to get information for a bulk of events.
+   * The ID of the session which should be used to go to the booking wizard.
    *
-   * `null` if not set yet.
+   * @get result
+   * @var string
+   */
+  public $k_book_class_period;
+
+  /**
+   * The event key.
+   * You can specify {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$s_event} instead to get information for a bulk of events.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_event = null;
+  public $k_event = '0';
 
   /**
    * The price of a single session of the event.
    *
-   * `null` if not set yet.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $m_price = null;
+  public $m_price;
 
   /**
    * The price of the all sessions of the event.
    *
-   * `null` if not set yet.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $m_price_total = null;
+  public $m_price_total;
 
   /**
-   * The early registration price of the all sessions of the event.
-   *
-   * `null` if not set yet.
+   * Price of the full event, should be used as full price while {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$dt_early} is actual.
    *
    * @get result
    * @var string|null
    */
-  public $m_price_total_early = null;
+  public $m_price_total_early;
 
   /**
    * The reason why the event can't be booked.
-   * Empty if {@link Wl_Event_Book_EventView_ElementModel.k_class_period} isn't empty.
-   *
-   * `null` if not loaded yet.
+   * Empty if {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$k_book_class_period} isn't empty.
    *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $s_deny_reason = null;
+  public $s_deny_reason;
 
   /**
    * A list of event keys serialized with JSON.
-   * Specify instead of {@link ElementModel::$k_event} to get information for a bulk of events.
+   * Specify instead of {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$k_event} to get information for a bulk of events.
    *
    * @get get
    * @var string
@@ -397,30 +489,26 @@ class ElementModel extends WlModelAbstract
   /**
    * The title of the event.
    *
-   * `null` if not loaded yet.
-   *
    * @get result
    * @var string|null
    */
-  public $s_title = null;
+  public $s_title;
 
   /**
-   * The user ID.
+   * The user key.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $uid = null;
+  public $uid = '0';
 
   /**
    * The description of the event.
    *
-   * `null` if not loaded yet.
-   *
    * @get result
    * @var string|null
    */
-  public $xml_description = null;
+  public $xml_description;
 }
 
 ?>

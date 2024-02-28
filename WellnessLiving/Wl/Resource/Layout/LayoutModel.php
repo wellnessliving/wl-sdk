@@ -5,192 +5,253 @@ namespace WellnessLiving\Wl\Resource\Layout;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about asset layout.
+ * An endpoint that displays information about an asset layout.
  */
 class LayoutModel extends WlModelAbstract
 {
   /**
-   * Assets. Every element contains next keys:
-   * <dl>
-   *   <dt>array <var>a_image</var></dt>
-   *   <dd>Asset appearance information.</dd>
-   *   <dt>int <var>i_cell_x</var></dt>
-   *   <dd>Vertical cell number. Not empty if assets are snapped to grid.</dd>
-   *   <dt>int <var>i_cell_y</var></dt>
-   *   <dd>Horizontal cell number. Not empty if assets are snapped to grid.</dd>
-   *   <dt>int <var>i_index</var></dt>
-   *   <dd>Asset number.</dd>
-   *   <dt>int <var>i_left</var></dt>
-   *   <dd>Horizontal offset in pixels. Not empty if assets are NOT snapped to grid.</dd>
-   *   <dt>string <var>k_resource</var></dt>
-   *   <dd>Asset key.</dd>
-   *   <dt>string <var>s_title</var></dt>
-   *   <dd>Asset title.</dd>
-   * </dl>
-   *
-   * @get result
-   * @type {array[]}
-   */
-  public $a_resource = [];
-
-  /**
-   * List of custom shapes. Every element - array with keys:
+   * The list of assets. Every element contains the following keys:
    * <dl>
    *   <dt>
-   *     float <var>f_height</var>
+   *     array <var>a_image</var>
    *   </dt>
    *   <dd>
-   *     Height for shape {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::RECTANGLE}. Empty for another shapes.
+   *     The asset's appearance information.
+   *     See {@link RsResourceImage::data()} for details.
    *   </dd>
    *   <dt>
-   *     float <var>f_width</var>
+   *     int <var>i_cell_x</var>
    *   </dt>
    *   <dd>
-   *     Width for shape {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::RECTANGLE}. Empty for another shapes.
+   *     The vertical cell number. Not empty if assets are snapped to grid.
    *   </dd>
    *   <dt>
-   *     int <var>i_degree_from</var>
+   *     int <var>i_cell_y</var>
    *   </dt>
    *   <dd>
-   *     Start angle for shape {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::PIE}. Empty for another shapes.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_degree_to</var>
-   *   </dt>
-   *   <dd>
-   *     End angle for shape {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::PIE}. Empty for another shapes.
+   *     The horizontal cell number. Not empty if assets are snapped to grid.
    *   </dd>
    *   <dt>
    *     int <var>i_left</var>
    *   </dt>
    *   <dd>
-   *     Position of shape by horizontal axis.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_radius</var>
-   *   </dt>
-   *   <dd>
-   *     Radius for shapes {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::PIE} and
-   *     {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid::CIRCLE}. Empty for another shapes.
+   *     The horizontal offset in pixels. Not empty if assets aren't snapped to grid.
    *   </dd>
    *   <dt>
    *     int <var>i_top</var>
    *   </dt>
    *   <dd>
-   *     Position of shape by vertical axis.
+   *     The vertical offset in pixels. Not empty if assets aren't snapped to grid.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_index</var>
+   *   </dt>
+   *   <dd>
+   *     Asset number.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_resource</var>
+   *   </dt>
+   *   <dd>
+   *     The asset key.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_name</var>
+   *   </dt>
+   *   <dd>
+   *     Asset name.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_title</var>
+   *   </dt>
+   *   <dd>
+   *     The asset title.
+   *   </dd>
+   * </dl>
+   *
+   * @get result
+   * @var array[]
+   */
+  public $a_resource;
+
+  /**
+   * A list of custom shapes. Every element is an array with the following keys:
+   * <dl>
+   *   <dt>
+   *     float <var>f_height</var>
+   *   </dt>
+   *   <dd>
+   *     The height for the shape {@link \WellnessLiving\Wl\Resource\Layout\Shape\LayoutShapeSid::RECTANGLE}. Empty for other shapes.
+   *   </dd>
+   *   <dt>
+   *     float <var>f_width</var>
+   *   </dt>
+   *   <dd>
+   *     The width for the shape {@link \WellnessLiving\Wl\Resource\Layout\Shape\LayoutShapeSid::RECTANGLE}. Empty for other shapes.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_degree_from</var>
+   *   </dt>
+   *   <dd>
+   *     The start angle for the shape {@link \WellnessLiving\Wl\Resource\Layout\Shape\LayoutShapeSid::PIE}. Empty for other shapes.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_degree_to</var>
+   *   </dt>
+   *   <dd>
+   *     The start angle for shape {@link \WellnessLiving\Wl\Resource\Layout\Shape\LayoutShapeSid::PIE}. Empty for other shapes.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_left</var>
+   *   </dt>
+   *   <dd>
+   *     The position of the shape by horizontal axis.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_radius</var>
+   *   </dt>
+   *   <dd>
+   *     The radius for shapes {@link \WellnessLiving\Wl\Resource\Layout\Shape\LayoutShapeSid::PIE} and
+   *     {@link \WellnessLiving\Wl\Resource\Layout\Shape\LayoutShapeSid::CIRCLE}. Empty for other shapes.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_top</var>
+   *   </dt>
+   *   <dd>
+   *     The position of the shape by vertical axis.
    *   </dd>
    *   <dt>
    *     int <var>id_resource_layout_shape</var>
    *   </dt>
    *   <dd>
-   *     Shape type. One of {@link \WellnessLiving\Wl\Resource\Layout\LayoutShapeSid} constants.
+   *     The shape type ID. One of the {@link \WellnessLiving\Wl\Resource\Layout\Shape\LayoutShapeSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_resource_layout_shape</var>
    *   </dt>
    *   <dd>
-   *     Shape ID. Primary key in {@link \Wl\Resource\Layout\Shape\Sql} table.
+   *     The shape key.
    *   </dd>
    *   <dt>
    *     string <var>s_color_background</var>
    *   </dt>
    *   <dd>
-   *     Shape background color.
+   *     The shape's background color.
    *   </dd>
    *   <dt>
    *     string <var>s_color_foreground</var>
    *   </dt>
    *   <dd>
-   *     Shape foreground color.
+   *     The shape's foreground color.
    *   </dd>
    *   <dt>
    *     string <var>s_text</var>
    *   </dt>
    *   <dd>
-   *     Shape title.
+   *     The shape's title.
    *   </dd>
    * </dl>
    *
    * @get result
-   * @type {array[]}
+   * @var array[]
    */
-  public $a_shape_custom = [];
+  public $a_shape_custom;
 
   /**
-   * List of shapes-icons. Every element - array with keys:
+   * A list of shapes and icons. Every element is an array with the following keys:
    * <dl>
-   *   <dt>int <var>i_cell_x</var></dt>
-   *   <dd>Number of cell. Position by horizontal axis. Empty if grid is turned off.</dd>
-   *   <dt>int <var>i_cell_y</var></dt>
-   *   <dd>Number of cell. Position by vertical axis. Empty if grid is turned off.</dd>
-   *   <dt>int <var>i_left</var></dt>
-   *   <dd>Horizontal position in pixels. Empty if grid is turned on.</dd>
-   *   <dt>int <var>i_top</var></dt>
-   *   <dd>Vertical position in pixels. Empty if grid is turned on.</dd>
-   *   <dt>int <var>id_shape_icon</var></dt>
-   *   <dd>Icon ID. One of constants {@link \WellnessLiving\Wl\Resource\Image\ImageIconSid}.</dd>
+   *   <dt>
+   *     int <var>i_cell_x</var>
+   *   </dt>
+   *   <dd>
+   *     The cell number, positioned by the horizontal axis. Empty if grid is turned off.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_cell_y</var>
+   *   </dt>
+   *   <dd>
+   *     The cell number, positioned by the vertical axis. Empty if grid is turned off.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_left</var>
+   *   </dt>
+   *   <dd>
+   *     The horizontal position in pixels. Empty if grid is turned on.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_top</var>
+   *   </dt>
+   *   <dd>
+   *     The vertical position in pixels. Empty if grid is turned on.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_shape_icon</var>
+   *   </dt>
+   *   <dd>
+   *     The icon ID. One of the {@link \WellnessLiving\Wl\Resource\Image\ImageIconSid} constants.
+   *   </dd>
    * </dl>
    *
    * @get result
-   * @type {array[]}
+   * @var array[]
    */
-  public $a_shape_icon = [];
+  public $a_shape_icon;
 
   /**
-   * Grid size.
+   * The grid size.
    *
    * @get result
-   * @type {int}
+   * @var int
    */
-  public $i_grid = 0;
+  public $i_grid;
 
   /**
-   * <tt>true</tt> - snap to grid; <tt>false</tt> - otherwise.
+   * This will be `true` if snap to grid is enabled. Otherwise, this will be `false`.
    *
    * @get result
-   * @type {boolean}
+   * @var bool
    */
-  public $is_grid = false;
+  public $is_grid;
 
   /**
-   * ID of layout.
-   *
-   * <tt>null</tt> if not set yet.
+   * The key of the layout.
    *
    * @get get
-   * @type {string|null}
+   * @var string
    */
-  public $k_resource_layout = null;
+  public $k_resource_layout = '0';
 
   /**
-   * ID of asset category.
+   * The key of the asset category.
    *
    * @get result
-   * @type {string}
+   * @var string
    */
-  public $k_resource_type = '0';
+  public $k_resource_type;
 
   /**
-   * Color for active assets. Hex encoding with prefix <tt>#</tt>.
+   * The color for active assets. Hex encoding with prefix `#`.
    *
    * @get result
-   * @type {string}
+   * @var string
    */
-  public $s_color_active = '';
+  public $s_color_active;
 
   /**
-   * <tt>true</tt> - show assets names; <tt>false</tt> - otherwise.
+   * This will be `true` if asset names are displayed. Otherwise, this will be `false`.
    *
    * @get result
-   * @type {boolean}
+   * @var bool
    */
-  public $show_name = false;
+  public $show_name;
 
   /**
-   * <tt>true</tt> - show assets numbers; <tt>false</tt> - otherwise.
+   * This will be `true` if asset numbers are displayed. Otherwise, this will be `false`.
    *
    * @get result
-   * @type {boolean}
+   * @var bool
    */
-  public $show_number = false;
+  public $show_number;
 }
+
+?>

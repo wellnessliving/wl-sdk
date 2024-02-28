@@ -1,18 +1,19 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Social\Facebook\Login;
 
 use WellnessLiving\WlModelAbstract;
 
 /**
- * A class is for authorizing user with facebook.
+ * An endpoint that authorizes Facebook users.
  */
 class LoginModel extends WlModelAbstract
 {
   /**
-   * Application ID.
+   * The application ID.
    *
-   * <tt>null</tt> for use application, which makes request. And use credential of application from {@link FacebookCredential} class for authorization user.
+   * This will be `null` if the application is being used to make the request.
+   * Use the application credential from the {@link \WellnessLiving\Core\Request\Model\Application\Credential\FacebookCredential} class for user authorization.
    *
    * @post post
    * @var string|null
@@ -20,7 +21,7 @@ class LoginModel extends WlModelAbstract
   public $s_application;
 
   /**
-   * Facebook token.
+   * The Facebook token.
    *
    * @post post
    * @var string

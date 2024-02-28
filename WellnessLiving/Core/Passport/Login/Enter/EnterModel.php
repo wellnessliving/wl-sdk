@@ -5,64 +5,76 @@ namespace WellnessLiving\Core\Passport\Login\Enter;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Signs a user in.
+ * An endpoint that signs a user in.
  */
 class EnterModel extends WlModelAbstract
 {
   /**
-   * Answer to the captcha if needed. (if needed).
-   *
-   * It is `null` if not needed.
+   * Additional data for user authorization.
    *
    * @post post
-   * @var string|null
+   * @var array
    */
-  public $s_captcha=null;
+  public $json_data = [];
+
+  /**
+   * The answer to the captcha, if needed.
+   *
+   * @post post
+   * @var string
+   */
+  public $s_captcha = '';
 
   /**
    * The user's login.
    *
-   * It is `null` if not set yet.
-   *
    * @post post
-   * @var string|null
+   * @var string
    */
-  public $s_login=null;
+  public $s_login = '';
 
   /**
-   * A copy of notepad that was used to hash user password.
+   * A copy of the notepad that was used to hash the user password.
    *
    * See {@link \WellnessLiving\Core\Passport\Login\Enter\EnterModel::$s_password} for details.
    *
    * @post post
-   * @var string|null
+   * @var string
    */
-  public $s_notepad=null;
+  public $s_notepad = '';
 
   /**
-   * The hash of the user’s password.
+   * The hash of the user password.
    *
-   * Use {@link \WellnessLiving\Core\Passport\Login\Enter\NotepadModel::hash()} to evaluate password hash.
+   * Use `Core_Passport_Login_Enter_NotepadModel.hash()` to evaluate the password hash.
    *
    * @post post
-   * @var string|null
+   * @var string
    */
-  public $s_password=null;
+  public $s_password = '';
 
   /**
-   * Whether and how the user’s login and password should be remembered.
+   * Determines whether the user login and password should be remembered, and how they should be remembered.
    *
-   * The accepted values are as follows:
+   * The accepted values are:
    * <ul>
-   * <li><tt>''</tt> Empty line (default value) if you do not want to remember anything.</li>
-   * <li><tt>'login'</tt> Remember only user login.</li>
-   * <li><tt>'password'</tt> Remember user login and password.</li>
+   *   <li>`''` Empty line (default value) if you do not want to remember anything.</li>
+   *   <li>`'login'` Remember only user login.</li>
+   *   <li>`'password'` Remember user login and password.</li>
    * </ul>
    *
    * @post post
    * @var string
    */
-  public $s_remember='';
+  public $s_remember = '';
+
+  /**
+   * An optional URL for redirection after the user has signed in to the web application.
+   *
+   * @post result
+   * @var string
+   */
+  public $url_redirect;
 }
 
 ?>

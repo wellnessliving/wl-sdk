@@ -5,7 +5,10 @@ namespace WellnessLiving\Wl\Integration\Autymate;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves all daily transactions for a business using the All Transactions report.
+ * An endpoint that retrieves all daily transactions for a business using the All Transactions report from the
+ * {@link \WellnessLiving\Wl\Report\Generator\QueryModel} endpoint. This endpoint is a streamlined interface and adds
+ * additional columns to the report for Autymate.
+ * Autymate will have one user to access all businesses, this user will require the wl.integration.autymate.report privilege.
  */
 class ReportModel extends WlModelAbstract
 {
@@ -17,19 +20,29 @@ class ReportModel extends WlModelAbstract
    * @get result
    * @var string[]
    */
-  public $a_field;
+  public $a_field = [];
+
+  /**
+   * List of payment methods to filter out in the report. Each element is one of the {@line \WellnessLiving\WlPayMethodSid} constants.
+   *
+   * @get get
+   * @var int[]
+   */
+  public $a_pay_method_remove = array (
+  0 => 7,
+);
 
   /**
    * The report data.
    *
    * This is an indexed array in which one row is an indexed array also.
    *
-   * Indexes of the columns correspond columns in {@link \WellnessLiving\Wl\Integration\Autymate\ReportModel::$a_field}.
+   * Indexes of the columns correspond to columns in {@link \WellnessLiving\Wl\Integration\Autymate\ReportModel::$a_field}.
    *
    * @get result
    * @var string[][]
    */
-  public $a_row;
+  public $a_row = [];
 
   /**
    * The warning list of the report, if applicable.
@@ -37,7 +50,7 @@ class ReportModel extends WlModelAbstract
    * @get result
    * @var string[]
    */
-  public $a_warning;
+  public $a_warning = [];
 
   /**
    * The date in local time to retrieve transactions for.
@@ -50,10 +63,10 @@ class ReportModel extends WlModelAbstract
   /**
    * The date and time when this report has completed generation.
    *
-   * `null` if generation of this report is not completed.
+   * `null` if generation of this report isn't completed.
    *
    * @get result
-   * @var string
+   * @var string|null
    */
   public $dtu_complete;
 
@@ -63,62 +76,63 @@ class ReportModel extends WlModelAbstract
    * Effectively, this is the time when a user clicked to view this report or the report for this day was first called.
    *
    * @get result
-   * @var string
+   * @var string|null
    */
   public $dtu_queue;
 
   /**
    * The date and time when generation of this report was started.
    *
-   * `null` if generation of this report has not started.
+   * `null` if generation of this report hasn't started.
    *
    * @get result
-   * @var string
+   * @var string|null
    */
   public $dtu_start;
 
   /**
    * The page of the report, starting from 0.
+   * Each page will contain a maximum of {@link \WellnessLiving\Wl\Integration\Autymate\ReportModel::LIMIT} rows.
    *
    * @get get
    * @var int
    */
-  public $i_page=0;
+  public $i_page = 0;
 
   /**
    * The status of the report.
    *
-   * One of the {@link \Wl\Report\Generator\ReportGeneratorStatusSid} constants.
+   * One of the {@link \WellnessLiving\Wl\Report\Generator\ReportGeneratorStatusSid} constants.
    *
    * @get result
    * @var int
    */
-  public $id_report_status;
+  public $id_report_status = 0;
 
   /**
-   * If <tt>true</tt> then there are more report rows to get. Otherwise <tt>false</tt>, all rows are sent.
+   * If <tt>true</tt> then there are more report rows to get. Otherwise, <tt>false</tt> if all rows have been sent.
    *
    * @get result
    * @var bool
    */
-  public $is_more;
+  public $is_more = false;
 
   /**
-   * Whether this report should be refreshed.
+   * Determines whether this report should be refreshed.
    *
-   * `true` to refresh this report if it is already generated.
+   * `true` to refresh this report if it's already generated.
    * Refreshing of the report may not be queried while report is being generated.
    *
    * `false` to only return contents of the report.
-   * If report is not yet generated, it automatically starts the generation in the background.
+   * If report isn't yet generated, it automatically starts the generation in the background.
    *
    * @get get
    * @var bool
    */
-  public $is_refresh;
+  public $is_refresh = false;
 
   /**
-   * Whether this report is complete. If this report is accessed on the current day, or is returning
+   * Determines whether this report is complete. If this report is accessed on the current day, or is returning
    * a result that was cached on the current day it could be incomplete as not all the transactions for the day
    * are present.
    *
@@ -129,30 +143,23 @@ class ReportModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public $is_report_complete=false;
+  public $is_report_complete = false;
 
   /**
-   * Key of the business for which report must be generated.
+   * The key of the business for which the report must be generated.
    *
    * @get get
    * @var string
    */
-  public $k_business = '0';
+  public $k_business = '';
 
   /**
-   * Randomly generated 32 character string use to authenticate requests.
+   * The randomly generated 32 character string used to authenticate requests.
    *
    * @get get
    * @var string
    */
   public $s_guid = '';
-
-  /**
-   * User's key.
-   *
-   * @get get
-   * @var string
-   */
-  public $uid = '0';
 }
+
 ?>

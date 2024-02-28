@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Catalog\StaffApp\CatalogView;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Returns information about an item’s price after taxes.
+ * An endpoint that returns information about an item’s price after taxes.
  */
 class CatalogViewModel extends WlModelAbstract
 {
@@ -18,10 +18,11 @@ class CatalogViewModel extends WlModelAbstract
    *   <dt>float <var>f_promote</var></dt>
    *   <dd>The amount to prorate the item by.</dd>
    *   <dt>bool <var>is_prorate</var></dt>
-   *   <dd>If <tt>true</tt> this item is prorated.</dd>
+   *   <dd>If <tt>true</tt>, this item is prorated.</dd>
    *   <dt>string <var>m_prorate_custom</var></dt>
    *   <dd>The custom prorate amount.</dd>
    * </dl>
+   *
    * @get get
    * @var array
    */
@@ -30,128 +31,119 @@ class CatalogViewModel extends WlModelAbstract
   /**
    * Contains information about edited taxes.
    *
-   * It is `null` if not set yet or taxes are default.
+   * This will be `null` if not set yet or default taxes are used.
    *
-   * The key is the tax identifier and the value is:
+   * The key is the tax identifier, where the value is:
    * <dl>
    *   <dt>string <var>k_tax</var></dt>
-   *   <dd>The tax ID.
-   *   <dt>string <var>m_tax_custom</dt>
+   *   <dd>The tax ID.</dd>
+   *   <dt>string <var>m_tax_custom</var></dt>
    *   <dd>The amount of custom tax.</dd>
    * </dl>
    *
    * @get get
-   * @var array|null
+   * @var array
    */
-  public $a_tax = null;
+  public $a_tax = [];
 
   /**
-   * Contains information about calculated taxes. The structure of this array is described in {@link \RsTax::$a_tax}.
-   *
-   * It is `null` if not set yet.
+   * Contains information about calculated taxes. The structure of this array is described in {@link RsTax::$a_tax}.
    *
    * @get result
-   * @var array|null
+   * @var array
    */
-  public $a_tax_data = null;
+  public $a_tax_data;
 
   /**
    * The quantity of items.
    *
-   * It is `null` if there is no limit of items at the location.
-   *
    * @get get
-   * @var int|null
+   * @var int
    */
-  public $i_quantity = null;
+  public $i_quantity = '';
 
   /**
-   * The ID of the sale category.
-   *
-   * It is `null` if not set yet.
+   * The ID of the sale category. One of the {@link \WellnessLiving\WlSaleSid} constants.
    *
    * @get get
-   * @var int|null
+   * @var int
    */
-  public $id_sale = null;
+  public $id_sale = 0;
 
   /**
-   * The business ID.
+   * The business key.
+   * This will be `null` for the system business.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_business = null;
+  public $k_business = '';
 
   /**
-   * The ID of the sale item.
-   * It can be retrieved with the (@link WellnessLiving\Wl\CatalogList\CatalogListMode} endpoint (see the
-   * <var>$a_shop_product parameter</var>).
-   *
-   * `null` if not set yet.
+   * The key of the sale item.
+   * This can be retrieved with the {@link \WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel} endpoint (see the
+   * <var>a_shop_product</var> parameter).
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_id = null;
+  public $k_id = '';
 
   /**
-   * The ID of the product option.
-   *
-   * `null` if not set yet.
+   * The product option key.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_shop_product_option = null;
+  public $k_shop_product_option = '';
 
   /**
    * The custom price of the sale item.
    *
-   * It is `null` if not set yet or if price default.
-   *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $m_price = null;
+  public $m_price = '';
 
   /**
    * The prorated amount.
    *
-   * It is `null` if not calculated yet.
+   * @get result
+   * @var string
+   */
+  public $m_prorate;
+
+  /**
+   * The amount of the sale item, excluding taxes.
    *
    * @get result
    * @var string
    */
-  public $m_prorate = null;
-
-  /**
-   * The calculated amount of the sale item, including taxes.
-   *
-   * It is `null` if not calculated yet.
-   *
-   * @get result
-   * @var string|null
-   */
-  public $m_total = null;
+  public $m_subtotal;
 
   /**
    * The calculated amount of tax.
    *
-   * `null` if not calculated yet.
+   * @get result
+   * @var string
+   */
+  public $m_tax;
+
+  /**
+   * The calculated amount of the sale item, including taxes.
    *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $m_tax = null;
+  public $m_total;
 
   /**
    * The ID of the user who performed the actions.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $uid = null;
+  public $uid = '';
 }
 
 ?>

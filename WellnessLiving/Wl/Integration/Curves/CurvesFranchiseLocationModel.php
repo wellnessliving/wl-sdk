@@ -5,106 +5,210 @@ namespace WellnessLiving\Wl\Integration\Curves;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Gets information for franchisee locations.
+ * An endpoint that gets information for enterprise locations.
  */
 class CurvesFranchiseLocationModel extends WlModelAbstract
 {
   /**
-   * A list of cities containing franchise locations. Each element has the following structure:
+   * The city list. Each element has next structure:
    * <dl>
-   *   <dt>string <var>k_city</var></dt><dd>The city ID.</dd>
-   *   <dt>string <var>k_country</var></dt><dd>The country ID, this is different from the LocaleSid constants.</dd>
-   *   <dt>string <var>k_state</var></dt><dd>The state ID.</dd>
-   *   <dt>string <var>text_title</var></dt><dd>The name of the city.</dd>
+   *   <dt>
+   *     string <var>k_city</var>
+   *   </dt>
+   *   <dd>
+   *     City key.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_country</var>
+   *   </dt>
+   *   <dd>
+   *     Country key.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_state</var>
+   *   </dt>
+   *   <dd>
+   *     State key.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_title</var>
+   *   </dt>
+   *   <dd>
+   *     City title.
+   *   </dd>
    * </dl>
    *
    * @get result
-   * @var array|null
+   * @var array[]
    */
-  public $a_city_list = null;
+  public $a_city_list;
 
   /**
-   * A list of countries containing franchise locations. Each element has the following structure:
+   * The country list. Each element has next structure:
    * <dl>
-   *   <dt>string <var>k_country</var></dt><dd>The country ID, this is different from the LocaleSid constants.</dd>
-   *   <dt>string <var>text_title</var></dt><dd>The name of the country.</dd>
+   *   <dt>
+   *     string <var>k_country</var>
+   *   </dt>
+   *   <dd>
+   *     Country key.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_title</var>
+   *   </dt>
+   *   <dd>
+   *     Country title.
+   *   </dd>
    * </dl>
    *
    * @get result
-   * @var array|null
+   * @var array[]
    */
-  public $a_country_list = null;
+  public $a_country_list;
 
   /**
-   * A list of franchise locations. Each element has the following structure:
+   * The location list. Each element has next structure:
    * <dl>
-   *   <dt>string <var>k_business</var></dt><dd>The business ID of the franchisee.</dd>
-   *   <dt>string <var>k_city</var></dt><dd>The city ID.</dd>
-   *   <dt>string <var>k_country</var></dt><dd>The country ID, this is different from the LocaleSid constants.</dd>
-   *   <dt>string <var>k_location</var></dt><dd>The location ID.</dd>
-   *   <dt>string <var>k_region</var></dt><dd>The franchise region ID.</dd>
-   *   <dt>string <var>k_state</var></dt><dd>The state ID.</dd>
-   *   <dt>string <var>k_territory_id</var></dt><dd>The Curves territory ID. Sometimes also referred to as Franchise ID.</dd>
-   *   <dt>string <var>text_address</var></dt><dd>The street address.</dd>
-   *   <dt>string <var>text_city_title</var></dt><dd>The name of the city containing the location.</dd>
-   *   <dt>string <var>text_country_title</var></dt><dd>The name of the country containing the location.</dd>
-   *   <dt>string <var>text_region_title</var></dt><dd>The name of the franchise region, if set.</dd>
-   *   <dt>string <var>text_state_title</var></dt><dd>The name of the state containing the location.</dd>
-   *   <dt>string <var>text_title</var></dt><dd>The location name.</dd>
+   *   <dt>
+   *     string <var>k_city</var>
+   *   </dt>
+   *   <dd>
+   *     City key.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_country</var>
+   *   </dt>
+   *   <dd>
+   *     Country key.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_location</var>
+   *   </dt>
+   *   <dd>
+   *     Location key.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_region</var>
+   *   </dt>
+   *   <dd>
+   *     Franchise region key.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_state</var>
+   *   </dt>
+   *   <dd>
+   *     State key.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_title</var>
+   *   </dt>
+   *   <dd>
+   *     Location title.
+   *   </dd>
    * </dl>
    *
    * @get result
-   * @var array|null
+   * @var array[]
    */
-  public $a_location_list = null;
+  public $a_location_list;
 
   /**
-   * A list of regions containing franchise locations.
-   * If regions are set, then each element will have the following structure:
+   * The region list. Each element has next structure:
    * <dl>
-   *   <dt>string <var>k_region</var></dt><dd>The franchise region ID.</dd>
-   *   <dt>string <var>text_title</var></dt><dd>The franchise region name.</dd>
+   *   <dt>
+   *     string <var>k_region</var>
+   *   </dt>
+   *   <dd>
+   *     Franchise region key.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_title</var>
+   *   </dt>
+   *   <dd>
+   *     Franchise region title.
+   *   </dd>
    * </dl>
    *
    * @get result
-   * @var array|null
+   * @var array[]
    */
-  public $a_region_list = null;
+  public $a_region_list;
 
   /**
-   * A list of states containing franchise locations. Each element has the following structure:
+   * The state list. Each element has next structure:
    * <dl>
-   *   <dt>string <var>k_country</var></dt><dd>The country ID, this is different from the LocaleSid constants.</dd>
-   *   <dt>string <var>k_state</var></dt><dd>The state ID.</dd>
-   *   <dt>string <var>text_title</var></dt><dd>The state name.</dd>
+   *   <dt>
+   *     string <var>k_country</var>
+   *   </dt>
+   *   <dd>
+   *     Country key.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_state</var>
+   *   </dt>
+   *   <dd>
+   *     State key.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_title</var>
+   *   </dt>
+   *   <dd>
+   *     State title.
+   *   </dd>
    * </dl>
    *
    * @get result
-   * @var array|null
+   * @var array[]
    */
-  public $a_state_list = null;
+  public $a_state_list;
 
   /**
    * Determines which locations should be returned.
    *
-   * One of the {@link \WellnessLiving\Wl\Business\Franchise\Location\BusinessFranchiseLocationFormSid} constants.
+   * One of the {@link \WellnessLiving\Wl\Business\Franchise\Location\BusinessFranchiseLocationSid} constants.
    *
-   * <tt>null</tt> if not set yet.
+   * <tt>null</tt> means that {@link \WellnessLiving\Wl\Business\Franchise\Location\BusinessFranchiseLocationSid::ALL} is used.
    *
    * @get get
-   * @var int|null
+   * @var int
    */
-  public $id_business_franchise_location = null;
+  public $id_business_franchise_location;
 
   /**
-   * The business ID for the franchisor.
+   * Determines report for which data should be returned.
    *
-   * <tt>null</tt> if not set yet.
+   * One of the {@link \WellnessLiving\RsReportSid} constants.
+   *
+   * <tt>null</tt> means that report is not set.
    *
    * @get get
-   * @var string|null
+   * @var int
    */
-  public $k_business = null;
+  public $id_report;
+
+  /**
+   * Whether to include churned/removed locations. `true` to list all locations regardless of their status.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_include_churn = false;
+
+  /**
+   * Whether to include locations marked to not be displayed on franchisor website. `true` to list all locations
+   * regardless of this setting.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_include_non_api = false;
+
+  /**
+   * The business key.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_business;
 }
 
 ?>

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Quiz;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Api endpoint to manage single quiz.
+ * An endpoint that manages a single quiz.
  */
 class QuizElementModel extends WlModelAbstract
 {
@@ -21,6 +21,15 @@ class QuizElementModel extends WlModelAbstract
   public $a_element = [];
 
   /**
+   * Quiz settings. Array representation of {@link \WellnessLiving\Wl\Quiz\QuizElementModel::$o_setting}.
+   *
+   * @get result
+   * @post post
+   * @var array
+   */
+  public $a_setting = [];
+
+  /**
    * `true` if don't check user authorization, `false` otherwise.
    *
    * @get get
@@ -30,12 +39,22 @@ class QuizElementModel extends WlModelAbstract
   public $can_anonymous = false;
 
   /**
+   * Number of responses for specific quiz.
+   *
+   * @get result
+   * @var int
+   */
+  public $i_responses = 0;
+
+  /**
    * Quiz active status.
    *
    * `true` if quiz is active.
    * `false` if quiz is not active.
    *
    * @get result
+   * @post post
+   * @put post
    * @var bool
    */
   public $is_active = true;
@@ -43,8 +62,10 @@ class QuizElementModel extends WlModelAbstract
   /**
    * Business key within which quiz is managed.
    *
+   * @delete get
    * @get get
    * @post get
+   * @put get
    * @var string
    */
   public $k_business = '';
@@ -52,11 +73,22 @@ class QuizElementModel extends WlModelAbstract
   /**
    * Quiz key.
    *
+   * @delete get
    * @get get
    * @post get,result
+   * @put get
    * @var string
    */
   public $k_quiz = '';
+
+  /**
+   * Quiz login key.
+   *
+   * @post get
+   * @put get
+   * @var string
+   */
+  public $k_quiz_login = '';
 
   /**
    * Whether to show numbering of the form elements that supports numbering.

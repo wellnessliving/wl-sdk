@@ -5,20 +5,12 @@ namespace WellnessLiving\Wl\Login\Coupon;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves information about gift card.
+ * An endpoint that retrieves information about a gift card (also referred to as the coupon code).
  */
 class CouponModel extends WlModelAbstract
 {
   /**
-   * Code of the coupon.
-   *
-   * @get get
-   * @var string
-   */
-  public $s_code;
-
-  /**
-   * Business key. Primary key in {@link \RsBusinessSql} table.
+   * The business key.
    *
    * @get get
    * @var string
@@ -26,7 +18,8 @@ class CouponModel extends WlModelAbstract
   public $k_business;
 
   /**
-   * Login coupon key.
+   * The gift card reference number for this specific user. WellnessLiving uses this reference number for managing
+   * gift cards in the system.
    *
    * @get result
    * @var string
@@ -34,12 +27,20 @@ class CouponModel extends WlModelAbstract
   public $k_login_coupon;
 
   /**
-   * Amount of gift card.
+   * The gift card amount.
    *
    * @get result
    * @var string
    */
   public $m_amount;
+
+  /**
+   * The gift card.
+   *
+   * @get get
+   * @var string
+   */
+  public $s_code;
 }
 
 ?>

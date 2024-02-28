@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Schedule\Tab;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Gets a list of tabs for bookable services specific to the user and the location.
+ * An endpoint that retrieves a list of tabs for bookable services specific to the user and the location.
  *
  * The names and contents of these tabs can be customized by the business. For example, a business may have tabs named
  * ‘Appointments’, ‘Group Appointments’, and ‘Room Rentals’.
@@ -21,7 +21,7 @@ class TabModel extends WlModelAbstract
    *     int <var>id_class_tab_object</var>
    *   </dt>
    *   <dd>
-   *     The tab type’s ID which is one of the {@link \WellnessLiving\Wl\Classes\Tab\TabSid} constants.
+   *     The tab type ID which is one of the {@link \WellnessLiving\Wl\Classes\Tab\TabSid} constants.
    *   </dd>
    *   <dt>
    *     int|null <var>id_class_tab_system</var>
@@ -30,13 +30,13 @@ class TabModel extends WlModelAbstract
    *     If this tab has redefined a default system Class Tab then it references a constant defined in
    *     {@link \WellnessLiving\Wl\Classes\Tab\TabSid}.
    *
-   *     It is `null` otherwise.
+   *     Otherwise, this will be `null`.
    *   </dd>
    *   <dt>
    *     string|null <var>k_class_tab</var>
    *   </dt>
    *   <dd>
-   *     The Class Tab key. It is `null` if it is a system Tab.
+   *     The class tab key. This will be `null` if it's a system tab.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>
@@ -48,50 +48,52 @@ class TabModel extends WlModelAbstract
    *     string <var>s_title</var>
    *   </dt>
    *   <dd>
-   *     Tab title.
+   *     The tab title.
    *   </dd>
    * </dl>
    *
-   * It is `null` if not set yet.
-   *
    * @get result
-   * @var array|null
+   * @var array[]
    */
-  public $a_tab = null;
+  public $a_tab;
+
+  /**
+   * Whether we are inside the widget or not.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_widget = false;
 
   /**
    * The key of the current business.
    *
-   * It is `null` if not set yet.
-   *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_business = null;
+  public $k_business = '0';
 
   /**
    * The key of the current location.
    *
-   * It is `null` if not set yet.
-   *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_location = null;
+  public $k_location;
 
   /**
    * The key of the current user.
-   * It is not used on server side as the server side uses the current user to build a list of tabs.
-   * So the model must depend on the current user ID.
-   * If we change to a relative (the current user is changed, but the application is not restarted),
-   * we will request information about the booking tabs for this user's relative.
+   * This isn't used on the back end as the back end uses the current user to build a list of tabs.
+   * Therefore, the model must depend on the current user ID.
+   * If changed to a relative (the current user is changed, but the application isn't restarted),
+   * information about the booking tabs for this user's relative will be requested.
    *
-   * It is `null` if not set yet.
+   * This will be `null` if not set yet.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $uid = null;
+  public $uid = '0';
 }
 
 ?>

@@ -1,43 +1,43 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Wl\Profile\PurchaseList;
 
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Gets the details of a specified purchase.
+ * An endpoint that gets the details of a specified purchase.
  *
  * This endpoint may require different IDs to be specified for different types of purchases. The IDs required for a
- * specific item will be the same IDs returned from the `Profile\PurchaseList\PurchaseListModel` endpoint.
+ * specific item will be the same IDs returned from the {@link \WellnessLiving\Wl\Profile\PurchaseList\PurchaseListModel} endpoint.
  */
 class PurchaseListElementModel extends WlModelAbstract
 {
   /**
-   * List of components (not empty if this purchase element is a package). Every element has keys:
+   * A list of components. This won't be empty if this purchase element is a package. Every element has keys:
    * <dl>
    *   <dt>
    *     string [<var>k_enrollment_book</var>]
    *   </dt>
    *   <dd>
-   *     Primary key in {@link \RsEnrollmentBookSql} table.
+   *     The booking enrollment key.
    *   </dd>
    *   <dt>
    *     string [<var>k_login_product</var>]
    *   </dt>
    *   <dd>
-   *     Primary key in {@link \RsLoginProductSql} table.
+   *     The key referencing the product a user purchased.
    *   </dd>
    *   <dt>
    *     string [<var>k_login_promotion</var>]
    *   </dt>
    *   <dd>
-   *     Primary key in {@link \RsLoginPromotionSql} table.
+   *     The key of a user's Purchase Option.
    *   </dd>
    *   <dt>
    *     string [<var>k_session_pass</var>]
    *   </dt>
    *   <dd>
-   *     Primary key in {@link \Wl\Session\Pass\Sql} table.
+   *     The key of a user's session pass.
    *   </dd>
    * </dl>
    *
@@ -65,7 +65,7 @@ class PurchaseListElementModel extends WlModelAbstract
    *     bool <var>is_empty</var>
    *   </dt>
    *   <dd>
-   *     If `true` then the purchased item does not have an image. If `false` then the item has an image.
+   *     If `true`, then the purchased item doesn't have an image. If `false`, then the item has an image.
    *   </dd>
    * </dl>
    *
@@ -96,7 +96,7 @@ class PurchaseListElementModel extends WlModelAbstract
    *   <dd>
    *     The name of the period type.
    *   </dd>
-   * </dl>It is an empty array for other purchase items.
+   * </dl>This will be an empty array for other purchased items.
    *
    * @get result
    * @var array[]
@@ -127,7 +127,7 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * This is `true` only if the purchased item is a promotion and the user can control the renewal of the promotion.
-   * Otherwise, this is `false`.
+   * Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
@@ -143,7 +143,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $dl_end;
 
   /**
-   * Local date of purchase in MySQL format.
+   * The local date of the purchase in MySQL format.
    *
    * @get result
    * @var string
@@ -151,7 +151,8 @@ class PurchaseListElementModel extends WlModelAbstract
   public $dl_purchase;
 
   /**
-   * Not empty only for gift cards. Local date in MySQL format when mail about purchasing was sent (or will be sent) to user.
+   * The local date in MySQL format when mail about purchasing was sent (or will be sent) to the user.
+   * This won't be empty only for gift cards.
    *
    * @get result
    * @var string
@@ -192,7 +193,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $dt_purchase;
 
   /**
-   * Not empty only for gift cards. Date in MySQL format when gift card was redeemed.
+   * The date in MySQL format when gift card was redeemed. This won't be empty only for gift cards.
    *
    * @get result
    * @var string
@@ -200,7 +201,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $dt_redeem;
 
   /**
-   * The percentage value of the discount for the client type. This is empty if a discount was not applied.
+   * The percentage value of the discount for the client type. This will be empty if a discount wasn't applied.
    *
    * @get result
    * @var float
@@ -217,7 +218,7 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * The number of sessions remaining for a promotion. This value is used only for promotions. This value will be `0` if
-   * the purchased item is not a promotion, or if there are no remaining sessions.
+   * the purchased item isn't a promotion or if there are no remaining sessions.
    *
    * @get result
    * @var int
@@ -225,7 +226,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $i_book;
 
   /**
-   * Not `0` only for promotions. How many minutes of sessions were booked by this promotion.
+   * Displays the number of minutes of sessions that were booked by this promotion. This isn't `0` only for promotions.
    *
    * @get result
    * @var int
@@ -234,7 +235,7 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * The number of purchased items bought at the time of purchase.
-   * This field will be `0` for purchase items obtained via a redemption code or as a result of an import.
+   * This will be `0` for purchase items obtained via a redemption code or as a result of an import.
    *
    * @get result
    * @var int
@@ -242,7 +243,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $i_buy;
 
   /**
-   * The percentage value of the discount given by a reward prize. This field will be `0` if a discount was not applied.
+   * The percentage value of the discount given by a reward prize. This will be `0` if a discount wasn't applied.
    *
    * @get result
    * @var int
@@ -250,12 +251,30 @@ class PurchaseListElementModel extends WlModelAbstract
   public $i_discount_count;
 
   /**
-   * This field is only added for promotions. Duration of promotion. Measurement unit is <var>id_duration</var>.
+   * The duration of the promotion. The measurement unit is <var>id_duration</var>. This field is only added for promotions.
    *
    * @get result
    * @var int
    */
   public $i_duration;
+
+  /**
+   * Image Height in pixels. Please specify this value if you need purchase image to be returned in specific size.
+   * In case this value is not specified returned image will have default purchase size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_height = 0;
+
+  /**
+   * Image Width in pixels. Please specify this value if you need purchase image to be returned in specific size.
+   * In case this value is not specified returned image will have default purchase size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_width = 0;
 
   /**
    * The number of bookings left with this promotion. This value is used only for non-sequential promotions.
@@ -274,7 +293,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $i_limit;
 
   /**
-   * The duration of the regular payments interval. This value is used only for “membership” type promotions.
+   * The interval duration of the regular payments. This value is used only for membership-type promotions.
    *
    * @get result
    * @var int
@@ -299,7 +318,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $i_remain_duration;
 
   /**
-   * Not `0` only for promotions. How many times promotion was updated.
+   * Displays how many times promotion was updated. This isn't `0` only for promotions.
    *
    * @get result
    * @var int
@@ -307,7 +326,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $i_renew;
 
   /**
-   * This is used only for promotions. This is the number of visits that were attended for the promotion.
+   * The number of visits that were attended for the promotion. This is used only for promotions.
    *
    * @get result
    * @var int
@@ -315,7 +334,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $i_use;
 
   /**
-   * Not `0` only for promotions. Number of minutes the user has already used with this purchase of this promotion.
+   * The number of minutes the user has already used with this purchase of this promotion. This isn't `0` only for promotions.
    *
    * @get result
    * @var int
@@ -323,7 +342,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $i_use_duration;
 
   /**
-   * The activation mode. One of the {@link \RsActivationSid} constants. This field is only added for promotions.
+   * The activation mode. One of the {@link \WellnessLiving\RsActivationSid} constants. This field is only added for promotions.
    *
    * @get result
    * @var int
@@ -331,8 +350,8 @@ class PurchaseListElementModel extends WlModelAbstract
   public $id_activation;
 
   /**
-   * The type of discount given via a reward prize. One of the {@link \RsCommissionTypeSid} constants. Empty if this
-   * discount was not applied.
+   * The type of discount given via a reward prize. One of the {@link \WellnessLiving\WlCommissionTypeSid} constants. This will be empty
+   * if this discount wasn't applied.
    *
    * @get result
    * @var int
@@ -340,9 +359,9 @@ class PurchaseListElementModel extends WlModelAbstract
   public $id_discount_commission_type;
 
   /**
-   * The type of duration for the promotion. This is used only for “membership” type promotions. This determines
-   * whether the promotion lasts indefinitely, has a fixed duration, or ends on a specific date. Measurement unit
-   * for key <var>i_payment_period</var>. One of the {@link \RsDurationTypeSid} constants.
+   * The type of duration for the promotion. This is used only for membership-type promotions. This determines
+   * whether the promotion lasts indefinitely, has a fixed duration, or ends on a specific date. The measurement unit
+   * for key <var>i_payment_period</var>. One of the {@link \WellnessLiving\WlDurationTypeSid} constants.
    *
    * @get result
    * @var int
@@ -351,8 +370,8 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * The ID of the promotion program. This is used only for promotions.
-   * The measurement unit for key <var>i_payment_period</var>. ID of promotion program type.
-   * One of the {@link \RsProgramTypeSid} constants.
+   * The measurement unit for key <var>i_payment_period</var>. The ID of promotion program type.
+   * One of the {@link \WellnessLiving\WlProgramTypeSid} constants.
    *
    * @get result
    * @var int
@@ -361,7 +380,7 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * The ID of the purchase item type. The measurement unit for key <var>i_payment_period</var>.
-   * ID of purchase item type. One of the {@link \RsPurchaseItemSid} constants.
+   * The ID of purchase item type. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
    *
    * @get result
    * @var int
@@ -369,7 +388,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $id_purchase_item;
 
   /**
-   * The ID of the sale category One of the constants {@link \RsSaleSid}.
+   * The ID of the sale category. One of the constants {@link \WellnessLiving\WlSaleSid}.
    *
    * @get result
    * @var int
@@ -377,7 +396,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $id_sale;
 
   /**
-   * If `true`, then the purchase item is active. If `false`, then the purchase item is not active.
+   * If `true`, then the purchase item is active. If `false`, then the purchase item isn't active.
    *
    * @get result
    * @var bool
@@ -386,7 +405,7 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * If `true`, then the purchased item is a component of another purchase item, as is the case of a package.
-   * If `false`, then the purchased item is not a component of another purchase item.
+   * If `false`, then the purchased item isn't a component of another purchase item.
    *
    * @get result
    * @var bool
@@ -395,7 +414,7 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * If `true`, then this promotion will be converted to a different promotion after it expires. If `false`, then the
-   * promotion will not be converted to a different promotion after it expires. This can only be true for certain
+   * promotion won't be converted to a different promotion after it expires. This can only be true for certain
    * promotions.
    *
    * @get result
@@ -404,7 +423,8 @@ class PurchaseListElementModel extends WlModelAbstract
   public $is_convert;
 
   /**
-   * This is `true` only if the purchased item is a promotion that is expired. This is `false` in all other cases.
+   * This is `true` only if the purchased item is a promotion that has expired. Otherwise, this will be `false`
+   * in all other cases.
    *
    * @get result
    * @var bool
@@ -413,7 +433,7 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * This is `true` only if the purchased item is a promotion and has been placed on hold.
-   * This is `false` in all other cases.
+   * Otherwise, this is `false` in all other cases.
    *
    * @get result
    * @var bool
@@ -432,8 +452,8 @@ class PurchaseListElementModel extends WlModelAbstract
   /**
    * If `true`, then the discount was applied for the member type.
    * If `false`, then the discount was applied for the pass holder type.
-   * If `null`, then the discount was applied for the prospect type (this will not be null only if a discount based
-   * on a client type was applied).
+   * If `null`, then the discount was applied for the prospect type. This won't be `null` only if a discount based
+   * on a client type was applied.
    *
    * @get result
    * @var bool|null
@@ -441,8 +461,8 @@ class PurchaseListElementModel extends WlModelAbstract
   public $is_login_type_member;
 
   /**
-   * If `true`, then the gift card email notification will be sent to the receiver; this is `true` only if the
-   * purchased item is a gift card.  This is `false` in all other cases.
+   * If `true`, then the gift card email notification will be sent to the receiver. This is `true` only if the
+   * purchased item is a gift card. Otherwise, this will be `false` in all other cases.
    *
    * @get result
    * @var bool
@@ -451,7 +471,7 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * If `true`, then the gift card email notification has been sent. This can only be `true` if the purchased item
-   * is a gift card. This is `false` in all other cases.
+   * is a gift card. Otherwise, this will be `false` in all other cases.
    *
    * @get result
    * @var bool
@@ -459,8 +479,16 @@ class PurchaseListElementModel extends WlModelAbstract
   public $is_past;
 
   /**
+   * Not `false` only for promotions.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_promotion;
+
+  /**
    * This is `true` if the gift card has been redeemed.
-   * This can only be `true` if the purchased item is a gift card. This is `false` in all other cases.
+   * This can only be `true` if the purchased item is a gift card. Otherwise, this will be `false` in all other cases.
    *
    * @get result
    * @var bool
@@ -468,8 +496,8 @@ class PurchaseListElementModel extends WlModelAbstract
   public $is_redeem;
 
   /**
-   * This is `true` if the promotion is auto-renewable; this can only be `true` if the purchased item is a promotion.
-   * This is `false` in all other cases.
+   * This is `true` if the promotion is auto-renewable. This can only be `true` if the purchased item is a promotion.
+   * Otherwise, this will be `false` in all other cases.
    *
    * @get result
    * @var bool
@@ -478,7 +506,7 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * This is `true` if the promotion has been transferred. This can only be true if the purchased item is a promotion.
-   * This is `false` if the promotion has not been transferred or in all other cases.
+   * This is `false` if the promotion hasn't been transferred or in all other cases.
    *
    * @get result
    * @var bool
@@ -488,7 +516,7 @@ class PurchaseListElementModel extends WlModelAbstract
   /**
    * The ID of the redemption code used to obtain the item. This should be specified only for items obtained via
    * redemption code (not for ordinary purchases or for purchased promotions without purchases).
-   * This value is `null` if it is not set.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string
@@ -497,7 +525,7 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * The key of the redemption code. This value will not be `0` if the purchased item is obtained via a redemption
-   * code or if it is a component of a package which is obtained via a redemption code.
+   * code or if it's a component of a package obtained via a redemption code.
    *
    * @get result
    * @var string
@@ -522,7 +550,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $k_enrollment_book = '0';
 
   /**
-   * The key of the item. Can correspond to one of many values depending on {@link \Wl\Profile\PurchaseList\PurchaseListElementApi::$id_sale}.
+   * The key of the item. This can correspond to one of many values depending on {@link \WellnessLiving\Wl\Profile\PurchaseList\PurchaseListElementModel::$id_sale}.
    *
    * @get result
    * @var string
@@ -539,7 +567,7 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * The key of the user's promotion. This should only be specified for promotions given without a purchase.
-   * This is not for ordinary purchases or for promotions obtained via redemption codes. This value is `null` if not set.
+   * This isn't for ordinary purchases or for promotions obtained via redemption codes. This will be `null` if not set yet.
    *
    * @get get
    * @var string
@@ -547,7 +575,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $k_login_promotion = '0';
 
   /**
-   * The key of the purchased promotion. This value will not be `0` only for promotions.
+   * The key of the purchased promotion. This won't be `0` only for promotions.
    *
    * @get result
    * @var string
@@ -556,7 +584,7 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * The key of the purchased item. This should be specified only for ordinary purchases
-   * (not for those obtained via redemption codes or as a result of an old import).
+   * and not for purchases obtained via redemption codes or as a result of an old import.
    *
    * @get get
    * @var string
@@ -574,8 +602,8 @@ class PurchaseListElementModel extends WlModelAbstract
   /**
    * The ID of the makeup session used to attend an event.
    *
-   * Must be specified if purchase item is a component of a package and it is a whole event booking.
-   * And only for items which are not components of package.
+   * This must be specified if the purchase item is a component of a package and a whole event booking.
+   * And only for items which aren't components of package.
    *
    * @get get
    * @var string
@@ -599,7 +627,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $m_cost_total;
 
   /**
-   * Amount of discount via prize. Empty if this discount was not applied.
+   * The amount of the discount via prize. This will be empty if this discount wasn't applied.
    *
    * @get result
    * @var string
@@ -607,7 +635,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $m_discount_amount;
 
   /**
-   * The amount of the discount for the client type. This value will be empty if the discount was not applied.
+   * The amount of the discount for the client type. This value will be empty if the discount wasn't applied.
    *
    * @get result
    * @var string
@@ -615,7 +643,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $m_discount_login_type_amount;
 
   /**
-   * The amount of manual discount. Empty if this discount was not applied.
+   * The amount of the manual discount. This will be empty if this discount wasn't applied.
    *
    * @get result
    * @var string
@@ -623,7 +651,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $m_discount_manual;
 
   /**
-   * The amount to pay for each payment period. This is used only for promotions with the program type “membership”.
+   * The amount to pay for each payment period. This is used only for promotions with the membership program type.
    *
    * @get result
    * @var string
@@ -631,7 +659,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $m_period_price;
 
   /**
-   * Source price of item.
+   * The source price of item.
    *
    * @get result
    * @var string
@@ -639,7 +667,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $m_price;
 
   /**
-   * The amount refunded. This will be 0 if there are no refunds.
+   * The amount refunded. This will be `0` if there are no refunds.
    *
    * @get result
    * @var string
@@ -655,10 +683,10 @@ class PurchaseListElementModel extends WlModelAbstract
   public $s_code;
 
   /**
-   * Not empty only for gift cards. Code to redeem gift card.
+   * The code to redeem the gift card. This isn't empty only for gift cards.
    *
-   * Can be auto-generated or custom (entered manually by the staff member during purchase).
-   * Max length - 20 characters. Can include numbers and letters.
+   * This can be auto-generated or custom (entered manually by the staff member during purchase).
+   * The max length is 20 characters, including numbers and letters.
    *
    * @get result
    * @var string
@@ -666,7 +694,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $s_gift_code;
 
   /**
-   * Not empty only for gift cards. Name of gift recipient.
+   * The name of gift recipient. This isn't empty only for gift cards.
    *
    * @get result
    * @var string
@@ -675,7 +703,7 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * The name of the staff member who disabled the usage of the purchased item.
-   * This value will be empty if the purchased item is enabled.
+   * This will be empty if the purchased item is enabled.
    *
    * @get result
    * @var string
@@ -692,7 +720,7 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * The test of the message sent to the gift card recipient. This is used only for gift cards.
-   * This will be empty if an email notification should not be sent.
+   * This will be empty if an email notification shouldn't be sent.
    *
    * @get result
    * @var string
@@ -708,7 +736,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $s_payer;
 
   /**
-   * The title of the converted promotion. This value is used only for promotions which must be converted to another
+   * The title of the converted promotion. This value is used only for promotions that must be converted to another
    * promotion after expiration.
    *
    * @get result
@@ -725,7 +753,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $s_purchase;
 
   /**
-   * The name of the recipient. This value is used only for gift cards.
+   * The name of the user who paid for this purchase.
    *
    * @get result
    * @var string
@@ -765,7 +793,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $uid_payer;
 
   /**
-   * The key of the recipient user. This will only differ for some types of purchased items like gift cards.
+   * The key of the user who paid for this purchase.
    *
    * @get result
    * @var string

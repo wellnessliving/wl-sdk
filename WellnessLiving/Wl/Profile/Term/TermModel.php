@@ -5,12 +5,55 @@ namespace WellnessLiving\Wl\Profile\Term;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about online waiver.
+ * An endpoint that displays information about online waiver.
  */
 class TermModel extends WlModelAbstract
 {
   /**
-   * ID of current business.
+   * The date/time of the waiver confirmation.
+   * <tt>null</tt> if waiver is not confirmed.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $dt_agree;
+
+  /**
+   * The text of the online waiver.
+   *
+   * @get result
+   * @var string
+   */
+  public $html_contract;
+
+  /**
+   * Age of minor which documents can be signed by parent or legal guardian.
+   *
+   * @get result
+   * @var int
+   */
+  public $i_minor_age;
+
+  /**
+   * The IP address from which the confirmation was carried out.
+   * <tt>null</tt> if waiver is not confirmed.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $ip_agree;
+
+  /**
+   * Flag of successful saving agreement.
+   * <tt>true</tt> if agreement was sign up successful <tt>false</tt> - otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_agree;
+
+  /**
+   * The key of the current business.
    *
    * @get get
    * @var string
@@ -18,7 +61,15 @@ class TermModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * ID of a user to show information for.
+   * The user's name.
+   *
+   * @get result
+   * @var string
+   */
+  public $s_name;
+
+  /**
+   * The key of the user to show information for.
    *
    * @get get
    * @var string
@@ -26,44 +77,13 @@ class TermModel extends WlModelAbstract
   public $uid = '0';
 
   /**
-   * Date/time of the waiver confirmation.
+   * The URL to the image with the client's signature.
+   * <tt>false</tt> if waiver is not confirmed.
    *
    * @get result
-   * @var string
+   * @var string|false
    */
-  public $dt_agree = '';
-
-  /**
-   * Text of online waiver.
-   *
-   * @get result
-   * @var string
-   */
-  public $html_contract = '';
-
-  /**
-   * The IP address from which the confirmation was carried out.
-   *
-   * @get result
-   * @var string
-   */
-  public $ip_agree = '';
-
-  /**
-   * User's name.
-   *
-   * @get result
-   * @var string
-   */
-  public $s_name = '';
-
-  /**
-   * URL to image with client's signature.
-   *
-   * @get result
-   * @var string
-   */
-  public $url_signature = '';
+  public $url_signature;
 }
 
 ?>

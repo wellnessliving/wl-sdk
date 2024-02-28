@@ -5,54 +5,68 @@ namespace WellnessLiving\Wl\Login\Attendance\Add;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Adds a client to the attendance list.
- * Can also be used to get a list of purchase options suitable to pay for the session.
+ * An endpoint that adds a client to an attendance list.
+ * This endpoint can also be used to get a list of Purchase Options suitable to pay for the session in question.
  */
 class AddModel extends WlModelAbstract
 {
   /**
-   * Any of the client’s memberships which are suitable to pay for the session.
+   * Any of the client memberships that can be used to pay for the session.
    * Every element is an array with the following keys:
    * <dl>
-   *   <dt>string <var>k_login_promotion</var></dt>
-   *   <dd>The login promotion key, available to pay for the session.</dd>
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>The title of the login promotion.</dd>
+   *   <dt>
+   *     string <var>k_login_promotion</var>
+   *   </dt>
+   *   <dd>
+   *     The login promotion key, available to pay for the session.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_title</var>
+   *   </dt>
+   *   <dd>
+   *     The title of the login promotion.
+   *   </dd>
    * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
-  public $a_login_promotion = [];
+  public $a_login_promotion;
 
   /**
-   * Any user's sessions passes which are suitable to pay for the session.
-   * Every element is an array has the following keys:
+   * Any user's session passes that can be used to pay for the session.
+   * Every element is an array with the following keys:
    * <dl>
-   *   <dt>string <var>k_session_pass</var></dt>
-   *   <dd>The session pass key, available to pay for the session.</dd>
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>The title of the session pass.</dd>
+   *   <dt>
+   *     string <var>k_session_pass</var>
+   *   </dt>
+   *   <dd>
+   *     The session pass key, available to pay for the session.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_title</var>
+   *   </dt>
+   *   <dd>
+   *     The title of the session pass.
+   *   </dd>
    * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
-  public $a_session_pass = [];
+  public $a_session_pass;
 
   /**
-   * The start date and time of the class in GMT and in MySQL format.
-   *
-   * <tt>null</tt> means not set.
+   * The start date and time of the class in GMT and MySQL format.
    *
    * @get get
    * @post get
-   * @var string|null
+   * @var string
    */
-  public $dt_date_global = null;
+  public $dt_date_global = '';
 
   /**
-   * How payment was handled for the session.
+   * Determines how the payment was handled for the session.
    * One of the {@link \WellnessLiving\Wl\Login\Attendance\AddOptionSid} constants.
    *
    * @post post
@@ -61,7 +75,8 @@ class AddModel extends WlModelAbstract
   public $id_add_option = 0;
 
   /**
-   * How the session was booked. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * Determines how the session was booked.
+   * One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    * We recommend using the `WEB_BACKEND` value.
    *
    * @post post
@@ -70,45 +85,58 @@ class AddModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * The status of the visit. One of the {@link \Wl\Visit\VisitSid} constants.
+   * The status of the visit.
+   * One of the {@link \WellnessLiving\Wl\Visit\VisitSid} constants.
    *
    * @post result
    * @var int
    */
-  public $id_visit = 0;
+  public $id_visit;
 
   /**
-   * If `true` then the session is free with no ways to pay. If `false`, then the session can be paid for.
+   * Defines whether only single session can be booked for block event.
+   *
+   * <tt>true</tt> Only current session of the block event will be booked in a case if staff event has appropriate setting to do this action.
+   *   In this case this session will be considered as session out of event block.
+   * <tt>false</tt> all available event sessions will be booked.
+   *   In this case session will be considered as part of event block.
+   *
+   * @post get
+   * @var bool
+   */
+  public $is_event_single = false;
+
+  /**
+   * If `true`, the session is free with no methods of payment. If `false`, the session can be paid for.
    *
    * @get result
-   * @var boolean
+   * @var bool
    */
-  public $is_free = false;
+  public $is_free;
 
   /**
-   * If `true`, then the visit was automatically paid for in any available way during the booking.
-   * If `false`, then the visit was not automatically paid for.
+   * If `true`, the visit was automatically paid for in any available way during the booking.
+   * If `false`, the visit wasn't automatically paid for.
    *
    * @post result
-   * @var boolean
+   * @var bool
    */
-  public $is_paid = false;
+  public $is_paid;
 
   /**
    * The class period key.
-   *
-   * <tt>null</tt> means not set.
    *
    * @get get
    * @post get
    * @var string
    */
-  public $k_class_period = null;
+  public $k_class_period = '0';
 
   /**
-   * Key of user's promotion to be used for booking.
+   * The key of the user's promotion to be used for booking.
    * If empty, use any suitable user's promotion.
    *
+   * @get result
    * @post post
    * @var string
    */
@@ -131,30 +159,28 @@ class AddModel extends WlModelAbstract
    * @post result
    * @var string
    */
-  public $k_visit = '0';
+  public $k_visit;
 
   /**
    * The price of the session, including any taxes and discounts.
    *
-   * <tt>null</tt> means not loaded yet.
+   * If `null`, the price of the session hasn't been loaded yet.
    *
    * @get result
-   * @var string
+   * @var string|null
    */
-  public $m_price = null;
+  public $m_price;
 
   /**
-   * The user's account balance if they were charged the m_price amount.
-   *
-   * <tt>null</tt> means not loaded yet.
+   * The user's account balance if they were charged the {@link \WellnessLiving\Wl\Login\Attendance\Add\AddModel::$m_price} amount.
    *
    * @get result
-   * @var string
+   * @var string|null
    */
-  public $m_rest = null;
+  public $m_rest;
 
   /**
-   * The client’s user key.
+   * The client user key.
    *
    * @get get
    * @post get
@@ -163,14 +189,14 @@ class AddModel extends WlModelAbstract
   public $uid_client = '0';
 
   /**
-   * The URL link to the store, to allow for the payment of the visit.
+   * The URL link to the store to allow for the payment of the visit.
    *
-   * This link is for Web only.
+   * This link is for web only.
    *
    * @post result
    * @var string
    */
-  public $url_store = '';
+  public $url_store;
 }
 
 ?>

@@ -1,18 +1,20 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Wl\Appointment\Book\Service;
 
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves information about services in the current service category.
+ * An endpoint that retrieves information about services in the current service category.
+ *
+ * @deprecated New version {@link \WellnessLiving\Wl\Appointment\Book\Service\ServiceList52Model} should be used instead.
  */
 class ServiceListModel extends WlModelAbstract
 {
   /**
-   * The class tab key to filter services. If empty, find on a standard book now tab.
+   * The class tab key to use to filter services. If empty, this can be found on the standard book tab.
    *
-   * If multiple tabs are sent, appointment types, which are in at least one of the tabs, will be in the result.
+   * If multiple tabs are sent, appointment types, which are in at least in one of the tabs, will be in the result.
    *
    * @get get
    * @var string[]
@@ -22,20 +24,55 @@ class ServiceListModel extends WlModelAbstract
   /**
    * A list of services with information about them.
    *
-   * Key - the service key from {@link \RsServiceSql} table
-   * Value - an array, where every element has next keys:
+   * <b>Key</b> - the service key.
+   * <b>Value</b> - an array, with every element consisting of the next keys:
    * <dl>
    *   <dt>
    *     array <var>a_class_tab</var>
    *   </dt>
    *   <dd>
-   *     The list of tab keys for service.
+   *     The list of tab keys for the service.
+   *   </dd>
+   *   <dt>
+   *     array[] <var>a_direct_link</var>
+   *   </dt>
+   *   <dd>
+   *     A list of links to start booking from a direct link.
+   *     This can't be one link, as the same appointment can be available in several booking tabs.
+   *     Therefore, each booking tab has its own direct booking link.
+   *     Each element has two values:
+   *     <dl>
+   *       <dt>string <var>k_class_tab</var></dt>
+   *       <dd>The key of the book now tab.</dd>
+   *       <dt>string <var>url_tab</var></dt>
+   *       <dd>The booking URL. This will open the booking wizard under the related booking tab.</dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>
+   *     array <var>a_config</var>
+   *   </dt>
+   *   <dd>
+   *     Appointment-specific business policies. This will be `null` when using the general business policy.
    *   </dd>
    *   <dt>
    *     array <var>a_image</var>
    *   </dt>
    *   <dd>
-   *     The appointment image. See {@link \RsServiceLogo::data()} for details.
+   *     The appointment image. See {@link RsServiceLogo::data()} for details.
+   *   </dd>
+   *   <dt>
+   *     string[] <var>a_login_type_restriction</var>
+   *   </dt>
+   *   <dd>
+   *     List of login type titles for current service.
+   *     Clients that have one of these types can book service.
+   *   </dd>
+   *   <dt>
+   *     string[] <var>a_member_group_restriction</var>
+   *   </dt>
+   *   <dd>
+   *     List of member groups titles for current service.
+   *     Clients that belongs to these groups can book service.
    *   </dd>
    *   <dt>
    *     string <var>f_deposit</var>
@@ -65,8 +102,8 @@ class ServiceListModel extends WlModelAbstract
    *     bool <var>hide_application</var>
    *   </dt>
    *   <dd>
-   *      Whether services will be hidden in the White Label mobile application.
-   *      <tt>true</tt> means that service won't be displayed; <tt>false</tt> if otherwise.
+   *      Determines whether the service will be hidden in the White Label mobile application.
+   *      `true` means that service won't be displayed. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     int <var>i_age_from</var>
@@ -84,7 +121,7 @@ class ServiceListModel extends WlModelAbstract
    *     int <var>i_price</var>
    *   </dt>
    *   <dd>
-   *     The price type. One of {@link \RsServicePriceSid} constants.
+   *     The price type ID. One of {@link \WellnessLiving\RsServicePriceSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>i_duration</var>
@@ -96,94 +133,117 @@ class ServiceListModel extends WlModelAbstract
    *     int <var>id_book_flow</var>
    *   </dt>
    *   <dd>
-   *     The type of client booking flow. One of {@link \Wl\Service\ServiceBookFlowSid} constants.
+   *     The type of client booking flow. One of {@link \WellnessLiving\Wl\Service\ServiceBookFlowSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_service_require</var>
    *   </dt>
    *   <dd>
-   *     The required payment type. One of {@link \RsServiceRequireSid} constants.
+   *     The required payment type ID. One of {@link \WellnessLiving\RsServiceRequireSid} constants.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_age_public</var>
+   *   </dt>
+   *   <dd>
+   *     `true` if age restrictions are public. Otherwise, `false` if they should be hidden from clients.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_age_restricted</var>
+   *   </dt>
+   *   <dd>
+   *     Determines whether this service can't be booked due to age restrictions.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_back_to_back</var>
+   *   </dt>
+   *   <dd>
+   *      Determines whether this service supports back-to-back booking.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_bookable</var>
+   *   </dt>
+   *   <dd>
+   *     Whether this appointment can be booked online.
    *   </dd>
    *   <dt>
    *     bool <var>is_book_repeat_client</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if clients can book classes and appointments on a recurring basis, <tt>false</tt> if otherwise.
+   *     `true` if clients can book classes and appointments on a recurring basis. Otherwise, this `false`.
    *   </dd>
    *   <dt>
    *     bool <var>is_deposit_percent</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if <var>f_deposit</var> is percents; <tt>false</tt> if <var>f_deposit</var> is an amount of
+   *     `true` if <var>f_deposit</var> is a percentage. Otherwise, this will be `false` if <var>f_deposit</var> is an amount of
    *     money.
    *   </dd>
    *   <dt>
    *     bool <var>is_gender_select</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if clients can select a staff member's gender; <tt>false</tt> if otherwise.
+   *     `true` if clients can select the staff member's gender. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     bool <var>is_online_sell</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if clients can buy this appointment; <tt>false</tt> if only staff members can sell it.
+   *     `true` if clients can buy this appointment. Otherwise, this will be `false` if only staff members can sell it.
    *   </dd>
    *   <dt>
    *     bool <var>is_resource_type</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if the service requires assets; <tt>false</tt> if otherwise.
+   *     `true` if the service requires assets. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     bool <var>is_single_buy</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if the appointment can be booked without a Purchase Option; <tt>false</tt> if it's necessary to
+   *     `true` if the appointment can be booked without a Purchase Option. Otherwise, this will be `false` if it's necessary to
    *     buy a Purchase Option.
    *   </dd>
    *   <dt>
    *     bool <var>is_staff_confirm</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if the appointment must be confirmed by a staff member after booking; <tt>false</tt> if
-   *     otherwise.
+   *     `true` if the appointment must be confirmed by a staff member after booking. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     bool <var>is_staff_skip</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if clients can select staff members for the appointment; <tt>false</tt> if otherwise.
+   *     `true` if clients can select a staff member for the appointment. Otherwise, this will be `false` if otherwise.
    *   </dd>
    *   <dt>
    *     bool <var>is_question</var>
    *   </dt>
    *   <dd>
-   *     Whether the service will ask for questions or not.
+   *     Determines whether the service will ask for questions or not.
    *   </dd>
    *   <dt>
    *     bool <var>is_virtual</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if service is virtual; <tt>false</tt> if otherwise.
+   *     `true` if the service is virtual. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     string <var>k_service</var>
    *   </dt>
    *   <dd>
-   *     The appointment primary key in {@link \RsServiceSql} table.
+   *     The appointment primary key.
    *   </dd>
    *   <dt>
    *     string <var>k_service_category</var>
    *   </dt>
    *   <dd>
-   *     The service category primary key in {@link \RsServiceCategorySql} table.
+   *     The service category primary key.
    *   </dd>
    *   <dt>
    *     string <var>s_duration</var>
    *   </dt>
    *   <dd>
-   *     The appointment duration in a human readable format.
+   *     The appointment duration in a human-readable format.
    *   </dd>
    *   <dt>
    *     string <var>s_service</var>
@@ -192,10 +252,28 @@ class ServiceListModel extends WlModelAbstract
    *     The appointment title.
    *   </dd>
    *   <dt>
-   *     string <var>xml_describe</var>
+   *     string <var>text_age_restriction</var>
    *   </dt>
    *   <dd>
-   *     The appointment description.
+   *     Age restriction header.
+   *   </dd>
+   *   <dt>
+   *     string <var>xml_description</var>
+   *   </dt>
+   *   <dd>
+   *     Appointment description.
+   *   </dd>
+   *   <dt>
+   *     string <var>xml_description_short</var>
+   *   </dt>
+   *   <dd>
+   *     Appointment short description.
+   *   </dd>
+   *   <dt>
+   *     string <var>xml_special</var>
+   *   </dt>
+   *   <dd>
+   *      Special instructions.
    *   </dd>
    * </dl>
    *
@@ -205,8 +283,36 @@ class ServiceListModel extends WlModelAbstract
   public $a_service;
 
   /**
-   * <tt>true</tt> - return all active services of a certain location;
-   * <tt>false</tt> - return only services which are bound to a book now tab.
+   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * There may be empty values in this list, which means that this is a walk-in.
+   *
+   * @get get
+   * @post get
+   * @var string[]
+   */
+  public $a_uid = [];
+
+  /**
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int|null
+   */
+  public $i_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @var int|null
+   */
+  public $i_width = 0;
+
+  /**
+   * `true` - return all active services for a certain location.
+   * `false` - return only services that are associated with a book now tab.
    *
    * @get get
    * @var bool
@@ -214,8 +320,16 @@ class ServiceListModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * <tt>true</tt> - find in all book now tabs;
-   * <tt>false</tt> - find only in selected book now tabs.
+   * Whether services allow multiple appointment booking.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_multiple_booking;
+
+  /**
+   * `true` - search in all tabs.
+   * `false` - search only on the selected book now tab.
    *
    * @get get
    * @var bool
@@ -223,7 +337,16 @@ class ServiceListModel extends WlModelAbstract
   public $is_tab_all = false;
 
   /**
-   * The class tab key to filter services. If empty or <tt>'0'</tt>, found on the standard book now tab.
+   * `true` if client is walk-in, otherwise `false`.
+   *
+   * @get get
+   * @post get
+   * @var bool
+   */
+  public $is_walk_in = false;
+
+  /**
+   * The class tab key to filter services. If empty or `0`, this can be found on the standard book now tab.
    *
    * @get get
    * @var string
@@ -231,9 +354,7 @@ class ServiceListModel extends WlModelAbstract
   public $k_class_tab = '0';
 
   /**
-   * The location to show the available appointments' booking schedule.
-   *
-   * The primary key in {@link \RsLocationSql} table.
+   * Location to show available appointment booking schedule.
    *
    * @get get,result
    * @post get
@@ -242,7 +363,7 @@ class ServiceListModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
-   * The key of a service category for which to show information.
+   * The key of a service category to show information for.
    *
    * @get get
    * @var string
@@ -250,9 +371,7 @@ class ServiceListModel extends WlModelAbstract
   public $k_service_category = '0';
 
   /**
-   * The user for whom to get information.
-   *
-   * The primary key in {@link \PassportLoginSql} table.
+   * User to get information for.
    *
    * @get get
    * @post get

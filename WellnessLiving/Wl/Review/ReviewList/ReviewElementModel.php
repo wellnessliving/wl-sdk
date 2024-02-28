@@ -5,24 +5,36 @@ namespace WellnessLiving\Wl\Review\ReviewList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Returns information about a review.
+ * An endpoint that returns information about a review.
  */
 class ReviewElementModel extends WlModelAbstract
 {
   /**
-   * An array containing information about the review with the following fields:
+   * Review data:
    * <dl>
    *   <dt>
    *     string <var>dt_add</var>
    *   </dt>
    *   <dd>
-   *     The date the review was added.
+   *     Date when review was added by user.
    *   </dd>
    *   <dt>
    *     float <var>f_rate</var>
    *   </dt>
    *   <dd>
-   *     The review rating (1-5 stars).
+   *     Review rate.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_review_status</var>
+   *   </dt>
+   *   <dd>
+   *     Status of the Review
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_featured</var>
+   *   </dt>
+   *   <dd>
+   *     If `true`, the review is featured. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     bool <var>is_verify</var>
@@ -30,39 +42,47 @@ class ReviewElementModel extends WlModelAbstract
    *   <dd>
    *     <tt>true</tt> if review is verified, <tt>false</tt> otherwise.
    *   </dd>
-   *   <dd>
-   *     Review rate.
-   *   </dd>
    *   <dt>
-   *     string <var>s_firstname</var>
+   *     string <var>text_firstname</var>
    *   </dt>
    *   <dd>
-   *     The first name of the user leaving the review.
+   *     Client's first name who added review.
    *   </dd>
    *   <dt>
-   *     string <var>s_lastname</var>
+   *     string <var>text_lastname</var>
    *   </dt>
    *   <dd>
-   *     The surname of the user leaving the review.
+   *     Client's last name who added review.
    *   </dd>
    *   <dt>
-   *     string <var>s_reply</var>
+   *     string <var>text_reply</var>
    *   </dt>
    *   <dd>
-   *     The staff members of the business have the option to reply to reviews. This is the text of the reply; if there
-   *     is no reply, then this willl be an empty string.
+   *     Staff reply. Can be empty.
    *   </dd>
    *   <dt>
-   *     string <var>s_text</var>
+   *     string <var>text_review</var>
    *   </dt>
    *   <dd>
-   *     The text of the review.
+   *     Review text.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_business_name</var>
+   *   </dt>
+   *   <dd>
+   *     Business name
+   *   </dd>
+   *   <dt>
+   *     string <var>text_response</var>
+   *   </dt>
+   *   <dd>
+   *     Word "response".
    *   </dd>
    *   <dt>
    *     string <var>uid</var>
    *   </dt>
    *   <dd>
-   *     The user ID of the user leaving the review.
+   *     User key.
    *   </dd>
    *   <dt>
    *     string <var>url_logo</var>
@@ -75,19 +95,20 @@ class ReviewElementModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public $a_review;
+  public $a_review = [];
 
   /**
-   * Key of the business to which the review belongs.
+   * The key of the business to which the review belongs.
    *
    * @get get
    * @var string
    */
-  public $k_business;
+  public $k_business = '';
 
   /**
    * The review key.
    *
+   * @delete get
    * @get get
    * @var string
    */
@@ -96,7 +117,7 @@ class ReviewElementModel extends WlModelAbstract
   /**
    * The user key.
    *
-   * May be empty for a case of quest.
+   * May be empty in the case of a guest.
    *
    * @get get
    * @var string

@@ -5,59 +5,99 @@ namespace WellnessLiving\Wl\Profile\Alert;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves information about user alert messages.
+ * An endpoint that retrieves information about client alert messages.
  */
 class AlertModel extends WlModelAbstract
 {
   /**
-   * List of alerts. Every element array with keys:
+   * A list of alerts. Every element is an array with the following keys:
    * <dl>
-   *   <dt>string|null <var>dt_date</var></dt>
+   *   <dt>
+   *     string|null <var>dt_date</var>
+   *   </dt>
    *   <dd>
-   *     Date and time in MySQL format in local time when alert was last modified.
-   *     <tt>null</tt> if date is not available for this alert.
+   *     The date and time in MySQL format in local time when the alert was last modified.
+   *     This will be `null` if the date isn't available for this alert.
    *   </dd>
-   *   <dt>bool <var>is_today</var></dt>
-   *   <dd><tt>true</tt> - if alert added today; <tt>false</tt> - otherwise.</dd>
-   *   <dt>string [<var>k_pay_account</var>]</dt>
-   *   <dd>ID of user's account. Primary key in {@link RsPayAccountSql} table.</dd>
-   *   <dt>string [<var>k_purchase_item</var>]</dt>
-   *   <dd>ID of purchase item. Primary  key in {@link RsPurchaseItemSql} table.</dd>
-   *   <dt>string <var>s_text</var></dt>
-   *   <dd>Text of alert.</dd>
+   *   <dt>
+   *     bool <var>is_today</var>
+   *   </dt>
+   *   <dd>
+   *     This will be `true` if the alert was added today. Otherwise, this will be `false`.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_profile_note</var>
+   *   </dt>
+   *   <dd>
+   *     ID of alert type. One of {@link \WellnessLiving\RsProfileNoteSid} constants.
+   *   </dd>
+   *   <dt>
+   *     string [<var>k_pay_account</var>]
+   *   </dt>
+   *   <dd>
+   *     The key of the client's account.
+   *   </dd>
+   *   <dt>
+   *     string [<var>k_purchase_item</var>]
+   *   </dt>
+   *   <dd>
+   *     The key of the purchase item.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_text</var>
+   *   </dt>
+   *   <dd>
+   *     The alert's text.
+   *   </dd>
    * </dl>
    *
-   * <tt>null</tt> if not set yet.
-   *
    * @get result
-   * @var array|null
-   *
+   * @var array[]
    */
-  public $a_alert = null;
+  public $a_alert;
 
   /**
-   * List of warnings. Every element array with keys:
+   * A list of warnings. Every element is an array with the following keys:
    * <dl>
-   *   <dt>bool <var>dt_date</var></dt>
-   *   <dd>Date and time in MySQL format in local time when warning was last modified.</dd>
-   *   <dt>bool <var>is_flag</var></dt>
-   *   <dd><tt>true</tt> - is flagged; <tt>false</tt> - is not flagged.</dd>
-   *   <dt>bool <var>is_today</var></dt>
-   *   <dd><tt>true</tt> - if warning added today; <tt>false</tt> - otherwise.</dd>
-   *   <dt>string <var>s_text</var></dt>
-   *   <dd>Text of warning.</dd>
+   *   <dt>
+   *     string[] <var>a_location_flag</var>
+   *   </dt>
+   *   <dd>
+   *     The list of locations keys from {@link \RsLocationSql} table, where this note is flagged.
+   *   </dd>
+   *   <dt>
+   *     bool <var>dt_date</var>
+   *   </dt>
+   *   <dd>
+   *     The date and time in MySQL format in local time when the warning was last modified.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_flag</var>
+   *   </dt>
+   *   <dd>
+   *     This will be `true` if the client is flagged. Otherwise, this will be `false`.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_today</var>
+   *   </dt>
+   *   <dd>
+   *     This will be `true` if the warning was added today. Otherwise, this will be `false`.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_text</var>
+   *   </dt>
+   *   <dd>
+   *     The text of the warning.
+   *   </dd>
    * </dl>
    *
-   * <tt>null</tt> if not set yet.
-   *
    * @get result
-   * @var array|null
-   *
+   * @var array[]
    */
-  public $a_warning = null;
+  public $a_warning;
 
   /**
-   * Key of current business.
+   * The key of the business.
    *
    * @get get
    * @var string
@@ -65,7 +105,7 @@ class AlertModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Key of a user to show information for.
+   * The key of the user to show information for.
    *
    * @get get
    * @var string

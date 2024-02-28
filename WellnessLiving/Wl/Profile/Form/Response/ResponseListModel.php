@@ -1,0 +1,90 @@
+<?php
+
+namespace WellnessLiving\Wl\Profile\Form\Response;
+
+use WellnessLiving\Wl\Quiz\Response\SourceSid;
+use WellnessLiving\WlModelAbstract;
+
+/**
+ * An endpoint that retrieves a list of a user's quiz responses.
+ */
+class ResponseListModel extends WlModelAbstract
+{
+  /**
+   * The list of uncompleted quiz responses. Each element has the next structure: <dl>
+   *  <dt>string <var>dtl_date</var></dt>
+   *  <dd>The date of the request to fill out a quiz form.</dd>
+   *  <dt>int <var>id_source</var></dt>
+   *  <dd>The place where the request to fill out a quiz form occurred. One of the {@link SourceSid} constants.</dd>
+   *  <dt>bool <var>is_private</var></dt>
+   *  <dd>
+   *    Determines whether the form can be viewed by staff member only after confirmation.
+   *    `true` — the form can be viewed only after confirmation.
+   *    `false` — the form can always be viewed.
+   *  </dd>
+   *  <dt>string <var>k_quiz</var></dt>
+   *  <dd>The quiz key.</dd>
+   *  <dt>string <var>k_quiz_login</var></dt>
+   *  <dd>The key of the request.</dd>
+   *  <dt>string <var>text_title</var></dt>
+   *  <dd>The quiz title.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array[]
+   */
+  public $a_quiz_login = [];
+
+  /**
+   * The list of completed quiz responses. Each element has the next structure: <dl>
+   *  <dt>string <var>dtl_date</var></dt>
+   *  <dd>The date of the request to fill out a quiz form.</dd>
+   *  <dt>int <var>id_source</var></dt>
+   *  <dd>The place where the request to fill out the quiz form occurred. One of the {@link SourceSid} constants.</dd>
+   *  <dt>int <var>id_status</var></dt>
+   *  <dd>Status of the response. One of {@link ResponseStatusSid} constants.</dd>
+   *  <dt>bool <var>is_private</var></dt>
+   *  <dd>
+   *    Determines whether the form can be viewed by staff member only after confirmation.
+   *    `true` — the form can be viewed only after confirmation.
+   *    `false` — the form can always be viewed.
+   *  </dd>
+   *  <dt>string <var>k_quiz</var></dt>
+   *  <dd>The quiz key.</dd>
+   *  <dt>string <var>k_quiz_login</var></dt>
+   *  <dd>The quiz response key.</dd>
+   *  <dt>string <var>text_title</var></dt>
+   *  <dd>The quiz title.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array[]
+   */
+  public $a_quiz_response = [];
+
+  /**
+   * This will be `true` if the API is being used from the backend. Otherwise, this will be `false`.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_backend = false;
+
+  /**
+   * The key of the business to show information for.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_business = '';
+
+  /**
+   * The key of the user to show information for.
+   *
+   * @get get
+   * @var string
+   */
+  public $uid = '';
+}
+
+?>

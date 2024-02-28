@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\User\Referrer;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Search referrer by query's string.
+ * An endpoint that searches for a referrer using a string.
  */
 class ReferrerModel extends WlModelAbstract
 {
   /**
-   * Information about the referrer's photo. Has next structure:
+   * Information about the referrer's photo. The information returned has the following structure:
    * <dl>
    *   <dt>
    *     int <var>i_height</var>
@@ -38,7 +38,7 @@ class ReferrerModel extends WlModelAbstract
   public $a_photo;
 
   /**
-   * Current business key.
+   * The key of the current business.
    *
    * @get get
    * @var string
@@ -46,7 +46,7 @@ class ReferrerModel extends WlModelAbstract
   public $k_business;
 
   /**
-   * The email of the referrer.
+   * The email address of the referrer.
    *
    * @get result
    * @var string
@@ -78,7 +78,7 @@ class ReferrerModel extends WlModelAbstract
   public $s_name_last;
 
   /**
-   * The phone of the referrer.
+   * The phone number of the referrer.
    *
    * @get result
    * @var string
@@ -86,7 +86,7 @@ class ReferrerModel extends WlModelAbstract
   public $s_phone;
 
   /**
-   * A string for search a referrer.
+   * The string to be used for searching for a referrer.
    *
    * @get get
    * @var string
@@ -94,10 +94,12 @@ class ReferrerModel extends WlModelAbstract
   public $s_search = '';
 
   /**
-   * Client's user key of the referrer.
+   * The referrer's user key.
    *
    * @get result
    * @var string
    */
   public $uid_referrer;
 }
+
+?>

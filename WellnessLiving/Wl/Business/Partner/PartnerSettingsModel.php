@@ -6,7 +6,6 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * An endpoint that works with partner settings of the business.
- * The name of the business owner, review(s) about WellnessLiving, and more.
  * This information is entered by a staff member when a client enrolls into Partner Program and uses a custom landing page, which
  * is available by special business URL.
  */
@@ -16,8 +15,8 @@ class PartnerSettingsModel extends WlModelAbstract
    * The homepage tour of the business, which depends on the type.
    *
    * @get result
+   * @see \WellnessLiving\WlHomeTourSid
    * @var int
-   * @see \WellnessLiving\RsHomeTourSid
    */
   public $id_business_tour = 0;
 
@@ -42,6 +41,7 @@ class PartnerSettingsModel extends WlModelAbstract
    *
    * @get result
    * @var string
+   * @deprecated This field is not used anymore.
    */
   public $text_name_first;
 
@@ -50,6 +50,7 @@ class PartnerSettingsModel extends WlModelAbstract
    *
    * @get result
    * @var string
+   * @deprecated This field is not used anymore.
    */
   public $text_name_last;
 
@@ -58,6 +59,7 @@ class PartnerSettingsModel extends WlModelAbstract
    *
    * @get result
    * @var string
+   * @deprecated This field is not used anymore.
    */
   public $text_position;
 
@@ -66,14 +68,18 @@ class PartnerSettingsModel extends WlModelAbstract
    *
    * @get result
    * @var string
+   * @deprecated This field is not used anymore.
    */
   public $text_review;
 
   /**
    * A link to the photo of the business representative.
    *
+   * `null` in case when image is not uploaded.
+   *
    * @get result
-   * @var string
+   * @var string|null
+   * @deprecated This field is not used anymore.
    */
   public $url_photo;
 }

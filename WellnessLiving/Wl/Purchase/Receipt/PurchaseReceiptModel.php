@@ -5,30 +5,30 @@ namespace WellnessLiving\Wl\Purchase\Receipt;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Data of certain purchase for a receipt.
+ * An endpoint that returns receipt data of certain purchase.
  */
 class PurchaseReceiptModel extends WlModelAbstract
 {
   /**
-   * Information about rest amount on personal user account after payment of purchase. Every element has keys:
+   * Information about the account balance for a user's account after payment for the purchase. Every element has the following keys:
    * <dl>
    *   <dt>
    *     string <var>m_amount</var>
    *   </dt>
    *   <dd>
-   *     Rest amount on user account.
+   *     The account balance on the user's account.
    *   </dd>
    *   <dt>
    *     string <var>text_currency</var>
    *   </dt>
    *   <dd>
-   *     Currency of the amount.
+   *     The currency of the amount.
    *   </dd>
    *   <dt>
    *     string <var>text_method</var>
    *   </dt>
    *   <dd>
-   *     Payment method title.
+   *     The payment method title.
    *   </dd>
    * </dl>
    *
@@ -38,37 +38,37 @@ class PurchaseReceiptModel extends WlModelAbstract
   public $a_account_rest;
 
   /**
-   * Information about business:
+   * Information about the business.
    * <dl>
    *   <dt>
    *     array <var>a_logo</var>
    *   </dt>
    *   <dd>
-   *     Business logo:
+   *     The business logo.
    *     <dl>
    *       <dt>
    *         int <var>i_height</var>
    *       </dt>
    *       <dd>
-   *         Image height.
+   *         The image height.
    *       </dd>
    *       <dt>
    *         int <var>i_width</var>
    *       </dt>
    *       <dd>
-   *         Image width.
+   *         The image width.
    *       </dd>
    *       <dt>
    *         bool <var>is_empty</var>
    *       </dt>
    *       <dd>
-   *         Whether image is empty.
+   *         This will be `true` if the image is empty. Otherwise, this will be `false`.
    *       </dd>
    *       <dt>
    *         string <var>text_url</var>
    *       </dt>
    *       <dd>
-   *         URL of the image.
+   *         The URL of the image.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -76,25 +76,25 @@ class PurchaseReceiptModel extends WlModelAbstract
    *     string <var>text_address</var>
    *   </dt>
    *   <dd>
-   *     Business address.
+   *     The business's address.
    *   </dd>
    *   <dt>
    *     string <var>text_mail</var>
    *   </dt>
    *   <dd>
-   *     Business mail.
+   *     The business's email address.
    *   </dd>
    *   <dt>
    *     string <var>text_phone</var>
    *   </dt>
    *   <dd>
-   *     Business phone.
+   *     The business's phone number.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Business name.
+   *     The business name.
    *   </dd>
    * </dl>
    *
@@ -104,25 +104,25 @@ class PurchaseReceiptModel extends WlModelAbstract
   public $a_business;
 
   /**
-   * Payment transaction information. Every element has keys:
+   * Payment transaction information. Every element has the following keys:
    * <dl>
    *   <dt>
    *     string <var>text_card_number</var>
    *   </dt>
    *   <dd>
-   *     Card or account number.
+   *     The card or account number.
    *   </dd>
    *   <dt>
    *     string <var>text_card_system</var>
    *   </dt>
    *   <dd>
-   *     Card system name from {@link \ACardSystemSid}.
+   *     The card system name from {@link \WellnessLiving\Core\a\ACardSystemSid}.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Payment account title. 'Account number' for ACH, Card for all other.
+   *     The payment account title. This will be 'Account number' for ACH, 'Card' for all other cases.
    *   </dd>
    * </dl>
    *
@@ -132,31 +132,31 @@ class PurchaseReceiptModel extends WlModelAbstract
   public $a_card;
 
   /**
-   * Information about customer:
+   * Information about the customer.
    * <dl>
    *   <dt>
    *     string <var>text_address</var>
    *   </dt>
    *   <dd>
-   *     Customer address.
+   *     The customer's address.
    *   </dd>
    *   <dt>
    *     string <var>text_mail</var>
    *   </dt>
    *   <dd>
-   *     Customer mail.
+   *     The customer's email address.
    *   </dd>
    *   <dt>
    *     string <var>text_name</var>
    *   </dt>
    *   <dd>
-   *     Customer name.
+   *     The customer's name.
    *   </dd>
    *   <dt>
    *     string <var>text_phone</var>
    *   </dt>
    *   <dd>
-   *     Customer phone.
+   *     The customer's phone number.
    *   </dd>
    * </dl>
    *
@@ -166,25 +166,25 @@ class PurchaseReceiptModel extends WlModelAbstract
   public $a_customer;
 
   /**
-   * List of payment methods of current purchase. Every element has keys:
+   * A list of payment methods for the current purchase. Every element has the following keys:
    * <dl>
    *   <dt>
    *     string <var>m_amount</var>
    *   </dt>
    *   <dd>
-   *     Amount of the payment.
+   *     The amount of the payment.
    *   </dd>
    *   <dt>
    *     string <var>text_currency</var>
    *   </dt>
    *   <dd>
-   *     Currency of the amount.
+   *     The currency of the amount.
    *   </dd>
    *   <dt>
    *     string <var>text_pay_method</var>
    *   </dt>
    *   <dd>
-   *     Payment method title.
+   *     The payment method title.
    *   </dd>
    * </dl>
    *
@@ -194,55 +194,55 @@ class PurchaseReceiptModel extends WlModelAbstract
   public $a_pay_method;
 
   /**
-   * Full information about prices of the purchase:
+   * Complete information about price information for the purchase.
    * <dl>
    *   <dt>
    *     string <var>m_discount</var>
    *   </dt>
    *   <dd>
-   *     Discount amount.
+   *     The discount amount.
    *   </dd>
    *   <dt>
    *     string <var>m_discount_code</var>
    *   </dt>
    *   <dd>
-   *     Discount amount for a discount code.
+   *     The discount amount for a discount code.
    *   </dd>
    *   <dt>
    *     string <var>m_sum</var>
    *   </dt>
    *   <dd>
-   *     Subtotal amount - sum of the prices.
+   *     The subtotal amount (the sum of the prices).
    *   </dd>
    *   <dt>
    *     string <var>m_tax</var>
    *   </dt>
    *   <dd>
-   *     Taxes amount.
+   *     The amount of taxes.
    *   </dd>
    *   <dt>
    *     string <var>m_tip</var>
    *   </dt>
    *   <dd>
-   *     Tip amount.
+   *     The amount of tips.
    *   </dd>
    *   <dt>
    *     string <var>m_total</var>
    *   </dt>
    *   <dd>
-   *     Total amount.
+   *     The total amount.
    *   </dd>
    *   <dt>
    *     string <var>text_currency</var>
    *   </dt>
    *   <dd>
-   *     Currency of the purchase.
+   *     The currency of the purchase.
    *   </dd>
    *   <dt>
    *     string <var>text_discount_code</var>
    *   </dt>
    *   <dd>
-   *     Discount code applied to the purchase.
+   *     The discount code applied to the purchase.
    *   </dd>
    * </dl>
    *
@@ -252,37 +252,37 @@ class PurchaseReceiptModel extends WlModelAbstract
   public $a_price;
 
   /**
-   * List of purchase items. Every element has keys:
+   * A list of purchase items. Every element has the following keys:
    * <dl>
    *   <dt>
    *     array <var>a_logo</var>
    *   </dt>
    *   <dd>
-   *     Purchase item logo:
+   *     The purchase item logo.
    *     <dl>
    *       <dt>
    *         int <var>i_height</var>
    *       </dt>
    *       <dd>
-   *         Image height.
+   *         The image height.
    *       </dd>
    *       <dt>
    *         int <var>i_width</var>
    *       </dt>
    *       <dd>
-   *         Image width.
+   *         The image width.
    *       </dd>
    *       <dt>
    *         bool <var>is_empty</var>
    *       </dt>
    *       <dd>
-   *         Whether image is empty.
+   *         Determines whether the image is empty.
    *       </dd>
    *       <dt>
    *         string <var>text_url</var>
    *       </dt>
    *       <dd>
-   *         URL of the image.
+   *         The URL of the image.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -290,37 +290,37 @@ class PurchaseReceiptModel extends WlModelAbstract
    *     int <var>i_count</var>
    *   </dt>
    *   <dd>
-   *     Count of items in the purchase.
+   *     The number of items in the purchase.
    *   </dd>
    *   <dt>
    *     string <var>k_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     Purchase item key. Primary key in {@link \RsPurchaseItemSql} table.
+   *     The key of the purchase item.
    *   </dd>
    *   <dt>
    *     string <var>m_price</var>
    *   </dt>
    *   <dd>
-   *     Price of the single item.
+   *     The price of the single item.
    *   </dd>
    *   <dt>
    *     string <var>m_price_total</var>
    *   </dt>
    *   <dd>
-   *     Price of all items.
+   *     The price of all items.
    *   </dd>
    *   <dt>
    *     string <var>text_category</var>
    *   </dt>
    *   <dd>
-   *     Type of the item: product, class pass, etc.
+   *     The type of the item (for example, a pass or membership).
    *   </dd>
    *   <dt>
    *     string <var>text_currency</var>
    *   </dt>
    *   <dd>
-   *     Currency of the price.
+   *     The currency of the price.
    *   </dd>
    *   <dt>
    *     string <var>text_info</var>
@@ -332,13 +332,13 @@ class PurchaseReceiptModel extends WlModelAbstract
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Name of the purchase item.
+   *     The name of the purchase item.
    *   </dd>
    *   <dt>
    *     string <var>text_description</var>
    *   </dt>
    *   <dd>
-   *     Description of the purchase item.
+   *     The description of the purchase item.
    *   </dd>
    * </dl>
    *
@@ -348,7 +348,7 @@ class PurchaseReceiptModel extends WlModelAbstract
   public $a_purchase_item;
 
   /**
-   * Local date of the purchase in MySQL format.
+   * The local date of the purchase in MySQL format.
    *
    * @get result
    * @var string
@@ -356,7 +356,7 @@ class PurchaseReceiptModel extends WlModelAbstract
   public $dtl_purchase;
 
   /**
-   * Whether payment was signed.
+   * Determines whether the payment contained a signature.
    *
    * @get result
    * @var bool
@@ -364,7 +364,7 @@ class PurchaseReceiptModel extends WlModelAbstract
   public $has_signature;
 
   /**
-   * HTML representation of purchase receipt.
+   * HTML representation of the purchase receipt.
    *
    * @get result
    * @var string
@@ -372,7 +372,16 @@ class PurchaseReceiptModel extends WlModelAbstract
   public $html_receipt;
 
   /**
-   * Purchase key. Primary key {@link \RsPurchaseSql} table.
+   * Whether the print receipt URL requires authentication. If `true`, the URL contains a token that temporarily
+   * allows access to the print receipt without a login. `false` otherwise.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_url_public = false;
+
+  /**
+   * The key of the purchase.
    *
    * @get get
    * @var string
@@ -380,7 +389,7 @@ class PurchaseReceiptModel extends WlModelAbstract
   public $k_purchase;
 
   /**
-   * Normalized purchase ID.
+   * The normalized purchase ID.
    *
    * @get result
    * @var string
@@ -388,12 +397,28 @@ class PurchaseReceiptModel extends WlModelAbstract
   public $text_purchase_id;
 
   /**
-   * Receipt text set in store settings.
+   * The receipt text set in the store settings.
    *
    * @get result
    * @var string
    */
   public $text_receipt;
+
+  /**
+   * The URL for printing on a normal printer.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_print;
+
+  /**
+   * The URL for printing on a receipt printer.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_print_receipt;
 }
 
 ?>

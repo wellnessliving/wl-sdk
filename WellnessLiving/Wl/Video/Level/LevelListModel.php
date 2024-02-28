@@ -1,20 +1,20 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Wl\Video\Level;
 
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Api for change order of video levels.
+ * An endpoint that changes the order of video levels.
  */
 class LevelListModel extends WlModelAbstract
 {
   /**
-   * List of video levels. Has next structure: <dl>
+   * A list of video levels with the following structure: <dl>
    *   <dt>string <var>k_video_level</var></dt>
-   *   <dd>Video level key.</dd>
+   *   <dd>The video level key.</dd>
    *   <dt>string <var>text_title</var></dt>
-   *   <dd>Title of the video level.</dd>
+   *   <dd>The video level title.</dd>
    * </dl>
    *
    * @get result
@@ -23,7 +23,7 @@ class LevelListModel extends WlModelAbstract
   public $a_level_list = [];
 
   /**
-   * List of video level keys in order to be saved.
+   * A list of video level keys in the order to be saved.
    *
    * @put post
    * @var string[]
@@ -31,7 +31,7 @@ class LevelListModel extends WlModelAbstract
   public $a_order = [];
 
   /**
-   * Business key.
+   * The business key.
    *
    * @get get
    * @put get

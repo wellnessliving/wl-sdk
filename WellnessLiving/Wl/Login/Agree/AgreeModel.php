@@ -5,38 +5,53 @@ namespace WellnessLiving\Wl\Login\Agree;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Saves user's agreement to online waiver.
+ * An endpoint that saves the user's agreement to the online waiver.
  */
-class AgreeModel extends WlModelAbstract {
+class AgreeModel extends WlModelAbstract
+{
   /**
-   * The base64 encoded user's signature image in PNG.
+   * Formatted text of business liability release. Not empty if business has liability release and if user did not agree to this liability release.
    *
-   * <tt>null</tt> if not set yet.
+   * @get result
+   * @var string
+   */
+  public $html_contract = '';
+
+  /**
+   * <tt>false</tt> if user has not agreed to use Electronic Signatures,
+   * <tt>true</tt> if user has agreed to use Electronic Signatures,
+   * <tt>null</tt> otherwise.
+   *
+   * @post post
+   * @var bool|null
+   */
+  public $is_agree;
+
+  /**
+   * The key of business.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
+  public $k_business = '0';
+
+  /**
+   * The base64-encoded user's signature image from the signature pad as a PNG file.
    *
    * @post post
    * @var string
    */
-  public $s_signature = null;
+  public $s_signature = '';
 
   /**
-   * ID of business.
+   * The user's key.
    *
-   * <tt>null</tt> if not set yet.
-   *
+   * @get get
    * @post get
    * @var string
    */
-  public $k_business = null;
-
-  /**
-   * User's ID.
-   *
-   * <tt>null</tt> if not set yet.
-   *
-   * @post get
-   * @var string
-   */
-  public $uid = null;
+  public $uid = '0';
 }
 
 ?>

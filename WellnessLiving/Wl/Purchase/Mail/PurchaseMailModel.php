@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Purchase\Mail;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Purchase email sending.
+ * An endpoint that emails a receipt for a purchase.
  */
 class PurchaseMailModel extends WlModelAbstract
 {
   /**
-   * Whether mail sending should be forced.
+   * Determines whether mail sending should be forced.
    *
    * @post post
    * @var bool
@@ -18,7 +18,7 @@ class PurchaseMailModel extends WlModelAbstract
   public $is_send_force = false;
 
   /**
-   * Purchase key.
+   * The key of the purchase.
    *
    * @post post
    * @var string

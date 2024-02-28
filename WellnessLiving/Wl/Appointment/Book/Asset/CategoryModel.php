@@ -5,22 +5,41 @@ namespace WellnessLiving\Wl\Appointment\Book\Asset;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves an information about asset categories.
+ * An endpoint that retrieves information about asset categories.
  */
 class CategoryModel extends WlModelAbstract
 {
   /**
    * A list of information about asset categories.
-   *
-   * <tt>null</tt> if not initialized yet.
+   * <dl>
+   *   <dt>
+   *     boolean <var>hide_application</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> - all resources are hidden in this category for White Label mobile application. <tt>false</tt> - otherwise.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_resource_type</var>
+   *   </dt>
+   *   <dd>
+   *     Resource type ID.
+   *   </dd>
+   *   <dt>
+   *     string <var>html_title</var>
+   *   </dt>
+   *   <dd>
+   *     Title of resource type.
+   *   </dd>
+   * </dl>
    *
    * @get result
-   * @var array|null
+   * @var array[]
    */
-  public $a_category = null;
+  public $a_category;
 
   /**
-   * <tt>true</tt> - load asset categories for backend mode; <tt>false</tt> - for frontend mode.
+   * If `true`, asset categories are loaded for backend mode. Otherwise, this will be `false` if asset categories
+   * are loaded for frontend mode.
    *
    * @get get
    * @var bool
@@ -28,24 +47,29 @@ class CategoryModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * Class tab ID to filter services.
-   *
-   * <tt>null</tt> if not set yet or select only elements with not specified class tab.
+   * `true` - search in all tabs.
+   * `false` - search only for the selected book tab.
    *
    * @get get
-   * @var string|null
+   * @var bool
    */
-  public $k_class_tab = null;
+  public $is_tab_all = false;
 
   /**
-   * ID of a location to show information for.
-   *
-   * <tt>null</tt> if not set yet.
+   * The class tab key to use for filtering services.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_location = null;
+  public $k_class_tab = '0';
+
+  /**
+   * The key of the location to show information for.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_location = '0';
 }
 
 ?>

@@ -12,12 +12,12 @@ class VirtualProviderSid
   /**
   * Virtual integration non implemented.
   */
-  public const NON_INTEGRATED = 2;
+  const NON_INTEGRATED = 2;
 
   /**
   * Virtual Zoom service integration.
   */
-  public const ZOOM = 1;
+  const ZOOM = 1;
 }
 
 ?>

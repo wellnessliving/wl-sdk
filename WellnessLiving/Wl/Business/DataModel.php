@@ -5,67 +5,179 @@ namespace WellnessLiving\Wl\Business;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information of a certain business.
+ * An endpoint that displays information for a specified business.
  */
 class DataModel extends WlModelAbstract
 {
   /**
-   * The float values of predefined tips.
-   *
-   * <tt>null</tt> until loaded.
+   * A list of all business services and their availability data.
+   * This is presented as an array, where keys are SIDs from {@link \WellnessLiving\Wl\Service\ServiceSid} and values are Boolean.
+   * If `true`, at least one service is enabled in the business. Otherwise, this will be `false`.
    *
    * @get result
-   * @var float[]|null
+   * @var array
    */
-  public $a_tip_predefine = null;
+  public $a_service_list;
+
+  /**
+   * The list of predefined tips in percentages.
+   *
+   * @get result
+   * @var float[]
+   */
+  public $a_tip_predefine;
+
+  /**
+   * The maximum height of the business image (in pixels).
+   *
+   * @get get
+   * @var int
+   */
+  public $i_logo_height = 100;
+
+  /**
+   * The maximum width of the business image (in pixels).
+   *
+   * @get get
+   * @var int
+   */
+  public $i_logo_width = 220;
+
+  /**
+   * The business category ID of the business.
+   *
+   * One of the {@link BusinessCategorySid} constants.
+   *
+   * @get result
+   * @var int
+   */
+  public $id_category;
+
+  /**
+   * The currency ID of the given business (or the system currency ID if the business didn't pass).
+   *
+   * @get result
+   * @see \WellnessLiving\Core\Locale\CurrencySid
+   * @var int
+   */
+  public $id_currency;
 
   /**
    * The Locale ID, used to search geo items.
    *
    * @get result
+   * @see \WellnessLiving\Core\Locale\LocaleSid
    * @var int
-  */
-  public $id_locale = 0;
+   */
+  public $id_locale;
 
   /**
-   * <tt>true</tt> if clients can enter progress log; <tt>false</tt> otherwise.
+   * The rank type ID of the business.
    *
-   * <tt>null</tt> until loaded.
+   * One of the {@link \WellnessLiving\RsRankTypeSid} constants.
+   *
+   * This will be `null` if the business doesn't have a rank type.
    *
    * @get result
-   * @var bool|null
+   * @var int|null
    */
-  public $is_progress_client = null;
+  public $id_rank_type;
 
   /**
-   * <tt>true</tt> if verification of the progress log by a staff member is required; <tt>false</tt> otherwise.
+   * The region ID. This indicates the data center where the information about the business is stored.
+   * One of the {@link \WellnessLiving\WlRegionSid} constants.
    *
-   * <tt>null</tt> until loaded.
+   * Requests made to different regions can lead to known issues such as responses indicating that the
+   * business (or its elements) doesn't exist. This is because databases on different data centers are
+   * independent. For example, performing a request to the US cluster for a list of classes for an AU
+   * cluster business will return an empty list.
    *
    * @get result
-   * @var bool|null
+   * @var int
    */
-  public $is_progress_verify = null;
+  public $id_region;
 
   /**
-   * <tt>true</tt> if tips are available in the business; <tt>false</tt> otherwise.
-   *
-   * <tt>null</tt> until loaded.
+   * Determines whether surcharges to client payments are enabled in the business.
    *
    * @get result
-   * @var bool|null
+   * @var bool
    */
-  public $is_tip = null;
+  public $is_apply_surcharge = false;
 
   /**
-   * <tt>true</tt> if the business has the “No tip” option displayed; <tt>false</tt> otherwise.
-   *
-   * <tt>null</tt> until loaded.
+   * `true` if business is a franchisor or franchisee.
    *
    * @get result
-   * @var bool|null
+   * @var bool
    */
-  public $is_tip_deny = null;
+  public $is_franchise = false;
+
+  /**
+   * Determines whether the business has multiple locations (including inactive locations).
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_location_multiple;
+
+  /**
+   * `true` — clients of the business can select a custom time zone in their profile.
+   *
+   * `false` — the location or business time zone is used.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_profile_timezone;
+
+  /**
+   * If `true`, clients can enter the progress log. Otherwise, this will be `false`.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_progress_client;
+
+  /**
+   * If `true`, verification of the progress log by a staff member is required. Otherwise, this will be `false`.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_progress_verify;
+
+  /**
+   * Determines whether quizzes are available in the business.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_quiz_available = false;
+
+  /**
+   * If `true`, tips are available in the business. Otherwise, this will be `false`.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_tip;
+
+  /**
+   * If `true`, the business has the "No tip" option displayed. Otherwise, this will be `false`.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_tip_deny;
+
+  /**
+   * If `true`, the client must sign after selecting the tip. Otherwise, this will be `false`.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_tip_sign;
 
   /**
    * The business key.
@@ -76,56 +188,68 @@ class DataModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The business key obtained by the security token.
+   * The franchisor business key. This will be empty if this business is the franchisor or not in a franchise.
    *
    * @get result
    * @var string
    */
-  public $k_business_token = '0';
+  public $k_business_franchisor = '';
 
   /**
-   * The currency key of the given business or system currency if the business didn't pass.
-   *
-   * <tt>null</tt> until loaded.
+   * The business key obtained by the security token {@link \WellnessLiving\Wl\Business\DataModel::$text_token}.
+   * This can be used on the client side if authorization token should be used instead of the business key
+   * (the business key isn't available).
    *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $k_currency = null;
+  public $k_business_token;
+
+  /**
+   * The currency key of the given business, or the system currency if the business didn't pass.
+   *
+   * @deprecated Use {@link \WellnessLiving\Wl\Business\DataModel::$id_currency} instead.
+   * @get result
+   * @var string
+   */
+  public $k_currency;
 
   /**
    * The reply-to email address.
    *
-   * <tt>null</tt> until loaded.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $s_reply_mail = null;
+  public $s_reply_mail;
 
   /**
    * The reply-to business name.
    *
-   * <tt>null</tt> until loaded.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $s_reply_name = null;
+  public $s_reply_name;
 
   /**
    * The business address.
    *
-   * <tt>null</tt> until loaded.
+   * @get result
+   * @var string
+   */
+  public $text_office_address;
+
+  /**
+   * The business title.
    *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $text_office_address = null;
+  public $text_title;
 
   /**
    * The authorization token.
-   * May be used instead of {@link \WellnessLiving\Wl\Business\DataModel::$k_business}.
+   * This may be used instead of {@link \WellnessLiving\Wl\Business\DataModel::$k_business} to
+   * identify a business.
    *
    * @get get
    * @var string
@@ -133,54 +257,76 @@ class DataModel extends WlModelAbstract
   public $text_token = '';
 
   /**
-   * The business title.
-   *
-   * <tt>null</tt> until loaded.
-   *
-   * @get result
-   * @var string|null
-   */
-  public $text_title = null;
-
-  /**
    * The Facebook page.
    *
-   * <tt>null</tt> until loaded.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $url_facebook = null;
+  public $url_facebook;
 
   /**
    * The Google+ page.
    *
-   * <tt>null</tt> until loaded.
+   * @get result
+   * @var string
+   */
+  public $url_google;
+
+  /**
+   * The Instagram page.
    *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $url_google = null;
+  public $url_instagram = '';
+
+  /**
+   * The LinkedIn profile.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_linkedin = '';
 
   /**
    * The logo URL.
    *
-   * <tt>null</tt> until loaded.
+   * @get result
+   * @var string
+   */
+  public $url_logo;
+
+  /**
+   * The image stub (in cases where the business logo isn't loaded).
    *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $url_logo = null;
+  public $url_logo_empty;
 
   /**
    * The Twitter page.
    *
-   * <tt>null</tt> until loaded.
+   * @get result
+   * @var string
+   */
+  public $url_twitter;
+
+  /**
+   * The business website.
    *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $url_twitter = null;
+  public $url_website;
+
+  /**
+   * The YouTube website.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_youtube = '';
 }
 
 ?>

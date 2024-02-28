@@ -3,7 +3,7 @@
 namespace WellnessLiving\Core\a;
 
 /**
- * List of supported social networks.
+ * A list of supported social networks.
  *
  * Last used ID: 3.
  */

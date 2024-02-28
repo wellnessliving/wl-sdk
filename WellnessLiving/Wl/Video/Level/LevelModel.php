@@ -1,17 +1,16 @@
-<?php 
+<?php
 
 namespace WellnessLiving\Wl\Video\Level;
 
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Api for retrieves/change/delete video level.
+ * An endpoint that retrieves, changes, or deletes a video level.
  */
 class LevelModel extends WlModelAbstract
 {
   /**
-   * <tt>true</tt> if confirmation for delete video level which currently
-   * associated to one or more videos, <tt>false</tt> otherwise.
+   * If `true`, confirmation is required to delete videos. Otherwise, this will be `false`.
    *
    * @delete get
    * @var bool
@@ -19,7 +18,7 @@ class LevelModel extends WlModelAbstract
   public $is_delete_confirm;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @delete get
    * @get get
@@ -30,7 +29,7 @@ class LevelModel extends WlModelAbstract
   public $k_business;
 
   /**
-   * Video level key.
+   * The video level key.
    *
    * @delete get
    * @get get
@@ -41,7 +40,7 @@ class LevelModel extends WlModelAbstract
   public $k_video_level;
 
   /**
-   * Title of the video level.
+   * The video level title.
    *
    * @post post
    * @put post

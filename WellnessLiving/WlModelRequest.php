@@ -10,6 +10,11 @@ use WellnessLiving\Config\WlConfigAbstract;
 class WlModelRequest
 {
   /**
+   * SDK version number.
+   */
+  const VERSION='202402241120';
+
+  /**
    * A list of headers for the API request. See {@link CURLOPT_HTTPHEADER}.
    *
    * @var array
@@ -127,19 +132,22 @@ class WlModelRequest
 
     $a_url = parse_url($this->url);
     $a_signature = [
-      'a_header' => [],
+      'a_header' => [
+        'User-Agent' => $this->a_header_request['User-Agent']
+      ],
       'a_variable' => $this->a_variable,
       'dt_time' => $this->dt_request,
       's_code' => $s_config_class::AUTHORIZE_CODE,
       's_cookie_persistent' => $this->o_cookie->cookieGet($this->o_config->cookiePersistent()),
       's_cookie_transient' => $this->o_cookie->cookieGet($this->o_config->cookieTransient()),
+      's_cookie_global' => $this->o_config->cookieGlobal()?$this->o_cookie->cookieGet($this->o_config->cookieGlobal()):null,
       's_host' => $a_url['host'],
       's_id' => $s_config_class::AUTHORIZE_ID,
       's_method' => strtoupper($this->s_method),
       's_resource' => $this->s_resource,
     ];
 
-    $this->a_header_request['Authorization'] = '20150518,'.$s_config_class::AUTHORIZE_ID.',,'.WlModelRequest::signatureCompute($a_signature);
+    $this->a_header_request['Authorization'] = '20150518,'.$s_config_class::AUTHORIZE_ID.',user-agent,'.WlModelRequest::signatureCompute($a_signature);
   }
 
   /**
@@ -182,7 +190,7 @@ class WlModelRequest
     $a_result = [];
     foreach($a_array as $s_key => $x_value)
     {
-      if(is_string($x_value)||is_numeric($x_value))
+      if(is_string($x_value)||is_numeric($x_value)||is_null($x_value))
       {
         $a_result[strtolower($s_key)] = $x_value;
         continue;
@@ -243,11 +251,13 @@ class WlModelRequest
     $a_signature[]=$a_data['s_resource'];
     $a_signature[]=$a_data['s_cookie_persistent'];
     $a_signature[]=$a_data['s_cookie_transient'];
+    if(!empty($a_data['s_cookie_global']))
+      $a_signature[]=$a_data['s_cookie_global'];
 
     $a_variable=WlModelRequest::signatureArray($a_data['a_variable']);
     ksort($a_variable);
     foreach($a_variable as $s_key => $s_value)
-      $a_signature[]=$s_key.'='.$s_value;
+      $a_signature[] = $s_key.($s_value===null?' is null':'='.$s_value);
 
     $a_header=[];
     foreach($a_data['a_header'] as $s_key => $s_value)
@@ -256,7 +266,11 @@ class WlModelRequest
     foreach($a_header as $s_key => $s_value)
       $a_signature[]=$s_key.':'.$s_value;
 
-    return hash('sha256',implode("\n",$a_signature));
+    $a_signature_check = [];
+    foreach($a_signature as $s_element)
+      $a_signature_check[] = substr(hash('sha256',$s_element!==null ? $s_element : ''),0,1);
+
+    return hash('sha256',implode("\n",$a_signature)).'.1.'.implode('',$a_signature_check).'.'.PHP_VERSION_ID.'.'.static::VERSION;
   }
 }
 

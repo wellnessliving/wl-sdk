@@ -3,53 +3,188 @@
 namespace WellnessLiving\Wl\Book\Process\Info;
 
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Book\WlBookModeSid;
 
 /**
- * The booking wizard for the "Class and Location" page.
+ * An endpoint that offers functionality for the class booking wizard on the "Class and Location" page.
+ *
+ * @deprecated Use {@link \WellnessLiving\Wl\Book\Process\Info\Info54Model} instead.
  */
 class InfoModel extends WlModelAbstract
 {
   /**
-   * The IDs of users' activity.
+   * Week days available for recurring booking. Constants of {@link \WellnessLiving\Core\a\ADateWeekSid} class.
    *
-   * @post result
-   * @var array
+   * `null` if recurring booking is not available.
+   *
+   * @get result
+   * @var int[]|null
    */
-  public $a_login_activity = [];
+  public $a_day_available;
 
   /**
-   * A list of assets which are being booked. Every element has the next keys:
-   * <ul><li>Number <tt>i_index</tt> Number of asset. Actual for assets with quantity greater <tt>1</tt>.</li>
-   * <li>String <tt>k_resource</tt> ID of asset.</li></ul>
+   * The keys of users' activity.
+   *
+   * @post result
+   * @var string[]
+   */
+  public $a_login_activity;
+
+  /**
+   * Information about recurring booking:
+   * <dl>
+   *   <dt>
+   *     int[] [<var>a_week</var>]
+   *   </dt>
+   *   <dd>
+   *     Days of week when appointment must repeat. Constants of {@link \WellnessLiving\Core\a\ADateWeekSid} class.
+   *     Empty if appointment must not repeat weekly.
+   *   </dd>
+   *   <dt>
+   *     string [<var>dl_end</var>]
+   *   </dt>
+   *   <dd>
+   *     Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
+   *   </dd>
+   *   <dt>
+   *     int [<var>i_occurrence</var>]
+   *   </dt>
+   *   <dd>
+   *     Number of occurrences after that appointment repeat must stop.
+   *     Empty if repeat must not stop after a certain number of occurrences.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_period</var>
+   *   </dt>
+   *   <dd>
+   *     Frequency of appointment repeating.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_period</var>
+   *   </dt>
+   *   <dd>
+   *     Measurement unit of `i_period`. One of {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *   </dd>
+   *   <dt>
+   *     bool [<var>is_month</var>]
+   *   </dt>
+   *   <dd>
+   *     `true` if appointment must repeat monthly at the same date.
+   *     `false` if appointment must repeat monthly at the same week day.
+   *     `null` if appointment must not repeat monthly.
+   *   </dd>
+   * </dl>
+   *
+   * `null` if booking must be not recurring.
    *
    * @post post
-   * @var array
+   * @var array|null
+   */
+  public $a_repeat;
+
+  /**
+   * A list of assets being booked. Every element has the next structure:
+   * <dl>
+   *   <dt>int <var>i_index</var></dt>
+   *   <dd>Order number of the asset (maybe from 1 to asset quantity).</dd>
+   *   <dt>string <var>k_resource</var></dt>
+   *   <dd>The key of asset.</dd>
+   * </dl>
+   *
+   * @post post
+   * @var array[]
    */
   public $a_resource = [];
 
   /**
-   * A list of all class sessions which can be booked together. Every element has the next keys:
-   * <ul><li>String <tt>dt_date</tt> Date/time when session starts in MySQL format and in GMT.</li>
-   * <li>Boolean <tt>is_select</tt> <tt>true</tt> if this session should be selected when page is initialized;
-   *   <tt>false</tt> otherwise.
-   * </li>
-   * <li>String <tt>k_class_period</tt> The ID of the session in the database.</li>
-   * <li>String <tt>s_location</tt> The name of the location where the session occurred.</li>
-   * <li>String <tt>s_start</tt> The date/time when the session starts in human readable format.
-   *   In the timezone of location.
-   * </li></ul>
+   * A list of all class sessions that can be booked together. Every element has the next structure:
+   * <dl>
+   *   <dt>
+   *     string[] <var>a_staff</var>
+   *   </dt>
+   *   <dd>
+   *     List of staff names that are leading this session.
+   *   </dd>
+   *   <dt>
+   *     string[] <var>a_virtual_location</var>
+   *   </dt>
+   *   <dd>
+   *     List of virtual locations.
+   *   </dd>
+   *   <dt>
+   *     string <var>dt_date</var>
+   *   </dt>
+   *   <dd>
+   *     The date/time when session starts in MySQL format and in GMT.
+   *   </dd>
+   *   <dt>
+   *     boolean <var>is_select</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> if this session should be selected when page is initialized;
+   *     <tt>false</tt> if otherwise.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_wait</var>
+   *   </dt>
+   *   <dd>
+   *     `true` if client is added to a wait list, `false` - to an active list.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_wait_list_unpaid</var>
+   *   </dt>
+   *   <dd>
+   *     Allow clients to join the wait list unpaid.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_class_period</var>
+   *   </dt>
+   *   <dd>
+   *     The key of the session.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_location</var>
+   *   </dt>
+   *   <dd>
+   *     Location key.
+   *   </dd>
+   *   <dt>
+   *     bool <var>m_price</var>
+   *   </dt>
+   *   <dd>
+   *     Price of the session.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_location</var>
+   *   </dt>
+   *   <dd>
+   *     The name of the location where the session occurred.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_start</var>
+   *   </dt>
+   *   <dd>
+   *     The date/time when the session starts in human-readable format.
+   *     Returned in the time zone of the location.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_duration</var>
+   *   </dt>
+   *   <dd>
+   *     String representation of session duration.
+   *     Duration formatting method {@link \WellnessLiving\Wl\Book\Process\Info\InfoModel::_classDurationFormat()}.
+   *   </dd>
+   * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
-  public $a_session_all = [];
+  public $a_session_all;
 
   /**
    * The selected sessions.
    *
-   * Fields - The IDs of the sessions in the database.
-   * Values - Arrays of date/time when the session occurred in MySQL format and in GMT.
+   * <b>Keys</b> - The class period keys.
+   * <b>Values</b> - List of date/time when the session occurred in MySQL format and in GMT.
    *
    * @post post
    * @var array
@@ -57,168 +192,412 @@ class InfoModel extends WlModelAbstract
   public $a_session_select = [];
 
   /**
-   * The staff member conducting the session. Every element has the next keys:
-   * <ul><li>{} <tt>a_logo</tt> Staff photo:
-   *   <ul><li>Number <tt>i_height</tt> Height.</li>
-   *   <li>Number <tt>i_width</tt> Width.</li>
-   *   <li>String <tt>s_url</tt> URL.</li></ul>
-   *   </li><li>String <tt>s_family</tt> The first letter of staff member surname.</li>
-   *   <li>String <tt>s_staff</tt> The staff member's name.</li>
-   * </ul>
+   * Selected sessions on the waiting list without pay.
+   *
+   * Keys - session IDs.
+   *
+   * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
+   *
+   * @post post
+   * @var array
+   */
+  public $a_session_wait_list_unpaid = [];
+
+  /**
+   * The staff member conducting the session. Every element has the next structure:
+   * <dl>
+   *   <dt>
+   *     array <var>a_logo</var>
+   *   </dt>
+   *     <dd>
+   *     The staff member photo:
+   *     <dl>
+   *       <dt>int <var>i_height</var></dt>
+   *       <dd>The image height.</dd>
+   *       <dt>int <var>i_width</var></dt>
+   *       <dd>The image width.</dd>
+   *       <dt>string <var>s_url</var></dt>
+   *       <dd>The image URL.</dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>string <var>s_family</var></dt>
+   *   <dd>The first letter of staff member surname.</dd>
+   *   <dt>string <var>s_staff</var></dt>
+   *   <dd>The staff member's name.</dd>
+   *   <dt>string <var>uid</var></dt>
+   *   <dd>UID of the staff member.</dd>
+   * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
-  public $a_staff = [];
+  public $a_staff;
 
   /**
-   * The IDs of the bookings made.
+   * The keys of the bookings made.
    *
    * @post result
-   * @var array
+   * @var string[]
    */
-  public $a_visit = [];
+  public $a_visit;
 
   /**
-   * The date/time of the session the user is booking in MySQL format and GMT.
+   * Whether the class/event can be booked at this step or not.
+   * External process control flag.
    *
-   * <tt>null</tt> if not set yet.
+   * @post post
+   * @var bool
+   */
+  public $can_book = true;
+
+  /**
+   * Date when this class session occurrences stop.
+   *
+   * @get result
+   * @var string
+   */
+  public $dl_end;
+
+  /**
+   * Date/time to which session is booked.
    *
    * @get get
    * @post get
-   * @var string|null
+   * @var string
    */
-  public $dt_date_gmt = null;
+  public $dt_date_gmt = '';
 
   /**
    * The date/time of the session the user is booking in MySQL format in the location's timezone.
    *
-   * <tt>null</tt> if not set yet.
+   * @get result
+   * @var string
+   */
+  public $dt_date_local;
+
+  /**
+   * `true` if price for the individual session should be hidden, if client has applicable pricing option to pay for this
+   * booking.
+   * `false` if price should be shown always.
    *
    * @get result
-   * @var string|null
+   * @var bool
    */
-  public $dt_date_local = null;
+  public $hide_price;
 
   /**
    * The text of the contract to which the user must agree before book this session.
-   *
-   * <tt>null</tt> if not set yet.
+   * Not empty if business has contract and if user did not agree to this contract.
    *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $html_contract = null;
+  public $html_contract;
+
+  /**
+   * Class duration in human-readable format.
+   *
+   * @get result
+   * @var string
+   */
+  public $html_duration;
 
   /**
    * The special instructions for the class.
    *
-   * <tt>null</tt> if not set yet.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $html_special = null;
+  public $html_special;
 
   /**
-   * The duration of the session in minutes.
+   * Special instructions preview for class.
    *
-   * <tt>null</tt> if not set yet.
+   * @get result
+   * @var string
+   */
+  public $html_special_preview;
+
+  /**
+   * Number of available spots.
+   *
+   * `null` if this information is not available.
    *
    * @get result
    * @var int|null
    */
-  public $i_duration = null;
+  public $i_available;
 
   /**
-   * The WellnessLiving mode type, one of {@link \WellnessLiving\Wl\Book\WlBookModeSid} constants.
+   * Number of booked spots.
+   *
+   * `null` if this information is not available.
+   *
+   * @get result
+   * @var int|null
+   */
+  public $i_book;
+
+  /**
+   * The duration of the session in minutes.
+   *
+   * @get result
+   * @var int
+   */
+  public $i_duration;
+
+  /**
+   * Estimated place of reservation on the waiting list.
+   *
+   * @get result
+   * @var int
+   */
+  public $i_wait_spot = 0;
+
+  /**
+   * Mode type. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    *
    * @get get
    * @post get
    * @var int
    */
-  public $id_mode = WlBookModeSid::APP_FRONTEND;
+  public $id_mode = 0;
 
   /**
-   * Does user agree to the liability release?
-   * <tt>true</tt> - user agrees; <tt>false</tt> - user doesn't agree or the agreement isn't required.
+   * Determines if the user has agreed to the liability release.
+   * `true` - if  the user has agreed. Otherwise, this will be.
+   * `false` - if the user hasn't agreed or the agreement isn't required.
    *
    * @post post
    * @var bool
    */
-  public $is_agree = 0;
+  public $is_agree = false;
 
   /**
-   * <tt>true</tt> if next steps of the wizard needed (need to purchase something to book the selected session);
-   * <tt>false</tt> if no need for next steps (all that's needed already purchased).
+   * `true` if recurring booking is available, `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_book_repeat_client;
+
+  /**
+   * `true` if the setting for frequency during class recurring booking will be `never end` by default, `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_book_repeat_no_end_date;
+
+  /**
+   * If client must authorize credit card.
    *
    * @post result
    * @var bool
    */
-  public $is_next = false;
+  public $is_card_authorize = false;
 
   /**
-   * The ID of session which is booked.
+   * Can the class/event be booked immediately or not.
    *
-   * <tt>null</tt> if not set yet.
+   * The verification is based on the search for client's promotions and other features of the class/event.
+   * But it does not take into account the presence of other mandatory steps.
+   * Their presence will be indicated by the {@link \WellnessLiving\Wl\Book\Process\Info\InfoModel::$is_next} flag.
+   *
+   * @post result
+   * @var bool
+   */
+  public $is_force_book = false;
+
+  /**
+   * `true` if user pressed 'Pay later'.
+   * `false` if user pressed 'Pay now'.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_force_pay_later = false;
+
+  /**
+   * `true` - next steps of the wizard are needed (for example, to purchase something to book the selected session).
+   * `false` - no need for next steps (all that's needed has already been purchased).
+   *
+   * @post result
+   * @var bool
+   */
+  public $is_next;
+
+  /**
+   * `true` if event can be paid with pricing option only.
+   * `false` if full event purchase or single session purchase are allowed.
+   *
+   * Copy of {@link \RsClassSql}.<tt>is_promotion_only</tt>.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_promotion_only;
+
+  /**
+   * Whether the class can be paid with single session.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_single_buy;
+
+  /**
+   * Whether the full text of the special instructions fits within the preview length or not.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_special_preview = false;
+
+  /**
+   * `true` if class is virtual, `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_virtual;
+
+  /**
+   * Key of session which is booked.
    *
    * @get get
    * @post get
-   * @var string|null
+   * @var string
    */
-  public $k_class_period = null;
+  public $k_class_period = '0';
+
+  /**
+   * Class period location key.
+   *
+   * @get result
+   * @var string
+   */
+  public $k_location;
+
+  /**
+   * Login promotion to be used to book a class.
+   *
+   * Primary key from {@link  \RsLoginProductSql}.
+   *
+   * @post post
+   * @var string
+   */
+  public $k_login_promotion = '';
+
+  /**
+   * Session pass to be used to book a class.
+   *
+   * Primary key from {@link  \Wl\Session\Pass\Sql}.
+   *
+   * @post post
+   * @var string
+   */
+  public $k_session_pass = '';
+
+  /**
+   * Price of the session.
+   *
+   * @get result
+   * @var string
+   */
+  public $m_price;
+
+  /**
+   * Whole event cost.
+   *
+   * @get result
+   * @var string
+   */
+  public $m_price_total;
+
+  /**
+   * Event price at an early discount.
+   *
+   * An empty string if there is no discount.
+   *
+   * @get result
+   * @var string
+   */
+  public $m_price_total_early;
 
   /**
    * The class title.
    *
-   * <tt>null</tt> if not set yet.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $s_class = null;
+  public $s_class;
 
   /**
    * The location address.
    *
-   * <tt>null</tt> if not set yet.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $s_location_address = null;
+  public $s_location_address;
 
   /**
    * The location title.
    *
-   * <tt>null</tt> if not set yet.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $s_location_title = null;
+  public $s_location_title;
 
   /**
-   * The time when the session takes place in the location's timezone.
+   * User signature.
    *
-   * <tt>null</tt> if not set yet.
-   *
-   * @get result
-   * @var string|null
+   * @post post
+   * @var string
    */
-  public $s_time = null;
+  public $s_signature = '';
 
   /**
-   * The ID of the user making the booking.
-   * The ID of the user making the booking.
+   * The time when the session takes place in the location's time zone. In format `hh:mm`.
    *
-   * <tt>null</tt> if not set yet.
+   * @get result
+   * @var string
+   */
+  public $s_time;
+
+  /**
+   * Room where session takes place.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_room;
+
+  /**
+   * Text representation of the list of staffs.
+   * List of staff see {@link \WellnessLiving\Wl\Book\Process\Info\InfoModel::$a_staff}.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_staff;
+
+  /**
+   * Timezone abbreviation.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_timezone;
+
+  /**
+   * Key of a user who is making a book.
    *
    * @get get
    * @post get
-   * @var string|null
+   * @var string
    */
-  public $uid = null;
+  public $uid = '0';
 }
 
 ?>

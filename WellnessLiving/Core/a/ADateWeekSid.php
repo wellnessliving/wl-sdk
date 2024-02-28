@@ -3,7 +3,7 @@
 namespace WellnessLiving\Core\a;
 
 /**
- * Week days.
+ * A class for the days of the week.
  */
 class ADateWeekSid
 {

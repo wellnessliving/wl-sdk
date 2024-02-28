@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * This API saves working hours of specified location.
  * Access for this action has logged user with specified permissions or guest during process of registration a new
- * business (see  {@link \WellnessLiving\Wl\Business\BusinessModel}).
+ * business (see {@link \WellnessLiving\Wl\Business\BusinessModel::sessionKey()}).
  */
 class LocationWorkTimeModel extends WlModelAbstract
 {
@@ -40,7 +40,7 @@ class LocationWorkTimeModel extends WlModelAbstract
    * Key of the location.
    *
    * @post post
-   * @var string|null
+   * @var string
    */
   public $k_location;
 }

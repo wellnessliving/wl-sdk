@@ -5,99 +5,97 @@ namespace WellnessLiving\Wl\Pay\Address;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Retrieves a client’s physical address from their profile.
+ * An endpoint that retrieves a client’s physical address from their profile.
  */
 class ProfileModel extends WlModelAbstract
 {
   /**
-   * The business ID number used internally by WellnessLiving.
-   *
-   * <tt>null</tt> if we are in the system business.
+   * The business key number used internally by WellnessLiving.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
   public $k_business = '';
 
   /**
-   * The country ID, this is different than the values used in LocaleSid.
+   * The country key.
    *
-   * <tt>null</tt> if not yet loaded.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
    */
-  public $k_geo_country = null;
+  public $k_geo_country;
 
   /**
    * The region ID.
    *
-   * <tt>null</tt> if not yet loaded.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
    */
-  public $k_geo_region = null;
+  public $k_geo_region;
 
   /**
    * The name of the city in the address.
    *
-   * <tt>null</tt> if city is yet loaded.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
    */
-  public $s_city = null;
+  public $s_city;
 
   /**
-   * The client’s name, as listed in their address.
+   * The client name as listed in their address.
    *
-   * <tt>null</tt> if not yet loaded.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
    */
-  public $s_name = null;
+  public $s_name;
 
   /**
-   * The client’s phone number.
+   * The client phone number.
    *
-   * <tt>null</tt> if not yet loaded.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
    */
-  public $s_phone = null;
+  public $s_phone;
 
   /**
-   * The client’s postal code.
+   * The client postal or zip code.
    *
-   * <tt>null</tt> if not yet loaded.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
    */
-  public $s_postal = null;
+  public $s_postal;
 
   /**
-   * The first line of the client’s address.
+   * The first line of the client address.
    *
-   * <tt>null</tt> if not yet loaded.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
    */
-  public $s_street1 = null;
+  public $s_street1;
 
   /**
-   * The second line of the client’s address.
+   * The second line of the client address.
    *
-   * <tt>null</tt> if not yet loaded.
+   * This will be `null` if not set yet.
    *
    * @get result
    * @var string|null
    */
-  public $s_street2 = null;
+  public $s_street2;
 
   /**
    * The key of the user whose data should be retrieved.

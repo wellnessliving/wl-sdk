@@ -3,19 +3,13 @@
 namespace WellnessLiving;
 
 /**
- * String identifiers for tax type.
+ * @deprecated from 2023-09-11.
+ * 
+ * Use class {@link \WellnessLiving\Wl\WlCommissionTypeSid} instead.
  */
-class WlCommissionTypeSid
+class WlCommissionTypeSid extends \WellnessLiving\Wl\WlCommissionTypeSid
 {
-  /**
-   * Fixed type.
-   */
-  const FLAT = 1;
 
-  /**
-   * Percent type.
-   */
-  const PERCENT = 2;
 }
 
 ?>

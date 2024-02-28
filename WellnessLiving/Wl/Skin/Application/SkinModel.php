@@ -5,27 +5,54 @@ namespace WellnessLiving\Wl\Skin\Application;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Point to get skin settings for customisation of client application.
+ * An endpoint that retrieves customized skin settings for the client view.
  */
 class SkinModel extends WlModelAbstract
 {
   /**
    * Skin information.
    *
-   * <tt>null</tt> until loaded.
-   *
    * @get result
-   * @var array|null
+   * @var array
    */
-  public $a_skin = null;
+  public $a_skin;
 
   /**
-   * Business key.
+   * Determines current business account contains amount for the application customisation.
    *
+   * @get result
+   * @var bool
+   */
+  public $has_pay;
+
+  /**
+   * Whether customization billing is confirmed.
+   *
+   * <tt>true</tt> to finish delete process even if customization fee will be billed.
+   * <tt>false</tt> if customization fee should be required for confirmation.
+   *
+   * @delete get
+   * @var bool
+   */
+  public $is_billing_confirm;
+
+  /**
+   * The business key.
+   *
+   * @delete get
    * @get get
    * @var string
    */
   public $k_business = '0';
+
+  /**
+   * Name of the link to default application skin.
+   *
+   * @delete result
+   * @get result
+   * @var string
+   */
+  public $s_link;
 }
 
 ?>

@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Mail;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Tool to send email.
+ * An endpoint that can be used to send email messages.
  */
 class SendMailModel extends WlModelAbstract
 {
   /**
-   * Business id.
+   * The business key.
    *
    * @post get
    * @var string
@@ -18,7 +18,7 @@ class SendMailModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Business mail.
+   * The business's mailing address.
    *
    * @post post
    * @var string
@@ -26,7 +26,7 @@ class SendMailModel extends WlModelAbstract
   public $s_business_mail = '';
 
   /**
-   * Business name.
+   * The business name.
    *
    * @post post
    * @var string
@@ -34,7 +34,7 @@ class SendMailModel extends WlModelAbstract
   public $s_business_name = '';
 
   /**
-   * Business reply.
+   * The business's reply.
    *
    * @post post
    * @var string
@@ -42,7 +42,7 @@ class SendMailModel extends WlModelAbstract
   public $s_business_reply = '';
 
   /**
-   * Company name.
+   * The campaign name.
    *
    * @post post
    * @var string
@@ -50,7 +50,7 @@ class SendMailModel extends WlModelAbstract
   public $s_campaign = '';
 
   /**
-   * Message recipient.
+   * The message recipient's address.
    *
    * @post post
    * @var string
@@ -58,7 +58,7 @@ class SendMailModel extends WlModelAbstract
   public $s_mail = '';
 
   /**
-   * Message recipient.
+   * The message's subject line.
    *
    * @post post
    * @var string
@@ -66,10 +66,12 @@ class SendMailModel extends WlModelAbstract
   public $s_subject = '';
 
   /**
-   * Message content.
+   * The message content.
    *
    * @post post
    * @var string
    */
   public $z_html = '';
 }
+
+?>

@@ -5,94 +5,123 @@ namespace WellnessLiving\Wl\Profile\Activity;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Returns detailed information about a single client activity.
+ * An endpoint that returns detailed information about a single client activity.
  */
 class ElementModel extends WlModelAbstract
 {
   /**
+   * Messages with description what did user do to get account credits as reward points.
+   *
+   * @get result
+   * @var string[]
+   */
+  public $a_credit_score;
+
+  /**
+   * Messages with description what did user do to get points.
+   *
+   * @get result
+   * @var string[]
+   */
+  public $a_reward_score;
+
+  /**
    * The date of the activity in GMT.
    *
-   * It is `null` if not loaded yet.
-   *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $dt_date_gmt = null;
+  public $dt_date_gmt;
 
   /**
-   * The date of the activity in the local user timezone.
-   *
-   * It is `null` if not loaded yet.
+   * The date of the activity in the client's time zone.
    *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $dt_date_local = null;
+  public $dt_date_local;
 
   /**
-   * The total amount of rewards points the user got for the activity.
-   *
-   * It is `null` if not loaded yet.
+   * Description of the action, who and what did.
    *
    * @get result
-   * @var int|null
+   * @var string
    */
-  public $i_score = null;
+  public $html_message;
 
   /**
-   * The rewards points spent to redeem a prize.
-   *
-   * It is `null` if not loaded yet.
-   *
-   * See server-side documentation for additional links.
+   * Total amount of account credits user got for {@link \WellnessLiving\Wl\Profile\Activity\ElementModel::$k_login_activity}. This field is a copy of result of {@link RsLoginActivity::reward()}.
    *
    * @get result
-   * @var int|null
+   * @var int
    */
-  public $i_spend = null;
+  public $i_credit_score;
 
   /**
-   * The ID of the icon that should be shown for this activity;
-   * One of {@link WlDesignIconSid} constants.
-   * This will be empty if there are no special icons for this activity.
-   *
-   * It is `null` if not loaded yet.
+   * The total amount of rewards points the client received for the activity.
    *
    * @get result
-   * @var int|null
+   * @var int
    */
-  public $id_icon = null;
+  public $i_score;
 
   /**
-   * The ID of the activity item that is returned by this model.
-   * One of {@link WlLoginActivityTypeSid} constants.
+   * The rewards points used to redeem a prize.
    *
-   * It is `null` if not loaded yet.
+   * @get result
+   * @var int
+   */
+  public $i_spend;
+
+  /**
+   * The ID of the icon that should be shown for this activity. One of {@link \WellnessLiving\WlDesignIconSid} constants.
+   *
+   * This will be `null`  is no special icon for this activity.
    *
    * @get result
    * @var int|null
    */
-  public $id_type = null;
+  public $id_icon;
 
   /**
-   * The key of the activity item that is being represented by this model.
+   * The ID of the activity item returned by this endpoint. One of {@link \WellnessLiving\RsLoginActivityTypeSid} constants.
    *
-   * It is `null` if ID is not yet selected.
+   * @get result
+   * @var int
+   */
+  public $id_type;
+
+  /**
+   * Object ID, for example, class period ID for books and visits.
+   *
+   * @get result
+   * @var string
+   */
+  public $k_id;
+
+  /**
+   * The key of the activity item represented by this endpoint.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_login_activity = null;
+  public $k_login_activity = '0';
 
   /**
-   * The description of the activity. It should include who was involved and the nature of the activity.
-   *
-   * It is `null` if not loaded yet.
+   * The description of the activity. This should include the nature of the activity and the people involved.
    *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $s_message = null;
+  public $s_message;
+
+  /**
+   * Link to share activity with social networks.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_link;
 }
 
 ?>

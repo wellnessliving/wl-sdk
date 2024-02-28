@@ -5,30 +5,30 @@ namespace WellnessLiving\Wl\Location\View;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Returns information on a specified location.
+ * An endpoint that returns information on a specified location.
  */
 class ViewModel extends WlModelAbstract
 {
   /**
-   * List of ages, which are suitable for visiting this location.
+   * A list of ages that are permitted for visiting this location.
    *
    * @get result
-   * @see \RsAgeSid
+   * @see \WellnessLiving\WlAgeSid
    * @var int[]
    */
   public $a_age = [];
 
   /**
-   * List of facilities, which are available in this location
+   * A list of facilities that are available in this location.
    *
    * @get result
-   * @see \RsFacilitySid
+   * @see \WellnessLiving\WlFacilitySid
    * @var int[]
    */
   public $a_amenities = [];
 
   /**
-   * List of levels, which are suitable for visiting this location.
+   * A list of levels that are suitable for visiting this location.
    *
    * @get result
    * @var string[]
@@ -36,44 +36,93 @@ class ViewModel extends WlModelAbstract
   public $a_level = [];
 
   /**
-   * Information about the location’s logo as used in WellnessLiving:
-   * <ul><li>Number <tt>i_height</tt> Height.</li>
-   * <li>Number <tt>i_width</tt> Width.</li>
-   * <li>String <tt>s_url</tt> URL to image.</li></ul>
-   *
-   * <tt>null</tt> if not set.
-   *
-   * @get result
-   * @var array|null
-   */
-  public $a_logo = null;
-
-  /**
-   * A list of the location’s images.
-   * Every element has the following keys:
-   * <ul><li>Number <tt>i_height</tt> Height.</li>
-   * <li>Number <tt>i_width</tt> Width.</li>
-   * <li>String <tt>url_preview</tt> URL to image preview.</li>
-   * <li>String <tt>url_slide</tt> URL to full image.</li></ul>
+   * Information about the location logo used in WellnessLiving:
+   * <dl>
+   *   <dt>
+   *     int <var>i_height</var>
+   *   </dt>
+   *   <dd>
+   *     The image height.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_width</var>
+   *   </dt>
+   *   <dd>
+   *     The image width.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_url</var>
+   *   </dt>
+   *   <dd>
+   *     The URL to the image.
+   *   </dd>
+   * </dl>
    *
    * @get result
    * @var array
    */
-  public $a_slide = [];
+  public $a_logo;
+
+  /**
+   * A list of the location images.
+   * Every element has the following keys:
+   * <dl>
+   *   <dt>
+   *     int <var>i_height</var>
+   *   </dt>
+   *   <dd>
+   *     Height.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_width</var>
+   *   </dt>
+   *   <dd>
+   *     Width.
+   *   </dd>
+   *   <dt>
+   *     string <var>url_preview</var>
+   *   </dt>
+   *   <dd>
+   *     URL to image preview.
+   *   </dd>
+   *   <dt>
+   *     string <var>url_slide</var>
+   *   </dt>
+   *   <dd>
+   *     URL to full image.
+   *   </dd>
+   * </dl>
+   *
+   * @get result
+   * @var array
+   */
+  public $a_slide;
 
   /**
    * The hours of operation for the location.
-   * Fields - numbers of days (1 is Monday, 7 is Sunday). Values - object with next fields:
-   * <ul><li>String <tt>s_end</tt> Time of day end. In MySQL format.</li>
-   * <li>String <tt>s_start</tt> Time of day start. In MySQL format.</li></ul>
+   * Fields are numbers representing specific days (1 is Monday, 7 is Sunday). Values are objects with the next fields:
+   * <dl>
+   *   <dt>
+   *     string <var>s_end</var>
+   *   </dt>
+   *   <dd>
+   *     The time of day end in MySQL format.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_start</var>
+   *   </dt>
+   *   <dd>
+   *     The time of day start in MySQL format.
+   *   </dd>
+   * </dl>
    *
    * @get result
    * @var array
    */
-  public $a_work = [];
+  public $a_work;
 
   /**
-   * Latitude coordinate of the location.
+   * The latitude coordinate of the location.
    *
    * @get result
    * @var float
@@ -81,7 +130,7 @@ class ViewModel extends WlModelAbstract
   public $f_latitude = 0;
 
   /**
-   * Longitude coordinate of the location.
+   * The longitude coordinate of the location.
    *
    * @get result
    * @var float
@@ -94,28 +143,53 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $html_description_full = '';
+  public $html_description_full;
 
   /**
-   * A shorter description of the location. A preview of {@link Wl_Location_View_ViewModel.html_description_full}.
+   * A shorter description of the location. A preview of {@link \WellnessLiving\Wl\Location\View\ViewModel::$html_description_full}.
    *
    * @get result
    * @var string
    */
-  public $html_description_preview = '';
+  public $html_description_preview;
 
   /**
-   * Industry of the business.
+   * Maximum location image height.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_logo_height = 100;
+
+  /**
+   * Maximum location image width.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_logo_width = 220;
+
+  /**
+   * The industry of the business.
+   * `null` in case when industry didn't set for chosen business type, or for business types
+   * where set value which is absent.
    *
    * @get result
+   * @see \WellnessLiving\WlHomeTourSid
    * @var int|null
-   * @see \RsHomeTourSid
    */
   public $id_industry = 0;
 
   /**
-   * `true` if WellnessLiving thinks that this is a top choice location.
-   * `false` - otherwise.
+   * `true` if to display phone number on location page. `False` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_phone = false;
+
+  /**
+   * `true` if WellnessLiving identifies this is a top choice location, `false` otherwise.
    *
    * @get result
    * @var bool
@@ -123,7 +197,7 @@ class ViewModel extends WlModelAbstract
   public $is_top_choice = false;
 
   /**
-   * Key of business this location belongs to.
+   * The key of the business this location belongs to.
    *
    * @get result
    * @var string
@@ -131,7 +205,7 @@ class ViewModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Key of the business type this location belongs to.
+   * The key of the business type this location belongs to.
    *
    * @get result
    * @var string
@@ -139,12 +213,20 @@ class ViewModel extends WlModelAbstract
   public $k_business_type = '0';
 
   /**
-   * The location ID number that can be found with the Location\ListModel endpoint.
+   * The location key.
    *
    * @get get
    * @var string
    */
-  public $k_location = '';
+  public $k_location = '0';
+
+  /**
+   * Timezone primary key in {@link \AGeoTimezoneSql} table.
+   *
+   * @get result
+   * @var string
+   */
+  public $k_timezone;
 
   /**
    * The physical address of the location.
@@ -152,7 +234,7 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $s_address = '';
+  public $s_address;
 
   /**
    * A string that can be used in navigator programs.
@@ -160,7 +242,7 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $s_map = '';
+  public $s_map;
 
   /**
    * The phone number for the location.
@@ -168,7 +250,15 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $s_phone = '';
+  public $s_phone;
+
+  /**
+   * The system name of the time zone.
+   *
+   * @get result
+   * @var string
+   */
+  public $s_timezone;
 
   /**
    * The title of the location.
@@ -176,18 +266,10 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $s_title = '';
+  public $s_title;
 
   /**
-   * System name of the timezone.
-   *
-   * @get result
-   * @var string
-   */
-  public $s_timezone = '';
-
-  /**
-   * Adress of the location.
+   * The address of the location.
    *
    * @get result
    * @var string
@@ -195,9 +277,9 @@ class ViewModel extends WlModelAbstract
   public $text_address_individual;
 
   /**
-   * Special system name, which can be used in custom location links.
-   * It is usually based on name of the location, where extra characters are removed.
-   * But also can be fully custom.
+   * The special system name, which can be used in custom location links.
+   * This is usually based on name of the location, with extra characters removed.
+   * However, it can also can be fully customized.
    *
    * @get result
    * @var string
@@ -205,7 +287,7 @@ class ViewModel extends WlModelAbstract
   public $text_alias;
 
   /**
-   * Name of the business type.
+   * The name of the business type.
    *
    * @get result
    * @var string
@@ -213,7 +295,7 @@ class ViewModel extends WlModelAbstract
   public $text_business_type = '';
 
   /**
-   * City name of the location.
+   * The city name of the location.
    *
    * @get result
    * @var string
@@ -221,7 +303,7 @@ class ViewModel extends WlModelAbstract
   public $text_city;
 
   /**
-   * Country name of the location.
+   * The country name of the location.
    *
    * @get result
    * @var string
@@ -229,21 +311,21 @@ class ViewModel extends WlModelAbstract
   public $text_country;
 
   /**
-   * Name of the industry of the business.
+   * The name of the industry of the business.
    *
    * @get result
+   * @see \WellnessLiving\WlHomeTourSid
    * @var string
-   * @see \RsHomeTourSid
    */
   public $text_industry = '';
 
   /**
-   * Email address.
+   * The email address.
    *
    * @get result
    * @var string
    */
-  public $text_mail = '';
+  public $text_mail;
 
   /**
    * Postal code of the location.
@@ -254,7 +336,7 @@ class ViewModel extends WlModelAbstract
   public $text_postal;
 
   /**
-   * Region name of the location.
+   * The region name of the location.
    *
    * @get result
    * @var string
@@ -262,7 +344,15 @@ class ViewModel extends WlModelAbstract
   public $text_region;
 
   /**
-   * Facebook url.
+   * Region 2 or 3 letters abbreviation of the location. Can be empty, if abbreviation for region is not set.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_region_code;
+
+  /**
+   * The Facebook URL of the location.
    *
    * @get result
    * @var string
@@ -270,7 +360,7 @@ class ViewModel extends WlModelAbstract
   public $url_facebook = '';
 
   /**
-   * Instagram url.
+   * The Instagram URL of the location.
    *
    * @get result
    * @var string
@@ -278,7 +368,7 @@ class ViewModel extends WlModelAbstract
   public $url_instagram = '';
 
   /**
-   * Linked In url.
+   * The Linked In URL of the location.
    *
    * @get result
    * @var string
@@ -286,7 +376,7 @@ class ViewModel extends WlModelAbstract
   public $url_linkedin = '';
 
   /**
-   * The URL to a Google Map centered on the location.
+   * The URL of the location in Google Maps.
    *
    * @get result
    * @var string
@@ -294,7 +384,7 @@ class ViewModel extends WlModelAbstract
   public $url_map;
 
   /**
-   * The URL to the location’s microsite on WellnessLiving.
+   * The URL to the location entry in the WellnessLiving Explorer listing.
    *
    * @get result
    * @var string
@@ -302,7 +392,7 @@ class ViewModel extends WlModelAbstract
   public $url_microsite;
 
   /**
-   * Website url.
+   * The website URL of the location.
    *
    * @get result
    * @var string
@@ -310,7 +400,7 @@ class ViewModel extends WlModelAbstract
   public $url_site = '';
 
   /**
-   * Location Twitter account url.
+   * The URL of the location's Twitter account.
    *
    * @get result
    * @var string
@@ -318,7 +408,7 @@ class ViewModel extends WlModelAbstract
   public $url_twitter = '';
 
   /**
-   * URL to wellnessliving web application of the business.
+   * The URL to the business's Client Web App.
    *
    * @get result
    * @var string
@@ -326,7 +416,7 @@ class ViewModel extends WlModelAbstract
   public $url_web = '';
 
   /**
-   * Youtube url.
+   * The YouTube URL of the location.
    *
    * @get result
    * @var string

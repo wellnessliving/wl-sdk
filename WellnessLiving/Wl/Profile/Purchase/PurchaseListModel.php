@@ -2,84 +2,150 @@
 
 namespace WellnessLiving\Wl\Profile\Purchase;
 
-use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Gets a list of purchases for a user.
+ * An endpoint that gets a list of purchases for a user.
  *
- * This endpoint is still available but has been superseded by Profile\PurchaseList\PurchaseListModel.
+ * @deprecated Use {@link \WellnessLiving\Wl\Profile\PurchaseList\PurchaseListModel} instead.
  */
 class PurchaseListModel extends WlModelAbstract
 {
   /**
-   * An array of parameters with which you can filter results. The following parameters are available:
-   * <ul><li>int [<tt>id_active</tt>] Whether to display active or inactive purchases.
-   * One of the {@link AFlagSid} constants.
-   * </li>
-   * <li>int [<tt>id_sale</tt>] The type of product to search for. One of the {@link RsSaleSid} constants.
-   * </li>
-   * <li>int [<tt>id_sale_exclude</tt>] TThe type of product to be excluded from the search.
-   * One of the {@link RsSaleSid} constants.
-   * </li>
-   * <li>string [<tt>s_search</tt>] The name or a part of the name to search for.
-   * </li></ul>
-   * @var array
-   */
-  public $a_filter = [
-    'id_active' => AFlagSid::ON
-  ];
-
-  /**
-   * A list of purchased items. Every element contains a sub array with the following fields:
-   * <ul><li>bool[] <tt>a_active</tt> Most purchases will have one value, however, packages may contain a large number
-   * of values. If `true` the purchase is active. If `false` then the purchase is inactive.</li>
-   * <li>bool[] <tt>a_sale</tt> Most purchases will have one value, however, packages may contain a large number of
-   * values. The array values are the IDs of the purchase item types, which are {@link RsSaleSid} constants.</li>
-   * <li>string <tt>dt_add</tt> The date that the purchase was added.</li>
-   * <li>string <tt>k_code</tt> The redemption code ID that was used to make a purchase. This value is used only if
-   * <var>k_login_promotion</var> and <var>k_purchase</var> are empty.</li>
-   * <li>string [<tt>k_enrollment_book</tt>] The key of an event that requires clients to book every session at once.
-   * This is only used if the event is a part of a package.</li>
-   * <li>string [<tt>k_login_product</tt>] The key of the purchased product.
-   * This is only used if the event is a part of a package.</li>
-   * <li>string <tt>k_login_promotion</tt> The key of the user's existing purchase options.
-   * This value is used only if <var>k_code</var> and <var>k_purchase</var> are empty.</li>
-   * <li>string <tt>k_purchase</tt> The key of a purchase where no special case rules are in effect.
-   * Only used if <var>k_code</var> is empty.</li>
-   * <li>string <tt>k_purchase_item</tt> The ID of a purchase item where no special case rules are in effect.
-   * Only used if <var>k_code</var> is empty.</li>
-   * <li>string [<tt>k_session_pass</tt>] In certain cases a session can be cancelled and ‘makeup’ sessions can be
-   * granted to a client in lieu of other compensation. This is the ID of one of makeup sessions used to attend an
-   * event. This is also present for repeat purchase of event.</li>
-   * <li>string <tt>s_title</tt> The name of the purchase item.</li></ul>
-   *
-   * Order of items in this array is the order in which elements should be shown.
+   * A list of purchased items. Every element contains a sub-array with the following fields:
+   * <dl>
+   *   <dt>
+   *     bool[] <var>a_active</var>
+   *   </dt>
+   *   <dd>
+   *     The value of <var>a_purchase['is_active']</var>. For packages, this also contains the values of <var>a_purchase['is_active']</var> of every component.
+   *   </dd>
+   *   <dt>
+   *     int[] <var>a_sale</var>
+   *   </dt>
+   *   <dd>
+   *     The value of <var>a_purchase['id_sale']</var>. For packages, this also contains the values of <var>a_purchase['id_sale']</var> of every component.
+   *   </dd>
+   *   <dt>
+   *     string <var>dt_add</var>
+   *   </dt>
+   *   <dd>
+   *     The date that the purchase was added.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_purchase_item</var>
+   *   </dt>
+   *   <dd>
+   *     The ID of the purchase type. One of the constants {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid}.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_sale</var>
+   *   </dt>
+   *   <dd>
+   *     The ID of the sale category in the store. One of the constants {@link \WellnessLiving\WlSaleSid}.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_active</var>
+   *   </dt>
+   *   <dd>
+   *     If `true`, then the purchase item is active. Otherwise, this will be `false`.
+   *   </dd>
+   *   <dt>
+   *     bool [<var>is_component</var>]
+   *   </dt>
+   *   <dd>
+   *     If `true`, then the purchase item is a package component. Otherwise, this will be `false`.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_code</var>
+   *   </dt>
+   *   <dd>
+   *     The redemption code key that was used to make a purchase.
+   *     This is used only if <var>k_login_promotion</var> and <var>k_purchase</var> are empty.
+   *   </dd>
+   *   <dt>
+   *     string [<var>k_enrollment_book</var>]
+   *   </dt>
+   *   <dd>
+   *     The key of an event that requires clients to book every session at once.
+   *     This is used only if the event is part of a package.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_id</var>
+   *   </dt>
+   *   <dd>
+   *     The key of the purchase type referring to different types of keys depending on the value of <var>id_sale</var>.
+   *   </dd>
+   *   <dt>
+   *     string [<var>k_login_product</var>]
+   *   </dt>
+   *   <dd>
+   *     The key of the purchased product.
+   *     This is used only if the event is part of a package.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_login_promotion</var>
+   *   </dt>
+   *   <dd>
+   *     The key of the user's existing purchase options.
+   *     This is used only if `k_code` and `k_purchase` are empty.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_purchase</var>
+   *   </dt>
+   *   <dd>
+   *     The key of a purchase where no special case rules are in effect.
+   *     This is used only used if `k_code` is empty.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_purchase_item</var>
+   *   </dt>
+   *   <dd>
+   *     The key of a purchase item where no special case rules are in effect.
+   *     This is used only if <var>k_code</var> is empty.
+   *   </dd>
+   *   <dt>
+   *     string [<var>k_session_pass</var>]
+   *   </dt>
+   *   <dd>
+   *     In certain cases a session can be canceled and makeup sessions can be granted to a client in lieu of
+   *     other compensation. This is the key of one of the makeup sessions used to attend an event. This is also
+   *     present for a repeat purchase of an event.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_title</var>
+   *   </dt>
+   *   <dd>
+   *     The name of the purchase item.
+   *   </dd>
+   *   <dt>
+   *     string <var>uid</var>
+   *   </dt>
+   *   <dd>
+   *     The ID of the purchase owner.
+   *   </dd>
+   * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
-  public $a_purchase = [];
+  public $a_purchase;
 
   /**
-   * The business ID number used internally by WellnessLiving.
-   *
-   * It is `null` if not set yet.
+   * The key of a business to show information for.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_business = null;
+  public $k_business = '0';
 
   /**
-   * The key of the user to show information for.
-   *
-   * It is `null` if not set yet.
+   * The key of a user to show information for.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $uid = null;
+  public $uid = '0';
 }
 
 ?>

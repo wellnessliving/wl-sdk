@@ -5,94 +5,95 @@ namespace WellnessLiving\Wl\Book\Process\Info;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * A checker for <tt>next</tt>, <tt>complete</tt> buttons in the booking process.
+ * An endpoint that checks for `next` and `complete` buttons in the booking process.
  */
 class InfoCanCompleteModel extends WlModelAbstract
 {
-    /**
-     * Determines whether users can complete the booking process from the info step.
-     *
-     * <tt>null</tt> if not loaded yet.
-     *
-     * @get result
-     * @post result
-     * @var bool|null
-     */
-    public $can_complete = null;
+  /**
+   * A list of sessions of an event that can be booked together.
+   *
+   * This is the same as {@link \WellnessLiving\Wl\Book\Process\Info\InfoCanCompleteModel::$a_session_select_post}, but limited by query string
+   * length and might fail if the user is booking more than 50 sessions at once. Therefore, using the POST method is preferable.
+   *
+   * @deprecated Use {@link \WellnessLiving\Wl\Book\Process\Info\InfoCanCompleteModel::$a_session_select_post} along with POST call instead.
+   * @get get
+   * @var array[]
+   */
+  public $a_session_select = [];
 
-    /**
-     * A list of sessions of an event that can be booked together.
-     *
-     * Same as {@link Wl_Book_Process_Info_InfoCanCompleteModel.a_session_select_post}, but is limited by query string
-     * length and might fail if the user is booking >50 sessions at once. Therefore, usage of POST method is preferable.
-     *
-     * Every element has the next keys:<ul>
-     *   <li>String <tt>dt_date</tt> Date and time in MySQL forma in GMT, when session starts.</li>
-     *   <li>Boolean <tt>is_select</tt> <tt>true</tt> if this session should be booked; <tt>false</tt> otherwise.</li>
-     *   <li>String <tt>k_class_period</tt> Class period ID.</li>
-     * </ul>
-     *
-     * @get get
-     * @var bool|string
-     */
-    public $a_session_select = [];
+  /**
+   * A list of sessions of an event that can be booked together.
+   *
+   * Every element has the next structure:
+   * <dl>
+   *   <dt>string <var>dt_date</var></dt>
+   *   <dd>The date and time in MySQL format in GMT when the session starts.</dd>
+   *   <dt>bool <var>is_select</var></dt>
+   *   <dd>`true` if this session should be booked, `false` otherwise.</dd>
+   *   <dt>string <var>k_class_period</var></dt>
+   *   <dd>The class period key.</dd>
+   * </dl>
+   *
+   * @post post
+   * @var array[]
+   */
+  public $a_session_select_post = [];
 
-    /**
-     * A list of sessions of an event that can be booked together.
-     *
-     * Every element has the next keys:<ul>
-     *   <li>String <tt>dt_date</tt> Date and time in MySQL forma in GMT, when the session starts.</li>
-     *   <li>Boolean <tt>is_select</tt> <tt>true</tt> if this session should be booked; <tt>false</tt> otherwise.</li>
-     *   <li>String <tt>k_class_period</tt> Class period ID.</li>
-     * </ul>
-     *
-     * @post post
-     * @var bool|string
-     */
-    public $a_session_select_post = [];
+  /**
+   * Determines whether users can complete the booking process from the info step.
+   *
+   * @get result
+   * @post result
+   * @var bool
+   */
+  public $can_complete;
 
-    /**
-     * The date and time of the session that user is booking now.
-     * Returned in MySQL format and in GMT.
-     *
-     * An empty string means it's not set yet.
-     *
-     * @get get
-     * @post get
-     * @var string
-     */
-    public $dt_date_gmt = '';
+  /**
+   * The date and time of the session that the user is booking, returned in MySQL format and in GMT.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
+  public $dt_date_gmt = '';
 
-    /**
-     * The class period ID that the user started to book.
-     *
-     * An empty string means it's not set yet.
-     *
-     * @get get
-     * @post get
-     * @var string
-     */
-    public $k_class_period = '';
+  /**
+   * `true` if price for the individual session should be hidden, if client has applicable pricing option to pay for this
+   * booking.
+   * `false` if price should be shown always.
+   *
+   * @get result
+   * @var bool
+   */
+  public $hide_price = '';
 
-    /**
-     * The unique booking process key.
-     *
-     * @get get
-     * @post get
-     * @var string
-     */
-    public $s_id = '';
+  /**
+   * The class period ID that the user started to book.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
+  public $k_class_period = '';
 
-    /**
-     * The ID of a user who is making the booking.
-     *
-     * <tt>null</tt> if not set yet.
-     *
-     * @get get
-     * @post get
-     * @var string|null
-     */
-    public $uid = null;
+  /**
+   * The unique booking process key.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
+  public $s_id = '';
+
+  /**
+   * The key of a user who is making the booking.
+   * Empty if user is a guest.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
+  public $uid = '';
 }
 
 ?>

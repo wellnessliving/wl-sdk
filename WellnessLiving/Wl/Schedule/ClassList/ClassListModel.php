@@ -5,20 +5,47 @@ namespace WellnessLiving\Wl\Schedule\ClassList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Gets a list of classes and class information for a Class Tab.
+ * An endpoint that retrieves a list of classes and class information for a Class Tab.
  */
 class ClassListModel extends WlModelAbstract
 {
   /**
-   * List of classes sessions starting with the date {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_date}
-   * and in the 62 days ahead (or up to {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_end}). Every
-   * element has the next keys:
+   * Keys are dates of the days inside requested date range, when there is at least one class in the business.
+   * If, locations are sent as a parameter, then at least one class in the given locations.
+   *
+   * Values are empty arrays for now. This is done to make possible to add some information about certain dates, if we need this.
+   *
+   * @get result
+   * @var array[]
+   */
+  public $a_calendar = [];
+
+  /**
+   * The list of location keys to filter results.
+   * If it's empty, schedule for all locations will be returned.
+   * All given locations should be from the same business, which is sent in {@link ClassListModel::$k_business}.
+   *
+   * @get get
+   * @var string[]
+   */
+  public $a_location = [];
+
+  /**
+   * A list of classes sessions starting with the date {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_date}
+   * and in the 62 days ahead (or up to {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_end}).
+   * Every element has the following keys:
    * <dl>
+   *   <dt>
+   *     string[] <var>a_class_tab</var>
+   *   </dt>
+   *   <dd>
+   *     Keys of class tab.
+   *   </dd>
    *   <dt>
    *     string[] <var>a_staff</var>
    *   </dt>
    *   <dd>
-   *     A list of staff keys for the staff who conduct the session.
+   *     The list of staff keys for the staff member conducting the session.
    *   </dd>
    *   <dt>
    *     string[] <var>a_virtual_location</var>
@@ -36,20 +63,20 @@ class ClassListModel extends WlModelAbstract
    *     string <var>dt_time</var>
    *   </dt>
    *   <dd>
-   *     The time of the session start in the local timezone.
+   *     The time of the session start in the local time zone.
    *   </dd>
    *   <dt>
    *     string <var>dtl_date</var>
    *   </dt>
    *   <dd>
-   *     The date/time of session start in the location's timezone.
+   *     The date/time of session start in the location's time zone.
    *   </dd>
    *   <dt>
    *     bool <var>hide_application</var>
    *   </dt>
    *   <dd>
-   *      Specifies whether the class will be hidden in the White Label mobile application. If `true` it means that the
-   *      class will not be displayed; `false` means the class will be displayed.
+   *      Specifies whether the class will be hidden in the White Label Achieve Client App. If `true`, it means that the
+   *      class won't be displayed. Otherwise, this will be `false` to indicate that the class will be displayed.
    *   </dd>
    *   <dt>
    *     int <var>i_day</var>
@@ -67,13 +94,13 @@ class ClassListModel extends WlModelAbstract
    *     bool <var>is_cancel</var>
    *   </dt>
    *   <dd>
-   *     If `true` this class period was cancelled; `false` otherwise.
+   *     If `true`, this class period was canceled. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     bool <var>is_virtual</var>
    *   </dt>
    *   <dd>
-   *     If `true` the class is virtual, `false` otherwise.
+   *     If `true`, this class is virtual. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     string <var>k_class</var>
@@ -103,38 +130,45 @@ class ClassListModel extends WlModelAbstract
    *     string <var>url_book</var>
    *   </dt>
    *   <dd>
-   *     Direct link to start booking on wellnessliving site.
+   *     The direct link to start booking on the WellnessLiving website.
    *   </dd>
    * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
-  public $a_session = [];
+  public $a_session;
 
   /**
-   * The list’s start date in UTC and in MySQL format.
-   *
-   * It is `null` if not set yet.
+   * The list start date in UTC and in MySQL format.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $dt_date = null;
+  public $dt_date = '';
 
   /**
-   * The list’s end date in UTC and in MySQL format.
-   * If left `null` the default duration is 62 days after
+   * The list end date in UTC and in MySQL format.
+   * If left empty, the default duration is {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::DEFAULT_PERIOD} days after
    * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_date}.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $dt_end = null;
+  public $dt_end = '';
 
   /**
-   * If `true` then return sessions from every class tab. If `false` then use the
-   * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_class_tab} value..
+   * `true` means to not generate {@link ClassListModel::$a_session} result.
+   * Can be used, if you do not need full information about existing classes and result in {@link ClassListModel::$a_calendar} is enough.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_response_short = false;
+
+  /**
+   * If `true`, sessions from every class tab are returned. If `false`, use the
+   * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_class_tab} value.
    *
    * @get get
    * @var bool
@@ -142,18 +176,17 @@ class ClassListModel extends WlModelAbstract
   public $is_tab_all = false;
 
   /**
-   * If `true` then list of sessions contains sessions from different timezones; `false` otherwise.
+   * If `true`, the list of sessions contains sessions from different time zones. Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
    */
-  public $is_timezone_different = false;
+  public $is_timezone_different;
 
   /**
-   * If `true` then there exists at least one virtual service by a specified
-   * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_business} and
-   * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_class_tab},
-   * `false` - otherwise.
+   * If `true`, there exists at least one virtual service by a specified
+   * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_business} and {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_class_tab},
+   * Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
@@ -163,26 +196,33 @@ class ClassListModel extends WlModelAbstract
   /**
    * The business key.
    *
-   * It is `null` if not set yet.
-   *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_business = null;
+  public $k_business = '0';
 
   /**
    * The category tab key.
    *
-   * It is `null` if not set yet.
-   * ## Will be ignored if {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$is_tab_all} is `true`.
+   * This will be `null` if not set yet.
+   * This will be ignored if {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$is_tab_all} is `true`.
    *
    * @get get
-   * @var string|null
+   * @var string
    */
-  public $k_class_tab = null;
+  public $k_class_tab = '0';
 
   /**
-   * If `true` then canceled sessions will be returned. If `false` then canceled sessions will not be returned.
+   * The list of staff members to filter.
+   * A comma seperated list of staff keys.
+   *
+   * @get get
+   * @var string
+   */
+  public $s_staff = '';
+
+  /**
+   * If `true`, canceled sessions will be returned. If `false`, canceled sessions won't be returned.
    *
    * @get get
    * @var bool
@@ -190,13 +230,20 @@ class ClassListModel extends WlModelAbstract
   public $show_cancel = false;
 
   /**
+   * If `true`, events are also returned. If `false`, only classes are returned.
+   *
+   * @get get
+   * @var bool
+   */
+  public $show_event = false;
+
+  /**
    * The user key.
    *
-   * It is `null` if not set yet.
-   *
-   * @var string|null
+   * @get get
+   * @var string
    */
-  public $uid = null;
+  public $uid;
 }
 
 ?>

@@ -5,108 +5,263 @@ namespace WellnessLiving\Wl\Staff;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * This API can create a new staff in the business or edit specified staff.
- * Access for this actions has logged user with specified permissions or guest during process of registration a new
- * business (see {@link \WellnessLiving\Wl\Business\BusinessModel}).
+ * An endpoint that can create or edit a staff member in a business.
+ *
+ * You can also use this endpoint to get information about a staff member's activity in another business when using
+ * the {@link \WellnessLiving\Wl\Business\BusinessModel} endpoint.
  */
 class StaffElementModel extends WlModelAbstract
 {
-    /**
-     * Should staff member be shown on the directory site of the business.
-     *
-     * `null` means to not change the current value of the field.
-     *
-     * @post post
-     * @var bool|null
-     */
-    public $is_microsite;
+  /**
+   * The list of locations where the staff member works. Each element is a location key.
+   *
+   * `null` means to not change the current value of the field.
+   *
+   * @post post
+   * @var array|null
+   */
+  public $a_location;
 
-    /**
-     * Key of the business to get\change staff member in.
-     * Field is required.
-     *
-     * Primary key in the {@link \RsBusinessSql}.
-     *
-     * @post post
-     * @var string
-     */
-    public $k_business;
+  /**
+   * Employment end date.
+   *
+   * `null` means to not change the current value of the field.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $dl_end;
 
-    /**
-     * Key of the staff member to be changed.
-     *
-     * Primary key in the {@link \RsStaffSql}.
-     *
-     * <tt>null</tt> if new staff member should be created.
-     *
-     * @post get,result
-     * @var string|null
-     */
-    public $k_staff;
+  /**
+   * Employment start date.
+   *
+   * `null` means to not change the current value of the field.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $dl_start;
 
-    /**
-     * Staff email.
-     * Field is required for creating a new staff.
-     *
-     * `null` means to not change the current value of the field.
-     *
-     * @post post
-     * @var string|null
-     */
-    public $text_email;
+  /**
+   * Gender of staff member. One of {@link \WellnessLiving\Core\a\AGenderSid} constants.
+   *
+   * `null` means to not change the current value of the field or set gender by default for new staff.
+   *
+   * @post post
+   * @var int|null
+   */
+  public $id_gender;
 
-    /**
-     * Staff first name.
-     * Field is required for creating a new staff.
-     *
-     * `null` means to not change the current value of the field.
-     *
-     * @post post
-     * @var string|null
-     */
-    public $text_first_name;
+  /**
+   * ID of the default system role from {@link \WellnessLiving\RsPrivilegeRoleSid}.
+   *
+   * `null` means to not change the current value of the field.
+   *
+   * @post post
+   * @var int|null
+   */
+  public $id_role;
 
-    /**
-     * Staff last name.
-     *
-     * `null` means to not change the current value of the field.
-     *
-     * @post post
-     * @var string|null
-     */
-    public $text_last_name;
+  /**
+   * Whether the staff is currently employed.
+   *
+   * `null` means to not change the current value of the field.
+   *
+   * @post post
+   * @var bool|null
+   */
+  public $is_employ;
 
-    /**
-     * Password.
-     * Field is required for creating a new staff.
-     *
-     * `null` means to not change the current value of the field.
-     *
-     * @post post
-     * @var string|null
-     */
-    public $text_password;
+  /**
+   * Determines whether the staff member be shown on the directory site of the business.
+   *
+   * If `null`, the current value of the field shouldn't be changed.
+   *
+   * @post post
+   * @var bool|null
+   */
+  public $is_microsite;
 
-    /**
-     * Confirmation of password.
-     * Field is required for creating a new staff.
-     *
-     * `null` means to not change the current value of the field.
-     *
-     * @post post
-     * @var string|null
-     */
-    public $text_password_confirm;
+  /**
+   * Whether the staff member can to sign in.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_uid = true;
 
-    /**
-     * Staff job title.
-     *
-     * `null` means to not change the current value of the field.
-     *
-     * @post post
-     * @var string|null
-     */
-    public $text_position;
+  /**
+   * The key of the business in which the staff member is being created or edited.
+   * This field is required.
+   *
+   * @post post
+   * @var string
+   */
+  public $k_business = '';
+
+  /**
+   * Business role key.
+   *
+   * `null` if not set.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $k_business_role;
+
+  /**
+   * City key.
+   *
+   * `null` means to not change the current value of the field.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $k_city;
+
+  /**
+   * Home location key.
+   *
+   * `null` if not set.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $k_location;
+
+  /**
+   * The key of the staff member who is being created or edited.
+   *
+   * This will be `null` in cases where a new staff member is created.
+   *
+   * @post get,result
+   * @var string|null
+   */
+  public $k_staff;
+
+  /**
+   * Address.
+   *
+   * `null` means to not change the current value of the field.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $text_address;
+
+  /**
+   * Staff biography.
+   *
+   * `null` means to not change the current value of the field.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $text_biography;
+
+  /**
+   * Custom city title.
+   *
+   * `null` means to not change the current value of the field or <var>k_city</var> is specified.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $text_city;
+
+  /**
+   * The staff member's email address.
+   * This field is required when creating a new staff member.
+   *
+   * If `null`, the current value of the field shouldn't be changed.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $text_email;
+
+  /**
+   * The staff member's first name.
+   * This field is required when creating a new staff member.
+   *
+   * If `null`, the current value of the field shouldn't be changed.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $text_first_name;
+
+  /**
+   * The staff member's last name.
+   *
+   * If `null`, the current value of the field shouldn't be changed.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $text_last_name;
+
+  /**
+   * The password.
+   * This field is required when creating a new staff member.
+   *
+   * If `null`, the current value of the field shouldn't be changed.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $text_password;
+
+  /**
+   * Confirmation of the password.
+   * This field is required when creating a new staff member.
+   *
+   * If `null`, the current value of the field shouldn't be changed.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $text_password_confirm;
+
+  /**
+   * Home phone.
+   *
+   * `null` means to not change the current value of the field.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $text_phone_home;
+
+  /**
+   * Cell phone.
+   *
+   * `null` means to not change the current value of the field.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $text_phone_mobile;
+
+  /**
+   * The staff member's job title.
+   *
+   * If `null`, the current value of the field shouldn't be changed.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $text_position;
+
+  /**
+   * The staff member's job title.
+   *
+   * If `null`, the current value of the field shouldn't be changed.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $text_postal;
 }
 
 ?>

@@ -1,5 +1,7 @@
 <?php
 
+namespace WellnessLiving\Wl\Tax;
+
 /**
  * Types of taxes.
  */

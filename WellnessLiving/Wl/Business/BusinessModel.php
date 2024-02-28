@@ -5,14 +5,15 @@ namespace WellnessLiving\Wl\Business;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Creates a new business.
+ * An endpoint that creates a new business.
  */
 class BusinessModel extends WlModelAbstract
 {
   /**
-   * The business locale. One of {@link \WellnessLiving\Core\Locale\LocaleSid} constants.
+   * The business locale.
    *
    * @post post
+   * @see \WellnessLiving\Core\Locale\LocaleSid
    * @var int
    */
   public $id_locale;

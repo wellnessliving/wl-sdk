@@ -7,27 +7,26 @@ use WellnessLiving\WlAssertException;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information to generate application sources.
+ * An endpoint that returns information used to generate application sources.
  */
 class ApplicationResourceModel extends WlModelAbstract
 {
   /**
-   * Placeholder of application ID.
+   * The application ID placeholder.
    */
   const ID = '[ID]';
 
   /**
-   * Application data.
-   *
-   * <tt>null</tt> until loaded.
+   * The application data.
    *
    * @get result
-   * @var array[]|null
+   * @var array
    */
-  public $a_application = null;
+  public $a_application;
 
   /**
-   * Business key.
+   * The business key.
+   * Empty to get data for all businesses.
    *
    * @get get
    * @var string
@@ -35,11 +34,11 @@ class ApplicationResourceModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Updates file `www/js/communication.js`.
+   * Updates the `www/js/communication.js` file.
    *
-   * @param string $k_business Key of a business for that sources are making.
-   * @param string $s_sources Path to directory with sources that must be processed.
-   * @throws WlAssertException In a case of an error.
+   * @param string $k_business The key of a business for that sources are making.
+   * @param string $s_sources The path to the directory with the sources that must be processed.
+   * @throws WlAssertException in the case of an error.
    */
   private function _communication($k_business,$s_sources)
   {
@@ -52,11 +51,11 @@ class ApplicationResourceModel extends WlModelAbstract
   }
 
   /**
-   * Updates content of file `config.xml`.
+   * Updates the content of the `config.xml` file.
    *
-   * @param string $k_business Key of a business for that sources are making.
-   * @param string $s_sources Path to directory with sources that must be processed.
-   * @throws WlAssertException In a case of an error.
+   * @param string $k_business The key of a business for that sources are making.
+   * @param string $s_sources The path to the directory with the sources that must be processed.
+   * @throws WlAssertException in the case of an error.
    */
   private function _config($k_business, $s_sources)
   {
@@ -83,19 +82,19 @@ class ApplicationResourceModel extends WlModelAbstract
   /**
    * Updates a specified file.
    *
-   * @param string $k_business Key of a business for that sources are making.
-   * @param string $s_sources Path to directory with sources that must be processed.
+   * @param string $k_business The key of a business for that sources are making.
+   * @param string $s_sources The path to the directory with the sources that must be processed.
    * @param string $s_file File to be updated.
-   * @param array[] $a_data Data to be updated. Every element has next keys:
+   * @param array[] $a_data The data to be updated. Every element has the following keys:
    * <dl>
    *   <dt>string <var>s_key</var></dt>
-   *   <dd>Key of data in {@link ApplicationResourceModel::$a_application} field.</dd>
+   *   <dd>The key of the data in the {@link ApplicationResourceModel::$a_application} field.</dd>
    *   <dt>string <var>s_placeholder</var></dt>
-   *   <dd>Placeholder in source file to be replaced by data.</dd>
+   *   <dd>The placeholder in the source file to be replaced by data.</dd>
    * </dl>
-   * @throws WlAssertException In a case of an error.
+   * @throws WlAssertException in the case of an error.
    */
-  private function _file($k_business, $s_sources, $s_file, $a_data)
+  protected function _file($k_business, $s_sources, $s_file, $a_data)
   {
     $a_replace = [];
     foreach($a_data as $a_data_item)
@@ -143,11 +142,11 @@ class ApplicationResourceModel extends WlModelAbstract
   }
 
   /**
-   * Updates file `www/js/google.plus.js`.
+   * Updates the `www/js/google.plus.js` file.
    *
    * @param string $k_business Key of a business for that sources are making.
-   * @param string $s_sources Path to directory with sources that must be processed.
-   * @throws WlAssertException In a case of an error.
+   * @param string $s_sources The path to the directory with the sources that must be processed.
+   * @throws WlAssertException in the case of an error.
    */
   private function _google($k_business, $s_sources)
   {
@@ -160,11 +159,11 @@ class ApplicationResourceModel extends WlModelAbstract
   }
 
   /**
-   * Updates content of file `www/index.html`.
+   * Updates the content of the `www/index.html` file.
    *
    * @param string $k_business Key of a business for that sources are making.
-   * @param string $s_sources Path to directory with sources that must be processed.
-   * @throws WlAssertException In a case of an error.
+   * @param string $s_sources The path to the directory with the sources that must be processed.
+   * @throws WlAssertException in the case of an error.
    */
   private function _index($k_business, $s_sources)
   {
@@ -180,10 +179,10 @@ class ApplicationResourceModel extends WlModelAbstract
    * Sets application resources.
    *
    * @param string $k_business Key of a business for that sources are making.
-   * @param string $s_sources Path to directory with sources that must be processed.
-   * @throws WlAssertException In a case of an error.
+   * @param string $s_sources The path to the directory with the sources that must be processed.
+   * @throws WlAssertException in the case of an error.
    */
-  private function _resource($k_business, $s_sources)
+  protected function _resource($k_business, $s_sources)
   {
     $s_resource = $s_sources.'res/';
 
@@ -266,11 +265,11 @@ class ApplicationResourceModel extends WlModelAbstract
   }
 
   /**
-   * Generate sources for application.
+   * Generates sources for the application.
    *
-   * @param string $s_source Directory with raw sources.
-   * @param string $s_destination Directory with ready sources for certain application.
-   * @throws WlAssertException In a case of an error.
+   * @param string $s_source The directory with raw sources.
+   * @param string $s_destination The directory with ready sources for certain application.
+   * @throws WlAssertException in the case of an error.
    */
   public function sources($s_source, $s_destination)
   {

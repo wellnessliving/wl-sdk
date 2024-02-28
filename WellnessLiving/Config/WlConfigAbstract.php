@@ -2,21 +2,21 @@
 
 namespace WellnessLiving\Config;
 
+use WellnessLiving\Wl\WlRegionSid;
 use WellnessLiving\WlAssertException;
-use WellnessLiving\WlRegionSid;
 
 /**
  * Contains WellnessLiving SDK configuration.
  *
  * This class cannot be used as a parent of your config class.
- * Your config class must inherit from {@link \WellnessLiving\Config\WlConfigDeveloper} or
- * {@link \WellnessLiving\Config\WlConfigProduction}.
+ * Your config class must inherit from {@link WlConfigDeveloper} or
+ * {@link WlConfigProduction}.
  *
  * The following constants should be overridden in your class:
- * * {@link \WellnessLiving\Config\WlConfigAbstract::AUTHORIZE_CODE};
- * * {@link \WellnessLiving\Config\WlConfigAbstract::AUTHORIZE_ID}.
+ * * {@link WlConfigAbstract::AUTHORIZE_CODE};
+ * * {@link WlConfigAbstract::AUTHORIZE_ID}.
  *
- * To create a configuration object, use the {@link \WellnessLiving\Config\WlConfigAbstract::create()} method
+ * To create a configuration object, use the {@link WlConfigAbstract::create()} method
  * on behalf of your class configuration class. For example:<code>
  * <?php
  *     ...
@@ -31,7 +31,7 @@ abstract class WlConfigAbstract
   /**
    * The agent name in the http-request header.
    */
-  const AGENT='WellnessLiving SDK/1.1 (WellnessLiving SDK)';
+  const AGENT='WellnessLiving SDK/[SDK_VERSION] (PHP [PHP_VERSION])';
 
   /**
    * Secret code to authorize application.
@@ -54,48 +54,73 @@ abstract class WlConfigAbstract
   const AUTHORIZE_ID=null;
 
   /**
-   * Name of a persistent cookie.
+   * Name of the global cookie.
    *
-   * The value `null` is not valid. This constant must be overridden in inherited classes.
+   * The value `null` is not valid. This property must be overridden in inherited classes.
    *
-   * @see \WellnessLiving\Config\WlConfigProduction
-   * @see \WellnessLiving\Config\WlConfigDeveloper
+   * @see WlConfigProduction
+   * @see WlConfigDeveloper
+   * @var string|null
    */
-  const COOKIE_PERSISTENT=null;
+  const COOKIE_GLOBAL=null;
+
+  /**
+   * Names of persistent cookies by regions.
+   *
+   * The value `null` is not valid. This property must be overridden in inherited classes.
+   *
+   * The correct value for the property is an array of strings.
+   * The keys of the array are the region IDs of the corresponding data centers. One of {@link WlRegionSid} constant.
+   * The values are the names of transient cookies for these regions.
+   * E.g. ['us-east-1' => 'sp', 'ap-southeast-2' => 'dp'].
+   *
+   * @see WlConfigProduction
+   * @see WlConfigDeveloper
+   * @var string[]|null
+   */
+  protected static $COOKIE_PERSISTENT=null;
 
   /**
    * Name of a transient cookie.
    *
-   * The value `null` is not valid. This constant must be overridden in inherited classes.
+   * The value `null` is not valid. This property must be overridden in inherited classes.
    *
-   * @see \WellnessLiving\Config\WlConfigProduction
-   * @see \WellnessLiving\Config\WlConfigDeveloper
+   * The correct value for the property is an array of strings.
+   * The keys of the array are the region IDs of the corresponding data centers. One of {@link WlRegionSid} constant.
+   * The values are the names of transient cookies for these regions.
+   * E.g. ['us-east-1' => 'st', 'ap-southeast-2' => 'dt'].
+   *
+   * @see WlConfigProduction
+   * @see WlConfigDeveloper
+   * @var string[]|null
    */
-  const COOKIE_TRANSIENT=null;
+  protected static $COOKIE_TRANSIENT=null;
 
   /**
    * URL of the API endpoint by regions.
    *
-   * The value `null` is not valid. This constant must be overridden in inherited classes.
+   * The value `null` is not valid. This property must be overridden in inherited classes.
    *
-   * The correct value for the constant is an array.
-   * The key of array is data center region id. One of {@link \WellnessLiving\WlRegionSid} constant.
-   * The value is URL of the API endpoint for region.
+   * The correct value for the property is an array of strings.
+   * The keys of the array are the region IDs of the corresponding data centers. One of {@link WlRegionSid} constant.
+   * The values are the URLs of the API endpoints for these regions.
+   * E.g. ['us-east-1' => 'https://api.wellnessliving.com', 'ap-southeast-2' => 'https://api.wellnessliving.com.au'].
+   *
    *
    * @var string[]|null
-   * @see \WellnessLiving\Config\WlConfigProduction
-   * @see \WellnessLiving\Config\WlConfigDeveloper
+   * @see WlConfigProduction
+   * @see WlConfigDeveloper
    */
   protected static $REGION_URL=null;
 
   /**
    * List of rules, which is used to convert error codes to HTTP codes.
    *
-   * Keys are names of class model or empty string.
-   * * Empty string in a case if this is default rule.
-   * * Class name in a case if there are specific rules for particular class. Class specific rules will override default rules.
+   * Keys are names of class models or are empty strings.
+   * * Empty string in case if this is the default rule.
+   * * Class name in case if there are specific rules for particular class. Class specific rules will override default rules.
    *
-   * Value is a string with list of rules separated by comma. Each rule has the following format: <ul>
+   * Value is a string with a list of rules separated by commas. Each rule has the following format: <ul>
    *   <li>
    *     <tt>default</tt>
    *     Special rule with already predefined list of rules.
@@ -141,7 +166,7 @@ abstract class WlConfigAbstract
 
   /**
    * ID of a region in which information about this business is stored.
-   * One of {@link \WellnessLiving\WlRegionSid} constants.
+   * One of {@link WlRegionSid} constants.
    *
    * @var int
    */
@@ -150,9 +175,9 @@ abstract class WlConfigAbstract
   /**
    * User-agent to use in API requests.
    *
-   * If set, this value overrides value of {@link \WellnessLiving\Config\WlConfigAbstract::AGENT}.
+   * If set, this value overrides value of {@link WlConfigAbstract::AGENT}.
    *
-   * `null` to use {@link \WellnessLiving\Config\WlConfigAbstract::AGENT}.
+   * `null` to use {@link WlConfigAbstract::AGENT}.
    *
    * @var string|null
    */
@@ -161,10 +186,20 @@ abstract class WlConfigAbstract
   /**
    * Prevents manual creation of a configuration object.
    *
-   * @see \WellnessLiving\Config\WlConfigAbstract::create()
+   * @see WlConfigAbstract::create()
    */
   protected function __construct()
   {
+  }
+
+  /**
+   * Returns name of the global cookie in the current configuration.
+   *
+   * @return string Name of the global cookie in the current configuration.
+   */
+  public function cookieGlobal()
+  {
+    return static::COOKIE_GLOBAL;
   }
 
   /**
@@ -172,9 +207,9 @@ abstract class WlConfigAbstract
    *
    * @return string The name of a persistent cookie in the current configuration.
    */
-  final public function cookiePersistent()
+  public function cookiePersistent()
   {
-    return static::COOKIE_PERSISTENT;
+    return static::$COOKIE_PERSISTENT[$this->id_region];
   }
 
   /**
@@ -182,16 +217,16 @@ abstract class WlConfigAbstract
    *
    * @return string The name of a transient cookie in the current configuration.
    */
-  final public function cookieTransient()
+  public function cookieTransient()
   {
-    return static::COOKIE_TRANSIENT;
+    return static::$COOKIE_TRANSIENT[$this->id_region];
   }
 
   /**
    * Creates a configuration object.
    *
    * @param int $id_region ID of a data center region in which information about this business is stored.
-   *   One of {@link \WellnessLiving\WlRegionSid} constants.
+   *   One of {@link WlRegionSid} constants.
    * @return WlConfigAbstract Configuration object.
    * @throws WlAssertException In a case of an error with argument.
    */
@@ -207,14 +242,27 @@ abstract class WlConfigAbstract
       'text_message' => 'The AUTHORIZE_ID constant is not set. You need to override this constant in your configuration class.'
     ]);
 
-    WlAssertException::assertTrue(is_string(static::COOKIE_TRANSIENT) && strlen(static::COOKIE_TRANSIENT)>0,[
+    WlAssertException::assertTrue(static::COOKIE_GLOBAL===null||is_string(static::COOKIE_GLOBAL),[
       'text_class' => static::class,
-      'text_message' => 'The COOKIE_TRANSIENT constant is not set. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
+      'text_message' => 'The COOKIE_GLOBAL constant is set to an invalid value. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
     ]);
 
-    WlAssertException::assertTrue(is_string(static::COOKIE_PERSISTENT) && strlen(static::COOKIE_PERSISTENT)>0,[
+    WlAssertException::assertTrue(is_array(static::$COOKIE_TRANSIENT),[
       'text_class' => static::class,
-      'text_message' => 'The COOKIE_PERSISTENT constant is not set. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
+      'text_message' => 'The COOKIE_TRANSIENT property is not set. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
+    ]);
+    WlAssertException::assertTrue(isset(static::$COOKIE_TRANSIENT[$id_region]),[
+      'text_class' => static::class,
+      'text_message' => 'The COOKIE_TRANSIENT property does not contain name of a cookie for the requested datacenter region ID. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
+    ]);
+
+    WlAssertException::assertTrue(is_array(static::$COOKIE_PERSISTENT),[
+      'text_class' => static::class,
+      'text_message' => 'The COOKIE_PERSISTENT property is not set. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
+    ]);
+    WlAssertException::assertTrue(isset(static::$COOKIE_PERSISTENT[$id_region]),[
+      'text_class' => static::class,
+      'text_message' => 'The COOKIE_PERSISTENT property does not contain the name of the cookie for the requested datacenter region ID. Use the correct parent class: WlConfigDeveloper or WlConfigProduction.'
     ]);
 
     WlAssertException::assertTrue(is_array(static::$REGION_URL),[
@@ -226,7 +274,7 @@ abstract class WlConfigAbstract
     WlAssertException::assertTrue(in_array($id_region,$a_region_all),[
       'id_region' => $id_region,
       'text_class' => static::class,
-      'text_message' => 'Region does not exist. Please enter the correct region from "\WellnessLiving\WlRegionSid" class.'
+      'text_message' => 'Region does not exist. Please enter the correct region from "\WellnessLiving\Wl\WlRegionSid" class.'
     ]);
 
     WlAssertException::assertTrue(isset(static::$REGION_URL[$id_region]),[
@@ -245,7 +293,6 @@ abstract class WlConfigAbstract
    *
    * @param string $s_session_key Session key.
    * @return string Returns CSRF code based on specified session key.
-   * @throws WlAssertException In a case of an error with configuration settings.
    */
   final public function csrfCode($s_session_key)
   {
@@ -258,7 +305,7 @@ abstract class WlConfigAbstract
    *
    * @return string URL of the server in the current configuration (including trailing slash).
    */
-  final public function url()
+  public function url()
   {
     return static::$REGION_URL[$this->id_region];
   }

@@ -5,28 +5,70 @@ namespace WellnessLiving\Wl\Pay\Account;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about user's accounts.
+ * An endpoint that displays information about user's accounts.
  */
 class AccountModel extends WlModelAbstract
 {
   /**
-   * A list of user's accounts.
+   * A list of the user's accounts.
    *
-   * Keys are account keys (may be <tt>0</tt> if user has no accounts in currency of given business);
-   * values are account data.
-   *
-   * <tt>null</tt> until got.
+   * Keys are account keys. This could be `0` if the user has no accounts in the currency of the given business.
+   * Values are account data: <dl>
+   *   <dt>
+   *     int <var>id_currency</var>
+   *   </dt>
+   *   <dd>
+   *     Currency ID. One of {@link \WellnessLiving\Core\Locale\CurrencySid} constant.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_currency</var>
+   *   </dt>
+   *   <dd>
+   *     Key of account currency.
+   *   </dd>
+   *   <dt>
+   *     string|null <var>k_pay_account</var>
+   *   </dt>
+   *   <dd>
+   *     ID of payment account. <tt>null</tt> if this is a user account based on system payment method.
+   *   </dd>
+   *   <dt>
+   *     string|null <var>k_pay_method</var>
+   *   </dt>
+   *   <dd>
+   *     ID of custom payment method. <tt>null</tt> if this is a user account based on system payment method.
+   *   </dd>
+   *   <dt>
+   *     string <var>m_rest</var>
+   *   </dt>
+   *   <dd>
+   *     Account balance.
+   *   </dd>
+   *   <dt>
+   *     string|null <var>s_method</var>
+   *   </dt>
+   *   <dd>
+   *     Name of a custom payment method. <tt>null</tt> if this is a user account based on system payment method.
+   *   </dd>
+   * </dl>
    *
    * @get result
-   * @var array|null
+   * @var array
    */
-  public $a_account = null;
+  public $a_account;
 
   /**
-   * <tt>true</tt> - get information for account of money owner
-   * (another user may be owner of the specified user's money).
+   * A list of accounts that is not created for this user yet.
    *
-   * <tt>false</tt> - get information certainly for the specified user.
+   * @get result
+   * @var array[]
+   */
+  public $a_account_nx;
+
+  /**
+   * If `true`, information for the account's owner is returned. Clients can be configured to pay for a relative's
+   * expenses. For example, a parent can pay for their child.
+   * Otherwise, `false` to indicate information strictly for the specified user is returned.
    *
    * @get get
    * @var bool
@@ -34,7 +76,7 @@ class AccountModel extends WlModelAbstract
   public $is_owner = false;
 
   /**
-   * Key of the business to show information for.
+   * The key of the business to show information for.
    *
    * @get get
    * @var string
@@ -42,7 +84,7 @@ class AccountModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Key of the user to show information for.
+   * The key of the user to show information for.
    *
    * @get get
    * @var string

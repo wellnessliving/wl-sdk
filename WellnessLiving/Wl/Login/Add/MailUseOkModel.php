@@ -5,43 +5,51 @@ namespace WellnessLiving\Wl\Login\Add;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Registers an existing user in the specified Franchisee.
+ * An endpoint that registers an existing user in the specified Enterprise Headquarters account.
  *
- * If the user is already a member of the business, then this endpoint will do nothing. After a profile edit there can
- * be a delay while the data replicates to our caches where you will receive a 'profile-field-empty' status code. This
- * delay is less than 20 seconds in most cases.
+ * This endpoint isn't applicable for users who are already members of the business. After a profile is edited, there can
+ * be a delay while the data replicates to system caches. As a result, you may see a 'profile-field-empty' status code. In most
+ * cases, this delay is less than 20 seconds.
  *
- * If your business uses Franchise Cloud, there is a restriction where a client can only be a member in one Franchisee,
- * they will be a traveller in all other Franchisees.
+ * For Enterprise Cloud in WellnessLiving, clients can only be members in one Enterprise Location.
+ * In all other Enterprise Locations, they'll be treated as travelers in the system.
  */
 class MailUseOkModel extends WlModelAbstract
 {
   /**
-   * The list of fields missing information.
-   * Each element is an array containing the following data:<dl>
-   *   <dt>string <var>html_message</var></dt>
-   *   <dd>The error message.</dd>
-   *   <dt>string <var>s_field</var></dt>
-   *   <dd>The name of the field which is missing information.
-   *     Given in the format 'k_field.name'.
+   * The list of fields with missing information.
+   * Each element is an array containing the following data:
+   * <dl>
+   *   <dt>
+   *     string <var>html_message</var>
+   *   </dt>
+   *   <dd>
+   *     The error message.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_field</var>
+   *   </dt>
+   *   <dd>
+   *     The name of the field missing information.
+   *     Given in the format `k_field.name`.
    *   </dd>
    * </dl>
    *
    * @post result
    * @var array
    */
-  public $a_error = [];
+  public $a_error;
 
   /**
-   * This value is `true` if this is a lead, otherwise this value is `false` .
+   * This value is `true` if this user is a lead. `false` if otherwise.
    *
    * @post post
-   * @var string
+   * @var bool
    */
-  public $is_lead = 0;
+  public $is_lead = false;
 
   /**
-   * The business ID used internally by WellnessLiving.
+   * The business key used internally by WellnessLiving.
    *
    * @post post
    * @var string
@@ -49,7 +57,7 @@ class MailUseOkModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * The lead widget skin key, this is used only if a lead was added.
+   * The Lead Capture Widget skin key. This is used only if a lead was added.
    *
    * @post post
    * @var string
@@ -62,7 +70,7 @@ class MailUseOkModel extends WlModelAbstract
    * @post result
    * @var string
    */
-  public $s_code = '';
+  public $s_code;
 
   /**
    * The result message of the request.
@@ -70,7 +78,7 @@ class MailUseOkModel extends WlModelAbstract
    * @post result
    * @var string
    */
-  public $text_message = '';
+  public $text_message;
 
   /**
    * The user key.

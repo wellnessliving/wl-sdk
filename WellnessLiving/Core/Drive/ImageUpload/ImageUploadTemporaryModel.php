@@ -6,97 +6,88 @@ use WellnessLiving\WlFile;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Tool to upload a raw image into server.
+ * An endpoint that uploads a raw image to a server.
  *
- * Then you must save this image by {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadModel}.
+ * You must save an image by using {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadModel}.
  */
 class ImageUploadTemporaryModel extends WlModelAbstract
 {
   /**
-   * Image to be uploaded.
-   * <tt>null</tt> until set.
+   * The image to be uploaded.
    *
    * @post post
-   * @var WlFile|null
+   * @var WlFile
    */
-  public $f_image = null;
+  public $f_image;
 
   /**
-   * <tt>true</tt> - crop is used. <tt>false</tt> - crop is not used (the image is saved in the original size).
-   * <tt>null</tt> until loaded from server.
+   * If `true`, a crop is used. Otherwise, this will be `false` if a crop isn't used (the image is saved in its original size).
    *
    * @post result
-   * @var bool|null
+   * @var bool
    */
-  public $has_crop = null;
+  public $has_crop;
 
   /**
-   * Actual height of thumbnail image.
-   * <tt>null</tt> until loaded from server.
+   * The actual height of the thumbnail image.
    *
    * @post result
-   * @var int|null
+   * @var int
    */
-  public $i_height = null;
+  public $i_height;
 
   /**
-   * Height of original image.
-   * <tt>null</tt> until loaded from server.
+   * The height of the original image.
    *
    * @post result
-   * @var int|null
+   * @var int
    */
-  public $i_height_src = null;
+  public $i_height_src;
 
   /**
-   * Angle on which image was rotated compared to the original.
-   * <tt>null</tt> until loaded from server.
+   * The angle of the image rotation compared to the original.
    *
    * @post result
-   * @var int|null
+   * @var int
    */
-  public $i_rotate = null;
+  public $i_rotate;
 
   /**
-   * Actual width of thumbnail image.
-   * <tt>null</tt> until loaded from server.
+   * The actual width of the thumbnail image.
    *
    * @post result
-   * @var int|null
+   * @var int
    */
-  public $i_width = null;
+  public $i_width;
 
   /**
-   * Width of original image.
-   * <tt>null</tt> until loaded from server.
+   * The width of the original image.
    *
    * @post result
-   * @var int|null
+   * @var int
    */
-  public $i_width_src = null;
+  public $i_width_src;
 
   /**
-   * Image type ID.
-   * <tt>null</tt> until loaded from server.
+   * The image type ID. One of the {@link \WellnessLiving\Core\Drive\DriveTypeSid} constants.
    *
    * @post result
-   * @var int|null
+   * @var int
    */
-  public $id_type_src = null;
+  public $id_type_src;
 
   /**
-   * <tt>true</tt> if thumbnail is a resized variant of original image.
-   * <tt>null</tt> until loaded from server.
+   * If `true`, the thumbnail is a resized variant of the original image.
    *
    * @post result
-   * @var bool|null
+   * @var bool
    */
-  public $is_resize = null;
+  public $is_resize;
 
   /**
-   * Key of image within {@link ImageUploadTemporaryModel::$s_class}.
+   * The key of the image within {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadTemporaryModel::$s_class}.
    *
-   * For example, for user's photo specify user's key here.
+   * For example, for a user's photo, specify the user's key here.
    *
    * @post get
    * @var string
@@ -104,9 +95,9 @@ class ImageUploadTemporaryModel extends WlModelAbstract
   public $k_id = '';
 
   /**
-   * Name of class that manages this image.
+   * The name of the class that manages this image.
    *
-   * For example, for user's photo specify string <tt>PassportLoginImage</tt> here.
+   * For example, for a user's photo, specify the string `PassportLoginImage` here.
    *
    * @post get
    * @var string
@@ -114,22 +105,20 @@ class ImageUploadTemporaryModel extends WlModelAbstract
   public $s_class = '';
 
   /**
-   * URL to resized and rotated image in file storage.
-   * <tt>null</tt> until loaded from server.
+   * The URL to the resized and rotated image in file storage.
    *
    * @post result
-   * @var string|null
+   * @var string
    */
-  public $url_thumbnail = null;
+  public $url_thumbnail;
 
   /**
-   * URL to original image in file storage.
-   * <tt>null</tt> until loaded from server.
+   * The URL to the original image in file storage.
    *
    * @post result
-   * @var string|null
+   * @var string
    */
-  public $url_view = null;
+  public $url_view;
 }
 
 ?>
