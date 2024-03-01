@@ -5,15 +5,14 @@ namespace WellnessLiving\Wl\Catalog\Cart;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about the cart in the catalog.
+ * An endpoint that displays information about the cart in the catalog.
  */
 class CartModel extends WlModelAbstract
 {
   /**
-   * List of discount for each item.
+   * The list of discounts for each item.
    *
-   * Key is unique key of item.
-   * Value is discount amount for this item.
+   * Keys refer to unique item keys, and values refer to discount amounts for the item.
    *
    * @get result
    * @var string[]
@@ -21,16 +20,16 @@ class CartModel extends WlModelAbstract
   public $a_discount_item = [];
 
   /**
-   * A list of items in the cart.
+   * the list of items in the cart.
    * <dl>
    *   <dt>int <var>i_quantity</var></dt>
-   *   <dd>Quantity of sale items.</dd>
+   *   <dd>The quantity of sale items.</dd>
    *   <dt>int <var>id_sale</var></dt>
-   *   <dd>Sale item type, one of {@link \WellnessLiving\WlSaleSid}.</dd>
+   *   <dd>The sale item type, one of the {@link \WellnessLiving\WlSaleSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
-   *   <dd>Sale item key.</dd>
+   *   <dd>The sale item key.</dd>
    *   <dt>string <var>k_shop_product_option</var></dt>
-   *   <dd>Shop product option. <tt>null</tt> if sale item has no options.</dd>
+   *   <dd>The shop product option. If <tt>null</tt>, the sale item has no options.</dd>
    * </dl>
    *
    * @get get
@@ -40,8 +39,8 @@ class CartModel extends WlModelAbstract
 
   /**
    * Values derived for individual tax rates.
-   * Key is key of the tax (primary key in {@link \RsTaxSql}).
-   * Value is the amount of tax in cart.
+   *
+   * Keys refer to tax keys, and values refer to the amount of tax in the cart.
    *
    * @get result
    * @var array
@@ -59,7 +58,7 @@ class CartModel extends WlModelAbstract
   /**
    * The full discount of the cart.
    *
-   * <tt>null</tt> if not calculated yet.
+   * If `null`, the discount isn't calculated yet.
    *
    * @get result
    * @var string|null
@@ -67,7 +66,7 @@ class CartModel extends WlModelAbstract
   public $m_discount;
 
   /**
-   * Amount of total discount.
+   * The total discount amount.
    *
    * @get result
    * @var string
@@ -77,7 +76,7 @@ class CartModel extends WlModelAbstract
   /**
    * The total amount in the catalog cart without tax.
    *
-   * <tt>null</tt> if not set yet.
+   * If `null`, the total amount isn't set yet.
    *
    * @get result
    * @var string|null
@@ -85,9 +84,9 @@ class CartModel extends WlModelAbstract
   public $m_subtotal;
 
   /**
-   * The amount of tax.
+   * The tax amount.
    *
-   * <tt>null</tt> if not set yet.
+   * If `null`, the tax amount isn't set yet.
    *
    * @get result
    * @var string|null
@@ -95,7 +94,7 @@ class CartModel extends WlModelAbstract
   public $m_tax;
 
   /**
-   * Amount of appointment tips.
+   * The amount of appointment tips.
    *
    * @get result
    * @var string|null
@@ -105,7 +104,7 @@ class CartModel extends WlModelAbstract
   /**
    * The total amount in the catalog cart.
    *
-   * <tt>null</tt> if not set yet.
+   * If `null`, the total amount isn't set yet.
    *
    * @get result
    * @var string|null
@@ -115,7 +114,7 @@ class CartModel extends WlModelAbstract
   /**
    * The discount code.
    *
-   * <tt>null</tt> means that the discount code has been reset.
+   * If `null`, the discount code has been reset.
    *
    * @get get
    * @var string|null
@@ -125,7 +124,7 @@ class CartModel extends WlModelAbstract
   /**
    * The user key.
    *
-   * `0` in case when guest.
+   * This will be `0` for guests.
    *
    * @get get
    * @var string
