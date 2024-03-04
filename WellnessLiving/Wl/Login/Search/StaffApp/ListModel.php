@@ -17,10 +17,14 @@ class ListModel extends WlModelAbstract
    *
    * Each element is an array with the following keys:
    * <dl>
+   *   <dt>string <var>text_mail</var></dt>
+   *   <dd>Client's email.</dd>
    *   <dt>string <var>text_name_first</var></dt>
    *   <dd>Client's first name.</dd>
    *   <dt>string <var>text_name_last</var></dt>
    *   <dd>Client's last name.</dd>
+   *   <dt>string <var>text_phone</var></dt>
+   *   <dd>Client's phone.</dd>
    *   <dt>string <var>text_title</var></dt>
    *   <dd>The client name.</dd>
    *   <dt>string <var>uid</var></dt>
