@@ -212,6 +212,13 @@ class ScheduleListModel extends WlModelAbstract
    *     If the session isn't an appointment, this will be `0`.
    *   </dd>
    *   <dt>
+   *     string <var>dt_confirm</var>
+   *   </dt>
+   *   <dd>
+   *     Confirmation date for appointment in MySQL format. Will be zero date + time in case appointment
+   *     is not yet confirmed by client.
+   *   </dd>
+   *   <dt>
    *     string <var>k_class</var>
    *   </dt>
    *   <dd>
