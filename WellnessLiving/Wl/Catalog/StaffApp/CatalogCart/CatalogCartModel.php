@@ -10,6 +10,24 @@ use WellnessLiving\WlModelAbstract;
 class CatalogCartModel extends WlModelAbstract
 {
   /**
+   * A list of available discount codes with the next structure:
+   * <dl>
+   *   <dt>bool <var>is_select</var></dt>
+   *   <dd>`true` if this code is selected currently, `false` otherwise.</dd>
+   *   <dt>string <var>k_discount_code</var></dt>
+   *   <dd>Discount code key.</dd>
+   *   <dt>string <var>text_discount_code</var></dt>
+   *   <dd>Value of the code that can be used to get discount.</dd>
+   *   <dt>string <var>text_title</var></dt>
+   *   <dd>Name of the code.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array
+   */
+  public $a_discount_code = [];
+
+  /**
    * A list of cart items with the next structure:
    * <dl>
    *   <dt>array [<var>a_config</var>]</dt>
@@ -107,6 +125,15 @@ class CatalogCartModel extends WlModelAbstract
    * @var bool
    */
   public $is_commission = false;
+
+  /**
+   * Determines, how staff sees discount codes in Store.
+   * `true` as select field, `false` as input field.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_discount_code_mode_select = false;
 
   /**
    * Determines whether to display custom receipt notes at checkout.
