@@ -12,7 +12,6 @@ class MemberValidateModel extends WlModelAbstract
   /**
    * List of fields if the user has empty profile fields, which are required for booking.
    *
-   *
    * @get result
    * @var array
    */
@@ -20,7 +19,6 @@ class MemberValidateModel extends WlModelAbstract
 
   /**
    * List of fields if the user has empty profile fields, which are required for registration.
-   *
    *
    * @get result
    * @var array
@@ -30,7 +28,6 @@ class MemberValidateModel extends WlModelAbstract
   /**
    * `true` If the user has credit cards on profile, otherwise `false`.
    *
-   *
    * @get result
    * @var bool
    */
@@ -38,7 +35,6 @@ class MemberValidateModel extends WlModelAbstract
 
   /**
    * `true` if the user has an outstanding contract, otherwise `false`.
-   *
    *
    * @get result
    * @var bool
@@ -48,7 +44,6 @@ class MemberValidateModel extends WlModelAbstract
   /**
    * `true` If the user has an outstanding waiver for the business, otherwise `false`.
    *
-   *
    * @get result
    * @var bool
    */
@@ -56,7 +51,6 @@ class MemberValidateModel extends WlModelAbstract
 
   /**
    * `true` If the user has pending registration quizzes to complete, otherwise `false`.
-   *
    *
    * @get result
    * @var bool
@@ -66,7 +60,6 @@ class MemberValidateModel extends WlModelAbstract
   /**
    * `true` If the user has to provide credit card details before booking, otherwise `false`.
    *
-   *
    * @get result
    * @var bool
    */
@@ -74,7 +67,6 @@ class MemberValidateModel extends WlModelAbstract
 
   /**
    * `true` If the user has to provide credit card details to finish their registration, otherwise `false`.
-   *
    *
    * @get result
    * @var bool
@@ -93,7 +85,6 @@ class MemberValidateModel extends WlModelAbstract
   /**
    * Home user`s location.
    * `null` if user has not home location.
-   *
    *
    * @get result
    * @var string|null
