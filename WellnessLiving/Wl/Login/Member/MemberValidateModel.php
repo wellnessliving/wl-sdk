@@ -10,22 +10,22 @@ use WellnessLiving\WlModelAbstract;
 class MemberValidateModel extends WlModelAbstract
 {
   /**
-   * `true` if the user has empty profile fields, which are required for booking, otherwise `false`.
+   * List of fields if the user has empty profile fields, which are required for booking.
    *
    *
    * @get result
    * @var array
    */
-  public array $a_empty_fields_booking = [];
+  public $a_empty_fields_booking = [];
 
   /**
-   * `true` If the user has empty profile fields, which are required for registration, otherwise `false`.
+   * List of fields if the user has empty profile fields, which are required for registration.
    *
    *
    * @get result
    * @var array
    */
-  public array $a_empty_fields_registration = [];
+  public $a_empty_fields_registration = [];
 
   /**
    * `true` If the user has credit cards on profile, otherwise `false`.
@@ -34,7 +34,7 @@ class MemberValidateModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public bool $has_credit_card = false;
+  public $has_credit_card = false;
 
   /**
    * `true` if the user has an outstanding contract, otherwise `false`.
@@ -43,7 +43,7 @@ class MemberValidateModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public bool $has_outstanding_contract = false;
+  public $has_outstanding_contract = false;
 
   /**
    * `true` If the user has an outstanding waiver for the business, otherwise `false`.
@@ -52,7 +52,7 @@ class MemberValidateModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public bool $has_outstanding_waiver = false;
+  public $has_outstanding_waiver = false;
 
   /**
    * `true` If the user has pending registration quizzes to complete, otherwise `false`.
@@ -61,7 +61,7 @@ class MemberValidateModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public bool $has_pending_quizzes = false;
+  public $has_pending_quizzes = false;
 
   /**
    * `true` If the user has to provide credit card details before booking, otherwise `false`.
@@ -70,7 +70,7 @@ class MemberValidateModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public bool $is_booking_require_card = false;
+  public $is_booking_require_card = false;
 
   /**
    * `true` If the user has to provide credit card details to finish their registration, otherwise `false`.
@@ -79,7 +79,7 @@ class MemberValidateModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public bool $is_register_require_card = false;
+  public $is_register_require_card = false;
 
   /**
    * Key of the business.
@@ -88,7 +88,7 @@ class MemberValidateModel extends WlModelAbstract
    * @var string
    * @see \RsBusinessSql
    */
-  public string $k_business = '0';
+  public $k_business = '0';
 
   /**
    * Home user`s location.
@@ -96,10 +96,10 @@ class MemberValidateModel extends WlModelAbstract
    *
    *
    * @get result
-   * @var null|string
+   * @var string|null
    * @see \RsLocationSql
    */
-  public ?string $k_location = null;
+  public $k_location = null;
 
   /**
    * The user's key.
@@ -108,7 +108,7 @@ class MemberValidateModel extends WlModelAbstract
    * @var string
    * @see \PassportLoginSql
    */
-  public string $uid = '0';
+  public $uid = '0';
 }
 
 ?>
