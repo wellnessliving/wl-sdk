@@ -291,7 +291,8 @@ class ScheduleListModel extends WlModelAbstract
   /**
    * The end date of the range from which the list of schedule sessions should be retrieved.
    *
-   * This will be `null` if the range has no end date.
+   * This will be `null` if the range has no end date. If this value is used,
+   * {@link \WellnessLiving\Wl\Schedule\ScheduleList\StaffApp\ScheduleListModel::$dt_date} should not be set.
    *
    * @get get
    * @var string
@@ -301,7 +302,8 @@ class ScheduleListModel extends WlModelAbstract
   /**
    * The start date of the range from which the list of scheduled sessions should be retrieved.
    *
-   * This will be `null` if the range has no start date.
+   * This will be `null` if the range has no start date. If this value is used,
+   * {@link \WellnessLiving\Wl\Schedule\ScheduleList\StaffApp\ScheduleListModel::$dt_date} should not be set.
    *
    * @get get
    * @var string
@@ -310,6 +312,10 @@ class ScheduleListModel extends WlModelAbstract
 
   /**
    * The date of the sessions in Coordinated Universal Time (UTC) and MySQL format.
+   *
+   * If this value is used, then
+   * {@link \WellnessLiving\Wl\Schedule\ScheduleList\StaffApp\ScheduleListModel::$dl_end} and
+   * {@link \WellnessLiving\Wl\Schedule\ScheduleList\StaffApp\ScheduleListModel::$dl_start} should not be set.
    *
    * @get get
    * @var string
