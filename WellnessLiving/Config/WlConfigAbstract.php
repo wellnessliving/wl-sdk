@@ -56,7 +56,7 @@ abstract class WlConfigAbstract
   /**
    * Name of the global cookie.
    *
-   * The value `null` is not valid. This property must be overridden in inherited classes.
+   * `null` to disable handling of global cookies.
    *
    * @see WlConfigProduction
    * @see WlConfigDeveloper
@@ -195,7 +195,8 @@ abstract class WlConfigAbstract
   /**
    * Returns name of the global cookie in the current configuration.
    *
-   * @return string Name of the global cookie in the current configuration.
+   * @return string|null Name of the global cookie in the current configuration.
+   *   `null` if handling of the global cookie must be disabled.
    */
   public function cookieGlobal()
   {
