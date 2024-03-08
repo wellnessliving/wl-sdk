@@ -5,22 +5,22 @@ namespace WellnessLiving\Wl\Login\Promotion\Convert;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * API for receiving convertable purchase options data and promotion conversion.
+ * An endpoint that receives convertable Purchase Option data and promotion conversions.
  *
  * The DELETE method will remove the conversion and reset the date.
  * The GET method will return a list of promotions available at the business.
- * The POST method can be used to change what or when the Purchase Option should convert to.
+ * The POST method can be used to change what the Purchase Option should convert to and when to convert it.
  */
 class ConvertModel extends WlModelAbstract
 {
   /**
-   * Promotion data, it has the following structure:<dl>
+   * Promotion data containing the following structure:<dl>
    *   <dt>string <var>k_promotion</var></dt>
    *   <dd>The promotion key.</dd>
    *   <dt>string <var>html_title</var></dt>
    *   <dd>The title of the promotion.</dd>
    *   <dt>bool <var>is_select</var></dt>
-   *   <dd><tt>true</tt> if the promotion is related to the service, <tt>false</tt> otherwise.</dd>
+   *   <dd>If <tt>true</tt>, the promotion is related to the service. Otherwise, this will be <tt>false</tt>.</dd>
    * </dl>.
    *
    * @get result
@@ -29,7 +29,7 @@ class ConvertModel extends WlModelAbstract
   public $a_promotion;
 
   /**
-   * The conversion Date, in the local timezone.
+   * The conversion date, in the local time zone.
    *
    * @post get
    * @var string
@@ -37,7 +37,7 @@ class ConvertModel extends WlModelAbstract
   public $dl_convert = '';
 
   /**
-   * The conversion id. One of the {@link PromotionConvertSid} constants.
+   * The conversion ID. One of the {@link PromotionConvertSid} constants.
    *
    * @get result
    * @post get
@@ -46,8 +46,9 @@ class ConvertModel extends WlModelAbstract
   public $id_convert = null;
 
   /**
-   * Whether the conversion request is new or editing existing conversion.
-   * <tt>true</tt> if conversion exists, otherwise <tt>false</tt>.
+   * Determines whether the conversion request is new or editing an existing conversion.
+   *
+   * If `true`, the conversion exists. Otherwise, this will be `false`.
    *
    * @get result
    * @var bool
@@ -83,7 +84,7 @@ class ConvertModel extends WlModelAbstract
   public $k_promotion_to = '';
 
   /**
-   * The existing Conversion Date in string format for datepicker.
+   * The existing conversion date, returned as a string for the datepicker.
    *
    * @get result
    * @var string
@@ -91,7 +92,7 @@ class ConvertModel extends WlModelAbstract
   public $s_date_convert = '';
 
   /**
-   * The current date in string format.
+   * The current date, returned as a string.
    *
    * @get result
    * @var string

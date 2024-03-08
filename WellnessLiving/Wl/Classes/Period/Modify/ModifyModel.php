@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Classes\Period\Modify;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Modify master model.
+ * An endpoint that modifies the master model.
  */
 class ModifyModel extends WlModelAbstract
 {
   /**
-   * Returns step information, depending on steps.
+   * Step information, depending on the steps.
    *
    * @get result
    * @var array
@@ -18,7 +18,7 @@ class ModifyModel extends WlModelAbstract
   public $a_get;
 
   /**
-   * List of data to save.
+   * The list of data to save.
    *
    * @post post
    * @var array
@@ -26,7 +26,7 @@ class ModifyModel extends WlModelAbstract
   public $a_set = [];
 
   /**
-   * End date in MySQL format in local time.
+   * The end date, returned in MySQL format and the local time.
    *
    * @get get
    * @post get
@@ -35,7 +35,7 @@ class ModifyModel extends WlModelAbstract
   public $dt_end = '';
 
   /**
-   * Start date in MySQL format in local time.
+   * The start date, returned in MySQL format and the local time.
    *
    * @get get
    * @post get
@@ -44,7 +44,7 @@ class ModifyModel extends WlModelAbstract
   public $dt_start = '';
 
   /**
-   * Class modify step type, one of {@link \WellnessLiving\Wl\WlClassModifyActionSid}.
+   * The class modify step type. One of the {@link \WellnessLiving\Wl\WlClassModifyActionSid} constants.
    *
    * @get get
    * @post get
@@ -53,7 +53,7 @@ class ModifyModel extends WlModelAbstract
   public $id_class_modify_action = 0;
 
   /**
-   * Modify mode type, one of {@link \WellnessLiving\Wl\WlClassModifyModeSid}.
+   * The modify mode type. One of the {@link \WellnessLiving\Wl\WlClassModifyModeSid} constants.
    *
    * @get get
    * @post get
@@ -62,7 +62,7 @@ class ModifyModel extends WlModelAbstract
   public $id_class_modify_mode = 0;
 
   /**
-   * Class modify action type, one of {@link \WellnessLiving\Wl\WlClassModifyStepSid}.
+   * The class modify action type. One of the {@link \WellnessLiving\Wl\WlClassModifyStepSid} constants.
    *
    * @get get
    * @post get,result
@@ -71,13 +71,14 @@ class ModifyModel extends WlModelAbstract
   public $id_step = 0;
 
   /**
-   * Step direction.
+   * The step direction.
    *
-   * <tt>true</tt> step forward.
-   * <tt>false</tt> step back.
+   * `true` — step forward.
    *
-   * After each step this variable sets to default position.
-   * By default, makes step forward.
+   * `false` — step back.
+   *
+   * After each step, this variable sets to the default position.
+   * By default, the step direction is forward.
    *
    * @get get
    * @post get,result
@@ -86,7 +87,7 @@ class ModifyModel extends WlModelAbstract
   public $is_back = false;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @get get
    * @post get
@@ -95,7 +96,7 @@ class ModifyModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * Class ID.
+   * The class ID.
    *
    * @post result
    * @var string|null
@@ -103,9 +104,9 @@ class ModifyModel extends WlModelAbstract
   public $k_class;
 
   /**
-   * Class period key.
+   * The class period key.
    *
-   * Empty value means not set.
+   * This will be empty if not set yet.
    *
    * @get get
    * @post get
@@ -114,10 +115,10 @@ class ModifyModel extends WlModelAbstract
   public $k_class_period = '';
 
   /**
-   * Unique hash string.
+   * The unique hash string.
    *
    * This hash string is a hash of the {@link \RsClassModify} object.
-   * It need to work with the same {@link \RsClassModify} object on each step.
+   * It needs to work with the same {@link \RsClassModify} object on each step.
    *
    * @get get
    * @post get,result

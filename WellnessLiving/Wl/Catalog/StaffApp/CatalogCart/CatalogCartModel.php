@@ -5,7 +5,9 @@ namespace WellnessLiving\Wl\Catalog\StaffApp\CatalogCart;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * A model to calculate price data for a sale item.
+ * An endpoint that calculates price data for a sale item.
+ *
+ * Note that the terms "promotion" and "Purchase Option" refer to the same thing.
  */
 class CatalogCartModel extends WlModelAbstract
 {
@@ -28,40 +30,40 @@ class CatalogCartModel extends WlModelAbstract
   public $a_discount_code = [];
 
   /**
-   * A list of cart items with the next structure:
+   * The list of cart items with the next structure:
    * <dl>
    *   <dt>array [<var>a_config</var>]</dt>
    *   <dd>
-   *     List of purchase item additional options:
+   *     The list of purchase item additional options:
    *     <dl>
    *       <dt>string [<var>f_price</var>]</dt>
-   *       <dd>Custom price.</dd>
+   *       <dd>The custom price.</dd>
    *       <dt>string [<var>dt_prorate</var>]</dt>
-   *       <dd>The prorate date. Should be passed when <var>is_prorate</var>=<tt>true</tt>.</dd>
+   *       <dd>The prorate date. This should be passed when <var>is_prorate</var>=<tt>true</tt>.</dd>
    *       <dt>string [<var>dt_start</var>]</dt>
-   *       <dd>The date when the promotion starts.</dd>
+   *       <dd>The promotion start date.</dd>
    *       <dt>bool [<var>is_prorate</var>]</dt>
    *       <dd>Determines whether to prorate the first payment.</dd>
    *       <dt>bool [<var>is_prorate_fix</var>]</dt>
-   *       <dd>Determines if the client should pay for the first period now or not.</dd>
+   *       <dd>Determines if the client should pay for the first period now.</dd>
    *       <dt>bool [<var>is_prorate_only</var>]</dt>
-   *       <dd>Whether selected option 'pay prorate amount only' to include to price prorate amount only.</dd>
+   *       <dd>Determines whether the selected option 'pay prorate amount only' should only include the prorate amount.</dd>
    *       <dt>string [<var>m_custom</var>]</dt>
-   *       <dd>Custom price for gift card.</dd>
+   *       <dd>The custom price of the gift card.</dd>
    *       <dt>string [<var>dt_send_local</var>]</dt>
-   *       <dd>Date when mail with gift card must be sent.</dd>
+   *       <dd>The date when the gift card email must be sent.</dd>
    *       <dt>bool <var>is_mail</var></dt>
-   *       <dd><tt>true</tt> if gift card will be sent on email, <tt>false</tt> if gift card will be printed.</dd>
+   *       <dd>If <tt>true</tt>, the gift card will be sent via email. Otherwise, <tt>false</tt> if the gift card will be printed.</dd>
    *       <dt>string [<var>s_mail</var>]</dt>
-   *       <dd>Recipient's email.</dd>
+   *       <dd>The recipient's email.</dd>
    *       <dt>string [<var>s_message</var>]</dt>
-   *       <dd>Message.</dd>
+   *       <dd>The message.</dd>
    *       <dt>string <var>s_recipient</var></dt>
-   *       <dd>Recipient's name.</dd>
+   *       <dd>The recipient's name.</dd>
    *       <dt>string <var>s_sender</var></dt>
-   *       <dd>Sender's name.</dd>
+   *       <dd>The sender's name.</dd>
    *       <dt>string <var>m_prorate_custom</var></dt>
-   *       <dd>The amount of money for prorate period. Should be passed only in a case of manual entry.</dd>
+   *       <dd>The amount of money for the prorate period. This should only be passed in the case of manual entry.</dd>
    *       <dt>string <var>k_coupon</var></dt>
    *       <dd>The coupon key.</dd>
    *       <dt>string <var>k_coupon_amount</var></dt>
@@ -70,8 +72,8 @@ class CatalogCartModel extends WlModelAbstract
    *   </dd>
    *   <dt>array [<var>a_tax_custom</var>]</dt>
    *   <dd>
-   *     Information about taxes. If not passed means no custom taxes have been applied to the sale item.
-   *     If a record is present, it means that the tax is custom. Structured as follows:
+   *     Information about taxes. If not passed, no custom taxes have been applied to the sale item.
+   *     If a record is present, the tax is custom using the next structure:
    *     <dl>
    *       <dt>string <var>f_tax</var></dt>
    *       <dd>The tax amount.</dd>
@@ -84,17 +86,17 @@ class CatalogCartModel extends WlModelAbstract
    *   <dt>int <var>i_quantity</var></dt>
    *   <dd>The quantity of sale items.</dd>
    *   <dt>int <var>id_sale</var></dt>
-   *   <dd>The sale item type. One of {@link \WellnessLiving\WlSaleSid} constants.</dd>
+   *   <dd>The sale item type. One of the {@link \WellnessLiving\WlSaleSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The sale item key.</dd>
    *   <dt>string <var>k_shop_product_option</var></dt>
    *   <dd>
-   *     The store product option key. <tt>null</tt> if the sale item has no options.
+   *     The store product option key. This will be <tt>null</tt> if the sale item has no options.
    *   </dd>
    *   <dt>string [<var>m_discount_fix</var>]</dt>
    *   <dd>The fixed price discount, applied to the current item.</dd>
    *   <dt>string [<var>m_price_custom</var>]</dt>
-   *   <dd>The custom price of sale item. If not passed means no custom price has been applied to the sale item.</dd>
+   *   <dd>The custom price of the sale item. If not passed, no custom price has been applied to the sale item.</dd>
    * </dl>
    *
    * @get get
@@ -111,7 +113,7 @@ class CatalogCartModel extends WlModelAbstract
   public $f_discount_percent = 0;
 
   /**
-   * `true` to enable checking every item at the cart, `false` to disable.
+   * If `true`, every item is checked at the cart. Otherwise, this will be `false`.
    *
    * @get get
    * @var bool
@@ -146,7 +148,7 @@ class CatalogCartModel extends WlModelAbstract
   /**
    * The business key.
    *
-   * <b>This field isn't used directly but described for correct auto generation JavaScript.</b>
+   * This field isn't used directly, but described for correct JavaScript auto-generation.
    *
    * @get get
    * @var string
@@ -178,7 +180,7 @@ class CatalogCartModel extends WlModelAbstract
   public $m_discount_flat = '';
 
   /**
-   * Amount of total discount.
+   * The total discount amount.
    *
    * @get result
    * @var string
@@ -228,7 +230,7 @@ class CatalogCartModel extends WlModelAbstract
   /**
    * The discount code.
    *
-   * <tt>null</tt> if not set.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @var string|null
