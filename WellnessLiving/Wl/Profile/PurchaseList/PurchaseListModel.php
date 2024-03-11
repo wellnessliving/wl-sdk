@@ -58,7 +58,7 @@ class PurchaseListModel extends WlModelAbstract
    *     string <var>k_appointment</var>
    *   </dt>
    *   <dd>
-   *     Appointment key. Primary key from {@link \RsAppointmentSql} table.
+   *     Appointment key.
    *   </dd>
    *   <dt>
    *     string <var>k_code</var>
@@ -120,7 +120,7 @@ class PurchaseListModel extends WlModelAbstract
    *     string <var>k_service</var>
    *   </dt>
    *   <dd>
-   *     Service key. Primary key in {@link \RsServiceSql} table.
+   *     Service key.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
