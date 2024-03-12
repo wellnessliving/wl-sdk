@@ -164,7 +164,7 @@ class CatalogCartModel extends WlModelAbstract
   public $k_location = '';
 
   /**
-   * The discount amount.
+   * The discount amount in dollars, excluding tax.
    *
    * @get result
    * @var string
@@ -172,7 +172,7 @@ class CatalogCartModel extends WlModelAbstract
   public $m_discount;
 
   /**
-   * The discount amount of money.
+   * The manual discount amount in dollars, excluding tax. Staff members can set this amount when making a sale.
    *
    * @get get
    * @var string
@@ -180,7 +180,7 @@ class CatalogCartModel extends WlModelAbstract
   public $m_discount_flat = '';
 
   /**
-   * The total discount amount.
+   * The discount amount applied to the cart's total amount, including taxes.
    *
    * @get result
    * @var string
