@@ -236,7 +236,7 @@ class PromotionIndexModel extends WlModelAbstract
    *     int <var>text_program</var>
    *   </dt>
    *   <dd>
-   *     THe localized promotion program name corresponding to the value of <var>id_program</var>.
+   *     The localized promotion program name corresponding to the value of <var>id_program</var>.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
