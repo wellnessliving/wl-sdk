@@ -1,6 +1,6 @@
 <?php
 
-namespace Wl\Report\Generator;
+namespace WellnessLiving\Wl\Report\Generator;
 
 /**
  * Lists statuses of reports from point of view of its generation.

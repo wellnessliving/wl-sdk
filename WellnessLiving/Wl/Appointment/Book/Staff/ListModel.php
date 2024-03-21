@@ -108,6 +108,16 @@ class ListModel extends WlModelAbstract
    * @var string|null
    */
   public $k_timezone;
+
+  /**
+   * Key of user for whom the service is booking, primary key in {@link \PassportLoginSql} table.
+   *
+   * `null` when not set.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $uid;
 }
 
 ?>

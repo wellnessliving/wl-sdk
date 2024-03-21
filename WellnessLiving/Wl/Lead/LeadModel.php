@@ -10,6 +10,10 @@ use WellnessLiving\WlModelAbstract;
  * A user can be added to a second business by adding them first as a lead. If your business uses Enterprise Cloud,
  * there may be a restriction where clients can only be members in one enterprise location (travellers in all
  * other enterprise locations).
+ *
+ * This endpoint using captcha check.
+ *  To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
+ *  For this API an action is `1072`.
  */
 class LeadModel extends WlModelAbstract
 {

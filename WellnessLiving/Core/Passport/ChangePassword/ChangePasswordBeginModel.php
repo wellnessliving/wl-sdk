@@ -5,16 +5,16 @@ namespace WellnessLiving\Core\Passport\ChangePassword;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Point to start password change procedure.
+ * An endpoint to start the password change procedure for a user.
  *
- * Post it to send to user "reset password email" mail.
+ * Post this to send the user the "reset password" email.
  */
 class ChangePasswordBeginModel extends WlModelAbstract
 {
   /**
-   * Characters to pass captcha test.
+   * The characters to pass captcha test.
    *
-   * Specify it only if server requires captcha.
+   * Specify this only if server requires captcha.
    *
    * @post post
    * @var string
@@ -22,7 +22,7 @@ class ChangePasswordBeginModel extends WlModelAbstract
   public $text_captcha = '';
 
   /**
-   * Error code. Empty string if mail is sent successfully.
+   * The error code. This will be an empty string if the email has been sent successfully.
    *
    * @post result
    * @var string
@@ -30,9 +30,7 @@ class ChangePasswordBeginModel extends WlModelAbstract
   public $text_error;
 
   /**
-   * User's email.
-   *
-   * <b>Required!</b>
+   * The user's email. This is a required value.
    *
    * @post post
    * @var string
@@ -40,9 +38,10 @@ class ChangePasswordBeginModel extends WlModelAbstract
   public $text_mail = '';
 
   /**
-   * URL to password reset page. This link will be used in a password reset email.
+   * The URL for the password reset page. This link will be used in a password reset email.
    *
-   * Specify only if you want to send user to a custom password reset page, if empty, URL to default page will be used.
+   * Specify this only if you want to send the user to a custom password reset page.
+   * If empty, the default URL page will be used.
    *
    * @post post
    * @var string

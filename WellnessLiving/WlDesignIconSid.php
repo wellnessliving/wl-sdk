@@ -4,10 +4,10 @@ namespace WellnessLiving;
 
 /**
  * @deprecated from 2023-09-11.
- *
- * Use class {@link \WellnessLiving\Wl\Design\IconSid} instead.
+ * 
+ * Use class {@link \WellnessLiving\Wl\WlDesignIconSid} instead.
  */
-class WlDesignIconSid extends \WellnessLiving\Wl\Design\IconSid
+class WlDesignIconSid extends \WellnessLiving\Wl\WlDesignIconSid
 {
 
 }

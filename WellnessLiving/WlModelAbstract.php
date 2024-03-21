@@ -391,7 +391,18 @@ class WlModelAbstract
 
     $o_request->dt_request = WlTool::dateNowMysql();
     $o_request->a_header_request['Date'] = WlTool::dateMysqlHttp($o_request->dt_request);
-    $o_request->a_header_request['User-Agent'] = $this->_o_config->text_agent?:$s_config_class::AGENT;
+    if($this->_o_config->text_agent)
+    {
+      $o_request->a_header_request['User-Agent'] = $this->_o_config->text_agent;
+    }
+    else
+    {
+      $o_request->a_header_request['User-Agent'] = str_replace(
+        ['[PHP_VERSION]','[SDK_VERSION]'],
+        [PHP_VERSION,WlModelRequest::VERSION],
+        $s_config_class::AGENT
+      );
+    }
     $o_request->s_method = $s_method;
 
     $a_field=$this::fieldConfig();
@@ -611,7 +622,7 @@ class WlModelAbstract
   {
     WlAssertException::assertNotEmpty(!!preg_match('~^WellnessLiving\\\\(([A-Za-z]+\\\\)*)([A-Za-z]+_)?([A-Za-z0-9]+)Model$~',get_class($this),$a_match),[
       's_class' => get_class($this),
-      's_message' => 'API model class name is invalid. `Model` suffix is missing.'
+      'text_message' => 'API model class name is invalid. `Model` suffix is missing.'
     ]);
 
     return str_replace('\\','/',$a_match[1].$a_match[4]).'.json';

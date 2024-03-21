@@ -5,15 +5,15 @@ namespace WellnessLiving\Wl\Book\Process\Purchase;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * A model of a list of purchase items.
+ * An endpoint that displays a list of purchase items.
  */
 class PurchaseElementListModel extends WlModelAbstract
 {
   /**
-   * A list of purchase items for which to get information. Every element has the next keys:
+   * A list of purchase items to get information for. Every element has the next keys:
    * <dl>
    *   <dt>int [<var>i_session</var>]</dt>
-   *   <dd>The number of sessions which are booked simultaneously.</dd>
+   *   <dd>The number of sessions booked simultaneously.</dd>
    *   <dt>int <var>id_purchase_item</var></dt>
    *   <dd>The ID of the purchase item type. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>

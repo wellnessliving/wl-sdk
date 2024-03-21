@@ -5,10 +5,9 @@ namespace WellnessLiving\Wl\Business\Account;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An API used to get a list of active businesses.
+ * An endpoint that gets a list of active businesses.
  *
- * Is not available without user authorization.
- * Requires authorized user to have privilege `rs.business.view`.
+ * To run this endpoint, a user must be authorized with the `rs.business.view` privilege.
  */
 class BusinessAccountModel extends WlModelAbstract
 {
@@ -21,8 +20,9 @@ class BusinessAccountModel extends WlModelAbstract
   public $a_business_keys = [];
 
   /**
-   * `true` to return only wellnesliving paid customers.
-   * `false` to return prospects.
+   * `true` returns WellnesLiving customers.
+   *
+   * `false` returns prospects.
    *
    * Test and churned businesses are never returned.
    *

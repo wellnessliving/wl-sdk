@@ -5,19 +5,19 @@ namespace WellnessLiving\Core\Geo\Region;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Gets a list of regions for a specified country or a list of regions for all countries.
- * A region is a political subdivision like a state, province, or territory.
+ * An endpoint that gets a list of regions for a specified country or all countries.
+ * A region refers to a jurisdiction like a state, province, or territory.
  */
 class RegionModel extends WlModelAbstract
 {
   /**
-   * A list of regions, grouped by their countries.
+   * A list of regions grouped by their country.
    * <dl>
    *   <dt>
    *     string[] <var>a_region</var>
    *   </dt>
    *   <dd>
-   *     List of region in country. Every element has keys: <dl>
+   *     A list of regions in the country. Every element has the next keys: <dl>
    *       <dt>
    *         string <var>k_geo</var>
    *       </dt>
@@ -42,7 +42,7 @@ class RegionModel extends WlModelAbstract
    *     string <var>s_title</var>
    *   </dt>
    *   <dd>
-   *     The name of the country
+   *     The name of the country.
    *   </dd>
    * </dl>
    *
@@ -52,7 +52,7 @@ class RegionModel extends WlModelAbstract
   public $a_region;
 
   /**
-   * The ID of the locale to find regions for. One of the {@link \WellnessLiving\Core\Locale\LocaleSid} constants.
+   * The locale ID to find regions for. One of the {@link \WellnessLiving\Core\Locale\LocaleSid} constants.
    *
    * @get get
    * @var int
@@ -60,9 +60,9 @@ class RegionModel extends WlModelAbstract
   public $id_locale = 0;
 
   /**
-   * Whether to get the regions for all locales.
+   * Determines whether to get regions for all locales.
    *
-   * If `true` then get regions for all locales, `false` - otherwise.
+   * If `true`, this will get regions for all locales. Otherwise, this will be `false`.
    *
    * @get get
    * @var bool

@@ -1,5 +1,7 @@
 <?php
 
+namespace WellnessLiving\Wl\Pay\Transaction;
+
 /**
  * Transaction statuses.
  *

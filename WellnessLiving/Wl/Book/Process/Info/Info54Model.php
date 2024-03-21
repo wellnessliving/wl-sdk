@@ -382,6 +382,14 @@ class Info54Model extends WlModelAbstract
   public $is_book_repeat_client;
 
   /**
+   * `true` if the setting for frequency during class recurring booking will be `never end` by default, `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_book_repeat_no_end_date;
+
+  /**
    * If client must authorize credit card.
    *
    * @post result

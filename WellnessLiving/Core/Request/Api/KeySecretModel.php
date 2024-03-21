@@ -5,16 +5,16 @@ namespace WellnessLiving\Core\Request\Api;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Point to get a secret key for request signing.
- * It is necessary in a case of CORS request.
+ * An endpoint that gets a secret key for request signing.
+ * This is required for a CORS request.
  *
- * Request to this point must be signed as ordinary requests from SDK (using transient and persistent cookies).
- * There must be no CORS (do not send from a browser).
+ * A request to this point must be signed as an ordinary request from the SDK using transient and persistent cookies.
+ * There must be no CORS (don't send from a browser).
  */
 class KeySecretModel extends WlModelAbstract
 {
   /**
-   * CSRF code of a client side.
+   * The CSRF code from the client side.
    *
    * @get get
    * @var string
@@ -22,7 +22,7 @@ class KeySecretModel extends WlModelAbstract
   public $s_csrf;
 
   /**
-   * Secret key for request signing.
+   * The secret key for the request signing.
    *
    * @get result
    * @var string
@@ -30,7 +30,7 @@ class KeySecretModel extends WlModelAbstract
   public $s_key_secret;
 
   /**
-   * Session key.
+   * The session key.
    *
    * @get get
    * @var string

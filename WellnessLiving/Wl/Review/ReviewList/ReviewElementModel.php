@@ -31,6 +31,12 @@ class ReviewElementModel extends WlModelAbstract
    *     Status of the Review
    *   </dd>
    *   <dt>
+   *     bool <var>is_featured</var>
+   *   </dt>
+   *   <dd>
+   *     If `true`, the review is featured. Otherwise, this will be `false`.
+   *   </dd>
+   *   <dt>
    *     bool <var>is_verify</var>
    *   </dt>
    *   <dd>

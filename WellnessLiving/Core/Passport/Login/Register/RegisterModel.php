@@ -5,10 +5,10 @@ namespace WellnessLiving\Core\Passport\Login\Register;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Allows new clients to be registered.
+ * An endpoint that allows new clients to be registered.
  *
- * WellnessLiving recommends using the {@link \WellnessLiving\Wl\Lead\LeadModel} endpoint to register new users.
- * This endpoint is not enabled by default. Contact WellnessLiving to enable this endpoint for your business.
+ * The {@link \WellnessLiving\Wl\Lead\LeadModel} endpoint is recommended for registering new users. However, this RegisterModel
+ * endpoint isn't enabled by default. To enable this endpoint, use the contact form in the developer portal.
  */
 class RegisterModel extends WlModelAbstract
 {
@@ -18,14 +18,14 @@ class RegisterModel extends WlModelAbstract
    * <dl>
    *   <dt>string <var>[k_business]</var></dt>
    *   <dd>
-   *     The key of the business for wellnessliving project to register user in.
+   *     The key of the business for the WellnessLiving project to register the user in.
    *
-   *     Behavior is different for different applications. If application is connected to the certain business, this
-   *     property can be always empty - all clients will be registered in the connected business. If business is set
-   *     for such application and is different from the business from application settings, error occurs.
+   *     The behavior may vary for different applications. If the application is connected to a given business, this
+   *     property can always be empty (all clients will be registered in the connected business). If the business is set
+   *     for such an application and is different from the business from the application settings, an error will occur.
    *
-   *     If application is not connected to the business, any business key can be set. This does not require any special
-   *     privileges, as registration is a public available action.
+   *     If the application isn't connected to the business, any business key can be set. This doesn't require any special
+   *     privileges, as registration is a publicly available action.
    *   </dd>
    * </dl>
    *

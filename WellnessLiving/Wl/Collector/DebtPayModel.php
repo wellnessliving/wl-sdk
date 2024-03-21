@@ -24,7 +24,7 @@ class DebtPayModel extends WlModelAbstract
    * The payment method ID.
    * One of {@link \WellnessLiving\WlPayMethodSid} constants.
    *
-   * `null` if the payment method is unknown. In such cases, {@link \WellnessLiving\WlPayMethodSid::CASH} would be used.
+   * `null` if the payment method is unknown. In such cases, {@link \WellnessLiving\WlPayMethodSid::ECOMMERCE} would be used.
    *
    * @post post
    * @var int|null

@@ -5,26 +5,26 @@ namespace WellnessLiving\Wl\Catalog\StaffApp\CatalogList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Returns a list of all products available for a business’s shop at a particular location.
+ * An endpoint that returns a list of all products available for a business’s shop at a particular location.
  */
 class CatalogListModel extends WlModelAbstract
 {
   /**
    * Products in the online store category.
    *
-   * Every element has the following next fields:
+   * Every element has the following fields:
    * <dl>
    *   <dt>
    *     array <var>a_location</var>
    *   </dt>
    *   <dd>
-   *     List of locations, where current sale item is available.
+   *     The list of locations where the current sale item is available.
    *   </dd>
    *   <dt>
    *     string[] <var>a_login_type</var>
    *   </dt>
    *   <dd>
-   *     List of login types available to purchase sale item.
+   *     The list of login types available to purchase the sale item.
    *   </dd>
    *   <dt>
    *     string[] <var>a_shop_category</var>
@@ -36,7 +36,7 @@ class CatalogListModel extends WlModelAbstract
    *     int <var>[id_program]</var>
    *   </dt>
    *   <dd>
-   *      The program ID, sets for promotions. One of {@link \WellnessLiving\WlProgramSid} constants. Set for promotions.
+   *      The program ID, set for promotions. One of the {@link \WellnessLiving\WlProgramSid} constants.
    *      <p>If `id_program` is {@link \WellnessLiving\WlProgramSid::INSURANCE_MEMBERSHIP}, then use:</p>
    *      <ul>
    *        <li>{@link \WellnessLiving\Wl\Insurance\Catalog\ProgramListModel} to obtain a list of active programs.</li>
@@ -48,32 +48,33 @@ class CatalogListModel extends WlModelAbstract
    *     int <var>id_restriction</var>
    *   </dt>
    *   <dd>
-   *     Restriction ID. One of {@link \WellnessLiving\Wl\Shop\Product\PurchaseRestrictionSid} constants.
+   *     The restriction ID. One of the {@link \WellnessLiving\Wl\Shop\Product\PurchaseRestrictionSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_sale</var>
    *   </dt>
    *   <dd>
-   *     Sale category ID. One of {@link \WellnessLiving\WlSaleSid}.
+   *     The sale category ID. One of the {@link \WellnessLiving\WlSaleSid} constants.
    *   </dd>
    *   <dt>
    *     bool <var>is_online_sell</var>
    *   </dt>
    *   <dd>
-   *     Whether sale item can be purchased by client.
+   *     Determines whether the sale item can be purchased by the client.
    *   </dd>
    *   <dt>
    *     bool <var>is_visit</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if this purchase option is suitable to pay for visit {@link \WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel::$k_visit}; <tt>false</tt> otherwise.
-   *     If {@link \WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel::$k_visit} is empty, always false.
+   *     This will be <tt>true</tt> if this Purchase Option is suitable to pay for the visit {@link \WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel::$k_visit}.
+   *     Otherwise, this will be <tt>false</tt>.
+   *     If {@link \WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel::$k_visit} is empty, this will always be `false`.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>
    *   </dt>
    *   <dd>
-   *     Sale item ID.
+   *     The sale item ID.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
@@ -89,7 +90,7 @@ class CatalogListModel extends WlModelAbstract
   public $a_shop_product;
 
   /**
-   * If `true` then the current user is able to add the purchased item to the account.
+   * If `true`, the current user is able to add the purchased item to the account.
    *
    * @get result
    * @var bool

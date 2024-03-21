@@ -3,36 +3,41 @@
 namespace WellnessLiving\Wl\Service;
 
 /**
- * Identifiers for services types.
+ * A list of services.
  *
- * Last used ID: 5.
+ * Last used ID: 6.
  */
 class ServiceSid
 {
   /**
-   * Appointments.
+   * Appointment.
    */
   const APPOINTMENT = 1;
 
   /**
-   * Classes.
+   * Belts.
    */
-  const CLASSES = 2; // Can not use single form class because this is an internal php word
+  const BELT = 6;
 
   /**
-   * Enrolments.
+   * Bookable asset.
    */
-  const ENROLLMENT = 3;
+  const BOOKABLE_ASSET = 4;
 
   /**
-   * Resources.
+   * Class.
    */
-  const RESOURCE = 5;
+  const CLASSES = 2;
 
   /**
-   * Visits.
+   * Event.
    */
-  const VISIT = 4;
+  const EVENT = 3;
+
+  /**
+   * Gym visits.
+   */
+  const GYM = 5;
 }
 
 ?>

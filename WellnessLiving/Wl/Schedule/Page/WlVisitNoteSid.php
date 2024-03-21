@@ -1,5 +1,7 @@
 <?php
 
+namespace WellnessLiving\Wl\Schedule\Page;
+
 /**
  * A list of types of visit note.
  */

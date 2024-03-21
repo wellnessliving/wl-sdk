@@ -1,5 +1,7 @@
 <?php
 
+namespace WellnessLiving\Wl\Login;
+
 /**
  * Manages identifiers of user activity.
  *

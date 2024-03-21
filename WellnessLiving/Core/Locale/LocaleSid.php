@@ -3,7 +3,7 @@
 namespace WellnessLiving\Core\Locale;
 
 /**
- * List of locales.
+ * A list of locales.
  *
  * Last used ID: 12
  */
@@ -35,7 +35,7 @@ class LocaleSid
   const EGYPT = 8;
 
   /**
-   * Special locale that can be used testing or for a business which is localized in an unknown region.
+   * A special locale that can be used for testing or a business situated in an unknown region.
    */
   const NEVERLAND = 9;
 
@@ -55,7 +55,7 @@ class LocaleSid
   const SOUTH_AFRICA = 6;
 
   /**
-   * Configuration set for testing purposes.
+   * A configuration set for testing purposes.
    */
   const TEST = 7;
 

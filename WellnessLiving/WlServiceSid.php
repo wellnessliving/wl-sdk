@@ -4,10 +4,10 @@ namespace WellnessLiving;
 
 /**
  * @deprecated from 2023-09-11.
- *
- * Use class {@link \WellnessLiving\Wl\Service\ServiceSid} instead.
+ * 
+ * Use class {@link \WellnessLiving\Wl\WlServiceSid} instead.
  */
-class WlServiceSid extends \WellnessLiving\Wl\Service\ServiceSid
+class WlServiceSid extends \WellnessLiving\Wl\WlServiceSid
 {
 
 }

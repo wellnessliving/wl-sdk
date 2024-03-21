@@ -5,12 +5,12 @@ namespace WellnessLiving\Core\Passport\Login\Register;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Confirm user's email and completes registration process.
+ * An endpoint that confirm the user's email and completes the registration process.
  */
 class RegisterConfirmModel extends WlModelAbstract
 {
   /**
-   * Unique registration code.
+   * The unique registration code.
    *
    * @post get
    * @var string
@@ -18,7 +18,7 @@ class RegisterConfirmModel extends WlModelAbstract
   public $text_code = '';
 
   /**
-   * User's login.
+   * The user's login.
    *
    * @post get
    * @var string
@@ -26,7 +26,7 @@ class RegisterConfirmModel extends WlModelAbstract
   public $text_login = '';
 
   /**
-   * User's email.
+   * The user's email.
    *
    * @post get
    * @var string
@@ -34,7 +34,7 @@ class RegisterConfirmModel extends WlModelAbstract
   public $text_mail = '';
 
   /**
-   * Key of new registered user.
+   * The key of the new registered user.
    *
    * @post result
    * @var string

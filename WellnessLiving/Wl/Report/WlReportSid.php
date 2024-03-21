@@ -373,6 +373,46 @@ abstract class WlReportSid
   const PROMOTION_PASS_MEMBERSHIP = 108;
 
   /**
+   * Gift Card report in client profile.
+   */
+  const PROFILE_PURCHASE_REPORT_COUPON = 193;
+
+  /**
+   * Session Pass report in client profile.
+   */
+  const PROFILE_PURCHASE_REPORT_EVENT = 192;
+
+  /**
+   * Groupon report in client profile.
+   */
+  const PROFILE_PURCHASE_REPORT_GROUPON = 213;
+
+  /**
+   * Membership report in client profile.
+   */
+  const PROFILE_PURCHASE_REPORT_MEMBERSHIP = 188;
+
+  /**
+   * Package report in client profile.
+   */
+  const PROFILE_PURCHASE_REPORT_PACKAGE = 189;
+
+  /**
+   * Duration Pass report in client profile.
+   */
+  const PROFILE_PURCHASE_REPORT_SESSION_DURATION = 190;
+
+  /**
+   * Session Pass report in client profile.
+   */
+  const PROFILE_PURCHASE_REPORT_SESSION_PASS = 191;
+
+  /**
+   * Single Session report in client profile.
+   */
+  const PROFILE_PURCHASE_REPORT_SESSION_SINGLE = 194;
+
+  /**
    * A list of payment transactions including scheduled transaction (recurrent payments for memberships and renewals of
    * promotions).
    *
