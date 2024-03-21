@@ -1,6 +1,6 @@
 <?php
 
-namespace WellnessLiving\Wl\Profile\Create;
+namespace WellnessLiving\Wl\Profile\Edit;
 
 use WellnessLiving\WlModelAbstract;
 
