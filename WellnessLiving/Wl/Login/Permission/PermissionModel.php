@@ -12,7 +12,7 @@ use WellnessLiving\WlModelAbstract;
 class PermissionModel extends WlModelAbstract
 {
   /**
-   * If `true`, the purchased promotion has been made auto-renewable. Otherwise, this will be <tt>false</tt>.
+   * If `true`, the purchased promotion has been made auto-renewable. Otherwise, this will be `false`.
    *
    * @post post
    * @var bool

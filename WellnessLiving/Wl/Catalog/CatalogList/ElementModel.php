@@ -432,7 +432,7 @@ class ElementModel extends WlModelAbstract
   public $m_price;
 
   /**
-   * The price, including taxes0.
+   * The price, including taxes.
    *
    * @get result
    * @var string

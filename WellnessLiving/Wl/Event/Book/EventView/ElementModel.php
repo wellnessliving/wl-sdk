@@ -394,8 +394,8 @@ class ElementModel extends WlModelAbstract
   public $is_book;
 
   /**
-   * <tt>true</tt> if there are no free spots in the event; booking is available only into the wait list.
-   * <tt>false</tt> otherwise.
+   * `true` if there are no free spots in the event; booking is available only into the wait list.
+   * `false` otherwise.
    *
    * @get result
    * @var bool
