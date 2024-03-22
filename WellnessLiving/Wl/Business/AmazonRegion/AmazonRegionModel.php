@@ -1,6 +1,6 @@
 <?php
 
-namespace Wl\Business\AmazonRegion;
+namespace WellnessLiving\Wl\Business\AmazonRegion;
 
 use WellnessLiving\Wl\WlRegionSid;
 use WellnessLiving\WlModelAbstract;
