@@ -5,12 +5,14 @@ namespace WellnessLiving\Wl\Reception\Application;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Returns information about user for self check in application.
+ * An endpoint that returns client information for the Self Check-In Web App.
  */
 class MemberInfoModel extends WlModelAbstract
 {
   /**
-   * Additional member data or `null` if any data can be shown. Will be filled if {@link InfoApi::$is_full} flag is set.
+   * Additional member data. This will be filled if the flag from {@link InfoApi::$is_full} is set.
+   *
+   * This will be `null` if there isn't any data to show.
    *
    * @get result
    * @var array|null
@@ -18,27 +20,27 @@ class MemberInfoModel extends WlModelAbstract
   public $a_info = null;
 
   /**
-   * Items, which are prepared for application.
+   * The options presented in the web app.
    *
-   * They are generated here, because js has limitation for work with translated messages.
+   * The items are generated this way due to JavaScript limitations around translated messages.
    *
    * <dl>
    *   <dt>string <var>id_color</var></dt>
    *   <dd>
-   *     ID of color the notice is displayed in.
-   *     One of {@link \WellnessLiving\Wl\Reception\Application\MemberInfoColorSid} constants.
+   *     The ID of the color the notice is displayed in.
+   *     One of the {@link \WellnessLiving\Wl\Reception\Application\MemberInfoColorSid} constants.
    *   </dd>
    *   <dt>string <var>id_icon</var></dt>
    *   <dd>
-   *     ID of icon that accompanies the message.
-   *     One of {@link \WellnessLiving\Wl\Reception\Application\MemberInfoIconSid} constants
+   *     The ID of the icon that accompanies the message.
+   *     One of the {@link \WellnessLiving\Wl\Reception\Application\MemberInfoIconSid} constants
    *   </dd>
    *   <dt>string <var>text_class</var></dt>
-   *   <dd>Name of the class for styles.</dd>
+   *   <dd>The name of the class for styles.</dd>
    *   <dt>string <var>text_message</var></dt>
-   *   <dd>Plain message for info box.</dd>
+   *   <dd>The plain message for info box.</dd>
    *   <dt>string <var>html_message</var></dt>
-   *   <dd>Message for info box.</dd>
+   *   <dd>The message for info box.</dd>
    * </dl>
    *
    * @get result
@@ -47,10 +49,11 @@ class MemberInfoModel extends WlModelAbstract
   public $a_items = [];
 
   /**
-   * List of users data.
-   * Keys - users primary keys. Values - users data.
+   * A list containing client data.
    *
-   * `null` if data of a single user is requested.
+   * Keys refer to clients' primary keys, and values refer to clients' data.
+   *
+   * If `null`, data for a single client is being requested.
    *
    * @get result
    * @var array|null
@@ -58,9 +61,9 @@ class MemberInfoModel extends WlModelAbstract
   public $a_result_list = null;
 
   /**
-   * Primary keys of users whose information must be returned.
+   * The primary keys of clients whose information must be returned.
    *
-   * `null` if data of a single user is requested.
+   * If `null`, data for a single client is being requested.
    *
    * @get get
    * @var string[]|null
@@ -68,7 +71,7 @@ class MemberInfoModel extends WlModelAbstract
   public $a_uid = null;
 
   /**
-   * Date of the session, if we show it on the appointment info window or on the attendance list.
+   * The session date, if it's shown on the appointment info window or the attendance list.
    *
    * @get get
    * @var string
@@ -76,7 +79,7 @@ class MemberInfoModel extends WlModelAbstract
   public $dt_date = '';
 
   /**
-   * `true` - if API is being used from backend, `false` - otherwise.
+   * If `true`, the API is being used from the backend. Otherwise, this will be `false`.
    *
    * @get get
    * @var bool
@@ -84,7 +87,7 @@ class MemberInfoModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * If you need to return additional information set to `true` or `false` if not.
+   * If `true`, additional information will be returned. Otherwise, this will be `false`.
    *
    * @get get
    * @var bool
@@ -92,8 +95,8 @@ class MemberInfoModel extends WlModelAbstract
   public $is_full = false;
 
   /**
-   * `true` if user is traveller; `false` otherwise.
-   * `null` in case when user is walk-in or when {@link MemberInfoApi::$is_full} is `false`.
+   * If `true`, the client is a traveler. Otherwise, this will be `false`.
+   * This will be `null` in cases when the client is a walk-in or when {@link MemberInfoApi::$is_full} is `false`.
    *
    * @get result
    * @var bool|null
@@ -101,9 +104,9 @@ class MemberInfoModel extends WlModelAbstract
   public $is_traveller = null;
 
   /**
-   * ID of a business to retrieve information within.
+   * The business ID required to access client information.
    *
-   * 0 to retrieve system-wide version of information.
+   * Specify this as `0` to retrieve the system-wide version of the information.
    *
    * @get get
    * @var string
@@ -111,7 +114,7 @@ class MemberInfoModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Key of the location, where Self Check In application is run.
+   * The location where the Self Check-In Web App is running.
    *
    * @get get
    * @var string
@@ -119,7 +122,7 @@ class MemberInfoModel extends WlModelAbstract
   public $k_location = '';
 
   /**
-   * ID of the visit, if we show icons on the attendance list and information that depends on visit is required.
+   * The visit ID used to show icons on the attendance list and visit information.
    *
    * @get get
    * @var string
@@ -127,7 +130,9 @@ class MemberInfoModel extends WlModelAbstract
   public $k_visit = '';
 
   /**
-   * Member ID. `null` if specified user is not a member of specified business.
+   * The member ID.
+   *
+   * If `null`, the specified client isn't a member of the specified business.
    *
    * @get result
    * @var string|null
@@ -135,7 +140,7 @@ class MemberInfoModel extends WlModelAbstract
   public $s_member = null;
 
   /**
-   * Key of the Check In application.
+   * The application key of the Self Check-In Web App.
    *
    * @get get
    * @var string
@@ -143,8 +148,9 @@ class MemberInfoModel extends WlModelAbstract
   public $s_secret = '';
 
   /**
-   * List of icons with additional information about business member.
-   * If empty, then all available icons will be displayed.
+   * A list of icons with additional information about the business member.
+   *
+   * If empty, all available icons will be displayed.
    *
    * @get get
    * @var string
@@ -152,7 +158,7 @@ class MemberInfoModel extends WlModelAbstract
   public $s_show = '';
 
   /**
-   * First user name.
+   * The client's first name.
    *
    * @get result
    * @var string
@@ -160,7 +166,7 @@ class MemberInfoModel extends WlModelAbstract
   public $text_first_name = '';
 
   /**
-   * Full user name.
+   * The client's full name.
    *
    * @get result
    * @var string
@@ -168,7 +174,7 @@ class MemberInfoModel extends WlModelAbstract
   public $text_fullname = '';
 
   /**
-   * ID of a user to retrieve member information for.
+   * The client ID required to access member information.
    *
    * @get get
    * @var string
@@ -176,7 +182,7 @@ class MemberInfoModel extends WlModelAbstract
   public $uid = '';
 
   /**
-   * URL to barcode image.
+   * The barcode image URL.
    *
    * @get result
    * @var string
@@ -184,7 +190,7 @@ class MemberInfoModel extends WlModelAbstract
   public $url_barcode;
 
   /**
-   * URL to email.
+   * The email URL.
    *
    * @get result
    * @var string
