@@ -15,6 +15,9 @@ class BookListModel extends WlModelAbstract
    *   <dt>array <var>a_class_tab</var></dt>
    *   <dd>The list of tab keys for the class.</dd>
    *
+   *   <dt>string <var>dtu_book_date</var></dt>
+   *   <dd>The book date of an event in UTC date/time format. Can be empty string if user cannot book the event.</dd>
+   *
    *   <dt>bool <var>is_active</var></dt>
    *   <dd>This will be <tt>true</tt> if the class is active. Otherwise, this will be <tt>false</tt>.</dd>
    *
@@ -26,6 +29,9 @@ class BookListModel extends WlModelAbstract
    *
    *   <dt>sting <var>k_enrollment_block</var></dt>
    *   <dd>The enrollment block key.</dd>
+   *
+   *   <dt>string <var>m_price_total</var></dt>
+   *   <dd>The total price for an event.</dd>
    *
    *   <dt>sting <var>text_description</var></dt>
    *   <dd>The class description.</dd>
