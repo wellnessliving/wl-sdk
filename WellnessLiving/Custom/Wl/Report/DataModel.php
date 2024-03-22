@@ -2,7 +2,7 @@
 
 namespace WellnessLiving\Custom\Wl\Report;
 
-use WellnessLiving\UrlEncode;
+use WellnessLiving\Wl\Report\UrlEncode;
 use WellnessLiving\WlModelAbstract;
 
 /**

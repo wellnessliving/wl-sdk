@@ -1,6 +1,7 @@
 <?php
 
-namespace WellnessLiving;
+namespace WellnessLiving\Wl\Report;
+use WellnessLiving\WlAssertException;
 
 /**
  * Packs variables in URL.

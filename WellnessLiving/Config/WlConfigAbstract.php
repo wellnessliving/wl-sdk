@@ -311,3 +311,5 @@ abstract class WlConfigAbstract
     return static::$REGION_URL[$this->id_region];
   }
 }
+
+?>
