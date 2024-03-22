@@ -57,3 +57,5 @@ class WlPayProcessorSid
    */
   const TEST_POS = 4;
 }
+
+?>
