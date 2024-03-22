@@ -85,7 +85,7 @@ class DataModel extends \WellnessLiving\Custom\Wl\Report\DataModel
   public $k_business = '0';
 
   /**
-   * Filter settings in encoded format. May be decoded by {@link \WellnessLiving\UrlEncode::decode()}.
+   * Filter settings in encoded format. May be decoded by {@link \WellnessLiving\Wl\Report\UrlEncode::decode()}.
    *
    * @get get
    * @var string
