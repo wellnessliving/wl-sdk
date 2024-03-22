@@ -6,7 +6,7 @@ use WellnessLiving\Wl\WlRegionSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Endpoint for retrieve region ID for businesses.
+ * An endpoint for retrieve region ID for businesses.
  */
 class AmazonRegionModel extends WlModelAbstract
 {
