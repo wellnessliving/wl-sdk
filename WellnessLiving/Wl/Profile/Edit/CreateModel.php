@@ -44,4 +44,12 @@ class CreateModel extends WlModelAbstract
    * @var string
    */
   public $text_mail = '';
+
+  /**
+   * The key of the user added.
+   *
+   * @post result
+   * @var string
+   */
+  public $uid = '';
 }
