@@ -13,25 +13,25 @@ use WellnessLiving\WlModelAbstract;
 class NotepadModel extends WlModelAbstract
 {
   /**
-   * Evaluates hash based on notepad and plain user password.
+   * Evaluates the hash based on the notepad and the plaintext user password.
    *
-   * @param string $s_password Plain user password.
-   * @return string Password hash, depends on hash, solt, type of the hash and plain user password.
+   * @param string $s_password The plaintext user password.
+   * @return string The password hash. This depends on the hash, the salt, the type of the hash, and the plaintext user password.
    */
   public function hash($s_password)
   {
-    // Unlike server side, in JS only HEX hash is supported.
-    // For this reason, API expects HEX string and not a raw hash.
-    return Sha3::hash($this->s_notepad.NotepadModel::passwordHash($s_password)/*Important! See comment above.*/,512,false);
+    // Unlike the server side, only HEX hash is supported in JS.
+    // For this reason, the API expects a HEX string and not a raw hash.
+    return Sha3::hash($this->s_notepad. static::passwordHash($s_password)/*Important! See comment above.*/,512,false);
   }
 
   /**
-   * Evaluates initial hash based on notepad and plain user password (this is value of hash that is stored in the database).
+   * Evaluates the initial hash based on the notepad and the plaintext user password (the value of the hash stored in the database).
    *
-   * <b>Be attentive!</b> This method has a server-side counterpart.
+   * This method has a server-side counterpart.
    *
-   * @param string $s_password Plain user password.
-   * @return string Hashed user password.
+   * @param string $s_password The plaintext user password.
+   * @return string The hashed user password.
    */
   public static function passwordHash($s_password)
   {
@@ -47,8 +47,8 @@ class NotepadModel extends WlModelAbstract
       'Lh9Fl5989crMU4E7P6E'
     ];
 
-    // Unlike server side, in JS only HEX hash is supported.
-    // For this reason, API expects HEX string and not a raw hash.
+    // Unlike the server side, only HEX hash is supported in JS.
+    // For this reason, the API expects a HEX string and not a raw hash.
     return Sha3::hash(implode($s_password,$a_delimiter).$s_password/*Important! See comment above.*/,512,false);
   }
 }

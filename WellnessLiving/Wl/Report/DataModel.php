@@ -2,6 +2,8 @@
 
 namespace WellnessLiving\Wl\Report;
 
+use WellnessLiving\Custom\Wl\Report\DataModel as CustomDataModel;
+
 /**
  * An endpoint that returns information from a WellnessLiving report.
  *
@@ -9,7 +11,7 @@ namespace WellnessLiving\Wl\Report;
  * fields. The two reports are similar, but not exactly the same. The `LOGIN_LIST` (ID 22) report requires filters to be set to
  * retrieve information. The `LOGIN_LIST_ALL` (ID 33) doesn’t require any filters to be set when specifying a date range.
  */
-class DataModel extends \WellnessLiving\Custom\Wl\Report\DataModel
+class DataModel extends CustomDataModel
 {
   /**
    * The report contents.
@@ -30,7 +32,7 @@ class DataModel extends \WellnessLiving\Custom\Wl\Report\DataModel
   public $i_page = 0;
 
   /**
-   * The report ID. One of the {@link \WellnessLiving\Wl\Report\WlReportSid} constants.
+   * The report ID. One of the {@link WlReportSid} constants.
    * The following reports are currently available via the API:
    * <dl>
    *   <dt>LOGIN_LIST (ID 22)</dt>
@@ -51,7 +53,7 @@ class DataModel extends \WellnessLiving\Custom\Wl\Report\DataModel
   public $id_report = 0;
 
   /**
-   * The report group ID. One of the {@link \WellnessLiving\Wl\Report\WlReportGroupSid} constants that describes the time
+   * The report group ID. One of the {@link WlReportGroupSid} constants that describes the time
    * period (day, week, month, or year) for the report to cover.
    *
    * @get get
@@ -69,7 +71,7 @@ class DataModel extends \WellnessLiving\Custom\Wl\Report\DataModel
   public $id_report_page = null;
 
   /**
-   * The report view ID. One of the {@link \WellnessLiving\Wl\Report\WlReportChartViewSid} constants.
+   * The report view ID. One of the {@link WlReportChartViewSid} constants.
    *
    * @get get
    * @var int
@@ -85,7 +87,7 @@ class DataModel extends \WellnessLiving\Custom\Wl\Report\DataModel
   public $k_business = '0';
 
   /**
-   * Filter settings in encoded format. May be decoded by {@link \WellnessLiving\Wl\Report\UrlEncode::decode()}.
+   * Filter settings in encoded format. May be decoded by {@link UrlEncode::decode()}.
    *
    * @get get
    * @var string

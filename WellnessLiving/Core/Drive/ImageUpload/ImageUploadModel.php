@@ -2,15 +2,17 @@
 
 namespace WellnessLiving\Core\Drive\ImageUpload;
 
+use WellnessLiving\Custom\Core\Drive\ImageUpload\ImageUploadModel as CustomImageUploadModel;
+
 /**
  * An endpoint that performs the final action to an uploaded image.
- * Images are uploaded using {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadTemporaryModel}.
+ * Images are uploaded using {@link ImageUploadTemporaryModel}.
  */
-class ImageUploadModel extends \WellnessLiving\Custom\Core\Drive\ImageUpload\ImageUploadModel
+class ImageUploadModel extends CustomImageUploadModel
 {
   /**
    * Image information for every ID. Every element contains values such as the
-   * {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadModel::_get()} result.
+   * {@link ImageUploadModel::_get()} result.
    *
    * @post result
    * @var array[]
@@ -121,7 +123,7 @@ class ImageUploadModel extends \WellnessLiving\Custom\Core\Drive\ImageUpload\Ima
   public $is_temporary = false;
 
   /**
-   * The image ID set in {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadModel::$s_class}.
+   * The image ID set in {@link ImageUploadModel::$s_class}.
    *
    * @get get
    * @put get
@@ -166,7 +168,7 @@ class ImageUploadModel extends \WellnessLiving\Custom\Core\Drive\ImageUpload\Ima
   public $s_link;
 
   /**
-   * A list of image IDs set in {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadModel::$s_class},
+   * A list of image IDs set in {@link ImageUploadModel::$s_class},
    * serialised using JSON.
    *
    * This will be `null` if there's no data being sent by the client.
