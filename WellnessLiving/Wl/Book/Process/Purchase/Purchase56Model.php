@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Book\Process\Purchase;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that displays information about Purchase Options that can book specified session(s).
+ * Displays information about Purchase Options that can book specified session(s).
  *
  * Note that the terms "Purchase Option" and "promotion" are used interchangeably.
  */

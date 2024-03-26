@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Resource\Layout;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that displays information about an asset layout.
+ * Displays information about an asset layout.
  */
 class LayoutModel extends WlModelAbstract
 {

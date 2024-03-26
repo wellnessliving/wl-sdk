@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business\Config;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that manages business configurations for clients, bookings, payments, and related things.
+ * Manages business configurations for clients, bookings, payments, and related things.
  */
 class BusinessConfigModel extends WlModelAbstract
 {

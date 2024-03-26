@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Schedule;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves a list of information about the booking schedule for available appointments.
+ * Retrieves a list of information about the booking schedule for available appointments.
  */
 class DayTimeModel extends WlModelAbstract
 {

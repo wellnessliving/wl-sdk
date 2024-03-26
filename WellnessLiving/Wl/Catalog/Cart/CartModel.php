@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Catalog\Cart;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that displays information about the cart in the catalog.
+ * Displays information about the cart in the catalog.
  */
 class CartModel extends WlModelAbstract
 {

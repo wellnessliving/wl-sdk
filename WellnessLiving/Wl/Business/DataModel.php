@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that displays information for a specified business.
+ * Displays information for a specified business.
  */
 class DataModel extends WlModelAbstract
 {

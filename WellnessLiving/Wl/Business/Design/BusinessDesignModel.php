@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business\Design;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that provides business design information.
+ * Provides business design information.
  */
 class BusinessDesignModel extends WlModelAbstract
 {

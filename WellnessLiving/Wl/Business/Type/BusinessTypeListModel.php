@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business\Type;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves a list of business types.
+ * Retrieves a list of business types.
  */
 class BusinessTypeListModel extends WlModelAbstract
 {

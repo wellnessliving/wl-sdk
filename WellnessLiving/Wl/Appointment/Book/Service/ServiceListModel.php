@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Service;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about services in the current service category.
+ * Retrieves information about services in the current service category.
  *
  * @deprecated New version {@link \WellnessLiving\Wl\Appointment\Book\Service\ServiceList52Model} should be used instead.
  */

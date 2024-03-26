@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Login\Promotion;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that manages or retrieves information about holds on Purchase Options.
+ * Manages or retrieves information about holds on Purchase Options.
  *
  * The DELETE method can remove a hold.
  * The GET method only returns information about active holds.

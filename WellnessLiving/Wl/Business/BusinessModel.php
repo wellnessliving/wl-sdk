@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that creates a new business.
+ * Creates a new business.
  */
 class BusinessModel extends WlModelAbstract
 {

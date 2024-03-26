@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Catalog\StaffApp\CatalogView;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns information about an item’s price after taxes.
+ * Returns information about an item’s price after taxes.
  */
 class CatalogViewModel extends WlModelAbstract
 {

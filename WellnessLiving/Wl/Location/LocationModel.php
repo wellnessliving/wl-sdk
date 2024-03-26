@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Location;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that creates a new location in the business or edits a specified location.
+ * Creates a new location in the business or edits a specified location.
  * Access to this endpoint is logged with specified permissions. It can also be accessed by guests during the
  * registration process for new businesses (see {@link \WellnessLiving\Wl\Business\BusinessModel::sessionKey()}).
  *

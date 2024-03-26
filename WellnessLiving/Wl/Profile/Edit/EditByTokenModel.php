@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Profile\Edit;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that displays client profile information.
+ * Displays client profile information.
  * Version of {@link \WellnessLiving\Wl\Profile\Edit\EditModel} for access validation by security token.
  */
 class EditByTokenModel extends WlModelAbstract

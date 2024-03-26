@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Integration\DragonFly;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that checks if a user can access a physical location.
+ * Checks if a user can access a physical location.
  */
 class AccessModel extends WlModelAbstract
 {

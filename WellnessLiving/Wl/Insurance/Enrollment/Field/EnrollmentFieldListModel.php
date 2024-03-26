@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Insurance\Enrollment\Field;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves and validates a list of insurance partner fields.
+ * Retrieves and validates a list of insurance partner fields.
  *
  * Use the GET method to load a list of required fields.
  *

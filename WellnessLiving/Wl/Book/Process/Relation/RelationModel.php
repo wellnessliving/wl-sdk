@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Book\Process\Relation;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that adds a relative during the booking process.
+ * Adds a relative during the booking process.
  */
 class RelationModel extends WlModelAbstract
 {

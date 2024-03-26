@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Login\Attendance;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that displays attendance list data.
+ * Displays attendance list data.
  * Version of {@link \WellnessLiving\Wl\Login\Attendance\AttendanceListModel} for access validation by security token.
  */
 class AttendanceListByTokenModel extends WlModelAbstract

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Service;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about services in the current service category.
+ * Retrieves information about services in the current service category.
  *
  * This is a new version of the {@link \WellnessLiving\Wl\Appointment\Book\Service\ServiceListModel} endpoint.
  * It allows for filtering a list of services by multiple book now tabs.

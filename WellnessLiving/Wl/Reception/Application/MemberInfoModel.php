@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Reception\Application;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns client information for the Self Check-In Web App.
+ * Returns client information for the Self Check-In Web App.
  */
 class MemberInfoModel extends WlModelAbstract
 {

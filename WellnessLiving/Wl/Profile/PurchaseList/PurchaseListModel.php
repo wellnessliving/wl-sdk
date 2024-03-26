@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Profile\PurchaseList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets a list of purchases for a user.
+ * Gets a list of purchases for a user.
  */
 class PurchaseListModel extends WlModelAbstract
 {

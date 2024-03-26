@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Review\ReviewList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns a list of review IDs for all reviews for a location. If location is not specified, returns
+ * Returns a list of review IDs for all reviews for a location. If location is not specified, returns
  * all reviews for all locations in the specified business.
  *
  * Reviews in WellnessLiving apply to specific locations. This endpoint can be used to get the IDs for all reviews or

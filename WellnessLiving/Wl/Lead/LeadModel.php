@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Lead;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets information from the Lead Capture widget and saves a new user’s information.
+ * Gets information from the Lead Capture widget and saves a new user’s information.
  *
  * A user can be added to a second business by adding them first as a lead. If your business uses Enterprise Cloud,
  * there may be a restriction where clients can only be members in one enterprise location (travellers in all

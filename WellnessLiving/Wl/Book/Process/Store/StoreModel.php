@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Book\Process\Store;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that manages the booking wizard for the "Purchase Options" page.
+ * Manages the booking wizard for the "Purchase Options" page.
  */
 class StoreModel extends WlModelAbstract
 {

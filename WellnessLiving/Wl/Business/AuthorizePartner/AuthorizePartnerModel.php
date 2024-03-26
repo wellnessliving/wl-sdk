@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business\AuthorizePartner;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gives members of a franchisor access to a franchisee.
+ * Gives members of a franchisor access to a franchisee.
  *
  * To grant a user access, the "Manage Franchise Location" staff permission is required.
  * Access will be granted for 24 hours.

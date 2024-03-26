@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Catalog\CatalogList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that displays information about store items.
+ * Displays information about store items.
  */
 class ListModel extends WlModelAbstract
 {

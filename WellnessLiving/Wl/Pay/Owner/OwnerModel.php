@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Pay\Owner;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets the payment owner ID.
+ * Gets the payment owner ID.
  */
 class OwnerModel extends WlModelAbstract
 {

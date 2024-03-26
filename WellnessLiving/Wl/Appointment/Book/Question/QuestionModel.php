@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Question;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves questions for a selected service.
+ * Retrieves questions for a selected service.
  */
 class QuestionModel extends WlModelAbstract
 {

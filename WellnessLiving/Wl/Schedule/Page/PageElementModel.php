@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Schedule\Page;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns information about a specified visit.
+ * Returns information about a specified visit.
  */
 class PageElementModel extends WlModelAbstract
 {

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Review\ReviewList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns information about a review.
+ * Returns information about a review.
  */
 class ReviewElementModel extends WlModelAbstract
 {

@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Captcha;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that checks if a CAPTCHA is required.
+ * Checks if a CAPTCHA is required.
  */
 class CaptchaRequireModel extends WlModelAbstract
 {

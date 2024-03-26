@@ -5,7 +5,7 @@ namespace WellnessLiving\Social\Apple\Login;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that authorizes a user with Apple.
+ * Authorizes a user with Apple.
  */
 class AppleLoginModel extends WlModelAbstract
 {

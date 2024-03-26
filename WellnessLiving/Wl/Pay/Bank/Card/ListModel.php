@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Pay\Bank\Card;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets information about any payment cards belonging to a user.
+ * Gets information about any payment cards belonging to a user.
  */
 class ListModel extends WlModelAbstract
 {

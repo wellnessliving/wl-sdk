@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Event\Book\EventView;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about an event element.
+ * Retrieves information about an event element.
  */
 class ElementModel extends WlModelAbstract
 {

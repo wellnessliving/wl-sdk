@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Classes\Period\Modify;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that modifies the master model.
+ * Modifies the master model.
  */
 class ModifyModel extends WlModelAbstract
 {

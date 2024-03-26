@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business\Account;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets a list of active businesses.
+ * Gets a list of active businesses.
  *
  * To run this endpoint, a user must be authorized with the `rs.business.view` privilege.
  */

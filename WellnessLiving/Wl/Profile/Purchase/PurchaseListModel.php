@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Profile\Purchase;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets a list of purchases for a user.
+ * Gets a list of purchases for a user.
  *
  * @deprecated Use {@link \WellnessLiving\Wl\Profile\PurchaseList\PurchaseListModel} instead.
  */

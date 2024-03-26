@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Login\Member;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that displays information about members of businesses.
+ * Displays information about members of businesses.
  */
 class MemberModel extends WlModelAbstract
 {

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Collector;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns a list of payments for debts added within the previous day.
+ * Returns a list of payments for debts added within the previous day.
  */
 class DebtTransactionModel extends WlModelAbstract
 {

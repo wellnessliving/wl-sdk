@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Video\Watch;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that saves information about a watched video.
+ * Saves information about a watched video.
  */
 class WatchModel extends WlModelAbstract
 {

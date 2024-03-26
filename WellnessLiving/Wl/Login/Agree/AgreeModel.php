@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Login\Agree;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that saves the user's agreement to the online waiver.
+ * Saves the user's agreement to the online waiver.
  */
 class AgreeModel extends WlModelAbstract
 {

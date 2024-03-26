@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Catalog\CatalogList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that displays information about a certain item in the store.
+ * Displays information about a certain item in the store.
  *
  * When using this endpoint, note that the terms "promotion" and "Purchase Option" refer to the same thing.
  */
