@@ -44,7 +44,7 @@ class PromotionPayPauseModel extends WlModelAbstract
    * @get result
    * @var array[]|null
    */
-  public $a_pay_pause_list;
+  public $a_pay_pause_list = null;
 
   /**
    * The end date of the current hold, in the local time zone. This can be set to a special value
@@ -57,7 +57,7 @@ class PromotionPayPauseModel extends WlModelAbstract
    * @put get
    * @var string|null
    */
-  public $dt_end;
+  public $dt_end = null;
 
   /**
    * The start date of the current hold, in the local time zone.
@@ -69,7 +69,7 @@ class PromotionPayPauseModel extends WlModelAbstract
    * @put get
    * @var string|null
    */
-  public $dt_start;
+  public $dt_start = null;
 
   /**
    * Whether need to get all pause periods for the login promotion.
@@ -94,7 +94,7 @@ class PromotionPayPauseModel extends WlModelAbstract
    * @put get
    * @var string|null
    */
-  public $k_business;
+  public $k_business = null;
 
   /**
    * The Purchase Option key. If this key is used, a new hold will be created. The endpoint will return a `start-cross`
@@ -109,7 +109,7 @@ class PromotionPayPauseModel extends WlModelAbstract
    * @post get
    * @var string|null
    */
-  public $k_login_promotion;
+  public $k_login_promotion = null;
 
   /**
    * The promotion payment hold key. If this key is used, it will edit an existing hold.
@@ -123,7 +123,7 @@ class PromotionPayPauseModel extends WlModelAbstract
    * @put get,result
    * @var string|null
    */
-  public $k_promotion_pay_pause;
+  public $k_promotion_pay_pause = null;
 
   /**
    * Additional notes for the promotion payment pause period.
@@ -136,7 +136,7 @@ class PromotionPayPauseModel extends WlModelAbstract
    * @put post
    * @var string|null
    */
-  public $text_note;
+  public $text_note = null;
 }
 
 ?>

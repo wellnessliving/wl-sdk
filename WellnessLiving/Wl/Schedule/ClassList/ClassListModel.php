@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Schedule\ClassList;
 
+use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -46,12 +47,14 @@ class ClassListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The list of staff keys for the staff member conducting the session.
+   *
    *   </dd>
    *   <dt>
    *     string[] <var>a_virtual_location</var>
    *   </dt>
    *   <dd>
    *     The list of virtual locations keys. Each value is a location key.
+   *
    *   </dd>
    *   <dt>
    *     string <var>dt_date</var>
@@ -82,7 +85,7 @@ class ClassListModel extends WlModelAbstract
    *     int <var>i_day</var>
    *   </dt>
    *   <dd>
-   *     The day of the week when session is occurred. Constant from {@link \WellnessLiving\Core\a\ADateWeekSid}.
+   *     The day of the week when session is occurred. Constant from {@link ADateWeekSid}.
    *   </dd>
    *   <dt>
    *     int <var>i_duration</var>
@@ -96,6 +99,12 @@ class ClassListModel extends WlModelAbstract
    *   <dd>
    *     If `true`, this class period was canceled. Otherwise, this will be `false`.
    *   </dd>
+   *    <dt>
+   *      bool <var>is_event</var>
+   *    </dt>
+   *    <dd>
+   *      If `true`, this is an event. Otherwise, this will be `false`.
+   *    </dd>
    *   <dt>
    *     bool <var>is_virtual</var>
    *   </dt>

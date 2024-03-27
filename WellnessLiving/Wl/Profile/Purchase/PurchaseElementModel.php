@@ -3,16 +3,23 @@
 namespace WellnessLiving\Wl\Profile\Purchase;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Profile\PurchaseList\PurchaseListElementModel;
+use WellnessLiving\Wl\Profile\PurchaseList\PurchaseListModel;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\WlActivationSid;
+use WellnessLiving\Wl\WlCommissionTypeSid;
+use WellnessLiving\Wl\WlDurationTypeSid;
+use WellnessLiving\Wl\WlProgramTypeSid;
+use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * An endpoint that gets details of a specified purchase.
  *
  * This endpoint may require different IDs to be specified for different types of purchases.
- * The IDs required for a specific item will be the same IDs returned from the {@link \WellnessLiving\Wl\Profile\PurchaseList\PurchaseListModel}
+ * The IDs required for a specific item will be the same IDs returned from the {@link PurchaseListModel}
  * endpoint.
  *
- * @deprecated Use {@link \WellnessLiving\Wl\Profile\PurchaseList\PurchaseListElementModel} instead. It provides the same functionality
-and more.
+ * @deprecated Use {@link PurchaseListElementModel} instead. It provides the same functionality and more.
  */
 class PurchaseElementModel extends WlModelAbstract
 {
@@ -23,21 +30,25 @@ class PurchaseElementModel extends WlModelAbstract
    *     string [<var>k_enrollment_book</var>]
    *   </dt>
    *   <dd>
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_login_product</var>]
    *   </dt>
    *   <dd>
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_login_promotion</var>]
    *   </dt>
    *   <dd>
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_session_pass</var>]
    *   </dt>
    *   <dd>
+   *
    *   </dd>
    * </dl>
    *
@@ -270,7 +281,7 @@ class PurchaseElementModel extends WlModelAbstract
   public $i_use;
 
   /**
-   * Activation mode. One on {@link \WellnessLiving\WlActivationSid} constants. This field is only added for promotions.
+   * Activation mode. One on {@link WlActivationSid} constants. This field is only added for promotions.
    *
    * @get result
    * @var int
@@ -279,7 +290,7 @@ class PurchaseElementModel extends WlModelAbstract
 
   /**
    * The type of discount given via a reward prize.
-   * One on the {@link \WellnessLiving\WlCommissionTypeSid} constants.
+   * One on the {@link WlCommissionTypeSid} constants.
    * This will be empty if this discount wasn't applied.
    *
    * @get result
@@ -290,7 +301,7 @@ class PurchaseElementModel extends WlModelAbstract
   /**
    * The type of duration for the promotion. This is used only for “membership” type promotions.
    * This determines whether the promotion lasts indefinitely, has a fixed duration, or ends on a specific date.
-   * One of the {@link \WellnessLiving\WlDurationTypeSid} constants.
+   * One of the {@link WlDurationTypeSid} constants.
    *
    * @get result
    * @var int
@@ -299,7 +310,7 @@ class PurchaseElementModel extends WlModelAbstract
 
   /**
    * The ID of the promotion program.
-   * One of the {@link \WellnessLiving\WlProgramTypeSid} constants.
+   * One of the {@link WlProgramTypeSid} constants.
    * This is used only for promotions.
    *
    * @get result
@@ -309,7 +320,7 @@ class PurchaseElementModel extends WlModelAbstract
 
   /**
    * The ID of the purchase item type.
-   * One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
+   * One of the {@link WlPurchaseItemSid} constants.
    *
    * @get result
    * @var int
@@ -318,7 +329,7 @@ class PurchaseElementModel extends WlModelAbstract
 
   /**
    * The ID of the sale category.
-   * One of the {@link \WellnessLiving\WlSaleSid} constants.
+   * One of the {@link WlSaleSid} constants.
    *
    * @get result
    * @var int

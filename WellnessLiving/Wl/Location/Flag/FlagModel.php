@@ -24,7 +24,7 @@ class FlagModel extends WlModelAbstract
   public $a_flag;
 
   /**
-   * User keys. Each element is a primary key in the {@link \PassportLoginSql} table.
+   * User keys.
    * <tt>null</tt> if not set.
    *
    * @get get

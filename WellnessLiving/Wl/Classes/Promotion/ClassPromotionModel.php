@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Classes\Promotion;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlProgramSid;
 
 /**
  * An endpoint that returns a list of promotions that can pay for a business's classes or events.
@@ -16,7 +17,7 @@ class ClassPromotionModel extends WlModelAbstract
    *   <dt>string <var>text_title</var></dt>
    *   <dd>The title of the promotion.</dd>
    *   <dt>int <var>id_program</var></dt>
-   *   <dd>One of the {@link \WellnessLiving\WlProgramSid} constants.</dd>
+   *   <dd>One of the {@link WlProgramSid} constants.</dd>
    *   <dt>bool <var>is_select</var></dt>
    *   <dd><tt>true</tt> if the promotion is related to the class or event, <tt>false</tt> otherwise.</dd>
    * </dl>.
@@ -35,10 +36,10 @@ class ClassPromotionModel extends WlModelAbstract
   public $is_event = false;
 
   /**
-   * `true` — the login type or group restrictions are ignored and all pricing options will be returned. This will
+   * `true` - the login type or group restrictions are ignored and all pricing options will be returned. This will
    * require staff or admin access level.
    *
-   * `false` — the API should return only pricing options, which are available for the current user.
+   * `false` - the API should return only pricing options, which are available for the current user.
    *
    * @get get
    * @var bool
@@ -46,9 +47,9 @@ class ClassPromotionModel extends WlModelAbstract
   public $is_login_type_ignore = false;
 
   /**
-   * `true` — promotions should only be returned if they're related to the given class or event.
+   * `true` - promotions should only be returned if they're related to the given class or event.
    *
-   * `false` — all promotions should be returned, even if they aren't related to the given class or event.
+   * `false` - all promotions should be returned, even if they aren't related to the given class or event.
    *
    * @get get
    * @var bool
@@ -72,7 +73,7 @@ class ClassPromotionModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $k_class;
+  public $k_class = null;
 
   /**
    * The default promotion key.
@@ -82,7 +83,7 @@ class ClassPromotionModel extends WlModelAbstract
    * @get result
    * @var string|null
    */
-  public $k_promotion_default;
+  public $k_promotion_default = null;
 }
 
 ?>

@@ -4,13 +4,17 @@ namespace WellnessLiving\Wl\Service;
 
 /**
  * A list of client booking flow types.
+ *
+ * 3 - is reserved for deprecated "advanced percent" that was combined with "flat advance" into "ADVANCE".
+ *
+ * Last used ID: 6
  */
 class ServiceRequireSid
 {
   /**
    * Some part of the price is required. Type of the deposit can be flat or percentage.
    * Type of the deposit depends on <var>is_deposit_percent</var>.
-   * Size of the deposit is specified in <var>f_deposit</var>.
+   * Size of the deposit is specified in <var>f_deposit</var>
    */
   const ADVANCE = 4;
 
@@ -25,8 +29,6 @@ class ServiceRequireSid
    */
   const NOTHING = 1;
 
-  // 3 - is reserved for deprecated "advanced percent" that was combined with "flat advance" into "ADVANCE".
-
   /**
    * Clients can book, but online purchase is not available.
    * Clients can pay only when they visit.
@@ -38,3 +40,5 @@ class ServiceRequireSid
    */
   const ZERO = 5;
 }
+
+?>

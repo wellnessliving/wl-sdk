@@ -33,7 +33,15 @@ class LoginTypeModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_login_type_list;
+  public $a_login_type_list = [];
+
+  /**
+   * If `true`, this `k_business` is a franchisor, and login types of all franchisees should be returned.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_franchisor = false;
 
   /**
    * The business key used internally by WellnessLiving.

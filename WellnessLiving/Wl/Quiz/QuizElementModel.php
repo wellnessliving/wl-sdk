@@ -25,12 +25,24 @@ class QuizElementModel extends WlModelAbstract
    *
    * @get result
    * @post post
+   * @put result
    * @var array
    */
   public $a_setting = [];
 
   /**
-   * `true` if don't check user authorization, `false` otherwise.
+   * Whether user has privileges to amend form.
+   *
+   * @get result
+   * @var bool
+   */
+  public $can_amend = false;
+
+  /**
+   * Checks whether unauthorized user should be permitted to operate with form and make a response.
+   * In general all quizzes should have users in response but it some cases such as registration process
+   *  user might not exist yet, and we need ability to ignore check for user existence.
+   * `true` - add possibility load form and accept response for non-registered user, `false` otherwise.
    *
    * @get get
    * @post get
@@ -58,6 +70,16 @@ class QuizElementModel extends WlModelAbstract
    * @var bool
    */
   public $is_active = true;
+
+  /**
+   * List of quiz elements in json format.
+   *
+   * Order of the element in array corresponds to order of elements on the form.
+   *
+   * @post post
+   * @var string
+   */
+  public $json_element = '';
 
   /**
    * Business key within which quiz is managed.

@@ -3,10 +3,12 @@
 namespace WellnessLiving\Wl\Schedule\ScheduleList\StaffApp;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Visit\WlVisitSid;
+use WellnessLiving\Wl\WlServiceSid;
 
 /**
  * An endpoint that returns information about a business schedule for a specified date.
- * Version of {@link \WellnessLiving\Wl\Schedule\ScheduleList\StaffApp\ScheduleListModel} for access validation by security token.
+ * Version of {@link ScheduleListModel} for access validation by security token.
  */
 class ScheduleListByTokenModel extends WlModelAbstract
 {
@@ -31,7 +33,7 @@ class ScheduleListByTokenModel extends WlModelAbstract
    *         int <var>id_visit</var>
    *       </dt>
    *       <dd>
-   *         Visit id. One of {@link \WellnessLiving\Wl\Visit\VisitSid} constants.
+   *         Visit id. One of {@link WlVisitSid} constants.
    *       </dd>
    *       <dt>
    *         bool <var>is_confirmed</var>
@@ -70,12 +72,14 @@ class ScheduleListByTokenModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     A list of assets involved in the session.
+   *
    *   </dd>
    *   <dt>
    *     string[] <var>a_staff</var>
    *   </dt>
    *   <dd>
    *     A list of staff members who will conduct the session.
+   *
    *     Deprecated, use <var>a_staff_list</var> instead.
    *   </dd>
    *   <dt>
@@ -115,7 +119,7 @@ class ScheduleListByTokenModel extends WlModelAbstract
    *     string[] <var>a_virtual_location</var>
    *   </dt>
    *   <dd>
-   *     List of virtual locations. Each value is primary key in {@link \RsLocationSql} table.
+   *     List of virtual locations.
    *   </dd>
    *   <dt>
    *     string <var>dt_date</var>
@@ -179,10 +183,18 @@ class ScheduleListByTokenModel extends WlModelAbstract
    *     Count clients on waitlist.
    *   </dd>
    *   <dt>
+   *      int <var>id_option</var>
+   *    </dt>
+   *    <dd>
+   *      Appointment title display style.
+   *      Set only for appointments, for others it will be equal to 0.
+   *
+   *    </dd>
+   *   <dt>
    *     int <var>id_service</var>
    *   </dt>
    *   <dd>
-   *     The ID of the service type. One of {@link \WellnessLiving\WlServiceSid} constants.
+   *     The ID of the service type. One of {@link WlServiceSid} constants.
    *   </dd>
    *   <dt>
    *     bool <var>is_arrive</var>
@@ -213,6 +225,13 @@ class ScheduleListByTokenModel extends WlModelAbstract
    *     If the session isn't an appointment, this will be `0`.
    *   </dd>
    *   <dt>
+   *     string <var>dt_confirm</var>
+   *   </dt>
+   *   <dd>
+   *     Confirmation date for appointment in MySQL format. Will be zero date + time in case appointment
+   *     is not yet confirmed by client.
+   *   </dd>
+   *   <dt>
    *     string <var>k_class</var>
    *   </dt>
    *   <dd>
@@ -237,6 +256,7 @@ class ScheduleListByTokenModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     This is the key of the appointment type, while `k_appointment` is the specific instance.
+   *
    *     For other cases, this will be `0`.
    *   </dd>
    *   <dt>
@@ -280,30 +300,36 @@ class ScheduleListByTokenModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_schedule;
+  public $a_schedule = null;
 
   /**
    * The end date of the range from which the list of schedule sessions should be retrieved.
    *
-   * This will be `null` if the range has no end date.
+   * This will be `null` if the range has no end date. If this value is used,
+   * {@link ScheduleListModel::$dt_date} should not be set.
    *
    * @get get
    * @var string
    */
-  public $dl_end;
+  public $dl_end = null;
 
   /**
    * The start date of the range from which the list of scheduled sessions should be retrieved.
    *
-   * This will be `null` if the range has no start date.
+   * This will be `null` if the range has no start date. If this value is used,
+   * {@link ScheduleListModel::$dt_date} should not be set.
    *
    * @get get
    * @var string
    */
-  public $dl_start;
+  public $dl_start = null;
 
   /**
    * The date of the sessions in Coordinated Universal Time (UTC) and MySQL format.
+   *
+   * If this value is used, then
+   * {@link ScheduleListModel::$dl_end} and
+   * {@link ScheduleListModel::$dl_start} should not be set.
    *
    * @get get
    * @var string
@@ -316,7 +342,7 @@ class ScheduleListByTokenModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public $is_virtual_service;
+  public $is_virtual_service = null;
 
   /**
    * Business key.
@@ -327,7 +353,7 @@ class ScheduleListByTokenModel extends WlModelAbstract
    * @put get
    * @var string
    */
-  public $k_business;
+  public $k_business = null;
 
   /**
    * The security token.
@@ -346,7 +372,7 @@ class ScheduleListByTokenModel extends WlModelAbstract
    * @put get
    * @var string
    */
-  public $uid;
+  public $uid = null;
 }
 
 ?>

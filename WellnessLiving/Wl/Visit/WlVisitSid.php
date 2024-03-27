@@ -1,53 +1,57 @@
 <?php
-// libs/rs/Sid.php
-// Class
 
 namespace WellnessLiving\Wl\Visit;
 
 /**
  * Possible states of the visit: book, attended, cancelled, etc.
  *
- * Last used ID: 7.
+ * Last used ID: 8.
  */
 class WlVisitSid
 {
   /**
    * Client has attended the session.
    */
-  const ATTEND=3;
-  
+  const ATTEND = 3;
+
   /**
    * Active reservation means that user is going to attend the session.
    */
   const BOOK = 1;
-  
+
   /**
    * Client has cancelled the reservation in time and without penalty.
    */
-  const CANCEL=6;
-  
+  const CANCEL = 6;
+
   /**
    * Client has cancelled his reservation too late.
    */
-  const PENALTY=4;
-  
+  const PENALTY = 4;
+
   /**
    * This state means that visit is registered but it is unknown is it {@link VisitSid::ATTEND}
    * or {@link VisitSid::TRUANCY} or {@link VisitSid::PENALTY} but definitely one of this states.
    *
    * The real type of this visit must be set manually by staff.
    */
-  const PENDING=7;
-  
+  const PENDING = 7;
+
+  /**
+   * Visit was removed.
+   * Visits with this status are not shown anywhere in system, but still are saved in database.
+   */
+  const REMOVE = 8;
+
   /**
    * Client has missed the session without cancellation.
    */
-  const TRUANCY=5;
-  
+  const TRUANCY = 5;
+
   /**
    * Reservation in a wait list means that user is going to attend the session if someone will cancel his reservation.
    */
-  const WAIT=2;
+  const WAIT = 2;
 }
 
 ?>

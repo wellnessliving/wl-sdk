@@ -17,7 +17,7 @@ class ReviewReplyModel extends WlModelAbstract
    * @post post
    * @var int|null
    */
-  public $id_review_status;
+  public $id_review_status = null;
 
   /**
    * Key of the business to which the review belongs.

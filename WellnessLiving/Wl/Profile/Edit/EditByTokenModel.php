@@ -3,10 +3,11 @@
 namespace WellnessLiving\Wl\Profile\Edit;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Field\WlFieldTypeSid;
 
 /**
  * An endpoint that displays client profile information.
- * Version of {@link \WellnessLiving\Wl\Profile\Edit\EditModel} for access validation by security token.
+ * Version of {@link EditModel} for access validation by security token.
  */
 class EditByTokenModel extends WlModelAbstract
 {
@@ -22,13 +23,13 @@ class EditByTokenModel extends WlModelAbstract
 
   /**
    * List of errors.
-   * <tt>null</tt> if there was no mistake.
+   * `null` if there was no mistake.
    *
    * @get result
    * @post result
    * @var array|null
    */
-  public $a_error;
+  public $a_error_list = null;
 
   /**
    * Information for user's photo.
@@ -50,6 +51,23 @@ class EditByTokenModel extends WlModelAbstract
    * @var array
    */
   public $a_new = [];
+
+  /**
+   * An array contained with information about phone inheritance.
+   * The array has the following structure:
+   * <dl>
+   *   <dt>bool [<var>is_phone_inherit</var>]</dt>
+   *   <dd>Indicates weather to inherit phone numbers from relative or not. `1` if phone inheritance is needed, '0' otherwise.</dd>
+   *   <dt>string <var>uid_relative</var></dt>
+   *   <dd>User key of relative.</dd>
+   * </dl>
+   *
+   * @get result
+   * @post post
+   * @put post
+   * @var array[]
+   */
+  public $a_phone_inherit = [];
 
   /**
    * The values and structure of all fields. Array keys are field IDs (`k_field`).
@@ -128,42 +146,56 @@ class EditByTokenModel extends WlModelAbstract
 
   /**
    * Exception class name.
-   * <tt>null</tt> if there was no mistake.
+   * `null` if there was no mistake.
    *
+   * @field class
    * @get result
    * @post result
    * @var string|null
    */
-  public $class;
+  public $s_class = null;
 
   /**
    * Code of the error.
-   * <tt>null</tt> if there was no mistake.
+   * `null` if there was no mistake.
    *
+   * @field code
    * @get result
    * @post result
    * @var string|null
    */
-  public $code;
+  public $s_code = null;
 
   /**
    * Status of the request.
-   * <tt>null</tt> if there was no mistake.
+   * `null` if there was no mistake.
    *
+   * @field status
    * @post result
    * @var string|null
    */
-  public $status;
+  public $s_status = null;
+
+  /**
+   * Compound key delimited wit a colon. First part is business key, where selected client exists.
+   * Second part - uid of already existed user we want to add.
+   * Empty if non-existent client is being added.
+   *
+   * @post get
+   * @var string
+   */
+  public $text_business_uid_key = '';
 
   /**
    * Error message.
-   * <tt>null</tt> if there was no mistake.
+   * `null` if there was no mistake.
    *
+   * @field message
    * @get result
    * @post result
    * @var string|null
    */
-  public $message;
+  public $text_message = null;
 
   /**
    * The password to be set for a new user.
@@ -192,6 +224,23 @@ class EditByTokenModel extends WlModelAbstract
    * @var string
    */
   public $uid = '';
+
+  /**
+   * The UID of an existing user in another business to add to the current business.
+   *
+   * @post get
+   * @var string
+   */
+  public $uid_existed = '';
+
+  /**
+   * UID of the user, whose email was inherited by the existing client we want to add.
+   * Empty if non-existent user is being added or user to add is the one, whose email is inherited.
+   *
+   * @post get
+   * @var string
+   */
+  public $uid_relative_key = '';
 }
 
 ?>

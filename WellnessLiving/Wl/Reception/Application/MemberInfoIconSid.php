@@ -4,8 +4,10 @@ namespace WellnessLiving\Wl\Reception\Application;
 
 /**
  * Define types of icons for notice messages.
+ *
+ * Last ID: 10.
  */
-abstract class MemberInfoIconSid
+class MemberInfoIconSid
 {
   /**
    * Icon of an award ribbon. For celebration of an occasion (e.g. a client's first visit).

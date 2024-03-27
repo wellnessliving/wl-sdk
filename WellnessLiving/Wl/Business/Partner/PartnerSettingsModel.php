@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Business\Partner;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlHomeTourSid;
 
 /**
  * An endpoint that works with partner settings of the business.
@@ -15,8 +16,8 @@ class PartnerSettingsModel extends WlModelAbstract
    * The homepage tour of the business, which depends on the type.
    *
    * @get result
-   * @see \WellnessLiving\WlHomeTourSid
    * @var int
+   * @see WlHomeTourSid
    */
   public $id_business_tour = 0;
 

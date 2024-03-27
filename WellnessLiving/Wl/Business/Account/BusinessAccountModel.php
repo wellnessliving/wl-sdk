@@ -20,7 +20,7 @@ class BusinessAccountModel extends WlModelAbstract
   public $a_business_keys = [];
 
   /**
-   * `true` returns WellnesLiving customers.
+   * `true` returns WellnessLiving customers.
    *
    * `false` returns prospects.
    *

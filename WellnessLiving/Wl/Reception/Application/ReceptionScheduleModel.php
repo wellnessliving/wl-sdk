@@ -3,6 +3,8 @@
 namespace WellnessLiving\Wl\Reception\Application;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Service\ServiceSid;
+use WellnessLiving\Wl\WlProgramTypeSid;
 
 /**
  * Shows schedule for check in process.
@@ -31,7 +33,7 @@ class ReceptionScheduleModel extends WlModelAbstract
    *   <dt>int <var>i_duration</var></dt>
    *   <dd>Duration of the session in minutes.</dd>
    *   <dt>int <var>id_service</var></dt>
-   *   <dd>Service ID. One of the {@link \WellnessLiving\Wl\Service\ServiceSid} constants.</dd>
+   *   <dd>Service ID. One of the {@link ServiceSid} constants.</dd>
    *   <dt>bool <var>is_auto</var></dt>
    *   <dd>`true` if the session can be checked in automatically, `false` otherwise.</dd>
    *   <dt>bool <var>is_book</var></dt>
@@ -76,20 +78,20 @@ class ReceptionScheduleModel extends WlModelAbstract
    *     <dt>int <var>i_book_duration</var></dt>
    *     <dd>
    *       Number of minutes used for upcoming visits.
-   *       Has sense only for promotions of program type {@link \WellnessLiving\Wl\WlProgramTypeSid::DURATION}.
+   *       Has sense only for promotions of program type {@link WlProgramTypeSid::DURATION}.
    *     </dd>
    *     <dt>int <var>i_limit</var></dt><dd>Limit on the visit count of the promotion.</dd>
    *     <dt>int <var>i_remain</var></dt><dd>Remaining count of visits.</dd>
    *     <dt>int <var>i_remain_duration</var></dt>
    *     <dd>
    *       Number of minutes left in this promotion.
-   *       Has sense only for promotions of program type {@link \WellnessLiving\Wl\WlProgramTypeSid::DURATION}.
+   *       Has sense only for promotions of program type {@link WlProgramTypeSid::DURATION}.
    *     </dd>
    *     <dt>int <var>i_use</var></dt><dd>Count of held uses in the pass.</dd>
    *     <dt>int <var>i_use_duration</var></dt>
    *     <dd>
    *       Number of minutes used for past visits by this promotion.
-   *       Has sense only for promotions of program type {@link \WellnessLiving\Wl\WlProgramTypeSid::DURATION}.
+   *       Has sense only for promotions of program type {@link WlProgramTypeSid::DURATION}.
    *     </dd>
    *     <dt>int <var>i_visit_past</var></dt>
    *     <dd>
@@ -135,7 +137,7 @@ class ReceptionScheduleModel extends WlModelAbstract
 
   /**
    * All types of services that appear in the schedule.
-   * Keys are constants from {@link \WellnessLiving\Wl\Service\ServiceSid}. Values are the HTML classes associated with that service.
+   * Keys are constants from {@link ServiceSid}. Values are the HTML classes associated with that service.
    *
    * @get result
    * @var array

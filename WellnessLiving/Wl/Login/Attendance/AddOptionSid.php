@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Login\Attendance;
 /**
  * List of options to add client to attendance list.
  */
-abstract class AddOptionSid
+class AddOptionSid
 {
   /**
    * Add client to attendance list and charge his account.

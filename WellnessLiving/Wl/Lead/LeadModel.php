@@ -3,6 +3,8 @@
 namespace WellnessLiving\Wl\Lead;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Field\WlFieldGeneralSid;
+use WellnessLiving\Wl\Field\WlFieldTypeSid;
 
 /**
  * An endpoint that gets information from the Lead Capture widget and saves a new user’s information.
@@ -46,14 +48,14 @@ class LeadModel extends WlModelAbstract
    *     int <var>id_field_general</var>
    *   </dt>
    *   <dd>
-   *     The type of the general field. This is one of the {@link \WellnessLiving\RsFieldGeneralSid}.
+   *     The type of the general field. This is one of the {@link WlFieldGeneralSid}.
    *     This value is only set if the field is one of the general fields.
    *   </dd>
    *   <dt>
    *     int <var>id_field_type</var>
    *   </dt>
    *   <dd>
-   *     The field type. This is one of the {@link \WellnessLiving\RsFieldTypeSid} constants.
+   *     The field type. This is one of the {@link WlFieldTypeSid} constants.
    *   </dd>
    *   <dt>
    *     bool <var>is_require</var>
@@ -97,6 +99,41 @@ class LeadModel extends WlModelAbstract
    * @var array
    */
   public $a_skin;
+
+  /**
+   * `true` means that all fields must be show, `false` otherwise.
+   *
+   * @var bool
+   */
+  public $is_field_all = false;
+
+  /**
+   * `true` if throw event when new lead is created, `false` otherwise.
+   *
+   * @var bool
+   */
+  public $is_new_notify = true;
+
+  /**
+   * Whether to skip captcha check.
+   *
+   * @var bool
+   */
+  public $is_skip_captcha_check = false;
+
+  /**
+   * Whether to skip required check.
+   *
+   * @var bool
+   */
+  public $is_skip_required_check = false;
+
+  /**
+   * Whether to need use Lead capture widget or not.
+   *
+   * @var bool
+   */
+  public $is_widget_use = true;
 
   /**
    * The key of business to which the new user must be captured.

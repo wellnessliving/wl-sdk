@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Staff\Privilege;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlPrivilegeSid;
 
 /**
  * An endpoint that can return list of admin or staff privileges of the current user.
@@ -20,16 +21,29 @@ class PrivilegeListModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public $a_privilege_passport;
+  public $a_privilege_passport = [];
 
   /**
    * List of privileges, if the given user is a staff member in the give business.
    *
    * @get result
-   * @see \WlPrivilegeSid
    * @var int[]
+   * @see WlPrivilegeSid
    */
-  public $a_privilege_staff;
+  public $a_privilege_staff = [];
+
+  /**
+   * Whether this user is a super-administrator because he is a studio staff member.
+   *
+   * `true`, if this user is a super administrator because he is a studio staff member.
+   * Super administrators have all privileges.
+   *
+   * `false` if this is an ordinary user.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_admin = false;
 
   /**
    * Key of business to get privileges for.

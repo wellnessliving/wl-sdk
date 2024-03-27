@@ -2,13 +2,15 @@
 
 namespace WellnessLiving\Wl\Staff\StaffView;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
  * An endpoint that returns information about a specified staff member.
  *
- * This method can accept one staff key {@link \WellnessLiving\Wl\Staff\StaffView\StaffViewModel::$k_staff} or a staff list
- * {@link \WellnessLiving\Wl\Staff\StaffView\StaffViewModel::$a_staff_list} but not both (an exception would be thrown).
+ * This method can accept one staff key {@link StaffViewModel::$k_staff} or a staff list
+ * {@link StaffViewModel::$a_staff_list} but not both (an exception would be thrown).
  */
 class StaffViewModel extends WlModelAbstract
 {
@@ -29,10 +31,12 @@ class StaffViewModel extends WlModelAbstract
    *       <dd>The session duration in seconds.</dd>
    *       <dt>string <var>s_title</var></dt>
    *       <dd>The class name.</dd>
+   *       <dt>string <var>url_book</var></dt>
+   *       <dd>Direct book URL of this class.</dd>
    *     </dl>
    *   </dd>
    *   <dt>int <var>i_day</var></dt>
-   *   <dd>The day of week. One of {@link \WellnessLiving\Core\a\ADateWeekSid} constants.</dd>
+   *   <dd>The day of week. One of {@link ADateWeekSid} constants.</dd>
    * </dl>
    *
    * @get result
@@ -91,24 +95,56 @@ class StaffViewModel extends WlModelAbstract
    * An array containing information about the staff member.
    *
    * <dl>
+   *   <dt>array <var>a_location_work</var></dt>
+   *   <dd>A list of locations keys where staff works.</dd>
    *   <dt>array <var>a_photo</var></dt>
    *   <dd>Staff`s photo.</dd>
+   *   <dt>string <var>html_biography</var></dt>
+   *   <dd>
+   *     A description of the staff member. This description can include HTML tags.
+   *     Same as `s_biography` offset.
+   *   </dd>
+   *   <dt>string <var>html_first</var></dt>
+   *   <dd>The first name of the staff.</dd>
+   *   <dt>string <var>html_last</var></dt>
+   *   <dd>The last name of the staff.</dd>
+   *   <dt>string <var>html_location_title</var></dt>
+   *   <dd>Name of the current staff location.</dd>
    *   <dt>int <var>id_gender</var></dt>
-   *   <dd>The staff member's gender. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.</dd>
+   *   <dd>The staff member's gender. One of the {@link AGenderSid} constants.</dd>
+   *   <dt>bool <var>is_classes_events</var></dt>
+   *   <dd>`true` in case when staff provides classes/events in home location, `false` otherwise.</dd>
+   *   <dt>bool <var>is_publish_business_page</var></dt>
+   *   <dd>Whether staff member should be published on business pages.</dd>
+   *   <dt>bool <var>is_schedule_enabled</var></dt>
+   *   <dd>`true` in case when for schedule exists for staff, `false` otherwise.</dd>
    *   <dt>string <var>k_location</var></dt>
    *   <dd>Staff`s current location.</dd>
+   *   <dt>string <var>k_staff</var></dt>
+   *   <dd>Staff key.</dd>
    *   <dt>string <var>s_biography</var></dt>
-   *   <dd>A description of the staff member. This description can include HTML tags.</dd>
+   *   <dd>
+   *     A description of the staff member. This description can include HTML tags.
+   *     <b>Deprecated</b> use `html_biography` instead of this.
+   *   </dd>
    *   <dt>string <var>s_family</var></dt>
-   *   <dd>The staff member surname.</dd>
+   *   <dd>The staff member surname. If there are rights, the full surname, if not, then depending on the business settings.</dd>
    *   <dt>string <var>s_name</var></dt>
-   *   <dd>The staff member first name.</dd>
+   *   <dd>The staff member first name. If there are rights, the full first name, if not, then depending on the business settings.</dd>
    *   <dt>string <var>s_position</var></dt>
    *   <dd>The staff member position in the organization.</dd>
+   *   <dt>string <var>text_business_role</var></dt>
+   *   <dd>Name of the staff role.</dd>
+   *   <dt>string <var>text_full_name</var></dt>
+   *   <dd>Full name of the staff according to business settings.</dd>
    *   <dt>string <var>uid</var></dt>
    *   <dd>
    *     The user ID. Each staff member in WellnessLiving can also access the system as a client of their business.
    *     This is the ID number used to represent the staff member as a client.
+   *   </dd>
+   *   <dt>string <var>url_schedule</var></dt>
+   *   <dd>
+   *     URL to the schedule with this staff.
    *   </dd>
    * </dl>
    *

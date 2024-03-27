@@ -10,14 +10,14 @@ use WellnessLiving\WlModelAbstract;
 class BulkBusinessHolidayModel extends WlModelAbstract
 {
   /**
-   * An array consisting of the business's closed day data for all locations by holiday keys {@link \WellnessLiving\Wl\Holiday\HolidayModel::$dl_work}.
+   * An array consisting of the business's closed day data for all locations by holiday keys {@link HolidayModel::$dl_work}.
    *
    * List of holidays. Values are arrays of holidays as follows:
    * <dl>
    *   <dt>array <var>a_class</var></dt>
    *   <dd>A list of affected classes. Keys are class keys.</dd>
    *   <dt>array <var>a_class_only</var></dt>
-   *   <dd>A list of affected classes. Keys are class keys.Primary keys in {@link \RsClassSql} table.</dd>
+   *   <dd>A list of affected classes. Keys are class keys.</dd>
    *   <dt>array <var>a_event_only</var></dt>
    *   <dd>A list of affected events. Keys are event keys.</dd>
    *   <dt>array <var>a_service</var></dt>

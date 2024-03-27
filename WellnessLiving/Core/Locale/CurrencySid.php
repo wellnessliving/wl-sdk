@@ -59,6 +59,13 @@ abstract class CurrencySid
   const PHP = 12;
 
   /**
+   * Unknown code.
+   *
+   * Used when currency is not specified or is not known.
+   */
+  const UNKNOWN = 2;
+
+  /**
    * US dollars.
    */
   const USD = 1;

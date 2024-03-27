@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Purchase\Share;
 
+use WellnessLiving\Core\a\ASocialSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -10,7 +11,7 @@ use WellnessLiving\WlModelAbstract;
 class PurchaseShareModel extends WlModelAbstract
 {
   /**
-   * The social network. One of the {@link \WellnessLiving\Core\a\ASocialSid} constants.
+   * The social network. One of the {@link ASocialSid} constants.
    *
    * @post post
    * @var int

@@ -129,6 +129,22 @@ class UserInfoModel extends WlModelAbstract
   public $s_phone;
 
   /**
+   * The user's home phone number.
+   *
+   * @get result
+   * @var string
+   */
+  public $s_phone_home = '';
+
+  /**
+   * The user's work phone number.
+   *
+   * @get result
+   * @var string
+   */
+  public $s_phone_work = '';
+
+  /**
    * The key of the user.
    *
    * @get get

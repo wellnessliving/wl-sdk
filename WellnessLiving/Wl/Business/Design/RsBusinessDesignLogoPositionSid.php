@@ -23,3 +23,5 @@ class RsBusinessDesignLogoPositionSid
   const RIGHT = 3;
 
 }
+
+?>

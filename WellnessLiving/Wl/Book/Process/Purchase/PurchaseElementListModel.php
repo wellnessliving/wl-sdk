@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Book\Process\Purchase;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * An endpoint that displays a list of purchase items.
@@ -15,7 +16,7 @@ class PurchaseElementListModel extends WlModelAbstract
    *   <dt>int [<var>i_session</var>]</dt>
    *   <dd>The number of sessions booked simultaneously.</dd>
    *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>The ID of the purchase item type. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.</dd>
+   *   <dd>The ID of the purchase item type. One of the {@link WlPurchaseItemSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The key of the purchase item in the database. The name of the table in the database depends on <var>id_purchase_item</var></dd>
    *   <dt>string [<var>k_login_prize</var>]</dt>
@@ -96,7 +97,7 @@ class PurchaseElementListModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $k_location;
+  public $k_location = null;
 
   /**
    * The discount code.

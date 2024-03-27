@@ -4,8 +4,10 @@ namespace WellnessLiving\Wl\Business;
 
 /**
  * A list of client booking flow types.
+ *
+ * Last ID: 6.
  */
-class BusinessCategorySid
+abstract class BusinessCategorySid
 {
   /**
    * Dental businesses.
@@ -37,3 +39,5 @@ class BusinessCategorySid
    */
   const SPORT = 1;
 }
+
+?>

@@ -23,7 +23,7 @@ class EditEmailModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public array $a_business_member_key = [];
+  public $a_business_member_key = [];
 
   /**
    * Information about the user who occupies the specified email.
@@ -72,12 +72,20 @@ class EditEmailModel extends WlModelAbstract
   public $is_added = false;
 
   /**
+   * If `true`, the API is being used from backend. Otherwise, this will be `false`.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_backend = true;
+
+  /**
    * If `true`, user is already a member of current business, `false` - otherwise.
    *
    * @get result
    * @var bool
    */
-  public bool $is_current_member = false;
+  public $is_current_member = false;
 
   /**
    * If `true`, then the number of requests has exceeded the rate limit. Otherwise, this will be `false`.
@@ -88,12 +96,28 @@ class EditEmailModel extends WlModelAbstract
   public $is_limit;
 
   /**
-   * If `true`, user, who has the specified email, is staff, `false` - otherwise.
+   * If `true`, user, who has the specified email, has password set, `false` - otherwise.
    *
    * @get result
    * @var bool
    */
-  public bool $is_staff = false;
+  public $is_password_set = false;
+
+  /**
+   * If `true`, user, who has the specified email, is staff in current business, `false` - otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_staff = false;
+
+  /**
+   * If `true`, user, who has the specified email, is staff in any business, `false` - otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_staff_any_business = false;
 
   /**
    * If `true`, then the specified email is in use. Otherwise, this will be `false`.

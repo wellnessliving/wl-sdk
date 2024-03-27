@@ -22,7 +22,7 @@ class ReviewModel extends WlModelAbstract
    * @post post
    * @var int|null
    */
-  public $i_rate;
+  public $i_rate = null;
 
   /**
    * Reward score for leaving a review.
@@ -96,7 +96,7 @@ class ReviewModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $k_location;
+  public $k_location = null;
 
   /**
    * The key of the review writing activity. This will be empty if the review was saved but not published.
@@ -121,7 +121,7 @@ class ReviewModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $k_visit;
+  public $k_visit = null;
 
   /**
    * The text of the review.
@@ -131,7 +131,7 @@ class ReviewModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $s_text;
+  public $s_text = null;
 
   /**
    * The UID of client who leaves review.

@@ -5,22 +5,52 @@ namespace WellnessLiving\Wl\Mode;
 /**
  * The source of visit.
  *
- * Last used ID: 16.
+ * Last used ID: 25.
  */
 class ModeSid
 {
   /**
-   * Visit has been created by ClassPass.
+   * Registered through <tt>Azure</tt>.
+   */
+  const AZURE = 21;
+
+  /**
+   * Visit has been created by <tt>CENTRED</tt>.
+   */
+  const CENTRED = 23;
+
+  /**
+   * Visit has been created by <tt>ClassPass</tt>.
    */
   const CLASSPASS_BOOKING = 8;
 
   /**
-   * Visit has been crated by Google Booking Service.
+   * Debt paid via collections.
+   */
+  const COLLECTIONS = 22;
+
+  /**
+   * Action made via email.
+   */
+  const EMAIL = 18;
+
+  /**
+   * Indicating that the source is Facebook.
+   */
+  const FACEBOOK = 20;
+
+  /**
+   * Indicating that the source is Google.
+   */
+  const GOOGLE = 19;
+
+  /**
+   * Visit has been created by Google Booking Service.
    */
   const GOOGLE_BOOKING = 7;
 
   /**
-   * Visit has been crated by <tt>GymPass</tt>.
+   * Visit has been created by <tt>GymPass</tt>.
    */
   const GYMPASS_BOOKING = 14;
 
@@ -37,9 +67,19 @@ class ModeSid
   const MICROSITE = 12;
 
   /**
+   * Indicating that the source is Microsoft.
+   */
+  const MICROSOFT = 24;
+
+  /**
    * Client booked session on My Presence Site.
    */
   const MY_PRESENCE_SITE = 13;
+
+  /**
+   * Action made via SMS.
+   */
+  const SMS = 17;
 
   /**
    * Staff booked session from spa backend.
@@ -85,6 +125,11 @@ class ModeSid
    * Action made via widget (purchase, book etc).
    */
   const WIDGET = 11;
+
+  /**
+   * Action from Zapier.
+   */
+  const ZAPIER = 25;
 }
 
 ?>

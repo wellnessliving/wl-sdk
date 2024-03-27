@@ -3,6 +3,8 @@
 namespace WellnessLiving\Wl\Login\Attendance;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Schedule\Page\WlVisitNoteSid;
+use WellnessLiving\Wl\WlServiceSid;
 
 /**
  * An endpoint that displays information for certain sessions.
@@ -30,7 +32,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public $a_logo;
+  public $a_logo = null;
 
   /**
    * Assets which are bound to this session.
@@ -38,7 +40,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string[]
    */
-  public $a_resource;
+  public $a_resource = null;
 
   /**
    * Asset layouts of session:
@@ -49,8 +51,8 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    *   <dd>
    *     List of clients who occupy assets of class.
    *     It is a double nesting array.
-   *     Keys - primary keys of assets in {@link \RsResourceSql} table; sub keys - asset index;
-   *     values - sub array with keys:
+   *     Keys - primary keys of assets. Sub keys - asset index.
+   *     Values - sub array with keys:
    *     <dl><dt>string <var>text_client</var></dt><dd>User's name.</dd>
    *     <dt>string <var>uid</var></dt><dd>User's primary key.</dd></dl>
    *   </dd>
@@ -63,7 +65,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    *     string <var>k_resource_layout</var>
    *   </dt>
    *   <dd>
-   *     Key of layout in {@link \Wl\Resource\Layout\Sql} table.
+   *
    *   </dd>
    *   <dt>
    *     string <var>text_resource_type</var>
@@ -76,7 +78,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_resource_layout;
+  public $a_resource_layout = null;
 
   /**
    * List of staff members who provide service:
@@ -111,7 +113,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    *     string <var>k_staff</var>
    *   </dt>
    *   <dd>
-   *     Staff key, primary key in {@link \RsStaffSql}.
+   *
    *   </dd>
    *   <dt>
    *     string <var>html_firstname</var>
@@ -130,7 +132,15 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_staff;
+  public $a_staff = null;
+
+  /**
+   * Confirmation date+time of appointment in MySQL format. If client never confirmed, will be zero date + time.
+   *
+   * @get result
+   * @var string
+   */
+  public $dt_confirm = '';
 
   /**
    * Start date of ste session in MySQL format in GMT.
@@ -138,7 +148,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $dt_date_global;
+  public $dt_date_global = null;
 
   /**
    * Start date of the class in MySQL format in local time.
@@ -163,23 +173,23 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public $has_note;
+  public $has_note = null;
 
   /**
-   * Type of note. One of {@link \WellnessLiving\Wl\Visit\Note\Sid\NoteSid} constants. <tt>false</tt> if notes not allowed.
+   * Type of note. One of {@link WlVisitNoteSid} constants. <tt>false</tt> if notes not allowed.
    *
    * @get result
    * @var int|false
    */
-  public $id_note;
+  public $id_note = null;
 
   /**
-   * Service type, one of {@link \WellnessLiving\WlServiceSid}.
+   * Service type, one of {@link WlServiceSid}.
    *
    * @get result
    * @var int
    */
-  public $id_service;
+  public $id_service = null;
 
   /**
    * Whether this service be carried out in Zoom.
@@ -208,12 +218,12 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Class identifier, primary key in {@link \RsClassSql}. Not empty if service is class/event reservation.
+   * Not empty if service is class or event reservation.
    *
    * @get result
    * @var string
    */
-  public $k_class;
+  public $k_class = null;
 
   /**
    * ID of class period to get information for.
@@ -229,7 +239,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $k_location;
+  public $k_location = null;
 
   /**
    * The resource key.
@@ -239,7 +249,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $k_resource;
+  public $k_resource = null;
 
   /**
    * The appointment key.
@@ -249,7 +259,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $k_service;
+  public $k_service = null;
 
   /**
    * Location name.
@@ -257,7 +267,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $text_location;
+  public $text_location = null;
 
   /**
    * Time when service starts in format <tt>8:00AM</tt>.
@@ -265,7 +275,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $text_time_end;
+  public $text_time_end = null;
 
   /**
    * Start time of the session in format '9:30AM'.
@@ -273,7 +283,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $text_time_start;
+  public $text_time_start = null;
 
   /**
    * Title of the appointment.
@@ -281,7 +291,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $text_title;
+  public $text_title = null;
 
   /**
    * The security token.

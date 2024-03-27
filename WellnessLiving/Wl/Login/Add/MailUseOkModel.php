@@ -38,7 +38,7 @@ class MailUseOkModel extends WlModelAbstract
    * @post result
    * @var array
    */
-  public $a_error;
+  public $a_error_list;
 
   /**
    * This value is `true` if this user is a lead. `false` if otherwise.

@@ -94,6 +94,15 @@ class ReferrerModel extends WlModelAbstract
   public $s_search = '';
 
   /**
+   * Composes name of the referrer for public usage.
+   * `null` if the referrer is not found.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $text_name_public = null;
+
+  /**
    * The referrer's user key.
    *
    * @get result

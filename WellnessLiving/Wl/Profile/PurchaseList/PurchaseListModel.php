@@ -3,6 +3,8 @@
 namespace WellnessLiving\Wl\Profile\PurchaseList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * An endpoint that gets a list of purchases for a user.
@@ -34,13 +36,13 @@ class PurchaseListModel extends WlModelAbstract
    *     int <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     The ID of the purchase type. One of the constants {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid}.
+   *     The ID of the purchase type. One of the constants {@link WlPurchaseItemSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_sale</var>
    *   </dt>
    *   <dd>
-   *     The ID of the sale category in the store. One of the constants {@link \WellnessLiving\WlSaleSid}.
+   *     The ID of the sale category in the store. One of the constants {@link WlSaleSid}.
    *   </dd>
    *   <dt>
    *     bool <var>is_active</var>
@@ -109,18 +111,19 @@ class PurchaseListModel extends WlModelAbstract
    *     This is used only if <var>k_code</var> is empty.
    *   </dd>
    *   <dt>
+   *     string <var>k_service</var>
+   *   </dt>
+   *   <dd>
+   *     Service key.
+   *   </dd>
+   *   <dt>
    *     string [<var>k_session_pass</var>]
    *   </dt>
    *   <dd>
    *     In certain cases a session can be canceled and makeup sessions can be granted to a client in lieu of
    *     other compensation. This is the key of one of the makeup sessions used to attend an event. This is also
    *     present for a repeat purchase of an event.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_service</var>
-   *   </dt>
-   *   <dd>
-   *     Service key.
+   *
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>

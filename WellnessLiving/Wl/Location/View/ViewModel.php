@@ -3,6 +3,9 @@
 namespace WellnessLiving\Wl\Location\View;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlAgeSid;
+use WellnessLiving\Wl\WlFacilitySid;
+use WellnessLiving\Wl\WlHomeTourSid;
 
 /**
  * An endpoint that returns information on a specified location.
@@ -13,8 +16,8 @@ class ViewModel extends WlModelAbstract
    * A list of ages that are permitted for visiting this location.
    *
    * @get result
-   * @see \WellnessLiving\WlAgeSid
    * @var int[]
+   * @see WlAgeSid
    */
   public $a_age = [];
 
@@ -22,8 +25,8 @@ class ViewModel extends WlModelAbstract
    * A list of facilities that are available in this location.
    *
    * @get result
-   * @see \WellnessLiving\WlFacilitySid
    * @var int[]
+   * @see WlFacilitySid
    */
   public $a_amenities = [];
 
@@ -175,8 +178,8 @@ class ViewModel extends WlModelAbstract
    * where set value which is absent.
    *
    * @get result
-   * @see \WellnessLiving\WlHomeTourSid
    * @var int|null
+   * @see WlHomeTourSid
    */
   public $id_industry = 0;
 
@@ -221,8 +224,6 @@ class ViewModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
-   * Timezone primary key in {@link \AGeoTimezoneSql} table.
-   *
    * @get result
    * @var string
    */
@@ -314,8 +315,8 @@ class ViewModel extends WlModelAbstract
    * The name of the industry of the business.
    *
    * @get result
-   * @see \WellnessLiving\WlHomeTourSid
    * @var string
+   * @see WlHomeTourSid
    */
   public $text_industry = '';
 

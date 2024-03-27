@@ -26,5 +26,6 @@ class RsPageFrontendHeaderLayoutSid
    * Logo is above the main menu.
    */
   const TOP = 3;
-
 }
+
+?>

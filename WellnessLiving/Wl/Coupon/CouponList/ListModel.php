@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Coupon\CouponList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Coupon\WlTypeSid;
 
 /**
  * An endpoint that retrieves a list of gift cards.
@@ -16,7 +17,7 @@ class ListModel extends WlModelAbstract
    *     int <var>id_type</var>
    *   </dt>
    *   <dd>
-   *     The type of coupon. One of {@link \WellnessLiving\Wl\Coupon\TypeSid} constants.
+   *     The type of coupon. One of {@link WlTypeSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_coupon</var>

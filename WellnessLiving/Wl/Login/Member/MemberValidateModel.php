@@ -78,7 +78,6 @@ class MemberValidateModel extends WlModelAbstract
    *
    * @get get
    * @var string
-   * @see \RsBusinessSql
    */
   public $k_business = '0';
 
@@ -88,7 +87,6 @@ class MemberValidateModel extends WlModelAbstract
    *
    * @get result
    * @var string|null
-   * @see \RsLocationSql
    */
   public $k_location = null;
 
@@ -97,7 +95,6 @@ class MemberValidateModel extends WlModelAbstract
    *
    * @get get
    * @var string
-   * @see \PassportLoginSql
    */
   public $uid = '0';
 }

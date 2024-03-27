@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Login\Promotion\Convert;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlProgramSid;
 
 /**
  * An endpoint that receives convertable Purchase Option data and promotion conversions.
@@ -17,8 +18,10 @@ class ConvertModel extends WlModelAbstract
    * Promotion data containing the following structure:<dl>
    *   <dt>string <var>k_promotion</var></dt>
    *   <dd>The promotion key.</dd>
-   *   <dt>string <var>html_title</var></dt>
+   *   <dt>string <var>text_title</var></dt>
    *   <dd>The title of the promotion.</dd>
+   *   <dt>int <var>id_program</var></dt>
+   *   <dd>One of {@link WlProgramSid} constants.</dd>
    *   <dt>bool <var>is_select</var></dt>
    *   <dd>If <tt>true</tt>, the promotion is related to the service. Otherwise, this will be <tt>false</tt>.</dd>
    * </dl>.
@@ -54,6 +57,15 @@ class ConvertModel extends WlModelAbstract
    * @var bool
    */
   public $is_edit = false;
+
+  /**
+   * `true` if PO is going to be renewed and not converted.
+   * `false` if PO is going to expire or to convert.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_renew = false;
 
   /**
    * The business key.
@@ -108,6 +120,22 @@ class ConvertModel extends WlModelAbstract
   public $s_title = '';
 
   /**
+   * Expiration date in string user-friendly format.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_date_expire = '';
+
+  /**
+   * Next payment date in string user-friendly format.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_date_payment = '';
+
+  /**
    * The note for the promotion conversion.
    *
    * @get result
@@ -115,7 +143,6 @@ class ConvertModel extends WlModelAbstract
    * @var string|null
    */
   public $text_note = '';
-
 }
 
 ?>

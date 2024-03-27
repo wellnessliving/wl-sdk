@@ -17,11 +17,6 @@ abstract class WlTaxSid
    * Tax is accounted based on percents.
    */
   const PERCENT = 2;
-
-  /**
-   * A tax for testing purposes.
-   */
-  const TEST = 3;
 }
 
 ?>

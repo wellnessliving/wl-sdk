@@ -36,7 +36,6 @@ class CreateModel extends WlModelAbstract
    */
   public $text_lastname = '';
 
-
   /**
    * Email of the user.
    *
@@ -53,3 +52,5 @@ class CreateModel extends WlModelAbstract
    */
   public $uid = '';
 }
+
+?>

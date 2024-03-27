@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Pay\Transaction\Report;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Report\Generator\ReportGeneratorStatusSid;
 
 /**
  * An endpoint that can retrieve information from the All Transactions Report.
@@ -61,7 +62,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
    * @get result
    * @var string|null
    */
-  public $dtu_complete;
+  public $dtu_complete = null;
 
   /**
    * The date and time if this report has been put in the generation queue. Otherwise, this will be `null`.
@@ -69,7 +70,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
    * @get result
    * @var string|null
    */
-  public $dtu_queue;
+  public $dtu_queue = null;
 
   /**
    * The date and time if generation of this report has started. Otherwise, this will be `null`.
@@ -77,7 +78,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
    * @get result
    * @var string|null
    */
-  public $dtu_start;
+  public $dtu_start = null;
 
   /**
    * The page of the report, starting from 0.
@@ -91,7 +92,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
   /**
    * The report status.
    *
-   * One of {@link \WellnessLiving\Wl\Report\Generator\ReportGeneratorStatusSid} constants.
+   * One of {@link ReportGeneratorStatusSid} constants.
    *
    * @get result
    * @var int

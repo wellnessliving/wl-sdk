@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Pay\Bank\Card\Add;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Pay\Owner\OwnerModel;
 
 /**
  * An endpoint that adds a payment card to a user’s account.
@@ -135,7 +136,7 @@ class AddModel extends WlModelAbstract
 
   /**
    * The payment owner ID. This is different from the user ID. It can be found with
-   * the {@link \WellnessLiving\Wl\Pay\Owner\OwnerModel}.
+   * the {@link OwnerModel}.
    *
    * @get get
    * @post get

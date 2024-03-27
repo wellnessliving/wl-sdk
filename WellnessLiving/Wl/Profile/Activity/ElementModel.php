@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Profile\Activity;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Login\WlLoginActivityTypeSid;
 
 /**
  * An endpoint that returns detailed information about a single client activity.
@@ -24,6 +25,14 @@ class ElementModel extends WlModelAbstract
    * @var string[]
    */
   public $a_reward_score;
+
+  /**
+   * Verifies that current user can view the specified profile.
+   *
+   * @get result
+   * @var bool
+   */
+  public $can_profile;
 
   /**
    * The date of the activity in GMT.
@@ -76,7 +85,7 @@ class ElementModel extends WlModelAbstract
   /**
    * The ID of the icon that should be shown for this activity. One of {@link \WellnessLiving\WlDesignIconSid} constants.
    *
-   * This will be `null`  is no special icon for this activity.
+   * This will be `null` is no special icon for this activity.
    *
    * @get result
    * @var int|null
@@ -84,7 +93,7 @@ class ElementModel extends WlModelAbstract
   public $id_icon;
 
   /**
-   * The ID of the activity item returned by this endpoint. One of {@link \WellnessLiving\RsLoginActivityTypeSid} constants.
+   * The ID of the activity item returned by this endpoint. One of {@link WlLoginActivityTypeSid} constants.
    *
    * @get result
    * @var int

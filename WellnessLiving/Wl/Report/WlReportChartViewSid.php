@@ -18,6 +18,11 @@ abstract class WlReportChartViewSid
   const COLUMN = 1;
 
   /**
+   * Donut chart.
+   */
+  const DONUT = 5;
+
+  /**
    * Line chart.
    */
   const LINE = 3;

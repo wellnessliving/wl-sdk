@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Resource\Image;
 /**
  * Predefined icons for assets.
  *
- * Last used ID: 29
+ * Last used ID: 29.
  */
 class ImageIconSid
 {

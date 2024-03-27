@@ -17,7 +17,14 @@ class AccessModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public bool $can_access = false;
+  public $can_access = false;
+
+  /**
+   * Key of the business which request is processed.
+   *
+   * @var string
+   */
+  public $k_business;
 
   /**
    * The location key.
@@ -25,7 +32,7 @@ class AccessModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $k_location;
+  public $k_location = '';
 
   /**
    * The member ID.

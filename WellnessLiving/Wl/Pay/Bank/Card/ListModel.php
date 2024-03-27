@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Pay\Bank\Card;
 
+use WellnessLiving\Core\a\ACardSystemSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -19,7 +20,7 @@ class ListModel extends WlModelAbstract
    *   <dt>int <var>i_year</var></dt>
    *   <dd>The last two digits of the year when the payment card expires.</dd>
    *   <dt>int <var>id_card_system</var></dt>
-   *   <dd>The card system ID. This is one of the {@link \WellnessLiving\Core\a\ACardSystemSid} constants.</dd>
+   *   <dd>The card system ID. This is one of the {@link ACardSystemSid} constants.</dd>
    *   <dt>bool <var>is_default</var></dt>
    *   <dd>
    *     If `true`, then this card is the user default card.
@@ -50,7 +51,7 @@ class ListModel extends WlModelAbstract
 
   /**
    * List of bank cards.
-   * Duplicate of the {@link \WellnessLiving\Wl\Pay\Bank\Card\ListModel::$a_bank_card}.
+   * Duplicate of the {@link ListModel::$a_bank_card}.
    *
    * @get result
    * @var array
@@ -74,7 +75,7 @@ class ListModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $k_business;
+  public $k_business = null;
 
   /**
    * Location to show information for.
@@ -84,7 +85,7 @@ class ListModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $k_location;
+  public $k_location = null;
 
   /**
    * ID of a user to show information for.
@@ -92,7 +93,7 @@ class ListModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $uid;
+  public $uid = null;
 }
 
 ?>

@@ -68,7 +68,7 @@ class ClassViewModel extends WlModelAbstract
    *     int <var>id_deny_reason</var>
    *   </dt>
    *   <dd>
-   *     ID of deny reason. One of {@link \Wl\Schedule\ClassView\DenyReasonSid} constants.
+   *     ID of deny reason.
    *   </dd>
    *   <dt>bool <var>is_book</var></dt>
    *   <dd>This will be `true` if the current class was booked by the current client.</dd>
@@ -82,6 +82,8 @@ class ClassViewModel extends WlModelAbstract
    *   <dd>This will be `true` if the wait list is enabled for this class. Otherwise, this will be `false`.</dd>
    *   <dt>string <var>m_price</var></dt>
    *   <dd>The session price.</dd>
+   *   <dt>bool <var>hide_price</var></dt>
+   *   <dd>Hide individual price of the class session, if client has applicable pricing option.</dd>
    *   <dt>string <var>s_duration</var></dt>
    *   <dd>The class duration in a human readable format.</dd>
    *   <dt>string <var>s_title</var></dt>
@@ -124,7 +126,7 @@ class ClassViewModel extends WlModelAbstract
    * @post get
    * @var array[]|null
    */
-  public $a_session_request;
+  public $a_session_request = null;
 
   /**
    * A list of sessions with information, received in a multiple session mode.
@@ -186,6 +188,17 @@ class ClassViewModel extends WlModelAbstract
    * @var string
    */
   public $dt_date = '';
+
+  /**
+   * Key of the business in which the action is performed.
+   *
+   * `null` if key of the business was not passed.
+   *
+   * @get get
+   * @post get
+   * @var string|null
+   */
+  public $k_business = null;
 
   /**
    * The class period key.

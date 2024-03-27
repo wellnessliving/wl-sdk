@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Profile\Contract;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * An endpoint that gets information about a session pass or membership with a contract.
@@ -45,8 +46,8 @@ class ContractModel extends WlModelAbstract
   public $i_minor_age;
 
   /**
-   * The type of purchase item. This is one of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
-   * Optional if {@link \WellnessLiving\Wl\Profile\Contract\ContractModel::$k_purchase_item} is not empty.
+   * The type of purchase item. This is one of the {@link WlPurchaseItemSid} constants.
+   * Optional if {@link ContractModel::$k_purchase_item} is not empty.
    *
    * @get get
    * @var int
@@ -61,7 +62,7 @@ class ContractModel extends WlModelAbstract
    * @post post
    * @var bool|null
    */
-  public $is_agree;
+  public $is_agree = null;
 
   /**
    * The key of the business to show information for.

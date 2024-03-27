@@ -15,7 +15,7 @@ class WlTypeSid
 
   /**
    * Product Gift Card.
-   * Many cards of this type can be create in one business.
+   * Many cards of this type can be created in one business.
    * Each card contains list of products.
    */
   const COMPONENT = 1;

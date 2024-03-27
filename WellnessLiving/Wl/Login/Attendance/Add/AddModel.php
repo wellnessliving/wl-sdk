@@ -19,6 +19,7 @@ class AddModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The login promotion key, available to pay for the session.
+   *
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
@@ -42,6 +43,7 @@ class AddModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The session pass key, available to pay for the session.
+   *
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
@@ -122,6 +124,15 @@ class AddModel extends WlModelAbstract
    * @var bool
    */
   public $is_paid;
+
+  /**
+   * Key of the business in which the request must be processed.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
+  public $k_business = '0';
 
   /**
    * The class period key.

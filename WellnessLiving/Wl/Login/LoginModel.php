@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Login;
 
+use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -116,12 +117,21 @@ class LoginModel extends WlModelAbstract
   public $i_photo_width = 0;
 
   /**
-   * The gender ID. It will be one of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
+   * The gender ID. It will be one of the {@link AGenderSid} constants.
    *
    * @get result
    * @var int
    */
   public $id_gender;
+
+  /**
+   * Whether photo is uploaded.
+   * `true` if photo is not uploaded, `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_photo_empty = false;
 
   /**
    * The key of the business. Users can be in multiple businesses.
@@ -220,7 +230,7 @@ class LoginModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $text_uid;
+  public $text_uid = null;
 
   /**
    * The key of the user.

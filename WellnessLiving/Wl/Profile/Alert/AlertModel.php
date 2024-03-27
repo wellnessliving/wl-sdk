@@ -29,7 +29,7 @@ class AlertModel extends WlModelAbstract
    *     int <var>id_profile_note</var>
    *   </dt>
    *   <dd>
-   *     ID of alert type. One of {@link \WellnessLiving\RsProfileNoteSid} constants.
+   *     ID of alert type.
    *   </dd>
    *   <dt>
    *     string [<var>k_pay_account</var>]
@@ -63,7 +63,7 @@ class AlertModel extends WlModelAbstract
    *     string[] <var>a_location_flag</var>
    *   </dt>
    *   <dd>
-   *     The list of locations keys from {@link \RsLocationSql} table, where this note is flagged.
+   *
    *   </dd>
    *   <dt>
    *     bool <var>dt_date</var>

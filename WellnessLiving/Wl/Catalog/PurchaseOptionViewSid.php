@@ -2,8 +2,12 @@
 
 namespace WellnessLiving\Wl\Catalog;
 
+use WellnessLiving\Wl\WlProgramSid;
+
 /**
  * A list of Purchase Option view types.
+ *
+ * Last ID: 9.
  */
 class PurchaseOptionViewSid
 {
@@ -23,17 +27,22 @@ class PurchaseOptionViewSid
   const COUPON = 3;
 
   /**
-   * Enrollments.
+   * Enrollments. Classes where flag event is <tt>true</tt>.
    */
   const ENROLLMENT = 4;
 
   /**
-   * Memberships.
+   * Promotions with programs:
+   * * {@link WlProgramSid::ACCOUNT_MEMBERSHIP};
+   * * {@link WlProgramSid::CLASS_MEMBERSHIP};
+   * * {@link WlProgramSid::RESOURCE_MEMBERSHIP};
+   * * {@link WlProgramSid::SERVICE_MEMBERSHIP};
+   * * {@link WlProgramSid::VISIT_MEMBERSHIP}.
    */
   const MEMBERSHIP = 8;
 
   /**
-   * Packages.
+   * Promotions with program {@link WlProgramSid::PACKAGE}.
    */
   const PACKAGE = 5;
 

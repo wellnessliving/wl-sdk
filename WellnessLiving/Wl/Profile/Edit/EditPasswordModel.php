@@ -10,8 +10,16 @@ use WellnessLiving\WlModelAbstract;
 class EditPasswordModel extends WlModelAbstract
 {
   /**
+   * Checks if the current password is required or not to update the password.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_old_password_required = true;
+
+  /**
    * The key ID of business where actions take place.
-   * Primary key in {@link \RsBusinessSql} table.
+   *
    * Business is necessary for mail sending only.
    *
    * @post post

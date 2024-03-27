@@ -3,6 +3,8 @@
 namespace WellnessLiving\Wl\Schedule\ScheduleList\StaffApp;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Visit\WlVisitSid;
+use WellnessLiving\Wl\WlServiceSid;
 
 /**
  * An endpoint that gets information about sessions (both classes and appointments) at a business on a given day.
@@ -30,7 +32,7 @@ class ScheduleListModel extends WlModelAbstract
    *         int <var>id_visit</var>
    *       </dt>
    *       <dd>
-   *         Visit id. One of {@link \WellnessLiving\Wl\Visit\VisitSid} constants.
+   *         Visit id. One of {@link WlVisitSid} constants.
    *       </dd>
    *       <dt>
    *         bool <var>is_confirmed</var>
@@ -69,12 +71,14 @@ class ScheduleListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     A list of assets involved in the session.
+   *
    *   </dd>
    *   <dt>
    *     string[] <var>a_staff</var>
    *   </dt>
    *   <dd>
    *     A list of staff members who will conduct the session.
+   *
    *     Deprecated, use <var>a_staff_list</var> instead.
    *   </dd>
    *   <dt>
@@ -178,10 +182,18 @@ class ScheduleListModel extends WlModelAbstract
    *     Count clients on waitlist.
    *   </dd>
    *   <dt>
+   *      int <var>id_option</var>
+   *    </dt>
+   *    <dd>
+   *      Appointment title display style.
+   *      Set only for appointments, for others it will be equal to 0.
+   *
+   *    </dd>
+   *   <dt>
    *     int <var>id_service</var>
    *   </dt>
    *   <dd>
-   *     The ID of the service type. One of {@link \WellnessLiving\WlServiceSid} constants.
+   *     The ID of the service type. One of {@link WlServiceSid} constants.
    *   </dd>
    *   <dt>
    *     bool <var>is_arrive</var>
@@ -243,6 +255,7 @@ class ScheduleListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     This is the key of the appointment type, while `k_appointment` is the specific instance.
+   *
    *     For other cases, this will be `0`.
    *   </dd>
    *   <dt>
@@ -292,7 +305,7 @@ class ScheduleListModel extends WlModelAbstract
    * The end date of the range from which the list of schedule sessions should be retrieved.
    *
    * This will be `null` if the range has no end date. If this value is used,
-   * {@link \WellnessLiving\Wl\Schedule\ScheduleList\StaffApp\ScheduleListModel::$dt_date} should not be set.
+   * {@link ScheduleListModel::$dt_date} should not be set.
    *
    * @get get
    * @var string
@@ -303,7 +316,7 @@ class ScheduleListModel extends WlModelAbstract
    * The start date of the range from which the list of scheduled sessions should be retrieved.
    *
    * This will be `null` if the range has no start date. If this value is used,
-   * {@link \WellnessLiving\Wl\Schedule\ScheduleList\StaffApp\ScheduleListModel::$dt_date} should not be set.
+   * {@link ScheduleListModel::$dt_date} should not be set.
    *
    * @get get
    * @var string
@@ -314,8 +327,8 @@ class ScheduleListModel extends WlModelAbstract
    * The date of the sessions in Coordinated Universal Time (UTC) and MySQL format.
    *
    * If this value is used, then
-   * {@link \WellnessLiving\Wl\Schedule\ScheduleList\StaffApp\ScheduleListModel::$dl_end} and
-   * {@link \WellnessLiving\Wl\Schedule\ScheduleList\StaffApp\ScheduleListModel::$dl_start} should not be set.
+   * {@link ScheduleListModel::$dl_end} and
+   * {@link ScheduleListModel::$dl_start} should not be set.
    *
    * @get get
    * @var string
@@ -339,7 +352,7 @@ class ScheduleListModel extends WlModelAbstract
    * @put get
    * @var string
    */
-  public $k_business;
+  public $k_business = null;
 
   /**
    * User key.
@@ -350,7 +363,7 @@ class ScheduleListModel extends WlModelAbstract
    * @put get
    * @var string
    */
-  public $uid;
+  public $uid = null;
 }
 
 ?>

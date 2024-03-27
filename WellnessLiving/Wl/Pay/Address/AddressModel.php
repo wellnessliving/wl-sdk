@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Pay\Address;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlPayOwnerSid;
 
 /**
  * An endpoint that gets information about a user's payment addresses.
@@ -19,7 +20,7 @@ class AddressModel extends WlModelAbstract
 
   /**
    * The ID of the payment owner type.
-   * One of {@link \WellnessLiving\WlPayOwnerSid} constants.
+   * One of {@link WlPayOwnerSid} constants.
    *
    * @get get
    * @var int
@@ -33,11 +34,11 @@ class AddressModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $k_business;
+  public $k_business = null;
 
   /**
    * The primary key of a payment owner.
-   * This could be the business of the user depending on a {@link \WellnessLiving\Wl\Pay\Address\AddressModel::$id_pay_owner} value.
+   * This could be the business of the user depending on a {@link AddressModel::$id_pay_owner} value.
    *
    * @get get
    * @var string

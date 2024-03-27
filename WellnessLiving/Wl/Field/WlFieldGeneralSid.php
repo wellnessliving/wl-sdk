@@ -11,7 +11,7 @@ namespace WellnessLiving\Wl\Field;
  * Manual fields have only constant in this sid. They have no associated class and processed separately in view, e.g.
  * user email/password field that has its own widget.
  *
- * Last used ID: 12.
+ * Last used ID: 16.
  */
 class WlFieldGeneralSid
 {
@@ -29,6 +29,11 @@ class WlFieldGeneralSid
    * Gender field.
    */
   const GENDER = 8;
+
+  /**
+   * Image.
+   */
+  const IMAGE = 13;
 
   /**
    * Home location.
@@ -74,6 +79,21 @@ class WlFieldGeneralSid
    * Referred by.
    */
   const REFERRER = 12;
+
+  /**
+   * Client status (client/member types).
+   */
+  const STATUS = 14;
+
+  /**
+   * Timezone field.
+   */
+  const TIMEZONE = 15;
+
+  /**
+   * Vaccination status.
+   */
+  const VACCINATION_STATUS = 16;
 }
 
 ?>

@@ -3,6 +3,8 @@
 namespace WellnessLiving\Wl\Classes\Period\Modify;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlClassModifyActionSid;
+use WellnessLiving\Wl\WlClassModifyModeSid;
 
 /**
  * An endpoint that modifies the master model.
@@ -44,7 +46,7 @@ class ModifyModel extends WlModelAbstract
   public $dt_start = '';
 
   /**
-   * The class modify step type. One of the {@link \WellnessLiving\Wl\WlClassModifyActionSid} constants.
+   * The class modify step type. One of the {@link WlClassModifyActionSid} constants.
    *
    * @get get
    * @post get
@@ -53,7 +55,7 @@ class ModifyModel extends WlModelAbstract
   public $id_class_modify_action = 0;
 
   /**
-   * The modify mode type. One of the {@link \WellnessLiving\Wl\WlClassModifyModeSid} constants.
+   * The modify mode type. One of the {@link WlClassModifyModeSid} constants.
    *
    * @get get
    * @post get
@@ -62,7 +64,7 @@ class ModifyModel extends WlModelAbstract
   public $id_class_modify_mode = 0;
 
   /**
-   * The class modify action type. One of the {@link \WellnessLiving\Wl\WlClassModifyStepSid} constants.
+   * The class modify action type. One of the {@link WlClassModifyModeSid} constants.
    *
    * @get get
    * @post get,result
@@ -73,9 +75,9 @@ class ModifyModel extends WlModelAbstract
   /**
    * The step direction.
    *
-   * `true` — step forward.
+   * `true` - step forward.
    *
-   * `false` — step back.
+   * `false` - step back.
    *
    * After each step, this variable sets to the default position.
    * By default, the step direction is forward.
@@ -116,9 +118,6 @@ class ModifyModel extends WlModelAbstract
 
   /**
    * The unique hash string.
-   *
-   * This hash string is a hash of the {@link \RsClassModify} object.
-   * It needs to work with the same {@link \RsClassModify} object on each step.
    *
    * @get get
    * @post get,result

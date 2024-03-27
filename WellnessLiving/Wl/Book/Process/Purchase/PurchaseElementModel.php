@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Book\Process\Purchase;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * A model of the purchase item.
@@ -26,7 +27,7 @@ class PurchaseElementModel extends WlModelAbstract
   public $i_session = 0;
 
   /**
-   * The ID of the purchase item type. One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid}.
+   * The ID of the purchase item type. One of {@link WlPurchaseItemSid}.
    *
    * @get get
    * @var int

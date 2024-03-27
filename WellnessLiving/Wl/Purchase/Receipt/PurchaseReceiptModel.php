@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Purchase\Receipt;
 
+use WellnessLiving\Core\a\ACardSystemSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -116,7 +117,7 @@ class PurchaseReceiptModel extends WlModelAbstract
    *     string <var>text_card_system</var>
    *   </dt>
    *   <dd>
-   *     The card system name from {@link \WellnessLiving\Core\a\ACardSystemSid}.
+   *     The card system name from {@link ACardSystemSid}.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
@@ -384,9 +385,9 @@ class PurchaseReceiptModel extends WlModelAbstract
    * The key of the purchase.
    *
    * @get get
-   * @var string
+   * @var string|null
    */
-  public $k_purchase;
+  public $k_purchase = null;
 
   /**
    * The normalized purchase ID.

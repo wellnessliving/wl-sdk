@@ -2,7 +2,10 @@
 
 namespace WellnessLiving\Wl\Catalog\CatalogList;
 
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * An endpoint that displays information about a certain item in the store.
@@ -42,8 +45,8 @@ class ElementModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     This applies only for promotions.
-   *     <tt>true</tt> — clients can set promotion auto-renew.<br>
-   *     <tt>false</tt> — clients can't set promotion auto-renew.
+   *     <tt>true</tt> - clients can set promotion auto-renew.<br>
+   *     <tt>false</tt> - clients can't set promotion auto-renew.
    *   </dd>
    * </dl>
    *
@@ -65,7 +68,6 @@ class ElementModel extends WlModelAbstract
    *   <dt>float <var>f_percent</var></dt>
    *   <dd>The percentage amount of the discount.</dd>
    *   <dt>int <var>i_limit</var></dt>
-   *   <dd></dd>
    *   <dt>string <var>k_discount_code</var></dt>
    *   <dd>The discount code key.</dd>
    *   <dt>string <var>s_discount_code</var></dt>
@@ -96,8 +98,8 @@ class ElementModel extends WlModelAbstract
    *     bool <var>is_empty</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> — the item has no image (in this case, ignore the other keys of this array).<br>
-   *     <tt>false</tt> — the item has an image.
+   *     <tt>true</tt> - the item has no image (in this case, ignore the other keys of this array).<br>
+   *     <tt>false</tt> - the item has an image.
    *   </dd>
    *   <dt>
    *     string <var>s_url</var>
@@ -109,8 +111,44 @@ class ElementModel extends WlModelAbstract
    *
    * @get result
    * @var array
+   * @deprecated This property is deprecated as it does not support multiple images.
    */
   public $a_image;
+
+  /**
+   * List of images.
+   * Keys are index and value is below information: <dl>
+   *   <dt>
+   *     int <var>i_height</var>
+   *   </dt>
+   *   <dd>
+   *     The height in pixels.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_width</var>
+   *   </dt>
+   *   <dd>
+   *     The width in pixels.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_empty</var>
+   *   </dt>
+   *   <dd>
+   *     `true` - item has no image (in this case ignore other keys of this array).
+   *     `false` - item has an image.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_url</var>
+   *   </dt>
+   *   <dd>
+   *     The image URL.
+   *   </dd>
+   * </dl>
+   *
+   * @get result
+   * @var array[]
+   */
+  public $a_image_list = [];
 
   /**
    * A list of installment plans. Each element has the following next keys:
@@ -125,7 +163,7 @@ class ElementModel extends WlModelAbstract
    *     int <var>id_duration</var>
    *   </dt>
    *   <dd>
-   *      The duration of a single period. One of the {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *      The duration of a single period. One of the {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>i_period</var>
@@ -174,7 +212,7 @@ class ElementModel extends WlModelAbstract
    *   <dd>Contains information about one image connected to a sale item.</dd>
    *
    *   <dt>array <var>a_tax</var></dt>
-   *   <dd>Contains information about taxes. The structure of this array is described in {@link RsTax::$a_tax}.</dd>
+   *   <dd>Contains information about taxes.</dd>
    *
    *   <dt>string <var>id_purchase_option_view</var></dt>
    *   <dd>The Purchase Option view type. One of the {@link \WellnessLiving\Wl\Catalog\PurchaseOptionViewSid} constants.</dd>
@@ -205,9 +243,9 @@ class ElementModel extends WlModelAbstract
 
   /**
    * The list of items grouped by sale categories on the store page.
-   * Keys refer to sale IDs from {@link \WellnessLiving\WlSaleSid}, and values refer to data to identify an item:<dl>
+   * Keys refer to sale IDs from {@link WlSaleSid}, and values refer to data to identify an item:<dl>
    *   <dt>int <var>id_sale</var></dt>
-   *   <dd>The item category ID. One of the {@link \WellnessLiving\WlSaleSid} constants.</dd>
+   *   <dd>The item category ID. One of the {@link WlSaleSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The primary key of item.</dd>
    *   <dt>string <var>k_shop_product_option</var></dt>
@@ -236,7 +274,7 @@ class ElementModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $dl_client_prorate;
+  public $dl_client_prorate = null;
 
   /**
    * The price of the sale item.
@@ -332,7 +370,7 @@ class ElementModel extends WlModelAbstract
 
   /**
    * The purchase item category ID.
-   * One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
+   * One of the {@link WlPurchaseItemSid} constants.
    *
    * @get result
    * @var int
@@ -349,7 +387,7 @@ class ElementModel extends WlModelAbstract
 
   /**
    * The ID of item category.
-   * One of the {@link \WellnessLiving\WlSaleSid} constants.
+   * One of the {@link WlSaleSid} constants.
    *
    * @get get,result
    * @var int
@@ -363,7 +401,6 @@ class ElementModel extends WlModelAbstract
    * @var bool
    */
   public $is_backend = false;
-
 
   /**
    * If `true`, the item requires a contract. Otherwise, this will be `false`.
@@ -484,7 +521,7 @@ class ElementModel extends WlModelAbstract
    * A list of goods to get information for. Every element must contain the next keys:
    * <dl>
    *   <dt>int <var>id_sale</var></dt>
-   *   <dd>The ID of the item category. One of the {@link \WellnessLiving\WlSaleSid} constants.</dd>
+   *   <dd>The ID of the item category. One of the {@link WlSaleSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The item key.</dd>
    *   <dt>string <var>k_shop_product_option</var></dt>
@@ -493,16 +530,16 @@ class ElementModel extends WlModelAbstract
    * Note that this must be serialized via JSON.
    *
    * If this field is specified, don't specify any of the following fields:
-   * * {@link \WellnessLiving\Wl\Catalog\CatalogList\ElementModel::$id_sale}
-   * * {@link \WellnessLiving\Wl\Catalog\CatalogList\ElementModel::$k_id}
-   * * {@link \WellnessLiving\Wl\Catalog\CatalogList\ElementModel::$k_shop_product_option}
+   * * {@link ElementApi::$id_sale}
+   * * {@link ElementApi::$k_id}
+   * * {@link ElementApi::$k_shop_product_option}
    *
    * This will be `null` to get information for only one item.
    *
    * @get get
    * @var string|null
    */
-  public $text_item;
+  public $text_item = null;
 
   /**
    * The price on the price tag, with the currency sign.
@@ -534,23 +571,23 @@ class ElementModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $uid_customer;
+  public $uid_customer = '';
 
   /**
    * A detailed description.
    *
-   * @deprecated Use `html_description`.
    * @get result
    * @var string|null
+   * @deprecated Use `html_description`.
    */
   public $xml_description;
 
   /**
    * Special instructions.
    *
-   * @deprecated Use `html_special`.
    * @get result
    * @var string|null
+   * @deprecated Use `html_special`.
    */
   public $xml_special;
 }
