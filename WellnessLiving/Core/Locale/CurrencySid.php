@@ -5,9 +5,13 @@ namespace WellnessLiving\Core\Locale;
 /**
  * A list of currencies.
  *
- * Last used ID: 13.
+ * Currency constant names must comply with the standard `ISO 4217` for correct integration with other services.
+ *
+ * @link https://docs.1010data.com/1010dataReferenceManual/DataTypesAndFormats/currencyUnitCodes.html
+ *
+ * Last used ID: 13
  */
-class CurrencySid
+abstract class CurrencySid
 {
   /**
    * United Arab Emirates dirham.

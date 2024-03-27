@@ -3,6 +3,9 @@
 namespace WellnessLiving\Wl\Appointment\Book\Finish;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Appointment\Book\Question\QuestionModel;
+use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * An endpoint that completes an appointment booking.
@@ -33,7 +36,7 @@ class Finish47Model extends WlModelAbstract
    * @post result
    * @var array[]
    */
-  public $a_appointment;
+  public $a_appointment = null;
 
   /**
    * All data from the appointment booking provider model.
@@ -49,7 +52,7 @@ class Finish47Model extends WlModelAbstract
    * @post result
    * @var string[]
    */
-  public $a_login_activity_visit;
+  public $a_login_activity_visit = null;
 
   /**
    * A list of payment sources to pay with.
@@ -137,7 +140,7 @@ class Finish47Model extends WlModelAbstract
    * @post result
    * @var string[]
    */
-  public $a_visit;
+  public $a_visit = null;
 
   /**
    * The booking mode ID. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
@@ -148,7 +151,7 @@ class Finish47Model extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * The payment type ID for the appointment. One of the {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid} constants.
+   * The payment type ID for the appointment. One of the {@link WlAppointmentPaySid} constants.
    *
    * @post get
    * @var int
@@ -216,7 +219,7 @@ class Finish47Model extends WlModelAbstract
    * @post get
    * @var null|string
    */
-  public $k_timezone;
+  public $k_timezone = null;
 
   /**
    * The sum paid for a deposit.

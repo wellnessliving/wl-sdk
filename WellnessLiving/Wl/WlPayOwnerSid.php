@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl;
 /**
  * A list of money owners from which account money can be transferred.
  */
-class WlPayOwnerSid
+abstract class WlPayOwnerSid
 {
   /**
-   * System user.
+   * Anonymous user (Walk-In).
    */
-  const USER = 1;
+  const ANONYMOUS = 3;
 
   /**
    * Business.
@@ -18,9 +18,9 @@ class WlPayOwnerSid
   const BUSINESS = 2;
 
   /**
-   * Anonymous user (Walk-In).
+   * System user.
    */
-  const ANONYMOUS = 3;
+  const USER = 1;
 }
 
 ?>

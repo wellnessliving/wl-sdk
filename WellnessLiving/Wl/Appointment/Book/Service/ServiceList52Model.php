@@ -3,6 +3,9 @@
 namespace WellnessLiving\Wl\Appointment\Book\Service;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Service\ServiceBookFlowSid;
+use WellnessLiving\Wl\Service\ServicePriceSid;
+use WellnessLiving\Wl\Service\ServiceRequireSid;
 
 /**
  * An endpoint that retrieves information about services in the current service category.
@@ -136,7 +139,7 @@ class ServiceList52Model extends WlModelAbstract
    *     int <var>i_price</var>
    *   </dt>
    *   <dd>
-   *     The price type ID. One of {@link \WellnessLiving\RsServicePriceSid} constants.
+   *     The price type ID. One of {@link ServicePriceSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>i_duration</var>
@@ -148,13 +151,13 @@ class ServiceList52Model extends WlModelAbstract
    *     int <var>id_book_flow</var>
    *   </dt>
    *   <dd>
-   *     The type of client booking flow. One of {@link \WellnessLiving\Wl\Service\ServiceBookFlowSid} constants.
+   *     The type of client booking flow. One of {@link ServiceBookFlowSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_service_require</var>
    *   </dt>
    *   <dd>
-   *     The required payment type ID. One of {@link \WellnessLiving\RsServiceRequireSid} constants.
+   *     The required payment type ID. One of {@link ServiceRequireSid} constants.
    *   </dd>
    *   <dt>
    *     bool <var>is_age_public</var>

@@ -9,5 +9,6 @@ namespace WellnessLiving;
  */
 class WlPayProcessorSid extends \WellnessLiving\Wl\WlPayProcessorSid
 {
-
 }
+
+?>

@@ -2,7 +2,12 @@
 
 namespace WellnessLiving\Wl\Appointment\Book\Purchase;
 
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\WlProgramCategorySid;
+use WellnessLiving\Wl\WlProgramSid;
+use WellnessLiving\Wl\WlProgramTypeSid;
 
 /**
  * An endpoint that retrieves information about Purchase Options that can be used to pay for an appointment.
@@ -77,7 +82,7 @@ class PurchaseModel extends WlModelAbstract
    *   <dt>int|null <var>i_limit_duration</var></dt>
    *   <dd>The maximum number of minutes that current Purchase Option can be used for.</dd>
    *   <dt>int <var>id_program</var></dt>
-   *   <dd>The program ID for promotions. One of the {@link \WellnessLiving\WlProgramSid} constants.</dd>
+   *   <dd>The program ID for promotions. One of the {@link WlProgramSid} constants.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
    *   <dd>The Purchase Option login key.</dd>
    *   <dt>string <var>s_class_include</var></dt>
@@ -232,31 +237,31 @@ class PurchaseModel extends WlModelAbstract
    *     int <var>id_duration</var>
    *   </dt>
    *   <dd>
-   *     Duration ID. Constant from {@link \WellnessLiving\Core\a\ADurationSid}.
+   *     Duration ID. Constant from {@link ADurationSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program</var>
    *   </dt>
    *   <dd>
-   *     Program ID for promotions from {@link \WellnessLiving\WlProgramSid}.
+   *     Program ID for promotions from {@link WlProgramSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program_type</var>
    *   </dt>
    *   <dd>
-   *     Program type ID. Constant from {@link \WellnessLiving\WlProgramTypeSid}.
+   *     Program type ID. Constant from {@link WlProgramTypeSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_promotion_price</var>
    *   </dt>
    *   <dd>
-   *     How the Purchase Item price is specified. One of the {@link \WellnessLiving\WlProgramTypeSid} constants.
+   *     How the Purchase Item price is specified. One of the {@link WlProgramTypeSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     ID of the purchase item from {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid}
+   *     ID of the purchase item from {@link WlPurchaseItemSid}
    *   </dd>
    *   <dt>
    *     bool <var>is_contract</var>
@@ -348,7 +353,7 @@ class PurchaseModel extends WlModelAbstract
    *     string <var>sid_program_category</var>
    *   </dt>
    *   <dd>
-   *     Category of the program for promotions from {@link \WellnessLiving\WlProgramCategorySid}.
+   *     Category of the program for promotions from {@link WlProgramCategorySid}.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
@@ -389,12 +394,12 @@ class PurchaseModel extends WlModelAbstract
   public $a_reward_prize;
 
   /**
-   * List of selected services without current {@link \WellnessLiving\Wl\Appointment\Book\Purchase\PurchaseModel::$k_service}.
+   * List of selected services without current {@link PurchaseModel::$k_service}.
    *
    * The list of these services directly affects the list of selected promotions.
    * Depending on the number and order of services, there may be different results.
    *
-   * The current {@link \WellnessLiving\Wl\Appointment\Book\Purchase\PurchaseModel::$k_service} will be added to the end of this list.
+   * The current {@link PurchaseModel::$k_service} will be added to the end of this list.
    * It is worth considering this list as a list of previously selected services.
    *
    * Each element has the following structure:
@@ -405,7 +410,7 @@ class PurchaseModel extends WlModelAbstract
    *    Should be set if a new purchase option is selected for this service.
    *    <dl>
    *      <dt>int <var>id_purchase_item</var></dt>
-   *      <dd>Purchase item ID. Constant from {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid}.</dd>
+   *      <dd>Purchase item ID. Constant from {@link WlPurchaseItemSid}.</dd>
    *      <dt>string <var>k_id</var></dt>
    *      <dd>Purchase item key.</dd>
    *    </dl>
@@ -428,6 +433,8 @@ class PurchaseModel extends WlModelAbstract
    *
    * @get get
    * @var array[]
+   *
+   * @see PurchaseModel::$k_service
    */
   public $a_service = [];
 
@@ -436,11 +443,11 @@ class PurchaseModel extends WlModelAbstract
    *
    * @get result
    * @var array
+   * @see PurchaseModel::_sessionPassInfo()
    */
   public $a_session_pass = [];
 
   /**
-   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
    * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
@@ -467,7 +474,6 @@ class PurchaseModel extends WlModelAbstract
 
   /**
    * Image height in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified returned image will have default thumbnail size {@link RsLoginLogo::THUMBNAIL_HEIGHT}.
    *
    * @get get
    * @var int|null
@@ -476,7 +482,6 @@ class PurchaseModel extends WlModelAbstract
 
   /**
    * Image width in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified returned image will have default thumbnail size {@link RsLoginLogo::THUMBNAIL_WIDTH}.
    *
    * @get get
    * @var int|null
@@ -525,6 +530,7 @@ class PurchaseModel extends WlModelAbstract
    *
    * @get get,result
    * @var string
+   * @see PurchaseModel::$text_login_promotion
    */
   public $k_login_promotion;
 
@@ -551,6 +557,7 @@ class PurchaseModel extends WlModelAbstract
    *
    * @get get
    * @var string
+
    */
   public $k_service = '0';
 
@@ -562,13 +569,15 @@ class PurchaseModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $k_timezone;
+  public $k_timezone = null;
 
   /**
    * Login promotion title suitable to pay for the services.
    *
    * @get result
    * @var string
+   *
+   * @see PurchaseModel::$k_login_promotion
    */
   public $text_login_promotion = '';
 

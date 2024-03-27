@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Steps to be passed through to change or cancel class schedule.
  */
-class WlClassModifyStepSid
+abstract class WlClassModifyStepSid
 {
   /**
    * List of the impacted clients, configuration of possible notifications.

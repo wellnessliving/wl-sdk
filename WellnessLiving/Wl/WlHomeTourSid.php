@@ -4,8 +4,10 @@ namespace WellnessLiving\Wl;
 
 /**
  * List of different types  for landing pages based on business types.
+ *
+ * Last ID: 26
  */
-class WlHomeTourSid
+abstract class WlHomeTourSid
 {
   /**
    * Boot camps.

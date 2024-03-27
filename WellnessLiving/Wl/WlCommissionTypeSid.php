@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * String identifiers for tax type.
  */
-class WlCommissionTypeSid
+abstract class WlCommissionTypeSid
 {
   /**
    * Fixed type.

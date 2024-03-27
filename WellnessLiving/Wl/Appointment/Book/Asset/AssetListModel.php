@@ -3,6 +3,10 @@
 namespace WellnessLiving\Wl\Appointment\Book\Asset;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Resource\Image\ImageIconSid;
+use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
+use WellnessLiving\Wl\Service\ServicePriceSid;
+use WellnessLiving\Wl\Service\ServiceRequireSid;
 
 /**
  * An endpoint that retrieves information about assets in the current asset category.
@@ -54,9 +58,9 @@ class AssetListModel extends WlModelAbstract
    *       <dt>bool <var>is_empty</var></dt>
    *       <dd>Determines if the asset logo is empty.</dd>
    *       <dt>string <var>sid_image_icon</var></dt>
-   *       <dd>The icon name. String representation of one of the {@link \WellnessLiving\Wl\Resource\Image\ImageIconSid} constants. This is only set if the image kind equals to `image`.</dd>
+   *       <dd>The icon name. String representation of one of the {@link ImageIconSid} constants. This is only set if the image kind equals to `image`.</dd>
    *       <dt>string <var>sid_image_shape</var></dt>
-   *       <dd>The shape name. String representation of one of the {@link \WellnessLiving\Wl\Resource\Image\ImageShapeSid} constants. This is set only if the image kind equals to `shape`.</dd>
+   *       <dd>The shape name. String representation of one of the {@link ImageShapeSid} constants. This is set only if the image kind equals to `shape`.</dd>
    *       <dt>string <var>url</var></dt>
    *       <dd>The asset logo URL.</dd>
    *     </dl>
@@ -71,7 +75,7 @@ class AssetListModel extends WlModelAbstract
    *       <dt>int <var>i_duration</var></dt>
    *       <dd>The asset duration in minutes.</dd>
    *       <dt>int <var>id_price</var></dt>
-   *       <dd>The asset period price type. One of {@link \WellnessLiving\RsServicePriceSid} constants.</dd>
+   *       <dd>The asset period price type. One of {@link ServicePriceSid} constants.</dd>
    *       <dt>sting <var>m_price</var></dt>
    *       <dd>The asset period price.</dd>
    *     </dl>
@@ -88,7 +92,7 @@ class AssetListModel extends WlModelAbstract
    *   <dt>string <var>html_title</var></dt>
    *   <dd>The resource name.</dd>
    *   <dt>int <var>id_service_require</var></dt>
-   *   <dd>The purchase rule. One of the {@link \WellnessLiving\RsServiceRequireSid} constants.</dd>
+   *   <dd>The purchase rule. One of the {@link ServiceRequireSid} constants.</dd>
    *   <dt>bool <var>is_age_restricted</var></dt>
    *   <dd>Determines whether this service can't be booked due to age restrictions.</dd>
    *   <dt>string <var>k_class_tab</var></dt>
@@ -146,6 +150,24 @@ class AssetListModel extends WlModelAbstract
    * @var bool
    */
   public $is_backend = false;
+
+  /**
+   * `true` - search in all tabs.
+   * `false` - search only for the selected book tab.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_tab_all = false;
+
+  /**
+   * Key of the appointment, if we reschedule existing appointment.
+   * It should be sent to ignore it when we get availability hours for the asset.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_appointment = '0';
 
   /**
    * Business key.
@@ -210,7 +232,7 @@ class AssetListModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $uid;
+  public $uid = null;
 }
 
 ?>

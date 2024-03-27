@@ -36,7 +36,7 @@ class EnterModel extends WlModelAbstract
   /**
    * A copy of the notepad that was used to hash the user password.
    *
-   * See {@link \WellnessLiving\Core\Passport\Login\Enter\EnterModel::$s_password} for details.
+   *  See {@link EnterModel::$s_password} for details.
    *
    * @post post
    * @var string
@@ -69,12 +69,30 @@ class EnterModel extends WlModelAbstract
   public $s_remember = '';
 
   /**
+   * Optional URL to get captcha image.
+   *
+   * This field is filled in a case when a captcha code is required to sign in.
+   *
+   * @post error
+   * @var string
+   */
+  public $url_captcha;
+
+  /**
    * An optional URL for redirection after the user has signed in to the web application.
    *
    * @post result
    * @var string
    */
   public $url_redirect;
+
+  /**
+   * Url of previous page if the user was redirected to login.
+   *
+   * @post post
+   * @var string
+   */
+  public $url_return = '';
 }
 
 ?>

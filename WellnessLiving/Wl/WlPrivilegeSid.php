@@ -1,10 +1,13 @@
 <?php
 
 namespace WellnessLiving\Wl;
+
 /**
  * Wellnessliving-wide privileges.
+ *
+ * Last Used ID: 198.
  */
-class WlPrivilegeSid
+abstract class WlPrivilegeSid
 {
   /**
    * View banner alert message on dashboard.
@@ -249,6 +252,33 @@ class WlPrivilegeSid
    * Allow Staff members to view/complete forms for clients from any location.
    */
   const FORM_ALL = 177;
+
+  /**
+   * Amend apply to privilege.
+   *
+   * @internal Don't use this privilege directly.
+   */
+  const FORM_AMEND_ACCESS = 198;
+
+  /**
+   * Allow staff members to make modifications to completed forms on the client profile.
+   */
+  const FORM_AMEND_COMPLETED = 194;
+
+  /**
+   * Allow staff members to make modifications to completed forms on the client profile for all clients.
+   */
+  const FORM_AMEND_COMPLETED_ALL = 195;
+
+  /**
+   * Allow staff members to make modifications to completed forms on the client profile for clients at staff location.
+   */
+  const FORM_AMEND_COMPLETED_LOCATION = 196;
+
+  /**
+   * Allow staff members to make modifications to completed forms on the client profile for self clients.
+   */
+  const FORM_AMEND_COMPLETED_MY_CLIENTS = 197;
 
   /**
    * Allow staff members to fill in forms for clients.
@@ -547,9 +577,14 @@ class WlPrivilegeSid
   const PROFILE_DETAIL = 67;
 
   /**
-   * Manage profile client groups.
+   * Manage profile client groups (only create, delete and rename a group).
    */
   const PROFILE_GROUP_MANAGE = 69;
+
+  /**
+   * Manage client group members (only members, not a group itself).
+   */
+  const PROFILE_GROUP_MEMBER_MANAGE = 191;
 
   /**
    * Manage clients from my location.
@@ -764,11 +799,6 @@ class WlPrivilegeSid
   const STAFF_CLOCK = 32;
 
   /**
-   * Configure pay rates for staff members.
-   */
-  const STAFF_CONFIG_PAY_RATES = 182;
-
-  /**
    * Add, remove, and edit staff profiles.
    */
   const STAFF_EDIT = 14;
@@ -787,6 +817,11 @@ class WlPrivilegeSid
    * Modify pay rates for services.
    */
   const STAFF_MODIFY_RATES_SERVICE = 183;
+
+  /**
+   * Modify the clock-in and clock-out times for your own staff profile.
+   */
+  const STAFF_MY_CLOCK = 192;
 
   /**
    * Add, remove, and edit staff pay rates.

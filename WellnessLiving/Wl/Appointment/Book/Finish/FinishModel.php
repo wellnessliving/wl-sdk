@@ -16,7 +16,7 @@ use WellnessLiving\WlModelAbstract;
 class FinishModel extends WlModelAbstract
 {
   /**
-   * A list of answers for the questions from {@link \WellnessLiving\Wl\Appointment\Book\Question\QuestionModel::$a_question}.
+   * A list of answers for the questions from {@link QuestionModel::$a_question}.
    * Keys refer to hashes of the questions. Values refer to answers for the questions.
    *
    * @post post
@@ -64,7 +64,7 @@ class FinishModel extends WlModelAbstract
    *         int[] [<var>a_week</var>]
    *       </dt>
    *       <dd>
-   *         The days of week when appointment repeats. One of the {@link \WellnessLiving\Core\a\ADateWeekSid} constants.
+   *         The days of week when appointment repeats. One of the {@link ADateWeekSid} constants.
    *         This will be empty if the appointment doesn't repeat weekly.
    *       </dd>
    *       <dt>
@@ -90,7 +90,7 @@ class FinishModel extends WlModelAbstract
    *         int <var>id_period</var>
    *       </dt>
    *       <dd>
-   *         The measurement unit of <tt>i_period</tt>. One of the {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *         The measurement unit of <tt>i_period</tt>. One of the {@link ADurationSid} constants.
    *       </dd>
    *       <dt>
    *         bool [<var>is_month</var>]
@@ -140,7 +140,7 @@ class FinishModel extends WlModelAbstract
    *     int <var>id_class_tab</var>
    *   </dt>
    *   <dd>
-   *     The booking service type. One of the {@link \WellnessLiving\Wl\Classes\Tab\TabSid} constants.
+   *     The booking service type. One of the {@link TabSid} constants.
    *   </dd>
    *   <dt>
    *     int [<var>id_gender_staff</var>]
@@ -212,7 +212,7 @@ class FinishModel extends WlModelAbstract
   /**
    * Data required for payment with the following structure:<dl>
    *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>The type of the purchase item. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.</dd>
+   *   <dd>The type of the purchase item. One of the {@link WlPurchaseItemSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The promotion key or appointment key, which depends on <var>id_purchase_item</var> of this array.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
@@ -296,7 +296,7 @@ class FinishModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * The payment type ID for the appointment. One of the {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid} constants.
+   * The payment type ID for the appointment. One of the {@link WlAppointmentPaySid} constants.
    *
    * @post get
    * @var int
@@ -365,7 +365,7 @@ class FinishModel extends WlModelAbstract
    * @post get
    * @var null|string
    */
-  public $k_timezone;
+  public $k_timezone = null;
 
   /**
    * The sum paid for a deposit.

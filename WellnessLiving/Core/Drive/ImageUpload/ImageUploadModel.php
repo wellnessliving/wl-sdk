@@ -168,15 +168,14 @@ class ImageUploadModel extends CustomImageUploadModel
   public $s_link;
 
   /**
-   * A list of image IDs set in {@link ImageUploadModel::$s_class},
-   * serialised using JSON.
+   * A list of image IDs set in {@link ImageUploadModel::$s_class}, serialised using JSON.
    *
    * This will be `null` if there's no data being sent by the client.
    *
    * @post post
    * @var string|null
    */
-  public $text_id;
+  public $text_id = null;
 
   /**
    * The image URL that should be displayed in cases where no image is uploaded.

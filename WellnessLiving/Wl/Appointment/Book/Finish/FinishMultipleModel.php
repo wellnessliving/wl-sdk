@@ -2,7 +2,12 @@
 
 namespace WellnessLiving\Wl\Appointment\Book\Finish;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
+use WellnessLiving\Wl\Classes\Tab\TabSid;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * An endpoint that pays for an appointment or appointment Purchase Option for a client.
@@ -55,7 +60,7 @@ class FinishMultipleModel extends WlModelAbstract
    *         int[] [<var>a_week</var>]
    *       </dt>
    *       <dd>
-   *         The days of the week when the appointment repeats. One of the constants of the {@link \WellnessLiving\Core\a\ADateWeekSid} class.
+   *         The days of the week when the appointment repeats. One of the constants of the {@link ADateWeekSid} class.
    *         This will be empty if the appointment doesn't repeat weekly.
    *       </dd>
    *       <dt>
@@ -81,7 +86,7 @@ class FinishMultipleModel extends WlModelAbstract
    *         int <var>id_period</var>
    *       </dt>
    *       <dd>
-   *         The measurement unit of `i_period`. One of the {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *         The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    *       </dd>
    *       <dt>
    *         bool [<var>is_month</var>]
@@ -131,7 +136,7 @@ class FinishMultipleModel extends WlModelAbstract
    *     int <var>id_class_tab</var>
    *   </dt>
    *   <dd>
-   *     The booking service type. One of the {@link \WellnessLiving\Wl\Classes\Tab\TabSid} constants.
+   *     The booking service type. One of the {@link TabSid} constants.
    *   </dd>
    *   <dt>
    *     int [<var>id_gender_staff</var>]
@@ -203,7 +208,7 @@ class FinishMultipleModel extends WlModelAbstract
   public $a_paid = [];
 
   /**
-   * The payment type for the appointment. One of the {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid} constants.
+   * The payment type for the appointment. One of the {@link WlAppointmentPaySid} constants.
    *
    * @post get
    * @var array
@@ -223,7 +228,7 @@ class FinishMultipleModel extends WlModelAbstract
   /**
    * Data required for payment with the next structure:<dl>
    *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>The purchase item type. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.</dd>
+   *   <dd>The purchase item type. One of the {@link WlPurchaseItemSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The promotion or appointment key, depending on <var>id_purchase_item</var> in this array.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>

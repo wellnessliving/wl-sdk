@@ -7,7 +7,7 @@ namespace WellnessLiving\Wl;
  *
  * Last used ID: 5.
  */
-class WlServiceSid
+abstract class WlServiceSid
 {
   /**
    * Appointments.

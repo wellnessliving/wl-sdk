@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * The list of possible actions for class modify wizard.
  */
-class WlClassModifyActionSid
+abstract class WlClassModifyActionSid
 {
   /**
    * Cancel class schedule.

@@ -6,8 +6,12 @@ namespace WellnessLiving\Wl;
  * Program types.
  *
  * See {@link WlProgramSid} for a list of promotions.
+ *
+ * Last used ID: 7.
+ *
+ * @see WlProgramSid
  */
-class WlProgramTypeSid
+abstract class WlProgramTypeSid
 {
   /**
    * Duration Pass.
@@ -67,7 +71,7 @@ class WlProgramTypeSid
    * Such passes cannot be bought, they can be only components of the special system packages,
    * packages with <var>k_business</var> = <tt>null</tt>.
    *
-   * @see WlProgramSid::CLAS_PROSPECT
+   * @see WlProgramSid::CLASS_PROSPECT
    */
   const PROSPECT = 5;
 }
