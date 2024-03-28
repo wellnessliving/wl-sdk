@@ -3,6 +3,9 @@
 namespace WellnessLiving\Wl\Appointment\Book\Payment;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\Service\ServicePriceSid;
 
 /**
  * An endpoint that sends payments for an appointment booking.
@@ -15,7 +18,7 @@ class PaymentPostModel extends WlModelAbstract
 {
   /**
    * Information detailing an appointment booking.
-   * Same as {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentModel::$a_book_data}.
+   * Same as {@link PaymentModel::$a_book_data}.
    *
    * @post post
    * @var array
@@ -167,7 +170,7 @@ class PaymentPostModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_promotion_data;
+  public $a_promotion_data = null;
 
   /**
    * Information about selected purchase items.
@@ -190,7 +193,7 @@ class PaymentPostModel extends WlModelAbstract
    *   </dd>
    *
    *   <dt>string <var>id_purchase_item</var></dt>
-   *   <dd>The purchase item ID. A constant of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid}.</dd>
+   *   <dd>The purchase item ID. A constant of {@link WlPurchaseItemSid}.</dd>
    *
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The value of the discount used for the purchase.</dd>
@@ -208,7 +211,7 @@ class PaymentPostModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_purchase;
+  public $a_purchase = null;
 
   /**
    * The purchase item keys from the database.
@@ -218,12 +221,10 @@ class PaymentPostModel extends WlModelAbstract
    * @post result
    * @var string[]|null
    */
-  public $a_purchase_item;
+  public $a_purchase_item = null;
 
   /**
    * List of quiz response keys.
-   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
-   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table.
    *
    * @post post
    * @var array
@@ -250,15 +251,15 @@ class PaymentPostModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * The payment type for the appointment. A constant of {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid}.
+   * The payment type for the appointment. A constant of {@link WlAppointmentPaySid}.
    *
    * @post result
    * @var int
    */
-  public $id_pay;
+  public $id_pay = null;
 
   /**
-   * The purchase item ID. A constant of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid}.
+   * The purchase item ID. A constant of {@link WlPurchaseItemSid}.
    *
    * @get get
    * @post get
@@ -276,7 +277,7 @@ class PaymentPostModel extends WlModelAbstract
   public $is_walk_in = false;
 
   /**
-   * The item key. Depends of {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentModel::$id_purchase_item} property.
+   * The item key. Depends of {@link PaymentModel::$id_purchase_item} property.
    *
    * @get get
    * @post get
@@ -300,7 +301,7 @@ class PaymentPostModel extends WlModelAbstract
    * @post result
    * @var string
    */
-  public $k_login_activity_purchase;
+  public $k_login_activity_purchase = null;
 
   /**
    * Login prize key. In case when appointment paid by reward prize, there is the key of redeemed login prize. Empty otherwise.
@@ -364,11 +365,11 @@ class PaymentPostModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $m_total;
+  public $m_total = null;
 
   /**
    * Variable price. Is set only during booking an appointment with variable type of the price
-   *   {@link \WellnessLiving\RsServicePriceSid::VARIES} from spa backend {@link \WellnessLiving\Wl\Mode\ModeSid::SPA_BACKEND}.
+   *   {@link ServicePriceSid::VARIES} from spa backend {@link ModeSid::SPA_BACKEND}.
    *
    * @get get
    * @var string

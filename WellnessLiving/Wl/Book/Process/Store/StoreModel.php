@@ -2,6 +2,8 @@
 
 namespace WellnessLiving\Wl\Book\Process\Store;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 
 /**

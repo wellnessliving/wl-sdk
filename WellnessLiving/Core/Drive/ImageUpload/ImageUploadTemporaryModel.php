@@ -8,7 +8,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * An endpoint that uploads a raw image to a server.
  *
- * You must save an image by using {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadModel}.
+ * You must save an image by using {@link ImageUploadModel}.
  */
 class ImageUploadTemporaryModel extends WlModelAbstract
 {
@@ -69,7 +69,7 @@ class ImageUploadTemporaryModel extends WlModelAbstract
   public $i_width_src;
 
   /**
-   * The image type ID. One of the {@link \WellnessLiving\Core\Drive\DriveTypeSid} constants.
+   * The image type ID.
    *
    * @post result
    * @var int
@@ -85,7 +85,7 @@ class ImageUploadTemporaryModel extends WlModelAbstract
   public $is_resize;
 
   /**
-   * The key of the image within {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadTemporaryModel::$s_class}.
+   * The key of the image within {@link ImageUploadTemporaryModel::$s_class}.
    *
    * For example, for a user's photo, specify the user's key here.
    *

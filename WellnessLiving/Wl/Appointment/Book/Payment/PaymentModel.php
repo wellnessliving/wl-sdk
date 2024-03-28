@@ -3,17 +3,20 @@
 namespace WellnessLiving\Wl\Appointment\Book\Payment;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
+use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\Service\ServicePriceSid;
 
 /**
  * An endpoint that displays information about payments for an appointment.
- * The POST method for this endpoint is implemented as a separate endpoint (see
- * {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentPostModel}).
+ * The POST method for this endpoint is implemented as a separate endpoint (see {@link PaymentPostModel}).
  *
  * This endpoint using captcha check.
  * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
  * For this API an action is `1064`.
  *
- * @deprecated Use {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentPostModel} instead.
+ * @deprecated Use {@link PaymentPostModel} instead.
  */
 class PaymentModel extends WlModelAbstract
 {
@@ -194,7 +197,7 @@ class PaymentModel extends WlModelAbstract
    *   </dd>
    *
    *   <dt>string <var>id_purchase_item</var></dt>
-   *   <dd>The purchase item ID. A constant of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid}.</dd>
+   *   <dd>The purchase item ID. A constant of {@link WlPurchaseItemSid}.</dd>
    *
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The value of the discount used for the purchase.</dd>
@@ -226,8 +229,6 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * List of quiz response keys.
-   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
-   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table.
    *
    * @post post
    * @var array
@@ -235,7 +236,7 @@ class PaymentModel extends WlModelAbstract
   public $a_quiz_response = [];
 
   /**
-   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * List of user keys to book appointments.
    * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
@@ -245,7 +246,7 @@ class PaymentModel extends WlModelAbstract
   public $a_uid = [];
 
   /**
-   * The key of source mode. A constant of {@link \WellnessLiving\Wl\Mode\ModeSid}.
+   * The key of source mode. A constant of {@link ModeSid}.
    *
    * @get get
    * @post get
@@ -254,7 +255,7 @@ class PaymentModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * The payment type for the appointment. A constant of {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid}.
+   * The payment type for the appointment. A constant of {@link WlAppointmentPaySid}.
    *
    * @post result
    * @var int
@@ -262,7 +263,7 @@ class PaymentModel extends WlModelAbstract
   public $id_pay;
 
   /**
-   * The purchase item ID. A constant of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid}.
+   * The purchase item ID. A constant of {@link WlPurchaseItemSid}.
    *
    * @get get
    * @post get
@@ -280,7 +281,7 @@ class PaymentModel extends WlModelAbstract
   public $is_walk_in = false;
 
   /**
-   * The item key. Depends of {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentModel::$id_purchase_item} property.
+   * The item key. Depends of {@link PaymentModel::$id_purchase_item} property.
    *
    * @get get
    * @post get
@@ -372,7 +373,7 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * Variable price. Is set only during booking an appointment with variable type of the price
-   *   {@link \WellnessLiving\RsServicePriceSid::VARIES} from spa backend {@link \WellnessLiving\Wl\Mode\ModeSid::SPA_BACKEND}.
+   *   {@link ServicePriceSid::VARIES} from spa backend {@link ModeSid::SPA_BACKEND}.
    *
    * @get get
    * @var string

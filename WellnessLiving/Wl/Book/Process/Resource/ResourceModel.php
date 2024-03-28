@@ -2,12 +2,14 @@
 
 namespace WellnessLiving\Wl\Book\Process\Resource;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
  * An endpoint that selects assets for making a booking.
  *
- * @deprecated Use {@link \WellnessLiving\Wl\Book\Process\Resource\Resource54Model} instead.
+ * @deprecated Use {@link Resource54Model} instead.
  */
 class ResourceModel extends WlModelAbstract
 {

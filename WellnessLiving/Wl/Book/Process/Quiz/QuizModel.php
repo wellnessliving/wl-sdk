@@ -2,7 +2,10 @@
 
 namespace WellnessLiving\Wl\Book\Process\Quiz;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * An endpoint that manages quizzes and a selected Purchase Option for a class or event during the booking process.
@@ -22,7 +25,7 @@ class QuizModel extends WlModelAbstract
   /**
    * The list of purchase items. Each element has the format <tt>[id_purchase_item]::[k_id]</tt>, where: <dl>
    *  <dt>int <var>id_purchase_item</var></dt>
-   *  <dd>The ID of the purchase item. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.</dd>
+   *  <dd>The ID of the purchase item. One of the {@link WlPurchaseItemSid} constants.</dd>
    *  <dt>string <var>k_id</var></dt>
    *  <dd>The item key. This depends on <var>id_purchase_item</var> of this array.</dd>
    * </dl>

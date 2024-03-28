@@ -10,7 +10,7 @@ use WellnessLiving\Wl\Service\ServiceRequireSid;
 /**
  * An endpoint that retrieves information about services in the current service category.
  *
- * This is a new version of the {@link \WellnessLiving\Wl\Appointment\Book\Service\ServiceListModel} endpoint.
+ * This is a new version of the {@link ServiceListModel} endpoint.
  * It allows for filtering a list of services by multiple book now tabs.
  */
 class ServiceList52Model extends WlModelAbstract
@@ -279,19 +279,19 @@ class ServiceList52Model extends WlModelAbstract
    *     string <var>xml_description</var>
    *   </dt>
    *   <dd>
-   *     Appointment description.
+   *     Appointment description (deprecated, use `html_description`).
    *   </dd>
    *   <dt>
    *     string <var>xml_description_short</var>
    *   </dt>
    *   <dd>
-   *     Appointment short description.
+   *     Appointment short description (deprecated, use `html_description_short`).
    *   </dd>
    *   <dt>
    *     string <var>xml_special</var>
    *   </dt>
    *   <dd>
-   *      Special instructions.
+   *      Special instructions (deprecated, use `html_special`).
    *   </dd>
    * </dl>
    *

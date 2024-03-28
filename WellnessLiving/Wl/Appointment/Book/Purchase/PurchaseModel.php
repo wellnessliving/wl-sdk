@@ -106,7 +106,7 @@ class PurchaseModel extends WlModelAbstract
    * An array with information about available Purchase Options.
    * <dl>
    *   <dt>
-   *     array|bool <var>a_image</var>
+   *     array <var>a_image</var>
    *   </dt>
    *   <dd>
    *     Information describing the logo of the purchase option. This value can be false if there is no logo described.
@@ -428,7 +428,7 @@ class PurchaseModel extends WlModelAbstract
    *    Should be set if login promotion selected for this service.
    *  </dd>
    *  <dt>string <var>k_service</var></dt>
-   *  <dd>Service key from {@link \RsServiceSql}.</dd>
+   *
    * </dl>
    *
    * @get get
@@ -553,10 +553,11 @@ class PurchaseModel extends WlModelAbstract
 
   /**
    * The service key used to select available Purchase Options.
-   * If multiple services are selected, they should be specified in {@link \WellnessLiving\Wl\Appointment\Book\Purchase\PurchaseModel::$a_service} array.
+   * If multiple services are selected, they should be specified in {@link PurchaseModel::$a_service} array.
    *
    * @get get
    * @var string
+   * @see PurchaseModel::$a_service
 
    */
   public $k_service = '0';

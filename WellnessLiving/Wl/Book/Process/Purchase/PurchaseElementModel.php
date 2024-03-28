@@ -36,7 +36,6 @@ class PurchaseElementModel extends WlModelAbstract
 
   /**
    * The key of the purchase item in the database.
-   * The name of the table in the database depends on {@link \WellnessLiving\Wl\Book\Process\ProcessPurchaseElementModel::$id_purchase_item}.
    *
    * @get get
    * @var string
@@ -69,7 +68,7 @@ class PurchaseElementModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $k_pay_installment_template;
+  public $k_pay_installment_template = null;
 
   /**
    * The cost of one purchase item (with taxes).
@@ -110,14 +109,6 @@ class PurchaseElementModel extends WlModelAbstract
    * @var string
    */
   public $m_price;
-
-  /**
-   * Remaining price of 1 purchase item. (With or without taxes. It depends on regional standards.)
-   *
-   * @get result
-   * @var string
-   */
-  public $m_price_remaining;
 
   /**
    * Amount of subtotal for 1 purchase item.

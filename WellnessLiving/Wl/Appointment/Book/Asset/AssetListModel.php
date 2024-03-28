@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Appointment\Book\Asset;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Resource\Image\ImageIconSid;
 use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
 use WellnessLiving\Wl\Service\ServicePriceSid;
@@ -34,7 +35,7 @@ class AssetListModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    *   <dt>array <var>a_class_tab</var></dt>
-   *   <dd>Keys are primary key in {@link \RsClassSql} table, values are primary key in {@link \Wl\Classes\Tab\Sql\ClassTab\Sql}.</dd>
+   *
    *   <dt>
    *     array[] <var>a_direct_link</var>
    *   </dt>
@@ -136,7 +137,7 @@ class AssetListModel extends WlModelAbstract
   public $i_image_width = 0;
 
   /**
-   * Mode type, one of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * Mode type, one of {@link ModeSid} constants.
    *
    * @get get
    * @var int
@@ -217,7 +218,7 @@ class AssetListModel extends WlModelAbstract
   /**
    * Timezone of date and time of asset booking.
    *
-   * Empty if {@link \WellnessLiving\Wl\Appointment\Book\Asset\AssetListModel::$dtl_date} not set or client can't change in which timezone dates should be shown.
+   * Empty if {@link AssetListModel::$dtl_date} not set or client can't change in which timezone dates should be shown.
    *
    * @get get
    * @var string

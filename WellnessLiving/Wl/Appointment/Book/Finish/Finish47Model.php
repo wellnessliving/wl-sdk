@@ -13,7 +13,7 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 class Finish47Model extends WlModelAbstract
 {
   /**
-   * A list of answers for the questions from {@link \WellnessLiving\Wl\Appointment\Book\Question\QuestionModel::$a_question}.
+   * A list of answers for the questions from {@link QuestionModel::$a_question}.
    * Key - hash of the question, value - answer for the question.
    *
    * @post post
@@ -39,7 +39,7 @@ class Finish47Model extends WlModelAbstract
   public $a_appointment = null;
 
   /**
-   * All data from the appointment booking provider model.
+   * The documentation is the same as in {@link FinishModel::$a_book_data}.
    *
    * @post post
    * @var array
@@ -57,8 +57,6 @@ class Finish47Model extends WlModelAbstract
   /**
    * A list of payment sources to pay with.
    *
-   * Structure of this array corresponds structure of {@link RsPayForm::$a_pay_source}.
-   *
    * @post post
    * @var array[]
    */
@@ -67,7 +65,7 @@ class Finish47Model extends WlModelAbstract
   /**
    * Data required for payment. Has next structure:<dl>
    *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>Type of the purchase item. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.</dd>
+   *   <dd>Type of the purchase item. One of the {@link WlPurchaseItemSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>Promotion key or appointment key. Depends on <var>id_purchase_item</var> of this array.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
@@ -94,8 +92,6 @@ class Finish47Model extends WlModelAbstract
 
   /**
    * List of quiz response keys.
-   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
-   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table.
    *
    * @post post
    * @var array
@@ -167,7 +163,7 @@ class Finish47Model extends WlModelAbstract
   public $is_back_to_back = false;
 
   /**
-   * `true` to book appointment unpaid; `false` to try to select available purchase option.
+   * If `true`, the appointment is booked as unpaid. Otherwise, this will be `false` to select an available Purchase Option.
    *
    * @post post
    * @var bool

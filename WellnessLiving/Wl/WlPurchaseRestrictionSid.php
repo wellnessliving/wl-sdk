@@ -20,7 +20,7 @@ class WlPurchaseRestrictionSid
   const INTRODUCTORY = 2;
 
   /**
-   * Purchase option available for clients with special login type.
+   * Purchase option available for clients with special login type or member group.
    */
   const TYPE = 3;
 }

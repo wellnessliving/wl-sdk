@@ -2,12 +2,17 @@
 
 namespace WellnessLiving\Wl\Book\Process;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Classes\RequirePaySid;
+use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * An endpoint that performs the booking wizard steps.
  *
- * @deprecated Use {@link \WellnessLiving\Wl\Book\Process\Process54Model} instead.
+ * @deprecated Use {@link Process54Model} instead.
  */
 class ProcessModel extends WlModelAbstract
 {
@@ -29,14 +34,14 @@ class ProcessModel extends WlModelAbstract
    *     int <var>id_book_process</var>
    *   </dt>
    *   <dd>
-   *     The step ID. One of the {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid} constants.
+   *     The step ID. One of the {@link ProcessSpaSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_current</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> — this item is current.
-   *     <tt>false</tt> — this item isn't current or not set yet.
+   *     <tt>true</tt> - this item is current.
+   *     <tt>false</tt> - this item isn't current or not set yet.
    *   </dd>
    * </dl>
    *
@@ -116,7 +121,7 @@ class ProcessModel extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * The mode type. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * Mode type. One of {@link ModeSid} constants.
    *
    * @get get
    * @post get
@@ -126,12 +131,20 @@ class ProcessModel extends WlModelAbstract
 
   /**
    * The purchase rule ID.
-   * One of the {@link \WellnessLiving\Wl\Classes\RequirePaySid} constants.
+   * One of the {@link RequirePaySid} constants.
    *
    * @get result
    * @var int
    */
   public $id_pay_require;
+
+  /**
+   * `true` if this class has age restriction and requires user to specify age. `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_age_require;
 
   /**
    * Determines if the client must authorize the credit card.
@@ -158,9 +171,8 @@ class ProcessModel extends WlModelAbstract
   public $is_family_relation_book;
 
   /**
-   * `true` — the user pressed 'Pay later'.
-   *
-   * `false` — the user pressed 'Pay now'.
+   * `true` if user pressed 'Pay later'.
+   * `false` if user pressed 'Pay now'.
    *
    * @post post
    * @var bool
@@ -176,6 +188,14 @@ class ProcessModel extends WlModelAbstract
   public $is_free = false;
 
   /**
+   * `true` if the client has an ach account, `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_have_ach = false;
+
+  /**
    * If `true`, the client has a credit card. Otherwise, this will be `false`.
    *
    * @get result
@@ -184,9 +204,9 @@ class ProcessModel extends WlModelAbstract
   public $is_have_credit_card = false;
 
   /**
-   * `true` — the client can select several sessions per booking.
+   * `true` - the client can select several sessions per booking.
    *
-   * `false` — the client can't select several sessions.
+   * `false` - the client can't select several sessions.
    *
    * @get result
    * @var bool

@@ -7,15 +7,15 @@ use WellnessLiving\WlModelAbstract;
 /**
  * An endpoint to finish the password change procedure for a user.
  *
- * This endpoint advances the {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordBeginModel} endpoint.
- * Set your desired password in the {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordBeginModel::$url_reset}
+ * This endpoint advances the {@link ChangePasswordBeginModel} endpoint.
+ * Set your desired password in the {@link ChangePasswordBeginModel::$url_reset}
  * field, where you use the "reset password" link via email to get the user's new password for this endpoint.
  *
  * When the user goes to your page, get <tt>text_mail</tt> and <tt>text_code</tt> from the URL, then post this model to set a password for user.
  *
- * Use <tt>text_mail</tt> as the value for {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordApplyModel::$text_login} and
- * {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordApplyModel::$text_mail},
- * and <tt>text_code</tt> as the value for {@link \WellnessLiving\Core\Passport\ChangePassword\ChangePasswordApplyModel::$text_code}.
+ * Use <tt>text_mail</tt> as the value for {@link ChangePasswordApplyModel::$text_login} and
+ * {@link ChangePasswordApplyModel::$text_mail},
+ * and <tt>text_code</tt> as the value for {@link ChangePasswordApplyModel::$text_code}.
  */
 class ChangePasswordApplyModel extends WlModelAbstract
 {

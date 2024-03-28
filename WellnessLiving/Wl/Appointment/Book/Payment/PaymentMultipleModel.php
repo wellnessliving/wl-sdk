@@ -4,12 +4,14 @@ namespace WellnessLiving\Wl\Appointment\Book\Payment;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
+use WellnessLiving\Wl\Classes\Tab\TabSid;
+use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * An endpoint that completes the payment for an appointment or appointment Purchase Option for a client.
  *
- * The only difference between this endpoint and {@link PaymentApi} is
+ * The only difference between this endpoint and {@link PaymentModel} is
  * that this endpoint is capable of paying for multiple appointments at the same time.
  *
  * This endpoint uses a CAPTCHA check.
@@ -44,7 +46,7 @@ class PaymentMultipleModel extends WlModelAbstract
    *         int <var>id_purchase_item</var>
    *       </dt>
    *       <dd>
-   *         The ID of the purchase item. One of the the {@link WlPurchaseItemSid} constants.
+   *         The ID of the purchase item. One of the {@link WlPurchaseItemSid} constants.
    *         This won't be empty for new options purchased.
    *       </dd>
    *       <dt>
@@ -116,7 +118,7 @@ class PaymentMultipleModel extends WlModelAbstract
    *     int <var>id_class_tab</var>
    *   </dt>
    *   <dd>
-   *     The "Book now" tab. One of the {@link \WellnessLiving\Wl\Classes\Tab\TabSid} constants.
+   *     The "Book now" tab. One of the {@link TabSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>m_tip_appointment</var>
@@ -134,7 +136,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_book_data = [];
 
   /**
-   * A copy of {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentMultipleModel::$a_book_data}.
+   * A copy of {@link PaymentMultipleModel::$a_book_data}.
    *
    * Set this field value for POST requests.
    *
@@ -162,7 +164,7 @@ class PaymentMultipleModel extends WlModelAbstract
   /**
    * A list of payment sources to pay with.
    *
-   * Each element has the next keys:
+   * Each element has next keys:
    * <dl>
    *   <dt>
    *     array [<var>a_pay_card</var>]
@@ -420,7 +422,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_uid = [];
 
   /**
-   * The ID of the source mode. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The ID of the source mode. One of the {@link ModeSid} constants.
    *
    * @get get
    * @post get

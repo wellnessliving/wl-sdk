@@ -2,18 +2,21 @@
 
 namespace WellnessLiving\Wl\Book\Process\Resource;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Book\Process\ProcessSpaSid;
 
 /**
  * An endpoint that selects assets when making a booking.
  *
- * Take note of the {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid::QUIZ} step.
+ * Take note of the {@link ProcessSpaSid::QUIZ} step.
  */
 class Resource54Model extends WlModelAbstract
 {
   /**
    * The keys of a user's activity.
-   * This won't be if the session(s) was booked at this step.
+   * This won't be empty only if the session(s) was booked at this step.
    *
    * @post result
    * @var string[]
@@ -21,13 +24,13 @@ class Resource54Model extends WlModelAbstract
   public $a_login_activity = [];
 
   /**
-   * Information about the recurring booking:
+   * Information about recurring booking:
    * <dl>
    *   <dt>
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     Days of week when appointment must repeat. Constants of {@link \WellnessLiving\Core\a\ADateWeekSid} class.
+   *     Days of week when appointment must repeat. Constants of {@link ADateWeekSid} class.
    *     Empty if appointment must not repeat weekly.
    *   </dd>
    *   <dt>
@@ -53,7 +56,7 @@ class Resource54Model extends WlModelAbstract
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     Measurement unit of `i_period`. One of {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *     Measurement unit of `i_period`. One of {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
@@ -70,7 +73,7 @@ class Resource54Model extends WlModelAbstract
    * @post post
    * @var array|null
    */
-  public $a_repeat;
+  public $a_repeat = null;
 
   /**
    * A list of asset categories which are available for specified session. Every element has next keys:
@@ -176,9 +179,9 @@ class Resource54Model extends WlModelAbstract
    * The selected assets. Every element has the next keys:
    * <dl>
    *   <dt>int <var>i_index</var></dt>
-   *   <dd>The asset number. Actual for assets with quantity greater <tt>1</tt>.</dd>
+   *   <dd>The asset number. Applies only for assets with a quantity greater than <tt>1</tt>.</dd>
    *   <dt>string <var>k_resource</var></dt>
-   *   <dd>The key of the asset.</dd>
+   *   <dd>The asset key.</dd>
    * </dl>
    *
    * @post post
@@ -230,6 +233,14 @@ class Resource54Model extends WlModelAbstract
   public $can_book = true;
 
   /**
+   * `true` if application can be book unpaid visits no matter what are the business settings.
+   * `false` if ability to book unpaid should fully depend on the business settings.
+   *
+   * @var bool
+   */
+  public $can_book_unpaid = false;
+
+  /**
    * Date/time to which session is booked.
    *
    * @get get
@@ -257,8 +268,8 @@ class Resource54Model extends WlModelAbstract
   public $is_force_pay_later = false;
 
   /**
-   * <tt>true</tt> if next steps of wizard are needed (for example. to purchase something to book the selected session);
-   * <tt>false</tt> if no next steps are needed (all that was needed was already bought).
+   * `true` - the next steps of the booking wizard are required (for example, to purchase something to book the selected session).
+   * `false` - no further booking steps are required.
    *
    * @post result
    * @var bool
@@ -281,6 +292,13 @@ class Resource54Model extends WlModelAbstract
   public $json_session = '';
 
   /**
+   * Key of the business in which the wizard is executed.
+   *
+   * @var string|null
+   */
+  public $k_business = null;
+
+  /**
    * Key of session which is booked.
    *
    * @get get
@@ -292,8 +310,6 @@ class Resource54Model extends WlModelAbstract
   /**
    * Login promotion to be used to book a class.
    *
-   * Primary key from {@link  \RsLoginProductSql}.
-   *
    * @post post
    * @var string
    */
@@ -301,8 +317,6 @@ class Resource54Model extends WlModelAbstract
 
   /**
    * Session pass to be used to book a class.
-   *
-   * Primary key from {@link  \Wl\Session\Pass\Sql}.
    *
    * @post post
    * @var string

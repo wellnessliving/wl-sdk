@@ -2,17 +2,20 @@
 
 namespace WellnessLiving\Wl\Book\Process\Info;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * An endpoint that offers functionality for the class booking wizard on the "Class and Location" page.
  *
- * @deprecated Use {@link \WellnessLiving\Wl\Book\Process\Info\Info54Model} instead.
+ * @deprecated Use {@link Info54Model} instead.
  */
 class InfoModel extends WlModelAbstract
 {
   /**
-   * Week days available for recurring booking. Constants of {@link \WellnessLiving\Core\a\ADateWeekSid} class.
+   * Week days available for recurring booking. Constants of {@link ADateWeekSid} class.
    *
    * `null` if recurring booking is not available.
    *
@@ -36,7 +39,7 @@ class InfoModel extends WlModelAbstract
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     Days of week when appointment must repeat. Constants of {@link \WellnessLiving\Core\a\ADateWeekSid} class.
+   *     Days of week when appointment must repeat. Constants of {@link ADateWeekSid} class.
    *     Empty if appointment must not repeat weekly.
    *   </dd>
    *   <dt>
@@ -62,7 +65,7 @@ class InfoModel extends WlModelAbstract
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     Measurement unit of `i_period`. One of {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *     Measurement unit of `i_period`. One of {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
@@ -79,7 +82,7 @@ class InfoModel extends WlModelAbstract
    * @post post
    * @var array|null
    */
-  public $a_repeat;
+  public $a_repeat = null;
 
   /**
    * A list of assets being booked. Every element has the next structure:
@@ -171,7 +174,7 @@ class InfoModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     String representation of session duration.
-   *     Duration formatting method {@link \WellnessLiving\Wl\Book\Process\Info\InfoModel::_classDurationFormat()}.
+   *     Duration formatting method {@link InfoModel::_classDurationFormat()}.
    *   </dd>
    * </dl>
    *
@@ -179,6 +182,23 @@ class InfoModel extends WlModelAbstract
    * @var array[]
    */
   public $a_session_all;
+
+  /**
+   * List of sessions that can be paid without new purchases.
+   * Such as previously prepaid or free sessions.
+   *
+   * Each its item has the key of following format: <dl>
+   *   <dt>string <var>dt_date</var>::<var>k_class_period</var></dt><dd>Composite key of the array.</dd>
+   * </dl>
+   * and the value of following structure: <dl>
+   *   <dt>string <var>dt_date</var></dt><dd>Session date.</dd>
+   *   <dt>string <var>k_class_period</var></dt><dd>Class period key for the session.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array[]
+   */
+  public $a_session_free;
 
   /**
    * The selected sessions.
@@ -249,6 +269,14 @@ class InfoModel extends WlModelAbstract
    * @var bool
    */
   public $can_book = true;
+
+  /**
+   * `true` if application can be book unpaid visits no matter what are the business settings.
+   * `false` if ability to book unpaid should fully depend on the business settings.
+   *
+   * @var bool
+   */
+  public $can_book_unpaid = false;
 
   /**
    * Date when this class session occurrences stop.
@@ -326,7 +354,7 @@ class InfoModel extends WlModelAbstract
    * @get result
    * @var int|null
    */
-  public $i_available;
+  public $i_available = null;
 
   /**
    * Number of booked spots.
@@ -336,7 +364,7 @@ class InfoModel extends WlModelAbstract
    * @get result
    * @var int|null
    */
-  public $i_book;
+  public $i_book = null;
 
   /**
    * The duration of the session in minutes.
@@ -355,7 +383,7 @@ class InfoModel extends WlModelAbstract
   public $i_wait_spot = 0;
 
   /**
-   * Mode type. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * Mode type. One of {@link ModeSid} constants.
    *
    * @get get
    * @post get
@@ -398,11 +426,19 @@ class InfoModel extends WlModelAbstract
   public $is_card_authorize = false;
 
   /**
+   * Can client chooses several session per booking.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_event_session = false;
+
+  /**
    * Can the class/event be booked immediately or not.
    *
    * The verification is based on the search for client's promotions and other features of the class/event.
    * But it does not take into account the presence of other mandatory steps.
-   * Their presence will be indicated by the {@link \WellnessLiving\Wl\Book\Process\Info\InfoModel::$is_next} flag.
+   * Their presence will be indicated by the {@link InfoModel::$is_next} flag.
    *
    * @post result
    * @var bool
@@ -451,6 +487,9 @@ class InfoModel extends WlModelAbstract
    *
    * @get result
    * @var bool
+   *
+   * @see InfoModel::$html_special
+   * @see InfoModel::$html_special_preview
    */
   public $is_special_preview = false;
 
@@ -461,6 +500,13 @@ class InfoModel extends WlModelAbstract
    * @var bool
    */
   public $is_virtual;
+
+  /**
+   * Key of the business in which the wizard is executed.
+   *
+   * @var string|null
+   */
+  public $k_business = null;
 
   /**
    * Key of session which is booked.
@@ -482,8 +528,6 @@ class InfoModel extends WlModelAbstract
   /**
    * Login promotion to be used to book a class.
    *
-   * Primary key from {@link  \RsLoginProductSql}.
-   *
    * @post post
    * @var string
    */
@@ -491,8 +535,6 @@ class InfoModel extends WlModelAbstract
 
   /**
    * Session pass to be used to book a class.
-   *
-   * Primary key from {@link  \Wl\Session\Pass\Sql}.
    *
    * @post post
    * @var string
@@ -575,7 +617,7 @@ class InfoModel extends WlModelAbstract
 
   /**
    * Text representation of the list of staffs.
-   * List of staff see {@link \WellnessLiving\Wl\Book\Process\Info\InfoModel::$a_staff}.
+   * List of staff see {@link InfoModel::$a_staff}.
    *
    * @get result
    * @var string

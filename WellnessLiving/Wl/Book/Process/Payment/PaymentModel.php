@@ -2,7 +2,10 @@
 
 namespace WellnessLiving\Wl\Book\Process\Payment;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * An endpoint that acts as the booking wizard for the "Pay/Billing info" page.
@@ -20,7 +23,7 @@ class PaymentModel extends WlModelAbstract
    *     int <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     The ID of purchase item type. One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
+   *     The ID of purchase item type. One of {@link WlPurchaseItemSid} constants.
    *   </dd>
    *   <dt>
    *     boolean [<var>is_renew</var>]
@@ -193,9 +196,6 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * List of quiz response keys.
-   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
-   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table or
-   * special value from {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} constant.
    *
    * @post post
    * @var array
@@ -209,7 +209,7 @@ class PaymentModel extends WlModelAbstract
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     Days of week when appointment must repeat. Constants of {@link \WellnessLiving\Core\a\ADateWeekSid} class.
+   *     Days of week when appointment must repeat. Constants of {@link ADateWeekSid} class.
    *     Empty if appointment must not repeat weekly.
    *   </dd>
    *   <dt>
@@ -235,7 +235,7 @@ class PaymentModel extends WlModelAbstract
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     Measurement unit of `i_period`. One of {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *     Measurement unit of `i_period`. One of {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
@@ -252,7 +252,7 @@ class PaymentModel extends WlModelAbstract
    * @post post
    * @var array|null
    */
-  public $a_repeat;
+  public $a_repeat = null;
 
   /**
    * A list of assets being booked. Every element has the next keys:
@@ -308,6 +308,14 @@ class PaymentModel extends WlModelAbstract
   public $can_book = true;
 
   /**
+   * `true` if application can be book unpaid visits no matter what are the business settings.
+   * `false` if ability to book unpaid should fully depend on the business settings.
+   *
+   * @var bool
+   */
+  public $can_book_unpaid = false;
+
+  /**
    * Date/time to which session is booked.
    *
    * @get get
@@ -343,6 +351,13 @@ class PaymentModel extends WlModelAbstract
   public $is_force_pay_later = false;
 
   /**
+   * Key of the business in which the wizard is executed.
+   *
+   * @var string|null
+   */
+  public $k_business = null;
+
+  /**
    * Key of session which is booked.
    *
    * @get get
@@ -361,8 +376,6 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * Login promotion to be used to book a class.
-   *
-   * Primary key from {@link  \RsLoginProductSql}.
    *
    * @post post
    * @var string

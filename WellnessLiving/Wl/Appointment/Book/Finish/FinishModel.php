@@ -2,16 +2,23 @@
 
 namespace WellnessLiving\Wl\Appointment\Book\Finish;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Appointment\Book\Question\QuestionModel;
+use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
+use WellnessLiving\Wl\Classes\Tab\TabSid;
+use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * An endpoint that completes the booking process for a service.
  *
  * This endpoint can be used with an existing client by specifying their UID. It can also be used to create a new
- * client by specifying user details in {@link \WellnessLiving\Wl\Appointment\Book\Finish\FinishModel::$a_user} and omitting any UID.
+ * client by specifying user details in {@link FinishModel::$a_user} and omitting any UID.
  * This endpoint can be accessed anonymously without authentication, but only when creating clients.
  *
- * @deprecated Use {@link \WellnessLiving\Wl\Appointment\Book\Finish\Finish47Model} instead.
+ * @deprecated Use {@link Finish47Model} instead.
  */
 class FinishModel extends WlModelAbstract
 {
@@ -161,12 +168,14 @@ class FinishModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The asset booking. Specify this for separate asset bookings only.
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_service</var>]
    *   </dt>
    *   <dd>
    *     The appointment booking. Specify this for appointment bookings only.
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_staff</var>]
@@ -174,6 +183,7 @@ class FinishModel extends WlModelAbstract
    *   <dd>
    *     The staff member conducting the appointment.
    *     Specify this for appointment bookings only.
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_staff_date</var>]
@@ -183,6 +193,7 @@ class FinishModel extends WlModelAbstract
    *     The difference between this an <var>k_staff</var> is that this value must be set only in cases
    *     when you want to add a customer to an appointment that already exists.
    *     Specify this for appointment bookings only.
+   *
    *   </dd>
    *   <dt>string [<var>m_tip_appointment</var>]</dt>
    *   <dd>The amount of selected tips.</dd>
@@ -248,8 +259,8 @@ class FinishModel extends WlModelAbstract
   public $a_quiz_response = [];
 
   /**
-   * A list of user keys to book appointments with.
-   * Empty values represent walk-ins.
+   * List of user keys to book appointments.
+   * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
    * @post get
@@ -288,7 +299,7 @@ class FinishModel extends WlModelAbstract
   public $a_visit;
 
   /**
-   * The booking mode ID. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The booking mode ID. One of the {@link ModeSid} constants.
    *
    * @post post
    * @var int
@@ -348,7 +359,7 @@ class FinishModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The location key.
+   * The location key used for showing the available appointment booking schedule.
    *
    * @get get,result
    * @post get

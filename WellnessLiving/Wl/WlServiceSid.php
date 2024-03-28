@@ -17,7 +17,7 @@ abstract class WlServiceSid
   /**
    * Classes.
    */
-  const CLASSES = 2; // Can not use single form class because this is an internal php word
+  const CLASSES = 2;
 
   /**
    * Enrolments.

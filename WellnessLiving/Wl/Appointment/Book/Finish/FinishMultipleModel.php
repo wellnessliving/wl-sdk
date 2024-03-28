@@ -151,18 +151,21 @@ class FinishMultipleModel extends WlModelAbstract
    *   <dd>
    *     The user's Purchase Option.
    *     Specify this if you want to use a specific Purchase Option to pay for the booking.
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_resource</var>]
    *   </dt>
    *   <dd>
    *     The asset booking. Specify this for separate asset bookings only.
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_service</var>]
    *   </dt>
    *   <dd>
    *     The appointment booking. Specify this for appointment bookings only.
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_staff</var>]
@@ -170,6 +173,7 @@ class FinishMultipleModel extends WlModelAbstract
    *   <dd>
    *     The staff member conducting the appointment.
    *     Specify this for appointment bookings only.
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_staff_date</var>]
@@ -179,6 +183,7 @@ class FinishMultipleModel extends WlModelAbstract
    *     The difference between this and <var>k_staff</var> is that this value must be set only in cases
    *     when you want to add customer to an appointment that already exists.
    *     Specify this for appointment bookings only.
+   *
    *   </dd>
    *   <dt>string [<var>m_tip_appointment</var>]</dt>
    *   <dd>The amount of selected tips.</dd>
@@ -217,8 +222,6 @@ class FinishMultipleModel extends WlModelAbstract
 
   /**
    * A list of payment sources to pay with.
-   *
-   * The structure of this array corresponds with the structure of {@link RsPayForm::$a_pay_source}.
    *
    * @post post
    * @var array[]
@@ -261,8 +264,8 @@ class FinishMultipleModel extends WlModelAbstract
   public $a_quiz_response = [];
 
   /**
-   * The list of user keys to book appointments with.
-   * Empty values in this list signify walk-ins.
+   * List of user keys to book appointments.
+   * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
    * @post get
@@ -294,7 +297,15 @@ class FinishMultipleModel extends WlModelAbstract
   public $a_visit = [];
 
   /**
-   * The mode type. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * `true` if application can be book unpaid visits no matter what are the business settings.
+   * `false` if ability to book unpaid should fully depend on the business settings.
+   *
+   * @var bool
+*/
+  public $can_book_unpaid = false;
+
+  /**
+   * The mode type. One of the {@link ModeSid} constants.
    *
    * @post post
    * @var int
@@ -318,7 +329,7 @@ class FinishMultipleModel extends WlModelAbstract
   public $is_try = false;
 
   /**
-   * This will be `true` if the client is walk-in. Otherwise, this will be `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -344,7 +355,7 @@ class FinishMultipleModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The location to show the available appointment booking schedule for.
+   * Location to show available appointment booking schedule.
    *
    * @get get,result
    * @post get
@@ -361,7 +372,7 @@ class FinishMultipleModel extends WlModelAbstract
   public $s_id = '';
 
   /**
-   * The user to get information for.
+   * The user key.
    *
    * @get get
    * @post get

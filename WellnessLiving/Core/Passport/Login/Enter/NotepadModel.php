@@ -13,9 +13,11 @@ class NotepadModel extends CustomNotepadModel
 {
   /**
    * ID of the datacenter which is a preferred datacenter for the user specified in
+   * {@link NotepadModel::$s_login}.
    *
    * If ID of the datacenter returned in this property differs from the current datacenter, this means that this
    * API request was forwarded to the datacenter returned here, and the notepad was created there.
+   * So that {@link EnterModel} must always go to the datacenter specified in this property.
    *
    * `null` if datacenter preference was not evaluated, or it is not known.
    * In this case, the notepad is created in datacenter where the API request was initially sent.

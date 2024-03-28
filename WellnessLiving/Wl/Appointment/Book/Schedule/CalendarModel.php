@@ -2,6 +2,8 @@
 
 namespace WellnessLiving\Wl\Appointment\Book\Schedule;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -76,7 +78,7 @@ class CalendarModel extends WlModelAbstract
    *       <dt>int <var>i_shift</var></dt>
    *       <dd>Timezone shift from UTC in hours.</dd>
    *       <dt>bool <var>is_select</var></dt>
-   *       <dd>`true` for selected timezone - from {@link \WellnessLiving\Wl\Appointment\Book\Schedule\CalendarModel::$k_timezone} param or client's default timezone when param not set.</dd>
+   *       <dd>`true` for selected timezone - from {@link CalendarModel::$k_timezone} param or client's default timezone when param not set.</dd>
    *       <dt>string <var>k_timezone</var></dt>
    *       <dd>Timezone key.</dd>
    *       <dt>string <var>s_title</var></dt>
@@ -109,7 +111,7 @@ class CalendarModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>int <var>i_day</var></dt>
-   *   <dd>Week day, one of the {@link \WellnessLiving\Core\a\ADateWeekSid} constants.</dd>
+   *   <dd>Week day, one of the {@link ADateWeekSid} constants.</dd>
    *   <dt>string <var>html_week_day</var></dt>
    *   <dd>Short week day's name (2 letters, i.e. 'Fr').</dd>
    * </dl>
@@ -153,7 +155,7 @@ class CalendarModel extends WlModelAbstract
   public $i_index = 0;
 
   /**
-   * Last day of the week. One of {@link \WellnessLiving\Core\a\ADateWeekSid} constants.
+   * Last day of the week. One of {@link ADateWeekSid} constants.
    *
    * @get result
    * @var int
@@ -161,7 +163,7 @@ class CalendarModel extends WlModelAbstract
   public $i_week_end;
 
   /**
-   * First day of the week. One of {@link \WellnessLiving\Core\a\ADateWeekSid} constants.
+   * First day of the week. One of {@link ADateWeekSid} constants.
    *
    * @get result
    * @var int
@@ -171,7 +173,7 @@ class CalendarModel extends WlModelAbstract
   /**
    * The ID of the staff member's gender.
    * In case of back-to-back booking - staff gender of first appointment.
-   * One of the {@link \WellnessLiving\Core\a\AGenderSid} constants. `0` means no limitations on staff gender.
+   * One of the {@link AGenderSid} constants. `0` means no limitations on staff gender.
    *
    * @get get
    * @var int
@@ -204,6 +206,17 @@ class CalendarModel extends WlModelAbstract
   public $is_staff = false;
 
   /**
+   * `true` - search in all tabs.
+   * `false` - search only for the selected bookable tab.
+   *
+   * Cannot be set simultaneously with {DayTimeApi::$k_class_tab}.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_tab_all = false;
+
+  /**
    * `true` - return service categories that have no staff members able to conduct them.
    * `false` - return only service categories that have staff members able to conduct them.
    *
@@ -228,6 +241,17 @@ class CalendarModel extends WlModelAbstract
    * @var bool
    */
   public $is_walk_in = false;
+
+  /**
+   * Current booking tab.
+   * Only used for asset booking with "Allow clients to select a date and time, then the available asset" booking policy enabled.
+   *
+   * Cannot be set simultaneously with {DayTimeApi::$is_tab_all}.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $k_class_tab = null;
 
   /**
    * Location to show available appointment booking schedule.
@@ -274,22 +298,22 @@ class CalendarModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $k_timezone;
+  public $k_timezone = null;
 
   /**
    * The staff key to show what days are available for booking.
    *
-   * For back-to-back booking ({@link \WellnessLiving\Wl\Appointment\Book\Schedule\DayTimeModel::$is_back_to_back} == `true`): array of appointments for back-to-back booking.
+   * For back-to-back booking ({@link DayTimeModel::$is_back_to_back} == `true`): array of appointments for back-to-back booking.
    * Converted to JSON string to be usable as model key. Each item is an array with next structure:
    * <dl>
-   * <dt>array <var>a_addon</var></dt><dd>Array of appointment addons. Each value is primary key in {@link \RsShopProductSql} table.</dd>
+   * <dt>array <var>a_addon</var></dt><dd>Array of appointment addons.</dd>
    * <dt>int <var>i_duration</var></dt><dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd>
    * <dt>int <var>id_gender_staff</var></dt><dd>Staff gender. One of {@link \WellnessLiving\Core\a\AGenderSid} constants. Zero mean no limitations on staff gender.</dd>
    * <dt>string <var>k_service</var></dt><dd>Service key.</dd>
    * <dt>string <var>k_staff</var></dt><dd>Staff key. Zero means any available staff.</dd>
    * </dl>
    *
-   * For multiple appointment booking ({@link \WellnessLiving\Wl\Appointment\Book\Schedule\DayTimeModel::$is_back_to_back} == `false`): array of previously booked appointments.
+   * For multiple appointment booking ({@link DayTimeModel::$is_back_to_back} == `false`): array of previously booked appointments.
    * Converted to JSON string to be usable as model key. Each item is an array with next structure:
    * <dl>
    * <dt>string <var>dtl_date</var></dt><dd>Local date and time of appointment start in MySQL format.</dd>

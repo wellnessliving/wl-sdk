@@ -28,6 +28,7 @@ class ResponseStatusSid
    * Response in inactive.
    *
    * It's temporary status which used when response is saved during registration/booking/purchase process,
+   * after this process is ended response status changed to {@link ResponseStatusSid::ACTIVE}.
    */
   const INACTIVE = 3;
 
@@ -35,6 +36,7 @@ class ResponseStatusSid
    * Response in inactive and in draft mode.
    *
    * It's temporary status which used when response is saved in draft mode during registration/booking/purchase process,
+   * after this process is ended response status changed to {@link ResponseStatusSid::DRAFT}.
    */
   const INACTIVE_DRAFT = 4;
 }

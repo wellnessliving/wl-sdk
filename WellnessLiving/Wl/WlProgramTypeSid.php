@@ -36,8 +36,6 @@ abstract class WlProgramTypeSid
    * This promotion is a membership.
    *
    * Payment schedule can be set up for memberships.
-   *
-   * Use {@link RsPromotionPaySchedule::updateTrx()} to update payment schedule and/or renew the promotion.
    */
   const MEMBERSHIP = 3;
 

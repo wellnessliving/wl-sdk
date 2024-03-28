@@ -2,14 +2,17 @@
 
 namespace WellnessLiving\Wl\Book\Process;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
 
 /**
  * An endpoint that performs the booking wizard steps.
  *
- * Include the {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid::QUIZ} step, if needed.
+ * Include the {@link ProcessSpaSid::QUIZ} step, if needed.
  *
- * @deprecated Use {@link \Wl\Book\Process\Process59Model} instead.
+ * @deprecated Use {@link Process59Model} instead.
  */
 class Process54Model extends WlModelAbstract
 {
@@ -31,14 +34,14 @@ class Process54Model extends WlModelAbstract
    *     int <var>id_book_process</var>
    *   </dt>
    *   <dd>
-   *     The step ID. One of the {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid} constants.
+   *     The step ID. One of the {@link ProcessSpaSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_current</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> — this item is current.
-   *     <tt>false</tt> — this item isn't current or not set yet.
+   *     <tt>true</tt> - this item is current.
+   *     <tt>false</tt> - this item isn't current or not set yet.
    *   </dd>
    * </dl>
    *
@@ -97,7 +100,7 @@ class Process54Model extends WlModelAbstract
    * @post post
    * @var array|null
    */
-  public $a_repeat;
+  public $a_repeat = null;
 
   /**
    * Determines whether the class/event can be booked at this step or not.
@@ -109,7 +112,15 @@ class Process54Model extends WlModelAbstract
   public $can_book = true;
 
   /**
-   * The date/time the session is booked for.
+   * `true` if application can be book unpaid visits no matter what are the business settings.
+   * `false` if ability to book unpaid should fully depend on the business settings.
+   *
+   * @var bool
+   */
+  public $can_book_unpaid = false;
+
+  /**
+   * Date/time to which session is booked.
    *
    * @get get
    * @post get
@@ -136,6 +147,14 @@ class Process54Model extends WlModelAbstract
   public $id_pay_require;
 
   /**
+   * `true` if this class has age restriction and requires user to specify age. `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_age_require;
+
+  /**
    * Determines if the client must authorize the credit card.
    *
    * @get result
@@ -160,9 +179,8 @@ class Process54Model extends WlModelAbstract
   public $is_family_relation_book;
 
   /**
-   * `true` — the user pressed 'Pay later'.
-   *
-   * `false` — the user pressed 'Pay now'.
+   * `true` if user pressed 'Pay later'.
+   * `false` if user pressed 'Pay now'.
    *
    * @post post
    * @var bool
@@ -178,6 +196,14 @@ class Process54Model extends WlModelAbstract
   public $is_free = false;
 
   /**
+   * `true` if the client has an ach account, `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_have_ach = false;
+
+  /**
    * If `true`, the client has a credit card. Otherwise, this will be `false`.
    *
    * @get result
@@ -186,9 +212,9 @@ class Process54Model extends WlModelAbstract
   public $is_have_credit_card = false;
 
   /**
-   * `true` — the client can select several sessions per booking.
+   * `true` - the client can select several sessions per booking.
    *
-   * `false` — the client can't select several sessions.
+   * `false` - the client can't select several sessions.
    *
    * @get result
    * @var bool
@@ -204,7 +230,14 @@ class Process54Model extends WlModelAbstract
   public $is_wait;
 
   /**
-   * The key of the booked session.
+   * Key of the business in which the wizard is executed.
+   *
+   * @var string|null
+   */
+  public $k_business = null;
+
+  /**
+   * Key of session which is booked.
    *
    * @get get
    * @post get

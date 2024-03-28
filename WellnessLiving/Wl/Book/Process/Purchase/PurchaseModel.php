@@ -2,7 +2,13 @@
 
 namespace WellnessLiving\Wl\Book\Process\Purchase;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\WlProgramCategorySid;
+use WellnessLiving\Wl\WlProgramSid;
+use WellnessLiving\Wl\WlProgramTypeSid;
 
 /**
  * An endpoint that displays information about Purchase Options that can book specified session(s).
@@ -10,7 +16,7 @@ use WellnessLiving\WlModelAbstract;
  * Note that the terms "Purchase Option" and "promotion" represent the same thing (promotion was the previous term
  * used in WellnessLiving). Both these terms have been used for various variable names.
  *
- * @deprecated Use {@link \WellnessLiving\Wl\Book\Process\Purchase\Purchase56Model} instead.
+ * @deprecated Use {@link Purchase56Model} instead.
  */
 class PurchaseModel extends WlModelAbstract
 {
@@ -69,7 +75,7 @@ class PurchaseModel extends WlModelAbstract
    *   <dt>int|null <var>i_limit_duration</var></dt>
    *   <dd>The maximum number of minutes the Purchase Option can be used for.</dd>
    *   <dt>int <var>id_program</var></dt>
-   *   <dd>The program ID for Purchase Options. One of the {@link \WellnessLiving\WlProgramSid} constants.</dd>
+   *   <dd>The program ID for Purchase Options. One of the {@link WlProgramSid} constants.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
    *   <dd>The login promotion key.</dd>
    *   <dt>string <var>s_class_include</var></dt>
@@ -109,7 +115,7 @@ class PurchaseModel extends WlModelAbstract
    *         int <var>id_duration</var>
    *       </dt>
    *       <dd>
-   *          The duration of a single period. One of the {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *          The duration of a single period. One of the {@link ADurationSid} constants.
    *       </dd>
    *       <dt>
    *         int <var>i_period</var>
@@ -203,19 +209,19 @@ class PurchaseModel extends WlModelAbstract
    *     int [<var>id_program_category</var>]
    *   </dt>
    *   <dd>
-   *     This is only set for promotions. The ID of the promotion program category. One of the {@link \WellnessLiving\WlProgramCategorySid} constants.
+   *     This is only set for promotions. The ID of the promotion program category. One of the {@link WlProgramCategorySid} constants.
    *   </dd>
    *   <dt>
    *     int [<var>id_program_type</var>]
    *   </dt>
    *   <dd>
-   *     This is only set for promotions. The ID of the promotion program type. One of the {@link \WellnessLiving\WlProgramTypeSid} constants.
+   *     This is only set for promotions. The ID of the promotion program type. One of the {@link WlProgramTypeSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     The ID of Purchase Option type. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
+   *     The ID of Purchase Option type. One of the {@link WlPurchaseItemSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_contract</var>]
@@ -360,6 +366,7 @@ class PurchaseModel extends WlModelAbstract
    *
    * @get result
    * @var array
+   * @see PurchaseModel::_getSessionPassList()
    */
   public $a_session_pass = [];
 
@@ -429,9 +436,8 @@ class PurchaseModel extends WlModelAbstract
   public $is_card_authorize = false;
 
   /**
-   * `true` — the user selected 'Pay later'.
-   *
-   * `false` — the user selected 'Pay now'.
+   * `true` if user pressed 'Pay later'.
+   * `false` if user pressed 'Pay now'.
    *
    * @post post
    * @var bool
@@ -449,19 +455,12 @@ class PurchaseModel extends WlModelAbstract
   /**
    * The business key.
    *
-   * @get get
-   * @var string
-   */
-  public $k_business = '';
-
-  /**
-   * The default Purchase Option key.
-   * This will be empty if the class has no default Purchase Option.
+   * `null` if business key was not passed.
    *
-   * @get result
-   * @var string
+   * @get get
+   * @var string|null
    */
-  public $k_promotion_default = '';
+  public $k_business = null;
 
   /**
    * The key of the booked session.
@@ -481,7 +480,16 @@ class PurchaseModel extends WlModelAbstract
   public $k_login_promotion = '';
 
   /**
-   * The session pass used to book the class.
+   * The default Purchase Option key.
+   * This will be empty if the class has no default Purchase Option.
+   *
+   * @get result
+   * @var string
+   */
+  public $k_promotion_default = '';
+
+  /**
+   * Session pass to be used to book a class.
    *
    * @post post
    * @var string

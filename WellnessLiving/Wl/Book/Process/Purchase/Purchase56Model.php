@@ -2,7 +2,13 @@
 
 namespace WellnessLiving\Wl\Book\Process\Purchase;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\WlProgramCategorySid;
+use WellnessLiving\Wl\WlProgramSid;
+use WellnessLiving\Wl\WlProgramTypeSid;
 
 /**
  * An endpoint that displays information about Purchase Options that can book specified session(s).
@@ -16,69 +22,69 @@ class Purchase56Model extends WlModelAbstract
    * <dl>
    *   <dt>array <var>a_login_promotion_info</var></dt>
    *   <dd>
-   *      Information about the promotion. It contains the following information:
+   *      Information about the Purchase Option with the following information:
    *      <dl>
    *        <dt>int <var>i_limit</var></dt>
-   *        <dd>The count of visits that the promotion allows the client to make.</dd>
+   *        <dd>The number of visits the Purchase Option allows the client to make.</dd>
    *        <dt>int|null <var>i_limit_duration</var></dt>
-   *        <dd>The maximum number of minutes that the current promotion can be used for.</dd>
+   *        <dd>The maximum number of minutes the Purchase Option can be used for.</dd>
    *        <dt>int <var>i_remain</var></dt>
-   *        <dd>The count of the remaining visits.</dd>
+   *        <dd>The number of the remaining visits the Purchase Option has left.</dd>
    *        <dt>int|null <var>i_remain_duration</var></dt>
-   *        <dd>The number of minutes left in this promotion.</dd>
+   *        <dd>The number of minutes left in the Purchase Option.</dd>
    *      </dl>
    *   </dd>
    *   <dt>string[] <var>a_visit_limit</var></dt>
    *   <dd>The list of calendar restrictions of the promotion (for example, 4 per week).</dd>
    *   <dt>array <var>a_restrict</var></dt>
-   *   <dd>The data about the shortest restriction period:
+   *   <dd>Data about the shortest restriction period:
    *     <dl>
    *       <dt>int <var>i_limit</var></dt>
    *       <dd>The limit of visits for the shortest restriction period.</dd>
    *       <dt>int <var>i_remain</var></dt>
    *       <dd>The number of remaining visits for the shortest restriction period.</dd>
    *       <dt>string <var>text_restriction</var></dt>
-   *       <dd>The description of the shortest restriction period. For example, "this week" or "for a 4-day period".</dd>
+   *       <dd>The description of the shortest restriction period (for example "this week" or "for a 4 day period").</dd>
    *     </dl>
    *   </dd>
    *   <dt>array[] <var>a_restrict_data</var></dt>
-   *   <dd>Data for all restriction periods given as an array, where each record has the following structure:
+   *   <dd>Data about all restriction periods given as an array, where each record has the following structure:
    *     <dl>
    *       <dt>int <var>i_book</var></dt>
-   *       <dd>The count of future sessions paid with this promotion.</dd>
+   *       <dd>The number of future sessions paid using this Purchase Option.</dd>
    *       <dt>int <var>i_limit</var></dt>
    *       <dd>The limit of visits for the restriction period.</dd>
    *       <dt>int <var>i_remain</var></dt>
    *       <dd>The number of remaining visits for the restriction period.</dd>
    *       <dt>int <var>i_use</var></dt>
-   *       <dd>The promotion's usage count.</dd>
+   *       <dd>The Purchase Option's usage count.</dd>
    *       <dt>int <var>i_visit_past</var></dt>
    *       <dd>
-   *         The count of attended sessions before the last renewal.
-   *         If `0`, there weren't any sessions before the last renewal or the promotion doesn't auto-renew.
+   *         The number of attended sessions before the last renewal.
+   *         This will be `0` if there aren't any sessions before the last renewal or the Purchase Option doesn't auto-renew.
    *       </dd>
    *       <dt>string <var>text_restriction</var></dt>
-   *       <dd>The description of the restriction period. For example, "this week" or "for a 4-day period".</dd>
+   *       <dd>The description of restriction period (for example "this week" or "for a 4 day period").</dd>
    *     </dl>
    *   </dd>
    *   <dt>int <var>i_limit</var></dt>
-   *   <dd>The number of visits the promotion allows the client to make.</dd>
+   *   <dd>The number of visits the Purchase Option allows the client to make.</dd>
    *   <dt>int|null <var>i_limit_duration</var></dt>
-   *   <dd>The maximum number of minutes the current promotion can be used for.</dd>
+   *   <dd>The maximum number of minutes the Purchase Option can be used for.</dd>
    *   <dt>int <var>id_program</var></dt>
-   *   <dd>The program ID for promotions. One of the {@link \WellnessLiving\WlProgramSid} constants.</dd>
+   *   <dd>The program ID for Purchase Options. One of the {@link WlProgramSid} constants.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
    *   <dd>The login promotion key.</dd>
    *   <dt>string <var>s_class_include</var></dt>
-   *   <dd>The list of services provided by this promotion.</dd>
+   *   <dd>The list of services provided by this Purchase Option.</dd>
    *   <dt>string <var>s_description</var></dt>
-   *   <dd>The promotion's description.</dd>
+   *   <dd>The Purchase Option description.</dd>
    *   <dt>string <var>s_duration</var></dt>
-   *   <dd>The promotion's duration.</dd>
+   *   <dd>The Purchase Option duration.</dd>
    *   <dt>string <var>s_title</var></dt>
-   *   <dd>The promotion's name.</dd>
+   *   <dd>The Purchase Option name.</dd>
    *   <dt>string <var>text_package_item</var></dt>
-   *   <dd>A list of promotions contained in the package (only applicable for promotions that are packages).</dd>
+   *   <dd>If this promotion is a package, this field will contain a list of Purchase Options contained in the package.</dd>
    * </dl>
    *
    * @get result
@@ -87,7 +93,8 @@ class Purchase56Model extends WlModelAbstract
   public $a_login_promotion = [];
 
   /**
-   * A list of promotions available for the session(s) being booked. Keys refer to unique string IDs. Values are arrays with the next keys:
+   * A list of Purchase Options that are available for the session(s) being booked. Keys refer to unique string IDs, and
+   * values refer arrays with the next keys:
    * <dl>
    *   <dt>
    *     array[] <var>a_installment_template</var>.
@@ -105,7 +112,7 @@ class Purchase56Model extends WlModelAbstract
    *         int <var>id_duration</var>
    *       </dt>
    *       <dd>
-   *          The duration of a single period. One of the {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *          The duration of a single period. One of the {@link ADurationSid} constants.
    *       </dd>
    *       <dt>
    *         int <var>i_period</var>
@@ -143,7 +150,7 @@ class Purchase56Model extends WlModelAbstract
    *     array[] [<var>a_visit_limit</var>]
    *   </dt>
    *   <dd>
-   *     A list of booking limitations for the promotion. Every element has the next keys:
+   *     This is only set for Purchase Options. A list of limits on booking by the Purchase Option. Every element has the next keys:
    *     <dl>
    *       <dt>
    *         string <var>s_title</var>
@@ -169,7 +176,7 @@ class Purchase56Model extends WlModelAbstract
    *     string <var>html_payment_period</var>
    *   </dt>
    *   <dd>
-   *     The measurement unit of <var>i_payment_period</var> in short form (only for promotions with 'membership' program.).
+   *     This is only set for Purchase Options with the 'membership' program type. The measurement unit of <var>i_payment_period</var> in short form.
    *   </dd>
    *   <dt>
    *     string <var>html_description</var>
@@ -181,91 +188,92 @@ class Purchase56Model extends WlModelAbstract
    *     int [<var>i_limit</var>]
    *   </dt>
    *   <dd>
-   *     The limit of sessions that can be booked by promotions.
+   *     The limit of sessions that can be booked by Purchase Options.
    *   </dd>
    *   <dt>
    *     int [<var>i_payment_period</var>]
    *   </dt>
    *   <dd>
-   *     The duration of the regular payment interval (only for promotions with 'membership' program).
+   *     This is only set for Purchase Options with the 'membership' program type. The duration of the regular payment interval.
    *   </dd>
    *   <dt>
    *     int [<var>i_session</var>]
    *   </dt>
    *   <dd>
-   *     The number of sessions which are booked simultaneously (only for purchases of single sessions).
+   *     This is only set for purchases of single sessions. The number of sessions booked simultaneously.
    *   </dd>
    *   <dt>
    *     int [<var>id_program_category</var>]
    *   </dt>
    *   <dd>
-   *     The ID of the promotion program category (only for promotions). One of the {@link \WellnessLiving\WlProgramCategorySid} constants.
+   *     This is only set for promotions. The ID of the promotion program category. One of the {@link WlProgramCategorySid} constants.
    *   </dd>
    *   <dt>
    *     int [<var>id_program_type</var>]
    *   </dt>
    *   <dd>
-   *     The ID of the promotion program type (only for promotions). One of the {@link \WellnessLiving\WlProgramTypeSid} constants.
+   *     This is only set for promotions. The ID of the promotion program type. One of the {@link WlProgramTypeSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     The ID of the promotion type. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
+   *     The ID of Purchase Option type. One of the {@link WlPurchaseItemSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_contract</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> — the promotion requires a contract assignment. <tt>false</tt> — the promotion doesn't require assignment.
+   *     If <tt>true</tt>, the Purchase Option requires a contract assignment. Otherwise, this will be <tt>false</tt>.
    *   </dd>
    *   <dt>
    *     bool [<var>is_convert</var>]
    *   </dt>
    *   <dd>
-   *     If <tt>true</tt>, the promotion should be converted to another instance upon expiration. Otherwise, this will be <tt>false</tt>.
+   *     If <tt>true</tt>, the Purchase Option converts to another instance upon expiration. Otherwise, this will be <tt>false</tt>.
    *   </dd>
    *   <dt>
    *     bool [<var>is_renew</var>]
    *   </dt>
    *   <dd>
-   *     If <tt>true</tt>, the promotion is renewable. Otherwise, this will be <tt>false</tt>.
+   *     If <tt>true</tt>, the Purchase Option is renewable. Otherwise, this will be <tt>false</tt>.
    *   </dd>
    *   <dt>
    *     bool [<var>is_renew_check</var>]
    *   </dt>
    *   <dd>
-   *     If <tt>true</tt>, the promotion is renewable and the "auto-renew" option is turned on by default. Otherwise, this will be <tt>false</tt>.
+   *     If <tt>true</tt>, the Purchase Option is renewable and the "auto-renew" option is turned on by default. Otherwise,
+   *     this will be <tt>false</tt>.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>
    *   </dt>
    *   <dd>
-   *     The key of the promotion in the database. The table depends on <var>id_purchase_item</var>.
+   *     The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.
    *   </dd>
    *   <dt>
    *     string [<var>k_login_prize</var>]
    *   </dt>
    *   <dd>
-   *     The key of the user's prize that can be used instead a promotion to book the session.
+   *     The key of the user's prize that can be used instead a Purchase Option to book the session.
    *   </dd>
    *   <dt>
    *     string [<var>s_contract</var>]
    *   </dt>
    *   <dd>
-   *     The contract of the promotion. This is only set if <var>is_contract</var> is <tt>true</tt>.
+   *     The contract of the Purchase Option. This is only set if <var>is_contract</var> is <tt>true</tt>.
    *   </dd>
    *   <dt>
    *     string [<var>s_payment_duration</var>]
    *   </dt>
    *   <dd>
-   *     The measurement unit of <var>i_payment_period</var> (only for promotions with 'membership' program).
+   *     This is only set for Purchase Options with the 'membership' program type. The measurement unit of <var>i_payment_period</var>.
    *   </dd>
    *   <dt>
    *     string [<var>s_promotion_convert</var>]
    *   </dt>
    *   <dd>
-   *     The new title of the promotion to use upon conversion after expiration (only if <var>is_convert</var> is <tt>true</tt>.).
+   *     This is only set if <var>is_convert</var> is <tt>true</tt>. The title to use for the new Purchase Option instance upon auto-renewal.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
@@ -287,56 +295,56 @@ class Purchase56Model extends WlModelAbstract
   public $a_purchase = [];
 
   /**
-   * Information about the recurring booking:
+   * Information about recurring booking:
    * <dl>
    *   <dt>
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     The days of week when appointment repeats. One of the {@link \WellnessLiving\Core\a\ADateWeekSid} constants.
-   *     This will be empty if the appointment doesn't repeat weekly.
+   *     Days of week when appointment must repeat. Constants of {@link ADateWeekSid} class.
+   *     Empty if appointment must not repeat weekly.
    *   </dd>
    *   <dt>
    *     string [<var>dl_end</var>]
    *   </dt>
    *   <dd>
-   *     The date when appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
+   *     Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
    *   </dd>
    *   <dt>
    *     int [<var>i_occurrence</var>]
    *   </dt>
    *   <dd>
-   *     The number of occurrences after which the appointment's repeat cycle stops.
-   *     This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
+   *     Number of occurrences after that appointment repeat must stop.
+   *     Empty if repeat must not stop after a certain number of occurrences.
    *   </dd>
    *   <dt>
    *     int <var>i_period</var>
    *   </dt>
    *   <dd>
-   *     The frequency of the appointment's repeat cycle.
+   *     Frequency of appointment repeating.
    *   </dd>
    *   <dt>
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     The measurement unit of `i_period`. One of the {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *     Measurement unit of `i_period`. One of {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     `true` — the appointment repeats monthly on the same date.
-   *     `false` — the appointment repeats monthly on the same day of the week.
-   *     `null` — the appointment doesn't repeat monthly.
+   *     `true` if appointment must repeat monthly at the same date.
+   *     `false` if appointment must repeat monthly at the same week day.
+   *     `null` if appointment must not repeat monthly.
    *   </dd>
    * </dl>
    *
-   * This will be `null` if the booking isn't recurring.
+   * `null` if booking must be not recurring.
    *
    * @post post
    * @var array|null
    */
-  public $a_repeat;
+  public $a_repeat = null;
 
   /**
    * A list of sessions being booked.
@@ -352,6 +360,7 @@ class Purchase56Model extends WlModelAbstract
    *
    * @get result
    * @var array
+   * @see PurchaseModel::_getSessionPassList()
    */
   public $a_session_pass = [];
 
@@ -418,9 +427,8 @@ class Purchase56Model extends WlModelAbstract
   public $is_card_authorize = false;
 
   /**
-   * `true` — the user pressed 'Pay later'.
-   *
-   * `false` — the user pressed 'Pay now'.
+   * `true` if user pressed 'Pay later'.
+   * `false` if user pressed 'Pay now'.
    *
    * @post post
    * @var bool
@@ -451,22 +459,15 @@ class Purchase56Model extends WlModelAbstract
   /**
    * The business key.
    *
-   * @get get
-   * @var string
-   */
-  public $k_business = '';
-
-  /**
-   * The default promotion key.
-   * This will be empty if the class has no default promotion.
+   * `null` if business key was not passed.
    *
-   * @get result
-   * @var string
+   * @get get
+   * @var string|null
    */
-  public $k_promotion_default = '';
+  public $k_business = null;
 
   /**
-   * The key of the session being booked.
+   * Key of session which is booked.
    *
    * @get get
    * @post get
@@ -475,7 +476,7 @@ class Purchase56Model extends WlModelAbstract
   public $k_class_period = '0';
 
   /**
-   * The login promotion to be used to book a class.
+   * Login promotion to be used to book a class.
    *
    * @post post
    * @var string
@@ -483,7 +484,16 @@ class Purchase56Model extends WlModelAbstract
   public $k_login_promotion = '';
 
   /**
-   * The session pass to be used to book a class.
+   * The default Purchase Option key.
+   * This will be empty if the class has no default Purchase Option.
+   *
+   * @get result
+   * @var string
+   */
+  public $k_promotion_default = '';
+
+  /**
+   * Session pass to be used to book a class.
    *
    * @post post
    * @var string
@@ -491,7 +501,7 @@ class Purchase56Model extends WlModelAbstract
   public $k_session_pass = '';
 
   /**
-   * The key of the user making the booking.
+   * Key of a user who is making a book.
    *
    * @get get
    * @post get
