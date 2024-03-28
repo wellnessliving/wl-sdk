@@ -83,7 +83,7 @@ class Finish47Model extends WlModelAbstract
 
   /**
    * The purchase item keys.
-   * Empty if no purchases are made for appointment booking.
+   * Empty if no purchases are made for the appointment booking.
    *
    * @post post
    * @var string[]
@@ -155,7 +155,7 @@ class Finish47Model extends WlModelAbstract
   public $id_pay = 0;
 
   /**
-   * Whether multiple appointments booked in back-to-back mode.
+   * Determines whether multiple appointments are booked in back-to-back mode.
    *
    * @post post
    * @var bool
