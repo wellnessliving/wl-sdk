@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Passport\ChangePassword;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint to start the password change procedure for a user.
+ * Starts the password change procedure for a user.
  *
  * Post this to send the user the "reset password" email.
  */
