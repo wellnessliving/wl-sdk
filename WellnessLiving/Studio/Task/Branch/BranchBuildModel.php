@@ -28,8 +28,6 @@ class BranchBuildModel extends WlModelAbstract
   /**
    * Build key that creates a branch for the specified task.
    *
-   * Primary key in the {@link \StudioBuildSql} table.
-   *
    * @post get
    * @put get
    * @var string

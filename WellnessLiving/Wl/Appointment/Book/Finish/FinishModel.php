@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Finish;
 
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
+use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Appointment\Book\Question\QuestionModel;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
@@ -24,7 +25,7 @@ class FinishModel extends WlModelAbstract
 {
   /**
    * A list of answers for the questions from {@link QuestionModel::$a_question}.
-   * Keys refer to hashes of the questions. Values refer to answers for the questions.
+   * Key - hash of the question, value - answer for the question.
    *
    * @post post
    * @var array
@@ -33,7 +34,7 @@ class FinishModel extends WlModelAbstract
 
   /**
    * The keys of the booked appointments.
-   * Every element has the next key:
+   * Every element has key:
    * <dl>
    *   <dt>
    *     string <var>k_appointment</var>
@@ -153,7 +154,7 @@ class FinishModel extends WlModelAbstract
    *     int [<var>id_gender_staff</var>]
    *   </dt>
    *   <dd>
-   *     The gender of the staff member conducting the appointment. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
+   *     The gender of the staff member conducting the appointment. One of the {@link AGenderSid} constants.
    *     Specify this for appointment bookings only.
    *   </dd>
    *   <dt>

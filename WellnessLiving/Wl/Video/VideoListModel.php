@@ -106,8 +106,10 @@ class VideoListModel extends WlModelAbstract
   public $a_video_tag = [];
 
   /**
-   * The sorting type.
-   * A constant from {@link \WellnessLiving\Wl\Video\Catalog\Filter\Sort\FilterSortSid}.
+   * Page to return.
+   * Pagination are ignored when count of videos less than {@link VideoListModel::VIDEO_COUNT_PAGINATION}.
+   *
+   * `null` if you need to return all the videos.
    *
    * @get get
    * @var int|null
@@ -120,7 +122,16 @@ class VideoListModel extends WlModelAbstract
    * @get get,result
    * @var int|null
    */
-  public $id_sort;
+  public $id_order = 0;
+
+  /**
+   * The sorting type.
+   * A constant from {@link FilterSortSid}. `null` or 0 if sort is undefined and custom sort order is used.
+   *
+   * @get get,result
+   * @var int|null
+   */
+  public $id_sort = 0;
 
   /**
    * If `true`, the API is being used from backend. Otherwise, this will be `false`.
@@ -153,7 +164,7 @@ class VideoListModel extends WlModelAbstract
    *
    * `null` if user is not signed in.
    *
-   * *NOTE: Not used directly in API, needed for {@link \WellnessLiving\Wl\Video\VideoListModel::KEY} constant.
+   * NOTE: Not used directly in API, needed for {@link VideoListModel::KEY} constant.
    *
    * @get get
    * @var string|null

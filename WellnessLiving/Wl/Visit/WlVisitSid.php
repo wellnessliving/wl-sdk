@@ -30,8 +30,8 @@ class WlVisitSid
   const PENALTY = 4;
 
   /**
-   * This state means that visit is registered but it is unknown is it {@link VisitSid::ATTEND}
-   * or {@link VisitSid::TRUANCY} or {@link VisitSid::PENALTY} but definitely one of this states.
+   * This state means that visit is registered, but it is unknown is it {@link WlVisitSid::ATTEND}
+   * or {@link WlVisitSid::TRUANCY} or {@link VisitSid::PENALTY} but definitely one of these states.
    *
    * The real type of this visit must be set manually by staff.
    */

@@ -13,7 +13,6 @@ class LoginModel extends WlModelAbstract
    * The application ID.
    *
    * This will be `null` for application use, which makes the request. Use the application credential from
-   * {@link \WellnessLiving\Core\Request\Model\Application\Credential\GoogleCredential} for user authorization.
    *
    * @post post
    * @var string|null

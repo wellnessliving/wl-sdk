@@ -14,7 +14,7 @@ class Finish47Model extends WlModelAbstract
 {
   /**
    * A list of answers for the questions from {@link QuestionModel::$a_question}.
-   * Key - hash of the question, value - answer for the question.
+   * Keys refer to hashes of the questions. Values refer to answers for the questions.
    *
    * @post post
    * @var array

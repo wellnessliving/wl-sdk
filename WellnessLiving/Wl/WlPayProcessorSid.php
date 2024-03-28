@@ -5,8 +5,13 @@ namespace WellnessLiving\Wl;
 /**
  * A list of payment gateways or processors.
  */
-class WlPayProcessorSid
+abstract class WlPayProcessorSid
 {
+  /**
+   * Payment gateway for `cybersource.com`.
+   */
+  const CYBER_SOURCE = 11;
+
   /**
    * Payment gateway for Direct Connect.
    */
