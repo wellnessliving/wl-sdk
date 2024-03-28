@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Collector;
 
+use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -25,7 +26,7 @@ class DebtListModel extends WlModelAbstract
    *   <dt>string <var>dtu_cease</var></dt>
    *   <dd>The date and time in UTC when the debt was fully ceased.</dd>
    *   <dt>int <var>id_currency</var></dt>
-   *   <dd>The debt currency ID. One of {@link \WellnessLiving\Core\Locale\CurrencySid} constants.</dd>
+   *   <dd>The debt currency ID. One of {@link CurrencySid} constants.</dd>
    *   <dt>string <var>k_business</var></dt>
    *   <dd>The business key where the debt occurred.</dd>
    *   <dt>string <var>k_collector_debt</var></dt>
@@ -62,26 +63,30 @@ class DebtListModel extends WlModelAbstract
   public $a_debt = [];
 
   /**
+   * Date before which debts should be returned.
+   *
    * If set, this is the end of the date window. Only debts added before or on this date will be shown.
    *
-   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} has been specified, only debts added after the start date will be returned.
-   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} is also `null`, this will return debts from the previous month.
+   * If left `null` and {@link DebtListModel::$dl_start} has been specified, only debts added after the start date will be returned.
+   * If left `null` and {@link DebtListModel::$dl_start} is also `null`, this will return debts from the previous month.
    *
    * @get get
    * @var string|null
    */
-  public $dl_end=null;
+  public $dl_end = null;
 
   /**
+   * Date since which debts should be returned.
+   *
    * If set, this is the start of the date window. Only debts added on or after this date will be shown.
    *
-   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} has been specified will return debts added since the beginning of time.
-   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} is also `null`, this will return debts from the previous month.
+   * If left `null` and {@link DebtListModel::$dl_end} has been specified will return debts added since the beginning of time.
+   * If left `null` and {@link DebtListModel::$dl_end} is also `null`, this will return debts from the previous month.
    *
    * @get get
    * @var string|null
    */
-  public $dl_start=null;
+  public $dl_start = null;
 
   /**
    * Defines whether new debts should be returned or only previously sent debts.
@@ -95,13 +100,15 @@ class DebtListModel extends WlModelAbstract
   public $is_request_debt = false;
 
   /**
+   * Defines whether debts for test or real business should be returned.
+   *
    * If `true`, debts from test businesses will be returned. Otherwise, this will be `false` if only
    * debts from real businesses will be returned.
    *
    * @get get
    * @var bool
    */
-  public $is_test;
+  public $is_test = false;
 
   /**
    * The business key for which debts should be returned.
@@ -111,7 +118,7 @@ class DebtListModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $k_business = null;
+  public $k_business = '';
 }
 
 ?>

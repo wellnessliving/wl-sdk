@@ -3,6 +3,11 @@
 namespace WellnessLiving\Wl\Catalog\StaffApp\CatalogList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Catalog\Payment\PaymentModel;
+use WellnessLiving\Wl\Insurance\Catalog\ProgramListModel;
+use WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel;
+use WellnessLiving\Wl\WlProgramSid;
+use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * An endpoint that returns a list of all products available for a business’s shop at a particular location.
@@ -36,25 +41,25 @@ class CatalogListModel extends WlModelAbstract
    *     int <var>[id_program]</var>
    *   </dt>
    *   <dd>
-   *      The program ID, set for promotions. One of the {@link \WellnessLiving\WlProgramSid} constants.
-   *      <p>If `id_program` is {@link \WellnessLiving\WlProgramSid::INSURANCE_MEMBERSHIP}, then use:</p>
+   *      The program ID, set for promotions. One of the {@link WlProgramSid} constants.
+   *      <p>If `id_program` is {@link WlProgramSid::INSURANCE_MEMBERSHIP}, then use:</p>
    *      <ul>
-   *        <li>{@link \WellnessLiving\Wl\Insurance\Catalog\ProgramListModel} to obtain a list of active programs.</li>
-   *        <li>{@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} to get and validate fields for a given program.</li>
-   *        <li>{@link \WellnessLiving\Wl\Catalog\Payment\PaymentModel} for a program purchase.</li>
+   *        <li>{@link ProgramListModel} to obtain a list of active programs.</li>
+   *        <li>{@link EnrollmentFieldListModel} to get and validate fields for a given program.</li>
+   *        <li>{@link PaymentModel} for a program purchase.</li>
    *      </ul>
    *   </dd>
    *   <dt>
    *     int <var>id_restriction</var>
    *   </dt>
    *   <dd>
-   *     The restriction ID. One of the {@link \WellnessLiving\Wl\Shop\Product\PurchaseRestrictionSid} constants.
+   *     The restriction ID.
    *   </dd>
    *   <dt>
    *     int <var>id_sale</var>
    *   </dt>
    *   <dd>
-   *     The sale category ID. One of the {@link \WellnessLiving\WlSaleSid} constants.
+   *     The sale category ID. One of the {@link WlSaleSid} constants.
    *   </dd>
    *   <dt>
    *     bool <var>is_online_sell</var>
@@ -66,9 +71,9 @@ class CatalogListModel extends WlModelAbstract
    *     bool <var>is_visit</var>
    *   </dt>
    *   <dd>
-   *     This will be <tt>true</tt> if this Purchase Option is suitable to pay for the visit {@link \WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel::$k_visit}.
+   *     This will be <tt>true</tt> if this Purchase Option is suitable to pay for the visit {@link CatalogListModel::$k_visit}.
    *     Otherwise, this will be <tt>false</tt>.
-   *     If {@link \WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel::$k_visit} is empty, this will always be `false`.
+   *     If {@link CatalogListModel::$k_visit} is empty, this will always be `false`.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>

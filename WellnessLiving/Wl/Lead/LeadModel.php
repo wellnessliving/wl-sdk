@@ -158,8 +158,8 @@ class LeadModel extends WlModelAbstract
 
   /**
    * The characters entered by the lead for the captcha test.
-   * This isn't necessary if the GET method returned an empty {@link \WellnessLiving\Wl\Lead\LeadModel::$url_captcha}.
-   * This field isn't necessary if the GET method returned an empty {@link \WellnessLiving\Wl\Lead\LeadModel::$url_captcha}.
+   * This isn't necessary if the GET method returned an empty {@link LeadModel::$url_captcha}.
+   * This field isn't necessary if the GET method returned an empty {@link LeadModel::$url_captcha}.
    *
    * @post post
    * @var string

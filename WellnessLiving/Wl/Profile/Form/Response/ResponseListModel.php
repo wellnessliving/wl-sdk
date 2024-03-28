@@ -2,8 +2,9 @@
 
 namespace WellnessLiving\Wl\Profile\Form\Response;
 
-use WellnessLiving\Wl\Quiz\Response\SourceSid;
+use WellnessLiving\Core\Quiz\ResponseStatusSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Quiz\Response\SourceSid;
 
 /**
  * An endpoint that retrieves a list of a user's quiz responses.

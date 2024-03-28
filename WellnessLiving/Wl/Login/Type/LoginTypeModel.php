@@ -16,8 +16,13 @@ class LoginTypeModel extends WlModelAbstract
    * A list of login types, keys, and information. Each element is an array with the following information:
    *
    * <dl>
+   *   <dt>bool <var>id_client_type</var></dt>
+   *   <dd>
+   *     System ID.
+   *   </dd>
    *   <dt>bool <var>is_member</var></dt>
    *   <dd>
+   *     Deprecated Use <var>id_client_type</var> instead.
    *     It will be `1` if the record contains a type of member.
    *     It will be `0` if record contains some other type of client.
    *     It will be `null` if the record contains some type of prospect.

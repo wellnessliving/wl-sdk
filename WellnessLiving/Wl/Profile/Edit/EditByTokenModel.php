@@ -44,7 +44,7 @@ class EditByTokenModel extends WlModelAbstract
   public $a_image_upload = [];
 
   /**
-   * A copy of the {@link \WellnessLiving\Wl\Profile\Edit\EditModel::$a_change}.
+   * A copy of the {@link EditModel::$a_change}.
    * This is used for POST requests when creating a new user.
    *
    * @post post
@@ -79,7 +79,7 @@ class EditByTokenModel extends WlModelAbstract
    *   <dt>bool <var>is_require</var></dt>
    *   <dd>Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional.</dd>
    *   <dt>int <var>id_field_type</var></dt>
-   *   <dd>The type of field. This is one of the {@link \WellnessLiving\Wl\Field\WlFieldTypeSid} constants.</dd>
+   *   <dd>The type of field. One of the {@link WlFieldTypeSid} constants.</dd>
    *   <dt>string <var>k_field</var></dt>
    *   <dd>The field ID (<var>k_field</var>). A copy of the key of this array element.</dd>
    *   <dt>string <var>s_title</var></dt>
@@ -99,9 +99,10 @@ class EditByTokenModel extends WlModelAbstract
    *
    * @get get
    * @post get
-   * @var int
+   * @put get
+   * @var int|null
    */
-  public $id_register_source = 0;
+  public $id_register_source = null;
 
   /**
    * Indicates whether to display the full profile edit form or the short version.
@@ -114,7 +115,7 @@ class EditByTokenModel extends WlModelAbstract
   public $is_short = 0;
 
   /**
-   * <tt>true</tt> to sing in a created user; <tt>false</tt> to not sign in.
+   * This will be `true` to sign in a created user. Otherwise, this will be `false`.
    *
    * @post post
    * @var bool
@@ -133,7 +134,7 @@ class EditByTokenModel extends WlModelAbstract
   public $is_staff = false;
 
   /**
-   * The key of the business where you're editing.
+   * The key of the business you're editing.
    *
    * An empty value will return the system-wide fields.
    *
@@ -216,7 +217,7 @@ class EditByTokenModel extends WlModelAbstract
   /**
    * The key of the user to edit.
    *
-   * If empty, then an empty form will be displayed to add a new user.
+   * If empty, an empty form will be displayed to add a new user.
    *
    * @get get
    * @post get,result

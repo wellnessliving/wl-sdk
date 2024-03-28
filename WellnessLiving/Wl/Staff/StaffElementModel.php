@@ -3,12 +3,13 @@
 namespace WellnessLiving\Wl\Staff;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Business\BusinessModel;
 
 /**
  * An endpoint that can create or edit a staff member in a business.
  *
  * You can also use this endpoint to get information about a staff member's activity in another business when using
- * the {@link \WellnessLiving\Wl\Business\BusinessModel} endpoint.
+ * the {@link BusinessModel} endpoint.
  */
 class StaffElementModel extends WlModelAbstract
 {
@@ -53,7 +54,7 @@ class StaffElementModel extends WlModelAbstract
   public $id_gender = null;
 
   /**
-   * ID of the default system role from {@link \WellnessLiving\RsPrivilegeRoleSid}.
+   * ID of the default system role.
    *
    * `null` means to not change the current value of the field.
    *

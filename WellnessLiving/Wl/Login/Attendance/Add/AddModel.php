@@ -3,6 +3,9 @@
 namespace WellnessLiving\Wl\Login\Attendance\Add;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Login\Attendance\AddOptionSid;
+use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Visit\WlVisitSid;
 
 /**
  * An endpoint that adds a client to an attendance list.
@@ -69,7 +72,7 @@ class AddModel extends WlModelAbstract
 
   /**
    * Determines how the payment was handled for the session.
-   * One of the {@link \WellnessLiving\Wl\Login\Attendance\AddOptionSid} constants.
+   * One of the {@link AddOptionSid} constants.
    *
    * @post post
    * @var int
@@ -78,7 +81,7 @@ class AddModel extends WlModelAbstract
 
   /**
    * Determines how the session was booked.
-   * One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * One of the {@link ModeSid} constants.
    * We recommend using the `WEB_BACKEND` value.
    *
    * @post post
@@ -88,7 +91,7 @@ class AddModel extends WlModelAbstract
 
   /**
    * The status of the visit.
-   * One of the {@link \WellnessLiving\Wl\Visit\VisitSid} constants.
+   * One of the {@link WlVisitSid} constants.
    *
    * @post result
    * @var int
@@ -183,7 +186,7 @@ class AddModel extends WlModelAbstract
   public $m_price;
 
   /**
-   * The user's account balance if they were charged the {@link \WellnessLiving\Wl\Login\Attendance\Add\AddModel::$m_price} amount.
+   * The user's account balance if they were charged the {@link AddModel::$m_price} amount.
    *
    * @get result
    * @var string|null

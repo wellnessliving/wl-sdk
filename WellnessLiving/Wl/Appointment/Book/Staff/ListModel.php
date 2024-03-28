@@ -121,9 +121,9 @@ class ListModel extends WlModelAbstract
   public $k_service = '0';
 
   /**
-   * User's timezone primary key in {@link \AGeoTimezoneSql} table.
+   * User's timezone.
    *
-   * <tt>null</tt> until initialized or to use location timezone.
+   * `null` until initialized or to use location timezone.
    *
    * @get get
    * @var string|null
@@ -131,7 +131,7 @@ class ListModel extends WlModelAbstract
   public $k_timezone = null;
 
   /**
-   * Key of user for whom the service is booking, primary key in {@link \PassportLoginSql} table.
+   * The user key for whom the service is booking.
    *
    * `null` when not set.
    *

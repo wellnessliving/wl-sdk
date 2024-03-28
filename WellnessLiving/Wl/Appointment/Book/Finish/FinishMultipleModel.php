@@ -4,9 +4,11 @@ namespace WellnessLiving\Wl\Appointment\Book\Finish;
 
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
+use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
+use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
@@ -46,9 +48,11 @@ class FinishMultipleModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     Add-ons to the appointment. Specified for appointment bookings only.
-   *     The old format used array keys, while the new new format has each element as an array:
-   *       <dl><dt>int <var>i_count</var></dt><dd>The add-on count.</dd>
-   *       <dt>string <var>k_shop_product_option</var></dt><dd>The add-on key.</dd></dl>
+   *     The old format used array keys. While the new format has each element as an array:
+   *     <dl>
+   *       <dt>int <var>i_count</var></dt><dd>The add-on count.</dd>
+   *       <dt>string <var>k_shop_product_option</var></dt><dd>The add-on key.</dd>
+   *     </dl>
    *   </dd>
    *   <dt>
    *     array [<var>a_repeat</var>]
@@ -142,7 +146,7 @@ class FinishMultipleModel extends WlModelAbstract
    *     int [<var>id_gender_staff</var>]
    *   </dt>
    *   <dd>
-   *     The gender of the staff member conducting the appointment. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
+   *     The gender of the staff member conducting the appointment. One of the {@link AGenderSid} constants.
    *     Specify this for appointment bookings only.
    *   </dd>
    *   <dt>
@@ -364,7 +368,7 @@ class FinishMultipleModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
-   * The unique identifier of the wizard.
+   * Unique identifier of the wizard.
    *
    * @post post
    * @var string

@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Profile\Activity;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Login\WlLoginActivityTypeSid;
+use WellnessLiving\Wl\WlDesignIconSid;
 
 /**
  * An endpoint that returns detailed information about a single client activity.
@@ -83,7 +84,7 @@ class ElementModel extends WlModelAbstract
   public $i_spend;
 
   /**
-   * The ID of the icon that should be shown for this activity. One of {@link \WellnessLiving\WlDesignIconSid} constants.
+   * The ID of the icon that should be shown for this activity. One of {@link WlDesignIconSid} constants.
    *
    * This will be `null` is no special icon for this activity.
    *

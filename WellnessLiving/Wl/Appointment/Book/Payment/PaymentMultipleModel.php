@@ -412,8 +412,8 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_total;
 
   /**
-   * The list of user keys to book appointments with.
-   * Empty values signify walk-ins.
+   * List of user keys to book appointments.
+   * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
    * @post get
@@ -431,7 +431,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * This will be `true` if the client is a walk-in. Otherwise, this will be `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -440,7 +440,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $is_walk_in = false;
 
   /**
-   * The location to show the available appointment booking schedule for.
+   * Location to show available appointment booking schedule.
    *
    * @get get,result
    * @post get
@@ -515,7 +515,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $text_discount_code = '';
 
   /**
-   * The user to get information for.
+   * The user key.
    *
    * @get get
    * @post get

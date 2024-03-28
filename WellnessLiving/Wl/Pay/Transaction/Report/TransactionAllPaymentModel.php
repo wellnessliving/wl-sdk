@@ -13,7 +13,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
   /**
    * A list of fields in the report.
    *
-   * This array is effectively a title row for the table returned in {@link \WellnessLiving\Wl\Pay\Transaction\Report\TransactionAllPaymentModel::$a_row}.
+   * This array is effectively a title row for the table returned in {@link TransactionAllPaymentModel::$a_row}.
    *
    * @get result
    * @var string[]
@@ -25,7 +25,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
    *
    * This is an indexed array in which one row is also an indexed array.
    *
-   * Indexes of the columns correspond to the columns in {@link \WellnessLiving\Wl\Pay\Transaction\Report\TransactionAllPaymentModel::$a_field}.
+   * Indexes of the columns correspond to the columns in {@link TransactionAllPaymentModel::$a_field}.
    *
    * @get result
    * @var array
@@ -82,7 +82,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
 
   /**
    * The page of the report, starting from 0.
-   * Each page will contain a maximum of {@link \WellnessLiving\Wl\Pay\Transaction\Report\TransactionAllPaymentModel::LIMIT} rows.
+   * Each page will contain a maximum of {@link TransactionAllPaymentModel::LIMIT} rows.
    *
    * @get get
    * @var int

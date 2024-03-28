@@ -149,7 +149,7 @@ class ViewModel extends WlModelAbstract
   public $html_description_full;
 
   /**
-   * A shorter description of the location. A preview of {@link \WellnessLiving\Wl\Location\View\ViewModel::$html_description_full}.
+   * A shorter description of the location. A preview of {@link ViewModel::$html_description_full}.
    *
    * @get result
    * @var string

@@ -2,8 +2,10 @@
 
 namespace WellnessLiving\Wl\Profile\Edit;
 
+use WellnessLiving\Core\Geo\ComboboxModel;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Field\WlFieldTypeSid;
+use WellnessLiving\Wl\Profile\RegisterSourceSid;
 
 /**
  * An endpoint that gets information about a client profile. This endpoint can also edit or create a profile.
@@ -19,8 +21,8 @@ use WellnessLiving\Wl\Field\WlFieldTypeSid;
  *
  * The type of field is described in `id_field_type`, which will be one of the {@link WlFieldTypeSid} constants.
  * Some fields have a general type, which can have a specific format:
- * * Address — An array containing the following keys: `k_city`, `s_address`, `s_city`, and `s_postal`.
- * The `k_city` value can be retrieved via the {@link \WellnessLiving\Core\Geo\ComboboxModel} endpoint. The following is an example address array:
+ * * Address - An array containing the following keys: `k_city`, `s_address`, `s_city`, and `s_postal`.
+ * The `k_city` value can be retrieved via the {@link ComboboxModel} endpoint. The following is an example address array:
  *
  * * Birthday - A string containing the date in MySQL format (for example, `1987-06-05`).
  * * Email Address - An array containing the following keys:
@@ -48,8 +50,8 @@ class EditModel extends WlModelAbstract
   public $a_change = [];
 
   /**
-   * The list of errors.
-   * This will be `null` if there weren't any mistakes.
+   * List of errors.
+   * `null` if there was no mistake.
    *
    * @get result
    * @post result
@@ -69,7 +71,7 @@ class EditModel extends WlModelAbstract
   public $a_image_upload = [];
 
   /**
-   * A copy of the {@link \WellnessLiving\Wl\Profile\Edit\EditModel::$a_change}.
+   * A copy of the {@link EditModel::$a_change}.
    * This is used for POST requests when creating a new user.
    *
    * @post post
@@ -170,8 +172,8 @@ class EditModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * The exception class name.
-   * This will be `null` if there weren't any mistakes.
+   * Exception class name.
+   * `null` if there was no mistake.
    *
    * @field class
    * @get result
@@ -181,8 +183,8 @@ class EditModel extends WlModelAbstract
   public $s_class;
 
   /**
-   * The error code.
-   * This will be `null` if there weren't any mistakes.
+   * Code of the error.
+   * `null` if there was no mistake.
    *
    * @field code
    * @get result
@@ -192,8 +194,8 @@ class EditModel extends WlModelAbstract
   public $s_code;
 
   /**
-   * The request status.
-   * This will be `null` if there weren't any mistakes.
+   * Status of the request.
+   * `null` if there was no mistake.
    *
    * @field status
    * @post result

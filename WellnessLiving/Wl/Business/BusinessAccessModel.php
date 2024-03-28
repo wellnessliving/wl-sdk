@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Wl\Business;
 
-use WellnessLiving\Wl\WlRegionSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -23,7 +22,7 @@ class BusinessAccessModel extends WlModelAbstract
    * The list of accessible businesses with their corresponding data. Each value is an array with the next structure:
    * <dl>
    *   <dt>int <var>id_region</var></dt>
-   *   <dd>The business region. One of the {@link WlRegionSid} constants. This will be `null` if no regions are currently set.</dd>
+   *   <dd>The business region. This will be `null` if no regions are currently set.</dd>
    *   <dt>string <var>k_business</var></dt>
    *   <dd>The business key.</dd>
    *   <dt>string <var>text_office_address</var></dt>
@@ -84,14 +83,6 @@ class BusinessAccessModel extends WlModelAbstract
   public $text_google_plus = '';
 
   /**
-   * User key. Empty if user is not logged in, but their authorization data is known.
-   *
-   * @get get
-   * @var string
-   */
-  public $uid = '';
-
-  /**
    * The staff member's email to determine their UID. This won't be empty if the staff member is logging in with email or with Google.
    * This will be empty if the UID is already known or the staff member is logging in another way.
    *
@@ -99,6 +90,14 @@ class BusinessAccessModel extends WlModelAbstract
    * @var string
    */
   public $text_mail = '';
+
+  /**
+   * User key. Empty if user is not logged in, but their authorization data is known.
+   *
+   * @get get
+   * @var string
+   */
+  public $uid = '';
 
   /**
    * The staff member key, determined by their email. This will be empty if the UID isn't empty.

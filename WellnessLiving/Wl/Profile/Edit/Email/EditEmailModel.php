@@ -2,8 +2,8 @@
 
 namespace WellnessLiving\Wl\Profile\Edit\Email;
 
-use WellnessLiving\Wl\Profile\Edit\EditModel;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Profile\Edit\EditModel;
 
 /**
  * An endpoint that checks if a user's email address is already used or changes a user’s login email address.

@@ -99,7 +99,7 @@ class Finish47Model extends WlModelAbstract
   public $a_quiz_response = [];
 
   /**
-   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * List of user keys to book appointments.
    * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
@@ -110,7 +110,7 @@ class Finish47Model extends WlModelAbstract
 
   /**
    * Data to create new user.
-   * Specify if <var>$uid</var> is empty.
+   * Specify this if <var>$uid</var> is empty.
    * Must contain the following keys:
    * <dl>
    *   <dt>string[] <var>a_note</var></dt>
@@ -171,7 +171,7 @@ class Finish47Model extends WlModelAbstract
   public $is_unpaid_force = false;
 
   /**
-   * `true` if client is walk-in, otherwise `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -210,7 +210,7 @@ class Finish47Model extends WlModelAbstract
   /**
    * Key of timezone.
    *
-   * `null` if not set then use default timezone client {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}.
+   * `null` if not set then use default timezone client.
    *
    * @post get
    * @var null|string
@@ -234,7 +234,7 @@ class Finish47Model extends WlModelAbstract
   public $s_id = '';
 
   /**
-   * User to get information for.
+   * The user key.
    *
    * @get get
    * @post get

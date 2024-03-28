@@ -174,7 +174,7 @@ class PromotionIndexModel extends WlModelAbstract
    *   <dd>
    *     The type of periods for the duration type "Period".
    *     For example, if the duration of the Purchase Option is 12 months, this field will be the ID of the month.
-   *     See all the possible options here: {@link \WellnessLiving\Core\a\ADurationSid}.
+   *     See all the possible options here: {@link ADurationSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_duration_type</var>

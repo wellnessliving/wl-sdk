@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * An endpoint that makes a purchased promotion auto-renewable.
  *
- * The POST method makes the promotion auto-renewable based on the {@link \WellnessLiving\Wl\Login\Permission\PermissionModel::$is_renew} parameter.
+ * The POST method makes the promotion auto-renewable based on the {@link PermissionModel::$is_renew} parameter.
  */
 class PermissionModel extends WlModelAbstract
 {

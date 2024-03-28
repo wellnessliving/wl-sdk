@@ -61,7 +61,21 @@ class ServiceListModel extends WlModelAbstract
    *     array <var>a_image</var>
    *   </dt>
    *   <dd>
-   *     The appointment image. See {@link RsServiceLogo::data()} for details.
+   *     Information about the appointment image. An array with the following values:
+   *     <dl>
+   *       <dt>int <var>i_height</var></dt>
+   *       <dd>The height of the image.</dd>
+   *       <dt>int <var>i_width</var></dt>
+   *       <dd>The width of the image.</dd>
+   *       <dt>bool <var>is_empty</var></dt>
+   *       <dd>This will be `true` if the image is not set.</dd>
+   *       <dt>string <var>k_service</var></dt>
+   *       <dd>The service key.</dd>
+   *       <dt>string <var>s_service</var></dt>
+   *       <dd>The name of the service.</dd>
+   *       <dt>string <var>s_url</var></dt>
+   *       <dd>The URL to the image.</dd>
+   *     </dl>
    *   </dd>
    *   <dt>
    *     string[] <var>a_login_type_restriction</var>
@@ -286,7 +300,7 @@ class ServiceListModel extends WlModelAbstract
   public $a_service = null;
 
   /**
-   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * List of user keys to book appointments.
    * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
@@ -340,7 +354,7 @@ class ServiceListModel extends WlModelAbstract
   public $is_tab_all = false;
 
   /**
-   * `true` if client is walk-in, otherwise `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -374,7 +388,7 @@ class ServiceListModel extends WlModelAbstract
   public $k_service_category = '0';
 
   /**
-   * User to get information for.
+   * The user key.
    *
    * @get get
    * @post get

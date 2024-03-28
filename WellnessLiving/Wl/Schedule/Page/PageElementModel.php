@@ -3,6 +3,8 @@
 namespace WellnessLiving\Wl\Schedule\Page;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Virtual\VirtualProviderSid;
+use WellnessLiving\Wl\Visit\WlVisitSid;
 
 /**
  * An endpoint that returns information about a specified visit.
@@ -15,7 +17,7 @@ class PageElementModel extends WlModelAbstract
    *     int <var>id_visit</var>
    *   </dt>
    *   <dd>
-   *     Visit status. One of {@link \WellnessLiving\Wl\Visit\VisitSid} constants.
+   *     Visit status. One of {@link WlVisitSid} constants.
    *   </dd>
    *   <dt>
    *     bool <var>is_confirmed</var>
@@ -200,7 +202,7 @@ class PageElementModel extends WlModelAbstract
   public $id_virtual_provider;
 
   /**
-   * The visit type ID. One of the {@link \WellnessLiving\Wl\Visit\VisitSid} constants.
+   * The visit type ID. One of the {@link WlVisitSid} constants.
    *
    * This will be `null` if not loaded yet.
    *

@@ -177,7 +177,7 @@ class LoginModel extends WlModelAbstract
 
   /**
    * The staff member's mailing address.
-   * This will be set if the user is a staff member ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   * This will be set if the user is a staff member ({@link LoginModel::$k_staff}).
    *
    * @get result
    * @var string
@@ -186,7 +186,7 @@ class LoginModel extends WlModelAbstract
 
   /**
    * The staff member's first name.
-   * This will be set if the user is a staff member ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   * This will be set if the user is a staff member ({@link LoginModel::$k_staff}).
    *
    * @get result
    * @var string
@@ -206,7 +206,7 @@ class LoginModel extends WlModelAbstract
    * The staff member's full name.
    * The user login is returned in cases where neither the first name nor the last name have been specified.
    * An empty string is returned in cases where neither the first name, last name, nor login have been specified.
-   * This will be set if the user is a staff member ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   * This will be set if the user is a staff member ({@link LoginModel::$k_staff}).
    *
    * @get result
    * @var string
@@ -215,7 +215,7 @@ class LoginModel extends WlModelAbstract
 
   /**
    * The staff member's last name.
-   * This will be set if the user is a staff member ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   * This will be set if the user is a staff member ({@link LoginModel::$k_staff}).
    *
    * @get result
    * @var string

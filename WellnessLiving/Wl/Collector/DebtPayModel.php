@@ -2,7 +2,9 @@
 
 namespace WellnessLiving\Wl\Collector;
 
+use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
  * An endpoint that registers a debt payment that was performed beyond Wellnessliving, with a specified credit amount applied to a client's account balance.
@@ -11,7 +13,7 @@ class DebtPayModel extends WlModelAbstract
 {
   /**
    * The currency of the payment.
-   * One of {@link \WellnessLiving\Core\Locale\CurrencySid} constants.
+   * One of {@link CurrencySid} constants.
    *
    * Important! The currency must coincide with currency of the debt that was sent to collections.
    *
@@ -22,14 +24,14 @@ class DebtPayModel extends WlModelAbstract
 
   /**
    * The payment method ID.
-   * One of {@link \WellnessLiving\WlPayMethodSid} constants.
+   * One of {@link WlPayMethodSid} constants.
    *
-   * `null` if the payment method is unknown. In such cases, {@link \WellnessLiving\WlPayMethodSid::ECOMMERCE} would be used.
+   * `null` if the payment method is unknown. In such cases, {@link WlPayMethodSid::CASH} would be used.
    *
    * @post post
    * @var int|null
    */
-  public $id_pay_method;
+  public $id_pay_method = null;
 
   /**
    * The key of the business from which the debt originates.

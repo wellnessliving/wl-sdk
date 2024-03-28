@@ -47,68 +47,68 @@ class PaymentModel extends WlModelAbstract
    *         The payment address:
    *         <dl>
    *           <dt>boolean <var>is_new</var></dt>
-   *           <dd>Set this value is <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
+   *           <dd>Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
    *           <dt>string [<var>k_geo_country</var>]</dt>
-   *           <dd>The key of the country used for the payment address. Specify to add a new address.</dd>
+   *           <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>k_geo_region</var>]</dt>
-   *           <dd>The key of the region for the payment address. Specify to add a new address.</dd>
+   *           <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>k_pay_address</var>]</dt>
-   *           <dd>The key of the saved payment address. Specify to use a saved address.</dd>
+   *           <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
    *           <dt>string [<var>s_city</var>]</dt>
-   *           <dd>The city used for the payment address. Specify to add a new address.</dd>
+   *           <dd>The city used for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_name</var>]</dt>
-   *           <dd>The card name. Specify to add a new address.</dd>
+   *           <dd>The card name. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_phone</var>]</dt>
-   *           <dd>The payment phone. Specify to add a new address.</dd>
+   *           <dd>The payment phone. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_postal</var>]</dt>
-   *           <dd>The postal code for the payment address. Specify to add a new address.</dd>
+   *           <dd>The postal code for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_street1</var>]</dt>
-   *           <dd>The payment address. Specify to add a new address.</dd>
+   *           <dd>The payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_street2</var>]</dt>
-   *           <dd>The optional payment address. Specify to add a new address.</dd>
+   *           <dd>The optional payment address. Specify this to add a new address.</dd>
    *         </dl>
    *       </dd>
    *       <dt>
    *         int [<var>i_csc</var>]
    *       </dt>
    *       <dd>
-   *         The credit card CSC. Specify to add a new card.
+   *         The credit card CSC. Specify this to add a new card.
    *       </dd>
    *       <dt>
    *         int [<var>i_month</var>]
    *       </dt>
    *       <dd>
-   *         The credit card expiration month. Specify to add a new card.
+   *         The credit card expiration month. Specify this to add a new card.
    *       </dd>
    *       <dt>
    *         int [<var>i_year</var>]
    *       </dt>
    *       <dd>
-   *         The credit card expiration year. Specify to add a new card.
+   *         The credit card expiration year. Specify this to add a new card.
    *       </dd>
    *       <dt>
    *         boolean <var>is_new</var>
    *       </dt>
    *       <dd>
-   *         <tt>1</tt> to add a new card; <tt>0</tt> to use a saved card.
+   *         Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
    *       </dd>
    *       <dt>
    *         string [<var>k_pay_bank</var>]
    *       </dt>
    *       <dd>
-   *         The key of a credit card. Specify to use saved card.
+   *         The key of the credit card. Specify this to use saved card.
    *       </dd>
    *       <dt>
    *         string [<var>s_comment</var>]
    *       </dt>
    *       <dd>
-   *         Optional comment(s). Specify to add a new card.
+   *         Optional comment(s). Specify this to add a new card.
    *       </dd>
    *       <dt>
    *         string [<var>s_number</var>]
    *       </dt>
    *       <dd>
-   *         The card number. Specify to add a new card.
+   *         The card number. Specify this to add a new card.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -122,7 +122,7 @@ class PaymentModel extends WlModelAbstract
    *     boolean [<var>is_hide</var>]
    *   </dt>
    *   <dd>
-   *     Whether this payment method is hidden.
+   *     Determines whether this payment method is hidden.
    *   </dd>
    *   <dt>
    *     boolean [<var>is_success</var>=<tt>false</tt>]
@@ -272,7 +272,7 @@ class PaymentModel extends WlModelAbstract
   public $id_purchase_item = 0;
 
   /**
-   * `true` if client is walk-in, otherwise `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -408,7 +408,7 @@ class PaymentModel extends WlModelAbstract
   public $text_discount_code = '';
 
   /**
-   * User to get information for.
+   * The user key.
    *
    * @get get
    * @post get

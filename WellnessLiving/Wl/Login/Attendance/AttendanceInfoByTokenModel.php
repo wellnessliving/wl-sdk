@@ -8,7 +8,6 @@ use WellnessLiving\Wl\WlServiceSid;
 
 /**
  * An endpoint that displays information for certain sessions.
- * Version of {@link \WellnessLiving\Wl\Login\Attendance\AttendanceInfoModel} for access validation by security token.
  */
 class AttendanceInfoByTokenModel extends WlModelAbstract
 {

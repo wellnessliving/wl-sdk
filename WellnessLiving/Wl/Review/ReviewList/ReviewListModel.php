@@ -53,6 +53,12 @@ class ReviewListModel extends WlModelAbstract
    *     <tt>true</tt> if review is verify, <tt>false</tt> otherwise.
    *   </dd>
    *   <dt>
+   *     string <var>k_location</var>
+   *   </dt>
+   *   <dd>
+   *     The location key for where the review was left/assigned.
+   *   </dd>
+   *   <dt>
    *     string <var>k_review</var>
    *   </dt>
    *   <dd>

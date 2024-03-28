@@ -10,7 +10,10 @@ use WellnessLiving\WlModelAbstract;
 class BusinessDesignModel extends WlModelAbstract
 {
   /**
-   * Design data for the business containing the following keys:
+   * Design data for a business.
+   *
+   * Contains the following keys:
+   *
    * <dl>
    *   <dt>int <var>id_layout</var></dt>
    *   <dd>The layout ID. For more details, see {@link \WellnessLiving\Wl\Business\Design\RsPageFrontendHeaderLayoutSid}.</dd>
@@ -64,9 +67,9 @@ class BusinessDesignModel extends WlModelAbstract
   public $a_data;
 
   /**
-   * The business key used to get design data.
+   * Business key to get design data.
    *
-   * If `null`, the default business design data is returned.
+   * May be <tt>null</tt>. In this case default business design data is returned.
    *
    * @get get
    * @var string

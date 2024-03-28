@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Catalog\StaffApp\CatalogCart;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * An endpoint that calculates price data for a sale item.
@@ -86,12 +87,13 @@ class CatalogCartModel extends WlModelAbstract
    *   <dt>int <var>i_quantity</var></dt>
    *   <dd>The quantity of sale items.</dd>
    *   <dt>int <var>id_sale</var></dt>
-   *   <dd>The sale item type. One of the {@link \WellnessLiving\WlSaleSid} constants.</dd>
+   *   <dd>The sale item type. One of the {@link WlSaleSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The sale item key.</dd>
    *   <dt>string <var>k_shop_product_option</var></dt>
    *   <dd>
    *     The store product option key. This will be <tt>null</tt> if the sale item has no options.
+   *
    *   </dd>
    *   <dt>string [<var>m_discount_fix</var>]</dt>
    *   <dd>The fixed price discount, applied to the current item.</dd>
@@ -235,7 +237,7 @@ class CatalogCartModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $text_discount_code;
+  public $text_discount_code = null;
 
   /**
    * The discount code's error message.

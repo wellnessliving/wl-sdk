@@ -3,10 +3,17 @@
 namespace WellnessLiving\Wl\Report;
 
 /**
- * Set of report pages.
+ * Set of pages for dashboard.
+ *
+ * Last used ID: 12.
  */
 abstract class WlReportPageSid
 {
+  /**
+   * List of requested appointments.
+   */
+  const APPOINTMENT_REQUEST = 4;
+
   /**
    * Collection with following reports:
    *

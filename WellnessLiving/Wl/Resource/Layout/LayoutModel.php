@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Resource\Layout;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Resource\Image\ImageIconSid;
 
 /**
  * An endpoint that displays information about an asset layout.
@@ -17,7 +18,7 @@ class LayoutModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The asset's appearance information.
-   *     See {@link RsResourceImage::data()} for details.
+   *
    *   </dd>
    *   <dt>
    *     int <var>i_cell_x</var>
@@ -188,7 +189,7 @@ class LayoutModel extends WlModelAbstract
    *     int <var>id_shape_icon</var>
    *   </dt>
    *   <dd>
-   *     The icon ID. One of the {@link \WellnessLiving\Wl\Resource\Image\ImageIconSid} constants.
+   *     The icon ID. One of the {@link ImageIconSid} constants.
    *   </dd>
    * </dl>
    *

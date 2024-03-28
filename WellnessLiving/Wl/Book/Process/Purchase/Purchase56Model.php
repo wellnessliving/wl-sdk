@@ -295,51 +295,51 @@ class Purchase56Model extends WlModelAbstract
   public $a_purchase = [];
 
   /**
-   * Information about recurring booking:
+   * Information about the recurring booking:
    * <dl>
    *   <dt>
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     Days of week when appointment must repeat. Constants of {@link ADateWeekSid} class.
-   *     Empty if appointment must not repeat weekly.
+   *     The days of week when the appointment repeat. One of the {@link ADateWeekSid} constants.
+   *     This will be empty if the appointment doesn't repeat weekly.
    *   </dd>
    *   <dt>
    *     string [<var>dl_end</var>]
    *   </dt>
    *   <dd>
-   *     Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
+   *     The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
    *   </dd>
    *   <dt>
    *     int [<var>i_occurrence</var>]
    *   </dt>
    *   <dd>
-   *     Number of occurrences after that appointment repeat must stop.
-   *     Empty if repeat must not stop after a certain number of occurrences.
+   *     The number of occurrences after which the appointment's repeat cycle stops.
+   *     This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
    *   </dd>
    *   <dt>
    *     int <var>i_period</var>
    *   </dt>
    *   <dd>
-   *     Frequency of appointment repeating.
+   *     The frequency of the appointment's repeat cycle.
    *   </dd>
    *   <dt>
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     Measurement unit of `i_period`. One of {@link ADurationSid} constants.
+   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     `true` if appointment must repeat monthly at the same date.
-   *     `false` if appointment must repeat monthly at the same week day.
-   *     `null` if appointment must not repeat monthly.
+   *     <tt>true</tt> — the appointment repeats monthly on the same date.
+   *     <tt>false</tt> — the appointment repeats monthly on the same day of the week.
+   *     <tt>null</tt> — the appointment doesn't repeat monthly.
    *   </dd>
    * </dl>
    *
-   * `null` if booking must be not recurring.
+   * This will be `null` if the booking isn't recurring.
    *
    * @post post
    * @var array|null
@@ -347,8 +347,10 @@ class Purchase56Model extends WlModelAbstract
   public $a_repeat = null;
 
   /**
-   * A list of sessions being booked.
-   * Keys refer to class period keys, and values refer to a list of dates/times when the session occurred.
+   * The list of sessions being booked.
+   *
+   * Keys refer to class period keys.
+   * And values refer to the List of dates/times when the session occurred.
    *
    * @get get
    * @var array
@@ -365,8 +367,10 @@ class Purchase56Model extends WlModelAbstract
   public $a_session_pass = [];
 
   /**
-   * The selected sessions on the waiting list that are unpaid.
-   * Keys refer to session IDs, and values refer to index arrays of dates/times when session occurred, returned in MySQL format and in GMT.
+   * The selected sessions on the wait list that are unpaid.
+   *
+   * Keys refer to session IDs.
+   * And values refer to the index arrays of dates/times when the session occurred (returned in MySQL format and GMT).
    *
    * @get get
    * @var array
@@ -383,7 +387,15 @@ class Purchase56Model extends WlModelAbstract
   public $can_book = true;
 
   /**
-   * The date/time the session is booked for.
+   * `true` if application can be book unpaid visits no matter what are the business settings.
+   * `false` if ability to book unpaid should fully depend on the business settings.
+   *
+   * @var bool
+   */
+  public $can_book_unpaid = false;
+
+  /**
+   * Date/time to which session is booked.
    *
    * @get get
    * @post get

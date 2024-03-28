@@ -19,8 +19,6 @@ class EnrollmentFieldListModel extends WlModelAbstract
    * Keys - field name.
    * Values - value entered by user.
    *
-   * Validation is performed by {@link Wl\Insurance\Enrollment\Field\EnrollmentFieldList::setAccountForm()} method.
-   *
    * @post post
    * @put post
    * @var array
@@ -32,8 +30,6 @@ class EnrollmentFieldListModel extends WlModelAbstract
    *
    * Keys refer specifically to field keys.
    * Values refer specifically to values entered by the user.
-   *
-   * Validation is performed by {@link Wl\Insurance\Enrollment\Field\EnrollmentFieldList::setFieldForm()} method.
    *
    * @post post
    * @put post

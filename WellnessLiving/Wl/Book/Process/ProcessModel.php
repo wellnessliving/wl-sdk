@@ -18,7 +18,7 @@ class ProcessModel extends WlModelAbstract
 {
   /**
    * Relationships who clients are allowed to book for.
-   * One of the {@link \WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid} constants.
+   * One of the {@link WlFamilyRelationSid} constants.
    *
    * This will be `null` if clients aren't allowed to book for their relationships.
    *
@@ -57,7 +57,7 @@ class ProcessModel extends WlModelAbstract
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     The days of week when the appointment repeat. One of the {@link \WellnessLiving\Core\a\ADateWeekSid} constants.
+   *     The days of week when the appointment repeat. One of the {@link ADateWeekSid} constants.
    *     This will be empty if the appointment doesn't repeat weekly.
    *   </dd>
    *   <dt>
@@ -83,7 +83,7 @@ class ProcessModel extends WlModelAbstract
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     The measurement unit of `i_period`. One of the {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
@@ -100,7 +100,7 @@ class ProcessModel extends WlModelAbstract
    * @post post
    * @var array|null
    */
-  public $a_repeat;
+  public $a_repeat = null;
 
   /**
    * Determines whether the class/event can be booked at this step or not.
@@ -112,7 +112,15 @@ class ProcessModel extends WlModelAbstract
   public $can_book = true;
 
   /**
-   * The date/time the session is booked for.
+   * `true` if application can be book unpaid visits no matter what are the business settings.
+   * `false` if ability to book unpaid should fully depend on the business settings.
+   *
+   * @var bool
+   */
+  public $can_book_unpaid = false;
+
+  /**
+   * Date/time to which session is booked.
    *
    * @get get
    * @post get
@@ -222,6 +230,13 @@ class ProcessModel extends WlModelAbstract
   public $is_wait;
 
   /**
+   * Key of the business in which the wizard is executed.
+   *
+   * @var string|null
+   */
+  public $k_business = null;
+
+  /**
    * The key of the booked session.
    *
    * @get get
@@ -247,7 +262,7 @@ class ProcessModel extends WlModelAbstract
   public $k_login_promotion = '';
 
   /**
-   * The session pass used to book the class.
+   * Session pass to be used to book a class.
    *
    * @post post
    * @var string
@@ -255,7 +270,7 @@ class ProcessModel extends WlModelAbstract
   public $k_session_pass = '';
 
   /**
-   * The key of the user making the booking.
+   * Key of a user who is making a book.
    *
    * @get get
    * @post get

@@ -3,6 +3,12 @@
 namespace WellnessLiving\Wl\Profile\PurchaseList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\WlActivationSid;
+use WellnessLiving\Wl\WlCommissionTypeSid;
+use WellnessLiving\Wl\WlDurationTypeSid;
+use WellnessLiving\Wl\WlProgramTypeSid;
+use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * An endpoint that gets the details of a specified purchase.
@@ -550,7 +556,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $k_enrollment_book = '0';
 
   /**
-   * The key of the item. This can correspond to one of many values depending on {@link \WellnessLiving\Wl\Profile\PurchaseList\PurchaseListElementModel::$id_sale}.
+   * The key of the item. This can correspond to one of many values depending on {@link PurchaseListElementModel::$id_sale}.
    *
    * @get result
    * @var string

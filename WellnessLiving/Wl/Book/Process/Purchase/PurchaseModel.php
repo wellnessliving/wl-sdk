@@ -304,14 +304,14 @@ class PurchaseModel extends WlModelAbstract
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     The days of week when the appointment repeats. One of the {@link \WellnessLiving\Core\a\ADateWeekSid} constants.
+   *     The days of week when the appointment repeat. One of the {@link ADateWeekSid} constants.
    *     This will be empty if the appointment doesn't repeat weekly.
    *   </dd>
    *   <dt>
    *     string [<var>dl_end</var>]
    *   </dt>
    *   <dd>
-   *     The date when appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
+   *     The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
    *   </dd>
    *   <dt>
    *     int [<var>i_occurrence</var>]
@@ -330,16 +330,14 @@ class PurchaseModel extends WlModelAbstract
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     The measurement unit of `i_period`. One of the {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> — the appointment repeats monthly on the same date.<br>
-   *
-   *     <tt>false</tt> — the appointment repeats monthly on the same day of the week.<br>
-   *
+   *     <tt>true</tt> — the appointment repeats monthly on the same date.
+   *     <tt>false</tt> — the appointment repeats monthly on the same day of the week.
    *     <tt>null</tt> — the appointment doesn't repeat monthly.
    *   </dd>
    * </dl>
@@ -349,12 +347,13 @@ class PurchaseModel extends WlModelAbstract
    * @post post
    * @var array|null
    */
-  public $a_repeat;
+  public $a_repeat = null;
 
   /**
    * The list of sessions being booked.
    *
-   * Keys refer to class period keys, and values refer to the List of dates/times when the session occurred.
+   * Keys refer to class period keys.
+   * And values refer to the List of dates/times when the session occurred.
    *
    * @get get
    * @var array
@@ -362,7 +361,7 @@ class PurchaseModel extends WlModelAbstract
   public $a_session = [];
 
   /**
-   * The list of session passes that could be used in the booking process.
+   * The list of session passes that might be used in booking process.
    *
    * @get result
    * @var array
@@ -373,8 +372,8 @@ class PurchaseModel extends WlModelAbstract
   /**
    * The selected sessions on the wait list that are unpaid.
    *
-   * Keys refer to session IDs, and values refer to the index arrays of dates/times when the session occurred
-   * (returned in MySQL format and GMT).
+   * Keys refer to session IDs.
+   * And values refer to the index arrays of dates/times when the session occurred (returned in MySQL format and GMT).
    *
    * @get get
    * @var array
@@ -383,7 +382,6 @@ class PurchaseModel extends WlModelAbstract
 
   /**
    * Determines whether the class/event can be booked at this step or not.
-   *
    * This is an external process control flag.
    *
    * @post post
@@ -392,7 +390,15 @@ class PurchaseModel extends WlModelAbstract
   public $can_book = true;
 
   /**
-   * The date/time the session is booked for.
+   * `true` if application can be book unpaid visits no matter what are the business settings.
+   * `false` if ability to book unpaid should fully depend on the business settings.
+   *
+   * @var bool
+   */
+  public $can_book_unpaid = false;
+
+  /**
+   * Date/time to which session is booked.
    *
    * @get get
    * @post get
@@ -401,7 +407,7 @@ class PurchaseModel extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * The image height in pixels. Specify this value if you need the image to be returned in a specific size.
+   * The image height in pixels. Specify this value if you need image to be returned in specific size.
    * The returned image will have the default thumbnail size if this value isn't specified.
    *
    * @get get
@@ -410,7 +416,7 @@ class PurchaseModel extends WlModelAbstract
   public $i_image_height = 0;
 
   /**
-   * The image width in pixels. Specify this value if you need the image to be returned in a specific size.
+   * The image width in pixels. Specify this value if you need image to be returned in specific size.
    * The returned image will have the default thumbnail size if this value isn't specified.
    *
    * @get get
@@ -445,7 +451,7 @@ class PurchaseModel extends WlModelAbstract
   public $is_force_pay_later = false;
 
   /**
-   * Indicates whether the drop-in rate should be the default Purchase Option.
+   * Indicates if the drop-in rate should be the default promotion.
    *
    * @get result
    * @var bool
@@ -472,7 +478,7 @@ class PurchaseModel extends WlModelAbstract
   public $k_class_period = '0';
 
   /**
-   * The login promotion used to book the class.
+   * Login promotion to be used to book a class.
    *
    * @post post
    * @var string
@@ -497,7 +503,7 @@ class PurchaseModel extends WlModelAbstract
   public $k_session_pass = '';
 
   /**
-   * The key of the user making the booking.
+   * Key of a user who is making a book.
    *
    * @get get
    * @post get

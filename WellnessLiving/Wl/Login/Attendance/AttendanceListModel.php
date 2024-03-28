@@ -167,7 +167,7 @@ class AttendanceListModel extends WlModelAbstract
 
   /**
    * The list of clients who have confirmed their attendance.
-   * Has the same structure as {@link \WellnessLiving\Wl\Login\Attendance\AttendanceListModel::$a_list_active} property.
+   * Has the same structure as {@link AttendanceListModel::$a_list_active} property.
    *
    * @get result
    * @var array[]
@@ -176,7 +176,7 @@ class AttendanceListModel extends WlModelAbstract
 
   /**
    * The list of clients who are on the wait list.
-   * Has the same structure as {@link \WellnessLiving\Wl\Login\Attendance\AttendanceListModel::$a_list_active} property.
+   * Has the same structure as {@link AttendanceListModel::$a_list_active} property.
    *
    * @get result
    * @var array[]

@@ -3,11 +3,12 @@
 namespace WellnessLiving\Wl\Schedule\ClassView;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Schedule\ClassList\ClassListModel;
 
 /**
  * An endpoint that gets information about a specified class session.
  *
- * A class listing can be retrieved from the {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel} endpoint.
+ * A class listing can be retrieved from the {@link ClassListModel} endpoint.
  */
 class ClassViewModel extends WlModelAbstract
 {
@@ -147,6 +148,7 @@ class ClassViewModel extends WlModelAbstract
    * @get result
    * @post result
    * @var array[]
+   * @see ClassViewModel::_getSingle()
    */
   public $a_session_result;
 
@@ -194,6 +196,8 @@ class ClassViewModel extends WlModelAbstract
    *
    * `null` if key of the business was not passed.
    *
+   * Key of the business is required if {@link ClassViewModel} was passed.
+   *
    * @get get
    * @post get
    * @var string|null
@@ -211,7 +215,7 @@ class ClassViewModel extends WlModelAbstract
 
   /**
    * A list of sessions to get information for.
-   * A serialized array. See {@link \WellnessLiving\Wl\Schedule\ClassView\ClassViewModel::$a_session_request} for the array structure.
+   * A serialized array. See {@link ClassViewModel::$a_session_request} for the array structure.
    * Serialization and sending by POST is necessary to send big lists.
    *
    * @post post

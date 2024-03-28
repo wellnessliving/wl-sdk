@@ -158,7 +158,7 @@ class MemberInfoModel extends WlModelAbstract
   public $s_show = '';
 
   /**
-   * The client's first name.
+   * First user's name.
    *
    * @get result
    * @var string
@@ -166,7 +166,7 @@ class MemberInfoModel extends WlModelAbstract
   public $text_first_name = '';
 
   /**
-   * The client's full name.
+   * Full user's name.
    *
    * @get result
    * @var string
@@ -174,7 +174,7 @@ class MemberInfoModel extends WlModelAbstract
   public $text_fullname = '';
 
   /**
-   * The client ID required to access member information.
+   * ID of a user to retrieve member information for.
    *
    * @get get
    * @var string
@@ -182,7 +182,7 @@ class MemberInfoModel extends WlModelAbstract
   public $uid = '';
 
   /**
-   * The barcode image URL.
+   * URL to barcode image.
    *
    * @get result
    * @var string
@@ -190,7 +190,7 @@ class MemberInfoModel extends WlModelAbstract
   public $url_barcode;
 
   /**
-   * The email URL.
+   * URL to email.
    *
    * @get result
    * @var string

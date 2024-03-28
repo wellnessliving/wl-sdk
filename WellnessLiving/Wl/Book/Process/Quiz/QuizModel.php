@@ -53,8 +53,8 @@ class QuizModel extends WlModelAbstract
   /**
    * The list of quiz response keys.
    *
-   * Keys refer to quiz keys, and values refer to response keys or special values from the
-   * {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} constant.
+   * Keys refer to quiz keys.
+   * And values refer to response keys.
    *
    * @post post
    * @var array
@@ -68,7 +68,7 @@ class QuizModel extends WlModelAbstract
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     The days of the week when the appointment repeats. One of the {@link \WellnessLiving\Core\a\ADateWeekSid} constants.
+   *     The days of week when the appointment repeat. One of the {@link ADateWeekSid} constants.
    *     This will be empty if the appointment doesn't repeat weekly.
    *   </dd>
    *   <dt>
@@ -94,15 +94,15 @@ class QuizModel extends WlModelAbstract
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     The measurement unit of `i_period`. One of the {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     `true` — the appointment repeats monthly on the same date.<br>
-   *     `false` — the appointment repeats monthly on the same week day.<br>
-   *     `null` — the appointment doesn't repeat monthly.
+   *     <tt>true</tt> — the appointment repeats monthly on the same date.
+   *     <tt>false</tt> — the appointment repeats monthly on the same day of the week.
+   *     <tt>null</tt> — the appointment doesn't repeat monthly.
    *   </dd>
    * </dl>
    *
@@ -111,7 +111,7 @@ class QuizModel extends WlModelAbstract
    * @post post
    * @var array|null
    */
-  public $a_repeat;
+  public $a_repeat = null;
 
   /**
    * The selected assets.
@@ -167,7 +167,15 @@ class QuizModel extends WlModelAbstract
   public $can_book = true;
 
   /**
-   * The dates/times the session is booked for.
+   * `true` if application can be book unpaid visits no matter what are the business settings.
+   * `false` if ability to book unpaid should fully depend on the business settings.
+   *
+   * @var bool
+   */
+  public $can_book_unpaid = false;
+
+  /**
+   * Date/time to which session is booked.
    *
    * @get get
    * @post get
@@ -185,9 +193,8 @@ class QuizModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * `true` — the user selected 'Pay later'.
-   *
-   * `false` — the user selected 'Pay now'.
+   * `true` if user pressed 'Pay later'.
+   * `false` if user pressed 'Pay now'.
    *
    * @post post
    * @var bool
@@ -203,6 +210,13 @@ class QuizModel extends WlModelAbstract
   public $is_next;
 
   /**
+   * Key of the business in which the wizard is executed.
+   *
+   * @var string|null
+   */
+  public $k_business = null;
+
+  /**
    * The key of the booked session.
    *
    * @get get
@@ -212,7 +226,7 @@ class QuizModel extends WlModelAbstract
   public $k_class_period = '0';
 
   /**
-   * The login promotion used to book a class.
+   * Login promotion to be used to book a class.
    *
    * @post post
    * @var string
@@ -220,7 +234,7 @@ class QuizModel extends WlModelAbstract
   public $k_login_promotion = '';
 
   /**
-   * The session pass used to book a class.
+   * Session pass to be used to book a class.
    *
    * @post post
    * @var string
@@ -228,7 +242,7 @@ class QuizModel extends WlModelAbstract
   public $k_session_pass = '';
 
   /**
-   * The key of the user making the booking.
+   * Key of a user who is making a book.
    *
    * @get get
    * @post get

@@ -18,7 +18,7 @@ class Process54Model extends WlModelAbstract
 {
   /**
    * Relationships who clients are allowed to book for.
-   * One of the {@link \WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid} constants.
+   * One of the {@link WlFamilyRelationSid} constants.
    *
    * This will be `null` if clients aren't allowed to book for their relationships.
    *
@@ -57,7 +57,7 @@ class Process54Model extends WlModelAbstract
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     The days of week when the appointment repeat. One of the {@link \WellnessLiving\Core\a\ADateWeekSid} constants.
+   *     The days of week when the appointment repeat. One of the {@link ADateWeekSid} constants.
    *     This will be empty if the appointment doesn't repeat weekly.
    *   </dd>
    *   <dt>
@@ -254,7 +254,7 @@ class Process54Model extends WlModelAbstract
   public $k_location;
 
   /**
-   * The login promotion used to book the class.
+   * Login promotion to be used to book a class.
    *
    * @post post
    * @var string
@@ -262,7 +262,7 @@ class Process54Model extends WlModelAbstract
   public $k_login_promotion = '';
 
   /**
-   * The session pass used to book the class.
+   * Session pass to be used to book a class.
    *
    * @post post
    * @var string
@@ -270,7 +270,7 @@ class Process54Model extends WlModelAbstract
   public $k_session_pass = '';
 
   /**
-   * The key of the user making the booking.
+   * Key of a user who is making a book.
    *
    * @get get
    * @post get

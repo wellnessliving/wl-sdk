@@ -51,8 +51,8 @@ class ListModel extends WlModelAbstract
 
   /**
    * <tt>true</tt> if exist at least one virtual event
-   * by specific {@link \WellnessLiving\Wl\Event\Book\EventList\ListModel::$k_business} and
-   * {@link \WellnessLiving\Wl\Event\Book\EventList\ListModel::$k_class_tab},
+   * by specific {@link ListModel::$k_business} and
+   * {@link ListModel::$k_class_tab},
    * <tt>false</tt> otherwise.
    *
    * @get result

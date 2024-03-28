@@ -448,6 +448,7 @@ class PurchaseModel extends WlModelAbstract
   public $a_session_pass = [];
 
   /**
+   * List of user keys to book appointments.
    * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
@@ -506,7 +507,7 @@ class PurchaseModel extends WlModelAbstract
   public $is_single_default = false;
 
   /**
-   * `true` if client is walk-in, otherwise `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -565,7 +566,7 @@ class PurchaseModel extends WlModelAbstract
   /**
    * The timezone key.
    *
-   * This will be `null` if not set yet.
+   * This will be `null` if not set yet then use default client timezone.
    *
    * @get get
    * @var string|null
@@ -583,7 +584,7 @@ class PurchaseModel extends WlModelAbstract
   public $text_login_promotion = '';
 
   /**
-   * User to get information for.
+   * The user key.
    *
    * @get get
    * @post get

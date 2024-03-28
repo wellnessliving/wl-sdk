@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Location;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Location\View\ViewModel;
 
 /**
  * An endpoint that gets all locations for a list of businesses.
@@ -95,7 +96,6 @@ class ListBulkModel extends WlModelAbstract
    * `0` if a directory filter isn't required.
    *
    * @get get
-   * @see \WellnessLiving\WlProjectSid
    * @var int
    */
   public $id_directory = 0;

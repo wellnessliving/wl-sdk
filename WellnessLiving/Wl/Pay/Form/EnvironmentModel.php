@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Pay\Form;
 
+use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\Core\a\ACardSystemSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\WlPayMethodSid;
@@ -90,7 +91,8 @@ class EnvironmentModel extends WlModelAbstract
   public $a_pay_processor = null;
 
   /**
-   * Local date with time now in current location {@link EnvironmentApi::$k_location}
+   * Local date with time now in current location {@link EnvironmentModel::$k_location}
+   * or business {@link EnvironmentModel::$k_business} if not set location.
    *
    * @get result
    * @var string
@@ -111,8 +113,8 @@ class EnvironmentModel extends WlModelAbstract
    * The locale ID of the business.
    *
    * @get result
-   * @see \WellnessLiving\Core\Locale\LocaleSid
    * @var int|null
+   * @see LocaleSid
    */
   public $id_locale;
 

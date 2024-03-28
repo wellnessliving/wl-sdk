@@ -33,6 +33,8 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   </dd>
    *   <dt>array <var>a_progress</var></dt>
    *   <dd>Information about a user's current progress. By default, this information isn't sent.</dd>
+   *   <dt>array <var>a_quiz</var></dt>
+   *
    *   <dt>array <var>a_resource</var></dt>
    *   <dd>A list of information for any associated resources for this visit.</dd>
    *   <dt>array <var>a_wait_confirm</var></dt>
@@ -168,7 +170,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
 
   /**
    * The list of clients who have confirmed their attendance.
-   * Has the same structure as {@link \WellnessLiving\Wl\Login\Attendance\AttendanceListModel::$a_list_active} property.
+   * Has the same structure as {@link AttendanceListModel::$a_list_active} property.
    *
    * @get result
    * @var array[]
@@ -177,7 +179,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
 
   /**
    * The list of clients who are on the wait list.
-   * Has the same structure as {@link \WellnessLiving\Wl\Login\Attendance\AttendanceListModel::$a_list_active} property.
+   * Has the same structure as {@link AttendanceListModel::$a_list_active} property.
    *
    * @get result
    * @var array[]

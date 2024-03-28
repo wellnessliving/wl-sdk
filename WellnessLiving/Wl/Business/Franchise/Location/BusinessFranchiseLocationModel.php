@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Business\Franchise\Location;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Report\WlReportSid;
 
 /**
  * An endpoint that manages franchisor locations.
@@ -164,10 +165,6 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   /**
    * Determines which locations should be returned.
    *
-   * One of the {@link \WellnessLiving\Wl\Business\Franchise\Location\BusinessFranchiseLocationSid} constants.
-   *
-   * If `null`, {@link \WellnessLiving\Wl\Business\Franchise\Location\BusinessFranchiseLocationSid::ALL} is used.
-   *
    * @get get
    * @var int
    */
@@ -176,7 +173,7 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   /**
    * Determines the report for which data should be returned.
    *
-   * One of the {@link \WellnessLiving\RsReportSid} constants.
+   * One of the {@link WlReportSid} constants.
    *
    * If `null`, the report isn't set.
    *

@@ -56,7 +56,7 @@ class CalendarModel extends WlModelAbstract
    *   <dd>Whether the appointment can be booked only in a wait list.</dd>
    *   <dt>string <var>k_staff</var></dt>
    *   <dd>If this time is already occupied by any client and staff member (but service capacity is not exhausted),
-   *       this key contains key of staff member (primary key in {@link \RsStaffSql} table). Otherwise `0`.</dd>
+   *       this key contains key of staff member. Otherwise `0`.</dd>
    *   <dt>string <var>s_title</var></dt>
    *   <dd>String representation of appointment schedule time.</dd>
    * </dl>
@@ -97,7 +97,7 @@ class CalendarModel extends WlModelAbstract
   public $a_timezone_data = [];
 
   /**
-   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * List of user keys to book appointments.
    * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
@@ -234,7 +234,7 @@ class CalendarModel extends WlModelAbstract
   public $is_waitlist;
 
   /**
-   * `true` if client is walk-in, otherwise `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -308,7 +308,7 @@ class CalendarModel extends WlModelAbstract
    * <dl>
    * <dt>array <var>a_addon</var></dt><dd>Array of appointment addons.</dd>
    * <dt>int <var>i_duration</var></dt><dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd>
-   * <dt>int <var>id_gender_staff</var></dt><dd>Staff gender. One of {@link \WellnessLiving\Core\a\AGenderSid} constants. Zero mean no limitations on staff gender.</dd>
+   * <dt>int <var>id_gender_staff</var></dt><dd>Staff gender. One of {@link AGenderSid} constants. Zero mean no limitations on staff gender.</dd>
    * <dt>string <var>k_service</var></dt><dd>Service key.</dd>
    * <dt>string <var>k_staff</var></dt><dd>Staff key. Zero means any available staff.</dd>
    * </dl>
@@ -336,7 +336,7 @@ class CalendarModel extends WlModelAbstract
   public $s_product = '';
 
   /**
-   * User to get information for.
+   * The user key.
    *
    * @get get
    * @post get

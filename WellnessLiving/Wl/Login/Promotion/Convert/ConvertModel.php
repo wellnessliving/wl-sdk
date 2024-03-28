@@ -40,13 +40,58 @@ class ConvertModel extends WlModelAbstract
   public $dl_convert = '';
 
   /**
-   * The conversion ID. One of the {@link PromotionConvertSid} constants.
+   * The last date on what conversion can be scheduled.
+   *
+   * @get result
+   * @var string
+   */
+  public $dl_convert_max = '';
+
+  /**
+   * The first date on what conversion can be scheduled.
+   *
+   * @get result
+   * @var string
+   */
+  public $dl_convert_min = '';
+
+  /**
+   * Local date, when hold ends, if PO is on hold right now.
+   * Empty if PO is not on hold, or hold is endless.
+   *
+   * @get result
+   * @var string
+   */
+  public $dl_hold_end = '';
+
+  /**
+   * Local date, when hold starts, if PO is on hold right now.
+   * Empty if PO is not on hold.
+   *
+   * @get result
+   * @var string
+   */
+  public $dl_hold_start = '';
+
+  /**
+   * The conversion ID.
    *
    * @get result
    * @post get
    * @var string
    */
   public $id_convert = null;
+
+  /**
+   * When conversion should be done.
+   *
+   * `null` if it's not set yet.
+   *
+   * @get result
+   * @post get
+   * @var int|null
+   */
+  public $id_convert_when = null;
 
   /**
    * Determines whether the conversion request is new or editing an existing conversion.

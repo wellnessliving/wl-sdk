@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Integration\Autymate;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Report\Generator\ReportGeneratorStatusSid;
 
 /**
  * An endpoint that retrieves all daily transactions for a business using the All Transactions report from the
@@ -15,7 +16,7 @@ class ReportModel extends WlModelAbstract
   /**
    * The list of fields in this report.
    *
-   * This array is effectively a title row for table that is returned in {@link \WellnessLiving\Wl\Integration\Autymate\ReportModel::$a_row}.
+   * This array is effectively a title row for table that is returned in {@link ReportModel::$a_row}.
    *
    * @get result
    * @var string[]
@@ -28,16 +29,16 @@ class ReportModel extends WlModelAbstract
    * @get get
    * @var int[]
    */
-  public $a_pay_method_remove = array (
-  0 => 7,
-);
+  public $a_pay_method_remove = [
+    7,
+  ];
 
   /**
    * The report data.
    *
    * This is an indexed array in which one row is an indexed array also.
    *
-   * Indexes of the columns correspond to columns in {@link \WellnessLiving\Wl\Integration\Autymate\ReportModel::$a_field}.
+   * Indexes of the columns correspond to columns in {@link ReportModel::$a_field}.
    *
    * @get result
    * @var string[][]
@@ -92,7 +93,7 @@ class ReportModel extends WlModelAbstract
 
   /**
    * The page of the report, starting from 0.
-   * Each page will contain a maximum of {@link \WellnessLiving\Wl\Integration\Autymate\ReportModel::LIMIT} rows.
+   * Each page will contain a maximum of {@link ReportModel::LIMIT} rows.
    *
    * @get get
    * @var int
@@ -102,7 +103,7 @@ class ReportModel extends WlModelAbstract
   /**
    * The status of the report.
    *
-   * One of the {@link \WellnessLiving\Wl\Report\Generator\ReportGeneratorStatusSid} constants.
+   * One of the {@link ReportGeneratorStatusSid} constants.
    *
    * @get result
    * @var int

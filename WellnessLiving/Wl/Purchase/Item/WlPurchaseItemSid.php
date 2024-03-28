@@ -5,9 +5,9 @@ namespace WellnessLiving\Wl\Purchase\Item;
 /**
  * A list of purchase types.
  *
- * Last used ID: 22.
+ * Last used ID: 25.
  */
-class WlPurchaseItemSid
+abstract class WlPurchaseItemSid
 {
   /**
    * Personal user's account refill.
@@ -59,9 +59,19 @@ class WlPurchaseItemSid
   const BUSINESS_SKIP = 17;
 
   /**
+   * Business subscription payment.
+   */
+  const BUSINESS_SUBSCRIPTION = 23;
+
+  /**
    * Single classes.
    */
   const CLASS_PERIOD = 2;
+
+  /**
+   * Collectors payments
+   */
+  const COLLECTOR_DEBT = 24;
 
   /**
    * Arbitrary money withdrawal with comment.

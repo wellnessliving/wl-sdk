@@ -32,8 +32,8 @@ class ClassListModel extends WlModelAbstract
   public $a_location = [];
 
   /**
-   * A list of classes sessions starting with the date {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_date}
-   * and in the 62 days ahead (or up to {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_end}).
+   * A list of classes sessions starting with the date {@link ClassListModel::$dt_date}
+   * and in the 62 days ahead (or up to {@link ClassListModel::$dt_end}).
    * Every element has the following keys:
    * <dl>
    *   <dt>
@@ -158,8 +158,8 @@ class ClassListModel extends WlModelAbstract
 
   /**
    * The list end date in UTC and in MySQL format.
-   * If left empty, the default duration is {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::DEFAULT_PERIOD} days after
-   * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_date}.
+   * If left empty, the default duration is {@link ClassListModel::DEFAULT_PERIOD} days after
+   * {@link ClassListModel::$dt_date}.
    *
    * @get get
    * @var string
@@ -177,7 +177,7 @@ class ClassListModel extends WlModelAbstract
 
   /**
    * If `true`, sessions from every class tab are returned. If `false`, use the
-   * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_class_tab} value.
+   * {@link ClassListModel::$k_class_tab} value.
    *
    * @get get
    * @var bool
@@ -194,7 +194,7 @@ class ClassListModel extends WlModelAbstract
 
   /**
    * If `true`, there exists at least one virtual service by a specified
-   * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_business} and {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_class_tab},
+   * {@link ClassListModel::$k_business} and {@link ClassListModel::$k_class_tab},
    * Otherwise, this will be `false`.
    *
    * @get result
@@ -214,7 +214,7 @@ class ClassListModel extends WlModelAbstract
    * The category tab key.
    *
    * This will be `null` if not set yet.
-   * This will be ignored if {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$is_tab_all} is `true`.
+   * This will be ignored if {@link ClassListModel::$is_tab_all} is `true`.
    *
    * @get get
    * @var string

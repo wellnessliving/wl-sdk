@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Staff\StaffView;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Staff\StaffList\StaffListModel;
 
 /**
  * An endpoint that returns information about a specified staff member.
@@ -189,8 +190,8 @@ class StaffViewModel extends WlModelAbstract
 
   /**
    * The staff member key.
-   * A staff member can work for more than one business. This key can be found using the
-   * {@link \WellnessLiving\Wl\Staff\StaffList\StaffListModel} endpoint.
+   * A staff member can work for more than one business.
+   * This key can be found using the {@link StaffListModel} endpoint.
    *
    * @get get
    * @var string

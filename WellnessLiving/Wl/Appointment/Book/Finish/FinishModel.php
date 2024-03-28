@@ -222,17 +222,17 @@ class FinishModel extends WlModelAbstract
   public $a_pay_form = [];
 
   /**
-   * Data required for payment with the following structure:<dl>
+   * Data required for payment. Has next structure:<dl>
    *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>The type of the purchase item. One of the {@link WlPurchaseItemSid} constants.</dd>
+   *   <dd>Type of the purchase item. One of the {@link WlPurchaseItemSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
-   *   <dd>The promotion key or appointment key, which depends on <var>id_purchase_item</var> of this array.</dd>
+   *   <dd>Promotion key or appointment key. Depends on <var>id_purchase_item</var> of this array.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
-   *   <dd>The login promotion key.</dd>
+   *   <dd>Login promotion key.</dd>
    *   <dt>string <var>k_session_pass</var></dt>
-   *   <dd>The session pass key.</dd>
+   *   <dd>Session pass key.</dd>
    *   <dt>string <var>text_discount_code</var></dt>
-   *   <dd>The discount code.</dd>
+   *   <dd>Discount code.</dd>
    * </dl>
    *
    * @post post
@@ -242,7 +242,7 @@ class FinishModel extends WlModelAbstract
 
   /**
    * The purchase item keys.
-   * This will be empty if no purchases are made for the appointment booking.
+   * Empty if no purchases are made for the appointment booking.
    *
    * @post post
    * @var string[]
@@ -270,20 +270,20 @@ class FinishModel extends WlModelAbstract
   public $a_uid = [];
 
   /**
-   * Data used to create a new user.
+   * Data to create new user.
    * Specify this if <var>$uid</var> is empty.
-   * This must contain the following keys:
+   * Must contain the following keys:
    * <dl>
    *   <dt>string[] <var>a_note</var></dt>
-   *   <dd>A list of notes to add for the user.</dd>
+   *   <dd>List of notes to add to user.</dd>
    *   <dt>string <var>text_mail</var></dt>
-   *   <dd>The user's email address.</dd>
+   *   <dd>Mail.</dd>
    *   <dt>string <var>text_name_first</var></dt>
-   *   <dd>The user's first name.</dd>
+   *   <dd>First name.</dd>
    *   <dt>string <var>text_name_last</var></dt>
-   *   <dd>The user's last name.</dd>
+   *   <dd>Last name.</dd>
    *   <dt>string <var>text_phone</var></dt>
-   *   <dd>The user's phone number.</dd>
+   *   <dd>Phone.</dd>
    * </dl>
    *
    * @post get

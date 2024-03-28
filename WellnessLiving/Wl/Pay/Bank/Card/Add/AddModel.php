@@ -71,7 +71,7 @@ class AddModel extends WlModelAbstract
    *     int <var>id_pay_actor</var>
    *   </dt>
    *   <dd>
-   *     Pay actor id. One of {@link \WellnessLiving\RsPayActorSid} constants.
+   *     Pay actor id.
    *   </dd>
    *   <dt>
    *     string <var>k_pay_bank</var>

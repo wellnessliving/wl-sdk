@@ -3,6 +3,8 @@
 namespace WellnessLiving\Wl\Event\Book\EventView;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Business\Config\BusinessConfigModel;
+use WellnessLiving\Wl\Virtual\VirtualProviderSid;
 
 /**
  * An endpoint that retrieves information about an event element.
@@ -32,7 +34,7 @@ class ElementModel extends WlModelAbstract
   /**
    * Retrieves information about an event item.
    *
-   * Received only if {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$k_event} has been specified. In this case other fields aren't receivers.
+   * Received only if {@link ElementModel::$k_event} has been specified. In this case other fields aren't receivers.
    *
    * <dl>
    *   <dt>string <var>dt_date</var></dt>
@@ -49,7 +51,7 @@ class ElementModel extends WlModelAbstract
   /**
    * Displays all business policies connected to clients and bookings.
    *
-   * Contains the same structure as the {@link \WellnessLiving\Wl\Business\Config\BusinessConfigModel::$a_business_policy} property.
+   * Contains the same structure as the {@link BusinessConfigModel::$a_business_policy} property.
    *
    * If policies are overwritten for a certain event, the impacted event's policies will be in this result.
    * Otherwise, the result will display the business policies.
@@ -88,7 +90,7 @@ class ElementModel extends WlModelAbstract
   /**
    * Displays information for a bulk of events.
    *
-   * Received only if {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$s_event} has been specified. In this case, other fields aren't receivers.
+   * Received only if {@link ElementModel::$s_event} has been specified. In this case, other fields aren't receivers.
    *
    * The event keys of this array.
    * Values of this array and sub arrays with keys that correspond to all fields in this table that may be received.
@@ -253,25 +255,25 @@ class ElementModel extends WlModelAbstract
 
   /**
    * The last available date for booking.
-   * If this is set and {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$dl_book_available_start} is a set list of
-   *   sessions available for booking, {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$a_book_available}
+   * If this is set and {@link ElementModel::$dl_book_available_start} is a set list of
+   *   sessions available for booking, {@link ElementModel::$a_book_available}
    *   should match given date range.
    *
    * @get get
    * @var string|null
    */
-  public $dl_book_available_end;
+  public $dl_book_available_end = null;
 
   /**
    * The first available date for booking.
-   * If this is set and {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$dl_book_available_end} is a set list of
-   *   sessions available for booking {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$a_book_available}
+   * If this is set and {@link ElementModel::$dl_book_available_end} is a set list of
+   *   sessions available for booking {@link ElementModel::$a_book_available}
    *   should match given date range.
    *
    * @get get
    * @var string|null
    */
-  public $dl_book_available_start;
+  public $dl_book_available_start = null;
 
   /**
    * That date that should be used to go to the booking wizard.
@@ -313,6 +315,14 @@ class ElementModel extends WlModelAbstract
    * @var bool
    */
   public $hide_application;
+
+  /**
+   * The description of the event.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $html_description;
 
   /**
    * Special instruction for the event.
@@ -367,7 +377,7 @@ class ElementModel extends WlModelAbstract
   public $i_staff_image_width = 0;
 
   /**
-   * The virtual provider ID. One of the{@link \WellnessLiving\Wl\Virtual\VirtualProviderSid} constants.
+   * The virtual provider ID. One of the {@link VirtualProviderSid} constants.
    *
    * `null` if an in-person event.
    *
@@ -375,6 +385,15 @@ class ElementModel extends WlModelAbstract
    * @var int|null
    */
   public $id_virtual_provider;
+
+  /**
+   * Whether the event is age restricted.
+   * `true` if the event is age restricted, `false` if the event is not.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_age_restrict = false;
 
   /**
    * `true` if the event availability was checked; `false` if the event has too many sessions and calculating
@@ -394,6 +413,14 @@ class ElementModel extends WlModelAbstract
   public $is_book;
 
   /**
+   * `true` If the event is bookable; `false` if the event isn't bookable.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_bookable;
+
+  /**
    * `true` if there are no free spots in the event; booking is available only into the wait list.
    * `false` otherwise.
    *
@@ -410,6 +437,27 @@ class ElementModel extends WlModelAbstract
    * @var bool
    */
   public $is_promotion_only;
+
+  /**
+   * `true` if clients, when they book event, which has been started, can pay only for the sessions in the future.
+   * `false` if clients, when they book event, has to pay for the entire event and number of left in the future sessions
+   * does not matter.
+   *
+   *<tt>is_prorate</tt>.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_prorate;
+
+  /**
+   * `true` if schedule should be grouped by location time and staff,
+   * `false` if all schedule elements should be independent.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_schedule_group = false;
 
   /**
    * Determines whether this event allows paying for a single session.
@@ -436,8 +484,14 @@ class ElementModel extends WlModelAbstract
   public $k_book_class_period;
 
   /**
+   * @get get
+   * @var string|null
+   */
+  public $k_business = null;
+
+  /**
    * The event key.
-   * You can specify {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$s_event} instead to get information for a bulk of events.
+   * You can specify {@link ElementModel::$s_event} instead to get information for a bulk of events.
    *
    * @get get
    * @var string
@@ -461,7 +515,7 @@ class ElementModel extends WlModelAbstract
   public $m_price_total;
 
   /**
-   * Price of the full event, should be used as full price while {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$dt_early} is actual.
+   * Price of the full event, should be used as full price while {@link ElementModel::$dt_early} is actual.
    *
    * @get result
    * @var string|null
@@ -470,7 +524,7 @@ class ElementModel extends WlModelAbstract
 
   /**
    * The reason why the event can't be booked.
-   * Empty if {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$k_book_class_period} isn't empty.
+   * Empty if {@link ElementModel::$k_book_class_period} isn't empty.
    *
    * @get result
    * @var string
@@ -479,7 +533,7 @@ class ElementModel extends WlModelAbstract
 
   /**
    * A list of event keys serialized with JSON.
-   * Specify instead of {@link \WellnessLiving\Wl\Event\Book\EventView\ElementModel::$k_event} to get information for a bulk of events.
+   * Specify instead of {@link ElementModel::$k_event} to get information for a bulk of events.
    *
    * @get get
    * @var string
@@ -495,12 +549,38 @@ class ElementModel extends WlModelAbstract
   public $s_title;
 
   /**
+   * End date of the event in user-friendly format.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_end;
+
+  /**
+   * Start date of the event in user-friendly format.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_start;
+
+  /**
    * The user key.
    *
    * @get get
    * @var string
    */
   public $uid = '0';
+
+  /**
+   * Link to the start of the booking wizard to book the closed session from this event or the entire event.
+   *
+   * Can be `null` if there is no available for booking sessions.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $url_book = null;
 
   /**
    * The description of the event.
