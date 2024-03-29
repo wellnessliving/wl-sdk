@@ -181,9 +181,9 @@ class Finish47Model extends WlModelAbstract
 
   /**
    * The appointment key.
-   * This should be set if you are rebooking an existing appointment.
+   * This should be set if you're rebooking an existing appointment.
    *
-   * Otherwise use `0` to book a new appointment.
+   * Otherwise, use `0` to book a new appointment.
    *
    * @post get
    * @var string

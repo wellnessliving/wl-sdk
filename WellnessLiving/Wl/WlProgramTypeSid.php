@@ -17,8 +17,6 @@ abstract class WlProgramTypeSid
    * Duration Pass.
    *
    * Differs from {@link WlProgramTypeSid::LIMIT} in that this type of promotion is limited by time.
-   *
-   * Remaining number of allowed minutes is stored in {@link RsLoginPromotionSql}.<var>i_remain_duration</var>.
    */
   const DURATION = 7;
 
@@ -27,8 +25,6 @@ abstract class WlProgramTypeSid
    *
    * Differs from {@link WlProgramTypeSid::PASS} in that this type of promotion allows access to only a limited number
    * of classes.
-   *
-   * Remaining number of allowed visits is stored in {@link RsLoginPromotionSql}.<var>i_remain</var>.
    */
   const LIMIT = 1;
 
