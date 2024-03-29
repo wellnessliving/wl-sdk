@@ -171,7 +171,7 @@ class VisitStatusModel extends WlModelAbstract
   /**
    * The time zone key.
    *
-   * This will be `null` if not set yet (use the client's default time zone).
+   * `null` if not set then use default timezone client.
    *
    * @get get
    * @var null|string

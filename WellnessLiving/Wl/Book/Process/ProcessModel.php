@@ -89,9 +89,9 @@ class ProcessModel extends WlModelAbstract
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> — the appointment repeats monthly on the same date.
-   *     <tt>false</tt> — the appointment repeats monthly on the same day of the week.
-   *     <tt>null</tt> — the appointment doesn't repeat monthly.
+   *     <tt>true</tt> - the appointment repeats monthly on the same date.
+   *     <tt>false</tt> - the appointment repeats monthly on the same day of the week.
+   *     <tt>null</tt> - the appointment doesn't repeat monthly.
    *   </dd>
    * </dl>
    *
@@ -237,7 +237,7 @@ class ProcessModel extends WlModelAbstract
   public $k_business = null;
 
   /**
-   * The key of the booked session.
+   * Key of session which is booked.
    *
    * @get get
    * @post get
@@ -254,7 +254,7 @@ class ProcessModel extends WlModelAbstract
   public $k_location;
 
   /**
-   * The login promotion used to book the class.
+   * Login promotion to be used to book a class.
    *
    * @post post
    * @var string

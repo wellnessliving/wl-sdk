@@ -396,7 +396,8 @@ class PaymentMultipleModel extends WlModelAbstract
 
   /**
    * The list of quiz response keys.
-   * Keys refer to quiz keys, and values refer to response keys.
+   * Keys refer to quiz keys.
+   * And values refer to response keys.
    *
    * @post post
    * @var array

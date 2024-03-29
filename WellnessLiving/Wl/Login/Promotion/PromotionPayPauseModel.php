@@ -47,8 +47,8 @@ class PromotionPayPauseModel extends WlModelAbstract
   public $a_pay_pause_list = null;
 
   /**
-   * The end date of the current hold, in the local time zone. This can be set to a special value
-   * {@link Wl\Promotion\Pay\PromotionPayPause::DATE_END_INDEFINITE} to make the period indefinite until further action.
+   * The end date of the current hold, in the local time zone.
+   * This can be set to a special value to make the period indefinite until further action.
    *
    * `null` if it shouldn't be updated.
    *

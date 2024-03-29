@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Profile\Edit;
 
 use WellnessLiving\Core\Geo\ComboboxModel;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Field\WlFieldGeneralSid;
 use WellnessLiving\Wl\Field\WlFieldTypeSid;
 use WellnessLiving\Wl\Profile\RegisterSourceSid;
 
@@ -60,10 +61,11 @@ class EditModel extends WlModelAbstract
   public $a_error_list;
 
   /**
-   * Information about the user's photo.
-   * It's necessary to simultaneously save the user and the photo in staff member mode.
+   * Information for user's photo.
+   * It is necessary to save simultaneously user and photo in staff member mode.
    *
-   * Note that data from this field is taken directly from a POST somewhere in the photo upload process.
+   * Attention!
+   * Data from this field is taken directly from a POST somewhere in the depths of the photo upload.
    *
    * @post post
    * @var array
@@ -101,7 +103,10 @@ class EditModel extends WlModelAbstract
    * Array values are the field values. The array has the following structure:
    * <dl>
    *   <dt>int [<var>id_field_general</var>]</dt>
-   *   <dd>The ID of a system field. One of the {@link \WellnessLiving\RsFieldGeneralSid} constants. This value is only defined if <var>id_field_type</var>={@link \WellnessLiving\RsFieldTypeSid::GENERAL}.</dd>
+   *   <dd>
+   *     The ID of a system field. One of the {@link WlFieldGeneralSid} constants.
+   *     This value is only defined if <var>id_field_type</var>={@link WlFieldTypeSid::GENERAL}.
+   *   </dd>
    *   <dt>bool <var>is_require</var></dt>
    *   <dd>Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional.</dd>
    *   <dt>int <var>id_field_type</var></dt>
@@ -120,8 +125,14 @@ class EditModel extends WlModelAbstract
   public $a_structure;
 
   /**
-   * The ID of registration source. One of the {@link \WellnessLiving\Wl\Profile\RegisterSourceSid} constants.
-   * If empty, {@link \WellnessLiving\Wl\Profile\RegisterSourceSid::SELF} is used.
+   * Registration source ID.
+   * One of {@link RegisterSourceSid} constants.
+   *
+   * Used only to register new clients.
+   * * If the client is already authorized, the field value will not be used.
+   * * If the client is not authorized and no value is set, {@link RegisterSourceSid::SELF} will be used.
+   *
+   * Use the {@link EditModel::_registerSourceGet()} method to get the value required for
    *
    * @get get
    * @post get

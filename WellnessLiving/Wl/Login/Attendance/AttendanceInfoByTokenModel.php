@@ -59,6 +59,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    *     string[] <var>a_resource_available</var>
    *   </dt>
    *   <dd>
+   *
    *   </dd>
    *   <dt>
    *     string <var>k_resource_layout</var>

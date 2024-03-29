@@ -8,19 +8,25 @@ namespace WellnessLiving\Wl\Report;
 abstract class WlReportSid
 {
   /**
+   * Report with list of canceled appointments.
+   */
+  const APPOINTMENT_CANCEL = 163;
+
+  /**
    * Report with list of requested appointments.
-   *
-   * @see RsAppointmentRequestReport
    */
   const APPOINTMENT_REQUEST = 54;
 
   /**
    * Report with list of requested appointments.
    * Short version for the dashboard.
-   *
-   * @see RsAppointmentRequestShortReport
    */
   const APPOINTMENT_REQUEST_SHORT = 55;
+
+  /**
+   * Booking metric.
+   */
+  const BOOK_METRIC_CHART = 204;
 
   /**
    * Report about revenue for application.
@@ -33,9 +39,17 @@ abstract class WlReportSid
   const BUSINESS_ACCOUNT_APPLICATION_ANNUAL = 135;
 
   /**
+   * Report about first paid application subscription.
+   */
+  const BUSINESS_ACCOUNT_APPLICATION_NEW = 221;
+
+  /**
    * Report with the list of customers lost during the period.
    */
   const BUSINESS_ACCOUNT_CHURN = 81;
+
+  /**/
+  const BUSINESS_ACCOUNT_COUPON = 237;
 
   /**
    * The number of WellnessLiving customers.
@@ -48,14 +62,60 @@ abstract class WlReportSid
   const BUSINESS_ACCOUNT_CUSTOMER_BEGIN = 85;
 
   /**
+   * The list of all locations from WellnessLiving customers during the selected period including
+   * locations, which are not customers and businesses, which are in a migration process.
+   */
+  const BUSINESS_ACCOUNT_CUSTOMER_LOCATION = 244;
+
+  /**
    * Report with the list of customers that has failed payments.
    */
   const BUSINESS_ACCOUNT_DEBT = 105;
 
   /**
+   * Report with list of changes to business account settings.
+   */
+  const BUSINESS_ACCOUNT_LOG = 248;
+
+  /**
+   * Report with the list of all payments from businesses to Wellnessliving Inc.
+   */
+  const BUSINESS_ACCOUNT_REVENUE = 227;
+
+  /**
+   * Report with the list of all subscription payments.
+   */
+  const BUSINESS_ACCOUNT_REVENUE_SUBSCRIPTION = 222;
+
+  /**
+   * Report with taxes of all payments from businesses.
+   */
+  const BUSINESS_ACCOUNT_REVENUE_TAX = 236;
+
+  /**
+   * Report with list of previous payments for business account.
+   */
+  const BUSINESS_ACCOUNT_SCHEDULE_PREVIOUS = 251;
+
+  /**
+   * Report with list of future payments for business account.
+   */
+  const BUSINESS_ACCOUNT_SCHEDULE_UPCOMING = 252;
+
+  /**
    * Skipped customers (who skipped business subscription payment).
    */
   const BUSINESS_ACCOUNT_SKIP = 98;
+
+  /**
+   * Report with business subscription information.
+   */
+  const BUSINESS_ACCOUNT_SUBSCRIPTION = 254;
+
+  /**
+   * Report with business subscription information for churned businesses.
+   */
+  const BUSINESS_ACCOUNT_SUBSCRIPTION_CHURN = 256;
 
   /**
    * Report with the list of 'Annual merchant processing fees' and 'Annual PCI fees' transactions.
@@ -93,6 +153,11 @@ abstract class WlReportSid
   const BUSINESS_ALL = 107;
 
   /**
+   * Achieve clients metric.
+   */
+  const BUSINESS_APPLICATION_METRIC_CHART = 208;
+
+  /**
    * Report with the list of 'MP Approval Fee' transactions.
    */
   const BUSINESS_CHARGE_APPROVAL = 90;
@@ -123,6 +188,44 @@ abstract class WlReportSid
   const BUSINESS_CHARGE_SETUP = 93;
 
   /**
+   * Report with list of customers' churn status history.
+   */
+  const BUSINESS_CUSTOMER_STATUS_HISTORY = 226;
+
+  /**
+   * Report with list of customers' statuses.
+   */
+  const BUSINESS_CUSTOMER_STATUS_LOCATION = 225;
+
+  /**
+   * List of franchisee business hours.
+   *
+   * @title Franchise Business Hours
+   */
+  const BUSINESS_FRANCHISE_HOURS = 247;
+
+  /**
+   * List of franchisee locations.
+   *
+   * @title Franchise Locations
+   */
+  const BUSINESS_FRANCHISE_LOCATION = 141;
+
+  /**
+   * List of franchise region.
+   *
+   * @title Franchise Regions
+   */
+  const BUSINESS_FRANCHISE_REGION_LIST = 142;
+
+  /**
+   * Saba files report.
+   *
+   * @title SABA Files
+   */
+  const BUSINESS_FRANCHISE_REPORT_CURVES_SABA = 219;
+
+  /**
    * Report with list of customer leads.
    *
    * Referral and referrer businesses can be specified in this report.
@@ -140,14 +243,17 @@ abstract class WlReportSid
   const BUSINESS_MERCHANT_PROCESS_BEGIN = 83;
 
   /**
+   * Report with list of business having active Sms subscription.
+   */
+  const BUSINESS_MESSAGE = 260;
+
+  /**
    * WellnessLiving Key Metrics.
    */
   const BUSINESS_METRIC = 94;
 
   /**
    * Report with amount that should be paid to partners for their referrals.
-   *
-   * @see \Wl\Business\Partner\Pay\Report
    */
   const BUSINESS_PARTNER_PAY = 126;
 
@@ -156,24 +262,25 @@ abstract class WlReportSid
    *
    * Includes information about all business that became our customers with special link of one of our existing
    * customer.
-   *
-   * @see \Wl\Business\Partner\Referral\Detail\Report
    */
   const BUSINESS_PARTNER_REFERRAL_DETAIL = 128;
 
   /**
    * Report with list of all businesses which gave us at least one new customer.
-   *
-   * @see \Wl\Business\Partner\Referral\Summary\Report
    */
   const BUSINESS_PARTNER_REFERRAL_SUMMARY = 129;
 
   /**
    * Report which allows to view list of classes that starts or ends within specific date range.
-   *
-   * @see \Wl\Classes\Schedule\Report
    */
   const CLASSES_SCHEDULE = 127;
+
+  /**
+   * Class capacity utilization metric.
+   *
+   * @title Class Capacity Utilization
+   */
+  const CLASSES_UTILIZATION_CHART = 205;
 
   /**
    * History of a contacts with clients.
@@ -181,11 +288,47 @@ abstract class WlReportSid
   const CONTACT_MEMBER_HISTORY = 110;
 
   /**
-   * List of all relatives in the business.
+   * History of a contacts for one certain client.
+   */
+  const CONTACT_MEMBER_HISTORY_USER = 152;
+
+  /**
+   * Event capacity utilization metric.
    *
-   * @see \Wl\Family\All\Report
+   * @title Event Capacity Utilization
+   */
+  const EVENT_UTILIZATION_CHART = 215;
+
+  /**
+   * List of all relatives in the business.
    */
   const FAMILY_ALL = 134;
+
+  /**
+   * Feedback report.
+   */
+  const FEEDBACK_DIALOG = 229;
+
+  /**
+   * Franchise membership transfer history report.
+   *
+   * @title Membership Transfer History
+   */
+  const FRANCHISE_TRANSFER_MEMBERSHIP_HISTORY_LIST = 159;
+
+  /**
+   * Franchise membership requested transfers report.
+   *
+   * @title Membership Requested Transfers
+   */
+  const FRANCHISE_TRANSFER_MEMBERSHIP_REQUESTED_LIST = 160;
+
+  /**
+   * Report to view list of locations with gympass integration status.
+   *
+   * @title Gympass Location Integration
+   */
+  const GYMPASS_LOCATION = 266;
 
   /**
    * List of all link that import could not process correctly even after max count of attempts.
@@ -193,9 +336,99 @@ abstract class WlReportSid
   const IMPORT_MIGRATION_COMPANY_URL_FAIL = 121;
 
   /**
+   * A list of imported visits.
+   */
+  const IMPORT_MIGRATION_COMPANY_VISIT_LIST = 220;
+
+  /**
+   * "Wellness Program" report on user profile.
+   *
+   * @title Wellness Program
+   */
+  const INSURANCE_PROFILE_PROGRAM = 181;
+
+  /**
+   * Detail wellness program report on user profile.
+   *
+   * @title Wellness Program Details
+   */
+  const INSURANCE_PROFILE_PROGRAM_DETAIL = 184;
+
+  /**
+   * List of clients, which got reimbursement.
+   */
+  const INSURANCE_REIMBURSEMENT_DETAIL = 183;
+
+  /**
+   * List of clients, which got reimbursement.
+   */
+  const INSURANCE_REIMBURSEMENT_FRANCHISE_DETAIL = 217;
+
+  /**
+   * Total amounts of reimbursement by partner.
+   */
+  const INSURANCE_REIMBURSEMENT_FRANCHISE_SUMMARY = 218;
+
+  /**
+   * List of partner, which support reimbursement export and import.
+   */
+  const INSURANCE_REIMBURSEMENT_REBATE_FILE = 233;
+
+  /**
+   * Total amounts of reimbursement by partner.
+   */
+  const INSURANCE_REIMBURSEMENT_SUMMARY = 182;
+
+  /**
+   * Isaac control report.
+   */
+  const ISAAC_CONTROL = 241;
+
+  /**
+   * Franchise leads from lead capture forms. Chart representation.
+   *
+   * @title Leads by Location
+   */
+  const LEAD_FRANCHISE_REPORT_CHART = 173;
+
+  /**
+   * Franchise leads from lead capture forms. Table representation.
+   *
+   * @title Leads by Location
+   */
+  const LEAD_FRANCHISE_REPORT_LIST = 167;
+
+  /**
+   * Franchise leads from lead capture forms. Year-by-year chart representation.
+   *
+   * @title Leads by Location
+   */
+  const LEAD_FRANCHISE_REPORT_YOY = 176;
+
+  /**
    * Leads from lead capture forms.
    */
   const LEAD_LIST = 42;
+
+  /**
+   * New leads metric.
+   *
+   * @title New Leads
+   */
+  const LEAD_NEWEST_METRIC_CHART = 200;
+
+  /**
+   * New leads YOY metric.
+   *
+   * @title New Leads YOY
+   */
+  const LEAD_NEWEST_METRIC_YOY = 203;
+
+  /**
+   * Leads from lead capture forms.
+   */
+  const LEAD_REPORT_CHART = 166;
+
 
   const LOCATION_MARKET = 35;
 
@@ -215,11 +448,36 @@ abstract class WlReportSid
   const LOGIN_BIRTHDAY = 75;
 
   /**
+   * For the past 4 years, shows the number of clients whose
+   * status changed from "Prospect" to any other in each year
+   *
+   * @title New Clients
+   */
+  const LOGIN_CLIENT_NEWEST_METRIC_CHART = 199;
+
+  /**
    * List of all Gift Cards purchased.
    */
   const LOGIN_COUPON = 76;
 
+  /**
+   * Detail franchise client report table.
+   *
+   * @title Corporate Client Details
+   */
+  const LOGIN_FRANCHISE_DETAIL_LIST = 156;
+
+  /**
+   * Franchise client status report table.
+   *
+   * @title Corporate Status Report
+   */
+  const LOGIN_FRANCHISE_STATUS_LIST = 162;
+
+
   const LOGIN_LIST = 22;
+
+
   const LOGIN_LIST_ALL = 33;
 
   /**
@@ -234,15 +492,21 @@ abstract class WlReportSid
 
   /**
    * Report about client's ranks.
-   *
-   * @see RsLoginRankReport
    */
   const LOGIN_RANK = 40;
 
   /**
+   * List of clients that are at churn risk according to isaac prediction.
+   *
+   * @title Isaac Churn Risk
+   */
+  const LOGIN_RISK = 261;
+
+  /**
    * Report with client's attendance history.
    *
-   * @see RsLoginVisitReport
+   * @deprecated Has been replaced with {@link WlReportSid::PROFILE_ATTENDANCE_SCHEDULE_HISTORY}. Kept only to retain
+   * compatibility with old saved reports.
    */
   const LOGIN_VISIT = 52;
 
@@ -267,21 +531,69 @@ abstract class WlReportSid
   const MAIL_HISTORY_LIST = 38;
 
   /**
-   * List of clients' credit cards with expiration date.
+   * Member progress body fat report in chart view.
    *
-   * @see RsPayBankCardExpireReport
+   * @title Member Body Fat progress.
+   */
+  const MEMBER_PROGRESS_LOG_BODY_FAT = 149;
+
+  /**
+   * Member progress report collection for charts.
+   *
+   * @title Member Transformation Log chart collection.
+   */
+  const MEMBER_PROGRESS_LOG_CHART = 146;
+
+  /**
+   * Report with list of progress log per client.
+   *
+   * @title Transformation Log
+   */
+  const MEMBER_PROGRESS_LOG_CLIENT = 150;
+
+  /**
+   * Member progress main report in table view.
+   *
+   * @title Member Transformation Log.
+   */
+  const MEMBER_PROGRESS_LOG_LIST = 147;
+
+  /**
+   * Member progress report collection for table.
+   *
+   * @title Member Transformation Log report collection.
+   */
+  const MEMBER_PROGRESS_LOG_TABLE = 145;
+
+  /**
+   * Member progress weight report in chart view.
+   *
+   * @title Member Weight progress.
+   */
+  const MEMBER_PROGRESS_LOG_WEIGHT = 148;
+
+  /**
+   * List of clients' credit cards with expiration date.
    */
   const PAY_BANK_CARD_EXPIRE = 44;
 
   /**
    * Total Sum Processed by all Businesses.
    */
+  const PAY_METHOD_BUSINESS = 235;
+
+  /**
+   * Total Sum Processed from all Businesses to wellnessliving.
+   */
   const PAY_METHOD_SYSTEM = 78;
 
   /**
+   * Processing per Business with Login Date.
+   */
+  const PAY_METHOD_SYSTEM_LOGIN = 242;
+
+  /**
    * A report to track history of refunds.
-   *
-   * @see RsPayTransactionListReport
    */
   const PAY_REFUND = 45;
 
@@ -316,7 +628,6 @@ abstract class WlReportSid
    * Shows a list of all system transactions. Contains a list of special totals.
    *
    * This report is available only for administrators with special privilege.
-   * See more: {@link \Wl\Pay\Transaction\System\All\Report::can()}.
    */
   const PAY_TRANSACTION_SYSTEM_ALL = 79;
 
@@ -333,9 +644,15 @@ abstract class WlReportSid
    * Shows a list of refund and void system transactions.
    *
    * This report is available only for administrators with special privilege.
-   * See more: {@link \Wl\Pay\Transaction\System\All\Report::can()}.
    */
   const PAY_TRANSACTION_SYSTEM_REFUND = 106;
+
+  /**
+   * Sum of all transactions from businesses to system merchants.
+   *
+   * This report is available only for administrators with special privilege.
+   */
+  const PAY_TRANSACTION_SYSTEM_SUMMARY = 143;
 
   /**
    * If the report is opened in backend it shows a list of transactions for the one given user in the current business.
@@ -346,31 +663,57 @@ abstract class WlReportSid
   const PAY_TRANSACTION_USER = 120;
 
   /**
+   * This report is available for user in client app.
+   */
+  const PAY_TRANSACTION_USER_CLIENT = 253;
+
+  /**
    * Postcard history list report.
    *
    * This report contains all sent postcards in the business with information
    * about price of postcard, content and status.
-   *
-   * @see \Wl\Postcard\Sql
    */
   const POSTCARD_HISTORY = 103;
 
   /**
-   * Shows list of memberships with negative balances.
-   *
-   * @see \Wl\Promotion\Pass\Membership\Report
+   * Attendance history report in frontend.
    */
-  const PROMOTION_MEMBERSHIP_NEGATIVE = 130;
+  const PROFILE_ATTENDANCE_SCHEDULE_FRONTEND_HISTORY = 180;
 
   /**
-   * Shows list of pricing options from that were imported mindbody and converted into memberships.
-   *
-   * Such pricing options are created as passes but they are marked as removed. During migration process all their names
-   * are used to create connected memberships.
-   *
-   * @see \Wl\Promotion\Pass\Membership\Report
+   * Upcoming schedule report in frontend.
    */
-  const PROMOTION_PASS_MEMBERSHIP = 108;
+  const PROFILE_ATTENDANCE_SCHEDULE_FRONTEND_UPCOMING = 179;
+
+  /**
+   * Attendance history report.
+   */
+  const PROFILE_ATTENDANCE_SCHEDULE_HISTORY = 178;
+
+  /**
+   * Attendance history report for given login promotion.
+   */
+  const PROFILE_ATTENDANCE_SCHEDULE_LOGIN_PROMOTION_HISTORY = 262;
+
+  /**
+   * Upcoming schedule report for given login promotion.
+   */
+  const PROFILE_ATTENDANCE_SCHEDULE_LOGIN_PROMOTION_UPCOMING = 263;
+
+  /**
+   * Upcoming schedule report.
+   */
+  const PROFILE_ATTENDANCE_SCHEDULE_UPCOMING = 177;
+
+  /**
+   * Contract list report in client profile.
+   */
+  const PROFILE_CONTRACT_LIST = 255;
+
+  /**
+   * Report to view list of responses for specific user in client profile.
+   */
+  const PROFILE_FORM_RESPONSE = 265;
 
   /**
    * Gift Card report in client profile.
@@ -413,54 +756,129 @@ abstract class WlReportSid
   const PROFILE_PURCHASE_REPORT_SESSION_SINGLE = 194;
 
   /**
+   * Intro offers metric.
+   */
+  const PROMOTION_INTRODUCTORY_METRIC_CHART = 206;
+
+  /**
+   * Shows list of memberships with negative balances.
+   */
+  const PROMOTION_MEMBERSHIP_NEGATIVE = 130;
+
+  /**
+   * Shows list of pricing options from that were imported mindbody and converted into memberships.
+   *
+   * Such pricing options are created as passes but they are marked as removed. During migration process all their names
+   * are used to create connected memberships.
+   */
+  const PROMOTION_PASS_MEMBERSHIP = 108;
+
+  /**
    * A list of payment transactions including scheduled transaction (recurrent payments for memberships and renewals of
    * promotions).
-   *
-   * @see RsPurchaseAutoListReport Report controller class.
    */
   const PURCHASE_AUTO_LIST = 60;
 
   /**
    * Report with list of sales per client.
-   *
-   * @see \Wl\Purchase\Client\Summary\Report
    */
   const PURCHASE_CLIENT_SUMMARY = 115;
+
+  /**
+   * Detail franchise sales report table.
+   *
+   * @title Sales Details by Location
+   */
+  const PURCHASE_FRANCHISE_LOCATION_DETAIL_LIST = 151;
+
+  /**
+   * Summary franchise sales report table.
+   *
+   * @title Sales Summary by Location
+   */
+  const PURCHASE_FRANCHISE_LOCATION_SUMMARY_CHART = 155;
+
+  /**
+   * Summary franchise sales report table.
+   *
+   * @title Sales Summary by Location
+   */
+  const PURCHASE_FRANCHISE_LOCATION_SUMMARY_LIST = 154;
+
+  /**
+   * Summary franchise memberships report (chart view).
+   *
+   * @title Memberships by Location
+   */
+  const PURCHASE_FRANCHISE_MEMBERSHIP_CHART = 175;
+
+  /**
+   * Summary franchise memberships report.
+   *
+   * @title Enterprise Memberships by Location Details
+   * @link https://wellnessliving.atlassian.net/browse/WL-46987
+   */
+  const PURCHASE_FRANCHISE_MEMBERSHIP_DETAIL = 257;
+
+  /**
+   * Summary franchise memberships report.
+   *
+   * @title Memberships by Location
+   */
+  const PURCHASE_FRANCHISE_MEMBERSHIP_LIST = 174;
+
+  /**
+   * YOY sales comparison report.
+   *
+   * @title YOY Sales Comparison
+   * @link https://wellnessliving.atlassian.net/browse/WL-7397
+   */
+  const PURCHASE_FRANCHISE_SALE_COMPARE_LIST = 161;
 
   /**
    * Purchases that have been bought divided by payment methods.
    *
    * @link https://wellnessliving.atlassian.net/browse/WL-12593
-   * @see \Wl\Purchase\Item\Accrual\CashReport
    */
   const PURCHASE_ITEM_ACCRUAL_CASH = 123;
 
   /**
-   * Special quick purchases report for migration.
+   * Purchases that have been bought divided by time.
    *
-   * @see \Wl\Purchase\Item\Accrual\MigrationReport
+   * @title All Sales
+   */
+  const PURCHASE_ITEM_ACCRUAL_CASH_CHART = 171;
+
+  /**
+   * Special quick purchases report for migration.
    */
   const PURCHASE_ITEM_ACCRUAL_MIGRATION = 132;
 
   /**
    * Summaries of the sales divided by days, months or years.
-   *
-   * @see \Wl\Purchase\Item\Accrual\SummaryReport
    */
   const PURCHASE_ITEM_ACCRUAL_SUMMARY = 133;
 
+
   const PURCHASE_ITEM_COUNT = 27;
+
+
   const PURCHASE_ITEM_COUNT_PRODUCT = 50;
+
+
   const PURCHASE_ITEM_COUNT_REVENUE = 51;
+
 
   const PURCHASE_ITEM_LIST = 26;
 
   /**
    * All sales report.
-   *
-   * @see RsPurchaseItemListProductReport
    */
   const PURCHASE_ITEM_LIST_PRODUCT = 48;
+
+  /**
+   * Sales With Revenue Categories report.
+   */
   const PURCHASE_ITEM_LIST_REVENUE = 49;
 
   /**
@@ -469,61 +887,107 @@ abstract class WlReportSid
   const PURCHASE_ITEM_LIST_USER = 118;
 
   /**
-   * List of memberships.
+   * Purchase summary by location chart.
    *
-   * @see RsPurchaseMembershipListReport
+   * @title Sales Summary by Location
+   */
+  const PURCHASE_LOCATION_SUMMARY_CHART = 172;
+
+  /**
+   * Summary franchise sales report table.
+   *
+   * @title Sales Summary by Location
+   */
+  const PURCHASE_LOCATION_SUMMARY_LIST = 153;
+
+  /**
+   * List of memberships in chart format.
+   *
+   * @title Memberships
+   */
+  const PURCHASE_MEMBERSHIP_CHART = 165;
+
+  /**
+   * List of memberships.
    */
   const PURCHASE_MEMBERSHIP_LIST = 71;
 
   /**
-   * Report with list of sales grouped by purchase options. Products and drop-ins are not included.
+   * Lost members metric.
    *
-   * @see \Wl\Purchase\Option\Summary\Report
+   * @title Lost Members
+   */
+  const PURCHASE_MEMBERSHIP_METRIC_CHART = 198;
+
+  /**
+   * Recurring revenue metric.
+   *
+   * @title Recurring Revenue
+   */
+  const PURCHASE_MEMBERSHIP_RECURRING_METRIC_CHART = 202;
+
+  /**
+   * All sales metric.
+   *
+   * @title All Sales.
+   */
+  const PURCHASE_METRIC_CHART = 195;
+
+  /**
+   * All sales YOY metric.
+   *
+   * @title All Sales YOY
+   */
+  const PURCHASE_METRIC_YOY = 201;
+
+  /**
+   * Report with list of sales grouped by purchase options. Products and drop-ins are not included.
    */
   const PURCHASE_OPTION_SUMMARY = 109;
 
+
   const PURCHASE_TAG_COUNT = 30;
+
+
   const PURCHASE_TAG_LIST = 31;
 
   /**
    * Report taxes of business in list format.
-   *
-   * @see RsPurchaseTaxCountReport
    */
   const PURCHASE_TAX_COUNT = 29;
 
   /**
    * Report taxes of business in chart format.
-   *
-   * @see RsPurchaseTaxListReport
    */
   const PURCHASE_TAX_LIST = 28;
 
   /**
    * List of sales with non zero tips.
-   *
-   * @see \Wl\Purchase\Tip\Report
    */
   const PURCHASE_TIP = 99;
 
   /**
    * Tips summary by staff.
-   *
-   * @see \Wl\Purchase\Tip\Sum\Report
    */
   const PURCHASE_TIP_SUM = 101;
 
   /**
+   * Report to view list of responses for specific quiz.
+   */
+  const QUIZ_RESPONSE = 264;
+
+  /**
+   * Report with list of generated reports.
+   */
+  const REPORT_BACKGROUND_GENERATE = 246;
+
+  /**
    * Report with list of customers reviews. Available only in business backend and contains reviews on this business.
-   *
-   * @see RsReviewListReport
    */
   const REVIEW_LIST = 47;
 
   /**
    * Report with list of customers reviews. Available out of the backend and contains reviews on all businesses.
-   *
-   * @see RsReviewListReport
    */
   const REVIEW_ROOT = 53;
 
@@ -532,103 +996,111 @@ abstract class WlReportSid
    */
   const REWARD_BOARD = 56;
 
+
   const SCHEDULE_PROSPECT_COUNT = 9;
+
+  /**
+   * Daily Tracker.
+   */
   const SCHEDULE_PROSPECT_LIST = 10;
 
   /**
    * Report about daily booking activity special for dashboard.
-   *
-   * @see RsScheduleProspectListTodayReport
    */
   const SCHEDULE_PROSPECT_LIST_TODAY = 39;
+
 
   const SCHEDULE_WAIT_LIST = 11;
 
   /**
    * Products, Purchase Options and Packages with Barcode.
-   *
-   * @see \Wl\Shop\Barcode\Report
    */
   const SHOP_BARCODE = 102;
 
   /**
    * Inventory On Hand.
-   *
-   * @see \Wl\Shop\Product\Report
    */
   const SHOP_PRODUCT = 80;
 
   /**
+   * Physical Inventory Count.
+   */
+  const SHOP_PRODUCT_OPTION_INVENTORY_COUNT = 243;
+
+  /**
    * SMS history report.
-   *
-   * @see \Wl\Sms\History\Report
    */
   const SMS_HISTORY = 116;
 
   /**
-   * Chart version of {@link RsReportSid::STAFF_PAY_LIST} report.
+   * Social sharing details.
    *
-   * @see RsReportSid::STAFF_PAY_LIST
-   * @see RsStaffPayCountReport
+   * @title Social sharing details.
+   */
+  const SOCIAL_SHARE_DETAILS_LIST = 212;
+
+  /**
+   * All social sharing.
+   *
+   * @title All social sharing.
+   */
+  const SOCIAL_SHARE_METRIC_CHART = 197;
+
+  /**
+   * Social sharing summary by user.
+   *
+   * @title Social sharing summary by user.
+   */
+  const SOCIAL_SHARE_SUMMARY_LIST = 214;
+
+  /**
+   * Chart version of {@link WlReportSid::STAFF_PAY_LIST} report.
+   *
+   * @see WlReportSid::STAFF_PAY_LIST
    */
   const STAFF_PAY_COUNT = 24;
 
   /**
    * Report that contains detail information about staff payments for each option.
-   *
-   * @see RsStaffPayDetailReport
    */
   const STAFF_PAY_DETAIL = 25;
 
   /**
    * Report that contains general information about payments for each staff.
    *
-   * @see RsReportSid::STAFF_PAY_COUNT
-   * @see RsStaffPayListReport
+   * @see WlReportSid::STAFF_PAY_COUNT
    */
   const STAFF_PAY_LIST = 23;
 
   /**
    * Staff retention report collection.
-   *
-   * @see \Wl\Staff\Retention\StaffRetentionReportCollection
    */
   const STAFF_RETENTION = 137;
 
   /**
    * Staff Member New Clients Retention report.
-   *
-   * @see \Wl\Staff\Retention\Client\NewReport
    */
   const STAFF_RETENTION_CLIENT_NEW = 138;
 
   /**
    * Staff Member Repeat Clients Retention report.
-   *
-   * @see \Wl\Staff\Retention\Client\RepeatReport
    */
   const STAFF_RETENTION_CLIENT_REPEAT = 139;
 
   /**
    * Staff Member Client Retention Summary report.
-   *
-   * @see \Wl\Staff\Retention\Client\SummaryReport
    */
   const STAFF_RETENTION_CLIENT_SUMMARY = 140;
 
   /**
    * Report that contains detailed information about staff clock-in and clock-out, total load, hourly pay rates, average
    * hourly and additional payments and others for a day.
-   *
-   * @see \Wl\Staff\Time\Detail\Report
    */
   const STAFF_TIME_DETAIL = 111;
 
   /**
    * Report that contains summary information about staff clock-in and clock-out, total load, hourly pay rates, average
    * hourly and additional payments and others for a specified period.
-   *
-   * @see \Wl\Staff\Time\Detail\Report
    */
   const STAFF_TIME_SUMMARY = 112;
 
@@ -637,43 +1109,80 @@ abstract class WlReportSid
    */
   const TASK_MANAGER = 86;
 
-  const TEST_CHART = 1;
-  const TEST_GAUGE = 21;
-  const TEST_TABLE = 5;
+  /**
+   * Report that contains regional taxes.
+   */
+  const TAX_REGION = 234;
+
+  /**
+   * Report with potential client duplicates.
+   */
+  const USER_DUPLICATE = 185;
+
+  /**
+   * Report with all businesses, which has videos and count of videos and total size of the videos.
+   */
+  const VIDEO_BUSINESS_ALL = 239;
+
+  /**
+   * Report with all businesses, which has videos and count of videos and total size of the videos
+   * filtered with upload date.
+   */
+  const VIDEO_BUSINESS_UPLOAD = 240;
+
+  /**
+   * Report with all business videos and basic information about these videos.
+   */
+  const VIDEO_DETAIL = 238;
+
+  /**
+   * Report with all business videos and detail information about these videos.
+   */
+  const VIDEO_SUMMARY = 250;
+
+  /**
+   * Report with all views of videos and information about a viewers.
+   */
+  const VIDEO_VIEW_DETAIL = 249;
+
+  /**
+   * Report with list of canceled appointments.
+   */
+  const VIRTUAL_ZOOM_USER_HISTORY = 245;
 
   /**
    * Controls visit appointment report in chart format.
-   *
-   * @see RsVisitAppointmentCountReport
    */
   const VISIT_APPOINTMENT_COUNT = 70;
 
   /**
    * Appointment details analysis report
-   *
-   * @see RsVisitAppointmentDetailReport
    */
   const VISIT_APPOINTMENT_DETAIL = 66;
 
   /**
    * Appointment details analysis report
-   *
-   * @see RsVisitAppointmentListReport
    */
   const VISIT_APPOINTMENT_LIST = 65;
 
   /**
    * List of visits in attended state.
-   *
-   * @see RsVisitAttendListReport
    */
   const VISIT_ATTEND_LIST = 64;
 
+
   const VISIT_BOOK_COUNT = 4;
+
+
   const VISIT_BOOK_LIST = 6;
 
+
   const VISIT_CLASS_AVERAGE_COUNT = 20;
+
+
   const VISIT_CLASS_AVERAGE_LIST = 18;
+
+
   const VISIT_CLASS_BUY = 32;
 
   /**
@@ -683,15 +1192,11 @@ abstract class WlReportSid
 
   /**
    * Controls visit class report in chart format.
-   *
-   * @see RsVisitClassCountReport
    */
   const VISIT_CLASS_COUNT = 16;
 
   /**
    * Class analysis report.
-   *
-   * @see RsVisitClassDetailReport
    */
   const VISIT_CLASS_DETAIL = 59;
 
@@ -704,48 +1209,123 @@ abstract class WlReportSid
 
   /**
    * Report with list of duplicated visits.
-   *
-   * @see \Wl\Visit\Duplicate\Report
    */
   const VISIT_DUPLICATE = 131;
 
   /**
    * Controls visit event report in chart format.
-   *
-   * @see RsVisitEventCountReport
    */
   const VISIT_EVENT_COUNT = 69;
 
   /**
    * Event details analysis report
-   *
-   * @see RsVisitEventDetailReport
    */
   const VISIT_EVENT_DETAIL = 68;
 
   /**
    * Event analysis report
-   *
-   * @see RsVisitEventListReport
    */
   const VISIT_EVENT_LIST = 67;
 
+  /**
+   * Old first visits report.
+   *
+   * @deprecated Has been replaced with {@link WlReportSid::VISIT_FIRST_SCOPED_COUNT}. Kept only to retain compatibility
+   * with old saved reports.
+   */
   const VISIT_FIRST_COUNT = 3;
+
+  /**
+   * Old first visits report.
+   *
+   * @deprecated Has been replaced with {@link WlReportSid::VISIT_FIRST_SCOPED_LIST}. Kept only to retain compatibility
+   * with old saved reports.
+   */
   const VISIT_FIRST_LIST = 2;
 
   /**
-   * Expired passes report in chart format.
+   * Filterable first visit list report, allowing to see first visits to certain criteria (locations/events/etc.)
+   * rather than first visits ever. Chart version.
    *
-   * @see RsVisitLastCountReport
+   * @title First Visits
+   */
+  const VISIT_FIRST_SCOPED_COUNT = 224;
+
+  /**
+   * Filterable first visit list report, allowing to see first visits to certain criteria (locations/events/etc.)
+   * rather than first visits ever. Table version.
+   *
+   * @title First Visits
+   */
+  const VISIT_FIRST_SCOPED_LIST = 223;
+
+  /**
+   * Detail franchise cross-location visits table for franchisee.
+   *
+   * @title Cross-Location Visits Details
+   */
+  const VISIT_FRANCHISE_LOCATION_CROSS_DETAIL_FRANCHISEE = 186;
+
+  /**
+   * Detail franchise cross-location visits table.
+   *
+   * @title Cross-Location Visits Details
+   */
+  const VISIT_FRANCHISE_LOCATION_CROSS_DETAIL_LIST = 157;
+
+  /**
+   * Summary franchise cross-location visits chart.
+   *
+   * @title Cross-Location Visits Summary
+   */
+  const VISIT_FRANCHISE_LOCATION_CROSS_SUMMARY_CHART = 164;
+
+  /**
+   * Summary franchise cross-location visits table for franchisee.
+   *
+   * @title Cross-Location Visits Summary
+   */
+  const VISIT_FRANCHISE_LOCATION_CROSS_SUMMARY_FRANCHISEE = 187;
+
+  /**
+   * Summary franchise cross-location visits table.
+   *
+   * @title Cross-Location Visits Summary
+   */
+  const VISIT_FRANCHISE_LOCATION_CROSS_SUMMARY_LIST = 158;
+
+  /**
+   * Expired passes report in chart format.
    */
   const VISIT_LAST_COUNT = 8;
 
   /**
    * Expired passes report in list format.
-   *
-   * @see RsVisitLastListReport
    */
   const VISIT_LAST_LIST = 7;
+
+  /**
+   * Detail cross-location visits table. For regular businesses.
+   *
+   * @title Cross-Location Visits Details
+   */
+  const VISIT_LOCATION_CROSS_DETAIL_LIST = 168;
+
+  /**
+   * Summary cross-location visits chart. For regular businesses.
+   *
+   * @title Cross-Location Visits Summary
+   */
+  const VISIT_LOCATION_CROSS_SUMMARY_CHART = 170;
+
+  /**
+   * Summary cross-location visits table. For regular businesses.
+   *
+   * @title Cross-Location Visits Summary
+   */
+  const VISIT_LOCATION_CROSS_SUMMARY_LIST = 169;
+
+
   const VISIT_LOGIN_LIST = 12;
 
   /**
@@ -755,28 +1335,36 @@ abstract class WlReportSid
 
   /**
    * Detailed revenue by service.
-   *
-   * @see RsVisitRevenueDetailReport
    */
   const VISIT_REVENUE_DETAIL = 58;
 
   /**
    * Service revenue analysis.
-   *
-   * @see RsVisitRevenueListReport
    */
   const VISIT_REVENUE_LIST = 57;
 
   /**
    * Risky clients.
-   *
-   * @see RsVisitRiskReport
    */
   const VISIT_RISK = 41;
 
+  /**
+   * Event capacity utilization metric.
+   *
+   * @title Isaac Churn Prediction
+   */
+  const VISIT_RISK_ISAAC = 216;
+
+
   const VISIT_STAFF_AVERAGE_COUNT = 19;
+
+
   const VISIT_STAFF_AVERAGE_LIST = 17;
+
+
   const VISIT_STAFF_COUNT = 15;
+
+
   const VISIT_STAFF_LIST = 13;
 
   /**
@@ -788,6 +1376,40 @@ abstract class WlReportSid
    * List of unpaid visits.
    */
   const VISIT_UNPAID_LIST = 73;
+
+  /**
+   * Monthly coaching sessions YOY report for Curves business.
+   */
+  const VISIT_WORKOUT_APPOINTMENT_LIST = 210;
+
+  /**
+   * Monthly coaching sessions YOY report for Curves business.
+   */
+  const VISIT_WORKOUT_APPOINTMENT_YOY = 211;
+
+  /**
+   * Workout list report for Curves business.
+   */
+  const VISIT_WORKOUT_GYM_LIST = 209;
+
+  /**
+   * Workout YOY report for Curves business.
+   */
+  const VISIT_WORKOUT_GYM_YOY = 207;
+
+  /**
+   * Report with list of businesses connected to FitLIVE.
+   *
+   * @title FitLIVE for business
+   */
+  const ZOOM_SYSTEM_BUSINESS = 258;
+
+  /**
+   * Report with list of businesses connected to FitLIVE.
+   *
+   * @title FitLIVE for business
+   */
+  const ZOOM_SYSTEM_COUNT = 259;
 }
 
 ?>

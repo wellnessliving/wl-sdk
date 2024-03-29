@@ -62,9 +62,9 @@ class Resource54Model extends WlModelAbstract
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> — the appointment repeats monthly on the same date.
-   *     <tt>false</tt> — the appointment repeats monthly on the same day of the week.
-   *     <tt>null</tt> — the appointment doesn't repeat monthly.
+   *     <tt>true</tt> - the appointment repeats monthly on the same date.
+   *     <tt>false</tt> - the appointment repeats monthly on the same day of the week.
+   *     <tt>null</tt> - the appointment doesn't repeat monthly.
    *   </dd>
    * </dl>
    *
@@ -116,6 +116,7 @@ class Resource54Model extends WlModelAbstract
    *       </dt>
    *       <dd>
    *         The key of the asset in database.
+   *
    *       </dd>
    *       <dt>
    *         string <var>s_resource</var>

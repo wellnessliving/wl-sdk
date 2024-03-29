@@ -174,7 +174,8 @@ class CatalogCartModel extends WlModelAbstract
   public $m_discount;
 
   /**
-   * The manual discount amount in dollars, excluding tax. Staff members can set this amount when making a sale.
+   * The manual discount amount in dollars, excluding tax.
+   * Staff members can set this amount when making a sale.
    *
    * @get get
    * @var string

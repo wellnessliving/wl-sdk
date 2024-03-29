@@ -41,7 +41,8 @@ class CartModel extends WlModelAbstract
   /**
    * Values derived for individual tax rates.
    *
-   * Keys refer to tax keys, and values refer to the amount of tax in the cart.
+   * Keys refer to tax keys.
+   * And values refer to the amount of tax in the cart.
    *
    * @get result
    * @var array

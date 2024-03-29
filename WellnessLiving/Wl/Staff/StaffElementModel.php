@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Staff;
 
+use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Business\BusinessModel;
 
@@ -44,7 +45,7 @@ class StaffElementModel extends WlModelAbstract
   public $dl_start = null;
 
   /**
-   * Gender of staff member. One of {@link \WellnessLiving\Core\a\AGenderSid} constants.
+   * Gender of staff member. One of {@link AGenderSid} constants.
    *
    * `null` means to not change the current value of the field or set gender by default for new staff.
    *

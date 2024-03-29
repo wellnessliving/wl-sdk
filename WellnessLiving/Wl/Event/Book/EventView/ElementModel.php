@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Event\Book\EventView;
 
+use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Business\Config\BusinessConfigModel;
 use WellnessLiving\Wl\Virtual\VirtualProviderSid;
@@ -69,7 +70,7 @@ class ElementModel extends WlModelAbstract
    *   <dt>int [<var>i_width</var>]</dt>
    *   <dd>Is returned only if staff has photo. Image width.</dd>
    *   <dt>int [<var>id_gender</var>] </dt>
-   *   <dd>Is returned only if staff does not have photo. ID of staff gender. One of {@link \WellnessLiving\Core\a\AGenderSid} constants.</dd>
+   *   <dd>Is returned only if staff does not have photo. ID of staff gender. One of {@link AGenderSid} constants.</dd>
    *   <dt>string [<var>url_logo</var>]</dt>
    *   <dd>Is returned only if staff has photo. URL to image.</dd>
    * </dl>

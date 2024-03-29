@@ -67,7 +67,7 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
   public $a_country_list = null;
 
   /**
-   * The location list. Each element has next structure:
+   * The location list. Each element has the next structure:
    * <dl>
    *   <dt>
    *     string <var>k_city</var>
@@ -113,7 +113,7 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
   public $a_location_list = null;
 
   /**
-   * The region list. Each element has next structure:
+   * The region list. Each element has the next structure:
    * <dl>
    *   <dt>
    *     string <var>k_region</var>
@@ -135,7 +135,7 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
   public $a_region_list = null;
 
   /**
-   * The state list. Each element has next structure:
+   * The state list. Each element has the next structure:
    * <dl>
    *   <dt>
    *     string <var>k_country</var>

@@ -79,7 +79,7 @@ class DayTimeModel extends WlModelAbstract
   public $id_gender_staff = 0;
 
   /**
-   * Whether multiple appointments booked in back-to-back mode.
+   * Determines whether multiple appointments are booked in back-to-back mode.
    *
    * @get get
    * @var bool
@@ -183,7 +183,7 @@ class DayTimeModel extends WlModelAbstract
   /**
    * Key of timezone.
    *
-   * `null` if not set then use default timezone client {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}.
+   * `null` if not set then use default timezone client.
    *
    * @get get
    * @var null|string

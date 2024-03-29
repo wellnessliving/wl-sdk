@@ -280,7 +280,7 @@ class DataModel extends WlModelAbstract
   public $url_instagram = '';
 
   /**
-   * The LinkedIn profile.
+   * The `LinkedIn` profile.
    *
    * @get result
    * @var string

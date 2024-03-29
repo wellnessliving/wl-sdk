@@ -4,6 +4,22 @@ namespace WellnessLiving\Wl;
 
 /**
  * A list of payment methods.
+ *
+ * How to add a new payment method:<ol>
+ *   <li>Add a constant to {@link WlPayMethodSid} (lets use COUPON for our example).</li>
+ *   <li>Create payment method controller class.
+ *     Use existing <tt>RsPayMethod*</tt> classes for examples.</li>
+ *   <li>Add evaluation of availability of this method in <tt>RsPayEnvironment::method_available()</tt></li>
+ *   <li>You may want to create method-specific transactions.
+ *     For this, you'll need to create a <tt>RsPayTransaction*Sql</tt> table and <tt>RsPayTransaction*</tt> class for
+ *     transaction controller.
+ *   </li>
+ *   <li>Add PHP version of template loader for form of the new method. rs.pay.form.coupon.xml.php in our example.</li>
+ *   <li>Add *.xml for form of the new method. rs.pay.form.coupon.xml in our example.</li>
+ *   <li>Add JavaScript's widget controller for the new method. rs.pay.form.coupon.widget.js in our example.</li>
+ * </ol>
+ *
+ * Last used ID: 13.
  */
 abstract class WlPayMethodSid
 {
@@ -45,19 +61,6 @@ abstract class WlPayMethodSid
 
   /**
    * Payment with a coupon.
-   *
-   * Purchased coupons are stored in {@link RsLoginCouponSql}.
-   *
-   * Payment method is implemented in {@link RsPayMethodCoupon}.
-   *
-   * Coupon-based transactions are implemented in {@link RsPayTransactionCoupon}.
-   *
-   * Data for coupon-based transactions is stored in {@link RsPayTransactionCouponSql}.
-   *
-   * @see RsLoginCouponSql
-   * @see RsPayMethodCoupon
-   * @see RsPayTransactionCoupon
-   * @see RsPayTransactionCouponSql
    */
   const COUPON = 8;
 

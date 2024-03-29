@@ -360,7 +360,7 @@ class FinishModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The location key used for showing the available appointment booking schedule.
+   * Location to show available appointment booking schedule.
    *
    * @get get,result
    * @post get
@@ -369,10 +369,9 @@ class FinishModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
-   * Key of time zone.
+   * Key of timezone.
    *
-   * This will be `null` if not set yet. In these cases, the client's default time zone from {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}
-   * will be used.
+   * `null` if not set then use default timezone client.
    *
    * @post get
    * @var null|string
@@ -388,7 +387,7 @@ class FinishModel extends WlModelAbstract
   public $m_pay = '0';
 
   /**
-   * The wizard's unique identifier.
+   * Unique identifier of the wizard.
    *
    * @post post
    * @var string

@@ -4,11 +4,12 @@ namespace WellnessLiving\Wl\Integration\Autymate;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Report\Generator\ReportGeneratorStatusSid;
+use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
- * An endpoint that retrieves all daily transactions for a business using the All Transactions report from the
- * {@link \WellnessLiving\Wl\Report\Generator\QueryModel} endpoint. This endpoint is a streamlined interface and adds
- * additional columns to the report for Autymate.
+ * An endpoint that retrieves all daily transactions for a business using the All Transactions report endpoint.
+ *
+ * This endpoint is a streamlined interface and adds additional columns to the report for Autymate.
  * Autymate will have one user to access all businesses, this user will require the wl.integration.autymate.report privilege.
  */
 class ReportModel extends WlModelAbstract
@@ -24,7 +25,8 @@ class ReportModel extends WlModelAbstract
   public $a_field = [];
 
   /**
-   * List of payment methods to filter out in the report. Each element is one of the {@line \WellnessLiving\WlPayMethodSid} constants.
+   * List of payment methods to filter out in the report.
+   * Each element is one of the {@link WlPayMethodSid} constants.
    *
    * @get get
    * @var int[]

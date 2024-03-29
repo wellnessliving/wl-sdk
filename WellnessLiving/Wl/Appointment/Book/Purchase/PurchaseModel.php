@@ -559,7 +559,6 @@ class PurchaseModel extends WlModelAbstract
    * @get get
    * @var string
    * @see PurchaseModel::$a_service
-
    */
   public $k_service = '0';
 

@@ -21,7 +21,6 @@ class RsBusinessDesignLogoPositionSid
    * Logo located on the right side.
    */
   const RIGHT = 3;
-
 }
 
 ?>

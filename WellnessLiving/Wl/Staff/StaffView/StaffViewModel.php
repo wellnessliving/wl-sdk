@@ -51,39 +51,13 @@ class StaffViewModel extends WlModelAbstract
    * <dl>
    *   <dt>array <var>a_class_day</var></dt>
    *   <dd>
-   *     Contains a schedule of classes per day:
-   *     <dl>
-   *       <dt>array <var>a_class_period</var></dt>
-   *       <dd>A list of sessions in the day:<dl>
-   *         <dt>string <var>dt_time</var></dt>
-   *         <dd>The session start time in MySQL format.</dd>
-   *         <dt>int <var>i_duration</var></dt>
-   *         <dd>The session duration in seconds.</dd>
-   *         <dt>string <var>s_title</var></dt>
-   *         <dd>The class name.</dd>
-   *       </dl></dd>
-   *       <dt>int <var>i_day</var></dt>
-   *       <dd>The day of week. One of {@link \WellnessLiving\Core\a\ADateWeekSid} constants.</dd>
-   *     </dl>
+   *     Contains a schedule of classes per day.
+   *     Each element has a structure like in {@link StaffViewModel::$a_class_day} property.
    *   </dd>
    *   <dt>array <var>a_staff</var></dt>
    *   <dd>
-   *     Staff information:
-   *     <dl>
-   *       <dt>int <var>id_gender</var></dt>
-   *       <dd>The staff member's gender. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.</dd>
-   *       <dt>string <var>s_biography</var></dt>
-   *       <dd>A description of the staff member. This description can include HTML tags.</dd>
-   *       <dt>string <var>s_family</var></dt>
-   *       <dd>The staff member surname.</dd>
-   *       <dt>string <var>s_name</var></dt>
-   *       <dd>The staff member first name.</dd>
-   *       <dt>string <var>s_position</var></dt>
-   *       <dd>The staff member position in the organization.</dd>
-   *       <dt>string <var>uid</var></dt>
-   *       <dd>The user ID. Each staff member in WellnessLiving can also access the system as a client of their business.
-   *       This is the ID number used to represent the staff member as a client.</dd>
-   *     </dl>
+   *     Staff information.
+   *     Each element has a structure like in {@link StaffViewModel::$a_staff} property.
    *   </dd>
    * </dl>
    *

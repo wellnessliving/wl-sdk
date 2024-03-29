@@ -181,7 +181,7 @@ class CalendarModel extends WlModelAbstract
   public $id_gender_staff = 0;
 
   /**
-   * Whether multiple appointments booked in back-to-back mode.
+   * Determines whether multiple appointments are booked in back-to-back mode.
    *
    * @get get
    * @var bool

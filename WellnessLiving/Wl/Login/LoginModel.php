@@ -20,7 +20,7 @@ class LoginModel extends WlModelAbstract
    *     int <var>id_gender</var>
    *   </dt>
    *   <dd>
-   *     User's gender. One of {@link \WellnessLiving\Core\a\AGenderSid} constants.
+   *     User's gender. One of {@link AGenderSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_staff</var>
@@ -62,8 +62,9 @@ class LoginModel extends WlModelAbstract
    *     string <var>text_name_full_client</var>
    *   </dt>
    *   <dd>
-   *     Full client name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login. See
-   *     description of the {@link Wl\User\Info\UserInfo::nameFullText()} method.
+   *     Full client name. User login is returned in a case neither first name, nor last name specified.
+   *     An empty string is returned in a case neither first name, nor last name specified, nor login.
+   *
    *   </dd>
    *   <dt>
    *     string <var>text_name_full_staff</var>

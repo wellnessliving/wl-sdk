@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Profile\Edit;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Field\WlFieldGeneralSid;
 use WellnessLiving\Wl\Field\WlFieldTypeSid;
 
 /**
@@ -74,8 +75,10 @@ class EditByTokenModel extends WlModelAbstract
    * Array values are the field values. The array has the following structure:
    * <dl>
    *   <dt>int [<var>id_field_general</var>]</dt>
-   *   <dd>The ID of a system field. One of {@link \WellnessLiving\Wl\Field\WlFieldGeneralSid} constants. This value is only defined if
-   *   <var>id_field_type</var>={@link \WellnessLiving\RsFieldTypeSid::GENERAL}.</dd>
+   *   <dd>
+   *     The ID of a system field. One of the {@link WlFieldGeneralSid} constants.
+   *     This value is only defined if <var>id_field_type</var>={@link WlFieldTypeSid::GENERAL}.
+   *   </dd>
    *   <dt>bool <var>is_require</var></dt>
    *   <dd>Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional.</dd>
    *   <dt>int <var>id_field_type</var></dt>

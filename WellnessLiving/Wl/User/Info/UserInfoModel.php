@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\User\Info;
 
+use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -43,7 +44,7 @@ class UserInfoModel extends WlModelAbstract
   public $dt_birth;
 
   /**
-   * The ID of the user's gender. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
+   * The ID of the user's gender. One of the {@link AGenderSid} constants.
    *
    * This will be `null` if the gender isn't set yet.
    *

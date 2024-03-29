@@ -113,6 +113,7 @@ class ElementModel extends WlModelAbstract
    * @get result
    * @var array
    * @deprecated This property is deprecated as it does not support multiple images.
+   *  Use {@link ElementModel::$a_image_list} instead.
    */
   public $a_image;
 
@@ -239,6 +240,7 @@ class ElementModel extends WlModelAbstract
    *
    * @get result
    * @var array[]
+   * @see ElementModel::_get()
    */
   public $a_item;
 

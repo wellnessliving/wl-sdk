@@ -32,6 +32,8 @@ class AttendanceListModel extends WlModelAbstract
    *   </dd>
    *   <dt>array <var>a_progress</var></dt>
    *   <dd>Information about a user's current progress. By default, this information isn't sent.</dd>
+   *   <dt>array <var>a_quiz</var></dt>
+   *   <dd>Quiz information that concerns current visit.</dd>
    *   <dt>array <var>a_resource</var></dt>
    *   <dd>A list of information for any associated resources for this visit.</dd>
    *   <dt>array <var>a_wait_confirm</var></dt>

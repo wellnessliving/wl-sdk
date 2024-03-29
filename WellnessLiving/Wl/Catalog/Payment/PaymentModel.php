@@ -388,7 +388,8 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * The list of quiz response keys.
-   * Keys refer to quiz keys, and values refer to responses or special values from the {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} constant.
+   * Keys refer to quiz keys.
+   * And values refer to responses.
    *
    * @post post
    * @var array
