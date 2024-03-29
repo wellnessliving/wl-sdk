@@ -444,8 +444,6 @@ class ElementModel extends WlModelAbstract
    * `false` if clients, when they book event, has to pay for the entire event and number of left in the future sessions
    * does not matter.
    *
-   *<tt>is_prorate</tt>.
-   *
    * @get result
    * @var bool
    */
