@@ -48,8 +48,6 @@ class BranchBuildModel extends WlModelAbstract
   /**
    * Task link of the branch.
    *
-   * Copy of the {@link \StudioTaskSql}.<var>s_link</var> field.
-   *
    * @delete get
    * @post get
    * @put get

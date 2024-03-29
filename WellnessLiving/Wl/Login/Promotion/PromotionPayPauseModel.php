@@ -73,10 +73,10 @@ class PromotionPayPauseModel extends WlModelAbstract
 
   /**
    * Whether need to get all pause periods for the login promotion.
-   * If <tt>true</tt> then {@link \WellnessLiving\Wl\Login\Promotion\PromotionPayPauseModel::$a_pay_pause_list} will be returned.
-   * If <tt>false</tt> then information about specified {@link \WellnessLiving\Wl\Login\Promotion\PromotionPayPauseModel::$k_promotion_pay_pause} or
-   * currently active pause period will be returned ({@link \WellnessLiving\Wl\Login\Promotion\PromotionPayPauseModel::$dt_start},
-   * {@link \WellnessLiving\Wl\Login\Promotion\PromotionPayPauseModel::$dt_end} and {@link \WellnessLiving\Wl\Login\Promotion\PromotionPayPauseModel::$text_note}).
+   * If <tt>true</tt> then {@link PromotionPayPauseModel::$a_pay_pause_list} will be returned.
+   * If <tt>false</tt> then information about specified {@link PromotionPayPauseModel::$k_promotion_pay_pause} or
+   * currently active pause period will be returned ({@link PromotionPayPauseModel::$dt_start},
+   * {@link PromotionPayPauseModel::$dt_end} and {@link PromotionPayPauseModel::$text_note}).
    *
    * @get get
    * @var bool

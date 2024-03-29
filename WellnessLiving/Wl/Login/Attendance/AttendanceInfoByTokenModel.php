@@ -234,7 +234,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   public $k_class_period = '0';
 
   /**
-   * The location key.
+   * Location identifier.
    *
    * @get result
    * @var string
@@ -242,9 +242,8 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * The resource key.
-   *
-   * Not empty for asset book only.
+   * Resource identifier.
+   * Not empty if service is asset reservation.
    *
    * @get result
    * @var string
@@ -252,9 +251,8 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   public $k_resource = null;
 
   /**
-   * The appointment key.
-   *
-   * Not empty for the case of an appointment only.
+   * Service identifier.
+   * Not empty if service is appointment reservation.
    *
    * @get result
    * @var string

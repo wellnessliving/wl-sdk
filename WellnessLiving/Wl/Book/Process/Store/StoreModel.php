@@ -99,7 +99,8 @@ class StoreModel extends WlModelAbstract
   /**
    * The selected sessions on the wait list that are unpaid.
    *
-   * Keys refer to session IDs, and values refer to index arrays of dates/times when the session occurred (returned in MySQL format and in GMT).
+   * Keys refer to session IDs.
+   * And values refer to index arrays of dates/times when the session occurred (returned in MySQL format and in GMT).
    *
    * @post post
    * @var array

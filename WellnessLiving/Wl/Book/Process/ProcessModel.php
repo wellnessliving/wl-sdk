@@ -22,6 +22,7 @@ class ProcessModel extends WlModelAbstract
    *
    * This will be `null` if clients aren't allowed to book for their relationships.
    *
+   * @depreated Use {@link ProcessModel::$is_family_relation_book} instead. Full list of relatives available, see {@link WlFamilyRelationSid}.
    * @get result
    * @var int[]|null
    */

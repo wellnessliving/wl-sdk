@@ -16,11 +16,11 @@ class BusinessDesignModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>int <var>id_layout</var></dt>
-   *   <dd>The layout ID. For more details, see {@link \WellnessLiving\Wl\Business\Design\RsPageFrontendHeaderLayoutSid}.</dd>
+   *   <dd>Layout ID. For more details, see {@link RsPageFrontendHeaderLayoutSid}.</dd>
    *   <dt>int <var>id_logo_position</var></dt>
-   *   <dd>The logo position ID. For more details, see {@link \WellnessLiving\Wl\Business\Design\RsBusinessDesignLogoPositionSid}.</dd>
+   *   <dd>Logo position ID. For more details, see {@link RsBusinessDesignLogoPositionSid}.</dd>
    *   <dt>int <var>id_logo_style</var></dt>
-   *   <dd>The logo style ID. For more details, see {@link \WellnessLiving\Wl\Business\Design\RsBusinessDesignLogoStyleSid}.</dd>
+   *   <dd>Logo style ID. For more details, see {@link RsBusinessDesignLogoStyleSid}.</dd>
    *   <dt>bool <var>is_attend_self</var></dt>
    *   <dd>If <tt>true</tt> clients can check-in using the Client Web App and Achieve Web App.</dd>
    *   <dt>bool <var>is_class_capacity</var></dt>

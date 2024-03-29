@@ -68,14 +68,14 @@ class PromotionIndexModel extends WlModelAbstract
    *     Some fields can be different depending on type of the component, but each element of the array includes:
    *     <dl>
    *       <dt>int <var>id_purchase_item</var></dt>
-   *       <dd>The type of the component. This can only be {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid::ENROLLMENT},
-   *          {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid::PROMOTION} or {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid::PRODUCT}.</dd>
+   *       <dd>The type of the component. This can only be {@link WlPurchaseItemSid::ENROLLMENT},
+   *          {@link WlPurchaseItemSid::PROMOTION} or {@link WlPurchaseItemSid::PRODUCT}.</dd>
    *       <dt>string <var>k_id</var></dt>
    *       <dd>
    *         The primary key of the component in the related table. This depends on the type of the component.
-   *         The key of the event for {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid::ENROLLMENT}, the key of the Purchase Option for the
-   *         {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid::PROMOTION}, the key of the product option for the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid::PRODUCT}.
-   *         Full information about events can be taken from the {@link \WellnessLiving\Wl\Event\EventListModel}. Purchase Options from the {@link \WellnessLiving\Wl\Promotion\Index\PromotionIndexModel}.
+   *         The key of the event for {@link WlPurchaseItemSid::ENROLLMENT}, the key of the Purchase Option for the
+   *         {@link WlPurchaseItemSid::PROMOTION}, the key of the product option for the {@link WlPurchaseItemSid::PRODUCT}.
+   *         Full information about events can be taken from the {@link EventListModel}. Purchase Options from the {@link PromotionIndexModel}.
    *         Full information about products are not available at this moment though API.
    *       </dd>
    *       <dt>int <var>i_quantity</var></dt>
@@ -104,8 +104,8 @@ class PromotionIndexModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     Attendance restrictions, if available. If unavailable, this will be an empty array. Every element has a key, which is a type of
-   *     the time period {@link \WellnessLiving\Core\a\ADurationSid::DAY}, {@link \WellnessLiving\Core\a\ADurationSid::WEEK}, {@link \WellnessLiving\Core\a\ADurationSid::MONTH},
-   *     {@link \WellnessLiving\Core\a\ADurationSid::YEAR}.
+   *     the time period {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH},
+   *     {@link ADurationSid::YEAR}.
    *     The values are:
    *     <dl>
    *       <dt>int <var>i_limit</var></dt>
@@ -118,8 +118,8 @@ class PromotionIndexModel extends WlModelAbstract
    *       <dd>The duration of the time period after which rolled over session will expire.</dd>
    *       <dt>int <var>id_roll_over_expire</var></dt>
    *       <dd>
-   *         The type of <var>i_roll_over_expire</var> {@link \WellnessLiving\Core\a\ADurationSid::DAY}, {@link \WellnessLiving\Core\a\ADurationSid::WEEK},
-   *         {@link \WellnessLiving\Core\a\ADurationSid::MONTH}, {@link \WellnessLiving\Core\a\ADurationSid::YEAR}.
+   *         The type of <var>i_roll_over_expire</var> {@link ADurationSid::DAY}, {@link ADurationSid::WEEK},
+   *         {@link ADurationSid::MONTH}, {@link ADurationSid::YEAR}.
    *       </dd>
    *       <dt>int <var>id_limit_cycle</var></dt>
    *       <dd>The type of the limit cycle {@link Sid}.</dd>
@@ -166,7 +166,7 @@ class PromotionIndexModel extends WlModelAbstract
    *     int <var>id_limit_duration</var>
    *   </dt>
    *   <dd>
-   *     The type of <var>i_limit_duration</var> {@link \WellnessLiving\Core\a\ADurationSid::MINUTE} or {@link \WellnessLiving\Core\a\ADurationSid::HOUR}.
+   *     The type of <var>i_limit_duration</var> {@link ADurationSid::MINUTE} or {@link ADurationSid::HOUR}.
    *   </dd>
    *   <dt>
    *     int <var>id_duration</var>

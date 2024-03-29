@@ -60,7 +60,7 @@ abstract class WlSaleSid
   const PROMOTION_RESOURCE = 9;
 
   /**
-   * Promotions with program category {@link WlProgramCategorySid::SERVICE}.
+   * Promotions with program category {@link WlProgramCategorySid::SERVICE} and {@link WlProgramCategorySid::INSURANCE}.
    */
   const PROMOTION_SERVICE = 2;
 
