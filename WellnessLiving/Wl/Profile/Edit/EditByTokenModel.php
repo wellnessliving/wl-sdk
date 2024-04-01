@@ -97,8 +97,11 @@ class EditByTokenModel extends WlModelAbstract
   public $a_structure;
 
   /**
-   * ID of registration source. One of {@link \WellnessLiving\Wl\Profile\RegisterSourceSid} constants.
-   * If empty {@link \WellnessLiving\Wl\Profile\RegisterSourceSid::SELF} is used.
+   * Registration source ID.
+   *
+   * Used only to register new clients.
+   * * If the client is already authorized, the field value will not be used.
+   * *
    *
    * @get get
    * @post get

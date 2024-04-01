@@ -132,8 +132,6 @@ class EditModel extends WlModelAbstract
    * * If the client is already authorized, the field value will not be used.
    * * If the client is not authorized and no value is set, {@link RegisterSourceSid::SELF} will be used.
    *
-   * Use the {@link EditModel::_registerSourceGet()} method to get the value required for
-   *
    * @get get
    * @post get
    * @put get
