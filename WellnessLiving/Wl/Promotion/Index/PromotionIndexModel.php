@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Promotion\Index;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Event\EventListModel;
 use WellnessLiving\Wl\Promotion\Edit\Limit\Cycle\Sid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlDurationTypeSid;

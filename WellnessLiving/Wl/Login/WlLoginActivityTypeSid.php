@@ -162,6 +162,7 @@ abstract class WlLoginActivityTypeSid
    */
   const GYM_VISIT = 32;
 
+
   const INVITE_SEND = 14;
 
   /**

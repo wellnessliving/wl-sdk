@@ -229,7 +229,7 @@ abstract class WlPrivilegeSid
   const ENROLLMENT_LOCK_SEARCH = 153;
 
   /**
-   * Allows to manage leaderboard in the FilBuilder addon.
+   * Allows to manage leaderboard in the `FitBuilder` addon.
    */
   const FITBUILDER_LEADERBOARD = 190;
 
@@ -239,12 +239,12 @@ abstract class WlPrivilegeSid
   const FITBUILDER_SUBSCRIPTION = 189;
 
   /**
-   * Allows to assign workouts from the FilBuilder addon to different services.
+   * Allows to assign workouts from the `FitBuilder` addon to different services.
    */
   const FITBUILDER_WORKOUT_ASSIGN = 188;
 
   /**
-   * Allows to add, edit and remove workouts in the FilBuilder addon.
+   * Allows to add, edit and remove workouts in the `FitBuilder` addon.
    */
   const FITBUILDER_WORKOUT_MANAGE = 187;
 
