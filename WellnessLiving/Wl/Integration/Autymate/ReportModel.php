@@ -7,9 +7,9 @@ use WellnessLiving\Wl\Report\Generator\ReportGeneratorStatusSid;
 use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
- * Retrieves all daily transactions for a business using the All Transactions report from the
- * {@link \WellnessLiving\Wl\Report\Generator\QueryModel} endpoint. This endpoint is a streamlined interface and adds
- * additional columns to the report for Autymate.
+ * Retrieves all daily transactions for a business using the All Transactions report endpoint.
+ *
+ * This endpoint is a streamlined interface and adds additional columns to the report for Autymate.
  * Autymate will have one user to access all businesses, this user will require the wl.integration.autymate.report privilege.
  */
 class ReportModel extends WlModelAbstract

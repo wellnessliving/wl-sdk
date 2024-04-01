@@ -234,7 +234,7 @@ abstract class WlPrivilegeSid
   const FITBUILDER_LEADERBOARD = 190;
 
   /**
-   * Allows to subscribe to FitBuilder subscription.
+   * Allows to subscribe to `FitBuilder` subscription addon.
    */
   const FITBUILDER_SUBSCRIPTION = 189;
 
@@ -482,15 +482,11 @@ abstract class WlPrivilegeSid
 
   /**
    * Staff with this role will receive emails about reward prizes.
-   *
-   * @see \RsMailSid::REWARD_PRIZE_STAFF
    */
   const NOTIFICATION_PRIZE_REDEMPTION = 90;
 
   /**
    * Staff with this role will receive the inventory mails.
-   *
-   * @see \RsMailSid::PURCHASE_PRODUCT_INVENTORY
    */
   const NOTIFICATION_PRODUCT_INVENTORY = 77;
 
