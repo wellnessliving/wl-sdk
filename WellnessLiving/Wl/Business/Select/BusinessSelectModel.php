@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business\Select;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that provides the list of business that a staff member may access.
+ * Provides the list of business that a staff member may access.
  */
 class BusinessSelectModel extends WlModelAbstract
 {

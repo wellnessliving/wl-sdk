@@ -7,7 +7,7 @@ use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves a list of events that fit the given filter parameters.
+ * Retrieves a list of events that fit the given filter parameters.
  */
 class EventListModel extends WlModelAbstract
 {

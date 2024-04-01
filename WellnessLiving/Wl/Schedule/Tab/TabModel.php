@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
 
 /**
- * An endpoint that retrieves a list of tabs for bookable services specific to the user and the location.
+ * Retrieves a list of tabs for bookable services specific to the user and the location.
  *
  * The names and contents of these tabs can be customized by the business. For example, a business may have tabs named
  * ‘Appointments’, ‘Group Appointments’, and ‘Room Rentals’.

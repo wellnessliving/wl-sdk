@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\WlPayOwnerSid;
 
 /**
- * An endpoint that gets the payment owner ID.
+ * Gets the payment owner ID.
  */
 class OwnerModel extends WlModelAbstract
 {

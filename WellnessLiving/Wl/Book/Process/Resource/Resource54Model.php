@@ -8,7 +8,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Book\Process\ProcessSpaSid;
 
 /**
- * An endpoint that selects assets when making a booking.
+ * Selects assets when making a booking.
  *
  * Take note of the {@link ProcessSpaSid::QUIZ} step.
  */

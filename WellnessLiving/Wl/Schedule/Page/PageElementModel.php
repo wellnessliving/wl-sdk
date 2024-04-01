@@ -7,7 +7,7 @@ use WellnessLiving\Wl\Virtual\VirtualProviderSid;
 use WellnessLiving\Wl\Visit\WlVisitSid;
 
 /**
- * An endpoint that returns information about a specified visit.
+ * Returns information about a specified visit.
  */
 class PageElementModel extends WlModelAbstract
 {

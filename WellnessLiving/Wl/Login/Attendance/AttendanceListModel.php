@@ -8,7 +8,7 @@ use WellnessLiving\Wl\Visit\WlVisitSid;
 use WellnessLiving\Wl\WlProgramSid;
 
 /**
- * An endpoint that retrieves information about clients attending a class, appointment, or event session.
+ * Retrieves information about clients attending a class, appointment, or event session.
  */
 class AttendanceListModel extends WlModelAbstract
 {

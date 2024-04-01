@@ -5,7 +5,8 @@ namespace WellnessLiving\Core\Request\Token;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint to create a one-time PIN code.
+ * Creates a one-time PIN code.
+ *
  * This code must be used for generating a security token.
  */
 class TokenPinModel extends WlModelAbstract

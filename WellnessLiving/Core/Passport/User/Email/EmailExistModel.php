@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Passport\User\Email;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that checks if the email address exists in the system.
+ * Checks if the email address exists in the system.
  */
 class EmailExistModel extends WlModelAbstract
 {

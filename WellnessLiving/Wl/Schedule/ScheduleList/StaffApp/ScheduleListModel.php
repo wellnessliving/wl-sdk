@@ -7,7 +7,7 @@ use WellnessLiving\Wl\Visit\WlVisitSid;
 use WellnessLiving\Wl\WlServiceSid;
 
 /**
- * An endpoint that gets information about sessions (both classes and appointments) at a business on a given day.
+ * Gets information about sessions (both classes and appointments) at a business on a given day.
  */
 class ScheduleListModel extends WlModelAbstract
 {

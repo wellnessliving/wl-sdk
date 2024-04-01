@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Skin\Application\Resource;
 use WellnessLiving\Custom\Wl\Skin\Application\Resource\ApplicationResourceModel as CustomApplicationResourceModel;
 
 /**
- * An endpoint that returns information used to generate application sources.
+ * Returns information used to generate application sources.
  */
 class ApplicationResourceModel extends CustomApplicationResourceModel
 {

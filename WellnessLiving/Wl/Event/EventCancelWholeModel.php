@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Event;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that cancels a whole event booked by a client.
+ * Cancels a whole event booked by a client.
  */
 class EventCancelWholeModel extends WlModelAbstract
 {

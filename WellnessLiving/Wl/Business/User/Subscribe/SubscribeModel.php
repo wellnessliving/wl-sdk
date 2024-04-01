@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business\User\Subscribe;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that manages a user`s subscription in a business.
+ * Manages a user`s subscription in a business.
  */
 class SubscribeModel extends WlModelAbstract
 {

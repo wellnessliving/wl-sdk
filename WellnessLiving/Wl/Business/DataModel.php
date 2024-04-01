@@ -8,7 +8,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Service\ServiceSid;
 
 /**
- * An endpoint that displays information for a specified business.
+ * Displays information for a specified business.
  */
 class DataModel extends WlModelAbstract
 {

@@ -6,7 +6,7 @@ use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about a WellnessLiving user.
+ * Retrieves information about a WellnessLiving user.
  */
 class UserInfoModel extends WlModelAbstract
 {

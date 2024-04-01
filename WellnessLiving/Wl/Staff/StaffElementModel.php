@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Business\BusinessModel;
 
 /**
- * An endpoint that can create or edit a staff member in a business.
+ * Can create or edit a staff member in a business.
  *
  * You can also use this endpoint to get information about a staff member's activity in another business when using
  * the {@link BusinessModel} endpoint.

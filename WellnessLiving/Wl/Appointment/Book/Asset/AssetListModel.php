@@ -10,7 +10,7 @@ use WellnessLiving\Wl\Service\ServicePriceSid;
 use WellnessLiving\Wl\Service\ServiceRequireSid;
 
 /**
- * An endpoint that retrieves information about assets in the current asset category.
+ * Retrieves information about assets in the current asset category.
  */
 class AssetListModel extends WlModelAbstract
 {

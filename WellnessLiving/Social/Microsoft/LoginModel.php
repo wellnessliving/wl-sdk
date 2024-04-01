@@ -5,7 +5,7 @@ namespace WellnessLiving\Social\Microsoft;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that performs preliminary authorization actions with Microsoft.
+ * Performs preliminary authorization actions with Microsoft.
  */
 class LoginModel extends WlModelAbstract
 {

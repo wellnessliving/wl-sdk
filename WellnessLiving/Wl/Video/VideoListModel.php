@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Video\Catalog\Filter\Sort\FilterSortSid;
 
 /**
- * An endpoint that returns a list of videos.
+ * Returns a list of videos.
  */
 class VideoListModel extends WlModelAbstract
 {

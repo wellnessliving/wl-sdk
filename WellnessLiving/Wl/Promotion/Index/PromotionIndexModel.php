@@ -12,7 +12,7 @@ use WellnessLiving\Wl\WlProgramSid;
 use WellnessLiving\Wl\WlProgramTypeSid;
 
 /**
- * An endpoint that gets a list of introductory promotion offers of a specified type available at a given location.
+ * Gets a list of introductory promotion offers of a specified type available at a given location.
  */
 class PromotionIndexModel extends WlModelAbstract
 {

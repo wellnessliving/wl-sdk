@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Family\Relation;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns data about a user's relationships.
+ * Returns data about a user's relationships.
  */
 class RelationModel extends WlModelAbstract
 {

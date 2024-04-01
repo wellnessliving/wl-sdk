@@ -7,7 +7,7 @@ use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that selects assets for making a booking.
+ * Selects assets for making a booking.
  *
  * @deprecated Use {@link Resource54Model} instead.
  */

@@ -7,7 +7,7 @@ use WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
- * An endpoint that returns information about an item’s price after taxes.
+ * Returns information about an item’s price after taxes.
  */
 class CatalogViewModel extends WlModelAbstract
 {

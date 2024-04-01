@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\WlProgramSid;
 
 /**
- * An endpoint that returns a list of promotions that can pay for a business's classes or events.
+ * Returns a list of promotions that can pay for a business's classes or events.
  */
 class ClassPromotionModel extends WlModelAbstract
 {

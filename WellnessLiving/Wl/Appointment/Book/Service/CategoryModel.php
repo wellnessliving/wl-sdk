@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Service;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about service categories.
+ * Retrieves information about service categories.
  */
 class CategoryModel extends WlModelAbstract
 {

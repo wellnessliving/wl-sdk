@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Pay\Address;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves a client’s physical address from their profile.
+ * Retrieves a client’s physical address from their profile.
  */
 class ProfileModel extends WlModelAbstract
 {

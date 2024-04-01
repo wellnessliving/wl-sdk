@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Login\Type;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about login types.
+ * Retrieves information about login types.
  *
  * A login type is basically a client type.
  * This information can be used to filter clients by their client type in the All Clients Report.

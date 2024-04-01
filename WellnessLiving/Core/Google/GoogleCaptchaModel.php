@@ -5,11 +5,7 @@ namespace WellnessLiving\Core\Google;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint to store the user token CAPTCHA.
- *
- * Site keys for initializing Google reCAPTCHA v2:
- * * Demo/Staging key - `6Ldqwe0gAAAAANve1TEPFb_Yxgb9wsoIfrNL6-2Z`
- * * Production - `6LeOGp4hAAAAACDoQeLUxnu2TAXXZWhdSm118auy`
+ * Stores the user token CAPTCHA.
  */
 class GoogleCaptchaModel extends WlModelAbstract
 {

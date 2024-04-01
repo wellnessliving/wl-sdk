@@ -8,7 +8,7 @@ use WellnessLiving\Wl\WlFacilitySid;
 use WellnessLiving\Wl\WlHomeTourSid;
 
 /**
- * An endpoint that returns information on a specified location.
+ * Returns information on a specified location.
  */
 class ViewModel extends WlModelAbstract
 {

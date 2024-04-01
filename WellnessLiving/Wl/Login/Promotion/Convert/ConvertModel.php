@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\WlProgramSid;
 
 /**
- * An endpoint that receives convertable Purchase Option data and promotion conversions.
+ * Receives convertable Purchase Option data and promotion conversions.
  *
  * The DELETE method will remove the conversion and reset the date.
  * The GET method will return a list of promotions available at the business.

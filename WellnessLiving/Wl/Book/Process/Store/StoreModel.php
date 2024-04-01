@@ -7,7 +7,7 @@ use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that manages the booking wizard for the "Purchase Options" page.
+ * Manages the booking wizard for the "Purchase Options" page.
  */
 class StoreModel extends WlModelAbstract
 {

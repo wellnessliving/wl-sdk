@@ -7,6 +7,8 @@ use WellnessLiving\Wl\Schedule\Page\WlVisitNoteSid;
 use WellnessLiving\Wl\WlServiceSid;
 
 /**
+ * Displays information for certain sessions.
+ * Version of {@link \WellnessLiving\Wl\Login\Attendance\AttendanceInfoModel} for access validation by security token.
  * An endpoint that displays information for certain sessions.
  */
 class AttendanceInfoByTokenModel extends WlModelAbstract

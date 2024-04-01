@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Integration\Autymate;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that checks or changes the status of Autymate enrollments.
+ * Checks or changes the status of Autymate enrollments.
  */
 class AutymateActivateModel extends WlModelAbstract
 {

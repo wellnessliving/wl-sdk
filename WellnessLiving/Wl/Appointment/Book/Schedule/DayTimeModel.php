@@ -6,7 +6,7 @@ use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves a list of information about the booking schedule for available appointments.
+ * Retrieves a list of information about the booking schedule for available appointments.
  */
 class DayTimeModel extends WlModelAbstract
 {

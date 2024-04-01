@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\WlPayOwnerSid;
 
 /**
- * An endpoint that gets information about a user's payment addresses.
+ * Gets information about a user's payment addresses.
  */
 class AddressModel extends WlModelAbstract
 {

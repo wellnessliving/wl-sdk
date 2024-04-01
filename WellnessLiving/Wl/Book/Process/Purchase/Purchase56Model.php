@@ -11,7 +11,7 @@ use WellnessLiving\Wl\WlProgramSid;
 use WellnessLiving\Wl\WlProgramTypeSid;
 
 /**
- * An endpoint that displays information about Purchase Options that can book specified session(s).
+ * Displays information about Purchase Options that can book specified session(s).
  *
  * Note that the terms "Purchase Option" and "promotion" are used interchangeably.
  */

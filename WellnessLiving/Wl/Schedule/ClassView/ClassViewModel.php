@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Schedule\ClassList\ClassListModel;
 
 /**
- * An endpoint that gets information about a specified class session.
+ * Gets information about a specified class session.
  *
  * A class listing can be retrieved from the {@link ClassListModel} endpoint.
  */

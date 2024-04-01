@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Skin\Application;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves customized skin settings for the client view.
+ * Retrieves customized skin settings for the client view.
  */
 class SkinModel extends WlModelAbstract
 {

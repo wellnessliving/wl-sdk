@@ -8,7 +8,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Book\Process\ProcessSpaSid;
 
 /**
- * An endpoint that offers functionality for the class booking wizard on the "Class and Location" page.
+ * Offers functionality for the class booking wizard on the "Class and Location" page.
  *
  * When using this endpoint, take into account the {@link ProcessSpaSid::QUIZ} step.
  */

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Classes\ClassView;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about a class element.
+ * Retrieves information about a class element.
  */
 class ElementModel extends WlModelAbstract
 {

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Video\Level;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves, changes, or deletes a video level.
+ * Retrieves, changes, or deletes a video level.
  */
 class LevelModel extends WlModelAbstract
 {

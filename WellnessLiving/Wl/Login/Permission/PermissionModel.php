@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Login\Permission;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that makes a purchased promotion auto-renewable.
+ * Makes a purchased promotion auto-renewable.
  *
  * The POST method makes the promotion auto-renewable based on the {@link PermissionModel::$is_renew} parameter.
  */

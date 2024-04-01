@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Profile\Alert;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about client alert messages.
+ * Retrieves information about client alert messages.
  */
 class AlertModel extends WlModelAbstract
 {

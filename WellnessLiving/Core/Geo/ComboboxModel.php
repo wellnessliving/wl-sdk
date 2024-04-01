@@ -6,7 +6,7 @@ use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves a list of cities matching the search string for a given location.
+ * Retrieves a list of cities matching the search string for a given location.
  */
 class ComboboxModel extends WlModelAbstract
 {

@@ -8,7 +8,7 @@ use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Visit\WlVisitSid;
 
 /**
- * An endpoint that adds a client to an attendance list.
+ * Adds a client to an attendance list.
  * This endpoint can also be used to get a list of Purchase Options suitable to pay for the session in question.
  */
 class AddModel extends WlModelAbstract

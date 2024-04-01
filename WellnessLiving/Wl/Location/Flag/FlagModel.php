@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Location\Flag;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information if a user is flagged in a location.
+ * Retrieves information if a user is flagged in a location.
  */
 class FlagModel extends WlModelAbstract
 {

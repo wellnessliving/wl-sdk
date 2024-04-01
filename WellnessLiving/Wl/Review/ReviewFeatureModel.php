@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Review;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that changes the status of a featured review.
+ * Changes the status of a featured review.
  */
 class ReviewFeatureModel extends WlModelAbstract
 {

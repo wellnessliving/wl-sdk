@@ -10,7 +10,7 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
- * An endpoint that purchases an item and performs the payment in the store.
+ * Purchases an item and performs the payment in the store.
  *
  * This endpoint uses a CAPTCHA check. To pass the CAPTCHA, consult the CAPTCHA API documentation.
  * The documentation specifies that a captcha must be sent for a specific action. For this API, an action is `1064`.

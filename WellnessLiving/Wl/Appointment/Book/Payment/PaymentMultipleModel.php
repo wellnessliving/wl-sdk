@@ -9,7 +9,7 @@ use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
- * An endpoint that completes the payment for an appointment or appointment Purchase Option for a client.
+ * Completes the payment for an appointment or appointment Purchase Option for a client.
  *
  * The only difference between this endpoint and {@link PaymentModel} is
  * that this endpoint is capable of paying for multiple appointments at the same time.

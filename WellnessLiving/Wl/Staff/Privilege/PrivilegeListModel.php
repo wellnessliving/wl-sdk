@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\WlPrivilegeSid;
 
 /**
- * An endpoint that can return list of admin or staff privileges of the current user.
+ * Can return list of admin or staff privileges of the current user.
  *
  * Cannot be used to check privileges of another user.
  */

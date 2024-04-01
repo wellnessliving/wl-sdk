@@ -5,7 +5,7 @@ namespace WellnessLiving\Social\Facebook\Login;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that authorizes Facebook users.
+ * Authorizes Facebook users.
  */
 class LoginModel extends WlModelAbstract
 {

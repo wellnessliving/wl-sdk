@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Business\BusinessModel;
 
 /**
- * An endpoint that creates a new location in the business or edits a specified location.
+ * Creates a new location in the business or edits a specified location.
  * Access to this endpoint is logged with specified permissions. It can also be accessed by guests during the
  * registration process for new businesses (see {@link BusinessModel::sessionKey()}).
  *

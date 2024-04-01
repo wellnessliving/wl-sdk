@@ -6,7 +6,7 @@ use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that creates a new business.
+ * Creates a new business.
  */
 class BusinessModel extends WlModelAbstract
 {

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Quiz;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that manages a single quiz.
+ * Manages a single quiz.
  */
 class QuizElementModel extends WlModelAbstract
 {

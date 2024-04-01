@@ -6,7 +6,7 @@ use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns list of debts added within the previous month.
+ * Returns list of debts added within the previous month.
  */
 class DebtListModel extends WlModelAbstract
 {

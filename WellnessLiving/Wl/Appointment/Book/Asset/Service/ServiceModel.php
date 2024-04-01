@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
- * An endpoint that retrieves assets that are required for a service booking.
+ * Retrieves assets that are required for a service booking.
  */
 class ServiceModel extends WlModelAbstract
 {

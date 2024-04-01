@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Resource\Image\ImageIconSid;
 
 /**
- * An endpoint that displays information about an asset layout.
+ * Displays information about an asset layout.
  */
 class LayoutModel extends WlModelAbstract
 {

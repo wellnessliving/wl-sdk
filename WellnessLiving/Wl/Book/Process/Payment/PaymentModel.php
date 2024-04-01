@@ -8,7 +8,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
- * An endpoint that acts as the booking wizard for the "Pay/Billing info" page.
+ * Acts as the booking wizard for the "Pay/Billing info" page.
  *
  * This endpoint using captcha check.
  * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.

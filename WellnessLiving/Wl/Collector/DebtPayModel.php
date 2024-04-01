@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
- * An endpoint that registers a debt payment that was performed beyond Wellnessliving, with a specified credit amount applied to a client's account balance.
+ * Registers a debt payment that was performed beyond Wellnessliving, with a specified credit amount applied to a client's account balance.
  */
 class DebtPayModel extends WlModelAbstract
 {

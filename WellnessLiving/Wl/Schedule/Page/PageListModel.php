@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Schedule\Page;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns a list of either previous or upcoming visits for a specific user.
+ * Returns a list of either previous or upcoming visits for a specific user.
  *
  * A visit can be for an appointment, class, or an event.
  */

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Report;
 use WellnessLiving\Custom\Wl\Report\DataModel as CustomDataModel;
 
 /**
- * An endpoint that returns information from a WellnessLiving report.
+ * Returns information from a WellnessLiving report.
  *
  * There are two All Clients Reports that can be used to find user IDs. The results from each report can be filtered by different
  * fields. The two reports are similar, but not exactly the same. The `LOGIN_LIST` (ID 22) report requires filters to be set to

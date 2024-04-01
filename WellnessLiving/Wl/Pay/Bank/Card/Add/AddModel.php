@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Pay\Owner\OwnerModel;
 
 /**
- * An endpoint that adds a payment card to a user’s account.
+ * Adds a payment card to a user’s account.
  * The GET method retrieves an HTML code that contains the fields necessary to provide the information needed to
  * add the payment card.
  * The POST method will actually add the payment card.

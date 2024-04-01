@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Schedule;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that cancels either an appointment, class, or event session for the client.
+ * Cancels either an appointment, class, or event session for the client.
  */
 class CancelModel extends WlModelAbstract
 {

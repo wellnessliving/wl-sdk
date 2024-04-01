@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns information about a given staff member's business.
+ * Returns information about a given staff member's business.
  */
 class BusinessAccessModel extends WlModelAbstract
 {

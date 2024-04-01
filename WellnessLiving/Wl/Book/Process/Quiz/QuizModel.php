@@ -8,7 +8,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
- * An endpoint that manages quizzes and a selected Purchase Option for a class or event during the booking process.
+ * Manages quizzes and a selected Purchase Option for a class or event during the booking process.
  *
  * Note that the terms "Purchase Option" and "promotion" are used interchangeably.
  */

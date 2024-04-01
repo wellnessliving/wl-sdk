@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
- * An endpoint that views or changes the visit status.
+ * Views or changes the visit status.
  */
 class VisitStatusModel extends WlModelAbstract
 {

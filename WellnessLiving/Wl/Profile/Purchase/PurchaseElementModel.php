@@ -13,7 +13,7 @@ use WellnessLiving\Wl\WlProgramTypeSid;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
- * An endpoint that gets details of a specified purchase.
+ * Gets details of a specified purchase.
  *
  * This endpoint may require different IDs to be specified for different types of purchases.
  * The IDs required for a specific item will be the same IDs returned from the {@link PurchaseListModel}

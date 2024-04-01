@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Coupon\WlTypeSid;
 
 /**
- * An endpoint that retrieves a list of gift cards.
+ * Retrieves a list of gift cards.
  */
 class ListModel extends WlModelAbstract
 {

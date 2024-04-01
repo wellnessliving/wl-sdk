@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Video\Category;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that saves video categories.
+ * Saves video categories.
  */
 class CategoryElementModel extends WlModelAbstract
 {

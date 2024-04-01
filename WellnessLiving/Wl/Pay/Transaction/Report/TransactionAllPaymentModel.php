@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Report\Generator\ReportGeneratorStatusSid;
 
 /**
- * An endpoint that can retrieve information from the All Transactions Report.
+ * Can retrieve information from the All Transactions Report.
  */
 class TransactionAllPaymentModel extends WlModelAbstract
 {

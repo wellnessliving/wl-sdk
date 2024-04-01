@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Login\Member;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that checking whether there is something that prevents the user from using the business.
+ * Checking whether there is something that prevents the user from using the business.
  */
 class MemberValidateModel extends WlModelAbstract
 {

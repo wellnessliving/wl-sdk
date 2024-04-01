@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
- * An endpoint that displays information about the cart in the catalog.
+ * Displays information about the cart in the catalog.
  */
 class CartModel extends WlModelAbstract
 {

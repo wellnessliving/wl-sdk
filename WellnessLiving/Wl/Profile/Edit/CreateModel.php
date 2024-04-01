@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Profile\Edit;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that creates user account for the given email address if email address does not already exist.
+ * Creates user account for the given email address if email address does not already exist.
  * checks if a user's email address is already used or changes a user’s login email address.
  */
 class CreateModel extends WlModelAbstract

@@ -6,7 +6,7 @@ use WellnessLiving\WlFile;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that uploads a raw image to a server.
+ * Uploads a raw image to a server.
  *
  * You must save an image by using {@link ImageUploadModel}.
  */

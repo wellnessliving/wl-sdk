@@ -8,7 +8,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Staff\StaffList\StaffListModel;
 
 /**
- * An endpoint that returns information about a specified staff member.
+ * Returns information about a specified staff member.
  *
  * This method can accept one staff key {@link StaffViewModel::$k_staff} or a staff list
  * {@link StaffViewModel::$a_staff_list} but not both (an exception would be thrown).

@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
 
 /**
- * An endpoint that adds a relative during the booking process.
+ * Adds a relative during the booking process.
  */
 class RelationModel extends WlModelAbstract
 {

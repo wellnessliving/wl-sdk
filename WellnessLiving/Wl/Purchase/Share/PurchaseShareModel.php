@@ -6,7 +6,7 @@ use WellnessLiving\Core\a\ASocialSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that shares a purchase to a specified social network.
+ * Shares a purchase to a specified social network.
  */
 class PurchaseShareModel extends WlModelAbstract
 {

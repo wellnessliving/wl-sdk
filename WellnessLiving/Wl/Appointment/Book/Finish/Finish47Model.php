@@ -8,7 +8,7 @@ use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
- * An endpoint that completes an appointment booking.
+ * Completes an appointment booking.
  */
 class Finish47Model extends WlModelAbstract
 {

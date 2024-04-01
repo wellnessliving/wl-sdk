@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\WlServiceSid;
 
 /**
- * An endpoint that manages business configurations for clients, bookings, payments, and related things.
+ * Manages business configurations for clients, bookings, payments, and related things.
  */
 class BusinessConfigModel extends WlModelAbstract
 {

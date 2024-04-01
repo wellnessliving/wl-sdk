@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
- * An endpoint that displays a list of purchase items.
+ * Displays a list of purchase items.
  */
 class PurchaseElementListModel extends WlModelAbstract
 {

@@ -6,7 +6,7 @@ use WellnessLiving\Core\Sid\YesNoSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns a list of video categories.
+ * Returns a list of video categories.
  */
 class VideoElementModel extends WlModelAbstract
 {

@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Report\WlReportSid;
 
 /**
- * An endpoint that gets information for enterprise locations.
+ * Gets information for enterprise locations.
  */
 class CurvesFranchiseLocationModel extends WlModelAbstract
 {

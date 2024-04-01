@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Review;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that adds a review reply.
+ * Adds a review reply.
  */
 class ReviewReplyModel extends WlModelAbstract
 {

@@ -9,7 +9,7 @@ use WellnessLiving\Wl\Field\WlFieldTypeSid;
 use WellnessLiving\Wl\Profile\RegisterSourceSid;
 
 /**
- * An endpoint that gets information about a client profile. This endpoint can also edit or create a profile.
+ * Gets information about a client profile. This endpoint can also edit or create a profile.
  *
  * The GET method returns the profile fields for a specified user or a blank set of fields for a new user of a
  * given business:

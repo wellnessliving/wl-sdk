@@ -8,7 +8,7 @@ use WellnessLiving\Wl\Service\ServicePriceSid;
 use WellnessLiving\Wl\Service\ServiceRequireSid;
 
 /**
- * An endpoint that retrieves information about services in the current service category.
+ * Retrieves information about services in the current service category.
  *
  * @deprecated New version {@link ServiceList52Model} should be used instead.
  */

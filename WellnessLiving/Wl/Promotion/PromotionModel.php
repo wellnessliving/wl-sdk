@@ -8,7 +8,7 @@ use WellnessLiving\Wl\WlDurationTypeSid;
 use WellnessLiving\Wl\WlProgramSid;
 
 /**
- * An endpoint that gets promotions for the specified business and promotion keys.
+ * Gets promotions for the specified business and promotion keys.
  */
 class PromotionModel extends WlModelAbstract
 {

@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\WlProgramSid;
 
 /**
- * An endpoint that gets a promotion list of the specified business.
+ * Gets a promotion list of the specified business.
  */
 class PromotionListModel extends WlModelAbstract
 {

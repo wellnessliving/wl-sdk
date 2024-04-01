@@ -9,7 +9,7 @@ use WellnessLiving\Wl\WlPayMethodSid;
 use WellnessLiving\Wl\WlPayProcessorSid;
 
 /**
- * An endpoint that gets information about payment environments.
+ * Gets information about payment environments.
  */
 class EnvironmentModel extends WlModelAbstract
 {

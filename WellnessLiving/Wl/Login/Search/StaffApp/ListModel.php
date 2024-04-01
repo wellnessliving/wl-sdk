@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Login\Search\StaffApp;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets a list of clients whose names match a search string.
+ * Gets a list of clients whose names match a search string.
  */
 class ListModel extends WlModelAbstract
 {

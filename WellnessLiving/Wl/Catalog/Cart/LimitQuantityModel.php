@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
- * An endpoint that displays information about the quantity limit when a promotion (Purchase Option) is added to the cart.
+ * Displays information about the quantity limit when a promotion (Purchase Option) is added to the cart.
  */
 class LimitQuantityModel extends WlModelAbstract
 {

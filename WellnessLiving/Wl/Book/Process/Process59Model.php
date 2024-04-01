@@ -8,7 +8,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
 
 /**
- * An endpoint that performs the booking wizard steps.
+ * Performs the booking wizard steps.
  *
  * This endpoint includes changes to the list of steps if the service is already booked for the currently selected client,
  * and if {@link ProcessModel::$is_family_relation_book} is set to `true`.

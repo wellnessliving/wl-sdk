@@ -8,7 +8,7 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\Service\ServicePriceSid;
 
 /**
- * An endpoint that sends payments for an appointment booking.
+ * Sends payments for an appointment booking.
  *
  * This endpoint using captcha check.
  * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.

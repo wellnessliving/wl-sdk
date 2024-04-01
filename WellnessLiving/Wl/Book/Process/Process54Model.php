@@ -8,7 +8,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
 
 /**
- * An endpoint that performs the booking wizard steps.
+ * Performs the booking wizard steps.
  *
  * Include the {@link ProcessSpaSid::QUIZ} step, if needed.
  *

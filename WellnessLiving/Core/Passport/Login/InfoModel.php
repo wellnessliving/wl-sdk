@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Passport\Login;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets the user ID for the current user and a password reset URL.
+ * Gets the user ID for the current user and a password reset URL.
  */
 class InfoModel extends WlModelAbstract
 {

@@ -10,7 +10,7 @@ use WellnessLiving\Wl\WlProgramSid;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
- * An endpoint that returns a list of all products available for a business’s shop at a particular location.
+ * Returns a list of all products available for a business’s shop at a particular location.
  */
 class CatalogListModel extends WlModelAbstract
 {

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Video\Level;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that changes the order of video levels.
+ * Changes the order of video levels.
  */
 class LevelListModel extends WlModelAbstract
 {

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Book\Process\Info;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that checks for `next` and `complete` buttons in the booking process.
+ * Checks for `next` and `complete` buttons in the booking process.
  */
 class InfoCanCompleteModel extends WlModelAbstract
 {

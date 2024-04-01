@@ -12,7 +12,7 @@ use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
- * An endpoint that pays for an appointment or appointment Purchase Option for a client.
+ * Pays for an appointment or appointment Purchase Option for a client.
  */
 class FinishMultipleModel extends WlModelAbstract
 {

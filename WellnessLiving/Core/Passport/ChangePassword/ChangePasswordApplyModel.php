@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Passport\ChangePassword;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint to finish the password change procedure for a user.
+ * Finishes the password change procedure for a user.
  *
  * This endpoint advances the {@link ChangePasswordBeginModel} endpoint.
  * Set your desired password in the {@link ChangePasswordBeginModel::$url_reset}

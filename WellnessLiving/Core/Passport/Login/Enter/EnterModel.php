@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Passport\Login\Enter;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that signs a user in.
+ * Signs a user in.
  */
 class EnterModel extends WlModelAbstract
 {

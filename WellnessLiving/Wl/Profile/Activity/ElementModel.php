@@ -7,7 +7,7 @@ use WellnessLiving\Wl\Login\WlLoginActivityTypeSid;
 use WellnessLiving\Wl\WlDesignIconSid;
 
 /**
- * An endpoint that returns detailed information about a single client activity.
+ * Returns detailed information about a single client activity.
  */
 class ElementModel extends WlModelAbstract
 {

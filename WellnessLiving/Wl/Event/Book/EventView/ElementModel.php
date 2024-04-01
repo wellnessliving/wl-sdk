@@ -8,7 +8,7 @@ use WellnessLiving\Wl\Business\Config\BusinessConfigModel;
 use WellnessLiving\Wl\Virtual\VirtualProviderSid;
 
 /**
- * An endpoint that retrieves information about an event element.
+ * Retrieves information about an event element.
  */
 class ElementModel extends WlModelAbstract
 {

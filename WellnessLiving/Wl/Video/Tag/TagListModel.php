@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Video\Tag;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves video tags.
+ * Retrieves video tags.
  */
 class TagListModel extends WlModelAbstract
 {

@@ -8,7 +8,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
- * An endpoint that offers functionality for the class booking wizard on the "Class and Location" page.
+ * Offers functionality for the class booking wizard on the "Class and Location" page.
  *
  * @deprecated Use {@link Info54Model} instead.
  */

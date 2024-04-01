@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Location\View\ViewModel;
 
 /**
- * An endpoint that gets all locations for a list of businesses.
+ * Gets all locations for a list of businesses.
  *
  * This can be used to get all locations from all businesses. When using this endpoint, note that it will return
  * a list of all locations in the system, potentially using substantial system resources. Using this endpoint can

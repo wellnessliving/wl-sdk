@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Report\WlReportSid;
 
 /**
- * An endpoint that manages franchisor locations.
+ * Manages franchisor locations.
  */
 class BusinessFranchiseLocationModel extends WlModelAbstract
 {

@@ -7,7 +7,7 @@ use WellnessLiving\Wl\WlClassModifyActionSid;
 use WellnessLiving\Wl\WlClassModifyModeSid;
 
 /**
- * An endpoint that modifies the master model.
+ * Modifies the master model.
  */
 class ModifyModel extends WlModelAbstract
 {

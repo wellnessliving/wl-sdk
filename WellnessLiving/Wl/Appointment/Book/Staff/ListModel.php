@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Staff;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about staff members for the current service.
+ * Retrieves information about staff members for the current service.
  */
 class ListModel extends WlModelAbstract
 {

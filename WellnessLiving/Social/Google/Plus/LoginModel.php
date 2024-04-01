@@ -5,7 +5,7 @@ namespace WellnessLiving\Social\Google\Plus;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that authorizes a user with Google.
+ * Authorizes a user with Google.
  */
 class LoginModel extends WlModelAbstract
 {

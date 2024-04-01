@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Pay\Account;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that displays information about user's accounts.
+ * Displays information about user's accounts.
  */
 class AccountModel extends WlModelAbstract
 {

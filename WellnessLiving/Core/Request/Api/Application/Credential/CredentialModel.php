@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Request\Api\Application\Credential;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that manages credentials for the application.
+ * Manages credentials for the application.
  */
 class CredentialModel extends WlModelAbstract
 {

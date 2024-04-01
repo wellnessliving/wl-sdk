@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Login\Add;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that registers an existing user in the specified Enterprise Headquarters account.
+ * Registers an existing user in the specified Enterprise Headquarters account.
  *
  * This endpoint isn't applicable for users who are already members of the business. After a profile is edited, there can
  * be a delay while the data replicates to system caches. As a result, you may see a 'profile-field-empty' status code. In most

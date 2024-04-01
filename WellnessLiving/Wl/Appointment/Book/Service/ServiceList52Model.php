@@ -8,7 +8,7 @@ use WellnessLiving\Wl\Service\ServicePriceSid;
 use WellnessLiving\Wl\Service\ServiceRequireSid;
 
 /**
- * An endpoint that retrieves information about services in the current service category.
+ * Retrieves information about services in the current service category.
  *
  * This is a new version of the {@link ServiceListModel} endpoint.
  * It allows for filtering a list of services by multiple book now tabs.

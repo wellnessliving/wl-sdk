@@ -6,7 +6,7 @@ use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves a list of classes and class information for a Class Tab.
+ * Retrieves a list of classes and class information for a Class Tab.
  */
 class ClassListModel extends WlModelAbstract
 {

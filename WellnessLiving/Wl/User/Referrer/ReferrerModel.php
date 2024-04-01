@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\User\Referrer;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that searches for a referrer using a string.
+ * Searches for a referrer using a string.
  */
 class ReferrerModel extends WlModelAbstract
 {

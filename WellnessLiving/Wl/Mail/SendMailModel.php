@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Mail;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that can be used to send email messages.
+ * Can be used to send email messages.
  */
 class SendMailModel extends WlModelAbstract
 {

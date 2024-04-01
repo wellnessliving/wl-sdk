@@ -10,7 +10,7 @@ use WellnessLiving\Wl\WlProgramSid;
 use WellnessLiving\Wl\WlProgramTypeSid;
 
 /**
- * An endpoint that retrieves information about Purchase Options that can be used to pay for an appointment.
+ * Retrieves information about Purchase Options that can be used to pay for an appointment.
  */
 class PurchaseModel extends WlModelAbstract
 {
