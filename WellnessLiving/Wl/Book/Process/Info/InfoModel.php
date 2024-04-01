@@ -467,8 +467,6 @@ class InfoModel extends WlModelAbstract
    * `true` if event can be paid with pricing option only.
    * `false` if full event purchase or single session purchase are allowed.
    *
-   *<tt>is_promotion_only</tt>.
-   *
    * @get result
    * @var bool
    */

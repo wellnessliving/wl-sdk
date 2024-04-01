@@ -93,7 +93,7 @@ class MemberInfoModel extends WlModelAbstract
 
   /**
    * If `true`, the client is a traveler. Otherwise, this will be `false`.
-   * This will be `null` in cases when the client is a walk-in or when {@link MemberInfoApi::$is_full} is `false`.
+   * This will be `null` in cases when the client is a walk-in.
    *
    * @get result
    * @var bool|null

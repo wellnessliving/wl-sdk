@@ -128,6 +128,11 @@ abstract class WlPurchaseItemSid
   const PROMOTION = 1;
 
   /**
+   * Early cancellation fee for a memberships.
+   */
+  const PROMOTION_CANCEL_FEE = 25;
+
+  /**
    * A purchase to renew a promotion.
    *
    * @see RsPurchaseItemPromotionRenew
@@ -157,11 +162,6 @@ abstract class WlPurchaseItemSid
    * @see RsPurchaseItemSid::APPOINTMENT Purchase that is created when a staff adds payment for an appointment at POS.
    */
   const SERVICE = 6;
-
-  /**
-   * Purchase item for testing purposes.
-   */
-  const TEST = 5;
 }
 
 ?>

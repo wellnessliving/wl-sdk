@@ -502,8 +502,6 @@ abstract class WlPrivilegeSid
 
   /**
    * Staff with this role will receive the sale receipts mails.
-   *
-   * @see \RsMailSid::SALE_STAFF
    */
   const NOTIFICATION_SALE_STAFF = 136;
 
