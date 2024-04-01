@@ -51,10 +51,9 @@ class ReportGeneratorStatusSid
    *
    * The following transitions are possible:
    *
-   * * `GENERATING` => `ABORTING` when generation of this report is aborted by user.
+   * * `GENERATING` => `ABORTING` when generation of this report aborted by user.
    * * `GENERATING` => `READY` when generation of this report completes.
-   *   This transition is performed when generation
-   *   completes successfully.
+   *   This transition is performed when generation completes successfully.
    */
   const GENERATING = 2;
 

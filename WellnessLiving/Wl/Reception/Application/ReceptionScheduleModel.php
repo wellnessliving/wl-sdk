@@ -59,15 +59,6 @@ class ReceptionScheduleModel extends WlModelAbstract
   public $a_class = [];
 
   /**
-   * All types of services that appear in the schedule.
-   * Keys are constants from {@link ServiceSid}. Values are the HTML classes associated with that service.
-   *
-   * @get result
-   * @var array
-   */
-  public $a_schedule_class_all;
-
-  /**
    * Data for the confirmation screen with the following fields:
    * <dl>
    *   <dt>array <var>a_payment</var></dt>
@@ -142,6 +133,15 @@ class ReceptionScheduleModel extends WlModelAbstract
    * @var array
    */
   public $a_confirmation_data = [];
+
+  /**
+   * All types of services that appear in the schedule.
+   * Keys are constants from {@link ServiceSid}. Values are the HTML classes associated with that service.
+   *
+   * @get result
+   * @var array
+   */
+  public $a_schedule_class_all;
 
   /**
    * The date and time of the visit in UTC and MySQL format.

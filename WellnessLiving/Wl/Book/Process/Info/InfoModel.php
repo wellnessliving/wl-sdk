@@ -383,7 +383,7 @@ class InfoModel extends WlModelAbstract
   public $i_wait_spot = 0;
 
   /**
-   * Mode type. One of {@link ModeSid} constants.
+   * The mode type. One of the {@link ModeSid} constants.
    *
    * @get get
    * @post get

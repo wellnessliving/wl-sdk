@@ -6,6 +6,7 @@ use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Book\Process\ProcessSpaSid;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Offers functionality for the class booking wizard on the "Class and Location" page.
@@ -383,7 +384,7 @@ class Info54Model extends WlModelAbstract
   public $i_wait_spot = 0;
 
   /**
-   * Mode type. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The mode type. One of the {@link ModeSid} constants.
    *
    * @get get
    * @post get
@@ -466,8 +467,6 @@ class Info54Model extends WlModelAbstract
   /**
    * `true` if event can be paid with pricing option only.
    * `false` if full event purchase or single session purchase are allowed.
-   *
-   * Copy of {@link \RsClassSql}.<tt>is_promotion_only</tt>.
    *
    * @get result
    * @var bool

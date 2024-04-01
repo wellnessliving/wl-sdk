@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Finish;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Appointment\Book\Question\QuestionModel;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
+use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
@@ -139,7 +140,7 @@ class Finish47Model extends WlModelAbstract
   public $a_visit = null;
 
   /**
-   * The booking mode ID. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The booking mode ID. One of the {@link ModeSid} constants.
    *
    * @post post
    * @var int

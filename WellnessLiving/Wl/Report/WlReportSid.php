@@ -4,6 +4,10 @@ namespace WellnessLiving\Wl\Report;
 
 /**
  * A list of reports.
+ *
+ * Do not add new reports here. Use New Report Generation instead.
+ *
+ * Last used ID: 266. -- See comments above.
  */
 abstract class WlReportSid
 {
