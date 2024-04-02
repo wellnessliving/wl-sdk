@@ -3,9 +3,11 @@
 namespace WellnessLiving\Wl\Profile\Purchase;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\WlSaleSid;
 
 /**
- * Gets a list of purchases for a user.
+ * An endpoint that gets a list of purchases for a user.
  *
  * @deprecated Use {@link \WellnessLiving\Wl\Profile\PurchaseList\PurchaseListModel} instead.
  */

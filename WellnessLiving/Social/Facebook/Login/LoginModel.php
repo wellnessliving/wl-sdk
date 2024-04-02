@@ -17,7 +17,7 @@ class LoginModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $s_application;
+  public $s_application = null;
 
   /**
    * The Facebook token.
@@ -25,7 +25,7 @@ class LoginModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $s_token;
+  public $s_token = '';
 }
 
 ?>

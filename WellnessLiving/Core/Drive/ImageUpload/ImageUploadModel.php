@@ -2,13 +2,11 @@
 
 namespace WellnessLiving\Core\Drive\ImageUpload;
 
-use WellnessLiving\Custom\Core\Drive\ImageUpload\ImageUploadModel as CustomImageUploadModel;
-
 /**
  * An endpoint that performs the final action to an uploaded image.
  * Images are uploaded using {@link ImageUploadTemporaryModel}.
  */
-class ImageUploadModel extends CustomImageUploadModel
+class ImageUploadModel extends \WellnessLiving\Custom\Core\Drive\ImageUpload\ImageUploadModel
 {
   /**
    * Image information for every ID. Every element contains values such as the

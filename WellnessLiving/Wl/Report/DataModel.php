@@ -2,8 +2,6 @@
 
 namespace WellnessLiving\Wl\Report;
 
-use WellnessLiving\Custom\Wl\Report\DataModel as CustomDataModel;
-
 /**
  * Returns information from a WellnessLiving report.
  *
@@ -11,7 +9,7 @@ use WellnessLiving\Custom\Wl\Report\DataModel as CustomDataModel;
  * fields. The two reports are similar, but not exactly the same. The `LOGIN_LIST` (ID 22) report requires filters to be set to
  * retrieve information. The `LOGIN_LIST_ALL` (ID 33) doesn’t require any filters to be set when specifying a date range.
  */
-class DataModel extends CustomDataModel
+class DataModel extends \WellnessLiving\Custom\Wl\Report\DataModel
 {
   /**
    * The report contents.

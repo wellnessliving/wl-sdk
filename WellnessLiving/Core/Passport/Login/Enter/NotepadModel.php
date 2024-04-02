@@ -2,14 +2,12 @@
 
 namespace WellnessLiving\Core\Passport\Login\Enter;
 
-use WellnessLiving\Custom\Core\Passport\Login\Enter\NotepadModel as CustomNotepadModel;
-
 /**
  * An endpoint that retrieves the notepad value from the server that is used to sign someone in to the SDK.
  *
  * @link http://en.wikipedia.org/wiki/Cryptographic_nonce
  */
-class NotepadModel extends CustomNotepadModel
+class NotepadModel extends \WellnessLiving\Custom\Core\Passport\Login\Enter\NotepadModel
 {
   /**
    * ID of the datacenter which is a preferred datacenter for the user specified in

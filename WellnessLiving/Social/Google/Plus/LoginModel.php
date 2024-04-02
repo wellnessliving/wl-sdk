@@ -17,7 +17,7 @@ class LoginModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $s_application;
+  public $s_application = null;
 
   /**
    * The Google server authorization code.
@@ -25,7 +25,7 @@ class LoginModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $s_code;
+  public $s_code = '';
 }
 
 ?>

@@ -2,12 +2,10 @@
 
 namespace WellnessLiving\Wl\Skin\Application\Resource;
 
-use WellnessLiving\Custom\Wl\Skin\Application\Resource\ApplicationResourceModel as CustomApplicationResourceModel;
-
 /**
  * Returns information used to generate application sources.
  */
-class ApplicationResourceModel extends CustomApplicationResourceModel
+class ApplicationResourceModel extends \WellnessLiving\Custom\Wl\Skin\Application\Resource\ApplicationResourceModel
 {
   /**
    * The application data.
