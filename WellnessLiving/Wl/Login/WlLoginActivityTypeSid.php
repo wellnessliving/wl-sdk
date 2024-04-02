@@ -136,24 +136,17 @@ abstract class WlLoginActivityTypeSid
    */
   const FACEBOOK_DISCONNECT = 19;
 
-
   const FAVORITE_ADD_CLASS = 4;
-
 
   const FAVORITE_ADD_LOCATION = 5;
 
-
   const FAVORITE_ADD_STAFF = 6;
-
 
   const FAVORITE_REMOVE_CLASS = 7;
 
-
   const FAVORITE_REMOVE_LOCATION = 8;
 
-
   const FAVORITE_REMOVE_STAFF = 9;
-
 
   const FRIEND_ADD = 10;
 
@@ -161,7 +154,6 @@ abstract class WlLoginActivityTypeSid
    * Client made a gym visit.
    */
   const GYM_VISIT = 32;
-
 
   const INVITE_SEND = 14;
 

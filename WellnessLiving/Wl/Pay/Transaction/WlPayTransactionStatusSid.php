@@ -103,8 +103,7 @@ abstract class WlPayTransactionStatusSid
    *
    * This status is set when there is an amount in a transaction that is not refunded.
    *
-   * @see RsPayTransactionRefundSql
-   * @see RsPayTransactionStatusSid::REFUND_FULL
+   * @see WlPayTransactionStatusSid::REFUND_FULL
    */
   const REFUND_PARTIAL = 7;
 

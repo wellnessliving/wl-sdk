@@ -433,7 +433,6 @@ abstract class WlReportSid
    */
   const LEAD_REPORT_CHART = 166;
 
-
   const LOCATION_MARKET = 35;
 
   /**
@@ -478,9 +477,7 @@ abstract class WlReportSid
    */
   const LOGIN_FRANCHISE_STATUS_LIST = 162;
 
-
   const LOGIN_LIST = 22;
-
 
   const LOGIN_LIST_ALL = 33;
 
@@ -863,15 +860,11 @@ abstract class WlReportSid
    */
   const PURCHASE_ITEM_ACCRUAL_SUMMARY = 133;
 
-
   const PURCHASE_ITEM_COUNT = 27;
-
 
   const PURCHASE_ITEM_COUNT_PRODUCT = 50;
 
-
   const PURCHASE_ITEM_COUNT_REVENUE = 51;
-
 
   const PURCHASE_ITEM_LIST = 26;
 
@@ -949,9 +942,7 @@ abstract class WlReportSid
    */
   const PURCHASE_OPTION_SUMMARY = 109;
 
-
   const PURCHASE_TAG_COUNT = 30;
-
 
   const PURCHASE_TAG_LIST = 31;
 
@@ -1000,7 +991,6 @@ abstract class WlReportSid
    */
   const REWARD_BOARD = 56;
 
-
   const SCHEDULE_PROSPECT_COUNT = 9;
 
   /**
@@ -1012,7 +1002,6 @@ abstract class WlReportSid
    * Report about daily booking activity special for dashboard.
    */
   const SCHEDULE_PROSPECT_LIST_TODAY = 39;
-
 
   const SCHEDULE_WAIT_LIST = 11;
 
@@ -1174,23 +1163,18 @@ abstract class WlReportSid
    */
   const VISIT_ATTEND_LIST = 64;
 
-
   const VISIT_BOOK_COUNT = 4;
-
 
   const VISIT_BOOK_LIST = 6;
 
-
   const VISIT_CLASS_AVERAGE_COUNT = 20;
 
-
   const VISIT_CLASS_AVERAGE_LIST = 18;
-
 
   const VISIT_CLASS_BUY = 32;
 
   /**
-   * @see RsVisitClassBuyDetailReport
+   * Controls list report for attendance. With information about usage purchase option.
    */
   const VISIT_CLASS_BUY_DETAIL = 61;
 
@@ -1327,7 +1311,6 @@ abstract class WlReportSid
    */
   const VISIT_LOCATION_CROSS_SUMMARY_LIST = 169;
 
-
   const VISIT_LOGIN_LIST = 12;
 
   /**
@@ -1363,15 +1346,11 @@ abstract class WlReportSid
    */
   const VISIT_RISK_ISAAC = 216;
 
-
   const VISIT_STAFF_AVERAGE_COUNT = 19;
-
 
   const VISIT_STAFF_AVERAGE_LIST = 17;
 
-
   const VISIT_STAFF_COUNT = 15;
-
 
   const VISIT_STAFF_LIST = 13;
 
