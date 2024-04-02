@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Microsoft\Login;
 
+use WellnessLiving\Social\Microsoft\LoginModel;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -47,6 +48,8 @@ class MicrosoftLoginModel extends WlModelAbstract
    *
    * @post post
    * @var string
+   *
+   * @see LoginModel::STATE_LENGTH_MAX
    */
   public $s_state = '';
 
@@ -74,13 +77,15 @@ class MicrosoftLoginModel extends WlModelAbstract
    * * All possible links must be registered in the Microsoft application used for authorization.
    * * WARNING: Do not use this link for a direct redirect. This will present a vulnerability.
    *
-   * * A {@link \WellnessLiving\Social\Microsoft\LoginModel::$url_login} link will be generated along with this redirect URI.
-   * * When checking the received {@link \WellnessLiving\Social\Microsoft\LoginModel::$s_code} from Microsoft, the link must be sent along with it
-   * to the {@link \WellnessLiving\Social\Microsoft\LoginModel::post()} method.
+   * * A {@link LoginModel::$url_login} link will be generated along with this redirect URI.
+   * * When checking the received {@link LoginModel::$s_code} from Microsoft, the link must be sent along with it
+   * to the {@link LoginModel::post()} method.
    *
    * @get get
    * @post get
    * @var string
+   *
+   * @see LoginModel::URL_REDIRECT_LENGTH_MAX
    */
   public $url_redirect = '';
 }

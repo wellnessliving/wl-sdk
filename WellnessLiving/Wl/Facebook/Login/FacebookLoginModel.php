@@ -21,12 +21,11 @@ class FacebookLoginModel extends WlModelAbstract
    * The application ID.
    *
    * This will be `null` if the application is being used to make the request.
-   * Use the application credential from the {@link \WellnessLiving\Core\Request\Model\Application\Credential\FacebookCredential} class for user authorization.
    *
    * @post post
    * @var string|null
    */
-  public $s_application;
+  public $s_application = null;
 
   /**
    * The Facebook token.
@@ -34,7 +33,7 @@ class FacebookLoginModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $s_token;
+  public $s_token = '';
 }
 
 ?>
