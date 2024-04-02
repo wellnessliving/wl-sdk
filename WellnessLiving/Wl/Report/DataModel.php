@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Report;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns information from a WellnessLiving report.
+ * Returns information from a WellnessLiving report.
  *
  * There are two All Clients Reports that can be used to find user IDs. The results from each report can be filtered by different
  * fields. The two reports are similar, but not exactly the same. The `LOGIN_LIST` (ID 22) report requires filters to be set to
@@ -60,6 +60,15 @@ class DataModel extends WlModelAbstract
    * @var int
    */
   public $id_report_group = 0;
+
+  /**
+   * The report page ID. One of the {@link WlReportPageSid} constants.
+   * If set, the collection of that page will be used, otherwise a collection of single report will be used.
+   *
+   * @get get
+   * @var int|null
+   */
+  public $id_report_page = null;
 
   /**
    * The report view ID. One of the {@link \WellnessLiving\Wl\Report\WlReportChartViewSid} constants.

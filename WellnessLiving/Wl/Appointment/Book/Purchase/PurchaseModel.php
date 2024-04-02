@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Purchase;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about Purchase Options that can be used to pay for an appointment.
+ * Retrieves information about Purchase Options that can be used to pay for an appointment.
  */
 class PurchaseModel extends WlModelAbstract
 {

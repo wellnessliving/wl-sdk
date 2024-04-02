@@ -5,23 +5,24 @@ namespace WellnessLiving\Wl\Location\WorkTime;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * This API saves working hours of specified location.
- * Access for this action has logged user with specified permissions or guest during process of registration a new
- * business (see {@link \WellnessLiving\Wl\Business\BusinessModel::sessionKey()}).
+ * Saves working hours for a specified location.
+ *
+ * Note that to run this endpoint, an authenticated user with specified permissions is required. Otherwise, use a
+ * guest account during the new business registration process (see {@link \WellnessLiving\Wl\Business\BusinessModel::sessionKey()}).
  */
 class LocationWorkTimeModel extends WlModelAbstract
 {
   /**
-   * List of working hours of the location. Each element has next structure:<dl>
+   * The list of the location's business hours. Each element has the next structure:<dl>
    *   <dt>int <var>i_day</var></dt>
-   *   <dd>Day of the week from 1(Monday) to 7(Sunday). One of the constants from {@link \WellnessLiving\Core\a\ADateWeekSid}.</dd>
+   *   <dd>The day of the week, from Monday (1) to Sunday (7). One of the{@link \WellnessLiving\Core\a\ADateWeekSid} constants.</dd>
    *   <dt>string <var>t_end</var></dt>
-   *   <dd>End time of work in format HH:MM.</dd>
+   *   <dd>The end time of work, formatted as HH:MM.</dd>
    *   <dt>string <var>t_start</var></dt>
-   *   <dd>Start time of work in format HH:MM.</dd>
+   *   <dd>The start time of work, formatted as HH:MM</dd>
    * </dl>
    *
-   * <b>Important.</b> Days of the week that are not represented in this list will be saved as non-working days.
+   * Note that the days of the week that aren't represented in this list will be saved as non-working days.
    *
    * @post post
    * @var array[]
@@ -29,7 +30,7 @@ class LocationWorkTimeModel extends WlModelAbstract
   public $a_work_time = [];
 
   /**
-   * Key of the business.
+   * The business key.
    *
    * @post post
    * @var string
@@ -37,7 +38,7 @@ class LocationWorkTimeModel extends WlModelAbstract
   public $k_business;
 
   /**
-   * Key of the location.
+   * The location key.
    *
    * @post post
    * @var string

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Event\Book\EventView;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about an event element.
+ * Retrieves information about an event element.
  */
 class ElementModel extends WlModelAbstract
 {
@@ -394,8 +394,8 @@ class ElementModel extends WlModelAbstract
   public $is_book;
 
   /**
-   * <tt>true</tt> if there are no free spots in the event; booking is available only into the wait list.
-   * <tt>false</tt> otherwise.
+   * `true` if there are no free spots in the event; booking is available only into the wait list.
+   * `false` otherwise.
    *
    * @get result
    * @var bool

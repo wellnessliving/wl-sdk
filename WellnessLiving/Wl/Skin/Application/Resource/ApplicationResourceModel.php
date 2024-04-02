@@ -7,7 +7,7 @@ use WellnessLiving\WlAssertException;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns information used to generate application sources.
+ * Returns information used to generate application sources.
  */
 class ApplicationResourceModel extends WlModelAbstract
 {
@@ -94,7 +94,7 @@ class ApplicationResourceModel extends WlModelAbstract
    * </dl>
    * @throws WlAssertException in the case of an error.
    */
-  private function _file($k_business, $s_sources, $s_file, $a_data)
+  protected function _file($k_business, $s_sources, $s_file, $a_data)
   {
     $a_replace = [];
     foreach($a_data as $a_data_item)
@@ -182,7 +182,7 @@ class ApplicationResourceModel extends WlModelAbstract
    * @param string $s_sources The path to the directory with the sources that must be processed.
    * @throws WlAssertException in the case of an error.
    */
-  private function _resource($k_business, $s_sources)
+  protected function _resource($k_business, $s_sources)
   {
     $s_resource = $s_sources.'res/';
 

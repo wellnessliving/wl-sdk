@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Product;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns information about service add-ons.
+ * Returns information about service add-ons.
  */
 class ProductModel extends WlModelAbstract
 {

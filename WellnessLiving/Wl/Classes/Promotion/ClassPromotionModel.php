@@ -16,7 +16,7 @@ class ClassPromotionModel extends WlModelAbstract
    *   <dt>string <var>text_title</var></dt>
    *   <dd>The title of the promotion.</dd>
    *   <dt>int <var>id_program</var></dt>
-   *   <dd>One of {@link \WellnessLiving\WlProgramSid} constants.</dd>
+   *   <dd>One of the {@link \WellnessLiving\WlProgramSid} constants.</dd>
    *   <dt>bool <var>is_select</var></dt>
    *   <dd><tt>true</tt> if the promotion is related to the class or event, <tt>false</tt> otherwise.</dd>
    * </dl>.
@@ -35,9 +35,10 @@ class ClassPromotionModel extends WlModelAbstract
   public $is_event = false;
 
   /**
-   * `true` if login type or group restrictions are ignored and all pricing options will be returned.
-   *   This will require staff or admin access level.
-   * `false` if api should return only pricing options, which are available for the current user.
+   * `true` — the login type or group restrictions are ignored and all pricing options will be returned. This will
+   * require staff or admin access level.
+   *
+   * `false` — the API should return only pricing options, which are available for the current user.
    *
    * @get get
    * @var bool
@@ -45,8 +46,9 @@ class ClassPromotionModel extends WlModelAbstract
   public $is_login_type_ignore = false;
 
   /**
-   * `true` if promotions should only be returned if they're related to the given class or event.
-   * `false` if all promotions should be returned, even if they aren't related to the given class or event.
+   * `true` — promotions should only be returned if they're related to the given class or event.
+   *
+   * `false` — all promotions should be returned, even if they aren't related to the given class or event.
    *
    * @get get
    * @var bool
@@ -54,7 +56,7 @@ class ClassPromotionModel extends WlModelAbstract
   public $is_related_only = false;
 
   /**
-   * The key of the business.
+   * The business key.
    *
    * @get get
    * @var string
@@ -63,8 +65,9 @@ class ClassPromotionModel extends WlModelAbstract
 
   /**
    * The class key.
-   * The class or event with which you want to connect the promotions. <tt>null</tt> or <tt>0</tt> if you need to return a list
-   * of promotions for an uncreated class or event.
+   *
+   * This refers to the class or event with which you want to connect the promotions. This will be `null` or `0` if you
+   * need to return a list of promotions for an uncreated class or event.
    *
    * @get get
    * @var string|null
@@ -72,8 +75,9 @@ class ClassPromotionModel extends WlModelAbstract
   public $k_class;
 
   /**
-   * Default promotion key.
-   * `null` if `k_class` was not provided, or if the class has no default promotion.
+   * The default promotion key.
+   *
+   * This will be `null` if `k_class` wasn't provided, or if the class has no default promotion.
    *
    * @get result
    * @var string|null

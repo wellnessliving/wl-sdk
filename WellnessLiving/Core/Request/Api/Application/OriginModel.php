@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Request\Api\Application;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets, deletes, and adds origins for the application.
+ * Gets, deletes, and adds origins for the application.
  *
  * Origins are links on the sites where the API can be used sign CORS authorizations from a client's browser.
  * If the site isn't in the list, you can only use the API for requests between two servers. Requests directly from

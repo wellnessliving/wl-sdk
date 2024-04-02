@@ -5,12 +5,12 @@ namespace WellnessLiving\Wl\Catalog\CatalogList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Information about store items.
+ * Displays information about store items.
  */
 class ListModel extends WlModelAbstract
 {
   /**
-   * A list of all sale items.
+   * The list of all sale items.
    *
    * @get result
    * @var array
@@ -18,11 +18,10 @@ class ListModel extends WlModelAbstract
   public $a_product;
 
   /**
-   * List of products to show with duplicates.
+   * The list of products to show with duplicates.
    *
-   * Products have their own order within every category. On the other hand they can be related to several shop
-   * categories. Due to the fact that sorting realization in browser would be rather complicated It was decided to
-   * sort products in backend using duplicates for every shop category.
+   * Products have their own order within every shop category, and they can be related to several categories.
+   * As a design decision, products are sorted in the backend using duplicates for every category.
    *
    * @get result
    * @var array

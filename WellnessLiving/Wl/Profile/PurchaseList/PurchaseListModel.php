@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Profile\PurchaseList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets a list of purchases for a user.
+ * Gets a list of purchases for a user.
  */
 class PurchaseListModel extends WlModelAbstract
 {
@@ -53,6 +53,12 @@ class PurchaseListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     If `true`, then the purchase item is a package component. Otherwise, this will be `false`.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_appointment</var>
+   *   </dt>
+   *   <dd>
+   *     Appointment key.
    *   </dd>
    *   <dt>
    *     string <var>k_code</var>
@@ -109,6 +115,12 @@ class PurchaseListModel extends WlModelAbstract
    *     In certain cases a session can be canceled and makeup sessions can be granted to a client in lieu of
    *     other compensation. This is the key of one of the makeup sessions used to attend an event. This is also
    *     present for a repeat purchase of an event.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_service</var>
+   *   </dt>
+   *   <dd>
+   *     Service key.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>

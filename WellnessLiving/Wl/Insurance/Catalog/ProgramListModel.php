@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Insurance\Catalog;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves a list of programs' information.
+ * Retrieves a list of programs' information.
  */
 class ProgramListModel extends WlModelAbstract
 {

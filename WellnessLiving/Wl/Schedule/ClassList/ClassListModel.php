@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Schedule\ClassList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves a list of classes and class information for a Class Tab.
+ * Retrieves a list of classes and class information for a Class Tab.
  */
 class ClassListModel extends WlModelAbstract
 {
@@ -228,6 +228,14 @@ class ClassListModel extends WlModelAbstract
    * @var bool
    */
   public $show_cancel = false;
+
+  /**
+   * If `true`, events are also returned. If `false`, only classes are returned.
+   *
+   * @get get
+   * @var bool
+   */
+  public $show_event = false;
 
   /**
    * The user key.

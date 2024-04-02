@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Book\Process\Resource;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Select assets for making a booking.
+ * Selects assets for making a booking.
  *
  * @deprecated Use {@link \WellnessLiving\Wl\Book\Process\Resource\Resource54Model} instead.
  */
@@ -13,7 +13,7 @@ class ResourceModel extends WlModelAbstract
 {
   /**
    * The keys of a user's activity.
-   * Not empty only if session(s) was booked on this step.
+   * This won't be empty only if the session(s) was booked at this step.
    *
    * @post result
    * @var string[]
@@ -21,51 +21,51 @@ class ResourceModel extends WlModelAbstract
   public $a_login_activity = [];
 
   /**
-   * Information about recurring booking:
+   * Information about the recurring booking:
    * <dl>
    *   <dt>
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     Days of week when appointment must repeat. Constants of {@link \WellnessLiving\Core\a\ADateWeekSid} class.
-   *     Empty if appointment must not repeat weekly.
+   *     The days of the week when appointment repeats. One of the {@link \WellnessLiving\Core\a\ADateWeekSid} constants.
+   *     This won't be empty if the appointment doesn't repeat weekly.
    *   </dd>
    *   <dt>
    *     string [<var>dl_end</var>]
    *   </dt>
    *   <dd>
-   *     Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
+   *     The date when the appointment's repeat cycle stops. This won't be empty if repeat cycle doesn't stop at a certain date.
    *   </dd>
    *   <dt>
    *     int [<var>i_occurrence</var>]
    *   </dt>
    *   <dd>
-   *     Number of occurrences after that appointment repeat must stop.
-   *     Empty if repeat must not stop after a certain number of occurrences.
+   *     The number of occurrences after which the appointment's repeat cycle stops.
+   *     This won't be empty if the repeat cycle doesn't stop after a certain number of occurrences.
    *   </dd>
    *   <dt>
    *     int <var>i_period</var>
    *   </dt>
    *   <dd>
-   *     Frequency of appointment repeating.
+   *     The frequency of the appointment's repeat cycle.
    *   </dd>
    *   <dt>
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     Measurement unit of `i_period`. One of {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *     The measurement unit of `i_period`. One of the {@link \WellnessLiving\Core\a\ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     `true` if appointment must repeat monthly at the same date.
-   *     `false` if appointment must repeat monthly at the same week day.
-   *     `null` if appointment must not repeat monthly.
+   *     `true` — the appointment repeats monthly on the same date.<br>
+   *     `false` — the appointment repeats monthly on the same day of the week.<br>
+   *     `null` — the appointment doesn't repeat monthly.
    *   </dd>
    * </dl>
    *
-   * `null` if booking must be not recurring.
+   * This will be `null` if booking isn't recurring.
    *
    * @post post
    * @var array|null
@@ -73,52 +73,52 @@ class ResourceModel extends WlModelAbstract
   public $a_repeat;
 
   /**
-   * A list of asset categories which are available for specified session. Every element has next keys:
+   * A list of asset categories that are available for the specified session. Every element has the next keys:
    * <dl>
    *   <dt>
    *     array <var>a_client</var>
    *   </dt>
    *   <dd>
-   *     A list of clients who have already occupied assets for this session.
-   *     1st level keys - asset keys; 2nd level keys - asset number.
-   *     For example, if you want to check if 10th asset with key '125' is free,
+   *     A list of clients who have booked assets for this session.
+   *     1st level keys refer to asset keys. 2nd level keys refer to asset numbers.
+   *     For example, if you want to check if 10th asset with the key '125' is free,
    *     you have to check if <tt>a_client['125']['10']</tt> is empty.
    *   </dd>
    *   <dt>
    *     array[] <var>a_resource_list</var>
    *   </dt>
    *   <dd>
-   *     A list of available assets. Every element has next keys:
+   *     A list of available assets. Every element has the next keys:
    *     <dl>
    *       <dt>
    *         array <var>a_image</var>
    *       </dt>
    *       <dd>
-   *         Asset image data. See {@link RsResourceImage::data()} for details.
+   *         The asset image data. See {@link RsResourceImage::data()} for details.
    *       </dd>
    *       <dt>
    *         int <var>i_index</var>
    *       </dt>
    *       <dd>
-   *         The asset number. Actual for assets with a quantity more than <tt>1</tt>.
+   *         The asset number. This applies for assets with a quantity more than <tt>1</tt>.
    *       </dd>
    *       <dt>
    *         bool <var>is_current</var>
    *       </dt>
    *       <dd>
-   *         <tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise.
+   *         If <tt>true</tt>, this asset is selected by a client. Otherwise, this will be <tt>false</tt>.
    *       </dd>
    *       <dt>
    *         string <var>k_resource</var>
    *       </dt>
    *       <dd>
-   *         The key of the asset in database.
+   *         The asset key in the database.
    *       </dd>
    *       <dt>
    *         string <var>s_resource</var>
    *       </dt>
    *       <dd>
-   *         The title of the asset.
+   *         The asset title.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -126,44 +126,44 @@ class ResourceModel extends WlModelAbstract
    *     bool <var>has_current</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise.
+   *     If <tt>true</tt>, this resource is in the list of available assets. Otherwise, this will be <tt>false</tt>.
    *   </dd>
    *   <dt>
    *     bool <var>is_client_select</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - the client selected the resource from the current group; <tt>false</tt> otherwise.
+   *     If <tt>true</tt>, the client selected the resource from the current group. Otherwise, this will be <tt>false</tt>.
    *   </dd>
    *   <dt>
    *     bool <var>is_select</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - has selected resources; <tt>false</tt> - otherwise.
+   *     If <tt>true</tt>, the asset category has selected resources. Otherwise, this will be <tt>false</tt>.
    *   </dd>
    *   <dt>
    *     bool <var>is_share</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> resources in this category don't belong to certain users, but to the entire session.
-   *     <tt>false</tt> belong to specific users.
+   *     <tt>true</tt> — resources in this category don't belong to certain users, but to the entire session.<br>
+   *     <tt>false</tt> — resources belong to specific users.
    *   </dd>
    *   <dt>
    *     string <var>k_resource_layout</var>
    *   </dt>
    *   <dd>
-   *     The key of the asset layout.
+   *     The asset layout key.
    *   </dd>
    *   <dt>
    *     string <var>k_resource_type</var>
    *   </dt>
    *   <dd>
-   *     The key of the asset category.
+   *     The asset category key.
    *   </dd>
    *   <dt>
    *     string <var>s_resource_type</var>
    *   </dt>
    *   <dd>
-   *     The title of the asset category.
+   *     The asset category title.
    *   </dd>
    * </dl>
    *
@@ -176,9 +176,9 @@ class ResourceModel extends WlModelAbstract
    * The selected assets. Every element has the next keys:
    * <dl>
    *   <dt>int <var>i_index</var></dt>
-   *   <dd>The asset number. Actual for assets with quantity greater <tt>1</tt>.</dd>
+   *   <dd>The asset number. Applies only for assets with a quantity greater than <tt>1</tt>.</dd>
    *   <dt>string <var>k_resource</var></dt>
-   *   <dd>The key of the asset.</dd>
+   *   <dd>The asset key.</dd>
    * </dl>
    *
    * @post post
@@ -188,10 +188,9 @@ class ResourceModel extends WlModelAbstract
 
   /**
    * The selected sessions.
-   * Not empty only for session mode.
+   * This won't be empty only for session mode.
    *
-   * <b>Keys</b> - The class period keys.
-   * <b>Values</b> - List of date/time when the session occurred in MySQL format and in GMT.
+   * Keys refer to class period keys, and values refer to a list of the dates/times when the session occurred (returned in MySQL format and in GMT).
    *
    * @get get
    * @post get
@@ -200,11 +199,9 @@ class ResourceModel extends WlModelAbstract
   public $a_session = [];
 
   /**
-   * Selected sessions on the waiting list without pay.
+   * The selected sessions on the wait list that are unpaid.
    *
-   * Keys - session IDs.
-   *
-   * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
+   * Keys refer to session IDs, and values refer to index arrays of dates/times when the session occurred (returned in MySQL format and in GMT).
    *
    * @post post
    * @var array
@@ -213,7 +210,7 @@ class ResourceModel extends WlModelAbstract
 
   /**
    * The keys of the bookings that have been made.
-   * Not empty only if session(s) was booked on this step.
+   * This won't be empty only if the session(s) was booked at this step.
    *
    * @post result
    * @var string[]
@@ -221,8 +218,8 @@ class ResourceModel extends WlModelAbstract
   public $a_visit = [];
 
   /**
-   * Whether the class/event can be booked at this step or not.
-   * External process control flag.
+   * Determines whether the class/event can be booked at this step or not.
+   * This is an external process control flag.
    *
    * @post post
    * @var bool
@@ -230,7 +227,7 @@ class ResourceModel extends WlModelAbstract
   public $can_book = true;
 
   /**
-   * Date/time to which session is booked.
+   * The date/time the session is booked for.
    *
    * @get get
    * @post get
@@ -239,7 +236,7 @@ class ResourceModel extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * Mode type. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The mode type. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
    *
    * @get get
    * @post get
@@ -248,8 +245,9 @@ class ResourceModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * `true` if user pressed 'Pay later'.
-   * `false` if user pressed 'Pay now'.
+   * `true` — the user selected 'Pay later'.
+   *
+   * `false` — the user selected 'Pay now'.
    *
    * @post post
    * @var bool
@@ -257,8 +255,9 @@ class ResourceModel extends WlModelAbstract
   public $is_force_pay_later = false;
 
   /**
-   * <tt>true</tt> if next steps of wizard are needed (for example. to purchase something to book the selected session);
-   * <tt>false</tt> if no next steps are needed (all that was needed was already bought).
+   * `true` — the next steps of the booking wizard are required (for example, to purchase something to book the selected session).
+
+   * `false` — no further booking steps are required.
    *
    * @post result
    * @var bool
@@ -266,7 +265,7 @@ class ResourceModel extends WlModelAbstract
   public $is_next = false;
 
   /**
-   * Key of session which is booked.
+   * The key of the booked session.
    *
    * @get get
    * @post get
@@ -275,9 +274,7 @@ class ResourceModel extends WlModelAbstract
   public $k_class_period = '0';
 
   /**
-   * Login promotion to be used to book a class.
-   *
-   * Primary key from {@link  \RsLoginProductSql}.
+   * The login promotion used to book the class.
    *
    * @post post
    * @var string
@@ -285,9 +282,7 @@ class ResourceModel extends WlModelAbstract
   public $k_login_promotion = '';
 
   /**
-   * Session pass to be used to book a class.
-   *
-   * Primary key from {@link  \Wl\Session\Pass\Sql}.
+   * The session pass used to book the class.
    *
    * @post post
    * @var string
@@ -295,7 +290,7 @@ class ResourceModel extends WlModelAbstract
   public $k_session_pass = '';
 
   /**
-   * Key of a user who is making a book.
+   * The key of the user making the booking.
    *
    * @get get
    * @post get

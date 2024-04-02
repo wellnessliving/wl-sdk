@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Purchase\Receipt;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns receipt data of certain purchase.
+ * Returns receipt data of certain purchase.
  */
 class PurchaseReceiptModel extends WlModelAbstract
 {

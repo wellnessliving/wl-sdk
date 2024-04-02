@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Purchase\Share;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that shares a purchase to a specified social network.
+ * Shares a purchase to a specified social network.
  */
 class PurchaseShareModel extends WlModelAbstract
 {

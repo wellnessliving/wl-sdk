@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Payment;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that completes the payment for an appointment or appointment Purchase Option for a client.
+ * Completes the payment for an appointment or appointment Purchase Option for a client.
  *
  * The only difference between this endpoint and {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentModel} is
  * that this endpoint is capable of paying for multiple appointments at the same time.

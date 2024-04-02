@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Schedule\Page;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns information about a specified visit.
+ * Returns information about a specified visit.
  */
 class PageElementModel extends WlModelAbstract
 {
@@ -257,6 +257,15 @@ class PageElementModel extends WlModelAbstract
    * @var string
    */
   public $k_business;
+
+  /**
+   * The class key. This will be set only if the visit is a class or an event.
+   * If the visit is an appointment, this will be `null`.
+   *
+   * @get result
+   * @var ?string
+   */
+  public $k_class;
 
   /**
    * The class period key. This will be set only if the visit is a class or an event.

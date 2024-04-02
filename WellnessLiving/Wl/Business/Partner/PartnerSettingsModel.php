@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business\Partner;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that works with partner settings of the business.
+ * Works with partner settings of the business.
  * This information is entered by a staff member when a client enrolls into Partner Program and uses a custom landing page, which
  * is available by special business URL.
  */

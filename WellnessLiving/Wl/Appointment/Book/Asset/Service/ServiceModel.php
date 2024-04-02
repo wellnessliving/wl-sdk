@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Asset\Service;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves assets that are required for a service booking.
+ * Retrieves assets that are required for a service booking.
  */
 class ServiceModel extends WlModelAbstract
 {

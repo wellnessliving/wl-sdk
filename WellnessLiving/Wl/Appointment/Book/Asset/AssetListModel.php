@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Asset;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about assets in the current asset category.
+ * Retrieves information about assets in the current asset category.
  */
 class AssetListModel extends WlModelAbstract
 {

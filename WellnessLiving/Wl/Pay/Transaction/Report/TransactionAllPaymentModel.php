@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Pay\Transaction\Report;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that can retrieve information from the All Transactions Report.
+ * Can retrieve information from the All Transactions Report.
  */
 class TransactionAllPaymentModel extends WlModelAbstract
 {

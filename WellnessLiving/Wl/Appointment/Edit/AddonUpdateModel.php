@@ -5,19 +5,19 @@ namespace WellnessLiving\Wl\Appointment\Edit;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Update add-ons for appointment.
+ * Updates add-ons for an appointment.
  *
- * This endpoint can be used to update add-ons in existing appointment.
+ * This endpoint can be used to update add-ons for existing appointments.
  */
 class AddonUpdateModel extends WlModelAbstract
 {
   /**
-   * Addons for appointment.
+   * The appointment addon-ons.
    *
-   * Old format - array where each value is key of add-on.
+   * Old format - an array where each value is key of the add-on.
    * New format - each element is an array: <dl>
-   *   <dt>int <var>i_product</var></dt><dd>Add-on count. Max value is 255.</dd>
-   *   <dt>string <var>k_shop_product_option</var></dt><dd>Key of add-on.</dd>
+   *   <dt>int <var>i_product</var></dt><dd> The add-on count. Max value is 255.</dd>
+   *   <dt>string <var>k_shop_product_option</var></dt><dd>The add-on key.</dd>
    * </dl>
    *
    * @put post
@@ -28,18 +28,18 @@ class AddonUpdateModel extends WlModelAbstract
   /**
    * Data to show appointment add-ons:<dl>
    *   <dt>array[] <var>a_addon</var></dt>
-   *   <dd>Data about appointment add-ons. Each element contains data about single add-on: <dl>
-   *     <dt>int <var>i_product</var></dt><dd>Quantity of add-on in appointment.</dd>
-   *     <dt>string <var>html_amount</var></dt><dd>Add-on additional amount. Empty string if add-on doesn't have additional amount.</dd>
-   *     <dt>string <var>html_duration</var></dt><dd>Add-on additional duration. Empty string if add-on doesn't add duration.</dd>
-   *     <dt>string <var>html_title</var></dt><dd>Add-on name.</dd>
-   *     <dt>int <var>i_count_paid</var></dt><dd>Quantity of paid add-on in appointment.</dd>
-   *     <dt>int <var>i_inventory_current</var></dt><dd>Quantity of current add-on product inventory.</dd>
-   *     <dt>bool <var>is_select</var></dt><dd>Whether add-on added to appointment.</dd>
-   *     <dt>string <var>k_shop_product_option</var></dt><dd>Add-on product key. Primary key in {@link \RsShopProductOptionSql} table.</dd>
-   *     <dt>string <var>url</var></dt><dd>URL to add-on picture. Empty string if add-on doesn't have picture.</dd>
+   *   <dd>Data about appointment add-ons. Each element contains data about a single add-on: <dl>
+   *     <dt>int <var>i_product</var></dt><dd>The add-on's quantity.</dd>
+   *     <dt>string <var>html_amount</var></dt><dd>The add-on's additional amount. This will be an empty string if the add-on doesn't have an additional amount.</dd>
+   *     <dt>string <var>html_duration</var></dt><dd>The add-on's additional duration. This will be an empty string if the add-on doesn't add duration.</dd>
+   *     <dt>string <var>html_title</var></dt><dd>The add-on's name.</dd>
+   *     <dt>int <var>i_count_paid</var></dt><dd>The quantity paid for the add-on.</dd>
+   *     <dt>int <var>i_inventory_current</var></dt><dd>The add-ons inventory count.</dd>
+   *     <dt>bool <var>is_select</var></dt><dd>Determines whether the add-on is added to appointment.</dd>
+   *     <dt>string <var>k_shop_product_option</var></dt><dd>The add-on product key.</dd>
+   *     <dt>string <var>url</var></dt><dd>The URL for the add-on picture. This will be an empty string if the add-on doesn't have a picture.</dd>
    *   </dl></dd>
-   *   <dt>bool <var>is_search</var></dt><dd>Whether add-on search field need to be shown.</dd></dl>
+   *   <dt>bool <var>is_search</var></dt><dd>Determines whether the add-on search field needs to be shown.</dd></dl>
    *
    * @get result
    * @var array
@@ -47,7 +47,7 @@ class AddonUpdateModel extends WlModelAbstract
   public $a_addon_data;
 
   /**
-   * Whether we need to update appointment duration.
+   * Determines whether the appointment duration needs to be updated.
    *
    * @put post
    * @var bool
@@ -55,7 +55,7 @@ class AddonUpdateModel extends WlModelAbstract
   public $is_duration_update = false;
 
   /**
-   * Key of the appointment.
+   * The appointment key.
    *
    * @get get
    * @put post
@@ -64,7 +64,7 @@ class AddonUpdateModel extends WlModelAbstract
   public $k_appointment;
 
   /**
-   * Business key. Empty string when not set.
+   * The business key. This will be an empty string if not set yet.
    *
    * @get get
    * @put post

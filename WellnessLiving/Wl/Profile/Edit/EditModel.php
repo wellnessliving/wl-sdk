@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Profile\Edit;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * This endpoint gets information about a client profile. Alternatively, this endpoint can also edit or create a profile.
+ * Gets information about a client profile. This endpoint can also edit or create a profile.
  *
  * The GET method returns the profile fields for a specified user or a blank set of fields for a new user of a
  * given business:
@@ -17,15 +17,15 @@ use WellnessLiving\WlModelAbstract;
  *   and others specific to one business.
  *
  * The type of field is described in `id_field_type`, which will be one of the {@link \WellnessLiving\RsFieldTypeSid} constants.
- * Some fields have a general type which can have a specific format:
- * * Address - An array containing the following keys: `k_city`, `s_address`, `s_city`, and `s_postal`.
+ * Some fields have a general type, which can have a specific format:
+ * * Address — An array containing the following keys: `k_city`, `s_address`, `s_city`, and `s_postal`.
  * The `k_city` value can be retrieved via the {@link \WellnessLiving\Core\Geo\ComboboxModel} endpoint. The following is an example address array:
  *
- * * Birthday -  A string containing the date in MySQL format (for example, `1987-06-05`).
- * * Email Address - An array containing the following keys:
+ * * Birthday — A string containing the date in MySQL format (for example, `1987-06-05`).
+ * * Email Address — An array containing the following keys:
  * <dl>
  *   <dt>bool <var>is_inherit</var></dt>
- *   <dd>Whether the user shares the email address with another user.
+ *   <dd>Determines whether the user shares the email address with another user.
  *   This is typically done for children who use their parent’s email (`is_inherit=1`).
  *   In general, most other cases use (`is_inherit=0`).</dd>
  *   <dt>bool <var>s_mail</var></dt>
@@ -45,8 +45,8 @@ class EditModel extends WlModelAbstract
   public $a_change = [];
 
   /**
-   * List of errors.
-   * <tt>null</tt> if there was no mistake.
+   * The list of errors.
+   * This will be `null` if there weren't any mistakes.
    *
    * @get result
    * @post result
@@ -55,11 +55,10 @@ class EditModel extends WlModelAbstract
   public $a_error;
 
   /**
-   * Information for user's photo.
-   * It is necessary to save simultaneously user and photo in staff member mode.
+   * Information about the user's photo.
+   * It's necessary to simultaneously save the user and the photo in staff member mode.
    *
-   * Attention!
-   * Data from this field is taken directly from a POST somewhere in the depths of the photo upload.
+   * Note that data from this field is taken directly from a POST somewhere in the photo upload process.
    *
    * @post post
    * @var array
@@ -80,11 +79,11 @@ class EditModel extends WlModelAbstract
    * Array values are the field values. The array has the following structure:
    * <dl>
    *   <dt>int [<var>id_field_general</var>]</dt>
-   *   <dd>The ID of a system field. One of {@link \WellnessLiving\RsFieldGeneralSid} constants. This value is only defined if <var>id_field_type</var>={@link \WellnessLiving\RsFieldTypeSid::GENERAL}.</dd>
+   *   <dd>The ID of a system field. One of the {@link \WellnessLiving\RsFieldGeneralSid} constants. This value is only defined if <var>id_field_type</var>={@link \WellnessLiving\RsFieldTypeSid::GENERAL}.</dd>
    *   <dt>bool <var>is_require</var></dt>
    *   <dd>Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional.</dd>
    *   <dt>int <var>id_field_type</var></dt>
-   *   <dd>The type of field. This is one of the {@link \WellnessLiving\RsFieldTypeSid} constants.</dd>
+   *   <dd>The type of field. One of the {@link \WellnessLiving\RsFieldTypeSid} constants.</dd>
    *   <dt>string <var>k_field</var></dt>
    *   <dd>The field ID (<var>k_field</var>). A copy of the key of this array element.</dd>
    *   <dt>string <var>s_title</var></dt>
@@ -99,8 +98,8 @@ class EditModel extends WlModelAbstract
   public $a_structure;
 
   /**
-   * ID of registration source. One of {@link \WellnessLiving\Wl\Profile\RegisterSourceSid} constants.
-   * If empty {@link \WellnessLiving\Wl\Profile\RegisterSourceSid::SELF} is used.
+   * The ID of registration source. One of the {@link \WellnessLiving\Wl\Profile\RegisterSourceSid} constants.
+   * If empty, {@link \WellnessLiving\Wl\Profile\RegisterSourceSid::SELF} is used.
    *
    * @get get
    * @post get
@@ -119,7 +118,7 @@ class EditModel extends WlModelAbstract
   public $is_short = 0;
 
   /**
-   * <tt>true</tt> to sing in a created user; <tt>false</tt> to not sign in.
+   * This will be `true` to sign in a created user. Otherwise, this will be `false`.
    *
    * @post post
    * @var bool
@@ -138,7 +137,7 @@ class EditModel extends WlModelAbstract
   public $is_staff = false;
 
   /**
-   * The key of the business where you're editing.
+   * The key of the business you're editing.
    *
    * An empty value will return the system-wide fields.
    *
@@ -150,8 +149,8 @@ class EditModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * Exception class name.
-   * <tt>null</tt> if there was no mistake.
+   * The exception class name.
+   * This will be `null` if there weren't any mistakes.
    *
    * @get result
    * @post result
@@ -160,8 +159,8 @@ class EditModel extends WlModelAbstract
   public $class;
 
   /**
-   * Code of the error.
-   * <tt>null</tt> if there was no mistake.
+   * The error code.
+   * This will be `null` if there weren't any mistakes.
    *
    * @get result
    * @post result
@@ -170,8 +169,8 @@ class EditModel extends WlModelAbstract
   public $code;
 
   /**
-   * Status of the request.
-   * <tt>null</tt> if there was no mistake.
+   * The request status.
+   * This will be `null` if there weren't any mistakes.
    *
    * @post result
    * @var string|null
@@ -179,8 +178,8 @@ class EditModel extends WlModelAbstract
   public $status;
 
   /**
-   * Error message.
-   * <tt>null</tt> if there was no mistake.
+   * The error message.
+   * This will be `null` if there weren't any mistakes.
    *
    * @get result
    * @post result
@@ -199,7 +198,7 @@ class EditModel extends WlModelAbstract
   /**
    * The key of the user to edit.
    *
-   * If empty, then an empty form will be displayed to add a new user.
+   * If empty, an empty form will be displayed to add a new user.
    *
    * @get get
    * @post get,result
@@ -207,6 +206,14 @@ class EditModel extends WlModelAbstract
    * @var string
    */
   public $uid = '';
+
+  /**
+   * The UID of an existing user in another business to add to the current business.
+   *
+   * @post get
+   * @var string
+   */
+  public $uid_existed = '';
 }
 
 ?>

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\User\Info;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about a WellnessLiving user.
+ * Retrieves information about a WellnessLiving user.
  */
 class UserInfoModel extends WlModelAbstract
 {

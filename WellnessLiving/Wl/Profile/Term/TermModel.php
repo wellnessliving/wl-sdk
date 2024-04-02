@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Profile\Term;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that displays information about online waiver.
+ * Displays information about online waiver.
  */
 class TermModel extends WlModelAbstract
 {

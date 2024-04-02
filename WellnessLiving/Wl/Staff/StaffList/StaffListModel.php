@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Staff\StaffList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns a list of all staff members working for a business.
+ * Returns a list of all staff members working for a business.
  */
 class StaffListModel extends WlModelAbstract
 {

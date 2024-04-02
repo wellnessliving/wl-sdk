@@ -5,16 +5,16 @@ namespace WellnessLiving\Wl\Business\AuthorizePartner;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Endpoint to give members of a franchisor access to a franchisee.
+ * Gives members of a franchisor access to a franchisee.
  *
- * To grant a user access the SDK sign-in account, the Manage Franchise Location permission is required.
+ * To grant a user access, the "Manage Franchise Location" staff permission is required.
  * Access will be granted for 24 hours.
  */
 class AuthorizePartnerModel extends WlModelAbstract
 {
   /**
    * Determines whether the user will be granted access or if access will be revoked.
-   * If <tt>true</tt> - then grant access; If <tt>false</tt> - then revoke access.
+   * If `true`, access will be granted. If `false`, access will be revoked.
    * Revoking access is a scheduled task set to be run within the next 15 minutes.
    *
    * @get get

@@ -2,10 +2,11 @@
 
 namespace WellnessLiving\Wl\Event\Book\EventList;
 
+use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves a list of events for a given class tab.
+ * Retrieves a list of events for a given class tab.
  */
 class ListModel extends WlModelAbstract
 {
@@ -18,6 +19,35 @@ class ListModel extends WlModelAbstract
    * @var string[]
    */
   public $a_event;
+
+  /**
+   * Event availability value.
+   *
+   * Unavailable events are those that cannot be booked,
+   *  but they can be shown to the client (for example, under the "not available" filter).
+   *
+   * The array contains:
+   * * Key - Class (event) key.
+   * * Value - Event availability value: `true` - available, `false` - not available.
+   *
+   * @get result
+   * @var array
+   */
+  public $a_event_available = [];
+
+  /**
+   * Defines how the event availability flag filter should be applied.
+   *
+   * One of {@link AFlagSid} constants.
+   *
+   * * {@link AFlagSid::ON} to show only available events.
+   * * {@link AFlagSid::OFF} to show only unavailable events.
+   * * {@link AFlagSid::ALL} to show all events (available and unavailable).
+   *
+   * @get get
+   * @var int
+   */
+  public $id_status = AFlagSid::ON;
 
   /**
    * <tt>true</tt> if exist at least one virtual event

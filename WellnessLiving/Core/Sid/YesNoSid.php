@@ -1,5 +1,7 @@
 <?php
 
+namespace WellnessLiving\Core\Sid;
+
 /**
  * A list of two answers for any question: Yes or No.
  */

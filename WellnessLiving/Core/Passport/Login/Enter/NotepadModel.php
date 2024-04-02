@@ -6,7 +6,7 @@ use WellnessLiving\Sha3;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves the notepad value from the server that is used to sign someone in to the SDK.
+ * Retrieves the notepad value from the server that is used to sign someone in to the SDK.
  */
 class NotepadModel extends WlModelAbstract
 {

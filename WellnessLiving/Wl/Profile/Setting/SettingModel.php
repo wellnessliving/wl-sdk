@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Profile\Setting;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves the user’s notification settings.
+ * Retrieves the user’s notification settings.
  *
  * Alternatively, this endpoint can be used to change a user’s notification settings.
  */

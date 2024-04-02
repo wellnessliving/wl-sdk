@@ -5,18 +5,18 @@ namespace WellnessLiving\Wl\Business\User\Subscribe;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Manages user`s subscription on business.
+ * Manages a user`s subscription in a business.
  */
 class SubscribeModel extends WlModelAbstract
 {
   /**
-   * Information about user`s subscription.
-   * In case of getting information,
-   * <tt>true</tt> if user has email subscription on business, <tt>false</tt> otherwise.
-   * In case of changing subscription,
-   * <tt>true</tt> if subscribe user on business, <tt>false</tt> is unsubscribe user on business.
+   * Information about the user`s subscription.
    *
-   * <tt>null</tt> until loaded.
+   * When getting information, `true` indicates the user has an email subscription in the business (`false` otherwise).
+   *
+   * When changing a subscription, `true` subscribes the user in the business. `false` unsubscribes the user in the business.
+   *
+   * This will be `null` if not set yet.
    *
    * @get result
    * @put get
@@ -25,13 +25,13 @@ class SubscribeModel extends WlModelAbstract
   public $is_subscribe;
 
   /**
-   * Information about user`s subscription.
-   * In case of getting information,
-   * <tt>true</tt> if user has sms subscription on business, <tt>false</tt> otherwise.
-   * In case of changing subscription,
-   * <tt>true</tt> if subscribe user on business, <tt>false</tt> is unsubscribe user on business.
+   * Information about the user`s subscription.
    *
-   * <tt>null</tt> until loaded.
+   * When getting information, `true` indicates the user has an SMS subscription in the business (`false` otherwise).
+   *
+   * When changing a subscription, `true` subscribes the user in the business. `false1 unsubscribes the user in the business.
+   *
+   * This will be `null` if not set yet.
    *
    * @get result
    * @put get
@@ -40,9 +40,7 @@ class SubscribeModel extends WlModelAbstract
   public $is_subscribe_sms;
 
   /**
-   * Business key.
-   * Key of the business for which user will subscribe, unsubscribe,
-   * receive information about the status of the subscription.
+   * The business key used for users to subscribe, unsubscribe, and receive information about the status of the subscription.
    *
    * @get get
    * @put get
@@ -51,8 +49,7 @@ class SubscribeModel extends WlModelAbstract
   public $k_business;
 
   /**
-   * User key.
-   * The key of the user whose subscription status needs to check or switch to subscribe / unsubscribe.
+   * The key of the user whose subscription status needs to be checked or switched to subscribed/unsubscribed.
    *
    * @get get
    * @put get

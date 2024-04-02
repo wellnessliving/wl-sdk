@@ -5,7 +5,8 @@ namespace WellnessLiving\Wl\Review\ReviewList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns a list of review IDs for all reviews for a location.
+ * Returns a list of review IDs for all reviews for a location. If location is not specified, returns
+ * all reviews for all locations in the specified business.
  *
  * Reviews in WellnessLiving apply to specific locations. This endpoint can be used to get the IDs for all reviews or
  * to get a listing that includes all the review data if the `i_page parameter` is set.
@@ -56,6 +57,12 @@ class ReviewListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     Review key.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_location</var>
+   *   </dt>
+   *   <dd>
+   *     The location ID for where the review was left/assigned.
    *   </dd>
    *   <dt>
    *     string <var>s_firstname</var>
@@ -150,6 +157,14 @@ class ReviewListModel extends WlModelAbstract
    * @var int|null
    */
   public $id_order;
+
+  /**
+   * Business key. If not specified, location key needs to be specified.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_business = '';
 
   /**
    * The key of the location to show reviews for.

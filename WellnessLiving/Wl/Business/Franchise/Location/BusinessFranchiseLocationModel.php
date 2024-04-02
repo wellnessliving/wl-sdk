@@ -10,31 +10,31 @@ use WellnessLiving\WlModelAbstract;
 class BusinessFranchiseLocationModel extends WlModelAbstract
 {
   /**
-   * The city list. Each element has next structure:
+   * The city list. Each element has the next structure:
    * <dl>
    *   <dt>
    *     string <var>k_city</var>
    *   </dt>
    *   <dd>
-   *     City key.
+   *     The city key.
    *   </dd>
    *   <dt>
    *     string <var>k_country</var>
    *   </dt>
    *   <dd>
-   *     Country key.
+   *     The country key.
    *   </dd>
    *   <dt>
    *     string <var>k_state</var>
    *   </dt>
    *   <dd>
-   *     State key.
+   *     The state key.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     City title.
+   *     The city title.
    *   </dd>
    * </dl>
    *
@@ -44,19 +44,19 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   public $a_city_list;
 
   /**
-   * The country list. Each element has next structure:
+   * The country list. Each element has the next structure:
    * <dl>
    *   <dt>
    *     string <var>k_country</var>
    *   </dt>
    *   <dd>
-   *     Country key.
+   *     The country key.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Country title.
+   *     The country title.
    *   </dd>
    * </dl>
    *
@@ -66,43 +66,43 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   public $a_country_list;
 
   /**
-   * The location list. Each element has next structure:
+   * The location list. Each element has the next structure:
    * <dl>
    *   <dt>
    *     string <var>k_city</var>
    *   </dt>
    *   <dd>
-   *     City key.
+   *     The city key.
    *   </dd>
    *   <dt>
    *     string <var>k_country</var>
    *   </dt>
    *   <dd>
-   *     Country key.
+   *     The country key.
    *   </dd>
    *   <dt>
    *     string <var>k_location</var>
    *   </dt>
    *   <dd>
-   *     Location key.
+   *     The location key.
    *   </dd>
    *   <dt>
    *     string <var>k_region</var>
    *   </dt>
    *   <dd>
-   *     Franchise region key.
+   *     The franchise region key.
    *   </dd>
    *   <dt>
    *     string <var>k_state</var>
    *   </dt>
    *   <dd>
-   *     State key.
+   *     The state key.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Location title.
+   *     The location title.
    *   </dd>
    * </dl>
    *
@@ -112,19 +112,19 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   public $a_location_list;
 
   /**
-   * The region list. Each element has next structure:
+   * The region list. Each element has the next structure:
    * <dl>
    *   <dt>
    *     string <var>k_region</var>
    *   </dt>
    *   <dd>
-   *     Franchise region key.
+   *     The franchise region key.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Franchise region title.
+   *     The franchise region title.
    *   </dd>
    * </dl>
    *
@@ -134,25 +134,25 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   public $a_region_list;
 
   /**
-   * The state list. Each element has next structure:
+   * The state list. Each element has the next structure:
    * <dl>
    *   <dt>
    *     string <var>k_country</var>
    *   </dt>
    *   <dd>
-   *     Country key.
+   *     The country key.
    *   </dd>
    *   <dt>
    *     string <var>k_state</var>
    *   </dt>
    *   <dd>
-   *     State key.
+   *     The state key.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     State title.
+   *     The state title.
    *   </dd>
    * </dl>
    *
@@ -166,7 +166,7 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
    *
    * One of the {@link \WellnessLiving\Wl\Business\Franchise\Location\BusinessFranchiseLocationSid} constants.
    *
-   * <tt>null</tt> means that {@link \WellnessLiving\Wl\Business\Franchise\Location\BusinessFranchiseLocationSid::ALL} is used.
+   * If `null`, {@link \WellnessLiving\Wl\Business\Franchise\Location\BusinessFranchiseLocationSid::ALL} is used.
    *
    * @get get
    * @var int
@@ -174,11 +174,11 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   public $id_business_franchise_location;
 
   /**
-   * Determines report for which data should be returned.
+   * Determines the report for which data should be returned.
    *
    * One of the {@link \WellnessLiving\RsReportSid} constants.
    *
-   * <tt>null</tt> means that report is not set.
+   * If `null`, the report isn't set.
    *
    * @get get
    * @var int
@@ -186,7 +186,9 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   public $id_report;
 
   /**
-   * Whether to include churned/removed locations. `true` to list all locations regardless of their status.
+   * Determines whether to include churned/removed locations.
+   *
+   * If `true`, all locations are listed (regardless of their status).
    *
    * @get get
    * @var bool
@@ -194,8 +196,9 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   public $is_include_churn = false;
 
   /**
-   * Whether to include locations marked to not be displayed on franchisor website. `true` to list all locations
-   * regardless of this setting.
+   * Determines whether to include locations marked to not be displayed on franchisor website.
+   *
+   * If `true`, all locations are listed (regardless of this setting).
    *
    * @get get
    * @var bool

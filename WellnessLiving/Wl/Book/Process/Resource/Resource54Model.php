@@ -5,15 +5,15 @@ namespace WellnessLiving\Wl\Book\Process\Resource;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Select assets for making a booking.
+ * Selects assets when making a booking.
  *
- * Take into account {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid::QUIZ} step.
+ * Take note of the {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid::QUIZ} step.
  */
 class Resource54Model extends WlModelAbstract
 {
   /**
    * The keys of a user's activity.
-   * Not empty only if session(s) was booked on this step.
+   * This won't be if the session(s) was booked at this step.
    *
    * @post result
    * @var string[]
@@ -21,7 +21,7 @@ class Resource54Model extends WlModelAbstract
   public $a_login_activity = [];
 
   /**
-   * Information about recurring booking:
+   * Information about the recurring booking:
    * <dl>
    *   <dt>
    *     int[] [<var>a_week</var>]

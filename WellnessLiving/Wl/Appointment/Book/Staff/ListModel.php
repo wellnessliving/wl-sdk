@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Staff;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about staff members for the current service.
+ * Retrieves information about staff members for the current service.
  */
 class ListModel extends WlModelAbstract
 {
@@ -108,6 +108,16 @@ class ListModel extends WlModelAbstract
    * @var string|null
    */
   public $k_timezone;
+
+  /**
+   * Key of user for whom the service is booking, primary key in {@link \PassportLoginSql} table.
+   *
+   * `null` when not set.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $uid;
 }
 
 ?>

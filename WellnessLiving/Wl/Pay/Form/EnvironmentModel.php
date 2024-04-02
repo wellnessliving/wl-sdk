@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Pay\Form;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets information about payment environments.
+ * Gets information about payment environments.
  */
 class EnvironmentModel extends WlModelAbstract
 {
