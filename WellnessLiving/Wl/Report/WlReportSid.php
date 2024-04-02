@@ -1205,9 +1205,7 @@ abstract class WlReportSid
   const VISIT_CLASS_DETAIL = 59;
 
   /**
-   * Simplified variation of report {@link RsVisitClassDetailReport}.
-   *
-   * @see RsVisitClassListReport
+   * Simplified variation of report {@link WlReportSid::VISIT_CLASS_DETAIL}.
    */
   const VISIT_CLASS_LIST = 14;
 
@@ -1336,6 +1334,12 @@ abstract class WlReportSid
    * Visits Remaining.
    */
   const VISIT_REMAIN_LIST = 63;
+
+  /**
+   * Visits Remaining.
+   * Temporary copy of the report {@link WlReportSid::VISIT_REMAIN_LIST} should be removed after Sprint 33 release.
+   */
+  const VISIT_REMAIN_LIST_TEMP = 144;
 
   /**
    * Detailed revenue by service.

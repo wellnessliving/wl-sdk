@@ -47,8 +47,7 @@ abstract class WlPurchaseItemSid
   /**
    * Tips for the appointment.
    *
-   * @see RsPurchaseItemAppointment Purchase item manager class.
-   * @see RsPurchaseItemSid::SERVICE A purchased item that is created during the online booking process.
+   * @see WlPurchaseItemSid::SERVICE A purchased item that is created during the online booking process.
    */
   const APPOINTMENT_TIP = 22;
 
@@ -141,6 +140,10 @@ abstract class WlPurchaseItemSid
 
   /**
    * Promotions.
+   *
+   * Key of a promotion.
+   *
+   * For old purchases `k_id` may also be login promotion key.
    */
   const PROMOTION = 1;
 

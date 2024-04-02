@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Payment;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
+use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\Service\ServicePriceSid;
 
@@ -242,7 +243,7 @@ class PaymentPostModel extends WlModelAbstract
   public $a_uid = [];
 
   /**
-   * The key of source mode. A constant of {@link \WellnessLiving\Wl\Mode\ModeSid}.
+   * The key of source mode. A constant of {@link ModeSid}.
    *
    * @get get
    * @post get
