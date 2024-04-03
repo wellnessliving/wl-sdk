@@ -47,7 +47,7 @@ class ListModel extends WlModelAbstract
    * @get get
    * @var int
    */
-  public $id_status = AFlagSid::ON;
+  public $id_status = 3;
 
   /**
    * <tt>true</tt> if exist at least one virtual event

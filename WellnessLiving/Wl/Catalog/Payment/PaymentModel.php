@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Catalog\Payment;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
 use WellnessLiving\Wl\Insurance\Catalog\ProgramListModel;
 use WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel;
 use WellnessLiving\Wl\Mode\ModeSid;
@@ -13,7 +14,9 @@ use WellnessLiving\Wl\WlSaleSid;
  * Purchases an item and performs the payment in the store.
  *
  * This endpoint uses a CAPTCHA check. To pass the CAPTCHA, consult the CAPTCHA API documentation.
- * The documentation specifies that a captcha must be sent for a specific action. For this API, an action is `1064`.
+ * The documentation specifies that a captcha must be sent for a specific action.
+ *
+ * For this API an action is {@link BusinessPaymentCaptcha::CID}.
  */
 class PaymentModel extends WlModelAbstract
 {

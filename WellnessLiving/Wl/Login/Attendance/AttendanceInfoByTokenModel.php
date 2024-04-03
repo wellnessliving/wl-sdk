@@ -12,6 +12,24 @@ use WellnessLiving\Wl\WlServiceSid;
 class AttendanceInfoByTokenModel extends WlModelAbstract
 {
   /**
+   * Additional visit information about this appointment. Empty array if it's not an appointment:
+   * <dl>
+   *   <dt>bool <var>is_deny</var></dt>
+   *   <dd>`true` means that appointment was requested and denied by the staff.</dd>
+   *   <dt>bool <var>is_notify_request_accept</var></dt>
+   *   <dd>`true` means that the client will receive a notification, if appointment will be confirmed by the staff.</dd>
+   *   <dt>bool <var>is_notify_request_deny</var></dt>
+   *   <dd>`true` means that the client will receive a notification, if appointment will be denied by the staff.</dd>
+   *   <dt>bool <var>is_request</var></dt>
+   *   <dd>`true` means that appointment was requested, but not confirmed by the staff.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array
+   */
+  public $a_appointment_visit_info = [];
+
+  /**
    * Service logo information:
    * <dl>
    *   <dt>

@@ -73,7 +73,7 @@ class VisitStatusModel extends WlModelAbstract
    * @post post
    * @var int
    */
-  public $id_mode = \WellnessLiving\Wl\Mode\ModeSid::SPA_BACKEND;
+  public $id_mode = 0;
 
   /**
    * The status of the visit.

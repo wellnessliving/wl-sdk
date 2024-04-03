@@ -15,7 +15,7 @@ use WellnessLiving\Wl\Field\WlFieldTypeSid;
  *
  * This endpoint using captcha check.
  *  To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
- *  For this API an action is `1072`.
+ *  For this API an action is {@link LeadCaptcha::CID}.
  */
 class LeadModel extends WlModelAbstract
 {

@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Payment;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
+use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
 use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
@@ -16,7 +17,7 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
  *
  * This endpoint uses a CAPTCHA check.
  * To pass the CAPTCHA, you'll need to study the documentation of the CAPTCHA base class. In the documentation, you'll
- * find that you need to send a CAPTCHA for a specific action. For this API, the action is `1064`.
+ * find that you need to send a CAPTCHA for a specific action. For this API, the action is {@link BusinessPaymentCaptcha::CID}.
  */
 class PaymentMultipleModel extends WlModelAbstract
 {
