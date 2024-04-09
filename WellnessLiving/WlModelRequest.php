@@ -270,7 +270,13 @@ class WlModelRequest
     foreach($a_signature as $s_element)
       $a_signature_check[] = substr(hash('sha256',$s_element!==null ? $s_element : ''),0,1);
 
-    return hash('sha256',implode("\n",$a_signature)).'.1.'.implode('',$a_signature_check).'.'.PHP_VERSION_ID.'.'.static::VERSION;
+    return implode('.', [
+      hash('sha256',implode("\n",$a_signature)),
+      '1',
+      implode('',$a_signature_check),
+      PHP_VERSION_ID,
+      static::VERSION
+    ]);
   }
 }
 
