@@ -48,7 +48,10 @@ class WlModelCookie
   {
     $a_cookie = [];
     foreach($this->a_cookie as $s_name => $s_value)
-      $a_cookie[] = $s_name.'='.$s_value;
+    {
+      if($s_value!==null)
+        $a_cookie[] = $s_name.'='.$s_value;
+    }
     return implode(';',$a_cookie);
   }
 }
