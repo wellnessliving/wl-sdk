@@ -251,7 +251,7 @@ class WlModelRequest
     $a_signature[]=$a_data['s_resource'];
     $a_signature[]=$a_data['s_cookie_persistent'];
     $a_signature[]=$a_data['s_cookie_transient'];
-    if(!empty($a_data['s_cookie_global']))
+    if(isset($a_data['s_cookie_global']))
       $a_signature[]=$a_data['s_cookie_global'];
 
     $a_variable=WlModelRequest::signatureArray($a_data['a_variable']);
