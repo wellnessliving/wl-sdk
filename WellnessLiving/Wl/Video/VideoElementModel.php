@@ -366,6 +366,14 @@ class VideoElementModel extends WlModelAbstract
   public $url_video_direct;
 
   /**
+   * The direct URL of the video for iframe.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_video_frame;
+
+  /**
    * The video description.
    *
    * @get result
