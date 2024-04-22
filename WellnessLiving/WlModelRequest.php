@@ -147,7 +147,10 @@ class WlModelRequest
       's_resource' => $this->s_resource,
     ];
 
-    $this->a_header_request['Authorization'] = '20150518,'.$s_config_class::AUTHORIZE_ID.',user-agent,'.WlModelRequest::signatureCompute($a_signature);
+    if(!empty($this->a_header_request['X-Core-Spa-Device']))
+      $a_signature['a_header']['X-Core-Spa-Device']=$this->a_header_request['X-Core-Spa-Device'];
+
+    $this->a_header_request['Authorization'] = '20150518,'.$s_config_class::AUTHORIZE_ID.','.strtolower(implode(',',array_keys($a_signature['a_header']))).','.WlModelRequest::signatureCompute($a_signature);
   }
 
   /**
