@@ -78,7 +78,7 @@ class MicrosoftLoginModel extends WlModelAbstract
    * * WARNING: Do not use this link for a direct redirect. This will present a vulnerability.
    *
    * * A {@link LoginModel::$url_login} link will be generated along with this redirect URI.
-   * * When checking the received {@link LoginModel::$s_code} from Microsoft, the link must be sent along with it
+   * * When checking the received {@link LoginModel::$s_code} from Microsoft.
    *
    * @get get
    * @post get

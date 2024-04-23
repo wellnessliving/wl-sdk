@@ -30,7 +30,7 @@ abstract class WlPurchaseItemSid
    *
    * For old purchases "appointment" may also be a bookable asset without appointment service.
    *
-   * @see WlPurchaseItemSid::SERVICE A purchased item that is created during the online booking process.
+   * A purchased item that is created during the online booking process {@link WlPurchaseItemSid::SERVICE}.
    */
   const APPOINTMENT = 8;
 
