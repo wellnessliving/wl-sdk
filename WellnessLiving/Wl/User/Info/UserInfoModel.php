@@ -93,6 +93,7 @@ class UserInfoModel extends WlModelAbstract
    *
    * @get get
    * @var string[]
+   * @see \PassportLoginSql
    */
   public $a_user_list;
 

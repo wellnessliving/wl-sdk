@@ -12,7 +12,7 @@ class WlModelRequest
   /**
    * SDK version number.
    */
-  const VERSION='202402241120';
+  const VERSION='202404171145';
 
   /**
    * A list of headers for the API request. See {@link CURLOPT_HTTPHEADER}.
@@ -147,7 +147,10 @@ class WlModelRequest
       's_resource' => $this->s_resource,
     ];
 
-    $this->a_header_request['Authorization'] = '20150518,'.$s_config_class::AUTHORIZE_ID.',user-agent,'.WlModelRequest::signatureCompute($a_signature);
+    if(!empty($this->a_header_request['X-Core-Spa-Device']))
+      $a_signature['a_header']['X-Core-Spa-Device']=$this->a_header_request['X-Core-Spa-Device'];
+
+    $this->a_header_request['Authorization'] = '20150518,'.$s_config_class::AUTHORIZE_ID.','.strtolower(implode(',',array_keys($a_signature['a_header']))).','.WlModelRequest::signatureCompute($a_signature);
   }
 
   /**
@@ -251,7 +254,7 @@ class WlModelRequest
     $a_signature[]=$a_data['s_resource'];
     $a_signature[]=$a_data['s_cookie_persistent'];
     $a_signature[]=$a_data['s_cookie_transient'];
-    if(!empty($a_data['s_cookie_global']))
+    if(isset($a_data['s_cookie_global']))
       $a_signature[]=$a_data['s_cookie_global'];
 
     $a_variable=WlModelRequest::signatureArray($a_data['a_variable']);
@@ -270,7 +273,13 @@ class WlModelRequest
     foreach($a_signature as $s_element)
       $a_signature_check[] = substr(hash('sha256',$s_element!==null ? $s_element : ''),0,1);
 
-    return hash('sha256',implode("\n",$a_signature)).'.1.'.implode('',$a_signature_check).'.'.PHP_VERSION_ID.'.'.static::VERSION;
+    return implode('.', [
+      hash('sha256',implode("\n",$a_signature)),
+      '1',
+      implode('',$a_signature_check),
+      PHP_VERSION_ID,
+      static::VERSION
+    ]);
   }
 }
 
