@@ -4,13 +4,11 @@ namespace WellnessLiving\Wl\Location\WorkTime;
 
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Business\BusinessModel;
 
 /**
  * Saves working hours for a specified location.
  *
- * Note that to run this endpoint, an authenticated user with specified permissions is required. Otherwise, use a
- * guest account during the new business registration process (see {@link BusinessModel::sessionKey()}).
+ * Note that to run this endpoint, an authenticated user with specified permissions is required.
  */
 class LocationWorkTimeModel extends WlModelAbstract
 {

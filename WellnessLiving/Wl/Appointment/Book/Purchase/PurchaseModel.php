@@ -443,7 +443,6 @@ class PurchaseModel extends WlModelAbstract
    *
    * @get result
    * @var array
-   * @see PurchaseModel::_sessionPassInfo()
    */
   public $a_session_pass = [];
 

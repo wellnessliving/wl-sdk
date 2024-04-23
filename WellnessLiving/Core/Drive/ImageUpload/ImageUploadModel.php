@@ -9,8 +9,7 @@ namespace WellnessLiving\Core\Drive\ImageUpload;
 class ImageUploadModel extends \WellnessLiving\Custom\Core\Drive\ImageUpload\ImageUploadModel
 {
   /**
-   * Image information for every ID. Every element contains values such as the
-   * {@link ImageUploadModel::_get()} result.
+   * Image information for every ID.
    *
    * @post result
    * @var array[]

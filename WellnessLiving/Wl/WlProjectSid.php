@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * List of different directories, which can use wellnessliving as a source of data.
  */
-class WlProjectSid
+abstract class WlProjectSid
 {
   /**
    * WellnessLiving Explorer.
