@@ -78,10 +78,11 @@ class ListModel extends WlModelAbstract
    *
    * @delete get
    * @get get
+   * @post get
    * @put get
    * @var string
    */
-  public $k_business;
+  public $k_business = null;
 }
 
 ?>
