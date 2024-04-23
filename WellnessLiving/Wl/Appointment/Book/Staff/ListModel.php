@@ -12,6 +12,28 @@ class ListModel extends WlModelAbstract
   /**
    * A list of staff members with information about them.
    *
+   * <dl>
+   *   <dt>int <var>id_gender</var></dt>
+   *   <dd>Staff member's gender.</dd>
+   *   <dt>bool <var>is_available</var></dt>
+   *   <dd>Whether staff member is available for booking. Note, if staff member reached daily limits, this field
+   *     will be different for client and staff booking flows. If client books, such staff member is not available and
+   *     this field is `false`. If staff member books, such staff member is available.</dd>
+   *   <dt>bool <var>is_daily_limit</var></dt>
+   *   <dd>Whether staff member reached daily limits on number or total duration of the appointments for one day.</dd>
+   *   <dt>bool <var>is_wait_list</var></dt>
+   *   <dd>Whether staff member available only for wait list booking.</dd>
+   *   <dt>string <var>k_staff</var></dt>
+   *   <dd>Primary key of the staff member.</dd>
+   *   <dt>string <var>s_position</var></dt>
+   *   <dd>Position of the staff member in the business.</dd>
+   *   <dt>int <var>s_staff</var></dt>
+   *   <dd>Name of the staff member.</dd>
+   *   <dt>string <var>uid</var></dt>
+   *   <dd>UID of the staff member.</dd>
+   *   <dt>string <var>xml_biography</var></dt>
+   *   <dd>Biography of the staff member.</dd>
+   *  </dl>
    * @get result
    * @var array[]
    */
