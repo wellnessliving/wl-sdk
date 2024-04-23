@@ -389,6 +389,9 @@ class WlModelAbstract
     $o_request->s_resource = $this->resource();
     $o_request->url = $this->_o_config->url().$o_request->s_resource;
 
+    foreach($this->_o_config->a_header as $s_header => $s_value)
+      $o_request->a_header_request[$s_header] = $s_value;
+
     $o_request->dt_request = WlTool::dateNowMysql();
     $o_request->a_header_request['Date'] = WlTool::dateMysqlHttp($o_request->dt_request);
     if($this->_o_config->text_agent)

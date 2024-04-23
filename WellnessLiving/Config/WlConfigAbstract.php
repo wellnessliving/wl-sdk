@@ -165,6 +165,20 @@ abstract class WlConfigAbstract
   const TIMEOUT_READ=600;
 
   /**
+   * Additional headers to add to all http requests.
+   *
+   * Key is name of the header, case-sensitive.
+   * Value is value of the header.
+   *
+   * **Be attentive!**
+   * If you add data that originates from the user, it must be validated carefully.
+   * Setting values not validated carefully in this property exposes you to HTTP header injection vulnerability.
+   *
+   * @var string[]
+   */
+  public $a_header=[];
+
+  /**
    * ID of a region in which information about this business is stored.
    * One of {@link WlRegionSid} constants.
    *
