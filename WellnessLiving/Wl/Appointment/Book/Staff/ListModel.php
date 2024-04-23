@@ -33,7 +33,8 @@ class ListModel extends WlModelAbstract
    *   <dd>UID of the staff member.</dd>
    *   <dt>string <var>xml_biography</var></dt>
    *   <dd>Biography of the staff member.</dd>
-   *  </dl>
+   * </dl>
+   *
    * @get result
    * @var array[]
    */
