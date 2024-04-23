@@ -477,8 +477,14 @@ abstract class WlReportSid
    */
   const LOGIN_FRANCHISE_STATUS_LIST = 162;
 
+  /**
+   * Login list.
+   */
   const LOGIN_LIST = 22;
 
+  /**
+   * Login list all.
+   */
   const LOGIN_LIST_ALL = 33;
 
   /**
@@ -860,12 +866,24 @@ abstract class WlReportSid
    */
   const PURCHASE_ITEM_ACCRUAL_SUMMARY = 133;
 
+  /**
+   * Purchase item count.
+   */
   const PURCHASE_ITEM_COUNT = 27;
 
+  /**
+   * Purchase item count product.
+   */
   const PURCHASE_ITEM_COUNT_PRODUCT = 50;
 
+  /**
+   * Purchase item count revenue.
+   */
   const PURCHASE_ITEM_COUNT_REVENUE = 51;
 
+  /**
+   * Purchase item list.
+   */
   const PURCHASE_ITEM_LIST = 26;
 
   /**
@@ -942,8 +960,14 @@ abstract class WlReportSid
    */
   const PURCHASE_OPTION_SUMMARY = 109;
 
+  /**
+   * Purchase tag count.
+   */
   const PURCHASE_TAG_COUNT = 30;
 
+  /**
+   * Purchase tag list.
+   */
   const PURCHASE_TAG_LIST = 31;
 
   /**
@@ -991,6 +1015,9 @@ abstract class WlReportSid
    */
   const REWARD_BOARD = 56;
 
+  /**
+   * Schedule prospect count.
+   */
   const SCHEDULE_PROSPECT_COUNT = 9;
 
   /**
@@ -1003,6 +1030,9 @@ abstract class WlReportSid
    */
   const SCHEDULE_PROSPECT_LIST_TODAY = 39;
 
+  /**
+   * Schedule wait list.
+   */
   const SCHEDULE_WAIT_LIST = 11;
 
   /**
@@ -1163,14 +1193,29 @@ abstract class WlReportSid
    */
   const VISIT_ATTEND_LIST = 64;
 
+  /**
+   * Visit book count.
+   */
   const VISIT_BOOK_COUNT = 4;
 
+  /**
+   * Visit book list.
+   */
   const VISIT_BOOK_LIST = 6;
 
+  /**
+   * Visit class average count.
+   */
   const VISIT_CLASS_AVERAGE_COUNT = 20;
 
+  /**
+   * Visit class average list.
+   */
   const VISIT_CLASS_AVERAGE_LIST = 18;
 
+  /**
+   * Visit class buy.
+   */
   const VISIT_CLASS_BUY = 32;
 
   /**
@@ -1311,6 +1356,9 @@ abstract class WlReportSid
    */
   const VISIT_LOCATION_CROSS_SUMMARY_LIST = 169;
 
+  /**
+   * Visit login list.
+   */
   const VISIT_LOGIN_LIST = 12;
 
   /**
@@ -1346,12 +1394,24 @@ abstract class WlReportSid
    */
   const VISIT_RISK_ISAAC = 216;
 
+  /**
+   * Visit staff average count.
+   */
   const VISIT_STAFF_AVERAGE_COUNT = 19;
 
+  /**
+   * Visit staff average list.
+   */
   const VISIT_STAFF_AVERAGE_LIST = 17;
 
+  /**
+   * Visit staff count.
+   */
   const VISIT_STAFF_COUNT = 15;
 
+  /**
+   * Visit staff list.
+   */
   const VISIT_STAFF_LIST = 13;
 
   /**
