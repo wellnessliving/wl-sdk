@@ -30,25 +30,25 @@ class PurchaseElementModel extends WlModelAbstract
    *     string [<var>k_enrollment_book</var>]
    *   </dt>
    *   <dd>
-   *
+   *     Key of enrollment book.
    *   </dd>
    *   <dt>
    *     string [<var>k_login_product</var>]
    *   </dt>
    *   <dd>
-   *
+   *     Key of product.
    *   </dd>
    *   <dt>
    *     string [<var>k_login_promotion</var>]
    *   </dt>
    *   <dd>
-   *
+   *     Key of promotion.
    *   </dd>
    *   <dt>
    *     string [<var>k_session_pass</var>]
    *   </dt>
    *   <dd>
-   *
+   *     Session key.
    *   </dd>
    * </dl>
    *

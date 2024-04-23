@@ -11,7 +11,9 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 class PurchaseElementModel extends WlModelAbstract
 {
   /**
-   * A list of taxes for one purchase item. Keys - tax keys (primary key in {@link \RsTaxSql} table); values - tax amount.
+   * A list of taxes for one purchase item.
+   * Keys - tax keys.
+   * Values - tax amount.
    *
    * @get result
    * @var array

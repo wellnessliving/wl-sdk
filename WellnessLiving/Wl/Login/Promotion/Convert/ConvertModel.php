@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Login\Promotion\Convert;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Promotion\Convert\PromotionConvertSid;
 use WellnessLiving\Wl\WlProgramSid;
 
 /**
@@ -74,7 +75,7 @@ class ConvertModel extends WlModelAbstract
   public $dl_hold_start = '';
 
   /**
-   * The conversion ID.
+   * The conversion ID. One of the {@link PromotionConvertSid} constants.
    *
    * @get result
    * @post get
