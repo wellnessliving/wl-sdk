@@ -171,7 +171,7 @@ abstract class WlConfigAbstract
    * Value is value of the header.
    *
    * **Be attentive!**
-   * If you add data that originates from the user, it must be validated carefully.
+   * If you add data that originates from a user, it must be validated carefully.
    * Setting values not validated carefully in this property exposes you to HTTP header injection vulnerability.
    *
    * @var string[]

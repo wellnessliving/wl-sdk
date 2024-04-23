@@ -147,7 +147,7 @@ class WlModelRequest
       's_resource' => $this->s_resource,
     ];
 
-    foreach($this->o_config as $s_header => $s_value)
+    foreach($this->o_config->a_header as $s_header => $s_value)
     {
       if($this->a_header_request[$s_header])
         $a_signature['a_header'][strtolower($s_header)]=$this->a_header_request[$s_header];
