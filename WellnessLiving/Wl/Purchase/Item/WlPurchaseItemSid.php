@@ -47,7 +47,7 @@ abstract class WlPurchaseItemSid
   /**
    * Tips for the appointment.
    *
-   * @see WlPurchaseItemSid::SERVICE A purchased item that is created during the online booking process.
+   * A purchased item that is created during the online booking process {@link WlPurchaseItemSid::SERVICE}.
    */
   const APPOINTMENT_TIP = 22;
 
@@ -180,7 +180,7 @@ abstract class WlPurchaseItemSid
    *
    * Key of a service.
    *
-   * @see WlPurchaseItemSid::APPOINTMENT Purchase that is created when a staff adds payment for an appointment at POS.
+   * Purchase that is created when a staff adds payment for an appointment at POS {@link WlPurchaseItemSid::APPOINTMENT}.
    */
   const SERVICE = 6;
 }
