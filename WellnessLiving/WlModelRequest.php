@@ -154,7 +154,7 @@ class WlModelRequest
     }
     ksort($a_signature['a_header']);
 
-    $this->a_header_request['Authorization'] = '20150518,'.$s_config_class::AUTHORIZE_ID.','.strtolower(implode(',',array_keys($a_signature['a_header']))).','.WlModelRequest::signatureCompute($a_signature);
+    $this->a_header_request['Authorization'] = '20150518,'.$s_config_class::AUTHORIZE_ID.','.strtolower(implode(';',array_keys($a_signature['a_header']))).','.WlModelRequest::signatureCompute($a_signature);
   }
 
   /**
