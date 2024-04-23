@@ -101,41 +101,6 @@ class LeadModel extends WlModelAbstract
   public $a_skin;
 
   /**
-   * `true` means that all fields must be show, `false` otherwise.
-   *
-   * @var bool
-   */
-  public $is_field_all = false;
-
-  /**
-   * `true` if throw event when new lead is created, `false` otherwise.
-   *
-   * @var bool
-   */
-  public $is_new_notify = true;
-
-  /**
-   * Whether to skip captcha check.
-   *
-   * @var bool
-   */
-  public $is_skip_captcha_check = false;
-
-  /**
-   * Whether to skip required check.
-   *
-   * @var bool
-   */
-  public $is_skip_required_check = false;
-
-  /**
-   * Whether to need use Lead capture widget or not.
-   *
-   * @var bool
-   */
-  public $is_widget_use = true;
-
-  /**
    * The key of business to which the new user must be captured.
    *
    * @get get

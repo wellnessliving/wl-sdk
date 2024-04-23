@@ -138,7 +138,6 @@ class VideoElementModel extends WlModelAbstract
    * If the file will be uploaded in parts, its size will be set.
    *
    * In this case, the file will not be uploaded to this API.
-   * Method {@link VideoElementModel::_fileVideoGet()} will not return the result.
    *
    * @post post
    * @var int|string
@@ -263,7 +262,6 @@ class VideoElementModel extends WlModelAbstract
    * If the file will be uploaded in parts, upload ID will be set.
    *
    * In this case, the file will not be uploaded to this API.
-   * Method {@link VideoElementModel::_fileVideoGet()} will not return the result.
    *
    * @post post
    * @var string
@@ -365,6 +363,14 @@ class VideoElementModel extends WlModelAbstract
    * @var string
    */
   public $url_video_direct;
+
+  /**
+   * The direct URL of the video for iframe.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_video_frame;
 
   /**
    * The video description.

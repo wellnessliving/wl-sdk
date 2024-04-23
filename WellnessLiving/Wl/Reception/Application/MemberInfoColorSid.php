@@ -10,7 +10,7 @@ namespace WellnessLiving\Wl\Reception\Application;
  *
  * Last ID: 4.
  */
-class MemberInfoColorSid
+abstract class MemberInfoColorSid
 {
   /**
    * Default for neutral, informative messages. Displayed in blue.

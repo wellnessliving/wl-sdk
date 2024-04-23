@@ -428,7 +428,7 @@ class PurchaseModel extends WlModelAbstract
    *    Should be set if login promotion selected for this service.
    *  </dd>
    *  <dt>string <var>k_service</var></dt>
-   *
+   *  <dd>Service key.</dd>
    * </dl>
    *
    * @get get

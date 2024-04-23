@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * Class aimed to customise class {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadModel}.
  *
- * @property string $s_command
+ * @property string $s_command The action that must be performed to the image.
  */
 abstract class ImageUploadModel extends WlModelAbstract
 {

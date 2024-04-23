@@ -184,7 +184,6 @@ class EditModel extends WlModelAbstract
    * Exception class name.
    * `null` if there was no mistake.
    *
-   * @field class
    * @get result
    * @post result
    * @var string|null

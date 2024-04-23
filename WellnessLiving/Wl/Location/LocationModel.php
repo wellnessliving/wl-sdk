@@ -3,7 +3,6 @@
 namespace WellnessLiving\Wl\Location;
 
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Business\BusinessModel;
 
 /**
  * Creates a new location in the business or edits a specified location.

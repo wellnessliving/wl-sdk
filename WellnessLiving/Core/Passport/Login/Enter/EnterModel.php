@@ -36,7 +36,7 @@ class EnterModel extends WlModelAbstract
   /**
    * A copy of the notepad that was used to hash the user password.
    *
-   *  See {@link EnterModel::$s_password} for details.
+   * See {@link EnterModel::$s_password} for details.
    *
    * @post post
    * @var string

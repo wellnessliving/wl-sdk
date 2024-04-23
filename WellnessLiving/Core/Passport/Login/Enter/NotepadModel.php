@@ -2,6 +2,8 @@
 
 namespace WellnessLiving\Core\Passport\Login\Enter;
 
+use WellnessLiving\Wl\WlRegionSid;
+
 /**
  * An endpoint that retrieves the notepad value from the server that is used to sign someone in to the SDK.
  *
@@ -12,6 +14,8 @@ class NotepadModel extends \WellnessLiving\Custom\Core\Passport\Login\Enter\Note
   /**
    * ID of the datacenter which is a preferred datacenter for the user specified in
    * {@link NotepadModel::$s_login}.
+   *
+   * One of {@link WlRegionSid} constants.
    *
    * If ID of the datacenter returned in this property differs from the current datacenter, this means that this
    * API request was forwarded to the datacenter returned here, and the notepad was created there.

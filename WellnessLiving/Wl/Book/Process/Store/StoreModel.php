@@ -126,14 +126,6 @@ class StoreModel extends WlModelAbstract
   public $can_book = true;
 
   /**
-   * `true` if application can be book unpaid visits no matter what are the business settings.
-   * `false` if ability to book unpaid should fully depend on the business settings.
-   *
-   * @var bool
-   */
-  public $can_book_unpaid = false;
-
-  /**
    * Date/time to which session is booked.
    *
    * @get get
@@ -169,13 +161,6 @@ class StoreModel extends WlModelAbstract
    * @var bool
    */
   public $is_next;
-
-  /**
-   * Key of the business in which the wizard is executed.
-   *
-   * @var string|null
-   */
-  public $k_business = null;
 
   /**
    * Key of session which is booked.

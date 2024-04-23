@@ -5,7 +5,7 @@ namespace WellnessLiving;
 use WellnessLiving\Wl\Coupon\PurchaseRestrictionSid;
 
 /**
- * @deprecated from 2023-09-11.
+ * @deprecated As of 2023-09-11.
  *
  * Use class {@link PurchaseRestrictionSid} instead.
  */

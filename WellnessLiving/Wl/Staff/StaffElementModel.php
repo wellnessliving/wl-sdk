@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Staff;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Business\BusinessModel;
+use WellnessLiving\Wl\WlPrivilegeRoleSid;
 
 /**
  * Can create or edit a staff member in a business.
@@ -55,7 +56,7 @@ class StaffElementModel extends WlModelAbstract
   public $id_gender = null;
 
   /**
-   * ID of the default system role.
+   * ID of the default system role. One of {@link WlPrivilegeRoleSid}.
    *
    * `null` means to not change the current value of the field.
    *
@@ -63,15 +64,6 @@ class StaffElementModel extends WlModelAbstract
    * @var int|null
    */
   public $id_role = null;
-
-  /**
-   * Whether client profile fields for current business should be added.
-   * `true` - if case of creating new staff or creating staff with client or staff from another business, `false` - in
-   * case of updating a staff.
-   *
-   * @var bool
-   */
-  public $is_add_profile_field = false;
 
   /**
    * Whether the staff is currently employed.

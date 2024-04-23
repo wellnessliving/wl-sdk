@@ -302,12 +302,15 @@ class FinishMultipleModel extends WlModelAbstract
   public $a_visit = [];
 
   /**
-   * `true` if application can be book unpaid visits no matter what are the business settings.
-   * `false` if ability to book unpaid should fully depend on the business settings.
+   * Keys of booked visits.
    *
-   * @var bool
-*/
-  public $can_book_unpaid = false;
+   * Structured into a two-dimensional array.
+   * 1st dimension - providers; 2nd dimension - visit keys inside a provider.
+   *
+   * @post result
+   * @var string[][]
+   */
+  public $a_visit_provider = [];
 
   /**
    * The mode type. One of the {@link ModeSid} constants.
@@ -326,7 +329,10 @@ class FinishMultipleModel extends WlModelAbstract
   public $is_back_to_back = false;
 
   /**
-   * This will be `true` when trying to make a test booking and rollback should be applied. Otherwise, this will be `false`.
+   * This will be `true` when trying to make a test booking and rollback should be applied.
+   * Otherwise, this will be `false`.
+   *
+   * If the flag is set to `true`, credit card requirement will be ignored during this check.
    *
    * @post post
    * @var bool

@@ -77,13 +77,13 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    *     string[] <var>a_resource_available</var>
    *   </dt>
    *   <dd>
-   *
+   *     Key of asset.
    *   </dd>
    *   <dt>
    *     string <var>k_resource_layout</var>
    *   </dt>
    *   <dd>
-   *
+   *     Key of layout.
    *   </dd>
    *   <dt>
    *     string <var>text_resource_type</var>
@@ -131,7 +131,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    *     string <var>k_staff</var>
    *   </dt>
    *   <dd>
-   *
+   *     Staff key.
    *   </dd>
    *   <dt>
    *     string <var>html_firstname</var>

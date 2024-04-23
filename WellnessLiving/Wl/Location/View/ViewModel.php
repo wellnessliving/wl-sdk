@@ -224,6 +224,8 @@ class ViewModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
+   * The timezone.
+   *
    * @get result
    * @var string
    */

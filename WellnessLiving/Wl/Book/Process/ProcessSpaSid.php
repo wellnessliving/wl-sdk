@@ -18,8 +18,6 @@ abstract class ProcessSpaSid
    *
    * Adding a step to the queue is done on the client side (in JS).
    *
-   * The list of steps that can be displayed on {@link ProcessSpaSid::DETAIL_COLLECTION}.
-   *
    * Designed for Client Web View.
    */
   const DETAIL = 10;

@@ -2,9 +2,11 @@
 
 namespace WellnessLiving\Wl\Event;
 
+use WellnessLiving\Core\Drive\DriveTypeSid;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlScheduleTimeSid;
 
 /**
  * Retrieves a list of events that fit the given filter parameters.
@@ -61,7 +63,7 @@ class EventListModel extends WlModelAbstract
    *     <dt>int <var>i_width_src</var></dt>
    *     <dd>The source image's width.</dd>
    *     <dt>int <var>id_type_src</var></dt>
-   *     <dd>The image type ID.</dd>
+   *     <dd>The image type ID. One of the {@link DriveTypeSid} constants.</dd>
    *     <dt>bool <var>is_resize</var></dt>
    *     <dd>This will be `true` if the image has been resized. `false` otherwise.</dd>
    *     <dt>bool <var>is_old</var></dt>
@@ -199,6 +201,8 @@ class EventListModel extends WlModelAbstract
   public $a_staff = null;
 
   /**
+   * List of time day applied by filter {@link WlScheduleTimeSid}.
+   *
    * @get get
    * @var string[]|null
    */

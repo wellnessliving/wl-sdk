@@ -366,7 +366,6 @@ class PurchaseModel extends WlModelAbstract
    *
    * @get result
    * @var array
-   * @see PurchaseModel::_getSessionPassList()
    */
   public $a_session_pass = [];
 
@@ -389,14 +388,6 @@ class PurchaseModel extends WlModelAbstract
    * @var bool
    */
   public $can_book = true;
-
-  /**
-   * `true` if application can be book unpaid visits no matter what are the business settings.
-   * `false` if ability to book unpaid should fully depend on the business settings.
-   *
-   * @var bool
-   */
-  public $can_book_unpaid = false;
 
   /**
    * Date/time to which session is booked.

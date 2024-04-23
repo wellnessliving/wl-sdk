@@ -20,13 +20,6 @@ class AccessModel extends WlModelAbstract
   public $can_access = false;
 
   /**
-   * Key of the business which request is processed.
-   *
-   * @var string
-   */
-  public $k_business;
-
-  /**
    * The location key.
    *
    * @get get

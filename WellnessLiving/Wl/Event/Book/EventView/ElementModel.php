@@ -483,6 +483,8 @@ class ElementModel extends WlModelAbstract
   public $k_book_class_period;
 
   /**
+   * Key of a business.
+   *
    * @get get
    * @var string|null
    */

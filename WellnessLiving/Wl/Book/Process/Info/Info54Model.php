@@ -175,7 +175,7 @@ class Info54Model extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     String representation of session duration.
-   *     Duration formatting method {@link InfoModel::_classDurationFormat()}.
+   *
    *   </dd>
    * </dl>
    *
@@ -270,14 +270,6 @@ class Info54Model extends WlModelAbstract
    * @var bool
    */
   public $can_book = true;
-
-  /**
-   * `true` if application can be book unpaid visits no matter what are the business settings.
-   * `false` if ability to book unpaid should fully depend on the business settings.
-   *
-   * @var bool
-   */
-  public $can_book_unpaid = false;
 
   /**
    * Date when this class session occurrences stop.
@@ -499,13 +491,6 @@ class Info54Model extends WlModelAbstract
    * @var bool
    */
   public $is_virtual;
-
-  /**
-   * Key of the business in which the wizard is executed.
-   *
-   * @var string|null
-   */
-  public $k_business = null;
 
   /**
    * Key of session which is booked.

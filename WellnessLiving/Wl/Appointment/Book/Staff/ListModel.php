@@ -21,6 +21,8 @@ class ListModel extends WlModelAbstract
    *     this field is `false`. If staff member books, such staff member is available.</dd>
    *   <dt>bool <var>is_daily_limit</var></dt>
    *   <dd>Whether staff member reached daily limits on number or total duration of the appointments for one day.</dd>
+   *   <dt>bool <var>is_wait_list</var></dt>
+   *   <dd>Whether staff member available only for wait list booking.</dd>
    *   <dt>string <var>k_staff</var></dt>
    *   <dd>Primary key of the staff member.</dd>
    *   <dt>string <var>s_position</var></dt>

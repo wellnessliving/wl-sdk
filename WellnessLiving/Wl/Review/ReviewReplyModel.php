@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Review;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlReviewStatusSid;
 
 /**
  * Adds a review reply.
@@ -10,7 +11,7 @@ use WellnessLiving\WlModelAbstract;
 class ReviewReplyModel extends WlModelAbstract
 {
   /**
-   * Status of the Review.
+   * Status of the Review. One of {@link WlReviewStatusSid} constants.
    *
    * `null` until passed to the api when admin replies to the review.
    *

@@ -228,12 +228,12 @@ class AttendanceListByTokenModel extends WlModelAbstract
   public $is_purchase_info_return = false;
 
   /**
-     * `true` to use class/event specific wait list limit, `false` to use the limit from default policies.
-     * `false` for appointments.
-     *
-     * @get result
-     * @var bool
-     */
+   * `true` to use class/event specific wait list limit, `false` to use the limit from default policies.
+   * `false` for appointments.
+   *
+   * @get result
+   * @var bool
+   */
   public $is_wait_list_limit;
 
   /**

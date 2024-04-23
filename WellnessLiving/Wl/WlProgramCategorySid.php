@@ -21,7 +21,7 @@ abstract class WlProgramCategorySid
    * Purchase options to pay for classes, events and enrollments:
    * <ul>
    *   <li>{@link WlProgramSid::CLASS_LIMIT}</li>
-   *   <li>{@link WlProgramSid::CLASS_MEMBESHIP}</li>
+   *   <li>{@link WlProgramSid::CLASS_MEMBERSHIP}</li>
    *   <li>{@link WlProgramSid::CLASS_PASS}</li>
    *   <li>{@link WlProgramSid::CLASS_PROSPECT}</li>
    * </ul>
@@ -48,7 +48,7 @@ abstract class WlProgramCategorySid
    * <ul>
    *   <li>{@link WlProgramSid::RESOURCE_DURATION}</li>
    *   <li>{@link WlProgramSid::RESOURCE_LIMIT}</li>
-   *   <li>{@link WlProgramSid::RESOURCE_MEMBESHIP}</li>
+   *   <li>{@link WlProgramSid::RESOURCE_MEMBERSHIP}</li>
    *   <li>{@link WlProgramSid::RESOURCE_PASS}</li>
    * </ul>
    */
@@ -58,7 +58,7 @@ abstract class WlProgramCategorySid
    * Purchase options to pay for appointments:
    * <ul>
    *   <li>{@link WlProgramSid::SERVICE_LIMIT}</li>
-   *   <li>{@link WlProgramSid::SERVICE_MEMBESHIP}</li>
+   *   <li>{@link WlProgramSid::SERVICE_MEMBERSHIP}</li>
    *   <li>{@link WlProgramSid::SERVICE_PASS}</li>
    * </ul>
    */
@@ -75,7 +75,7 @@ abstract class WlProgramCategorySid
    * Purchase options to pay for gym visits:
    * <ul>
    *   <li>{@link WlProgramSid::VISIT_LIMIT}</li>
-   *   <li>{@link WlProgramSid::VISIT_MEMBESHIP}</li>
+   *   <li>{@link WlProgramSid::VISIT_MEMBERSHIP}</li>
    *   <li>{@link WlProgramSid::VISIT_PASS}</li>
    * </ul>
    */

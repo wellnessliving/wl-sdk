@@ -35,7 +35,7 @@ class AssetListModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    *   <dt>array <var>a_class_tab</var></dt>
-   *
+   *   <dd>The key of service.</dd>
    *   <dt>
    *     array[] <var>a_direct_link</var>
    *   </dt>

@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Schedule\ScheduleList\StaffApp;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Schedule\Design\OptionSid;
 use WellnessLiving\Wl\Visit\WlVisitSid;
 use WellnessLiving\Wl\WlServiceSid;
 
@@ -188,7 +189,7 @@ class ScheduleListByTokenModel extends WlModelAbstract
    *    <dd>
    *      Appointment title display style.
    *      Set only for appointments, for others it will be equal to 0.
-   *
+   *      Constants from {@link OptionSid}.
    *    </dd>
    *   <dt>
    *     int <var>id_service</var>
@@ -300,7 +301,7 @@ class ScheduleListByTokenModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_schedule = null;
+  public $a_schedule;
 
   /**
    * The end date of the range from which the list of schedule sessions should be retrieved.

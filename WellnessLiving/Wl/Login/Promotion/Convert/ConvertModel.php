@@ -83,7 +83,7 @@ class ConvertModel extends WlModelAbstract
   public $id_convert = null;
 
   /**
-   * When conversion should be done.
+   * When conversion should be done. One of the {@link ConvertWhenSid} constants.
    *
    * `null` if it's not set yet.
    *

@@ -50,7 +50,7 @@ abstract class WlSaleSid
   const PRODUCT = 4;
 
   /**
-   * Promotions with program category {@link WlProgramCategorySid::CLASS} and {@link WlProgramCategorySid::VISIT}.
+   * Promotions with program category {@link WlProgramCategorySid::CLASSES} and {@link WlProgramCategorySid::VISIT}.
    */
   const PROMOTION_CLASS = 1;
 

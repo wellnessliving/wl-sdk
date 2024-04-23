@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * Changes branch information during build.
  *
- * This API is designed to use only from builds (<tt>BranchCreate</tt>, <tt>BranchDelete</tt>) and is not expected that this API is
+ * This API is designed to use only from builds (`BranchCreate`, `BranchDelete`) and is not expected that this API is
  *   called from other places.
  */
 class BranchBuildModel extends WlModelAbstract

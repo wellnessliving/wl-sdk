@@ -240,7 +240,6 @@ class ElementModel extends WlModelAbstract
    *
    * @get result
    * @var array[]
-   * @see ElementModel::_get()
    */
   public $a_item;
 

@@ -69,7 +69,7 @@ class ClassViewModel extends WlModelAbstract
    *     int <var>id_deny_reason</var>
    *   </dt>
    *   <dd>
-   *     ID of deny reason.
+   *     ID of deny reason. One of {@link DenyReasonSid} constants.
    *   </dd>
    *   <dt>bool <var>is_book</var></dt>
    *   <dd>This will be `true` if the current class was booked by the current client.</dd>
@@ -148,7 +148,6 @@ class ClassViewModel extends WlModelAbstract
    * @get result
    * @post result
    * @var array[]
-   * @see ClassViewModel::_getSingle()
    */
   public $a_session_result;
 

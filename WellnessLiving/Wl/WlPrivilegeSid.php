@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 198.
+ * Last Used ID: 199.
  */
 abstract class WlPrivilegeSid
 {
@@ -299,6 +299,11 @@ abstract class WlPrivilegeSid
    * Allow Staff members to view/complete forms for clients that belong to the location that they are selected to work at.
    */
   const FORM_MY_LOCATION = 176;
+
+  /**
+   * Allow staff members to delete forms from the client’s profile.
+   */
+  const FORM_RESPONSE_DELETE = 199;
 
   /**
    * Allow staff members to view form responses.

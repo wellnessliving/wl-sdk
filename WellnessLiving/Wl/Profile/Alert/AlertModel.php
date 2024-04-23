@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Profile\Alert;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlProfileNoteSid;
 
 /**
  * Retrieves information about client alert messages.
@@ -29,7 +30,7 @@ class AlertModel extends WlModelAbstract
    *     int <var>id_profile_note</var>
    *   </dt>
    *   <dd>
-   *     ID of alert type.
+   *     ID of alert type. One of {@link WlProfileNoteSid} constants.
    *   </dd>
    *   <dt>
    *     string [<var>k_pay_account</var>]

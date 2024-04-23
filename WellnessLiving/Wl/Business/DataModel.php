@@ -6,6 +6,8 @@ use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Service\ServiceSid;
+use WellnessLiving\Wl\WlRankTypeSid;
+use WellnessLiving\Wl\WlRegionSid;
 
 /**
  * Displays information for a specified business.
@@ -76,6 +78,8 @@ class DataModel extends WlModelAbstract
   /**
    * The rank type ID of the business.
    *
+   * One of the {@link WlRankTypeSid} constants.
+   *
    * This will be `null` if the business doesn't have a rank type.
    *
    * @get result
@@ -85,6 +89,7 @@ class DataModel extends WlModelAbstract
 
   /**
    * The region ID. This indicates the data center where the information about the business is stored.
+   * One of the {@link WlRegionSid} constants.
    *
    * Requests made to different regions can lead to known issues such as responses indicating that the
    * business (or its elements) doesn't exist. This is because databases on different data centers are

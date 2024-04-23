@@ -2,6 +2,8 @@
 
 namespace WellnessLiving\Wl\Field;
 
+use WellnessLiving\Wl\Login\Type\SystemSid;
+
 /**
  * List of general fields in user's profile.
  *
@@ -81,7 +83,7 @@ class WlFieldGeneralSid
   const REFERRER = 12;
 
   /**
-   * Client status (client/member types).
+   * Client status (client/member types). System default client/member types see {@link SystemSid}.
    */
   const STATUS = 14;
 

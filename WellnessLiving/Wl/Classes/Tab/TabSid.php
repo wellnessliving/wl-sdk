@@ -20,23 +20,9 @@ abstract class TabSid
   const RESOURCE = 4;
 
   /**
-   * Bookable assets.
-   * Old wizard.
-   * Enable in debug mode only.
-   */
-  const RESOURCE_OLD = 6;
-
-  /**
    * Appointments.
    */
   const SERVICE = 3;
-
-  /**
-   * Appointments.
-   * Old wizard.
-   * Enable in debug mode only.
-   */
-  const SERVICE_OLD = 5;
 
   /**
    * Classes.

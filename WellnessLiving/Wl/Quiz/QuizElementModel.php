@@ -21,7 +21,7 @@ class QuizElementModel extends WlModelAbstract
   public $a_element = [];
 
   /**
-   * Quiz settings. Array representation of {@link QuizElementModel::$o_setting}.
+   * Quiz settings.
    *
    * @get result
    * @post post
@@ -106,6 +106,7 @@ class QuizElementModel extends WlModelAbstract
   /**
    * Quiz login key.
    *
+   * @delete get
    * @post get
    * @put get
    * @var string
