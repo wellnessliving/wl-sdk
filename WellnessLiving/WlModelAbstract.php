@@ -524,7 +524,12 @@ class WlModelAbstract
     curl_setopt($r_curl,CURLOPT_TIMEOUT,$s_config_class::TIMEOUT_READ);
     curl_setopt($r_curl,CURLOPT_VERBOSE,true);
     curl_setopt($r_curl,CURLINFO_HEADER_OUT,true);
-    curl_setopt($r_curl,CURLOPT_FOLLOWLOCATION,true);
+
+    // 1. It is not expected that The Thoth backend will return a redirect.
+    //    If it returns a redirect, this must be investigated and fixed.
+    // 2. After the redirect, `Authorization` header is not passed.
+    //    This leads to that no requests may be processed after the redirect.
+    // curl_setopt($r_curl,CURLOPT_FOLLOWLOCATION,true);
 
     return [
       'a_field' => $a_field,
