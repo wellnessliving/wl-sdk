@@ -108,7 +108,6 @@ class VideoListModel extends WlModelAbstract
 
   /**
    * Page to return.
-   * Pagination are ignored when count of videos less than {@link VideoListModel::VIDEO_COUNT_PAGINATION}.
    *
    * `null` if you need to return all the videos.
    *
@@ -164,8 +163,6 @@ class VideoListModel extends WlModelAbstract
    * UID of the client who request list of videos.
    *
    * `null` if user is not signed in.
-   *
-   * NOTE: Not used directly in API, needed for {@link VideoListModel::KEY} constant.
    *
    * @get get
    * @var string|null

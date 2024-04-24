@@ -82,7 +82,6 @@ class TransactionAllPaymentModel extends WlModelAbstract
 
   /**
    * The page of the report, starting from 0.
-   * Each page will contain a maximum of {@link TransactionAllPaymentModel::LIMIT} rows.
    *
    * @get get
    * @var int

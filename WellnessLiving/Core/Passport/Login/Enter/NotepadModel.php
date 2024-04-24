@@ -55,7 +55,6 @@ class NotepadModel extends \WellnessLiving\Custom\Core\Passport\Login\Enter\Note
 
   /**
    * The notepad value, which is used to hash the user's password.
-   * The password length is {@link NotepadModel::NONCE_LENGTH} characters.
    *
    * @get result
    * @var string

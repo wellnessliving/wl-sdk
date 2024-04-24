@@ -39,8 +39,6 @@ class LoginModel extends WlModelAbstract
    *
    * @post post
    * @var string
-   *
-   * @see LoginModel::STATE_LENGTH_MAX
    */
   public $s_state = '';
 
@@ -74,8 +72,6 @@ class LoginModel extends WlModelAbstract
    * @get get
    * @post get
    * @var string
-   *
-   * @see LoginModel::URL_REDIRECT_LENGTH_MAX
    */
   public $url_redirect = '';
 }
