@@ -158,8 +158,6 @@ class ClassListModel extends WlModelAbstract
 
   /**
    * The list end date in UTC and in MySQL format.
-   * If left empty, the default duration is {@link ClassListModel::DEFAULT_PERIOD} days after
-   * {@link ClassListModel::$dt_date}.
    *
    * @get get
    * @var string
