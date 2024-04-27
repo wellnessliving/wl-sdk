@@ -30,6 +30,12 @@ class CategoryModel extends WlModelAbstract
    *   <dd>
    *     Title of resource type.
    *   </dd>
+   *   <dt>
+   *     string <var>text_title</var>
+   *   </dt>
+   *   <dd>
+   *     Title of resource type as text.
+   *   </dd>
    * </dl>
    *
    * @get result
