@@ -165,6 +165,13 @@ abstract class WlConfigAbstract
   const TIMEOUT_READ=600;
 
   /**
+   * URL of the Edge Cache vault.
+   *
+   * @var string|null
+   */
+  const URL_EDGE=null;
+
+  /**
    * Additional headers to add to all http requests.
    *
    * Key is name of the header, case-sensitive.
@@ -323,5 +330,15 @@ abstract class WlConfigAbstract
   public function url()
   {
     return static::$REGION_URL[$this->id_region];
+  }
+
+  /**
+   * Returns URL of the Edge Cache vault.
+   *
+   * @return string URL of the Edge Cache vault.
+   */
+  public function urlEdge()
+  {
+    return static::URL_EDGE;
   }
 }

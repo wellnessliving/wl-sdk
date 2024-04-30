@@ -2,7 +2,7 @@
 
 namespace WellnessLiving\Config;
 
-use WellnessLiving\WlRegionSid;
+use WellnessLiving\Wl\WlRegionSid;
 
 /**
  * Base class for all production configurations.
@@ -32,6 +32,11 @@ abstract class WlConfigProduction extends WlConfigAbstract
     WlRegionSid::AP_SOUTHEAST_2 => 'https://au.wellnessliving.com/',
     WlRegionSid::US_EAST_1 => 'https://us.wellnessliving.com/',
   ];
+
+  /**
+   * @inheritDoc
+   */
+  const URL_EDGE='https://edge.wellnessliving.com/';
 }
 
 ?>
