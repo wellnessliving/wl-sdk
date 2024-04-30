@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Finish;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that completes the booking process for a service.
+ * Completes the booking process for a service.
  *
  * This endpoint can be used with an existing client by specifying their UID. It can also be used to create a new
  * client by specifying user details in {@link \WellnessLiving\Wl\Appointment\Book\Finish\FinishModel::$a_user} and omitting any UID.

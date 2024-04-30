@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Payment;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that displays information about payments for an appointment.
+ * Displays information about payments for an appointment.
  * The POST method for this endpoint is implemented as a separate endpoint (see
  * {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentPostModel}).
  *

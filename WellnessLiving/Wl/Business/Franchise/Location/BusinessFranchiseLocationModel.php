@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business\Franchise\Location;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that manages franchisor locations.
+ * Manages franchisor locations.
  */
 class BusinessFranchiseLocationModel extends WlModelAbstract
 {

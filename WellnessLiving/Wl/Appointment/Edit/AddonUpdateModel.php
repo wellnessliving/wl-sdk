@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Edit;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that updates add-ons for an appointment.
+ * Updates add-ons for an appointment.
  *
  * This endpoint can be used to update add-ons for existing appointments.
  */

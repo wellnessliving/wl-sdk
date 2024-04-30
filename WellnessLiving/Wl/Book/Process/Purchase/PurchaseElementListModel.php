@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Book\Process\Purchase;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that displays a list of purchase items.
+ * Displays a list of purchase items.
  */
 class PurchaseElementListModel extends WlModelAbstract
 {

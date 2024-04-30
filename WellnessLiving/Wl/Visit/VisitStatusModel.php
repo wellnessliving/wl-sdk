@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Visit;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that views or changes the visit status.
+ * Views or changes the visit status.
  */
 class VisitStatusModel extends WlModelAbstract
 {

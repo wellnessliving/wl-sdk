@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Catalog\StaffApp\CatalogCart;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that calculates price data for a sale item.
+ * Calculates price data for a sale item.
  *
  * Note that the terms "promotion" and "Purchase Option" refer to the same thing.
  */

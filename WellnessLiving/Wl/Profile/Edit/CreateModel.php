@@ -1,11 +1,11 @@
 <?php
 
-namespace WellnessLiving\Wl\Profile\Create;
+namespace WellnessLiving\Wl\Profile\Edit;
 
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that creates user account for the given email address if email address does not already exist.
+ * Creates user account for the given email address if email address does not already exist.
  * checks if a user's email address is already used or changes a user’s login email address.
  *
  * This endpoint is rate limited.
@@ -44,4 +44,12 @@ class CreateModel extends WlModelAbstract
    * @var string
    */
   public $text_mail = '';
+
+  /**
+   * The key of the user added.
+   *
+   * @post result
+   * @var string
+   */
+  public $uid = '';
 }

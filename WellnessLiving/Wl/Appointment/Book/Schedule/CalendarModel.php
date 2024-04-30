@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Schedule;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves a list of all calendar days in a specified month with
+ * Retrieves a list of all calendar days in a specified month with
  * available and unavailable appointment bookings in the schedule.
  */
 class CalendarModel extends WlModelAbstract

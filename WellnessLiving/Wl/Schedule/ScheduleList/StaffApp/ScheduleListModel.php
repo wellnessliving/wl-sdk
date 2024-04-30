@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Schedule\ScheduleList\StaffApp;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets information about sessions (both classes and appointments) at a business on a given day.
+ * Gets information about sessions (both classes and appointments) at a business on a given day.
  */
 class ScheduleListModel extends WlModelAbstract
 {

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Book\Process\Resource;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that selects assets when making a booking.
+ * Selects assets when making a booking.
  *
  * Take note of the {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid::QUIZ} step.
  */

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Member\Purchase;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns a list of active clients with the given Purchase Options.
+ * Returns a list of active clients with the given Purchase Options.
  *
  * This endpoint returns only active clients using active Purchase Options from the given list.
  *

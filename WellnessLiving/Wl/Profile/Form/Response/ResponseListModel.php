@@ -6,7 +6,7 @@ use WellnessLiving\Wl\Quiz\Response\SourceSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves a list of a user's quiz responses.
+ * Retrieves a list of a user's quiz responses.
  */
 class ResponseListModel extends WlModelAbstract
 {

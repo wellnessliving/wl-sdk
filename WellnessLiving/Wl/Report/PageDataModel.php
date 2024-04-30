@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Report;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns collection of the reports.
+ * Returns collection of the reports.
  */
 class PageDataModel extends WlModelAbstract
 {

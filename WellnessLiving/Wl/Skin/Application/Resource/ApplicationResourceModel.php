@@ -7,7 +7,7 @@ use WellnessLiving\WlAssertException;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns information used to generate application sources.
+ * Returns information used to generate application sources.
  */
 class ApplicationResourceModel extends WlModelAbstract
 {

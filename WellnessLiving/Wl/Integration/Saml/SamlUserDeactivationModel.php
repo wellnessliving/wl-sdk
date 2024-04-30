@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Integration\Saml;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves user statuses in the business.
+ * Retrieves user statuses in the business.
  */
 class SamlUserDeactivationModel extends WlModelAbstract
 {

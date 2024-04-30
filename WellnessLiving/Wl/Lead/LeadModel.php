@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Lead;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets information from the Lead Capture widget and saves a new user’s information.
+ * Gets information from the Lead Capture widget and saves a new user’s information.
  *
  * A user can be added to a second business by adding them first as a lead. If your business uses Enterprise Cloud,
  * there may be a restriction where clients can only be members in one enterprise location (travellers in all
@@ -20,6 +20,19 @@ class LeadModel extends WlModelAbstract
   /**
    * A list of fields containing the lead information.
    * The keys are the field keys and values are field values.
+   *
+   * If field key is `Address` field key, value may be an array or string.
+   * Can be a string if only address field is used. Will be an array if city and postal code are used,
+   * with the following keys:
+   *
+   * <dl>
+   * <dt>string <var>text_address</var></dt>
+   * <dd>Address.</dd>
+   * <dt>string <var>k_city</var></dt>
+   * <dd>City key.</dd>
+   * <dt>string <var>text_postal</var></dt>
+   * <dd>Postal code.</dd>
+   * </dl>
    *
    * @post post
    * @var array

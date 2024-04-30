@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Profile\Contract;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets information about a session pass or membership with a contract.
+ * Gets information about a session pass or membership with a contract.
  *
  * The POST method will complete a sale of a Purchase Option requiring a contract.
  * The method that WellnessLiving uses to encode a signature into a string isn't currently available in the SDK.

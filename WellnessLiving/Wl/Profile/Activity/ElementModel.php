@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Profile\Activity;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns detailed information about a single client activity.
+ * Returns detailed information about a single client activity.
  */
 class ElementModel extends WlModelAbstract
 {

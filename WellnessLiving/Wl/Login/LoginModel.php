@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Login;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns the profile information for a specific user.
+ * Returns the profile information for a specific user.
  *
  * This endpoint can be used to return public information about a staff member or a user`s image. To obtain the
  * user's full information, you'll need access to the requested user.

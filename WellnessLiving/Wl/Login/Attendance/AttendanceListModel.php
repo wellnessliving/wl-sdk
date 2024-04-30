@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Login\Attendance;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about clients attending a class, appointment, or event session.
+ * Retrieves information about clients attending a class, appointment, or event session.
  */
 class AttendanceListModel extends WlModelAbstract
 {

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Video;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns a list of video categories.
+ * Returns a list of video categories.
  */
 class VideoElementModel extends WlModelAbstract
 {
@@ -364,6 +364,14 @@ class VideoElementModel extends WlModelAbstract
    * @var string
    */
   public $url_video_direct;
+
+  /**
+   * The direct URL of the video for iframe.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_video_frame;
 
   /**
    * The video description.

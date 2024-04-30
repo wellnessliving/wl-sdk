@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Passport\Login\Register;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that confirm the user's email and completes the registration process.
+ * Confirm the user's email and completes the registration process.
  */
 class RegisterConfirmModel extends WlModelAbstract
 {

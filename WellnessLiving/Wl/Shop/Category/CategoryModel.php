@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Shop\Category;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns a list of all categories in a business’s store.
+ * Returns a list of all categories in a business’s store.
  */
 class CategoryModel extends WlModelAbstract
 {

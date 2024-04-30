@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Catalog\Cart;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that displays information about the quantity limit when a promotion (Purchase Option) is added to the cart.
+ * Displays information about the quantity limit when a promotion (Purchase Option) is added to the cart.
  */
 class LimitQuantityModel extends WlModelAbstract
 {

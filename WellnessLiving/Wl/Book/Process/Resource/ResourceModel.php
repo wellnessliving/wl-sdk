@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Book\Process\Resource;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that selects assets for making a booking.
+ * Selects assets for making a booking.
  *
  * @deprecated Use {@link \WellnessLiving\Wl\Book\Process\Resource\Resource54Model} instead.
  */

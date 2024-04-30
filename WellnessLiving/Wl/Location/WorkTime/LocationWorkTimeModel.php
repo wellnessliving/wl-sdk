@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Location\WorkTime;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that saves working hours for a specified location.
+ * Saves working hours for a specified location.
  *
  * Note that to run this endpoint, an authenticated user with specified permissions is required. Otherwise, use a
  * guest account during the new business registration process (see {@link \WellnessLiving\Wl\Business\BusinessModel::sessionKey()}).

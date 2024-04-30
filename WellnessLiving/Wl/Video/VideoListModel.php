@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Video;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns a list of videos.
+ * Returns a list of videos.
  */
 class VideoListModel extends WlModelAbstract
 {

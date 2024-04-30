@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Book\Process;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that performs the booking wizard steps.
+ * Performs the booking wizard steps.
  *
  * @deprecated Use {@link \WellnessLiving\Wl\Book\Process\Process54Model} instead.
  */

@@ -2,15 +2,15 @@
 
 namespace WellnessLiving\Config;
 
-use WellnessLiving\WlRegionSid;
+use WellnessLiving\Wl\WlRegionSid;
 
 /**
- * Base class for all testing configurations.
+ * Base class for Sandbox configurations.
  *
  * When creating an instance of a configuration class, the value of the <var>id_region</var> argument
  * affects the selection of the testing branch:
- * * <var>id_region</var>={@link \WellnessLiving\WlRegionSid::AP_SOUTHEAST_2} - Trunk branch;
- * * <var>id_region</var>={@link \WellnessLiving\WlRegionSid::US_EAST_1} - Staging branch.
+ * * <var>id_region</var>={@link \WellnessLiving\WlRegionSid::AP_SOUTHEAST_2} - Trunk branch (Demo data center);
+ * * <var>id_region</var>={@link \WellnessLiving\WlRegionSid::US_EAST_1} - Stable branch (Staging data center).
  */
 abstract class WlConfigDeveloper extends WlConfigAbstract
 {
@@ -37,6 +37,11 @@ abstract class WlConfigDeveloper extends WlConfigAbstract
     WlRegionSid::AP_SOUTHEAST_2 => 'https://demo.wellnessliving.com/',
     WlRegionSid::US_EAST_1 => 'https://staging.wellnessliving.com/',
   ];
+
+  /**
+   * @inheritDoc
+   */
+  const URL_EDGE='https://edge.sandbox.wellnessliving.com/';
 }
 
 ?>

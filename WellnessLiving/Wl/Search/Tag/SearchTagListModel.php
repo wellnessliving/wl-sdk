@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Search\Tag;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns a list of all existing search tags in the system.
+ * Returns a list of all existing search tags in the system.
  *
  * Search tags can be used for quick searches between businesses and services (mainly in the directories).
  */

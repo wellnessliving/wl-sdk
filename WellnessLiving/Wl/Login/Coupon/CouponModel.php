@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Login\Coupon;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about a gift card (also referred to as the coupon code).
+ * Retrieves information about a gift card (also referred to as the coupon code).
  */
 class CouponModel extends WlModelAbstract
 {

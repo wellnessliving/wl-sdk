@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\User\Info;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves information about a WellnessLiving user.
+ * Retrieves information about a WellnessLiving user.
  */
 class UserInfoModel extends WlModelAbstract
 {
@@ -25,6 +25,76 @@ class UserInfoModel extends WlModelAbstract
    * @var array
    */
   public $a_photo;
+
+  /**
+   * List of user's data.
+   *
+   * <dl>
+   *   <dt>array <var>a_photo</var></dt>
+   *   <dd>Information about the user's photo.</dd>
+   *   <dt>string <var>dt_add</var></dt>
+   *   <dd>The date the user was added, given in UTC time.</dd>
+   *   <dt>string <var>dt_birth</var></dt>
+   *   <dd>
+   *     The user's birthday. This will be `null` if the birthday isn't set yet.
+   *   </dd>
+   *   <dt>int <var>id_gender</var></dt>
+   *   <dd>The ID of the user's gender. One of the {@link \AGenderSid} constants.</dd>
+   *   <dt>bool <var>is_customer_new</var></dt>
+   *   <dd>
+   *     This will be `true` if the user has never made purchases or reservations in this business.
+   *     Otherwise, this will be `false`.
+   *   </dd>
+   *   <dt>bool <var>is_traveller</var></dt>
+   *   <dd>
+   *     This will be `true` if the user is a traveler. A traveler is someone whose home location isn't the current location
+   *     in the Enterprise business.
+   *   </dd>
+   *   <dt>string <var>k_business</var></dt>
+   *   <dd>
+   *     The key of the business.
+   *     This may be empty if system-wide information is needed.
+   *   </dd>
+   *   <dt>string <var>k_login_type</var></dt>
+   *   <dd>The key of the login type. The login type describes the user's client type in this business.</dd>
+   *   <dt>string <var>s_first_name</var></dt>
+   *   <dd>The user's first name.</dd>
+   *   <dt>string <var>s_last_name</var></dt>
+   *   <dd>The user's last name.</dd>
+   *   <dt>string <var>s_mail</var></dt>
+   *   <dd>The user's email address.</dd>
+   *   <dt>string <var>s_member</var></dt>
+   *   <dd>
+   *     The user's member ID in the business. Also referred to as the client ID in the client's profile. This value
+   *     is set by the business and separate from the <var>uid</var> value.
+   *   </dd>
+   *   <dt>string <var>s_phone</var></dt>
+   *   <dd>
+   *     The user's phone number.
+   *   </dd>
+   *   <dt>string <var>s_phone_home</var></dt>
+   *   <dd>The user's home phone number.</dd>
+   *   <dt>string <var>s_phone_work</var></dt>
+   *   <dd>The user's work phone number.</dd>
+   *   <dt>string <var>uid</var></dt>
+   *   <dd>The key of the user.</dd>
+   *   <dt>string <var>url_photo</var></dt>
+   *   <dd>The URL for the user's photo.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array[]
+   */
+  public $a_result_list;
+
+  /**
+   * A list of user keys.
+   *
+   * @get get
+   * @var string[]
+   * @see \PassportLoginSql
+   */
+  public $a_user_list;
 
   /**
    * The date the user was added, given in UTC time.
@@ -131,7 +201,7 @@ class UserInfoModel extends WlModelAbstract
   /**
    * The key of the user.
    *
-   * @get get
+   * @get get,result
    * @var string
    */
   public $uid = '0';

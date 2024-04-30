@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Tag;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets tags for a business.
+ * Gets tags for a business.
  */
 class TagListModel extends WlModelAbstract
 {

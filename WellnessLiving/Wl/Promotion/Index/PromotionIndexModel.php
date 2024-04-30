@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Promotion\Index;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets a list of introductory promotion offers of a specified type available at a given location.
+ * Gets a list of introductory promotion offers of a specified type available at a given location.
  */
 class PromotionIndexModel extends WlModelAbstract
 {
@@ -236,7 +236,7 @@ class PromotionIndexModel extends WlModelAbstract
    *     int <var>text_program</var>
    *   </dt>
    *   <dd>
-   *     THe localized promotion program name corresponding to the value of <var>id_program</var>.
+   *     The localized promotion program name corresponding to the value of <var>id_program</var>.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>

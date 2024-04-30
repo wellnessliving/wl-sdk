@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Coupon\CouponList;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves a list of gift cards.
+ * Retrieves a list of gift cards.
  */
 class ListModel extends WlModelAbstract
 {

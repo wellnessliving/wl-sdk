@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Request\Api;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets a secret key for request signing.
+ * Gets a secret key for request signing.
  * This is required for a CORS request.
  *
  * A request to this point must be signed as an ordinary request from the SDK using transient and persistent cookies.

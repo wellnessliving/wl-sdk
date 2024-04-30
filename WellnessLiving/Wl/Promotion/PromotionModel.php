@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Promotion;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets promotions for the specified business and promotion keys.
+ * Gets promotions for the specified business and promotion keys.
  */
 class PromotionModel extends WlModelAbstract
 {

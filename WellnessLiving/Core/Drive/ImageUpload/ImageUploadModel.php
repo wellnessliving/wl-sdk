@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Drive\ImageUpload;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that performs the final action to an uploaded image.
+ * Performs the final action to an uploaded image.
  * Images are uploaded using {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadTemporaryModel}.
  */
 class ImageUploadModel extends WlModelAbstract

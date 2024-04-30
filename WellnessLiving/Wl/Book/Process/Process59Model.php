@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Book\Process;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that performs the booking wizard steps.
+ * Performs the booking wizard steps.
  *
  * This endpoint includes changes to the list of steps if the service is already booked for the currently selected client,
  * and if {@link Process59Model::$is_family_relation_book} is set to `true`.

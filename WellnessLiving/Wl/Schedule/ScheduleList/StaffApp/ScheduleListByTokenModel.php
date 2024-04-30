@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Schedule\ScheduleList\StaffApp;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns information about a business schedule for a specified date.
+ * Returns information about a business schedule for a specified date.
  * Version of {@link \WellnessLiving\Wl\Schedule\ScheduleList\StaffApp\ScheduleListModel} for access validation by security token.
  */
 class ScheduleListByTokenModel extends WlModelAbstract

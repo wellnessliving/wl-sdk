@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Video\Tag;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves, changes, or deletes a video tag.
+ * Retrieves, changes, or deletes a video tag.
  */
 class TagModel extends WlModelAbstract
 {

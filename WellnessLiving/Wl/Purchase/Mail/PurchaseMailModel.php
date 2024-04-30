@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Purchase\Mail;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that emails a receipt for a purchase.
+ * Emails a receipt for a purchase.
  */
 class PurchaseMailModel extends WlModelAbstract
 {

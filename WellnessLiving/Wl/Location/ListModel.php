@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Location;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that returns information for all locations belonging to a business.
+ * Returns information for all locations belonging to a business.
  */
 class ListModel extends WlModelAbstract
 {

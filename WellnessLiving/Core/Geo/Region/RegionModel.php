@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Geo\Region;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that gets a list of regions for a specified country or all countries.
+ * Gets a list of regions for a specified country or all countries.
  * A region refers to a jurisdiction like a state, province, or territory.
  */
 class RegionModel extends WlModelAbstract

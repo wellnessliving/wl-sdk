@@ -6,7 +6,7 @@ use WellnessLiving\Wl\Profile\Edit\EditModel;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that checks if a user's email address is already used or changes a user’s login email address.
+ * Checks if a user's email address is already used or changes a user’s login email address.
  *
  * This endpoint is rate limited. If the rate limit is exceeded, it won't return user information.
  *

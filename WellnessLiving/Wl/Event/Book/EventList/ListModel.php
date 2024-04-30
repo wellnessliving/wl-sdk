@@ -6,7 +6,7 @@ use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that retrieves a list of events for a given class tab.
+ * Retrieves a list of events for a given class tab.
  */
 class ListModel extends WlModelAbstract
 {

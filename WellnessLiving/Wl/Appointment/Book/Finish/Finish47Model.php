@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Finish;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * An endpoint that completes an appointment booking.
+ * Completes an appointment booking.
  */
 class Finish47Model extends WlModelAbstract
 {
