@@ -32,7 +32,7 @@ abstract class WlPrivilegeSid
   /**
    * Edit appointment schedule.
    *
-   * @deprecated {@link WlPrivilegeSid::SCHEDULE_FUTURE_APPOINTMENT} and {@link WlPrivilegeSid::SCHEDULE_PAST_APPOINTMENT} are used now.
+   * @deprecated Use instead {@link WlPrivilegeSid::SCHEDULE_FUTURE_APPOINTMENT} and {@link WlPrivilegeSid::SCHEDULE_PAST_APPOINTMENT}.
    */
   const APPOINTMENT_PERIOD = 51;
 
@@ -159,7 +159,7 @@ abstract class WlPrivilegeSid
   /**
    * Edit class schedule.
    *
-   * @deprecated {@link WlPrivilegeSid::SCHEDULE_FUTURE_CLASS} and {@link WlPrivilegeSid::SCHEDULE_PAST_CLASS} are used now.
+   * @deprecated Use instead {@link WlPrivilegeSid::SCHEDULE_FUTURE_CLASS} and {@link WlPrivilegeSid::SCHEDULE_PAST_CLASS}.
    */
   const CLASS_PERIOD = 5;
 
