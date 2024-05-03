@@ -7,7 +7,7 @@ namespace WellnessLiving;
  *
  * Use class {@link \WellnessLiving\Wl\WlRegionSid} instead.
  */
-class WlRegionSid extends WellnessLiving\Wl\WlRegionSid
+class WlRegionSid extends \WellnessLiving\Wl\WlRegionSid
 {
 }
 

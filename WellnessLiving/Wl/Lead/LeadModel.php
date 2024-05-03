@@ -37,7 +37,7 @@ class LeadModel extends WlModelAbstract
    * </dl>
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_field_data = [];
 

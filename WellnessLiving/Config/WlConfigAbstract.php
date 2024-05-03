@@ -58,9 +58,9 @@ abstract class WlConfigAbstract
    *
    * `null` to disable handling of global cookies.
    *
-   * @see WlConfigProduction
-   * @see WlConfigDeveloper
    * @var string|null
+   * @see WlConfigDeveloper
+   * @see WlConfigProduction
    */
   const COOKIE_GLOBAL=null;
 
@@ -74,9 +74,9 @@ abstract class WlConfigAbstract
    * The values are the names of transient cookies for these regions.
    * E.g. ['us-east-1' => 'sp', 'ap-southeast-2' => 'dp'].
    *
-   * @see WlConfigProduction
-   * @see WlConfigDeveloper
    * @var string[]|null
+   * @see WlConfigDeveloper
+   * @see WlConfigProduction
    */
   protected static $COOKIE_PERSISTENT=null;
 
@@ -90,9 +90,9 @@ abstract class WlConfigAbstract
    * The values are the names of transient cookies for these regions.
    * E.g. ['us-east-1' => 'st', 'ap-southeast-2' => 'dt'].
    *
-   * @see WlConfigProduction
-   * @see WlConfigDeveloper
    * @var string[]|null
+   * @see WlConfigDeveloper
+   * @see WlConfigProduction
    */
   protected static $COOKIE_TRANSIENT=null;
 
@@ -106,10 +106,9 @@ abstract class WlConfigAbstract
    * The values are the URLs of the API endpoints for these regions.
    * E.g. ['us-east-1' => 'https://api.wellnessliving.com', 'ap-southeast-2' => 'https://api.wellnessliving.com.au'].
    *
-   *
    * @var string[]|null
-   * @see WlConfigProduction
    * @see WlConfigDeveloper
+   * @see WlConfigProduction
    */
   protected static $REGION_URL=null;
 

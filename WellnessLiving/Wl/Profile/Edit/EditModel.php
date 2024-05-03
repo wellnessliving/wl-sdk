@@ -61,6 +61,16 @@ class EditModel extends WlModelAbstract
   public $a_error_list;
 
   /**
+   * Family relation data for new created user.
+   *
+   * `null` if family relation is not required.
+   *
+   * @post post
+   * @var array|null
+   */
+  public $a_family_relation = null;
+
+  /**
    * Information for user's photo.
    * It is necessary to save simultaneously user and photo in staff member mode.
    *

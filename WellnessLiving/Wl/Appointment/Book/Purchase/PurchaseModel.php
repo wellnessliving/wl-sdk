@@ -429,6 +429,14 @@ class PurchaseModel extends WlModelAbstract
    *  </dd>
    *  <dt>string <var>k_service</var></dt>
    *  <dd>Service key.</dd>
+   *  <dt>string <var>k_timezone</var></dt>
+   *  <dd>
+   *    The timezone key for `dt_date` field.
+   *
+   *    Can be `null` if timezone is not selected.
+   *
+   *    In any case, the timezone will be used if the business allows client timezones.
+   *  </dd>
    * </dl>
    *
    * @get get
@@ -562,9 +570,11 @@ class PurchaseModel extends WlModelAbstract
   public $k_service = '0';
 
   /**
-   * The timezone key.
+   * The timezone key for {@link PurchaseModel::$dt_date}.
    *
-   * This will be `null` if not set yet then use default client timezone.
+   * Can be `null` if timezone is not selected.
+   *
+   * In any case, the timezone will be used if the business allows client timezones.
    *
    * @get get
    * @var string|null

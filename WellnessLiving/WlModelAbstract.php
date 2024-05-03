@@ -391,7 +391,6 @@ class WlModelAbstract
    * @return string[] Variables that must be set in the request URL.
    *   Key is name of the variable, value is its value.
    * @throws WlAssertException In a case of an assertion.
-   *
    */
   protected function requestGetVariables($s_method)
   {

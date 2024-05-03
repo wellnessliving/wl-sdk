@@ -7,7 +7,7 @@ namespace WellnessLiving\Wl\Report;
  *
  * Do not add new reports here. Use New Report Generation instead.
  *
- * Last used ID: 266. -- See comments above.
+ * Last used ID: 267. -- See comments above.
  */
 abstract class WlReportSid
 {
@@ -80,6 +80,11 @@ abstract class WlReportSid
    * Report with list of changes to business account settings.
    */
   const BUSINESS_ACCOUNT_LOG = 248;
+
+  /**
+   * Report with list of changes to business account settings.
+   */
+  const BUSINESS_ACCOUNT_LOG_ALL = 267;
 
   /**
    * Report with the list of all payments from businesses to Wellnessliving Inc.
