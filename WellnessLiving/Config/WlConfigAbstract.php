@@ -165,6 +165,27 @@ abstract class WlConfigAbstract
   const TIMEOUT_READ=600;
 
   /**
+   * URL of the Edge Cache vault.
+   *
+   * @var string|null
+   */
+  const URL_EDGE=null;
+
+  /**
+   * Additional headers to add to all http requests.
+   *
+   * Key is name of the header, case-sensitive.
+   * Value is value of the header.
+   *
+   * **Be attentive!**
+   * If you add data that originates from a user, it must be validated carefully.
+   * Setting values not validated carefully in this property exposes you to HTTP header injection vulnerability.
+   *
+   * @var string[]
+   */
+  public $a_header=[];
+
+  /**
    * ID of a region in which information about this business is stored.
    * One of {@link WlRegionSid} constants.
    *
@@ -309,6 +330,16 @@ abstract class WlConfigAbstract
   public function url()
   {
     return static::$REGION_URL[$this->id_region];
+  }
+
+  /**
+   * Returns URL of the Edge Cache vault.
+   *
+   * @return string URL of the Edge Cache vault.
+   */
+  public function urlEdge()
+  {
+    return static::URL_EDGE;
   }
 }
 

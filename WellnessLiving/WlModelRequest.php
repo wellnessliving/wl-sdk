@@ -133,7 +133,7 @@ class WlModelRequest
     $a_url = parse_url($this->url);
     $a_signature = [
       'a_header' => [
-        'User-Agent' => $this->a_header_request['User-Agent']
+        'user-agent' => $this->a_header_request['User-Agent']
       ],
       'a_variable' => $this->a_variable,
       'dt_time' => $this->dt_request,
@@ -147,10 +147,14 @@ class WlModelRequest
       's_resource' => $this->s_resource,
     ];
 
-    if(!empty($this->a_header_request['X-Core-Spa-Device']))
-      $a_signature['a_header']['X-Core-Spa-Device']=$this->a_header_request['X-Core-Spa-Device'];
+    foreach($this->o_config->a_header as $s_header => $s_value)
+    {
+      if($this->a_header_request[$s_header])
+        $a_signature['a_header'][strtolower($s_header)]=$this->a_header_request[$s_header];
+    }
+    ksort($a_signature['a_header']);
 
-    $this->a_header_request['Authorization'] = '20150518,'.$s_config_class::AUTHORIZE_ID.','.strtolower(implode(',',array_keys($a_signature['a_header']))).','.WlModelRequest::signatureCompute($a_signature);
+    $this->a_header_request['Authorization'] = '20150518,'.$s_config_class::AUTHORIZE_ID.','.strtolower(implode(';',array_keys($a_signature['a_header']))).','.WlModelRequest::signatureCompute($a_signature);
   }
 
   /**

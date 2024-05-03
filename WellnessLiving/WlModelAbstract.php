@@ -10,6 +10,16 @@ use WellnessLiving\Config\WlConfigAbstract;
 class WlModelAbstract
 {
   /**
+   * Whether `Authorization:` header with signature must be added to the request.
+   *
+   * `true` to add `Authorization:` header with signature to the request.
+   * `false` not to add this header.
+   *
+   * @var bool
+   */
+  const SIGNATURE = true;
+
+  /**
    * Cache for result of {@link WlModelAbstract::fieldConfig()}.
    *
    * Key is name of the class. Value is result of {@link WlModelAbstract::fieldConfig()}.
@@ -83,6 +93,17 @@ class WlModelAbstract
     unset($x_value);
 
     return $is_file;
+  }
+
+  /**
+   * Returns URL to access API endpoint.
+   *
+   * @return string URL to access API endpoint.
+   * @throws WlAssertException In a case of an assertion.
+   */
+  protected function apiUrl()
+  {
+    return $this->_o_config->url().$this->resource();
   }
 
   /**
@@ -166,7 +187,7 @@ class WlModelAbstract
    *   </dl>
    * @throws WlAssertException In a case of an assertion.
    */
-  private static function fieldConfig()
+  protected static function fieldConfig()
   {
     $s_class = get_called_class();
     if(isset(WlModelAbstract::$_a_field[$s_class]))
@@ -364,6 +385,33 @@ class WlModelAbstract
   }
 
   /**
+   * Collects variables that must be set in the request URL.
+   *
+   * @param string $s_method Name of the method for which the variables must be prepared (lowercase).
+   * @return string[] Variables that must be set in the request URL.
+   *   Key is name of the variable, value is its value.
+   * @throws WlAssertException In a case of an assertion.
+   *
+   */
+  protected function requestGetVariables($s_method)
+  {
+    $a_field=$this::fieldConfig();
+    $a_get=[];
+    foreach($a_field as $s_field => $a_method)
+    {
+      if(empty($a_method[$s_method])||empty($a_method[$s_method]['get']))
+        continue;
+      $x_value=$this->$s_field;
+      if($x_value===null)
+        continue;
+
+      $a_get[$s_field] = $this->normalizeValue($s_field,$x_value);
+    }
+
+    return $a_get;
+  }
+
+  /**
    * Prepares the Curl request.
    *
    * @param string $s_method Method of the request. One of the next values: 'get', 'post', 'put', 'delete'.
@@ -387,7 +435,10 @@ class WlModelAbstract
 
     $o_request->o_config = $this->_o_config;
     $o_request->s_resource = $this->resource();
-    $o_request->url = $this->_o_config->url().$o_request->s_resource;
+    $o_request->url = $this->apiUrl();
+
+    foreach($this->_o_config->a_header as $s_header => $s_value)
+      $o_request->a_header_request[$s_header] = $s_value;
 
     $o_request->dt_request = WlTool::dateNowMysql();
     $o_request->a_header_request['Date'] = WlTool::dateMysqlHttp($o_request->dt_request);
@@ -408,7 +459,6 @@ class WlModelAbstract
     $a_field=$this::fieldConfig();
 
     $a_post=[];
-    $a_get=[];
     $a_variable=[];
     foreach($a_field as $s_field => $a_method)
     {
@@ -422,7 +472,6 @@ class WlModelAbstract
 
       if(!empty($a_method[$s_method]['get']))
       {
-        $a_get[$s_field] = $x_value;
         $a_variable[$s_field]=$x_value;
       }
       elseif(!empty($a_method[$s_method]['post']))
@@ -433,6 +482,8 @@ class WlModelAbstract
     }
 
     $o_request->a_variable = $a_variable;
+
+    $a_get=$this->requestGetVariables($s_method);
     if(count($a_get))
       $o_request->url.='?'.http_build_query($a_get);
 
@@ -455,7 +506,8 @@ class WlModelAbstract
     ]);
     $o_request->o_cookie = $this->_o_cookie;
 
-    $o_request->authorize();
+    if($this::SIGNATURE)
+      $o_request->authorize();
 
     $s_cookie = $this->_o_cookie->toHeader();
     if($s_cookie)
@@ -521,7 +573,22 @@ class WlModelAbstract
     curl_setopt($r_curl,CURLOPT_TIMEOUT,$s_config_class::TIMEOUT_READ);
     curl_setopt($r_curl,CURLOPT_VERBOSE,true);
     curl_setopt($r_curl,CURLINFO_HEADER_OUT,true);
-    curl_setopt($r_curl,CURLOPT_FOLLOWLOCATION,true);
+
+    // The data is stored compressed in the Edge Cache.
+    curl_setopt($r_curl,CURLOPT_ENCODING, '');
+
+    // CURLOPT_FOLLOWLOCATION was added for the following reason.
+    //   There sometimes occur redirects, and it was unclear where it redirects.
+    //   They decided to allow the redirects to see where it leads.
+    //   Notice: Use \WellnessLiving\WlModelRequest::httpProtocol() to get full HTTP protocol
+    //   (HTTP request and HTTP response) to see where the redirect leads.
+    // But there are problems with this configuration setting:
+    // 1. It is not expected that The Thoth backend will return a redirect.
+    //    If it returns a redirect, this must be investigated and fixed.
+    // 2. After the redirect, `Authorization` header is not passed.
+    //    This leads to that no requests may be processed after the redirect.
+    //
+    // curl_setopt($r_curl,CURLOPT_FOLLOWLOCATION,true);
 
     return [
       'a_field' => $a_field,
