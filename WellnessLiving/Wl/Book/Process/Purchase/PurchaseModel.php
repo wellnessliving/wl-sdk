@@ -22,7 +22,21 @@ use WellnessLiving\Wl\WlProgramTypeSid;
 class PurchaseModel extends WlModelAbstract
 {
   /**
+   * Data about the login prize which can be used to pay for service.
+   * <dl>
+   *   <dt>int <var>i_count</var></dt><dd>Login prize remaining quantity.</dd>
+   *   <dt>string <var>k_login_prize</var></dt><dd>Key of login prize.</dd>
+   *   <dt>string <var>text_description</var></dt><dd>User friendly login prize description.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array
+   */
+  public $a_login_prize = [];
+
+  /**
    * A list of the client`s login promotions that can be applied to a given service.
+   * Each element has the following fields:
    * <dl>
    *   <dt>array <var>a_login_promotion_info</var></dt>
    *   <dd>
@@ -98,7 +112,7 @@ class PurchaseModel extends WlModelAbstract
 
   /**
    * A list of Purchase Options that are available for the session(s) being booked. Keys refer to unique string IDs, and
-   * values refer arrays with the next keys:
+   * values refer arrays with the next fields:
    * <dl>
    *   <dt>
    *     array[] <var>a_installment_template</var>.
@@ -351,6 +365,20 @@ class PurchaseModel extends WlModelAbstract
   public $a_repeat = null;
 
   /**
+   * List of redeemable prizes which can be used to pay for service.
+   * Each element has the following fields:
+   * <dl>
+   *   <dt>int <var>i_score</var></dt><dd>Prize price in points.</dd>
+   *   <dt>string <var>k_reward_prize</var></dt><dd>Key of redeemable prize..</dd>
+   *   <dt>string <var>text_description</var></dt><dd>User friendly prize description.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array[]
+   */
+  public $a_reward_prize = [];
+
+  /**
    * The list of sessions being booked.
    *
    * Keys refer to class period keys.
@@ -363,9 +391,20 @@ class PurchaseModel extends WlModelAbstract
 
   /**
    * The list of session passes that might be used in booking process.
+   *  Each element has the following fields:
+   *  <dl>
+   *    <dt>int <var>i_remain</var></dt>
+   *    <dd>Number of remaining visits on session pass.</dd>
+   *    <dt>int <var>k_session_pass</var></dt>
+   *    <dd>Session pass key.</dd>
+   *    <dt>int <var>id_purchase_item</var></dt>
+   *    <dd>Type of the session pass purchase. One of {@link WlPurchaseItemSid} constants.</dd>
+   *    <dt>int <var>s_title</var></dt>
+   *    <dd>Session pass title.</dd>
+   *  </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
   public $a_session_pass = [];
 

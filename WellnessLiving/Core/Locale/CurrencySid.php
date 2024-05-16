@@ -44,6 +44,11 @@ abstract class CurrencySid
   const GBP = 3;
 
   /**
+   * Kuwaiti dinar.
+   */
+  const KWD = 14;
+
+  /**
    * Cayman Islands dollar.
    */
   const KYD = 5;

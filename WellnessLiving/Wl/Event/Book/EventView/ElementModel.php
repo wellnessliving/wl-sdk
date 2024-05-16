@@ -156,6 +156,13 @@ class ElementModel extends WlModelAbstract
    *     The local date without time.
    *   </dd>
    *   <dt>
+   *     bool <var>hide_location</var>
+   *   </dt>
+   *   <dd>
+   *     `true` if the location should be hidden in the event details. Hide if the event is virtual or if the business
+   *     only has one location. `false` otherwise.
+   *   </dd>
+   *   <dt>
    *     int <var>i_capacity</var>
    *   </dt>
    *   <dd>

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 199.
+ * Last Used ID: 200.
  */
 abstract class WlPrivilegeSid
 {
@@ -384,6 +384,11 @@ abstract class WlPrivilegeSid
    * Access to send mails and sms to clients.
    */
   const MAIL_SEND = 75;
+
+  /**
+   * Manage announcements.
+   */
+  const MANAGE_ANNOUNCEMENT = 200;
 
   /**
    * Only the staff roles with this permission provided are able to edit/add/delete the business billing information.
