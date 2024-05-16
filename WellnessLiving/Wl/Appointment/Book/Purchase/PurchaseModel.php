@@ -483,6 +483,14 @@ class PurchaseModel extends WlModelAbstract
    */
   public $i_width = 0;
 
+    /**
+     * The mode type. One of the {@link ModeSid} constants.
+     *
+     * @get get
+     * @var int
+     */
+    public $id_mode = 0;
+
   /**
    * `true` - get all Purchase Options suitable for appointment.
    * `false` - get only Purchase Options available for the client.
