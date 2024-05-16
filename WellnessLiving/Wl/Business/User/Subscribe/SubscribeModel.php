@@ -22,7 +22,7 @@ class SubscribeModel extends WlModelAbstract
    * @put get
    * @var bool|null
    */
-  public $is_subscribe;
+  public $is_subscribe = null;
 
   /**
    * Information about the user`s subscription.
@@ -37,7 +37,7 @@ class SubscribeModel extends WlModelAbstract
    * @put get
    * @var bool|null
    */
-  public $is_subscribe_sms;
+  public $is_subscribe_sms = null;
 
   /**
    * The business key used for users to subscribe, unsubscribe, and receive information about the status of the subscription.

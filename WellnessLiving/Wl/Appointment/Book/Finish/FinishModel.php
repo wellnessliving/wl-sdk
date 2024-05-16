@@ -2,21 +2,29 @@
 
 namespace WellnessLiving\Wl\Appointment\Book\Finish;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
+use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Appointment\Book\Question\QuestionModel;
+use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
+use WellnessLiving\Wl\Classes\Tab\TabSid;
+use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Completes the booking process for a service.
  *
  * This endpoint can be used with an existing client by specifying their UID. It can also be used to create a new
- * client by specifying user details in {@link \WellnessLiving\Wl\Appointment\Book\Finish\FinishModel::$a_user} and omitting any UID.
+ * client by specifying user details in {@link FinishModel::$a_user} and omitting any UID.
  * This endpoint can be accessed anonymously without authentication, but only when creating clients.
  *
- * @deprecated Use {@link \WellnessLiving\Wl\Appointment\Book\Finish\Finish47Model} instead.
+ * @deprecated Use {@link Finish47Model} instead.
  */
 class FinishModel extends WlModelAbstract
 {
   /**
-   * A list of answers for the questions from {@link \WellnessLiving\Wl\Appointment\Book\Question\QuestionModel::$a_question}.
+   * A list of answers for the questions from {@link QuestionModel::$a_question}.
    * Keys refer to hashes of the questions. Values refer to answers for the questions.
    *
    * @post post
@@ -26,7 +34,7 @@ class FinishModel extends WlModelAbstract
 
   /**
    * The keys of the booked appointments.
-   * Every element has the next key:
+   * Every element has key:
    * <dl>
    *   <dt>
    *     string <var>k_appointment</var>
@@ -64,7 +72,7 @@ class FinishModel extends WlModelAbstract
    *         int[] [<var>a_week</var>]
    *       </dt>
    *       <dd>
-   *         The days of week when appointment repeats. One of the {@link \WellnessLiving\Core\a\ADateWeekSid} constants.
+   *         The days of week when appointment repeats. One of the {@link ADateWeekSid} constants.
    *         This will be empty if the appointment doesn't repeat weekly.
    *       </dd>
    *       <dt>
@@ -90,7 +98,7 @@ class FinishModel extends WlModelAbstract
    *         int <var>id_period</var>
    *       </dt>
    *       <dd>
-   *         The measurement unit of <tt>i_period</tt>. One of the {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *         The measurement unit of <tt>i_period</tt>. One of the {@link ADurationSid} constants.
    *       </dd>
    *       <dt>
    *         bool [<var>is_month</var>]
@@ -140,13 +148,13 @@ class FinishModel extends WlModelAbstract
    *     int <var>id_class_tab</var>
    *   </dt>
    *   <dd>
-   *     The booking service type. One of the {@link \WellnessLiving\Wl\Classes\Tab\TabSid} constants.
+   *     The booking service type. One of the {@link TabSid} constants.
    *   </dd>
    *   <dt>
    *     int [<var>id_gender_staff</var>]
    *   </dt>
    *   <dd>
-   *     The gender of the staff member conducting the appointment. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
+   *     The gender of the staff member conducting the appointment. One of the {@link AGenderSid} constants.
    *     Specify this for appointment bookings only.
    *   </dd>
    *   <dt>
@@ -161,12 +169,14 @@ class FinishModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The asset booking. Specify this for separate asset bookings only.
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_service</var>]
    *   </dt>
    *   <dd>
    *     The appointment booking. Specify this for appointment bookings only.
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_staff</var>]
@@ -174,6 +184,7 @@ class FinishModel extends WlModelAbstract
    *   <dd>
    *     The staff member conducting the appointment.
    *     Specify this for appointment bookings only.
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_staff_date</var>]
@@ -183,6 +194,7 @@ class FinishModel extends WlModelAbstract
    *     The difference between this an <var>k_staff</var> is that this value must be set only in cases
    *     when you want to add a customer to an appointment that already exists.
    *     Specify this for appointment bookings only.
+   *
    *   </dd>
    *   <dt>string [<var>m_tip_appointment</var>]</dt>
    *   <dd>The amount of selected tips.</dd>
@@ -210,17 +222,17 @@ class FinishModel extends WlModelAbstract
   public $a_pay_form = [];
 
   /**
-   * Data required for payment with the following structure:<dl>
+   * Data required for payment. Has next structure:<dl>
    *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>The type of the purchase item. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.</dd>
+   *   <dd>Type of the purchase item. One of the {@link WlPurchaseItemSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
-   *   <dd>The promotion key or appointment key, which depends on <var>id_purchase_item</var> of this array.</dd>
+   *   <dd>Promotion key or appointment key. Depends on <var>id_purchase_item</var> of this array.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
-   *   <dd>The login promotion key.</dd>
+   *   <dd>Login promotion key.</dd>
    *   <dt>string <var>k_session_pass</var></dt>
-   *   <dd>The session pass key.</dd>
+   *   <dd>Session pass key.</dd>
    *   <dt>string <var>text_discount_code</var></dt>
-   *   <dd>The discount code.</dd>
+   *   <dd>Discount code.</dd>
    * </dl>
    *
    * @post post
@@ -230,7 +242,7 @@ class FinishModel extends WlModelAbstract
 
   /**
    * The purchase item keys.
-   * This will be empty if no purchases are made for the appointment booking.
+   * Empty if no purchases are made for the appointment booking.
    *
    * @post post
    * @var string[]
@@ -248,8 +260,8 @@ class FinishModel extends WlModelAbstract
   public $a_quiz_response = [];
 
   /**
-   * A list of user keys to book appointments with.
-   * Empty values represent walk-ins.
+   * List of user keys to book appointments.
+   * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
    * @post get
@@ -258,20 +270,20 @@ class FinishModel extends WlModelAbstract
   public $a_uid = [];
 
   /**
-   * Data used to create a new user.
+   * Data to create new user.
    * Specify this if <var>$uid</var> is empty.
-   * This must contain the following keys:
+   * Must contain the following keys:
    * <dl>
    *   <dt>string[] <var>a_note</var></dt>
-   *   <dd>A list of notes to add for the user.</dd>
+   *   <dd>List of notes to add to user.</dd>
    *   <dt>string <var>text_mail</var></dt>
-   *   <dd>The user's email address.</dd>
+   *   <dd>Mail.</dd>
    *   <dt>string <var>text_name_first</var></dt>
-   *   <dd>The user's first name.</dd>
+   *   <dd>First name.</dd>
    *   <dt>string <var>text_name_last</var></dt>
-   *   <dd>The user's last name.</dd>
+   *   <dd>Last name.</dd>
    *   <dt>string <var>text_phone</var></dt>
-   *   <dd>The user's phone number.</dd>
+   *   <dd>Phone.</dd>
    * </dl>
    *
    * @post get
@@ -288,7 +300,7 @@ class FinishModel extends WlModelAbstract
   public $a_visit;
 
   /**
-   * The booking mode ID. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The booking mode ID. One of the {@link ModeSid} constants.
    *
    * @post post
    * @var int
@@ -296,7 +308,7 @@ class FinishModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * The payment type ID for the appointment. One of the {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid} constants.
+   * The payment type ID for the appointment. One of the {@link WlAppointmentPaySid} constants.
    *
    * @post get
    * @var int
@@ -348,7 +360,7 @@ class FinishModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The location key.
+   * Location to show available appointment booking schedule.
    *
    * @get get,result
    * @post get
@@ -357,15 +369,14 @@ class FinishModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
-   * Key of time zone.
+   * Key of timezone.
    *
-   * This will be `null` if not set yet. In these cases, the client's default time zone from {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}
-   * will be used.
+   * `null` if not set then use default timezone client.
    *
    * @post get
    * @var null|string
    */
-  public $k_timezone;
+  public $k_timezone = null;
 
   /**
    * The sum paid for a deposit.
@@ -376,7 +387,7 @@ class FinishModel extends WlModelAbstract
   public $m_pay = '0';
 
   /**
-   * The wizard's unique identifier.
+   * Unique identifier of the wizard.
    *
    * @post post
    * @var string

@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Visit;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Views or changes the visit status.
@@ -65,18 +66,18 @@ class VisitStatusModel extends WlModelAbstract
 
   /**
    * The source of the visit or the visit change.
-   * One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * One of the {@link ModeSid} constants.
    * If you're unsure about the value to use, keep the default value.
    *
    * @get result
    * @post post
    * @var int
    */
-  public $id_mode = \WellnessLiving\Wl\Mode\ModeSid::SPA_BACKEND;
+  public $id_mode = 0;
 
   /**
    * The status of the visit.
-   * One of the {@link \WellnessLiving\Wl\Visit\VisitSid} constants.
+   * One of the {@link WlVisitSid} constants.
    *
    * @get result
    * @post post
@@ -85,14 +86,14 @@ class VisitStatusModel extends WlModelAbstract
   public $id_visit = '0';
 
   /**
-   * The status of the visit from which the transition is made. One of the {@link \WellnessLiving\Wl\Visit\WlVisitSid} constants.
+   * The status of the visit from which the transition is made. One of the {@link WlVisitSid} constants.
    *
    * If the visit status is passed, it will be used to check with the actual status in the database.
    * If `null`, the visit hasn't yet passed.
    *
    * If the status of this parameter is out of date, the API call will refresh it.
    *
-   * @post post
+   * @post post,error
    * @var ?string
    */
   public $id_visit_from = null;
@@ -170,7 +171,7 @@ class VisitStatusModel extends WlModelAbstract
   /**
    * The time zone key.
    *
-   * This will be `null` if not set yet (use the client's default time zone).
+   * `null` if not set then use default timezone client.
    *
    * @get get
    * @var null|string

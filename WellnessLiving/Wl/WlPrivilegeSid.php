@@ -1,10 +1,13 @@
 <?php
 
 namespace WellnessLiving\Wl;
+
 /**
  * Wellnessliving-wide privileges.
+ *
+ * Last Used ID: 200.
  */
-class WlPrivilegeSid
+abstract class WlPrivilegeSid
 {
   /**
    * View banner alert message on dashboard.
@@ -29,7 +32,7 @@ class WlPrivilegeSid
   /**
    * Edit appointment schedule.
    *
-   * @deprecated {@link \WlPrivilegeSid::SCHEDULE_FUTURE_APPOINTMENT} and {@link \WlPrivilegeSid::SCHEDULE_PAST_APPOINTMENT} are used now.
+   * @deprecated Use instead {@link WlPrivilegeSid::SCHEDULE_FUTURE_APPOINTMENT} and {@link WlPrivilegeSid::SCHEDULE_PAST_APPOINTMENT}.
    */
   const APPOINTMENT_PERIOD = 51;
 
@@ -156,7 +159,7 @@ class WlPrivilegeSid
   /**
    * Edit class schedule.
    *
-   * @deprecated {@link \WlPrivilegeSid::SCHEDULE_FUTURE_CLASS} and {@link \WlPrivilegeSid::SCHEDULE_PAST_CLASS} are used now.
+   * @deprecated Use instead {@link WlPrivilegeSid::SCHEDULE_FUTURE_CLASS} and {@link WlPrivilegeSid::SCHEDULE_PAST_CLASS}.
    */
   const CLASS_PERIOD = 5;
 
@@ -226,22 +229,22 @@ class WlPrivilegeSid
   const ENROLLMENT_LOCK_SEARCH = 153;
 
   /**
-   * Allows to manage leaderboard in the FilBuilder addon.
+   * Allows to manage leaderboard in the `FitBuilder` addon.
    */
   const FITBUILDER_LEADERBOARD = 190;
 
   /**
-   * Allows to subscribe to FitBuilder subscription.
+   * Allows to subscribe to `FitBuilder` subscription addon.
    */
   const FITBUILDER_SUBSCRIPTION = 189;
 
   /**
-   * Allows to assign workouts from the FilBuilder addon to different services.
+   * Allows to assign workouts from the `FitBuilder` addon to different services.
    */
   const FITBUILDER_WORKOUT_ASSIGN = 188;
 
   /**
-   * Allows to add, edit and remove workouts in the FilBuilder addon.
+   * Allows to add, edit and remove workouts in the `FitBuilder` addon.
    */
   const FITBUILDER_WORKOUT_MANAGE = 187;
 
@@ -249,6 +252,33 @@ class WlPrivilegeSid
    * Allow Staff members to view/complete forms for clients from any location.
    */
   const FORM_ALL = 177;
+
+  /**
+   * Amend apply to privilege.
+   *
+   * @internal Don't use this privilege directly.
+   */
+  const FORM_AMEND_ACCESS = 198;
+
+  /**
+   * Allow staff members to make modifications to completed forms on the client profile.
+   */
+  const FORM_AMEND_COMPLETED = 194;
+
+  /**
+   * Allow staff members to make modifications to completed forms on the client profile for all clients.
+   */
+  const FORM_AMEND_COMPLETED_ALL = 195;
+
+  /**
+   * Allow staff members to make modifications to completed forms on the client profile for clients at staff location.
+   */
+  const FORM_AMEND_COMPLETED_LOCATION = 196;
+
+  /**
+   * Allow staff members to make modifications to completed forms on the client profile for self clients.
+   */
+  const FORM_AMEND_COMPLETED_MY_CLIENTS = 197;
 
   /**
    * Allow staff members to fill in forms for clients.
@@ -269,6 +299,11 @@ class WlPrivilegeSid
    * Allow Staff members to view/complete forms for clients that belong to the location that they are selected to work at.
    */
   const FORM_MY_LOCATION = 176;
+
+  /**
+   * Allow staff members to delete forms from the client’s profile.
+   */
+  const FORM_RESPONSE_DELETE = 199;
 
   /**
    * Allow staff members to view form responses.
@@ -349,6 +384,11 @@ class WlPrivilegeSid
    * Access to send mails and sms to clients.
    */
   const MAIL_SEND = 75;
+
+  /**
+   * Manage announcements.
+   */
+  const MANAGE_ANNOUNCEMENT = 200;
 
   /**
    * Only the staff roles with this permission provided are able to edit/add/delete the business billing information.
@@ -452,15 +492,11 @@ class WlPrivilegeSid
 
   /**
    * Staff with this role will receive emails about reward prizes.
-   *
-   * @see \RsMailSid::REWARD_PRIZE_STAFF
    */
   const NOTIFICATION_PRIZE_REDEMPTION = 90;
 
   /**
    * Staff with this role will receive the inventory mails.
-   *
-   * @see \RsMailSid::PURCHASE_PRODUCT_INVENTORY
    */
   const NOTIFICATION_PRODUCT_INVENTORY = 77;
 
@@ -476,8 +512,6 @@ class WlPrivilegeSid
 
   /**
    * Staff with this role will receive the sale receipts mails.
-   *
-   * @see \RsMailSid::SALE_STAFF
    */
   const NOTIFICATION_SALE_STAFF = 136;
 
@@ -547,9 +581,14 @@ class WlPrivilegeSid
   const PROFILE_DETAIL = 67;
 
   /**
-   * Manage profile client groups.
+   * Manage profile client groups (only create, delete and rename a group).
    */
   const PROFILE_GROUP_MANAGE = 69;
+
+  /**
+   * Manage client group members (only members, not a group itself).
+   */
+  const PROFILE_GROUP_MEMBER_MANAGE = 191;
 
   /**
    * Manage clients from my location.
@@ -764,11 +803,6 @@ class WlPrivilegeSid
   const STAFF_CLOCK = 32;
 
   /**
-   * Configure pay rates for staff members.
-   */
-  const STAFF_CONFIG_PAY_RATES = 182;
-
-  /**
    * Add, remove, and edit staff profiles.
    */
   const STAFF_EDIT = 14;
@@ -787,6 +821,11 @@ class WlPrivilegeSid
    * Modify pay rates for services.
    */
   const STAFF_MODIFY_RATES_SERVICE = 183;
+
+  /**
+   * Modify the clock-in and clock-out times for your own staff profile.
+   */
+  const STAFF_MY_CLOCK = 192;
 
   /**
    * Add, remove, and edit staff pay rates.

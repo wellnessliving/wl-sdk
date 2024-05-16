@@ -3,6 +3,8 @@
 namespace WellnessLiving\Wl\Lead;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Field\WlFieldGeneralSid;
+use WellnessLiving\Wl\Field\WlFieldTypeSid;
 
 /**
  * Gets information from the Lead Capture widget and saves a new user’s information.
@@ -13,7 +15,7 @@ use WellnessLiving\WlModelAbstract;
  *
  * This endpoint using captcha check.
  *  To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
- *  For this API an action is `1072`.
+ *  For this API an action is {@link LeadCaptcha::CID}.
  */
 class LeadModel extends WlModelAbstract
 {
@@ -35,7 +37,7 @@ class LeadModel extends WlModelAbstract
    * </dl>
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_field_data = [];
 
@@ -59,14 +61,14 @@ class LeadModel extends WlModelAbstract
    *     int <var>id_field_general</var>
    *   </dt>
    *   <dd>
-   *     The type of the general field. This is one of the {@link \WellnessLiving\RsFieldGeneralSid}.
+   *     The type of the general field. This is one of the {@link WlFieldGeneralSid}.
    *     This value is only set if the field is one of the general fields.
    *   </dd>
    *   <dt>
    *     int <var>id_field_type</var>
    *   </dt>
    *   <dd>
-   *     The field type. This is one of the {@link \WellnessLiving\RsFieldTypeSid} constants.
+   *     The field type. This is one of the {@link WlFieldTypeSid} constants.
    *   </dd>
    *   <dt>
    *     bool <var>is_require</var>
@@ -134,8 +136,8 @@ class LeadModel extends WlModelAbstract
 
   /**
    * The characters entered by the lead for the captcha test.
-   * This isn't necessary if the GET method returned an empty {@link \WellnessLiving\Wl\Lead\LeadModel::$url_captcha}.
-   * This field isn't necessary if the GET method returned an empty {@link \WellnessLiving\Wl\Lead\LeadModel::$url_captcha}.
+   * This isn't necessary if the GET method returned an empty {@link LeadModel::$url_captcha}.
+   * This field isn't necessary if the GET method returned an empty {@link LeadModel::$url_captcha}.
    *
    * @post post
    * @var string

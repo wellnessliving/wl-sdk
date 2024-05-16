@@ -5,9 +5,9 @@ namespace WellnessLiving\Core\Locale;
 /**
  * A list of locales.
  *
- * Last used ID: 12
+ * Last used ID: 14
  */
-class LocaleSid
+abstract class LocaleSid
 {
   /**
    * Australia.
@@ -35,6 +35,11 @@ class LocaleSid
   const EGYPT = 8;
 
   /**
+   * Kuwait
+   */
+  const KUWAIT = 14;
+
+  /**
    * A special locale that can be used for testing or a business situated in an unknown region.
    */
   const NEVERLAND = 9;
@@ -53,11 +58,6 @@ class LocaleSid
    * South Africa.
    */
   const SOUTH_AFRICA = 6;
-
-  /**
-   * A configuration set for testing purposes.
-   */
-  const TEST = 7;
 
   /**
    * United Arab Emirates.

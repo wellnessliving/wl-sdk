@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Quiz\Response;
 /**
  * List of sources where quiz response can be generated.
  *
- * Last used ID: 5
+ * Last used ID: 6
  */
 class SourceSid
 {
@@ -13,6 +13,11 @@ class SourceSid
    * Quiz response received during booking process.
    */
   const BOOKING = 2;
+
+  /**
+   * Quiz response was imported.
+   */
+  const IMPORT = 6;
 
   /**
    * Quiz response received by direct link.

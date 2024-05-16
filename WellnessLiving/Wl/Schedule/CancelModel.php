@@ -29,6 +29,16 @@ class CancelModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
+   * <tt>true</tt> is late cancel, <tt>false</tt> reservation is not late cancel.
+   * This is required to enable late cancel even if the user is staff.
+   *
+   * @get get
+   * @post get
+   * @var bool
+   */
+  public $is_late_cancel = false;
+
+  /**
    * The appointment key.
    * This will be `null` if not set yet or if a class or event is canceled.
    *
@@ -36,7 +46,7 @@ class CancelModel extends WlModelAbstract
    * @post get
    * @var string|null
    */
-  public $k_appointment;
+  public $k_appointment = null;
 
   /**
    * Key of the business within which the action is performed.
@@ -45,7 +55,7 @@ class CancelModel extends WlModelAbstract
    * @post get
    * @var string
    */
-  public $k_business;
+  public $k_business = null;
 
   /**
    * The class period key.
@@ -55,7 +65,7 @@ class CancelModel extends WlModelAbstract
    * @post get
    * @var string|null
    */
-  public $k_class_period;
+  public $k_class_period = null;
 
   /**
    * The user key.

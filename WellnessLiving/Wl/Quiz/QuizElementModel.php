@@ -21,16 +21,28 @@ class QuizElementModel extends WlModelAbstract
   public $a_element = [];
 
   /**
-   * Quiz settings. Array representation of {@link \WellnessLiving\Wl\Quiz\QuizElementModel::$o_setting}.
+   * Quiz settings.
    *
    * @get result
    * @post post
+   * @put result
    * @var array
    */
   public $a_setting = [];
 
   /**
-   * `true` if don't check user authorization, `false` otherwise.
+   * Whether user has privileges to amend form.
+   *
+   * @get result
+   * @var bool
+   */
+  public $can_amend = false;
+
+  /**
+   * Checks whether unauthorized user should be permitted to operate with form and make a response.
+   * In general all quizzes should have users in response but it some cases such as registration process
+   *  user might not exist yet, and we need ability to ignore check for user existence.
+   * `true` - add possibility load form and accept response for non-registered user, `false` otherwise.
    *
    * @get get
    * @post get
@@ -60,6 +72,16 @@ class QuizElementModel extends WlModelAbstract
   public $is_active = true;
 
   /**
+   * List of quiz elements in json format.
+   *
+   * Order of the element in array corresponds to order of elements on the form.
+   *
+   * @post post
+   * @var string
+   */
+  public $json_element = '';
+
+  /**
    * Business key within which quiz is managed.
    *
    * @delete get
@@ -84,6 +106,7 @@ class QuizElementModel extends WlModelAbstract
   /**
    * Quiz login key.
    *
+   * @delete get
    * @post get
    * @put get
    * @var string

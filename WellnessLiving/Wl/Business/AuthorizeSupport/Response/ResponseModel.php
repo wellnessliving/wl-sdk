@@ -3,11 +3,12 @@
 namespace WellnessLiving\Wl\Business\AuthorizeSupport\Response;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Business\AuthorizePartner\AuthorizePartnerModel;
 
 /**
  * An endpoint to request entrance into a business location.
  *
- * This endpoint is similar to {@link \WellnessLiving\Wl\Business\AuthorizePartner\AuthorizePartnerModel} but not identical. To grant a user
+ * This endpoint is similar to {@link AuthorizePartnerModel} but not identical. To grant a user
  * access the SDK sign-in account, the Manage Business permission is required. The associated accounts will receive an
  * email regarding when they are given access and when that access expires. Access will be granted for 24 hours.
  */

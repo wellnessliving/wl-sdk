@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Integration\Curves;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Report\WlReportSid;
 
 /**
  * Gets information for enterprise locations.
@@ -41,7 +42,7 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_city_list;
+  public $a_city_list = null;
 
   /**
    * The country list. Each element has next structure:
@@ -63,10 +64,10 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_country_list;
+  public $a_country_list = null;
 
   /**
-   * The location list. Each element has next structure:
+   * The location list. Each element has the next structure:
    * <dl>
    *   <dt>
    *     string <var>k_city</var>
@@ -109,10 +110,10 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_location_list;
+  public $a_location_list = null;
 
   /**
-   * The region list. Each element has next structure:
+   * The region list. Each element has the next structure:
    * <dl>
    *   <dt>
    *     string <var>k_region</var>
@@ -131,10 +132,10 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_region_list;
+  public $a_region_list = null;
 
   /**
-   * The state list. Each element has next structure:
+   * The state list. Each element has the next structure:
    * <dl>
    *   <dt>
    *     string <var>k_country</var>
@@ -159,34 +160,32 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_state_list;
+  public $a_state_list = null;
 
   /**
    * Determines which locations should be returned.
    *
-   * One of the {@link \WellnessLiving\Wl\Business\Franchise\Location\BusinessFranchiseLocationSid} constants.
+   * @get get
+   * @var int
+   */
+  public $id_business_franchise_location = null;
+
+  /**
+   * Determines the report for which data should be returned.
    *
-   * <tt>null</tt> means that {@link \WellnessLiving\Wl\Business\Franchise\Location\BusinessFranchiseLocationSid::ALL} is used.
+   * One of the {@link WlReportSid} constants.
+   *
+   * If `null`, the report isn't set.
    *
    * @get get
    * @var int
    */
-  public $id_business_franchise_location;
+  public $id_report = null;
 
   /**
-   * Determines report for which data should be returned.
+   * Determines whether to include churned/removed locations.
    *
-   * One of the {@link \WellnessLiving\RsReportSid} constants.
-   *
-   * <tt>null</tt> means that report is not set.
-   *
-   * @get get
-   * @var int
-   */
-  public $id_report;
-
-  /**
-   * Whether to include churned/removed locations. `true` to list all locations regardless of their status.
+   * If `true`, all locations are listed (regardless of their status).
    *
    * @get get
    * @var bool
@@ -194,8 +193,9 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
   public $is_include_churn = false;
 
   /**
-   * Whether to include locations marked to not be displayed on franchisor website. `true` to list all locations
-   * regardless of this setting.
+   * Determines whether to include locations marked to not be displayed on franchisor website.
+   *
+   * If `true`, all locations are listed (regardless of this setting).
    *
    * @get get
    * @var bool
@@ -208,7 +208,7 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $k_business;
+  public $k_business = null;
 }
 
 ?>

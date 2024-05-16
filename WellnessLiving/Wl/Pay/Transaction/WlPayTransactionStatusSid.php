@@ -5,9 +5,11 @@ namespace WellnessLiving\Wl\Pay\Transaction;
 /**
  * Transaction statuses.
  *
- * Last used ID: 14.
+ * Last used ID: 15.
+ *
+ * @
  */
-class WlPayTransactionStatusSid
+abstract class WlPayTransactionStatusSid
 {
   /**
    * The authorization or store transaction is being performed now.
@@ -33,6 +35,13 @@ class WlPayTransactionStatusSid
    * Transaction is completed with errors.
    */
   const PURCHASE_ERROR = 3;
+
+  /**
+   * Transaction is completed successfully, but the purchase wasn't finished (failed by a temporary error).
+   *
+   * **Important note** Used only for indexation data for the reports.
+   */
+  const PURCHASE_FAILED = 15;
 
   /**
    * Transaction is completed successfully.
@@ -82,6 +91,9 @@ class WlPayTransactionStatusSid
   /**
    * Transaction was refunded fully.
    *
+   * Note that in contrast to REFUND_PARTIAL, there are no items stored in <tt>rs_pay_transaction_refund</tt> table for
+   * transactions in REFUND_FULL status.
+   *
    * @see WlPayTransactionStatusSid::REFUND_PARTIAL
    */
   const REFUND_FULL = 4;
@@ -91,8 +103,7 @@ class WlPayTransactionStatusSid
    *
    * This status is set when there is an amount in a transaction that is not refunded.
    *
-   * @see RsPayTransactionRefundSql
-   * @see RsPayTransactionStatusSid::REFUND_FULL
+   * @see WlPayTransactionStatusSid::REFUND_FULL
    */
   const REFUND_PARTIAL = 7;
 
@@ -115,8 +126,9 @@ class WlPayTransactionStatusSid
    *   <li>transaction should be single in the purchase.</li>
    * </ul>
    *
-   * @see RsPayTransactionStatusSid::REFUND_FULL
-   * @see RsPayTransactionStatusSid::REFUND_PARTIAL
+   * @link https://wellnessliving.atlassian.net/browse/WL-2122
+   * @see WlPayTransactionStatusSid::REFUND_FULL
+   * @see WlPayTransactionStatusSid::REFUND_PARTIAL
    */
   const VOID = 12;
 }

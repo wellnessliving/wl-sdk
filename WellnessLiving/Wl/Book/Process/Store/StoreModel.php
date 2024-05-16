@@ -2,7 +2,10 @@
 
 namespace WellnessLiving\Wl\Book\Process\Store;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Manages the booking wizard for the "Purchase Options" page.
@@ -24,7 +27,7 @@ class StoreModel extends WlModelAbstract
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     The days of the week when appointment repeats. One of the {@link \WellnessLiving\Core\a\ADateWeekSid} constants.
+   *     The days of week when the appointment repeat. One of the {@link ADateWeekSid} constants.
    *     This will be empty if the appointment doesn't repeat weekly.
    *   </dd>
    *   <dt>
@@ -50,15 +53,15 @@ class StoreModel extends WlModelAbstract
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     The measurement unit of `i_period`. One of the {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     `true` — the appointment repeats monthly on the same date.<br>
-   *     `false` — the appointment repeats monthly on the same week day.<br>
-   *     `null` — the appointment doesn't repeat monthly.
+   *     <tt>true</tt> - the appointment repeats monthly on the same date.
+   *     <tt>false</tt> - the appointment repeats monthly on the same day of the week.
+   *     <tt>null</tt> - the appointment doesn't repeat monthly.
    *   </dd>
    * </dl>
    *
@@ -67,7 +70,7 @@ class StoreModel extends WlModelAbstract
    * @post post
    * @var array|null
    */
-  public $a_repeat;
+  public $a_repeat = null;
 
   /**
    * A list of assets being booked. Every element has the next keys:
@@ -86,7 +89,8 @@ class StoreModel extends WlModelAbstract
   /**
    * The selected sessions.
    *
-   * Keys refer to class period keys, and values refer to the list of dates/times when the session occurred (returned in MySQL format and in GMT).
+   * Keys refer to class period keys.
+   * And values refer to the list of dates/times when the session occurred (returned in MySQL format and in GMT).
    *
    * @post post
    * @var array
@@ -96,7 +100,8 @@ class StoreModel extends WlModelAbstract
   /**
    * The selected sessions on the wait list that are unpaid.
    *
-   * Keys refer to session IDs, and values refer to index arrays of dates/times when the session occurred (returned in MySQL format and in GMT).
+   * Keys refer to session IDs.
+   * And values refer to index arrays of dates/times when the session occurred (returned in MySQL format and in GMT).
    *
    * @post post
    * @var array
@@ -121,7 +126,7 @@ class StoreModel extends WlModelAbstract
   public $can_book = true;
 
   /**
-   * The date/time the session is booked for.
+   * Date/time to which session is booked.
    *
    * @get get
    * @post get
@@ -130,7 +135,7 @@ class StoreModel extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * The mode type. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The mode type. One of the {@link ModeSid} constants.
    *
    * @get get
    * @post get
@@ -139,9 +144,8 @@ class StoreModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * `true` — the user selected 'Pay later'.
-   *
-   * `false` — the user selected 'Pay now'.
+   * `true` if user pressed 'Pay later'.
+   * `false` if user pressed 'Pay now'.
    *
    * @post post
    * @var bool
@@ -149,9 +153,9 @@ class StoreModel extends WlModelAbstract
   public $is_force_pay_later = false;
 
   /**
-   * `true` — the next steps of booking wizard are required to purchase something or to book the selected session.
+   * `true` - the next steps of booking wizard are required to purchase something or to book the selected session.
    *
-   * `false` — no further steps in the booking wizard are required.
+   * `false` - no further steps in the booking wizard are required.
    *
    * @post result
    * @var bool
@@ -159,7 +163,7 @@ class StoreModel extends WlModelAbstract
   public $is_next;
 
   /**
-   * The key of the booked session.
+   * Key of session which is booked.
    *
    * @get get
    * @post get
@@ -168,7 +172,7 @@ class StoreModel extends WlModelAbstract
   public $k_class_period = '0';
 
   /**
-   * The login promotion used to book a class.
+   * Login promotion to be used to book a class.
    *
    * @post post
    * @var string
@@ -176,7 +180,7 @@ class StoreModel extends WlModelAbstract
   public $k_login_promotion = '';
 
   /**
-   * The session pass used to book a class.
+   * Session pass to be used to book a class.
    *
    * @post post
    * @var string
@@ -184,7 +188,7 @@ class StoreModel extends WlModelAbstract
   public $k_session_pass = '';
 
   /**
-   * The key of the user making the booking.
+   * Key of a user who is making a book.
    *
    * @get get
    * @post get

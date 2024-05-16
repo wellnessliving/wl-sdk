@@ -3,6 +3,8 @@
 namespace WellnessLiving\Wl\Profile\Activity;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Login\WlLoginActivityTypeSid;
+use WellnessLiving\Wl\WlDesignIconSid;
 
 /**
  * Returns detailed information about a single client activity.
@@ -24,6 +26,14 @@ class ElementModel extends WlModelAbstract
    * @var string[]
    */
   public $a_reward_score;
+
+  /**
+   * Verifies that current user can view the specified profile.
+   *
+   * @get result
+   * @var bool
+   */
+  public $can_profile;
 
   /**
    * The date of the activity in GMT.
@@ -50,7 +60,7 @@ class ElementModel extends WlModelAbstract
   public $html_message;
 
   /**
-   * Total amount of account credits user got for {@link \WellnessLiving\Wl\Profile\Activity\ElementModel::$k_login_activity}. This field is a copy of result of {@link RsLoginActivity::reward()}.
+   * Total amount of account credits user got for {@link ElementModel::$k_login_activity}. This field is a copy of result of {@link \RsLoginActivity::reward()}.
    *
    * @get result
    * @var int
@@ -74,9 +84,9 @@ class ElementModel extends WlModelAbstract
   public $i_spend;
 
   /**
-   * The ID of the icon that should be shown for this activity. One of {@link \WellnessLiving\WlDesignIconSid} constants.
+   * The ID of the icon that should be shown for this activity. One of {@link WlDesignIconSid} constants.
    *
-   * This will be `null`  is no special icon for this activity.
+   * This will be `null` is no special icon for this activity.
    *
    * @get result
    * @var int|null
@@ -84,7 +94,7 @@ class ElementModel extends WlModelAbstract
   public $id_icon;
 
   /**
-   * The ID of the activity item returned by this endpoint. One of {@link \WellnessLiving\RsLoginActivityTypeSid} constants.
+   * The ID of the activity item returned by this endpoint. One of {@link WlLoginActivityTypeSid} constants.
    *
    * @get result
    * @var int

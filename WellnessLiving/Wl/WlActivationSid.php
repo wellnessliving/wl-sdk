@@ -45,7 +45,6 @@ abstract class WlActivationSid
    * Date of the first visit.
    */
   const VISIT = 2;
-
 }
 
 ?>

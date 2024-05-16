@@ -2,17 +2,14 @@
 
 namespace WellnessLiving\Core\Drive\ImageUpload;
 
-use WellnessLiving\WlModelAbstract;
-
 /**
- * Performs the final action to an uploaded image.
- * Images are uploaded using {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadTemporaryModel}.
+ * An endpoint that performs the final action to an uploaded image.
+ * Images are uploaded using {@link ImageUploadTemporaryModel}.
  */
-class ImageUploadModel extends WlModelAbstract
+class ImageUploadModel extends \WellnessLiving\Custom\Core\Drive\ImageUpload\ImageUploadModel
 {
   /**
-   * Image information for every ID. Every element contains values such as the
-   * {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadModel::_get()} result.
+   * Image information for every ID.
    *
    * @post result
    * @var array[]
@@ -123,7 +120,7 @@ class ImageUploadModel extends WlModelAbstract
   public $is_temporary = false;
 
   /**
-   * The image ID set in {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadModel::$s_class}.
+   * The image ID set in {@link ImageUploadModel::$s_class}.
    *
    * @get get
    * @put get
@@ -168,15 +165,14 @@ class ImageUploadModel extends WlModelAbstract
   public $s_link;
 
   /**
-   * A list of image IDs set in {@link \WellnessLiving\Core\Drive\ImageUpload\ImageUploadModel::$s_class},
-   * serialised using JSON.
+   * A list of image IDs set in {@link ImageUploadModel::$s_class}, serialised using JSON.
    *
    * This will be `null` if there's no data being sent by the client.
    *
    * @post post
    * @var string|null
    */
-  public $text_id;
+  public $text_id = null;
 
   /**
    * The image URL that should be displayed in cases where no image is uploaded.
@@ -215,36 +211,6 @@ class ImageUploadModel extends WlModelAbstract
    * @var string|null
    */
   public $url_view;
-
-  /**
-   * The forms command used to delete an image.
-   */
-  public function commandDelete()
-  {
-    $this->s_command = 'delete';
-  }
-
-  /**
-   * The forms command used to save an uploaded image.
-   */
-  public function commandSave()
-  {
-    $this->s_command = 'save';
-  }
-
-  /**
-   * The forms command used to crop and save an uploaded image.
-   *
-   * @param int $i_offset_left Left offset to crop.
-   * @param int $i_offset_top Top offset to crop.
-   * @param int $i_width The width to crop.
-   * @param int $i_height The height to crop.
-   * @param int $i_rotation The rotation angle.
-   */
-  public function commandUpload($i_offset_left, $i_offset_top, $i_width, $i_height, $i_rotation = 0)
-  {
-    $this->s_command = 'upload '.$i_offset_left.' '.$i_offset_top.' '.$i_width.' '.$i_height.' '.$i_rotation;
-  }
 }
 
 ?>

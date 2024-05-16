@@ -2,7 +2,11 @@
 
 namespace WellnessLiving\Wl\Event;
 
+use WellnessLiving\Core\Drive\DriveTypeSid;
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlScheduleTimeSid;
 
 /**
  * Retrieves a list of events that fit the given filter parameters.
@@ -15,7 +19,15 @@ class EventListModel extends WlModelAbstract
    * @get get
    * @var string[]|null
    */
-  public $a_class_filter;
+  public $a_class_filter = null;
+
+  /**
+   * List of day the week applied by filter {@link ADateWeekSid}.
+   *
+   * @get get
+   * @var string[]|null
+   */
+  public $a_day = null;
 
   /**
    * List of enrollment blocks keys applied by filter.
@@ -23,7 +35,7 @@ class EventListModel extends WlModelAbstract
    * @get get
    * @var string[]|null
    */
-  public $a_enrollment_block_filter;
+  public $a_enrollment_block_filter = null;
 
   /**
    * List of available enrollment blocks correspond to requested parameters.
@@ -51,7 +63,7 @@ class EventListModel extends WlModelAbstract
    *     <dt>int <var>i_width_src</var></dt>
    *     <dd>The source image's width.</dd>
    *     <dt>int <var>id_type_src</var></dt>
-   *     <dd>The image type ID. One of the {@link \WellnessLiving\Core\Drive\DriveTypeSid} constants.</dd>
+   *     <dd>The image type ID. One of the {@link DriveTypeSid} constants.</dd>
    *     <dt>bool <var>is_resize</var></dt>
    *     <dd>This will be `true` if the image has been resized. `false` otherwise.</dd>
    *     <dt>bool <var>is_old</var></dt>
@@ -166,6 +178,7 @@ class EventListModel extends WlModelAbstract
    *   <dt>string <var>xml_description</var></dt>
    *   <dd>The description of the event.</dd>
    * </dl>
+   *
    * @get result
    * @var array[]
    */
@@ -177,7 +190,7 @@ class EventListModel extends WlModelAbstract
    * @get get
    * @var string[]|null
    */
-  public $a_location;
+  public $a_location = null;
 
   /**
    * List of staff keys applied by filter.
@@ -185,7 +198,15 @@ class EventListModel extends WlModelAbstract
    * @get get
    * @var string[]|null
    */
-  public $a_staff;
+  public $a_staff = null;
+
+  /**
+   * List of time day applied by filter {@link WlScheduleTimeSid}.
+   *
+   * @get get
+   * @var string[]|null
+   */
+  public $a_time = null;
 
   /**
    * The end date of the range from which a list of events should be retrieved.
@@ -210,11 +231,11 @@ class EventListModel extends WlModelAbstract
   /**
    * Defines how the event availability flag filter should be applied.
    *
-   * One of {@link \WellnessLiving\Core\a\AFlagSid} constants.
+   * One of {@link AFlagSid} constants.
    *
-   * * {@link \WellnessLiving\Core\a\AFlagSid::ON} to show only available events.
-   * * {@link \WellnessLiving\Core\a\AFlagSid::OFF} to show only unavailable events.
-   * * {@link \WellnessLiving\Core\a\AFlagSid::ALL} to show all events (available and unavailable).
+   * * {@link AFlagSid::ON} to show only available events.
+   * * {@link AFlagSid::OFF} to show only unavailable events.
+   * * {@link AFlagSid::ALL} to show all events (available and unavailable).
    *
    * @get get
    * @var int
@@ -230,6 +251,14 @@ class EventListModel extends WlModelAbstract
   public $is_backend;
 
   /**
+   * Model cache reset flag.
+   *
+   * @put post
+   * @var bool
+   */
+  public $is_cache_reset = false;
+
+  /**
    * `true` to show even event restricted by booking policies; `false` to show available events only.
    *
    * @get get
@@ -238,7 +267,7 @@ class EventListModel extends WlModelAbstract
   public $is_ignore_requirement = false;
 
   /**
-   * Determines whether you need to retrieve a list of event sessions regardless of the tab specified in {@link \WellnessLiving\Wl\Event\EventListModel::$k_class_tab}.
+   * Determines whether you need to retrieve a list of event sessions regardless of the tab specified in {@link EventListModel::$k_class_tab}.
    *
    * * <tt>true</tt> - retrieves a list regardless of the specified tab.
    * * <tt>false</tt> - retrieves a list only for the specific tab.
@@ -251,9 +280,10 @@ class EventListModel extends WlModelAbstract
   /**
    * The event business key to retrieve a list of all event sessions in business.
    *
-   * Required if {@link \WellnessLiving\Wl\Event\EventListModel::$k_location} isn't specified.
+   * Required if {@link EventListModel::$k_location} isn't specified.
    *
    * @get get
+   * @put get
    * @var string
    */
   public $k_business;
@@ -271,8 +301,8 @@ class EventListModel extends WlModelAbstract
    * An empty value to retrieve a list of event sessions that don't belong to any tab.
    *
    * Will be ignored in next cases:
-   * * {@link \WellnessLiving\Wl\Event\EventListModel::$k_skin} specified.
-   * * {@link \WellnessLiving\Wl\Event\EventListModel::$is_tab_all} is <tt>true</tt>.
+   * * {@link EventListModel::$k_skin} specified.
+   * * {@link EventListModel::$is_tab_all} is <tt>true</tt>.
    *
    * @get get
    * @var string
@@ -282,7 +312,7 @@ class EventListModel extends WlModelAbstract
   /**
    * The event location key to retrieve a list of all event sessions in a specific location.
    *
-   * Required if {@link \WellnessLiving\Wl\Event\EventListModel::$k_business} isn't specified.
+   * Required if {@link EventListModel::$k_business} isn't specified.
    *
    * @get get
    * @var string
@@ -292,7 +322,7 @@ class EventListModel extends WlModelAbstract
   /**
    * The skin key if an event list is used for widget mode.
    *
-   * {@link \WellnessLiving\Wl\Event\EventListModel::$k_class_tab} will be ignored for widget mode.
+   * {@link EventListModel::$k_class_tab} will be ignored for widget mode.
    *
    * @get get
    * @var string
@@ -312,6 +342,7 @@ class EventListModel extends WlModelAbstract
    * Required to apply specific user rules such as age restrictions.
    *
    * @get get
+   * @put get
    * @var string
    */
   public $uid;

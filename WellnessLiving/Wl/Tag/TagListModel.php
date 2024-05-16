@@ -25,6 +25,14 @@ class TagListModel extends WlModelAbstract
   public $a_list;
 
   /**
+   * Whether a business did set up surcharges.
+   *
+   * @get result
+   * @var bool
+   */
+  public $has_surcharge = false;
+
+  /**
    * The business key of the tags.
    *
    * @get get

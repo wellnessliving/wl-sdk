@@ -2,7 +2,11 @@
 
 namespace WellnessLiving\Wl\Book\Process\Quiz;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Manages quizzes and a selected Purchase Option for a class or event during the booking process.
@@ -22,7 +26,7 @@ class QuizModel extends WlModelAbstract
   /**
    * The list of purchase items. Each element has the format <tt>[id_purchase_item]::[k_id]</tt>, where: <dl>
    *  <dt>int <var>id_purchase_item</var></dt>
-   *  <dd>The ID of the purchase item. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.</dd>
+   *  <dd>The ID of the purchase item. One of the {@link WlPurchaseItemSid} constants.</dd>
    *  <dt>string <var>k_id</var></dt>
    *  <dd>The item key. This depends on <var>id_purchase_item</var> of this array.</dd>
    * </dl>
@@ -50,8 +54,8 @@ class QuizModel extends WlModelAbstract
   /**
    * The list of quiz response keys.
    *
-   * Keys refer to quiz keys, and values refer to response keys or special values from the
-   * {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} constant.
+   * Keys refer to quiz keys.
+   * And values refer to response keys.
    *
    * @post post
    * @var array
@@ -65,7 +69,7 @@ class QuizModel extends WlModelAbstract
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     The days of the week when the appointment repeats. One of the {@link \WellnessLiving\Core\a\ADateWeekSid} constants.
+   *     The days of week when the appointment repeat. One of the {@link ADateWeekSid} constants.
    *     This will be empty if the appointment doesn't repeat weekly.
    *   </dd>
    *   <dt>
@@ -91,15 +95,15 @@ class QuizModel extends WlModelAbstract
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     The measurement unit of `i_period`. One of the {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     `true` — the appointment repeats monthly on the same date.<br>
-   *     `false` — the appointment repeats monthly on the same week day.<br>
-   *     `null` — the appointment doesn't repeat monthly.
+   *     <tt>true</tt> - the appointment repeats monthly on the same date.
+   *     <tt>false</tt> - the appointment repeats monthly on the same day of the week.
+   *     <tt>null</tt> - the appointment doesn't repeat monthly.
    *   </dd>
    * </dl>
    *
@@ -108,7 +112,7 @@ class QuizModel extends WlModelAbstract
    * @post post
    * @var array|null
    */
-  public $a_repeat;
+  public $a_repeat = null;
 
   /**
    * The selected assets.
@@ -129,7 +133,8 @@ class QuizModel extends WlModelAbstract
   /**
    * The selected sessions.
    *
-   * Keys refer to class period keys, and values refer to the list of dates/times when the session occurred.
+   * Keys refer to class period keys.
+   * And values refer to the list of dates/times when the session occurred.
    *
    * @post post
    * @var array
@@ -139,7 +144,8 @@ class QuizModel extends WlModelAbstract
   /**
    * The selected sessions on the wait list that are unpaid.
    *
-   * Keys refer to session IDs, and values refer to index arrays of dates/times when session occurred (n MySQL format and in GMT).
+   * Keys refer to session IDs.
+   * And values refer to index arrays of dates/times when session occurred (n MySQL format and in GMT).
    *
    * @post post
    * @var array
@@ -164,7 +170,7 @@ class QuizModel extends WlModelAbstract
   public $can_book = true;
 
   /**
-   * The dates/times the session is booked for.
+   * Date/time to which session is booked.
    *
    * @get get
    * @post get
@@ -173,7 +179,7 @@ class QuizModel extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * The mode type. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The mode type. One of the {@link ModeSid} constants.
    *
    * @get get
    * @post get
@@ -182,9 +188,8 @@ class QuizModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * `true` — the user selected 'Pay later'.
-   *
-   * `false` — the user selected 'Pay now'.
+   * `true` if user pressed 'Pay later'.
+   * `false` if user pressed 'Pay now'.
    *
    * @post post
    * @var bool
@@ -200,7 +205,7 @@ class QuizModel extends WlModelAbstract
   public $is_next;
 
   /**
-   * The key of the booked session.
+   * Key of session which is booked.
    *
    * @get get
    * @post get
@@ -209,7 +214,7 @@ class QuizModel extends WlModelAbstract
   public $k_class_period = '0';
 
   /**
-   * The login promotion used to book a class.
+   * Login promotion to be used to book a class.
    *
    * @post post
    * @var string
@@ -217,7 +222,7 @@ class QuizModel extends WlModelAbstract
   public $k_login_promotion = '';
 
   /**
-   * The session pass used to book a class.
+   * Session pass to be used to book a class.
    *
    * @post post
    * @var string
@@ -225,7 +230,7 @@ class QuizModel extends WlModelAbstract
   public $k_session_pass = '';
 
   /**
-   * The key of the user making the booking.
+   * Key of a user who is making a book.
    *
    * @get get
    * @post get

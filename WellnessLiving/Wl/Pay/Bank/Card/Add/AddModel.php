@@ -3,6 +3,8 @@
 namespace WellnessLiving\Wl\Pay\Bank\Card\Add;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
+use WellnessLiving\Wl\Pay\Owner\OwnerModel;
 
 /**
  * Adds a payment card to a user’s account.
@@ -12,7 +14,7 @@ use WellnessLiving\WlModelAbstract;
  *
  * This endpoint using captcha check.
  * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
- * For this API an action is `1064`.
+ * For this API an action is {@link BusinessPaymentCaptcha::CID}.
  */
 class AddModel extends WlModelAbstract
 {
@@ -70,7 +72,7 @@ class AddModel extends WlModelAbstract
    *     int <var>id_pay_actor</var>
    *   </dt>
    *   <dd>
-   *     Pay actor id. One of {@link \WellnessLiving\RsPayActorSid} constants.
+   *     Pay actor id.
    *   </dd>
    *   <dt>
    *     string <var>k_pay_bank</var>
@@ -135,7 +137,7 @@ class AddModel extends WlModelAbstract
 
   /**
    * The payment owner ID. This is different from the user ID. It can be found with
-   * the {@link \WellnessLiving\Wl\Pay\Owner\OwnerModel}.
+   * the {@link OwnerModel}.
    *
    * @get get
    * @post get

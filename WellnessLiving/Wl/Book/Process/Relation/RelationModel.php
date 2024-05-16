@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Book\Process\Relation;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
 
 /**
  * Adds a relative during the booking process.
@@ -18,8 +19,35 @@ class RelationModel extends WlModelAbstract
   public $dtu_date = '';
 
   /**
+   * Day of birthday.
+   * `null` if birthday is not entered.
+   *
+   * @post post
+   * @var int|null
+   */
+  public $i_day = null;
+
+  /**
+   * Month of birthday.
+   * `null` if birthday is not entered.
+   *
+   * @post post
+   * @var int|null
+   */
+  public $i_month = null;
+
+  /**
+   * Year of birthday.
+   * `null` if birthday is not entered.
+   *
+   * @post post
+   * @var int|null
+   */
+  public $i_year = null;
+
+  /**
    * The relation type.
-   * One of the {@link \WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid} constants.
+   * One of the {@link WlFamilyRelationSid} constants.
    *
    * @post post
    * @var int
@@ -27,9 +55,9 @@ class RelationModel extends WlModelAbstract
   public $id_relation = 0;
 
   /**
-   * `true` — the new relative uses the email from <var>uid_from</var>.
+   * `true` - the new relative uses the email from <var>uid_from</var>.
    *
-   * `false` — the new relative has their own email.
+   * `false` - the new relative has their own email.
    *
    * @post post
    * @var bool
@@ -37,9 +65,9 @@ class RelationModel extends WlModelAbstract
   public $is_mail_inherit = false;
 
   /**
-   * `true` — the new relative pays for themself.
+   * `true` - the new relative pays for themself.
    *
-   * `false` — <var>uid_from</var> pays for the new relative.
+   * `false` - <var>uid_from</var> pays for the new relative.
    *
    * @post post
    * @var bool
@@ -94,6 +122,14 @@ class RelationModel extends WlModelAbstract
    * @var string
    */
   public $uid_create;
+
+  /**
+   * UID of already existed in another business user.
+   *
+   * @post post
+   * @var string
+   */
+  public $uid_existed = '';
 
   /**
    * The user who's adding the new relative.

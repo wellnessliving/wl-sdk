@@ -5,8 +5,13 @@ namespace WellnessLiving\Wl;
 /**
  * A list of payment gateways or processors.
  */
-class WlPayProcessorSid
+abstract class WlPayProcessorSid
 {
+  /**
+   * Payment gateway for `cybersource.com`.
+   */
+  const CYBER_SOURCE = 11;
+
   /**
    * Payment gateway for Direct Connect.
    */
@@ -36,24 +41,6 @@ class WlPayProcessorSid
    * Payment gateway for `stripe.com`.
    */
   const STRIPE_COM = 10;
-
-  /**
-   * Dummy payment gateway for testing purposes.
-   */
-  const TEST = 3;
-
-  /**
-   * Payment gateway for testing purposes that supports {@link WlPayMethodSid::ECOMMERCE} payment method.
-   */
-  const TEST_ECOMMERCE = 5;
-
-  /**
-   * Payment gateway for testing purposes that does not support any payment methods.
-   */
-  const TEST_NONE = 8;
-
-  /**
-   * Payment gateway for testing purposes that supports {@link WlPayMethodSid::POS} payment method.
-   */
-  const TEST_POS = 4;
 }
+
+?>

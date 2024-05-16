@@ -7,8 +7,6 @@ use WellnessLiving\WlModelAbstract;
 /**
  * Creates user account for the given email address if email address does not already exist.
  * checks if a user's email address is already used or changes a user’s login email address.
- *
- * This endpoint is rate limited.
  */
 class CreateModel extends WlModelAbstract
 {
@@ -36,7 +34,6 @@ class CreateModel extends WlModelAbstract
    */
   public $text_lastname = '';
 
-
   /**
    * Email of the user.
    *
@@ -53,3 +50,5 @@ class CreateModel extends WlModelAbstract
    */
   public $uid = '';
 }
+
+?>

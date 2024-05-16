@@ -2,17 +2,21 @@
 
 namespace WellnessLiving\Wl\Book\Process\Info;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Book\Process\ProcessSpaSid;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Offers functionality for the class booking wizard on the "Class and Location" page.
  *
- * When using this endpoint, take into account the {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid::QUIZ} step.
+ * When using this endpoint, take into account the {@link ProcessSpaSid::QUIZ} step.
  */
 class Info54Model extends WlModelAbstract
 {
   /**
-   * Week days available for recurring booking. Constants of {@link \WellnessLiving\Core\a\ADateWeekSid} class.
+   * Week days available for recurring booking. Constants of {@link ADateWeekSid} class.
    *
    * `null` if recurring booking is not available.
    *
@@ -30,56 +34,56 @@ class Info54Model extends WlModelAbstract
   public $a_login_activity;
 
   /**
-   * Information about recurring booking:
+   * Information about the recurring booking:
    * <dl>
    *   <dt>
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     Days of week when appointment must repeat. Constants of {@link \WellnessLiving\Core\a\ADateWeekSid} class.
-   *     Empty if appointment must not repeat weekly.
+   *     The days of week when the appointment repeat. One of the {@link ADateWeekSid} constants.
+   *     This will be empty if the appointment doesn't repeat weekly.
    *   </dd>
    *   <dt>
    *     string [<var>dl_end</var>]
    *   </dt>
    *   <dd>
-   *     Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
+   *     The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
    *   </dd>
    *   <dt>
    *     int [<var>i_occurrence</var>]
    *   </dt>
    *   <dd>
-   *     Number of occurrences after that appointment repeat must stop.
-   *     Empty if repeat must not stop after a certain number of occurrences.
+   *     The number of occurrences after which the appointment's repeat cycle stops.
+   *     This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
    *   </dd>
    *   <dt>
    *     int <var>i_period</var>
    *   </dt>
    *   <dd>
-   *     Frequency of appointment repeating.
+   *     The frequency of the appointment's repeat cycle.
    *   </dd>
    *   <dt>
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     Measurement unit of `i_period`. One of {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     `true` if appointment must repeat monthly at the same date.
-   *     `false` if appointment must repeat monthly at the same week day.
-   *     `null` if appointment must not repeat monthly.
+   *     <tt>true</tt> - the appointment repeats monthly on the same date.
+   *     <tt>false</tt> - the appointment repeats monthly on the same day of the week.
+   *     <tt>null</tt> - the appointment doesn't repeat monthly.
    *   </dd>
    * </dl>
    *
-   * `null` if booking must be not recurring.
+   * This will be `null` if the booking isn't recurring.
    *
    * @post post
    * @var array|null
    */
-  public $a_repeat;
+  public $a_repeat = null;
 
   /**
    * A list of assets being booked. Every element has the next structure:
@@ -171,7 +175,7 @@ class Info54Model extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     String representation of session duration.
-   *     Duration formatting method {@link \WellnessLiving\Wl\Book\Process\Info\InfoModel::_classDurationFormat()}.
+   *
    *   </dd>
    * </dl>
    *
@@ -179,6 +183,23 @@ class Info54Model extends WlModelAbstract
    * @var array[]
    */
   public $a_session_all;
+
+  /**
+   * List of sessions that can be paid without new purchases.
+   * Such as previously prepaid or free sessions.
+   *
+   * Each its item has the key of following format: <dl>
+   *   <dt>string <var>dt_date</var>::<var>k_class_period</var></dt><dd>Composite key of the array.</dd>
+   * </dl>
+   * and the value of following structure: <dl>
+   *   <dt>string <var>dt_date</var></dt><dd>Session date.</dd>
+   *   <dt>string <var>k_class_period</var></dt><dd>Class period key for the session.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array[]
+   */
+  public $a_session_free;
 
   /**
    * The selected sessions.
@@ -242,8 +263,8 @@ class Info54Model extends WlModelAbstract
   public $a_visit;
 
   /**
-   * Whether the class/event can be booked at this step or not.
-   * External process control flag.
+   * Determines whether the class/event can be booked at this step or not.
+   * This is an external process control flag.
    *
    * @post post
    * @var bool
@@ -326,7 +347,7 @@ class Info54Model extends WlModelAbstract
    * @get result
    * @var int|null
    */
-  public $i_available;
+  public $i_available = null;
 
   /**
    * Number of booked spots.
@@ -336,7 +357,7 @@ class Info54Model extends WlModelAbstract
    * @get result
    * @var int|null
    */
-  public $i_book;
+  public $i_book = null;
 
   /**
    * The duration of the session in minutes.
@@ -355,7 +376,7 @@ class Info54Model extends WlModelAbstract
   public $i_wait_spot = 0;
 
   /**
-   * Mode type. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The mode type. One of the {@link ModeSid} constants.
    *
    * @get get
    * @post get
@@ -398,11 +419,19 @@ class Info54Model extends WlModelAbstract
   public $is_card_authorize = false;
 
   /**
+   * Can client chooses several session per booking.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_event_session = false;
+
+  /**
    * Can the class/event be booked immediately or not.
    *
    * The verification is based on the search for client's promotions and other features of the class/event.
    * But it does not take into account the presence of other mandatory steps.
-   * Their presence will be indicated by the {@link \WellnessLiving\Wl\Book\Process\Info\InfoModel::$is_next} flag.
+   * Their presence will be indicated by the {@link InfoModel::$is_next} flag.
    *
    * @post result
    * @var bool
@@ -431,8 +460,6 @@ class Info54Model extends WlModelAbstract
    * `true` if event can be paid with pricing option only.
    * `false` if full event purchase or single session purchase are allowed.
    *
-   * Copy of {@link \RsClassSql}.<tt>is_promotion_only</tt>.
-   *
    * @get result
    * @var bool
    */
@@ -451,6 +478,9 @@ class Info54Model extends WlModelAbstract
    *
    * @get result
    * @var bool
+   *
+   * @see InfoModel::$html_special
+   * @see InfoModel::$html_special_preview
    */
   public $is_special_preview = false;
 
@@ -482,8 +512,6 @@ class Info54Model extends WlModelAbstract
   /**
    * Login promotion to be used to book a class.
    *
-   * Primary key from {@link  \RsLoginProductSql}.
-   *
    * @post post
    * @var string
    */
@@ -491,8 +519,6 @@ class Info54Model extends WlModelAbstract
 
   /**
    * Session pass to be used to book a class.
-   *
-   * Primary key from {@link  \Wl\Session\Pass\Sql}.
    *
    * @post post
    * @var string
@@ -575,7 +601,7 @@ class Info54Model extends WlModelAbstract
 
   /**
    * Text representation of the list of staffs.
-   * List of staff see {@link \WellnessLiving\Wl\Book\Process\Info\InfoModel::$a_staff}.
+   * List of staff see {@link InfoModel::$a_staff}.
    *
    * @get result
    * @var string

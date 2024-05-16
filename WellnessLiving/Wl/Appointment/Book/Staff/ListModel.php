@@ -33,7 +33,8 @@ class ListModel extends WlModelAbstract
    *   <dd>UID of the staff member.</dd>
    *   <dt>string <var>xml_biography</var></dt>
    *   <dd>Biography of the staff member.</dd>
-   *  </dl>
+   * </dl>
+   *
    * @get result
    * @var array[]
    */
@@ -122,24 +123,24 @@ class ListModel extends WlModelAbstract
   public $k_service = '0';
 
   /**
-   * User's timezone primary key in {@link \AGeoTimezoneSql} table.
+   * User's timezone.
    *
-   * <tt>null</tt> until initialized or to use location timezone.
+   * `null` until initialized or to use location timezone.
    *
    * @get get
    * @var string|null
    */
-  public $k_timezone;
+  public $k_timezone = null;
 
   /**
-   * Key of user for whom the service is booking, primary key in {@link \PassportLoginSql} table.
+   * The user key for whom the service is booking.
    *
    * `null` when not set.
    *
    * @get get
    * @var string|null
    */
-  public $uid;
+  public $uid = null;
 }
 
 ?>

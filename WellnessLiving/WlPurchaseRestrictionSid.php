@@ -2,14 +2,15 @@
 
 namespace WellnessLiving;
 
-/**
- * @deprecated from 2023-09-11.
- *
- * Use class {@link \WellnessLiving\Wl\WlPurchaseRestrictionSid} instead.
- */
-class WlPurchaseRestrictionSid extends \WellnessLiving\Wl\WlPurchaseRestrictionSid
-{
+use WellnessLiving\Wl\Coupon\PurchaseRestrictionSid;
 
+/**
+ * @deprecated As of 2023-09-11.
+ *
+ * Use class {@link PurchaseRestrictionSid} instead.
+ */
+class WlPurchaseRestrictionSid extends PurchaseRestrictionSid
+{
 }
 
 ?>

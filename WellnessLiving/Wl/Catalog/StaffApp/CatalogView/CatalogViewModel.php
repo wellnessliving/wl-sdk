@@ -3,6 +3,8 @@
 namespace WellnessLiving\Wl\Catalog\StaffApp\CatalogView;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel;
+use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * Returns information about an item’s price after taxes.
@@ -47,7 +49,7 @@ class CatalogViewModel extends WlModelAbstract
   public $a_tax = [];
 
   /**
-   * Contains information about calculated taxes. The structure of this array is described in {@link RsTax::$a_tax}.
+   * Contains information about calculated taxes.
    *
    * @get result
    * @var array
@@ -63,7 +65,7 @@ class CatalogViewModel extends WlModelAbstract
   public $i_quantity = '';
 
   /**
-   * The ID of the sale category. One of the {@link \WellnessLiving\WlSaleSid} constants.
+   * The ID of the sale category. One of the {@link WlSaleSid} constants.
    *
    * @get get
    * @var int
@@ -81,7 +83,7 @@ class CatalogViewModel extends WlModelAbstract
 
   /**
    * The key of the sale item.
-   * This can be retrieved with the {@link \WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel} endpoint (see the
+   * This can be retrieved with the {@link CatalogListModel} endpoint (see the
    * <var>a_shop_product</var> parameter).
    *
    * @get get

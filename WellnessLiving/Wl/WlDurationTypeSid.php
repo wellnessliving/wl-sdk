@@ -3,9 +3,11 @@
 namespace WellnessLiving\Wl;
 
 /**
- * Class to process string identifiers for duration types.
+ * Class to process string identifiers for duration types
+ *
+ * Last ID: 3.
  */
-class WlDurationTypeSid
+abstract class WlDurationTypeSid
 {
   /**
    * Specific date. Example, 2013-12-24.
@@ -22,4 +24,5 @@ class WlDurationTypeSid
    */
   const PERIOD = 1;
 }
+
 ?>

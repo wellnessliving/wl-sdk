@@ -7,6 +7,8 @@ namespace WellnessLiving\Wl\Reception\Application;
  *
  * Describes the connotation behind messages. An available balance notice has a positive connotation and should be
  * displayed in a different color from notices of an expiring credit card or pass, which are negative.
+ *
+ * Last ID: 4.
  */
 abstract class MemberInfoColorSid
 {

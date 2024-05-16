@@ -12,20 +12,20 @@ use WellnessLiving\WlModelAbstract;
 class StudioCid_RenameModel extends WlModelAbstract
 {
   /**
+   * CID of the class to rename.
+   *
+   * @put get
+   * @var string
+   */
+  public $cid;
+
+  /**
    * New name to assign to a CID.
    *
    * @put post
    * @var string
    */
   public $s_class;
-
-  /**
-   * CID of the class to rename.
-   *
-   * @put get
-   * @var int
-   */
-  public $cid;
 }
 
 ?>

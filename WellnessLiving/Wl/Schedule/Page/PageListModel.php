@@ -17,6 +17,7 @@ class PageListModel extends WlModelAbstract
    *   <dt>string <var>k_business</var></dt>
    *   <dd>
    *     Key of the business in which this visit was made.
+   *
    *   </dd>
    *   <dt>
    *     string <var>k_visit</var>
@@ -39,7 +40,7 @@ class PageListModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $dtu_end;
+  public $dtu_end = null;
 
   /**
    * If the date is set, a list of services after this date will be returned.
@@ -49,7 +50,7 @@ class PageListModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $dtu_start;
+  public $dtu_start = null;
 
   /**
    * If `true`, then all the client previous visits will be retrieved.

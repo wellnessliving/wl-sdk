@@ -2,7 +2,12 @@
 
 namespace WellnessLiving\Wl\Business;
 
+use WellnessLiving\Core\Locale\CurrencySid;
+use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Service\ServiceSid;
+use WellnessLiving\Wl\WlRankTypeSid;
+use WellnessLiving\Wl\WlRegionSid;
 
 /**
  * Displays information for a specified business.
@@ -11,7 +16,7 @@ class DataModel extends WlModelAbstract
 {
   /**
    * A list of all business services and their availability data.
-   * This is presented as an array, where keys are SIDs from {@link \WellnessLiving\Wl\Service\ServiceSid} and values are Boolean.
+   * This is presented as an array, where keys are SIDs from {@link ServiceSid} and values are Boolean.
    * If `true`, at least one service is enabled in the business. Otherwise, this will be `false`.
    *
    * @get result
@@ -46,10 +51,9 @@ class DataModel extends WlModelAbstract
   /**
    * The business category ID of the business.
    *
-   * One of the {@link BusinessCategorySid} constants.
-   *
    * @get result
    * @var int
+   * @see BusinessCategorySid
    */
   public $id_category;
 
@@ -57,8 +61,8 @@ class DataModel extends WlModelAbstract
    * The currency ID of the given business (or the system currency ID if the business didn't pass).
    *
    * @get result
-   * @see \WellnessLiving\Core\Locale\CurrencySid
    * @var int
+   * @see CurrencySid
    */
   public $id_currency;
 
@@ -66,15 +70,15 @@ class DataModel extends WlModelAbstract
    * The Locale ID, used to search geo items.
    *
    * @get result
-   * @see \WellnessLiving\Core\Locale\LocaleSid
    * @var int
+   * @see LocaleSid
    */
   public $id_locale;
 
   /**
    * The rank type ID of the business.
    *
-   * One of the {@link \WellnessLiving\RsRankTypeSid} constants.
+   * One of the {@link WlRankTypeSid} constants.
    *
    * This will be `null` if the business doesn't have a rank type.
    *
@@ -85,7 +89,7 @@ class DataModel extends WlModelAbstract
 
   /**
    * The region ID. This indicates the data center where the information about the business is stored.
-   * One of the {@link \WellnessLiving\WlRegionSid} constants.
+   * One of the {@link WlRegionSid} constants.
    *
    * Requests made to different regions can lead to known issues such as responses indicating that the
    * business (or its elements) doesn't exist. This is because databases on different data centers are
@@ -122,9 +126,9 @@ class DataModel extends WlModelAbstract
   public $is_location_multiple;
 
   /**
-   * `true` — clients of the business can select a custom time zone in their profile.
+   * `true` - clients of the business can select a custom time zone in their profile.
    *
-   * `false` — the location or business time zone is used.
+   * `false` - the location or business time zone is used.
    *
    * @get result
    * @var bool
@@ -196,7 +200,7 @@ class DataModel extends WlModelAbstract
   public $k_business_franchisor = '';
 
   /**
-   * The business key obtained by the security token {@link \WellnessLiving\Wl\Business\DataModel::$text_token}.
+   * The business key obtained by the security token {@link DataModel::$text_token}.
    * This can be used on the client side if authorization token should be used instead of the business key
    * (the business key isn't available).
    *
@@ -208,9 +212,9 @@ class DataModel extends WlModelAbstract
   /**
    * The currency key of the given business, or the system currency if the business didn't pass.
    *
-   * @deprecated Use {@link \WellnessLiving\Wl\Business\DataModel::$id_currency} instead.
    * @get result
    * @var string
+   * @deprecated Use {@link DataModel::$id_currency} instead.
    */
   public $k_currency;
 
@@ -248,7 +252,7 @@ class DataModel extends WlModelAbstract
 
   /**
    * The authorization token.
-   * This may be used instead of {@link \WellnessLiving\Wl\Business\DataModel::$k_business} to
+   * This may be used instead of {@link DataModel::$k_business} to
    * identify a business.
    *
    * @get get
@@ -281,7 +285,7 @@ class DataModel extends WlModelAbstract
   public $url_instagram = '';
 
   /**
-   * The LinkedIn profile.
+   * The `LinkedIn` profile.
    *
    * @get result
    * @var string

@@ -14,7 +14,7 @@ use WellnessLiving\WlModelAbstract;
 class ReviewListModel extends WlModelAbstract
 {
   /**
-   * List of reviews. If passed {@link \WellnessLiving\Wl\Review\ReviewList\ReviewListModel::$i_page} then the result will be full, otherwise in result will be keys: <tt>k_review</tt>, <tt>uid</tt>.
+   * List of reviews. If passed {@link ReviewListModel::$i_page} then the result will be full, otherwise in result will be keys: <tt>k_review</tt>, <tt>uid</tt>.
    * <dl>
    *   <dt>
    *     bool <var>can_reply</var>
@@ -53,16 +53,16 @@ class ReviewListModel extends WlModelAbstract
    *     <tt>true</tt> if review is verify, <tt>false</tt> otherwise.
    *   </dd>
    *   <dt>
+   *     string <var>k_location</var>
+   *   </dt>
+   *   <dd>
+   *     The location key for where the review was left/assigned.
+   *   </dd>
+   *   <dt>
    *     string <var>k_review</var>
    *   </dt>
    *   <dd>
    *     Review key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_location</var>
-   *   </dt>
-   *   <dd>
-   *     The location ID for where the review was left/assigned.
    *   </dd>
    *   <dt>
    *     string <var>s_firstname</var>
@@ -146,17 +146,17 @@ class ReviewListModel extends WlModelAbstract
    * @get get
    * @var int|null
    */
-  public $i_page;
+  public $i_page = null;
 
   /**
-   * The order in which the review should be arranged. One of the {@link \WellnessLiving\Wl\Review\ReviewList\ReviewOrderSid} constants.
+   * The order in which the review should be arranged. One of the {@link ReviewOrderSid} constants.
    *
-   * If not passed use default order {@link \WellnessLiving\Wl\Review\ReviewList\ReviewOrderSid::LATEST}.
+   * If not passed use default order {@link ReviewOrderSid::LATEST}.
    *
    * @get get
    * @var int|null
    */
-  public $id_order;
+  public $id_order = null;
 
   /**
    * Business key. If not specified, location key needs to be specified.
@@ -167,7 +167,7 @@ class ReviewListModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * The key of the location to show reviews for.
+   * The key of the location to show reviews for. If not specified, business key should be specified.
    *
    * @get get
    * @var string

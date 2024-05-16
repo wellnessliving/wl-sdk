@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Catalog\Cart;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * Displays information about the quantity limit when a promotion (Purchase Option) is added to the cart.
@@ -14,7 +15,7 @@ class LimitQuantityModel extends WlModelAbstract
    *   <dt>int <var>i_quantity</var></dt>
    *   <dd>The quantity of sale items.</dd>
    *   <dt>int <var>id_sale</var></dt>
-   *   <dd>The sale item type. One of the {@link \WellnessLiving\WlSaleSid} constants.</dd>
+   *   <dd>The sale item type. One of the {@link WlSaleSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The sale item ID.</dd>
    *   <dt>string <var>k_shop_product_option</var></dt>
@@ -36,7 +37,7 @@ class LimitQuantityModel extends WlModelAbstract
    * @get result
    * @var int|null
    */
-  public $i_purchase_already;
+  public $i_purchase_already = null;
 
   /**
    * The current quantity of a promotion with the quantity limit in the cart.
@@ -46,7 +47,7 @@ class LimitQuantityModel extends WlModelAbstract
    * @get result
    * @var int|null
    */
-  public $i_purchase_current;
+  public $i_purchase_current = null;
 
   /**
    * The quantity limit of the promotion.
@@ -56,7 +57,7 @@ class LimitQuantityModel extends WlModelAbstract
    * @get result
    * @var int|null
    */
-  public $i_quantity_limit;
+  public $i_quantity_limit = null;
 
   /**
    * Determines whether the limit quantity has been exceeded.
@@ -68,7 +69,7 @@ class LimitQuantityModel extends WlModelAbstract
    * @get result
    * @var bool|null
    */
-  public $is_limit_exceeded;
+  public $is_limit_exceeded = null;
 
   /**
    * The business in which the purchase will be made.

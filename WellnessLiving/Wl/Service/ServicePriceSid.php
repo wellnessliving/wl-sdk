@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Service;
 /**
  * A list of service price types.
  */
-class ServicePriceSid
+abstract class ServicePriceSid
 {
   /**
    * Fixed price.
@@ -18,12 +18,14 @@ class ServicePriceSid
   const FREE = 2;
 
   /**
-   * Various price.
-   */
-  const VARIES = 3;
-
-  /**
    * Hide price.
    */
   const HIDE = 4;
+
+  /**
+   * Various price.
+   */
+  const VARIES = 3;
 }
+
+?>

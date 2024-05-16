@@ -2,14 +2,19 @@
 
 namespace WellnessLiving\Wl\Book\Process\Payment;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
+use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Acts as the booking wizard for the "Pay/Billing info" page.
  *
  * This endpoint using captcha check.
  * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
- * For this API an action is `1064`.
+ * For this API an action is {@link BusinessPaymentCaptcha::CID}.
  */
 class PaymentModel extends WlModelAbstract
 {
@@ -20,7 +25,7 @@ class PaymentModel extends WlModelAbstract
    *     int <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     The ID of purchase item type. One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
+   *     The ID of purchase item type. One of {@link WlPurchaseItemSid} constants.
    *   </dd>
    *   <dt>
    *     boolean [<var>is_renew</var>]
@@ -83,68 +88,68 @@ class PaymentModel extends WlModelAbstract
    *         The payment address:
    *         <dl>
    *           <dt>boolean <var>is_new</var></dt>
-   *           <dd>Set this value is <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
+   *           <dd>Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
    *           <dt>string [<var>k_geo_country</var>]</dt>
-   *           <dd>The key of the country used for the payment address. Specify to add a new address.</dd>
+   *           <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>k_geo_region</var>]</dt>
-   *           <dd>The key of the region for the payment address. Specify to add a new address.</dd>
+   *           <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>k_pay_address</var>]</dt>
-   *           <dd>The key of the saved payment address. Specify to use a saved address.</dd>
+   *           <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
    *           <dt>string [<var>s_city</var>]</dt>
-   *           <dd>The city used for the payment address. Specify to add a new address.</dd>
+   *           <dd>The city used for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_name</var>]</dt>
-   *           <dd>The card name. Specify to add a new address.</dd>
+   *           <dd>The card name. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_phone</var>]</dt>
-   *           <dd>The payment phone. Specify to add a new address.</dd>
+   *           <dd>The payment phone. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_postal</var>]</dt>
-   *           <dd>The postal code for the payment address. Specify to add a new address.</dd>
+   *           <dd>The postal code for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_street1</var>]</dt>
-   *           <dd>The payment address. Specify to add a new address.</dd>
+   *           <dd>The payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_street2</var>]</dt>
-   *           <dd>The optional payment address. Specify to add a new address.</dd>
+   *           <dd>The optional payment address. Specify this to add a new address.</dd>
    *         </dl>
    *       </dd>
    *       <dt>
    *         int [<var>i_csc</var>]
    *       </dt>
    *       <dd>
-   *         The credit card CSC. Specify to add a new card.
+   *         The credit card CSC. Specify this to add a new card.
    *       </dd>
    *       <dt>
    *         int [<var>i_month</var>]
    *       </dt>
    *       <dd>
-   *         The credit card expiration month. Specify to add a new card.
+   *         The credit card expiration month. Specify this to add a new card.
    *       </dd>
    *       <dt>
    *         int [<var>i_year</var>]
    *       </dt>
    *       <dd>
-   *         The credit card expiration year. Specify to add a new card.
+   *         The credit card expiration year. Specify this to add a new card.
    *       </dd>
    *       <dt>
    *         boolean <var>is_new</var>
    *       </dt>
    *       <dd>
-   *         <tt>1</tt> to add a new card; <tt>0</tt> to use a saved card.
+   *         Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
    *       </dd>
    *       <dt>
    *         string [<var>k_pay_bank</var>]
    *       </dt>
    *       <dd>
-   *         The key of a credit card. Specify to use saved card.
+   *         The key of the credit card. Specify this to use saved card.
    *       </dd>
    *       <dt>
    *         string [<var>s_comment</var>]
    *       </dt>
    *       <dd>
-   *         Optional comment(s). Specify to add a new card.
+   *         Optional comment(s). Specify this to add a new card.
    *       </dd>
    *       <dt>
    *         string [<var>s_number</var>]
    *       </dt>
    *       <dd>
-   *         The card number. Specify to add a new card.
+   *         The card number. Specify this to add a new card.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -158,7 +163,7 @@ class PaymentModel extends WlModelAbstract
    *     boolean [<var>is_hide</var>]
    *   </dt>
    *   <dd>
-   *     Whether this payment method is hidden.
+   *     Determines whether this payment method is hidden.
    *   </dd>
    *   <dt>
    *     boolean [<var>is_success</var>=<tt>false</tt>]
@@ -193,9 +198,6 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * List of quiz response keys.
-   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
-   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table or
-   * special value from {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} constant.
    *
    * @post post
    * @var array
@@ -203,56 +205,56 @@ class PaymentModel extends WlModelAbstract
   public $a_quiz_response = [];
 
   /**
-   * Information about recurring booking:
+   * Information about the recurring booking:
    * <dl>
    *   <dt>
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     Days of week when appointment must repeat. Constants of {@link \WellnessLiving\Core\a\ADateWeekSid} class.
-   *     Empty if appointment must not repeat weekly.
+   *     The days of week when the appointment repeat. One of the {@link ADateWeekSid} constants.
+   *     This will be empty if the appointment doesn't repeat weekly.
    *   </dd>
    *   <dt>
    *     string [<var>dl_end</var>]
    *   </dt>
    *   <dd>
-   *     Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
+   *     The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
    *   </dd>
    *   <dt>
    *     int [<var>i_occurrence</var>]
    *   </dt>
    *   <dd>
-   *     Number of occurrences after that appointment repeat must stop.
-   *     Empty if repeat must not stop after a certain number of occurrences.
+   *     The number of occurrences after which the appointment's repeat cycle stops.
+   *     This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
    *   </dd>
    *   <dt>
    *     int <var>i_period</var>
    *   </dt>
    *   <dd>
-   *     Frequency of appointment repeating.
+   *     The frequency of the appointment's repeat cycle.
    *   </dd>
    *   <dt>
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     Measurement unit of `i_period`. One of {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     `true` if appointment must repeat monthly at the same date.
-   *     `false` if appointment must repeat monthly at the same week day.
-   *     `null` if appointment must not repeat monthly.
+   *     <tt>true</tt> - the appointment repeats monthly on the same date.
+   *     <tt>false</tt> - the appointment repeats monthly on the same day of the week.
+   *     <tt>null</tt> - the appointment doesn't repeat monthly.
    *   </dd>
    * </dl>
    *
-   * `null` if booking must be not recurring.
+   * This will be `null` if the booking isn't recurring.
    *
    * @post post
    * @var array|null
    */
-  public $a_repeat;
+  public $a_repeat = null;
 
   /**
    * A list of assets being booked. Every element has the next keys:
@@ -299,8 +301,8 @@ class PaymentModel extends WlModelAbstract
   public $a_visit;
 
   /**
-   * Whether the class/event can be booked at this step or not.
-   * External process control flag.
+   * Determines whether the class/event can be booked at this step or not.
+   * This is an external process control flag.
    *
    * @post post
    * @var bool
@@ -317,7 +319,7 @@ class PaymentModel extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * Mode type. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The mode type. One of the {@link ModeSid} constants.
    *
    * @get get
    * @post get
@@ -361,8 +363,6 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * Login promotion to be used to book a class.
-   *
-   * Primary key from {@link  \RsLoginProductSql}.
    *
    * @post post
    * @var string

@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * An endpoint that allows to send notifications to users of the certain business or location.
  *
- * This endpoint is available only for user with a special privilege. If you want to use this endpoint, contant
+ * This endpoint is available only for user with a special privilege. If you want to use this endpoint, contact
  * with WellnessLiving support first.
  */
 class NotificationSendModel extends WlModelAbstract
@@ -45,7 +45,6 @@ class NotificationSendModel extends WlModelAbstract
    *
    * @post post
    * @var string
-   * @see \RsBusinessSql
    */
   public $k_business = '0';
 
@@ -56,7 +55,6 @@ class NotificationSendModel extends WlModelAbstract
    *
    * @post post
    * @var string|null
-   * @see \RsLocationSql
    */
   public $k_location = null;
 

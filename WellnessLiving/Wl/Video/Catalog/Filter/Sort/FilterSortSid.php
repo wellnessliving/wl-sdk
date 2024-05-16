@@ -17,6 +17,13 @@ class FilterSortSid
   const ALPHABET = 1;
 
   /**
+   * Sort by custom.
+   *
+   * @title Custom
+   */
+  const CUSTOM = 4;
+
+  /**
    * Sort by most recently added.
    *
    * @title Most Recent

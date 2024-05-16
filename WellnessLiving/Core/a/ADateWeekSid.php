@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\a;
 /**
  * A class for the days of the week.
  */
-class ADateWeekSid
+abstract class ADateWeekSid
 {
   /**
    * Friday.

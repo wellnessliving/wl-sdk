@@ -3,11 +3,12 @@
 namespace WellnessLiving\Wl\Schedule\ClassView;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Schedule\ClassList\ClassListModel;
 
 /**
  * Gets information about a specified class session.
  *
- * A class listing can be retrieved from the {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel} endpoint.
+ * A class listing can be retrieved from the {@link ClassListModel} endpoint.
  */
 class ClassViewModel extends WlModelAbstract
 {
@@ -68,7 +69,7 @@ class ClassViewModel extends WlModelAbstract
    *     int <var>id_deny_reason</var>
    *   </dt>
    *   <dd>
-   *     ID of deny reason. One of {@link \Wl\Schedule\ClassView\DenyReasonSid} constants.
+   *     ID of deny reason. One of {@link DenyReasonSid} constants.
    *   </dd>
    *   <dt>bool <var>is_book</var></dt>
    *   <dd>This will be `true` if the current class was booked by the current client.</dd>
@@ -82,6 +83,8 @@ class ClassViewModel extends WlModelAbstract
    *   <dd>This will be `true` if the wait list is enabled for this class. Otherwise, this will be `false`.</dd>
    *   <dt>string <var>m_price</var></dt>
    *   <dd>The session price.</dd>
+   *   <dt>bool <var>hide_price</var></dt>
+   *   <dd>Hide individual price of the class session, if client has applicable pricing option.</dd>
    *   <dt>string <var>s_duration</var></dt>
    *   <dd>The class duration in a human readable format.</dd>
    *   <dt>string <var>s_title</var></dt>
@@ -124,7 +127,7 @@ class ClassViewModel extends WlModelAbstract
    * @post get
    * @var array[]|null
    */
-  public $a_session_request;
+  public $a_session_request = null;
 
   /**
    * A list of sessions with information, received in a multiple session mode.
@@ -188,6 +191,19 @@ class ClassViewModel extends WlModelAbstract
   public $dt_date = '';
 
   /**
+   * Key of the business in which the action is performed.
+   *
+   * `null` if key of the business was not passed.
+   *
+   * Key of the business is required if {@link ClassViewModel} was passed.
+   *
+   * @get get
+   * @post get
+   * @var string|null
+   */
+  public $k_business = null;
+
+  /**
    * The class period key.
    *
    * @get get
@@ -198,7 +214,7 @@ class ClassViewModel extends WlModelAbstract
 
   /**
    * A list of sessions to get information for.
-   * A serialized array. See {@link \WellnessLiving\Wl\Schedule\ClassView\ClassViewModel::$a_session_request} for the array structure.
+   * A serialized array. See {@link ClassViewModel::$a_session_request} for the array structure.
    * Serialization and sending by POST is necessary to send big lists.
    *
    * @post post

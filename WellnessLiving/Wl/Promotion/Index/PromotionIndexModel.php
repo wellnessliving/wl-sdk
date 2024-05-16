@@ -2,7 +2,15 @@
 
 namespace WellnessLiving\Wl\Promotion\Index;
 
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Event\EventListModel;
+use WellnessLiving\Wl\Promotion\Edit\Limit\Cycle\Sid;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\WlDurationTypeSid;
+use WellnessLiving\Wl\WlProgramCategorySid;
+use WellnessLiving\Wl\WlProgramSid;
+use WellnessLiving\Wl\WlProgramTypeSid;
 
 /**
  * Gets a list of introductory promotion offers of a specified type available at a given location.
@@ -22,19 +30,23 @@ class PromotionIndexModel extends WlModelAbstract
    *       <dt>array[] <var>a_class</var></dt>
    *       <dd>
    *         A list of available classes. Each element has the key `k_class`, where the primary key of the class can be found.
+   *
    *       </dd>
    *       <dt>array[] <var>a_event</var></dt>
    *       <dd>
    *         A list of available events. Each element has the key `k_class`, where the primary key of the event can be found.
+   *
    *       </dd>
    *       <dt>array[] <var>a_resource</var></dt>
    *       <dd>
    *         A list of available assets. Each element has the key `k_resource`, where the primary key of the asset can be found.
+   *
    *       </dd>
    *       <dt>array[] <var>a_service</var></dt>
    *       <dd>
    *         A list of available appointment types. Each element has the key `k_service`, where the primary key of the
    *         appointment type can be found.
+   *
    *       </dd>
    *       <dt>bool <var>is_class_all</var></dt>
    *       <dd>If `true`, any class in the business can be visited with this Purchase Option. If `false`, only selected classes can be visited.
@@ -57,14 +69,14 @@ class PromotionIndexModel extends WlModelAbstract
    *     Some fields can be different depending on type of the component, but each element of the array includes:
    *     <dl>
    *       <dt>int <var>id_purchase_item</var></dt>
-   *       <dd>The type of the component. This can only be {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid::ENROLLMENT},
-   *          {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid::PROMOTION} or {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid::PRODUCT}.</dd>
+   *       <dd>The type of the component. This can only be {@link WlPurchaseItemSid::ENROLLMENT},
+   *          {@link WlPurchaseItemSid::PROMOTION} or {@link WlPurchaseItemSid::PRODUCT}.</dd>
    *       <dt>string <var>k_id</var></dt>
    *       <dd>
    *         The primary key of the component in the related table. This depends on the type of the component.
-   *         The key of the event for {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid::ENROLLMENT}, the key of the Purchase Option for the
-   *         {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid::PROMOTION}, the key of the product option for the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid::PRODUCT}.
-   *         Full information about events can be taken from the {@link \WellnessLiving\Wl\Event\EventListModel}. Purchase Options from the {@link \WellnessLiving\Wl\Promotion\Index\PromotionIndexModel}.
+   *         The key of the event for {@link WlPurchaseItemSid::ENROLLMENT}, the key of the Purchase Option for the
+   *         {@link WlPurchaseItemSid::PROMOTION}, the key of the product option for the {@link WlPurchaseItemSid::PRODUCT}.
+   *         Full information about events can be taken from the {@link EventListModel}. Purchase Options from the {@link PromotionIndexModel}.
    *         Full information about products are not available at this moment though API.
    *       </dd>
    *       <dt>int <var>i_quantity</var></dt>
@@ -93,8 +105,8 @@ class PromotionIndexModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     Attendance restrictions, if available. If unavailable, this will be an empty array. Every element has a key, which is a type of
-   *     the time period {@link \WellnessLiving\Core\a\ADurationSid::DAY}, {@link \WellnessLiving\Core\a\ADurationSid::WEEK}, {@link \WellnessLiving\Core\a\ADurationSid::MONTH},
-   *     {@link \WellnessLiving\Core\a\ADurationSid::YEAR}.
+   *     the time period {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH},
+   *     {@link ADurationSid::YEAR}.
    *     The values are:
    *     <dl>
    *       <dt>int <var>i_limit</var></dt>
@@ -107,11 +119,11 @@ class PromotionIndexModel extends WlModelAbstract
    *       <dd>The duration of the time period after which rolled over session will expire.</dd>
    *       <dt>int <var>id_roll_over_expire</var></dt>
    *       <dd>
-   *         The type of <var>i_roll_over_expire</var> {@link \WellnessLiving\Core\a\ADurationSid::DAY}, {@link \WellnessLiving\Core\a\ADurationSid::WEEK},
-   *         {@link \WellnessLiving\Core\a\ADurationSid::MONTH}, {@link \WellnessLiving\Core\a\ADurationSid::YEAR}.
+   *         The type of <var>i_roll_over_expire</var> {@link ADurationSid::DAY}, {@link ADurationSid::WEEK},
+   *         {@link ADurationSid::MONTH}, {@link ADurationSid::YEAR}.
    *       </dd>
    *       <dt>int <var>id_limit_cycle</var></dt>
-   *       <dd>The type of the limit cycle {@link \WellnessLiving\Wl\Promotion\Edit\Limit\Cycle\Sid}.</dd>
+   *       <dd>The type of the limit cycle {@link Sid}.</dd>
    *       <dt>bool <var>is_reconcile_visit</var></dt>
    *       <dd>Determines whether to reconcile unpaid sessions on restrictions reset.</dd>
    *       <dt>bool <var>is_roll_over_expire</var></dt>
@@ -155,7 +167,7 @@ class PromotionIndexModel extends WlModelAbstract
    *     int <var>id_limit_duration</var>
    *   </dt>
    *   <dd>
-   *     The type of <var>i_limit_duration</var> {@link \WellnessLiving\Core\a\ADurationSid::MINUTE} or {@link \WellnessLiving\Core\a\ADurationSid::HOUR}.
+   *     The type of <var>i_limit_duration</var> {@link ADurationSid::MINUTE} or {@link ADurationSid::HOUR}.
    *   </dd>
    *   <dt>
    *     int <var>id_duration</var>
@@ -163,14 +175,14 @@ class PromotionIndexModel extends WlModelAbstract
    *   <dd>
    *     The type of periods for the duration type "Period".
    *     For example, if the duration of the Purchase Option is 12 months, this field will be the ID of the month.
-   *     See all the possible options here: {@link \WellnessLiving\Core\a\ADurationSid}.
+   *     See all the possible options here: {@link ADurationSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_duration_type</var>
    *   </dt>
    *   <dd>
-   *     The type of the duration. Ths can be "Without End", "Expires on a certain date", "Period".
-   *     See more information here: {@link \WellnessLiving\WlDurationTypeSid}.
+   *     The type of the duration. This can be "Without End", "Expires on a certain date", "Period".
+   *     See more information here: {@link WlDurationTypeSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program</var>
@@ -178,7 +190,7 @@ class PromotionIndexModel extends WlModelAbstract
    *   <dd>
    *     The type of the Purchase Option. The <var>id_program</var> relates to only one <var>id_program_type</var> and one
    *     <var>id_program_category</var>.
-   *     See more information here: {@link \WellnessLiving\WlProgramSid}.
+   *     See more information here: {@link WlProgramSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program_category</var>
@@ -186,14 +198,14 @@ class PromotionIndexModel extends WlModelAbstract
    *   <dd>
    *     The category of the program for promotions. The <var>id_program_category</var> relates to more than one
    *     <var>id_program</var>.
-   *     See more information here: {@link \WellnessLiving\WlProgramCategorySid}.
+   *     See more information here: {@link WlProgramCategorySid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program_type</var>
    *   </dt>
    *   <dd>
    *     The ID of the promotion program type. The <var>id_program_type</var> relates to more than one <var>id_program</var>.
-   *     See more information here: {@link \WellnessLiving\WlProgramTypeSid}.
+   *     See more information here: {@link WlProgramTypeSid}.
    *   </dd>
    *   <dt>
    *     bool <var>is_direct_buy_only</var>
@@ -276,7 +288,7 @@ class PromotionIndexModel extends WlModelAbstract
   public $i_image_width = 0;
 
   /**
-   * The program type ID, which will be one of the {@link \WellnessLiving\WlProgramTypeSid} constants.
+   * The program type ID, which will be one of the {@link WlProgramTypeSid} constants.
    *
    * `0` to not filter Purchase Options with type of the Purchase Option.
    *

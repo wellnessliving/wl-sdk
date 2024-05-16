@@ -16,8 +16,13 @@ class LoginTypeModel extends WlModelAbstract
    * A list of login types, keys, and information. Each element is an array with the following information:
    *
    * <dl>
+   *   <dt>bool <var>id_client_type</var></dt>
+   *   <dd>
+   *     System ID. One of {@link SystemSid} constants.
+   *   </dd>
    *   <dt>bool <var>is_member</var></dt>
    *   <dd>
+   *     Deprecated Use <var>id_client_type</var> instead.
    *     It will be `1` if the record contains a type of member.
    *     It will be `0` if record contains some other type of client.
    *     It will be `null` if the record contains some type of prospect.
@@ -33,7 +38,15 @@ class LoginTypeModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_login_type_list;
+  public $a_login_type_list = [];
+
+  /**
+   * If `true`, this `k_business` is a franchisor, and login types of all franchisees should be returned.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_franchisor = false;
 
   /**
    * The business key used internally by WellnessLiving.

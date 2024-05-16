@@ -17,4 +17,5 @@ class Sid
    */
   const PAYMENT = 2;
 }
+
 ?>

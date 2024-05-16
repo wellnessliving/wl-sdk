@@ -3,19 +3,24 @@
 namespace WellnessLiving\Wl\Appointment\Book\Payment;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
+use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
+use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\Service\ServicePriceSid;
 
 /**
  * Sends payments for an appointment booking.
  *
  * This endpoint using captcha check.
  * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
- * For this API an action is `1064`.
+ * For this API an action is {@link BusinessPaymentCaptcha::CID}.
  */
 class PaymentPostModel extends WlModelAbstract
 {
   /**
    * Information detailing an appointment booking.
-   * Same as {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentModel::$a_book_data}.
+   * Same as {@link PaymentModel::$a_book_data}.
    *
    * @post post
    * @var array
@@ -40,68 +45,68 @@ class PaymentPostModel extends WlModelAbstract
    *         The payment address:
    *         <dl>
    *           <dt>boolean <var>is_new</var></dt>
-   *           <dd>Set this value is <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
+   *           <dd>Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
    *           <dt>string [<var>k_geo_country</var>]</dt>
-   *           <dd>The key of the country used for the payment address. Specify to add a new address.</dd>
+   *           <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>k_geo_region</var>]</dt>
-   *           <dd>The key of the region for the payment address. Specify to add a new address.</dd>
+   *           <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>k_pay_address</var>]</dt>
-   *           <dd>The key of the saved payment address. Specify to use a saved address.</dd>
+   *           <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
    *           <dt>string [<var>s_city</var>]</dt>
-   *           <dd>The city used for the payment address. Specify to add a new address.</dd>
+   *           <dd>The city used for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_name</var>]</dt>
-   *           <dd>The card name. Specify to add a new address.</dd>
+   *           <dd>The card name. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_phone</var>]</dt>
-   *           <dd>The payment phone. Specify to add a new address.</dd>
+   *           <dd>The payment phone. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_postal</var>]</dt>
-   *           <dd>The postal code for the payment address. Specify to add a new address.</dd>
+   *           <dd>The postal code for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_street1</var>]</dt>
-   *           <dd>The payment address. Specify to add a new address.</dd>
+   *           <dd>The payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_street2</var>]</dt>
-   *           <dd>The optional payment address. Specify to add a new address.</dd>
+   *           <dd>The optional payment address. Specify this to add a new address.</dd>
    *         </dl>
    *       </dd>
    *       <dt>
    *         int [<var>i_csc</var>]
    *       </dt>
    *       <dd>
-   *         The credit card CSC. Specify to add a new card.
+   *         The credit card CSC. Specify this to add a new card.
    *       </dd>
    *       <dt>
    *         int [<var>i_month</var>]
    *       </dt>
    *       <dd>
-   *         The credit card expiration month. Specify to add a new card.
+   *         The credit card expiration month. Specify this to add a new card.
    *       </dd>
    *       <dt>
    *         int [<var>i_year</var>]
    *       </dt>
    *       <dd>
-   *         The credit card expiration year. Specify to add a new card.
+   *         The credit card expiration year. Specify this to add a new card.
    *       </dd>
    *       <dt>
    *         boolean <var>is_new</var>
    *       </dt>
    *       <dd>
-   *         <tt>1</tt> to add a new card; <tt>0</tt> to use a saved card.
+   *         Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
    *       </dd>
    *       <dt>
    *         string [<var>k_pay_bank</var>]
    *       </dt>
    *       <dd>
-   *         The key of a credit card. Specify to use saved card.
+   *         The key of the credit card. Specify this to use saved card.
    *       </dd>
    *       <dt>
    *         string [<var>s_comment</var>]
    *       </dt>
    *       <dd>
-   *         Optional comment(s). Specify to add a new card.
+   *         Optional comment(s). Specify this to add a new card.
    *       </dd>
    *       <dt>
    *         string [<var>s_number</var>]
    *       </dt>
    *       <dd>
-   *         The card number. Specify to add a new card.
+   *         The card number. Specify this to add a new card.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -115,7 +120,7 @@ class PaymentPostModel extends WlModelAbstract
    *     boolean [<var>is_hide</var>]
    *   </dt>
    *   <dd>
-   *     Whether this payment method is hidden.
+   *     Determines whether this payment method is hidden.
    *   </dd>
    *   <dt>
    *     boolean [<var>is_success</var>=<tt>false</tt>]
@@ -167,7 +172,7 @@ class PaymentPostModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_promotion_data;
+  public $a_promotion_data = null;
 
   /**
    * Information about selected purchase items.
@@ -190,7 +195,7 @@ class PaymentPostModel extends WlModelAbstract
    *   </dd>
    *
    *   <dt>string <var>id_purchase_item</var></dt>
-   *   <dd>The purchase item ID. A constant of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid}.</dd>
+   *   <dd>The purchase item ID. A constant of {@link WlPurchaseItemSid}.</dd>
    *
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The value of the discount used for the purchase.</dd>
@@ -208,7 +213,7 @@ class PaymentPostModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_purchase;
+  public $a_purchase = null;
 
   /**
    * The purchase item keys from the database.
@@ -218,12 +223,10 @@ class PaymentPostModel extends WlModelAbstract
    * @post result
    * @var string[]|null
    */
-  public $a_purchase_item;
+  public $a_purchase_item = null;
 
   /**
    * List of quiz response keys.
-   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
-   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table.
    *
    * @post post
    * @var array
@@ -231,7 +234,7 @@ class PaymentPostModel extends WlModelAbstract
   public $a_quiz_response = [];
 
   /**
-   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * List of user keys to book appointments.
    * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
@@ -241,7 +244,7 @@ class PaymentPostModel extends WlModelAbstract
   public $a_uid = [];
 
   /**
-   * The key of source mode. A constant of {@link \WellnessLiving\Wl\Mode\ModeSid}.
+   * The key of source mode. A constant of {@link ModeSid}.
    *
    * @get get
    * @post get
@@ -250,15 +253,15 @@ class PaymentPostModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * The payment type for the appointment. A constant of {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid}.
+   * The payment type for the appointment. A constant of {@link WlAppointmentPaySid}.
    *
    * @post result
    * @var int
    */
-  public $id_pay;
+  public $id_pay = null;
 
   /**
-   * The purchase item ID. A constant of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid}.
+   * The purchase item ID. A constant of {@link WlPurchaseItemSid}.
    *
    * @get get
    * @post get
@@ -267,7 +270,7 @@ class PaymentPostModel extends WlModelAbstract
   public $id_purchase_item = 0;
 
   /**
-   * `true` if client is walk-in, otherwise `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -276,7 +279,7 @@ class PaymentPostModel extends WlModelAbstract
   public $is_walk_in = false;
 
   /**
-   * The item key. Depends of {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentModel::$id_purchase_item} property.
+   * The item key. Depends of {@link PaymentModel::$id_purchase_item} property.
    *
    * @get get
    * @post get
@@ -300,7 +303,7 @@ class PaymentPostModel extends WlModelAbstract
    * @post result
    * @var string
    */
-  public $k_login_activity_purchase;
+  public $k_login_activity_purchase = null;
 
   /**
    * Login prize key. In case when appointment paid by reward prize, there is the key of redeemed login prize. Empty otherwise.
@@ -364,11 +367,11 @@ class PaymentPostModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $m_total;
+  public $m_total = null;
 
   /**
    * Variable price. Is set only during booking an appointment with variable type of the price
-   *   {@link \WellnessLiving\RsServicePriceSid::VARIES} from spa backend {@link \WellnessLiving\Wl\Mode\ModeSid::SPA_BACKEND}.
+   *   {@link ServicePriceSid::VARIES} from spa backend {@link ModeSid::SPA_BACKEND}.
    *
    * @get get
    * @var string
@@ -403,7 +406,7 @@ class PaymentPostModel extends WlModelAbstract
   public $text_discount_code = '';
 
   /**
-   * User to get information for.
+   * The user key.
    *
    * @get get
    * @post get

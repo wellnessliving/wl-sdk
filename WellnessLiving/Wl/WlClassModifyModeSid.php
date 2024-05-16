@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * The list of possible modify mode for class modify wizard.
  */
-class WlClassModifyModeSid
+abstract class WlClassModifyModeSid
 {
   /**
    * Edit class schedule

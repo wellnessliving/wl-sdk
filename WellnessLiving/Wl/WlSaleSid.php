@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * List of sale categories on the store page.
  *
- * Last ID: 12.
+ * Last ID: 13.
  */
 abstract class WlSaleSid
 {
@@ -50,7 +50,7 @@ abstract class WlSaleSid
   const PRODUCT = 4;
 
   /**
-   * Promotions with program category {@link WlProgramCategorySid::CLASS} and {@link WlProgramCategorySid::VISIT}.
+   * Promotions with program category {@link WlProgramCategorySid::CLASSES} and {@link WlProgramCategorySid::VISIT}.
    */
   const PROMOTION_CLASS = 1;
 
@@ -60,9 +60,14 @@ abstract class WlSaleSid
   const PROMOTION_RESOURCE = 9;
 
   /**
-   * Promotions with program category {@link WlProgramCategorySid::SERVICE}.
+   * Promotions with program category {@link WlProgramCategorySid::SERVICE} and {@link WlProgramCategorySid::INSURANCE}.
    */
   const PROMOTION_SERVICE = 2;
+
+  /**
+   * Promotions with program category {@link WlProgramCategorySid::VIDEO}.
+   */
+  const PROMOTION_VIDEO = 13;
 
   /**
    * Products: water, t-shirts, etc. That available for quick buy.

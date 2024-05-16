@@ -12,12 +12,12 @@ class InfoCanCompleteModel extends WlModelAbstract
   /**
    * A list of sessions of an event that can be booked together.
    *
-   * This is the same as {@link \WellnessLiving\Wl\Book\Process\Info\InfoCanCompleteModel::$a_session_select_post}, but limited by query string
+   * This is the same as {@link InfoCanCompleteModel::$a_session_select_post}, but limited by query string
    * length and might fail if the user is booking more than 50 sessions at once. Therefore, using the POST method is preferable.
    *
-   * @deprecated Use {@link \WellnessLiving\Wl\Book\Process\Info\InfoCanCompleteModel::$a_session_select_post} along with POST call instead.
    * @get get
    * @var array[]
+   * @deprecated Use {@link InfoCanCompleteModel::$a_session_select_post} along with POST call instead.
    */
   public $a_session_select = [];
 
@@ -66,6 +66,15 @@ class InfoCanCompleteModel extends WlModelAbstract
    * @var bool
    */
   public $hide_price = '';
+
+  /**
+   * Key of the business in which the booking is performed.
+   *
+   * @get get
+   * @post get
+   * @var string|null
+   */
+  public $k_business = null;
 
   /**
    * The class period ID that the user started to book.

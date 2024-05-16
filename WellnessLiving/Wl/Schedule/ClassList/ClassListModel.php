@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Schedule\ClassList;
 
+use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -31,8 +32,8 @@ class ClassListModel extends WlModelAbstract
   public $a_location = [];
 
   /**
-   * A list of classes sessions starting with the date {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_date}
-   * and in the 62 days ahead (or up to {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_end}).
+   * A list of classes sessions starting with the date {@link ClassListModel::$dt_date}
+   * and in the 62 days ahead (or up to {@link ClassListModel::$dt_end}).
    * Every element has the following keys:
    * <dl>
    *   <dt>
@@ -46,12 +47,14 @@ class ClassListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The list of staff keys for the staff member conducting the session.
+   *
    *   </dd>
    *   <dt>
    *     string[] <var>a_virtual_location</var>
    *   </dt>
    *   <dd>
    *     The list of virtual locations keys. Each value is a location key.
+   *
    *   </dd>
    *   <dt>
    *     string <var>dt_date</var>
@@ -82,7 +85,7 @@ class ClassListModel extends WlModelAbstract
    *     int <var>i_day</var>
    *   </dt>
    *   <dd>
-   *     The day of the week when session is occurred. Constant from {@link \WellnessLiving\Core\a\ADateWeekSid}.
+   *     The day of the week when session is occurred. Constant from {@link ADateWeekSid}.
    *   </dd>
    *   <dt>
    *     int <var>i_duration</var>
@@ -96,6 +99,12 @@ class ClassListModel extends WlModelAbstract
    *   <dd>
    *     If `true`, this class period was canceled. Otherwise, this will be `false`.
    *   </dd>
+   *    <dt>
+   *      bool <var>is_event</var>
+   *    </dt>
+   *    <dd>
+   *      If `true`, this is an event. Otherwise, this will be `false`.
+   *    </dd>
    *   <dt>
    *     bool <var>is_virtual</var>
    *   </dt>
@@ -149,8 +158,6 @@ class ClassListModel extends WlModelAbstract
 
   /**
    * The list end date in UTC and in MySQL format.
-   * If left empty, the default duration is {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::DEFAULT_PERIOD} days after
-   * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$dt_date}.
    *
    * @get get
    * @var string
@@ -168,7 +175,7 @@ class ClassListModel extends WlModelAbstract
 
   /**
    * If `true`, sessions from every class tab are returned. If `false`, use the
-   * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_class_tab} value.
+   * {@link ClassListModel::$k_class_tab} value.
    *
    * @get get
    * @var bool
@@ -185,7 +192,7 @@ class ClassListModel extends WlModelAbstract
 
   /**
    * If `true`, there exists at least one virtual service by a specified
-   * {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_business} and {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$k_class_tab},
+   * {@link ClassListModel::$k_business} and {@link ClassListModel::$k_class_tab},
    * Otherwise, this will be `false`.
    *
    * @get result
@@ -205,7 +212,7 @@ class ClassListModel extends WlModelAbstract
    * The category tab key.
    *
    * This will be `null` if not set yet.
-   * This will be ignored if {@link \WellnessLiving\Wl\Schedule\ClassList\ClassListModel::$is_tab_all} is `true`.
+   * This will be ignored if {@link ClassListModel::$is_tab_all} is `true`.
    *
    * @get get
    * @var string

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Classes\Tab;
 /**
  * List of class tab objects.
  *
- * Last ID: 4.
+ * Last ID: 6.
  */
 abstract class TabSid
 {

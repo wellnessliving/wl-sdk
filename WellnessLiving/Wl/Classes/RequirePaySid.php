@@ -25,7 +25,8 @@ class RequirePaySid
 
   /**
    * Clients can only pay when they visit. Online payment is not available.
-   * It has additional options.
    */
   const VISIT = 2;
 }
+
+?>

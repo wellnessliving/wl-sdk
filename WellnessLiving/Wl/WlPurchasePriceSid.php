@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * A list of ways of how a Purchase Option price can be specified.
  */
-class WlPurchasePriceSid
+abstract class WlPurchasePriceSid
 {
   /**
    * Price of a promotion is specified per period.
@@ -17,3 +17,5 @@ class WlPurchasePriceSid
    */
   const SESSION = 3;
 }
+
+?>

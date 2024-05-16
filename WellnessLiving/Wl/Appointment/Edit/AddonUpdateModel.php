@@ -58,7 +58,7 @@ class AddonUpdateModel extends WlModelAbstract
    * The appointment key.
    *
    * @get get
-   * @put post
+   * @put get
    * @var string
    */
   public $k_appointment;
@@ -67,7 +67,7 @@ class AddonUpdateModel extends WlModelAbstract
    * The business key. This will be an empty string if not set yet.
    *
    * @get get
-   * @put post
+   * @put get
    * @var string
    */
   public $k_business = '';

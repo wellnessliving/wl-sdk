@@ -2,18 +2,22 @@
 
 namespace WellnessLiving\Wl\Book\Process\Resource;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Book\Process\ProcessSpaSid;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Selects assets when making a booking.
  *
- * Take note of the {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid::QUIZ} step.
+ * Take note of the {@link ProcessSpaSid::QUIZ} step.
  */
 class Resource54Model extends WlModelAbstract
 {
   /**
    * The keys of a user's activity.
-   * This won't be if the session(s) was booked at this step.
+   * This won't be empty only if the session(s) was booked at this step.
    *
    * @post result
    * @var string[]
@@ -27,50 +31,50 @@ class Resource54Model extends WlModelAbstract
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     Days of week when appointment must repeat. Constants of {@link \WellnessLiving\Core\a\ADateWeekSid} class.
-   *     Empty if appointment must not repeat weekly.
+   *     The days of week when the appointment repeat. One of the {@link ADateWeekSid} constants.
+   *     This will be empty if the appointment doesn't repeat weekly.
    *   </dd>
    *   <dt>
    *     string [<var>dl_end</var>]
    *   </dt>
    *   <dd>
-   *     Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
+   *     The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
    *   </dd>
    *   <dt>
    *     int [<var>i_occurrence</var>]
    *   </dt>
    *   <dd>
-   *     Number of occurrences after that appointment repeat must stop.
-   *     Empty if repeat must not stop after a certain number of occurrences.
+   *     The number of occurrences after which the appointment's repeat cycle stops.
+   *     This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
    *   </dd>
    *   <dt>
    *     int <var>i_period</var>
    *   </dt>
    *   <dd>
-   *     Frequency of appointment repeating.
+   *     The frequency of the appointment's repeat cycle.
    *   </dd>
    *   <dt>
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     Measurement unit of `i_period`. One of {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     `true` if appointment must repeat monthly at the same date.
-   *     `false` if appointment must repeat monthly at the same week day.
-   *     `null` if appointment must not repeat monthly.
+   *     <tt>true</tt> - the appointment repeats monthly on the same date.
+   *     <tt>false</tt> - the appointment repeats monthly on the same day of the week.
+   *     <tt>null</tt> - the appointment doesn't repeat monthly.
    *   </dd>
    * </dl>
    *
-   * `null` if booking must be not recurring.
+   * This will be `null` if the booking isn't recurring.
    *
    * @post post
    * @var array|null
    */
-  public $a_repeat;
+  public $a_repeat = null;
 
   /**
    * A list of asset categories which are available for specified session. Every element has next keys:
@@ -94,7 +98,7 @@ class Resource54Model extends WlModelAbstract
    *         array <var>a_image</var>
    *       </dt>
    *       <dd>
-   *         Asset image data. See {@link RsResourceImage::data()} for details.
+   *         Asset image data.
    *       </dd>
    *       <dt>
    *         int <var>i_index</var>
@@ -113,6 +117,7 @@ class Resource54Model extends WlModelAbstract
    *       </dt>
    *       <dd>
    *         The key of the asset in database.
+   *
    *       </dd>
    *       <dt>
    *         string <var>s_resource</var>
@@ -176,9 +181,9 @@ class Resource54Model extends WlModelAbstract
    * The selected assets. Every element has the next keys:
    * <dl>
    *   <dt>int <var>i_index</var></dt>
-   *   <dd>The asset number. Actual for assets with quantity greater <tt>1</tt>.</dd>
+   *   <dd>The asset number. Applies only for assets with a quantity greater than <tt>1</tt>.</dd>
    *   <dt>string <var>k_resource</var></dt>
-   *   <dd>The key of the asset.</dd>
+   *   <dd>The asset key.</dd>
    * </dl>
    *
    * @post post
@@ -190,8 +195,8 @@ class Resource54Model extends WlModelAbstract
    * The selected sessions.
    * Not empty only for session mode.
    *
-   * <b>Keys</b> - The class period keys.
-   * <b>Values</b> - List of date/time when the session occurred in MySQL format and in GMT.
+   * Keys refer to class period keys.
+   * And values refer to a list of the dates/times when the session occurred (returned in MySQL format and in GMT).
    *
    * @get get
    * @post get
@@ -200,11 +205,10 @@ class Resource54Model extends WlModelAbstract
   public $a_session = [];
 
   /**
-   * Selected sessions on the waiting list without pay.
+   * The selected sessions on the wait list that are unpaid.
    *
-   * Keys - session IDs.
-   *
-   * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
+   * Keys refer to session IDs.
+   * And values refer to index arrays of dates/times when the session occurred (returned in MySQL format and in GMT).
    *
    * @post post
    * @var array
@@ -221,8 +225,8 @@ class Resource54Model extends WlModelAbstract
   public $a_visit = [];
 
   /**
-   * Whether the class/event can be booked at this step or not.
-   * External process control flag.
+   * Determines whether the class/event can be booked at this step or not.
+   * This is an external process control flag.
    *
    * @post post
    * @var bool
@@ -239,7 +243,7 @@ class Resource54Model extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * Mode type. One of {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The mode type. One of the {@link ModeSid} constants.
    *
    * @get get
    * @post get
@@ -257,8 +261,8 @@ class Resource54Model extends WlModelAbstract
   public $is_force_pay_later = false;
 
   /**
-   * <tt>true</tt> if next steps of wizard are needed (for example. to purchase something to book the selected session);
-   * <tt>false</tt> if no next steps are needed (all that was needed was already bought).
+   * `true` - the next steps of the booking wizard are required (for example, to purchase something to book the selected session).
+   * `false` - no further booking steps are required.
    *
    * @post result
    * @var bool
@@ -292,8 +296,6 @@ class Resource54Model extends WlModelAbstract
   /**
    * Login promotion to be used to book a class.
    *
-   * Primary key from {@link  \RsLoginProductSql}.
-   *
    * @post post
    * @var string
    */
@@ -301,8 +303,6 @@ class Resource54Model extends WlModelAbstract
 
   /**
    * Session pass to be used to book a class.
-   *
-   * Primary key from {@link  \Wl\Session\Pass\Sql}.
    *
    * @post post
    * @var string

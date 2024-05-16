@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * Changes branch information during build.
  *
- * This API is designed to use only from builds ('BranchCreate', 'BranchDelete') and is not expected that this API is
+ * This API is designed to use only from builds (`BranchCreate`, `BranchDelete`) and is not expected that this API is
  *   called from other places.
  */
 class BranchBuildModel extends WlModelAbstract
@@ -18,17 +18,26 @@ class BranchBuildModel extends WlModelAbstract
    * Keys are aliases of the original repository catalogs.
    * Values are paths into which original catalogs are cloned.
    *
+   * Each element has the following structure:<dl>
+   * <dt>int <var>id_repository_server_type</var></dt>
+   * <dd>Repository service type ID.</dd>
+   * <dt>string <var>s_destination</var></dt>
+   * <dd>Path into which original catalog is cloned/copied.</dd>
+   * <dt>string <var>s_repository</var></dt>
+   * <dd>Repository name.</dd>
+   * <dt>string <var>s_source</var></dt>
+   * <dd>Path of the original catalog.</dd>
+   * </dl>
+   *
    * Set this property when a new branch is created. In other cases, an exception will be thrown.
    *
    * @post get
-   * @var string[]
+   * @var array
    */
   public $a_path = [];
 
   /**
    * Build key that creates a branch for the specified task.
-   *
-   * Primary key in the {@link \StudioBuildSql} table.
    *
    * @post get
    * @put get
@@ -38,8 +47,6 @@ class BranchBuildModel extends WlModelAbstract
 
   /**
    * Task link of the branch.
-   *
-   * Copy of the {@link \StudioTaskSql}.<var>s_link</var> field.
    *
    * @delete get
    * @post get

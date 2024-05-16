@@ -6,15 +6,17 @@ namespace WellnessLiving\Wl;
  * Program types.
  *
  * See {@link WlProgramSid} for a list of promotions.
+ *
+ * Last used ID: 7.
+ *
+ * @see WlProgramSid
  */
-class WlProgramTypeSid
+abstract class WlProgramTypeSid
 {
   /**
    * Duration Pass.
    *
    * Differs from {@link WlProgramTypeSid::LIMIT} in that this type of promotion is limited by time.
-   *
-   * Remaining number of allowed minutes is stored in {@link RsLoginPromotionSql}.<var>i_remain_duration</var>.
    */
   const DURATION = 7;
 
@@ -23,8 +25,6 @@ class WlProgramTypeSid
    *
    * Differs from {@link WlProgramTypeSid::PASS} in that this type of promotion allows access to only a limited number
    * of classes.
-   *
-   * Remaining number of allowed visits is stored in {@link RsLoginPromotionSql}.<var>i_remain</var>.
    */
   const LIMIT = 1;
 
@@ -32,8 +32,6 @@ class WlProgramTypeSid
    * This promotion is a membership.
    *
    * Payment schedule can be set up for memberships.
-   *
-   * Use {@link RsPromotionPaySchedule::updateTrx()} to update payment schedule and/or renew the promotion.
    */
   const MEMBERSHIP = 3;
 
@@ -67,7 +65,7 @@ class WlProgramTypeSid
    * Such passes cannot be bought, they can be only components of the special system packages,
    * packages with <var>k_business</var> = <tt>null</tt>.
    *
-   * @see WlProgramSid::CLAS_PROSPECT
+   * @see WlProgramSid::CLASS_PROSPECT
    */
   const PROSPECT = 5;
 }

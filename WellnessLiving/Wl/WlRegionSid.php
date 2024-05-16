@@ -13,30 +13,17 @@ namespace WellnessLiving\Wl;
  *
  * Last ID: 2.
  */
-class WlRegionSid
+class WlRegionSid extends \WellnessLiving\Custom\Wl\WlRegionSid
 {
   /**
    * Sydney, Australia.
    */
-  const AP_SOUTHEAST_2=2;
+  const AP_SOUTHEAST_2 = 2;
 
   /**
    * North Virginia, USA.
    */
-  const US_EAST_1=1;
-
-  /**
-   * Returns a list of data center region identifiers.
-   *
-   * @return int[] List of data center region identifiers.
-   */
-  public static function all()
-  {
-    return [
-      static::US_EAST_1,
-      static::AP_SOUTHEAST_2
-    ];
-  }
+  const US_EAST_1 = 1;
 }
 
 ?>

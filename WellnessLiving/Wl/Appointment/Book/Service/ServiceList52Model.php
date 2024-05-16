@@ -3,11 +3,14 @@
 namespace WellnessLiving\Wl\Appointment\Book\Service;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Service\ServiceBookFlowSid;
+use WellnessLiving\Wl\Service\ServicePriceSid;
+use WellnessLiving\Wl\Service\ServiceRequireSid;
 
 /**
  * Retrieves information about services in the current service category.
  *
- * This is a new version of the {@link \WellnessLiving\Wl\Appointment\Book\Service\ServiceListModel} endpoint.
+ * This is a new version of the {@link ServiceListModel} endpoint.
  * It allows for filtering a list of services by multiple book now tabs.
  */
 class ServiceList52Model extends WlModelAbstract
@@ -136,7 +139,7 @@ class ServiceList52Model extends WlModelAbstract
    *     int <var>i_price</var>
    *   </dt>
    *   <dd>
-   *     The price type ID. One of {@link \WellnessLiving\RsServicePriceSid} constants.
+   *     The price type ID. One of {@link ServicePriceSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>i_duration</var>
@@ -148,13 +151,13 @@ class ServiceList52Model extends WlModelAbstract
    *     int <var>id_book_flow</var>
    *   </dt>
    *   <dd>
-   *     The type of client booking flow. One of {@link \WellnessLiving\Wl\Service\ServiceBookFlowSid} constants.
+   *     The type of client booking flow. One of {@link ServiceBookFlowSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_service_require</var>
    *   </dt>
    *   <dd>
-   *     The required payment type ID. One of {@link \WellnessLiving\RsServiceRequireSid} constants.
+   *     The required payment type ID. One of {@link ServiceRequireSid} constants.
    *   </dd>
    *   <dt>
    *     bool <var>is_age_public</var>
@@ -276,19 +279,19 @@ class ServiceList52Model extends WlModelAbstract
    *     string <var>xml_description</var>
    *   </dt>
    *   <dd>
-   *     Appointment description.
+   *     Appointment description (deprecated, use `html_description`).
    *   </dd>
    *   <dt>
    *     string <var>xml_description_short</var>
    *   </dt>
    *   <dd>
-   *     Appointment short description.
+   *     Appointment short description (deprecated, use `html_description_short`).
    *   </dd>
    *   <dt>
    *     string <var>xml_special</var>
    *   </dt>
    *   <dd>
-   *      Special instructions.
+   *      Special instructions (deprecated, use `html_special`).
    *   </dd>
    * </dl>
    *
@@ -298,7 +301,7 @@ class ServiceList52Model extends WlModelAbstract
   public $a_service;
 
   /**
-   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * List of user keys to book appointments.
    * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
@@ -352,7 +355,7 @@ class ServiceList52Model extends WlModelAbstract
   public $is_tab_all = false;
 
   /**
-   * `true` if client is walk-in, otherwise `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -378,7 +381,7 @@ class ServiceList52Model extends WlModelAbstract
   public $k_service_category = '0';
 
   /**
-   * User to get information for.
+   * The user key.
    *
    * @get get
    * @post get

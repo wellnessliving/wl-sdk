@@ -2,16 +2,16 @@
 
 namespace WellnessLiving\Wl\Business\AmazonRegion;
 
-use WellnessLiving\Wl\WlRegionSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlRegionSid;
 
 /**
- * Retrieves the region ID for businesses.
+ * An endpoint for retrieve region ID for businesses.
  */
 class AmazonRegionModel extends WlModelAbstract
 {
   /**
-   * A list of business keys.
+   * List of business key.
    *
    * @get get
    * @var string[]
@@ -19,11 +19,11 @@ class AmazonRegionModel extends WlModelAbstract
   public $a_business = [];
 
   /**
-   * A list of region IDs for {@link AmazonRegionModel::$a_business}.
+   * List of region IDs for {@link AmazonRegionModel::$a_business}.
    *
-   * Keys refer to business keys, and values refer to region IDs (one of the {@link WlRegionSid} constants).
-   *
-   * If `0`, this business is from an unknown region.
+   * Key - is business key.
+   * Value - is region ID. One of {@link WlRegionSid} constants.
+   *   `0` if this business is form an unknown region.
    *
    * @get result
    * @var int[]

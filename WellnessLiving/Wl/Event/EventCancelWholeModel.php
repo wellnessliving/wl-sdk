@@ -10,6 +10,14 @@ use WellnessLiving\WlModelAbstract;
 class EventCancelWholeModel extends WlModelAbstract
 {
   /**
+   * Key of the business in which the class resides.
+   *
+   * @post post
+   * @var string
+   */
+  public $k_business = '0';
+
+  /**
    * An event key.
    *
    * @post post

@@ -11,6 +11,7 @@ class ListModel extends WlModelAbstract
 {
   /**
    * A list of business keys.
+   *
    * You can specify this instead of <var>$k_business</var> to load data for many businesses in one call.
    *
    * @get get
@@ -35,16 +36,34 @@ class ListModel extends WlModelAbstract
    *     The location longitude.
    *   </dd>
    *   <dt>
+   *     int <var>i_shift</var>
+   *   </dt>
+   *   <dd>
+   *     Timezone shift in hours.
+   *   </dd>
+   *   <dt>
    *     string <var>k_business</var>
    *   </dt>
    *   <dd>
    *     The business key.
    *   </dd>
    *   <dt>
+   *     string <var>k_country</var>
+   *   </dt>
+   *   <dd>
+   *     Country key.
+   *   </dd>
+   *   <dt>
    *     string <var>k_location</var>
    *   </dt>
    *   <dd>
    *     The location key.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_region</var>
+   *   </dt>
+   *   <dd>
+   *     Region key.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>

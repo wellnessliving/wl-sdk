@@ -2,7 +2,11 @@
 
 namespace WellnessLiving\Wl\Pay\Form;
 
+use WellnessLiving\Core\Locale\LocaleSid;
+use WellnessLiving\Core\a\ACardSystemSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlPayMethodSid;
+use WellnessLiving\Wl\WlPayProcessorSid;
 
 /**
  * Gets information about payment environments.
@@ -11,8 +15,8 @@ class EnvironmentModel extends WlModelAbstract
 {
   /**
    * A list of supported bank card systems.
-   * Keys refer to card types based on card numbers (see {@link \WellnessLiving\Core\a\ACardSystemSid}),
-   * and values are IDs of card systems (one of {@link \WellnessLiving\Core\a\ACardSystemSid} constants).
+   * Keys refer to card types based on card numbers (see {@link ACardSystemSid}),
+   * and values are IDs of card systems (one of {@link ACardSystemSid} constants).
    *
    * @get result
    * @var array
@@ -20,7 +24,7 @@ class EnvironmentModel extends WlModelAbstract
   public $a_card_system;
 
   /**
-   * A list of payment methods enabled for staff members. The ID is one of {@link \WellnessLiving\WlPayMethodSid} constants.
+   * A list of payment methods enabled for staff members. The ID is one of {@link WlPayMethodSid} constants.
    * The value is always `true`.
    *
    * @get result
@@ -34,13 +38,14 @@ class EnvironmentModel extends WlModelAbstract
    * Each element of the array has the following structure:
    * <dl>
    *   <dt>int <var>id_pay_method</var></dt>
-   *   <dd>The ID of type of payment method. One of {@link \WellnessLiving\WlPayMethodSid} constants.</dd>
+   *   <dd>The ID of type of payment method. One of {@link WlPayMethodSid} constants.</dd>
    *   <dt>bool [<var>is_client</var>]</dt>
    *   <dd>Determines whether this method is available for clients. This field is only returned for custom payment methods.</dd>
    *   <dt>string|null <var>k_pay_method</var></dt>
    *   <dd>
    *     The key of the custom payment method.
    *     This will be `null` if this payment method isn't customized.
+   *
    *   </dd>
    *   <dt>string [<var>s_method</var>]</dt>
    *   <dd>The name of payment method. This field is only returned for custom payment methods.</dd>
@@ -63,17 +68,17 @@ class EnvironmentModel extends WlModelAbstract
   /**
    * Represents information about payment processors.
    *
-   * Keys are payment methods IDs, one of {@link \WellnessLiving\WlPayMethodSid} constants.
+   * Keys are payment methods IDs, one of {@link WlPayMethodSid} constants.
    *
    * Value is the following array: <dl>
    *   <dt>array|null <var>a_public_keys</var></dt>
    *   <dd>
    *     Public keys configured for this payment processor.
-   *     Copy of result of {@link Wl\Pay\Processor\ProcessorInterface\PayProcessorPublicKeysInterface::publicKeys()}.
+   *
    *     `null` if this payment processor does not support public keys.
    *   </dd>
    *   <dt>int <var>id_pay_processor</var></dt>
-   *   <dd>ID of the payment processor. One of {@link \WellnessLiving\WlPayProcessorSid} constants.</dd>
+   *   <dd>ID of the payment processor. One of {@link WlPayProcessorSid} constants.</dd>
    *   <dt>string <var>k_business_merchant</var></dt>
    *   <dd>Key of the business merchant.</dd>
    * </dl>
@@ -83,7 +88,16 @@ class EnvironmentModel extends WlModelAbstract
    * @get result
    * @var array[]|null
    */
-  public $a_pay_processor;
+  public $a_pay_processor = null;
+
+  /**
+   * Local date with time now in current location {@link EnvironmentModel::$k_location}
+   * or business {@link EnvironmentModel::$k_business} if not set location.
+   *
+   * @get result
+   * @var string
+   */
+  public $dl_now;
 
   /**
    * The percentage of the payment amount to additionally withdraw as a surcharge.
@@ -93,14 +107,14 @@ class EnvironmentModel extends WlModelAbstract
    * @get result
    * @var string|null
    */
-  public $f_surcharge;
+  public $f_surcharge = null;
 
   /**
    * The locale ID of the business.
    *
    * @get result
-   * @see \WellnessLiving\Core\Locale\LocaleSid
    * @var int|null
+   * @see LocaleSid
    */
   public $id_locale;
 
@@ -114,10 +128,18 @@ class EnvironmentModel extends WlModelAbstract
   public $is_save_source;
 
   /**
+   * Whether tips are accepted.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_tip = false;
+
+  /**
    * The key of the business to retrieve payment information for.
    *
    * This will be `0` if not set yet.
-   * An empty string if payments are performed with the WellnessLiving system merchant.
+   * An empty string or `null` if payments are performed with the WellnessLiving system merchant.
    *
    * @get get
    * @var string
@@ -150,7 +172,7 @@ class EnvironmentModel extends WlModelAbstract
    * @get result
    * @var string|null
    */
-  public $m_surcharge;
+  public $m_surcharge = null;
 }
 
 ?>

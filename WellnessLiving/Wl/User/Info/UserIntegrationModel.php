@@ -24,7 +24,7 @@ class UserIntegrationModel extends WlModelAbstract
    * @get result
    * @var array|null
    */
-  public $a_integration;
+  public $a_integration = null;
 
   /**
    * The key of the business.

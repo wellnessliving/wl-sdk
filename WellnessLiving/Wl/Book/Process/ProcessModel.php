@@ -2,21 +2,27 @@
 
 namespace WellnessLiving\Wl\Book\Process;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Classes\RequirePaySid;
+use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Performs the booking wizard steps.
  *
- * @deprecated Use {@link \WellnessLiving\Wl\Book\Process\Process54Model} instead.
+ * @deprecated Use {@link Process54Model} instead.
  */
 class ProcessModel extends WlModelAbstract
 {
   /**
    * Relationships who clients are allowed to book for.
-   * One of the {@link \WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid} constants.
+   * One of the {@link WlFamilyRelationSid} constants.
    *
    * This will be `null` if clients aren't allowed to book for their relationships.
    *
+   * @depreated Use {@link ProcessModel::$is_family_relation_book} instead. Full list of relatives available, see {@link WlFamilyRelationSid}.
    * @get result
    * @var int[]|null
    */
@@ -29,14 +35,14 @@ class ProcessModel extends WlModelAbstract
    *     int <var>id_book_process</var>
    *   </dt>
    *   <dd>
-   *     The step ID. One of the {@link \WellnessLiving\Wl\Book\Process\ProcessSpaSid} constants.
+   *     The step ID. One of the {@link ProcessSpaSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_current</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> — this item is current.
-   *     <tt>false</tt> — this item isn't current or not set yet.
+   *     <tt>true</tt> - this item is current.
+   *     <tt>false</tt> - this item isn't current or not set yet.
    *   </dd>
    * </dl>
    *
@@ -52,7 +58,7 @@ class ProcessModel extends WlModelAbstract
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     The days of week when the appointment repeat. One of the {@link \WellnessLiving\Core\a\ADateWeekSid} constants.
+   *     The days of week when the appointment repeat. One of the {@link ADateWeekSid} constants.
    *     This will be empty if the appointment doesn't repeat weekly.
    *   </dd>
    *   <dt>
@@ -78,15 +84,15 @@ class ProcessModel extends WlModelAbstract
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     The measurement unit of `i_period`. One of the {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> — the appointment repeats monthly on the same date.
-   *     <tt>false</tt> — the appointment repeats monthly on the same day of the week.
-   *     <tt>null</tt> — the appointment doesn't repeat monthly.
+   *     <tt>true</tt> - the appointment repeats monthly on the same date.
+   *     <tt>false</tt> - the appointment repeats monthly on the same day of the week.
+   *     <tt>null</tt> - the appointment doesn't repeat monthly.
    *   </dd>
    * </dl>
    *
@@ -95,7 +101,7 @@ class ProcessModel extends WlModelAbstract
    * @post post
    * @var array|null
    */
-  public $a_repeat;
+  public $a_repeat = null;
 
   /**
    * Determines whether the class/event can be booked at this step or not.
@@ -107,7 +113,7 @@ class ProcessModel extends WlModelAbstract
   public $can_book = true;
 
   /**
-   * The date/time the session is booked for.
+   * Date/time to which session is booked.
    *
    * @get get
    * @post get
@@ -116,7 +122,7 @@ class ProcessModel extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * The mode type. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The mode type. One of the {@link ModeSid} constants.
    *
    * @get get
    * @post get
@@ -126,12 +132,20 @@ class ProcessModel extends WlModelAbstract
 
   /**
    * The purchase rule ID.
-   * One of the {@link \WellnessLiving\Wl\Classes\RequirePaySid} constants.
+   * One of the {@link RequirePaySid} constants.
    *
    * @get result
    * @var int
    */
   public $id_pay_require;
+
+  /**
+   * `true` if this class has age restriction and requires user to specify age. `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_age_require;
 
   /**
    * Determines if the client must authorize the credit card.
@@ -158,9 +172,8 @@ class ProcessModel extends WlModelAbstract
   public $is_family_relation_book;
 
   /**
-   * `true` — the user pressed 'Pay later'.
-   *
-   * `false` — the user pressed 'Pay now'.
+   * `true` if user pressed 'Pay later'.
+   * `false` if user pressed 'Pay now'.
    *
    * @post post
    * @var bool
@@ -176,6 +189,14 @@ class ProcessModel extends WlModelAbstract
   public $is_free = false;
 
   /**
+   * `true` if the client has an ach account, `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_have_ach = false;
+
+  /**
    * If `true`, the client has a credit card. Otherwise, this will be `false`.
    *
    * @get result
@@ -184,9 +205,9 @@ class ProcessModel extends WlModelAbstract
   public $is_have_credit_card = false;
 
   /**
-   * `true` — the client can select several sessions per booking.
+   * `true` - the client can select several sessions per booking.
    *
-   * `false` — the client can't select several sessions.
+   * `false` - the client can't select several sessions.
    *
    * @get result
    * @var bool
@@ -202,7 +223,7 @@ class ProcessModel extends WlModelAbstract
   public $is_wait;
 
   /**
-   * The key of the booked session.
+   * Key of session which is booked.
    *
    * @get get
    * @post get
@@ -219,7 +240,7 @@ class ProcessModel extends WlModelAbstract
   public $k_location;
 
   /**
-   * The login promotion used to book the class.
+   * Login promotion to be used to book a class.
    *
    * @post post
    * @var string
@@ -227,7 +248,7 @@ class ProcessModel extends WlModelAbstract
   public $k_login_promotion = '';
 
   /**
-   * The session pass used to book the class.
+   * Session pass to be used to book a class.
    *
    * @post post
    * @var string
@@ -235,7 +256,7 @@ class ProcessModel extends WlModelAbstract
   public $k_session_pass = '';
 
   /**
-   * The key of the user making the booking.
+   * Key of a user who is making a book.
    *
    * @get get
    * @post get

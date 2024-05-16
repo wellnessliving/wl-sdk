@@ -25,7 +25,7 @@ class AgreeModel extends WlModelAbstract
    * @post post
    * @var bool|null
    */
-  public $is_agree;
+  public $is_agree = null;
 
   /**
    * The key of business.

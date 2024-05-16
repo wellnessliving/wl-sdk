@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class HolidayModel extends WlModelAbstract
 {
   /**
-   * A list of the location's closed day titles by location keys on the date {@link \WellnessLiving\Wl\Holiday\HolidayModel::$dl_work}.
+   * A list of the location's closed day titles by location keys on the date {@link HolidayModel::$dl_work}.
    *
    * @get result
    * @var array
@@ -27,7 +27,7 @@ class HolidayModel extends WlModelAbstract
   public $dl_work = '';
 
   /**
-   * <tt>true</tt> if the business has a closed day on the date {@link \WellnessLiving\Wl\Holiday\HolidayModel::$dl_work}, <tt>false</tt> if otherwise.
+   * <tt>true</tt> if the business has a closed day on the date {@link HolidayModel::$dl_work}, <tt>false</tt> if otherwise.
    *
    * @get result
    * @var bool
@@ -43,7 +43,7 @@ class HolidayModel extends WlModelAbstract
   public $k_business;
 
   /**
-   * The message used for the business's closed day on the date {@link \WellnessLiving\Wl\Holiday\HolidayModel::$dl_work}.
+   * The message used for the business's closed day on the date {@link HolidayModel::$dl_work}.
    *
    * @get result
    * @var string

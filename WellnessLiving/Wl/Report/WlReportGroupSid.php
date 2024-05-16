@@ -4,6 +4,8 @@ namespace WellnessLiving\Wl\Report;
 
 /**
  * Describes reports grouping dates ranges.
+ *
+ * Last identifier: 5.
  */
 abstract class WlReportGroupSid
 {

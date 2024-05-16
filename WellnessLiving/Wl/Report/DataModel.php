@@ -2,8 +2,6 @@
 
 namespace WellnessLiving\Wl\Report;
 
-use WellnessLiving\WlModelAbstract;
-
 /**
  * Returns information from a WellnessLiving report.
  *
@@ -11,7 +9,7 @@ use WellnessLiving\WlModelAbstract;
  * fields. The two reports are similar, but not exactly the same. The `LOGIN_LIST` (ID 22) report requires filters to be set to
  * retrieve information. The `LOGIN_LIST_ALL` (ID 33) doesn’t require any filters to be set when specifying a date range.
  */
-class DataModel extends WlModelAbstract
+class DataModel extends \WellnessLiving\Custom\Wl\Report\DataModel
 {
   /**
    * The report contents.
@@ -32,18 +30,18 @@ class DataModel extends WlModelAbstract
   public $i_page = 0;
 
   /**
-   * The report ID. One of the {@link \WellnessLiving\Wl\Report\WlReportSid} constants.
-   * The following reports are currently available via the API:
+   * The report ID. One of the {@link WlReportSid} constants.
+   *  The following reports are currently available via the API:
    * <dl>
-   *   <dt>LOGIN_LIST (ID 22)</dt>
+   *   <dt>LOGIN_LIST {@link WlReportSid::LOGIN_LIST}</dt>
    *   <dd>All Clients Report (Reports tab, features date search)</dd>
-   *   <dt>LOGIN_LIST_ALL (ID 33)</dt>
+   *   <dt>LOGIN_LIST_ALL {@link WlReportSid::LOGIN_LIST_ALL}</dt>
    *   <dd>All Clients Report (Clients tab) Batch Report</dd>
-   *   <dt>PAY_TRANSACTION_BATCH (ID 77)</dt>
+   *   <dt>PAY_TRANSACTION_BATCH {@link WlReportSid::PAY_TRANSACTION_BATCH}</dt>
    *   <dd>Batch Report</dd>
-   *   <dt>PURCHASE_ITEM_LIST_USER (ID 118)</dt>
+   *   <dt>PURCHASE_ITEM_LIST_USER {@link WlReportSid::PURCHASE_ITEM_LIST_USER}</dt>
    *   <dd>Sales per Client Report</dd>
-   *   <dt>PURCHASE_ITEM_ACCRUAL_CASH (ID 123)</dt>
+   *   <dt>PURCHASE_ITEM_ACCRUAL_CASH {@link WlReportSid::PURCHASE_ITEM_ACCRUAL_CASH}</dt>
    *   <dd>All Sales Report</dd>
    * </dl>
    *
@@ -53,7 +51,7 @@ class DataModel extends WlModelAbstract
   public $id_report = 0;
 
   /**
-   * The report group ID. One of the {@link \WellnessLiving\Wl\Report\WlReportGroupSid} constants that describes the time
+   * The report group ID. One of the {@link WlReportGroupSid} constants that describes the time
    * period (day, week, month, or year) for the report to cover.
    *
    * @get get
@@ -71,7 +69,7 @@ class DataModel extends WlModelAbstract
   public $id_report_page = null;
 
   /**
-   * The report view ID. One of the {@link \WellnessLiving\Wl\Report\WlReportChartViewSid} constants.
+   * The report view ID. One of the {@link WlReportChartViewSid} constants.
    *
    * @get get
    * @var int
@@ -87,7 +85,7 @@ class DataModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Filter settings in encoded format. May be decoded by {@link Core\Tool\UrlEncode\UrlDecode::decode()}.
+   * Filter settings in encoded format.
    *
    * @get get
    * @var string
@@ -101,21 +99,6 @@ class DataModel extends WlModelAbstract
    * @var string
    */
   public $s_sort = '';
-
-  /**
-   * Sets report filters.
-   *
-   * Specific filters depend on specific reports.
-   *
-   * @param array $a_filter The report filters. The key is the filter variable name, and the value is its value.
-   */
-  public function filterSet($a_filter)
-  {
-    if(count($a_filter))
-      $this->s_filter=UrlEncode::encode($a_filter);
-    else
-      $this->s_filter='';
-  }
 }
 
 ?>

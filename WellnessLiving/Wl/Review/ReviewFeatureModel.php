@@ -15,7 +15,7 @@ class ReviewFeatureModel extends WlModelAbstract
    * @post post
    * @var bool
    */
-  public $is_featured=true;
+  public $is_featured = true;
 
   /**
    * The business key.
@@ -23,7 +23,7 @@ class ReviewFeatureModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $k_business='';
+  public $k_business = '';
 
   /**
    * The review key.
@@ -31,7 +31,7 @@ class ReviewFeatureModel extends WlModelAbstract
    * @post post
    * @var string
    */
-  public $k_review='';
+  public $k_review = '';
 }
 
 ?>

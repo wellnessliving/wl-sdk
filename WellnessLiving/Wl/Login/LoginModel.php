@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Login;
 
+use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -19,7 +20,7 @@ class LoginModel extends WlModelAbstract
    *     int <var>id_gender</var>
    *   </dt>
    *   <dd>
-   *     User's gender. One of {@link \WellnessLiving\Core\a\AGenderSid} constants.
+   *     User's gender. One of {@link AGenderSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_staff</var>
@@ -61,8 +62,9 @@ class LoginModel extends WlModelAbstract
    *     string <var>text_name_full_client</var>
    *   </dt>
    *   <dd>
-   *     Full client name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login. See
-   *     description of the {@link Wl\User\Info\UserInfo::nameFullText()} method.
+   *     Full client name. User login is returned in a case neither first name, nor last name specified.
+   *     An empty string is returned in a case neither first name, nor last name specified, nor login.
+   *
    *   </dd>
    *   <dt>
    *     string <var>text_name_full_staff</var>
@@ -116,12 +118,21 @@ class LoginModel extends WlModelAbstract
   public $i_photo_width = 0;
 
   /**
-   * The gender ID. It will be one of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
+   * The gender ID. It will be one of the {@link AGenderSid} constants.
    *
    * @get result
    * @var int
    */
   public $id_gender;
+
+  /**
+   * Whether photo is uploaded.
+   * `true` if photo is not uploaded, `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_photo_empty = false;
 
   /**
    * The key of the business. Users can be in multiple businesses.
@@ -167,7 +178,7 @@ class LoginModel extends WlModelAbstract
 
   /**
    * The staff member's mailing address.
-   * This will be set if the user is a staff member ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   * This will be set if the user is a staff member ({@link LoginModel::$k_staff}).
    *
    * @get result
    * @var string
@@ -176,7 +187,7 @@ class LoginModel extends WlModelAbstract
 
   /**
    * The staff member's first name.
-   * This will be set if the user is a staff member ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   * This will be set if the user is a staff member ({@link LoginModel::$k_staff}).
    *
    * @get result
    * @var string
@@ -196,7 +207,7 @@ class LoginModel extends WlModelAbstract
    * The staff member's full name.
    * The user login is returned in cases where neither the first name nor the last name have been specified.
    * An empty string is returned in cases where neither the first name, last name, nor login have been specified.
-   * This will be set if the user is a staff member ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   * This will be set if the user is a staff member ({@link LoginModel::$k_staff}).
    *
    * @get result
    * @var string
@@ -205,7 +216,7 @@ class LoginModel extends WlModelAbstract
 
   /**
    * The staff member's last name.
-   * This will be set if the user is a staff member ({@link \WellnessLiving\Wl\Login\LoginModel::$k_staff}).
+   * This will be set if the user is a staff member ({@link LoginModel::$k_staff}).
    *
    * @get result
    * @var string
@@ -220,7 +231,7 @@ class LoginModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $text_uid;
+  public $text_uid = null;
 
   /**
    * The key of the user.

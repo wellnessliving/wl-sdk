@@ -3,25 +3,86 @@
 namespace WellnessLiving\Wl;
 
 /**
- * List of different amenities, which are available in the location.
+ * Type of facilities available at a location.
+ *
+ * Last ID: 15.
  */
-class WlFacilitySid
+abstract class WlFacilitySid
 {
-  const CHANGE_ROOL = 1;
-  const LOCKERS = 2;
-  const WASHROOMS = 3;
-  const SHOWERS = 4;
-  const TOWEL_SERVICE = 5;
-  const SQUASH_COURTS = 6;
-  const RACQUETBALL_COURTS = 7;
-  const BASKETBALL_COUR = 8;
-  const SPA = 9;
-  const SAUNA = 10;
-  const SWIMMING_POOL = 11;
-  const PRO_SHOP = 12;
-  const WOMAN_ONLY_ARAY = 13;
+  /**
+   * The location has basketball courts.
+   */
+  const BASKETBALL_COURTS = 8;
+
+  /**
+   * The location has change rooms.
+   */
+  const CHANGE_ROOM = 1;
+
+  /**
+   * The location has childcare services.
+   */
   const CHILDCARE = 14;
+
+  /**
+   * The location has a juice bar.
+   */
   const JUICE_BAR = 15;
+
+  /**
+   * The location has lockers available for clients.
+   */
+  const LOCKERS = 2;
+
+  /**
+   * The location has a pro-shop.
+   */
+  const PRO_SHOP = 12;
+
+  /**
+   * The location has racquetball courts.
+   */
+  const RACQUETBALL_COURTS = 7;
+
+  /**
+   * The location has saunas.
+   */
+  const SAUNA = 10;
+
+  /**
+   * The location has showers.
+   */
+  const SHOWERS = 4;
+
+  /**
+   * The location has a spa.
+   */
+  const SPA = 9;
+
+  /**
+   * The location has squash courts.
+   */
+  const SQUASH_COURTS = 6;
+
+  /**
+   * The location has a swimming pool.
+   */
+  const SWIMMING_POOL = 11;
+
+  /**
+   * This location provides towel service.
+   */
+  const TOWEL_SERVICE = 5;
+
+  /**
+   * This location has washrooms for clients.
+   */
+  const WASHROOMS = 3;
+
+  /**
+   * This location has a woman's only area.
+   */
+  const WOMAN_ONLY_AREA = 13;
 }
 
 ?>

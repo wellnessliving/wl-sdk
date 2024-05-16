@@ -44,7 +44,7 @@ class CategoryModel extends WlModelAbstract
   public $a_category = [];
 
   /**
-   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * List of user keys to book appointments.
    * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
@@ -81,7 +81,7 @@ class CategoryModel extends WlModelAbstract
   public $is_tab_all = false;
 
   /**
-   * `true` if client is walk-in, otherwise `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -107,7 +107,7 @@ class CategoryModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
-   * User to get information for.
+   * The user key.
    *
    * @get get
    * @post get

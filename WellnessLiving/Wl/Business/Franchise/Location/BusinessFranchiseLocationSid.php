@@ -3,39 +3,32 @@
 namespace WellnessLiving\Wl\Business\Franchise\Location;
 
 /**
- * A list tab.
+ * Types of the location.
  *
- * Last used ID: 4.
+ * Used in the {@link BusinessFranchiseLocationModel}.
  */
-class BusinessFranchiseLocationFormSid
+class BusinessFranchiseLocationSid
 {
   /**
-   * The tab country.
+   * All locations.
    *
-   * @title country
+   * @title All
    */
-  const COUNTRY = 1;
-  
+  const ALL = 1;
+
   /**
-   * The tab location.
+   * Locations without the region.
    *
-   * @title location
+   * @title Without region
    */
-  const LOCATION = 2;
-  
+  const REGION_NO = 2;
+
   /**
-   * The tab region.
+   * Location with the region.
    *
-   * @title region
+   * @title With region
    */
-  const REGION = 3;
-  
-  /**
-   * The tab state/province.
-   *
-   * @title state/province
-   */
-  const STATE_PROVINCE = 4;
+  const REGION_YES = 3;
 }
 
 ?>

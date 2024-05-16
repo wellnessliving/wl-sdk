@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Book\Process\Purchase;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * A model of the purchase item.
@@ -10,7 +11,9 @@ use WellnessLiving\WlModelAbstract;
 class PurchaseElementModel extends WlModelAbstract
 {
   /**
-   * A list of taxes for one purchase item. Keys - tax keys (primary key in {@link \RsTaxSql} table); values - tax amount.
+   * A list of taxes for one purchase item.
+   * Keys - tax keys.
+   * Values - tax amount.
    *
    * @get result
    * @var array
@@ -26,7 +29,7 @@ class PurchaseElementModel extends WlModelAbstract
   public $i_session = 0;
 
   /**
-   * The ID of the purchase item type. One of {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid}.
+   * The ID of the purchase item type. One of {@link WlPurchaseItemSid}.
    *
    * @get get
    * @var int
@@ -35,7 +38,6 @@ class PurchaseElementModel extends WlModelAbstract
 
   /**
    * The key of the purchase item in the database.
-   * The name of the table in the database depends on {@link \WellnessLiving\Wl\Book\Process\ProcessPurchaseElementModel::$id_purchase_item}.
    *
    * @get get
    * @var string
@@ -68,7 +70,7 @@ class PurchaseElementModel extends WlModelAbstract
    * @get get
    * @var string|null
    */
-  public $k_pay_installment_template;
+  public $k_pay_installment_template = null;
 
   /**
    * The cost of one purchase item (with taxes).
@@ -109,14 +111,6 @@ class PurchaseElementModel extends WlModelAbstract
    * @var string
    */
   public $m_price;
-
-  /**
-   * Remaining price of 1 purchase item. (With or without taxes. It depends on regional standards.)
-   *
-   * @get result
-   * @var string
-   */
-  public $m_price_remaining;
 
   /**
    * Amount of subtotal for 1 purchase item.

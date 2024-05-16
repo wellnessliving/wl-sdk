@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Business\Franchise\Location;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Report\WlReportSid;
 
 /**
  * Manages franchisor locations.
@@ -10,31 +11,31 @@ use WellnessLiving\WlModelAbstract;
 class BusinessFranchiseLocationModel extends WlModelAbstract
 {
   /**
-   * The city list. Each element has the next structure:
+   * The city list. Each element has next structure:
    * <dl>
    *   <dt>
    *     string <var>k_city</var>
    *   </dt>
    *   <dd>
-   *     The city key.
+   *     City key.
    *   </dd>
    *   <dt>
    *     string <var>k_country</var>
    *   </dt>
    *   <dd>
-   *     The country key.
+   *     Country key.
    *   </dd>
    *   <dt>
    *     string <var>k_state</var>
    *   </dt>
    *   <dd>
-   *     The state key.
+   *     State key.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     The city title.
+   *     City title.
    *   </dd>
    * </dl>
    *
@@ -44,19 +45,19 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   public $a_city_list;
 
   /**
-   * The country list. Each element has the next structure:
+   * The country list. Each element has next structure:
    * <dl>
    *   <dt>
    *     string <var>k_country</var>
    *   </dt>
    *   <dd>
-   *     The country key.
+   *     Country key.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     The country title.
+   *     Country title.
    *   </dd>
    * </dl>
    *
@@ -72,37 +73,37 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
    *     string <var>k_city</var>
    *   </dt>
    *   <dd>
-   *     The city key.
+   *     City key.
    *   </dd>
    *   <dt>
    *     string <var>k_country</var>
    *   </dt>
    *   <dd>
-   *     The country key.
+   *     Country key.
    *   </dd>
    *   <dt>
    *     string <var>k_location</var>
    *   </dt>
    *   <dd>
-   *     The location key.
+   *     Location key.
    *   </dd>
    *   <dt>
    *     string <var>k_region</var>
    *   </dt>
    *   <dd>
-   *     The franchise region key.
+   *     Franchise region key.
    *   </dd>
    *   <dt>
    *     string <var>k_state</var>
    *   </dt>
    *   <dd>
-   *     The state key.
+   *     State key.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     The location title.
+   *     Location title.
    *   </dd>
    * </dl>
    *
@@ -118,13 +119,13 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
    *     string <var>k_region</var>
    *   </dt>
    *   <dd>
-   *     The franchise region key.
+   *     Franchise region key.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     The franchise region title.
+   *     Franchise region title.
    *   </dd>
    * </dl>
    *
@@ -140,19 +141,19 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
    *     string <var>k_country</var>
    *   </dt>
    *   <dd>
-   *     The country key.
+   *     Country key.
    *   </dd>
    *   <dt>
    *     string <var>k_state</var>
    *   </dt>
    *   <dd>
-   *     The state key.
+   *     State key.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     The state title.
+   *     State title.
    *   </dd>
    * </dl>
    *
@@ -164,9 +165,9 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   /**
    * Determines which locations should be returned.
    *
-   * One of the {@link \WellnessLiving\Wl\Business\Franchise\Location\BusinessFranchiseLocationSid} constants.
+   * One of the {@link BusinessFranchiseLocationSid} constants.
    *
-   * If `null`, {@link \WellnessLiving\Wl\Business\Franchise\Location\BusinessFranchiseLocationSid::ALL} is used.
+   * If `null`, {@link BusinessFranchiseLocationSid::ALL} is used.
    *
    * @get get
    * @var int
@@ -176,7 +177,7 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   /**
    * Determines the report for which data should be returned.
    *
-   * One of the {@link \WellnessLiving\RsReportSid} constants.
+   * One of the {@link WlReportSid} constants.
    *
    * If `null`, the report isn't set.
    *

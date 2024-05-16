@@ -2,11 +2,14 @@
 
 namespace WellnessLiving\Wl\Login\Attendance;
 
+use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Visit\WlVisitSid;
+use WellnessLiving\Wl\WlProgramSid;
 
 /**
- * Displays attendance list data.
- * Version of {@link \WellnessLiving\Wl\Login\Attendance\AttendanceListModel} for access validation by security token.
+ * An endpoint that displays attendance list data.
+ * Version of {@link AttendanceListModel} for access validation by security token.
  */
 class AttendanceListByTokenModel extends WlModelAbstract
 {
@@ -30,6 +33,8 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   </dd>
    *   <dt>array <var>a_progress</var></dt>
    *   <dd>Information about a user's current progress. By default, this information isn't sent.</dd>
+   *   <dt>array <var>a_quiz</var></dt>
+   *   <dd>Quiz information that concerns current visit.</dd>
    *   <dt>array <var>a_resource</var></dt>
    *   <dd>A list of information for any associated resources for this visit.</dd>
    *   <dt>array <var>a_wait_confirm</var></dt>
@@ -65,13 +70,13 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dt>int <var>i_total</var></dt>
    *   <dd>The total visits available from this Purchase Option.</dd>
    *   <dt>int <var>id_gender</var></dt>
-   *   <dd>The gender ID of the client. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.</dd>
+   *   <dd>The gender ID of the client. One of the {@link AGenderSid} constants.</dd>
    *   <dt>int <var>id_pass_prospect</var></dt>
    *   <dd>If this visit was paid for by an external system, this ID will be set. Otherwise, it will be <tt>0</tt>.</dd>
    *   <dt>int <var>id_program</var></dt>
-   *   <dd>The program ID of the Purchase Option. One of the {@link \WellnessLiving\WlProgramSid} constants.</dd>
+   *   <dd>The program ID of the Purchase Option. One of the {@link WlProgramSid} constants.</dd>
    *   <dt>int <var>id_visit</var></dt>
-   *   <dd>The status of the visit. One of the {@link \WellnessLiving\Wl\Visit\VisitSid} constants.</dd>
+   *   <dd>The status of the visit. One of the {@link WlVisitSid} constants.</dd>
    *   <dt>bool <var>is_attend</var></dt>
    *   <dd>This will be <tt>true</tt> if the client has attended the visit.</dd>
    *   <dt>bool <var>is_duration_pass</var></dt>
@@ -161,25 +166,25 @@ class AttendanceListByTokenModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_list_active;
+  public $a_list_active = null;
 
   /**
    * The list of clients who have confirmed their attendance.
-   * Has the same structure as {@link \WellnessLiving\Wl\Login\Attendance\AttendanceListModel::$a_list_active} property.
+   * Has the same structure as {@link AttendanceListModel::$a_list_active} property.
    *
    * @get result
    * @var array[]
    */
-  public $a_list_confirm;
+  public $a_list_confirm = null;
 
   /**
    * The list of clients who are on the wait list.
-   * Has the same structure as {@link \WellnessLiving\Wl\Login\Attendance\AttendanceListModel::$a_list_active} property.
+   * Has the same structure as {@link AttendanceListModel::$a_list_active} property.
    *
    * @get result
    * @var array[]
    */
-  public $a_list_wait;
+  public $a_list_wait = null;
 
   /**
    * The local date of the class or event session.
@@ -195,7 +200,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    * @get result
    * @var int
    */
-  public $i_capacity;
+  public $i_capacity = null;
 
   /**
    * Count client on the attendance.
@@ -203,7 +208,15 @@ class AttendanceListByTokenModel extends WlModelAbstract
    * @get result
    * @var int
    */
-  public $i_client;
+  public $i_client = null;
+
+  /**
+   * The maximum number of clients on wait list of the class or event session.
+   *
+   * @get result
+   * @var int
+   */
+  public $i_wait_list_limit;
 
   /**
    * If <tt>true</tt>, then return the purchase used to pay for session.
@@ -213,6 +226,15 @@ class AttendanceListByTokenModel extends WlModelAbstract
    * @var bool
    */
   public $is_purchase_info_return = false;
+
+  /**
+   * `true` to use class/event specific wait list limit, `false` to use the limit from default policies.
+   * `false` for appointments.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_wait_list_limit;
 
   /**
    * The appointment key. Not used if requesting information for a class or event session.
@@ -244,7 +266,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $k_location;
+  public $k_location = null;
 
   /**
    * The security token.

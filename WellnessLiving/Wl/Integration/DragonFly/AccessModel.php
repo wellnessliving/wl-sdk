@@ -17,7 +17,7 @@ class AccessModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public bool $can_access = false;
+  public $can_access = false;
 
   /**
    * The location key.
@@ -25,7 +25,7 @@ class AccessModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $k_location;
+  public $k_location = '';
 
   /**
    * The member ID.

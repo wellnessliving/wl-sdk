@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Promotion;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlProgramSid;
 
 /**
  * Gets a promotion list of the specified business.
@@ -16,7 +17,7 @@ class PromotionListModel extends WlModelAbstract
    *     int <var>id_program</var>
    *   </dt>
    *   <dd>
-   *     The promotion program. One of the {@link \WellnessLiving\WlProgramSid} constants.
+   *     The promotion program. One of the {@link WlProgramSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_promotion</var>

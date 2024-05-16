@@ -3,12 +3,18 @@
 namespace WellnessLiving\Wl\Profile\PurchaseList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\WlActivationSid;
+use WellnessLiving\Wl\WlCommissionTypeSid;
+use WellnessLiving\Wl\WlDurationTypeSid;
+use WellnessLiving\Wl\WlProgramTypeSid;
+use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * Gets the details of a specified purchase.
  *
  * This endpoint may require different IDs to be specified for different types of purchases. The IDs required for a
- * specific item will be the same IDs returned from the {@link \WellnessLiving\Wl\Profile\PurchaseList\PurchaseListModel} endpoint.
+ * specific item will be the same IDs returned from the {@link PurchaseListModel} endpoint.
  */
 class PurchaseListElementModel extends WlModelAbstract
 {
@@ -342,7 +348,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $i_use_duration;
 
   /**
-   * The activation mode. One of the {@link \WellnessLiving\RsActivationSid} constants. This field is only added for promotions.
+   * The activation mode. One of the {@link WlActivationSid} constants. This field is only added for promotions.
    *
    * @get result
    * @var int
@@ -350,7 +356,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $id_activation;
 
   /**
-   * The type of discount given via a reward prize. One of the {@link \WellnessLiving\WlCommissionTypeSid} constants. This will be empty
+   * The type of discount given via a reward prize. One of the {@link WlCommissionTypeSid} constants. This will be empty
    * if this discount wasn't applied.
    *
    * @get result
@@ -361,7 +367,7 @@ class PurchaseListElementModel extends WlModelAbstract
   /**
    * The type of duration for the promotion. This is used only for membership-type promotions. This determines
    * whether the promotion lasts indefinitely, has a fixed duration, or ends on a specific date. The measurement unit
-   * for key <var>i_payment_period</var>. One of the {@link \WellnessLiving\WlDurationTypeSid} constants.
+   * for key <var>i_payment_period</var>. One of the {@link WlDurationTypeSid} constants.
    *
    * @get result
    * @var int
@@ -371,7 +377,7 @@ class PurchaseListElementModel extends WlModelAbstract
   /**
    * The ID of the promotion program. This is used only for promotions.
    * The measurement unit for key <var>i_payment_period</var>. The ID of promotion program type.
-   * One of the {@link \WellnessLiving\WlProgramTypeSid} constants.
+   * One of the {@link WlProgramTypeSid} constants.
    *
    * @get result
    * @var int
@@ -380,7 +386,7 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * The ID of the purchase item type. The measurement unit for key <var>i_payment_period</var>.
-   * The ID of purchase item type. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
+   * The ID of purchase item type. One of the {@link WlPurchaseItemSid} constants.
    *
    * @get result
    * @var int
@@ -388,7 +394,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $id_purchase_item;
 
   /**
-   * The ID of the sale category. One of the constants {@link \WellnessLiving\WlSaleSid}.
+   * The ID of the sale category. One of the constants {@link WlSaleSid}.
    *
    * @get result
    * @var int
@@ -402,6 +408,14 @@ class PurchaseListElementModel extends WlModelAbstract
    * @var bool
    */
   public $is_active;
+
+  /**
+   * Whether the purchase item is asset.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_asset;
 
   /**
    * If `true`, then the purchased item is a component of another purchase item, as is the case of a package.
@@ -479,14 +493,6 @@ class PurchaseListElementModel extends WlModelAbstract
   public $is_past;
 
   /**
-   * Not `false` only for promotions.
-   *
-   * @get result
-   * @var bool
-   */
-  public $is_promotion;
-
-  /**
    * This is `true` if the gift card has been redeemed.
    * This can only be `true` if the purchased item is a gift card. Otherwise, this will be `false` in all other cases.
    *
@@ -550,7 +556,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $k_enrollment_book = '0';
 
   /**
-   * The key of the item. This can correspond to one of many values depending on {@link \WellnessLiving\Wl\Profile\PurchaseList\PurchaseListElementModel::$id_sale}.
+   * The key of the item. This can correspond to one of many values depending on {@link PurchaseListElementModel::$id_sale}.
    *
    * @get result
    * @var string

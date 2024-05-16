@@ -14,11 +14,11 @@ class CredentialModel extends WlModelAbstract
    * Accepted values: <ul>
    *   <li>
    *     <tt>972</tt> - The Google credential.
-   *     Use the {@link \WellnessLiving\Core\Request\Model\Application\Credential\GoogleCredentialData} object to send the credential.
+   *
    *   </li>
    *   <li>
    *     <tt>973</tt> - The Facebook credential.
-   *     Use the {@link \WellnessLiving\Core\Request\Model\Application\Credential\FacebookCredentialData} object to send the credential.
+   *
    *   </li>
    * </ul>
    *

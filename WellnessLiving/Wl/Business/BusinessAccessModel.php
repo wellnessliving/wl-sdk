@@ -2,8 +2,8 @@
 
 namespace WellnessLiving\Wl\Business;
 
-use WellnessLiving\Wl\WlRegionSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlRegionSid;
 
 /**
  * Returns information about a given staff member's business.
@@ -84,14 +84,6 @@ class BusinessAccessModel extends WlModelAbstract
   public $text_google_plus = '';
 
   /**
-   * User key. Empty if user is not logged in, but their authorization data is known.
-   *
-   * @get get
-   * @var string
-   */
-  public $uid = '';
-
-  /**
    * The staff member's email to determine their UID. This won't be empty if the staff member is logging in with email or with Google.
    * This will be empty if the UID is already known or the staff member is logging in another way.
    *
@@ -99,6 +91,14 @@ class BusinessAccessModel extends WlModelAbstract
    * @var string
    */
   public $text_mail = '';
+
+  /**
+   * User key. Empty if user is not logged in, but their authorization data is known.
+   *
+   * @get get
+   * @var string
+   */
+  public $uid = '';
 
   /**
    * The staff member key, determined by their email. This will be empty if the UID isn't empty.

@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Video;
 
+use WellnessLiving\Core\Sid\YesNoSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -137,7 +138,6 @@ class VideoElementModel extends WlModelAbstract
    * If the file will be uploaded in parts, its size will be set.
    *
    * In this case, the file will not be uploaded to this API.
-   * Method {@link \WellnessLiving\Wl\Video\VideoElementModel::_fileVideoGet()} will not return the result.
    *
    * @post post
    * @var int|string
@@ -153,8 +153,8 @@ class VideoElementModel extends WlModelAbstract
   public $i_watch;
 
   /**
-   * {@link \WellnessLiving\Core\Sid\YesNoSid::NO} if the video is available in all locations.
-   * {@link \WellnessLiving\Core\Sid\YesNoSid::YES} if the video is available only in certain locations.
+   * {@link YesNoSid::NO} if the video is available in all locations.
+   * {@link YesNoSid::YES} if the video is available only in certain locations.
    *
    * @get result
    * @post post
@@ -262,7 +262,6 @@ class VideoElementModel extends WlModelAbstract
    * If the file will be uploaded in parts, upload ID will be set.
    *
    * In this case, the file will not be uploaded to this API.
-   * Method {@link \WellnessLiving\Wl\Video\VideoElementModel::_fileVideoGet()} will not return the result.
    *
    * @post post
    * @var string

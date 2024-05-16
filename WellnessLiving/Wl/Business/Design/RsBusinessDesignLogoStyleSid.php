@@ -18,7 +18,7 @@ class RsBusinessDesignLogoStyleSid
   const RECTANGLE = 4;
 
   /**
-   * Logo is round.
+   * Logo is a round.
    */
   const ROUND = 3;
 
@@ -26,5 +26,6 @@ class RsBusinessDesignLogoStyleSid
    * Logo is a square.
    */
   const SQUARE = 2;
-
 }
+
+?>

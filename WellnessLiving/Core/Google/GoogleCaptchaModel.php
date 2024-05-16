@@ -18,7 +18,7 @@ class GoogleCaptchaModel extends WlModelAbstract
    * @put post
    * @var string
    */
-  public $text_action;
+  public $text_action = '';
 
   /**
    * The user token CAPTCHA.
@@ -26,7 +26,7 @@ class GoogleCaptchaModel extends WlModelAbstract
    * @put post
    * @var string
    */
-  public $text_token;
+  public $text_token = '';
 }
 
 ?>

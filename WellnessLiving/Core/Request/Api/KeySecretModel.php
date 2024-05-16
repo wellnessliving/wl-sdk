@@ -38,11 +38,11 @@ class KeySecretModel extends WlModelAbstract
   public $s_key_session;
 
   /**
-   * Alias of {@link \WellnessLiving\Core\Request\Api\KeySecretModel::$url_origin}.
+   * Alias of {@link KeySecretModel::$url_origin}.
    *
-   * @deprecated Use {@link \WellnessLiving\Core\Request\Api\KeySecretModel::$url_origin} instead.
    * @get get
    * @var string
+   * @deprecated Use {@link KeySecretModel::$url_origin} instead.
    */
   public $url_domain;
 

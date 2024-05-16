@@ -34,7 +34,7 @@ class ElementModel extends WlModelAbstract
    *       <dt>string <var>dl_start</var></dt>
    *       <dd>The start date of the schedule in location's time zone.</dd>
    *       <dt>int <var>i_day</var></dt>
-   *       <dd>The day of the week where the class schedule exists, starting with 1 for Monday and ending with 7 for Sunday.</dd>
+   *       <dd>The day of the week, where the class schedule exists, starting with 1 for Monday and ending with 7 for Sunday.</dd>
    *       <dt>int <var>i_duration</var></dt>
    *       <dd>The duration of the schedule sessions in minutes.</dd>
    *       <dt>int <var>is_cancel</var></dt>
@@ -58,7 +58,8 @@ class ElementModel extends WlModelAbstract
    *     This field will be `true` if the image used for the class is an image uploaded in the class setup.
    *     If an image isn't uploaded in the class setup, but there's at least one image in Setup->Locations image slider,
    *     this field will be `false`.
-   *     This field will be `null` if the class image isn't uploaded, and there are no images in location slider. In such cases, an empty image is used.
+   *     This field will be `null` if the class image isn't uploaded, and there are no images in location slider.
+   *     In such cases, an empty image is used.
    *   </dd>
    *   <dt>string <var>html_description</var></dt>
    *   <dd>The browser-safe description.</dd>
@@ -74,8 +75,8 @@ class ElementModel extends WlModelAbstract
    *   <dd>Determines whether clients can book the class or event online.</dd>w
    *   <dt>bool <var>is_online_private</var></dt>
    *   <dd>
-   *     `true` — show classes only for clients who can book online.
-   *     `false` — show classes for all clients.
+   *     `true` - show classes only for clients who can book online.
+   *     `false` - show classes for all clients.
    *   </dd>
    *   <dt>bool <var>is_promotion_client</var></dt>
    *   <dd>Determines whether clients of the business can see a list of applicable Purchase Options.</dd>
@@ -92,13 +93,19 @@ class ElementModel extends WlModelAbstract
    *   <dt>bool <var>is_virtual</var></dt>
    *   <dd>Determines whether the item is virtual.</dd>
    *   <dt>bool <var>is_event</var></dt>
-   *   <dd>Determines whether the item is an event or class instance. If `true`, the item is an event instance. Otherwise, this will be `false`.</dd>
+   *   <dd>
+   *     Determines whether the item is an event or class instance. If `true`, the item is an event instance.
+   *     Otherwise, this will be `false`.
+   *   </dd>
    *   <dt>string <var>k_class</var></dt>
    *   <dd>The class key.</dd>
    *   <dt>string <var>m_price</var></dt>
    *   <dd>Drop In price, if the class allows payment for one visit.</dd>
    *   <dt>bool <var>show_special_instructions</var></dt>
-   *   <dd>This will be `true` if special instructions can be public. Otherwise, this will be `false` if they should only be shown to the clients who booked the class.</dd>
+   *   <dd>
+   *     This will be `true` if special instructions can be public.
+   *     Otherwise, this will be `false` if they should only be shown to the clients who booked the class.
+   *   </dd>
    *   <dt>string <var>xml_description</var></dt>
    *   <dd>The item description.</dd>
    *   <dt>string <var>xml_special_instruction</var></dt>

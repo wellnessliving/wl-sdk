@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\User\Info;
 
+use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -39,7 +40,7 @@ class UserInfoModel extends WlModelAbstract
    *     The user's birthday. This will be `null` if the birthday isn't set yet.
    *   </dd>
    *   <dt>int <var>id_gender</var></dt>
-   *   <dd>The ID of the user's gender. One of the {@link \AGenderSid} constants.</dd>
+   *   <dd>The ID of the user's gender. One of the {@link AGenderSid} constants.</dd>
    *   <dt>bool <var>is_customer_new</var></dt>
    *   <dd>
    *     This will be `true` if the user has never made purchases or reservations in this business.
@@ -92,7 +93,6 @@ class UserInfoModel extends WlModelAbstract
    *
    * @get get
    * @var string[]
-   * @see \PassportLoginSql
    */
   public $a_user_list;
 
@@ -113,7 +113,7 @@ class UserInfoModel extends WlModelAbstract
   public $dt_birth;
 
   /**
-   * The ID of the user's gender. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
+   * The ID of the user's gender. One of the {@link AGenderSid} constants.
    *
    * This will be `null` if the gender isn't set yet.
    *
@@ -197,6 +197,22 @@ class UserInfoModel extends WlModelAbstract
    * @var string
    */
   public $s_phone;
+
+  /**
+   * The user's home phone number.
+   *
+   * @get result
+   * @var string
+   */
+  public $s_phone_home = '';
+
+  /**
+   * The user's work phone number.
+   *
+   * @get result
+   * @var string
+   */
+  public $s_phone_work = '';
 
   /**
    * The key of the user.

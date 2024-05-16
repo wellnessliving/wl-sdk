@@ -5,10 +5,14 @@ namespace WellnessLiving\Wl;
 /**
  * Program types.
  *
+ * Usually type includes type and category.
+ *
+ * Last used ID: 23.
+ *
  * @see WlProgramCategorySid
  * @see WlProgramTypeSid
  */
-class WlProgramSid
+abstract class WlProgramSid
 {
   /**
    * Special Membership that does not allow client to visit anything but fill client's account after purchase
@@ -54,6 +58,8 @@ class WlProgramSid
 
   /**
    * "Wellness Program" membership.
+   *
+   * @link https://wellnessliving.atlassian.net/browse/WL-23950
    */
   const INSURANCE_MEMBERSHIP = 22;
 

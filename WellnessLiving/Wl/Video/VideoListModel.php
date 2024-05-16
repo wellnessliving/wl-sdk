@@ -2,7 +2,9 @@
 
 namespace WellnessLiving\Wl\Video;
 
+use WellnessLiving\Core\Sid\SortOrderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Video\Catalog\Filter\Sort\FilterSortSid;
 
 /**
  * Returns a list of videos.
@@ -22,7 +24,7 @@ class VideoListModel extends WlModelAbstract
    * @get get
    * @var int[]
    */
-  public $a_calorie;
+  public $a_calorie = [];
 
   /**
    * The duration range ascribed to the video to use for the search.
@@ -38,7 +40,7 @@ class VideoListModel extends WlModelAbstract
    * @get get
    * @var int[]
    */
-  public $a_duration;
+  public $a_duration = [];
 
   /**
    * A list of levels to show videos for. A level can refer to the difficulty ascribed to the video.
@@ -46,7 +48,7 @@ class VideoListModel extends WlModelAbstract
    * @get get
    * @var string[]
    */
-  public $a_level;
+  public $a_level = [];
 
   /**
    * A list of videos.
@@ -62,7 +64,7 @@ class VideoListModel extends WlModelAbstract
    * @get get
    * @var string[]
    */
-  public $a_location;
+  public $a_location = [];
 
   /**
    * A list of shared video keys in their saved order.
@@ -70,7 +72,15 @@ class VideoListModel extends WlModelAbstract
    * @put post
    * @var string[]
    */
-  public $a_order;
+  public $a_order = [];
+
+  /**
+   * Pagination data.
+   *
+   * @get result
+   * @var array
+   */
+  public $a_page = [];
 
   /**
    * A list of staff members who appear in videos.
@@ -78,7 +88,7 @@ class VideoListModel extends WlModelAbstract
    * @get get
    * @var string[]
    */
-  public $a_staff;
+  public $a_staff = [];
 
   /**
    * A list of video categories to show videos from.
@@ -86,7 +96,7 @@ class VideoListModel extends WlModelAbstract
    * @get get
    * @var string[]
    */
-  public $a_video_category;
+  public $a_video_category = [];
 
   /**
    * A list of video tags to show videos for.
@@ -94,16 +104,34 @@ class VideoListModel extends WlModelAbstract
    * @get get
    * @var string[]
    */
-  public $a_video_tag;
+  public $a_video_tag = [];
+
+  /**
+   * Page to return.
+   *
+   * `null` if you need to return all the videos.
+   *
+   * @get get
+   * @var int|null
+   */
+  public $i_page = null;
+
+  /**
+   * Sort order ID. One of {@link SortOrderSid} constants. `null` or 0 if order is undefined and depends on sort order.
+   *
+   * @get get,result
+   * @var int|null
+   */
+  public $id_order = 0;
 
   /**
    * The sorting type.
-   * A constant from {@link \WellnessLiving\Wl\Video\Catalog\Filter\Sort\FilterSortSid}.
+   * A constant from {@link FilterSortSid}. `null` or 0 if sort is undefined and custom sort order is used.
    *
-   * @get get
-   * @var int
+   * @get get,result
+   * @var int|null
    */
-  public $id_sort;
+  public $id_sort = 0;
 
   /**
    * If `true`, the API is being used from backend. Otherwise, this will be `false`.
@@ -121,7 +149,7 @@ class VideoListModel extends WlModelAbstract
    * @put get
    * @var string
    */
-  public $k_business;
+  public $k_business = '';
 
   /**
    * The filter phrase to filter videos by name.
@@ -129,19 +157,17 @@ class VideoListModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $text_search;
+  public $text_search = '';
 
   /**
    * UID of the client who request list of videos.
    *
    * `null` if user is not signed in.
    *
-   * *NOTE: Not used directly in API, needed for {@link \WellnessLiving\Wl\Video\VideoListModel::KEY} constant.
-   *
    * @get get
    * @var string|null
    */
-  public $uid;
+  public $uid = null;
 }
 
 ?>

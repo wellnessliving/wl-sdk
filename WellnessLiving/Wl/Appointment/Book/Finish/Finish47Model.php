@@ -3,6 +3,10 @@
 namespace WellnessLiving\Wl\Appointment\Book\Finish;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Appointment\Book\Question\QuestionModel;
+use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
+use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Completes an appointment booking.
@@ -10,8 +14,8 @@ use WellnessLiving\WlModelAbstract;
 class Finish47Model extends WlModelAbstract
 {
   /**
-   * A list of answers for the questions from {@link \WellnessLiving\Wl\Appointment\Book\Question\QuestionModel::$a_question}.
-   * Key - hash of the question, value - answer for the question.
+   * A list of answers for the questions from {@link QuestionModel::$a_question}.
+   * Keys refer to hashes of the questions. Values refer to answers for the questions.
    *
    * @post post
    * @var array
@@ -33,10 +37,10 @@ class Finish47Model extends WlModelAbstract
    * @post result
    * @var array[]
    */
-  public $a_appointment;
+  public $a_appointment = null;
 
   /**
-   * All data from the appointment booking provider model.
+   * The documentation is the same as in {@link FinishModel::$a_book_data}.
    *
    * @post post
    * @var array
@@ -49,12 +53,10 @@ class Finish47Model extends WlModelAbstract
    * @post result
    * @var string[]
    */
-  public $a_login_activity_visit;
+  public $a_login_activity_visit = null;
 
   /**
    * A list of payment sources to pay with.
-   *
-   * Structure of this array corresponds structure of {@link RsPayForm::$a_pay_source}.
    *
    * @post post
    * @var array[]
@@ -64,7 +66,7 @@ class Finish47Model extends WlModelAbstract
   /**
    * Data required for payment. Has next structure:<dl>
    *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>Type of the purchase item. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.</dd>
+   *   <dd>Type of the purchase item. One of the {@link WlPurchaseItemSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>Promotion key or appointment key. Depends on <var>id_purchase_item</var> of this array.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
@@ -82,7 +84,7 @@ class Finish47Model extends WlModelAbstract
 
   /**
    * The purchase item keys.
-   * Empty if no purchases are made for appointment booking.
+   * Empty if no purchases are made for the appointment booking.
    *
    * @post post
    * @var string[]
@@ -91,8 +93,6 @@ class Finish47Model extends WlModelAbstract
 
   /**
    * List of quiz response keys.
-   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
-   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table.
    *
    * @post post
    * @var array
@@ -100,7 +100,7 @@ class Finish47Model extends WlModelAbstract
   public $a_quiz_response = [];
 
   /**
-   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * List of user keys to book appointments.
    * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
@@ -111,7 +111,7 @@ class Finish47Model extends WlModelAbstract
 
   /**
    * Data to create new user.
-   * Specify if <var>$uid</var> is empty.
+   * Specify this if <var>$uid</var> is empty.
    * Must contain the following keys:
    * <dl>
    *   <dt>string[] <var>a_note</var></dt>
@@ -137,10 +137,10 @@ class Finish47Model extends WlModelAbstract
    * @post result
    * @var string[]
    */
-  public $a_visit;
+  public $a_visit = null;
 
   /**
-   * The booking mode ID. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The booking mode ID. One of the {@link ModeSid} constants.
    *
    * @post post
    * @var int
@@ -148,7 +148,7 @@ class Finish47Model extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * The payment type ID for the appointment. One of the {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid} constants.
+   * The payment type ID for the appointment. One of the {@link WlAppointmentPaySid} constants.
    *
    * @post get
    * @var int
@@ -156,7 +156,7 @@ class Finish47Model extends WlModelAbstract
   public $id_pay = 0;
 
   /**
-   * Whether multiple appointments booked in back-to-back mode.
+   * Determines whether multiple appointments are booked in back-to-back mode.
    *
    * @post post
    * @var bool
@@ -164,7 +164,7 @@ class Finish47Model extends WlModelAbstract
   public $is_back_to_back = false;
 
   /**
-   * `true` to book appointment unpaid; `false` to try to select available purchase option.
+   * If `true`, the appointment is booked as unpaid. Otherwise, this will be `false` to select an available Purchase Option.
    *
    * @post post
    * @var bool
@@ -172,7 +172,7 @@ class Finish47Model extends WlModelAbstract
   public $is_unpaid_force = false;
 
   /**
-   * `true` if client is walk-in, otherwise `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -182,9 +182,9 @@ class Finish47Model extends WlModelAbstract
 
   /**
    * The appointment key.
-   * This should be set if you are rebooking an existing appointment.
+   * This should be set if you're rebooking an existing appointment.
    *
-   * Otherwise use `0` to book a new appointment.
+   * Otherwise, use `0` to book a new appointment.
    *
    * @post get
    * @var string
@@ -211,12 +211,12 @@ class Finish47Model extends WlModelAbstract
   /**
    * Key of timezone.
    *
-   * `null` if not set then use default timezone client {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}.
+   * `null` if not set then use default timezone client.
    *
    * @post get
    * @var null|string
    */
-  public $k_timezone;
+  public $k_timezone = null;
 
   /**
    * The sum paid for a deposit.
@@ -235,7 +235,7 @@ class Finish47Model extends WlModelAbstract
   public $s_id = '';
 
   /**
-   * User to get information for.
+   * The user key.
    *
    * @get get
    * @post get

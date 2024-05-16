@@ -2,13 +2,16 @@
 
 namespace WellnessLiving\Wl\Staff;
 
+use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Business\BusinessModel;
+use WellnessLiving\Wl\WlPrivilegeRoleSid;
 
 /**
  * Can create or edit a staff member in a business.
  *
  * You can also use this endpoint to get information about a staff member's activity in another business when using
- * the {@link \WellnessLiving\Wl\Business\BusinessModel} endpoint.
+ * the {@link BusinessModel} endpoint.
  */
 class StaffElementModel extends WlModelAbstract
 {
@@ -20,7 +23,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var array|null
    */
-  public $a_location;
+  public $a_location = null;
 
   /**
    * Employment end date.
@@ -30,7 +33,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $dl_end;
+  public $dl_end = null;
 
   /**
    * Employment start date.
@@ -40,27 +43,27 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $dl_start;
+  public $dl_start = null;
 
   /**
-   * Gender of staff member. One of {@link \WellnessLiving\Core\a\AGenderSid} constants.
+   * Gender of staff member. One of {@link AGenderSid} constants.
    *
    * `null` means to not change the current value of the field or set gender by default for new staff.
    *
    * @post post
    * @var int|null
    */
-  public $id_gender;
+  public $id_gender = null;
 
   /**
-   * ID of the default system role from {@link \WellnessLiving\RsPrivilegeRoleSid}.
+   * ID of the default system role. One of {@link WlPrivilegeRoleSid}.
    *
    * `null` means to not change the current value of the field.
    *
    * @post post
    * @var int|null
    */
-  public $id_role;
+  public $id_role = null;
 
   /**
    * Whether the staff is currently employed.
@@ -70,7 +73,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var bool|null
    */
-  public $is_employ;
+  public $is_employ = null;
 
   /**
    * Determines whether the staff member be shown on the directory site of the business.
@@ -80,7 +83,16 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var bool|null
    */
-  public $is_microsite;
+  public $is_microsite = null;
+
+  /**
+   * Whether password set is disabled. `true` - if the email is associated to a client profile which has a password set,
+   *   `false` - otherwise.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_password_set_disable = false;
 
   /**
    * Whether the staff member can to sign in.
@@ -107,7 +119,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $k_business_role;
+  public $k_business_role = null;
 
   /**
    * City key.
@@ -117,7 +129,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $k_city;
+  public $k_city = null;
 
   /**
    * Home location key.
@@ -127,7 +139,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $k_location;
+  public $k_location = null;
 
   /**
    * The key of the staff member who is being created or edited.
@@ -137,7 +149,7 @@ class StaffElementModel extends WlModelAbstract
    * @post get,result
    * @var string|null
    */
-  public $k_staff;
+  public $k_staff = null;
 
   /**
    * Address.
@@ -147,7 +159,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $text_address;
+  public $text_address = null;
 
   /**
    * Staff biography.
@@ -157,7 +169,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $text_biography;
+  public $text_biography = null;
 
   /**
    * Custom city title.
@@ -167,7 +179,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $text_city;
+  public $text_city = null;
 
   /**
    * The staff member's email address.
@@ -178,7 +190,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $text_email;
+  public $text_email = null;
 
   /**
    * The staff member's first name.
@@ -189,7 +201,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $text_first_name;
+  public $text_first_name = null;
 
   /**
    * The staff member's last name.
@@ -199,7 +211,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $text_last_name;
+  public $text_last_name = null;
 
   /**
    * The password.
@@ -210,7 +222,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $text_password;
+  public $text_password = null;
 
   /**
    * Confirmation of the password.
@@ -221,7 +233,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $text_password_confirm;
+  public $text_password_confirm = null;
 
   /**
    * Home phone.
@@ -231,7 +243,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $text_phone_home;
+  public $text_phone_home = null;
 
   /**
    * Cell phone.
@@ -241,7 +253,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $text_phone_mobile;
+  public $text_phone_mobile = null;
 
   /**
    * The staff member's job title.
@@ -251,7 +263,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $text_position;
+  public $text_position = null;
 
   /**
    * The staff member's job title.
@@ -261,7 +273,7 @@ class StaffElementModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-  public $text_postal;
+  public $text_postal = null;
 }
 
 ?>

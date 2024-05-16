@@ -3,16 +3,21 @@
 namespace WellnessLiving\Wl\Appointment\Book\Payment;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
+use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
+use WellnessLiving\Wl\Classes\Tab\TabSid;
+use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Completes the payment for an appointment or appointment Purchase Option for a client.
  *
- * The only difference between this endpoint and {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentModel} is
+ * The only difference between this endpoint and {@link PaymentModel} is
  * that this endpoint is capable of paying for multiple appointments at the same time.
  *
  * This endpoint uses a CAPTCHA check.
  * To pass the CAPTCHA, you'll need to study the documentation of the CAPTCHA base class. In the documentation, you'll
- * find that you need to send a CAPTCHA for a specific action. For this API, the action is `1064`.
+ * find that you need to send a CAPTCHA for a specific action. For this API, the action is {@link BusinessPaymentCaptcha::CID}.
  */
 class PaymentMultipleModel extends WlModelAbstract
 {
@@ -42,7 +47,7 @@ class PaymentMultipleModel extends WlModelAbstract
    *         int <var>id_purchase_item</var>
    *       </dt>
    *       <dd>
-   *         The ID of the purchase item. One of the the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
+   *         The ID of the purchase item. One of the {@link WlPurchaseItemSid} constants.
    *         This won't be empty for new options purchased.
    *       </dd>
    *       <dt>
@@ -114,7 +119,7 @@ class PaymentMultipleModel extends WlModelAbstract
    *     int <var>id_class_tab</var>
    *   </dt>
    *   <dd>
-   *     The "Book now" tab. One of the {@link \WellnessLiving\Wl\Classes\Tab\TabSid} constants.
+   *     The "Book now" tab. One of the {@link TabSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>m_tip_appointment</var>
@@ -132,7 +137,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_book_data = [];
 
   /**
-   * A copy of {@link \WellnessLiving\Wl\Appointment\Book\Payment\PaymentMultipleModel::$a_book_data}.
+   * A copy of {@link PaymentMultipleModel::$a_book_data}.
    *
    * Set this field value for POST requests.
    *
@@ -150,7 +155,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_login_prize = [];
 
   /**
-   * The payment type for the appointment. One of the {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid} constants.
+   * The payment type for the appointment. One of the {@link WlAppointmentPaySid} constants.
    *
    * @post result
    * @var int[]
@@ -160,7 +165,7 @@ class PaymentMultipleModel extends WlModelAbstract
   /**
    * A list of payment sources to pay with.
    *
-   * Each element has the next keys:
+   * Each element has next keys:
    * <dl>
    *   <dt>
    *     array [<var>a_pay_card</var>]
@@ -346,7 +351,7 @@ class PaymentMultipleModel extends WlModelAbstract
    *     string <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     The purchase item ID. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.
+   *     The purchase item ID. One of the {@link WlPurchaseItemSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>
@@ -392,7 +397,8 @@ class PaymentMultipleModel extends WlModelAbstract
 
   /**
    * The list of quiz response keys.
-   * Keys refer to quiz keys, and values refer to response keys.
+   * Keys refer to quiz keys.
+   * And values refer to response keys.
    *
    * @post post
    * @var array
@@ -408,8 +414,8 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_total;
 
   /**
-   * The list of user keys to book appointments with.
-   * Empty values signify walk-ins.
+   * List of user keys to book appointments.
+   * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
    * @post get
@@ -418,7 +424,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_uid = [];
 
   /**
-   * The ID of the source mode. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The ID of the source mode. One of the {@link ModeSid} constants.
    *
    * @get get
    * @post get
@@ -427,7 +433,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * This will be `true` if the client is a walk-in. Otherwise, this will be `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -436,7 +442,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $is_walk_in = false;
 
   /**
-   * The location to show the available appointment booking schedule for.
+   * Location to show available appointment booking schedule.
    *
    * @get get,result
    * @post get
@@ -511,7 +517,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $text_discount_code = '';
 
   /**
-   * The user to get information for.
+   * The user key.
    *
    * @get get
    * @post get

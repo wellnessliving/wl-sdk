@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Pay\Owner;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlPayOwnerSid;
 
 /**
  * Gets the payment owner ID.
@@ -12,7 +13,7 @@ class OwnerModel extends WlModelAbstract
   /**
    * The type of user for which transactions can be made (this property is optional).
    *
-   * This is one of the {@link \WellnessLiving\WlPayOwnerSid} constants.
+   * This is one of the {@link WlPayOwnerSid} constants.
    *
    * @get result
    * @var int
@@ -29,12 +30,13 @@ class OwnerModel extends WlModelAbstract
 
   /**
    * Business key.
+   *
    * `null` if not passed.
    *
    * @get get
    * @var string|null
    */
-  public $k_business;
+  public $k_business = null;
 
   /**
    * The payment owner key. This is used for financial transactions.
@@ -46,8 +48,6 @@ class OwnerModel extends WlModelAbstract
 
   /**
    * Key of the money owner.
-   *
-   * Copy of result of {@link Wl\Pay\Owner\PayOwner::ownerMoney()}.
    *
    * @get result
    * @var string

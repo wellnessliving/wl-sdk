@@ -2,7 +2,9 @@
 
 namespace WellnessLiving\Wl\Business\Config;
 
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlServiceSid;
 
 /**
  * Manages business configurations for clients, bookings, payments, and related things.
@@ -14,7 +16,7 @@ class BusinessConfigModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>int <var>a_wait_service</var></dt>
-   *   <dd>The keys are listed as IDs from {@link \WellnessLiving\WlServiceSid}, and values are flags outlining whether wait listing is allowed.</dd>
+   *   <dd>The keys are listed as IDs from {@link WlServiceSid}, and values are flags outlining whether wait listing is allowed.</dd>
    *   <dt>int <var>i_book_before</var></dt>
    *   <dd>The minimum hours|days|months before a class can be booked.</dd>
    *   <dt>int <var>i_book_future</var></dt>
@@ -26,17 +28,17 @@ class BusinessConfigModel extends WlModelAbstract
    *   <dt>int <var>i_reattempt_count</var></dt>
    *   <dd>The number of failed auto-payment reattempts.</dd>
    *   <dt>int <var>id_book_before</var></dt>
-   *   <dd>The hours|days|months from {@link \WellnessLiving\Core\a\ADurationSid}.</dd>
+   *   <dd>The hours|days|months from {@link ADurationSid}.</dd>
    *   <dt>int <var>id_book_future</var></dt>
-   *   <dd>The hours|days|months from {@link \WellnessLiving\Core\a\ADurationSid}.</dd>
+   *   <dd>The hours|days|months from {@link ADurationSid}.</dd>
    *   <dt>int <var>id_cancel</var></dt>
-   *   <dd>The hours|days|months from {@link \WellnessLiving\Core\a\ADurationSid}.</dd>
+   *   <dd>The hours|days|months from {@link ADurationSid}.</dd>
    *   <dt>int <var>id_promote</var></dt>
-   *   <dd>The hours|days|months from {@link \WellnessLiving\Core\a\ADurationSid}.</dd>
+   *   <dd>The hours|days|months from {@link ADurationSid}.</dd>
    *   <dt>bool <var>is_book_inside_active_pay_period</var></dt>
    *   <dd>
-   *     `true` — clients with Purchase Options are only allowed to book sessions within their current paid period.<br>
-   *     `false` — clients with Purchase Options are only allowed to book sessions during the Purchase Option's duration.
+   *     `true` - clients with Purchase Options are only allowed to book sessions within their current paid period.<br>
+   *     `false` - clients with Purchase Options are only allowed to book sessions during the Purchase Option's duration.
    *   </dd>
    *   <dt>int <var>is_disable_promotion</var></dt>
    *   <dd>
@@ -88,7 +90,7 @@ class BusinessConfigModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public $is_white_label;
+  public $is_white_label = false;
 
   /**
    * The business key.

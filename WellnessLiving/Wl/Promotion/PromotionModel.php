@@ -2,7 +2,10 @@
 
 namespace WellnessLiving\Wl\Promotion;
 
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlDurationTypeSid;
+use WellnessLiving\Wl\WlProgramSid;
 
 /**
  * Gets promotions for the specified business and promotion keys.
@@ -77,21 +80,21 @@ class PromotionModel extends WlModelAbstract
    *   <dd>
    *     The type of period for the 'Period' duration type.
    *     For example, if the duration of the Purchase Option is 12 months, this field will display the ID of the month.
-   *     For all possible options, see {@link \WellnessLiving\Core\a\ADurationSid}.
+   *     For all possible options, see {@link ADurationSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_duration_type</var>
    *   </dt>
    *   <dd>
    *     The duration type. Possible duration types can be 'Without End', 'Expires on a certain date', 'Period'.
-   *     For more information, see {@link \WellnessLiving\WlDurationTypeSid}.
+   *     For more information, see {@link WlDurationTypeSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program</var>
    *   </dt>
    *   <dd>
    *     The Purchase Option type.
-   *     For more information, see {@link \WellnessLiving\WlProgramSid}.
+   *     For more information, see {@link WlProgramSid}.
    *   </dd>
    *   <dt>
    *     bool <var>is_introductory</var>

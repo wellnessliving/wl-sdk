@@ -12,7 +12,7 @@ class FlagModel extends WlModelAbstract
   /**
    * Array with structure:<dl>
    *   <dt>string <var>uid</var></dt>
-   *   <dd>Key:</dd>
+   *   <dd>Key is passport login ID.</dd>
    *   <dt>bool <var>is_flag</var></dt>
    *   <dd>Value: <tt>true</tt> if user is flagged; <tt>false</tt> otherwise.</dd>
    * </dl>
@@ -24,7 +24,7 @@ class FlagModel extends WlModelAbstract
   public $a_flag;
 
   /**
-   * User keys. Each element is a primary key in the {@link \PassportLoginSql} table.
+   * User keys.
    * <tt>null</tt> if not set.
    *
    * @get get
@@ -35,7 +35,7 @@ class FlagModel extends WlModelAbstract
   /**
    * <tt>true</tt> if the user is flagged, <tt>false</tt> if otherwise.
    *
-   * <tt>null</tt> until loaded or when {@link \WellnessLiving\Wl\Location\Flag\FlagModel::$a_uid} was not set.
+   * <tt>null</tt> until loaded or when {@link FlagModel::$a_uid} was not set.
    *
    * @get result
    * @var bool

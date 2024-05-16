@@ -3,12 +3,13 @@
 namespace WellnessLiving\Core\Passport\Login\Register;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Lead\LeadModel;
 
 /**
  * Allows new clients to be registered.
  *
- * The {@link \WellnessLiving\Wl\Lead\LeadModel} endpoint is recommended for registering new users. However, this RegisterModel
- * endpoint isn't enabled by default. To enable this endpoint, use the contact form in the developer portal.
+ * The {@link LeadModel} endpoint is recommended for registering new users. However, this endpoint isn't enabled by default.
+ * To enable this endpoint, use the contact form in the developer portal.
  */
 class RegisterModel extends WlModelAbstract
 {

@@ -3,11 +3,14 @@
 namespace WellnessLiving\Wl\Appointment\Book\Service;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Service\ServiceBookFlowSid;
+use WellnessLiving\Wl\Service\ServicePriceSid;
+use WellnessLiving\Wl\Service\ServiceRequireSid;
 
 /**
  * Retrieves information about services in the current service category.
  *
- * @deprecated New version {@link \WellnessLiving\Wl\Appointment\Book\Service\ServiceList52Model} should be used instead.
+ * @deprecated New version {@link ServiceList52Model} should be used instead.
  */
 class ServiceListModel extends WlModelAbstract
 {
@@ -58,7 +61,21 @@ class ServiceListModel extends WlModelAbstract
    *     array <var>a_image</var>
    *   </dt>
    *   <dd>
-   *     The appointment image. See {@link RsServiceLogo::data()} for details.
+   *     Information about the appointment image. An array with the following values:
+   *     <dl>
+   *       <dt>int <var>i_height</var></dt>
+   *       <dd>The height of the image.</dd>
+   *       <dt>int <var>i_width</var></dt>
+   *       <dd>The width of the image.</dd>
+   *       <dt>bool <var>is_empty</var></dt>
+   *       <dd>This will be `true` if the image is not set.</dd>
+   *       <dt>string <var>k_service</var></dt>
+   *       <dd>The service key.</dd>
+   *       <dt>string <var>s_service</var></dt>
+   *       <dd>The name of the service.</dd>
+   *       <dt>string <var>s_url</var></dt>
+   *       <dd>The URL to the image.</dd>
+   *     </dl>
    *   </dd>
    *   <dt>
    *     string[] <var>a_login_type_restriction</var>
@@ -121,7 +138,7 @@ class ServiceListModel extends WlModelAbstract
    *     int <var>i_price</var>
    *   </dt>
    *   <dd>
-   *     The price type ID. One of {@link \WellnessLiving\RsServicePriceSid} constants.
+   *     The price type ID. One of {@link ServicePriceSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>i_duration</var>
@@ -133,13 +150,13 @@ class ServiceListModel extends WlModelAbstract
    *     int <var>id_book_flow</var>
    *   </dt>
    *   <dd>
-   *     The type of client booking flow. One of {@link \WellnessLiving\Wl\Service\ServiceBookFlowSid} constants.
+   *     The type of client booking flow. One of {@link ServiceBookFlowSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_service_require</var>
    *   </dt>
    *   <dd>
-   *     The required payment type ID. One of {@link \WellnessLiving\RsServiceRequireSid} constants.
+   *     The required payment type ID. One of {@link ServiceRequireSid} constants.
    *   </dd>
    *   <dt>
    *     bool <var>is_age_public</var>
@@ -261,29 +278,29 @@ class ServiceListModel extends WlModelAbstract
    *     string <var>xml_description</var>
    *   </dt>
    *   <dd>
-   *     Appointment description.
+   *     Appointment description (deprecated, use `html_description`).
    *   </dd>
    *   <dt>
    *     string <var>xml_description_short</var>
    *   </dt>
    *   <dd>
-   *     Appointment short description.
+   *     Appointment short description (deprecated, use `html_description_short`).
    *   </dd>
    *   <dt>
    *     string <var>xml_special</var>
    *   </dt>
    *   <dd>
-   *      Special instructions.
+   *      Special instructions (deprecated, use `html_special`).
    *   </dd>
    * </dl>
    *
    * @get result
    * @var array
    */
-  public $a_service;
+  public $a_service = null;
 
   /**
-   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * List of user keys to book appointments.
    * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
@@ -337,7 +354,7 @@ class ServiceListModel extends WlModelAbstract
   public $is_tab_all = false;
 
   /**
-   * `true` if client is walk-in, otherwise `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -371,7 +388,7 @@ class ServiceListModel extends WlModelAbstract
   public $k_service_category = '0';
 
   /**
-   * User to get information for.
+   * The user key.
    *
    * @get get
    * @post get

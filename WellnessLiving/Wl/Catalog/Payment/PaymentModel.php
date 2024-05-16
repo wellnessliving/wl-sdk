@@ -3,12 +3,20 @@
 namespace WellnessLiving\Wl\Catalog\Payment;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
+use WellnessLiving\Wl\Insurance\Catalog\ProgramListModel;
+use WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel;
+use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * Purchases an item and performs the payment in the store.
  *
  * This endpoint uses a CAPTCHA check. To pass the CAPTCHA, consult the CAPTCHA API documentation.
- * The documentation specifies that a captcha must be sent for a specific action. For this API, an action is `1064`.
+ * The documentation specifies that a captcha must be sent for a specific action.
+ *
+ * For this API an action is {@link BusinessPaymentCaptcha::CID}.
  */
 class PaymentModel extends WlModelAbstract
 {
@@ -46,7 +54,7 @@ class PaymentModel extends WlModelAbstract
    *         <dt>int <var>i_count</var></dt>
    *         <dd>The quantity of elements.</dd>
    *         <dt>int <var>id_purchase_item</var></dt>
-   *         <dd>The purchase type of the element. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.</dd>
+   *         <dd>The purchase type of the element. One of the {@link WlPurchaseItemSid} constants.</dd>
    *         <dt>string <var>k_id</var></dt>
    *         <dd>The primary key of the element, depending on the element type.</dd></dl>
    *       </dd>
@@ -66,12 +74,12 @@ class PaymentModel extends WlModelAbstract
    *
    *          <dl>
    *            <dt>array <var>a_account</var></dt>
-   *            <dd>See {@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel::$a_account} for a full description.</dd>
+   *            <dd>See {@link EnrollmentFieldListModel::$a_account} for a full description.</dd>
    *            <dt>array <var>a_field</var></dt>
-   *            <dd>See {@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel::$a_field} for a full description.</dd>
+   *            <dd>See {@link EnrollmentFieldListModel::$a_field} for a full description.</dd>
    *          </dl>
    *
-   *          It's recommended to validate the fields using the POST method of the {@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} model.
+   *          It's recommended to validate the fields using the POST method of the {@link EnrollmentFieldListModel} model.
    *       </dd>
    *       <dt>
    *         string [<var>dt_prorate</var>]
@@ -88,15 +96,15 @@ class PaymentModel extends WlModelAbstract
    *       <dt>
    *         string [<var>dt_start</var>]
    *       </dt>
+   *       <dd>
+   *         The start date, used only for memberships.
+   *       </dd>
    *       <dt>
    *         bool [<var>is_pay_when_start</var>]
    *       </dt>
    *       <dd>
    *         If `true`, the client won't be charged for this item until its start date. Otherwise, this will be `false`.
    *         The Purchase Option must have a specified start date.
-   *       </dd>
-   *       <dd>
-   *         The start date, used only for memberships.
    *       </dd>
    *       <dt>
    *         bool [<var>is_prorate</var>]
@@ -147,8 +155,8 @@ class PaymentModel extends WlModelAbstract
    *
    *          <p>Use the following models to work with this type of promotion:</p>
    *          <ul>
-   *            <li>{@link \WellnessLiving\Wl\Insurance\Catalog\ProgramListModel} to obtain list of active programs.</li>
-   *            <li>{@link \WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel} to get and validate fields for a given program.</li>
+   *            <li>{@link ProgramListModel} to obtain list of active programs.</li>
+   *            <li>{@link EnrollmentFieldListModel} to get and validate fields for a given program.</li>
    *          </ul>
    *       </dd>
    *       <dd>
@@ -222,7 +230,7 @@ class PaymentModel extends WlModelAbstract
    *     int <var>id_sale</var>
    *   </dt>
    *   <dd>
-   *     The item type ID. One of the {@link \WellnessLiving\WlSaleSid} constants.
+   *     The item type ID. One of the {@link WlSaleSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>
@@ -256,9 +264,9 @@ class PaymentModel extends WlModelAbstract
   public $a_item = [];
 
   /**
-   * The list of available payment sources.
+   * A list of payment sources to pay with.
    *
-   * Each element has the next keys:
+   * Each element has next keys:
    * <dl>
    *   <dt>
    *     array [<var>a_pay_card</var>]
@@ -273,7 +281,7 @@ class PaymentModel extends WlModelAbstract
    *         The payment address:
    *         <dl>
    *           <dt>boolean <var>is_new</var></dt>
-   *           <dd>Set this value to <tt>1</tt> to add a new payment address or <tt>0</tt> to use a saved payment address.</dd>
+   *           <dd>Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
    *           <dt>string [<var>k_geo_country</var>]</dt>
    *           <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>k_geo_region</var>]</dt>
@@ -285,7 +293,7 @@ class PaymentModel extends WlModelAbstract
    *           <dt>string [<var>s_name</var>]</dt>
    *           <dd>The card name. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_phone</var>]</dt>
-   *           <dd>The payment phone number. Specify this to add a new address.</dd>
+   *           <dd>The payment phone. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_postal</var>]</dt>
    *           <dd>The postal code for the payment address. Specify this to add a new address.</dd>
    *           <dt>string [<var>s_street1</var>]</dt>
@@ -316,13 +324,13 @@ class PaymentModel extends WlModelAbstract
    *         boolean <var>is_new</var>
    *       </dt>
    *       <dd>
-   *         Set this to <tt>1</tt> to add a new card or <tt>0</tt> to use a saved card.
+   *         Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
    *       </dd>
    *       <dt>
    *         string [<var>k_pay_bank</var>]
    *       </dt>
    *       <dd>
-   *         The key of a credit card. Specify this to use saved card.
+   *         The key of the credit card. Specify this to use saved card.
    *       </dd>
    *       <dt>
    *         string [<var>s_comment</var>]
@@ -342,7 +350,7 @@ class PaymentModel extends WlModelAbstract
    *     string <var>f_amount</var>
    *   </dt>
    *   <dd>
-   *     The amount of money to withdraw using this payment source.
+   *     The amount of money to withdraw with this payment source.
    *   </dd>
    *   <dt>
    *     boolean [<var>is_hide</var>]
@@ -383,7 +391,8 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * The list of quiz response keys.
-   * Keys refer to quiz keys, and values refer to responses or special values from the {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} constant.
+   * Keys refer to quiz keys.
+   * And values refer to responses.
    *
    * @post post
    * @var array
@@ -399,7 +408,7 @@ class PaymentModel extends WlModelAbstract
   public $f_discount_percent = 0;
 
   /**
-   * The WellnessLiving mode type (required). One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * The WellnessLiving mode type (required). One of the {@link ModeSid} constants.
    *
    * @post get
    * @var int
@@ -446,7 +455,7 @@ class PaymentModel extends WlModelAbstract
    * @post result
    * @var string|null
    */
-  public $k_login_activity;
+  public $k_login_activity = null;
 
   /**
    * The installment template key (optional).

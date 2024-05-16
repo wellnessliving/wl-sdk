@@ -3,6 +3,8 @@
 namespace WellnessLiving\Wl\Search\Tag;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Business\BusinessCategorySid;
+use WellnessLiving\Wl\Business\DataModel;
 
 /**
  * Returns a list of all existing search tags in the system.
@@ -19,8 +21,8 @@ class SearchTagListModel extends WlModelAbstract
    *   <dt>int <var>id_business_category</var></dt>
    *   <dd>
    *     The business category that can use this search tag.
-   *     One of the {@link \WellnessLiving\Wl\Business\BusinessCategorySid} constants.
-   *     This can be found in the business information found in {@link \WellnessLiving\Wl\Business\DataModel::$id_category}.
+   *     One of the {@link BusinessCategorySid} constants.
+   *     This can be found in the business information found in {@link DataModel::$id_category}.
    *   </dd>
    *   <dt>string <var>k_search_tag</var></dt>
    *   <dd>The key of the tag. The primary key in the table of tags.</dd>

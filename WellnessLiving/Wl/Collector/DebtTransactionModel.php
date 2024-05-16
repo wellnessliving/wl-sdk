@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Collector;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
  * Returns a list of payments for debts added within the previous day.
@@ -19,11 +20,11 @@ class DebtTransactionModel extends WlModelAbstract
    *   <dt>string <var>m_pay_amount</var></dt>
    *   <dd>The amount of the payment's transaction.</dd>
    *   <dt>int <var>id_pay_method</var></dt>
-   *   <dd>The payment method ID that was used for the payment. One of {@link \WellnessLiving\WlPayMethodSid} constants.</dd>
+   *   <dd>The payment method ID that was used for the payment. One of {@link WlPayMethodSid} constants.</dd>
    *   <dt>bool <var>is_pay_collections</var></dt>
    *   <dd>Defines whether the payment was performed via a third party service.
    *     `true` if the payment was performed via a third party service and this transaction is
-   *     responsible for an account credit transaction for that payment. See {@link \WellnessLiving\Wl\Collector\DebtPayModel}.
+   *     responsible for an account credit transaction for that payment. See {@link DebtPayModel}.
    *     `false` if the payment was performed within the Wellnessliving system.
    *   </dd>
    *   <dt>bool <var>is_debt_paid</var></dt>
@@ -46,24 +47,24 @@ class DebtTransactionModel extends WlModelAbstract
   /**
    * If set, this is the end of the date window. Only debt payments added before or on this date will be shown.
    *
-   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} has been specified only debt payments added after the start date will be returned.
-   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_start} is also `null`, this will return debt payments from the previous month.
+   * If left `null` and {@link DebtTransactionModel::$dl_start} has been specified only debt payments added after the start date will be returned.
+   * If left `null` and {@link DebtTransactionModel::$dl_start} is also `null`, this will return debt payments from the previous month.
    *
    * @get get
    * @var string|null
    */
-  public $dl_end=null;
+  public $dl_end = null;
 
   /**
    * If set, this is the start of the date window. Only debt payments added on or after this date will be shown.
    *
-   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} has been specified, this will return debt payments since the beginning of time.
-   * If left `null` and {@link \WellnessLiving\Wl\Collector\DebtListModel::$dl_end} is also `null`, this will return debt payments from the previous month.
+   * If left `null` and {@link DebtTransactionModel::$dl_end} has been specified, this will return debt payments since the beginning of time.
+   * If left `null` and {@link DebtTransactionModel::$dl_end} is also `null`, this will return debt payments from the previous month.
    *
    * @get get
    * @var string|null
    */
-  public $dl_start=null;
+  public $dl_start = null;
 
   /**
    * If `true`, debt payments from test businesses will be returned. Otherwise, this will be `false` if only
@@ -72,7 +73,7 @@ class DebtTransactionModel extends WlModelAbstract
    * @get get
    * @var bool
    */
-  public $is_test;
+  public $is_test = false;
 
   /**
    * The business key for which debt payments should be returned.
@@ -80,7 +81,7 @@ class DebtTransactionModel extends WlModelAbstract
    * Use `null` if debt payments from all businesses should be returned.
    *
    * @get get
-   * @var string
+   * @var string|null
    */
   public $k_business = '';
 }

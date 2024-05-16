@@ -2,7 +2,14 @@
 
 namespace WellnessLiving\Wl\Appointment\Book\Finish;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
+use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
+use WellnessLiving\Wl\Classes\Tab\TabSid;
+use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Pays for an appointment or appointment Purchase Option for a client.
@@ -41,9 +48,11 @@ class FinishMultipleModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     Add-ons to the appointment. Specified for appointment bookings only.
-   *     The old format used array keys, while the new new format has each element as an array:
-   *       <dl><dt>int <var>i_count</var></dt><dd>The add-on count.</dd>
-   *       <dt>string <var>k_shop_product_option</var></dt><dd>The add-on key.</dd></dl>
+   *     The old format used array keys. While the new format has each element as an array:
+   *     <dl>
+   *       <dt>int <var>i_count</var></dt><dd>The add-on count.</dd>
+   *       <dt>string <var>k_shop_product_option</var></dt><dd>The add-on key.</dd>
+   *     </dl>
    *   </dd>
    *   <dt>
    *     array [<var>a_repeat</var>]
@@ -55,7 +64,7 @@ class FinishMultipleModel extends WlModelAbstract
    *         int[] [<var>a_week</var>]
    *       </dt>
    *       <dd>
-   *         The days of the week when the appointment repeats. One of the constants of the {@link \WellnessLiving\Core\a\ADateWeekSid} class.
+   *         The days of the week when the appointment repeats. One of the constants of the {@link ADateWeekSid} class.
    *         This will be empty if the appointment doesn't repeat weekly.
    *       </dd>
    *       <dt>
@@ -81,7 +90,7 @@ class FinishMultipleModel extends WlModelAbstract
    *         int <var>id_period</var>
    *       </dt>
    *       <dd>
-   *         The measurement unit of `i_period`. One of the {@link \WellnessLiving\Core\a\ADurationSid} constants.
+   *         The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    *       </dd>
    *       <dt>
    *         bool [<var>is_month</var>]
@@ -131,13 +140,13 @@ class FinishMultipleModel extends WlModelAbstract
    *     int <var>id_class_tab</var>
    *   </dt>
    *   <dd>
-   *     The booking service type. One of the {@link \WellnessLiving\Wl\Classes\Tab\TabSid} constants.
+   *     The booking service type. One of the {@link TabSid} constants.
    *   </dd>
    *   <dt>
    *     int [<var>id_gender_staff</var>]
    *   </dt>
    *   <dd>
-   *     The gender of the staff member conducting the appointment. One of the {@link \WellnessLiving\Core\a\AGenderSid} constants.
+   *     The gender of the staff member conducting the appointment. One of the {@link AGenderSid} constants.
    *     Specify this for appointment bookings only.
    *   </dd>
    *   <dt>
@@ -146,18 +155,21 @@ class FinishMultipleModel extends WlModelAbstract
    *   <dd>
    *     The user's Purchase Option.
    *     Specify this if you want to use a specific Purchase Option to pay for the booking.
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_resource</var>]
    *   </dt>
    *   <dd>
    *     The asset booking. Specify this for separate asset bookings only.
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_service</var>]
    *   </dt>
    *   <dd>
    *     The appointment booking. Specify this for appointment bookings only.
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_staff</var>]
@@ -165,6 +177,7 @@ class FinishMultipleModel extends WlModelAbstract
    *   <dd>
    *     The staff member conducting the appointment.
    *     Specify this for appointment bookings only.
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_staff_date</var>]
@@ -174,6 +187,7 @@ class FinishMultipleModel extends WlModelAbstract
    *     The difference between this and <var>k_staff</var> is that this value must be set only in cases
    *     when you want to add customer to an appointment that already exists.
    *     Specify this for appointment bookings only.
+   *
    *   </dd>
    *   <dt>string [<var>m_tip_appointment</var>]</dt>
    *   <dd>The amount of selected tips.</dd>
@@ -203,7 +217,7 @@ class FinishMultipleModel extends WlModelAbstract
   public $a_paid = [];
 
   /**
-   * The payment type for the appointment. One of the {@link \WellnessLiving\Wl\Appointment\WlAppointmentPaySid} constants.
+   * The payment type for the appointment. One of the {@link WlAppointmentPaySid} constants.
    *
    * @post get
    * @var array
@@ -213,8 +227,6 @@ class FinishMultipleModel extends WlModelAbstract
   /**
    * A list of payment sources to pay with.
    *
-   * The structure of this array corresponds with the structure of {@link RsPayForm::$a_pay_source}.
-   *
    * @post post
    * @var array[]
    */
@@ -223,7 +235,7 @@ class FinishMultipleModel extends WlModelAbstract
   /**
    * Data required for payment with the next structure:<dl>
    *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>The purchase item type. One of the {@link \WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid} constants.</dd>
+   *   <dd>The purchase item type. One of the {@link WlPurchaseItemSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The promotion or appointment key, depending on <var>id_purchase_item</var> in this array.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
@@ -248,7 +260,8 @@ class FinishMultipleModel extends WlModelAbstract
 
   /**
    * The list of quiz response keys.
-   * Keys refer to quiz keys, and values refer to response keys.
+   * Keys refer to quiz keys.
+   * And values refer to response keys.
    *
    * @post post
    * @var array[]
@@ -256,8 +269,8 @@ class FinishMultipleModel extends WlModelAbstract
   public $a_quiz_response = [];
 
   /**
-   * The list of user keys to book appointments with.
-   * Empty values in this list signify walk-ins.
+   * List of user keys to book appointments.
+   * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
    * @post get
@@ -289,7 +302,18 @@ class FinishMultipleModel extends WlModelAbstract
   public $a_visit = [];
 
   /**
-   * The mode type. One of the {@link \WellnessLiving\Wl\Mode\ModeSid} constants.
+   * Keys of booked visits.
+   *
+   * Structured into a two-dimensional array.
+   * 1st dimension - providers; 2nd dimension - visit keys inside a provider.
+   *
+   * @post result
+   * @var string[][]
+   */
+  public $a_visit_provider = [];
+
+  /**
+   * The mode type. One of the {@link ModeSid} constants.
    *
    * @post post
    * @var int
@@ -305,7 +329,10 @@ class FinishMultipleModel extends WlModelAbstract
   public $is_back_to_back = false;
 
   /**
-   * This will be `true` when trying to make a test booking and rollback should be applied. Otherwise, this will be `false`.
+   * This will be `true` when trying to make a test booking and rollback should be applied.
+   * Otherwise, this will be `false`.
+   *
+   * If the flag is set to `true`, credit card requirement will be ignored during this check.
    *
    * @post post
    * @var bool
@@ -313,7 +340,7 @@ class FinishMultipleModel extends WlModelAbstract
   public $is_try = false;
 
   /**
-   * This will be `true` if the client is walk-in. Otherwise, this will be `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -339,7 +366,7 @@ class FinishMultipleModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The location to show the available appointment booking schedule for.
+   * Location to show available appointment booking schedule.
    *
    * @get get,result
    * @post get
@@ -348,7 +375,7 @@ class FinishMultipleModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
-   * The unique identifier of the wizard.
+   * Unique identifier of the wizard.
    *
    * @post post
    * @var string
@@ -356,7 +383,7 @@ class FinishMultipleModel extends WlModelAbstract
   public $s_id = '';
 
   /**
-   * The user to get information for.
+   * The user key.
    *
    * @get get
    * @post get

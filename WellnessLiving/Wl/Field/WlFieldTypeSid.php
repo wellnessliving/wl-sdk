@@ -23,19 +23,17 @@ class WlFieldTypeSid
   const GENERAL = 5;
 
   /**
-   * Radio buttons. Field {@link RsFieldValue}.<tt>s_value</tt> for this type of fields means index of the selected
-   * item.
+   * Radio buttons.
    */
   const RADIO = 4;
 
   /**
-   * Drop-down menu. Field {@link RsFieldValue}.<tt>s_value</tt> for this type of fields means index of the selected
-   * item.
+   * Drop-down menu.
    */
   const SELECT = 3;
 
   /**
-   * One line text field. {@link RsFieldValue}.<tt>s_value</tt> for this type of fields means value of the text input.
+   * One line text field.
    */
   const TEXT = 1;
 }

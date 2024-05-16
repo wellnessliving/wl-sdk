@@ -17,12 +17,19 @@ class MemberModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     <tt>true</tt> if user is allowed to sign in into this business; <tt>false</tt> otherwise.
+   *
    *   </dd>
    *   <dt>
    *     bool <var>is_franchisee</var>
    *   </dt>
    *   <dd>
    *     If `true`, then the business is a franchisee. Otherwise, this will be `false`.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_franchisor</var>
+   *   </dt>
+   *   <dd>
+   *     If `true`, then the business is a franchisor. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     string <var>k_business</var>

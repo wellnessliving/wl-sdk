@@ -3,6 +3,8 @@
 namespace WellnessLiving\Wl\Location;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Location\View\ViewModel;
+use WellnessLiving\Wl\WlProjectSid;
 
 /**
  * Gets all locations for a list of businesses.
@@ -82,7 +84,7 @@ class ListBulkModel extends WlModelAbstract
   /**
    * A list of models with full information about each location.
    *
-   * Every element is an object of the {@link \WellnessLiving\Wl\Location\View\ViewModel}.
+   * Every element is an object of the {@link ViewModel}.
    *
    * @get result
    * @var array[]
@@ -95,8 +97,8 @@ class ListBulkModel extends WlModelAbstract
    * `0` if a directory filter isn't required.
    *
    * @get get
-   * @see \WellnessLiving\WlProjectSid
    * @var int
+   * @see WlProjectSid
    */
   public $id_directory = 0;
 

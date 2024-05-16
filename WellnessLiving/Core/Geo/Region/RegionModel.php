@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Core\Geo\Region;
 
+use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -52,7 +53,7 @@ class RegionModel extends WlModelAbstract
   public $a_region;
 
   /**
-   * The locale ID to find regions for. One of the {@link \WellnessLiving\Core\Locale\LocaleSid} constants.
+   * The locale ID to find regions for. One of the {@link LocaleSid} constants.
    *
    * @get get
    * @var int
