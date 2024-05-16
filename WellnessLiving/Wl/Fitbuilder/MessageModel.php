@@ -4,6 +4,9 @@ namespace WellnessLiving\Wl\Fitbuilder;
 
 use WellnessLiving\WlModelAbstract;
 
+/**
+ * Point to get messenger information from Fitbuilder.
+ */
 class MessageModel extends WlModelAbstract
 {
   /**
