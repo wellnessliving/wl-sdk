@@ -100,7 +100,7 @@ class EnvironmentModel extends WlModelAbstract
   public $dl_now;
 
   /**
-   * The percentage of the payment amount to additionally withdraw as a surcharge.
+   * Surcharge amount for payment with card represented as a percent of transaction amount.
    *
    * This will be `null` if the percentage surcharge amount shouldn't be withdrawn.
    *
@@ -108,6 +108,16 @@ class EnvironmentModel extends WlModelAbstract
    * @var string|null
    */
   public $f_surcharge = null;
+
+  /**
+   * Surcharge amount for payment with ACH represented as a percent of transaction amount.
+   *
+   * This will be `null` if the percentage surcharge amount shouldn't be withdrawn.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $f_surcharge_ach = null;
 
   /**
    * The locale ID of the business.
@@ -165,7 +175,7 @@ class EnvironmentModel extends WlModelAbstract
   public $k_location = '0';
 
   /**
-   * The fixed surcharge amount to withdraw from all payment sources that support surcharges.
+   * Surcharge amount for payment with card represented as a fixed amount.
    *
    * This will be `null` if the fixed surcharge amount shouldn't be withdrawn.
    *
@@ -173,6 +183,16 @@ class EnvironmentModel extends WlModelAbstract
    * @var string|null
    */
   public $m_surcharge = null;
+
+  /**
+   * Surcharge amount for payment with ACH represented as a fixed amount.
+   *
+   * This will be `null` if the fixed surcharge amount shouldn't be withdrawn.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $m_surcharge_ach = null;
 }
 
 ?>
