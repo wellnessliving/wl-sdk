@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Quiz;
 /**
  * List of response statuses.
  *
- * Last used ID: 5
+ * Last used ID: 6
  */
 class ResponseStatusSid
 {
@@ -23,6 +23,11 @@ class ResponseStatusSid
    * Response in draft mode.
    */
   const DRAFT = 2;
+
+  /**
+   * Response are duplicated.
+   */
+  const DUPLICATE = 6;
 
   /**
    * Response in inactive.

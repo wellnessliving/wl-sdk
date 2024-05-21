@@ -12,6 +12,7 @@ class AppleLoginModel extends WlModelAbstract
   /**
    * The application ID.
    *
+   * @delete post
    * @post post
    * @var string
    */
