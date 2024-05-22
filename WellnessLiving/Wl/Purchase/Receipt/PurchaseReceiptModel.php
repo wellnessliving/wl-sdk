@@ -406,6 +406,14 @@ class PurchaseReceiptModel extends WlModelAbstract
   public $text_receipt;
 
   /**
+   * UID of current user. Can be empty.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $uid_current = null;
+
+  /**
    * The URL for printing on a normal printer.
    *
    * @get result
