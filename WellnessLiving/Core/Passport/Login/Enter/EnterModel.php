@@ -73,7 +73,7 @@ class EnterModel extends WlModelAbstract
    *
    * This field is filled in a case when a captcha code is required to sign in.
    *
-   * @post error
+   * @post result
    * @var string
    */
   public $url_captcha;
