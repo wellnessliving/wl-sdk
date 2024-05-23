@@ -33,6 +33,12 @@ class CatalogListModel extends WlModelAbstract
    *     The list of login types available to purchase the sale item.
    *   </dd>
    *   <dt>
+   *     string[] <var>a_member_group</var>
+   *   </dt>
+   *   <dd>
+   *     The list of member groups available to purchase the sale item.
+   *   </dd>
+   *   <dt>
    *     string[] <var>a_shop_category</var>
    *   </dt>
    *   <dd>
