@@ -11,6 +11,14 @@ use WellnessLiving\WlModelAbstract;
 class UserInfoModel extends WlModelAbstract
 {
   /**
+   * List of member groups that the user belongs to.
+   *
+   * @get result
+   * @var string[]
+   */
+  public $a_member_group = [];
+
+  /**
    * Information about the user's photo. The information returned has the following structure:<dl>
    *   <dt>int <var>i_height</var></dt>
    *   <dd>The height of the photo.</dd>
@@ -31,6 +39,8 @@ class UserInfoModel extends WlModelAbstract
    * List of user's data.
    *
    * <dl>
+   *   <dt>array <var>a_member_group</var></dt>
+   *   <dd>List of member groups that the user belongs to.</dd>
    *   <dt>array <var>a_photo</var></dt>
    *   <dd>Information about the user's photo.</dd>
    *   <dt>string <var>dt_add</var></dt>
