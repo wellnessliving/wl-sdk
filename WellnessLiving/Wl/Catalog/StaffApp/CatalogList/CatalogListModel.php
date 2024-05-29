@@ -31,6 +31,7 @@ class CatalogListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The list of login types available to purchase the sale item.
+   *     Empty list means that the sale item is available to all login types.
    *   </dd>
    *   <dt>
    *     string[] <var>a_member_group</var>
@@ -38,6 +39,7 @@ class CatalogListModel extends WlModelAbstract
    *   <dd>
    *     The list of member groups available to purchase the sale item.
    *
+   *     Empty list means that the sale item is available to all member groups.
    *   </dd>
    *   <dt>
    *     string[] <var>a_shop_category</var>

@@ -25,11 +25,6 @@ class ResponseStatusSid
   const DRAFT = 2;
 
   /**
-   * Response are duplicated.
-   */
-  const DUPLICATE = 6;
-
-  /**
    * Response in inactive.
    *
    * It's temporary status which used when response is saved during registration/booking/purchase process,

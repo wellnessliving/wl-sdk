@@ -19,41 +19,19 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 class PaymentModel extends WlModelAbstract
 {
   /**
-   * A list of items to be bought. Every element has the next keys:
-   * <dl>
-   *   <dt>
-   *     int <var>id_purchase_item</var>
-   *   </dt>
-   *   <dd>
-   *     The ID of purchase item type. One of {@link WlPurchaseItemSid} constants.
-   *   </dd>
-   *   <dt>
-   *     boolean [<var>is_renew</var>]
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> if the item should be set to auto-renew; <tt>false</tt> if otherwise.
-   *     If not set yet, use the default option for this item.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_id</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the purchase item in the database.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_login_prize</var>
-   *   </dt>
-   *   <dd>
-   *     ID of user's prize.
-   *     Not <tt>0</tt> only if user is paying book by prize.
-   *   </dd>
-   *   <dt>
-   *     string [<var>s_signature</var>]
-   *   </dt>
-   *   <dd>
-   *     The signature of the Purchase Option contract.
-   *     This won't be set if the Purchase Option doesn't require a contract assignment.
-   *   </dd>
+   * A list of items to be bought. Every element has the next keys: <dl>
+   *   <dt>int <var>id_purchase_item</var></dt>
+   *   <dd>The ID of purchase item type. One of {@link WlPurchaseItemSid} constants.</dd>
+   *   <dt>boolean [<var>is_renew</var>]</dt>
+   *   <dd>`true` if the item should be set to auto-renew; `false` otherwise. If not set yet, use the default option for this item.</dd>
+   *   <dt>string <var>k_id</var></dt>
+   *   <dd>The key of the purchase item in the database.</dd>
+   *   <dt>string <var>k_login_prize</var></dt>
+   *   <dd>Key of user's prize. Not `0` only if user is paying book by prize.</dd>
+   *   <dt>string <var>k_reward_prize</var></dt>
+   *   <dd>Key of reward prize. Not `0` only if user wants to redeem prize and use it to pay for visit.</dd>
+   *   <dt>string [<var>s_signature</var>]</dt>
+   *   <dd>The signature of the Purchase Option contract. This won't be set if the Purchase Option doesn't require a contract assignment.</dd>
    * </dl>
    *
    * @post post

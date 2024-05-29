@@ -91,7 +91,7 @@ class EnvironmentModel extends WlModelAbstract
   public $a_pay_processor = null;
 
   /**
-   * Local date with time now in current location {@link EnvironmentModel::$k_location}
+   * Current local date in current location {@link EnvironmentModel::$k_location}
    * or business {@link EnvironmentModel::$k_business} if not set location.
    *
    * @get result
