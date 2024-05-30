@@ -114,6 +114,16 @@ class LeadModel extends WlModelAbstract
   public $a_skin;
 
   /**
+   * Whether it is possible to give free promotion when adding a user (only if free promotion is configured in the widget).
+   * `true` if it is possible, `false` if not.
+   *
+   * @get result
+   * @post get
+   * @var bool
+   */
+  public $can_use_free_purchase;
+
+  /**
    * The key of business to which the new user must be captured.
    *
    * @get get
