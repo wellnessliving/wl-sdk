@@ -10,7 +10,16 @@ use WellnessLiving\WlModelAbstract;
 class MessageModel extends WlModelAbstract
 {
   /**
-   * Messenger information.
+   * Messenger information:
+   * <dl>
+   *   <dt>
+   *     array `message`
+   *   <dt>
+   *   <dd>
+   *     Message information:
+   *     <dl><dt>string `id`</dt><dd>Message key.</dd></dl>
+   *   </dd>
+   * </dl>
    *
    * @post post
    * @var array

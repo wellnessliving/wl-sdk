@@ -51,22 +51,6 @@ class QuizElementModel extends WlModelAbstract
   public $can_anonymous = false;
 
   /**
-   * Whether user has privileges to manage form.
-   *
-   * @get result
-   * @var bool
-   */
-  public $can_manage = false;
-
-  /**
-   * Whether user has privileges to view form responses.
-   *
-   * @get result
-   * @var bool
-   */
-  public $can_view_response = false;
-
-  /**
    * Number of responses for specific quiz.
    *
    * @get result
