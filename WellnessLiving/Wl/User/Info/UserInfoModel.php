@@ -40,7 +40,7 @@ class UserInfoModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>array <var>a_member_group</var></dt>
-   *  <dd>List of member groups that the user belongs to.</dd>
+   *   <dd>List of member groups that the user belongs to.</dd>
    *   <dt>array <var>a_photo</var></dt>
    *   <dd>Information about the user's photo.</dd>
    *   <dt>string <var>dt_add</var></dt>

@@ -73,6 +73,15 @@ class PurchaseElementModel extends WlModelAbstract
   public $k_pay_installment_template = null;
 
   /**
+   * The key of the reward prize.
+   * Not empty only if the user wants to redeem prize and use it to pay for a visit.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_reward_prize = '0';
+
+  /**
    * The cost of one purchase item (with taxes).
    *
    * @get result
