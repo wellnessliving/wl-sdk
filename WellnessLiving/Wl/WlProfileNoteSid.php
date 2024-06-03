@@ -21,10 +21,15 @@ namespace WellnessLiving\Wl;
  *   </li>
  * </ol>
  *
- * Last used ID: 4.
+ * Last used ID: 5.
  */
 abstract class WlProfileNoteSid
 {
+  /**
+   * A list of clients with not redeemed invitations.
+   */
+  const DOORACCESS_BRIVO_INVITATION_BRIVOINVITATIONPROFILE = 5;
+
   /**
    * A list of accounts with invalid progress log.
    */

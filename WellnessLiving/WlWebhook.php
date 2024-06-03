@@ -67,7 +67,7 @@ class WlWebhook
     foreach($a_auth as $o_header_auth)
     {
       if(
-        $o_header_auth->s_version==='20150518' &&
+        $o_header_auth->s_version=== WlHeaderAuthorization::VERSION_20150518 &&
         $o_header_auth->s_application_id===$s_config_class::AUTHORIZE_ID &&
         $o_header_auth->s_signature!==null &&
         strlen($o_header_auth->s_signature)==64

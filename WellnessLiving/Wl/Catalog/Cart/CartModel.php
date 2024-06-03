@@ -23,6 +23,8 @@ class CartModel extends WlModelAbstract
   /**
    * The list of items in the cart.
    * <dl>
+   *   <dt>string <var>dl_client_prorate</var></dt>
+   *   <dd>The client prorate date. This will be `null` in cases where the client prorate date hasn't passed.</dd>
    *   <dt>int <var>i_quantity</var></dt>
    *   <dd>The quantity of sale items.</dd>
    *   <dt>int <var>id_sale</var></dt>

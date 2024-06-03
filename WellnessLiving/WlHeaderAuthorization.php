@@ -10,6 +10,20 @@ use WellnessLiving\Config\WlConfigAbstract;
 class WlHeaderAuthorization
 {
   /**
+   * Standard authorization header prefix for requests from our PHP SDK.
+   *
+   * @link namespace.Core/Request/Api/doc/authorization-header.md
+   */
+  const VERSION_20150518='20150518';
+
+  /**
+   * Authorization header prefix for requests from JS SDK when session ID is stored in the local storage.
+   *
+   * @link namespace.Core/Request/Api/doc/authorization-header.md
+   */
+  const VERSION_20210304_CORS='20210304-cors';
+
+  /**
    * List of headers that were used in computing the signature.
    * Each element is the name of the header.
    * The order of enumeration corresponds to the order of application when generating the signature.
@@ -64,6 +78,7 @@ class WlHeaderAuthorization
 
   /**
    * Format version for 'Authorization' header.
+   * One of {@link WlHeaderAuthorization}::`VERSION_*` constants.
    *
    * @var string
    */
@@ -73,6 +88,7 @@ class WlHeaderAuthorization
    * Retrieves all 'Authorization' headers from the current request.
    *
    * @return WlHeaderAuthorization[] All 'Authorization' headers from the current request.
+   * If the array is empty, then there are no 'Authorization' headers in the request.
    */
   public static function createFromRequest()
   {
