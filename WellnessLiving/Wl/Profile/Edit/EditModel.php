@@ -150,6 +150,16 @@ class EditModel extends WlModelAbstract
   public $id_register_source = null;
 
   /**
+   * `true` if address inherit, otherwise `false`.
+   *
+   * @get result
+   * @post get
+   * @put get
+   * @var bool
+   */
+  public $is_address_inherit = false;
+
+  /**
    * Indicates whether to display the full profile edit form or the short version.
    * This is assumed to be used only in user registration mode.
    *
@@ -269,6 +279,18 @@ class EditModel extends WlModelAbstract
    * @var string
    */
   public $uid_existed = '';
+
+  /**
+   * UID of the user, whose address was inherited by the existing client we want to add.
+   * Empty if non-existent user is being added or user to add is the one, whose address is inherited.
+   *
+   * @get result
+   * @post get
+   * @put get
+   * @var string|null
+   * @see \PassportLoginSql
+   */
+  public $uid_inherit_address = null;
 
   /**
    * UID of the user, whose email was inherited by the existing client we want to add.
