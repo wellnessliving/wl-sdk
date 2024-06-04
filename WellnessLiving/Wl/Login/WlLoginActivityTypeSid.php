@@ -6,8 +6,6 @@ namespace WellnessLiving\Wl\Login;
  * Manages identifiers of user activity.
  *
  * Last ID: 54.
- *
- * @copyright 2012 - 2015, WellnessLiving Inc, www.wellnessliving.com.
  */
 abstract class WlLoginActivityTypeSid
 {

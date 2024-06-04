@@ -323,22 +323,25 @@ abstract class WlConfigAbstract
   }
 
   /**
-   * Retrieves the raw body content of the POST request.
+   * Retrieves the raw content of the HTTP request body.
    *
-   * Attention!
-   * This method should be overridden in the descendant so that it always returns
-   * the raw body content of the POST request if:
-   * * method execution fails with an error;
-   * * the developer uses PHP version up to 5.6.0;
-   * * the `always_populate_raw_post_data` option is disabled;
-   * * the developer needs to access the raw data of the POST request body.
+   * ## PHP 5.5 and 5.6 compatibility notes
    *
-   * This is because the only remaining way to get the raw body content of the POST request is to read
-   * from the 'php://input' stream.
-   * In PHP versions prior to 5.6.0, the 'php://input' stream can only be read once.
+   * In PHP 5.5 and before, there was not possible to make multiple reads from `php://input` stream.
+   * And, this method requires reading from this stream.
+   * If you use PHP 5.5, this will interfere with your application which also needs to read from this stream.
+   * Please, override this method in your configuration subclass to provide a method to read the entire HTTP request body.
    *
-   * @return string|null Thw raw body content of the POST request.
-   * `null` if the POST request body is empty.
+   * Please, note that there are messages that `php://input` was not reusable in PHP 5.6. See links below for details.
+   *
+   * You may also need to override this method if `always_populate_raw_post_data` is disabled.
+   *
+   * Feel free to override it in other cases when this default implementation does not work well for you.
+   *
+   * @return string|null The raw body content of the POST request. `null` if the POST request body is empty.
+   * @link https://stackoverflow.com/questions/31762278/how-the-php-input-was-made-reusable-in-5-6 It seems they have removed the notice from their official documentation about that `php://input` was not reusable in PHP 5.5.
+   * @link https://stackoverflow.com/questions/35361763/php-input-can-only-be-read-once-in-php-5-6-16 Messages that it was not working for someone in PHP 5.6.
+   * @link https://www.php.net/manual/en/migration56.new-features.php#migration56.new-features.reusable-input PHP 5.6 migration notes: php://input is reusable
    */
   public static function postRawData()
   {

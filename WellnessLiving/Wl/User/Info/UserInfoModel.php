@@ -123,6 +123,17 @@ class UserInfoModel extends WlModelAbstract
   public $dt_birth;
 
   /**
+   * Whether client's login type has a discount.
+   * `true` - login type has a discount, `false` - otherwise.
+   *
+   * This will be `null` if a client has no assigned login type.
+   *
+   * @get result
+   * @var ?bool
+   */
+  public $has_discount = null;
+
+  /**
    * The ID of the user's gender. One of the {@link AGenderSid} constants.
    *
    * This will be `null` if the gender isn't set yet.
@@ -223,6 +234,15 @@ class UserInfoModel extends WlModelAbstract
    * @var string
    */
   public $s_phone_work = '';
+
+  /**
+   * Login type title.
+   * Empty if a client has no client type assigned.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_login_type = '';
 
   /**
    * The key of the user.
