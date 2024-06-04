@@ -475,12 +475,22 @@ class PaymentMultipleModel extends WlModelAbstract
   public $m_discount;
 
   /**
-   * The surcharge amount.
+   * The surcharge amount calculated for credit cards.
+   * `null` when surcharge is not enabled or calculated.
    *
    * @get result
-   * @var string
+   * @var string|null
    */
   public $m_surcharge;
+
+  /**
+   * The surcharge amount calculated for ACH.
+   * `null` when surcharge is not enabled or calculated.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $m_surcharge_ach;
 
   /**
    * The amount of tax to pay.

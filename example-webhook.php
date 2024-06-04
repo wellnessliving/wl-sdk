@@ -17,11 +17,15 @@ if($o_webhook->isAuthorize())
 else
 {
   echo "ERROR: Webhook is not authorized.".PHP_EOL;
+  echo "Diagnostic information:".PHP_EOL;
+  echo var_export($o_webhook->a_diagnostic,true).PHP_EOL;
+
   return;
 }
 
-echo "The request body: ".PHP_EOL;
-echo var_export($o_webhook->variable(),true);
+$a_variable = $o_webhook->variable();
+echo "The request variables: ".PHP_EOL;
+echo var_export($a_variable,true);
 
 echo PHP_EOL;
 

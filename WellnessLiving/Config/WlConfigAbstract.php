@@ -4,6 +4,7 @@ namespace WellnessLiving\Config;
 
 use WellnessLiving\Wl\WlRegionSid;
 use WellnessLiving\WlAssertException;
+use WellnessLiving\WlTool;
 
 /**
  * Contains WellnessLiving SDK configuration.
@@ -319,6 +320,71 @@ abstract class WlConfigAbstract
   {
     $t_time = time();
     return hash('sha3-512',$s_session_key.'::'.$this::AUTHORIZE_CODE.'::'.$t_time).'.'.$t_time.'.'.substr($s_session_key,0,5);
+  }
+
+  /**
+   * Retrieves the raw body content of the POST request.
+   *
+   * Attention!
+   * This method should be overridden in the descendant so that it always returns
+   * the raw body content of the POST request if:
+   * * method execution fails with an error;
+   * * the developer uses PHP version up to 5.6.0;
+   * * the `always_populate_raw_post_data` option is disabled;
+   * * the developer needs to access the raw data of the POST request body.
+   *
+   * This is because the only remaining way to get the raw body content of the POST request is to read
+   * from the 'php://input' stream.
+   * In PHP versions prior to 5.6.0, the 'php://input' stream can only be read once.
+   *
+   * @return string|null Thw raw body content of the POST request.
+   * `null` if the POST request body is empty.
+   */
+  public static function postRawData()
+  {
+    if(version_compare(PHP_VERSION,'5.6.0')<0)
+    {
+      $s_always_populate_raw_post_data = ini_get('always_populate_raw_post_data');
+      $is_always_populate_raw_post_data =
+        $s_always_populate_raw_post_data &&
+        $s_always_populate_raw_post_data!=-1
+      ;
+
+      if(!$is_always_populate_raw_post_data)
+      {
+        trigger_error(
+          "The 'always_populate_raw_post_data' option disabled. ".
+          "You must enable the 'always_populate_raw_post_data' option or override this method.",
+          E_USER_ERROR
+        );
+      }
+
+      if(!array_key_exists('HTTP_RAW_POST_DATA',$_POST))
+        trigger_error("The 'HTTP_RAW_POST_DATA' variable is not available.", E_USER_ERROR);
+
+      return $_POST['HTTP_RAW_POST_DATA'];
+    }
+
+    $a_header = WlTool::getAllHeaders();
+    if(!array_key_exists('Content-Type',$a_header))
+      trigger_error("The 'Content-Type' header are missing: \n".var_export($a_header,true),E_USER_ERROR);
+
+    if(
+      ini_get('enable_post_data_reading') &&
+      (
+        $a_header['Content-Type']==='multipart/form-data' ||
+        strncmp($a_header['Content-Type'],'multipart/form-data;',20)==0
+      )
+    )
+    {
+      trigger_error("Cannot read POST request data with content type 'multipart/form-data': \n".var_export($a_header,true),E_USER_ERROR);
+    }
+
+    $s_post_raw = file_get_contents('php://input');
+    if(!$s_post_raw)
+      return null;
+
+    return $s_post_raw;
   }
 
   /**

@@ -346,12 +346,22 @@ class PaymentPostModel extends WlModelAbstract
   public $m_discount = '0.00';
 
   /**
-   * Surcharge amount.
+   * Surcharge amount calculated for credit cards.
+   * `null` when surcharge is not enabled or calculated.
    *
    * @get result
-   * @var string
+   * @var string|null
    */
   public $m_surcharge = '0.00';
+
+  /**
+   * Surcharge amount calculated for ACH.
+   * `null` when surcharge is not enabled or calculated.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $m_surcharge_ach = '0.00';
 
   /**
    * The tax of service.
