@@ -10,6 +10,14 @@ use WellnessLiving\WlModelAbstract;
 class QuizElementModel extends WlModelAbstract
 {
   /**
+   * Access log data.
+   *
+   * @get result
+   * @var array[] Access log data.
+   */
+  public $a_access_log = [];
+
+  /**
    * List of quiz elements.
    *
    * Order of the element in array corresponds to order of elements on the form.
@@ -107,6 +115,7 @@ class QuizElementModel extends WlModelAbstract
    * Quiz login key.
    *
    * @delete get
+   * @get get
    * @post get
    * @put get
    * @var string

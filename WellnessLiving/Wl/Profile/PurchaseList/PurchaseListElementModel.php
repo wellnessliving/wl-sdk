@@ -791,6 +791,14 @@ class PurchaseListElementModel extends WlModelAbstract
   public $sid_value;
 
   /**
+   * Expire conditions for the purchased item (only for promotion).
+   *
+   * @get result
+   * @var string
+   */
+  public $text_expire = '';
+
+  /**
    * The key of the user who paid for this purchase.
    *
    * @get result

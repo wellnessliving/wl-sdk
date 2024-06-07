@@ -18,6 +18,8 @@ namespace WellnessLiving\Wl;
  *      <li><tt>\Wl\A\B\C\Note</tt></li>
  *      <li><tt>\Wl\A\B\C\CNote</tt></li>
  *     </ol>
+ *     Also, you can set the class name in see tag of the constant's documentation.
+ *     Only one requirement is: the class should exist and path to it should be correct, as an example see {@link WlProfileNoteSid::DOORACCESS_BRIVO_INVITATION_BRIVOINVITATIONPROFILE}.
  *   </li>
  * </ol>
  *

@@ -349,20 +349,18 @@ class PaymentModel extends WlModelAbstract
   public $m_discount = '0.00';
 
   /**
-   * Surcharge amount calculated for credit cards.
-   * `null` when surcharge is not enabled or calculated.
+   * Surcharge amount calculated for credit cards (Virtual Terminal and Card Swiper).
    *
    * @get result
-   * @var string|null
+   * @var string
    */
   public $m_surcharge = '0.00';
 
   /**
-   * Surcharge amount calculated for ACH.
-   * `null` when surcharge is not enabled or calculated.
+   * Surcharge amount calculated for money transfers from account: ACH, Direct Connect.
    *
    * @get result
-   * @var string|null
+   * @var string
    */
   public $m_surcharge_ach = '0.00';
 
