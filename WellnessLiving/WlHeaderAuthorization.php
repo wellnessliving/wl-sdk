@@ -24,24 +24,23 @@ class WlHeaderAuthorization
   const VERSION_20210304_CORS='20210304-cors';
 
   /**
-   * Debug information fields.
+   * Information about an authentication error, if found.
    *
-   * `null` if there is no debug information or the header is not
-   * in the correct format ({@link WlHeaderAuthorization::$is_valid}=`false`).
+   * This array is designed for logging purposes only.
    *
-   * The array key is field number. Field numbering starts from 2.
-   * The value is field value.
+   * Known elements:
+   * * `text_message` - text of the error message which may contain secret information which may not be presented
+   *   to the end users for security reasons.
+   * * Other elements - additional debugging information which is only designed for logging purposes,
+   *   may contain secret information, may not be presented to the end users, keys and values may change
+   *   without preliminary notice, and thus may not be used by your code.
    *
-   * @var string[]|null
+   * `null` if there are no authentication errors found.
+   *
+   * @var array|null
+   * @see WlHeaderAuthorization::$is_valid
    */
-  public $a_debug = null;
-
-  /**
-   * List of found errors in header format.
-   *
-   * @var string[]
-   */
-  public $a_diagnostic = [];
+  public $a_diagnostic = null;
 
   /**
    * List of headers that were used in computing the signature.
@@ -55,6 +54,15 @@ class WlHeaderAuthorization
 
   /**
    * Whether the header is in the correct format.
+   *
+   * `true` if authorization header has a valid format.
+   *
+   * `false` if there are errors encountered in the format of the authorization header.
+   * In this case {@link WlHeaderAuthorization::$a_diagnostic} will contain the diagnostic information
+   * about the found error.
+   *
+   * Also, `false` is set if authorization header was not parsed.
+   * It is parsed by {@link WlHeaderAuthorization::createParse()}.
    *
    * @var bool
    */
@@ -72,14 +80,40 @@ class WlHeaderAuthorization
   public $s_application_id = null;
 
   /**
-   * Debug information format version.
+   * The build number in whose code the signature was generated.
+   * For debug purposes only.
    *
-   * `null` if there is no debug information or the header is not
-   * in the correct format ({@link WlHeaderAuthorization::$is_valid}=`false`).
+   * The part of the source debug string in {@link WlHeaderAuthorization::$s_debug}.
+   *
+   * `null` if not specified or could not be parsed.
    *
    * @var string|null
    */
-  public $s_debug_version = null;
+  public $s_build = null;
+
+  /**
+   * The signature debugging hash.
+   * For debug purposes only.
+   *
+   * The part of the source debug string in {@link WlHeaderAuthorization::$s_debug}.
+   *
+   * `null` if not specified or could not be parsed.
+   *
+   * @var string|null
+   */
+  public $s_check = null;
+
+  /**
+   * The source debug string, excluding the signature hash.
+   * For debug purposes only.
+   *
+   * `null` if not specified.
+   *
+   * @var string|null
+   * @see WlHeaderAuthorization::$s_build
+   * @see WlHeaderAuthorization::$s_check
+   */
+  public $s_debug = null;
 
   /**
    * The signature hash.
@@ -117,7 +151,7 @@ class WlHeaderAuthorization
   {
     $a_header = WlTool::getAllHeaders();
     // When several HTTP headers arrive, on the PHP side they are combined into one, separated by comma+space.
-    $a_auth = explode(', ',isset($a_header['Authorization'])?$a_header['Authorization']:'');
+    $a_auth = isset($a_header['Authorization']) ? explode(', ',$a_header['Authorization']) : [];
 
     $a_result = [];
     foreach($a_auth as $s_auth)
@@ -139,77 +173,87 @@ class WlHeaderAuthorization
 
     $a_auth = explode(',',$s_auth,5);
     if(count($a_auth)!=4)
-      $o_result->a_diagnostic[] = 'The number of header elements is not as expected (4 expected, '.count($a_auth).' present.).';
-
-    if(!in_array($a_auth[0],[self::VERSION_20150518,self::VERSION_20210304_CORS]))
-      $o_result->a_diagnostic[] = 'Error in specifying header version: '.$a_auth[0];
-
-    $s_version = $a_auth[0];
-
-    if(!isset($a_auth[1]))
     {
-      $o_result->a_diagnostic[] = 'Application ID is missing.';
+      $o_result->a_diagnostic = [
+        'a_auth' => $a_auth,
+        'i_count' => count($a_auth),
+        'text_message' => 'The number of header elements is not expected (4 expected).'
+      ];
+
+      return $o_result;
+    }
+
+    $a_version_valid = [self::VERSION_20150518,self::VERSION_20210304_CORS];
+    $s_version = $a_auth[0];
+    if(!in_array($s_version,$a_version_valid))
+    {
+      $o_result->a_diagnostic = [
+        'a_auth' => $a_auth,
+        'a_version_valid' => $a_version_valid,
+        's_version' => $s_version,
+        'text_message' => 'Unknown header version.'
+      ];
+
       return $o_result;
     }
 
     $s_application_id = $a_auth[1];
+    if(trim($s_application_id)==='')
+    {
+      $o_result->a_diagnostic = [
+        'a_auth' => $a_auth,
+        'text_message' => 'Application ID is empty.'
+      ];
+
+      return $o_result;
+    }
 
     $a_header_sign = [];
-    if(isset($a_auth[2]) && $a_auth[2]!=='')
+    if($a_auth[2]!=='')
       $a_header_sign = explode(';',$a_auth[2]);
 
-    if(!isset($a_auth[3]))
+    if(trim($a_auth[3])==='')
     {
-      $o_result->a_diagnostic[] = 'Signature is not specified.';
+      $o_result->a_diagnostic = [
+        'a_auth' => $a_auth,
+        'text_message' => 'Signature is not specified.'
+      ];
+
       return $o_result;
     }
 
     $a_signature = explode('.',$a_auth[3]);
-    if(strlen($a_signature[0])!=64)
-      $o_result->a_diagnostic[] = 'Signature SHA256 hash length is not 64 characters: '.$a_signature[0];
-
     $s_signature = $a_signature[0];
-
-    // A signature can consist of several fields that are separated by a dot.
-    // The first field is always the SHA256 hash of the signature.
-    // Blocks of debugging information may be included in the signature.
-    // If debug information is present, then the second field is the format version of the debug information block,
-    // which can be from 1 to 3.
-    // Depending on the version of the debugging information block, the number of signature fields may vary.
-    $i_sign_count = count($a_signature);
-    $s_debug_version = null;
-    $a_debug = null;
-    if($i_sign_count>1)
+    if(strlen($s_signature)!=64)
     {
-      $a_debug_field_count = [
-        '1' => 5,
-        '2' => 8,
-        '3' => 4
+      $o_result->a_diagnostic = [
+        'a_auth' => $a_auth,
+        'a_signature' => $a_signature,
+        's_signature' => $s_signature,
+        'text_message' => 'Signature SHA256 hash length is not 64 characters.'
       ];
-      $s_debug_version = $a_signature[1];
-      if(!array_key_exists($s_debug_version,$a_debug_field_count))
-      {
-        $o_result->a_diagnostic[] = 'There was an error in specifying the version of the signature debugging information block.: '.$s_debug_version;
-        return $o_result;
-      }
 
-      if($i_sign_count!=$a_debug_field_count[$s_debug_version])
-      {
-        $o_result->a_diagnostic[] = 'The number of signature fields is out of range: '.$i_sign_count;
-        return $o_result;
-      }
-
-      $a_debug = array_slice($a_signature,2,null,true);
+      return $o_result;
     }
 
-    if($o_result->a_diagnostic)
-      return $o_result;
+    $i_sign_count = count($a_signature);
+    if($i_sign_count>1)
+    {
+      $a_signature_debug = array_slice($a_signature,1);
+      $o_result->s_debug = implode('.',$a_signature_debug);
 
-    $o_result->a_debug = $a_debug;
+      $o_result->s_version = $a_signature[1];
+
+      if($i_sign_count>2)
+        $o_result->s_check = $a_signature[2];
+
+      if($i_sign_count>3 && $o_result->s_version==='3')
+        $o_result->s_build = $a_signature[3];
+    }
+
     $o_result->a_header_sign = $a_header_sign;
     $o_result->is_valid = true;
     $o_result->s_application_id = $s_application_id;
-    $o_result->s_debug_version = $s_debug_version;
     $o_result->s_signature = $s_signature;
     $o_result->s_version = $s_version;
 

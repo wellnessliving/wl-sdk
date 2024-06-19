@@ -10,11 +10,22 @@ use WellnessLiving\Config\WlConfigAbstract;
 class WlWebhook
 {
   /**
-   * List of found authentication errors.
+   * Information about an authentication error, if found.
    *
-   * @var string[]
+   * This array is designed for logging purposes only.
+   *
+   * Known elements:
+   * * `text_message` - text of the error message which may contain secret information which may not be presented
+   *   to the end users for security reasons.
+   * * Other elements - additional debugging information which is only designed for logging purposes,
+   *   may contain secret information, may not be presented to the end users, keys and values may change
+   *   without preliminary notice, and thus may not be used by your code.
+   *
+   * `null` if there are no authentication errors found.
+   *
+   * @var array|null
    */
-  public $a_diagnostic = [];
+  public $a_diagnostic = null;
 
   /**
    * Request variable values.
@@ -25,7 +36,7 @@ class WlWebhook
    * `null` if the {@link WlWebhook::variable()} method was not called.
    * The empty array if no request variables were passed or a data format error.
    *
-   * @var array|null|false
+   * @var array|null
    */
   private $a_variable = null;
 
@@ -73,71 +84,98 @@ class WlWebhook
     $a_header = WlTool::getAllHeaders();
     if(!array_key_exists('Date',$a_header))
     {
-      $this->a_diagnostic[] = "There are no 'Date' header:\n".var_export($a_header,true);
+      $this->a_diagnostic = [
+        'a_header' => $a_header,
+        'text_message' => '`Date` header is missing.'
+      ];
+
       return false;
     }
 
     if(!array_key_exists('Content-Type',$a_header))
     {
-      $this->a_diagnostic[] = "There are no 'Content-Type' header:\n".var_export($a_header,true);
+      $this->a_diagnostic = [
+        'a_header' => $a_header,
+        'text_message' => '`Content-Type` header is missing.'
+      ];
+
       return false;
     }
 
     if($a_header['Content-Type']!=='application/json')
     {
-      $this->a_diagnostic[] = "The content type of POST request is not 'application/json':\n".
-        var_export($a_header,true)
-      ;
-      return false;
-    }
+      // In the code below we read the request body and parse it as json.
+      // Parsing in other formats is not implemented.
+      $this->a_diagnostic = [
+        'a_header' => $a_header,
+        'text_message' => "The content type of request is not 'application/json'."
+      ];
 
-    if(!array_key_exists('User-Agent',$a_header) || $a_header['User-Agent']!=='WellnessLiving/WebhookAgent')
-    {
-      $this->a_diagnostic[] = "The 'User-Agent' header is invalid:\n".
-        var_export($a_header,true)
-      ;
       return false;
     }
 
     $a_variable = $this->variable();
+    if($this->a_diagnostic)
+      return false;
+
     if(!$a_variable)
     {
-      $this->a_diagnostic[] = 'There are no request variables.';
+      $this->a_diagnostic = [
+        'a_header' => $a_header,
+        'text_message' => 'No variables arrived in the HTTP request body.'
+      ];
+
       return false;
     }
 
     /** @var WlConfigAbstract $s_config_class */
     $s_config_class = get_class($this->o_config);
-
     $a_auth = WlHeaderAuthorization::createFromRequest();
     if(!$a_auth)
     {
-      $this->a_diagnostic[] = "There are no 'Authorization' headers.";
+      $this->a_diagnostic = [
+        'a_header' => $a_header,
+        'text_message' => "There are no 'Authorization' headers."
+      ];
+
       return false;
     }
 
     $a_signature_hash_receive = [];
     $a_auth_valid = [];
+    $a_diagnostic_header = [];
     foreach($a_auth as $o_header_auth)
     {
       if(!$o_header_auth->is_valid)
       {
-        $this->a_diagnostic[] = "Invalid 'Authorization' header: ".$o_header_auth->s_source."=>\n".
-          var_export($o_header_auth->a_diagnostic,true)
-        ;
+        $a_diagnostic_header[] = [
+          'o_header_auth' => $o_header_auth,
+          'text_message' => "Invalid 'Authorization' header."
+        ];
 
         continue;
       }
 
       if($o_header_auth->s_version!==WlHeaderAuthorization::VERSION_20150518)
       {
-        $this->a_diagnostic[] = "The 'Authorization' header version error (expected '".WlHeaderAuthorization::VERSION_20150518."'): ".$o_header_auth->s_version;
+        $a_diagnostic_header[] = [
+          'o_header_auth' => $o_header_auth,
+          'o_header_auth::$s_version' => $o_header_auth->s_version,
+          'text_message' => "This version of `Authorization` header is not supported."
+        ];
+
         continue;
       }
 
       if($o_header_auth->s_application_id!==$s_config_class::AUTHORIZE_ID)
       {
-        $this->a_diagnostic[] = "The Application ID is incorrect (expected '".$s_config_class::AUTHORIZE_ID."'): ".$o_header_auth->s_application_id;
+        $a_diagnostic_header[] = [
+          'o_header_auth' => $o_header_auth,
+          'o_header_auth::$s_application_id' => $o_header_auth->s_application_id,
+          's_config_class::AUTHORIZE_ID' => $s_config_class::AUTHORIZE_ID,
+          'text_message' => "The Application ID is invalid."
+        ];
+
         continue;
       }
 
@@ -146,17 +184,26 @@ class WlWebhook
     }
 
     if(!$a_signature_hash_receive)
+    {
+      $this->a_diagnostic = [
+        'a_header' => $a_header,
+        'a_diagnostic_header' => $a_diagnostic_header,
+        'text_message' => 'There are no valid headers to verify the signature.'
+      ];
       return false;
+    }
 
     $a_signature_compute = $this->signatureCompute();
-    if(in_array($a_signature_compute['s_signature'],$a_signature_hash_receive))
+    if(in_array($a_signature_compute['s_signature'],$a_signature_hash_receive,true))
       $this->is_authorize = true;
     else
     {
-      $this->a_diagnostic[] = "Authorisation error: \n".var_export([
+      $this->a_diagnostic = [
+        'a_diagnostic_header' => $a_diagnostic_header,
+        'a_header_auth_valid' => $a_auth_valid,
         'a_signature_compute' => $a_signature_compute,
-        'a_header_auth_valid' => $a_auth_valid
-      ],true);
+        'text_message' => 'Invalid authorization hash.'
+      ];
     }
 
     return $this->is_authorize;
@@ -198,18 +245,20 @@ class WlWebhook
     $s_signature_compute = WlModelRequest::signatureCompute($a_signature);
     $a_signature_compute = explode('.',$s_signature_compute);
 
-    // We further assume that the signature version is fixed.
-    // If there is a different version, then it is necessary to reconsider the result returned by the method,
-    // as well as the use of this result.
-    WlAssertException::assertTrue(count($a_signature_compute)==5 && $a_signature_compute[1]==='1',[
-      'a_signature_compute' => $a_signature_compute,
-      'text_message' => 'Unexpected computed signature format.',
-    ]);
-
-    return [
-      's_signature' => $a_signature_compute[0],
-      's_signature_check' => $a_signature_compute[2]
+    $a_result = [
+      's_signature' => $a_signature_compute[0]
     ];
+
+    $i_signature_compute = count($a_signature_compute);
+    if($i_signature_compute>1)
+    {
+      if($a_signature_compute[1]==='1' && $i_signature_compute>2)
+        $a_result['s_signature_check'] = $a_signature_compute[2];
+      else
+        $a_result['s_signature_debug'] = implode('.',array_slice($a_signature_compute,1));
+    }
+
+    return $a_result;
   }
 
   /**
@@ -234,21 +283,26 @@ class WlWebhook
       trigger_error('Method WlWebhook::isAuthorize() must be called first.',E_USER_ERROR);
 
     // Variables come in the body of the POST request in the form of a json object.
-    /** @var string|WlConfigAbstract $s_config_class */
-    $s_config_class = get_class($this->o_config);
-    $s_data = $s_config_class::postRawData();
-    if(!$s_data)
+    $s_data_post = ($this->o_config)::postRawData();
+    if(!$s_data_post)
     {
-      $this->a_diagnostic[] = 'Request body us empty.';
+      $this->a_diagnostic = [
+        'text_message' => 'Request body us empty.'
+      ];
       $this->a_variable = [];
+
       return [];
     }
 
-    $a_variable = @json_decode($s_data,true);
+    $a_variable = @json_decode($s_data_post,true);
     if(!is_array($a_variable))
     {
-      $this->a_diagnostic[] = 'Error in request variable format: '.$s_data;
+      $this->a_diagnostic = [
+        's_data_post' => $s_data_post,
+        'text_message' => 'Error in request variable format.',
+      ];
       $this->a_variable = [];
+
       return [];
     }
 

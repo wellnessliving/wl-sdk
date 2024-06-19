@@ -332,7 +332,7 @@ abstract class WlConfigAbstract
    * If you use PHP 5.5, this will interfere with your application which also needs to read from this stream.
    * Please, override this method in your configuration subclass to provide a method to read the entire HTTP request body.
    *
-   * Please, note that there are messages that `php://input` was not reusable in PHP 5.6. See links below for details.
+   * Note that there are messages that `php://input` was not reusable in PHP 5.6 either. See links below for details.
    *
    * You may also need to override this method if `always_populate_raw_post_data` is disabled.
    *
@@ -360,17 +360,45 @@ abstract class WlConfigAbstract
           "You must enable the 'always_populate_raw_post_data' option or override this method.",
           E_USER_ERROR
         );
+
+        /**
+         * User code may ignore errors that are caused through {@link \trigger_error()}.
+         * Therefore we return `null`.
+         *
+         * @noinspection PhpUnreachableStatementInspection
+         */
+        return null;
       }
 
-      if(!array_key_exists('HTTP_RAW_POST_DATA',$_POST))
-        trigger_error("The 'HTTP_RAW_POST_DATA' variable is not available.", E_USER_ERROR);
+      if(!array_key_exists('HTTP_RAW_POST_DATA',$GLOBALS))
+      {
+        trigger_error("The 'HTTP_RAW_POST_DATA' global variable is not available.", E_USER_ERROR);
 
-      return $_POST['HTTP_RAW_POST_DATA'];
+        /**
+         * User code may ignore errors that are caused through {@link \trigger_error()}.
+         * Therefore we return `null`.
+         *
+         * @noinspection PhpUnreachableStatementInspection
+         */
+        return null;
+      }
+
+      return $GLOBALS['HTTP_RAW_POST_DATA'];
     }
 
     $a_header = WlTool::getAllHeaders();
     if(!array_key_exists('Content-Type',$a_header))
-      trigger_error("The 'Content-Type' header are missing: \n".var_export($a_header,true),E_USER_ERROR);
+    {
+      trigger_error("The 'Content-Type' header is missing: \n".var_export($a_header,true),E_USER_ERROR);
+
+      /**
+       * User code may ignore errors that are caused through {@link \trigger_error()}.
+       * Therefore we return `null`.
+       *
+       * @noinspection PhpUnreachableStatementInspection
+       */
+      return null;
+    }
 
     if(
       ini_get('enable_post_data_reading') &&
@@ -381,6 +409,14 @@ abstract class WlConfigAbstract
     )
     {
       trigger_error("Cannot read POST request data with content type 'multipart/form-data': \n".var_export($a_header,true),E_USER_ERROR);
+
+      /**
+       * User code may ignore errors that are caused through {@link \trigger_error()}.
+       * Therefore we return `null`.
+       *
+       * @noinspection PhpUnreachableStatementInspection
+       */
+      return null;
     }
 
     $s_post_raw = file_get_contents('php://input');

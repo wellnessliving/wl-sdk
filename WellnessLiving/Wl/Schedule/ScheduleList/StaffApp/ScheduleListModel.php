@@ -75,6 +75,13 @@ class ScheduleListModel extends WlModelAbstract
    *
    *   </dd>
    *   <dt>
+   *     string[] <var>a_resource_removed</var>
+   *   </dt>
+   *   <dd>
+   *     List of removed assets involved in the session.
+   *
+   *   </dd>
+   *   <dt>
    *     string[] <var>a_staff</var>
    *   </dt>
    *   <dd>

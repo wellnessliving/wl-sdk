@@ -6,6 +6,7 @@ use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Manages the booking wizard for the "Purchase Options" page.
@@ -19,6 +20,25 @@ class StoreModel extends WlModelAbstract
    * @var string[]
    */
   public $a_login_activity;
+
+  /**
+   * The selected purchase item.
+   *
+   * This new purchasable item should be checked to see if it can be applied to the current class or event before purchasing it.
+   *
+   * <dl>
+   *   <dt>int <var>i_session</var></dt>
+   *   <dd>The number of sessions that this item can cover.</dd>
+   *   <dt>int <var>id_purchase_item</var></dt>
+   *   <dd>The purchase item ID. Constant from {@link WlPurchaseItemSid}</dd>
+   *   <dt>string <var>k_id</var></dt>
+   *   <dd>The purchase item key.</dd>
+   * </dl>
+   *
+   * @post post
+   * @var array
+   */
+  public $a_purchase_item_check = [];
 
   /**
    * Information about the recurring booking:

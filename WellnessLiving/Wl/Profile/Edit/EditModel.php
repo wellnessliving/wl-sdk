@@ -150,6 +150,7 @@ class EditModel extends WlModelAbstract
   public $id_register_source = null;
 
   /**
+   * Whether the address be inherited.
    * `true` if address inherit, otherwise `false`.
    *
    * @get result
@@ -283,6 +284,7 @@ class EditModel extends WlModelAbstract
   /**
    * UID of the user, whose address was inherited by the existing client we want to add.
    * Empty if non-existent user is being added or user to add is the one, whose address is inherited.
+   * `null` If the address is not inherited.
    *
    * @get result
    * @post get

@@ -223,6 +223,14 @@ class ProcessModel extends WlModelAbstract
   public $is_wait;
 
   /**
+   * If `true`, the user can be placed on a wait list without payment, `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_wait_list_unpaid;
+
+  /**
    * Key of session which is booked.
    *
    * @get get

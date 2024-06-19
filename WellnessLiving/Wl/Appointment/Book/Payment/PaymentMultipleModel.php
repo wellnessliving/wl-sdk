@@ -476,21 +476,19 @@ class PaymentMultipleModel extends WlModelAbstract
 
   /**
    * Surcharge amount calculated for credit cards (Virtual Terminal and Card Swiper).
-   * `null` when surcharge is not enabled or calculated.
    *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $m_surcharge = null;
+  public $m_surcharge = '0.00';
 
   /**
    * Surcharge amount calculated for money transfers from account: ACH, Direct Connect.
-   * `null` when surcharge is not enabled or calculated.
    *
    * @get result
-   * @var string|null
+   * @var string
    */
-  public $m_surcharge_ach = null;
+  public $m_surcharge_ach = '0.00';
 
   /**
    * The amount of tax to pay.
