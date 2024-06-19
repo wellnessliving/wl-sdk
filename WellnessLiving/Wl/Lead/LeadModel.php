@@ -115,13 +115,14 @@ class LeadModel extends WlModelAbstract
 
   /**
    * Whether it is possible to give free promotion when adding a user (only if free promotion is configured in the widget).
-   * `true` if it is possible, `false` if not.
+   * `true` or `null` if it is possible, `false` if not.
+   * `null` used for backward compatibility.
    *
    * @get result
    * @post get
-   * @var bool
+   * @var bool|null
    */
-  public $can_use_free_purchase = false;
+  public $can_use_free_purchase = null;
 
   /**
    * The key of business to which the new user must be captured.
