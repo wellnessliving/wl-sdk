@@ -145,13 +145,13 @@ class WlHeaderAuthorization
    * Retrieves all 'Authorization' headers from the current request.
    *
    * @return WlHeaderAuthorization[] All 'Authorization' headers from the current request.
-   * If the array is empty, then there are no 'Authorization' headers in the request.
+   * An empty array if there are no `Authorization` headers arrived in this request.
    */
   public static function createFromRequest()
   {
     $a_header = WlTool::getAllHeaders();
     // When several HTTP headers arrive, on the PHP side they are combined into one, separated by comma+space.
-    $a_auth = isset($a_header['Authorization']) ? explode(', ',$a_header['Authorization']) : [];
+    $a_auth = !empty($a_header['Authorization']) ? explode(', ',$a_header['Authorization']) : [];
 
     $a_result = [];
     foreach($a_auth as $s_auth)
@@ -196,6 +196,8 @@ class WlHeaderAuthorization
 
       return $o_result;
     }
+
+    $o_result->s_version = $s_version;
 
     $s_application_id = $a_auth[1];
     if(trim($s_application_id)==='')
@@ -242,12 +244,11 @@ class WlHeaderAuthorization
       $a_signature_debug = array_slice($a_signature,1);
       $o_result->s_debug = implode('.',$a_signature_debug);
 
-      $o_result->s_version = $a_signature[1];
-
       if($i_sign_count>2)
         $o_result->s_check = $a_signature[2];
 
-      if($i_sign_count>3 && $o_result->s_version==='3')
+      $s_version_debug = $a_signature[1];
+      if($i_sign_count>3 && $s_version_debug==='3')
         $o_result->s_build = $a_signature[3];
     }
 

@@ -357,7 +357,7 @@ class PaymentModel extends WlModelAbstract
   public $m_surcharge = '0.00';
 
   /**
-   * Surcharge amount calculated for money transfers from account: ACH, Direct Connect.
+   * Surcharge amount calculated for money transfers from account: ACH, Direct Entry.
    *
    * @get result
    * @var string

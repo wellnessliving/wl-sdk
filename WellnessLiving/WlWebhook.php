@@ -115,15 +115,17 @@ class WlWebhook
     }
 
     $a_variable = $this->variable();
-    if($this->a_diagnostic)
-      return false;
-
     if(!$a_variable)
     {
-      $this->a_diagnostic = [
-        'a_header' => $a_header,
-        'text_message' => 'No variables arrived in the HTTP request body.'
-      ];
+      // If there is an error in obtaining variables in the {@link WlWebhook::variable()} method,
+      // then do not overwrite the error information.
+      if(!$this->a_diagnostic)
+      {
+        $this->a_diagnostic = [
+          'a_header' => $a_header,
+          'text_message' => 'No variables arrived in the HTTP request body.'
+        ];
+      }
 
       return false;
     }

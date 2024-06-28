@@ -29,6 +29,14 @@ class TaxListModel extends WlModelAbstract
   public $a_list;
 
   /**
+   * Include a list of franchise taxes, `true` include, otherwise `false.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_include_franchisee = false;
+
+  /**
    * The key of the business for which to get a list of taxes.
    *
    * @get get
