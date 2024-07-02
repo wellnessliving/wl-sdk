@@ -1,6 +1,6 @@
 <?php
 
-namespace WellnessLiving\Core\Passport\Login;
+namespace WellnessLiving\Wl\Passport\Login;
 
 use WellnessLiving\WlModelAbstract;
 
@@ -9,6 +9,14 @@ use WellnessLiving\WlModelAbstract;
  */
 class InfoModel extends WlModelAbstract
 {
+  /**
+   * Business key.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_business = '';
+
   /**
    * The current user key.
    *

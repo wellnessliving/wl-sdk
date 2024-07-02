@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Location;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlProjectSid;
 
 /**
  * Returns information for all locations belonging to a business.
@@ -23,6 +24,12 @@ class ListModel extends WlModelAbstract
    * Information about the business's location(s). If you've specified multiple businesses for this endpoint, this will
    * return location information for multiple businesses. Keys refer to location keys. Values refer to subarrays with the next keys:
    * <dl>
+   *   <dt>
+   *     int <var>a_directories</var>
+   *   </dt>
+   *   <dd>
+   *     List of directories from {@link WlProjectSid}, where location is published.
+   *   </dd>
    *   <dt>
    *     float <var>f_latitude</var>
    *   </dt>
