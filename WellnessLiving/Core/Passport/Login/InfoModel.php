@@ -10,6 +10,14 @@ use WellnessLiving\WlModelAbstract;
 class InfoModel extends WlModelAbstract
 {
   /**
+   * Business key.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_business = '';
+
+  /**
    * The current user key.
    *
    * This will be `null` if the user isn't signed in.
