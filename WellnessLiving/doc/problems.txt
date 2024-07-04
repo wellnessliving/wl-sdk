@@ -7,3 +7,15 @@ Reasons:
 - invalid application code/id in your config file
 - invalid server URL in your config file
 - invalid cookies names in your config file
+
+Problem:
+  you got error "Error executing request to WellnessLiving API (error is reported by network)."
+Solution:
+- exception that was thrown contains debug information;
+- you have to get this information in any way, for example:
+    catch(WlUserException $e)
+    {
+      echo $e."\n";
+    }
+  ;
+- then send this information to Wellnessliving Support.

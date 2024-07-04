@@ -24,7 +24,8 @@ class StoreModel extends WlModelAbstract
   /**
    * The selected purchase item.
    *
-   * This new purchasable item should be checked to see if it can be applied to the current class or event before purchasing it.
+   * This new purchasable item should be checked to see if it can be applied to the current class or event before
+   * purchasing it.
    *
    * <dl>
    *   <dt>int <var>i_session</var></dt>

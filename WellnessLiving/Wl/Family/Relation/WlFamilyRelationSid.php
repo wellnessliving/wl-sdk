@@ -5,10 +5,20 @@ namespace WellnessLiving\Wl\Family\Relation;
 /**
  * Relation type between two relatives.
  *
- * Last used ID: 7.
+ * Last used ID: 9.
  */
 class WlFamilyRelationSid
 {
+  /**
+   * Care provider.
+   */
+  const CAREGIVER = 8;
+
+  /**
+   * Care recipient.
+   */
+  const CARE_RECEIVER = 9;
+
   /**
    * Child of the parent.
    */

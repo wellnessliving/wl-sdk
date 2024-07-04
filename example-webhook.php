@@ -2,13 +2,12 @@
 
 namespace WlSdkExample;
 
-use WellnessLiving\WlRegionSid;
 use WellnessLiving\WlWebhook;
 
 require_once __DIR__.'/WellnessLiving/wl-autoloader.php';
 require_once __DIR__.'/example-config.php';
 
-$o_config=ExampleConfig::create(WlRegionSid::US_EAST_1);
+$o_config=ExampleConfig::create(\WellnessLiving\Wl\WlRegionSid::US_EAST_1);
 $o_webhook = new WlWebhook($o_config);
 
 // We check whether the webhook request is authorized or not.
