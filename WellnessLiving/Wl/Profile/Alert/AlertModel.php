@@ -67,6 +67,12 @@ class AlertModel extends WlModelAbstract
    *
    *   </dd>
    *   <dt>
+   *     bool <var>dt_create</var>
+   *   </dt>
+   *   <dd>
+   *     The date and time in MySQL format in local time when the warning was created.
+   *   </dd>
+   *   <dt>
    *     bool <var>dt_date</var>
    *   </dt>
    *   <dd>
@@ -89,6 +95,18 @@ class AlertModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The text of the warning.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_author</var>
+   *   </dt>
+   *   <dd>
+   *     Staff name, who created a note.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_editor</var>
+   *   </dt>
+   *   <dd>
+   *     Staff name, who edited a note last time.
    *   </dd>
    * </dl>
    *
