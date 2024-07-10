@@ -7,11 +7,11 @@ use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
 use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
- * Allows to fill user account with a specified payment, or to change reset manually.
+ * Fills a user account with a specified payment.
  *
- * This endpoint using captcha check.
- * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
- * For this API an action is {@link BusinessPaymentCaptcha::CID}.
+ * This endpoint uses a CAPTCHA check.
+ * To pass the CAPTCHA, review the CAPTCHA API doumentation. where you'll find that you must send a CAPTCHA for a specific action.
+ * For this endpoint, the action is {@link BusinessPaymentCaptcha::CID}.
  */
 class ChargeModel extends WlModelAbstract
 {
@@ -142,7 +142,7 @@ class ChargeModel extends WlModelAbstract
   public $a_pay_form = [];
 
   /**
-   * Key of source mode. One of {@link ModeSid} constants.
+   * The source mode key. One of the {@link ModeSid} constants.
    *
    * @post post
    * @var int
@@ -150,7 +150,7 @@ class ChargeModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * Account charge mode.
+   * The account charge mode.
    *
    * @post get
    * @var int
@@ -158,7 +158,7 @@ class ChargeModel extends WlModelAbstract
   public $id_pay_account_charge = 0;
 
   /**
-   * Set if the operations are performed under the staff.
+   * If `true`, the account is filled by a staff member in the backend. Otherwise, this will be `false`.
    *
    * @post get
    * @var bool
@@ -166,12 +166,12 @@ class ChargeModel extends WlModelAbstract
   public $is_staff = false;
 
   /**
-   * ID of business within which changed user account exists.
+   * The ID of the business the user account belongs to.
    *
-   * Should not be passed if user account is created already.
-   * In this case {@link ChargeModel::$k_pay_account} should be passed.
+   * This shouldn't be passed if a user account has already been created.
+   * In such cases, {@link ChargeModel::$k_pay_account} should be passed instead.
    *
-   * If both business ID and account ID passed, system checks if given business is owner of specified account.
+   * If both the business ID and account ID passed, the system checks if the given business is the owner of the specified account.
    *
    * @post get
    * @var string
@@ -179,12 +179,12 @@ class ChargeModel extends WlModelAbstract
   public $k_business = 0;
 
   /**
-   * ID of user account to refill.
+   * The ID of the user account to refill.
    *
-   * May be 0 if user account is not created yet.
-   * In this case {@link ChargeModel::$k_business} and {@link ChargeModel::$uid} should be passed.
+   * This may be 0 if a user account hasn't been created yet.
+   * In such cases, {@link ChargeModel::$k_business} and {@link ChargeModel::$uid} should be passed instead.
    *
-   * If not passed, currency of account equals default business currency.
+   * If not passed, the currency of account equals the default business currency.
    *
    * @post get
    * @var string
@@ -192,8 +192,8 @@ class ChargeModel extends WlModelAbstract
   public $k_pay_account = 0;
 
   /**
-   * ID of purchase that was created during payment. This value is only returned in a case a purchase was created.
-   * New purchase is created when {@link ChargeModel::$id_pay_account_charge} equals {@link \RsPayAccountChargeSid::AUTO}.
+   * The ID of the purchase that was created during payment. This value is only returned in cases where a purchase was created.
+   * A new purchase is created when {@link ChargeModel::$id_pay_account_charge} equals {@link \RsPayAccountChargeSid::AUTO}.
    *
    * @post result
    * @var int []
@@ -201,7 +201,7 @@ class ChargeModel extends WlModelAbstract
   public $k_purchase;
 
   /**
-   * Amount of payment.
+   * The payment amount.
    *
    * @post post
    * @var string
@@ -209,7 +209,7 @@ class ChargeModel extends WlModelAbstract
   public $m_amount = '0.00';
 
   /**
-   * Transaction comment.
+   * The transaction comment.
    *
    * @post post
    * @var string
@@ -217,12 +217,12 @@ class ChargeModel extends WlModelAbstract
   public $s_comment = '';
 
   /**
-   * ID of user whose account to refill.
+   * The ID of the user whose account is being refilled.
    *
-   * Should not be passed if user account is created already.
-   * In this case {@link ChargeModel::$k_pay_account} should be passed.
+   * This shouldn't be passed if a user account has already been created.
+   * In such cases, {@link ChargeModel::$k_pay_account} should be passed instead.
    *
-   * If both user ID and account ID passed, system checks if given user is owner of specified account.
+   * If both the user ID and account ID passed, the system checks if the given user is the owner of the specified account.
    *
    * @post get
    * @var string
