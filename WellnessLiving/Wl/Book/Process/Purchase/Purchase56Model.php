@@ -175,6 +175,8 @@ class Purchase56Model extends WlModelAbstract
    *   <dd>The key of the user's prize that can be used instead a Purchase Option to book the session.</dd>
    *   <dt>string [<var>k_reward_prize</var>]</dt>
    *   <dd>The key of the reward prize that can be used instead a Purchase Option to book the session.</dd>
+   *   <dt>string [`m_prorate`]</dt>
+   *   <dd>Payment for membership prorate. Not empty only if prorate payment is required.</dd>
    *   <dt>string [<var>s_contract</var>]</dt>
    *   <dd>The contract of the Purchase Option. This is only set if <var>is_contract</var> is `true`.</dd>
    *   <dt>string [<var>s_payment_duration</var>]</dt>

@@ -318,7 +318,7 @@ class ScheduleListModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $dl_end;
+  public $dl_end = '';
 
   /**
    * The start date of the range from which the list of scheduled sessions should be retrieved.
@@ -329,7 +329,7 @@ class ScheduleListModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $dl_start;
+  public $dl_start = '';
 
   /**
    * The date of the sessions in Coordinated Universal Time (UTC) and MySQL format.

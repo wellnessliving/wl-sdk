@@ -88,7 +88,13 @@ class ListModel extends WlModelAbstract
    *     string [<var>url_logo</var>]
    *   </dt>
    *   <dd>
-   *     The location logo's URL. This will only be set if the location has a logo.
+   *     The location logo's URL. This will only be set if the location has a logo and contains small thumbnail of the image.
+   *   </dd>
+   *   <dt>
+   *     string [<var>url_logo_source</var>]
+   *   </dt>
+   *   <dd>
+   *     The location logo's URL. This will only be set if the location has a logo and contains full uploaded image.
    *   </dd>
    * </dl>
    *

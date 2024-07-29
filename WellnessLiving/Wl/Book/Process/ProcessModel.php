@@ -7,7 +7,6 @@ use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Classes\RequirePaySid;
 use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
-use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Performs the booking wizard steps.
@@ -122,7 +121,7 @@ class ProcessModel extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * The mode type. One of the {@link ModeSid} constants.
+   * The mode type.
    *
    * @get get
    * @post get

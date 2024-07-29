@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Login\Attendance;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Schedule\Page\WlVisitNoteSid;
+use WellnessLiving\Wl\WlSaleSid;
 use WellnessLiving\Wl\WlServiceSid;
 
 /**
@@ -50,6 +51,24 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @var array
    */
   public $a_logo = null;
+
+  /**
+   * Default purchase option information.
+   * <dl>
+   *   <dt>string? <var>id_sale</var></dt>
+   *   <dd>The sale item type, one of the {@link WlSaleSid} constants.
+   *   This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".</dd>
+   *   <dt>string? <var>k_id</var></dt>
+   *   <dd>The default Purchase Option key.
+   *   This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".</dd>
+   *   <dt>bool <var>is_single_default</var></dt>
+   *   <dd>If the default Purchase Option is set to "Drop-in rate" then the value will be `true`, `false` otherwise.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array
+   */
+  public $a_purchase_option_default = [];
 
   /**
    * Assets which are bound to this session.

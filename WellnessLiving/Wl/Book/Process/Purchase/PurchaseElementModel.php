@@ -122,6 +122,16 @@ class PurchaseElementModel extends WlModelAbstract
   public $m_price;
 
   /**
+   * Prorate amount.
+   *
+   * `null` if no prorate is required.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $m_prorate = null;
+
+  /**
    * Amount of subtotal for 1 purchase item.
    *
    * @get result

@@ -312,7 +312,7 @@ class ScheduleListByTokenModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $dl_end = null;
+  public $dl_end = '';
 
   /**
    * The start date of the range from which the list of scheduled sessions should be retrieved.
@@ -323,7 +323,7 @@ class ScheduleListByTokenModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $dl_start = null;
+  public $dl_start = '';
 
   /**
    * The date of the sessions in Coordinated Universal Time (UTC) and MySQL format.
@@ -343,7 +343,7 @@ class ScheduleListByTokenModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public $is_virtual_service = null;
+  public $is_virtual_service;
 
   /**
    * Business key.
