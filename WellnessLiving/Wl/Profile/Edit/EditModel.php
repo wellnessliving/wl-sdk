@@ -161,6 +161,14 @@ class EditModel extends WlModelAbstract
   public $is_address_inherit = false;
 
   /**
+   * `true` to throw an exception in a case of validation error; `false` to not throw.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_exception_throw = false;
+
+  /**
    * Indicates whether to display the full profile edit form or the short version.
    * This is assumed to be used only in user registration mode.
    *

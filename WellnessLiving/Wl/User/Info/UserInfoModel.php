@@ -171,6 +171,16 @@ class UserInfoModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
+   * Primary key of a city.
+   *
+   * `null` is user has no address.
+   *
+   * @get result
+   * @var ?string
+   */
+  public $k_city;
+
+  /**
    * The key of the login type. The login type describes the user's client type in this business.
    *
    * @get result
@@ -236,6 +246,26 @@ class UserInfoModel extends WlModelAbstract
   public $s_phone_work = '';
 
   /**
+   * Address inside a city.
+   *
+   * `null` is user has no address.
+   *
+   * @get result
+   * @var ?string
+   */
+  public $text_address;
+
+  /**
+   * City name.
+   *
+   * `null` is user has no address.
+   *
+   * @get result
+   * @var ?string
+   */
+  public $text_city;
+
+  /**
    * Login type title.
    * Empty if a client has no client type assigned.
    *
@@ -243,6 +273,16 @@ class UserInfoModel extends WlModelAbstract
    * @var string
    */
   public $text_login_type = '';
+
+  /**
+   * Postal code.
+   *
+   * `null` is user has no address.
+   *
+   * @get result
+   * @var ?string
+   */
+  public $text_postal;
 
   /**
    * The key of the user.
