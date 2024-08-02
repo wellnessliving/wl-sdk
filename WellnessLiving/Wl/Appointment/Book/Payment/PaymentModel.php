@@ -282,7 +282,7 @@ class PaymentModel extends WlModelAbstract
   public $is_walk_in = false;
 
   /**
-   * The item key. Depends of {@link PaymentModel::$id_purchase_item} property.
+   * The item key. Depends on {@link PaymentModel::$id_purchase_item} property.
    *
    * @get get
    * @post get

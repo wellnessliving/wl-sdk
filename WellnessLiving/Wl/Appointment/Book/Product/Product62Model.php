@@ -34,6 +34,8 @@ class Product62Model extends WlModelAbstract
    *
    * `null` if the client is not logged in.
    *
+   * If you don't need to filter products by client type/group, use {@link ProductModel}.
+   *
    * @get get
    * @var string|null
    */

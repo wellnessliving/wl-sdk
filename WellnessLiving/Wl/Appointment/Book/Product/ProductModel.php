@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * Returns information about service add-ons.
  *
- * @depreated Use {@link Product62Model} instead.
+ * If you need to filter products by client type/group, use {@link Product62Model}.
  */
 class ProductModel extends WlModelAbstract
 {
