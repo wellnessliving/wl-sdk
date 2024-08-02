@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Appointment\Book\Product;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Shop\Product\PurchaseRestrictionSid;
 
 /**
  * Returns information about service add-ons.
@@ -30,6 +31,7 @@ class Product62Model extends WlModelAbstract
   /**
    * The key of a user to show information for.
    *
+   * Products with a {@link PurchaseRestrictionSid::TYPE} restriction will be filtered out.
    * Only those products that match the client type or those that have no restrictions will be shown.
    *
    * `null` if the client is not logged in.
