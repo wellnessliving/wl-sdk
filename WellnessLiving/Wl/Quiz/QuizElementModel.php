@@ -80,6 +80,18 @@ class QuizElementModel extends WlModelAbstract
   public $is_active = true;
 
   /**
+   * Whether quiz response received by kiosk or direct mode link.
+   *
+   * `true` quiz response received by kiosk mode.
+   * `false` quiz response received by direct or direct mode)
+   *
+   * @get get
+   * @post get
+   * @var bool
+   */
+  public $is_simple = false;
+
+  /**
    * List of quiz elements in json format.
    *
    * Order of the element in array corresponds to order of elements on the form.

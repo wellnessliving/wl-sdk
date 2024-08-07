@@ -100,6 +100,8 @@ class PurchaseModel extends WlModelAbstract
    *   <dd>The number of visits the Purchase Option allows the client to make.</dd>
    *   <dt>int|null <var>i_limit_duration</var></dt>
    *   <dd>The maximum number of minutes the Purchase Option can be used for.</dd>
+   *   <dt>int <var>i_promotion_priority</var></dt>
+   *   <dd>Priority of this promotion.</dd>
    *   <dt>int <var>id_program</var></dt>
    *   <dd>The program ID for Purchase Options. One of the {@link WlProgramSid} constants.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
