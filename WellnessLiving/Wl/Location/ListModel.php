@@ -22,7 +22,7 @@ class ListModel extends WlModelAbstract
 
   /**
    * Information about the business's location(s). If you've specified multiple businesses for this endpoint, this will
-   * return location information for multiple businesses. Keys refer to location keys. Values refer to subarrays with the next keys:
+   * return location information for multiple businesses. Keys refer to location keys. Values refer to nested arrays with the next keys:
    * <dl>
    *   <dt>
    *     int <var>a_directories</var>

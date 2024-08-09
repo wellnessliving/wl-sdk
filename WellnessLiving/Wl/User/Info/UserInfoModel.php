@@ -171,9 +171,9 @@ class UserInfoModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Primary key of a city.
+   * City.
    *
-   * `null` is user has no address.
+   * `null` if "address" field is disabled in the business.
    *
    * @get result
    * @var ?string
@@ -248,7 +248,7 @@ class UserInfoModel extends WlModelAbstract
   /**
    * Address inside a city.
    *
-   * `null` is user has no address.
+   * `null` if "address" field is disabled in the business.
    *
    * @get result
    * @var ?string
@@ -258,7 +258,7 @@ class UserInfoModel extends WlModelAbstract
   /**
    * City name.
    *
-   * `null` is user has no address.
+   * `null` if "address" field is disabled in the business.
    *
    * @get result
    * @var ?string
@@ -277,7 +277,7 @@ class UserInfoModel extends WlModelAbstract
   /**
    * Postal code.
    *
-   * `null` is user has no address.
+   * `null` if "address" field is disabled in the business.
    *
    * @get result
    * @var ?string

@@ -190,6 +190,12 @@ class ServiceList52Model extends WlModelAbstract
    *     `true` if clients can book classes and appointments on a recurring basis. Otherwise, this `false`.
    *   </dd>
    *   <dt>
+   *     bool <var>is_book_repeat_no_end_date_appointment</var>
+   *   </dt>
+   *   <dd>
+   *    `true` if appointment bookings default to weekly recurring with no end date, `false` otherwise.
+   *   </dd>
+   *   <dt>
    *     bool <var>is_deposit_percent</var>
    *   </dt>
    *   <dd>
