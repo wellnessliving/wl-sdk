@@ -4,7 +4,9 @@ namespace WellnessLiving\Studio\Deploy\Instance;
 
 use WellnessLiving\WlModelAbstract;
 
-/**/
+/**
+ * Manage `Studio Deploy Instance`.
+ */
 class InstanceModel extends WlModelAbstract
 {
   /**
@@ -67,8 +69,7 @@ class InstanceModel extends WlModelAbstract
   /**
    * The key of `Studio Deploy Instance`.
    *
-   * @post post
-   * @post result
+   * @post post,result
    * @var string|null
    */
   public $k_deploy_instance = null;
