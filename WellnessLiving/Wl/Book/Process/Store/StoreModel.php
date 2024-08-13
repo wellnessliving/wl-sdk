@@ -6,7 +6,6 @@ use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Mode\ModeSid;
-use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Manages the booking wizard for the "Purchase Options" page.
@@ -30,10 +29,16 @@ class StoreModel extends WlModelAbstract
    * <dl>
    *   <dt>int <var>i_session</var></dt>
    *   <dd>The number of sessions that this item can cover.</dd>
-   *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>The purchase item ID. Constant from {@link WlPurchaseItemSid}</dd>
-   *   <dt>string <var>k_id</var></dt>
-   *   <dd>The purchase item key.</dd>
+   *   <dt>int <var>s_value</var></dt>
+   *   <dd>
+   *     Unique identifier of the element being checked.
+   *     Corresponds to the values:
+   *     <ul>
+   *       <li>{@link PurchaseApi::$a_purchase}`["s_value"]`</li>
+   *       <li>{@link PurchaseApi::$a_reward_prize}`["s_value"]`</li>
+   *       <li>{@link PurchaseApi::$a_login_prize}`["s_value"]`</li>
+   *     </ul>
+   *   </dd>
    * </dl>
    *
    * @post post
