@@ -11,6 +11,11 @@ class BranchListModel extends WlModelAbstract
 {
   /**
    * List of branch. One element contains: <dl>
+   *  <dt>string[] <var>a_path</var></dt>
+   *  <dd>
+   *    Information about paths into which catalogs are cloned/copied.
+   *
+   *   </dd>
    *   <dt>string <var>dtu_create</var></dt>
    *   <dd>Date when branch was created.</dd>
    *   <dt>string <var>k_deploy_instance</var></dt>
@@ -28,7 +33,7 @@ class BranchListModel extends WlModelAbstract
    * </dl>
    *
    * @get result
-   * @var string[][]
+   * @var array
    */
   public $a_data;
 }

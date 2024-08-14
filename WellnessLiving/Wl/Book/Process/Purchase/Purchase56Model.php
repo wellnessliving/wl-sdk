@@ -33,6 +33,8 @@ class Purchase56Model extends WlModelAbstract
    *   <dd>The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.</dd>
    *   <dt>string <var>k_login_prize</var></dt>
    *   <dd>Key of login prize.</dd>
+   *   <dt>string <var>s_value</var></dt>
+   *   <dd>The unique identifier.</dd>
    *   <dt>string <var>text_title</var></dt>
    *   <dd>User friendly login prize description.</dd>
    * </dl>

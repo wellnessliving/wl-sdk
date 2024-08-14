@@ -83,7 +83,7 @@ class QuizElementModel extends WlModelAbstract
    * Whether quiz response received by kiosk or direct mode link.
    *
    * `true` quiz response received by kiosk mode.
-   * `false` quiz response received by direct or direct mode)
+   * `false` quiz response received by direct or direct mode.
    *
    * @get get
    * @post get
