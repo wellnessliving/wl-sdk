@@ -238,7 +238,7 @@ class WlWebhook
       's_code' => $s_config_class::AUTHORIZE_CODE,
       's_cookie_persistent' => '',
       's_cookie_transient' => '',
-      's_host' => $_SERVER['SERVER_NAME'],
+      's_host' => $this->o_config->hostname(),
       's_id' => $s_config_class::AUTHORIZE_ID,
       's_method' => 'POST',
       's_resource' => $s_resource,
