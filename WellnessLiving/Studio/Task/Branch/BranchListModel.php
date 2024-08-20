@@ -24,10 +24,10 @@ class BranchListModel extends WlModelAbstract
    *   <dd>Task key.</dd>
    *   <dt>string <var>s_fio</var></dt>
    *   <dd>Task author name.</dd>
-   *   <dt>string <var>s_title</var></dt>
-   *   <dd>Title of the task.</dd>
    *   <dt>string <var>text_create</var></dt>
    *   <dd>Formatted time interval when branch was created.</dd>
+   *   <dt>string <var>text_title</var></dt>
+   *   <dd>Title of the task.</dd>
    *   <dt>string <var>url_task</var></dt>
    *   <dd>URL of the task.</dd>
    * </dl>

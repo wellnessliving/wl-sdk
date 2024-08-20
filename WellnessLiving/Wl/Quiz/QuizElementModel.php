@@ -80,6 +80,14 @@ class QuizElementModel extends WlModelAbstract
   public $is_active = true;
 
   /**
+   * `true` for request quiz from form builder page, `false` otherwise.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_builder = false;
+
+  /**
    * Whether quiz response received by kiosk or direct mode link.
    *
    * `true` quiz response received by kiosk mode.
@@ -154,6 +162,14 @@ class QuizElementModel extends WlModelAbstract
    * @var string
    */
   public $text_title = '';
+
+  /**
+   * UID of the client for which quiz requested.
+   *
+   * @get get
+   * @var string
+   */
+  public $uid_client = '';
 }
 
 ?>
