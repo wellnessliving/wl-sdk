@@ -9,7 +9,7 @@ namespace WellnessLiving\Core\Locale;
  *
  * @link https://docs.1010data.com/1010dataReferenceManual/DataTypesAndFormats/currencyUnitCodes.html
  *
- * Last used ID: 13
+ * Last used ID: 16
  */
 abstract class CurrencySid
 {
@@ -54,6 +54,11 @@ abstract class CurrencySid
   const KYD = 5;
 
   /**
+   * Mauritian Rupee.
+   */
+  const MUR = 16;
+
+  /**
    * New Zealand Dollar.
    */
   const NZD = 10;
@@ -62,6 +67,11 @@ abstract class CurrencySid
    * Philippines Pesco.
    */
   const PHP = 12;
+
+  /**
+   * Saudi Riyal.
+   */
+  const SAR = 15;
 
   /**
    * Unknown code.

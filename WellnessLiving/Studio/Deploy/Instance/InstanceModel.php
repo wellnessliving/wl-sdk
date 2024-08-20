@@ -70,7 +70,7 @@ class InstanceModel extends WlModelAbstract
    * The key of `Studio Deploy Instance`.
    *
    * @delete get
-   * @post post,result
+   * @post get,result
    * @var string|null
    */
   public $k_deploy_instance = null;
