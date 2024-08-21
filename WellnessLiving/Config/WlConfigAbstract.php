@@ -322,10 +322,13 @@ abstract class WlConfigAbstract
 
     $o_config = new static();
     $o_config->id_region = $id_region;
-    if($s_hostname===null && array_key_exists('SERVER_NAME',$_SERVER))
-      $s_hostname = $_SERVER['SERVER_NAME'];
-    else
-      $s_hostname = 'localhost';
+    if($s_hostname===null)
+    {
+      if(array_key_exists('SERVER_NAME',$_SERVER))
+        $s_hostname = $_SERVER['SERVER_NAME'];
+      else
+        $s_hostname = 'localhost';
+    }
 
     $o_config->s_hostname = $s_hostname;
 
