@@ -322,7 +322,7 @@ abstract class WlConfigAbstract
 
     $o_config = new static();
     $o_config->id_region = $id_region;
-    $o_config->s_hostname = $s_hostname;
+    $o_config->s_hostname = $s_hostname!==null ? $s_hostname : $_SERVER['SERVER_NAME'];
 
     return $o_config;
   }
@@ -346,9 +346,6 @@ abstract class WlConfigAbstract
    */
   public function hostname()
   {
-    if($this->s_hostname===null)
-      return $_SERVER['SERVER_NAME'];
-
     return $this->s_hostname;
   }
 
