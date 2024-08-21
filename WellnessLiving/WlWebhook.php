@@ -204,6 +204,7 @@ class WlWebhook
         'a_diagnostic_header' => $a_diagnostic_header,
         'a_header_auth_valid' => $a_auth_valid,
         'a_signature_compute' => $a_signature_compute,
+        's_hostname' => $this->o_config->hostname(),
         'text_message' => 'Invalid authorization hash.'
       ];
     }
