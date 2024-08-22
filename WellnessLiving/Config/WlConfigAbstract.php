@@ -194,14 +194,6 @@ abstract class WlConfigAbstract
   private $id_region;
 
   /**
-   * Local host name. Used when calculating the correct webhook signature.
-   *   `null` if <var>$_SERVER['SERVER_NAME']</var> should be used.
-   *
-   * @var ?string
-   */
-  private $s_hostname=null;
-
-  /**
    * User-agent to use in API requests.
    *
    * If set, this value overrides value of {@link WlConfigAbstract::AGENT}.
@@ -257,12 +249,10 @@ abstract class WlConfigAbstract
    *
    * @param int $id_region ID of a data center region in which information about this business is stored.
    *   One of {@link WlRegionSid} constants.
-   * @param ?string $s_hostname Local host name. Used when calculating the correct webhook signature.
-   *   `null` if <var>$_SERVER['SERVER_NAME']</var> should be used.
    * @return WlConfigAbstract Configuration object.
    * @throws WlAssertException In a case of an error with argument.
    */
-  final public static function create($id_region,$s_hostname=null)
+  final public static function create($id_region)
   {
     WlAssertException::assertTrue(is_string(static::AUTHORIZE_CODE) && strlen(static::AUTHORIZE_CODE)>0,[
       'text_class' => static::class,
@@ -314,24 +304,8 @@ abstract class WlConfigAbstract
       'text_message' => 'The URL endpoint API is not set for the requested data center region id. Let the developers know about it.'
     ]);
 
-    WlAssertException::assertTrue($s_hostname===null || is_string($s_hostname) && strlen($s_hostname)>0,[
-      's_hostname' => $s_hostname,
-      'text_class' => static::class,
-      'text_message' => 'The local host name is bad.'
-    ]);
-
     $o_config = new static();
     $o_config->id_region = $id_region;
-    if($s_hostname===null)
-    {
-      if(array_key_exists('SERVER_NAME',$_SERVER))
-        $s_hostname = $_SERVER['SERVER_NAME'];
-      else
-        $s_hostname = 'localhost';
-    }
-
-    $o_config->s_hostname = $s_hostname;
-
 
     return $o_config;
   }
@@ -355,7 +329,10 @@ abstract class WlConfigAbstract
    */
   public function hostname()
   {
-    return $this->s_hostname;
+    if(!array_key_exists('HTTP_HOST',$_SERVER))
+      return 'localhost';
+
+    return $_SERVER['HTTP_HOST'];
   }
 
   /**
