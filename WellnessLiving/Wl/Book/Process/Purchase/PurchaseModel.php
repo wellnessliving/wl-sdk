@@ -106,6 +106,8 @@ class PurchaseModel extends WlModelAbstract
    *   <dd>Priority of this promotion.</dd>
    *   <dt>int <var>id_program</var></dt>
    *   <dd>The program ID for Purchase Options. One of the {@link WlProgramSid} constants.</dd>
+   *   <dt>bool <var>is_shared</var></dt>
+   *   <dd>`true` if the promotion is shared with the client, `false` if the client is owner of the promotion.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
    *   <dd>The login promotion key.</dd>
    *   <dt>string <var>s_class_include</var></dt>

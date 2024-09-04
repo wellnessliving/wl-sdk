@@ -21,6 +21,16 @@ class PurchaseElementModel extends WlModelAbstract
   public $a_tax;
 
   /**
+   * Date/time of session is booking.
+   *
+   * `null` until initialized.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dtu_date = null;
+
+  /**
    * The number of sessions which are booked simultaneously.
    *
    * @get get
@@ -120,16 +130,6 @@ class PurchaseElementModel extends WlModelAbstract
    * @var string
    */
   public $m_price;
-
-  /**
-   * Prorate amount.
-   *
-   * `null` if no prorate is required.
-   *
-   * @get get
-   * @var string|null
-   */
-  public $m_prorate = null;
 
   /**
    * Amount of subtotal for 1 purchase item.
