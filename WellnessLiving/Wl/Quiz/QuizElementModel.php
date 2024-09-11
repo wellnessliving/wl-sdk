@@ -174,6 +174,24 @@ class QuizElementModel extends WlModelAbstract
    * @var string
    */
   public $uid_client = '';
+
+  /**
+   * Direct URL to quiz.
+   *
+   * @get result
+   * @put result
+   * @var string
+   */
+  public $url_quiz;
+
+  /**
+   * Kiosk direct URL to quiz.
+   *
+   * @get result
+   * @put result
+   * @var string
+   */
+  public $url_quiz_kiosk;
 }
 
 ?>

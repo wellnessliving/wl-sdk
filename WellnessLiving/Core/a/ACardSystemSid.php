@@ -15,7 +15,7 @@ abstract class ACardSystemSid
   const AMERICAN_EXPRESS = 1;
 
   /**
-   *  Bank of Montreal (BMO).
+   * Bank of Montreal (BMO).
    */
   const BMO = 2;
 

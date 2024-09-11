@@ -35,7 +35,7 @@ class BranchListModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public $a_data;
+  public $a_data = [];
 }
 
 ?>

@@ -11,7 +11,8 @@ use WellnessLiving\Wl\WlProgramSid;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
- * Returns a list of all products available for a business’s shop at a particular location.
+ * Returns a list of all products available from a business’s shop.
+ * If a location is specified, only products available at that location are included.
  */
 class CatalogListModel extends WlModelAbstract
 {

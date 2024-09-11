@@ -520,6 +520,14 @@ class PurchaseListElementModel extends WlModelAbstract
   public $is_transfer;
 
   /**
+   * The business key. Currently used only with {@link PurchaseListElementModel::$k_session_pass} variable.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $k_business = null;
+
+  /**
    * The ID of the redemption code used to obtain the item. This should be specified only for items obtained via
    * redemption code (not for ordinary purchases or for purchased promotions without purchases).
    * This will be `null` if not set yet.
