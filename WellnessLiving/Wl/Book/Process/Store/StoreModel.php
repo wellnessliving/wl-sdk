@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Book\Process\Store;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Book\Process\Purchase\Purchase56Model;
 use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
@@ -34,9 +35,9 @@ class StoreModel extends WlModelAbstract
    *     Unique identifier of the element being checked.
    *     Corresponds to the values:
    *     <ul>
-   *       <li>{@link PurchaseApi::$a_purchase}`["s_value"]`</li>
-   *       <li>{@link PurchaseApi::$a_reward_prize}`["s_value"]`</li>
-   *       <li>{@link PurchaseApi::$a_login_prize}`["s_value"]`</li>
+   *       <li>{@link Purchase56Model::$a_purchase}`["s_value"]`</li>
+   *       <li>{@link Purchase56Model::$a_reward_prize}`["s_value"]`</li>
+   *       <li>{@link Purchase56Model::$a_login_prize}`["s_value"]`</li>
    *     </ul>
    *   </dd>
    * </dl>

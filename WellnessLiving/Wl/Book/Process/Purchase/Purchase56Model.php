@@ -141,6 +141,10 @@ class Purchase56Model extends WlModelAbstract
    *     <dd>The key of the installment plan template.</dd>
    *     <dt>string <var>m_amount</var></dt>
    *     <dd>The amount of the installment plan.</dd>
+   *     <dt>string <var>m_discount_login</var></dt>
+   *     <dd>The discount amount for the client type of one purchase item.</dd>
+   *     <dt>string <var>m_price_discount</var></dt>
+   *     <dd>Amount of subtotal for 1 purchase item.</dd>
    *     <dt>string <var>s_duration</var></dt>
    *     <dd>The title of the installment plan.</dd></dl></dd>
    *   <dt>array[] [<var>a_visit_limit</var>]</dt>
