@@ -279,6 +279,14 @@ class PaymentPostModel extends WlModelAbstract
   public $is_walk_in = false;
 
   /**
+   * The business key. Currently used only with {@link PaymentModel::$k_session_pass} variable.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $k_business = null;
+
+  /**
    * The item key. Depends on {@link PaymentModel::$id_purchase_item} property.
    *
    * @get get

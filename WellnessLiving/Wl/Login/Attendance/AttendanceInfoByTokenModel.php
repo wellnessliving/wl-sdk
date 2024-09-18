@@ -196,6 +196,22 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   public $dt_date_local = '';
 
   /**
+   * End date and time of the session in MySQL format in local timezone.
+   *
+   * @get result
+   * @var string
+   */
+  public $dtl_end = '';
+
+  /**
+   * End date and time of the session in MySQL format in GMT.
+   *
+   * @get result
+   * @var string
+   */
+  public $dtu_end = '';
+
+  /**
    * Date and time in UTC when the visit is promoted from wait list to active list.
    * Not empty for appointments.
    *
@@ -211,6 +227,14 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @var bool
    */
   public $has_note = null;
+
+  /**
+   * Duration of the session in minutes.
+   *
+   * @get result
+   * @var int
+   */
+  public $i_duration = null;
 
   /**
    * Type of note. One of {@link WlVisitNoteSid} constants. <tt>false</tt> if notes not allowed.

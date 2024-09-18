@@ -31,6 +31,13 @@ class ListModel extends WlModelAbstract
    *     List of directories from {@link WlProjectSid}, where location is published.
    *   </dd>
    *   <dt>
+   *     array <var>a_timezone</var>
+   *   </dt>
+   *   <dd>
+   *     Information about location timezone. Includes `k_timezone` for primary key, `text_abbr` for user-friendly short
+   *     abbreviation and `text_name` for the name of the timezone.
+   *   </dd>
+   *   <dt>
    *     float <var>f_latitude</var>
    *   </dt>
    *   <dd>
