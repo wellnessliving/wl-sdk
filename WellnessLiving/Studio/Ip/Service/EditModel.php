@@ -23,6 +23,8 @@ class EditModel extends WlModelAbstract
   /**
    * Type of the service.
    *
+   * One of {@link ServiceTypeSid} constants.
+   *
    * @get result
    * @post post
    * @var int

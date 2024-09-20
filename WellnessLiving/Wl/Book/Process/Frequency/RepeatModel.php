@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Book\Process\Frequency;
 
+use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Mode\ModeSid;
@@ -12,7 +13,7 @@ use WellnessLiving\Wl\Mode\ModeSid;
 class RepeatModel extends WlModelAbstract
 {
   /**
-   * List of days of the week to create visits.
+   * List of days of the week to create visits. Each value is a {@link ADateWeekSid} constant.
    *
    * @get get
    * @var int[]
