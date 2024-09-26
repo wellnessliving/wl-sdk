@@ -141,10 +141,6 @@ class Purchase56Model extends WlModelAbstract
    *     <dd>The key of the installment plan template.</dd>
    *     <dt>string <var>m_amount</var></dt>
    *     <dd>The amount of the installment plan.</dd>
-   *     <dt>string <var>m_discount_login</var></dt>
-   *     <dd>The discount amount for the client type of one purchase item.</dd>
-   *     <dt>string <var>m_price_discount</var></dt>
-   *     <dd>Amount of subtotal for 1 purchase item.</dd>
    *     <dt>string <var>s_duration</var></dt>
    *     <dd>The title of the installment plan.</dd></dl></dd>
    *   <dt>array[] [<var>a_visit_limit</var>]</dt>
@@ -207,46 +203,54 @@ class Purchase56Model extends WlModelAbstract
   /**
    * Information about the recurring booking:
    * <dl>
+   *   <dt>int[] <var>a_day</var></dt>
+   *   <dd>
+   *     The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
+   *     Should be passed for any type of repetition.
+   *   </dd>
+   *   <dt>int[] <var>a_week</var></dt>
+   *   <dd>Deprecated, use `a_day` instead!</dd>
+   *   <dt>string [<var>dl_end</var>]</dt>
+   *   <dd>Deprecated, use `dt_from` and `dt_to` instead!</dd>
    *   <dt>
-   *     int[] [<var>a_week</var>]
+   *     string [<var>dt_from</var>]
    *   </dt>
    *   <dd>
-   *     The days of week when the appointment repeat. One of the {@link ADateWeekSid} constants.
-   *     This will be empty if the appointment doesn't repeat weekly.
+   *     Date to start recurring booking.
+   *     Expected for `id_repeat_
    *   </dd>
    *   <dt>
-   *     string [<var>dl_end</var>]
+   *     string [<var>dt_to</var>]
    *   </dt>
    *   <dd>
-   *     The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
+   *     Date to complete recurring booking.
+   *     Expected for `id_repeat_
    *   </dd>
    *   <dt>
-   *     int [<var>i_occurrence</var>]
-   *   </dt>
-   *   <dd>
-   *     The number of occurrences after which the appointment's repeat cycle stops.
-   *     This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *   </dd>
+   *      int [<var>i_count</var>]
+   *    </dt>
+   *    <dd>
+   *      The number of occurrences after which the appointment's repeat cycle stops.
+   *      Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
+   *      Expected for `id_repeat_
+   *    </dd>
+   *   <dt>int <var>i_duration</var></dt>
+   *   <dd>Count of days\weeks\months between recurring bookings.</dd>
+   *   <dt>int [<var>i_occurrence</var>]</dt>
+   *   <dd>Deprecated, use `i_count` instead!</dd>
+   *   <dt>int <var>i_period</var></dt>
+   *   <dd>Deprecated, use `i_duration` instead!</dd>
    *   <dt>
-   *     int <var>i_period</var>
-   *   </dt>
-   *   <dd>
-   *     The frequency of the appointment's repeat cycle.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_period</var>
+   *     int <var>id_duration</var>
    *   </dt>
    *   <dd>
    *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
+   *     Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
    *   </dd>
-   *   <dt>
-   *     bool [<var>is_month</var>]
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> - the appointment repeats monthly on the same date.
-   *     <tt>false</tt> - the appointment repeats monthly on the same day of the week.
-   *     <tt>null</tt> - the appointment doesn't repeat monthly.
-   *   </dd>
+   *   <dt>int <var>id_period</var></dt>
+   *   <dd>Deprecated, use `id_duration` instead!</dd>
+   *   <dt>int <var>id_repeat_end</var></dt>
+   *   <dd>Possible ways to stop repeatable events.</dd>
    * </dl>
    *
    * This will be `null` if the booking isn't recurring.

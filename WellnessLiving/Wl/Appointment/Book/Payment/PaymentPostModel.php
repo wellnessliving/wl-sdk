@@ -119,6 +119,12 @@ class PaymentPostModel extends WlModelAbstract
    *   <dt>
    *     boolean [<var>is_hide</var>]
    *   </dt>
+   *   <dt>
+   *     bool [<var>is_save</var>=true]
+   *   </dt>
+   *   <dd>
+   *     Whether payment method should be saved to user's account.
+   *   </dd>
    *   <dd>
    *     Determines whether this payment method is hidden.
    *   </dd>

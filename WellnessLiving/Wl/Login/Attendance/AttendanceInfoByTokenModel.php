@@ -234,7 +234,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var int
    */
-  public $i_duration = null;
+  public $i_duration;
 
   /**
    * Type of note. One of {@link WlVisitNoteSid} constants. <tt>false</tt> if notes not allowed.

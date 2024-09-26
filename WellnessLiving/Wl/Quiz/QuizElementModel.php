@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Quiz;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Manages a single quiz.
@@ -31,6 +32,24 @@ class QuizElementModel extends WlModelAbstract
    * @var array
    */
   public $a_element = [];
+
+  /**
+   * List of purchase items for which this form is loaded.
+   *
+   * The list of purchase items.
+   * Each element has the format `[id_purchase_item]::[k_id]`, where: <dl>
+   *   <dt>int <var>id_purchase_item</var></dt>
+   *   <dd>The ID of the purchase item. One of the {@link WlPurchaseItemSid} constants.</dd>
+   *   <dt>string <var>k_id</var></dt>
+   *   <dd>The item key. This depends on <var>id_purchase_item</var> of this array.</dd>
+   * </dl>
+   *
+   * `null` in case when purchase item not specified or form loaded from direct link.
+   *
+   * @get get
+   * @var string[]|null
+   */
+  public $a_purchase_item = null;
 
   /**
    * Quiz settings.
