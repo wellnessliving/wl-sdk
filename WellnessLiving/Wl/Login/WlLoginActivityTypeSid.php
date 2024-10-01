@@ -232,6 +232,11 @@ abstract class WlLoginActivityTypeSid
   const REVIEW_SHARE_TWITTER = 42;
 
   /**
+   * Reward points were changed manually.
+   */
+  const REWARD_MANUAL = 55;
+
+  /**
    * All reward points have been reset.
    */
   const REWARD_RESET = 36;

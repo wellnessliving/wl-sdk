@@ -69,16 +69,13 @@ class PaymentModel extends WlModelAbstract
    *       </dt>
    *       <dd>
    *          "Wellness Program" fields.
-   *
    *          <var>k_wellness_program</var> must be passed along with this array. See the description below.
-   *
    *          <dl>
    *            <dt>array <var>a_account</var></dt>
    *            <dd>See {@link EnrollmentFieldListModel::$a_account} for a full description.</dd>
    *            <dt>array <var>a_field</var></dt>
    *            <dd>See {@link EnrollmentFieldListModel::$a_field} for a full description.</dd>
    *          </dl>
-   *
    *          It's recommended to validate the fields using the POST method of the {@link EnrollmentFieldListModel} model.
    *       </dd>
    *       <dt>
@@ -150,9 +147,7 @@ class PaymentModel extends WlModelAbstract
    *       </dt>
    *       <dd>
    *          The "Wellness Program" key. Set this for the insurance membership promotion.
-   *
    *          <var>a_wellness_program</var> array must be passed along with the key. See the array description above.
-   *
    *          <p>Use the following models to work with this type of promotion:</p>
    *          <ul>
    *            <li>{@link ProgramListModel} to obtain list of active programs.</li>
@@ -237,6 +232,12 @@ class PaymentModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The item key.
+   *   </dd>
+   *   <dt>
+   *     string [<var>k_login_prize</var>]
+   *   </dt>
+   *   <dd>
+   *    The key of the login prize to apply a login prize discount.
    *   </dd>
    *   <dt>
    *     string [<var>k_shop_product_option</var>]

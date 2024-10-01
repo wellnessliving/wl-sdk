@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 204.
+ * Last Used ID: 205.
  */
 abstract class WlPrivilegeSid
 {
@@ -609,6 +609,11 @@ abstract class WlPrivilegeSid
    * Manage clients from my location.
    */
   const PROFILE_MY_LOCATION = 86;
+
+  /**
+   * View client’s upcoming and past schedule.
+   */
+  const PROFILE_SCHEDULE = 205;
 
   /**
    * Manage profile client type.
