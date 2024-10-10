@@ -56,7 +56,11 @@ class PaymentModel extends WlModelAbstract
    *         <dt>int <var>id_purchase_item</var></dt>
    *         <dd>The purchase type of the element. One of the {@link WlPurchaseItemSid} constants.</dd>
    *         <dt>string <var>k_id</var></dt>
-   *         <dd>The primary key of the element, depending on the element type.</dd></dl>
+   *         <dd>
+   *           The primary key of the element, depending on the element type.
+   *           Pay attention that if you add a product into gift card, there must be specified not product key but product option key.
+   *           Do not specify separate field `k_shop_product_option`.
+   *         </dd></dl>
    *       </dd>
    *       <dt>
    *         array [<var>a_uid_share</var>]

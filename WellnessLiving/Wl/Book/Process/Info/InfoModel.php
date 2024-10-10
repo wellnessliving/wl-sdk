@@ -426,6 +426,18 @@ class InfoModel extends WlModelAbstract
   public $is_card_authorize = false;
 
   /**
+   * Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`.
+   *
+   * Use this field with caution.
+   * The final booking will not use this flag and the check will still be performed.
+   *
+   * @get get
+   * @post get
+   * @var bool
+   */
+  public $is_credit_card_check = true;
+
+  /**
    * Can client chooses several session per booking.
    *
    * @get result

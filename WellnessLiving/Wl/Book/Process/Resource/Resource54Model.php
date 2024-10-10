@@ -260,6 +260,18 @@ class Resource54Model extends WlModelAbstract
   public $id_mode = 0;
 
   /**
+   * Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`.
+   *
+   * Use this field with caution.
+   * The final booking will not use this flag and the check will still be performed.
+   *
+   * @get get
+   * @post get
+   * @var bool
+   */
+  public $is_credit_card_check = true;
+
+  /**
    * `true` if user pressed 'Pay later'.
    * `false` if user pressed 'Pay now'.
    *

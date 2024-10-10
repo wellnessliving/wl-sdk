@@ -8,10 +8,9 @@ use WellnessLiving\Wl\WlSaleSid;
 use WellnessLiving\Wl\WlServiceSid;
 
 /**
- * Displays information for certain sessions.
- * Version of {@link AttendanceInfoModel} for access validation by security token.
+ * Attendance list information.
  */
-class AttendanceInfoByTokenModel extends WlModelAbstract
+class AttendanceInfoModel extends WlModelAbstract
 {
   /**
    * Additional visit information about this appointment. Empty array if it's not an appointment:
@@ -51,7 +50,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public $a_logo = null;
+  public $a_logo;
 
   /**
    * Default purchase option information.
@@ -77,7 +76,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string[]
    */
-  public $a_resource = null;
+  public $a_resource;
 
   /**
    * Asset layouts of session:
@@ -116,7 +115,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_resource_layout = null;
+  public $a_resource_layout;
 
   /**
    * List of staff members who provide service:
@@ -170,7 +169,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_staff = null;
+  public $a_staff;
 
   /**
    * Confirmation date+time of appointment in MySQL format. If client never confirmed, will be zero date + time.
@@ -186,7 +185,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $dt_date_global = null;
+  public $dt_date_global;
 
   /**
    * Start date of the class in MySQL format in local time.
@@ -227,7 +226,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public $has_note = null;
+  public $has_note;
 
   /**
    * Duration of the session in minutes.
@@ -243,7 +242,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var int|false
    */
-  public $id_note = null;
+  public $id_note;
 
   /**
    * Service type, one of {@link WlServiceSid}.
@@ -251,7 +250,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var int
    */
-  public $id_service = null;
+  public $id_service;
 
   /**
    * Whether this service be carried out in Zoom.
@@ -285,7 +284,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $k_class = null;
+  public $k_class;
 
   /**
    * ID of class period to get information for.
@@ -301,7 +300,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $k_location = null;
+  public $k_location;
 
   /**
    * Resource identifier.
@@ -310,7 +309,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $k_resource = null;
+  public $k_resource;
 
   /**
    * Service identifier.
@@ -319,7 +318,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $k_service = null;
+  public $k_service;
 
   /**
    * Location name.
@@ -327,7 +326,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $text_location = null;
+  public $text_location;
 
   /**
    * Time when service starts in format <tt>8:00AM</tt>.
@@ -335,7 +334,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $text_time_end = null;
+  public $text_time_end;
 
   /**
    * Start time of the session in format '9:30AM'.
@@ -343,7 +342,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $text_time_start = null;
+  public $text_time_start;
 
   /**
    * Title of the appointment.
@@ -351,15 +350,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $text_title = null;
-
-  /**
-   * The security token.
-   *
-   * @get get
-   * @var string
-   */
-  public $text_token = '';
+  public $text_title;
 
   /**
    * URL that leads directly to the class/event booking page in the Client Web App.

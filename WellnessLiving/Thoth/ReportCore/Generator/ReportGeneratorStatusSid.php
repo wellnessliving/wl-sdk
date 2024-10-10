@@ -83,6 +83,11 @@ class ReportGeneratorStatusSid
    * * `READY` => `QUEUED` when user clicks to regenerate this report
    */
   const READY = 3;
+
+  /**
+   * @inheritDoc
+   */
+  const _TRANSLATION_CONTEXT = 'Wl.Report.Generator.ReportGeneratorStatusSid';
 }
 
 ?>

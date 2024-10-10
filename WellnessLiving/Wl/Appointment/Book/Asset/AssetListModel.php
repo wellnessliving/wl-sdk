@@ -110,6 +110,24 @@ class AssetListModel extends WlModelAbstract
   public $a_asset;
 
   /**
+   * A list of reserved assets.
+   *
+   * 1st level keys refer to asset keys.
+   * 2nd level keys refer to asset numbers.
+   * Values is keys of appointment bookings that reserve the asset, or `true` if asset reserved by class/event.
+   *
+   * For example, if you want to check if the 10th asset with the key of '15' is reserved,
+   * you can check if `a_resource_busy['15']['10']` is free.
+   *
+   * If you're rebooking an appointment, check the value of `a_resource_busy['15']['10']`.
+   * If it's equal to the key of your current appointment booking, you can assume the asset is available.
+   *
+   * @get result
+   * @var array
+   */
+  public $a_asset_busy = [];
+
+  /**
    * The selected date and time of the asset booking. It is used in cases when the business booking policy allows
    * clients to select a date and time, and then the available asset.
    *

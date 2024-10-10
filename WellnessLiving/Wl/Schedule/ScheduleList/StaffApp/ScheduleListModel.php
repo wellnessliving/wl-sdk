@@ -24,6 +24,13 @@ class ScheduleListModel extends WlModelAbstract
    *     List of notes.
    *   </dd>
    *   <dt>
+   *     array[]|null <var>a_quiz</var>
+   *   </dt>
+   *   <dd>
+   *     List of quizzes.
+   *     `null` if no quizzes for schedule item.
+   *   </dd>
+   *   <dt>
    *     array <var>a_appointment_visit_info</var>
    *   </dt>
    *   <dd>
@@ -145,6 +152,12 @@ class ScheduleListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The date/time of the session in local time.
+   *   </dd>
+   *   <dt>
+   *     bool <var>has_quiz_uncompleted</var>
+   *   </dt>
+   *   <dd>
+   *     `true` if has uncompleted quizzes, `false` otherwise.
    *   </dd>
    *   <dt>
    *     int <var>i_book</var>
@@ -273,6 +286,12 @@ class ScheduleListModel extends WlModelAbstract
    *     The name of the session.
    *   </dd>
    *   <dt>
+   *     bool <var>show_quiz_icon</var>
+   *   </dt>
+   *   <dd>
+   *     `true` when need show quiz icon, `false` otherwise.
+   *   </dd>
+   *   <dt>
    *     string <var>text_alert</var>
    *   </dt>
    *   <dd>
@@ -289,6 +308,12 @@ class ScheduleListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The border color in hex representation as used on WellnessLiving.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_quiz_title</var>
+   *   </dt>
+   *   <dd>
+   *     Title for quiz icon.
    *   </dd>
    *   <dt>
    *     bool<var>is_virtual_service</var>

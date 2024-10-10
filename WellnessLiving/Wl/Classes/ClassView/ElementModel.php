@@ -99,8 +99,8 @@ class ElementModel extends WlModelAbstract
    *   </dd>
    *   <dt>string <var>k_class</var></dt>
    *   <dd>The class key.</dd>
-   *   <dt>string<var>k_promotion_default</var>
-   *   <dd> Promotion key of the default promotion to use when paying for the class. `null` if no promotion is selected.
+   *   <dt>string<var>k_promotion_default</var></dt>
+   *   <dd> Promotion key of the default promotion to use when paying for the class. `null` if no promotion is selected.</dd>
    *   <dt>string <var>m_price</var></dt>
    *   <dd>Drop In price, if the class allows payment for one visit.</dd>
    *   <dt>bool <var>show_special_instructions</var></dt>
