@@ -178,7 +178,7 @@ class ElementModel extends WlModelAbstract
    *     bool <var>is_virtual</var>
    *   </dt>
    *   <dd>
-   *     This will be `true` if the session is not held in person but offered remotely. If will be `false` otherwise.
+   *     This will be `true` if the session is not held in person but offered remotely. It will be `false` otherwise.
    *   </dd>
    *   <dt>
    *     string <var>f_price</var>
@@ -247,7 +247,9 @@ class ElementModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>int <var>i_count</var></dt>
-   *   <dd>The number of visits.</dd>
+   *   <dd>The number of visits required.</dd>
+   *   <dt>int <var>i_has</var></dt>
+   *   <dd>The number of visits the client has already attended.</dd>
    *   <dt>bool <var>is_event</var></dt>
    *   <dd>`true` if this is an event, `false` if this is a class.</dd>
    *   <dt>string <var>k_class</var></dt>

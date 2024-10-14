@@ -114,7 +114,8 @@ class AssetListModel extends WlModelAbstract
    *
    * 1st level keys refer to asset keys.
    * 2nd level keys refer to asset numbers.
-   * Values is keys of appointment bookings that reserve the asset, or `true` if asset reserved by class/event.
+   * Values is keys of appointment bookings that reserve the asset, primary keys in {@link \RsAppointmentSql} table,
+   * or `true` if asset reserved by class/event.
    *
    * For example, if you want to check if the 10th asset with the key of '15' is reserved,
    * you can check if `a_resource_busy['15']['10']` is free.

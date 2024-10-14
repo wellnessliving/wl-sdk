@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Schedule\ScheduleList\StaffApp;
 
+use WellnessLiving\Core\Quiz\ResponseStatusSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Schedule\Design\OptionSid;
 use WellnessLiving\Wl\Visit\WlVisitSid;
@@ -28,6 +29,26 @@ class ScheduleListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     List of quizzes.
+   *     Has next structure:
+   *     <dl>
+   *       <dt>bool <var>id_status</var></dt>
+   *       <dd>
+   *         Response status ID. One of {@link ResponseStatusSid} constants.
+   *       </dd>
+   *       <dt>bool <var>is_hide</var></dt>
+   *       <dd>Whether it's hidden. `true` quiz is hidden, `false` otherwise.</dd>
+   *       <dt>bool <var>is_require</var></dt>
+   *       <dd>Whether it's required. `true` quiz is required, `false` otherwise.</dd>
+   *       <dt>string <var>k_quiz</var></dt>
+   *
+   *       <dt>string <var>k_quiz_login</var></dt>
+   *
+   *       <dt>string <var>k_quiz_response</var></dt>
+   *
+   *       <dt>string <var>text_title</var></dt>
+   *       <dd>Quiz title.</dd>
+   *     </dl>
+   *
    *     `null` if no quizzes for schedule item.
    *   </dd>
    *   <dt>
