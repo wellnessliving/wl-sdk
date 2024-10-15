@@ -13,7 +13,7 @@ class BranchModel extends WlModelAbstract
    * Information about entities necessary for the functioning of the stand.
    *
    * @get result
-   * @put result
+   * @put get
    * @var array|null
    */
   public $a_stand_data = null;
@@ -29,8 +29,8 @@ class BranchModel extends WlModelAbstract
   /**
    * Stand status, one of {@link StandStatusSid}.
    *
-   * @get result
-   * @put result
+   * @get get,result
+   * @put get
    * @var int|null
    */
   public $id_stand_status = null;
@@ -56,8 +56,9 @@ class BranchModel extends WlModelAbstract
    * Task key within which a branch should be created/deleted.
    *
    * @delete get
-   * @get result
+   * @get get,result
    * @post get
+   * @put get
    * @var string
    */
   public $k_task = '';

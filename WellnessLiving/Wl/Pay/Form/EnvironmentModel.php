@@ -6,7 +6,6 @@ use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\Core\a\ACardSystemSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\WlPayMethodSid;
-use WellnessLiving\Wl\WlPayProcessorSid;
 
 /**
  * Gets information about payment environments.
@@ -78,7 +77,7 @@ class EnvironmentModel extends WlModelAbstract
    *     `null` if this payment processor does not support public keys.
    *   </dd>
    *   <dt>int <var>id_pay_processor</var></dt>
-   *   <dd>ID of the payment processor. One of {@link WlPayProcessorSid} constants.</dd>
+   *   <dd>ID of the payment processor.</dd>
    *   <dt>string <var>k_business_merchant</var></dt>
    *   <dd>Key of the business merchant.</dd>
    * </dl>
