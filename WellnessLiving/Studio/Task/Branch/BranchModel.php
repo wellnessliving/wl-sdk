@@ -14,7 +14,7 @@ class BranchModel extends WlModelAbstract
    *
    * @get result
    * @put get
-   * @var array|false|null
+   * @var array|string|null
    */
   public $a_stand_data = null;
 

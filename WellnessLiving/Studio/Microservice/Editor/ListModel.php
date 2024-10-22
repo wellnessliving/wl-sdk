@@ -23,16 +23,20 @@ class ListModel extends WlModelAbstract
    *   <dd>Project key.</dd>
    *   <dt>string <var>s_file</var></dt>
    *   <dd>File name.</dd>
+   *   <dt>string <var>s_variable</var></dt>
+   *   <dd>Microservice-specific variables. A set of pairs key=value, separated by newlines.</dd>
    *   <dt>string <var>text_project</var></dt>
    *   <dd>Title of the project.</dd>
    *   <dt>string <var>text_title</var></dt>
    *   <dd>Title of the microservice.</dd>
+   *   <dt>string <var>url_microservice_promoting</var></dt>
+   *   <dd>URL of the promoting page for this microservice.</dd>
    * </dl>
    *
    * @get result
    * @var string[][]
    */
-  public $a_list = [];
+  public $a_list;
 
   /**
    * Specifies whether to show removed and/or not removed microservices.
