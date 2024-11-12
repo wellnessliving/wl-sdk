@@ -26,6 +26,14 @@ class ClusterModel extends WlModelAbstract
   public $is_active = null;
 
   /**
+   * Whether to save repository keys.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_fingerprint = false;
+
+  /**
    * Key of the cluster being saved.
    *
    * @post post,result

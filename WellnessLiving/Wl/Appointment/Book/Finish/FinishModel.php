@@ -8,8 +8,6 @@ use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Appointment\Book\Question\QuestionModel;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
-use WellnessLiving\Wl\Classes\Tab\TabSid;
-use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
@@ -148,7 +146,7 @@ class FinishModel extends WlModelAbstract
    *     int <var>id_class_tab</var>
    *   </dt>
    *   <dd>
-   *     The booking service type. One of the {@link TabSid} constants.
+   *     The booking service type.
    *   </dd>
    *   <dt>
    *     int [<var>id_gender_staff</var>]
@@ -300,7 +298,7 @@ class FinishModel extends WlModelAbstract
   public $a_visit;
 
   /**
-   * The booking mode ID. One of the {@link ModeSid} constants.
+   * The booking mode ID.
    *
    * @post post
    * @var int

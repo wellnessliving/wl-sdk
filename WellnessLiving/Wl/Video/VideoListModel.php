@@ -2,9 +2,7 @@
 
 namespace WellnessLiving\Wl\Video;
 
-use WellnessLiving\Core\Sid\SortOrderSid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Video\Catalog\Filter\Sort\FilterSortSid;
 
 /**
  * Returns a list of videos.
@@ -117,7 +115,7 @@ class VideoListModel extends WlModelAbstract
   public $i_page = null;
 
   /**
-   * Sort order ID. One of {@link SortOrderSid} constants. `null` or 0 if order is undefined and depends on sort order.
+   * Sort order ID. `null` or 0 if order is undefined and depends on sort order.
    *
    * @get get,result
    * @var int|null
@@ -126,7 +124,7 @@ class VideoListModel extends WlModelAbstract
 
   /**
    * The sorting type.
-   * A constant from {@link FilterSortSid}. `null` or 0 if sort is undefined and custom sort order is used.
+   * `null` or 0 if sort is undefined and custom sort order is used.
    *
    * @get get,result
    * @var int|null

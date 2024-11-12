@@ -165,10 +165,6 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   /**
    * Determines which locations should be returned.
    *
-   * One of the {@link BusinessFranchiseLocationSid} constants.
-   *
-   * If `null`, {@link BusinessFranchiseLocationSid::ALL} is used.
-   *
    * @get get
    * @var int
    */

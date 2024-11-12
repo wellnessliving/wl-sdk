@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Wl\Video;
 
-use WellnessLiving\Core\Sid\YesNoSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -153,9 +152,6 @@ class VideoElementModel extends WlModelAbstract
   public $i_watch;
 
   /**
-   * {@link YesNoSid::NO} if the video is available in all locations.
-   * {@link YesNoSid::YES} if the video is available only in certain locations.
-   *
    * @get result
    * @post post
    * @var int

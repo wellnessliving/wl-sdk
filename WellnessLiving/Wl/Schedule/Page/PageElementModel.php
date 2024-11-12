@@ -3,8 +3,6 @@
 namespace WellnessLiving\Wl\Schedule\Page;
 
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Virtual\VirtualProviderSid;
-use WellnessLiving\Wl\Visit\WlVisitSid;
 
 /**
  * Returns information about a specified visit.
@@ -17,7 +15,7 @@ class PageElementModel extends WlModelAbstract
    *     int <var>id_visit</var>
    *   </dt>
    *   <dd>
-   *     Visit status. One of {@link WlVisitSid} constants.
+   *     Visit status.
    *   </dd>
    *   <dt>
    *     bool <var>is_confirmed</var>
@@ -164,6 +162,16 @@ class PageElementModel extends WlModelAbstract
   public $html_special;
 
   /**
+   * Capacity of the service.
+   *
+   * <tt>null</tt> means that capacity is not set.
+   *
+   * @get result
+   * @var int|null
+   */
+  public $i_capacity = null;
+
+  /**
    * The scheduled duration of the visit.
    * <tt>0</tt> means that session duration is hidden.
    *
@@ -182,7 +190,6 @@ class PageElementModel extends WlModelAbstract
 
   /**
    * The note type ID. This will be set to `null` if notes aren't allowed.
-   * This is one of the {@link WlVisitNoteSid} constants.
    *
    * This will be `null` if notes aren't allowed.
    *
@@ -192,7 +199,7 @@ class PageElementModel extends WlModelAbstract
   public $id_note;
 
   /**
-   * The virtual provider ID. One of the {@link VirtualProviderSid} constants.
+   * The virtual provider ID.
    *
    * This will be `null` for non-virtual services.
    *
@@ -202,7 +209,7 @@ class PageElementModel extends WlModelAbstract
   public $id_virtual_provider;
 
   /**
-   * The visit type ID. One of the {@link WlVisitSid} constants.
+   * The visit type ID.
    *
    * This will be `null` if not loaded yet.
    *
@@ -295,6 +302,14 @@ class PageElementModel extends WlModelAbstract
   public $k_location;
 
   /**
+   * Asset key.
+   *
+   * @get result
+   * @var ?string
+   */
+  public $k_resource;
+
+  /**
    * Session key.
    *
    * @get result
@@ -349,6 +364,14 @@ class PageElementModel extends WlModelAbstract
    * @var string
    */
   public $uid;
+
+  /**
+   * Image url of the service or resource.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_image = '';
 
   /**
    * Url to wait page is the beginning of an online service.

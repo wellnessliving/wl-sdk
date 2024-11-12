@@ -1358,11 +1358,17 @@ abstract class WlReportSid
 
   /**
    * Detailed revenue by service.
+   *
+   * @title Revenue by Service
+   * @deprecated Report is refactored into new core.
    */
   const VISIT_REVENUE_DETAIL = 58;
 
   /**
    * Service revenue analysis.
+   *
+   * @title Service Revenue Summary
+   * @deprecated Report is refactored into new core.
    */
   const VISIT_REVENUE_LIST = 57;
 

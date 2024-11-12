@@ -6,7 +6,6 @@ use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
-use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
@@ -311,7 +310,7 @@ class PaymentModel extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * The mode type. One of the {@link ModeSid} constants.
+   * The mode type.
    *
    * @get get
    * @post get

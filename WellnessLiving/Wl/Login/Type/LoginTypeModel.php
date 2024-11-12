@@ -18,7 +18,7 @@ class LoginTypeModel extends WlModelAbstract
    * <dl>
    *   <dt>bool <var>id_client_type</var></dt>
    *   <dd>
-   *     System ID. One of {@link SystemSid} constants.
+   *     System ID.
    *   </dd>
    *   <dt>bool <var>is_member</var></dt>
    *   <dd>

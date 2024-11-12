@@ -5,7 +5,6 @@ namespace WellnessLiving\Wl\Book\Process\Info;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Offers functionality for the class booking wizard on the "Class and Location" page.
@@ -383,7 +382,7 @@ class InfoModel extends WlModelAbstract
   public $i_wait_spot = 0;
 
   /**
-   * The mode type. One of the {@link ModeSid} constants.
+   * The mode type.
    *
    * @get get
    * @post get

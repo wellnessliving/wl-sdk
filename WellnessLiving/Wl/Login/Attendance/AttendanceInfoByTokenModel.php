@@ -3,7 +3,6 @@
 namespace WellnessLiving\Wl\Login\Attendance;
 
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Schedule\Page\WlVisitNoteSid;
 use WellnessLiving\Wl\WlSaleSid;
 use WellnessLiving\Wl\WlServiceSid;
 
@@ -238,7 +237,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   public $i_duration;
 
   /**
-   * Type of note. One of {@link WlVisitNoteSid} constants. <tt>false</tt> if notes not allowed.
+   * Type of note. <tt>false</tt> if notes not allowed.
    *
    * @get result
    * @var int|false

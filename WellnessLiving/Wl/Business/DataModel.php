@@ -2,8 +2,6 @@
 
 namespace WellnessLiving\Wl\Business;
 
-use WellnessLiving\Core\Locale\CurrencySid;
-use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Service\ServiceSid;
 use WellnessLiving\Wl\WlRankTypeSid;
@@ -62,7 +60,6 @@ class DataModel extends WlModelAbstract
    *
    * @get result
    * @var int
-   * @see CurrencySid
    */
   public $id_currency;
 
@@ -71,7 +68,6 @@ class DataModel extends WlModelAbstract
    *
    * @get result
    * @var int
-   * @see LocaleSid
    */
   public $id_locale;
 

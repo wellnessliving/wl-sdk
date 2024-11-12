@@ -4,7 +4,6 @@ namespace WellnessLiving\Wl\Login\Attendance;
 
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Visit\WlVisitSid;
 use WellnessLiving\Wl\WlProgramSid;
 
 /**
@@ -75,7 +74,7 @@ class AttendanceListModel extends WlModelAbstract
    *   <dt>int <var>id_program</var></dt>
    *   <dd>The program ID of the Purchase Option. One of the {@link WlProgramSid} constants.</dd>
    *   <dt>int <var>id_visit</var></dt>
-   *   <dd>The status of the visit. One of the {@link WlVisitSid} constants.</dd>
+   *   <dd>The status of the visit.</dd>
    *   <dt>bool <var>is_attend</var></dt>
    *   <dd>This will be <tt>true</tt> if the client has attended the visit.</dd>
    *   <dt>bool <var>is_duration_pass</var></dt>

@@ -24,7 +24,10 @@ class ListModel extends WlModelAbstract
    *   <dt>string <var>s_file</var></dt>
    *   <dd>File name.</dd>
    *   <dt>string <var>s_variable</var></dt>
-   *   <dd>Microservice-specific variables. A set of pairs key=value, separated by newlines.</dd>
+   *   <dd>
+   *     Microservice-specific variables. A set of pairs key=value, separated by newlines.
+   *
+   *   </dd>
    *   <dt>string <var>text_project</var></dt>
    *   <dd>Title of the project.</dd>
    *   <dt>string <var>text_title</var></dt>

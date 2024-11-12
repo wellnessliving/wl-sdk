@@ -5,7 +5,6 @@ namespace WellnessLiving\Wl\Book\Process\Resource;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Selects assets for making a booking.
@@ -250,7 +249,7 @@ class ResourceModel extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * The mode type. One of the {@link ModeSid} constants.
+   * The mode type.
    *
    * @get get
    * @post get

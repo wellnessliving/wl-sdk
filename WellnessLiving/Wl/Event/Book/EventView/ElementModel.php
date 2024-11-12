@@ -5,7 +5,6 @@ namespace WellnessLiving\Wl\Event\Book\EventView;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Business\Config\BusinessConfigModel;
-use WellnessLiving\Wl\Virtual\VirtualProviderSid;
 
 /**
  * Retrieves information about an event element.
@@ -217,6 +216,12 @@ class ElementModel extends WlModelAbstract
    *   <dd>
    *     The name of the timezone in which the session is held.
    *   </dd>
+   *   <dt>
+   *     string <var>text_room</var>
+   *   </dt>
+   *   <dd>
+   *     The room of the event.
+   *   </dd>
    * </dl>
    *
    * @get result
@@ -387,7 +392,7 @@ class ElementModel extends WlModelAbstract
   public $i_staff_image_width = 0;
 
   /**
-   * The virtual provider ID. One of the {@link VirtualProviderSid} constants.
+   * The virtual provider ID.
    *
    * `null` if an in-person event.
    *

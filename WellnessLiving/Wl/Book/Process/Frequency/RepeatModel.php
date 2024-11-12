@@ -5,7 +5,6 @@ namespace WellnessLiving\Wl\Book\Process\Frequency;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * For recurrent class booking returns list of visits to be created for the given settings.
@@ -39,7 +38,7 @@ class RepeatModel extends WlModelAbstract
    *   <dt>string <var>is_wait</var></dt>
    *   <dd>Whether booking can be only to wait list.</dd>
    *   <dt>string <var>k_class_period</var></dt>
-   *   <dd>Key of class period, primary key in {}.</dd>
+   *
    *   <dt>string <var>s_alert</var></dt>
    *   <dd>Staff name if booking available, warning about wait list or disabled booking otherwise.</dd>
    *   <dt>string <var>s_date</var></dt>
@@ -47,21 +46,22 @@ class RepeatModel extends WlModelAbstract
    * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
   public $a_visit = [];
 
   /**
    * List of visits to be ignored. Each value is a string consisting of a class period key
-   * and a visit date and time in location's timezone, concatenated by two colons.
+   * and a visit date and time in location's timezone, concatenated by two colons. Empty array if no visits
+   * should be ignored. Example: ['70::2024-11-05 18:00:00'].
    *
    * @get get
-   * @var array
+   * @var string[]
    */
   public $a_visit_ignore = [];
 
   /**
-   * Date of the class, when recurring booking was called.
+   * Date and time of the class, when recurring booking was called, in UTC timezone.
    *
    * @get get
    * @var string
@@ -69,7 +69,7 @@ class RepeatModel extends WlModelAbstract
   public $dt_date = '';
 
   /**
-   * Date to start recurring booking.
+   * Date to start recurring booking. Not empty only when {@link RepeatModel::$id_repeat_end} == {@link \RsRepeatEndSid::DATE}.
    *
    * @get get,result
    * @var string
@@ -77,7 +77,7 @@ class RepeatModel extends WlModelAbstract
   public $dt_from = '';
 
   /**
-   * Date to finish recurring booking.
+   * Date to finish recurring booking. Not empty only when {@link RepeatModel::$id_repeat_end} == {@link \RsRepeatEndSid::DATE}.
    *
    * @get get,result
    * @var string
@@ -85,7 +85,7 @@ class RepeatModel extends WlModelAbstract
   public $dt_to = '';
 
   /**
-   * Count of the visits to be created. Should be empty, if date range is set.
+   * Count of the visits to be created. Not empty only when {@link RepeatModel::$id_repeat_end} == {@link \RsRepeatEndSid::COUNT}.
    *
    * @get get,result
    * @var int
@@ -109,8 +109,6 @@ class RepeatModel extends WlModelAbstract
   public $id_duration = 0;
 
   /**
-   * WellnessLiving mode, one of {@link ModeSid} constants.
-   *
    * @get get
    * @var int
    */
@@ -159,7 +157,7 @@ class RepeatModel extends WlModelAbstract
   public $s_uid = '';
 
   /**
-   * Encoded list of user keys, who will attend visits.
+   * Start date of repeatable period in human-readable format.
    *
    * @get result
    * @var string
@@ -167,7 +165,7 @@ class RepeatModel extends WlModelAbstract
   public $text_date_from = '';
 
   /**
-   * Encoded list of user keys, who will attend visits.
+   * End date of repeatable period in human-readable format.
    *
    * @get result
    * @var string
@@ -187,6 +185,7 @@ class RepeatModel extends WlModelAbstract
    *
    * @get get
    * @var string
+   * @deprecated Current login user used instead.
    */
   public $uid_actor = '';
 }

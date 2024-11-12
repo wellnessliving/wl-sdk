@@ -149,9 +149,7 @@ class ReviewListModel extends WlModelAbstract
   public $i_page = null;
 
   /**
-   * The order in which the review should be arranged. One of the {@link ReviewOrderSid} constants.
-   *
-   * If not passed use default order {@link ReviewOrderSid::LATEST}.
+   * The order in which the review should be arranged.
    *
    * @get get
    * @var int|null

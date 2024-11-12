@@ -4,8 +4,6 @@ namespace WellnessLiving\Wl\Schedule\ScheduleList\StaffApp;
 
 use WellnessLiving\Core\Quiz\ResponseStatusSid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Schedule\Design\OptionSid;
-use WellnessLiving\Wl\Visit\WlVisitSid;
 use WellnessLiving\Wl\WlServiceSid;
 
 /**
@@ -61,7 +59,7 @@ class ScheduleListModel extends WlModelAbstract
    *         int <var>id_visit</var>
    *       </dt>
    *       <dd>
-   *         Visit id. One of {@link WlVisitSid} constants.
+   *         Visit id.
    *       </dd>
    *       <dt>
    *         bool <var>is_confirmed</var>
@@ -229,7 +227,7 @@ class ScheduleListModel extends WlModelAbstract
    *    <dd>
    *      Appointment title display style.
    *      Set only for appointments, for others it will be equal to 0.
-   *      Constants from {@link OptionSid}.
+   *
    *    </dd>
    *   <dt>
    *     int <var>id_service</var>

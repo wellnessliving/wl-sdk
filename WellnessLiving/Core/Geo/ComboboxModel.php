@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Core\Geo;
 
-use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -28,8 +27,6 @@ class ComboboxModel extends WlModelAbstract
 
   /**
    * The locale ID used as a filter. The locale is generally a country.
-   *
-   * One of the {@link LocaleSid} constants.
    *
    * This will be `0` if all locations are searched.
    *

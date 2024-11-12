@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Wl\Collector;
 
-use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -26,7 +25,7 @@ class DebtListModel extends WlModelAbstract
    *   <dt>string <var>dtu_cease</var></dt>
    *   <dd>The date and time in UTC when the debt was fully ceased.</dd>
    *   <dt>int <var>id_currency</var></dt>
-   *   <dd>The debt currency ID. One of {@link CurrencySid} constants.</dd>
+   *   <dd>The debt currency ID.</dd>
    *   <dt>string <var>k_business</var></dt>
    *   <dd>The business key where the debt occurred.</dd>
    *   <dt>string <var>k_collector_debt</var></dt>

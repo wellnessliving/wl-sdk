@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Wl\Pay\Account;
 
-use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -19,7 +18,7 @@ class AccountModel extends WlModelAbstract
    *     int <var>id_currency</var>
    *   </dt>
    *   <dd>
-   *     Currency ID. One of {@link CurrencySid} constant.
+   *     Currency ID.
    *   </dd>
    *   <dt>
    *     string <var>k_currency</var>

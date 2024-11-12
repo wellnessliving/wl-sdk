@@ -5,7 +5,6 @@ namespace WellnessLiving\Wl\Promotion\Index;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Event\EventListModel;
-use WellnessLiving\Wl\Promotion\Edit\Limit\Cycle\Sid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlDurationTypeSid;
 use WellnessLiving\Wl\WlProgramCategorySid;
@@ -123,7 +122,7 @@ class PromotionIndexModel extends WlModelAbstract
    *         {@link ADurationSid::MONTH}, {@link ADurationSid::YEAR}.
    *       </dd>
    *       <dt>int <var>id_limit_cycle</var></dt>
-   *       <dd>The type of the limit cycle {@link Sid}.</dd>
+   *
    *       <dt>bool <var>is_reconcile_visit</var></dt>
    *       <dd>Determines whether to reconcile unpaid sessions on restrictions reset.</dd>
    *       <dt>bool <var>is_roll_over_expire</var></dt>

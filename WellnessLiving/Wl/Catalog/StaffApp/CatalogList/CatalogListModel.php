@@ -6,7 +6,6 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Catalog\Payment\PaymentModel;
 use WellnessLiving\Wl\Insurance\Catalog\ProgramListModel;
 use WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel;
-use WellnessLiving\Wl\Shop\Product\PurchaseRestrictionSid;
 use WellnessLiving\Wl\WlProgramSid;
 use WellnessLiving\Wl\WlSaleSid;
 
@@ -64,7 +63,7 @@ class CatalogListModel extends WlModelAbstract
    *     int <var>id_restriction</var>
    *   </dt>
    *   <dd>
-   *     The restriction ID. One of the {@link PurchaseRestrictionSid} constants.
+   *     The restriction ID.
    *   </dd>
    *   <dt>
    *     int <var>id_sale</var>

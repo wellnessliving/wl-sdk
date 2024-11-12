@@ -31,7 +31,6 @@ class WatchModel extends WlModelAbstract
    *
    * @post post
    * @var int
-   * @see WatchSourceSid
    */
   public $id_source;
 

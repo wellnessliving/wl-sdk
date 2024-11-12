@@ -27,8 +27,6 @@ class BranchModel extends WlModelAbstract
   public $id_build_mode = 1;
 
   /**
-   * Stand status, one of {@link StandStatusSid}.
-   *
    * @get get,result
    * @put get
    * @var int|null
@@ -36,8 +34,6 @@ class BranchModel extends WlModelAbstract
   public $id_stand_status = null;
 
   /**
-   * Branch status, one of {@link BranchStatusSid}.
-   *
    * @get result
    * @var int|null
    */
@@ -62,15 +58,6 @@ class BranchModel extends WlModelAbstract
    * @var string
    */
   public $k_task = '';
-
-  /**
-   * Actor user UID key.
-   *
-   * @delete get
-   * @post get
-   * @var string
-   */
-  public $uid = '';
 
   /**
    * Url to build page.

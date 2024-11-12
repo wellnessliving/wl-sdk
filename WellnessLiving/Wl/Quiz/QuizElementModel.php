@@ -143,6 +143,17 @@ class QuizElementModel extends WlModelAbstract
   public $k_business = '';
 
   /**
+   * Business type key.
+   *
+   * `null` if not initialized.
+   *
+   * @get result
+   * @post post
+   * @var string|null
+   */
+  public $k_business_type = null;
+
+  /**
    * Quiz key.
    *
    * @delete get
