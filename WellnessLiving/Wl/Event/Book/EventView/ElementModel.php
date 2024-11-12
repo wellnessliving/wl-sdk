@@ -217,6 +217,12 @@ class ElementModel extends WlModelAbstract
    *   <dd>
    *     The name of the timezone in which the session is held.
    *   </dd>
+   *   <dt>
+   *     string <var>text_room</var>
+   *   </dt>
+   *   <dd>
+   *     The room in which the session is held.
+   *   </dd>
    * </dl>
    *
    * @get result
