@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Pay\Form;
 
+use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\Core\a\ACardSystemSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\WlPayMethodSid;
@@ -122,6 +123,7 @@ class EnvironmentModel extends WlModelAbstract
    *
    * @get result
    * @var int|null
+   * @see LocaleSid
    */
   public $id_locale;
 

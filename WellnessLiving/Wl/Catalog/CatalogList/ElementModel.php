@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Catalog\CatalogList;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Catalog\PurchaseOptionViewSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlSaleSid;
 
@@ -216,7 +217,7 @@ class ElementModel extends WlModelAbstract
    *   <dd>Contains information about taxes.</dd>
    *
    *   <dt>string <var>id_purchase_option_view</var></dt>
-   *   <dd>The Purchase Option view type.</dd>
+   *   <dd>The Purchase Option view type. One of the {@link PurchaseOptionViewSid} constants.</dd>
    *
    *   <dt>string <var>m_discount_code</var></dt>
    *   <dd>The discount code amount.</dd>
@@ -379,7 +380,7 @@ class ElementModel extends WlModelAbstract
   public $id_purchase_item;
 
   /**
-   * The ID of the item view category.
+   * The ID of the item view category. One of the {@link PurchaseOptionViewSid} constants.
    *
    * @get result
    * @var int

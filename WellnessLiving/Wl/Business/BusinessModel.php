@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Business;
 
+use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -14,6 +15,7 @@ class BusinessModel extends WlModelAbstract
    *
    * @post post
    * @var int
+   * @see LocaleSid
    */
   public $id_locale;
 

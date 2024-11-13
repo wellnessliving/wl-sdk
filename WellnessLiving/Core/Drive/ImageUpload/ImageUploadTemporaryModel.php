@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Core\Drive\ImageUpload;
 
+use WellnessLiving\Core\Drive\DriveTypeSid;
 use WellnessLiving\WlFile;
 use WellnessLiving\WlModelAbstract;
 
@@ -69,7 +70,7 @@ class ImageUploadTemporaryModel extends WlModelAbstract
   public $i_width_src;
 
   /**
-   * The image type ID.
+   * The image type ID. One of the {@link DriveTypeSid} constants.
    *
    * @post result
    * @var int

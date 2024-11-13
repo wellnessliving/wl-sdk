@@ -2,6 +2,8 @@
 
 namespace WellnessLiving\Wl\Event;
 
+use WellnessLiving\Core\Drive\DriveTypeSid;
+use WellnessLiving\Core\Sid\YesNoSid;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
@@ -62,7 +64,7 @@ class EventListModel extends WlModelAbstract
    *     <dt>int <var>i_width_src</var></dt>
    *     <dd>The source image's width.</dd>
    *     <dt>int <var>id_type_src</var></dt>
-   *     <dd>The image type ID.</dd>
+   *     <dd>The image type ID. One of the {@link DriveTypeSid} constants.</dd>
    *     <dt>bool <var>is_resize</var></dt>
    *     <dd>This will be `true` if the image has been resized. `false` otherwise.</dd>
    *     <dt>bool <var>is_old</var></dt>
@@ -209,7 +211,8 @@ class EventListModel extends WlModelAbstract
 
   /**
    * List of IDs to include/exclude virtual events.
-   *
+   * If the only ID is {@link YesNoSid::YES}, only virtual events are included.
+   * If the only ID is {@link YesNoSid::NO}, only in-person events are included.
    * Otherwise, no filtering is done.
    *
    * @get get

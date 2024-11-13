@@ -7,6 +7,8 @@ use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
+use WellnessLiving\Wl\Classes\Tab\TabSid;
+use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
@@ -138,7 +140,7 @@ class FinishMultipleModel extends WlModelAbstract
    *     int <var>id_class_tab</var>
    *   </dt>
    *   <dd>
-   *     The booking service type.
+   *     The booking service type. One of the {@link TabSid} constants.
    *   </dd>
    *   <dt>
    *     int [<var>id_gender_staff</var>]
@@ -311,7 +313,7 @@ class FinishMultipleModel extends WlModelAbstract
   public $a_visit_provider = [];
 
   /**
-   * The mode type.
+   * The mode type. One of the {@link ModeSid} constants.
    *
    * @post post
    * @var int

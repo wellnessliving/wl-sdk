@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Appointment\Book\Asset\Service;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Retrieves assets that are required for a service booking.
@@ -102,6 +103,8 @@ class ServiceModel extends WlModelAbstract
   public $dt_start = '';
 
   /**
+   * Mode type, one of {@link ModeSid} constants.
+   *
    * @get get
    * @var int
    */

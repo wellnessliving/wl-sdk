@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Classes\Period\Clients;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Visit\WlVisitSid;
 
 /**
  * Class to manage class period info with Api.
@@ -35,7 +36,7 @@ class Model extends WlModelAbstract
    *   </li>
    *   <li>int <var>uid</var> User identifier.
    *   </li>
-   *   <li>string <var>visit</var> State of visit.
+   *   <li>string <var>visit</var> State of visit. String representation of constants {@link WlVisitSid}.
    *   </li>
    * </ul>
    *

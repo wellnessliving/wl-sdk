@@ -11,10 +11,13 @@ class BranchModel extends WlModelAbstract
 {
   /**
    * Information about entities necessary for the functioning of the stand.
+   * Has an arbitrary structure.
+   *
+   * `null` if not initialized and will be ignored.
    *
    * @get result
    * @put get
-   * @var array|string|null
+   * @var array|null
    */
   public $a_stand_data = null;
 
@@ -27,6 +30,10 @@ class BranchModel extends WlModelAbstract
   public $id_build_mode = 1;
 
   /**
+   * Stand status, one of {@link StandStatusSid}.
+   *
+   * `null` if not initialized and will be ignored.
+   *
    * @get get,result
    * @put get
    * @var int|null
@@ -34,6 +41,8 @@ class BranchModel extends WlModelAbstract
   public $id_stand_status = null;
 
   /**
+   * Branch status, one of {@link BranchStatusSid}.
+   *
    * @get result
    * @var int|null
    */

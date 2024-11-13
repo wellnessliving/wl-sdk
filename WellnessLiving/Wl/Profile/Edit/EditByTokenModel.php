@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Profile\Edit;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Field\WlFieldGeneralSid;
 use WellnessLiving\Wl\Field\WlFieldTypeSid;
+use WellnessLiving\Wl\Profile\RegisterSourceSid;
 
 /**
  * An endpoint that displays client profile information.
@@ -110,10 +111,11 @@ class EditByTokenModel extends WlModelAbstract
 
   /**
    * Registration source ID.
+   * One of {@link RegisterSourceSid} constants.
    *
    * Used only to register new clients.
    * * If the client is already authorized, the field value will not be used.
-   * *
+   * * If the client is not authorized and no value is set, {@link RegisterSourceSid::SELF} will be used.
    *
    * @get get
    * @post get

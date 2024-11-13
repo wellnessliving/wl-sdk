@@ -12,6 +12,8 @@ class AutymateActivateModel extends WlModelAbstract
   /**
    * The mode of the request.
    *
+   * One of {@link AutymateAccessModeSid} constants.
+   *
    * @get get
    * @var int
    */
@@ -19,6 +21,8 @@ class AutymateActivateModel extends WlModelAbstract
 
   /**
    * The new status of the enrollment. If `0`, the current status is returned.
+   *
+   * One of {@link AutymateStatusSid} constants.
    *
    * @get get,result
    * @var int

@@ -6,6 +6,7 @@ use WellnessLiving\Core\Geo\ComboboxModel;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Field\WlFieldGeneralSid;
 use WellnessLiving\Wl\Field\WlFieldTypeSid;
+use WellnessLiving\Wl\Profile\RegisterSourceSid;
 
 /**
  * Gets information about a client profile. This endpoint can also edit or create a profile.
@@ -137,10 +138,11 @@ class EditModel extends WlModelAbstract
 
   /**
    * Registration source ID.
+   * One of {@link RegisterSourceSid} constants.
    *
    * Used only to register new clients.
    * * If the client is already authorized, the field value will not be used.
-   * *
+   * * If the client is not authorized and no value is set, {@link RegisterSourceSid::SELF} will be used.
    *
    * @get get
    * @post get

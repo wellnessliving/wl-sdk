@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Collector;
 
+use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\WlPayMethodSid;
 
@@ -12,6 +13,7 @@ class DebtPayModel extends WlModelAbstract
 {
   /**
    * The currency of the payment.
+   * One of {@link CurrencySid} constants.
    *
    * Important! The currency must coincide with currency of the debt that was sent to collections.
    *

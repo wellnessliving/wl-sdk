@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Schedule\Tab;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Classes\Tab\TabSid;
 
 /**
  * Retrieves a list of tabs for bookable services specific to the user and the location.
@@ -21,13 +22,14 @@ class TabModel extends WlModelAbstract
    *     int <var>id_class_tab_object</var>
    *   </dt>
    *   <dd>
-   *
+   *     The tab type ID which is one of the {@link TabSid} constants.
    *   </dd>
    *   <dt>
    *     int|null <var>id_class_tab_system</var>
    *   </dt>
    *   <dd>
    *     If this tab has redefined a default system Class Tab then it references a constant defined in
+   *     {@link TabSid}.
    *
    *     Otherwise, this will be `null`.
    *   </dd>

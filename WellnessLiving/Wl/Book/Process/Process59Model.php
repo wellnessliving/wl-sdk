@@ -5,7 +5,9 @@ namespace WellnessLiving\Wl\Book\Process;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Classes\RequirePaySid;
 use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Performs the booking wizard steps.
@@ -34,7 +36,7 @@ class Process59Model extends WlModelAbstract
    *     int <var>id_book_process</var>
    *   </dt>
    *   <dd>
-   *     The step ID.
+   *     The step ID. One of the {@link ProcessSpaSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_current</var>]
@@ -129,7 +131,7 @@ class Process59Model extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * The mode type.
+   * The mode type. One of the {@link ModeSid} constants.
    *
    * @get get
    * @post get
@@ -139,6 +141,7 @@ class Process59Model extends WlModelAbstract
 
   /**
    * The purchase rule ID.
+   * One of the {@link RequirePaySid} constants.
    *
    * @get result
    * @var int

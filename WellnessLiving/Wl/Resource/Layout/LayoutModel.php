@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Resource\Layout;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Resource\Image\ImageIconSid;
 
 /**
  * Displays information about an asset layout.
@@ -81,25 +82,25 @@ class LayoutModel extends WlModelAbstract
    *     float <var>f_height</var>
    *   </dt>
    *   <dd>
-   * Empty for other shapes.
+   *     The height for the shape {@link LayoutShapeSid::RECTANGLE}. Empty for other shapes.
    *   </dd>
    *   <dt>
    *     float <var>f_width</var>
    *   </dt>
    *   <dd>
-   * Empty for other shapes.
+   *     The width for the shape {@link LayoutShapeSid::RECTANGLE}. Empty for other shapes.
    *   </dd>
    *   <dt>
    *     int <var>i_degree_from</var>
    *   </dt>
    *   <dd>
-   * Empty for other shapes.
+   *     The start angle for the shape {@link LayoutShapeSid::PIE}. Empty for other shapes.
    *   </dd>
    *   <dt>
    *     int <var>i_degree_to</var>
    *   </dt>
    *   <dd>
-   * Empty for other shapes.
+   *     The start angle for shape {@link LayoutShapeSid::PIE}. Empty for other shapes.
    *   </dd>
    *   <dt>
    *     int <var>i_left</var>
@@ -111,8 +112,8 @@ class LayoutModel extends WlModelAbstract
    *     int <var>i_radius</var>
    *   </dt>
    *   <dd>
-   *     The radius for shapes {@link \Wl\Resource\Layout\Shape\LayoutShapeSid::PIE} and
-   * Empty for other shapes.
+   *     The radius for shapes {@link LayoutShapeSid::PIE} and
+   *     {@link LayoutShapeSid::CIRCLE}. Empty for other shapes.
    *   </dd>
    *   <dt>
    *     int <var>i_top</var>
@@ -124,7 +125,7 @@ class LayoutModel extends WlModelAbstract
    *     int <var>id_resource_layout_shape</var>
    *   </dt>
    *   <dd>
-   *     The shape type ID.
+   *     The shape type ID. One of the {@link LayoutShapeSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_resource_layout_shape</var>
@@ -188,7 +189,7 @@ class LayoutModel extends WlModelAbstract
    *     int <var>id_shape_icon</var>
    *   </dt>
    *   <dd>
-   *     The icon ID.
+   *     The icon ID. One of the {@link ImageIconSid} constants.
    *   </dd>
    * </dl>
    *

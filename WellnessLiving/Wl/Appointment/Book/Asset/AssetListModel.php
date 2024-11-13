@@ -3,6 +3,9 @@
 namespace WellnessLiving\Wl\Appointment\Book\Asset;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Resource\Image\ImageIconSid;
+use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
 use WellnessLiving\Wl\Service\ServicePriceSid;
 use WellnessLiving\Wl\Service\ServiceRequireSid;
 
@@ -56,9 +59,9 @@ class AssetListModel extends WlModelAbstract
    *       <dt>bool <var>is_empty</var></dt>
    *       <dd>Determines if the asset logo is empty.</dd>
    *       <dt>string <var>sid_image_icon</var></dt>
-   *       <dd>The icon name. This is only set if the image kind equals to `image`.</dd>
+   *       <dd>The icon name. String representation of one of the {@link ImageIconSid} constants. This is only set if the image kind equals to `image`.</dd>
    *       <dt>string <var>sid_image_shape</var></dt>
-   *       <dd>The shape name. This is set only if the image kind equals to `shape`.</dd>
+   *       <dd>The shape name. String representation of one of the {@link ImageShapeSid} constants. This is set only if the image kind equals to `shape`.</dd>
    *       <dt>string <var>url</var></dt>
    *       <dd>The asset logo URL.</dd>
    *     </dl>
@@ -153,6 +156,8 @@ class AssetListModel extends WlModelAbstract
   public $i_image_width = 0;
 
   /**
+   * Mode type, one of {@link ModeSid} constants.
+   *
    * @get get
    * @var int
    */

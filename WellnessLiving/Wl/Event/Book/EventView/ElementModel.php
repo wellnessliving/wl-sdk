@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Event\Book\EventView;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Business\Config\BusinessConfigModel;
+use WellnessLiving\Wl\Virtual\VirtualProviderSid;
 
 /**
  * Retrieves information about an event element.
@@ -392,7 +393,7 @@ class ElementModel extends WlModelAbstract
   public $i_staff_image_width = 0;
 
   /**
-   * The virtual provider ID.
+   * The virtual provider ID. One of the {@link VirtualProviderSid} constants.
    *
    * `null` if an in-person event.
    *

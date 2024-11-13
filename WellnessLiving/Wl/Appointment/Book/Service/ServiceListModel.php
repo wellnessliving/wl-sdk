@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Appointment\Book\Service;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Service\ServiceBookFlowSid;
 use WellnessLiving\Wl\Service\ServicePriceSid;
 use WellnessLiving\Wl\Service\ServiceRequireSid;
 
@@ -149,7 +150,7 @@ class ServiceListModel extends WlModelAbstract
    *     int <var>id_book_flow</var>
    *   </dt>
    *   <dd>
-   *     The type of client booking flow.
+   *     The type of client booking flow. One of {@link ServiceBookFlowSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_service_require</var>

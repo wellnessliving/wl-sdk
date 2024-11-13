@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Book\Process\Purchase;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlProgramCategorySid;
 use WellnessLiving\Wl\WlProgramSid;
@@ -363,7 +364,7 @@ class Purchase56Model extends WlModelAbstract
   public $i_image_width = 0;
 
   /**
-   * The mode type.
+   * The mode type. One of the {@link ModeSid} constants.
    *
    * @get get
    * @post get

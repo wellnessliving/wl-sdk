@@ -3,6 +3,8 @@
 namespace WellnessLiving\Wl\Schedule\Page;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Virtual\VirtualProviderSid;
+use WellnessLiving\Wl\Visit\WlVisitSid;
 
 /**
  * Returns information about a specified visit.
@@ -15,7 +17,7 @@ class PageElementModel extends WlModelAbstract
    *     int <var>id_visit</var>
    *   </dt>
    *   <dd>
-   *     Visit status.
+   *     Visit status. One of {@link WlVisitSid} constants.
    *   </dd>
    *   <dt>
    *     bool <var>is_confirmed</var>
@@ -189,6 +191,7 @@ class PageElementModel extends WlModelAbstract
 
   /**
    * The note type ID. This will be set to `null` if notes aren't allowed.
+   * This is one of the {@link WlVisitNoteSid} constants.
    *
    * This will be `null` if notes aren't allowed.
    *
@@ -198,7 +201,7 @@ class PageElementModel extends WlModelAbstract
   public $id_note;
 
   /**
-   * The virtual provider ID.
+   * The virtual provider ID. One of the {@link VirtualProviderSid} constants.
    *
    * This will be `null` for non-virtual services.
    *
@@ -208,7 +211,7 @@ class PageElementModel extends WlModelAbstract
   public $id_virtual_provider;
 
   /**
-   * The visit type ID.
+   * The visit type ID. One of the {@link WlVisitSid} constants.
    *
    * This will be `null` if not loaded yet.
    *
@@ -301,7 +304,7 @@ class PageElementModel extends WlModelAbstract
   public $k_location;
 
   /**
-   * Asset key.
+   * Resource key.
    *
    * @get result
    * @var ?string

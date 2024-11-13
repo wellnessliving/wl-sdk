@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Catalog\CatalogList;
 
+use WellnessLiving\Core\Sid\SortOrderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\WlSaleSid;
 
@@ -13,8 +14,8 @@ class CatalogProductModel extends WlModelAbstract
   /**
    * Categories with sort settings. Keys refer to shop category keys. Values refer to sort settings. Contains the following structure:<dl>
    *   <dt>array <var>a_order</var></dt>
-   *   <dt>int <var>id_order</var></dt><dd>The sort order.</dd>
-   *   <dt>int <var>id_sort</var></dt><dd>The sort order ID.</dd>
+   *   <dt>int <var>id_order</var></dt><dd>The sort order. One of the {@link SortOrderSid} constants.</dd>
+   *   <dt>int <var>id_sort</var></dt><dd>The sort order ID. One of the {@link SortOrderSid} constants.</dd>
    * </dl>
    *
    * @get result
@@ -36,7 +37,7 @@ class CatalogProductModel extends WlModelAbstract
    *   <dt>int <var>i_last</var></dt>
    *   <dd>The last shown product.</dd>
    *
-   *   <dt>int <var>id_order</var></dt><dd>The sort order ID.</dd>
+   *   <dt>int <var>id_order</var></dt><dd>The sort order ID. One of the {@link SortOrderSid} constants.</dd>
    *
    *   <dt>int <var>id_sort</var></dt>
    *   <dd>The sort options ID.</dd>
