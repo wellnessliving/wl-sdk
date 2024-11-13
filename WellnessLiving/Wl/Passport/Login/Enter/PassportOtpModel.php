@@ -6,8 +6,6 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * Entry point to verify user authorization by email and phone number via sending and checking otp code.
- *
- * @sdk
  */
 class PassportOtpModel extends WlModelAbstract
 {

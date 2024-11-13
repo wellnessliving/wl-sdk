@@ -163,8 +163,7 @@ class PageElementModel extends WlModelAbstract
 
   /**
    * Capacity of the service.
-   *
-   * <tt>null</tt> means that capacity is not set.
+   * <tt>null</tt> indicates that the capacity is not set.
    *
    * @get result
    * @var int|null
@@ -366,7 +365,7 @@ class PageElementModel extends WlModelAbstract
   public $uid;
 
   /**
-   * Image url of the service or resource.
+   * URL of the image representing the service or resource.
    *
    * @get result
    * @var string

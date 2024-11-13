@@ -6,8 +6,6 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * Creates user profile with minimum fields.
- *
- * @sdk
  */
 class ProfileCreateModel extends WlModelAbstract
 {

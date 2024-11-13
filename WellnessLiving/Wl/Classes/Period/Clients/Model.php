@@ -6,8 +6,6 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * Class to manage class period info with Api.
- *
- * @sdk
  */
 class Model extends WlModelAbstract
 {
