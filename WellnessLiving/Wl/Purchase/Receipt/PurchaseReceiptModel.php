@@ -341,6 +341,12 @@ class PurchaseReceiptModel extends WlModelAbstract
    *   <dd>
    *     The description of the purchase item.
    *   </dd>
+   *   <dt>
+   *     string <var>url_print</var>
+   *   </dt>
+   *   <dd>
+   *     The URL to print. Only available if the purchase item is a coupon (gift card).
+   *   </dd>
    * </dl>
    *
    * @get result
@@ -373,8 +379,10 @@ class PurchaseReceiptModel extends WlModelAbstract
   public $html_receipt;
 
   /**
-   * Whether the print receipt URL requires authentication. If `true`, the URL contains a token that temporarily
-   * allows access to the print receipt without a login. `false` otherwise.
+   * Whether {@link PurchaseReceiptModel::$url_print} and {@link PurchaseReceiptModel::$url_print_receipt} require authentication.
+   *
+   * If `true`, the URL contains a token that allows temporary access to the page without logging in. If 'false', the
+   * page requires authentication.
    *
    * @get get
    * @var bool
