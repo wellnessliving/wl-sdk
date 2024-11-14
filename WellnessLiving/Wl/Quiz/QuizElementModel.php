@@ -143,7 +143,7 @@ class QuizElementModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * Business type key.
+   * Business type key. Used only for forms in the system business.
    *
    * `null` if not initialized.
    *
