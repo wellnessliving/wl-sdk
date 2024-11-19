@@ -373,6 +373,14 @@ class ElementModel extends WlModelAbstract
   public $i_session;
 
   /**
+   * The remaining session count.
+   *
+   * @get result
+   * @var int
+   */
+  public $i_session_remain;
+
+  /**
    * Staff image height in pixels. Please specify this value if you need image to be returned in specific size.
    * In case this value is not specified returned image will have default thumbnail size.
    *
