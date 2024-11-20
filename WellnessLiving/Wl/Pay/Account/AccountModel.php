@@ -67,6 +67,16 @@ class AccountModel extends WlModelAbstract
   public $a_account_nx;
 
   /**
+   * Determines whether the user is a debtor. If `true` - the owner of this account is a debtor.
+   * If `false` - the user is not a debtor or the information is not returned for the
+   * account owner ({@link AccountModel::$is_owner} is `false`).
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_debtor = false;
+
+  /**
    * If `true`, information for the account's owner is returned. Clients can be configured to pay for a relative's
    * expenses. For example, a parent can pay for their child.
    * Otherwise, `false` to indicate information strictly for the specified user is returned.

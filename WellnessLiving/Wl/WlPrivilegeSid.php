@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 205.
+ * Last Used ID: 206.
  */
 abstract class WlPrivilegeSid
 {
@@ -389,6 +389,11 @@ abstract class WlPrivilegeSid
    * Flag clients.
    */
   const LOGIN_NOTE_RESTRICT = 12;
+
+  /**
+   * View service add-ons.
+   */
+  const LOGIN_PRODUCT_VIEW = 206;
 
   /**
    * Logs view.

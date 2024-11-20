@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Schedule\ClassView;
 /**
  * Reasons why the client can't book this class.
  *
- * Last used ID: 23
+ * Last used ID: 24
  */
 class DenyReasonSid
 {
@@ -107,7 +107,7 @@ class DenyReasonSid
   /**
    * Online booking is disabled for this type of client.
    */
-  const NOT_BOOKABLE_BY_TYPE = 23;
+  const NOT_BOOKABLE_BY_TYPE = 24;
 
   /**
    * Required personal details missing.
@@ -123,6 +123,11 @@ class DenyReasonSid
    * The wait list is full.
    */
   const WAIT_LIST_LIMIT_MAX = 21;
+
+  /**
+   * Client has unsigned waiver.
+   */
+  const WAIVER_NX = 23;
 }
 
 ?>
