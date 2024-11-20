@@ -6,6 +6,8 @@ use WellnessLiving\WlModelAbstract;
 
 /**
  * Checking whether there is something that prevents the user from using the business.
+ *
+ * @deprecated Use instead {@link MemberValidate63Model}.
  */
 class MemberValidateModel extends WlModelAbstract
 {

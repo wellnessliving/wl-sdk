@@ -4,6 +4,7 @@ namespace WellnessLiving\Config;
 
 use WellnessLiving\Wl\WlRegionSid;
 use WellnessLiving\WlAssertException;
+use WellnessLiving\WlTool;
 
 /**
  * Contains WellnessLiving SDK configuration.
@@ -319,6 +320,123 @@ abstract class WlConfigAbstract
   {
     $t_time = time();
     return hash('sha3-512',$s_session_key.'::'.$this::AUTHORIZE_CODE.'::'.$t_time).'.'.$t_time.'.'.substr($s_session_key,0,5);
+  }
+
+  /**
+   * Gets the local host name.
+   *
+   * @return string The local host name.
+   */
+  public function hostname()
+  {
+    if(!array_key_exists('HTTP_HOST',$_SERVER))
+      return 'localhost';
+
+    return $_SERVER['HTTP_HOST'];
+  }
+
+  /**
+   * Retrieves the raw content of the HTTP request body.
+   *
+   * ## PHP 5.5 and 5.6 compatibility notes
+   *
+   * In PHP 5.5 and before, there was not possible to make multiple reads from `php://input` stream.
+   * And, this method requires reading from this stream.
+   * If you use PHP 5.5, this will interfere with your application which also needs to read from this stream.
+   * Please, override this method in your configuration subclass to provide a method to read the entire HTTP request body.
+   *
+   * Note that there are messages that `php://input` was not reusable in PHP 5.6 either. See links below for details.
+   *
+   * You may also need to override this method if `always_populate_raw_post_data` is disabled.
+   *
+   * Feel free to override it in other cases when this default implementation does not work well for you.
+   *
+   * @return string|null The raw body content of the POST request. `null` if the POST request body is empty.
+   * @link https://stackoverflow.com/questions/31762278/how-the-php-input-was-made-reusable-in-5-6 It seems they have removed the notice from their official documentation about that `php://input` was not reusable in PHP 5.5.
+   * @link https://stackoverflow.com/questions/35361763/php-input-can-only-be-read-once-in-php-5-6-16 Messages that it was not working for someone in PHP 5.6.
+   * @link https://www.php.net/manual/en/migration56.new-features.php#migration56.new-features.reusable-input PHP 5.6 migration notes: php://input is reusable
+   */
+  public static function postRawData()
+  {
+    if(version_compare(PHP_VERSION,'5.6.0')<0)
+    {
+      $s_always_populate_raw_post_data = ini_get('always_populate_raw_post_data');
+      $is_always_populate_raw_post_data =
+        $s_always_populate_raw_post_data &&
+        $s_always_populate_raw_post_data!=-1
+      ;
+
+      if(!$is_always_populate_raw_post_data)
+      {
+        trigger_error(
+          "The 'always_populate_raw_post_data' option disabled. ".
+          "You must enable the 'always_populate_raw_post_data' option or override this method.",
+          E_USER_ERROR
+        );
+
+        /**
+         * User code may ignore errors that are caused through {@link \trigger_error()}.
+         * Therefore we return `null`.
+         *
+         * @noinspection PhpUnreachableStatementInspection
+         */
+        return null;
+      }
+
+      if(!array_key_exists('HTTP_RAW_POST_DATA',$GLOBALS))
+      {
+        trigger_error("The 'HTTP_RAW_POST_DATA' global variable is not available.", E_USER_ERROR);
+
+        /**
+         * User code may ignore errors that are caused through {@link \trigger_error()}.
+         * Therefore we return `null`.
+         *
+         * @noinspection PhpUnreachableStatementInspection
+         */
+        return null;
+      }
+
+      return $GLOBALS['HTTP_RAW_POST_DATA'];
+    }
+
+    $a_header = WlTool::getAllHeaders();
+    if(!array_key_exists('Content-Type',$a_header))
+    {
+      trigger_error("The 'Content-Type' header is missing: \n".var_export($a_header,true),E_USER_ERROR);
+
+      /**
+       * User code may ignore errors that are caused through {@link \trigger_error()}.
+       * Therefore we return `null`.
+       *
+       * @noinspection PhpUnreachableStatementInspection
+       */
+      return null;
+    }
+
+    if(
+      ini_get('enable_post_data_reading') &&
+      (
+        $a_header['Content-Type']==='multipart/form-data' ||
+        strncmp($a_header['Content-Type'],'multipart/form-data;',20)==0
+      )
+    )
+    {
+      trigger_error("Cannot read POST request data with content type 'multipart/form-data': \n".var_export($a_header,true),E_USER_ERROR);
+
+      /**
+       * User code may ignore errors that are caused through {@link \trigger_error()}.
+       * Therefore we return `null`.
+       *
+       * @noinspection PhpUnreachableStatementInspection
+       */
+      return null;
+    }
+
+    $s_post_raw = file_get_contents('php://input');
+    if(!$s_post_raw)
+      return null;
+
+    return $s_post_raw;
   }
 
   /**

@@ -164,6 +164,15 @@ class PageElementModel extends WlModelAbstract
   public $html_special;
 
   /**
+   * Capacity of the service.
+   * <tt>null</tt> indicates that the capacity is not set.
+   *
+   * @get result
+   * @var int|null
+   */
+  public $i_capacity = null;
+
+  /**
    * The scheduled duration of the visit.
    * <tt>0</tt> means that session duration is hidden.
    *
@@ -295,6 +304,14 @@ class PageElementModel extends WlModelAbstract
   public $k_location;
 
   /**
+   * Resource key.
+   *
+   * @get result
+   * @var ?string
+   */
+  public $k_resource;
+
+  /**
    * Session key.
    *
    * @get result
@@ -349,6 +366,14 @@ class PageElementModel extends WlModelAbstract
    * @var string
    */
   public $uid;
+
+  /**
+   * URL of the image representing the service or resource.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_image = '';
 
   /**
    * Url to wait page is the beginning of an online service.

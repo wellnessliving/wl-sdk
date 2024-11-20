@@ -4,10 +4,12 @@ namespace WellnessLiving\Wl\Login\Attendance;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Schedule\Page\WlVisitNoteSid;
+use WellnessLiving\Wl\WlSaleSid;
 use WellnessLiving\Wl\WlServiceSid;
 
 /**
  * Displays information for certain sessions.
+ * Version of {@link AttendanceInfoModel} for access validation by security token.
  */
 class AttendanceInfoByTokenModel extends WlModelAbstract
 {
@@ -50,6 +52,24 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @var array
    */
   public $a_logo = null;
+
+  /**
+   * Default purchase option information.
+   * <dl>
+   *   <dt>string? <var>id_sale</var></dt>
+   *   <dd>The sale item type, one of the {@link WlSaleSid} constants.
+   *   This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".</dd>
+   *   <dt>string? <var>k_id</var></dt>
+   *   <dd>The default Purchase Option key.
+   *   This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".</dd>
+   *   <dt>bool <var>is_single_default</var></dt>
+   *   <dd>If the default Purchase Option is set to "Drop-in rate" then the value will be `true`, `false` otherwise.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array
+   */
+  public $a_purchase_option_default = [];
 
   /**
    * Assets which are bound to this session.
@@ -161,7 +181,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   public $dt_confirm = '';
 
   /**
-   * Start date of ste session in MySQL format in GMT.
+   * Start date of the session in MySQL format in GMT.
    *
    * @get result
    * @var string
@@ -175,6 +195,22 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @var string
    */
   public $dt_date_local = '';
+
+  /**
+   * End date and time of the session in MySQL format in local timezone.
+   *
+   * @get result
+   * @var string
+   */
+  public $dtl_end = '';
+
+  /**
+   * End date and time of the session in MySQL format in GMT.
+   *
+   * @get result
+   * @var string
+   */
+  public $dtu_end = '';
 
   /**
    * Date and time in UTC when the visit is promoted from wait list to active list.
@@ -192,6 +228,14 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @var bool
    */
   public $has_note = null;
+
+  /**
+   * Duration of the session in minutes.
+   *
+   * @get result
+   * @var int
+   */
+  public $i_duration;
 
   /**
    * Type of note. One of {@link WlVisitNoteSid} constants. <tt>false</tt> if notes not allowed.
@@ -316,6 +360,15 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @var string
    */
   public $text_token = '';
+
+  /**
+   * URL that leads directly to the class/event booking page in the Client Web App.
+   * Empty string if the service is an appointment reservation.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_booking;
 }
 
 ?>

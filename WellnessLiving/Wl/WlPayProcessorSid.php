@@ -4,8 +4,10 @@ namespace WellnessLiving\Wl;
 
 /**
  * A list of payment gateways or processors.
+ *
+ * Last ID: 12.
  */
-abstract class WlPayProcessorSid
+class WlPayProcessorSid
 {
   /**
    * Payment gateway for `cybersource.com`.
@@ -31,6 +33,11 @@ abstract class WlPayProcessorSid
    * Payment gateway for NMI.
    */
   const NMI = 6;
+
+  /**
+   * Payment gateway for Nuvei.
+   */
+  const NUVEI = 12;
 
   /**
    * Payment gateway for {@link http://www.paychoice.com.au/ Paychoice}.

@@ -5,14 +5,31 @@ namespace WellnessLiving\Wl\Family\Relation;
 /**
  * Relation type between two relatives.
  *
- * Last used ID: 7.
+ * Last used ID: 10.
  */
 class WlFamilyRelationSid
 {
   /**
+   * Care provider.
+   */
+  const CAREGIVER = 8;
+
+  /**
+   * Care recipient.
+   */
+  const CARE_RECEIVER = 9;
+
+  /**
    * Child of the parent.
    */
   const CHILD = 5;
+
+  /**
+   * Dependent.
+   *
+   * @link https://wellnessliving.atlassian.net/browse/WL-82365
+   */
+  const DEPENDENT = 10;
 
   /**
    * Friend.

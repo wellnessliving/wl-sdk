@@ -68,6 +68,44 @@ class WlTool
   {
     return gmdate('Y-m-d H:i:s',time());
   }
+
+  /**
+   * Gets all HTTP request headers.
+   *
+   * @return string[] All HTTP headers. The key is header name. The value is header value.
+   */
+  public static function getAllHeaders()
+  {
+    // The list of headers remains unchanged until the request is processed.
+    static $a_header = null;
+
+    if(function_exists('apache_request_headers'))
+      return apache_request_headers();
+
+    if($a_header!==null)
+      return $a_header;
+
+    $a_header=[];
+    foreach($_SERVER as $s_name => $s_value)
+    {
+      if(strncmp($s_name,'HTTP_',5)==0)
+      {
+        $s_header = str_replace(
+          ' ',
+          '-',
+          ucwords(
+            strtolower(
+              str_replace('_', ' ', substr($s_name, 5))
+            )
+          )
+        );
+
+        $a_header[$s_header] = $s_value;
+      }
+    }
+
+    return $a_header;
+  }
 }
 
 ?>

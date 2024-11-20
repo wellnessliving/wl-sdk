@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Schedule\ScheduleList\StaffApp;
 
+use WellnessLiving\Core\Quiz\ResponseStatusSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Schedule\Design\OptionSid;
 use WellnessLiving\Wl\Visit\WlVisitSid;
@@ -22,6 +23,33 @@ class ScheduleListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     List of notes.
+   *   </dd>
+   *   <dt>
+   *     array[]|null <var>a_quiz</var>
+   *   </dt>
+   *   <dd>
+   *     List of quizzes.
+   *     Has next structure:
+   *     <dl>
+   *       <dt>bool <var>id_status</var></dt>
+   *       <dd>
+   *         Response status ID. One of {@link ResponseStatusSid} constants.
+   *       </dd>
+   *       <dt>bool <var>is_hide</var></dt>
+   *       <dd>Whether it's hidden. `true` quiz is hidden, `false` otherwise.</dd>
+   *       <dt>bool <var>is_require</var></dt>
+   *       <dd>Whether it's required. `true` quiz is required, `false` otherwise.</dd>
+   *       <dt>string <var>k_quiz</var></dt>
+   *
+   *       <dt>string <var>k_quiz_login</var></dt>
+   *
+   *       <dt>string <var>k_quiz_response</var></dt>
+   *
+   *       <dt>string <var>text_title</var></dt>
+   *       <dd>Quiz title.</dd>
+   *     </dl>
+   *
+   *     `null` if no quizzes for schedule item.
    *   </dd>
    *   <dt>
    *     array <var>a_appointment_visit_info</var>
@@ -72,6 +100,13 @@ class ScheduleListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     A list of assets involved in the session.
+   *
+   *   </dd>
+   *   <dt>
+   *     string[] <var>a_resource_removed</var>
+   *   </dt>
+   *   <dd>
+   *     List of removed assets involved in the session.
    *
    *   </dd>
    *   <dt>
@@ -138,6 +173,12 @@ class ScheduleListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The date/time of the session in local time.
+   *   </dd>
+   *   <dt>
+   *     bool <var>has_quiz_uncompleted</var>
+   *   </dt>
+   *   <dd>
+   *     `true` if has uncompleted quizzes, `false` otherwise.
    *   </dd>
    *   <dt>
    *     int <var>i_book</var>
@@ -266,6 +307,12 @@ class ScheduleListModel extends WlModelAbstract
    *     The name of the session.
    *   </dd>
    *   <dt>
+   *     bool <var>show_quiz_icon</var>
+   *   </dt>
+   *   <dd>
+   *     `true` when need show quiz icon, `false` otherwise.
+   *   </dd>
+   *   <dt>
    *     string <var>text_alert</var>
    *   </dt>
    *   <dd>
@@ -282,6 +329,12 @@ class ScheduleListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The border color in hex representation as used on WellnessLiving.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_quiz_title</var>
+   *   </dt>
+   *   <dd>
+   *     Title for quiz icon.
    *   </dd>
    *   <dt>
    *     bool<var>is_virtual_service</var>
@@ -311,7 +364,7 @@ class ScheduleListModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $dl_end;
+  public $dl_end = '';
 
   /**
    * The start date of the range from which the list of scheduled sessions should be retrieved.
@@ -322,7 +375,7 @@ class ScheduleListModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $dl_start;
+  public $dl_start = '';
 
   /**
    * The date of the sessions in Coordinated Universal Time (UTC) and MySQL format.

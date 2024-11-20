@@ -23,8 +23,10 @@ class BusinessDesignModel extends WlModelAbstract
    *   <dd>Logo style ID. For more details, see {@link RsBusinessDesignLogoStyleSid}.</dd>
    *   <dt>bool <var>is_attend_self</var></dt>
    *   <dd>If <tt>true</tt> clients can check-in using the Client Web App and Achieve Web App.</dd>
+   *   <dt>bool <var>is_appointment_capacity</var></dt>
+   *   <dd>If <tt>true</tt> the capacity and number of clients signed up to the appointment will be shown.</dd>
    *   <dt>bool <var>is_class_capacity</var></dt>
-   *   <dd>If <tt>true</tt> the capacity and number of clients signed up will be shown.</dd>
+   *   <dd>If <tt>true</tt> the capacity and number of clients signed up to the class will be shown.</dd>
    *   <dt>bool <var>is_class_quick</var></dt>
    *   <dd>If <tt>true</tt>, the quick class filter will be shown.</dd>
    *   <dt>bool <var>is_show_name</var></dt>

@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Locale;
 /**
  * A list of locales.
  *
- * Last used ID: 14
+ * Last used ID: 16
  */
 abstract class LocaleSid
 {
@@ -40,6 +40,11 @@ abstract class LocaleSid
   const KUWAIT = 14;
 
   /**
+   * Republic of Mauritius.
+   */
+  const MAURITIUS = 16;
+
+  /**
    * A special locale that can be used for testing or a business situated in an unknown region.
    */
   const NEVERLAND = 9;
@@ -53,6 +58,11 @@ abstract class LocaleSid
    * Philippines.
    */
   const PHILIPPINES = 12;
+
+  /**
+   * Saudi Arabia.
+   */
+  const SAUDI_ARABIA = 15;
 
   /**
    * South Africa.

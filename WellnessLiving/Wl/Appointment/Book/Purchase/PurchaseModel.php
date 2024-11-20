@@ -72,7 +72,7 @@ class PurchaseModel extends WlModelAbstract
    *       <dt>int <var>i_visit_past</var></dt>
    *       <dd>
    *         The count of attended sessions before the last renewal.
-   *         This will be `0` if no sessions before the last renewal or if the Purchase Option doesn't auto-renew.
+   *         This will be '0' if no sessions before the last renewal or if the Purchase Option doesn't auto-renew.
    *       </dd>
    *       <dt>string <var>text_restriction</var></dt>
    *       <dd>The description of restriction period. For example, "this week" or "for a four-day period".</dd>
@@ -82,6 +82,8 @@ class PurchaseModel extends WlModelAbstract
    *   <dd>The count of visits that the Purchase Option allows the client to make.</dd>
    *   <dt>int|null <var>i_limit_duration</var></dt>
    *   <dd>The maximum number of minutes that current Purchase Option can be used for.</dd>
+   *   <dt>int <var>i_promotion_priority</var></dt>
+   *   <dd>Priority of this promotion.</dd>
    *   <dt>int <var>id_program</var></dt>
    *   <dd>The program ID for promotions. One of the {@link WlProgramSid} constants.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>

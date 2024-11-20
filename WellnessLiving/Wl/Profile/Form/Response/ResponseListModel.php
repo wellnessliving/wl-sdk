@@ -13,6 +13,12 @@ class ResponseListModel extends WlModelAbstract
 {
   /**
    * The list of uncompleted quiz responses. Each element has the next structure: <dl>
+   *  <dt>string[] <var>a_visit</var></dt>
+   *  <dd>
+   *    List of visit keys associated with uncompleted response.
+   *    Key is visit key.
+   *    Value is date of visit.
+   *  </dd>
    *  <dt>string <var>dtl_date</var></dt>
    *  <dd>The date of the request to fill out a quiz form.</dd>
    *  <dt>int <var>id_source</var></dt>
@@ -43,6 +49,12 @@ class ResponseListModel extends WlModelAbstract
 
   /**
    * The list of completed quiz responses. Each element has the next structure: <dl>
+   *  <dt>string[] <var>a_visit</var></dt>
+   *  <dd>
+   *    List of visit keys associated with uncompleted response.
+   *    Key is visit key.
+   *    Value is date of visit.
+   *  </dd>
    *  <dt>string <var>dtl_date</var></dt>
    *  <dd>The date of the request to fill out a quiz form.</dd>
    *  <dt>int <var>id_source</var></dt>

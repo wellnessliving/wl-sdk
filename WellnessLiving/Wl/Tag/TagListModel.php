@@ -25,6 +25,14 @@ class TagListModel extends WlModelAbstract
   public $a_list;
 
   /**
+   * Whether a business did set up a penalty fee for failed automatic payments.
+   *
+   * @get result
+   * @var bool
+   */
+  public $has_fee = false;
+
+  /**
    * Whether a business did set up surcharges.
    *
    * @get result

@@ -9,6 +9,16 @@ namespace WellnessLiving\Core\Drive\ImageUpload;
 class ImageUploadModel extends \WellnessLiving\Custom\Core\Drive\ImageUpload\ImageUploadModel
 {
   /**
+   * Allows to give custom parameters which can be required for different types of images.
+   *
+   * @get get
+   * @post get
+   * @put get
+   * @var array
+   */
+  public $a_config = [];
+
+  /**
    * Image information for every ID.
    *
    * @post result

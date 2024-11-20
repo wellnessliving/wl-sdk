@@ -75,7 +75,7 @@ class ContractModel extends WlModelAbstract
 
   /**
    * The key of the purchase item in the database.
-   * The item key. Depends of {@link ContractModel::$id_purchase_item} property.
+   * The item key. Depends on {@link ContractModel::$id_purchase_item} property.
    *
    * @get get
    * @var string

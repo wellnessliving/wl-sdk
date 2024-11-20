@@ -3,7 +3,6 @@
 namespace WellnessLiving\Wl\Pay\Transaction\Report;
 
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Report\Generator\ReportGeneratorStatusSid;
 
 /**
  * Can retrieve information from the All Transactions Report.
@@ -90,8 +89,6 @@ class TransactionAllPaymentModel extends WlModelAbstract
 
   /**
    * The report status.
-   *
-   * One of {@link ReportGeneratorStatusSid} constants.
    *
    * @get result
    * @var int

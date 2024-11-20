@@ -50,6 +50,14 @@ class SendMailModel extends WlModelAbstract
   public $s_campaign = '';
 
   /**
+   * The message uncompressed content.
+   *
+   * @post post
+   * @var string
+   */
+  public $s_html = '';
+
+  /**
    * The message recipient's address.
    *
    * @post post

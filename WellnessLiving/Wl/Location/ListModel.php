@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Location;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlProjectSid;
 
 /**
  * Returns information for all locations belonging to a business.
@@ -21,8 +22,21 @@ class ListModel extends WlModelAbstract
 
   /**
    * Information about the business's location(s). If you've specified multiple businesses for this endpoint, this will
-   * return location information for multiple businesses. Keys refer to location keys. Values refer to subarrays with the next keys:
+   * return location information for multiple businesses. Keys refer to location keys. Values refer to nested arrays with the next keys:
    * <dl>
+   *   <dt>
+   *     int <var>a_directories</var>
+   *   </dt>
+   *   <dd>
+   *     List of directories from {@link WlProjectSid}, where location is published.
+   *   </dd>
+   *   <dt>
+   *     array <var>a_timezone</var>
+   *   </dt>
+   *   <dd>
+   *     Information about location timezone. Includes `k_timezone` for primary key, `text_abbr` for user-friendly short
+   *     abbreviation and `text_name` for the name of the timezone.
+   *   </dd>
    *   <dt>
    *     float <var>f_latitude</var>
    *   </dt>
@@ -81,7 +95,13 @@ class ListModel extends WlModelAbstract
    *     string [<var>url_logo</var>]
    *   </dt>
    *   <dd>
-   *     The location logo's URL. This will only be set if the location has a logo.
+   *     The location logo's URL. This will only be set if the location has a logo and contains small thumbnail of the image.
+   *   </dd>
+   *   <dt>
+   *     string [<var>url_logo_source</var>]
+   *   </dt>
+   *   <dd>
+   *     The location logo's URL. This will only be set if the location has a logo and contains full uploaded image.
    *   </dd>
    * </dl>
    *

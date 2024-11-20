@@ -55,6 +55,17 @@ class RelationModel extends WlModelAbstract
   public $id_relation = 0;
 
   /**
+   * Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`.
+   *
+   * Use this field with caution.
+   * The final booking will not use this flag and the check will still be performed.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_credit_card_check = true;
+
+  /**
    * `true` - the new relative uses the email from <var>uid_from</var>.
    *
    * `false` - the new relative has their own email.

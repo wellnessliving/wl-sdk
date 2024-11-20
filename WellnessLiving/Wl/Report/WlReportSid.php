@@ -210,6 +210,7 @@ abstract class WlReportSid
    * List of franchisee business hours.
    *
    * @title Franchise Business Hours
+   * @deprecated Report is refactored into new core.
    */
   const BUSINESS_FRANCHISE_HOURS = 247;
 
@@ -397,6 +398,7 @@ abstract class WlReportSid
    * Franchise leads from lead capture forms. Chart representation.
    *
    * @title Leads by Location
+   * @deprecated Report is refactored into new core.
    */
   const LEAD_FRANCHISE_REPORT_CHART = 173;
 
@@ -404,6 +406,7 @@ abstract class WlReportSid
    * Franchise leads from lead capture forms. Table representation.
    *
    * @title Leads by Location
+   * @deprecated Report is refactored into new core.
    */
   const LEAD_FRANCHISE_REPORT_LIST = 167;
 
@@ -472,6 +475,7 @@ abstract class WlReportSid
    * Detail franchise client report table.
    *
    * @title Corporate Client Details
+   * @deprecated Report is refactored into new core.
    */
   const LOGIN_FRANCHISE_DETAIL_LIST = 156;
 
@@ -479,6 +483,7 @@ abstract class WlReportSid
    * Franchise client status report table.
    *
    * @title Corporate Status Report
+   * @deprecated Report is refactored into new core.
    */
   const LOGIN_FRANCHISE_STATUS_LIST = 162;
 
@@ -797,30 +802,10 @@ abstract class WlReportSid
   const PURCHASE_CLIENT_SUMMARY = 115;
 
   /**
-   * Detail franchise sales report table.
-   *
-   * @title Sales Details by Location
-   */
-  const PURCHASE_FRANCHISE_LOCATION_DETAIL_LIST = 151;
-
-  /**
-   * Summary franchise sales report table.
-   *
-   * @title Sales Summary by Location
-   */
-  const PURCHASE_FRANCHISE_LOCATION_SUMMARY_CHART = 155;
-
-  /**
-   * Summary franchise sales report table.
-   *
-   * @title Sales Summary by Location
-   */
-  const PURCHASE_FRANCHISE_LOCATION_SUMMARY_LIST = 154;
-
-  /**
    * Summary franchise memberships report (chart view).
    *
    * @title Memberships by Location
+   * @deprecated Report is refactored into new core.
    */
   const PURCHASE_FRANCHISE_MEMBERSHIP_CHART = 175;
 
@@ -828,6 +813,7 @@ abstract class WlReportSid
    * Summary franchise memberships report.
    *
    * @title Enterprise Memberships by Location Details
+   * @deprecated Report is refactored into new core.
    * @link https://wellnessliving.atlassian.net/browse/WL-46987
    */
   const PURCHASE_FRANCHISE_MEMBERSHIP_DETAIL = 257;
@@ -836,16 +822,9 @@ abstract class WlReportSid
    * Summary franchise memberships report.
    *
    * @title Memberships by Location
+   * @deprecated Report is refactored into new core.
    */
   const PURCHASE_FRANCHISE_MEMBERSHIP_LIST = 174;
-
-  /**
-   * YOY sales comparison report.
-   *
-   * @title YOY Sales Comparison
-   * @link https://wellnessliving.atlassian.net/browse/WL-7397
-   */
-  const PURCHASE_FRANCHISE_SALE_COMPARE_LIST = 161;
 
   /**
    * Purchases that have been bought divided by payment methods.
@@ -883,6 +862,8 @@ abstract class WlReportSid
 
   /**
    * Purchase item count revenue.
+   *
+   * @deprecated Report is refactored into new core.
    */
   const PURCHASE_ITEM_COUNT_REVENUE = 51;
 
@@ -898,6 +879,8 @@ abstract class WlReportSid
 
   /**
    * Sales With Revenue Categories report.
+   *
+   * @deprecated Report is refactored into new core.
    */
   const PURCHASE_ITEM_LIST_REVENUE = 49;
 
@@ -905,20 +888,6 @@ abstract class WlReportSid
    * List of sale for the one user.
    */
   const PURCHASE_ITEM_LIST_USER = 118;
-
-  /**
-   * Purchase summary by location chart.
-   *
-   * @title Sales Summary by Location
-   */
-  const PURCHASE_LOCATION_SUMMARY_CHART = 172;
-
-  /**
-   * Summary franchise sales report table.
-   *
-   * @title Sales Summary by Location
-   */
-  const PURCHASE_LOCATION_SUMMARY_LIST = 153;
 
   /**
    * List of memberships in chart format.
@@ -967,11 +936,15 @@ abstract class WlReportSid
 
   /**
    * Purchase tag count.
+   *
+   * @deprecated Report is refactored into new core.
    */
   const PURCHASE_TAG_COUNT = 30;
 
   /**
    * Purchase tag list.
+   *
+   * @deprecated Report is refactored into new core.
    */
   const PURCHASE_TAG_LIST = 31;
 
@@ -1306,6 +1279,7 @@ abstract class WlReportSid
    * Detail franchise cross-location visits table.
    *
    * @title Cross-Location Visits Details
+   * @deprecated Report is refactored into new core.
    */
   const VISIT_FRANCHISE_LOCATION_CROSS_DETAIL_LIST = 157;
 
@@ -1313,6 +1287,7 @@ abstract class WlReportSid
    * Summary franchise cross-location visits chart.
    *
    * @title Cross-Location Visits Summary
+   * @deprecated Report is refactored into new core.
    */
   const VISIT_FRANCHISE_LOCATION_CROSS_SUMMARY_CHART = 164;
 
@@ -1327,6 +1302,7 @@ abstract class WlReportSid
    * Summary franchise cross-location visits table.
    *
    * @title Cross-Location Visits Summary
+   * @deprecated Report is refactored into new core.
    */
   const VISIT_FRANCHISE_LOCATION_CROSS_SUMMARY_LIST = 158;
 
@@ -1344,6 +1320,7 @@ abstract class WlReportSid
    * Detail cross-location visits table. For regular businesses.
    *
    * @title Cross-Location Visits Details
+   * @deprecated Report is refactored into new core.
    */
   const VISIT_LOCATION_CROSS_DETAIL_LIST = 168;
 
@@ -1351,6 +1328,7 @@ abstract class WlReportSid
    * Summary cross-location visits chart. For regular businesses.
    *
    * @title Cross-Location Visits Summary
+   * @deprecated Report is refactored into new core.
    */
   const VISIT_LOCATION_CROSS_SUMMARY_CHART = 170;
 
@@ -1358,6 +1336,7 @@ abstract class WlReportSid
    * Summary cross-location visits table. For regular businesses.
    *
    * @title Cross-Location Visits Summary
+   * @deprecated Report is refactored into new core.
    */
   const VISIT_LOCATION_CROSS_SUMMARY_LIST = 169;
 
@@ -1379,11 +1358,17 @@ abstract class WlReportSid
 
   /**
    * Detailed revenue by service.
+   *
+   * @title Revenue by Service
+   * @deprecated Report is refactored into new core.
    */
   const VISIT_REVENUE_DETAIL = 58;
 
   /**
    * Service revenue analysis.
+   *
+   * @title Service Revenue Summary
+   * @deprecated Report is refactored into new core.
    */
   const VISIT_REVENUE_LIST = 57;
 

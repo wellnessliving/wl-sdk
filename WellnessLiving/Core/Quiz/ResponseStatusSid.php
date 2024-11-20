@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Quiz;
 /**
  * List of response statuses.
  *
- * Last used ID: 5
+ * Last used ID: 6
  */
 class ResponseStatusSid
 {
