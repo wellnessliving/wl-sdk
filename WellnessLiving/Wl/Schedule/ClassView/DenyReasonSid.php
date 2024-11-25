@@ -41,6 +41,8 @@ class DenyReasonSid
 
   /**
    * Client is already booked for this session.
+   *
+   * @titile Client is already booked for this session
    */
   const BOOKED_ALREADY = 6;
 
