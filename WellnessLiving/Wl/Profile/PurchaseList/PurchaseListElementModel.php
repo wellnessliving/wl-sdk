@@ -141,7 +141,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $can_renew;
 
   /**
-   * The expiration date of the promotion. This is used only if the purchased item is a promotion.
+   * The expiration date of the promotion. Only available if the item is a promotion.
    *
    * @get result
    * @var string
@@ -166,12 +166,20 @@ class PurchaseListElementModel extends WlModelAbstract
   public $dl_send;
 
   /**
-   * The start date of the promotion. This is used only if the purchased item is a promotion.
+   * The start date of the promotion. Only available if the item is a promotion.
    *
    * @get result
    * @var string
    */
   public $dl_start;
+
+  /**
+   * The local date of cancellation in MySQL format. Only available if the item is a membership.
+   *
+   * @get result
+   * @var string
+   */
+  public $dt_cancel;
 
   /**
    * The end date of the promotion hold. This is used only for promotions on hold.
@@ -183,7 +191,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $dt_hold_end;
 
   /**
-   * The start date of the promotion hold. This is used only for promotions on hold.
+   * The start date of the promotion hold. Only available if the item is a promotion and on hold.
    *
    * @get result
    * @var string
@@ -199,7 +207,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $dt_purchase;
 
   /**
-   * The date in MySQL format when gift card was redeemed. This won't be empty only for gift cards.
+   * The date in MySQL format when gift card was redeemed. Only available if the item is a gift card.
    *
    * @get result
    * @var string

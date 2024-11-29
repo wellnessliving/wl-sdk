@@ -6,6 +6,8 @@ namespace WellnessLiving\Wl\Pay\Processor\Nuvei\Code;
  * CS Response code class.
  *
  * Last used ID: 20
+ *
+ * @link namespace.Wl/Pay/Processor/Nuvei/doc/OMNI_Channel_ISO20022_V2.38.pdf 7.3.11.
  */
 class CSResponseSid
 {

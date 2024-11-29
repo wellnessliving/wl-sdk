@@ -23,7 +23,7 @@ namespace WellnessLiving\Wl;
  *   </li>
  * </ol>
  *
- * Last used ID: 5.
+ * Last used ID: 7.
  */
 abstract class WlProfileNoteSid
 {
@@ -46,6 +46,16 @@ abstract class WlProfileNoteSid
    * A list of accounts with negative balance.
    */
   const PAY_ACCOUNT = 1;
+
+  /**
+   * A list of accounts with upcoming birthdays.
+   */
+  const PROFILE_PAGE_OVERVIEW_ALERT_ALERT_BIRTHDAY = 6;
+
+  /**
+   * A list of accounts with expired or soon expiring credit cards.
+   */
+  const PROFILE_PAGE_OVERVIEW_ALERT_CREDITCARD = 7;
 
   /**
    * A list of due membership payments.
