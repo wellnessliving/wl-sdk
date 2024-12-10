@@ -15,6 +15,8 @@ class NotificationSendModel extends WlModelAbstract
   /**
    * Custom array with information which can be used to generate notification.
    *
+   * Use {@link NotificationInfoModel} for more information about available fields.
+   *
    * @post post
    * @var array
    */
