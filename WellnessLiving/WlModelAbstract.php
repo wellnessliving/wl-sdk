@@ -54,6 +54,22 @@ class WlModelAbstract
   private $_o_request=null;
 
   /**
+   * The name of microservice.
+   *
+   * If specified a query parameter must be added.
+   * This parameter used for AWS Load Balancer rules
+   * to choose target microservice.
+   *
+   * Example:
+   * - `.ms=sal`
+   *
+   * `null` if not initialized yet.
+   *
+   * @var string|null
+   */
+  private $_s_microservice = null;
+
+  /**
    * Constructs a new model object.
    *
    * @param WlConfigAbstract $o_config WellnessLiving SDK configuration object.
@@ -114,6 +130,16 @@ class WlModelAbstract
   protected function closeCurl($r_curl)
   {
     curl_close($r_curl);
+  }
+
+  /**
+   * Set microservice name.
+   *
+   * @param string $s_microservice Microservice name.
+   */
+  public function microserviceSet($s_microservice)
+  {
+    $this->_s_microservice = $s_microservice;
   }
 
   /**
@@ -405,6 +431,10 @@ class WlModelAbstract
         continue;
 
       $a_get[$s_field] = $this->normalizeValue($s_field,$x_value);
+    }
+
+    if ($this->_s_microservice && empty($a_get['-ms'])) {
+      $a_get['-ms'] = $this->_s_microservice;
     }
 
     return $a_get;

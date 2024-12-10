@@ -4,10 +4,17 @@ namespace WellnessLiving\Core\a;
 
 /**
  * A class for managing time intervals.
- * Last ID: 8.
+ * Last ID: 9.
  */
 abstract class ADurationSid
 {
+  /**
+   * Two weeks (14 days).
+   *
+   * @title Biweekly
+   */
+  const BI_WEEKLY = 9;
+
   /**
    * Days.
    *

@@ -10,16 +10,40 @@ use WellnessLiving\WlModelAbstract;
 class BranchModel extends WlModelAbstract
 {
   /**
+   * Addition information about branch and related entities.
+   * Has an arbitrary structure.
+   *
+   * `string` if it needs to set an empty value.
+   * `null` will not change.
+   *
+   * @get result
+   * @post post
+   * @put post
+   * @var array|string|null
+   */
+  public $a_branch_data = null;
+
+  /**
    * Information about entities necessary for the functioning of the stand.
    * Has an arbitrary structure.
    *
-   * `null` if not initialized and will be ignored.
+   * `string` if it needs to set an empty value.
+   * `null` will not change.
    *
    * @get result
-   * @put get
-   * @var array|null
+   * @post post
+   * @put post
+   * @var array|string|null
    */
   public $a_stand_data = null;
+
+  /**
+   * Branch status, one of {@link BranchStatusSid}.
+   *
+   * @get result
+   * @var int|null
+   */
+  public $id_branch_status = null;
 
   /**
    * Mode of the <tt>BranchDelete</tt> build.
@@ -39,14 +63,6 @@ class BranchModel extends WlModelAbstract
    * @var int|null
    */
   public $id_stand_status = null;
-
-  /**
-   * Branch status, one of {@link BranchStatusSid}.
-   *
-   * @get result
-   * @var int|null
-   */
-  public $id_status = null;
 
   /**
    * Deployment instance key which creates/deletes a branch for the specified task.

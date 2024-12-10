@@ -138,6 +138,10 @@ class EventListModel extends WlModelAbstract
    *   <dd>Number of all sessions in the past.</dd>
    *   <dt>bool <var>is_age_restrict</var></dt>
    *   <dd>`true` if the event is age restricted, `false` if the event is not.</dd>
+   *   <dt>bool <var>is_age_restrict_only</var></dt>
+   *   <dd>
+   *     `true` if this event booking is restricted and restricted because of client's age only. `false` otherwise.
+   *   </dd>
    *   <dt>bool <var>is_block</var></dt>
    *   <dd>`true` if the event is a block event, `false` if the event is not.</dd>
    *   <dt>bool <var>is_bookable</var></dt>

@@ -14,12 +14,9 @@ class LoginTypeModel extends WlModelAbstract
 {
   /**
    * A list of login types, keys, and information. Each element is an array with the following information:
-   *
    * <dl>
    *   <dt>bool <var>id_client_type</var></dt>
-   *   <dd>
-   *     System ID. One of {@link SystemSid} constants.
-   *   </dd>
+   *   <dd>Client Type ID.</dd>
    *   <dt>bool <var>is_member</var></dt>
    *   <dd>
    *     Deprecated Use <var>id_client_type</var> instead.
