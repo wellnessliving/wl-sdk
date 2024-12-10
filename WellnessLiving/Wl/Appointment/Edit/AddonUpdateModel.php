@@ -17,6 +17,7 @@ class AddonUpdateModel extends WlModelAbstract
    * Old format - an array where each value is key of the add-on.
    * New format - each element is an array: <dl>
    *   <dt>int <var>i_product</var></dt><dd> The add-on count. Max value is 255.</dd>
+   *   <dt>int [<var>i_use</var>]</dt><dd> The add-on use count. Max value is 255. Not set means same value as add-on count.</dd>
    *   <dt>string <var>k_shop_product_option</var></dt><dd>The add-on key.</dd>
    * </dl>
    *
