@@ -47,15 +47,15 @@ class AddonUpdateModel extends WlModelAbstract
    *     <dt>string <var>url</var></dt><dd>The URL for the add-on picture. This will be an empty string if the add-on doesn't have a picture.</dd>
    *   </dl></dd>
    *   <dt>array[] <var>a_addon_buy</var></dt>
-   *
+   *   <dd>Contains appointment add-ons that have zero quantity, zero usage quantity and zero banked quantity.</dd>
    *   <dt>array[] <var>a_addon_own</var></dt>
-   *
+   *   <dd>Contains appointment add-ons that have zero quantity, zero usage quantity and non-zero banked quantity.</dd>
    *   <dt>array[] <var>a_addon_select</var></dt>
-   *
+   *   <dd>Contains appointment add-ons that have non-zero quantity or non-zero usage quantity.</dd>
    *   <dt>bool <var>is_addon_banking</var></dt>
-   *   <dd>Whether at least one of appointment add-ons is bankable.</dd></dl>
+   *   <dd>Whether at least one of appointment add-ons is bankable.</dd>
    *   <dt>bool <var>is_all_addon_selected</var></dt>
-   *   <dd>Whether all appointment add-ons have non-zero quantity or non-zero usage quantity.</dd></dl>
+   *   <dd>Whether all appointment add-ons have non-zero quantity or non-zero usage quantity.</dd>
    *   <dt>bool <var>is_search</var></dt>
    *   <dd>Determines whether the add-on search field needs to be shown.</dd></dl>
    *
@@ -65,12 +65,12 @@ class AddonUpdateModel extends WlModelAbstract
   public $a_addon_data;
 
   /**
-   * List of user key to get add-ons for. Not empty only when getting add-ons for new appointment
-   * ({@link AddonUpdateModel::$k_appointment} is null). User key -1 means walk-in, user key 0 means new user
+   * List of user keys to get add-ons for. Not empty only when getting add-ons for new appointment
+   * ({@link AddonUpdateModel::$k_appointment} is null). User key '-1' means walk-in, user key '0' means new user
    * (user will be created together with appointment).
    *
    * @get get
-   * @var array
+   * @var string[]
    */
   public $a_uid = [];
 

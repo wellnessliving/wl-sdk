@@ -9,13 +9,6 @@ namespace WellnessLiving\Core\a;
 abstract class ADurationSid
 {
   /**
-   * Two weeks (14 days).
-   *
-   * @title Biweekly
-   */
-  const BI_WEEKLY = 9;
-
-  /**
    * Days.
    *
    * @title Day
@@ -56,6 +49,13 @@ abstract class ADurationSid
    * @title Week
    */
   const WEEK = 7;
+
+  /**
+   * Two weeks (14 days).
+   *
+   * @title 2 Weeks
+   */
+  const WEEK2 = 9;
 
   /**
    * Foursome of weeks (28 days).
