@@ -78,18 +78,18 @@ class ServiceListModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    *   <dt>
-   *     string[] <var>a_login_type_restriction</var>
+   *     array <var>a_login_type_restriction</var>
    *   </dt>
    *   <dd>
-   *     List of login type titles for current service.
-   *     Clients that have one of these types can book service.
+   *     Keys are login type keys, primary keys in {@link \Wl\Login\Type\Sql}, values - List of login types' titles for
+   *     current service. Clients that have one of these types can book service.
    *   </dd>
    *   <dt>
    *     string[] <var>a_member_group_restriction</var>
    *   </dt>
    *   <dd>
-   *     List of member groups titles for current service.
-   *     Clients that belongs to these groups can book service.
+   *     Keys are member group keys, primary keys in {@link \Wl\Member\Group\Sql}, values - list of member groups' titles
+   *     for current service. Clients that belongs to these groups can book service.
    *   </dd>
    *   <dt>
    *     string <var>f_deposit</var>
@@ -187,6 +187,12 @@ class ServiceListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     `true` if clients can book classes and appointments on a recurring basis. Otherwise, this `false`.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_book_repeat_no_end_date_appointment</var>
+   *   </dt>
+   *   <dd>
+   *    `true` if appointment bookings default to weekly recurring with no end date, `false` otherwise.
    *   </dd>
    *   <dt>
    *     bool <var>is_deposit_percent</var>

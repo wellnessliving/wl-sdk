@@ -122,7 +122,7 @@ class LeadModel extends WlModelAbstract
    * @post get
    * @var bool|null
    */
-  public $can_use_free_purchase;
+  public $can_use_free_purchase = null;
 
   /**
    * The key of business to which the new user must be captured.

@@ -111,3 +111,4 @@ class CatalogProductModel extends WlModelAbstract
   public $s_cache_key;
 }
 
+?>

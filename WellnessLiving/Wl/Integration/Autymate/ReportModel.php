@@ -3,7 +3,6 @@
 namespace WellnessLiving\Wl\Integration\Autymate;
 
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Report\Generator\ReportGeneratorStatusSid;
 use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
@@ -103,8 +102,6 @@ class ReportModel extends WlModelAbstract
 
   /**
    * The status of the report.
-   *
-   * One of the {@link ReportGeneratorStatusSid} constants.
    *
    * @get result
    * @var int

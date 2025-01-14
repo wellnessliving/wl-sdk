@@ -23,6 +23,8 @@ class CartModel extends WlModelAbstract
   /**
    * The list of items in the cart.
    * <dl>
+   *   <dt>string <var>dl_client_prorate</var></dt>
+   *   <dd>The client prorate date. This will be `null` in cases where the client prorate date hasn't passed.</dd>
    *   <dt>int <var>i_quantity</var></dt>
    *   <dd>The quantity of sale items.</dd>
    *   <dt>int <var>id_sale</var></dt>
@@ -35,7 +37,7 @@ class CartModel extends WlModelAbstract
    *   <dd>The shop product option. If empty string, the sale item has no options.</dd>
    * </dl>
    *
-   * @get get
+   * @get get,result
    * @var array[]
    */
   public $a_item = [];
@@ -43,10 +45,14 @@ class CartModel extends WlModelAbstract
   /**
    * List of prizes that can be redeemed and applied to items in the cart.
    * <dl>
+   *   <dt>int <var>i_score</var></dt>
+   *   <dd>Amount of points needed to redeem the prize.</dd>
    *   <dt>string <var>k_reward_prize</var></dt>
    *
+   *   <dt>string <var>text_discount</var></dt>
+   *   <dd>Reward prize discount, e.g. '$10.00 off', '10% off'.</dd>
    *   <dt>string <var>text_title</var></dt>
-   *   <dd>Reward prize title.</dd>
+   *   <dd>Reward prize title, e.g. 'on any item', 'on Water bottle', 'on any Appointment Pass or Membership Purchase Option'.</dd>
    * </dl>
    *
    * @get result
@@ -80,11 +86,13 @@ class CartModel extends WlModelAbstract
    *   <dt>string <var>k_login_prize</var></dt>
    *
    *   <dt>string <var>text_discount</var></dt>
-   *   <dd>Login prize discount title, for example 'Apply 10% off'.</dd>
+   *   <dd>Reward prize discount, e.g. '$10.00 off', '10% off'.</dd>
    *   <dt>string <var>text_discount_applied</var></dt>
-   *   <dd>Applied login prize discount title, for example '10% discount'.</dd>
+   *   <dd>Applied login prize discount title, e.g. '10% discount'.</dd>
+   *   <dt>string <var>text_discount_purpose</var></dt>
+   *   <dd>Purpose login prize discount title, e.g. 'Apply 10% off'.</dd>
    *   <dt>string <var>text_title</var></dt>
-   *   <dd>Login prize title.</dd>
+   *   <dd>Reward prize title, e.g. 'on any item', 'on Water bottle', 'on any Appointment Pass or Membership Purchase Option'.</dd>
    * </dl>
    *
    * @get result
@@ -110,6 +118,14 @@ class CartModel extends WlModelAbstract
    * @var int|null
    */
   public $i_score;
+
+  /**
+   * Whether selected login prize should be auto applied to first applicable item.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_auto_apply_prize = true;
 
   /**
    * The location key.

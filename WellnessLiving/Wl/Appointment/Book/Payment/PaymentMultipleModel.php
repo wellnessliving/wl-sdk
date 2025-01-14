@@ -254,6 +254,12 @@ class PaymentMultipleModel extends WlModelAbstract
    *   <dt>
    *     boolean [<var>is_hide</var>]
    *   </dt>
+   *   <dt>
+   *     bool [<var>is_save</var>=true]
+   *   </dt>
+   *   <dd>
+   *     Whether payment method should be saved to user's account.
+   *   </dd>
    *   <dd>
    *     Determines whether this payment method is hidden.
    *   </dd>
@@ -475,12 +481,20 @@ class PaymentMultipleModel extends WlModelAbstract
   public $m_discount;
 
   /**
-   * The surcharge amount.
+   * Surcharge amount calculated for credit cards (Virtual Terminal and Card Swiper).
    *
    * @get result
    * @var string
    */
-  public $m_surcharge;
+  public $m_surcharge = '0.00';
+
+  /**
+   * Surcharge amount calculated for money transfers from account: ACH, Direct Entry.
+   *
+   * @get result
+   * @var string
+   */
+  public $m_surcharge_ach = '0.00';
 
   /**
    * The amount of tax to pay.

@@ -16,7 +16,7 @@ class ApplicationResourceModel extends WlModelAbstract
   /**
    * The application ID placeholder.
    */
-  const ID = '[ID]';
+  public const ID = '[ID]';
 
   /**
    * Updates the `www/js/communication.js` file.
@@ -52,6 +52,10 @@ class ApplicationResourceModel extends WlModelAbstract
       [
         's_key' => 's_google_reverse',
         's_placeholder' => '[GOOGLE_REVERSED_CLIENT_ID]'
+      ],
+      [
+        's_key' => 's_splash_color_android',
+        's_placeholder' => '[SPLASH_COLOR_ANDROID]'
       ],
       [
         's_key' => 'text_domain',
