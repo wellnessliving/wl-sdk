@@ -9,66 +9,66 @@ namespace WellnessLiving\Core\a;
 abstract class ADurationSid
 {
   /**
-   * Days.
-   *
-   * @title Day
-   */
+     * Days.
+     *
+     * @title Day
+     */
   const DAY = 4;
 
   /**
-   * Hours.
-   *
-   * @title Hour
-   */
+     * Hours.
+     *
+     * @title Hour
+     */
   const HOUR = 3;
 
   /**
-   * Minutes.
-   *
-   * @title Minute
-   */
+     * Minutes.
+     *
+     * @title Minute
+     */
   const MINUTE = 2;
 
   /**
-   * Months.
-   *
-   * @title Month
-   */
+     * Months.
+     *
+     * @title Month
+     */
   const MONTH = 5;
 
   /**
-   * Seconds.
-   *
-   * @title Second
-   */
+     * Seconds.
+     *
+     * @title Second
+     */
   const SECOND = 1;
 
   /**
-   * Weeks (7 days).
-   *
-   * @title Week
-   */
+     * Weeks (7 days).
+     *
+     * @title Week
+     */
   const WEEK = 7;
 
   /**
-   * Two weeks (14 days).
-   *
-   * @title 2 Weeks
-   */
+     * Two weeks (14 days).
+     *
+     * @title 2 Weeks
+     */
   const WEEK2 = 9;
 
   /**
-   * Foursome of weeks (28 days).
-   *
-   * @title 4 Weeks
-   */
+     * Foursome of weeks (28 days).
+     *
+     * @title 4 Weeks
+     */
   const WEEK4 = 8;
 
   /**
-   * Years.
-   *
-   * @title Year
-   */
+     * Years.
+     *
+     * @title Year
+     */
   const YEAR = 6;
 }
 

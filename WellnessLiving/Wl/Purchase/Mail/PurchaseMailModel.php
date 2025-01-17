@@ -10,19 +10,20 @@ use WellnessLiving\WlModelAbstract;
 class PurchaseMailModel extends WlModelAbstract
 {
   /**
-   * Determines whether mail sending should be forced.
-   *
-   * @post post
-   * @var bool
-   */
+     * Determines whether mail sending should be forced.
+     *
+     * @post post
+     * @var bool
+     */
   public $is_send_force = false;
 
   /**
-   * The key of the purchase.
-   *
-   * @post post
-   * @var string
-   */
+     * The key of the purchase.
+     *
+     * @post post
+     * @var string
+     *
+     */
   public $k_purchase = '';
 }
 

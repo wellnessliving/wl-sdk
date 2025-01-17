@@ -8,13 +8,13 @@ namespace WellnessLiving\Core\Sid;
 class SortOrderSid
 {
   /**
-   * Ascending order.
-   */
+     * Ascending order.
+     */
   const ASC = 2;
 
   /**
-   * Descending order.
-   */
+     * Descending order.
+     */
   const DESC = 1;
 }
 

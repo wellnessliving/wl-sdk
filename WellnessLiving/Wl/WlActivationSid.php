@@ -12,38 +12,38 @@ namespace WellnessLiving\Wl;
 abstract class WlActivationSid
 {
   /**
-   * Number of a day of the month or of the week.
-   */
+     * Number of a day of the month or of the week.
+     */
   const DAY = 7;
 
   /**
-   * Custom date.
-   */
+     * Custom date.
+     */
   const FIXED = 3;
 
   /**
-   * The first day of month.
-   */
+     * The first day of month.
+     */
   const MONTH_FIRST = 4;
 
   /**
-   * The 15th day of the month.
-   */
+     * The 15th day of the month.
+     */
   const MONTH_HALF = 6;
 
   /**
-   * The last day of the month.
-   */
+     * The last day of the month.
+     */
   const MONTH_LAST = 5;
 
   /**
-   * Date of the sale.
-   */
+     * Date of the sale.
+     */
   const SALE = 1;
 
   /**
-   * Date of the first visit.
-   */
+     * Date of the first visit.
+     */
   const VISIT = 2;
 }
 

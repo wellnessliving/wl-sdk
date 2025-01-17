@@ -8,13 +8,13 @@ namespace WellnessLiving\Wl;
 abstract class WlCommissionTypeSid
 {
   /**
-   * Fixed type.
-   */
+     * Fixed type.
+     */
   const FLAT = 1;
 
   /**
-   * Percent type.
-   */
+     * Percent type.
+     */
   const PERCENT = 2;
 }
 

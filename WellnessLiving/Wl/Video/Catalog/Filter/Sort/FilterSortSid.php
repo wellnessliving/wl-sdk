@@ -10,31 +10,31 @@ namespace WellnessLiving\Wl\Video\Catalog\Filter\Sort;
 class FilterSortSid
 {
   /**
-   * Sort alphabetically.
-   *
-   * @title Alphabetical
-   */
+     * Sort alphabetically.
+     *
+     * @title Alphabetical
+     */
   const ALPHABET = 1;
 
   /**
-   * Sort by custom.
-   *
-   * @title Custom
-   */
+     * Sort by custom.
+     *
+     * @title Custom
+     */
   const CUSTOM = 4;
 
   /**
-   * Sort by most recently added.
-   *
-   * @title Most Recent
-   */
+     * Sort by most recently added.
+     *
+     * @title Most Recent
+     */
   const RECENT = 2;
 
   /**
-   * Sorted by number of views.
-   *
-   * @title Views
-   */
+     * Sorted by number of views.
+     *
+     * @title Views
+     */
   const VIEW = 3;
 }
 

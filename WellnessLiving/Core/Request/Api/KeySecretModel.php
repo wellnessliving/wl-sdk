@@ -14,44 +14,45 @@ use WellnessLiving\WlModelAbstract;
 class KeySecretModel extends WlModelAbstract
 {
   /**
-   * The CSRF code from the client side.
-   *
-   * @get get
-   * @var string
-   */
+     * The CSRF code from the client side.
+     *
+     * @get get
+     * @var string
+     */
   public $s_csrf;
 
   /**
-   * The secret key for the request signing.
-   *
-   * @get result
-   * @var string
-   */
+     * The secret key for the request signing.
+     *
+     * @get result
+     * @var string
+     */
   public $s_key_secret;
 
   /**
-   * The session key.
-   *
-   * @get get
-   * @var string
-   */
+     * The session key.
+     *
+     * @get get
+     * @var string
+     *
+     */
   public $s_key_session;
 
   /**
-   * Alias of {@link KeySecretModel::$url_origin}.
-   *
-   * @get get
-   * @var string
-   * @deprecated Use {@link KeySecretModel::$url_origin} instead.
-   */
+     * Alias of {@link KeySecretModel::$url_origin}.
+     *
+     * @get get
+     * @var string
+     * @deprecated Use {@link KeySecretModel::$url_origin} instead.
+     */
   public $url_domain;
 
   /**
-   * Origin for client requests.
-   *
-   * @get get
-   * @var string
-   */
+     * Origin for client requests.
+     *
+     * @get get
+     * @var string
+     */
   public $url_origin;
 }
 

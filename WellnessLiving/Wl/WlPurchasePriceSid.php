@@ -8,13 +8,13 @@ namespace WellnessLiving\Wl;
 abstract class WlPurchasePriceSid
 {
   /**
-   * Price of a promotion is specified per period.
-   */
+     * Price of a promotion is specified per period.
+     */
   const PERIOD = 1;
 
   /**
-   * Price of a promotion is specified per session.
-   */
+     * Price of a promotion is specified per session.
+     */
   const SESSION = 3;
 }
 

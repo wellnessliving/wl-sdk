@@ -8,13 +8,13 @@ namespace WellnessLiving\Wl\Schedule\Page;
 class WlVisitNoteSid
 {
   /**
-   * The usual quick accompanying note for the customer visit.
-   */
+     * The usual quick accompanying note for the customer visit.
+     */
   const QUICK = 2;
 
   /**
-   * Accompanying medical note for the customer visit.
-   */
+     * Accompanying medical note for the customer visit.
+     */
   const SOAP = 1;
 }
 

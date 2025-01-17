@@ -8,8 +8,9 @@ namespace WellnessLiving\Wl\Business;
 class BusinessPaymentCaptcha
 {
   /**
-   * CID of this class.
-   */
+     * CID of this class.
+     *
+       */
   const CID = 1064;
 }
 

@@ -10,75 +10,76 @@ use WellnessLiving\WlModelAbstract;
 class SendMailModel extends WlModelAbstract
 {
   /**
-   * The business key.
-   *
-   * @post get
-   * @var string
-   */
+     * The business key.
+     *
+     * @post get
+     * @var string
+     *
+     */
   public $k_business = '0';
 
   /**
-   * The business's mailing address.
-   *
-   * @post post
-   * @var string
-   */
+     * The business's mailing address.
+     *
+     * @post post
+     * @var string
+     */
   public $s_business_mail = '';
 
   /**
-   * The business name.
-   *
-   * @post post
-   * @var string
-   */
+     * The business name.
+     *
+     * @post post
+     * @var string
+     */
   public $s_business_name = '';
 
   /**
-   * The business's reply.
-   *
-   * @post post
-   * @var string
-   */
+     * The business's reply.
+     *
+     * @post post
+     * @var string
+     */
   public $s_business_reply = '';
 
   /**
-   * The campaign name.
-   *
-   * @post post
-   * @var string
-   */
+     * The campaign name.
+     *
+     * @post post
+     * @var string
+     */
   public $s_campaign = '';
 
   /**
-   * The message uncompressed content.
-   *
-   * @post post
-   * @var string
-   */
+     * The message uncompressed content.
+     *
+     * @post post
+     * @var string
+     */
   public $s_html = '';
 
   /**
-   * The message recipient's address.
-   *
-   * @post post
-   * @var string
-   */
+     * The message recipient's address.
+     *
+     * @post post
+     * @var string
+     */
   public $s_mail = '';
 
   /**
-   * The message's subject line.
-   *
-   * @post post
-   * @var string
-   */
+     * The message's subject line.
+     *
+     * @post post
+     * @var string
+     */
   public $s_subject = '';
 
   /**
-   * The message content.
-   *
-   * @post post
-   * @var string
-   */
+     * The message content.
+     *
+     * @post post
+     * @var string
+     */
   public $z_html = '';
 }
 

@@ -10,19 +10,19 @@ namespace WellnessLiving\Core\a;
 abstract class ASocialSid
 {
   /**
-   * @link https://www.facebook.com
-   */
+     * @link https://www.facebook.com
+     */
   const FACEBOOK = 1;
 
   /**
-   * @deprecated Not supported.
-   * @link https://plus.google.com
-   */
+     * @deprecated Not supported.
+     * @link https://plus.google.com
+     */
   const GOOGLE = 2;
 
   /**
-   * @link https://twitter.com
-   */
+     * @link https://twitter.com
+     */
   const TWITTER = 3;
 }
 

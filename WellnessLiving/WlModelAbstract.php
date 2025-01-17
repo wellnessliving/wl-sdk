@@ -10,6 +10,16 @@ use WellnessLiving\Config\WlConfigAbstract;
 class WlModelAbstract
 {
   /**
+   * Name of GET parameter.
+   * Contains microservice tag.
+   *
+   * If set to `null`, it means that the model is not connected to any microservice.
+   *
+   * @var string
+   */
+  const MS_GET_PARAM = '-ms';
+
+  /**
    * Whether `Authorization:` header with signature must be added to the request.
    *
    * `true` to add `Authorization:` header with signature to the request.
@@ -54,16 +64,9 @@ class WlModelAbstract
   private $_o_request=null;
 
   /**
-   * The name of microservice.
+   * Name of the microservice to which this request must be directed.
    *
-   * If specified a query parameter must be added.
-   * This parameter used for AWS Load Balancer rules
-   * to choose target microservice.
-   *
-   * Example:
-   * - `.ms=sal`
-   *
-   * `null` if not initialized yet.
+   * `null` is the default value, meaning that the model is not connected to any microservice.
    *
    * @var string|null
    */
@@ -130,16 +133,6 @@ class WlModelAbstract
   protected function closeCurl($r_curl)
   {
     curl_close($r_curl);
-  }
-
-  /**
-   * Set microservice name.
-   *
-   * @param string $s_microservice Microservice name.
-   */
-  public function microserviceSet($s_microservice)
-  {
-    $this->_s_microservice = $s_microservice;
   }
 
   /**
@@ -321,6 +314,26 @@ class WlModelAbstract
   }
 
   /**
+   * Returns the last request object with was performed with this API model.
+   *
+   * @return WlModelRequest|null The last request object with was performed with this API model.
+   */
+  public function lastRequest()
+  {
+    return $this->_o_request;
+  }
+
+  /**
+   * Sets name of the microservice to which this request must be directed.
+   *
+   * @param string|null $s_microservice Microservice name.
+   */
+  public function microserviceSet($s_microservice)
+  {
+    $this->_s_microservice = $s_microservice;
+  }
+
+  /**
    * Normalizes value for sending over HTTP.
    *
    * @param string $s_name Name of a field which value is normalized.
@@ -369,16 +382,6 @@ class WlModelAbstract
   public function post()
   {
     return $this->request('post');
-  }
-
-  /**
-   * Returns the last request object with was performed with this API model.
-   *
-   * @return WlModelRequest|null The last request object with was performed with this API model.
-   */
-  public function lastRequest()
-  {
-    return $this->_o_request;
   }
 
   /**
@@ -433,8 +436,8 @@ class WlModelAbstract
       $a_get[$s_field] = $this->normalizeValue($s_field,$x_value);
     }
 
-    if ($this->_s_microservice && empty($a_get['-ms'])) {
-      $a_get['-ms'] = $this->_s_microservice;
+    if ($this->_s_microservice) {
+      $a_get[self::MS_GET_PARAM] = $this->_s_microservice;
     }
 
     return $a_get;

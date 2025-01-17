@@ -10,20 +10,20 @@ use WellnessLiving\WlModelAbstract;
 class AppleLoginModel extends WlModelAbstract
 {
   /**
-   * The application ID.
-   *
-   * @delete post
-   * @post post
-   * @var string
-   */
+     * The application ID.
+     *
+     * @delete post
+     * @post post
+     * @var string
+     */
   public $text_application = '';
 
   /**
-   * The authorization code.
-   *
-   * @post post
-   * @var string
-   */
+     * The authorization code.
+     *
+     * @post post
+     * @var string
+     */
   public $text_authorization = '';
 }
 

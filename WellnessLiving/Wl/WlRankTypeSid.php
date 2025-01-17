@@ -9,8 +9,8 @@ namespace WellnessLiving\Wl;
 class WlRankTypeSid
 {
   /**
-   * Belts for Martial Arts.
-   */
+     * Belts for Martial Arts.
+     */
   const BELT = 1;
 }
 

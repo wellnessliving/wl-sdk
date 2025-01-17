@@ -14,25 +14,25 @@ use WellnessLiving\Wl\Business\DataModel;
 class SearchTagListModel extends WlModelAbstract
 {
   /**
-   * A list of all the search tags.
-   *
-   * Each element is an array with the following keys:
-   * <dl>
-   *   <dt>int <var>id_business_category</var></dt>
-   *   <dd>
-   *     The business category that can use this search tag.
-   *     One of the {@link BusinessCategorySid} constants.
-   *     This can be found in the business information found in {@link DataModel::$id_category}.
-   *   </dd>
-   *   <dt>string <var>k_search_tag</var></dt>
-   *   <dd>The key of the tag. The primary key in the table of tags.</dd>
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>The name of the tag.</dd>
-   * </dl>
-   *
-   * @get result
-   * @var array[]
-   */
+     * A list of all the search tags.
+     *
+     * Each element is an array with the following keys:
+     * <dl>
+     *   <dt>int <var>id_business_category</var></dt>
+     *   <dd>
+     *     The business category that can use this search tag.
+     *     One of the {@link BusinessCategorySid} constants.
+     *     This can be found in the business information found in {@link DataModel::$id_category}.
+     *   </dd>
+     *   <dt>string <var>k_search_tag</var></dt>
+     *   <dd>The key of the tag. The primary key in the table of tags.</dd>
+     *   <dt>string <var>text_title</var></dt>
+     *   <dd>The name of the tag.</dd>
+     * </dl>
+     *
+     * @get result
+     * @var array[]
+     */
   public $a_search_tag = [];
 }
 

@@ -8,18 +8,18 @@ namespace WellnessLiving\Wl;
 abstract class WlClassModifyActionSid
 {
   /**
-   * Cancel class schedule.
-   */
+     * Cancel class schedule.
+     */
   const CANCEL = 2;
 
   /**
-   * Change class schedule.
-   */
+     * Change class schedule.
+     */
   const EDIT = 1;
 
   /**
-   * Restore cancelled schedule.
-   */
+     * Restore cancelled schedule.
+     */
   const RESTORE = 3;
 }
 

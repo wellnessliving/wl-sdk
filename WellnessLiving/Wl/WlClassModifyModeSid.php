@@ -8,23 +8,23 @@ namespace WellnessLiving\Wl;
 abstract class WlClassModifyModeSid
 {
   /**
-   * Edit class schedule
-   */
+     * Edit class schedule
+     */
   const FULL = 1;
 
   /**
-   * Edit instructor in class schedule
-   */
+     * Edit instructor in class schedule
+     */
   const INSTRUCTOR = 2;
 
   /**
-   * Asset working hours
-   */
+     * Asset working hours
+     */
   const RESOURCE_PERIOD = 4;
 
   /**
-   * Staff working hours
-   */
+     * Staff working hours
+     */
   const STAFF_PERIOD = 3;
 }
 

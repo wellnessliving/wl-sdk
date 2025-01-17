@@ -18,149 +18,152 @@ use WellnessLiving\Wl\Profile\Edit\EditModel;
 class EditEmailModel extends WlModelAbstract
 {
   /**
-   * List of business keys where a user is already a member.
-   *
-   * @get result
-   * @var array
-   */
+     * List of business keys where a user is already a member.
+     *
+     * @get result
+     * @var array
+     */
   public $a_business_member_key = [];
 
   /**
-   * Information about the user who occupies the specified email.
-   * This will be empty if the email is free or if the rate limit has been reached.
-   * Otherwise, has next keys:
-   * <dl>
-   *   <dt>
-   *     string <var>text_firstname</var>
-   *   </dt>
-   *   <dd>
-   *     First name.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_lastname</var>
-   *   </dt>
-   *   <dd>
-   *     Last name.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_phone</var>
-   *   </dt>
-   *   <dd>
-   *     Phone.
-   *   </dd>
-   *   <dt>
-   *     string <var>url_photo</var>
-   *   </dt>
-   *   <dd>
-   *     URL to photo.
-   *   </dd>
-   * </dl>
-   *
-   * @get result
-   * @var array
-   */
+     * Information about the user who occupies the specified email.
+     * This will be empty if the email is free or if the rate limit has been reached.
+     * Otherwise, has next keys:
+     * <dl>
+     *   <dt>
+     *     string <var>text_firstname</var>
+     *   </dt>
+     *   <dd>
+     *     First name.
+     *   </dd>
+     *   <dt>
+     *     string <var>text_lastname</var>
+     *   </dt>
+     *   <dd>
+     *     Last name.
+     *   </dd>
+     *   <dt>
+     *     string <var>text_phone</var>
+     *   </dt>
+     *   <dd>
+     *     Phone.
+     *   </dd>
+     *   <dt>
+     *     string <var>url_photo</var>
+     *   </dt>
+     *   <dd>
+     *     URL to photo.
+     *   </dd>
+     * </dl>
+     *
+     * @get result
+     * @var array
+     */
   public $a_user;
 
   /**
-   * Shows, whether client was registered in the business: <tt>true</tt> if user was added to the business,
-   * <tt>false</tt> if staff only received temporary access, because mandatory fields must be specified first.
-   *
-   * @get result
-   * @post result
-   * @var bool
-   */
+     * Shows, whether client was registered in the business: <tt>true</tt> if user was added to the business,
+     * <tt>false</tt> if staff only received temporary access, because mandatory fields must be specified first.
+     *
+     * @get result
+     * @post result
+     * @var bool
+     */
   public $is_added = false;
 
   /**
-   * If `true`, the API is being used from backend. Otherwise, this will be `false`.
-   *
-   * @get get
-   * @var bool
-   */
+     * If `true`, the API is being used from backend. Otherwise, this will be `false`.
+     *
+     * @get get
+     * @var bool
+     */
   public $is_backend = true;
 
   /**
-   * If `true`, user is already a member of current business, `false` - otherwise.
-   *
-   * @get result
-   * @var bool
-   */
+     * If `true`, user is already a member of current business, `false` - otherwise.
+     *
+     * @get result
+     * @var bool
+     */
   public $is_current_member = false;
 
   /**
-   * If `true`, then the number of requests has exceeded the rate limit. Otherwise, this will be `false`.
-   *
-   * @get result
-   * @var bool
-   */
+     * If `true`, then the number of requests has exceeded the rate limit. Otherwise, this will be `false`.
+     *
+     * @get result
+     * @var bool
+     */
   public $is_limit;
 
   /**
-   * If `true`, user, who has the specified email, has password set, `false` - otherwise.
-   *
-   * @get result
-   * @var bool
-   */
+     * If `true`, user, who has the specified email, has password set, `false` - otherwise.
+     *
+     * @get result
+     * @var bool
+     */
   public $is_password_set = false;
 
   /**
-   * If `true`, user, who has the specified email, is staff in current business, `false` - otherwise.
-   *
-   * @get result
-   * @var bool
-   */
+     * If `true`, user, who has the specified email, is staff in current business, `false` - otherwise.
+     *
+     * @get result
+     * @var bool
+     */
   public $is_staff = false;
 
   /**
-   * If `true`, user, who has the specified email, is staff in any business, `false` - otherwise.
-   *
-   * @get result
-   * @var bool
-   */
+     * If `true`, user, who has the specified email, is staff in any business, `false` - otherwise.
+     *
+     * @get result
+     * @var bool
+     */
   public $is_staff_any_business = false;
 
   /**
-   * If `true`, then the specified email is in use. Otherwise, this will be `false`.
-   *
-   * @get result
-   * @var bool
-   */
+     * If `true`, then the specified email is in use. Otherwise, this will be `false`.
+     *
+     * @get result
+     * @var bool
+     */
   public $is_use;
 
   /**
-   * The business key where the check must be performed.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+     * The business key where the check must be performed.
+     *
+     * @get get
+     * @post get
+     * @var string
+     *
+     */
   public $k_business = '0';
 
   /**
-   * The email address to be checked.
-   *
-   * @get get
-   * @var string
-   */
+     * The email address to be checked.
+     *
+     * @get get
+     * @var string
+     */
   public $text_mail = '';
 
   /**
-   * The key of user who has the specified email.
-   * This will be `0` if the email is free or if the rate limit has been reached.
-   *
-   * @get result
-   * @var string
-   */
+     * The key of user who has the specified email.
+     * This will be `0` if the email is free or if the rate limit has been reached.
+     *
+     * @get result
+     * @var string
+     *
+     */
   public $uid_result;
 
   /**
-   * The key of user whose email will be edited.
-   * This will be `0` in the case of a new user creation.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+     * The key of user whose email will be edited.
+     * This will be `0` in the case of a new user creation.
+     *
+     * @get get
+     * @post get
+     * @var string
+     *
+     */
   public $uid_want = '0';
 }
 

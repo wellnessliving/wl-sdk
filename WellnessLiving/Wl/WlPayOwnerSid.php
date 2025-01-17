@@ -8,18 +8,18 @@ namespace WellnessLiving\Wl;
 abstract class WlPayOwnerSid
 {
   /**
-   * Anonymous user (Walk-In).
-   */
+     * Anonymous user (Walk-In).
+     */
   const ANONYMOUS = 3;
 
   /**
-   * Business.
-   */
+     * Business.
+     */
   const BUSINESS = 2;
 
   /**
-   * System user.
-   */
+     * System user.
+     */
   const USER = 1;
 }
 

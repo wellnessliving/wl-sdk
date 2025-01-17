@@ -10,18 +10,18 @@ namespace WellnessLiving\Wl\Promotion\Convert;
 class PromotionConvertSid
 {
   /**
-   * Promotion conversion downgraded.
-   */
+     * Promotion conversion downgraded.
+     */
   const DOWNGRADE = 1;
 
   /**
-   * Type of the promotion conversion.
-   */
+     * Type of the promotion conversion.
+     */
   const EQUAL_VALUE = 2;
 
   /**
-   * Promotion conversion upgraded.
-   */
+     * Promotion conversion upgraded.
+     */
   const UPGRADE = 3;
 }
 

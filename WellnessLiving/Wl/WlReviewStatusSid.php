@@ -8,18 +8,18 @@ namespace WellnessLiving\Wl;
 abstract class WlReviewStatusSid
 {
   /**
-   * Admin.
-   */
+     * Admin.
+     */
   const ADMIN = 1;
 
   /**
-   * Hidden.
-   */
+     * Hidden.
+     */
   const HIDDEN = 4;
 
   /**
-   * Publish.
-   */
+     * Publish.
+     */
   const PUBLISH = 3;
 }
 

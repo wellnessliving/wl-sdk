@@ -10,37 +10,39 @@ use WellnessLiving\WlModelAbstract;
 class InfoModel extends WlModelAbstract
 {
   /**
-   * Business key.
-   *
-   * @get get
-   * @var string
-   */
+     * Business key.
+     *
+     * @get get
+     * @var string
+     *
+     */
   public $k_business = '';
 
   /**
-   * The current user key.
-   *
-   * This will be `null` if the user isn't signed in.
-   *
-   * @get result
-   * @var string|null
-   */
+     * The current user key.
+     *
+     * This will be `null` if the user isn't signed in.
+     *
+     * @get result
+     * @var string|null
+     *
+     */
   public $uid;
 
   /**
-   * A URL that a user can visit to reset their password.
-   *
-   * @get result
-   * @var string
-   */
+     * A URL that a user can visit to reset their password.
+     *
+     * @get result
+     * @var string
+     */
   public $url_password_change;
 
   /**
-   * The URL to the registration page.
-   *
-   * @get result
-   * @var string
-   */
+     * The URL to the registration page.
+     *
+     * @get result
+     * @var string
+     */
   public $url_register;
 }
 

@@ -8,23 +8,23 @@ namespace WellnessLiving\Wl\Business\Design;
 class RsBusinessDesignLogoStyleSid
 {
   /**
-   * Logo is invisible.
-   */
+     * Logo is invisible.
+     */
   const HIDE = 1;
 
   /**
-   * Logo is a rectangle.
-   */
+     * Logo is a rectangle.
+     */
   const RECTANGLE = 4;
 
   /**
-   * Logo is a round.
-   */
+     * Logo is a round.
+     */
   const ROUND = 3;
 
   /**
-   * Logo is a square.
-   */
+     * Logo is a square.
+     */
   const SQUARE = 2;
 }
 

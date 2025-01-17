@@ -10,40 +10,44 @@ use WellnessLiving\WlModelAbstract;
 class AccessModel extends WlModelAbstract
 {
   /**
-   * Whether the specified user can access the location.
-   * `true` if the specified member can access the location.
-   * `false` if they can not.
-   *
-   * @get result
-   * @var bool
-   */
+     * Whether the specified user can access the location.
+     * `true` if the specified member can access the location.
+     * `false` if they can not.
+     *
+     * @get result
+     * @var bool
+     */
   public $can_access = false;
 
   /**
-   * The location key.
-   *
-   * @get get
-   * @var string
-   */
+     * The location key.
+     *
+     *
+     *
+     * @get get
+     * @var string
+     */
   public $k_location = '';
 
   /**
-   * The member ID.
-   * Member ID is intended to work with barcode scanners.
-   * If this is specified the user key does not need to be set.
-   *
-   * @get get
-   * @var string
-   */
+     * The member ID.
+     * Member ID is intended to work with barcode scanners.
+     * If this is specified the user key does not need to be set.
+     *
+     * @get get
+     * @var string
+     */
   public $s_member = '';
 
   /**
-   * The user key.
-   * This should be specified if the member ID is not set or not known.
-   *
-   * @get get
-   * @var string
-   */
+     * The user key.
+     * This should be specified if the member ID is not set or not known.
+     *
+     *
+     *
+     * @get get
+     * @var string
+     */
   public $uid = '';
 }
 

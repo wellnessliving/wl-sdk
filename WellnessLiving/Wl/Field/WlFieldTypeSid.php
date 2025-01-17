@@ -13,28 +13,28 @@ namespace WellnessLiving\Wl\Field;
 class WlFieldTypeSid
 {
   /**
-   * Checkbox field. The <tt>s_value</tt> for this type of field can be 1 if checkbox is checked and 0 otherwise.
-   */
+     * Checkbox field. The <tt>s_value</tt> for this type of field can be 1 if checkbox is checked and 0 otherwise.
+     */
   const CHECKBOX = 2;
 
   /**
-   * General field. Has its own format.
-   */
+     * General field. Has its own format.
+     */
   const GENERAL = 5;
 
   /**
-   * Radio buttons.
-   */
+     * Radio buttons.
+     */
   const RADIO = 4;
 
   /**
-   * Drop-down menu.
-   */
+     * Drop-down menu.
+     */
   const SELECT = 3;
 
   /**
-   * One line text field.
-   */
+     * One line text field.
+     */
   const TEXT = 1;
 }
 

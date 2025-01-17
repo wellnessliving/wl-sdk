@@ -11,43 +11,45 @@ use WellnessLiving\WlModelAbstract;
 class CreateModel extends WlModelAbstract
 {
   /**
-   * The key of the business where you're creating new user.
-   *
-   * @post post
-   * @var string
-   */
+     * The key of the business where you're creating new user.
+     *
+     * @post post
+     * @var string
+     *
+     */
   public $k_business = '';
 
   /**
-   * First name of the user.
-   *
-   * @post post
-   * @var string
-   */
+     * First name of the user.
+     *
+     * @post post
+     * @var string
+     */
   public $text_firstname = '';
 
   /**
-   * Last name of the user.
-   *
-   * @post post
-   * @var string
-   */
+     * Last name of the user.
+     *
+     * @post post
+     * @var string
+     */
   public $text_lastname = '';
 
   /**
-   * Email of the user.
-   *
-   * @post post
-   * @var string
-   */
+     * Email of the user.
+     *
+     * @post post
+     * @var string
+     */
   public $text_mail = '';
 
   /**
-   * The key of the user added.
-   *
-   * @post result
-   * @var string
-   */
+     * The key of the user added.
+     *
+     * @post result
+     * @var string
+     *
+     */
   public $uid = '';
 }
 

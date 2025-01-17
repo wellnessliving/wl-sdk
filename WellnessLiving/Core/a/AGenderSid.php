@@ -8,18 +8,18 @@ namespace WellnessLiving\Core\a;
 abstract class AGenderSid
 {
   /**
-   * Female gender.
-   */
+     * Female gender.
+     */
   const FEMALE = 2;
 
   /**
-   * Male gender.
-   */
+     * Male gender.
+     */
   const MALE = 1;
 
   /**
-   * Gender is undefined in cases where the user preferred not to identify their gender.
-   */
+     * Gender is undefined in cases where the user preferred not to identify their gender.
+     */
   const UNDEFINED = 3;
 }
 

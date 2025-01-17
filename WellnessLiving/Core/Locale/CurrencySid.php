@@ -14,80 +14,110 @@ namespace WellnessLiving\Core\Locale;
 abstract class CurrencySid
 {
   /**
-   * United Arab Emirates dirham.
-   */
+     * United Arab Emirates dirham.
+     *
+     *
+     */
   const AED = 11;
 
   /**
-   * Australian dollar.
-   */
+     * Australian dollar.
+     *
+     *
+     */
   const AUD = 6;
 
   /**
-   * Canadian dollar.
-   */
+     * Canadian dollar.
+     *
+     *
+     */
   const CAD = 4;
 
   /**
-   * Egypt Pound.
-   */
+     * Egypt Pound.
+     *
+     *
+     */
   const EGP = 8;
 
   /**
-   * Euro.
-   */
+     * Euro.
+     *
+     *
+     */
   const EUR = 13;
 
   /**
-   * British pound.
-   */
+     * British pound.
+     *
+     *
+     */
   const GBP = 3;
 
   /**
-   * Kuwaiti dinar.
-   */
+     * Kuwaiti dinar.
+     *
+     *
+     */
   const KWD = 14;
 
   /**
-   * Cayman Islands dollar.
-   */
+     * Cayman Islands dollar.
+     *
+     *
+     */
   const KYD = 5;
 
   /**
-   * Mauritian Rupee.
-   */
+     * Mauritian Rupee.
+     *
+     *
+     */
   const MUR = 16;
 
   /**
-   * New Zealand Dollar.
-   */
+     * New Zealand Dollar.
+     *
+     *
+     */
   const NZD = 10;
 
   /**
-   * Philippines Pesco.
-   */
+     * Philippines Pesco.
+     *
+     *
+     */
   const PHP = 12;
 
   /**
-   * Saudi Riyal.
-   */
+     * Saudi Riyal.
+     *
+     *
+     */
   const SAR = 15;
 
   /**
-   * Unknown code.
-   *
-   * Used when currency is not specified or is not known.
-   */
+     * Unknown code.
+     *
+     * Used when currency is not specified or is not known.
+     *
+     *
+     */
   const UNKNOWN = 2;
 
   /**
-   * US dollars.
-   */
+     * US dollars.
+     *
+     *
+     */
   const USD = 1;
 
   /**
-   * South African rand.
-   */
+     * South African rand.
+     *
+     *
+     */
   const ZAR = 7;
 }
 

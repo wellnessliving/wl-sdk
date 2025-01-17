@@ -8,13 +8,13 @@ namespace WellnessLiving\Wl\Integration\Autymate;
 class AutymateAccessModeSid
 {
   /**
-   * Access Autymate to create an initial enrollment.
-   */
+     * Access Autymate to create an initial enrollment.
+     */
   const ENROLL = 1;
 
   /**
-   * Access Autymate to view the dashboard.
-   */
+     * Access Autymate to view the dashboard.
+     */
   const VIEW = 2;
 }
 

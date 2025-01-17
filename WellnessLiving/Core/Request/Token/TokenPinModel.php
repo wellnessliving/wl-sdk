@@ -12,27 +12,27 @@ use WellnessLiving\WlModelAbstract;
 class TokenPinModel extends WlModelAbstract
 {
   /**
-   * The expiration date/time of the PIN code.
-   *
-   * @get result
-   * @var string
-   */
+     * The expiration date/time of the PIN code.
+     *
+     * @get result
+     * @var string
+     */
   public $dtu_expire;
 
   /**
-   * The PIN code.
-   *
-   * @get result
-   * @var string
-   */
+     * The PIN code.
+     *
+     * @get result
+     * @var string
+     */
   public $text_pin;
 
   /**
-   * The ID to use to send a security code via a push notification.
-   *
-   * @get get
-   * @var string
-   */
+     * The ID to use to send a security code via a push notification.
+     *
+     * @get get
+     * @var string
+     */
   public $text_push = '';
 }
 

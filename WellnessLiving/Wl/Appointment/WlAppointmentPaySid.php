@@ -8,23 +8,23 @@ namespace WellnessLiving\Wl\Appointment;
 abstract class WlAppointmentPaySid
 {
   /**
-   * A deposit was paid.
-   */
+     * A deposit was paid.
+     */
   const DEPOSIT = 2;
 
   /**
-   * Appointment is free and does not require payment.
-   */
+     * Appointment is free and does not require payment.
+     */
   const FREE = 4;
 
   /**
-   * The full price was paid.
-   */
+     * The full price was paid.
+     */
   const FULL = 3;
 
   /**
-   * Nothing was paid.
-   */
+     * Nothing was paid.
+     */
   const NONE = 1;
 }
 

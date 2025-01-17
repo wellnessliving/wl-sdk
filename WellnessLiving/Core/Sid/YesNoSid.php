@@ -8,13 +8,13 @@ namespace WellnessLiving\Core\Sid;
 class YesNoSid
 {
   /**
-   * The answer is "no".
-   */
+     * The answer is "no".
+     */
   const NO = 2;
 
   /**
-   * The answer is "yes".
-   */
+     * The answer is "yes".
+     */
   const YES = 1;
 }
 

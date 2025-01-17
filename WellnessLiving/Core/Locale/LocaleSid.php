@@ -10,78 +10,86 @@ namespace WellnessLiving\Core\Locale;
 abstract class LocaleSid
 {
   /**
-   * Australia.
-   */
+     * Australia.
+     */
   const AUSTRALIA = 4;
 
   /**
-   * Canada.
-   */
+     * Canada.
+     */
   const CANADA = 2;
 
   /**
-   * Cayman Islands.
-   */
+     * Cayman Islands.
+     */
   const CAYMAN = 5;
 
   /**
-   * Cyprus.
-   */
+     * Cyprus.
+     */
   const CYPRUS = 13;
 
   /**
-   * Egypt.
-   */
+     * Egypt.
+     */
   const EGYPT = 8;
 
   /**
-   * Kuwait
-   */
+     * Kuwait
+     *
+     *
+     */
   const KUWAIT = 14;
 
   /**
-   * Republic of Mauritius.
-   */
+     * Republic of Mauritius.
+     *
+     *
+     */
   const MAURITIUS = 16;
 
   /**
-   * A special locale that can be used for testing or a business situated in an unknown region.
-   */
+     * A special locale that can be used for testing or a business situated in an unknown region.
+     *
+     *
+     */
   const NEVERLAND = 9;
 
   /**
-   * New Zealand.
-   */
+     * New Zealand.
+     */
   const NEW_ZEALAND = 10;
 
   /**
-   * Philippines.
-   */
+     * Philippines.
+     */
   const PHILIPPINES = 12;
 
   /**
-   * Saudi Arabia.
-   */
+     * Saudi Arabia.
+     *
+     *
+     */
   const SAUDI_ARABIA = 15;
 
   /**
-   * South Africa.
-   */
+     * South Africa.
+     */
   const SOUTH_AFRICA = 6;
 
   /**
-   * United Arab Emirates.
-   */
+     * United Arab Emirates.
+     */
   const UAE = 11;
 
   /**
-   * United Kingdom.
-   */
+     * United Kingdom.
+     */
   const UK = 3;
 
   /**
-   * United States of America.
-   */
+     * United States of America.
+     */
   const USA = 1;
 }
 
