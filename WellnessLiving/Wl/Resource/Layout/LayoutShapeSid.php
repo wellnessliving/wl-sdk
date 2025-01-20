@@ -8,18 +8,18 @@ namespace WellnessLiving\Wl\Resource\Layout;
 class LayoutShapeSid
 {
   /**
-     * Circles.
-     */
+   * Circles.
+   */
   const CIRCLE = 2;
 
   /**
-     * Pies.
-     */
+   * Pies.
+   */
   const PIE = 3;
 
   /**
-     * Rectangles and squares.
-     */
+   * Rectangles and squares.
+   */
   const RECTANGLE = 1;
 }
 

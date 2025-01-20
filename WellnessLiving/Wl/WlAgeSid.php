@@ -8,23 +8,23 @@ namespace WellnessLiving\Wl;
 abstract class WlAgeSid
 {
   /**
-     * An adult.
-     */
+   * An adult.
+   */
   const ADULT = 2;
 
   /**
-     * A kid.
-     */
+   * A kid.
+   */
   const KID = 1;
 
   /**
-     * Natal.
-     */
+   * Natal.
+   */
   const NATAL = 4;
 
   /**
-     * Senior.
-     */
+   * Senior.
+   */
   const SENIOR = 3;
 }
 

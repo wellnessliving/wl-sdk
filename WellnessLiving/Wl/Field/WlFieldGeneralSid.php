@@ -18,83 +18,83 @@ use WellnessLiving\Wl\Login\Type\SystemSid;
 class WlFieldGeneralSid
 {
   /**
-     * Set of fields to choose address.
-     */
+   * Set of fields to choose address.
+   */
   const ADDRESS = 9;
 
   /**
-     * Set of fields to choose birthday date.
-     */
+   * Set of fields to choose birthday date.
+   */
   const BIRTHDAY = 7;
 
   /**
-     * Gender field.
-     */
+   * Gender field.
+   */
   const GENDER = 8;
 
   /**
-     * Image.
-     */
+   * Image.
+   */
   const IMAGE = 13;
 
   /**
-     * Home location.
-     */
+   * Home location.
+   */
   const LOCATION = 10;
 
   /**
-     * Block with login information (email and password).
-     */
+   * Block with login information (email and password).
+   */
   const LOGIN = 3;
 
   /**
-     * Member ID.
-     */
+   * Member ID.
+   */
   const MEMBER = 11;
 
   /**
-     * First name.
-     */
+   * First name.
+   */
   const NAME_FIRST = 2;
 
   /**
-     * Last name.
-     */
+   * Last name.
+   */
   const NAME_LAST = 1;
 
   /**
-     * Cell phone number.
-     */
+   * Cell phone number.
+   */
   const PHONE_CELL = 4;
 
   /**
-     * Home phone number.
-     */
+   * Home phone number.
+   */
   const PHONE_HOME = 5;
 
   /**
-     * Work phone number + ext.
-     */
+   * Work phone number + ext.
+   */
   const PHONE_WORK = 6;
 
   /**
-     * Referred by.
-     */
+   * Referred by.
+   */
   const REFERRER = 12;
 
   /**
-     * Client status (client/member types). System default client/member types see {@link SystemSid}.
-     */
+   * Client status (client/member types). System default client/member types see {@link SystemSid}.
+   */
   const STATUS = 14;
 
   /**
-     * Timezone field.
-     */
+   * Timezone field.
+   */
   const TIMEZONE = 15;
 
   /**
-     * Vaccination status.
-     */
+   * Vaccination status.
+   */
   const VACCINATION_STATUS = 16;
 }
 

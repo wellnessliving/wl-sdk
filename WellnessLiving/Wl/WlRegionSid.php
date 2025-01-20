@@ -16,13 +16,13 @@ namespace WellnessLiving\Wl;
 class WlRegionSid extends \WellnessLiving\Custom\Wl\WlRegionSid
 {
   /**
-     * Sydney, Australia.
-     */
+   * Sydney, Australia.
+   */
   const AP_SOUTHEAST_2 = 2;
 
   /**
-     * North Virginia, USA.
-     */
+   * North Virginia, USA.
+   */
   const US_EAST_1 = 1;
 }
 

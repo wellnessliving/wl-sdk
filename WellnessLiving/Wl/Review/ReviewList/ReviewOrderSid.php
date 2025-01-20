@@ -8,23 +8,23 @@ namespace WellnessLiving\Wl\Review\ReviewList;
 class ReviewOrderSid
 {
   /**
-     * Ascending sort review by date.
-     */
+   * Ascending sort review by date.
+   */
   const LATEST = 1;
 
   /**
-     * Ascending sort review by date.
-     */
+   * Ascending sort review by date.
+   */
   const NEGATIVE = 3;
 
   /**
-     * Descending sort review by date.
-     */
+   * Descending sort review by date.
+   */
   const OLDEST = 4;
 
   /**
-     * Descending sort review by date.
-     */
+   * Descending sort review by date.
+   */
   const POSITIVE = 2;
 }
 

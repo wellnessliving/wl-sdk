@@ -8,28 +8,28 @@ namespace WellnessLiving\Wl\Report;
 abstract class WlReportChartViewSid
 {
   /**
-     * Area chart.
-     */
+   * Area chart.
+   */
   const AREA = 2;
 
   /**
-     * Column chart.
-     */
+   * Column chart.
+   */
   const COLUMN = 1;
 
   /**
-     * Donut chart.
-     */
+   * Donut chart.
+   */
   const DONUT = 5;
 
   /**
-     * Line chart.
-     */
+   * Line chart.
+   */
   const LINE = 3;
 
   /**
-     * Year-by-year comparisons in the column chart.
-     */
+   * Year-by-year comparisons in the column chart.
+   */
   const YEAR_COLUMN = 4;
 }
 

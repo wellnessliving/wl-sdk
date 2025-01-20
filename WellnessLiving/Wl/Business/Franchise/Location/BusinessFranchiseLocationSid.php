@@ -10,24 +10,24 @@ namespace WellnessLiving\Wl\Business\Franchise\Location;
 class BusinessFranchiseLocationSid
 {
   /**
-     * All locations.
-     *
-     * @title All
-     */
+   * All locations.
+   *
+   * @title All
+   */
   const ALL = 1;
 
   /**
-     * Locations without the region.
-     *
-     * @title Without region
-     */
+   * Locations without the region.
+   *
+   * @title Without region
+   */
   const REGION_NO = 2;
 
   /**
-     * Location with the region.
-     *
-     * @title With region
-     */
+   * Location with the region.
+   *
+   * @title With region
+   */
   const REGION_YES = 3;
 }
 

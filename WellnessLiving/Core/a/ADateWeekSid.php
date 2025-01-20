@@ -8,38 +8,38 @@ namespace WellnessLiving\Core\a;
 abstract class ADateWeekSid
 {
   /**
-     * Friday.
-     */
+   * Friday.
+   */
   const FRIDAY = 5;
 
   /**
-     * Monday.
-     */
+   * Monday.
+   */
   const MONDAY = 1;
 
   /**
-     * Saturday.
-     */
+   * Saturday.
+   */
   const SATURDAY = 6;
 
   /**
-     * Sunday.
-     */
+   * Sunday.
+   */
   const SUNDAY = 7;
 
   /**
-     * Thursday.
-     */
+   * Thursday.
+   */
   const THURSDAY = 4;
 
   /**
-     * Tuesday.
-     */
+   * Tuesday.
+   */
   const TUESDAY = 2;
 
   /**
-     * Wednesday.
-     */
+   * Wednesday.
+   */
   const WEDNESDAY = 3;
 }
 

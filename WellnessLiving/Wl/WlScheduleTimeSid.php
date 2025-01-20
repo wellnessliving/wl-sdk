@@ -8,18 +8,18 @@ namespace WellnessLiving\Wl;
 abstract class WlScheduleTimeSid
 {
   /**
-     * Afternoon.
-     */
+   * Afternoon.
+   */
   const AFTERNOON = 2;
 
   /**
-     * Evening.
-     */
+   * Evening.
+   */
   const EVENING = 3;
 
   /**
-     * Morning.
-     */
+   * Morning.
+   */
   const MORNING = 1;
 }
 

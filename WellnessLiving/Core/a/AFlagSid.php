@@ -9,18 +9,18 @@ namespace WellnessLiving\Core\a;
 class AFlagSid
 {
   /**
-     * All records.
-     */
+   * All records.
+   */
   const ALL = 1;
 
   /**
-     * Records with the flag turned off.
-     */
+   * Records with the flag turned off.
+   */
   const OFF = 2;
 
   /**
-     * Records with the flag turned on.
-     */
+   * Records with the flag turned on.
+   */
   const ON = 3;
 }
 

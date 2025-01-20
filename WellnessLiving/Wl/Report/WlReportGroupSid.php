@@ -10,28 +10,28 @@ namespace WellnessLiving\Wl\Report;
 abstract class WlReportGroupSid
 {
   /**
-     * Step 1 day.
-     */
+   * Step 1 day.
+   */
   const DAY = 1;
 
   /**
-     * Step 1 hour.
-     */
+   * Step 1 hour.
+   */
   const HOUR = 5;
 
   /**
-     * Step 1 month.
-     */
+   * Step 1 month.
+   */
   const MONTH = 3;
 
   /**
-     * Step 1 week.
-     */
+   * Step 1 week.
+   */
   const WEEK = 2;
 
   /**
-     * Step 1 year.
-     */
+   * Step 1 year.
+   */
   const YEAR = 4;
 }
 

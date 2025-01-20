@@ -8,23 +8,23 @@ namespace WellnessLiving\Core\Drive;
 class DriveTypeSid
 {
   /**
-     * Bmp image.
-     */
+   * Bmp image.
+   */
   const BMP = 4;
 
   /**
-     * Gif image.
-     */
+   * Gif image.
+   */
   const GIF = 1;
 
   /**
-     * Jpeg image.
-     */
+   * Jpeg image.
+   */
   const JPEG = 2;
 
   /**
-     * Png image.
-     */
+   * Png image.
+   */
   const PNG = 3;
 }
 

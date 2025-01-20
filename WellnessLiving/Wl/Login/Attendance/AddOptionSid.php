@@ -8,18 +8,18 @@ namespace WellnessLiving\Wl\Login\Attendance;
 class AddOptionSid
 {
   /**
-     * Add client to attendance list and charge his account.
-     */
+   * Add client to attendance list and charge his account.
+   */
   const DEBIT = 2;
 
   /**
-     * Add client to attendance list and pay now.
-     */
+   * Add client to attendance list and pay now.
+   */
   const PAY = 3;
 
   /**
-     * Add client to attendance list without payment.
-     */
+   * Add client to attendance list without payment.
+   */
   const UNPAID = 1;
 }
 

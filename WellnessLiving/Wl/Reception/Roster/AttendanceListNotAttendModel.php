@@ -10,29 +10,27 @@ use WellnessLiving\WlModelAbstract;
 class AttendanceListNotAttendModel extends WlModelAbstract
 {
   /**
-     * The business key.
-     *
-     * @post get
-     * @var string
-     *
-     */
+   * The business key.
+   *
+   * @post get
+   * @var string
+   */
   public $k_business = '';
 
   /**
-     * The visit key.
-     *
-     * @post result
-     * @var string
-     *
-     */
+   * The visit key.
+   *
+   * @post result
+   * @var string
+   */
   public $k_visit;
 
   /**
-     * The secret for authenticating the attendance kiosk.
-     *
-     * @post get
-     * @var string
-     */
+   * The secret for authenticating the attendance kiosk.
+   *
+   * @post get
+   * @var string
+   */
   public $s_secret = '';
 }
 

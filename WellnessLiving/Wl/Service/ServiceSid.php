@@ -10,33 +10,33 @@ namespace WellnessLiving\Wl\Service;
 class ServiceSid
 {
   /**
-     * Appointment.
-     */
+   * Appointment.
+   */
   const APPOINTMENT = 1;
 
   /**
-     * Belts.
-     */
+   * Belts.
+   */
   const BELT = 6;
 
   /**
-     * Bookable asset.
-     */
+   * Bookable asset.
+   */
   const BOOKABLE_ASSET = 4;
 
   /**
-     * Class.
-     */
+   * Class.
+   */
   const CLASSES = 2;
 
   /**
-     * Event.
-     */
+   * Event.
+   */
   const EVENT = 3;
 
   /**
-     * Gym visits.
-     */
+   * Gym visits.
+   */
   const GYM = 5;
 }
 

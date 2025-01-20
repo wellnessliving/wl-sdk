@@ -8,8 +8,8 @@ namespace WellnessLiving\Wl;
 abstract class WlProjectSid
 {
   /**
-     * WellnessLiving Explorer.
-     */
+   * WellnessLiving Explorer.
+   */
   const WELLNESSLIVING = 4;
 }
 

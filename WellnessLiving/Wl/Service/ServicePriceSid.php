@@ -8,23 +8,23 @@ namespace WellnessLiving\Wl\Service;
 abstract class ServicePriceSid
 {
   /**
-     * Fixed price.
-     */
+   * Fixed price.
+   */
   const FIXED = 1;
 
   /**
-     * No need to pay.
-     */
+   * No need to pay.
+   */
   const FREE = 2;
 
   /**
-     * Hide price.
-     */
+   * Hide price.
+   */
   const HIDE = 4;
 
   /**
-     * Various price.
-     */
+   * Various price.
+   */
   const VARIES = 3;
 }
 

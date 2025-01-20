@@ -8,9 +8,8 @@ namespace WellnessLiving\Wl\Lead;
 class LeadCaptcha
 {
   /**
-     * CID of this captcha.
-     *
-       */
+   * CID of this captcha.
+   */
   const CID = 1072;
 }
 

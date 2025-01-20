@@ -10,148 +10,148 @@ namespace WellnessLiving\Wl\Resource\Image;
 class ImageIconSid
 {
   /**
-     * Training bench.
-     */
+   * Training bench.
+   */
   const BENCH = 1;
 
   /**
-     * Exercise bike.
-     */
+   * Exercise bike.
+   */
   const BIKE_1 = 2;
 
   /**
-     * Exercise bike.
-     */
+   * Exercise bike.
+   */
   const BIKE_2 = 3;
 
   /**
-     * Exercise bike.
-     */
+   * Exercise bike.
+   */
   const BIKE_3 = 4;
 
   /**
-     * Exercise bike.
-     */
+   * Exercise bike.
+   */
   const BIKE_4 = 5;
 
   /**
-     * Exercise bike.
-     */
+   * Exercise bike.
+   */
   const BIKE_5 = 6;
 
   /**
-     * Exercise bike.
-     */
+   * Exercise bike.
+   */
   const BIKE_6 = 7;
 
   /**
-     * Boot.
-     */
+   * Boot.
+   */
   const BOOT = 8;
 
   /**
-     * Door.
-     */
+   * Door.
+   */
   const DOOR = 9;
 
   /**
-     * Fan.
-     */
+   * Fan.
+   */
   const FAN_1 = 10;
 
   /**
-     * Fan.
-     */
+   * Fan.
+   */
   const FAN_2 = 11;
 
   /**
-     * Man.
-     */
+   * Man.
+   */
   const MAN = 12;
 
   /**
-     * Mat.
-     */
+   * Mat.
+   */
   const MAT = 13;
 
   /**
-     * Mirror.
-     */
+   * Mirror.
+   */
   const MIRROR = 14;
 
   /**
-     * Orbitrack.
-     */
+   * Orbitrack.
+   */
   const ORBITRACK_1 = 15;
 
   /**
-     * Orbitrack.
-     */
+   * Orbitrack.
+   */
   const ORBITRACK_2 = 16;
 
   /**
-     * Orbitrack.
-     */
+   * Orbitrack.
+   */
   const ORBITRACK_3 = 17;
 
   /**
-     * Orbitrack.
-     */
+   * Orbitrack.
+   */
   const ORBITRACK_4 = 18;
 
   /**
-     * Orbitrack.
-     */
+   * Orbitrack.
+   */
   const ORBITRACK_5 = 19;
 
   /**
-     * Orbitrack.
-     */
+   * Orbitrack.
+   */
   const ORBITRACK_6 = 20;
 
   /**
-     * Boxing punch.
-     */
+   * Boxing punch.
+   */
   const PUNCH_1 = 21;
 
   /**
-     * Boxing punch.
-     */
+   * Boxing punch.
+   */
   const PUNCH_2 = 22;
 
   /**
-     * Rectangle.
-     */
+   * Rectangle.
+   */
   const RECTANGLE = 23;
 
   /**
-     * Loudspeaker.
-     */
+   * Loudspeaker.
+   */
   const SPEAKER = 24;
 
   /**
-     * Treadmill.
-     */
+   * Treadmill.
+   */
   const TREADMILL_1 = 25;
 
   /**
-     * Treadmill.
-     */
+   * Treadmill.
+   */
   const TREADMILL_2 = 26;
 
   /**
-     * TV.
-     */
+   * TV.
+   */
   const TV = 27;
 
   /**
-     * Twines.
-     */
+   * Twines.
+   */
   const TWINE = 28;
 
   /**
-     * Weight.
-     */
+   * Weight.
+   */
   const WEIGHT = 29;
 }
 

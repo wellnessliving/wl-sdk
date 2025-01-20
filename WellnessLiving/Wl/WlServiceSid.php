@@ -10,28 +10,28 @@ namespace WellnessLiving\Wl;
 abstract class WlServiceSid
 {
   /**
-     * Appointments.
-     */
+   * Appointments.
+   */
   const APPOINTMENT = 1;
 
   /**
-     * Classes.
-     */
+   * Classes.
+   */
   const CLASSES = 2;
 
   /**
-     * Enrolments.
-     */
+   * Enrolments.
+   */
   const ENROLLMENT = 3;
 
   /**
-     * Resources.
-     */
+   * Resources.
+   */
   const RESOURCE = 5;
 
   /**
-     * Visits.
-     */
+   * Visits.
+   */
   const VISIT = 4;
 }
 

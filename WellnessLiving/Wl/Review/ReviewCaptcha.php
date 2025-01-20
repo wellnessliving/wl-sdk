@@ -8,9 +8,8 @@ namespace WellnessLiving\Wl\Review;
 class ReviewCaptcha
 {
   /**
-     * CID of this class.
-     *
-       */
+   * CID of this class.
+   */
   const CID = 1066;
 }
 

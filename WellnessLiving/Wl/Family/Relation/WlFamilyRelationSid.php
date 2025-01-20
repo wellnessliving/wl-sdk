@@ -10,55 +10,55 @@ namespace WellnessLiving\Wl\Family\Relation;
 class WlFamilyRelationSid
 {
   /**
-     * Care provider.
-     */
+   * Care provider.
+   */
   const CAREGIVER = 8;
 
   /**
-     * Care recipient.
-     */
+   * Care recipient.
+   */
   const CARE_RECEIVER = 9;
 
   /**
-     * Child of the parent.
-     */
+   * Child of the parent.
+   */
   const CHILD = 5;
 
   /**
-     * Dependent.
-     *
-     * @link https://wellnessliving.atlassian.net/browse/WL-82365
-     */
+   * Dependent.
+   *
+   * @link https://wellnessliving.atlassian.net/browse/WL-82365
+   */
   const DEPENDENT = 10;
 
   /**
-     * Friend.
-     */
+   * Friend.
+   */
   const FRIEND = 2;
 
   /**
-     * Guardian.
-     */
+   * Guardian.
+   */
   const GUARDIAN = 7;
 
   /**
-     * Not specified custom relationship.
-     */
+   * Not specified custom relationship.
+   */
   const OTHER = 6;
 
   /**
-     * Parent of the child.
-     */
+   * Parent of the child.
+   */
   const PARENT = 3;
 
   /**
-     * Sibling. A brother or sister.
-     */
+   * Sibling. A brother or sister.
+   */
   const SIBLING = 4;
 
   /**
-     * Spouse. A husband or wife.
-     */
+   * Spouse. A husband or wife.
+   */
   const SPOUSE = 1;
 }
 

@@ -10,23 +10,23 @@ namespace WellnessLiving\Wl\Classes\Tab;
 abstract class TabSid
 {
   /**
-     * Enrolments.
-     */
+   * Enrolments.
+   */
   const ENROLLMENT = 2;
 
   /**
-     * Bookable Assets.
-     */
+   * Bookable Assets.
+   */
   const RESOURCE = 4;
 
   /**
-     * Appointments.
-     */
+   * Appointments.
+   */
   const SERVICE = 3;
 
   /**
-     * Classes.
-     */
+   * Classes.
+   */
   const TRAINING = 1;
 }
 

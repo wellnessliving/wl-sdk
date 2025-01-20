@@ -10,18 +10,18 @@ namespace WellnessLiving\Wl\Schedule\Design;
 class OptionSid
 {
   /**
-     * Appointment name in header.
-     */
+   * Appointment name in header.
+   */
   const APPOINTMENT_NAME = 1;
 
   /**
-     * Client name in header.
-     */
+   * Client name in header.
+   */
   const CLIENT_NAME = 3;
 
   /**
-     * Staff name in header.
-     */
+   * Staff name in header.
+   */
   const STAFF_NAME = 2;
 }
 

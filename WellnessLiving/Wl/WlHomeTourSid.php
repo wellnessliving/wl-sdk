@@ -10,128 +10,128 @@ namespace WellnessLiving\Wl;
 abstract class WlHomeTourSid
 {
   /**
-     * Boot camps.
-     */
+   * Boot camps.
+   */
   const BOOTCAMP = 24;
 
   /**
-     * Boxing studios.
-     */
+   * Boxing studios.
+   */
   const BOXING = 25;
 
   /**
-     * Special industry free landing page with only contact us form.
-     */
+   * Special industry free landing page with only contact us form.
+   */
   const BUSINESS_MANAGEMENT = 21;
 
   /**
-     * Health clubs.
-     */
+   * Health clubs.
+   */
   const CLUB = 10;
 
   /**
-     * Affiliate Gym.
-     */
+   * Affiliate Gym.
+   */
   const CROSSFIT = 9;
 
   /**
-     * Dance studios.
-     */
+   * Dance studios.
+   */
   const DANCE = 11;
 
   /**
-     * Dental studios.
-     */
+   * Dental studios.
+   */
   const DENTAL = 14;
 
   /**
-     * Fitness gyms.
-     */
+   * Fitness gyms.
+   */
   const FITNESS = 6;
 
   /**
-     * Fitness gyms.
-     */
+   * Fitness gyms.
+   */
   const GYM = 22;
 
   /**
-     * Health clubs.
-     */
+   * Health clubs.
+   */
   const HEALTH_CLUB = 23;
 
   /**
-     * Martial arts.
-     */
+   * Martial arts.
+   */
   const MARTIAL_ART = 8;
 
   /**
-     * Massage salons.
-     */
+   * Massage salons.
+   */
   const MASSAGE = 4;
 
   /**
-     * Alternative medical offices.
-     */
+   * Alternative medical offices.
+   */
   const MEDICINE_ALTERNATIVE = 15;
 
   /**
-     * Hospitals and private doctors.
-     */
+   * Hospitals and private doctors.
+   */
   const MEDICINE_TRADITIONAL = 13;
 
   /**
-     * Music schools.
-     */
+   * Music schools.
+   */
   const MUSIC = 19;
 
   /**
-     * Personal trainings.
-     */
+   * Personal trainings.
+   */
   const PERSONAL_TRAINING = 5;
 
   /**
-     * Pilates.
-     */
+   * Pilates.
+   */
   const PILATES = 7;
 
   /**
-     * Pole dancing studios.
-     */
+   * Pole dancing studios.
+   */
   const POLE_DANCING = 18;
 
   /**
-     * Salons.
-     */
+   * Salons.
+   */
   const SALON = 3;
 
   /**
-     * Spa salons.
-     */
+   * Spa salons.
+   */
   const SPA = 2;
 
   /**
-     * Spinning.
-     */
+   * Spinning.
+   */
   const SPINNING = 17;
 
   /**
-     * Tours and events.
-     */
+   * Tours and events.
+   */
   const TOUR = 12;
 
   /**
-     * Wellness Centers
-     */
+   * Wellness Centers
+   */
   const WELLNESS_CENTER = 20;
 
   /**
-     * Yoga.
-     */
+   * Yoga.
+   */
   const YOGA = 1;
 
   /**
-     * Zumba.
-     */
+   * Zumba.
+   */
   const ZUMBA = 27;
 }
 

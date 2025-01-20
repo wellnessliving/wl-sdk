@@ -20,35 +20,35 @@ use WellnessLiving\WlModelAbstract;
 class ChangePasswordApplyModel extends WlModelAbstract
 {
   /**
-     * The verification code, which can be obtained from the "reset password" email link. This is a required value.
-     *
-     * @post get
-     * @var string
-     */
+   * The verification code, which can be obtained from the "reset password" email link. This is a required value.
+   *
+   * @post get
+   * @var string
+   */
   public $text_code = '';
 
   /**
-     * The user's login, which can be obtained from the "reset password" email link. This is a required value.
-     *
-     * @post get
-     * @var string
-     */
+   * The user's login, which can be obtained from the "reset password" email link. This is a required value.
+   *
+   * @post get
+   * @var string
+   */
   public $text_login = '';
 
   /**
-     * The user's email address, which can be obtained from the "reset password" email link. This is a required value.
-     *
-     * @post get
-     * @var string
-     */
+   * The user's email address, which can be obtained from the "reset password" email link. This is a required value.
+   *
+   * @post get
+   * @var string
+   */
   public $text_mail = '';
 
   /**
-     * The user's new password. This is a required value.
-     *
-     * @post post
-     * @var string
-     */
+   * The user's new password. This is a required value.
+   *
+   * @post post
+   * @var string
+   */
   public $text_password = '';
 }
 

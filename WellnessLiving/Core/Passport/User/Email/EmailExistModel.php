@@ -10,19 +10,19 @@ use WellnessLiving\WlModelAbstract;
 class EmailExistModel extends WlModelAbstract
 {
   /**
-     * Determines whether the email address exists.
-     *
-     * @get result
-     * @var bool
-     */
+   * Determines whether the email address exists.
+   *
+   * @get result
+   * @var bool
+   */
   public $is_exist = false;
 
   /**
-     * The email address.
-     *
-     * @get get
-     * @var string
-     */
+   * The email address.
+   *
+   * @get get
+   * @var string
+   */
   public $text_email = '';
 }
 

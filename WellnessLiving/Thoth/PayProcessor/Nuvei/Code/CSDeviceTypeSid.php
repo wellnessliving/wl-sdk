@@ -12,18 +12,18 @@ namespace WellnessLiving\Thoth\PayProcessor\Nuvei\Code;
 class CSDeviceTypeSid
 {
   /**
-     * Indicate the package is initialed from register end.
-     */
+   * Indicate the package is initialed from register end.
+   */
   const REGISTER_INDENTIFICATION = 1;
 
   /**
-     * Indicate communication is initialed from terminal end.
-     */
+   * Indicate communication is initialed from terminal end.
+   */
   const TERMINAL_INDENTIFICATION = 2;
 
   /**
-     * @inheritDoc
-     */
+   * @inheritDoc
+   */
   const _TRANSLATION_CONTEXT = 'Wl.Pay.Processor.Nuvei.Code.CSDeviceTypeSid';
 }
 

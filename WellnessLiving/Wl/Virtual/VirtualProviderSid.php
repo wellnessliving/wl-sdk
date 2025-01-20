@@ -10,13 +10,13 @@ namespace WellnessLiving\Wl\Virtual;
 class VirtualProviderSid
 {
   /**
-     * Virtual integration non implemented.
-     */
+   * Virtual integration non implemented.
+   */
   const NON_INTEGRATED = 2;
 
   /**
-     * Virtual Zoom service integration.
-     */
+   * Virtual Zoom service integration.
+   */
   const ZOOM = 1;
 }
 

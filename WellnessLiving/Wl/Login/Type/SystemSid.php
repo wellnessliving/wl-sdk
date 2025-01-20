@@ -13,18 +13,18 @@ namespace WellnessLiving\Wl\Login\Type;
 class SystemSid
 {
   /**
-     * Active client or member.
-     */
+   * Active client or member.
+   */
   const ACTIVE = 1;
 
   /**
-     * Inactive client or member.
-     */
+   * Inactive client or member.
+   */
   const INACTIVE = 2;
 
   /**
-     * Newcomer, who has not bought anything that can make him a regular client of the business.
-     */
+   * Newcomer, who has not bought anything that can make him a regular client of the business.
+   */
   const PROSPECT = 3;
 }
 

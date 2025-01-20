@@ -10,40 +10,40 @@ namespace WellnessLiving\Wl\Quiz\Response;
 class SourceSid
 {
   /**
-     * Quiz response received during booking process.
-     */
+   * Quiz response received during booking process.
+   */
   const BOOKING = 2;
 
   /**
-     * Quiz response was imported.
-     */
+   * Quiz response was imported.
+   */
   const IMPORT = 6;
 
   /**
-     * Quiz response received by kiosk mode link.
-     */
+   * Quiz response received by kiosk mode link.
+   */
   const KIOSK = 7;
 
   /**
-     * Quiz response received by direct link.
-     */
+   * Quiz response received by direct link.
+   */
   const LINK = 1;
 
   /**
-     * Quiz response received by direct link.
-     *
-     * @title Studio
-     */
+   * Quiz response received by direct link.
+   *
+   * @title Studio
+   */
   const MANUAL = 5;
 
   /**
-     * Quiz response received during purchase process.
-     */
+   * Quiz response received during purchase process.
+   */
   const PURCHASE = 4;
 
   /**
-     * Quiz response received during registration process.
-     */
+   * Quiz response received during registration process.
+   */
   const REGISTRATION = 3;
 }
 

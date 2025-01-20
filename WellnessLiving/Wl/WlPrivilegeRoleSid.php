@@ -10,31 +10,31 @@ namespace WellnessLiving\Wl;
 abstract class WlPrivilegeRoleSid
 {
   /**
-     * Staff role business owner.
-     *
-     * @title Business Owner
-     */
+   * Staff role business owner.
+   *
+   * @title Business Owner
+   */
   const BUSINESS_OWNER = 1;
 
   /**
-     * Staff role front desk.
-     *
-     * @title Front Desk
-     */
+   * Staff role front desk.
+   *
+   * @title Front Desk
+   */
   const FRONT_DESK = 4;
 
   /**
-     * Staff role instructor.
-     *
-     * @title Instructor
-     */
+   * Staff role instructor.
+   *
+   * @title Instructor
+   */
   const INSTRUCTOR = 3;
 
   /**
-     * Staff role location owner.
-     *
-     * @title Manager
-     */
+   * Staff role location owner.
+   *
+   * @title Manager
+   */
   const LOCATION_OWNER = 2;
 }
 

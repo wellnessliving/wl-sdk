@@ -10,23 +10,21 @@ use WellnessLiving\WlModelAbstract;
 class SamlUserDeactivationModel extends WlModelAbstract
 {
   /**
-     * A list of SAML identifiers.
-     *
-     * @post post
-     * @var string[]
-     *
-     *
-     */
+   * A list of SAML identifiers.
+   *
+   * @post post
+   * @var string[]
+   */
   public $a_id;
 
   /**
-     * The key of the SAML identifier.
-     *
-     * This value is `true` if an active user is found in the business, `false` if otherwise.
-     *
-     * @post result
-     * @var bool[]
-     */
+   * The key of the SAML identifier.
+   *
+   * This value is `true` if an active user is found in the business, `false` if otherwise.
+   *
+   * @post result
+   * @var bool[]
+   */
   public $a_result;
 }
 

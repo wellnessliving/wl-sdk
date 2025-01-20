@@ -11,28 +11,27 @@ use WellnessLiving\WlModelAbstract;
 class PurchaseShareModel extends WlModelAbstract
 {
   /**
-     * The social network. One of the {@link ASocialSid} constants.
-     *
-     * @post post
-     * @var int
-     */
+   * The social network. One of the {@link ASocialSid} constants.
+   *
+   * @post post
+   * @var int
+   */
   public $id_social;
 
   /**
-     * The key of the purchase.
-     *
-     * @post post
-     * @var string
-     *
-     */
+   * The key of the purchase.
+   *
+   * @post post
+   * @var string
+   */
   public $k_purchase;
 
   /**
-     * The URL to the sharing page.
-     *
-     * @post result
-     * @var string
-     */
+   * The URL to the sharing page.
+   *
+   * @post result
+   * @var string
+   */
   public $url_share;
 }
 

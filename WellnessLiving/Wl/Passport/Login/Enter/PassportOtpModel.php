@@ -10,51 +10,49 @@ use WellnessLiving\WlModelAbstract;
 class PassportOtpModel extends WlModelAbstract
 {
   /**
-     * Whether OTP code will be sending to user via email.
-     * `true` if OTP code is sending through email,
-     * `false` if OTP code is sending through phone number.
-     *
-     * @get get
-     * @var bool
-     */
+   * Whether OTP code will be sending to user via email.
+   * `true` if OTP code is sending through email,
+   * `false` if OTP code is sending through phone number.
+   *
+   * @get get
+   * @var bool
+   */
   public $is_mail = false;
 
   /**
-     * Whether OTP code will be sending to user via email.
-     *  `true` if OTP code is sending through phone number,
-     *  `false` if OTP code is sending through email.
-     *
-     * @get get
-     * @var bool
-     */
+   * Whether OTP code will be sending to user via email.
+   *  `true` if OTP code is sending through phone number,
+   *  `false` if OTP code is sending through email.
+   *
+   * @get get
+   * @var bool
+   */
   public $is_phone = false;
 
   /**
-     * Business key.
-     *
-     * @get get
-     * @post get
-     * @var string
-     *
-     */
+   * Business key.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
   public $k_business = '';
 
   /**
-     * Otp code integer that was random generated.
-     *
-     * @post post
-     * @var string
-     */
+   * Otp code integer that was random generated.
+   *
+   * @post post
+   * @var string
+   */
   public $s_otp_code = '';
 
   /**
-     * User key.
-     *
-     * @get get
-     * @post get
-     * @var string
-     *
-     */
+   * User key.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
   public $uid = '';
 }
 

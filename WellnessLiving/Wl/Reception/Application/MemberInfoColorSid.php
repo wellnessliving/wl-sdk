@@ -13,23 +13,23 @@ namespace WellnessLiving\Wl\Reception\Application;
 abstract class MemberInfoColorSid
 {
   /**
-     * Default for neutral, informative messages. Displayed in blue.
-     */
+   * Default for neutral, informative messages. Displayed in blue.
+   */
   const BLUE = 1;
 
   /**
-     * Positive messages. Displayed in green.
-     */
+   * Positive messages. Displayed in green.
+   */
   const GREEN = 2;
 
   /**
-     * Mild negative messages to warn the user. Displayed in orange.
-     */
+   * Mild negative messages to warn the user. Displayed in orange.
+   */
   const ORANGE = 3;
 
   /**
-     * Negative messages with strong importance or urgency. Displayed in red.
-     */
+   * Negative messages with strong importance or urgency. Displayed in red.
+   */
   const RED = 4;
 }
 

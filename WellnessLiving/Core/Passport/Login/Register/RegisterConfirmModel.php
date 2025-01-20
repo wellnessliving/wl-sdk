@@ -10,36 +10,35 @@ use WellnessLiving\WlModelAbstract;
 class RegisterConfirmModel extends WlModelAbstract
 {
   /**
-     * The unique registration code.
-     *
-     * @post get
-     * @var string
-     */
+   * The unique registration code.
+   *
+   * @post get
+   * @var string
+   */
   public $text_code = '';
 
   /**
-     * The user's login.
-     *
-     * @post get
-     * @var string
-     */
+   * The user's login.
+   *
+   * @post get
+   * @var string
+   */
   public $text_login = '';
 
   /**
-     * The user's email.
-     *
-     * @post get
-     * @var string
-     */
+   * The user's email.
+   *
+   * @post get
+   * @var string
+   */
   public $text_mail = '';
 
   /**
-     * The key of the new registered user.
-     *
-     * @post result
-     * @var string
-     *
-     */
+   * The key of the new registered user.
+   *
+   * @post result
+   * @var string
+   */
   public $uid;
 }
 

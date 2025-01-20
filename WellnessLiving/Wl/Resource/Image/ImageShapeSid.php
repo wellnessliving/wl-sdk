@@ -8,23 +8,23 @@ namespace WellnessLiving\Wl\Resource\Image;
 class ImageShapeSid
 {
   /**
-     * Circle.
-     */
+   * Circle.
+   */
   const CIRCLE = 1;
 
   /**
-     * Rectangle.
-     */
+   * Rectangle.
+   */
   const RECTANGLE = 2;
 
   /**
-     * Square.
-     */
+   * Square.
+   */
   const SQUARE = 3;
 
   /**
-     * Triangle.
-     */
+   * Triangle.
+   */
   const TRIANGLE = 4;
 }
 
