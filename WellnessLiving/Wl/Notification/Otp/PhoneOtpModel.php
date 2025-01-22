@@ -24,6 +24,7 @@ class PhoneOtpModel extends WlModelAbstract
    * Phone number to be validated.
    *
    * @get get
+   * @post get
    * @var string
    */
   public $text_phone = '';
