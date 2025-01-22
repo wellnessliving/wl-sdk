@@ -128,6 +128,14 @@ class AlertModel extends WlModelAbstract
   public $a_warning;
 
   /**
+   * If `true`, the API is being used from backend. Otherwise, this will be `false`.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_backend = false;
+
+  /**
    * The key of the business.
    *
    * @get get
