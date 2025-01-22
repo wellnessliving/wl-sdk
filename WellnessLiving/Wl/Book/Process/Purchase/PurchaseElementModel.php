@@ -21,6 +21,16 @@ class PurchaseElementModel extends WlModelAbstract
   public $a_tax;
 
   /**
+   * Date/time of session is booking.
+   *
+   * `null` until initialized.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dtu_date = null;
+
+  /**
    * The number of sessions which are booked simultaneously.
    *
    * @get get
@@ -64,13 +74,30 @@ class PurchaseElementModel extends WlModelAbstract
 
   /**
    * Installment template key.
-   * This property is optional. `null` if installment plan doesn't exist for bought item.
-   * `0` if installment plan doesn't selected for bought item from the list of installment plans.
+   * This property is optional.
+   *
+   * * can only be set for the purchase option which supports installment plan, see {@link PurchaseItemAbstract::INSTALLMENT_ALLOW_USER} property;
+   * * `null` if installment plan doesn't exist for bought item;
+   * * `0` if installment plan doesn't selected for bought item from the list of installment plans.
+   *
+   * NOTE:
+   * * Calculations of discounts and taxes for installment plans are for demonstration purposes only!
+   * * Installment is not an independent purchase item and has no discounts or taxes.
+   * * Installment is a division of the final amount (with taxes and discounts), of some purchase option, into N parts.
    *
    * @get get
    * @var string|null
    */
   public $k_pay_installment_template = null;
+
+  /**
+   * The key of the reward prize.
+   * Not empty only if the user wants to redeem prize and use it to pay for a visit.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_reward_prize = '0';
 
   /**
    * The cost of one purchase item (with taxes).

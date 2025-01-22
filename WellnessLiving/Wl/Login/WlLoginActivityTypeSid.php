@@ -6,8 +6,6 @@ namespace WellnessLiving\Wl\Login;
  * Manages identifiers of user activity.
  *
  * Last ID: 54.
- *
- * @copyright 2012 - 2015, WellnessLiving Inc, www.wellnessliving.com.
  */
 abstract class WlLoginActivityTypeSid
 {
@@ -232,6 +230,11 @@ abstract class WlLoginActivityTypeSid
    * The user shared purchase item into Twitter
    */
   const REVIEW_SHARE_TWITTER = 42;
+
+  /**
+   * Reward points were changed manually.
+   */
+  const REWARD_MANUAL = 55;
 
   /**
    * All reward points have been reset.

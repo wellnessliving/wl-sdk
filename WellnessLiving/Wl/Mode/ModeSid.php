@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Mode;
 /**
  * The source of visit.
  *
- * Last used ID: 25.
+ * Last used ID: 26.
  */
 class ModeSid
 {
@@ -28,6 +28,11 @@ class ModeSid
    * Debt paid via collections.
    */
   const COLLECTIONS = 22;
+
+  /**
+   * Debt paid via collections.
+   */
+  const COLLECTIONS_FUTURE = 26;
 
   /**
    * Action made via email.

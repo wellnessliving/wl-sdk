@@ -25,6 +25,32 @@ class VisitStatusModel extends WlModelAbstract
   public $a_resource = [];
 
   /**
+   * An array of service resources.
+   *
+   * Contains an extended data set, as well as a different format than {@link VisitStatusModel::$a_resource}.
+   *
+   * Each element contains the following set of data:
+   * <dl>
+   *  <dt>string <var>k_resource</var></dt>
+   *
+   *  <dt>string <var>k_resource_type</var></dt>
+   *
+   *  <dt>int <var>i_index</var></dt>
+   *  <dd>Index of the resource on the layout.</dd>
+   *  <dt>int <var>i_quantity</var></dt>
+   *  <dd>Quantity of the resource on the layout.</dd>
+   *  <dt>string <var>text_alias</var></dt>
+   *  <dd>Resource's custom name (alias) on the layout.</dd>
+   *  <dt>string <var>text_title</var></dt>
+   *  <dd>Resource's title.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var ?array[]
+   */
+  public $a_resource_alias = [];
+
+  /**
    * The list of keys of staff members that conduct the class.
    *
    * @get result
@@ -140,6 +166,14 @@ class VisitStatusModel extends WlModelAbstract
    * @var string
    */
   public $k_class_period = '';
+
+  /**
+   * The key of the location where visit provides.
+   *
+   * @get result
+   * @var string
+   */
+  public $k_location = '';
 
   /**
    * The email pattern key.

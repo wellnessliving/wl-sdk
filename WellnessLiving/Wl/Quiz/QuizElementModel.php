@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Quiz;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Manages a single quiz.
@@ -10,9 +11,21 @@ use WellnessLiving\WlModelAbstract;
 class QuizElementModel extends WlModelAbstract
 {
   /**
+   * Access log data.
+   *
+   * @get result
+   * @var array[] Access log data.
+   */
+  public $a_access_log = [];
+
+  /**
    * List of quiz elements.
    *
-   * Order of the element in array corresponds to order of elements on the form.
+   * Each element responsible for one quiz question (inheritor of {@link \Core\Quiz\Element\ElementQuestionAbstract})
+   * and contains array representation of individual question.
+   * Structure of each value depend on type of element and contains public arguments of responsible class element.
+   *
+   * Order of the elements in array corresponds to order of elements on the form.
    *
    * @get result
    * @post post
@@ -72,6 +85,26 @@ class QuizElementModel extends WlModelAbstract
   public $is_active = true;
 
   /**
+   * `true` for request quiz from form builder page, `false` otherwise.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_builder = false;
+
+  /**
+   * Whether quiz response received by kiosk or direct mode link.
+   *
+   * `true` quiz response received by kiosk mode.
+   * `false` quiz response received by direct or direct mode.
+   *
+   * @get get
+   * @post get
+   * @var bool
+   */
+  public $is_simple = false;
+
+  /**
    * List of quiz elements in json format.
    *
    * Order of the element in array corresponds to order of elements on the form.
@@ -80,6 +113,23 @@ class QuizElementModel extends WlModelAbstract
    * @var string
    */
   public $json_element = '';
+
+  /**
+   * List of purchase items for which this form is loaded in JSON format.
+   *
+   * Each element has the format `[id_purchase_item]::[k_id]`, where: <dl>
+   *   <dt>int <var>id_purchase_item</var></dt>
+   *   <dd>The ID of the purchase item. One of the {@link WlPurchaseItemSid} constants.</dd>
+   *   <dt>string <var>k_id</var></dt>
+   *   <dd>The item key. This depends on <var>id_purchase_item</var> of this array.</dd>
+   * </dl>
+   *
+   * Empty in case when purchase item not specified or form loaded from direct link.
+   *
+   * @get get
+   * @var string
+   */
+  public $json_purchase_item = '';
 
   /**
    * Business key within which quiz is managed.
@@ -91,6 +141,17 @@ class QuizElementModel extends WlModelAbstract
    * @var string
    */
   public $k_business = '';
+
+  /**
+   * Business type key. Used only for forms in the system business.
+   *
+   * `null` if not initialized.
+   *
+   * @get result
+   * @post post
+   * @var string|null
+   */
+  public $k_business_type = null;
 
   /**
    * Quiz key.
@@ -107,6 +168,7 @@ class QuizElementModel extends WlModelAbstract
    * Quiz login key.
    *
    * @delete get
+   * @get get
    * @post get
    * @put get
    * @var string
@@ -133,6 +195,32 @@ class QuizElementModel extends WlModelAbstract
    * @var string
    */
   public $text_title = '';
+
+  /**
+   * UID of the client for which quiz requested.
+   *
+   * @get get
+   * @var string
+   */
+  public $uid_client = '';
+
+  /**
+   * Direct URL to quiz.
+   *
+   * @get result
+   * @put result
+   * @var string
+   */
+  public $url_quiz;
+
+  /**
+   * Kiosk direct URL to quiz.
+   *
+   * @get result
+   * @put result
+   * @var string
+   */
+  public $url_quiz_kiosk;
 }
 
 ?>

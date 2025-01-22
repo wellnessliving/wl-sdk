@@ -11,6 +11,14 @@ use WellnessLiving\WlModelAbstract;
 class UserInfoModel extends WlModelAbstract
 {
   /**
+   * List of member groups that the user belongs to.
+   *
+   * @get result
+   * @var string[]
+   */
+  public $a_member_group = [];
+
+  /**
    * Information about the user's photo. The information returned has the following structure:<dl>
    *   <dt>int <var>i_height</var></dt>
    *   <dd>The height of the photo.</dd>
@@ -31,6 +39,8 @@ class UserInfoModel extends WlModelAbstract
    * List of user's data.
    *
    * <dl>
+   *   <dt>array <var>a_member_group</var></dt>
+   *   <dd>List of member groups that the user belongs to.</dd>
    *   <dt>array <var>a_photo</var></dt>
    *   <dd>Information about the user's photo.</dd>
    *   <dt>string <var>dt_add</var></dt>
@@ -113,6 +123,17 @@ class UserInfoModel extends WlModelAbstract
   public $dt_birth;
 
   /**
+   * Whether client's login type has a discount.
+   * `true` - login type has a discount, `false` - otherwise.
+   *
+   * This will be `null` if a client has no assigned login type.
+   *
+   * @get result
+   * @var ?bool
+   */
+  public $has_discount = null;
+
+  /**
    * The ID of the user's gender. One of the {@link AGenderSid} constants.
    *
    * This will be `null` if the gender isn't set yet.
@@ -148,6 +169,16 @@ class UserInfoModel extends WlModelAbstract
    * @var string
    */
   public $k_business = '0';
+
+  /**
+   * City.
+   *
+   * `null` if "address" field is disabled in the business.
+   *
+   * @get result
+   * @var ?string
+   */
+  public $k_city;
 
   /**
    * The key of the login type. The login type describes the user's client type in this business.
@@ -213,6 +244,45 @@ class UserInfoModel extends WlModelAbstract
    * @var string
    */
   public $s_phone_work = '';
+
+  /**
+   * Address inside a city.
+   *
+   * `null` if "address" field is disabled in the business.
+   *
+   * @get result
+   * @var ?string
+   */
+  public $text_address;
+
+  /**
+   * City name.
+   *
+   * `null` if "address" field is disabled in the business.
+   *
+   * @get result
+   * @var ?string
+   */
+  public $text_city;
+
+  /**
+   * Login type title.
+   * Empty if a client has no client type assigned.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_login_type = '';
+
+  /**
+   * Postal code.
+   *
+   * `null` if "address" field is disabled in the business.
+   *
+   * @get result
+   * @var ?string
+   */
+  public $text_postal;
 
   /**
    * The key of the user.

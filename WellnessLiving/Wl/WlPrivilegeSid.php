@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 200.
+ * Last Used ID: 205.
  */
 abstract class WlPrivilegeSid
 {
@@ -18,6 +18,11 @@ abstract class WlPrivilegeSid
    * Unpaid appointment booking.
    */
   const APPOINTMENT_BOOK_UNPAID = 167;
+
+  /**
+   * Book appointments for clients with an unsigned waiver.
+   */
+  const APPOINTMENT_BOOK_UNSIGNED = 203;
 
   /**
    * Edit appointment at my location.
@@ -42,7 +47,7 @@ abstract class WlPrivilegeSid
   const APPOINTMENT_VIEW = 52;
 
   /**
-   * Ability to book clients outside of their current paid period.
+   * Ability to book clients outside their current paid period.
    */
   const BOOK_OUTSIDE_PAID_PERIOD = 141;
 
@@ -142,6 +147,11 @@ abstract class WlPrivilegeSid
   const CLASS_BOOK_UNPAID = 79;
 
   /**
+   * Book classes for clients with an unsigned waiver.
+   */
+  const CLASS_BOOK_UNSIGNED = 201;
+
+  /**
    * Edit classes at my location.
    */
   const CLASS_EDIT = 3;
@@ -212,6 +222,11 @@ abstract class WlPrivilegeSid
    * Add clients to the attendance list of a service, even if they do not have an applicable purchase option.
    */
   const ENROLLMENT_BOOK_UNPAID = 80;
+
+  /**
+   * Book events for clients with an unsigned waiver.
+   */
+  const ENROLLMENT_BOOK_UNSIGNED = 202;
 
   /**
    * Edit classes at my location.
@@ -461,7 +476,7 @@ abstract class WlPrivilegeSid
   const NOTIFICATION_CLASS_BOOK = 57;
 
   /**
-   * Receive client class cancelation notification.
+   * Receive client class cancellation notification.
    */
   const NOTIFICATION_CLASS_CANCEL = 58;
 
@@ -596,6 +611,11 @@ abstract class WlPrivilegeSid
   const PROFILE_MY_LOCATION = 86;
 
   /**
+   * View client’s upcoming and past schedule.
+   */
+  const PROFILE_SCHEDULE = 205;
+
+  /**
    * Manage profile client type.
    */
   const PROFILE_TYPE_EDIT = 68;
@@ -711,6 +731,11 @@ abstract class WlPrivilegeSid
    * Unpaid asset booking.
    */
   const RESOURCE_BOOK_UNPAID = 168;
+
+  /**
+   * Book assets for clients with an unsigned waiver.
+   */
+  const RESOURCE_BOOK_UNSIGNED = 204;
 
   /**
    * Mark client reviews as inappropriate and respond to customer comments.

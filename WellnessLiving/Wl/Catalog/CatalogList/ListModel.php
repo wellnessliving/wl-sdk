@@ -15,7 +15,7 @@ class ListModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public $a_product;
+  public $a_product = [];
 
   /**
    * The list of products to show with duplicates.
@@ -37,7 +37,7 @@ class ListModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * The key of a location.
+   * The key of a location. If `0`, all products in the business are retrieved.
    *
    * @get get
    * @var string

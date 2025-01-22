@@ -178,7 +178,7 @@ class ElementModel extends WlModelAbstract
    *     bool <var>is_virtual</var>
    *   </dt>
    *   <dd>
-   *     This will be `true` if the session is not held in person but offered remotely. If will be `false` otherwise.
+   *     This will be `true` if the session is not held in person but offered remotely. It will be `false` otherwise.
    *   </dd>
    *   <dt>
    *     string <var>f_price</var>
@@ -221,7 +221,7 @@ class ElementModel extends WlModelAbstract
    *     string <var>text_room</var>
    *   </dt>
    *   <dd>
-   *     The room in which the session is held.
+   *     The room of the event.
    *   </dd>
    * </dl>
    *
@@ -253,7 +253,9 @@ class ElementModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>int <var>i_count</var></dt>
-   *   <dd>The number of visits.</dd>
+   *   <dd>The number of visits required.</dd>
+   *   <dt>int <var>i_has</var></dt>
+   *   <dd>The number of visits the client has already attended.</dd>
    *   <dt>bool <var>is_event</var></dt>
    *   <dd>`true` if this is an event, `false` if this is a class.</dd>
    *   <dt>string <var>k_class</var></dt>
@@ -371,14 +373,6 @@ class ElementModel extends WlModelAbstract
    * @var int
    */
   public $i_session;
-
-  /**
-   * The remaining session count.
-   *
-   * @get result
-   * @var int
-   */
-  public $i_session_remain;
 
   /**
    * Staff image height in pixels. Please specify this value if you need image to be returned in specific size.

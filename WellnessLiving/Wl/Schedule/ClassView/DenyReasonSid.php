@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Schedule\ClassView;
 /**
  * Reasons why the client can't book this class.
  *
- * Last used ID: 21
+ * Last used ID: 23
  */
 class DenyReasonSid
 {
@@ -33,6 +33,11 @@ class DenyReasonSid
    * Liability Release needs to be agreed.
    */
   const AGREE_NX = 5;
+
+  /**
+   * Client has unpaid fees.
+   */
+  const BALANCE_NEGATIVE = 22;
 
   /**
    * Client is already booked for this session.
@@ -98,6 +103,11 @@ class DenyReasonSid
    * Online booking is disabled for the class.
    */
   const NOT_BOOKABLE = 18;
+
+  /**
+   * Online booking is disabled for this type of client.
+   */
+  const NOT_BOOKABLE_BY_TYPE = 23;
 
   /**
    * Required personal details missing.

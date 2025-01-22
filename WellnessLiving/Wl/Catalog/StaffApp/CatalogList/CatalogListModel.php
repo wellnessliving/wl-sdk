@@ -11,7 +11,8 @@ use WellnessLiving\Wl\WlProgramSid;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
- * Returns a list of all products available for a business’s shop at a particular location.
+ * Returns a list of all products available from a business’s shop.
+ * If a location is specified, only products available at that location are included.
  */
 class CatalogListModel extends WlModelAbstract
 {
@@ -31,6 +32,15 @@ class CatalogListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The list of login types available to purchase the sale item.
+   *     Empty list means that the sale item is available to all login types.
+   *   </dd>
+   *   <dt>
+   *     string[] <var>a_member_group</var>
+   *   </dt>
+   *   <dd>
+   *     The list of member groups available to purchase the sale item.
+   *
+   *     Empty list means that the sale item is available to all member groups.
    *   </dd>
    *   <dt>
    *     string[] <var>a_shop_category</var>

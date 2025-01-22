@@ -68,16 +68,18 @@ class EditByTokenModel extends WlModelAbstract
    * An array contained with information about phone inheritance.
    * The array has the following structure:
    * <dl>
-   *   <dt>bool [<var>is_phone_inherit</var>]</dt>
+   *   <dt>bool [`is_phone_inherit`]</dt>
    *   <dd>Indicates weather to inherit phone numbers from relative or not. `1` if phone inheritance is needed, '0' otherwise.</dd>
-   *   <dt>string <var>uid_relative</var></dt>
+   *   <dt>string [`text_relative`]</dt>
+   *   <dd>Relative's name.</dd>
+   *   <dt>string `uid_relative`</dt>
    *   <dd>User key of relative.</dd>
    * </dl>
    *
    * @get result
    * @post post
    * @put post
-   * @var array[]
+   * @var array
    */
   public $a_phone_inherit = [];
 
@@ -121,6 +123,25 @@ class EditByTokenModel extends WlModelAbstract
    * @var int|null
    */
   public $id_register_source = null;
+
+  /**
+   * Whether the address be inherited.
+   * `true` if address inherit, otherwise `false`.
+   *
+   * @get result
+   * @post get
+   * @put get
+   * @var bool
+   */
+  public $is_address_inherit = false;
+
+  /**
+   * `true` to throw an exception in a case of validation error; `false` to not throw.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_exception_throw = false;
 
   /**
    * Indicates whether to display the full profile edit form or the short version.
@@ -250,6 +271,18 @@ class EditByTokenModel extends WlModelAbstract
    * @var string
    */
   public $uid_existed = '';
+
+  /**
+   * UID of the user, whose address was inherited by the existing client we want to add.
+   * Empty if non-existent user is being added or user to add is the one, whose address is inherited.
+   * `null` If the address is not inherited.
+   *
+   * @get result
+   * @post get
+   * @put get
+   * @var string|null
+   */
+  public $uid_inherit_address = null;
 
   /**
    * UID of the user, whose email was inherited by the existing client we want to add.

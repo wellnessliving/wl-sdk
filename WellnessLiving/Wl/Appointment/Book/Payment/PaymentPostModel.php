@@ -119,6 +119,12 @@ class PaymentPostModel extends WlModelAbstract
    *   <dt>
    *     boolean [<var>is_hide</var>]
    *   </dt>
+   *   <dt>
+   *     bool [<var>is_save</var>=true]
+   *   </dt>
+   *   <dd>
+   *     Whether payment method should be saved to user's account.
+   *   </dd>
    *   <dd>
    *     Determines whether this payment method is hidden.
    *   </dd>
@@ -279,7 +285,15 @@ class PaymentPostModel extends WlModelAbstract
   public $is_walk_in = false;
 
   /**
-   * The item key. Depends of {@link PaymentModel::$id_purchase_item} property.
+   * The business key. Currently used only with {@link PaymentModel::$k_session_pass} variable.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $k_business = null;
+
+  /**
+   * The item key. Depends on {@link PaymentModel::$id_purchase_item} property.
    *
    * @get get
    * @post get
@@ -346,12 +360,20 @@ class PaymentPostModel extends WlModelAbstract
   public $m_discount = '0.00';
 
   /**
-   * Surcharge amount.
+   * Surcharge amount calculated for credit cards (Virtual Terminal and Card Swiper).
    *
    * @get result
    * @var string
    */
   public $m_surcharge = '0.00';
+
+  /**
+   * Surcharge amount calculated for money transfers from account: ACH, Direct Entry.
+   *
+   * @get result
+   * @var string
+   */
+  public $m_surcharge_ach = '0.00';
 
   /**
    * The tax of service.

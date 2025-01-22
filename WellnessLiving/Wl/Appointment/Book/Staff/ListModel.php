@@ -73,6 +73,16 @@ class ListModel extends WlModelAbstract
   public $has_staff;
 
   /**
+   * Custom appointment duration in minutes.
+   *
+   * `null` if not set.
+   *
+   * @get get
+   * @var int|null
+   */
+  public $i_duration_custom = null;
+
+  /**
    * User role by whom this api called.
    * For different roles different results might be generated.
    *

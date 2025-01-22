@@ -20,6 +20,11 @@ class SourceSid
   const IMPORT = 6;
 
   /**
+   * Quiz response received by kiosk mode link.
+   */
+  const KIOSK = 7;
+
+  /**
    * Quiz response received by direct link.
    */
   const LINK = 1;

@@ -56,7 +56,11 @@ class PaymentModel extends WlModelAbstract
    *         <dt>int <var>id_purchase_item</var></dt>
    *         <dd>The purchase type of the element. One of the {@link WlPurchaseItemSid} constants.</dd>
    *         <dt>string <var>k_id</var></dt>
-   *         <dd>The primary key of the element, depending on the element type.</dd></dl>
+   *         <dd>
+   *           The primary key of the element, depending on the element type.
+   *           Pay attention that if you add a product into gift card, there must be specified not product key but product option key.
+   *           Do not specify separate field `k_shop_product_option`.
+   *         </dd></dl>
    *       </dd>
    *       <dt>
    *         array [<var>a_uid_share</var>]
@@ -69,16 +73,13 @@ class PaymentModel extends WlModelAbstract
    *       </dt>
    *       <dd>
    *          "Wellness Program" fields.
-   *
    *          <var>k_wellness_program</var> must be passed along with this array. See the description below.
-   *
    *          <dl>
    *            <dt>array <var>a_account</var></dt>
    *            <dd>See {@link EnrollmentFieldListModel::$a_account} for a full description.</dd>
    *            <dt>array <var>a_field</var></dt>
    *            <dd>See {@link EnrollmentFieldListModel::$a_field} for a full description.</dd>
    *          </dl>
-   *
    *          It's recommended to validate the fields using the POST method of the {@link EnrollmentFieldListModel} model.
    *       </dd>
    *       <dt>
@@ -150,9 +151,7 @@ class PaymentModel extends WlModelAbstract
    *       </dt>
    *       <dd>
    *          The "Wellness Program" key. Set this for the insurance membership promotion.
-   *
    *          <var>a_wellness_program</var> array must be passed along with the key. See the array description above.
-   *
    *          <p>Use the following models to work with this type of promotion:</p>
    *          <ul>
    *            <li>{@link ProgramListModel} to obtain list of active programs.</li>
@@ -237,6 +236,12 @@ class PaymentModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The item key.
+   *   </dd>
+   *   <dt>
+   *     string [<var>k_login_prize</var>]
+   *   </dt>
+   *   <dd>
+   *    The key of the login prize to apply a login prize discount.
    *   </dd>
    *   <dt>
    *     string [<var>k_shop_product_option</var>]
@@ -355,6 +360,12 @@ class PaymentModel extends WlModelAbstract
    *   <dt>
    *     boolean [<var>is_hide</var>]
    *   </dt>
+   *   <dt>
+   *     bool [<var>is_save</var>=true]
+   *   </dt>
+   *   <dd>
+   *     Whether payment method should be saved to user's account.
+   *   </dd>
    *   <dd>
    *     Determines whether this payment method is hidden.
    *   </dd>
