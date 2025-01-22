@@ -49,6 +49,22 @@ class ElementModel extends WlModelAbstract
    *     <tt>true</tt> - clients can set promotion auto-renew.<br>
    *     <tt>false</tt> - clients can't set promotion auto-renew.
    *   </dd>
+   *   <dt>
+   *     array[] <var>a_component</var>
+   *   </dt>
+   *   <dd>
+   *     This applies only for coupons. Coupon components information. Each element will contain the following keys:
+   *     <dl>
+   *       <dt>int <var>id_purchase_item</var></dt>
+   *       <dd> Purchase item ID. One of {@link WlPurchaseItemSid} ID's. </dd>
+   *       <dt>int <var>id_sale</var></dt>
+   *       <dd>Sale ID. One of {@link WlSaleSid} ID's.</dd>
+   *       <dt>int <var>k_id</var></dt>
+   *       <dd>The identifier of the item.</dd>
+   *       <dt>string <var>text_title</var></dt>
+   *       <dd>The title of the item.</dd>
+   *     </dl>
+   *   </dd>
    * </dl>
    *
    * Consider the following examples:
