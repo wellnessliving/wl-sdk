@@ -42,6 +42,22 @@ class ElementModel extends WlModelAbstract
    * The structure may be different depending on the item category.
    * <dl>
    *   <dt>
+   *     array[] <var>a_component</var>
+   *   </dt>
+   *   <dd>
+   *     This applies only for coupons. Coupon components information. Each element will contain the following keys:
+   *     <dl>
+   *       <dt>int <var>id_purchase_item</var></dt>
+   *       <dd> Purchase item ID. One of {@link WlPurchaseItemSid} ID's. </dd>
+   *       <dt>int <var>id_sale</var></dt>
+   *       <dd>Sale ID. One of {@link WlSaleSid} ID's.</dd>
+   *       <dt>int <var>k_id</var></dt>
+   *       <dd>The identifier of the item.</dd>
+   *       <dt>string <var>text_title</var></dt>
+   *       <dd>The title of the item.</dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>
    *     bool <var>is_renew_public</var>
    *   </dt>
    *   <dd>
