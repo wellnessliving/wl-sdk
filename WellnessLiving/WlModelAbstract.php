@@ -203,6 +203,8 @@ class WlModelAbstract
    *   <dd>Whether this field should be passed to server with POST or PUT variables (in accordance to initial request).</dd>
    *   <dt>bool [<var>result</var>=false]</dt>
    *   <dd>Whether this field is returned by the server as a result of request.</dd>
+   *   <dt>bool [<var>error</var>=false]</dt>
+   *   <dd>Whether this field is returned by the server as a result of request when error.</dd>
    *   </dl>
    * @throws WlAssertException In a case of an assertion.
    */
@@ -244,7 +246,7 @@ class WlModelAbstract
             $a_operation=explode(',',$a_match[3][$i_match]);
             foreach($a_operation as $s_operation)
             {
-              WlAssertException::assertTrue($s_operation==='get'||$s_operation==='post'||$s_operation==='result',[
+              WlAssertException::assertTrue($s_operation==='get'||$s_operation==='post'||$s_operation==='result'||$s_operation==='error',[
                 's_class' => $s_class,
                 's_field' => $o_property->name,
                 's_mode' => $s_value,
@@ -693,7 +695,21 @@ class WlModelAbstract
     }
 
     if($o_request->a_result['status']!=='ok')
+    {
+      foreach($a_field as $s_field => $a_method)
+      {
+        if(empty($a_method[$s_method]))
+          continue;
+        if(empty($a_method[$s_method]['error']))
+          continue;
+
+        if(array_key_exists($s_field,$o_request->a_result))
+          $this->$s_field=$o_request->a_result[$s_field];
+        else
+          $this->$s_field=null;
+      }
       throw WlUserException::createApi($o_request);
+    }
 
     foreach($a_field as $s_field => $a_method)
     {
