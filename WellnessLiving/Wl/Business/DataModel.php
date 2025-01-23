@@ -210,6 +210,14 @@ class DataModel extends WlModelAbstract
   public $k_business_token;
 
   /**
+   * Key of business type.
+   *
+   * @get result
+   * @var string
+   */
+  public $k_business_type = '0';
+
+  /**
    * The currency key of the given business, or the system currency if the business didn't pass.
    *
    * @get result

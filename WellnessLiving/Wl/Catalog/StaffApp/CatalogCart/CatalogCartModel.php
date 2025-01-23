@@ -140,6 +140,14 @@ class CatalogCartModel extends WlModelAbstract
   public $is_discount_code_mode_select = false;
 
   /**
+   * Determines whether the future product usage tracking is enabled.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_product_track = false;
+
+  /**
    * Determines whether to display custom receipt notes at checkout.
    *
    * @get result

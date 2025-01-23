@@ -4,7 +4,7 @@ namespace WellnessLiving\Core\a;
 
 /**
  * A class for managing time intervals.
- * Last ID: 8.
+ * Last ID: 9.
  */
 abstract class ADurationSid
 {
@@ -49,6 +49,13 @@ abstract class ADurationSid
    * @title Week
    */
   const WEEK = 7;
+
+  /**
+   * Two weeks (14 days).
+   *
+   * @title 2 Weeks
+   */
+  const WEEK2 = 9;
 
   /**
    * Foursome of weeks (28 days).

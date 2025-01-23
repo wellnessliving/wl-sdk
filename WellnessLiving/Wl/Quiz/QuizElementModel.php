@@ -93,6 +93,14 @@ class QuizElementModel extends WlModelAbstract
   public $is_builder = false;
 
   /**
+   * `true` if quiz is imported, `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_imported;
+
+  /**
    * Whether quiz response received by kiosk or direct mode link.
    *
    * `true` quiz response received by kiosk mode.

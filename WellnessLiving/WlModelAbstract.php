@@ -10,6 +10,16 @@ use WellnessLiving\Config\WlConfigAbstract;
 class WlModelAbstract
 {
   /**
+   * Name of GET parameter.
+   * Contains microservice tag.
+   *
+   * If set to `null`, it means that the model is not connected to any microservice.
+   *
+   * @var string
+   */
+  const MS_GET_PARAM = '-ms';
+
+  /**
    * Whether `Authorization:` header with signature must be added to the request.
    *
    * `true` to add `Authorization:` header with signature to the request.
@@ -52,6 +62,15 @@ class WlModelAbstract
    * @var WlModelRequest|null
    */
   private $_o_request=null;
+
+  /**
+   * Name of the microservice to which this request must be directed.
+   *
+   * `null` is the default value, meaning that the model is not connected to any microservice.
+   *
+   * @var string|null
+   */
+  private $_s_microservice = null;
 
   /**
    * Constructs a new model object.
@@ -184,6 +203,8 @@ class WlModelAbstract
    *   <dd>Whether this field should be passed to server with POST or PUT variables (in accordance to initial request).</dd>
    *   <dt>bool [<var>result</var>=false]</dt>
    *   <dd>Whether this field is returned by the server as a result of request.</dd>
+   *   <dt>bool [<var>error</var>=false]</dt>
+   *   <dd>Whether this field is returned by the server as a result of request when error.</dd>
    *   </dl>
    * @throws WlAssertException In a case of an assertion.
    */
@@ -225,7 +246,7 @@ class WlModelAbstract
             $a_operation=explode(',',$a_match[3][$i_match]);
             foreach($a_operation as $s_operation)
             {
-              WlAssertException::assertTrue($s_operation==='get'||$s_operation==='post'||$s_operation==='result',[
+              WlAssertException::assertTrue($s_operation==='get'||$s_operation==='post'||$s_operation==='result'||$s_operation==='error',[
                 's_class' => $s_class,
                 's_field' => $o_property->name,
                 's_mode' => $s_value,
@@ -295,6 +316,26 @@ class WlModelAbstract
   }
 
   /**
+   * Returns the last request object with was performed with this API model.
+   *
+   * @return WlModelRequest|null The last request object with was performed with this API model.
+   */
+  public function lastRequest()
+  {
+    return $this->_o_request;
+  }
+
+  /**
+   * Sets name of the microservice to which this request must be directed.
+   *
+   * @param string|null $s_microservice Microservice name.
+   */
+  public function microserviceSet($s_microservice)
+  {
+    $this->_s_microservice = $s_microservice;
+  }
+
+  /**
    * Normalizes value for sending over HTTP.
    *
    * @param string $s_name Name of a field which value is normalized.
@@ -343,16 +384,6 @@ class WlModelAbstract
   public function post()
   {
     return $this->request('post');
-  }
-
-  /**
-   * Returns the last request object with was performed with this API model.
-   *
-   * @return WlModelRequest|null The last request object with was performed with this API model.
-   */
-  public function lastRequest()
-  {
-    return $this->_o_request;
   }
 
   /**
@@ -405,6 +436,10 @@ class WlModelAbstract
         continue;
 
       $a_get[$s_field] = $this->normalizeValue($s_field,$x_value);
+    }
+
+    if ($this->_s_microservice) {
+      $a_get[self::MS_GET_PARAM] = $this->_s_microservice;
     }
 
     return $a_get;
@@ -660,7 +695,21 @@ class WlModelAbstract
     }
 
     if($o_request->a_result['status']!=='ok')
+    {
+      foreach($a_field as $s_field => $a_method)
+      {
+        if(empty($a_method[$s_method]))
+          continue;
+        if(empty($a_method[$s_method]['error']))
+          continue;
+
+        if(array_key_exists($s_field,$o_request->a_result))
+          $this->$s_field=$o_request->a_result[$s_field];
+        else
+          $this->$s_field=null;
+      }
       throw WlUserException::createApi($o_request);
+    }
 
     foreach($a_field as $s_field => $a_method)
     {
