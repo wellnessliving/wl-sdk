@@ -11,6 +11,26 @@ use WellnessLiving\WlModelAbstract;
 class BusinessModel extends WlModelAbstract
 {
   /**
+   * Empty array means to not create a staff member.
+   * Otherwise, information about staff member to be created in the business.
+   *
+   *  <dl>
+   *    <dt>bool <var>is_enter</var></dt>
+   *    <dd>Should created staff member be automatically signed in or not.</dd>
+   *    <dt>string <var>text_mail</var></dt>
+   *    <dd>Email address to be used to sign in.</dd>
+   *    <dt>string <var>text_name_first</var></dt>
+   *    <dd>The first name of the staff member.</dd>
+   *    <dt>string <var>text_name_last</var></dt>
+   *    <dd>The last name of the staff member.</dd>
+   *  </dl>
+   *
+   * @post post
+   * @var bool
+   */
+  public $a_staff_member = [];
+
+  /**
    * The business locale.
    *
    * @post post
@@ -18,6 +38,15 @@ class BusinessModel extends WlModelAbstract
    * @see LocaleSid
    */
   public $id_locale;
+
+  /**
+   * `true` if location should be also created for the business.
+   * `false` if otherwise.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_location_create = false;
 
   /**
    * The key of the created business.
@@ -44,20 +73,20 @@ class BusinessModel extends WlModelAbstract
   public $k_office_city;
 
   /**
-   * The address of the business.
+   * The address of the business. Optional.
    *
    * @post post
    * @var string
    */
-  public $text_office_address;
+  public $text_office_address = '';
 
   /**
-   * The postal code of the business.
+   * The postal code of the business. Optional.
    *
    * @post post
    * @var string
    */
-  public $text_office_postal;
+  public $text_office_postal = '';
 
   /**
    * The phone number of the business.

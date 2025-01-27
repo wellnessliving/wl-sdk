@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 207.
+ * Last Used ID: 208.
  */
 abstract class WlPrivilegeSid
 {
@@ -135,6 +135,11 @@ abstract class WlPrivilegeSid
    * Manage clients' Credit Cards.
    */
   const CC_MANAGE = 35;
+
+  /**
+   * Manage clients' Credit Cards manually.
+   */
+  const CC_MANAGE_MANUAL = 208;
 
   /**
    * Edit class schedule.
