@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Business\Franchise\Location;
 
+use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Report\WlReportSid;
 
@@ -69,6 +70,15 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
   /**
    * The location list. Each element has the next structure:
    * <dl>
+   *   <dt>
+   *     int <var>id_currency</var>
+   *   </dt>
+   *   <dd>
+   *     Currency ID. One of {@link CurrencySid} constants.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_country</var>
+   *   </dt>
    *   <dt>
    *     string <var>k_city</var>
    *   </dt>

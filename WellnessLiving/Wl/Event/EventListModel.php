@@ -120,6 +120,14 @@ class EventListModel extends WlModelAbstract
    *   </dd>
    *   <dt>array <var>a_search_tag</var></dt>
    *   <dd>The list of search tags for this event.</dd>
+   *   <dt>bool <var>can_book</var></dt>
+   *   <dd>
+   *      Whether event can be booked or not.
+   *      `true` - there are no restrictions to book this event in general.
+   *      `false` - for some reason event cannot be booked.
+   *      The reason can be found in the following fields: `html_reason`, `id_reason`, `sid_reason`.
+   *      This field can be used instead of `is_bookable` and covers a significant number of checks under its value.
+   *   </dd>
    *   <dt>bool <var>can_cancel</var></dt>
    *   <dd>Whether the current user can cancel already booked event.</dd>
    *   <dt>string <var>dl_early</var></dt>
@@ -145,7 +153,15 @@ class EventListModel extends WlModelAbstract
    *   <dt>bool <var>is_block</var></dt>
    *   <dd>`true` if the event is a block event, `false` if the event is not.</dd>
    *   <dt>bool <var>is_bookable</var></dt>
-   *   <dd>`true` if the event is can be booked by the current user, `false` if the event is not.</dd>
+   *   <dd>
+   *      Whether event is bookable.
+   *      `true` - there are no restrictions to book this event in general.
+   *      `false` - for some reason event cannot be booked.
+   *      <b>Attention!!!</b>
+   *      Historically, the value of this field may not cover all expected checks, and may be confusing to someone.
+   *      It is properly used in combination with a number of other flags.
+   *      If you need a flag that covers most of the checks please use `can_book` field.
+   *   </dd>
    *   <dt>bool <var>is_booked</var></dt>
    *   <dd>`true` if the user has booked the event, `false` if the event is not.</dd>
    *   <dt>bool <var>is_closed</var></dt>
