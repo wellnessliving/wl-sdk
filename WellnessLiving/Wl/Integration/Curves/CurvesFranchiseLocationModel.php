@@ -70,6 +70,15 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    * The location list. Each element has the next structure:
    * <dl>
    *   <dt>
+   *     int <var>id_currency</var>
+   *   </dt>
+   *   <dd>
+   *     Currency ID.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_country</var>
+   *   </dt>
+   *   <dt>
    *     string <var>k_city</var>
    *   </dt>
    *   <dd>

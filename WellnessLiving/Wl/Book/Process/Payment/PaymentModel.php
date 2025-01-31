@@ -400,7 +400,7 @@ class PaymentModel extends WlModelAbstract
   public $text_discount_code = '';
 
   /**
-   * Key of a user who is making a book.
+   * The client key for which the booking is being made.
    *
    * @get get
    * @post get

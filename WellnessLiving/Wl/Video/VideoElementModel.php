@@ -349,7 +349,23 @@ class VideoElementModel extends WlModelAbstract
   public $url_thumbnail;
 
   /**
-   * The URL of the video on a WellnessLiving page.
+   * The URL of the video file.
+   *
+   * This URL return with domain which you use when you call this API.
+   * In case when you make request to local domain and video is
+   * {@link VideoElementModel::$is_converted} links in file will have global domain and for correct
+   * work you must replace global domain to local.
+   *
+   * Example for `videojs` player you can override method `beforeRequest`: <code>
+   *  videojs.Vhs.xhr.beforeRequest = function(options)
+   *  {
+   *    if (options.uri.startsWith('https://www.'))
+   *    {
+   *      options.uri = options.uri.replace('https://www.', 'https://us.');
+   *    }
+   *    return options;
+   *  }
+   * </code>
    *
    * @get result
    * @var string|null

@@ -471,7 +471,7 @@ class Purchase56Model extends WlModelAbstract
   public $k_session_pass = '';
 
   /**
-   * Key of a user who is making a book.
+   * The client key for which the booking is being made.
    *
    * @get get
    * @post get

@@ -209,6 +209,9 @@ class PaymentPostModel extends WlModelAbstract
    *   <dt>string <var>m_discount</var></dt>
    *   <dd>The value of the discount used for the purchase.</dd>
    *
+   *   <dt>string <var>m_discount_login</var></dt>
+   *   <dd>The discount amount for the client type of one purchase item.</dd>
+   *
    *   <dt>string <var>m_pay</var></dt>
    *   <dd>The payment for the Purchase Option or single visit without taxes.</dd>
    *

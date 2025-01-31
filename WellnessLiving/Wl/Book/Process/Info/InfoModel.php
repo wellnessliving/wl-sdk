@@ -636,7 +636,7 @@ class InfoModel extends WlModelAbstract
   public $text_timezone;
 
   /**
-   * Key of a user who is making a book.
+   * The client key for which the booking is being made.
    *
    * @get get
    * @post get

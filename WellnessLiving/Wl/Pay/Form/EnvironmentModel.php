@@ -79,11 +79,22 @@ class EnvironmentModel extends WlModelAbstract
    *
    *     `null` if this payment processor does not support public keys.
    *   </dd>
+   *   <dt>array|null <var>a_public_info</var></dt>
+   *   <dd>
+   *     Public info configured for this payment processor.
+   *
+   *     `null` if this payment processor does not support public info.
+   *   </dd>
    *   <dt>int <var>id_pay_processor</var></dt>
    *   <dd>ID of the payment processor. One of {@link WlPayProcessorSid} constants.</dd>
    *   <dt>null|bool <var>is_enabled_3ds</var></dt>
    *   <dd>`true` if 3DS should be performed, `false` if 3DS should not be performed. `null` if this is not defined for payment processor.
    *     Only for {@link WlPayProcessorSid::NUVEI}
+   *   </dd>
+   *   <dt>bool <var>is_test</var></dt>
+   *   <dd>
+   *     `true` if the merchant is in a test mode, `false` otherwise.
+   *     `null` if this is not defined for payment processor.
    *   </dd>
    *   <dt>string <var>k_business_merchant</var></dt>
    *   <dd>Key of the business merchant.</dd>

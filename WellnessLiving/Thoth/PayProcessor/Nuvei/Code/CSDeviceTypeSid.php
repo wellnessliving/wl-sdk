@@ -4,10 +4,9 @@ namespace WellnessLiving\Thoth\PayProcessor\Nuvei\Code;
 
 /**
  * CS Device Type code class.
+ * See Nuvei/doc/OMNI_Channel_ISO20022_V2.38.pdf 7.3.3.
  *
  * Last used ID: 2
- *
- * @link Thoth/PayProcessor/Nuvei/doc/OMNI_Channel_ISO20022_V2.38.pdf 7.3.3.
  */
 class CSDeviceTypeSid
 {

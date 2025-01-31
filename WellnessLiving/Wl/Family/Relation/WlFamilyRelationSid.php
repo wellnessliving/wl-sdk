@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Family\Relation;
 /**
  * Relation type between two relatives.
  *
- * Last used ID: 10.
+ * Last used ID: 13.
  */
 class WlFamilyRelationSid
 {
@@ -18,6 +18,11 @@ class WlFamilyRelationSid
    * Care recipient.
    */
   const CARE_RECEIVER = 9;
+
+  /**
+   * Case Manager / Case load.
+   */
+  const CASE_TYPE = 13;
 
   /**
    * Child of the parent.
@@ -60,6 +65,16 @@ class WlFamilyRelationSid
    * Spouse. A husband or wife.
    */
   const SPOUSE = 1;
+
+  /**
+   * Teacher / Student.
+   */
+  const TEACHER = 12;
+
+  /**
+   * Therapist / Care participant.
+   */
+  const THERAPIST = 11;
 }
 
 ?>

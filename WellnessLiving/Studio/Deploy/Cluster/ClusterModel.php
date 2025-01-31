@@ -26,7 +26,8 @@ class ClusterModel extends WlModelAbstract
   public $is_active = null;
 
   /**
-   * Whether to save repository keys.
+   * Whether to update fingerprints.
+   * Additionally, this setting allows you to force the transfer of keys to the server.
    *
    * @post post
    * @var bool

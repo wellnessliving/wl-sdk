@@ -4,10 +4,9 @@ namespace WellnessLiving\Thoth\PayProcessor\Nuvei\Code;
 
 /**
  * CS Message Function code class.
+ * See Nuvei/doc/OMNI_Channel_ISO20022_V2.38.pdf 7.3.8.
  *
  * Last used ID: 35
- *
- * @link Thoth/PayProcessor/Nuvei/doc/OMNI_Channel_ISO20022_V2.38.pdf 7.3.8.
  */
 class CSMessageFunctionSid
 {

@@ -53,6 +53,8 @@ class VideoListModel extends WlModelAbstract
   /**
    * A list of videos.
    *
+   * See {@link VideoElementModel::$url_video} for details about the video URL.
+   *
    * @get result
    * @var array[]
    */

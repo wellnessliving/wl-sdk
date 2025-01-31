@@ -6,6 +6,7 @@ use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Catalog\PurchaseOptionViewSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\WlProgramSid;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
@@ -55,8 +56,10 @@ class ElementModel extends WlModelAbstract
    *   <dd>
    *     This applies only for coupons. Coupon components information. Each element will contain the following keys:
    *     <dl>
+   *       <dt>int <var>id_program</var></dt>
+   *       <dd>Program ID. One of {@link WlProgramSid} ID's. Only applies to promotions.</dd>
    *       <dt>int <var>id_purchase_item</var></dt>
-   *       <dd> Purchase item ID. One of {@link WlPurchaseItemSid} ID's. </dd>
+   *       <dd>Purchase item ID. One of {@link WlPurchaseItemSid} ID's. </dd>
    *       <dt>int <var>id_sale</var></dt>
    *       <dd>Sale ID. One of {@link WlSaleSid} ID's.</dd>
    *       <dt>int <var>k_id</var></dt>

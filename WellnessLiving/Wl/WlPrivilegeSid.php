@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 208.
+ * Last Used ID: 213.
  */
 abstract class WlPrivilegeSid
 {
@@ -13,6 +13,11 @@ abstract class WlPrivilegeSid
    * View banner alert message on dashboard.
    */
   const ALERT_MESSAGE = 142;
+
+  /**
+   * Book appointments for clients with negative account balances.
+   */
+  const APPOINTMENT_BOOK_NEGATIVE = 209;
 
   /**
    * Unpaid appointment booking.
@@ -147,6 +152,11 @@ abstract class WlPrivilegeSid
   const CLASS_ATTENDANCE = 48;
 
   /**
+   * Book classes for clients with negative account balances.
+   */
+  const CLASS_BOOK_NEGATIVE = 210;
+
+  /**
    * Add clients to the attendance list of a service, even if they do not have an applicable purchase option.
    */
   const CLASS_BOOK_UNPAID = 79;
@@ -222,6 +232,11 @@ abstract class WlPrivilegeSid
    * Edit class schedule.
    */
   const ENROLLMENT_ATTENDANCE = 55;
+
+  /**
+   * Book events for clients with negative account balances.
+   */
+  const ENROLLMENT_BOOK_NEGATIVE = 211;
 
   /**
    * Add clients to the attendance list of a service, even if they do not have an applicable purchase option.
@@ -621,6 +636,11 @@ abstract class WlPrivilegeSid
   const PROFILE_GROUP_MEMBER_MANAGE = 191;
 
   /**
+   * Merge client profiles.
+   */
+  const PROFILE_MERGE = 213;
+
+  /**
    * Manage clients from my location.
    */
   const PROFILE_MY_LOCATION = 86;
@@ -741,6 +761,11 @@ abstract class WlPrivilegeSid
    * Manage assets.
    */
   const RESOURCE = 37;
+
+  /**
+   * Book assets for clients with negative account balances.
+   */
+  const RESOURCE_BOOK_NEGATIVE = 212;
 
   /**
    * Unpaid asset booking.
