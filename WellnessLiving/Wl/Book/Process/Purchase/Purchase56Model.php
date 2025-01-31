@@ -103,6 +103,8 @@ class Purchase56Model extends WlModelAbstract
    *   <dd>Priority of this promotion.</dd>
    *   <dt>int <var>id_program</var></dt>
    *   <dd>The program ID for Purchase Options. One of the {@link WlProgramSid} constants.</dd>
+   *   <dt>bool <var>is_convert</var></dt>
+   *   <dd>If `true`, the promotion converts to another instance upon expiration. Otherwise, this will be `false`.</dd>
    *   <dt>bool <var>is_shared</var></dt>
    *   <dd>`true` if the promotion is shared with the client, `false` if the client is owner of the promotion.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
@@ -113,6 +115,8 @@ class Purchase56Model extends WlModelAbstract
    *   <dd>The Purchase Option description.</dd>
    *   <dt>string <var>s_duration</var></dt>
    *   <dd>The Purchase Option duration.</dd>
+   *   <dt>string [<var>s_promotion_convert</var>]</dt>
+   *   <dd>This is only set if <var>is_convert</var> is `true`. The title to use for the new promotion instance upon auto-renewal.</dd>
    *   <dt>string <var>s_title</var></dt>
    *   <dd>The Purchase Option name.</dd>
    *   <dt>string <var>text_package_item</var></dt>

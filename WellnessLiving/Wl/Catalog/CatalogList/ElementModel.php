@@ -42,6 +42,14 @@ class ElementModel extends WlModelAbstract
    * The structure may be different depending on the item category.
    * <dl>
    *   <dt>
+   *     bool <var>is_renew_public</var>
+   *   </dt>
+   *   <dd>
+   *     This applies only for promotions.
+   *     <tt>true</tt> - clients can set promotion auto-renew.<br>
+   *     <tt>false</tt> - clients can't set promotion auto-renew.
+   *   </dd>
+   *   <dt>
    *     array[] <var>a_component</var>
    *   </dt>
    *   <dd>
@@ -56,14 +64,6 @@ class ElementModel extends WlModelAbstract
    *       <dt>string <var>text_title</var></dt>
    *       <dd>The title of the item.</dd>
    *     </dl>
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_renew_public</var>
-   *   </dt>
-   *   <dd>
-   *     This applies only for promotions.
-   *     <tt>true</tt> - clients can set promotion auto-renew.<br>
-   *     <tt>false</tt> - clients can't set promotion auto-renew.
    *   </dd>
    * </dl>
    *

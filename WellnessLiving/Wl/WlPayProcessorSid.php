@@ -48,6 +48,11 @@ class WlPayProcessorSid
    * Payment gateway for `stripe.com`.
    */
   const STRIPE_COM = 10;
+
+  /**
+   * @inheritDoc
+   */
+  const _TRANSLATION_CONTEXT = 'Wl.Pay.Processor.PayProcessorSid';
 }
 
 ?>

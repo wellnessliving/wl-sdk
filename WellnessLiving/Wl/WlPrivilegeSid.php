@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 205.
+ * Last Used ID: 208.
  */
 abstract class WlPrivilegeSid
 {
@@ -137,6 +137,11 @@ abstract class WlPrivilegeSid
   const CC_MANAGE = 35;
 
   /**
+   * Manage clients' Credit Cards manually.
+   */
+  const CC_MANAGE_MANUAL = 208;
+
+  /**
    * Edit class schedule.
    */
   const CLASS_ATTENDANCE = 48;
@@ -242,6 +247,11 @@ abstract class WlPrivilegeSid
    * Lock search bar on enrollment attendance list.
    */
   const ENROLLMENT_LOCK_SEARCH = 153;
+
+  /**
+   * Manage Enterprise Cloud Fees.
+   */
+  const ENTERPRISE_CLOUD_FEES = 207;
 
   /**
    * Allows to manage leaderboard in the `FitBuilder` addon.
@@ -389,6 +399,11 @@ abstract class WlPrivilegeSid
    * Flag clients.
    */
   const LOGIN_NOTE_RESTRICT = 12;
+
+  /**
+   * View service add-ons.
+   */
+  const LOGIN_PRODUCT_VIEW = 206;
 
   /**
    * Logs view.

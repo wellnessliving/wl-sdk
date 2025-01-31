@@ -93,6 +93,60 @@ class ResponseListModel extends WlModelAbstract
   public $a_quiz_response = [];
 
   /**
+   * Whether response can be amended by current user.
+   *
+   * @get result
+   * @var bool
+   */
+  public $can_amend;
+
+  /**
+   * Whether response can be filled by current user.
+   *
+   * @get result
+   * @var bool
+   */
+  public $can_fill;
+
+  /**
+   * Whether response can be removed by current user.
+   *
+   * @get result
+   * @var bool
+   */
+  public $can_remove;
+
+  /**
+   * Whether response can be viewed by current user.
+   *
+   * @get result
+   * @var bool
+   */
+  public $can_view;
+
+  /**
+   * Defines whether completed forms should not be included in result list of forms.
+   *
+   * `true` to exclude completed forms from result.
+   * `false` to include completed forms to result.
+   *
+   * @get get
+   * @var bool
+   */
+  public $hide_completed = false;
+
+  /**
+   * Defines whether optional uncompleted forms should not be included in result list of forms.
+   *
+   * `true` to exclude optional uncompleted forms from result.
+   * `false` to include optional uncompleted forms to result.
+   *
+   * @get get
+   * @var bool
+   */
+  public $hide_optional = false;
+
+  /**
    * This will be `true` if the API is being used from the backend. Otherwise, this will be `false`.
    *
    * @get get

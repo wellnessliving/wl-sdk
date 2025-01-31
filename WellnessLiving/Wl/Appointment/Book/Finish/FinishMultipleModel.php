@@ -50,7 +50,8 @@ class FinishMultipleModel extends WlModelAbstract
    *     Add-ons to the appointment. Specified for appointment bookings only.
    *     The old format used array keys. While the new format has each element as an array:
    *     <dl>
-   *       <dt>int <var>i_count</var></dt><dd>The add-on count.</dd>
+   *       <dt>int <var>i_count</var></dt><dd>The add-on buy count.</dd>
+   *       <dt>int [<var>i_count_use</var>]</dt><dd>The add-on use count. If not set, then use count is equals to buy count.</dd>
    *       <dt>string <var>k_shop_product_option</var></dt><dd>The add-on key.</dd>
    *     </dl>
    *   </dd>

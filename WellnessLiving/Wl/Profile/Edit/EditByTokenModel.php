@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Profile\Edit;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Field\WlFieldGeneralSid;
 use WellnessLiving\Wl\Field\WlFieldTypeSid;
+use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Profile\RegisterSourceSid;
 
 /**
@@ -108,6 +109,14 @@ class EditByTokenModel extends WlModelAbstract
    * @var array[]
    */
   public $a_structure;
+
+  /**
+   * ID of source mode. One of {@link ModeSid} constants.
+   *
+   * @post get
+   * @var int|null
+   */
+  public $id_mode = null;
 
   /**
    * Registration source ID.

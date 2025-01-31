@@ -11,6 +11,21 @@ use WellnessLiving\WlModelAbstract;
 class UserInfoModel extends WlModelAbstract
 {
   /**
+   * List of the custom user fields. Each value is:<dl>
+   *    <dt>string <var>k_field</var></dt>
+   *    <dd>Field key.</dd>
+   *    <dt>string <var>text_title</var></dt>
+   *    <dd>Name of the field. Will be <tt>null</tt> for general fields. Their titles are static.</dd>
+   *    <dt>string <var>text_value</var></dt>
+   *    <dd>Value of the field.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array[]
+   */
+  public $a_custom_field = [];
+
+  /**
    * List of member groups that the user belongs to.
    *
    * @get result
@@ -39,6 +54,15 @@ class UserInfoModel extends WlModelAbstract
    * List of user's data.
    *
    * <dl>
+   *   <dt>array <var>a_custom_field</var></dt>
+   *   <dd>List of the custom user fields. Each value is:<dl>
+   *     <dt>string <var>k_field</var></dt>
+   *     <dd>Field key.</dd>
+   *     <dt>string <var>text_title</var></dt>
+   *     <dd>Name of the field. Will be <tt>null</tt> for general fields. Their titles are static.</dd>
+   *     <dt>string <var>text_value</var></dt>
+   *     <dd>Value of the field.</dd>
+   *   </dl></dd>
    *   <dt>array <var>a_member_group</var></dt>
    *   <dd>List of member groups that the user belongs to.</dd>
    *   <dt>array <var>a_photo</var></dt>

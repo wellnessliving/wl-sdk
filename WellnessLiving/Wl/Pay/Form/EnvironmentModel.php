@@ -6,9 +6,12 @@ use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\Core\a\ACardSystemSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\WlPayMethodSid;
+use WellnessLiving\Wl\WlPayProcessorSid;
 
 /**
  * Gets information about payment environments.
+ *
+ * @deprecated Use {@link EnvironmentUserModel} instead.
  */
 class EnvironmentModel extends WlModelAbstract
 {
@@ -77,7 +80,11 @@ class EnvironmentModel extends WlModelAbstract
    *     `null` if this payment processor does not support public keys.
    *   </dd>
    *   <dt>int <var>id_pay_processor</var></dt>
-   *   <dd>ID of the payment processor.</dd>
+   *   <dd>ID of the payment processor. One of {@link WlPayProcessorSid} constants.</dd>
+   *   <dt>null|bool <var>is_enabled_3ds</var></dt>
+   *   <dd>`true` if 3DS should be performed, `false` if 3DS should not be performed. `null` if this is not defined for payment processor.
+   *     Only for {@link WlPayProcessorSid::NUVEI}
+   *   </dd>
    *   <dt>string <var>k_business_merchant</var></dt>
    *   <dd>Key of the business merchant.</dd>
    * </dl>
@@ -192,6 +199,16 @@ class EnvironmentModel extends WlModelAbstract
    * @var string|null
    */
   public $m_surcharge_ach = null;
+
+  /**
+   * The user ID to retrieve payment information for.
+   *
+   * `null` if not defined.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $uid_owner = null;
 }
 
 ?>
