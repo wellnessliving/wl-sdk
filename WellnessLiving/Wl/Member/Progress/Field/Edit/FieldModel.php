@@ -3,14 +3,17 @@
 namespace WellnessLiving\Wl\Member\Progress\Field\Edit;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Member\Progress\Field\MeasurementSid;
+use WellnessLiving\Wl\Member\Progress\Field\ProgressFieldSid;
+use WellnessLiving\Wl\Member\Progress\Field\TypeSid;
 
 /**
- * Progress field api.
+ * Manages progress field data.
  */
 class FieldModel extends WlModelAbstract
 {
   /**
-   * A list of field measurement.
+   * A list of field measurement. See {@link MeasurementSid}.
    *
    * @get result
    * @var array
@@ -18,7 +21,7 @@ class FieldModel extends WlModelAbstract
   public $a_measurement;
 
   /**
-   * A list of field type.
+   * A list of field type. See {@link TypeSid}.
    *
    * @get result
    * @var array
@@ -26,7 +29,7 @@ class FieldModel extends WlModelAbstract
   public $a_type;
 
   /**
-   * Field ID.
+   * Field ID. One of the {@link ProgressFieldSid} constant.
    *
    * @get result
    * @var int|null
@@ -36,6 +39,8 @@ class FieldModel extends WlModelAbstract
   /**
    * Field measurement unit ID.
    *
+   * One of the {@link MeasurementSid} constants.
+   *
    * @get result
    * @post post
    * @var null|int
@@ -44,6 +49,8 @@ class FieldModel extends WlModelAbstract
 
   /**
    * Field type ID.
+   *
+   * One of the {@link TypeSid} constants.
    *
    * @get result
    * @post post

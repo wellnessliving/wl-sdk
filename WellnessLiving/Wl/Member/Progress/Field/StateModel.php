@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class StateModel extends WlModelAbstract
 {
   /**
-   * Field ID.
+   * Field ID. One of the {@link ProgressFieldSid} constant.
    *
    * @put result
    * @var int|null

@@ -10,10 +10,10 @@ use WellnessLiving\WlModelAbstract;
 class CompareModel extends WlModelAbstract
 {
   /**
-   * List of dates.
+   * List of local dates of the progress log.
    *
    * @get result
-   * @var array[]
+   * @var string[]
    */
   public $a_date;
 

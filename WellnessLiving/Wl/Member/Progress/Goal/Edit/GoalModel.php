@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Member\Progress\Goal\Edit;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Member\Progress\Field\ProgressFieldSid;
 
 /**
  * Progress goal api.
@@ -12,6 +13,7 @@ class GoalModel extends WlModelAbstract
   /**
    * List of fields.
    *
+   * Keys are field IDs ({@link ProgressFieldSid} constants).
    * Values are new field values.
    * Structure of value completely defined by individual fields.
    *

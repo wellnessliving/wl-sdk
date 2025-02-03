@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class VerifyModel extends WlModelAbstract
 {
   /**
-   * Date without time of the progress log.
+   * Local date without time of the progress log.
    *
    * @put get
    * @var string

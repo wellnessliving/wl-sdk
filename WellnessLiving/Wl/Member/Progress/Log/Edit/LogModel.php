@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Member\Progress\Log\Edit;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Member\Progress\Field\ProgressFieldSid;
 
 /**
  * Progress log api.
@@ -21,6 +22,7 @@ class LogModel extends WlModelAbstract
   /**
    * List of fields.
    *
+   * Keys are field IDs ({@link ProgressFieldSid} constants).
    * Values are new field values.
    * Structure of value completely defined by individual fields.
    *
@@ -30,7 +32,7 @@ class LogModel extends WlModelAbstract
   public $a_field_log;
 
   /**
-   * Progress log date.
+   * Progress log local date.
    *
    * If <tt>null</tt> use the current date.
    *
@@ -41,7 +43,7 @@ class LogModel extends WlModelAbstract
   public $dt_date = null;
 
   /**
-   * Last date when the user entered progress values. <tt>null</tt> if the user had not entered progress data before the {@link LogModel::$dt_date} date.
+   * Last local date when the user entered progress values. <tt>null</tt> if the user had not entered progress data before the {@link LogModel::$dt_date} date.
    *
    * @get result
    * @var string|null

@@ -56,7 +56,7 @@ class ImageModel extends WlModelAbstract
   public $a_image;
 
   /**
-   * Date of the progress picture.
+   * Local date of the progress picture.
    *
    * <tt>null</tt> if not initialized yet.
    *
