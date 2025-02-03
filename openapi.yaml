@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20250131230715
+  version: 1.1.20250203104446
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-01-31 23:07:15
+    Last updated at: 2025-02-03 10:44:46
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -15895,6 +15895,86 @@ paths:
           description: 'Successful response. Full description is not available yet.'
       tags:
         - GroupList-List
+  '/Wl/Member/Progress/Log/Verify.json':
+    put:
+      summary: 'Verifies client''s progress log data.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                dt_date:
+                  type: string
+                  description: 'Date without time of the progress log.'
+                k_business:
+                  type: string
+                  description: 'Business key. Primary key in the {@link \RsBusinessSql} table.'
+                uid:
+                  type: string
+                  description: 'User key. Primary key in the {@link \PassportLoginSql} table.'
+      responses:
+        200:
+          description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Log-Verify
+  '/Wl/Member/Progress/Field/State.json':
+    put:
+      summary: 'Changes states of field.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                is_active:
+                  type: bool|null
+                  description: 'Whether field is active and should be displayed on page.'
+                is_public:
+                  type: bool|null
+                  description: 'Whether this field is public. If this field is set to <tt>false</tt>, this field is not visible to clients.'
+                is_require:
+                  type: bool|null
+                  description: 'Whether field value is required for clients.'
+                is_require_staff:
+                  type: bool|null
+                  description: 'Whether field value is required for staffs.'
+                k_business:
+                  type: string
+                  description: 'Business key. Primary key in the {@link \RsBusinessSql} table.'
+                k_field:
+                  type: string
+                  description: 'Field key. Primary key in the {@link \Wl\Member\Progress\Field\Sql} table.'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id_field:
+                    type: int|null
+                    description: 'Field ID.'
+                  is_active:
+                    type: bool|null
+                    description: 'Whether field is active and should be displayed on page.'
+                  is_public:
+                    type: bool|null
+                    description: 'Whether this field is public. If this field is set to <tt>false</tt>, this field is not visible to clients.'
+                  is_require:
+                    type: bool|null
+                    description: 'Whether field value is required for clients.'
+                  is_require_staff:
+                    type: bool|null
+                    description: 'Whether field value is required for staffs.'
+                  text_title:
+                    type: string|null
+                    description: 'Field title.'
+      tags:
+        - Field-State
   '/Wl/Skin/Application/Resource/ApplicationResource.json':
     get:
       summary: 'Gets application resources.'
@@ -16210,6 +16290,352 @@ paths:
                     description: 'Can the staff members book reserved assets.'
       tags:
         - Service-Service
+  '/Wl/Member/Progress/Log/Edit/Log.json':
+    get:
+      summary: 'Returns progress log data.'
+      parameters:
+        - name: dt_date
+          in: query
+          description: 'Progress log date. If <tt>null</tt> use the current date.'
+          schema:
+            type: string
+        - name: k_business
+          in: query
+          description: 'Business key. Primary key in the {@link \RsBusinessSql} table.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'User key. Primary key in the {@link \PassportLoginSql} table.'
+          schema:
+            type: null|string
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  a_field_list:
+                    type: array[]
+                    description: 'Field log data. Structure of this array corresponds structure of result of {@link \Wl\Member\Progress\Log\Field\FieldList::getData()}.'
+                  dt_last:
+                    type: string|null
+                    description: 'Last date when the user entered progress values. <tt>null</tt> if the user had not entered progress data before the {@link \Wl\Member\Progress\Log\Edit\LogApi::$dt_date} date.'
+                  is_staff:
+                    type: boolean
+                    description: 'How we want to see this page. As a staff or as a user.'
+      tags:
+        - Edit-Log
+    post:
+      summary: 'Saves progress fields log.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_field_log:
+                  type: array[]
+                  description: 'List of fields. Keys are field IDs ({@link \Wl\Member\Progress\Field\ProgressFieldSid} constants). Values are new field values. Structure of value completely defined by individual fields.'
+                dt_date:
+                  type: string
+                  description: 'Progress log date. If <tt>null</tt> use the current date.'
+                is_weight_only:
+                  type: boolean
+                  description: 'Whether field is only weight should be updated.'
+                k_business:
+                  type: string
+                  description: 'Business key. Primary key in the {@link \RsBusinessSql} table.'
+                uid:
+                  type: null|string
+                  description: 'User key. Primary key in the {@link \PassportLoginSql} table.'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  a_field_list:
+                    type: array[]
+                    description: 'Field log data. Structure of this array corresponds structure of result of {@link \Wl\Member\Progress\Log\Field\FieldList::getData()}.'
+      tags:
+        - Edit-Log
+  '/Wl/Member/Progress/Log/Image/Image.json':
+    delete:
+      summary: 'Deletes progress image.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                dt_date:
+                  type: string|null
+                  description: 'Date of the progress picture. <tt>null</tt> if not initialized yet.'
+                k_business:
+                  type: string|null
+                  description: 'Business key. Primary key in the {@link \RsBusinessSql} table. <tt>null</tt> if not initialized yet.'
+                uid:
+                  type: string|null
+                  description: 'User key. <tt>null</tt> if not initialized yet.'
+      responses:
+        200:
+          description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Image-Image
+    get:
+      summary: 'Returns progress picture data.'
+      parameters:
+        - name: dt_date
+          in: query
+          description: 'Date of the progress picture. <tt>null</tt> if not initialized yet.'
+          schema:
+            type: string|null
+        - name: k_business
+          in: query
+          description: 'Business key. Primary key in the {@link \RsBusinessSql} table. <tt>null</tt> if not initialized yet.'
+          schema:
+            type: string|null
+        - name: uid
+          in: query
+          description: 'User key. <tt>null</tt> if not initialized yet.'
+          schema:
+            type: string|null
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  a_image:
+                    type: array
+                    description: 'Image data: <dl> <dt> array <var>a_image</var> </dt> <dd> Image storage data. Structure of this array corresponds result of {@link \Wl\Member\Progress\Log\Image\ProgressImage::load()}. </dd> <dt> int <var>i-size</var> </dt> <dd> Max image size. </dd> <dt> int <var>i-thumbnail-height</var> </dt> <dd> Image thumbnail height. </dd> <dt> int <var>i-thumbnail-width</var> </dt> <dd> Image thumbnail width. </dd> <dt> string <var>s_link</var> </dt> <dd> Image link. </dd> <dt> string <var>url-action</var> </dt> <dd> Image upload url. </dd> </dl>'
+      tags:
+        - Image-Image
+    post:
+      summary: 'Saves progress picture.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                dt_date:
+                  type: string|null
+                  description: 'Date of the progress picture. <tt>null</tt> if not initialized yet.'
+                k_business:
+                  type: string|null
+                  description: 'Business key. Primary key in the {@link \RsBusinessSql} table. <tt>null</tt> if not initialized yet.'
+                s_command:
+                  type: string|null
+                  description: 'Save image command. <tt>null</tt> if not initialized yet.'
+                uid:
+                  type: string|null
+                  description: 'User key. <tt>null</tt> if not initialized yet.'
+      responses:
+        200:
+          description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Image-Image
+  '/Wl/Member/Progress/Log/Compare/Compare.json':
+    get:
+      summary: 'Returns list of dates where client logged his progress.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Key of business to get information for. Primary key in {@link \RsBusinessSql} table.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'User key to search dates for. Primary key in {@link \PassportLoginSql} table.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  a_date:
+                    type: array[]
+                    description: 'List of dates.'
+      tags:
+        - Compare-Compare
+  '/Wl/Member/Progress/Field/Edit/Field.json':
+    get:
+      summary: 'Returns field data.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key. Primary key in the {@link \RsBusinessSql} table.'
+          schema:
+            type: string
+        - name: k_field
+          in: query
+          description: 'Field key. Primary key in the {@link \Wl\Member\Progress\Field\Sql} table.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  a_measurement:
+                    type: array
+                    description: 'A list of field measurement. See {@link \Wl\Member\Progress\Field\MeasurementSid}.'
+                  a_type:
+                    type: array
+                    description: 'A list of field type. See {@link \Wl\Member\Progress\Field\TypeSid}.'
+                  id_field:
+                    type: int|null
+                    description: 'Field ID.'
+                  id_measurement_unit:
+                    type: null|int
+                    description: 'Field measurement unit ID. One of the {@link \Wl\Member\Progress\Field\MeasurementSid} constants.'
+                  id_type:
+                    type: number
+                    format: int32
+                    description: 'Field type ID. One of the {@link \Wl\Member\Progress\Field\TypeSid} constants.'
+                  is_active:
+                    type: boolean
+                    description: 'Whether field is active and should be displayed on page.'
+                  is_public:
+                    type: boolean
+                    description: 'Whether this field is public. If this field is set to <tt>false</tt>, this field is not visible to clients.'
+                  is_require:
+                    type: boolean
+                    description: 'Whether field value is required for clients.'
+                  is_require_staff:
+                    type: boolean
+                    description: 'Whether field value is required for staffs.'
+                  text_title:
+                    type: string|null
+                    description: 'Field title. Only titles of the custom progress fields can be changed. <tt>null</tt> If default title should be used.'
+      tags:
+        - Edit-Field
+    post:
+      summary: 'Saves field data.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                k_business:
+                  type: string
+                  description: 'Business key. Primary key in the {@link \RsBusinessSql} table.'
+                k_field:
+                  type: string
+                  description: 'Field key. Primary key in the {@link \Wl\Member\Progress\Field\Sql} table.'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id_measurement_unit:
+                    type: null|int
+                    description: 'Field measurement unit ID. One of the {@link \Wl\Member\Progress\Field\MeasurementSid} constants.'
+                  id_type:
+                    type: number
+                    format: int32
+                    description: 'Field type ID. One of the {@link \Wl\Member\Progress\Field\TypeSid} constants.'
+                  is_active:
+                    type: boolean
+                    description: 'Whether field is active and should be displayed on page.'
+                  is_public:
+                    type: boolean
+                    description: 'Whether this field is public. If this field is set to <tt>false</tt>, this field is not visible to clients.'
+                  is_require:
+                    type: boolean
+                    description: 'Whether field value is required for clients.'
+                  is_require_staff:
+                    type: boolean
+                    description: 'Whether field value is required for staffs.'
+                  text_title:
+                    type: string|null
+                    description: 'Field title. Only titles of the custom progress fields can be changed. <tt>null</tt> If default title should be used.'
+      tags:
+        - Edit-Field
+  '/Wl/Member/Progress/Goal/Edit/Goal.json':
+    get:
+      summary: 'Returns progress log data.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key. Primary key in the {@link \RsBusinessSql} table.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'User key. Primary key in the {@link \PassportLoginSql} table.'
+          schema:
+            type: null|string
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  a_field_list:
+                    type: array[]
+                    description: 'Field log data. Structure of this array corresponds structure of result of {@link \Wl\Member\Progress\Log\Field\FieldList::getData()}.'
+                  is_staff:
+                    type: boolean
+                    description: 'How we want to see this page. As a staff or as a user.'
+      tags:
+        - Edit-Goal
+    post:
+      summary: 'Saves progress fields log.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_field_goal:
+                  type: array[]
+                  description: 'List of fields. Keys are field IDs ({@link \Wl\Member\Progress\Field\ProgressFieldSid} constants). Values are new field values. Structure of value completely defined by individual fields.'
+                k_business:
+                  type: string
+                  description: 'Business key. Primary key in the {@link \RsBusinessSql} table.'
+                uid:
+                  type: null|string
+                  description: 'User key. Primary key in the {@link \PassportLoginSql} table.'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  a_field_list:
+                    type: array[]
+                    description: 'Field log data. Structure of this array corresponds structure of result of {@link \Wl\Member\Progress\Log\Field\FieldList::getData()}.'
+      tags:
+        - Edit-Goal
   '/Wl/Shop/Product/Option/Inventory/Count/InventoryCount.json':
     get:
       summary: 'Returns information about product options. Works in two modes: review and search. In review mode, the method returns products with changed inventory quantities and notes. In search mode, the method returns one product and its options (the result of searching by product barcode).'
@@ -16464,6 +16890,9 @@ tags:
     name: Collector-DebtTransaction
     description: 'Returns a list of payments for debts added within the previous day.'
   -
+    name: Compare-Compare
+    description: 'Member progress log compare data.'
+  -
     name: Config-BusinessConfig
     description: 'Manages business configurations for clients, bookings, payments, and related things.'
   -
@@ -16512,6 +16941,15 @@ tags:
     name: Edit-EditPassword
     description: 'Model to change user''s password.'
   -
+    name: Edit-Field
+    description: 'Progress field api.'
+  -
+    name: Edit-Goal
+    description: 'Progress goal api.'
+  -
+    name: Edit-Log
+    description: 'Progress log api.'
+  -
     name: Editor-List
     description: 'Returns a list of microservices.'
   -
@@ -16544,6 +16982,9 @@ tags:
   -
     name: Field-EnrollmentFieldList
     description: 'Retrieves and validates a list of insurance partner fields. Use the GET method to load a list of required fields. Use the POST method to validate the fields before sending them to the payment API.'
+  -
+    name: Field-State
+    description: 'Performs ajax requests for progress fields edit page.'
   -
     name: Finish-Finish
     description: 'Completes the booking process for a service. This endpoint can be used with an existing client by specifying their UID. It can also be used to create a new client by specifying user details in {@link FinishApi::$a_user} and omitting any UID. This endpoint can be accessed anonymously without authentication, but only when creating clients.'
@@ -16589,6 +17030,9 @@ tags:
   -
     name: Holiday-Holiday
     description: 'An endpoint displaying information about locations'' business holidays.'
+  -
+    name: Image-Image
+    description: 'Progress image api.'
   -
     name: ImageUpload-ImageUpload
     description: 'An endpoint that performs the final action to an uploaded image. Images are uploaded using {@link \Core\Drive\ImageUpload\ImageUploadTemporaryApi}.'
@@ -16643,6 +17087,9 @@ tags:
   -
     name: Location-Location
     description: 'Creates a new location in the business or edits a specified location. Access to this endpoint is logged with specified permissions. It can also be accessed by guests during the registration process for new businesses. See {@link \Wl\Business\BusinessApi::sessionKey()}. Field <tt>k_business</tt> is required. Other fields are optionally if the location should be edited. This means if a field is not specified it is not be changed. If <tt>k_location</tt> is not specified that new location will be created. In this case <tt>k_city</tt>, <tt>text_address</tt> and <tt>text_title</tt> are required.'
+  -
+    name: Log-Verify
+    description: 'Performs ajax requests for verify client''s progress log.'
   -
     name: Login-AppleLogin
     description: 'Authorizes a user with Apple.'
