@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20250203123554
+  version: 1.1.20250206132317
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-02-03 12:35:54
+    Last updated at: 2025-02-06 13:23:17
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -4006,7 +4006,7 @@ paths:
                     description: 'The configuration array that''s sent to mobile card reader plugin. The structure of this array depends on the payment processor being used.'
                   a_pay_processor:
                     type: array[]|null
-                    description: 'Represents information about payment processors. Keys are payment methods IDs, one of {@link \RsPayMethodSid} constants. Value is the following array: <dl> <dt>array|null <var>a_public_keys</var></dt> <dd> Public keys configured for this payment processor. Copy of result of {@link PayProcessorPublicKeysInterface::publicKeys()}. `null` if this payment processor does not support public keys. </dd> <dt>array|null <var>a_public_info</var></dt> <dd> Public info configured for this payment processor. Copy of result of {@link PayProcessorPublicInfoInterface::publicInfo()}. `null` if this payment processor does not support public info. </dd> <dt>int <var>id_pay_processor</var></dt> <dd>ID of the payment processor. One of {@link PayProcessorSid} constants.</dd> <dt>null|bool <var>is_enabled_3ds</var></dt> <dd>`true` if 3DS should be performed, `false` if 3DS should not be performed. `null` if this is not defined for payment processor. Only for {@link PayProcessorSid::NUVEI} </dd> <dt>bool <var>is_test</var></dt> <dd> `true` if the merchant is in a test mode, `false` otherwise. `null` if this is not defined for payment processor. </dd> <dt>string <var>k_business_merchant</var></dt> <dd>Key of the business merchant. Primary key in {@link \RsBusinessMerchantSql}.</dd> </dl> `null` if no processors are set up.'
+                    description: 'Represents information about payment processors. Keys are payment methods IDs, one of {@link \RsPayMethodSid} constants. Value is the following array: <dl> <dt>array|null <var>a_public_keys</var></dt> <dd> Public keys configured for this payment processor. Copy of result of {@link PayProcessorPublicKeysInterface::publicKeys()}. `null` if this payment processor does not support public keys. </dd> <dt>array|null <var>a_public_info</var></dt> <dd> Public info configured for this payment processor. Copy of result of {@link PayProcessorPublicInfoInterface::publicInfo()}. `null` if this payment processor does not support public info. </dd> <dt>int <var>id_pay_processor</var></dt> <dd>ID of the payment processor. One of {@link PayProcessorSid} constants.</dd> <dt>null|bool <var>is_enabled_3ds</var></dt> <dd>`true` if 3DS should be performed, `false` if 3DS should not be performed. `null` if this is not defined for payment processor. Only for {@link PayProcessorSid::NUVEI} </dd> <dt>bool|null <var>is_test</var></dt> <dd> `true` if the merchant is in a test mode, `false` otherwise. `null` if this is not defined for payment processor. </dd> <dt>string <var>k_business_merchant</var></dt> <dd>Key of the business merchant. Primary key in {@link \RsBusinessMerchantSql}.</dd> </dl> `null` if no processors are set up.'
                   dl_now:
                     type: string
                     description: 'Current local date in current location {@link EnvironmentApi::$k_location} or business {@link EnvironmentApi::$k_business} if not set location.'
@@ -4079,7 +4079,7 @@ paths:
                     description: 'The configuration array that''s sent to mobile card reader plugin. The structure of this array depends on the payment processor being used.'
                   a_pay_processor:
                     type: array[]|null
-                    description: 'Represents information about payment processors. Keys are payment methods IDs, one of {@link \RsPayMethodSid} constants. Value is the following array: <dl> <dt>array|null <var>a_public_keys</var></dt> <dd> Public keys configured for this payment processor. Copy of result of {@link PayProcessorPublicKeysInterface::publicKeys()}. `null` if this payment processor does not support public keys. </dd> <dt>array|null <var>a_public_info</var></dt> <dd> Public info configured for this payment processor. Copy of result of {@link PayProcessorPublicInfoInterface::publicInfo()}. `null` if this payment processor does not support public info. </dd> <dt>int <var>id_pay_processor</var></dt> <dd>ID of the payment processor. One of {@link PayProcessorSid} constants.</dd> <dt>null|bool <var>is_enabled_3ds</var></dt> <dd>`true` if 3DS should be performed, `false` if 3DS should not be performed. `null` if this is not defined for payment processor. Only for {@link PayProcessorSid::NUVEI} </dd> <dt>bool <var>is_test</var></dt> <dd> `true` if the merchant is in a test mode, `false` otherwise. `null` if this is not defined for payment processor. </dd> <dt>string <var>k_business_merchant</var></dt> <dd>Key of the business merchant. Primary key in {@link \RsBusinessMerchantSql}.</dd> </dl> `null` if no processors are set up.'
+                    description: 'Represents information about payment processors. Keys are payment methods IDs, one of {@link \RsPayMethodSid} constants. Value is the following array: <dl> <dt>array|null <var>a_public_keys</var></dt> <dd> Public keys configured for this payment processor. Copy of result of {@link PayProcessorPublicKeysInterface::publicKeys()}. `null` if this payment processor does not support public keys. </dd> <dt>array|null <var>a_public_info</var></dt> <dd> Public info configured for this payment processor. Copy of result of {@link PayProcessorPublicInfoInterface::publicInfo()}. `null` if this payment processor does not support public info. </dd> <dt>int <var>id_pay_processor</var></dt> <dd>ID of the payment processor. One of {@link PayProcessorSid} constants.</dd> <dt>null|bool <var>is_enabled_3ds</var></dt> <dd>`true` if 3DS should be performed, `false` if 3DS should not be performed. `null` if this is not defined for payment processor. Only for {@link PayProcessorSid::NUVEI} </dd> <dt>bool|null <var>is_test</var></dt> <dd> `true` if the merchant is in a test mode, `false` otherwise. `null` if this is not defined for payment processor. </dd> <dt>string <var>k_business_merchant</var></dt> <dd>Key of the business merchant. Primary key in {@link \RsBusinessMerchantSql}.</dd> </dl> `null` if no processors are set up.'
                   dl_now:
                     type: string
                     description: 'Current local date in current location {@link EnvironmentApi::$k_location} or business {@link EnvironmentApi::$k_business} if not set location.'
@@ -5497,6 +5497,159 @@ paths:
           description: 'Successful response. Full description is not available yet.'
       tags:
         - Alert-AlertEdit
+  '/Wl/Profile/Attach/AttachElement.json':
+    delete:
+      summary: 'Deletes the attachment.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                k_attach:
+                  type: string
+                  description: 'Attachment key.'
+                k_business:
+                  type: string
+                  description: 'Business key.'
+                uid:
+                  type: string
+                  description: 'User key.'
+      responses:
+        200:
+          description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Attach-AttachElement
+    get:
+      summary: 'Gets the data for the attachment editing form.'
+      parameters:
+        - name: k_attach
+          in: query
+          description: 'Attachment key.'
+          schema:
+            type: string
+        - name: k_business
+          in: query
+          description: 'Business key.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'User key.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dtu_create:
+                    type: string
+                    description: 'Date and time of the creation.'
+                  dtu_edit:
+                    type: string
+                    description: 'Date and time of the last edit.'
+                  s_show_delete:
+                    type: string
+                    description: 'Flag for showing a delete button.'
+                  text_description:
+                    type: string
+                    description: 'Attachment description.'
+                  text_filename:
+                    type: string
+                    description: 'Attachment file name.'
+                  text_filesize:
+                    type: string
+                    description: 'Attachment file size.'
+                  text_filetype:
+                    type: string
+                    description: 'Attachment file type.'
+                  url_file:
+                    type: string
+                    description: 'URL to get attachment file.'
+                  url_preview:
+                    type: string|null
+                    description: 'URL to get preview attachment data. `null` in case when preview not available.'
+      tags:
+        - Attach-AttachElement
+    post:
+      summary: 'In case the attachment key is not specified, it adds a new attachment. In case the attachment key is specified, edits the attachment.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                is_private:
+                  type: bool|null
+                  description: '`true` if the attachment is private; `false` otherwise. `null` until initialized.'
+                k_attach:
+                  type: string
+                  description: 'Attachment key.'
+                k_business:
+                  type: string
+                  description: 'Business key.'
+                uid:
+                  type: string
+                  description: 'User key.'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text_description:
+                    type: string
+                    description: 'Attachment description.'
+                  text_filename:
+                    type: string
+                    description: 'Attachment file name.'
+      tags:
+        - Attach-AttachElement
+  '/Wl/Profile/Attach/AttachList.json':
+    get:
+      summary: ''
+      parameters:
+        - name: is_backend
+          in: query
+          description: 'If `true`, the API is being used from backend. Otherwise, this will be `false`.'
+          schema:
+            type: boolean
+        - name: k_business
+          in: query
+          description: 'Business key.'
+          schema:
+            type: string
+        - name: text_search
+          in: query
+          description: 'The filter phrase to filter attach by name.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'Business key.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  a_list:
+                    type: array[]
+                    description: 'List of client attach.'
+      tags:
+        - Attach-AttachList
   '/Wl/Profile/Contract/Contract.json':
     get:
       summary: ''
@@ -16760,6 +16913,12 @@ tags:
   -
     name: Asset-Category
     description: 'Retrieves information about asset categories.'
+  -
+    name: Attach-AttachElement
+    description: 'Endpoint for upload and manage attachments.'
+  -
+    name: Attach-AttachList
+    description: 'Manages client attachment list.'
   -
     name: Attendance-AttendanceInfo
     description: 'Attendance list information.'

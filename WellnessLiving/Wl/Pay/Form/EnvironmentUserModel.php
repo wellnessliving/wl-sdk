@@ -87,7 +87,7 @@ class EnvironmentUserModel extends WlModelAbstract
    *   <dd>`true` if 3DS should be performed, `false` if 3DS should not be performed. `null` if this is not defined for payment processor.
    *     Only for {@link PayProcessorSid::NUVEI}
    *   </dd>
-   *   <dt>bool <var>is_test</var></dt>
+   *   <dt>bool|null <var>is_test</var></dt>
    *   <dd>
    *     `true` if the merchant is in a test mode, `false` otherwise.
    *     `null` if this is not defined for payment processor.
