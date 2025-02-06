@@ -153,7 +153,7 @@ class UserInfoModel extends WlModelAbstract
    * This will be `null` if a client has no assigned login type.
    *
    * @get result
-   * @var ?bool
+   * @var bool|null
    */
   public $has_discount = null;
 
@@ -200,7 +200,7 @@ class UserInfoModel extends WlModelAbstract
    * `null` if "address" field is disabled in the business.
    *
    * @get result
-   * @var ?string
+   * @var string|null
    */
   public $k_city;
 
@@ -275,7 +275,7 @@ class UserInfoModel extends WlModelAbstract
    * `null` if "address" field is disabled in the business.
    *
    * @get result
-   * @var ?string
+   * @var string|null
    */
   public $text_address;
 
@@ -285,7 +285,7 @@ class UserInfoModel extends WlModelAbstract
    * `null` if "address" field is disabled in the business.
    *
    * @get result
-   * @var ?string
+   * @var string|null
    */
   public $text_city;
 
@@ -304,7 +304,7 @@ class UserInfoModel extends WlModelAbstract
    * `null` if "address" field is disabled in the business.
    *
    * @get result
-   * @var ?string
+   * @var string|null
    */
   public $text_postal;
 

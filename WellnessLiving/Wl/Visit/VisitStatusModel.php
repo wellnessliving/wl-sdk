@@ -20,7 +20,7 @@ class VisitStatusModel extends WlModelAbstract
    * This will be empty if not set yet.
    *
    * @get result
-   * @var ?array[]
+   * @var array[]|null
    */
   public $a_resource = [];
 
@@ -46,7 +46,7 @@ class VisitStatusModel extends WlModelAbstract
    * </dl>
    *
    * @get result
-   * @var ?array[]
+   * @var array[]|null
    */
   public $a_resource_alias = [];
 
@@ -120,7 +120,7 @@ class VisitStatusModel extends WlModelAbstract
    * If the status of this parameter is out of date, the API call will refresh it.
    *
    * @post post,error
-   * @var ?string
+   * @var string|null
    */
   public $id_visit_from = null;
 
@@ -189,7 +189,7 @@ class VisitStatusModel extends WlModelAbstract
    * If 'null', the visit isn't from an appointment.
    *
    * @get result
-   * @var ?string
+   * @var string|null
    */
   public $k_service = null;
 

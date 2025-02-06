@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20250206132317
+  version: 1.1.20250206171024
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-02-06 13:23:17
+    Last updated at: 2025-02-06 17:10:24
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -252,10 +252,10 @@ paths:
                 type: object
                 properties:
                   a_resource:
-                    type: ?array[]
+                    type: array[]|null
                     description: 'An array of service resources. The key refers to the `k_resource_type`. See {@link \RsResourceTypeSql}. The value is an array with the following key: `k_resource`. See {@link \RsResourceSql}. The array element contains a nested array with `i_index` and `i_quantity`. See {@link \RsResourceBusySql}. This will be empty if not set yet.'
                   a_resource_alias:
-                    type: ?array[]
+                    type: array[]|null
                     description: 'An array of service resources. Contains an extended data set, as well as a different format than {@link VisitStatusApi::$a_resource}. Each element contains the following set of data: <dl> <dt>string <var>k_resource</var></dt> <dd>Resource primary key in {@link \RsResourceSql} table.</dd> <dt>string <var>k_resource_type</var></dt> <dd>Resource type primary key in {@link \RsResourceTypeSql} table.</dd> <dt>int <var>i_index</var></dt> <dd>Index of the resource on the layout.</dd> <dt>int <var>i_quantity</var></dt> <dd>Quantity of the resource on the layout.</dd> <dt>string <var>text_alias</var></dt> <dd>Resource''s custom name (alias) on the layout.</dd> <dt>string <var>text_title</var></dt> <dd>Resource''s title.</dd> </dl>'
                   a_staff:
                     type: string[]
@@ -294,7 +294,7 @@ paths:
                     type: string
                     description: 'The key of the location where visit provides.'
                   k_service:
-                    type: ?string
+                    type: string|null
                     description: 'The service key. If ''null'', the visit isn''t from an appointment.'
                   k_staff:
                     type: string|null
@@ -326,7 +326,7 @@ paths:
               type: object
               properties:
                 id_visit_from:
-                  type: ?string
+                  type: string|null
                   description: 'The status of the visit from which the transition is made. One of the {@link \Wl\Visit\VisitSid} constants. If the visit status is passed, it will be used to check with the actual status in the database. If `null`, the visit hasn''t yet passed. If the status of this parameter is out of date, the API call will refresh it.'
                 is_charge_fee:
                   type: boolean
@@ -5093,7 +5093,7 @@ paths:
                     type: string
                     description: 'The appointment key. This will be set only if the visit is an appointment. If the visit is a class or event, this will be `null`.'
                   k_class:
-                    type: ?string
+                    type: string|null
                     description: 'The class key. This will be set only if the visit is a class or an event. If the visit is an appointment, this will be `null`.'
                   k_class_period:
                     type: string
@@ -5102,10 +5102,10 @@ paths:
                     type: string
                     description: 'The location key.'
                   k_resource:
-                    type: ?string
+                    type: string|null
                     description: 'Resource key.'
                   k_service:
-                    type: ?string
+                    type: string|null
                     description: 'Session key. Primary key in {@link \RsServiceSql} table.'
                   s_title:
                     type: string
@@ -9834,7 +9834,7 @@ paths:
                     type: string
                     description: 'The user''s birthday. This will be `null` if the birthday isn''t set yet.'
                   has_discount:
-                    type: ?bool
+                    type: bool|null
                     description: 'Whether client''s login type has a discount. `true` - login type has a discount, `false` - otherwise. This will be `null` if a client has no assigned login type.'
                   id_gender:
                     type: number
@@ -9847,7 +9847,7 @@ paths:
                     type: boolean
                     description: 'This will be `true` if the user is a traveler. A traveler is someone whose home location isn''t the current location in the Enterprise business.'
                   k_city:
-                    type: ?string
+                    type: string|null
                     description: 'City. Primary key in {@link \AGeoSql} table. `null` if "address" field is disabled in the business.'
                   k_login_type:
                     type: string
@@ -9874,16 +9874,16 @@ paths:
                     type: string
                     description: 'The user''s work phone number.'
                   text_address:
-                    type: ?string
+                    type: string|null
                     description: 'Address inside a city. `null` if "address" field is disabled in the business.'
                   text_city:
-                    type: ?string
+                    type: string|null
                     description: 'City name. `null` if "address" field is disabled in the business.'
                   text_login_type:
                     type: string
                     description: 'Login type title. Empty if a client has no client type assigned.'
                   text_postal:
-                    type: ?string
+                    type: string|null
                     description: 'Postal code. `null` if "address" field is disabled in the business.'
                   uid:
                     type: string
@@ -11440,9 +11440,6 @@ paths:
                   is_discount_code_mode_select:
                     type: boolean
                     description: 'Determines, how staff sees discount codes in Store. `true` as select field, `false` as input field.'
-                  is_product_track:
-                    type: boolean
-                    description: 'Determines whether the future product usage tracking is enabled.'
                   is_receipt_note:
                     type: boolean
                     description: 'Determines whether to display custom receipt notes at checkout.'

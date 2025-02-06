@@ -282,7 +282,7 @@ class PageElementModel extends WlModelAbstract
    * If the visit is an appointment, this will be `null`.
    *
    * @get result
-   * @var ?string
+   * @var string|null
    */
   public $k_class;
 
@@ -307,7 +307,7 @@ class PageElementModel extends WlModelAbstract
    * Resource key.
    *
    * @get result
-   * @var ?string
+   * @var string|null
    */
   public $k_resource;
 
@@ -315,7 +315,7 @@ class PageElementModel extends WlModelAbstract
    * Session key.
    *
    * @get result
-   * @var ?string
+   * @var string|null
    */
   public $k_service;
 
