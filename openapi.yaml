@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20250220113447
+  version: 1.1.20250220155415
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-02-20 11:34:47
+    Last updated at: 2025-02-20 15:54:15
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -10898,6 +10898,28 @@ paths:
                     description: 'Information about the user''s relationships. Every element has the following fields: <dl> <dt>int <var>id_family_relation</var></dt> <dd>The relationship type. One of the {@link \RsFamilyRelationSid} constants.</dd> <dt>int <var>id_family_relation_reverse</var></dt> <dd>The type of reciprocated relationship. One of the {@link \RsFamilyRelationSid} constants.</dd> <dt>string <var>text_name</var></dt> <dd>The name of the relation.</dd> <dt>string <var>text_name_first</var></dt> <dd>The first name of the relation.</dd> <dt>string <var>uid</var></dt> <dd>The key of the related user. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
       tags:
         - Relation-Relation
+  '/Wl/Family/Relation/FamilyRelation.json':
+    get:
+      summary: 'Gets relationships list.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'The business key. Primary key in {@link \RsBusinessSql}.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  a_business_relationships:
+                    type: array
+                    description: 'The relationship types in the business. Key is ID, value is SID.'
+      tags:
+        - Relation-FamilyRelation
   '/Wl/Gym/Visit/VisitAdd.json':
     post:
       summary: ''
@@ -17569,6 +17591,9 @@ tags:
   -
     name: Register-RegisterConfirm
     description: 'Confirm the user''s email and completes the registration process.'
+  -
+    name: Relation-FamilyRelation
+    description: 'Returns business'' enabled relationship types.'
   -
     name: Relation-Relation
     description: 'Adds a relative during the booking process.'
