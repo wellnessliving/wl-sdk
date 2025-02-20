@@ -136,6 +136,8 @@ class EventListModel extends WlModelAbstract
    *   <dd>The ending date of the event.</dd>
    *   <dt>string <var>dl_start</var></dt>
    *   <dd>The starting date of the event.</dd>
+   *   <dt>string <var>dl_session</var></dt>
+   *   <dd>Local date of the closest session of the event.</dd>
    *   <dt>string <var>dtu_session</var></dt>
    *   <dd>Date of the closest session of the event.</dd>
    *   <dt>int <var>i_session_all</var></dt>

@@ -59,7 +59,7 @@ class ElementModel extends WlModelAbstract
    *       <dt>int <var>id_program</var></dt>
    *       <dd>Program ID. One of {@link WlProgramSid} ID's. Only applies to promotions.</dd>
    *       <dt>int <var>id_purchase_item</var></dt>
-   *       <dd>Purchase item ID. One of {@link WlPurchaseItemSid} ID's. </dd>
+   *       <dd>Purchase item ID. One of {@link WlPurchaseItemSid} ID's.</dd>
    *       <dt>int <var>id_sale</var></dt>
    *       <dd>Sale ID. One of {@link WlSaleSid} ID's.</dd>
    *       <dt>int <var>k_id</var></dt>

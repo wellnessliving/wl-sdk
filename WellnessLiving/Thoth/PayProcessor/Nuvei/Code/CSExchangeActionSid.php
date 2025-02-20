@@ -4,10 +4,9 @@ namespace WellnessLiving\Thoth\PayProcessor\Nuvei\Code;
 
 /**
  * CS Exchange Action code class.
+ * See Nuvei/doc/OMNI_Channel_ISO20022_V2.38.pdf 7.3.6.
  *
  * Last used ID: 7
- *
- * @link Thoth/PayProcessor/Nuvei/doc/OMNI_Channel_ISO20022_V2.38.pdf 7.3.6.
  */
 class CSExchangeActionSid
 {

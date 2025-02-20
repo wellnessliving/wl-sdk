@@ -30,11 +30,22 @@ class CartModel extends WlModelAbstract
    *   <dt>int <var>id_sale</var></dt>
    *   <dd>The sale item type, one of the {@link WlSaleSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
-   *   <dd>The sale item key.</dd>
+   *   <dd>
+   *       The sale item key.
+   *       Note:
+   *
+   *          You need to specify the product option key in the `k_shop_product_option` field or the first available
+   *              option will be used automatically.
+   *   </dd>
    *   <dt>?string [<var>k_login_prize</var>]</dt>
    *
-   *   <dt>string <var>k_shop_product_option</var></dt>
-   *   <dd>The shop product option. If empty string, the sale item has no options.</dd>
+   *   <dt>string [<var>k_shop_product_option</var>]</dt>
+   *   <dd>
+   *
+   *       Note:
+   *          Used for products only `id_sale` = {@link WlSaleSid::PRODUCT}.
+   *          If empty the first available option will be used automatically.
+   *   </dd>
    * </dl>
    *
    * @get get,result

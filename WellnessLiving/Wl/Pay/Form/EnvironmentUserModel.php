@@ -81,6 +81,8 @@ class EnvironmentUserModel extends WlModelAbstract
    *
    *     `null` if this payment processor does not support public info.
    *   </dd>
+   *   <dt>bool <var>hide_save_source</var></dt>
+   *   <dd>Whether `save payment method` option should be hidden. `true` if hidden, `false` - otherwise.</dd>
    *   <dt>int <var>id_pay_processor</var></dt>
    *   <dd>ID of the payment processor.</dd>
    *   <dt>null|bool <var>is_enabled_3ds</var></dt>

@@ -17,6 +17,10 @@ class AttendanceListByTokenModel extends WlModelAbstract
    * The list of clients in the active attendance list who haven't confirmed or canceled.
    * Each element is an array with the following fields:
    * <dl>
+   *   <dt>array <var>a_info</var></dt>
+   *   <dd>
+   *
+   *   </dd>
    *   <dt>array <var>a_photo</var></dt>
    *   <dd>
    *     Information about the user's photo. The information returned has the following structure:
