@@ -10,5 +10,13 @@ on:
 
 jobs:
   sonar:
-    uses: wellnessliving/sonar-ci/.github/workflows/sonar.yml@main
-    secrets: inherit
+    name: Sonar scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: SonarSource/sonarqube-scan-action@v5.3.1
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
