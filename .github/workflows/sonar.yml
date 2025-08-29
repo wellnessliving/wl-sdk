@@ -1,0 +1,14 @@
+name: Sonar
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - stable
+#  pull_request:
+#    types: [opened, synchronize, reopened]
+
+jobs:
+  sonar:
+    uses: wellnessliving/sonar-ci/.github/workflows/sonar.yml@main
+    secrets: inherit
