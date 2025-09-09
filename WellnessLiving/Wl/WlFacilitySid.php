@@ -5,10 +5,15 @@ namespace WellnessLiving\Wl;
 /**
  * Type of facilities available at a location.
  *
- * Last ID: 15.
+ * Last ID: 20.
  */
 abstract class WlFacilitySid
 {
+  /**
+   * The location has accessible parking.
+   */
+  const ACCESSIBLE_PARKING = 18;
+
   /**
    * The location has basketball courts.
    */
@@ -25,6 +30,16 @@ abstract class WlFacilitySid
   const CHILDCARE = 14;
 
   /**
+   * The location has equipment rentals.
+   */
+  const EQUIPMENT_RENTALS = 19;
+
+  /**
+   * The location has food drink.
+   */
+  const FOOD_DRINK = 20;
+
+  /**
    * The location has a juice bar.
    */
   const JUICE_BAR = 15;
@@ -33,6 +48,16 @@ abstract class WlFacilitySid
    * The location has lockers available for clients.
    */
   const LOCKERS = 2;
+
+  /**
+   * The location has site parking for clients.
+   */
+  const ON_SITE_PARKING = 16;
+
+  /**
+   * The location has parking nearby for clients.
+   */
+  const PARKING_NEARBY = 17;
 
   /**
    * The location has a pro-shop.

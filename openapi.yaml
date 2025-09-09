@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20250825175926
+  version: 1.1.20250909142639
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-08-25 17:59:26
+    Last updated at: 2025-09-09 14:26:39
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -617,12 +617,12 @@ paths:
           in: query
           description: 'The end date of the range from which a list of events should be retrieved. <tt>null</tt> if the range has no end date.'
           schema:
-            type: string
+            type: [string, "null"]
         - name: dl_start
           in: query
           description: 'The start date of the range from which a list of events should be retrieved. <tt>null</tt> if the range has no start date.'
           schema:
-            type: string
+            type: [string, "null"]
         - name: id_flag
           in: query
           description: 'Defines how the event availability flag filter should be applied. One of {@link \AFlagSid} constants. * {@link \AFlagSid::ON} to show only available events. * {@link \AFlagSid::OFF} to show only unavailable events. * {@link \AFlagSid::ALL} to show all events (available and unavailable).'
@@ -651,9 +651,9 @@ paths:
             type: string
         - name: k_class
           in: query
-          description: 'The event class key to retrieve a list of all event sessions of a specific class.'
+          description: 'The event class key to retrieve a list of all event sessions of a specific class. `null` to retrieve a list of event sessions of all classes.'
           schema:
-            type: string
+            type: [string, "null"]
         - name: k_class_tab
           in: query
           description: 'The class tab key to retrieve a list of event sessions from a specific tab only. An empty value to retrieve a list of event sessions that don''t belong to any tab. Will be ignored in next cases: * {@link EventListApi::$k_skin} specified. * {@link EventListApi::$is_tab_all} is <tt>true</tt>.'
@@ -661,9 +661,9 @@ paths:
             type: string
         - name: k_location
           in: query
-          description: 'The event location key to retrieve a list of all event sessions in a specific location. Required if {@link EventListApi::$k_business} isn''t specified.'
+          description: 'The event location key to retrieve a list of all event sessions in a specific location. Required if {@link EventListApi::$k_business} isn''t specified. `null` if you need to retrieve a list of event sessions in all locations of {@link EventListApi::$k_business}.'
           schema:
-            type: string
+            type: [string, "null"]
         - name: k_skin
           in: query
           description: 'The skin key if an event list is used for widget mode. {@link EventListApi::$k_class_tab} will be ignored for widget mode.'
@@ -2157,6 +2157,135 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Review-ReviewReply
+  '/Wl/Skin/SkinForeign.json':
+    delete:
+      summary: 'Deletes the existing widget.'
+      parameters:
+        - name: id_skin
+          in: query
+          description: 'Skin type, one of {@link \RsSkinSid} constants.'
+          schema:
+            type: number
+            format: int32
+        - name: k_business
+          in: query
+          description: 'Key of the business.'
+          schema:
+            type: string
+        - name: s_foreign_id
+          in: query
+          description: 'Foreign skin key.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      k_skin:
+                        type: string
+                        description: 'Skin key.'
+      tags:
+        - Skin-SkinForeign
+    post:
+      summary: 'Creates a new widget.'
+      parameters:
+        - name: id_skin
+          in: query
+          description: 'Skin type, one of {@link \RsSkinSid} constants.'
+          schema:
+            type: number
+            format: int32
+        - name: k_business
+          in: query
+          description: 'Key of the business.'
+          schema:
+            type: string
+        - name: s_foreign_id
+          in: query
+          description: 'Foreign skin key.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_data_specific:
+                  type: array
+                  description: 'Data specific for the skin type. It is passed to {@link \RsSkinData::data_set()} method. All fields are optional and may be omitted if not needed. For Lead Capture widget it may contain: <dl> <dt>bool <var>is_add_lead</var></dt> <dd>`true` if it can be used in staff back office to add leads by staff member.</dd> <dt>bool <var>is_welcome_email</var></dt> <dd>`true` if welcome email should be sent to each added lead.</dd> <dt>string <var>k_promotion</var></dt> <dd>Key of the purchase option to be granted to each added lead for free.</dd> <dt>string <var>is_redirect_self</var></dt> <dd>`true` if redirection after lead is captured should be done in the same tab, `false` - in a new tab.</dd> <dt>string <var>url_redirect</var></dt> <dd>URL for redirection after lead is captured.</dd> <dt>string <var>text_confirmation</var></dt> <dd>Confirmation text to be shown after lead is added.</dd </dl>'
+                a_field:
+                  type: array
+                  description: 'Profile fields, which should be shown on the widget and if they are required or optional. Key is key of the field, value is `true` if field should be required, `false` - optional.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      k_skin:
+                        type: string
+                        description: 'Skin key.'
+      tags:
+        - Skin-SkinForeign
+    put:
+      summary: 'Updates the existing widget.'
+      parameters:
+        - name: id_skin
+          in: query
+          description: 'Skin type, one of {@link \RsSkinSid} constants.'
+          schema:
+            type: number
+            format: int32
+        - name: k_business
+          in: query
+          description: 'Key of the business.'
+          schema:
+            type: string
+        - name: s_foreign_id
+          in: query
+          description: 'Foreign skin key.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_data_specific:
+                  type: array
+                  description: 'Data specific for the skin type. It is passed to {@link \RsSkinData::data_set()} method. All fields are optional and may be omitted if not needed. For Lead Capture widget it may contain: <dl> <dt>bool <var>is_add_lead</var></dt> <dd>`true` if it can be used in staff back office to add leads by staff member.</dd> <dt>bool <var>is_welcome_email</var></dt> <dd>`true` if welcome email should be sent to each added lead.</dd> <dt>string <var>k_promotion</var></dt> <dd>Key of the purchase option to be granted to each added lead for free.</dd> <dt>string <var>is_redirect_self</var></dt> <dd>`true` if redirection after lead is captured should be done in the same tab, `false` - in a new tab.</dd> <dt>string <var>url_redirect</var></dt> <dd>URL for redirection after lead is captured.</dd> <dt>string <var>text_confirmation</var></dt> <dd>Confirmation text to be shown after lead is added.</dd </dl>'
+                a_field:
+                  type: array
+                  description: 'Profile fields, which should be shown on the widget and if they are required or optional. Key is key of the field, value is `true` if field should be required, `false` - optional.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      k_skin:
+                        type: string
+                        description: 'Skin key.'
+      tags:
+        - Skin-SkinForeign
   '/Wl/Staff/StaffElement.json':
     post:
       summary: 'Update or create staff.'
@@ -2870,7 +2999,7 @@ paths:
                     properties:
                       a_location:
                         type: array
-                        description: 'Short-form information about locations. Keys refer to location primary keys. Values refer to sub-arrays with the next keys: <dl> <dt> float <var>f_latitude</var> </dt> <dd> The latitude coordinate. </dd> <dt> float <var>f_longitude</var> </dt> <dd> The longitude coordinate. </dd> <dt> float <var>f_rate</var> </dt> <dd> The location rate. </dd> <dt> int <var>i_order</var> </dt> <dd> The order number. </dd> <dt> string <var>k_business</var> </dt> <dd> The business''s primary key. </dd> <dt> string <var>k_location</var> </dt> <dd> The location''s primary key. </dd> <dt> string <var>s_title</var> </dt> <dd> The location title. </dd> <dt> string <var>text_address</var> </dt> <dd> The full location address. </dd> <dt> string [<var>url_logo</var>] </dt> <dd> The location logo. </dd> </dl>'
+                        description: 'Short-form information about locations. Keys refer to location primary keys. Values refer to sub-arrays with the next keys: <dl> <dt> string|null <var>dtu_check</var> </dt> <dd> The date when the location actuality was last checked. `null` if the location has never been checked. </dd> <dt> string <var>dtu_create</var> </dt> <dd> The date when the location was created. </dd> <dt> float <var>f_latitude</var> </dt> <dd> The latitude coordinate. </dd> <dt> float <var>f_longitude</var> </dt> <dd> The longitude coordinate. </dd> <dt> float <var>f_rate</var> </dt> <dd> The location rate. </dd> <dt> int <var>i_order</var> </dt> <dd> The order number. </dd> <dt> string <var>k_business</var> </dt> <dd> The business''s primary key. </dd> <dt> string <var>k_location</var> </dt> <dd> The location''s primary key. </dd> <dt> string <var>s_title</var> </dt> <dd> The location title. </dd> <dt> string <var>text_address</var> </dt> <dd> The full location address. </dd> <dt> string [<var>url_logo</var>] </dt> <dd> The location logo. </dd> </dl>'
                       a_location_full:
                         type: array
                         description: 'A list of models with full information about each location. Every element is an object of the {@link \Wl\Location\View\ViewApi}.'
@@ -3930,20 +4059,6 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Api-DriveCopyInstance
-  '/Thoth/DriveMs/Api/DriveDeleteInstance.json':
-    delete:
-      summary: ''
-      responses:
-        200:
-          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - type: object
-                    description: 'Successful response. Full description is not available yet.'
-      tags:
-        - Api-DriveDeleteInstance
   '/Studio/Microservice/Editor/List.json':
     get:
       summary: 'Gets a list of microservices.'
@@ -21108,9 +21223,6 @@ tags:
     name: Api-DriveDelete
     description: 'Deletes a link to a physical file from the database.'
   -
-    name: Api-DriveDeleteInstance
-    description: 'Deletes all links for the specified instance.'
-  -
     name: Api-DriveDownload
     description: 'Returns contents of a specified file.'
   -
@@ -21800,6 +21912,9 @@ tags:
   -
     name: SignOut-SignOut
     description: 'Signs user out.'
+  -
+    name: Skin-SkinForeign
+    description: 'Allows to create, update and remove foreign widgets. Requires a special privilege for the application. Contact WellnessLiving support to get it.'
   -
     name: Source-LeadSourceElement
     description: 'Retrieves Lead Source element.'

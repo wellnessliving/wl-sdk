@@ -152,6 +152,17 @@ class WlUserException extends \Exception
     return $e;
   }
 
+    /**
+     * Gets value of error code.
+     *
+     * @return string|null The value of error code.
+     * @see WlUserException::$s_code
+     */
+    public function errorCodeGet()
+    {
+        return $this->s_code;
+    }
+
   /**
    * Returns request object with which this exception was created.
    *
@@ -180,3 +191,5 @@ class WlUserException extends \Exception
     return null;
   }
 }
+
+?>

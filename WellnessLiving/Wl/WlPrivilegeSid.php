@@ -5,10 +5,30 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 224.
+ * Last Used ID: 228.
  */
 abstract class WlPrivilegeSid
 {
+  /**
+   * Allows user to view, create or edit knowledge base entries, or conversational flows used by the AI Agent.
+   */
+  const AI_AGENT_KNOWLEDGE_BASE = 225;
+
+  /**
+   * Allows user to view reporting and analytics data related to AI Agent performance or usage.
+   */
+  const AI_AGENT_REPORTS = 226;
+
+  /**
+   * Allows user to modify configuration or conversational flows used by the AI Agents.
+   */
+  const AI_AGENT_SETTINGS = 227;
+
+  /**
+   * Allows user to create, update, or cancel AI Agent subscription plans.
+   */
+  const AI_AGENT_SUBSCRIPTIONS = 228;
+
   /**
    * View banner alert message on dashboard.
    */
