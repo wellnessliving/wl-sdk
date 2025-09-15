@@ -1,6 +1,6 @@
 <?php
 
-namespace WellnessLiving\Core\Google;
+namespace WellnessLiving\Core\Google\Captcha;
 
 use WellnessLiving\WlModelAbstract;
 

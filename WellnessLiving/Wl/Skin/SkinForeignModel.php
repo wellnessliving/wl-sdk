@@ -24,13 +24,16 @@ class SkinForeignModel extends WlModelAbstract
    *   <dt>bool <var>is_welcome_email</var></dt>
    *   <dd>`true` if welcome email should be sent to each added lead.</dd>
    *   <dt>string <var>k_promotion</var></dt>
-   *   <dd>Key of the purchase option to be granted to each added lead for free.</dd>
+   *   <dd>
+   *       Key of the purchase option to be granted to each added lead for free.
+   *
+   *   </dd>
    *   <dt>string <var>is_redirect_self</var></dt>
    *   <dd>`true` if redirection after lead is captured should be done in the same tab, `false` - in a new tab.</dd>
    *   <dt>string <var>url_redirect</var></dt>
    *   <dd>URL for redirection after lead is captured.</dd>
    *   <dt>string <var>text_confirmation</var></dt>
-   *   <dd>Confirmation text to be shown after lead is added.</dd
+   *   <dd>Confirmation text to be shown after lead is added.</dd>
    * </dl>
    *
    * @post post
@@ -42,13 +45,18 @@ class SkinForeignModel extends WlModelAbstract
   /**
    * Profile fields, which should be shown on the widget and if they are required or optional.
    *
-   * Key is key of the field, value is `true` if field should be required, `false` - optional.
+   *  <dl>
+   *    <dt>bool <var>k_field</var></dt>
+   *
+   *    <dt>bool <var>is_required</var></dt>
+   *    <dd>`true` if field should be required, `false` - optional.</dd>
+   *  </dl>
    *
    * @post post
    * @put post
    * @var array
    */
-  public $a_field = [];
+  public $a_fields = [];
 
   /**
    * @delete get

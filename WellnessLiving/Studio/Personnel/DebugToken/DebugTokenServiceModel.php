@@ -34,7 +34,7 @@ class DebugTokenServiceModel extends WlModelAbstract
   public $s_token = '';
 
   /**
-   * URL of the application that has made request to check token.
+   * Full URL of the request which was made to get access with testing token, including protocol, host, and URI.
    *
    * @post post
    * @var string

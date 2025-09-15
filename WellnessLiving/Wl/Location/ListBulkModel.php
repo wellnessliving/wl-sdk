@@ -21,18 +21,6 @@ class ListBulkModel extends WlModelAbstract
    * Keys refer to location primary keys. Values refer to sub-arrays with the next keys:
    * <dl>
    *   <dt>
-   *     string|null <var>dtu_check</var>
-   *   </dt>
-   *   <dd>
-   *     The date when the location actuality was last checked. `null` if the location has never been checked.
-   *   </dd>
-   *   <dt>
-   *     string <var>dtu_create</var>
-   *   </dt>
-   *   <dd>
-   *     The date when the location was created.
-   *   </dd>
-   *   <dt>
    *     float <var>f_latitude</var>
    *   </dt>
    *   <dd>

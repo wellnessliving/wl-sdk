@@ -385,7 +385,7 @@ class EventListModel extends WlModelAbstract
    *
    * @get get
    * @put get
-   * @var string
+   * @var string|null
    */
   public $uid = '0';
 }

@@ -165,6 +165,14 @@ class VisitStatusModel extends WlModelAbstract
   public $is_push = false;
 
   /**
+   * Whether this visit is requested and requires staff confirmation.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_request = false;
+
+  /**
    * Whether or not to send sms notification.
    *
    * `true` - sms notification will be sent.

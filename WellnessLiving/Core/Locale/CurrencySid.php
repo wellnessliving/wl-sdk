@@ -9,7 +9,7 @@ namespace WellnessLiving\Core\Locale;
  *
  * @link https://docs.1010data.com/1010dataReferenceManual/DataTypesAndFormats/currencyUnitCodes.html
  *
- * Last used ID: 18
+ * Last used ID: 19
  */
 abstract class CurrencySid
 {
@@ -27,6 +27,11 @@ abstract class CurrencySid
    * Bermudian Dollar.
    */
   const BMD = 18;
+
+  /**
+   * Bahamian dollar.
+   */
+  const BSD = 19;
 
   /**
    * Canadian dollar.
