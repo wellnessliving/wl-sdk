@@ -20,11 +20,6 @@ class ModeSid
   const AZURE = 21;
 
   /**
-   * Lead generated via the AI agent.
-   */
-  const CAASI_AI = 29;
-
-  /**
    * Visit has been created by <tt>CENTRED</tt>.
    */
   const CENTRED = 23;
