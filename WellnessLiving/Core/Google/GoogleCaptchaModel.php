@@ -1,19 +1,13 @@
 <?php
 
-namespace WellnessLiving\Core\Google\Captcha;
+namespace WellnessLiving\Core\Google;
 
 use WellnessLiving\WlModelAbstract;
 
 /**
  * Stores the user token CAPTCHA.
  *
- * Site keys for initialize Google reCAPTCHA:
- * * Version 2 (invisible):
- *   * Demo/Staging - {@link GoogleCaptchaKeys::CAPTCHA_V2_SITE_KEY_SANDBOX}
- *   * Production - {@link GoogleCaptchaKeys::CAPTCHA_V2_SITE_KEY_PRODUCTION}
- * * Version 3:
- *  * Demo/Staging - {@link GoogleCaptchaKeys::CAPTCHA_V3_SITE_KEY_SANDBOX}
- *  * Production - {@link GoogleCaptchaKeys::CAPTCHA_V3_SITE_KEY_PRODUCTION}
+ * @depreated Use {@link \WellnessLiving\Core\Google\Captcha\GoogleCaptchaModel} instead of this.
  */
 class GoogleCaptchaModel extends WlModelAbstract
 {
@@ -22,7 +16,6 @@ class GoogleCaptchaModel extends WlModelAbstract
    *
    * @put post
    * @var int
-   * @see CaptchaVersionSid
    */
   public $id_version = 1;
 

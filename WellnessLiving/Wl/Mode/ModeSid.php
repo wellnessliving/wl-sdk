@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Mode;
 /**
  * The source of a visit.
  *
- * Last used ID: 28.
+ * Last used ID: 29.
  */
 class ModeSid
 {
@@ -18,6 +18,11 @@ class ModeSid
    * Registered through <tt>Azure</tt>.
    */
   const AZURE = 21;
+
+  /**
+   * Lead generated via the AI agent.
+   */
+  const CAASI_AI = 29;
 
   /**
    * Visit has been created by <tt>CENTRED</tt>.

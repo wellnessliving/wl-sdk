@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Core\Captcha;
 
+use WellnessLiving\Core\Google\Captcha\CaptchaVersionSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -24,6 +25,15 @@ class CaptchaRequireModel extends WlModelAbstract
    * @var int
    */
   public $cid_captcha = 0;
+
+  /**
+   * `true` if enabled {@link CaptchaVersionSid::V3} and {@link CaptchaVersionSid::V2} captcha.
+   * `false` if only {@link CaptchaVersionSid::V2} enable.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_enable_v3 = false;
 
   /**
    * This will be `true` if a CAPTCHA is required. Otherwise, this will be `false`.

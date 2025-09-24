@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20250915075452
+  version: 1.1.20250924113859
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-09-15 07:54:52
+    Last updated at: 2025-09-24 11:38:59
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -259,11 +259,45 @@ paths:
                   - type: object
                     description: 'Successful response.'
                     properties:
+                      is_enable_v3:
+                        type: boolean
+                        description: '`true` if enabled {@link CaptchaVersionSid::V3} and {@link CaptchaVersionSid::V2} captcha. `false` if only {@link CaptchaVersionSid::V2} enable.'
                       is_require:
                         type: boolean
                         description: 'This will be `true` if a CAPTCHA is required. Otherwise, this will be `false`.'
       tags:
         - Captcha-CaptchaRequire
+  '/Core/Google/GoogleCaptcha.json':
+    put:
+      summary: ''
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id_version:
+                  type: number
+                  format: int32
+                  description: 'Captcha version ID.'
+                text_action:
+                  type: string
+                  description: 'The action name. Used to determine the place where the CAPTCHA is needed in documentation for endpoints that used the CAPTCHA.'
+                text_token:
+                  type: string
+                  description: 'The user token CAPTCHA.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Google-GoogleCaptcha
   '/Social/Microsoft/Login.json':
     delete:
       summary: 'Removes the association between a website client and a Microsoft account.'
@@ -1041,9 +1075,30 @@ paths:
                 dt_birthday:
                   type: string
                   description: 'Date of the user''s birthday in MySQL format.'
+                id_gender:
+                  type: number
+                  format: int32
+                  description: 'Gender ID. One of the {@link GenderSid} constants. `0` if not specified.'
+                id_lead_source:
+                  type: number
+                  format: int32
+                  description: 'Lead source ID. One of the {@link ModeSid} constants. `0` if not specified.'
+                id_vaccination_status:
+                  type: number
+                  format: int32
+                  description: 'Vaccination status ID. One of the {@link VaccinationStatusSid} constants. `0` if not specified.'
                 k_business:
                   type: string
                   description: 'The key of the business.'
+                k_lead_source:
+                  type: string
+                  description: 'The key of the lead source. Primary key in the {@link LeadSourceSql} table. Empty string if not specified.'
+                k_location_home:
+                  type: string
+                  description: 'The key of the home location. Primary key in the {@link \RsLocationSql} table.'
+                text_address:
+                  type: string
+                  description: 'The address of the user.'
                 text_firstname:
                   type: string
                   description: 'First name of the user.'
@@ -1056,6 +1111,15 @@ paths:
                 text_phone:
                   type: string
                   description: 'Phone of the user. Required if {@link ProfileCreateApi::$text_mail} not provided.'
+                text_phone_home:
+                  type: string
+                  description: 'Home phone of the user.'
+                text_phone_work:
+                  type: string
+                  description: 'Work phone of the user.'
+                uid_referrer:
+                  type: string
+                  description: 'Referrer user key. Primary key in the {@link \PassportLoginSql} table. Empty string if not specified.'
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -5297,6 +5361,10 @@ paths:
             schema:
               type: object
               properties:
+                id_version:
+                  type: number
+                  format: int32
+                  description: 'Captcha version ID.'
                 text_action:
                   type: string
                   description: 'The action name. Used to determine the place where the CAPTCHA is needed in documentation for endpoints that used the CAPTCHA.'
@@ -5314,6 +5382,71 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Captcha-GoogleCaptcha
+  '/Core/Google/Captcha/CaptchaScore.json':
+    get:
+      summary: ''
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      f_score:
+                        type: [number, "null"]
+                        description: 'Overridden score value for {@link CaptchaVersionSid::V3} captcha. `null` to reset override.'
+      tags:
+        - Captcha-CaptchaScore
+    post:
+      summary: ''
+      parameters:
+        - name: text_token
+          in: query
+          description: 'The user token CAPTCHA from {@link CaptchaVersionSid::V3} captcha. Be careful when use this endpoint for validate token, because token can be used only once, so if you validate token in this endpoint, you must generate new token for next requests.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      id_response:
+                        type: number
+                        format: int32
+                        description: 'Captcha response ID.'
+      tags:
+        - Captcha-CaptchaScore
+    put:
+      summary: ''
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                f_score:
+                  type: [number, "null"]
+                  description: 'Overridden score value for {@link CaptchaVersionSid::V3} captcha. `null` to reset override.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Captcha-CaptchaScore
   '/Social/Facebook/Login/Login.json':
     post:
       summary: 'Authorizes user with facebook.'
@@ -21398,8 +21531,11 @@ tags:
     name: Captcha-CaptchaRequire
     description: 'Checks if a CAPTCHA is required.'
   -
+    name: Captcha-CaptchaScore
+    description: 'Endpoint for validating and overriding the score for {@link CaptchaVersionSid::V3} captcha.'
+  -
     name: Captcha-GoogleCaptcha
-    description: 'Stores the user token CAPTCHA.'
+    description: 'Stores the user token CAPTCHA. Site keys for initialize Google reCAPTCHA: * Version 2 (invisible): * Demo/Staging - {@link GoogleCaptchaKeys::CAPTCHA_V2_SITE_KEY_SANDBOX} * Production - {@link GoogleCaptchaKeys::CAPTCHA_V2_SITE_KEY_PRODUCTION} * Version 3: * Demo/Staging - {@link GoogleCaptchaKeys::CAPTCHA_V3_SITE_KEY_SANDBOX} * Production - {@link GoogleCaptchaKeys::CAPTCHA_V3_SITE_KEY_PRODUCTION}'
   -
     name: Card-List
     description: 'Gets information about any payment cards belonging to a user.'
@@ -21625,6 +21761,9 @@ tags:
   -
     name: Geo-Combobox
     description: 'Retrieves a list of cities matching the search string for a given location.'
+  -
+    name: Google-GoogleCaptcha
+    description: 'Stores the user token CAPTCHA.'
   -
     name: GroupList-List
     description: 'Member groups list.'

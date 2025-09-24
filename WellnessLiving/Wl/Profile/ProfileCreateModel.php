@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Profile;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Creates user profile with minimum fields.
@@ -18,12 +19,69 @@ class ProfileCreateModel extends WlModelAbstract
   public $dt_birthday = '';
 
   /**
+   * Gender ID.
+   *
+   * `0` if not specified.
+   *
+   * @post post
+   * @var int
+   */
+  public $id_gender = 0;
+
+  /**
+   * Lead source ID.
+   *
+   * One of the {@link ModeSid} constants.
+   * `0` if not specified.
+   *
+   * @post post
+   * @var int
+   */
+  public $id_lead_source = 0;
+
+  /**
+   * Vaccination status ID.
+   *
+   * `0` if not specified.
+   *
+   * @post post
+   * @var int
+   */
+  public $id_vaccination_status = 0;
+
+  /**
    * The key of the business.
    *
    * @post post
    * @var string
    */
   public $k_business = '';
+
+  /**
+   * The key of the lead source.
+   *
+   * Empty string if not specified.
+   *
+   * @post post
+   * @var string
+   */
+  public $k_lead_source = '';
+
+  /**
+   * The key of the home location.
+   *
+   * @post post
+   * @var string
+   */
+  public $k_location_home = '';
+
+  /**
+   * The address of the user.
+   *
+   * @post post
+   * @var string
+   */
+  public $text_address = '';
 
   /**
    * First name of the user.
@@ -60,12 +118,38 @@ class ProfileCreateModel extends WlModelAbstract
   public $text_phone = '';
 
   /**
+   * Home phone of the user.
+   *
+   * @post post
+   * @var string
+   */
+  public $text_phone_home = '';
+
+  /**
+   * Work phone of the user.
+   *
+   * @post post
+   * @var string
+   */
+  public $text_phone_work = '';
+
+  /**
    * The key of the user.
    *
    * @post result
    * @var string
    */
   public $uid = '';
+
+  /**
+   * Referrer user key.
+   *
+   * Empty string if not specified.
+   *
+   * @post post
+   * @var string
+   */
+  public $uid_referrer = '';
 }
 
 ?>
