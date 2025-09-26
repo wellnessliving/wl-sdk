@@ -182,7 +182,8 @@ class LeadModel extends WlModelAbstract
   /**
    * The key of the new user.
    *
-   * Typing is not added because the variable is an integer. Specifying typing may break third party integration.
+   * Typing is not added because the variable is an integer.
+   * Specifying typing may break third party integration.
    *
    * @post result
    * @var string

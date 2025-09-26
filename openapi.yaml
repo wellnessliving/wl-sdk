@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20250924113859
+  version: 1.1.20250926112427
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-09-24 11:38:59
+    Last updated at: 2025-09-26 11:24:27
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -6107,7 +6107,7 @@ paths:
                     properties:
                       a_class:
                         type: array
-                        description: 'The class list. Every element has the following structure: <dl> <dt>array <var>a_class_tab</var></dt> <dd>The list of tab keys for the class.</dd> <dt>string <var>dtu_book_date</var></dt> <dd>The book date of an event in UTC date/time format. Can be empty string if user cannot book the event.</dd> <dt>bool <var>is_active</var></dt> <dd>This will be <tt>true</tt> if the class is active. Otherwise, this will be <tt>false</tt>.</dd> <dt>bool <var>is_event</var></dt> <dd>This will be <tt>true</tt> for events. Otherwise, this will be <tt>false</tt> for classes.</dd> <dt>sting <var>k_class</var></dt> <dd>The class key. The primary key in {@link \RsClassSql} table.</dd> <dt>sting <var>k_enrollment_block</var></dt> <dd>The enrollment block key. The primary key in {@link \RsEnrollmentBlockSql} table.</dd> <dt>string <var>m_price_total</var></dt> <dd>The total price for an event.</dd> <dt>sting <var>text_description</var></dt> <dd>The class description.</dd> <dt>sting <var>text_title</var></dt> <dd>The class name.</dd> </dl>'
+                        description: 'The class list. Every element has the following structure: <dl> <dt>array <var>a_class_tab</var></dt> <dd>The list of tab keys for the class.</dd> <dt>string[] <var>a_login_type</var></dt> <dd> List of login types for current class. Primary keys in {@link \Wl\Login\Type\Sql} table. </dd> <dt>string[] <var>a_member_group</var></dt> <dd> List of member groups for current class. Primary keys in {@link \Wl\Member\Group\Sql} table. </dd> <dt>string[] <var>a_url_book</var></dt> <dd>The list of URL to book this class.</dd> <dt>string <var>dtu_book_date</var></dt> <dd>The book date of an event in UTC date/time format. Can be empty string if user cannot book the event.</dd> <dt>int <var>i_capacity</var></dt> <dd>Class capacity.</dd> <dt>int <var>id_bookable</var></dt> <dd>Bookable type ID. One of {@link BookableSid} constants.</dd> <dt>bool <var>is_active</var></dt> <dd>This will be `true` if the class is active. Otherwise, this will be `false`.</dd> <dt>bool <var>is_event</var></dt> <dd>This will be `true` for events. Otherwise, this will be `false` for classes.</dd> <dt>bool <var>is_online_private</var></dt> <dd> `true` means to show class only for clients who can book online, `false` means to show class for all clients. </dd> <dt>string <var>k_class</var></dt> <dd>The class key. The primary key in {@link \RsClassSql} table.</dd> <dt>string <var>k_enrollment_block</var></dt> <dd>The enrollment block key. The primary key in {@link \RsEnrollmentBlockSql} table.</dd> <dt>string <var>m_price_total</var></dt> <dd>The total price for an event.</dd> <dt>string <var>text_description</var></dt> <dd>The class description.</dd> <dt>string <var>text_title</var></dt> <dd>The class name.</dd> </dl>'
       tags:
         - ClassList-BookList
   '/Wl/Classes/ClassView/Element.json':
@@ -21388,6 +21388,41 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Count-InventoryCount
+  '/Wl/Login/Member/LoginMemberListAll.json':
+    get:
+      summary: ''
+      parameters:
+        - name: i_page_size
+          in: query
+          description: 'The maximum number of members to return in the list. Use with `uid_last` to get the next page of results.'
+          schema:
+            type: number
+            format: int32
+        - name: k_business
+          in: query
+          description: 'The key of the business to get a list of members for.'
+          schema:
+            type: string
+        - name: uid_last
+          in: query
+          description: 'The last member UID from the previous page. Use with `i_page_size` to get the next page of results. If empty, the first page of results is returned.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_uid:
+                        type: array
+                        description: 'List of UIDs for all active clients that belong to the business.'
+      tags:
+        - Member-LoginMemberListAll
 tags:
   -
     name: Account-Account
@@ -21866,6 +21901,9 @@ tags:
   -
     name: Member-LoginMember
     description: 'An endpoint that manages client ID.'
+  -
+    name: Member-LoginMemberListAll
+    description: 'Displays list of active members in a business.'
   -
     name: Member-Member
     description: 'Displays information about members of businesses.'
