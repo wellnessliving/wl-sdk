@@ -24,7 +24,10 @@ class ListModel extends WlModelAbstract
    *   <dt>string <var>s_file</var></dt>
    *   <dd>File name.</dd>
    *   <dt>string <var>s_group</var></dt>
-   *   <dd>The group of microservices.</dd>
+   *   <dd>
+   *       The group to which the microservice belongs.
+   *       See details in the <var>s_group</var>
+   *   </dd>
    *   <dt>string <var>s_variable</var></dt>
    *   <dd>
    *     Microservice-specific variables. A set of pairs key=value, separated by newlines.

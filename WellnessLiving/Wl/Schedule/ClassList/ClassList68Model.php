@@ -123,6 +123,12 @@ class ClassList68Model extends WlModelAbstract
    *
    *   </dd>
    *   <dt>
+   *     string[] <var>a_staff_uid</var>
+   *   </dt>
+   *   <dd>
+   *     The list of staff user keys for the staff member conducting the session.
+   *   </dd>
+   *   <dt>
    *     string[] <var>a_virtual_location</var>
    *   </dt>
    *   <dd>
@@ -370,8 +376,18 @@ class ClassList68Model extends WlModelAbstract
    *
    * @post post
    * @var string
+   * @deprecated Use {@link ClassListModel::$s_staff_uid} instead.
    */
   public $s_staff = '';
+
+  /**
+   * The list of staff user keys to filter.
+   * A comma seperated list of staff user keys.
+   *
+   * @post post
+   * @var string
+   */
+  public $s_staff_uid = '';
 
   /**
    * If `true`, canceled sessions will be returned. If `false`, canceled sessions won't be returned.

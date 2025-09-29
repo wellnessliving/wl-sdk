@@ -126,6 +126,14 @@ class LeadModel extends WlModelAbstract
   public $can_use_free_purchase = null;
 
   /**
+   * This will be `true` if the API is being used from the backend. Otherwise, this will be `false`.
+   *
+   * @post get
+   * @var bool
+   */
+  public $is_backend = false;
+
+  /**
    * The key of business to which the new user must be captured.
    *
    * @get get

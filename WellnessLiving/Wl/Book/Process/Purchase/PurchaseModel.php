@@ -137,14 +137,20 @@ class PurchaseModel extends WlModelAbstract
   public $a_login_promotion = [];
 
   /**
-   * A list of existing purchase options that were selected for previous users.
+   * A list of existing purchase options that were selected for previous clients.
    *
    * Note:
    * * It makes sense if for all clients the list is loaded within
    *      the same pair {@link PurchaseModel::$dt_date_gmt} and {@link PurchaseModel::$k_class_period}.
    * * If promotions are shared, the system will try to determine if there are enough sessions left for the next
    *      client who has the same promotion.
+   * * A very simple check is carried out based on a comparison of the remaining sessions for the promotion
+   *      with the number of times it was selected.
    * * Can affect the list of available login promotions {@link PurchaseModel::$a_login_promotion}.
+   *      If a given client is eligible for such a promotion, but the remaining sessions (minus those previously
+   *      selected) in it do not allow it to be applied to the selected session, then such promotion will simply
+   *      not be returned for the client.
+   * * The order of clients across all APIs must be the same to guarantee their results.
    *
    * Each element has the following structure:
    * <dl>
@@ -246,14 +252,14 @@ class PurchaseModel extends WlModelAbstract
   public $a_purchase = [];
 
   /**
-   * A list of purchase options that were selected for previous users.
+   * A list of purchase options that were selected for previous clients.
    *
    * Note:
    * * It makes sense if for all clients the list is loaded within
    *      the same pair {@link PurchaseModel::$dt_date_gmt} and {@link PurchaseModel::$k_class_period}.
    * * If promotions are shared, the system will try to determine if there are enough sessions left for the next
    *      client who has the same promotion.
-   * * Can affect the list of available login promotions {@link PurchaseModel::$a_login_promotion}.
+   * * Can affect the list of available purchases {@link PurchaseModel::$a_purchase}.
    * * The list of promotions built for the client will be based on the principle that the owner of this promotion
    *      will be the client for whom this list is requested.
    *

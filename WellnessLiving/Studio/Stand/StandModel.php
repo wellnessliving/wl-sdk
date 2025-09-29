@@ -11,7 +11,7 @@ class StandModel extends WlModelAbstract
 {
   /**
    * Information about entities necessary for the functioning of the stand.
-   * Has an arbitrary structure.
+   * Structure of an array is identical to the <var>z_stand_data</var>
    *
    * `string` if it needs to set an empty value.
    * `null` will not change.
@@ -41,41 +41,49 @@ class StandModel extends WlModelAbstract
    *   <dt>string <var>s_environment</var></dt>
    *   <dd>Environment name.</dd>
    * </dl>
+   * `null` if value is not defined.
    *
    * @post post
-   * @var string
+   * @var string|null
    */
-  public $json_stand_environment = '';
+  public $json_stand_environment = null;
 
   /**
    * Primary microservice for the stand.
    * The main microservice from which the stand is created; other microservices can be added
    * if they are compatible with the primary one, see {@link StandModel::$json_stand_environment}.
+   * `null` if value is not defined.
    *
    * @post get
-   * @var string
+   * @var string|null
    */
-  public $k_microservice_primary = '';
+  public $k_microservice_primary = null;
 
   /**
    * Task key within which a stand should be created.
-   * Empty string if the stand name is specified manually.
+   *
+   * `null` if value is not defined and the stand name is specified manually.
    *
    * @post get
-   * @var string
+   * @var string|null
    */
-  public $k_task = '';
+  public $k_task = null;
 
   /**
    * Stand name.
+   *
+   * If a task is specified when creating a stand (the {@link StandModel::$k_task} field),
+   * then the name of the new stand is determined from the branch of this task and is linked to this task.
+   * In all other cases, the stand name must be specified explicitly.
+   * `null` if value is not defined.
    *
    * @delete get
    * @get get
    * @post get
    * @put get
-   * @var string
+   * @var string|null
    */
-  public $s_stand = '';
+  public $s_stand = null;
 
   /**
    * Link to redirect for stand creation.

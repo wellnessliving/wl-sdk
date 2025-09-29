@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20250926112427
+  version: 1.1.20250929001702
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-09-26 11:24:27
+    Last updated at: 2025-09-29 00:17:02
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -17,9 +17,9 @@ paths:
       parameters:
         - name: s_stand
           in: query
-          description: 'Stand name.'
+          description: 'Stand name. If a task is specified when creating a stand (the {@link StandApi::$k_task} field), then the name of the new stand is determined from the branch of this task and is linked to this task. In all other cases, the stand name must be specified explicitly. `null` if value is not defined.'
           schema:
-            type: string
+            type: [string, "null"]
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -36,9 +36,9 @@ paths:
       parameters:
         - name: s_stand
           in: query
-          description: 'Stand name.'
+          description: 'Stand name. If a task is specified when creating a stand (the {@link StandApi::$k_task} field), then the name of the new stand is determined from the branch of this task and is linked to this task. In all other cases, the stand name must be specified explicitly. `null` if value is not defined.'
           schema:
-            type: string
+            type: [string, "null"]
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -51,30 +51,30 @@ paths:
                     properties:
                       a_stand_data:
                         type: [array, string, "null"]
-                        description: 'Information about entities necessary for the functioning of the stand. Has an arbitrary structure. `string` if it needs to set an empty value. `null` will not change.'
+                        description: 'Information about entities necessary for the functioning of the stand. Structure of an array is identical to the <var>z_stand_data</var> field of the {@link \Studio\Stand\StandSql} table. `string` if it needs to set an empty value. `null` will not change.'
                       id_stand_status:
                         type: [number, "null"]
                         description: 'Stand status, one of {@link StandStatusSid}. `null` if not initialized and will be ignored.'
       tags:
         - Stand-Stand
     post:
-      summary: 'Registers a new stand and creates a URL to create a new stand.'
+      summary: 'Registers a new stand and generates a URL for its creation.'
       parameters:
         - name: k_microservice_primary
           in: query
-          description: 'Primary microservice for the stand. Primary key in the {@link MicroserviceSql} table. The main microservice from which the stand is created; other microservices can be added if they are compatible with the primary one, see {@link StandApi::$json_stand_environment}.'
+          description: 'Primary microservice for the stand. Primary key in the {@link MicroserviceSql} table. The main microservice from which the stand is created; other microservices can be added if they are compatible with the primary one, see {@link StandApi::$json_stand_environment}. `null` if value is not defined.'
           schema:
-            type: string
+            type: [string, "null"]
         - name: k_task
           in: query
-          description: 'Task key within which a stand should be created. Empty string if the stand name is specified manually. Primary key in the {@link \StudioTaskSql} table.'
+          description: 'Task key within which a stand should be created. Primary key in the {@link \StudioTaskSql} table. `null` if value is not defined and the stand name is specified manually.'
           schema:
-            type: string
+            type: [string, "null"]
         - name: s_stand
           in: query
-          description: 'Stand name.'
+          description: 'Stand name. If a task is specified when creating a stand (the {@link StandApi::$k_task} field), then the name of the new stand is determined from the branch of this task and is linked to this task. In all other cases, the stand name must be specified explicitly. `null` if value is not defined.'
           schema:
-            type: string
+            type: [string, "null"]
       requestBody:
         required: true
         content:
@@ -84,10 +84,10 @@ paths:
               properties:
                 a_stand_data:
                   type: [array, string, "null"]
-                  description: 'Information about entities necessary for the functioning of the stand. Has an arbitrary structure. `string` if it needs to set an empty value. `null` will not change.'
+                  description: 'Information about entities necessary for the functioning of the stand. Structure of an array is identical to the <var>z_stand_data</var> field of the {@link \Studio\Stand\StandSql} table. `string` if it needs to set an empty value. `null` will not change.'
                 json_stand_environment:
-                  type: string
-                  description: 'A microservice environment for create stand. Each element of the array contains <dl> <dt>string <var>k_microservice</var></dt> <dd>Microservice key. Primary key in {@link MicroserviceSql} table.</dd> <dt>string <var>s_environment</var></dt> <dd>Environment name. See {@link MicroserviceSql}.`json_path`.</dd> </dl>'
+                  type: [string, "null"]
+                  description: 'A microservice environment for create stand. Each element of the array contains <dl> <dt>string <var>k_microservice</var></dt> <dd>Microservice key. Primary key in {@link MicroserviceSql} table.</dd> <dt>string <var>s_environment</var></dt> <dd>Environment name. See {@link MicroserviceSql}.`json_path`.</dd> </dl> `null` if value is not defined.'
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -113,9 +113,9 @@ paths:
             type: [number, "null"]
         - name: s_stand
           in: query
-          description: 'Stand name.'
+          description: 'Stand name. If a task is specified when creating a stand (the {@link StandApi::$k_task} field), then the name of the new stand is determined from the branch of this task and is linked to this task. In all other cases, the stand name must be specified explicitly. `null` if value is not defined.'
           schema:
-            type: string
+            type: [string, "null"]
       requestBody:
         required: true
         content:
@@ -125,7 +125,7 @@ paths:
               properties:
                 a_stand_data:
                   type: [array, string, "null"]
-                  description: 'Information about entities necessary for the functioning of the stand. Has an arbitrary structure. `string` if it needs to set an empty value. `null` will not change.'
+                  description: 'Information about entities necessary for the functioning of the stand. Structure of an array is identical to the <var>z_stand_data</var> field of the {@link \Studio\Stand\StandSql} table. `string` if it needs to set an empty value. `null` will not change.'
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -3179,6 +3179,11 @@ paths:
           description: 'Whether it is possible to give free promotion when adding a user (only if free promotion is configured in the widget). `true` or `null` if it is possible, `false` if not. `null` used for backward compatibility.'
           schema:
             type: [boolean, "null"]
+        - name: is_backend
+          in: query
+          description: 'This will be `true` if the API is being used from the backend. Otherwise, this will be `false`.'
+          schema:
+            type: boolean
         - name: k_business
           in: query
           description: 'The key of business to which the new user must be captured.'
@@ -4121,7 +4126,7 @@ paths:
                     properties:
                       a_list:
                         type: object
-                        description: 'A list of microservices. One element contains:<dl> <dt>bool <var>is_remove</var></dt> <dd>Whether the microservice has been deleted. `true` is the microservice is removed, `false` otherwise.</dd> <dt>string <var>json_path</var></dt> <dd> A list of repositories and paths of this microservice. Copy of {@link \Studio\Microservice\MicroserviceSql}.<var>json_path</var> field. </dd> <dt>string <var>k_project</var></dt> <dd>Project key. Primary key in {@link \StudioProjectSql} table.</dd> <dt>string <var>s_file</var></dt> <dd>File name.</dd> <dt>string <var>s_group</var></dt> <dd>The group of microservices.</dd> <dt>string <var>s_variable</var></dt> <dd> Microservice-specific variables. A set of pairs key=value, separated by newlines. The list of variables is described in class {@link PromotingConfigValue}. </dd> <dt>string <var>text_project</var></dt> <dd>Title of the project.</dd> <dt>string <var>text_title</var></dt> <dd>Title of the microservice.</dd> <dt>string <var>url_microservice_promoting</var></dt> <dd>URL of the promoting page for this microservice.</dd> </dl>'
+                        description: 'A list of microservices. One element contains:<dl> <dt>bool <var>is_remove</var></dt> <dd>Whether the microservice has been deleted. `true` is the microservice is removed, `false` otherwise.</dd> <dt>string <var>json_path</var></dt> <dd> A list of repositories and paths of this microservice. Copy of {@link \Studio\Microservice\MicroserviceSql}.<var>json_path</var> field. </dd> <dt>string <var>k_project</var></dt> <dd>Project key. Primary key in {@link \StudioProjectSql} table.</dd> <dt>string <var>s_file</var></dt> <dd>File name.</dd> <dt>string <var>s_group</var></dt> <dd> The group to which the microservice belongs. See details in the <var>s_group</var> field of {@link \Studio\Microservice\MicroserviceSql} table. </dd> <dt>string <var>s_variable</var></dt> <dd> Microservice-specific variables. A set of pairs key=value, separated by newlines. The list of variables is described in class {@link PromotingConfigValue}. </dd> <dt>string <var>text_project</var></dt> <dd>Title of the project.</dd> <dt>string <var>text_title</var></dt> <dd>Title of the microservice.</dd> <dt>string <var>url_microservice_promoting</var></dt> <dd>URL of the promoting page for this microservice.</dd> </dl>'
       tags:
         - Editor-List
   '/Studio/Task/Branch/BranchList.json':
@@ -6344,6 +6349,11 @@ paths:
           description: 'The list of staff members to filter. A comma seperated list of staff keys. Primary keys in {@link \RsStaffSql} table.'
           schema:
             type: string
+        - name: s_staff_uid
+          in: query
+          description: 'The list of staff user keys to filter. A comma seperated list of staff user keys. Primary keys in {@link \PassportLoginSql} table.'
+          schema:
+            type: string
         - name: show_cancel
           in: query
           description: 'If `true`, canceled sessions will be returned. If `false`, canceled sessions won''t be returned.'
@@ -6379,7 +6389,7 @@ paths:
                         description: 'Keys are dates of the days inside requested date range, when there is at least one class in the business. If, locations are sent as a parameter, then at least one class in the given locations. Values are empty arrays for now. This is done to make possible to add some information about certain dates, if we need this.'
                       a_session:
                         type: array
-                        description: 'A list of classes sessions starting with the date {@link ClassListApi::$dt_date} and in the 62 days ahead (or up to {@link ClassListApi::$dt_end}). Every element has the following keys: <dl> <dt> string[] <var>a_class_tab</var> </dt> <dd> Keys of class tab. Primary keys in {@link \Wl\Classes\Tab\Sql\ClassTab\Sql} table. </dd> <dt> string[] <var>a_image</var> </dt> <dd> The class image. Empty array if there is no image. </dd> <dt> string[] <var>a_search_tag</var> </dt> <dd> Tags associated with an individual class. </dd> <dt> string[] <var>a_staff</var> </dt> <dd> The list of staff keys for the staff member conducting the session. Primary keys in {@link \RsStaffSql} table. </dd> <dt> string[] <var>a_virtual_location</var> </dt> <dd> The list of virtual locations keys. Each value is a location key. Primary keys in {@link \RsLocationSql} table. </dd> <dt> string <var>dt_date</var> </dt> <dd> The date/time of the session start in UTC. </dd> <dt> string <var>dt_time</var> </dt> <dd> The time of the session start in the local time zone. </dd> <dt> string <var>dtl_date</var> </dt> <dd> The date/time of session start in the location''s time zone. </dd> <dt> bool <var>hide_application</var> </dt> <dd> Specifies whether the class will be hidden in the White Label Achieve Client App. If `true`, it means that the class won''t be displayed. Otherwise, this will be `false` to indicate that the class will be displayed. </dd> <dt> string <var>html_description</var> </dt> <dd> The class description. </dd> <dt> int <var>i_book</var> </dt> <dd> Count of visits on this class. </dd> <dt> int|null <var>i_capacity</var> </dt> <dd> The capacity of the service. ''null'' indicates that the capacity is not set. </dd> <dt> int <var>i_day</var> </dt> <dd> The day of the week when session is occurred. Constant from {@link \ADateWeekSid}. </dd> <dt> int <var>i_duration</var> </dt> <dd> The duration of the session in minutes. </dd> <dt> int <var>i_wait</var> </dt> <dd> Number of clients in wait list. </dd> <dt> bool <var>is_cancel</var> </dt> <dd> If `true`, this class period was canceled. Otherwise, this will be `false`. </dd> <dt> bool <var>is_event</var> </dt> <dd> If `true`, this is an event. Otherwise, this will be `false`. </dd> <dt> bool <var>is_virtual</var> </dt> <dd> If `true`, this class is virtual. Otherwise, this will be `false`. </dd> <dt> bool <var>is_wait_list_enabled</var> </dt> <dd> This will be `true` if user is only on the wait-list. Otherwise, this will be `false`. </dd> <dt> string <var>k_class</var> </dt> <dd> The class key. Primary key in {@link \RsClassSql} table. </dd> <dt> string <var>k_class_period</var> </dt> <dd> The class period key. Primary key in {@link \RsClassPeriodSql} table. </dd> <dt> string <var>k_location</var> </dt> <dd> The key of the session''s location. Primary key in {@link \RsLocationSql} table. </dd> <dt> string <var>s_title</var> </dt> <dd> The title of the session. </dd> <dt> string <var>url_book</var> </dt> <dd> The direct link to start booking on the WellnessLiving website. </dd> </dl>'
+                        description: 'A list of classes sessions starting with the date {@link ClassListApi::$dt_date} and in the 62 days ahead (or up to {@link ClassListApi::$dt_end}). Every element has the following keys: <dl> <dt> string[] <var>a_class_tab</var> </dt> <dd> Keys of class tab. Primary keys in {@link \Wl\Classes\Tab\Sql\ClassTab\Sql} table. </dd> <dt> string[] <var>a_image</var> </dt> <dd> The class image. Empty array if there is no image. </dd> <dt> string[] <var>a_search_tag</var> </dt> <dd> Tags associated with an individual class. </dd> <dt> string[] <var>a_staff</var> </dt> <dd> The list of staff user keys for the staff member conducting the session. Primary keys in {@link \RsStaffSql} table. </dd> <dt> string[] <var>a_staff_uid</var> </dt> <dd> The list of staff user keys for the staff member conducting the session. Primary keys in {@link \PassportLoginSql} table. </dd> <dt> string[] <var>a_virtual_location</var> </dt> <dd> The list of virtual locations keys. Each value is a location key. Primary keys in {@link \RsLocationSql} table. </dd> <dt> string <var>dt_date</var> </dt> <dd> The date/time of the session start in UTC. </dd> <dt> string <var>dt_time</var> </dt> <dd> The time of the session start in the local time zone. </dd> <dt> string <var>dtl_date</var> </dt> <dd> The date/time of session start in the location''s time zone. </dd> <dt> bool <var>hide_application</var> </dt> <dd> Specifies whether the class will be hidden in the White Label Achieve Client App. If `true`, it means that the class won''t be displayed. Otherwise, this will be `false` to indicate that the class will be displayed. </dd> <dt> string <var>html_description</var> </dt> <dd> The class description. </dd> <dt> int <var>i_book</var> </dt> <dd> Count of visits on this class. </dd> <dt> int|null <var>i_capacity</var> </dt> <dd> The capacity of the service. ''null'' indicates that the capacity is not set. </dd> <dt> int <var>i_day</var> </dt> <dd> The day of the week when session is occurred. Constant from {@link \ADateWeekSid}. </dd> <dt> int <var>i_duration</var> </dt> <dd> The duration of the session in minutes. </dd> <dt> int <var>i_wait</var> </dt> <dd> Number of clients in wait list. </dd> <dt> bool <var>is_cancel</var> </dt> <dd> If `true`, this class period was canceled. Otherwise, this will be `false`. </dd> <dt> bool <var>is_event</var> </dt> <dd> If `true`, this is an event. Otherwise, this will be `false`. </dd> <dt> bool <var>is_virtual</var> </dt> <dd> If `true`, this class is virtual. Otherwise, this will be `false`. </dd> <dt> bool <var>is_wait_list_enabled</var> </dt> <dd> This will be `true` if user is only on the wait-list. Otherwise, this will be `false`. </dd> <dt> string <var>k_class</var> </dt> <dd> The class key. Primary key in {@link \RsClassSql} table. </dd> <dt> string <var>k_class_period</var> </dt> <dd> The class period key. Primary key in {@link \RsClassPeriodSql} table. </dd> <dt> string <var>k_location</var> </dt> <dd> The key of the session''s location. Primary key in {@link \RsLocationSql} table. </dd> <dt> string <var>s_title</var> </dt> <dd> The title of the session. </dd> <dt> string <var>url_book</var> </dt> <dd> The direct link to start booking on the WellnessLiving website. </dd> </dl>'
                       is_timezone_different:
                         type: boolean
                         description: 'If `true`, the list of sessions contains sessions from different time zones. Otherwise, this will be `false`.'
@@ -6453,6 +6463,9 @@ paths:
                 s_staff:
                   type: string
                   description: 'The list of staff members to filter. A comma seperated list of staff keys. Primary keys in {@link \RsStaffSql} table.'
+                s_staff_uid:
+                  type: string
+                  description: 'The list of staff user keys to filter. A comma seperated list of staff user keys. Primary keys in {@link \PassportLoginSql} table.'
                 show_cancel:
                   type: boolean
                   description: 'If `true`, canceled sessions will be returned. If `false`, canceled sessions won''t be returned.'
@@ -6486,7 +6499,7 @@ paths:
                         description: 'Information about classes/events for quick filter. Every element has the following keys: <dl> <dt>string <var>text_type</var></dt> <dd>Type of class ("class" || "event")</dd> <dt>string <var>k_class</var></dt> <dd>Class/event key. Primary key from {@link \RsClassSql} table.</dd> <dt>string <var>s_class</var></dt> <dd>Class/event title.</dd> <dt>int <var>i_class</var></dt> <dd>Total sessions found.</dd> </dl> For generating this filter, all filters are applied except: - {@link ClassList68Api::$a_class}; - {@link ClassList68Api::$a_event}; - {@link ClassList68Api::$show_class}; - {@link ClassList68Api::$show_event}.'
                       a_session:
                         type: array
-                        description: 'A list of classes sessions starting with the date {@link ClassListApi::$dt_date} and in the 62 days ahead (or up to {@link ClassListApi::$dt_end}). Every element has the following keys: <dl> <dt> string[] <var>a_class_tab</var> </dt> <dd> Keys of class tab. Primary keys in {@link \Wl\Classes\Tab\Sql\ClassTab\Sql} table. </dd> <dt> string[] <var>a_image</var> </dt> <dd> The class image. Empty array if there is no image. </dd> <dt> string[] <var>a_search_tag</var> </dt> <dd> Tags associated with an individual class. </dd> <dt> string[] <var>a_staff</var> </dt> <dd> The list of staff keys for the staff member conducting the session. Primary keys in {@link \RsStaffSql} table. </dd> <dt> string[] <var>a_virtual_location</var> </dt> <dd> The list of virtual locations keys. Each value is a location key. Primary keys in {@link \RsLocationSql} table. </dd> <dt> string <var>dt_date</var> </dt> <dd> The date/time of the session start in UTC. </dd> <dt> string <var>dt_time</var> </dt> <dd> The time of the session start in the local time zone. </dd> <dt> string <var>dtl_date</var> </dt> <dd> The date/time of session start in the location''s time zone. </dd> <dt> bool <var>hide_application</var> </dt> <dd> Specifies whether the class will be hidden in the White Label Achieve Client App. If `true`, it means that the class won''t be displayed. Otherwise, this will be `false` to indicate that the class will be displayed. </dd> <dt> string <var>html_description</var> </dt> <dd> The class description. </dd> <dt> int <var>i_book</var> </dt> <dd> Count of visits on this class. </dd> <dt> int|null <var>i_capacity</var> </dt> <dd> The capacity of the service. ''null'' indicates that the capacity is not set. </dd> <dt> int <var>i_day</var> </dt> <dd> The day of the week when session is occurred. Constant from {@link \ADateWeekSid}. </dd> <dt> int <var>i_duration</var> </dt> <dd> The duration of the session in minutes. </dd> <dt> int <var>i_wait</var> </dt> <dd> Number of clients in wait list. </dd> <dt> bool <var>is_cancel</var> </dt> <dd> If `true`, this class period was canceled. Otherwise, this will be `false`. </dd> <dt> bool <var>is_event</var> </dt> <dd> If `true`, this is an event. Otherwise, this will be `false`. </dd> <dt> bool <var>is_virtual</var> </dt> <dd> If `true`, this class is virtual. Otherwise, this will be `false`. </dd> <dt> bool <var>is_wait_list_enabled</var> </dt> <dd> This will be `true` if user is only on the wait-list. Otherwise, this will be `false`. </dd> <dt> string <var>k_class</var> </dt> <dd> The class key. Primary key in {@link \RsClassSql} table. </dd> <dt> string <var>k_class_period</var> </dt> <dd> The class period key. Primary key in {@link \RsClassPeriodSql} table. </dd> <dt> string <var>k_location</var> </dt> <dd> The key of the session''s location. Primary key in {@link \RsLocationSql} table. </dd> <dt> string <var>s_title</var> </dt> <dd> The title of the session. </dd> <dt> string <var>url_book</var> </dt> <dd> The direct link to start booking on the WellnessLiving website. </dd> </dl>'
+                        description: 'A list of classes sessions starting with the date {@link ClassListApi::$dt_date} and in the 62 days ahead (or up to {@link ClassListApi::$dt_end}). Every element has the following keys: <dl> <dt> string[] <var>a_class_tab</var> </dt> <dd> Keys of class tab. Primary keys in {@link \Wl\Classes\Tab\Sql\ClassTab\Sql} table. </dd> <dt> string[] <var>a_image</var> </dt> <dd> The class image. Empty array if there is no image. </dd> <dt> string[] <var>a_search_tag</var> </dt> <dd> Tags associated with an individual class. </dd> <dt> string[] <var>a_staff</var> </dt> <dd> The list of staff keys for the staff member conducting the session. Primary keys in {@link \RsStaffSql} table. </dd> <dt> string[] <var>a_staff_uid</var> </dt> <dd> The list of staff user keys for the staff member conducting the session. </dd> <dt> string[] <var>a_virtual_location</var> </dt> <dd> The list of virtual locations keys. Each value is a location key. Primary keys in {@link \RsLocationSql} table. </dd> <dt> string <var>dt_date</var> </dt> <dd> The date/time of the session start in UTC. </dd> <dt> string <var>dt_time</var> </dt> <dd> The time of the session start in the local time zone. </dd> <dt> string <var>dtl_date</var> </dt> <dd> The date/time of session start in the location''s time zone. </dd> <dt> bool <var>hide_application</var> </dt> <dd> Specifies whether the class will be hidden in the White Label Achieve Client App. If `true`, it means that the class won''t be displayed. Otherwise, this will be `false` to indicate that the class will be displayed. </dd> <dt> string <var>html_description</var> </dt> <dd> The class description. </dd> <dt> int <var>i_book</var> </dt> <dd> Count of visits on this class. </dd> <dt> int|null <var>i_capacity</var> </dt> <dd> The capacity of the service. ''null'' indicates that the capacity is not set. </dd> <dt> int <var>i_day</var> </dt> <dd> The day of the week when session is occurred. Constant from {@link \ADateWeekSid}. </dd> <dt> int <var>i_duration</var> </dt> <dd> The duration of the session in minutes. </dd> <dt> int <var>i_wait</var> </dt> <dd> Number of clients in wait list. </dd> <dt> bool <var>is_cancel</var> </dt> <dd> If `true`, this class period was canceled. Otherwise, this will be `false`. </dd> <dt> bool <var>is_event</var> </dt> <dd> If `true`, this is an event. Otherwise, this will be `false`. </dd> <dt> bool <var>is_virtual</var> </dt> <dd> If `true`, this class is virtual. Otherwise, this will be `false`. </dd> <dt> bool <var>is_wait_list_enabled</var> </dt> <dd> This will be `true` if user is only on the wait-list. Otherwise, this will be `false`. </dd> <dt> string <var>k_class</var> </dt> <dd> The class key. Primary key in {@link \RsClassSql} table. </dd> <dt> string <var>k_class_period</var> </dt> <dd> The class period key. Primary key in {@link \RsClassPeriodSql} table. </dd> <dt> string <var>k_location</var> </dt> <dd> The key of the session''s location. Primary key in {@link \RsLocationSql} table. </dd> <dt> string <var>s_title</var> </dt> <dd> The title of the session. </dd> <dt> string <var>url_book</var> </dt> <dd> The direct link to start booking on the WellnessLiving website. </dd> </dl>'
                       is_timezone_different:
                         type: boolean
                         description: 'If `true`, the list of sessions contains sessions from different time zones. Otherwise, this will be `false`.'
@@ -18792,12 +18805,12 @@ paths:
       parameters:
         - name: a_login_promotion_select
           in: query
-          description: 'A list of existing purchase options that were selected for previous users. Note: * It makes sense if for all clients the list is loaded within the same pair {@link PurchaseApi::$dt_date_gmt} and {@link PurchaseApi::$k_class_period}. * If promotions are shared, the system will try to determine if there are enough sessions left for the next client who has the same promotion. * Can affect the list of available login promotions {@link PurchaseApi::$a_login_promotion}. Each element has the following structure: <dl> <dt>int <var>[i_session = 1]</var></dt> <dd>Number of sessions of the same class|event that were selected for the previous user.</dd> <dt>string <var>k_login_promotion</var></dt> <dd>Selected purchase option. Primary key in {@link \RsLoginPromotionSql} table.</dd> <dt>string <var>uid</var></dt> <dd>UID of the previous user. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
+          description: 'A list of existing purchase options that were selected for previous clients. Note: * It makes sense if for all clients the list is loaded within the same pair {@link PurchaseApi::$dt_date_gmt} and {@link PurchaseApi::$k_class_period}. * If promotions are shared, the system will try to determine if there are enough sessions left for the next client who has the same promotion. * A very simple check is carried out based on a comparison of the remaining sessions for the promotion with the number of times it was selected. * Can affect the list of available login promotions {@link PurchaseApi::$a_login_promotion}. If a given client is eligible for such a promotion, but the remaining sessions (minus those previously selected) in it do not allow it to be applied to the selected session, then such promotion will simply not be returned for the client. * The order of clients across all APIs must be the same to guarantee their results. Each element has the following structure: <dl> <dt>int <var>[i_session = 1]</var></dt> <dd>Number of sessions of the same class|event that were selected for the previous user.</dd> <dt>string <var>k_login_promotion</var></dt> <dd>Selected purchase option. Primary key in {@link \RsLoginPromotionSql} table.</dd> <dt>string <var>uid</var></dt> <dd>UID of the previous user. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
           schema:
             type: array
         - name: a_purchase_select
           in: query
-          description: 'A list of purchase options that were selected for previous users. Note: * It makes sense if for all clients the list is loaded within the same pair {@link PurchaseApi::$dt_date_gmt} and {@link PurchaseApi::$k_class_period}. * If promotions are shared, the system will try to determine if there are enough sessions left for the next client who has the same promotion. * Can affect the list of available login promotions {@link PurchaseApi::$a_login_promotion}. * The list of promotions built for the client will be based on the principle that the owner of this promotion will be the client for whom this list is requested. Each element has the following structure: <dl> <dt>int <var>[i_session = 1]</var></dt> <dd>Number of sessions of the same class|event that were selected for the previous user.</dd> <dt>int <var>id_purchase_item</var></dt> <dd>ID of purchase item type. One of {@link \RsPurchaseItemSid}.</dd> <dt>string <var>k_id</var></dt> <dd>Key of certain purchase item in database. Name of table in database depends on <var>id_purchase_item</var></dd> <dt>string <var>uid</var></dt> <dd>UID of the previous user. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
+          description: 'A list of purchase options that were selected for previous clients. Note: * It makes sense if for all clients the list is loaded within the same pair {@link PurchaseApi::$dt_date_gmt} and {@link PurchaseApi::$k_class_period}. * If promotions are shared, the system will try to determine if there are enough sessions left for the next client who has the same promotion. * Can affect the list of available purchases {@link PurchaseApi::$a_purchase}. * The list of promotions built for the client will be based on the principle that the owner of this promotion will be the client for whom this list is requested. Each element has the following structure: <dl> <dt>int <var>[i_session = 1]</var></dt> <dd>Number of sessions of the same class|event that were selected for the previous user.</dd> <dt>int <var>id_purchase_item</var></dt> <dd>ID of purchase item type. One of {@link \RsPurchaseItemSid}.</dd> <dt>string <var>k_id</var></dt> <dd>Key of certain purchase item in database. Name of table in database depends on <var>id_purchase_item</var></dd> <dt>string <var>uid</var></dt> <dd>UID of the previous user. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
           schema:
             type: array
         - name: a_session
@@ -19038,12 +19051,12 @@ paths:
       parameters:
         - name: a_login_promotion_select
           in: query
-          description: 'A list of existing purchase options that were selected for previous users. Note: * It makes sense if for all clients the list is loaded within the same pair {@link PurchaseApi::$dt_date_gmt} and {@link PurchaseApi::$k_class_period}. * If promotions are shared, the system will try to determine if there are enough sessions left for the next client who has the same promotion. * Can affect the list of available login promotions {@link PurchaseApi::$a_login_promotion}. Each element has the following structure: <dl> <dt>int <var>[i_session = 1]</var></dt> <dd>Number of sessions of the same class|event that were selected for the previous user.</dd> <dt>string <var>k_login_promotion</var></dt> <dd>Selected purchase option. Primary key in {@link \RsLoginPromotionSql} table.</dd> <dt>string <var>uid</var></dt> <dd>UID of the previous user. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
+          description: 'A list of existing purchase options that were selected for previous clients. Note: * It makes sense if for all clients the list is loaded within the same pair {@link PurchaseApi::$dt_date_gmt} and {@link PurchaseApi::$k_class_period}. * If promotions are shared, the system will try to determine if there are enough sessions left for the next client who has the same promotion. * A very simple check is carried out based on a comparison of the remaining sessions for the promotion with the number of times it was selected. * Can affect the list of available login promotions {@link PurchaseApi::$a_login_promotion}. If a given client is eligible for such a promotion, but the remaining sessions (minus those previously selected) in it do not allow it to be applied to the selected session, then such promotion will simply not be returned for the client. * The order of clients across all APIs must be the same to guarantee their results. Each element has the following structure: <dl> <dt>int <var>[i_session = 1]</var></dt> <dd>Number of sessions of the same class|event that were selected for the previous user.</dd> <dt>string <var>k_login_promotion</var></dt> <dd>Selected purchase option. Primary key in {@link \RsLoginPromotionSql} table.</dd> <dt>string <var>uid</var></dt> <dd>UID of the previous user. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
           schema:
             type: array
         - name: a_purchase_select
           in: query
-          description: 'A list of purchase options that were selected for previous users. Note: * It makes sense if for all clients the list is loaded within the same pair {@link PurchaseApi::$dt_date_gmt} and {@link PurchaseApi::$k_class_period}. * If promotions are shared, the system will try to determine if there are enough sessions left for the next client who has the same promotion. * Can affect the list of available login promotions {@link PurchaseApi::$a_login_promotion}. * The list of promotions built for the client will be based on the principle that the owner of this promotion will be the client for whom this list is requested. Each element has the following structure: <dl> <dt>int <var>[i_session = 1]</var></dt> <dd>Number of sessions of the same class|event that were selected for the previous user.</dd> <dt>int <var>id_purchase_item</var></dt> <dd>ID of purchase item type. One of {@link \RsPurchaseItemSid}.</dd> <dt>string <var>k_id</var></dt> <dd>Key of certain purchase item in database. Name of table in database depends on <var>id_purchase_item</var></dd> <dt>string <var>uid</var></dt> <dd>UID of the previous user. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
+          description: 'A list of purchase options that were selected for previous clients. Note: * It makes sense if for all clients the list is loaded within the same pair {@link PurchaseApi::$dt_date_gmt} and {@link PurchaseApi::$k_class_period}. * If promotions are shared, the system will try to determine if there are enough sessions left for the next client who has the same promotion. * Can affect the list of available purchases {@link PurchaseApi::$a_purchase}. * The list of promotions built for the client will be based on the principle that the owner of this promotion will be the client for whom this list is requested. Each element has the following structure: <dl> <dt>int <var>[i_session = 1]</var></dt> <dd>Number of sessions of the same class|event that were selected for the previous user.</dd> <dt>int <var>id_purchase_item</var></dt> <dd>ID of purchase item type. One of {@link \RsPurchaseItemSid}.</dd> <dt>string <var>k_id</var></dt> <dd>Key of certain purchase item in database. Name of table in database depends on <var>id_purchase_item</var></dd> <dt>string <var>uid</var></dt> <dd>UID of the previous user. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
           schema:
             type: array
         - name: a_session
@@ -19091,12 +19104,12 @@ paths:
             type: boolean
         - name: json_login_promotion_select
           in: query
-          description: 'A list of existing purchase options that were selected for previous users. Note: * It makes sense if for all clients the list is loaded within the same pair {@link PurchaseApi::$dt_date_gmt} and {@link PurchaseApi::$k_class_period}. * If promotions are shared, the system will try to determine if there are enough sessions left for the next client who has the same promotion. * Can affect the list of available login promotions {@link PurchaseApi::$a_login_promotion}. Serialized with JSON. Each element has the following structure: <dl> <dt>int <var>[i_session = 1]</var></dt> <dd>Number of sessions of the same class|event that were selected for the previous user.</dd> <dt>string <var>k_login_promotion</var></dt> <dd>Selected purchase option. Primary key in {@link \RsLoginPromotionSql} table.</dd> <dt>string <var>uid</var></dt> <dd>UID of the previous user. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
+          description: 'A list of existing purchase options that were selected for previous clients. Note: * It makes sense if for all clients the list is loaded within the same pair {@link PurchaseApi::$dt_date_gmt} and {@link PurchaseApi::$k_class_period}. * If promotions are shared, the system will try to determine if there are enough sessions left for the next client who has the same promotion. * A very simple check is made based on a comparison of the remaining sessions for the promotion with the number of times it was selected. * Can affect the list of available login promotions {@link PurchaseApi::$a_login_promotion}. If a given client is eligible for such a promotion, but the remaining sessions (minus those previously selected) in it do not allow it to be applied to the selected session, then such promotion will simply not be returned for the client. * The order of clients across all APIs must be the same to guarantee their results. Serialized with JSON. Each element has the following structure: <dl> <dt>int <var>[i_session = 1]</var></dt> <dd>Number of sessions of the same class|event that were selected for the previous user.</dd> <dt>string <var>k_login_promotion</var></dt> <dd>Selected purchase option. Primary key in {@link \RsLoginPromotionSql} table.</dd> <dt>string <var>uid</var></dt> <dd>UID of the previous user. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
           schema:
             type: string
         - name: json_purchase_select
           in: query
-          description: 'A list of purchase options that were selected for previous users. Note: * It makes sense if for all clients the list is loaded within the same pair {@link PurchaseApi::$dt_date_gmt} and {@link PurchaseApi::$k_class_period}. * If promotions are shared, the system will try to determine if there are enough sessions left for the next client who has the same promotion. * Can affect the list of available login promotions {@link PurchaseApi::$a_login_promotion}. * The list of promotions built for the client will be based on the principle that the owner of this promotion will be the client for whom this list is requested. Serialized with JSON. Each element has the following structure: <dl> <dt>int <var>[i_session = 1]</var></dt> <dd>Number of sessions of the same class|event that were selected for the previous user.</dd> <dt>int <var>id_purchase_item</var></dt> <dd>ID of purchase item type. One of {@link \RsPurchaseItemSid}.</dd> <dt>string <var>k_id</var></dt> <dd>Key of certain purchase item in database. Name of table in database depends on <var>id_purchase_item</var></dd> <dt>string <var>uid</var></dt> <dd>UID of the previous user. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
+          description: 'A list of purchase options that were selected for previous clients. Note: * It makes sense if for all clients the list is loaded within the same pair {@link PurchaseApi::$dt_date_gmt} and {@link PurchaseApi::$k_class_period}. * If promotions are shared, the system will try to determine if there are enough sessions left for the next client who has the same promotion. * Can affect the list of available purchases {@link PurchaseApi::$a_purchase}. * The list of promotions built for the client will be based on the principle that the owner of this promotion will be the client for whom this list is requested. Serialized with JSON. Each element has the following structure: <dl> <dt>int <var>[i_session = 1]</var></dt> <dd>Number of sessions of the same class|event that were selected for the previous user.</dd> <dt>int <var>id_purchase_item</var></dt> <dd>ID of purchase item type. One of {@link \RsPurchaseItemSid}.</dd> <dt>string <var>k_id</var></dt> <dd>Key of certain purchase item in database. Name of table in database depends on <var>id_purchase_item</var></dd> <dt>string <var>uid</var></dt> <dd>UID of the previous user. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
           schema:
             type: string
         - name: json_session
