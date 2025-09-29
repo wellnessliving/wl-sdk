@@ -65,7 +65,7 @@ class Purchase56Model extends WlModelAbstract
    *   <dt>string[] <var>a_uid_share</var></dt>
    *   <dd>
    *     List of uids of users who share this promotion.
-   *     List of those passed in the {@link PurchaseModel::$a_login_promotion_select} array.
+   *     List of those passed in the {@link PurchaseModel::$a_login_promotion_group} array.
    *   </dd>
    *   <dt>string[] <var>a_visit_limit</var></dt>
    *   <dd>The list of calendar restrictions of the promotion (for example, 4 per week).</dd>
@@ -134,7 +134,7 @@ class Purchase56Model extends WlModelAbstract
   public $a_login_promotion = [];
 
   /**
-   * A list of existing purchase options that were selected for previous clients.
+   * A list of existing purchase options that were selected for previous clients (group).
    *
    * Note:
    * * It makes sense if for all clients the list is loaded within
@@ -162,7 +162,7 @@ class Purchase56Model extends WlModelAbstract
    * @get get
    * @var array[]
    */
-  public $a_login_promotion_select = [];
+  public $a_login_promotion_group = [];
 
   /**
    * A list of Purchase Options that are available for the session(s) being booked. Keys refer to unique string IDs,
@@ -187,7 +187,7 @@ class Purchase56Model extends WlModelAbstract
    *   <dt>string[] [<var>a_uid_share</var>]</dt>
    *   <dd>
    *       List of uids of users who share this promotion.
-   *       List of those passed in the {@link PurchaseModel::$a_purchase_select} array.
+   *       List of those passed in the {@link PurchaseModel::$a_purchase_group} array.
    *   </dd>
    *   <dt>array[] [<var>a_visit_limit</var>]</dt>
    *   <dd>This is only set for Purchase Options. A list of limits on booking by the Purchase Option. Every element has the next keys:<dl>
@@ -249,7 +249,7 @@ class Purchase56Model extends WlModelAbstract
   public $a_purchase = [];
 
   /**
-   * A list of purchase options that were selected for previous clients.
+   * A list of purchase options that were selected for previous clients (group).
    *
    * Note:
    * * It makes sense if for all clients the list is loaded within
@@ -275,7 +275,7 @@ class Purchase56Model extends WlModelAbstract
    * @get get
    * @var array[]
    */
-  public $a_purchase_select = [];
+  public $a_purchase_group = [];
 
   /**
    * Information about the recurring booking:
@@ -500,7 +500,7 @@ class Purchase56Model extends WlModelAbstract
   public $is_single_default = false;
 
   /**
-   * A list of existing purchase options that were selected for previous clients.
+   * A list of existing purchase options that were selected for previous clients (group).
    *
    * Note:
    * * It makes sense if for all clients the list is loaded within
@@ -530,10 +530,10 @@ class Purchase56Model extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $json_login_promotion_select = '';
+  public $json_login_promotion_group = '';
 
   /**
-   * A list of purchase options that were selected for previous clients.
+   * A list of purchase options that were selected for previous clients (group).
    *
    * Note:
    * * It makes sense if for all clients the list is loaded within
@@ -561,7 +561,7 @@ class Purchase56Model extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $json_purchase_select = '';
+  public $json_purchase_group = '';
 
   /**
    * The selected sessions.

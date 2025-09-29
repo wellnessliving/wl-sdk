@@ -122,6 +122,12 @@ class StoreModel extends WlModelAbstract
   public $a_resource = [];
 
   /**
+   * @post post
+   * @var array
+   */
+  public $a_session_group = [];
+
+  /**
    * The selected sessions.
    *
    * Keys refer to class period keys.
@@ -142,6 +148,12 @@ class StoreModel extends WlModelAbstract
    * @var array
    */
   public $a_session_wait_list_unpaid = [];
+
+  /**
+   * @post post
+   * @var array
+   */
+  public $a_session_wait_list_unpaid_group = [];
 
   /**
    * The keys of bookings that have been made.
