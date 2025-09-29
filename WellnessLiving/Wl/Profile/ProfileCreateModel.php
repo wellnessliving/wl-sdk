@@ -50,6 +50,18 @@ class ProfileCreateModel extends WlModelAbstract
   public $id_vaccination_status = 0;
 
   /**
+   * `true` means to add user to the legacy lead report.
+   * `false` means to not add user to the legacy lead report.
+   *
+   * Note, that this setting does not impact new Lead Management report, which will always include new user.
+   * Also lead capture marketing notification will never be triggered with this endpoint.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_lead = false;
+
+  /**
    * The key of the business.
    *
    * @post post

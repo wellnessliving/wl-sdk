@@ -114,6 +114,16 @@ class CatalogListModel extends WlModelAbstract
   public $can_add;
 
   /**
+   * Purchase item ID to filter the results by.
+   * If empty, all purchase items are returned.
+   * If set, only items with the specified purchase item ID are returned.
+   *
+   * @get get
+   * @var string
+   */
+  public $id_purchase_item_only = '';
+
+  /**
    * The key of the business to get categories for.
    *
    * @get get

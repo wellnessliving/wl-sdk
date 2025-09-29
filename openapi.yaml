@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20250929001702
+  version: 1.1.20250929121403
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-09-29 00:17:02
+    Last updated at: 2025-09-29 12:14:03
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -1087,6 +1087,9 @@ paths:
                   type: number
                   format: int32
                   description: 'Vaccination status ID. One of the {@link VaccinationStatusSid} constants. `0` if not specified.'
+                is_lead:
+                  type: boolean
+                  description: '`true` means to add user to the legacy lead report. `false` means to not add user to the legacy lead report. Note, that this setting does not impact new Lead Management report, which will always include new user. Also lead capture marketing notification will never be triggered with this endpoint.'
                 k_business:
                   type: string
                   description: 'The key of the business.'
@@ -14840,6 +14843,11 @@ paths:
     get:
       summary: ''
       parameters:
+        - name: id_purchase_item_only
+          in: query
+          description: 'Purchase item ID to filter the results by. If empty, all purchase items are returned. If set, only items with the specified purchase item ID are returned.'
+          schema:
+            type: string
         - name: k_business
           in: query
           description: 'The key of the business to get categories for.'
