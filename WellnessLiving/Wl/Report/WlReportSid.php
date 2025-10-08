@@ -315,11 +315,6 @@ abstract class WlReportSid
   const FAMILY_ALL = 134;
 
   /**
-   * Feedback report.
-   */
-  const FEEDBACK_DIALOG = 229;
-
-  /**
    * Franchise membership transfer history report.
    *
    * @title Membership Transfer History

@@ -86,7 +86,7 @@ class ClassViewModel extends WlModelAbstract
    *   <dt>bool <var>hide_price</var></dt>
    *   <dd>Hide individual price of the class session, if client has applicable pricing option.</dd>
    *   <dt>string <var>s_duration</var></dt>
-   *   <dd>The class duration in a human readable format.</dd>
+   *   <dd>The class duration in a human-readable format.</dd>
    *   <dt>string <var>s_title</var></dt>
    *   <dd>The class name.</dd>
    *   <dt>string <var>text_room</var></dt>
@@ -161,6 +161,16 @@ class ClassViewModel extends WlModelAbstract
    * @var array[]|null
    */
   public $a_staff;
+
+  /**
+   * List of other locations where virtual class can be booked.
+   * Empty array if class isn't virtual or can't be booked in other locations. `null` if data isn't loaded yet.
+   *
+   * @get result
+   * @post result
+   * @var array|null
+   */
+  public $a_virtual_location;
 
   /**
    * A list of classes and events that clients should visit before this one.

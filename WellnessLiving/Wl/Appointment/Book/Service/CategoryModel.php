@@ -72,6 +72,15 @@ class CategoryModel extends WlModelAbstract
   public $is_client_flag;
 
   /**
+   * Whether a flagged client is allowed to retrieve categories.
+   * `true` - allowed, `false` - not allowed.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_flag_ignore = false;
+
+  /**
    * `true` - search in all tabs.
    * `false` - search only for the selected book tab.
    *
