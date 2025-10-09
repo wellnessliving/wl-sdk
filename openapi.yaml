@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20251009074815
+  version: 1.1.20251009084251
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-10-09 07:48:15
+    Last updated at: 2025-10-09 08:42:51
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -20984,6 +20984,33 @@ paths:
                         description: 'Can the staff members book reserved assets.'
       tags:
         - Service-Service
+  '/Wl/Business/Account/Subscription/Achieve/AchieveSubscription.json':
+    get:
+      summary: 'Gets information does Achieve application subscription plan is free or not.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key to check Achieve app subscription plan. Business primary key in {@link \RsBusinessSql} table.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      is_free:
+                        type: boolean
+                        description: 'If Achieve app has free subscription plan is `true`, otherwise (white label, professional) - `false`.'
+                      is_white_label:
+                        type: boolean
+                        description: 'If Achieve app has white label subscription plan is `true`, otherwise (free, professional) - `false`.'
+      tags:
+        - Achieve-AchieveSubscription
   '/Wl/Member/Progress/Log/Edit/Log.json':
     get:
       summary: 'Returns progress log data.'
@@ -21463,6 +21490,9 @@ tags:
   -
     name: Account-BusinessAccount
     description: 'Gets a list of active businesses. To run this endpoint, a user must be authorized with the `rs.business.view` privilege.'
+  -
+    name: Achieve-AchieveSubscription
+    description: 'Entry point to get information about business Achieve subscription.'
   -
     name: Activity-Element
     description: 'Returns detailed information about a single client activity.'
