@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 228.
+ * Last Used ID: 229.
  */
 abstract class WlPrivilegeSid
 {
@@ -16,6 +16,8 @@ abstract class WlPrivilegeSid
 
   /**
    * Allows user to view reporting and analytics data related to AI Agent performance or usage.
+   *
+   * @deprecated Use {@link WlPrivilegeSid::MANAGE_CAASI_CONVERSATION} instead.
    */
   const AI_AGENT_REPORTS = 226;
 
@@ -468,6 +470,11 @@ abstract class WlPrivilegeSid
    * Only the staff roles with this permission provided are able to edit/add/delete the business billing information.
    */
   const MANAGE_BILLING_INFORMATION = 134;
+
+  /**
+   * View, manage, and analyze CAASI-led conversations.
+   */
+  const MANAGE_CAASI_CONVERSATION = 229;
 
   /**
    * Manage hardware readers.

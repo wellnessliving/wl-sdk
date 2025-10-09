@@ -139,6 +139,8 @@ class ClassViewModel extends WlModelAbstract
    *   <dd>Location information.</dd>
    *   <dt>array <var>a_staff</var></dt>
    *   <dd>Staff member information.</dd>
+   *   <dt>string[] <var>a_virtual_location</var></dt>
+   *   <dd>List of other locations where virtual class can be booked</dd>
    *   <dt>array <var>dt_date</var></dt>
    *   <dd>The session date/time in UTC.</dd>
    *   <dt>array <var>k_class_period</var></dt>
@@ -164,13 +166,13 @@ class ClassViewModel extends WlModelAbstract
 
   /**
    * List of other locations where virtual class can be booked.
-   * Empty array if class isn't virtual or can't be booked in other locations. `null` if data isn't loaded yet.
+   * Empty array if class isn't virtual or can't be booked in other locations.
    *
    * @get result
    * @post result
-   * @var array|null
+   * @var array
    */
-  public $a_virtual_location;
+  public $a_virtual_location = [];
 
   /**
    * A list of classes and events that clients should visit before this one.

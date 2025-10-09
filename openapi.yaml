@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20251008071855
+  version: 1.1.20251009074815
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-10-08 07:18:55
+    Last updated at: 2025-10-09 07:48:15
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -6736,13 +6736,13 @@ paths:
                         description: 'Location data. This will be `null` if data isn''t loaded yet.'
                       a_session_result:
                         type: array
-                        description: 'A list of sessions with information, received in a multiple session mode. Every element has the following keys: <dl> <dt>array <var>a_class</var></dt> <dd>Class information.</dd> <dt>array <var>a_location</var></dt> <dd>Location information.</dd> <dt>array <var>a_staff</var></dt> <dd>Staff member information.</dd> <dt>array <var>dt_date</var></dt> <dd>The session date/time in UTC.</dd> <dt>array <var>k_class_period</var></dt> <dd>The session key.</dd> </dl>'
+                        description: 'A list of sessions with information, received in a multiple session mode. Every element has the following keys: <dl> <dt>array <var>a_class</var></dt> <dd>Class information.</dd> <dt>array <var>a_location</var></dt> <dd>Location information.</dd> <dt>array <var>a_staff</var></dt> <dd>Staff member information.</dd> <dt>string[] <var>a_virtual_location</var></dt> <dd>List of other locations where virtual class can be booked</dd> <dt>array <var>dt_date</var></dt> <dd>The session date/time in UTC.</dd> <dt>array <var>k_class_period</var></dt> <dd>The session key.</dd> </dl>'
                       a_staff:
                         type: [array, "null"]
                         description: 'Staff member list data. This will be `null` if data isn''t loaded yet.'
                       a_virtual_location:
-                        type: [array, "null"]
-                        description: 'List of other locations where virtual class can be booked. Each value is primary key in {@link \RsLocationSql} table. Empty array if class isn''t virtual or can''t be booked in other locations. `null` if data isn''t loaded yet.'
+                        type: array
+                        description: 'List of other locations where virtual class can be booked. Each value is primary key in {@link \RsLocationSql} table. Empty array if class isn''t virtual or can''t be booked in other locations.'
                       a_visits_required:
                         type: array
                         description: 'A list of classes and events that clients should visit before this one. <dl> <dt>int <var>i_count</var></dt> <dd>The number of visits.</dd> <dt>bool <var>is_event</var></dt> <dd>This will be `true` if this is an event. Otherwise, this will be `false` if this is a class.</dd> <dt>string <var>k_class</var></dt> <dd>The key of the class or event.</dd> <dt>string <var>text_title</var></dt> <dd>The name of the class or event.</dd> </dl>'
@@ -6807,13 +6807,13 @@ paths:
                         description: 'Location data. This will be `null` if data isn''t loaded yet.'
                       a_session_result:
                         type: array
-                        description: 'A list of sessions with information, received in a multiple session mode. Every element has the following keys: <dl> <dt>array <var>a_class</var></dt> <dd>Class information.</dd> <dt>array <var>a_location</var></dt> <dd>Location information.</dd> <dt>array <var>a_staff</var></dt> <dd>Staff member information.</dd> <dt>array <var>dt_date</var></dt> <dd>The session date/time in UTC.</dd> <dt>array <var>k_class_period</var></dt> <dd>The session key.</dd> </dl>'
+                        description: 'A list of sessions with information, received in a multiple session mode. Every element has the following keys: <dl> <dt>array <var>a_class</var></dt> <dd>Class information.</dd> <dt>array <var>a_location</var></dt> <dd>Location information.</dd> <dt>array <var>a_staff</var></dt> <dd>Staff member information.</dd> <dt>string[] <var>a_virtual_location</var></dt> <dd>List of other locations where virtual class can be booked</dd> <dt>array <var>dt_date</var></dt> <dd>The session date/time in UTC.</dd> <dt>array <var>k_class_period</var></dt> <dd>The session key.</dd> </dl>'
                       a_staff:
                         type: [array, "null"]
                         description: 'Staff member list data. This will be `null` if data isn''t loaded yet.'
                       a_virtual_location:
-                        type: [array, "null"]
-                        description: 'List of other locations where virtual class can be booked. Each value is primary key in {@link \RsLocationSql} table. Empty array if class isn''t virtual or can''t be booked in other locations. `null` if data isn''t loaded yet.'
+                        type: array
+                        description: 'List of other locations where virtual class can be booked. Each value is primary key in {@link \RsLocationSql} table. Empty array if class isn''t virtual or can''t be booked in other locations.'
       tags:
         - ClassView-ClassView
   '/Wl/Schedule/Tab/Tab.json':
@@ -8923,7 +8923,7 @@ paths:
                         description: 'Complete information about price information for the purchase. <dl> <dt> string <var>m_discount</var> </dt> <dd> The discount amount. </dd> <dt> string <var>m_discount_code</var> </dt> <dd> The discount amount for a discount code. </dd> <dt> string <var>m_sum</var> </dt> <dd> The subtotal amount (the sum of the prices). </dd> <dt> string <var>m_tax</var> </dt> <dd> The amount of taxes. </dd> <dt> string <var>m_tip</var> </dt> <dd> The amount of tips. </dd> <dt> string <var>m_total</var> </dt> <dd> The total amount. </dd> <dt> string <var>text_currency</var> </dt> <dd> The currency of the purchase. </dd> <dt> string <var>text_discount_code</var> </dt> <dd> The discount code applied to the purchase. </dd> </dl>'
                       a_purchase_item:
                         type: array
-                        description: 'A list of purchase items. Every element has the following keys: <dl> <dt> array <var>a_logo</var> </dt> <dd> The purchase item logo. <dl> <dt> int <var>i_height</var> </dt> <dd> The image height. </dd> <dt> int <var>i_width</var> </dt> <dd> The image width. </dd> <dt> bool <var>is_empty</var> </dt> <dd> Determines whether the image is empty. </dd> <dt> string <var>text_url</var> </dt> <dd> The URL of the image. </dd> </dl> </dd> <dt> int <var>i_count</var> </dt> <dd> The number of items in the purchase. </dd> <dt> string <var>k_purchase_item</var> </dt> <dd> The key of the purchase item. </dd> <dt> string <var>m_price</var> </dt> <dd> The price of the single item. </dd> <dt> string <var>m_price_total</var> </dt> <dd> The price of all items. </dd> <dt> string <var>text_category</var> </dt> <dd> The type of the item (for example, a pass or membership). </dd> <dt> string <var>text_currency</var> </dt> <dd> The currency of the price. </dd> <dt> string <var>text_info</var> </dt> <dd> Additional information about the purchase item. </dd> <dt> string <var>text_title</var> </dt> <dd> The name of the purchase item. </dd> <dt> string <var>text_description</var> </dt> <dd> The description of the purchase item. </dd> <dt> string <var>url_print</var> </dt> <dd> The URL to print. Only available if the purchase item is a coupon (gift card). </dd> </dl>'
+                        description: 'A list of purchase items. Every element has the following keys: <dl> <dt> array <var>a_logo</var> </dt> <dd> The purchase item logo. <dl> <dt> int <var>i_height</var> </dt> <dd> The image height. </dd> <dt> int <var>i_width</var> </dt> <dd> The image width. </dd> <dt> bool <var>is_empty</var> </dt> <dd> Determines whether the image is empty. </dd> <dt> string <var>text_url</var> </dt> <dd> The URL of the image. </dd> </dl> </dd> <dt> int <var>i_count</var> </dt> <dd> The number of items in the purchase. </dd> <dt> int|null <var>id_program</var> </dt> <dd> Program ID. One of {@link \RsProgramSid} constants. Only applies to promotions. `null` if the purchase item is not a promotion. </dd> <dt> int <var>id_purchase_item</var> </dt> <dd> Purchase item ID. One of {@link \RsPurchaseItemSid} constants. </dd> <dt> int <var>id_sale</var> </dt> <dd> Sale ID. One of {@link \RsSaleSid} constants. </dd> <dt> int <var>k_id</var> </dt> <dd> The identifier of the item. </dd> <dt> string <var>k_purchase_item</var> </dt> <dd> The key of the purchase item. </dd> <dt> string <var>m_price</var> </dt> <dd> The price of the single item. </dd> <dt> string <var>m_price_total</var> </dt> <dd> The price of all items. </dd> <dt> string <var>text_category</var> </dt> <dd> The type of the item (for example, a pass or membership). </dd> <dt> string <var>text_currency</var> </dt> <dd> The currency of the price. </dd> <dt> string <var>text_info</var> </dt> <dd> Additional information about the purchase item. </dd> <dt> string <var>text_title</var> </dt> <dd> The name of the purchase item. </dd> <dt> string <var>text_description</var> </dt> <dd> The description of the purchase item. </dd> <dt> string <var>url_print</var> </dt> <dd> The URL to print. Only available if the purchase item is a coupon (gift card). </dd> </dl>'
                       dtl_purchase:
                         type: string
                         description: 'The local date of the purchase in MySQL format.'

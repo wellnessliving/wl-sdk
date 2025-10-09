@@ -4,6 +4,9 @@ namespace WellnessLiving\Wl\Purchase\Receipt;
 
 use WellnessLiving\Core\a\ACardSystemSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\WlProgramSid;
+use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * Returns receipt data of certain purchase.
@@ -292,6 +295,31 @@ class PurchaseReceiptModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The number of items in the purchase.
+   *   </dd>
+   *   <dt>
+   *     int|null <var>id_program</var>
+   *   </dt>
+   *   <dd>
+   *     Program ID. One of {@link WlProgramSid} constants. Only applies to promotions.
+   *     `null` if the purchase item is not a promotion.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_purchase_item</var>
+   *   </dt>
+   *   <dd>
+   *     Purchase item ID. One of {@link WlPurchaseItemSid} constants.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_sale</var>
+   *   </dt>
+   *   <dd>
+   *     Sale ID. One of {@link WlSaleSid} constants.
+   *   </dd>
+   *   <dt>
+   *     int <var>k_id</var>
+   *   </dt>
+   *   <dd>
+   *     The identifier of the item.
    *   </dd>
    *   <dt>
    *     string <var>k_purchase_item</var>
