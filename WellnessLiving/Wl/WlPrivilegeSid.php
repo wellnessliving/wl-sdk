@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 229.
+ * Last Used ID: 230.
  */
 abstract class WlPrivilegeSid
 {
@@ -705,6 +705,11 @@ abstract class WlPrivilegeSid
    * Manage all clients.
    */
   const PROFILE_ALL = 24;
+
+  /**
+   * This permission allows users to delete client profiles.
+   */
+  const PROFILE_DELETE = 230;
 
   /**
    * This permission allows users to view client details throughout the interface.
