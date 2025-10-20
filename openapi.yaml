@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20251009084251
+  version: 1.1.20251020134058
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-10-09 08:42:51
+    Last updated at: 2025-10-20 13:40:58
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -656,9 +656,9 @@ paths:
             type: boolean
         - name: k_business
           in: query
-          description: 'The event business key to retrieve a list of all event sessions in business. Required if {@link EventListApi::$k_location} isn''t specified.'
+          description: 'The event business key to retrieve a list of all event sessions in business. `null` to retrieve events from {@link EventListApi::$k_location}.'
           schema:
-            type: string
+            type: [string, "null"]
         - name: k_class
           in: query
           description: 'The event class key to retrieve a list of all event sessions of a specific class. `null` to retrieve a list of event sessions of all classes.'
@@ -712,9 +712,9 @@ paths:
       parameters:
         - name: k_business
           in: query
-          description: 'The event business key to retrieve a list of all event sessions in business. Required if {@link EventListApi::$k_location} isn''t specified.'
+          description: 'The event business key to retrieve a list of all event sessions in business. `null` to retrieve events from {@link EventListApi::$k_location}.'
           schema:
-            type: string
+            type: [string, "null"]
         - name: uid
           in: query
           description: 'The user key. Required to apply specific user rules such as age restrictions.'
@@ -18826,7 +18826,7 @@ paths:
                   description: 'Login promotion to be used to book a class. Primary key from {@link \RsLoginPromotionSql}.'
                 k_pay_installment_template:
                   type: [string, "null"]
-                  description: 'The installment template key. This property is optional and it will be `null` if an installment plan doesn''t exist for the purchased item. This will be `0` if an installment plan isn''t selected for the purchased item from the list of installment plans.'
+                  description: 'The installment template key. This property is optional, and it will be `null` if an installment plan doesn''t exist for the purchased item. This will be `0` if an installment plan isn''t selected for the purchased item from the list of installment plans.'
                 k_session_pass:
                   type: string
                   description: 'Session pass to be used to book a class. Primary key from {@link \Wl\Session\Pass\Sql}.'

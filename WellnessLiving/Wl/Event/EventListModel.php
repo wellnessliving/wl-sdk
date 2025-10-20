@@ -320,13 +320,13 @@ class EventListModel extends WlModelAbstract
   /**
    * The event business key to retrieve a list of all event sessions in business.
    *
-   * Required if {@link EventListModel::$k_location} isn't specified.
+   * `null` to retrieve events from {@link EventListModel::$k_location}.
    *
    * @get get
    * @put get
-   * @var string
+   * @var string|null
    */
-  public $k_business = '0';
+  public $k_business = null;
 
   /**
    * The event class key to retrieve a list of all event sessions of a specific class.

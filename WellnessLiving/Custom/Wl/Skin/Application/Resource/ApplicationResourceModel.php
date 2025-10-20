@@ -16,7 +16,7 @@ class ApplicationResourceModel extends WlModelAbstract
   /**
    * The application ID placeholder.
    */
-  public const ID = '[ID]';
+  const ID = '[ID]';
 
   /**
    * Updates the `www/js/communication.js` file.

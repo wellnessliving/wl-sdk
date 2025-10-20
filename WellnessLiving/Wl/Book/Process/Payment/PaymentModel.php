@@ -387,7 +387,7 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * The installment template key.
-   * This property is optional and it will be `null` if an installment plan doesn't exist for the purchased item.
+   * This property is optional, and it will be `null` if an installment plan doesn't exist for the purchased item.
    * This will be `0` if an installment plan isn't selected for the purchased item from the list of installment plans.
    *
    * @post post
