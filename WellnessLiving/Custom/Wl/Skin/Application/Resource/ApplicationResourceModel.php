@@ -64,6 +64,10 @@ class ApplicationResourceModel extends WlModelAbstract
       [
         's_key' => 'text_name',
         's_placeholder' => '[NAME]'
+      ],
+      [
+        's_key' => 's_version_name',
+        's_placeholder' => '[VERSION_NAME]'
       ]
     ]);
   }
