@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20251020144215
+  version: 1.1.20251022012630
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-10-20 14:42:15
+    Last updated at: 2025-10-22 01:26:30
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -18906,6 +18906,11 @@ paths:
           schema:
             type: number
             format: int32
+        - name: is_backed
+          in: query
+          description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
+          schema:
+            type: [boolean, number]
         - name: is_card_authorize
           in: query
           description: 'Determines if the client must authorize the credit card.'
