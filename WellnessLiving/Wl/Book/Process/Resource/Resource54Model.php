@@ -276,6 +276,19 @@ class Resource54Model extends WlModelAbstract
   public $id_mode = 0;
 
   /**
+   * `true` if action is performed as a staff member; `false` otherwise.
+   *
+   * If `true` is sent, access to the business and to the client will be checked.
+   * If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.
+   *
+   * @get get
+   * @post get
+   *
+   * @var bool|int
+   */
+  public $is_backed = false;
+
+  /**
    * `true` to book unpaid.
    * `false` otherwise.
    *

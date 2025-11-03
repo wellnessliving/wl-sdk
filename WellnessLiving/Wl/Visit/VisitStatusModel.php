@@ -167,6 +167,9 @@ class VisitStatusModel extends WlModelAbstract
   /**
    * Whether this visit is requested and requires staff confirmation.
    *
+   * * `true` - visit is requested.
+   * * `false` - visit is confirmed or denied or this is a system request.
+   *
    * @get result
    * @var bool
    */

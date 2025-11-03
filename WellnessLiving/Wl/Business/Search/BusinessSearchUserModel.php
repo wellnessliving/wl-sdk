@@ -22,6 +22,14 @@ class BusinessSearchUserModel extends WlModelAbstract
   public $a_result = [];
 
   /**
+   * If `true`, the return only active customers, `false` - all business.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_customer = true;
+
+  /**
    * User email to search business keys.
    *
    * @get get

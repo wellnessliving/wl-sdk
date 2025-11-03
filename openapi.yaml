@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20251022012630
+  version: 1.1.20251103231028
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-10-22 01:26:30
+    Last updated at: 2025-11-03 23:10:28
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -450,7 +450,7 @@ paths:
                         description: 'Determines whether the visit is from an event.'
                       is_request:
                         type: boolean
-                        description: 'Whether this visit is requested and requires staff confirmation.'
+                        description: 'Whether this visit is requested and requires staff confirmation. * `true` - visit is requested. * `false` - visit is confirmed or denied or this is a system request.'
                       k_class:
                         type: string
                         description: 'The class key.'
@@ -3104,7 +3104,7 @@ paths:
                     properties:
                       a_promotion:
                         type: array
-                        description: 'A list of promotions. <dl> <dt> int <var>id_program</var> </dt> <dd> The promotion program. One of the {@link \RsProgramSid} constants. </dd> <dt> string <var>k_promotion</var> </dt> <dd> The key of the promotion. Primary key in {@link \RsPromotionSql} table. </dd> <dt> string <var>text_title</var> </dt> <dd> The title of the promotion. </dd> </dl>'
+                        description: 'A list of promotions. <dl> <dt>int <var>id_program</var></dt> <dd>The promotion program. One of the {@link \RsProgramSid} constants.</dd> <dt>int <var>id_program_type</var></dt> <dd>The type of the promotion program. One of the {@link \RsProgramTypeSid} constants.</dd> <dt>bool <var>is_active</var></dt> <dd>Whether the promotion is active.</dd> <dt>string <var>k_promotion</var></dt> <dd>The key of the promotion. Primary key in {@link \RsPromotionSql} table.</dd> <dt>string <var>text_title</var></dt> <dd>The title of the promotion.</dd> </dl>'
       tags:
         - Promotion-PromotionList
   '/Wl/Promotion/Promotion.json':
@@ -4132,6 +4132,20 @@ paths:
                         description: 'A list of microservices. One element contains:<dl> <dt>bool <var>is_remove</var></dt> <dd>Whether the microservice has been deleted. `true` is the microservice is removed, `false` otherwise.</dd> <dt>string <var>json_path</var></dt> <dd> A list of repositories and paths of this microservice. Copy of {@link \Studio\Microservice\MicroserviceSql}.<var>json_path</var> field. </dd> <dt>string <var>k_project</var></dt> <dd>Project key. Primary key in {@link \StudioProjectSql} table.</dd> <dt>string <var>s_file</var></dt> <dd>File name.</dd> <dt>string <var>s_group</var></dt> <dd> The group to which the microservice belongs. See details in the <var>s_group</var> field of {@link \Studio\Microservice\MicroserviceSql} table. </dd> <dt>string <var>s_variable</var></dt> <dd> Microservice-specific variables. A set of pairs key=value, separated by newlines. The list of variables is described in class {@link PromotingConfigValue}. </dd> <dt>string <var>text_project</var></dt> <dd>Title of the project.</dd> <dt>string <var>text_title</var></dt> <dd>Title of the microservice.</dd> <dt>string <var>url_microservice_promoting</var></dt> <dd>URL of the promoting page for this microservice.</dd> </dl>'
       tags:
         - Editor-List
+  '/Studio/Microservice/Service/InstanceActiveCheck.json':
+    get:
+      summary: ''
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Service-InstanceActiveCheck
   '/Studio/Task/Branch/BranchList.json':
     get:
       summary: ''
@@ -9151,6 +9165,11 @@ paths:
           schema:
             type: number
             format: int32
+        - name: is_backed
+          in: query
+          description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
+          schema:
+            type: [boolean, number]
         - name: is_credit_card_check
           in: query
           description: 'Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`. Use this field with caution. The final booking will not use this flag, and the check will still be performed.'
@@ -9241,6 +9260,11 @@ paths:
           schema:
             type: number
             format: int32
+        - name: is_backed
+          in: query
+          description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
+          schema:
+            type: [boolean, number]
         - name: is_credit_card_check
           in: query
           description: 'Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`. Use this field with caution. The final booking will not use this flag, and the check will still be performed.'
@@ -9331,6 +9355,11 @@ paths:
           schema:
             type: number
             format: int32
+        - name: is_backed
+          in: query
+          description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
+          schema:
+            type: [boolean, number]
         - name: is_credit_card_check
           in: query
           description: 'Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`. Use this field with caution. The final booking will not use this flag, and the check will still be performed.'
@@ -9786,9 +9815,14 @@ paths:
     get:
       summary: ''
       parameters:
+        - name: is_customer
+          in: query
+          description: 'If `true`, the return only active customers, `false` - all business.'
+          schema:
+            type: boolean
         - name: is_strict
           in: query
-          description: 'If `true`, the search will be strict, `false` - not strict.'
+          description: 'If `true`, returns only active customer businesses, if `false`, returns all businesses.'
           schema:
             type: boolean
         - name: text_name
@@ -9815,6 +9849,11 @@ paths:
     get:
       summary: ''
       parameters:
+        - name: is_customer
+          in: query
+          description: 'If `true`, the return only active customers, `false` - all business.'
+          schema:
+            type: boolean
         - name: text_mail
           in: query
           description: 'User email to search business keys.'
@@ -17807,6 +17846,11 @@ paths:
           schema:
             type: number
             format: int32
+        - name: is_backed
+          in: query
+          description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
+          schema:
+            type: [boolean, number]
         - name: is_credit_card_check
           in: query
           description: 'Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`. Use this field with caution. The final booking will not use this flag, and the check will still be performed.'
@@ -17960,6 +18004,11 @@ paths:
           schema:
             type: number
             format: int32
+        - name: is_backed
+          in: query
+          description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
+          schema:
+            type: [boolean, number]
         - name: is_credit_card_check
           in: query
           description: 'Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`. Use this field with caution. The final booking will not use this flag, and the check will still be performed.'
@@ -18062,6 +18111,11 @@ paths:
           schema:
             type: number
             format: int32
+        - name: is_backed
+          in: query
+          description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
+          schema:
+            type: [boolean, number]
         - name: is_credit_card_check
           in: query
           description: 'Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`. Use this field with caution. The final booking will not use this flag, and the check will still be performed.'
@@ -18215,6 +18269,11 @@ paths:
           schema:
             type: number
             format: int32
+        - name: is_backed
+          in: query
+          description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
+          schema:
+            type: [boolean, number]
         - name: is_credit_card_check
           in: query
           description: 'Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`. Use this field with caution. The final booking will not use this flag, and the check will still be performed.'
@@ -18422,6 +18481,11 @@ paths:
           schema:
             type: number
             format: int32
+        - name: is_backed
+          in: query
+          description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
+          schema:
+            type: [boolean, number]
         - name: is_credit_card_check
           in: query
           description: 'Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`. Use this field with caution. The final booking will not use this flag, and the check will still be performed.'
@@ -19157,6 +19221,11 @@ paths:
           schema:
             type: number
             format: int32
+        - name: is_backed
+          in: query
+          description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
+          schema:
+            type: [boolean, number]
         - name: is_card_authorize
           in: query
           description: 'Determines if the client must authorize the credit card.'
@@ -19326,6 +19395,11 @@ paths:
           schema:
             type: number
             format: int32
+        - name: is_backed
+          in: query
+          description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
+          schema:
+            type: [boolean, number]
         - name: is_credit_card_check
           in: query
           description: 'Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`. Use this field with caution. The final booking will not use this flag, and the check will still be performed.'
@@ -19375,6 +19449,11 @@ paths:
           schema:
             type: number
             format: int32
+        - name: is_backed
+          in: query
+          description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
+          schema:
+            type: [boolean, number]
         - name: is_credit_card_check
           in: query
           description: 'Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`. Use this field with caution. The final booking will not use this flag, and the check will still be performed.'
@@ -19473,6 +19552,11 @@ paths:
           schema:
             type: number
             format: int32
+        - name: is_backed
+          in: query
+          description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
+          schema:
+            type: [boolean, number]
         - name: is_credit_card_check
           in: query
           description: 'Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`. Use this field with caution. The final booking will not use this flag, and the check will still be performed.'
@@ -19527,6 +19611,11 @@ paths:
           schema:
             type: number
             format: int32
+        - name: is_backed
+          in: query
+          description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
+          schema:
+            type: [boolean, number]
         - name: is_credit_card_check
           in: query
           description: 'Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`. Use this field with caution. The final booking will not use this flag, and the check will still be performed.'
@@ -19619,6 +19708,11 @@ paths:
           schema:
             type: number
             format: int32
+        - name: is_backed
+          in: query
+          description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
+          schema:
+            type: [boolean, number]
         - name: is_credit_card_check
           in: query
           description: 'Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`. Use this field with caution. The final booking will not use this flag, and the check will still be performed.'
@@ -19678,6 +19772,11 @@ paths:
           schema:
             type: number
             format: int32
+        - name: is_backed
+          in: query
+          description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
+          schema:
+            type: [boolean, number]
         - name: is_credit_card_check
           in: query
           description: 'Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`. Use this field with caution. The final booking will not use this flag, and the check will still be performed.'
@@ -22226,6 +22325,9 @@ tags:
   -
     name: Service-Edit
     description: 'Allows to create, edit and delete IP services.'
+  -
+    name: Service-InstanceActiveCheck
+    description: 'Checks instance activity.'
   -
     name: Service-Service
     description: 'Retrieves assets that are required for a service booking.'

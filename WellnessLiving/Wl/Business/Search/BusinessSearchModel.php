@@ -22,7 +22,15 @@ class BusinessSearchModel extends WlModelAbstract
   public $a_result = [];
 
   /**
-   * If `true`, the search will be strict, `false` - not strict.
+   * If `true`, the return only active customers, `false` - all business.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_customer = true;
+
+  /**
+   * If `true`, returns only active customer businesses, if `false`, returns all businesses.
    *
    * @get get
    * @var bool
