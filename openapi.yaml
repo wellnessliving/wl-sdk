@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20251103231028
+  version: 1.1.20251104111525
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-11-03 23:10:28
+    Last updated at: 2025-11-04 11:15:25
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -4133,8 +4133,18 @@ paths:
       tags:
         - Editor-List
   '/Studio/Microservice/Service/InstanceActiveCheck.json':
-    get:
+    post:
       summary: ''
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_instance_check:
+                  type: array
+                  description: 'Instance ID list to check.'
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -4143,7 +4153,11 @@ paths:
               schema:
                 oneOf:
                   - type: object
-                    description: 'Successful response. Full description is not available yet.'
+                    description: 'Successful response.'
+                    properties:
+                      a_instance:
+                        type: array
+                        description: 'List of instance IDs. Key is instance ID, value is an array with the following fields: <dl> <dt>bool <var>is_active</var></dt> <dd> Whether the instance is active. `true` - the instance is active. `false` - the instance is not active. `null` - unknown, error occurred while checking instance activity. </dd> <dt>bool <var>is_error</var></dt> <dd> Whether there was an error while checking the instance. `true` - an error occurred while checking the instance. `false` - the instance was checked successfully. </dd> <dt>bool <var>is_exists</var></dt> <dd> Whether information about the instance was found. `true` - found, `false` - not found, `null` - unknown. </dd> </dl>'
       tags:
         - Service-InstanceActiveCheck
   '/Studio/Task/Branch/BranchList.json':
@@ -12620,6 +12634,53 @@ paths:
                         description: 'URL to email.'
       tags:
         - Application-MemberInfo
+  '/Wl/Reception/Application/ReceptionAuthorize.json':
+    post:
+      summary: 'Performs authorization based on the given authorization value and business settings.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Key of the business, where Check In application is started.'
+          schema:
+            type: string
+        - name: k_location
+          in: query
+          description: 'Key of the location, where Check In application is started.'
+          schema:
+            type: string
+        - name: s_secret
+          in: query
+          description: 'Key of the Check In application. Read more {@link MainController::$s_secret}.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                text_authorize:
+                  type: string
+                  description: 'Authorization value - it''s a value, which client entered on authorization form. It can be client ID, email or phone number. Depends on the business settings.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_select:
+                        type: array
+                        description: 'List of the users, which can be authorized. Can be set only this field or {@link ReceptionAuthorizeApi::$uid}. It depends, whether we found one user or multiple. <dl> <dt>string <var>text_name_first</var></dt> <dd>First name of the user.</dd> <dt>string <var>text_name_last</var></dt> <dd>Last name of the user.</dd> <dt>string <var>uid</var></dt> <dd>Key of the user.</dd> <dt>string <var>url_image</var></dt> <dd>Link to the profile image.</dd> </dl>'
+                      uid:
+                        type: string
+                        description: 'Key of the authorized user. Can be set only this field or {@link ReceptionAuthorizeApi::$a_select}. It depends, whether we found one user or multiple.'
+      tags:
+        - Application-ReceptionAuthorize
   '/Wl/Review/ReviewList/ReviewList.json':
     get:
       summary: 'Retrieves a list of reviews.'
@@ -18825,7 +18886,7 @@ paths:
           schema:
             type: number
             format: int32
-        - name: is_backed
+        - name: is_backend
           in: query
           description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
           schema:
@@ -21671,6 +21732,9 @@ tags:
   -
     name: Application-Origin
     description: 'Gets, deletes, and adds origins for the application. Origins are links on the sites where the API can be used sign CORS authorizations from a client''s browser. If the site isn''t in the list, you can only use the API for requests between two servers. Requests directly from a client''s browser are restricted. Origins should appear as a full link in the same manner they appear on the site. It''s important to understand that the application can add allowed sites only for itself and can''t add sites for another application. This means that you need to call this endpoint using only the application that you''re using on the sites.'
+  -
+    name: Application-ReceptionAuthorize
+    description: 'Performs authorization from the Check In web application. This is a pretty special thing, because it''s not really authorize user, it''s just selects it for Check In application only and allows only to check in to the location. That is why it can not require password. But also can require - this depends on the location settings. It also requires special secret string, which connects request to the certain Check In web application session.'
   -
     name: Application-ReceptionSchedule
     description: 'Shows the schedule for the check-in process. Returns the HTML code that is normally presented for the check-in process.'
