@@ -107,9 +107,9 @@ class VisitStatusModel extends WlModelAbstract
    *
    * @get result
    * @post post
-   * @var string
+   * @var int
    */
-  public $id_visit = '0';
+  public $id_visit = 0;
 
   /**
    * The status of the visit from which the transition is made. One of the {@link WlVisitSid} constants.
@@ -120,7 +120,7 @@ class VisitStatusModel extends WlModelAbstract
    * If the status of this parameter is out of date, the API call will refresh it.
    *
    * @post post,error
-   * @var string|null
+   * @var int|null
    */
   public $id_visit_from = null;
 

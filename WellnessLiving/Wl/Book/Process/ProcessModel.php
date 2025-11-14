@@ -166,7 +166,7 @@ class ProcessModel extends WlModelAbstract
    *
    * @var bool|int
    */
-  public $is_backed = false;
+  public $is_backend = false;
 
   /**
    * `true` to book unpaid.

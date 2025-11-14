@@ -328,6 +328,13 @@ class PurchaseReceiptModel extends WlModelAbstract
    *     The key of the purchase item.
    *   </dd>
    *   <dt>
+   *     string <var>[k_shop_product]</var>
+   *   </dt>
+   *   <dd>
+   * Set only if <var>id_purchase_item</var>
+   *     is {@link WlPurchaseItemSid::PRODUCT}.
+   *   </dd>
+   *   <dt>
    *     string <var>m_price</var>
    *   </dt>
    *   <dd>

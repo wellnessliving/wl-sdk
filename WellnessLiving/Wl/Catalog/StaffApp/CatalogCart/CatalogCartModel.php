@@ -241,12 +241,24 @@ class CatalogCartModel extends WlModelAbstract
   public $text_discount_code = null;
 
   /**
-   * The discount code's error message.
+   * The discount code's error code.
+   *
+   * `null` if no error.
    *
    * @get result
-   * @var string
+   * @var string|null
    */
-  public $text_error_code;
+  public $text_error_code = null;
+
+  /**
+   * The discount code's error message.
+   *
+   * `null` if no error.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $text_error_message = null;
 
   /**
    * The custom receipt note's text.

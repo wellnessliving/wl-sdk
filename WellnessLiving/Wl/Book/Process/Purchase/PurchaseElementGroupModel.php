@@ -13,6 +13,11 @@ class PurchaseElementGroupModel extends WlModelAbstract
   /**
    * A list of purchase items. Each item is an associative array with the following keys:
    *  <dl>
+   *      <dt>int [`i_session` = 1]</dt>
+   *      <dd>
+   *          Number of sessions which are booked simultaneously.
+   *          Make sense only when `id_purchase_item` = {@link WlPurchaseItemSid::CLASS_PERIOD}.
+   *      </dd>
    *      <dt>int `id_purchase_item`</dt>
    *      <dd>The ID of the purchase item type. One of {@link WlPurchaseItemSid}.</dd>
    *      <dt>string `k_id`</dt>
@@ -59,14 +64,6 @@ class PurchaseElementGroupModel extends WlModelAbstract
    * @var string|null
    */
   public $dtu_date = null;
-
-  /**
-   * The number of sessions which are booked simultaneously.
-   *
-   * @get get
-   * @var int
-   */
-  public $i_session = 0;
 
   /**
    * The key of the location in which the purchase is made.

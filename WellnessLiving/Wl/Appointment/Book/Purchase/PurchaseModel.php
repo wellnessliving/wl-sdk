@@ -29,7 +29,7 @@ class PurchaseModel extends WlModelAbstract
   public $a_login_prize;
 
   /**
-   * A list of the client`s login promotions that can be applied to a given service.
+   * A list of the client's login promotions that can be applied to a given service.
    * <dl>
    *   <dt>array <var>a_login_promotion_info</var></dt>
    *   <dd>
@@ -86,6 +86,11 @@ class PurchaseModel extends WlModelAbstract
    *   <dd>Priority of this promotion.</dd>
    *   <dt>int <var>id_program</var></dt>
    *   <dd>The program ID for promotions. One of the {@link WlProgramSid} constants.</dd>
+   *   <dt>bool <var>is_share</var></dt>
+   *   <dd>
+   *     `true` if this purchase option is shared from another user.
+   *     `false` if this purchase option belongs to the user for whom the request is made.
+   *   </dd>
    *   <dt>string <var>k_login_promotion</var></dt>
    *   <dd>The Purchase Option login key.</dd>
    *   <dt>string <var>s_class_include</var></dt>
@@ -98,6 +103,11 @@ class PurchaseModel extends WlModelAbstract
    *   <dd>The Purchase Option name.</dd>
    *   <dt>string <var>text_package_item</var></dt>
    *   <dd>If this Purchase Option is a package, then this field contains a list of Purchase Options contained in the package.</dd>
+   *   <dt>string <var>uid_owner</var></dt>
+   *   <dd>
+   *     The user key of the owner of the promotion.
+   *     Will be different from the user for whom the request is made if the promotion is shared.
+   *   </dd>
    * </dl>
    *
    * @get result

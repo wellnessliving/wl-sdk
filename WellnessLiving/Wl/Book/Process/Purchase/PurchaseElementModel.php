@@ -33,6 +33,8 @@ class PurchaseElementModel extends WlModelAbstract
   /**
    * The number of sessions which are booked simultaneously.
    *
+   * Required when {@link PurchaseElementModel::$id_purchase_item} = {@link WlPurchaseItemSid::CLASS_PERIOD}.
+   *
    * @get get
    * @var int
    */
@@ -76,14 +78,16 @@ class PurchaseElementModel extends WlModelAbstract
    * Installment template key.
    * This property is optional.
    *
-   * * can only be set for the purchase option which supports installment plan, see {@link PurchaseItemAbstract::INSTALLMENT_ALLOW_USER} property;
+   * * can only be set for the purchase option which supports installment plan, see
+   * {@link PurchaseItemAbstract::INSTALLMENT_ALLOW_USER} property;
    * * `null` if installment plan doesn't exist for bought item;
    * * `0` if installment plan doesn't selected for bought item from the list of installment plans.
    *
    * NOTE:
    * * Calculations of discounts and taxes for installment plans are for demonstration purposes only!
    * * Installment is not an independent purchase item and has no discounts or taxes.
-   * * Installment is a division of the final amount (with taxes and discounts), of some purchase option, into N parts.
+   * * Installment is a division of the final amount (with taxes and discounts), of some purchase option, into N
+   * parts.
    *
    * @get get
    * @var string|null

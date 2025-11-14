@@ -87,6 +87,16 @@ class PageElementModel extends WlModelAbstract
   public $a_class_info;
 
   /**
+   * Resource image data.
+   *
+   * `null` for all services except resources.
+   *
+   * @get result
+   * @var array|null
+   */
+  public $a_resource_image = null;
+
+  /**
    * A list of staff members involved in the visit.
    * Each element is an array with the following elements:
    * <dl>

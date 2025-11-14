@@ -20,7 +20,7 @@ class VideoElementModel extends WlModelAbstract
   public $a_location;
 
   /**
-   * TODO wl-71918: remove this property when external developers confirm that they do not use it.
+   * TODO wl-76380: remove this property when external developers confirm that they do not use it.
    * The keys of the staff members who are on the video.
    *
    * @get result
