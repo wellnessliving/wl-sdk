@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20251127090436
+  version: 1.1.20251127094438
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-11-27 09:04:36
+    Last updated at: 2025-11-27 09:44:38
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -12880,7 +12880,7 @@ paths:
                     properties:
                       a_widget_skin:
                         type: array
-                        description: 'Skins grouped by widget type.'
+                        description: 'List of Widget skins grouped by widget type. Skin type, one of {@link \RsSkinSid} constants. The array structure: Keys - Skin type, one of {@link \RsSkinSid} constants. Values - arrays with next keys: <dl> <dt>string `k_skin`</dt><dd>Skin key. Primary key from {@link \RsSkinSql} table.</dd> <dt>string `text_widget_name`</dt><dd>Widget name.</dd> </dl>'
       tags:
         - Widget-SkinWidgetList
   '/Wl/Sms/Phone/BusinessPhone.json':
@@ -21698,6 +21698,54 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Count-InventoryCount
+  '/Core/Sid/CoreSid.json':
+    get:
+      summary: ''
+      parameters:
+        - name: s_class_name
+          in: query
+          description: 'Name of the Sid class to get list from. Should be a fully qualified class name and class should be a child of {@link CoreSid}.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_list:
+                        type: array
+                        description: 'List of items. Keys are IDs, values are arrays with additional information: <dl> <dt>int <var>sid</var></dt> <dd>String ID.</dd> <dt>string <var>text_title</var></dt> <dd>Title of the ID.</dd> </dl>'
+      tags:
+        - Sid-CoreSid
+  '/Wl/Location/Facility/FacilitySid.json':
+    get:
+      summary: ''
+      parameters:
+        - name: s_class_name
+          in: query
+          description: 'Name of the Sid class to get list from. Should be a fully qualified class name and class should be a child of {@link CoreSid}.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_list:
+                        type: array
+                        description: 'List of items. Keys are IDs, values are arrays with additional information: <dl> <dt>int <var>sid</var></dt> <dd>String ID.</dd> <dt>string <var>text_title</var></dt> <dd>Title of the ID.</dd> </dl>'
+      tags:
+        - Facility-FacilitySid
 tags:
   -
     name: Account-Account
@@ -22038,6 +22086,9 @@ tags:
   -
     name: EventView-Element
     description: 'Retrieves information about an event element.'
+  -
+    name: Facility-FacilitySid
+    description: 'API to get list of additional information about IDs from {@link \RsFacilitySid} class.'
   -
     name: Field-EnrollmentFieldList
     description: 'Retrieves and validates a list of insurance partner fields. Use the GET method to load a list of required fields. Use the POST method to validate the fields before sending them to the payment API.'
@@ -22458,6 +22509,9 @@ tags:
   -
     name: Share-SocialShare
     description: 'Saves data about share post to database. Api usage example: <code> $o_api = new SocialShareApi(); $o_api->id_share_object = \Wl\Social\Share\ShareObjectSid::PURCHASE; // Key of the purchase because id_share_object is \Wl\Social\Share\ShareObjectSid::PURCHASE $o_api->a_key = [$k_purchase_a, $k_purchase_b]; $o_api->id_share_destination = \ASocialSid::FACEBOOK; $o_api->k_business = $k_business; $o_api->uid = $uid; $o_api->post(); $url_link = ''''; // Example: Wl_Profile_Activity_ElementModel.url_link // s_secret points specifically to your object that you want to share, so add it to the url. // In this case url_link stores all purchases for the business, // and by using s_secret we will get a link to only those purchases we want to share. $url_facebook_share = ''https://www.facebook.com/sharer/sharer.php?u='' . urlencode($url_link . ''&s_secret='' . $o_api->s_secret); </code>'
+  -
+    name: Sid-CoreSid
+    description: 'API to get list of additional information about IDs from any Sid class. This API can be used itself - in this case you need to send correct name of the class. Or you can use one of the inherited classes with predefined class name, if it exists.'
   -
     name: SignOut-SignOut
     description: 'Signs user out.'
