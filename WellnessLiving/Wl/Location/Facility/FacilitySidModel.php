@@ -7,6 +7,8 @@ use WellnessLiving\Wl\WlFacilitySid;
 
 /**
  * API to get list of additional information about IDs from {@link WlFacilitySid} class.
+ *
+ * Property {@link FacilitySidModel::$s_class_name} can be left empty in this class. It will use predefined class name.
  */
 class FacilitySidModel extends WlModelAbstract
 {
