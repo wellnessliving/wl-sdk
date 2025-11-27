@@ -36,7 +36,7 @@ class Purchase56Model extends WlModelAbstract
    *   <dt>string <var>s_value</var></dt>
    *   <dd>The unique identifier.</dd>
    *   <dt>string <var>text_title</var></dt>
-   *   <dd>User friendly login prize description.</dd>
+   *   <dd>User-friendly login prize description.</dd>
    * </dl>
    *
    * @get result
@@ -45,7 +45,7 @@ class Purchase56Model extends WlModelAbstract
   public $a_login_prize = [];
 
   /**
-   * A list of the client`s login promotions that can be applied to a given service.
+   * A list of the client's login promotions that can be applied to a given service.
    * Each element has the following fields:
    * <dl>
    *   <dt>array <var>a_login_promotion_info</var></dt>
@@ -64,7 +64,7 @@ class Purchase56Model extends WlModelAbstract
    *   </dd>
    *   <dt>string[] <var>a_uid_share</var></dt>
    *   <dd>
-   *     List of uids of users who share this promotion.
+   *     List of UIDs of users who share this promotion.
    *     List of those passed in the {@link PurchaseModel::$a_login_promotion_group} array.
    *   </dd>
    *   <dt>string[] <var>a_visit_limit</var></dt>
@@ -151,11 +151,14 @@ class Purchase56Model extends WlModelAbstract
    *
    * Each element has the following structure:
    * <dl>
-   *   <dt>int <var>[i_session = 1]</var></dt>
-   *   <dd>Number of sessions of the same class|event that were selected for the previous user.</dd>
-   *   <dt>string <var>k_login_promotion</var></dt>
+   *   <dt>int `[i_session = 1]`</dt>
+   *   <dd>
+   *       Number of paid sessions of the same class|event that were selected for the previous user.
+   *       This number should not include free or waitlist unpaid sessions.
+   *   </dd>
+   *   <dt>string `k_login_promotion`</dt>
    *   <dd>Selected purchase option.</dd>
-   *   <dt>string <var>uid</var></dt>
+   *   <dt>string `uid`</dt>
    *   <dd>UID of the previous user.</dd>
    * </dl>
    *
@@ -167,7 +170,7 @@ class Purchase56Model extends WlModelAbstract
   /**
    * A list of Purchase Options that are available for the session(s) being booked. Keys refer to unique string IDs,
    * and values refer arrays with the next fields: <dl>
-   *   <dt>array[] <var>a_installment_template</var>.</dt>
+   *   <dt>array[] <var>a_installment_template</var></dt>
    *   <dd>A list of installment plans. Every element has the next keys:<dl>
    *     <dt>int <var>i_count</var></dt>
    *     <dd>The number of payments.</dd>
@@ -183,11 +186,6 @@ class Purchase56Model extends WlModelAbstract
    *     <dd>The amount of the installment plan.</dd>
    *     <dt>string <var>s_duration</var></dt>
    *     <dd>The title of the installment plan.</dd></dl>
-   *   </dd>
-   *   <dt>string[] [<var>a_uid_share</var>]</dt>
-   *   <dd>
-   *       List of uids of users who share this promotion.
-   *       List of those passed in the {@link PurchaseModel::$a_purchase_group} array.
    *   </dd>
    *   <dt>array[] [<var>a_visit_limit</var>]</dt>
    *   <dd>This is only set for Purchase Options. A list of limits on booking by the Purchase Option. Every element has the next keys:<dl>
@@ -247,35 +245,6 @@ class Purchase56Model extends WlModelAbstract
    * @var array[]
    */
   public $a_purchase = [];
-
-  /**
-   * A list of purchase options that were selected for previous clients (group).
-   *
-   * Note:
-   * * It makes sense if for all clients the list is loaded within
-   *      the same pair {@link PurchaseModel::$dt_date_gmt} and {@link PurchaseModel::$k_class_period}.
-   * * If promotions are shared, the system will try to determine if there are enough sessions left for the next
-   *      client who has the same promotion.
-   * * Can affect the list of available purchases {@link PurchaseModel::$a_purchase}.
-   * * The list of promotions built for the client will be based on the principle that the owner of this promotion
-   *      will be the client for whom this list is requested.
-   *
-   * Each element has the following structure:
-   * <dl>
-   *   <dt>int <var>[i_session = 1]</var></dt>
-   *   <dd>Number of sessions of the same class|event that were selected for the previous user.</dd>
-   *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>ID of purchase item type. One of {@link WlPurchaseItemSid}.</dd>
-   *   <dt>string <var>k_id</var></dt>
-   *   <dd>Key of certain purchase item in database. Name of table in database depends on <var>id_purchase_item</var></dd>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>UID of the previous user.</dd>
-   * </dl>
-   *
-   * @get get
-   * @var array[]
-   */
-  public $a_purchase_group = [];
 
   /**
    * Information about the recurring booking:
@@ -356,7 +325,7 @@ class Purchase56Model extends WlModelAbstract
    *   <dt>string <var>s_value</var></dt>
    *   <dd>The unique identifier.</dd>
    *   <dt>string <var>text_title</var></dt>
-   *   <dd>User friendly prize description.</dd>
+   *   <dd>User-friendly prize description.</dd>
    * </dl>
    *
    * @get result
@@ -459,7 +428,7 @@ class Purchase56Model extends WlModelAbstract
    * @get get
    * @post get
    *
-   * @var bool|int
+   * @var bool
    */
   public $is_backend = false;
 
@@ -517,12 +486,12 @@ class Purchase56Model extends WlModelAbstract
    *
    * Note:
    * * It makes sense if for all clients the list is loaded within
-   *      the same pair {@link PurchaseModel::$dt_date_gmt} and {@link PurchaseModel::$k_class_period}.
+   *      the same pair {@link Purchase56Model::$dt_date_gmt} and {@link Purchase56Model::$k_class_period}.
    * * If promotions are shared, the system will try to determine if there are enough sessions left for the next
    *      client who has the same promotion.
    * * A very simple check is made based on a comparison of the remaining sessions for the promotion
    *      with the number of times it was selected.
-   * * Can affect the list of available login promotions {@link PurchaseModel::$a_login_promotion}.
+   * * Can affect the list of available login promotions {@link Purchase56Model::$a_login_promotion}.
    *      If a given client is eligible for such a promotion, but the remaining sessions (minus those previously
    *      selected) in it do not allow it to be applied to the selected session, then such promotion will simply
    *      not be returned for the client.
@@ -532,11 +501,14 @@ class Purchase56Model extends WlModelAbstract
    *
    * Each element has the following structure:
    * <dl>
-   *   <dt>int <var>[i_session = 1]</var></dt>
-   *   <dd>Number of sessions of the same class|event that were selected for the previous user.</dd>
-   *   <dt>string <var>k_login_promotion</var></dt>
+   *   <dt>int `[i_session = 1]`</dt>
+   *   <dd>
+   *       Number of paid sessions of the same class|event that were selected for the previous user.
+   *       This number should not include free or waitlist unpaid sessions.
+   *   </dd>
+   *   <dt>string `k_login_promotion`</dt>
    *   <dd>Selected purchase option.</dd>
-   *   <dt>string <var>uid</var></dt>
+   *   <dt>string `uid`</dt>
    *   <dd>UID of the previous user.</dd>
    * </dl>
    *
@@ -544,37 +516,6 @@ class Purchase56Model extends WlModelAbstract
    * @var string
    */
   public $json_login_promotion_group = '';
-
-  /**
-   * A list of purchase options that were selected for previous clients (group).
-   *
-   * Note:
-   * * It makes sense if for all clients the list is loaded within
-   *      the same pair {@link PurchaseModel::$dt_date_gmt} and {@link PurchaseModel::$k_class_period}.
-   * * If promotions are shared, the system will try to determine if there are enough sessions left for the next
-   *      client who has the same promotion.
-   * * Can affect the list of available purchases {@link PurchaseModel::$a_purchase}.
-   * * The list of promotions built for the client will be based on the principle that the owner of this promotion
-   *      will be the client for whom this list is requested.
-   *
-   * Serialized with JSON.
-   *
-   * Each element has the following structure:
-   * <dl>
-   *   <dt>int <var>[i_session = 1]</var></dt>
-   *   <dd>Number of sessions of the same class|event that were selected for the previous user.</dd>
-   *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>ID of purchase item type. One of {@link WlPurchaseItemSid}.</dd>
-   *   <dt>string <var>k_id</var></dt>
-   *   <dd>Key of certain purchase item in database. Name of table in database depends on <var>id_purchase_item</var></dd>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>UID of the previous user.</dd>
-   * </dl>
-   *
-   * @get get
-   * @var string
-   */
-  public $json_purchase_group = '';
 
   /**
    * The selected sessions.
@@ -594,10 +535,11 @@ class Purchase56Model extends WlModelAbstract
    * The business key.
    *
    * `null` if business key was not passed.
-   *
-   * @get get
-   * @var string|null
-   */
+    *
+    * @get get
+    * @var string|null
+    *
+    */
   public $k_business = null;
 
   /**

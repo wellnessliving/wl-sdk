@@ -30,6 +30,11 @@ class InstanceActiveCheckModel extends WlModelAbstract
    *    Whether information about the instance was found.
    *    `true` - found, `false` - not found, `null` - unknown.
    *  </dd>
+   *  <dt>bool <var>is_test</var></dt>
+   *  <dd>
+   *    Whether the instance is a test instance.
+   *    `true` - test, `false` - not a test, `null` - unknown.
+   *  </dd>
    * </dl>
    *
    * @post result

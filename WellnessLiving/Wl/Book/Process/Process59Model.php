@@ -165,7 +165,7 @@ class Process59Model extends WlModelAbstract
    * @get get
    * @post get
    *
-   * @var bool|int
+   * @var bool
    */
   public $is_backend = false;
 

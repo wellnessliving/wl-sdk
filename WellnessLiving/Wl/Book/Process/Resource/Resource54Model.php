@@ -284,7 +284,7 @@ class Resource54Model extends WlModelAbstract
    * @get get
    * @post get
    *
-   * @var bool|int
+   * @var bool
    */
   public $is_backend = false;
 

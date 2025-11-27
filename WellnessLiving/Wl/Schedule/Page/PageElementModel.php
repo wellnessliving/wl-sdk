@@ -84,7 +84,7 @@ class PageElementModel extends WlModelAbstract
    * @get result
    * @var array|null
    */
-  public $a_class_info;
+  public $a_class_info = null;
 
   /**
    * Resource image data.
@@ -272,10 +272,12 @@ class PageElementModel extends WlModelAbstract
 
   /**
    * The appointment key.
-   * This will be set only if the visit is an appointment. If the visit is a class or event, this will be `null`.
+   * This will be set only if the visit is an appointment.
+   *
+   * If the visit is a class or event, this will be `null`.
    *
    * @get result
-   * @var string
+   * @var string|null
    */
   public $k_appointment;
 
@@ -285,7 +287,7 @@ class PageElementModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $k_business;
+  public $k_business = '0';
 
   /**
    * The class key. This will be set only if the visit is a class or an event.
@@ -294,14 +296,15 @@ class PageElementModel extends WlModelAbstract
    * @get result
    * @var string|null
    */
-  public $k_class;
+  public $k_class = null;
 
   /**
    * The class period key. This will be set only if the visit is a class or an event.
+   *
    * If the visit is an appointment, this will be `null`.
    *
    * @get result
-   * @var string
+   * @var string|null
    */
   public $k_class_period;
 

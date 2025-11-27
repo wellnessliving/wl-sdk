@@ -152,6 +152,17 @@ class WlUserException extends \Exception
     return $e;
   }
 
+  /**
+   * Gets additional data for debugging purposes.
+   *
+   * @return array Additional data for debugging purposes.
+   * Structure is not defined and may vary depending on situation.
+   */
+  public function dataGet()
+  {
+    return $this->a_data;
+  }
+
     /**
      * Gets value of error code.
      *

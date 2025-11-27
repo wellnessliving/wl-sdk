@@ -134,7 +134,7 @@ class InfoModel extends WlModelAbstract
    *   <dt>int `i_wait`</dt>
    *   <dd>Total number of clients on the wait list.</dd>
    *   <dt>int|null `i_wait_limit`</dt>
-   *   <dd>Total capacity the wait list. `null` if wail list in unlimited.</dd>
+   *   <dd>Total capacity the wait list. `null` if wail list in unlimited. `0` if wait list is disabled.</dd>
    *   <dt>
    *     boolean <var>is_select</var>
    *   </dt>
@@ -418,7 +418,7 @@ class InfoModel extends WlModelAbstract
    * @get get
    * @post get
    *
-   * @var bool|int
+   * @var bool
    */
   public $is_backend = false;
 

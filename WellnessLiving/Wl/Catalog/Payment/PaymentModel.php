@@ -214,12 +214,6 @@ class PaymentModel extends WlModelAbstract
    *     <dt>string <var>k_tax</var></dt><dd>The tax key.</dd></dl>
    *   </dd>
    *   <dt>
-   *     string [<var>html_contract</var>]
-   *   </dt>
-   *   <dd>
-   *     The contract text. This is only required for items that require contract signing.
-   *   </dd>
-   *   <dt>
    *     int <var>i_quantity</var>
    *   </dt>
    *   <dd>

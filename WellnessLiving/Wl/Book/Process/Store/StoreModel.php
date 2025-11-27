@@ -7,14 +7,15 @@ use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Book\Process\Purchase\Purchase56Model;
 use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
- * Manages the booking wizard for the "Purchase Options" page.
+ * Manages the "Purchase Options" page of the booking wizard.
  */
 class StoreModel extends WlModelAbstract
 {
   /**
-   * The user's activity keys. This won't be empty when the booking process is finished.
+   * The keys for the user's activities. This will be populated upon completion of the booking process.
    *
    * @post result
    * @var string[]
@@ -24,16 +25,19 @@ class StoreModel extends WlModelAbstract
   /**
    * The selected purchase item.
    *
-   * This new purchasable item should be checked to see if it can be applied to the current class or event before
-   * purchasing it.
+   * This new purchase item should be checked to determine if it can be applied to the current class or event before
+   * being purchased.
    *
    * <dl>
    *   <dt>int <var>i_session</var></dt>
-   *   <dd>The number of sessions that this item can cover.</dd>
+   *   <dd>
+   *       The number of sessions that this item can cover.
+   *       This only applies to items of type {@link WlPurchaseItemSid::CLASS_PERIOD}.
+   *   </dd>
    *   <dt>int <var>s_value</var></dt>
    *   <dd>
-   *     Unique identifier of the element being checked.
-   *     Corresponds to the values:
+   *     The unique identifier of the item being checked.
+   *     This corresponds to one of the following values:
    *     <ul>
    *       <li>{@link Purchase56Model::$a_purchase}`["s_value"]`</li>
    *       <li>{@link Purchase56Model::$a_reward_prize}`["s_value"]`</li>
@@ -108,7 +112,7 @@ class StoreModel extends WlModelAbstract
   public $a_repeat = null;
 
   /**
-   * A list of assets being booked. Every element has the next keys:
+   * A list of assets being booked. Each element has the following keys:
    * <dl>
    *   <dt>int <var>i_index</var></dt>
    *   <dd>The order number of the asset (from 1 to the asset quantity).</dd>
@@ -122,16 +126,9 @@ class StoreModel extends WlModelAbstract
   public $a_resource = [];
 
   /**
-   * @post post
-   * @var array
-   */
-  public $a_session_group = [];
-
-  /**
-   * The selected sessions.
+   * The selected sessions for an event.
    *
-   * Keys refer to class period keys.
-   * And values refer to the list of dates/times when the session occurred (returned in MySQL format and in GMT).
+   * The value is an indexed array of dates and times when the session occurred (in MySQL format, UTC).
    *
    * @post post
    * @var array
@@ -139,10 +136,9 @@ class StoreModel extends WlModelAbstract
   public $a_session_select = [];
 
   /**
-   * The selected sessions on the wait list that are unpaid.
+   * The selected sessions for an event that are on the wait list and unpaid.
    *
-   * Keys refer to session IDs.
-   * And values refer to index arrays of dates/times when the session occurred (returned in MySQL format and in GMT).
+   * The value is an indexed array of dates and times when the session occurred (in MySQL format, UTC).
    *
    * @post post
    * @var array
@@ -150,13 +146,7 @@ class StoreModel extends WlModelAbstract
   public $a_session_wait_list_unpaid = [];
 
   /**
-   * @post post
-   * @var array
-   */
-  public $a_session_wait_list_unpaid_group = [];
-
-  /**
-   * The keys of bookings that have been made.
+   * The keys of the bookings that have been made.
    *
    * @post result
    * @var string[]
@@ -199,7 +189,7 @@ class StoreModel extends WlModelAbstract
    * @get get
    * @post get
    *
-   * @var bool|int
+   * @var bool
    */
   public $is_backend = false;
 
@@ -237,9 +227,9 @@ class StoreModel extends WlModelAbstract
   public $is_force_pay_later = false;
 
   /**
-   * `true` - the next steps of booking wizard are required to purchase something or to book the selected session.
+   * If `true`, the next steps of the booking wizard are required to purchase an item or book the selected session.
    *
-   * `false` - no further steps in the booking wizard are required.
+   * If `false`, no further steps in the booking wizard are required.
    *
    * @post result
    * @var bool
