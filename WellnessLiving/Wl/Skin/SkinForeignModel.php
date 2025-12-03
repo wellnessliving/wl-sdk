@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Skin;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\RsSkinSid;
 
 /**
  * Allows to create, update and remove foreign widgets.
@@ -59,6 +60,8 @@ class SkinForeignModel extends WlModelAbstract
   public $a_fields = [];
 
   /**
+   * Skin type, one of {@link RsSkinSid} constants.
+   *
    * @delete get
    * @post get
    * @put get

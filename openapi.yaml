@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20251127094438
+  version: 1.1.20251203220200
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-11-27 09:44:38
+    Last updated at: 2025-12-03 22:02:00
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -196,6 +196,30 @@ paths:
                         description: 'A list of items to show in the combobox list. Each element of the array is a city matching the string with the following structure: <dl> <dt>string <var>s_value</var></dt> <dd>The human-readable name of the city, including the state/province and country.</dd> <dt>string <var>s_key</var></dt> <dd>The <var>k_city</var> value for the city.</dd> </dl>'
       tags:
         - Geo-Combobox
+  '/Core/Sid/CoreSid.json':
+    get:
+      summary: ''
+      parameters:
+        - name: s_class_name
+          in: query
+          description: 'Name of the Sid class to get list from. Should be a fully qualified class name and class should be a child of {@link CoreSid}.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_list:
+                        type: array
+                        description: 'List of items. Keys are IDs, values are arrays with additional information: <dl> <dt>int <var>sid</var></dt> <dd>String ID.</dd> <dt>string <var>text_title</var></dt> <dd>Title of the ID.</dd> </dl>'
+      tags:
+        - Sid-CoreSid
   '/Core/WebSocket/Subscribe.json':
     post:
       summary: 'Checks whether a listener can subscribe to specified channel. Subscribes in a case of positive result.'
@@ -14005,6 +14029,30 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - WorkTime-LocationWorkTime
+  '/Wl/Location/Facility/FacilitySid.json':
+    get:
+      summary: ''
+      parameters:
+        - name: s_class_name
+          in: query
+          description: 'Name of the Sid class to get list from. Should be a fully qualified class name and class should be a child of {@link CoreSid}.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_list:
+                        type: array
+                        description: 'List of items. Keys are IDs, values are arrays with additional information: <dl> <dt>int <var>sid</var></dt> <dd>String ID.</dd> <dt>string <var>text_title</var></dt> <dd>Title of the ID.</dd> </dl>'
+      tags:
+        - Facility-FacilitySid
   '/Wl/Promotion/Index/PromotionIndex.json':
     get:
       summary: 'Gets a list of packages/passes/memberships.'
@@ -18057,6 +18105,13 @@ paths:
                         type: number
                         format: int32
                         description: 'The duration of the session in minutes.'
+                      i_wait:
+                        type: number
+                        format: int32
+                        description: 'Total number of clients on the wait list.'
+                      i_wait_limit:
+                        type: [number, "null"]
+                        description: 'Total capacity the wait list. `null` if wail list in unlimited. `0` if wait list is disabled.'
                       i_wait_spot:
                         type: number
                         format: int32
@@ -18322,6 +18377,13 @@ paths:
                         type: number
                         format: int32
                         description: 'The duration of the session in minutes.'
+                      i_wait:
+                        type: number
+                        format: int32
+                        description: 'Total number of clients on the wait list.'
+                      i_wait_limit:
+                        type: [number, "null"]
+                        description: 'Total capacity the wait list. `null` if wail list in unlimited. `0` if wait list is disabled.'
                       i_wait_spot:
                         type: number
                         format: int32
@@ -18697,6 +18759,87 @@ paths:
                         description: 'If `true`, the next steps of the booking wizard are required to purchase an item or book the selected session. If `false`, no further steps in the booking wizard are required.'
       tags:
         - Store-Store
+  '/Wl/Book/Process/Store/StoreGroup.json':
+    post:
+      summary: ''
+      parameters:
+        - name: dt_date_gmt
+          in: query
+          description: 'Date/time to which session is booked.'
+          schema:
+            type: string
+        - name: id_mode
+          in: query
+          description: 'The mode type. One of the {@link ModeSid} constants.'
+          schema:
+            type: number
+            format: int32
+        - name: is_backend
+          in: query
+          description: '`true` if action is performed as a staff member; `false` otherwise. If `true` is sent, access to the business and to the client will be checked. If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.'
+          schema:
+            type: boolean
+        - name: is_credit_card_check
+          in: query
+          description: 'Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`. Use this field with caution. The final booking will not use this flag, and the check will still be performed.'
+          schema:
+            type: boolean
+        - name: k_class_period
+          in: query
+          description: 'Key of session which is booked.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'The client key for which the booking is being made. Primary key from {@link \PassportLoginSql}.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_login_promotion:
+                  type: array
+                  description: 'A list of existing login promotions which are selected by a group of clients. This login promotions will be checked to determine if it can be applied to the current class or event. * Key - UID of the client. Primary key in the {@link \PassportLoginSql} table. * Value - login promotion key. Primary key in the {@link \RsLoginPromotionSql} table.'
+                a_purchase_item_check:
+                  type: array
+                  description: 'A list of new purchase items which are selected by a group of clients. This new purchase items will be checked to determine if it can be applied to the current class or event before being purchased. * Key - UID of the client. Primary key in the {@link \PassportLoginSql} table. * Value - an array with the following structure: <dl> <dt>int `i_session`</dt> <dd> The number of sessions that this item can cover. This only applies to items of type {@link \RsPurchaseItemSid::CLASS_PERIOD}. </dd> <dt>int `s_value`</dt> <dd> The unique identifier of the item being checked. This corresponds to one of the following values: <ul> <li>{@link Purchase56Api::$a_purchase}`["s_value"]`</li> <li>{@link Purchase56Api::$a_reward_prize}`["s_value"]`</li> <li>{@link Purchase56Api::$a_login_prize}`["s_value"]`</li> </ul> </dd> </dl>'
+                a_resource:
+                  type: array
+                  description: 'A list of assets which are selected by a group of clients. * Key - UID of the client. Primary key in the {@link \PassportLoginSql} table. * Value - an array with the following structure: <dl> <dt>int `i_index`</dt> <dd>The order number of the asset (from 1 to the asset quantity).</dd> <dt>string `k_resource`</dt> <dd>The asset key. Primary key in the {@link \RsResourceSql} table.</dd> </dl>'
+                a_session_pass:
+                  type: array
+                  description: 'A list of existing session passes (drop-in, full-event) which are selected by a group of clients. This session passes will be checked to determine if it can be applied to the current class or event. * Key - UID of the client. Primary key in the {@link \PassportLoginSql} table. * Value - session pass key. Primary key in the {@link \Wl\Session\Pass\Sql} table.'
+                a_session_select:
+                  type: object
+                  description: 'A list of sessions which are selected by a group of clients. * Key - UID of the client. Primary key in the {@link \PassportLoginSql} table. * Value - an array with the following structure: * Key - class period keys. Primary keys from {@link \RsClassPeriodSql} table. * Value - index arrays of dates/times when the session occurred (MySQL format; UTC).'
+                a_session_wait_list_unpaid:
+                  type: object
+                  description: 'A list of wait list (unpaid) sessions which are selected by a group of clients. * Key - UID of the client. Primary key in the {@link \PassportLoginSql} table. * Value - an array with the following structure: * Key - class period keys. Primary keys from {@link \RsClassPeriodSql} table. * Value - index arrays of dates/times when the session occurred (MySQL format; UTC).'
+                is_book_unpaid:
+                  type: boolean
+                  description: '`true` to book unpaid. `false` otherwise. Allows booking unpaid when client has a login promotion that can be used to pay for the service. Allowed in {@link ModeSid::WIDGET} mode only.'
+                is_force_pay_later:
+                  type: boolean
+                  description: '`true` if user pressed ''Pay later''. `false` if user pressed ''Pay now''.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_purchase_item_distribute:
+                        type: array
+                        description: 'A list of distributed new shared purchase items which are selected by a group of clients. * Key - UID of the client. Primary key in the {@link \PassportLoginSql} table. * Value - an array with the following structure: <dl> <dt>array `a_owner`</dt> <dd> List of UIDs of owners who will share this promotion with this client. Each UID is a primary key in the {@link \PassportLoginSql} table. If empty, this client is the owner of the promotion. </dd> <dt>int `i_session`</dt> <dd> The number of sessions that this item can cover. The same as in {@link StoreGroupApi::$a_purchase_item_check}. `0` if not applicable. </dd> <dt>string|null `k_login_promotion`</dt> <dd> Login promotion key. Primary key in the {@link \RsLoginPromotionSql} table. The same as in {@link StoreGroupApi::$a_login_promotion}. `null` if not applicable. </dd> <dt>string|null `k_session_pass`</dt> <dd> Session pass key. Primary key in the {@link \Wl\Session\Pass\Sql} table. The same as in {@link StoreGroupApi::$a_session_pass}. `null` if not applicable. </dd> <dt>string|null `s_value`</dt> <dd> The unique identifier of the purchase item. The same as in {@link StoreGroupApi::$a_purchase_item_check}. `null` if not applicable. </dd> <dt>string `text_error`</dt> <dd> Error text if the purchase item cannot be applied to the current class or event for this client. </dd> </dl>'
+      tags:
+        - Store-StoreGroup
   '/Wl/Book/Process/Relation/Relation.json':
     get:
       summary: 'Checks if user can book specified session.'
@@ -19695,7 +19838,7 @@ paths:
                     properties:
                       a_resource_all:
                         type: array
-                        description: 'A list of asset categories which are available for specified session. Every element has next keys: <dl> <dt> array <var>a_client</var> </dt> <dd> A list of clients who have already occupied assets for this session. 1st level keys - asset keys; 2nd level keys - asset number. For example, if you want to check if 10th asset with key ''125'' is free, you have to check if <tt>a_client[''125''][''10'']</tt> is empty. </dd> <dt> array[] <var>a_resource_list</var> </dt> <dd> A list of available assets. Every element has next keys: <dl> <dt> array `a_class_period` </dt> <dd> List of class/event sessions that occupies the resource. The field structure is `[k_class_period][dtu_session] => i_quantity`. This field is not empty only if the resource is occupied by any class/event sessions. </dd> <dt> array <var>a_image</var> </dt> <dd> Asset image data. See {@link \RsResourceImage::data()} for details. </dd> <dt> int <var>i_index</var> </dt> <dd> The asset number. Actual for assets with a quantity more than <tt>1</tt>. </dd> <dt> int `i_quantity` </dt> <dd> Total number of the asset spots. </dd> <dt>int `i_use`</dt> <dd>Number of already used asset units.</dd> <dt> bool <var>is_current</var> </dt> <dd> <tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise. </dd> <dt> string <var>k_resource</var> </dt> <dd> The key of the asset in database. Primary key {@link \RsResourceSql} table. </dd> <dt> string <var>s_resource</var> </dt> <dd> The title of the asset. </dd> </dl> </dd> <dt> bool <var>has_current</var> </dt> <dd> <tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise. </dd> <dt> bool <var>is_client_select</var> </dt> <dd> <tt>true</tt> - the client selected the resource from the current group; <tt>false</tt> otherwise. </dd> <dt> bool <var>is_select</var> </dt> <dd> <tt>true</tt> - has selected resources; <tt>false</tt> - otherwise. </dd> <dt> bool <var>is_share</var> </dt> <dd> <tt>true</tt> resources in this category don''t belong to certain users, but to the entire session. <tt>false</tt> belong to specific users. </dd> <dt> string <var>k_resource_layout</var> </dt> <dd> The key of the asset layout. Primary key in {@link \Wl\Resource\Layout\Sql} table. </dd> <dt> string <var>k_resource_type</var> </dt> <dd> The key of the asset category. Primary key in {@link \RsResourceTypeSql} table. </dd> <dt> string <var>s_resource_type</var> </dt> <dd> The title of the asset category. </dd> </dl>'
+                        description: 'A list of asset categories which are available for specified session. Every element has next keys: <dl> <dt> array <var>a_client</var> </dt> <dd> A list of clients who have already occupied assets for this session. 1st level keys - asset keys; 2nd level keys - asset number. For example, if you want to check if 10th asset with key ''125'' is free, you have to check if <tt>a_client[''125''][''10'']</tt> is empty. </dd> <dt> array[] <var>a_resource_list</var> </dt> <dd> A list of available assets. Every element has next keys: <dl> <dt> array `a_class_period` </dt> <dd> List of resources available for booking sessions. The field structure is `[k_class_period][dtu_session][''a_available'']`. Contains indexes of resource available for each session. </dd> <dt> array <var>a_image</var> </dt> <dd> Asset image data. See {@link \RsResourceImage::data()} for details. </dd> <dt> int <var>i_index</var> </dt> <dd> The asset number. Actual for assets with a quantity more than <tt>1</tt>. </dd> <dt> int `i_quantity` </dt> <dd> Total number of the asset spots. </dd> <dt>int `i_use`</dt> <dd>Number of already used asset units.</dd> <dt> bool <var>is_current</var> </dt> <dd> <tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise. </dd> <dt> string <var>k_resource</var> </dt> <dd> The key of the asset in database. Primary key {@link \RsResourceSql} table. </dd> <dt> string <var>s_resource</var> </dt> <dd> The title of the asset. </dd> </dl> </dd> <dt> bool <var>has_current</var> </dt> <dd> <tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise. </dd> <dt> bool <var>is_client_select</var> </dt> <dd> <tt>true</tt> - the client selected the resource from the current group; <tt>false</tt> otherwise. </dd> <dt> bool <var>is_select</var> </dt> <dd> <tt>true</tt> - has selected resources; <tt>false</tt> - otherwise. </dd> <dt> bool <var>is_share</var> </dt> <dd> <tt>true</tt> resources in this category don''t belong to certain users, but to the entire session. <tt>false</tt> belong to specific users. </dd> <dt> string <var>k_resource_layout</var> </dt> <dd> The key of the asset layout. Primary key in {@link \Wl\Resource\Layout\Sql} table. </dd> <dt> string <var>k_resource_type</var> </dt> <dd> The key of the asset category. Primary key in {@link \RsResourceTypeSql} table. </dd> <dt> string <var>s_resource_type</var> </dt> <dd> The title of the asset category. </dd> </dl>'
       tags:
         - Resource-Resource
     post:
@@ -19856,7 +19999,7 @@ paths:
                     properties:
                       a_resource_all:
                         type: array
-                        description: 'A list of asset categories which are available for specified session. Every element has next keys: <dl> <dt> array <var>a_client</var> </dt> <dd> A list of clients who have already occupied assets for this session. 1st level keys - asset keys; 2nd level keys - asset number. For example, if you want to check if 10th asset with key ''125'' is free, you have to check if <tt>a_client[''125''][''10'']</tt> is empty. </dd> <dt> array[] <var>a_resource_list</var> </dt> <dd> A list of available assets. Every element has next keys: <dl> <dt> array `a_class_period` </dt> <dd> List of class/event sessions that occupies the resource. The field structure is `[k_class_period][dtu_session] => i_quantity`. This field is not empty only if the resource is occupied by any class/event sessions. </dd> <dt> array <var>a_image</var> </dt> <dd> Asset image data. See {@link \RsResourceImage::data()} for details. </dd> <dt> int <var>i_index</var> </dt> <dd> The asset number. Actual for assets with a quantity more than <tt>1</tt>. </dd> <dt> int `i_quantity` </dt> <dd> Total number of the asset spots. </dd> <dt>int `i_use`</dt> <dd>Number of already used asset units.</dd> <dt> bool <var>is_current</var> </dt> <dd> <tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise. </dd> <dt> string <var>k_resource</var> </dt> <dd> The key of the asset in database. Primary key {@link \RsResourceSql} table. </dd> <dt> string <var>s_resource</var> </dt> <dd> The title of the asset. </dd> </dl> </dd> <dt> bool <var>has_current</var> </dt> <dd> <tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise. </dd> <dt> bool <var>is_client_select</var> </dt> <dd> <tt>true</tt> - the client selected the resource from the current group; <tt>false</tt> otherwise. </dd> <dt> bool <var>is_select</var> </dt> <dd> <tt>true</tt> - has selected resources; <tt>false</tt> - otherwise. </dd> <dt> bool <var>is_share</var> </dt> <dd> <tt>true</tt> resources in this category don''t belong to certain users, but to the entire session. <tt>false</tt> belong to specific users. </dd> <dt> string <var>k_resource_layout</var> </dt> <dd> The key of the asset layout. Primary key in {@link \Wl\Resource\Layout\Sql} table. </dd> <dt> string <var>k_resource_type</var> </dt> <dd> The key of the asset category. Primary key in {@link \RsResourceTypeSql} table. </dd> <dt> string <var>s_resource_type</var> </dt> <dd> The title of the asset category. </dd> </dl>'
+                        description: 'A list of asset categories which are available for specified session. Every element has next keys: <dl> <dt> array <var>a_client</var> </dt> <dd> A list of clients who have already occupied assets for this session. 1st level keys - asset keys; 2nd level keys - asset number. For example, if you want to check if 10th asset with key ''125'' is free, you have to check if <tt>a_client[''125''][''10'']</tt> is empty. </dd> <dt> array[] <var>a_resource_list</var> </dt> <dd> A list of available assets. Every element has next keys: <dl> <dt> array `a_class_period` </dt> <dd> List of resources available for booking sessions. The field structure is `[k_class_period][dtu_session][''a_available'']`. Contains indexes of resource available for each session. </dd> <dt> array <var>a_image</var> </dt> <dd> Asset image data. See {@link \RsResourceImage::data()} for details. </dd> <dt> int <var>i_index</var> </dt> <dd> The asset number. Actual for assets with a quantity more than <tt>1</tt>. </dd> <dt> int `i_quantity` </dt> <dd> Total number of the asset spots. </dd> <dt>int `i_use`</dt> <dd>Number of already used asset units.</dd> <dt> bool <var>is_current</var> </dt> <dd> <tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise. </dd> <dt> string <var>k_resource</var> </dt> <dd> The key of the asset in database. Primary key {@link \RsResourceSql} table. </dd> <dt> string <var>s_resource</var> </dt> <dd> The title of the asset. </dd> </dl> </dd> <dt> bool <var>has_current</var> </dt> <dd> <tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise. </dd> <dt> bool <var>is_client_select</var> </dt> <dd> <tt>true</tt> - the client selected the resource from the current group; <tt>false</tt> otherwise. </dd> <dt> bool <var>is_select</var> </dt> <dd> <tt>true</tt> - has selected resources; <tt>false</tt> - otherwise. </dd> <dt> bool <var>is_share</var> </dt> <dd> <tt>true</tt> resources in this category don''t belong to certain users, but to the entire session. <tt>false</tt> belong to specific users. </dd> <dt> string <var>k_resource_layout</var> </dt> <dd> The key of the asset layout. Primary key in {@link \Wl\Resource\Layout\Sql} table. </dd> <dt> string <var>k_resource_type</var> </dt> <dd> The key of the asset category. Primary key in {@link \RsResourceTypeSql} table. </dd> <dt> string <var>s_resource_type</var> </dt> <dd> The title of the asset category. </dd> </dl>'
       tags:
         - Resource-Resource54
     post:
@@ -21158,6 +21301,11 @@ paths:
           description: 'Whether unavailable assets should be included.'
           schema:
             type: boolean
+        - name: k_appointment_ignore
+          in: query
+          description: 'The appointment booking key to ignore when {@link ServiceApi::$a_resource_busy} is derived. Primary key in {@link \RsAppointmentSql} table. `null` if no appointment booking must be ignored.'
+          schema:
+            type: [string, "null"]
         - name: k_location
           in: query
           description: 'The selected location key.'
@@ -21698,54 +21846,6 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Count-InventoryCount
-  '/Core/Sid/CoreSid.json':
-    get:
-      summary: ''
-      parameters:
-        - name: s_class_name
-          in: query
-          description: 'Name of the Sid class to get list from. Should be a fully qualified class name and class should be a child of {@link CoreSid}.'
-          schema:
-            type: string
-      responses:
-        200:
-          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - type: object
-                    description: 'Successful response.'
-                    properties:
-                      a_list:
-                        type: array
-                        description: 'List of items. Keys are IDs, values are arrays with additional information: <dl> <dt>int <var>sid</var></dt> <dd>String ID.</dd> <dt>string <var>text_title</var></dt> <dd>Title of the ID.</dd> </dl>'
-      tags:
-        - Sid-CoreSid
-  '/Wl/Location/Facility/FacilitySid.json':
-    get:
-      summary: ''
-      parameters:
-        - name: s_class_name
-          in: query
-          description: 'Name of the Sid class to get list from. Should be a fully qualified class name and class should be a child of {@link CoreSid}.'
-          schema:
-            type: string
-      responses:
-        200:
-          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - type: object
-                    description: 'Successful response.'
-                    properties:
-                      a_list:
-                        type: array
-                        description: 'List of items. Keys are IDs, values are arrays with additional information: <dl> <dt>int <var>sid</var></dt> <dd>String ID.</dd> <dt>string <var>text_title</var></dt> <dd>Title of the ID.</dd> </dl>'
-      tags:
-        - Facility-FacilitySid
 tags:
   -
     name: Account-Account
@@ -22088,7 +22188,7 @@ tags:
     description: 'Retrieves information about an event element.'
   -
     name: Facility-FacilitySid
-    description: 'API to get list of additional information about IDs from {@link \RsFacilitySid} class.'
+    description: 'API to get list of additional information about IDs from {@link \RsFacilitySid} class. Property {@link FacilitySidApi::$s_class_name} can be left empty in this class. It will use predefined class name.'
   -
     name: Field-EnrollmentFieldList
     description: 'Retrieves and validates a list of insurance partner fields. Use the GET method to load a list of required fields. Use the POST method to validate the fields before sending them to the payment API.'
@@ -22551,6 +22651,9 @@ tags:
   -
     name: Store-Store
     description: 'Manages the "Purchase Options" page of the booking wizard.'
+  -
+    name: Store-StoreGroup
+    description: 'Performs preliminary checks and distribution of selected purchase options among clients.'
   -
     name: Subscribe-Subscribe
     description: 'Manages a user`s subscription in a business.'

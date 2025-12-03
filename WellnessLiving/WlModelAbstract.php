@@ -613,6 +613,14 @@ class WlModelAbstract
     // The data is stored compressed in the Edge Cache.
     curl_setopt($r_curl,CURLOPT_ENCODING, '');
 
+    // Settings to prevent connection drop.
+    curl_setopt($r_curl, CURLOPT_TCP_KEEPALIVE, 1);
+    curl_setopt($r_curl, CURLOPT_TCP_KEEPIDLE, 60);
+    curl_setopt($r_curl, CURLOPT_TCP_KEEPINTVL, 60);
+    if(PHP_VERSION_ID >= 70100) {
+        curl_setopt($r_curl, CURLOPT_PIPEWAIT, true);
+    }
+
     // CURLOPT_FOLLOWLOCATION was added for the following reason.
     //   There sometimes occur redirects, and it was unclear where it redirects.
     //   They decided to allow the redirects to see where it leads.

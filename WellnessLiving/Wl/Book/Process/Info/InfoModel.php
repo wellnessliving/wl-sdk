@@ -383,6 +383,24 @@ class InfoModel extends WlModelAbstract
   public $i_duration;
 
   /**
+   * Total number of clients on the wait list.
+   *
+   * @get result
+   * @var int
+   */
+  public $i_wait;
+
+  /**
+   * Total capacity the wait list.
+   * `null` if wail list in unlimited.
+   * `0` if wait list is disabled.
+   *
+   * @get result
+   * @var int|null
+   */
+  public $i_wait_limit;
+
+  /**
    * Estimated place of reservation on the waiting list.
    *
    * @get result

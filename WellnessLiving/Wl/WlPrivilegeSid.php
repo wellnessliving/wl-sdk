@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 230.
+ * Last Used ID: 234.
  */
 abstract class WlPrivilegeSid
 {
@@ -92,6 +92,26 @@ abstract class WlPrivilegeSid
    * Ability to schedule staff members who are booked for another service or set as unavailable.
    */
   const BOOK_UNAVAILABLE_STAFF = 137;
+
+  /**
+   * Ability to book clients into recurring services even if they do not have an applicable Purchase Option to cover all visits.
+   */
+  const BOOK_UNPAID_RECURRING_APPOINTMENT = 231;
+
+  /**
+   * Ability to book clients into recurring services even if they do not have an applicable Purchase Option to cover all visits.
+   */
+  const BOOK_UNPAID_RECURRING_CLASS = 232;
+
+  /**
+   * Ability to book clients into recurring services even if they do not have an applicable Purchase Option to cover all visits.
+   */
+  const BOOK_UNPAID_RECURRING_ENROLLMENT = 233;
+
+  /**
+   * Unpaid asset recurring booking.
+   */
+  const BOOK_UNPAID_RECURRING_RESOURCE = 234;
 
   /**
    * Manage business.

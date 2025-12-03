@@ -142,6 +142,16 @@ class ServiceModel extends WlModelAbstract
   public $is_show_unavailable_assets = false;
 
   /**
+   * The appointment booking key to ignore when {@link ServiceModel::$a_resource_busy} is derived.
+   *
+   * `null` if no appointment booking must be ignored.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $k_appointment_ignore = null;
+
+  /**
    * The selected location key.
    *
    * @get get

@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Skin\Widget;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\RsSkinSid;
 
 /**
  * Lists widget skins grouped by widget type for a business.
@@ -12,8 +13,10 @@ class SkinWidgetListModel extends WlModelAbstract
   /**
    * List of Widget skins grouped by widget type.
    *
-   * The array structure:
+   * Skin type, one of {@link RsSkinSid} constants.
    *
+   * The array structure:
+   * Keys - Skin type, one of {@link RsSkinSid} constants.
    * Values - arrays with next keys:
    * <dl>
    *   <dt>string `k_skin`</dt><dd>Skin key.</dd>
@@ -21,7 +24,7 @@ class SkinWidgetListModel extends WlModelAbstract
    * </dl>
    *
    * @get result
-   * @var array[]
+   * @var array[][]
    */
   public $a_widget_skin = [];
 

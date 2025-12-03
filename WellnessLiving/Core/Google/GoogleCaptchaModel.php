@@ -7,7 +7,7 @@ use WellnessLiving\WlModelAbstract;
 /**
  * Stores the user token CAPTCHA.
  *
- * @depreated Use {@link \WellnessLiving\Core\Google\Captcha\GoogleCaptchaModel} instead of this.
+ * @deprecated Use {@link \WellnessLiving\Core\Google\Captcha\GoogleCaptchaModel} instead of this.
  */
 class GoogleCaptchaModel extends WlModelAbstract
 {

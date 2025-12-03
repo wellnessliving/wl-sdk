@@ -105,9 +105,9 @@ class ResourceModel extends WlModelAbstract
    *           array `a_class_period`
    *       </dt>
    *       <dd>
-   *           List of class/event sessions that occupies the resource.
-   *           The field structure is `[k_class_period][dtu_session] => i_quantity`.
-   *           This field is not empty only if the resource is occupied by any class/event sessions.
+   *           List of resources available for booking sessions.
+   *           The field structure is `[k_class_period][dtu_session]['a_available']`.
+   *           Contains indexes of resource available for each session.
    *       </dd>
    *       <dt>
    *         array <var>a_image</var>
