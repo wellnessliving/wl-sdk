@@ -20,6 +20,22 @@ class ListModel extends WlModelAbstract
   public $a_activity;
 
   /**
+   * Ending date of the date range. Optional.
+   *
+   * @get get
+   * @var string
+   */
+  public $dl_end = '';
+
+  /**
+   * Starting date of the date range. Optional.
+   *
+   * @get get
+   * @var string
+   */
+  public $dl_start = '';
+
+  /**
    * The key of the business to show information for.
    *
    * @get get

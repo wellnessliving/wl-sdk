@@ -95,6 +95,10 @@ class StoreGroupModel extends WlModelAbstract
    *   <dd>
    *       Error text if the purchase item cannot be applied to the current class or event for this client.
    *   </dd>
+   *   <dt> string `text_error_code`</dt>
+   *   <dd>
+   *       Error code if the purchase item cannot be applied to the current class or event for this client.
+   *   </dd>
    * </dl>
    *
    * @post result

@@ -12,7 +12,7 @@ class DriveRegisterVariantsModel extends WlModelAbstract
   /**
    * List of variant file paths with key as descriptor.
    *
-   * @get get
+   * @post post
    * @var string[]
    */
   public $a_variant = [];
@@ -20,7 +20,7 @@ class DriveRegisterVariantsModel extends WlModelAbstract
   /**
    * Link to the file.
    *
-   * @get get
+   * @post get
    * @var string
    */
   public $s_link = '';

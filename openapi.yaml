@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20251203220200
+  version: 1.1.20251204124901
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-12-03 22:02:00
+    Last updated at: 2025-12-04 12:49:01
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -4019,18 +4019,36 @@ paths:
         - Api-DriveGenericInfo
   '/Thoth/DriveMs/Api/DriveRegisterVariants.json':
     get:
+      summary: 'It is not possible to test it normally because model does not support sending necessary data via get method.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Api-DriveRegisterVariants
+    post:
       summary: ''
       parameters:
-        - name: a_variant
-          in: query
-          description: 'List of variant file paths with key as descriptor.'
-          schema:
-            type: array
         - name: s_link
           in: query
           description: 'Link to the file.'
           schema:
             type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_variant:
+                  type: array
+                  description: 'List of variant file paths with key as descriptor.'
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -8911,6 +8929,16 @@ paths:
     get:
       summary: 'Retrieves a list of activity items to show in user profile.'
       parameters:
+        - name: dl_end
+          in: query
+          description: 'Ending date of the date range. Optional.'
+          schema:
+            type: string
+        - name: dl_start
+          in: query
+          description: 'Starting date of the date range. Optional.'
+          schema:
+            type: string
         - name: k_business
           in: query
           description: 'The key of the business to show information for.'
@@ -18837,7 +18865,7 @@ paths:
                     properties:
                       a_purchase_item_distribute:
                         type: array
-                        description: 'A list of distributed new shared purchase items which are selected by a group of clients. * Key - UID of the client. Primary key in the {@link \PassportLoginSql} table. * Value - an array with the following structure: <dl> <dt>array `a_owner`</dt> <dd> List of UIDs of owners who will share this promotion with this client. Each UID is a primary key in the {@link \PassportLoginSql} table. If empty, this client is the owner of the promotion. </dd> <dt>int `i_session`</dt> <dd> The number of sessions that this item can cover. The same as in {@link StoreGroupApi::$a_purchase_item_check}. `0` if not applicable. </dd> <dt>string|null `k_login_promotion`</dt> <dd> Login promotion key. Primary key in the {@link \RsLoginPromotionSql} table. The same as in {@link StoreGroupApi::$a_login_promotion}. `null` if not applicable. </dd> <dt>string|null `k_session_pass`</dt> <dd> Session pass key. Primary key in the {@link \Wl\Session\Pass\Sql} table. The same as in {@link StoreGroupApi::$a_session_pass}. `null` if not applicable. </dd> <dt>string|null `s_value`</dt> <dd> The unique identifier of the purchase item. The same as in {@link StoreGroupApi::$a_purchase_item_check}. `null` if not applicable. </dd> <dt>string `text_error`</dt> <dd> Error text if the purchase item cannot be applied to the current class or event for this client. </dd> </dl>'
+                        description: 'A list of distributed new shared purchase items which are selected by a group of clients. * Key - UID of the client. Primary key in the {@link \PassportLoginSql} table. * Value - an array with the following structure: <dl> <dt>array `a_owner`</dt> <dd> List of UIDs of owners who will share this promotion with this client. Each UID is a primary key in the {@link \PassportLoginSql} table. If empty, this client is the owner of the promotion. </dd> <dt>int `i_session`</dt> <dd> The number of sessions that this item can cover. The same as in {@link StoreGroupApi::$a_purchase_item_check}. `0` if not applicable. </dd> <dt>string|null `k_login_promotion`</dt> <dd> Login promotion key. Primary key in the {@link \RsLoginPromotionSql} table. The same as in {@link StoreGroupApi::$a_login_promotion}. `null` if not applicable. </dd> <dt>string|null `k_session_pass`</dt> <dd> Session pass key. Primary key in the {@link \Wl\Session\Pass\Sql} table. The same as in {@link StoreGroupApi::$a_session_pass}. `null` if not applicable. </dd> <dt>string|null `s_value`</dt> <dd> The unique identifier of the purchase item. The same as in {@link StoreGroupApi::$a_purchase_item_check}. `null` if not applicable. </dd> <dt>string `text_error`</dt> <dd> Error text if the purchase item cannot be applied to the current class or event for this client. </dd> <dt> string `text_error_code`</dt> <dd> Error code if the purchase item cannot be applied to the current class or event for this client. </dd> </dl>'
       tags:
         - Store-StoreGroup
   '/Wl/Book/Process/Relation/Relation.json':
