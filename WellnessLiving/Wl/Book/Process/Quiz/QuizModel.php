@@ -5,7 +5,6 @@ namespace WellnessLiving\Wl\Book\Process\Quiz;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
@@ -187,7 +186,7 @@ class QuizModel extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * The mode type. One of the {@link ModeSid} constants.
+   * The mode type.
    *
    * @get get
    * @post get
@@ -213,7 +212,6 @@ class QuizModel extends WlModelAbstract
    * `false` otherwise.
    *
    * Allows booking unpaid when client has a login promotion that can be used to pay for the service.
-   * Allowed in {@link ModeSid::WIDGET} mode only.
    *
    * @post post
    * @var bool

@@ -44,6 +44,16 @@ class TagListModel extends WlModelAbstract
   public $has_surcharge = false;
 
   /**
+   * List of tags in json format.
+   * See {@link TagListModel::$a_list} for the structure of each tag.
+   * `null` to use {@link TagListModel::$a_list} for getting the tag list.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $json_list = null;
+
+  /**
    * The business key of the tags.
    *
    * @get get

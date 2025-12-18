@@ -143,7 +143,7 @@ class VisitStatusModel extends WlModelAbstract
   public $is_event = false;
 
   /**
-   * Whether or not to send email notification.
+   * Whether to send email notification.
    *
    * `true` - email notification will be sent.
    * `false` - email notification will not be sent.
@@ -154,7 +154,7 @@ class VisitStatusModel extends WlModelAbstract
   public $is_mail = false;
 
   /**
-   * Whether or not to send push notification.
+   * Whether to send push notification.
    *
    * `true` - push notification will be sent.
    * `false` - push notification will not be sent.
@@ -176,7 +176,7 @@ class VisitStatusModel extends WlModelAbstract
   public $is_request = false;
 
   /**
-   * Whether or not to send sms notification.
+   * Whether to send sms notification.
    *
    * `true` - sms notification will be sent.
    * `false` - sms notification will not be sent.
@@ -313,6 +313,14 @@ class VisitStatusModel extends WlModelAbstract
    * @var string
    */
   public $text_title = '';
+
+  /**
+   * `null` for a guest visit.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $uid;
 }
 
 ?>

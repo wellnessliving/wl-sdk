@@ -22,6 +22,8 @@ class ListModel extends WlModelAbstract
   /**
    * Ending date of the date range. Optional.
    *
+   * This is local business timezone date. This day is included in the result.
+   *
    * @get get
    * @var string
    */
@@ -29,6 +31,8 @@ class ListModel extends WlModelAbstract
 
   /**
    * Starting date of the date range. Optional.
+   *
+   *  This is local business timezone date. This day is included in the result.
    *
    * @get get
    * @var string

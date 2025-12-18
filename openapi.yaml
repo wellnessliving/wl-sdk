@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20251204124901
+  version: 1.1.20251218221223
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2025-12-04 12:49:01
+    Last updated at: 2025-12-18 22:12:23
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -506,6 +506,9 @@ paths:
                       text_title:
                         type: string
                         description: 'The service title.'
+                      uid:
+                        type: [string, "null"]
+                        description: 'Primary key of a user who made a visit in {@link \PassportLoginSql} table. `null` for a guest visit.'
       tags:
         - Visit-VisitStatus
     post:
@@ -556,13 +559,13 @@ paths:
                   description: 'The status of the visit from which the transition is made. One of the {@link \Wl\Visit\VisitSid} constants. If the visit status is passed, it will be used to check with the actual status in the database. If `null`, the visit hasn''t yet passed. If the status of this parameter is out of date, the API call will refresh it.'
                 is_mail:
                   type: boolean
-                  description: 'Whether or not to send email notification. `true` - email notification will be sent. `false` - email notification will not be sent.'
+                  description: 'Whether to send email notification. `true` - email notification will be sent. `false` - email notification will not be sent.'
                 is_push:
                   type: boolean
-                  description: 'Whether or not to send push notification. `true` - push notification will be sent. `false` - push notification will not be sent.'
+                  description: 'Whether to send push notification. `true` - push notification will be sent. `false` - push notification will not be sent.'
                 is_sms:
                   type: boolean
-                  description: 'Whether or not to send sms notification. `true` - sms notification will be sent. `false` - sms notification will not be sent.'
+                  description: 'Whether to send sms notification. `true` - sms notification will be sent. `false` - sms notification will not be sent.'
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -3308,6 +3311,9 @@ paths:
                 a_list:
                   type: array
                   description: 'The tag list. Each element has the next structure:<dl> <dt>int <var>i_sort</var></dt> <dd>The sort order of the tag.</dd> <dt>string <var>k_tag</var> </dt> <dd>The tag key. Primary key in the {@link \RsTagSql} table.</dd> <dt>string <var>text_title</var></dt> <dd>The tag title.</dd> </dl>'
+                json_list:
+                  type: [string, "null"]
+                  description: 'List of tags in json format. See {@link TagListApi::$a_list} for the structure of each tag. `null` to use {@link TagListApi::$a_list} for getting the tag list.'
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -5250,7 +5256,7 @@ paths:
               properties:
                 text_id:
                   type: [string, "null"]
-                  description: 'A list of image IDs set in {@link \Core\Drive\ImageUpload\ImageUploadApi::$s_class}, serialised using JSON. This will be `null` if there''s no data being sent by the client.'
+                  description: 'A list of image IDs set in {@link \Core\Drive\ImageUpload\ImageUploadApi::$s_class}, serialized using JSON. This will be `null` if there''s no data being sent by the client.'
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -8931,12 +8937,12 @@ paths:
       parameters:
         - name: dl_end
           in: query
-          description: 'Ending date of the date range. Optional.'
+          description: 'Ending date of the date range. Optional. This is local business timezone date. This day is included in the result.'
           schema:
             type: string
         - name: dl_start
           in: query
-          description: 'Starting date of the date range. Optional.'
+          description: 'Starting date of the date range. Optional. This is local business timezone date. This day is included in the result.'
           schema:
             type: string
         - name: k_business
@@ -18738,7 +18744,7 @@ paths:
               properties:
                 a_purchase_item_check:
                   type: array
-                  description: 'The selected purchase item. This new purchase item should be checked to determine if it can be applied to the current class or event before being purchased. <dl> <dt>int <var>i_session</var></dt> <dd> The number of sessions that this item can cover. This only applies to items of type {@link \RsPurchaseItemSid::CLASS_PERIOD}. </dd> <dt>int <var>s_value</var></dt> <dd> The unique identifier of the item being checked. This corresponds to one of the following values: <ul> <li>{@link Purchase56Api::$a_purchase}`["s_value"]`</li> <li>{@link Purchase56Api::$a_reward_prize}`["s_value"]`</li> <li>{@link Purchase56Api::$a_login_prize}`["s_value"]`</li> </ul> </dd> </dl>'
+                  description: 'The selected purchase item. This new purchase item should be checked to determine if it can be applied to the current class or event before being purchased. <dl> <dt>int `i_session`</dt> <dd> The number of sessions that this item can cover. This only applies to items of type {@link \RsPurchaseItemSid::CLASS_PERIOD}. </dd> <dt>int `s_value`</dt> <dd> The unique identifier of the item being checked. This corresponds to one of the following values: <ul> <li>{@link Purchase56Api::$a_purchase}`["s_value"]`</li> <li>{@link Purchase56Api::$a_reward_prize}`["s_value"]`</li> <li>{@link Purchase56Api::$a_login_prize}`["s_value"]`</li> </ul> </dd> </dl>'
                 a_repeat:
                   type: [array, "null"]
                   description: 'Information about the recurring booking: <dl> <dt>int[] <var>a_day</var></dt> <dd> The days of week when the appointment repeat.One of the {@link \ADateWeekSid} constants. Should be passed for any type of repetition. </dd> <dt>int[] <var>a_week</var></dt> <dd>Deprecated, use `a_day` instead!</dd> <dt>string [<var>dl_end</var>]</dt> <dd>Deprecated, use `dt_from` and `dt_to` instead!</dd> <dt> string [<var>dt_from</var>] </dt> <dd> Date to start recurring booking. Expected for `id_repeat_end` = {@link \RsRepeatEndSid::DATE}. </dd> <dt> string [<var>dt_to</var>] </dt> <dd> Date to complete recurring booking. Expected for `id_repeat_end` = {@link \RsRepeatEndSid::DATE}. </dd> <dt> int [<var>i_count</var>] </dt> <dd> The number of occurrences after which the appointment''s repeat cycle stops. Should be empty if the repeat cycle doesn''t stop after a certain number of occurrences. Expected for `id_repeat_end` = {@link \RsRepeatEndSid::COUNT}. </dd> <dt>int <var>i_duration</var></dt> <dd>Count of days\weeks\months between recurring bookings.</dd> <dt>int [<var>i_occurrence</var>]</dt> <dd>Deprecated, use `i_count` instead!</dd> <dt>int <var>i_period</var></dt> <dd>Deprecated, use `i_duration` instead!</dd> <dt> int <var>id_duration</var> </dt> <dd> The measurement unit of `i_period`. One of the {@link \ADurationSid} constants. Available duration units are: {@link \ADurationSid::DAY}, {@link \ADurationSid::WEEK}, {@link \ADurationSid::MONTH}. </dd> <dt>int <var>id_period</var></dt> <dd>Deprecated, use `id_duration` instead!</dd> <dt>int <var>id_repeat_end</var></dt> <dd>Possible ways to stop repeatable events. One of the {@link \RsRepeatEndSid} constants.</dd> </dl> This will be `null` if the booking isn''t recurring.'
@@ -18746,10 +18752,10 @@ paths:
                   type: array
                   description: 'A list of assets being booked. Each element has the following keys: <dl> <dt>int <var>i_index</var></dt> <dd>The order number of the asset (from 1 to the asset quantity).</dd> <dt>string <var>k_resource</var></dt> <dd>The asset key. Primary key in the {@link \RsResourceSql} table.</dd> </dl>'
                 a_session_select:
-                  type: array
+                  type: object
                   description: 'The selected sessions for an event. The key is the class period key (primary key from the {@link \RsClassPeriodSql} table). The value is an indexed array of dates and times when the session occurred (in MySQL format, UTC).'
                 a_session_wait_list_unpaid:
-                  type: array
+                  type: object
                   description: 'The selected sessions for an event that are on the wait list and unpaid. The key is the class period key (primary key from the {@link \RsClassPeriodSql} table). The value is an indexed array of dates and times when the session occurred (in MySQL format, UTC).'
                 can_book:
                   type: boolean
@@ -18817,11 +18823,6 @@ paths:
           description: 'Key of session which is booked.'
           schema:
             type: string
-        - name: uid
-          in: query
-          description: 'The client key for which the booking is being made. Primary key from {@link \PassportLoginSql}.'
-          schema:
-            type: string
       requestBody:
         required: true
         content:
@@ -18843,10 +18844,10 @@ paths:
                   description: 'A list of existing session passes (drop-in, full-event) which are selected by a group of clients. This session passes will be checked to determine if it can be applied to the current class or event. * Key - UID of the client. Primary key in the {@link \PassportLoginSql} table. * Value - session pass key. Primary key in the {@link \Wl\Session\Pass\Sql} table.'
                 a_session_select:
                   type: object
-                  description: 'A list of sessions which are selected by a group of clients. * Key - UID of the client. Primary key in the {@link \PassportLoginSql} table. * Value - an array with the following structure: * Key - class period keys. Primary keys from {@link \RsClassPeriodSql} table. * Value - index arrays of dates/times when the session occurred (MySQL format; UTC).'
+                  description: 'A list of sessions which are selected by a group of clients. * Key - UID of the client. Primary key in the {@link \PassportLoginSql} table. * Value - an array with the following structure: * Key - class period keys. Primary key in the {@link \RsClassPeriodSql} table. * Value - index arrays of dates/times when the session occurred (MySQL format; UTC).'
                 a_session_wait_list_unpaid:
                   type: object
-                  description: 'A list of wait list (unpaid) sessions which are selected by a group of clients. * Key - UID of the client. Primary key in the {@link \PassportLoginSql} table. * Value - an array with the following structure: * Key - class period keys. Primary keys from {@link \RsClassPeriodSql} table. * Value - index arrays of dates/times when the session occurred (MySQL format; UTC).'
+                  description: 'A list of wait list (unpaid) sessions which are selected by a group of clients. * Key - UID of the client. Primary key in the {@link \PassportLoginSql} table. * Value - an array with the following structure: * Key - class period keys. Primary key in the {@link \RsClassPeriodSql} table. * Value - index arrays of dates/times when the session occurred (MySQL format; UTC).'
                 is_book_unpaid:
                   type: boolean
                   description: '`true` to book unpaid. `false` otherwise. Allows booking unpaid when client has a login promotion that can be used to pay for the service. Allowed in {@link ModeSid::WIDGET} mode only.'
@@ -19593,7 +19594,7 @@ paths:
       parameters:
         - name: a_purchase_item
           in: query
-          description: 'A list of purchase items. Each item is an associative array with the following keys: <dl> <dt>int [`i_session` = 1]</dt> <dd> Number of sessions which are booked simultaneously. Make sense only when `id_purchase_item` = {@link \RsPurchaseItemSid::CLASS_PERIOD}. </dd> <dt>int `id_purchase_item`</dt> <dd>The ID of the purchase item type. One of {@link \RsPurchaseItemSid}.</dd> <dt>string `k_id`</dt> <dd>The key of the purchase item in the database.</dd> <dt>string [`k_login_prize`]</dt> <dd>The key of the user''s prize. Not empty only if the user wants to make a free visit from the prize.</dd> <dt>string|null [`k_pay_installment_template`]</dt> <dd>Installment template key. Primary key in {@link \Thoth\WlPay\Installment\Template\Sql} table. This property is optional. * can only be set for the purchase option which supports installment plan, see {@link PurchaseItemAbstract::INSTALLMENT_ALLOW_USER} property; * `null` if installment plan doesn''t exist for bought item; * `0` if installment plan doesn''t selected for bought item from the list of installment plans. NOTE: * Calculations of discounts and taxes for installment plans are for demonstration purposes only! * Installment is not an independent purchase item and has no discounts or taxes. * Installment is a division of the final amount (with taxes and discounts), of some purchase option, into N parts.</dd> <dt>string [`k_reward_prize`]</dt> <dd>The key of the reward prize. Not empty only if the user wants to redeem prize and use it to pay for a visit.</dd> </dl>'
+          description: 'A list of purchase items. Each item is an associative array with the following keys: <dl> <dt>int [`i_session` = 1]</dt> <dd> Number of sessions which are booked simultaneously. Make sense only when `id_purchase_item` = {@link \RsPurchaseItemSid::CLASS_PERIOD}. </dd> <dt>int `id_purchase_item`</dt> <dd>The ID of the purchase item type. One of {@link \RsPurchaseItemSid}.</dd> <dt>string `k_id`</dt> <dd>The key of the purchase item in the database.</dd> <dt>string [`k_login_prize`]</dt> <dd>The key of the user''s prize. Not empty only if the user wants to make a free visit from the prize.</dd> <dt>string|null [`k_pay_installment_template`]</dt> <dd>Installment template key. Primary key in {@link \Thoth\WlPay\Installment\Template\Sql} table. This property is optional. * can only be set for the purchase option which supports installment plan, see {@link PurchaseItemAbstract::INSTALLMENT_ALLOW_USER} property; * `null` if installment plan doesn''t exist for bought item; * `0` if installment plan doesn''t selected for bought item from the list of installment plans. NOTE: * Calculations of discounts and taxes for installment plans are for demonstration purposes only! * Installment is not an independent purchase item and has no discounts or taxes. * Installment is a division of the final amount (with taxes and discounts), of some purchase option, into N parts.</dd> <dt>string [`k_reward_prize`]</dt> <dd>The key of the reward prize. Not empty only if the user wants to redeem prize and use it to pay for a visit.</dd> <dt>string `uid`</dt> <dd>The key of the user for whom the purchase item is being bought.</dd> </dl>'
           schema:
             type: array
         - name: dtu_date
@@ -22375,7 +22376,7 @@ tags:
     description: 'Checking whether there is something that prevents the user from using the business.'
   -
     name: Method-List
-    description: 'An endpoint containing a model to get the list of payment methods.'
+    description: 'An endpoint containing a model to get the list of payment methods.                                                        .'
   -
     name: Microsoft-Login
     description: 'Performs preliminary authorization actions with Microsoft.'
@@ -22681,7 +22682,7 @@ tags:
     description: 'Manages the "Purchase Options" page of the booking wizard.'
   -
     name: Store-StoreGroup
-    description: 'Performs preliminary checks and distribution of selected purchase options among clients.'
+    description: 'Performs preliminary checks and distribution of selected purchase options between the client who is currently logged in and his relatives.'
   -
     name: Subscribe-Subscribe
     description: 'Manages a user`s subscription in a business.'

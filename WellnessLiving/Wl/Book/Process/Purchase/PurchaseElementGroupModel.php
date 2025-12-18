@@ -38,6 +38,8 @@ class PurchaseElementGroupModel extends WlModelAbstract
    *      <dt>string [`k_reward_prize`]</dt>
    *      <dd>The key of the reward prize.
    *      Not empty only if the user wants to redeem prize and use it to pay for a visit.</dd>
+   *      <dt>string `uid`</dt>
+   *      <dd>The key of the user for whom the purchase item is being bought.</dd>
    *  </dl>
    *
    * @get get

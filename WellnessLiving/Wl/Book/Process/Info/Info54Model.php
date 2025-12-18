@@ -6,7 +6,6 @@ use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Book\Process\ProcessSpaSid;
-use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Offers functionality for the class booking wizard on the "Class and Location" page.
@@ -410,7 +409,7 @@ class Info54Model extends WlModelAbstract
   public $i_wait_spot = 0;
 
   /**
-   * The mode type. One of the {@link ModeSid} constants.
+   * The mode type.
    *
    * @get get
    * @post get
@@ -462,7 +461,6 @@ class Info54Model extends WlModelAbstract
    * `false` otherwise.
    *
    * Allows booking unpaid when client has a login promotion that can be used to pay for the service.
-   * Allowed in {@link ModeSid::WIDGET} mode only.
    *
    * @post post
    * @var bool

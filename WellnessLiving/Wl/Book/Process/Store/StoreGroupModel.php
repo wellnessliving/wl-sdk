@@ -7,7 +7,8 @@ use WellnessLiving\Wl\Book\Process\Purchase\Purchase56Model;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
- * Performs preliminary checks and distribution of selected purchase options among clients.
+ * Performs preliminary checks and distribution of selected purchase options between the client who is currently logged
+ * in and his relatives.
  */
 class StoreGroupModel extends WlModelAbstract
 {
@@ -145,7 +146,7 @@ class StoreGroupModel extends WlModelAbstract
    *   * Value - index arrays of dates/times when the session occurred (MySQL format; UTC).
    *
    * @post post
-   * @var string[][]
+   * @var string[][][]
    */
   public $a_session_select = [];
 
@@ -158,7 +159,7 @@ class StoreGroupModel extends WlModelAbstract
    *   * Value - index arrays of dates/times when the session occurred (MySQL format; UTC).
    *
    * @post post
-   * @var string[][]
+   * @var string[][][]
    */
   public $a_session_wait_list_unpaid = [];
 
@@ -233,15 +234,6 @@ class StoreGroupModel extends WlModelAbstract
    * @var string
    */
   public $k_class_period = '0';
-
-  /**
-   * The client key for which the booking is being made.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
-  public $uid = '0';
 }
 
 ?>

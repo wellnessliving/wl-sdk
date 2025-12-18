@@ -3,7 +3,7 @@
 namespace WellnessLiving\Wl\Book\Process;
 
 /**
- * Event booking process sid class
+ * Class/Event booking process sid class.
  *
  * Last used ID: 12.
  */

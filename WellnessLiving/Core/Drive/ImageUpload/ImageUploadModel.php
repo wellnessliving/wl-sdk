@@ -175,7 +175,7 @@ class ImageUploadModel extends \WellnessLiving\Custom\Core\Drive\ImageUpload\Ima
   public $s_link;
 
   /**
-   * A list of image IDs set in {@link ImageUploadModel::$s_class}, serialised using JSON.
+   * A list of image IDs set in {@link ImageUploadModel::$s_class}, serialized using JSON.
    *
    * This will be `null` if there's no data being sent by the client.
    *

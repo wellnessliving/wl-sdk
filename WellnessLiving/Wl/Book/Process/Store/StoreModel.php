@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Book\Process\Store;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Book\Process\Purchase\Purchase56Model;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
@@ -28,19 +28,19 @@ class StoreModel extends WlModelAbstract
    * being purchased.
    *
    * <dl>
-   *   <dt>int <var>i_session</var></dt>
+   *   <dt>int `i_session`</dt>
    *   <dd>
    *       The number of sessions that this item can cover.
    *       This only applies to items of type {@link WlPurchaseItemSid::CLASS_PERIOD}.
    *   </dd>
-   *   <dt>int <var>s_value</var></dt>
+   *   <dt>int `s_value`</dt>
    *   <dd>
    *     The unique identifier of the item being checked.
    *     This corresponds to one of the following values:
    *     <ul>
-   *       <li>{@link Purchase56Api::$a_purchase}`["s_value"]`</li>
-   *       <li>{@link Purchase56Api::$a_reward_prize}`["s_value"]`</li>
-   *       <li>{@link Purchase56Api::$a_login_prize}`["s_value"]`</li>
+   *       <li>{@link Purchase56Model::$a_purchase}`["s_value"]`</li>
+   *       <li>{@link Purchase56Model::$a_reward_prize}`["s_value"]`</li>
+   *       <li>{@link Purchase56Model::$a_login_prize}`["s_value"]`</li>
    *     </ul>
    *   </dd>
    * </dl>
@@ -130,7 +130,7 @@ class StoreModel extends WlModelAbstract
    * The value is an indexed array of dates and times when the session occurred (in MySQL format, UTC).
    *
    * @post post
-   * @var array
+   * @var string[][]
    */
   public $a_session_select = [];
 
@@ -140,7 +140,7 @@ class StoreModel extends WlModelAbstract
    * The value is an indexed array of dates and times when the session occurred (in MySQL format, UTC).
    *
    * @post post
-   * @var array
+   * @var string[][]
    */
   public $a_session_wait_list_unpaid = [];
 
@@ -171,7 +171,7 @@ class StoreModel extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * The mode type. One of the {@link ModeSid} constants.
+   * The mode type.
    *
    * @get get
    * @post get
@@ -197,7 +197,6 @@ class StoreModel extends WlModelAbstract
    * `false` otherwise.
    *
    * Allows booking unpaid when client has a login promotion that can be used to pay for the service.
-   * Allowed in {@link ModeSid::WIDGET} mode only.
    *
    * @post post
    * @var bool

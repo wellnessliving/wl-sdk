@@ -5,9 +5,7 @@ namespace WellnessLiving\Wl\Book\Process;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Classes\RequirePaySid;
 use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
-use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Performs the booking wizard steps.
@@ -132,7 +130,7 @@ class Process54Model extends WlModelAbstract
   public $dt_date_gmt = '';
 
   /**
-   * The mode type. One of the {@link ModeSid} constants.
+   * The mode type.
    *
    * @get get
    * @post get
@@ -142,7 +140,6 @@ class Process54Model extends WlModelAbstract
 
   /**
    * The purchase rule ID.
-   * One of the {@link RequirePaySid} constants.
    *
    * @get result
    * @var int
@@ -175,7 +172,6 @@ class Process54Model extends WlModelAbstract
    * `false` otherwise.
    *
    * Allows booking unpaid when client has a login promotion that can be used to pay for the service.
-   * Allowed in {@link ModeSid::WIDGET} mode only.
    *
    * @post post
    * @var bool

@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
- * An endpoint containing a model to get the list of payment methods.
+ * An endpoint containing a model to get the list of payment methods.                                                        .
  */
 class ListModel extends WlModelAbstract
 {
