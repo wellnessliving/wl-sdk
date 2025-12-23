@@ -195,17 +195,6 @@ class StoreGroupModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
-   * `true` to book unpaid.
-   * `false` otherwise.
-   *
-   * Allows booking unpaid when client has a login promotion that can be used to pay for the service.
-   *
-   * @post post
-   * @var bool
-   */
-  public $is_book_unpaid = false;
-
-  /**
    * Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`.
    *
    * Use this field with caution.
