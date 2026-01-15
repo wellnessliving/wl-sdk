@@ -44,42 +44,56 @@ class ProcessGroupModel extends WlModelAbstract
    *         array [`a_purchase_item`]
    *     </dt>
    *     <dd>
-   *         Purchase option information. Required if the service requires online payment:
+   *         Purchase option information. Required if the service requires online payment. Elements have next keys:
    *         <dl>
    *             <dt>
-   *                 int [`i_count`]
+   *                 array[] [`a_item`]
    *             </dt>
    *             <dd>
-   *                 Number of options to purchase. Specify only if you want to pay a class booking by Drop-In.
-   *             </dd>
-   *             <dt>
-   *                 int [`id_purchase_item`]
-   *             </dt>
-   *             <dd>
-   *                 Kind of option to purchase. One of {@link WlPurchaseItemSid} constants.
-   *                 Specify only if you want to purchase a new option.
-   *             </dd>
-   *             <dt>
-   *                 bool [`is_renew`]
-   *             </dt>
-   *             <dd>
-   *                 `true` if you want to enable auto-renewal for new purchase option. `false` otherwise.
-   *                 Specify only if you want to purchase a new option.
-   *             </dd>
-   *             <dt>
-   *                 bool [`is_owner`]
-   *             </dt>
-   *             <dd>
-   *                 `true` if client is owner of this purchase option.
-   *                 This means that this purchase option will be purchased for this client, even if another client
-   *                 can share a similar purchase option.
-   *             </dd>
-   *             <dt>
-   *                 string [`k_id`]
-   *             </dt>
-   *             <dd>
-   *                 Primary key of option to purchase.
-   *                 Specify only if you want to purchase a new option.
+   *                 <dl>
+   *                     <dt>
+   *                          int [`i_count`]
+   *                      </dt>
+   *                      <dd>
+   *                          Number of options to purchase. Specify only if you want to pay a class booking by Drop-In.
+   *                      </dd>
+   *                      <dt>
+   *                          int [`id_purchase_item`]
+   *                      </dt>
+   *                      <dd>
+   *                          Kind of option to purchase. One of {@link WlPurchaseItemSid} constants.
+   *                          Specify only if you want to purchase a new option.
+   *                      </dd>
+   *                      <dt>
+   *                          bool [`is_renew`]
+   *                      </dt>
+   *                      <dd>
+   *                          `true` if you want to enable auto-renewal for new purchase option. `false` otherwise.
+   *                          Specify only if you want to purchase a new option.
+   *                      </dd>
+   *                      <dt>
+   *                          bool [`is_owner`]
+   *                      </dt>
+   *                      <dd>
+   *                          `true` if client is owner of this purchase option.
+   *                          This means that this purchase option will be purchased for this client, even if another client
+   *                          can share a similar purchase option.
+   *                      </dd>
+   *                      <dt>
+   *                          string [`k_id`]
+   *                      </dt>
+   *                      <dd>
+   *                          Primary key of option to purchase.
+   *                          Specify only if you want to purchase a new option.
+   *                      </dd>
+   *                      <dt>
+   *                          string [`s_signature`]
+   *                      </dt>
+   *                      <dd>
+   *                          Signature of the client in base64 format.
+   *                          Specify only if you want to buy a purchase option that requires signature.
+   *                      </dd>
+   *                 </dl>
    *             </dd>
    *             <dt>
    *                 string [`k_login_prize`]
@@ -108,13 +122,6 @@ class ProcessGroupModel extends WlModelAbstract
    *             <dd>
    *                 Session pass to be used to book a session.
    *
-   *             </dd>
-   *             <dt>
-   *                 string [`s_signature`]
-   *             </dt>
-   *             <dd>
-   *                 Signature of the client in base64 format.
-   *                 Specify only if you want to buy a purchase option that requires signature.
    *             </dd>
    *         </dl>
    *     </dd>

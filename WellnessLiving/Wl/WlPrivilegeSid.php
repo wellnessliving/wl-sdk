@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 233.
+ * Last Used ID: 235.
  */
 abstract class WlPrivilegeSid
 {
@@ -957,6 +957,16 @@ abstract class WlPrivilegeSid
    * Scheduling and editing past sessions of the events.
    */
   const SCHEDULE_PAST_EVENT = 100;
+
+  /**
+   * View a summary of projected pay from upcoming sessions and earned pay from completed sessions, based on the staff’s schedule.
+   */
+  const SCHEDULE_SUMMARY_REVENUE_FUTURE = 234;
+
+  /**
+   * View a summary of projected and earned service revenue generated from scheduled and completed sessions.
+   */
+  const SCHEDULE_SUMMARY_REVENUE_TOTAL = 235;
 
   /**
    * Allows sign service agreement.
