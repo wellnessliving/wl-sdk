@@ -959,14 +959,14 @@ abstract class WlPrivilegeSid
   const SCHEDULE_PAST_EVENT = 100;
 
   /**
-   * View a summary of projected pay from upcoming sessions and earned pay from completed sessions, based on the staff’s schedule.
-   */
-  const SCHEDULE_SUMMARY_REVENUE_FUTURE = 234;
-
-  /**
    * View a summary of projected and earned service revenue generated from scheduled and completed sessions.
    */
-  const SCHEDULE_SUMMARY_REVENUE_TOTAL = 235;
+  const SCHEDULE_SUMMARY_REVENUE_SERVICE = 234;
+
+  /**
+   * View a summary of projected pay from upcoming sessions and earned pay from completed sessions, based on the staff’s schedule.
+   */
+  const SCHEDULE_SUMMARY_REVENUE_STAFF = 235;
 
   /**
    * Allows sign service agreement.
