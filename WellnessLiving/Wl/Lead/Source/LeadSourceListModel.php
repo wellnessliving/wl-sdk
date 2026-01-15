@@ -66,14 +66,6 @@ class LeadSourceListModel extends WlModelAbstract
    * @var string
    */
   public $k_business = '';
-
-  /**
-   * Lead Source field title.
-   *
-   * @get result
-   * @var string
-   */
-  public $text_lead_source_field = '';
 }
 
 ?>

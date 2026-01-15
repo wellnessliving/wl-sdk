@@ -669,6 +669,15 @@ class Info54Model extends WlModelAbstract
   public $s_time;
 
   /**
+   * `true` if class capacity should be shown,
+   * `false` to use business setting {@link \RsBusinessDesign::data()}`[is_class_capacity]`.
+   *
+   * @get get
+   * @var bool
+   */
+  public $show_class_capacity = false;
+
+  /**
    * `true` to show "book for" option in booking wizard. `false` for default behavior.
    *
    * @get get

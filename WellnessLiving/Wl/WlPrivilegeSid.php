@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 234.
+ * Last Used ID: 233.
  */
 abstract class WlPrivilegeSid
 {
@@ -104,14 +104,9 @@ abstract class WlPrivilegeSid
   const BOOK_UNPAID_RECURRING_CLASS = 232;
 
   /**
-   * Ability to book clients into recurring services even if they do not have an applicable Purchase Option to cover all visits.
-   */
-  const BOOK_UNPAID_RECURRING_ENROLLMENT = 233;
-
-  /**
    * Unpaid asset recurring booking.
    */
-  const BOOK_UNPAID_RECURRING_RESOURCE = 234;
+  const BOOK_UNPAID_RECURRING_RESOURCE = 233;
 
   /**
    * Manage business.

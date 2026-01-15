@@ -54,6 +54,14 @@ class PassportOtpModel extends WlModelAbstract
    * @var string
    */
   public $uid = '';
+
+  /**
+   * Redirect url after successful authorization.
+   *
+   * @post result
+   * @var string
+   */
+  public $url_redirect = '';
 }
 
 ?>

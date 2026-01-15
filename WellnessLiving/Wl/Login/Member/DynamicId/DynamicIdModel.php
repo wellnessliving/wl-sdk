@@ -54,6 +54,14 @@ class DynamicIdModel extends WlModelAbstract
    * @var string
    */
   public $uid = '';
+
+  /**
+   * URL of the barcode image.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_barcode = '';
 }
 
 ?>

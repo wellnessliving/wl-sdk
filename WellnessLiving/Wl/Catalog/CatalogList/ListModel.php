@@ -3,12 +3,29 @@
 namespace WellnessLiving\Wl\Catalog\CatalogList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * Displays information about store items.
  */
 class ListModel extends WlModelAbstract
 {
+  /**
+   * Arguments from direct purchase link, which can give additional access to products, which are available
+   *   only by such link.
+   *
+   * <dl>
+   *     <dt>int <var>id_sale</var></dt>
+   *     <dd>Type of the item from {@link WlSaleSid}.</dd>
+   *     <dt>string <var>k_id</var></dt>
+   *     <dd>Key of item.</dd>
+   * </dl>
+   *
+   * @get get
+   * @var array
+   */
+  public $a_direct_link = [];
+
   /**
    * The list of all sale items.
    *

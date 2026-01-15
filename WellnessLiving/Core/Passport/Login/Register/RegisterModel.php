@@ -4,6 +4,7 @@ namespace WellnessLiving\Core\Passport\Login\Register;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Lead\LeadModel;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Allows new clients to be registered.
@@ -38,12 +39,21 @@ class RegisterModel extends WlModelAbstract
   /**
    * ID of source mode.
    *
+   * One of {@link ModeSid} constants.
    * `null` if not initialized or the api is not called in the Wellnessliving project.
    *
    * @post post
    * @var int|null
    */
   public $id_mode = null;
+
+  /**
+   * JSON configuration for confirmation email.
+   *
+   * @post result
+   * @var string
+   */
+  public $json_confirm_config = '';
 
   /**
    * The application ID. This is a business specific ID required to register clients.
@@ -90,7 +100,7 @@ class RegisterModel extends WlModelAbstract
    *
    * If empty, URL to default page is used.
    *
-   * @post post
+   * @post post,result
    * @var string
    */
   public $url_confirm = '';

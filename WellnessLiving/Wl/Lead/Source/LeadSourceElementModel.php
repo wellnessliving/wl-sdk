@@ -82,14 +82,6 @@ class LeadSourceElementModel extends WlModelAbstract
    * @var string
    */
   public $text_lead_source = '';
-
-  /**
-   * Lead Source field title.
-   *
-   * @post get
-   * @var string
-   */
-  public $text_lead_source_field = '';
 }
 
 ?>

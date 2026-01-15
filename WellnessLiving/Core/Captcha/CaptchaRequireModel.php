@@ -27,6 +27,16 @@ class CaptchaRequireModel extends WlModelAbstract
   public $cid_captcha = 0;
 
   /**
+   * `true` to always require CAPTCHA, `false` to reset to default.
+   *
+   * `null` means no change.
+   *
+   * @put post
+   * @var bool|null
+   */
+  public $is_always_override = null;
+
+  /**
    * `true` if enabled {@link CaptchaVersionSid::V3} and {@link CaptchaVersionSid::V2} captcha.
    * `false` if only {@link CaptchaVersionSid::V2} enable.
    *
@@ -42,6 +52,16 @@ class CaptchaRequireModel extends WlModelAbstract
    * @var bool
    */
   public $is_require = false;
+
+  /**
+   * `true` to temporarily disable CAPTCHA requirement for the current session, `false` to reset to default.
+   *
+   * `null` means no change.
+   *
+   * @put post
+   * @var bool|null
+   */
+  public $is_temporary_disable = null;
 }
 
 ?>

@@ -60,6 +60,12 @@ class PurchaseElementModel extends WlModelAbstract
    * The key of the location in which the purchase is made.
    * This is also the booking process location.
    *
+   * In case of {@link WlPurchaseItemSid::CLASS_PERIOD} purchase item, this field will be ignored, the location of
+   * the class period is used.
+   * Since a session event may allow multiple sessions to be booked at different prices and from different locations,
+   * multiple Drop-ins will be passed to this API; for location adjustments, the location will be taken directly from
+   * the class period.
+   *
    * @get get
    * @var string
    */

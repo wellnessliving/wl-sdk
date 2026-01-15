@@ -19,7 +19,7 @@ class ProcessGroupModel extends WlModelAbstract
    * List of errors that occurred during booking.
    *
    * @post result
-   * @var string[]
+   * @var array[]
    */
   public $a_book_error = [];
 
@@ -36,8 +36,6 @@ class ProcessGroupModel extends WlModelAbstract
    *         <dl>
    *             <dt>string `dtu_date`</dt>
    *             <dd>Session date/time.</dd>
-   *             <dt>bool [`is_wait_list_unpaid`=false]</dt>
-   *             <dd>`true` to book this session into waitlist, `false` to book in common way.</dd>
    *             <dt>string `k_class_period`</dt>
    *
    *         </dl>
