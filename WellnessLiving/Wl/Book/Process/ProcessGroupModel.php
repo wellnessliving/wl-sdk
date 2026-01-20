@@ -41,88 +41,67 @@ class ProcessGroupModel extends WlModelAbstract
    *         </dl>
    *     </dd>
    *     <dt>
-   *         array [`a_purchase_item`]
+   *         array[] [`a_purchase_item`]
    *     </dt>
    *     <dd>
    *         Purchase option information. Required if the service requires online payment. Elements have next keys:
    *         <dl>
    *             <dt>
-   *                 array[] [`a_item`]
-   *             </dt>
-   *             <dd>
-   *                 <dl>
-   *                     <dt>
-   *                          int [`i_count`]
-   *                      </dt>
-   *                      <dd>
-   *                          Number of options to purchase. Specify only if you want to pay a class booking by Drop-In.
-   *                      </dd>
-   *                      <dt>
-   *                          int [`id_purchase_item`]
-   *                      </dt>
-   *                      <dd>
-   *                          Kind of option to purchase. One of {@link WlPurchaseItemSid} constants.
-   *                          Specify only if you want to purchase a new option.
-   *                      </dd>
-   *                      <dt>
-   *                          bool [`is_renew`]
-   *                      </dt>
-   *                      <dd>
-   *                          `true` if you want to enable auto-renewal for new purchase option. `false` otherwise.
-   *                          Specify only if you want to purchase a new option.
-   *                      </dd>
-   *                      <dt>
-   *                          bool [`is_owner`]
-   *                      </dt>
-   *                      <dd>
-   *                          `true` if client is owner of this purchase option.
-   *                          This means that this purchase option will be purchased for this client, even if another client
-   *                          can share a similar purchase option.
-   *                      </dd>
-   *                      <dt>
-   *                          string [`k_id`]
-   *                      </dt>
-   *                      <dd>
-   *                          Primary key of option to purchase.
-   *                          Specify only if you want to purchase a new option.
-   *                      </dd>
-   *                      <dt>
-   *                          string [`s_signature`]
-   *                      </dt>
-   *                      <dd>
-   *                          Signature of the client in base64 format.
-   *                          Specify only if you want to buy a purchase option that requires signature.
-   *                      </dd>
-   *                 </dl>
-   *             </dd>
-   *             <dt>
-   *                 string [`k_login_prize`]
-   *             </dt>
-   *             <dd>
+   *                  int [`i_count`]
+   *              </dt>
+   *              <dd>
+   *                  Number of options to purchase. Specify only if you want to pay a class booking by Drop-In.
+   *              </dd>
+   *              <dt>
+   *                  int [`id_purchase_item`]
+   *              </dt>
+   *              <dd>
+   *                  Kind of option to purchase. One of {@link WlPurchaseItemSid} constants.
+   *                  Specify only if you want to purchase a new option.
+   *              </dd>
+   *              <dt>
+   *                  bool [`is_renew`]
+   *              </dt>
+   *              <dd>
+   *                  `true` if you want to enable auto-renewal for new purchase option. `false` otherwise.
+   *                  Specify only if you want to purchase a new option.
+   *              </dd>
+   *              <dt>
+   *                  bool [`is_owner`]
+   *              </dt>
+   *              <dd>
+   *                  `true` if client is owner of this purchase option.
+   *                  This means that this purchase option will be purchased for this client, even if another client
+   *                  can share a similar purchase option.
+   *              </dd>
+   *              <dt>
+   *                  string [`k_id`]
+   *              </dt>
+   *              <dd>
+   *                  Primary key of option to purchase.
+   *                  Specify only if you want to purchase a new option.
+   *              </dd>
+   *              <dt>
+   *                  string [`k_login_prize`]
+   *              </dt>
+   *              <dd>
    *
-   *                 Specify if you want to pay by user's prize.
-   *             </dd>
-   *             <dt>
-   *                 string [`k_login_promotion`]
-   *             </dt>
-   *             <dd>
+   *                  Specify if you want to pay by user's prize.
+   *              </dd>
+   *              <dt>
+   *                  string [`k_reward_prize`]
+   *              </dt>
+   *              <dd>
    *
-   *                 Specify only if you want to pay by already purchased option.
-   *             </dd>
-   *             <dt>
-   *                 string [`k_reward_prize`]
-   *             </dt>
-   *             <dd>
-   *
-   *                 Specify if you want to redeem a prize for payment.
-   *             </dd>
-   *             <dt>
-   *                 string [`k_session_pass`]
-   *             </dt>
-   *             <dd>
-   *                 Session pass to be used to book a session.
-   *
-   *             </dd>
+   *                  Specify if you want to redeem a prize for payment.
+   *              </dd>
+   *              <dt>
+   *                  string [`s_signature`]
+   *              </dt>
+   *              <dd>
+   *                  Signature of the client in base64 format.
+   *                  Specify only if you want to buy a purchase option that requires signature.
+   *              </dd>
    *         </dl>
    *     </dd>
    *     <dt>
@@ -190,6 +169,20 @@ class ProcessGroupModel extends WlModelAbstract
    *             <dt>int <var>k_resource</var></dt>
    *
    *         </dl>
+   *     </dd>
+   *     <dt>
+   *         string [`k_login_promotion`]
+   *     </dt>
+   *     <dd>
+   *
+   *         Specify only if you want to pay by already purchased option.
+   *     </dd>
+   *     <dt>
+   *         string [`k_session_pass`]
+   *     </dt>
+   *     <dd>
+   *         Session pass to be used to book a session.
+   *
    *     </dd>
    *     <dt>string `uid`</dt>
    *     <dd>User's primary key in {@link \PassportLoginSql} table</dd>

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 235.
+ * Last Used ID: 236.
  */
 abstract class WlPrivilegeSid
 {
@@ -862,6 +862,11 @@ abstract class WlPrivilegeSid
    * Reports staff.
    */
   const REPORT_STAFF = 28;
+
+  /**
+   * Edit tip recipients.
+   */
+  const REPORT_TIP_RECIPIENT_EDIT = 236;
 
   /**
    * Manage assets.

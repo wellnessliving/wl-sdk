@@ -196,19 +196,19 @@ class DayTimeModel extends WlModelAbstract
    * For back-to-back booking ({@link DayTimeModel::$is_back_to_back} == `true`): array of appointments for back-to-back booking.
    * Converted to JSON string to be usable as model key. Each item is an array with next structure:
    * <dl>
-   * <dt>array <var>a_addon</var></dt><dd>Array of appointment addons.</dd>
-   * <dt>int <var>i_duration</var></dt><dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd>
-   * <dt>int <var>id_gender_staff</var></dt><dd>Staff gender. One of {@link AGenderSid} constants. Zero mean no limitations on staff gender.</dd>
-   * <dt>string <var>k_service</var></dt><dd>Service key.</dd>
-   * <dt>string <var>k_staff</var></dt><dd>Staff key. Zero means any available staff.</dd>
+   *   <dt>array <var>a_addon</var></dt><dd>Array of appointment addons.</dd>
+   *   <dt>int <var>i_duration</var></dt><dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd>
+   *   <dt>int <var>id_gender_staff</var></dt><dd>Staff gender. One of {@link AGenderSid} constants. Zero mean no limitations on staff gender.</dd>
+   *   <dt>string <var>k_service</var></dt><dd>Service key.</dd>
+   *   <dt>string <var>k_staff</var></dt><dd>Staff key. Zero means any available staff.</dd>
    * </dl>
    *
    * For multiple appointment booking ({@link DayTimeModel::$is_back_to_back} == `false`): array of previously booked appointments.
    * Converted to JSON string to be usable as model key. Each item is an array with next structure:
    * <dl>
-   * <dt>string <var>dtl_date</var></dt><dd>Local date and time of appointment start in MySQL format.</dd>
-   * <dt>int <var>i_duration</var></dt><dd>Duration of the appointment in minutes.</dd>
-   * <dt>string <var>k_service</var></dt><dd>Service key.</dd>
+   *   <dt>string <var>dtl_date</var></dt><dd>Local date and time of appointment start in MySQL format.</dd>
+   *   <dt>int <var>i_duration</var></dt><dd>Duration of the appointment in minutes.</dd>
+   *   <dt>string <var>k_service</var></dt><dd>Service key.</dd>
    * </dl>
    *
    * @get get

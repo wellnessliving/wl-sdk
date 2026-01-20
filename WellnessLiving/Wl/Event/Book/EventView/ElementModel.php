@@ -616,6 +616,15 @@ class ElementModel extends WlModelAbstract
   public $s_title;
 
   /**
+   * `true` to show schedule, which is not published yet.
+   * `false` to show only published schedule.
+   *
+   * @get get
+   * @var bool
+   */
+  public $show_unpublished = false;
+
+  /**
    * End date of the event in user-friendly format.
    *
    * @get result
