@@ -34,7 +34,7 @@ class ListModel extends WlModelAbstract
    * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
   public $a_coupon;
 

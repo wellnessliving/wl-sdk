@@ -2,6 +2,8 @@
 
 namespace WellnessLiving\Wl\Book\Process\Store;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Book\Process\Purchase\Purchase56Model;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
@@ -106,6 +108,59 @@ class StoreGroupModel extends WlModelAbstract
    * @var array[]
    */
   public $a_purchase_item_distribute = [];
+
+  /**
+   * Information about the recurring booking for each client in the group.
+   *
+   * * Key - UID of the client.
+   * * Value - an array with information about the recurring booking:
+   * <dl>
+   *   <dt>int[] <var>a_day</var></dt>
+   *   <dd>
+   *     The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
+   *     Should be passed for any type of repetition.
+   *   </dd>
+   *   <dt>
+   *     string [<var>dt_from</var>]
+   *   </dt>
+   *   <dd>
+   *     Date to start recurring booking.
+   *     Expected for `id_repeat_
+   *   </dd>
+   *   <dt>
+   *     string [<var>dt_to</var>]
+   *   </dt>
+   *   <dd>
+   *     Date to complete recurring booking.
+   *     Expected for `id_repeat_
+   *   </dd>
+   *   <dt>
+   *     int [<var>i_count</var>]
+   *   </dt>
+   *   <dd>
+   *     The number of occurrences after which the appointment's repeat cycle stops.
+   *     Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
+   *     Expected for `id_repeat_
+   *   </dd>
+   *   <dt>int <var>i_duration</var></dt>
+   *   <dd>Count of days\weeks\months between recurring bookings.</dd>
+   *   <dt>
+   *     int <var>id_duration</var>
+   *   </dt>
+   *   <dd>
+   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
+   *     Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
+   *   </dd>
+   *   <dt>int <var>id_repeat_end</var></dt>
+   *   <dd>Possible ways to stop repeatable events.</dd>
+   * </dl>
+   *
+   * Should be `null` if the booking isn't recurring.
+   *
+   * @post post
+   * @var array[]|null
+   */
+  public $a_repeat = null;
 
   /**
    * A list of assets which are selected by a group of clients.

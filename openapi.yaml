@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260120135520
+  version: 1.1.20260130101244
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-01-20 13:55:20
+    Last updated at: 2026-01-30 10:12:44
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -8216,6 +8216,9 @@ paths:
                       a_structure:
                         type: array
                         description: 'The values and structure of all fields. Array keys are field IDs (`k_field`). Array values are the field values. The array has the following structure: <dl> <dt>int [<var>id_field_general</var>]</dt> <dd> The ID of a system field. One of the {@link \RsFieldGeneralSid} constants. This value is only defined if <var>id_field_type</var>={@link \RsFieldTypeSid::GENERAL}. </dd> <dt>bool <var>is_require</var></dt> <dd>Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional.</dd> <dt>int <var>id_field_type</var></dt> <dd>The type of field. One of the {@link \RsFieldTypeSid} constants.</dd> <dt>string <var>k_field</var></dt> <dd>The field ID (<var>k_field</var>). A copy of the key of this array element.</dd> <dt>string <var>s_title</var></dt> <dd>The title of the field.</dd> <dt>mixed <var>x_value</var></dt> <dd>The value of the field. This value is defined by individual fields.</dd> </dl>'
+                      can_password_change:
+                        type: boolean
+                        description: 'Whether current user can change password of the given user or not. If client is part of multiple businesses, then staff of the business can only request reset of the password, but cannot change it.'
                       is_address_inherit:
                         type: boolean
                         description: 'Whether the address be inherited. `true` if address inherit, otherwise `false`.'
@@ -13232,6 +13235,12 @@ paths:
                         type: number
                         format: int32
                         description: 'The ID of the user''s gender. One of the {@link \AGenderSid} constants. This will be `null` if the gender isn''t set yet.'
+                      is_calendar_google:
+                        type: boolean
+                        description: 'This will be `true` if the user has Google Calendar linked to their account; otherwise, `false`.'
+                      is_calendar_microsoft:
+                        type: boolean
+                        description: 'This will be `true` if the user has Microsoft Calendar linked to their account; otherwise, `false`.'
                       is_customer_new:
                         type: boolean
                         description: 'This will be `true` if the user has never made purchases or reservations in this business. Otherwise, this will be `false`.'
@@ -16820,7 +16829,7 @@ paths:
             type: [number, "null"]
         - name: is_backend
           in: query
-          description: '`true` - return all active services for a certain location. `false` - return only services that are associated with a book now tab.'
+          description: '`true` - return all active services for a certain location ignoring user age and other restrictions. `false` - return only services that are allowed for the user.'
           schema:
             type: boolean
         - name: is_tab_all
@@ -18933,6 +18942,9 @@ paths:
                 a_purchase_item_check:
                   type: array
                   description: 'A list of new purchase items which are selected by a group of clients. This new purchase items will be checked to determine if it can be applied to the current class or event before being purchased. * Key - UID of the client. Primary key in the {@link \PassportLoginSql} table. * Value - an array with the following structure: <dl> <dt>int `i_session`</dt> <dd> The number of sessions that this item can cover. This only applies to items of type {@link \RsPurchaseItemSid::CLASS_PERIOD}. </dd> <dt>int `s_value`</dt> <dd> The unique identifier of the item being checked. This corresponds to one of the following values: <ul> <li>{@link Purchase56Api::$a_purchase}`["s_value"]`</li> <li>{@link Purchase56Api::$a_reward_prize}`["s_value"]`</li> <li>{@link Purchase56Api::$a_login_prize}`["s_value"]`</li> </ul> </dd> </dl>'
+                a_repeat:
+                  type: [array, "null"]
+                  description: 'Information about the recurring booking for each client in the group. * Key - UID of the client. Primary key in the {@link \PassportLoginSql} table. * Value - an array with information about the recurring booking: <dl> <dt>int[] <var>a_day</var></dt> <dd> The days of week when the appointment repeat.One of the {@link \ADateWeekSid} constants. Should be passed for any type of repetition. </dd> <dt> string [<var>dt_from</var>] </dt> <dd> Date to start recurring booking. Expected for `id_repeat_end` = {@link \RsRepeatEndSid::DATE}. </dd> <dt> string [<var>dt_to</var>] </dt> <dd> Date to complete recurring booking. Expected for `id_repeat_end` = {@link \RsRepeatEndSid::DATE}. </dd> <dt> int [<var>i_count</var>] </dt> <dd> The number of occurrences after which the appointment''s repeat cycle stops. Should be empty if the repeat cycle doesn''t stop after a certain number of occurrences. Expected for `id_repeat_end` = {@link \RsRepeatEndSid::COUNT}. </dd> <dt>int <var>i_duration</var></dt> <dd>Count of days\weeks\months between recurring bookings.</dd> <dt> int <var>id_duration</var> </dt> <dd> The measurement unit of `i_period`. One of the {@link \ADurationSid} constants. Available duration units are: {@link \ADurationSid::DAY}, {@link \ADurationSid::WEEK}, {@link \ADurationSid::MONTH}. </dd> <dt>int <var>id_repeat_end</var></dt> <dd>Possible ways to stop repeatable events. One of the {@link \RsRepeatEndSid} constants.</dd> </dl> Should be `null` if the booking isn''t recurring.'
                 a_resource:
                   type: array
                   description: 'A list of assets which are selected by a group of clients. * Key - UID of the client. Primary key in the {@link \PassportLoginSql} table. * Value - an array with the following structure: <dl> <dt>int `i_index`</dt> <dd>The order number of the asset (from 1 to the asset quantity).</dd> <dt>string `k_resource`</dt> <dd>The asset key. Primary key in the {@link \RsResourceSql} table.</dd> </dl>'
@@ -19698,7 +19710,7 @@ paths:
             type: [string, "null"]
         - name: k_location
           in: query
-          description: 'The key of the location in which the purchase is made. This is also the booking process location. In case of {@link \RsPurchaseItemSid::CLASS_PERIOD} purchase item, this field will be ignored, the location of the class period is used. Since a session event may allow multiple sessions to be booked at different prices and from different locations, multiple Drop-ins will be passed to this API; for location adjustments, the location will be taken directly from the class period.'
+          description: 'The key of the location in which the purchase is made. This is also the booking process location.'
           schema:
             type: string
         - name: text_discount_code
@@ -22048,6 +22060,53 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Count-InventoryCount
+  '/Wl/AiAgent/Link/SendMail.json':
+    post:
+      summary: ''
+      parameters:
+        - name: id_purchase_item
+          in: query
+          description: 'Purchase item ID. Required if {@link SendMailApi::$text_action} is ''purchase''. One of the {@link \RsPurchaseItemSid} constants.'
+          schema:
+            type: number
+            format: int32
+        - name: id_service
+          in: query
+          description: 'Service ID. Required if {@link SendMailApi::$text_action} is ''booking''.'
+          schema:
+            type: number
+            format: int32
+        - name: k_business
+          in: query
+          description: 'Business key. Required.'
+          schema:
+            type: string
+        - name: k_id
+          in: query
+          description: 'Unique identifier for the link.'
+          schema:
+            type: string
+        - name: text_action
+          in: query
+          description: 'Action type. Must be ''purchase'' or ''booking''.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'User ID. Required.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Link-SendMail
 tags:
   -
     name: Account-Account
@@ -22493,6 +22552,9 @@ tags:
   -
     name: Level-LevelList
     description: 'Changes the order of video levels.'
+  -
+    name: Link-SendMail
+    description: 'Model to send email based on AI agent link action. This endpoint is not public and can be used only by the AI agent.'
   -
     name: Location-BusinessFranchiseLocation
     description: 'Manages franchisor locations.'

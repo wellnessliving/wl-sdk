@@ -180,6 +180,22 @@ class UserInfoModel extends WlModelAbstract
   public $id_gender;
 
   /**
+   * This will be `true` if the user has Google Calendar linked to their account; otherwise, `false`.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_calendar_google;
+
+  /**
+   * This will be `true` if the user has Microsoft Calendar linked to their account; otherwise, `false`.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_calendar_microsoft;
+
+  /**
    * This will be `true` if the user has never made purchases or reservations in this business.
    * Otherwise, this will be `false`.
    *

@@ -335,8 +335,8 @@ class ServiceList52Model extends WlModelAbstract
   public $i_width = 0;
 
   /**
-   * `true` - return all active services for a certain location.
-   * `false` - return only services that are associated with a book now tab.
+   * `true` - return all active services for a certain location ignoring user age and other restrictions.
+   * `false` - return only services that are allowed for the user.
    *
    * @get get
    * @var bool
