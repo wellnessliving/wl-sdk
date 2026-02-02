@@ -111,6 +111,16 @@ class EditByTokenModel extends WlModelAbstract
   public $a_structure;
 
   /**
+   * Whether current user can change password of the given user or not.
+   * If client is part of multiple businesses, then staff of the business can only request reset of the password,
+   * but cannot change it.
+   *
+   * @get result
+   * @var bool
+   */
+  public $can_password_change = false;
+
+  /**
    * ID of source mode. One of {@link ModeSid} constants.
    *
    * @post get

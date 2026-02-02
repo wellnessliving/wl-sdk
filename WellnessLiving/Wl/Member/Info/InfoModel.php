@@ -1,14 +1,13 @@
 <?php
 
-namespace WellnessLiving\Wl\Reception\Application;
+namespace WellnessLiving\Wl\Member\Info;
 
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Member\Info\InfoModel;
 
 /**
- * Returns information about user for self check in application.
+ * Retrieves information about a member.
  */
-class MemberInfoModel extends WlModelAbstract
+class InfoModel extends WlModelAbstract
 {
   /**
    * Additional member data or `null` if any data can be shown. Will be filled if {@link InfoModel::$is_full} flag is set.
@@ -17,35 +16,6 @@ class MemberInfoModel extends WlModelAbstract
    * @var array|null
    */
   public $a_info = null;
-
-  /**
-   * The options presented in the web app.
-   *
-   * The items are generated this way due to JavaScript limitations around translated messages.
-   *
-   * <dl>
-   *   <dt>string <var>id_color</var></dt>
-   *   <dd>
-   *     ID of color the notice is displayed in.
-   *     One of {@link MemberInfoColorSid} constants.
-   *   </dd>
-   *   <dt>string <var>id_icon</var></dt>
-   *   <dd>
-   *     ID of icon that accompanies the message.
-   *     One of {@link MemberInfoIconSid} constants.
-   *   </dd>
-   *   <dt>string <var>text_class</var></dt>
-   *   <dd>Name of the class for styles.</dd>
-   *   <dt>string <var>text_message</var></dt>
-   *   <dd>Plain message for info box.</dd>
-   *   <dt>string <var>html_message</var></dt>
-   *   <dd>Message for info box.</dd>
-   * </dl>
-   *
-   * @get result
-   * @var array[]
-   */
-  public $a_items = [];
 
   /**
    * List of users data.
@@ -130,7 +100,7 @@ class MemberInfoModel extends WlModelAbstract
 
   /**
    * If `true`, the client is a traveler. Otherwise, this will be `false`.
-   * This will be `null` in cases when the client is a walk-in. Or when {@link MemberInfoModel::$is_full} is `false`.
+   * This will be `null` in cases when the client is a walk-in. Or when {@link InfoModel::$is_full} is `false`.
    *
    * @get result
    * @var bool|null
@@ -146,14 +116,6 @@ class MemberInfoModel extends WlModelAbstract
    * @var string
    */
   public $k_business = '0';
-
-  /**
-   * The location where the Self Check-In Web App is running.
-   *
-   * @get get
-   * @var string
-   */
-  public $k_location = '';
 
   /**
    * ID of the visit, if we show icons on the attendance list and information that depends on visit is required.
@@ -180,14 +142,6 @@ class MemberInfoModel extends WlModelAbstract
    * @var string|null
    */
   public $s_member = null;
-
-  /**
-   * Key of the Check In application.
-   *
-   * @get get
-   * @var string
-   */
-  public $s_secret = '';
 
   /**
    * A list of icons with additional information about the business member.

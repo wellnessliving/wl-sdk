@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260130101244
+  version: 1.1.20260202084401
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-01-30 10:12:44
+    Last updated at: 2026-02-02 08:44:01
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -8522,6 +8522,9 @@ paths:
                       a_structure:
                         type: array
                         description: 'The values and structure of all fields. Array keys are field IDs (`k_field`). Array values are the field values. The array has the following structure: <dl> <dt>int [<var>id_field_general</var>]</dt> <dd> The ID of a system field. One of the {@link \RsFieldGeneralSid} constants. This value is only defined if <var>id_field_type</var>={@link \RsFieldTypeSid::GENERAL}. </dd> <dt>bool <var>is_require</var></dt> <dd>Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional.</dd> <dt>int <var>id_field_type</var></dt> <dd>The type of field. One of the {@link \RsFieldTypeSid} constants.</dd> <dt>string <var>k_field</var></dt> <dd>The field ID (<var>k_field</var>). A copy of the key of this array element.</dd> <dt>string <var>s_title</var></dt> <dd>The title of the field.</dd> <dt>mixed <var>x_value</var></dt> <dd>The value of the field. This value is defined by individual fields.</dd> </dl>'
+                      can_password_change:
+                        type: boolean
+                        description: 'Whether current user can change password of the given user or not. If client is part of multiple businesses, then staff of the business can only request reset of the password, but cannot change it.'
                       is_address_inherit:
                         type: boolean
                         description: 'Whether the address be inherited. `true` if address inherit, otherwise `false`.'
@@ -11642,6 +11645,104 @@ paths:
                         description: 'List of purchased products:<dl> <dt>string <var>dtu_purchase</var></dt> <dd>Date and time of purchase in UTC.</dd> <dt>int <var>i_quantity</var></dt> <dd>Quantity of the product purchased.</dd> <dt>string <var>k_shop_product_option</var></dt> <dd>Key of product. Primary key in {@link \RsShopProductOptionSql} table.</dd> <dt>string <var>m_price</var></dt> <dd>Price per unit of the product.</dd> <dt>string <var>m_total_amount</var></dt> <dd>Total amount paid for the product.</dd> <dt>string <var>text_location</var></dt> <dd>Location where the purchase was made.</dd> <dt>string <var>text_product</var></dt> <dd>Name of the purchased product.</dd> </dl>'
       tags:
         - Product-Product
+  '/Wl/Member/Info/Info.json':
+    get:
+      summary: 'Returns information about specified member.'
+      parameters:
+        - name: a_uid
+          in: query
+          description: 'Primary keys of users whose information must be returned. `null` if data of a single user is requested.'
+          schema:
+            type: [array, "null"]
+        - name: a_uid_date
+          in: query
+          description: 'List of dates for load additional information about users. Key is UID of user. Value is date. `null` if data of a single user is requested.'
+          schema:
+            type: [array, "null"]
+        - name: dt_date
+          in: query
+          description: 'Date of the session, if we show it on the appointment info window or on the attendance list.'
+          schema:
+            type: string
+        - name: is_backend
+          in: query
+          description: '`true` - if API is being used from backend, `false` - otherwise.'
+          schema:
+            type: boolean
+        - name: is_full
+          in: query
+          description: 'If you need to return additional information set to `true` or `false` if not.'
+          schema:
+            type: boolean
+        - name: k_business
+          in: query
+          description: 'The business ID required to access client information. Specify this as `0` to retrieve the system-wide version of the information.'
+          schema:
+            type: string
+        - name: k_visit
+          in: query
+          description: 'ID of the visit, if we show icons on the attendance list and information that depends on visit is required.'
+          schema:
+            type: string
+        - name: s_show
+          in: query
+          description: 'A list of icons with additional information about the business member. If empty, all available icons will be displayed. Comma separated sids from {@link MemberInfoSid}.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'ID of a user to retrieve member information for.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_info:
+                        type: [array, "null"]
+                        description: 'Additional member data or `null` if any data can be shown. Will be filled if {@link InfoApi::$is_full} flag is set. See result of {@link MemberInfoView::dataPrepare()} method.'
+                      a_result_list:
+                        type: [array, "null"]
+                        description: 'List of users data. Keys - users primary keys. Values - users data {@link InfoApi::_get()} for details. Keys refer to clients'' primary keys, and values refer to clients'' data. If `null`, data for a single client is being requested.'
+                      a_visit_last:
+                        type: array
+                        description: 'Information about last visit of the user. Structure is same as {@link Visit::getLastNextVisit()} return value.'
+                      a_visit_next:
+                        type: array
+                        description: 'Information about next visit of the user. Structure is same as {@link Visit::getLastNextVisit()} return value.'
+                      i_lifetime_visit:
+                        type: number
+                        format: int32
+                        description: 'Count attend visits for one client.'
+                      is_traveller:
+                        type: [boolean, "null"]
+                        description: 'If `true`, the client is a traveler. Otherwise, this will be `false`. This will be `null` in cases when the client is a walk-in. Or when {@link InfoApi::$is_full} is `false`.'
+                      m_lifetime_value:
+                        type: string
+                        description: 'The member''s lifetime value.'
+                      s_member:
+                        type: [string, "null"]
+                        description: 'The member ID. If `null`, the specified client isn''t a member of the specified business.'
+                      text_first_name:
+                        type: string
+                        description: 'First user''s name.'
+                      text_fullname:
+                        type: string
+                        description: 'Full user''s name.'
+                      url_barcode:
+                        type: string
+                        description: 'URL to barcode image.'
+                      url_email:
+                        type: string
+                        description: 'URL to email.'
+      tags:
+        - Info-Info
   '/Wl/Member/Purchase/MemberByPromotion.json':
     get:
       summary: ''
@@ -12700,6 +12801,11 @@ paths:
           description: 'Primary keys of users whose information must be returned. `null` if data of a single user is requested.'
           schema:
             type: [array, "null"]
+        - name: a_uid_date
+          in: query
+          description: 'List of dates for load additional information about users. Key is UID of user. Value is date. `null` if data of a single user is requested.'
+          schema:
+            type: [array, "null"]
         - name: dt_date
           in: query
           description: 'Date of the session, if we show it on the appointment info window or on the attendance list.'
@@ -12764,9 +12870,22 @@ paths:
                       a_result_list:
                         type: [array, "null"]
                         description: 'List of users data. Keys - users primary keys. Values - users data {@link InfoApi::_get()} for details. Keys refer to clients'' primary keys, and values refer to clients'' data. If `null`, data for a single client is being requested.'
+                      a_visit_last:
+                        type: array
+                        description: 'Information about last visit of the user. Structure is same as {@link Visit::getLastNextVisit()} return value.'
+                      a_visit_next:
+                        type: array
+                        description: 'Information about next visit of the user. Structure is same as {@link Visit::getLastNextVisit()} return value.'
+                      i_lifetime_visit:
+                        type: number
+                        format: int32
+                        description: 'Count attend visits for one client.'
                       is_traveller:
                         type: [boolean, "null"]
                         description: 'If `true`, the client is a traveler. Otherwise, this will be `false`. This will be `null` in cases when the client is a walk-in. Or when {@link MemberInfoApi::$is_full} is `false`.'
+                      m_lifetime_value:
+                        type: string
+                        description: 'The member''s lifetime value.'
                       s_member:
                         type: [string, "null"]
                         description: 'The member ID. If `null`, the specified client isn''t a member of the specified business.'
@@ -14723,6 +14842,53 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Login-MicrosoftLogin
+  '/Wl/AiAgent/Link/SendMail.json':
+    post:
+      summary: ''
+      parameters:
+        - name: id_purchase_item
+          in: query
+          description: 'Purchase item ID. Required if {@link SendMailApi::$text_action} is ''purchase''. One of the {@link \RsPurchaseItemSid} constants.'
+          schema:
+            type: number
+            format: int32
+        - name: id_service
+          in: query
+          description: 'Service ID. Required if {@link SendMailApi::$text_action} is ''booking''.'
+          schema:
+            type: number
+            format: int32
+        - name: k_business
+          in: query
+          description: 'Business key. Required.'
+          schema:
+            type: string
+        - name: k_id
+          in: query
+          description: 'Unique identifier for the link.'
+          schema:
+            type: string
+        - name: text_action
+          in: query
+          description: 'Action type. Must be ''purchase'' or ''booking''.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'User ID. Required.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Link-SendMail
   '/Thoth/WlPay/Bank/Card/List.json':
     get:
       summary: 'Retrieves information about user''s bank cards.'
@@ -16904,7 +17070,7 @@ paths:
             type: [number, "null"]
         - name: is_backend
           in: query
-          description: '`true` - return all active services for a certain location. `false` - return only services that are associated with a book now tab.'
+          description: '`true` - return all active services for a certain location ignoring user age and other restrictions. `false` - return only services that are allowed for the user.'
           schema:
             type: boolean
         - name: is_tab_all
@@ -19466,7 +19632,7 @@ paths:
             type: string
         - name: k_location
           in: query
-          description: 'The key of the location in which the purchase is made. This is also the booking process location. In case of {@link \RsPurchaseItemSid::CLASS_PERIOD} purchase item, this field will be ignored, the location of the class period is used. Since a session event may allow multiple sessions to be booked at different prices and from different locations, multiple Drop-ins will be passed to this API; for location adjustments, the location will be taken directly from the class period.'
+          description: 'The key of the location in which the purchase is made. This is also the booking process location.'
           schema:
             type: string
         - name: k_login_prize
@@ -22060,53 +22226,6 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Count-InventoryCount
-  '/Wl/AiAgent/Link/SendMail.json':
-    post:
-      summary: ''
-      parameters:
-        - name: id_purchase_item
-          in: query
-          description: 'Purchase item ID. Required if {@link SendMailApi::$text_action} is ''purchase''. One of the {@link \RsPurchaseItemSid} constants.'
-          schema:
-            type: number
-            format: int32
-        - name: id_service
-          in: query
-          description: 'Service ID. Required if {@link SendMailApi::$text_action} is ''booking''.'
-          schema:
-            type: number
-            format: int32
-        - name: k_business
-          in: query
-          description: 'Business key. Required.'
-          schema:
-            type: string
-        - name: k_id
-          in: query
-          description: 'Unique identifier for the link.'
-          schema:
-            type: string
-        - name: text_action
-          in: query
-          description: 'Action type. Must be ''purchase'' or ''booking''.'
-          schema:
-            type: string
-        - name: uid
-          in: query
-          description: 'User ID. Required.'
-          schema:
-            type: string
-      responses:
-        200:
-          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - type: object
-                    description: 'Successful response. Full description is not available yet.'
-      tags:
-        - Link-SendMail
 tags:
   -
     name: Account-Account
