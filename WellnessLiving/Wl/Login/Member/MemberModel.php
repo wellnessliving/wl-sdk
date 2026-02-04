@@ -16,7 +16,7 @@ class MemberModel extends WlModelAbstract
    *     bool <var>can_enter</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if user is allowed to sign in into this business; <tt>false</tt> otherwise.
+   *     <tt>true</tt> if the user is allowed to sign in into this business; <tt>false</tt> otherwise.
    *
    *   </dd>
    *   <dt>
@@ -57,9 +57,18 @@ class MemberModel extends WlModelAbstract
   public $a_business;
 
   /**
+   * Primary key of the business to add the user into.
+   *
+   * @post post
+   * @var string
+   */
+  public $k_business = '0';
+
+  /**
    * The user's key.
    *
    * @get get
+   * @post get
    * @var string
    */
   public $uid = '0';

@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260202084401
+  version: 1.1.20260204101652
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-02-02 08:44:01
+    Last updated at: 2026-02-04 10:16:52
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -11000,7 +11000,7 @@ paths:
         - Member-MemberValidate
   '/Wl/Login/Member/Member.json':
     get:
-      summary: ''
+      summary: 'This method is called to process a GET query.'
       parameters:
         - name: uid
           in: query
@@ -11019,7 +11019,36 @@ paths:
                     properties:
                       a_business:
                         type: array
-                        description: 'A list of businesses where the client is present. Every element is an array with the following keys: <dl> <dt> bool <var>can_enter</var> </dt> <dd> <tt>true</tt> if user is allowed to sign in into this business; <tt>false</tt> otherwise. This value is based on {@link LoginDisableSql} table. </dd> <dt> bool <var>is_franchisee</var> </dt> <dd> If `true`, then the business is a franchisee. Otherwise, this will be `false`. </dd> <dt> bool <var>is_franchisor</var> </dt> <dd> If `true`, then the business is a franchisor. Otherwise, this will be `false`. </dd> <dt> string <var>k_business</var> </dt> <dd> The business key. Primary key in {@link \RsBusinessSql} table. </dd> <dt> string <var>k_business_franchisor</var> </dt> <dd> The business key of the Enterprise Headquarters account (if applicable). Primary key in {@link \RsBusinessSql} table. </dd> <dt> string <var>text_title</var> </dt> <dd> The title of the business. </dd> </dl>'
+                        description: 'A list of businesses where the client is present. Every element is an array with the following keys: <dl> <dt> bool <var>can_enter</var> </dt> <dd> <tt>true</tt> if the user is allowed to sign in into this business; <tt>false</tt> otherwise. This value is based on {@link LoginDisableSql} table. </dd> <dt> bool <var>is_franchisee</var> </dt> <dd> If `true`, then the business is a franchisee. Otherwise, this will be `false`. </dd> <dt> bool <var>is_franchisor</var> </dt> <dd> If `true`, then the business is a franchisor. Otherwise, this will be `false`. </dd> <dt> string <var>k_business</var> </dt> <dd> The business key. Primary key in {@link \RsBusinessSql} table. </dd> <dt> string <var>k_business_franchisor</var> </dt> <dd> The business key of the Enterprise Headquarters account (if applicable). Primary key in {@link \RsBusinessSql} table. </dd> <dt> string <var>text_title</var> </dt> <dd> The title of the business. </dd> </dl>'
+      tags:
+        - Member-Member
+    post:
+      summary: 'Adds a user into a business.'
+      parameters:
+        - name: uid
+          in: query
+          description: 'The user''s key.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                k_business:
+                  type: string
+                  description: 'Primary key of the business to add the user into.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
       tags:
         - Member-Member
   '/Wl/Login/Member/LoginMember.json':
