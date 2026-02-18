@@ -7,7 +7,7 @@ namespace WellnessLiving\Wl;
  *
  * See {@link WlProgramSid} for a list of promotions.
  *
- * Last used ID: 7.
+ * Last used ID: 8.
  *
  * @see WlProgramSid
  */
@@ -19,6 +19,14 @@ abstract class WlProgramTypeSid
    * Differs from {@link WlProgramTypeSid::LIMIT} in that this type of promotion is limited by time.
    */
   const DURATION = 7;
+
+  /**
+   * Guest passes.
+   *
+   * @see WlProgramSid::DEAL
+   * @see WlProgramSid::PACKAGE
+   */
+  const GUEST = 8;
 
   /**
    * Class pass.

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 239.
+ * Last Used ID: 236.
  */
 abstract class WlPrivilegeSid
 {
@@ -226,11 +226,6 @@ abstract class WlPrivilegeSid
   const CLASS_PERIOD = 5;
 
   /**
-   * View classes.
-   */
-  const CLASS_VIEW = 237;
-
-  /**
    * Add and view client's contact logs.
    */
   const CONTACT_LOG_MANAGE = 135;
@@ -304,11 +299,6 @@ abstract class WlPrivilegeSid
    * Lock search bar on enrollment attendance list.
    */
   const ENROLLMENT_LOCK_SEARCH = 153;
-
-  /**
-   * View events.
-   */
-  const ENROLLMENT_VIEW = 238;
 
   /**
    * Manage Enterprise Cloud Fees.
@@ -897,11 +887,6 @@ abstract class WlPrivilegeSid
    * Book assets for clients with an unsigned waiver.
    */
   const RESOURCE_BOOK_UNSIGNED = 204;
-
-  /**
-   * View assets.
-   */
-  const RESOURCE_VIEW = 239;
 
   /**
    * Mark client reviews as inappropriate and respond to customer comments.

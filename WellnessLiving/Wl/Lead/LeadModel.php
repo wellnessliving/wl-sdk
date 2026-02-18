@@ -134,6 +134,20 @@ class LeadModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
+   * `true` if newly created lead should be automatically signed in, `false` otherwise.
+   *
+   * Lead will not be signed in if:
+   * - email is used already for another existing user;
+   * - different user is signed in already.
+   *
+   * If lead is not signed in, then {@link LeadModel::$text_sign_in_error} will contain an error message.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_sing_in = false;
+
+  /**
    * The key of business to which the new user must be captured.
    *
    * @get get
@@ -186,6 +200,19 @@ class LeadModel extends WlModelAbstract
    * @var string|null
    */
   public $text_lead_source = null;
+
+  /**
+   * An error code if the lead is not signed in after creation.
+   * This field is filled in the POST method.
+   *
+   * Possible values:
+   * - `email-exists` - the email is already used by another lead;
+   * - `different-user` - another user is signed in already.
+   *
+   * @post result
+   * @var string
+   */
+  public $text_sign_in_error = '';
 
   /**
    * The key of the new user.

@@ -138,6 +138,12 @@ class PromotionModel extends WlModelAbstract
    *   <dd>
    *     The direct URL to the promotion purchase page.
    *   </dd>
+   *   <dt>
+   *     string <var>url_catalog</var>
+   *   </dt>
+   *   <dd>
+   *     The direct URL to the promotion details page in the online store.
+   *   </dd>
    * </dl>
    *
    * @get result

@@ -411,10 +411,18 @@ class WlModelAbstract
   private function request($s_method)
   {
     $a_request = $this->requestPrepare($s_method);
-
-    $s_response = curl_exec($a_request['r_curl']);
-
-    return $this->requestResult($s_method, $a_request['r_curl'], $a_request['o_request'], $a_request['a_field'], $s_response, $a_request['s_post']);
+    $call_request_do = function() use($s_method, $a_request) {
+      $s_response = curl_exec($a_request['r_curl']);
+      return $this->requestResult($s_method, $a_request['r_curl'], $a_request['o_request'], $a_request['a_field'], $s_response, $a_request['s_post']);
+    };
+    $o_request = $a_request['o_request'];
+    return $this->_o_config->watchTime(static::class.'::'.$s_method, $call_request_do, [
+      'a_variable' => $o_request->a_variable,
+      'dtu_request' => $o_request->dt_request,
+      's_method' => $s_method,
+      's_model_class' => static::class,
+      'url_request' => $o_request->url,
+    ]);
   }
 
   /**

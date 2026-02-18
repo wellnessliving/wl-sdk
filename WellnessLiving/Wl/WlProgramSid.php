@@ -7,7 +7,7 @@ namespace WellnessLiving\Wl;
  *
  * Usually type includes type and category.
  *
- * Last used ID: 23.
+ * Last used ID: 25.
  *
  * @see WlProgramCategorySid
  * @see WlProgramTypeSid
@@ -25,6 +25,11 @@ abstract class WlProgramSid
    * and after renew.
    */
   const ACCOUNT_PASS = 20;
+
+  /**
+   * Class Guest pass.
+   */
+  const CLASS_GUEST = 25;
 
   /**
    * Class Pass.
@@ -112,6 +117,11 @@ abstract class WlProgramSid
    * Video Membership.
    */
   const VIDEO_MEMBERSHIP = 23;
+
+  /**
+   * Gym Guest pass.
+   */
+  const VISIT_GUEST = 24;
 
   /**
    * Gym Pass.

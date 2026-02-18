@@ -471,6 +471,22 @@ abstract class WlConfigAbstract
   {
     return static::URL_EDGE;
   }
+
+  /**
+   * Measures the time of execution of the specified callback. This method is called by the model class, passing the
+   * callback to execute a specific action (e.g. execute an API request).
+   *
+   * The default implementation just executes the callback without measuring the time.
+   *
+   * @param string $text_name Name of the action to be measured.
+   * @param callable $call The callback that executes the action.
+   * @param array $a_info Additional debug information for the action.
+   * @return mixed Result of callback execution.
+   */
+  public function watchTime($text_name, $call, $a_info = [])
+  {
+      return $call();
+  }
 }
 
 ?>

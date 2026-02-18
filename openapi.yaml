@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260204101652
+  version: 1.1.20260218205122
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-02-04 10:16:52
+    Last updated at: 2026-02-18 20:51:22
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -3162,7 +3162,7 @@ paths:
                     properties:
                       a_promotion:
                         type: array
-                        description: 'Promotion information. <dl> <dt> array <var>a_access</var> </dt> <dd> Information about services that can be attended with this pass or membership. <dl> <dt>array[] <var>a_class</var></dt> <dd>A list of available classes. Each element is primary key from {@link \RsClassSql} table.</dd> <dt>array[] <var>a_event</var></dt> <dd>A list of available events. Each element is primary key from {@link \RsClassSql} table.</dd> <dt>array[] <var>a_resource</var></dt> <dd>A list of available assets. Each element is primary key from {@link \RsResourceSql} table.</dd> <dt>array[] <var>a_service</var></dt> <dd>A list of available appointment types. Each element is primary key from {@link \RsServiceSql} table.</dd> <dt>bool <var>is_class_all</var></dt> <dd>This will be `true` if any class in the business can be visited with this Purchase Option. Otherwise, this will be `false` if only selected classes can be visited with this Purchase Option. Selected classes can be found in the list of available classes and events.</dd> <dt>bool <var>is_event_all</var></dt> <dd>This will be `true` if any event in the business can be visited with this Purchase Option. Otherwise, this will be `false` if only selected events can be visited with this Purchase Option. Selected events can be found in the list of available classes and events.</dd> </dl> </dd> <dt> array <var>a_image</var> </dt> <dd> Information about Purchase Option image. This will be an empty array if the Purchase Option doesn''t have an image. <dl> <dt>string <var>i_height</var></dt> <dd>The height of the image.</dd> <dt>string <var>i_width</var></dt> <dd>The width of the image.</dd> <dt>string <var>url-thumbnail</var></dt> <dd>The link to the image.</dd> </dl> </dd> <dt> string <var>dl_expire</var> </dt> <dd> The local expiration date. This is the last day when the Purchase Option is active. This is used only when the ''Expires on a certain date'' duration type is set. </dd> <dt> int <var>i_duration</var> </dt> <dd> The number of periods for the ''Period'' duration type. For example, if the duration of the Purchase Option is 12 months, this field will be 12. </dd> <dt> int <var>i_limit</var> </dt> <dd> The number of visits that the owner can use for the Purchase Option. This will be `0` if the Purchase Option allows for unlimited visits. </dd> <dt> int <var>id_duration</var> </dt> <dd> The type of period for the ''Period'' duration type. For example, if the duration of the Purchase Option is 12 months, this field will display the ID of the month. For all possible options, see {@link \ADurationSid}. </dd> <dt> int <var>id_duration_type</var> </dt> <dd> The duration type. Possible duration types can be ''Without End'', ''Expires on a certain date'', ''Period''. For more information, see {@link \RsDurationTypeSid}. </dd> <dt> int <var>id_program</var> </dt> <dd> The Purchase Option type. For more information, see {@link \RsProgramSid}. </dd> <dt> bool <var>is_introductory</var> </dt> <dd> If `true`, this promotion is for introductory clients. Otherwise, this will be `false`. </dd> <dt> bool <var>is_online</var> </dt> <dd> If `true`, this promotion is available for online purchase. Otherwise, this will be `false`. </dd> <dt> string <var>k_promotion</var> </dt> <dd> The key of the promotion. Primary key in {@link \RsPromotionSql} table. </dd> <dt> string <var>m_price</var> </dt> <dd> The price. </dd> <dt> string <var>text_description</var> </dt> <dd> The description of the Purchase Option. </dd> <dt> string <var>text_title</var> </dt> <dd> The title of the Purchase Option. </dd> <dt> string <var>url_buy</var> </dt> <dd> The direct URL to the promotion purchase page. </dd> </dl>'
+                        description: 'Promotion information. <dl> <dt> array <var>a_access</var> </dt> <dd> Information about services that can be attended with this pass or membership. <dl> <dt>array[] <var>a_class</var></dt> <dd>A list of available classes. Each element is primary key from {@link \RsClassSql} table.</dd> <dt>array[] <var>a_event</var></dt> <dd>A list of available events. Each element is primary key from {@link \RsClassSql} table.</dd> <dt>array[] <var>a_resource</var></dt> <dd>A list of available assets. Each element is primary key from {@link \RsResourceSql} table.</dd> <dt>array[] <var>a_service</var></dt> <dd>A list of available appointment types. Each element is primary key from {@link \RsServiceSql} table.</dd> <dt>bool <var>is_class_all</var></dt> <dd>This will be `true` if any class in the business can be visited with this Purchase Option. Otherwise, this will be `false` if only selected classes can be visited with this Purchase Option. Selected classes can be found in the list of available classes and events.</dd> <dt>bool <var>is_event_all</var></dt> <dd>This will be `true` if any event in the business can be visited with this Purchase Option. Otherwise, this will be `false` if only selected events can be visited with this Purchase Option. Selected events can be found in the list of available classes and events.</dd> </dl> </dd> <dt> array <var>a_image</var> </dt> <dd> Information about Purchase Option image. This will be an empty array if the Purchase Option doesn''t have an image. <dl> <dt>string <var>i_height</var></dt> <dd>The height of the image.</dd> <dt>string <var>i_width</var></dt> <dd>The width of the image.</dd> <dt>string <var>url-thumbnail</var></dt> <dd>The link to the image.</dd> </dl> </dd> <dt> string <var>dl_expire</var> </dt> <dd> The local expiration date. This is the last day when the Purchase Option is active. This is used only when the ''Expires on a certain date'' duration type is set. </dd> <dt> int <var>i_duration</var> </dt> <dd> The number of periods for the ''Period'' duration type. For example, if the duration of the Purchase Option is 12 months, this field will be 12. </dd> <dt> int <var>i_limit</var> </dt> <dd> The number of visits that the owner can use for the Purchase Option. This will be `0` if the Purchase Option allows for unlimited visits. </dd> <dt> int <var>id_duration</var> </dt> <dd> The type of period for the ''Period'' duration type. For example, if the duration of the Purchase Option is 12 months, this field will display the ID of the month. For all possible options, see {@link \ADurationSid}. </dd> <dt> int <var>id_duration_type</var> </dt> <dd> The duration type. Possible duration types can be ''Without End'', ''Expires on a certain date'', ''Period''. For more information, see {@link \RsDurationTypeSid}. </dd> <dt> int <var>id_program</var> </dt> <dd> The Purchase Option type. For more information, see {@link \RsProgramSid}. </dd> <dt> bool <var>is_introductory</var> </dt> <dd> If `true`, this promotion is for introductory clients. Otherwise, this will be `false`. </dd> <dt> bool <var>is_online</var> </dt> <dd> If `true`, this promotion is available for online purchase. Otherwise, this will be `false`. </dd> <dt> string <var>k_promotion</var> </dt> <dd> The key of the promotion. Primary key in {@link \RsPromotionSql} table. </dd> <dt> string <var>m_price</var> </dt> <dd> The price. </dd> <dt> string <var>text_description</var> </dt> <dd> The description of the Purchase Option. </dd> <dt> string <var>text_title</var> </dt> <dd> The title of the Purchase Option. </dd> <dt> string <var>url_buy</var> </dt> <dd> The direct URL to the promotion purchase page. </dd> <dt> string <var>url_catalog</var> </dt> <dd> The direct URL to the promotion details page in the online store. </dd> </dl>'
       tags:
         - Promotion-Promotion
   '/Wl/Lead/Lead.json':
@@ -3236,6 +3236,9 @@ paths:
                 a_field_data:
                   type: array
                   description: 'A list of fields containing the lead information. The keys are the field keys and values are field values. If field key is `Address` field key, value may be an array or string. Can be a string if only address field is used. Will be an array if city and postal code are used, with the following keys: <dl> <dt>string <var>text_address</var></dt> <dd>Address.</dd> <dt>string <var>k_city</var></dt> <dd>City key. Primary key in {@link \AGeoSql}.</dd> <dt>string <var>text_postal</var></dt> <dd>Postal code.</dd> </dl>'
+                is_sing_in:
+                  type: boolean
+                  description: '`true` if newly created lead should be automatically signed in, `false` otherwise. Lead will not be signed in if: - email is used already for another existing user; - different user is signed in already. If lead is not signed in, then {@link LeadApi::$text_sign_in_error} will contain an error message.'
                 k_lead_source:
                   type: [string, "null"]
                   description: 'Key of the lead source. Primary key in {@link LeadSourceSql} table. Must be `null` if <var>text_lead_source</var> is set. If both parameters are empty, the {@link ModeSid::API} lead source will be used. {@link LeadSourceElementApi::LEAD_SOURCE_REPLACE_NONE} if Lead Source is to be unselected for the user.'
@@ -3258,6 +3261,9 @@ paths:
                       k_lead_source:
                         type: [string, "null"]
                         description: 'Key of the lead source. Primary key in {@link LeadSourceSql} table. Must be `null` if <var>text_lead_source</var> is set. If both parameters are empty, the {@link ModeSid::API} lead source will be used. {@link LeadSourceElementApi::LEAD_SOURCE_REPLACE_NONE} if Lead Source is to be unselected for the user.'
+                      text_sign_in_error:
+                        type: string
+                        description: 'An error code if the lead is not signed in after creation. This field is filled in the POST method. Possible values: - `email-exists` - the email is already used by another lead; - `different-user` - another user is signed in already.'
                       uid:
                         type: string
                         description: 'The key of the new user. Typing is not added because the variable is an integer. Specifying typing may break third party integration.'
@@ -5837,7 +5843,7 @@ paths:
       parameters:
         - name: a_direct_link
           in: query
-          description: 'Arguments from direct purchase link, which can give additional access to products, which are available only by such link. <dl> <dt>int <var>id_sale</var></dt> <dd>Type of the item from {@link \RsSaleSid}.</dd> <dt>string <var>k_id</var></dt> <dd>Key of item.</dd> </dl>'
+          description: 'Arguments from direct purchase link, which can give additional access to products, which are available only by such link. <dl> <dt>int <var>sid_purchase_item</var></dt> <dd> Type of the item from {@link \RsPurchaseItemSid}. Optional. It is important for products where key can mean key of the product or key of the product option. </dd> <dt>int <var>id_sale</var></dt> <dd>Type of the item from {@link \RsSaleSid}.</dd> <dt>string <var>k_id</var></dt> <dd>Key of item.</dd> </dl>'
           schema:
             type: array
         - name: is_credit_card_check
@@ -12752,7 +12758,7 @@ paths:
                     properties:
                       a_class:
                         type: array
-                        description: 'A list of sessions to display with the following fields: <dl> <dt>array <var>a_resources_shared</var></dt> <dd>A list of shared resources containing:<dl> <dt>string <var>k_resource</var></dt><dd>The resource key.</dd> <dt>string <var>s_title</var></dt><dd>The resource title.</dd> </dl></dd> <dt>array <var>a_staff_all</var></dt> <dd>A list of staff members instructing the service, containing:<dl> <dt>string <var>s_name_full</var></dt><dd>The staff member''s full name.</dd> </dl></dd> <dt>string <var>dtu_date</var></dt> <dd>The session date.</dd> <dt>string <var>html_class_js</var></dt> <dd>The name of the HTML class that JavaScript uses to display the icon, depending on the service type.</dd> <dt>int <var>i_duration</var></dt> <dd>The session duration in minutes.</dd> <dt>int <var>id_service</var></dt> <dd>Service ID. One of the {@link \Wl\Service\ServiceSid} constants.</dd> <dt>bool <var>is_auto</var></dt> <dd>If `true`, the session can be checked in automatically. Otherwise, this will be `false`.</dd> <dt>bool <var>is_book</var></dt> <dd>If `true`, the client should be notified that the visit is booked. Otherwise, this will be `false`.</dd> <dt>bool <var>is_wait</var></dt> <dd>If `true`, the client should be notified that they''re on the wait list. Otherwise, this will be `false`.</dd> <dt>string|null <var>k_appointment</var></dt> <dd>The appointment key. If `null`, this isn''t an appointment.</dd> <dt>string|null <var>k_class_period</var></dt> <dd>The class period key. If `null`, this isn''t a class or event.</dd> <dt>string|null <var>k_visit</var></dt> <dd>The visit key if the session has been checked in. Otherwise, this will be `null`.</dd> <dt>string <var>s_class</var></dt> <dd>The service name.</dd> <dt>string <var>s_duration</var></dt> <dd>The session duration, formatted by the business configuration.</dd> <dt>string <var>s_time</var></dt> <dd>The time the session takes place.</dd> </dl>'
+                        description: 'A list of sessions to display with the following fields: <dl> <dt>array <var>a_resources_shared</var></dt> <dd>A list of shared resources containing:<dl> <dt>string <var>k_resource</var></dt><dd>The resource key.</dd> <dt>string <var>s_title</var></dt><dd>The resource title.</dd> </dl></dd> <dt>array <var>a_staff_all</var></dt> <dd>A list of staff members instructing the service, containing:<dl> <dt>string <var>s_name_full</var></dt><dd>The staff member''s full name.</dd> </dl></dd> <dt>string <var>dtu_date</var></dt> <dd>The session date.</dd> <dt>string <var>html_class_js</var></dt> <dd>The name of the HTML class that JavaScript uses to display the icon, depending on the service type.</dd> <dt>int <var>i_duration</var></dt> <dd>The session duration in minutes.</dd> <dt>int <var>id_service</var></dt> <dd>Service ID. One of the {@link ServiceSid} constants.</dd> <dt>bool <var>is_auto</var></dt> <dd>If `true`, the session can be checked in automatically. Otherwise, this will be `false`.</dd> <dt>bool <var>is_book</var></dt> <dd>If `true`, the client should be notified that the visit is booked. Otherwise, this will be `false`.</dd> <dt>bool <var>is_wait</var></dt> <dd>If `true`, the client should be notified that they''re on the wait list. Otherwise, this will be `false`.</dd> <dt>string|null <var>k_appointment</var></dt> <dd>The appointment key. If `null`, this isn''t an appointment.</dd> <dt>string|null <var>k_class_period</var></dt> <dd>The class period key. If `null`, this isn''t a class or event.</dd> <dt>string|null <var>k_visit</var></dt> <dd>The visit key if the session has been checked in. Otherwise, this will be `null`.</dd> <dt>string <var>s_class</var></dt> <dd>The service name.</dd> <dt>string <var>s_duration</var></dt> <dd>The session duration, formatted by the business configuration.</dd> <dt>string <var>s_time</var></dt> <dd>The time the session takes place.</dd> </dl>'
                       a_schedule_class_all:
                         type: array
                         description: 'All types of services that appear in the schedule. Keys are constants from {@link ServiceSid}. Values are the HTML classes associated with that service.'
@@ -20433,6 +20439,115 @@ paths:
                         description: '`true` - the next steps of the booking wizard are required (for example, to purchase something to book the selected session). `false` - no further booking steps are required.'
       tags:
         - Resource-Resource54
+  '/Wl/Book/Process/Guest/GuestProfile.json':
+    get:
+      summary: 'Check if user exists.'
+      parameters:
+        - name: dl_birthday
+          in: query
+          description: 'Guest''s birthday in MySQL format. Empty if service not restricted by age.'
+          schema:
+            type: string
+        - name: id_service
+          in: query
+          description: 'Type of the service to book. One of the {@link ServiceSid} constants.'
+          schema:
+            type: number
+            format: int32
+        - name: k_business
+          in: query
+          description: 'Business key. Primary key in the {@link \RsBusinessSql} table.'
+          schema:
+            type: string
+        - name: k_id
+          in: query
+          description: 'Key of service to book. Depending on {@link GuestProfileApi::$id_service} value, it can be primary key in {@link \RsClassSql}, {@link \RsServiceSql} or {@link \RsResourceSql} table.'
+          schema:
+            type: string
+        - name: text_first_name
+          in: query
+          description: 'Guest''s first name.'
+          schema:
+            type: string
+        - name: text_last_name
+          in: query
+          description: 'Guest''s last name.'
+          schema:
+            type: string
+        - name: text_mail
+          in: query
+          description: 'Guest''s email.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      uid:
+                        type: string
+                        description: 'UID of found or created user.'
+      tags:
+        - Guest-GuestProfile
+    post:
+      summary: 'Creates new user.'
+      parameters:
+        - name: dl_birthday
+          in: query
+          description: 'Guest''s birthday in MySQL format. Empty if service not restricted by age.'
+          schema:
+            type: string
+        - name: id_service
+          in: query
+          description: 'Type of the service to book. One of the {@link ServiceSid} constants.'
+          schema:
+            type: number
+            format: int32
+        - name: k_business
+          in: query
+          description: 'Business key. Primary key in the {@link \RsBusinessSql} table.'
+          schema:
+            type: string
+        - name: k_id
+          in: query
+          description: 'Key of service to book. Depending on {@link GuestProfileApi::$id_service} value, it can be primary key in {@link \RsClassSql}, {@link \RsServiceSql} or {@link \RsResourceSql} table.'
+          schema:
+            type: string
+        - name: text_first_name
+          in: query
+          description: 'Guest''s first name.'
+          schema:
+            type: string
+        - name: text_last_name
+          in: query
+          description: 'Guest''s last name.'
+          schema:
+            type: string
+        - name: text_mail
+          in: query
+          description: 'Guest''s email.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      uid:
+                        type: string
+                        description: 'UID of found or created user.'
+      tags:
+        - Guest-GuestProfile
   '/Wl/Business/Account/Subscription/SubscriptionInfo.json':
     get:
       summary: ''
@@ -22646,6 +22761,9 @@ tags:
   -
     name: GroupList-List
     description: 'Member groups list.'
+  -
+    name: Guest-GuestProfile
+    description: 'Endpoint for guest account creation during "Book on behalf of guest" process.'
   -
     name: Holiday-BulkBusinessHoliday
     description: 'An endpoint displaying information about all location/business holidays for a given business.'
