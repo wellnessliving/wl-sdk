@@ -54,11 +54,49 @@ class PromotionModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    *   <dt>
+   *     array <var>a_location</var>
+   *   </dt>
+   *   <dd>
+   *     A list of locations where this promotion is available.
+   *   </dd>
+   *   <dt>
+   *     array <var>a_login_type</var>
+   *   </dt>
+   *   <dd>
+   *     A list of login types linked with this promotion. Value is a copy of
+   * `k_login_
+   *   </dd>
+   *   <dt>
+   *     array <var>a_member_group</var>
+   *   </dt>
+   *   <dd>
+   *     A list of login types linked with this promotion. Value is a copy of
+   * `k_member_
+   *   </dd>
+   *   <dt>
+   *     array <var>a_tag</var>
+   *   </dt>
+   *   <dd>
+   *     List of selected tags.
+   *   </dd>
+   *   <dt>
    *     string <var>dl_expire</var>
    *   </dt>
    *   <dd>
-   *     The local expiration date. This is the last day when the Purchase Option is active.
-   *     This is used only when the 'Expires on a certain date' duration type is set.
+   *      The local expiration date. This is the last day when the Purchase Option is active.
+   *      This is used only when the 'Expires on a certain date' duration type is set.
+   *   </dd>
+   *   <dt>
+   *     string <var>dl_terminate</var>
+   *   </dt>
+   *   <dd>
+   *     Date when promotion should be terminated. `null` if there is no terminate date.
+   *   </dd>
+   *   <dt>
+   *     string <var>f_revenue_single</var>
+   *   </dt>
+   *   <dd>
+   *     Approximate revenue per session value.
    *   </dd>
    *   <dt>
    *     int <var>i_duration</var>
@@ -97,6 +135,25 @@ class PromotionModel extends WlModelAbstract
    *     For more information, see {@link WlProgramSid}.
    *   </dd>
    *   <dt>
+   *     int <var>id_restriction</var>
+   *   </dt>
+   *   <dd>
+   *
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_active</var>
+   *   </dt>
+   *   <dd>
+   *     Whether this promotion is active.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_business_wide</var>
+   *   </dt>
+   *   <dd>
+   *     Whether this promotion is available for all locations of the business.
+   *
+   *   </dd>
+   *   <dt>
    *     bool <var>is_introductory</var>
    *   </dt>
    *   <dd>
@@ -109,10 +166,34 @@ class PromotionModel extends WlModelAbstract
    *     If `true`, this promotion is available for online purchase. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
+   *     bool <var>is_payroll</var>
+   *   </dt>
+   *   <dd>
+   *     Whether clients who purchase this item excluded from payroll calculations.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_revenue_single</var>
+   *   </dt>
+   *   <dd>
+   *     If `true` need to add approximate revenue per session value.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_use</var>
+   *   </dt>
+   *   <dd>
+   *     Whether promotion can be used for booking. `null` if there is no termination.
+   *   </dd>
+   *   <dt>
    *     string <var>k_promotion</var>
    *   </dt>
    *   <dd>
    *     The key of the promotion.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_tag_primary</var>
+   *   </dt>
+   *   <dd>
+   *     Primary tag.
    *   </dd>
    *   <dt>
    *     string <var>m_price</var>
@@ -147,6 +228,7 @@ class PromotionModel extends WlModelAbstract
    * </dl>
    *
    * @get result
+   * @post post
    * @var array[]
    */
   public $a_promotion;
@@ -155,6 +237,7 @@ class PromotionModel extends WlModelAbstract
    * The key of the business.
    *
    * @get get
+   * @post get
    * @var string
    */
   public $k_business = '0';
@@ -163,6 +246,7 @@ class PromotionModel extends WlModelAbstract
    * The key of the promotion.
    *
    * @get get
+   * @post get
    * @var string
    */
   public $k_promotion = '0';

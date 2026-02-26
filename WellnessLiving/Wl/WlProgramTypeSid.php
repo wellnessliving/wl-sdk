@@ -23,8 +23,8 @@ abstract class WlProgramTypeSid
   /**
    * Guest passes.
    *
-   * @see WlProgramSid::DEAL
-   * @see WlProgramSid::PACKAGE
+   * @see WlProgramSid::CLASS_GUEST
+   * @see WlProgramSid::VISIT_GUEST
    */
   const GUEST = 8;
 

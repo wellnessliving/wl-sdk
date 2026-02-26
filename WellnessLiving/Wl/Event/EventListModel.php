@@ -48,6 +48,25 @@ class EventListModel extends WlModelAbstract
 
   /**
    * A list of events corresponding to requested parameters. Each event will have the following keys: <dl>
+   *   <dt>array <var>a_age_restriction</var></dt>
+   *   <dd>Information about age restrictions for this event. Has following structure: <dl>
+   *       <dt>int|null <var>i_age_from</var></dt>
+   *       <dd>
+   *          The minimum age for participation in the event.
+   *          `null` if there's no minimum age set or information isn't available.
+   *       </dd>
+   *       <dt>int|null <var>i_age_to</var></dt>
+   *       <dd>
+   *          The age limit for participation in the event.
+   *          `null` if there's no age limit set or information isn't available.
+   *       </dd>
+   *       <dt>bool <var>is_age_public</var></dt>
+   *       <dd>
+   *         `true` if age restrictions are public and available, `false` if they're hidden.
+   *          When restrictions are hidden and the current user isn't a staff member, the age range will be empty.
+   *       </dd>
+   *     </dl>
+   *   </dd>
    *   <dt>array <var>a_class_tab</var></dt>
    *   <dd>The list of class tab keys that contain this event.</dd>
    *   <dt>array <var>a_logo</var></dt>
