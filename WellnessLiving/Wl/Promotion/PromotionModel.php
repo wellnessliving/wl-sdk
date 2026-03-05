@@ -250,6 +250,16 @@ class PromotionModel extends WlModelAbstract
    * @var string
    */
   public $k_promotion = '0';
+
+  /**
+   * Guest passes settings for promotion. This will be `null` if there are no guest pass settings for the promotion.
+   *
+   * @field a_guest_settings
+   * @get result
+   * @post post
+   * @var GuestPassSettingsEntity|array|null
+   */
+  public $o_guest_settings = null;
 }
 
 ?>

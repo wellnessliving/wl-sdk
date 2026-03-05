@@ -12,7 +12,7 @@ class WlModelRequest
   /**
    * SDK version number.
    */
-  const VERSION='20260226.455004';
+  const VERSION='20260305.455856';
 
   /**
    * A list of headers for the API request. See {@link CURLOPT_HTTPHEADER}.
@@ -164,6 +164,13 @@ class WlModelRequest
    */
   public function headerCurl()
   {
+    if(!isset($this->a_header_request['X-Correlation-Id'])&&$this->o_config) {
+      $s_correlation=$this->o_config->correlationId();
+      if($s_correlation) {
+        $this->a_header_request['X-Correlation-Id']=$s_correlation;
+      }
+    }
+
     $a_header = [];
     foreach($this->a_header_request as $s_key => $s_value)
       $a_header[] = $s_key.': '.$s_value;

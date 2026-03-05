@@ -247,6 +247,19 @@ abstract class WlConfigAbstract
   }
 
   /**
+   * Returns correlation ID.
+   *
+   * Correlation ID allows to correlate log records between different microservices.
+   * It is sent and received in the `X-Correlation-Id` HTTP header.
+   *
+   * @return string|null Correlation ID. `null` if correlation ID is not specified.
+   */
+  public function correlationId()
+  {
+    return null;
+  }
+
+  /**
    * Creates a configuration object.
    *
    * @param int $id_region ID of a data center region in which information about this business is stored.
