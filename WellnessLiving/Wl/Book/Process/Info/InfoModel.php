@@ -131,6 +131,8 @@ class InfoModel extends WlModelAbstract
    *   <dd>Total number of clients on the active list.</dd>
    *   <dt>int `i_active_limit`</dt>
    *   <dd>Total capacity of the active list.</dd>
+   *   <dt>int `i_duration`</dt>
+   *   <dd>Duration of a service.</dd>
    *   <dt>int `i_wait`</dt>
    *   <dd>Total number of clients on the wait list.</dd>
    *   <dt>int|null `i_wait_limit`</dt>

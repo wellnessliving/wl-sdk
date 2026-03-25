@@ -70,9 +70,10 @@ class PurchaseListElementModel extends WlModelAbstract
    *     If `true`, then the purchased item doesn't have an image. If `false`, then the item has an image.
    *   </dd>
    * </dl>
+   * `null` in a case when the item has no logo.
    *
    * @get result
-   * @var array
+   * @var array|null
    */
   public $a_logo;
 
@@ -137,7 +138,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $can_renew;
 
   /**
-   * The cancellation date of the promotion. Only available if the item is a promotion and has been cancelled.
+   * The cancellation date of the promotion. Only available if the item is a promotion and has been canceled.
    *
    * @get result
    * @var string
@@ -471,6 +472,14 @@ class PurchaseListElementModel extends WlModelAbstract
    * @var bool
    */
   public $is_convert;
+
+  /**
+   * `true` if the purchase item is an event; `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_event;
 
   /**
    * This is `true` only if the purchased item is a promotion that has expired. Otherwise, this will be `false`
@@ -855,9 +864,10 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * The key of the user who paid for this purchase.
+   * `null` in a case when there was no money transaction.
    *
    * @get result
-   * @var string
+   * @var string|null
    */
   public $uid_payer;
 

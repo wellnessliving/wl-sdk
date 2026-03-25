@@ -15,6 +15,8 @@ class BusinessDesignModel extends WlModelAbstract
    * Contains the following keys:
    *
    * <dl>
+   *   <dt>bool <var>hide_past_days</var></dt>
+   *   <dd>Clients only see today’s and upcoming sessions.</dd>
    *   <dt>int <var>id_layout</var></dt>
    *   <dd>Layout ID. For more details, see {@link RsPageFrontendHeaderLayoutSid}.</dd>
    *   <dt>int <var>id_logo_position</var></dt>

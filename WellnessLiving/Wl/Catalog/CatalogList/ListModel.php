@@ -3,7 +3,6 @@
 namespace WellnessLiving\Wl\Catalog\CatalogList;
 
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
@@ -16,14 +15,15 @@ class ListModel extends WlModelAbstract
    *   only by such link.
    *
    * <dl>
-   *     <dt>int <var>sid_purchase_item</var></dt>
-   *     <dd>
-   *          Type of the item from {@link WlPurchaseItemSid}. Optional.
-   *          It is important for products where key can mean key of the product or key of the product option.
-   *     </dd>
-   *     <dt>int <var>id_sale</var></dt>
+   *     <dt>int `id_sale`</dt>
    *     <dd>Type of the item from {@link WlSaleSid}.</dd>
-   *     <dt>string <var>k_id</var></dt>
+   *     <dt>bool `is_product`</dt>
+   *     <dd>
+   *         `true` if `k_id` value is product key, `false` if `k_id` value is product option key.
+   *          Optional. Default value is `false`.
+   *          Used for `id_sale` === {@link WlSaleSid::PRODUCT} only.
+   *     </dd>
+   *     <dt>string `k_id`</dt>
    *     <dd>Key of item.</dd>
    * </dl>
    *

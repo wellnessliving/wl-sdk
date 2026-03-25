@@ -8,10 +8,8 @@ use WellnessLiving\Wl\WlDurationTypeSid;
 
 /**
  * Manages a single quiz.
- *
- * @deprecated Use {@link QuizElement72Model} instead.
  */
-class QuizElementModel extends WlModelAbstract
+class QuizElement72Model extends WlModelAbstract
 {
   /**
    * Access log data.

@@ -19,7 +19,7 @@ namespace WellnessLiving\Wl;
  *   </li>
  * </ol>
  *
- * Last used ID: 19.
+ * Last used ID: 20.
  */
 abstract class RsSkinSid
 {
@@ -52,6 +52,11 @@ abstract class RsSkinSid
    * Skin for lead tracking form.
    */
   const LEAD = 9;
+
+  /**
+   * Skin for lead tracking form from microservice.
+   */
+  const LEAD_FOREIGN = 20;
 
   /**
    * Mobile schedule version.

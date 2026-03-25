@@ -72,6 +72,8 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dd>The default place in the list to show this client.</dd>
    *   <dt>int <var>i_total</var></dt>
    *   <dd>The total visits available from this Purchase Option.</dd>
+   *   <dt>int [`i_visit_return`]</dt>
+   *   <dd>Number of purchase option usages that was returned to user.</dd>
    *   <dt>int <var>id_gender</var></dt>
    *   <dd>The gender ID of the client. One of the {@link AGenderSid} constants.</dd>
    *   <dt>int <var>id_pass_prospect</var></dt>
@@ -137,6 +139,8 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dd>The client last name.</dd>
    *   <dt>string <var>text_note</var></dt>
    *   <dd>Any notes tied to the client.</dd>
+   *   <dt>string [`text_promotion_return`]</dt>
+   *   <dd>Title of purchase option usages of that was returned to user.</dd>
    *   <dt>string <var>text_promotion</var></dt>
    *   <dd>The description of the type of Purchase Option.</dd>
    *   <dt>string <var>text_restrict_title</var></dt>

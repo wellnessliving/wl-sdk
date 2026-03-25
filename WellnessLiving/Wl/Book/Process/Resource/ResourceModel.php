@@ -215,7 +215,8 @@ class ResourceModel extends WlModelAbstract
 
   /**
    * The selected sessions.
-   * Not empty only for session mode.
+   * Only makes sense for session events.
+   * Optional parameter for GET request: if not passed, all available sessions will be used.
    *
    * Keys refer to class period keys.
    * And values refer to a list of the dates/times when the session occurred (returned in MySQL format and in GMT).

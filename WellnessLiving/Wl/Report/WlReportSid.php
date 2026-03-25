@@ -545,42 +545,42 @@ abstract class WlReportSid
   /**
    * Member progress body fat report in chart view.
    *
-   * @title Member Body Fat progress.
+   * @
    */
   const MEMBER_PROGRESS_LOG_BODY_FAT = 149;
 
   /**
    * Member progress report collection for charts.
    *
-   * @title Member Transformation Log chart collection.
+   * @
    */
   const MEMBER_PROGRESS_LOG_CHART = 146;
 
   /**
    * Report with list of progress log per client.
    *
-   * @title Transformation Log
+   * @
    */
   const MEMBER_PROGRESS_LOG_CLIENT = 150;
 
   /**
    * Member progress main report in table view.
    *
-   * @title Member Transformation Log.
+   * @
    */
   const MEMBER_PROGRESS_LOG_LIST = 147;
 
   /**
    * Member progress report collection for table.
    *
-   * @title Member Transformation Log report collection.
+   * @
    */
   const MEMBER_PROGRESS_LOG_TABLE = 145;
 
   /**
    * Member progress weight report in chart view.
    *
-   * @title Member Weight progress.
+   * @
    */
   const MEMBER_PROGRESS_LOG_WEIGHT = 148;
 

@@ -184,7 +184,7 @@ class ViewModel extends WlModelAbstract
   public $id_industry = 0;
 
   /**
-   * `true` if to display phone number on location page. `False` otherwise.
+   * `true` if to display phone number on location page. `false` otherwise.
    *
    * @get result
    * @var bool
