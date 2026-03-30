@@ -21,7 +21,7 @@ class VideoElementModel extends WlModelAbstract
 
   /**
    * TODO wl-76380: remove this property when external developers confirm that they do not use it.
-   * The keys of the staff members who are on the video.
+   * The keys of the user staff members who are on the video.
    *
    * @get result
    * @post post
@@ -46,7 +46,7 @@ class VideoElementModel extends WlModelAbstract
   public $a_staff_info = [];
 
   /**
-   * The user IDs of the staff members who are on the video.
+   * The user IDs of the staff members who are on the video (authoritative list for who is assigned to the video).
    *
    * @get result
    * @post post

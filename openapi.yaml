@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260325154315
+  version: 1.1.20260330110237
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-03-25 15:43:15
+    Last updated at: 2026-03-30 11:02:37
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -2777,13 +2777,13 @@ paths:
                         description: 'The keys of the locations where this video is available.'
                       a_staff:
                         type: array
-                        description: 'TODO wl-76380: remove this property when external developers confirm that they do not use it. The keys of the staff members who are on the video.'
+                        description: 'TODO wl-76380: remove this property when external developers confirm that they do not use it. The keys of the user staff members who are on the video.'
                       a_staff_info:
                         type: array
                         description: 'A list of staff members associated with the video. Every item has the following structure:<dl> <dt>string <var>k_staff</var> <b>(deprecated)</b></dt> <dd>The staff member key. Primary key in {@link \RsStaffSql} table.</dd> <dt>string <var>text_name</var></dt> <dd>The staff member''s full name.</dd> <dt>string <var>uid_staff</var></dt> <dd>The staff user ID. Primary key in {@link \PassportLoginSql}.`uid`.</dd> </dl>'
                       a_staff_uid:
                         type: array
-                        description: 'The user IDs of the staff members who are on the video.'
+                        description: 'The user IDs of the staff members who are on the video (authoritative list for who is assigned to the video).'
                       a_video_category:
                         type: array
                         description: 'The video category keys where this video can be found.'
@@ -2927,10 +2927,10 @@ paths:
                   description: 'The keys of the locations where this video is available.'
                 a_staff:
                   type: array
-                  description: 'TODO wl-76380: remove this property when external developers confirm that they do not use it. The keys of the staff members who are on the video.'
+                  description: 'TODO wl-76380: remove this property when external developers confirm that they do not use it. The keys of the user staff members who are on the video.'
                 a_staff_uid:
                   type: array
-                  description: 'The user IDs of the staff members who are on the video.'
+                  description: 'The user IDs of the staff members who are on the video (authoritative list for who is assigned to the video).'
                 a_video_category:
                   type: array
                   description: 'The video category keys where this video can be found.'
@@ -15182,6 +15182,12 @@ paths:
     delete:
       summary: 'Deletes family relation between 2 users.'
       parameters:
+        - name: id_flow
+          in: query
+          description: 'ID of the user behavior flow. One of {@link \Wl\User\Tracking\FlowSid} constants.'
+          schema:
+            type: number
+            format: int32
         - name: k_business
           in: query
           description: 'The business key.'
@@ -15215,6 +15221,12 @@ paths:
     get:
       summary: 'Gets relative list.'
       parameters:
+        - name: id_flow
+          in: query
+          description: 'ID of the user behavior flow. One of {@link \Wl\User\Tracking\FlowSid} constants.'
+          schema:
+            type: number
+            format: int32
         - name: k_business
           in: query
           description: 'The business key.'
@@ -15243,6 +15255,12 @@ paths:
     post:
       summary: 'Adds to user {@link \Wl\Family\Relation\RelationApi::$uid} relative {@link \Wl\Family\Relation\RelationApi::$a_new}.'
       parameters:
+        - name: id_flow
+          in: query
+          description: 'ID of the user behavior flow. One of {@link \Wl\User\Tracking\FlowSid} constants.'
+          schema:
+            type: number
+            format: int32
         - name: k_business
           in: query
           description: 'The business key.'
@@ -16499,6 +16517,229 @@ paths:
                         description: 'The unique hash string. This hash string is a hash of the {@link \RsClassModify} object. It needs to work with the same {@link \RsClassModify} object on each step.'
       tags:
         - Modify-Modify
+  '/Wl/Discount/Code/Edit/DiscountCodeEdit.json':
+    get:
+      summary: 'Gets information about discount.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key.'
+          schema:
+            type: string
+        - name: k_discount_code
+          in: query
+          description: 'Key of the discount code. Empty, if this is creation of a new code.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_login_type:
+                        type: array
+                        description: 'List of client types.'
+                      a_member_group:
+                        type: array
+                        description: 'List of client groups.'
+                      dl_end:
+                        type: [string, "null"]
+                        description: 'Expiration date. <tt>null</tt> if discount code is never expires.'
+                      dl_start:
+                        type: string
+                        description: 'Activation date.'
+                      f_value:
+                        type: string
+                        description: 'Value of the percentage or fixed discount.'
+                      i_duration:
+                        type: number
+                        format: int32
+                        description: 'Count of calendar periods from <var>id_duration</var> before expiration.'
+                      i_limit:
+                        type: number
+                        format: int32
+                        description: 'Maximum count of usage. Zero means unlimited usage.'
+                      id_duration:
+                        type: number
+                        format: int32
+                        description: 'Calendar periods for discount code duration from {@link \ADurationSid}. Zero if discount code is never expires.'
+                      id_duration_type:
+                        type: number
+                        format: int32
+                        description: 'Type of the discount code duration from {@link \RsDurationTypeSid}.'
+                      is_active:
+                        type: boolean
+                        description: '<tt>true</tt> means discount code is active. <tt>false</tt> means discount code is inactive.'
+                      is_auto_renew:
+                        type: boolean
+                        description: '<tt>true</tt> means membership will auto-renew at discounted rate. <tt>false</tt> means membership will auto-renew at full rate.'
+                      is_coupon:
+                        type: boolean
+                        description: '<tt>true</tt> means discount code can reduce price of the gift cards. <tt>false</tt> means discount code cannot reduce price of the gift cards. If {@link \Wl\Discount\Code\Edit\Controller::$is_purchase_all} is <tt>true</tt> this fields does not matter.'
+                      is_first_payment:
+                        type: boolean
+                        description: '<tt>true</tt> means discount code can be applied to first membership payment only. <tt>false</tt> means discount code can be applied to all membership payments.'
+                      is_login_type:
+                        type: boolean
+                        description: '<tt>true</tt> means that only selected client types or groups can use this discount code. <tt>false</tt> means that all client types and groups can use this discount code.'
+                      is_online:
+                        type: boolean
+                        description: '<tt>true</tt> if clients can use this discount code in online store, <tt>false</tt> if discount code can be used only in point of sale.'
+                      is_percent:
+                        type: boolean
+                        description: '<tt>true</tt> means discount value is percent from the purchase amount. <tt>false</tt> means discount value is fixed sum from the purchase amount.'
+                      is_purchase_all:
+                        type: boolean
+                        description: '<tt>true</tt> means discount can be applied to all products and purchase options. <tt>false</tt> means discount can be applied only to the selected product and purchase options.'
+                      s_component:
+                        type: string
+                        description: 'List of product and purchase options that are effected with this discount code. Each element has the next format: <var>id_purchase_item</var>:<var>k_id</var>, where <tt>id_purchase_item</tt> - one of {@link \RsPurchaseItemSid}, <tt>k_id</tt> is key of certain purchase item. Processed by function {@link \Core\Tool\UrlEncode\UrlEncode::encode()}.'
+                      text_code:
+                        type: string
+                        description: 'Discount code that can be used during purchase.'
+                      text_description:
+                        type: string
+                        description: 'Description of the discount code.'
+                      text_title:
+                        type: string
+                        description: 'Name of the discount code.'
+      tags:
+        - Edit-DiscountCodeEdit
+    post:
+      summary: 'Saves information about discount code or create new.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key.'
+          schema:
+            type: string
+        - name: k_discount_code
+          in: query
+          description: 'Key of the discount code. Empty, if this is creation of a new code.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_login_type:
+                  type: array
+                  description: 'List of client types.'
+                a_member_group:
+                  type: array
+                  description: 'List of client groups.'
+                dl_end:
+                  type: [string, "null"]
+                  description: 'Expiration date. <tt>null</tt> if discount code is never expires.'
+                dl_start:
+                  type: string
+                  description: 'Activation date.'
+                f_value:
+                  type: string
+                  description: 'Value of the percentage or fixed discount.'
+                i_duration:
+                  type: number
+                  format: int32
+                  description: 'Count of calendar periods from <var>id_duration</var> before expiration.'
+                i_limit:
+                  type: number
+                  format: int32
+                  description: 'Maximum count of usage. Zero means unlimited usage.'
+                id_duration:
+                  type: number
+                  format: int32
+                  description: 'Calendar periods for discount code duration from {@link \ADurationSid}. Zero if discount code is never expires.'
+                id_duration_type:
+                  type: number
+                  format: int32
+                  description: 'Type of the discount code duration from {@link \RsDurationTypeSid}.'
+                is_active:
+                  type: boolean
+                  description: '<tt>true</tt> means discount code is active. <tt>false</tt> means discount code is inactive.'
+                is_auto_renew:
+                  type: boolean
+                  description: '<tt>true</tt> means membership will auto-renew at discounted rate. <tt>false</tt> means membership will auto-renew at full rate.'
+                is_coupon:
+                  type: boolean
+                  description: '<tt>true</tt> means discount code can reduce price of the gift cards. <tt>false</tt> means discount code cannot reduce price of the gift cards. If {@link \Wl\Discount\Code\Edit\Controller::$is_purchase_all} is <tt>true</tt> this fields does not matter.'
+                is_first_payment:
+                  type: boolean
+                  description: '<tt>true</tt> means discount code can be applied to first membership payment only. <tt>false</tt> means discount code can be applied to all membership payments.'
+                is_login_type:
+                  type: boolean
+                  description: '<tt>true</tt> means that only selected client types or groups can use this discount code. <tt>false</tt> means that all client types and groups can use this discount code.'
+                is_online:
+                  type: boolean
+                  description: '<tt>true</tt> if clients can use this discount code in online store, <tt>false</tt> if discount code can be used only in point of sale.'
+                is_percent:
+                  type: boolean
+                  description: '<tt>true</tt> means discount value is percent from the purchase amount. <tt>false</tt> means discount value is fixed sum from the purchase amount.'
+                is_purchase_all:
+                  type: boolean
+                  description: '<tt>true</tt> means discount can be applied to all products and purchase options. <tt>false</tt> means discount can be applied only to the selected product and purchase options.'
+                s_component:
+                  type: string
+                  description: 'List of product and purchase options that are effected with this discount code. Each element has the next format: <var>id_purchase_item</var>:<var>k_id</var>, where <tt>id_purchase_item</tt> - one of {@link \RsPurchaseItemSid}, <tt>k_id</tt> is key of certain purchase item. Processed by function {@link \Core\Tool\UrlEncode\UrlEncode::encode()}.'
+                text_code:
+                  type: string
+                  description: 'Discount code that can be used during purchase.'
+                text_description:
+                  type: string
+                  description: 'Description of the discount code.'
+                text_title:
+                  type: string
+                  description: 'Name of the discount code.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      k_discount_code:
+                        type: string
+                        description: 'Key of the discount code. Empty, if this is creation of a new code.'
+      tags:
+        - Edit-DiscountCodeEdit
+    put:
+      summary: 'Duplicates existed discount code.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key.'
+          schema:
+            type: string
+        - name: k_discount_code
+          in: query
+          description: 'Key of the discount code. Empty, if this is creation of a new code.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      k_discount_code:
+                        type: string
+                        description: 'Key of the discount code. Empty, if this is creation of a new code.'
+      tags:
+        - Edit-DiscountCodeEdit
   '/Wl/Event/Book/EventView/Element.json':
     get:
       summary: 'Retrieves information about event item.'
@@ -23255,6 +23496,128 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Count-InventoryCount
+  '/Wl/Family/Relation/Relation72.json':
+    delete:
+      summary: 'Deletes family relation between 2 users.'
+      parameters:
+        - name: id_flow
+          in: query
+          description: 'ID of the user behavior flow. One of {@link \Wl\User\Tracking\FlowSid} constants.'
+          schema:
+            type: number
+            format: int32
+        - name: k_business
+          in: query
+          description: 'The business key.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'The key of the user whose relationships are being assessed.'
+          schema:
+            type: string
+        - name: uid_delete
+          in: query
+          description: 'The key of the related user who {@link \Wl\Family\Relation\RelationApi::$uid} must be removed.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_relation:
+                        type: array
+                        description: 'Information about the user''s relationships. Every element has the following fields: <dl> <dt>int <var>id_family_relation</var></dt> <dd>The relationship type. One of the {@link \RsFamilyRelationSid} constants.</dd> <dt>int <var>id_family_relation_reverse</var></dt> <dd>The type of reciprocated relationship. One of the {@link \RsFamilyRelationSid} constants.</dd> <dt>string <var>text_name</var></dt> <dd>The name of the relation.</dd> <dt>string <var>text_name_first</var></dt> <dd>The first name of the relation.</dd> <dt>string <var>uid</var></dt> <dd>The key of the related user. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
+      tags:
+        - Relation-Relation72
+    get:
+      summary: 'Gets relative list.'
+      parameters:
+        - name: id_flow
+          in: query
+          description: 'ID of the user behavior flow. One of {@link \Wl\User\Tracking\FlowSid} constants.'
+          schema:
+            type: number
+            format: int32
+        - name: k_business
+          in: query
+          description: 'The business key.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'The key of the user whose relationships are being assessed.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_relation:
+                        type: array
+                        description: 'Information about the user''s relationships. Every element has the following fields: <dl> <dt>int <var>id_family_relation</var></dt> <dd>The relationship type. One of the {@link \RsFamilyRelationSid} constants.</dd> <dt>int <var>id_family_relation_reverse</var></dt> <dd>The type of reciprocated relationship. One of the {@link \RsFamilyRelationSid} constants.</dd> <dt>string <var>text_name</var></dt> <dd>The name of the relation.</dd> <dt>string <var>text_name_first</var></dt> <dd>The first name of the relation.</dd> <dt>string <var>uid</var></dt> <dd>The key of the related user. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
+      tags:
+        - Relation-Relation72
+    post:
+      summary: 'Adds to user {@link \Wl\Family\Relation\RelationApi::$uid} relative {@link \Wl\Family\Relation\RelationApi::$a_new}.'
+      parameters:
+        - name: id_flow
+          in: query
+          description: 'ID of the user behavior flow. One of {@link \Wl\User\Tracking\FlowSid} constants.'
+          schema:
+            type: number
+            format: int32
+        - name: k_business
+          in: query
+          description: 'The business key.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'The key of the user whose relationships are being assessed.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_new:
+                  type: array
+                  description: 'The new relationship to be added to user, specified with {@link \Wl\Family\Relation\RelationApi::$uid}: <dl> <dt>int <var>id_family_relation</var></dt> <dd>The relationship type. One of the {@link \RsFamilyRelationSid} constants.</dd> <dt>string <var>uid</var></dt> <dd>The related user''s key. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
+                id_mode:
+                  type: number
+                  format: int32
+                  description: 'ID of source mode. One of {@link \Wl\Mode\ModeSid} constants.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_relation:
+                        type: array
+                        description: 'Information about the user''s relationships. Every element has the following fields: <dl> <dt>int <var>id_family_relation</var></dt> <dd>The relationship type. One of the {@link \RsFamilyRelationSid} constants.</dd> <dt>int <var>id_family_relation_reverse</var></dt> <dd>The type of reciprocated relationship. One of the {@link \RsFamilyRelationSid} constants.</dd> <dt>string <var>text_name</var></dt> <dd>The name of the relation.</dd> <dt>string <var>text_name_first</var></dt> <dd>The first name of the relation.</dd> <dt>string <var>uid</var></dt> <dd>The key of the related user. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
+      tags:
+        - Relation-Relation72
 tags:
   -
     name: Account-Account
@@ -23580,6 +23943,9 @@ tags:
   -
     name: Edit-Create
     description: 'Creates user account for the given email address if email address does not already exist. checks if a user''s email address is already used or changes a user’s login email address.'
+  -
+    name: Edit-DiscountCodeEdit
+    description: 'API point for read, create and edit existing discount code.'
   -
     name: Edit-Edit
     description: 'Gets information about a client profile. This endpoint can also edit or create a profile. The GET method returns the profile fields for a specified user or a blank set of fields for a new user of a given business: * If the GET method is used with a valid UID greater than 0, the method will return a list of fields with the values of the specified user. * If the GET method is used with a UID set to 0, a list of profile fields will be returned for the specified business. A user in WellnessLiving can be in multiple businesses. There are some fields common among all business and others specific to one business. The type of field is described in `id_field_type`, which will be one of the {@link \RsFieldTypeSid} constants. Some fields have a general type, which can have a specific format: * Address - An array containing the following keys: `k_city`, `s_address`, `s_city`, and `s_postal`. The `k_city` value can be retrieved via the {@link ComboboxApi} endpoint. The following is an example address array: * Birthday - A string containing the date in MySQL format (for example, `1987-06-05`). * Email Address - An array containing the following keys: <dl> <dt>bool <var>is_inherit</var></dt> <dd>Determines whether the user shares the email address with another user. This is typically done for children who use their parent’s email (`is_inherit=1`). In general, most other cases use (`is_inherit=0`).</dd> <dt>bool <var>s_mail</var></dt> <dd>The new email address.</dd> <dt>int <var>uid_mail</var></dt> <dd>User key of another user when adding an email inheritance.</dd> </dl>'
@@ -23949,6 +24315,9 @@ tags:
   -
     name: Relation-Relation
     description: 'Adds a relative during the booking process.'
+  -
+    name: Relation-Relation72
+    description: 'Returns data about a user''s relationships.'
   -
     name: Report-Access
     description: 'Checks access of the current user to the certain report int the given business.'

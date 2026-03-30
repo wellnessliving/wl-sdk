@@ -8,7 +8,7 @@ use WellnessLiving\Wl\Mode\ModeSid;
 /**
  * Returns data about a user's relationships.
  */
-class RelationModel extends WlModelAbstract
+class Relation72Model extends WlModelAbstract
 {
   /**
    * The new relationship to be added to user, specified with {@link RelationModel::$uid}:
@@ -44,7 +44,7 @@ class RelationModel extends WlModelAbstract
    * @post result
    * @var array[]
    */
-  public $a_relation;
+  public $a_relation = null;
 
   /**
    * ID of the user behavior flow.
@@ -74,7 +74,7 @@ class RelationModel extends WlModelAbstract
    * @post get
    * @var string
    */
-  public $k_business;
+  public $k_business = null;
 
   /**
    * The key of the user whose relationships are being assessed.
