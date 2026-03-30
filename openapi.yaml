@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260330110237
+  version: 1.1.20260330125117
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-03-30 11:02:37
+    Last updated at: 2026-03-30 12:51:17
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -6596,6 +6596,30 @@ paths:
                         description: 'The default promotion key. This will be `null` if `k_class` wasn''t provided, or if the class has no default promotion.'
       tags:
         - Promotion-ClassPromotion
+  '/Wl/Discount/Code/DiscountCode.json':
+    get:
+      summary: 'Returns discount codes of the specified business.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key of the discount codes.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_list:
+                        type: array
+                        description: 'Discount codes list. Each element has next structure:<dl> <dt>string <var>k_discount_code</var> </dt> <dd>Discount code key. Primary key in the {@link \Wl\Discount\Code\Sql} table.</dd> <dt>string <var>text_discount_code</var></dt> <dd>Discount code title.</dd> </dl>'
+      tags:
+        - Code-DiscountCode
   '/Wl/Reward/Action/Action.json':
     get:
       summary: 'Retrieves a list of available reward actions.'
@@ -23877,6 +23901,9 @@ tags:
   -
     name: Cluster-Cluster
     description: 'Manage `Studio Deploy Cluster`.'
+  -
+    name: Code-DiscountCode
+    description: 'Discount codes API point.'
   -
     name: Collector-DebtList
     description: 'Returns list of debts added within the previous month.'
