@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260330125117
+  version: 1.1.20260402154327
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-03-30 12:51:17
+    Last updated at: 2026-04-02 15:43:27
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -429,11 +429,6 @@ paths:
           description: 'The visit key.'
           schema:
             type: string
-        - name: url_virtual_service
-          in: query
-          description: 'URL of virtual service. Empty if the visit is not virtual.'
-          schema:
-            type: string
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -514,6 +509,9 @@ paths:
                       uid:
                         type: [string, "null"]
                         description: 'Primary key of a user who made a visit in {@link \PassportLoginSql} table. `null` for a guest visit.'
+                      url_virtual_service:
+                        type: string
+                        description: 'URL of virtual service. Empty if the visit is not virtual.'
       tags:
         - Visit-VisitStatus
     post:
@@ -2546,6 +2544,9 @@ paths:
                 a_fields:
                   type: array
                   description: 'Profile fields, which should be shown on the widget and if they are required or optional. <dl> <dt>bool <var>k_field</var></dt> <dd>Key of the field from {@link \RsFieldSql}.</dd> <dt>bool <var>is_required</var></dt> <dd>`true` if field should be required, `false` - optional.</dd> </dl>'
+                text_name:
+                  type: string
+                  description: 'Name of the widget.'
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -2593,6 +2594,9 @@ paths:
                 a_fields:
                   type: array
                   description: 'Profile fields, which should be shown on the widget and if they are required or optional. <dl> <dt>bool <var>k_field</var></dt> <dd>Key of the field from {@link \RsFieldSql}.</dd> <dt>bool <var>is_required</var></dt> <dd>`true` if field should be required, `false` - optional.</dd> </dl>'
+                text_name:
+                  type: string
+                  description: 'Name of the widget.'
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -9782,25 +9786,25 @@ paths:
                     properties:
                       a_account_rest:
                         type: array
-                        description: 'Information about the account balance for a user''s account after payment for the purchase. Every element has the following keys: <dl> <dt> string <var>m_amount</var> </dt> <dd> The account balance on the user''s account. </dd> <dt> string <var>text_currency</var> </dt> <dd> The currency of the amount. </dd> <dt> string <var>text_method</var> </dt> <dd> The payment method title. </dd> </dl>'
+                        description: 'Information about the account balance for a user''s account after payment for the purchase. Every element has the following keys:<dl> <dt>string <var>m_amount</var></dt><dd>The account balance on the user''s account.</dd> <dt>string <var>text_currency</var></dt><dd>The currency of the amount.</dd> <dt>string <var>text_method</var></dt><dd>The payment method title.</dd> </dl>'
                       a_business:
                         type: array
-                        description: 'Information about the business. <dl> <dt> array <var>a_logo</var> </dt> <dd> The business logo. <dl> <dt> int <var>i_height</var> </dt> <dd> The image height. </dd> <dt> int <var>i_width</var> </dt> <dd> The image width. </dd> <dt> bool <var>is_empty</var> </dt> <dd> This will be `true` if the image is empty. Otherwise, this will be `false`. </dd> <dt> string <var>text_url</var> </dt> <dd> The URL of the image. </dd> </dl> </dd> <dt> string <var>text_address</var> </dt> <dd> The business''s address. </dd> <dt> string <var>text_mail</var> </dt> <dd> The business''s email address. </dd> <dt> string <var>text_phone</var> </dt> <dd> The business''s phone number. </dd> <dt> string <var>text_title</var> </dt> <dd> The business name. </dd> </dl>'
+                        description: 'Information about the business.<dl> <dt>array <var>a_logo</var></dt><dd>The business logo.<dl> <dt>int <var>i_height</var></dt><dd>The image height.</dd> <dt>int <var>i_width</var></dt><dd>The image width.</dd> <dt>bool <var>is_empty</var></dt><dd>This will be `true` if the image is empty. Otherwise, this will be `false`.</dd> <dt>string <var>text_url</var></dt><dd>The URL of the image.</dd> </dl></dd> <dt>string <var>text_address</var></dt><dd>The business''s address.</dd> <dt>string <var>text_mail</var></dt><dd>The business''s email address.</dd> <dt>string <var>text_phone</var></dt><dd>The business''s phone number.</dd> <dt>string <var>text_title</var></dt><dd>The business name.</dd> </dl>'
                       a_card:
                         type: array
-                        description: 'Payment transaction information. Every element has the following keys: <dl> <dt> string <var>text_card_number</var> </dt> <dd> The card or account number. </dd> <dt> string <var>text_card_system</var> </dt> <dd> The card system name from {@link \ACardSystemSid}. </dd> <dt> string <var>text_title</var> </dt> <dd> The payment account title. This will be ''Account number'' for ACH, ''Card'' for all other cases. </dd> </dl>'
+                        description: 'Payment transaction information. Every element has the following keys:<dl> <dt>string <var>text_card_number</var></dt><dd>The card or account number.</dd> <dt>string <var>text_card_system</var></dt><dd>The card system name from {@link \ACardSystemSid}.</dd> <dt>string <var>text_title</var></dt><dd>The payment account title. This will be ''Account number'' for ACH, ''Card'' for all other cases.</dd> </dl>'
                       a_customer:
                         type: array
-                        description: 'Information about the customer. <dl> <dt> string <var>text_address</var> </dt> <dd> The customer''s address. </dd> <dt> string <var>text_mail</var> </dt> <dd> The customer''s email address. </dd> <dt> string <var>text_name</var> </dt> <dd> The customer''s name. </dd> <dt> string <var>text_phone</var> </dt> <dd> The customer''s phone number. </dd> </dl>'
+                        description: 'Information about the customer.<dl> <dt>string <var>text_address</var></dt><dd>The customer''s address.</dd> <dt>string <var>text_mail</var></dt><dd>The customer''s email address.</dd> <dt>string <var>text_name</var></dt><dd>The customer''s name.</dd> <dt>string <var>text_phone</var></dt><dd>The customer''s phone number.</dd> </dl>'
                       a_pay_method:
                         type: array
-                        description: 'A list of payment methods for the current purchase. Every element has the following keys: <dl> <dt> string <var>m_amount</var> </dt> <dd> The amount of the payment. </dd> <dt> string <var>text_currency</var> </dt> <dd> The currency of the amount. </dd> <dt> string <var>text_pay_method</var> </dt> <dd> The payment method title. </dd> </dl>'
+                        description: 'A list of payment methods for the current purchase. Every element has the following keys:<dl> <dt>string <var>m_amount</var></dt><dd>The amount of the payment.</dd> <dt>string <var>text_currency</var></dt><dd>The currency of the amount.</dd> <dt>string <var>text_pay_method</var></dt><dd>The payment method title.</dd> </dl>'
                       a_price:
                         type: array
-                        description: 'Complete information about price information for the purchase. <dl> <dt> string <var>m_discount</var> </dt> <dd> The discount amount. </dd> <dt> string <var>m_discount_code</var> </dt> <dd> The discount amount for a discount code. </dd> <dt> string <var>m_sum</var> </dt> <dd> The subtotal amount (the sum of the prices). </dd> <dt> string <var>m_tax</var> </dt> <dd> The amount of taxes. </dd> <dt> string <var>m_tip</var> </dt> <dd> The amount of tips. </dd> <dt> string <var>m_total</var> </dt> <dd> The total amount. </dd> <dt> string <var>text_currency</var> </dt> <dd> The currency of the purchase. </dd> <dt> string <var>text_discount_code</var> </dt> <dd> The discount code applied to the purchase. </dd> </dl>'
+                        description: 'Complete information about price information for the purchase.<dl> <dt>string <var>m_discount</var></dt><dd>The discount amount.</dd> <dt>string <var>m_discount_code</var></dt><dd>The discount amount for a discount code.</dd> <dt>string <var>m_sum</var></dt><dd>The subtotal amount (the sum of the prices).</dd> <dt>string <var>m_tax</var></dt><dd>The amount of taxes.</dd> <dt>string <var>m_tip</var></dt><dd>The amount of tips.</dd> <dt>string <var>m_total</var></dt><dd>The total amount.</dd> <dt>string <var>text_currency</var></dt><dd>The currency of the purchase.</dd> <dt>string <var>text_discount_code</var></dt><dd>The discount code applied to the purchase.</dd> </dl>'
                       a_purchase_item:
                         type: array
-                        description: 'A list of purchase items. Every element has the following keys: <dl> <dt> array <var>a_logo</var> </dt> <dd> The purchase item logo. <dl> <dt> int <var>i_height</var> </dt> <dd> The image height. </dd> <dt> int <var>i_width</var> </dt> <dd> The image width. </dd> <dt> bool <var>is_empty</var> </dt> <dd> Determines whether the image is empty. </dd> <dt> string <var>text_url</var> </dt> <dd> The URL of the image. </dd> </dl> </dd> <dt> int <var>i_count</var> </dt> <dd> The number of items in the purchase. </dd> <dt> int|null <var>id_program</var> </dt> <dd> Program ID. One of {@link \RsProgramSid} constants. Only applies to promotions. `null` if the purchase item is not a promotion. </dd> <dt> int <var>id_purchase_item</var> </dt> <dd> Purchase item ID. One of {@link \RsPurchaseItemSid} constants. </dd> <dt> int <var>id_sale</var> </dt> <dd> Sale ID. One of {@link \RsSaleSid} constants. </dd> <dt> int <var>k_id</var> </dt> <dd> The identifier of the item. </dd> <dt> string <var>k_purchase_item</var> </dt> <dd> The key of the purchase item. </dd> <dt> string <var>[k_shop_product]</var> </dt> <dd> Product key, primary key in {@link \RsShopProductSql}. Set only if <var>id_purchase_item</var> is {@link \RsPurchaseItemSid::PRODUCT}. </dd> <dt> string <var>m_price</var> </dt> <dd> The price of the single item. </dd> <dt> string <var>m_price_total</var> </dt> <dd> The price of all items. </dd> <dt> string <var>text_category</var> </dt> <dd> The type of the item (for example, a pass or membership). </dd> <dt> string <var>text_currency</var> </dt> <dd> The currency of the price. </dd> <dt> string <var>text_info</var> </dt> <dd> Additional information about the purchase item. </dd> <dt> string <var>text_title</var> </dt> <dd> The name of the purchase item. </dd> <dt> string <var>text_description</var> </dt> <dd> The description of the purchase item. </dd> <dt> string <var>url_print</var> </dt> <dd> The URL to print. Only available if the purchase item is a coupon (gift card). </dd> </dl>'
+                        description: 'A list of purchase items. Every element has the following keys:<dl> <dt>array <var>a_logo</var></dt><dd>The purchase item logo.<dl> <dt>int <var>i_height</var></dt><dd>The image height.</dd> <dt>int <var>i_width</var></dt><dd>The image width.</dd> <dt>bool <var>is_empty</var></dt><dd>Determines whether the image is empty.</dd> <dt>string <var>text_url</var></dt><dd>he URL of the image.</dd> </dl></dd> <dt>array <var>[a_visit]</var></dt><dd>List of visit keys. Only available if the purchase item is an event.</dd> <dt>int <var>i_count</var></dt><dd>The number of items in the purchase.</dd> <dt>int|null <var>id_program</var></dt> <dd>Program ID. One of {@link \RsProgramSid} constants. Only applies to promotions. `null` if the purchase item is not a promotion.</dd> <dt>int <var>id_purchase_item</var></dt><dd>Purchase item ID. One of {@link \RsPurchaseItemSid} constants.</dd> <dt>int <var>id_sale</var></dt><dd>Sale ID. One of {@link \RsSaleSid} constants.</dd> <dt>int <var>k_id</var></dt><dd>The identifier of the item.</dd> <dt>string <var>k_purchase_item</var></dt><dd>The key of the purchase item.</dd> <dt>string <var>[k_shop_product]</var></dt><dd>Product key, primary key in {@link \RsShopProductSql}. Set only if <var>id_purchase_item</var>is {@link \RsPurchaseItemSid::PRODUCT}.</dd> <dt>string <var>m_price</var></dt><dd>The price of the single item.</dd> <dt>string <var>m_price_total</var></dt><dd>The price of all items.</dd> <dt>string <var>text_category</var></dt><dd>The type of the item (for example, a pass or membership).</dd> <dt>string <var>text_currency</var></dt><dd>The currency of the price.</dd> <dt>string <var>text_info</var></dt><dd>Additional information about the purchase item.</dd> <dt>string <var>text_title</var></dt><dd>The name of the purchase item.</dd> <dt>string <var>text_description</var></dt><dd>The description of the purchase item.</dd> <dt>string <var>[url_print]</var></dt><dd>The URL to print. Only available if the purchase item is a coupon (gift card).</dd> </dl>'
                       dtl_purchase:
                         type: string
                         description: 'The local date of the purchase in MySQL format.'
@@ -21006,6 +21010,11 @@ paths:
           description: 'Date/time of session is booking. `null` until initialized.'
           schema:
             type: [string, "null"]
+        - name: k_class_period
+          in: query
+          description: 'The key of the session to check for booking availability.'
+          schema:
+            type: string
         - name: k_location
           in: query
           description: 'The key of the location in which the purchase is made. This is also the booking process location.'

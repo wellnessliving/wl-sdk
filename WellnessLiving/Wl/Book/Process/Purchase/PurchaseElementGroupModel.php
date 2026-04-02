@@ -68,6 +68,14 @@ class PurchaseElementGroupModel extends WlModelAbstract
   public $dtu_date = null;
 
   /**
+   * The key of the session to check for booking availability.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_class_period = '0';
+
+  /**
    * The key of the location in which the purchase is made.
    * This is also the booking process location.
    *

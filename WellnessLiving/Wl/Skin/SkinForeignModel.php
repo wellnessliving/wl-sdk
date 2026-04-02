@@ -98,6 +98,15 @@ class SkinForeignModel extends WlModelAbstract
    * @var string
    */
   public $s_foreign_id = '';
+
+  /**
+   * Name of the widget.
+   *
+   * @post post
+   * @put post
+   * @var string
+   */
+  public $text_name = '';
 }
 
 ?>

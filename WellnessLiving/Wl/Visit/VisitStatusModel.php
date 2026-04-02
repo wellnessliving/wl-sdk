@@ -325,7 +325,7 @@ class VisitStatusModel extends WlModelAbstract
   /**
    * URL of virtual service. Empty if the visit is not virtual.
    *
-   * @get get
+   * @get result
    * @var string
    */
   public $url_virtual_service = '';
