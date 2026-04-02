@@ -12,7 +12,7 @@ class WlModelRequest
   /**
    * SDK version number.
    */
-  const VERSION='20260402.461456';
+  const VERSION='20260402.461457';
 
   /**
    * A list of headers for the API request. See {@link CURLOPT_HTTPHEADER}.
