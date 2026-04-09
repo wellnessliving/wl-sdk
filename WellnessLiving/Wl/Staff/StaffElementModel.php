@@ -142,9 +142,10 @@ class StaffElementModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * The key of the staff member who is being created or edited.
+   * The key of the staff member resolved and used internally by this API.
    *
-   * This will be `null` in cases where a new staff member is created.
+   * This property is populated from {@link StaffElementModel::$uid_staff} in {@link StaffElementApi::post()} and
+   * returned in API result for compatibility. Passing <tt>k_staff</tt> in request payload is not supported and
    *
    * @post get,result
    * @var string|null
@@ -274,6 +275,17 @@ class StaffElementModel extends WlModelAbstract
    * @var string|null
    */
   public $text_postal = null;
+
+  /**
+   * User key of a staff member.
+   *
+   * This is the supported request identifier for staff update operations.
+   * Value is normalized into {@link StaffElementModel::$k_staff} in {@link StaffElementApi::post()}.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $uid_staff = null;
 }
 
 ?>

@@ -28,7 +28,7 @@ class FinishModel extends WlModelAbstract
    * Keys refer to hashes of the questions. Values refer to answers for the questions.
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_answer = [];
 
@@ -53,14 +53,37 @@ class FinishModel extends WlModelAbstract
    * All data from the provider model <tt>Wl_Appointment_Book_ProviderModel</tt>:
    * <dl>
    *   <dt>
+   *     array [<var>a_conflict</var>]
+   *   </dt>
+   *   <dd>
+   *     Information about booking conflicts. Keys are bookings dates/times in MySQL format in UTC. Values are arrays with next keys:
+   *     <dl>
+   *       <dt>string <var>dt_date_local</var></dt>
+   *       <dd>New appointment date/time in MySQL in locale timezone.</dd>
+   *       <dt>int <var>i_duration</var></dt>
+   *       <dd>New asset booking duration.</dd>
+   *       <dt>int <var>i_index</var></dt>
+   *       <dd>New asset index.</dd>
+   *       <dt>int <var>id_conflict</var></dt>
+   *       <dd>Solution type.</dd>
+   *       <dt>string <var>k_resource</var></dt>
+   *
+   *       <dt>string|null <var>k_staff</var></dt>
+   *       <dd> `null` in a case of asset booking.</dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>
    *     array [<var>a_product</var>]
    *   </dt>
    *   <dd>
    *     Add-ons to the appointment. Specify this for appointment bookings only.
    *     Old format: array keys refer to primary keys.
    *     New format: each element is an array:
+   *     <dl>
    *       <dt>int <var>i_count</var></dt><dd>The add-on count</dd>
+   *       <dt>int [<var>i_count_use</var>]</dt><dd>The add-on use count.</dd>
    *       <dt>string <var>k_shop_product_option</var></dt><dd>The key of add-on.</dd>
+   *     </dl>
    *   </dd>
    *   <dt>
    *     array [<var>a_repeat</var>]
@@ -145,7 +168,7 @@ class FinishModel extends WlModelAbstract
    *     Specify this for separate asset bookings only and for cases when the asset category only has a layout.
    *   </dd>
    *   <dt>
-   *     int <var>id_class_tab</var>
+   *     int [<var>id_class_tab</var>]
    *   </dt>
    *   <dd>
    *     The booking service type. One of the {@link TabSid} constants.
@@ -156,6 +179,19 @@ class FinishModel extends WlModelAbstract
    *   <dd>
    *     The gender of the staff member conducting the appointment. One of the {@link AGenderSid} constants.
    *     Specify this for appointment bookings only.
+   *   </dd>
+   *   <dt>
+   *     bool [<var>is_wait_list_unpaid</var>]
+   *   </dt>
+   *   <dd>
+   *     If `true`, appointment waits unpaid.
+   *   </dd>
+   *   <dt>
+   *     string [<var>k_login_prize</var>]
+   *   </dt>
+   *   <dd>
+   *     The user's prize.
+   *
    *   </dd>
    *   <dt>
    *     string [<var>k_login_promotion</var>]
@@ -177,6 +213,12 @@ class FinishModel extends WlModelAbstract
    *   <dd>
    *     The appointment booking. Specify this for appointment bookings only.
    *
+   *   </dd>
+   *   <dt>
+   *     string [<var>k_session_pass</var>]
+   *   </dt>
+   *   <dd>
+   *     The user's pass.
    *   </dd>
    *   <dt>
    *     string [<var>k_staff</var>]
@@ -272,7 +314,7 @@ class FinishModel extends WlModelAbstract
    * Values refer to response keys.
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_quiz_response = [];
 
@@ -288,7 +330,7 @@ class FinishModel extends WlModelAbstract
 
   /**
    * Data to create new user.
-   * Specify this if <var>$uid</var> is empty.
+   * Specify this if <var>uid</var> is empty.
    * Must contain the following keys:
    * <dl>
    *   <dt>string[] <var>a_note</var></dt>

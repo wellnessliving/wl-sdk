@@ -236,6 +236,7 @@ class PromotionModel extends WlModelAbstract
   /**
    * The key of the business.
    *
+   * @delete get
    * @get get
    * @post get
    * @var string
@@ -245,6 +246,7 @@ class PromotionModel extends WlModelAbstract
   /**
    * The key of the promotion.
    *
+   * @delete get
    * @get get
    * @post get
    * @var string

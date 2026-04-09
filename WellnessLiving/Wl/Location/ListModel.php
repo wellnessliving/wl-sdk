@@ -125,6 +125,9 @@ class ListModel extends WlModelAbstract
   /**
    * The business key used internally by WellnessLiving.
    *
+   * In case when passed regular or franchisee business returns only locations for requested business.
+   * In case when passed franchisor business returns locations for all franchisees of this franchisor.
+   *
    * @get get
    * @var string
    */

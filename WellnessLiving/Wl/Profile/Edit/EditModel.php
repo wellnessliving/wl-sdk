@@ -171,6 +171,14 @@ class EditModel extends WlModelAbstract
   public $id_register_source = null;
 
   /**
+   * `true` if the A2P 10DLC registration feature is enabled for this business, `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_a2p;
+
+  /**
    * Whether the address be inherited.
    * `true` if address inherit, otherwise `false`.
    *
@@ -206,6 +214,38 @@ class EditModel extends WlModelAbstract
    * @var bool
    */
   public $is_sing_in = false;
+
+  /**
+   * <tt>true</tt> - user agreed to receive marketing SMS;
+   * <tt>false</tt> - otherwise.
+   *
+   * Only matters if {@link EditModel::$is_sms_subscription_presented} is `true`.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_sms_subscription_marketing = false;
+
+  /**
+   * <tt>true</tt> - user was shown checkboxes to subscribe to marketing and transactional sms messages.
+   *   This means we need to modify his subscription based on the values in these fields.
+   * <tt>false</tt> - otherwise. This means we should not change subscription settings.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_sms_subscription_presented = false;
+
+  /**
+   * <tt>true</tt> - user agreed to receive transactional SMS;
+   * <tt>false</tt> - otherwise.
+   *
+   * Only matters if {@link EditModel::$is_sms_subscription_presented} is `true`.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_sms_subscription_transactional = false;
 
   /**
    * Indicates whether to display the form as a user or as a staff member.

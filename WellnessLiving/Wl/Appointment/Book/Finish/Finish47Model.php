@@ -18,7 +18,7 @@ class Finish47Model extends WlModelAbstract
    * Keys refer to hashes of the questions. Values refer to answers for the questions.
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_answer = [];
 
@@ -112,7 +112,7 @@ class Finish47Model extends WlModelAbstract
    * List of quiz response keys.
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_quiz_response = [];
 
@@ -128,7 +128,7 @@ class Finish47Model extends WlModelAbstract
 
   /**
    * Data to create new user.
-   * Specify this if <var>$uid</var> is empty.
+   * Specify this if <var>uid</var> is empty.
    * Must contain the following keys:
    * <dl>
    *   <dt>string[] <var>a_note</var></dt>

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 236.
+ * Last Used ID: 237.
  */
 abstract class WlPrivilegeSid
 {
@@ -507,6 +507,11 @@ abstract class WlPrivilegeSid
   const MARKETING_EMAIL = 42;
 
   /**
+   * Allows to subscribe to email marketing subscription plans and manage existing subscriptions.
+   */
+  const MARKETING_SUBSCRIPTION = 237;
+
+  /**
    * Enabling this permission for a role will enable making and receiving calls in Message Center.
    */
   const MESSAGES_CALLS = 173;
@@ -862,11 +867,6 @@ abstract class WlPrivilegeSid
    * Reports staff.
    */
   const REPORT_STAFF = 28;
-
-  /**
-   * Edit tip recipients.
-   */
-  const REPORT_TIP_RECIPIENT_EDIT = 236;
 
   /**
    * Manage assets.

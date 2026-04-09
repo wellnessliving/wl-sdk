@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Mode;
 /**
  * The source of a visit.
  *
- * Last used ID: 29.
+ * Last used ID: 30.
  */
 class ModeSid
 {
@@ -63,6 +63,11 @@ class ModeSid
    * Visit has been created by Google Booking Service.
    */
   const GOOGLE_BOOKING = 7;
+
+  /**
+   * Action from Go High Level.
+   */
+  const GO_HIGH_LEVEL = 30;
 
   /**
    * Visit has been created by <tt>GymPass</tt>.

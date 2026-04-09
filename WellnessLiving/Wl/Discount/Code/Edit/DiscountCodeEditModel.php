@@ -13,6 +13,30 @@ use WellnessLiving\Wl\WlDurationTypeSid;
 class DiscountCodeEditModel extends WlModelAbstract
 {
   /**
+   * List of components that are affected by this discount code.
+   * Each element is an array containing:
+   * <dl>
+   *   <dt>int <var>id_purchase_item</var></dt>
+   *   <dd>Type ID of the purchase item. One of {@link WlPurchaseItemSid} constants.</dd>
+   *   <dt>string <var>k_id</var></dt>
+   *   <dd>
+   *     Primary key of the component.
+   *     <p>Special Notes:</p>
+   *     <ul>
+   *       <li>Zero means that all elements of this type are available.</li>
+   *       <li>For `id_purchase_item`={@link WlPurchaseItemSid::CLASS_PERIOD} we store {@link \RsClassSql}.`k_class` in the `k_id` field.</li>
+   *     </ul>
+   *   </dd>
+   *   <dt>string <var>text_title</var></dt>
+   *   <dd>Title of the component.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array[]
+   */
+  public $a_component = [];
+
+  /**
    * List of client types.
    *
    * @get result

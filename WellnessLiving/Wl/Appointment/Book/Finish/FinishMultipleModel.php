@@ -6,6 +6,7 @@ use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Appointment\Book\Question\QuestionModel;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
 use WellnessLiving\Wl\Mode\ModeSid;
@@ -17,10 +18,13 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 class FinishMultipleModel extends WlModelAbstract
 {
   /**
-   * A list of answers for the questions.
+   * A list of answers for the questions from {@link QuestionModel::$a_question}.
+   *
+   * <tt>1st dimension</tt> - provider index.
+   * <tt>2nd dimension</tt> - keys refer to hashes of the questions. Values refer to answers for the questions.
    *
    * @post post
-   * @var array
+   * @var array[]
    */
   public $a_answer = [];
 
@@ -41,165 +45,225 @@ class FinishMultipleModel extends WlModelAbstract
   public $a_appointment = [];
 
   /**
-   * All data from the provider model `Wl_Appointment_Book_ProviderModel`:
+   * All data required to book an appointment.
    * <dl>
    *   <dt>
-   *     array [<var>a_product</var>]
-   *   </dt>
-   *   <dd>
-   *     Add-ons to the appointment. Specified for appointment bookings only.
-   *     The old format used array keys. While the new format has each element as an array:
-   *     <dl>
-   *       <dt>int <var>i_count</var></dt><dd>The add-on buy count.</dd>
-   *       <dt>int [<var>i_count_use</var>]</dt><dd>The add-on use count. If not set, then use count is equals to buy count.</dd>
-   *       <dt>string <var>k_shop_product_option</var></dt><dd>The add-on key.</dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>
-   *     array [<var>a_repeat</var>]
-   *   </dt>
-   *   <dd>
-   *     Information for the recurring booking:
-   *     <dl>
-   *       <dt>
-   *         int[] [<var>a_week</var>]
-   *       </dt>
-   *       <dd>
-   *         The days of the week when the appointment repeats. One of the constants of the {@link ADateWeekSid} class.
-   *         This will be empty if the appointment doesn't repeat weekly.
-   *       </dd>
-   *       <dt>
-   *         string [<var>dl_end</var>]
-   *       </dt>
-   *       <dd>
-   *         The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
-   *       </dd>
-   *       <dt>
-   *         int [<var>i_occurrence</var>]
-   *       </dt>
-   *       <dd>
-   *         The number of occurrences after which the appointment's repeat cycle stops.
-   *         This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *       </dd>
-   *       <dt>
-   *         int <var>i_period</var>
-   *       </dt>
-   *       <dd>
-   *         The frequency at which the appointment repeats.
-   *       </dd>
-   *       <dt>
-   *         int <var>id_period</var>
-   *       </dt>
-   *       <dd>
-   *         The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   *       </dd>
-   *       <dt>
-   *         bool [<var>is_month</var>]
-   *       </dt>
-   *       <dd>
-   *         <tt>true</tt> if the appointment repeats monthly on the same date.
-   *         <tt>false</tt> if the appointment repeats monthly on the same day of the week.
-   *         <tt>null</tt> if the appointment doesn't repeat monthly.
-   *       </dd>
-   *     </dl>
-   *     This will be empty if the appointment isn't booked recurringly.
-   *   </dd>
-   *   <dt>
-   *     array [<var>a_resource</var>]
-   *   </dt>
-   *   <dd>
-   *     The list of assets for the appointment booking.
-   *     Keys refer to asset categories. Values are arrays with the next keys:
-   *     <dl>
-   *       <dt>int [<var>i_index</var>]</dt>
-   *       <dd>The asset index on the layout. This is only specified if the asset category has a layout.</dd>
-   *       <dt>string <var>k_resource</var></dt>
-   *       <dd>The asset.</dd>
-   *     </dl>
-   *     Specify this only for an appointment booking.
-   *   </dd>
-   *   <dt>
-   *     string <var>dt_date</var>
-   *   </dt>
-   *   <dd>
-   *     The date/time for the booking in MySQL format in the location's time zone.
-   *   </dd>
-   *   <dt>
-   *     int [<var>i_duration</var>]
-   *   </dt>
-   *   <dd>
-   *     The duration for the asset booking in minutes. Specify this for separate asset bookings only.
-   *   </dd>
-   *   <dt>
-   *     int [<var>i_index</var>]
-   *   </dt>
-   *   <dd>
-   *     The asset index on the layout.
-   *     Specify this for separate asset bookings only and for cases when the asset category only has the layout.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_class_tab</var>
+   *     int [<var>id_class_tab</var>]
    *   </dt>
    *   <dd>
    *     The booking service type. One of the {@link TabSid} constants.
    *   </dd>
    *   <dt>
-   *     int [<var>id_gender_staff</var>]
+   *     array[] [<var>a_provider</var>]
    *   </dt>
    *   <dd>
-   *     The gender of the staff member conducting the appointment. One of the {@link AGenderSid} constants.
-   *     Specify this for appointment bookings only.
-   *   </dd>
-   *   <dt>
-   *     string [<var>k_login_promotion</var>]
-   *   </dt>
-   *   <dd>
-   *     The user's Purchase Option.
-   *     Specify this if you want to use a specific Purchase Option to pay for the booking.
+   *     A list of providers and their booking details. Every element has next keys:
+   *     <dl>
+   *       <dt>
+   *         array[] [<var>a_conflict</var>]
+   *       </dt>
+   *       <dd>
+   *         Information about booking conflicts. Keys are bookings dates/times in MySQL format in UTC. Values are arrays with next keys:
+   *         <dl>
+   *           <dt>string <var>dt_date_local</var></dt>
+   *           <dd>New appointment date/time in MySQL in locale timezone.</dd>
+   *           <dt>int <var>i_duration</var></dt>
+   *           <dd>New asset booking duration.</dd>
+   *           <dt>int <var>i_index</var></dt>
+   *           <dd>New asset index.</dd>
+   *           <dt>int <var>id_conflict</var></dt>
+   *           <dd>Solution type.</dd>
+   *           <dt>string <var>k_resource</var></dt>
    *
-   *   </dd>
-   *   <dt>
-   *     string [<var>k_resource</var>]
-   *   </dt>
-   *   <dd>
-   *     The asset booking. Specify this for separate asset bookings only.
+   *           <dt>string|null <var>k_staff</var></dt>
+   *           <dd> `null` in a case of asset booking.</dd>
+   *         </dl>
+   *       </dd>
+   *       <dt>
+   *         array [<var>a_product</var>]
+   *       </dt>
+   *       <dd>
+   *         Add-ons to the appointment. Specified for appointment bookings only.
+   *         The old format used array keys. While the new format has each element as an array:
+   *         <dl>
+   *           <dt>int <var>i_count</var></dt><dd>The add-on buy count.</dd>
+   *           <dt>int [<var>i_count_use</var>]</dt><dd>The add-on use count. If not set, then use count is equals to buy count.</dd>
+   *           <dt>string <var>k_shop_product_option</var></dt><dd>The add-on key.</dd>
+   *         </dl>
+   *       </dd>
+   *       <dt>
+   *         array [<var>a_repeat</var>]
+   *       </dt>
+   *       <dd>
+   *         Information for the recurring booking:
+   *         <dl>
+   *           <dt>
+   *             int[] [<var>a_week</var>]
+   *           </dt>
+   *           <dd>
+   *             The days of the week when the appointment repeats. One of the constants of the {@link ADateWeekSid} class.
+   *             This will be empty if the appointment doesn't repeat weekly.
+   *           </dd>
+   *           <dt>
+   *             string [<var>dl_end</var>]
+   *           </dt>
+   *           <dd>
+   *             The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
+   *           </dd>
+   *           <dt>
+   *             int [<var>i_occurrence</var>]
+   *           </dt>
+   *           <dd>
+   *             The number of occurrences after which the appointment's repeat cycle stops.
+   *             This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
+   *           </dd>
+   *           <dt>
+   *             int <var>i_period</var>
+   *           </dt>
+   *           <dd>
+   *             The frequency at which the appointment repeats.
+   *           </dd>
+   *           <dt>
+   *             int <var>id_period</var>
+   *           </dt>
+   *           <dd>
+   *             The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
+   *           </dd>
+   *           <dt>
+   *             bool [<var>is_month</var>]
+   *           </dt>
+   *           <dd>
+   *             <tt>true</tt> if the appointment repeats monthly on the same date.
+   *             <tt>false</tt> if the appointment repeats monthly on the same day of the week.
+   *             <tt>null</tt> if the appointment doesn't repeat monthly.
+   *           </dd>
+   *         </dl>
+   *         This will be empty if the appointment isn't booked recurringly.
+   *       </dd>
+   *       <dt>
+   *         array [<var>a_resource</var>]
+   *       </dt>
+   *       <dd>
+   *         The list of assets for the appointment booking.
+   *         Keys refer to asset categories. Values are arrays with the next keys:
+   *         <dl>
+   *           <dt>int [<var>i_index</var>]</dt>
+   *           <dd>The asset index on the layout. This is only specified if the asset category has a layout.</dd>
+   *           <dt>string <var>k_resource</var></dt>
+   *           <dd>The asset.</dd>
+   *         </dl>
+   *         Specify this only for an appointment booking.
+   *       </dd>
+   *       <dt>
+   *         string <var>dt_date</var>
+   *       </dt>
+   *       <dd>
+   *         The date/time for the booking in MySQL format in the location's time zone.
+   *       </dd>
+   *       <dt>
+   *         int [<var>i_duration</var>]
+   *       </dt>
+   *       <dd>
+   *         The duration for the asset booking in minutes. Specify this for separate asset bookings only.
+   *       </dd>
+   *       <dt>
+   *         int [<var>i_index</var>]
+   *       </dt>
+   *       <dd>
+   *         The asset index on the layout.
+   *         Specify this for separate asset bookings only and for cases when the asset category only has the layout.
+   *       </dd>
+   *       <dt>
+   *         int [<var>id_gender_staff</var>]
+   *       </dt>
+   *       <dd>
+   *         The gender of the staff member conducting the appointment. One of the {@link AGenderSid} constants.
+   *         Specify this for appointment bookings only.
+   *       </dd>
+   *       <dt>
+   *         int [<var>id_purchase_item</var>]
+   *       </dt>
+   *       <dd>
+   *         Type of the purchase item. One of the {@link WlPurchaseItemSid} constants.
+   *       </dd>
+   *       <dt>
+   *         bool [<var>is_unpaid_force</var>]
+   *       </dt>
+   *       <dd>
+   *         If `true`, the appointment is booked as unpaid. Otherwise, this will be `false` to select an available Purchase Option.
+   *       </dd>
+   *       <dt>
+   *         bool [<var>is_wait_list_unpaid</var>]
+   *       </dt>
+   *       <dd>
+   *         If `true`, appointment waits unpaid.
+   *       </dd>
+   *       <dt>
+   *         string [<var>k_login_prize</var>]
+   *       </dt>
+   *       <dd>
+   *         The user's prize.
    *
-   *   </dd>
-   *   <dt>
-   *     string [<var>k_service</var>]
-   *   </dt>
-   *   <dd>
-   *     The appointment booking. Specify this for appointment bookings only.
+   *       </dd>
+   *       <dt>
+   *         string [<var>k_login_promotion</var>]
+   *       </dt>
+   *       <dd>
+   *         The user's Purchase Option.
+   *         Specify this if you want to use a specific Purchase Option to pay for the booking.
    *
-   *   </dd>
-   *   <dt>
-   *     string [<var>k_staff</var>]
-   *   </dt>
-   *   <dd>
-   *     The staff member conducting the appointment.
-   *     Specify this for appointment bookings only.
+   *       </dd>
+   *       <dt>
+   *         string [<var>k_resource</var>]
+   *       </dt>
+   *       <dd>
+   *         The asset booking. Specify this for separate asset bookings only.
    *
-   *   </dd>
-   *   <dt>
-   *     string [<var>k_staff_date</var>]
-   *   </dt>
-   *   <dd>
-   *     The staff member conducting the appointment.
-   *     The difference between this and <var>k_staff</var> is that this value must be set only in cases
-   *     when you want to add customer to an appointment that already exists.
-   *     Specify this for appointment bookings only.
+   *       </dd>
+   *       <dt>
+   *         string <var>k_service</var>
+   *       </dt>
+   *       <dd>
+   *         The appointment booking. Specify this for appointment bookings only.
    *
-   *   </dd>
-   *   <dt>string [<var>m_tip_appointment</var>]</dt>
-   *   <dd>The amount of selected tips.</dd>
-   *   <dt>sting <var>k_timezone</var></dt>
-   *   <dd>The time zone key. This will be 'null' if the time zone used matches the time zone of the location.</dd>
-   *   <dt>
-   *     string [<var>uid</var>]
-   *   </dt>
-   *   <dd>
+   *       </dd>
+   *       <dt>
+   *         string [<var>k_session_pass</var>]
+   *       </dt>
+   *       <dd>
+   *         The user's pass (for example, a membership or a package).
+   *         Specify this if you want to set the pass to use to pay for the booking.
+   *       </dd>
+   *       <dt>
+   *         string [<var>k_staff</var>]
+   *       </dt>
+   *       <dd>
+   *         The staff member conducting the appointment.
+   *         Specify this for appointment bookings only.
    *
-   *     Specify only in a case of booking for a lof of different users.
+   *       </dd>
+   *       <dt>
+   *         string [<var>k_staff_date</var>]
+   *       </dt>
+   *       <dd>
+   *         The staff member conducting the appointment.
+   *         The difference between this and <var>k_staff</var> is that this value must be set only in cases
+   *         when you want to add customer to an appointment that already exists.
+   *         Specify this for appointment bookings only.
+   *
+   *       </dd>
+   *       <dt>string [<var>m_tip_appointment</var>]</dt>
+   *       <dd>The amount of selected tips.</dd>
+   *       <dt>string [<var>k_timezone</var>]</dt>
+   *       <dd>The time zone key. This will be 'null' if the time zone used matches the time zone of the location.</dd>
+   *       <dt>
+   *         string [<var>uid</var>]
+   *       </dt>
+   *       <dd>
+   *
+   *         Specify only in a case of booking for a lof of different users.
+   *       </dd>
+   *     </dl>
    *   </dd>
    * </dl>
    *
@@ -235,16 +299,20 @@ class FinishMultipleModel extends WlModelAbstract
   /**
    * The sum paid.
    *
+   * Keys refer to provider indexes.
+   *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_paid = [];
 
   /**
    * The payment type for the appointment. One of the {@link WlAppointmentPaySid} constants.
    *
+   * Keys refer to provider indexes.
+   *
    * @post get
-   * @var array
+   * @var int[]
    */
   public $a_pay = [];
 
@@ -277,8 +345,11 @@ class FinishMultipleModel extends WlModelAbstract
    * The purchase items keys.
    * This will be empty if no purchases have been made for the appointment booking.
    *
+   * Keys refer to provider indexes.
+   * Value is array of item keys.
+   *
    * @post post
-   * @var string[]
+   * @var string[][]
    */
   public $a_purchase_item = [];
 
@@ -288,7 +359,7 @@ class FinishMultipleModel extends WlModelAbstract
    * And values refer to response keys.
    *
    * @post post
-   * @var array[]
+   * @var string[]
    */
   public $a_quiz_response = [];
 

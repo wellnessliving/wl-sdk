@@ -31,6 +31,11 @@ class BusinessDesignModel extends WlModelAbstract
    *   <dd>If <tt>true</tt> the capacity and number of clients signed up to the class will be shown.</dd>
    *   <dt>bool <var>is_class_quick</var></dt>
    *   <dd>If <tt>true</tt>, the quick class filter will be shown.</dd>
+   *   <dt>bool `is_class_spot_only`</dt>
+   *   <dd>
+   *       `true` to display only available spots (e.g., "3 spots left");
+   *      `false` to display both available spots and total capacity (e.g., "3 spots left of 10").
+   *   </dd>
    *   <dt>bool <var>is_show_name</var></dt>
    *   <dd>If <tt>true</tt>, the business name will be shown.</dd>
    *   <dt>string <var>s_color_background</var></dt>
