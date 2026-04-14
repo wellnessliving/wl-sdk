@@ -241,6 +241,15 @@ class UserInfoModel extends WlModelAbstract
   public $k_login_type;
 
   /**
+   * `true` to ignore cache and load information from the database directly.
+   * `false` - otherwise.
+   *
+   * @get get
+   * @var bool
+   */
+  public $not_cached = false;
+
+  /**
    * The user's first name.
    *
    * @get result

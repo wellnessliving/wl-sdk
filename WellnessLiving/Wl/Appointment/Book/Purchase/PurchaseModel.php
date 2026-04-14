@@ -172,8 +172,8 @@ class PurchaseModel extends WlModelAbstract
    *         string <var>url-thumbnail</var>
    *       </dt>
    *       <dd>
-   *         Url to resized and rotated image in file storage. If size of original image is larger then specified by
-   *         arguments, image thumbnail as created, and a link to this thumbnail is returned. Otherwise link to
+   *         Url to resized and rotated image in file storage. If size of original image is larger than specified by
+   *         arguments, image thumbnail as created, and a link to this thumbnail is returned. Otherwise, link to
    *         original image is returned here.
    *       </dd>
    *     </dl>
@@ -202,7 +202,7 @@ class PurchaseModel extends WlModelAbstract
    *     string[] <var>a_visit_limit</var>
    *   </dt>
    *   <dd>
-   *     A list of calendar restrictions of the Purchase Option in a human readable format, for example: '4 per week'.
+   *     A list of calendar restrictions of the Purchase Option in a human-readable format, for example: '4 per week'.
    *   </dd>
    *   <dt>
    *     string <var>dt_expire</var>
@@ -397,7 +397,7 @@ class PurchaseModel extends WlModelAbstract
    * List of redeemable prizes which can be used to pay for service.
    * <dl>
    *   <dt>int <var>i_score</var></dt><dd>Prize price in points.</dd>
-   *   <dt>string <var>k_reward_prize</var></dt><dd>Key of redeemable prize..</dd>
+   *   <dt>string <var>k_reward_prize</var></dt><dd>Key of redeemable prize.</dd>
    *   <dt>string <var>text_description</var></dt><dd>User friendly prize description.</dd>
    * </dl>
    *
@@ -422,10 +422,15 @@ class PurchaseModel extends WlModelAbstract
    *    List of purchase options selected for the service.
    *    Should be set if a new purchase option is selected for this service.
    *    <dl>
-   *      <dt>int <var>id_purchase_item</var></dt>
+   *      <dt>int `id_purchase_item`</dt>
    *      <dd>Purchase item ID. Constant from {@link WlPurchaseItemSid}.</dd>
-   *      <dt>string <var>k_id</var></dt>
+   *      <dt>string `k_id`</dt>
    *      <dd>Purchase item key.</dd>
+   *      <dt>bool `[is_purchase_previous = false]`</dt>
+   *      <dd>
+   *          Should be `true` if this promotion is selected again, i.e. one that has already been applied to another appointment.
+   *          This is needed to correctly calculate the remaining quantity of promotions with limited uses.
+   *      </dd>
    *    </dl>
    *  </dd>
    *  <dt>string <var>dt_date</var></dt>

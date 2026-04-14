@@ -44,7 +44,7 @@ class ElementModel extends WlModelAbstract
    *
    * The structure may be different depending on the item category.
    * <dl>
-   *   <dt>array <var>a_service_access</var></dt>
+   *   <dt>array `a_service_access`</dt>
    *   <dd> Access to services for a purchase option.
    *     Keys are one of the {@link ServiceSid} constants, values are one of the {@link AFlagSid}
    *     constants. Set only for relevant purchase option service category.
@@ -53,29 +53,35 @@ class ElementModel extends WlModelAbstract
    *     {@link AFlagSid::ALL} access to all services. It can be set only for classes and events.
    *     For purchase options with appointments and assets service category status is always {@link AFlagSid::ON}.
    *   </dd>
-   *   <dt>
-   *     bool <var>is_renew_public</var>
-   *   </dt>
+   *   <dt>bool `is_price_breakdown`</dt>
    *   <dd>
-   *     This applies only for promotions.
-   *     <tt>true</tt> - clients can set promotion auto-renew.<br>
-   *     <tt>false</tt> - clients can't set promotion auto-renew.
+   *     Whether to display individual prices for each item in the package.<br>
+   *     `true` display individual prices for each item in the package,<br>
+   *     `false` display a single total price for the package.
    *   </dd>
    *   <dt>
-   *     array[] <var>a_component</var>
+   *     bool `is_renew_public`
+   *   </dt>
+   *   <dd>
+   *     This applies only for promotions.<br>
+   *     `true` - clients can set promotion auto-renew.<br>
+   *     `false` - clients can't set promotion auto-renew.
+   *   </dd>
+   *   <dt>
+   *     array[] `a_component`
    *   </dt>
    *   <dd>
    *     This applies only for coupons. Coupon components information. Each element will contain the following keys:
    *     <dl>
-   *       <dt>int <var>id_program</var></dt>
+   *       <dt>int `id_program`</dt>
    *       <dd>Program ID. One of {@link WlProgramSid} ID's. Only applies to promotions.</dd>
-   *       <dt>int <var>id_purchase_item</var></dt>
+   *       <dt>int `id_purchase_item`</dt>
    *       <dd>Purchase item ID. One of {@link WlPurchaseItemSid} ID's.</dd>
-   *       <dt>int <var>id_sale</var></dt>
+   *       <dt>int `id_sale`</dt>
    *       <dd>Sale ID. One of {@link WlSaleSid} ID's.</dd>
-   *       <dt>int <var>k_id</var></dt>
+   *       <dt>int `k_id`</dt>
    *       <dd>The identifier of the item.</dd>
-   *       <dt>string <var>text_title</var></dt>
+   *       <dt>string `text_title`</dt>
    *       <dd>The title of the item.</dd>
    *     </dl>
    *   </dd>

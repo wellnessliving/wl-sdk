@@ -10,17 +10,19 @@ namespace WellnessLiving\Wl\Schedule\ClassView;
 class DenyReasonSid
 {
   /**
-   * The business can not take one more client.
+   * User is trying to book on behalf of another client, but does not have permission to do so.
    */
   const ACCESS_DENIED = 1;
 
   /**
-   * Access is limited.
+   * Manual restriction to book business, location or a certain class.
+   * Right now is not available in UI.
    */
   const ACCESS_LIMITED = 2;
 
   /**
-   * The business can not take one more client.
+   * The business can not take one more client because of business subscription limitations.
+   * Right now there is no such subscriptions, but it can appear in the future.
    */
   const ACCOUNT_LIMIT = 3;
 
@@ -57,7 +59,7 @@ class DenyReasonSid
   const BOOK_LATE = 8;
 
   /**
-   * Cannot book to this class anymore.
+   * User's pricing options do not allow booking another visit within a certain period because of pricing option limitations.
    */
   const BOOK_RESTRICT = 9;
 
