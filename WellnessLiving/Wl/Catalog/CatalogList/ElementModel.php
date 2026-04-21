@@ -53,12 +53,6 @@ class ElementModel extends WlModelAbstract
    *     {@link AFlagSid::ALL} access to all services. It can be set only for classes and events.
    *     For purchase options with appointments and assets service category status is always {@link AFlagSid::ON}.
    *   </dd>
-   *   <dt>bool `is_price_breakdown`</dt>
-   *   <dd>
-   *     Whether to display individual prices for each item in the package.<br>
-   *     `true` display individual prices for each item in the package,<br>
-   *     `false` display a single total price for the package.
-   *   </dd>
    *   <dt>
    *     bool `is_renew_public`
    *   </dt>
@@ -83,6 +77,22 @@ class ElementModel extends WlModelAbstract
    *       <dd>The identifier of the item.</dd>
    *       <dt>string `text_title`</dt>
    *       <dd>The title of the item.</dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>
+   *     array[] `a_staff`
+   *   </dt>
+   *   <dd>
+   *     This applies to enrollment/event items. Staff list for class periods. Each element contains:
+   *     <dl>
+   *       <dt>string `k_staff`</dt>
+   *       <dd>Legacy staff key. Deprecated, use `uid_staff`.</dd>
+   *       <dt>string `uid_staff`</dt>
+   *       <dd>Staff user key.</dd>
+   *       <dt>string `text_family`</dt>
+   *       <dd>Staff last name.</dd>
+   *       <dt>string `text_staff`</dt>
+   *       <dd>Staff display name.</dd>
    *     </dl>
    *   </dd>
    * </dl>
@@ -243,34 +253,44 @@ class ElementModel extends WlModelAbstract
   /**
    * The list of information pertaining to the specified item.
    * <dl>
-   *   <dt>array <var>a_data</var></dt>
-   *   <dd>Contains additional data for the sale item.</dd>
+   *   <dt>array `a_data`</dt>
+   *   <dd>Contains additional data for the sale item.
+   *     For Package, it contains also the following key:
+   *     <dl>
+   *       <dt>bool `is_price_breakdown`</dt>
+   *       <dd>
+   *         Whether to display individual prices for each item in the package.<br>
+   *         `true` display individual prices for each item in the package,<br>
+   *         `false` display a single total price for the package.
+   *       </dd>
+   *     </dl>
+   *   </dd>
    *
-   *   <dt>array <var>a_image</var></dt>
+   *   <dt>array `a_image`</dt>
    *   <dd>Contains information about one image connected to a sale item.</dd>
    *
-   *   <dt>array <var>a_tax</var></dt>
+   *   <dt>array `a_tax`</dt>
    *   <dd>Contains information about taxes.</dd>
    *
-   *   <dt>string <var>id_purchase_option_view</var></dt>
+   *   <dt>string `id_purchase_option_view`</dt>
    *   <dd>The Purchase Option view type. One of the {@link PurchaseOptionViewSid} constants.</dd>
    *
-   *   <dt>string <var>m_discount_code</var></dt>
+   *   <dt>string `m_discount_code`</dt>
    *   <dd>The discount code amount.</dd>
    *
-   *   <dt>string <var>m_discount_login</var></dt>
+   *   <dt>string `m_discount_login`</dt>
    *   <dd>The discount amount for the client type.</dd>
    *
-   *   <dt>string <var>s_comment</var></dt>
+   *   <dt>string `s_comment`</dt>
    *   <dd>Additional information about the sale item. For example, information about 'introductory offer'.</dd>
    *
-   *   <dt>string <var>s_price</var></dt>
+   *   <dt>string `s_price`</dt>
    *   <dd>The price of the sale item in a human-readable format.</dd>
    *
-   *   <dt>string <var>s_sale</var></dt>
+   *   <dt>string `s_sale`</dt>
    *   <dd>The category title of the sale item.</dd>
    *
-   *   <dt>string <var>s_title</var></dt>
+   *   <dt>string `s_title`</dt>
    *   <dd>The title of the sale item.</dd>
    * </dl>
    *

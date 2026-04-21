@@ -9,7 +9,7 @@ namespace WellnessLiving\Core\Locale;
  *
  * @link https://docs.1010data.com/1010dataReferenceManual/DataTypesAndFormats/currencyUnitCodes.html
  *
- * Last used ID: 19
+ * Last used ID: 20
  */
 abstract class CurrencySid
 {
@@ -82,6 +82,11 @@ abstract class CurrencySid
    * Saudi Riyal.
    */
   const SAR = 15;
+
+  /**
+   * Singapore dollar.
+   */
+  const SGD = 20;
 
   /**
    * Unknown code.

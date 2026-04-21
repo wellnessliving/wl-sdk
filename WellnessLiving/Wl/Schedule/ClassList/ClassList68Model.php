@@ -35,6 +35,20 @@ class ClassList68Model extends WlModelAbstract
   public $a_class = [];
 
   /**
+   * List of tabs keys.
+   *
+   * This will be ignored if {@link ClassList68Model::$is_tab_all} is `true`.
+   *
+   * If list of tab keys is not empty, {@link ClassList68Model::$id_class_tab} is mandatory.
+   *
+   * `null` if no filtering by Book Now Tab is required.
+   *
+   * @post post
+   * @var string[]|null
+   */
+  public $a_class_tab = null;
+
+  /**
    * Class filter by day of the week.
    * Array of number representing the days of the week.
    * Return sessions matching the given weekdays.

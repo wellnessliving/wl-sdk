@@ -69,6 +69,7 @@ class StoreGroupModel extends WlModelAbstract
    *       List of UIDs of owners who will share this promotion with this client.
    *
    *       If empty, this client is the owner of the promotion.
+   *       This only applies to the new promotions.
    *   </dd>
    *   <dt>int `i_session`</dt>
    *   <dd>

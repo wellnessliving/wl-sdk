@@ -323,6 +323,24 @@ class VisitStatusModel extends WlModelAbstract
   public $uid;
 
   /**
+   * The direct link to start class/event booking on the WellnessLiving website.
+   * `null` for appointments/events/gym visits.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $url_book_referral = null;
+
+  /**
+   * The shortened direct link to start class/event booking on the WellnessLiving website.
+   * `null` for appointments/events/gym visits.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $url_book_referral_short = null;
+
+  /**
    * URL of virtual service. Empty if the visit is not virtual.
    *
    * @get result

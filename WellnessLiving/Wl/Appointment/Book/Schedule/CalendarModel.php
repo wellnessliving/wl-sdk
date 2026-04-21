@@ -57,6 +57,9 @@ class CalendarModel extends WlModelAbstract
    *   <dt>string <var>k_staff</var></dt>
    *   <dd>If this time is already occupied by any client and staff member (but service capacity is not exhausted),
    * Otherwise - `0`.</dd>
+   *   <dt>string <var>uid_staff</var></dt>
+   *   <dd>If this time is already occupied by any client and staff member (but service capacity is not exhausted),
+   * Otherwise - `0`.</dd>
    *   <dt>string <var>s_title</var></dt>
    *   <dd>String representation of appointment schedule time.</dd>
    * </dl>
@@ -281,12 +284,14 @@ class CalendarModel extends WlModelAbstract
   public $k_service = '0';
 
   /**
+   * TODO wl-80298: remove this property when external developers confirm that they do not use it.
    * The staff member key used for showing the available appointment booking schedule.
    * In case of back-to-back booking - staff key of first appointment.
    * `0` means any available staff.
    *
    * @get get
    * @var string
+   * @deprecated This property will be removed in the future. Use {@link DayTimeModel::$uid_staff} instead.
    */
   public $k_staff = '0';
 
@@ -310,7 +315,8 @@ class CalendarModel extends WlModelAbstract
    *   <dt>int <var>i_duration</var></dt><dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd>
    *   <dt>int <var>id_gender_staff</var></dt><dd>Staff gender. One of {@link AGenderSid} constants. Zero mean no limitations on staff gender.</dd>
    *   <dt>string <var>k_service</var></dt><dd>Service key.</dd>
-   *   <dt>string <var>k_staff</var></dt><dd>Staff key. Zero means any available staff.</dd>
+   *   <dt>string <var>k_staff</var></dt><dd>@deprecated Staff key. Zero means any available staff.</dd>
+   *   <dt>string <var>uid_staff</var></dt><dd>Staff user key. Zero means any available staff.</dd>
    * </dl>
    *
    * For multiple appointment booking ({@link DayTimeModel::$is_back_to_back} == `false`): array of previously booked appointments.
@@ -319,6 +325,7 @@ class CalendarModel extends WlModelAbstract
    *   <dt>string <var>dtl_date</var></dt><dd>Local date and time of appointment start in MySQL format.</dd>
    *   <dt>int <var>i_duration</var></dt><dd>Duration of the appointment in minutes.</dd>
    *   <dt>string <var>k_service</var></dt><dd>Service key.</dd>
+   *   <dt>string <var>uid_staff</var></dt><dd>Staff user key. Zero means any available staff.</dd>
    * </dl>
    *
    * @get get
@@ -343,6 +350,16 @@ class CalendarModel extends WlModelAbstract
    * @var string
    */
   public $uid = '0';
+
+  /**
+   * The staff user key used for showing the available appointment booking schedule.
+   * In case of back-to-back booking - staff user key of first appointment.
+   * `0` means any available staff.
+   *
+   * @get get
+   * @var string
+   */
+  public $uid_staff = '0';
 }
 
 ?>

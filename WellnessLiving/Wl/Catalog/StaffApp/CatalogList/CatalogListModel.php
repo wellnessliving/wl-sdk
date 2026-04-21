@@ -98,6 +98,12 @@ class CatalogListModel extends WlModelAbstract
    *   <dd>
    *     The category title.
    *   </dd>
+   *   <dt>
+   *     string <var>url_catalog</var>
+   *   </dt>
+   *   <dd>
+   *     Direct link to catalog view page of this purchase item.
+   *   </dd>
    * </dl>
    *
    * @get result

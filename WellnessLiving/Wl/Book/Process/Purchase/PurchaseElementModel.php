@@ -49,6 +49,14 @@ class PurchaseElementModel extends WlModelAbstract
   public $id_purchase_item = 0;
 
   /**
+   * The key of the session to check for booking availability.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_class_period = '0';
+
+  /**
    * The key of the purchase item in the database.
    *
    * @get get

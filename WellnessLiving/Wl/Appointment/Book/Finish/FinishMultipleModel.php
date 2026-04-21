@@ -77,6 +77,8 @@ class FinishMultipleModel extends WlModelAbstract
    *
    *           <dt>string|null <var>k_staff</var></dt>
    *           <dd> `null` in a case of asset booking.</dd>
+   *           <dt>string|null <var>uid_staff</var></dt>
+   *           <dd> `null` in a case of asset booking.</dd>
    *         </dl>
    *       </dd>
    *       <dt>
@@ -243,11 +245,29 @@ class FinishMultipleModel extends WlModelAbstract
    *
    *       </dd>
    *       <dt>
+   *         string [<var>uid_staff</var>]
+   *       </dt>
+   *       <dd>
+   *         The staff member conducting the appointment.
+   *         Specify this for appointment bookings only.
+   *
+   *       </dd>
+   *       <dt>
    *         string [<var>k_staff_date</var>]
    *       </dt>
    *       <dd>
    *         The staff member conducting the appointment.
    *         The difference between this and <var>k_staff</var> is that this value must be set only in cases
+   *         when you want to add customer to an appointment that already exists.
+   *         Specify this for appointment bookings only.
+   *
+   *       </dd>
+   *       <dt>
+   *         string [<var>uid_staff_date</var>]
+   *       </dt>
+   *       <dd>
+   *         The staff member conducting the appointment.
+   *         The difference between this and <var>uid_staff</var> is that this value must be set only in cases
    *         when you want to add customer to an appointment that already exists.
    *         Specify this for appointment bookings only.
    *

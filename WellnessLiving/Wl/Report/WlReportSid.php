@@ -484,11 +484,15 @@ abstract class WlReportSid
 
   /**
    * Login list.
+   *
+   * @
    */
   const LOGIN_LIST = 22;
 
   /**
    * Login list all.
+   *
+   * @
    */
   const LOGIN_LIST_ALL = 33;
 

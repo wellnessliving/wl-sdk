@@ -59,6 +59,11 @@ class DenyReasonSid
   const BOOK_LATE = 8;
 
   /**
+   * User's visit overlaps with another visit.
+   */
+  const BOOK_OVERLAP = 25;
+
+  /**
    * User's pricing options do not allow booking another visit within a certain period because of pricing option limitations.
    */
   const BOOK_RESTRICT = 9;

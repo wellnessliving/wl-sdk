@@ -5,7 +5,7 @@ namespace WellnessLiving\Core\Locale;
 /**
  * A list of locales.
  *
- * Last used ID: 20
+ * Last used ID: 21
  */
 abstract class LocaleSid
 {
@@ -83,6 +83,11 @@ abstract class LocaleSid
    * Senegal
    */
   const SENEGAL = 17;
+
+  /**
+   * Singapore.
+   */
+  const SINGAPORE = 21;
 
   /**
    * South Africa.
