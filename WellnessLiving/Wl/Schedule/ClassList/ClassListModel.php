@@ -331,7 +331,7 @@ class ClassListModel extends WlModelAbstract
 
   /**
    * The list of staff members to filter.
-   * A comma seperated list of staff keys.
+   * A comma separated list of staff keys.
    *
    * @get get
    * @var string
@@ -341,7 +341,7 @@ class ClassListModel extends WlModelAbstract
 
   /**
    * The list of staff user keys to filter.
-   * A comma seperated list of staff user keys.
+   * A comma separated list of staff user keys.
    *
    * @get get
    * @var string

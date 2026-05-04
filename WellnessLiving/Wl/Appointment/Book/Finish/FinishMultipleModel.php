@@ -243,6 +243,7 @@ class FinishMultipleModel extends WlModelAbstract
    *         The staff member conducting the appointment.
    *         Specify this for appointment bookings only.
    *
+   *         deprecated Use <var>uid_staff</var>. Available for legacy allow-list only.
    *       </dd>
    *       <dt>
    *         string [<var>uid_staff</var>]

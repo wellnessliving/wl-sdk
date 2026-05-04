@@ -262,8 +262,10 @@ class Info54Model extends WlModelAbstract
    *   <dd>The first letter of staff member surname.</dd>
    *   <dt>string <var>s_staff</var></dt>
    *   <dd>The staff member's name.</dd>
-   *   <dt>string <var>uid</var></dt>
+   *   <dt>string <var>uid_staff</var></dt>
    *   <dd>UID of the staff member.</dd>
+   *   <dt>string <var>uid</var></dt>
+   *   <dd>Alias of <var>uid_staff</var> for backward compatibility.</dd>
    * </dl>
    *
    * @get result

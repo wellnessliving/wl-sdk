@@ -18,6 +18,14 @@ class SubscriptionInfoModel extends WlModelAbstract
   public $cid_subscription = 0;
 
   /**
+   * Locale ID of the business which subscription information is requested for.
+   *
+   * @get result
+   * @var int
+   */
+  public $id_locale = 0;
+
+  /**
    * Currently active plan ID for requested subscription.
    *
    * @get result

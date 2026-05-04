@@ -307,6 +307,16 @@ class ServiceList52Model extends WlModelAbstract
   public $a_service;
 
   /**
+   * List of staff members to filter a result.
+   *
+   * Empty if the filtering is not necessary.
+   *
+   * @get get
+   * @var string[]
+   */
+  public $a_staff = [];
+
+  /**
    * List of user keys to book appointments.
    * There may be empty values in this list, which means that this is a walk-in.
    *

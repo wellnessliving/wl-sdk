@@ -9,6 +9,8 @@ use WellnessLiving\WlModelAbstract;
 /**
  * Retrieves a list of all calendar days in a specified month with
  * available and unavailable appointment bookings in the schedule.
+ *
+ * @deprecated Use {@link Calendar73Api}
  */
 class CalendarModel extends WlModelAbstract
 {
@@ -55,7 +57,7 @@ class CalendarModel extends WlModelAbstract
    *   <dt>bool <var>is_waitlist</var></dt>
    *   <dd>Whether the appointment can be booked only in a wait list.</dd>
    *   <dt>string <var>k_staff</var></dt>
-   *   <dd>If this time is already occupied by any client and staff member (but service capacity is not exhausted),
+   *   <dd>@deprecated If this time is already occupied by any client and staff member (but service capacity is not exhausted),
    * Otherwise - `0`.</dd>
    *   <dt>string <var>uid_staff</var></dt>
    *   <dd>If this time is already occupied by any client and staff member (but service capacity is not exhausted),
@@ -284,7 +286,6 @@ class CalendarModel extends WlModelAbstract
   public $k_service = '0';
 
   /**
-   * TODO wl-80298: remove this property when external developers confirm that they do not use it.
    * The staff member key used for showing the available appointment booking schedule.
    * In case of back-to-back booking - staff key of first appointment.
    * `0` means any available staff.

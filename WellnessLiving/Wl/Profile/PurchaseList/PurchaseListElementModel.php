@@ -863,6 +863,14 @@ class PurchaseListElementModel extends WlModelAbstract
   public $text_expire = '';
 
   /**
+   * Text describing guest passes available for the purchased promotion.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_guest_pass = '';
+
+  /**
    * The key of the user who paid for this purchase.
    * `null` in a case when there was no money transaction.
    *

@@ -86,7 +86,7 @@ class ElementModel extends WlModelAbstract
    *     This applies to enrollment/event items. Staff list for class periods. Each element contains:
    *     <dl>
    *       <dt>string `k_staff`</dt>
-   *       <dd>Legacy staff key. Deprecated, use `uid_staff`.</dd>
+   *       <dd>@deprecated Legacy staff key. Deprecated, use `uid_staff`.</dd>
    *       <dt>string `uid_staff`</dt>
    *       <dd>Staff user key.</dd>
    *       <dt>string `text_family`</dt>

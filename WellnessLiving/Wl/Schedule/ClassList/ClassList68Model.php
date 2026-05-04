@@ -386,7 +386,7 @@ class ClassList68Model extends WlModelAbstract
 
   /**
    * The list of staff members to filter.
-   * A comma seperated list of staff keys.
+   * A comma separated list of staff keys.
    *
    * @post post
    * @var string
@@ -396,7 +396,7 @@ class ClassList68Model extends WlModelAbstract
 
   /**
    * The list of staff user keys to filter.
-   * A comma seperated list of staff user keys.
+   * A comma separated list of staff user keys.
    *
    * @post post
    * @var string

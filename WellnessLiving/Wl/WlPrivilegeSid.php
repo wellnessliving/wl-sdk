@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 237.
+ * Last Used ID: 240.
  */
 abstract class WlPrivilegeSid
 {
@@ -209,6 +209,11 @@ abstract class WlPrivilegeSid
   const CLASS_EDIT = 3;
 
   /**
+   * Allows overriding certain class fields (capacity, price, etc.) when schedule is added.
+   */
+  const CLASS_EDIT_SESSIONS = 238;
+
+  /**
    * Change/View all classes.
    */
   const CLASS_FOREIGN = 17;
@@ -289,6 +294,11 @@ abstract class WlPrivilegeSid
    * Edit classes at my location.
    */
   const ENROLLMENT_EDIT = 54;
+
+  /**
+   * Allows overriding certain event fields (capacity, price, etc.) when schedule is added.
+   */
+  const ENROLLMENT_EDIT_SESSIONS = 239;
 
   /**
    * Change/View all classes.
@@ -1097,6 +1107,12 @@ abstract class WlPrivilegeSid
    * Access to view and change videos in the business video library.
    */
   const VIDEO_SETUP = 147;
+
+  /**
+   * View the Balance History & Statements tab and generate or email account statements on
+   * the client profile or the Balance Due Report.
+   */
+  const VIEW_BALANCE_HISTORY_STATEMENTS = 240;
 
   /**
    * Set up and modify FitLIVE integration.

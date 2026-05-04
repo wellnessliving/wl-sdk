@@ -47,6 +47,12 @@ class GuestProfileModel extends WlModelAbstract
   public $k_id = '';
 
   /**
+   * @get get
+   * @var string
+   */
+  public $k_location = '';
+
+  /**
    * Guest's first name.
    *
    * @get get

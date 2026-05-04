@@ -78,6 +78,37 @@ class BusinessConfigModel extends WlModelAbstract
   public $a_business_policy;
 
   /**
+   * A list of business penalties. Each element contains:
+   * <dl>
+   *   <dt>string[] <var>a_class_period</var></dt><dd>List of class period keys.</dd>
+   *   <dt>string[] <var>a_login_type</var></dt>
+   *   <dd>List of client type keys.
+   *     Empty array means all active login types at concrete business.
+   *   </dd>
+   *   <dt>string[] <var>a_resource</var></dt><dd>List of resources keys.</dd>
+   *   <dt>string[] <var>a_service</var></dt><dd>List of services keys.</dd>
+   *   <dt>int <var>i_blame</var></dt><dd>Number of blamed visits.</dd>
+   *   <dt>int <var>i_cancel_period</var></dt><dd>Count of days/weeks/months.</dd>
+   *   <dt>int <var>i_charge_measure</var></dt><dd>Count of applied penalty.</dd>
+   *   <dt>int <var>id_blame</var></dt>
+   *   <dt>int <var>id_cancel_period</var></dt><dd>Duration ID. One of {@link ADurationSid} constants.</dd>
+   *   <dt>int <var>id_charge</var></dt>
+   *   <dt>int <var>id_charge_measure</var></dt><dd>Percent or money sign.</dd>
+   *   <dt>int <var>is_appointment_all</var></dt><dd> `1` if all classes are selected, `0` - otherwise.</dd>
+   *   <dt>int <var>is_class_all</var></dt><dd> `1` if all classes are selected, `0` - otherwise.</dd>
+   *   <dt>int <var>is_enable_cancel_charge</var></dt><dd><tt>true</tt> if promotion penalties is enable, <tt>false</tt> otherwise.</dd>
+   *   <dt>int <var>is_event_all</var></dt><dd> `1` if all events are selected, `0` - otherwise.</dd>
+   *   <dt>int <var>is_login_type_all</var></dt><dd> `1` if all login types are selected, `0` - otherwise.</dd>
+   *   <dt>int <var>is_resource_all</var></dt><dd> `1` if all resources are selected, `0` - otherwise.</dd>
+   *   <dt>int <var>is_service_all</var></dt><dd> `1` if all services are selected, `0` - otherwise.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array
+   */
+  public $a_penalty;
+
+  /**
    * Determines whether staff members should select a location at checkout.
    *
    * If `true`, staff members should select a location at checkout. Otherwise, this will be `false`.

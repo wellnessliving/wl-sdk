@@ -22,8 +22,10 @@ class PaymentModel extends WlModelAbstract
 {
   /**
    * The staff commission earned for this purchase. If this isn't empty, it has the next fields: <dl>
+   *   <dt>string <var>uid_staff</var></dt>
+   *   <dd>The staff user ID.</dd>
    *   <dt>string <var>k_staff</var></dt>
-   *   <dd>The staff key.</dd>
+   *   <dd>@deprecated staff key.</dd>
    *   <dt>string <var>k_staff_pay</var></dt>
    *   <dd>The payment schema key.</dd>
    * </dl>
@@ -146,6 +148,7 @@ class PaymentModel extends WlModelAbstract
    *       <dt>
    *         string [<var>k_staff</var>]
    *       </dt>
+   *       <dd>@</dd>
    *       <dt>
    *         string [<var>k_wellness_program</var>]
    *       </dt>
@@ -197,6 +200,12 @@ class PaymentModel extends WlModelAbstract
    *       <dd>
    *         The gift card sender name. This is required for gift cards.
    *       </dd>
+   *      <dt>
+   *          string [<var>uid_staff</var>]
+   *        </dt>
+   *        <dd>
+   *          The staff member user ID, used only for appointment tips.
+   *        </dd>
    *       <dt>
    *         string <var>[uid_to]</var>
    *       </dt>

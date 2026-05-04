@@ -26,7 +26,7 @@ class PurchaseModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public $a_login_prize;
+  public $a_login_prize = [];
 
   /**
    * A list of the client's login promotions that can be applied to a given service.
@@ -113,7 +113,7 @@ class PurchaseModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_login_promotion;
+  public $a_login_promotion = [];
 
   /**
    * An array with information about available Purchase Options.
@@ -391,7 +391,7 @@ class PurchaseModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_purchase;
+  public $a_purchase = [];
 
   /**
    * List of redeemable prizes which can be used to pay for service.
@@ -404,7 +404,7 @@ class PurchaseModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public $a_reward_prize;
+  public $a_reward_prize = [];
 
   /**
    * List of selected services without current {@link PurchaseModel::$k_service}.

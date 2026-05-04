@@ -24,7 +24,7 @@ class ListModel extends WlModelAbstract
    *   <dt>bool <var>is_wait_list</var></dt>
    *   <dd>Whether staff member available only for wait list booking.</dd>
    *   <dt>string <var>k_staff</var></dt>
-   *   <dd>Primary key of the staff member.</dd>
+   *   <dd>@deprecated Legacy staff key. Returned only for allow-listed apps.</dd>
    *   <dt>string <var>s_position</var></dt>
    *   <dd>Position of the staff member in the business.</dd>
    *   <dt>int <var>s_staff</var></dt>
