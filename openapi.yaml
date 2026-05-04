@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260504130901
+  version: 1.1.20260504155011
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-05-04 13:09:01
+    Last updated at: 2026-05-04 15:50:11
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -3565,7 +3565,10 @@ paths:
                   description: 'A list of fields containing the lead information. The keys are the field keys and values are field values. If field key is `Address` field key, value may be an array or string. Can be a string if only address field is used. Will be an array if city and postal code are used, with the following keys: <dl> <dt>string <var>text_address</var></dt> <dd>Address.</dd> <dt>string <var>k_city</var></dt> <dd>City key. Primary key in {@link \AGeoSql}.</dd> <dt>string <var>text_postal</var></dt> <dd>Postal code.</dd> </dl>'
                 is_sing_in:
                   type: boolean
-                  description: '`true` if newly created lead should be automatically signed in, `false` otherwise. Lead will not be signed in if: - email is used already for another existing user; - different user is signed in already. If lead is not signed in, then {@link LeadApi::$text_sign_in_error} will contain an error message.'
+                  description: '`true` if newly created lead should be automatically signed in, `false` otherwise. Lead will not be signed in if: - email is used already for another existing user; - different user is signed in already (can be changed with {@link \Wl\Lead\LeadApi::$is_sing_in_force}). If lead is not signed in, then {@link LeadApi::$text_sign_in_error} will contain an error message.'
+                is_sing_in_force:
+                  type: boolean
+                  description: '`true` if newly created lead should be automatically signed in instead of the currently signed-in user, `false` if currently singed-in user should not be signed out. If lead is not signed in, then {@link LeadApi::$text_sign_in_error} will contain an error message.'
                 k_lead_source:
                   type: [string, "null"]
                   description: 'Key of the lead source. Primary key in {@link LeadSourceSql} table. Must be `null` if <var>text_lead_source</var> is set. If both parameters are empty, the {@link ModeSid::API} lead source will be used. {@link LeadSourceElementApi::LEAD_SOURCE_REPLACE_NONE} if Lead Source is to be unselected for the user.'

@@ -138,7 +138,7 @@ class LeadModel extends WlModelAbstract
    *
    * Lead will not be signed in if:
    * - email is used already for another existing user;
-   * - different user is signed in already.
+   * - different user is signed in already (can be changed with {@link LeadModel::$is_sing_in_force}).
    *
    * If lead is not signed in, then {@link LeadModel::$text_sign_in_error} will contain an error message.
    *
@@ -146,6 +146,16 @@ class LeadModel extends WlModelAbstract
    * @var bool
    */
   public $is_sing_in = false;
+
+  /**
+   * `true` if newly created lead should be automatically signed in instead of the currently signed-in user,
+   * `false` if currently singed-in user should not be signed out.
+   * If lead is not signed in, then {@link LeadModel::$text_sign_in_error} will contain an error message.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_sing_in_force = false;
 
   /**
    * The key of business to which the new user must be captured.
