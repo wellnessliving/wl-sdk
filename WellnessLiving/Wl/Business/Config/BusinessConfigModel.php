@@ -4,6 +4,8 @@ namespace WellnessLiving\Wl\Business\Config;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Business\Policy\BlameSid;
+use WellnessLiving\Wl\Business\Policy\ChargeSid;
 use WellnessLiving\Wl\WlServiceSid;
 
 /**
@@ -90,9 +92,9 @@ class BusinessConfigModel extends WlModelAbstract
    *   <dt>int <var>i_blame</var></dt><dd>Number of blamed visits.</dd>
    *   <dt>int <var>i_cancel_period</var></dt><dd>Count of days/weeks/months.</dd>
    *   <dt>int <var>i_charge_measure</var></dt><dd>Count of applied penalty.</dd>
-   *   <dt>int <var>id_blame</var></dt>
+   *   <dt>int <var>id_blame</var></dt><dd>One of {@link BlameSid} constants.</dd>
    *   <dt>int <var>id_cancel_period</var></dt><dd>Duration ID. One of {@link ADurationSid} constants.</dd>
-   *   <dt>int <var>id_charge</var></dt>
+   *   <dt>int <var>id_charge</var></dt><dd>One of {@link ChargeSid} constants.</dd>
    *   <dt>int <var>id_charge_measure</var></dt><dd>Percent or money sign.</dd>
    *   <dt>int <var>is_appointment_all</var></dt><dd> `1` if all classes are selected, `0` - otherwise.</dd>
    *   <dt>int <var>is_class_all</var></dt><dd> `1` if all classes are selected, `0` - otherwise.</dd>

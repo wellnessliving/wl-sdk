@@ -285,6 +285,22 @@ class DataModel extends WlModelAbstract
   public $text_token = '';
 
   /**
+   * The URL for the online store.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_catalog = '';
+
+  /**
+   * The URL for client sign in.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_enter = '';
+
+  /**
    * The Facebook page.
    *
    * @get result
@@ -339,6 +355,38 @@ class DataModel extends WlModelAbstract
    * @var string
    */
   public $url_logo_empty;
+
+  /**
+   * The URL to redeem gift card.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_redeem = '';
+
+  /**
+   * The URL for the client review page.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_review = '';
+
+  /**
+   * The URL for the client web app (schedule).
+   *
+   * @get result
+   * @var string
+   */
+  public $url_schedule = '';
+
+  /**
+   * The URL for client sign up.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_signup = '';
 
   /**
    * The Twitter page.

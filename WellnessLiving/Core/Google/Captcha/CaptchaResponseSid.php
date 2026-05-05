@@ -8,6 +8,11 @@ namespace WellnessLiving\Core\Google\Captcha;
 class CaptchaResponseSid
 {
   /**
+   * Token can be verified due to error from Google Captcha.
+   */
+  const ERROR = 5;
+
+  /**
    * Token is invalid or expired.
    *
    * Used by: {@link CaptchaVersionSid::V2} and {@link CaptchaVersionSid::V3}.

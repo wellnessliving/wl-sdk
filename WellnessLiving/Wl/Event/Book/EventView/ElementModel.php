@@ -129,7 +129,7 @@ class ElementModel extends WlModelAbstract
    *     A list of staff members who conduct the session. Every element has the following next keys:
    *     <dl>
    *       <dt>string <var>k_staff</var></dt>
-   *       <dd>The staff member key.</dd>
+   *       <dd>@deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
    *       <dt>string <var>s_name</var></dt>
    *       <dd>The staff member name.</dd>
    *       <dt>string <var>s_surname</var></dt>
