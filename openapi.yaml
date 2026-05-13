@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260513174112
+  version: 1.1.20260513174614
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-05-13 17:41:12
+    Last updated at: 2026-05-13 17:46:14
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -24108,6 +24108,90 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Count-InventoryCount
+  '/Thoth/ExplorerSearch/ClassSession/ClassSessionSearch.json':
+    get:
+      summary: 'Gets list of class sessions based on search criteria.'
+      parameters:
+        - name: a_business
+          in: query
+          description: 'List of business keys to search by. Each value is primary key in {@link \RsBusinessSql}. Empty array to not filter by business keys.'
+          schema:
+            type: array
+        - name: a_experience_type
+          in: query
+          description: 'List of experience types to search by. Each value is one of {@link ClassSessionExperienceTypeEnum} case values. Empty array to not filter by experience type.'
+          schema:
+            type: array
+        - name: a_home_tour
+          in: query
+          description: 'List of home tour activity types to search by. Each value is from {@link \RsHomeTourSid}. Empty array to not filter by home tour type.'
+          schema:
+            type: array
+        - name: a_location
+          in: query
+          description: 'List of location keys to search by. Each value is primary key in {@link \RsLocationSql}. Empty array to not filter by location keys.'
+          schema:
+            type: array
+        - name: a_location_rating
+          in: query
+          description: 'List of location ratings to search by. Values are integers from 1 to 5, or `null`/`0` for unrated locations. Empty array to not filter by location rating.'
+          schema:
+            type: [array, object]
+        - name: a_staff_uid
+          in: query
+          description: 'List of staff user keys to search by. Each value is a user key (uid) of a staff member. Empty array to not filter by staff.'
+          schema:
+            type: array
+        - name: dl_begin
+          in: query
+          description: 'Start date of the session search date range in MySQL format (`Y-m-d`). Required. `null` if not set by request.'
+          schema:
+            type: [string, "null"]
+        - name: dl_end
+          in: query
+          description: 'End date of the session search date range in MySQL format (`Y-m-d`). Required. `null` if not set by request.'
+          schema:
+            type: [string, "null"]
+        - name: f_latitude
+          in: query
+          description: 'Latitude coordinate for search. Required. `null` if not set by request.'
+          schema:
+            type: [number, "null"]
+        - name: f_longitude
+          in: query
+          description: 'Longitude coordinate for search. Required. `null` if not set by request.'
+          schema:
+            type: [number, "null"]
+        - name: f_radius
+          in: query
+          description: 'Search radius in kilometers. Required. `null` if not set by request.'
+          schema:
+            type: [number, "null"]
+        - name: m_price_max
+          in: query
+          description: 'Maximum price to search by (inclusive). Decimal string in dollars (e.g. `"100.00"`). `null` to not limit by maximum price.'
+          schema:
+            type: [string, "null"]
+        - name: m_price_min
+          in: query
+          description: 'Minimum price to search by (inclusive). Decimal string in dollars (e.g. `"0.00"`). `null` to not limit by minimum price.'
+          schema:
+            type: [string, "null"]
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_class_session:
+                        type: array
+                        description: 'List of found class sessions. Each item is an associative array with the following structure: <dl> <dt>string|null `dtu_book_begin`</dt> <dd>Date and time when booking for this session starts in UTC. `null` if there is no "too early" limitation.</dd> <dt>string|null `dtu_book_end`</dt> <dd>Date and time when booking for this session ends in UTC. `null` if there is no "too late" limitation.</dd> <dt>string `dtu_session`</dt> <dd>Date and time of the session in UTC.</dd> <dt>string `k_class`</dt> <dd>Class key, primary key in {@link \RsClassSql}.</dd> <dt>string `k_class_period`</dt> <dd>Class period key, primary key in {@link \RsClassPeriodSql}.</dd> <dt>string `k_class_period_session`</dt> <dd>Class session key, primary key in {@link ClassPeriodSessionSql}.</dd> </dl>'
+      tags:
+        - ClassSession-ClassSessionSearch
 tags:
   -
     name: Account-Account
@@ -24361,6 +24445,9 @@ tags:
   -
     name: ClassList-ClassList68
     description: 'Retrieves a list of classes and class information for a Class Tab.'
+  -
+    name: ClassSession-ClassSessionSearch
+    description: 'Handles searching of class sessions.'
   -
     name: ClassView-ClassView
     description: 'Gets information about a specified class session. A class listing can be retrieved from the {@link ClassListApi} endpoint.'
