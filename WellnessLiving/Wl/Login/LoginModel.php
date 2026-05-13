@@ -79,6 +79,12 @@ class LoginModel extends WlModelAbstract
    *     Staff`s last name.
    *   </dd>
    *   <dt>
+   *     string <var>uid_staff</var>
+   *   </dt>
+   *   <dd>
+   *     The user's UID as a staff member.
+   *   </dd>
+   *   <dt>
    *     string <var>url_photo</var>
    *   </dt>
    *   <dd>
@@ -250,6 +256,14 @@ class LoginModel extends WlModelAbstract
    * @var string|null
    */
   public $uid = '0';
+
+  /**
+   * The user's UID as a staff member for the specified business.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $uid_staff;
 
   /**
    * The URL where the user photo can be retrieved.

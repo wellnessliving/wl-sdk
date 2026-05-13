@@ -11,6 +11,56 @@ use WellnessLiving\Wl\Mode\ModeSid;
 class VisitStatusModel extends WlModelAbstract
 {
   /**
+   * Information about whether the given user can cancel an online booking and what
+   * consequences the cancellation would have:
+   *  <dl>
+   *      <dt>
+   *          array|null `a_penalty`
+   *      </dt>
+   *      <dd>
+   *        <dl>
+   *           <dt>bool `is_flat`</dt>
+   *           <dd>`true` in a case of flat penalty type; `false` in a case of percentage penalty type.</dd>
+   *           <dt>string `k_currency`</dt>
+   *
+   *           <dt>string `m_amount`</dt>
+   *           <dd>Penalty amount.</dd>
+   *        </dl>
+   *        `null` if penalty must be not applied.
+   *      </dd>
+   *      <dt>
+   *          bool `can_cancel`
+   *      </dt>
+   *      <dd>
+   *        `true` if the booking can be canceled online by the specified user, `false` otherwise.
+   *      </dd>
+   *      <dt>
+   *          bool `is_flag`
+   *      </dt>
+   *      <dd>
+   *        `true` if the client's account will be flagged instead of charging a monetary fee, `false` otherwise.
+   *      </dd>
+   *      <dt>
+   *          bool `is_late`
+   *      </dt>
+   *      <dd>
+   *        `true` if the cancellation would be considered a late cancel, `false` otherwise.
+   *      </dd>
+   *      <dt>
+   *          bool `is_refund`
+   *      </dt>
+   *      <dd>
+   *        `true` if the visit credit (from the purchase option used to book) will be returned
+   *        to the user's profile after cancellation, `false` otherwise.
+   *      </dd>
+   *  </dl>
+   *
+   * @get result
+   * @var array
+   */
+  public $a_cancel;
+
+  /**
    * An array of service resources.
    *
    * The key refers to the `k_resource_type`.
@@ -55,8 +105,17 @@ class VisitStatusModel extends WlModelAbstract
    *
    * @get result
    * @var string[]
+   * @deprecated This field is deprecated. Use {@link VisitStatusModel::$a_uid_staff} instead.
    */
   public $a_staff = [];
+
+  /**
+   * The list of user IDs of staff members that conduct the class.
+   *
+   * @get result
+   * @var string[]
+   */
+  public $a_uid_staff = [];
 
   /**
    * The visit date and time in UTC and in MySQL format.
@@ -243,6 +302,7 @@ class VisitStatusModel extends WlModelAbstract
    *
    * @get result
    * @var string|null
+   * @deprecated This field is deprecated. Use {@link VisitStatusModel::$uid_staff} instead.
    */
   public $k_staff = null;
 
@@ -321,6 +381,15 @@ class VisitStatusModel extends WlModelAbstract
    * @var string|null
    */
   public $uid;
+
+  /**
+   * The ID of the user who is the staff providing the appointment.
+   * If `null`, the visit isn't from an appointment (for example, the visit is from an asset).
+   *
+   * @get result
+   * @var string|null
+   */
+  public $uid_staff = null;
 
   /**
    * The direct link to start class/event booking on the WellnessLiving website.

@@ -111,6 +111,14 @@ class BusinessConfigModel extends WlModelAbstract
   public $a_penalty;
 
   /**
+   * Whether client must select a location at checkout.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_location_client_select = false;
+
+  /**
    * Determines whether staff members should select a location at checkout.
    *
    * If `true`, staff members should select a location at checkout. Otherwise, this will be `false`.

@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Business\Account\Subscription;
 
+use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -19,6 +20,7 @@ class SubscriptionInfoModel extends WlModelAbstract
 
   /**
    * Locale ID of the business which subscription information is requested for.
+   * One of {@link LocaleSid} constants.
    *
    * @get result
    * @var int

@@ -11,6 +11,16 @@ use WellnessLiving\Wl\Mode\ModeSid;
 class ProfileCreateModel extends WlModelAbstract
 {
   /**
+   * List of intent identifiers.
+   *
+   * Available only for leads added by CAASI agent.
+   *
+   * @post post
+   * @var int[]
+   */
+  public $a_intents = [];
+
+  /**
    * Date of the user's birthday in MySQL format.
    *
    * @post post

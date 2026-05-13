@@ -1,0 +1,133 @@
+<?php
+
+namespace WellnessLiving\Wl\Schedule;
+
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Classes\Tab\TabSid;
+
+/**
+ * Retrieves the nearest class session available for booking.
+ */
+class ScheduleAvailableDateModel extends WlModelAbstract
+{
+  /**
+   * Empty to search for all classes.
+   *
+   * @get get
+   * @var string[]
+   */
+  public $a_class = [];
+
+  /**
+   * IDs of week days from {@link ADateWeekSid} class.
+   *
+   * Empty to search for all week days.
+   *
+   * @get get
+   * @var int[]
+   */
+  public $a_day = [];
+
+  /**
+   * Empty to search for all events.
+   *
+   * @get get
+   * @var string[]
+   */
+  public $a_event = [];
+
+  /**
+   * Empty to search in all locations.
+   *
+   * @get get
+   * @var string[]
+   */
+  public $a_location = [];
+
+  /**
+   * Empty to search for all staff members.
+   *
+   * @get get
+   * @var string[]
+   */
+  public $a_staff = [];
+
+  /**
+   * Time interval:
+   * <dl><dt>string `tl_end`</dt><dd>End time.</dd>
+   * <dt>string `tl_start`</dt><dd>Start time.</dd></dl>
+   *
+   * Empty to search for all time.
+   *
+   * @get get
+   * @var array
+   */
+  public $a_time = [];
+
+  /**
+   * Nearest session date available for booking in user's or business timezone.
+   *
+   * `null` if there is no suitable session found.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $dl_next_available;
+
+  /**
+   * The date/time to start from in UTC.
+   *
+   * @get get
+   * @var string
+   */
+  public $dtu_start = '';
+
+  /**
+   * "Book now" tab ID. One of {@link TabSid} constants.
+   *
+   * @get get
+   * @var int
+   */
+  public $id_class_tab = 0;
+
+  /**
+   * `true` to include classes; `false` to exclude.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_class = false;
+
+  /**
+   * `true` to include events; `false` to exclude.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_event = false;
+
+  /**
+   * `true` to include only virtual classes;
+   * `false` to include only in-person;
+   * `null` to no filtering.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_virtual = null;
+
+  /**
+   * @get get
+   * @var string
+   */
+  public $k_business = '';
+
+  /**
+   * @get get
+   * @var string
+   */
+  public $k_timezone = '';
+}
+
+?>

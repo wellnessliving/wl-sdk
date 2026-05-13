@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260505154441
+  version: 1.1.20260513174112
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-05-05 15:44:41
+    Last updated at: 2026-05-13 17:41:12
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -439,6 +439,9 @@ paths:
                   - type: object
                     description: 'Successful response.'
                     properties:
+                      a_cancel:
+                        type: array
+                        description: 'Information about whether the given user can cancel an online booking and what consequences the cancellation would have: <dl> <dt> array|null `a_penalty` </dt> <dd> <dl> <dt>bool `is_flat`</dt> <dd>`true` in a case of flat penalty type; `false` in a case of percentage penalty type.</dd> <dt>string `k_currency`</dt> <dd>Currency primary key in {@link \RsCurrencySql} table.</dd> <dt>string `m_amount`</dt> <dd>Penalty amount.</dd> </dl> `null` if penalty must be not applied. </dd> <dt> bool `can_cancel` </dt> <dd> `true` if the booking can be canceled online by the specified user, `false` otherwise. </dd> <dt> bool `is_flag` </dt> <dd> `true` if the client''s account will be flagged instead of charging a monetary fee, `false` otherwise. </dd> <dt> bool `is_late` </dt> <dd> `true` if the cancellation would be considered a late cancel, `false` otherwise. </dd> <dt> bool `is_refund` </dt> <dd> `true` if the visit credit (from the purchase option used to book) will be returned to the user''s profile after cancellation, `false` otherwise. </dd> </dl>'
                       a_resource:
                         type: [array, "null"]
                         description: 'An array of service resources. The key refers to the `k_resource_type`. See {@link \RsResourceTypeSql}. The value is an array with the following key: `k_resource`. See {@link \RsResourceSql}. The array element contains a nested array with `i_index` and `i_quantity`. See {@link \RsResourceBusySql}. This will be empty if not set yet.'
@@ -448,6 +451,9 @@ paths:
                       a_staff:
                         type: array
                         description: 'The list of keys of staff members that conduct the class.'
+                      a_uid_staff:
+                        type: array
+                        description: 'The list of user IDs of staff members that conduct the class.'
                       dt_date:
                         type: string
                         description: 'The visit date and time in UTC and in MySQL format.'
@@ -509,6 +515,9 @@ paths:
                       uid:
                         type: [string, "null"]
                         description: 'Primary key of a user who made a visit in {@link \PassportLoginSql} table. `null` for a guest visit.'
+                      uid_staff:
+                        type: [string, "null"]
+                        description: 'The ID of the user who is the staff providing the appointment. If `null`, the visit isn''t from an appointment (for example, the visit is from an asset).'
                       url_book_referral:
                         type: [string, "null"]
                         description: 'The direct link to start class/event booking on the WellnessLiving website. `null` for appointments/events/gym visits.'
@@ -966,6 +975,91 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Schedule-Cancel
+  '/Wl/Schedule/ScheduleAvailableDate.json':
+    get:
+      summary: 'Finds the nearest class session that can be booked by the current user. Looks no further than {@link ScheduleAvailableDateApi::PERIOD_LIMIT} seconds ahead from the start date.'
+      parameters:
+        - name: a_class
+          in: query
+          description: 'Primary keys of classes in {@link \RsClassSql} table. Empty to search for all classes.'
+          schema:
+            type: array
+        - name: a_day
+          in: query
+          description: 'IDs of week days from {@link \ADateWeekSid} class. Empty to search for all week days.'
+          schema:
+            type: array
+        - name: a_event
+          in: query
+          description: 'Primary keys of events in {@link \RsClassSql} table. Empty to search for all events.'
+          schema:
+            type: array
+        - name: a_location
+          in: query
+          description: 'Primary keys of locations in {@link \RsLocationSql} table. Empty to search in all locations.'
+          schema:
+            type: array
+        - name: a_staff
+          in: query
+          description: 'Primary keys of staff members in {@link \PassportLoginSql} table. Empty to search for all staff members.'
+          schema:
+            type: array
+        - name: a_time
+          in: query
+          description: 'Time interval: <dl><dt>string `tl_end`</dt><dd>End time.</dd> <dt>string `tl_start`</dt><dd>Start time.</dd></dl> Empty to search for all time.'
+          schema:
+            type: array
+        - name: dtu_start
+          in: query
+          description: 'The date/time to start from in UTC.'
+          schema:
+            type: string
+        - name: id_class_tab
+          in: query
+          description: '"Book now" tab ID. One of {@link TabSid} constants.'
+          schema:
+            type: number
+            format: int32
+        - name: is_class
+          in: query
+          description: '`true` to include classes; `false` to exclude.'
+          schema:
+            type: boolean
+        - name: is_event
+          in: query
+          description: '`true` to include events; `false` to exclude.'
+          schema:
+            type: boolean
+        - name: is_virtual
+          in: query
+          description: '`true` to include only virtual classes; `false` to include only in-person; `null` to no filtering.'
+          schema:
+            type: boolean
+        - name: k_business
+          in: query
+          description: 'Business primary key in {@link \RsBusinessSql} table.'
+          schema:
+            type: string
+        - name: k_timezone
+          in: query
+          description: 'Timezone primary key in {@link \AGeoTimezoneSql} table.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      dl_next_available:
+                        type: [string, "null"]
+                        description: 'Nearest session date available for booking in user''s or business timezone. `null` if there is no suitable session found.'
+      tags:
+        - Schedule-ScheduleAvailableDate
   '/Wl/Collector/DebtList.json':
     get:
       summary: ''
@@ -1110,6 +1204,9 @@ paths:
             schema:
               type: object
               properties:
+                a_intents:
+                  type: array
+                  description: 'List of intent identifiers. Each element is one of {@link MemberIntentsSid} constants. Available only for leads added by CAASI agent.'
                 dt_birthday:
                   type: string
                   description: 'Date of the user''s birthday in MySQL format.'
@@ -1774,6 +1871,9 @@ paths:
                       uid:
                         type: [string, "null"]
                         description: 'The key of the user. `null` on case when is walk-in client.'
+                      uid_staff:
+                        type: [string, "null"]
+                        description: 'The user''s UID as a staff member for the specified business.'
                       url_photo:
                         type: string
                         description: 'The URL where the user photo can be retrieved.'
@@ -1821,7 +1921,7 @@ paths:
                     properties:
                       a_login:
                         type: array
-                        description: 'List of information about users: <dl> <dt> int <var>id_gender</var> </dt> <dd> User''s gender. One of {@link \AGenderSid} constants. </dd> <dt> string <var>k_staff</var> </dt> <dd> User''s key as staff member. Primary key in {@link \RsStaffSql} table. </dd> <dt> string <var>s_first_name</var> </dt> <dd> User first name. </dd> <dt> string <var>s_last_name</var> </dt> <dd> First letter of user last name. </dd> <dt> string <var>text_mail_client</var> </dt> <dd> Client`s mail. </dd> <dt> string <var>text_mail_staff</var> </dt> <dd> Staff`s mail. </dd> <dt> string <var>text_name_first_staff</var> </dt> <dd> Staff`s first name. </dd> <dt> string <var>text_name_full_client</var> </dt> <dd> Full client name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login. See description of the {@link \Wl\User\Info\UserInfo::nameFullText()} method. </dd> <dt> string <var>text_name_full_staff</var> </dt> <dd> Full staff name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login. </dd>` <dt> string <var>text_name_last_staff</var> </dt> <dd> Staff`s last name. </dd> <dt> string <var>url_photo</var> </dt> <dd> User photo URL. </dd> </dl>'
+                        description: 'List of information about users: <dl> <dt> int <var>id_gender</var> </dt> <dd> User''s gender. One of {@link \AGenderSid} constants. </dd> <dt> string <var>k_staff</var> </dt> <dd> User''s key as staff member. Primary key in {@link \RsStaffSql} table. </dd> <dt> string <var>s_first_name</var> </dt> <dd> User first name. </dd> <dt> string <var>s_last_name</var> </dt> <dd> First letter of user last name. </dd> <dt> string <var>text_mail_client</var> </dt> <dd> Client`s mail. </dd> <dt> string <var>text_mail_staff</var> </dt> <dd> Staff`s mail. </dd> <dt> string <var>text_name_first_staff</var> </dt> <dd> Staff`s first name. </dd> <dt> string <var>text_name_full_client</var> </dt> <dd> Full client name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login. See description of the {@link \Wl\User\Info\UserInfo::nameFullText()} method. </dd> <dt> string <var>text_name_full_staff</var> </dt> <dd> Full staff name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login. </dd>` <dt> string <var>text_name_last_staff</var> </dt> <dd> Staff`s last name. </dd> <dt> string <var>uid_staff</var> </dt> <dd> The user''s UID as a staff member. Primary key in {@link \PassportLoginSql} table. </dd> <dt> string <var>url_photo</var> </dt> <dd> User photo URL. </dd> </dl>'
       tags:
         - Login-Login
   '/Wl/Mail/SendMail.json':
@@ -5993,7 +6093,7 @@ paths:
       parameters:
         - name: a_discount_code
           in: query
-          description: 'Information about the discount code: <dl> <dt>string <var>f_amount</var></dt> <dd>The fixed amount of the discount.</dd> <dt>float <var>f_percent</var></dt> <dd>The percentage amount of the discount.</dd> <dt>int <var>i_limit</var></dt> <dt>string <var>k_discount_code</var></dt> <dd>The discount code key.</dd> <dt>string <var>s_discount_code</var></dt> <dd>The discount code value.</dd> </dl>'
+          description: 'Information about the discount code: <dl> <dt>string `f_amount`</dt> <dd>The fixed amount of the discount.</dd> <dt>float `f_percent`</dt> <dd>The percentage amount of the discount.</dd> <dt>int `i_limit`</dt> <dt>string `k_discount_code`</dt> <dd>The discount code key.</dd> <dt>string `s_discount_code`</dt> <dd>The discount code value.</dd> </dl>'
           schema:
             type: array
         - name: a_sale_id_group
@@ -6086,19 +6186,19 @@ paths:
                         description: 'The age restriction configuration. Age restrictions for an item apply when they''re configured for a specific item and the API is requested from the backend or when age restriction are public. <dl> <dt>int|null <var>i_age_from</var></dt> <dd>The minimum age permitted for the event. This will be `null` if a minimum age isn''t set or available.</dd> <dt>int|null <var>i_age_to</var></dt> <dd>The maximum age permitted for the event. This will be `null` if a maximum age isn''t set or available.</dd> <dt>bool <var>is_age_public</var></dt> <dd>If `true`, age restrictions are public and available. Otherwise, this will be `false` if they''re hidden. When restrictions are hidden and the current user isn''t a staff member, the age range will be empty.</dd> </dl>'
                       a_data:
                         type: array
-                        description: 'Additional information specific for the item. The structure may be different depending on the item category. <dl> <dt>array `a_service_access`</dt> <dd> Access to services for a purchase option. Keys are one of the {@link ServiceSid} constants, values are one of the {@link \AFlagSid} constants. Set only for relevant purchase option service category. {@link \AFlagSid::ON} access to some services. {@link \AFlagSid::OFF} no access to services. It can be set only for classes and events. {@link \AFlagSid::ALL} access to all services. It can be set only for classes and events. For purchase options with appointments and assets service category status is always {@link \AFlagSid::ON}. </dd> <dt> bool `is_renew_public` </dt> <dd> This applies only for promotions.<br> `true` - clients can set promotion auto-renew.<br> `false` - clients can''t set promotion auto-renew. </dd> <dt> array[] `a_component` </dt> <dd> This applies only for coupons. Coupon components information. Each element will contain the following keys: <dl> <dt>int `id_program`</dt> <dd>Program ID. One of {@link \RsProgramSid} ID''s. Only applies to promotions.</dd> <dt>int `id_purchase_item`</dt> <dd>Purchase item ID. One of {@link \RsPurchaseItemSid} ID''s.</dd> <dt>int `id_sale`</dt> <dd>Sale ID. One of {@link \RsSaleSid} ID''s.</dd> <dt>int `k_id`</dt> <dd>The identifier of the item.</dd> <dt>string `text_title`</dt> <dd>The title of the item.</dd> </dl> </dd> <dt> array[] `a_staff` </dt> <dd> This applies to enrollment/event items. Staff list for class periods. Each element contains: <dl> <dt>string `k_staff`</dt> <dd>@deprecated Legacy staff key. Primary key in {@link \RsStaffSql}. Deprecated, use `uid_staff`.</dd> <dt>string `uid_staff`</dt> <dd>Staff user key. Primary key in {@link \PassportLoginSql}.</dd> <dt>string `text_family`</dt> <dd>Staff last name.</dd> <dt>string `text_staff`</dt> <dd>Staff display name.</dd> </dl> </dd> </dl> Consider the following examples: * For a product, this contains inventory information. * For a gift card, this contains possible amounts. * For a session pass/membership/package, this contains information about start and stop dates.'
+                        description: 'Additional information specific for the item. The structure may be different depending on the item category. <dl> <dt>array `a_service_access`</dt> <dd> Access to services for a purchase option. Keys are one of the {@link ServiceSid} constants, values are one of the {@link \AFlagSid} constants. Set only for relevant purchase option service category. {@link \AFlagSid::ON} access to some services. {@link \AFlagSid::OFF} no access to services. It can be set only for classes and events. {@link \AFlagSid::ALL} access to all services. It can be set only for classes and events. For purchase options with appointments and assets service category status is always {@link \AFlagSid::ON}. </dd> <dt> bool `is_renew_public` </dt> <dd> This applies only for promotions.<br> `true` - clients can set promotion auto-renew.<br> `false` - clients can''t set promotion auto-renew. </dd> <dt> array[] `a_component` </dt> <dd> This applies only for coupons. Coupon components information. Each element will contain the following keys: <dl> <dt>int `id_program`</dt> <dd>Program ID. One of {@link \RsProgramSid} ID''s. Only applies to promotions.</dd> <dt>int `id_purchase_item`</dt> <dd>Purchase item ID. One of {@link \RsPurchaseItemSid} ID''s.</dd> <dt>int `id_sale`</dt> <dd>Sale ID. One of {@link \RsSaleSid} ID''s.</dd> <dt>int `k_id`</dt> <dd>The identifier of the item.</dd> <dt>string `text_title`</dt> <dd>The title of the item.</dd> </dl> </dd> <dt> array[] `a_staff` </dt> <dd> This applies to enrollment/event items. Staff list for class periods. Each element contains: <dl> <dt>string `k_staff`</dt> <dd>@deprecated Legacy staff key. Primary key in {@link \RsStaffSql}. Deprecated, use `uid_staff`.</dd> <dt>string `uid_staff`</dt> <dd>Staff user key. Primary key in {@link \PassportLoginSql}.</dd> <dt>string `text_family`</dt> <dd>Staff last name.</dd> <dt>string `text_staff`</dt> <dd>Staff display name.</dd> </dl> </dd> <dt>string `dl_expire`</dt> <dd>Date of expiration of coupon, local date in MySQL format.</dd> <dt>string `dl_now`</dt> <dd>Current date, local date in MySQL format.</dd> <dt>string `dl_start`</dt> <dd>Date to activate the coupon on, local date in MySQL format.</dd> </dl> Consider the following examples: * For a product, this contains inventory information. * For a gift card, this contains possible amounts. * For a session pass/membership/package, this contains information about start and stop dates.'
                       a_image:
                         type: array
-                        description: 'Image information: <dl> <dt> int <var>i_height</var> </dt> <dd> The height in pixels. </dd> <dt> int <var>i_width</var> </dt> <dd> The width in pixels. </dd> <dt> bool <var>is_empty</var> </dt> <dd> <tt>true</tt> - the item has no image (in this case, ignore the other keys of this array).<br> <tt>false</tt> - the item has an image. </dd> <dt> string <var>s_url</var> </dt> <dd> The image URL. </dd> </dl> Use {@link ElementApi::$a_image_list} instead.'
+                        description: 'Image information: <dl> <dt> int `i_height` </dt> <dd> The height in pixels. </dd> <dt> int `i_width` </dt> <dd> The width in pixels. </dd> <dt> bool `is_empty` </dt> <dd> `true` - the item has no image (in this case, ignore the other keys of this array).<br> `false` - the item has an image. </dd> <dt> string `s_url` </dt> <dd> The image URL. </dd> </dl> Use {@link ElementApi::$a_image_list} instead.'
                       a_image_list:
                         type: array
-                        description: 'List of images. Keys are index and value is below information: <dl> <dt> int <var>i_height</var> </dt> <dd> The height in pixels. </dd> <dt> int <var>i_width</var> </dt> <dd> The width in pixels. </dd> <dt> bool <var>is_empty</var> </dt> <dd> `true` - item has no image (in this case ignore other keys of this array). `false` - item has an image. </dd> <dt> string <var>s_url</var> </dt> <dd> The image URL. </dd> </dl>'
+                        description: 'List of images. Keys are index and value is below information: <dl> <dt> int `i_height` </dt> <dd> The height in pixels. </dd> <dt> int `i_width` </dt> <dd> The width in pixels. </dd> <dt> bool `is_empty` </dt> <dd> `true` - item has no image (in this case ignore other keys of this array). `false` - item has an image. </dd> <dt> string `s_url` </dt> <dd> The image URL. </dd> </dl>'
                       a_installment_template:
                         type: array
                         description: 'A list of installment plans. Each element has the following next keys: <dl> <dt> int <var>i_count</var> </dt> <dd> The number of payments. </dd> <dt> int <var>id_duration</var> </dt> <dd> The duration of a single period. One of the {@link \ADurationSid} constants. </dd> <dt> int <var>i_period</var> </dt> <dd> The number of periods specified by <var>id_period</var> between individual payments. </dd> <dt> string <var>k_currency</var> </dt> <dd> The payment currency Key. </dd> <dt> string <var>k_pay_installment_template</var> </dt> <dd> The key of the installment plan template. Primary key in {@link \Thoth\WlPay\Installment\Template\Sql}. </dd> <dt> string <var>m_amount</var> </dt> <dd> The amount of the installment plan. </dd> <dt> string <var>s_duration</var> </dt> <dd> The title of the installment plan. </dd> </dl>'
                       a_item:
                         type: array
-                        description: 'The list of information pertaining to the specified item. <dl> <dt>array `a_data`</dt> <dd>Contains additional data for the sale item. For Package, it contains also the following key: <dl> <dt>bool `is_price_breakdown`</dt> <dd> Whether to display individual prices for each item in the package.<br> `true` display individual prices for each item in the package,<br> `false` display a single total price for the package. </dd> </dl> </dd> <dt>array `a_image`</dt> <dd>Contains information about one image connected to a sale item.</dd> <dt>array `a_tax`</dt> <dd>Contains information about taxes. The structure of this array is described in {@link \RsTax::$a_tax}.</dd> <dt>string `id_purchase_option_view`</dt> <dd>The Purchase Option view type. One of the {@link PurchaseOptionViewSid} constants.</dd> <dt>string `m_discount_code`</dt> <dd>The discount code amount.</dd> <dt>string `m_discount_login`</dt> <dd>The discount amount for the client type.</dd> <dt>string `s_comment`</dt> <dd>Additional information about the sale item. For example, information about ''introductory offer''.</dd> <dt>string `s_price`</dt> <dd>The price of the sale item in a human-readable format.</dd> <dt>string `s_sale`</dt> <dd>The category title of the sale item.</dd> <dt>string `s_title`</dt> <dd>The title of the sale item.</dd> </dl>'
+                        description: 'The list of information pertaining to the specified item. <dl> <dt>array `a_data`</dt> <dd>Contains additional data for the sale item. For Package, it contains also the following key: <dl> <dt>bool `is_price_breakdown`</dt> <dd> Whether to display individual prices for each item in the package.<br> `true` display individual prices for each item in the package,<br> `false` display a single total price for the package. </dd> </dl> The same structure as {@link \Wl\Catalog\CatalogList\ElementApi::$a_data} has. </dd> <dt>array `a_image`</dt> <dd>Contains information about one image connected to a sale item.</dd> <dt>array `a_tax`</dt> <dd>Contains information about taxes. The structure of this array is described in {@link \RsTax::$a_tax}.</dd> <dt>string `id_purchase_option_view`</dt> <dd>The Purchase Option view type. One of the {@link PurchaseOptionViewSid} constants.</dd> <dt>string `m_discount_code`</dt> <dd>The discount code amount.</dd> <dt>string `m_discount_login`</dt> <dd>The discount amount for the client type.</dd> <dt>string `s_comment`</dt> <dd>Additional information about the sale item. For example, information about ''introductory offer''.</dd> <dt>string `s_price`</dt> <dd>The price of the sale item in a human-readable format.</dd> <dt>string `s_sale`</dt> <dd>The category title of the sale item.</dd> <dt>string `s_title`</dt> <dd>The title of the sale item.</dd> </dl>'
                       a_tax:
                         type: array
                         description: 'A list of the item''s taxes. Keys refer tax keys, and values refer to the amount of tax.'
@@ -9163,6 +9263,9 @@ paths:
                 a_image_upload:
                   type: array
                   description: 'Information for user''s photo. It is necessary to save simultaneously user and photo in staff member mode. Attention! Data from this field is taken directly from a POST somewhere in the depths of the photo upload.'
+                a_intents:
+                  type: array
+                  description: 'List of intent identifiers. Each element is one of {@link MemberIntentsSid} constants. Available only for leads added by CAASI agent.'
                 a_new:
                   type: array
                   description: 'A copy of the {@link EditApi::$a_change}. This is used for POST requests when creating a new user.'
@@ -9481,6 +9584,9 @@ paths:
                 a_image_upload:
                   type: array
                   description: 'Information for user''s photo. It is necessary to save simultaneously user and photo in staff member mode. Attention! Data from this field is taken directly from a POST somewhere in the depths of the photo upload.'
+                a_intents:
+                  type: array
+                  description: 'List of intent identifiers. Each element is one of {@link MemberIntentsSid} constants. Available only for leads added by CAASI agent.'
                 a_new:
                   type: array
                   description: 'A copy of the {@link EditApi::$a_change}. This is used for POST requests when creating a new user.'
@@ -10585,6 +10691,47 @@ paths:
                         description: 'The key of the user''s activity corresponding to the purchase made in {@link \RsLoginActivitySql} table. `null` if no purchase was made.'
       tags:
         - Process-ProcessGroup
+  '/Wl/Book/Cancel/CancelCan.json':
+    get:
+      summary: 'Returns information about whether the given user can cancel the booking and the expected consequences.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Key of the business within which the action is performed.'
+          schema:
+            type: string
+        - name: k_visit
+          in: query
+          description: 'Visit key. Primary key in {@link \RsVisitSql} table.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_penalty:
+                        type: [array, "null"]
+                        description: 'Penalty data. <dl> <dt>bool `is_flat`</dt> <dd>`true` in a case of flat penalty type; `false` in a case of percentage penalty type.</dd> <dt>string `k_currency`</dt> <dd>Currency primary key in {@link \RsCurrencySql} table.</dd> <dt>string `m_amount`</dt> <dd>Penalty amount.</dd> </dl> `null` if penalty must be not applied.'
+                      can_cancel:
+                        type: boolean
+                        description: '`true` if the booking can be canceled online by the specified user, `false` otherwise. Cancellation is possible only if the current visit status is {@link VisitSid::BOOK} or {@link VisitSid::WAIT}.'
+                      is_flag:
+                        type: boolean
+                        description: '`true` if the client''s account will be flagged instead of charging a monetary fee, `false` otherwise. Meaningful only when {@link CancelCanApi::$is_late} is `true`.'
+                      is_late:
+                        type: boolean
+                        description: '`true` if the cancellation would be considered a late cancel, `false` otherwise. Late cancel applies only to bookings with status {@link VisitSid::BOOK}. Wait-list bookings ({@link VisitSid::WAIT}) are never subject to late cancellation rules.'
+                      is_refund:
+                        type: boolean
+                        description: '`true` if the visit credit (from the purchase option used to book) will be returned to the user''s profile after cancellation, `false` otherwise. For regular (non-late) cancellations, the credit is always returned when the booking was made with a purchase option. For late cancellations, return depends on the business''s Payment Return Policy.'
+      tags:
+        - Cancel-CancelCan
   '/Wl/Business/Account/BusinessAccount.json':
     get:
       summary: 'Generates list of active business keys for the same region as the requesting user (proper permissions required).'
@@ -10639,6 +10786,9 @@ paths:
                       a_penalty:
                         type: array
                         description: 'A list of business penalties. Each element contains: <dl> <dt>string[] <var>a_class_period</var></dt><dd>List of class period keys. Primary key in {@link \RsClassPeriodSql} table.</dd> <dt>string[] <var>a_login_type</var></dt> <dd>List of client type keys. Primary keys in {@link \Wl\Login\Type\Sql} table. Empty array means all active login types at concrete business. </dd> <dt>string[] <var>a_resource</var></dt><dd>List of resources keys. Primary key in {@link \RsResourceSql} table.</dd> <dt>string[] <var>a_service</var></dt><dd>List of services keys. Primary key in {@link \RsServiceSql} table.</dd> <dt>int <var>i_blame</var></dt><dd>Number of blamed visits.</dd> <dt>int <var>i_cancel_period</var></dt><dd>Count of days/weeks/months.</dd> <dt>int <var>i_charge_measure</var></dt><dd>Count of applied penalty.</dd> <dt>int <var>id_blame</var></dt><dd>One of {@link \Wl\Business\Policy\BlameSid} constants.</dd> <dt>int <var>id_cancel_period</var></dt><dd>Duration ID. One of {@link \ADurationSid} constants.</dd> <dt>int <var>id_charge</var></dt><dd>One of {@link \Wl\Business\Policy\ChargeSid} constants.</dd> <dt>int <var>id_charge_measure</var></dt><dd>Percent or money sign.</dd> <dt>int <var>is_appointment_all</var></dt><dd> `1` if all classes are selected, `0` - otherwise.</dd> <dt>int <var>is_class_all</var></dt><dd> `1` if all classes are selected, `0` - otherwise.</dd> <dt>int <var>is_enable_cancel_charge</var></dt><dd><tt>true</tt> if promotion penalties is enable, <tt>false</tt> otherwise.</dd> <dt>int <var>is_event_all</var></dt><dd> `1` if all events are selected, `0` - otherwise.</dd> <dt>int <var>is_login_type_all</var></dt><dd> `1` if all login types are selected, `0` - otherwise.</dd> <dt>int <var>is_resource_all</var></dt><dd> `1` if all resources are selected, `0` - otherwise.</dd> <dt>int <var>is_service_all</var></dt><dd> `1` if all services are selected, `0` - otherwise.</dd> </dl>'
+                      is_location_client_select:
+                        type: boolean
+                        description: 'Whether client must select a location at checkout.'
                       is_location_select:
                         type: boolean
                         description: 'Determines whether staff members should select a location at checkout. If `true`, staff members should select a location at checkout. Otherwise, this will be `false`.'
@@ -11591,7 +11741,7 @@ paths:
                         description: 'Asset layouts of session: <dl> <dt> array <var>a_client</var> </dt> <dd> List of clients who occupy assets of class. It is a double nesting array. Keys - primary keys of assets. See {@link \RsResourceSql} table. Sub keys - asset index. Values - sub array with keys: <dl><dt>string <var>text_client</var></dt><dd>User''s name.</dd> <dt>string <var>uid</var></dt><dd>User''s primary key.</dd></dl> </dd> <dt> string[] <var>a_resource_available</var> </dt> <dd> Key of asset. Primary key in {@link \RsResourceSql} table. </dd> <dt> string <var>k_resource_layout</var> </dt> <dd> Key of layout. See table {@link \Wl\Resource\Layout\Sql}. </dd> <dt> string <var>text_resource_type</var> </dt> <dd> Title of asset category. </dd> </dl>'
                       a_staff:
                         type: array
-                        description: 'List of staff members who provide service: <dl> <dt> array <var>a_logo</var> </dt> <dd> Data of staff member''s photo. Empty if staff has no photo. Otherwise contains next keys: <dl> <dt> int <var>i_height</var> </dt> <dd> Height in pixels. </dd> <dt> int <var>i_width</var> </dt> <dd> Width in pixels. </dd> <dt> string <var>url_logo</var> </dt> <dd> Image URL. </dd> </dl> </dd> <dt> string <var>k_staff</var> </dt> <dd> Staff key. Primary key in {@link \RsStaffSql}. </dd> <dt> string <var>html_firstname</var> </dt> <dd> Staff member''s first name. </dd> <dt> string <var>html_lastname</var> </dt> <dd> Staff member''s last name. </dd> </dl>'
+                        description: 'List of staff members who provide service: <dl> <dt> array <var>a_logo</var> </dt> <dd> Data of staff member''s photo. Empty if staff has no photo. Otherwise contains next keys: <dl> <dt> int <var>i_height</var> </dt> <dd> Height in pixels. </dd> <dt> int <var>i_width</var> </dt> <dd> Width in pixels. </dd> <dt> string <var>url_logo</var> </dt> <dd> Image URL. </dd> </dl> </dd> <dt> string <var>k_staff</var> </dt> <dd> deprecated Legacy staff key. Returned only for applications from allow-list. </dd> <dt> string <var>uid_staff</var> </dt> <dd> Staff user key. Primary key in {@link \PassportLoginSql}. </dd> <dt> string <var>html_firstname</var> </dt> <dd> Staff member''s first name. </dd> <dt> string <var>html_lastname</var> </dt> <dd> Staff member''s last name. </dd> </dl>'
                       dt_confirm:
                         type: string
                         description: 'Confirmation date+time of appointment in MySQL format. If client never confirmed, will be zero date + time.'
@@ -11777,7 +11927,7 @@ paths:
                         description: 'Asset layouts of session: <dl> <dt> array <var>a_client</var> </dt> <dd> List of clients who occupy assets of class. It is a double nesting array. Keys - primary keys of assets. See {@link \RsResourceSql} table. Sub keys - asset index. Values - sub array with keys: <dl><dt>string <var>text_client</var></dt><dd>User''s name.</dd> <dt>string <var>uid</var></dt><dd>User''s primary key.</dd></dl> </dd> <dt> string[] <var>a_resource_available</var> </dt> <dd> Key of asset. Primary key in {@link \RsResourceSql} table. </dd> <dt> string <var>k_resource_layout</var> </dt> <dd> Key of layout. See table {@link \Wl\Resource\Layout\Sql}. </dd> <dt> string <var>text_resource_type</var> </dt> <dd> Title of asset category. </dd> </dl>'
                       a_staff:
                         type: array
-                        description: 'List of staff members who provide service: <dl> <dt> array <var>a_logo</var> </dt> <dd> Data of staff member''s photo. Empty if staff has no photo. Otherwise contains next keys: <dl> <dt> int <var>i_height</var> </dt> <dd> Height in pixels. </dd> <dt> int <var>i_width</var> </dt> <dd> Width in pixels. </dd> <dt> string <var>url_logo</var> </dt> <dd> Image URL. </dd> </dl> </dd> <dt> string <var>k_staff</var> </dt> <dd> Staff key. Primary key in {@link \RsStaffSql}. </dd> <dt> string <var>html_firstname</var> </dt> <dd> Staff member''s first name. </dd> <dt> string <var>html_lastname</var> </dt> <dd> Staff member''s last name. </dd> </dl>'
+                        description: 'List of staff members who provide service: <dl> <dt> array <var>a_logo</var> </dt> <dd> Data of staff member''s photo. Empty if staff has no photo. Otherwise contains next keys: <dl> <dt> int <var>i_height</var> </dt> <dd> Height in pixels. </dd> <dt> int <var>i_width</var> </dt> <dd> Width in pixels. </dd> <dt> string <var>url_logo</var> </dt> <dd> Image URL. </dd> </dl> </dd> <dt> string <var>k_staff</var> </dt> <dd> deprecated Legacy staff key. Returned only for applications from allow-list. </dd> <dt> string <var>uid_staff</var> </dt> <dd> Staff user key. Primary key in {@link \PassportLoginSql}. </dd> <dt> string <var>html_firstname</var> </dt> <dd> Staff member''s first name. </dd> <dt> string <var>html_lastname</var> </dt> <dd> Staff member''s last name. </dd> </dl>'
                       dt_confirm:
                         type: string
                         description: 'Confirmation date+time of appointment in MySQL format. If client never confirmed, will be zero date + time.'
@@ -16792,12 +16942,6 @@ paths:
           schema:
             type: number
             format: int32
-        - name: id_mode
-          in: query
-          description: 'The mode type. One of the {@link ModeSid} constants.'
-          schema:
-            type: number
-            format: int32
         - name: id_step
           in: query
           description: 'The class modify action type. One of the {@link \RsClassModifyModeSid} constants.'
@@ -18266,6 +18410,9 @@ paths:
                       a_visit:
                         type: array
                         description: 'The keys of visits.'
+                      a_visit_payment:
+                        type: array
+                        description: 'Keys - primary keys of books made in {@link \RsVisitSql} table. Values - arrays with next keys: <dl> <dt>bool `is_free`</dt> <dd>`true` if the visit is free; `false` otherwise.</dd> <dt>string `k_login_promotion`</dt> <dd>Primary key of applied user''s purchase option in {@link \RsLoginPromotionSql} table.</dd> <dt>string `k_promotion`</dt> <dd>Primary key of purchase option in {@link \RsPromotionSql} table.</dd> <dt>string `k_session_pass`</dt> <dd>Primary key of applied session pass in {@link \Wl\Session\Pass\Sql} table.</dd> <dt>string `text_promotion`</dt> <dd>Purchase option title.</dd> </dl>'
       tags:
         - Finish-Finish
   '/Wl/Appointment/Book/Finish/Finish47.json':
@@ -18316,7 +18463,7 @@ paths:
       tags:
         - Finish-Finish47
     post:
-      summary: 'Allows to pay an appointment or appointment purchase option for the client.'
+      summary: ''
       parameters:
         - name: a_uid
           in: query
@@ -18427,6 +18574,9 @@ paths:
                       a_visit:
                         type: array
                         description: 'The keys of visits.'
+                      a_visit_payment:
+                        type: array
+                        description: 'Keys - primary keys of books made in {@link \RsVisitSql} table. Values - arrays with next keys: <dl> <dt>bool `is_free`</dt> <dd>`true` if the visit is free; `false` otherwise.</dd> <dt>string `k_login_promotion`</dt> <dd>Primary key of applied user''s purchase option in {@link \RsLoginPromotionSql} table.</dd> <dt>string `k_promotion`</dt> <dd>Primary key of purchase option in {@link \RsPromotionSql} table.</dd> <dt>string `k_session_pass`</dt> <dd>Primary key of applied session pass in {@link \Wl\Session\Pass\Sql} table.</dd> <dt>string `text_promotion`</dt> <dd>Purchase option title.</dd> </dl>'
       tags:
         - Finish-Finish47
   '/Wl/Appointment/Book/Service/Category.json':
@@ -18738,7 +18888,7 @@ paths:
             type: boolean
         - name: is_staff
           in: query
-          description: '<tt>true</tt> if the request is made by staff member; in this case booking policy restrictions are ignored. <tt>false</tt> if the request is made by client; booking policy restrictions are applied.'
+          description: '`true` if the request is made by staff member; in this case booking policy restrictions are ignored. `false` if the request is made by client; booking policy restrictions are applied.'
           schema:
             type: boolean
         - name: is_tab_all
@@ -18788,7 +18938,7 @@ paths:
             type: ["null", string]
         - name: s_appointment
           in: query
-          description: 'The staff key to show what days are available for booking. For back-to-back booking ({@link DayTimeApi::$is_back_to_back} == `true`): array of appointments for back-to-back booking. Converted to JSON string to be usable as model key. Each item is an array with next structure: <dl> <dt>array <var>a_addon</var></dt><dd>Array of appointment addons. Each value is primary key in {@link \RsShopProductSql} table.</dd> <dt>int <var>i_duration</var></dt><dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd> <dt>int <var>id_gender_staff</var></dt><dd>Staff gender. One of {@link \AGenderSid} constants. Zero mean no limitations on staff gender.</dd> <dt>string <var>k_service</var></dt><dd>Service key. Primary key in {@link \RsServiceSql} table.</dd> <dt>string <var>k_staff</var></dt><dd>@deprecated Staff key. Zero means any available staff. Primary key in {@link \RsStaffSql} table.</dd> <dt>string <var>uid_staff</var></dt><dd>Staff user key. Zero means any available staff. Primary key in {@link \PassportLoginSql} table.</dd> </dl> For multiple appointment booking ({@link DayTimeApi::$is_back_to_back} == `false`): array of previously booked appointments. Converted to JSON string to be usable as model key. Each item is an array with next structure: <dl> <dt>string <var>dtl_date</var></dt><dd>Local date and time of appointment start in MySQL format.</dd> <dt>int <var>i_duration</var></dt><dd>Duration of the appointment in minutes.</dd> <dt>string <var>k_service</var></dt><dd>Service key. Primary key in {@link \RsServiceSql} table.</dd> <dt>string <var>uid_staff</var></dt><dd>Staff user key. Zero means any available staff. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
+          description: 'The staff key to show what days are available for booking. For back-to-back booking ({@link DayTimeApi::$is_back_to_back} == `true`): array of appointments for back-to-back booking. Converted to JSON string to be usable as model key. Each item is an array with next structure: <dl> <dt>array `a_addon`</dt><dd>Array of appointment addons. Each value is primary key in {@link \RsShopProductSql} table.</dd> <dt>int `i_duration`</dt><dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd> <dt>int `id_gender_staff`</dt><dd>Staff gender. One of {@link \AGenderSid} constants. Zero mean no limitations on staff gender.</dd> <dt>string `k_service`</dt><dd>Service key. Primary key in {@link \RsServiceSql} table.</dd> <dt>string `k_staff`</dt><dd>@deprecated Staff key. Zero means any available staff. Primary key in {@link \RsStaffSql} table.</dd> <dt>string `uid_staff`</dt><dd>Staff user key. Zero means any available staff. Primary key in {@link \PassportLoginSql} table.</dd> </dl> For multiple appointment booking ({@link DayTimeApi::$is_back_to_back} == `false`): array of previously booked appointments. Converted to JSON string to be usable as model key. Each item is an array with next structure: <dl> <dt>string `dtl_date`</dt><dd>Local date and time of appointment start in MySQL format.</dd> <dt>int `i_duration`</dt><dd>Duration of the appointment in minutes.</dd> <dt>string `k_service`</dt><dd>Service key. Primary key in {@link \RsServiceSql} table.</dd> <dt>string `uid_staff`</dt><dd>Staff user key. Zero means any available staff. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
           schema:
             type: string
         - name: s_product
@@ -18818,7 +18968,7 @@ paths:
                     properties:
                       a_time:
                         type: array
-                        description: 'An array with a schedule of available appointment booking times. <dl> <dt>string <var>dt_date</var></dt> <dd>Date of the calendar.</dd> <dt>int <var>i_count</var></dt> <dd>Amount of clients that have already booked this appointment.</dd> <dt>int <var>i_time</var></dt> <dd>Integer representation of appointment schedule time.</dd> <dt>bool <var>is_waitlist</var></dt> <dd>Whether the appointment can be booked only in a wait list.</dd> <dt>string <var>k_staff</var></dt> <dd>@deprecated If this time is already occupied by any client and staff member (but service capacity is not exhausted), this key contains key of staff member (primary key in {@link \RsStaffSql} table). Otherwise - `0`.</dd> <dt>string <var>uid_staff</var></dt> <dd>If this time is already occupied by any client and staff member (but service capacity is not exhausted), this key contains user key of staff member (primary key in {@link \PassportLoginSql} table). Otherwise - `0`.</dd> <dt>string <var>s_title</var></dt> <dd>String representation of appointment schedule time.</dd> </dl>'
+                        description: 'An array with a schedule of available appointment booking times. <dl> <dt>string `dt_date`</dt> <dd>Date of the calendar.</dd> <dt>int `i_count`</dt> <dd>The count of clients that have already booked this appointment.</dd> <dt>int `i_time`</dt> <dd>Integer representation of appointment schedule time.</dd> <dt>int `i_wait`</dt> <dd>The count of clients on the waiting list for this appointment.</dd> <dt>bool `is_waitlist`</dt> <dd>Whether the appointment can be booked only in a wait list.</dd> <dt>string `k_staff`</dt> <dd>@deprecated If this time is already occupied by any client and staff member (but service capacity is not exhausted), this key contains key of staff member (primary key in {@link \RsStaffSql} table). Otherwise - `0`.</dd> <dt>string `uid_staff`</dt> <dd>If this time is already occupied by any client and staff member (but service capacity is not exhausted), this key contains user key of staff member (primary key in {@link \PassportLoginSql} table). Otherwise - `0`.</dd> <dt>string `s_title`</dt> <dd>String representation of appointment schedule time.</dd> </dl>'
                       dt_date:
                         type: string
                         description: 'The date to show the available appointment booking schedule.'
@@ -18874,7 +19024,7 @@ paths:
             type: boolean
         - name: is_staff
           in: query
-          description: '<tt>true</tt> if the request is made by staff member; in this case booking policy restrictions are ignored. <tt>false</tt> if the request is made by client; booking policy restrictions are applied.'
+          description: '`true` if the request is made by staff member; in this case booking policy restrictions are ignored. `false` if the request is made by client; booking policy restrictions are applied.'
           schema:
             type: boolean
         - name: is_tab_all
@@ -18924,7 +19074,7 @@ paths:
             type: [string, "null"]
         - name: s_appointment
           in: query
-          description: 'The staff key to show what days are available for booking. For back-to-back booking ({@link DayTimeApi::$is_back_to_back} == `true`): array of appointments for back-to-back booking. Converted to JSON string to be usable as model key. Each item is an array with next structure: <dl> <dt>array <var>a_addon</var></dt><dd>Array of appointment addons. Each value is primary key in {@link \RsShopProductSql} table.</dd> <dt>int <var>i_duration</var></dt><dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd> <dt>int <var>id_gender_staff</var></dt><dd>Staff gender. One of {@link \AGenderSid} constants. Zero mean no limitations on staff gender.</dd> <dt>string <var>k_service</var></dt><dd>Service key. Primary key in {@link \RsServiceSql} table.</dd> <dt>string <var>k_staff</var></dt><dd>@deprecated Staff key. Zero means any available staff. Primary key in {@link \RsStaffSql} table.</dd> <dt>string <var>uid_staff</var></dt><dd>Staff user key. Zero means any available staff. Primary key in {@link \PassportLoginSql} table.</dd> </dl> For multiple appointment booking ({@link DayTimeApi::$is_back_to_back} == `false`): array of previously booked appointments. Converted to JSON string to be usable as model key. Each item is an array with next structure: <dl> <dt>string <var>dtl_date</var></dt><dd>Local date and time of appointment start in MySQL format.</dd> <dt>int <var>i_duration</var></dt><dd>Duration of the appointment in minutes.</dd> <dt>string <var>k_service</var></dt><dd>Service key. Primary key in {@link \RsServiceSql} table.</dd> <dt>string <var>uid_staff</var></dt><dd>Staff user key. Zero means any available staff. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
+          description: 'The staff key to show what days are available for booking. For back-to-back booking ({@link DayTimeApi::$is_back_to_back} == `true`): array of appointments for back-to-back booking. Converted to JSON string to be usable as model key. Each item is an array with next structure: <dl> <dt>array `a_addon`</dt><dd>Array of appointment addons. Each value is primary key in {@link \RsShopProductSql} table.</dd> <dt>int `i_duration`</dt><dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd> <dt>int `id_gender_staff`</dt><dd>Staff gender. One of {@link \AGenderSid} constants. Zero mean no limitations on staff gender.</dd> <dt>string `k_service`</dt><dd>Service key. Primary key in {@link \RsServiceSql} table.</dd> <dt>string `k_staff`</dt><dd>@deprecated Staff key. Zero means any available staff. Primary key in {@link \RsStaffSql} table.</dd> <dt>string `uid_staff`</dt><dd>Staff user key. Zero means any available staff. Primary key in {@link \PassportLoginSql} table.</dd> </dl> For multiple appointment booking ({@link DayTimeApi::$is_back_to_back} == `false`): array of previously booked appointments. Converted to JSON string to be usable as model key. Each item is an array with next structure: <dl> <dt>string `dtl_date`</dt><dd>Local date and time of appointment start in MySQL format.</dd> <dt>int `i_duration`</dt><dd>Duration of the appointment in minutes.</dd> <dt>string `k_service`</dt><dd>Service key. Primary key in {@link \RsServiceSql} table.</dd> <dt>string `uid_staff`</dt><dd>Staff user key. Zero means any available staff. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
           schema:
             type: string
         - name: s_product
@@ -18957,7 +19107,7 @@ paths:
                         description: 'A list with all calendar days in the specified month with available and unavailable appointment bookings in the schedule. <dl> <dt>string <var>dt_date</var></dt> <dd>Date item of the calendar.</dd> <dt>int <var>i_week</var></dt> <dd>Number of day in week.</dd> <dt>bool <var>is_available</var></dt> <dd>Whether booking is available for this day.</dd> <dt>bool <var>is_current</var></dt> <dd>Whether date is current.</dd> <dt>bool <var>is_out</var></dt> <dd>Whether date is out of current month or it''s business/location closed date.</dd> <dt>bool <var>is_waitlist_only</var></dt> <dd>Whether booking for this day available only in wait list.</dd> <dt>bool <var>is_week_end</var></dt> <dd>Whether date is last day of the week.</dd> <dt>bool <var>is_week_start</var></dt> <dd>Whether date is first day of the week.</dd> <dt>string <var>s_day</var></dt> <dd>String representation of day number with leading zeroes.</dd> <dt>string <var>s_week</var></dt> <dd>String representation of week day (one letter, i.e. "F").</dd> </dl>'
                       a_time:
                         type: array
-                        description: 'An array with a schedule of available appointment booking times. <dl> <dt>string <var>dt_date</var></dt> <dd>Date of the calendar.</dd> <dt>int <var>i_count</var></dt> <dd>Amount of clients that have already booked this appointment.</dd> <dt>int <var>i_time</var></dt> <dd>Integer representation of appointment schedule time.</dd> <dt>bool <var>is_waitlist</var></dt> <dd>Whether the appointment can be booked only in a wait list.</dd> <dt>string <var>k_staff</var></dt> <dd>@deprecated If this time is already occupied by any client and staff member (but service capacity is not exhausted), this key contains key of staff member (primary key in {@link \RsStaffSql} table). Otherwise - `0`.</dd> <dt>string <var>uid_staff</var></dt> <dd>If this time is already occupied by any client and staff member (but service capacity is not exhausted), this key contains user key of staff member (primary key in {@link \PassportLoginSql} table). Otherwise - `0`.</dd> <dt>string <var>s_title</var></dt> <dd>String representation of appointment schedule time.</dd> </dl>'
+                        description: 'An array with a schedule of available appointment booking times. <dl> <dt>string `dt_date`</dt> <dd>Date of the calendar.</dd> <dt>int `i_count`</dt> <dd>The count of clients that have already booked this appointment.</dd> <dt>int `i_time`</dt> <dd>Integer representation of appointment schedule time.</dd> <dt>int `i_wait`</dt> <dd>The count of clients on the waiting list for this appointment.</dd> <dt>bool `is_waitlist`</dt> <dd>Whether the appointment can be booked only in a wait list.</dd> <dt>string `k_staff`</dt> <dd>@deprecated If this time is already occupied by any client and staff member (but service capacity is not exhausted), this key contains key of staff member (primary key in {@link \RsStaffSql} table). Otherwise - `0`.</dd> <dt>string `uid_staff`</dt> <dd>If this time is already occupied by any client and staff member (but service capacity is not exhausted), this key contains user key of staff member (primary key in {@link \PassportLoginSql} table). Otherwise - `0`.</dd> <dt>string `s_title`</dt> <dd>String representation of appointment schedule time.</dd> </dl>'
                       a_timezone_data:
                         type: array
                         description: 'Information about timezone. <dl> <dt>array|null <var>a_timezone</var></dt> <dd> `null` if business settings doesn''t allow client to adjust timezone, otherwise list of timezones: <dl> <dt>int <var>i_order</var></dt> <dd>Timezone order.</dd> <dt>int <var>i_shift</var></dt> <dd>Timezone shift from UTC in hours.</dd> <dt>bool <var>is_select</var></dt> <dd>`true` for selected timezone - from {@link CalendarApi::$k_timezone} param or client''s default timezone when param not set.</dd> <dt>string <var>k_timezone</var></dt> <dd>Timezone key.</dd> <dt>string <var>s_title</var></dt> <dd>Timezone name.</dd> <dt>string <var>text_abbr</var></dt> <dd>Timezone abbreviation.</dd> </dl> </dd> <dt>string|null <var>name</var></dt> <dd>`null` if business settings doesn''t allow client to adjust timezone, otherwise timezone input name.</dd> </dl>'
@@ -20119,6 +20269,9 @@ paths:
                       a_visit:
                         type: array
                         description: 'The keys of the bookings made.'
+                      a_visit_payment:
+                        type: array
+                        description: 'Keys - primary keys of books made in {@link \RsVisitSql} table. Values - arrays with next keys: <dl> <dt>bool `is_free`</dt> <dd>`true` if the visit is free; `false` otherwise.</dd> <dt>string `k_login_promotion`</dt> <dd>Primary key of applied user''s purchase option in {@link \RsLoginPromotionSql} table.</dd> <dt>string `k_promotion`</dt> <dd>Primary key of purchase option in {@link \RsPromotionSql} table.</dd> <dt>string `k_session_pass`</dt> <dd>Primary key of applied session pass in {@link \Wl\Session\Pass\Sql} table.</dd> <dt>string `text_promotion`</dt> <dd>Purchase option title.</dd> </dl>'
                       is_card_authorize:
                         type: boolean
                         description: 'If client must authorize credit card.'
@@ -20396,6 +20549,9 @@ paths:
                       a_visit:
                         type: array
                         description: 'The keys of the bookings made.'
+                      a_visit_payment:
+                        type: array
+                        description: 'Keys - primary keys of books made in {@link \RsVisitSql} table. Values - arrays with next keys: <dl> <dt>bool `is_free`</dt> <dd>`true` if the visit is free; `false` otherwise.</dd> <dt>string `k_login_promotion`</dt> <dd>Primary key of applied user''s purchase option in {@link \RsLoginPromotionSql} table.</dd> <dt>string `k_promotion`</dt> <dd>Primary key of purchase option in {@link \RsPromotionSql} table.</dd> <dt>string `k_session_pass`</dt> <dd>Primary key of applied session pass in {@link \Wl\Session\Pass\Sql} table.</dd> <dt>string `text_promotion`</dt> <dd>Purchase option title.</dd> </dl>'
                       is_card_authorize:
                         type: boolean
                         description: 'If client must authorize credit card.'
@@ -22101,7 +22257,7 @@ paths:
                       id_locale:
                         type: number
                         format: int32
-                        description: 'Locale ID of the business which subscription information is requested for. One of {@link \LocaleSid} constants.'
+                        description: 'Locale ID of the business which subscription information is requested for. One of {@link LocaleSid} constants.'
                       id_plan:
                         type: number
                         format: int32
@@ -24122,6 +24278,9 @@ tags:
     name: Business-Data
     description: 'Displays information for a specified business.'
   -
+    name: Cancel-CancelCan
+    description: 'Returns information about whether the given user can cancel an online booking and what consequences the cancellation would have. This API performs a dry run only — no actual cancellation is performed.'
+  -
     name: Captcha-CaptchaRequire
     description: 'Checks if a CAPTCHA is required.'
   -
@@ -24730,6 +24889,9 @@ tags:
   -
     name: Schedule-DayTime
     description: 'Retrieves a list of information about the booking schedule for available appointments.'
+  -
+    name: Schedule-ScheduleAvailableDate
+    description: 'Retrieves the nearest class session available for booking.'
   -
     name: Score-Score
     description: 'API endpoint designed to manage points which are earned for certain activity.'

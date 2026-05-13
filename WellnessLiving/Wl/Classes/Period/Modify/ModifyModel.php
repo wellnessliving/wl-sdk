@@ -99,7 +99,6 @@ class ModifyModel extends WlModelAbstract
   /**
    * The mode type. One of the {@link ModeSid} constants.
    *
-   * @get get
    * @post get
    * @var int
    */

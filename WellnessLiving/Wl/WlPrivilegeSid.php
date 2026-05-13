@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 240.
+ * Last Used ID: 244.
  */
 abstract class WlPrivilegeSid
 {
@@ -1097,6 +1097,34 @@ abstract class WlPrivilegeSid
    * Access to refund transaction.
    */
   const TRANSACTION_REFUND = 91;
+
+  /**
+   * Access to enroll clients in tuition plans via the enrollment wizard.
+   *
+   * @title Enroll clients in tuition plans
+   */
+  const TUITION_ENROLL = 242;
+
+  /**
+   * Add, remove, and edit tuition plans, their settings, and assigned instances.
+   *
+   * @title Edit Tuition Plans
+   */
+  const TUITION_MANAGE = 243;
+
+  /**
+   * Cancel a client's tuition plan from the Clients tab, stopping all future installments and optionally revoking remaining session access.
+   *
+   * @title Cancel participants from plans
+   */
+  const TUITION_PAYMENT_CANCEL = 244;
+
+  /**
+   * Access to view the tuition plan list and plan details.
+   *
+   * @title View tuition plans
+   */
+  const TUITION_VIEW = 241;
 
   /**
    * Access to view and change list of video categories.

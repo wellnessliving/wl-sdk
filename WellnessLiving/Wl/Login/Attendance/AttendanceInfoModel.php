@@ -150,7 +150,13 @@ class AttendanceInfoModel extends WlModelAbstract
    *     string <var>k_staff</var>
    *   </dt>
    *   <dd>
-   *     Staff key.
+   *     deprecated Legacy staff key. Returned only for applications from allow-list.
+   *   </dd>
+   *   <dt>
+   *     string <var>uid_staff</var>
+   *   </dt>
+   *   <dd>
+   *     Staff user key.
    *   </dd>
    *   <dt>
    *     string <var>html_firstname</var>

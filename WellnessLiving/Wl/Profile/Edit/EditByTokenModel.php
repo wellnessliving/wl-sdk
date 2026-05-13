@@ -57,6 +57,16 @@ class EditByTokenModel extends WlModelAbstract
   public $a_image_upload = [];
 
   /**
+   * List of intent identifiers.
+   *
+   * Available only for leads added by CAASI agent.
+   *
+   * @post post
+   * @var int[]
+   */
+  public $a_intents = [];
+
+  /**
    * A copy of the {@link EditModel::$a_change}.
    * This is used for POST requests when creating a new user.
    *

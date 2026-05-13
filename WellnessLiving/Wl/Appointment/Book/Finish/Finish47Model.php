@@ -157,6 +157,26 @@ class Finish47Model extends WlModelAbstract
   public $a_visit = null;
 
   /**
+   * Values - arrays with next keys:
+   * <dl>
+   *     <dt>bool `is_free`</dt>
+   *     <dd>`true` if the visit is free; `false` otherwise.</dd>
+   *     <dt>string `k_login_promotion`</dt>
+   *
+   *     <dt>string `k_promotion`</dt>
+   *
+   *     <dt>string `k_session_pass`</dt>
+   *
+   *     <dt>string `text_promotion`</dt>
+   *     <dd>Purchase option title.</dd>
+   * </dl>
+   *
+   * @post result
+   * @var array[]
+   */
+  public $a_visit_payment;
+
+  /**
    * The booking mode ID. One of the {@link ModeSid} constants.
    *
    * @post post

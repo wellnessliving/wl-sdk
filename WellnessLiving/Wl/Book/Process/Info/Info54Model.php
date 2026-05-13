@@ -282,6 +282,26 @@ class Info54Model extends WlModelAbstract
   public $a_visit;
 
   /**
+   * Values - arrays with next keys:
+   * <dl>
+   *     <dt>bool `is_free`</dt>
+   *     <dd>`true` if the visit is free; `false` otherwise.</dd>
+   *     <dt>string `k_login_promotion`</dt>
+   *
+   *     <dt>string `k_promotion`</dt>
+   *
+   *     <dt>string `k_session_pass`</dt>
+   *
+   *     <dt>string `text_promotion`</dt>
+   *     <dd>Purchase option title.</dd>
+   * </dl>
+   *
+   * @post result
+   * @var array[]
+   */
+  public $a_visit_payment;
+
+  /**
    * Determines whether the class/event can be booked at this step or not.
    * This is an external process control flag.
    *

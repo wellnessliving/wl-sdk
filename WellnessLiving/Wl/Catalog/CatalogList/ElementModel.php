@@ -95,6 +95,12 @@ class ElementModel extends WlModelAbstract
    *       <dd>Staff display name.</dd>
    *     </dl>
    *   </dd>
+   *   <dt>string `dl_expire`</dt>
+   *   <dd>Date of expiration of coupon, local date in MySQL format.</dd>
+   *   <dt>string `dl_now`</dt>
+   *   <dd>Current date, local date in MySQL format.</dd>
+   *   <dt>string `dl_start`</dt>
+   *   <dd>Date to activate the coupon on, local date in MySQL format.</dd>
    * </dl>
    *
    * Consider the following examples:
@@ -110,14 +116,14 @@ class ElementModel extends WlModelAbstract
   /**
    * Information about the discount code:
    * <dl>
-   *   <dt>string <var>f_amount</var></dt>
+   *   <dt>string `f_amount`</dt>
    *   <dd>The fixed amount of the discount.</dd>
-   *   <dt>float <var>f_percent</var></dt>
+   *   <dt>float `f_percent`</dt>
    *   <dd>The percentage amount of the discount.</dd>
-   *   <dt>int <var>i_limit</var></dt>
-   *   <dt>string <var>k_discount_code</var></dt>
+   *   <dt>int `i_limit`</dt>
+   *   <dt>string `k_discount_code`</dt>
    *   <dd>The discount code key.</dd>
-   *   <dt>string <var>s_discount_code</var></dt>
+   *   <dt>string `s_discount_code`</dt>
    *   <dd>The discount code value.</dd>
    * </dl>
    *
@@ -130,26 +136,26 @@ class ElementModel extends WlModelAbstract
    * Image information:
    * <dl>
    *   <dt>
-   *     int <var>i_height</var>
+   *     int `i_height`
    *   </dt>
    *   <dd>
    *     The height in pixels.
    *   </dd>
    *   <dt>
-   *     int <var>i_width</var>
+   *     int `i_width`
    *   </dt>
    *   <dd>
    *     The width in pixels.
    *   </dd>
    *   <dt>
-   *     bool <var>is_empty</var>
+   *     bool `is_empty`
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - the item has no image (in this case, ignore the other keys of this array).<br>
-   *     <tt>false</tt> - the item has an image.
+   *     `true` - the item has no image (in this case, ignore the other keys of this array).<br>
+   *     `false` - the item has an image.
    *   </dd>
    *   <dt>
-   *     string <var>s_url</var>
+   *     string `s_url`
    *   </dt>
    *   <dd>
    *     The image URL.
@@ -167,26 +173,26 @@ class ElementModel extends WlModelAbstract
    * List of images.
    * Keys are index and value is below information: <dl>
    *   <dt>
-   *     int <var>i_height</var>
+   *     int `i_height`
    *   </dt>
    *   <dd>
    *     The height in pixels.
    *   </dd>
    *   <dt>
-   *     int <var>i_width</var>
+   *     int `i_width`
    *   </dt>
    *   <dd>
    *     The width in pixels.
    *   </dd>
    *   <dt>
-   *     bool <var>is_empty</var>
+   *     bool `is_empty`
    *   </dt>
    *   <dd>
    *     `true` - item has no image (in this case ignore other keys of this array).
    *     `false` - item has an image.
    *   </dd>
    *   <dt>
-   *     string <var>s_url</var>
+   *     string `s_url`
    *   </dt>
    *   <dd>
    *     The image URL.
@@ -264,6 +270,7 @@ class ElementModel extends WlModelAbstract
    *         `false` display a single total price for the package.
    *       </dd>
    *     </dl>
+   *     The same structure as {@link ElementModel::$a_data} has.
    *   </dd>
    *
    *   <dt>array `a_image`</dt>
