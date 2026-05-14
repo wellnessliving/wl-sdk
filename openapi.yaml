@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260513174614
+  version: 1.1.20260514082229
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-05-13 17:46:14
+    Last updated at: 2026-05-14 08:22:29
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -6661,6 +6661,60 @@ paths:
                         description: 'The class list. Every element has the following structure: <dl> <dt>array <var>a_class_tab</var></dt> <dd>The list of tab keys for the class.</dd> <dt>string[] <var>a_login_type</var></dt> <dd> List of login types for current class. Primary keys in {@link \Wl\Login\Type\Sql} table. </dd> <dt>string[] <var>a_member_group</var></dt> <dd> List of member groups for current class. Primary keys in {@link \Wl\Member\Group\Sql} table. </dd> <dt>string[] <var>a_url_book</var></dt> <dd>The list of URL to book this class.</dd> <dt>string <var>dtu_book_date</var></dt> <dd>The book date of an event in UTC date/time format. Can be empty string if user cannot book the event.</dd> <dt>int <var>i_capacity</var></dt> <dd>Class capacity.</dd> <dt>int <var>id_bookable</var></dt> <dd>Bookable type ID. One of {@link BookableSid} constants.</dd> <dt>bool <var>is_active</var></dt> <dd>This will be `true` if the class is active. Otherwise, this will be `false`.</dd> <dt>bool <var>is_event</var></dt> <dd>This will be `true` for events. Otherwise, this will be `false` for classes.</dd> <dt>bool <var>is_online_private</var></dt> <dd> `true` means to show class only for clients who can book online, `false` means to show class for all clients. </dd> <dt>string <var>k_class</var></dt> <dd>The class key. The primary key in {@link \RsClassSql} table.</dd> <dt>string <var>k_enrollment_block</var></dt> <dd>The enrollment block key. The primary key in {@link \RsEnrollmentBlockSql} table.</dd> <dt>string <var>m_price_total</var></dt> <dd>The total price for an event.</dd> <dt>string <var>text_description</var></dt> <dd>The class description.</dd> <dt>string <var>text_title</var></dt> <dd>The class name.</dd> </dl>'
       tags:
         - ClassList-BookList
+  '/Wl/Classes/ClassList/List.json':
+    get:
+      summary: 'Returns list of classes and events in the business.'
+      parameters:
+        - name: a_class_tab
+          in: query
+          description: 'List of tabs keys. Each value is a primary key in the {@link \Wl\Classes\Tab\Sql\ClassTab\Sql} table. Filtering by Book Now Tab is not supported if {@link ListApi::$is_franchise} is `true`. `null` if no filtering by Book Now Tab is required.'
+          schema:
+            type: [array, "null"]
+        - name: id_class_tab
+          in: query
+          description: 'ID of book now tab. One of {@link TabSid} constants. Only {@link TabSid::TRAINING} and {@link TabSid::ENROLLMENT} book now tab are supported. Filtering by Book Now Tab is not supported if {@link ListApi::$is_franchise} is `true`. `null` if no filtering by Book Now Tab is required.'
+          schema:
+            type: [number, "null"]
+        - name: is_enrollment_block_all
+          in: query
+          description: 'Whether all events should be returned from same enrollment block. * <tt>true</tt> to return all events from same enrollment block. * <tt>false</tt> to return only one event from each enrollment block. Only published and non-empty events will be returned for the client. To return empty events, use {@link ListApi::$is_enrollment_block_empty}. For the staff, filtering by publication or emptiness is not applied.'
+          schema:
+            type: boolean
+        - name: is_enrollment_block_empty
+          in: query
+          description: 'Whether to include events without sessions. An empty event is neither published nor unpublished. It simply has no sessions. Such events can be useful for list filters. Affects clients only. Does not affect staff. Staff always see empty events. Makes sense in conjunction with the flag {@link ListApi::$is_enrollment_block_all}. * <tt>true</tt> to include events without sessions. * <tt>false</tt> to exclude events without sessions.'
+          schema:
+            type: boolean
+        - name: is_event_include
+          in: query
+          description: 'Whether to include events in the result. true` to include both classes and events. false` to include only classes.'
+          schema:
+            type: boolean
+        - name: is_franchise
+          in: query
+          description: 'Whether to return franchisee-created classes (if business is franchisor). <tt>true</tt> to include franchisee-created classes.'
+          schema:
+            type: boolean
+        - name: k_business
+          in: query
+          description: 'Business key, primary key in {@link \RsBusinessSql}.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_class:
+                        type: array
+                        description: 'List of classes and events. The result may depend on the following flags: * {@link ListApi::$is_enrollment_block_all} * {@link ListApi::$is_enrollment_block_empty} Each element has the following structure: <dl> <dt>string[] <var>a_class_tab</var></dt> <dd> List of class book now tabs, where this class is presented. Each element is primary key from {@link \Wl\Classes\Tab\Sql\ClassTab\Sql} or `null` if class is presented in default system tab Classes. Events can also be added in class tabs. </dd> <dt>string[] <var>a_event_tab</var></dt> <dd> List of event book now tabs, where this event is presented. Each element is primary key from {@link \Wl\Classes\Tab\Sql\ClassTab\Sql} or `null` if event is presented in default system tab Enrollments. Classes cannot be added in event tabs. </dd>` <dt>string <var>dl_end</var></dt> <dd> The ending date of the class/event. Maybe a zero date if the class is ongoing (has no end date). </dd> <dt>string <var>dl_start</var></dt> <dd> The starting date of the class/event. </dd> <dt> bool <var>is_active</var> </dt> <dd> Whether class/event is active. </dd> <dt> bool <var>is_event</var> </dt> <dd> Define if current element is event.<tt>true</tt> - event, <tt>false</tt> - class. </dd> <dt> bool <var>is_remove</var> </dt> <dd> Whether class/event is removed. </dd> <dt> string <var>k_class</var> </dt> <dd> Class/event identifier, primary key in {@link \RsClassSql}. </dd> <dt> string <var>k_enrollment_block</var> </dt> <dd> Event Block ID, primary key in {@link \RsEnrollmentBlockSql}. </dd> <dt> string <var>text_title</var> </dt> <dd> Class/event name. </dd> </dl>'
+      tags:
+        - ClassList-List
   '/Wl/Classes/ClassView/Element.json':
     get:
       summary: ''
@@ -24445,6 +24499,9 @@ tags:
   -
     name: ClassList-ClassList68
     description: 'Retrieves a list of classes and class information for a Class Tab.'
+  -
+    name: ClassList-List
+    description: 'List of classes and events.'
   -
     name: ClassSession-ClassSessionSearch
     description: 'Handles searching of class sessions.'
