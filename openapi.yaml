@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260514082229
+  version: 1.1.20260514134035
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-05-14 08:22:29
+    Last updated at: 2026-05-14 13:40:35
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -1206,7 +1206,7 @@ paths:
               properties:
                 a_intents:
                   type: array
-                  description: 'List of intent identifiers. Each element is one of {@link MemberIntentsSid} constants. Available only for leads added by CAASI agent.'
+                  description: 'List of intent identifiers. Each element is one of {@link \Wl\Login\Member\Intents\MemberIntentsSid} constants. Available only for leads added by CAASI agent.'
                 dt_birthday:
                   type: string
                   description: 'Date of the user''s birthday in MySQL format.'
@@ -9319,7 +9319,7 @@ paths:
                   description: 'Information for user''s photo. It is necessary to save simultaneously user and photo in staff member mode. Attention! Data from this field is taken directly from a POST somewhere in the depths of the photo upload.'
                 a_intents:
                   type: array
-                  description: 'List of intent identifiers. Each element is one of {@link MemberIntentsSid} constants. Available only for leads added by CAASI agent.'
+                  description: 'List of intent identifiers. Each element is one of {@link \Wl\Login\Member\Intents\MemberIntentsSid} constants. Available only for leads added by CAASI agent.'
                 a_new:
                   type: array
                   description: 'A copy of the {@link EditApi::$a_change}. This is used for POST requests when creating a new user.'
@@ -9428,6 +9428,9 @@ paths:
                 a_change:
                   type: array
                   description: 'A list of fields to change. Values are the new field values. Specific values depend on an individual field type. Some fields may be strings while others are arrays. If a composite field is changed, all fields should be specified (for example, if you change your address, you''ll need to specify the city). Keys are the `k_field` values.'
+                a_intents:
+                  type: array
+                  description: 'List of intent identifiers. Each element is one of {@link \Wl\Login\Member\Intents\MemberIntentsSid} constants. Available only for leads added by CAASI agent.'
                 a_phone_inherit:
                   type: array
                   description: 'An array contained with information about phone inheritance. The array has the following structure: <dl> <dt>bool [`is_phone_inherit`]</dt> <dd>Indicates weather to inherit phone numbers from relative or not. `1` if phone inheritance is needed, ''0'' otherwise.</dd> <dt>string [`text_relative`]</dt> <dd>Relative''s name.</dd> <dt>string `uid_relative`</dt> <dd>User key of relative.</dd> </dl>'
@@ -19645,7 +19648,7 @@ paths:
             type: string
         - name: uid
           in: query
-          description: 'The user key. Primary key in {@link \PassportLoginSql} table.'
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here. Primary key in {@link \PassportLoginSql} table.'
           schema:
             type: string
       responses:
@@ -19726,7 +19729,7 @@ paths:
             type: string
         - name: uid
           in: query
-          description: 'The user key. Primary key in {@link \PassportLoginSql} table.'
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here. Primary key in {@link \PassportLoginSql} table.'
           schema:
             type: string
       requestBody:

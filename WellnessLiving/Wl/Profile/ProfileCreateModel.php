@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Profile;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Login\Member\MemberIntentsSid;
 use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
@@ -11,7 +12,7 @@ use WellnessLiving\Wl\Mode\ModeSid;
 class ProfileCreateModel extends WlModelAbstract
 {
   /**
-   * List of intent identifiers.
+   * List of intent identifiers. Each element is one of {@link MemberIntentsSid} constants.
    *
    * Available only for leads added by CAASI agent.
    *
