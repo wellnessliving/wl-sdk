@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Profile\Edit;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Field\WlFieldGeneralSid;
 use WellnessLiving\Wl\Field\WlFieldTypeSid;
+use WellnessLiving\Wl\Login\Member\MemberIntentsSid;
 use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Profile\RegisterSourceSid;
 
@@ -57,11 +58,12 @@ class EditByTokenModel extends WlModelAbstract
   public $a_image_upload = [];
 
   /**
-   * List of intent identifiers.
+   * List of intent identifiers. Each element is one of {@link MemberIntentsSid} constants.
    *
    * Available only for leads added by CAASI agent.
    *
    * @post post
+   * @put post
    * @var int[]
    */
   public $a_intents = [];

@@ -101,6 +101,15 @@ class ElementModel extends WlModelAbstract
    *   <dd>Current date, local date in MySQL format.</dd>
    *   <dt>string `dl_start`</dt>
    *   <dd>Date to activate the coupon on, local date in MySQL format.</dd>
+   *   <dd>When `id_activation`=FIXED, this field contains a custom date to activate the coupon on, local date in MySQL format.</dd>
+   *   <dt>int `i_duration`</dt>
+   *   <dd>Number of periods the coupon is active. Type of a period is specified by `id_duration`.</dd>
+   *   <dt>int `id_activation`</dt>
+   *   <dd>Type of a coupon activation date specification.</dd>
+   *   <dt>int `id_duration`</dt>
+   *   <dd>Duration of a period. A constant from {@link ADurationSid}.</dd>
+   *   <dt>int `id_duration_type`</dt>
+   *   <dd>A way to specify a duration.</dd>
    * </dl>
    *
    * Consider the following examples:

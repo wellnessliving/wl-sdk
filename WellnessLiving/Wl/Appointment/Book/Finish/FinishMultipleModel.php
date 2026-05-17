@@ -501,6 +501,12 @@ class FinishMultipleModel extends WlModelAbstract
   /**
    * The user key.
    *
+   * This field is used if the client books for himself or for the relative.
+   *
+   * This field is incorrect to use for guest booking since in this case the client will be checked as a relative.
+   *
+   * In case of a group booking or a guest booking, the key of the client who is making the booking is set here.
+   *
    * @get get
    * @post get
    * @var string

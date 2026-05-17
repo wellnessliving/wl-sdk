@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260514134035
+  version: 1.1.20260517120520
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-05-14 13:40:35
+    Last updated at: 2026-05-17 12:05:20
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -3886,6 +3886,90 @@ paths:
                         description: 'Sort field ID for list of announcements. Used only when {@link AnnouncementListApi::$is_backend} is `true`. `null` in case when use default field.'
       tags:
         - Announcement-AnnouncementList
+  '/Thoth/ExplorerSearch/ClassSession/ClassSessionSearch.json':
+    get:
+      summary: 'Gets list of class sessions based on search criteria.'
+      parameters:
+        - name: a_business
+          in: query
+          description: 'List of business keys to search by. Each value is primary key in {@link \RsBusinessSql}. Empty array to not filter by business keys.'
+          schema:
+            type: array
+        - name: a_experience_type
+          in: query
+          description: 'List of experience types to search by. Each value is one of {@link ClassSessionExperienceTypeEnum} case values. Empty array to not filter by experience type.'
+          schema:
+            type: array
+        - name: a_home_tour
+          in: query
+          description: 'List of home tour activity types to search by. Each value is from {@link \RsHomeTourSid}. Empty array to not filter by home tour type.'
+          schema:
+            type: array
+        - name: a_location
+          in: query
+          description: 'List of location keys to search by. Each value is primary key in {@link \RsLocationSql}. Empty array to not filter by location keys.'
+          schema:
+            type: array
+        - name: a_location_rating
+          in: query
+          description: 'List of location ratings to search by. Values are integers from 1 to 5, or `null`/`0` for unrated locations. Empty array to not filter by location rating.'
+          schema:
+            type: [array, object]
+        - name: a_staff_uid
+          in: query
+          description: 'List of staff user keys to search by. Each value is a user key (uid) of a staff member. Empty array to not filter by staff.'
+          schema:
+            type: array
+        - name: dl_begin
+          in: query
+          description: 'Start date of the session search date range in MySQL format (`Y-m-d`). Required. `null` if not set by request.'
+          schema:
+            type: [string, "null"]
+        - name: dl_end
+          in: query
+          description: 'End date of the session search date range in MySQL format (`Y-m-d`). Required. `null` if not set by request.'
+          schema:
+            type: [string, "null"]
+        - name: f_latitude
+          in: query
+          description: 'Latitude coordinate for search. Required. `null` if not set by request.'
+          schema:
+            type: [number, "null"]
+        - name: f_longitude
+          in: query
+          description: 'Longitude coordinate for search. Required. `null` if not set by request.'
+          schema:
+            type: [number, "null"]
+        - name: f_radius
+          in: query
+          description: 'Search radius in kilometers. Required. `null` if not set by request.'
+          schema:
+            type: [number, "null"]
+        - name: m_price_max
+          in: query
+          description: 'Maximum price to search by (inclusive). Decimal string in dollars (e.g. `"100.00"`). `null` to not limit by maximum price.'
+          schema:
+            type: [string, "null"]
+        - name: m_price_min
+          in: query
+          description: 'Minimum price to search by (inclusive). Decimal string in dollars (e.g. `"0.00"`). `null` to not limit by minimum price.'
+          schema:
+            type: [string, "null"]
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_class_session:
+                        type: array
+                        description: 'List of found class sessions. Each item is an associative array with the following structure: <dl> <dt>string|null `dtu_book_begin`</dt> <dd>Date and time when booking for this session starts in UTC. `null` if there is no "too early" limitation.</dd> <dt>string|null `dtu_book_end`</dt> <dd>Date and time when booking for this session ends in UTC. `null` if there is no "too late" limitation.</dd> <dt>string `dtu_session`</dt> <dd>Date and time of the session in UTC.</dd> <dt>string `k_class`</dt> <dd>Class key, primary key in {@link \RsClassSql}.</dd> <dt>string `k_class_period`</dt> <dd>Class period key, primary key in {@link \RsClassPeriodSql}.</dd> <dt>string `k_class_period_session`</dt> <dd>Class session key, primary key in {@link ClassPeriodSessionSql}.</dd> </dl>'
+      tags:
+        - ClassSession-ClassSessionSearch
   '/Thoth/ReportCore/Generator/Query.json':
     post:
       summary: 'Returns contents of a report as a table. If the report is not yet generated, it gets generated. If the report is being generated now, partial content may be returned.'
@@ -6186,7 +6270,7 @@ paths:
                         description: 'The age restriction configuration. Age restrictions for an item apply when they''re configured for a specific item and the API is requested from the backend or when age restriction are public. <dl> <dt>int|null <var>i_age_from</var></dt> <dd>The minimum age permitted for the event. This will be `null` if a minimum age isn''t set or available.</dd> <dt>int|null <var>i_age_to</var></dt> <dd>The maximum age permitted for the event. This will be `null` if a maximum age isn''t set or available.</dd> <dt>bool <var>is_age_public</var></dt> <dd>If `true`, age restrictions are public and available. Otherwise, this will be `false` if they''re hidden. When restrictions are hidden and the current user isn''t a staff member, the age range will be empty.</dd> </dl>'
                       a_data:
                         type: array
-                        description: 'Additional information specific for the item. The structure may be different depending on the item category. <dl> <dt>array `a_service_access`</dt> <dd> Access to services for a purchase option. Keys are one of the {@link ServiceSid} constants, values are one of the {@link \AFlagSid} constants. Set only for relevant purchase option service category. {@link \AFlagSid::ON} access to some services. {@link \AFlagSid::OFF} no access to services. It can be set only for classes and events. {@link \AFlagSid::ALL} access to all services. It can be set only for classes and events. For purchase options with appointments and assets service category status is always {@link \AFlagSid::ON}. </dd> <dt> bool `is_renew_public` </dt> <dd> This applies only for promotions.<br> `true` - clients can set promotion auto-renew.<br> `false` - clients can''t set promotion auto-renew. </dd> <dt> array[] `a_component` </dt> <dd> This applies only for coupons. Coupon components information. Each element will contain the following keys: <dl> <dt>int `id_program`</dt> <dd>Program ID. One of {@link \RsProgramSid} ID''s. Only applies to promotions.</dd> <dt>int `id_purchase_item`</dt> <dd>Purchase item ID. One of {@link \RsPurchaseItemSid} ID''s.</dd> <dt>int `id_sale`</dt> <dd>Sale ID. One of {@link \RsSaleSid} ID''s.</dd> <dt>int `k_id`</dt> <dd>The identifier of the item.</dd> <dt>string `text_title`</dt> <dd>The title of the item.</dd> </dl> </dd> <dt> array[] `a_staff` </dt> <dd> This applies to enrollment/event items. Staff list for class periods. Each element contains: <dl> <dt>string `k_staff`</dt> <dd>@deprecated Legacy staff key. Primary key in {@link \RsStaffSql}. Deprecated, use `uid_staff`.</dd> <dt>string `uid_staff`</dt> <dd>Staff user key. Primary key in {@link \PassportLoginSql}.</dd> <dt>string `text_family`</dt> <dd>Staff last name.</dd> <dt>string `text_staff`</dt> <dd>Staff display name.</dd> </dl> </dd> <dt>string `dl_expire`</dt> <dd>Date of expiration of coupon, local date in MySQL format.</dd> <dt>string `dl_now`</dt> <dd>Current date, local date in MySQL format.</dd> <dt>string `dl_start`</dt> <dd>Date to activate the coupon on, local date in MySQL format.</dd> </dl> Consider the following examples: * For a product, this contains inventory information. * For a gift card, this contains possible amounts. * For a session pass/membership/package, this contains information about start and stop dates.'
+                        description: 'Additional information specific for the item. The structure may be different depending on the item category. <dl> <dt>array `a_service_access`</dt> <dd> Access to services for a purchase option. Keys are one of the {@link ServiceSid} constants, values are one of the {@link \AFlagSid} constants. Set only for relevant purchase option service category. {@link \AFlagSid::ON} access to some services. {@link \AFlagSid::OFF} no access to services. It can be set only for classes and events. {@link \AFlagSid::ALL} access to all services. It can be set only for classes and events. For purchase options with appointments and assets service category status is always {@link \AFlagSid::ON}. </dd> <dt> bool `is_renew_public` </dt> <dd> This applies only for promotions.<br> `true` - clients can set promotion auto-renew.<br> `false` - clients can''t set promotion auto-renew. </dd> <dt> array[] `a_component` </dt> <dd> This applies only for coupons. Coupon components information. Each element will contain the following keys: <dl> <dt>int `id_program`</dt> <dd>Program ID. One of {@link \RsProgramSid} ID''s. Only applies to promotions.</dd> <dt>int `id_purchase_item`</dt> <dd>Purchase item ID. One of {@link \RsPurchaseItemSid} ID''s.</dd> <dt>int `id_sale`</dt> <dd>Sale ID. One of {@link \RsSaleSid} ID''s.</dd> <dt>int `k_id`</dt> <dd>The identifier of the item.</dd> <dt>string `text_title`</dt> <dd>The title of the item.</dd> </dl> </dd> <dt> array[] `a_staff` </dt> <dd> This applies to enrollment/event items. Staff list for class periods. Each element contains: <dl> <dt>string `k_staff`</dt> <dd>@deprecated Legacy staff key. Primary key in {@link \RsStaffSql}. Deprecated, use `uid_staff`.</dd> <dt>string `uid_staff`</dt> <dd>Staff user key. Primary key in {@link \PassportLoginSql}.</dd> <dt>string `text_family`</dt> <dd>Staff last name.</dd> <dt>string `text_staff`</dt> <dd>Staff display name.</dd> </dl> </dd> <dt>string `dl_expire`</dt> <dd>Date of expiration of coupon, local date in MySQL format.</dd> <dt>string `dl_now`</dt> <dd>Current date, local date in MySQL format.</dd> <dt>string `dl_start`</dt> <dd>Date to activate the coupon on, local date in MySQL format.</dd> <dd>When `id_activation`=FIXED, this field contains a custom date to activate the coupon on, local date in MySQL format.</dd> <dt>int `i_duration`</dt> <dd>Number of periods the coupon is active. Type of a period is specified by `id_duration`.</dd> <dt>int `id_activation`</dt> <dd>Type of a coupon activation date specification. One of {@link \Wl\Coupon\Edit\ActivationSid} constants.</dd> <dt>int `id_duration`</dt> <dd>Duration of a period. A constant from {@link \ADurationSid}.</dd> <dt>int `id_duration_type`</dt> <dd>A way to specify a duration. One of {@link \Wl\Coupon\Edit\DurationTypeSid} constants.</dd> </dl> Consider the following examples: * For a product, this contains inventory information. * For a gift card, this contains possible amounts. * For a session pass/membership/package, this contains information about start and stop dates.'
                       a_image:
                         type: array
                         description: 'Image information: <dl> <dt> int `i_height` </dt> <dd> The height in pixels. </dd> <dt> int `i_width` </dt> <dd> The width in pixels. </dd> <dt> bool `is_empty` </dt> <dd> `true` - the item has no image (in this case, ignore the other keys of this array).<br> `false` - the item has an image. </dd> <dt> string `s_url` </dt> <dd> The image URL. </dd> </dl> Use {@link ElementApi::$a_image_list} instead.'
@@ -9643,7 +9727,7 @@ paths:
                   description: 'Information for user''s photo. It is necessary to save simultaneously user and photo in staff member mode. Attention! Data from this field is taken directly from a POST somewhere in the depths of the photo upload.'
                 a_intents:
                   type: array
-                  description: 'List of intent identifiers. Each element is one of {@link MemberIntentsSid} constants. Available only for leads added by CAASI agent.'
+                  description: 'List of intent identifiers. Each element is one of {@link \Wl\Login\Member\Intents\MemberIntentsSid} constants. Available only for leads added by CAASI agent.'
                 a_new:
                   type: array
                   description: 'A copy of the {@link EditApi::$a_change}. This is used for POST requests when creating a new user.'
@@ -9752,6 +9836,9 @@ paths:
                 a_change:
                   type: array
                   description: 'A list of fields to change. Values are the new field values. Specific values depend on an individual field type. Some fields may be strings while others are arrays. If a composite field is changed, all fields should be specified (for example, if you change your address, you''ll need to specify the city). Keys are the `k_field` values.'
+                a_intents:
+                  type: array
+                  description: 'List of intent identifiers. Each element is one of {@link \Wl\Login\Member\Intents\MemberIntentsSid} constants. Available only for leads added by CAASI agent.'
                 a_phone_inherit:
                   type: array
                   description: 'An array contained with information about phone inheritance. The array has the following structure: <dl> <dt>bool [`is_phone_inherit`]</dt> <dd>Indicates weather to inherit phone numbers from relative or not. `1` if phone inheritance is needed, ''0'' otherwise.</dd> <dt>string [`text_relative`]</dt> <dd>Relative''s name.</dd> <dt>string `uid_relative`</dt> <dd>User key of relative.</dd> </dl>'
@@ -18235,7 +18322,7 @@ paths:
             type: string
         - name: uid
           in: query
-          description: 'The user key. Primary key in {@link \PassportLoginSql} table.'
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here. Primary key in {@link \PassportLoginSql} table.'
           schema:
             type: string
       requestBody:
@@ -18332,7 +18419,7 @@ paths:
             type: string
         - name: uid
           in: query
-          description: 'The user key. Primary key in {@link \PassportLoginSql} table.'
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here. Primary key in {@link \PassportLoginSql} table.'
           schema:
             type: string
       responses:
@@ -18404,7 +18491,7 @@ paths:
             type: ["null", string]
         - name: uid
           in: query
-          description: 'The user key. Primary key in {@link \PassportLoginSql} table.'
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here. Primary key in {@link \PassportLoginSql} table.'
           schema:
             type: string
       requestBody:
@@ -18498,7 +18585,7 @@ paths:
             type: string
         - name: uid
           in: query
-          description: 'The user key. Primary key in {@link \PassportLoginSql} table.'
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here. Primary key in {@link \PassportLoginSql} table.'
           schema:
             type: string
       responses:
@@ -18565,7 +18652,7 @@ paths:
             type: ["null", string]
         - name: uid
           in: query
-          description: 'The user key. Primary key in {@link \PassportLoginSql} table.'
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here. Primary key in {@link \PassportLoginSql} table.'
           schema:
             type: string
       requestBody:
@@ -18677,7 +18764,7 @@ paths:
             type: string
         - name: uid
           in: query
-          description: 'The user key. Primary key in {@link \PassportLoginSql} table.'
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here. Primary key in {@link \PassportLoginSql} table.'
           schema:
             type: string
       responses:
@@ -18757,7 +18844,7 @@ paths:
             type: string
         - name: uid
           in: query
-          description: 'The user key. Primary key in {@link \PassportLoginSql} table.'
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here. Primary key in {@link \PassportLoginSql} table.'
           schema:
             type: string
       responses:
@@ -18842,7 +18929,7 @@ paths:
             type: string
         - name: uid
           in: query
-          description: 'The user key. Primary key in {@link \PassportLoginSql} table.'
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here. Primary key in {@link \PassportLoginSql} table.'
           schema:
             type: string
       responses:
@@ -19005,7 +19092,7 @@ paths:
             type: string
         - name: uid
           in: query
-          description: 'The user key. Primary key in {@link \PassportLoginSql} table.'
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here. Primary key in {@link \PassportLoginSql} table.'
           schema:
             type: string
         - name: uid_staff
@@ -19141,7 +19228,7 @@ paths:
             type: string
         - name: uid
           in: query
-          description: 'The user key. Primary key in {@link \PassportLoginSql} table.'
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here. Primary key in {@link \PassportLoginSql} table.'
           schema:
             type: string
         - name: uid_staff
@@ -19271,7 +19358,7 @@ paths:
             type: [string, "null"]
         - name: uid
           in: query
-          description: 'The user key. Primary key in {@link \PassportLoginSql} table.'
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here. Primary key in {@link \PassportLoginSql} table.'
           schema:
             type: string
       responses:
@@ -19471,7 +19558,7 @@ paths:
             type: string
         - name: uid
           in: query
-          description: 'The user key. Primary key in {@link \PassportLoginSql} table.'
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here. Primary key in {@link \PassportLoginSql} table.'
           schema:
             type: string
       responses:
@@ -19565,7 +19652,7 @@ paths:
             type: string
         - name: uid
           in: query
-          description: 'The user key. Primary key in {@link \PassportLoginSql} table.'
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here. Primary key in {@link \PassportLoginSql} table.'
           schema:
             type: string
       requestBody:
@@ -19845,7 +19932,7 @@ paths:
             type: string
         - name: uid
           in: query
-          description: 'The user key. Primary key in {@link \PassportLoginSql} table.'
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here. Primary key in {@link \PassportLoginSql} table.'
           schema:
             type: string
       responses:
@@ -19934,7 +20021,7 @@ paths:
             type: string
         - name: uid
           in: query
-          description: 'The user key. Primary key in {@link \PassportLoginSql} table.'
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here. Primary key in {@link \PassportLoginSql} table.'
           schema:
             type: string
       requestBody:
@@ -24165,90 +24252,6 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Count-InventoryCount
-  '/Thoth/ExplorerSearch/ClassSession/ClassSessionSearch.json':
-    get:
-      summary: 'Gets list of class sessions based on search criteria.'
-      parameters:
-        - name: a_business
-          in: query
-          description: 'List of business keys to search by. Each value is primary key in {@link \RsBusinessSql}. Empty array to not filter by business keys.'
-          schema:
-            type: array
-        - name: a_experience_type
-          in: query
-          description: 'List of experience types to search by. Each value is one of {@link ClassSessionExperienceTypeEnum} case values. Empty array to not filter by experience type.'
-          schema:
-            type: array
-        - name: a_home_tour
-          in: query
-          description: 'List of home tour activity types to search by. Each value is from {@link \RsHomeTourSid}. Empty array to not filter by home tour type.'
-          schema:
-            type: array
-        - name: a_location
-          in: query
-          description: 'List of location keys to search by. Each value is primary key in {@link \RsLocationSql}. Empty array to not filter by location keys.'
-          schema:
-            type: array
-        - name: a_location_rating
-          in: query
-          description: 'List of location ratings to search by. Values are integers from 1 to 5, or `null`/`0` for unrated locations. Empty array to not filter by location rating.'
-          schema:
-            type: [array, object]
-        - name: a_staff_uid
-          in: query
-          description: 'List of staff user keys to search by. Each value is a user key (uid) of a staff member. Empty array to not filter by staff.'
-          schema:
-            type: array
-        - name: dl_begin
-          in: query
-          description: 'Start date of the session search date range in MySQL format (`Y-m-d`). Required. `null` if not set by request.'
-          schema:
-            type: [string, "null"]
-        - name: dl_end
-          in: query
-          description: 'End date of the session search date range in MySQL format (`Y-m-d`). Required. `null` if not set by request.'
-          schema:
-            type: [string, "null"]
-        - name: f_latitude
-          in: query
-          description: 'Latitude coordinate for search. Required. `null` if not set by request.'
-          schema:
-            type: [number, "null"]
-        - name: f_longitude
-          in: query
-          description: 'Longitude coordinate for search. Required. `null` if not set by request.'
-          schema:
-            type: [number, "null"]
-        - name: f_radius
-          in: query
-          description: 'Search radius in kilometers. Required. `null` if not set by request.'
-          schema:
-            type: [number, "null"]
-        - name: m_price_max
-          in: query
-          description: 'Maximum price to search by (inclusive). Decimal string in dollars (e.g. `"100.00"`). `null` to not limit by maximum price.'
-          schema:
-            type: [string, "null"]
-        - name: m_price_min
-          in: query
-          description: 'Minimum price to search by (inclusive). Decimal string in dollars (e.g. `"0.00"`). `null` to not limit by minimum price.'
-          schema:
-            type: [string, "null"]
-      responses:
-        200:
-          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - type: object
-                    description: 'Successful response.'
-                    properties:
-                      a_class_session:
-                        type: array
-                        description: 'List of found class sessions. Each item is an associative array with the following structure: <dl> <dt>string|null `dtu_book_begin`</dt> <dd>Date and time when booking for this session starts in UTC. `null` if there is no "too early" limitation.</dd> <dt>string|null `dtu_book_end`</dt> <dd>Date and time when booking for this session ends in UTC. `null` if there is no "too late" limitation.</dd> <dt>string `dtu_session`</dt> <dd>Date and time of the session in UTC.</dd> <dt>string `k_class`</dt> <dd>Class key, primary key in {@link \RsClassSql}.</dd> <dt>string `k_class_period`</dt> <dd>Class period key, primary key in {@link \RsClassPeriodSql}.</dd> <dt>string `k_class_period_session`</dt> <dd>Class session key, primary key in {@link ClassPeriodSessionSql}.</dd> </dl>'
-      tags:
-        - ClassSession-ClassSessionSearch
 tags:
   -
     name: Account-Account
