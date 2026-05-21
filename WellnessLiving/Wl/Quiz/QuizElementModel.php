@@ -148,6 +148,10 @@ class QuizElementModel extends WlModelAbstract
    * </dl>
    * Each element value has the format:
    * <dl>
+   *   <dt>string|null <var>[dl_start]</var></dt>
+   *   <dd>Overridden start date of the purchase option.</dd>
+   *   <dt>string|null <var>[f_price]</var></dt>
+   *   <dd>Overridden price of the purchase option.</dd>
    *   <dt>int <var>[i_duration]</var></dt>
    *   <dd>Duration of the purchase option.</dd>
    *   <dt>int <var>[i_payment_period]</var></dt>

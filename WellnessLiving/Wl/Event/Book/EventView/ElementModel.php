@@ -2,9 +2,11 @@
 
 namespace WellnessLiving\Wl\Event\Book\EventView;
 
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Business\Config\BusinessConfigModel;
+use WellnessLiving\Wl\Classes\RequirePaySid;
 use WellnessLiving\Wl\Virtual\VirtualProviderSid;
 
 /**
@@ -18,11 +20,11 @@ class ElementModel extends WlModelAbstract
    * An empty array if there are no age restrictions.
    *
    * <dl>
-   *   <dt>int|null <var>i_age_from</var></dt>
+   *   <dt>int|null `i_age_from`</dt>
    *   <dd>The minimum age for participation in the event. `null` if there's no minimum age set or information isn't available.</dd>
-   *   <dt>int|null <var>i_age_to</var></dt>
+   *   <dt>int|null `i_age_to`</dt>
    *   <dd>The age limit for participation in the event. `null` if there's no age limit set or information isn't available.</dd>
-   *   <dt>bool <var>is_age_public</var></dt>
+   *   <dt>bool `is_age_public`</dt>
    *   <dd>`true` if age restrictions are public and available, `false` if they're hidden.
    *     When restrictions are hidden and the current user isn't a staff member, the age range will be empty.</dd>
    * </dl>
@@ -39,9 +41,9 @@ class ElementModel extends WlModelAbstract
    * In this case, other fields aren't receivers.
    *
    * <dl>
-   *   <dt>string <var>dt_date</var></dt>
+   *   <dt>string `dt_date`</dt>
    *   <dd>Date/time when the session starts. In UTC.</dd>
-   *   <dt>string <var>k_class_period</var></dt>
+   *   <dt>string `k_class_period`</dt>
    *   <dd>Class session primary keys.</dd>
    * </dl>
    *
@@ -66,13 +68,13 @@ class ElementModel extends WlModelAbstract
   /**
    * The logo of event.
    * <dl>
-   *   <dt>int [<var>i_height</var>]</dt>
+   *   <dt>int [`i_height`]</dt>
    *   <dd>Is returned only if staff has a photo. Image height.</dd>
-   *   <dt>int [<var>i_width</var>]</dt>
+   *   <dt>int [`i_width`]</dt>
    *   <dd>Is returned only if staff has a photo. Image width.</dd>
-   *   <dt>int [<var>id_gender</var>] </dt>
+   *   <dt>int [`id_gender`] </dt>
    *   <dd>Is returned only if staff does not have a photo. ID of staff gender. One of {@link AGenderSid} constants.</dd>
-   *   <dt>string [<var>url_logo</var>]</dt>
+   *   <dt>string [`url_logo`]</dt>
    *   <dd>Is returned only if staff has a photo. URL to image.</dd>
    * </dl>
    *
@@ -82,7 +84,7 @@ class ElementModel extends WlModelAbstract
   public $a_class_logo;
 
   /**
-   * The list of keys from class tab.+
+   * The list of keys from class tab.
    *
    * @get result
    * @var string[]
@@ -103,125 +105,149 @@ class ElementModel extends WlModelAbstract
   public $a_event;
 
   /**
+   * A list of installment plans. Each element has the following next keys:
+   * <dl>
+   *   <dt>int `i_count`</dt>
+   *   <dd>The number of payments.</dd>
+   *   <dt>int `id_duration`</dt>
+   *   <dd>The duration of a single period. One of the {@link ADurationSid} constants.</dd>
+   *   <dt>int `i_period`</dt>
+   *   <dd>The number of periods specified by `id_period` between individual payments.</dd>
+   *   <dt>string `k_currency`</dt>
+   *   <dd>The payment currency Key.</dd>
+   *   <dt>string `k_pay_installment_template`</dt>
+   *   <dd>The key of the installment plan template.</dd>
+   *   <dt>string `m_amount`</dt>
+   *   <dd>The amount of the installment plan.</dd>
+   *   <dt>string `s_duration`</dt>
+   *   <dd>The title of the installment plan.</dd>
+   * </dl>
+   *
+   * @get result
+   * @var array[]
+   */
+  public $a_installment_template;
+
+  /**
    * A list of event sessions. Every element has the following next keys:
    * <dl>
    *   <dt>
-   *     array <var>a_day</var>
+   *     array `a_day`
    *   </dt>
    *   <dd>
    *     A list of days of the week when the session has occurred.
-   *     Keys - a number corresponding to a day of the week (0 - Sunday, 6 - Saturday). The value is always <tt>true</tt>.
+   *     Keys - a number corresponding to a day of the week (0 - Sunday, 6 - Saturday). The value is always `true`.
    *   </dd>
-   *   <dt>array <var>a_repeat</var></dt>
+   *   <dt>array `a_repeat`</dt>
    *   <dd>
    *     Repeat periodicity instructions.
    *     <dl>
-   *       <dt>int <var>i_repeat</var></dt>
-   *       <dd>Count of the periods which specified in <var>id_repeat</var>.</dd>
-   *       <dt>int <var>id_repeat</var></dt>
-   *       <dd>Measuring unit of <var>i_repeat</var> (week, month, year).</dd>
+   *       <dt>int `i_repeat`</dt>
+   *       <dd>Count of the periods which specified in `id_repeat`.</dd>
+   *       <dt>int `id_repeat`</dt>
+   *       <dd>Measuring unit of `i_repeat` (week, month, year).</dd>
    *     </dl>
    *   </dd>
    *   <dt>
-   *     array[] <var>a_staff</var>
+   *     array[] `a_staff`
    *   </dt>
    *   <dd>
    *     A list of staff members who conduct the session. Every element has the following next keys:
    *     <dl>
-   *       <dt>string <var>k_staff</var></dt>
+   *       <dt>string `k_staff`</dt>
    *       <dd>@deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
-   *       <dt>string <var>s_name</var></dt>
+   *       <dt>string `s_name`</dt>
    *       <dd>The staff member name.</dd>
-   *       <dt>string <var>s_surname</var></dt>
+   *       <dt>string `s_surname`</dt>
    *       <dd>The first letter of staff member's surname.</dd>
-   *       <dt>int <var>uid_staff</var></dt>
+   *       <dt>int `uid_staff`</dt>
    *       <dd>The user key of the staff member.</dd>
    *     </dl>
    *   </dd>
    *   <dt>
-   *     string[] <var>a_virtual_location</var>
+   *     string[] `a_virtual_location`
    *   </dt>
    *   <dd>
    *     List of virtual locations.
    *   </dd>
    *   <dt>
-   *     string <var>dt_end</var>
+   *     string `dt_end`
    *   </dt>
    *   <dd>
    *     The end date of the session.
    *     The local date without time.
    *   </dd>
    *   <dt>
-   *     string <var>dt_start</var>
+   *     string `dt_start`
    *   </dt>
    *   <dd>
    *     The start date of the session.
    *     The local date without time.
    *   </dd>
    *   <dt>
-   *     bool <var>hide_location</var>
+   *     bool `hide_location`
    *   </dt>
    *   <dd>
    *     `true` if the location should be hidden in the event details. Hide if the event is virtual or if the business
    *     only has one location. `false` otherwise.
    *   </dd>
    *   <dt>
-   *     int <var>i_capacity</var>
+   *     int `i_capacity`
    *   </dt>
    *   <dd>
    *     The class capacity.
    *   </dd>
    *   <dt>
-   *     int <var>i_duration</var>
+   *     int `i_duration`
    *   </dt>
    *   <dd>
    *     The duration of the class in seconds.
    *   </dd>
    *   <dt>
-   *     bool <var>is_virtual</var>
+   *     bool `is_virtual`
    *   </dt>
    *   <dd>
    *     This will be `true` if the session is not held in person but offered remotely. It will be `false` otherwise.
    *   </dd>
    *   <dt>
-   *     string <var>f_price</var>
+   *     string `f_price`
    *   </dt>
    *   <dd>
    *     The price of the session, if it can be purchased separately.
    *   </dd>
    *   <dt>
-   *     string <var>k_class_period</var>
+   *     string `k_class_period`
    *   </dt>
    *   <dd>
    *     The key of the class period.
    *   </dd>
    *   <dt>
-   *     string <var>k_location</var>
+   *     string `k_location`
    *   </dt>
    *   <dd>
    *     The key of the location where the session is held.
    *   </dd>
    *   <dt>
-   *     string <var>s_location</var>
+   *     string `s_location`
    *   </dt>
    *   <dd>
    *     The location title.
    *   </dd>
    *   <dt>
-   *     string <var>s_time</var>
+   *     string `s_time`
    *   </dt>
    *   <dd>
    *     The time when session occurred.
-   *     A textual representation of the start and end time of a session. Example: <tt>10:00 am - 11:00 am</tt>
+   *     A textual representation of the start and end time of a session. Example: `10:00 am - 11:00 am`
    *   </dd>
    *   <dt>
-   *     string <var>s_timezone</var>
+   *     string `s_timezone`
    *   </dt>
    *   <dd>
    *     The name of the timezone in which the session is held.
    *   </dd>
    *   <dt>
-   *     string <var>text_room</var>
+   *     string `text_room`
    *   </dt>
    *   <dd>
    *     The room of the event.
@@ -234,15 +260,23 @@ class ElementModel extends WlModelAbstract
   public $a_schedule;
 
   /**
+   * IDs of online store category.
+   *
+   * @get result
+   * @var string[]
+   */
+  public $a_shop_category;
+
+  /**
    * Photos of staff members. Keys are the keys of staff members. The values are the following:
    * <dl>
-   *   <dt>int <var>i_height</var></dt>
+   *   <dt>int `i_height`</dt>
    *   <dd>Image height.</dd>
-   *   <dt>int <var>i_width</var></dt>
+   *   <dt>int `i_width`</dt>
    *   <dd>Image width.</dd>
-   *   <dt>string <var>uid</var></dt>
+   *   <dt>string `uid`</dt>
    *   <dd>Key of the user.</dd>
-   *   <dt>string <var>url_logo</var></dt>
+   *   <dt>string `url_logo`</dt>
    *   <dd>URL to image.</dd>
    * </dl>
    *
@@ -265,15 +299,15 @@ class ElementModel extends WlModelAbstract
    * A list of classes and events that clients should attend before this one.
    *
    * <dl>
-   *   <dt>int <var>i_count</var></dt>
+   *   <dt>int `i_count`</dt>
    *   <dd>The number of visits required.</dd>
-   *   <dt>int <var>i_has</var></dt>
+   *   <dt>int `i_has`</dt>
    *   <dd>The number of visits the client has already attended.</dd>
-   *   <dt>bool <var>is_event</var></dt>
+   *   <dt>bool `is_event`</dt>
    *   <dd>`true` if this is an event, `false` if this is a class.</dd>
-   *   <dt>string <var>k_class</var></dt>
+   *   <dt>string `k_class`</dt>
    *   <dd>The key of the class or event.</dd>
-   *   <dt>string <var>text_title</var></dt>
+   *   <dt>string `text_title`</dt>
    *   <dd>The name of the class or event.</dd>
    * </dl>
    *
@@ -348,7 +382,7 @@ class ElementModel extends WlModelAbstract
 
   /**
    * Whether event will be hidden in the White Label mobile application.
-   * <tt>true</tt> means that event will not be displayed, <tt>false</tt> otherwise.
+   * `true` means that event will not be displayed, `false` otherwise.
    *
    * @get result
    * @var bool
@@ -370,6 +404,16 @@ class ElementModel extends WlModelAbstract
    * @var string
    */
   public $html_special;
+
+  /**
+   * Class capacity.
+   *
+   * `null` if no set.
+   *
+   * @get result
+   * @var int|null
+   */
+  public $i_capacity = null;
 
   /**
    * Image height in pixels. Please specify this value if you need image to be returned in specific size.
@@ -424,6 +468,26 @@ class ElementModel extends WlModelAbstract
   public $i_staff_image_width = 0;
 
   /**
+   * The purchase rule ID.
+   * One of the {@link RequirePaySid} constants.
+   *
+   * @get result
+   * @var int
+   */
+  public $id_pay_require;
+
+  /**
+   * Default required value for {@link RequirePaySid::ADVANCE} payment mode,
+   *  one of {@link RequirePaySid::ONLINE} or {@link RequirePaySid::VISIT}.
+   *
+   * `null` means default value not selected.
+   *
+   * @get result
+   * @var int|null
+   */
+  public $id_pay_require_option;
+
+  /**
    * The virtual provider ID. One of the {@link VirtualProviderSid} constants.
    *
    * `null` if an in-person event.
@@ -452,7 +516,7 @@ class ElementModel extends WlModelAbstract
   public $is_availability_checked;
 
   /**
-   * <tt>true</tt> if the event is already booked; <tt>false</tt> if the event isn't booked.
+   * `true` if the event is already booked; `false` if the event isn't booked.
    *
    * @get result
    * @var bool
@@ -477,6 +541,15 @@ class ElementModel extends WlModelAbstract
   public $is_full;
 
   /**
+   * `true` if the selected session can be a make up session.
+   * `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_makeup = false;
+
+  /**
    * `true` if the selected session has already started and do not available to book.
    * `false` otherwise.
    *
@@ -484,6 +557,15 @@ class ElementModel extends WlModelAbstract
    * @var bool
    */
   public $is_past = false;
+
+  /**
+   * `true` if the {@link ElementModel::$a_business_policy} contains the custom policies from the event.
+   * `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_policy_custom = false;
 
   /**
    * `true` if the event can be paid with a Purchase Option only.
@@ -522,7 +604,7 @@ class ElementModel extends WlModelAbstract
   public $is_single_session_buy;
 
   /**
-   * <tt>true</tt> if event is virtual; <tt>false</tt> - otherwise.
+   * `true` if event is virtual; `false` otherwise.
    *
    * @get result
    * @var bool
@@ -614,6 +696,15 @@ class ElementModel extends WlModelAbstract
    * @var string|null
    */
   public $s_title;
+
+  /**
+   * `true` if special instructions can be public,
+   * `false` if they should be shown only to the clients, who booked the class.
+   *
+   * @get result
+   * @var bool
+   */
+  public $show_special_instructions = false;
 
   /**
    * `true` to show schedule, which is not published yet.

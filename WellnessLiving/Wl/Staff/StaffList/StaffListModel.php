@@ -88,6 +88,13 @@ class StaffListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The staff key.
+   *     deprecated Use `uid_staff` instead. Returned only for backward-compatible applications.
+   *   </dd>
+   *   <dt>
+   *     string <var>uid_staff</var>
+   *   </dt>
+   *   <dd>
+   *     The staff member user key.
    *   </dd>
    *   <dt>
    *     string <var>s_name</var>

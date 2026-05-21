@@ -134,7 +134,9 @@ class ClassList68Model extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The list of staff keys for the staff member conducting the session.
+   *     For legacy third-party apps listed in {@link ClassListApi::APPS_USE_OLD_K_STAFF},
    *
+   *     Empty for all other applications. Use `a_staff_uid` instead.
    *   </dd>
    *   <dt>
    *     string[] <var>a_staff_uid</var>

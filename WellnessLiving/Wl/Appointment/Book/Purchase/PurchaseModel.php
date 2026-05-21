@@ -18,9 +18,9 @@ class PurchaseModel extends WlModelAbstract
   /**
    * Data about the login prize which can be used to pay for service.
    * <dl>
-   *   <dt>int <var>i_count</var></dt><dd>Login prize remaining quantity.</dd>
-   *   <dt>string <var>k_login_prize</var></dt><dd>Key of login prize.</dd>
-   *   <dt>string <var>text_description</var></dt><dd>User friendly login prize description.</dd>
+   *   <dt>int `i_count`</dt><dd>Login prize remaining quantity.</dd>
+   *   <dt>string `k_login_prize`</dt><dd>Key of login prize.</dd>
+   *   <dt>string `text_description`</dt><dd>User friendly login prize description.</dd>
    * </dl>
    *
    * @get result
@@ -31,79 +31,79 @@ class PurchaseModel extends WlModelAbstract
   /**
    * A list of the client's login promotions that can be applied to a given service.
    * <dl>
-   *   <dt>array <var>a_login_promotion_info</var></dt>
+   *   <dt>array `a_login_promotion_info`</dt>
    *   <dd>
    *      Information about the Purchase Option. It contains the following information:
    *      <dl>
-   *        <dt>int <var>i_limit</var></dt>
+   *        <dt>int `i_limit`</dt>
    *        <dd>The count of visits that the Purchase Option allows the client to make.</dd>
-   *        <dt>int|null <var>i_limit_duration</var></dt>
+   *        <dt>int|null `i_limit_duration`</dt>
    *        <dd>The maximum number of minutes that current Purchase Option can be used for.</dd>
-   *        <dt>int <var>i_remain</var></dt>
+   *        <dt>int `i_remain`</dt>
    *        <dd>The count of the remaining visits.</dd>
-   *        <dt>int|null <var>i_remain_duration</var></dt>
+   *        <dt>int|null `i_remain_duration`</dt>
    *        <dd>The number of minutes left in this Purchase Option.</dd>
    *      </dl>
    *   </dd>
-   *   <dt>string[] <var>a_visit_limit</var></dt>
+   *   <dt>string[] `a_visit_limit`</dt>
    *   <dd>The list of calendar restrictions of the Purchase Option. For example, four per week.</dd>
-   *   <dt>array <var>a_restrict</var></dt>
+   *   <dt>array `a_restrict`</dt>
    *   <dd>Data about the shortest restriction period:
    *     <dl>
-   *       <dt>int <var>i_limit</var></dt>
+   *       <dt>int `i_limit`</dt>
    *       <dd>The limit of visits for the shortest restriction period.</dd>
-   *       <dt>int <var>i_remain</var></dt>
+   *       <dt>int `i_remain`</dt>
    *       <dd>The number of remaining visits for the shortest restriction period.</dd>
-   *       <dt>string <var>text_restriction</var></dt>
+   *       <dt>string `text_restriction`</dt>
    *       <dd>The description of the shortest restriction period. For example "this week" or "for a four-day period".</dd>
    *     </dl>
    *   </dd>
-   *   <dt>array[] <var>a_restrict_data</var></dt>
+   *   <dt>array[] `a_restrict_data`</dt>
    *   <dd>Data about all restriction periods. Given as an array, where each record has the following structure:
    *     <dl>
-   *       <dt>int <var>i_book</var></dt>
+   *       <dt>int `i_book`</dt>
    *       <dd>The count of future sessions that are paid with this Purchase Option.</dd>
-   *       <dt>int <var>i_limit</var></dt>
+   *       <dt>int `i_limit`</dt>
    *       <dd>The limit of visits for the restriction period.</dd>
-   *       <dt>int <var>i_remain</var></dt>
+   *       <dt>int `i_remain`</dt>
    *       <dd>The number of remaining visits for the restriction period.</dd>
-   *       <dt>int <var>i_use</var></dt>
+   *       <dt>int `i_use`</dt>
    *       <dd>The usage count of the Purchase Option.</dd>
-   *       <dt>int <var>i_visit_past</var></dt>
+   *       <dt>int `i_visit_past`</dt>
    *       <dd>
    *         The count of attended sessions before the last renewal.
    *         This will be '0' if no sessions before the last renewal or if the Purchase Option doesn't auto-renew.
    *       </dd>
-   *       <dt>string <var>text_restriction</var></dt>
+   *       <dt>string `text_restriction`</dt>
    *       <dd>The description of restriction period. For example, "this week" or "for a four-day period".</dd>
    *     </dl>
    *   </dd>
-   *   <dt>int <var>i_limit</var></dt>
+   *   <dt>int `i_limit`</dt>
    *   <dd>The count of visits that the Purchase Option allows the client to make.</dd>
-   *   <dt>int|null <var>i_limit_duration</var></dt>
+   *   <dt>int|null `i_limit_duration`</dt>
    *   <dd>The maximum number of minutes that current Purchase Option can be used for.</dd>
-   *   <dt>int <var>i_promotion_priority</var></dt>
+   *   <dt>int `i_promotion_priority`</dt>
    *   <dd>Priority of this promotion.</dd>
-   *   <dt>int <var>id_program</var></dt>
+   *   <dt>int `id_program`</dt>
    *   <dd>The program ID for promotions. One of the {@link WlProgramSid} constants.</dd>
-   *   <dt>bool <var>is_share</var></dt>
+   *   <dt>bool `is_share`</dt>
    *   <dd>
    *     `true` if this purchase option is shared from another user.
    *     `false` if this purchase option belongs to the user for whom the request is made.
    *   </dd>
-   *   <dt>string <var>k_login_promotion</var></dt>
+   *   <dt>string `k_login_promotion`</dt>
    *   <dd>The Purchase Option login key.</dd>
-   *   <dt>string <var>s_class_include</var></dt>
+   *   <dt>string `s_class_include`</dt>
    *   <dd>The list of services provided by this Purchase Option.</dd>
-   *   <dt>string <var>s_description</var></dt>
+   *   <dt>string `s_description`</dt>
    *   <dd>The Purchase Option description.</dd>
-   *   <dt>string <var>s_duration</var></dt>
+   *   <dt>string `s_duration`</dt>
    *   <dd>The Purchase Option duration.</dd>
-   *   <dt>string <var>s_title</var></dt>
+   *   <dt>string `s_title`</dt>
    *   <dd>The Purchase Option name.</dd>
-   *   <dt>string <var>text_package_item</var></dt>
+   *   <dt>string `text_package_item`</dt>
    *   <dd>If this Purchase Option is a package, then this field contains a list of Purchase Options contained in the package.</dd>
-   *   <dt>string <var>uid_owner</var></dt>
+   *   <dt>string `uid_owner`</dt>
    *   <dd>
    *     The user key of the owner of the promotion.
    *     Will be different from the user for whom the request is made if the promotion is shared.
@@ -118,59 +118,29 @@ class PurchaseModel extends WlModelAbstract
   /**
    * An array with information about available Purchase Options.
    * <dl>
-   *   <dt>
-   *     array <var>a_image</var>
-   *   </dt>
+   *   <dt>array `a_image`</dt>
    *   <dd>
    *     Information describing the logo of the purchase option. This value can be false if there is no logo described.
    *     Image information will have the following fields:
    *     <dl>
-   *       <dt>
-   *         int <var>i_height</var>
-   *       </dt>
+   *       <dt>int `i_height`</dt>
+   *       <dd>Actual height of thumbnail image.</dd>
+   *       <dt>int `i_height_src`</dt>
+   *       <dd>Height of original image.</dd>
+   *       <dt>int `i_rotate`</dt>
+   *       <dd>Angle on which image was rotated compared to the original.</dd>
+   *       <dt>int `i_width`</dt>
+   *       <dd>Actual width of thumbnail image.</dd>
+   *       <dt>int `i_width_src`</dt>
+   *       <dd>Width of original image.</dd>
+   *       <dt>bool `is-resize`</dt>
    *       <dd>
-   *         Actual height of thumbnail image.
+   *         Whether thumbnail is a resized variant of original image. If set to `false`
+   *         value returned in `url-thumbnail` equals value in `url-view`.
    *       </dd>
-   *       <dt>
-   *         int <var>i_height_src</var>
-   *       </dt>
-   *       <dd>
-   *         Height of original image.
-   *       </dd>
-   *       <dt>
-   *         int <var>i_rotate</var>
-   *       </dt>
-   *       <dd>
-   *         Angle on which image was rotated compared to the original.
-   *       </dd>
-   *       <dt>
-   *         int <var>i_width</var>
-   *       </dt>
-   *       <dd>
-   *         Actual width of thumbnail image.
-   *       </dd>
-   *       <dt>
-   *         int <var>i_width_src</var>
-   *       </dt>
-   *       <dd>
-   *         Width of original image.
-   *       </dd>
-   *       <dt>
-   *         bool <var>is-resize</var>
-   *       </dt>
-   *       <dd>
-   *         Whether thumbnail is a resized variant of original image. If set to <tt>false</tt>
-   *         value returned in <var>url-thumbnail</var> equals value in <var>url-view</var>.
-   *       </dd>
-   *       <dt>
-   *         string <var>url-view</var>
-   *       </dt>
-   *       <dd>
-   *         Url to original image in file storage.
-   *       </dd>
-   *       <dt>
-   *         string <var>url-thumbnail</var>
-   *       </dt>
+   *       <dt>string `url-view`</dt>
+   *       <dd>Url to original image in file storage.</dd>
+   *       <dt>string `url-thumbnail`</dt>
    *       <dd>
    *         Url to resized and rotated image in file storage. If size of original image is larger than specified by
    *         arguments, image thumbnail as created, and a link to this thumbnail is returned. Otherwise, link to
@@ -178,214 +148,81 @@ class PurchaseModel extends WlModelAbstract
    *       </dd>
    *     </dl>
    *   </dd>
-   *   <dt>
-   *     array <var>a_payment</var>
-   *   </dt>
+   *   <dt>array `a_payment`</dt>
    *   <dd>
    *     The set of calculated values for payment:
    *     <dl>
-   *       <dt>
-   *         string <var>m_discount</var>
-   *       </dt>
-   *       <dd>
-   *         The amount of the whole discount of one purchase item.
-   *       </dd>
-   *       <dt>
-   *         string <var>m_discount_login</var>
-   *       </dt>
-   *       <dd>
-   *         The discount amount for the client type of one purchase item.
-   *       </dd>
+   *       <dt>string `m_discount`</dt>
+   *       <dd>The amount of the whole discount of one purchase item.</dd>
+   *       <dt>string `m_discount_login`</dt>
+   *       <dd>The discount amount for the client type of one purchase item.</dd>
    *     </dl>
    *   </dd>
-   *   <dt>
-   *     string[] <var>a_visit_limit</var>
-   *   </dt>
-   *   <dd>
-   *     A list of calendar restrictions of the Purchase Option in a human-readable format, for example: '4 per week'.
-   *   </dd>
-   *   <dt>
-   *     string <var>dt_expire</var>
-   *   </dt>
-   *   <dd>
-   *     Date, when promotion expires.
-   *   </dd>
-   *   <dt>
-   *     string <var>dt_start</var>
-   *   </dt>
-   *   <dd>
-   *     Date, when promotion starts.
-   *   </dd>
-   *   <dt>
-   *     string <var>f_price</var>
-   *   </dt>
-   *   <dd>
-   *     The price of the Purchase Option.
-   *   </dd>
-   *   <dt>
-   *     int <var>i</var>
-   *   </dt>
-   *   <dd>
-   *     Order number of the purchase option in the list.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_limit</var>
-   *   </dt>
-   *   <dd>
-   *     Count of visits that purchase option allows to make.
-   *   </dd>
-   *   <dt>
-   *     int|null <var>i_limit_duration</var>
-   *   </dt>
-   *   <dd>
-   *     Maximum number of minutes that current promotion can be used.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_payment_period</var>
-   *   </dt>
-   *   <dd>
-   *     Count of calendar periods (weeks, months, years) between payment for membership.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_duration</var>
-   *   </dt>
-   *   <dd>
-   *     Duration ID. Constant from {@link ADurationSid}.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_program</var>
-   *   </dt>
-   *   <dd>
-   *     Program ID for promotions from {@link WlProgramSid}.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_program_type</var>
-   *   </dt>
-   *   <dd>
-   *     Program type ID. Constant from {@link WlProgramTypeSid}.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_promotion_price</var>
-   *   </dt>
-   *   <dd>
-   *     How the Purchase Item price is specified. One of the {@link WlProgramTypeSid} constants.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_purchase_item</var>
-   *   </dt>
-   *   <dd>
-   *     ID of the purchase item from {@link WlPurchaseItemSid}
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_contract</var>
-   *   </dt>
-   *   <dd>
-   *     This will be `true` if the Purchase Option is a contract. It will `false` otherwise.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_description</var>
-   *   </dt>
-   *   <dd>
-   *     `true` if purchase option has description.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_introductory</var>
-   *   </dt>
-   *   <dd>
-   *     `true` if promotion is introductory offer, `false` otherwise.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_renew</var>
-   *   </dt>
-   *   <dd>
-   *     This will be `true` if the Purchase Option will auto-renew. It will be `false` otherwise.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_renew_check</var>
-   *   </dt>
-   *   <dd>
-   *     If `true` - the Purchase Option is renewable and the "auto-renew" option should be turned on by default.
-   *    `This will be `false` otherwise.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_start</var>
-   *   </dt>
-   *   <dd>
-   *     This will be `true` if the Purchase Option has a duration that begins on purchase. It will be `false` otherwise.
-   *   </dd>
-   *   <dt>
-   *     int <var>k_id</var>
-   *   </dt>
-   *   <dd>
-   *     Primary ID of the element in it's table.
-   *   </dd>
-   *   <dt>
-   *     string|null [<var>m_price_old</var>]
-   *   </dt>
+   *   <dt>string[] `a_visit_limit`</dt>
+   *   <dd>A list of calendar restrictions of the Purchase Option in a human-readable format, for example: '4 per week'.</dd>
+   *   <dt>string `dt_expire`</dt>
+   *   <dd>Date, when promotion expires.</dd>
+   *   <dt>string `dt_start`</dt>
+   *   <dd>Date, when promotion starts.</dd>
+   *   <dt>string `f_price`</dt>
+   *   <dd>The price of the Purchase Option.</dd>
+   *   <dt>int `i`</dt>
+   *   <dd>Order number of the purchase option in the list.</dd>
+   *   <dt>int `i_limit`</dt>
+   *   <dd>Count of visits that purchase option allows to make.</dd>
+   *   <dt>int|null `i_limit_duration`</dt>
+   *   <dd>Maximum number of minutes that current promotion can be used.</dd>
+   *   <dt>int `i_payment_period`</dt>
+   *   <dd>Count of calendar periods (weeks, months, years) between payment for membership.</dd>
+   *   <dt>int `id_duration`</dt>
+   *   <dd>Duration ID. Constant from {@link ADurationSid}.</dd>
+   *   <dt>int `id_program`</dt>
+   *   <dd>Program ID for promotions from {@link WlProgramSid}.</dd>
+   *   <dt>int `id_program_type`</dt>
+   *   <dd>Program type ID. Constant from {@link WlProgramTypeSid}.</dd>
+   *   <dt>int `id_promotion_price`</dt>
+   *   <dd>How the Purchase Item price is specified. One of the {@link WlProgramTypeSid} constants.</dd>
+   *   <dt>int `id_purchase_item`</dt>
+   *   <dd>ID of the purchase item from {@link WlPurchaseItemSid}</dd>
+   *   <dt>bool `is_contract`</dt>
+   *   <dd>This will be `true` if the Purchase Option is a contract. It will `false` otherwise.</dd>
+   *   <dt>bool `is_description`</dt>
+   *   <dd>`true` if purchase option has description.</dd>
+   *   <dt>bool `is_introductory`</dt>
+   *   <dd>`true` if promotion is introductory offer, `false` otherwise.</dd>
+   *   <dt>bool `is_renew`</dt>
+   *   <dd>This will be `true` if the Purchase Option will auto-renew. It will be `false` otherwise.</dd>
+   *   <dt>bool `is_renew_check`</dt>
+   *   <dd>Whether Purchase Option is renewable and the "auto-renew" option should be turned on by default.</dd>
+   *   <dt>bool `is_start`</dt>
+   *   <dd>This will be `true` if the Purchase Option has a duration that begins on purchase. It will be `false` otherwise.</dd>
+   *   <dt>int `k_id`</dt>
+   *   <dd>Primary ID of the element in it's table.</dd>
+   *   <dt>string|null [`m_price_old`]</dt>
    *   <dd>
    *     Price of single session purchase before online discount. `null` if service does not have online discount.
    *     Is set only if this purchase option is purchase of single visit.
    *   </dd>
-   *   <dt>
-   *     string <var>s_activation</var>
-   *   </dt>
-   *   <dd>
-   *     Activation settings of the promotion.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_class</var>
-   *   </dt>
-   *   <dd>
-   *     Class for designer to mark purchase options with different icons.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_class_include</var>
-   *   </dt>
-   *   <dd>
-   *     List of included in the promotion services.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_description</var>
-   *   </dt>
-   *   <dd>
-   *     Description of the purchase option.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_duration</var>
-   *   </dt>
-   *   <dd>
-   *     Duration of the promotion.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_payment_duration</var>
-   *   </dt>
-   *   <dd>
-   *     Period between payments for memberships.
-   *   </dd>
-   *   <dt>
-   *     string <var>sid_program_category</var>
-   *   </dt>
-   *   <dd>
-   *     Category of the program for promotions from {@link WlProgramCategorySid}.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_title</var>
-   *   </dt>
-   *   <dd>
-   *     Name of the purchase option.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_value</var>
-   *   </dt>
-   *   <dd>
-   *     Key of the purchase option in the format [<var>purchase_item_id</var>]::[<var>k_id</var>]
-   *   </dd>
-   *   <dt>
-   *     string <var>text_package_item</var>
-   *   </dt>
-   *   <dd>
-   *     If this promotion is a package. This field contains list of promotions contained in the package.
-   *   </dd>
+   *   <dt>string `s_activation`</dt>
+   *   <dd>Activation settings of the promotion.</dd>
+   *   <dt>string `s_class`</dt>
+   *   <dd>Class for designer to mark purchase options with different icons.</dd>
+   *   <dt>string `s_class_include`</dt>
+   *   <dd>List of services included in the promotion.</dd>
+   *   <dt>string `s_description`</dt>
+   *   <dd>Description of the purchase option.</dd>
+   *   <dt>string `s_duration`</dt>
+   *   <dd>Duration of the promotion.</dd>
+   *   <dt>string `s_payment_duration`</dt>
+   *   <dd>Period between payments for memberships.</dd>
+   *   <dt>string `sid_program_category`</dt>
+   *   <dd>Category of the program for promotions from {@link WlProgramCategorySid}.</dd>
+   *   <dt>string `s_title`</dt>
+   *   <dd>Name of the purchase option.</dd>
+   *   <dt>string `s_value`</dt>
+   *   <dd>Key of the purchase option in the format [`purchase_item_id`]::[`k_id`]/dd>
+   *   <dt>string `text_package_item`</dt>
+   *   <dd>If this promotion is a package. This field contains list of promotions contained in the package.</dd>
    * </dl>
    *
    * @get result
@@ -396,9 +233,9 @@ class PurchaseModel extends WlModelAbstract
   /**
    * List of redeemable prizes which can be used to pay for service.
    * <dl>
-   *   <dt>int <var>i_score</var></dt><dd>Prize price in points.</dd>
-   *   <dt>string <var>k_reward_prize</var></dt><dd>Key of redeemable prize.</dd>
-   *   <dt>string <var>text_description</var></dt><dd>User friendly prize description.</dd>
+   *   <dt>int `i_score`</dt><dd>Prize price in points.</dd>
+   *   <dt>string `k_reward_prize`</dt><dd>Key of redeemable prize.</dd>
+   *   <dt>string `text_description`</dt><dd>User friendly prize description.</dd>
    * </dl>
    *
    * @get result
@@ -417,7 +254,7 @@ class PurchaseModel extends WlModelAbstract
    *
    * Each element has the following structure:
    * <dl>
-   *  <dt>array <var>a_purchase</var></dt>
+   *  <dt>array `a_purchase`</dt>
    *  <dd>
    *    List of purchase options selected for the service.
    *    Should be set if a new purchase option is selected for this service.
@@ -433,21 +270,21 @@ class PurchaseModel extends WlModelAbstract
    *      </dd>
    *    </dl>
    *  </dd>
-   *  <dt>string <var>dt_date</var></dt>
+   *  <dt>string `dt_date`</dt>
    *  <dd>Local date/time to check purchase options expiration.</dd>
-   *  <dt>string|null <var>k_login_prize</var></dt>
+   *  <dt>string|null `k_login_prize`</dt>
    *  <dd>
    *    Login prize key.
    *    `null` if no login prize used to pay for this service.
    *  </dd>
-   *  <dt>string|null <var>k_login_promotion</var></dt>
+   *  <dt>string|null `k_login_promotion`</dt>
    *  <dd>
    *    Login promotion key.
    *    Should be set if login promotion selected for this service.
    *  </dd>
-   *  <dt>string <var>k_service</var></dt>
+   *  <dt>string `k_service`</dt>
    *  <dd>Service key.</dd>
-   *  <dt>string <var>k_timezone</var></dt>
+   *  <dt>string `k_timezone`</dt>
    *  <dd>
    *    The timezone key for `dt_date` field.
    *
@@ -549,6 +386,15 @@ class PurchaseModel extends WlModelAbstract
   public $is_walk_in = false;
 
   /**
+   * Appointment key.
+   * Not empty in case when we return payment options for rescheduling existing appointment.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $k_appointment = null;
+
+  /**
    * Location to show available appointment booking schedule.
    *
    * @get get,result
@@ -559,7 +405,6 @@ class PurchaseModel extends WlModelAbstract
 
   /**
    * The Purchase Option ID used to pay for the appointment.
-   *
    * This will be `null` if the client doesn't have a suitable Purchase Option.
    *
    * @get get,result

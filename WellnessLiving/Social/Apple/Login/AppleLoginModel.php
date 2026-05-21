@@ -25,6 +25,22 @@ class AppleLoginModel extends WlModelAbstract
    * @var string
    */
   public $text_authorization = '';
+
+  /**
+   * User's first name.
+   *
+   * @post post
+   * @var string
+   */
+  public $text_name_first = '';
+
+  /**
+   * User's last name.
+   *
+   * @post post
+   * @var string
+   */
+  public $text_name_last = '';
 }
 
 ?>
