@@ -15,11 +15,11 @@ class PrivilegeListModel extends WlModelAbstract
   /**
    * List of privileges, if user is administrator.
    *
-   * There is no certain list of admin privileges, as they are name-based. If you need to check access to certain place
-   *  contact WellnessLiving integration team.
+   * There is no certain list of admin privileges, as they are name-based.
+   * If you need to check access to certain place contact WellnessLiving integration team.
    *
    * @get result
-   * @var array
+   * @var array<string, string>
    */
   public $a_privilege_passport = [];
 

@@ -4,18 +4,16 @@ namespace WellnessLiving\Wl\Appointment\Book\Purchase;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlProgramCategorySid;
 use WellnessLiving\Wl\WlProgramSid;
 use WellnessLiving\Wl\WlProgramTypeSid;
 
 /**
- * Retrieves information about Purchase Options that can be used to pay for an appointment.
- *
- * @deprecated Use {@link Purchase72Model} instead.
+ * Retrieves information about Purchase Options that can be used to pay for an appointment
+ * during creating new or rescheduling existing appointment.
  */
-class PurchaseModel extends WlModelAbstract
+class Purchase72Model extends WlModelAbstract
 {
   /**
    * Data about the login prize which can be used to pay for service.
@@ -366,7 +364,7 @@ class PurchaseModel extends WlModelAbstract
   public $i_width = 0;
 
   /**
-   * The mode type. One of the {@link ModeSid} constants.
+   * The mode type.
    *
    * @get get
    * @var int
@@ -398,6 +396,14 @@ class PurchaseModel extends WlModelAbstract
    * @var bool
    */
   public $is_walk_in = false;
+
+  /**
+   * Appointment key.  Not empty in case when we return payment options for rescheduling existing appointment.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $k_appointment = null;
 
   /**
    * Location to show available appointment booking schedule.

@@ -17,7 +17,7 @@ class ImageModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     Image storage data.
-   *   </dd>
+   *        </dd>
    *   <dt>
    *     int <var>i-size</var>
    *   </dt>
@@ -70,7 +70,7 @@ class ImageModel extends WlModelAbstract
   /**
    * Business key.
    *
-   * <tt>null</tt> if not initialized yet.
+   * `null` if not initialized yet.
    *
    * @delete get
    * @get get

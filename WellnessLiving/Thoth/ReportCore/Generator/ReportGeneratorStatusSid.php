@@ -15,9 +15,8 @@ class ReportGeneratorStatusSid
    * The following transitions are possible:
    *
    * * `ABORTED` => `DELETING` when a background task finds that this report is old and should be deleted.
-   *
-   * * `ABORTED` => `QUEUED` if user clicks to regenerate this report
-   */
+   *    * `ABORTED` => `QUEUED` if user clicks to regenerate this report.
+   *   /
   const ABORTED = 6;
 
   /**
@@ -37,7 +36,7 @@ class ReportGeneratorStatusSid
    * The following transitions are possible:
    *
    * * `DELETING` => (report does not exist anymore) when deletion of this report completes.
-   */
+   *   /
   const DELETING = 4;
 
   /**
@@ -79,9 +78,8 @@ class ReportGeneratorStatusSid
    * The following transitions are possible:
    *
    * * `READY` => `DELETING` when a background tasks identifies that this report is old and starts deleting it.
-   *
-   * * `READY` => `QUEUED` when user clicks to regenerate this report
-   */
+   *    * `READY` => `QUEUED` when user clicks to regenerate this report
+   *   /
   const READY = 3;
 
   /**

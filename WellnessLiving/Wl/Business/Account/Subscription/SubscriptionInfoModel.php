@@ -20,10 +20,10 @@ class SubscriptionInfoModel extends WlModelAbstract
 
   /**
    * Locale ID of the business which subscription information is requested for.
-   * One of {@link LocaleSid} constants.
    *
    * @get result
    * @var int
+   * @see LocaleSid
    */
   public $id_locale = 0;
 

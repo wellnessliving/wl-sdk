@@ -39,7 +39,7 @@ class RepeatModel extends WlModelAbstract
    *   <dt>string <var>is_wait</var></dt>
    *   <dd>Whether booking can be only to wait list.</dd>
    *   <dt>string <var>k_class_period</var></dt>
-   *
+   *   <dd>Class period key. 
    *   <dt>string <var>s_alert</var></dt>
    *   <dd>Staff name if booking available, warning about wait list or disabled booking otherwise.</dd>
    *   <dt>string <var>s_date</var></dt>
@@ -140,12 +140,16 @@ class RepeatModel extends WlModelAbstract
   public $is_new_user = false;
 
   /**
+   * Business key.
+   *
    * @get get
    * @var string
    */
   public $k_business = '';
 
   /**
+   * Class period key.
+   *
    * @get get
    * @var string
    */

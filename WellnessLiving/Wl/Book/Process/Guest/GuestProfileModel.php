@@ -20,11 +20,12 @@ class GuestProfileModel extends WlModelAbstract
   public $dl_birthday = '';
 
   /**
-   * Type of the service to book. One of the {@link ServiceSid} constants.
+   * Type of the service to book.
    *
    * @get get
    * @post get
    * @var int
+   * @see ServiceSid
    */
   public $id_service = 0;
 
@@ -38,7 +39,13 @@ class GuestProfileModel extends WlModelAbstract
   public $k_business = '';
 
   /**
-   * Key of service to book. Depending on {@link GuestProfileModel::$id_service} value, it can be primary key in
+   * Key of service to book.
+   * Depending on {@link GuestProfileModel::$id_service} value:,
+   * <ul>
+   *     <li>{@link ServiceSid::CLASSES} - class key. 
+   *     <li>{@link ServiceSid::APPOINTMENT} - service key.
+   *     <li>{@link ServiceSid::BOOKABLE_ASSET} - resource key.
+   * </ul>
    *
    * @get get
    * @post get
@@ -47,6 +54,8 @@ class GuestProfileModel extends WlModelAbstract
   public $k_id = '';
 
   /**
+   * Location key.
+   *
    * @get get
    * @var string
    */

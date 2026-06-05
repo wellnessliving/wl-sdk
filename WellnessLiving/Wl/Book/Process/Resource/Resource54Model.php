@@ -71,7 +71,7 @@ class Resource54Model extends WlModelAbstract
    *     Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
    *   </dd>
    *   <dt>int <var>id_period</var></dt>
-   *   <dd>Deprecated, use `id_duration` instead!</dd>
+   *   <dd>Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.</dd>
    *   <dt>int <var>id_repeat_end</var></dt>
    *   <dd>Possible ways to stop repeatable events.</dd>
    * </dl>
@@ -113,8 +113,7 @@ class Resource54Model extends WlModelAbstract
    *         array <var>a_image</var>
    *       </dt>
    *       <dd>
-   *         Asset image data.
-   *       </dd>
+   *         Asset image data.        </dd>
    *       <dt>
    *         int <var>i_index</var>
    *       </dt>
@@ -132,6 +131,12 @@ class Resource54Model extends WlModelAbstract
    *       <dt>
    *         bool <var>is_current</var>
    *       </dt>
+   *        <dd>
+   *          City for the off-site location.
+   *        </dd>
+   *        <dt>
+   *          string <var>k_city</var>
+   *        </dt>
    *       <dd>
    *         <tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise.
    *       </dd>
@@ -140,14 +145,31 @@ class Resource54Model extends WlModelAbstract
    *       </dt>
    *       <dd>
    *         The key of the asset in database.
-   *
-   *       </dd>
+   *                </dd>
    *       <dt>
    *         string <var>s_resource</var>
    *       </dt>
    *       <dd>
    *         The title of the asset.
    *       </dd>
+   *       <dt>
+   *          string <var>text_address</var>
+   *        </dt>
+   *        <dd>
+   *          Address for the off-site location.
+   *        </dd>
+   *       <dt>
+   *          string <var>text_guide</var>
+   *        </dt>
+   *        <dd>
+   *          Additional address tips for the off-site location.
+   *        </dd>
+   *       <dt>
+   *          string <var>text_postal</var>
+   *        </dt>
+   *        <dd>
+   *          Postal code for the off-site location.
+   *        </dd>
    *     </dl>
    *   </dd>
    *   <dt>
@@ -156,6 +178,12 @@ class Resource54Model extends WlModelAbstract
    *   <dd>
    *     <tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise.
    *   </dd>
+   *    <dt>
+   *      int <var>id_category</var>
+   *    </dt>
+   *    <dd>
+   *      Type of the asset category.
+   *    </dd>
    *   <dt>
    *     bool <var>is_client_select</var>
    *   </dt>
@@ -179,14 +207,12 @@ class Resource54Model extends WlModelAbstract
    *     string <var>k_resource_layout</var>
    *   </dt>
    *   <dd>
-   *     The key of the asset layout.
-   *   </dd>
+   *     The key of the asset layout.    </dd>
    *   <dt>
    *     string <var>k_resource_type</var>
    *   </dt>
    *   <dd>
-   *     The key of the asset category.
-   *   </dd>
+   *     The key of the asset category.    </dd>
    *   <dt>
    *     string <var>s_resource_type</var>
    *   </dt>
@@ -206,7 +232,7 @@ class Resource54Model extends WlModelAbstract
    *   <dt>int <var>i_index</var></dt>
    *   <dd>The asset number. Applies only for assets with a quantity greater than <tt>1</tt>.</dd>
    *   <dt>string <var>k_resource</var></dt>
-   *   <dd>The asset key.</dd>
+   *   <dd>The asset key. 
    * </dl>
    *
    * @post post
@@ -219,8 +245,8 @@ class Resource54Model extends WlModelAbstract
    * Only makes sense for session events.
    * Optional parameter for GET request: if not passed, all available sessions will be used.
    *
-   * Keys refer to class period keys.
-   * And values refer to a list of the dates/times when the session occurred (returned in MySQL format and in GMT).
+   * Keys refer to class period keys, values refer to a list of the dates/times when the session occurred
+   *  (returned in MySQL format and in GMT).
    *
    * @get get
    * @post get

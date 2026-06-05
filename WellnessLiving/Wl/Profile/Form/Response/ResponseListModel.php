@@ -16,8 +16,7 @@ class ResponseListModel extends WlModelAbstract
    *  <dt>string[] <var>a_visit</var></dt>
    *  <dd>
    *    List of visit keys associated with uncompleted response.
-   *    Key is visit key.
-   *    Value is date of visit.
+   *    Key is visit key.     Value is date of visit.
    *  </dd>
    *  <dt>string <var>dtl_date</var></dt>
    *  <dd>The date of the request to fill out a quiz form.</dd>
@@ -30,13 +29,12 @@ class ResponseListModel extends WlModelAbstract
    *    `false` - the form can always be viewed.
    *  </dd>
    *  <dt>string <var>k_quiz</var></dt>
-   *  <dd>The quiz key.</dd>
+   *  <dd>The quiz key. 
    *  <dt>string <var>k_quiz_login</var></dt>
-   *  <dd>The key of the request.</dd>
+   *  <dd>The key of the request. 
    *  <dt>string|null <var>k_quiz_response</var></dt>
    *  <dd>
-   *    Key of the response.
-   *    Not `null` in case when response in draft status.
+   *    Key of the response.     Not `null` in case when response in draft status.
    *  </dd>
    *  <dt>string <var>text_title</var></dt>
    *  <dd>The quiz title.</dd>
@@ -52,8 +50,7 @@ class ResponseListModel extends WlModelAbstract
    *  <dt>string[] <var>a_visit</var></dt>
    *  <dd>
    *    List of visit keys associated with uncompleted response.
-   *    Key is visit key.
-   *    Value is date of visit.
+   *    Key is visit key.     Value is date of visit.
    *  </dd>
    *  <dt>string <var>dtl_date</var></dt>
    *  <dd>The date of the request to fill out a quiz form.</dd>
@@ -68,9 +65,9 @@ class ResponseListModel extends WlModelAbstract
    *    `false` - the form can always be viewed.
    *  </dd>
    *  <dt>string <var>k_quiz</var></dt>
-   *  <dd>The quiz key.</dd>
+   *  <dd>The quiz key. 
    *  <dt>string <var>k_quiz_login</var></dt>
-   *  <dd>The quiz response key.</dd>
+   *  <dd>The quiz response key. 
    *  <dt>string|null <var>text_amend_date</var></dt>
    *  <dd>
    *    Date when response amended.

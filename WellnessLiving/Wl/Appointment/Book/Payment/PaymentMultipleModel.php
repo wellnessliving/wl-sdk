@@ -117,8 +117,7 @@ class PaymentMultipleModel extends WlModelAbstract
    *         string [<var>uid</var>]
    *       </dt>
    *       <dd>
-   *
-   *         Specify only in a case of booking for a lof of different users.
+   *         User's key.          Specify only in a case of booking for a lof of different users.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -410,8 +409,8 @@ class PaymentMultipleModel extends WlModelAbstract
 
   /**
    * The list of quiz response keys.
-   * Keys refer to quiz keys.
-   * And values refer to response keys.
+   * Key is quiz key.
+   * Value is quiz response key.
    *
    * @post post
    * @var array

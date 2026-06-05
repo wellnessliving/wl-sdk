@@ -34,6 +34,8 @@ class ConcertoModel extends WlModelAbstract
   public $text_phone = '';
 
   /**
+   * User's primary key.
+   *
    * @get result
    * @var string
    */

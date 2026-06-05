@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Review\ReviewList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlReviewStatusSid;
 
 /**
  * Returns information about a review.
@@ -28,7 +29,7 @@ class ReviewElementModel extends WlModelAbstract
    *     int <var>id_review_status</var>
    *   </dt>
    *   <dd>
-   *     Status of the Review
+   *     Status of the Review. One of {@link WlReviewStatusSid} constants.
    *   </dd>
    *   <dt>
    *     bool <var>is_featured</var>

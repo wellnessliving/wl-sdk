@@ -44,7 +44,7 @@ class ElementModel extends WlModelAbstract
    *   <dt>string `dt_date`</dt>
    *   <dd>Date/time when the session starts. In UTC.</dd>
    *   <dt>string `k_class_period`</dt>
-   *   <dd>Class session primary keys.</dd>
+   *   <dd>Class session primary keys. 
    * </dl>
    *
    * @get result
@@ -116,7 +116,7 @@ class ElementModel extends WlModelAbstract
    *   <dt>string `k_currency`</dt>
    *   <dd>The payment currency Key.</dd>
    *   <dt>string `k_pay_installment_template`</dt>
-   *   <dd>The key of the installment plan template.</dd>
+   *   <dd>The key of the installment plan template. 
    *   <dt>string `m_amount`</dt>
    *   <dd>The amount of the installment plan.</dd>
    *   <dt>string `s_duration`</dt>
@@ -145,7 +145,7 @@ class ElementModel extends WlModelAbstract
    *       <dt>int `i_repeat`</dt>
    *       <dd>Count of the periods which specified in `id_repeat`.</dd>
    *       <dt>int `id_repeat`</dt>
-   *       <dd>Measuring unit of `i_repeat` (week, month, year).</dd>
+   *       <dd>Measuring unit of `i_repeat` (week, month, year). One of {@link ADurationSid} constants.</dd>
    *     </dl>
    *   </dd>
    *   <dt>
@@ -161,15 +161,14 @@ class ElementModel extends WlModelAbstract
    *       <dt>string `s_surname`</dt>
    *       <dd>The first letter of staff member's surname.</dd>
    *       <dt>int `uid_staff`</dt>
-   *       <dd>The user key of the staff member.</dd>
+   *       <dd>The user key of the staff member. 
    *     </dl>
    *   </dd>
    *   <dt>
    *     string[] `a_virtual_location`
    *   </dt>
    *   <dd>
-   *     List of virtual locations.
-   *   </dd>
+   *     List of virtual locations.    </dd>
    *   <dt>
    *     string `dt_end`
    *   </dt>
@@ -275,7 +274,7 @@ class ElementModel extends WlModelAbstract
    *   <dt>int `i_width`</dt>
    *   <dd>Image width.</dd>
    *   <dt>string `uid`</dt>
-   *   <dd>Key of the user.</dd>
+   *   <dd>Key of the user. 
    *   <dt>string `url_logo`</dt>
    *   <dd>URL to image.</dd>
    * </dl>
@@ -484,6 +483,7 @@ class ElementModel extends WlModelAbstract
    *
    * @get result
    * @var int|null
+   * @see RequirePaySid
    */
   public $id_pay_require_option;
 
@@ -620,7 +620,7 @@ class ElementModel extends WlModelAbstract
   public $k_book_class_period;
 
   /**
-   * Key of a business.
+   * Key of a business to which the requested event(s) belong.
    *
    * @get get
    * @var string|null

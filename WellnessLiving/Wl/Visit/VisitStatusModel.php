@@ -22,7 +22,7 @@ class VisitStatusModel extends WlModelAbstract
    *           <dt>bool `is_flat`</dt>
    *           <dd>`true` in a case of flat penalty type; `false` in a case of percentage penalty type.</dd>
    *           <dt>string `k_currency`</dt>
-   *
+   *           <dd>Currency >
    *           <dt>string `m_amount`</dt>
    *           <dd>Penalty amount.</dd>
    *        </dl>
@@ -63,10 +63,7 @@ class VisitStatusModel extends WlModelAbstract
   /**
    * An array of service resources.
    *
-   * The key refers to the `k_resource_type`.
-   * The value is an array with the following key: `k_resource`.
-   * The array element contains a nested array with `i_index` and `i_quantity`.
-   *
+   * The key refers to the `k_resource_type`.  The value is an array with the following key: `k_resource`. * The array element contains a nested array with `i_index` and `i_quantity`. *
    * This will be empty if not set yet.
    *
    * @get result
@@ -82,9 +79,9 @@ class VisitStatusModel extends WlModelAbstract
    * Each element contains the following set of data:
    * <dl>
    *  <dt>string <var>k_resource</var></dt>
-   *
+   *  <dd>Resource >
    *  <dt>string <var>k_resource_type</var></dt>
-   *
+   *  <dd>Resource type >
    *  <dt>int <var>i_index</var></dt>
    *  <dd>Index of the resource on the layout.</dd>
    *  <dt>int <var>i_quantity</var></dt>
@@ -310,7 +307,7 @@ class VisitStatusModel extends WlModelAbstract
    * The time zone key.
    *
    * `null` if not set then use default timezone client.
-   *
+   * 
    * @get get
    * @var null|string
    */
@@ -375,6 +372,7 @@ class VisitStatusModel extends WlModelAbstract
   public $text_title = '';
 
   /**
+   * User key who made a visit.
    * `null` for a guest visit.
    *
    * @get result

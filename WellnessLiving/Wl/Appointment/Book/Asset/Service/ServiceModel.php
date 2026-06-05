@@ -24,7 +24,7 @@ class ServiceModel extends WlModelAbstract
    * If it's equal to the key of your current appointment booking, you can assume the asset is available.
    *
    * @get result
-   * @var array
+   * @var array<string, array<int, string>>
    */
   public $a_resource_busy;
 
@@ -34,20 +34,27 @@ class ServiceModel extends WlModelAbstract
    * Values refer to sub-arrays with next key(s).
    * <dl>
    *   <dt>array[] <var>a_resource</var></dt>
-   *   <dd>A list of resources. Every element has the following keys:<dl>
-   *     <dt>array <var>a_image</var></dt>
-   *     <dd>The asset's image data.</dd>
-   *     <dt>int <var>i_quantity</var></dt>
-   *     <dd>Asset quantity.</dd>
-   *     <dt>bool <var>is_available</var></dt>
-   *     <dd>Whether this asset has at least one free unit.</dd>
-   *     <dt>string <var>k_resource</var></dt>
-   *     <dd>The asset key.</dd>
-   *     <dt>string <var>s_resource</var></dt>
-   *     <dd>The asset title.</dd>
-   *   </dl></dd>
+   *   <dd>
+   *     A list of resources. Every element has the following keys:
+   *     <dl>
+   *       <dt>array <var>a_image</var></dt>
+   *       <dd>The asset's image data. 
+   *
+   *       <dt>int <var>i_quantity</var></dt>
+   *       <dd>Asset quantity.</dd>
+   *
+   *       <dt>bool <var>is_available</var></dt>
+   *       <dd>Whether this asset has at least one free unit.</dd>
+   *
+   *       <dt>string <var>k_resource</var></dt>
+   *       <dd>The asset key. 
+   *
+   *       <dt>string <var>s_resource</var></dt>
+   *       <dd>The asset title.</dd>
+   *     </dl>
+   *   </dd>
    *   <dt>string|null <var>k_resource_layout</var></dt>
-   *   <dd>The asset's layout key. This will be `null` if the asset category has no layout.</dd>
+   *   <dd>The asset's layout key.  will be `null` if the asset category has no layout.</dd>
    *   <dt>string <var>s_resource_type</var></dt>
    *   <dd>The title of asset category.</dd>
    * </dl>

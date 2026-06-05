@@ -24,7 +24,6 @@ class ClassList68Model extends WlModelAbstract
 
   /**
    * The list of classes keys to filter.
-   *
    * Return sessions with matching class IDs.
    *
    * If it's empty and {@link ClassList68Model::$show_class} is `true`, all classes will be returned.
@@ -64,7 +63,6 @@ class ClassList68Model extends WlModelAbstract
 
   /**
    * The list of event keys to filter.
-   *
    * Return sessions with matching event keys.
    *
    * If it's empty and {@link ClassList68Model::$show_event} is `true`, all events will be returned.
@@ -90,7 +88,7 @@ class ClassList68Model extends WlModelAbstract
    * Every element has the following keys:
    * <dl>
    *   <dt>string <var>text_type</var></dt> <dd>Type of class ("class" || "event")</dd>
-   *   <dt>string <var>k_class</var></dt> <dd>Class/event key.</dd>
+   *   <dt>string <var>k_class</var></dt> <dd>Class/event key. 
    *   <dt>string <var>s_class</var></dt> <dd>Class/event title.</dd>
    *   <dt>int <var>i_class</var></dt> <dd>Total sessions found.</dd>
    * </dl>
@@ -115,8 +113,7 @@ class ClassList68Model extends WlModelAbstract
    *     string[] <var>a_class_tab</var>
    *   </dt>
    *   <dd>
-   *     Keys of class tab.
-   *   </dd>
+   *     Keys of class tab. *   </dd>
    *   <dt>
    *     string[] <var>a_image</var>
    *    </dt>
@@ -135,7 +132,7 @@ class ClassList68Model extends WlModelAbstract
    *   <dd>
    *     The list of staff keys for the staff member conducting the session.
    *     For legacy third-party apps listed in {@link ClassListApi::APPS_USE_OLD_K_STAFF},
-   *
+   *     contains taff` for backward compatibility.
    *     Empty for all other applications. Use `a_staff_uid` instead.
    *   </dd>
    *   <dt>
@@ -149,8 +146,7 @@ class ClassList68Model extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The list of virtual locations keys. Each value is a location key.
-   *
-   *   </dd>
+   *     *   </dd>
    *   <dt>
    *     string <var>dt_date</var>
    *   </dt>
@@ -213,6 +209,13 @@ class ClassList68Model extends WlModelAbstract
    *     Number of clients in wait list.
    *   </dd>
    *   <dt>
+   *     bool <var>is_book_for_guest</var>
+   *   </dt>
+   *   <dd>Allow clients to book on behalf of a guest.
+   *      `true` if clients can book on behalf of a guest.
+   *      `false` otherwise.
+   *   </dd>
+   *   <dt>
    *     bool <var>is_cancel</var>
    *   </dt>
    *   <dd>
@@ -240,20 +243,17 @@ class ClassList68Model extends WlModelAbstract
    *     string <var>k_class</var>
    *   </dt>
    *   <dd>
-   *     The class key.
-   *   </dd>
+   *     The class key. *   </dd>
    *   <dt>
    *     string <var>k_class_period</var>
    *   </dt>
    *   <dd>
-   *     The class period key.
-   *   </dd>
+   *     The class period key. *   </dd>
    *   <dt>
    *     string <var>k_location</var>
    *   </dt>
    *   <dd>
-   *     The key of the session's location.
-   *   </dd>
+   *     The key of the session's location. *   </dd>
    *   <dt>
    *     string <var>s_title</var>
    *   </dt>
@@ -303,7 +303,7 @@ class ClassList68Model extends WlModelAbstract
 
   /**
    * The list end date in MySQL format.
-   *
+   * *
    * @post post
    * @var string
    */
@@ -430,6 +430,7 @@ class ClassList68Model extends WlModelAbstract
   public $show_event = false;
 
   /**
+   * Whether to generate {@link ClassList68Model::$a_quick} a quick filter.
    * If `true`, a quick filter will be generated. `false` otherwise.
    *
    * @post post

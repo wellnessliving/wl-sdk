@@ -20,8 +20,6 @@ class DriveSaveModel extends WlModelAbstract
   /**
    * A set of parameters.
    *
-   * The structure of this array corresponds to the argument <var>$a_param</var> in
-   *
    * If a file is uploaded using an S3 bucket, the array must contain the key `is_multipart`.
    *
    * @post post

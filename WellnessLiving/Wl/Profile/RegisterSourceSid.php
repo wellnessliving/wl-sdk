@@ -23,6 +23,11 @@ class RegisterSourceSid
    * <b>Don't use to edit existing user profile.</b>
    */
   const SELF = 2;
+
+  /**
+   * This is a service value, which means to not choose any specific source.
+   */
+  const UNSET_VALUE = 3;
 }
 
 ?>

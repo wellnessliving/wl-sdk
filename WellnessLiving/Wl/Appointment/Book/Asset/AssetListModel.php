@@ -34,8 +34,10 @@ class AssetListModel extends WlModelAbstract
    *         When restrictions are hidden and current user isn't a staff member, the age range will be empty.</dd>
    *     </dl>
    *   </dd>
-   *   <dt>array <var>a_class_tab</var></dt>
-   *   <dd>The key of service.</dd>
+   *   <dt>string[] <var>a_class_tab</var></dt>
+   *   <dd>
+   *       The key of service.
+   *       Keys are service key.        Values are class tab key.    </dd>
    *   <dt>
    *     array[] <var>a_direct_link</var>
    *   </dt>
@@ -81,7 +83,7 @@ class AssetListModel extends WlModelAbstract
    *       <dd>The asset period price.</dd>
    *     </dl>
    *   </dd>
-   *   <dt>array <var>a_search_tag</var></dt>
+   *   <dt>string[] <var>a_search_tag</var></dt>
    *   <dd>QUICK Search tag keys.</dd>
    *   <dt>bool <var>hide_application</var></dt>
    *   <dd>
@@ -97,11 +99,11 @@ class AssetListModel extends WlModelAbstract
    *   <dt>bool <var>is_age_restricted</var></dt>
    *   <dd>Determines whether this service can't be booked due to age restrictions.</dd>
    *   <dt>string <var>k_class_tab</var></dt>
-   *   <dd>Quick book tab key.</dd>
+   *   <dd>Quick book tab key. 
    *   <dt>string <var>k_resource</var></dt>
-   *   <dd>The resource key.</dd>
+   *   <dd>The resource key. 
    *   <dt>string <var>k_resource_category</var></dt>
-   *   <dd>The resource category key.</dd>
+   *   <dd>The resource category key. 
    * </dl>
    *
    * @get result
@@ -114,8 +116,7 @@ class AssetListModel extends WlModelAbstract
    *
    * 1st level keys refer to asset keys.
    * 2nd level keys refer to asset numbers.
-   * Values is keys of appointment bookings that reserve the asset, primary keys in {@link \RsAppointmentSql} table,
-   * or `true` if asset reserved by class/event.
+   * Values are keys of appointment bookings that reserve the asset, or `true` if the asset is reserved by a class or event.
    *
    * For example, if you want to check if the 10th asset with the key of '15' is reserved,
    * you can check if `a_resource_busy['15']['10']` is free.
@@ -124,7 +125,7 @@ class AssetListModel extends WlModelAbstract
    * If it's equal to the key of your current appointment booking, you can assume the asset is available.
    *
    * @get result
-   * @var array
+   * @var array<string, array<int, string|true>>
    */
   public $a_asset_busy = [];
 

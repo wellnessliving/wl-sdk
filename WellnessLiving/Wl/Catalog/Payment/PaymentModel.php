@@ -22,11 +22,15 @@ class PaymentModel extends WlModelAbstract
 {
   /**
    * The staff commission earned for this purchase. If this isn't empty, it has the next fields: <dl>
-   *   <dt>string <var>uid_staff</var></dt>
-   *   <dd>The staff user ID.</dd>
-   *   <dt>string <var>k_staff</var></dt>
-   *   <dd>@deprecated staff key.</dd>
-   *   <dt>string <var>k_staff_pay</var></dt>
+   *   <dt>string `uid_staff`</dt>
+   *   <dd>The staff user ID. 
+   *
+   *   <dt>string `k_staff`</dt>
+   *   <dd>
+   *       <b>Deprecated!</b>
+   *       Staff key.    </dd>
+   *
+   *   <dt>string `k_staff_pay`</dt>
    *   <dd>The payment schema key.</dd>
    * </dl>
    *
@@ -43,223 +47,263 @@ class PaymentModel extends WlModelAbstract
    * Every element must have the following keys:
    * <dl>
    *   <dt>
-   *     array [<var>a_config</var>]
+   *     array [`a_config`]
    *   </dt>
    *   <dd>
    *     Additional configuration information. This may contain the next keys:
    *     <dl>
    *       <dt>
-   *         array [<var>a_quick_gift</var>]
+   *         array [`a_quick_gift`]
    *       </dt>
    *       <dd>
    *         A list of components to be added to the client. For quick gift cards only: <dl>
-   *         <dt>int <var>i_count</var></dt>
-   *         <dd>The quantity of elements.</dd>
-   *         <dt>int <var>id_purchase_item</var></dt>
-   *         <dd>The purchase type of the element. One of the {@link WlPurchaseItemSid} constants.</dd>
-   *         <dt>string <var>k_id</var></dt>
-   *         <dd>
-   *           The primary key of the element, depending on the element type.
-   *           Pay attention that if you add a product into gift card, there must be specified not product key but product option key.
-   *           Do not specify separate field `k_shop_product_option`.
-   *         </dd></dl>
+   *           <dt>int `i_count`</dt>
+   *           <dd>The quantity of elements.</dd>
+   *
+   *           <dt>int `id_purchase_item`</dt>
+   *           <dd>The purchase type of the element. One of the {@link WlPurchaseItemSid} constants.</dd>
+   *
+   *           <dt>string `k_id`</dt>
+   *           <dd>
+   *             The primary key of the element, depending on the element type.
+   *             Pay attention that if you add a product into gift card, there must be specified not product key but product option key.
+   *             Do not specify separate field `k_shop_product_option`.
+   *           </dd>
+   *         </dl>
    *       </dd>
+   *
    *       <dt>
-   *         array [<var>a_uid_share</var>]
+   *         string[] [`a_uid_share`]
    *       </dt>
    *       <dd>
    *         An array of UIDs representing the client's relatives that share the Purchase Option.
    *       </dd>
+   *
    *       <dt>
-   *         array [<var>a_wellness_program</var>]
+   *         array [`a_wellness_program`]
    *       </dt>
    *       <dd>
-   *          "Wellness Program" fields.
-   *          <var>k_wellness_program</var> must be passed along with this array. See the description below.
-   *          <dl>
-   *            <dt>array <var>a_account</var></dt>
-   *            <dd>See {@link EnrollmentFieldListModel::$a_account} for a full description.</dd>
-   *            <dt>array <var>a_field</var></dt>
-   *            <dd>See {@link EnrollmentFieldListModel::$a_field} for a full description.</dd>
-   *          </dl>
-   *          It's recommended to validate the fields using the POST method of the {@link EnrollmentFieldListModel} model.
+   *         "Wellness Program" fields.
+   *         <var>k_wellness_program</var> must be passed along with this array. See the description below.
+   *         <dl>
+   *           <dt>array `a_account`</dt>
+   *           <dd>See {@link EnrollmentFieldListModel::$a_account} for a full description.</dd>
+   *
+   *           <dt>array `a_field`</dt>
+   *           <dd>See {@link EnrollmentFieldListModel::$a_field} for a full description.</dd>
+   *         </dl>
+   *         It's recommended to validate the fields using the POST method of the {@link EnrollmentFieldListModel} model.
    *       </dd>
+   *
    *       <dt>
-   *         string [<var>dt_prorate</var>]
+   *         string [`dt_prorate`]
    *       </dt>
    *       <dd>
    *         The prorate date, used only for memberships.
    *       </dd>
+   *
    *       <dt>
-   *         string [<var>dt_send_local</var>]
+   *         string [`dt_send_local`]
    *       </dt>
    *       <dd>
    *         The date when the gift card will be sent. This is only used for gift cards.
    *       </dd>
+   *
    *       <dt>
-   *         string [<var>dt_start</var>]
+   *         string [`dt_start`]
    *       </dt>
    *       <dd>
    *         The start date, used only for memberships.
    *       </dd>
+   *
    *       <dt>
-   *         bool [<var>is_pay_when_start</var>]
+   *         bool [`is_pay_when_start`]
    *       </dt>
    *       <dd>
    *         If `true`, the client won't be charged for this item until its start date. Otherwise, this will be `false`.
    *         The Purchase Option must have a specified start date.
    *       </dd>
+   *
    *       <dt>
-   *         bool [<var>is_prorate</var>]
+   *         bool [`is_prorate`]
    *       </dt>
    *       <dd>
    *         If this is set to `1`, this purchase will use the prorate rule. Otherwise, set this to `0`. This is only used for memberships.
    *       </dd>
+   *
    *       <dt>
-   *         bool [<var>is_prorate_fix</var>]
+   *         bool [`is_prorate_fix`]
    *       </dt>
    *       <dd>
    *         If this is set to `1`, the custom prorate amount will be used. Otherwise, set this to `0`. This is only used for memberships.
    *       </dd>
+   *
    *       <dt>
-   *         bool [<var>is_prorate_only</var>]
+   *         bool [`is_prorate_only`]
    *       </dt>
    *       <dd>
    *         If this is set to `1`, this purchase is prorate only. Otherwise, set this to `0`. This is only used for memberships.
    *       </dd>
+   *
    *       <dt>
-   *         bool [<var>is_renew</var>]
+   *         bool [`is_renew`]
    *       </dt>
    *       <dd>
    *         If this is set to `1`, auto-renew will be enabled for the item. Otherwise, set this to `0`. This is only used for memberships.
    *       </dd>
+   *
    *       <dt>
-   *         string [<var>k_appointment</var>]
+   *         string [`k_appointment`]
    *       </dt>
    *       <dd>
    *         The appointment key, used only for appointment add-ons.
    *       </dd>
+   *
    *       <dt>
-   *         string [<var>k_coupon_amount</var>]
+   *         string [`k_coupon_amount`]
    *       </dt>
    *       <dd>
    *         The key of the gift card amount, used only for gift cards.
    *       </dd>
+   *
    *       <dt>
-   *         string [<var>k_staff</var>]
+   *         string [`k_staff`]
    *       </dt>
-   *       <dd>@</dd>
+   *
+   *        <dd>
+   *          <b>Deprecated!</b>
+   *          The staff member key, used only for appointment tips.
+   *                  </dd>
+   *
    *       <dt>
-   *         string [<var>k_wellness_program</var>]
+   *         string [`k_wellness_program`]
    *       </dt>
    *       <dd>
-   *          The "Wellness Program" key. Set this for the insurance membership promotion.
-   *          <var>a_wellness_program</var> array must be passed along with the key. See the array description above.
-   *          <p>Use the following models to work with this type of promotion:</p>
-   *          <ul>
-   *            <li>{@link ProgramListModel} to obtain list of active programs.</li>
-   *            <li>{@link EnrollmentFieldListModel} to get and validate fields for a given program.</li>
-   *          </ul>
+   *         The "Wellness Program" key. Set this for the insurance membership promotion.
+   *         <var>a_wellness_program</var> array must be passed along with the key. See the array description above.
+   *         <p>Use the following models to work with this type of promotion:</p>
+   *         <ul>
+   *           <li>{@link ProgramListModel} to obtain list of active programs.</li>
+   *           <li>{@link EnrollmentFieldListModel} to get and validate fields for a given program.</li>
+   *         </ul>
    *       </dd>
-   *       <dd>
-   *         The staff member key, used only for appointment tips.
-   *       </dd>
+   *
    *       <dt>
-   *         string [<var>m_prorate_custom</var>]
+   *         string [`m_prorate_custom`]
    *       </dt>
    *       <dd>
    *         The custom prorate price, used only memberships only. This is only used if <var>is_prorate_fix</var> is <tt>true</tt>.
    *       </dd>
+   *
    *       <dt>
-   *         string [<var>s_code</var>]
+   *         string [`s_code`]
    *       </dt>
    *       <dd>
    *         The gift card code. This is required for gift cards.
    *       </dd>
+   *
    *       <dt>
-   *         string [<var>s_image</var>]
+   *         string [`s_image`]
    *       </dt>
    *       <dd>
    *         The key of the image for the gift card. If empty, the business's first gift card image will be used. Specify this only for gift cards.
    *       </dd>
+   *
    *       <dt>
-   *         string [<var>s_mail</var>]
+   *         string [`s_mail`]
    *       </dt>
    *       <dd>
    *         The gift card receiver email. This is required for gift cards.
    *       </dd>
+   *
    *       <dt>
-   *         string [<var>s_recipient</var>]
+   *         string [`s_recipient`]
    *       </dt>
    *       <dd>
    *         The gift card receiver name. This is required for gift cards.
    *       </dd>
+   *
    *       <dt>
-   *         string [<var>s_sender</var>]
+   *         string [`s_sender`]
    *       </dt>
    *       <dd>
    *         The gift card sender name. This is required for gift cards.
    *       </dd>
-   *      <dt>
-   *          string [<var>uid_staff</var>]
-   *        </dt>
-   *        <dd>
-   *          The staff member user ID, used only for appointment tips.
-   *        </dd>
+   *
    *       <dt>
-   *         string <var>[uid_to]</var>
+   *         string [`uid_staff`]
+   *       </dt>
+   *       <dd>
+   *         The staff member user ID, used only for appointment tips.
+   *       </dd>
+   *
+   *       <dt>
+   *         string `[uid_to]`
    *       </dt>
    *       <dd>
    *         Specifies the recipient of a transfer Purchase Option.
    *       </dd>
    *     </dl>
    *   </dd>
+   *
    *   <dt>
-   *     array[] [<var>a_tax_custom</var>]
+   *     array[] [`a_tax_custom`]
    *   </dt>
    *   <dd>
    *     Customer taxes (optional). Every element must contain the following keys:
-   *     <dl><dt>string <var>f_tax</var></dt><dd>The tax amount.</dd>
-   *     <dt>string <var>k_tax</var></dt><dd>The tax key.</dd></dl>
+   *     <dl>
+   *       <dt>string `f_tax`</dt>
+   *       <dd>The tax amount.</dd>
+   *
+   *       <dt>string `k_tax`</dt>
+   *       <dd>The tax key.</dd>
+   *     </dl>
    *   </dd>
+   *
    *   <dt>
-   *     int <var>i_quantity</var>
+   *     int `i_quantity`
    *   </dt>
    *   <dd>
    *     The item quantity.
    *   </dd>
+   *
    *   <dt>
-   *     int <var>id_sale</var>
+   *     int `id_sale`
    *   </dt>
    *   <dd>
    *     The item type ID. One of the {@link WlSaleSid} constants.
    *   </dd>
+   *
    *   <dt>
-   *     string <var>k_id</var>
+   *     string `k_id`
    *   </dt>
    *   <dd>
    *     The item key.
    *   </dd>
+   *
    *   <dt>
-   *     string [<var>k_login_prize</var>]
+   *     string [`k_login_prize`]
    *   </dt>
    *   <dd>
    *    The key of the login prize to apply a login prize discount.
    *   </dd>
+   *
    *   <dt>
-   *     string [<var>k_shop_product_option</var>]
+   *     string [`k_shop_product_option`]
    *   </dt>
    *   <dd>
    *     The product option key, required only for products.
    *   </dd>
+   *
    *   <dt>
-   *     string [<var>m_price_custom</var>]
+   *     string [`m_price_custom`]
    *   </dt>
    *   <dd>
    *     The custom price (optional).
    *   </dd>
+   *
    *   <dt>
-   *     string <var>[s_signature]</var>
+   *     string `[s_signature]`
    *   </dt>
    *   <dd>
    *     The client signature, used for items that require a signed contract.
@@ -405,11 +449,10 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * The list of quiz response keys.
-   * Keys refer to quiz keys.
-   * And values refer to responses.
+   * Keys refer to quiz keys.  And values refer to responses.
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_quiz_response = [];
 

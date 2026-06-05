@@ -15,7 +15,7 @@ class MemberValidateModel extends WlModelAbstract
    * List of fields if the user has empty profile fields, which are required for booking.
    *
    * @get result
-   * @var array
+   * @var string[]
    */
   public $a_empty_fields_booking = [];
 
@@ -23,7 +23,7 @@ class MemberValidateModel extends WlModelAbstract
    * List of fields if the user has empty profile fields, which are required for registration.
    *
    * @get result
-   * @var array
+   * @var string[]
    */
   public $a_empty_fields_registration = [];
 

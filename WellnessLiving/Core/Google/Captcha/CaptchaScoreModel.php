@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class CaptchaScoreModel extends WlModelAbstract
 {
   /**
-   * Overridden score value for {@link CaptchaVersionSid::V3} captcha.
+   * Overridden score value for V3 captcha.
    *
    * `null` to reset override.
    *

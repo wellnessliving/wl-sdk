@@ -39,15 +39,13 @@ class CatalogListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The list of member groups available to purchase the sale item.
-   *
-   *     Empty list means that the sale item is available to all member groups.
+   *          Empty list means that the sale item is available to all member groups.
    *   </dd>
    *   <dt>
    *     string[] <var>a_shop_category</var>
    *   </dt>
    *   <dd>
-   *     A list of online store category keys.
-   *   </dd>
+   *     A list of online store category keys.    </dd>
    *   <dt>
    *     int <var>[id_program]</var>
    *   </dt>

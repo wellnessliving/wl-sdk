@@ -25,7 +25,6 @@ class ClassListModel extends WlModelAbstract
 
   /**
    * The list of classes keys to filter.
-   *
    * Return sessions with matching class IDs.
    *
    * If it's empty, all classes/events will be returned.
@@ -68,8 +67,7 @@ class ClassListModel extends WlModelAbstract
    *     string[] <var>a_class_tab</var>
    *   </dt>
    *   <dd>
-   *     Keys of class tab.
-   *   </dd>
+   *     Keys of class tab.    </dd>
    *   <dt>
    *     string[] <var>a_image</var>
    *    </dt>
@@ -88,7 +86,7 @@ class ClassListModel extends WlModelAbstract
    *   <dd>
    *     The list of staff keys for the staff member conducting the session.
    *     For legacy third-party apps listed in {@link ClassListApi::APPS_USE_OLD_K_STAFF},
-   *
+   *     contains taff` for backward compatibility.
    *     Empty for all other applications. Use `a_staff_uid` instead.
    *   </dd>
    *   <dt>
@@ -96,15 +94,13 @@ class ClassListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The list of staff user keys for the staff member conducting the session.
-   *
-   *   </dd>
+   *        </dd>
    *   <dt>
    *     string[] <var>a_virtual_location</var>
    *   </dt>
    *   <dd>
    *     The list of virtual locations keys. Each value is a location key.
-   *
-   *   </dd>
+   *        </dd>
    *   <dt>
    *     string <var>dt_date</var>
    *   </dt>
@@ -167,6 +163,13 @@ class ClassListModel extends WlModelAbstract
    *     Number of clients in wait list.
    *   </dd>
    *   <dt>
+   *     bool <var>is_book_for_guest</var>
+   *   </dt>
+   *   <dd>Allow clients to book on behalf of a guest.
+ *          `true` if clients can book on behalf of a guest.
+   *      `false` otherwise.
+   *   </dd>
+   *   <dt>
    *     bool <var>is_cancel</var>
    *   </dt>
    *   <dd>
@@ -194,20 +197,17 @@ class ClassListModel extends WlModelAbstract
    *     string <var>k_class</var>
    *   </dt>
    *   <dd>
-   *     The class key.
-   *   </dd>
+   *     The class key.    </dd>
    *   <dt>
    *     string <var>k_class_period</var>
    *   </dt>
    *   <dd>
-   *     The class period key.
-   *   </dd>
+   *     The class period key.    </dd>
    *   <dt>
    *     string <var>k_location</var>
    *   </dt>
    *   <dd>
-   *     The key of the session's location.
-   *   </dd>
+   *     The key of the session's location.    </dd>
    *   <dt>
    *     string <var>s_title</var>
    *   </dt>
@@ -257,7 +257,7 @@ class ClassListModel extends WlModelAbstract
 
   /**
    * The list end date in UTC and in MySQL format.
-   *
+   * 
    * @get get
    * @var string
    */

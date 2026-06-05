@@ -16,8 +16,7 @@ class ListModel extends WlModelAbstract
    *     string <var>k_member_group</var>
    *   </dt>
    *   <dd>
-   *     The key of the member group.
-   *   </dd>
+   *     The key of the member group.    </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
@@ -35,7 +34,7 @@ class ListModel extends WlModelAbstract
    * List of groups to be deleted.
    *
    * @delete post
-   * @var array
+   * @var string[]
    */
   public $a_member_group_delete = [];
 
@@ -43,7 +42,7 @@ class ListModel extends WlModelAbstract
    * List of groups in the order in which they will be saved.
    *
    * @put post
-   * @var array
+   * @var string[]
    */
   public $a_member_group_order = [];
 
@@ -53,7 +52,7 @@ class ListModel extends WlModelAbstract
    * `null` in the case when need to return all groups of business.
    *
    * @get get
-   * @var array|null
+   * @var string[]|null
    */
   public $a_member_group_select = null;
 

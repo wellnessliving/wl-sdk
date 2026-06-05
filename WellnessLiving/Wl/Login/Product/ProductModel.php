@@ -17,7 +17,7 @@ class ProductModel extends WlModelAbstract
    *   <dt>int <var>i_quantity</var></dt>
    *   <dd>Quantity of the product purchased.</dd>
    *   <dt>string <var>k_shop_product_option</var></dt>
-   *   <dd>Key of product.</dd>
+   *   <dd>Key of product. 
    *   <dt>string <var>m_price</var></dt>
    *   <dd>Price per unit of the product.</dd>
    *   <dt>string <var>m_total_amount</var></dt>
@@ -101,17 +101,17 @@ class ProductModel extends WlModelAbstract
    * Maximum price of the product. 0 means no filter by maximum price.
    *
    * @get get
-   * @var float
+   * @var string
    */
-  public $m_price_max = 0;
+  public $m_price_max = '0.00';
 
   /**
    * Minimum price of the product.
    *
    * @get get
-   * @var float
+   * @var string
    */
-  public $m_price_min = 0;
+  public $m_price_min = '0.00';
 
   /**
    * User key. Empty string means return products purchased by walk-in.

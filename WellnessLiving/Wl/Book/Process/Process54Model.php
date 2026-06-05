@@ -99,7 +99,7 @@ class Process54Model extends WlModelAbstract
    *     Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
    *   </dd>
    *   <dt>int <var>id_period</var></dt>
-   *   <dd>Deprecated, use `id_duration` instead!</dd>
+   *   <dd>Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.</dd>
    *   <dt>int <var>id_repeat_end</var></dt>
    *   <dd>Possible ways to stop repeatable events.</dd>
    * </dl>

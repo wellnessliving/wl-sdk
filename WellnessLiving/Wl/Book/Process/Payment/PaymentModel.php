@@ -26,9 +26,9 @@ class PaymentModel extends WlModelAbstract
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The key of the purchase item in the database.</dd>
    *   <dt>string <var>k_login_prize</var></dt>
-   *   <dd>Key of user's prize. Not `0` only if user is paying book by prize.</dd>
+   *   <dd>Key of user's prize. `0` only if user is paying book by prize.</dd>
    *   <dt>string <var>k_reward_prize</var></dt>
-   *   <dd>Key of reward prize. Not `0` only if user wants to redeem prize and use it to pay for visit.</dd>
+   *   <dd>Key of reward prize. `0` only if user wants to redeem prize and use it to pay for visit.</dd>
    *   <dt>string [<var>s_signature</var>]</dt>
    *   <dd>The signature of the Purchase Option contract. This won't be set if the Purchase Option doesn't require a contract assignment.</dd>
    * </dl>
@@ -235,7 +235,7 @@ class PaymentModel extends WlModelAbstract
    *     Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
    *   </dd>
    *   <dt>int <var>id_period</var></dt>
-   *   <dd>Deprecated, use `id_duration` instead!</dd>
+   *   <dd>Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.</dd>
    *   <dt>int <var>id_repeat_end</var></dt>
    *   <dd>Possible ways to stop repeatable events.</dd>
    * </dl>
@@ -253,7 +253,7 @@ class PaymentModel extends WlModelAbstract
    *   <dt>int <var>i_index</var></dt>
    *   <dd>The number of asset(s). The actual number is returned for assets with a quantity greater than <tt>1</tt>.</dd>
    *   <dt>string <var>k_resource</var></dt>
-   *   <dd>The key of the asset.</dd>
+   *   <dd>The key of the asset. 
    * </dl>
    *
    * @post post
@@ -274,7 +274,7 @@ class PaymentModel extends WlModelAbstract
   /**
    * Selected sessions on the waiting list without pay.
    *
-   * Keys - session IDs.
+   * Keys - session keys.
    *
    * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
    *

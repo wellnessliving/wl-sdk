@@ -98,7 +98,7 @@ class StoreModel extends WlModelAbstract
    *     Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
    *   </dd>
    *   <dt>int <var>id_period</var></dt>
-   *   <dd>Deprecated, use `id_duration` instead!</dd>
+   *   <dd>Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.</dd>
    *   <dt>int <var>id_repeat_end</var></dt>
    *   <dd>Possible ways to stop repeatable events.</dd>
    * </dl>
@@ -116,7 +116,7 @@ class StoreModel extends WlModelAbstract
    *   <dt>int <var>i_index</var></dt>
    *   <dd>The order number of the asset (from 1 to the asset quantity).</dd>
    *   <dt>string <var>k_resource</var></dt>
-   *   <dd>The asset key.</dd>
+   *   <dd>The asset key. 
    * </dl>
    *
    * @post post
@@ -127,7 +127,8 @@ class StoreModel extends WlModelAbstract
   /**
    * The selected sessions for an event.
    *
-   * The value is an indexed array of dates and times when the session occurred (in MySQL format, UTC).
+   * Keys are class period keys, values are indexed arrays of dates and times when the session occurred
+   *  (in MySQL format, UTC).
    *
    * @post post
    * @var string[][]
@@ -137,7 +138,8 @@ class StoreModel extends WlModelAbstract
   /**
    * The selected sessions for an event that are on the wait list and unpaid.
    *
-   * The value is an indexed array of dates and times when the session occurred (in MySQL format, UTC).
+   * Keys are class period keys, values are indexed arrays of dates and times when the session occurred
+   *  (in MySQL format, UTC).
    *
    * @post post
    * @var string[][]

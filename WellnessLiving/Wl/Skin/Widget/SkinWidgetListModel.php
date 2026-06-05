@@ -19,7 +19,7 @@ class SkinWidgetListModel extends WlModelAbstract
    * Keys - Skin type, one of {@link RsSkinSid} constants.
    * Values - arrays with next keys:
    * <dl>
-   *   <dt>string `k_skin`</dt><dd>Skin key.</dd>
+   *   <dt>string `k_skin`</dt><dd>Skin key. 
    *   <dt>string `text_widget_name`</dt><dd>Widget name.</dd>
    * </dl>
    *

@@ -27,10 +27,10 @@ class DayTimeModel extends WlModelAbstract
    *   <dd>Whether the appointment can be booked only in a wait list.</dd>
    *   <dt>string `k_staff`</dt>
    *   <dd>@deprecated If this time is already occupied by any client and staff member (but service capacity is not exhausted),
-   * Otherwise - `0`.</dd>
+   *       this key contains key of staff member. rwise - `0`.</dd>
    *   <dt>string `uid_staff`</dt>
    *   <dd>If this time is already occupied by any client and staff member (but service capacity is not exhausted),
-   * Otherwise - `0`.</dd>
+   *       this key contains user key of staff member. rwise - `0`.</dd>
    *   <dt>string `s_title`</dt>
    *   <dd>String representation of appointment schedule time.</dd>
    * </dl>
@@ -182,6 +182,7 @@ class DayTimeModel extends WlModelAbstract
    * In case of back-to-back booking - staff key of first appointment.
    * `0` means any available staff.
    *
+   * 
    * @get get
    * @var string
    * @deprecated This property will be removed in the future. Use {@link DayTimeModel::$uid_staff} instead.
@@ -192,7 +193,7 @@ class DayTimeModel extends WlModelAbstract
    * Key of timezone.
    *
    * `null` if not set then use default timezone client.
-   *
+   * 
    * @get get
    * @var null|string
    */
@@ -207,9 +208,9 @@ class DayTimeModel extends WlModelAbstract
    *   <dt>array `a_addon`</dt><dd>Array of appointment addons.</dd>
    *   <dt>int `i_duration`</dt><dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd>
    *   <dt>int `id_gender_staff`</dt><dd>Staff gender. One of {@link AGenderSid} constants. Zero mean no limitations on staff gender.</dd>
-   *   <dt>string `k_service`</dt><dd>Service key.</dd>
-   *   <dt>string `k_staff`</dt><dd>@deprecated Staff key. Zero means any available staff.</dd>
-   *   <dt>string `uid_staff`</dt><dd>Staff user key. Zero means any available staff.</dd>
+   *   <dt>string `k_service`</dt><dd>Service key. 
+   *   <dt>string `k_staff`</dt><dd>@deprecated Staff key. Zero means any available staff. 
+   *   <dt>string `uid_staff`</dt><dd>Staff user key. Zero means any available staff. 
    * </dl>
    *
    * For multiple appointment booking ({@link DayTimeModel::$is_back_to_back} == `false`): array of previously booked appointments.
@@ -217,8 +218,8 @@ class DayTimeModel extends WlModelAbstract
    * <dl>
    *   <dt>string `dtl_date`</dt><dd>Local date and time of appointment start in MySQL format.</dd>
    *   <dt>int `i_duration`</dt><dd>Duration of the appointment in minutes.</dd>
-   *   <dt>string `k_service`</dt><dd>Service key.</dd>
-   *   <dt>string `uid_staff`</dt><dd>Staff user key. Zero means any available staff.</dd>
+   *   <dt>string `k_service`</dt><dd>Service key. 
+   *   <dt>string `uid_staff`</dt><dd>Staff user key. Zero means any available staff. 
    * </dl>
    *
    * @get get

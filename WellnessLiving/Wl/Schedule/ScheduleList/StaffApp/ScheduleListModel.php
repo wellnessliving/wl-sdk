@@ -72,11 +72,11 @@ class ScheduleListModel extends WlModelAbstract
    *       <dt>bool <var>is_require</var></dt>
    *       <dd>Whether it's required. `true` quiz is required, `false` otherwise.</dd>
    *       <dt>string <var>k_quiz</var></dt>
-   *
+   *       <dd>Quiz key, 
    *       <dt>string <var>k_quiz_login</var></dt>
-   *
+   *       <dd>Quiz login key, 
    *       <dt>string <var>k_quiz_response</var></dt>
-   *
+   *       <dd>Quiz response key, 
    *       <dt>string <var>text_title</var></dt>
    *       <dd>Quiz title.</dd>
    *     </dl>
@@ -132,29 +132,33 @@ class ScheduleListModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     A list of assets involved in the session.
-   *
-   *   </dd>
+   *        </dd>
    *   <dt>
    *     string[] <var>a_resource_removed</var>
    *   </dt>
    *   <dd>
    *     List of removed assets involved in the session.
-   *
-   *   </dd>
+   *        </dd>
    *   <dt>
    *     string[] <var>a_staff</var>
    *   </dt>
    *   <dd>
    *     A list of staff members who will conduct the session.
-   *
-   *     Deprecated, use <var>a_staff_list</var> instead.
+   *          Deprecated. Returned only for applications in the `APPS_USE_OLD_K_STAFF` allow-list.
+   *     New applications should use `a_uid_staff` instead.
    *   </dd>
+   *   <dt>
+   *     string[] <var>a_uid_staff</var>
+   *   </dt>
+   *   <dd>
+   *     A list of staff members who will conduct the session.
+   *        </dd>
    *   <dt>
    *     array <var>a_staff_info</var>
    *   </dt>
    *   <dd>
    *     Information about staff members who conduct this session.
-   *     Values are array with data:
+   *     For applications in the `APPS_USE_OLD_K_STAFF` allow-list, keys are *     For other applications, keys are *     Values are array with data:
    *     <dl>
    *       <dt>
    *         string <var>text_staff</var>
@@ -166,14 +170,19 @@ class ScheduleListModel extends WlModelAbstract
    *         bool <var>is_staff_change</var>
    *       </dt>
    *       <dd>
-   *         <tt>true</tt> means staff is substituted, <tt>false</tt> simple staff member.
+   *         `true` means staff is substituted, `false` simple staff member.
    *       </dd>
    *       <dt>
    *         string <var>k_staff</var>
    *       </dt>
    *       <dd>
-   *         Staff key.
+   *         Staff key.          Returned only for applications in the `APPS_USE_OLD_K_STAFF` allow-list.
    *       </dd>
+   *       <dt>
+   *         string <var>uid_staff</var>
+   *       </dt>
+   *       <dd>
+   *         Staff user key.        </dd>
    *     </dl>
    *   </dd>
    *   <dt>
@@ -186,8 +195,7 @@ class ScheduleListModel extends WlModelAbstract
    *     string[] <var>a_virtual_location</var>
    *   </dt>
    *   <dd>
-   *     List of virtual locations.
-   *   </dd>
+   *     List of virtual locations. Each value is *   </dd>
    *   <dt>
    *     string <var>dt_date</var>
    *   </dt>
@@ -301,8 +309,7 @@ class ScheduleListModel extends WlModelAbstract
    *     string <var>k_appointment</var>
    *   </dt>
    *   <dd>
-   *     The appointment key.
-   *     If the session isn't an appointment, this will be `0`.
+   *     The appointment key.      If the session isn't an appointment, this will be `0`.
    *   </dd>
    *   <dt>
    *     string <var>dt_confirm</var>
@@ -315,29 +322,25 @@ class ScheduleListModel extends WlModelAbstract
    *     string <var>k_class</var>
    *   </dt>
    *   <dd>
-   *     The class key.
-   *     If the session isn't a class, this will be `0`.
+   *     The class key.      If the session isn't a class, this will be `0`.
    *   </dd>
    *   <dt>
    *     string <var>k_class_period</var>
    *   </dt>
    *   <dd>
-   *     The class period key.
-   *     If the session isn't a class, this will be `0`.
+   *     The class period key.      If the session isn't a class, this will be `0`.
    *   </dd>
    *   <dt>
    *     string <var>k_location</var>
    *   </dt>
    *   <dd>
-   *     The location key for where the session takes place.
-   *   </dd>
+   *     The location key for where the session takes place.    </dd>
    *   <dt>
    *     string <var>k_service</var>
    *   </dt>
    *   <dd>
    *     This is the key of the appointment type, while `k_appointment` is the specific instance.
-   *
-   *     For other cases, this will be `0`.
+   *          For other cases, this will be `0`.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>

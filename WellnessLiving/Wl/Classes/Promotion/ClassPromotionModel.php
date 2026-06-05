@@ -13,7 +13,7 @@ class ClassPromotionModel extends WlModelAbstract
   /**
    * Promotion data with the following structure:<dl>
    *   <dt>string <var>k_promotion</var></dt>
-   *   <dd>The promotion key.</dd>
+   *   <dd>The promotion key. 
    *   <dt>string <var>text_title</var></dt>
    *   <dd>The title of the promotion.</dd>
    *   <dt>int <var>id_program</var></dt>

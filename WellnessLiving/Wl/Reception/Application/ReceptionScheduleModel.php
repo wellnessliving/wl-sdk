@@ -97,14 +97,14 @@ class ReceptionScheduleModel extends WlModelAbstract
    *       The count of attended sessions before the last renewal.
    *       If `0`, there were no sessions before last renewal or the promotion doesn't auto-renew.
    *     </dd>
-   *     <dt>int <var>id_program_type</var></dt><dd>The promotion's program type ID.</dd>
+   *     <dt>int <var>id_program_type</var></dt><dd>The promotion's program type ID. One of {@link WlProgramTypeSid} constants.</dd>
    *     <dt>bool <var>is_last_use</var></dt>
    *     <dd>If `true`, the promotion has a usage limit and no remaining visits. Otherwise, this will be `false`.</dd>
    *     <dt>bool <var>is_package</var></dt><dd>If `true`, the promotion is a package. Otherwise, this will be `false`.</dd>
    *     <dt>bool <var>is_restrict_multiply</var></dt>
    *     <dd>If `true`, there's more than one calendar restriction on the pass. Otherwise, this will be `false`.</dd>
    *     <dt>string <var>k_login_promotion</var></dt>
-   *     <dd>The login promotion key.</dd>
+   *     <dd>The login promotion key. 
    *     <dt>string <var>s_remain_measure</var></dt><dd>The formatted remaining duration on the promotion.</dd>
    *     <dt>bool <var>show_remain</var></dt>
    *     <dd>If `true`, there's a rollover on the pass with calendar restrictions. Otherwise, this will be `false`.</dd>
@@ -216,6 +216,7 @@ class ReceptionScheduleModel extends WlModelAbstract
   /**
    * The key of the Self Check-In Web App.
    *
+   * 
    * @get get
    * @post get
    * @var string

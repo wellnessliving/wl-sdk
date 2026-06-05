@@ -22,9 +22,10 @@ class OwnerModel extends WlModelAbstract
 
   /**
    * Is client pay only for self. If parent pays for child this flag will be `false` for both.
+   * `true` if client pay only for self, `false` - otherwise.
    *
    * @get result
-   * @var bool `true` if client pay only for self, `false` - otherwise.
+   * @var bool
    */
   public $is_pay_self_only = true;
 
@@ -49,6 +50,7 @@ class OwnerModel extends WlModelAbstract
   /**
    * Key of the money owner.
    *
+   * 
    * @get result
    * @var string
    */

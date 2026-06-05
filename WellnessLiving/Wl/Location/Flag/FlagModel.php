@@ -12,7 +12,7 @@ class FlagModel extends WlModelAbstract
   /**
    * Array with structure:<dl>
    *   <dt>string <var>uid</var></dt>
-   *   <dd>Key is passport login ID.</dd>
+   *   <dd>Key is passport login ID. 
    *   <dt>bool <var>is_flag</var></dt>
    *   <dd>Value: <tt>true</tt> if user is flagged; <tt>false</tt> otherwise.</dd>
    * </dl>
@@ -54,7 +54,7 @@ class FlagModel extends WlModelAbstract
 
   /**
    * User keys.
-   * <tt>null</tt> if not set.
+   * `null` if not set.
    *
    * @get get
    * @var string[]|null

@@ -21,11 +21,11 @@ class AddonUpdateModel extends WlModelAbstract
    *   <dt>int [<var>i_use</var>]</dt>
    *   <dd> The add-on use count. Max value is 255. Not set means same value as add-on count.</dd>
    *   <dt>string <var>k_shop_product_option</var></dt>
-   *   <dd>The add-on key.</dd>
+   *   <dd>The add-on key. 
    * </dl>
    *
    * @put post
-   * @var array|array[]
+   * @var string[]|array[]
    */
   public $a_addon;
 
@@ -43,7 +43,7 @@ class AddonUpdateModel extends WlModelAbstract
    *     <dt>int <var>i_product</var></dt><dd>The add-on's quantity.</dd>
    *     <dt>bool <var>is_select</var></dt><dd>Determines whether the add-on is added to appointment.</dd>
    *     <dt>bool <var>is_track</var></dt><dd>Whether product usage tracking for client.</dd>
-   *     <dt>string <var>k_shop_product_option</var></dt><dd>The add-on product key.</dd>
+   *     <dt>string <var>k_shop_product_option</var></dt><dd>The add-on product key. 
    *     <dt>string <var>url</var></dt><dd>The URL for the add-on picture. This will be an empty string if the add-on doesn't have a picture.</dd>
    *   </dl></dd>
    *   <dt>array[] <var>a_addon_buy</var></dt>
@@ -76,7 +76,7 @@ class AddonUpdateModel extends WlModelAbstract
 
   /**
    * Determines whether the appointment duration needs to be updated.
-   *
+   * 
    * @put post
    * @var bool
    */

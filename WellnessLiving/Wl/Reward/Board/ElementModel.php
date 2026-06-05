@@ -10,7 +10,18 @@ use WellnessLiving\WlModelAbstract;
 class ElementModel extends WlModelAbstract
 {
   /**
-   * List of reward board elements information.
+   * List of reward board elements. `null` if not loaded.
+   * Each element:
+   * <dl>
+   *   <dt>int `i_score`</dt>
+   *   <dd>Score in points.</dd>
+   *   <dt>string `text_name`</dt>
+   *   <dd>Reward name.</dd>
+   *   <dt>string `uid`</dt>
+   *   <dd>User key.</dd>
+   *   <dt>string `url_logo`</dt>
+   *   <dd>URL to the user logo image.</dd>
+   * </dl>
    *
    * @get result
    * @var array[]|null

@@ -318,7 +318,7 @@ class ViewModel extends WlModelAbstract
    *
    * @get result
    * @var string
-   * @see WlHomeTourSid
+   * @see WlHomeTourSid::idTitle()
    */
   public $text_industry = '';
 

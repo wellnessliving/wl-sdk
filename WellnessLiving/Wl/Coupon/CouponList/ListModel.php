@@ -39,14 +39,6 @@ class ListModel extends WlModelAbstract
   public $a_coupon;
 
   /**
-   * Class table ID.
-   *
-   * @get result
-   * @var int
-   */
-  public $id_table;
-
-  /**
    * Whether to return franchisee-created coupons (if business is franchisor).
    * <tt>true</tt> to include franchisee-created coupons.
    *

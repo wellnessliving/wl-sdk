@@ -27,8 +27,7 @@ class SkinForeignModel extends WlModelAbstract
    *   <dt>string <var>k_promotion</var></dt>
    *   <dd>
    *       Key of the purchase option to be granted to each added lead for free.
-   *
-   *   </dd>
+   *       *   </dd>
    *   <dt>string <var>is_redirect_self</var></dt>
    *   <dd>`true` if redirection after lead is captured should be done in the same tab, `false` - in a new tab.</dd>
    *   <dt>string <var>url_redirect</var></dt>
@@ -48,7 +47,7 @@ class SkinForeignModel extends WlModelAbstract
    *
    *  <dl>
    *    <dt>bool <var>k_field</var></dt>
-   *
+   *    <dd>Field key. 
    *    <dt>bool <var>is_required</var></dt>
    *    <dd>`true` if field should be required, `false` - optional.</dd>
    *  </dl>

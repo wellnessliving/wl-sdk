@@ -93,9 +93,8 @@ class VideoListModel extends WlModelAbstract
   public $a_source = [];
 
   /**
-   * TODO wl-72248: remove this property when external developers confirm that they do not use it.
    * A list of staff members who appear in videos.
-   *
+   * 
    * @get get
    * @var string[]
    * @deprecated This property will be removed in the future. Use {@link VideoListModel::$a_staff_uid} instead.

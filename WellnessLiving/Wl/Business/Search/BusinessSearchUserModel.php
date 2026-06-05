@@ -17,7 +17,7 @@ class BusinessSearchUserModel extends WlModelAbstract
    * Array with business keys that contain given name in their title.
    *
    * @get result
-   * @var array
+   * @var string[]
    */
   public $a_result = [];
 

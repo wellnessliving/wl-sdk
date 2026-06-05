@@ -12,11 +12,10 @@ use WellnessLiving\WlModelAbstract;
 class RankModel extends WlModelAbstract
 {
   /**
-   * Rank category keys.
-   * Used to filter belts by belt categories.
+   * Rank category keys. Used to filter belts by belt categories.
    *
    * @get get
-   * @var array
+   * @var string[]
    */
   public $a_rank_category = [];
 
@@ -25,9 +24,9 @@ class RankModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string <var>k_rank</var></dt>
-   *   <dd>A belt key.</dd>
+   *   <dd>A belt key. 
    *   <dt>string <var>k_rank_category</var></dt>
-   *   <dd>A belt category key.</dd>
+   *   <dd>A belt category key. 
    *   <dt>string <var>text_rank</var></dt>
    *   <dd>Belt title.</dd>
    *   <dt>string <var>text_rank_category</var></dt>

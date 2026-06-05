@@ -28,8 +28,7 @@ class CategoryModel extends WlModelAbstract
    *     string <var>k_service_category</var>
    *   </dt>
    *   <dd>
-   *     Service category key.
-   *   </dd>
+   *     Service category key.    </dd>
    *   <dt>
    *     string <var>s_title</var>
    *   </dt>

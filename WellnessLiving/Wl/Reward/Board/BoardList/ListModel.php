@@ -10,10 +10,19 @@ use WellnessLiving\WlModelAbstract;
 class ListModel extends WlModelAbstract
 {
   /**
-   * A list of information about reward boards.
+   * A list of reward boards. `null` if not loaded.
+   * Each element: <dl>
+   *   <dt>string `k_reward_board`</dt>
+   *   <dd>
+   *     Reward board key.
+   *     `0` for the all-time system board.
+   *        </dd>
+   *   <dt>string `s_title`</dt>
+   *   <dd>Board title.</dd>
+   * </dl>
    *
    * @get result
-   * @var array|null
+   * @var array[]|null
    */
   public $a_reward_board;
 

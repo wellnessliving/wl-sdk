@@ -57,18 +57,18 @@ class ActionWriteModel extends WlModelAbstract
    *
    * @post post
    * @var int|null
+   * @see ADurationSid
    */
   public $id_cap = null;
 
   /**
    * Type of a period.
    *
-   * This field contains one of {@link ADurationSid} constants.
-   *
    * <tt>null</tt> if not set yet.
    *
    * @post post
    * @var int|null
+   * @see ADurationSid
    */
   public $id_duration = null;
 
@@ -77,7 +77,6 @@ class ActionWriteModel extends WlModelAbstract
    * <tt>true</tt>, if these are account credits.
    * <tt>false</tt>, if these are points.
    * <tt>null</tt> if field left unchanged.
-   * <var>is_account_credit</var>
    *
    * @post post
    * @var bool|null
@@ -85,7 +84,7 @@ class ActionWriteModel extends WlModelAbstract
   public $is_account_credit;
 
   /**
-   * Value of field `is_auto_
+   * Whether auto-renewal is enabled for this reward action.
    *
    * @post post
    * @var bool|null

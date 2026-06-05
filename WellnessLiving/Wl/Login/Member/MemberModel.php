@@ -17,8 +17,7 @@ class MemberModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     <tt>true</tt> if the user is allowed to sign in into this business; <tt>false</tt> otherwise.
-   *
-   *   </dd>
+   *        </dd>
    *   <dt>
    *     bool <var>is_franchisee</var>
    *   </dt>
@@ -35,14 +34,12 @@ class MemberModel extends WlModelAbstract
    *     string <var>k_business</var>
    *   </dt>
    *   <dd>
-   *     The business key.
-   *   </dd>
+   *     The business key.    </dd>
    *   <dt>
    *     string <var>k_business_franchisor</var>
    *   </dt>
    *   <dd>
-   *     The business key of the Enterprise Headquarters account (if applicable).
-   *   </dd>
+   *     The business key of the Enterprise Headquarters account (if applicable).    </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>

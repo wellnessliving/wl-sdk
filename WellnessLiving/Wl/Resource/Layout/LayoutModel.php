@@ -18,8 +18,7 @@ class LayoutModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The asset's appearance information.
-   *
-   *   </dd>
+   *        </dd>
    *   <dt>
    *     int <var>i_cell_x</var>
    *   </dt>
@@ -54,8 +53,7 @@ class LayoutModel extends WlModelAbstract
    *     string <var>k_resource</var>
    *   </dt>
    *   <dd>
-   *     The asset key.
-   *   </dd>
+   *     The asset key.    </dd>
    *   <dt>
    *     string <var>s_name</var>
    *   </dt>
@@ -131,8 +129,7 @@ class LayoutModel extends WlModelAbstract
    *     string <var>k_resource_layout_shape</var>
    *   </dt>
    *   <dd>
-   *     The shape key.
-   *   </dd>
+   *     The shape key.    </dd>
    *   <dt>
    *     string <var>s_color_background</var>
    *   </dt>

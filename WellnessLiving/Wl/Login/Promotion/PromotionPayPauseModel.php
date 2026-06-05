@@ -30,7 +30,7 @@ class PromotionPayPauseModel extends WlModelAbstract
    *   <dt>bool <var>is_past</var></dt>
    *   <dd>Whether the hold is in past.</dd>
    *   <dt>string <var>k_promotion_pay_pause</var></dt>
-   *   <dd>Key of the hold period.</dd>
+   *   <dd>Key of the hold period. 
    *   <dt>string|null <var>text_note</var></dt>
    *   <dd>Additional notes.</dd>
    *   <dt>string|null <var>text_user_create</var></dt>
@@ -48,7 +48,6 @@ class PromotionPayPauseModel extends WlModelAbstract
 
   /**
    * The end date of the current hold, in the local time zone.
-   * This can be set to a special value to make the period indefinite until further action.
    *
    * `null` if it shouldn't be updated.
    *
@@ -161,7 +160,7 @@ class PromotionPayPauseModel extends WlModelAbstract
    * Key of the email pattern.
    *
    * @get result
-   * @var string/null
+   * @var string|null
    */
   public $k_mail_pattern = null;
 

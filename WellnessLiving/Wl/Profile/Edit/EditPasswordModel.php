@@ -19,7 +19,6 @@ class EditPasswordModel extends WlModelAbstract
 
   /**
    * The key ID of business where actions take place.
-   *
    * Business is necessary for mail sending only.
    *
    * @post post

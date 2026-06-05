@@ -80,7 +80,7 @@ class InfoModel extends WlModelAbstract
    *     Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
    *   </dd>
    *   <dt>int <var>id_period</var></dt>
-   *   <dd>Deprecated, use `id_duration` instead!</dd>
+   *   <dd>Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.</dd>
    *   <dt>int <var>id_repeat_end</var></dt>
    *   <dd>Possible ways to stop repeatable events.</dd>
    * </dl>
@@ -98,7 +98,7 @@ class InfoModel extends WlModelAbstract
    *   <dt>int <var>i_index</var></dt>
    *   <dd>Order number of the asset (maybe from 1 to asset quantity).</dd>
    *   <dt>string <var>k_resource</var></dt>
-   *   <dd>The key of asset.</dd>
+   *   <dd>The key of asset. 
    * </dl>
    *
    * @post post
@@ -160,14 +160,12 @@ class InfoModel extends WlModelAbstract
    *     string <var>k_class_period</var>
    *   </dt>
    *   <dd>
-   *     The key of the session.
-   *   </dd>
+   *     The key of the session.    </dd>
    *   <dt>
    *     string <var>k_location</var>
    *   </dt>
    *   <dd>
-   *     Location key.
-   *   </dd>
+   *     Location key.    </dd>
    *   <dt>
    *     bool <var>m_price</var>
    *   </dt>
@@ -232,7 +230,7 @@ class InfoModel extends WlModelAbstract
   /**
    * Selected sessions on the waiting list without pay.
    *
-   * Keys - session IDs.
+   * Keys - session keys.
    *
    * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
    *
@@ -263,7 +261,7 @@ class InfoModel extends WlModelAbstract
    *   <dt>string <var>s_staff</var></dt>
    *   <dd>The staff member's name.</dd>
    *   <dt>string <var>uid_staff</var></dt>
-   *   <dd>UID of the staff member.</dd>
+   *   <dd>UID of the staff member. 
    *   <dt>string <var>uid</var></dt>
    *   <dd>Alias of <var>uid_staff</var> for backward compatibility.</dd>
    * </dl>
@@ -282,16 +280,16 @@ class InfoModel extends WlModelAbstract
   public $a_visit;
 
   /**
-   * Values - arrays with next keys:
+   * Values are arrays with next keys:
    * <dl>
    *     <dt>bool `is_free`</dt>
    *     <dd>`true` if the visit is free; `false` otherwise.</dd>
    *     <dt>string `k_login_promotion`</dt>
-   *
+   *     <dd>Applied user's purchase option. 
    *     <dt>string `k_promotion`</dt>
-   *
+   *     <dd>Purchase option. 
    *     <dt>string `k_session_pass`</dt>
-   *
+   *     <dd>Applied session pass. 
    *     <dt>string `text_promotion`</dt>
    *     <dd>Purchase option title.</dd>
    * </dl>
@@ -695,8 +693,7 @@ class InfoModel extends WlModelAbstract
 
   /**
    * `true` if class capacity should be shown,
-   * `false` to use business setting {@link \RsBusinessDesign::data()}`[is_class_capacity]`.
-   *
+   * `false` to use business setting. 
    * @get get
    * @var bool
    */

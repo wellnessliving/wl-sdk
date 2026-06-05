@@ -22,14 +22,12 @@ class ActionModel extends WlModelAbstract
    *     string <var>k_reward_action</var>
    *   </dt>
    *   <dd>
-   *     ID of reward action.
-   *   </dd>
+   *     ID of reward action.    </dd>
    *   <dt>
    *     string <var>k_reward_action_category</var>
    *   </dt>
    *   <dd>
-   *     ID of reward action category in database.
-   *   </dd>
+   *     ID of reward action category in database.    </dd>
    * </dl>
    *
    * @get result

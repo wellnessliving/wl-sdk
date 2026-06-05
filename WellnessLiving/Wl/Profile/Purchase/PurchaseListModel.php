@@ -62,8 +62,7 @@ class PurchaseListModel extends WlModelAbstract
    *     string <var>k_appointment</var>
    *   </dt>
    *   <dd>
-   *     Appointment key.
-   *   </dd>
+   *     Appointment key.    </dd>
    *   <dt>
    *     string <var>k_code</var>
    *   </dt>
@@ -116,8 +115,7 @@ class PurchaseListModel extends WlModelAbstract
    *     string <var>k_service</var>
    *   </dt>
    *   <dd>
-   *     Service key.
-   *   </dd>
+   *     Service key.    </dd>
    *   <dt>
    *     string [<var>k_session_pass</var>]
    *   </dt>
@@ -125,8 +123,7 @@ class PurchaseListModel extends WlModelAbstract
    *     In certain cases a session can be canceled and makeup sessions can be granted to a client in lieu of
    *     other compensation. This is the key of one of the makeup sessions used to attend an event. This is also
    *     present for a repeat purchase of an event.
-   *
-   *   </dd>
+   *        </dd>
    *   <dt>
    *     string <var>s_title</var>
    *   </dt>
@@ -137,8 +134,7 @@ class PurchaseListModel extends WlModelAbstract
    *     string <var>uid</var>
    *   </dt>
    *   <dd>
-   *     The ID of the purchase owner.
-   *   </dd>
+   *     The ID of the purchase owner.    </dd>
    * </dl>
    *
    * @get result

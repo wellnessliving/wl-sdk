@@ -5,21 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * A list of skin types.
  *
- * <h2>How to add a skin type</h2><ol>
- *   <li>
- *     Add a constant to {@link RsSkinSid}
- *   </li><li>
- *     Create an ancestor of <tt>RsSkinData</tt> class.
- *
- *   </li><li>
- *     At least the following templates should be created:<ul>
- *       <li>rs.skin.data.*.edit.xml</li>
- *       <li>rs.skin.data.*.view.xml</li>
- *     </ul>
- *   </li>
- * </ol>
- *
- * Last used ID: 20.
+ * * Last used ID: 20.
  */
 abstract class RsSkinSid
 {

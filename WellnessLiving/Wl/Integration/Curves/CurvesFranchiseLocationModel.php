@@ -3,7 +3,6 @@
 namespace WellnessLiving\Wl\Integration\Curves;
 
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Report\WlReportSid;
 
 /**
  * Gets information for enterprise locations.
@@ -17,20 +16,17 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    *     string <var>k_city</var>
    *   </dt>
    *   <dd>
-   *     City key.
-   *   </dd>
+   *     City key.    </dd>
    *   <dt>
    *     string <var>k_country</var>
    *   </dt>
    *   <dd>
-   *     Country key.
-   *   </dd>
+   *     Country key.    </dd>
    *   <dt>
    *     string <var>k_state</var>
    *   </dt>
    *   <dd>
-   *     State key.
-   *   </dd>
+   *     State key.    </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
@@ -51,8 +47,7 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    *     string <var>k_country</var>
    *   </dt>
    *   <dd>
-   *     Country key.
-   *   </dd>
+   *     Country key.    </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
@@ -75,39 +70,37 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    *   <dd>
    *     Currency ID.
    *   </dd>
-   *   <dt>
-   *     string <var>k_country</var>
-   *   </dt>
+   *
    *   <dt>
    *     string <var>k_city</var>
    *   </dt>
    *   <dd>
-   *     City key.
-   *   </dd>
+   *     City key.    </dd>
+   *
    *   <dt>
    *     string <var>k_country</var>
    *   </dt>
    *   <dd>
-   *     Country key.
-   *   </dd>
+   *     Country key.    </dd>
+   *
    *   <dt>
    *     string <var>k_location</var>
    *   </dt>
    *   <dd>
-   *     Location key.
-   *   </dd>
+   *     Location key.    </dd>
+   *
    *   <dt>
    *     string <var>k_region</var>
    *   </dt>
    *   <dd>
-   *     Franchise region key.
-   *   </dd>
+   *     Franchise region key.    </dd>
+   *
    *   <dt>
    *     string <var>k_state</var>
    *   </dt>
    *   <dd>
-   *     State key.
-   *   </dd>
+   *     State key.    </dd>
+   *
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
@@ -128,8 +121,7 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    *     string <var>k_region</var>
    *   </dt>
    *   <dd>
-   *     Franchise region key.
-   *   </dd>
+   *     Franchise region key.    </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
@@ -150,14 +142,12 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    *     string <var>k_country</var>
    *   </dt>
    *   <dd>
-   *     Country key.
-   *   </dd>
+   *     Country key.    </dd>
    *   <dt>
    *     string <var>k_state</var>
    *   </dt>
    *   <dd>
-   *     State key.
-   *   </dd>
+   *     State key.    </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
@@ -178,18 +168,6 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    * @var int
    */
   public $id_business_franchise_location = null;
-
-  /**
-   * Determines the report for which data should be returned.
-   *
-   * One of the {@link WlReportSid} constants.
-   *
-   * If `null`, the report isn't set.
-   *
-   * @get get
-   * @var int
-   */
-  public $id_report = null;
 
   /**
    * Determines whether to include churned/removed locations.

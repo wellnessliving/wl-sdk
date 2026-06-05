@@ -4,7 +4,6 @@ namespace WellnessLiving\Wl\Business\Franchise\Location;
 
 use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Report\WlReportSid;
 
 /**
  * Manages franchisor locations.
@@ -18,20 +17,17 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
    *     string <var>k_city</var>
    *   </dt>
    *   <dd>
-   *     City key.
-   *   </dd>
+   *     City key.    </dd>
    *   <dt>
    *     string <var>k_country</var>
    *   </dt>
    *   <dd>
-   *     Country key.
-   *   </dd>
+   *     Country key.    </dd>
    *   <dt>
    *     string <var>k_state</var>
    *   </dt>
    *   <dd>
-   *     State key.
-   *   </dd>
+   *     State key.    </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
@@ -52,8 +48,7 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
    *     string <var>k_country</var>
    *   </dt>
    *   <dd>
-   *     Country key.
-   *   </dd>
+   *     Country key.    </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
@@ -76,39 +71,37 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
    *   <dd>
    *     Currency ID. One of {@link CurrencySid} constants.
    *   </dd>
-   *   <dt>
-   *     string <var>k_country</var>
-   *   </dt>
+   *
    *   <dt>
    *     string <var>k_city</var>
    *   </dt>
    *   <dd>
-   *     City key.
-   *   </dd>
+   *     City key.    </dd>
+   *
    *   <dt>
    *     string <var>k_country</var>
    *   </dt>
    *   <dd>
-   *     Country key.
-   *   </dd>
+   *     Country key.    </dd>
+   *
    *   <dt>
    *     string <var>k_location</var>
    *   </dt>
    *   <dd>
-   *     Location key.
-   *   </dd>
+   *     Location key.    </dd>
+   *
    *   <dt>
    *     string <var>k_region</var>
    *   </dt>
    *   <dd>
-   *     Franchise region key.
-   *   </dd>
+   *     Franchise region key.    </dd>
+   *
    *   <dt>
    *     string <var>k_state</var>
    *   </dt>
    *   <dd>
-   *     State key.
-   *   </dd>
+   *     State key.    </dd>
+   *
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
@@ -129,8 +122,7 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
    *     string <var>k_region</var>
    *   </dt>
    *   <dd>
-   *     Franchise region key.
-   *   </dd>
+   *     Franchise region key.    </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
@@ -151,14 +143,12 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
    *     string <var>k_country</var>
    *   </dt>
    *   <dd>
-   *     Country key.
-   *   </dd>
+   *     Country key.    </dd>
    *   <dt>
    *     string <var>k_state</var>
    *   </dt>
    *   <dd>
-   *     State key.
-   *   </dd>
+   *     State key.    </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
@@ -183,18 +173,6 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
    * @var int
    */
   public $id_business_franchise_location;
-
-  /**
-   * Determines the report for which data should be returned.
-   *
-   * One of the {@link WlReportSid} constants.
-   *
-   * If `null`, the report isn't set.
-   *
-   * @get get
-   * @var int
-   */
-  public $id_report;
 
   /**
    * Determines whether to include churned/removed locations.

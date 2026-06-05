@@ -43,14 +43,12 @@ class StaffListModel extends WlModelAbstract
    *         string <var>k_service</var>
    *       </dt>
    *       <dd>
-   *
-   *       </dd>
+   *         Service key.        </dd>
    *       <dt>
    *         string <var>k_staff_pay</var>
    *       </dt>
    *       <dd>
-   *
-   *       </dd>
+   *         Staff pay key for this service.        </dd>
    *     </dl>
    *   </dd>
    *   <dt>
@@ -87,14 +85,7 @@ class StaffListModel extends WlModelAbstract
    *     string <var>k_staff</var>
    *   </dt>
    *   <dd>
-   *     The staff key.
-   *     deprecated Use `uid_staff` instead. Returned only for backward-compatible applications.
-   *   </dd>
-   *   <dt>
-   *     string <var>uid_staff</var>
-   *   </dt>
-   *   <dd>
-   *     The staff member user key.
+   *     The staff key.      deprecated Use `uid_staff` instead. Returned only for backward-compatible applications.
    *   </dd>
    *   <dt>
    *     string <var>s_name</var>
@@ -133,8 +124,12 @@ class StaffListModel extends WlModelAbstract
    *     The user key.
    *     Each staff member in WellnessLiving can also access the system as a client of their business.
    *     This is the key used to represent the staff member as a client.
-   *
-   *   </dd>
+   *        </dd>
+   *    <dt>
+   *      string <var>uid_staff</var>
+   *    </dt>
+   *    <dd>
+   *      The staff member user key.     </dd>
    *   <dt>
    *     string <var>url_image</var>
    *   </dt>

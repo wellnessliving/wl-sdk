@@ -13,7 +13,7 @@ class DriveFileModel extends WlModelAbstract
    * List of information about files.
    *
    * @post result
-   * @var string[][]
+   * @var array[]
    */
   public $a_file = [];
 

@@ -10,7 +10,8 @@ use WellnessLiving\WlModelAbstract;
 class InfoModel extends WlModelAbstract
 {
   /**
-   * Additional member data or `null` if any data can be shown. Will be filled if {@link InfoModel::$is_full} flag is set.
+   * Additional member data or `null` if any data can be shown.
+   * Will be filled if {@link InfoModel::$is_full} flag is set.
    *
    * @get result
    * @var array|null

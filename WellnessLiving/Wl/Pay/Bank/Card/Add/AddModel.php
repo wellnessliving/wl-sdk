@@ -78,8 +78,7 @@ class AddModel extends WlModelAbstract
    *     string <var>k_pay_bank</var>
    *   </dt>
    *   <dd>
-   *     Key of existing payment source in case of editing.
-   *     Empty if new pay source is being added.
+   *     Key of existing payment source in case of editing.      Empty if new pay source is being added.
    *   </dd>
    *   <dt>
    *     string <var>s_name</var>

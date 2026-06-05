@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class ListModel extends WlModelAbstract
 {
   /**
-   * A list of UID items. Each value is a primary key in {@link \RsRewardBoardSql}
+   * A list of UID items.
    *
    * @get result
    * @var int[]

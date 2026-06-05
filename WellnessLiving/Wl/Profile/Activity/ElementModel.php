@@ -60,8 +60,8 @@ class ElementModel extends WlModelAbstract
   public $html_message;
 
   /**
-   * Total amount of account credits user got for {@link ElementModel::$k_login_activity}. This field is a copy of result of {@link \RsLoginActivity::reward()}.
-   *
+   * Total amount of account credits user got for {@link ElementModel::$k_login_activity}.
+   * 
    * @get result
    * @var int
    */

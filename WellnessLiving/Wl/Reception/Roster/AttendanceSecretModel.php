@@ -10,7 +10,7 @@ use WellnessLiving\WlModelAbstract;
 class AttendanceSecretModel extends WlModelAbstract
 {
   /**
-   * Key of the business. Primary key in {@link \RsBusinessSql} table
+   * Key of the business.
    *
    * @get get
    * @var string

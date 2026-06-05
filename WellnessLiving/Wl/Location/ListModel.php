@@ -12,8 +12,7 @@ class ListModel extends WlModelAbstract
 {
   /**
    * A list of business keys.
-   *
-   * You can specify this instead of <var>$k_business</var> to load data for many businesses in one call.
+   * You can specify this instead of {@link ListModel::$k_business} to load data for many businesses in one call.
    *
    * @get get
    * @var string[]
@@ -65,8 +64,7 @@ class ListModel extends WlModelAbstract
    *     string <var>k_country</var>
    *   </dt>
    *   <dd>
-   *     Country key.
-   *   </dd>
+   *     Country key.    </dd>
    *   <dt>
    *     string <var>k_location</var>
    *   </dt>
@@ -77,8 +75,7 @@ class ListModel extends WlModelAbstract
    *     string <var>k_region</var>
    *   </dt>
    *   <dd>
-   *     Region key.
-   *   </dd>
+   *     Region key.    </dd>
    *   <dt>
    *     string <var>s_mail</var>
    *   </dt>
@@ -135,7 +132,7 @@ class ListModel extends WlModelAbstract
 
   /**
    * The primary keys of the selected businesses.
-   * You can specify this instead of <var>$k_business</var> to load data for many businesses in one call.
+   * You can specify this instead of {@link ListModel::$k_business} to load data for many businesses in one call.
    *
    * This is the same as <var>$a_business</var>, but serialized with JSON (to make the URL shorter).
    *

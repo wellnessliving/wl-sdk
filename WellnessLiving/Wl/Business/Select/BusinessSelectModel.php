@@ -39,7 +39,7 @@ class BusinessSelectModel extends WlModelAbstract
    *   </dl></dd>
    *   <dt>string <var>is_select</var></dt>
    *   <dd>This will be `true` if one of the listed businesses is selected.</dd>
-   *   <dt>string <var>name<var></dt>
+   *   <dt>string <var>name</var></dt>
    *   <dd>Information for the widget, the name of the key in the list. This should always be `k_business`.</dd>
    *   <dt>string <var>onchange</var></dt>
    *   <dd>Information for the widget, what the widget will do on selection.</dd>

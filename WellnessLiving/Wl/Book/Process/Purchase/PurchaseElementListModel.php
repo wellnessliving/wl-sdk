@@ -20,7 +20,7 @@ class PurchaseElementListModel extends WlModelAbstract
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The key of the purchase item in the database. The name of the table in the database depends on <var>id_purchase_item</var></dd>
    *   <dt>string [<var>k_login_prize</var>]</dt>
-   *   <dd>The key of the user's prize.</dd>
+   *   <dd>The key of the user's prize. 
    * </dl>
    *
    * @get get
@@ -33,7 +33,7 @@ class PurchaseElementListModel extends WlModelAbstract
    * Every element has the next keys:
    * <dl>
    *   <dt>
-   *     array <var>a_tax</var>
+   *     string[] <var>a_tax</var>
    *   </dt>
    *   <dd>
    *     Information about taxes. The key refers to the tax key, and the value refers to the tax amount.
@@ -41,7 +41,7 @@ class PurchaseElementListModel extends WlModelAbstract
    *   <dt>
    *     string <var>id_purchase_item</var></dt>
    *   <dd>
-   *     The ID of purchase item type.
+   *     The ID of purchase item type. One of {@link WlPurchaseItemSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>

@@ -14,7 +14,7 @@ class DiscountCodeModel extends WlModelAbstract
    *
    * Each element has next structure:<dl>
    * <dt>string <var>k_discount_code</var> </dt>
-   * <dd>Discount code key.</dd>
+   * <dd>Discount code key. 
    * <dt>string <var>text_discount_code</var></dt>
    * <dd>Discount code title.</dd>
    * </dl>

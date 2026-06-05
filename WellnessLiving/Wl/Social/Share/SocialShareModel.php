@@ -31,29 +31,27 @@ class SocialShareModel extends WlModelAbstract
   /**
    * The primary keys of the shared objects. Depends on {@link SocialShareModel::$id_share_object}.
    * If {@link SocialShareModel::$id_share_object} is:
-   * * {@link ShareObjectSid::BOOK} - each value is key of the visit. Primary key in {@link \RsVisitSql} table.
-   * * {@link ShareObjectSid::LOCATION} - each value is key of the location. Primary key in {@link \RsLocationSql} table.
-   * * {@link ShareObjectSid::PURCHASE} - each value is key of the purchase. Primary key in {@link \RsPurchaseSql} table.
-   * * {@link ShareObjectSid::REVIEW} - each value is key of the review. Primary key in {@link \RsReviewSql} table.
-   *
+   * * {@link ShareObjectSid::BOOK} - each value is key of the visit.  * {@link ShareObjectSid::LOCATION} - each value is key of the location.  * {@link ShareObjectSid::PURCHASE} - each value is key of the purchase.  * {@link ShareObjectSid::REVIEW} - each value is key of the review. 
    * @post post
    * @var string[]
    */
   public $a_key;
 
   /**
-   * The id of the social network. One of {@link ASocialSid} constants.
+   * The id of the social network.
    *
    * @post post
    * @var int
+   * @see ASocialSid
    */
   public $id_share_destination;
 
   /**
-   * The id of type object for share post to social network. One of {@link ShareObjectSid} constants.
+   * The id of type object for share post to social network.
    *
    * @post post
    * @var int
+   * @see ShareObjectSid
    */
   public $id_share_object;
 

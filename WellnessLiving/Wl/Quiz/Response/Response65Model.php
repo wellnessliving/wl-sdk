@@ -14,7 +14,7 @@ class Response65Model extends WlModelAbstract
    * Access log data.
    *
    * @get result
-   * @var array[] Access log data.
+   * @var array[]
    */
   public $a_access_log = [];
 
@@ -29,46 +29,47 @@ class Response65Model extends WlModelAbstract
 
   /**
    * Elements' uploaded files.
+   * An array with files data, has next structure:<dl>
+   *    <dt>array <var>error</var></dt>
+   *    <dd>
+   *      An array of files upload errors where key is element unique identifier
+   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
+   *     property name and value is errors codes.
+   *    </dd>
+   *    <dt>array <var>full_path</var></dt>
+   *    <dd>
+   *      An array of files full path where key is element unique identifier
+   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
+   *     property name and value is full path.
+   *    </dd>
+   *    <dt>array <var>name</var></dt>
+   *    <dd>
+   *      An array of files' names where key is element unique identifier
+   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
+   *     property name and value is file name.
+   *    </dd>
+   *    <dt>array <var>size</var></dt>
+   *    <dd>
+   *      An array of files' sizes where key is element unique identifier
+   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
+   *     property name and value is file size.
+   *    </dd>
+   *    <dt>array <var>tmp_name</var></dt>
+   *    <dd>
+   *      An array of files' temporary names where key is element unique identifier
+   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
+   *     property name and value is file temporary name.
+   *    </dd>
+   *    <dt>array <var>type</var></dt>
+   *    <dd>
+   *      An array of files' types where key is element unique identifier
+   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
+   *     property name and value is file type.
+   *    </dd>
+   *  </dl>
    *
    * @post post
-   * @var array[] An array with files data, has next structure:<dl>
-   *   <dt>array <var>error</var></dt>
-   *   <dd>
-   *     An array of files upload errors where key is element unique identifier
-   *    {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *    property name and value is errors codes.
-   *   </dd>
-   *   <dt>array <var>full_path</var></dt>
-   *   <dd>
-   *     An array of files full path where key is element unique identifier
-   *    {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *    property name and value is full path.
-   *   </dd>
-   *   <dt>array <var>name</var></dt>
-   *   <dd>
-   *     An array of files' names where key is element unique identifier
-   *    {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *    property name and value is file name.
-   *   </dd>
-   *   <dt>array <var>size</var></dt>
-   *   <dd>
-   *     An array of files' sizes where key is element unique identifier
-   *    {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *    property name and value is file size.
-   *   </dd>
-   *   <dt>array <var>tmp_name</var></dt>
-   *   <dd>
-   *     An array of files' temporary names where key is element unique identifier
-   *    {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *    property name and value is file temporary name.
-   *   </dd>
-   *   <dt>array <var>type</var></dt>
-   *   <dd>
-   *     An array of files' types where key is element unique identifier
-   *    {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *    property name and value is file type.
-   *   </dd>
-   * </dl>
+   * @var array[]
    */
   public $a_element_file = [];
 
@@ -241,9 +242,9 @@ class Response65Model extends WlModelAbstract
    *
    * @delete post
    * @put post
-   * @var string[]
+   * @var string
    */
-  public $json_quiz_response_key = [];
+  public $json_quiz_response_key = '';
 
   /**
    * Business key within which quiz is managed.

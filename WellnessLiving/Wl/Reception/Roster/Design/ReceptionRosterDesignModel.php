@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Reception\Roster\Design;
 
 use WellnessLiving\Core\Drive\DriveTypeSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -99,7 +100,7 @@ class ReceptionRosterDesignModel extends WlModelAbstract
    * ID of the action to take when automatically redirecting.
    *
    * @get result
-   * @var int result
+   * @var int
    */
   public $id_attendance_direct = 1;
 
@@ -108,6 +109,7 @@ class ReceptionRosterDesignModel extends WlModelAbstract
    *
    * @get result
    * @var int
+   * @see ADurationSid
    */
   public $id_book_quick_app = 2;
 

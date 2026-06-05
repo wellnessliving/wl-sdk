@@ -86,7 +86,7 @@ class AttendanceOverlapModel extends WlModelAbstract
    * Key of timezone.
    *
    * `null` if not set then use default timezone client.
-   *
+   * *
    * @get get
    * @var string
    */

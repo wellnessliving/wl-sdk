@@ -24,17 +24,17 @@ class WlFieldTypeSid
 
   /**
    * Radio buttons.
-   */
+   * /
   const RADIO = 4;
 
   /**
    * Drop-down menu.
-   */
+   * /
   const SELECT = 3;
 
   /**
    * One line text field.
-   */
+   * /
   const TEXT = 1;
 }
 

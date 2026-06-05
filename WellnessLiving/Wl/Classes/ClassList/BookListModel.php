@@ -19,14 +19,12 @@ class BookListModel extends WlModelAbstract
    *   <dt>string[] <var>a_login_type</var></dt>
    *   <dd>
    *     List of login types for current class.
-   *
-   *   </dd>
+   *        </dd>
    *
    *   <dt>string[] <var>a_member_group</var></dt>
    *   <dd>
    *     List of member groups for current class.
-   *
-   *   </dd>
+   *        </dd>
    *
    *   <dt>string[] <var>a_url_book</var></dt>
    *   <dd>The list of URL to book this class.</dd>
@@ -53,10 +51,10 @@ class BookListModel extends WlModelAbstract
    *   </dd>
    *
    *   <dt>string <var>k_class</var></dt>
-   *   <dd>The class key.</dd>
+   *   <dd>The class key. 
    *
    *   <dt>string <var>k_enrollment_block</var></dt>
-   *   <dd>The enrollment block key.</dd>
+   *   <dd>The enrollment block key. 
    *
    *   <dt>string <var>m_price_total</var></dt>
    *   <dd>The total price for an event.</dd>

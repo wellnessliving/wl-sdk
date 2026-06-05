@@ -19,6 +19,7 @@ class EnrollmentFieldListModel extends WlModelAbstract
    * Keys - field name.
    * Values - value entered by user.
    *
+   * 
    * @post post
    * @put post
    * @var array
@@ -31,6 +32,7 @@ class EnrollmentFieldListModel extends WlModelAbstract
    * Keys refer specifically to field keys.
    * Values refer specifically to values entered by the user.
    *
+   * 
    * @post post
    * @put post
    * @var array

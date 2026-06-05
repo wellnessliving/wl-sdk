@@ -22,68 +22,76 @@ class LoginModel extends WlModelAbstract
    *   <dd>
    *     User's gender. One of {@link AGenderSid} constants.
    *   </dd>
+   *
    *   <dt>
    *     string <var>k_staff</var>
    *   </dt>
    *   <dd>
-   *     User's key as staff member.
-   *   </dd>
+   *     User's key as staff member.    </dd>
+   *
    *   <dt>
    *     string <var>s_first_name</var>
    *   </dt>
    *   <dd>
    *     User first name.
    *   </dd>
+   *
    *   <dt>
    *     string <var>s_last_name</var>
    *   </dt>
    *   <dd>
    *     First letter of user last name.
    *   </dd>
+   *
    *   <dt>
    *     string <var>text_mail_client</var>
    *   </dt>
    *   <dd>
    *     Client`s mail.
    *   </dd>
+   *
    *   <dt>
    *     string <var>text_mail_staff</var>
    *   </dt>
    *   <dd>
    *     Staff`s mail.
    *   </dd>
+   *
    *   <dt>
    *     string <var>text_name_first_staff</var>
    *   </dt>
    *   <dd>
-   *     Staff`s first name.
+   *     Staff's first name.
    *   </dd>
+   *
    *   <dt>
    *     string <var>text_name_full_client</var>
    *   </dt>
    *   <dd>
    *     Full client name. User login is returned in a case neither first name, nor last name specified.
    *     An empty string is returned in a case neither first name, nor last name specified, nor login.
+   *        </dd>
    *
-   *   </dd>
    *   <dt>
    *     string <var>text_name_full_staff</var>
    *   </dt>
    *   <dd>
    *     Full staff name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login.
-   *   </dd>`
+   *   </dd>
+   *
    *   <dt>
    *     string <var>text_name_last_staff</var>
    *   </dt>
    *   <dd>
    *     Staff`s last name.
    *   </dd>
+   *
    *   <dt>
    *     string <var>uid_staff</var>
    *   </dt>
    *   <dd>
-   *     The user's UID as a staff member.
-   *   </dd>
+   *     The user's UID as a staff member.    </dd>
+   *
    *   <dt>
    *     string <var>url_photo</var>
    *   </dt>
@@ -238,9 +246,9 @@ class LoginModel extends WlModelAbstract
   public $text_name_last_staff;
 
   /**
-   * List of users to get information for. Serialized as JSON string.
+   * List of users to get information for serialized as JSON string.
    *
-   * <tt>null</tt> for mode of single user.
+   * `null` for mode of single user.
    *
    * @post post
    * @var string|null

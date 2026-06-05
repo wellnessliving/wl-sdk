@@ -40,32 +40,28 @@ class DataModel extends \WellnessLiving\Custom\Wl\Report\DataModel
   public $i_page = 0;
 
   /**
-   * The report ID. One of the {@link WlReportSid} constants.
-   *  The following reports are currently available via the API:
-   * <dl>
-   *   <dt>LOGIN_LIST {@link WlReportSid::LOGIN_LIST}</dt>
-   *   <dd>All Clients Report (Reports tab, features date search)</dd>
-   *   <dt>LOGIN_LIST_ALL {@link WlReportSid::LOGIN_LIST_ALL}</dt>
-   *   <dd>All Clients Report (Clients tab) Batch Report</dd>
-   *   <dt>PAY_TRANSACTION_BATCH {@link WlReportSid::PAY_TRANSACTION_BATCH}</dt>
-   *   <dd>Batch Report</dd>
-   *   <dt>PURCHASE_ITEM_LIST_USER {@link WlReportSid::PURCHASE_ITEM_LIST_USER}</dt>
-   *   <dd>Sales per Client Report</dd>
-   *   <dt>PURCHASE_ITEM_ACCRUAL_CASH {@link WlReportSid::PURCHASE_ITEM_ACCRUAL_CASH}</dt>
-   *   <dd>All Sales Report</dd>
-   * </dl>
+   * The report ID.
+   * The following reports are currently available via the API:
+   * <ul>
+   *     <li>{@link WlReportSid::LOGIN_LIST} - All Clients Report (Reports tab, features date search)</li>
+   *     <li>{@link WlReportSid::LOGIN_LIST_ALL} - All Clients Report (Clients tab) Batch Report</li>
+   *     <li>{@link WlReportSid::PAY_TRANSACTION_BATCH} - Batch Report</li>
+   *     <li>{@link WlReportSid::PURCHASE_ITEM_LIST_USER} - Sales per Client Report</li>
+   *     <li>{@link WlReportSid::PURCHASE_ITEM_ACCRUAL_CASH} - All Sales Report</li>
+   * </ul>
    *
    * @get get
    * @var int
+   * @see WlReportSid
    */
   public $id_report = 0;
 
   /**
-   * The report group ID. One of the {@link WlReportGroupSid} constants that describes the time
-   * period (day, week, month, or year) for the report to cover.
+   * The report group ID.
    *
    * @get get
    * @var int
+   * @see WlReportGroupSid
    */
   public $id_report_group = 0;
 
@@ -97,6 +93,7 @@ class DataModel extends \WellnessLiving\Custom\Wl\Report\DataModel
   /**
    * Filter settings in encoded format.
    *
+   * 
    * @get get
    * @var string
    */

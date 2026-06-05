@@ -23,7 +23,7 @@ class AmazonRegionModel extends WlModelAbstract
    *
    * Key - is business key.
    * Value - is region ID. One of {@link WlRegionSid} constants.
-   *   `0` if this business is form an unknown region.
+   *   `0` if this business is from an unknown region.
    *
    * @get result
    * @var int[]

@@ -148,6 +148,7 @@ class EditByTokenModel extends WlModelAbstract
    * * If the client is already authorized, the field value will not be used.
    * * If the client is not authorized and no value is set, {@link RegisterSourceSid::SELF} will be used.
    *
+   * 
    * @get get
    * @post get
    * @put get
@@ -301,9 +302,8 @@ class EditByTokenModel extends WlModelAbstract
   public $s_status = null;
 
   /**
-   * Compound key delimited wit a colon. First part is business key, where selected client exists.
-   * Second part - uid of already existed user we want to add.
-   * Empty if non-existent client is being added.
+   * Compound key delimited with a colon. First part is the business key where the selected client exists.
+   * Second part is the uid of the already existing user we want to add. Empty if a non-existent client is being added.
    *
    * @post get
    * @var string

@@ -28,7 +28,7 @@ class DriveGenericInfoModel extends WlModelAbstract
    * The client library that sends requests to this controller has been updated and now uses only {@link DriveGenericInfoModel::$json_list}.
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_link = [];
 

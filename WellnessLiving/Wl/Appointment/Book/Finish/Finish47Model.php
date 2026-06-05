@@ -30,8 +30,7 @@ class Finish47Model extends WlModelAbstract
    *     string <var>k_appointment</var>
    *   </dt>
    *   <dd>
-   *     The appointment key.
-   *   </dd>
+   *     The appointment key.    </dd>
    * </dl>
    *
    * @post result
@@ -87,9 +86,9 @@ class Finish47Model extends WlModelAbstract
    *   <dt>string <var>k_id</var></dt>
    *   <dd>Promotion key or appointment key. Depends on <var>id_purchase_item</var> of this array.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
-   *   <dd>Login promotion key.</dd>
+   *   <dd>Login promotion key. 
    *   <dt>string <var>k_session_pass</var></dt>
-   *   <dd>Session pass key.</dd>
+   *   <dd>Session pass key. 
    *   <dt>string <var>text_discount_code</var></dt>
    *   <dd>Discount code.</dd>
    * </dl>
@@ -110,6 +109,8 @@ class Finish47Model extends WlModelAbstract
 
   /**
    * List of quiz response keys.
+   * Key is quiz key.
+   * Value is quiz response key.
    *
    * @post post
    * @var string[]
@@ -157,16 +158,16 @@ class Finish47Model extends WlModelAbstract
   public $a_visit = null;
 
   /**
-   * Values - arrays with next keys:
+   * Values are arrays with next keys:
    * <dl>
    *     <dt>bool `is_free`</dt>
    *     <dd>`true` if the visit is free; `false` otherwise.</dd>
    *     <dt>string `k_login_promotion`</dt>
-   *
+   *     <dd>Applied user's purchase option. 
    *     <dt>string `k_promotion`</dt>
-   *
+   *     <dd>Purchase option. 
    *     <dt>string `k_session_pass`</dt>
-   *
+   *     <dd>Applied session pass. 
    *     <dt>string `text_promotion`</dt>
    *     <dd>Purchase option title.</dd>
    * </dl>
@@ -250,7 +251,7 @@ class Finish47Model extends WlModelAbstract
    * Key of timezone.
    *
    * `null` if not set then use default timezone client.
-   *
+   * 
    * @post get
    * @var null|string
    */

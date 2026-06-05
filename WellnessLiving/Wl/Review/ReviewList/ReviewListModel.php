@@ -56,14 +56,12 @@ class ReviewListModel extends WlModelAbstract
    *     string <var>k_location</var>
    *   </dt>
    *   <dd>
-   *     The location key for where the review was left/assigned.
-   *   </dd>
+   *     The location key for where the review was left/assigned.    </dd>
    *   <dt>
    *     string <var>k_review</var>
    *   </dt>
    *   <dd>
-   *     Review key.
-   *   </dd>
+   *     Review key.    </dd>
    *   <dt>
    *     string <var>s_firstname</var>
    *   </dt>

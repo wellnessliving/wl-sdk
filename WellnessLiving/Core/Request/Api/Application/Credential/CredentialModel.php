@@ -11,15 +11,7 @@ class CredentialModel extends WlModelAbstract
 {
   /**
    * The CID of the credential.
-   * Accepted values: <ul>
-   *   <li>
-   *
-   *   </li>
-   *   <li>
-   *
-   *   </li>
-   * </ul>
-   *
+   * 
    * @delete get
    * @get get
    * @put get
@@ -32,9 +24,9 @@ class CredentialModel extends WlModelAbstract
    *
    * @get result
    * @put post
-   * @var array
+   * @var string
    */
-  public $json_credential;
+  public $json_credential = '[]';
 }
 
 ?>

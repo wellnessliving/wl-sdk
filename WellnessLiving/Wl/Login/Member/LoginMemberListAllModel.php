@@ -13,7 +13,7 @@ class LoginMemberListAllModel extends WlModelAbstract
    * List of UIDs for all active clients that belong to the business.
    *
    * @get result
-   * @var array
+   * @var string[]
    */
   public $a_uid = [];
 

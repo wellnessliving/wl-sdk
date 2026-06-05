@@ -198,11 +198,12 @@ class ChargeModel extends WlModelAbstract
   public $k_pay_account = 0;
 
   /**
-   * The ID of the purchase that was created during payment. This value is only returned in cases where a purchase was created.
+   * The ID of the purchase that was created during payment.
+   * This value is only returned in cases where a purchase was created.
    * A new purchase is created when {@link ChargeModel::$id_pay_account_charge} equals {@link \RsPayAccountChargeSid::AUTO}.
    *
    * @post result
-   * @var int []
+   * @var string
    */
   public $k_purchase;
 

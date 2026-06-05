@@ -29,8 +29,7 @@ class CategoryModel extends WlModelAbstract
    *     string <var>k_shop_category</var>
    *   </dt>
    *   <dd>
-   *     The shop category key.
-   *   </dd>
+   *     The shop category key.    </dd>
    *   <dt>
    *     string <var>text_description</var>
    *   </dt>

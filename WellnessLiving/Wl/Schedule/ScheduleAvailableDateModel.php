@@ -12,6 +12,8 @@ use WellnessLiving\Wl\Classes\Tab\TabSid;
 class ScheduleAvailableDateModel extends WlModelAbstract
 {
   /**
+   * Class keys to filter.
+   *
    * Empty to search for all classes.
    *
    * @get get
@@ -30,6 +32,8 @@ class ScheduleAvailableDateModel extends WlModelAbstract
   public $a_day = [];
 
   /**
+   * Event keys to filter.
+   *
    * Empty to search for all events.
    *
    * @get get
@@ -38,6 +42,8 @@ class ScheduleAvailableDateModel extends WlModelAbstract
   public $a_event = [];
 
   /**
+   * Location keys to filter.
+   *
    * Empty to search in all locations.
    *
    * @get get
@@ -46,6 +52,8 @@ class ScheduleAvailableDateModel extends WlModelAbstract
   public $a_location = [];
 
   /**
+   * Staff member keys to filter.
+   *
    * Empty to search for all staff members.
    *
    * @get get
@@ -118,12 +126,16 @@ class ScheduleAvailableDateModel extends WlModelAbstract
   public $is_virtual = null;
 
   /**
+   * Business key.
+   *
    * @get get
    * @var string
    */
   public $k_business = '';
 
   /**
+   * Timezone key.
+   *
    * @get get
    * @var string
    */

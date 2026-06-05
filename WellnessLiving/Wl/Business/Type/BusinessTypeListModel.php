@@ -40,7 +40,7 @@ class BusinessTypeListModel extends WlModelAbstract
    *  <dt>int <var>id_tour</var></dt>
    *  <dd>Type of the demo tour on the sales site connected to the business type. More about tours: {@link WlHomeTourSid}.</dd>
    *  <dt>string <var>k_business_type</var></dt>
-   *  <dd>The key of business type.</dd>
+   *  <dd>The key of business type. 
    *  <dt>string <var>text_category</var></dt>
    *  <dd>The title of the business category.</dd>
    *  <dt>string <var>text_category_description</var></dt>

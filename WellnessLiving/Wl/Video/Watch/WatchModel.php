@@ -46,9 +46,7 @@ class WatchModel extends WlModelAbstract
 
   /**
    * The video string key:
-   * * [Deprecated] String key in old format.
-   * * String key in new format.
-   *
+   * * [Deprecated] String key in old format.  * String key in new format. 
    * @post post
    * @var string
    */

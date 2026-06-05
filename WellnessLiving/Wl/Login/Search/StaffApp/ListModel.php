@@ -28,7 +28,7 @@ class ListModel extends WlModelAbstract
    *   <dt>string <var>text_title</var></dt>
    *   <dd>The client name.</dd>
    *   <dt>string <var>uid</var></dt>
-   *   <dd>The client key.</dd>
+   *   <dd>The client key. 
    * </dl>
    *
    * @get result

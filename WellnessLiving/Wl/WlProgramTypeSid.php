@@ -17,7 +17,8 @@ abstract class WlProgramTypeSid
    * Duration Pass.
    *
    * Differs from {@link WlProgramTypeSid::LIMIT} in that this type of promotion is limited by time.
-   */
+   *
+   * /
   const DURATION = 7;
 
   /**
@@ -33,14 +34,16 @@ abstract class WlProgramTypeSid
    *
    * Differs from {@link WlProgramTypeSid::PASS} in that this type of promotion allows access to only a limited number
    * of classes.
-   */
+   *
+   * /
   const LIMIT = 1;
 
   /**
    * This promotion is a membership.
    *
    * Payment schedule can be set up for memberships.
-   */
+   *
+   * /
   const MEMBERSHIP = 3;
 
   /**

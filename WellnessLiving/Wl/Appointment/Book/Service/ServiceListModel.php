@@ -31,7 +31,7 @@ class ServiceListModel extends WlModelAbstract
    * <b>Value</b> - an array, with every element consisting of the next keys:
    * <dl>
    *   <dt>
-   *     array <var>a_class_tab</var>
+   *     string[] <var>a_class_tab</var>
    *   </dt>
    *   <dd>
    *     The list of tab keys for the service.
@@ -81,14 +81,14 @@ class ServiceListModel extends WlModelAbstract
    *     array <var>a_login_type_restriction</var>
    *   </dt>
    *   <dd>
-   *     Keys are login type keys, primary keys in {@link \Wl\Login\Type\Sql}, values - List of login types' titles for
+   *     Keys are login type keys, ues - List of login types' titles for
    *     current service. Clients that have one of these types can book service.
    *   </dd>
    *   <dt>
    *     string[] <var>a_member_group_restriction</var>
    *   </dt>
    *   <dd>
-   *     Keys are member group keys, primary keys in {@link \Wl\Member\Group\Sql}, values - list of member groups' titles
+   *     Keys are member group keys, ues - list of member groups' titles
    *     for current service. Clients that belongs to these groups can book service.
    *   </dd>
    *   <dt>
@@ -254,14 +254,12 @@ class ServiceListModel extends WlModelAbstract
    *     string <var>k_service</var>
    *   </dt>
    *   <dd>
-   *     The appointment primary key.
-   *   </dd>
+   *     The appointment primary key.    </dd>
    *   <dt>
    *     string <var>k_service_category</var>
    *   </dt>
    *   <dd>
-   *     The service category primary key.
-   *   </dd>
+   *     The service category primary key.    </dd>
    *   <dt>
    *     string <var>s_duration</var>
    *   </dt>

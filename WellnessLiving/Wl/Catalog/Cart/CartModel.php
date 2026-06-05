@@ -33,16 +33,14 @@ class CartModel extends WlModelAbstract
    *   <dd>
    *       The sale item key.
    *       Note:
-   *
-   *          You need to specify the product option key in the `k_shop_product_option` field or the first available
+   *                    You need to specify the product option key in the `k_shop_product_option` field or the first available
    *              option will be used automatically.
    *   </dd>
    *   <dt>?string [<var>k_login_prize</var>]</dt>
-   *
+   *   <dd>Key of login prize used on item. 
    *   <dt>string [<var>k_shop_product_option</var>]</dt>
    *   <dd>
-   *
-   *       Note:
+   *              Note:
    *          Used for products only `id_sale` = {@link WlSaleSid::PRODUCT}.
    *          If empty the first available option will be used automatically.
    *   </dd>
@@ -59,7 +57,7 @@ class CartModel extends WlModelAbstract
    *   <dt>int <var>i_score</var></dt>
    *   <dd>Amount of points needed to redeem the prize.</dd>
    *   <dt>string <var>k_reward_prize</var></dt>
-   *
+   *   <dd>Reward prize key. 
    *   <dt>string <var>text_discount</var></dt>
    *   <dd>Reward prize discount, e.g. '$10.00 off', '10% off'.</dd>
    *   <dt>string <var>text_title</var></dt>
@@ -95,7 +93,7 @@ class CartModel extends WlModelAbstract
    * List of login prizes that can be applied to items in the cart.
    * <dl>
    *   <dt>string <var>k_login_prize</var></dt>
-   *
+   *   <dd>Login prize key. 
    *   <dt>string <var>text_discount</var></dt>
    *   <dd>Reward prize discount, e.g. '$10.00 off', '10% off'.</dd>
    *   <dt>string <var>text_discount_applied</var></dt>
@@ -114,11 +112,10 @@ class CartModel extends WlModelAbstract
   /**
    * Values derived for individual tax rates.
    *
-   * Keys refer to tax keys.
-   * And values refer to the amount of tax in the cart.
+   * Keys refer to tax keys, values refer to the amount of tax in the cart.
    *
    * @get result
-   * @var array
+   * @var string[]
    */
   public $a_tax_list = [];
 

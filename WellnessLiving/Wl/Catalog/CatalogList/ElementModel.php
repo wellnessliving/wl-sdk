@@ -44,8 +44,9 @@ class ElementModel extends WlModelAbstract
    *
    * The structure may be different depending on the item category.
    * <dl>
-   *   <dt>array `a_service_access`</dt>
-   *   <dd> Access to services for a purchase option.
+   *   <dt>int[] `a_service_access`</dt>
+   *   <dd>
+   *     Access to services for a purchase option.
    *     Keys are one of the {@link ServiceSid} constants, values are one of the {@link AFlagSid}
    *     constants. Set only for relevant purchase option service category.
    *     {@link AFlagSid::ON} access to some services.
@@ -57,8 +58,8 @@ class ElementModel extends WlModelAbstract
    *     bool `is_renew_public`
    *   </dt>
    *   <dd>
-   *     This applies only for promotions.<br>
-   *     `true` - clients can set promotion auto-renew.<br>
+   *     This applies only for promotions.
+   *     `true` - clients can set promotion auto-renew.
    *     `false` - clients can't set promotion auto-renew.
    *   </dd>
    *   <dt>
@@ -86,9 +87,9 @@ class ElementModel extends WlModelAbstract
    *     This applies to enrollment/event items. Staff list for class periods. Each element contains:
    *     <dl>
    *       <dt>string `k_staff`</dt>
-   *       <dd>@deprecated Legacy staff key. Deprecated, use `uid_staff`.</dd>
+   *       <dd>@deprecated Legacy staff key. ecated, use `uid_staff`.</dd>
    *       <dt>string `uid_staff`</dt>
-   *       <dd>Staff user key.</dd>
+   *       <dd>Staff user key. 
    *       <dt>string `text_family`</dt>
    *       <dd>Staff last name.</dd>
    *       <dt>string `text_staff`</dt>
@@ -100,8 +101,10 @@ class ElementModel extends WlModelAbstract
    *   <dt>string `dl_now`</dt>
    *   <dd>Current date, local date in MySQL format.</dd>
    *   <dt>string `dl_start`</dt>
-   *   <dd>Date to activate the coupon on, local date in MySQL format.</dd>
-   *   <dd>When `id_activation`=FIXED, this field contains a custom date to activate the coupon on, local date in MySQL format.</dd>
+   *   <dd>
+   *       Date to activate the coupon on, local date in MySQL format.
+   *       When `id_activation`=FIXED, this field contains a custom date to activate the coupon on, local date in MySQL format.
+   *   </dd>
    *   <dt>int `i_duration`</dt>
    *   <dd>Number of periods the coupon is active. Type of a period is specified by `id_duration`.</dd>
    *   <dt>int `id_activation`</dt>
@@ -127,11 +130,16 @@ class ElementModel extends WlModelAbstract
    * <dl>
    *   <dt>string `f_amount`</dt>
    *   <dd>The fixed amount of the discount.</dd>
+   *
    *   <dt>float `f_percent`</dt>
    *   <dd>The percentage amount of the discount.</dd>
+   *
    *   <dt>int `i_limit`</dt>
+   *   <dd>Limitation.</dd>
+   *
    *   <dt>string `k_discount_code`</dt>
    *   <dd>The discount code key.</dd>
+   *
    *   <dt>string `s_discount_code`</dt>
    *   <dd>The discount code value.</dd>
    * </dl>
@@ -160,7 +168,7 @@ class ElementModel extends WlModelAbstract
    *     bool `is_empty`
    *   </dt>
    *   <dd>
-   *     `true` - the item has no image (in this case, ignore the other keys of this array).<br>
+   *     `true` - the item has no image (in this case, ignore the other keys of this array).
    *     `false` - the item has an image.
    *   </dd>
    *   <dt>
@@ -244,8 +252,7 @@ class ElementModel extends WlModelAbstract
    *     string <var>k_pay_installment_template</var>
    *   </dt>
    *   <dd>
-   *      The key of the installment plan template.
-   *   </dd>
+   *      The key of the installment plan template.    </dd>
    *   <dt>
    *     string <var>m_amount</var>
    *   </dt>
@@ -274,8 +281,8 @@ class ElementModel extends WlModelAbstract
    *     <dl>
    *       <dt>bool `is_price_breakdown`</dt>
    *       <dd>
-   *         Whether to display individual prices for each item in the package.<br>
-   *         `true` display individual prices for each item in the package,<br>
+   *         Whether to display individual prices for each item in the package.
+   *         `true` display individual prices for each item in the package,
    *         `false` display a single total price for the package.
    *       </dd>
    *     </dl>
@@ -286,7 +293,9 @@ class ElementModel extends WlModelAbstract
    *   <dd>Contains information about one image connected to a sale item.</dd>
    *
    *   <dt>array `a_tax`</dt>
-   *   <dd>Contains information about taxes.</dd>
+   *   <dd>
+   *     Contains information about taxes.
+   *        </dd>
    *
    *   <dt>string `id_purchase_option_view`</dt>
    *   <dd>The Purchase Option view type. One of the {@link PurchaseOptionViewSid} constants.</dd>
@@ -323,7 +332,7 @@ class ElementModel extends WlModelAbstract
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The primary key of item.</dd>
    *   <dt>string <var>k_shop_product_option</var></dt>
-   *   <dd>The product option or <tt>0</tt> for any other cases.</dd>
+   *   <dd>The product option or <tt>0</tt> for any other cases. 
    * </dl>
    *
    * @get get

@@ -68,7 +68,7 @@ class EventListModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    *   <dt>array <var>a_class_tab</var></dt>
-   *   <dd>The list of class tab keys that contain this event.</dd>
+   *   <dd>The list of class tab keys that contain this event. 
    *   <dt>array <var>a_logo</var></dt>
    *   <dd>Information about the event's logo. It will contain the following keys:
    *   <dl>
@@ -106,7 +106,7 @@ class EventListModel extends WlModelAbstract
    *     with the following keys
    *       <dl>
    *         <dt>string <var>k_staff_member</var></dt>
-   *         <dd>The staff member key.</dd>
+   *         <dd>The staff member key. 
    *         <dt>string <var>text_business_role</var></dt>
    *         <dd>The name of the staff member's business role.</dd>
    *         <dt>string <var>text_mail</var></dt>
@@ -118,7 +118,7 @@ class EventListModel extends WlModelAbstract
    *         <dt>string <var>text_name_last</var></dt>
    *         <dd>The staff member's last name.</dd>
    *         <dt>string <var>uid</var></dt>
-   *         <dd>The staff member's user key.</dd>
+   *         <dd>The staff member's user key. 
    *       </dl>
    *     </dd>
    *     <dt>string <var>dl_end</var></dt>
@@ -128,9 +128,9 @@ class EventListModel extends WlModelAbstract
    *     <dt>bool <var>is_day</var></dt>
    *     <dd>This will be `true` if the event starts and ends on the same day.</dd>
    *     <dt>string <var>k_class_period</var></dt>
-   *     <dd>The class period key.</dd>
+   *     <dd>The class period key. 
    *     <dt>string <var>k_location</var></dt>
-   *     <dd>The location key.</dd>
+   *     <dd>The location key. 
    *     <dt>string <var>text_location</var></dt>
    *     <dd>The name of the location.</dd>
    *     <dt>string <var>text_time</var></dt>
@@ -183,6 +183,11 @@ class EventListModel extends WlModelAbstract
    *      It is properly used in combination with a number of other flags.
    *      If you need a flag that covers most of the checks please use `can_book` field.
    *   </dd>
+   *   <dt>bool <var>is_book_for_guest</var></dt>
+   *   <dd>Allow clients to book on behalf of a guest.
+   *      `true` if clients can book on behalf of a guest.
+   *      `false` otherwise.
+   *   </dd>
    *   <dt>bool <var>is_booked</var></dt>
    *   <dd>`true` if the user has booked the event, `false` if the event is not.</dd>
    *   <dt>bool <var>is_closed</var></dt>
@@ -202,13 +207,13 @@ class EventListModel extends WlModelAbstract
    *   <dt>bool <var>is_virtual</var></dt>
    *   <dd>`true` if the event is only held virtually, `false` if the event is not.</dd>
    *   <dt>string <var>k_class</var></dt>
-   *   <dd>The class key.</dd>
+   *   <dd>The class key. 
    *   <dt>string <var>k_class_period</var></dt>
-   *   <dd>The class period key.</dd>
+   *   <dd>The class period key. 
    *   <dt>string <var>k_enrollment_block</var></dt>
-   *   <dd>The enrollment block key.</dd>
+   *   <dd>The enrollment block key. 
    *   <dt>string <var>k_location</var></dt>
-   *   <dd>The location key.</dd>
+   *   <dd>The location key. 
    *   <dt>string <var>m_price_max</var></dt>
    *   <dd>Maximum price per session in the event.</dd>
    *   <dt>string <var>m_price_min</var></dt>

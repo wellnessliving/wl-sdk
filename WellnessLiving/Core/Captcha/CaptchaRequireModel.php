@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Core\Captcha;
 
-use WellnessLiving\Core\Google\Captcha\CaptchaVersionSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -37,8 +36,8 @@ class CaptchaRequireModel extends WlModelAbstract
   public $is_always_override = null;
 
   /**
-   * `true` if enabled {@link CaptchaVersionSid::V3} and {@link CaptchaVersionSid::V2} captcha.
-   * `false` if only {@link CaptchaVersionSid::V2} enable.
+   * `true` if enabled V3 captcha enabled.
+   * `false` if only V2 captcha enable.
    *
    * @get result
    * @var bool

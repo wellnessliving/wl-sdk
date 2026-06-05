@@ -16,12 +16,12 @@ use WellnessLiving\Wl\WlPrivilegeRoleSid;
 class StaffElementModel extends WlModelAbstract
 {
   /**
-   * The list of locations where the staff member works. Each element is a location key.
+   * The list of locations where the staff member works.
    *
    * `null` means to not change the current value of the field.
    *
    * @post post
-   * @var array|null
+   * @var string[]|null
    */
   public $a_location = null;
 

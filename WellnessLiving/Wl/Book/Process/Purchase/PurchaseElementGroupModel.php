@@ -26,10 +26,8 @@ class PurchaseElementGroupModel extends WlModelAbstract
    *      <dd>The key of the user's prize.
    *      Not empty only if the user wants to make a free visit from the prize.</dd>
    *      <dt>string|null [`k_pay_installment_template`]</dt>
-   *      <dd>Installment template key.
-   *      This property is optional.
-   *    * can only be set for the purchase option which supports installment plan, see {@link PurchaseItemAbstract::INSTALLMENT_ALLOW_USER} property;
-   *    * `null` if installment plan doesn't exist for bought item;
+   *      <dd>Installment template key. *      This property is optional.
+   *    * can only be set for the purchase option which supports installment plan. *    * `null` if installment plan doesn't exist for bought item;
    *    * `0` if installment plan doesn't selected for bought item from the list of installment plans.
    *      NOTE:
    *    * Calculations of discounts and taxes for installment plans are for demonstration purposes only!
@@ -49,11 +47,10 @@ class PurchaseElementGroupModel extends WlModelAbstract
 
   /**
    * A list of taxes for the given purchase options.
-   * Keys - tax keys.
-   * Values - tax amounts.
+   * Keys - tax keys, values - tax amounts.
    *
    * @get result
-   * @var array
+   * @var string[]
    */
   public $a_tax;
 

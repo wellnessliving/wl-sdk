@@ -40,8 +40,7 @@ class FinishModel extends WlModelAbstract
    *     string <var>k_appointment</var>
    *   </dt>
    *   <dd>
-   *     The appointment key.
-   *   </dd>
+   *     The appointment key.    </dd>
    * </dl>
    *
    * @post result
@@ -67,9 +66,9 @@ class FinishModel extends WlModelAbstract
    *       <dt>int <var>id_conflict</var></dt>
    *       <dd>Solution type.</dd>
    *       <dt>string <var>k_resource</var></dt>
-   *
+   *       <dd>New asset. 
    *       <dt>string|null <var>k_staff</var></dt>
-   *       <dd> `null` in a case of asset booking.</dd>
+   *       <dd>New staff member. l` in a case of asset booking.</dd>
    *     </dl>
    *   </dd>
    *   <dt>
@@ -77,12 +76,11 @@ class FinishModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     Add-ons to the appointment. Specify this for appointment bookings only.
-   *     Old format: array keys refer to primary keys.
-   *     New format: each element is an array:
+   *     Old format: array keys refer to primary keys.      New format: each element is an array:
    *     <dl>
    *       <dt>int <var>i_count</var></dt><dd>The add-on count</dd>
    *       <dt>int [<var>i_count_use</var>]</dt><dd>The add-on use count.</dd>
-   *       <dt>string <var>k_shop_product_option</var></dt><dd>The key of add-on.</dd>
+   *       <dt>string <var>k_shop_product_option</var></dt><dd>The key of add-on. 
    *     </dl>
    *   </dd>
    *   <dt>
@@ -139,12 +137,12 @@ class FinishModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     A list of assets for the appointment booking.
-   *     Keys refer to asset categories. Values refer to arrays with the next keys:
+   *     Keys refer to asset categories. es refer to arrays with the next keys:
    *     <dl>
    *       <dt>int [<var>i_index</var>]</dt>
    *       <dd>The asset index on the layout. Specify this only if the asset category has a layout.</dd>
    *       <dt>string <var>k_resource</var></dt>
-   *       <dd>The asset.</dd>
+   *       <dd>The asset. 
    *     </dl>
    *     Specify this only for the appointment booking.
    *   </dd>
@@ -191,43 +189,38 @@ class FinishModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     The user's prize.
-   *
-   *   </dd>
+   *        </dd>
    *   <dt>
    *     string [<var>k_login_promotion</var>]
    *   </dt>
    *   <dd>
    *     The user's pass (for example, a membership or a package).
    *     Specify this if you want to set the pass to use to pay for the booking.
-   *   </dd>
+   *        </dd>
    *   <dt>
    *     string [<var>k_resource</var>]
    *   </dt>
    *   <dd>
    *     The asset booking. Specify this for separate asset bookings only.
-   *
-   *   </dd>
+   *        </dd>
    *   <dt>
    *     string [<var>k_service</var>]
    *   </dt>
    *   <dd>
    *     The appointment booking. Specify this for appointment bookings only.
-   *
-   *   </dd>
+   *        </dd>
    *   <dt>
    *     string [<var>k_session_pass</var>]
    *   </dt>
    *   <dd>
-   *     The user's pass.
-   *   </dd>
+   *     The user's pass.    </dd>
    *   <dt>
    *     string [<var>k_staff</var>]
    *   </dt>
    *   <dd>
    *     The staff member conducting the appointment.
    *     Specify this for appointment bookings only.
-   *
-   *   </dd>
+   *        </dd>
    *   <dt>
    *     string [<var>k_staff_date</var>]
    *   </dt>
@@ -236,8 +229,7 @@ class FinishModel extends WlModelAbstract
    *     The difference between this an <var>k_staff</var> is that this value must be set only in cases
    *     when you want to add a customer to an appointment that already exists.
    *     Specify this for appointment bookings only.
-   *
-   *   </dd>
+   *        </dd>
    *   <dt>string [<var>m_tip_appointment</var>]</dt>
    *   <dd>The amount of selected tips.</dd>
    * </dl>
@@ -287,9 +279,9 @@ class FinishModel extends WlModelAbstract
    *   <dt>string <var>k_id</var></dt>
    *   <dd>Promotion key or appointment key. Depends on <var>id_purchase_item</var> of this array.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
-   *   <dd>Login promotion key.</dd>
+   *   <dd>Login promotion key. 
    *   <dt>string <var>k_session_pass</var></dt>
-   *   <dd>Session pass key.</dd>
+   *   <dd>Session pass key. 
    *   <dt>string <var>text_discount_code</var></dt>
    *   <dd>Discount code.</dd>
    * </dl>
@@ -310,8 +302,8 @@ class FinishModel extends WlModelAbstract
 
   /**
    * A list of quiz response keys.
-   * Keys refer to quiz keys.
-   * Values refer to response keys.
+   * Key is quiz key.
+   * Value is quiz response key.
    *
    * @post post
    * @var string[]
@@ -359,16 +351,16 @@ class FinishModel extends WlModelAbstract
   public $a_visit;
 
   /**
-   * Values - arrays with next keys:
+   * Values are arrays with next keys:
    * <dl>
    *     <dt>bool `is_free`</dt>
    *     <dd>`true` if the visit is free; `false` otherwise.</dd>
    *     <dt>string `k_login_promotion`</dt>
-   *
+   *     <dd>Applied user's purchase option. 
    *     <dt>string `k_promotion`</dt>
-   *
+   *     <dd>Purchase option. 
    *     <dt>string `k_session_pass`</dt>
-   *
+   *     <dd>Applied session pass. 
    *     <dt>string `text_promotion`</dt>
    *     <dd>Purchase option title.</dd>
    * </dl>
@@ -452,7 +444,7 @@ class FinishModel extends WlModelAbstract
    * Key of timezone.
    *
    * `null` if not set then use default timezone client.
-   *
+   * 
    * @post get
    * @var null|string
    */

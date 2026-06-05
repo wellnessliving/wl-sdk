@@ -16,7 +16,7 @@ class TagListModel extends WlModelAbstract
    *   <dt>int <var>i_sort</var></dt>
    *   <dd>The sort order of the tag.</dd>
    *   <dt>string <var>k_tag</var> </dt>
-   *   <dd>The tag key.</dd>
+   *   <dd>The tag key. 
    *   <dt>string <var>text_title</var></dt>
    *   <dd>The tag title.</dd>
    * </dl>

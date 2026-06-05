@@ -11,7 +11,8 @@ use WellnessLiving\Wl\Member\Info\InfoModel;
 class MemberInfoModel extends WlModelAbstract
 {
   /**
-   * Additional member data or `null` if any data can be shown. Will be filled if {@link InfoModel::$is_full} flag is set.
+   * Additional member data or `null` if any data can be shown.
+   * Will be filled if {@link InfoModel::$is_full} flag is set.
    *
    * @get result
    * @var array|null
@@ -184,6 +185,7 @@ class MemberInfoModel extends WlModelAbstract
   /**
    * Key of the Check In application.
    *
+   * 
    * @get get
    * @var string
    */

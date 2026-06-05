@@ -42,7 +42,7 @@ class QuizModel extends WlModelAbstract
    *  <dt>bool <var>is_require</var></dt>
    *  <dd>Determines whether the quiz is required.</dd>
    *  <dt>string <var>k_quiz</var></dt>
-   *  <dd>The quiz key.</dd>
+   *  <dd>The quiz key. 
    * </dl>
    *
    * @get result
@@ -53,8 +53,7 @@ class QuizModel extends WlModelAbstract
   /**
    * The list of quiz response keys.
    *
-   * Keys refer to quiz keys.
-   * And values refer to response keys.
+   * Keys refer to quiz keys, values refer to response keys or special values from
    *
    * @post post
    * @var array
@@ -109,7 +108,7 @@ class QuizModel extends WlModelAbstract
    *     Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
    *   </dd>
    *   <dt>int <var>id_period</var></dt>
-   *   <dd>Deprecated, use `id_duration` instead!</dd>
+   *   <dd>Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.</dd>
    *   <dt>int <var>id_repeat_end</var></dt>
    *   <dd>Possible ways to stop repeatable events.</dd>
    * </dl>
@@ -129,7 +128,7 @@ class QuizModel extends WlModelAbstract
    *   <dt>int <var>i_index</var></dt>
    *   <dd>The order number of the asset (could be from 1 to the asset quantity).</dd>
    *   <dt>string <var>k_resource</var></dt>
-   *   <dd>The asset key.</dd>
+   *   <dd>The asset key. 
    * </dl>
    *
    * @post post

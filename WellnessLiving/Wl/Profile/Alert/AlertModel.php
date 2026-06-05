@@ -36,14 +36,12 @@ class AlertModel extends WlModelAbstract
    *     string [<var>k_pay_account</var>]
    *   </dt>
    *   <dd>
-   *     The key of the client's account.
-   *   </dd>
+   *     The key of the client's account.    </dd>
    *   <dt>
    *     string [<var>k_purchase_item</var>]
    *   </dt>
    *   <dd>
-   *     The key of the purchase item.
-   *   </dd>
+   *     The key of the purchase item.    </dd>
    *   <dt>
    *     string <var>s_text</var>
    *   </dt>
@@ -64,8 +62,7 @@ class AlertModel extends WlModelAbstract
    *     string[] <var>a_location_flag</var>
    *   </dt>
    *   <dd>
-   *
-   *   </dd>
+   *     The list of location keys where this note is flagged.    </dd>
    *   <dt>
    *     bool <var>dt_create</var>
    *   </dt>

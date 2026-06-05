@@ -23,8 +23,7 @@ class ListModel extends WlModelAbstract
    *     string|null <var>k_pay_method</var>
    *   </dt>
    *   <dd>
-   *     Payment method key.
-   *     May be <tt>null</tt> if it is a system payment method.
+   *     Payment method key.      May be <tt>null</tt> if it is a system payment method.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>

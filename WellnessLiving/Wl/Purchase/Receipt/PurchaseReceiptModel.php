@@ -114,7 +114,7 @@ class PurchaseReceiptModel extends WlModelAbstract
    *   <dt>int <var>id_sale</var></dt><dd>Sale ID. One of {@link WlSaleSid} constants.</dd>
    *   <dt>int <var>k_id</var></dt><dd>The identifier of the item.</dd>
    *   <dt>string <var>k_purchase_item</var></dt><dd>The key of the purchase item.</dd>
-   *   <dt>string <var>[k_shop_product]</var></dt><dd> Set only if <var>id_purchase_item</var>is {@link WlPurchaseItemSid::PRODUCT}.</dd>
+   *   <dt>string <var>[k_shop_product]</var></dt><dd>Product key. only if <var>id_purchase_item</var>is {@link WlPurchaseItemSid::PRODUCT}.</dd>
    *   <dt>string <var>m_price</var></dt><dd>The price of the single item.</dd>
    *   <dt>string <var>m_price_total</var></dt><dd>The price of all items.</dd>
    *   <dt>string <var>text_category</var></dt><dd>The type of the item (for example, a pass or membership).</dd>

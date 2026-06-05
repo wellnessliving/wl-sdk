@@ -16,7 +16,7 @@ class BusinessDesignModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>bool <var>hide_past_days</var></dt>
-   *   <dd>Clients only see today’s and upcoming sessions.</dd>
+   *   <dd>Clients only see today's and upcoming sessions.</dd>
    *   <dt>int <var>id_layout</var></dt>
    *   <dd>Layout ID. For more details, see {@link RsPageFrontendHeaderLayoutSid}.</dd>
    *   <dt>int <var>id_logo_position</var></dt>
@@ -33,7 +33,7 @@ class BusinessDesignModel extends WlModelAbstract
    *   <dd>If <tt>true</tt>, the quick class filter will be shown.</dd>
    *   <dt>bool `is_class_spot_only`</dt>
    *   <dd>
-   *       `true` to display only available spots (e.g., "3 spots left");
+   *      `true` to display only available spots (e.g., "3 spots left");
    *      `false` to display both available spots and total capacity (e.g., "3 spots left of 10").
    *   </dd>
    *   <dt>bool <var>is_show_name</var></dt>

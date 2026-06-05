@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\AiAgent\Link;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\WlServiceSid;
 
 /**
  * Model to send email based on AI agent link action.
@@ -27,6 +28,7 @@ class SendMailModel extends WlModelAbstract
    *
    * @post get
    * @var int
+   * @see WlServiceSid
    */
   public $id_service = 0;
 

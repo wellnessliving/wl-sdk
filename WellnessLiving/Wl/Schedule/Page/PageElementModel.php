@@ -104,8 +104,7 @@ class PageElementModel extends WlModelAbstract
    *     string <var>k_staff</var>
    *   </dt>
    *   <dd>
-   *     The staff member key.
-   *   </dd>
+   *     The staff member key.    </dd>
    *   <dt>
    *     string <var>s_family</var>
    *   </dt>

@@ -40,7 +40,9 @@ class WlPayProcessorSid
   const NUVEI = 12;
 
   /**
-   * Payment gateway for {@link http://www.paychoice.com.au/ Paychoice}.
+   * Payment gateway for Paychoice.
+   *
+   * @link http://www.paychoice.com.au/
    */
   const PAYCHOICE = 7;
 

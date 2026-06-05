@@ -18,13 +18,15 @@ class AlertEditModel extends WlModelAbstract
   public $a_location = [];
 
   /**
+   * Login note information.
+   * 
    * @get result
    * @var array
    */
   public $a_login_note_data = [];
 
   /**
-   * Login note access type id.
+   * Login note access type ID.
    *
    * @post post
    * @var int

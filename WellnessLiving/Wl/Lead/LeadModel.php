@@ -32,7 +32,7 @@ class LeadModel extends WlModelAbstract
    * <dt>string <var>text_address</var></dt>
    * <dd>Address.</dd>
    * <dt>string <var>k_city</var></dt>
-   * <dd>City key.</dd>
+   * <dd>City key. 
    * <dt>string <var>text_postal</var></dt>
    * <dd>Postal code.</dd>
    * </dl>
@@ -81,8 +81,7 @@ class LeadModel extends WlModelAbstract
    *     string <var>k_field</var>
    *   </dt>
    *   <dd>
-   *     The field key.
-   *   </dd>
+   *     The field key.    </dd>
    *   <dt>
    *     string <var>text_field</var>
    *   </dt>

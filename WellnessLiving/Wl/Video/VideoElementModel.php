@@ -20,9 +20,8 @@ class VideoElementModel extends WlModelAbstract
   public $a_location;
 
   /**
-   * TODO wl-76380: remove this property when external developers confirm that they do not use it.
    * The keys of the user staff members who are on the video.
-   *
+   * 
    * @get result
    * @post post
    * @var string[]
@@ -33,11 +32,11 @@ class VideoElementModel extends WlModelAbstract
   /**
    * A list of staff members associated with the video. Every item has the following structure:<dl>
    *   <dt>string <var>k_staff</var> <b>(deprecated)</b></dt>
-   *   <dd>The staff member key.</dd>
+   *   <dd>The staff member key. 
    *   <dt>string <var>text_name</var></dt>
    *   <dd>The staff member's full name.</dd>
    *   <dt>string <var>uid_staff</var></dt>
-   *   <dd>The staff user ID.</dd>
+   *   <dd>The staff user ID. 
    * </dl>
    *
    * @get result
@@ -104,8 +103,8 @@ class VideoElementModel extends WlModelAbstract
 
   /**
    * Video file.
-   * This property is not used, but need for correct generate model.
    *
+   * @internal This property is not used, but need for correct generate model.
    * @post post
    * @var array
    */
@@ -193,6 +192,7 @@ class VideoElementModel extends WlModelAbstract
    * @get result
    * @post post
    * @var int
+   * @see YesNoSid
    */
   public $id_location_select;
 
@@ -287,9 +287,7 @@ class VideoElementModel extends WlModelAbstract
    *
    * *Be careful, when use this property in code, use {@link VideoElementModel::$k_video_binary} instead.*
    * In this property can be key in next format:
-   * * [Deprecated] String key in old format.
-   * * String key in new format.
-   *
+   * * [Deprecated] String key in old format.  * String key in new format. 
    * @delete get
    * @get get
    * @post get,result

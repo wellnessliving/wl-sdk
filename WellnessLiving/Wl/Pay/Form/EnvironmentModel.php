@@ -26,7 +26,8 @@ class EnvironmentModel extends WlModelAbstract
   public $a_card_system;
 
   /**
-   * A list of payment methods enabled for staff members. The ID is one of {@link WlPayMethodSid} constants.
+   * A list of payment methods enabled for staff members.
+   * The ID is one of {@link WlPayMethodSid} constants.
    * The value is always `true`.
    *
    * @get result
@@ -47,8 +48,7 @@ class EnvironmentModel extends WlModelAbstract
    *   <dd>
    *     The key of the custom payment method.
    *     This will be `null` if this payment method isn't customized.
-   *
-   *   </dd>
+   *        </dd>
    *   <dt>string [<var>s_method</var>]</dt>
    *   <dd>The name of payment method. This field is only returned for custom payment methods.</dd>
    * </dl>
@@ -77,14 +77,12 @@ class EnvironmentModel extends WlModelAbstract
    *   <dt>array|null <var>a_public_keys</var></dt>
    *   <dd>
    *     Public keys configured for this payment processor.
-   *
-   *     `null` if this payment processor does not support public keys.
+   *          `null` if this payment processor does not support public keys.
    *   </dd>
    *   <dt>array|null <var>a_public_info</var></dt>
    *   <dd>
    *     Public info configured for this payment processor.
-   *
-   *     `null` if this payment processor does not support public info.
+   *          `null` if this payment processor does not support public info.
    *   </dd>
    *   <dt>bool <var>hide_save_source</var></dt>
    *   <dd>Whether `save payment method` option should be hidden. `true` if hidden, `false` - otherwise.</dd>
@@ -100,7 +98,7 @@ class EnvironmentModel extends WlModelAbstract
    *     `null` if this is not defined for payment processor.
    *   </dd>
    *   <dt>string <var>k_business_merchant</var></dt>
-   *   <dd>Key of the business merchant.</dd>
+   *   <dd>Key of the business merchant. 
    * </dl>
    *
    * `null` if no processors are set up.

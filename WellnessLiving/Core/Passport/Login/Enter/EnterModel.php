@@ -13,9 +13,9 @@ class EnterModel extends WlModelAbstract
    * Additional data for user authorization.
    *
    * @post post
-   * @var array
+   * @var string
    */
-  public $json_data = [];
+  public $json_data = '[]';
 
   /**
    * The answer to the captcha, if needed.

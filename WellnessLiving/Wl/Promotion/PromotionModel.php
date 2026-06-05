@@ -23,81 +23,81 @@ class PromotionModel extends WlModelAbstract
    *     <dl>
    *       <dt>array[] <var>a_class</var></dt>
    *       <dd>A list of available classes.</dd>
+   *
    *       <dt>array[] <var>a_event</var></dt>
    *       <dd>A list of available events.</dd>
+   *
    *       <dt>array[] <var>a_resource</var></dt>
    *       <dd>A list of available assets.</dd>
+   *
    *       <dt>array[] <var>a_service</var></dt>
    *       <dd>A list of available appointment types.</dd>
+   *
    *       <dt>bool <var>is_class_all</var></dt>
-   *       <dd>This will be `true` if any class in the business can be visited with this Purchase Option. Otherwise, this
-   *         will be `false` if only selected classes can be visited with this Purchase Option. Selected classes can be found
-   *         in the list of available classes and events.</dd>
+   *       <dd>
+   *         This will be `true` if any class in the business can be visited with this Purchase Option.
+   *         Otherwise, this will be `false` if only selected classes can be visited with this Purchase Option.
+   *         Selected classes can be found in the list of available classes and events.
+   *       </dd>
+   *
    *       <dt>bool <var>is_event_all</var></dt>
-   *       <dd>This will be `true` if any event in the business can be visited with this Purchase Option. Otherwise, this
-   *         will be `false` if only selected events can be visited with this Purchase Option. Selected events can be found
-   *         in the list of available classes and events.</dd>
+   *       <dd>
+   *         This will be `true` if any event in the business can be visited with this Purchase Option.
+   *         Otherwise, this will be `false` if only selected events can be visited with this Purchase Option.
+   *         Selected events can be found in the list of available classes and events.
+   *       </dd>
    *     </dl>
    *   </dd>
-   *   <dt>
-   *     array <var>a_image</var>
-   *   </dt>
+   *
+   *   <dt>array <var>a_image</var> </dt>
    *   <dd>
-   *     Information about Purchase Option image. This will be an empty array if the Purchase Option doesn't have an image.
+   *     Information about Purchase Option image.
+   *     This will be an empty array if the Purchase Option doesn't have an image.
    *     <dl>
    *       <dt>string <var>i_height</var></dt>
    *       <dd>The height of the image.</dd>
+   *
    *       <dt>string <var>i_width</var></dt>
    *       <dd>The width of the image.</dd>
+   *
    *       <dt>string <var>url-thumbnail</var></dt>
    *       <dd>The link to the image.</dd>
    *     </dl>
    *   </dd>
-   *   <dt>
-   *     array <var>a_location</var>
-   *   </dt>
+   *   <dt>string[] <var>a_location</var></dt>
    *   <dd>
    *     A list of locations where this promotion is available.
-   *   </dd>
-   *   <dt>
-   *     array <var>a_login_type</var>
-   *   </dt>
+   *        </dd>
+   *
+   *   <dt>string[] <var>a_login_type</var></dt>
    *   <dd>
-   *     A list of login types linked with this promotion. Value is a copy of
-   * `k_login_
-   *   </dd>
-   *   <dt>
-   *     array <var>a_member_group</var>
-   *   </dt>
+   *     A list of login types linked with this promotion.
+   *        </dd>
+   *   <dt>string[] <var>a_member_group</var></dt>
    *   <dd>
-   *     A list of login types linked with this promotion. Value is a copy of
-   * `k_member_
-   *   </dd>
-   *   <dt>
-   *     array <var>a_tag</var>
-   *   </dt>
+   *     A list of login types linked with this promotion.
+   *        </dd>
+   *
+   *   <dt>string[] <var>a_tag</var></dt>
    *   <dd>
-   *     List of selected tags.
-   *   </dd>
-   *   <dt>
-   *     string <var>dl_expire</var>
-   *   </dt>
+   *     List of selected tags.    </dd>
+   *
+   *   <dt>string <var>dl_expire</var></dt>
    *   <dd>
    *      The local expiration date. This is the last day when the Purchase Option is active.
    *      This is used only when the 'Expires on a certain date' duration type is set.
    *   </dd>
-   *   <dt>
-   *     string <var>dl_terminate</var>
-   *   </dt>
+   *
+   *   <dt>string <var>dl_terminate</var></dt>
    *   <dd>
    *     Date when promotion should be terminated. `null` if there is no terminate date.
    *   </dd>
-   *   <dt>
-   *     string <var>f_revenue_single</var>
-   *   </dt>
+   *
+   *   <dt>string <var>f_revenue_single</var></dt>
    *   <dd>
    *     Approximate revenue per session value.
-   *   </dd>
+   *        </dd>
+   *
    *   <dt>
    *     int <var>i_duration</var>
    *   </dt>
@@ -105,6 +105,7 @@ class PromotionModel extends WlModelAbstract
    *     The number of periods for the 'Period' duration type.
    *     For example, if the duration of the Purchase Option is 12 months, this field will be 12.
    *   </dd>
+   *
    *   <dt>
    *     int <var>i_limit</var>
    *   </dt>
@@ -112,6 +113,7 @@ class PromotionModel extends WlModelAbstract
    *     The number of visits that the owner can use for the Purchase Option.
    *     This will be `0` if the Purchase Option allows for unlimited visits.
    *   </dd>
+   *
    *   <dt>
    *     int <var>id_duration</var>
    *   </dt>
@@ -120,6 +122,7 @@ class PromotionModel extends WlModelAbstract
    *     For example, if the duration of the Purchase Option is 12 months, this field will display the ID of the month.
    *     For all possible options, see {@link ADurationSid}.
    *   </dd>
+   *
    *   <dt>
    *     int <var>id_duration_type</var>
    *   </dt>
@@ -127,6 +130,7 @@ class PromotionModel extends WlModelAbstract
    *     The duration type. Possible duration types can be 'Without End', 'Expires on a certain date', 'Period'.
    *     For more information, see {@link WlDurationTypeSid}.
    *   </dd>
+   *
    *   <dt>
    *     int <var>id_program</var>
    *   </dt>
@@ -134,94 +138,84 @@ class PromotionModel extends WlModelAbstract
    *     The Purchase Option type.
    *     For more information, see {@link WlProgramSid}.
    *   </dd>
+   *
    *   <dt>
    *     int <var>id_restriction</var>
    *   </dt>
    *   <dd>
    *
    *   </dd>
+   *
    *   <dt>
    *     bool <var>is_active</var>
    *   </dt>
    *   <dd>
-   *     Whether this promotion is active.
-   *   </dd>
+   *     Whether this promotion is active.    </dd>
+   *
    *   <dt>
    *     bool <var>is_business_wide</var>
    *   </dt>
    *   <dd>
    *     Whether this promotion is available for all locations of the business.
+   *        </dd>
    *
-   *   </dd>
    *   <dt>
    *     bool <var>is_introductory</var>
    *   </dt>
    *   <dd>
    *     If `true`, this promotion is for introductory clients. Otherwise, this will be `false`.
    *   </dd>
+   *
    *   <dt>
    *     bool <var>is_online</var>
    *   </dt>
    *   <dd>
    *     If `true`, this promotion is available for online purchase. Otherwise, this will be `false`.
    *   </dd>
-   *   <dt>
-   *     bool <var>is_payroll</var>
-   *   </dt>
+   *
+   *   <dt>bool <var>is_payroll</var></dt>
    *   <dd>
    *     Whether clients who purchase this item excluded from payroll calculations.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_revenue_single</var>
-   *   </dt>
+   *        </dd>
+   *
+   *   <dt>bool <var>is_revenue_single</var></dt>
    *   <dd>
    *     If `true` need to add approximate revenue per session value.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_use</var>
-   *   </dt>
+   *        </dd>
+   *
+   *   <dt>bool <var>is_use</var></dt>
    *   <dd>
    *     Whether promotion can be used for booking. `null` if there is no termination.
    *   </dd>
-   *   <dt>
-   *     string <var>k_promotion</var>
-   *   </dt>
+   *
+   *   <dt>string <var>k_promotion</var></dt>
+   *   <dd>The key of the promotion. 
+   *
+   *   <dt>string <var>k_tag_primary</var></dt>
    *   <dd>
-   *     The key of the promotion.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_tag_primary</var>
-   *   </dt>
-   *   <dd>
-   *     Primary tag.
-   *   </dd>
-   *   <dt>
-   *     string <var>m_price</var>
-   *   </dt>
+   *     Primary tag.    </dd>
+   *
+   *   <dt>string <var>m_price</var></dt>
    *   <dd>
    *     The price.
    *   </dd>
-   *   <dt>
-   *     string <var>text_description</var>
-   *   </dt>
+   *
+   *   <dt>string <var>text_description</var></dt>
    *   <dd>
    *     The description of the Purchase Option.
    *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
+   *
+   *   <dt>string <var>text_title</var></dt>
    *   <dd>
    *     The title of the Purchase Option.
    *   </dd>
-   *   <dt>
-   *     string <var>url_buy</var>
-   *   </dt>
+   *
+   *   <dt>string <var>url_buy</var></dt>
    *   <dd>
    *     The direct URL to the promotion purchase page.
    *   </dd>
-   *   <dt>
-   *     string <var>url_catalog</var>
-   *   </dt>
+   *
+   *   <dt>string <var>url_catalog</var></dt>
    *   <dd>
    *     The direct URL to the promotion details page in the online store.
    *   </dd>

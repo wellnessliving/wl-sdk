@@ -21,19 +21,17 @@ class LeadSourceElementModel extends WlModelAbstract
    *
    *   <dt>int|null <var>id_lead_source</var></dt>
    *   <dd>
-   *     System-defined Lead Source ID.
+   *     System-defined Lead Source ID. One of {@link ModeSid} constants.
    *     `null` if it is a custom Lead Source.
    *   </dd>
    *
    *   <dt>string <var>k_lead_source</var></dt>
    *   <dd>
-   *     Key of the lead source.
-   *   </dd>
+   *     Key of the lead source. *   </dd>
    *
    *   <dt>string [<var>k_skin</var>]</dt>
    *   <dd>
-   *     Key of the lead skin.
-   *     Will be set only in case if <var>id_lead_source</var> is {@link ModeSid::WIDGET} and
+   *     Key of the lead skin. *     Will be set only in case if <var>id_lead_source</var> is {@link ModeSid::WIDGET} and
    *     widget can't be used for "Add Lead" form. `false` - otherwise.
    *   </dd>
    *

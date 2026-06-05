@@ -21,7 +21,7 @@ class InfoModel extends WlModelAbstract
    *   <dt>bool `can_view`</dt>
    *   <dd>`true` if employees (staff) can view this appointment, `false` otherwise.</dd>
    *   <dt>string `k_appointment`</dt>
-   *
+   *   <dd>Next appointment key. 
    *   <dt>string `k_visit`</dt>
    *   <dd>Visit key of next appointment.</dd>
    *   <dt>string `text_appointment_title`</dt>
@@ -46,7 +46,7 @@ class InfoModel extends WlModelAbstract
    *   <dt>bool `can_view`</dt>
    *   <dd>`true` if employees (staff) can view this appointment, `false` otherwise.</dd>
    *   <dt>string `k_appointment`</dt>
-   *
+   *   <dd>Previous appointment key. 
    *   <dt>string `k_visit`</dt>
    *   <dd>Visit key of previous appointment.</dd>
    *   <dt>string `text_appointment_title`</dt>
@@ -85,13 +85,13 @@ class InfoModel extends WlModelAbstract
   /**
    * List of appointment add-ons. Every element has next keys:<dl>
    *   <dt>array `a_login_product`</dt>
-   *   <dd>List of purchased products. Empty if no products purchased.</dd>
+   *   <dd>List of purchased products. Each value is ty if no products purchased.</dd>
    *   <dt>null `k_login_product`</dt>
    *   <dd>Deprecated, always `null`.</dd>
    *   <dt>string `k_shop_product`</dt>
    *   <dd>Primary key of add-on.</dd>
    *   <dt>string `k_shop_product_option`</dt>
-   *
+   *   <dd>Add-on option. 
    *   <dt>string `m_amount`</dt>
    *   <dd>Price that it adds to an appointment.</dd>
    * </dl>

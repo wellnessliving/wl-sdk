@@ -186,13 +186,11 @@ class QueryModel extends WlModelAbstract
    * Filters that should be applied to the report.
    *
    * In this array, key is name of a filter field.
-   *
-   * Name of the property of that subclass corresponds key in this array.
-   *
+   * 
    * @post post
-   * @var array
+   * @var string
    */
-  public $json_filter;
+  public $json_filter = '[]';
 
   /**
    * Key of the business which report should be shown.
@@ -227,9 +225,7 @@ class QueryModel extends WlModelAbstract
    * To sort by a cell field, specify name of a report field and name of the cell field.
    * Separate with a dot. For example: <tt>o_account.m_amount</tt>.
    *
-   * You may specify a field which contains objects of {@link ReportGeneratorCellAbstract} without
-   * specification of a name of a cell field.
-   *
+   * 
    * Example value: <tt>s_first,+s_last,-o_account.m_amount,o_address</tt>.
    *
    * Means the following:

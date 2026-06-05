@@ -20,11 +20,11 @@ class FinishMultipleModel extends WlModelAbstract
   /**
    * A list of answers for the questions from {@link QuestionModel::$a_question}.
    *
-   * <tt>1st dimension</tt> - provider index.
-   * <tt>2nd dimension</tt> - keys refer to hashes of the questions. Values refer to answers for the questions.
+   * 1st dimension - provider index.
+   * 2nd dimension - keys refer to hashes of the questions. Values refer to answers for the questions.
    *
    * @post post
-   * @var array[]
+   * @var string[][]
    */
   public $a_answer = [];
 
@@ -35,8 +35,7 @@ class FinishMultipleModel extends WlModelAbstract
    *     string <var>k_appointment</var>
    *   </dt>
    *   <dd>
-   *     The appointment key.
-   *   </dd>
+   *     The appointment key.    </dd>
    * </dl>
    *
    * @post result
@@ -74,11 +73,11 @@ class FinishMultipleModel extends WlModelAbstract
    *           <dt>int <var>id_conflict</var></dt>
    *           <dd>Solution type.</dd>
    *           <dt>string <var>k_resource</var></dt>
-   *
+   *           <dd>New asset. 
    *           <dt>string|null <var>k_staff</var></dt>
-   *           <dd> `null` in a case of asset booking.</dd>
+   *           <dd>New staff member. l` in a case of asset booking.</dd>
    *           <dt>string|null <var>uid_staff</var></dt>
-   *           <dd> `null` in a case of asset booking.</dd>
+   *           <dd>New staff member. l` in a case of asset booking.</dd>
    *         </dl>
    *       </dd>
    *       <dt>
@@ -86,11 +85,11 @@ class FinishMultipleModel extends WlModelAbstract
    *       </dt>
    *       <dd>
    *         Add-ons to the appointment. Specified for appointment bookings only.
-   *         The old format used array keys. While the new format has each element as an array:
+   *         The old format used array keys. e the new format has each element as an array:
    *         <dl>
    *           <dt>int <var>i_count</var></dt><dd>The add-on buy count.</dd>
    *           <dt>int [<var>i_count_use</var>]</dt><dd>The add-on use count. If not set, then use count is equals to buy count.</dd>
-   *           <dt>string <var>k_shop_product_option</var></dt><dd>The add-on key.</dd>
+   *           <dt>string <var>k_shop_product_option</var></dt><dd>The add-on key. 
    *         </dl>
    *       </dd>
    *       <dt>
@@ -152,7 +151,7 @@ class FinishMultipleModel extends WlModelAbstract
    *           <dt>int [<var>i_index</var>]</dt>
    *           <dd>The asset index on the layout. This is only specified if the asset category has a layout.</dd>
    *           <dt>string <var>k_resource</var></dt>
-   *           <dd>The asset.</dd>
+   *           <dd>The asset. 
    *         </dl>
    *         Specify this only for an appointment booking.
    *       </dd>
@@ -205,54 +204,48 @@ class FinishMultipleModel extends WlModelAbstract
    *       </dt>
    *       <dd>
    *         The user's prize.
-   *
-   *       </dd>
+   *                </dd>
    *       <dt>
    *         string [<var>k_login_promotion</var>]
    *       </dt>
    *       <dd>
    *         The user's Purchase Option.
    *         Specify this if you want to use a specific Purchase Option to pay for the booking.
-   *
-   *       </dd>
+   *                </dd>
    *       <dt>
    *         string [<var>k_resource</var>]
    *       </dt>
    *       <dd>
    *         The asset booking. Specify this for separate asset bookings only.
-   *
-   *       </dd>
+   *                </dd>
    *       <dt>
    *         string <var>k_service</var>
    *       </dt>
    *       <dd>
    *         The appointment booking. Specify this for appointment bookings only.
-   *
-   *       </dd>
+   *                </dd>
    *       <dt>
    *         string [<var>k_session_pass</var>]
    *       </dt>
    *       <dd>
    *         The user's pass (for example, a membership or a package).
    *         Specify this if you want to set the pass to use to pay for the booking.
-   *       </dd>
+   *                </dd>
    *       <dt>
    *         string [<var>k_staff</var>]
    *       </dt>
    *       <dd>
    *         The staff member conducting the appointment.
    *         Specify this for appointment bookings only.
-   *
    *         deprecated Use <var>uid_staff</var>. Available for legacy allow-list only.
-   *       </dd>
+   *                </dd>
    *       <dt>
    *         string [<var>uid_staff</var>]
    *       </dt>
    *       <dd>
    *         The staff member conducting the appointment.
    *         Specify this for appointment bookings only.
-   *
-   *       </dd>
+   *                </dd>
    *       <dt>
    *         string [<var>k_staff_date</var>]
    *       </dt>
@@ -261,8 +254,7 @@ class FinishMultipleModel extends WlModelAbstract
    *         The difference between this and <var>k_staff</var> is that this value must be set only in cases
    *         when you want to add customer to an appointment that already exists.
    *         Specify this for appointment bookings only.
-   *
-   *       </dd>
+   *                </dd>
    *       <dt>
    *         string [<var>uid_staff_date</var>]
    *       </dt>
@@ -271,8 +263,7 @@ class FinishMultipleModel extends WlModelAbstract
    *         The difference between this and <var>uid_staff</var> is that this value must be set only in cases
    *         when you want to add customer to an appointment that already exists.
    *         Specify this for appointment bookings only.
-   *
-   *       </dd>
+   *                </dd>
    *       <dt>string [<var>m_tip_appointment</var>]</dt>
    *       <dd>The amount of selected tips.</dd>
    *       <dt>string [<var>k_timezone</var>]</dt>
@@ -281,8 +272,7 @@ class FinishMultipleModel extends WlModelAbstract
    *         string [<var>uid</var>]
    *       </dt>
    *       <dd>
-   *
-   *         Specify only in a case of booking for a lof of different users.
+   *         User key.          Specify only in a case of booking for a lof of different users.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -352,7 +342,7 @@ class FinishMultipleModel extends WlModelAbstract
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The promotion or appointment key, depending on <var>id_purchase_item</var> in this array.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
-   *   <dd>The login promotion key.</dd>
+   *   <dd>The login promotion key. 
    *   <dt>string <var>text_discount_code</var></dt>
    *   <dd>The discount code.</dd>
    * </dl>
@@ -376,8 +366,8 @@ class FinishMultipleModel extends WlModelAbstract
 
   /**
    * The list of quiz response keys.
-   * Keys refer to quiz keys.
-   * And values refer to response keys.
+   * Key is quiz key.
+   * Value is quiz response key.
    *
    * @post post
    * @var string[]

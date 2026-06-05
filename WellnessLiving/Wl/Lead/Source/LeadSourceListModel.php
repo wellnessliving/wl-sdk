@@ -40,13 +40,11 @@ class LeadSourceListModel extends WlModelAbstract
    *
    *   <dt>string <var>k_lead_source</var></dt>
    *   <dd>
-   *     Key of the lead source.
-   *   </dd>
+   *     Key of the lead source. *   </dd>
    *
    *   <dt>string <var>k_skin</var></dt>
    *   <dd>
-   *     Key of the lead skin.
-   *   </dd>
+   *     Key of the lead skin. *   </dd>
    *
    *   <dt>string <var>text_title</var></dt>
    *   <dd>

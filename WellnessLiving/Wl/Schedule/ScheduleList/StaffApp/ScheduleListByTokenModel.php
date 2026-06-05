@@ -105,22 +105,19 @@ class ScheduleListByTokenModel extends WlModelAbstract
    *   </dt>
    *   <dd>
    *     A list of assets involved in the session.
-   *
-   *   </dd>
+   *        </dd>
    *   <dt>
    *     string[] <var>a_staff</var>
    *   </dt>
    *   <dd>
    *     A list of staff members who will conduct the session.
-   *
-   *     Deprecated, use <var>a_staff_list</var> instead.
+   *          Deprecated, use <var>a_staff_list</var> instead.
    *   </dd>
    *   <dt>
    *     array <var>a_staff_info</var>
    *   </dt>
    *   <dd>
-   *     Information about staff members who conduct this session.
-   *     Values are array with data:
+   *     Information about staff members who conduct this session. The keys are *     Values are array with data:
    *     <dl>
    *       <dt>
    *         string <var>text_staff</var>
@@ -138,8 +135,7 @@ class ScheduleListByTokenModel extends WlModelAbstract
    *         string <var>k_staff</var>
    *       </dt>
    *       <dd>
-   *         Staff key.
-   *       </dd>
+   *         Staff key.        </dd>
    *     </dl>
    *   </dd>
    *   <dt>
@@ -152,8 +148,7 @@ class ScheduleListByTokenModel extends WlModelAbstract
    *     string[] <var>a_virtual_location</var>
    *   </dt>
    *   <dd>
-   *     List of virtual locations.
-   *   </dd>
+   *     List of virtual locations. Each value is *   </dd>
    *   <dt>
    *     string <var>dt_date</var>
    *   </dt>
@@ -254,8 +249,7 @@ class ScheduleListByTokenModel extends WlModelAbstract
    *     string <var>k_appointment</var>
    *   </dt>
    *   <dd>
-   *     The appointment key.
-   *     If the session isn't an appointment, this will be `0`.
+   *     The appointment key.      If the session isn't an appointment, this will be `0`.
    *   </dd>
    *   <dt>
    *     string <var>dt_confirm</var>
@@ -268,29 +262,25 @@ class ScheduleListByTokenModel extends WlModelAbstract
    *     string <var>k_class</var>
    *   </dt>
    *   <dd>
-   *     The class key.
-   *     If the session isn't a class, this will be `0`.
+   *     The class key.      If the session isn't a class, this will be `0`.
    *   </dd>
    *   <dt>
    *     string <var>k_class_period</var>
    *   </dt>
    *   <dd>
-   *     The class period key.
-   *     If the session isn't a class, this will be `0`.
+   *     The class period key.      If the session isn't a class, this will be `0`.
    *   </dd>
    *   <dt>
    *     string <var>k_location</var>
    *   </dt>
    *   <dd>
-   *     The location key for where the session takes place.
-   *   </dd>
+   *     The location key for where the session takes place.    </dd>
    *   <dt>
    *     string <var>k_service</var>
    *   </dt>
    *   <dd>
    *     This is the key of the appointment type, while `k_appointment` is the specific instance.
-   *
-   *     For other cases, this will be `0`.
+   *          For other cases, this will be `0`.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>

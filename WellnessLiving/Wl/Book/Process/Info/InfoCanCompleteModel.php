@@ -31,7 +31,7 @@ class InfoCanCompleteModel extends WlModelAbstract
    *   <dt>bool <var>is_select</var></dt>
    *   <dd>`true` if this session should be booked, `false` otherwise.</dd>
    *   <dt>string <var>k_class_period</var></dt>
-   *   <dd>The class period key.</dd>
+   *   <dd>The class period key. 
    * </dl>
    *
    * @post post

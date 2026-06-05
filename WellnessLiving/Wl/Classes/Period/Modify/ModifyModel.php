@@ -29,17 +29,17 @@ class ModifyModel extends WlModelAbstract
    *   <dt>bool `is_forward`</dt>
    *   <dd>Modify all future sessions. Used in {@link WlClassModifyStepSid::PERIOD}.</dd>
    *   <dt>string[] `a_period`</dt>
-   *   <dd> Used in {@link WlClassModifyStepSid::ITEM}.</dd>
+   *   <dd>Selected session keys (ed in {@link WlClassModifyStepSid::ITEM}.</dd>
    *   <dt>array `a_edit`</dt>
    *   <dd>Edited fields flags. Used in {@link WlClassModifyStepSid::FORM}.</dd>
    *   <dt>array[] `a_staff`</dt>
    *   <dd>Selected instructors. Used in {@link WlClassModifyStepSid::FORM}:<dl>
    *     <dt>string `k_staff`</dt>
-   *     <dd>@</dd>
+   *     <dd>@deprecated Staff key. 
    *     <dt>string `uid_staff`</dt>
-   *     <dd> Optional.</dd>
+   *     <dd>Staff user key. onal.</dd>
    *     <dt>string `k_staff_pay`</dt>
-   *
+   *     <dd>Staff pay rate ID. 
    *   </dl></dd>
    *   <dt>bool `is_inform_mail`</dt>
    *   <dd>Send email notification to clients. Used in {@link WlClassModifyStepSid::CLIENT}.</dd>
@@ -160,6 +160,7 @@ class ModifyModel extends WlModelAbstract
   /**
    * The unique hash string.
    *
+   * 
    * @get get
    * @post get,result
    * @var string

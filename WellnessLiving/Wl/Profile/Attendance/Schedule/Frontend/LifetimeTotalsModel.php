@@ -14,13 +14,15 @@ class LifetimeTotalsModel extends WlModelAbstract
    *
    * A set of key-value pairs.
    *
+   * Each element has followed structure: <dl>
+   *    <dt>string <var>text_title</var></dt>
+   *    <dd>Total title.</dd>
+   *    <dt>int <var>s_value</var></dt>
+   *    <dd>Total value.</dd>
+   *  </dl>
+   *
    * @get result
-   * @var array[] Each element has followed structure: <dl>
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>Total title.</dd>
-   *   <dt>int <var>s_value</var></dt>
-   *   <dd>Total value.</dd>
-   * </dl>
+   * @var array[]
    */
   public $a_total = [];
 

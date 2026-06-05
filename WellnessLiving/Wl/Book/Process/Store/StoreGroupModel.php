@@ -19,8 +19,7 @@ class StoreGroupModel extends WlModelAbstract
    *
    * This login promotions will be checked to determine if it can be applied to the current class or event.
    *
-   * * Key - UID of the client.
-   * * Value - login promotion key.
+   * Keys are UIDs of clients, values are login promotion keys.
    *
    * @post post
    * @var string[]
@@ -33,8 +32,7 @@ class StoreGroupModel extends WlModelAbstract
    * This new purchase items will be checked to determine if it can be applied to the current class or event before
    * being purchased.
    *
-   * * Key - UID of the client.
-   * * Value - an array with the following structure:
+   * Keys are UIDs of clients, values are arrays with the following structure:
    * <dl>
    *   <dt>int `i_session`</dt>
    *   <dd>
@@ -61,14 +59,12 @@ class StoreGroupModel extends WlModelAbstract
   /**
    * A list of distributed new shared purchase items which are selected by a group of clients.
    *
-   * * Key - UID of the client.
-   * * Value - an array with the following structure:
+   * Keys are UIDs of clients, values are arrays with the following structure:
    * <dl>
    *   <dt>array `a_owner`</dt>
    *   <dd>
    *       List of UIDs of owners who will share this promotion with this client.
-   *
-   *       If empty, this client is the owner of the promotion.
+   *       Each UID is a *       If empty, this client is the owner of the promotion.
    *       This only applies to the new promotions.
    *   </dd>
    *   <dt>int `i_session`</dt>
@@ -79,14 +75,12 @@ class StoreGroupModel extends WlModelAbstract
    *   </dd>
    *   <dt>string|null `k_login_promotion`</dt>
    *   <dd>
-   *       Login promotion key.
-   *       The same as in {@link StoreGroupModel::$a_login_promotion}.
+   *       Login promotion key. *       The same as in {@link StoreGroupModel::$a_login_promotion}.
    *       `null` if not applicable.
    *   </dd>
    *   <dt>string|null `k_session_pass`</dt>
    *   <dd>
-   *       Session pass key.
-   *       The same as in {@link StoreGroupModel::$a_session_pass}.
+   *       Session pass key. *       The same as in {@link StoreGroupModel::$a_session_pass}.
    *       `null` if not applicable.
    *   </dd>
    *   <dt>string|null `s_value`</dt>
@@ -113,8 +107,7 @@ class StoreGroupModel extends WlModelAbstract
   /**
    * Information about the recurring booking for each client in the group.
    *
-   * * Key - UID of the client.
-   * * Value - an array with information about the recurring booking:
+   * Keys are UIDs of clients, values are arrays with information about the recurring booking:
    * <dl>
    *   <dt>int[] <var>a_day</var></dt>
    *   <dd>
@@ -166,13 +159,12 @@ class StoreGroupModel extends WlModelAbstract
   /**
    * A list of assets which are selected by a group of clients.
    *
-   * * Key - UID of the client.
-   * * Value - an array with the following structure:
+   * Keys are UIDs of clients, values are arrays with the following structure:
    * <dl>
    *   <dt>int `i_index`</dt>
    *   <dd>The order number of the asset (from 1 to the asset quantity).</dd>
    *   <dt>string `k_resource`</dt>
-   *   <dd>The asset key.</dd>
+   *   <dd>The asset key. 
    * </dl>
    *
    * @post post
@@ -185,8 +177,7 @@ class StoreGroupModel extends WlModelAbstract
    *
    * This session passes will be checked to determine if it can be applied to the current class or event.
    *
-   *  * Key - UID of the client.
-   *  * Value - session pass key.
+   * Keys are UIDs of clients, values are session pass keys.
    *
    * @post post
    * @var string[]
@@ -196,10 +187,8 @@ class StoreGroupModel extends WlModelAbstract
   /**
    * A list of sessions which are selected by a group of clients.
    *
-   * * Key - UID of the client.
-   * * Value - an array with the following structure:
-   *   * Key - class period keys.
-   *   * Value - index arrays of dates/times when the session occurred (MySQL format; UTC).
+   * Keys are UIDs of clients, values are arrays of class period keys mapped to index arrays of
+   *  dates/times when the session occurred (MySQL format; UTC).
    *
    * @post post
    * @var string[][][]
@@ -209,10 +198,8 @@ class StoreGroupModel extends WlModelAbstract
   /**
    * A list of wait list (unpaid) sessions which are selected by a group of clients.
    *
-   * * Key - UID of the client.
-   * * Value - an array with the following structure:
-   *   * Key - class period keys.
-   *   * Value - index arrays of dates/times when the session occurred (MySQL format; UTC).
+   * Keys are UIDs of clients, values are arrays of class period keys mapped to index arrays of
+   *  dates/times when the session occurred (MySQL format; UTC).
    *
    * @post post
    * @var string[][][]

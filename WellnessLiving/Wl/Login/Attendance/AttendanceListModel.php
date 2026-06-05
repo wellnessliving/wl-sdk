@@ -18,8 +18,8 @@ class AttendanceListModel extends WlModelAbstract
    * <dl>
    *   <dt>array <var>a_info</var></dt>
    *   <dd>
-   *
-   *   </dd>
+   *     Information about member.
+   *        </dd>
    *   <dt>array <var>a_photo</var></dt>
    *   <dd>
    *     Information about the user's photo. The information returned has the following structure:
@@ -36,10 +36,26 @@ class AttendanceListModel extends WlModelAbstract
    *   </dd>
    *   <dt>array <var>a_progress</var></dt>
    *   <dd>Information about a user's current progress. By default, this information isn't sent.</dd>
-   *   <dt>array <var>a_quiz</var></dt>
-   *   <dd>Quiz information that concerns current visit.</dd>
-   *   <dt>array <var>a_resource</var></dt>
-   *   <dd>A list of information for any associated resources for this visit.</dd>
+   *   <dt>array[] <var>a_quiz</var></dt>
+   *   <dd>
+   *       Quiz information that concerns current visit.
+   *          </dd>
+   *   <dt>array[] `a_resource`</dt>
+   *   <dd>
+   *     A list of information for any associated resources for this visit. Each element: <dl>
+   *       <dt>int `i_index`</dt>
+   *       <dd>Index of the resource among multiple assets. `0` if the resource was booked from the wait list.</dd>
+   *
+   *       <dt>string `k_resource`</dt>
+   *       <dd>Resource key. 
+   *
+   *       <dt>string `text_alias`</dt>
+   *       <dd>Resource layout alias.</dd>
+   *
+   *       <dt>string `text_title`</dt>
+   *       <dd>Resource title.</dd>
+   *     </dl>
+   *   </dd>
    *   <dt>array <var>a_wait_confirm</var></dt>
    *   <dd>The list of visit keys for clients on the wait list.</dd>
    *   <dt>array <var>a_wearable</var></dt>
@@ -173,25 +189,23 @@ class AttendanceListModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_list_active;
+  public $a_list_active = [];
 
   /**
    * The list of clients who have confirmed their attendance.
-   * Has the same structure as {@link AttendanceListModel::$a_list_active} property.
    *
    * @get result
    * @var array[]
    */
-  public $a_list_confirm;
+  public $a_list_confirm = [];
 
   /**
    * The list of clients who are on the wait list.
-   * Has the same structure as {@link AttendanceListModel::$a_list_active} property.
    *
    * @get result
    * @var array[]
    */
-  public $a_list_wait;
+  public $a_list_wait = [];
 
   /**
    * The local date of the class or event session.

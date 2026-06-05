@@ -31,7 +31,7 @@ class AccessModel extends WlModelAbstract
   public $has_access;
 
   /**
-   * Report ID. One of {@link WlReportSid} constants.
+   * Report ID.
    *
    * It's used mostly for first generation reports.
    * For second generation reports use {@link AccessModel::$cid_report} instead.
@@ -40,6 +40,7 @@ class AccessModel extends WlModelAbstract
    *
    * @get get
    * @var int
+   * @see WlReportSid
    */
   public $id_report = 0;
 

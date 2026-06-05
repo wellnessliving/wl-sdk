@@ -236,6 +236,8 @@ class PaymentPostModel extends WlModelAbstract
 
   /**
    * List of quiz response keys.
+   * Key is quiz key.
+   * Value is quiz response key.
    *
    * @post post
    * @var array

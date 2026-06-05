@@ -37,7 +37,7 @@ class ProcessGroupModel extends WlModelAbstract
    *             <dt>string `dtu_date`</dt>
    *             <dd>Session date/time.</dd>
    *             <dt>string `k_class_period`</dt>
-   *
+   *             <dd>Session key. 
    *         </dl>
    *     </dd>
    *     <dt>
@@ -78,22 +78,19 @@ class ProcessGroupModel extends WlModelAbstract
    *                  string [`k_id`]
    *              </dt>
    *              <dd>
-   *                  Primary key of option to purchase.
-   *                  Specify only if you want to purchase a new option.
+   *                  *                  Specify only if you want to purchase a new option.
    *              </dd>
    *              <dt>
    *                  string [`k_login_prize`]
    *              </dt>
    *              <dd>
-   *
-   *                  Specify if you want to pay by user's prize.
+   *                  *                  Specify if you want to pay by user's prize.
    *              </dd>
    *              <dt>
    *                  string [`k_reward_prize`]
    *              </dt>
    *              <dd>
-   *
-   *                  Specify if you want to redeem a prize for payment.
+   *                  *                  Specify if you want to redeem a prize for payment.
    *              </dd>
    *              <dt>
    *                  string [`s_signature`]
@@ -109,8 +106,7 @@ class ProcessGroupModel extends WlModelAbstract
    *     </dt>
    *     <dd>
    *         Answers for questions. Required if the service requires answers for questions.
-   *
-   *     </dd>
+   *         *     </dd>
    *     <dt>
    *         array [`a_repeat`]
    *     </dt>
@@ -167,25 +163,23 @@ class ProcessGroupModel extends WlModelAbstract
    *             <dt>int <var>i_index</var></dt>
    *             <dd>Order number of the asset.</dd>
    *             <dt>int <var>k_resource</var></dt>
-   *
+   *             <dd>Asset key. 
    *         </dl>
    *     </dd>
    *     <dt>
    *         string [`k_login_promotion`]
    *     </dt>
    *     <dd>
-   *
-   *         Specify only if you want to pay by already purchased option.
+   *         *         Specify only if you want to pay by already purchased option.
    *     </dd>
    *     <dt>
    *         string [`k_session_pass`]
    *     </dt>
    *     <dd>
    *         Session pass to be used to book a session.
-   *
-   *     </dd>
+   *         *     </dd>
    *     <dt>string `uid`</dt>
-   *     <dd>User's primary key in {@link \PassportLoginSql} table</dd>
+   *     <dd>User key. 
    * </dl>
    *
    * @post post
@@ -194,6 +188,8 @@ class ProcessGroupModel extends WlModelAbstract
   public $a_client = [];
 
   /**
+   * Primary keys of users' activity that correspond to bookings made.
+   *
    * @post result
    * @var string[]
    */
@@ -332,6 +328,8 @@ class ProcessGroupModel extends WlModelAbstract
   public $a_pay_form = [];
 
   /**
+   * Primary keys of bookings made.
+   *
    * @post result
    * @var string[]
    */
@@ -399,6 +397,7 @@ class ProcessGroupModel extends WlModelAbstract
   public $k_class_period = '0';
 
   /**
+   * The key of the user's activity corresponding to the purchase made.
    * `null` if no purchase was made.
    *
    * @post result
@@ -407,6 +406,7 @@ class ProcessGroupModel extends WlModelAbstract
   public $k_login_activity_purchase;
 
   /**
+   * The installment template primary key.
    * `null` to not use installment template.
    *
    * @post post

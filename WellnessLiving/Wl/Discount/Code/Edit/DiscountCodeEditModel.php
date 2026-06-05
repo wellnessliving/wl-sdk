@@ -24,7 +24,7 @@ class DiscountCodeEditModel extends WlModelAbstract
    *     <p>Special Notes:</p>
    *     <ul>
    *       <li>Zero means that all elements of this type are available.</li>
-   *       <li>For `id_purchase_item`={@link WlPurchaseItemSid::CLASS_PERIOD} we store {@link \RsClassSql}.`k_class` in the `k_id` field.</li>
+   *       <li>For `id_purchase_item`={@link WlPurchaseItemSid::CLASS_PERIOD} we store lass` in the `k_id` field.</li>
    *     </ul>
    *   </dd>
    *   <dt>string <var>text_title</var></dt>
@@ -41,7 +41,7 @@ class DiscountCodeEditModel extends WlModelAbstract
    *
    * @get result
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_login_type = [];
 
@@ -50,7 +50,7 @@ class DiscountCodeEditModel extends WlModelAbstract
    *
    * @get result
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_member_group = [];
 
@@ -141,6 +141,8 @@ class DiscountCodeEditModel extends WlModelAbstract
    * <tt>true</tt> means discount code can reduce price of the gift cards.
    * <tt>false</tt> means discount code cannot reduce price of the gift cards.
    *
+   * If {@link DiscountCodeEditModel::$is_purchase_all} is <tt>true</tt> this fields does not matter.
+   *
    * @get result
    * @post post
    * @var bool
@@ -221,7 +223,7 @@ class DiscountCodeEditModel extends WlModelAbstract
    * List of product and purchase options that are effected with this discount code.
    * Each element has the next format: <var>id_purchase_item</var>:<var>k_id</var>, where <tt>id_purchase_item</tt> -
    * one of {@link WlPurchaseItemSid}, <tt>k_id</tt> is key of certain purchase item.
-   *
+   * 
    * @get result
    * @post post
    * @var string

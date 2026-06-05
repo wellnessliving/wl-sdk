@@ -5,25 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Sources of system notes.
  *
- * <h2>How to add a new source of system notes</h2>
- * <ol>
- *   <li>Add a constant to the {@link WlProfileNoteSid} class.</li>
- *   <li>
- *
- *     The class name should be compatible with the constant name.
- *     For example, for the <tt>A_B_C</tt> constant, the following classes will be compatible (in descending order of priority):
- *     <ol>
- *      <li><tt>RsABCNote</tt></li>
- *      <li><tt>\Wl\A\B\CNote</tt></li>
- *      <li><tt>\Wl\A\B\C\Note</tt></li>
- *      <li><tt>\Wl\A\B\C\CNote</tt></li>
- *     </ol>
- *     Also, you can set the class name in see tag of the constant's documentation.
- *     Only one requirement is: the class should exist and path to it should be correct, as an example see {@link WlProfileNoteSid::DOORACCESS_BRIVO_INVITATION_BRIVOINVITATIONPROFILE}.
- *   </li>
- * </ol>
- *
- * Last used ID: 12.
+ * * Last used ID: 12.
  */
 abstract class WlProfileNoteSid
 {

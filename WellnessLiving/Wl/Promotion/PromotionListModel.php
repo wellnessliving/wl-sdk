@@ -21,7 +21,7 @@ class PromotionListModel extends WlModelAbstract
    *   <dt>bool <var>is_active</var></dt>
    *   <dd>Whether the promotion is active.</dd>
    *   <dt>string <var>k_promotion</var></dt>
-   *   <dd>The key of the promotion.</dd>
+   *   <dd>The key of the promotion. 
    *   <dt>string <var>text_title</var></dt>
    *   <dd>The title of the promotion.</dd>
    * </dl>

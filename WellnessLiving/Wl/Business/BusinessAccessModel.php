@@ -25,7 +25,7 @@ class BusinessAccessModel extends WlModelAbstract
    *   <dt>int <var>id_region</var></dt>
    *   <dd>The business region. One of the {@link WlRegionSid} constants. This will be `null` if no regions are currently set.</dd>
    *   <dt>string <var>k_business</var></dt>
-   *   <dd>The business key.</dd>
+   *   <dd>The business key. 
    *   <dt>string <var>text_office_address</var></dt>
    *   <dd>The business address.</dd>
    *   <dt>string <var>text_title</var></dt>

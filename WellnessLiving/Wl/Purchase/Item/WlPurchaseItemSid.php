@@ -28,8 +28,7 @@ abstract class WlPurchaseItemSid
    *
    * Key of appointment.
    *
-   * For old purchases "appointment" may also be a bookable asset without appointment service.
-   *
+   * 
    * A purchased item that is created during the online booking process {@link WlPurchaseItemSid::SERVICE}.
    */
   const APPOINTMENT = 8;
@@ -40,13 +39,13 @@ abstract class WlPurchaseItemSid
    * This purchase created when client books a single appointment reservation with deposit amount,
    * to do so appointment should be managed with deposit.
    *
-   * Key of a service. Or key of an appointment.
-   */
+   * /
   const APPOINTMENT_DEPOSIT = 18;
 
   /**
    * Tips for the appointment.
    *
+   * 
    * A purchased item that is created during the online booking process {@link WlPurchaseItemSid::SERVICE}.
    */
   const APPOINTMENT_TIP = 22;
@@ -69,8 +68,6 @@ abstract class WlPurchaseItemSid
 
   /**
    * Single classes.
-   *
-   * Key of a class period.
    */
   const CLASS_PERIOD = 2;
 
@@ -87,15 +84,13 @@ abstract class WlPurchaseItemSid
   /**
    * Gift Cards.
    *
-   * Key of a coupon.
-   */
+   * /
   const COUPON = 10;
 
   /**
    * Events and enrollments. Client can not book only one class, he needs to book the whole enrollment.
    *
-   * Key of a class.
-   */
+   * /
   const ENROLLMENT = 4;
 
   /**
@@ -104,8 +99,7 @@ abstract class WlPurchaseItemSid
    * This purchase created when client books an enrollment reservation with deposit amount,
    * to do so enrollment should be managed with deposit.
    *
-   *  Key of a class.
-   */
+   * /
   const ENROLLMENT_DEPOSIT = 19;
 
   /**
@@ -113,8 +107,7 @@ abstract class WlPurchaseItemSid
    *
    * This purchase created when client books an enrollment reservation with early bird price.
    *
-   * Key of a class.
-   */
+   * /
   const ENROLLMENT_DISCOUNT = 21;
 
   /**
@@ -124,27 +117,18 @@ abstract class WlPurchaseItemSid
 
   /**
    * Recurrent payments.
-   *
-   * Key of a purchased promotion.
    */
   const MEMBERSHIP = 3;
 
   /**
    * Products.
-   *
-   * Key of a shop product option.
-   *
-   * For old purchases `k_id` may also be shop product key.
    */
   const PRODUCT = 9;
 
   /**
    * Promotions.
    *
-   * Key of a promotion.
-   *
-   * For old purchases `k_id` may also be login promotion key.
-   */
+   * /
   const PROMOTION = 1;
 
   /**
@@ -154,22 +138,16 @@ abstract class WlPurchaseItemSid
 
   /**
    * A purchase to renew a promotion.
-   *
-   * Key of a login promotion.
    */
   const PROMOTION_RENEW = 12;
 
   /**
    * A purchase to book an asset.
-   *
-   * Key of a resource.
    */
   const RESOURCE = 15;
 
   /**
    * A purchase to book a deposit asset.
-   *
-   * Key of a resource.
    */
   const RESOURCE_DEPOSIT = 20;
 
@@ -178,8 +156,7 @@ abstract class WlPurchaseItemSid
    *
    * This purchase item is created during the online booking process.
    *
-   * Key of a service.
-   *
+   * 
    * Purchase that is created when a staff adds payment for an appointment at POS {@link WlPurchaseItemSid::APPOINTMENT}.
    */
   const SERVICE = 6;

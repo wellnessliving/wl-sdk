@@ -2,11 +2,8 @@
 
 namespace WellnessLiving\Wl\Business\Config;
 
-use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Business\Policy\BlameSid;
-use WellnessLiving\Wl\Business\Policy\ChargeSid;
-use WellnessLiving\Wl\WlServiceSid;
+use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
 
 /**
  * Manages business configurations for clients, bookings, payments, and related things.
@@ -17,61 +14,17 @@ class BusinessConfigModel extends WlModelAbstract
    * All business policies connected to clients and bookings.
    *
    * <dl>
-   *   <dt>array <var>a_family_relation</var></dt>
+   *   <dt>string[] <var>a_family_relation</var></dt>
    *   <dd>
    *      List of allowed relation types specific to a given business.
-   *
-   *   </dd>
-   *   <dt>array <var>a_wait_service</var></dt>
-   *   <dd>The keys are listed as IDs from {@link WlServiceSid}, and values are flags outlining whether wait listing is allowed.</dd>
-   *   <dt>int <var>i_book_before</var></dt>
-   *   <dd>The minimum hours|days|months before a class can be booked.</dd>
-   *   <dt>int <var>i_book_future</var></dt>
-   *   <dd>The maximum hours|days|months after a class can be booked.</dd>
-   *   <dt>int <var>i_cancel</var></dt>
-   *   <dd>The minimum hours|days|months before a class can be canceled without penalty.</dd>
-   *   <dt>int <var>i_promote</var></dt>
-   *   <dd>The minimum hours|days|months before a class can be promoted from a wait list.</dd>
-   *   <dt>int <var>i_reattempt_count</var></dt>
-   *   <dd>The number of failed auto-payment reattempts.</dd>
-   *   <dt>int <var>id_book_before</var></dt>
-   *   <dd>The hours|days|months from {@link ADurationSid}.</dd>
-   *   <dt>int <var>id_book_future</var></dt>
-   *   <dd>The hours|days|months from {@link ADurationSid}.</dd>
-   *   <dt>int <var>id_cancel</var></dt>
-   *   <dd>The hours|days|months from {@link ADurationSid}.</dd>
-   *   <dt>int <var>id_promote</var></dt>
-   *   <dd>The hours|days|months from {@link ADurationSid}.</dd>
-   *   <dt>bool <var>is_book_inside_active_pay_period</var></dt>
+   *      Key is ID. One of {@link WlFamilyRelationSid} constant.
+   *      Value is SID.
+   *         </dd>
+   *   <dt>int[] <var>a_family_relation_login_allow</var></dt>
    *   <dd>
-   *     `true` - clients with Purchase Options are only allowed to book sessions within their current paid period.<br>
-   *     `false` - clients with Purchase Options are only allowed to book sessions during the Purchase Option's duration.
+   *      List of allowed relation types specific to a given business.
+   *      Each value constant from {@link WlFamilyRelationSid} class.
    *   </dd>
-   *   <dt>int <var>is_disable_promotion</var></dt>
-   *   <dd>
-   *     If `true`, a client's automatic payment fails, their account shouldn't be debited, and their Purchase Option becomes inactive.
-   *     Otherwise, this will be `false` (the default value).
-   *   </dd>
-   *   <dt>bool <var>is_enable_payment_penalty</var></dt>
-   *   <dd>Determines whether to charge a penalty after the final auto-payment attempt.</dd>
-   *   <dt>bool <var>is_enable_payment_reattempt</var></dt>
-   *   <dd>Determines whether to reattempt failed auto-payments.</dd>
-   *   <dt>bool <var>is_enable_staff_ip_restriction</var></dt>
-   *   <dd>Determines whether to restrict which IP addresses staff can login from.</dd>
-   *   <dt>int <var>is_prevent_booking</var></dt>
-   *   <dd>If `true`, booking for a client with negative balance is disabled. Otherwise, this will be `false` (the default value).</dd>
-   *   <dt>bool <var>is_staff_restrict</var></dt>
-   *   <dd>If true, clients can't choose a provider in the appointment wizard. Otherwise, this will be `false`.</dd>
-   *   <dt>bool <var>is_wait</var></dt>
-   *   <dd>Determines whether to enable or disable the wait list.</dd>
-   *   <dt>int <var>k_currency</var></dt>
-   *   <dd>The currency.</dd>
-   *   <dt>int <var>k_timezone</var></dt>
-   *   <dd>The time zone.</dd>
-   *   <dt>string <var>m_payment_penalty</var></dt>
-   *   <dd>The penalty amount to charge after the final auto-payment attempt.</dd>
-   *   <dt>string <var>url_custom</var></dt>
-   *   <dd>The custom URL from Business URLs.</dd>
    * </dl>
    *
    * @get result
@@ -80,30 +33,7 @@ class BusinessConfigModel extends WlModelAbstract
   public $a_business_policy;
 
   /**
-   * A list of business penalties. Each element contains:
-   * <dl>
-   *   <dt>string[] <var>a_class_period</var></dt><dd>List of class period keys.</dd>
-   *   <dt>string[] <var>a_login_type</var></dt>
-   *   <dd>List of client type keys.
-   *     Empty array means all active login types at concrete business.
-   *   </dd>
-   *   <dt>string[] <var>a_resource</var></dt><dd>List of resources keys.</dd>
-   *   <dt>string[] <var>a_service</var></dt><dd>List of services keys.</dd>
-   *   <dt>int <var>i_blame</var></dt><dd>Number of blamed visits.</dd>
-   *   <dt>int <var>i_cancel_period</var></dt><dd>Count of days/weeks/months.</dd>
-   *   <dt>int <var>i_charge_measure</var></dt><dd>Count of applied penalty.</dd>
-   *   <dt>int <var>id_blame</var></dt><dd>One of {@link BlameSid} constants.</dd>
-   *   <dt>int <var>id_cancel_period</var></dt><dd>Duration ID. One of {@link ADurationSid} constants.</dd>
-   *   <dt>int <var>id_charge</var></dt><dd>One of {@link ChargeSid} constants.</dd>
-   *   <dt>int <var>id_charge_measure</var></dt><dd>Percent or money sign.</dd>
-   *   <dt>int <var>is_appointment_all</var></dt><dd> `1` if all classes are selected, `0` - otherwise.</dd>
-   *   <dt>int <var>is_class_all</var></dt><dd> `1` if all classes are selected, `0` - otherwise.</dd>
-   *   <dt>int <var>is_enable_cancel_charge</var></dt><dd><tt>true</tt> if promotion penalties is enable, <tt>false</tt> otherwise.</dd>
-   *   <dt>int <var>is_event_all</var></dt><dd> `1` if all events are selected, `0` - otherwise.</dd>
-   *   <dt>int <var>is_login_type_all</var></dt><dd> `1` if all login types are selected, `0` - otherwise.</dd>
-   *   <dt>int <var>is_resource_all</var></dt><dd> `1` if all resources are selected, `0` - otherwise.</dd>
-   *   <dt>int <var>is_service_all</var></dt><dd> `1` if all services are selected, `0` - otherwise.</dd>
-   * </dl>
+   * A list of business penalties.
    *
    * @get result
    * @var array

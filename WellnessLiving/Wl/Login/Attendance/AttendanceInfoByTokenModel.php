@@ -60,8 +60,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    *   <dd>The sale item type, one of the {@link WlSaleSid} constants.
    *   This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".</dd>
    *   <dt>string? <var>k_id</var></dt>
-   *   <dd>The default Purchase Option key.
-   *   This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".</dd>
+   *   <dd>The default Purchase Option key.    This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".</dd>
    *   <dt>bool <var>is_single_default</var></dt>
    *   <dd>If the default Purchase Option is set to "Drop-in rate" then the value will be `true`, `false` otherwise.</dd>
    * </dl>
@@ -88,7 +87,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    *   <dd>
    *     List of clients who occupy assets of class.
    *     It is a double nesting array.
-   *     Keys - primary keys of assets. Sub keys - asset index.
+   *     Keys - keys - asset index.
    *     Values - sub array with keys:
    *     <dl><dt>string <var>text_client</var></dt><dd>User's name.</dd>
    *     <dt>string <var>uid</var></dt><dd>User's primary key.</dd></dl>
@@ -97,14 +96,12 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    *     string[] <var>a_resource_available</var>
    *   </dt>
    *   <dd>
-   *     Key of asset.
-   *   </dd>
+   *     Key of asset.    </dd>
    *   <dt>
    *     string <var>k_resource_layout</var>
    *   </dt>
    *   <dd>
-   *     Key of layout.
-   *   </dd>
+   *     Key of layout.    </dd>
    *   <dt>
    *     string <var>text_resource_type</var>
    *   </dt>
@@ -157,8 +154,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    *     string <var>uid_staff</var>
    *   </dt>
    *   <dd>
-   *     Staff user key.
-   *   </dd>
+   *     Staff user key.    </dd>
    *   <dt>
    *     string <var>html_firstname</var>
    *   </dt>
@@ -286,7 +282,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   public $k_business = '0';
 
   /**
-   * Not empty if service is class or event reservation.
+   * Class identifier. Not empty if service is class or event reservation.
    *
    * @get result
    * @var string
@@ -310,8 +306,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   public $k_location = null;
 
   /**
-   * Resource identifier.
-   * Not empty if service is asset reservation.
+   * Resource identifier. Not empty if service is asset reservation.
    *
    * @get result
    * @var string
@@ -319,8 +314,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   public $k_resource = null;
 
   /**
-   * Service identifier.
-   * Not empty if service is appointment reservation.
+   * Service identifier. Not empty if service is appointment reservation.
    *
    * @get result
    * @var string

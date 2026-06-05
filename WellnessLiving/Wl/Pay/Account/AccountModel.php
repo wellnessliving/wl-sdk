@@ -25,20 +25,18 @@ class AccountModel extends WlModelAbstract
    *     string <var>k_currency</var>
    *   </dt>
    *   <dd>
-   *     Key of account currency.
-   *   </dd>
+   *     Key of account currency.    </dd>
    *   <dt>
    *     string|null <var>k_pay_account</var>
    *   </dt>
    *   <dd>
-   *     ID of payment account. <tt>null</tt> if this is a user account based on system payment method.
+   *     ID of payment account. null</tt> if this is a user account based on system payment method.
    *   </dd>
    *   <dt>
    *     string|null <var>k_pay_method</var>
    *   </dt>
    *   <dd>
-   *     ID of custom payment method. <tt>null</tt> if this is a user account based on system payment method.
-   *   </dd>
+   *     ID of custom payment method. <tt>null</tt> if this is a user account based on system payment method.    </dd>
    *   <dt>
    *     string <var>m_rest</var>
    *   </dt>

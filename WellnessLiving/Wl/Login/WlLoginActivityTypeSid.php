@@ -134,18 +134,39 @@ abstract class WlLoginActivityTypeSid
    */
   const FACEBOOK_DISCONNECT = 19;
 
+  /**
+   * Client added a class to favorites.
+   */
   const FAVORITE_ADD_CLASS = 4;
 
+  /**
+   * Client added a location to favorites.
+   */
   const FAVORITE_ADD_LOCATION = 5;
 
+  /**
+   * Client added a staff member to favorites.
+   */
   const FAVORITE_ADD_STAFF = 6;
 
+  /**
+   * Client removed a class from favorites.
+   */
   const FAVORITE_REMOVE_CLASS = 7;
 
+  /**
+   * Client removed a location from favorites.
+   */
   const FAVORITE_REMOVE_LOCATION = 8;
 
+  /**
+   * Client removed a staff member from favorites.
+   */
   const FAVORITE_REMOVE_STAFF = 9;
 
+  /**
+   * Client added a friend.
+   */
   const FRIEND_ADD = 10;
 
   /**
@@ -153,6 +174,9 @@ abstract class WlLoginActivityTypeSid
    */
   const GYM_VISIT = 32;
 
+  /**
+   * Client sent an invite.
+   */
   const INVITE_SEND = 14;
 
   /**
@@ -219,6 +243,9 @@ abstract class WlLoginActivityTypeSid
    */
   const REGISTRATION = 21;
 
+  /**
+   * Client wrote a review.
+   */
   const REVIEW = 11;
 
   /**

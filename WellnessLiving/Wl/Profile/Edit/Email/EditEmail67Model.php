@@ -21,7 +21,7 @@ class EditEmail67Model extends WlModelAbstract
    * List of business keys where a user is already a member.
    *
    * @get result
-   * @var array
+   * @var string[]
    */
   public $a_business_member_key = [];
 

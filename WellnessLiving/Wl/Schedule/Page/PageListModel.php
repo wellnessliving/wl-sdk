@@ -21,14 +21,12 @@ class PageListModel extends WlModelAbstract
    *   <dt>string <var>k_business</var></dt>
    *   <dd>
    *     Key of the business in which this visit was made.
-   *
-   *   </dd>
+   *        </dd>
    *   <dt>
    *     string <var>k_visit</var>
    *   </dt>
    *   <dd>
-   *     Key of a book/visit.
-   *   </dd>
+   *     Key of a book/visit.    </dd>
    * </dl>
    *
    * @get result

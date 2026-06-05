@@ -22,13 +22,11 @@ class ListModel extends WlModelAbstract
    *
    *   <dt>string[] <var>a_class_tab</var></dt>
    *   <dd>
-   *     List of class book now tabs, where this class is presented. Each element is primary key from {@link \Wl\Classes\Tab\Sql\ClassTab\Sql}
-   *      or `null` if class is presented in default system tab Classes. Events can also be added in class tabs.
+   *     List of class book now tabs, where this class is presented. Each element is       or `null` if class is presented in default system tab Classes. Events can also be added in class tabs.
    *   </dd>
    *   <dt>string[] <var>a_event_tab</var></dt>
    *   <dd>
-   *     List of event book now tabs, where this event is presented. Each element is primary key from {@link \Wl\Classes\Tab\Sql\ClassTab\Sql}
-   *       or `null` if event is presented in default system tab Enrollments. Classes cannot be added in event tabs.
+   *     List of event book now tabs, where this event is presented. Each element is        or `null` if event is presented in default system tab Enrollments. Classes cannot be added in event tabs.
    *   </dd>`
    *   <dt>string <var>dl_end</var></dt>
    *   <dd>
@@ -61,14 +59,12 @@ class ListModel extends WlModelAbstract
    *     string <var>k_class</var>
    *   </dt>
    *   <dd>
-   *
-   *   </dd>
+   *     Class/event identifier.    </dd>
    *   <dt>
    *     string <var>k_enrollment_block</var>
    *   </dt>
    *   <dd>
-   *
-   *   </dd>
+   *     Event Block ID.    </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
@@ -160,6 +156,8 @@ class ListModel extends WlModelAbstract
   public $is_franchise = false;
 
   /**
+   * Business key.
+   *
    * @get get
    * @var string
    */

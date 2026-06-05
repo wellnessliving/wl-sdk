@@ -15,7 +15,7 @@ class InventoryCountModel extends WlModelAbstract
    *
    * @get get
    * @post get
-   * @var array
+   * @var array<string, string>
    */
   public $a_note = [];
 
@@ -67,7 +67,7 @@ class InventoryCountModel extends WlModelAbstract
    *
    * @get get
    * @post get
-   * @var array
+   * @var array<string, int>
    */
   public $a_quantity = [];
 

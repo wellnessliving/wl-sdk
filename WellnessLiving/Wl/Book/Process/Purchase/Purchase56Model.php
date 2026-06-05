@@ -31,7 +31,7 @@ class Purchase56Model extends WlModelAbstract
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.</dd>
    *   <dt>string <var>k_login_prize</var></dt>
-   *   <dd>Key of login prize.</dd>
+   *   <dd>Key of login prize. 
    *   <dt>string <var>s_value</var></dt>
    *   <dd>The unique identifier.</dd>
    *   <dt>string <var>text_title</var></dt>
@@ -112,7 +112,7 @@ class Purchase56Model extends WlModelAbstract
    *   <dt>bool <var>is_shared</var></dt>
    *   <dd>`true` if the promotion is shared with the client, `false` if the client is owner of the promotion.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
-   *   <dd>The login promotion key.</dd>
+   *   <dd>The login promotion key. 
    *   <dt>string <var>s_class_include</var></dt>
    *   <dd>The list of services provided by this Purchase Option.</dd>
    *   <dt>string <var>s_description</var></dt>
@@ -156,9 +156,9 @@ class Purchase56Model extends WlModelAbstract
    *       This number should not include free or waitlist unpaid sessions.
    *   </dd>
    *   <dt>string `k_login_promotion`</dt>
-   *   <dd>Selected purchase option.</dd>
+   *   <dd>Selected purchase option. 
    *   <dt>string `uid`</dt>
-   *   <dd>UID of the previous user.</dd>
+   *   <dd>UID of the previous user. 
    * </dl>
    *
    * @get get
@@ -180,7 +180,7 @@ class Purchase56Model extends WlModelAbstract
    *     <dt>string <var>k_currency</var></dt>
    *     <dd>The payment currency key.</dd>
    *     <dt>string <var>k_pay_installment_template</var></dt>
-   *     <dd>The key of the installment plan template.</dd>
+   *     <dd>The key of the installment plan template. 
    *     <dt>string <var>m_amount</var></dt>
    *     <dd>The amount of the installment plan.</dd>
    *     <dt>string <var>s_duration</var></dt>
@@ -293,7 +293,7 @@ class Purchase56Model extends WlModelAbstract
    *     Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
    *   </dd>
    *   <dt>int <var>id_period</var></dt>
-   *   <dd>Deprecated, use `id_duration` instead!</dd>
+   *   <dd>Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.</dd>
    *   <dt>int <var>id_repeat_end</var></dt>
    *   <dd>Possible ways to stop repeatable events.</dd>
    * </dl>
@@ -320,7 +320,7 @@ class Purchase56Model extends WlModelAbstract
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.</dd>
    *   <dt>string <var>k_reward_prize</var></dt>
-   *   <dd>Key of redeemable prize.</dd>
+   *   <dd>Key of redeemable prize. 
    *   <dt>string <var>s_value</var></dt>
    *   <dd>The unique identifier.</dd>
    *   <dt>string <var>text_title</var></dt>
@@ -335,8 +335,7 @@ class Purchase56Model extends WlModelAbstract
   /**
    * The list of sessions being booked.
    *
-   * Keys refer to class period keys.
-   * And values refer to the List of dates/times when the session occurred.
+   * Keys refer to class period keys, values refer to the list of dates/times when the session occurred.
    *
    * @get get
    * @var array
@@ -350,7 +349,7 @@ class Purchase56Model extends WlModelAbstract
    *    <dt>int <var>i_remain</var></dt>
    *    <dd>Number of remaining visits on session pass.</dd>
    *    <dt>string <var>k_session_pass</var></dt>
-   *    <dd>Session pass key.</dd>
+   *    <dd>Session pass key. 
    *    <dt>int <var>id_purchase_item</var></dt>
    *    <dd>Type of the session pass purchase. One of {@link WlPurchaseItemSid} constants.</dd>
    *    <dt>string <var>s_title</var></dt>
@@ -505,9 +504,9 @@ class Purchase56Model extends WlModelAbstract
    *       This number should not include free or waitlist unpaid sessions.
    *   </dd>
    *   <dt>string `k_login_promotion`</dt>
-   *   <dd>Selected purchase option.</dd>
+   *   <dd>Selected purchase option. 
    *   <dt>string `uid`</dt>
-   *   <dd>UID of the previous user.</dd>
+   *   <dd>UID of the previous user. 
    * </dl>
    *
    * @get get
