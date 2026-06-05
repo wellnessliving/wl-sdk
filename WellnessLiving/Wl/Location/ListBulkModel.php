@@ -20,57 +20,47 @@ class ListBulkModel extends WlModelAbstract
    *
    * Keys refer to location primary keys. Values refer to sub-arrays with the next keys:
    * <dl>
-   *   <dt>
-   *     float <var>f_latitude</var>
-   *   </dt>
+   *   <dt>float `f_latitude`</dt>
    *   <dd>
    *     The latitude coordinate.
    *   </dd>
-   *   <dt>
-   *     float <var>f_longitude</var>
-   *   </dt>
+   *
+   *   <dt>float `f_longitude`</dt>
    *   <dd>
    *     The longitude coordinate.
    *   </dd>
-   *   <dt>
-   *     float <var>f_rate</var>
-   *   </dt>
+   *
+   *   <dt>float `f_rate`</dt>
    *   <dd>
    *     The location rate.
    *   </dd>
-   *   <dt>
-   *     int <var>i_order</var>
-   *   </dt>
+   *
+   *   <dt>int `i_order`</dt>
    *   <dd>
    *     The order number.
    *   </dd>
-   *   <dt>
-   *     string <var>k_business</var>
-   *   </dt>
+   *
+   *   <dt>string `k_business`</dt>
    *   <dd>
    *     The business's primary key.
    *   </dd>
-   *   <dt>
-   *     string <var>k_location</var>
-   *   </dt>
+   *
+   *   <dt>string `k_location`</dt>
    *   <dd>
    *     The location's primary key.
    *   </dd>
-   *   <dt>
-   *     string <var>s_title</var>
-   *   </dt>
+   *
+   *   <dt>string `s_title`</dt>
    *   <dd>
    *     The location title.
    *   </dd>
-   *   <dt>
-   *     string <var>text_address</var>
-   *   </dt>
+   *
+   *   <dt>string `text_address`</dt>
    *   <dd>
    *     The full location address.
    *   </dd>
-   *   <dt>
-   *     string [<var>url_logo</var>]
-   *   </dt>
+   *
+   *   <dt>string [`url_logo`]</dt>
    *   <dd>
    *     The location logo.
    *   </dd>

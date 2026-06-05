@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Payment;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
+use WellnessLiving\Wl\Classes\Tab\TabSid;
 use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\Service\ServicePriceSid;
@@ -22,7 +23,38 @@ use WellnessLiving\Wl\Service\ServicePriceSid;
 class PaymentModel extends WlModelAbstract
 {
   /**
-   * Information detailing an appointment booking.
+   * Information detailing an appointment booking: <dl>
+   *   <dt>array `a_product`</dt>
+   *   <dd>Add-on list. Keys are add-on option keys, values are quantities.</dd>
+   *   <dt>string `dl_client_prorate`</dt>
+   *   <dd>Client prorate date. Used when the purchased promotion is prorated.</dd>
+   *   <dt>int `id_class_tab`</dt>
+   *   <dd>The "Book now" tab. One of {@link TabSid} constants.</dd>
+   *   <dt>bool `is_pay_later`</dt>
+   *   <dd>`true` if the client wants to pay upon their visit, `false` if paying now.</dd>
+   *   <dt>bool `is_purchase_previous`</dt>
+   *   <dd>`true` if a previously purchased option is used for this booking.</dd>
+   *   <dt>bool `is_wait_list_unpaid`</dt>
+   *   <dd>`true` if the client is placed on a wait list without paying.</dd>
+   *   <dt>int `i_duration`</dt>
+   *   <dd>Asset booking duration in minutes. Used only for asset bookings.</dd>
+   *   <dt>string `k_login_prize`</dt>
+   *   <dd>Login prize key used to pay for the booking. Empty if no prize is used.</dd>
+   *   <dt>string `k_login_promotion`</dt>
+   *   <dd>Key of an already-purchased promotion used for this booking. Empty if not applicable.</dd>
+   *   <dt>string `k_resource`</dt>
+   *   <dd>Asset key. Used only for asset bookings.</dd>
+   *   <dt>string `k_reward_prize`</dt>
+   *   <dd>Reward prize key used to redeem a free item. Empty if not applicable.</dd>
+   *   <dt>string `k_service`</dt>
+   *   <dd>Service key. Used only for appointment bookings.</dd>
+   *   <dt>string `k_session_pass`</dt>
+   *   <dd>Drop-in key. Used when booking via a drop-in pass.</dd>
+   *   <dt>string `m_tip_appointment`</dt>
+   *   <dd>Tip amount for the appointment.</dd>
+   *   <dt>string `s_signature`</dt>
+   *   <dd>Client signature for a contract. Required when the purchase option has a contract.</dd>
+   * </dl>
    *
    * @get get
    * @post get
@@ -239,11 +271,9 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * List of quiz response keys.
-   * Key is quiz key.
-   * Value is quiz response key.
-   *
+   * Keys are quiz keys.  Values are quiz response keys. 
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_quiz_response = [];
 

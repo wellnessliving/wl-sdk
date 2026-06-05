@@ -87,10 +87,30 @@ class PaymentModel extends WlModelAbstract
    *         <var>k_wellness_program</var> must be passed along with this array. See the description below.
    *         <dl>
    *           <dt>array `a_account`</dt>
-   *           <dd>See {@link EnrollmentFieldListModel::$a_account} for a full description.</dd>
+   *           <dd>
+   *             The list of reimbursement account field values.
+   *             Corresponds to the `a_account` list in {@link EnrollmentFieldListModel::$a_field_list}.
+   *             Each element: <dl>
+   *               <dt>string `k_field`</dt>
+   *               <dd>The field key identifying the account field.</dd>
+   *
+   *               <dt>string `text_value`</dt>
+   *               <dd>The submitted value for the field.</dd>
+   *             </dl>
+   *           </dd>
    *
    *           <dt>array `a_field`</dt>
-   *           <dd>See {@link EnrollmentFieldListModel::$a_field} for a full description.</dd>
+   *           <dd>
+   *             The list of wellness program field values.
+   *             Corresponds to the `a_field` list in {@link EnrollmentFieldListModel::$a_field_list}.
+   *             Each element: <dl>
+   *               <dt>string `k_field`</dt>
+   *               <dd>The field key identifying the program field.</dd>
+   *
+   *               <dt>string `text_value`</dt>
+   *               <dd>The submitted value for the field.</dd>
+   *             </dl>
+   *           </dd>
    *         </dl>
    *         It's recommended to validate the fields using the POST method of the {@link EnrollmentFieldListModel} model.
    *       </dd>

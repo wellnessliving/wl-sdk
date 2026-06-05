@@ -11,7 +11,48 @@ use WellnessLiving\WlModelAbstract;
 class AnnouncementListModel extends WlModelAbstract
 {
   /**
-   * List of announcements.
+   * List of announcements. Each element has the following keys: <dl>
+   *   <dt>string[] `a_location`</dt>
+   *   <dd>Location keys where the announcement is published. 
+   *   <dt>string `dtl_create`</dt>
+   *   <dd>Creation date in local MySQL format.</dd>
+   *   <dt>string|null `dtl_publish`</dt>
+   *   <dd>Local date and time the announcement is published in MySQL format. `null` if not set.</dd>
+   *   <dt>string|null `dtl_unpublish`</dt>
+   *   <dd>Local date and time the announcement is unpublished in MySQL format. `null` if not set.</dd>
+   *   <dt>string `html_description`</dt>
+   *   <dd>Announcement description as HTML.</dd>
+   *   <dt>string `html_description_clear`</dt>
+   *   <dd>Announcement description text stripped of HTML tags.</dd>
+   *   <dt>int|null `i_order`</dt>
+   *   <dd>Sort order. `null` if the announcement is not pinned.</dd>
+   *   <dt>int `id_status`</dt>
+   *   <dd>Announcement status ID.</dd>
+   *   <dt>bool `is_pin`</dt>
+   *   <dd>`true` if the announcement is pinned, `false` otherwise.</dd>
+   *   <dt>string `k_announcement`</dt>
+   *   <dd>Announcement key. 
+   *   <dt>string `k_business`</dt>
+   *   <dd>Business key. 
+   *   <dt>string `text_create_date`</dt>
+   *   <dd>Formatted creation date.</dd>
+   *   <dt>string `text_publish_date`</dt>
+   *   <dd>Formatted publish date.</dd>
+   *   <dt>string `text_publish_date_short`</dt>
+   *   <dd>Formatted publish date with month name but without day of week.</dd>
+   *   <dt>string `text_title`</dt>
+   *   <dd>Announcement title.</dd>
+   *   <dt>string `text_unpublish_date`</dt>
+   *   <dd>Formatted unpublish date.</dd>
+   *   <dt>string `uid_create`</dt>
+   *   <dd>Key of the user who created the announcement. 
+   *   <dt>string `url_detail`</dt>
+   *   <dd>URL of the announcement detail page.</dd>
+   *   <dt>string `url_image`</dt>
+   *   <dd>URL of the announcement image.</dd>
+   *   <dt>string `xml_description`</dt>
+   *   <dd>Announcement description as XML.</dd>
+   * </dl>
    *
    * @get result
    * @var array[]

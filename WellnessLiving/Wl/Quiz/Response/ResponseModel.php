@@ -96,7 +96,7 @@ class ResponseModel extends WlModelAbstract
   public $a_purchase_item = [];
 
   /**
-   * Data for Quick Buy.
+   * Data for Quick Buy. Empty array if this is not a Quick Buy session.
    *
    * @post post
    * @var array
@@ -122,6 +122,19 @@ class ResponseModel extends WlModelAbstract
 
   /**
    * Information about service if response connected to visit.
+   * Empty array if the response is not connected to a visit: <dl>
+   *   <dt>string `text_date`</dt>
+   *   <dd>Formatted visit date and time in the location's time zone.</dd>
+   *
+   *   <dt>string `text_location`</dt>
+   *   <dd>Location title.</dd>
+   *
+   *   <dt>string `text_service`</dt>
+   *   <dd>Service title.</dd>
+   *
+   *   <dt>string `text_staff_member`</dt>
+   *   <dd>Comma-separated list of full names of staff members conducting the visit.</dd>
+   * </dl>
    *
    * @get result
    * @var array

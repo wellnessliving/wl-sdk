@@ -12,8 +12,10 @@ class HolidayModel extends WlModelAbstract
   /**
    * A list of the location's closed day titles by location keys on the date {@link HolidayModel::$dl_work}.
    *
+   * Keys are location keys. Values are holiday title strings.
+   *
    * @get result
-   * @var array
+   * @var string[]
    */
   public $a_location_holiday;
 

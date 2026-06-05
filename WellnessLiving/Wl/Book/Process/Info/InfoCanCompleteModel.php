@@ -13,7 +13,8 @@ class InfoCanCompleteModel extends WlModelAbstract
    * A list of sessions of an event that can be booked together.
    *
    * This is the same as {@link InfoCanCompleteModel::$a_session_select_post}, but limited by query string
-   * length and might fail if the user is booking more than 50 sessions at once. Therefore, using the POST method is preferable.
+   * length and might fail if the user is booking more than 50 sessions at once.
+   * Therefore, using the POST method is preferable.
    *
    * @get get
    * @var array[]
@@ -26,11 +27,13 @@ class InfoCanCompleteModel extends WlModelAbstract
    *
    * Every element has the next structure:
    * <dl>
-   *   <dt>string <var>dt_date</var></dt>
+   *   <dt>string `dt_date`</dt>
    *   <dd>The date and time in MySQL format in GMT when the session starts.</dd>
-   *   <dt>bool <var>is_select</var></dt>
+   *
+   *   <dt>bool `is_select`</dt>
    *   <dd>`true` if this session should be booked, `false` otherwise.</dd>
-   *   <dt>string <var>k_class_period</var></dt>
+   *
+   *   <dt>string `k_class_period`</dt>
    *   <dd>The class period key. 
    * </dl>
    *

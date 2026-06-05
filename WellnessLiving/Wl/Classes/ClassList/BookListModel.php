@@ -13,56 +13,58 @@ class BookListModel extends WlModelAbstract
   /**
    * The class list. Every element has the following structure:
    * <dl>
-   *   <dt>array <var>a_class_tab</var></dt>
-   *   <dd>The list of tab keys for the class.</dd>
+   *   <dt>string[] `a_class_tab`</dt>
+   *   <dd>
+   *     The list of class tab keys for the class.
+   *        </dd>
    *
-   *   <dt>string[] <var>a_login_type</var></dt>
+   *   <dt>string[] `a_login_type`</dt>
    *   <dd>
    *     List of login types for current class.
    *        </dd>
    *
-   *   <dt>string[] <var>a_member_group</var></dt>
+   *   <dt>string[] `a_member_group`</dt>
    *   <dd>
    *     List of member groups for current class.
    *        </dd>
    *
-   *   <dt>string[] <var>a_url_book</var></dt>
+   *   <dt>string[] `a_url_book`</dt>
    *   <dd>The list of URL to book this class.</dd>
    *
-   *   <dt>string <var>dtu_book_date</var></dt>
+   *   <dt>string `dtu_book_date`</dt>
    *   <dd>The book date of an event in UTC date/time format. Can be empty string if user cannot book the event.</dd>
    *
-   *   <dt>int <var>i_capacity</var></dt>
+   *   <dt>int `i_capacity`</dt>
    *   <dd>Class capacity.</dd>
    *
-   *   <dt>int <var>id_bookable</var></dt>
+   *   <dt>int `id_bookable`</dt>
    *   <dd>Bookable type ID. One of {@link BookableSid} constants.</dd>
    *
-   *   <dt>bool <var>is_active</var></dt>
+   *   <dt>bool `is_active`</dt>
    *   <dd>This will be `true` if the class is active. Otherwise, this will be `false`.</dd>
    *
-   *   <dt>bool <var>is_event</var></dt>
+   *   <dt>bool `is_event`</dt>
    *   <dd>This will be `true` for events. Otherwise, this will be `false` for classes.</dd>
    *
-   *   <dt>bool <var>is_online_private</var></dt>
+   *   <dt>bool `is_online_private`</dt>
    *   <dd>
    *     `true` means to show class only for clients who can book online,
    *     `false` means to show class for all clients.
    *   </dd>
    *
-   *   <dt>string <var>k_class</var></dt>
+   *   <dt>string `k_class`</dt>
    *   <dd>The class key. 
    *
-   *   <dt>string <var>k_enrollment_block</var></dt>
+   *   <dt>string `k_enrollment_block`</dt>
    *   <dd>The enrollment block key. 
    *
-   *   <dt>string <var>m_price_total</var></dt>
+   *   <dt>string `m_price_total`</dt>
    *   <dd>The total price for an event.</dd>
    *
-   *   <dt>string <var>text_description</var></dt>
+   *   <dt>string `text_description`</dt>
    *   <dd>The class description.</dd>
    *
-   *   <dt>string <var>text_title</var></dt>
+   *   <dt>string `text_title`</dt>
    *   <dd>The class name.</dd>
    * </dl>
    *

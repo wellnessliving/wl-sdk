@@ -40,54 +40,90 @@ class EnrollmentFieldListModel extends WlModelAbstract
   public $a_field = [];
 
   /**
-   * The partner field list.
-   * <dl>
-   *  <dt>array <var>a_account</var></dt>
-   *  <dd>
-   *    The list of reimbursement account fields.
-   *    If the program doesn't require reimbursement, this list will be empty.
-   *    The description of the list of fields is similar to the <var>a_field</var>.
-   *  </dd>
-   *  <dt>array <var>a_field</var></dt>
-   *  <dd>
-   *    The partner field info.
-   *    <dl>
-   *      <dt>array <var>a_config</var></dt>
-   *      <dd>
-   *        Additional information about the field.
-   *        <dl>
-   *          <dt>array <var>a_option</var></dt>
-   *          <dd>A set of options for the dropdown list. The key is the title and the value is the value of the list item.</dd>
-   *          <dt>string <var>text_type</var></dt>
-   *          <dd>The type of text field.</dd>
-   *        </dl>
-   *      </dd>
+   * The partner field list: <dl>
+   *   <dt>array[] `a_account`</dt>
+   *   <dd>
+   *     The list of reimbursement account fields.
+   *     If the program doesn't require reimbursement, this list will be empty.
+   *     Each element has the same structure as elements of `a_field`:
+   *     <dl>
+   *       <dt>array `a_config`</dt>
+   *       <dd>
+   *         Additional configuration for the field.
    *
-   *      <dt>int <var>i_length</var></dt>
-   *      <dd>The length of the field.</dd>
+   *         Empty array for other fields.
+   *       </dd>
    *
-   *      <dt>bool <var>is_disable</var></dt>
-   *      <dd>Determines whether this field is enabled.</dd>
+   *       <dt>int|null `i_length`</dt>
+   *       <dd>Maximum length of the field value. `null` if no limit.</dd>
    *
-   *      <dt>bool <var>is_required</var></dt>
-   *      <dd>Determines whether this field is required.</dd>
+   *       <dt>bool `is_disable`</dt>
+   *       <dd>`true` if the field is disabled and should not be shown.</dd>
    *
-   *      <dt>string <var>k_field</var></dt>
-   *      <dd>The field key.</dd>
+   *       <dt>bool `is_required`</dt>
+   *       <dd>`true` if the field is required.</dd>
    *
-   *      <dt>string <var>s_regular</var></dt>
-   *      <dd>The regular expression validation for the field.</dd>
+   *       <dt>string `k_field`</dt>
+   *       <dd>The field identifier key.</dd>
    *
-   *      <dt>string <var>text_display_name</var></dt>
-   *      <dd>The label text for the field.</dd>
+   *       <dt>string `s_regular`</dt>
+   *       <dd>Regular expression for client-side validation. Empty string if no validation pattern.</dd>
    *
-   *      <dt>string <var>text_error_message</var></dt>
-   *      <dd>The error message if the value in field isn't valid.</dd>
+   *       <dt>string `text_display_name`</dt>
+   *       <dd>The label text for the field displayed to the user.</dd>
    *
-   *      <dt>string <var>text_field_name</var></dt>
-   *      <dd>The name of the field.</dd>
-   *    </dl>
-   *  </dd>
+   *       <dt>string `text_error_message`</dt>
+   *       <dd>The error message to display if the field value is invalid.</dd>
+   *
+   *       <dt>string `text_field_name`</dt>
+   *       <dd>The internal name of the field.</dd>
+   *     </dl>
+   *   </dd>
+   *
+   *   <dt>array[] `a_field`</dt>
+   *   <dd>
+   *     The list of partner enrollment fields. Each element:
+   *     <dl>
+   *       <dt>array `a_config`</dt>
+   *       <dd>
+   *         Additional configuration for the field:
+   *         <dl>
+   *           <dt>array `a_option`</dt>
+   *           <dd>
+   *             Options for dropdown fields. Keys are display titles, values are option values.
+   *             Empty array if the field is not a dropdown.
+   *           </dd>
+   *
+   *           <dt>string `text_type`</dt>
+   *           <dd>The type of text input. Present only for text-type fields.</dd>
+   *         </dl>
+   *       </dd>
+   *
+   *       <dt>int|null `i_length`</dt>
+   *       <dd>Maximum length of the field value. `null` if no limit.</dd>
+   *
+   *       <dt>bool `is_disable`</dt>
+   *       <dd>`true` if the field is disabled and should not be shown.</dd>
+   *
+   *       <dt>bool `is_required`</dt>
+   *       <dd>`true` if the field is required.</dd>
+   *
+   *       <dt>string `k_field`</dt>
+   *       <dd>The field key. 
+   *
+   *       <dt>string `s_regular`</dt>
+   *       <dd>Regular expression for client-side validation. Empty string if no validation pattern.</dd>
+   *
+   *       <dt>string `text_display_name`</dt>
+   *       <dd>The label text for the field displayed to the user.</dd>
+   *
+   *       <dt>string `text_error_message`</dt>
+   *       <dd>The error message to display if the field value is invalid.</dd>
+   *
+   *       <dt>string `text_field_name`</dt>
+   *       <dd>The internal name of the field.</dd>
+   *     </dl>
+   *   </dd>
    * </dl>
    *
    * @get result

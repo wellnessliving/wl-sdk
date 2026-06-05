@@ -5,6 +5,8 @@ namespace WellnessLiving\Wl\Book\Process\Resource;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Resource\Image\ImageIconSid;
+use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
 
 /**
  * Selects assets for making a booking.
@@ -86,13 +88,14 @@ class ResourceModel extends WlModelAbstract
    * A list of asset categories which are available for specified session. Every element has next keys:
    * <dl>
    *   <dt>
-   *     array <var>a_client</var>
+   *     bool[][] <var>a_client</var>
    *   </dt>
    *   <dd>
    *     A list of clients who have already occupied assets for this session.
-   *     1st level keys - asset keys; 2nd level keys - asset number.
-   *     For example, if you want to check if 10th asset with key '125' is free,
-   *     you have to check if <tt>a_client['125']['10']</tt> is empty.
+   *     1st level keys are asset keys.      2nd level keys are asset index numbers (starting from 1).
+   *     Values are `true` if the asset spot is occupied.
+   *     For example, to check if asset spot 10 with key '125' is occupied,
+   *     check `a_client['125']['10']`.
    *   </dd>
    *   <dt>
    *     array[] <var>a_resource_list</var>
@@ -100,9 +103,7 @@ class ResourceModel extends WlModelAbstract
    *   <dd>
    *     A list of available assets. Every element has next keys:
    *     <dl>
-   *       <dt>
-   *           array `a_class_period`
-   *       </dt>
+   *       <dt>array `a_class_period`</dt>
    *       <dd>
    *           List of resources available for booking sessions.
    *           The field structure is `[k_class_period][dtu_session]['a_available']`.
@@ -112,7 +113,31 @@ class ResourceModel extends WlModelAbstract
    *         array <var>a_image</var>
    *       </dt>
    *       <dd>
-   *         Asset image data.        </dd>
+   *         Asset image data.
+   *                  <dl>
+   *           <dt>int [`i_angle`]</dt>
+   *           <dd>Angle of shape rotation. Set only when `sid_image` equals 'shape'.</dd>
+   *           <dt>int `i_height`</dt>
+   *           <dd>Height of the image in pixels.</dd>
+   *           <dt>int `i_width`</dt>
+   *           <dd>Width of the image in pixels.</dd>
+   *           <dt>bool `is_empty`</dt>
+   *           <dd>`true` if no image was uploaded, `false` otherwise.</dd>
+   *           <dt>string `sid_image`</dt>
+   *           <dd>Image kind.</dd>
+   *           <dt>string [`sid_image_icon`]</dt>
+   *           <dd>Icon name. One of {@link ImageIconSid} string constants.
+   *            Set only when `sid_image` equals 'icon'.</dd>
+   *           <dt>string [`sid_image_shape`]</dt>
+   *           <dd>
+   *             Shape name. One of {@link ImageShapeSid} string constants.
+   *             Set only when `sid_image` equals 'shape'.
+   *           </dd>
+   *
+   *           <dt>string `url`</dt>
+   *           <dd>Thumbnail image URL.</dd>
+   *         </dl>
+   *       </dd>
    *       <dt>
    *         int <var>i_index</var>
    *       </dt>
@@ -244,23 +269,21 @@ class ResourceModel extends WlModelAbstract
    * Only makes sense for session events.
    * Optional parameter for GET request: if not passed, all available sessions will be used.
    *
-   * Keys refer to class period keys, values refer to a list of the dates/times when the session occurred
-   *  (returned in MySQL format and in GMT).
+   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @get get
    * @post get
-   * @var array
+   * @var string[]
    */
   public $a_session = [];
 
   /**
    * The selected sessions on the wait list that are unpaid.
    *
-   * Keys refer to session IDs.
-   * And values refer to index arrays of dates/times when the session occurred (returned in MySQL format and in GMT).
+   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_session_wait_list_unpaid = [];
 

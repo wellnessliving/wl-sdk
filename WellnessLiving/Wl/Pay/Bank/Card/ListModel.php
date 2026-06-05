@@ -15,29 +15,37 @@ class ListModel extends WlModelAbstract
    * The array keys are the card `k_pay_bank` IDs.
    * Each element has the following keys:
    * <dl>
-   *   <dt>int <var>i_month</var></dt>
+   *   <dt>int `i_month`</dt>
    *   <dd>The month when the payment card expires, represented by a number (1=January and 12=December).</dd>
-   *   <dt>int <var>i_year</var></dt>
+   *
+   *   <dt>int `i_year`</dt>
    *   <dd>The last two digits of the year when the payment card expires.</dd>
-   *   <dt>int <var>id_card_system</var></dt>
+   *
+   *   <dt>int `id_card_system`</dt>
    *   <dd>The card system ID. This is one of the {@link ACardSystemSid} constants.</dd>
-   *   <dt>bool <var>is_default</var></dt>
+   *
+   *   <dt>bool `is_default`</dt>
    *   <dd>
    *     If `true`, then this card is the user default card.
    *     If `false`, then this isn't the user default card.
    *   </dd>
-   *   <dt>string <var>k_pay_address</var></dt>
+   *
+   *   <dt>string `k_pay_address`</dt>
    *   <dd>The payment address ID. This refers to a physical address associated with a payment card.</dd>
-   *   <dt>string <var>k_pay_bank</var></dt>
+   *
+   *   <dt>string `k_pay_bank`</dt>
    *   <dd>The payment method ID. Each payment card for each user will have its own ID.</dd>
-   *   <dt>string <var>text_name_card</var></dt>
+   *
+   *   <dt>string `text_name_card`</dt>
    *   <dd>
    *     The payment card descriptor. This is typically the company name and the last 4 digits of the card
    *     (for example, visa-5903).
    *   </dd>
-   *   <dt>string <var>text_name_holder</var></dt>
+   *
+   *   <dt>string `text_name_holder`</dt>
    *   <dd>The name of the card owner as it appears on the card.</dd>
-   *   <dt>string <var>text_number</var></dt>
+   *
+   *   <dt>string `text_number`</dt>
    *   <dd>
    *     A portion of the payment card number, used to identify the card.
    *     This is typically the last 4 digits of the card number.
@@ -51,10 +59,10 @@ class ListModel extends WlModelAbstract
 
   /**
    * List of bank cards.
-   * Duplicate of the {@link ListModel::$a_bank_card}.
+   * Duplicate of {@link ListModel::$a_bank_card} as a flat indexed array.
    *
    * @get result
-   * @var array
+   * @var array[]
    */
   public $a_list = [];
 

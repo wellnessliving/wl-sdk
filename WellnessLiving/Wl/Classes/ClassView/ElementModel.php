@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Classes\ClassView;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Business\Config\BusinessConfigModel;
 
 /**
  * Retrieves information about a class element.
@@ -70,10 +71,11 @@ class ElementModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    *
-   *   <dt>array <var>a_config</var></dt>
+   *   <dt>array|null `a_config`</dt>
    *   <dd>
-   *     Class-specific business policies.
-   *     This will be <tt>null</tt> in cases when the business policy is used.
+   *     Class-specific business policies overriding the business defaults.
+   *     Has the same structure as {@link BusinessConfigModel::$a_business_policy}.
+   *     `null` when the class uses the default business policy without overrides.
    *   </dd>
    *
    *   <dt>array[] <var>a_search_tag</var></dt>

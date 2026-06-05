@@ -16,9 +16,9 @@ class ApplicationResourceMaterialModel extends WlModelAbstract
    * Code version.
    *
    * @post post
-   * @var int
+   * @var string
    */
-  public $i_version = 1;
+  public $i_version = '1';
 
   /**
    * Application category in the store.
@@ -26,9 +26,9 @@ class ApplicationResourceMaterialModel extends WlModelAbstract
    * `0` if no category is selected.
    *
    * @post post
-   * @var int
+   * @var string
    */
-  public $id_category = 0;
+  public $id_category = '0';
 
   /**
    * Type of application update.

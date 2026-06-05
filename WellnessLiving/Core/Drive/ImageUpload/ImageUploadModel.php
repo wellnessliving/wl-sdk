@@ -27,7 +27,7 @@ class ImageUploadModel extends \WellnessLiving\Custom\Core\Drive\ImageUpload\Ima
   public $a_image;
 
   /**
-   * Information about the text for an empty image upload. See the PHP side for more information.
+   * Information about the text for an empty image upload.
    *
    * @get result
    * @put result

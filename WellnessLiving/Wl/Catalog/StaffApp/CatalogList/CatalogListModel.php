@@ -22,30 +22,35 @@ class CatalogListModel extends WlModelAbstract
    * Every element has the following fields:
    * <dl>
    *   <dt>
-   *     array <var>a_location</var>
+   *     string[] `a_location`
    *   </dt>
    *   <dd>
-   *     The list of locations where the current sale item is available.
-   *   </dd>
+   *     The list of location keys where the current sale item is available.
+   *     Each value is a location key.
+   *        </dd>
+   *
    *   <dt>
-   *     string[] <var>a_login_type</var>
+   *     string[] `a_login_type`
    *   </dt>
    *   <dd>
    *     The list of login types available to purchase the sale item.
    *     Empty list means that the sale item is available to all login types.
    *   </dd>
+   *
    *   <dt>
-   *     string[] <var>a_member_group</var>
+   *     string[] `a_member_group`
    *   </dt>
    *   <dd>
    *     The list of member groups available to purchase the sale item.
    *          Empty list means that the sale item is available to all member groups.
    *   </dd>
+   *
    *   <dt>
-   *     string[] <var>a_shop_category</var>
+   *     string[] `a_shop_category`
    *   </dt>
    *   <dd>
    *     A list of online store category keys.    </dd>
+   *
    *   <dt>
    *     int <var>[id_program]</var>
    *   </dt>
@@ -58,46 +63,53 @@ class CatalogListModel extends WlModelAbstract
    *        <li>{@link PaymentModel} for a program purchase.</li>
    *      </ul>
    *   </dd>
+   *
    *   <dt>
-   *     int <var>id_restriction</var>
+   *     int `id_restriction`
    *   </dt>
    *   <dd>
    *     The restriction ID. One of the {@link PurchaseRestrictionSid} constants.
    *   </dd>
+   *
    *   <dt>
-   *     int <var>id_sale</var>
+   *     int `id_sale`
    *   </dt>
    *   <dd>
    *     The sale category ID. One of the {@link WlSaleSid} constants.
    *   </dd>
+   *
    *   <dt>
-   *     bool <var>is_online_sell</var>
+   *     bool `is_online_sell`
    *   </dt>
    *   <dd>
    *     Determines whether the sale item can be purchased by the client.
    *   </dd>
+   *
    *   <dt>
-   *     bool <var>is_visit</var>
+   *     bool `is_visit`
    *   </dt>
    *   <dd>
    *     This will be <tt>true</tt> if this Purchase Option is suitable to pay for the visit {@link CatalogListModel::$k_visit}.
    *     Otherwise, this will be <tt>false</tt>.
    *     If {@link CatalogListModel::$k_visit} is empty, this will always be `false`.
    *   </dd>
+   *
    *   <dt>
-   *     string <var>k_id</var>
+   *     string `k_id`
    *   </dt>
    *   <dd>
    *     The sale item ID.
    *   </dd>
+   *
    *   <dt>
-   *     string <var>text_title</var>
+   *     string `text_title`
    *   </dt>
    *   <dd>
    *     The category title.
    *   </dd>
+   *
    *   <dt>
-   *     string <var>url_catalog</var>
+   *     string `url_catalog`
    *   </dt>
    *   <dd>
    *     Direct link to catalog view page of this purchase item.

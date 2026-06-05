@@ -182,8 +182,10 @@ class PaymentModel extends WlModelAbstract
   /**
    * List of quiz response keys.
    *
+   * Keys are quiz keys.  Values are response keys.
+   *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_quiz_response = [];
 
@@ -263,23 +265,21 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * A list of sessions being booked.
-   * <b>Keys</b> - The class period keys.
-   * <b>Values</b> - List of date/time when the session occurred.
+   *
+   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_session = [];
 
   /**
    * Selected sessions on the waiting list without pay.
    *
-   * Keys - session keys.
-   *
-   * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
+   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_session_wait_list_unpaid = [];
 

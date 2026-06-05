@@ -53,10 +53,10 @@ class QuizModel extends WlModelAbstract
   /**
    * The list of quiz response keys.
    *
-   * Keys refer to quiz keys, values refer to response keys or special values from
+   * Keys are quiz keys.  Values are response keys.
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_quiz_response = [];
 
@@ -139,22 +139,20 @@ class QuizModel extends WlModelAbstract
   /**
    * The selected sessions.
    *
-   * Keys refer to class period keys.
-   * And values refer to the list of dates/times when the session occurred.
+   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_session_select = [];
 
   /**
    * The selected sessions on the wait list that are unpaid.
    *
-   * Keys refer to session IDs.
-   * And values refer to index arrays of dates/times when session occurred (n MySQL format and in GMT).
+   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_session_wait_list_unpaid = [];
 

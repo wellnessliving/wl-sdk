@@ -19,7 +19,7 @@ class AlertEditModel extends WlModelAbstract
 
   /**
    * Login note information.
-   * 
+   *
    * @get result
    * @var array
    */

@@ -34,8 +34,13 @@ class PaymentMultipleModel extends WlModelAbstract
    *         array <var>a_product</var>
    *       </dt>
    *       <dd>
-   *         The add-on list.
-   *         Keys refer to add-on keys, and values refer to the add-on quantities.
+   *         The add-on list. Keys are add-on option keys.          Values are quantities: <dl>
+   *           <dt>string `k_shop_product_option`</dt>
+   *           <dd>Add-on option key (used as array key). 
+   *
+   *           <dt>int `i_count`</dt>
+   *           <dd>Quantity of the add-on to purchase (used as array value).</dd>
+   *         </dl>
    *       </dd>
    *       <dt>
    *         int <var>i_duration</var>
@@ -143,8 +148,7 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_book_data = [];
 
   /**
-   * A copy of {@link PaymentMultipleModel::$a_book_data}.
-   *
+   * A copy of {@link PaymentMultipleModel::$a_book_data}. Has the same structure.
    * Set this field value for POST requests.
    *
    * @post post
@@ -408,12 +412,10 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_purchase_item;
 
   /**
-   * The list of quiz response keys.
-   * Key is quiz key.
-   * Value is quiz response key.
-   *
+   * List of quiz response keys.
+   * Keys are quiz keys.  Values are quiz response keys. 
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_quiz_response = [];
 

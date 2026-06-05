@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Login\Attendance;
 
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Profile\PurchaseList\PurchaseListElementModel;
 use WellnessLiving\Wl\Visit\WlVisitSid;
 use WellnessLiving\Wl\WlProgramSid;
 
@@ -16,30 +17,37 @@ class AttendanceListModel extends WlModelAbstract
    * The list of clients in the active attendance list who haven't confirmed or canceled.
    * Each element is an array with the following fields:
    * <dl>
-   *   <dt>array <var>a_info</var></dt>
+   *   <dt>array `a_info`</dt>
    *   <dd>
    *     Information about member.
    *        </dd>
-   *   <dt>array <var>a_photo</var></dt>
+   *
+   *   <dt>array `a_photo`</dt>
    *   <dd>
    *     Information about the user's photo. The information returned has the following structure:
    *     <dl>
-   *       <dt>int <var>i_height</var></dt>
+   *       <dt>int `i_height`</dt>
    *       <dd>The height of the photo.</dd>
-   *       <dt>int <var>i_width</var></dt>
+   *
+   *       <dt>int `i_width`</dt>
    *       <dd>The width of the photo.</dd>
-   *       <dt>string <var>is_empty</var></dt>
+   *
+   *       <dt>string `is_empty`</dt>
    *       <dd>This will be `true` if a photo hasn't been set yet.</dd>
-   *       <dt>string <var>s_url</var></dt>
+   *
+   *       <dt>string `s_url`</dt>
    *       <dd>The URL of the photo.</dd>
    *     </dl>
    *   </dd>
-   *   <dt>array <var>a_progress</var></dt>
+   *
+   *   <dt>array `a_progress`</dt>
    *   <dd>Information about a user's current progress. By default, this information isn't sent.</dd>
-   *   <dt>array[] <var>a_quiz</var></dt>
+   *
+   *   <dt>array[] `a_quiz`</dt>
    *   <dd>
    *       Quiz information that concerns current visit.
    *          </dd>
+   *
    *   <dt>array[] `a_resource`</dt>
    *   <dd>
    *     A list of information for any associated resources for this visit. Each element: <dl>
@@ -56,133 +64,218 @@ class AttendanceListModel extends WlModelAbstract
    *       <dd>Resource title.</dd>
    *     </dl>
    *   </dd>
-   *   <dt>array <var>a_wait_confirm</var></dt>
-   *   <dd>The list of visit keys for clients on the wait list.</dd>
-   *   <dt>array <var>a_wearable</var></dt>
+   *
+   *   <dt>array `a_wait_confirm`</dt>
+   *   <dd>
+   *     The date and time when the client transitioned from the wait list to the active list, in human-readable
+   *     format. Empty array if the visit is not awaiting confirmation. Each element: <dl>
+   *       <dt>string `s_day`</dt>
+   *       <dd>The formatted date string (for example, "Monday, Nov 08, 2021").</dd>
+   *
+   *       <dt>string `s_time`</dt>
+   *       <dd>The formatted time string (for example, "10:00 AM").</dd>
+   *     </dl>
+   *   </dd>
+   *
+   *   <dt>array `a_wearable`</dt>
    *   <dd>A list of information pertaining to the client's wearables.</dd>
-   *   <dt>bool <var>can_profile</var></dt>
+   *
+   *   <dt>bool `can_profile`</dt>
    *   <dd>If `true`, the current user can access this client profile.</dd>
-   *   <dt>string <var>dt_book</var></dt>
+   *
+   *   <dt>string `dt_book`</dt>
    *   <dd>The date the session was booked, in UTC.</dd>
-   *   <dt>string <var>dt_date</var></dt>
+   *
+   *   <dt>string `dt_date`</dt>
    *   <dd>The date of the session, in UTC.</dd>
-   *   <dt>string <var>dt_expire</var></dt>
+   *
+   *   <dt>string `dt_expire`</dt>
    *   <dd>The date the Purchase Option that was used will expire, in UTC.</dd>
-   *   <dt>string <var>dt_register</var></dt>
+   *
+   *   <dt>string `dt_register`</dt>
    *   <dd>The date the client checked in for the visit, in UTC.</dd>
-   *   <dt>string <var>html_age</var></dt>
+   *
+   *   <dt>string `html_age`</dt>
    *   <dd>The client age.</dd>
-   *   <dt>string <var>html_book_by</var></dt>
+   *
+   *   <dt>string `html_book_by`</dt>
    *   <dd>The name of the person who booked this visit.</dd>
-   *   <dt>string <var>html_gender_class</var></dt>
+   *
+   *   <dt>string `html_gender_class`</dt>
    *   <dd>The name of the icon to show under gender in the class attendance list.</dd>
-   *   <dt>string <var>html_member</var></dt>
+   *
+   *   <dt>string `html_member`</dt>
    *   <dd>The client's member ID, if set.</dd>
-   *   <dt>string <var>html_tooltip_book_by</var></dt>
+   *
+   *   <dt>string `html_tooltip_book_by`</dt>
    *   <dd>When and where this visit was booked, along with who booked it.</dd>
-   *   <dt>int <var>i</var></dt>
+   *
+   *   <dt>int `i`</dt>
    *   <dd>The default place in the list to show this client. This is a deprecated copy of the `i_order` field.</dd>
-   *   <dt>int <var>i_left</var></dt>
+   *
+   *   <dt>int `i_left`</dt>
    *   <dd>The number of visits left on this Purchase Option. This will be `NULL` if there's no limit.</dd>
-   *   <dt>int <var>i_order</var></dt>
+   *
+   *   <dt>int `i_order`</dt>
    *   <dd>The default place in the list to show this client.</dd>
-   *   <dt>int <var>i_total</var></dt>
+   *
+   *   <dt>int `i_total`</dt>
    *   <dd>The total visits available from this Purchase Option.</dd>
+   *
    *   <dt>int [`i_visit_return`]</dt>
    *   <dd>Number of purchase option usages that was returned to user.</dd>
-   *   <dt>int <var>id_gender</var></dt>
+   *
+   *   <dt>int `id_gender`</dt>
    *   <dd>The gender ID of the client. One of the {@link AGenderSid} constants.</dd>
-   *   <dt>int <var>id_pass_prospect</var></dt>
-   *   <dd>If this visit was paid for by an external system, this ID will be set. Otherwise, it will be `0`.</dd>
-   *   <dt>int <var>id_program</var></dt>
+   *
+   *   <dt>int `id_pass_prospect`</dt>
+   *   <dd>
+   *     If this visit was paid for by an external system, this ID will be set. Otherwise, it will be `0`.
+   *   </dd>
+   *
+   *   <dt>int `id_program`</dt>
    *   <dd>The program ID of the Purchase Option. One of the {@link WlProgramSid} constants.</dd>
-   *   <dt>int <var>id_visit</var></dt>
+   *
+   *   <dt>int `id_visit`</dt>
    *   <dd>The status of the visit. One of the {@link WlVisitSid} constants.</dd>
-   *   <dt>bool <var>is_attend</var></dt>
+   *
+   *   <dt>bool `is_attend`</dt>
    *   <dd>This will be `true` if the client has attended the visit.</dd>
-   *   <dt>bool <var>is_duration_pass</var></dt>
+   *
+   *   <dt>bool `is_duration_pass`</dt>
    *   <dd>This will be `true` if the Purchase Option used is a duration pass.</dd>
-   *   <dt>bool <var>is_deposit</var></dt>
+   *
+   *   <dt>bool `is_deposit`</dt>
    *   <dd>This will be `true` if the client has paid a deposit for the visit.</dd>
-   *   <dt>bool <var>is_early</var></dt>
-   *   <dd>This will be `true` if the client has canceled the visit early, incurring no penalty.
+   *
+   *   <dt>bool `is_early`</dt>
+   *   <dd>
+   *     This will be `true` if the client has canceled the visit early, incurring no penalty.
    *     This will be `false` if canceled late or if not canceled at all.
    *   </dd>
-   *   <dt>bool <var>is_free</var></dt>
+   *
+   *   <dt>bool `is_free`</dt>
    *   <dd>This will be `true` if the visit is free.</dd>
-   *   <dt>bool <var>is_hidden</var></dt>
+   *
+   *   <dt>bool `is_hidden`</dt>
    *   <dd>This will be `true` if details on this visit should be hidden from staff members.</dd>
-   *   <dt>bool <var>is_penalty</var></dt>
+   *
+   *   <dt>bool `is_penalty`</dt>
    *   <dd>This will be `true` if this visit was cancelled late and a penalty is applied.</dd>
-   *   <dt>bool <var>is_promotion_first</var></dt>
+   *
+   *   <dt>bool `is_promotion_first`</dt>
    *   <dd>This will be `true` if this was the first visit for the Purchase Option used.</dd>
-   *   <dt>bool <var>is_promotion_last</var></dt>
+   *
+   *   <dt>bool `is_promotion_last`</dt>
    *   <dd>This will be `true` if this was the latest visit for the Purchase Option used.</dd>
-   *   <dt>bool <var>is_unlimited</var></dt>
+   *
+   *   <dt>bool `is_unlimited`</dt>
    *   <dd>This will be `true` if the Purchase Option used has no usage limits.</dd>
-   *   <dt>bool <var>is_visit</var></dt>
-   *   <dd>This will be `true` if this visit is still considered valid.
-   *     If visit was removed by the system or a staff member, this will be `false`.</dd>
-   *   <dt>bool <var>is_wait</var></dt>
+   *
+   *   <dt>bool `is_visit`</dt>
+   *   <dd>
+   *     This will be `true` if this visit is still considered valid.
+   *     If visit was removed by the system or a staff member, this will be `false`.
+   *   </dd>
+   *
+   *   <dt>bool `is_wait`</dt>
    *   <dd>This will be `true` if the visit is on the waiting list.</dd>
-   *   <dt>bool <var>is_wait_confirm</var></dt>
+   *
+   *   <dt>bool `is_wait_confirm`</dt>
    *   <dd>This will be `true` if the visit is awaiting confirmation.</dd>
-   *   <dt>bool <var>is_wait_priority</var></dt>
+   *
+   *   <dt>bool `is_wait_priority`</dt>
    *   <dd>This will be `true` if the visit has priority on the wait list.</dd>
-   *   <dt>string <var>k_location</var></dt>
+   *
+   *   <dt>string `k_location`</dt>
    *   <dd>The key of the location.</dd>
-   *   <dt>string <var>k_login_promotion</var></dt>
+   *
+   *   <dt>string `k_login_promotion`</dt>
    *   <dd>The key of the client's Purchase Option.</dd>
-   *   <dt>string <var>k_visit</var></dt>
+   *
+   *   <dt>string `k_visit`</dt>
    *   <dd>The key of the visit.</dd>
-   *   <dt>array <var>[o_purchase_item]</var></dt>
-   *   <dd>The purchase used to pay for the session.</dd>
-   *   <dt>string <var>s_expire</var></dt>
-   *   <dd>The expiry information for the Purchase Option. This field is deprecated, use the text_ version instead.</dd>
-   *   <dt>string <var>s_firstname</var></dt>
+   *
+   *   <dt>object|null `o_purchase_item`</dt>
+   *   <dd>
+   *     The purchase used to pay for the session. Instance of {@link PurchaseListElementModel}.
+   *     `null` if the visit has no associated purchase or access is denied. Only present when
+   *     `is_purchase_info_return` is `true`.
+   *   </dd>
+   *
+   *   <dt>string `s_expire`</dt>
+   *   <dd>
+   *     The expiry information for the Purchase Option. This field is deprecated, use the text_ version instead.
+   *   </dd>
+   *
+   *   <dt>string `s_firstname`</dt>
    *   <dd>The client's first name. This field is deprecated, use the text_ version instead.</dd>
-   *   <dt>string <var>s_lastname</var></dt>
+   *
+   *   <dt>string `s_lastname`</dt>
    *   <dd>The client's last name. This field is deprecated, use the text_ version instead.</dd>
-   *   <dt>string <var>s_note</var></dt>
+   *
+   *   <dt>string `s_note`</dt>
    *   <dd>Any notes tied to the client. This field is deprecated, use the text_ version instead.</dd>
-   *   <dt>string <var>s_promotion</var></dt>
-   *   <dd>The description of the type of Purchase Option. This field is deprecated, use the text_ version instead.</dd>
-   *   <dt>string <var>text_expire</var></dt>
+   *
+   *   <dt>string `s_promotion`</dt>
+   *   <dd>
+   *     The description of the type of Purchase Option. This field is deprecated, use the text_ version instead.
+   *   </dd>
+   *
+   *   <dt>string `text_expire`</dt>
    *   <dd>The expiry information for the Purchase Option.</dd>
-   *   <dt>string <var>text_firstname</var></dt>
+   *
+   *   <dt>string `text_firstname`</dt>
    *   <dd>The client first name.</dd>
-   *   <dt>string <var>text_lastname</var></dt>
+   *
+   *   <dt>string `text_lastname`</dt>
    *   <dd>The client last name.</dd>
-   *   <dt>string <var>text_note</var></dt>
+   *
+   *   <dt>string `text_note`</dt>
    *   <dd>Any notes tied to the client.</dd>
+   *
    *   <dt>string [`text_promotion_return`]</dt>
    *   <dd>Title of purchase option usages of that was returned to user.</dd>
-   *   <dt>string <var>text_promotion</var></dt>
+   *
+   *   <dt>string `text_promotion`</dt>
    *   <dd>The description of the type of Purchase Option.</dd>
-   *   <dt>string <var>text_restrict_title</var></dt>
-   *   <dd>The Purchase Option restriction description. It can be empty string when the Purchase Option has no restrictions.</dd>
-   *   <dt>string <var>text_visit_status_class</var></dt>
+   *
+   *   <dt>string `text_restrict_title`</dt>
+   *   <dd>
+   *     The Purchase Option restriction description. It can be empty string when the Purchase Option has no restrictions.
+   *   </dd>
+   *
+   *   <dt>string `text_visit_status_class`</dt>
    *   <dd>The class visit status.</dd>
-   *   <dt>string <var>text_visit_status_icon</var></dt>
+   *
+   *   <dt>string `text_visit_status_icon`</dt>
    *   <dd>The icon to use for the class visit status.</dd>
-   *   <dt>string <var>text_wearable</var></dt>
+   *
+   *   <dt>string `text_wearable`</dt>
    *   <dd>The wearable device ID.</dd>
-   *   <dt>string <var>uid</var></dt>
+   *
+   *   <dt>string `uid`</dt>
    *   <dd>The client user key.</dd>
-   *   <dt>string <var>uid_book</var></dt>
+   *
+   *   <dt>string `uid_book`</dt>
    *   <dd>
    *     The key of the user who made the booking.
    *     If differing from `uid`, the booking could have been made by a staff or family member.
    *   </dd>
-   *   <dt>string <var>url-cancel</var></dt>
+   *
+   *   <dt>string `url-cancel`</dt>
    *   <dd>The URL that can be used to cancel the visit.</dd>
-   *   <dt>string <var>url-cancel-admin</var></dt>
+   *
+   *   <dt>string `url-cancel-admin`</dt>
    *   <dd>The URL that can be used by an admin to cancel the visit.</dd>
-   *   <dt>string <var>url-login-view</var></dt>
+   *
+   *   <dt>string `url-login-view`</dt>
    *   <dd>The URL that for the user's page.</dd>
-   *   <dt>string <var>url-mail</var></dt>
+   *
+   *   <dt>string `url-mail`</dt>
    *   <dd>The URL to a page for sending an email to the client.</dd>
-   *   <dt>string <var>url-profile</var></dt>
+   *
+   *   <dt>string `url-profile`</dt>
    *   <dd>The URL that for the client's profile.</dd>
    * </dl>
    *

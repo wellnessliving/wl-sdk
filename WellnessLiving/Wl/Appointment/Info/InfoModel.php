@@ -75,7 +75,26 @@ class InfoModel extends WlModelAbstract
   public $a_question = [];
 
   /**
-   * List of assets which are used by this appointment.
+   * List of assets used by this appointment. Each element contains: <dl>
+   *   <dt>int `i_color_background`</dt>
+   *   <dd>Background color of the asset as an integer (RGB).</dd>
+   *   <dt>int `i_color_border`</dt>
+   *   <dd>Border color of the asset as an integer (RGB).</dd>
+   *   <dt>int `i_index`</dt>
+   *   <dd>Index of the booked asset slot.</dd>
+   *   <dt>bool `is_remove`</dt>
+   *   <dd>`true` if the asset was removed from the booking, `false` otherwise.</dd>
+   *   <dt>string `k_resource`</dt>
+   *   <dd>Asset key. 
+   *   <dt>string `k_resource_type`</dt>
+   *   <dd>Asset category key. 
+   *   <dt>string `s_resource`</dt>
+   *   <dd>Asset name.</dd>
+   *   <dt>string `s_resource_type`</dt>
+   *   <dd>Asset category name.</dd>
+   *   <dt>string `text_resource_alias`</dt>
+   *   <dd>Display alias for the asset slot, if configured.</dd>
+   * </dl>
    *
    * @get result
    * @var array[]
@@ -84,14 +103,24 @@ class InfoModel extends WlModelAbstract
 
   /**
    * List of appointment add-ons. Every element has next keys:<dl>
-   *   <dt>array `a_login_product`</dt>
-   *   <dd>List of purchased products. Each value is ty if no products purchased.</dd>
+   *   <dt>string[] `a_login_product`</dt>
+   *   <dd>
+   *     List of purchased product keys. Empty if no products were purchased. Each element:
+   *     <dl>
+   *       <dt>string `k_login_product`</dt>
+   *       <dd>Purchased product key. 
+   *     </dl>
+   *   </dd>
+   *
    *   <dt>null `k_login_product`</dt>
    *   <dd>Deprecated, always `null`.</dd>
+   *
    *   <dt>string `k_shop_product`</dt>
    *   <dd>Primary key of add-on.</dd>
+   *
    *   <dt>string `k_shop_product_option`</dt>
    *   <dd>Add-on option. 
+   *
    *   <dt>string `m_amount`</dt>
    *   <dd>Price that it adds to an appointment.</dd>
    * </dl>

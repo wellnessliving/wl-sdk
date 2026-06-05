@@ -49,7 +49,7 @@ class ApplicationConnectModel extends WlModelAbstract
    * Key of the created or updated application.
    * Set in the response after a successful `post()` call.
    *
-   * @get result
+   * @post result
    * @var string
    */
   public $k_spa_application = '0';

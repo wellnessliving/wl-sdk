@@ -219,20 +219,17 @@ class InfoModel extends WlModelAbstract
   /**
    * The selected sessions.
    *
-   * <b>Keys</b> - The class period keys.
-   * <b>Values</b> - List of date/time when the session occurred in MySQL format and in GMT.
+   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_session_select = [];
 
   /**
    * Selected sessions on the waiting list without pay.
    *
-   * Keys - session keys.
-   *
-   * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
+   * Keys are class period keys.  Values are index arrays of dates/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
    * @var array
@@ -242,28 +239,32 @@ class InfoModel extends WlModelAbstract
   /**
    * The staff member conducting the session. Every element has the next structure:
    * <dl>
-   *   <dt>
-   *     array <var>a_logo</var>
-   *   </dt>
+   *   <dt>array `a_logo`</dt>
    *     <dd>
    *     The staff member photo:
    *     <dl>
-   *       <dt>int <var>i_height</var></dt>
+   *       <dt>int `i_height`</dt>
    *       <dd>The image height.</dd>
-   *       <dt>int <var>i_width</var></dt>
+   *
+   *       <dt>int `i_width`</dt>
    *       <dd>The image width.</dd>
-   *       <dt>string <var>s_url</var></dt>
+   *
+   *       <dt>string `s_url`</dt>
    *       <dd>The image URL.</dd>
    *     </dl>
    *   </dd>
-   *   <dt>string <var>s_family</var></dt>
+   *
+   *   <dt>string `s_family`</dt>
    *   <dd>The first letter of staff member surname.</dd>
-   *   <dt>string <var>s_staff</var></dt>
+   *
+   *   <dt>string `s_staff`</dt>
    *   <dd>The staff member's name.</dd>
-   *   <dt>string <var>uid_staff</var></dt>
+   *
+   *   <dt>string `uid_staff`</dt>
    *   <dd>UID of the staff member. 
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>Alias of <var>uid_staff</var> for backward compatibility.</dd>
+   *
+   *   <dt>string `uid`</dt>
+   *   <dd>Alias of `uid_staff` for backward compatibility.</dd>
    * </dl>
    *
    * @get result

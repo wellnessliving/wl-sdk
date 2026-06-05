@@ -57,7 +57,26 @@ class AccountModel extends WlModelAbstract
   public $a_account;
 
   /**
-   * A list of accounts that is not created for this user yet.
+   * A list of accounts that have not been created for this user yet.
+   *
+   * Keys are composed of `{k_pay_method}:{k_currency}`. Each element: <dl>
+   *   <dt>bool `can_negative`</dt>
+   *   <dd>`true` if the account is allowed to have a negative balance, `false` otherwise.</dd>
+   *   <dt>int `id_currency`</dt>
+   *   <dd>Currency ID. One of {@link CurrencySid} constants.</dd>
+   *   <dt>string `k_currency`</dt>
+   *   <dd>Currency key. 
+   *   <dt>string|null `k_pay_account`</dt>
+   *   <dd>Payment account key. `null` for accounts not yet created.</dd>
+   *   <dt>string|null `k_pay_method`</dt>
+   *   <dd>
+   *     Custom payment method key. `null` for accounts based on the system payment method.
+   *        </dd>
+   *   <dt>string `m_rest`</dt>
+   *   <dd>Account balance. Always `'0.00'` for accounts not yet created.</dd>
+   *   <dt>string|null `s_method`</dt>
+   *   <dd>Name of the custom payment method. `null` for accounts based on the system payment method.</dd>
+   * </dl>
    *
    * @get result
    * @var array[]

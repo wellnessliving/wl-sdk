@@ -12,10 +12,10 @@ use WellnessLiving\Wl\Service\ServiceSid;
 class RecentServiceModel extends WlModelAbstract
 {
   /**
-   * List of last booked services. Values are visit keys.
+   * List of last booked services.
    *
    * @get result
-   * @var array
+   * @var string[]
    */
   public $a_service_last = [];
 

@@ -33,10 +33,55 @@ class ListModel extends WlModelAbstract
   public $a_direct_link = [];
 
   /**
-   * The list of all sale items.
+   * The list of all sale items (de-duplicated). Each element has the following keys: <dl>
+   *   <dt>string[] `a_location`</dt>
+   *   <dd>
+   *     The list of location keys where the sale item is available.
+   *        </dd>
+   *
+   *   <dt>string[] `a_shop_category`</dt>
+   *   <dd>
+   *     Shop category keys the item belongs to.
+   *        </dd>
+   *
+   *   <dt>string `dtu_create`</dt>
+   *   <dd>UTC creation date of the item in MySQL format.</dd>
+   *
+   *   <dt>string `f_price`</dt>
+   *   <dd>The item price.</dd>
+   *
+   *   <dt>bool `hide_application`</dt>
+   *   <dd>`true` if the item should be hidden from the application, `false` otherwise.</dd>
+   *
+   *   <dt>int `id_sale`</dt>
+   *   <dd>The sale category ID. One of the {@link WlSaleSid} constants.</dd>
+   *
+   *   <dt>bool `is_direct`</dt>
+   *   <dd>`true` if the item was accessed via a direct purchase link, `false` otherwise.</dd>
+   *
+   *   <dt>bool `is_introductory`</dt>
+   *   <dd>`true` if the item is an introductory offer, `false` otherwise.</dd>
+   *
+   *   <dt>string `k_id`</dt>
+   *   <dd>The item key.</dd>
+   *
+   *   <dt>string `k_shop_category`</dt>
+   *   <dd>
+   *     The primary shop category key for this item entry.
+   *        </dd>
+   *
+   *   <dt>string `s_key`</dt>
+   *   <dd>The unique string key identifying the item (product key combined with its DB SID).</dd>
+   *
+   *   <dt>string `s_title`</dt>
+   *   <dd>The item title.</dd>
+   *
+   *   <dt>string `url_catalog`</dt>
+   *   <dd>Direct URL to the catalog view page for this item.</dd>
+   * </dl>
    *
    * @get result
-   * @var array
+   * @var array[]
    */
   public $a_product = [];
 

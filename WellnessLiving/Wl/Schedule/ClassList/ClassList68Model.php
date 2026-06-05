@@ -13,9 +13,10 @@ class ClassList68Model extends WlModelAbstract
 {
   /**
    * Keys are dates of the days inside requested date range, when there is at least one class in the business.
-   * If, locations are sent as a parameter, then at least one class in the given locations.
+   * If locations are sent as a parameter, then at least one class must exist in the given locations.
    *
-   * Values are empty arrays for now. This is done to make possible to add some information about certain dates, if we need this.
+   * Each key is a date string in `YYYY-MM-DD` format (local date in the business time zone).
+   * Each value is an empty array reserved for future use.
    *
    * @post result
    * @var array[]

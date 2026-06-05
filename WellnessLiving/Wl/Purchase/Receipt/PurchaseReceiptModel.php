@@ -15,9 +15,14 @@ class PurchaseReceiptModel extends WlModelAbstract
 {
   /**
    * Information about the account balance for a user's account after payment for the purchase. Every element has the following keys:<dl>
-   *   <dt>string <var>m_amount</var></dt><dd>The account balance on the user's account.</dd>
-   *   <dt>string <var>text_currency</var></dt><dd>The currency of the amount.</dd>
-   *   <dt>string <var>text_method</var></dt><dd>The payment method title.</dd>
+   *   <dt>string `m_amount`</dt>
+   *   <dd>The account balance on the user's account.</dd>
+   *
+   *   <dt>string `text_currency`</dt>
+   *   <dd>The currency of the amount.</dd>
+   *
+   *   <dt>string `text_method`</dt>
+   *   <dd>The payment method title.</dd>
    * </dl>
    *
    * @get result
@@ -100,29 +105,78 @@ class PurchaseReceiptModel extends WlModelAbstract
 
   /**
    * A list of purchase items. Every element has the following keys:<dl>
-   *   <dt>array <var>a_logo</var></dt><dd>The purchase item logo.<dl>
-   *     <dt>int <var>i_height</var></dt><dd>The image height.</dd>
-   *     <dt>int <var>i_width</var></dt><dd>The image width.</dd>
-   *     <dt>bool <var>is_empty</var></dt><dd>Determines whether the image is empty.</dd>
-   *     <dt>string <var>text_url</var></dt><dd>he URL of the image.</dd>
-   *   </dl></dd>
-   *   <dt>array <var>[a_visit]</var></dt><dd>List of visit keys. Only available if the purchase item is an event.</dd>
-   *   <dt>int <var>i_count</var></dt><dd>The number of items in the purchase.</dd>
-   *   <dt>int|null <var>id_program</var></dt>
-   *   <dd>Program ID. One of {@link WlProgramSid} constants. Only applies to promotions. `null` if the purchase item is not a promotion.</dd>
-   *   <dt>int <var>id_purchase_item</var></dt><dd>Purchase item ID. One of {@link WlPurchaseItemSid} constants.</dd>
-   *   <dt>int <var>id_sale</var></dt><dd>Sale ID. One of {@link WlSaleSid} constants.</dd>
-   *   <dt>int <var>k_id</var></dt><dd>The identifier of the item.</dd>
-   *   <dt>string <var>k_purchase_item</var></dt><dd>The key of the purchase item.</dd>
-   *   <dt>string <var>[k_shop_product]</var></dt><dd>Product key. only if <var>id_purchase_item</var>is {@link WlPurchaseItemSid::PRODUCT}.</dd>
-   *   <dt>string <var>m_price</var></dt><dd>The price of the single item.</dd>
-   *   <dt>string <var>m_price_total</var></dt><dd>The price of all items.</dd>
-   *   <dt>string <var>text_category</var></dt><dd>The type of the item (for example, a pass or membership).</dd>
-   *   <dt>string <var>text_currency</var></dt><dd>The currency of the price.</dd>
-   *   <dt>string <var>text_info</var></dt><dd>Additional information about the purchase item.</dd>
-   *   <dt>string <var>text_title</var></dt><dd>The name of the purchase item.</dd>
-   *   <dt>string <var>text_description</var></dt><dd>The description of the purchase item.</dd>
-   *   <dt>string <var>[url_print]</var></dt><dd>The URL to print. Only available if the purchase item is a coupon (gift card).</dd>
+   *   <dt>array `a_logo`</dt>
+   *   <dd>
+   *     The purchase item logo.<dl>
+   *       <dt>int `i_height`</dt>
+   *       <dd>The image height.</dd>
+   *
+   *       <dt>int `i_width`</dt>
+   *       <dd>The image width.</dd>
+   *
+   *       <dt>bool `is_empty`</dt>
+   *       <dd>Determines whether the image is empty.</dd>
+   *
+   *       <dt>string `text_url`</dt>
+   *       <dd>he URL of the image.</dd>
+   *     </dl>
+   *   </dd>
+   *
+   *   <dt>string[] [`a_visit`]</dt>
+   *   <dd>
+   *     List of visit keys. Only available if the purchase item is a class period,
+   *     enrollment, enrollment deposit, or enrollment discount. Each element is a string visit key.
+   *        </dd>
+   *
+   *   <dt>int `i_count`</dt>
+   *   <dd>The number of items in the purchase.</dd>
+   *
+   *   <dt>int|null `id_program`</dt>
+   *   <dd>
+   *     Program ID. One of {@link WlProgramSid} constants. Only applies to promotions. `null` if the purchase item is not a promotion.
+   *   </dd>
+   *
+   *   <dt>int `id_purchase_item`</dt>
+   *   <dd>Purchase item ID. One of {@link WlPurchaseItemSid} constants.</dd>
+   *
+   *   <dt>int `id_sale`</dt>
+   *   <dd>Sale ID. One of {@link WlSaleSid} constants.</dd>
+   *
+   *   <dt>int `k_id`</dt>
+   *   <dd>The identifier of the item.</dd>
+   *
+   *   <dt>string `k_purchase_item`</dt>
+   *   <dd>The key of the purchase item.</dd>
+   *
+   *   <dt>string [`k_shop_product`]</dt>
+   *   <dd>
+   *     Product key.
+   *     Set only if `id_purchase_item`is {@link WlPurchaseItemSid::PRODUCT}.
+   *        </dd>
+   *
+   *   <dt>string `m_price`</dt>
+   *   <dd>The price of the single item.</dd>
+   *
+   *   <dt>string `m_price_total`</dt>
+   *   <dd>The price of all items.</dd>
+   *
+   *   <dt>string `text_category`</dt>
+   *   <dd>The type of the item (for example, a pass or membership).</dd>
+   *
+   *   <dt>string `text_currency`</dt>
+   *   <dd>The currency of the price.</dd>
+   *
+   *   <dt>string `text_info`</dt>
+   *   <dd>Additional information about the purchase item.</dd>
+   *
+   *   <dt>string `text_title`</dt>
+   *   <dd>The name of the purchase item.</dd>
+   *
+   *   <dt>string `text_description`</dt>
+   *   <dd>The description of the purchase item.</dd>
+   *
+   *   <dt>string [`url_print`]</dt>
+   *   <dd>The URL to print. Only available if the purchase item is a coupon (gift card).</dd>
    * </dl>
    *
    * @get result

@@ -21,16 +21,14 @@ class OriginModel extends WlModelAbstract
   /**
    * A list of origins.
    *
-   * The key is the URL on the site where API calls can be made.
-   *
-   * The value is a domain used to make API requests.
-   * This will be `null` in cases where the API requests are made directly to the WellnessLiving web server or if
-   * it isn't initialized yet.
+   * An associative array where the key is the origin URL of the site where API calls can be made,
+   *  and the value is the additional API domain used to make API requests to the WellnessLiving server.
+   * `null` if not yet initialized.
    *
    * @delete post
    * @get result
    * @put post
-   * @var array|null
+   * @var string[]|null
    */
   public $a_list;
 }

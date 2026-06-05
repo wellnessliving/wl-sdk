@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Skin\Application\Resource;
 
+use WellnessLiving\WlFile;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -17,6 +18,24 @@ use WellnessLiving\WlModelAbstract;
  */
 class ApplicationResourceUploadModel extends WlModelAbstract
 {
+  /**
+   * Image assets keyed by image ID.
+   *
+   * Each key is the sanitized asset file path (e.g. `icon_ios_Icon_60_3x_png`).
+   *
+   * @post post
+   * @var WlFile[]
+   */
+  public $a_image_upload = [];
+
+  /**
+   * Firebase Android config file (`google-services.json`).
+   *
+   * @post post
+   * @var WlFile
+   */
+  public $f_google_services_json = [];
+
   /**
    * Business key.
    *

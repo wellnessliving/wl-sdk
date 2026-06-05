@@ -26,10 +26,10 @@ class MemberValidate63Model extends WlModelAbstract
   public $a_empty_fields_registration = [];
 
   /**
-   * List of fields if the user has empty profile fields, which are required.
+   * List of profile fields that are required but empty for this user.
    *
    * @get result
-   * @var array
+   * @var array[]
    */
   public $a_empty_fields_required = [];
 

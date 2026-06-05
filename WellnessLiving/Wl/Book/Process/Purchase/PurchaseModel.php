@@ -338,10 +338,10 @@ class PurchaseModel extends WlModelAbstract
   /**
    * The list of sessions being booked.
    *
-   * Keys refer to class period keys, values refer to the list of dates/times when the session occurred.
+   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @get get
-   * @var array
+   * @var string[]
    */
   public $a_session = [];
 
@@ -367,11 +367,11 @@ class PurchaseModel extends WlModelAbstract
   /**
    * The selected sessions on the wait list that are unpaid.
    *
-   * Keys refer to session IDs.
-   * And values refer to the index arrays of dates/times when the session occurred (returned in MySQL format and GMT).
+   * Keys are class period keys. <i>
+   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @get get
-   * @var array
+   * @var string[]
    */
   public $a_session_wait_list_unpaid = [];
 

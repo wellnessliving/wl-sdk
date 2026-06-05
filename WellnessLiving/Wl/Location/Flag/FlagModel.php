@@ -26,9 +26,16 @@ class FlagModel extends WlModelAbstract
 
   /**
    * Array, where keys are UIDs to be checked and values are same as {@link FlagModel::$a_restrictions_single}.
-   * <tt>null</tt> if user is not flagged in the location.
+   * `null` if user is not flagged in the location.
    *
    * This field is set, if API gets {@link FlagModel::$a_uid} and not {@link FlagModel::$uid} properties.
+   *
+   * Values are flag restriction arrays: <dl>
+   *   <dt>bool `is_book`</dt>
+   *   <dd>`true` if the user cannot make new reservations.</dd>
+   *   <dt>bool `is_purchase`</dt>
+   *   <dd>`true` if the user cannot make new purchases.</dd>
+   * </dl>
    *
    * @get result
    * @var array|null

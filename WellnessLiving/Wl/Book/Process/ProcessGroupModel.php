@@ -18,6 +18,13 @@ class ProcessGroupModel extends WlModelAbstract
   /**
    * List of errors that occurred during booking.
    *
+   * Keys are user keys. * Each value has the next structure: <dl>
+   *   <dt>string `text_code`</dt>
+   *   <dd>Error code identifying the type of error that occurred.</dd>
+   *   <dt>string `text_message`</dt>
+   *   <dd>Human-readable error message describing the booking failure.</dd>
+   * </dl>
+   *
    * @post result
    * @var array[]
    */
@@ -105,8 +112,10 @@ class ProcessGroupModel extends WlModelAbstract
    *         array [`a_quiz_response`]
    *     </dt>
    *     <dd>
-   *         Answers for questions. Required if the service requires answers for questions.
-   *         *     </dd>
+   *         Answers for questions.
+   *         Required if the service requires answers for questions.
+   *         Keys are quiz keys. *         Values are response keys. *
+   *     </dd>
    *     <dt>
    *         array [`a_repeat`]
    *     </dt>

@@ -21,17 +21,15 @@ class ListModel extends WlModelAbstract
   public $a_event;
 
   /**
-   * Event availability value.
+   * Event availability map.
    *
    * Unavailable events are those that cannot be booked,
    *  but they can be shown to the client (for example, under the "not available" filter).
    *
-   * The array contains:
-   * * Key - Class (event) key.
-   * * Value - Event availability value: `true` - available, `false` - not available.
+   * Key is the event class key.  Value is `true` if the event is available for booking, `false` if it is unavailable.
    *
    * @get result
-   * @var array
+   * @var bool[]
    */
   public $a_event_available = [];
 

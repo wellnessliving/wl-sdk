@@ -96,16 +96,95 @@ class LeadModel extends WlModelAbstract
   public $a_field_list;
 
   /**
-   * The skin configuration:
-   * <dl>
-   *   <dt>array <var>a_style</var></dt><dd>The general style settings.</dd>
-   *   <dt>array <var>background</var></dt><dd>The background settings.</dd>
-   *   <dt>array <var>field-font</var></dt><dd>The font settings.</dd>
-   *   <dt>array <var>header-text</var></dt><dd>The header settings.</dd>
-   *   <dt>array <var>info-show</var></dt><dd>The information settings.</dd>
-   *   <dt>array <var>submit-background</var></dt><dd>The settings for the submit button background.</dd>
-   *   <dt>array <var>submit-font</var></dt><dd>The settings for the submit button font.</dd>
-   *   <dt>array <var>submit-text</var></dt><dd>The settings for the submit button text.</dd>
+   * The skin configuration: <dl>
+   *   <dt>array[] `a_style`</dt>
+   *   <dd>List of compiled CSS style blocks. Each element: <dl>
+   *     <dt>string `s_style`</dt>
+   *     <dd>Compiled CSS style block string.</dd>
+   *
+   *     <dt>string `s_value_name`</dt>
+   *     <dd>Name of the skin value this style block belongs to.</dd>
+   *   </dl>
+   *   </dd>
+   *
+   *   <dt>array `background`</dt>
+   *   <dd>Background styling for the widget container: <dl>
+   *     <dt>string `class`</dt>
+   *     <dd>CSS class names to apply to the element.</dd>
+   *
+   *     <dt>string `css`</dt>
+   *     <dd>Inline CSS style string to apply to the element.</dd>
+   *   </dl>
+   *   </dd>
+   *
+   *   <dt>array `field-font`</dt>
+   *   <dd>Font styling for form fields: <dl>
+   *     <dt>string `class`</dt>
+   *     <dd>CSS class names to apply to the element.</dd>
+   *
+   *     <dt>string `css`</dt>
+   *     <dd>Inline CSS style string to apply to the element.</dd>
+   *   </dl>
+   *   </dd>
+   *
+   *   <dt>array `header-text`</dt>
+   *   <dd>Header section settings: <dl>
+   *     <dt>string `class`</dt>
+   *     <dd>CSS class names to apply to the element.</dd>
+   *
+   *     <dt>string `css`</dt>
+   *     <dd>Inline CSS style string to apply to the element.</dd>
+   *
+   *     <dt>string `text`</dt>
+   *     <dd>Header text content.</dd>
+   *   </dl>
+   *   </dd>
+   *
+   *   <dt>array `info-show`</dt>
+   *   <dd>Visibility settings for information elements: <dl>
+   *     <dt>array `a_require`</dt>
+   *     <dd>Map of required element names. Keys are element names, values are `true`.</dd>
+   *
+   *     <dt>array `a_show`</dt>
+   *     <dd>Map of visible element names. Keys are element names, values are `true`.</dd>
+   *
+   *     <dt>bool `empty`</dt>
+   *     <dd>`true` if no elements are visible.</dd>
+   *   </dl>
+   *   </dd>
+   *
+   *   <dt>array `submit-background`</dt>
+   *   <dd>Background styling for the submit button: <dl>
+   *     <dt>string `class`</dt>
+   *     <dd>CSS class names to apply to the element.</dd>
+   *
+   *     <dt>string `css`</dt>
+   *     <dd>Inline CSS style string to apply to the element.</dd>
+   *   </dl>
+   *   </dd>
+   *
+   *   <dt>array `submit-font`</dt>
+   *   <dd>Font styling for the submit button: <dl>
+   *     <dt>string `class`</dt>
+   *     <dd>CSS class names to apply to the element.</dd>
+   *
+   *     <dt>string `css`</dt>
+   *     <dd>Inline CSS style string to apply to the element.</dd>
+   *   </dl>
+   *   </dd>
+   *
+   *   <dt>array `submit-text`</dt>
+   *   <dd>Text settings for the submit button: <dl>
+   *     <dt>string `class`</dt>
+   *     <dd>CSS class names to apply to the element.</dd>
+   *
+   *     <dt>string `css`</dt>
+   *     <dd>Inline CSS style string to apply to the element.</dd>
+   *
+   *     <dt>string `text`</dt>
+   *     <dd>Submit button text content.</dd>
+   *   </dl>
+   *   </dd>
    * </dl>
    *
    * @get result

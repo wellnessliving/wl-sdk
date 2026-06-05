@@ -61,12 +61,12 @@ class StoreGroupModel extends WlModelAbstract
    *
    * Keys are UIDs of clients, values are arrays with the following structure:
    * <dl>
-   *   <dt>array `a_owner`</dt>
+   *   <dt>string[] `a_owner`</dt>
    *   <dd>
    *       List of UIDs of owners who will share this promotion with this client.
-   *       Each UID is a *       If empty, this client is the owner of the promotion.
+   *       If empty, this client is the owner of the promotion.
    *       This only applies to the new promotions.
-   *   </dd>
+   *       *   </dd>
    *   <dt>int `i_session`</dt>
    *   <dd>
    *       The number of sessions that this item can cover.

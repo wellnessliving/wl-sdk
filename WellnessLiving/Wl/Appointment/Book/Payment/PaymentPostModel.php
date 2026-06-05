@@ -20,7 +20,7 @@ class PaymentPostModel extends WlModelAbstract
 {
   /**
    * Information detailing an appointment booking.
-   * Same as {@link PaymentModel::$a_book_data}.
+   * Has the same structure as {@link PaymentModel::$a_book_data}.
    *
    * @post post
    * @var array
@@ -236,11 +236,9 @@ class PaymentPostModel extends WlModelAbstract
 
   /**
    * List of quiz response keys.
-   * Key is quiz key.
-   * Value is quiz response key.
-   *
+   * Keys are quiz keys.  Values are quiz response keys. 
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_quiz_response = [];
 

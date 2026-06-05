@@ -21,12 +21,22 @@ class ElementModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>int|null `i_age_from`</dt>
-   *   <dd>The minimum age for participation in the event. `null` if there's no minimum age set or information isn't available.</dd>
+   *   <dd>
+   *     The minimum age for participation in the event.
+   *     `null` if there's no minimum age set or information isn't available.
+   *   </dd>
+   *
    *   <dt>int|null `i_age_to`</dt>
-   *   <dd>The age limit for participation in the event. `null` if there's no age limit set or information isn't available.</dd>
+   *   <dd>
+   *     The age limit for participation in the event.
+   *    `null` if there's no age limit set or information isn't available.
+   *   </dd>
+   *
    *   <dt>bool `is_age_public`</dt>
-   *   <dd>`true` if age restrictions are public and available, `false` if they're hidden.
-   *     When restrictions are hidden and the current user isn't a staff member, the age range will be empty.</dd>
+   *   <dd>
+   *     `true` if age restrictions are public and available, `false` if they're hidden.
+   *     When restrictions are hidden and the current user isn't a staff member, the age range will be empty.
+   *   </dd>
    * </dl>
    *
    * @get result
@@ -43,6 +53,7 @@ class ElementModel extends WlModelAbstract
    * <dl>
    *   <dt>string `dt_date`</dt>
    *   <dd>Date/time when the session starts. In UTC.</dd>
+   *
    *   <dt>string `k_class_period`</dt>
    *   <dd>Class session primary keys. 
    * </dl>
@@ -53,15 +64,16 @@ class ElementModel extends WlModelAbstract
   public $a_book_available;
 
   /**
-   * Displays all business policies connected to clients and bookings.
+   * Business policies connected to clients and bookings.
    *
-   * Contains the same structure as the {@link BusinessConfigModel::$a_business_policy} property.
+   * Contains the same structure as {@link BusinessConfigModel::$a_business_policy}.
    *
-   * If policies are overwritten for a certain event, the impacted event's policies will be in this result.
-   * Otherwise, the result will display the business policies.
+   * If the event has custom overrides, those policies are used; otherwise, the default
+   *  business policies are returned.
    *
    * @get result
    * @var array
+   * @see BusinessConfigModel::$a_business_policy
    */
   public $a_business_policy;
 
@@ -92,15 +104,14 @@ class ElementModel extends WlModelAbstract
   public $a_class_tab;
 
   /**
-   * Displays information for a large number of events.
+   * Information for a large number of events.
    *
-   * Received only if {@link ElementModel::$s_event} has been specified. In this case, other fields aren't receivers.
+   * Received only if {@link ElementModel::$s_event} has been specified. In this case, other fields are not populated.
    *
-   * The event keys of this array.
-   * Values of this array and subarrays with keys that correspond to all fields in this table that may be received.
+   * Key is the event class key.
    *
    * @get result
-   * @var array
+   * @var array[]
    */
   public $a_event;
 
@@ -131,123 +142,115 @@ class ElementModel extends WlModelAbstract
   /**
    * A list of event sessions. Every element has the following next keys:
    * <dl>
-   *   <dt>
-   *     array `a_day`
-   *   </dt>
+   *   <dt>array `a_day`</dt>
    *   <dd>
-   *     A list of days of the week when the session has occurred.
-   *     Keys - a number corresponding to a day of the week (0 - Sunday, 6 - Saturday). The value is always `true`.
+   *     Days of the week when the session occurs. Keys are weekday numbers (1 = Monday, 7 = Sunday),
+   *     values are always `true`. <dl>
+   *     <dt>true `{i_day}`</dt>
+   *     <dd>Weekday flag. Key is the weekday number (1 = Monday ... 7 = Sunday). Value is always `true`.
    *   </dd>
+   *   </dl>
+   *   </dd>
+   *
    *   <dt>array `a_repeat`</dt>
    *   <dd>
    *     Repeat periodicity instructions.
    *     <dl>
    *       <dt>int `i_repeat`</dt>
    *       <dd>Count of the periods which specified in `id_repeat`.</dd>
+   *
    *       <dt>int `id_repeat`</dt>
    *       <dd>Measuring unit of `i_repeat` (week, month, year). One of {@link ADurationSid} constants.</dd>
    *     </dl>
    *   </dd>
-   *   <dt>
-   *     array[] `a_staff`
-   *   </dt>
+   *
+   *   <dt>array[] `a_staff`</dt>
    *   <dd>
    *     A list of staff members who conduct the session. Every element has the following next keys:
    *     <dl>
    *       <dt>string `k_staff`</dt>
    *       <dd>@deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
+   *
    *       <dt>string `s_name`</dt>
    *       <dd>The staff member name.</dd>
+   *
    *       <dt>string `s_surname`</dt>
    *       <dd>The first letter of staff member's surname.</dd>
+   *
    *       <dt>int `uid_staff`</dt>
    *       <dd>The user key of the staff member. 
    *     </dl>
    *   </dd>
-   *   <dt>
-   *     string[] `a_virtual_location`
-   *   </dt>
+   *
+   *   <dt>string[] `a_virtual_location`</dt>
    *   <dd>
    *     List of virtual locations.    </dd>
-   *   <dt>
-   *     string `dt_end`
-   *   </dt>
+   *
+   *   <dt>string `dt_end`</dt>
    *   <dd>
    *     The end date of the session.
    *     The local date without time.
    *   </dd>
-   *   <dt>
-   *     string `dt_start`
-   *   </dt>
+   *
+   *   <dt>string `dt_start`</dt>
    *   <dd>
    *     The start date of the session.
    *     The local date without time.
    *   </dd>
-   *   <dt>
-   *     bool `hide_location`
-   *   </dt>
+   *
+   *   <dt>bool `hide_location`</dt>
    *   <dd>
    *     `true` if the location should be hidden in the event details. Hide if the event is virtual or if the business
    *     only has one location. `false` otherwise.
    *   </dd>
-   *   <dt>
-   *     int `i_capacity`
-   *   </dt>
+   *
+   *   <dt>int `i_capacity`</dt>
    *   <dd>
    *     The class capacity.
    *   </dd>
-   *   <dt>
-   *     int `i_duration`
-   *   </dt>
+   *
+   *   <dt>int `i_duration`</dt>
    *   <dd>
    *     The duration of the class in seconds.
    *   </dd>
-   *   <dt>
-   *     bool `is_virtual`
-   *   </dt>
+   *
+   *   <dt>bool `is_virtual`</dt>
    *   <dd>
    *     This will be `true` if the session is not held in person but offered remotely. It will be `false` otherwise.
    *   </dd>
-   *   <dt>
-   *     string `f_price`
-   *   </dt>
+   *
+   *   <dt>string `f_price`</dt>
    *   <dd>
    *     The price of the session, if it can be purchased separately.
    *   </dd>
-   *   <dt>
-   *     string `k_class_period`
-   *   </dt>
+   *
+   *   <dt>string `k_class_period`</dt>
    *   <dd>
    *     The key of the class period.
    *   </dd>
-   *   <dt>
-   *     string `k_location`
-   *   </dt>
+   *
+   *   <dt>string `k_location`</dt>
    *   <dd>
    *     The key of the location where the session is held.
    *   </dd>
-   *   <dt>
-   *     string `s_location`
-   *   </dt>
+   *
+   *   <dt>string `s_location`</dt>
    *   <dd>
    *     The location title.
    *   </dd>
-   *   <dt>
-   *     string `s_time`
-   *   </dt>
+   *
+   *   <dt>string `s_time`</dt>
    *   <dd>
    *     The time when session occurred.
    *     A textual representation of the start and end time of a session. Example: `10:00 am - 11:00 am`
    *   </dd>
-   *   <dt>
-   *     string `s_timezone`
-   *   </dt>
+   *
+   *   <dt>string `s_timezone`</dt>
    *   <dd>
    *     The name of the timezone in which the session is held.
    *   </dd>
-   *   <dt>
-   *     string `text_room`
-   *   </dt>
+   *
+   *   <dt>string `text_room`</dt>
    *   <dd>
    *     The room of the event.
    *   </dd>
@@ -271,10 +274,13 @@ class ElementModel extends WlModelAbstract
    * <dl>
    *   <dt>int `i_height`</dt>
    *   <dd>Image height.</dd>
+   *
    *   <dt>int `i_width`</dt>
    *   <dd>Image width.</dd>
+   *
    *   <dt>string `uid`</dt>
    *   <dd>Key of the user. 
+   *
    *   <dt>string `url_logo`</dt>
    *   <dd>URL to image.</dd>
    * </dl>
@@ -285,9 +291,19 @@ class ElementModel extends WlModelAbstract
   public $a_staff_logo;
 
   /**
-   * Information about timezones.
+   * Timezone information for all timezones used in the event schedule.
    *
-   * Key is timezone key, value is array with timezone information.
+   * Key is the timezone key. Primary key in the `a_geo_timezone` table.
+   * Value contains timezone information from the geo timezone registry: <dl>
+   *   <dt>int `i_shift`</dt>
+   *   <dd>UTC offset in hours for this timezone.</dd>
+   *
+   *   <dt>string `s_file`</dt>
+   *   <dd>Timezone identifier string (e.g. `America/New_York`).</dd>
+   *
+   *   <dt>string|null `text_abbr`</dt>
+   *   <dd>Timezone abbreviation (e.g. `EST`). `null` if not set.</dd>
+   * </dl>
    *
    * @get result
    * @var array[]
@@ -300,12 +316,16 @@ class ElementModel extends WlModelAbstract
    * <dl>
    *   <dt>int `i_count`</dt>
    *   <dd>The number of visits required.</dd>
+   *
    *   <dt>int `i_has`</dt>
    *   <dd>The number of visits the client has already attended.</dd>
+   *
    *   <dt>bool `is_event`</dt>
    *   <dd>`true` if this is an event, `false` if this is a class.</dd>
+   *
    *   <dt>string `k_class`</dt>
    *   <dd>The key of the class or event.</dd>
+   *
    *   <dt>string `text_title`</dt>
    *   <dd>The name of the class or event.</dd>
    * </dl>
