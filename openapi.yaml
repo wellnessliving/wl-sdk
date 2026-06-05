@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260605084001
+  version: 1.1.20260605084831
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-06-05 08:40:01
+    Last updated at: 2026-06-05 08:48:31
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -23702,6 +23702,78 @@ paths:
                         description: 'Name of the business to display in the attendance web app.'
       tags:
         - Design-ReceptionRosterDesign
+  '/Wl/Skin/Application/Connect/ApplicationConnect.json':
+    post:
+      summary: 'Creates or updates the integration credentials for the given business application. If a {@link \Core\Spa\Application\Sql} record already exists for `k_business`, it is updated in place. Otherwise a new record is created and linked to the business. does not exist, belongs to a different datacenter, or lacks an active Mobile App subscription; the domain is already used by another application; or iOS key fields are incomplete.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                is_apple:
+                  type: boolean
+                  description: '`true` to enable Sign In with Apple for this application, `false` to disable.'
+                is_facebook:
+                  type: boolean
+                  description: '`true` to enable Sign In with Facebook (iOS) for this application, `false` to disable.'
+                is_facebook_android:
+                  type: boolean
+                  description: '`true` to enable Sign In with Facebook (Android) for this application, `false` to disable.'
+                k_business:
+                  type: string
+                  description: 'Business key.'
+                s_firebase_key:
+                  type: string
+                  description: 'Firebase service account private key (JSON content of the `.p8`-equivalent key file).'
+                s_firebase_project:
+                  type: string
+                  description: 'Firebase project ID.'
+                s_google_id:
+                  type: string
+                  description: 'Google OAuth client ID.'
+                s_google_reverse:
+                  type: string
+                  description: 'Reversed Google OAuth client ID (iOS URL scheme).'
+                s_google_secret:
+                  type: string
+                  description: 'Google OAuth client secret.'
+                text_cert_ios_login:
+                  type: string
+                  description: 'Sign In with Apple key (`.p8` file content).'
+                text_cert_ios_push:
+                  type: string
+                  description: 'APNs push notification auth key (`.p8` file content).'
+                text_domain:
+                  type: string
+                  description: 'Bundle ID used as the application identifier.'
+                text_key_login_id:
+                  type: string
+                  description: 'Sign In with Apple key ID.'
+                text_key_push_id:
+                  type: string
+                  description: 'APNs push notification key ID.'
+                text_name:
+                  type: string
+                  description: 'Application display name.'
+                text_team_id:
+                  type: string
+                  description: 'Apple Developer Team ID.'
+                url_google_redirect:
+                  type: string
+                  description: 'Google OAuth redirect URL (must be `https://wellnessliving.com/`).'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Connect-ApplicationConnect
   '/Wl/Skin/Application/Resource/ApplicationResource.json':
     get:
       summary: 'Gets application resources.'
@@ -23726,6 +23798,108 @@ paths:
                         description: 'The application data.'
       tags:
         - Resource-ApplicationResource
+  '/Wl/Skin/Application/Resource/ApplicationResourceMaterial.json':
+    post:
+      summary: 'Saves text metadata for the given business application. the category does not exist, or the update type is invalid.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                i_version:
+                  type: number
+                  format: int32
+                  description: 'Code version.'
+                id_category:
+                  type: number
+                  format: int32
+                  description: 'Application category in the store. One of {@link ApplicationCategorySid} constants. `0` if no category is selected.'
+                id_version_change:
+                  type: number
+                  format: int32
+                  description: 'Type of application update. One of {@link AppUpdateTypeEnum} constants.'
+                k_business:
+                  type: string
+                  description: 'Business key.'
+                s_firebase_ios:
+                  type: string
+                  description: 'Reversed client ID of the iOS application on Firebase.'
+                s_version_name:
+                  type: string
+                  description: 'Version name for the App Store and Google Play builds.'
+                text_annotation:
+                  type: string
+                  description: 'Short application description in the store (up to 80 characters).'
+                text_country:
+                  type: string
+                  description: 'Available countries for application distribution (comma-separated list).'
+                text_description:
+                  type: string
+                  description: 'Full application description in the store.'
+                text_description_google:
+                  type: string
+                  description: 'Full application description specific to Google Play. If empty, `text_description` is used for Google Play as well.'
+                text_domain:
+                  type: string
+                  description: 'Bundle ID / package name (e.g. `com.fitness.studio`).'
+                text_email:
+                  type: string
+                  description: 'Support email address shown in the store listing.'
+                text_information:
+                  type: string
+                  description: 'Additional information about the application build.'
+                text_keyword:
+                  type: string
+                  description: 'App Store search keywords (comma-separated).'
+                text_name:
+                  type: string
+                  description: 'Application name shown on the device home screen.'
+                text_phone:
+                  type: string
+                  description: 'Support phone number shown in the store listing.'
+                text_title:
+                  type: string
+                  description: 'Application title in the App Store listing.'
+                text_website:
+                  type: string
+                  description: 'Support website URL shown in the store listing.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Resource-ApplicationResourceMaterial
+  '/Wl/Skin/Application/Resource/ApplicationResourceUpload.json':
+    post:
+      summary: 'Uploads image and file assets for the given business application. Each image must be submitted as `a_image_upload[{key}]`, where `{key}` is the image ID. The `google-services.json` file must be submitted as `google_services_json`.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                k_business:
+                  type: string
+                  description: 'Business key.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Resource-ApplicationResourceUpload
   '/Wl/Passport/Login/Enter/PassportOtp.json':
     get:
       summary: 'Sends an OTP code to the user''s email or phone number to initiate authorization.'
@@ -24865,6 +25039,9 @@ tags:
     name: Config-RewardConfig
     description: 'Retrieves information about reward config of the business.'
   -
+    name: Connect-ApplicationConnect
+    description: 'Creates or updates third-party integration credentials for a white-label application. Used by the App Build Automation (n8n) to programmatically submit the Client App Connect form. Automatically finds the existing {@link \Core\Spa\Application\Sql} record for the given business or creates a new one if none exists.'
+  -
     name: Contract-Contract
     description: 'Gets information about a session pass or membership with a contract. The POST method will complete a sale of a Purchase Option requiring a contract. The method that WellnessLiving uses to encode a signature into a string isn''t currently available in the SDK.'
   -
@@ -25311,6 +25488,12 @@ tags:
   -
     name: Resource-ApplicationResource
     description: 'Returns information used to generate application sources.'
+  -
+    name: Resource-ApplicationResourceMaterial
+    description: 'Saves text metadata for a white-label application build. Used by the App Build Automation (n8n) to programmatically submit the Client App Materials form (text fields only). File assets are submitted separately via {@link ApplicationResourceUploadApi}.'
+  -
+    name: Resource-ApplicationResourceUpload
+    description: 'Uploads image and file assets for a white-label application build. Accepts multipart/form-data with: - `a_image_upload[{key}]` file fields for image assets, where `{key}` is the image ID produced by sanitizing the asset file path (non-alphanumeric characters replaced with `_`). See {@link EditController::resourceStructure()} for the full list. - A `google_services_json` file field for the Firebase Android config file. Text metadata is submitted separately via {@link ApplicationResourceMaterialApi}.'
   -
     name: Resource-Resource
     description: 'Selects assets for making a booking.'
