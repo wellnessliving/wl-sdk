@@ -114,6 +114,32 @@ class WlModelAbstract
     return $is_file;
   }
 
+    /**
+     * Flattens a nested post data array into bracket-notation keys for cURL multipart upload.
+     *
+     * cURL cannot convert nested arrays containing <tt>CURLFile</tt> objects to strings.
+     * This method recursively expands nested arrays so that
+     * <tt>['a_image_upload' => ['key' => CURLFile]]</tt> becomes
+     * <tt>['a_image_upload[key]' => CURLFile]</tt>.
+     *
+     * @param array $a_data Post data array, possibly nested.
+     * @param string $s_prefix Accumulated bracket-notation prefix (used in recursion).
+     * @return array Flat associative array with bracket-notation keys.
+     */
+    private function _postFlatten(array $a_data, string $s_prefix = ''): array
+    {
+        $a_result = [];
+        foreach($a_data as $s_key => $x_value)
+        {
+            $s_full_key = $s_prefix !== '' ? $s_prefix.'['.$s_key.']' : $s_key;
+            if(is_array($x_value))
+                $a_result += $this->_postFlatten($x_value, $s_full_key);
+            else
+                $a_result[$s_full_key] = $x_value;
+        }
+        return $a_result;
+    }
+
   /**
    * Returns URL to access API endpoint.
    *
@@ -559,7 +585,11 @@ class WlModelAbstract
 
     // If posted data contains files, type of request content may be only 'multipart/form-data'.
     if($this->_fileCheck($a_post))
-      $o_request->a_header_request['Content-Type'] = 'multipart/form-data';
+    {
+        $o_request->a_header_request['Content-Type'] = 'multipart/form-data';
+        // cURL cannot handle nested arrays in multipart mode — flatten to bracket-notation keys.
+        $a_post = $this->_postFlatten($a_post);
+    }
 
     $s_post='';
     if($s_method==='put'||$s_method==='delete')

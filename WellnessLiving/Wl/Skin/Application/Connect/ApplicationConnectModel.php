@@ -8,7 +8,7 @@ use WellnessLiving\WlModelAbstract;
  * Creates or updates third-party integration credentials for a white-label application.
  *
  * Used by the App Build Automation (n8n) to programmatically submit the Client App Connect form.
- * Automatically finds the existing {@link \Core\Spa\Application\Sql} record for the given business
+ * Automatically finds the existing record for the given business
  * or creates a new one if none exists.
  */
 class ApplicationConnectModel extends WlModelAbstract

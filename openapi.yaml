@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260605120600
+  version: 1.1.20260605130310
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-06-05 12:06:00
+    Last updated at: 2026-06-05 13:03:10
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -23704,7 +23704,7 @@ paths:
         - Design-ReceptionRosterDesign
   '/Wl/Skin/Application/Connect/ApplicationConnect.json':
     post:
-      summary: 'Creates or updates the integration credentials for the given business application. If a {@link \Core\Spa\Application\Sql} record already exists for `k_business`, it is updated in place. Otherwise a new record is created and linked to the business. does not exist, belongs to a different datacenter, or lacks an active Mobile App subscription; the domain is already used by another application; or iOS key fields are incomplete.'
+      summary: 'Creates or updates the integration credentials for the given business application. If a record already exists for `k_business`, it is updated in place. Otherwise, a new record is created and linked to the business. does not exist, belongs to a different datacenter, or lacks an active Mobile App subscription; the domain is already used by another application; or iOS key fields are incomplete.'
       requestBody:
         required: true
         content:
@@ -23813,10 +23813,12 @@ paths:
               type: object
               properties:
                 i_version:
-                  type: string
+                  type: number
+                  format: int32
                   description: 'Code version.'
                 id_category:
-                  type: string
+                  type: number
+                  format: int32
                   description: 'Application category in the store. One of {@link ApplicationCategorySid} constants. `0` if no category is selected.'
                 id_version_change:
                   type: number
@@ -23847,7 +23849,7 @@ paths:
                   type: string
                   description: 'Bundle ID / package name (e.g. `com.fitness.studio`).'
                 text_email:
-                  type: string
+                  type: object
                   description: 'Support email address shown in the store listing.'
                 text_information:
                   type: string
@@ -25048,7 +25050,7 @@ tags:
     description: 'Retrieves information about reward config of the business.'
   -
     name: Connect-ApplicationConnect
-    description: 'Creates or updates third-party integration credentials for a white-label application. Used by the App Build Automation (n8n) to programmatically submit the Client App Connect form. Automatically finds the existing {@link \Core\Spa\Application\Sql} record for the given business or creates a new one if none exists.'
+    description: 'Creates or updates third-party integration credentials for a white-label application. Used by the App Build Automation (n8n) to programmatically submit the Client App Connect form. Automatically finds the existing record for the given business or creates a new one if none exists.'
   -
     name: Contract-Contract
     description: 'Gets information about a session pass or membership with a contract. The POST method will complete a sale of a Purchase Option requiring a contract. The method that WellnessLiving uses to encode a signature into a string isn''t currently available in the SDK.'
