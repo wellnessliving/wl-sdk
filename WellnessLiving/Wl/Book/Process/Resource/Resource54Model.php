@@ -6,6 +6,8 @@ use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Book\Process\ProcessSpaSid;
+use WellnessLiving\Wl\Resource\Image\ImageIconSid;
+use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
 
 /**
  * Selects assets when making a booking.
@@ -86,136 +88,143 @@ class Resource54Model extends WlModelAbstract
   /**
    * A list of asset categories which are available for specified session. Every element has next keys:
    * <dl>
-   *   <dt>
-   *     array <var>a_client</var>
-   *   </dt>
+   *   <dt>bool[][] `a_client`</dt>
    *   <dd>
    *     A list of clients who have already occupied assets for this session.
-   *     1st level keys - asset keys; 2nd level keys - asset number.
-   *     For example, if you want to check if 10th asset with key '125' is free,
-   *     you have to check if <tt>a_client['125']['10']</tt> is empty.
+   *     1st level keys are asset keys.      2nd level keys are asset index numbers (starting from 1).
+   *     Values are `true` if the asset spot is occupied.
+   *     For example, to check if asset spot 10 with key '125' is occupied,
+   *     check `a_client['125']['10']`.
    *   </dd>
-   *   <dt>
-   *     array[] <var>a_resource_list</var>
-   *   </dt>
+   *
+   *   <dt>array[] `a_resource_list`</dt>
    *   <dd>
    *     A list of available assets. Every element has next keys:
    *     <dl>
-   *       <dt>
-   *           array `a_class_period`
-   *       </dt>
+   *       <dt>int[][][] `a_class_period`</dt>
    *       <dd>
    *           List of resources available for booking sessions.
    *           The field structure is `[k_class_period][dtu_session]['a_available']`.
    *           Contains indexes of resource available for each session.
    *       </dd>
-   *       <dt>
-   *         array <var>a_image</var>
-   *       </dt>
+   *
+   *       <dt>array `a_image`</dt>
    *       <dd>
-   *         Asset image data.        </dd>
-   *       <dt>
-   *         int <var>i_index</var>
-   *       </dt>
+   *         Asset image data.
+   *                  <dl>
+   *           <dt>int [`i_angle`]</dt>
+   *           <dd>Angle of shape rotation. Set only when `sid_image` equals 'shape'.</dd>
+   *
+   *           <dt>int `i_height`</dt>
+   *           <dd>Height of the image in pixels.</dd>
+   *
+   *           <dt>int `i_width`</dt>
+   *           <dd>Width of the image in pixels.</dd>
+   *
+   *           <dt>bool `is_empty`</dt>
+   *           <dd>`true` if no image was uploaded, `false` otherwise.</dd>
+   *
+   *           <dt>string `sid_image`</dt>
+   *           <dd>Image kind.</dd>
+   *
+   *           <dt>string [`sid_image_icon`]</dt>
+   *           <dd>
+   *             Icon name. One of {@link ImageIconSid} string constants.
+   *             Set only when `sid_image` equals 'icon'.
+   *           </dd>
+   *
+   *           <dt>string [`sid_image_shape`]</dt>
+   *           <dd>
+   *             Shape name. One of {@link ImageShapeSid} string constants.
+   *             Set only when `sid_image` equals 'shape'.
+   *           </dd>
+   *
+   *           <dt>string `url`</dt>
+   *           <dd>Thumbnail image URL.</dd>
+   *         </dl>
+   *       </dd>
+   *
+   *       <dt>int `i_index`</dt>
    *       <dd>
    *         The asset number. Actual for assets with a quantity more than <tt>1</tt>.
    *       </dd>
-   *       <dt>
-   *         int `i_quantity`
-   *       </dt>
+   *
+   *       <dt>int `i_quantity`</dt>
    *       <dd>
    *         Total number of the asset spots.
    *       </dd>
+   *
    *       <dt>int `i_use`</dt>
    *       <dd>Number of already used asset units.</dd>
-   *       <dt>
-   *         bool <var>is_current</var>
-   *       </dt>
+   *
+   *       <dt>bool `is_current`</dt>
    *        <dd>
    *          City for the off-site location.
    *        </dd>
-   *        <dt>
-   *          string <var>k_city</var>
-   *        </dt>
+   *
+   *        <dt>string `k_city`</dt>
    *       <dd>
    *         <tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise.
    *       </dd>
-   *       <dt>
-   *         string <var>k_resource</var>
-   *       </dt>
+   *
+   *       <dt>string `k_resource`</dt>
    *       <dd>
    *         The key of the asset in database.
    *                </dd>
-   *       <dt>
-   *         string <var>s_resource</var>
-   *       </dt>
+   *
+   *       <dt>string `s_resource`</dt>
    *       <dd>
    *         The title of the asset.
    *       </dd>
-   *       <dt>
-   *          string <var>text_address</var>
-   *        </dt>
+   *
+   *       <dt>string `text_address`</dt>
    *        <dd>
    *          Address for the off-site location.
    *        </dd>
-   *       <dt>
-   *          string <var>text_guide</var>
-   *        </dt>
+   *       <dt>string `text_guide`</dt>
    *        <dd>
    *          Additional address tips for the off-site location.
    *        </dd>
-   *       <dt>
-   *          string <var>text_postal</var>
-   *        </dt>
+   *       <dt>string `text_postal`</dt>
    *        <dd>
    *          Postal code for the off-site location.
    *        </dd>
    *     </dl>
    *   </dd>
-   *   <dt>
-   *     bool <var>has_current</var>
-   *   </dt>
+   *
+   *   <dt>bool `has_current`</dt>
    *   <dd>
    *     <tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise.
    *   </dd>
-   *    <dt>
-   *      int <var>id_category</var>
-   *    </dt>
+   *    <dt>int `id_category`</dt>
    *    <dd>
    *      Type of the asset category.
    *    </dd>
-   *   <dt>
-   *     bool <var>is_client_select</var>
-   *   </dt>
+   *   <dt>bool `is_client_select`</dt>
    *   <dd>
    *     <tt>true</tt> - the client selected the resource from the current group; <tt>false</tt> otherwise.
    *   </dd>
-   *   <dt>
-   *     bool <var>is_select</var>
-   *   </dt>
+   *
+   *   <dt>bool `is_select`</dt>
    *   <dd>
    *     <tt>true</tt> - has selected resources; <tt>false</tt> - otherwise.
    *   </dd>
-   *   <dt>
-   *     bool <var>is_share</var>
-   *   </dt>
+   *
+   *   <dt>bool `is_share`</dt>
    *   <dd>
    *     <tt>true</tt> resources in this category don't belong to certain users, but to the entire session.
    *     <tt>false</tt> belong to specific users.
    *   </dd>
-   *   <dt>
-   *     string <var>k_resource_layout</var>
-   *   </dt>
+   *
+   *   <dt>string `k_resource_layout`</dt>
    *   <dd>
    *     The key of the asset layout.    </dd>
-   *   <dt>
-   *     string <var>k_resource_type</var>
-   *   </dt>
+   *
+   *   <dt>string `k_resource_type`</dt>
    *   <dd>
    *     The key of the asset category.    </dd>
-   *   <dt>
-   *     string <var>s_resource_type</var>
-   *   </dt>
+   *
+   *   <dt>string `s_resource_type`</dt>
    *   <dd>
    *     The title of the asset category.
    *   </dd>
@@ -245,23 +254,21 @@ class Resource54Model extends WlModelAbstract
    * Only makes sense for session events.
    * Optional parameter for GET request: if not passed, all available sessions will be used.
    *
-   * Keys refer to class period keys, values refer to a list of the dates/times when the session occurred
-   *  (returned in MySQL format and in GMT).
+   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @get get
    * @post get
-   * @var array
+   * @var string[]
    */
   public $a_session = [];
 
   /**
    * The selected sessions on the wait list that are unpaid.
    *
-   * Keys refer to session IDs.
-   * And values refer to index arrays of dates/times when the session occurred (returned in MySQL format and in GMT).
+   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_session_wait_list_unpaid = [];
 

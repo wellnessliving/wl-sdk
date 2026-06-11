@@ -292,7 +292,7 @@ class ElementModel extends WlModelAbstract
    *   <dt>array `a_image`</dt>
    *   <dd>Contains information about one image connected to a sale item.</dd>
    *
-   *   <dt>array `a_tax`</dt>
+   *   <dt>array[] `a_tax`</dt>
    *   <dd>
    *     Contains information about taxes.
    *        </dd>
@@ -345,7 +345,7 @@ class ElementModel extends WlModelAbstract
    * Keys refer tax keys, and values refer to the amount of tax.
    *
    * @get result
-   * @var array
+   * @var array[]
    */
   public $a_tax;
 

@@ -67,7 +67,7 @@ class VisitStatusModel extends WlModelAbstract
    * This will be empty if not set yet.
    *
    * @get result
-   * @var array[]|null
+   * @var string[]|null
    */
   public $a_resource = [];
 

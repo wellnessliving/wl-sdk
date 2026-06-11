@@ -39,18 +39,25 @@ class InfoModel extends WlModelAbstract
    * Previous appointment data, or empty array if there are no appointments in the past:<dl>
    *   <dt>string `dt_date_local`</dt>
    *   <dd>Start date and time of the previous appointment in local time in MySQL format.</dd>
+   *
    *   <dt>bool `has_note`</dt>
    *   <dd>`true` if visit has a note, `false` otherwise.</dd>
+   *
    *   <dt>int `i_duration`</dt>
    *   <dd>Duration of the previous appointment in minutes.</dd>
+   *
    *   <dt>bool `can_view`</dt>
    *   <dd>`true` if employees (staff) can view this appointment, `false` otherwise.</dd>
+   *
    *   <dt>string `k_appointment`</dt>
    *   <dd>Previous appointment key. 
+   *
    *   <dt>string `k_visit`</dt>
    *   <dd>Visit key of previous appointment.</dd>
+   *
    *   <dt>string `text_appointment_title`</dt>
    *   <dd>Title of previous appointment.</dd>
+   *
    *   <dt>string `text_staff_name`</dt>
    *   <dd>Full staff name or empty if no staff assigned.</dd>
    * </dl>
@@ -62,11 +69,20 @@ class InfoModel extends WlModelAbstract
 
   /**
     * List of questions and answers:<dl>
-    *   <dt>int `i_size`</dt><dd> Size of rows for answer.</dd>
-    *   <dt>bool `is_multiple`</dt><dd> `true` if `i_size` greater than 1, `false` otherwise. Can be empty if answer is loaded.</dd>
-    *   <dt>string `s_answer`</dt><dd> Answer for `s_question`.</dd>
-    *   <dt>string `s_key`</dt><dd> Answer key.</dd>
-    *   <dt>string `s_question`</dt><dd> Question.</dd>
+    *   <dt>int `i_size`</dt>
+    *   <dd> Size of rows for answer.</dd>
+    *
+    *   <dt>bool `is_multiple`</dt>
+    *   <dd> `true` if `i_size` greater than 1, `false` otherwise. Can be empty if answer is loaded.</dd>
+    *
+    *   <dt>string `s_answer`</dt>
+    *   <dd> Answer for `s_question`.</dd>
+    *
+    *   <dt>string `s_key`</dt>
+    *   <dd> Answer key.</dd>
+    *
+    *   <dt>string `s_question`</dt>
+    *   <dd> Question.</dd>
     * </dl>
     *
     * @get result

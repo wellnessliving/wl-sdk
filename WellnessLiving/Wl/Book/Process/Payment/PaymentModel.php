@@ -21,7 +21,7 @@ class PaymentModel extends WlModelAbstract
    * A list of items to be bought. Every element has the next keys: <dl>
    *   <dt>int <var>id_purchase_item</var></dt>
    *   <dd>The ID of purchase item type. One of {@link WlPurchaseItemSid} constants.</dd>
-   *   <dt>boolean [<var>is_renew</var>]</dt>
+   *   <dt>bool [<var>is_renew</var>]</dt>
    *   <dd>`true` if the item should be set to auto-renew; `false` otherwise. If not set yet, use the default option for this item.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The key of the purchase item in the database.</dd>
@@ -52,123 +52,115 @@ class PaymentModel extends WlModelAbstract
    *
    * Each element has next keys:
    * <dl>
-   *   <dt>
-   *     array [<var>a_pay_card</var>]
-   *   </dt>
+   *   <dt>array [`a_pay_card`]</dt>
    *   <dd>
    *     The payment card information:
    *     <dl>
-   *       <dt>
-   *         array <var>a_pay_address</var>
-   *       </dt>
+   *       <dt>array `a_pay_address`</dt>
    *       <dd>
    *         The payment address:
    *         <dl>
-   *           <dt>boolean <var>is_new</var></dt>
-   *           <dd>Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
-   *           <dt>string [<var>k_geo_country</var>]</dt>
+   *           <dt>bool `is_new`</dt>
+   *           <dd>
+   *             Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
+   *           </dd>
+   *
+   *           <dt>string [`k_geo_country`]</dt>
    *           <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
-   *           <dt>string [<var>k_geo_region</var>]</dt>
+   *
+   *           <dt>string [`k_geo_region`]</dt>
    *           <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
-   *           <dt>string [<var>k_pay_address</var>]</dt>
+   *
+   *           <dt>string [`k_pay_address`]</dt>
    *           <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
-   *           <dt>string [<var>s_city</var>]</dt>
+   *
+   *           <dt>string [`s_city`]</dt>
    *           <dd>The city used for the payment address. Specify this to add a new address.</dd>
-   *           <dt>string [<var>s_name</var>]</dt>
+   *
+   *           <dt>string [`s_name`]</dt>
    *           <dd>The card name. Specify this to add a new address.</dd>
-   *           <dt>string [<var>s_phone</var>]</dt>
+   *
+   *           <dt>string [`s_phone`]</dt>
    *           <dd>The payment phone. Specify this to add a new address.</dd>
-   *           <dt>string [<var>s_postal</var>]</dt>
+   *
+   *           <dt>string [`s_postal`]</dt>
    *           <dd>The postal code for the payment address. Specify this to add a new address.</dd>
-   *           <dt>string [<var>s_street1</var>]</dt>
+   *
+   *           <dt>string [`s_street1`]</dt>
    *           <dd>The payment address. Specify this to add a new address.</dd>
-   *           <dt>string [<var>s_street2</var>]</dt>
+   *
+   *           <dt>string [`s_street2`]</dt>
    *           <dd>The optional payment address. Specify this to add a new address.</dd>
    *         </dl>
    *       </dd>
-   *       <dt>
-   *         int [<var>i_csc</var>]
-   *       </dt>
+   *
+   *       <dt>int [`i_csc`]</dt>
    *       <dd>
    *         The credit card CSC. Specify this to add a new card.
    *       </dd>
-   *       <dt>
-   *         int [<var>i_month</var>]
-   *       </dt>
+   *
+   *       <dt>int [`i_month`]</dt>
    *       <dd>
    *         The credit card expiration month. Specify this to add a new card.
    *       </dd>
-   *       <dt>
-   *         int [<var>i_year</var>]
-   *       </dt>
+   *
+   *       <dt>int [`i_year`]</dt>
    *       <dd>
    *         The credit card expiration year. Specify this to add a new card.
    *       </dd>
-   *       <dt>
-   *         boolean <var>is_new</var>
-   *       </dt>
+   *
+   *       <dt>bool `is_new`</dt>
    *       <dd>
    *         Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
    *       </dd>
-   *       <dt>
-   *         string [<var>k_pay_bank</var>]
-   *       </dt>
+   *
+   *       <dt>string [`k_pay_bank`]</dt>
    *       <dd>
    *         The key of the credit card. Specify this to use saved card.
    *       </dd>
-   *       <dt>
-   *         string [<var>s_comment</var>]
-   *       </dt>
+   *
+   *       <dt>string [`s_comment`]</dt>
    *       <dd>
    *         Optional comment(s). Specify this to add a new card.
    *       </dd>
-   *       <dt>
-   *         string [<var>s_number</var>]
-   *       </dt>
+   *
+   *       <dt>string [`s_number`]</dt>
    *       <dd>
    *         The card number. Specify this to add a new card.
    *       </dd>
    *     </dl>
    *   </dd>
-   *   <dt>
-   *     string <var>f_amount</var>
-   *   </dt>
+   *
+   *   <dt>string `f_amount`</dt>
    *   <dd>
    *     The amount of money to withdraw with this payment source.
    *   </dd>
-   *   <dt>
-   *     boolean [<var>is_hide</var>]
-   *   </dt>
-   *   <dt>
-   *     bool [<var>is_save</var>=true]
-   *   </dt>
+   *
+   *   <dt>bool [`is_hide`]</dt>
+   *   <dt>bool [`is_save`=true]</dt>
    *   <dd>
    *     Whether payment method should be saved to user's account.
    *   </dd>
    *   <dd>
    *     Determines whether this payment method is hidden.
    *   </dd>
-   *   <dt>
-   *     boolean [<var>is_success</var>=<tt>false</tt>]
-   *   </dt>
+   *
+   *   <dt>bool [`is_success`=<tt>false</tt>]</dt>
    *   <dd>
    *     Identifies whether this source was successfully charged.
    *   </dd>
-   *   <dt>
-   *     string [<var>m_surcharge</var>]
-   *   </dt>
+   *
+   *   <dt>string [`m_surcharge`]</dt>
    *   <dd>
    *     The client-side calculated surcharge.
    *   </dd>
-   *   <dt>
-   *     string [<var>s_index</var>]
-   *   </dt>
+   *
+   *   <dt>string [`s_index`]</dt>
    *   <dd>
    *     The index of this form (optional).
    *   </dd>
-   *   <dt>
-   *     string <var>sid_pay_method</var>
-   *   </dt>
+   *
+   *   <dt>string `sid_pay_method`</dt>
    *   <dd>
    *     The payment method ID.
    *   </dd>

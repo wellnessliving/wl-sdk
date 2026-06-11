@@ -33,63 +33,23 @@ class AddonUpdateModel extends WlModelAbstract
    * Data to show appointment add-ons:<dl>
    *   <dt>array[] <var>a_addon</var></dt>
    *   <dd>
-   *     Data about appointment add-ons. Each element contains data about a single add-on:
-   *     <dl>
-   *       <dt>string <var>html_amount</var></dt>
-   *       <dd>The add-on's additional amount. This will be an empty string if the add-on doesn't have an additional amount.</dd>
-   *
-   *       <dt>string <var>html_duration</var></dt>
-   *       <dd>The add-on's additional duration. This will be an empty string if the add-on doesn't add duration.</dd>
-   *
-   *       <dt>string <var>html_title</var></dt>
-   *       <dd>The add-on's name.</dd>
-   *
-   *       <dt>int <var>i_count_banked</var></dt>
-   *       <dd>The quantity purchased and not used for the add-on.</dd>
-   *
-   *       <dt>int <var>i_count_paid</var></dt>
-   *       <dd>The quantity paid for the add-on.</dd>
-   *
-   *       <dt>int <var>i_count_use</var></dt>
-   *       <dd>The quantity used in current appointment for the add-on.</dd>
-   *
-   *       <dt>int <var>i_inventory_current</var></dt>
-   *       <dd>The add-ons inventory count.</dd>
-   *
-   *       <dt>int <var>i_product</var></dt>
-   *       <dd>The add-on's quantity.</dd>
-   *
-   *       <dt>bool <var>is_select</var></dt>
-   *       <dd>Determines whether the add-on is added to appointment.</dd>
-   *
-   *       <dt>bool <var>is_track</var></dt>
-   *       <dd>Whether product usage tracking for client.</dd>
-   *
-   *       <dt>string <var>k_shop_product_option</var></dt>
-   *       <dd>The add-on product key. 
-   *
-   *       <dt>string <var>url</var></dt>
-   *       <dd>The URL for the add-on picture. This will be an empty string if the add-on doesn't have a picture.</dd>
-   *     </dl>
-   *   </dd>
+   *     Data about appointment add-ons.
+   *        </dd>
    *
    *   <dt>array[] <var>a_addon_buy</var></dt>
    *   <dd>
    *     Add-ons available for purchase: zero quantity, zero usage quantity, and zero banked quantity.
-   *     Each element has the same structure as elements in `a_addon`.
-   *   </dd>
+   *         </dd>
    *
    *   <dt>array[] <var>a_addon_own</var></dt>
    *   <dd>
    *     Add-ons already owned but not selected: zero quantity, zero usage quantity, non-zero banked quantity.
-   *     Each element has the same structure as elements in `a_addon`.
-   *    </dd>
+   *          </dd>
    *
    *   <dt>array[] <var>a_addon_select</var></dt>
    *   <dd>
    *     Add-ons selected for this appointment: non-zero quantity or non-zero usage quantity.
-   *     Each element has the same structure as elements in `a_addon`.
-   *   </dd>
+   *         </dd>
    *
    *   <dt>bool <var>is_addon_banking</var></dt>
    *   <dd>Whether at least one of appointment add-ons is bankable.</dd>

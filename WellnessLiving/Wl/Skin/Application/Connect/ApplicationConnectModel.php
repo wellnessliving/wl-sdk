@@ -151,7 +151,7 @@ class ApplicationConnectModel extends WlModelAbstract
   public $text_team_id = '';
 
   /**
-   * Google OAuth redirect URL (must be `https://wellnessliving.com/`).
+   * Google OAuth redirect URL.
    *
    * @post post
    * @var string

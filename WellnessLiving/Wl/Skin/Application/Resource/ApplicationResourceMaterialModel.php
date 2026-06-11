@@ -107,6 +107,7 @@ class ApplicationResourceMaterialModel extends WlModelAbstract
    * Support email address shown in the store listing.
    *
    * @post post
+   * @var string
    */
   public $text_email = '';
 

@@ -367,8 +367,7 @@ class PurchaseModel extends WlModelAbstract
   /**
    * The selected sessions on the wait list that are unpaid.
    *
-   * Keys are class period keys. <i>
-   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
+   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @get get
    * @var string[]

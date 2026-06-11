@@ -59,6 +59,24 @@ class DayTimeModel extends WlModelAbstract
   public $dt_date = '';
 
   /**
+   * Maximum number of clients that can simultaneously book this service.
+   * `null` for asset bookings where this limit does not apply.
+   *
+   * @get result
+   * @var int|null
+   */
+  public $i_capacity = null;
+
+  /**
+   * Maximum number of clients that can be placed on the waitlist for this service.
+   * `null` if waitlist is disabled, the waitlist has no capacity limit, or for asset bookings.
+   *
+   * @get result
+   * @var int|null
+   */
+  public $i_capacity_waitlist = null;
+
+  /**
    * The duration of the asset booking or custom appointment duration in minutes. Zero in case of service predefined duration.
    * In case of back-to-back booking - custom duration of first appointment.
    *

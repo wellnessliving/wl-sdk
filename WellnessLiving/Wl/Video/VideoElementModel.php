@@ -31,8 +31,8 @@ class VideoElementModel extends WlModelAbstract
 
   /**
    * A list of staff members associated with the video. Every item has the following structure:<dl>
-   *   <dt>string <var>k_staff</var> <b>(deprecated)</b></dt>
-   *   <dd>The staff member key. 
+   *   <dt>string <var>k_staff</var></dt>
+   *   <dd><b>Deprecated</b> The staff member key. 
    *   <dt>string <var>text_name</var></dt>
    *   <dd>The staff member's full name.</dd>
    *   <dt>string <var>uid_staff</var></dt>
@@ -104,7 +104,6 @@ class VideoElementModel extends WlModelAbstract
   /**
    * Video file.
    *
-   * @internal This property is not used, but need for correct generate model.
    * @post post
    * @var array
    */
@@ -159,10 +158,9 @@ class VideoElementModel extends WlModelAbstract
    *
    * If the file will be uploaded in parts, its size will be set.
    *
-   * In this case, the file will not be uploaded to this API.
-   *
+   * 
    * @post post
-   * @var int|string
+   * @var int
    */
   public $i_file_upload_size = '';
 
@@ -335,7 +333,7 @@ class VideoElementModel extends WlModelAbstract
    * If the file will be uploaded in parts, upload ID will be set.
    *
    * In this case, the file will not be uploaded to this API.
-   *
+   * 
    * @post post
    * @var string
    */

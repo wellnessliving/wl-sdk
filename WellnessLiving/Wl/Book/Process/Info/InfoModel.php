@@ -109,89 +109,80 @@ class InfoModel extends WlModelAbstract
   /**
    * A list of all class sessions that can be booked together. Every element has the next structure:
    * <dl>
-   *   <dt>
-   *     string[] <var>a_staff</var>
-   *   </dt>
+   *   <dt>string[] `a_staff`</dt>
    *   <dd>
    *     List of staff names that are leading this session.
    *   </dd>
-   *   <dt>
-   *     string[] <var>a_virtual_location</var>
-   *   </dt>
+   *
+   *   <dt>string[] `a_virtual_location`</dt>
    *   <dd>
    *     List of virtual locations.
    *   </dd>
-   *   <dt>
-   *     string <var>dt_date</var>
-   *   </dt>
+   *
+   *   <dt>string `dt_date`</dt>
    *   <dd>
    *     The date/time when session starts in MySQL format and in GMT.
    *   </dd>
+   *
    *   <dt>int `i_active`</dt>
    *   <dd>Total number of clients on the active list.</dd>
+   *
    *   <dt>int `i_active_limit`</dt>
    *   <dd>Total capacity of the active list.</dd>
+   *
    *   <dt>int `i_duration`</dt>
    *   <dd>Duration of a service.</dd>
+   *
    *   <dt>int `i_wait`</dt>
    *   <dd>Total number of clients on the wait list.</dd>
+   *
    *   <dt>int|null `i_wait_limit`</dt>
    *   <dd>Total capacity the wait list. `null` if wail list in unlimited. `0` if wait list is disabled.</dd>
-   *   <dt>
-   *     boolean <var>is_select</var>
-   *   </dt>
+   *
+   *   <dt>bool `is_select`</dt>
    *   <dd>
    *     <tt>true</tt> if this session should be selected when page is initialized;
    *     <tt>false</tt> if otherwise.
    *   </dd>
-   *   <dt>
-   *     bool <var>is_wait</var>
-   *   </dt>
+   *
+   *   <dt>bool `is_wait`</dt>
    *   <dd>
    *     `true` if client is added to a wait list, `false` - to an active list.
    *   </dd>
-   *   <dt>
-   *     bool <var>is_wait_list_unpaid</var>
-   *   </dt>
+   *
+   *   <dt>bool `is_wait_list_unpaid`</dt>
    *   <dd>
    *     Allow clients to join the wait list unpaid.
    *   </dd>
-   *   <dt>
-   *     string <var>k_class_period</var>
-   *   </dt>
+   *
+   *   <dt>string `k_class_period`</dt>
    *   <dd>
    *     The key of the session.    </dd>
-   *   <dt>
-   *     string <var>k_location</var>
-   *   </dt>
+   *
+   *   <dt>string `k_location`</dt>
    *   <dd>
    *     Location key.    </dd>
-   *   <dt>
-   *     bool <var>m_price</var>
-   *   </dt>
+   *
+   *   <dt>bool `m_price`</dt>
    *   <dd>
    *     Price of the session.
    *   </dd>
-   *   <dt>
-   *     string <var>s_location</var>
-   *   </dt>
+   *
+   *   <dt>string `s_location`</dt>
    *   <dd>
    *     The name of the location where the session occurred.
    *   </dd>
-   *   <dt>
-   *     string <var>s_start</var>
-   *   </dt>
+   *
+   *   <dt>string `s_start`</dt>
    *   <dd>
    *     The date/time when the session starts in human-readable format.
    *     Returned in the time zone of the location.
    *   </dd>
-   *   <dt>
-   *     string <var>text_duration</var>
-   *   </dt>
+   *
+   *   <dt>string `text_duration`</dt>
    *   <dd>
    *     String representation of session duration.
-   *
-   *   </dd>
+   *        </dd>
    * </dl>
    *
    * @get result
@@ -232,7 +223,7 @@ class InfoModel extends WlModelAbstract
    * Keys are class period keys.  Values are index arrays of dates/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_session_wait_list_unpaid = [];
 

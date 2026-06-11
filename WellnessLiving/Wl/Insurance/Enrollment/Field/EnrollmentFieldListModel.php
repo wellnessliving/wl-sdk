@@ -22,20 +22,19 @@ class EnrollmentFieldListModel extends WlModelAbstract
    * 
    * @post post
    * @put post
-   * @var array
+   * @var string[]
    */
   public $a_account = [];
 
   /**
    * List of fields that the user has filled in for enrollment.
    *
-   * Keys refer specifically to field keys.
-   * Values refer specifically to values entered by the user.
+   * Keys refer specifically to field keys.  Values refer specifically to values entered by the user.
    *
    * 
    * @post post
    * @put post
-   * @var array
+   * @var string[]
    */
   public $a_field = [];
 
@@ -47,7 +46,7 @@ class EnrollmentFieldListModel extends WlModelAbstract
    *     If the program doesn't require reimbursement, this list will be empty.
    *     Each element has the same structure as elements of `a_field`:
    *     <dl>
-   *       <dt>array `a_config`</dt>
+   *       <dt>string[] `a_config`</dt>
    *       <dd>
    *         Additional configuration for the field.
    *
@@ -84,11 +83,11 @@ class EnrollmentFieldListModel extends WlModelAbstract
    *   <dd>
    *     The list of partner enrollment fields. Each element:
    *     <dl>
-   *       <dt>array `a_config`</dt>
+   *       <dt>string[] `a_config`</dt>
    *       <dd>
    *         Additional configuration for the field:
    *         <dl>
-   *           <dt>array `a_option`</dt>
+   *           <dt>string[] `a_option`</dt>
    *           <dd>
    *             Options for dropdown fields. Keys are display titles, values are option values.
    *             Empty array if the field is not a dropdown.

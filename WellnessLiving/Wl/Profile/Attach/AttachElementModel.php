@@ -11,16 +11,6 @@ class AttachElementModel extends WlModelAbstract
 {
   /**
    * Uploaded file.
-   * Standard PHP `$_FILES` entry structure: <dl>
-   *   <dt>string `name`</dt>
-   *   <dd>Original file name as provided by the client.</dd>
-   *   <dt>int `size`</dt>
-   *   <dd>File size in bytes.</dd>
-   *   <dt>string `tmp_name`</dt>
-   *   <dd>Temporary file path on the server where the uploaded file is stored.</dd>
-   *   <dt>string `type`</dt>
-   *   <dd>MIME type of the uploaded file as provided by the client.</dd>
-   * </dl>
    *
    * @post post
    * @var array

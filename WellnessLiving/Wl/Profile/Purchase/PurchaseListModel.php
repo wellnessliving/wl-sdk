@@ -59,6 +59,12 @@ class PurchaseListModel extends WlModelAbstract
    *     If `true`, then the purchase item is a package component. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
+   *     bool <var>is_package</var>
+   *   </dt>
+   *   <dd>
+   *     If `true`, then the purchase item is a package, `false` otherwise.
+   *   </dd>
+   *   <dt>
    *     string <var>k_appointment</var>
    *   </dt>
    *   <dd>

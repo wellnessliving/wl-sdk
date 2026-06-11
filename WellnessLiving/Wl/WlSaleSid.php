@@ -70,7 +70,7 @@ abstract class WlSaleSid
   const PROMOTION_VIDEO = 13;
 
   /**
-   * Products: water, t-shirts, etc. That available for quick buy.
+   * Products: water, t-shirts, etc. That is available for quick buy.
    */
   const QUICK_BUY = 10;
 }

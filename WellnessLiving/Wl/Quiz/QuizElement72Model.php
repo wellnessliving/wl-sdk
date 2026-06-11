@@ -35,7 +35,7 @@ class QuizElement72Model extends WlModelAbstract
 
   /**
    * Quiz settings.
-   *
+   * 
    * @get result
    * @post post
    * @put result

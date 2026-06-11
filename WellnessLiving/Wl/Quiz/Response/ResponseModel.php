@@ -33,44 +33,6 @@ class ResponseModel extends WlModelAbstract
 
   /**
    * Elements' uploaded files.
-   * An array with files data, has next structure:<dl>
-   *    <dt>array <var>error</var></dt>
-   *    <dd>
-   *      An array of files upload errors where key is element unique identifier
-   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *     property name and value is errors codes.
-   *    </dd>
-   *    <dt>array <var>full_path</var></dt>
-   *    <dd>
-   *      An array of files full path where key is element unique identifier
-   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *     property name and value is full path.
-   *    </dd>
-   *    <dt>array <var>name</var></dt>
-   *    <dd>
-   *      An array of files' names where key is element unique identifier
-   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *     property name and value is file name.
-   *    </dd>
-   *    <dt>array <var>size</var></dt>
-   *    <dd>
-   *      An array of files' sizes where key is element unique identifier
-   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *     property name and value is file size.
-   *    </dd>
-   *    <dt>array <var>tmp_name</var></dt>
-   *    <dd>
-   *      An array of files' temporary names where key is element unique identifier
-   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *     property name and value is file temporary name.
-   *    </dd>
-   *    <dt>array <var>type</var></dt>
-   *    <dd>
-   *      An array of files' types where key is element unique identifier
-   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *     property name and value is file type.
-   *    </dd>
-   *  </dl>
    *
    * @post post
    * @var array[]
@@ -111,14 +73,6 @@ class ResponseModel extends WlModelAbstract
    * @var string[]
    */
   public $a_quiz_response_key = [];
-
-  /**
-   * Quiz settings.
-   *
-   * @get result
-   * @var array
-   */
-  public $a_quiz_setting = [];
 
   /**
    * Information about service if response connected to visit.

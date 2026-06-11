@@ -56,13 +56,21 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
   /**
    * Default purchase option information.
    * <dl>
-   *   <dt>string? <var>id_sale</var></dt>
-   *   <dd>The sale item type, one of the {@link WlSaleSid} constants.
-   *   This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".</dd>
-   *   <dt>string? <var>k_id</var></dt>
-   *   <dd>The default Purchase Option key.    This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".</dd>
-   *   <dt>bool <var>is_single_default</var></dt>
-   *   <dd>If the default Purchase Option is set to "Drop-in rate" then the value will be `true`, `false` otherwise.</dd>
+   *   <dt>string|null `id_sale`</dt>
+   *   <dd>
+   *     The sale item type, one of the {@link WlSaleSid} constants.
+   *     This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
+   *   </dd>
+   *
+   *   <dt>string|null `k_id`</dt>
+   *   <dd>
+   *     The default Purchase Option key.      This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
+   *   </dd>
+   *
+   *   <dt>bool `is_single_default`</dt>
+   *   <dd>
+   *     If the default Purchase Option is set to "Drop-in rate" then the value will be `true`, `false` otherwise.
+   *   </dd>
    * </dl>
    *
    * @get result

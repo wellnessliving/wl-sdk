@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Profile\Edit;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
 use WellnessLiving\Wl\Field\WlFieldGeneralSid;
 use WellnessLiving\Wl\Field\WlFieldTypeSid;
 use WellnessLiving\Wl\Login\Member\MemberIntentsSid;
@@ -26,19 +27,36 @@ class EditByTokenModel extends WlModelAbstract
   public $a_change = [];
 
   /**
-   * List of errors.
-   * `null` if there was no mistake.
+   * List of validation errors. `null` if no error occurred.
+   * Each element: <dl>
+   *   <dt>string `code`</dt>
+   *   <dd>Error code identifying the type of validation failure.</dd>
+   *   <dt>string `field`</dt>
+   *   <dd>Field identifier that caused the error.</dd>
+   *   <dt>string `message`</dt>
+   *   <dd>Human-readable error message.</dd>
+   * </dl>
    *
    * @get result,error
    * @post result,error
-   * @var array|null
+   * @var array[]|null
    */
   public $a_error_list = null;
 
   /**
-   * Family relation data for new created user.
+   * Family relation data for the newly created user.
+   * `null` if no family relation is required: <dl>
+   *   <dt>int `id_family_relation`</dt>
+   *   <dd>Relation type. One of {@link WlFamilyRelationSid} constants.</dd>
    *
-   * `null` if family relation is not required.
+   *   <dt>bool [`is_relative_pay`]</dt>
+   *   <dd>`true` if the relative will pay for this user; `false` or absent otherwise.</dd>
+   *
+   *   <dt>string `uid_from`</dt>
+   *   <dd>
+   *     User key of the relative (must be the currently logged-in user).
+   *        </dd>
+   * </dl>
    *
    * @post post
    * @var array|null

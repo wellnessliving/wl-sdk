@@ -16,7 +16,7 @@ class QueryModel extends WlModelAbstract
    * A list of dynamic fields in this report.
    *
    * @post result
-   * @var array[]|ReportGeneratorFieldInfo[]
+   * @var ReportGeneratorFieldInfo[]
    */
   public $a_dynamic;
 

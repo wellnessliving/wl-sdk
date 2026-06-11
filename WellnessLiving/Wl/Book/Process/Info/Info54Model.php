@@ -109,89 +109,80 @@ class Info54Model extends WlModelAbstract
   /**
    * A list of all class sessions that can be booked together. Every element has the next structure:
    * <dl>
-   *   <dt>
-   *     string[] <var>a_staff</var>
-   *   </dt>
+   *   <dt>string[] `a_staff`</dt>
    *   <dd>
    *     List of staff names that are leading this session.
    *   </dd>
-   *   <dt>
-   *     string[] <var>a_virtual_location</var>
-   *   </dt>
+   *
+   *   <dt>string[] `a_virtual_location`</dt>
    *   <dd>
    *     List of virtual locations.
    *   </dd>
-   *   <dt>
-   *     string <var>dt_date</var>
-   *   </dt>
+   *
+   *   <dt>string `dt_date`</dt>
    *   <dd>
    *     The date/time when session starts in MySQL format and in GMT.
    *   </dd>
+   *
    *   <dt>int `i_active`</dt>
    *   <dd>Total number of clients on the active list.</dd>
+   *
    *   <dt>int `i_active_limit`</dt>
    *   <dd>Total capacity of the active list.</dd>
+   *
    *   <dt>int `i_duration`</dt>
    *   <dd>Duration of a service.</dd>
+   *
    *   <dt>int `i_wait`</dt>
    *   <dd>Total number of clients on the wait list.</dd>
+   *
    *   <dt>int|null `i_wait_limit`</dt>
    *   <dd>Total capacity the wait list. `null` if wail list in unlimited. `0` if wait list is disabled.</dd>
-   *   <dt>
-   *     boolean <var>is_select</var>
-   *   </dt>
+   *
+   *   <dt>bool `is_select`</dt>
    *   <dd>
    *     <tt>true</tt> if this session should be selected when page is initialized;
    *     <tt>false</tt> if otherwise.
    *   </dd>
-   *   <dt>
-   *     bool <var>is_wait</var>
-   *   </dt>
+   *
+   *   <dt>bool `is_wait`</dt>
    *   <dd>
    *     `true` if client is added to a wait list, `false` - to an active list.
    *   </dd>
-   *   <dt>
-   *     bool <var>is_wait_list_unpaid</var>
-   *   </dt>
+   *
+   *   <dt>bool `is_wait_list_unpaid`</dt>
    *   <dd>
    *     Allow clients to join the wait list unpaid.
    *   </dd>
-   *   <dt>
-   *     string <var>k_class_period</var>
-   *   </dt>
+   *
+   *   <dt>string `k_class_period`</dt>
    *   <dd>
    *     The key of the session.    </dd>
-   *   <dt>
-   *     string <var>k_location</var>
-   *   </dt>
+   *
+   *   <dt>string `k_location`</dt>
    *   <dd>
    *     Location key.    </dd>
-   *   <dt>
-   *     bool <var>m_price</var>
-   *   </dt>
+   *
+   *   <dt>bool `m_price`</dt>
    *   <dd>
    *     Price of the session.
    *   </dd>
-   *   <dt>
-   *     string <var>s_location</var>
-   *   </dt>
+   *
+   *   <dt>string `s_location`</dt>
    *   <dd>
    *     The name of the location where the session occurred.
    *   </dd>
-   *   <dt>
-   *     string <var>s_start</var>
-   *   </dt>
+   *
+   *   <dt>string `s_start`</dt>
    *   <dd>
    *     The date/time when the session starts in human-readable format.
    *     Returned in the time zone of the location.
    *   </dd>
-   *   <dt>
-   *     string <var>text_duration</var>
-   *   </dt>
+   *
+   *   <dt>string `text_duration`</dt>
    *   <dd>
    *     String representation of session duration.
-   *
-   *   </dd>
+   *        </dd>
    * </dl>
    *
    * @get result
@@ -219,51 +210,52 @@ class Info54Model extends WlModelAbstract
   /**
    * The selected sessions.
    *
-   * <b>Keys</b> - The class period keys.
-   * <b>Values</b> - List of date/time when the session occurred in MySQL format and in GMT.
+   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_session_select = [];
 
   /**
    * Selected sessions on the waiting list without pay.
    *
-   * Keys - session keys.
-   *
-   * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
+   * Keys are class period keys.  Values are index arrays of dates/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
-   * @var array
+   * @var string[]
    */
   public $a_session_wait_list_unpaid = [];
 
   /**
    * The staff member conducting the session. Every element has the next structure:
    * <dl>
-   *   <dt>
-   *     array <var>a_logo</var>
-   *   </dt>
+   *   <dt>array `a_logo`</dt>
    *     <dd>
    *     The staff member photo:
    *     <dl>
-   *       <dt>int <var>i_height</var></dt>
+   *       <dt>int `i_height`</dt>
    *       <dd>The image height.</dd>
-   *       <dt>int <var>i_width</var></dt>
+   *
+   *       <dt>int `i_width`</dt>
    *       <dd>The image width.</dd>
-   *       <dt>string <var>s_url</var></dt>
+   *
+   *       <dt>string `s_url`</dt>
    *       <dd>The image URL.</dd>
    *     </dl>
    *   </dd>
-   *   <dt>string <var>s_family</var></dt>
+   *
+   *   <dt>string `s_family`</dt>
    *   <dd>The first letter of staff member surname.</dd>
-   *   <dt>string <var>s_staff</var></dt>
+   *
+   *   <dt>string `s_staff`</dt>
    *   <dd>The staff member's name.</dd>
-   *   <dt>string <var>uid_staff</var></dt>
+   *
+   *   <dt>string `uid_staff`</dt>
    *   <dd>UID of the staff member. 
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>Alias of <var>uid_staff</var> for backward compatibility.</dd>
+   *
+   *   <dt>string `uid`</dt>
+   *   <dd>Alias of `uid_staff` for backward compatibility.</dd>
    * </dl>
    *
    * @get result

@@ -145,8 +145,10 @@ class StaffElementModel extends WlModelAbstract
    * The key of the staff member resolved and used internally by this API.
    *
    * This property is populated from {@link StaffElementModel::$uid_staff} in {@link StaffElementApi::post()} and
-   * returned in API result for compatibility. Passing <tt>k_staff</tt> in request payload is not supported and
+   * returned in API result for compatibility.
    *
+   * Passing `k_staff` in request payload is not supported and causes an error.
+   * 
    * @post get,result
    * @var string|null
    */

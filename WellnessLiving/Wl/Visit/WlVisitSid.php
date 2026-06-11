@@ -35,7 +35,7 @@ class WlVisitSid
    *
    * The real type of this visit must be set manually by staff.
    * Status can be changed automatically to {@link WlVisitSid::ATTEND}.
-   *
+   * 
    * @see WlVisitSid::TRUANCY
    */
   const PENDING = 7;

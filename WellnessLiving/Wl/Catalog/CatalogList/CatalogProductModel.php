@@ -13,7 +13,7 @@ class CatalogProductModel extends WlModelAbstract
 {
   /**
    * Categories with sort settings. Keys refer to shop category keys. Values refer to sort settings. Contains the following structure: <dl>
-   *   <dt>array `a_order`</dt>
+   *   <dt>int[] `a_order`</dt>
    *   <dd>
    *
    *     Each element is a product key string, ordered as desired.

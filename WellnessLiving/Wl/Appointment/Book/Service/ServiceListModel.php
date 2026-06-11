@@ -52,10 +52,22 @@ class ServiceListModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    *   <dt>
-   *     array <var>a_config</var>
+   *     array|null <var>a_config</var>
    *   </dt>
    *   <dd>
-   *     Appointment-specific business policies. This will be `null` when using the general business policy.
+   *     Appointment-specific business policy overrides. `null` when the service uses the general business policy.
+   *     When not `null`, contains a subset of business config fields, including: <dl>
+   *       <dt>bool `is_back_to_back`</dt>
+   *       <dd>`true` if this service supports back-to-back booking.</dd>
+   *       <dt>bool `is_book_repeat_client`</dt>
+   *       <dd>`true` if clients can book this service on a recurring basis.</dd>
+   *       <dt>bool `is_book_repeat_no_end_date_appointment`</dt>
+   *       <dd>`true` if appointment bookings for this service default to weekly recurring with no end date.</dd>
+   *       <dt>bool `is_multiple_booking`</dt>
+   *       <dd>`true` if multiple bookings are allowed for this service.</dd>
+   *       <dt>bool `is_wait_list_unpaid`</dt>
+   *       <dd>`true` if clients on the wait list do not have to pay upfront.</dd>
+   *     </dl>
    *   </dd>
    *   <dt>
    *     array <var>a_image</var>
@@ -78,18 +90,16 @@ class ServiceListModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    *   <dt>
-   *     array <var>a_login_type_restriction</var>
+   *     string[] <var>a_login_type_restriction</var>
    *   </dt>
    *   <dd>
-   *     Keys are login type keys, ues - List of login types' titles for
-   *     current service. Clients that have one of these types can book service.
+   *     Keys are login type keys.      Values - List of login types' titles for current service. Clients that have one of these types can book service.
    *   </dd>
    *   <dt>
    *     string[] <var>a_member_group_restriction</var>
    *   </dt>
    *   <dd>
-   *     Keys are member group keys, ues - list of member groups' titles
-   *     for current service. Clients that belongs to these groups can book service.
+   *     Keys are member group keys.      Values - list of member groups' titles for current service. Clients that belongs to these groups can book service.
    *   </dd>
    *   <dt>
    *     string <var>f_deposit</var>

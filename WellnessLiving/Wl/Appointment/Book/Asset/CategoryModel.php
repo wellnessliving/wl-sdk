@@ -12,27 +12,22 @@ class CategoryModel extends WlModelAbstract
   /**
    * A list of information about asset categories.
    * <dl>
-   *   <dt>
-   *     boolean <var>hide_application</var>
-   *   </dt>
+   *   <dt>bool `hide_application`</dt>
    *   <dd>
    *     <tt>true</tt> - all resources are hidden in this category for White Label mobile application. <tt>false</tt> - otherwise.
    *   </dd>
-   *   <dt>
-   *     string <var>k_resource_type</var>
-   *   </dt>
+   *
+   *   <dt>string `k_resource_type`</dt>
    *   <dd>
    *     Resource type ID.
    *   </dd>
-   *   <dt>
-   *     string <var>html_title</var>
-   *   </dt>
+   *
+   *   <dt>string `html_title`</dt>
    *   <dd>
    *     Title of resource type.
    *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
+   *
+   *   <dt>string `text_title`</dt>
    *   <dd>
    *     Title of resource type as text.
    *   </dd>

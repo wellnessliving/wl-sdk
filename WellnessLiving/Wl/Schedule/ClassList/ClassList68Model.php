@@ -19,7 +19,7 @@ class ClassList68Model extends WlModelAbstract
    * Each value is an empty array reserved for future use.
    *
    * @post result
-   * @var array[]
+   * @var string[]
    */
   public $a_calendar = [];
 

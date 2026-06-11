@@ -29,44 +29,6 @@ class Response65Model extends WlModelAbstract
 
   /**
    * Elements' uploaded files.
-   * An array with files data, has next structure:<dl>
-   *    <dt>array <var>error</var></dt>
-   *    <dd>
-   *      An array of files upload errors where key is element unique identifier
-   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *     property name and value is errors codes.
-   *    </dd>
-   *    <dt>array <var>full_path</var></dt>
-   *    <dd>
-   *      An array of files full path where key is element unique identifier
-   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *     property name and value is full path.
-   *    </dd>
-   *    <dt>array <var>name</var></dt>
-   *    <dd>
-   *      An array of files' names where key is element unique identifier
-   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *     property name and value is file name.
-   *    </dd>
-   *    <dt>array <var>size</var></dt>
-   *    <dd>
-   *      An array of files' sizes where key is element unique identifier
-   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *     property name and value is file size.
-   *    </dd>
-   *    <dt>array <var>tmp_name</var></dt>
-   *    <dd>
-   *      An array of files' temporary names where key is element unique identifier
-   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *     property name and value is file temporary name.
-   *    </dd>
-   *    <dt>array <var>type</var></dt>
-   *    <dd>
-   *      An array of files' types where key is element unique identifier
-   *     {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
-   *     property name and value is file type.
-   *    </dd>
-   *  </dl>
    *
    * @post post
    * @var array[]
@@ -92,7 +54,7 @@ class Response65Model extends WlModelAbstract
   public $a_purchase_item = [];
 
   /**
-   * Data for Quick Buy.
+   * Data for Quick Buy. Empty array if this is not a Quick Buy session.
    *
    * @post post
    * @var array
@@ -109,15 +71,20 @@ class Response65Model extends WlModelAbstract
   public $a_quiz_response_key = [];
 
   /**
-   * Quiz settings.
-   *
-   * @get result
-   * @var array
-   */
-  public $a_quiz_setting = [];
-
-  /**
    * Information about service if response connected to visit.
+   * Empty array if the response is not connected to a visit: <dl>
+   *   <dt>string `text_date`</dt>
+   *   <dd>Formatted visit date and time in the location's time zone.</dd>
+   *
+   *   <dt>string `text_location`</dt>
+   *   <dd>Location title.</dd>
+   *
+   *   <dt>string `text_service`</dt>
+   *   <dd>Service title.</dd>
+   *
+   *   <dt>string `text_staff_member`</dt>
+   *   <dd>Comma-separated list of full names of staff members conducting the visit.</dd>
+   * </dl>
    *
    * @get result
    * @var array

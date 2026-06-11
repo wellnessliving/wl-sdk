@@ -31,7 +31,7 @@ class SubscribeModel extends WlModelAbstract
    * This is needed to send message that were generated before a client has subscribed.
    *
    * @post result
-   * @var array
+   * @var string[]
    */
   public $a_message_broadcast = [];
 
