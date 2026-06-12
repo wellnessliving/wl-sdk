@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Wl\Appointment\Book\Staff;
 
-use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -16,38 +15,6 @@ class ListModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>int `id_gender`</dt>
-  <dd>Staff member's gender. One of {@link AGenderSid} constants.</dd>
-
-  <dt>bool `is_available`</dt>
-  <dd>
-    Whether staff member is available for booking. Note, if staff member reached daily limits, this field
-will be different for client and staff booking flows. If client books, such staff member is not available and
-this field is `false`. If staff member books, such staff member is available.
-  </dd>
-
-  <dt>bool `is_daily_limit`</dt>
-  <dd>Whether staff member reached daily limits on number or total duration of the appointments for one day.</dd>
-
-  <dt>bool `is_wait_list`</dt>
-  <dd>Whether staff member available only for wait list booking.</dd>
-
-  <dt>string `k_staff`</dt>
-  <dd>@deprecated Legacy staff key. rned only for allow-listed apps.</dd>
-
-  <dt>string `s_position`</dt>
-  <dd>Position of the staff member in the business.</dd>
-
-  <dt>int `s_staff`</dt>
-  <dd>Name of the staff member.</dd>
-
-  <dt>string `uid`</dt>
-  <dd>UID of the staff member. 
-
-  <dt>string `xml_biography`</dt>
-  <dd>Biography of the staff member.</dd>
-</dl>
   public $a_staff;
 
   /**

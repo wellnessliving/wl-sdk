@@ -18,13 +18,6 @@ class CoreSidModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>int `sid`</dt>
-  <dd>String ID.</dd>
-
-  <dt>string `text_title`</dt>
-  <dd>Title of the ID.</dd>
-</dl>
   public $a_list;
 
   /**

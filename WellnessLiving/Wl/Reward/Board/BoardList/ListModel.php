@@ -16,15 +16,6 @@ class ListModel extends WlModelAbstract
    * @get result
    * @var array[]|null
    */
-<dl>
-  <dt>string `k_reward_board`</dt>
-  <dd>Reward board key.
-`0` for the all-time system board.
-
-
-  <dt>string `s_title`</dt>
-  <dd>Board title.</dd>
-</dl>
   public $a_reward_board;
 
   /**

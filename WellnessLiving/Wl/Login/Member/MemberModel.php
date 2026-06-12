@@ -15,28 +15,6 @@ class MemberModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>bool `can_enter`</dt>
-  <dd>
-    <tt>true</tt> if the user is allowed to sign in into this business; <tt>false</tt> otherwise.
-/dd>
-
-  <dt>bool `is_franchisee`</dt>
-  <dd>If `true`, then the business is a franchisee. Otherwise, this will be `false`.</dd>
-
-  <dt>bool `is_franchisor`</dt>
-  <dd>If `true`, then the business is a franchisor. Otherwise, this will be `false`.</dd>
-
-  <dt>string `k_business`</dt>
-  <dd>The business key. 
-
-  <dt>string `k_business_franchisor`</dt>
-  <dd>
-    The business key of the Enterprise Headquarters account (if applicable). /dd>
-
-  <dt>string `text_title`</dt>
-  <dd>The title of the business.</dd>
-</dl>
   public $a_business;
 
   /**

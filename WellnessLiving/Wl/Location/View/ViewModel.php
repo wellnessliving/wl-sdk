@@ -44,16 +44,6 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>int `i_height`</dt>
-  <dd>The image height.</dd>
-
-  <dt>int `i_width`</dt>
-  <dd>The image width.</dd>
-
-  <dt>string `s_url`</dt>
-  <dd>The URL to the image.</dd>
-</dl>
   public $a_logo;
 
   /**
@@ -63,19 +53,6 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>int `i_height`</dt>
-  <dd>Height.</dd>
-
-  <dt>int `i_width`</dt>
-  <dd>Width.</dd>
-
-  <dt>string `url_preview`</dt>
-  <dd>URL to image preview.</dd>
-
-  <dt>string `url_slide`</dt>
-  <dd>URL to full image.</dd>
-</dl>
   public $a_slide;
 
   /**
@@ -85,13 +62,6 @@ class ViewModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>string `s_end`</dt>
-  <dd>The time of day end in MySQL format.</dd>
-
-  <dt>string `s_start`</dt>
-  <dd>The time of day start in MySQL format.</dd>
-</dl>
   public $a_work;
 
   /**

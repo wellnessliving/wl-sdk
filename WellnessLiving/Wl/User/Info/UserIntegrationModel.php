@@ -17,16 +17,6 @@ class UserIntegrationModel extends WlModelAbstract
    * @get result
    * @var array|null
    */
-<dl>
-  <dt>bool `is_classpass`</dt>
-  <dd>`true` if user use the Classpass integration, `false` - otherwise.</dd>
-
-  <dt>bool `is_gympass`</dt>
-  <dd>`true` if user use the Gympass integration, `false` - otherwise.</dd>
-
-  <dt>bool `is_reserve_with_google`</dt>
-  <dd>`true` if user use the Reserve With Google integration, `false` - otherwise.</dd>
-</dl>
   public $a_integration = null;
 
   /**

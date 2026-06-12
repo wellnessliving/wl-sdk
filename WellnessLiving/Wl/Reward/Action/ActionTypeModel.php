@@ -15,10 +15,6 @@ class ActionTypeModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>int `i_score`</dt>
-  <dd>Number of points for this reward action.</dd>
-</dl>
   public $a_reward_action;
 
   /**

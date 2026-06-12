@@ -15,42 +15,6 @@ class ResponseListModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string[] `a_visit`</dt>
-  <dd>
-    List of visit keys associated with uncompleted response.
-   Key is visit key. Value is date of visit.
-  </dd>
-
-  <dt>string `dtl_date`</dt>
-  <dd>The date of the request to fill out a quiz form.</dd>
-
-  <dt>int `id_source`</dt>
-  <dd>
-    The place where the request to fill out a quiz form occurred.
-  </dd>
-
-  <dt>bool `is_private`</dt>
-  <dd>
-    Determines whether the form can be viewed by staff member only after confirmation.
-   `true` - the form can be viewed only after confirmation.
-   `false` - the form can always be viewed.
-  </dd>
-
-  <dt>string `k_quiz`</dt>
-  <dd>The quiz key. 
-
-  <dt>string `k_quiz_login`</dt>
-  <dd>The key of the request. 
-
-  <dt>string|null `k_quiz_response`</dt>
-  <dd>
-    Key of the response. Not `null` in case when response in draft status.
-  </dd>
-
-  <dt>string `text_title`</dt>
-  <dd>The quiz title.</dd>
-</dl>
   public $a_quiz_login = [];
 
   /**
@@ -59,51 +23,6 @@ class ResponseListModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string[] `a_visit`</dt>
-  <dd>
-    List of visit keys associated with uncompleted response.
-   Key is visit key. Value is date of visit.
-  </dd>
-
-  <dt>string `dtl_date`</dt>
-  <dd>The date of the request to fill out a quiz form.</dd>
-
-  <dt>int `id_source`</dt>
-  <dd>
-    The place where the request to fill out the quiz form occurred.
-  </dd>
-
-  <dt>int `id_status`</dt>
-  <dd>Status of the response.</dd>
-
-  <dt>bool `is_private`</dt>
-  <dd>
-    Determines whether the form can be viewed by staff member only after confirmation.
-   `true` - the form can be viewed only after confirmation.
-   `false` - the form can always be viewed.
-  </dd>
-
-  <dt>string `k_quiz`</dt>
-  <dd>The quiz key. 
-
-  <dt>string `k_quiz_login`</dt>
-  <dd>The quiz response key. 
-
-  <dt>string|null `text_amend_date`</dt>
-  <dd>Date when response amended.
-   `null` if response was not edited.</dd>
-
-  <dt>string|null `text_amend_user`</dt>
-  <dd>Name of the user who amend the response.
-   `null` if response was not edited.</dd>
-
-  <dt>string `text_title`</dt>
-  <dd>The quiz title.</dd>
-
-  <dt>string `text_user`</dt>
-  <dd>Name of user who complete response or start a draft.</dd>
-</dl>
   public $a_quiz_response = [];
 
   /**

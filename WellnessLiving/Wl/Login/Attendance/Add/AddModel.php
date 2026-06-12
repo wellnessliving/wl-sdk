@@ -20,15 +20,6 @@ class AddModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `k_login_promotion`</dt>
-  <dd>
-    The login promotion key, available to pay for the session.
-/dd>
-
-  <dt>string `text_title`</dt>
-  <dd>The title of the login promotion.</dd>
-</dl>
   public $a_login_promotion;
 
   /**
@@ -38,15 +29,6 @@ class AddModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `k_session_pass`</dt>
-  <dd>
-    The session pass key, available to pay for the session.
-/dd>
-
-  <dt>string `text_title`</dt>
-  <dd>The title of the session pass.</dd>
-</dl>
   public $a_session_pass;
 
   /**

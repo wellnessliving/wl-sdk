@@ -3,7 +3,6 @@
 namespace WellnessLiving\Wl\Coupon\CouponList;
 
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Coupon\WlTypeSid;
 
 /**
  * Retrieves a list of gift cards.
@@ -16,16 +15,6 @@ class ListModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>int `id_type`</dt>
-  <dd>The type of coupon. One of {@link WlTypeSid} constants.</dd>
-
-  <dt>string `k_coupon`</dt>
-  <dd>The gift card key.</dd>
-
-  <dt>string `text_title`</dt>
-  <dd>The title of the gift card.</dd>
-</dl>
   public $a_coupon;
 
   /**

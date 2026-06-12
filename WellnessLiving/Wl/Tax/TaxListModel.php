@@ -17,19 +17,6 @@ class TaxListModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>float `f_value`</dt>
-  <dd>The amount of the tax.</dd>
-
-  <dt>string `k_tax`</dt>
-  <dd>The type of the tax, one of the {@link WlTaxSid} constants.</dd>
-
-  <dt>string `k_tax`</dt>
-  <dd>The tax key.</dd>
-
-  <dt>string `text_title`</dt>
-  <dd>The name of the tax.</dd>
-</dl>
   public $a_list;
 
   /**

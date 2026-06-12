@@ -25,13 +25,6 @@ class ApplicationResourceUploadModel extends WlModelAbstract
    * @post post
    * @var WlFile[]
    */
-<dl>
-  <dt>int[] `error`</dt>
-  <dd>An error code representing the success or failure status.</dd>
-
-  <dt>string[] `tmp_name`</dt>
-  <dd>The temporary filename of the file in which the uploaded file was stored on the server.</dd>
-</dl>
   public $a_image_upload = [];
 
   /**

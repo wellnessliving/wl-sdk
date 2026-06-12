@@ -18,16 +18,6 @@ class TagListModel extends WlModelAbstract
    * @post post,result
    * @var array[]
    */
-<dl>
-  <dt>int `i_sort`</dt>
-  <dd>The sort order of the tag.</dd>
-
-  <dt>string `k_tag`</dt>
-  <dd>The tag key. 
-
-  <dt>string `text_title`</dt>
-  <dd>The tag title.</dd>
-</dl>
   public $a_list = [];
 
   /**

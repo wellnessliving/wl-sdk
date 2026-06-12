@@ -2,13 +2,7 @@
 
 namespace WellnessLiving\Wl\Book\Process\Purchase;
 
-use WellnessLiving\Core\a\ADateWeekSid;
-use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
-use WellnessLiving\Wl\WlProgramCategorySid;
-use WellnessLiving\Wl\WlProgramSid;
-use WellnessLiving\Wl\WlProgramTypeSid;
 
 /**
  * Displays information about Purchase Options that can book specified session(s).
@@ -23,31 +17,6 @@ class Purchase56Model extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>string `f_price`</dt>
-  <dd>The price, always '0'.</dd>
-
-  <dt>int `i_count`</dt>
-  <dd>Login prize remaining quantity.</dd>
-
-  <dt>int `i_limit`</dt>
-  <dd>The limit of sessions that can be booked with reward prize.</dd>
-
-  <dt>int `id_purchase_item`</dt>
-  <dd>The ID of Purchase Option type. One of the {@link WlPurchaseItemSid} constants.</dd>
-
-  <dt>string `k_id`</dt>
-  <dd>The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.</dd>
-
-  <dt>string `k_login_prize`</dt>
-  <dd>Key of login prize. 
-
-  <dt>string `s_value`</dt>
-  <dd>The unique identifier.</dd>
-
-  <dt>string `text_title`</dt>
-  <dd>User-friendly login prize description.</dd>
-</dl>
   public $a_login_prize = [];
 
   /**
@@ -57,151 +26,6 @@ class Purchase56Model extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>array `a_login_promotion_info`</dt>
-  <dd>
-    Information about the Purchase Option with the following information:
- <dl>
-   <dt>int <var>i_limit</var></dt>
-   <dd>The number of visits the Purchase Option allows the client to make.</dd>
-   <dt>int|null <var>i_limit_duration</var></dt>
-   <dd>The maximum number of minutes the Purchase Option can be used for.</dd>
-   <dt>int <var>i_remain</var></dt>
-   <dd>The number of the remaining visits the Purchase Option has left.</dd>
-   <dt>int|null <var>i_remain_duration</var></dt>
-   <dd>The number of minutes left in the Purchase Option.</dd>
- </dl> <dl>
-      <dt>int `i_limit`</dt>
-      <dd>The number of visits the Purchase Option allows the client to make.</dd>
-
-      <dt>int|null `i_limit_duration`</dt>
-      <dd>The maximum number of minutes the Purchase Option can be used for.</dd>
-
-      <dt>int `i_remain`</dt>
-      <dd>The number of the remaining visits the Purchase Option has left.</dd>
-
-      <dt>int|null `i_remain_duration`</dt>
-      <dd>The number of minutes left in the Purchase Option.</dd>
-    </dl>
-  </dd>
-
-  <dt>string[] `a_uid_share`</dt>
-  <dd>
-    List of UIDs of users who share this promotion.
-
-  </dd>
-
-  <dt>string[] `a_visit_limit`</dt>
-  <dd>The list of calendar restrictions of the promotion (for example, 4 per week).</dd>
-
-  <dt>array `a_restrict`</dt>
-  <dd>
-    Data about the shortest restriction period:
-<dl>
-  <dt>int <var>i_limit</var></dt>
-  <dd>The limit of visits for the shortest restriction period.</dd>
-  <dt>int <var>i_remain</var></dt>
-  <dd>The number of remaining visits for the shortest restriction period.</dd>
-  <dt>string <var>text_restriction</var></dt>
-  <dd>The description of the shortest restriction period (for example "this week" or "for a 4 day period").</dd>
-</dl> <dl>
-      <dt>int `i_limit`</dt>
-      <dd>The limit of visits for the shortest restriction period.</dd>
-
-      <dt>int `i_remain`</dt>
-      <dd>The number of remaining visits for the shortest restriction period.</dd>
-
-      <dt>string `text_restriction`</dt>
-      <dd>The description of the shortest restriction period (for example "this week" or "for a 4 day period").</dd>
-    </dl>
-  </dd>
-
-  <dt>array[] `a_restrict_data`</dt>
-  <dd>
-    Data about all restriction periods given as an array, where each record has the following structure:
-<dl>
-  <dt>int <var>i_book</var></dt>
-  <dd>The number of future sessions paid using this Purchase Option.</dd>
-  <dt>int <var>i_limit</var></dt>
-  <dd>The limit of visits for the restriction period.</dd>
-  <dt>int <var>i_remain</var></dt>
-  <dd>The number of remaining visits for the restriction period.</dd>
-  <dt>int <var>i_use</var></dt>
-  <dd>The Purchase Option's usage count.</dd>
-  <dt>int <var>i_visit_past</var></dt>
-  <dd>
-    The number of attended sessions before the last renewal.
-    This will be `0` if there aren't any sessions before the last renewal or the Purchase Option doesn't auto-renew.
-  </dd>
-  <dt>string <var>text_restriction</var></dt>
-  <dd>The description of restriction period (for example "this week" or "for a 4 day period").</dd>
-</dl> <dl>
-      <dt>int `i_book`</dt>
-      <dd>The number of future sessions paid using this Purchase Option.</dd>
-
-      <dt>int `i_limit`</dt>
-      <dd>The limit of visits for the restriction period.</dd>
-
-      <dt>int `i_remain`</dt>
-      <dd>The number of remaining visits for the restriction period.</dd>
-
-      <dt>int `i_use`</dt>
-      <dd>The Purchase Option's usage count.</dd>
-
-      <dt>int `i_visit_past`</dt>
-      <dd>
-        The number of attended sessions before the last renewal.
-This will be `0` if there aren't any sessions before the last renewal or the Purchase Option doesn't auto-renew.
-      </dd>
-
-      <dt>string `text_restriction`</dt>
-      <dd>The description of restriction period (for example "this week" or "for a 4 day period").</dd>
-    </dl>
-  </dd>
-
-  <dt>int `i_limit`</dt>
-  <dd>The number of visits the Purchase Option allows the client to make.</dd>
-
-  <dt>int|null `i_limit_duration`</dt>
-  <dd>The maximum number of minutes the Purchase Option can be used for.</dd>
-
-  <dt>int `i_promotion_priority`</dt>
-  <dd>
-    Priority of this promotion.
-  </dd>
-
-  <dt>int `id_program`</dt>
-  <dd>The program ID for Purchase Options. One of the {@link WlProgramSid} constants.</dd>
-
-  <dt>bool `is_convert`</dt>
-  <dd>If `true`, the promotion converts to another instance upon expiration. Otherwise, this will be `false`.</dd>
-
-  <dt>bool `is_shared`</dt>
-  <dd>`true` if the promotion is shared with the client, `false` if the client is owner of the promotion.</dd>
-
-  <dt>string `k_login_promotion`</dt>
-  <dd>The login promotion key. 
-
-  <dt>string `s_class_include`</dt>
-  <dd>The list of services provided by this Purchase Option.</dd>
-
-  <dt>string `s_description`</dt>
-  <dd>The Purchase Option description.</dd>
-
-  <dt>string `s_duration`</dt>
-  <dd>The Purchase Option duration.</dd>
-
-  <dt>string `s_promotion_convert`</dt>
-  <dd>
-    This is only set if <var>is_convert</var> is `true`. The title to use for the new promotion instance upon auto-renewal.
-  </dd>
-
-  <dt>string `s_title`</dt>
-  <dd>The Purchase Option name.</dd>
-
-  <dt>string `text_package_item`</dt>
-  <dd>If this promotion is a package, this field will contain a list of Purchase Options contained in the package.</dd>
-</dl>
   public $a_login_promotion = [];
 
   /**
@@ -225,19 +49,6 @@ This will be `0` if there aren't any sessions before the last renewal or the Pur
    * @get get
    * @var array[]
    */
-<dl>
-  <dt>int `i_session = 1`</dt>
-  <dd>
-    Number of paid sessions of the same class|event that were selected for the previous user.
-  This number should not include free or waitlist unpaid sessions.
-  </dd>
-
-  <dt>string `k_login_promotion`</dt>
-  <dd>Selected purchase option. 
-
-  <dt>string `uid`</dt>
-  <dd>UID of the previous user. 
-</dl>
   public $a_login_promotion_group = [];
 
   /**
@@ -247,144 +58,6 @@ This will be `0` if there aren't any sessions before the last renewal or the Pur
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>array[] `a_installment_template`</dt>
-  <dd>
-    A list of installment plans. Every element has the next keys:<dl>
-<dt>int <var>i_count</var></dt>
-<dd>The number of payments.</dd>
-<dt>int <var>id_duration</var></dt>
-<dd>The duration of a single period. One of the {@link ADurationSid} constants.</dd>
-<dt>int <var>i_period</var></dt>
-<dd>The number of periods specified by <var>id_period</var> between individual payments.</dd>
-<dt>string <var>k_currency</var></dt>
-<dd>The payment currency key.</dd>
-<dt>string <var>k_pay_installment_template</var></dt>
-<dd>The key of the installment plan template. 
-<dt>string <var>m_amount</var></dt>
-<dd>The amount of the installment plan.</dd>
-<dt>string <var>s_duration</var></dt>
-<dd>The title of the installment plan.</dd></dl> <dl>
-      <dt>int `i_count`</dt>
-      <dd>The number of payments.</dd>
-
-      <dt>int `id_duration`</dt>
-      <dd>The duration of a single period. One of the {@link ADurationSid} constants.</dd>
-
-      <dt>int `i_period`</dt>
-      <dd>The number of periods specified by <var>id_period</var> between individual payments.</dd>
-
-      <dt>string `k_currency`</dt>
-      <dd>The payment currency key.</dd>
-
-      <dt>string `k_pay_installment_template`</dt>
-      <dd>
-        The key of the installment plan template.    </dd>
-
-      <dt>string `m_amount`</dt>
-      <dd>The amount of the installment plan.</dd>
-
-      <dt>string `s_duration`</dt>
-      <dd>The title of the installment plan.</dd>
-    </dl>
-  </dd>
-
-  <dt>array[] `a_visit_limit`</dt>
-  <dd>
-    This is only set for Purchase Options. A list of limits on booking by the Purchase Option. Every element has the next keys:<dl>
-<dt>string <var>s_title</var></dt>
-<dd>The limit description.</dd></dl> <dl>
-      <dt>string `s_title`</dt>
-      <dd>The limit description.</dd>
-    </dl>
-  </dd>
-
-  <dt>string `dl_client_prorate`</dt>
-  <dd>The client prorate date.</dd>
-
-  <dt>string `f_price`</dt>
-  <dd>The price.</dd>
-
-  <dt>string `f_price_early`</dt>
-  <dd>The price for early bookings.</dd>
-
-  <dt>string `html_payment_period`</dt>
-  <dd>
-    This is only set for Purchase Options with the 'membership' program type. The measurement unit of <var>i_payment_period</var> in short form.
-  </dd>
-
-  <dt>string `html_description`</dt>
-  <dd>The description, ready to paste in a browser.</dd>
-
-  <dt>int `i_limit`</dt>
-  <dd>The limit of sessions that can be booked by Purchase Options.</dd>
-
-  <dt>int `i_payment_period`</dt>
-  <dd>
-    This is only set for Purchase Options with the 'membership' program type. The duration of the regular payment interval.
-  </dd>
-
-  <dt>int `i_session`</dt>
-  <dd>This is only set for purchases of single sessions. The number of sessions booked simultaneously.</dd>
-
-  <dt>int `id_program_category`</dt>
-  <dd>
-    This is only set for promotions. The ID of the promotion program category. One of the {@link WlProgramCategorySid} constants.
-  </dd>
-
-  <dt>int `id_program_type`</dt>
-  <dd>
-    This is only set for promotions. The ID of the promotion program type. One of the {@link WlProgramTypeSid} constants.
-  </dd>
-
-  <dt>int `id_purchase_item`</dt>
-  <dd>The ID of Purchase Option type. One of the {@link WlPurchaseItemSid} constants.</dd>
-
-  <dt>bool `is_contract`</dt>
-  <dd>If `true`, the Purchase Option requires a contract assignment. Otherwise, this will be `false`.</dd>
-
-  <dt>bool `is_convert`</dt>
-  <dd>If `true`, the Purchase Option converts to another instance upon expiration. Otherwise, this will be `false`.</dd>
-
-  <dt>bool `is_renew`</dt>
-  <dd>If `true`, the Purchase Option is renewable. Otherwise, this will be `false`.</dd>
-
-  <dt>bool `is_renew_check`</dt>
-  <dd>
-    If `true`, the Purchase Option is renewable and the "auto-renew" option is turned on by default. Otherwise, this will be `false`.
-  </dd>
-
-  <dt>string `k_id`</dt>
-  <dd>The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.</dd>
-
-  <dt>string `k_login_prize`</dt>
-  <dd>The key of the user's prize that can be used instead a Purchase Option to book the session.</dd>
-
-  <dt>string `k_reward_prize`</dt>
-  <dd>The key of the reward prize that can be used instead a Purchase Option to book the session.</dd>
-
-  <dt>string `m_prorate`</dt>
-  <dd>Payment for membership prorate. Not empty only if prorate payment is required.</dd>
-
-  <dt>string `s_contract`</dt>
-  <dd>The contract of the Purchase Option. This is only set if <var>is_contract</var> is `true`.</dd>
-
-  <dt>string `s_payment_duration`</dt>
-  <dd>
-    This is only set for Purchase Options with the 'membership' program type. The measurement unit of <var>i_payment_period</var>.
-  </dd>
-
-  <dt>string `s_promotion_convert`</dt>
-  <dd>
-    This is only set if <var>is_convert</var> is `true`. The title to use for the new Purchase Option instance upon auto-renewal.
-  </dd>
-
-  <dt>string `s_title`</dt>
-  <dd>The title.</dd>
-
-  <dt>string `s_value`</dt>
-  <dd>The unique identifier.</dd>
-</dl>
   public $a_purchase = [];
 
   /**
@@ -395,55 +68,6 @@ This will be `0` if there aren't any sessions before the last renewal or the Pur
    * @post post
    * @var array|null
    */
-<dl>
-  <dt>int[] `a_day`</dt>
-  <dd>
-    The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
-Should be passed for any type of repetition.
-  </dd>
-
-  <dt>int[] `a_week`</dt>
-  <dd>Deprecated, use `a_day` instead!</dd>
-
-  <dt>string `dl_end`</dt>
-  <dd>Deprecated, use `dt_from` and `dt_to` instead!</dd>
-
-  <dt>string `dt_from`</dt>
-  <dd>Date to start recurring booking.
-Expected for `id_repeat_</dd>
-
-  <dt>string `dt_to`</dt>
-  <dd>Date to complete recurring booking.
-Expected for `id_repeat_</dd>
-
-  <dt>int `i_count`</dt>
-  <dd>
-    The number of occurrences after which the appointment's repeat cycle stops.
- Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
- Expected for `id_repeat_
-  </dd>
-
-  <dt>int `i_duration`</dt>
-  <dd>Count of days\weeks\months between recurring bookings.</dd>
-
-  <dt>int `i_occurrence`</dt>
-  <dd>Deprecated, use `i_count` instead!</dd>
-
-  <dt>int `i_period`</dt>
-  <dd>Deprecated, use `i_duration` instead!</dd>
-
-  <dt>int `id_duration`</dt>
-  <dd>
-    The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-
-  </dd>
-
-  <dt>int `id_period`</dt>
-  <dd>Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.</dd>
-
-  <dt>int `id_repeat_end`</dt>
-  <dd>Possible ways to stop repeatable events.</dd>
-</dl>
   public $a_repeat = null;
 
   /**
@@ -453,31 +77,6 @@ Expected for `id_repeat_</dd>
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `f_price`</dt>
-  <dd>The price, always '0'.</dd>
-
-  <dt>int `i_limit`</dt>
-  <dd>The limit of sessions that can be booked with reward prize.</dd>
-
-  <dt>int `i_score`</dt>
-  <dd>Prize price in points.</dd>
-
-  <dt>int `id_purchase_item`</dt>
-  <dd>The ID of Purchase Option type. One of the {@link WlPurchaseItemSid} constants.</dd>
-
-  <dt>string `k_id`</dt>
-  <dd>The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.</dd>
-
-  <dt>string `k_reward_prize`</dt>
-  <dd>Key of redeemable prize. 
-
-  <dt>string `s_value`</dt>
-  <dd>The unique identifier.</dd>
-
-  <dt>string `text_title`</dt>
-  <dd>User-friendly prize description.</dd>
-</dl>
   public $a_reward_prize = [];
 
   /**
@@ -497,19 +96,6 @@ Expected for `id_repeat_</dd>
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>int `i_remain`</dt>
-  <dd>Number of remaining visits on session pass.</dd>
-
-  <dt>string `k_session_pass`</dt>
-  <dd>Session pass key. 
-
-  <dt>int `id_purchase_item`</dt>
-  <dd>Type of the session pass purchase. One of {@link WlPurchaseItemSid} constants.</dd>
-
-  <dt>string `s_title`</dt>
-  <dd>Session pass title.</dd>
-</dl>
   public $a_session_pass = [];
 
   /**
@@ -651,19 +237,6 @@ Expected for `id_repeat_</dd>
    * @get get
    * @var string
    */
-<dl>
-  <dt>int `i_session = 1`</dt>
-  <dd>
-    Number of paid sessions of the same class|event that were selected for the previous user.
-  This number should not include free or waitlist unpaid sessions.
-  </dd>
-
-  <dt>string `k_login_promotion`</dt>
-  <dd>Selected purchase option. 
-
-  <dt>string `uid`</dt>
-  <dd>UID of the previous user. 
-</dl>
   public $json_login_promotion_group = '';
 
   /**

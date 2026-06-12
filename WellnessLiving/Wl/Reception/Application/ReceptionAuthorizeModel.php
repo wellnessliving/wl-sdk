@@ -25,19 +25,6 @@ class ReceptionAuthorizeModel extends WlModelAbstract
    * @post result
    * @var array[]
    */
-<dl>
-  <dt>string `text_name_first`</dt>
-  <dd>First name of the user.</dd>
-
-  <dt>string `text_name_last`</dt>
-  <dd>Last name of the user.</dd>
-
-  <dt>string `uid`</dt>
-  <dd>Key of the user.</dd>
-
-  <dt>string `url_image`</dt>
-  <dd>Link to the profile image.</dd>
-</dl>
   public $a_select = [];
 
   /**

@@ -67,101 +67,6 @@ class ClassListModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string[] `a_class_tab`</dt>
-  <dd>Keys of class tab. 
-
-  <dt>string[] `a_image`</dt>
-  <dd>The class image. Empty array if there is no image.</dd>
-
-  <dt>string[] `a_search_tag`</dt>
-  <dd>Tags associated with an individual class.</dd>
-
-  <dt>string[] `a_staff`</dt>
-  <dd>
-    The list of staff keys for the staff member conducting the session.
-For legacy third-party apps listed in {@link Wl\Schedule\ClassList\ClassListApi::APPS_USE_OLD_K_STAFF},
-contains taff` for backward compatibility.
-Empty for all other applications. Use `a_staff_uid` instead.
-  </dd>
-
-  <dt>string[] `a_staff_uid`</dt>
-  <dd>
-    The list of staff user keys for the staff member conducting the session.
-/dd>
-
-  <dt>string[] `a_virtual_location`</dt>
-  <dd>
-    The list of virtual locations keys. Each value is a location key.
-/dd>
-
-  <dt>string `dt_date`</dt>
-  <dd>The date/time of the session start in UTC.</dd>
-
-  <dt>string `dt_time`</dt>
-  <dd>The time of the session start in the local time zone.</dd>
-
-  <dt>string `dtl_date`</dt>
-  <dd>The date/time of session start in the location's time zone.</dd>
-
-  <dt>bool `hide_application`</dt>
-  <dd>
-    Specifies whether the class will be hidden in the White Label Achieve Client App. If `true`, it means that the
- class won't be displayed. Otherwise, this will be `false` to indicate that the class will be displayed.
-  </dd>
-
-  <dt>string `html_description`</dt>
-  <dd>The class description.</dd>
-
-  <dt>int `i_book`</dt>
-  <dd>Count of visits on this class.</dd>
-
-  <dt>int|null `i_capacity`</dt>
-  <dd>The capacity of the service. 'null' indicates that the capacity is not set.</dd>
-
-  <dt>int `i_day`</dt>
-  <dd>The day of the week when session is occurred. Constant from {@link ADateWeekSid}.</dd>
-
-  <dt>int `i_duration`</dt>
-  <dd>The duration of the session in minutes.</dd>
-
-  <dt>int `i_wait`</dt>
-  <dd>Number of clients in wait list.</dd>
-
-  <dt>bool `is_book_for_guest`</dt>
-  <dd>
-    Allow clients to book on behalf of a guest.
-     `true` if clients can book on behalf of a guest.
- `false` otherwise.
-  </dd>
-
-  <dt>bool `is_cancel`</dt>
-  <dd>If `true`, this class period was canceled. Otherwise, this will be `false`.</dd>
-
-  <dt>bool `is_event`</dt>
-  <dd>If `true`, this is an event. Otherwise, this will be `false`.</dd>
-
-  <dt>bool `is_virtual`</dt>
-  <dd>If `true`, this class is virtual. Otherwise, this will be `false`.</dd>
-
-  <dt>bool `is_wait_list_enabled`</dt>
-  <dd>This will be `true` if user is only on the wait-list. Otherwise, this will be `false`.</dd>
-
-  <dt>string `k_class`</dt>
-  <dd>The class key. 
-
-  <dt>string `k_class_period`</dt>
-  <dd>The class period key. 
-
-  <dt>string `k_location`</dt>
-  <dd>The key of the session's location. 
-
-  <dt>string `s_title`</dt>
-  <dd>The title of the session.</dd>
-
-  <dt>string `url_book`</dt>
-  <dd>The direct link to start booking on the WellnessLiving website.</dd>
-</dl>
   public $a_session;
 
   /**
@@ -176,13 +81,6 @@ Empty for all other applications. Use `a_staff_uid` instead.
    * @get get
    * @var array[]
    */
-<dl>
-  <dt>string `tl_start`</dt>
-  <dd>Time when the session starts. Example: value `'06:00'`.</dd>
-
-  <dt>string `tl_end`</dt>
-  <dd>Time when the session ends. Example: value `'14:00'`.</dd>
-</dl>
   public $a_time = [];
 
   /**

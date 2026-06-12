@@ -4,8 +4,6 @@ namespace WellnessLiving\Wl\Profile\Edit;
 
 use WellnessLiving\Core\Geo\ComboboxModel;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
-use WellnessLiving\Wl\Field\WlFieldGeneralSid;
 use WellnessLiving\Wl\Field\WlFieldTypeSid;
 use WellnessLiving\Wl\Login\Member\MemberIntentsSid;
 use WellnessLiving\Wl\Mode\ModeSid;
@@ -61,16 +59,6 @@ class EditModel extends WlModelAbstract
    * @post result,error
    * @var array[]|null
    */
-<dl>
-  <dt>string `code`</dt>
-  <dd>Error code identifying the type of validation failure.</dd>
-
-  <dt>string `field`</dt>
-  <dd>Field identifier that caused the error.</dd>
-
-  <dt>string `message`</dt>
-  <dd>Human-readable error message.</dd>
-</dl>
   public $a_error_list;
 
   /**
@@ -80,18 +68,6 @@ class EditModel extends WlModelAbstract
    * @post post
    * @var array|null
    */
-<dl>
-  <dt>int `id_family_relation`</dt>
-  <dd>Relation type. One of {@link WlFamilyRelationSid} constants.</dd>
-
-  <dt>bool `is_relative_pay`</dt>
-  <dd>`true` if the relative will pay for this user; `false` or absent otherwise.</dd>
-
-  <dt>string `uid_from`</dt>
-  <dd>
-    User key of the relative (must be the currently logged-in user).
-/dd>
-</dl>
   public $a_family_relation = null;
 
   /**
@@ -135,18 +111,6 @@ class EditModel extends WlModelAbstract
    * @put post
    * @var array
    */
-<dl>
-  <dt>bool `is_phone_inherit`</dt>
-  <dd>
-    Indicates weather to inherit phone numbers from relative or not. `1` if phone inheritance is needed, '0' otherwise.
-  </dd>
-
-  <dt>string `text_relative`</dt>
-  <dd>Relative's name.</dd>
-
-  <dt>string `uid_relative`</dt>
-  <dd>User key of relative.</dd>
-</dl>
   public $a_phone_inherit = [];
 
   /**
@@ -156,30 +120,6 @@ class EditModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>int `id_field_general`</dt>
-  <dd>
-    The ID of a system field. One of the {@link WlFieldGeneralSid} constants.
-This value is only defined if <var>id_field_type</var>
-  </dd>
-
-  <dt>bool `is_require`</dt>
-  <dd>
-    Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional.
-  </dd>
-
-  <dt>int `id_field_type`</dt>
-  <dd>The type of field. One of the {@link WlFieldTypeSid} constants.</dd>
-
-  <dt>string `k_field`</dt>
-  <dd>The field ID (<var>k_field</var>). A copy of the key of this array element.</dd>
-
-  <dt>string `s_title`</dt>
-  <dd>The title of the field.</dd>
-
-  <dt>mixed `x_value`</dt>
-  <dd>The value of the field. This value is defined by individual fields.</dd>
-</dl>
   public $a_structure;
 
   /**

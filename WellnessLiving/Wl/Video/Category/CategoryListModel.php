@@ -27,22 +27,6 @@ class CategoryListModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>bool `can_delete`</dt>
-  <dd>Determines whether the video category can be deleted.</dd>
-
-  <dt>int `i_video`</dt>
-  <dd>The number of videos.</dd>
-
-  <dt>string `k_video_category`</dt>
-  <dd>The key of the video category.</dd>
-
-  <dt>string `k_video_category_full`</dt>
-  <dd>The string key of the video category.</dd>
-
-  <dt>string `text_title`</dt>
-  <dd>The title of the category.</dd>
-</dl>
   public $a_video_category;
 
   /**

@@ -18,37 +18,6 @@ class DayTimeModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>string `dt_date`</dt>
-  <dd>Date of the calendar.</dd>
-
-  <dt>int `i_count`</dt>
-  <dd>The count of clients that have already booked this appointment.</dd>
-
-  <dt>int `i_time`</dt>
-  <dd>Integer representation of appointment schedule time.</dd>
-
-  <dt>int `i_wait`</dt>
-  <dd>The count of clients on the waiting list for this appointment.</dd>
-
-  <dt>bool `is_waitlist`</dt>
-  <dd>Whether the appointment can be booked only in a wait list.</dd>
-
-  <dt>string `k_staff`</dt>
-  <dd>
-    @deprecated If this time is already occupied by any client and staff member (but service capacity is not exhausted),
-  this key contains key of staff member. rwise - `0`.
-  </dd>
-
-  <dt>string `uid_staff`</dt>
-  <dd>
-    If this time is already occupied by any client and staff member (but service capacity is not exhausted),
-  this key contains user key of staff member. rwise - `0`.
-  </dd>
-
-  <dt>string `s_title`</dt>
-  <dd>String representation of appointment schedule time.</dd>
-</dl>
   public $a_time;
 
   /**
@@ -237,39 +206,6 @@ class DayTimeModel extends WlModelAbstract
    * @get get
    * @var string
    */
-<dl>
-  <dt>array `a_addon`</dt>
-  <dd>Array of appointment addons.</dd>
-
-  <dt>int `i_duration`</dt>
-  <dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd>
-
-  <dt>int `id_gender_staff`</dt>
-  <dd>Staff gender. One of {@link AGenderSid} constants. Zero mean no limitations on staff gender.</dd>
-
-  <dt>string `k_service`</dt>
-  <dd>Service key. 
-
-  <dt>string `k_staff`</dt>
-  <dd>@deprecated Staff key. Zero means any available staff. 
-
-  <dt>string `uid_staff`</dt>
-  <dd>Staff user key. Zero means any available staff. 
-</dl>
-
-<dl>
-  <dt>string `dtl_date`</dt>
-  <dd>Local date and time of appointment start in MySQL format.</dd>
-
-  <dt>int `i_duration`</dt>
-  <dd>Duration of the appointment in minutes.</dd>
-
-  <dt>string `k_service`</dt>
-  <dd>Service key. 
-
-  <dt>string `uid_staff`</dt>
-  <dd>Staff user key. Zero means any available staff. 
-</dl>
   public $s_appointment = '';
 
   /**

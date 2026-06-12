@@ -4,7 +4,6 @@ namespace WellnessLiving\Wl\Login\Attendance;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Schedule\Page\WlVisitNoteSid;
-use WellnessLiving\Wl\WlSaleSid;
 use WellnessLiving\Wl\WlServiceSid;
 
 /**
@@ -19,19 +18,6 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>bool `is_deny`</dt>
-  <dd>`true` means that appointment was requested and denied by the staff.</dd>
-
-  <dt>bool `is_notify_request_accept`</dt>
-  <dd>`true` means that the client will receive a notification, if appointment will be confirmed by the staff.</dd>
-
-  <dt>bool `is_notify_request_deny`</dt>
-  <dd>`true` means that the client will receive a notification, if appointment will be denied by the staff.</dd>
-
-  <dt>bool `is_request`</dt>
-  <dd>`true` means that appointment was requested, but not confirmed by the staff.</dd>
-</dl>
   public $a_appointment_visit_info = [];
 
   /**
@@ -40,13 +26,6 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>bool `is_empty`</dt>
-  <dd>Whether service image is empty.</dd>
-
-  <dt>string `s_url`</dt>
-  <dd>Url link to image.</dd>
-</dl>
   public $a_logo = null;
 
   /**
@@ -55,21 +34,6 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>string|null `id_sale`</dt>
-  <dd>
-    The sale item type, one of the {@link WlSaleSid} constants.
-This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
-  </dd>
-
-  <dt>string|null `k_id`</dt>
-  <dd>
-    The default Purchase Option key. s will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
-  </dd>
-
-  <dt>bool `is_single_default`</dt>
-  <dd>If the default Purchase Option is set to "Drop-in rate" then the value will be `true`, `false` otherwise.</dd>
-</dl>
   public $a_purchase_option_default = [];
 
   /**
@@ -86,32 +50,6 @@ This will be `null` if the class has no default Purchase Option, or it sets to "
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>array `a_client`</dt>
-  <dd>
-    List of clients who occupy assets of class.
-It is a double nesting array.
-Keys - keys - asset index.
-Values - sub array with keys:
-<dl><dt>string <var>text_client</var></dt><dd>User's name.</dd>
-<dt>string <var>uid</var></dt><dd>User's primary key.</dd></dl> <dl>
-      <dt>string `text_client`</dt>
-      <dd>User's name.</dd>
-
-      <dt>string `uid`</dt>
-      <dd>User's primary key.</dd>
-    </dl>
-  </dd>
-
-  <dt>string[] `a_resource_available`</dt>
-  <dd>Key of asset. 
-
-  <dt>string `k_resource_layout`</dt>
-  <dd>Key of layout. 
-
-  <dt>string `text_resource_type`</dt>
-  <dd>Title of asset category.</dd>
-</dl>
   public $a_resource_layout = null;
 
   /**
@@ -120,53 +58,6 @@ Values - sub array with keys:
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>array `a_logo`</dt>
-  <dd>
-    Data of staff member's photo. Empty if staff has no photo. Otherwise contains next keys:
-<dl>
-  <dt>
-    int <var>i_height</var>
-  </dt>
-  <dd>
-    Height in pixels.
-  </dd>
-  <dt>
-    int <var>i_width</var>
-  </dt>
-  <dd>
-    Width in pixels.
-  </dd>
-  <dt>
-    string <var>url_logo</var>
-  </dt>
-  <dd>
-    Image URL.
-  </dd>
-</dl> <dl>
-      <dt>int `i_height`</dt>
-      <dd>Height in pixels.</dd>
-
-      <dt>int `i_width`</dt>
-      <dd>Width in pixels.</dd>
-
-      <dt>string `url_logo`</dt>
-      <dd>Image URL.</dd>
-    </dl>
-  </dd>
-
-  <dt>string `k_staff`</dt>
-  <dd>deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
-
-  <dt>string `uid_staff`</dt>
-  <dd>Staff user key. 
-
-  <dt>string `html_firstname`</dt>
-  <dd>Staff member's first name.</dd>
-
-  <dt>string `html_lastname`</dt>
-  <dd>Staff member's last name.</dd>
-</dl>
   public $a_staff = null;
 
   /**

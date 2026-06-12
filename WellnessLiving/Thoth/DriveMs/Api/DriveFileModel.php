@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Thoth\DriveMs\Api;
 
-use WellnessLiving\Core\Drive\DriveTypeSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -16,30 +15,6 @@ class DriveFileModel extends WlModelAbstract
    * @post result
    * @var array[]
    */
-<dl>
-  <dt>int `i_height`</dt>
-  <dd>Height of image. Returns if file is image.</dd>
-
-  <dt>int `i_width`</dt>
-  <dd>Width of image. Returns if file is image.</dd>
-
-  <dt>int|null `id_type`</dt>
-  <dd>Image type ID.
-One of {@link DriveTypeSid} constants.
-`null` if file not image.</dd>
-
-  <dt>bool `is_private`</dt>
-  <dd>Whether link is private.</dd>
-
-  <dt>bool `is_private_file`</dt>
-  <dd>Whether file is private.</dd>
-
-  <dt>string `s_link`</dt>
-  <dd>File link.</dd>
-
-  <dt>string `s_name`</dt>
-  <dd>The name of the physical file on the drive.</dd>
-</dl>
   public $a_file = [];
 
   /**

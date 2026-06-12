@@ -19,13 +19,6 @@ class LifetimeTotalsModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `text_title`</dt>
-  <dd>Total title.</dd>
-
-  <dt>int `s_value`</dt>
-  <dd>Total value.</dd>
-</dl>
   public $a_total = [];
 
   /**

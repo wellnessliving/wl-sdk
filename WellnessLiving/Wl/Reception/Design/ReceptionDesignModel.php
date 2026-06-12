@@ -21,13 +21,6 @@ class ReceptionDesignModel extends WlModelAbstract
    * @get result
    * @var string[]
    */
-<dl>
-  <dt>string `url_view`</dt>
-  <dd>url for full image.</dd>
-
-  <dt>string `url_thumbnail`</dt>
-  <dd>url for thumbnail version of image.</dd>
-</dl>
   public $a_reception_logo = [];
 
   /**

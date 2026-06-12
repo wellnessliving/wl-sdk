@@ -3,7 +3,6 @@
 namespace WellnessLiving\Wl\Catalog\Cart;
 
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * Displays information about the cart in the catalog.
@@ -26,34 +25,6 @@ class CartModel extends WlModelAbstract
    * @get get,result
    * @var array[]
    */
-<dl>
-  <dt>string `dl_client_prorate`</dt>
-  <dd>The client prorate date. This will be `null` in cases where the client prorate date hasn't passed.</dd>
-
-  <dt>int `i_quantity`</dt>
-  <dd>The quantity of sale items.</dd>
-
-  <dt>int `id_sale`</dt>
-  <dd>The sale item type, one of the {@link WlSaleSid} constants.</dd>
-
-  <dt>string `k_id`</dt>
-  <dd>
-    The sale item key.
-  Note:
-       You need to specify the product option key in the `k_shop_product_option` field or the first available
-         option will be used automatically.
-  </dd>
-
-  <dt>?string `k_login_prize`</dt>
-  <dd>Key of login prize used on item. 
-
-  <dt>string `k_shop_product_option`</dt>
-  <dd>
-    ote:
-     Used for products only `id_
-     If empty the first available option will be used automatically.
-  </dd>
-</dl>
   public $a_item = [];
 
   /**
@@ -62,21 +33,6 @@ class CartModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>int `i_score`</dt>
-  <dd>Amount of points needed to redeem the prize.</dd>
-
-  <dt>string `k_reward_prize`</dt>
-  <dd>Reward prize key. 
-
-  <dt>string `text_discount`</dt>
-  <dd>Reward prize discount, e.g. '$10.00 off', '10% off'.</dd>
-
-  <dt>string `text_title`</dt>
-  <dd>
-    Reward prize title, e.g. 'on any item', 'on Water bottle', 'on any Appointment Pass or Membership Purchase Option'.
-  </dd>
-</dl>
   public $a_prize_propose = [];
 
   /**
@@ -85,22 +41,6 @@ class CartModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>int `i_quantity`</dt>
-  <dd>The quantity of sale items.</dd>
-
-  <dt>int `id_sale`</dt>
-  <dd>The sale item type, one of the {@link WlSaleSid} constants.</dd>
-
-  <dt>bool `is_login_prize_used`</dt>
-  <dd>Whether selected login prize discount applied to item.</dd>
-
-  <dt>string `k_id`</dt>
-  <dd>The sale item key.</dd>
-
-  <dt>string `k_shop_product_option`</dt>
-  <dd>The shop product option. If <tt>null</tt>, the sale item has no options.</dd>
-</dl>
   public $a_reward_item = [];
 
   /**
@@ -109,24 +49,6 @@ class CartModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `k_login_prize`</dt>
-  <dd>Login prize key. 
-
-  <dt>string `text_discount`</dt>
-  <dd>Reward prize discount, e.g. '$10.00 off', '10% off'.</dd>
-
-  <dt>string `text_discount_applied`</dt>
-  <dd>Applied login prize discount title, e.g. '10% discount'.</dd>
-
-  <dt>string `text_discount_purpose`</dt>
-  <dd>Purpose login prize discount title, e.g. 'Apply 10% off'.</dd>
-
-  <dt>string `text_title`</dt>
-  <dd>
-    Reward prize title, e.g. 'on any item', 'on Water bottle', 'on any Appointment Pass or Membership Purchase Option'.
-  </dd>
-</dl>
   public $a_reward_propose = [];
 
   /**

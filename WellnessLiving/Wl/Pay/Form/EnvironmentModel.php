@@ -42,24 +42,6 @@ class EnvironmentModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>int `id_pay_method`</dt>
-  <dd>The ID of type of payment method. One of {@link WlPayMethodSid} constants.</dd>
-
-  <dt>bool `is_client`</dt>
-  <dd>
-    Determines whether this method is available for clients. This field is only returned for custom payment methods.
-  </dd>
-
-  <dt>string|null `k_pay_method`</dt>
-  <dd>
-    The key of the custom payment method.
-This will be `null` if this payment method isn't customized.
-/dd>
-
-  <dt>string `s_method`</dt>
-  <dd>The name of payment method. This field is only returned for custom payment methods.</dd>
-</dl>
   public $a_method_support;
 
   /**
@@ -84,40 +66,6 @@ This will be `null` if this payment method isn't customized.
    * @get result
    * @var array[]|null
    */
-<dl>
-  <dt>array|null `a_public_keys`</dt>
-  <dd>
-    Public keys configured for this payment processor.
-ll` if this payment processor does not support public keys.
-  </dd>
-
-  <dt>array|null `a_public_info`</dt>
-  <dd>
-    Public info configured for this payment processor.
-ll` if this payment processor does not support public info.
-  </dd>
-
-  <dt>bool `hide_save_source`</dt>
-  <dd>Whether `save payment method` option should be hidden. `true` if hidden, `false` - otherwise.</dd>
-
-  <dt>int `id_pay_processor`</dt>
-  <dd>ID of the payment processor.</dd>
-
-  <dt>null|bool `is_enabled_3ds`</dt>
-  <dd>
-    `true` if 3DS should be performed, `false` if 3DS should not be performed. `null` if this is not defined for payment processor.
-Only for {@link Thoth\PayProcessor\PayProcessorSid::NUVEI}
-  </dd>
-
-  <dt>bool|null `is_test`</dt>
-  <dd>
-    `true` if the merchant is in a test mode, `false` otherwise.
-`null` if this is not defined for payment processor.
-  </dd>
-
-  <dt>string `k_business_merchant`</dt>
-  <dd>Key of the business merchant. 
-</dl>
   public $a_pay_processor = null;
 
   /**

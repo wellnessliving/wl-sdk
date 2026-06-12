@@ -35,19 +35,6 @@ class EditEmailModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>string `text_firstname`</dt>
-  <dd>First name.</dd>
-
-  <dt>string `text_lastname`</dt>
-  <dd>Last name.</dd>
-
-  <dt>string `text_phone`</dt>
-  <dd>Phone.</dd>
-
-  <dt>string `url_photo`</dt>
-  <dd>URL to photo.</dd>
-</dl>
   public $a_user;
 
   /**

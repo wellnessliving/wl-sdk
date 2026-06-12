@@ -15,13 +15,6 @@ class LevelListModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `k_video_level`</dt>
-  <dd>The video level key.</dd>
-
-  <dt>string `text_title`</dt>
-  <dd>The video level title.</dd>
-</dl>
   public $a_level_list = [];
 
   /**

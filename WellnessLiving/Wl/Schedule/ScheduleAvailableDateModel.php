@@ -69,13 +69,6 @@ class ScheduleAvailableDateModel extends WlModelAbstract
    * @get get
    * @var array
    */
-<dl>
-  <dt>string `tl_end`</dt>
-  <dd>End time.</dd>
-
-  <dt>string `tl_start`</dt>
-  <dd>Start time.</dd>
-</dl>
   public $a_time = [];
 
   /**

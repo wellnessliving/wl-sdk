@@ -3,8 +3,6 @@
 namespace WellnessLiving\Wl\Schedule\Page;
 
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Resource\Image\ImageIconSid;
-use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
 use WellnessLiving\Wl\Virtual\VirtualProviderSid;
 use WellnessLiving\Wl\Visit\WlVisitSid;
 
@@ -19,25 +17,6 @@ class PageElementModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>int `id_visit`</dt>
-  <dd>Visit status.</dd>
-
-  <dt>bool `is_confirmed`</dt>
-  <dd>`true` means that appointment was requested and confirmed by the staff.</dd>
-
-  <dt>bool `is_deny`</dt>
-  <dd>`true` means that appointment was requested and denied by the staff.</dd>
-
-  <dt>bool `is_notify_request_accept`</dt>
-  <dd>`true` means that the client will receive a notification, if appointment will be confirmed by the staff.</dd>
-
-  <dt>bool `is_notify_request_deny`</dt>
-  <dd>`true` means that the client will receive a notification, if appointment will be denied by the staff.</dd>
-
-  <dt>bool `is_request`</dt>
-  <dd>`true` means that appointment was requested, but not confirmed by the staff.</dd>
-</dl>
   public $a_appointment_visit_info = [];
 
   /**
@@ -46,15 +25,6 @@ class PageElementModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `s_name`</dt>
-  <dd>
-    Asset title that consists of the asset title itself concatenated with its index (in case of multiple assets) by '#'.
-  </dd>
-
-  <dt>string `i_count`</dt>
-  <dd>Number of sessions.</dd>
-</dl>
   public $a_asset;
 
   /**
@@ -65,16 +35,6 @@ class PageElementModel extends WlModelAbstract
    * @get result
    * @var array|null
    */
-<dl>
-  <dt>int `i_book_active`</dt>
-  <dd>A total number of booked visits in the class, including all lists: active and waitlist.</dd>
-
-  <dt>int `i_capacity`</dt>
-  <dd>Class capacity.</dd>
-
-  <dt>int `i_wait`</dt>
-  <dd>A total number of booked visits in the waitlist.</dd>
-</dl>
   public $a_class_info = null;
 
   /**
@@ -85,74 +45,6 @@ class PageElementModel extends WlModelAbstract
    * @get result
    * @var array|null
    */
-<dl>
-  <dt>array `a_image`</dt>
-  <dd>
-    Image data. 
-      <dt>int `i_height`</dt>
-      <dd>Actual height of thumbnail image.</dd>
-
-      <dt>int `i_height_src`</dt>
-      <dd>Height of original image.</dd>
-
-      <dt>int `i_rotate`</dt>
-      <dd>Angle on which image was rotated compared to the original.</dd>
-
-      <dt>int `i_width`</dt>
-      <dd>Actual width of thumbnail image.</dd>
-
-      <dt>int `i_width_src`</dt>
-      <dd>Width of original image.</dd>
-
-      <dt>bool `is-resize`</dt>
-      <dd>Whether thumbnail is a resized variant of original image. If `false`, `url-thumbnail`
-equals `url-view`.</dd>
-
-      <dt>string `url-view`</dt>
-      <dd>URL to original image in file storage.</dd>
-
-      <dt>string `url-thumbnail`</dt>
-      <dd>
-        URL to resized and rotated image in file storage. If the original is larger than
-the specified dimensions, a thumbnail is created and its link is returned. Otherwise,
-the link to the original image is returned here.
-      </dd>
-    </dl>
-  </dd>
-
-  <dt>int `i_angle`</dt>
-  <dd>Angle of shape rotation. Is set only if <var>sid_image</var> equals to <tt>shape</tt>.</dd>
-
-  <dt>int `i_height`</dt>
-  <dd>Height of image.</dd>
-
-  <dt>int `i_width`</dt>
-  <dd>Width of image.</dd>
-
-  <dt>bool `is_empty`</dt>
-  <dd>Whether is empty.</dd>
-
-  <dt>int `k_resource`</dt>
-  <dd>Resource key.</dd>
-
-  <dt>string `sid_image`</dt>
-  <dd>Image kind.</dd>
-
-  <dt>string `sid_image_icon`</dt>
-  <dd>
-    Icon name.String representation of one of {@link ImageIconSid} constants.
-Is set only if <var>sid_image</var> equals to <tt>image</tt>.
-  </dd>
-
-  <dt>string `sid_image_shape`</dt>
-  <dd>
-    Shape name. String representation of one of {@link ImageShapeSid} constants.
-Is set only if <var>sid_image</var> equals to <tt>shape</tt>.
-  </dd>
-
-  <dt>string `url`</dt>
-  <dd>Path to image. 
-</dl>
   public $a_resource_image = null;
 
   /**
@@ -162,16 +54,6 @@ Is set only if <var>sid_image</var> equals to <tt>shape</tt>.
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `k_staff`</dt>
-  <dd>The staff member key. 
-
-  <dt>string `s_family`</dt>
-  <dd>The surname of the staff member.</dd>
-
-  <dt>string `s_name`</dt>
-  <dd>The first name of the staff member.</dd>
-</dl>
   public $a_staff;
 
   /**

@@ -2,11 +2,8 @@
 
 namespace WellnessLiving\Wl\Book\Process\Payment;
 
-use WellnessLiving\Core\a\ADateWeekSid;
-use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
-use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Acts as the booking wizard for the "Pay/Billing info" page.
@@ -23,33 +20,6 @@ class PaymentModel extends WlModelAbstract
    * @post post
    * @var array[]
    */
-<dl>
-  <dt>int `id_purchase_item`</dt>
-  <dd>The ID of purchase item type. One of {@link WlPurchaseItemSid} constants.</dd>
-
-  <dt>bool `is_renew`</dt>
-  <dd>
-    `true` if the item should be set to auto-renew; `false` otherwise. If not set yet, use the default option for this item.
-  </dd>
-
-  <dt>string `k_id`</dt>
-  <dd>The key of the purchase item in the database.</dd>
-
-  <dt>string `k_login_prize`</dt>
-  <dd>
-    Key of user's prize. `0` only if user is paying book by prize.
-  </dd>
-
-  <dt>string `k_reward_prize`</dt>
-  <dd>
-    Key of reward prize. `0` only if user wants to redeem prize and use it to pay for visit.
-  </dd>
-
-  <dt>string `s_signature`</dt>
-  <dd>
-    The signature of the Purchase Option contract. This won't be set if the Purchase Option doesn't require a contract assignment.
-  </dd>
-</dl>
   public $a_item = [];
 
   /**
@@ -69,198 +39,6 @@ class PaymentModel extends WlModelAbstract
    * @post post
    * @var array[]
    */
-<dl>
-  <dt>array `a_pay_card`</dt>
-  <dd>
-    The payment card information:
-<dl>
-  <dt>array `a_pay_address`</dt>
-  <dd>
-    The payment address:
-    <dl>
-      <dt>bool `is_new`</dt>
-      <dd>
-        Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
-      </dd>
-
-      <dt>string [`k_geo_country`]</dt>
-      <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
-
-      <dt>string [`k_geo_region`]</dt>
-      <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
-
-      <dt>string [`k_pay_address`]</dt>
-      <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
-
-      <dt>string [`s_city`]</dt>
-      <dd>The city used for the payment address. Specify this to add a new address.</dd>
-
-      <dt>string [`s_name`]</dt>
-      <dd>The card name. Specify this to add a new address.</dd>
-
-      <dt>string [`s_phone`]</dt>
-      <dd>The payment phone. Specify this to add a new address.</dd>
-
-      <dt>string [`s_postal`]</dt>
-      <dd>The postal code for the payment address. Specify this to add a new address.</dd>
-
-      <dt>string [`s_street1`]</dt>
-      <dd>The payment address. Specify this to add a new address.</dd>
-
-      <dt>string [`s_street2`]</dt>
-      <dd>The optional payment address. Specify this to add a new address.</dd>
-    </dl>
-  </dd>
-
-  <dt>int [`i_csc`]</dt>
-  <dd>
-    The credit card CSC. Specify this to add a new card.
-  </dd>
-
-  <dt>int [`i_month`]</dt>
-  <dd>
-    The credit card expiration month. Specify this to add a new card.
-  </dd>
-
-  <dt>int [`i_year`]</dt>
-  <dd>
-    The credit card expiration year. Specify this to add a new card.
-  </dd>
-
-  <dt>bool `is_new`</dt>
-  <dd>
-    Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
-  </dd>
-
-  <dt>string [`k_pay_bank`]</dt>
-  <dd>
-    The key of the credit card. Specify this to use saved card.
-  </dd>
-
-  <dt>string [`s_comment`]</dt>
-  <dd>
-    Optional comment(s). Specify this to add a new card.
-  </dd>
-
-  <dt>string [`s_number`]</dt>
-  <dd>
-    The card number. Specify this to add a new card.
-  </dd>
-</dl> <dl>
-      <dt>array `a_pay_address`</dt>
-      <dd>
-        The payment address:
-<dl>
-  <dt>bool `is_new`</dt>
-  <dd>
-    Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
-  </dd>
-
-  <dt>string [`k_geo_country`]</dt>
-  <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
-
-  <dt>string [`k_geo_region`]</dt>
-  <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
-
-  <dt>string [`k_pay_address`]</dt>
-  <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
-
-  <dt>string [`s_city`]</dt>
-  <dd>The city used for the payment address. Specify this to add a new address.</dd>
-
-  <dt>string [`s_name`]</dt>
-  <dd>The card name. Specify this to add a new address.</dd>
-
-  <dt>string [`s_phone`]</dt>
-  <dd>The payment phone. Specify this to add a new address.</dd>
-
-  <dt>string [`s_postal`]</dt>
-  <dd>The postal code for the payment address. Specify this to add a new address.</dd>
-
-  <dt>string [`s_street1`]</dt>
-  <dd>The payment address. Specify this to add a new address.</dd>
-
-  <dt>string [`s_street2`]</dt>
-  <dd>The optional payment address. Specify this to add a new address.</dd>
-</dl> <dl>
-          <dt>bool `is_new`</dt>
-          <dd>
-            Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
-          </dd>
-
-          <dt>string `k_geo_country`</dt>
-          <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
-
-          <dt>string `k_geo_region`</dt>
-          <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
-
-          <dt>string `k_pay_address`</dt>
-          <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
-
-          <dt>string `s_city`</dt>
-          <dd>The city used for the payment address. Specify this to add a new address.</dd>
-
-          <dt>string `s_name`</dt>
-          <dd>The card name. Specify this to add a new address.</dd>
-
-          <dt>string `s_phone`</dt>
-          <dd>The payment phone. Specify this to add a new address.</dd>
-
-          <dt>string `s_postal`</dt>
-          <dd>The postal code for the payment address. Specify this to add a new address.</dd>
-
-          <dt>string `s_street1`</dt>
-          <dd>The payment address. Specify this to add a new address.</dd>
-
-          <dt>string `s_street2`</dt>
-          <dd>The optional payment address. Specify this to add a new address.</dd>
-        </dl>
-      </dd>
-
-      <dt>int `i_csc`</dt>
-      <dd>The credit card CSC. Specify this to add a new card.</dd>
-
-      <dt>int `i_month`</dt>
-      <dd>The credit card expiration month. Specify this to add a new card.</dd>
-
-      <dt>int `i_year`</dt>
-      <dd>The credit card expiration year. Specify this to add a new card.</dd>
-
-      <dt>bool `is_new`</dt>
-      <dd>Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.</dd>
-
-      <dt>string `k_pay_bank`</dt>
-      <dd>The key of the credit card. Specify this to use saved card.</dd>
-
-      <dt>string `s_comment`</dt>
-      <dd>Optional comment(s). Specify this to add a new card.</dd>
-
-      <dt>string `s_number`</dt>
-      <dd>The card number. Specify this to add a new card.</dd>
-    </dl>
-  </dd>
-
-  <dt>string `f_amount`</dt>
-  <dd>The amount of money to withdraw with this payment source.</dd>
-
-  <dt>bool `is_hide`</dt>
-  <dd>Whether payment method should be saved to user's account.</dd>
-
-  <dt>bool `is_save=true`</dt>
-  <dd>Determines whether this payment method is hidden.</dd>
-
-  <dt>bool `is_success=false`</dt>
-  <dd>Identifies whether this source was successfully charged.</dd>
-
-  <dt>string `m_surcharge`</dt>
-  <dd>The client-side calculated surcharge.</dd>
-
-  <dt>string `s_index`</dt>
-  <dd>The index of this form (optional).</dd>
-
-  <dt>string `sid_pay_method`</dt>
-  <dd>The payment method ID.</dd>
-</dl>
   public $a_pay_form = [];
 
   /**
@@ -281,55 +59,6 @@ class PaymentModel extends WlModelAbstract
    * @post post
    * @var array|null
    */
-<dl>
-  <dt>int[] `a_day`</dt>
-  <dd>
-    The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
-Should be passed for any type of repetition.
-  </dd>
-
-  <dt>int[] `a_week`</dt>
-  <dd>Deprecated, use `a_day` instead!</dd>
-
-  <dt>string `dl_end`</dt>
-  <dd>Deprecated, use `dt_from` and `dt_to` instead!</dd>
-
-  <dt>string `dt_from`</dt>
-  <dd>Date to start recurring booking.
-Expected for `id_repeat_</dd>
-
-  <dt>string `dt_to`</dt>
-  <dd>Date to complete recurring booking.
-Expected for `id_repeat_</dd>
-
-  <dt>int `i_count`</dt>
-  <dd>
-    The number of occurrences after which the appointment's repeat cycle stops.
- Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
- Expected for `id_repeat_
-  </dd>
-
-  <dt>int `i_duration`</dt>
-  <dd>Count of days\weeks\months between recurring bookings.</dd>
-
-  <dt>int `i_occurrence`</dt>
-  <dd>Deprecated, use `i_count` instead!</dd>
-
-  <dt>int `i_period`</dt>
-  <dd>Deprecated, use `i_duration` instead!</dd>
-
-  <dt>int `id_duration`</dt>
-  <dd>
-    The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-
-  </dd>
-
-  <dt>int `id_period`</dt>
-  <dd>Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.</dd>
-
-  <dt>int `id_repeat_end`</dt>
-  <dd>Possible ways to stop repeatable events.</dd>
-</dl>
   public $a_repeat = null;
 
   /**
@@ -338,13 +67,6 @@ Expected for `id_repeat_</dd>
    * @post post
    * @var array
    */
-<dl>
-  <dt>int `i_index`</dt>
-  <dd>The number of asset(s). The actual number is returned for assets with a quantity greater than <tt>1</tt>.</dd>
-
-  <dt>string `k_resource`</dt>
-  <dd>The key of the asset. 
-</dl>
   public $a_resource = [];
 
   /**

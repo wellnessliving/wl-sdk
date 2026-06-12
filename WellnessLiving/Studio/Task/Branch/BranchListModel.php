@@ -15,34 +15,6 @@ class BranchListModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>string[] `a_path`</dt>
-  <dd>
-    Information about paths into which catalogs are cloned/copied.
-
-  </dd>
-
-  <dt>string `dtu_create`</dt>
-  <dd>Date when branch was created.</dd>
-
-  <dt>string `k_deploy_instance`</dt>
-  <dd>Key of deployment instance.</dd>
-
-  <dt>string `k_task`</dt>
-  <dd>Task key.</dd>
-
-  <dt>string `text_create`</dt>
-  <dd>Formatted time interval when branch was created.</dd>
-
-  <dt>string `text_fio`</dt>
-  <dd>Task author name.</dd>
-
-  <dt>string `text_title`</dt>
-  <dd>Title of the task.</dd>
-
-  <dt>string `url_task`</dt>
-  <dd>URL of the task.</dd>
-</dl>
   public $a_data = [];
 }
 

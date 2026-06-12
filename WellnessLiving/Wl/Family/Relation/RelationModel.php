@@ -16,13 +16,6 @@ class RelationModel extends WlModelAbstract
    * @post post
    * @var array
    */
-<dl>
-  <dt>int `id_family_relation`</dt>
-  <dd>The relationship type. One of the {@link WlFamilyRelationSid} constants.</dd>
-
-  <dt>string `uid`</dt>
-  <dd>The related user's key. 
-</dl>
   public $a_new = [];
 
   /**
@@ -33,22 +26,6 @@ class RelationModel extends WlModelAbstract
    * @post result
    * @var array[]
    */
-<dl>
-  <dt>int `id_family_relation`</dt>
-  <dd>The relationship type. One of the {@link WlFamilyRelationSid} constants.</dd>
-
-  <dt>int `id_family_relation_reverse`</dt>
-  <dd>The type of reciprocated relationship. One of the {@link WlFamilyRelationSid} constants.</dd>
-
-  <dt>string `text_name`</dt>
-  <dd>The name of the relation.</dd>
-
-  <dt>string `text_name_first`</dt>
-  <dd>The first name of the relation.</dd>
-
-  <dt>string `uid`</dt>
-  <dd>The key of the related user. 
-</dl>
   public $a_relation;
 
   /**

@@ -2,8 +2,6 @@
 
 namespace WellnessLiving\Wl\Book\Process\Store;
 
-use WellnessLiving\Core\a\ADateWeekSid;
-use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -35,24 +33,6 @@ class StoreGroupModel extends WlModelAbstract
    * @post post
    * @var array[]
    */
-<dl>
-  <dt>int `i_session`</dt>
-  <dd>
-    The number of sessions that this item can cover.
-
-  </dd>
-
-  <dt>int `s_value`</dt>
-  <dd>
-    The unique identifier of the item being checked.
-This corresponds to one of the following values:
-<ul>
-  <li>{@link Wl\Book\Process\Purchase\Purchase56Api::$a_purchase}`["s_value"]`</li>
-  <li>{@link Wl\Book\Process\Purchase\Purchase56Api::$a_reward_prize}`["s_value"]`</li>
-  <li>{@link Wl\Book\Process\Purchase\Purchase56Api::$a_login_prize}`["s_value"]`</li>
-</ul>
-  </dd>
-</dl>
   public $a_purchase_item_check = [];
 
   /**
@@ -63,46 +43,6 @@ This corresponds to one of the following values:
    * @post result
    * @var array[]
    */
-<dl>
-  <dt>string[] `a_owner`</dt>
-  <dd>
-    List of UIDs of owners who will share this promotion with this client.
-  If empty, this client is the owner of the promotion.
-  This only applies to the new promotions.
-  /dd>
-
-  <dt>int `i_session`</dt>
-  <dd>
-    The number of sessions that this item can cover.
-
-  `0` if not applicable.
-  </dd>
-
-  <dt>string|null `k_login_promotion`</dt>
-  <dd>
-    Login promotion key.
-  `null` if not applicable.
-  </dd>
-
-  <dt>string|null `k_session_pass`</dt>
-  <dd>
-    Session pass key.
-  `null` if not applicable.
-  </dd>
-
-  <dt>string|null `s_value`</dt>
-  <dd>
-    The unique identifier of the purchase item.
-
-  `null` if not applicable.
-  </dd>
-
-  <dt>string `text_error`</dt>
-  <dd>Error text if the purchase item cannot be applied to the current class or event for this client.</dd>
-
-  <dt>string `text_error_code`</dt>
-  <dd>Error code if the purchase item cannot be applied to the current class or event for this client.</dd>
-</dl>
   public $a_purchase_item_distribute = [];
 
   /**
@@ -115,40 +55,6 @@ This corresponds to one of the following values:
    * @post post
    * @var array[]|null
    */
-<dl>
-  <dt>int[] `a_day`</dt>
-  <dd>
-    The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
-Should be passed for any type of repetition.
-  </dd>
-
-  <dt>string `dt_from`</dt>
-  <dd>Date to start recurring booking.
-Expected for `id_repeat_</dd>
-
-  <dt>string `dt_to`</dt>
-  <dd>Date to complete recurring booking.
-Expected for `id_repeat_</dd>
-
-  <dt>int `i_count`</dt>
-  <dd>
-    The number of occurrences after which the appointment's repeat cycle stops.
-Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-Expected for `id_repeat_
-  </dd>
-
-  <dt>int `i_duration`</dt>
-  <dd>Count of days\weeks\months between recurring bookings.</dd>
-
-  <dt>int `id_duration`</dt>
-  <dd>
-    The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-
-  </dd>
-
-  <dt>int `id_repeat_end`</dt>
-  <dd>Possible ways to stop repeatable events.</dd>
-</dl>
   public $a_repeat = null;
 
   /**
@@ -159,13 +65,6 @@ Expected for `id_repeat_
    * @post post
    * @var array[]
    */
-<dl>
-  <dt>int `i_index`</dt>
-  <dd>The order number of the asset (from 1 to the asset quantity).</dd>
-
-  <dt>string `k_resource`</dt>
-  <dd>The asset key. 
-</dl>
   public $a_resource = [];
 
   /**

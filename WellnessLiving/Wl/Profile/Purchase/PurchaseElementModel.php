@@ -29,19 +29,6 @@ class PurchaseElementModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `k_enrollment_book`</dt>
-  <dd>Key of enrollment book. 
-
-  <dt>string `k_login_product`</dt>
-  <dd>Key of product. 
-
-  <dt>string `k_login_promotion`</dt>
-  <dd>Key of promotion. 
-
-  <dt>string `k_session_pass`</dt>
-  <dd>Session key. 
-</dl>
   public $a_component;
 
   /**
@@ -50,19 +37,6 @@ class PurchaseElementModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>int `i_height`</dt>
-  <dd>The height of the image.</dd>
-
-  <dt>int `i_width`</dt>
-  <dd>The width of the image.</dd>
-
-  <dt>bool `is_empty`</dt>
-  <dd>If `true`, then the purchased item doesn't have image. If `false`, then the item has an image.</dd>
-
-  <dt>string `s_url`</dt>
-  <dd>The URL for the image.</dd>
-</dl>
   public $a_logo;
 
   /**
@@ -72,16 +46,6 @@ class PurchaseElementModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>int `i_limit`</dt>
-  <dd>The number of sessions that may be booked during this period.</dd>
-
-  <dt>int `i_remain`</dt>
-  <dd>The number of sessions that remain available.</dd>
-
-  <dt>string `s_date`</dt>
-  <dd>The name of the period type.</dd>
-</dl>
   public $a_restrict;
 
   /**
@@ -90,13 +54,6 @@ class PurchaseElementModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `f_tax_discount`</dt>
-  <dd>The amount of tax.</dd>
-
-  <dt>string `s_tax`</dt>
-  <dd>The name of the tax.</dd>
-</dl>
   public $a_tax;
 
   /**

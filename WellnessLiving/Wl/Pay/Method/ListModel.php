@@ -16,18 +16,6 @@ class ListModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>int `id_pay_method`</dt>
-  <dd>The payment method type ID. One of {@link WlPayMethodSid} constants.</dd>
-
-  <dt>string|null `k_pay_method`</dt>
-  <dd>
-    Payment method key.  be <tt>null</tt> if it is a system payment method.
-  </dd>
-
-  <dt>string `s_title`</dt>
-  <dd>The payment method name.</dd>
-</dl>
   public $a_pay_method;
 
   /**

@@ -16,31 +16,6 @@ class InfoModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>string `dt_date_local`</dt>
-  <dd>Start date and time of the next appointment in local time in MySQL format.</dd>
-
-  <dt>bool `has_note`</dt>
-  <dd>`true` if visit has a note, `false` otherwise.</dd>
-
-  <dt>int `i_duration`</dt>
-  <dd>Duration of the next appointment in minutes.</dd>
-
-  <dt>bool `can_view`</dt>
-  <dd>`true` if employees (staff) can view this appointment, `false` otherwise.</dd>
-
-  <dt>string `k_appointment`</dt>
-  <dd>Next appointment key. 
-
-  <dt>string `k_visit`</dt>
-  <dd>Visit key of next appointment.</dd>
-
-  <dt>string `text_appointment_title`</dt>
-  <dd>Title of next appointment.</dd>
-
-  <dt>string `text_staff_name`</dt>
-  <dd>Full staff name or empty if no staff assigned.</dd>
-</dl>
   public $a_next;
 
   /**
@@ -49,31 +24,6 @@ class InfoModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>string `dt_date_local`</dt>
-  <dd>Start date and time of the previous appointment in local time in MySQL format.</dd>
-
-  <dt>bool `has_note`</dt>
-  <dd>`true` if visit has a note, `false` otherwise.</dd>
-
-  <dt>int `i_duration`</dt>
-  <dd>Duration of the previous appointment in minutes.</dd>
-
-  <dt>bool `can_view`</dt>
-  <dd>`true` if employees (staff) can view this appointment, `false` otherwise.</dd>
-
-  <dt>string `k_appointment`</dt>
-  <dd>Previous appointment key. 
-
-  <dt>string `k_visit`</dt>
-  <dd>Visit key of previous appointment.</dd>
-
-  <dt>string `text_appointment_title`</dt>
-  <dd>Title of previous appointment.</dd>
-
-  <dt>string `text_staff_name`</dt>
-  <dd>Full staff name or empty if no staff assigned.</dd>
-</dl>
   public $a_previous;
 
   /**
@@ -82,22 +32,6 @@ class InfoModel extends WlModelAbstract
     * @get result
     * @var array[]
    */
-<dl>
-  <dt>int `i_size`</dt>
-  <dd>Size of rows for answer.</dd>
-
-  <dt>bool `is_multiple`</dt>
-  <dd>`true` if `i_size` greater than 1, `false` otherwise. Can be empty if answer is loaded.</dd>
-
-  <dt>string `s_answer`</dt>
-  <dd>Answer for `s_question`.</dd>
-
-  <dt>string `s_key`</dt>
-  <dd>Answer key.</dd>
-
-  <dt>string `s_question`</dt>
-  <dd>Question.</dd>
-</dl>
   public $a_question = [];
 
   /**
@@ -106,34 +40,6 @@ class InfoModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>int `i_color_background`</dt>
-  <dd>Background color of the asset as an integer (RGB).</dd>
-
-  <dt>int `i_color_border`</dt>
-  <dd>Border color of the asset as an integer (RGB).</dd>
-
-  <dt>int `i_index`</dt>
-  <dd>Index of the booked asset slot.</dd>
-
-  <dt>bool `is_remove`</dt>
-  <dd>`true` if the asset was removed from the booking, `false` otherwise.</dd>
-
-  <dt>string `k_resource`</dt>
-  <dd>Asset key. 
-
-  <dt>string `k_resource_type`</dt>
-  <dd>Asset category key. 
-
-  <dt>string `s_resource`</dt>
-  <dd>Asset name.</dd>
-
-  <dt>string `s_resource_type`</dt>
-  <dd>Asset category name.</dd>
-
-  <dt>string `text_resource_alias`</dt>
-  <dd>Display alias for the asset slot, if configured.</dd>
-</dl>
   public $a_resource;
 
   /**
@@ -142,31 +48,6 @@ class InfoModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string[] `a_login_product`</dt>
-  <dd>
-    List of purchased product keys. Empty if no products were purchased. Each element:
-<dl>
-  <dt>string `k_login_product`</dt>
-  <dd>Purchased product key. 
-</dl> <dl>
-      <dt>string `k_login_product`</dt>
-      <dd>Purchased product key. 
-    </dl>
-  </dd>
-
-  <dt>null `k_login_product`</dt>
-  <dd>Deprecated, always `null`.</dd>
-
-  <dt>string `k_shop_product`</dt>
-  <dd>Primary key of add-on.</dd>
-
-  <dt>string `k_shop_product_option`</dt>
-  <dd>Add-on option. 
-
-  <dt>string `m_amount`</dt>
-  <dd>Price that it adds to an appointment.</dd>
-</dl>
   public $a_shop_product_option;
 
   /**

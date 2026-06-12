@@ -17,13 +17,6 @@ class DiscountCodeModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `k_discount_code`</dt>
-  <dd>Discount code key. 
-
-  <dt>string `text_discount_code`</dt>
-  <dd>Discount code title.</dd>
-</dl>
   public $a_list;
 
   /**

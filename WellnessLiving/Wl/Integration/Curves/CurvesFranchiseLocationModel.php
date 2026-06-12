@@ -15,19 +15,6 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `k_city`</dt>
-  <dd>City key. 
-
-  <dt>string `k_country`</dt>
-  <dd>Country key. 
-
-  <dt>string `k_state`</dt>
-  <dd>State key. 
-
-  <dt>string `text_title`</dt>
-  <dd>City title.</dd>
-</dl>
   public $a_city_list = null;
 
   /**
@@ -36,13 +23,6 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `k_country`</dt>
-  <dd>Country key. 
-
-  <dt>string `text_title`</dt>
-  <dd>Country title.</dd>
-</dl>
   public $a_country_list = null;
 
   /**
@@ -51,28 +31,6 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>int `id_currency`</dt>
-  <dd>Currency ID.</dd>
-
-  <dt>string `k_city`</dt>
-  <dd>City key. 
-
-  <dt>string `k_country`</dt>
-  <dd>Country key. 
-
-  <dt>string `k_location`</dt>
-  <dd>Location key. 
-
-  <dt>string `k_region`</dt>
-  <dd>Franchise region key. 
-
-  <dt>string `k_state`</dt>
-  <dd>State key. 
-
-  <dt>string `text_title`</dt>
-  <dd>Location title.</dd>
-</dl>
   public $a_location_list = null;
 
   /**
@@ -81,13 +39,6 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `k_region`</dt>
-  <dd>Franchise region key. 
-
-  <dt>string `text_title`</dt>
-  <dd>Franchise region title.</dd>
-</dl>
   public $a_region_list = null;
 
   /**
@@ -96,16 +47,6 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `k_country`</dt>
-  <dd>Country key. 
-
-  <dt>string `k_state`</dt>
-  <dd>State key. 
-
-  <dt>string `text_title`</dt>
-  <dd>State title.</dd>
-</dl>
   public $a_state_list = null;
 
   /**

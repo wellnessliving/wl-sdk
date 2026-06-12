@@ -16,19 +16,6 @@ class ElementModel extends WlModelAbstract
    * @get result
    * @var array[]|null
    */
-<dl>
-  <dt>int `i_score`</dt>
-  <dd>Score in points.</dd>
-
-  <dt>string `text_name`</dt>
-  <dd>Reward name.</dd>
-
-  <dt>string `uid`</dt>
-  <dd>User key. 
-
-  <dt>string `url_logo`</dt>
-  <dd>URL to the user logo image.</dd>
-</dl>
   public $a_reward = null;
 
   /**

@@ -25,19 +25,6 @@ class RankModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `k_rank`</dt>
-  <dd>A belt key. 
-
-  <dt>string `k_rank_category`</dt>
-  <dd>A belt category key. 
-
-  <dt>string `text_rank`</dt>
-  <dd>Belt title.</dd>
-
-  <dt>string `text_rank_category`</dt>
-  <dd>Belt category title.</dd>
-</dl>
   public $a_rank_list = [];
 
   /**

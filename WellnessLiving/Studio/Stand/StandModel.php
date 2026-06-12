@@ -41,13 +41,6 @@ class StandModel extends WlModelAbstract
    * @post post
    * @var string|null
    */
-<dl>
-  <dt>string `k_microservice`</dt>
-  <dd>Microservice key.</dd>
-
-  <dt>string `s_environment`</dt>
-  <dd>Environment name.</dd>
-</dl>
   public $json_stand_environment = null;
 
   /**

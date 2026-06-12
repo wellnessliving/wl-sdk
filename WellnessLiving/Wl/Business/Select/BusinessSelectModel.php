@@ -15,16 +15,6 @@ class BusinessSelectModel extends WlModelAbstract
    * @get get
    * @var array
    */
-<dl>
-  <dt>bool `is_role`</dt>
-  <dd>
-    This will be `true` if we are checking for businesses where the user is a staff member.
-This will be `false` if we are checking for businesses where the user is a client.
-  </dd>
-
-  <dt>string `k_business`</dt>
-  <dd>The business key.</dd>
-</dl>
   public $a_config = [];
 
   /**
@@ -34,43 +24,6 @@ This will be `false` if we are checking for businesses where the user is a clien
    * @get result
    * @var array
    */
-<dl>
-  <dt>array `a_business`</dt>
-  <dd>
-    List of businesses the user can access. It is an array, each value is an array with the following keys:<dl>
-<dt>string <var>k_business</var></dt>
-<dd>The key of the business.</dd>
-<dt>string <var>s_title</var></dt>
-<dd>The name of the business.</dd>
-<dt>bool <var>selected</var></dt>
-<dd>This will be true for the current business.</dd>
-  </dl> <dl>
-      <dt>string `k_business`</dt>
-      <dd>The key of the business.</dd>
-
-      <dt>string `s_title`</dt>
-      <dd>The name of the business.</dd>
-
-      <dt>bool `selected`</dt>
-      <dd>This will be true for the current business.</dd>
-    </dl>
-  </dd>
-
-  <dt>string `is_select`</dt>
-  <dd>This will be `true` if one of the listed businesses is selected.</dd>
-
-  <dt>string `name`</dt>
-  <dd>Information for the widget, the name of the key in the list. This should always be `k_business`.</dd>
-
-  <dt>string `onchange`</dt>
-  <dd>Information for the widget, what the widget will do on selection.</dd>
-
-  <dt>string `s_id`</dt>
-  <dd>Information for the widget, the widget instance ID.</dd>
-
-  <dt>string `s_style`</dt>
-  <dd>Information for the widget, any additional CSS to apply.</dd>
-</dl>
   public $a_select = [];
 
   /**

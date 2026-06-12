@@ -15,16 +15,6 @@ class VisitAddModel extends WlModelAbstract
    * @post post
    * @var array
    */
-<dl>
-  <dt>int `i_hour`</dt>
-  <dd>The hour component.</dd>
-
-  <dt>int `i_minute`</dt>
-  <dd>The minute component.</dd>
-
-  <dt>bool `is_am`</dt>
-  <dd>If `true` the visit is in the AM. If `false` it is in the PM.</dd>
-</dl>
   public $a_time = [];
 
   /**

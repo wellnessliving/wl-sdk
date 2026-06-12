@@ -28,25 +28,6 @@ class ClassSessionSearchModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>string|null `dtu_book_begin`</dt>
-  <dd>Date and time when booking for this session starts in UTC. `null` if there is no "too early" limitation.</dd>
-
-  <dt>string|null `dtu_book_end`</dt>
-  <dd>Date and time when booking for this session ends in UTC. `null` if there is no "too late" limitation.</dd>
-
-  <dt>string `dtu_session`</dt>
-  <dd>Date and time of the session in UTC.</dd>
-
-  <dt>string `k_class`</dt>
-
-
-  <dt>string `k_class_period`</dt>
-
-
-  <dt>string `k_class_period_session`</dt>
-
-</dl>
   public $a_class_session;
 
   /**

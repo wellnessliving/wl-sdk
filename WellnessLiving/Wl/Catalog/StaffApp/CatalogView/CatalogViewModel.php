@@ -4,7 +4,6 @@ namespace WellnessLiving\Wl\Catalog\StaffApp\CatalogView;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel;
-use WellnessLiving\Wl\Tax\WlTaxSid;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
@@ -20,16 +19,6 @@ class CatalogViewModel extends WlModelAbstract
    * @get get
    * @var array
    */
-<dl>
-  <dt>float `f_promote`</dt>
-  <dd>The amount to prorate the item by.</dd>
-
-  <dt>bool `is_prorate`</dt>
-  <dd>If <tt>true</tt>, this item is prorated.</dd>
-
-  <dt>string `m_prorate_custom`</dt>
-  <dd>The custom prorate amount.</dd>
-</dl>
   public $a_config = [];
 
   /**
@@ -42,13 +31,6 @@ class CatalogViewModel extends WlModelAbstract
    * @get get
    * @var array
    */
-<dl>
-  <dt>string `k_tax`</dt>
-  <dd>The tax ID.</dd>
-
-  <dt>string `m_tax_custom`</dt>
-  <dd>The amount of custom tax.</dd>
-</dl>
   public $a_tax = [];
 
   /**
@@ -57,28 +39,6 @@ class CatalogViewModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>float `f_tax`</dt>
-  <dd>The calculated tax amount applied by this rule.</dd>
-
-  <dt>string `f_tax_discount`</dt>
-  <dd>The tax amount after applying all discounts.</dd>
-
-  <dt>string `f_tax_discount_login`</dt>
-  <dd>The tax amount after applying the client type discount only.</dd>
-
-  <dt>float `f_value`</dt>
-  <dd>The tax rate. Its meaning depends on `id_tax`.</dd>
-
-  <dt>int `id_tax`</dt>
-  <dd>The tax type. One of {@link WlTaxSid} constants.</dd>
-
-  <dt>int `k_tax`</dt>
-  <dd>The tax key. 
-
-  <dt>string `s_tax`</dt>
-  <dd>The tax name.</dd>
-</dl>
   public $a_tax_data;
 
   /**

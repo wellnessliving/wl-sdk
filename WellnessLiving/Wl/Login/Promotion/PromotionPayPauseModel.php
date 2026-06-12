@@ -22,37 +22,6 @@ class PromotionPayPauseModel extends WlModelAbstract
    * @get result
    * @var array[]|null
    */
-<dl>
-  <dt>string|null `dl_create`</dt>
-  <dd>Date when this hold period was created. <tt>null</tt> for old records.</dd>
-
-  <dt>string `dl_end`</dt>
-  <dd>
-    Ending date of the pause (inclusively - this date is paused).
-This field contains zero date for promotions placed on hold indefinitely.
-  </dd>
-
-  <dt>string `dl_start`</dt>
-  <dd>Starting date of the pause (inclusively - this date is paused).</dd>
-
-  <dt>int|null `i_hold_day`</dt>
-  <dd>Duration of the hold in days. <tt>null</tt> if the hold is ongoing.</dd>
-
-  <dt>bool `is_past`</dt>
-  <dd>Whether the hold is in past.</dd>
-
-  <dt>string `k_promotion_pay_pause`</dt>
-  <dd>Key of the hold period. 
-
-  <dt>string|null `text_note`</dt>
-  <dd>Additional notes.</dd>
-
-  <dt>string|null `text_user_create`</dt>
-  <dd>Full name of a user that has created hold period. <tt>null</tt> for old records.</dd>
-
-  <dt>string|null `uid_create`</dt>
-  <dd>Key of a user that has created hold period. <tt>null</tt> for old records.</dd>
-</dl>
   public $a_pay_pause_list = null;
 
   /**

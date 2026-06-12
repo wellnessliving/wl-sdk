@@ -17,13 +17,6 @@ class FlagModel extends WlModelAbstract
    * @var array
    * @deprecated This is old property, which is left for back-compatibility. Use {@link FlagModel::$a_restrictions_multiple} instead.
    */
-<dl>
-  <dt>string `uid`</dt>
-  <dd>Key is passport login ID. 
-
-  <dt>bool `is_flag`</dt>
-  <dd>Value: <tt>true</tt> if user is flagged; <tt>false</tt> otherwise.</dd>
-</dl>
   public $a_flag;
 
   /**
@@ -37,13 +30,6 @@ class FlagModel extends WlModelAbstract
    * @get result
    * @var array|null
    */
-<dl>
-  <dt>bool `is_book`</dt>
-  <dd>`true` if the user cannot make new reservations.</dd>
-
-  <dt>bool `is_purchase`</dt>
-  <dd>`true` if the user cannot make new purchases.</dd>
-</dl>
   public $a_restrictions_multiple = null;
 
   /**
@@ -55,13 +41,6 @@ class FlagModel extends WlModelAbstract
    * @get result
    * @var array|null
    */
-<dl>
-  <dt>bool `is_book`</dt>
-  <dd>`true` if client cannot make new reservations.</dd>
-
-  <dt>bool `is_purchase`</dt>
-  <dd>`true` if client cannot make new purchases.</dd>
-</dl>
   public $a_restrictions_single = null;
 
   /**

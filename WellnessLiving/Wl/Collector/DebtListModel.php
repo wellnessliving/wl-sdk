@@ -17,67 +17,6 @@ class DebtListModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `dl_client_birth`</dt>
-  <dd>The birth date of the debtor client.</dd>
-
-  <dt>string `dtu_client_since`</dt>
-  <dd>The date and time in UTC from which the debtor client is a member of the business.</dd>
-
-  <dt>string `dtu_due`</dt>
-  <dd>The date and time in UTC of the last payment on the debtor client's account.</dd>
-
-  <dt>string `dtu_add`</dt>
-  <dd>The date and time in UTC when the client was added to the list of debtors.</dd>
-
-  <dt>string `dtu_cease`</dt>
-  <dd>The date and time in UTC when the debt was fully ceased.</dd>
-
-  <dt>int `id_currency`</dt>
-  <dd>The debt currency ID.</dd>
-
-  <dt>string `k_business`</dt>
-  <dd>The business key where the debt occurred.</dd>
-
-  <dt>string `k_collector_debt`</dt>
-  <dd>The debt key, which should be used for debt payment.</dd>
-
-  <dt>string `k_pay_transaction_debt`</dt>
-  <dd>The transaction key after which the debt occurred.</dd>
-
-  <dt>string `k_pay_transaction_last`</dt>
-  <dd>The last transaction key on account after the debt occurred.</dd>
-
-  <dt>string `m_amount_debt`</dt>
-  <dd>The initial amount of the debt.</dd>
-
-  <dt>string `m_amount_paid`</dt>
-  <dd>The amount paid for debt.</dd>
-
-  <dt>string `text_business_title`</dt>
-  <dd>The title of the business.</dd>
-
-  <dt>string `text_client_name`</dt>
-  <dd>The full name of the debtor client.</dd>
-
-  <dt>string `text_client_address`</dt>
-  <dd>The address of the debtor client.</dd>
-
-  <dt>string `text_client_mail`</dt>
-  <dd>The email address of the debtor client.</dd>
-
-  <dt>string `text_client_phone`</dt>
-  <dd>The phone number of the debtor client.</dd>
-
-  <dt>string `text_client_zip`</dt>
-  <dd>The ZIP code of the debtor client.</dd>
-
-  <dt>string `text_skip`</dt>
-  <dd>The notification message sent when the debt payment is missed.</dd>
-
-  <dt>string `uid`</dt>
-  <dd>The user key of the debt owner.</dd>
-</dl>
   public $a_debt = [];
 
   /**

@@ -4,7 +4,6 @@ namespace WellnessLiving\Wl\Login\Promotion\Convert;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Promotion\Convert\PromotionConvertSid;
-use WellnessLiving\Wl\WlProgramSid;
 
 /**
  * Receives convertable Purchase Option data and promotion conversions.
@@ -21,19 +20,6 @@ class ConvertModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `k_promotion`</dt>
-  <dd>The promotion key. 
-
-  <dt>string `text_title`</dt>
-  <dd>The title of the promotion.</dd>
-
-  <dt>int `id_program`</dt>
-  <dd>One of {@link WlProgramSid} constants.</dd>
-
-  <dt>bool `is_select`</dt>
-  <dd>If <tt>true</tt>, the promotion is related to the service. Otherwise, this will be <tt>false</tt>.</dd>
-</dl>
   public $a_promotion;
 
   /**

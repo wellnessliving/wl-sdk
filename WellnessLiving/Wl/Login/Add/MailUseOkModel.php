@@ -23,14 +23,6 @@ class MailUseOkModel extends WlModelAbstract
    * @post result
    * @var array
    */
-<dl>
-  <dt>string `html_message`</dt>
-  <dd>The error message.</dd>
-
-  <dt>string `s_field`</dt>
-  <dd>The name of the field missing information.
-Given in the format `k_field.name`.</dd>
-</dl>
   public $a_error_list;
 
   /**

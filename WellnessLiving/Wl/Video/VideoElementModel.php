@@ -35,16 +35,6 @@ class VideoElementModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>string `k_staff`</dt>
-  <dd><b>Deprecated</b> The staff member key. 
-
-  <dt>string `text_name`</dt>
-  <dd>The staff member's full name.</dd>
-
-  <dt>string `uid_staff`</dt>
-  <dd>The staff user ID. 
-</dl>
   public $a_staff_info = [];
 
   /**

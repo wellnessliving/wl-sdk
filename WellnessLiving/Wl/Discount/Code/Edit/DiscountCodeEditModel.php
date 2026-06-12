@@ -19,23 +19,6 @@ class DiscountCodeEditModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>int `id_purchase_item`</dt>
-  <dd>Type ID of the purchase item. One of {@link WlPurchaseItemSid} constants.</dd>
-
-  <dt>string `k_id`</dt>
-  <dd>
-    Primary key of the component.
-<p>Special Notes:</p>
-<ul>
-  <li>Zero means that all elements of this type are available.</li>
-  <li>For `id_purchase_</li>
-</ul>
-  </dd>
-
-  <dt>string `text_title`</dt>
-  <dd>Title of the component.</dd>
-</dl>
   public $a_component = [];
 
   /**

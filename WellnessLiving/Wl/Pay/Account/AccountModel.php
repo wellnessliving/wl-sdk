@@ -18,28 +18,6 @@ class AccountModel extends WlModelAbstract
    * @get result
    * @var array
    */
-<dl>
-  <dt>int `id_currency`</dt>
-  <dd>Currency ID.</dd>
-
-  <dt>string `k_currency`</dt>
-  <dd>Key of account currency. 
-
-  <dt>string|null `k_pay_account`</dt>
-  <dd>
-    ID of payment account. null</tt> if this is a user account based on system payment method.
-  </dd>
-
-  <dt>string|null `k_pay_method`</dt>
-  <dd>
-    ID of custom payment method. <tt>null</tt> if this is a user account based on system payment method. /dd>
-
-  <dt>string `m_rest`</dt>
-  <dd>Account balance.</dd>
-
-  <dt>string|null `s_method`</dt>
-  <dd>Name of a custom payment method. <tt>null</tt> if this is a user account based on system payment method.</dd>
-</dl>
   public $a_account;
 
   /**
@@ -50,30 +28,6 @@ class AccountModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>bool `can_negative`</dt>
-  <dd>`true` if the account is allowed to have a negative balance, `false` otherwise.</dd>
-
-  <dt>int `id_currency`</dt>
-  <dd>Currency ID.</dd>
-
-  <dt>string `k_currency`</dt>
-  <dd>Currency key. 
-
-  <dt>string|null `k_pay_account`</dt>
-  <dd>Payment account key. `null` for accounts not yet created.</dd>
-
-  <dt>string|null `k_pay_method`</dt>
-  <dd>
-    Custom payment method key. `null` for accounts based on the system payment method.
-/dd>
-
-  <dt>string `m_rest`</dt>
-  <dd>Account balance. Always `'0.00'` for accounts not yet created.</dd>
-
-  <dt>string|null `s_method`</dt>
-  <dd>Name of the custom payment method. `null` for accounts based on the system payment method.</dd>
-</dl>
   public $a_account_nx;
 
   /**

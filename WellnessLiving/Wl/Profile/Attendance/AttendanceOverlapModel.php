@@ -15,43 +15,6 @@ class AttendanceOverlapModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `dtu_date`</dt>
-  <dd>Date and time of the visit.</dd>
-
-  <dt>string `i_duration`</dt>
-  <dd>Duration of a service.</dd>
-
-  <dt>string `i_end`</dt>
-  <dd>End datetime of the visit in unix format.</dd>
-
-  <dt>string `i_end_local`</dt>
-  <dd>Local end datetime of the visit in unix format.</dd>
-
-  <dt>string `i_start`</dt>
-  <dd>Start datetime of the visit in unix format.</dd>
-
-  <dt>string `i_start_local`</dt>
-  <dd>Local start datetime of the visit in unix format.</dd>
-
-  <dt>string `k_appointment`</dt>
-  <dd>Appointment key. 
-
-  <dt>string `k_business`</dt>
-  <dd>Business key. 
-
-  <dt>string `k_class_period`</dt>
-  <dd>Class period key. 
-
-  <dt>string `k_enrollment_book`</dt>
-  <dd>Enrollment book key. 
-
-  <dt>string `k_location`</dt>
-  <dd>Location key. 
-
-  <dt>string `text_title`</dt>
-  <dd>Title of a service</dd>
-</dl>
   public $a_visit_list;
 
   /**

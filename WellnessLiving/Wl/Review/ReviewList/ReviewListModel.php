@@ -19,64 +19,6 @@ class ReviewListModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>bool `can_reply`</dt>
-  <dd><tt>true</tt> if can reply to review, <tt>false</tt> otherwise.</dd>
-
-  <dt>string `dl_reply`</dt>
-  <dd>Date when staff reply to review. Can be empty string if no one replied.</dd>
-
-  <dt>string `dt_add`</dt>
-  <dd>Date when review added.</dd>
-
-  <dt>float `f_rate`</dt>
-  <dd>Rate of review.</dd>
-
-  <dt>bool `is_featured`</dt>
-  <dd><tt>true</tt> if review is featured, <tt>false</tt> otherwise.</dd>
-
-  <dt>bool `is_verify`</dt>
-  <dd><tt>true</tt> if review is verify, <tt>false</tt> otherwise.</dd>
-
-  <dt>string `k_location`</dt>
-  <dd>The location key for where the review was left/assigned. 
-
-  <dt>string `k_review`</dt>
-  <dd>Review key. 
-
-  <dt>string `s_firstname`</dt>
-  <dd>First name of user who wrote review.</dd>
-
-  <dt>string `s_lastname`</dt>
-  <dd>Last name of user who wrote review.</dd>
-
-  <dt>string `s_reply`</dt>
-  <dd>Reply for review.</dd>
-
-  <dt>string `s_text`</dt>
-  <dd>Review text.</dd>
-
-  <dt>string `text_city`</dt>
-  <dd>City from the profile of the user, who left review.</dd>
-
-  <dt>string `text_reply_first`</dt>
-  <dd>First name of staff who replied of review. Can be empty string if no one replied.</dd>
-
-  <dt>string `text_reply_last`</dt>
-  <dd>Last name of staff who replied of review. Can be empty string if no one replied.</dd>
-
-  <dt>string `text_role`</dt>
-  <dd>Staff role who replied of review. Can be empty string if no one replied.</dd>
-
-  <dt>string `uid`</dt>
-  <dd>User key who wrote review.</dd>
-
-  <dt>string `url_image`</dt>
-  <dd>Link to the image of the user who wrote review.</dd>
-
-  <dt>string `url_reply_image`</dt>
-  <dd>Link to the image of the user who replied of review. Can be empty string if no one replied.</dd>
-</dl>
   public $a_review;
 
   /**

@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Wl\Location\WorkTime;
 
-use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -20,16 +19,6 @@ class LocationWorkTimeModel extends WlModelAbstract
    * @post post
    * @var array[]
    */
-<dl>
-  <dt>int `i_day`</dt>
-  <dd>The day of the week, from Monday (1) to Sunday (7). One of the{@link ADateWeekSid} constants.</dd>
-
-  <dt>string `t_end`</dt>
-  <dd>The end time of work, formatted as HH:MM.</dd>
-
-  <dt>string `t_start`</dt>
-  <dd>The start time of work, formatted as HH:MM</dd>
-</dl>
   public $a_work_time = [];
 
   /**

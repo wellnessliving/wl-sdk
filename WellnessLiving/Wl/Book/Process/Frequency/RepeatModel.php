@@ -26,40 +26,6 @@ class RepeatModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `dt_date`</dt>
-  <dd>Visit date and time in UTC.</dd>
-
-  <dt>string `dt_local`</dt>
-  <dd>Visit date and time in location's time zone.</dd>
-
-  <dt>string `html_short_name_list`</dt>
-  <dd>List of names of the staff who provide this class.</dd>
-
-  <dt>string `html_timezone`</dt>
-  <dd>Location's time zone abbreviation.</dd>
-
-  <dt>string `is_disable`</dt>
-  <dd>Whether booking is not available for this day.</dd>
-
-  <dt>string `is_free`</dt>
-  <dd>Whether booking is free for this day.</dd>
-
-  <dt>string `is_ignore`</dt>
-  <dd>Whether visit is from ignore list.</dd>
-
-  <dt>string `is_wait`</dt>
-  <dd>Whether booking can be only to wait list.</dd>
-
-  <dt>string `k_class_period`</dt>
-  <dd>Class period key. 
-
-  <dt>string `s_alert`</dt>
-  <dd>Staff name if booking available, warning about wait list or disabled booking otherwise.</dd>
-
-  <dt>string `s_date`</dt>
-  <dd>Visit date and time in location's time zone in human readable format.</dd>
-</dl>
   public $a_visit = [];
 
   /**

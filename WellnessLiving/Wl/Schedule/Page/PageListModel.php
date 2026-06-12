@@ -17,17 +17,6 @@ class PageListModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `dtu_date`</dt>
-  <dd>Date and time of the visit in UTC.</dd>
-
-  <dt>string `k_business`</dt>
-  <dd>Key of the business in which this visit was made.
-
-
-  <dt>string `k_visit`</dt>
-  <dd>Key of a book/visit. 
-</dl>
   public $a_visit;
 
   /**

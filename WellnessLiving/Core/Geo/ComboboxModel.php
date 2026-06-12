@@ -18,13 +18,6 @@ class ComboboxModel extends WlModelAbstract
    * @get result
    * @var array[]
    */
-<dl>
-  <dt>string `s_value`</dt>
-  <dd>The human-readable name of the city, including the state/province and country.</dd>
-
-  <dt>string `s_key`</dt>
-  <dd>The <var>k_city</var> value for the city.</dd>
-</dl>
   public $a_list;
 
   /**

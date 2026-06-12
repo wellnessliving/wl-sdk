@@ -15,18 +15,6 @@ class ActionModel extends WlModelAbstract
    * @get result
    * @var string[]
    */
-<dl>
-  <dt>int|bool `id_reward_action_category`</dt>
-  <dd>
-    ID of reward actions category type. <tt>false</tt> for custom reward actions categories.
-  </dd>
-
-  <dt>string `k_reward_action`</dt>
-  <dd>ID of reward action. 
-
-  <dt>string `k_reward_action_category`</dt>
-  <dd>ID of reward action category in database. 
-</dl>
   public $a_reward_action;
 
   /**
