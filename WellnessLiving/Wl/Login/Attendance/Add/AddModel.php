@@ -16,47 +16,37 @@ class AddModel extends WlModelAbstract
   /**
    * Any of the client memberships that can be used to pay for the session.
    * Every element is an array with the following keys:
-   * <dl>
-   *   <dt>
-   *     string <var>k_login_promotion</var>
-   *   </dt>
-   *   <dd>
-   *     The login promotion key, available to pay for the session.
-   *        </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     The title of the login promotion.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `k_login_promotion`</dt>
+  <dd>
+    The login promotion key, available to pay for the session.
+/dd>
+
+  <dt>string `text_title`</dt>
+  <dd>The title of the login promotion.</dd>
+</dl>
   public $a_login_promotion;
 
   /**
    * Any user's session passes that can be used to pay for the session.
    * Every element is an array with the following keys:
-   * <dl>
-   *   <dt>
-   *     string <var>k_session_pass</var>
-   *   </dt>
-   *   <dd>
-   *     The session pass key, available to pay for the session.
-   *        </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     The title of the session pass.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `k_session_pass`</dt>
+  <dd>
+    The session pass key, available to pay for the session.
+/dd>
+
+  <dt>string `text_title`</dt>
+  <dd>The title of the session pass.</dd>
+</dl>
   public $a_session_pass;
 
   /**

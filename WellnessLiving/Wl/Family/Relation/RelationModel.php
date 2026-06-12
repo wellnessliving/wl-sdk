@@ -12,38 +12,43 @@ class RelationModel extends WlModelAbstract
 {
   /**
    * The new relationship to be added to user, specified with {@link RelationModel::$uid}:
-   * <dl>
-   *   <dt>int <var>id_family_relation</var></dt>
-   *   <dd>The relationship type. One of the {@link WlFamilyRelationSid} constants.</dd>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>The related user's key. 
-   * </dl>
    *
    * @post post
    * @var array
    */
+<dl>
+  <dt>int `id_family_relation`</dt>
+  <dd>The relationship type. One of the {@link WlFamilyRelationSid} constants.</dd>
+
+  <dt>string `uid`</dt>
+  <dd>The related user's key. 
+</dl>
   public $a_new = [];
 
   /**
    * Information about the user's relationships. Every element has the following fields:
-   * <dl>
-   *   <dt>int <var>id_family_relation</var></dt>
-   *   <dd>The relationship type. One of the {@link WlFamilyRelationSid} constants.</dd>
-   *   <dt>int <var>id_family_relation_reverse</var></dt>
-   *   <dd>The type of reciprocated relationship. One of the {@link WlFamilyRelationSid} constants.</dd>
-   *   <dt>string <var>text_name</var></dt>
-   *   <dd>The name of the relation.</dd>
-   *   <dt>string <var>text_name_first</var></dt>
-   *   <dd>The first name of the relation.</dd>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>The key of the related user. 
-   * </dl>
    *
    * @delete result
    * @get result
    * @post result
    * @var array[]
    */
+<dl>
+  <dt>int `id_family_relation`</dt>
+  <dd>The relationship type. One of the {@link WlFamilyRelationSid} constants.</dd>
+
+  <dt>int `id_family_relation_reverse`</dt>
+  <dd>The type of reciprocated relationship. One of the {@link WlFamilyRelationSid} constants.</dd>
+
+  <dt>string `text_name`</dt>
+  <dd>The name of the relation.</dd>
+
+  <dt>string `text_name_first`</dt>
+  <dd>The first name of the relation.</dd>
+
+  <dt>string `uid`</dt>
+  <dd>The key of the related user. 
+</dl>
   public $a_relation;
 
   /**

@@ -14,67 +14,61 @@ class AttendanceInfoModel extends WlModelAbstract
 {
   /**
    * Additional visit information about this appointment. Empty array if it's not an appointment:
-   * <dl>
-   *   <dt>bool <var>is_deny</var></dt>
-   *   <dd>`true` means that appointment was requested and denied by the staff.</dd>
-   *   <dt>bool <var>is_notify_request_accept</var></dt>
-   *   <dd>`true` means that the client will receive a notification, if appointment will be confirmed by the staff.</dd>
-   *   <dt>bool <var>is_notify_request_deny</var></dt>
-   *   <dd>`true` means that the client will receive a notification, if appointment will be denied by the staff.</dd>
-   *   <dt>bool <var>is_request</var></dt>
-   *   <dd>`true` means that appointment was requested, but not confirmed by the staff.</dd>
-   * </dl>
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>bool `is_deny`</dt>
+  <dd>`true` means that appointment was requested and denied by the staff.</dd>
+
+  <dt>bool `is_notify_request_accept`</dt>
+  <dd>`true` means that the client will receive a notification, if appointment will be confirmed by the staff.</dd>
+
+  <dt>bool `is_notify_request_deny`</dt>
+  <dd>`true` means that the client will receive a notification, if appointment will be denied by the staff.</dd>
+
+  <dt>bool `is_request`</dt>
+  <dd>`true` means that appointment was requested, but not confirmed by the staff.</dd>
+</dl>
   public $a_appointment_visit_info = [];
 
   /**
    * Service logo information:
-   * <dl>
-   *   <dt>
-   *     bool <var>is_empty</var>
-   *   </dt>
-   *   <dd>
-   *     Whether service image is empty.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_url</var>
-   *   </dt>
-   *   <dd>
-   *     Url link to image.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>bool `is_empty`</dt>
+  <dd>Whether service image is empty.</dd>
+
+  <dt>string `s_url`</dt>
+  <dd>Url link to image.</dd>
+</dl>
   public $a_logo;
 
   /**
    * Default purchase option information.
-   * <dl>
-   *   <dt>string|null `id_sale`</dt>
-   *   <dd>
-   *     The sale item type, one of the {@link WlSaleSid} constants.
-   *     This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
-   *   </dd>
-   *
-   *   <dt>string|null `k_id`</dt>
-   *   <dd>
-   *     The default Purchase Option key.      This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
-   *   </dd>
-   *
-   *   <dt>bool `is_single_default`</dt>
-   *   <dd>
-   *     If the default Purchase Option is set to "Drop-in rate" then the value will be `true`, `false` otherwise.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>string|null `id_sale`</dt>
+  <dd>
+    The sale item type, one of the {@link WlSaleSid} constants.
+This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
+  </dd>
+
+  <dt>string|null `k_id`</dt>
+  <dd>
+    The default Purchase Option key. s will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
+  </dd>
+
+  <dt>bool `is_single_default`</dt>
+  <dd>If the default Purchase Option is set to "Drop-in rate" then the value will be `true`, `false` otherwise.</dd>
+</dl>
   public $a_purchase_option_default = [];
 
   /**
@@ -87,98 +81,91 @@ class AttendanceInfoModel extends WlModelAbstract
 
   /**
    * Asset layouts of session:
-   * <dl>
-   *   <dt>
-   *     array <var>a_client</var>
-   *   </dt>
-   *   <dd>
-   *     List of clients who occupy assets of class.
-   *     It is a double nesting array.
-   *     Keys - keys - asset index.
-   *     Values - sub array with keys:
-   *     <dl><dt>string <var>text_client</var></dt><dd>User's name.</dd>
-   *     <dt>string <var>uid</var></dt><dd>User's primary key.</dd></dl>
-   *   </dd>
-   *   <dt>
-   *     string[] <var>a_resource_available</var>
-   *   </dt>
-   *   <dd>
-   *     Key of asset.    </dd>
-   *   <dt>
-   *     string <var>k_resource_layout</var>
-   *   </dt>
-   *   <dd>
-   *     Key of layout.    </dd>
-   *   <dt>
-   *     string <var>text_resource_type</var>
-   *   </dt>
-   *   <dd>
-   *     Title of asset category.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>array `a_client`</dt>
+  <dd>
+    List of clients who occupy assets of class.
+It is a double nesting array.
+Keys - keys - asset index.
+Values - sub array with keys:
+<dl><dt>string <var>text_client</var></dt><dd>User's name.</dd>
+<dt>string <var>uid</var></dt><dd>User's primary key.</dd></dl> <dl>
+      <dt>string `text_client`</dt>
+      <dd>User's name.</dd>
+
+      <dt>string `uid`</dt>
+      <dd>User's primary key.</dd>
+    </dl>
+  </dd>
+
+  <dt>string[] `a_resource_available`</dt>
+  <dd>Key of asset. 
+
+  <dt>string `k_resource_layout`</dt>
+  <dd>Key of layout. 
+
+  <dt>string `text_resource_type`</dt>
+  <dd>Title of asset category.</dd>
+</dl>
   public $a_resource_layout;
 
   /**
    * List of staff members who provide service:
-   * <dl>
-   *   <dt>
-   *     array <var>a_logo</var>
-   *   </dt>
-   *   <dd>
-   *     Data of staff member's photo. Empty if staff has no photo. Otherwise contains next keys:
-   *     <dl>
-   *       <dt>
-   *         int <var>i_height</var>
-   *       </dt>
-   *       <dd>
-   *         Height in pixels.
-   *       </dd>
-   *       <dt>
-   *         int <var>i_width</var>
-   *       </dt>
-   *       <dd>
-   *         Width in pixels.
-   *       </dd>
-   *       <dt>
-   *         string <var>url_logo</var>
-   *       </dt>
-   *       <dd>
-   *         Image URL.
-   *       </dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>
-   *     string <var>k_staff</var>
-   *   </dt>
-   *   <dd>
-   *     deprecated Legacy staff key. Returned only for applications from allow-list.
-   *   </dd>
-   *   <dt>
-   *     string <var>uid_staff</var>
-   *   </dt>
-   *   <dd>
-   *     Staff user key.    </dd>
-   *   <dt>
-   *     string <var>html_firstname</var>
-   *   </dt>
-   *   <dd>
-   *     Staff member's first name.
-   *   </dd>
-   *   <dt>
-   *     string <var>html_lastname</var>
-   *   </dt>
-   *   <dd>
-   *     Staff member's last name.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>array `a_logo`</dt>
+  <dd>
+    Data of staff member's photo. Empty if staff has no photo. Otherwise contains next keys:
+<dl>
+  <dt>
+    int <var>i_height</var>
+  </dt>
+  <dd>
+    Height in pixels.
+  </dd>
+  <dt>
+    int <var>i_width</var>
+  </dt>
+  <dd>
+    Width in pixels.
+  </dd>
+  <dt>
+    string <var>url_logo</var>
+  </dt>
+  <dd>
+    Image URL.
+  </dd>
+</dl> <dl>
+      <dt>int `i_height`</dt>
+      <dd>Height in pixels.</dd>
+
+      <dt>int `i_width`</dt>
+      <dd>Width in pixels.</dd>
+
+      <dt>string `url_logo`</dt>
+      <dd>Image URL.</dd>
+    </dl>
+  </dd>
+
+  <dt>string `k_staff`</dt>
+  <dd>deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
+
+  <dt>string `uid_staff`</dt>
+  <dd>Staff user key. 
+
+  <dt>string `html_firstname`</dt>
+  <dd>Staff member's first name.</dd>
+
+  <dt>string `html_lastname`</dt>
+  <dd>Staff member's last name.</dd>
+</dl>
   public $a_staff;
 
   /**

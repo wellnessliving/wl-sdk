@@ -11,30 +11,20 @@ class ReferrerModel extends WlModelAbstract
 {
   /**
    * Information about the referrer's photo. The information returned has the following structure:
-   * <dl>
-   *   <dt>
-   *     int <var>i_height</var>
-   *   </dt>
-   *   <dd>
-   *     The height of the photo.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_width</var>
-   *   </dt>
-   *   <dd>
-   *     The width of the photo.
-   *   </dd>
-   *   <dt>
-   *     string <var>url_photo</var>
-   *   </dt>
-   *   <dd>
-   *     The URL of the photo.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>int `i_height`</dt>
+  <dd>The height of the photo.</dd>
+
+  <dt>int `i_width`</dt>
+  <dd>The width of the photo.</dd>
+
+  <dt>string `url_photo`</dt>
+  <dd>The URL of the photo.</dd>
+</dl>
   public $a_photo;
 
   /**

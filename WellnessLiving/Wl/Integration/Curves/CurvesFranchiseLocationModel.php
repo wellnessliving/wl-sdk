@@ -11,154 +11,101 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
 {
   /**
    * The city list. Each element has next structure:
-   * <dl>
-   *   <dt>
-   *     string <var>k_city</var>
-   *   </dt>
-   *   <dd>
-   *     City key.    </dd>
-   *   <dt>
-   *     string <var>k_country</var>
-   *   </dt>
-   *   <dd>
-   *     Country key.    </dd>
-   *   <dt>
-   *     string <var>k_state</var>
-   *   </dt>
-   *   <dd>
-   *     State key.    </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     City title.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `k_city`</dt>
+  <dd>City key. 
+
+  <dt>string `k_country`</dt>
+  <dd>Country key. 
+
+  <dt>string `k_state`</dt>
+  <dd>State key. 
+
+  <dt>string `text_title`</dt>
+  <dd>City title.</dd>
+</dl>
   public $a_city_list = null;
 
   /**
    * The country list. Each element has next structure:
-   * <dl>
-   *   <dt>
-   *     string <var>k_country</var>
-   *   </dt>
-   *   <dd>
-   *     Country key.    </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     Country title.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `k_country`</dt>
+  <dd>Country key. 
+
+  <dt>string `text_title`</dt>
+  <dd>Country title.</dd>
+</dl>
   public $a_country_list = null;
 
   /**
    * The location list. Each element has the next structure:
-   * <dl>
-   *   <dt>
-   *     int <var>id_currency</var>
-   *   </dt>
-   *   <dd>
-   *     Currency ID.
-   *   </dd>
-   *
-   *   <dt>
-   *     string <var>k_city</var>
-   *   </dt>
-   *   <dd>
-   *     City key.    </dd>
-   *
-   *   <dt>
-   *     string <var>k_country</var>
-   *   </dt>
-   *   <dd>
-   *     Country key.    </dd>
-   *
-   *   <dt>
-   *     string <var>k_location</var>
-   *   </dt>
-   *   <dd>
-   *     Location key.    </dd>
-   *
-   *   <dt>
-   *     string <var>k_region</var>
-   *   </dt>
-   *   <dd>
-   *     Franchise region key.    </dd>
-   *
-   *   <dt>
-   *     string <var>k_state</var>
-   *   </dt>
-   *   <dd>
-   *     State key.    </dd>
-   *
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     Location title.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>int `id_currency`</dt>
+  <dd>Currency ID.</dd>
+
+  <dt>string `k_city`</dt>
+  <dd>City key. 
+
+  <dt>string `k_country`</dt>
+  <dd>Country key. 
+
+  <dt>string `k_location`</dt>
+  <dd>Location key. 
+
+  <dt>string `k_region`</dt>
+  <dd>Franchise region key. 
+
+  <dt>string `k_state`</dt>
+  <dd>State key. 
+
+  <dt>string `text_title`</dt>
+  <dd>Location title.</dd>
+</dl>
   public $a_location_list = null;
 
   /**
    * The region list. Each element has the next structure:
-   * <dl>
-   *   <dt>
-   *     string <var>k_region</var>
-   *   </dt>
-   *   <dd>
-   *     Franchise region key.    </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     Franchise region title.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `k_region`</dt>
+  <dd>Franchise region key. 
+
+  <dt>string `text_title`</dt>
+  <dd>Franchise region title.</dd>
+</dl>
   public $a_region_list = null;
 
   /**
    * The state list. Each element has the next structure:
-   * <dl>
-   *   <dt>
-   *     string <var>k_country</var>
-   *   </dt>
-   *   <dd>
-   *     Country key.    </dd>
-   *   <dt>
-   *     string <var>k_state</var>
-   *   </dt>
-   *   <dd>
-   *     State key.    </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     State title.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `k_country`</dt>
+  <dd>Country key. 
+
+  <dt>string `k_state`</dt>
+  <dd>State key. 
+
+  <dt>string `text_title`</dt>
+  <dd>State title.</dd>
+</dl>
   public $a_state_list = null;
 
   /**

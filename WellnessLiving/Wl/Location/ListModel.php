@@ -22,107 +22,76 @@ class ListModel extends WlModelAbstract
   /**
    * Information about the business's location(s). If you've specified multiple businesses for this endpoint, this will
    * return location information for multiple businesses. Keys refer to location keys. Values refer to nested arrays with the next keys:
-   * <dl>
-   *   <dt>
-   *     int <var>a_directories</var>
-   *   </dt>
-   *   <dd>
-   *     List of directories from {@link WlProjectSid}, where location is published.
-   *   </dd>
-   *   <dt>
-   *     array `a_timezone`
-   *   </dt>
-   *   <dd>
-   *     Information about location timezone: <dl>
-   *       <dt>string `k_timezone`</dt>
-   *       <dd>Timezone key. 
-   *       <dt>string `text_abbr`</dt>
-   *       <dd>User-friendly short timezone abbreviation, for example 'EST' or 'PST'.</dd>
-   *       <dt>string `text_name`</dt>
-   *       <dd>Full timezone name, for example 'America/New_York'.</dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>
-   *     float <var>f_latitude</var>
-   *   </dt>
-   *   <dd>
-   *     The location latitude.
-   *   </dd>
-   *   <dt>
-   *     float <var>f_longitude</var>
-   *   </dt>
-   *   <dd>
-   *     The location longitude.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_shift</var>
-   *   </dt>
-   *   <dd>
-   *     Timezone shift in hours.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_business</var>
-   *   </dt>
-   *   <dd>
-   *     The business key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_country</var>
-   *   </dt>
-   *   <dd>
-   *     Country key.    </dd>
-   *   <dt>
-   *     string <var>k_location</var>
-   *   </dt>
-   *   <dd>
-   *     The location key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_region</var>
-   *   </dt>
-   *   <dd>
-   *     Region key.    </dd>
-   *   <dt>
-   *     string <var>s_mail</var>
-   *   </dt>
-   *   <dd>
-   *     The location email address.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_phone</var>
-   *   </dt>
-   *   <dd>
-   *     The location phone number.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_title</var>
-   *   </dt>
-   *   <dd>
-   *     The location title.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_address</var>
-   *   </dt>
-   *   <dd>
-   *     The location's full address.
-   *   </dd>
-   *   <dt>
-   *     string [<var>url_logo</var>]
-   *   </dt>
-   *   <dd>
-   *     The location logo's URL. This will only be set if the location has a logo and contains small thumbnail of the image.
-   *   </dd>
-   *   <dt>
-   *     string [<var>url_logo_source</var>]
-   *   </dt>
-   *   <dd>
-   *     The location logo's URL. This will only be set if the location has a logo and contains full uploaded image.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>int `a_directories`</dt>
+  <dd>List of directories from {@link WlProjectSid}, where location is published.</dd>
+
+  <dt>array `a_timezone`</dt>
+  <dd>
+    Information about location timezone: <dl>
+  <dt>string `k_timezone`</dt>
+  <dd>Timezone key. 
+  <dt>string `text_abbr`</dt>
+  <dd>User-friendly short timezone abbreviation, for example 'EST' or 'PST'.</dd>
+  <dt>string `text_name`</dt>
+  <dd>Full timezone name, for example 'America/New_York'.</dd>
+</dl> <dl>
+      <dt>string `k_timezone`</dt>
+      <dd>Timezone key. 
+
+      <dt>string `text_abbr`</dt>
+      <dd>User-friendly short timezone abbreviation, for example 'EST' or 'PST'.</dd>
+
+      <dt>string `text_name`</dt>
+      <dd>Full timezone name, for example 'America/New_York'.</dd>
+    </dl>
+  </dd>
+
+  <dt>float `f_latitude`</dt>
+  <dd>The location latitude.</dd>
+
+  <dt>float `f_longitude`</dt>
+  <dd>The location longitude.</dd>
+
+  <dt>int `i_shift`</dt>
+  <dd>Timezone shift in hours.</dd>
+
+  <dt>string `k_business`</dt>
+  <dd>The business key.</dd>
+
+  <dt>string `k_country`</dt>
+  <dd>Country key. 
+
+  <dt>string `k_location`</dt>
+  <dd>The location key.</dd>
+
+  <dt>string `k_region`</dt>
+  <dd>Region key. 
+
+  <dt>string `s_mail`</dt>
+  <dd>The location email address.</dd>
+
+  <dt>string `s_phone`</dt>
+  <dd>The location phone number.</dd>
+
+  <dt>string `s_title`</dt>
+  <dd>The location title.</dd>
+
+  <dt>string `text_address`</dt>
+  <dd>The location's full address.</dd>
+
+  <dt>string `url_logo`</dt>
+  <dd>
+    The location logo's URL. This will only be set if the location has a logo and contains small thumbnail of the image.
+  </dd>
+
+  <dt>string `url_logo_source`</dt>
+  <dd>The location logo's URL. This will only be set if the location has a logo and contains full uploaded image.</dd>
+</dl>
   public $a_location;
 
   /**

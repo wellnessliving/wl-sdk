@@ -11,26 +11,33 @@ use WellnessLiving\Wl\WlPayMethodSid;
 class ProductModel extends WlModelAbstract
 {
   /**
-   * List of purchased products:<dl>
-   *   <dt>string <var>dtu_purchase</var></dt>
-   *   <dd>Date and time of purchase in UTC.</dd>
-   *   <dt>int <var>i_quantity</var></dt>
-   *   <dd>Quantity of the product purchased.</dd>
-   *   <dt>string <var>k_shop_product_option</var></dt>
-   *   <dd>Key of product. 
-   *   <dt>string <var>m_price</var></dt>
-   *   <dd>Price per unit of the product.</dd>
-   *   <dt>string <var>m_total_amount</var></dt>
-   *   <dd>Total amount paid for the product.</dd>
-   *   <dt>string <var>text_location</var></dt>
-   *   <dd>Location where the purchase was made.</dd>
-   *   <dt>string <var>text_product</var></dt>
-   *   <dd>Name of the purchased product.</dd>
-   * </dl>
+   * List of purchased products:
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>string `dtu_purchase`</dt>
+  <dd>Date and time of purchase in UTC.</dd>
+
+  <dt>int `i_quantity`</dt>
+  <dd>Quantity of the product purchased.</dd>
+
+  <dt>string `k_shop_product_option`</dt>
+  <dd>Key of product. 
+
+  <dt>string `m_price`</dt>
+  <dd>Price per unit of the product.</dd>
+
+  <dt>string `m_total_amount`</dt>
+  <dd>Total amount paid for the product.</dd>
+
+  <dt>string `text_location`</dt>
+  <dd>Location where the purchase was made.</dd>
+
+  <dt>string `text_product`</dt>
+  <dd>Name of the purchased product.</dd>
+</dl>
   public $a_login_product = [];
 
   /**

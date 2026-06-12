@@ -15,6 +15,33 @@ class CaptchaRequireModel extends WlModelAbstract
    * @get get
    * @var array
    */
+<dl>
+  <dt>string|null `k_business`</dt>
+  <dd>Business key. <tt>null</tt> if system business.</dd>
+</dl>
+
+<dl>
+  <dt>string|null `k_business`</dt>
+  <dd>Business key. `null` if is system business.</dd>
+</dl>
+
+<dl>
+  <dt>string|null `k_business`</dt>
+  <dd>Business key. `null` if is system business.</dd>
+</dl>
+
+<dl>
+  <dt>string|null `k_business`</dt>
+  <dd>Business key. `null` if is system business.</dd>
+</dl>
+
+<dl>
+  <dt>bool `is_search`</dt>
+  <dd>
+    Flag to determine is it a search action or no. If search action is `true` it increments
+
+  </dd>
+</dl>
   public $a_arguments = [];
 
   /**

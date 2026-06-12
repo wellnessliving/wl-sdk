@@ -5,7 +5,6 @@ namespace WellnessLiving\Wl\Appointment\Book\Payment;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
-use WellnessLiving\Wl\Classes\Tab\TabSid;
 use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
@@ -23,128 +22,200 @@ class PaymentMultipleModel extends WlModelAbstract
 {
   /**
    * The booking process information:
-   * <dl>
-   *   <dt>
-   *     array[] <var>a_provider</var>
-   *   </dt>
-   *   <dd>
-   *     The batch of appointments to be booked. Each element has the next values:
-   *     <dl>
-   *       <dt>
-   *         array <var>a_product</var>
-   *       </dt>
-   *       <dd>
-   *         The add-on list. Keys are add-on option keys.          Values are quantities: <dl>
-   *           <dt>string `k_shop_product_option`</dt>
-   *           <dd>Add-on option key (used as array key). 
-   *
-   *           <dt>int `i_count`</dt>
-   *           <dd>Quantity of the add-on to purchase (used as array value).</dd>
-   *         </dl>
-   *       </dd>
-   *       <dt>
-   *         int <var>i_duration</var>
-   *       </dt>
-   *       <dd>
-   *         The asset duration in minutes. This won't be empty for asset bookings.
-   *       </dd>
-   *       <dt>
-   *         int <var>id_purchase_item</var>
-   *       </dt>
-   *       <dd>
-   *         The ID of the purchase item. One of the {@link WlPurchaseItemSid} constants.
-   *         This won't be empty for new options purchased.
-   *       </dd>
-   *       <dt>
-   *         bool <var>is_pay_later</var>
-   *       </dt>
-   *       <dd>
-   *         This will be <tt>true</tt> if the customer wants to pay upon their visit. Otherwise, this will be <tt>false</tt>
-   *         if the user wants to pay now.
-   *       </dd>
-   *       <dt>
-   *         bool <var>is_purchase_previous</var>
-   *       </dt>
-   *       <dd>
-   *         This will be <tt>true</tt> if the Purchase Option that was selected for another appointment from the batch
-   *         must be used for this appointment. Otherwise, this will be <tt>false</tt>.
-   *       </dd>
-   *       <dt>
-   *         bool <var>is_wait_list_unpaid</var>
-   *       </dt>
-   *       <dd>
-   *         This will be <tt>true</tt> if the customer is booked into the wait list and doesn't have to pay.
-   *         Otherwise, this will be <tt>false</tt> if the customer is booking to an active list (or if the wait list booking
-   *         should be paid now).
-   *       </dd>
-   *       <dt>
-   *         string <var>k_id</var>
-   *       </dt>
-   *       <dd>
-   *         The key of the purchase item.
-   *         This won't be empty for new options purchased.
-   *       </dd>
-   *       <dt>
-   *         string <var>k_login_prize</var>
-   *       </dt>
-   *       <dd>
-   *         The key of the customer's prize used to pay for the booking. This won't be empty for bookings made using prizes.
-   *       </dd>
-   *       <dt>
-   *         string <var>k_login_promotion</var>
-   *       </dt>
-   *       <dd>
-   *         The key of the Purchase Option. This won't be empty when using a Purchase Option that's already been purchased.
-   *       </dd>
-   *       <dt>
-   *         string <var>k_resource</var>
-   *       </dt>
-   *       <dd>
-   *         The key of the asset booking.
-   *         This is only used for asset bookings.
-   *       </dd>
-   *       <dt>
-   *         string <var>k_service</var>
-   *       </dt>
-   *       <dd>
-   *         The key of the appointment booking service.
-   *         This is only used for appointment bookings.
-   *       </dd>
-   *       <dt>
-   *         string <var>s_signature</var>
-   *       </dt>
-   *       <dd>
-   *         The signature for the Purchase Option contract.
-   *         The data is returned from the canvas HTML element or the signature pad.
-   *         This won't be empty if the Purchase Option requires contract signing.
-   *       </dd>
-   *       <dt>
-   *         string [<var>uid</var>]
-   *       </dt>
-   *       <dd>
-   *         User's key.          Specify only in a case of booking for a lof of different users.
-   *       </dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>
-   *     int <var>id_class_tab</var>
-   *   </dt>
-   *   <dd>
-   *     The "Book now" tab. One of the {@link TabSid} constants.
-   *   </dd>
-   *   <dt>
-   *     string <var>m_tip_appointment</var>
-   *   </dt>
-   *   <dd>
-   *     The tips amount.
-   *   </dd>
-   * </dl>
    *
    * Set this field value for GET requests.
    *
    * @get get
    * @var array
    */
+<dl>
+  <dt>array[] `a_provider`</dt>
+  <dd>
+    The batch of appointments to be booked. Each element has the next values:
+<dl>
+  <dt>
+    array <var>a_product</var>
+  </dt>
+  <dd>
+    The add-on list. Keys are add-on option keys.  Values are quantities: <dl>
+      <dt>string `k_shop_product_option`</dt>
+      <dd>Add-on option key (used as array key). 
+
+      <dt>int `i_count`</dt>
+      <dd>Quantity of the add-on to purchase (used as array value).</dd>
+    </dl>
+  </dd>
+  <dt>
+    int <var>i_duration</var>
+  </dt>
+  <dd>
+    The asset duration in minutes. This won't be empty for asset bookings.
+  </dd>
+  <dt>
+    int <var>id_purchase_item</var>
+  </dt>
+  <dd>
+    The ID of the purchase item. One of the {@link WlPurchaseItemSid} constants.
+    This won't be empty for new options purchased.
+  </dd>
+  <dt>
+    bool <var>is_pay_later</var>
+  </dt>
+  <dd>
+    This will be <tt>true</tt> if the customer wants to pay upon their visit. Otherwise, this will be <tt>false</tt>
+    if the user wants to pay now.
+  </dd>
+  <dt>
+    bool <var>is_purchase_previous</var>
+  </dt>
+  <dd>
+    This will be <tt>true</tt> if the Purchase Option that was selected for another appointment from the batch
+    must be used for this appointment. Otherwise, this will be <tt>false</tt>.
+  </dd>
+  <dt>
+    bool <var>is_wait_list_unpaid</var>
+  </dt>
+  <dd>
+    This will be <tt>true</tt> if the customer is booked into the wait list and doesn't have to pay.
+    Otherwise, this will be <tt>false</tt> if the customer is booking to an active list (or if the wait list booking
+    should be paid now).
+  </dd>
+  <dt>
+    string <var>k_id</var>
+  </dt>
+  <dd>
+    The key of the purchase item.
+    This won't be empty for new options purchased.
+  </dd>
+  <dt>
+    string <var>k_login_prize</var>
+  </dt>
+  <dd>
+    The key of the customer's prize used to pay for the booking. This won't be empty for bookings made using prizes.
+  </dd>
+  <dt>
+    string <var>k_login_promotion</var>
+  </dt>
+  <dd>
+    The key of the Purchase Option. This won't be empty when using a Purchase Option that's already been purchased.
+  </dd>
+  <dt>
+    string <var>k_resource</var>
+  </dt>
+  <dd>
+    The key of the asset booking.
+    This is only used for asset bookings.
+  </dd>
+  <dt>
+    string <var>k_service</var>
+  </dt>
+  <dd>
+    The key of the appointment booking service.
+    This is only used for appointment bookings.
+  </dd>
+  <dt>
+    string <var>s_signature</var>
+  </dt>
+  <dd>
+    The signature for the Purchase Option contract.
+    The data is returned from the canvas HTML element or the signature pad.
+    This won't be empty if the Purchase Option requires contract signing.
+  </dd>
+  <dt>
+    string [<var>uid</var>]
+  </dt>
+  <dd>
+    User's key.  Specify only in a case of booking for a lof of different users.
+  </dd>
+</dl> <dl>
+      <dt>array `a_product`</dt>
+      <dd>
+        The add-on list. Keys are add-on option keys. ues are quantities: <dl>
+  <dt>string `k_shop_product_option`</dt>
+  <dd>Add-on option key (used as array key). 
+
+  <dt>int `i_count`</dt>
+  <dd>Quantity of the add-on to purchase (used as array value).</dd>
+</dl> <dl>
+          <dt>string `k_shop_product_option`</dt>
+          <dd>
+            Add-on option key (used as array key).        </dd>
+
+          <dt>int `i_count`</dt>
+          <dd>Quantity of the add-on to purchase (used as array value).</dd>
+        </dl>
+      </dd>
+
+      <dt>int `i_duration`</dt>
+      <dd>The asset duration in minutes. This won't be empty for asset bookings.</dd>
+
+      <dt>int `id_purchase_item`</dt>
+      <dd>
+        The ID of the purchase item. One of the {@link WlPurchaseItemSid} constants.
+This won't be empty for new options purchased.
+      </dd>
+
+      <dt>bool `is_pay_later`</dt>
+      <dd>
+        This will be <tt>true</tt> if the customer wants to pay upon their visit. Otherwise, this will be <tt>false</tt>
+if the user wants to pay now.
+      </dd>
+
+      <dt>bool `is_purchase_previous`</dt>
+      <dd>
+        This will be <tt>true</tt> if the Purchase Option that was selected for another appointment from the batch
+must be used for this appointment. Otherwise, this will be <tt>false</tt>.
+      </dd>
+
+      <dt>bool `is_wait_list_unpaid`</dt>
+      <dd>
+        This will be <tt>true</tt> if the customer is booked into the wait list and doesn't have to pay.
+Otherwise, this will be <tt>false</tt> if the customer is booking to an active list (or if the wait list booking
+should be paid now).
+      </dd>
+
+      <dt>string `k_id`</dt>
+      <dd>The key of the purchase item.
+This won't be empty for new options purchased.</dd>
+
+      <dt>string `k_login_prize`</dt>
+      <dd>
+        The key of the customer's prize used to pay for the booking. This won't be empty for bookings made using prizes.
+      </dd>
+
+      <dt>string `k_login_promotion`</dt>
+      <dd>
+        The key of the Purchase Option. This won't be empty when using a Purchase Option that's already been purchased.
+      </dd>
+
+      <dt>string `k_resource`</dt>
+      <dd>The key of the asset booking.
+This is only used for asset bookings.</dd>
+
+      <dt>string `k_service`</dt>
+      <dd>The key of the appointment booking service.
+This is only used for appointment bookings.</dd>
+
+      <dt>string `s_signature`</dt>
+      <dd>
+        The signature for the Purchase Option contract.
+The data is returned from the canvas HTML element or the signature pad.
+This won't be empty if the Purchase Option requires contract signing.
+      </dd>
+
+      <dt>string `uid`</dt>
+      <dd>
+        User's key. cify only in a case of booking for a lof of different users.
+      </dd>
+    </dl>
+  </dd>
+
+  <dt>int `id_class_tab`</dt>
+  <dd>The "Book now" tab.</dd>
+
+  <dt>string `m_tip_appointment`</dt>
+  <dd>The tips amount.</dd>
+</dl>
   public $a_book_data = [];
 
   /**
@@ -154,6 +225,194 @@ class PaymentMultipleModel extends WlModelAbstract
    * @post post
    * @var array
    */
+<dl>
+  <dt>array[] `a_provider`</dt>
+  <dd>
+    The batch of appointments to be booked. Each element has the next values:
+<dl>
+  <dt>
+    array <var>a_product</var>
+  </dt>
+  <dd>
+    The add-on list. Keys are add-on option keys.  Values are quantities: <dl>
+      <dt>string `k_shop_product_option`</dt>
+      <dd>Add-on option key (used as array key). 
+
+      <dt>int `i_count`</dt>
+      <dd>Quantity of the add-on to purchase (used as array value).</dd>
+    </dl>
+  </dd>
+  <dt>
+    int <var>i_duration</var>
+  </dt>
+  <dd>
+    The asset duration in minutes. This won't be empty for asset bookings.
+  </dd>
+  <dt>
+    int <var>id_purchase_item</var>
+  </dt>
+  <dd>
+    The ID of the purchase item. One of the {@link WlPurchaseItemSid} constants.
+    This won't be empty for new options purchased.
+  </dd>
+  <dt>
+    bool <var>is_pay_later</var>
+  </dt>
+  <dd>
+    This will be <tt>true</tt> if the customer wants to pay upon their visit. Otherwise, this will be <tt>false</tt>
+    if the user wants to pay now.
+  </dd>
+  <dt>
+    bool <var>is_purchase_previous</var>
+  </dt>
+  <dd>
+    This will be <tt>true</tt> if the Purchase Option that was selected for another appointment from the batch
+    must be used for this appointment. Otherwise, this will be <tt>false</tt>.
+  </dd>
+  <dt>
+    bool <var>is_wait_list_unpaid</var>
+  </dt>
+  <dd>
+    This will be <tt>true</tt> if the customer is booked into the wait list and doesn't have to pay.
+    Otherwise, this will be <tt>false</tt> if the customer is booking to an active list (or if the wait list booking
+    should be paid now).
+  </dd>
+  <dt>
+    string <var>k_id</var>
+  </dt>
+  <dd>
+    The key of the purchase item.
+    This won't be empty for new options purchased.
+  </dd>
+  <dt>
+    string <var>k_login_prize</var>
+  </dt>
+  <dd>
+    The key of the customer's prize used to pay for the booking. This won't be empty for bookings made using prizes.
+  </dd>
+  <dt>
+    string <var>k_login_promotion</var>
+  </dt>
+  <dd>
+    The key of the Purchase Option. This won't be empty when using a Purchase Option that's already been purchased.
+  </dd>
+  <dt>
+    string <var>k_resource</var>
+  </dt>
+  <dd>
+    The key of the asset booking.
+    This is only used for asset bookings.
+  </dd>
+  <dt>
+    string <var>k_service</var>
+  </dt>
+  <dd>
+    The key of the appointment booking service.
+    This is only used for appointment bookings.
+  </dd>
+  <dt>
+    string <var>s_signature</var>
+  </dt>
+  <dd>
+    The signature for the Purchase Option contract.
+    The data is returned from the canvas HTML element or the signature pad.
+    This won't be empty if the Purchase Option requires contract signing.
+  </dd>
+  <dt>
+    string [<var>uid</var>]
+  </dt>
+  <dd>
+    User's key.  Specify only in a case of booking for a lof of different users.
+  </dd>
+</dl> <dl>
+      <dt>array `a_product`</dt>
+      <dd>
+        The add-on list. Keys are add-on option keys. ues are quantities: <dl>
+  <dt>string `k_shop_product_option`</dt>
+  <dd>Add-on option key (used as array key). 
+
+  <dt>int `i_count`</dt>
+  <dd>Quantity of the add-on to purchase (used as array value).</dd>
+</dl> <dl>
+          <dt>string `k_shop_product_option`</dt>
+          <dd>
+            Add-on option key (used as array key).        </dd>
+
+          <dt>int `i_count`</dt>
+          <dd>Quantity of the add-on to purchase (used as array value).</dd>
+        </dl>
+      </dd>
+
+      <dt>int `i_duration`</dt>
+      <dd>The asset duration in minutes. This won't be empty for asset bookings.</dd>
+
+      <dt>int `id_purchase_item`</dt>
+      <dd>
+        The ID of the purchase item. One of the {@link WlPurchaseItemSid} constants.
+This won't be empty for new options purchased.
+      </dd>
+
+      <dt>bool `is_pay_later`</dt>
+      <dd>
+        This will be <tt>true</tt> if the customer wants to pay upon their visit. Otherwise, this will be <tt>false</tt>
+if the user wants to pay now.
+      </dd>
+
+      <dt>bool `is_purchase_previous`</dt>
+      <dd>
+        This will be <tt>true</tt> if the Purchase Option that was selected for another appointment from the batch
+must be used for this appointment. Otherwise, this will be <tt>false</tt>.
+      </dd>
+
+      <dt>bool `is_wait_list_unpaid`</dt>
+      <dd>
+        This will be <tt>true</tt> if the customer is booked into the wait list and doesn't have to pay.
+Otherwise, this will be <tt>false</tt> if the customer is booking to an active list (or if the wait list booking
+should be paid now).
+      </dd>
+
+      <dt>string `k_id`</dt>
+      <dd>The key of the purchase item.
+This won't be empty for new options purchased.</dd>
+
+      <dt>string `k_login_prize`</dt>
+      <dd>
+        The key of the customer's prize used to pay for the booking. This won't be empty for bookings made using prizes.
+      </dd>
+
+      <dt>string `k_login_promotion`</dt>
+      <dd>
+        The key of the Purchase Option. This won't be empty when using a Purchase Option that's already been purchased.
+      </dd>
+
+      <dt>string `k_resource`</dt>
+      <dd>The key of the asset booking.
+This is only used for asset bookings.</dd>
+
+      <dt>string `k_service`</dt>
+      <dd>The key of the appointment booking service.
+This is only used for appointment bookings.</dd>
+
+      <dt>string `s_signature`</dt>
+      <dd>
+        The signature for the Purchase Option contract.
+The data is returned from the canvas HTML element or the signature pad.
+This won't be empty if the Purchase Option requires contract signing.
+      </dd>
+
+      <dt>string `uid`</dt>
+      <dd>
+        User's key. cify only in a case of booking for a lof of different users.
+      </dd>
+    </dl>
+  </dd>
+
+  <dt>int `id_class_tab`</dt>
+  <dd>The "Book now" tab.</dd>
+
+  <dt>string `m_tip_appointment`</dt>
+  <dd>The tips amount.</dd>
+</dl>
   public $a_book_data_post = [];
 
   /**
@@ -176,220 +435,273 @@ class PaymentMultipleModel extends WlModelAbstract
    * A list of payment sources to pay with.
    *
    * Each element has next keys:
-   * <dl>
-   *   <dt>array [`a_pay_card`]</dt>
-   *   <dd>
-   *     The payment card information:
-   *     <dl>
-   *       <dt>array `a_pay_address`</dt>
-   *       <dd>
-   *         The payment address:
-   *         <dl>
-   *           <dt>bool `is_new`</dt>
-   *           <dd>
-   *             Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
-   *           </dd>
-   *
-   *           <dt>string [`k_geo_country`]</dt>
-   *           <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
-   *
-   *           <dt>string [`k_geo_region`]</dt>
-   *           <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
-   *
-   *           <dt>string [`k_pay_address`]</dt>
-   *           <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
-   *
-   *           <dt>string [`s_city`]</dt>
-   *           <dd>The city used for the payment address. Specify this to add a new address.</dd>
-   *
-   *           <dt>string [`s_name`]</dt>
-   *           <dd>The card name. Specify this to add a new address.</dd>
-   *
-   *           <dt>string [`s_phone`]</dt>
-   *           <dd>The payment phone. Specify this to add a new address.</dd>
-   *
-   *           <dt>string [`s_postal`]</dt>
-   *           <dd>The postal code for the payment address. Specify this to add a new address.</dd>
-   *
-   *           <dt>string [`s_street1`]</dt>
-   *           <dd>The payment address. Specify this to add a new address.</dd>
-   *
-   *           <dt>string [`s_street2`]</dt>
-   *           <dd>The optional payment address. Specify this to add a new address.</dd>
-   *         </dl>
-   *       </dd>
-   *
-   *       <dt>int [`i_csc`]</dt>
-   *       <dd>
-   *         The credit card CSC. Specify this to add a new card.
-   *       </dd>
-   *
-   *       <dt>int [`i_month`]</dt>
-   *       <dd>
-   *         The credit card expiration month. Specify this to add a new card.
-   *       </dd>
-   *
-   *       <dt>int [`i_year`]</dt>
-   *       <dd>
-   *         The credit card expiration year. Specify this to add a new card.
-   *       </dd>
-   *
-   *       <dt>bool `is_new`</dt>
-   *       <dd>
-   *         Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
-   *       </dd>
-   *
-   *       <dt>string [`k_pay_bank`]</dt>
-   *       <dd>
-   *         The key of the credit card. Specify this to use saved card.
-   *       </dd>
-   *
-   *       <dt>string [`s_comment`]</dt>
-   *       <dd>
-   *         Optional comment(s). Specify this to add a new card.
-   *       </dd>
-   *
-   *       <dt>string [`s_number`]</dt>
-   *       <dd>
-   *         The card number. Specify this to add a new card.
-   *       </dd>
-   *     </dl>
-   *   </dd>
-   *
-   *   <dt>string `f_amount`</dt>
-   *   <dd>
-   *     The amount of money to withdraw with this payment source.
-   *   </dd>
-   *
-   *   <dt>bool [`is_hide`]</dt>
-   *   <dt>bool [`is_save`=true]</dt>
-   *   <dd>
-   *     Whether payment method should be saved to user's account.
-   *   </dd>
-   *   <dd>
-   *     Determines whether this payment method is hidden.
-   *   </dd>
-   *
-   *   <dt>bool [`is_success`=<tt>false</tt>]</dt>
-   *   <dd>
-   *     Identifies whether this source was successfully charged.
-   *   </dd>
-   *
-   *   <dt>string [`m_surcharge`]</dt>
-   *   <dd>
-   *     The client-side calculated surcharge.
-   *   </dd>
-   *
-   *   <dt>string [`s_index`]</dt>
-   *   <dd>
-   *     The index of this form (optional).
-   *   </dd>
-   *
-   *   <dt>string `sid_pay_method`</dt>
-   *   <dd>
-   *     The payment method ID.
-   *   </dd>
-   * </dl>
    *
    * @post post
    * @var array[]
    */
+<dl>
+  <dt>array `a_pay_card`</dt>
+  <dd>
+    The payment card information:
+<dl>
+  <dt>array `a_pay_address`</dt>
+  <dd>
+    The payment address:
+    <dl>
+      <dt>bool `is_new`</dt>
+      <dd>
+        Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
+      </dd>
+
+      <dt>string [`k_geo_country`]</dt>
+      <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
+
+      <dt>string [`k_geo_region`]</dt>
+      <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
+
+      <dt>string [`k_pay_address`]</dt>
+      <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
+
+      <dt>string [`s_city`]</dt>
+      <dd>The city used for the payment address. Specify this to add a new address.</dd>
+
+      <dt>string [`s_name`]</dt>
+      <dd>The card name. Specify this to add a new address.</dd>
+
+      <dt>string [`s_phone`]</dt>
+      <dd>The payment phone. Specify this to add a new address.</dd>
+
+      <dt>string [`s_postal`]</dt>
+      <dd>The postal code for the payment address. Specify this to add a new address.</dd>
+
+      <dt>string [`s_street1`]</dt>
+      <dd>The payment address. Specify this to add a new address.</dd>
+
+      <dt>string [`s_street2`]</dt>
+      <dd>The optional payment address. Specify this to add a new address.</dd>
+    </dl>
+  </dd>
+
+  <dt>int [`i_csc`]</dt>
+  <dd>
+    The credit card CSC. Specify this to add a new card.
+  </dd>
+
+  <dt>int [`i_month`]</dt>
+  <dd>
+    The credit card expiration month. Specify this to add a new card.
+  </dd>
+
+  <dt>int [`i_year`]</dt>
+  <dd>
+    The credit card expiration year. Specify this to add a new card.
+  </dd>
+
+  <dt>bool `is_new`</dt>
+  <dd>
+    Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
+  </dd>
+
+  <dt>string [`k_pay_bank`]</dt>
+  <dd>
+    The key of the credit card. Specify this to use saved card.
+  </dd>
+
+  <dt>string [`s_comment`]</dt>
+  <dd>
+    Optional comment(s). Specify this to add a new card.
+  </dd>
+
+  <dt>string [`s_number`]</dt>
+  <dd>
+    The card number. Specify this to add a new card.
+  </dd>
+</dl> <dl>
+      <dt>array `a_pay_address`</dt>
+      <dd>
+        The payment address:
+<dl>
+  <dt>bool `is_new`</dt>
+  <dd>
+    Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
+  </dd>
+
+  <dt>string [`k_geo_country`]</dt>
+  <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
+
+  <dt>string [`k_geo_region`]</dt>
+  <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
+
+  <dt>string [`k_pay_address`]</dt>
+  <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
+
+  <dt>string [`s_city`]</dt>
+  <dd>The city used for the payment address. Specify this to add a new address.</dd>
+
+  <dt>string [`s_name`]</dt>
+  <dd>The card name. Specify this to add a new address.</dd>
+
+  <dt>string [`s_phone`]</dt>
+  <dd>The payment phone. Specify this to add a new address.</dd>
+
+  <dt>string [`s_postal`]</dt>
+  <dd>The postal code for the payment address. Specify this to add a new address.</dd>
+
+  <dt>string [`s_street1`]</dt>
+  <dd>The payment address. Specify this to add a new address.</dd>
+
+  <dt>string [`s_street2`]</dt>
+  <dd>The optional payment address. Specify this to add a new address.</dd>
+</dl> <dl>
+          <dt>bool `is_new`</dt>
+          <dd>
+            Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
+          </dd>
+
+          <dt>string `k_geo_country`</dt>
+          <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
+
+          <dt>string `k_geo_region`</dt>
+          <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
+
+          <dt>string `k_pay_address`</dt>
+          <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
+
+          <dt>string `s_city`</dt>
+          <dd>The city used for the payment address. Specify this to add a new address.</dd>
+
+          <dt>string `s_name`</dt>
+          <dd>The card name. Specify this to add a new address.</dd>
+
+          <dt>string `s_phone`</dt>
+          <dd>The payment phone. Specify this to add a new address.</dd>
+
+          <dt>string `s_postal`</dt>
+          <dd>The postal code for the payment address. Specify this to add a new address.</dd>
+
+          <dt>string `s_street1`</dt>
+          <dd>The payment address. Specify this to add a new address.</dd>
+
+          <dt>string `s_street2`</dt>
+          <dd>The optional payment address. Specify this to add a new address.</dd>
+        </dl>
+      </dd>
+
+      <dt>int `i_csc`</dt>
+      <dd>The credit card CSC. Specify this to add a new card.</dd>
+
+      <dt>int `i_month`</dt>
+      <dd>The credit card expiration month. Specify this to add a new card.</dd>
+
+      <dt>int `i_year`</dt>
+      <dd>The credit card expiration year. Specify this to add a new card.</dd>
+
+      <dt>bool `is_new`</dt>
+      <dd>Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.</dd>
+
+      <dt>string `k_pay_bank`</dt>
+      <dd>The key of the credit card. Specify this to use saved card.</dd>
+
+      <dt>string `s_comment`</dt>
+      <dd>Optional comment(s). Specify this to add a new card.</dd>
+
+      <dt>string `s_number`</dt>
+      <dd>The card number. Specify this to add a new card.</dd>
+    </dl>
+  </dd>
+
+  <dt>string `f_amount`</dt>
+  <dd>The amount of money to withdraw with this payment source.</dd>
+
+  <dt>bool `is_hide`</dt>
+  <dd>Whether payment method should be saved to user's account.</dd>
+
+  <dt>bool `is_save=true`</dt>
+  <dd>Determines whether this payment method is hidden.</dd>
+
+  <dt>bool `is_success=false`</dt>
+  <dd>Identifies whether this source was successfully charged.</dd>
+
+  <dt>string `m_surcharge`</dt>
+  <dd>The client-side calculated surcharge.</dd>
+
+  <dt>string `s_index`</dt>
+  <dd>The index of this form (optional).</dd>
+
+  <dt>string `sid_pay_method`</dt>
+  <dd>The payment method ID.</dd>
+</dl>
   public $a_pay_form = [];
 
   /**
    * Information about the selected login promotion.
    *
-   * <dl>
-   *   <dt>
-   *     int <var>i_limit</var>
-   *   </dt>
-   *   <dd>
-   *      The visit count limit of the promotion.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_remain</var>
-   *   </dt>
-   *   <dd>
-   *     The count of remaining visits.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_expire</var>
-   *   </dt>
-   *   <dd>
-   *     The expiration date.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_title</var>
-   *   </dt>
-   *   <dd>
-   *     The title of the promotion.
-   *   </dd>
-   * </dl>
-   *
    * @get result
    * @var array
    */
+<dl>
+  <dt>int `i_limit`</dt>
+  <dd>The visit count limit of the promotion.</dd>
+
+  <dt>int `i_remain`</dt>
+  <dd>The count of remaining visits.</dd>
+
+  <dt>string `s_expire`</dt>
+  <dd>The expiration date.</dd>
+
+  <dt>string `s_title`</dt>
+  <dd>The title of the promotion.</dd>
+</dl>
   public $a_promotion_data;
 
   /**
    * Fields refer to strings in the format <tt>id_purchase_item-k_id</tt>. Values refer to an array with the next stricture:
-   * <dl>
-   *   <dt>
-   *     array <var>a_tax</var>
-   *   </dt>
-   *   <dd>
-   *     A list of taxes to apply containing information about taxes.
-   *     The array keys are <tt>k_tax</tt> keys. Each element contains the following fields:
-   *     <dl>
-   *       <dt>
-   *         float <var>m_tax</var>
-   *       </dt>
-   *       <dd>
-   *         The tax rate.
-   *       </dd>
-   *       <dt>
-   *         string <var>text_title</var>
-   *       </dt>
-   *       <dd>
-   *         The name of the tax.
-   *       </dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>
-   *     string <var>id_purchase_item</var>
-   *   </dt>
-   *   <dd>
-   *     The purchase item ID. One of the {@link WlPurchaseItemSid} constants.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_id</var>
-   *   </dt>
-   *   <dd>
-   *     The value of the discount used for the purchase.
-   *   </dd>
-   *   <dt>
-   *     string <var>m_discount</var>
-   *   </dt>
-   *   <dd>
-   *     The value of the discount used for the purchase.
-   *   </dd>
-   *   <dt>
-   *     string <var>m_pay</var>
-   *   </dt>
-   *   <dd>
-   *     The payment for the promotion (or single visit) without taxes.
-   *   </dd>
-   *   <dt>
-   *     string <var>m_price</var>
-   *   </dt>
-   *   <dd>
-   *     The price of the promotion (or single visit).
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>array `a_tax`</dt>
+  <dd>
+    A list of taxes to apply containing information about taxes.
+The array keys are <tt>k_tax</tt> keys. Each element contains the following fields:
+<dl>
+  <dt>
+    float <var>m_tax</var>
+  </dt>
+  <dd>
+    The tax rate.
+  </dd>
+  <dt>
+    string <var>text_title</var>
+  </dt>
+  <dd>
+    The name of the tax.
+  </dd>
+</dl> <dl>
+      <dt>float `m_tax`</dt>
+      <dd>The tax rate.</dd>
+
+      <dt>string `text_title`</dt>
+      <dd>The name of the tax.</dd>
+    </dl>
+  </dd>
+
+  <dt>string `id_purchase_item`</dt>
+  <dd>The purchase item ID. One of the {@link WlPurchaseItemSid} constants.</dd>
+
+  <dt>string `k_id`</dt>
+  <dd>The value of the discount used for the purchase.</dd>
+
+  <dt>string `m_discount`</dt>
+  <dd>The value of the discount used for the purchase.</dd>
+
+  <dt>string `m_pay`</dt>
+  <dd>The payment for the promotion (or single visit) without taxes.</dd>
+
+  <dt>string `m_price`</dt>
+  <dd>The price of the promotion (or single visit).</dd>
+</dl>
   public $a_purchase;
 
   /**

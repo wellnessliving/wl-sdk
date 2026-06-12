@@ -15,54 +15,171 @@ class AddonUpdateModel extends WlModelAbstract
    * The appointment addon-ons.
    *
    * Old format - an array where each value is key of the add-on.
-   * New format - each element is an array: <dl>
-   *   <dt>int <var>i_product</var></dt>
-   *   <dd> The add-on count. Max value is 255.</dd>
-   *   <dt>int [<var>i_use</var>]</dt>
-   *   <dd> The add-on use count. Max value is 255. Not set means same value as add-on count.</dd>
-   *   <dt>string <var>k_shop_product_option</var></dt>
-   *   <dd>The add-on key. 
-   * </dl>
+   * New format - each element is an array: 
    *
    * @put post
    * @var string[]|array[]
    */
+<dl>
+  <dt>int `i_product`</dt>
+  <dd>The add-on count. Max value is 255.</dd>
+
+  <dt>int `i_use`</dt>
+  <dd>The add-on use count. Max value is 255. Not set means same value as add-on count.</dd>
+
+  <dt>string `k_shop_product_option`</dt>
+  <dd>The add-on key. 
+</dl>
   public $a_addon;
 
   /**
-   * Data to show appointment add-ons:<dl>
-   *   <dt>array[] <var>a_addon</var></dt>
-   *   <dd>
-   *     Data about appointment add-ons.
-   *        </dd>
-   *
-   *   <dt>array[] <var>a_addon_buy</var></dt>
-   *   <dd>
-   *     Add-ons available for purchase: zero quantity, zero usage quantity, and zero banked quantity.
-   *         </dd>
-   *
-   *   <dt>array[] <var>a_addon_own</var></dt>
-   *   <dd>
-   *     Add-ons already owned but not selected: zero quantity, zero usage quantity, non-zero banked quantity.
-   *          </dd>
-   *
-   *   <dt>array[] <var>a_addon_select</var></dt>
-   *   <dd>
-   *     Add-ons selected for this appointment: non-zero quantity or non-zero usage quantity.
-   *         </dd>
-   *
-   *   <dt>bool <var>is_addon_banking</var></dt>
-   *   <dd>Whether at least one of appointment add-ons is bankable.</dd>
-   *
-   *   <dt>bool <var>is_all_addon_selected</var></dt>
-   *   <dd>Whether all appointment add-ons have non-zero quantity or non-zero usage quantity.</dd>
-   *
-   *   <dt>bool <var>is_search</var></dt>
-   *   <dd>Determines whether the add-on search field needs to be shown.</dd></dl>
+   * Data to show appointment add-ons:
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>array[] `a_addon`</dt>
+  <dd>
+    Data about appointment add-ons.
+
+      <dt>string `html_amount`</dt>
+      <dd>Formatted HTML price of the addon.</dd>
+
+      <dt>string `html_duration`</dt>
+      <dd>HTML-escaped duration text.</dd>
+
+      <dt>string `html_title`</dt>
+      <dd>HTML-escaped addon title.</dd>
+
+      <dt>int `i_count_banked`</dt>
+      <dd>Pre-purchased units the client has; at least 0.</dd>
+
+      <dt>int `i_count_paid`</dt>
+      <dd>Paid units in the current appointment.</dd>
+
+      <dt>int `i_count_unpaid`</dt>
+      <dd>Unpaid units in the current appointment.</dd>
+
+      <dt>int `i_count_use`</dt>
+      <dd>Used units in the current appointment.</dd>
+
+      <dt>int `i_product`</dt>
+      <dd>Total product count for this appointment: `i_count_paid` plus `i_count_unpaid`.</dd>
+
+      <dt>bool `is_disable`</dt>
+      <dd>`true` when the addon has no products or is not active.</dd>
+    </dl>
+  </dd>
+
+  <dt>array[] `a_addon_buy`</dt>
+  <dd>
+    Add-ons available for purchase: zero quantity, zero usage quantity, and zero banked quantity.
+ 
+      <dt>string `html_amount`</dt>
+      <dd>Formatted HTML price of the addon.</dd>
+
+      <dt>string `html_duration`</dt>
+      <dd>HTML-escaped duration text.</dd>
+
+      <dt>string `html_title`</dt>
+      <dd>HTML-escaped addon title.</dd>
+
+      <dt>int `i_count_banked`</dt>
+      <dd>Pre-purchased units the client has; at least 0.</dd>
+
+      <dt>int `i_count_paid`</dt>
+      <dd>Paid units in the current appointment.</dd>
+
+      <dt>int `i_count_unpaid`</dt>
+      <dd>Unpaid units in the current appointment.</dd>
+
+      <dt>int `i_count_use`</dt>
+      <dd>Used units in the current appointment.</dd>
+
+      <dt>int `i_product`</dt>
+      <dd>Total product count for this appointment: `i_count_paid` plus `i_count_unpaid`.</dd>
+
+      <dt>bool `is_disable`</dt>
+      <dd>`true` when the addon has no products or is not active.</dd>
+    </dl>
+  </dd>
+
+  <dt>array[] `a_addon_own`</dt>
+  <dd>
+    Add-ons already owned but not selected: zero quantity, zero usage quantity, non-zero banked quantity.
+ 
+      <dt>string `html_amount`</dt>
+      <dd>Formatted HTML price of the addon.</dd>
+
+      <dt>string `html_duration`</dt>
+      <dd>HTML-escaped duration text.</dd>
+
+      <dt>string `html_title`</dt>
+      <dd>HTML-escaped addon title.</dd>
+
+      <dt>int `i_count_banked`</dt>
+      <dd>Pre-purchased units the client has; at least 0.</dd>
+
+      <dt>int `i_count_paid`</dt>
+      <dd>Paid units in the current appointment.</dd>
+
+      <dt>int `i_count_unpaid`</dt>
+      <dd>Unpaid units in the current appointment.</dd>
+
+      <dt>int `i_count_use`</dt>
+      <dd>Used units in the current appointment.</dd>
+
+      <dt>int `i_product`</dt>
+      <dd>Total product count for this appointment: `i_count_paid` plus `i_count_unpaid`.</dd>
+
+      <dt>bool `is_disable`</dt>
+      <dd>`true` when the addon has no products or is not active.</dd>
+    </dl>
+  </dd>
+
+  <dt>array[] `a_addon_select`</dt>
+  <dd>
+    Add-ons selected for this appointment: non-zero quantity or non-zero usage quantity.
+ 
+      <dt>string `html_amount`</dt>
+      <dd>Formatted HTML price of the addon.</dd>
+
+      <dt>string `html_duration`</dt>
+      <dd>HTML-escaped duration text.</dd>
+
+      <dt>string `html_title`</dt>
+      <dd>HTML-escaped addon title.</dd>
+
+      <dt>int `i_count_banked`</dt>
+      <dd>Pre-purchased units the client has; at least 0.</dd>
+
+      <dt>int `i_count_paid`</dt>
+      <dd>Paid units in the current appointment.</dd>
+
+      <dt>int `i_count_unpaid`</dt>
+      <dd>Unpaid units in the current appointment.</dd>
+
+      <dt>int `i_count_use`</dt>
+      <dd>Used units in the current appointment.</dd>
+
+      <dt>int `i_product`</dt>
+      <dd>Total product count for this appointment: `i_count_paid` plus `i_count_unpaid`.</dd>
+
+      <dt>bool `is_disable`</dt>
+      <dd>`true` when the addon has no products or is not active.</dd>
+    </dl>
+  </dd>
+
+  <dt>bool `is_addon_banking`</dt>
+  <dd>Whether at least one of appointment add-ons is bankable.</dd>
+
+  <dt>bool `is_all_addon_selected`</dt>
+  <dd>Whether all appointment add-ons have non-zero quantity or non-zero usage quantity.</dd>
+
+  <dt>bool `is_search`</dt>
+  <dd>Determines whether the add-on search field needs to be shown.</dd>
+</dl>
   public $a_addon_data;
 
   /**

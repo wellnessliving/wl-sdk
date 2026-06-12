@@ -3,7 +3,6 @@
 namespace WellnessLiving\Wl\Business;
 
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\WlRegionSid;
 
 /**
  * Returns information about a given staff member's business.
@@ -21,22 +20,28 @@ class BusinessAccessModel extends WlModelAbstract
 
   /**
    * The list of accessible businesses with their corresponding data. Each value is an array with the next structure:
-   * <dl>
-   *   <dt>int <var>id_region</var></dt>
-   *   <dd>The business region. One of the {@link WlRegionSid} constants. This will be `null` if no regions are currently set.</dd>
-   *   <dt>string <var>k_business</var></dt>
-   *   <dd>The business key. 
-   *   <dt>string <var>text_office_address</var></dt>
-   *   <dd>The business address.</dd>
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>The business title.</dd>
-   *   <dt>string <var>url_logo</var></dt>
-   *   <dd>The business logo URL. This will be empty if the business hasn't added a logo.</dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>int `id_region`</dt>
+  <dd>
+    The business region. This will be `null` if no regions are currently set.
+  </dd>
+
+  <dt>string `k_business`</dt>
+  <dd>The business key. 
+
+  <dt>string `text_office_address`</dt>
+  <dd>The business address.</dd>
+
+  <dt>string `text_title`</dt>
+  <dd>The business title.</dd>
+
+  <dt>string `url_logo`</dt>
+  <dd>The business logo URL. This will be empty if the business hasn't added a logo.</dd>
+</dl>
   public $a_business_data = [];
 
   /**

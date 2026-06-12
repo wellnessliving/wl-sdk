@@ -19,43 +19,47 @@ class SkinForeignModel extends WlModelAbstract
    *
    * For Lead Capture widget it may contain:
    *
-   * <dl>
-   *   <dt>bool <var>is_add_lead</var></dt>
-   *   <dd>`true` if it can be used in staff back office to add leads by staff member.</dd>
-   *   <dt>bool <var>is_welcome_email</var></dt>
-   *   <dd>`true` if welcome email should be sent to each added lead.</dd>
-   *   <dt>string <var>k_promotion</var></dt>
-   *   <dd>
-   *       Key of the purchase option to be granted to each added lead for free.
-   *       *   </dd>
-   *   <dt>string <var>is_redirect_self</var></dt>
-   *   <dd>`true` if redirection after lead is captured should be done in the same tab, `false` - in a new tab.</dd>
-   *   <dt>string <var>url_redirect</var></dt>
-   *   <dd>URL for redirection after lead is captured.</dd>
-   *   <dt>string <var>text_confirmation</var></dt>
-   *   <dd>Confirmation text to be shown after lead is added.</dd>
-   * </dl>
-   *
    * @post post
    * @put post
    * @var array
    */
+<dl>
+  <dt>bool `is_add_lead`</dt>
+  <dd>`true` if it can be used in staff back office to add leads by staff member.</dd>
+
+  <dt>bool `is_welcome_email`</dt>
+  <dd>`true` if welcome email should be sent to each added lead.</dd>
+
+  <dt>string `k_promotion`</dt>
+  <dd>
+    Key of the purchase option to be granted to each added lead for free.
+  /dd>
+
+  <dt>string `is_redirect_self`</dt>
+  <dd>`true` if redirection after lead is captured should be done in the same tab, `false` - in a new tab.</dd>
+
+  <dt>string `url_redirect`</dt>
+  <dd>URL for redirection after lead is captured.</dd>
+
+  <dt>string `text_confirmation`</dt>
+  <dd>Confirmation text to be shown after lead is added.</dd>
+</dl>
   public $a_data_specific = [];
 
   /**
    * Profile fields, which should be shown on the widget and if they are required or optional.
    *
-   *  <dl>
-   *    <dt>bool <var>k_field</var></dt>
-   *    <dd>Field key. 
-   *    <dt>bool <var>is_required</var></dt>
-   *    <dd>`true` if field should be required, `false` - optional.</dd>
-   *  </dl>
-   *
    * @post post
    * @put post
    * @var array
    */
+<dl>
+  <dt>bool `k_field`</dt>
+  <dd>Field key. 
+
+  <dt>bool `is_required`</dt>
+  <dd>`true` if field should be required, `false` - optional.</dd>
+</dl>
   public $a_fields = [];
 
   /**

@@ -35,17 +35,19 @@ class StandModel extends WlModelAbstract
   public $id_stand_status = null;
 
   /**
-   * A microservice environment for create stand. Each element of the array contains <dl>
-   *   <dt>string <var>k_microservice</var></dt>
-   *   <dd>Microservice key.</dd>
-   *   <dt>string <var>s_environment</var></dt>
-   *   <dd>Environment name.</dd>
-   * </dl>
+   * A microservice environment for create stand. Each element of the array contains 
    * `null` if the value is not defined. If the information is not provided as a request parameter, the stand will not be created.
    *
    * @post post
    * @var string|null
    */
+<dl>
+  <dt>string `k_microservice`</dt>
+  <dd>Microservice key.</dd>
+
+  <dt>string `s_environment`</dt>
+  <dd>Environment name.</dd>
+</dl>
   public $json_stand_environment = null;
 
   /**

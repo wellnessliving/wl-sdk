@@ -14,174 +14,248 @@ use WellnessLiving\Wl\WlSaleSid;
 class PurchaseReceiptModel extends WlModelAbstract
 {
   /**
-   * Information about the account balance for a user's account after payment for the purchase. Every element has the following keys:<dl>
-   *   <dt>string `m_amount`</dt>
-   *   <dd>The account balance on the user's account.</dd>
-   *
-   *   <dt>string `text_currency`</dt>
-   *   <dd>The currency of the amount.</dd>
-   *
-   *   <dt>string `text_method`</dt>
-   *   <dd>The payment method title.</dd>
-   * </dl>
+   * Information about the account balance for a user's account after payment for the purchase. Every element has the following keys:
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>string `m_amount`</dt>
+  <dd>The account balance on the user's account.</dd>
+
+  <dt>string `text_currency`</dt>
+  <dd>The currency of the amount.</dd>
+
+  <dt>string `text_method`</dt>
+  <dd>The payment method title.</dd>
+</dl>
   public $a_account_rest = [];
 
   /**
-   * Information about the business.<dl>
-   *   <dt>array <var>a_logo</var></dt><dd>The business logo.<dl>
-   *     <dt>int <var>i_height</var></dt><dd>The image height.</dd>
-   *     <dt>int <var>i_width</var></dt><dd>The image width.</dd>
-   *     <dt>bool <var>is_empty</var></dt><dd>This will be `true` if the image is empty. Otherwise, this will be `false`.</dd>
-   *     <dt>string <var>text_url</var></dt><dd>The URL of the image.</dd>
-   *   </dl></dd>
-   *   <dt>string <var>text_address</var></dt><dd>The business's address.</dd>
-   *   <dt>string <var>text_mail</var></dt><dd>The business's email address.</dd>
-   *   <dt>string <var>text_phone</var></dt><dd>The business's phone number.</dd>
-   *   <dt>string <var>text_title</var></dt><dd>The business name.</dd>
-   * </dl>
+   * Information about the business.
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>array `a_logo`</dt>
+  <dd>
+    The business logo.<dl>
+<dt>int <var>i_height</var></dt><dd>The image height.</dd>
+<dt>int <var>i_width</var></dt><dd>The image width.</dd>
+<dt>bool <var>is_empty</var></dt><dd>This will be `true` if the image is empty. Otherwise, this will be `false`.</dd>
+<dt>string <var>text_url</var></dt><dd>The URL of the image.</dd>
+  </dl> <dl>
+      <dt>int `i_height`</dt>
+      <dd>The image height.</dd>
+
+      <dt>int `i_width`</dt>
+      <dd>The image width.</dd>
+
+      <dt>bool `is_empty`</dt>
+      <dd>This will be `true` if the image is empty. Otherwise, this will be `false`.</dd>
+
+      <dt>string `text_url`</dt>
+      <dd>The URL of the image.</dd>
+    </dl>
+  </dd>
+
+  <dt>string `text_address`</dt>
+  <dd>The business's address.</dd>
+
+  <dt>string `text_mail`</dt>
+  <dd>The business's email address.</dd>
+
+  <dt>string `text_phone`</dt>
+  <dd>The business's phone number.</dd>
+
+  <dt>string `text_title`</dt>
+  <dd>The business name.</dd>
+</dl>
   public $a_business = [];
 
   /**
-   * Payment transaction information. Every element has the following keys:<dl>
-   *   <dt>string <var>text_card_number</var></dt><dd>The card or account number.</dd>
-   *   <dt>string <var>text_card_system</var></dt><dd>The card system name from {@link ACardSystemSid}.</dd>
-   *   <dt>string <var>text_title</var></dt><dd>The payment account title. This will be 'Account number' for ACH, 'Card' for all other cases.</dd>
-   * </dl>
+   * Payment transaction information. Every element has the following keys:
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>string `text_card_number`</dt>
+  <dd>The card or account number.</dd>
+
+  <dt>string `text_card_system`</dt>
+  <dd>The card system name from {@link ACardSystemSid}.</dd>
+
+  <dt>string `text_title`</dt>
+  <dd>The payment account title. This will be 'Account number' for ACH, 'Card' for all other cases.</dd>
+</dl>
   public $a_card = [];
 
   /**
-   * Information about the customer.<dl>
-   *   <dt>string <var>text_address</var></dt><dd>The customer's address.</dd>
-   *   <dt>string <var>text_mail</var></dt><dd>The customer's email address.</dd>
-   *   <dt>string <var>text_name</var></dt><dd>The customer's name.</dd>
-   *   <dt>string <var>text_phone</var></dt><dd>The customer's phone number.</dd>
-   * </dl>
+   * Information about the customer.
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>string `text_address`</dt>
+  <dd>The customer's address.</dd>
+
+  <dt>string `text_mail`</dt>
+  <dd>The customer's email address.</dd>
+
+  <dt>string `text_name`</dt>
+  <dd>The customer's name.</dd>
+
+  <dt>string `text_phone`</dt>
+  <dd>The customer's phone number.</dd>
+</dl>
   public $a_customer = [];
 
   /**
-   * A list of payment methods for the current purchase. Every element has the following keys:<dl>
-   *   <dt>string <var>m_amount</var></dt><dd>The amount of the payment.</dd>
-   *   <dt>string <var>text_currency</var></dt><dd>The currency of the amount.</dd>
-   *   <dt>string <var>text_pay_method</var></dt><dd>The payment method title.</dd>
-   * </dl>
+   * A list of payment methods for the current purchase. Every element has the following keys:
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>string `m_amount`</dt>
+  <dd>The amount of the payment.</dd>
+
+  <dt>string `text_currency`</dt>
+  <dd>The currency of the amount.</dd>
+
+  <dt>string `text_pay_method`</dt>
+  <dd>The payment method title.</dd>
+</dl>
   public $a_pay_method = [];
 
   /**
-   * Complete information about price information for the purchase.<dl>
-   *   <dt>string <var>m_discount</var></dt><dd>The discount amount.</dd>
-   *   <dt>string <var>m_discount_code</var></dt><dd>The discount amount for a discount code.</dd>
-   *   <dt>string <var>m_sum</var></dt><dd>The subtotal amount (the sum of the prices).</dd>
-   *   <dt>string <var>m_tax</var></dt><dd>The amount of taxes.</dd>
-   *   <dt>string <var>m_tip</var></dt><dd>The amount of tips.</dd>
-   *   <dt>string <var>m_total</var></dt><dd>The total amount.</dd>
-   *   <dt>string <var>text_currency</var></dt><dd>The currency of the purchase.</dd>
-   *   <dt>string <var>text_discount_code</var></dt><dd>The discount code applied to the purchase.</dd>
-   * </dl>
+   * Complete information about price information for the purchase.
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>string `m_discount`</dt>
+  <dd>The discount amount.</dd>
+
+  <dt>string `m_discount_code`</dt>
+  <dd>The discount amount for a discount code.</dd>
+
+  <dt>string `m_sum`</dt>
+  <dd>The subtotal amount (the sum of the prices).</dd>
+
+  <dt>string `m_tax`</dt>
+  <dd>The amount of taxes.</dd>
+
+  <dt>string `m_tip`</dt>
+  <dd>The amount of tips.</dd>
+
+  <dt>string `m_total`</dt>
+  <dd>The total amount.</dd>
+
+  <dt>string `text_currency`</dt>
+  <dd>The currency of the purchase.</dd>
+
+  <dt>string `text_discount_code`</dt>
+  <dd>The discount code applied to the purchase.</dd>
+</dl>
   public $a_price = [];
 
   /**
-   * A list of purchase items. Every element has the following keys:<dl>
-   *   <dt>array `a_logo`</dt>
-   *   <dd>
-   *     The purchase item logo.<dl>
-   *       <dt>int `i_height`</dt>
-   *       <dd>The image height.</dd>
-   *
-   *       <dt>int `i_width`</dt>
-   *       <dd>The image width.</dd>
-   *
-   *       <dt>bool `is_empty`</dt>
-   *       <dd>Determines whether the image is empty.</dd>
-   *
-   *       <dt>string `text_url`</dt>
-   *       <dd>he URL of the image.</dd>
-   *     </dl>
-   *   </dd>
-   *
-   *   <dt>string[] [`a_visit`]</dt>
-   *   <dd>
-   *     List of visit keys. Only available if the purchase item is a class period,
-   *     enrollment, enrollment deposit, or enrollment discount. Each element is a string visit key.
-   *        </dd>
-   *
-   *   <dt>int `i_count`</dt>
-   *   <dd>The number of items in the purchase.</dd>
-   *
-   *   <dt>int|null `id_program`</dt>
-   *   <dd>
-   *     Program ID. One of {@link WlProgramSid} constants. Only applies to promotions. `null` if the purchase item is not a promotion.
-   *   </dd>
-   *
-   *   <dt>int `id_purchase_item`</dt>
-   *   <dd>Purchase item ID. One of {@link WlPurchaseItemSid} constants.</dd>
-   *
-   *   <dt>int `id_sale`</dt>
-   *   <dd>Sale ID. One of {@link WlSaleSid} constants.</dd>
-   *
-   *   <dt>int `k_id`</dt>
-   *   <dd>The identifier of the item.</dd>
-   *
-   *   <dt>string `k_purchase_item`</dt>
-   *   <dd>The key of the purchase item.</dd>
-   *
-   *   <dt>string [`k_shop_product`]</dt>
-   *   <dd>
-   *     Product key.
-   *     Set only if `id_purchase_item`is {@link WlPurchaseItemSid::PRODUCT}.
-   *        </dd>
-   *
-   *   <dt>string `m_price`</dt>
-   *   <dd>The price of the single item.</dd>
-   *
-   *   <dt>string `m_price_total`</dt>
-   *   <dd>The price of all items.</dd>
-   *
-   *   <dt>string `text_category`</dt>
-   *   <dd>The type of the item (for example, a pass or membership).</dd>
-   *
-   *   <dt>string `text_currency`</dt>
-   *   <dd>The currency of the price.</dd>
-   *
-   *   <dt>string `text_info`</dt>
-   *   <dd>Additional information about the purchase item.</dd>
-   *
-   *   <dt>string `text_title`</dt>
-   *   <dd>The name of the purchase item.</dd>
-   *
-   *   <dt>string `text_description`</dt>
-   *   <dd>The description of the purchase item.</dd>
-   *
-   *   <dt>string [`url_print`]</dt>
-   *   <dd>The URL to print. Only available if the purchase item is a coupon (gift card).</dd>
-   * </dl>
+   * A list of purchase items. Every element has the following keys:
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>array `a_logo`</dt>
+  <dd>
+    The purchase item logo.<dl>
+  <dt>int `i_height`</dt>
+  <dd>The image height.</dd>
+
+  <dt>int `i_width`</dt>
+  <dd>The image width.</dd>
+
+  <dt>bool `is_empty`</dt>
+  <dd>Determines whether the image is empty.</dd>
+
+  <dt>string `text_url`</dt>
+  <dd>he URL of the image.</dd>
+</dl> <dl>
+      <dt>int `i_height`</dt>
+      <dd>The image height.</dd>
+
+      <dt>int `i_width`</dt>
+      <dd>The image width.</dd>
+
+      <dt>bool `is_empty`</dt>
+      <dd>Determines whether the image is empty.</dd>
+
+      <dt>string `text_url`</dt>
+      <dd>he URL of the image.</dd>
+    </dl>
+  </dd>
+
+  <dt>string[] `a_visit`</dt>
+  <dd>
+    List of visit keys. Only available if the purchase item is a class period,
+enrollment, enrollment deposit, or enrollment discount. Each element is a string visit key.
+/dd>
+
+  <dt>int `i_count`</dt>
+  <dd>The number of items in the purchase.</dd>
+
+  <dt>int|null `id_program`</dt>
+  <dd>
+    Program ID. One of {@link WlProgramSid} constants. Only applies to promotions. `null` if the purchase item is not a promotion.
+  </dd>
+
+  <dt>int `id_purchase_item`</dt>
+  <dd>Purchase item ID. One of {@link WlPurchaseItemSid} constants.</dd>
+
+  <dt>int `id_sale`</dt>
+  <dd>Sale ID. One of {@link WlSaleSid} constants.</dd>
+
+  <dt>int `k_id`</dt>
+  <dd>The identifier of the item.</dd>
+
+  <dt>string `k_purchase_item`</dt>
+  <dd>The key of the purchase item.</dd>
+
+  <dt>string `k_shop_product`</dt>
+  <dd>
+    Product key.
+Set only if `id_purchase_
+/dd>
+
+  <dt>string `m_price`</dt>
+  <dd>The price of the single item.</dd>
+
+  <dt>string `m_price_total`</dt>
+  <dd>The price of all items.</dd>
+
+  <dt>string `text_category`</dt>
+  <dd>The type of the item (for example, a pass or membership).</dd>
+
+  <dt>string `text_currency`</dt>
+  <dd>The currency of the price.</dd>
+
+  <dt>string `text_info`</dt>
+  <dd>Additional information about the purchase item.</dd>
+
+  <dt>string `text_title`</dt>
+  <dd>The name of the purchase item.</dd>
+
+  <dt>string `text_description`</dt>
+  <dd>The description of the purchase item.</dd>
+
+  <dt>string `url_print`</dt>
+  <dd>The URL to print. Only available if the purchase item is a coupon (gift card).</dd>
+</dl>
   public $a_purchase_item = [];
 
   /**

@@ -11,20 +11,24 @@ use WellnessLiving\WlModelAbstract;
 class UserInfoModel extends WlModelAbstract
 {
   /**
-   * List of the custom user fields. Each value is: <dl>
-   *    <dt>string <var>k_field</var></dt>
-   *    <dd>Field key. 
-   *    <dt>string <var>text_title</var></dt>
-   *    <dd>Name of the field. Will be <tt>null</tt> for general fields. Their titles are static.</dd>
-   *    <dt>string <var>text_value</var></dt>
-   *    <dd>Value of the field. This is the key of the selected item for `select` and `radio` elements.</dd>
-   *    <dt>string <var>text_value_title</var></dt>
-   *    <dd>Title of the selected option for `select` and `radio` elements. Unused for other elements.</dd>
-   * </dl>
+   * List of the custom user fields. Each value is: 
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `k_field`</dt>
+  <dd>Field key. 
+
+  <dt>string `text_title`</dt>
+  <dd>Name of the field. Will be <tt>null</tt> for general fields. Their titles are static.</dd>
+
+  <dt>string `text_value`</dt>
+  <dd>Value of the field. This is the key of the selected item for `select` and `radio` elements.</dd>
+
+  <dt>string `text_value_title`</dt>
+  <dd>Title of the selected option for `select` and `radio` elements. Unused for other elements.</dd>
+</dl>
   public $a_custom_field = [];
 
   /**
@@ -36,94 +40,128 @@ class UserInfoModel extends WlModelAbstract
   public $a_member_group = [];
 
   /**
-   * Information about the user's photo. The information returned has the following structure:<dl>
-   *   <dt>int <var>i_height</var></dt>
-   *   <dd>The height of the photo.</dd>
-   *
-   *   <dt>int <var>i_width</var></dt>
-   *   <dd>The width of the photo.</dd>
-   *
-   *   <dt>string <var>url_photo</var></dt>
-   *   <dd>The URL of the photo.</dd>
-   * </dl>
+   * Information about the user's photo. The information returned has the following structure:
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>int `i_height`</dt>
+  <dd>The height of the photo.</dd>
+
+  <dt>int `i_width`</dt>
+  <dd>The width of the photo.</dd>
+
+  <dt>string `url_photo`</dt>
+  <dd>The URL of the photo.</dd>
+</dl>
   public $a_photo;
 
   /**
    * List of user's data.
    *
-   * <dl>
-   *   <dt>array <var>a_custom_field</var></dt>
-   *   <dd>List of the custom user fields. Each value is:<dl>
-   *     <dt>string <var>k_field</var></dt>
-   *     <dd>Field key. 
-   *     <dt>string <var>text_title</var></dt>
-   *     <dd>Name of the field. Will be <tt>null</tt> for general fields. Their titles are static.</dd>
-   *     <dt>string <var>text_value</var></dt>
-   *     <dd>Value of the field.</dd>
-   *   </dl></dd>
-   *   <dt>string[] <var>a_member_group</var></dt>
-   *   <dd>
-   *     List of member groups that the user belongs to.
-   *       </dd>
-   *   <dt>array <var>a_photo</var></dt>
-   *   <dd>Information about the user's photo.</dd>
-   *   <dt>string <var>dt_add</var></dt>
-   *   <dd>The date the user was added, given in UTC time.</dd>
-   *   <dt>string <var>dt_birth</var></dt>
-   *   <dd>
-   *     The user's birthday. This will be `null` if the birthday isn't set yet.
-   *   </dd>
-   *   <dt>int <var>id_gender</var></dt>
-   *   <dd>The ID of the user's gender. One of the {@link AGenderSid} constants.</dd>
-   *   <dt>bool <var>is_customer_new</var></dt>
-   *   <dd>
-   *     This will be `true` if the user has never made purchases or reservations in this business.
-   *     Otherwise, this will be `false`.
-   *   </dd>
-   *   <dt>bool <var>is_traveller</var></dt>
-   *   <dd>
-   *     This will be `true` if the user is a traveler. A traveler is someone whose home location isn't the current location
-   *     in the Enterprise business.
-   *   </dd>
-   *   <dt>string <var>k_business</var></dt>
-   *   <dd>
-   *     The key of the business.
-   *     This may be empty if system-wide information is needed.
-   *   </dd>
-   *   <dt>string <var>k_login_type</var></dt>
-   *   <dd>The key of the login type. The login type describes the user's client type in this business.</dd>
-   *   <dt>string <var>s_first_name</var></dt>
-   *   <dd>The user's first name.</dd>
-   *   <dt>string <var>s_last_name</var></dt>
-   *   <dd>The user's last name.</dd>
-   *   <dt>string <var>s_mail</var></dt>
-   *   <dd>The user's email address.</dd>
-   *   <dt>string <var>s_member</var></dt>
-   *   <dd>
-   *     The user's member ID in the business. Also referred to as the client ID in the client's profile. This value
-   *     is set by the business and separate from the <var>uid</var> value.
-   *   </dd>
-   *   <dt>string <var>s_phone</var></dt>
-   *   <dd>
-   *     The user's phone number.
-   *   </dd>
-   *   <dt>string <var>s_phone_home</var></dt>
-   *   <dd>The user's home phone number.</dd>
-   *   <dt>string <var>s_phone_work</var></dt>
-   *   <dd>The user's work phone number.</dd>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>The key of the user.</dd>
-   *   <dt>string <var>url_photo</var></dt>
-   *   <dd>The URL for the user's photo.</dd>
-   * </dl>
-   *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>array `a_custom_field`</dt>
+  <dd>
+    List of the custom user fields. Each value is:<dl>
+<dt>string <var>k_field</var></dt>
+<dd>Field key. 
+<dt>string <var>text_title</var></dt>
+<dd>Name of the field. Will be <tt>null</tt> for general fields. Their titles are static.</dd>
+<dt>string <var>text_value</var></dt>
+<dd>Value of the field.</dd>
+  </dl> <dl>
+      <dt>string `k_field`</dt>
+      <dd>Field key. 
+
+      <dt>string `text_title`</dt>
+      <dd>Name of the field. Will be <tt>null</tt> for general fields. Their titles are static.</dd>
+
+      <dt>string `text_value`</dt>
+      <dd>Value of the field.</dd>
+    </dl>
+  </dd>
+
+  <dt>string[] `a_member_group`</dt>
+  <dd>
+    List of member groups that the user belongs to.
+   /dd>
+
+  <dt>array `a_photo`</dt>
+  <dd>
+    Information about the user's photo. <dl>
+      <dt>int `i_height`</dt>
+      <dd>The height of the photo.</dd>
+
+      <dt>int `i_width`</dt>
+      <dd>The width of the photo.</dd>
+
+      <dt>string `url_photo`</dt>
+      <dd>The URL of the photo.</dd>
+    </dl>
+  </dd>
+
+  <dt>string `dt_add`</dt>
+  <dd>The date the user was added, given in UTC time.</dd>
+
+  <dt>string `dt_birth`</dt>
+  <dd>The user's birthday. This will be `null` if the birthday isn't set yet.</dd>
+
+  <dt>int `id_gender`</dt>
+  <dd>The ID of the user's gender. One of the {@link AGenderSid} constants.</dd>
+
+  <dt>bool `is_customer_new`</dt>
+  <dd>
+    This will be `true` if the user has never made purchases or reservations in this business.
+Otherwise, this will be `false`.
+  </dd>
+
+  <dt>bool `is_traveller`</dt>
+  <dd>
+    This will be `true` if the user is a traveler. A traveler is someone whose home location isn't the current location
+in the Enterprise business.
+  </dd>
+
+  <dt>string `k_business`</dt>
+  <dd>The key of the business.
+This may be empty if system-wide information is needed.</dd>
+
+  <dt>string `k_login_type`</dt>
+  <dd>The key of the login type. The login type describes the user's client type in this business.</dd>
+
+  <dt>string `s_first_name`</dt>
+  <dd>The user's first name.</dd>
+
+  <dt>string `s_last_name`</dt>
+  <dd>The user's last name.</dd>
+
+  <dt>string `s_mail`</dt>
+  <dd>The user's email address.</dd>
+
+  <dt>string `s_member`</dt>
+  <dd>
+    The user's member ID in the business. Also referred to as the client ID in the client's profile. This value
+is set by the business and separate from the <var>uid</var> value.
+  </dd>
+
+  <dt>string `s_phone`</dt>
+  <dd>The user's phone number.</dd>
+
+  <dt>string `s_phone_home`</dt>
+  <dd>The user's home phone number.</dd>
+
+  <dt>string `s_phone_work`</dt>
+  <dd>The user's work phone number.</dd>
+
+  <dt>string `uid`</dt>
+  <dd>The key of the user.</dd>
+
+  <dt>string `url_photo`</dt>
+  <dd>The URL for the user's photo.</dd>
+</dl>
   public $a_result_list;
 
   /**

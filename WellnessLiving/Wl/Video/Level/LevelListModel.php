@@ -10,16 +10,18 @@ use WellnessLiving\WlModelAbstract;
 class LevelListModel extends WlModelAbstract
 {
   /**
-   * A list of video levels with the following structure: <dl>
-   *   <dt>string <var>k_video_level</var></dt>
-   *   <dd>The video level key.</dd>
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>The video level title.</dd>
-   * </dl>
+   * A list of video levels with the following structure: 
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `k_video_level`</dt>
+  <dd>The video level key.</dd>
+
+  <dt>string `text_title`</dt>
+  <dd>The video level title.</dd>
+</dl>
   public $a_level_list = [];
 
   /**

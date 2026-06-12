@@ -30,18 +30,21 @@ class VideoElementModel extends WlModelAbstract
   public $a_staff = [];
 
   /**
-   * A list of staff members associated with the video. Every item has the following structure:<dl>
-   *   <dt>string <var>k_staff</var></dt>
-   *   <dd><b>Deprecated</b> The staff member key. 
-   *   <dt>string <var>text_name</var></dt>
-   *   <dd>The staff member's full name.</dd>
-   *   <dt>string <var>uid_staff</var></dt>
-   *   <dd>The staff user ID. 
-   * </dl>
+   * A list of staff members associated with the video. Every item has the following structure:
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>string `k_staff`</dt>
+  <dd><b>Deprecated</b> The staff member key. 
+
+  <dt>string `text_name`</dt>
+  <dd>The staff member's full name.</dd>
+
+  <dt>string `uid_staff`</dt>
+  <dd>The staff user ID. 
+</dl>
   public $a_staff_info = [];
 
   /**

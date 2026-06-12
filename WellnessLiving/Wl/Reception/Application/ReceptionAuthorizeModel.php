@@ -22,20 +22,22 @@ class ReceptionAuthorizeModel extends WlModelAbstract
    * Can be set only this field or {@link ReceptionAuthorizeModel::$uid}.
    * It depends, whether we found one user or multiple.
    *
-   * <dl>
-   *   <dt>string <var>text_name_first</var></dt>
-   *   <dd>First name of the user.</dd>
-   *   <dt>string <var>text_name_last</var></dt>
-   *   <dd>Last name of the user.</dd>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>Key of the user.</dd>
-   *   <dt>string <var>url_image</var></dt>
-   *   <dd>Link to the profile image.</dd>
-   * </dl>
-   *
    * @post result
    * @var array[]
    */
+<dl>
+  <dt>string `text_name_first`</dt>
+  <dd>First name of the user.</dd>
+
+  <dt>string `text_name_last`</dt>
+  <dd>Last name of the user.</dd>
+
+  <dt>string `uid`</dt>
+  <dd>Key of the user.</dd>
+
+  <dt>string `url_image`</dt>
+  <dd>Link to the profile image.</dd>
+</dl>
   public $a_select = [];
 
   /**

@@ -29,36 +29,23 @@ class EditEmail67Model extends WlModelAbstract
    * Information about the user who occupies the specified email.
    * This will be empty if the email is free or if the rate limit has been reached.
    * Otherwise, has next keys:
-   * <dl>
-   *   <dt>
-   *     string <var>text_firstname</var>
-   *   </dt>
-   *   <dd>
-   *     First name.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_lastname</var>
-   *   </dt>
-   *   <dd>
-   *     Last name.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_phone</var>
-   *   </dt>
-   *   <dd>
-   *     Phone.
-   *   </dd>
-   *   <dt>
-   *     string <var>url_photo</var>
-   *   </dt>
-   *   <dd>
-   *     URL to photo.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>string `text_firstname`</dt>
+  <dd>First name.</dd>
+
+  <dt>string `text_lastname`</dt>
+  <dd>Last name.</dd>
+
+  <dt>string `text_phone`</dt>
+  <dd>Phone.</dd>
+
+  <dt>string `url_photo`</dt>
+  <dd>URL to photo.</dd>
+</dl>
   public $a_user = null;
 
   /**

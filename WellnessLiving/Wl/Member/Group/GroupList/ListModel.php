@@ -11,23 +11,17 @@ class ListModel extends WlModelAbstract
 {
   /**
    * Member groups list:
-   * <dl>
-   *   <dt>
-   *     string <var>k_member_group</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the member group.    </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     The name of the member group.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `k_member_group`</dt>
+  <dd>The key of the member group. 
+
+  <dt>string `text_title`</dt>
+  <dd>The name of the member group.</dd>
+</dl>
   public $a_member_group;
 
   /**

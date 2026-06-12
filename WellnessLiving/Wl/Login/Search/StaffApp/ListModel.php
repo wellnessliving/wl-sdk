@@ -16,24 +16,29 @@ class ListModel extends WlModelAbstract
    * If the query is empty, recent users will be returned.
    *
    * Each element is an array with the following keys:
-   * <dl>
-   *   <dt>string <var>text_mail</var></dt>
-   *   <dd>Client's email.</dd>
-   *   <dt>string <var>text_name_first</var></dt>
-   *   <dd>Client's first name.</dd>
-   *   <dt>string <var>text_name_last</var></dt>
-   *   <dd>Client's last name.</dd>
-   *   <dt>string <var>text_phone</var></dt>
-   *   <dd>Client's phone.</dd>
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>The client name.</dd>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>The client key. 
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `text_mail`</dt>
+  <dd>Client's email.</dd>
+
+  <dt>string `text_name_first`</dt>
+  <dd>Client's first name.</dd>
+
+  <dt>string `text_name_last`</dt>
+  <dd>Client's last name.</dd>
+
+  <dt>string `text_phone`</dt>
+  <dd>Client's phone.</dd>
+
+  <dt>string `text_title`</dt>
+  <dd>The client name.</dd>
+
+  <dt>string `uid`</dt>
+  <dd>The client key. 
+</dl>
   public $a_list;
 
   /**

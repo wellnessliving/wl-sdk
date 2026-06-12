@@ -15,35 +15,44 @@ use WellnessLiving\WlModelAbstract;
 class PromotionPayPauseModel extends WlModelAbstract
 {
   /**
-   * List of all promotion payment pause periods. Each element has next structure:<dl>
-   *   <dt>string|null <var>dl_create</var></dt>
-   *   <dd>Date when this hold period was created. <tt>null</tt> for old records.</dd>
-   *   <dt>string <var>dl_end</var></dt>
-   *   <dd>
-   *     Ending date of the pause (inclusively - this date is paused).
-   *     This field contains zero date for promotions placed on hold indefinitely.
-   *   </dd>
-   *   <dt>string <var>dl_start</var></dt>
-   *   <dd>Starting date of the pause (inclusively - this date is paused).</dd>
-   *   <dt>int|null <var>i_hold_day</var></dt>
-   *   <dd>Duration of the hold in days. <tt>null</tt> if the hold is ongoing.</dd>
-   *   <dt>bool <var>is_past</var></dt>
-   *   <dd>Whether the hold is in past.</dd>
-   *   <dt>string <var>k_promotion_pay_pause</var></dt>
-   *   <dd>Key of the hold period. 
-   *   <dt>string|null <var>text_note</var></dt>
-   *   <dd>Additional notes.</dd>
-   *   <dt>string|null <var>text_user_create</var></dt>
-   *   <dd>Full name of a user that has created hold period. <tt>null</tt> for old records.</dd>
-   *   <dt>string|null <var>uid_create</var></dt>
-   *   <dd>Key of a user that has created hold period. <tt>null</tt> for old records.</dd>
-   * </dl>
+   * List of all promotion payment pause periods. Each element has next structure:
    *
    * <tt>null</tt> if {@link PromotionPayPauseModel::$is_list} is false.
    *
    * @get result
    * @var array[]|null
    */
+<dl>
+  <dt>string|null `dl_create`</dt>
+  <dd>Date when this hold period was created. <tt>null</tt> for old records.</dd>
+
+  <dt>string `dl_end`</dt>
+  <dd>
+    Ending date of the pause (inclusively - this date is paused).
+This field contains zero date for promotions placed on hold indefinitely.
+  </dd>
+
+  <dt>string `dl_start`</dt>
+  <dd>Starting date of the pause (inclusively - this date is paused).</dd>
+
+  <dt>int|null `i_hold_day`</dt>
+  <dd>Duration of the hold in days. <tt>null</tt> if the hold is ongoing.</dd>
+
+  <dt>bool `is_past`</dt>
+  <dd>Whether the hold is in past.</dd>
+
+  <dt>string `k_promotion_pay_pause`</dt>
+  <dd>Key of the hold period. 
+
+  <dt>string|null `text_note`</dt>
+  <dd>Additional notes.</dd>
+
+  <dt>string|null `text_user_create`</dt>
+  <dd>Full name of a user that has created hold period. <tt>null</tt> for old records.</dd>
+
+  <dt>string|null `uid_create`</dt>
+  <dd>Key of a user that has created hold period. <tt>null</tt> for old records.</dd>
+</dl>
   public $a_pay_pause_list = null;
 
   /**

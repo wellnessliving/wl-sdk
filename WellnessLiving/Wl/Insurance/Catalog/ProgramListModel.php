@@ -13,24 +13,28 @@ class ProgramListModel extends WlModelAbstract
    * A List of active programs.
    * Every element has next keys:
    *
-   * <dl>
-   *   <dt>string <var>k_wellness_program</var></dt>
-   *   <dd>The insurance key.</dd>
-   *   <dt>string <var>m_price</var></dt>
-   *   <dd>The Purchase Option price.</dd>
-   *   <dt>string <var>text_insurance_organization</var></dt>
-   *   <dd>The insurance organization name.</dd>
-   *   <dt>string <var>text_partner</var></dt>
-   *   <dd>The insurance partner name.</dd>
-   *   <dt>string <var>text_program</var></dt>
-   *   <dd>The insurance name.</dd>
-   *   <dt>string <var>url_insurance_detail</var></dt>
-   *   <dd>The insurance organization URL.</dd>
-   * </dl>
-   *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `k_wellness_program`</dt>
+  <dd>The insurance key.</dd>
+
+  <dt>string `m_price`</dt>
+  <dd>The Purchase Option price.</dd>
+
+  <dt>string `text_insurance_organization`</dt>
+  <dd>The insurance organization name.</dd>
+
+  <dt>string `text_partner`</dt>
+  <dd>The insurance partner name.</dd>
+
+  <dt>string `text_program`</dt>
+  <dd>The insurance name.</dd>
+
+  <dt>string `url_insurance_detail`</dt>
+  <dd>The insurance organization URL.</dd>
+</dl>
   public $a_wellness_program;
 
   /**

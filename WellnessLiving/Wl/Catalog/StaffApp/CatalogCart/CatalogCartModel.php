@@ -14,95 +14,162 @@ class CatalogCartModel extends WlModelAbstract
 {
   /**
    * A list of available discount codes with the next structure:
-   * <dl>
-   *   <dt>bool <var>is_select</var></dt>
-   *   <dd>`true` if this code is selected currently, `false` otherwise.</dd>
-   *   <dt>string <var>k_discount_code</var></dt>
-   *   <dd>Discount code key. 
-   *   <dt>string <var>text_discount_code</var></dt>
-   *   <dd>Value of the code that can be used to get discount.</dd>
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>Name of the code.</dd>
-   * </dl>
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>bool `is_select`</dt>
+  <dd>`true` if this code is selected currently, `false` otherwise.</dd>
+
+  <dt>string `k_discount_code`</dt>
+  <dd>Discount code key. 
+
+  <dt>string `text_discount_code`</dt>
+  <dd>Value of the code that can be used to get discount.</dd>
+
+  <dt>string `text_title`</dt>
+  <dd>Name of the code.</dd>
+</dl>
   public $a_discount_code = [];
 
   /**
    * The list of cart items with the next structure:
-   * <dl>
-   *   <dt>array [<var>a_config</var>]</dt>
-   *   <dd>
-   *     The list of purchase item additional options:
-   *     <dl>
-   *       <dt>string [<var>f_price</var>]</dt>
-   *       <dd>The custom price.</dd>
-   *       <dt>string [<var>dt_prorate</var>]</dt>
-   *       <dd>The prorate date. This should be passed when <var>is_prorate</var>=<tt>true</tt>.</dd>
-   *       <dt>string [<var>dt_start</var>]</dt>
-   *       <dd>The promotion start date.</dd>
-   *       <dt>bool [<var>is_prorate</var>]</dt>
-   *       <dd>Determines whether to prorate the first payment.</dd>
-   *       <dt>bool [<var>is_prorate_fix</var>]</dt>
-   *       <dd>Determines if the client should pay for the first period now.</dd>
-   *       <dt>bool [<var>is_prorate_only</var>]</dt>
-   *       <dd>Determines whether the selected option 'pay prorate amount only' should only include the prorate amount.</dd>
-   *       <dt>string [<var>m_custom</var>]</dt>
-   *       <dd>The custom price of the gift card.</dd>
-   *       <dt>string [<var>dt_send_local</var>]</dt>
-   *       <dd>The date when the gift card email must be sent.</dd>
-   *       <dt>bool <var>is_mail</var></dt>
-   *       <dd>If <tt>true</tt>, the gift card will be sent via email. Otherwise, <tt>false</tt> if the gift card will be printed.</dd>
-   *       <dt>string [<var>s_mail</var>]</dt>
-   *       <dd>The recipient's email.</dd>
-   *       <dt>string [<var>s_message</var>]</dt>
-   *       <dd>The message.</dd>
-   *       <dt>string <var>s_recipient</var></dt>
-   *       <dd>The recipient's name.</dd>
-   *       <dt>string <var>s_sender</var></dt>
-   *       <dd>The sender's name.</dd>
-   *       <dt>string <var>m_prorate_custom</var></dt>
-   *       <dd>The amount of money for the prorate period. This should only be passed in the case of manual entry.</dd>
-   *       <dt>string <var>k_coupon</var></dt>
-   *       <dd>The coupon key.</dd>
-   *       <dt>string <var>k_coupon_amount</var></dt>
-   *       <dd>The coupon amount key.</dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>array [<var>a_tax_custom</var>]</dt>
-   *   <dd>
-   *     Information about taxes. If not passed, no custom taxes have been applied to the sale item.
-   *     If a record is present, the tax is custom using the next structure:
-   *     <dl>
-   *       <dt>string <var>f_tax</var></dt>
-   *       <dd>The tax amount.</dd>
-   *       <dt>string <var>k_tax</var></dt>
-   *       <dd>The tax keys. 
-   *     </dl>
-   *   </dd>
-   *   <dt>int [<var>f_discount_percent</var>]</dt>
-   *   <dd>The discount percentage, applied to the current item.</dd>
-   *   <dt>int <var>i_quantity</var></dt>
-   *   <dd>The quantity of sale items.</dd>
-   *   <dt>int <var>id_sale</var></dt>
-   *   <dd>The sale item type. One of the {@link WlSaleSid} constants.</dd>
-   *   <dt>string <var>k_id</var></dt>
-   *   <dd>The sale item key.</dd>
-   *   <dt>string <var>k_shop_product_option</var></dt>
-   *   <dd>
-   *     The store product option key. This will be <tt>null</tt> if the sale item has no options.
-   *        </dd>
-   *   <dt>string [<var>m_discount_fix</var>]</dt>
-   *   <dd>The fixed price discount, applied to the current item.</dd>
-   *   <dt>string [<var>m_price_custom</var>]</dt>
-   *   <dd>The custom price of the sale item. If not passed, no custom price has been applied to the sale item.</dd>
-   * </dl>
    *
    * @get get
    * @var array[]
    */
+<dl>
+  <dt>array `a_config`</dt>
+  <dd>
+    The list of purchase item additional options:
+<dl>
+  <dt>string [<var>f_price</var>]</dt>
+  <dd>The custom price.</dd>
+  <dt>string [<var>dt_prorate</var>]</dt>
+  <dd>The prorate date. This should be passed when <var>is_prorate</var>=<tt>true</tt>.</dd>
+  <dt>string [<var>dt_start</var>]</dt>
+  <dd>The promotion start date.</dd>
+  <dt>bool [<var>is_prorate</var>]</dt>
+  <dd>Determines whether to prorate the first payment.</dd>
+  <dt>bool [<var>is_prorate_fix</var>]</dt>
+  <dd>Determines if the client should pay for the first period now.</dd>
+  <dt>bool [<var>is_prorate_only</var>]</dt>
+  <dd>Determines whether the selected option 'pay prorate amount only' should only include the prorate amount.</dd>
+  <dt>string [<var>m_custom</var>]</dt>
+  <dd>The custom price of the gift card.</dd>
+  <dt>string [<var>dt_send_local</var>]</dt>
+  <dd>The date when the gift card email must be sent.</dd>
+  <dt>bool <var>is_mail</var></dt>
+  <dd>If <tt>true</tt>, the gift card will be sent via email. Otherwise, <tt>false</tt> if the gift card will be printed.</dd>
+  <dt>string [<var>s_mail</var>]</dt>
+  <dd>The recipient's email.</dd>
+  <dt>string [<var>s_message</var>]</dt>
+  <dd>The message.</dd>
+  <dt>string <var>s_recipient</var></dt>
+  <dd>The recipient's name.</dd>
+  <dt>string <var>s_sender</var></dt>
+  <dd>The sender's name.</dd>
+  <dt>string <var>m_prorate_custom</var></dt>
+  <dd>The amount of money for the prorate period. This should only be passed in the case of manual entry.</dd>
+  <dt>string <var>k_coupon</var></dt>
+  <dd>The coupon key.</dd>
+  <dt>string <var>k_coupon_amount</var></dt>
+  <dd>The coupon amount key.</dd>
+</dl> <dl>
+      <dt>string `f_price`</dt>
+      <dd>The custom price.</dd>
+
+      <dt>string `dt_prorate`</dt>
+      <dd>The prorate date. This should be passed when <var>is_prorate</var>=<tt>true</tt>.</dd>
+
+      <dt>string `dt_start`</dt>
+      <dd>The promotion start date.</dd>
+
+      <dt>bool `is_prorate`</dt>
+      <dd>Determines whether to prorate the first payment.</dd>
+
+      <dt>bool `is_prorate_fix`</dt>
+      <dd>Determines if the client should pay for the first period now.</dd>
+
+      <dt>bool `is_prorate_only`</dt>
+      <dd>Determines whether the selected option 'pay prorate amount only' should only include the prorate amount.</dd>
+
+      <dt>string `m_custom`</dt>
+      <dd>The custom price of the gift card.</dd>
+
+      <dt>string `dt_send_local`</dt>
+      <dd>The date when the gift card email must be sent.</dd>
+
+      <dt>bool `is_mail`</dt>
+      <dd>
+        If <tt>true</tt>, the gift card will be sent via email. Otherwise, <tt>false</tt> if the gift card will be printed.
+      </dd>
+
+      <dt>string `s_mail`</dt>
+      <dd>The recipient's email.</dd>
+
+      <dt>string `s_message`</dt>
+      <dd>The message.</dd>
+
+      <dt>string `s_recipient`</dt>
+      <dd>The recipient's name.</dd>
+
+      <dt>string `s_sender`</dt>
+      <dd>The sender's name.</dd>
+
+      <dt>string `m_prorate_custom`</dt>
+      <dd>The amount of money for the prorate period. This should only be passed in the case of manual entry.</dd>
+
+      <dt>string `k_coupon`</dt>
+      <dd>The coupon key.</dd>
+
+      <dt>string `k_coupon_amount`</dt>
+      <dd>The coupon amount key.</dd>
+    </dl>
+  </dd>
+
+  <dt>array `a_tax_custom`</dt>
+  <dd>
+    Information about taxes. If not passed, no custom taxes have been applied to the sale item.
+If a record is present, the tax is custom using the next structure:
+<dl>
+  <dt>string <var>f_tax</var></dt>
+  <dd>The tax amount.</dd>
+  <dt>string <var>k_tax</var></dt>
+  <dd>The tax keys. 
+</dl> <dl>
+      <dt>string `f_tax`</dt>
+      <dd>The tax amount.</dd>
+
+      <dt>string `k_tax`</dt>
+      <dd>The tax keys. 
+    </dl>
+  </dd>
+
+  <dt>int `f_discount_percent`</dt>
+  <dd>The discount percentage, applied to the current item.</dd>
+
+  <dt>int `i_quantity`</dt>
+  <dd>The quantity of sale items.</dd>
+
+  <dt>int `id_sale`</dt>
+  <dd>The sale item type. One of the {@link WlSaleSid} constants.</dd>
+
+  <dt>string `k_id`</dt>
+  <dd>The sale item key.</dd>
+
+  <dt>string `k_shop_product_option`</dt>
+  <dd>
+    The store product option key. This will be <tt>null</tt> if the sale item has no options.
+/dd>
+
+  <dt>string `m_discount_fix`</dt>
+  <dd>The fixed price discount, applied to the current item.</dd>
+
+  <dt>string `m_price_custom`</dt>
+  <dd>The custom price of the sale item. If not passed, no custom price has been applied to the sale item.</dd>
+</dl>
   public $a_item = [];
 
   /**

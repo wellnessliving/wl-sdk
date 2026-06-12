@@ -13,51 +13,48 @@ class VisitStatusModel extends WlModelAbstract
   /**
    * Information about whether the given user can cancel an online booking and what
    * consequences the cancellation would have:
-   *  <dl>
-   *      <dt>
-   *          array|null `a_penalty`
-   *      </dt>
-   *      <dd>
-   *        <dl>
-   *           <dt>bool `is_flat`</dt>
-   *           <dd>`true` in a case of flat penalty type; `false` in a case of percentage penalty type.</dd>
-   *           <dt>string `k_currency`</dt>
-   *           <dd>Currency >
-   *           <dt>string `m_amount`</dt>
-   *           <dd>Penalty amount.</dd>
-   *        </dl>
-   *        `null` if penalty must be not applied.
-   *      </dd>
-   *      <dt>
-   *          bool `can_cancel`
-   *      </dt>
-   *      <dd>
-   *        `true` if the booking can be canceled online by the specified user, `false` otherwise.
-   *      </dd>
-   *      <dt>
-   *          bool `is_flag`
-   *      </dt>
-   *      <dd>
-   *        `true` if the client's account will be flagged instead of charging a monetary fee, `false` otherwise.
-   *      </dd>
-   *      <dt>
-   *          bool `is_late`
-   *      </dt>
-   *      <dd>
-   *        `true` if the cancellation would be considered a late cancel, `false` otherwise.
-   *      </dd>
-   *      <dt>
-   *          bool `is_refund`
-   *      </dt>
-   *      <dd>
-   *        `true` if the visit credit (from the purchase option used to book) will be returned
-   *        to the user's profile after cancellation, `false` otherwise.
-   *      </dd>
-   *  </dl>
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>array|null `a_penalty`</dt>
+  <dd>
+    <dl>
+      <dt>bool `is_flat`</dt>
+      <dd>`true` in a case of flat penalty type; `false` in a case of percentage penalty type.</dd>
+      <dt>string `k_currency`</dt>
+      <dd>Currency >
+      <dt>string `m_amount`</dt>
+      <dd>Penalty amount.</dd>
+   </dl>
+   `null` if penalty must be not applied. <dl>
+      <dt>bool `is_flat`</dt>
+      <dd>`true` in a case of flat penalty type; `false` in a case of percentage penalty type.</dd>
+
+      <dt>string `k_currency`</dt>
+      <dd>Currency >
+
+      <dt>string `m_amount`</dt>
+      <dd>Penalty amount.</dd>
+    </dl>
+  </dd>
+
+  <dt>bool `can_cancel`</dt>
+  <dd>`true` if the booking can be canceled online by the specified user, `false` otherwise.</dd>
+
+  <dt>bool `is_flag`</dt>
+  <dd>`true` if the client's account will be flagged instead of charging a monetary fee, `false` otherwise.</dd>
+
+  <dt>bool `is_late`</dt>
+  <dd>`true` if the cancellation would be considered a late cancel, `false` otherwise.</dd>
+
+  <dt>bool `is_refund`</dt>
+  <dd>
+    `true` if the visit credit (from the purchase option used to book) will be returned
+   to the user's profile after cancellation, `false` otherwise.
+  </dd>
+</dl>
   public $a_cancel;
 
   /**
@@ -77,24 +74,29 @@ class VisitStatusModel extends WlModelAbstract
    * Contains an extended data set, as well as a different format than {@link VisitStatusModel::$a_resource}.
    *
    * Each element contains the following set of data:
-   * <dl>
-   *  <dt>string <var>k_resource</var></dt>
-   *  <dd>Resource >
-   *  <dt>string <var>k_resource_type</var></dt>
-   *  <dd>Resource type >
-   *  <dt>int <var>i_index</var></dt>
-   *  <dd>Index of the resource on the layout.</dd>
-   *  <dt>int <var>i_quantity</var></dt>
-   *  <dd>Quantity of the resource on the layout.</dd>
-   *  <dt>string <var>text_alias</var></dt>
-   *  <dd>Resource's custom name (alias) on the layout.</dd>
-   *  <dt>string <var>text_title</var></dt>
-   *  <dd>Resource's title.</dd>
-   * </dl>
    *
    * @get result
    * @var array[]|null
    */
+<dl>
+  <dt>string `k_resource`</dt>
+  <dd>Resource >
+
+  <dt>string `k_resource_type`</dt>
+  <dd>Resource type >
+
+  <dt>int `i_index`</dt>
+  <dd>Index of the resource on the layout.</dd>
+
+  <dt>int `i_quantity`</dt>
+  <dd>Quantity of the resource on the layout.</dd>
+
+  <dt>string `text_alias`</dt>
+  <dd>Resource's custom name (alias) on the layout.</dd>
+
+  <dt>string `text_title`</dt>
+  <dd>Resource's title.</dd>
+</dl>
   public $a_resource_alias = [];
 
   /**

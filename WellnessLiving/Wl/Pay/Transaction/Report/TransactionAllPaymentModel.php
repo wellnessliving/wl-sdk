@@ -26,88 +26,104 @@ class TransactionAllPaymentModel extends WlModelAbstract
    * This is an indexed array where each element is also an indexed array representing one report row.
    * Column positions in each row correspond to the field names in {@link TransactionAllPaymentModel::$a_field}.
    *
-   * Known columns (use {@link TransactionAllPaymentModel::$a_field} to resolve their positional indexes): <dl>
-   *   <dt>array `a_pay_transaction`</dt>
-   *   <dd>
-   *     List of pay transactions associated with this row. Each element: <dl>
-   *       <dt>int `id_pay_method`</dt>
-   *       <dd>Payment method ID. One of {@link WlPayMethodSid} constants.</dd>
-   *
-   *       <dt>string `k_pay_transaction`</dt>
-   *       <dd>Pay transaction key. 
-   *
-   *       <dt>string `m_amount`</dt>
-   *       <dd>Amount paid.</dd>
-   *
-   *       <dt>string `m_surcharge`</dt>
-   *       <dd>Surcharge amount from store settings.</dd>
-   *
-   *       <dt>string|int `s_batch_number`</dt>
-   *       <dd>Batch number for this transaction.</dd>
-   *     </dl>
-   *   </dd>
-   *
-   *   <dt>string `dtu_purchase_start`</dt>
-   *   <dd>Start date and time of the purchase in UTC.</dd>
-   *
-   *   <dt>string `k_purchase`</dt>
-   *   <dd>Purchase key. 
-   *
-   *   <dt>string `m_net_sale`</dt>
-   *   <dd>Net sales amount.</dd>
-   *
-   *   <dt>string `m_total_tax`</dt>
-   *   <dd>Total tax amount.</dd>
-   *
-   *   <dt>string `o_client.text_first`</dt>
-   *   <dd>First name of the client.</dd>
-   *
-   *   <dt>string `o_client.text_last`</dt>
-   *   <dd>Last name of the client.</dd>
-   *
-   *   <dt>string `o_client.text_name`</dt>
-   *   <dd>Full name of the client.</dd>
-   *
-   *   <dt>string `o_location.k_location`</dt>
-   *   <dd>Location key. 
-   *
-   *   <dt>string `s_batch_number`</dt>
-   *   <dd>Batch number of the first transaction in the row.</dd>
-   *
-   *   <dt>string `text_location_address`</dt>
-   *   <dd>Street address of the location.</dd>
-   *
-   *   <dt>string `text_location_city`</dt>
-   *   <dd>Name of the location's city.</dd>
-   *
-   *   <dt>string `text_location_country`</dt>
-   *   <dd>Name of the location's country.</dd>
-   *
-   *   <dt>string `text_location_postal`</dt>
-   *   <dd>Postal code of the location.</dd>
-   *
-   *   <dt>string `text_location_region`</dt>
-   *   <dd>Name of the location's region.</dd>
-   *
-   *   <dt>string `text_payment_method`</dt>
-   *   <dd>Name of the payment method used.</dd>
-   *
-   *   <dt>string `text_payment_method_base`</dt>
-   *   <dd>Name of the base payment method. If a custom method was used, this is the method it is based on.</dd>
-   *
-   *   <dt>string `text_tax_title`</dt>
-   *   <dd>Comma-separated list of tax names applied to the purchase.</dd>
-   *
-   *   <dt>string `text_tax_value`</dt>
-   *   <dd>
-   *     Comma-separated list of tax values. Percentage-based taxes have `%` appended;
-   *     fixed-amount taxes have `$` appended.
-   *   </dd>
-   * </dl>
+   * Known columns (use {@link TransactionAllPaymentModel::$a_field} to resolve their positional indexes): 
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>array `a_pay_transaction`</dt>
+  <dd>
+    List of pay transactions associated with this row. Each element: <dl>
+  <dt>int `id_pay_method`</dt>
+  <dd>Payment method ID. One of {@link WlPayMethodSid} constants.</dd>
+
+  <dt>string `k_pay_transaction`</dt>
+  <dd>Pay transaction key. 
+
+  <dt>string `m_amount`</dt>
+  <dd>Amount paid.</dd>
+
+  <dt>string `m_surcharge`</dt>
+  <dd>Surcharge amount from store settings.</dd>
+
+  <dt>string|int `s_batch_number`</dt>
+  <dd>Batch number for this transaction.</dd>
+</dl> <dl>
+      <dt>int `id_pay_method`</dt>
+      <dd>Payment method ID. One of {@link WlPayMethodSid} constants.</dd>
+
+      <dt>string `k_pay_transaction`</dt>
+      <dd>Pay transaction key. 
+
+      <dt>string `m_amount`</dt>
+      <dd>Amount paid.</dd>
+
+      <dt>string `m_surcharge`</dt>
+      <dd>Surcharge amount from store settings.</dd>
+
+      <dt>string|int `s_batch_number`</dt>
+      <dd>Batch number for this transaction.</dd>
+    </dl>
+  </dd>
+
+  <dt>string `dtu_purchase_start`</dt>
+  <dd>Start date and time of the purchase in UTC.</dd>
+
+  <dt>string `k_purchase`</dt>
+  <dd>Purchase key. 
+
+  <dt>string `m_net_sale`</dt>
+  <dd>Net sales amount.</dd>
+
+  <dt>string `m_total_tax`</dt>
+  <dd>Total tax amount.</dd>
+
+  <dt>string `o_client.text_first`</dt>
+  <dd>First name of the client.</dd>
+
+  <dt>string `o_client.text_last`</dt>
+  <dd>Last name of the client.</dd>
+
+  <dt>string `o_client.text_name`</dt>
+  <dd>Full name of the client.</dd>
+
+  <dt>string `o_location.k_location`</dt>
+  <dd>Location key. 
+
+  <dt>string `s_batch_number`</dt>
+  <dd>Batch number of the first transaction in the row.</dd>
+
+  <dt>string `text_location_address`</dt>
+  <dd>Street address of the location.</dd>
+
+  <dt>string `text_location_city`</dt>
+  <dd>Name of the location's city.</dd>
+
+  <dt>string `text_location_country`</dt>
+  <dd>Name of the location's country.</dd>
+
+  <dt>string `text_location_postal`</dt>
+  <dd>Postal code of the location.</dd>
+
+  <dt>string `text_location_region`</dt>
+  <dd>Name of the location's region.</dd>
+
+  <dt>string `text_payment_method`</dt>
+  <dd>Name of the payment method used.</dd>
+
+  <dt>string `text_payment_method_base`</dt>
+  <dd>Name of the base payment method. If a custom method was used, this is the method it is based on.</dd>
+
+  <dt>string `text_tax_title`</dt>
+  <dd>Comma-separated list of tax names applied to the purchase.</dd>
+
+  <dt>string `text_tax_value`</dt>
+  <dd>
+    Comma-separated list of tax values. Percentage-based taxes have `%` appended;
+fixed-amount taxes have `$` appended.
+  </dd>
+</dl>
   public $a_row = [];
 
   /**

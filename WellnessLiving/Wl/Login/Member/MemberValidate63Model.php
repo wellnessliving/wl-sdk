@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Login\Member;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Field\WlFieldGeneralSid;
 
 /**
  * Checking whether there is something that prevents the user from using the business.
@@ -15,6 +16,16 @@ class MemberValidate63Model extends WlModelAbstract
    * @get result
    * @var string[]
    */
+<dl>
+  <dt>int `id_field_general`</dt>
+  <dd>The general field ID. One of {@link WlFieldGeneralSid} constants.</dd>
+
+  <dt>string `k_field`</dt>
+  <dd>Profile field key. 
+
+  <dt>string `text_field_title`</dt>
+  <dd>Human-readable field title describing what value is missing.</dd>
+</dl>
   public $a_empty_fields_booking = [];
 
   /**
@@ -23,6 +34,16 @@ class MemberValidate63Model extends WlModelAbstract
    * @get result
    * @var string[]
    */
+<dl>
+  <dt>int `id_field_general`</dt>
+  <dd>The general field ID. One of {@link WlFieldGeneralSid} constants.</dd>
+
+  <dt>string `k_field`</dt>
+  <dd>Profile field key. 
+
+  <dt>string `text_field_title`</dt>
+  <dd>Human-readable field title describing what value is missing.</dd>
+</dl>
   public $a_empty_fields_registration = [];
 
   /**
@@ -31,6 +52,16 @@ class MemberValidate63Model extends WlModelAbstract
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>int `id_field_general`</dt>
+  <dd>The general field ID. One of {@link WlFieldGeneralSid} constants.</dd>
+
+  <dt>string `k_field`</dt>
+  <dd>Profile field key. 
+
+  <dt>string `text_field_title`</dt>
+  <dd>Human-readable field title describing what value is missing.</dd>
+</dl>
   public $a_empty_fields_required = [];
 
   /**

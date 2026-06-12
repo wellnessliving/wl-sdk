@@ -20,105 +20,68 @@ class CatalogListModel extends WlModelAbstract
    * Products in the online store category.
    *
    * Every element has the following fields:
-   * <dl>
-   *   <dt>
-   *     string[] `a_location`
-   *   </dt>
-   *   <dd>
-   *     The list of location keys where the current sale item is available.
-   *     Each value is a location key.
-   *        </dd>
-   *
-   *   <dt>
-   *     string[] `a_login_type`
-   *   </dt>
-   *   <dd>
-   *     The list of login types available to purchase the sale item.
-   *     Empty list means that the sale item is available to all login types.
-   *   </dd>
-   *
-   *   <dt>
-   *     string[] `a_member_group`
-   *   </dt>
-   *   <dd>
-   *     The list of member groups available to purchase the sale item.
-   *          Empty list means that the sale item is available to all member groups.
-   *   </dd>
-   *
-   *   <dt>
-   *     string[] `a_shop_category`
-   *   </dt>
-   *   <dd>
-   *     A list of online store category keys.    </dd>
-   *
-   *   <dt>
-   *     int <var>[id_program]</var>
-   *   </dt>
-   *   <dd>
-   *      The program ID, set for promotions. One of the {@link WlProgramSid} constants.
-   *      <p>If `id_program` is {@link WlProgramSid::INSURANCE_MEMBERSHIP}, then use:</p>
-   *      <ul>
-   *        <li>{@link ProgramListModel} to obtain a list of active programs.</li>
-   *        <li>{@link EnrollmentFieldListModel} to get and validate fields for a given program.</li>
-   *        <li>{@link PaymentModel} for a program purchase.</li>
-   *      </ul>
-   *   </dd>
-   *
-   *   <dt>
-   *     int `id_restriction`
-   *   </dt>
-   *   <dd>
-   *     The restriction ID. One of the {@link PurchaseRestrictionSid} constants.
-   *   </dd>
-   *
-   *   <dt>
-   *     int `id_sale`
-   *   </dt>
-   *   <dd>
-   *     The sale category ID. One of the {@link WlSaleSid} constants.
-   *   </dd>
-   *
-   *   <dt>
-   *     bool `is_online_sell`
-   *   </dt>
-   *   <dd>
-   *     Determines whether the sale item can be purchased by the client.
-   *   </dd>
-   *
-   *   <dt>
-   *     bool `is_visit`
-   *   </dt>
-   *   <dd>
-   *     This will be <tt>true</tt> if this Purchase Option is suitable to pay for the visit {@link CatalogListModel::$k_visit}.
-   *     Otherwise, this will be <tt>false</tt>.
-   *     If {@link CatalogListModel::$k_visit} is empty, this will always be `false`.
-   *   </dd>
-   *
-   *   <dt>
-   *     string `k_id`
-   *   </dt>
-   *   <dd>
-   *     The sale item ID.
-   *   </dd>
-   *
-   *   <dt>
-   *     string `text_title`
-   *   </dt>
-   *   <dd>
-   *     The category title.
-   *   </dd>
-   *
-   *   <dt>
-   *     string `url_catalog`
-   *   </dt>
-   *   <dd>
-   *     Direct link to catalog view page of this purchase item.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string[] `a_location`</dt>
+  <dd>
+    The list of location keys where the current sale item is available.
+Each value is a location key.
+/dd>
+
+  <dt>string[] `a_login_type`</dt>
+  <dd>
+    The list of login types available to purchase the sale item.
+Empty list means that the sale item is available to all login types.
+  </dd>
+
+  <dt>string[] `a_member_group`</dt>
+  <dd>
+    The list of member groups available to purchase the sale item.
+ty list means that the sale item is available to all member groups.
+  </dd>
+
+  <dt>string[] `a_shop_category`</dt>
+  <dd>A list of online store category keys. 
+
+  <dt>int `id_program`</dt>
+  <dd>
+    The program ID, set for promotions. One of the {@link WlProgramSid} constants.
+ <p>If `id_program` is {@link RsProgramSid::INSURANCE_MEMBERSHIP}, then use:</p>
+ <ul>
+   <li>{@link ProgramListModel} to obtain a list of active programs.</li>
+   <li>{@link EnrollmentFieldListModel} to get and validate fields for a given program.</li>
+   <li>{@link PaymentModel} for a program purchase.</li>
+ </ul>
+  </dd>
+
+  <dt>int `id_restriction`</dt>
+  <dd>The restriction ID. One of the {@link PurchaseRestrictionSid} constants.</dd>
+
+  <dt>int `id_sale`</dt>
+  <dd>The sale category ID. One of the {@link WlSaleSid} constants.</dd>
+
+  <dt>bool `is_online_sell`</dt>
+  <dd>Determines whether the sale item can be purchased by the client.</dd>
+
+  <dt>bool `is_visit`</dt>
+  <dd>
+    This will be <tt>true</tt>
+Otherwise, this will be <tt>false</tt>.
+
+  </dd>
+
+  <dt>string `k_id`</dt>
+  <dd>The sale item ID.</dd>
+
+  <dt>string `text_title`</dt>
+  <dd>The category title.</dd>
+
+  <dt>string `url_catalog`</dt>
+  <dd>Direct link to catalog view page of this purchase item.</dd>
+</dl>
   public $a_shop_product;
 
   /**

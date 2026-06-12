@@ -15,20 +15,22 @@ class CancelCanModel extends WlModelAbstract
 {
   /**
    * Penalty data.
-   * <dl>
-   *     <dt>bool `is_flat`</dt>
-   *     <dd>`true` in a case of flat penalty type; `false` in a case of percentage penalty type.</dd>
-   *     <dt>string `k_currency`</dt>
-   *     <dd>Currency key. 
-   *     <dt>string `m_amount`</dt>
-   *     <dd>Penalty amount.</dd>
-   * </dl>
    *
    * `null` if penalty must be not applied.
    *
    * @get result
    * @var array|null
    */
+<dl>
+  <dt>bool `is_flat`</dt>
+  <dd>`true` in a case of flat penalty type; `false` in a case of percentage penalty type.</dd>
+
+  <dt>string `k_currency`</dt>
+  <dd>Currency key. 
+
+  <dt>string `m_amount`</dt>
+  <dd>Penalty amount.</dd>
+</dl>
   public $a_penalty = null;
 
   /**

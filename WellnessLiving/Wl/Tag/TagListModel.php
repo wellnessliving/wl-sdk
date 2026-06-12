@@ -12,19 +12,22 @@ class TagListModel extends WlModelAbstract
   /**
    * The tag list.
    *
-   * Each element has the next structure:<dl>
-   *   <dt>int <var>i_sort</var></dt>
-   *   <dd>The sort order of the tag.</dd>
-   *   <dt>string <var>k_tag</var> </dt>
-   *   <dd>The tag key. 
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>The tag title.</dd>
-   * </dl>
+   * Each element has the next structure:
    *
    * @get result
    * @post post,result
    * @var array[]
    */
+<dl>
+  <dt>int `i_sort`</dt>
+  <dd>The sort order of the tag.</dd>
+
+  <dt>string `k_tag`</dt>
+  <dd>The tag key. 
+
+  <dt>string `text_title`</dt>
+  <dd>The tag title.</dd>
+</dl>
   public $a_list = [];
 
   /**

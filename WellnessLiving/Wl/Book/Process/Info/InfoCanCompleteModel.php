@@ -20,26 +20,36 @@ class InfoCanCompleteModel extends WlModelAbstract
    * @var array[]
    * @deprecated Use {@link InfoCanCompleteModel::$a_session_select_post} along with POST call instead.
    */
+<dl>
+  <dt>string `dt_date`</dt>
+  <dd>The date and time in MySQL format in GMT when the session starts.</dd>
+
+  <dt>bool `is_select`</dt>
+  <dd>`true` if this session should be booked, `false` otherwise.</dd>
+
+  <dt>string `k_class_period`</dt>
+  <dd>The class period key. 
+</dl>
   public $a_session_select = [];
 
   /**
    * A list of sessions of an event that can be booked together.
    *
    * Every element has the next structure:
-   * <dl>
-   *   <dt>string `dt_date`</dt>
-   *   <dd>The date and time in MySQL format in GMT when the session starts.</dd>
-   *
-   *   <dt>bool `is_select`</dt>
-   *   <dd>`true` if this session should be booked, `false` otherwise.</dd>
-   *
-   *   <dt>string `k_class_period`</dt>
-   *   <dd>The class period key. 
-   * </dl>
    *
    * @post post
    * @var array[]
    */
+<dl>
+  <dt>string `dt_date`</dt>
+  <dd>The date and time in MySQL format in GMT when the session starts.</dd>
+
+  <dt>bool `is_select`</dt>
+  <dd>`true` if this session should be booked, `false` otherwise.</dd>
+
+  <dt>string `k_class_period`</dt>
+  <dd>The class period key. 
+</dl>
   public $a_session_select_post = [];
 
   /**

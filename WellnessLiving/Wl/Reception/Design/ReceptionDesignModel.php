@@ -14,12 +14,6 @@ class ReceptionDesignModel extends WlModelAbstract
    * Empty if {@link ReceptionDesignModel::$k_location} is not provided.
    *
    * Will contain the following keys:
-   * <dl>
-   *  <dt>string <var>url_view</var></dt>
-   *  <dd>url for full image.</dd>
-   *  <dt>string <var>url_thumbnail</var></dt>
-   *  <dd>url for thumbnail version of image.</dd>
-   * </dl>
    *
    * If image for self check in app is empty, will attempt to obtain business logo instead. If business logo is empty,
    * will attempt to obtain location logo.
@@ -27,6 +21,13 @@ class ReceptionDesignModel extends WlModelAbstract
    * @get result
    * @var string[]
    */
+<dl>
+  <dt>string `url_view`</dt>
+  <dd>url for full image.</dd>
+
+  <dt>string `url_thumbnail`</dt>
+  <dd>url for thumbnail version of image.</dd>
+</dl>
   public $a_reception_logo = [];
 
   /**

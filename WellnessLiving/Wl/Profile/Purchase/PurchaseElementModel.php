@@ -25,81 +25,78 @@ class PurchaseElementModel extends WlModelAbstract
 {
   /**
    * List of components (not empty if this purchase element is a package). Every element has keys:
-   * <dl>
-   *   <dt>
-   *     string [<var>k_enrollment_book</var>]
-   *   </dt>
-   *   <dd>
-   *     Key of enrollment book.    </dd>
-   *   <dt>
-   *     string [<var>k_login_product</var>]
-   *   </dt>
-   *   <dd>
-   *     Key of product.    </dd>
-   *   <dt>
-   *     string [<var>k_login_promotion</var>]
-   *   </dt>
-   *   <dd>
-   *     Key of promotion.    </dd>
-   *   <dt>
-   *     string [<var>k_session_pass</var>]
-   *   </dt>
-   *   <dd>
-   *     Session key.    </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `k_enrollment_book`</dt>
+  <dd>Key of enrollment book. 
+
+  <dt>string `k_login_product`</dt>
+  <dd>Key of product. 
+
+  <dt>string `k_login_promotion`</dt>
+  <dd>Key of promotion. 
+
+  <dt>string `k_session_pass`</dt>
+  <dd>Session key. 
+</dl>
   public $a_component;
 
   /**
    * An array containing information about the image of the purchased item. Every element has the following keys:
-   * <dl>
-   *   <dt>int <var>i_height</var></dt>
-   *   <dd>The height of the image.</dd>
-   *   <dt>int <var>i_width</var></dt>
-   *   <dd>The width of the image.</dd>
-   *   <dt>bool <var>is_empty</var></dt>
-   *   <dd>If `true`, then the purchased item doesn't have image. If `false`, then the item has an image.</dd>
-   *   <dt>string <var>s_url</var></dt>
-   *   <dd>The URL for the image.</dd>
-   * </dl>
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>int `i_height`</dt>
+  <dd>The height of the image.</dd>
+
+  <dt>int `i_width`</dt>
+  <dd>The width of the image.</dd>
+
+  <dt>bool `is_empty`</dt>
+  <dd>If `true`, then the purchased item doesn't have image. If `false`, then the item has an image.</dd>
+
+  <dt>string `s_url`</dt>
+  <dd>The URL for the image.</dd>
+</dl>
   public $a_logo;
 
   /**
    * This field is used only for promotions. It contains restrictions that will
    * apply to bookings made with this promotion. Every element has the following keys:
-   * <dl>
-   *   <dt>int <var>i_limit</var></dt>
-   *   <dd>The number of sessions that may be booked during this period.</dd>
-   *   <dt>int <var>i_remain</var></dt>
-   *   <dd>The number of sessions that remain available.</dd>
-   *   <dt>string <var>s_date</var></dt>
-   *   <dd>The name of the period type.</dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>int `i_limit`</dt>
+  <dd>The number of sessions that may be booked during this period.</dd>
+
+  <dt>int `i_remain`</dt>
+  <dd>The number of sessions that remain available.</dd>
+
+  <dt>string `s_date`</dt>
+  <dd>The name of the period type.</dd>
+</dl>
   public $a_restrict;
 
   /**
    * The list of taxes paid for the purchased item. Every element has the following fields:
-   * <dl>
-   *   <dt>string <var>f_tax_discount</var></dt>
-   *   <dd>The amount of tax.</dd>
-   *   <dt>string <var>s_tax</var></dt>
-   *   <dd>The name of the tax.</dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `f_tax_discount`</dt>
+  <dd>The amount of tax.</dd>
+
+  <dt>string `s_tax`</dt>
+  <dd>The name of the tax.</dd>
+</dl>
   public $a_tax;
 
   /**

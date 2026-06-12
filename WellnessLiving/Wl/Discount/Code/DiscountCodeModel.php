@@ -12,16 +12,18 @@ class DiscountCodeModel extends WlModelAbstract
   /**
    * Discount codes list.
    *
-   * Each element has next structure:<dl>
-   * <dt>string <var>k_discount_code</var> </dt>
-   * <dd>Discount code key. 
-   * <dt>string <var>text_discount_code</var></dt>
-   * <dd>Discount code title.</dd>
-   * </dl>
+   * Each element has next structure:
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `k_discount_code`</dt>
+  <dd>Discount code key. 
+
+  <dt>string `text_discount_code`</dt>
+  <dd>Discount code title.</dd>
+</dl>
   public $a_list;
 
   /**

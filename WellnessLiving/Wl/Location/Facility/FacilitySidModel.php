@@ -15,16 +15,16 @@ class FacilitySidModel extends WlModelAbstract
   /**
    * List of items. Keys are IDs, values are arrays with additional information:
    *
-   * <dl>
-   *     <dt>int <var>sid</var></dt>
-   *     <dd>String ID.</dd>
-   *     <dt>string <var>text_title</var></dt>
-   *     <dd>Title of the ID.</dd>
-   * </dl>
-   *
    * @get result
    * @var array
    */
+<dl>
+  <dt>int `sid`</dt>
+  <dd>String ID.</dd>
+
+  <dt>string `text_title`</dt>
+  <dd>Title of the ID.</dd>
+</dl>
   public $a_list;
 
   /**

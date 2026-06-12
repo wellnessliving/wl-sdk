@@ -169,6 +169,16 @@ class QueryModel extends WlModelAbstract
   public $is_backend = false;
 
   /**
+   * Whether the timeout check should be enforced during cell loading.
+   *
+   * Set to `true` by the export controller to abort cell loading with a user-facing error
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_export = false;
+
+  /**
    * Whether this report should be refreshed.
    *
    * `true` to refresh this report if it is already generated.

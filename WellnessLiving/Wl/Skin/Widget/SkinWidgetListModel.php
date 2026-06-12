@@ -18,14 +18,17 @@ class SkinWidgetListModel extends WlModelAbstract
    * The array structure:
    * Keys - Skin type, one of {@link RsSkinSid} constants.
    * Values - arrays with next keys:
-   * <dl>
-   *   <dt>string `k_skin`</dt><dd>Skin key. 
-   *   <dt>string `text_widget_name`</dt><dd>Widget name.</dd>
-   * </dl>
    *
    * @get result
    * @var array[][]
    */
+<dl>
+  <dt>string `k_skin`</dt>
+  <dd>Skin key. 
+
+  <dt>string `text_widget_name`</dt>
+  <dd>Widget name.</dd>
+</dl>
   public $a_widget_skin = [];
 
   /**

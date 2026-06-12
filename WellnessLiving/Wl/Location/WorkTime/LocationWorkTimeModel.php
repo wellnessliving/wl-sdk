@@ -13,20 +13,23 @@ use WellnessLiving\WlModelAbstract;
 class LocationWorkTimeModel extends WlModelAbstract
 {
   /**
-   * The list of the location's business hours. Each element has the next structure:<dl>
-   *   <dt>int <var>i_day</var></dt>
-   *   <dd>The day of the week, from Monday (1) to Sunday (7). One of the{@link ADateWeekSid} constants.</dd>
-   *   <dt>string <var>t_end</var></dt>
-   *   <dd>The end time of work, formatted as HH:MM.</dd>
-   *   <dt>string <var>t_start</var></dt>
-   *   <dd>The start time of work, formatted as HH:MM</dd>
-   * </dl>
+   * The list of the location's business hours. Each element has the next structure:
    *
    * Note that the days of the week that aren't represented in this list will be saved as non-working days.
    *
    * @post post
    * @var array[]
    */
+<dl>
+  <dt>int `i_day`</dt>
+  <dd>The day of the week, from Monday (1) to Sunday (7). One of the{@link ADateWeekSid} constants.</dd>
+
+  <dt>string `t_end`</dt>
+  <dd>The end time of work, formatted as HH:MM.</dd>
+
+  <dt>string `t_start`</dt>
+  <dd>The start time of work, formatted as HH:MM</dd>
+</dl>
   public $a_work_time = [];
 
   /**

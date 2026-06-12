@@ -5,14 +5,43 @@ namespace WellnessLiving\Thoth\DriveMs\Api;
 use WellnessLiving\WlModelAbstract;
 
 /**
- * Copy file between two links.
+ * Saves the uploaded file.
  */
-class DriveCopyModel extends WlModelAbstract
+class DriveSave74Model extends WlModelAbstract
 {
   /**
-   * Additional parameters for the copy operation.
+   * Information about saved a file.
    *
-   * @get get
+   * @post result
+   * @var array
+   */
+<dl>
+  <dt>bool `is_new`</dt>
+  <dd>`true` if a new file was saved, otherwise `false`.</dd>
+
+  <dt>bool `is_private_file`</dt>
+  <dd>`true` if the file is private, otherwise `false`.</dd>
+
+  <dt>string `s_name`</dt>
+  <dd>The name of the physical file on the drive.</dd>
+</dl>
+  public $a_file = [];
+
+  /**
+   * The uploaded file data from the HTTP request.
+   * `null` if a multipart S3 upload is used instead.
+   *
+   * @post post
+   * @var array|null
+   */
+  public $a_file_content = null;
+
+  /**
+   * A set of parameters.
+   *
+   * If a file is uploaded using an S3 bucket, the array must contain the key `is_multipart`.
+   *
+   * @post post
    * @var array
    */
 <dl>
@@ -55,20 +84,31 @@ conjunction with `require-image`. Optional.
   public $a_param = [];
 
   /**
-   * Link to the destination file.
+   * Key of the object in S3.
+   * Used when `is_multipart` is set in {@link DriveSave74Model::$a_param}.
+   * `null` if not a multipart upload.
    *
-   * @get get
-   * @var string
+   * @post post
+   * @var string|null
    */
-  public $s_link_destination = '';
+  public $s_file_key = null;
 
   /**
-   * Link to the source file.
+   * Link to the file.
    *
-   * @get get
+   * @post post
    * @var string
    */
-  public $s_link_source = '';
+  public $s_link = '';
+
+  /**
+   * File name with extension.
+   * `null` if a file name is not specified.
+   *
+   * @post post
+   * @var string|null
+   */
+  public $s_name = '';
 }
 
 ?>

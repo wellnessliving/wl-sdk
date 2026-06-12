@@ -15,124 +15,68 @@ class ReviewListModel extends WlModelAbstract
 {
   /**
    * List of reviews. If passed {@link ReviewListModel::$i_page} then the result will be full, otherwise in result will be keys: <tt>k_review</tt>, <tt>uid</tt>.
-   * <dl>
-   *   <dt>
-   *     bool <var>can_reply</var>
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> if can reply to review, <tt>false</tt> otherwise.
-   *   </dd>
-   *   <dt>
-   *     string <var>dl_reply</var>
-   *   </dt>
-   *   <dd>
-   *     Date when staff reply to review. Can be empty string if no one replied.
-   *   </dd>
-   *   <dt>
-   *     string <var>dt_add</var>
-   *   </dt>
-   *   <dd>
-   *     Date when review added.
-   *   </dd>
-   *   <dt>
-   *     float <var>f_rate</var>
-   *   </dt>
-   *   <dd>
-   *     Rate of review.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_featured</var>
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> if review is featured, <tt>false</tt> otherwise.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_verify</var>
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> if review is verify, <tt>false</tt> otherwise.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_location</var>
-   *   </dt>
-   *   <dd>
-   *     The location key for where the review was left/assigned.    </dd>
-   *   <dt>
-   *     string <var>k_review</var>
-   *   </dt>
-   *   <dd>
-   *     Review key.    </dd>
-   *   <dt>
-   *     string <var>s_firstname</var>
-   *   </dt>
-   *   <dd>
-   *     First name of user who wrote review.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_lastname</var>
-   *   </dt>
-   *   <dd>
-   *     Last name of user who wrote review.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_reply</var>
-   *   </dt>
-   *   <dd>
-   *     Reply for review.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_text</var>
-   *   </dt>
-   *   <dd>
-   *     Review text.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_city</var>
-   *   </dt>
-   *   <dd>
-   *     City from the profile of the user, who left review.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_reply_first</var>
-   *   </dt>
-   *   <dd>
-   *     First name of staff who replied of review. Can be empty string if no one replied.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_reply_last</var>
-   *   </dt>
-   *   <dd>
-   *     Last name of staff who replied of review. Can be empty string if no one replied.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_role</var>
-   *   </dt>
-   *   <dd>
-   *     Staff role who replied of review. Can be empty string if no one replied.
-   *   </dd>
-   *   <dt>
-   *     string <var>uid</var>
-   *   </dt>
-   *   <dd>
-   *     User key who wrote review.
-   *   </dd>
-   *   <dt>
-   *     string <var>url_image</var>
-   *   </dt>
-   *   <dd>
-   *     Link to the image of the user who wrote review.
-   *   </dd>
-   *   <dt>
-   *     string <var>url_reply_image</var>
-   *   </dt>
-   *   <dd>
-   *     Link to the image of the user who replied of review. Can be empty string if no one replied.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>bool `can_reply`</dt>
+  <dd><tt>true</tt> if can reply to review, <tt>false</tt> otherwise.</dd>
+
+  <dt>string `dl_reply`</dt>
+  <dd>Date when staff reply to review. Can be empty string if no one replied.</dd>
+
+  <dt>string `dt_add`</dt>
+  <dd>Date when review added.</dd>
+
+  <dt>float `f_rate`</dt>
+  <dd>Rate of review.</dd>
+
+  <dt>bool `is_featured`</dt>
+  <dd><tt>true</tt> if review is featured, <tt>false</tt> otherwise.</dd>
+
+  <dt>bool `is_verify`</dt>
+  <dd><tt>true</tt> if review is verify, <tt>false</tt> otherwise.</dd>
+
+  <dt>string `k_location`</dt>
+  <dd>The location key for where the review was left/assigned. 
+
+  <dt>string `k_review`</dt>
+  <dd>Review key. 
+
+  <dt>string `s_firstname`</dt>
+  <dd>First name of user who wrote review.</dd>
+
+  <dt>string `s_lastname`</dt>
+  <dd>Last name of user who wrote review.</dd>
+
+  <dt>string `s_reply`</dt>
+  <dd>Reply for review.</dd>
+
+  <dt>string `s_text`</dt>
+  <dd>Review text.</dd>
+
+  <dt>string `text_city`</dt>
+  <dd>City from the profile of the user, who left review.</dd>
+
+  <dt>string `text_reply_first`</dt>
+  <dd>First name of staff who replied of review. Can be empty string if no one replied.</dd>
+
+  <dt>string `text_reply_last`</dt>
+  <dd>Last name of staff who replied of review. Can be empty string if no one replied.</dd>
+
+  <dt>string `text_role`</dt>
+  <dd>Staff role who replied of review. Can be empty string if no one replied.</dd>
+
+  <dt>string `uid`</dt>
+  <dd>User key who wrote review.</dd>
+
+  <dt>string `url_image`</dt>
+  <dd>Link to the image of the user who wrote review.</dd>
+
+  <dt>string `url_reply_image`</dt>
+  <dd>Link to the image of the user who replied of review. Can be empty string if no one replied.</dd>
+</dl>
   public $a_review;
 
   /**

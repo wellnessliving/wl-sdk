@@ -40,88 +40,58 @@ class ViewModel extends WlModelAbstract
 
   /**
    * Information about the location logo used in WellnessLiving:
-   * <dl>
-   *   <dt>
-   *     int <var>i_height</var>
-   *   </dt>
-   *   <dd>
-   *     The image height.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_width</var>
-   *   </dt>
-   *   <dd>
-   *     The image width.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_url</var>
-   *   </dt>
-   *   <dd>
-   *     The URL to the image.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>int `i_height`</dt>
+  <dd>The image height.</dd>
+
+  <dt>int `i_width`</dt>
+  <dd>The image width.</dd>
+
+  <dt>string `s_url`</dt>
+  <dd>The URL to the image.</dd>
+</dl>
   public $a_logo;
 
   /**
    * A list of the location images.
    * Every element has the following keys:
-   * <dl>
-   *   <dt>
-   *     int <var>i_height</var>
-   *   </dt>
-   *   <dd>
-   *     Height.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_width</var>
-   *   </dt>
-   *   <dd>
-   *     Width.
-   *   </dd>
-   *   <dt>
-   *     string <var>url_preview</var>
-   *   </dt>
-   *   <dd>
-   *     URL to image preview.
-   *   </dd>
-   *   <dt>
-   *     string <var>url_slide</var>
-   *   </dt>
-   *   <dd>
-   *     URL to full image.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>int `i_height`</dt>
+  <dd>Height.</dd>
+
+  <dt>int `i_width`</dt>
+  <dd>Width.</dd>
+
+  <dt>string `url_preview`</dt>
+  <dd>URL to image preview.</dd>
+
+  <dt>string `url_slide`</dt>
+  <dd>URL to full image.</dd>
+</dl>
   public $a_slide;
 
   /**
    * The hours of operation for the location.
    * Fields are numbers representing specific days (1 is Monday, 7 is Sunday). Values are objects with the next fields:
-   * <dl>
-   *   <dt>
-   *     string <var>s_end</var>
-   *   </dt>
-   *   <dd>
-   *     The time of day end in MySQL format.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_start</var>
-   *   </dt>
-   *   <dd>
-   *     The time of day start in MySQL format.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>string `s_end`</dt>
+  <dd>The time of day end in MySQL format.</dd>
+
+  <dt>string `s_start`</dt>
+  <dd>The time of day start in MySQL format.</dd>
+</dl>
   public $a_work;
 
   /**

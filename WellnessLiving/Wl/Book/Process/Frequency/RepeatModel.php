@@ -21,34 +21,45 @@ class RepeatModel extends WlModelAbstract
   public $a_day = [];
 
   /**
-   * List of visits to be created for the given settings:<dl>
-   *   <dt>string <var>dt_date</var></dt>
-   *   <dd>Visit date and time in UTC.</dd>
-   *   <dt>string <var>dt_local</var></dt>
-   *   <dd>Visit date and time in location's time zone.</dd>
-   *   <dt>string <var>html_short_name_list</var></dt>
-   *   <dd>List of names of the staff who provide this class.</dd>
-   *   <dt>string <var>html_timezone</var></dt>
-   *   <dd>Location's time zone abbreviation.</dd>
-   *   <dt>string <var>is_disable</var></dt>
-   *   <dd>Whether booking is not available for this day.</dd>
-   *   <dt>string <var>is_free</var></dt>
-   *   <dd>Whether booking is free for this day.</dd>
-   *   <dt>string <var>is_ignore</var></dt>
-   *   <dd>Whether visit is from ignore list.</dd>
-   *   <dt>string <var>is_wait</var></dt>
-   *   <dd>Whether booking can be only to wait list.</dd>
-   *   <dt>string <var>k_class_period</var></dt>
-   *   <dd>Class period key. 
-   *   <dt>string <var>s_alert</var></dt>
-   *   <dd>Staff name if booking available, warning about wait list or disabled booking otherwise.</dd>
-   *   <dt>string <var>s_date</var></dt>
-   *   <dd>Visit date and time in location's time zone in human readable format.</dd>
-   * </dl>
+   * List of visits to be created for the given settings:
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `dt_date`</dt>
+  <dd>Visit date and time in UTC.</dd>
+
+  <dt>string `dt_local`</dt>
+  <dd>Visit date and time in location's time zone.</dd>
+
+  <dt>string `html_short_name_list`</dt>
+  <dd>List of names of the staff who provide this class.</dd>
+
+  <dt>string `html_timezone`</dt>
+  <dd>Location's time zone abbreviation.</dd>
+
+  <dt>string `is_disable`</dt>
+  <dd>Whether booking is not available for this day.</dd>
+
+  <dt>string `is_free`</dt>
+  <dd>Whether booking is free for this day.</dd>
+
+  <dt>string `is_ignore`</dt>
+  <dd>Whether visit is from ignore list.</dd>
+
+  <dt>string `is_wait`</dt>
+  <dd>Whether booking can be only to wait list.</dd>
+
+  <dt>string `k_class_period`</dt>
+  <dd>Class period key. 
+
+  <dt>string `s_alert`</dt>
+  <dd>Staff name if booking available, warning about wait list or disabled booking otherwise.</dd>
+
+  <dt>string `s_date`</dt>
+  <dd>Visit date and time in location's time zone in human readable format.</dd>
+</dl>
   public $a_visit = [];
 
   /**

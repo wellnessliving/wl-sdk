@@ -6,7 +6,6 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\WlClassModifyActionSid;
 use WellnessLiving\Wl\WlClassModifyModeSid;
-use WellnessLiving\Wl\WlClassModifyStepSid;
 
 /**
  * Modifies the master model.
@@ -25,54 +24,64 @@ class ModifyModel extends WlModelAbstract
    * The list of data to save.
    *
    * Data depends on current {@link ModifyModel::$id_step}:
-   * <dl>
-   *   <dt>bool `is_forward`</dt>
-   *   <dd>Modify all future sessions. Used in {@link WlClassModifyStepSid::PERIOD}.</dd>
-   *
-   *   <dt>string[] `a_period`</dt>
-   *   <dd>Selected session keys (ed in {@link WlClassModifyStepSid::ITEM}.</dd>
-   *
-   *   <dt>array `a_edit`</dt>
-   *   <dd>
-   *     Edited fields flags. Used in {@link WlClassModifyStepSid::FORM}.
-   *     Keys are field names (e.g. `a_staff`, `dt_time`); each value is `'1'` to indicate the field was changed.
-   *   </dd>
-   *
-   *   <dt>array[] `a_staff`</dt>
-   *   <dd>Selected instructors. Used in {@link WlClassModifyStepSid::FORM}:<dl>
-   *     <dt>string `k_staff`</dt>
-   *     <dd>@deprecated Staff key. 
-   *
-   *     <dt>string `uid_staff`</dt>
-   *     <dd>Staff user key. onal.</dd>
-   *
-   *     <dt>string `k_staff_pay`</dt>
-   *     <dd>Staff pay rate ID. 
-   *   </dl>
-   *   </dd>
-   *
-   *   <dt>bool `is_inform_mail`</dt>
-   *   <dd>Send email notification to clients. Used in {@link WlClassModifyStepSid::CLIENT}.</dd>
-   *
-   *   <dt>bool `is_inform_sms`</dt>
-   *   <dd>Send SMS notification to clients. Used in {@link WlClassModifyStepSid::CLIENT}.</dd>
-   *
-   *   <dt>bool `is_inform_mail_staff`</dt>
-   *   <dd>Send email notification to staff. Used in {@link WlClassModifyStepSid::CLIENT}.</dd>
-   *
-   *   <dt>bool `is_inform_sms_staff`</dt>
-   *   <dd>Send SMS notification to staff. Used in {@link WlClassModifyStepSid::CLIENT}.</dd>
-   *
-   *   <dt>bool `is_cancel_resource`</dt>
-   *   <dd>Cancel resources for modified classes. Used in {@link WlClassModifyStepSid::CLIENT}.</dd>
-   *
-   *   <dt>bool `show_canceled_class`</dt>
-   *   <dd>Show canceled classes in the result list. Used in {@link WlClassModifyStepSid::CONFIRM}.</dd>
-   * </dl>
    *
    * @post post
    * @var array
    */
+<dl>
+  <dt>bool `is_forward`</dt>
+  <dd>Modify all future sessions.</dd>
+
+  <dt>string[] `a_period`</dt>
+
+
+  <dt>string[] `a_edit`</dt>
+  <dd>
+    Edited fields flags.
+Keys are field names (e.g. `a_staff`, `dt_time`); each value is `'1'` to indicate the field was changed.
+  </dd>
+
+  <dt>array[] `a_staff`</dt>
+  <dd>
+    Selected instructors. Used in {@link RsClassModifyStepSid::FORM}:<dl>
+<dt>string `k_staff`</dt>
+<dd>@deprecated Staff key. 
+
+<dt>string `uid_staff`</dt>
+<dd>Staff user key. onal.</dd>
+
+<dt>string `k_staff_pay`</dt>
+<dd>Staff pay rate ID. 
+  </dl> <dl>
+      <dt>string `k_staff`</dt>
+      <dd>@deprecated Staff key. 
+
+      <dt>string `uid_staff`</dt>
+      <dd>Staff user key. onal.</dd>
+
+      <dt>string `k_staff_pay`</dt>
+      <dd>Staff pay rate ID. 
+    </dl>
+  </dd>
+
+  <dt>bool `is_inform_mail`</dt>
+  <dd>Send email notification to clients.</dd>
+
+  <dt>bool `is_inform_sms`</dt>
+  <dd>Send SMS notification to clients.</dd>
+
+  <dt>bool `is_inform_mail_staff`</dt>
+  <dd>Send email notification to staff.</dd>
+
+  <dt>bool `is_inform_sms_staff`</dt>
+  <dd>Send SMS notification to staff.</dd>
+
+  <dt>bool `is_cancel_resource`</dt>
+  <dd>Cancel resources for modified classes.</dd>
+
+  <dt>bool `show_canceled_class`</dt>
+  <dd>Show canceled classes in the result list.</dd>
+</dl>
   public $a_set = [];
 
   /**

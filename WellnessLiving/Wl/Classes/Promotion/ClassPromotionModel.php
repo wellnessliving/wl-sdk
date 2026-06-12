@@ -11,20 +11,24 @@ use WellnessLiving\Wl\WlProgramSid;
 class ClassPromotionModel extends WlModelAbstract
 {
   /**
-   * Promotion data with the following structure:<dl>
-   *   <dt>string <var>k_promotion</var></dt>
-   *   <dd>The promotion key. 
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>The title of the promotion.</dd>
-   *   <dt>int <var>id_program</var></dt>
-   *   <dd>One of the {@link WlProgramSid} constants.</dd>
-   *   <dt>bool <var>is_select</var></dt>
-   *   <dd><tt>true</tt> if the promotion is related to the class or event, <tt>false</tt> otherwise.</dd>
-   * </dl>.
+   * Promotion data with the following structure:.
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `k_promotion`</dt>
+  <dd>The promotion key. 
+
+  <dt>string `text_title`</dt>
+  <dd>The title of the promotion.</dd>
+
+  <dt>int `id_program`</dt>
+  <dd>One of the {@link WlProgramSid} constants.</dd>
+
+  <dt>bool `is_select`</dt>
+  <dd><tt>true</tt> if the promotion is related to the class or event, <tt>false</tt> otherwise.</dd>
+</dl>
   public $a_promotion = [];
 
   /**

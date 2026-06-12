@@ -12,72 +12,59 @@ class PurchaseElementListModel extends WlModelAbstract
 {
   /**
    * A list of purchase items to get information for. Every element has the next keys:
-   * <dl>
-   *   <dt>int [<var>i_session</var>]</dt>
-   *   <dd>The number of sessions booked simultaneously.</dd>
-   *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>The ID of the purchase item type. One of the {@link WlPurchaseItemSid} constants.</dd>
-   *   <dt>string <var>k_id</var></dt>
-   *   <dd>The key of the purchase item in the database. The name of the table in the database depends on <var>id_purchase_item</var></dd>
-   *   <dt>string [<var>k_login_prize</var>]</dt>
-   *   <dd>The key of the user's prize. 
-   * </dl>
    *
    * @get get
    * @var array[]
    */
+<dl>
+  <dt>int `i_session`</dt>
+  <dd>The number of sessions booked simultaneously.</dd>
+
+  <dt>int `id_purchase_item`</dt>
+  <dd>The ID of the purchase item type. One of the {@link WlPurchaseItemSid} constants.</dd>
+
+  <dt>string `k_id`</dt>
+  <dd>
+    The key of the purchase item in the database. The name of the table in the database depends on <var>id_purchase_item</var>
+  </dd>
+
+  <dt>string `k_login_prize`</dt>
+  <dd>The key of the user's prize. 
+</dl>
   public $a_purchase_item_request = [];
 
   /**
    * Detailed information about the amounts for the purchase item list.
    * Every element has the next keys:
-   * <dl>
-   *   <dt>
-   *     string[] <var>a_tax</var>
-   *   </dt>
-   *   <dd>
-   *     Information about taxes. The key refers to the tax key, and the value refers to the tax amount.
-   *   </dd>
-   *   <dt>
-   *     string <var>id_purchase_item</var></dt>
-   *   <dd>
-   *     The ID of purchase item type. One of {@link WlPurchaseItemSid} constants.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_id</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the purchase item in the database.
-   *   </dd>
-   *   <dt>
-   *     string <var>m_cost</var></dt>
-   *   <dd>
-   *     The cost of the purchase item (with taxes).
-   *   </dd>
-   *   <dt>
-   *     string <var>m_discount</var></dt>
-   *   <dd>
-   *     The amount of the whole discount.
-   *   </dd>
-   *   <dt>
-   *     string <var>m_discount_login</var></dt>
-   *   <dd>
-   *     The amount of the discount for the client type.
-   *   </dd>
-   *   <dt>
-   *     string <var>m_price</var></dt>
-   *   <dd>
-   *     The price of the purchase item (with or without taxes, depending on regional standards).</dd>
-   *   <dt>
-   *     string <var>m_tax</var></dt>
-   *   <dd>
-   *     The amount of taxes for the purchase item.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string[] `a_tax`</dt>
+  <dd>Information about taxes. The key refers to the tax key, and the value refers to the tax amount.</dd>
+
+  <dt>string `id_purchase_item`</dt>
+  <dd>The ID of purchase item type. One of {@link WlPurchaseItemSid} constants.</dd>
+
+  <dt>string `k_id`</dt>
+  <dd>The key of the purchase item in the database.</dd>
+
+  <dt>string `m_cost`</dt>
+  <dd>The cost of the purchase item (with taxes).</dd>
+
+  <dt>string `m_discount`</dt>
+  <dd>The amount of the whole discount.</dd>
+
+  <dt>string `m_discount_login`</dt>
+  <dd>The amount of the discount for the client type.</dd>
+
+  <dt>string `m_price`</dt>
+  <dd>The price of the purchase item (with or without taxes, depending on regional standards).</dd>
+
+  <dt>string `m_tax`</dt>
+  <dd>The amount of taxes for the purchase item.</dd>
+</dl>
   public $a_purchase_item_result;
 
   /**

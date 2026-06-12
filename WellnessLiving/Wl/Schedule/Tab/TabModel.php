@@ -17,45 +17,31 @@ class TabModel extends WlModelAbstract
    * An array containing information about tabs to present to the user.
    * Each array index corresponds to a tab.
    * Each array element is an array that contains the following fields:
-   * <dl>
-   *   <dt>
-   *     int <var>id_class_tab_object</var>
-   *   </dt>
-   *   <dd>
-   *     The tab type ID which is one of the {@link TabSid} constants.
-   *   </dd>
-   *   <dt>
-   *     int|null <var>id_class_tab_system</var>
-   *   </dt>
-   *   <dd>
-   *     If this tab has redefined a default system Class Tab then it references a constant defined in
-   *     {@link TabSid}.
-   *
-   *     Otherwise, this will be `null`.
-   *   </dd>
-   *   <dt>
-   *     string|null <var>k_class_tab</var>
-   *   </dt>
-   *   <dd>
-   *     The class tab key. This will be `null` if it's a system tab.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_id</var>
-   *   </dt>
-   *   <dd>
-   *     A unique identifier in the list.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_title</var>
-   *   </dt>
-   *   <dd>
-   *     The tab title.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>int `id_class_tab_object`</dt>
+  <dd>The tab type ID which is one of the {@link TabSid} constants.</dd>
+
+  <dt>int|null `id_class_tab_system`</dt>
+  <dd>
+    If this tab has redefined a default system Class Tab then it references a constant defined in
+{@link TabSid}.
+
+Otherwise, this will be `null`.
+  </dd>
+
+  <dt>string|null `k_class_tab`</dt>
+  <dd>The class tab key. This will be `null` if it's a system tab.</dd>
+
+  <dt>string `k_id`</dt>
+  <dd>A unique identifier in the list.</dd>
+
+  <dt>string `s_title`</dt>
+  <dd>The tab title.</dd>
+</dl>
   public $a_tab;
 
   /**

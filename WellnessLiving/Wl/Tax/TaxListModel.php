@@ -12,20 +12,24 @@ class TaxListModel extends WlModelAbstract
   /**
    * A list of taxes.
    *
-   * Each element has the following structure:<dl>
-   * <dt>float <var>f_value</var> </dt>
-   * <dd>The amount of the tax.</dd>
-   * <dt>string <var>k_tax</var> </dt>
-   * <dd>The type of the tax, one of the {@link WlTaxSid} constants.</dd>
-   * <dt>string <var>k_tax</var> </dt>
-   * <dd>The tax key.</dd>
-   * <dt>string <var>text_title</var></dt>
-   * <dd>The name of the tax.</dd>
-   * </dl>
+   * Each element has the following structure:
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>float `f_value`</dt>
+  <dd>The amount of the tax.</dd>
+
+  <dt>string `k_tax`</dt>
+  <dd>The type of the tax, one of the {@link WlTaxSid} constants.</dd>
+
+  <dt>string `k_tax`</dt>
+  <dd>The tax key.</dd>
+
+  <dt>string `text_title`</dt>
+  <dd>The name of the tax.</dd>
+</dl>
   public $a_list;
 
   /**

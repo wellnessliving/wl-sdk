@@ -24,6 +24,60 @@ class ImageUploadModel extends \WellnessLiving\Custom\Core\Drive\ImageUpload\Ima
    * @post result
    * @var array[]
    */
+<dl>
+  <dt>array `a_text_empty`</dt>
+  <dd>
+    Information about the text on the empty upload image.
+
+      <dt>string `s_class`</dt>
+      <dd>Class to change view of the upload form.</dd>
+
+      <dt>string `s_text`</dt>
+      <dd>Text to replacing.</dd>
+    </dl>
+  </dd>
+
+  <dt>int `i_height_max`</dt>
+  <dd>The maximum height of the image.</dd>
+
+  <dt>int `i_height_min`</dt>
+  <dd>The minimum height of the image.</dd>
+
+  <dt>int `i_thumbnail_height`</dt>
+  <dd>The height of the thumbnail image.
+
+
+  <dt>int `i_thumbnail_width`</dt>
+  <dd>The width of thumbnail image.
+
+
+  <dt>int `i_width_max`</dt>
+  <dd>The maximum width of image.</dd>
+
+  <dt>int `i_width_min`</dt>
+  <dd>The minimum width of image.</dd>
+
+  <dt>bool `is_circular`</dt>
+  <dd><tt>true</tt> if image is treated as circular; <tt>false</tt> otherwise.</dd>
+
+  <dt>bool `is_delete_allow`</dt>
+  <dd><tt>true</tt> if image deleting is allowed; <tt>false</tt> otherwise.</dd>
+
+  <dt>string `s_link`</dt>
+  <dd>The image link.</dd>
+
+  <dt>string `url_empty`</dt>
+  <dd>The URL of the image that should be shown in a case image is not uploaded.</dd>
+
+  <dt>string|null `url_thumbnail`</dt>
+  <dd>The URL of thumbnail of the image. <tt>null</tt> if image is not uploaded.</dd>
+
+  <dt>string `url_upload`</dt>
+  <dd>The URL the script where new image should be uploaded.</dd>
+
+  <dt>string|null `url_view`</dt>
+  <dd>The URL of the full image. <tt>null</tt> if image is not uploaded.</dd>
+</dl>
   public $a_image;
 
   /**
@@ -33,6 +87,13 @@ class ImageUploadModel extends \WellnessLiving\Custom\Core\Drive\ImageUpload\Ima
    * @put result
    * @var array|null
    */
+<dl>
+  <dt>string `s_class`</dt>
+  <dd>Class to change view of the upload form.</dd>
+
+  <dt>string `s_text`</dt>
+  <dd>Text to replacing.</dd>
+</dl>
   public $a_text_empty;
 
   /**

@@ -12,30 +12,20 @@ class ListModel extends WlModelAbstract
 {
   /**
    * A list of gift cards. Every element has the following keys:
-   * <dl>
-   *   <dt>
-   *     int <var>id_type</var>
-   *   </dt>
-   *   <dd>
-   *     The type of coupon. One of {@link WlTypeSid} constants.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_coupon</var>
-   *   </dt>
-   *   <dd>
-   *     The gift card key.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     The title of the gift card.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>int `id_type`</dt>
+  <dd>The type of coupon. One of {@link WlTypeSid} constants.</dd>
+
+  <dt>string `k_coupon`</dt>
+  <dd>The gift card key.</dd>
+
+  <dt>string `text_title`</dt>
+  <dd>The title of the gift card.</dd>
+</dl>
   public $a_coupon;
 
   /**

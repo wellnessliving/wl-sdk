@@ -3,7 +3,6 @@
 namespace WellnessLiving\Wl\Lead\Source;
 
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Retrieves Lead Source element.
@@ -13,37 +12,31 @@ class LeadSourceElementModel extends WlModelAbstract
   /**
    * List of Lead Sources.
    *
-   * <dl>
-   *   <dt>int <var>i_sort</var></dt>
-   *   <dd>
-   *     Sorting order.
-   *   </dd>
-   *
-   *   <dt>int|null <var>id_lead_source</var></dt>
-   *   <dd>
-   *     System-defined Lead Source ID. One of {@link ModeSid} constants.
-   *     `null` if it is a custom Lead Source.
-   *   </dd>
-   *
-   *   <dt>string <var>k_lead_source</var></dt>
-   *   <dd>
-   *     Key of the lead source. *   </dd>
-   *
-   *   <dt>string [<var>k_skin</var>]</dt>
-   *   <dd>
-   *     Key of the lead skin. *     Will be set only in case if <var>id_lead_source</var> is {@link ModeSid::WIDGET} and
-   *     widget can't be used for "Add Lead" form. `false` - otherwise.
-   *   </dd>
-   *
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>
-   *     Name of the Lead Source.
-   *   </dd>
-   * </dl>
-   *
    * @post post
    * @var array[]
    */
+<dl>
+  <dt>int `i_sort`</dt>
+  <dd>Sorting order.</dd>
+
+  <dt>int|null `id_lead_source`</dt>
+  <dd>
+    System-defined Lead Source ID.
+`null` if it is a custom Lead Source.
+  </dd>
+
+  <dt>string `k_lead_source`</dt>
+  <dd>Key of the lead source. 
+
+  <dt>string `k_skin`</dt>
+  <dd>
+    Key of the lead skin. l be set only in case if <var>id_lead_source</var> is {@link Wl\Mode\ModeSid::WIDGET} and
+widget can't be used for "Add Lead" form. `false` - otherwise.
+  </dd>
+
+  <dt>string `text_title`</dt>
+  <dd>Name of the Lead Source.</dd>
+</dl>
   public $a_lead_source = [];
 
   /**

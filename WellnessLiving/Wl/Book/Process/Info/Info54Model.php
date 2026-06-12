@@ -34,177 +34,163 @@ class Info54Model extends WlModelAbstract
 
   /**
    * Information about the recurring booking:
-   * <dl>
-   *   <dt>int[] <var>a_day</var></dt>
-   *   <dd>
-   *     The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
-   *     Should be passed for any type of repetition.
-   *   </dd>
-   *   <dt>int[] <var>a_week</var></dt>
-   *   <dd>Deprecated, use `a_day` instead!</dd>
-   *   <dt>string [<var>dl_end</var>]</dt>
-   *   <dd>Deprecated, use `dt_from` and `dt_to` instead!</dd>
-   *   <dt>
-   *     string [<var>dt_from</var>]
-   *   </dt>
-   *   <dd>
-   *     Date to start recurring booking.
-   *     Expected for `id_repeat_
-   *   </dd>
-   *   <dt>
-   *     string [<var>dt_to</var>]
-   *   </dt>
-   *   <dd>
-   *     Date to complete recurring booking.
-   *     Expected for `id_repeat_
-   *   </dd>
-   *   <dt>
-   *      int [<var>i_count</var>]
-   *    </dt>
-   *    <dd>
-   *      The number of occurrences after which the appointment's repeat cycle stops.
-   *      Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *      Expected for `id_repeat_
-   *    </dd>
-   *   <dt>int <var>i_duration</var></dt>
-   *   <dd>Count of days\weeks\months between recurring bookings.</dd>
-   *   <dt>int [<var>i_occurrence</var>]</dt>
-   *   <dd>Deprecated, use `i_count` instead!</dd>
-   *   <dt>int <var>i_period</var></dt>
-   *   <dd>Deprecated, use `i_duration` instead!</dd>
-   *   <dt>
-   *     int <var>id_duration</var>
-   *   </dt>
-   *   <dd>
-   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   *     Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
-   *   </dd>
-   *   <dt>int <var>id_period</var></dt>
-   *   <dd>Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.</dd>
-   *   <dt>int <var>id_repeat_end</var></dt>
-   *   <dd>Possible ways to stop repeatable events.</dd>
-   * </dl>
    *
    * This will be `null` if the booking isn't recurring.
    *
    * @post post
    * @var array|null
    */
+<dl>
+  <dt>int[] `a_day`</dt>
+  <dd>
+    The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
+Should be passed for any type of repetition.
+  </dd>
+
+  <dt>int[] `a_week`</dt>
+  <dd>Deprecated, use `a_day` instead!</dd>
+
+  <dt>string `dl_end`</dt>
+  <dd>Deprecated, use `dt_from` and `dt_to` instead!</dd>
+
+  <dt>string `dt_from`</dt>
+  <dd>Date to start recurring booking.
+Expected for `id_repeat_</dd>
+
+  <dt>string `dt_to`</dt>
+  <dd>Date to complete recurring booking.
+Expected for `id_repeat_</dd>
+
+  <dt>int `i_count`</dt>
+  <dd>
+    The number of occurrences after which the appointment's repeat cycle stops.
+ Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
+ Expected for `id_repeat_
+  </dd>
+
+  <dt>int `i_duration`</dt>
+  <dd>Count of days\weeks\months between recurring bookings.</dd>
+
+  <dt>int `i_occurrence`</dt>
+  <dd>Deprecated, use `i_count` instead!</dd>
+
+  <dt>int `i_period`</dt>
+  <dd>Deprecated, use `i_duration` instead!</dd>
+
+  <dt>int `id_duration`</dt>
+  <dd>
+    The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
+
+  </dd>
+
+  <dt>int `id_period`</dt>
+  <dd>Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.</dd>
+
+  <dt>int `id_repeat_end`</dt>
+  <dd>Possible ways to stop repeatable events.</dd>
+</dl>
   public $a_repeat = null;
 
   /**
    * A list of assets being booked. Every element has the next structure:
-   * <dl>
-   *   <dt>int <var>i_index</var></dt>
-   *   <dd>Order number of the asset (maybe from 1 to asset quantity).</dd>
-   *   <dt>string <var>k_resource</var></dt>
-   *   <dd>The key of asset. 
-   * </dl>
    *
    * @post post
    * @var array[]
    */
+<dl>
+  <dt>int `i_index`</dt>
+  <dd>Order number of the asset (maybe from 1 to asset quantity).</dd>
+
+  <dt>string `k_resource`</dt>
+  <dd>The key of asset. 
+</dl>
   public $a_resource = [];
 
   /**
    * A list of all class sessions that can be booked together. Every element has the next structure:
-   * <dl>
-   *   <dt>string[] `a_staff`</dt>
-   *   <dd>
-   *     List of staff names that are leading this session.
-   *   </dd>
-   *
-   *   <dt>string[] `a_virtual_location`</dt>
-   *   <dd>
-   *     List of virtual locations.
-   *   </dd>
-   *
-   *   <dt>string `dt_date`</dt>
-   *   <dd>
-   *     The date/time when session starts in MySQL format and in GMT.
-   *   </dd>
-   *
-   *   <dt>int `i_active`</dt>
-   *   <dd>Total number of clients on the active list.</dd>
-   *
-   *   <dt>int `i_active_limit`</dt>
-   *   <dd>Total capacity of the active list.</dd>
-   *
-   *   <dt>int `i_duration`</dt>
-   *   <dd>Duration of a service.</dd>
-   *
-   *   <dt>int `i_wait`</dt>
-   *   <dd>Total number of clients on the wait list.</dd>
-   *
-   *   <dt>int|null `i_wait_limit`</dt>
-   *   <dd>Total capacity the wait list. `null` if wail list in unlimited. `0` if wait list is disabled.</dd>
-   *
-   *   <dt>bool `is_select`</dt>
-   *   <dd>
-   *     <tt>true</tt> if this session should be selected when page is initialized;
-   *     <tt>false</tt> if otherwise.
-   *   </dd>
-   *
-   *   <dt>bool `is_wait`</dt>
-   *   <dd>
-   *     `true` if client is added to a wait list, `false` - to an active list.
-   *   </dd>
-   *
-   *   <dt>bool `is_wait_list_unpaid`</dt>
-   *   <dd>
-   *     Allow clients to join the wait list unpaid.
-   *   </dd>
-   *
-   *   <dt>string `k_class_period`</dt>
-   *   <dd>
-   *     The key of the session.    </dd>
-   *
-   *   <dt>string `k_location`</dt>
-   *   <dd>
-   *     Location key.    </dd>
-   *
-   *   <dt>bool `m_price`</dt>
-   *   <dd>
-   *     Price of the session.
-   *   </dd>
-   *
-   *   <dt>string `s_location`</dt>
-   *   <dd>
-   *     The name of the location where the session occurred.
-   *   </dd>
-   *
-   *   <dt>string `s_start`</dt>
-   *   <dd>
-   *     The date/time when the session starts in human-readable format.
-   *     Returned in the time zone of the location.
-   *   </dd>
-   *
-   *   <dt>string `text_duration`</dt>
-   *   <dd>
-   *     String representation of session duration.
-   *        </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string[] `a_staff`</dt>
+  <dd>List of staff names that are leading this session.</dd>
+
+  <dt>string[] `a_virtual_location`</dt>
+  <dd>List of virtual locations.</dd>
+
+  <dt>string `dt_date`</dt>
+  <dd>The date/time when session starts in MySQL format and in GMT.</dd>
+
+  <dt>int `i_active`</dt>
+  <dd>Total number of clients on the active list.</dd>
+
+  <dt>int `i_active_limit`</dt>
+  <dd>Total capacity of the active list.</dd>
+
+  <dt>int `i_duration`</dt>
+  <dd>Duration of a service.</dd>
+
+  <dt>int `i_wait`</dt>
+  <dd>Total number of clients on the wait list.</dd>
+
+  <dt>int|null `i_wait_limit`</dt>
+  <dd>Total capacity the wait list. `null` if wail list in unlimited. `0` if wait list is disabled.</dd>
+
+  <dt>bool `is_select`</dt>
+  <dd><tt>true</tt> if this session should be selected when page is initialized;
+<tt>false</tt> if otherwise.</dd>
+
+  <dt>bool `is_wait`</dt>
+  <dd>`true` if client is added to a wait list, `false` - to an active list.</dd>
+
+  <dt>bool `is_wait_list_unpaid`</dt>
+  <dd>Allow clients to join the wait list unpaid.</dd>
+
+  <dt>string `k_class_period`</dt>
+  <dd>The key of the session. 
+
+  <dt>string `k_location`</dt>
+  <dd>Location key. 
+
+  <dt>bool `m_price`</dt>
+  <dd>Price of the session.</dd>
+
+  <dt>string `s_location`</dt>
+  <dd>The name of the location where the session occurred.</dd>
+
+  <dt>string `s_start`</dt>
+  <dd>The date/time when the session starts in human-readable format.
+Returned in the time zone of the location.</dd>
+
+  <dt>string `text_duration`</dt>
+  <dd>
+    String representation of session duration.
+/dd>
+</dl>
   public $a_session_all;
 
   /**
    * List of sessions that can be paid without new purchases.
    * Such as previously prepaid or free sessions.
    *
-   * Each its item has the key of following format: <dl>
-   *   <dt>string <var>dt_date::k_class_period</var></dt><dd>Composite key of the array.</dd>
-   * </dl>
-   * and the value of following structure: <dl>
-   *   <dt>string <var>dt_date</var></dt><dd>Session date.</dd>
-   *   <dt>string <var>k_class_period</var></dt><dd>Class period key for the session.</dd>
-   * </dl>
+   * Each its item has the key of following format: 
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `dt_date::k_class_period`</dt>
+  <dd>Composite key of the array.</dd>
+</dl>
+
+<dl>
+  <dt>string `dt_date`</dt>
+  <dd>Session date.</dd>
+
+  <dt>string `k_class_period`</dt>
+  <dd>Class period key for the session.</dd>
+</dl>
   public $a_session_free;
 
   /**
@@ -229,38 +215,47 @@ class Info54Model extends WlModelAbstract
 
   /**
    * The staff member conducting the session. Every element has the next structure:
-   * <dl>
-   *   <dt>array `a_logo`</dt>
-   *     <dd>
-   *     The staff member photo:
-   *     <dl>
-   *       <dt>int `i_height`</dt>
-   *       <dd>The image height.</dd>
-   *
-   *       <dt>int `i_width`</dt>
-   *       <dd>The image width.</dd>
-   *
-   *       <dt>string `s_url`</dt>
-   *       <dd>The image URL.</dd>
-   *     </dl>
-   *   </dd>
-   *
-   *   <dt>string `s_family`</dt>
-   *   <dd>The first letter of staff member surname.</dd>
-   *
-   *   <dt>string `s_staff`</dt>
-   *   <dd>The staff member's name.</dd>
-   *
-   *   <dt>string `uid_staff`</dt>
-   *   <dd>UID of the staff member. 
-   *
-   *   <dt>string `uid`</dt>
-   *   <dd>Alias of `uid_staff` for backward compatibility.</dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>array `a_logo`</dt>
+  <dd>
+    The staff member photo:
+<dl>
+  <dt>int `i_height`</dt>
+  <dd>The image height.</dd>
+
+  <dt>int `i_width`</dt>
+  <dd>The image width.</dd>
+
+  <dt>string `s_url`</dt>
+  <dd>The image URL.</dd>
+</dl> <dl>
+      <dt>int `i_height`</dt>
+      <dd>The image height.</dd>
+
+      <dt>int `i_width`</dt>
+      <dd>The image width.</dd>
+
+      <dt>string `s_url`</dt>
+      <dd>The image URL.</dd>
+    </dl>
+  </dd>
+
+  <dt>string `s_family`</dt>
+  <dd>The first letter of staff member surname.</dd>
+
+  <dt>string `s_staff`</dt>
+  <dd>The staff member's name.</dd>
+
+  <dt>string `uid_staff`</dt>
+  <dd>UID of the staff member. 
+
+  <dt>string `uid`</dt>
+  <dd>Alias of `uid_staff` for backward compatibility.</dd>
+</dl>
   public $a_staff;
 
   /**
@@ -273,22 +268,26 @@ class Info54Model extends WlModelAbstract
 
   /**
    * Values are arrays with next keys:
-   * <dl>
-   *     <dt>bool `is_free`</dt>
-   *     <dd>`true` if the visit is free; `false` otherwise.</dd>
-   *     <dt>string `k_login_promotion`</dt>
-   *     <dd>Applied user's purchase option. 
-   *     <dt>string `k_promotion`</dt>
-   *     <dd>Purchase option. 
-   *     <dt>string `k_session_pass`</dt>
-   *     <dd>Applied session pass. 
-   *     <dt>string `text_promotion`</dt>
-   *     <dd>Purchase option title.</dd>
-   * </dl>
    *
    * @post result
    * @var array[]
    */
+<dl>
+  <dt>bool `is_free`</dt>
+  <dd>`true` if the visit is free; `false` otherwise.</dd>
+
+  <dt>string `k_login_promotion`</dt>
+  <dd>Applied user's purchase option. 
+
+  <dt>string `k_promotion`</dt>
+  <dd>Purchase option. 
+
+  <dt>string `k_session_pass`</dt>
+  <dd>Applied session pass. 
+
+  <dt>string `text_promotion`</dt>
+  <dd>Purchase option title.</dd>
+</dl>
   public $a_visit_payment;
 
   /**

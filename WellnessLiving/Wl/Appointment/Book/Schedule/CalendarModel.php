@@ -17,90 +17,131 @@ class CalendarModel extends WlModelAbstract
   /**
    * A list with all calendar days in the specified month with
    * available and unavailable appointment bookings in the schedule.
-   * <dl>
-   *   <dt>string <var>dt_date</var></dt>
-   *   <dd>Date item of the calendar.</dd>
-   *   <dt>int <var>i_week</var></dt>
-   *   <dd>Number of day in week.</dd>
-   *   <dt>bool <var>is_available</var></dt>
-   *   <dd>Whether booking is available for this day.</dd>
-   *   <dt>bool <var>is_current</var></dt>
-   *   <dd>Whether date is current.</dd>
-   *   <dt>bool <var>is_out</var></dt>
-   *   <dd>Whether date is out of current month or it's business/location closed date.</dd>
-   *   <dt>bool <var>is_waitlist_only</var></dt>
-   *   <dd>Whether booking for this day available only in wait list.</dd>
-   *   <dt>bool <var>is_week_end</var></dt>
-   *   <dd>Whether date is last day of the week.</dd>
-   *   <dt>bool <var>is_week_start</var></dt>
-   *   <dd>Whether date is first day of the week.</dd>
-   *   <dt>string <var>s_day</var></dt>
-   *   <dd>String representation of day number with leading zeroes.</dd>
-   *   <dt>string <var>s_week</var></dt>
-   *   <dd>String representation of week day (one letter, i.e. "F").</dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `dt_date`</dt>
+  <dd>Date item of the calendar.</dd>
+
+  <dt>int `i_week`</dt>
+  <dd>Number of day in week.</dd>
+
+  <dt>bool `is_available`</dt>
+  <dd>Whether booking is available for this day.</dd>
+
+  <dt>bool `is_current`</dt>
+  <dd>Whether date is current.</dd>
+
+  <dt>bool `is_out`</dt>
+  <dd>Whether date is out of current month or it's business/location closed date.</dd>
+
+  <dt>bool `is_waitlist_only`</dt>
+  <dd>Whether booking for this day available only in wait list.</dd>
+
+  <dt>bool `is_week_end`</dt>
+  <dd>Whether date is last day of the week.</dd>
+
+  <dt>bool `is_week_start`</dt>
+  <dd>Whether date is first day of the week.</dd>
+
+  <dt>string `s_day`</dt>
+  <dd>String representation of day number with leading zeroes.</dd>
+
+  <dt>string `s_week`</dt>
+  <dd>String representation of week day (one letter, i.e. "F").</dd>
+</dl>
   public $a_date;
 
   /**
    * An array with a schedule of available appointment booking times.
-   * <dl>
-   *   <dt>string `dt_date`</dt>
-   *   <dd>Date of the calendar.</dd>
-   *   <dt>int `i_count`</dt>
-   *   <dd>The count of clients that have already booked this appointment.</dd>
-   *   <dt>int `i_time`</dt>
-   *   <dd>Integer representation of appointment schedule time.</dd>
-   *   <dt>int `i_wait`</dt>
-   *   <dd>The count of clients on the waiting list for this appointment.</dd>
-   *   <dt>bool `is_waitlist`</dt>
-   *   <dd>Whether the appointment can be booked only in a wait list.</dd>
-   *   <dt>string `k_staff`</dt>
-   *   <dd>@deprecated If this time is already occupied by any client and staff member (but service capacity is not exhausted),
-   *       this key contains key of staff member. rwise - `0`.</dd>
-   *   <dt>string `uid_staff`</dt>
-   *   <dd>If this time is already occupied by any client and staff member (but service capacity is not exhausted),
-   *       this key contains user key of staff member. rwise - `0`.</dd>
-   *   <dt>string `s_title`</dt>
-   *   <dd>String representation of appointment schedule time.</dd>
-   * </dl>
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>string `dt_date`</dt>
+  <dd>Date of the calendar.</dd>
+
+  <dt>int `i_count`</dt>
+  <dd>The count of clients that have already booked this appointment.</dd>
+
+  <dt>int `i_time`</dt>
+  <dd>Integer representation of appointment schedule time.</dd>
+
+  <dt>int `i_wait`</dt>
+  <dd>The count of clients on the waiting list for this appointment.</dd>
+
+  <dt>bool `is_waitlist`</dt>
+  <dd>Whether the appointment can be booked only in a wait list.</dd>
+
+  <dt>string `k_staff`</dt>
+  <dd>
+    @deprecated If this time is already occupied by any client and staff member (but service capacity is not exhausted),
+  this key contains key of staff member. rwise - `0`.
+  </dd>
+
+  <dt>string `uid_staff`</dt>
+  <dd>
+    If this time is already occupied by any client and staff member (but service capacity is not exhausted),
+  this key contains user key of staff member. rwise - `0`.
+  </dd>
+
+  <dt>string `s_title`</dt>
+  <dd>String representation of appointment schedule time.</dd>
+</dl>
   public $a_time;
 
   /**
    * Information about timezone.
-   * <dl>
-   *   <dt>array|null <var>a_timezone</var></dt>
-   *   <dd>
-   *     `null` if business settings doesn't allow client to adjust timezone, otherwise list of timezones:
-   *     <dl>
-   *       <dt>int <var>i_order</var></dt>
-   *       <dd>Timezone order.</dd>
-   *       <dt>int <var>i_shift</var></dt>
-   *       <dd>Timezone shift from UTC in hours.</dd>
-   *       <dt>bool <var>is_select</var></dt>
-   *       <dd>`true` for selected timezone - from {@link CalendarModel::$k_timezone} param or client's default timezone when param not set.</dd>
-   *       <dt>string <var>k_timezone</var></dt>
-   *       <dd>Timezone key.</dd>
-   *       <dt>string <var>s_title</var></dt>
-   *       <dd>Timezone name.</dd>
-   *       <dt>string <var>text_abbr</var></dt>
-   *       <dd>Timezone abbreviation.</dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>string|null <var>name</var></dt>
-   *   <dd>`null` if business settings doesn't allow client to adjust timezone, otherwise timezone input name.</dd>
-   * </dl>
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>array|null `a_timezone`</dt>
+  <dd>
+    `null` if business settings doesn't allow client to adjust timezone, otherwise list of timezones:
+<dl>
+  <dt>int <var>i_order</var></dt>
+  <dd>Timezone order.</dd>
+  <dt>int <var>i_shift</var></dt>
+  <dd>Timezone shift from UTC in hours.</dd>
+  <dt>bool <var>is_select</var></dt>
+
+  <dt>string <var>k_timezone</var></dt>
+  <dd>Timezone key.</dd>
+  <dt>string <var>s_title</var></dt>
+  <dd>Timezone name.</dd>
+  <dt>string <var>text_abbr</var></dt>
+  <dd>Timezone abbreviation.</dd>
+</dl> <dl>
+      <dt>int `i_order`</dt>
+      <dd>Timezone order.</dd>
+
+      <dt>int `i_shift`</dt>
+      <dd>Timezone shift from UTC in hours.</dd>
+
+      <dt>bool `is_select`</dt>
+      <dd>
+
+      </dd>
+
+      <dt>string `k_timezone`</dt>
+      <dd>Timezone key.</dd>
+
+      <dt>string `s_title`</dt>
+      <dd>Timezone name.</dd>
+
+      <dt>string `text_abbr`</dt>
+      <dd>Timezone abbreviation.</dd>
+    </dl>
+  </dd>
+
+  <dt>string|null `name`</dt>
+  <dd>`null` if business settings doesn't allow client to adjust timezone, otherwise timezone input name.</dd>
+</dl>
   public $a_timezone_data = [];
 
   /**
@@ -116,16 +157,16 @@ class CalendarModel extends WlModelAbstract
   /**
    * Array with short week day's names (2 letters, i.e. 'Fr') for calendar month view. Week days order according to business's settings.
    *
-   * <dl>
-   *   <dt>int <var>i_day</var></dt>
-   *   <dd>Week day, one of the {@link ADateWeekSid} constants.</dd>
-   *   <dt>string <var>html_week_day</var></dt>
-   *   <dd>Short week day's name (2 letters, i.e. 'Fr').</dd>
-   * </dl>
-   *
    * @get result
    * @var array
    */
+<dl>
+  <dt>int `i_day`</dt>
+  <dd>Week day, one of the {@link ADateWeekSid} constants.</dd>
+
+  <dt>string `html_week_day`</dt>
+  <dd>Short week day's name (2 letters, i.e. 'Fr').</dd>
+</dl>
   public $a_week_name = [];
 
   /**
@@ -332,27 +373,43 @@ class CalendarModel extends WlModelAbstract
    *
    * For back-to-back booking ({@link DayTimeModel::$is_back_to_back} == `true`): array of appointments for back-to-back booking.
    * Converted to JSON string to be usable as model key. Each item is an array with next structure:
-   * <dl>
-   *   <dt>array `a_addon`</dt><dd>Array of appointment addons.</dd>
-   *   <dt>int `i_duration`</dt><dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd>
-   *   <dt>int `id_gender_staff`</dt><dd>Staff gender. One of {@link AGenderSid} constants. Zero mean no limitations on staff gender.</dd>
-   *   <dt>string `k_service`</dt><dd>Service key. 
-   *   <dt>string `k_staff`</dt><dd>@deprecated Staff key. Zero means any available staff. 
-   *   <dt>string `uid_staff`</dt><dd>Staff user key. Zero means any available staff. 
-   * </dl>
-   *
-   * For multiple appointment booking ({@link DayTimeModel::$is_back_to_back} == `false`): array of previously booked appointments.
-   * Converted to JSON string to be usable as model key. Each item is an array with next structure:
-   * <dl>
-   *   <dt>string `dtl_date`</dt><dd>Local date and time of appointment start in MySQL format.</dd>
-   *   <dt>int `i_duration`</dt><dd>Duration of the appointment in minutes.</dd>
-   *   <dt>string `k_service`</dt><dd>Service key. 
-   *   <dt>string `uid_staff`</dt><dd>Staff user key. Zero means any available staff. 
-   * </dl>
    *
    * @get get
    * @var string
    */
+<dl>
+  <dt>array `a_addon`</dt>
+  <dd>Array of appointment addons.</dd>
+
+  <dt>int `i_duration`</dt>
+  <dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd>
+
+  <dt>int `id_gender_staff`</dt>
+  <dd>Staff gender. One of {@link AGenderSid} constants. Zero mean no limitations on staff gender.</dd>
+
+  <dt>string `k_service`</dt>
+  <dd>Service key. 
+
+  <dt>string `k_staff`</dt>
+  <dd>@deprecated Staff key. Zero means any available staff. 
+
+  <dt>string `uid_staff`</dt>
+  <dd>Staff user key. Zero means any available staff. 
+</dl>
+
+<dl>
+  <dt>string `dtl_date`</dt>
+  <dd>Local date and time of appointment start in MySQL format.</dd>
+
+  <dt>int `i_duration`</dt>
+  <dd>Duration of the appointment in minutes.</dd>
+
+  <dt>string `k_service`</dt>
+  <dd>Service key. 
+
+  <dt>string `uid_staff`</dt>
+  <dd>Staff user key. Zero means any available staff. 
+</dl>
   public $s_appointment = '';
 
   /**

@@ -11,20 +11,24 @@ use WellnessLiving\Wl\WlSaleSid;
 class LimitQuantityModel extends WlModelAbstract
 {
   /**
-   * The cart items list with the next structure: <dl>
-   *   <dt>int <var>i_quantity</var></dt>
-   *   <dd>The quantity of sale items.</dd>
-   *   <dt>int <var>id_sale</var></dt>
-   *   <dd>The sale item type. One of the {@link WlSaleSid} constants.</dd>
-   *   <dt>string <var>k_id</var></dt>
-   *   <dd>The sale item ID.</dd>
-   *   <dt>string <var>k_shop_product_option</var></dt>
-   *   <dd>The shop product option. <tt>null</tt> if the sale item has no options.</dd>
-   * </dl>
+   * The cart items list with the next structure: 
    *
    * @get get
    * @var array[]
    */
+<dl>
+  <dt>int `i_quantity`</dt>
+  <dd>The quantity of sale items.</dd>
+
+  <dt>int `id_sale`</dt>
+  <dd>The sale item type. One of the {@link WlSaleSid} constants.</dd>
+
+  <dt>string `k_id`</dt>
+  <dd>The sale item ID.</dd>
+
+  <dt>string `k_shop_product_option`</dt>
+  <dd>The shop product option. <tt>null</tt> if the sale item has no options.</dd>
+</dl>
   public $a_item = [];
 
   /**

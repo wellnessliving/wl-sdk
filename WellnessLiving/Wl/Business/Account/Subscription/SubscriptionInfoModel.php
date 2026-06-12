@@ -33,6 +33,187 @@ class SubscriptionInfoModel extends WlModelAbstract
    * @get result
    * @var int
    */
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Collections subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    API Access subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Subscription Plan subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Go High Level subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Door Access subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Book-a-Spot subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Achieve White Label App subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Zapier Integration subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    CAASI subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Customer Review Manager subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Mailchimp / Constant Contact subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Constant Contact Integration subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Mailchimp Integration subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Rewards & Loyalty subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Business Success Coaching subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Direct Mail subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Presence subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    FitLIVE subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Message Center subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Zoom subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Finance subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    FitBUILDER subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    FitVID on Demand subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    FitZONE subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Marketing Suite subscription plan ID.
+  </dd>
+</dl>
+
+<dl>
+  <dt>int `id_plan`</dt>
+  <dd>
+    Forms subscription plan ID.
+  </dd>
+</dl>
   public $id_plan = 0;
 
   /**

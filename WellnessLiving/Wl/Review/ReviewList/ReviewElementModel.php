@@ -12,90 +12,50 @@ class ReviewElementModel extends WlModelAbstract
 {
   /**
    * Review data:
-   * <dl>
-   *   <dt>
-   *     string <var>dt_add</var>
-   *   </dt>
-   *   <dd>
-   *     Date when review was added by user.
-   *   </dd>
-   *   <dt>
-   *     float <var>f_rate</var>
-   *   </dt>
-   *   <dd>
-   *     Review rate.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_review_status</var>
-   *   </dt>
-   *   <dd>
-   *     Status of the Review. One of {@link WlReviewStatusSid} constants.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_featured</var>
-   *   </dt>
-   *   <dd>
-   *     If `true`, the review is featured. Otherwise, this will be `false`.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_verify</var>
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> if review is verified, <tt>false</tt> otherwise.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_firstname</var>
-   *   </dt>
-   *   <dd>
-   *     Client's first name who added review.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_lastname</var>
-   *   </dt>
-   *   <dd>
-   *     Client's last name who added review.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_reply</var>
-   *   </dt>
-   *   <dd>
-   *     Staff reply. Can be empty.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_review</var>
-   *   </dt>
-   *   <dd>
-   *     Review text.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_business_name</var>
-   *   </dt>
-   *   <dd>
-   *     Business name
-   *   </dd>
-   *   <dt>
-   *     string <var>text_response</var>
-   *   </dt>
-   *   <dd>
-   *     Word "response".
-   *   </dd>
-   *   <dt>
-   *     string <var>uid</var>
-   *   </dt>
-   *   <dd>
-   *     User key.
-   *   </dd>
-   *   <dt>
-   *     string <var>url_logo</var>
-   *   </dt>
-   *   <dd>
-   *     User logo.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array
    */
+<dl>
+  <dt>string `dt_add`</dt>
+  <dd>Date when review was added by user.</dd>
+
+  <dt>float `f_rate`</dt>
+  <dd>Review rate.</dd>
+
+  <dt>int `id_review_status`</dt>
+  <dd>Status of the Review. One of {@link WlReviewStatusSid} constants.</dd>
+
+  <dt>bool `is_featured`</dt>
+  <dd>If `true`, the review is featured. Otherwise, this will be `false`.</dd>
+
+  <dt>bool `is_verify`</dt>
+  <dd><tt>true</tt> if review is verified, <tt>false</tt> otherwise.</dd>
+
+  <dt>string `text_firstname`</dt>
+  <dd>Client's first name who added review.</dd>
+
+  <dt>string `text_lastname`</dt>
+  <dd>Client's last name who added review.</dd>
+
+  <dt>string `text_reply`</dt>
+  <dd>Staff reply. Can be empty.</dd>
+
+  <dt>string `text_review`</dt>
+  <dd>Review text.</dd>
+
+  <dt>string `text_business_name`</dt>
+  <dd>Business name</dd>
+
+  <dt>string `text_response`</dt>
+  <dd>Word "response".</dd>
+
+  <dt>string `uid`</dt>
+  <dd>User key.</dd>
+
+  <dt>string `url_logo`</dt>
+  <dd>User logo.</dd>
+</dl>
   public $a_review = [];
 
   /**

@@ -10,18 +10,20 @@ use WellnessLiving\WlModelAbstract;
 class FlagModel extends WlModelAbstract
 {
   /**
-   * Array with structure:<dl>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>Key is passport login ID. 
-   *   <dt>bool <var>is_flag</var></dt>
-   *   <dd>Value: <tt>true</tt> if user is flagged; <tt>false</tt> otherwise.</dd>
-   * </dl>
+   * Array with structure:
    * <tt>null</tt> until loaded or when <var>a_uid</var> was not set.
    *
    * @get result
    * @var array
    * @deprecated This is old property, which is left for back-compatibility. Use {@link FlagModel::$a_restrictions_multiple} instead.
    */
+<dl>
+  <dt>string `uid`</dt>
+  <dd>Key is passport login ID. 
+
+  <dt>bool `is_flag`</dt>
+  <dd>Value: <tt>true</tt> if user is flagged; <tt>false</tt> otherwise.</dd>
+</dl>
   public $a_flag;
 
   /**
@@ -30,25 +32,21 @@ class FlagModel extends WlModelAbstract
    *
    * This field is set, if API gets {@link FlagModel::$a_uid} and not {@link FlagModel::$uid} properties.
    *
-   * Values are flag restriction arrays: <dl>
-   *   <dt>bool `is_book`</dt>
-   *   <dd>`true` if the user cannot make new reservations.</dd>
-   *   <dt>bool `is_purchase`</dt>
-   *   <dd>`true` if the user cannot make new purchases.</dd>
-   * </dl>
+   * Values are flag restriction arrays: 
    *
    * @get result
    * @var array|null
    */
+<dl>
+  <dt>bool `is_book`</dt>
+  <dd>`true` if the user cannot make new reservations.</dd>
+
+  <dt>bool `is_purchase`</dt>
+  <dd>`true` if the user cannot make new purchases.</dd>
+</dl>
   public $a_restrictions_multiple = null;
 
   /**
-   * <dl>
-   *   <dt>bool <var>is_book</var></dt>
-   *   <dd>`true` if client cannot make new reservations.</dd>
-   *   <dt>bool <var>is_purchase</var></dt>
-   *   <dd>`true` if client cannot make new purchases.</dd>
-   * </dl>
    *
    * <tt>null</tt> if user is not flagged in the location.
    *
@@ -57,6 +55,13 @@ class FlagModel extends WlModelAbstract
    * @get result
    * @var array|null
    */
+<dl>
+  <dt>bool `is_book`</dt>
+  <dd>`true` if client cannot make new reservations.</dd>
+
+  <dt>bool `is_purchase`</dt>
+  <dd>`true` if client cannot make new purchases.</dd>
+</dl>
   public $a_restrictions_single = null;
 
   /**

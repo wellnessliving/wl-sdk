@@ -17,132 +17,183 @@ class AssetListModel extends WlModelAbstract
   /**
    * A list of information about assets:
    *
-   * <dl>
-   *   <dt>array `a_age_restrictions`</dt>
-   *   <dd>
-   *     Information about age restrictions for this event.
-   *
-   *     This will be an empty array if there aren't any age restrictions.
-   *
-   *     <dl>
-   *       <dt>int|null `i_age_from`</dt>
-   *       <dd>
-   *         The minimum age permitted for the event. This will be `null` if a minimum age isn't set or available.
-   *       </dd>
-   *
-   *       <dt>int|null `i_age_to`</dt>
-   *       <dd>
-   *         The maximum age permitted for the event. This will be `null` if a maximum age isn't set or available.
-   *       </dd>
-   *
-   *       <dt>bool `is_age_public`</dt>
-   *       <dd>
-   *         This will be `true` if age restrictions are public and available. Otherwise, this will be `false` if they're hidden.
-   *         When restrictions are hidden and current user isn't a staff member, the age range will be empty.
-   *       </dd>
-   *     </dl>
-   *   </dd>
-   *
-   *   <dt>string[] `a_class_tab`</dt>
-   *   <dd>
-   *       The key of service.
-   *       Keys are service key.        Values are class tab key.    </dd>
-   *
-   *   <dt>array[] `a_direct_link`</dt>
-   *   <dd>
-   *     A list of links to create a booking from a direct link (direct booking URL).
-   *     The system needs to know what tab is associated with the booking. Therefore, there needs to be one link
-   *     per tab.
-   *     Each element has two values:
-   *     <dl>
-   *       <dt>string `k_class_tab`</dt>
-   *       <dd>The key of the book now tab.</dd>
-   *
-   *       <dt>string `url_tab`</dt>
-   *       <dd>The direct booking URL. This will open the booking wizard under the related booking tab.</dd>
-   *     </dl>
-   *   </dd>
-   *
-   *   <dt>array[] `a_image`</dt>
-   *   <dd>
-   *     Information about the asset logo:
-   *     <dl>
-   *       <dt>int `i_angle`</dt>
-   *       <dd>The angle of the shape rotation. This is set only if the image is one of the default shapes.</dd>
-   *
-   *       <dt>bool `is_empty`</dt>
-   *       <dd>Determines if the asset logo is empty.</dd>
-   *
-   *       <dt>string `sid_image_icon`</dt>
-   *       <dd>
-   *         The icon name. String representation of one of the {@link ImageIconSid} constants. This is only set if the image kind equals to `image`.
-   *       </dd>
-   *
-   *       <dt>string `sid_image_shape`</dt>
-   *       <dd>
-   *         The shape name. String representation of one of the {@link ImageShapeSid} constants. This is set only if the image kind equals to `shape`.
-   *       </dd>
-   *
-   *       <dt>string `url`</dt>
-   *       <dd>The asset logo URL.</dd>
-   *     </dl>
-   *   </dd>
-   *
-   *   <dt>array[] `a_period`</dt>
-   *   <dd>
-   *     A list of asset periods with the following information:
-   *     <dl>
-   *       <dt>string `html_duration`</dt>
-   *       <dd>The HTML code used to display the asset duration.</dd>
-   *
-   *       <dt>string `html_price`</dt>
-   *       <dd>The HTML code used to display the formatted price.</dd>
-   *
-   *       <dt>int `i_duration`</dt>
-   *       <dd>The asset duration in minutes.</dd>
-   *
-   *       <dt>int `id_price`</dt>
-   *       <dd>The asset period price type. One of {@link ServicePriceSid} constants.</dd>
-   *
-   *       <dt>string `m_price`</dt>
-   *       <dd>The asset period price.</dd>
-   *     </dl>
-   *   </dd>
-   *
-   *   <dt>string[] `a_search_tag`</dt>
-   *   <dd>QUICK Search tag keys.</dd>
-   *
-   *   <dt>bool `hide_application`</dt>
-   *   <dd>
-   *     Determines whether the asset will be hidden in the White Label mobile apps.
-   *     If `true`, the asset won't be displayed. Otherwise, this will be `false`.
-   *   </dd>
-   *
-   *   <dt>string `html_age_restriction`</dt>
-   *   <dd>The resource age restriction</dd>
-   *
-   *   <dt>string `html_title`</dt>
-   *   <dd>The resource name.</dd>
-   *
-   *   <dt>int `id_service_require`</dt>
-   *   <dd>The purchase rule. One of the {@link ServiceRequireSid} constants.</dd>
-   *
-   *   <dt>bool `is_age_restricted`</dt>
-   *   <dd>Determines whether this service can't be booked due to age restrictions.</dd>
-   *
-   *   <dt>string `k_class_tab`</dt>
-   *   <dd>Quick book tab key. 
-   *
-   *   <dt>string `k_resource`</dt>
-   *   <dd>The resource key. 
-   *
-   *   <dt>string `k_resource_category`</dt>
-   *   <dd>The resource category key. 
-   * </dl>
-   *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>array `a_age_restrictions`</dt>
+  <dd>
+    Information about age restrictions for this event.
+
+This will be an empty array if there aren't any age restrictions.
+
+<dl>
+  <dt>int|null `i_age_from`</dt>
+  <dd>
+    The minimum age permitted for the event. This will be `null` if a minimum age isn't set or available.
+  </dd>
+
+  <dt>int|null `i_age_to`</dt>
+  <dd>
+    The maximum age permitted for the event. This will be `null` if a maximum age isn't set or available.
+  </dd>
+
+  <dt>bool `is_age_public`</dt>
+  <dd>
+    This will be `true` if age restrictions are public and available. Otherwise, this will be `false` if they're hidden.
+    When restrictions are hidden and current user isn't a staff member, the age range will be empty.
+  </dd>
+</dl> <dl>
+      <dt>int|null `i_age_from`</dt>
+      <dd>The minimum age permitted for the event. This will be `null` if a minimum age isn't set or available.</dd>
+
+      <dt>int|null `i_age_to`</dt>
+      <dd>The maximum age permitted for the event. This will be `null` if a maximum age isn't set or available.</dd>
+
+      <dt>bool `is_age_public`</dt>
+      <dd>
+        This will be `true` if age restrictions are public and available. Otherwise, this will be `false` if they're hidden.
+When restrictions are hidden and current user isn't a staff member, the age range will be empty.
+      </dd>
+    </dl>
+  </dd>
+
+  <dt>string[] `a_class_tab`</dt>
+  <dd>
+    The key of service.
+  Keys are service key. alues are class tab key. /dd>
+
+  <dt>array[] `a_direct_link`</dt>
+  <dd>
+    A list of links to create a booking from a direct link (direct booking URL).
+The system needs to know what tab is associated with the booking. Therefore, there needs to be one link
+per tab.
+Each element has two values:
+<dl>
+  <dt>string `k_class_tab`</dt>
+  <dd>The key of the book now tab.</dd>
+
+  <dt>string `url_tab`</dt>
+  <dd>The direct booking URL. This will open the booking wizard under the related booking tab.</dd>
+</dl> <dl>
+      <dt>string `k_class_tab`</dt>
+      <dd>The key of the book now tab.</dd>
+
+      <dt>string `url_tab`</dt>
+      <dd>The direct booking URL. This will open the booking wizard under the related booking tab.</dd>
+    </dl>
+  </dd>
+
+  <dt>array[] `a_image`</dt>
+  <dd>
+    Information about the asset logo:
+<dl>
+  <dt>int `i_angle`</dt>
+  <dd>The angle of the shape rotation. This is set only if the image is one of the default shapes.</dd>
+
+  <dt>bool `is_empty`</dt>
+  <dd>Determines if the asset logo is empty.</dd>
+
+  <dt>string `sid_image_icon`</dt>
+  <dd>
+    The icon name. String representation of one of the {@link ImageIconSid} constants. This is only set if the image kind equals to `image`.
+  </dd>
+
+  <dt>string `sid_image_shape`</dt>
+  <dd>
+    The shape name. String representation of one of the {@link ImageShapeSid} constants. This is set only if the image kind equals to `shape`.
+  </dd>
+
+  <dt>string `url`</dt>
+  <dd>The asset logo URL.</dd>
+</dl> <dl>
+      <dt>int `i_angle`</dt>
+      <dd>The angle of the shape rotation. This is set only if the image is one of the default shapes.</dd>
+
+      <dt>bool `is_empty`</dt>
+      <dd>Determines if the asset logo is empty.</dd>
+
+      <dt>string `sid_image_icon`</dt>
+      <dd>
+        The icon name. String representation of one of the {@link ImageIconSid} constants. This is only set if the image kind equals to `image`.
+      </dd>
+
+      <dt>string `sid_image_shape`</dt>
+      <dd>
+        The shape name. String representation of one of the {@link ImageShapeSid} constants. This is set only if the image kind equals to `shape`.
+      </dd>
+
+      <dt>string `url`</dt>
+      <dd>The asset logo URL.</dd>
+    </dl>
+  </dd>
+
+  <dt>array[] `a_period`</dt>
+  <dd>
+    A list of asset periods with the following information:
+<dl>
+  <dt>string `html_duration`</dt>
+  <dd>The HTML code used to display the asset duration.</dd>
+
+  <dt>string `html_price`</dt>
+  <dd>The HTML code used to display the formatted price.</dd>
+
+  <dt>int `i_duration`</dt>
+  <dd>The asset duration in minutes.</dd>
+
+  <dt>int `id_price`</dt>
+  <dd>The asset period price type. One of {@link ServicePriceSid} constants.</dd>
+
+  <dt>string `m_price`</dt>
+  <dd>The asset period price.</dd>
+</dl> <dl>
+      <dt>string `html_duration`</dt>
+      <dd>The HTML code used to display the asset duration.</dd>
+
+      <dt>string `html_price`</dt>
+      <dd>The HTML code used to display the formatted price.</dd>
+
+      <dt>int `i_duration`</dt>
+      <dd>The asset duration in minutes.</dd>
+
+      <dt>int `id_price`</dt>
+      <dd>The asset period price type. One of {@link ServicePriceSid} constants.</dd>
+
+      <dt>string `m_price`</dt>
+      <dd>The asset period price.</dd>
+    </dl>
+  </dd>
+
+  <dt>string[] `a_search_tag`</dt>
+  <dd>QUICK Search tag keys.</dd>
+
+  <dt>bool `hide_application`</dt>
+  <dd>
+    Determines whether the asset will be hidden in the White Label mobile apps.
+If `true`, the asset won't be displayed. Otherwise, this will be `false`.
+  </dd>
+
+  <dt>string `html_age_restriction`</dt>
+  <dd>The resource age restriction</dd>
+
+  <dt>string `html_title`</dt>
+  <dd>The resource name.</dd>
+
+  <dt>int `id_service_require`</dt>
+  <dd>The purchase rule. One of the {@link ServiceRequireSid} constants.</dd>
+
+  <dt>bool `is_age_restricted`</dt>
+  <dd>Determines whether this service can't be booked due to age restrictions.</dd>
+
+  <dt>string `k_class_tab`</dt>
+  <dd>Quick book tab key. 
+
+  <dt>string `k_resource`</dt>
+  <dd>The resource key. 
+
+  <dt>string `k_resource_category`</dt>
+  <dd>The resource category key. 
+</dl>
   public $a_asset;
 
   /**

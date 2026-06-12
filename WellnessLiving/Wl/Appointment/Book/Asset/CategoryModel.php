@@ -11,31 +11,25 @@ class CategoryModel extends WlModelAbstract
 {
   /**
    * A list of information about asset categories.
-   * <dl>
-   *   <dt>bool `hide_application`</dt>
-   *   <dd>
-   *     <tt>true</tt> - all resources are hidden in this category for White Label mobile application. <tt>false</tt> - otherwise.
-   *   </dd>
-   *
-   *   <dt>string `k_resource_type`</dt>
-   *   <dd>
-   *     Resource type ID.
-   *   </dd>
-   *
-   *   <dt>string `html_title`</dt>
-   *   <dd>
-   *     Title of resource type.
-   *   </dd>
-   *
-   *   <dt>string `text_title`</dt>
-   *   <dd>
-   *     Title of resource type as text.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>bool `hide_application`</dt>
+  <dd>
+    <tt>true</tt> - all resources are hidden in this category for White Label mobile application. <tt>false</tt> - otherwise.
+  </dd>
+
+  <dt>string `k_resource_type`</dt>
+  <dd>Resource type ID.</dd>
+
+  <dt>string `html_title`</dt>
+  <dd>Title of resource type.</dd>
+
+  <dt>string `text_title`</dt>
+  <dd>Title of resource type as text.</dd>
+</dl>
   public $a_category;
 
   /**

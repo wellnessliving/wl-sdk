@@ -14,21 +14,23 @@ class BusinessModel extends WlModelAbstract
    * Empty array means to not create a staff member.
    * Otherwise, information about staff member to be created in the business.
    *
-   *  <dl>
-   *    <dt>bool <var>is_enter</var></dt>
-   *    <dd>Should created staff member be automatically signed in or not.</dd>
-   *    <dt>string <var>text_mail</var></dt>
-   *    <dd>Email address to be used to sign in.</dd>
-   *    <dt>string <var>text_name_first</var></dt>
-   *    <dd>The first name of the staff member.</dd>
-   *    <dt>string <var>text_name_last</var></dt>
-   *    <dd>The last name of the staff member.</dd>
-   *  </dl>
-   *
    * @post post
    * @put post
    * @var array
    */
+<dl>
+  <dt>bool `is_enter`</dt>
+  <dd>Should created staff member be automatically signed in or not.</dd>
+
+  <dt>string `text_mail`</dt>
+  <dd>Email address to be used to sign in.</dd>
+
+  <dt>string `text_name_first`</dt>
+  <dd>The first name of the staff member.</dd>
+
+  <dt>string `text_name_last`</dt>
+  <dd>The last name of the staff member.</dd>
+</dl>
   public $a_staff_member = [];
 
   /**

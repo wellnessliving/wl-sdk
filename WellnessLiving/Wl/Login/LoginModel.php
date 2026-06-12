@@ -15,94 +15,58 @@ class LoginModel extends WlModelAbstract
 {
   /**
    * List of information about users:
-   * <dl>
-   *   <dt>
-   *     int <var>id_gender</var>
-   *   </dt>
-   *   <dd>
-   *     User's gender. One of {@link AGenderSid} constants.
-   *   </dd>
-   *
-   *   <dt>
-   *     string <var>k_staff</var>
-   *   </dt>
-   *   <dd>
-   *     User's key as staff member.    </dd>
-   *
-   *   <dt>
-   *     string <var>s_first_name</var>
-   *   </dt>
-   *   <dd>
-   *     User first name.
-   *   </dd>
-   *
-   *   <dt>
-   *     string <var>s_last_name</var>
-   *   </dt>
-   *   <dd>
-   *     First letter of user last name.
-   *   </dd>
-   *
-   *   <dt>
-   *     string <var>text_mail_client</var>
-   *   </dt>
-   *   <dd>
-   *     Client`s mail.
-   *   </dd>
-   *
-   *   <dt>
-   *     string <var>text_mail_staff</var>
-   *   </dt>
-   *   <dd>
-   *     Staff`s mail.
-   *   </dd>
-   *
-   *   <dt>
-   *     string <var>text_name_first_staff</var>
-   *   </dt>
-   *   <dd>
-   *     Staff's first name.
-   *   </dd>
-   *
-   *   <dt>
-   *     string <var>text_name_full_client</var>
-   *   </dt>
-   *   <dd>
-   *     Full client name. User login is returned in a case neither first name, nor last name specified.
-   *     An empty string is returned in a case neither first name, nor last name specified, nor login.
-   *        </dd>
-   *
-   *   <dt>
-   *     string <var>text_name_full_staff</var>
-   *   </dt>
-   *   <dd>
-   *     Full staff name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login.
-   *   </dd>
-   *
-   *   <dt>
-   *     string <var>text_name_last_staff</var>
-   *   </dt>
-   *   <dd>
-   *     Staff`s last name.
-   *   </dd>
-   *
-   *   <dt>
-   *     string <var>uid_staff</var>
-   *   </dt>
-   *   <dd>
-   *     The user's UID as a staff member.    </dd>
-   *
-   *   <dt>
-   *     string <var>url_photo</var>
-   *   </dt>
-   *   <dd>
-   *     User photo URL.
-   *   </dd>
-   * </dl>
    *
    * @post result
    * @var array[]
    */
+<dl>
+  <dt>int `id_gender`</dt>
+  <dd>User's gender. One of {@link AGenderSid} constants.</dd>
+
+  <dt>string `k_staff`</dt>
+  <dd>User's key as staff member. 
+
+  <dt>string `s_first_name`</dt>
+  <dd>User first name.</dd>
+
+  <dt>string `s_last_name`</dt>
+  <dd>First letter of user last name.</dd>
+
+  <dt>string `text_mail_client`</dt>
+  <dd>
+    Client`s mail.
+  &lt;/dd&gt;
+
+  &lt;dt&gt;
+string &lt;var&gt;text_mail_staff&lt;/var&gt;
+  &lt;/dt&gt;
+  &lt;dd&gt;
+Staff`s mail.
+  </dd>
+
+  <dt>string `text_name_first_staff`</dt>
+  <dd>Staff's first name.</dd>
+
+  <dt>string `text_name_full_client`</dt>
+  <dd>
+    Full client name. User login is returned in a case neither first name, nor last name specified.
+An empty string is returned in a case neither first name, nor last name specified, nor login.
+/dd>
+
+  <dt>string `text_name_full_staff`</dt>
+  <dd>
+    Full staff name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login.
+  </dd>
+
+  <dt>string `text_name_last_staff`</dt>
+  <dd>Staff`s last name.</dd>
+
+  <dt>string `uid_staff`</dt>
+  <dd>The user's UID as a staff member. 
+
+  <dt>string `url_photo`</dt>
+  <dd>User photo URL.</dd>
+</dl>
   public $a_login;
 
   /**

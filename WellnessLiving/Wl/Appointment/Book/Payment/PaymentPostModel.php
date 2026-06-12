@@ -25,151 +25,275 @@ class PaymentPostModel extends WlModelAbstract
    * @post post
    * @var array
    */
+<dl>
+  <dt>int[] `a_product`</dt>
+  <dd>Add-on list. Keys are add-on option keys, values are quantities.</dd>
+
+  <dt>string `dl_client_prorate`</dt>
+  <dd>Client prorate date. Used when the purchased promotion is prorated.</dd>
+
+  <dt>int `id_class_tab`</dt>
+  <dd>The "Book now" tab.</dd>
+
+  <dt>bool `is_pay_later`</dt>
+  <dd>`true` if the client wants to pay upon their visit, `false` if paying now.</dd>
+
+  <dt>bool `is_purchase_previous`</dt>
+  <dd>`true` if a previously purchased option is used for this booking.</dd>
+
+  <dt>bool `is_wait_list_unpaid`</dt>
+  <dd>`true` if the client is placed on a wait list without paying.</dd>
+
+  <dt>int `i_duration`</dt>
+  <dd>Asset booking duration in minutes. Used only for asset bookings.</dd>
+
+  <dt>string `k_login_prize`</dt>
+  <dd>Login prize key used to pay for the booking. Empty if no prize is used.</dd>
+
+  <dt>string `k_login_promotion`</dt>
+  <dd>Key of an already-purchased promotion used for this booking. Empty if not applicable.</dd>
+
+  <dt>string `k_resource`</dt>
+  <dd>Asset key. Used only for asset bookings.</dd>
+
+  <dt>string `k_reward_prize`</dt>
+  <dd>Reward prize key used to redeem a free item. Empty if not applicable.</dd>
+
+  <dt>string `k_service`</dt>
+  <dd>Service key. Used only for appointment bookings.</dd>
+
+  <dt>string `k_session_pass`</dt>
+  <dd>Drop-in key. Used when booking via a drop-in pass.</dd>
+
+  <dt>string `m_tip_appointment`</dt>
+  <dd>Tip amount for the appointment.</dd>
+
+  <dt>string `s_signature`</dt>
+  <dd>Client signature for a contract. Required when the purchase option has a contract.</dd>
+</dl>
   public $a_book_data = [];
 
   /**
    * A list of payment sources to pay with.
    *
    * Each element has next keys:
-   * <dl>
-   *   <dt>array [`a_pay_card`]</dt>
-   *   <dd>
-   *     The payment card information:
-   *     <dl>
-   *       <dt>array `a_pay_address`</dt>
-   *       <dd>
-   *         The payment address:
-   *         <dl>
-   *           <dt>bool `is_new`</dt>
-   *           <dd>
-   *             Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
-   *           </dd>
-   *
-   *           <dt>string [`k_geo_country`]</dt>
-   *           <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
-   *
-   *           <dt>string [`k_geo_region`]</dt>
-   *           <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
-   *
-   *           <dt>string [`k_pay_address`]</dt>
-   *           <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
-   *
-   *           <dt>string [`s_city`]</dt>
-   *           <dd>The city used for the payment address. Specify this to add a new address.</dd>
-   *
-   *           <dt>string [`s_name`]</dt>
-   *           <dd>The card name. Specify this to add a new address.</dd>
-   *
-   *           <dt>string [`s_phone`]</dt>
-   *           <dd>The payment phone. Specify this to add a new address.</dd>
-   *
-   *           <dt>string [`s_postal`]</dt>
-   *           <dd>The postal code for the payment address. Specify this to add a new address.</dd>
-   *
-   *           <dt>string [`s_street1`]</dt>
-   *           <dd>The payment address. Specify this to add a new address.</dd>
-   *
-   *           <dt>string [`s_street2`]</dt>
-   *           <dd>The optional payment address. Specify this to add a new address.</dd>
-   *         </dl>
-   *       </dd>
-   *
-   *       <dt>int [`i_csc`]</dt>
-   *       <dd>
-   *         The credit card CSC. Specify this to add a new card.
-   *       </dd>
-   *
-   *       <dt>int [`i_month`]</dt>
-   *       <dd>
-   *         The credit card expiration month. Specify this to add a new card.
-   *       </dd>
-   *
-   *       <dt>int [`i_year`]</dt>
-   *       <dd>
-   *         The credit card expiration year. Specify this to add a new card.
-   *       </dd>
-   *
-   *       <dt>bool `is_new`</dt>
-   *       <dd>
-   *         Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
-   *       </dd>
-   *
-   *       <dt>string [`k_pay_bank`]</dt>
-   *       <dd>
-   *         The key of the credit card. Specify this to use saved card.
-   *       </dd>
-   *
-   *       <dt>string [`s_comment`]</dt>
-   *       <dd>
-   *         Optional comment(s). Specify this to add a new card.
-   *       </dd>
-   *
-   *       <dt>string [`s_number`]</dt>
-   *       <dd>
-   *         The card number. Specify this to add a new card.
-   *       </dd>
-   *     </dl>
-   *   </dd>
-   *
-   *   <dt>string `f_amount`</dt>
-   *   <dd>
-   *     The amount of money to withdraw with this payment source.
-   *   </dd>
-   *
-   *   <dt>bool [`is_hide`]</dt>
-   *   <dt>bool [`is_save`=true]</dt>
-   *   <dd>
-   *     Whether payment method should be saved to user's account.
-   *   </dd>
-   *   <dd>
-   *     Determines whether this payment method is hidden.
-   *   </dd>
-   *
-   *   <dt>bool [`is_success`=<tt>false</tt>]</dt>
-   *   <dd>
-   *     Identifies whether this source was successfully charged.
-   *   </dd>
-   *
-   *   <dt>string [`m_surcharge`]</dt>
-   *   <dd>
-   *     The client-side calculated surcharge.
-   *   </dd>
-   *
-   *   <dt>string [`s_index`]</dt>
-   *   <dd>
-   *     The index of this form (optional).
-   *   </dd>
-   *
-   *   <dt>string `sid_pay_method`</dt>
-   *   <dd>
-   *     The payment method ID.
-   *   </dd>
-   * </dl>
    *
    * @post post
    * @var array[]
    */
+<dl>
+  <dt>array `a_pay_card`</dt>
+  <dd>
+    The payment card information:
+<dl>
+  <dt>array `a_pay_address`</dt>
+  <dd>
+    The payment address:
+    <dl>
+      <dt>bool `is_new`</dt>
+      <dd>
+        Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
+      </dd>
+
+      <dt>string [`k_geo_country`]</dt>
+      <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
+
+      <dt>string [`k_geo_region`]</dt>
+      <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
+
+      <dt>string [`k_pay_address`]</dt>
+      <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
+
+      <dt>string [`s_city`]</dt>
+      <dd>The city used for the payment address. Specify this to add a new address.</dd>
+
+      <dt>string [`s_name`]</dt>
+      <dd>The card name. Specify this to add a new address.</dd>
+
+      <dt>string [`s_phone`]</dt>
+      <dd>The payment phone. Specify this to add a new address.</dd>
+
+      <dt>string [`s_postal`]</dt>
+      <dd>The postal code for the payment address. Specify this to add a new address.</dd>
+
+      <dt>string [`s_street1`]</dt>
+      <dd>The payment address. Specify this to add a new address.</dd>
+
+      <dt>string [`s_street2`]</dt>
+      <dd>The optional payment address. Specify this to add a new address.</dd>
+    </dl>
+  </dd>
+
+  <dt>int [`i_csc`]</dt>
+  <dd>
+    The credit card CSC. Specify this to add a new card.
+  </dd>
+
+  <dt>int [`i_month`]</dt>
+  <dd>
+    The credit card expiration month. Specify this to add a new card.
+  </dd>
+
+  <dt>int [`i_year`]</dt>
+  <dd>
+    The credit card expiration year. Specify this to add a new card.
+  </dd>
+
+  <dt>bool `is_new`</dt>
+  <dd>
+    Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
+  </dd>
+
+  <dt>string [`k_pay_bank`]</dt>
+  <dd>
+    The key of the credit card. Specify this to use saved card.
+  </dd>
+
+  <dt>string [`s_comment`]</dt>
+  <dd>
+    Optional comment(s). Specify this to add a new card.
+  </dd>
+
+  <dt>string [`s_number`]</dt>
+  <dd>
+    The card number. Specify this to add a new card.
+  </dd>
+</dl> <dl>
+      <dt>array `a_pay_address`</dt>
+      <dd>
+        The payment address:
+<dl>
+  <dt>bool `is_new`</dt>
+  <dd>
+    Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
+  </dd>
+
+  <dt>string [`k_geo_country`]</dt>
+  <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
+
+  <dt>string [`k_geo_region`]</dt>
+  <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
+
+  <dt>string [`k_pay_address`]</dt>
+  <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
+
+  <dt>string [`s_city`]</dt>
+  <dd>The city used for the payment address. Specify this to add a new address.</dd>
+
+  <dt>string [`s_name`]</dt>
+  <dd>The card name. Specify this to add a new address.</dd>
+
+  <dt>string [`s_phone`]</dt>
+  <dd>The payment phone. Specify this to add a new address.</dd>
+
+  <dt>string [`s_postal`]</dt>
+  <dd>The postal code for the payment address. Specify this to add a new address.</dd>
+
+  <dt>string [`s_street1`]</dt>
+  <dd>The payment address. Specify this to add a new address.</dd>
+
+  <dt>string [`s_street2`]</dt>
+  <dd>The optional payment address. Specify this to add a new address.</dd>
+</dl> <dl>
+          <dt>bool `is_new`</dt>
+          <dd>
+            Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
+          </dd>
+
+          <dt>string `k_geo_country`</dt>
+          <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
+
+          <dt>string `k_geo_region`</dt>
+          <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
+
+          <dt>string `k_pay_address`</dt>
+          <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
+
+          <dt>string `s_city`</dt>
+          <dd>The city used for the payment address. Specify this to add a new address.</dd>
+
+          <dt>string `s_name`</dt>
+          <dd>The card name. Specify this to add a new address.</dd>
+
+          <dt>string `s_phone`</dt>
+          <dd>The payment phone. Specify this to add a new address.</dd>
+
+          <dt>string `s_postal`</dt>
+          <dd>The postal code for the payment address. Specify this to add a new address.</dd>
+
+          <dt>string `s_street1`</dt>
+          <dd>The payment address. Specify this to add a new address.</dd>
+
+          <dt>string `s_street2`</dt>
+          <dd>The optional payment address. Specify this to add a new address.</dd>
+        </dl>
+      </dd>
+
+      <dt>int `i_csc`</dt>
+      <dd>The credit card CSC. Specify this to add a new card.</dd>
+
+      <dt>int `i_month`</dt>
+      <dd>The credit card expiration month. Specify this to add a new card.</dd>
+
+      <dt>int `i_year`</dt>
+      <dd>The credit card expiration year. Specify this to add a new card.</dd>
+
+      <dt>bool `is_new`</dt>
+      <dd>Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.</dd>
+
+      <dt>string `k_pay_bank`</dt>
+      <dd>The key of the credit card. Specify this to use saved card.</dd>
+
+      <dt>string `s_comment`</dt>
+      <dd>Optional comment(s). Specify this to add a new card.</dd>
+
+      <dt>string `s_number`</dt>
+      <dd>The card number. Specify this to add a new card.</dd>
+    </dl>
+  </dd>
+
+  <dt>string `f_amount`</dt>
+  <dd>The amount of money to withdraw with this payment source.</dd>
+
+  <dt>bool `is_hide`</dt>
+  <dd>Whether payment method should be saved to user's account.</dd>
+
+  <dt>bool `is_save=true`</dt>
+  <dd>Determines whether this payment method is hidden.</dd>
+
+  <dt>bool `is_success=false`</dt>
+  <dd>Identifies whether this source was successfully charged.</dd>
+
+  <dt>string `m_surcharge`</dt>
+  <dd>The client-side calculated surcharge.</dd>
+
+  <dt>string `s_index`</dt>
+  <dd>The index of this form (optional).</dd>
+
+  <dt>string `sid_pay_method`</dt>
+  <dd>The payment method ID.</dd>
+</dl>
   public $a_pay_form = [];
 
   /**
    * Information about selected Purchase Options.
-   * <dl>
-   *   <dt>string <var>i_limit</var></dt>
-   *   <dd>The limit of total visits.</dd>
-   *
-   *   <dt>int <var>i_remain</var></dt>
-   *   <dd>The number of remaining visits.</dd>
-   *
-   *   <dt>string <var>s_expire</var></dt>
-   *   <dd>The expiration date.</dd>
-   *
-   *   <dt>string <var>s_title</var></dt>
-   *   <dd>The title of the Purchase Option.</dd>
-   * </dl>
    *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>string `i_limit`</dt>
+  <dd>The limit of total visits.</dd>
+
+  <dt>int `i_remain`</dt>
+  <dd>The number of remaining visits.</dd>
+
+  <dt>string `s_expire`</dt>
+  <dd>The expiration date.</dd>
+
+  <dt>string `s_title`</dt>
+  <dd>The title of the Purchase Option.</dd>
+</dl>
   public $a_promotion_data;
 
   /**
@@ -179,41 +303,46 @@ class PaymentPostModel extends WlModelAbstract
    *
    * Values are an array with the following structure:
    *
-   * <dl>
-   *   <dt>array <var>a_tax</var></dt>
-   *   <dd>
-   *     Contains information about taxes in the following format. A list of taxes to apply.
-   *     The array keys are `k_tax` keys. Each element contains the following fields: <dl>
-   *       <dt>float <var>m_tax</var></dt>
-   *       <dd>The tax rate.</dd>
-   *
-   *       <dt>string <var>text_title</var></dt>
-   *       <dd>The name of the tax.</dd>
-   *     </dl>
-   *   </dd>
-   *
-   *   <dt>string <var>id_purchase_item</var></dt>
-   *   <dd>The purchase item ID. A constant of {@link WlPurchaseItemSid}.</dd>
-   *
-   *   <dt>string <var>k_id</var></dt>
-   *   <dd>The value of the discount used for the purchase.</dd>
-   *
-   *   <dt>string <var>m_discount</var></dt>
-   *   <dd>The value of the discount used for the purchase.</dd>
-   *
-   *   <dt>string <var>m_discount_login</var></dt>
-   *   <dd>The discount amount for the client type of one purchase item.</dd>
-   *
-   *   <dt>string <var>m_pay</var></dt>
-   *   <dd>The payment for the Purchase Option or single visit without taxes.</dd>
-   *
-   *   <dt>string <var>m_price</var></dt>
-   *   <dd>The price of the Purchase Option or single visit.</dd>
-   * </dl>
-   *
    * @get result
    * @var array[]
    */
+<dl>
+  <dt>array `a_tax`</dt>
+  <dd>
+    Contains information about taxes in the following format. A list of taxes to apply.
+The array keys are `k_tax` keys. Each element contains the following fields: <dl>
+  <dt>float <var>m_tax</var></dt>
+  <dd>The tax rate.</dd>
+
+  <dt>string <var>text_title</var></dt>
+  <dd>The name of the tax.</dd>
+</dl> <dl>
+      <dt>float `m_tax`</dt>
+      <dd>The tax rate.</dd>
+
+      <dt>string `text_title`</dt>
+      <dd>The name of the tax.</dd>
+    </dl>
+  </dd>
+
+  <dt>string `id_purchase_item`</dt>
+  <dd>The purchase item ID. A constant of {@link WlPurchaseItemSid}.</dd>
+
+  <dt>string `k_id`</dt>
+  <dd>The value of the discount used for the purchase.</dd>
+
+  <dt>string `m_discount`</dt>
+  <dd>The value of the discount used for the purchase.</dd>
+
+  <dt>string `m_discount_login`</dt>
+  <dd>The discount amount for the client type of one purchase item.</dd>
+
+  <dt>string `m_pay`</dt>
+  <dd>The payment for the Purchase Option or single visit without taxes.</dd>
+
+  <dt>string `m_price`</dt>
+  <dd>The price of the Purchase Option or single visit.</dd>
+</dl>
   public $a_purchase;
 
   /**
