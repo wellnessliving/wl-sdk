@@ -41,6 +41,16 @@ class ViewModel extends WlModelAbstract
   /**
    * Information about the location logo used in WellnessLiving:
    *
+   * <dl>
+   *   <dt>int `i_height`</dt>
+   *   <dd>The image height.</dd>
+   * 
+   *   <dt>int `i_width`</dt>
+   *   <dd>The image width.</dd>
+   * 
+   *   <dt>string `s_url`</dt>
+   *   <dd>The URL to the image.</dd>
+   * </dl>
    * @get result
    * @var array
    */
@@ -50,6 +60,19 @@ class ViewModel extends WlModelAbstract
    * A list of the location images.
    * Every element has the following keys:
    *
+   * <dl>
+   *   <dt>int `i_height`</dt>
+   *   <dd>Height.</dd>
+   * 
+   *   <dt>int `i_width`</dt>
+   *   <dd>Width.</dd>
+   * 
+   *   <dt>string `url_preview`</dt>
+   *   <dd>URL to image preview.</dd>
+   * 
+   *   <dt>string `url_slide`</dt>
+   *   <dd>URL to full image.</dd>
+   * </dl>
    * @get result
    * @var array
    */
@@ -59,6 +82,13 @@ class ViewModel extends WlModelAbstract
    * The hours of operation for the location.
    * Fields are numbers representing specific days (1 is Monday, 7 is Sunday). Values are objects with the next fields:
    *
+   * <dl>
+   *   <dt>string `s_end`</dt>
+   *   <dd>The time of day end in MySQL format.</dd>
+   * 
+   *   <dt>string `s_start`</dt>
+   *   <dd>The time of day start in MySQL format.</dd>
+   * </dl>
    * @get result
    * @var array
    */

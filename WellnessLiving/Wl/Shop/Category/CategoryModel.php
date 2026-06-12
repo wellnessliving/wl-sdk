@@ -13,6 +13,22 @@ class CategoryModel extends WlModelAbstract
    * An array containing information about all store categories.
    * Each array element is an array containing the following fields:
    *
+   * <dl>
+   *   <dt>bool `is_default`</dt>
+   *   <dd>Whether category is selected as default.</dd>
+   * 
+   *   <dt>int `i_order`</dt>
+   *   <dd>The display order for the category.</dd>
+   * 
+   *   <dt>string `k_shop_category`</dt>
+   *   <dd>The shop category key. 
+   * 
+   *   <dt>string `text_description`</dt>
+   *   <dd>The category description.</dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>The category name.</dd>
+   * </dl>
    * @get result
    * @var array
    */

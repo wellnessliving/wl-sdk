@@ -13,6 +13,43 @@ class ListModel extends WlModelAbstract
   /**
    * A list of microservices. One element contains:
    *
+   * <dl>
+   *   <dt>bool `is_remove`</dt>
+   *   <dd>Whether the microservice has been deleted. `true` is the microservice is removed, `false` otherwise.</dd>
+   * 
+   *   <dt>string `json_path`</dt>
+   *   <dd>
+   *     A list of repositories and paths of this microservice.
+   *
+   *   </dd>
+   * 
+   *   <dt>string `k_project`</dt>
+   *   <dd>Project key.</dd>
+   * 
+   *   <dt>string `s_file`</dt>
+   *   <dd>File name.</dd>
+   * 
+   *   <dt>string `s_group`</dt>
+   *   <dd>
+   *     The group to which the microservice belongs.
+   *   See details in the <var>s_group</var>
+   *   </dd>
+   * 
+   *   <dt>string `s_variable`</dt>
+   *   <dd>
+   *     Microservice-specific variables. A set of pairs key=value, separated by newlines.
+   *
+   *   </dd>
+   * 
+   *   <dt>string `text_project`</dt>
+   *   <dd>Title of the project.</dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>Title of the microservice.</dd>
+   * 
+   *   <dt>string `url_microservice_promoting`</dt>
+   *   <dd>URL of the promoting page for this microservice.</dd>
+   * </dl>
    * @get result
    * @var string[][]
    */

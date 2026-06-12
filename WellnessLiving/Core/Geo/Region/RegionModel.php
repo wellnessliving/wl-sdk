@@ -14,6 +14,37 @@ class RegionModel extends WlModelAbstract
   /**
    * A list of regions grouped by their country.
    *
+   * <dl>
+   *   <dt>string[] `a_region`</dt>
+   *   <dd>
+   *     A list of regions in the country. Every element has the next keys:
+   * <dl>
+   *   <dt>string <var>k_geo</var></dt>
+   *   <dd>The region key.</dd>
+   *   <dt>string <var>s_title</var></dt>
+   *   <dd>The name of the region.</dd>
+   * </dl>
+   *     <dl>
+   *       <dt>string `k_geo`</dt>
+   *       <dd>The region key.</dd>
+   * 
+   *       <dt>string `s_title`</dt>
+   *       <dd>The name of the region.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>int `id_locale`</dt>
+   *   <dd>The locale ID of the country.</dd>
+   * 
+   *   <dt>string `k_geo_country`</dt>
+   *   <dd>The country key.</dd>
+   * 
+   *   <dt>string `s_abbr`</dt>
+   *   <dd>The country abbreviation.</dd>
+   * 
+   *   <dt>string `s_title`</dt>
+   *   <dd>The name of the country.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

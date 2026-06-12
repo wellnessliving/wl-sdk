@@ -22,6 +22,19 @@ class RankModel extends WlModelAbstract
   /**
    * A list of belts, keys, and information. Each element is an array with the following information:
    *
+   * <dl>
+   *   <dt>string `k_rank`</dt>
+   *   <dd>A belt key. 
+   * 
+   *   <dt>string `k_rank_category`</dt>
+   *   <dd>A belt category key. 
+   * 
+   *   <dt>string `text_rank`</dt>
+   *   <dd>Belt title.</dd>
+   * 
+   *   <dt>string `text_rank_category`</dt>
+   *   <dd>Belt category title.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

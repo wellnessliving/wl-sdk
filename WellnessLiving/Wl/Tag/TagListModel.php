@@ -14,6 +14,16 @@ class TagListModel extends WlModelAbstract
    *
    * Each element has the next structure:
    *
+   * <dl>
+   *   <dt>int `i_sort`</dt>
+   *   <dd>The sort order of the tag.</dd>
+   * 
+   *   <dt>string `k_tag`</dt>
+   *   <dd>The tag key. 
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>The tag title.</dd>
+   * </dl>
    * @get result
    * @post post,result
    * @var array[]

@@ -4,6 +4,8 @@ namespace WellnessLiving\Wl\Appointment\Book\Asset\Service;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Resource\Image\ImageIconSid;
+use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
 
 /**
  * Retrieves assets that are required for a service booking.
@@ -33,6 +35,123 @@ class ServiceModel extends WlModelAbstract
    * Keys refer the asset category key(s).
    * Values refer to sub-arrays with next key(s).
    *
+   * <dl>
+   *   <dt>array[] `a_resource`</dt>
+   *   <dd>
+   *     A list of resources. Every element has the following keys:
+   * <dl>
+   *   <dt>array <var>a_image</var></dt>
+   *   <dd>The asset's image data. 
+   * 
+   *   <dt>int <var>i_quantity</var></dt>
+   *   <dd>Asset quantity.</dd>
+   * 
+   *   <dt>bool <var>is_available</var></dt>
+   *   <dd>Whether this asset has at least one free unit.</dd>
+   * 
+   *   <dt>string <var>k_resource</var></dt>
+   *   <dd>The asset key. 
+   * 
+   *   <dt>string <var>s_resource</var></dt>
+   *   <dd>The asset title.</dd>
+   * </dl>
+   *     <dl>
+   *       <dt>array `a_image`</dt>
+   *       <dd>
+   *         The asset's image data. *         <dl>
+   *           <dt>array `a_image`</dt>
+   *           <dd>
+   *             Image data. *             <dl>
+   *               <dt>int `i_height`</dt>
+   *               <dd>Actual height of thumbnail image.</dd>
+   * 
+   *               <dt>int `i_height_src`</dt>
+   *               <dd>Height of original image.</dd>
+   * 
+   *               <dt>int `i_rotate`</dt>
+   *               <dd>Angle on which image was rotated compared to the original.</dd>
+   * 
+   *               <dt>int `i_width`</dt>
+   *               <dd>Actual width of thumbnail image.</dd>
+   * 
+   *               <dt>int `i_width_src`</dt>
+   *               <dd>Width of original image.</dd>
+   * 
+   *               <dt>bool `is-resize`</dt>
+   *               <dd>
+   *                 Whether thumbnail is a resized variant of original image. If `false`, `url-thumbnail`
+   * equals `url-view`.
+   *               </dd>
+   * 
+   *               <dt>string `url-view`</dt>
+   *               <dd>URL to original image in file storage.</dd>
+   * 
+   *               <dt>string `url-thumbnail`</dt>
+   *               <dd>
+   *                 URL to resized and rotated image in file storage. If the original is larger than
+   * the specified dimensions, a thumbnail is created and its link is returned. Otherwise,
+   * the link to the original image is returned here.
+   *               </dd>
+   *             </dl>
+   *           </dd>
+   * 
+   *           <dt>int `i_angle`</dt>
+   *           <dd>Angle of shape rotation. Is set only if <var>sid_image</var> equals to <tt>shape</tt>.</dd>
+   * 
+   *           <dt>int `i_height`</dt>
+   *           <dd>Height of image.</dd>
+   * 
+   *           <dt>int `i_width`</dt>
+   *           <dd>Width of image.</dd>
+   * 
+   *           <dt>bool `is_empty`</dt>
+   *           <dd>Whether is empty.</dd>
+   * 
+   *           <dt>int `k_resource`</dt>
+   *           <dd>Resource key.</dd>
+   * 
+   *           <dt>string `sid_image`</dt>
+   *           <dd>Image kind.</dd>
+   * 
+   *           <dt>string `sid_image_icon`</dt>
+   *           <dd>
+   *             Icon name.String representation of one of {@link ImageIconSid} constants.
+   * Is set only if <var>sid_image</var> equals to <tt>image</tt>.
+   *           </dd>
+   * 
+   *           <dt>string `sid_image_shape`</dt>
+   *           <dd>
+   *             Shape name. String representation of one of {@link ImageShapeSid} constants.
+   * Is set only if <var>sid_image</var> equals to <tt>shape</tt>.
+   *           </dd>
+   * 
+   *           <dt>string `url`</dt>
+   *           <dd>Path to image. 
+   *         </dl>
+   *       </dd>
+   * 
+   *       <dt>int `i_quantity`</dt>
+   *       <dd>Asset quantity.</dd>
+   * 
+   *       <dt>bool `is_available`</dt>
+   *       <dd>Whether this asset has at least one free unit.</dd>
+   * 
+   *       <dt>string `k_resource`</dt>
+   *       <dd>The asset key. 
+   * 
+   *       <dt>string `s_resource`</dt>
+   *       <dd>The asset title.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>string|null `k_resource_layout`</dt>
+   *   <dd>
+   *     The asset's layout key.  will be `null` if the asset category has no layout.
+   *   </dd>
+   * 
+   *   <dt>string `s_resource_type`</dt>
+   *   <dd>The title of asset category.</dd>
+   * </dl>
    * @get result
    * @var array
    */

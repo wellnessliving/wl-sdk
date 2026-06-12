@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Classes\Promotion;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlProgramSid;
 
 /**
  * Returns a list of promotions that can pay for a business's classes or events.
@@ -12,6 +13,19 @@ class ClassPromotionModel extends WlModelAbstract
   /**
    * Promotion data with the following structure:.
    *
+   * <dl>
+   *   <dt>string `k_promotion`</dt>
+   *   <dd>The promotion key. 
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>The title of the promotion.</dd>
+   * 
+   *   <dt>int `id_program`</dt>
+   *   <dd>One of the {@link WlProgramSid} constants.</dd>
+   * 
+   *   <dt>bool `is_select`</dt>
+   *   <dd><tt>true</tt> if the promotion is related to the class or event, <tt>false</tt> otherwise.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

@@ -16,6 +16,13 @@ class LifetimeTotalsModel extends WlModelAbstract
    *
    * Each element has followed structure: 
    *
+   * <dl>
+   *   <dt>string `text_title`</dt>
+   *   <dd>Total title.</dd>
+   * 
+   *   <dt>int `s_value`</dt>
+   *   <dd>Total value.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

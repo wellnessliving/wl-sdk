@@ -3,6 +3,8 @@
 namespace WellnessLiving\Wl\Promotion;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlProgramSid;
+use WellnessLiving\Wl\WlProgramTypeSid;
 
 /**
  * Gets a promotion list of the specified business.
@@ -12,6 +14,22 @@ class PromotionListModel extends WlModelAbstract
   /**
    * A list of promotions.
    *
+   * <dl>
+   *   <dt>int `id_program`</dt>
+   *   <dd>The promotion program. One of the {@link WlProgramSid} constants.</dd>
+   * 
+   *   <dt>int `id_program_type`</dt>
+   *   <dd>The type of the promotion program. One of the {@link WlProgramTypeSid} constants.</dd>
+   * 
+   *   <dt>bool `is_active`</dt>
+   *   <dd>Whether the promotion is active.</dd>
+   * 
+   *   <dt>string `k_promotion`</dt>
+   *   <dd>The key of the promotion. 
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>The title of the promotion.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

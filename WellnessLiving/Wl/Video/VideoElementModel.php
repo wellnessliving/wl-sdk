@@ -32,6 +32,16 @@ class VideoElementModel extends WlModelAbstract
   /**
    * A list of staff members associated with the video. Every item has the following structure:
    *
+   * <dl>
+   *   <dt>string `k_staff`</dt>
+   *   <dd><b>Deprecated</b> The staff member key. 
+   * 
+   *   <dt>string `text_name`</dt>
+   *   <dd>The staff member's full name.</dd>
+   * 
+   *   <dt>string `uid_staff`</dt>
+   *   <dd>The staff user ID. 
+   * </dl>
    * @get result
    * @var array
    */

@@ -12,6 +12,13 @@ class LevelListModel extends WlModelAbstract
   /**
    * A list of video levels with the following structure: 
    *
+   * <dl>
+   *   <dt>string `k_video_level`</dt>
+   *   <dd>The video level key.</dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>The video level title.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

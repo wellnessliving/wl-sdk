@@ -66,6 +66,13 @@ class ScheduleAvailableDateModel extends WlModelAbstract
    *
    * Empty to search for all time.
    *
+   * <dl>
+   *   <dt>string `tl_end`</dt>
+   *   <dd>End time.</dd>
+   * 
+   *   <dt>string `tl_start`</dt>
+   *   <dd>Start time.</dd>
+   * </dl>
    * @get get
    * @var array
    */

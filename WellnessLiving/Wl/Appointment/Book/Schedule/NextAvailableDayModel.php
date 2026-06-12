@@ -180,6 +180,39 @@ class NextAvailableDayModel extends WlModelAbstract
    * For back-to-back booking ({@link DayTimeModel::$is_back_to_back} == `true`): array of appointments for back-to-back booking.
    * Converted to JSON string to be usable as model key. Each item is an array with next structure:
    *
+   * <dl>
+   *   <dt>array `a_addon`</dt>
+   *   <dd>Array of appointment addons.</dd>
+   * 
+   *   <dt>int `i_duration`</dt>
+   *   <dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd>
+   * 
+   *   <dt>int `id_gender_staff`</dt>
+   *   <dd>Staff gender. One of {@link AGenderSid} constants. Zero mean no limitations on staff gender.</dd>
+   * 
+   *   <dt>string `k_service`</dt>
+   *   <dd>Service key. 
+   * 
+   *   <dt>string `k_staff`</dt>
+   *   <dd>@deprecated Staff key. Zero means any available staff. 
+   * 
+   *   <dt>string `uid_staff`</dt>
+   *   <dd>Staff user key. Zero means any available staff. 
+   * </dl>
+   * 
+   * <dl>
+   *   <dt>string `dtl_date`</dt>
+   *   <dd>Local date and time of appointment start in MySQL format.</dd>
+   * 
+   *   <dt>int `i_duration`</dt>
+   *   <dd>Duration of the appointment in minutes.</dd>
+   * 
+   *   <dt>string `k_service`</dt>
+   *   <dd>Service key. 
+   * 
+   *   <dt>string `uid_staff`</dt>
+   *   <dd>Staff user key. Zero means any available staff. 
+   * </dl>
    * @get get
    * @var string
    */

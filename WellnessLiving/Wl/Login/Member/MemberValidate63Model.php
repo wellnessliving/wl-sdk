@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Login\Member;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Field\WlFieldGeneralSid;
 
 /**
  * Checking whether there is something that prevents the user from using the business.
@@ -12,6 +13,16 @@ class MemberValidate63Model extends WlModelAbstract
   /**
    * List of fields if the user has empty profile fields, which are required for booking.
    *
+   * <dl>
+   *   <dt>int `id_field_general`</dt>
+   *   <dd>The general field ID. One of {@link WlFieldGeneralSid} constants.</dd>
+   * 
+   *   <dt>string `k_field`</dt>
+   *   <dd>Profile field key. 
+   * 
+   *   <dt>string `text_field_title`</dt>
+   *   <dd>Human-readable field title describing what value is missing.</dd>
+   * </dl>
    * @get result
    * @var string[]
    */
@@ -20,6 +31,16 @@ class MemberValidate63Model extends WlModelAbstract
   /**
    * List of fields if the user has empty profile fields, which are required for registration.
    *
+   * <dl>
+   *   <dt>int `id_field_general`</dt>
+   *   <dd>The general field ID. One of {@link WlFieldGeneralSid} constants.</dd>
+   * 
+   *   <dt>string `k_field`</dt>
+   *   <dd>Profile field key. 
+   * 
+   *   <dt>string `text_field_title`</dt>
+   *   <dd>Human-readable field title describing what value is missing.</dd>
+   * </dl>
    * @get result
    * @var string[]
    */
@@ -28,6 +49,16 @@ class MemberValidate63Model extends WlModelAbstract
   /**
    * List of profile fields that are required but empty for this user.
    *
+   * <dl>
+   *   <dt>int `id_field_general`</dt>
+   *   <dd>The general field ID. One of {@link WlFieldGeneralSid} constants.</dd>
+   * 
+   *   <dt>string `k_field`</dt>
+   *   <dd>Profile field key. 
+   * 
+   *   <dt>string `text_field_title`</dt>
+   *   <dd>Human-readable field title describing what value is missing.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

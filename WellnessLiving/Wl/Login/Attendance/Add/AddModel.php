@@ -17,6 +17,15 @@ class AddModel extends WlModelAbstract
    * Any of the client memberships that can be used to pay for the session.
    * Every element is an array with the following keys:
    *
+   * <dl>
+   *   <dt>string `k_login_promotion`</dt>
+   *   <dd>
+   *     The login promotion key, available to pay for the session.
+   * *   </dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>The title of the login promotion.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -26,6 +35,15 @@ class AddModel extends WlModelAbstract
    * Any user's session passes that can be used to pay for the session.
    * Every element is an array with the following keys:
    *
+   * <dl>
+   *   <dt>string `k_session_pass`</dt>
+   *   <dd>
+   *     The session pass key, available to pay for the session.
+   * *   </dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>The title of the session pass.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

@@ -15,6 +15,24 @@ class ClassViewModel extends WlModelAbstract
   /**
    * Asset list data.
    *
+   * <dl>
+   *   <dt>int `i_count`</dt>
+   *   <dd>Number of sessions.</dd>
+   * 
+   *   <dt>int `i_index`</dt>
+   *   <dd>Asset index.</dd>
+   * 
+   *   <dt>string `k_resource`</dt>
+   *   <dd>Resource key. 
+   * 
+   *   <dt>string `text_index`</dt>
+   *   <dd>Asset index with '#' prefix.</dd>
+   * 
+   *   <dt>string `text_name`</dt>
+   *   <dd>
+   *     Asset title that consists of the asset title itself concatenated with its index (in case of multiple assets) by '#'.
+   *   </dd>
+   * </dl>
    * @get result
    * @post result
    * @var array[]|null
@@ -26,6 +44,149 @@ class ClassViewModel extends WlModelAbstract
    *
    * This will be `null` if data isn't loaded yet.
    *
+   * <dl>
+   *   <dt>string[] `a_class_tab`</dt>
+   *   <dd>
+   *     Keys are class key. *   Values are class tab key. *   </dd>
+   * 
+   *   <dt>array `a_image`</dt>
+   *   <dd>
+   *     Class image data:
+   * <dl>
+   *   <dt>int <var>i_height</var></dt>
+   *   <dd>Image height.</dd>
+   * 
+   *   <dt>int <var>i_width</var></dt>
+   *   <dd>Image width.</dd>
+   * 
+   *   <dt>bool <var>is_empty</var></dt>
+   *   <dd>Whether current image is empty.</dd>
+   * 
+   *   <dt>string <var>s_url</var></dt>
+   *   <dd>Url link to image.</dd>
+   * </dl>
+   *     <dl>
+   *       <dt>int `i_height`</dt>
+   *       <dd>Image height.</dd>
+   * 
+   *       <dt>int `i_width`</dt>
+   *       <dd>Image width.</dd>
+   * 
+   *       <dt>bool `is_empty`</dt>
+   *       <dd>Whether current image is empty.</dd>
+   * 
+   *       <dt>string `s_url`</dt>
+   *       <dd>Url link to image.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>array[] `a_search_tag`</dt>
+   *   <dd>
+   *     List of search tags.
+   * <dl>
+   *   <dt>string <var>k_search_tag</var></dt>
+   *   <dd>Search tag key. 
+   * 
+   *   <dt>string <var>text_title</var></dt>
+   *   <dd>Search tag name.</dd>
+   * </dl>
+   *     <dl>
+   *       <dt>string `k_search_tag`</dt>
+   *       <dd>Search tag key. 
+   * 
+   *       <dt>string `text_title`</dt>
+   *       <dd>Search tag name.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>int[] `a_tag`</dt>
+   *   <dd>List of tags.</dd>
+   * 
+   *   <dt>bool `can_book`</dt>
+   *   <dd>Whether current client can book class.</dd>
+   * 
+   *   <dt>string `dt_date_global`</dt>
+   *   <dd>Session date/time in UTC.</dd>
+   * 
+   *   <dt>string `dt_date_local`</dt>
+   *   <dd>Start date in local time.</dd>
+   * 
+   *   <dt>string `html_deny_reason`</dt>
+   *   <dd>Reason why client can not book class. Not empty only if <var>can_book</var> is `false`.</dd>
+   * 
+   *   <dt>string `html_description`</dt>
+   *   <dd>Class description.</dd>
+   * 
+   *   <dt>string `html_special`</dt>
+   *   <dd>Special instructions.</dd>
+   * 
+   *   <dt>string `text_timezone`</dt>
+   *   <dd>Timezone title.</dd>
+   * 
+   *   <dt>int|null `i_age_from`</dt>
+   *   <dd>Age from that class is allowed. <tt>null</tt> if information is not available.</dd>
+   * 
+   *   <dt>int|null `i_age_to`</dt>
+   *   <dd>Age to that class is allowed. <tt>null</tt> if information is not available.</dd>
+   * 
+   *   <dt>int `i_book`</dt>
+   *   <dd>A total number of booked visits in the class, including all lists: active and waitlist.</dd>
+   * 
+   *   <dt>int `i_book_active`</dt>
+   *   <dd>A total number of booked active visits in the class.</dd>
+   * 
+   *   <dt>int `i_capacity`</dt>
+   *   <dd>Class capacity.</dd>
+   * 
+   *   <dt>int `i_duration`</dt>
+   *   <dd>Class duration. In number of minutes.</dd>
+   * 
+   *   <dt>int|null `i_wait_limit`</dt>
+   *   <dd>Limit of wait list. <tt>null</tt> if limit is not set.</dd>
+   * 
+   *   <dt>int `id_deny_reason`</dt>
+   *   <dd>ID of deny reason.</dd>
+   * 
+   *   <dt>bool `is_book`</dt>
+   *   <dd>Whether current class was booked by current client.</dd>
+   * 
+   *   <dt>bool `is_book_for_guest`</dt>
+   *   <dd>
+   *     Allow clients to book on behalf of a guest.
+   * `true` if clients can book on behalf of a guest.
+   * `false` otherwise.
+   *   </dd>
+   * 
+   *   <dt>bool `is_cancel`</dt>
+   *   <dd>`true` if class period was cancelled; `false` otherwise.</dd>
+   * 
+   *   <dt>bool `is_event`</dt>
+   *   <dd>`true` if it is event; `false` if it is class.</dd>
+   * 
+   *   <dt>bool `is_promotion_only`</dt>
+   *   <dd>`true` if this class can be paid with promotion only; `false` otherwise.</dd>
+   * 
+   *   <dt>bool `is_virtual`</dt>
+   *   <dd>`true` if class is virtual, `false` otherwise.</dd>
+   * 
+   *   <dt>bool `is_wait_list`</dt>
+   *   <dd>`true` if user can take place in wait list only; `false` otherwise.</dd>
+   * 
+   *   <dt>bool `is_wait_list_enabled`</dt>
+   *   <dd>`true` if wait list is enabled for class; `false` otherwise.</dd>
+   * 
+   *   <dt>string `m_price`</dt>
+   *   <dd>Session price.</dd>
+   * 
+   *   <dt>string `s_duration`</dt>
+   *   <dd>Class duration. In human readable format.</dd>
+   * 
+   *   <dt>string `s_title`</dt>
+   *   <dd>Class name.</dd>
+   * 
+   *   <dt>string `text_room`</dt>
+   *   <dd>Class room.</dd>
+   * </dl>
    * @get result
    * @post result
    * @var array|null
@@ -37,6 +198,31 @@ class ClassViewModel extends WlModelAbstract
    *
    * This will be `null` if data isn't loaded yet.
    *
+   * <dl>
+   *   <dt>float `f_latitude`</dt>
+   *   <dd>Location latitude.</dd>
+   * 
+   *   <dt>float `f_longitude`</dt>
+   *   <dd>Location longitude.</dd>
+   * 
+   *   <dt>float `f_rate`</dt>
+   *   <dd>Location rating. From 1 to 5.</dd>
+   * 
+   *   <dt>string `k_location`</dt>
+   *   <dd>Location key. 
+   * 
+   *   <dt>string `s_address`</dt>
+   *   <dd>Location address.</dd>
+   * 
+   *   <dt>string `s_map`</dt>
+   *   <dd>Query to search location on "Google maps".</dd>
+   * 
+   *   <dt>string `s_phone`</dt>
+   *   <dd>Location phone.</dd>
+   * 
+   *   <dt>string `s_title`</dt>
+   *   <dd>Location name.</dd>
+   * </dl>
    * @get result
    * @post result
    * @var array|null
@@ -48,6 +234,13 @@ class ClassViewModel extends WlModelAbstract
    *
    * `null` if requesting a single session.
    *
+   * <dl>
+   *   <dt>string `dt_date`</dt>
+   *   <dd>The date/time of the session in UTC.</dd>
+   * 
+   *   <dt>string `k_class_period`</dt>
+   *   <dd>The session key. 
+   * </dl>
    * @get get
    * @post get
    * @var array[]|null
@@ -57,6 +250,279 @@ class ClassViewModel extends WlModelAbstract
   /**
    * A list of sessions with information, received in a multiple session mode.
    *
+   * <dl>
+   *   <dt>array `a_asset`</dt>
+   *   <dd>
+   *     Array of asset. *     <dl>
+   *       <dt>int `i_count`</dt>
+   *       <dd>Number of sessions.</dd>
+   * 
+   *       <dt>int `i_index`</dt>
+   *       <dd>Asset index.</dd>
+   * 
+   *       <dt>string `k_resource`</dt>
+   *       <dd>Resource key. 
+   * 
+   *       <dt>string `text_index`</dt>
+   *       <dd>Asset index with '#' prefix.</dd>
+   * 
+   *       <dt>string `text_name`</dt>
+   *       <dd>
+   *         Asset title that consists of the asset title itself concatenated with its index (in case of multiple assets) by '#'.
+   *       </dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>array `a_class`</dt>
+   *   <dd>
+   *     Class information. *     <dl>
+   *       <dt>string[] `a_class_tab`</dt>
+   *       <dd>
+   *         Keys are class key. *   Values are class tab key. *       </dd>
+   * 
+   *       <dt>array `a_image`</dt>
+   *       <dd>
+   *         Class image data:
+   * <dl>
+   *   <dt>int <var>i_height</var></dt>
+   *   <dd>Image height.</dd>
+   * 
+   *   <dt>int <var>i_width</var></dt>
+   *   <dd>Image width.</dd>
+   * 
+   *   <dt>bool <var>is_empty</var></dt>
+   *   <dd>Whether current image is empty.</dd>
+   * 
+   *   <dt>string <var>s_url</var></dt>
+   *   <dd>Url link to image.</dd>
+   * </dl>
+   *         <dl>
+   *           <dt>int `i_height`</dt>
+   *           <dd>Image height.</dd>
+   * 
+   *           <dt>int `i_width`</dt>
+   *           <dd>Image width.</dd>
+   * 
+   *           <dt>bool `is_empty`</dt>
+   *           <dd>Whether current image is empty.</dd>
+   * 
+   *           <dt>string `s_url`</dt>
+   *           <dd>Url link to image.</dd>
+   *         </dl>
+   *       </dd>
+   * 
+   *       <dt>array[] `a_search_tag`</dt>
+   *       <dd>
+   *         List of search tags.
+   * <dl>
+   *   <dt>string <var>k_search_tag</var></dt>
+   *   <dd>Search tag key. 
+   * 
+   *   <dt>string <var>text_title</var></dt>
+   *   <dd>Search tag name.</dd>
+   * </dl>
+   *         <dl>
+   *           <dt>string `k_search_tag`</dt>
+   *           <dd>Search tag key. 
+   * 
+   *           <dt>string `text_title`</dt>
+   *           <dd>Search tag name.</dd>
+   *         </dl>
+   *       </dd>
+   * 
+   *       <dt>int[] `a_tag`</dt>
+   *       <dd>List of tags.</dd>
+   * 
+   *       <dt>bool `can_book`</dt>
+   *       <dd>Whether current client can book class.</dd>
+   * 
+   *       <dt>string `dt_date_global`</dt>
+   *       <dd>Session date/time in UTC.</dd>
+   * 
+   *       <dt>string `dt_date_local`</dt>
+   *       <dd>Start date in local time.</dd>
+   * 
+   *       <dt>string `html_deny_reason`</dt>
+   *       <dd>Reason why client can not book class. Not empty only if <var>can_book</var> is `false`.</dd>
+   * 
+   *       <dt>string `html_description`</dt>
+   *       <dd>Class description.</dd>
+   * 
+   *       <dt>string `html_special`</dt>
+   *       <dd>Special instructions.</dd>
+   * 
+   *       <dt>string `text_timezone`</dt>
+   *       <dd>Timezone title.</dd>
+   * 
+   *       <dt>int|null `i_age_from`</dt>
+   *       <dd>Age from that class is allowed. <tt>null</tt> if information is not available.</dd>
+   * 
+   *       <dt>int|null `i_age_to`</dt>
+   *       <dd>Age to that class is allowed. <tt>null</tt> if information is not available.</dd>
+   * 
+   *       <dt>int `i_book`</dt>
+   *       <dd>A total number of booked visits in the class, including all lists: active and waitlist.</dd>
+   * 
+   *       <dt>int `i_book_active`</dt>
+   *       <dd>A total number of booked active visits in the class.</dd>
+   * 
+   *       <dt>int `i_capacity`</dt>
+   *       <dd>Class capacity.</dd>
+   * 
+   *       <dt>int `i_duration`</dt>
+   *       <dd>Class duration. In number of minutes.</dd>
+   * 
+   *       <dt>int|null `i_wait_limit`</dt>
+   *       <dd>Limit of wait list. <tt>null</tt> if limit is not set.</dd>
+   * 
+   *       <dt>int `id_deny_reason`</dt>
+   *       <dd>ID of deny reason.</dd>
+   * 
+   *       <dt>bool `is_book`</dt>
+   *       <dd>Whether current class was booked by current client.</dd>
+   * 
+   *       <dt>bool `is_book_for_guest`</dt>
+   *       <dd>
+   *         Allow clients to book on behalf of a guest.
+   * `true` if clients can book on behalf of a guest.
+   * `false` otherwise.
+   *       </dd>
+   * 
+   *       <dt>bool `is_cancel`</dt>
+   *       <dd>`true` if class period was cancelled; `false` otherwise.</dd>
+   * 
+   *       <dt>bool `is_event`</dt>
+   *       <dd>`true` if it is event; `false` if it is class.</dd>
+   * 
+   *       <dt>bool `is_promotion_only`</dt>
+   *       <dd>`true` if this class can be paid with promotion only; `false` otherwise.</dd>
+   * 
+   *       <dt>bool `is_virtual`</dt>
+   *       <dd>`true` if class is virtual, `false` otherwise.</dd>
+   * 
+   *       <dt>bool `is_wait_list`</dt>
+   *       <dd>`true` if user can take place in wait list only; `false` otherwise.</dd>
+   * 
+   *       <dt>bool `is_wait_list_enabled`</dt>
+   *       <dd>`true` if wait list is enabled for class; `false` otherwise.</dd>
+   * 
+   *       <dt>string `m_price`</dt>
+   *       <dd>Session price.</dd>
+   * 
+   *       <dt>string `s_duration`</dt>
+   *       <dd>Class duration. In human readable format.</dd>
+   * 
+   *       <dt>string `s_title`</dt>
+   *       <dd>Class name.</dd>
+   * 
+   *       <dt>string `text_room`</dt>
+   *       <dd>Class room.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>array `a_location`</dt>
+   *   <dd>
+   *     Location info. *     <dl>
+   *       <dt>float `f_latitude`</dt>
+   *       <dd>Location latitude.</dd>
+   * 
+   *       <dt>float `f_longitude`</dt>
+   *       <dd>Location longitude.</dd>
+   * 
+   *       <dt>float `f_rate`</dt>
+   *       <dd>Location rating. From 1 to 5.</dd>
+   * 
+   *       <dt>string `k_location`</dt>
+   *       <dd>Location key. 
+   * 
+   *       <dt>string `s_address`</dt>
+   *       <dd>Location address.</dd>
+   * 
+   *       <dt>string `s_map`</dt>
+   *       <dd>Query to search location on "Google maps".</dd>
+   * 
+   *       <dt>string `s_phone`</dt>
+   *       <dd>Location phone.</dd>
+   * 
+   *       <dt>string `s_title`</dt>
+   *       <dd>Location name.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>array[] `a_staff`</dt>
+   *   <dd>
+   *     Staff list. *     <dl>
+   *       <dt>array `a_logo`</dt>
+   *       <dd>
+   *         Information about staff photo:
+   * <dl>
+   *   <dt>int <var>id_gender</var></dt>
+   *   <dd>ID of gender.</dd>
+   * 
+   *   <dt>int <var>is_empty</var></dt>
+   *   <dd>`true` - staff has photo; `false` - has no photo.</dd>
+   * 
+   *   <dt>string <var>s_url</var></dt>
+   *   <dd>URL to staff photo.</dd>
+   * </dl>
+   *         <dl>
+   *           <dt>int `id_gender`</dt>
+   *           <dd>ID of gender.</dd>
+   * 
+   *           <dt>int `is_empty`</dt>
+   *           <dd>`true` - staff has photo; `false` - has no photo.</dd>
+   * 
+   *           <dt>string `s_url`</dt>
+   *           <dd>URL to staff photo.</dd>
+   *         </dl>
+   *       </dd>
+   * 
+   *       <dt>string `is_quick_substitute`</dt>
+   *       <dd>Whether staff or pay rate changed due quick substitution.</dd>
+   * 
+   *       <dt>string `is_substitute`</dt>
+   *       <dd>Whether or not this staff member is a substitute.</dd>
+   * 
+   *       <dt>string `k_staff`</dt>
+   *       <dd>
+   *         * Deprecated use `uid_staff` instead.
+   * *       </dd>
+   * 
+   *       <dt>string `uid_staff`</dt>
+   *       <dd>Staff user key. 
+   * 
+   *       <dt>string `s_family`</dt>
+   *       <dd>1st letter of surname of staff member.</dd>
+   * 
+   *       <dt>string `s_name`</dt>
+   *       <dd>Staff name.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>string[] `a_virtual_location`</dt>
+   *   <dd>
+   *     List of other locations where virtual class can be booked.
+   * Empty array if class isn't virtual or can't be booked in other locations.
+   *   </dd>
+   * 
+   *   <dt>array[] `a_visits_required`</dt>
+   *   <dd>
+   *     List of classes and events, which client should visit before this one.
+   * *     <dl>
+   *       <dt>int `i_count`</dt>
+   *       <dd>Number of visits.</dd>
+   * 
+   *       <dt>bool `is_event`</dt>
+   *       <dd>`true` if this is an event, `false` if this is a class.</dd>
+   * 
+   *       <dt>string `k_class`</dt>
+   *       <dd>Key of the class or event.</dd>
+   * 
+   *       <dt>string `text_title`</dt>
+   *       <dd>Name of the class or event.</dd>
+   *     </dl>
+   *   </dd>
+   * </dl>
    * @get result
    * @post result
    * @var array[]
@@ -68,6 +534,52 @@ class ClassViewModel extends WlModelAbstract
    *
    * This will be `null` if data isn't loaded yet.
    *
+   * <dl>
+   *   <dt>array `a_logo`</dt>
+   *   <dd>
+   *     Information about staff photo:
+   * <dl>
+   *   <dt>int <var>id_gender</var></dt>
+   *   <dd>ID of gender.</dd>
+   * 
+   *   <dt>int <var>is_empty</var></dt>
+   *   <dd>`true` - staff has photo; `false` - has no photo.</dd>
+   * 
+   *   <dt>string <var>s_url</var></dt>
+   *   <dd>URL to staff photo.</dd>
+   * </dl>
+   *     <dl>
+   *       <dt>int `id_gender`</dt>
+   *       <dd>ID of gender.</dd>
+   * 
+   *       <dt>int `is_empty`</dt>
+   *       <dd>`true` - staff has photo; `false` - has no photo.</dd>
+   * 
+   *       <dt>string `s_url`</dt>
+   *       <dd>URL to staff photo.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>string `is_quick_substitute`</dt>
+   *   <dd>Whether staff or pay rate changed due quick substitution.</dd>
+   * 
+   *   <dt>string `is_substitute`</dt>
+   *   <dd>Whether or not this staff member is a substitute.</dd>
+   * 
+   *   <dt>string `k_staff`</dt>
+   *   <dd>
+   *     * Deprecated use `uid_staff` instead.
+   * *   </dd>
+   * 
+   *   <dt>string `uid_staff`</dt>
+   *   <dd>Staff user key. 
+   * 
+   *   <dt>string `s_family`</dt>
+   *   <dd>1st letter of surname of staff member.</dd>
+   * 
+   *   <dt>string `s_name`</dt>
+   *   <dd>Staff name.</dd>
+   * </dl>
    * @get result
    * @post result
    * @var array[]|null
@@ -87,6 +599,19 @@ class ClassViewModel extends WlModelAbstract
   /**
    * A list of classes and events that clients should visit before this one.
    *
+   * <dl>
+   *   <dt>int `i_count`</dt>
+   *   <dd>Number of visits.</dd>
+   * 
+   *   <dt>bool `is_event`</dt>
+   *   <dd>`true` if this is an event, `false` if this is a class.</dd>
+   * 
+   *   <dt>string `k_class`</dt>
+   *   <dd>Key of the class or event.</dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>Name of the class or event.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

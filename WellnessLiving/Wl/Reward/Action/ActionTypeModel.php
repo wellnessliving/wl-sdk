@@ -12,6 +12,10 @@ class ActionTypeModel extends WlModelAbstract
   /**
    * Information about reward actions. Every element has next keys:
    *
+   * <dl>
+   *   <dt>int `i_score`</dt>
+   *   <dd>Number of points for this reward action.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

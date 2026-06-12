@@ -12,6 +12,13 @@ class ListModel extends WlModelAbstract
   /**
    * Member groups list:
    *
+   * <dl>
+   *   <dt>string `k_member_group`</dt>
+   *   <dd>The key of the member group. 
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>The name of the member group.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

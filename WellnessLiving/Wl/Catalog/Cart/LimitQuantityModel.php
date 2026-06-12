@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Catalog\Cart;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * Displays information about the quantity limit when a promotion (Purchase Option) is added to the cart.
@@ -12,6 +13,19 @@ class LimitQuantityModel extends WlModelAbstract
   /**
    * The cart items list with the next structure: 
    *
+   * <dl>
+   *   <dt>int `i_quantity`</dt>
+   *   <dd>The quantity of sale items.</dd>
+   * 
+   *   <dt>int `id_sale`</dt>
+   *   <dd>The sale item type. One of the {@link WlSaleSid} constants.</dd>
+   * 
+   *   <dt>string `k_id`</dt>
+   *   <dd>The sale item ID.</dd>
+   * 
+   *   <dt>string `k_shop_product_option`</dt>
+   *   <dd>The shop product option. <tt>null</tt> if the sale item has no options.</dd>
+   * </dl>
    * @get get
    * @var array[]
    */

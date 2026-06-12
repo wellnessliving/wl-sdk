@@ -14,6 +14,13 @@ class DiscountCodeModel extends WlModelAbstract
    *
    * Each element has next structure:
    *
+   * <dl>
+   *   <dt>string `k_discount_code`</dt>
+   *   <dd>Discount code key. 
+   * 
+   *   <dt>string `text_discount_code`</dt>
+   *   <dd>Discount code title.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

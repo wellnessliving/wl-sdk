@@ -12,6 +12,19 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
   /**
    * The city list. Each element has next structure:
    *
+   * <dl>
+   *   <dt>string `k_city`</dt>
+   *   <dd>City key. 
+   * 
+   *   <dt>string `k_country`</dt>
+   *   <dd>Country key. 
+   * 
+   *   <dt>string `k_state`</dt>
+   *   <dd>State key. 
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>City title.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -20,6 +33,13 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
   /**
    * The country list. Each element has next structure:
    *
+   * <dl>
+   *   <dt>string `k_country`</dt>
+   *   <dd>Country key. 
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>Country title.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -28,6 +48,28 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
   /**
    * The location list. Each element has the next structure:
    *
+   * <dl>
+   *   <dt>int `id_currency`</dt>
+   *   <dd>Currency ID.</dd>
+   * 
+   *   <dt>string `k_city`</dt>
+   *   <dd>City key. 
+   * 
+   *   <dt>string `k_country`</dt>
+   *   <dd>Country key. 
+   * 
+   *   <dt>string `k_location`</dt>
+   *   <dd>Location key. 
+   * 
+   *   <dt>string `k_region`</dt>
+   *   <dd>Franchise region key. 
+   * 
+   *   <dt>string `k_state`</dt>
+   *   <dd>State key. 
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>Location title.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -36,6 +78,13 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
   /**
    * The region list. Each element has the next structure:
    *
+   * <dl>
+   *   <dt>string `k_region`</dt>
+   *   <dd>Franchise region key. 
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>Franchise region title.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -44,6 +93,16 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
   /**
    * The state list. Each element has the next structure:
    *
+   * <dl>
+   *   <dt>string `k_country`</dt>
+   *   <dd>Country key. 
+   * 
+   *   <dt>string `k_state`</dt>
+   *   <dd>State key. 
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>State title.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

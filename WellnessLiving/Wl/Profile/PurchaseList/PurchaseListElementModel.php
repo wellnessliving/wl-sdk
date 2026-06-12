@@ -22,6 +22,30 @@ class PurchaseListElementModel extends WlModelAbstract
    * A list of components. This won't be empty if this purchase element is a package or a coupon.
    * In the case of a package, every element has keys:
    *
+   * <dl>
+   *   <dt>string `k_enrollment_book`</dt>
+   *   <dd>The booking enrollment key.</dd>
+   * 
+   *   <dt>string `k_login_product`</dt>
+   *   <dd>The key referencing the product a user purchased.</dd>
+   * 
+   *   <dt>string `k_login_promotion`</dt>
+   *   <dd>The key of a user's Purchase Option.</dd>
+   * 
+   *   <dt>string `k_session_pass`</dt>
+   *   <dd>The key of a user's session pass.</dd>
+   * </dl>
+   * 
+   * <dl>
+   *   <dt>int `id_purchase_item`</dt>
+   *   <dd>Purchase item type. One of {@link WlPurchaseItemSid} constants.</dd>
+   * 
+   *   <dt>string `k_id`</dt>
+   *   <dd>ID of the item. Will be different for different {@link WlPurchaseItemSid} constants.</dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>Title of the coupon component.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -32,6 +56,16 @@ class PurchaseListElementModel extends WlModelAbstract
    * 
    * `null` in a case when the item has no logo.
    *
+   * <dl>
+   *   <dt>int `i_height`</dt>
+   *   <dd>The height of the image.</dd>
+   * 
+   *   <dt>int `i_width`</dt>
+   *   <dd>The width of the image.</dd>
+   * 
+   *   <dt>bool `is_empty`</dt>
+   *   <dd>If `true`, then the purchased item doesn't have an image. If `false`, then the item has an image.</dd>
+   * </dl>
    * @get result
    * @var array|null
    */
@@ -42,6 +76,16 @@ class PurchaseListElementModel extends WlModelAbstract
    * this promotion. Every element has the following keys:
    * This will be an empty array for other purchased items.
    *
+   * <dl>
+   *   <dt>int `i_limit`</dt>
+   *   <dd>The number of sessions that may be booked during this period.</dd>
+   * 
+   *   <dt>int `i_remain`</dt>
+   *   <dd>The number of sessions that remain available.</dd>
+   * 
+   *   <dt>string `text_date`</dt>
+   *   <dd>The name of the period type.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -50,6 +94,13 @@ class PurchaseListElementModel extends WlModelAbstract
   /**
    * The list of taxes paid for the purchased item. Every element has the following fields:
    *
+   * <dl>
+   *   <dt>string `f_tax_discount`</dt>
+   *   <dd>The amount of tax.</dd>
+   * 
+   *   <dt>string `s_tax`</dt>
+   *   <dd>The name of the tax.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

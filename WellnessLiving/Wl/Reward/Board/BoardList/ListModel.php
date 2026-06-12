@@ -13,6 +13,15 @@ class ListModel extends WlModelAbstract
    * A list of reward boards. `null` if not loaded.
    * Each element: 
    *
+   * <dl>
+   *   <dt>string `k_reward_board`</dt>
+   *   <dd>Reward board key.
+   * `0` for the all-time system board.
+   * 
+   * 
+   *   <dt>string `s_title`</dt>
+   *   <dd>Board title.</dd>
+   * </dl>
    * @get result
    * @var array[]|null
    */

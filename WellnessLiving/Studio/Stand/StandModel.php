@@ -38,6 +38,13 @@ class StandModel extends WlModelAbstract
    * A microservice environment for create stand. Each element of the array contains 
    * `null` if the value is not defined. If the information is not provided as a request parameter, the stand will not be created.
    *
+   * <dl>
+   *   <dt>string `k_microservice`</dt>
+   *   <dd>Microservice key.</dd>
+   * 
+   *   <dt>string `s_environment`</dt>
+   *   <dd>Environment name.</dd>
+   * </dl>
    * @post post
    * @var string|null
    */

@@ -26,6 +26,19 @@ class PurchaseElementModel extends WlModelAbstract
   /**
    * List of components (not empty if this purchase element is a package). Every element has keys:
    *
+   * <dl>
+   *   <dt>string `k_enrollment_book`</dt>
+   *   <dd>Key of enrollment book. 
+   * 
+   *   <dt>string `k_login_product`</dt>
+   *   <dd>Key of product. 
+   * 
+   *   <dt>string `k_login_promotion`</dt>
+   *   <dd>Key of promotion. 
+   * 
+   *   <dt>string `k_session_pass`</dt>
+   *   <dd>Session key. 
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -34,6 +47,19 @@ class PurchaseElementModel extends WlModelAbstract
   /**
    * An array containing information about the image of the purchased item. Every element has the following keys:
    *
+   * <dl>
+   *   <dt>int `i_height`</dt>
+   *   <dd>The height of the image.</dd>
+   * 
+   *   <dt>int `i_width`</dt>
+   *   <dd>The width of the image.</dd>
+   * 
+   *   <dt>bool `is_empty`</dt>
+   *   <dd>If `true`, then the purchased item doesn't have image. If `false`, then the item has an image.</dd>
+   * 
+   *   <dt>string `s_url`</dt>
+   *   <dd>The URL for the image.</dd>
+   * </dl>
    * @get result
    * @var array
    */
@@ -43,6 +69,16 @@ class PurchaseElementModel extends WlModelAbstract
    * This field is used only for promotions. It contains restrictions that will
    * apply to bookings made with this promotion. Every element has the following keys:
    *
+   * <dl>
+   *   <dt>int `i_limit`</dt>
+   *   <dd>The number of sessions that may be booked during this period.</dd>
+   * 
+   *   <dt>int `i_remain`</dt>
+   *   <dd>The number of sessions that remain available.</dd>
+   * 
+   *   <dt>string `s_date`</dt>
+   *   <dd>The name of the period type.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -51,6 +87,13 @@ class PurchaseElementModel extends WlModelAbstract
   /**
    * The list of taxes paid for the purchased item. Every element has the following fields:
    *
+   * <dl>
+   *   <dt>string `f_tax_discount`</dt>
+   *   <dd>The amount of tax.</dd>
+   * 
+   *   <dt>string `s_tax`</dt>
+   *   <dd>The name of the tax.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

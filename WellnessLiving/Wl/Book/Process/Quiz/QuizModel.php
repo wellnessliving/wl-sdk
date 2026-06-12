@@ -2,7 +2,10 @@
 
 namespace WellnessLiving\Wl\Book\Process\Quiz;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Manages quizzes and a selected Purchase Option for a class or event during the booking process.
@@ -24,6 +27,13 @@ class QuizModel extends WlModelAbstract
    *
    * This will be empty if no purchases are made for the booking.
    *
+   * <dl>
+   *   <dt>int `id_purchase_item`</dt>
+   *   <dd>The ID of the purchase item. One of the {@link WlPurchaseItemSid} constants.</dd>
+   * 
+   *   <dt>string `k_id`</dt>
+   *   <dd>The item key. This depends on <var>id_purchase_item</var> of this array.</dd>
+   * </dl>
    * @get get
    * @var string[]
    */
@@ -32,6 +42,13 @@ class QuizModel extends WlModelAbstract
   /**
    * The list of quizzes. Each element has the next structure:
    *
+   * <dl>
+   *   <dt>bool `is_require`</dt>
+   *   <dd>Determines whether the quiz is required.</dd>
+   * 
+   *   <dt>string `k_quiz`</dt>
+   *   <dd>The quiz key. 
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -52,6 +69,55 @@ class QuizModel extends WlModelAbstract
    *
    * This will be `null` if the booking isn't recurring.
    *
+   * <dl>
+   *   <dt>int[] `a_day`</dt>
+   *   <dd>
+   *     The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
+   * Should be passed for any type of repetition.
+   *   </dd>
+   * 
+   *   <dt>int[] `a_week`</dt>
+   *   <dd>Deprecated, use `a_day` instead!</dd>
+   * 
+   *   <dt>string `dl_end`</dt>
+   *   <dd>Deprecated, use `dt_from` and `dt_to` instead!</dd>
+   * 
+   *   <dt>string `dt_from`</dt>
+   *   <dd>Date to start recurring booking.
+   * Expected for `id_repeat_</dd>
+   * 
+   *   <dt>string `dt_to`</dt>
+   *   <dd>Date to complete recurring booking.
+   * Expected for `id_repeat_</dd>
+   * 
+   *   <dt>int `i_count`</dt>
+   *   <dd>
+   *     The number of occurrences after which the appointment's repeat cycle stops.
+   *  Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
+   *  Expected for `id_repeat_
+   *   </dd>
+   * 
+   *   <dt>int `i_duration`</dt>
+   *   <dd>Count of days\weeks\months between recurring bookings.</dd>
+   * 
+   *   <dt>int `i_occurrence`</dt>
+   *   <dd>Deprecated, use `i_count` instead!</dd>
+   * 
+   *   <dt>int `i_period`</dt>
+   *   <dd>Deprecated, use `i_duration` instead!</dd>
+   * 
+   *   <dt>int `id_duration`</dt>
+   *   <dd>
+   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
+   *
+   *   </dd>
+   * 
+   *   <dt>int `id_period`</dt>
+   *   <dd>Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.</dd>
+   * 
+   *   <dt>int `id_repeat_end`</dt>
+   *   <dd>Possible ways to stop repeatable events.</dd>
+   * </dl>
    * @post post
    * @var array|null
    */
@@ -62,6 +128,13 @@ class QuizModel extends WlModelAbstract
    *
    * Every element has the next keys:
    *
+   * <dl>
+   *   <dt>int `i_index`</dt>
+   *   <dd>The order number of the asset (could be from 1 to the asset quantity).</dd>
+   * 
+   *   <dt>string `k_resource`</dt>
+   *   <dd>The asset key. 
+   * </dl>
    * @post post
    * @var array[]
    */

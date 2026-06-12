@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Reception\Roster\Design;
 
+use WellnessLiving\Core\Drive\DriveTypeSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 
@@ -13,6 +14,35 @@ class ReceptionRosterDesignModel extends WlModelAbstract
   /**
    * Image data for image which will be displayed in attendance web app page.
    *
+   * <dl>
+   *   <dt>int `i_height`</dt>
+   *   <dd>Requested image height.</dd>
+   * 
+   *   <dt>int `i_height_src`</dt>
+   *   <dd>Original image height.</dd>
+   * 
+   *   <dt>int `i_width`</dt>
+   *   <dd>Requested image width.</dd>
+   * 
+   *   <dt>int `i_width_src`</dt>
+   *   <dd>Original image width.</dd>
+   * 
+   *   <dt>int `id_type_src`</dt>
+   *   <dd>
+   *     Image type ID. One of {@link DriveTypeSid} constants.
+   *  Will be present only for \Core\Drive\Drive images.
+   *   </dd>
+   * 
+   *   <dt>bool `is-resize`</dt>
+   *   <dd>Whether image was resized to satisfy specified
+   *  <var>i_width</var> and <var>i_height</var>.</dd>
+   * 
+   *   <dt>string `url-thumbnail`</dt>
+   *   <dd>Url to requested image.</dd>
+   * 
+   *   <dt>string `url-view`</dt>
+   *   <dd>Url to original image.</dd>
+   * </dl>
    * @get result
    * @var array
    */

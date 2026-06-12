@@ -19,6 +19,42 @@ class ListModel extends WlModelAbstract
    *
    * Each element has the following structure:
    *
+   * <dl>
+   *   <dt>string[] `a_class_tab`</dt>
+   *   <dd>
+   *     List of class book now tabs, where this class is presented. Each element is *  or `null` if class is presented in default system tab Classes. Events can also be added in class tabs.
+   *   </dd>
+   * 
+   *   <dt>string[] `a_event_tab`</dt>
+   *   <dd>
+   *     List of event book now tabs, where this event is presented. Each element is *   or `null` if event is presented in default system tab Enrollments. Classes cannot be added in event tabs.
+   *   </dd>
+   * 
+   *   <dt>string `dl_end`</dt>
+   *   <dd>The ending date of the class/event.
+   * Maybe a zero date if the class is ongoing (has no end date).</dd>
+   * 
+   *   <dt>string `dl_start`</dt>
+   *   <dd>The starting date of the class/event.</dd>
+   * 
+   *   <dt>bool `is_active`</dt>
+   *   <dd>Whether class/event is active.</dd>
+   * 
+   *   <dt>bool `is_event`</dt>
+   *   <dd>Define if current element is event.<tt>true</tt> - event, <tt>false</tt> - class.</dd>
+   * 
+   *   <dt>bool `is_remove`</dt>
+   *   <dd>Whether class/event is removed.</dd>
+   * 
+   *   <dt>string `k_class`</dt>
+   *   <dd>Class/event identifier. 
+   * 
+   *   <dt>string `k_enrollment_block`</dt>
+   *   <dd>Event Block ID. 
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>Class/event name.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

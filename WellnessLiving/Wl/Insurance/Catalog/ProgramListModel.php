@@ -13,6 +13,25 @@ class ProgramListModel extends WlModelAbstract
    * A List of active programs.
    * Every element has next keys:
    *
+   * <dl>
+   *   <dt>string `k_wellness_program`</dt>
+   *   <dd>The insurance key.</dd>
+   * 
+   *   <dt>string `m_price`</dt>
+   *   <dd>The Purchase Option price.</dd>
+   * 
+   *   <dt>string `text_insurance_organization`</dt>
+   *   <dd>The insurance organization name.</dd>
+   * 
+   *   <dt>string `text_partner`</dt>
+   *   <dd>The insurance partner name.</dd>
+   * 
+   *   <dt>string `text_program`</dt>
+   *   <dd>The insurance name.</dd>
+   * 
+   *   <dt>string `url_insurance_detail`</dt>
+   *   <dd>The insurance organization URL.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

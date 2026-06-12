@@ -12,6 +12,13 @@ class TagListModel extends WlModelAbstract
   /**
    * A list of video tags with the following structure: 
    *
+   * <dl>
+   *   <dt>string `k_video_tag`</dt>
+   *   <dd>The video tag key.</dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>The video tag title.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

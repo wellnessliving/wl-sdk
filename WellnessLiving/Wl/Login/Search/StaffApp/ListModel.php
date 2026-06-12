@@ -17,6 +17,25 @@ class ListModel extends WlModelAbstract
    *
    * Each element is an array with the following keys:
    *
+   * <dl>
+   *   <dt>string `text_mail`</dt>
+   *   <dd>Client's email.</dd>
+   * 
+   *   <dt>string `text_name_first`</dt>
+   *   <dd>Client's first name.</dd>
+   * 
+   *   <dt>string `text_name_last`</dt>
+   *   <dd>Client's last name.</dd>
+   * 
+   *   <dt>string `text_phone`</dt>
+   *   <dd>Client's phone.</dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>The client name.</dd>
+   * 
+   *   <dt>string `uid`</dt>
+   *   <dd>The client key. 
+   * </dl>
    * @get result
    * @var array[]
    */

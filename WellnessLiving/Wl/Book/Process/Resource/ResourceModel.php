@@ -2,7 +2,11 @@
 
 namespace WellnessLiving\Wl\Book\Process\Resource;
 
+use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Resource\Image\ImageIconSid;
+use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
 
 /**
  * Selects assets for making a booking.
@@ -25,6 +29,55 @@ class ResourceModel extends WlModelAbstract
    *
    * This will be `null` if the booking isn't recurring.
    *
+   * <dl>
+   *   <dt>int[] `a_day`</dt>
+   *   <dd>
+   *     The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
+   * Should be passed for any type of repetition.
+   *   </dd>
+   * 
+   *   <dt>int[] `a_week`</dt>
+   *   <dd>Deprecated, use `a_day` instead!</dd>
+   * 
+   *   <dt>string `dl_end`</dt>
+   *   <dd>Deprecated, use `dt_from` and `dt_to` instead!</dd>
+   * 
+   *   <dt>string `dt_from`</dt>
+   *   <dd>Date to start recurring booking.
+   * Expected for `id_repeat_</dd>
+   * 
+   *   <dt>string `dt_to`</dt>
+   *   <dd>Date to complete recurring booking.
+   * Expected for `id_repeat_</dd>
+   * 
+   *   <dt>int `i_count`</dt>
+   *   <dd>
+   *     The number of occurrences after which the appointment's repeat cycle stops.
+   *  Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
+   *  Expected for `id_repeat_
+   *   </dd>
+   * 
+   *   <dt>int `i_duration`</dt>
+   *   <dd>Count of days\weeks\months between recurring bookings.</dd>
+   * 
+   *   <dt>int `i_occurrence`</dt>
+   *   <dd>Deprecated, use `i_count` instead!</dd>
+   * 
+   *   <dt>int `i_period`</dt>
+   *   <dd>Deprecated, use `i_duration` instead!</dd>
+   * 
+   *   <dt>int `id_duration`</dt>
+   *   <dd>
+   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
+   *
+   *   </dd>
+   * 
+   *   <dt>int `id_period`</dt>
+   *   <dd>Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.</dd>
+   * 
+   *   <dt>int `id_repeat_end`</dt>
+   *   <dd>Possible ways to stop repeatable events.</dd>
+   * </dl>
    * @post post
    * @var array|null
    */
@@ -33,6 +86,244 @@ class ResourceModel extends WlModelAbstract
   /**
    * A list of asset categories which are available for specified session. Every element has next keys:
    *
+   * <dl>
+   *   <dt>bool[][] `a_client`</dt>
+   *   <dd>
+   *     A list of clients who have already occupied assets for this session.
+   * 1st level keys are asset keys. * 2nd level keys are asset index numbers (starting from 1).
+   * Values are `true` if the asset spot is occupied.
+   * For example, to check if asset spot 10 with key '125' is occupied,
+   * check `a_client['125']['10']`.
+   *   </dd>
+   * 
+   *   <dt>array[] `a_resource_list`</dt>
+   *   <dd>
+   *     A list of available assets. Every element has next keys:
+   * <dl>
+   *   <dt>int[][][] `a_class_period`</dt>
+   *   <dd>
+   *       List of resources available for booking sessions.
+   *       The field structure is `[k_class_period][dtu_session]['a_available']`.
+   *       Contains indexes of resource available for each session.
+   *   </dd>
+   * 
+   *   <dt>array `a_image`</dt>
+   *   <dd>
+   *     Asset image data.
+   *     *     <dl>
+   *       <dt>int [`i_angle`]</dt>
+   *       <dd>Angle of shape rotation. Set only when `sid_image` equals 'shape'.</dd>
+   * 
+   *       <dt>int `i_height`</dt>
+   *       <dd>Height of the image in pixels.</dd>
+   * 
+   *       <dt>int `i_width`</dt>
+   *       <dd>Width of the image in pixels.</dd>
+   * 
+   *       <dt>bool `is_empty`</dt>
+   *       <dd>`true` if no image was uploaded, `false` otherwise.</dd>
+   * 
+   *       <dt>string `sid_image`</dt>
+   *       <dd>Image kind.</dd>
+   * 
+   *       <dt>string [`sid_image_icon`]</dt>
+   *       <dd>
+   *         Icon name. One of {@link ImageIconSid} string constants.
+   *         Set only when `sid_image` equals 'icon'.
+   *       </dd>
+   * 
+   *       <dt>string [`sid_image_shape`]</dt>
+   *       <dd>
+   *         Shape name. One of {@link ImageShapeSid} string constants.
+   *         Set only when `sid_image` equals 'shape'.
+   *       </dd>
+   * 
+   *       <dt>string `url`</dt>
+   *       <dd>Thumbnail image URL.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>int `i_index`</dt>
+   *   <dd>
+   *     The asset number. Actual for assets with a quantity more than <tt>1</tt>.
+   *   </dd>
+   * 
+   *   <dt>int `i_quantity`</dt>
+   *   <dd>
+   *     Total number of the asset spots.
+   *   </dd>
+   * 
+   *   <dt>int `i_use`</dt>
+   *   <dd>Number of already used asset units.</dd>
+   * 
+   *   <dt>bool `is_current`</dt>
+   *    <dd>
+   *      City for the off-site location.
+   *    </dd>
+   * 
+   *    <dt>string `k_city`</dt>
+   *   <dd>
+   *     <tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise.
+   *   </dd>
+   * 
+   *   <dt>string `k_resource`</dt>
+   *   <dd>
+   *     The key of the asset in database.
+   *     *   </dd>
+   * 
+   *   <dt>string `s_resource`</dt>
+   *   <dd>
+   *     The title of the asset.
+   *   </dd>
+   * 
+   *   <dt>string `text_address`</dt>
+   *    <dd>
+   *      Address for the off-site location.
+   *    </dd>
+   *   <dt>string `text_guide`</dt>
+   *    <dd>
+   *      Additional address tips for the off-site location.
+   *    </dd>
+   *   <dt>string `text_postal`</dt>
+   *    <dd>
+   *      Postal code for the off-site location.
+   *    </dd>
+   * </dl>
+   *     <dl>
+   *       <dt>int[][][] `a_class_period`</dt>
+   *       <dd>
+   *         List of resources available for booking sessions.
+   *   The field structure is `[k_class_period][dtu_session]['a_available']`.
+   *   Contains indexes of resource available for each session.
+   *       </dd>
+   * 
+   *       <dt>array `a_image`</dt>
+   *       <dd>
+   *         Asset image data.
+   * * <dl>
+   *   <dt>int [`i_angle`]</dt>
+   *   <dd>Angle of shape rotation. Set only when `sid_image` equals 'shape'.</dd>
+   * 
+   *   <dt>int `i_height`</dt>
+   *   <dd>Height of the image in pixels.</dd>
+   * 
+   *   <dt>int `i_width`</dt>
+   *   <dd>Width of the image in pixels.</dd>
+   * 
+   *   <dt>bool `is_empty`</dt>
+   *   <dd>`true` if no image was uploaded, `false` otherwise.</dd>
+   * 
+   *   <dt>string `sid_image`</dt>
+   *   <dd>Image kind.</dd>
+   * 
+   *   <dt>string [`sid_image_icon`]</dt>
+   *   <dd>
+   *     Icon name. One of {@link ImageIconSid} string constants.
+   *     Set only when `sid_image` equals 'icon'.
+   *   </dd>
+   * 
+   *   <dt>string [`sid_image_shape`]</dt>
+   *   <dd>
+   *     Shape name. One of {@link ImageShapeSid} string constants.
+   *     Set only when `sid_image` equals 'shape'.
+   *   </dd>
+   * 
+   *   <dt>string `url`</dt>
+   *   <dd>Thumbnail image URL.</dd>
+   * </dl>
+   *         <dl>
+   *           <dt>int `i_angle`</dt>
+   *           <dd>Angle of shape rotation. Set only when `sid_image` equals 'shape'.</dd>
+   * 
+   *           <dt>int `i_height`</dt>
+   *           <dd>Height of the image in pixels.</dd>
+   * 
+   *           <dt>int `i_width`</dt>
+   *           <dd>Width of the image in pixels.</dd>
+   * 
+   *           <dt>bool `is_empty`</dt>
+   *           <dd>`true` if no image was uploaded, `false` otherwise.</dd>
+   * 
+   *           <dt>string `sid_image`</dt>
+   *           <dd>Image kind.</dd>
+   * 
+   *           <dt>string `sid_image_icon`</dt>
+   *           <dd>
+   *             Icon name. One of {@link ImageIconSid} string constants.
+   * Set only when `sid_image` equals 'icon'.
+   *           </dd>
+   * 
+   *           <dt>string `sid_image_shape`</dt>
+   *           <dd>
+   *             Shape name. One of {@link ImageShapeSid} string constants.
+   * Set only when `sid_image` equals 'shape'.
+   *           </dd>
+   * 
+   *           <dt>string `url`</dt>
+   *           <dd>Thumbnail image URL.</dd>
+   *         </dl>
+   *       </dd>
+   * 
+   *       <dt>int `i_index`</dt>
+   *       <dd>The asset number. Actual for assets with a quantity more than <tt>1</tt>.</dd>
+   * 
+   *       <dt>int `i_quantity`</dt>
+   *       <dd>Total number of the asset spots.</dd>
+   * 
+   *       <dt>int `i_use`</dt>
+   *       <dd>Number of already used asset units.</dd>
+   * 
+   *       <dt>bool `is_current`</dt>
+   *       <dd>City for the off-site location.</dd>
+   * 
+   *       <dt>string `k_city`</dt>
+   *       <dd><tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise.</dd>
+   * 
+   *       <dt>string `k_resource`</dt>
+   *       <dd>The key of the asset in database.
+   * 
+   * 
+   *       <dt>string `s_resource`</dt>
+   *       <dd>The title of the asset.</dd>
+   * 
+   *       <dt>string `text_address`</dt>
+   *       <dd>Address for the off-site location.</dd>
+   * 
+   *       <dt>string `text_guide`</dt>
+   *       <dd>Additional address tips for the off-site location.</dd>
+   * 
+   *       <dt>string `text_postal`</dt>
+   *       <dd>Postal code for the off-site location.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>bool `has_current`</dt>
+   *   <dd><tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise.</dd>
+   * 
+   *   <dt>int `id_category`</dt>
+   *   <dd>Type of the asset category.</dd>
+   * 
+   *   <dt>bool `is_client_select`</dt>
+   *   <dd><tt>true</tt> - the client selected the resource from the current group; <tt>false</tt> otherwise.</dd>
+   * 
+   *   <dt>bool `is_select`</dt>
+   *   <dd><tt>true</tt> - has selected resources; <tt>false</tt> - otherwise.</dd>
+   * 
+   *   <dt>bool `is_share`</dt>
+   *   <dd>
+   *     <tt>true</tt> resources in this category don't belong to certain users, but to the entire session.
+   * <tt>false</tt> belong to specific users.
+   *   </dd>
+   * 
+   *   <dt>string `k_resource_layout`</dt>
+   *   <dd>The key of the asset layout. 
+   * 
+   *   <dt>string `k_resource_type`</dt>
+   *   <dd>The key of the asset category. 
+   * 
+   *   <dt>string `s_resource_type`</dt>
+   *   <dd>The title of the asset category.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -41,6 +332,13 @@ class ResourceModel extends WlModelAbstract
   /**
    * The selected assets. Every element has the next keys:
    *
+   * <dl>
+   *   <dt>int `i_index`</dt>
+   *   <dd>The asset number. Applies only for assets with a quantity greater than <tt>1</tt>.</dd>
+   * 
+   *   <dt>string `k_resource`</dt>
+   *   <dd>The asset key. 
+   * </dl>
    * @post post
    * @var array
    */

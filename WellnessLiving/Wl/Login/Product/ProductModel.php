@@ -13,6 +13,28 @@ class ProductModel extends WlModelAbstract
   /**
    * List of purchased products:
    *
+   * <dl>
+   *   <dt>string `dtu_purchase`</dt>
+   *   <dd>Date and time of purchase in UTC.</dd>
+   * 
+   *   <dt>int `i_quantity`</dt>
+   *   <dd>Quantity of the product purchased.</dd>
+   * 
+   *   <dt>string `k_shop_product_option`</dt>
+   *   <dd>Key of product. 
+   * 
+   *   <dt>string `m_price`</dt>
+   *   <dd>Price per unit of the product.</dd>
+   * 
+   *   <dt>string `m_total_amount`</dt>
+   *   <dd>Total amount paid for the product.</dd>
+   * 
+   *   <dt>string `text_location`</dt>
+   *   <dd>Location where the purchase was made.</dd>
+   * 
+   *   <dt>string `text_product`</dt>
+   *   <dd>Name of the purchased product.</dd>
+   * </dl>
    * @get result
    * @var array
    */

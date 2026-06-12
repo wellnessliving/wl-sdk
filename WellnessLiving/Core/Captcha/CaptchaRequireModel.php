@@ -12,6 +12,38 @@ class CaptchaRequireModel extends WlModelAbstract
   /**
    * Arguments for creating CAPTCHA object.
    *
+   * Parameters for BusinessPaymentCaptcha:
+   * <dl>
+   *   <dt>string|null `k_business`</dt>
+   *   <dd>Business key. <tt>null</tt> if system business.</dd>
+   * </dl>
+   * 
+   * Parameters for ReviewCaptcha:
+   * <dl>
+   *   <dt>string|null `k_business`</dt>
+   *   <dd>Business key. `null` if is system business.</dd>
+   * </dl>
+   * 
+   * Parameters for LeadCaptcha:
+   * <dl>
+   *   <dt>string|null `k_business`</dt>
+   *   <dd>Business key. `null` if is system business.</dd>
+   * </dl>
+   * 
+   * Parameters for RegisterCaptcha:
+   * <dl>
+   *   <dt>string|null `k_business`</dt>
+   *   <dd>Business key. `null` if is system business.</dd>
+   * </dl>
+   * 
+   * Parameters for BusinessSearchCaptcha:
+   * <dl>
+   *   <dt>bool `is_search`</dt>
+   *   <dd>
+   *     Flag to determine is it a search action or no. If search action is `true` it increments
+   *
+   *   </dd>
+   * </dl>
    * @get get
    * @var array
    */

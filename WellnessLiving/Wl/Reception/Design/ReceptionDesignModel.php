@@ -18,6 +18,13 @@ class ReceptionDesignModel extends WlModelAbstract
    * If image for self check in app is empty, will attempt to obtain business logo instead. If business logo is empty,
    * will attempt to obtain location logo.
    *
+   * <dl>
+   *   <dt>string `url_view`</dt>
+   *   <dd>url for full image.</dd>
+   * 
+   *   <dt>string `url_thumbnail`</dt>
+   *   <dd>url for thumbnail version of image.</dd>
+   * </dl>
    * @get result
    * @var string[]
    */

@@ -14,6 +14,16 @@ class UserIntegrationModel extends WlModelAbstract
    * 
    * `null` if the user does not belong to any integration.
    *
+   * <dl>
+   *   <dt>bool `is_classpass`</dt>
+   *   <dd>`true` if user use the Classpass integration, `false` - otherwise.</dd>
+   * 
+   *   <dt>bool `is_gympass`</dt>
+   *   <dd>`true` if user use the Gympass integration, `false` - otherwise.</dd>
+   * 
+   *   <dt>bool `is_reserve_with_google`</dt>
+   *   <dd>`true` if user use the Reserve With Google integration, `false` - otherwise.</dd>
+   * </dl>
    * @get result
    * @var array|null
    */

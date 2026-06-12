@@ -2,9 +2,14 @@
 
 namespace WellnessLiving\Wl\Catalog\CatalogList;
 
+use WellnessLiving\Core\Drive\DriveTypeSid;
+use WellnessLiving\Core\a\ADurationSid;
+use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Catalog\PurchaseOptionViewSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\Tax\WlTaxSid;
+use WellnessLiving\Wl\WlProgramSid;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
@@ -20,6 +25,19 @@ class ElementModel extends WlModelAbstract
    * Age restrictions for an item apply when they're configured for a specific item and the API is requested from the backend
    * or when age restriction are public.
    *
+   * <dl>
+   *   <dt>int|null `i_age_from`</dt>
+   *   <dd>The minimum age permitted for the event. This will be `null` if a minimum age isn't set or available.</dd>
+   * 
+   *   <dt>int|null `i_age_to`</dt>
+   *   <dd>The maximum age permitted for the event. This will be `null` if a maximum age isn't set or available.</dd>
+   * 
+   *   <dt>bool `is_age_public`</dt>
+   *   <dd>
+   *     If `true`, age restrictions are public and available. Otherwise, this will be `false` if they're hidden.
+   * When restrictions are hidden and the current user isn't a staff member, the age range will be empty.
+   *   </dd>
+   * </dl>
    * @get result
    * @var array
    */
@@ -35,6 +53,110 @@ class ElementModel extends WlModelAbstract
    * * For a gift card, this contains possible amounts.
    * * For a session pass/membership/package, this contains information about start and stop dates.
    *
+   * <dl>
+   *   <dt>int[] `a_service_access`</dt>
+   *   <dd>
+   *     Access to services for a purchase option.
+   * Keys are one of the {@link Wl\Service\ServiceSid} constants, values are one of the {@link AFlagSid}
+   * constants. Set only for relevant purchase option service category.
+   *
+   * It can be set only for classes and events.
+   * It can be set only for classes and events.
+   *
+   *   </dd>
+   * 
+   *   <dt>bool `is_renew_public`</dt>
+   *   <dd>
+   *     This applies only for promotions.
+   * `true` - clients can set promotion auto-renew.
+   * `false` - clients can't set promotion auto-renew.
+   *   </dd>
+   * 
+   *   <dt>array[] `a_component`</dt>
+   *   <dd>
+   *     This applies only for coupons. Coupon components information. Each element will contain the following keys:
+   * <dl>
+   *   <dt>int `id_program`</dt>
+   *   <dd>Program ID. One of {@link WlProgramSid} ID's. Only applies to promotions.</dd>
+   *   <dt>int `id_purchase_item`</dt>
+   *   <dd>Purchase item ID. One of {@link WlPurchaseItemSid} ID's.</dd>
+   *   <dt>int `id_sale`</dt>
+   *   <dd>Sale ID. One of {@link WlSaleSid} ID's.</dd>
+   *   <dt>int `k_id`</dt>
+   *   <dd>The identifier of the item.</dd>
+   *   <dt>string `text_title`</dt>
+   *   <dd>The title of the item.</dd>
+   * </dl>
+   *     <dl>
+   *       <dt>int `id_program`</dt>
+   *       <dd>Program ID. One of {@link WlProgramSid} ID's. Only applies to promotions.</dd>
+   * 
+   *       <dt>int `id_purchase_item`</dt>
+   *       <dd>Purchase item ID. One of {@link WlPurchaseItemSid} ID's.</dd>
+   * 
+   *       <dt>int `id_sale`</dt>
+   *       <dd>Sale ID. One of {@link WlSaleSid} ID's.</dd>
+   * 
+   *       <dt>int `k_id`</dt>
+   *       <dd>The identifier of the item.</dd>
+   * 
+   *       <dt>string `text_title`</dt>
+   *       <dd>The title of the item.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>array[] `a_staff`</dt>
+   *   <dd>
+   *     This applies to enrollment/event items. Staff list for class periods. Each element contains:
+   * <dl>
+   *   <dt>string `k_staff`</dt>
+   *   <dd>@deprecated Legacy staff key. ecated, use `uid_staff`.</dd>
+   *   <dt>string `uid_staff`</dt>
+   *   <dd>Staff user key. 
+   *   <dt>string `text_family`</dt>
+   *   <dd>Staff last name.</dd>
+   *   <dt>string `text_staff`</dt>
+   *   <dd>Staff display name.</dd>
+   * </dl>
+   *     <dl>
+   *       <dt>string `k_staff`</dt>
+   *       <dd>@deprecated Legacy staff key. ecated, use `uid_staff`.</dd>
+   * 
+   *       <dt>string `uid_staff`</dt>
+   *       <dd>Staff user key. 
+   * 
+   *       <dt>string `text_family`</dt>
+   *       <dd>Staff last name.</dd>
+   * 
+   *       <dt>string `text_staff`</dt>
+   *       <dd>Staff display name.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>string `dl_expire`</dt>
+   *   <dd>Date of expiration of coupon, local date in MySQL format.</dd>
+   * 
+   *   <dt>string `dl_now`</dt>
+   *   <dd>Current date, local date in MySQL format.</dd>
+   * 
+   *   <dt>string `dl_start`</dt>
+   *   <dd>
+   *     Date to activate the coupon on, local date in MySQL format.
+   *   When `id_activation`=FIXED, this field contains a custom date to activate the coupon on, local date in MySQL format.
+   *   </dd>
+   * 
+   *   <dt>int `i_duration`</dt>
+   *   <dd>Number of periods the coupon is active. Type of a period is specified by `id_duration`.</dd>
+   * 
+   *   <dt>int `id_activation`</dt>
+   *   <dd>Type of a coupon activation date specification.</dd>
+   * 
+   *   <dt>int `id_duration`</dt>
+   *   <dd>Duration of a period. A constant from {@link ADurationSid}.</dd>
+   * 
+   *   <dt>int `id_duration_type`</dt>
+   *   <dd>A way to specify a duration.</dd>
+   * </dl>
    * @get result
    * @var array
    */
@@ -43,6 +165,22 @@ class ElementModel extends WlModelAbstract
   /**
    * Information about the discount code:
    *
+   * <dl>
+   *   <dt>string `f_amount`</dt>
+   *   <dd>The fixed amount of the discount.</dd>
+   * 
+   *   <dt>float `f_percent`</dt>
+   *   <dd>The percentage amount of the discount.</dd>
+   * 
+   *   <dt>int `i_limit`</dt>
+   *   <dd>Limitation.</dd>
+   * 
+   *   <dt>string `k_discount_code`</dt>
+   *   <dd>The discount code key.</dd>
+   * 
+   *   <dt>string `s_discount_code`</dt>
+   *   <dd>The discount code value.</dd>
+   * </dl>
    * @get get
    * @var array
    */
@@ -51,6 +189,22 @@ class ElementModel extends WlModelAbstract
   /**
    * Image information:
    *
+   * <dl>
+   *   <dt>int `i_height`</dt>
+   *   <dd>The height in pixels.</dd>
+   * 
+   *   <dt>int `i_width`</dt>
+   *   <dd>The width in pixels.</dd>
+   * 
+   *   <dt>bool `is_empty`</dt>
+   *   <dd>
+   *     `true` - the item has no image (in this case, ignore the other keys of this array).
+   * `false` - the item has an image.
+   *   </dd>
+   * 
+   *   <dt>string `s_url`</dt>
+   *   <dd>The image URL.</dd>
+   * </dl>
    * @get result
    * @var array
    * @deprecated This property is deprecated as it does not support multiple images.
@@ -62,6 +216,20 @@ class ElementModel extends WlModelAbstract
    * List of images.
    * Keys are index and value is below information: 
    *
+   * <dl>
+   *   <dt>int `i_height`</dt>
+   *   <dd>The height in pixels.</dd>
+   * 
+   *   <dt>int `i_width`</dt>
+   *   <dd>The width in pixels.</dd>
+   * 
+   *   <dt>bool `is_empty`</dt>
+   *   <dd>`true` - item has no image (in this case ignore other keys of this array).
+   * `false` - item has an image.</dd>
+   * 
+   *   <dt>string `s_url`</dt>
+   *   <dd>The image URL.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -70,6 +238,29 @@ class ElementModel extends WlModelAbstract
   /**
    * A list of installment plans. Each element has the following next keys:
    *
+   * <dl>
+   *   <dt>int `i_count`</dt>
+   *   <dd>The number of payments.</dd>
+   * 
+   *   <dt>int `id_duration`</dt>
+   *   <dd>The duration of a single period. One of the {@link ADurationSid} constants.</dd>
+   * 
+   *   <dt>int `i_period`</dt>
+   *   <dd>The number of periods specified by <var>id_period</var> between individual payments.</dd>
+   * 
+   *   <dt>string `k_currency`</dt>
+   *   <dd>The payment currency Key.</dd>
+   * 
+   *   <dt>string `k_pay_installment_template`</dt>
+   *   <dd>
+   *     The key of the installment plan template. *   </dd>
+   * 
+   *   <dt>string `m_amount`</dt>
+   *   <dd>The amount of the installment plan.</dd>
+   * 
+   *   <dt>string `s_duration`</dt>
+   *   <dd>The title of the installment plan.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -78,6 +269,148 @@ class ElementModel extends WlModelAbstract
   /**
    * The list of information pertaining to the specified item.
    *
+   * <dl>
+   *   <dt>array `a_data`</dt>
+   *   <dd>
+   *     Contains additional data for the sale item.
+   * For Package, it contains also the following key:
+   * <dl>
+   *   <dt>bool `is_price_breakdown`</dt>
+   *   <dd>
+   *     Whether to display individual prices for each item in the package.
+   *     `true` display individual prices for each item in the package,
+   *     `false` display a single total price for the package.
+   *   </dd>
+   * </dl>
+   *
+   *     <dl>
+   *       <dt>bool `is_price_breakdown`</dt>
+   *       <dd>
+   *         Whether to display individual prices for each item in the package.
+   * `true` display individual prices for each item in the package,
+   * `false` display a single total price for the package.
+   *       </dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>array `a_image`</dt>
+   *   <dd>
+   *     Contains information about one image connected to a sale item.
+   *     <dl>
+   *       <dt>int `a_image`</dt>
+   *       <dd>
+   *         <dl>
+   * <dt>int <var>i_height</var></dt>
+   * <dd>Height of the variant image.</dd>
+   * <dt>int <var>i_height_src</var></dt>
+   * <dd>Height of the original image.</dd>
+   * <dt>int <var>i_rotate</var></dt>
+   * <dd>Rotate.</dd>
+   * <dt>int <var>i_width</var></dt>
+   * <dd>Width of the variant image.</dd>
+   * <dt>int <var>i_width_src</var></dt>
+   * <dd>Width of the original image.</dd>
+   * <dt>int <var>id_type_src</var></dt>
+   * <dd>Type ID of the image. Constant from {@link DriveTypeSid}.</dd>
+   * <dt>bool <var>is-resize</var></dt>
+   * <dd>`true` if the variant differs from the original, `false` - otherwise.</dd>
+   * <dt>string <var>url-thumbnail</var></dt>
+   * <dd>URL to download variant (thumbnail) file.</dd>
+   * <dt>string <var>url-view</var></dt>
+   * <dd>URL to download original file.</dd>
+   *   </dl>
+   *         <dl>
+   *           <dt>int `i_height`</dt>
+   *           <dd>Height of the variant image.</dd>
+   * 
+   *           <dt>int `i_height_src`</dt>
+   *           <dd>Height of the original image.</dd>
+   * 
+   *           <dt>int `i_rotate`</dt>
+   *           <dd>Rotate.</dd>
+   * 
+   *           <dt>int `i_width`</dt>
+   *           <dd>Width of the variant image.</dd>
+   * 
+   *           <dt>int `i_width_src`</dt>
+   *           <dd>Width of the original image.</dd>
+   * 
+   *           <dt>int `id_type_src`</dt>
+   *           <dd>Type ID of the image. Constant from {@link DriveTypeSid}.</dd>
+   * 
+   *           <dt>bool `is-resize`</dt>
+   *           <dd>`true` if the variant differs from the original, `false` - otherwise.</dd>
+   * 
+   *           <dt>string `url-thumbnail`</dt>
+   *           <dd>URL to download variant (thumbnail) file.</dd>
+   * 
+   *           <dt>string `url-view`</dt>
+   *           <dd>URL to download original file.</dd>
+   *         </dl>
+   *       </dd>
+   * 
+   *       <dt>int `i_height`</dt>
+   *       <dd>Height of the variant image.</dd>
+   * 
+   *       <dt>int `i_width`</dt>
+   *       <dd>Width of the variant image.</dd>
+   * 
+   *       <dt>bool `is_empty`</dt>
+   *       <dd>`true` if the image file does not exist, `false` - otherwise.</dd>
+   * 
+   *       <dt>string `s_url`</dt>
+   *       <dd>Link to the variant file.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>array[] `a_tax`</dt>
+   *   <dd>
+   *     Contains information about taxes.
+   * *     <dl>
+   *       <dt>float `f_tax`</dt>
+   *       <dd>The calculated tax amount applied by this rule.</dd>
+   * 
+   *       <dt>string `f_tax_discount`</dt>
+   *       <dd>The tax amount after applying all discounts.</dd>
+   * 
+   *       <dt>string `f_tax_discount_login`</dt>
+   *       <dd>The tax amount after applying the client type discount only.</dd>
+   * 
+   *       <dt>float `f_value`</dt>
+   *       <dd>The tax rate. Its meaning depends on `id_tax`.</dd>
+   * 
+   *       <dt>int `id_tax`</dt>
+   *       <dd>The tax type. One of {@link WlTaxSid} constants.</dd>
+   * 
+   *       <dt>int `k_tax`</dt>
+   *       <dd>The tax key. 
+   * 
+   *       <dt>string `s_tax`</dt>
+   *       <dd>The tax name.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>string `id_purchase_option_view`</dt>
+   *   <dd>The Purchase Option view type.</dd>
+   * 
+   *   <dt>string `m_discount_code`</dt>
+   *   <dd>The discount code amount.</dd>
+   * 
+   *   <dt>string `m_discount_login`</dt>
+   *   <dd>The discount amount for the client type.</dd>
+   * 
+   *   <dt>string `s_comment`</dt>
+   *   <dd>Additional information about the sale item. For example, information about 'introductory offer'.</dd>
+   * 
+   *   <dt>string `s_price`</dt>
+   *   <dd>The price of the sale item in a human-readable format.</dd>
+   * 
+   *   <dt>string `s_sale`</dt>
+   *   <dd>The category title of the sale item.</dd>
+   * 
+   *   <dt>string `s_title`</dt>
+   *   <dd>The title of the sale item.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -87,6 +420,17 @@ class ElementModel extends WlModelAbstract
    * The list of items grouped by sale categories on the store page.
    * Keys refer to sale IDs from {@link WlSaleSid}, and values refer to data to identify an item:
    *
+   * <dl>
+   *   <dt>int `id_sale`</dt>
+   *   <dd>The item category ID. One of the {@link WlSaleSid} constants.</dd>
+   * 
+   *   <dt>string `k_id`</dt>
+   *   <dd>The primary key of item.</dd>
+   * 
+   *   <dt>string `k_shop_product_option`</dt>
+   *   <dd>
+   *     The product option or <tt>0</tt> for any other cases. *   </dd>
+   * </dl>
    * @get get
    * @var array[]
    */
@@ -96,6 +440,28 @@ class ElementModel extends WlModelAbstract
    * A list of the item's taxes.
    * Keys refer tax keys, and values refer to the amount of tax.
    *
+   * <dl>
+   *   <dt>float `f_tax`</dt>
+   *   <dd>The calculated tax amount applied by this rule.</dd>
+   * 
+   *   <dt>string `f_tax_discount`</dt>
+   *   <dd>The tax amount after applying all discounts.</dd>
+   * 
+   *   <dt>string `f_tax_discount_login`</dt>
+   *   <dd>The tax amount after applying the client type discount only.</dd>
+   * 
+   *   <dt>float `f_value`</dt>
+   *   <dd>The tax rate. Its meaning depends on `id_tax`.</dd>
+   * 
+   *   <dt>int `id_tax`</dt>
+   *   <dd>The tax type. One of {@link WlTaxSid} constants.</dd>
+   * 
+   *   <dt>int `k_tax`</dt>
+   *   <dd>The tax key. 
+   * 
+   *   <dt>string `s_tax`</dt>
+   *   <dd>The tax name.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -364,6 +730,16 @@ class ElementModel extends WlModelAbstract
    *
    * This will be `null` to get information for only one item.
    *
+   * <dl>
+   *   <dt>int `id_sale`</dt>
+   *   <dd>The ID of the item category. One of the {@link WlSaleSid} constants.</dd>
+   * 
+   *   <dt>string `k_id`</dt>
+   *   <dd>The item key.</dd>
+   * 
+   *   <dt>string `k_shop_product_option`</dt>
+   *   <dd>The product option key. This will be <tt>0</tt> if the item isn't a product.</dd>
+   * </dl>
    * @get get
    * @var string|null
    */

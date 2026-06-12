@@ -12,6 +12,16 @@ class VisitAddModel extends WlModelAbstract
   /**
    * The time of the visit, in the location's timezone. An array with the following fields:
    *
+   * <dl>
+   *   <dt>int `i_hour`</dt>
+   *   <dd>The hour component.</dd>
+   * 
+   *   <dt>int `i_minute`</dt>
+   *   <dd>The minute component.</dd>
+   * 
+   *   <dt>bool `is_am`</dt>
+   *   <dd>If `true` the visit is in the AM. If `false` it is in the PM.</dd>
+   * </dl>
    * @post post
    * @var array
    */

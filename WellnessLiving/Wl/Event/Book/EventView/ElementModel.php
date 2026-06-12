@@ -2,9 +2,12 @@
 
 namespace WellnessLiving\Wl\Event\Book\EventView;
 
+use WellnessLiving\Core\a\ADurationSid;
+use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Business\Config\BusinessConfigModel;
 use WellnessLiving\Wl\Classes\RequirePaySid;
+use WellnessLiving\Wl\Service\ServiceSid;
 use WellnessLiving\Wl\Virtual\VirtualProviderSid;
 
 /**
@@ -17,6 +20,25 @@ class ElementModel extends WlModelAbstract
    *
    * An empty array if there are no age restrictions.
    *
+   * <dl>
+   *   <dt>int|null `i_age_from`</dt>
+   *   <dd>
+   *     The minimum age for participation in the event.
+   * `null` if there's no minimum age set or information isn't available.
+   *   </dd>
+   * 
+   *   <dt>int|null `i_age_to`</dt>
+   *   <dd>
+   *     The age limit for participation in the event.
+   *    `null` if there's no age limit set or information isn't available.
+   *   </dd>
+   * 
+   *   <dt>bool `is_age_public`</dt>
+   *   <dd>
+   *     `true` if age restrictions are public and available, `false` if they're hidden.
+   * When restrictions are hidden and the current user isn't a staff member, the age range will be empty.
+   *   </dd>
+   * </dl>
    * @get result
    * @var array
    */
@@ -28,6 +50,13 @@ class ElementModel extends WlModelAbstract
    * Received only if {@link ElementModel::$k_event} has been specified.
    * In this case, other fields aren't receivers.
    *
+   * <dl>
+   *   <dt>string `dt_date`</dt>
+   *   <dd>Date/time when the session starts. In UTC.</dd>
+   * 
+   *   <dt>string `k_class_period`</dt>
+   *   <dd>Class session primary keys. 
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -41,6 +70,100 @@ class ElementModel extends WlModelAbstract
    * If the event has custom overrides, those policies are used; otherwise, the default
    *  business policies are returned.
    *
+   * <dl>
+   *   <dt>int[] `a_payment_reattempt_not_decline_reason`</dt>
+   *   <dd>
+   *     List of not allowed decline reasons to payment reattempt.
+   *   </dd>
+   * 
+   *   <dt>int `a_wait_service`</dt>
+   *   <dd>Keys are list of IDs from {@link ServiceSid}, and values are flags whether wait list is allowed.</dd>
+   * 
+   *   <dt>int `i_book_before`</dt>
+   *   <dd>Minimum hours|days|months before class should be booked.</dd>
+   * 
+   *   <dt>int `i_book_future`</dt>
+   *   <dd>Maximum hours|days|months after class can be booked.</dd>
+   * 
+   *   <dt>int `i_cancel`</dt>
+   *   <dd>Minimum hours|days|months before class should be canceled without penalty.</dd>
+   * 
+   *   <dt>int `i_promote`</dt>
+   *   <dd>Minimum hours|days|months before class should be promoted from wait list.</dd>
+   * 
+   *   <dt>int `i_promote_fastest_response`</dt>
+   *   <dd>
+   *     Minimum hours|days|months the notifications which are sent for client confirmation required should be sent to all clients on the wait list at the same time up to the cut off time.
+   *   </dd>
+   * 
+   *   <dt>int `i_promote_require_confirm`</dt>
+   *   <dd>
+   *     Minimum hours|days|months the notifications which are sent for client confirmation must confirm their a promote from the waiting list to the active list.
+   *   </dd>
+   * 
+   *   <dt>int `i_reattempt_count`</dt>
+   *   <dd>Number of failed auto-payments reattempts.</dd>
+   * 
+   *   <dt>int `id_book_before`</dt>
+   *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
+   * 
+   *   <dt>int `id_book_future`</dt>
+   *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
+   * 
+   *   <dt>int `id_cancel`</dt>
+   *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
+   * 
+   *   <dt>int `id_promote`</dt>
+   *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
+   * 
+   *   <dt>int `id_promote_fastest_response`</dt>
+   *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
+   * 
+   *   <dt>int `id_promote_require_confirm`</dt>
+   *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
+   * 
+   *   <dt>bool `is_book_inside_active_pay_period`</dt>
+   *   <dd>
+   *     if `true` - clients with purchase options are only allowed
+   * to book sessions within their current paid period, `false` - during purchase option's duration.
+   *   </dd>
+   * 
+   *   <dt>int `is_disable_promotion`</dt>
+   *   <dd>
+   *     1 if a client's automatic payment fails, their account should not be
+   * debited and their purchase option becomes inactive, 0 - otherwise. Default 0.
+   *   </dd>
+   * 
+   *   <dt>bool `is_enable_payment_penalty`</dt>
+   *   <dd>Whether to charge penalty after final auto-payment attempt.</dd>
+   * 
+   *   <dt>bool `is_enable_payment_reattempt`</dt>
+   *   <dd>Whether to reattempt failed auto-payments.</dd>
+   * 
+   *   <dt>bool `is_enable_staff_ip_restriction`</dt>
+   *   <dd>Whether to restrict which IP addresses staff can login from.</dd>
+   * 
+   *   <dt>int `is_prevent_booking`</dt>
+   *   <dd>1 if booking for a client with negative balance is disabled, 0 - otherwise. Default 0.</dd>
+   * 
+   *   <dt>bool `is_staff_restrict`</dt>
+   *   <dd>If true, client can not choose provider while appointment wizard.</dd>
+   * 
+   *   <dt>bool `is_wait`</dt>
+   *   <dd>Enable\disable wait list.</dd>
+   * 
+   *   <dt>int `k_currency`</dt>
+   *   <dd>Currency from rs.currency table.</dd>
+   * 
+   *   <dt>int `k_timezone`</dt>
+   *   <dd>Timezone from get.timezone table.</dd>
+   * 
+   *   <dt>string `m_payment_penalty`</dt>
+   *   <dd>Penalty amount to charge after final auto-payment attempt.</dd>
+   * 
+   *   <dt>string `url_custom`</dt>
+   *   <dd>Custom Url of a business</dd>
+   * </dl>
    * @get result
    * @var array
    * @see BusinessConfigModel::$a_business_policy
@@ -50,6 +173,19 @@ class ElementModel extends WlModelAbstract
   /**
    * The logo of event.
    *
+   * <dl>
+   *   <dt>int `i_height`</dt>
+   *   <dd>Is returned only if staff has a photo. Image height.</dd>
+   * 
+   *   <dt>int `i_width`</dt>
+   *   <dd>Is returned only if staff has a photo. Image width.</dd>
+   * 
+   *   <dt>int `id_gender`</dt>
+   *   <dd>Is returned only if staff does not have a photo. ID of staff gender. One of {@link AGenderSid} constants.</dd>
+   * 
+   *   <dt>string `url_logo`</dt>
+   *   <dd>Is returned only if staff has a photo. URL to image.</dd>
+   * </dl>
    * @get result
    * @var array
    */
@@ -68,8 +204,290 @@ class ElementModel extends WlModelAbstract
    *
    * Received only if {@link ElementModel::$s_event} has been specified. In this case, other fields are not populated.
    *
-   * Key is the event class key.
+   * Key is the event class key. *
    *
+   * <dl>
+   *   <dt>array[] `a_book_available`</dt>
+   *   <dd>
+   *     List of sessions available for booking.
+   *
+   *     <dl>
+   *       <dt>string `dt_date`</dt>
+   *       <dd>Date/time when the session starts. In UTC.</dd>
+   * 
+   *       <dt>string `k_class_period`</dt>
+   *       <dd>Class session primary keys. 
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>array `a_class_logo`</dt>
+   *   <dd>
+   *     Image of event.
+   *     <dl>
+   *       <dt>int `i_height`</dt>
+   *       <dd>Is returned only if staff has a photo. Image height.</dd>
+   * 
+   *       <dt>int `i_width`</dt>
+   *       <dd>Is returned only if staff has a photo. Image width.</dd>
+   * 
+   *       <dt>int `id_gender`</dt>
+   *       <dd>
+   *         Is returned only if staff does not have a photo. ID of staff gender. One of {@link AGenderSid} constants.
+   *       </dd>
+   * 
+   *       <dt>string `url_logo`</dt>
+   *       <dd>Is returned only if staff has a photo. URL to image.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>string[] `a_class_tab`</dt>
+   *   <dd>Class tab keys.</dd>
+   * 
+   *   <dt>array[] `a_installment_template`</dt>
+   *   <dd>
+   *     List of installment plans.
+   *     <dl>
+   *       <dt>int `i_count`</dt>
+   *       <dd>The number of payments.</dd>
+   * 
+   *       <dt>int `id_duration`</dt>
+   *       <dd>The duration of a single period. One of the {@link ADurationSid} constants.</dd>
+   * 
+   *       <dt>int `i_period`</dt>
+   *       <dd>The number of periods specified by `id_period` between individual payments.</dd>
+   * 
+   *       <dt>string `k_currency`</dt>
+   *       <dd>The payment currency Key.</dd>
+   * 
+   *       <dt>string `k_pay_installment_template`</dt>
+   *       <dd>
+   *         The key of the installment plan template. *       </dd>
+   * 
+   *       <dt>string `m_amount`</dt>
+   *       <dd>The amount of the installment plan.</dd>
+   * 
+   *       <dt>string `s_duration`</dt>
+   *       <dd>The title of the installment plan.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>array[] `a_schedule`</dt>
+   *   <dd>
+   *     Schedule of event sessions.
+   *     <dl>
+   *       <dt>array `a_day`</dt>
+   *       <dd>
+   *         Days of the week when the session occurs. Keys are weekday numbers (1 = Monday, 7 = Sunday),
+   * values are always `true`. <dl>
+   * <dt>true `{i_day}`</dt>
+   * <dd>Weekday flag. Key is the weekday number (1 = Monday ... 7 = Sunday). Value is always `true`.
+   *   </dd>
+   *   </dl>
+   *         <dl>
+   *           <dt>true `{i_day`</dt>
+   *           <dd>Weekday flag. Key is the weekday number (1 = Monday ... 7 = Sunday). Value is always `true`.</dd>
+   *         </dl>
+   *       </dd>
+   * 
+   *       <dt>array `a_repeat`</dt>
+   *       <dd>
+   *         Repeat periodicity instructions.
+   * <dl>
+   *   <dt>int `i_repeat`</dt>
+   *   <dd>Count of the periods which specified in `id_repeat`.</dd>
+   * 
+   *   <dt>int `id_repeat`</dt>
+   *   <dd>Measuring unit of `i_repeat` (week, month, year). One of {@link ADurationSid} constants.</dd>
+   * </dl>
+   *         <dl>
+   *           <dt>int `i_repeat`</dt>
+   *           <dd>Count of the periods which specified in `id_repeat`.</dd>
+   * 
+   *           <dt>int `id_repeat`</dt>
+   *           <dd>Measuring unit of `i_repeat` (week, month, year). One of {@link ADurationSid} constants.</dd>
+   *         </dl>
+   *       </dd>
+   * 
+   *       <dt>array[] `a_staff`</dt>
+   *       <dd>
+   *         A list of staff members who conduct the session. Every element has the following next keys:
+   * <dl>
+   *   <dt>string `k_staff`</dt>
+   *   <dd>@deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
+   * 
+   *   <dt>string `s_name`</dt>
+   *   <dd>The staff member name.</dd>
+   * 
+   *   <dt>string `s_surname`</dt>
+   *   <dd>The first letter of staff member's surname.</dd>
+   * 
+   *   <dt>int `uid_staff`</dt>
+   *   <dd>The user key of the staff member. 
+   * </dl>
+   *         <dl>
+   *           <dt>string `k_staff`</dt>
+   *           <dd>@deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
+   * 
+   *           <dt>string `s_name`</dt>
+   *           <dd>The staff member name.</dd>
+   * 
+   *           <dt>string `s_surname`</dt>
+   *           <dd>The first letter of staff member's surname.</dd>
+   * 
+   *           <dt>int `uid_staff`</dt>
+   *           <dd>The user key of the staff member. 
+   *         </dl>
+   *       </dd>
+   * 
+   *       <dt>string[] `a_virtual_location`</dt>
+   *       <dd>List of virtual locations. 
+   * 
+   *       <dt>string `dt_end`</dt>
+   *       <dd>The end date of the session.
+   * The local date without time.</dd>
+   * 
+   *       <dt>string `dt_start`</dt>
+   *       <dd>The start date of the session.
+   * The local date without time.</dd>
+   * 
+   *       <dt>bool `hide_location`</dt>
+   *       <dd>
+   *         `true` if the location should be hidden in the event details. Hide if the event is virtual or if the business
+   * only has one location. `false` otherwise.
+   *       </dd>
+   * 
+   *       <dt>int `i_capacity`</dt>
+   *       <dd>The class capacity.</dd>
+   * 
+   *       <dt>int `i_duration`</dt>
+   *       <dd>The duration of the class in seconds.</dd>
+   * 
+   *       <dt>bool `is_virtual`</dt>
+   *       <dd>
+   *         This will be `true` if the session is not held in person but offered remotely. It will be `false` otherwise.
+   *       </dd>
+   * 
+   *       <dt>string `f_price`</dt>
+   *       <dd>The price of the session, if it can be purchased separately.</dd>
+   * 
+   *       <dt>string `k_class_period`</dt>
+   *       <dd>The key of the class period.</dd>
+   * 
+   *       <dt>string `k_location`</dt>
+   *       <dd>The key of the location where the session is held.</dd>
+   * 
+   *       <dt>string `s_location`</dt>
+   *       <dd>The location title.</dd>
+   * 
+   *       <dt>string `s_time`</dt>
+   *       <dd>
+   *         The time when session occurred.
+   * A textual representation of the start and end time of a session. Example: `10:00 am - 11:00 am`
+   *       </dd>
+   * 
+   *       <dt>string `s_timezone`</dt>
+   *       <dd>The name of the timezone in which the session is held.</dd>
+   * 
+   *       <dt>string `text_room`</dt>
+   *       <dd>The room of the event.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>string[] `a_shop_category`</dt>
+   *   <dd>IDs of online store category. 
+   * 
+   *   <dt>array `a_staff_logo`</dt>
+   *   <dd>
+   *     Photos of staff.
+   *     <dl>
+   *       <dt>int `i_height`</dt>
+   *       <dd>Image height.</dd>
+   * 
+   *       <dt>int `i_width`</dt>
+   *       <dd>Image width.</dd>
+   * 
+   *       <dt>string `uid`</dt>
+   *       <dd>Key of the user. 
+   * 
+   *       <dt>string `url_logo`</dt>
+   *       <dd>URL to image.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>string `dt_book_date`</dt>
+   *   <dd>Date/time of first event session.</dd>
+   * 
+   *   <dt>string `dt_early`</dt>
+   *   <dd>Early date of event purchase.</dd>
+   * 
+   *   <dt>string `dt_end`</dt>
+   *   <dd>End date of the event instance.</dd>
+   * 
+   *   <dt>string `dt_start`</dt>
+   *   <dd>Date of first event session.</dd>
+   * 
+   *   <dt>string `html_end`</dt>
+   *   <dd>Html End date of the event instance.</dd>
+   * 
+   *   <dt>string `html_start`</dt>
+   *   <dd>Html Date of first event session.</dd>
+   * 
+   *   <dt>bool `hide_application`</dt>
+   *   <dd>Whether event will be hidden in the White Label mobile application.</dd>
+   * 
+   *   <dt>string `html_special`</dt>
+   *   <dd>Special instruction for event.</dd>
+   * 
+   *   <dt>bool `i_session`</dt>
+   *   <dd>Session count in event.</dd>
+   * 
+   *   <dt>bool `i_session_remain`</dt>
+   *   <dd>Remaining session count in event.</dd>
+   * 
+   *   <dt>bool `is_availability_checked`</dt>
+   *   <dd>Whether event availability was checked.</dd>
+   * 
+   *   <dt>bool `is_book`</dt>
+   *   <dd>Whether event is booked already</dd>
+   * 
+   *   <dt>bool `is_full`</dt>
+   *   <dd>`true` if there are no free spots in the event and booking is available only into wait list.</dd>
+   * 
+   *   <dt>bool `is_makeup`</dt>
+   *   <dd>`true` if the selected session can be a make up session; `false` otherwise.</dd>
+   * 
+   *   <dt>bool `is_past`</dt>
+   *   <dd>`true` if the event session has already started or ended and is not available to book.</dd>
+   * 
+   *   <dt>bool `is_policy_custom`</dt>
+   *   <dd>
+   *     `true` {@link Wl\Event\Book\EventView\ElementApi::$a_business_policy} contains the custom policies from the event; `false` otherwise.
+   *   </dd>
+   * 
+   *   <dt>bool `is_virtual`</dt>
+   *   <dd>`true` if event is virtual; `false` otherwise.</dd>
+   * 
+   *   <dt>string `k_book_class_period`</dt>
+   *   <dd>Key of first event session. 
+   * 
+   *   <dt>string `m_price`</dt>
+   *   <dd>Price of the event session.</dd>
+   * 
+   *   <dt>string `m_price_total`</dt>
+   *   <dd>Price of the full event.</dd>
+   * 
+   *   <dt>string `m_price_total_early`</dt>
+   *   <dd>Price of the full event, should be used as full price while `dt_early` is actual.</dd>
+   * 
+   *   <dt>string `s_deny_reason`</dt>
+   *   <dd>Reason of booking restriction. For example if exception has been thrown.</dd>
+   * 
+   *   <dt>string `s_title`</dt>
+   *   <dd>Event title.</dd>
+   * 
+   *   <dt>string `xml_description`</dt>
+   *   <dd>Description of event. Ready to put into browser.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -78,6 +496,29 @@ class ElementModel extends WlModelAbstract
   /**
    * A list of installment plans. Each element has the following next keys:
    *
+   * <dl>
+   *   <dt>int `i_count`</dt>
+   *   <dd>The number of payments.</dd>
+   * 
+   *   <dt>int `id_duration`</dt>
+   *   <dd>The duration of a single period. One of the {@link ADurationSid} constants.</dd>
+   * 
+   *   <dt>int `i_period`</dt>
+   *   <dd>The number of periods specified by `id_period` between individual payments.</dd>
+   * 
+   *   <dt>string `k_currency`</dt>
+   *   <dd>The payment currency Key.</dd>
+   * 
+   *   <dt>string `k_pay_installment_template`</dt>
+   *   <dd>
+   *     The key of the installment plan template. *   </dd>
+   * 
+   *   <dt>string `m_amount`</dt>
+   *   <dd>The amount of the installment plan.</dd>
+   * 
+   *   <dt>string `s_duration`</dt>
+   *   <dd>The title of the installment plan.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -86,6 +527,121 @@ class ElementModel extends WlModelAbstract
   /**
    * A list of event sessions. Every element has the following next keys:
    *
+   * <dl>
+   *   <dt>array `a_day`</dt>
+   *   <dd>
+   *     Days of the week when the session occurs. Keys are weekday numbers (1 = Monday, 7 = Sunday),
+   * values are always `true`. <dl>
+   * <dt>true `{i_day}`</dt>
+   * <dd>Weekday flag. Key is the weekday number (1 = Monday ... 7 = Sunday). Value is always `true`.
+   *   </dd>
+   *   </dl>
+   *     <dl>
+   *       <dt>true `{i_day`</dt>
+   *       <dd>Weekday flag. Key is the weekday number (1 = Monday ... 7 = Sunday). Value is always `true`.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>array `a_repeat`</dt>
+   *   <dd>
+   *     Repeat periodicity instructions.
+   * <dl>
+   *   <dt>int `i_repeat`</dt>
+   *   <dd>Count of the periods which specified in `id_repeat`.</dd>
+   * 
+   *   <dt>int `id_repeat`</dt>
+   *   <dd>Measuring unit of `i_repeat` (week, month, year). One of {@link ADurationSid} constants.</dd>
+   * </dl>
+   *     <dl>
+   *       <dt>int `i_repeat`</dt>
+   *       <dd>Count of the periods which specified in `id_repeat`.</dd>
+   * 
+   *       <dt>int `id_repeat`</dt>
+   *       <dd>Measuring unit of `i_repeat` (week, month, year). One of {@link ADurationSid} constants.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>array[] `a_staff`</dt>
+   *   <dd>
+   *     A list of staff members who conduct the session. Every element has the following next keys:
+   * <dl>
+   *   <dt>string `k_staff`</dt>
+   *   <dd>@deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
+   * 
+   *   <dt>string `s_name`</dt>
+   *   <dd>The staff member name.</dd>
+   * 
+   *   <dt>string `s_surname`</dt>
+   *   <dd>The first letter of staff member's surname.</dd>
+   * 
+   *   <dt>int `uid_staff`</dt>
+   *   <dd>The user key of the staff member. 
+   * </dl>
+   *     <dl>
+   *       <dt>string `k_staff`</dt>
+   *       <dd>@deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
+   * 
+   *       <dt>string `s_name`</dt>
+   *       <dd>The staff member name.</dd>
+   * 
+   *       <dt>string `s_surname`</dt>
+   *       <dd>The first letter of staff member's surname.</dd>
+   * 
+   *       <dt>int `uid_staff`</dt>
+   *       <dd>The user key of the staff member. 
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>string[] `a_virtual_location`</dt>
+   *   <dd>List of virtual locations. 
+   * 
+   *   <dt>string `dt_end`</dt>
+   *   <dd>The end date of the session.
+   * The local date without time.</dd>
+   * 
+   *   <dt>string `dt_start`</dt>
+   *   <dd>The start date of the session.
+   * The local date without time.</dd>
+   * 
+   *   <dt>bool `hide_location`</dt>
+   *   <dd>
+   *     `true` if the location should be hidden in the event details. Hide if the event is virtual or if the business
+   * only has one location. `false` otherwise.
+   *   </dd>
+   * 
+   *   <dt>int `i_capacity`</dt>
+   *   <dd>The class capacity.</dd>
+   * 
+   *   <dt>int `i_duration`</dt>
+   *   <dd>The duration of the class in seconds.</dd>
+   * 
+   *   <dt>bool `is_virtual`</dt>
+   *   <dd>This will be `true` if the session is not held in person but offered remotely. It will be `false` otherwise.</dd>
+   * 
+   *   <dt>string `f_price`</dt>
+   *   <dd>The price of the session, if it can be purchased separately.</dd>
+   * 
+   *   <dt>string `k_class_period`</dt>
+   *   <dd>The key of the class period.</dd>
+   * 
+   *   <dt>string `k_location`</dt>
+   *   <dd>The key of the location where the session is held.</dd>
+   * 
+   *   <dt>string `s_location`</dt>
+   *   <dd>The location title.</dd>
+   * 
+   *   <dt>string `s_time`</dt>
+   *   <dd>
+   *     The time when session occurred.
+   * A textual representation of the start and end time of a session. Example: `10:00 am - 11:00 am`
+   *   </dd>
+   * 
+   *   <dt>string `s_timezone`</dt>
+   *   <dd>The name of the timezone in which the session is held.</dd>
+   * 
+   *   <dt>string `text_room`</dt>
+   *   <dd>The room of the event.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -102,6 +658,19 @@ class ElementModel extends WlModelAbstract
   /**
    * Photos of staff members. Keys are the keys of staff members. The values are the following:
    *
+   * <dl>
+   *   <dt>int `i_height`</dt>
+   *   <dd>Image height.</dd>
+   * 
+   *   <dt>int `i_width`</dt>
+   *   <dd>Image width.</dd>
+   * 
+   *   <dt>string `uid`</dt>
+   *   <dd>Key of the user. 
+   * 
+   *   <dt>string `url_logo`</dt>
+   *   <dd>URL to image.</dd>
+   * </dl>
    * @get result
    * @var array
    */
@@ -113,6 +682,16 @@ class ElementModel extends WlModelAbstract
    * Key is the timezone key. Primary key in the `a_geo_timezone` table.
    * Value contains timezone information from the geo timezone registry: 
    *
+   * <dl>
+   *   <dt>int `i_shift`</dt>
+   *   <dd>UTC offset in hours for this timezone.</dd>
+   * 
+   *   <dt>string `s_file`</dt>
+   *   <dd>Timezone identifier string (e.g. `America/New_York`).</dd>
+   * 
+   *   <dt>string|null `text_abbr`</dt>
+   *   <dd>Timezone abbreviation (e.g. `EST`). `null` if not set.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */
@@ -121,6 +700,22 @@ class ElementModel extends WlModelAbstract
   /**
    * A list of classes and events that clients should attend before this one.
    *
+   * <dl>
+   *   <dt>int `i_count`</dt>
+   *   <dd>The number of visits required.</dd>
+   * 
+   *   <dt>int `i_has`</dt>
+   *   <dd>The number of visits the client has already attended.</dd>
+   * 
+   *   <dt>bool `is_event`</dt>
+   *   <dd>`true` if this is an event, `false` if this is a class.</dd>
+   * 
+   *   <dt>string `k_class`</dt>
+   *   <dd>The key of the class or event.</dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>The name of the class or event.</dd>
+   * </dl>
    * @get result
    * @var array[]
    */

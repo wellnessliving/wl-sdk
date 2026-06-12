@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Thoth\DriveMs\Api;
 
+use WellnessLiving\Core\Drive\DriveTypeSid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -12,6 +13,26 @@ class DriveUrlSignModel extends WlModelAbstract
   /**
    * File data.
    *
+   * <dl>
+   *   <dt>int `i_height`</dt>
+   *   <dd>Height of the image. Only present if the file is an image.</dd>
+   * 
+   *   <dt>int `i_width`</dt>
+   *   <dd>Width of the image. Only present if the file is an image.</dd>
+   * 
+   *   <dt>int `id_type`</dt>
+   *   <dd>Image type code. Only present if the file is an image.
+   * One of {@link DriveTypeSid} constants.</dd>
+   * 
+   *   <dt>bool `is_private`</dt>
+   *   <dd>Whether the link is private.</dd>
+   * 
+   *   <dt>bool `is_private_file`</dt>
+   *   <dd>Whether the file is private.</dd>
+   * 
+   *   <dt>string `s_name`</dt>
+   *   <dd>The name of the physical file on the drive.</dd>
+   * </dl>
    * @get get
    * @var string[]
    */
