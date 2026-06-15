@@ -12,31 +12,31 @@ class CaptchaRequireModel extends WlModelAbstract
   /**
    * Arguments for creating CAPTCHA object.
    *
-   * Parameters for BusinessPaymentCaptcha:
+   * Parameters for `1064`:
    * <dl>
    *   <dt>string|null `k_business`</dt>
    *   <dd>Business key. <tt>null</tt> if system business.</dd>
    * </dl>
    * 
-   * Parameters for ReviewCaptcha:
+   * Parameters for `1066`:
    * <dl>
    *   <dt>string|null `k_business`</dt>
    *   <dd>Business key. `null` if is system business.</dd>
    * </dl>
    * 
-   * Parameters for LeadCaptcha:
+   * Parameters for `1072`:
    * <dl>
    *   <dt>string|null `k_business`</dt>
    *   <dd>Business key. `null` if is system business.</dd>
    * </dl>
    * 
-   * Parameters for RegisterCaptcha:
+   * Parameters for `1139`:
    * <dl>
    *   <dt>string|null `k_business`</dt>
    *   <dd>Business key. `null` if is system business.</dd>
    * </dl>
    * 
-   * Parameters for BusinessSearchCaptcha:
+   * Parameters for `1508`:
    * <dl>
    *   <dt>bool `is_search`</dt>
    *   <dd>

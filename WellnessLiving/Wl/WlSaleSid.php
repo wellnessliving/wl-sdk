@@ -73,6 +73,11 @@ abstract class WlSaleSid
    * Products: water, t-shirts, etc. That is available for quick buy.
    */
   const QUICK_BUY = 10;
+
+  /**
+   * Tuition.
+   */
+  const TUITION = 14;
 }
 
 ?>

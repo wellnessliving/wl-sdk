@@ -309,17 +309,15 @@ class Finish47Model extends WlModelAbstract
    *   <dd>Payment method. One of {@link WlPayMethodSid} constants.</dd>
    * 
    *   <dt>bool `is_hide`</dt>
-   *   <dd>
-   *     Whether this payment method is hidden.
-   *  *   </dd>
+   *   <dd>Whether this payment method is hidden.
+   *  
    * 
    *   <dt>bool `is_success=false`</dt>
    *   <dd>Whether this source was successfully charged.</dd>
    * 
    *   <dt>string `m_fee`</dt>
-   *   <dd>
-   *     Fee amount for this payment source.
-   *   *   </dd>
+   *   <dd>Fee amount for this payment source.
+   *   
    * 
    *   <dt>string `m_surcharge`</dt>
    *   <dd>Surcharge amount for this payment source.</dd>

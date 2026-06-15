@@ -5,12 +5,16 @@ namespace WellnessLiving\Wl\Book\Process\Frequency;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
-use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
- * For recurrent class booking returns list of visits to be created for the given settings.
+ * Extension of {@link RepeatModel} that adds control over whether parallel class period series
+ * (other sessions running at the same time and location) are included in the returned visit list.
+ *
+ * When `is_include_parallel` is `false` (default), only the originally selected class period's
+ * series (parent and its reschedules) is returned. When `true`, all parallel series are also
+ * included and can be reviewed or individually ignored by the client.
  */
-class RepeatModel extends WlModelAbstract
+class RepeatParallelModel extends WlModelAbstract
 {
   /**
    * List of days of the week to create visits. Each value is a {@link ADateWeekSid} constant.
@@ -130,8 +134,6 @@ class RepeatModel extends WlModelAbstract
   public $id_duration = 0;
 
   /**
-   * WellnessLiving mode, one of {@link ModeSid} constants.
-   *
    * @get get
    * @var int
    */
@@ -150,6 +152,19 @@ class RepeatModel extends WlModelAbstract
    * @var bool
    */
   public $is_cancel = false;
+
+  /**
+   * `true` to also include sessions running in parallel at the same time and location
+   *  (other class period series); `false` to return only the selected series (parent
+   *  period and its reschedules).
+   *
+   * Controlled by the "Also include other sessions happening at the same time" toggle on the form.
+   * Defaults to `false`.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_include_parallel = false;
 
   /**
    * `true` if current user is not created yet, `false` otherwise.

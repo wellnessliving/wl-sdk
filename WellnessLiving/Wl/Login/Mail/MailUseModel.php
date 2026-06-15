@@ -33,6 +33,14 @@ class MailUseModel extends WlModelAbstract
    * @var string
    */
   public $text_mail;
+
+  /**
+   * Key of the user who using email within the business.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $uid_use = null;
 }
 
 ?>

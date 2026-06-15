@@ -30,6 +30,8 @@ class CoreSidModel extends WlModelAbstract
   /**
    * Name of the Sid class to get list from.
    *
+   * Should be a fully qualified class name.
+   * *
    * @get get
    * @var string
    */

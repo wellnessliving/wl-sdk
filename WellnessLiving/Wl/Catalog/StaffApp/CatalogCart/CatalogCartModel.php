@@ -41,37 +41,37 @@ class CatalogCartModel extends WlModelAbstract
    *   <dd>
    *     The list of purchase item additional options:
    * <dl>
-   *   <dt>string [<var>f_price</var>]</dt>
+   *   <dt>string [`f_price`]</dt>
    *   <dd>The custom price.</dd>
-   *   <dt>string [<var>dt_prorate</var>]</dt>
-   *   <dd>The prorate date. This should be passed when <var>is_prorate</var>=<tt>true</tt>.</dd>
-   *   <dt>string [<var>dt_start</var>]</dt>
+   *   <dt>string [`dt_prorate`]</dt>
+   *   <dd>The prorate date. This should be passed when `is_prorate`=`true`.</dd>
+   *   <dt>string [`dt_start`]</dt>
    *   <dd>The promotion start date.</dd>
-   *   <dt>bool [<var>is_prorate</var>]</dt>
+   *   <dt>bool [`is_prorate`]</dt>
    *   <dd>Determines whether to prorate the first payment.</dd>
-   *   <dt>bool [<var>is_prorate_fix</var>]</dt>
+   *   <dt>bool [`is_prorate_fix`]</dt>
    *   <dd>Determines if the client should pay for the first period now.</dd>
-   *   <dt>bool [<var>is_prorate_only</var>]</dt>
+   *   <dt>bool [`is_prorate_only`]</dt>
    *   <dd>Determines whether the selected option 'pay prorate amount only' should only include the prorate amount.</dd>
-   *   <dt>string [<var>m_custom</var>]</dt>
+   *   <dt>string [`m_custom`]</dt>
    *   <dd>The custom price of the gift card.</dd>
-   *   <dt>string [<var>dt_send_local</var>]</dt>
+   *   <dt>string [`dt_send_local`]</dt>
    *   <dd>The date when the gift card email must be sent.</dd>
-   *   <dt>bool <var>is_mail</var></dt>
-   *   <dd>If <tt>true</tt>, the gift card will be sent via email. Otherwise, <tt>false</tt> if the gift card will be printed.</dd>
-   *   <dt>string [<var>s_mail</var>]</dt>
+   *   <dt>bool `is_mail`</dt>
+   *   <dd>If `true`, the gift card will be sent via email. Otherwise, `false` if the gift card will be printed.</dd>
+   *   <dt>string [`s_mail`]</dt>
    *   <dd>The recipient's email.</dd>
-   *   <dt>string [<var>s_message</var>]</dt>
+   *   <dt>string [`s_message`]</dt>
    *   <dd>The message.</dd>
-   *   <dt>string <var>s_recipient</var></dt>
+   *   <dt>string `s_recipient`</dt>
    *   <dd>The recipient's name.</dd>
-   *   <dt>string <var>s_sender</var></dt>
+   *   <dt>string `s_sender`</dt>
    *   <dd>The sender's name.</dd>
-   *   <dt>string <var>m_prorate_custom</var></dt>
+   *   <dt>string `m_prorate_custom`</dt>
    *   <dd>The amount of money for the prorate period. This should only be passed in the case of manual entry.</dd>
-   *   <dt>string <var>k_coupon</var></dt>
+   *   <dt>string `k_coupon`</dt>
    *   <dd>The coupon key.</dd>
-   *   <dt>string <var>k_coupon_amount</var></dt>
+   *   <dt>string `k_coupon_amount`</dt>
    *   <dd>The coupon amount key.</dd>
    * </dl>
    *     <dl>
@@ -79,7 +79,7 @@ class CatalogCartModel extends WlModelAbstract
    *       <dd>The custom price.</dd>
    * 
    *       <dt>string `dt_prorate`</dt>
-   *       <dd>The prorate date. This should be passed when <var>is_prorate</var>=<tt>true</tt>.</dd>
+   *       <dd>The prorate date. This should be passed when `is_prorate`=`true`.</dd>
    * 
    *       <dt>string `dt_start`</dt>
    *       <dd>The promotion start date.</dd>
@@ -100,9 +100,7 @@ class CatalogCartModel extends WlModelAbstract
    *       <dd>The date when the gift card email must be sent.</dd>
    * 
    *       <dt>bool `is_mail`</dt>
-   *       <dd>
-   *         If <tt>true</tt>, the gift card will be sent via email. Otherwise, <tt>false</tt> if the gift card will be printed.
-   *       </dd>
+   *       <dd>If `true`, the gift card will be sent via email. Otherwise, `false` if the gift card will be printed.</dd>
    * 
    *       <dt>string `s_mail`</dt>
    *       <dd>The recipient's email.</dd>
@@ -132,9 +130,9 @@ class CatalogCartModel extends WlModelAbstract
    *     Information about taxes. If not passed, no custom taxes have been applied to the sale item.
    * If a record is present, the tax is custom using the next structure:
    * <dl>
-   *   <dt>string <var>f_tax</var></dt>
+   *   <dt>string `f_tax`</dt>
    *   <dd>The tax amount.</dd>
-   *   <dt>string <var>k_tax</var></dt>
+   *   <dt>string `k_tax`</dt>
    *   <dd>The tax keys. 
    * </dl>
    *     <dl>
@@ -160,7 +158,7 @@ class CatalogCartModel extends WlModelAbstract
    * 
    *   <dt>string `k_shop_product_option`</dt>
    *   <dd>
-   *     The store product option key. This will be <tt>null</tt> if the sale item has no options.
+   *     The store product option key. This will be `null` if the sale item has no options.
    * *   </dd>
    * 
    *   <dt>string `m_discount_fix`</dt>

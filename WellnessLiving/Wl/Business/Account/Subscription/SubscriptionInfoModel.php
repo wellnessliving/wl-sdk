@@ -30,7 +30,7 @@ class SubscriptionInfoModel extends WlModelAbstract
   /**
    * Currently active plan ID for requested subscription.
    *
-   * Collections:
+   * Plans for `1250`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -38,7 +38,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * API Access:
+   * Plans for `1266`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -46,7 +46,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Subscription Plan:
+   * Plans for `861`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -54,7 +54,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Go High Level:
+   * Plans for `1964`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -62,7 +62,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Door Access:
+   * Plans for `1370`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -70,7 +70,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Book-a-Spot:
+   * Plans for `882`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -78,7 +78,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Achieve White Label App:
+   * Plans for `858`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -86,7 +86,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Zapier Integration:
+   * Plans for `1349`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -94,7 +94,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * CAASI:
+   * Plans for `1868`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -102,7 +102,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Customer Review Manager:
+   * Plans for `885`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -110,7 +110,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Mailchimp / Constant Contact:
+   * Plans for `1965`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -118,7 +118,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Constant Contact Integration:
+   * Plans for `2166`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -126,7 +126,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Mailchimp Integration:
+   * Plans for `2165`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -134,7 +134,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Rewards & Loyalty:
+   * Plans for `886`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -142,7 +142,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Business Success Coaching:
+   * Plans for `2225`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -150,7 +150,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Direct Mail:
+   * Plans for `862`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -158,7 +158,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Presence:
+   * Plans for `863`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -166,7 +166,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * FitLIVE:
+   * Plans for `986`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -174,7 +174,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Message Center:
+   * Plans for `857`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -182,7 +182,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Zoom:
+   * Plans for `864`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -190,7 +190,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Finance:
+   * Plans for `1225`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -198,7 +198,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * FitBUILDER:
+   * Plans for `883`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -206,7 +206,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * FitVID on Demand:
+   * Plans for `875`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -214,7 +214,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * FitZONE:
+   * Plans for `884`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -222,7 +222,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Marketing Suite:
+   * Plans for `1838`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
@@ -230,7 +230,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * 
-   * Forms:
+   * Plans for `1133`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>

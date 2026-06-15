@@ -160,6 +160,12 @@ abstract class WlPurchaseItemSid
    * Purchase that is created when a staff adds payment for an appointment at POS {@link WlPurchaseItemSid::APPOINTMENT}.
    */
   const SERVICE = 6;
+
+  /**
+   * Tuition purchase item.
+   * Used when client purchases tuition for an event list.
+   */
+  const TUITION = 26;
 }
 
 ?>

@@ -36,13 +36,13 @@ class ClassSessionSearchModel extends WlModelAbstract
    *   <dd>Date and time of the session in UTC.</dd>
    * 
    *   <dt>string `k_class`</dt>
-   *
+   *   <dd>Class key. 
    * 
    *   <dt>string `k_class_period`</dt>
-   *
+   *   <dd>Class period key. 
    * 
    *   <dt>string `k_class_period_session`</dt>
-   *
+   *   <dd>Class session key. 
    * </dl>
    * @get result
    * @var array
