@@ -10,6 +10,14 @@ use WellnessLiving\WlModelAbstract;
 class RegisterOtpModel extends WlModelAbstract
 {
   /**
+   * Number of attempts left to submit the correct otp code.
+   *
+   * @post result
+   * @var int
+   */
+  public $i_attempt_left = 0;
+
+  /**
    * Business key.
    *
    * @get get

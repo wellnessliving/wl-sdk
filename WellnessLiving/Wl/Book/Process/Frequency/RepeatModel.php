@@ -64,7 +64,7 @@ class RepeatModel extends WlModelAbstract
    *   <dd>Staff name if booking available, warning about wait list or disabled booking otherwise.</dd>
    * 
    *   <dt>string `s_date`</dt>
-   *   <dd>Visit date and time in location's time zone in human readable format.</dd>
+   *   <dd>Visit date and time in location's time zone in human-readable format.</dd>
    * </dl>
    * @get result
    * @var array[]

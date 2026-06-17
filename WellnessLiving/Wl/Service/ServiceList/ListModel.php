@@ -1,0 +1,55 @@
+<?php
+
+namespace WellnessLiving\Wl\Service\ServiceList;
+
+use WellnessLiving\WlModelAbstract;
+
+/**
+ * List of appointment types of the business.
+ */
+class ListModel extends WlModelAbstract
+{
+  /**
+   * Appointment types list:
+   *
+   * <dl>
+   *   <dt>bool `hide_application`</dt>
+   *   <dd>
+   *     Whether service will be hidden in the White Label mobile application.
+   *  <tt>true</tt> means that service will not be displayed, <tt>false</tt> otherwise.
+   *   </dd>
+   * 
+   *   <dt>string `k_service`</dt>
+   *
+   * 
+   *   <dt>string `k_service_category`</dt>
+   *
+   * 
+   *   <dt>string `text_category`</dt>
+   *   <dd>Appointment type category name.</dd>
+   * 
+   *   <dt>string `text_service`</dt>
+   *   <dd>Appointment type name.</dd>
+   * </dl>
+   * @get result
+   * @var array[]
+   */
+  public $a_service;
+
+  /**
+   * Whether to return franchisee-created appointment types (if business is franchisor).
+   * <tt>true</tt> to include franchisee-created appointment types.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_franchise = false;
+
+  /**
+   * @get get
+   * @var string
+   */
+  public $k_business = '';
+}
+
+?>

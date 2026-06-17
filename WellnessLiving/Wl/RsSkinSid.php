@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * A list of skin types.
  *
- * * Last used ID: 20.
+ * * Last used ID: 21.
  */
 abstract class RsSkinSid
 {
@@ -23,6 +23,11 @@ abstract class RsSkinSid
    * Appointment booking wizard.
    */
   const APPOINTMENT = 7;
+
+  /**
+   * Online store widget.
+   */
+  const CATALOG_FOREIGN = 21;
 
   /**
    * Event enrollment wizard widget.

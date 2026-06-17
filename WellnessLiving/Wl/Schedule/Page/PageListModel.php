@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Schedule\Page;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Visit\WlVisitSid;
 
 /**
  * Returns a list of either previous or upcoming visits for a specific user.
@@ -24,11 +25,14 @@ class PageListModel extends WlModelAbstract
    * 
    *   <dt>string `k_visit`</dt>
    *   <dd>Key of a book/visit. 
+   * 
+   *   <dt>int `id_visit`</dt>
+   *   <dd>Visit status ID. One of {@link WlVisitSid} constants.</dd>
    * </dl>
    * @get result
    * @var array[]
    */
-  public $a_visit;
+  public $a_visit = [];
 
   /**
    * If the date is set, a list of services before this date will be returned.
