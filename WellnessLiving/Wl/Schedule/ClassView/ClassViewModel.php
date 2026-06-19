@@ -170,6 +170,9 @@ class ClassViewModel extends WlModelAbstract
    *   <dt>bool `is_wait_list_enabled`</dt>
    *   <dd>`true` if wait list is enabled for class; `false` otherwise.</dd>
    * 
+   *   <dt>string `k_resource_location`</dt>
+   *   <dd>Off-site location asset key. Empty if off-site location is not assigned to this class.</dd>
+   * 
    *   <dt>string `m_price`</dt>
    *   <dd>Session price.</dd>
    * 
@@ -395,6 +398,9 @@ class ClassViewModel extends WlModelAbstract
    * 
    *       <dt>bool `is_wait_list_enabled`</dt>
    *       <dd>`true` if wait list is enabled for class; `false` otherwise.</dd>
+   * 
+   *       <dt>string `k_resource_location`</dt>
+   *       <dd>Off-site location asset key. Empty if off-site location is not assigned to this class.</dd>
    * 
    *       <dt>string `m_price`</dt>
    *       <dd>Session price.</dd>

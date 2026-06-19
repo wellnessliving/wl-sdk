@@ -204,6 +204,9 @@ class ClassList68Model extends WlModelAbstract
    *   <dt>string `k_location`</dt>
    *   <dd>The key of the session's location. 
    * 
+   *   <dt>string `k_resource_location`</dt>
+   *   <dd>Off-site location asset key. Empty if off-site location is not assigned to this class.</dd>
+   * 
    *   <dt>string `s_title`</dt>
    *   <dd>The title of the session.</dd>
    * 
