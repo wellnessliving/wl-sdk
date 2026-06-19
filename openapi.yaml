@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260619110812
+  version: 1.1.20260619113700
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-06-19 11:08:12
+    Last updated at: 2026-06-19 11:37:00
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -23774,6 +23774,9 @@ paths:
                       a_group_info:
                         type: array
                         description: 'All groups to which the specified user belongs.'
+                      is_quick_group:
+                        type: boolean
+                        description: 'Whether the user is in the quick group or not.'
       tags:
         - User-UserGroup
     post:
@@ -23798,7 +23801,7 @@ paths:
               properties:
                 k_member_group:
                   type: [string, "null"]
-                  description: 'Member group key.'
+                  description: 'Member group key. Use special value ''quick'' to add/remove the user to/from the quick group.'
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'

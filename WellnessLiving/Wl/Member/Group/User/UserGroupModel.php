@@ -18,6 +18,14 @@ class UserGroupModel extends WlModelAbstract
   public $a_group_info = [];
 
   /**
+   * Whether the user is in the quick group or not.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_quick_group = false;
+
+  /**
    * Key of the business.
    *
    * @delete get
@@ -28,7 +36,7 @@ class UserGroupModel extends WlModelAbstract
   public $k_business = null;
 
   /**
-   * Member group key.
+   * Member group key. Use special value 'quick' to add/remove the user to/from the quick group.
    *
    * @delete post
    * @post post
