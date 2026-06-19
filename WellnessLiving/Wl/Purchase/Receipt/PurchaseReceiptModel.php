@@ -37,12 +37,7 @@ class PurchaseReceiptModel extends WlModelAbstract
    * <dl>
    *   <dt>array `a_logo`</dt>
    *   <dd>
-   *     The business logo.<dl>
-   * <dt>int <var>i_height</var></dt><dd>The image height.</dd>
-   * <dt>int <var>i_width</var></dt><dd>The image width.</dd>
-   * <dt>bool <var>is_empty</var></dt><dd>This will be `true` if the image is empty. Otherwise, this will be `false`.</dd>
-   * <dt>string <var>text_url</var></dt><dd>The URL of the image.</dd>
-   *   </dl>
+   *     The business logo.
    *     <dl>
    *       <dt>int `i_height`</dt>
    *       <dd>The image height.</dd>
@@ -171,19 +166,7 @@ class PurchaseReceiptModel extends WlModelAbstract
    * <dl>
    *   <dt>array `a_logo`</dt>
    *   <dd>
-   *     The purchase item logo.<dl>
-   *   <dt>int `i_height`</dt>
-   *   <dd>The image height.</dd>
-   * 
-   *   <dt>int `i_width`</dt>
-   *   <dd>The image width.</dd>
-   * 
-   *   <dt>bool `is_empty`</dt>
-   *   <dd>Determines whether the image is empty.</dd>
-   * 
-   *   <dt>string `text_url`</dt>
-   *   <dd>he URL of the image.</dd>
-   * </dl>
+   *     The purchase item logo.
    *     <dl>
    *       <dt>int `i_height`</dt>
    *       <dd>The image height.</dd>
@@ -219,7 +202,7 @@ class PurchaseReceiptModel extends WlModelAbstract
    *   <dt>int `id_sale`</dt>
    *   <dd>Sale ID. One of {@link WlSaleSid} constants.</dd>
    * 
-   *   <dt>int `k_id`</dt>
+   *   <dt>string `k_id`</dt>
    *   <dd>The identifier of the item.</dd>
    * 
    *   <dt>string `k_purchase_item`</dt>

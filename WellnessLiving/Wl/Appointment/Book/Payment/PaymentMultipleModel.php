@@ -29,112 +29,10 @@ class PaymentMultipleModel extends WlModelAbstract
    *   <dt>array[] `a_provider`</dt>
    *   <dd>
    *     The batch of appointments to be booked. Each element has the next values:
-   * <dl>
-   *   <dt>
-   *     array <var>a_product</var>
-   *   </dt>
-   *   <dd>
-   *     The add-on list. Keys are add-on option keys. *     Values are quantities: <dl>
-   *       <dt>string `k_shop_product_option`</dt>
-   *       <dd>Add-on option key (used as array key). 
-   * 
-   *       <dt>int `i_count`</dt>
-   *       <dd>Quantity of the add-on to purchase (used as array value).</dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>
-   *     int <var>i_duration</var>
-   *   </dt>
-   *   <dd>
-   *     The asset duration in minutes. This won't be empty for asset bookings.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_purchase_item</var>
-   *   </dt>
-   *   <dd>
-   *     The ID of the purchase item. One of the {@link WlPurchaseItemSid} constants.
-   *     This won't be empty for new options purchased.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_pay_later</var>
-   *   </dt>
-   *   <dd>
-   *     This will be <tt>true</tt> if the customer wants to pay upon their visit. Otherwise, this will be <tt>false</tt>
-   *     if the user wants to pay now.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_purchase_previous</var>
-   *   </dt>
-   *   <dd>
-   *     This will be <tt>true</tt> if the Purchase Option that was selected for another appointment from the batch
-   *     must be used for this appointment. Otherwise, this will be <tt>false</tt>.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_wait_list_unpaid</var>
-   *   </dt>
-   *   <dd>
-   *     This will be <tt>true</tt> if the customer is booked into the wait list and doesn't have to pay.
-   *     Otherwise, this will be <tt>false</tt> if the customer is booking to an active list (or if the wait list booking
-   *     should be paid now).
-   *   </dd>
-   *   <dt>
-   *     string <var>k_id</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the purchase item.
-   *     This won't be empty for new options purchased.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_login_prize</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the customer's prize used to pay for the booking. This won't be empty for bookings made using prizes.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_login_promotion</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the Purchase Option. This won't be empty when using a Purchase Option that's already been purchased.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_resource</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the asset booking.
-   *     This is only used for asset bookings.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_service</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the appointment booking service.
-   *     This is only used for appointment bookings.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_signature</var>
-   *   </dt>
-   *   <dd>
-   *     The signature for the Purchase Option contract.
-   *     The data is returned from the canvas HTML element or the signature pad.
-   *     This won't be empty if the Purchase Option requires contract signing.
-   *   </dd>
-   *   <dt>
-   *     string [<var>uid</var>]
-   *   </dt>
-   *   <dd>
-   *     User's key. *     Specify only in a case of booking for a lof of different users.
-   *   </dd>
-   * </dl>
    *     <dl>
    *       <dt>array `a_product`</dt>
    *       <dd>
-   *         The add-on list. Keys are add-on option keys. * Values are quantities: <dl>
-   *   <dt>string `k_shop_product_option`</dt>
-   *   <dd>Add-on option key (used as array key). 
-   * 
-   *   <dt>int `i_count`</dt>
-   *   <dd>Quantity of the add-on to purchase (used as array value).</dd>
-   * </dl>
+   *         The add-on list. Keys are add-on option keys. * Values are quantities:
    *         <dl>
    *           <dt>string `k_shop_product_option`</dt>
    *           <dd>
@@ -228,112 +126,10 @@ class PaymentMultipleModel extends WlModelAbstract
    *   <dt>array[] `a_provider`</dt>
    *   <dd>
    *     The batch of appointments to be booked. Each element has the next values:
-   * <dl>
-   *   <dt>
-   *     array <var>a_product</var>
-   *   </dt>
-   *   <dd>
-   *     The add-on list. Keys are add-on option keys. *     Values are quantities: <dl>
-   *       <dt>string `k_shop_product_option`</dt>
-   *       <dd>Add-on option key (used as array key). 
-   * 
-   *       <dt>int `i_count`</dt>
-   *       <dd>Quantity of the add-on to purchase (used as array value).</dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>
-   *     int <var>i_duration</var>
-   *   </dt>
-   *   <dd>
-   *     The asset duration in minutes. This won't be empty for asset bookings.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_purchase_item</var>
-   *   </dt>
-   *   <dd>
-   *     The ID of the purchase item. One of the {@link WlPurchaseItemSid} constants.
-   *     This won't be empty for new options purchased.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_pay_later</var>
-   *   </dt>
-   *   <dd>
-   *     This will be <tt>true</tt> if the customer wants to pay upon their visit. Otherwise, this will be <tt>false</tt>
-   *     if the user wants to pay now.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_purchase_previous</var>
-   *   </dt>
-   *   <dd>
-   *     This will be <tt>true</tt> if the Purchase Option that was selected for another appointment from the batch
-   *     must be used for this appointment. Otherwise, this will be <tt>false</tt>.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_wait_list_unpaid</var>
-   *   </dt>
-   *   <dd>
-   *     This will be <tt>true</tt> if the customer is booked into the wait list and doesn't have to pay.
-   *     Otherwise, this will be <tt>false</tt> if the customer is booking to an active list (or if the wait list booking
-   *     should be paid now).
-   *   </dd>
-   *   <dt>
-   *     string <var>k_id</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the purchase item.
-   *     This won't be empty for new options purchased.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_login_prize</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the customer's prize used to pay for the booking. This won't be empty for bookings made using prizes.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_login_promotion</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the Purchase Option. This won't be empty when using a Purchase Option that's already been purchased.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_resource</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the asset booking.
-   *     This is only used for asset bookings.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_service</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the appointment booking service.
-   *     This is only used for appointment bookings.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_signature</var>
-   *   </dt>
-   *   <dd>
-   *     The signature for the Purchase Option contract.
-   *     The data is returned from the canvas HTML element or the signature pad.
-   *     This won't be empty if the Purchase Option requires contract signing.
-   *   </dd>
-   *   <dt>
-   *     string [<var>uid</var>]
-   *   </dt>
-   *   <dd>
-   *     User's key. *     Specify only in a case of booking for a lof of different users.
-   *   </dd>
-   * </dl>
    *     <dl>
    *       <dt>array `a_product`</dt>
    *       <dd>
-   *         The add-on list. Keys are add-on option keys. * Values are quantities: <dl>
-   *   <dt>string `k_shop_product_option`</dt>
-   *   <dd>Add-on option key (used as array key). 
-   * 
-   *   <dt>int `i_count`</dt>
-   *   <dd>Quantity of the add-on to purchase (used as array value).</dd>
-   * </dl>
+   *         The add-on list. Keys are add-on option keys. * Values are quantities:
    *         <dl>
    *           <dt>string `k_shop_product_option`</dt>
    *           <dd>
@@ -444,117 +240,10 @@ class PaymentMultipleModel extends WlModelAbstract
    *   <dt>array `a_pay_card`</dt>
    *   <dd>
    *     The payment card information:
-   * <dl>
-   *   <dt>array `a_pay_address`</dt>
-   *   <dd>
-   *     The payment address:
-   *     <dl>
-   *       <dt>bool `is_new`</dt>
-   *       <dd>
-   *         Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
-   *       </dd>
-   * 
-   *       <dt>string [`k_geo_country`]</dt>
-   *       <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
-   * 
-   *       <dt>string [`k_geo_region`]</dt>
-   *       <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
-   * 
-   *       <dt>string [`k_pay_address`]</dt>
-   *       <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
-   * 
-   *       <dt>string [`s_city`]</dt>
-   *       <dd>The city used for the payment address. Specify this to add a new address.</dd>
-   * 
-   *       <dt>string [`s_name`]</dt>
-   *       <dd>The card name. Specify this to add a new address.</dd>
-   * 
-   *       <dt>string [`s_phone`]</dt>
-   *       <dd>The payment phone. Specify this to add a new address.</dd>
-   * 
-   *       <dt>string [`s_postal`]</dt>
-   *       <dd>The postal code for the payment address. Specify this to add a new address.</dd>
-   * 
-   *       <dt>string [`s_street1`]</dt>
-   *       <dd>The payment address. Specify this to add a new address.</dd>
-   * 
-   *       <dt>string [`s_street2`]</dt>
-   *       <dd>The optional payment address. Specify this to add a new address.</dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>int [`i_csc`]</dt>
-   *   <dd>
-   *     The credit card CSC. Specify this to add a new card.
-   *   </dd>
-   * 
-   *   <dt>int [`i_month`]</dt>
-   *   <dd>
-   *     The credit card expiration month. Specify this to add a new card.
-   *   </dd>
-   * 
-   *   <dt>int [`i_year`]</dt>
-   *   <dd>
-   *     The credit card expiration year. Specify this to add a new card.
-   *   </dd>
-   * 
-   *   <dt>bool `is_new`</dt>
-   *   <dd>
-   *     Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
-   *   </dd>
-   * 
-   *   <dt>string [`k_pay_bank`]</dt>
-   *   <dd>
-   *     The key of the credit card. Specify this to use saved card.
-   *   </dd>
-   * 
-   *   <dt>string [`s_comment`]</dt>
-   *   <dd>
-   *     Optional comment(s). Specify this to add a new card.
-   *   </dd>
-   * 
-   *   <dt>string [`s_number`]</dt>
-   *   <dd>
-   *     The card number. Specify this to add a new card.
-   *   </dd>
-   * </dl>
    *     <dl>
    *       <dt>array `a_pay_address`</dt>
    *       <dd>
    *         The payment address:
-   * <dl>
-   *   <dt>bool `is_new`</dt>
-   *   <dd>
-   *     Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
-   *   </dd>
-   * 
-   *   <dt>string [`k_geo_country`]</dt>
-   *   <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
-   * 
-   *   <dt>string [`k_geo_region`]</dt>
-   *   <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
-   * 
-   *   <dt>string [`k_pay_address`]</dt>
-   *   <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
-   * 
-   *   <dt>string [`s_city`]</dt>
-   *   <dd>The city used for the payment address. Specify this to add a new address.</dd>
-   * 
-   *   <dt>string [`s_name`]</dt>
-   *   <dd>The card name. Specify this to add a new address.</dd>
-   * 
-   *   <dt>string [`s_phone`]</dt>
-   *   <dd>The payment phone. Specify this to add a new address.</dd>
-   * 
-   *   <dt>string [`s_postal`]</dt>
-   *   <dd>The postal code for the payment address. Specify this to add a new address.</dd>
-   * 
-   *   <dt>string [`s_street1`]</dt>
-   *   <dd>The payment address. Specify this to add a new address.</dd>
-   * 
-   *   <dt>string [`s_street2`]</dt>
-   *   <dd>The optional payment address. Specify this to add a new address.</dd>
-   * </dl>
    *         <dl>
    *           <dt>bool `is_new`</dt>
    *           <dd>
@@ -619,10 +308,10 @@ class PaymentMultipleModel extends WlModelAbstract
    *   <dt>bool `is_hide`</dt>
    *   <dd>Whether payment method should be saved to user's account.</dd>
    * 
-   *   <dt>bool `is_save=true`</dt>
+   *   <dt>bool `is_save`</dt>
    *   <dd>Determines whether this payment method is hidden.</dd>
    * 
-   *   <dt>bool `is_success=false`</dt>
+   *   <dt>bool `is_success`</dt>
    *   <dd>Identifies whether this source was successfully charged.</dd>
    * 
    *   <dt>string `m_surcharge`</dt>
@@ -668,22 +357,8 @@ class PaymentMultipleModel extends WlModelAbstract
    *   <dd>
    *     A list of taxes to apply containing information about taxes.
    * The array keys are <tt>k_tax</tt> keys. Each element contains the following fields:
-   * <dl>
-   *   <dt>
-   *     float <var>m_tax</var>
-   *   </dt>
-   *   <dd>
-   *     The tax rate.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     The name of the tax.
-   *   </dd>
-   * </dl>
    *     <dl>
-   *       <dt>float `m_tax`</dt>
+   *       <dt>string `m_tax`</dt>
    *       <dd>The tax rate.</dd>
    * 
    *       <dt>string `text_title`</dt>
@@ -691,7 +366,7 @@ class PaymentMultipleModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    * 
-   *   <dt>string `id_purchase_item`</dt>
+   *   <dt>int `id_purchase_item`</dt>
    *   <dd>The purchase item ID. One of the {@link WlPurchaseItemSid} constants.</dd>
    * 
    *   <dt>string `k_id`</dt>

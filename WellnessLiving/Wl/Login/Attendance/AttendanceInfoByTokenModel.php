@@ -53,7 +53,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * Default purchase option information.
    *
    * <dl>
-   *   <dt>string|null `id_sale`</dt>
+   *   <dt>int|null `id_sale`</dt>
    *   <dd>
    *     The sale item type, one of the {@link WlSaleSid} constants.
    * This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
@@ -90,8 +90,6 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * It is a double nesting array.
    * Keys - keys - asset index.
    * Values - sub array with keys:
-   * <dl><dt>string <var>text_client</var></dt><dd>User's name.</dd>
-   * <dt>string <var>uid</var></dt><dd>User's primary key.</dd></dl>
    *     <dl>
    *       <dt>string `text_client`</dt>
    *       <dd>User's name.</dd>
@@ -122,26 +120,6 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    *   <dt>array `a_logo`</dt>
    *   <dd>
    *     Data of staff member's photo. Empty if staff has no photo. Otherwise contains next keys:
-   * <dl>
-   *   <dt>
-   *     int <var>i_height</var>
-   *   </dt>
-   *   <dd>
-   *     Height in pixels.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_width</var>
-   *   </dt>
-   *   <dd>
-   *     Width in pixels.
-   *   </dd>
-   *   <dt>
-   *     string <var>url_logo</var>
-   *   </dt>
-   *   <dd>
-   *     Image URL.
-   *   </dd>
-   * </dl>
    *     <dl>
    *       <dt>int `i_height`</dt>
    *       <dd>Height in pixels.</dd>

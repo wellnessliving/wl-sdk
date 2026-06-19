@@ -41,13 +41,6 @@ class InfoModel extends WlModelAbstract
    *   <dt>array[] `a_vaccination_status`</dt>
    *   <dd>
    *     Information about users vaccination status.
-   *    <dl>
-   *  <dt>string `sid_vaccination_status`</dt>
-   *  <dd>Vaccination status sid.</dd>
-   * 
-   *  <dt>string `text_vaccination_status`</dt>
-   *  <dd>Vaccination status.</dd>
-   *    </dl>
    *     <dl>
    *       <dt>string `sid_vaccination_status`</dt>
    *       <dd>
@@ -62,13 +55,6 @@ class InfoModel extends WlModelAbstract
    *   <dt>array[] `a_note`</dt>
    *   <dd>
    *     List of client's notes. Every element has keys:
-   *    <dl>
-   *  <dt>string <var>html_note</var></dt>
-   *  <dd>HTML text ready to be pasted in browser.</dd>
-   * 
-   *  <dt>bool <var>is_flag</var></dt>
-   *  <dd><tt>true</tt> if this note has a flag; <tt>false</tt> otherwise.</dd>
-   *    </dl>
    *     <dl>
    *       <dt>string `html_note`</dt>
    *       <dd>HTML text ready to be pasted in browser.</dd>
@@ -210,13 +196,6 @@ class InfoModel extends WlModelAbstract
    *       <dt>array[] `a_vaccination_status`</dt>
    *       <dd>
    *         Information about users vaccination status.
-   *    <dl>
-   *  <dt>string `sid_vaccination_status`</dt>
-   *  <dd>Vaccination status sid.</dd>
-   * 
-   *  <dt>string `text_vaccination_status`</dt>
-   *  <dd>Vaccination status.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `sid_vaccination_status`</dt>
    *           <dd>
@@ -231,13 +210,6 @@ class InfoModel extends WlModelAbstract
    *       <dt>array[] `a_note`</dt>
    *       <dd>
    *         List of client's notes. Every element has keys:
-   *    <dl>
-   *  <dt>string <var>html_note</var></dt>
-   *  <dd>HTML text ready to be pasted in browser.</dd>
-   * 
-   *  <dt>bool <var>is_flag</var></dt>
-   *  <dd><tt>true</tt> if this note has a flag; <tt>false</tt> otherwise.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `html_note`</dt>
    *           <dd>HTML text ready to be pasted in browser.</dd>

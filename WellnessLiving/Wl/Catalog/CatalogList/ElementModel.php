@@ -75,18 +75,6 @@ class ElementModel extends WlModelAbstract
    *   <dt>array[] `a_component`</dt>
    *   <dd>
    *     This applies only for coupons. Coupon components information. Each element will contain the following keys:
-   * <dl>
-   *   <dt>int `id_program`</dt>
-   *   <dd>Program ID. One of {@link WlProgramSid} ID's. Only applies to promotions.</dd>
-   *   <dt>int `id_purchase_item`</dt>
-   *   <dd>Purchase item ID. One of {@link WlPurchaseItemSid} ID's.</dd>
-   *   <dt>int `id_sale`</dt>
-   *   <dd>Sale ID. One of {@link WlSaleSid} ID's.</dd>
-   *   <dt>int `k_id`</dt>
-   *   <dd>The identifier of the item.</dd>
-   *   <dt>string `text_title`</dt>
-   *   <dd>The title of the item.</dd>
-   * </dl>
    *     <dl>
    *       <dt>int `id_program`</dt>
    *       <dd>Program ID. One of {@link WlProgramSid} ID's. Only applies to promotions.</dd>
@@ -97,7 +85,7 @@ class ElementModel extends WlModelAbstract
    *       <dt>int `id_sale`</dt>
    *       <dd>Sale ID. One of {@link WlSaleSid} ID's.</dd>
    * 
-   *       <dt>int `k_id`</dt>
+   *       <dt>string `k_id`</dt>
    *       <dd>The identifier of the item.</dd>
    * 
    *       <dt>string `text_title`</dt>
@@ -108,16 +96,6 @@ class ElementModel extends WlModelAbstract
    *   <dt>array[] `a_staff`</dt>
    *   <dd>
    *     This applies to enrollment/event items. Staff list for class periods. Each element contains:
-   * <dl>
-   *   <dt>string `k_staff`</dt>
-   *   <dd>@deprecated Legacy staff key. ecated, use `uid_staff`.</dd>
-   *   <dt>string `uid_staff`</dt>
-   *   <dd>Staff user key. 
-   *   <dt>string `text_family`</dt>
-   *   <dd>Staff last name.</dd>
-   *   <dt>string `text_staff`</dt>
-   *   <dd>Staff display name.</dd>
-   * </dl>
    *     <dl>
    *       <dt>string `k_staff`</dt>
    *       <dd>@deprecated Legacy staff key. ecated, use `uid_staff`.</dd>
@@ -274,14 +252,6 @@ class ElementModel extends WlModelAbstract
    *   <dd>
    *     Contains additional data for the sale item.
    * For Package, it contains also the following key:
-   * <dl>
-   *   <dt>bool `is_price_breakdown`</dt>
-   *   <dd>
-   *     Whether to display individual prices for each item in the package.
-   *     `true` display individual prices for each item in the package,
-   *     `false` display a single total price for the package.
-   *   </dd>
-   * </dl>
    *
    *     <dl>
    *       <dt>bool `is_price_breakdown`</dt>
@@ -297,28 +267,8 @@ class ElementModel extends WlModelAbstract
    *   <dd>
    *     Contains information about one image connected to a sale item.
    *     <dl>
-   *       <dt>int `a_image`</dt>
+   *       <dt>array `a_image`</dt>
    *       <dd>
-   *         <dl>
-   * <dt>int <var>i_height</var></dt>
-   * <dd>Height of the variant image.</dd>
-   * <dt>int <var>i_height_src</var></dt>
-   * <dd>Height of the original image.</dd>
-   * <dt>int <var>i_rotate</var></dt>
-   * <dd>Rotate.</dd>
-   * <dt>int <var>i_width</var></dt>
-   * <dd>Width of the variant image.</dd>
-   * <dt>int <var>i_width_src</var></dt>
-   * <dd>Width of the original image.</dd>
-   * <dt>int <var>id_type_src</var></dt>
-   * <dd>Type ID of the image. Constant from {@link DriveTypeSid}.</dd>
-   * <dt>bool <var>is-resize</var></dt>
-   * <dd>`true` if the variant differs from the original, `false` - otherwise.</dd>
-   * <dt>string <var>url-thumbnail</var></dt>
-   * <dd>URL to download variant (thumbnail) file.</dd>
-   * <dt>string <var>url-view</var></dt>
-   * <dd>URL to download original file.</dd>
-   *   </dl>
    *         <dl>
    *           <dt>int `i_height`</dt>
    *           <dd>Height of the variant image.</dd>
@@ -382,7 +332,7 @@ class ElementModel extends WlModelAbstract
    *       <dt>int `id_tax`</dt>
    *       <dd>The tax type. One of {@link WlTaxSid} constants.</dd>
    * 
-   *       <dt>int `k_tax`</dt>
+   *       <dt>string `k_tax`</dt>
    *       <dd>The tax key. 
    * 
    *       <dt>string `s_tax`</dt>
@@ -390,7 +340,7 @@ class ElementModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    * 
-   *   <dt>string `id_purchase_option_view`</dt>
+   *   <dt>int `id_purchase_option_view`</dt>
    *   <dd>The Purchase Option view type.</dd>
    * 
    *   <dt>string `m_discount_code`</dt>
@@ -456,7 +406,7 @@ class ElementModel extends WlModelAbstract
    *   <dt>int `id_tax`</dt>
    *   <dd>The tax type. One of {@link WlTaxSid} constants.</dd>
    * 
-   *   <dt>int `k_tax`</dt>
+   *   <dt>string `k_tax`</dt>
    *   <dd>The tax key. 
    * 
    *   <dt>string `s_tax`</dt>

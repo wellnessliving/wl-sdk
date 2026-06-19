@@ -152,10 +152,10 @@ class ElementModel extends WlModelAbstract
    *   <dt>bool `is_wait`</dt>
    *   <dd>Enable\disable wait list.</dd>
    * 
-   *   <dt>int `k_currency`</dt>
+   *   <dt>string `k_currency`</dt>
    *   <dd>Currency from rs.currency table.</dd>
    * 
-   *   <dt>int `k_timezone`</dt>
+   *   <dt>string `k_timezone`</dt>
    *   <dd>Timezone from get.timezone table.</dd>
    * 
    *   <dt>string `m_payment_penalty`</dt>
@@ -275,30 +275,16 @@ class ElementModel extends WlModelAbstract
    *   <dd>
    *     Schedule of event sessions.
    *     <dl>
-   *       <dt>array `a_day`</dt>
+   *       <dt>true[] `a_day`</dt>
    *       <dd>
-   *         Days of the week when the session occurs. Keys are weekday numbers (1 = Monday, 7 = Sunday),
-   * values are always `true`. <dl>
-   * <dt>true `{i_day}`</dt>
-   * <dd>Weekday flag. Key is the weekday number (1 = Monday ... 7 = Sunday). Value is always `true`.
-   *   </dd>
-   *   </dl>
-   *         <dl>
-   *           <dt>true `{i_day`</dt>
-   *           <dd>Weekday flag. Key is the weekday number (1 = Monday ... 7 = Sunday). Value is always `true`.</dd>
-   *         </dl>
+   *         Days of the week when the session occurs.
+   * Keys are weekday numbers (1 = Monday, 7 = Sunday),
+   * values are always `true`.
    *       </dd>
    * 
    *       <dt>array `a_repeat`</dt>
    *       <dd>
    *         Repeat periodicity instructions.
-   * <dl>
-   *   <dt>int `i_repeat`</dt>
-   *   <dd>Count of the periods which specified in `id_repeat`.</dd>
-   * 
-   *   <dt>int `id_repeat`</dt>
-   *   <dd>Measuring unit of `i_repeat` (week, month, year). One of {@link ADurationSid} constants.</dd>
-   * </dl>
    *         <dl>
    *           <dt>int `i_repeat`</dt>
    *           <dd>Count of the periods which specified in `id_repeat`.</dd>
@@ -311,19 +297,6 @@ class ElementModel extends WlModelAbstract
    *       <dt>array[] `a_staff`</dt>
    *       <dd>
    *         A list of staff members who conduct the session. Every element has the following next keys:
-   * <dl>
-   *   <dt>string `k_staff`</dt>
-   *   <dd>@deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
-   * 
-   *   <dt>string `s_name`</dt>
-   *   <dd>The staff member name.</dd>
-   * 
-   *   <dt>string `s_surname`</dt>
-   *   <dd>The first letter of staff member's surname.</dd>
-   * 
-   *   <dt>int `uid_staff`</dt>
-   *   <dd>The user key of the staff member. 
-   * </dl>
    *         <dl>
    *           <dt>string `k_staff`</dt>
    *           <dd>@deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
@@ -334,7 +307,7 @@ class ElementModel extends WlModelAbstract
    *           <dt>string `s_surname`</dt>
    *           <dd>The first letter of staff member's surname.</dd>
    * 
-   *           <dt>int `uid_staff`</dt>
+   *           <dt>string `uid_staff`</dt>
    *           <dd>The user key of the staff member. 
    *         </dl>
    *       </dd>
@@ -438,10 +411,10 @@ class ElementModel extends WlModelAbstract
    *   <dt>string `html_special`</dt>
    *   <dd>Special instruction for event.</dd>
    * 
-   *   <dt>bool `i_session`</dt>
+   *   <dt>int `i_session`</dt>
    *   <dd>Session count in event.</dd>
    * 
-   *   <dt>bool `i_session_remain`</dt>
+   *   <dt>int `i_session_remain`</dt>
    *   <dd>Remaining session count in event.</dd>
    * 
    *   <dt>bool `is_availability_checked`</dt>
@@ -528,30 +501,16 @@ class ElementModel extends WlModelAbstract
    * A list of event sessions. Every element has the following next keys:
    *
    * <dl>
-   *   <dt>array `a_day`</dt>
+   *   <dt>true[] `a_day`</dt>
    *   <dd>
-   *     Days of the week when the session occurs. Keys are weekday numbers (1 = Monday, 7 = Sunday),
-   * values are always `true`. <dl>
-   * <dt>true `{i_day}`</dt>
-   * <dd>Weekday flag. Key is the weekday number (1 = Monday ... 7 = Sunday). Value is always `true`.
-   *   </dd>
-   *   </dl>
-   *     <dl>
-   *       <dt>true `{i_day`</dt>
-   *       <dd>Weekday flag. Key is the weekday number (1 = Monday ... 7 = Sunday). Value is always `true`.</dd>
-   *     </dl>
+   *     Days of the week when the session occurs.
+   * Keys are weekday numbers (1 = Monday, 7 = Sunday),
+   * values are always `true`.
    *   </dd>
    * 
    *   <dt>array `a_repeat`</dt>
    *   <dd>
    *     Repeat periodicity instructions.
-   * <dl>
-   *   <dt>int `i_repeat`</dt>
-   *   <dd>Count of the periods which specified in `id_repeat`.</dd>
-   * 
-   *   <dt>int `id_repeat`</dt>
-   *   <dd>Measuring unit of `i_repeat` (week, month, year). One of {@link ADurationSid} constants.</dd>
-   * </dl>
    *     <dl>
    *       <dt>int `i_repeat`</dt>
    *       <dd>Count of the periods which specified in `id_repeat`.</dd>
@@ -564,19 +523,6 @@ class ElementModel extends WlModelAbstract
    *   <dt>array[] `a_staff`</dt>
    *   <dd>
    *     A list of staff members who conduct the session. Every element has the following next keys:
-   * <dl>
-   *   <dt>string `k_staff`</dt>
-   *   <dd>@deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
-   * 
-   *   <dt>string `s_name`</dt>
-   *   <dd>The staff member name.</dd>
-   * 
-   *   <dt>string `s_surname`</dt>
-   *   <dd>The first letter of staff member's surname.</dd>
-   * 
-   *   <dt>int `uid_staff`</dt>
-   *   <dd>The user key of the staff member. 
-   * </dl>
    *     <dl>
    *       <dt>string `k_staff`</dt>
    *       <dd>@deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
@@ -587,7 +533,7 @@ class ElementModel extends WlModelAbstract
    *       <dt>string `s_surname`</dt>
    *       <dd>The first letter of staff member's surname.</dd>
    * 
-   *       <dt>int `uid_staff`</dt>
+   *       <dt>string `uid_staff`</dt>
    *       <dd>The user key of the staff member. 
    *     </dl>
    *   </dd>

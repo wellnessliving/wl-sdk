@@ -60,10 +60,6 @@ class QuizElement72Model extends WlModelAbstract
    *       <dt>array `a_change`</dt>
    *       <dd>
    *         Information about amend.
-   *    <dl>
-   *      <dt>string `text_note`</dt>
-   *      <dd>Change note.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `text_note`</dt>
    *           <dd>Change note.</dd>
@@ -147,10 +143,6 @@ class QuizElement72Model extends WlModelAbstract
    *       <dt>array `a_change`</dt>
    *       <dd>
    *         Information about amend.
-   *    <dl>
-   *      <dt>string `text_note`</dt>
-   *      <dd>Change note.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `text_note`</dt>
    *           <dd>Change note.</dd>
@@ -223,10 +215,6 @@ class QuizElement72Model extends WlModelAbstract
    *       <dt>array `a_change`</dt>
    *       <dd>
    *         Information about amend.
-   *    <dl>
-   *      <dt>string `text_note`</dt>
-   *      <dd>Change note.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `text_note`</dt>
    *           <dd>Change note.</dd>
@@ -310,10 +298,6 @@ class QuizElement72Model extends WlModelAbstract
    *       <dt>array `a_change`</dt>
    *       <dd>
    *         Information about amend.
-   *    <dl>
-   *      <dt>string `text_note`</dt>
-   *      <dd>Change note.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `text_note`</dt>
    *           <dd>Change note.</dd>
@@ -397,10 +381,6 @@ class QuizElement72Model extends WlModelAbstract
    *       <dt>array `a_change`</dt>
    *       <dd>
    *         Information about amend.
-   *    <dl>
-   *      <dt>string `text_note`</dt>
-   *      <dd>Change note.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `text_note`</dt>
    *           <dd>Change note.</dd>
@@ -510,10 +490,6 @@ class QuizElement72Model extends WlModelAbstract
    *       <dt>array `a_change`</dt>
    *       <dd>
    *         Information about amend.
-   *    <dl>
-   *      <dt>string `text_note`</dt>
-   *      <dd>Change note.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `text_note`</dt>
    *           <dd>Change note.</dd>
@@ -597,10 +573,6 @@ class QuizElement72Model extends WlModelAbstract
    *       <dt>array `a_change`</dt>
    *       <dd>
    *         Information about amend.
-   *    <dl>
-   *      <dt>string `text_note`</dt>
-   *      <dd>Change note.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `text_note`</dt>
    *           <dd>Change note.</dd>
@@ -678,10 +650,6 @@ class QuizElement72Model extends WlModelAbstract
    *       <dt>array `a_change`</dt>
    *       <dd>
    *         Information about amend.
-   *    <dl>
-   *      <dt>string `text_note`</dt>
-   *      <dd>Change note.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `text_note`</dt>
    *           <dd>Change note.</dd>
@@ -736,10 +704,6 @@ class QuizElement72Model extends WlModelAbstract
    *       <dt>array `a_change`</dt>
    *       <dd>
    *         Information about amend.
-   *    <dl>
-   *      <dt>string `text_note`</dt>
-   *      <dd>Change note.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `text_note`</dt>
    *           <dd>Change note.</dd>
@@ -823,10 +787,6 @@ class QuizElement72Model extends WlModelAbstract
    *       <dt>array `a_change`</dt>
    *       <dd>
    *         Information about amend.
-   *    <dl>
-   *      <dt>string `text_note`</dt>
-   *      <dd>Change note.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `text_note`</dt>
    *           <dd>Change note.</dd>
@@ -909,10 +869,6 @@ class QuizElement72Model extends WlModelAbstract
    *       <dt>array `a_change`</dt>
    *       <dd>
    *         Information about amend.
-   *    <dl>
-   *      <dt>string `text_note`</dt>
-   *      <dd>Change note.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `text_note`</dt>
    *           <dd>Change note.</dd>
@@ -1018,10 +974,6 @@ class QuizElement72Model extends WlModelAbstract
    *       <dt>array `a_change`</dt>
    *       <dd>
    *         Information about amend.
-   *    <dl>
-   *      <dt>string `text_note`</dt>
-   *      <dd>Change note.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `text_note`</dt>
    *           <dd>Change note.</dd>
@@ -1105,10 +1057,6 @@ class QuizElement72Model extends WlModelAbstract
    *       <dt>array `a_change`</dt>
    *       <dd>
    *         Information about amend.
-   *    <dl>
-   *      <dt>string `text_note`</dt>
-   *      <dd>Change note.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `text_note`</dt>
    *           <dd>Change note.</dd>
@@ -1181,10 +1129,6 @@ class QuizElement72Model extends WlModelAbstract
    *       <dt>array `a_change`</dt>
    *       <dd>
    *         Information about amend.
-   *    <dl>
-   *      <dt>string `text_note`</dt>
-   *      <dd>Change note.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `text_note`</dt>
    *           <dd>Change note.</dd>

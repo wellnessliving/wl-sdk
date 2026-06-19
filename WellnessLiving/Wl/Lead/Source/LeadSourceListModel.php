@@ -29,17 +29,23 @@ class LeadSourceListModel extends WlModelAbstract
    *   <dd>
    *     `true` if this skin will be used for "Add Lead" form or `false` otherwise.
    * Only one skin in the business can be used for "Add Lead" form.
+   *  Not available if current user is not a staff member or admin.
    *   </dd>
    * 
    *   <dt>bool `is_use`</dt>
-   *   <dd>Determines whether Lead Source is being used.
-   * `true` if Lead Source is being used. `false` - otherwise.</dd>
+   *   <dd>
+   *     Determines whether Lead Source is being used.
+   * `true` if Lead Source is being used. `false` - otherwise.
+   *  Not available if current user is not a staff member or admin.
+   *   </dd>
    * 
    *   <dt>string `k_lead_source`</dt>
    *   <dd>Key of the lead source. 
    * 
    *   <dt>string `k_skin`</dt>
-   *   <dd>Key of the lead skin. 
+   *   <dd>
+   *     Key of the lead skin. * Not available if current user is not a staff member or admin.
+   *   </dd>
    * 
    *   <dt>string `text_title`</dt>
    *   <dd>Name of the Lead Source.</dd>

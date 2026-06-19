@@ -42,13 +42,6 @@ class ProcessGroupModel extends WlModelAbstract
    *     List of event sessions to book. Required for only for event that allows to select sessions to book.
    *     Each element has next keys:
    *     <dl>
-   *         <dt>string `dtu_date`</dt>
-   *         <dd>Session date/time.</dd>
-   * 
-   *         <dt>string `k_class_period`</dt>
-   *         <dd>Session key. 
-   *     </dl>
-   *     <dl>
    *       <dt>string `dtu_date`</dt>
    *       <dd>Session date/time.</dd>
    * 
@@ -60,52 +53,6 @@ class ProcessGroupModel extends WlModelAbstract
    *   <dt>array[] `a_purchase_item`</dt>
    *   <dd>
    *     Purchase option information. Required if the service requires online payment. Elements have next keys:
-   *     <dl>
-   *         <dt>int [`i_count`]</dt>
-   *          <dd>
-   *              Number of options to purchase. Specify only if you want to pay a class booking by Drop-In.
-   *          </dd>
-   * 
-   *          <dt>int [`id_purchase_item`]</dt>
-   *          <dd>
-   *              Kind of option to purchase. One of {@link WlPurchaseItemSid} constants.
-   *              Specify only if you want to purchase a new option.
-   *          </dd>
-   * 
-   *          <dt>bool [`is_renew`]</dt>
-   *          <dd>
-   *              `true` if you want to enable auto-renewal for new purchase option. `false` otherwise.
-   *              Specify only if you want to purchase a new option.
-   *          </dd>
-   * 
-   *          <dt>bool [`is_owner`]</dt>
-   *          <dd>
-   *              `true` if client is owner of this purchase option.
-   *              This means that this purchase option will be purchased for this client, even if another client
-   *              can share a similar purchase option.
-   *          </dd>
-   * 
-   *          <dt>string [`k_id`]</dt>
-   *          <dd>
-   *              *              Specify only if you want to purchase a new option.
-   *          </dd>
-   * 
-   *          <dt>string [`k_login_prize`]</dt>
-   *          <dd>
-   *              *              Specify if you want to pay by user's prize.
-   *          </dd>
-   * 
-   *          <dt>string [`k_reward_prize`]</dt>
-   *          <dd>
-   *              *              Specify if you want to redeem a prize for payment.
-   *          </dd>
-   * 
-   *          <dt>string [`s_signature`]</dt>
-   *          <dd>
-   *              Signature of the client in base64 format.
-   *              Specify only if you want to buy a purchase option that requires signature.
-   *          </dd>
-   *     </dl>
    *     <dl>
    *       <dt>int `i_count`</dt>
    *       <dd>Number of options to purchase. Specify only if you want to pay a class booking by Drop-In.</dd>
@@ -160,43 +107,7 @@ class ProcessGroupModel extends WlModelAbstract
    *   <dt>array `a_repeat`</dt>
    *   <dd>
    *     Recurring booking configuration:
-   *     <dl>
-   *       <dt>int[] `a_day`</dt>
-   *       <dd>
-   *         The days of week when the session repeats. One of the {@link ADateWeekSid} constants.
-   *         Should be passed for any type of repetition.
-   *       </dd>
-   * 
-   *       <dt>string [`dt_from`]</dt>
-   *       <dd>
-   *         Date to start recurring booking.
-   *         Expected for `id_repeat_
-   *       </dd>
-   * 
-   *       <dt>string [`dt_to`]</dt>
-   *       <dd>
-   *         Date to complete recurring booking.
-   *         Expected for `id_repeat_
-   *       </dd>
-   * 
-   *       <dt>int [`i_count`]</dt>
-   *        <dd>
-   *          The number of occurrences after which the appointment's repeat cycle stops.
-   *          Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *          Expected for `id_repeat_
-   *        </dd>
-   *       <dt>int `i_duration`</dt>
-   *       <dd>Count of days\weeks\months between recurring bookings.</dd>
-   * 
-   *       <dt>int `id_duration`</dt>
-   *       <dd>
-   *         The measurement unit of `i_duration`. One of the {@link ADurationSid} constants.
-   *
-   *       </dd>
-   * 
-   *       <dt>int `id_repeat_end`</dt>
-   *       <dd>Possible ways to stop repeatable events.</dd>
-   *     </dl>
+   *     
    *     You can test this key only in a case of `1` client.
    *     <dl>
    *       <dt>int[] `a_day`</dt>
@@ -238,25 +149,25 @@ class ProcessGroupModel extends WlModelAbstract
    *   <dd>
    *     Asset information. Required if the service requires asset booking. Each element has next keys:
    *     <dl>
-   *         <dt>int `i_index`</dt>
-   *         <dd>Order number of the asset.</dd>
-   * 
-   *         <dt>int `k_resource`</dt>
-   *         <dd>Asset key. 
-   *     </dl>
-   *     <dl>
    *       <dt>int `i_index`</dt>
    *       <dd>Order number of the asset.</dd>
    * 
-   *       <dt>int `k_resource`</dt>
+   *       <dt>string `k_resource`</dt>
    *       <dd>Asset key. 
    *     </dl>
    *   </dd>
    * 
    *   <dt>string `k_login_promotion`</dt>
    *   <dd>
-   *     *     Specify only if you want to pay by already purchased option.
-   *   </dd>
+   *     Login promotion key.
+   *     Specify only if you want to pay by already purchased option.
+   *     *   </dd>
+   * 
+   *   <dt>string `k_login_promotion_guest_pass`</dt>
+   *   <dd>
+   *     Guest pass login promotion key.
+   *     Specify only if you want to pay with guest pass granted by this login promotion.
+   *     *   </dd>
    * 
    *   <dt>string `k_session_pass`</dt>
    *   <dd>Session pass to be used to book a session.
@@ -287,117 +198,10 @@ class ProcessGroupModel extends WlModelAbstract
    *   <dt>array `a_pay_card`</dt>
    *   <dd>
    *     The payment card information:
-   * <dl>
-   *   <dt>array `a_pay_address`</dt>
-   *   <dd>
-   *     The payment address:
-   *     <dl>
-   *       <dt>bool `is_new`</dt>
-   *       <dd>
-   *         Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
-   *       </dd>
-   * 
-   *       <dt>string [`k_geo_country`]</dt>
-   *       <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
-   * 
-   *       <dt>string [`k_geo_region`]</dt>
-   *       <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
-   * 
-   *       <dt>string [`k_pay_address`]</dt>
-   *       <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
-   * 
-   *       <dt>string [`s_city`]</dt>
-   *       <dd>The city used for the payment address. Specify this to add a new address.</dd>
-   * 
-   *       <dt>string [`s_name`]</dt>
-   *       <dd>The card name. Specify this to add a new address.</dd>
-   * 
-   *       <dt>string [`s_phone`]</dt>
-   *       <dd>The payment phone. Specify this to add a new address.</dd>
-   * 
-   *       <dt>string [`s_postal`]</dt>
-   *       <dd>The postal code for the payment address. Specify this to add a new address.</dd>
-   * 
-   *       <dt>string [`s_street1`]</dt>
-   *       <dd>The payment address. Specify this to add a new address.</dd>
-   * 
-   *       <dt>string [`s_street2`]</dt>
-   *       <dd>The optional payment address. Specify this to add a new address.</dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>int [`i_csc`]</dt>
-   *   <dd>
-   *     The credit card CSC. Specify this to add a new card.
-   *   </dd>
-   * 
-   *   <dt>int [`i_month`]</dt>
-   *   <dd>
-   *     The credit card expiration month. Specify this to add a new card.
-   *   </dd>
-   * 
-   *   <dt>int [`i_year`]</dt>
-   *   <dd>
-   *     The credit card expiration year. Specify this to add a new card.
-   *   </dd>
-   * 
-   *   <dt>bool `is_new`</dt>
-   *   <dd>
-   *     Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
-   *   </dd>
-   * 
-   *   <dt>string [`k_pay_bank`]</dt>
-   *   <dd>
-   *     The key of the credit card. Specify this to use saved card.
-   *   </dd>
-   * 
-   *   <dt>string [`s_comment`]</dt>
-   *   <dd>
-   *     Optional comment(s). Specify this to add a new card.
-   *   </dd>
-   * 
-   *   <dt>string [`s_number`]</dt>
-   *   <dd>
-   *     The card number. Specify this to add a new card.
-   *   </dd>
-   * </dl>
    *     <dl>
    *       <dt>array `a_pay_address`</dt>
    *       <dd>
    *         The payment address:
-   * <dl>
-   *   <dt>bool `is_new`</dt>
-   *   <dd>
-   *     Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
-   *   </dd>
-   * 
-   *   <dt>string [`k_geo_country`]</dt>
-   *   <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
-   * 
-   *   <dt>string [`k_geo_region`]</dt>
-   *   <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
-   * 
-   *   <dt>string [`k_pay_address`]</dt>
-   *   <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
-   * 
-   *   <dt>string [`s_city`]</dt>
-   *   <dd>The city used for the payment address. Specify this to add a new address.</dd>
-   * 
-   *   <dt>string [`s_name`]</dt>
-   *   <dd>The card name. Specify this to add a new address.</dd>
-   * 
-   *   <dt>string [`s_phone`]</dt>
-   *   <dd>The payment phone. Specify this to add a new address.</dd>
-   * 
-   *   <dt>string [`s_postal`]</dt>
-   *   <dd>The postal code for the payment address. Specify this to add a new address.</dd>
-   * 
-   *   <dt>string [`s_street1`]</dt>
-   *   <dd>The payment address. Specify this to add a new address.</dd>
-   * 
-   *   <dt>string [`s_street2`]</dt>
-   *   <dd>The optional payment address. Specify this to add a new address.</dd>
-   * </dl>
    *         <dl>
    *           <dt>bool `is_new`</dt>
    *           <dd>
@@ -462,10 +266,10 @@ class ProcessGroupModel extends WlModelAbstract
    *   <dt>bool `is_hide`</dt>
    *   <dd>Whether payment method should be saved to user's account.</dd>
    * 
-   *   <dt>bool `is_save=true`</dt>
+   *   <dt>bool `is_save`</dt>
    *   <dd>Determines whether this payment method is hidden.</dd>
    * 
-   *   <dt>bool `is_success=false`</dt>
+   *   <dt>bool `is_success`</dt>
    *   <dd>Identifies whether this source was successfully charged.</dd>
    * 
    *   <dt>string `m_surcharge`</dt>

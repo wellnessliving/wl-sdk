@@ -97,10 +97,10 @@ class BusinessConfigModel extends WlModelAbstract
    *   <dt>bool `is_wait`</dt>
    *   <dd>Enable\disable wait list.</dd>
    * 
-   *   <dt>int `k_currency`</dt>
+   *   <dt>string `k_currency`</dt>
    *   <dd>Currency from rs.currency table.</dd>
    * 
-   *   <dt>int `k_timezone`</dt>
+   *   <dt>string `k_timezone`</dt>
    *   <dd>Timezone from get.timezone table.</dd>
    * 
    *   <dt>string `m_payment_penalty`</dt>
@@ -170,25 +170,25 @@ class BusinessConfigModel extends WlModelAbstract
    *   <dt>int `id_charge_measure`</dt>
    *   <dd>Charge measure type. `0` for percent, `1` for money amount.</dd>
    * 
-   *   <dt>int `is_appointment_all`</dt>
+   *   <dt>bool `is_appointment_all`</dt>
    *   <dd>`1` if all classes are selected, `0` - otherwise.</dd>
    * 
-   *   <dt>int `is_class_all`</dt>
+   *   <dt>bool `is_class_all`</dt>
    *   <dd>`1` if all classes are selected, `0` - otherwise.</dd>
    * 
-   *   <dt>int `is_enable_cancel_charge`</dt>
+   *   <dt>bool `is_enable_cancel_charge`</dt>
    *   <dd>`true` if promotion penalties is enable, `false` otherwise.</dd>
    * 
-   *   <dt>int `is_event_all`</dt>
+   *   <dt>bool `is_event_all`</dt>
    *   <dd>`1` if all events are selected, `0` - otherwise.</dd>
    * 
-   *   <dt>int `is_login_type_all`</dt>
+   *   <dt>bool `is_login_type_all`</dt>
    *   <dd>`1` if all login types are selected, `0` - otherwise.</dd>
    * 
-   *   <dt>int `is_resource_all`</dt>
+   *   <dt>bool `is_resource_all`</dt>
    *   <dd>`1` if all resources are selected, `0` - otherwise.</dd>
    * 
-   *   <dt>int `is_service_all`</dt>
+   *   <dt>bool `is_service_all`</dt>
    *   <dd>`1` if all services are selected, `0` - otherwise.</dd>
    * </dl>
    * @get result

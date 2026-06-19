@@ -17,15 +17,7 @@ class VisitStatusModel extends WlModelAbstract
    * <dl>
    *   <dt>array|null `a_penalty`</dt>
    *   <dd>
-   *     <dl>
-   *       <dt>bool `is_flat`</dt>
-   *       <dd>`true` in a case of flat penalty type; `false` in a case of percentage penalty type.</dd>
-   *       <dt>string `k_currency`</dt>
-   *       <dd>Currency >
-   *       <dt>string `m_amount`</dt>
-   *       <dd>Penalty amount.</dd>
-   *    </dl>
-   *    `null` if penalty must be not applied.
+   *     `null` if penalty must be not applied.
    *     <dl>
    *       <dt>bool `is_flat`</dt>
    *       <dd>`true` in a case of flat penalty type; `false` in a case of percentage penalty type.</dd>

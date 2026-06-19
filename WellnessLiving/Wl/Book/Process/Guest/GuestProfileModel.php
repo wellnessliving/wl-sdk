@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Book\Process\Guest;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Service\ServiceSid;
 
 /**
@@ -18,6 +19,15 @@ class GuestProfileModel extends WlModelAbstract
    * @var string
    */
   public $dl_birthday = '';
+
+  /**
+   * The mode type used to determine the Lead Source for the created guest.
+   * One of the {@link ModeSid} constants. Default is {@link ModeSid::API}.
+   *
+   * @post post
+   * @var int
+   */
+  public $id_mode = 0;
 
   /**
    * Type of the service to book.

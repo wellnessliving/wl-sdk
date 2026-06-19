@@ -22,11 +22,26 @@ class ClassViewModel extends WlModelAbstract
    *   <dt>int `i_index`</dt>
    *   <dd>Asset index.</dd>
    * 
+   *   <dt>string `id_category`</dt>
+   *   <dd>Type of the asset: Asset or Off-Site Location.</dd>
+   * 
+   *   <dt>string `k_city`</dt>
+   *   <dd>City of the asset, if this is Off-Site Location.</dd>
+   * 
    *   <dt>string `k_resource`</dt>
    *   <dd>Resource key. 
    * 
+   *   <dt>string `text_address`</dt>
+   *   <dd>Address of the asset, if this is Off-Site Location.</dd>
+   * 
+   *   <dt>string `text_guide`</dt>
+   *   <dd>Additional address guidance, if this is Off-Site Location.</dd>
+   * 
    *   <dt>string `text_index`</dt>
    *   <dd>Asset index with '#' prefix.</dd>
+   * 
+   *   <dt>string `text_postal`</dt>
+   *   <dd>Postal code of the asset, if this is Off-Site Location.</dd>
    * 
    *   <dt>string `text_name`</dt>
    *   <dd>
@@ -52,19 +67,6 @@ class ClassViewModel extends WlModelAbstract
    *   <dt>array `a_image`</dt>
    *   <dd>
    *     Class image data:
-   * <dl>
-   *   <dt>int <var>i_height</var></dt>
-   *   <dd>Image height.</dd>
-   * 
-   *   <dt>int <var>i_width</var></dt>
-   *   <dd>Image width.</dd>
-   * 
-   *   <dt>bool <var>is_empty</var></dt>
-   *   <dd>Whether current image is empty.</dd>
-   * 
-   *   <dt>string <var>s_url</var></dt>
-   *   <dd>Url link to image.</dd>
-   * </dl>
    *     <dl>
    *       <dt>int `i_height`</dt>
    *       <dd>Image height.</dd>
@@ -83,13 +85,6 @@ class ClassViewModel extends WlModelAbstract
    *   <dt>array[] `a_search_tag`</dt>
    *   <dd>
    *     List of search tags.
-   * <dl>
-   *   <dt>string <var>k_search_tag</var></dt>
-   *   <dd>Search tag key. 
-   * 
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>Search tag name.</dd>
-   * </dl>
    *     <dl>
    *       <dt>string `k_search_tag`</dt>
    *       <dd>Search tag key. 
@@ -260,11 +255,26 @@ class ClassViewModel extends WlModelAbstract
    *       <dt>int `i_index`</dt>
    *       <dd>Asset index.</dd>
    * 
+   *       <dt>string `id_category`</dt>
+   *       <dd>Type of the asset: Asset or Off-Site Location.</dd>
+   * 
+   *       <dt>string `k_city`</dt>
+   *       <dd>City of the asset, if this is Off-Site Location.</dd>
+   * 
    *       <dt>string `k_resource`</dt>
    *       <dd>Resource key. 
    * 
+   *       <dt>string `text_address`</dt>
+   *       <dd>Address of the asset, if this is Off-Site Location.</dd>
+   * 
+   *       <dt>string `text_guide`</dt>
+   *       <dd>Additional address guidance, if this is Off-Site Location.</dd>
+   * 
    *       <dt>string `text_index`</dt>
    *       <dd>Asset index with '#' prefix.</dd>
+   * 
+   *       <dt>string `text_postal`</dt>
+   *       <dd>Postal code of the asset, if this is Off-Site Location.</dd>
    * 
    *       <dt>string `text_name`</dt>
    *       <dd>
@@ -283,19 +293,6 @@ class ClassViewModel extends WlModelAbstract
    *       <dt>array `a_image`</dt>
    *       <dd>
    *         Class image data:
-   * <dl>
-   *   <dt>int <var>i_height</var></dt>
-   *   <dd>Image height.</dd>
-   * 
-   *   <dt>int <var>i_width</var></dt>
-   *   <dd>Image width.</dd>
-   * 
-   *   <dt>bool <var>is_empty</var></dt>
-   *   <dd>Whether current image is empty.</dd>
-   * 
-   *   <dt>string <var>s_url</var></dt>
-   *   <dd>Url link to image.</dd>
-   * </dl>
    *         <dl>
    *           <dt>int `i_height`</dt>
    *           <dd>Image height.</dd>
@@ -314,13 +311,6 @@ class ClassViewModel extends WlModelAbstract
    *       <dt>array[] `a_search_tag`</dt>
    *       <dd>
    *         List of search tags.
-   * <dl>
-   *   <dt>string <var>k_search_tag</var></dt>
-   *   <dd>Search tag key. 
-   * 
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>Search tag name.</dd>
-   * </dl>
    *         <dl>
    *           <dt>string `k_search_tag`</dt>
    *           <dd>Search tag key. 
@@ -455,21 +445,11 @@ class ClassViewModel extends WlModelAbstract
    *       <dt>array `a_logo`</dt>
    *       <dd>
    *         Information about staff photo:
-   * <dl>
-   *   <dt>int <var>id_gender</var></dt>
-   *   <dd>ID of gender.</dd>
-   * 
-   *   <dt>int <var>is_empty</var></dt>
-   *   <dd>`true` - staff has photo; `false` - has no photo.</dd>
-   * 
-   *   <dt>string <var>s_url</var></dt>
-   *   <dd>URL to staff photo.</dd>
-   * </dl>
    *         <dl>
    *           <dt>int `id_gender`</dt>
    *           <dd>ID of gender.</dd>
    * 
-   *           <dt>int `is_empty`</dt>
+   *           <dt>bool `is_empty`</dt>
    *           <dd>`true` - staff has photo; `false` - has no photo.</dd>
    * 
    *           <dt>string `s_url`</dt>
@@ -477,10 +457,10 @@ class ClassViewModel extends WlModelAbstract
    *         </dl>
    *       </dd>
    * 
-   *       <dt>string `is_quick_substitute`</dt>
+   *       <dt>bool `is_quick_substitute`</dt>
    *       <dd>Whether staff or pay rate changed due quick substitution.</dd>
    * 
-   *       <dt>string `is_substitute`</dt>
+   *       <dt>bool `is_substitute`</dt>
    *       <dd>Whether or not this staff member is a substitute.</dd>
    * 
    *       <dt>string `k_staff`</dt>
@@ -538,21 +518,11 @@ class ClassViewModel extends WlModelAbstract
    *   <dt>array `a_logo`</dt>
    *   <dd>
    *     Information about staff photo:
-   * <dl>
-   *   <dt>int <var>id_gender</var></dt>
-   *   <dd>ID of gender.</dd>
-   * 
-   *   <dt>int <var>is_empty</var></dt>
-   *   <dd>`true` - staff has photo; `false` - has no photo.</dd>
-   * 
-   *   <dt>string <var>s_url</var></dt>
-   *   <dd>URL to staff photo.</dd>
-   * </dl>
    *     <dl>
    *       <dt>int `id_gender`</dt>
    *       <dd>ID of gender.</dd>
    * 
-   *       <dt>int `is_empty`</dt>
+   *       <dt>bool `is_empty`</dt>
    *       <dd>`true` - staff has photo; `false` - has no photo.</dd>
    * 
    *       <dt>string `s_url`</dt>
@@ -560,10 +530,10 @@ class ClassViewModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    * 
-   *   <dt>string `is_quick_substitute`</dt>
+   *   <dt>bool `is_quick_substitute`</dt>
    *   <dd>Whether staff or pay rate changed due quick substitution.</dd>
    * 
-   *   <dt>string `is_substitute`</dt>
+   *   <dt>bool `is_substitute`</dt>
    *   <dd>Whether or not this staff member is a substitute.</dd>
    * 
    *   <dt>string `k_staff`</dt>

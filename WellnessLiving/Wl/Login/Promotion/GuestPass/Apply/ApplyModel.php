@@ -11,22 +11,6 @@ use WellnessLiving\WlModelAbstract;
 class ApplyModel extends WlModelAbstract
 {
   /**
-   * Full name of the inviting member, for display in the attendance row.
-   *
-   * @post result
-   * @var string
-   */
-  public $html_inviter_name = '';
-
-  /**
-   * Name of the guest pass promotion used.
-   *
-   * @post result
-   * @var string
-   */
-  public $html_pass_name = '';
-
-  /**
    * Business key.
    *
    * @post get

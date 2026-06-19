@@ -41,12 +41,6 @@ class ServiceList52Model extends WlModelAbstract
    * This can't be one link, as the same appointment can be available in several booking tabs.
    * Therefore, each booking tab has its own direct booking link.
    * Each element has two values:
-   * <dl>
-   *   <dt>string <var>k_class_tab</var></dt>
-   *   <dd>The key of the book now tab.</dd>
-   *   <dt>string <var>url_tab</var></dt>
-   *   <dd>The booking URL. This will open the booking wizard under the related booking tab.</dd>
-   * </dl>
    *     <dl>
    *       <dt>string `k_class_tab`</dt>
    *       <dd>The key of the book now tab.</dd>
@@ -59,18 +53,7 @@ class ServiceList52Model extends WlModelAbstract
    *   <dt>array|null `a_config`</dt>
    *   <dd>
    *     Appointment-specific business policy overrides. `null` when the service uses the general business policy.
-   * When not `null`, contains a subset of business config fields, including: <dl>
-   *   <dt>bool `is_back_to_back`</dt>
-   *   <dd>`true` if this service supports back-to-back booking.</dd>
-   *   <dt>bool `is_book_repeat_client`</dt>
-   *   <dd>`true` if clients can book this service on a recurring basis.</dd>
-   *   <dt>bool `is_book_repeat_no_end_date_appointment`</dt>
-   *   <dd>`true` if appointment bookings for this service default to weekly recurring with no end date.</dd>
-   *   <dt>bool `is_multiple_booking`</dt>
-   *   <dd>`true` if multiple bookings are allowed for this service.</dd>
-   *   <dt>bool `is_wait_list_unpaid`</dt>
-   *   <dd>`true` if clients on the wait list do not have to pay upfront.</dd>
-   * </dl>
+   * When not `null`, contains a subset of business config fields, including:
    *     <dl>
    *       <dt>bool `is_back_to_back`</dt>
    *       <dd>`true` if this service supports back-to-back booking.</dd>
@@ -92,20 +75,6 @@ class ServiceList52Model extends WlModelAbstract
    *   <dt>array `a_image`</dt>
    *   <dd>
    *     Information about the appointment image. An array with the following values:
-   * <dl>
-   *   <dt>int <var>i_height</var></dt>
-   *   <dd>The height of the image.</dd>
-   *   <dt>int <var>i_width</var></dt>
-   *   <dd>The width of the image.</dd>
-   *   <dt>bool <var>is_empty</var></dt>
-   *   <dd>This will be `true` if the image is not set.</dd>
-   *   <dt>string <var>k_service</var></dt>
-   *   <dd>The service key.</dd>
-   *   <dt>string <var>s_service</var></dt>
-   *   <dd>The name of the service.</dd>
-   *   <dt>string <var>s_url</var></dt>
-   *   <dd>The URL to the image.</dd>
-   * </dl>
    *     <dl>
    *       <dt>int `i_height`</dt>
    *       <dd>The height of the image.</dd>

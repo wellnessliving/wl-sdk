@@ -31,22 +31,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
    * <dl>
    *   <dt>array `a_pay_transaction`</dt>
    *   <dd>
-   *     List of pay transactions associated with this row. Each element: <dl>
-   *   <dt>int `id_pay_method`</dt>
-   *   <dd>Payment method ID. One of {@link WlPayMethodSid} constants.</dd>
-   * 
-   *   <dt>string `k_pay_transaction`</dt>
-   *   <dd>Pay transaction key. 
-   * 
-   *   <dt>string `m_amount`</dt>
-   *   <dd>Amount paid.</dd>
-   * 
-   *   <dt>string `m_surcharge`</dt>
-   *   <dd>Surcharge amount from store settings.</dd>
-   * 
-   *   <dt>string|int `s_batch_number`</dt>
-   *   <dd>Batch number for this transaction.</dd>
-   * </dl>
+   *     List of pay transactions associated with this row. Each element:
    *     <dl>
    *       <dt>int `id_pay_method`</dt>
    *       <dd>Payment method ID. One of {@link WlPayMethodSid} constants.</dd>

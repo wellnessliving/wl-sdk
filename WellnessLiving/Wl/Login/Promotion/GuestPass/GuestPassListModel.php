@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Login\Promotion\GuestPass;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlProgramSid;
 
 /**
  * API for managing guest passes of specific client.
@@ -33,13 +34,6 @@ class GuestPassListModel extends WlModelAbstract
    *   <dd>
    *     Start and end dates of the current reset period.
    *   `null` if there is no reset period or the reset date is unavailable.
-   *   <dl>
-   * <dt>string `dl_end`</dt>
-   * <dd>Period end date in MySQL date format.</dd>
-   * 
-   * <dt>string `dl_start`</dt>
-   * <dd>Period start date in MySQL date format.</dd>
-   *   </dl>
    *     <dl>
    *       <dt>string `dl_end`</dt>
    *       <dd>Period end date in MySQL date format.</dd>
@@ -123,6 +117,10 @@ class GuestPassListModel extends WlModelAbstract
    *     Unit of the reset period. One of {@link ADurationSid} constants.
    * `null` if the promotion has no reset period.
    *   </dd>
+   * 
+   *   <dt>int `id_program_guest`</dt>
+   *   <dd>Guest pass program ID.
+   * One of {@link WlProgramSid} constants.</dd>
    * 
    *   <dt>int `id_reset_type_guest`</dt>
    *   <dd>Reset type of the host promotion.</dd>

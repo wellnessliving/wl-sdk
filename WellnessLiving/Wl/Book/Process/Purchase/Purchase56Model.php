@@ -58,16 +58,6 @@ class Purchase56Model extends WlModelAbstract
    *   <dt>array `a_login_promotion_info`</dt>
    *   <dd>
    *     Information about the Purchase Option with the following information:
-   *  <dl>
-   *    <dt>int <var>i_limit</var></dt>
-   *    <dd>The number of visits the Purchase Option allows the client to make.</dd>
-   *    <dt>int|null <var>i_limit_duration</var></dt>
-   *    <dd>The maximum number of minutes the Purchase Option can be used for.</dd>
-   *    <dt>int <var>i_remain</var></dt>
-   *    <dd>The number of the remaining visits the Purchase Option has left.</dd>
-   *    <dt>int|null <var>i_remain_duration</var></dt>
-   *    <dd>The number of minutes left in the Purchase Option.</dd>
-   *  </dl>
    *     <dl>
    *       <dt>int `i_limit`</dt>
    *       <dd>The number of visits the Purchase Option allows the client to make.</dd>
@@ -95,14 +85,6 @@ class Purchase56Model extends WlModelAbstract
    *   <dt>array `a_restrict`</dt>
    *   <dd>
    *     Data about the shortest restriction period:
-   * <dl>
-   *   <dt>int <var>i_limit</var></dt>
-   *   <dd>The limit of visits for the shortest restriction period.</dd>
-   *   <dt>int <var>i_remain</var></dt>
-   *   <dd>The number of remaining visits for the shortest restriction period.</dd>
-   *   <dt>string <var>text_restriction</var></dt>
-   *   <dd>The description of the shortest restriction period (for example "this week" or "for a 4 day period").</dd>
-   * </dl>
    *     <dl>
    *       <dt>int `i_limit`</dt>
    *       <dd>The limit of visits for the shortest restriction period.</dd>
@@ -118,23 +100,6 @@ class Purchase56Model extends WlModelAbstract
    *   <dt>array[] `a_restrict_data`</dt>
    *   <dd>
    *     Data about all restriction periods given as an array, where each record has the following structure:
-   * <dl>
-   *   <dt>int <var>i_book</var></dt>
-   *   <dd>The number of future sessions paid using this Purchase Option.</dd>
-   *   <dt>int <var>i_limit</var></dt>
-   *   <dd>The limit of visits for the restriction period.</dd>
-   *   <dt>int <var>i_remain</var></dt>
-   *   <dd>The number of remaining visits for the restriction period.</dd>
-   *   <dt>int <var>i_use</var></dt>
-   *   <dd>The Purchase Option's usage count.</dd>
-   *   <dt>int <var>i_visit_past</var></dt>
-   *   <dd>
-   *     The number of attended sessions before the last renewal.
-   *     This will be `0` if there aren't any sessions before the last renewal or the Purchase Option doesn't auto-renew.
-   *   </dd>
-   *   <dt>string <var>text_restriction</var></dt>
-   *   <dd>The description of restriction period (for example "this week" or "for a 4 day period").</dd>
-   * </dl>
    *     <dl>
    *       <dt>int `i_book`</dt>
    *       <dd>The number of future sessions paid using this Purchase Option.</dd>
@@ -226,12 +191,6 @@ class Purchase56Model extends WlModelAbstract
    * Each element has the following structure:
    *
    * <dl>
-   *   <dt>int `i_session = 1`</dt>
-   *   <dd>
-   *     Number of paid sessions of the same class|event that were selected for the previous user.
-   *   This number should not include free or waitlist unpaid sessions.
-   *   </dd>
-   * 
    *   <dt>string `k_login_promotion`</dt>
    *   <dd>Selected purchase option. 
    * 
@@ -250,21 +209,7 @@ class Purchase56Model extends WlModelAbstract
    * <dl>
    *   <dt>array[] `a_installment_template`</dt>
    *   <dd>
-   *     A list of installment plans. Every element has the next keys:<dl>
-   * <dt>int <var>i_count</var></dt>
-   * <dd>The number of payments.</dd>
-   * <dt>int <var>id_duration</var></dt>
-   * <dd>The duration of a single period. One of the {@link ADurationSid} constants.</dd>
-   * <dt>int <var>i_period</var></dt>
-   * <dd>The number of periods specified by <var>id_period</var> between individual payments.</dd>
-   * <dt>string <var>k_currency</var></dt>
-   * <dd>The payment currency key.</dd>
-   * <dt>string <var>k_pay_installment_template</var></dt>
-   * <dd>The key of the installment plan template. 
-   * <dt>string <var>m_amount</var></dt>
-   * <dd>The amount of the installment plan.</dd>
-   * <dt>string <var>s_duration</var></dt>
-   * <dd>The title of the installment plan.</dd></dl>
+   *     A list of installment plans. Every element has the next keys:
    *     <dl>
    *       <dt>int `i_count`</dt>
    *       <dd>The number of payments.</dd>
@@ -292,9 +237,7 @@ class Purchase56Model extends WlModelAbstract
    * 
    *   <dt>array[] `a_visit_limit`</dt>
    *   <dd>
-   *     This is only set for Purchase Options. A list of limits on booking by the Purchase Option. Every element has the next keys:<dl>
-   * <dt>string <var>s_title</var></dt>
-   * <dd>The limit description.</dd></dl>
+   *     This is only set for Purchase Options. A list of limits on booking by the Purchase Option. Every element has the next keys:
    *     <dl>
    *       <dt>string `s_title`</dt>
    *       <dd>The limit description.</dd>
@@ -654,12 +597,6 @@ class Purchase56Model extends WlModelAbstract
    * Each element has the following structure:
    *
    * <dl>
-   *   <dt>int `i_session = 1`</dt>
-   *   <dd>
-   *     Number of paid sessions of the same class|event that were selected for the previous user.
-   *   This number should not include free or waitlist unpaid sessions.
-   *   </dd>
-   * 
    *   <dt>string `k_login_promotion`</dt>
    *   <dd>Selected purchase option. 
    * 

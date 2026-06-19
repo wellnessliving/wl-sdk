@@ -18,72 +18,10 @@ class ElementModel extends WlModelAbstract
    *   <dt>array `a_schedule`</dt>
    *   <dd>
    *     A list of class schedules. Each element has the next structure:
-   * <dl>
-   *   <dt>array <var>a_repeat</var></dt>
-   *   <dd>
-   *     Schedule repeat options:
-   *     <dl>
-   *       <dt>int <var>i_repeat</var></dt>
-   *       <dd>A count of the periods specified in <var>id_repeat</var>.</dd>
-   * 
-   *       <dt>int <var>id_repeat</var></dt>
-   *       <dd>
-   *         The measuring unit of <var>i_repeat</var>.
-   *         One of {@link ADurationSid} constants.
-   *       </dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>string <var>a_staff_key</var></dt>
-   *   <dd>A list of staff member keys that provide sessions for this schedule.</dd>
-   * 
-   *   <dt>string[] <var>a_uid_staff_key</var></dt>
-   *   <dd>A list of staff member keys UID that provide sessions for this schedule.</dd>
-   * 
-   *   <dt>string <var>dl_end</var></dt>
-   *   <dd>
-   *     The end date of the schedule in the location's time zone.
-   *     This will be empty or zero if the schedule is ongoing.
-   *   </dd>
-   * 
-   *   <dt>string <var>dl_start</var></dt>
-   *   <dd>The start date of the schedule in location's time zone.</dd>
-   * 
-   *   <dt>int <var>i_day</var></dt>
-   *   <dd>The day of the week, where the class schedule exists, starting with 1 for Monday and ending with 7 for Sunday.</dd>
-   * 
-   *   <dt>int <var>i_duration</var></dt>
-   *   <dd>The duration of the schedule sessions in minutes.</dd>
-   * 
-   *   <dt>int <var>is_cancel</var></dt>
-   *   <dd>Defines whether the schedule canceled or not.</dd>
-   * 
-   *   <dt>string <var>k_location</var></dt>
-   *   <dd>The location key of the schedule.</dd>
-   * 
-   *   <dt>string <var>m_price</var></dt>
-   *   <dd>The price of a single session of the schedule.</dd>
-   * 
-   *   <dt>string <var>text_room</var></dt>
-   *   <dd>The room of the class period.</dd>
-   * 
-   *   <dt>string <var>text_time</var></dt>
-   *   <dd>The time of the session in the following format: `[start_time] - [end_time]` in the locale's time zone.</dd>
-   * </dl>
    *     <dl>
    *       <dt>array `a_repeat`</dt>
    *       <dd>
    *         Schedule repeat options:
-   * <dl>
-   *   <dt>int <var>i_repeat</var></dt>
-   *   <dd>A count of the periods specified in <var>id_repeat</var>.</dd>
-   * 
-   *   <dt>int <var>id_repeat</var></dt>
-   *   <dd>
-   *     The measuring unit of <var>i_repeat</var>.
-   *     One of {@link ADurationSid} constants.
-   *   </dd>
-   * </dl>
    *         <dl>
    *           <dt>int `i_repeat`</dt>
    *           <dd>A count of the periods specified in <var>id_repeat</var>.</dd>
@@ -94,7 +32,7 @@ class ElementModel extends WlModelAbstract
    *         </dl>
    *       </dd>
    * 
-   *       <dt>string `a_staff_key`</dt>
+   *       <dt>string[] `a_staff_key`</dt>
    *       <dd>A list of staff member keys that provide sessions for this schedule.</dd>
    * 
    *       <dt>string[] `a_uid_staff_key`</dt>
@@ -117,7 +55,7 @@ class ElementModel extends WlModelAbstract
    *       <dt>int `i_duration`</dt>
    *       <dd>The duration of the schedule sessions in minutes.</dd>
    * 
-   *       <dt>int `is_cancel`</dt>
+   *       <dt>bool `is_cancel`</dt>
    *       <dd>Defines whether the schedule canceled or not.</dd>
    * 
    *       <dt>string `k_location`</dt>

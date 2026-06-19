@@ -199,14 +199,15 @@ class EditByTokenModel extends WlModelAbstract
 
   /**
    * Whether the address be inherited.
-   * `true` if address inherit, otherwise `false`.
+   * `true` if address inherit, `false` to remove inheritance.
+   * `null` if not explicitly set (PUT only: preserves the current state).
    *
    * @get result
    * @post get
    * @put get
-   * @var bool
+   * @var bool|null
    */
-  public $is_address_inherit = false;
+  public $is_address_inherit = null;
 
   /**
    * `true` to throw an exception in a case of validation error; `false` to not throw.

@@ -19,33 +19,6 @@ class PromotionModel extends WlModelAbstract
    *   <dt>array `a_access`</dt>
    *   <dd>
    *     Information about services that can be attended with this pass or membership.
-   * <dl>
-   *   <dt>array[] <var>a_class</var></dt>
-   *   <dd>A list of available classes.</dd>
-   * 
-   *   <dt>array[] <var>a_event</var></dt>
-   *   <dd>A list of available events.</dd>
-   * 
-   *   <dt>array[] <var>a_resource</var></dt>
-   *   <dd>A list of available assets.</dd>
-   * 
-   *   <dt>array[] <var>a_service</var></dt>
-   *   <dd>A list of available appointment types.</dd>
-   * 
-   *   <dt>bool <var>is_class_all</var></dt>
-   *   <dd>
-   *     This will be `true` if any class in the business can be visited with this Purchase Option.
-   *     Otherwise, this will be `false` if only selected classes can be visited with this Purchase Option.
-   *     Selected classes can be found in the list of available classes and events.
-   *   </dd>
-   * 
-   *   <dt>bool <var>is_event_all</var></dt>
-   *   <dd>
-   *     This will be `true` if any event in the business can be visited with this Purchase Option.
-   *     Otherwise, this will be `false` if only selected events can be visited with this Purchase Option.
-   *     Selected events can be found in the list of available classes and events.
-   *   </dd>
-   * </dl>
    *     <dl>
    *       <dt>array[] `a_class`</dt>
    *       <dd>
@@ -103,16 +76,6 @@ class PromotionModel extends WlModelAbstract
    *   <dd>
    *     Information about Purchase Option image.
    * This will be an empty array if the Purchase Option doesn't have an image.
-   * <dl>
-   *   <dt>string <var>i_height</var></dt>
-   *   <dd>The height of the image.</dd>
-   * 
-   *   <dt>string <var>i_width</var></dt>
-   *   <dd>The width of the image.</dd>
-   * 
-   *   <dt>string <var>url-thumbnail</var></dt>
-   *   <dd>The link to the image.</dd>
-   * </dl>
    *     <dl>
    *       <dt>string `i_height`</dt>
    *       <dd>The height of the image.</dd>

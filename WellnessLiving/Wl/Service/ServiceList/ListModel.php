@@ -20,10 +20,10 @@ class ListModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string `k_service`</dt>
-   *
+   *   <dd>Appointment type identifier, primary key.</dd>
    * 
    *   <dt>string `k_service_category`</dt>
-   *
+   *   <dd>Appointment type category identifier, primary key.</dd>
    * 
    *   <dt>string `text_category`</dt>
    *   <dd>Appointment type category name.</dd>
@@ -46,6 +46,8 @@ class ListModel extends WlModelAbstract
   public $is_franchise = false;
 
   /**
+   * Business key, primary key.
+   *
    * @get get
    * @var string
    */

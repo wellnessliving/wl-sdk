@@ -51,12 +51,6 @@ class LeadModel extends WlModelAbstract
    *   <dd>
    *     A list of possible options for an HTML select field. This value is only used if this field is an HTML select.
    * Every element has the following keys:
-   * <dl>
-   *   <dt>string <var>s_id</var></dt>
-   *   <dd>The option ID.</dd>
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>The option title.</dd>
-   * </dl>
    *     <dl>
    *       <dt>string `s_id`</dt>
    *       <dd>The option ID.</dd>
@@ -96,13 +90,6 @@ class LeadModel extends WlModelAbstract
    *   <dt>array[] `a_style`</dt>
    *   <dd>
    *     List of compiled CSS style blocks. Each element:
-   * <dl>
-   * <dt>string `s_style`</dt>
-   * <dd>Compiled CSS style block string.</dd>
-   * 
-   * <dt>string `s_value_name`</dt>
-   * <dd>Name of the skin value this style block belongs to.</dd>
-   *   </dl>
    *     <dl>
    *       <dt>string `s_style`</dt>
    *       <dd>Compiled CSS style block string.</dd>
@@ -115,13 +102,6 @@ class LeadModel extends WlModelAbstract
    *   <dt>array `background`</dt>
    *   <dd>
    *     Background styling for the widget container:
-   * <dl>
-   * <dt>string `class`</dt>
-   * <dd>CSS class names to apply to the element.</dd>
-   * 
-   * <dt>string `css`</dt>
-   * <dd>Inline CSS style string to apply to the element.</dd>
-   *   </dl>
    *     <dl>
    *       <dt>string `class`</dt>
    *       <dd>CSS class names to apply to the element.</dd>
@@ -134,13 +114,6 @@ class LeadModel extends WlModelAbstract
    *   <dt>array `field-font`</dt>
    *   <dd>
    *     Font styling for form fields:
-   * <dl>
-   * <dt>string `class`</dt>
-   * <dd>CSS class names to apply to the element.</dd>
-   * 
-   * <dt>string `css`</dt>
-   * <dd>Inline CSS style string to apply to the element.</dd>
-   *   </dl>
    *     <dl>
    *       <dt>string `class`</dt>
    *       <dd>CSS class names to apply to the element.</dd>
@@ -153,16 +126,6 @@ class LeadModel extends WlModelAbstract
    *   <dt>array `header-text`</dt>
    *   <dd>
    *     Header section settings:
-   * <dl>
-   * <dt>string `class`</dt>
-   * <dd>CSS class names to apply to the element.</dd>
-   * 
-   * <dt>string `css`</dt>
-   * <dd>Inline CSS style string to apply to the element.</dd>
-   * 
-   * <dt>string `text`</dt>
-   * <dd>Header text content.</dd>
-   *   </dl>
    *     <dl>
    *       <dt>string `class`</dt>
    *       <dd>CSS class names to apply to the element.</dd>
@@ -178,16 +141,6 @@ class LeadModel extends WlModelAbstract
    *   <dt>array `info-show`</dt>
    *   <dd>
    *     Visibility settings for information elements:
-   * <dl>
-   * <dt>bool[] `a_require`</dt>
-   * <dd>Map of required element names. Keys are element names, values are `true`.</dd>
-   * 
-   * <dt>bool[] `a_show`</dt>
-   * <dd>Map of visible element names. Keys are element names, values are `true`.</dd>
-   * 
-   * <dt>bool `empty`</dt>
-   * <dd>`true` if no elements are visible.</dd>
-   *   </dl>
    *     <dl>
    *       <dt>bool[] `a_require`</dt>
    *       <dd>Map of required element names. Keys are element names, values are `true`.</dd>
@@ -203,13 +156,6 @@ class LeadModel extends WlModelAbstract
    *   <dt>array `submit-background`</dt>
    *   <dd>
    *     Background styling for the submit button:
-   * <dl>
-   * <dt>string `class`</dt>
-   * <dd>CSS class names to apply to the element.</dd>
-   * 
-   * <dt>string `css`</dt>
-   * <dd>Inline CSS style string to apply to the element.</dd>
-   *   </dl>
    *     <dl>
    *       <dt>string `class`</dt>
    *       <dd>CSS class names to apply to the element.</dd>
@@ -222,13 +168,6 @@ class LeadModel extends WlModelAbstract
    *   <dt>array `submit-font`</dt>
    *   <dd>
    *     Font styling for the submit button:
-   * <dl>
-   * <dt>string `class`</dt>
-   * <dd>CSS class names to apply to the element.</dd>
-   * 
-   * <dt>string `css`</dt>
-   * <dd>Inline CSS style string to apply to the element.</dd>
-   *   </dl>
    *     <dl>
    *       <dt>string `class`</dt>
    *       <dd>CSS class names to apply to the element.</dd>
@@ -241,16 +180,6 @@ class LeadModel extends WlModelAbstract
    *   <dt>array `submit-text`</dt>
    *   <dd>
    *     Text settings for the submit button:
-   * <dl>
-   * <dt>string `class`</dt>
-   * <dd>CSS class names to apply to the element.</dd>
-   * 
-   * <dt>string `css`</dt>
-   * <dd>Inline CSS style string to apply to the element.</dd>
-   * 
-   * <dt>string `text`</dt>
-   * <dd>Submit button text content.</dd>
-   *   </dl>
    *     <dl>
    *       <dt>string `class`</dt>
    *       <dd>CSS class names to apply to the element.</dd>

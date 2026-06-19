@@ -34,18 +34,7 @@ class StaffListModel extends WlModelAbstract
    *   <dt>array `a_staff_service`</dt>
    *   <dd>
    *     A list of all services, provided by the staff member.
-   * Each element is an array with structure: <dl>
-   *   <dt>
-   *     string <var>k_service</var>
-   *   </dt>
-   *   <dd>
-   *     Service key. *   </dd>
-   *   <dt>
-   *     string <var>k_staff_pay</var>
-   *   </dt>
-   *   <dd>
-   *     Staff pay key for this service. *   </dd>
-   * </dl>
+   * Each element is an array with structure:
    *     <dl>
    *       <dt>string `k_service`</dt>
    *       <dd>Service key. 

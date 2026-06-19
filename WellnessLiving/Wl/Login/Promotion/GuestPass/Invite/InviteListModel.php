@@ -35,24 +35,6 @@ class InviteListModel extends WlModelAbstract
    *   <dt>array `a_guest`</dt>
    *   <dd>
    *     Guest user identity data.
-   * <dl>
-   *   <dt>string `text_mail`</dt>
-   *   <dd>Guest email address.</dd>
-   * 
-   *   <dt>string `text_name_first`</dt>
-   *   <dd>Guest first name.</dd>
-   * 
-   *   <dt>string `text_name_last`</dt>
-   *   <dd>Guest last name.</dd>
-   * 
-   *   <dt>string|null `text_phone`</dt>
-   *   <dd>Guest phone number, or `null` if not available.</dd>
-   * 
-   *   <dt>string|null `uid`</dt>
-   *   <dd>
-   *     Guest user key. *     `null` if the guest did not have an account when the invitation was sent.
-   *   </dd>
-   * </dl>
    *     <dl>
    *       <dt>string `text_mail`</dt>
    *       <dd>Guest email address.</dd>
@@ -133,6 +115,9 @@ class InviteListModel extends WlModelAbstract
    *     `true` if the guest may only enter when the inviting member is checked in.
    * `null` if no guest pass settings are configured for the promotion.
    *   </dd>
+   * 
+   *   <dt>bool `is_visit_future`</dt>
+   *   <dd>`true` if associated visit in future, `false` otherwise.</dd>
    * 
    *   <dt>string|null `k_login_promotion_guest`</dt>
    *   <dd>

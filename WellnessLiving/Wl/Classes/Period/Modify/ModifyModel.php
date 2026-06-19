@@ -40,16 +40,7 @@ class ModifyModel extends WlModelAbstract
    * 
    *   <dt>array[] `a_staff`</dt>
    *   <dd>
-   *     Selected instructors. Used in {@link RsClassModifyStepSid::FORM}:<dl>
-   * <dt>string `k_staff`</dt>
-   * <dd>@deprecated Staff key. 
-   * 
-   * <dt>string `uid_staff`</dt>
-   * <dd>Staff user key. onal.</dd>
-   * 
-   * <dt>string `k_staff_pay`</dt>
-   * <dd>Staff pay rate ID. 
-   *   </dl>
+   *     Selected instructors. Used in {@link RsClassModifyStepSid::FORM}:
    *     <dl>
    *       <dt>string `k_staff`</dt>
    *       <dd>@deprecated Staff key. 

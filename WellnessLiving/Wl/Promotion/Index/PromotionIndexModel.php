@@ -24,39 +24,6 @@ class PromotionIndexModel extends WlModelAbstract
    *   <dt>array `a_access`</dt>
    *   <dd>
    *     Information about services that can be attended with this pass or membership.
-   * <dl>
-   *   <dt>array[] <var>a_class</var></dt>
-   *   <dd>
-   *     A list of available classes.
-   *   </dd>
-   * 
-   *   <dt>array[] <var>a_event</var></dt>
-   *   <dd>
-   *     A list of available events.
-   *   </dd>
-   * 
-   *   <dt>array[] <var>a_resource</var></dt>
-   *   <dd>
-   *     A list of available assets.
-   *   </dd>
-   * 
-   *   <dt>array[] <var>a_service</var></dt>
-   *   <dd>
-   *     A list of available appointment types.
-   *   </dd>
-   * 
-   *   <dt>bool <var>is_class_all</var></dt>
-   *   <dd>
-   *     If `true`, any class in the business can be visited with this Purchase Option. If `false`, only selected classes can be visited.
-   *     Selected classes can be found in the list of available classes and events.
-   *   </dd>
-   * 
-   *   <dt>bool <var>is_event_all</var></dt>
-   *   <dd>
-   *     If `true`, if any event in the business can be visited with this Purchase Option. If `false`, if only selected events can be visited.
-   *     Selected events can be found in the list of available classes and events.
-   *   </dd>
-   * </dl>
    *     <dl>
    *       <dt>array[] `a_class`</dt>
    *       <dd>
@@ -117,32 +84,6 @@ class PromotionIndexModel extends WlModelAbstract
    * value instead).
    * There can be three types of components: events, Purchase Options, and products.
    * Some fields can be different depending on type of the component, but each element of the array includes:
-   * <dl>
-   *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>
-   *      The type of the component.
-   *      One of {@link WlPurchaseItemSid} constants.
-   *      This can only be: <ul>
-   *          <li>{@link RsPurchaseItemSid::ENROLLMENT}</li>
-   *          <li>{@link RsPurchaseItemSid::PROMOTION}</li>
-   *          <li>{@link RsPurchaseItemSid::PRODUCT}</li>
-   *      </ul>
-   *   </dd>
-   * 
-   *   <dt>string <var>k_id</var></dt>
-   *   <dd>
-   *     The primary key of the component in the related table. This depends on the type of the component.
-   *     The key of the event for {@link RsPurchaseItemSid::ENROLLMENT}, the key of the Purchase Option for the
-   *
-   *     Full information about products are not available at this moment though API.
-   *   </dd>
-   * 
-   *   <dt>int <var>i_quantity</var></dt>
-   *   <dd>The quantity. If empty, it means the quantity is 1.</dd>
-   * 
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>The name of the component.</dd>
-   * </dl>
    *     <dl>
    *       <dt>int `id_purchase_item`</dt>
    *       <dd>
@@ -175,16 +116,6 @@ class PromotionIndexModel extends WlModelAbstract
    *   <dd>
    *     This will be an empty array if the Purchase Option doesn't have image.
    * Otherwise, this will display the following information about the Purchase Option image:
-   * <dl>
-   *   <dt>string <var>i_height</var></dt>
-   *   <dd>The height of the image.</dd>
-   * 
-   *   <dt>string <var>i_width</var></dt>
-   *   <dd>The width of the image.</dd>
-   * 
-   *   <dt>string <var>url-thumbnail</var></dt>
-   *   <dd>The link to the image.</dd>
-   * </dl>
    *     <dl>
    *       <dt>string `i_height`</dt>
    *       <dd>The height of the image.</dd>
@@ -203,49 +134,6 @@ class PromotionIndexModel extends WlModelAbstract
    * the time period {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH},
    *
    * The values are:
-   * <dl>
-   *   <dt>int <var>i_limit</var></dt>
-   *   <dd>The quantity of sessions every <var>i_period</var>.</dd>
-   * 
-   *   <dt>int <var>i_period</var></dt>
-   *   <dd>The duration of the time period. This depends on a key of <var>a_visit_limit</var> array.</dd>
-   * 
-   *   <dt>int <var>i_roll_over_cap</var></dt>
-   *   <dd>The limit number of rollover sessions.</dd>
-   * 
-   *   <dt>int <var>i_roll_over_expire</var></dt>
-   *   <dd>The duration of the time period after which rolled over session will expire.</dd>
-   * 
-   *   <dt>int <var>id_roll_over_expire</var></dt>
-   *   <dd>
-   *     The type of <var>i_roll_over_expire</var>.
-   *     One of {@link ADurationSid} contantant.
-   *     This can only be: <ul>
-   *         <li>{@link ADurationSid::DAY}</li>
-   *         <li>{@link ADurationSid::WEEK}</li>
-   *         <li>{@link ADurationSid::MONTH}</li>
-   *         <li>{@link ADurationSid::YEAR}</li>
-   *     </ul>
-   *   </dd>
-   * 
-   *   <dt>int <var>id_limit_cycle</var></dt>
-   *   <dd>The type of the limit cycle {@link Sid}.</dd>
-   * 
-   *   <dt>bool <var>is_reconcile_visit</var></dt>
-   *   <dd>Determines whether to reconcile unpaid sessions on restrictions reset.</dd>
-   * 
-   *   <dt>bool <var>is_roll_over_expire</var></dt>
-   *   <dd>Determines if the rolled over session is expired.</dd>
-   * 
-   *   <dt>bool <var>is_roll_over_renew</var></dt>
-   *   <dd>Determines whether to rollover sessions upon auto-renew.</dd>
-   * 
-   *   <dt>bool <var>is_rollup</var></dt>
-   *   <dd>Determines Whether to rollover sessions.</dd>
-   * 
-   *   <dt>bool <var>is_visit_conversion</var></dt>
-   *   <dd>Determines whether to convert remaining visits.</dd>
-   * </dl>
    *     <dl>
    *       <dt>int `i_limit`</dt>
    *       <dd>The quantity of sessions every <var>i_period</var>.</dd>

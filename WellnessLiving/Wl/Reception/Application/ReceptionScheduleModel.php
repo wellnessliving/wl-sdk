@@ -19,10 +19,7 @@ class ReceptionScheduleModel extends WlModelAbstract
    * <dl>
    *   <dt>array `a_resources_shared`</dt>
    *   <dd>
-   *     A list of shared resources containing:<dl>
-   *   <dt>string <var>k_resource</var></dt><dd>The resource key.</dd>
-   *   <dt>string <var>s_title</var></dt><dd>The resource title.</dd>
-   *   </dl>
+   *     A list of shared resources containing:
    *     <dl>
    *       <dt>string `k_resource`</dt>
    *       <dd>The resource key.</dd>
@@ -34,9 +31,7 @@ class ReceptionScheduleModel extends WlModelAbstract
    * 
    *   <dt>array `a_staff_all`</dt>
    *   <dd>
-   *     A list of staff members instructing the service, containing:<dl>
-   *   <dt>string <var>s_name_full</var></dt><dd>The staff member's full name.</dd>
-   *   </dl>
+   *     A list of staff members instructing the service, containing:
    *     <dl>
    *       <dt>string `s_name_full`</dt>
    *       <dd>The staff member's full name.</dd>
@@ -93,62 +88,11 @@ class ReceptionScheduleModel extends WlModelAbstract
    * <dl>
    *   <dt>array `a_payment`</dt>
    *   <dd>
-   *     Data for the promotion payment informational card. Each element contains:<dl>
-   * <dt>array <var>a_restrict</var></dt>
-   * <dd>Calendar restrictions. A duration pass will only have elements if a restriction has been met. This contains: <dl>
-   *   <dt>int <var>i_limit</var></dt><dd>The count of possible visits.</dd>
-   *   <dt>int <var>i_remain</var></dt><dd>The count of remaining visits.</dd>
-   *   <dt>bool <var>s_date</var></dt><dd>The calendar period name.</dd>
-   * </dl></dd>
-   * <dt>bool <var>has_visit_past</var></dt>
-   * <dd>If `true`, the promotion was renewed in the past. Otherwise, this will be `false`.</dd>
-   * <dt>bool <var>hide_visit_additional_info</var></dt>
-   * <dd>If `true`, additional info should be excluded. Otherwise, this will be `false`.</dd>
-   * <dt>int <var>i_book</var></dt><dd>The count of upcoming uses of the promotion.</dd>
-   * <dt>int <var>i_book_duration</var></dt>
-   * <dd>
-   *   Number of minutes used for upcoming visits.
-   *
-   * </dd>
-   * <dt>int <var>i_limit</var></dt><dd>The promotion's visit count limit.</dd>
-   * <dt>int <var>i_remain</var></dt><dd>The remaining count of visits.</dd>
-   * <dt>int <var>i_remain_duration</var></dt>
-   * <dd>
-   *   Number of minutes left in this promotion.
-   *
-   * </dd>
-   * <dt>int <var>i_use</var></dt><dd>Count of held uses in the pass.</dd>
-   * <dt>int <var>i_use_duration</var></dt>
-   * <dd>
-   *   Number of minutes used for past visits by this promotion.
-   *
-   * </dd>
-   * <dt>int <var>i_visit_past</var></dt>
-   * <dd>
-   *   The count of attended sessions before the last renewal.
-   *   If `0`, there were no sessions before last renewal or the promotion doesn't auto-renew.
-   * </dd>
-   * <dt>int <var>id_program_type</var></dt><dd>The promotion's program type ID. One of {@link WlProgramTypeSid} constants.</dd>
-   * <dt>bool <var>is_last_use</var></dt>
-   * <dd>If `true`, the promotion has a usage limit and no remaining visits. Otherwise, this will be `false`.</dd>
-   * <dt>bool <var>is_package</var></dt><dd>If `true`, the promotion is a package. Otherwise, this will be `false`.</dd>
-   * <dt>bool <var>is_restrict_multiply</var></dt>
-   * <dd>If `true`, there's more than one calendar restriction on the pass. Otherwise, this will be `false`.</dd>
-   * <dt>string <var>k_login_promotion</var></dt>
-   * <dd>The login promotion key. 
-   * <dt>string <var>s_remain_measure</var></dt><dd>The formatted remaining duration on the promotion.</dd>
-   * <dt>bool <var>show_remain</var></dt>
-   * <dd>If `true`, there's a rollover on the pass with calendar restrictions. Otherwise, this will be `false`.</dd>
-   * <dt>string <var>sid_program_type</var></dt><dd>The promotion's program type SID.</dd>
-   *   </dl>
+   *     Data for the promotion payment informational card. Each element contains:
    *     <dl>
    *       <dt>array `a_restrict`</dt>
    *       <dd>
-   *         Calendar restrictions. A duration pass will only have elements if a restriction has been met. This contains: <dl>
-   *   <dt>int <var>i_limit</var></dt><dd>The count of possible visits.</dd>
-   *   <dt>int <var>i_remain</var></dt><dd>The count of remaining visits.</dd>
-   *   <dt>bool <var>s_date</var></dt><dd>The calendar period name.</dd>
-   * </dl>
+   *         Calendar restrictions. A duration pass will only have elements if a restriction has been met. This contains:
    *         <dl>
    *           <dt>int `i_limit`</dt>
    *           <dd>The count of possible visits.</dd>
@@ -231,10 +175,7 @@ class ReceptionScheduleModel extends WlModelAbstract
    * 
    *   <dt>array `a_resources_not_shared`</dt>
    *   <dd>
-   *     The list of assets reserved individually at the time of booking containing:<dl>
-   *   <dt>int <var>i_index</var></dt><dd>The busy resource index.</dd>
-   *   <dt>string <var>s_title</var></dt><dd>The resource name.</dd>
-   *   </dl>
+   *     The list of assets reserved individually at the time of booking containing:
    *     <dl>
    *       <dt>int `i_index`</dt>
    *       <dd>The busy resource index.</dd>

@@ -100,96 +100,6 @@ class Resource54Model extends WlModelAbstract
    *   <dt>array[] `a_resource_list`</dt>
    *   <dd>
    *     A list of available assets. Every element has next keys:
-   * <dl>
-   *   <dt>int[][][] `a_class_period`</dt>
-   *   <dd>
-   *       List of resources available for booking sessions.
-   *       The field structure is `[k_class_period][dtu_session]['a_available']`.
-   *       Contains indexes of resource available for each session.
-   *   </dd>
-   * 
-   *   <dt>array `a_image`</dt>
-   *   <dd>
-   *     Asset image data.
-   *     *     <dl>
-   *       <dt>int [`i_angle`]</dt>
-   *       <dd>Angle of shape rotation. Set only when `sid_image` equals 'shape'.</dd>
-   * 
-   *       <dt>int `i_height`</dt>
-   *       <dd>Height of the image in pixels.</dd>
-   * 
-   *       <dt>int `i_width`</dt>
-   *       <dd>Width of the image in pixels.</dd>
-   * 
-   *       <dt>bool `is_empty`</dt>
-   *       <dd>`true` if no image was uploaded, `false` otherwise.</dd>
-   * 
-   *       <dt>string `sid_image`</dt>
-   *       <dd>Image kind.</dd>
-   * 
-   *       <dt>string [`sid_image_icon`]</dt>
-   *       <dd>
-   *         Icon name. One of {@link ImageIconSid} string constants.
-   *         Set only when `sid_image` equals 'icon'.
-   *       </dd>
-   * 
-   *       <dt>string [`sid_image_shape`]</dt>
-   *       <dd>
-   *         Shape name. One of {@link ImageShapeSid} string constants.
-   *         Set only when `sid_image` equals 'shape'.
-   *       </dd>
-   * 
-   *       <dt>string `url`</dt>
-   *       <dd>Thumbnail image URL.</dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>int `i_index`</dt>
-   *   <dd>
-   *     The asset number. Actual for assets with a quantity more than <tt>1</tt>.
-   *   </dd>
-   * 
-   *   <dt>int `i_quantity`</dt>
-   *   <dd>
-   *     Total number of the asset spots.
-   *   </dd>
-   * 
-   *   <dt>int `i_use`</dt>
-   *   <dd>Number of already used asset units.</dd>
-   * 
-   *   <dt>bool `is_current`</dt>
-   *    <dd>
-   *      City for the off-site location.
-   *    </dd>
-   * 
-   *    <dt>string `k_city`</dt>
-   *   <dd>
-   *     <tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise.
-   *   </dd>
-   * 
-   *   <dt>string `k_resource`</dt>
-   *   <dd>
-   *     The key of the asset in database.
-   *     *   </dd>
-   * 
-   *   <dt>string `s_resource`</dt>
-   *   <dd>
-   *     The title of the asset.
-   *   </dd>
-   * 
-   *   <dt>string `text_address`</dt>
-   *    <dd>
-   *      Address for the off-site location.
-   *    </dd>
-   *   <dt>string `text_guide`</dt>
-   *    <dd>
-   *      Additional address tips for the off-site location.
-   *    </dd>
-   *   <dt>string `text_postal`</dt>
-   *    <dd>
-   *      Postal code for the off-site location.
-   *    </dd>
-   * </dl>
    *     <dl>
    *       <dt>int[][][] `a_class_period`</dt>
    *       <dd>
@@ -201,38 +111,7 @@ class Resource54Model extends WlModelAbstract
    *       <dt>array `a_image`</dt>
    *       <dd>
    *         Asset image data.
-   * * <dl>
-   *   <dt>int [`i_angle`]</dt>
-   *   <dd>Angle of shape rotation. Set only when `sid_image` equals 'shape'.</dd>
-   * 
-   *   <dt>int `i_height`</dt>
-   *   <dd>Height of the image in pixels.</dd>
-   * 
-   *   <dt>int `i_width`</dt>
-   *   <dd>Width of the image in pixels.</dd>
-   * 
-   *   <dt>bool `is_empty`</dt>
-   *   <dd>`true` if no image was uploaded, `false` otherwise.</dd>
-   * 
-   *   <dt>string `sid_image`</dt>
-   *   <dd>Image kind.</dd>
-   * 
-   *   <dt>string [`sid_image_icon`]</dt>
-   *   <dd>
-   *     Icon name. One of {@link ImageIconSid} string constants.
-   *     Set only when `sid_image` equals 'icon'.
-   *   </dd>
-   * 
-   *   <dt>string [`sid_image_shape`]</dt>
-   *   <dd>
-   *     Shape name. One of {@link ImageShapeSid} string constants.
-   *     Set only when `sid_image` equals 'shape'.
-   *   </dd>
-   * 
-   *   <dt>string `url`</dt>
-   *   <dd>Thumbnail image URL.</dd>
-   * </dl>
-   *         <dl>
+   * *         <dl>
    *           <dt>int `i_angle`</dt>
    *           <dd>Angle of shape rotation. Set only when `sid_image` equals 'shape'.</dd>
    * 

@@ -37,7 +37,7 @@ class Product62Model extends WlModelAbstract
    *   <dt>string `html_description`</dt>
    *   <dd>Description of the product as prepared html code.</dd>
    * 
-   *   <dt>string `i_duration`</dt>
+   *   <dt>int `i_duration`</dt>
    *   <dd>Duration that will be added to the appointment with this addon as count of minutes.</dd>
    * 
    *   <dt>bool `is_client_duration`</dt>

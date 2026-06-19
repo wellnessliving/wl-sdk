@@ -20,23 +20,6 @@ class MemberByPromotionModel extends WlModelAbstract
    *   <dt>array[] `a_purchase_options`</dt>
    *   <dd>
    *     The list of active Purchase Options. Each element has:
-   * 
-   * <dl>
-   *   <dt>string|null <var>dl_end</var></dt>
-   *   <dd>The date in the location time zone when the Purchase Option expires.
-   *       This will be `null` if the Purchase Option doesn't expire.</dd>
-   *   <dt>string <var>dtu_purchase</var></dt>
-   *   <dd>The global date and time when the Purchase Option was sold.</dd>
-   *   <dt>string|null <var>dl_start</var></dt>
-   *   <dd>The date in location's time zone when the Purchase Option starts.
-   *       This will be `null` if not defined yet. For example, if the starting date is the date of the first visit
-   *       and there haven't been any visits yet.</dd>
-   *   <dt>string|null <var>dl_terminate</var></dt>
-   *   <dd>The date in location time zone when the Purchase Option will be terminated.
-   *       This will be `null` if the Purchase Option isn't scheduled to be terminated.</dd>
-   *   <dt>string <var>k_promotion</var></dt>
-   *   <dd>The key of the Purchase Option.</dd>
-   * </dl>
    *     <dl>
    *       <dt>string|null `dl_end`</dt>
    *       <dd>

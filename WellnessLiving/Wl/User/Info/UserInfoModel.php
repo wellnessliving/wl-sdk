@@ -63,14 +63,7 @@ class UserInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>array `a_custom_field`</dt>
    *   <dd>
-   *     List of the custom user fields. Each value is:<dl>
-   * <dt>string <var>k_field</var></dt>
-   * <dd>Field key. 
-   * <dt>string <var>text_title</var></dt>
-   * <dd>Name of the field. Will be <tt>null</tt> for general fields. Their titles are static.</dd>
-   * <dt>string <var>text_value</var></dt>
-   * <dd>Value of the field.</dd>
-   *   </dl>
+   *     List of the custom user fields. Each value is:
    *     <dl>
    *       <dt>string `k_field`</dt>
    *       <dd>Field key. 

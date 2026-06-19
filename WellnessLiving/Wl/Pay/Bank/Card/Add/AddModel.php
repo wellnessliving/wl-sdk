@@ -25,28 +25,6 @@ class AddModel extends WlModelAbstract
    *   <dt>array `a_pay_address`</dt>
    *   <dd>
    *     Address information:
-   * <dl>
-   *   <dt>bool <var>is_new</var></dt>
-   *   <dd>`true` - add new address. `false` - use existing address.</dd>
-   *   <dt>string <var>k_pay_address</var></dt>
-   *   <dd>The chosen payment address ID. THis will be set even if the user decided to add a new address.</dd>
-   *   <dt>string <var>k_geo_country</var></dt>
-   *   <dd>The country key.</dd>
-   *   <dt>string <var>k_geo_region</var></dt>
-   *   <dd>The region key.</dd>
-   *   <dt>string <var>s_city</var></dt>
-   *   <dd>The city name.</dd>
-   *   <dt>string <var>s_name</var></dt>
-   *   <dd>The user's name.</dd>
-   *   <dt>string <var>s_street1</var></dt>
-   *   <dd>The first address line.</dd>
-   *   <dt>string <var>s_street2</var></dt>
-   *   <dd>The second address line.</dd>
-   *   <dt>string <var>s_phone</var></dt>
-   *   <dd>The phone number.</dd>
-   *   <dt>string <var>s_postal</var></dt>
-   *   <dd>The postal code.</dd>
-   * </dl>
    *     <dl>
    *       <dt>bool `is_new`</dt>
    *       <dd>`true` - add new address. `false` - use existing address.</dd>

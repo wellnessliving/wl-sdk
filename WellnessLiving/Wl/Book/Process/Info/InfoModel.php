@@ -150,7 +150,7 @@ class InfoModel extends WlModelAbstract
    *   <dt>string `k_location`</dt>
    *   <dd>Location key. 
    * 
-   *   <dt>bool `m_price`</dt>
+   *   <dt>string `m_price`</dt>
    *   <dd>Price of the session.</dd>
    * 
    *   <dt>string `s_location`</dt>
@@ -174,13 +174,9 @@ class InfoModel extends WlModelAbstract
    * List of sessions that can be paid without new purchases.
    * Such as previously prepaid or free sessions.
    *
-   * Each its item has the key of following format: 
+   * Each its item has the key of following format: `dt_date::k_class_period` and
+   * the value of following structure: 
    *
-   * <dl>
-   *   <dt>string `dt_date::k_class_period`</dt>
-   *   <dd>Composite key of the array.</dd>
-   * </dl>
-   * 
    * <dl>
    *   <dt>string `dt_date`</dt>
    *   <dd>Session date.</dd>
@@ -220,16 +216,6 @@ class InfoModel extends WlModelAbstract
    *   <dt>array `a_logo`</dt>
    *   <dd>
    *     The staff member photo:
-   * <dl>
-   *   <dt>int `i_height`</dt>
-   *   <dd>The image height.</dd>
-   * 
-   *   <dt>int `i_width`</dt>
-   *   <dd>The image width.</dd>
-   * 
-   *   <dt>string `s_url`</dt>
-   *   <dd>The image URL.</dd>
-   * </dl>
    *     <dl>
    *       <dt>int `i_height`</dt>
    *       <dd>The image height.</dd>

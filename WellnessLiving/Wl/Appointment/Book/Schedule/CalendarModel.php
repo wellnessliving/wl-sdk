@@ -100,20 +100,6 @@ class CalendarModel extends WlModelAbstract
    *   <dt>array|null `a_timezone`</dt>
    *   <dd>
    *     `null` if business settings doesn't allow client to adjust timezone, otherwise list of timezones:
-   * <dl>
-   *   <dt>int <var>i_order</var></dt>
-   *   <dd>Timezone order.</dd>
-   *   <dt>int <var>i_shift</var></dt>
-   *   <dd>Timezone shift from UTC in hours.</dd>
-   *   <dt>bool <var>is_select</var></dt>
-   *
-   *   <dt>string <var>k_timezone</var></dt>
-   *   <dd>Timezone key.</dd>
-   *   <dt>string <var>s_title</var></dt>
-   *   <dd>Timezone name.</dd>
-   *   <dt>string <var>text_abbr</var></dt>
-   *   <dd>Timezone abbreviation.</dd>
-   * </dl>
    *     <dl>
    *       <dt>int `i_order`</dt>
    *       <dd>Timezone order.</dd>

@@ -58,14 +58,6 @@ class VideoListModel extends WlModelAbstract
    *   <dt>array[] `a_staff`</dt>
    *   <dd>
    *     List of staff members associated with the video.
-   * <dl>
-   *   <dt>string `uid_staff`</dt>
-   *   <dd>UID of the staff. 
-   *   <dt>string `text_name`</dt>
-   *   <dd>Full name of the staff.</dd>
-   *   <dt>string `k_staff`</dt>
-   *   <dd>Staff key. Only for legacy apps. 
-   * </dl>
    *     <dl>
    *       <dt>string `uid_staff`</dt>
    *       <dd>UID of the staff. 
@@ -81,12 +73,6 @@ class VideoListModel extends WlModelAbstract
    *   <dt>array[] `a_video_category`</dt>
    *   <dd>
    *     List of video categories.
-   * <dl>
-   *   <dt>string `k_video_category`</dt>
-   *   <dd>Video category key. 
-   *   <dt>string `text_title`</dt>
-   *   <dd>Category name.</dd>
-   * </dl>
    *     <dl>
    *       <dt>string `k_video_category`</dt>
    *       <dd>Video category key. 
@@ -99,12 +85,6 @@ class VideoListModel extends WlModelAbstract
    *   <dt>array[] `a_video_tag`</dt>
    *   <dd>
    *     List of video tags.
-   * <dl>
-   *   <dt>string `k_video_tag`</dt>
-   *   <dd>Video tag key. 
-   *   <dt>string `text_title`</dt>
-   *   <dd>Tag name.</dd>
-   * </dl>
    *     <dl>
    *       <dt>string `k_video_tag`</dt>
    *       <dd>Video tag key. 

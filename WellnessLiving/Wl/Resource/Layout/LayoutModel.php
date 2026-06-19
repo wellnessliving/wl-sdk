@@ -67,7 +67,7 @@ class LayoutModel extends WlModelAbstract
    *       <dt>bool `is_empty`</dt>
    *       <dd>Whether is empty.</dd>
    * 
-   *       <dt>int `k_resource`</dt>
+   *       <dt>string `k_resource`</dt>
    *       <dd>Resource key.</dd>
    * 
    *       <dt>string `sid_image`</dt>

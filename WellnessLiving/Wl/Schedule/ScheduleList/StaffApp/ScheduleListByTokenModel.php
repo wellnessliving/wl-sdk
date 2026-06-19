@@ -45,44 +45,6 @@ class ScheduleListByTokenModel extends WlModelAbstract
    *   <dt>array `a_appointment_visit_info`</dt>
    *   <dd>
    *     Additional visit information about this appointment. Empty array if it's a class.
-   * <dl>
-   *   <dt>
-   *     int <var>id_visit</var>
-   *   </dt>
-   *   <dd>
-   *     Visit id. One of {@link WlVisitSid} constants.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_confirmed</var>
-   *   </dt>
-   *   <dd>
-   *     `true` means that appointment was requested and confirmed by the staff.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_deny</var>
-   *   </dt>
-   *   <dd>
-   *     `true` means that appointment was requested and denied by the staff.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_notify_request_accept</var>
-   *   </dt>
-   *   <dd>
-   *     `true` means that the client will receive a notification, if appointment will be confirmed by the staff.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_notify_request_deny</var>
-   *   </dt>
-   *   <dd>
-   *     `true` means that the client will receive a notification, if appointment will be denied by the staff.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_request</var>
-   *   </dt>
-   *   <dd>
-   *     `true` means that appointment was requested, but not confirmed by the staff.
-   *   </dd>
-   * </dl>
    *     <dl>
    *       <dt>int `id_visit`</dt>
    *       <dd>Visit id. One of {@link WlVisitSid} constants.</dd>
@@ -117,25 +79,6 @@ class ScheduleListByTokenModel extends WlModelAbstract
    *   <dt>array `a_staff_info`</dt>
    *   <dd>
    *     Information about staff members who conduct this session. The keys are  * Values are array with data:
-   * <dl>
-   *   <dt>
-   *     string <var>text_staff</var>
-   *   </dt>
-   *   <dd>
-   *     Staff full name.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_staff_change</var>
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> means staff is substituted, <tt>false</tt> simple staff member.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_staff</var>
-   *   </dt>
-   *   <dd>
-   *     Staff key. *   </dd>
-   * </dl>
    *     <dl>
    *       <dt>string `text_staff`</dt>
    *       <dd>Staff full name.</dd>

@@ -17,27 +17,7 @@ class BusinessTypeListModel extends WlModelAbstract
    * <dl>
    *   <dt>array `a_image_list`</dt>
    *   <dd>
-   *     Images list for business types. Each element has the next structure:<dl>
-   *    <dt>int <var>i_height</var></dt>
-   *    <dd>Actual height of thumbnail image.</dd>
-   *    <dt>int <var>i_height_src</var></dt>
-   *    <dd>Height of original image.</dd>
-   *    <dt>int <var>i_rotate</var></dt>
-   *    <dd>Angle on which image was rotated compared to the original.</dd>
-   *    <dt>int <var>i_width</var></dt>
-   *    <dd>Actual width of thumbnail image.</dd>
-   *    <dt>int <var>i_width_src</var></dt>
-   *    <dd>Width of original image.</dd>
-   *    <dt>bool <var>is_resize</var></dt>
-   *    <dd>Whether thumbnail is a resized variant of original image.
-   *  If set to `false`, value returned in <var>url_thumbnail</var> equals value in <var>url_view</var>.</dd>
-   *    <dt>string <var>url_thumbnail</var></dt>
-   *    <dd>Url to resized and rotated image in file storage.
-   *  If size of original image is larger than specified by arguments, image thumbnail as created,
-   *  and a link to this thumbnail is returned. Otherwise, link to original image is returned here.</dd>
-   *    <dt>string <var>url_view</var></dt>
-   *    <dd>Url to original image in file storage.</dd>
-   *  </dl>
+   *     Images list for business types. Each element has the next structure:
    *     <dl>
    *       <dt>int `i_height`</dt>
    *       <dd>Actual height of thumbnail image.</dd>

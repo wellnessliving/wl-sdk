@@ -18,54 +18,11 @@ class ApplicationResourceModel extends \WellnessLiving\Custom\Wl\Skin\Applicatio
    *       <dt>array[] `a_group`</dt>
    *       <dd>
    *         Groups of images, such as icons, loading screens or screenshots. One element of this array is an array that
-   * contains:<dl>
-   *   <dt>array[] <var>a_image</var></dt>
-   *   <dd>
-   *     A list of images in the group. One element contains parameters of an image:<dl>
-   *       <dt>string[] <var>a_file</var></dt>
-   *       <dd>A list of fully qualified file names. This name is used to save files in final archive.</dd>
-   *       <dt>bool <var>can_transparent</var></dt>
-   *       <dd>
-   *         Specified if this image can have transparent pixels.
-   *         <tt>true</tt> if it is allowed that there be transparent pixels.
-   *         <tt>false</tt> if it is required that all pixels be opaque.
-   *       </dd>
-   *       <dt>int <var>i_height</var></dt>
-   *       <dd>Required image height.</dd>
-   *       <dt>int <var>i_width</var></dt>
-   *       <dd>Required image width.</dd>
-   *       <dt>bool <var>is_require</var></dt>
-   *       <dd>Whether this image is required.</dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>string <var>s_class</var></dt>
-   *   <dd>CSS class for this images block.</dd>
-   *   <dt>string <var>text_comment</var></dt>
-   *   <dd>Comment for images block.</dd>
-   *   <dt>string <var>text_subtitle</var></dt>
-   *   <dd>Subtitle for images block.</dd>
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>Title for images block.</dd>
-   * </dl>
+   * contains:
    *         <dl>
    *           <dt>array[] `a_image`</dt>
    *           <dd>
-   *             A list of images in the group. One element contains parameters of an image:<dl>
-   *   <dt>string[] <var>a_file</var></dt>
-   *   <dd>A list of fully qualified file names. This name is used to save files in final archive.</dd>
-   *   <dt>bool <var>can_transparent</var></dt>
-   *   <dd>
-   *     Specified if this image can have transparent pixels.
-   *     <tt>true</tt> if it is allowed that there be transparent pixels.
-   *     <tt>false</tt> if it is required that all pixels be opaque.
-   *   </dd>
-   *   <dt>int <var>i_height</var></dt>
-   *   <dd>Required image height.</dd>
-   *   <dt>int <var>i_width</var></dt>
-   *   <dd>Required image width.</dd>
-   *   <dt>bool <var>is_require</var></dt>
-   *   <dd>Whether this image is required.</dd>
-   * </dl>
+   *             A list of images in the group. One element contains parameters of an image:
    *             <dl>
    *               <dt>string[] `a_file`</dt>
    *               <dd>A list of fully qualified file names. This name is used to save files in final archive.</dd>

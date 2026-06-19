@@ -34,14 +34,7 @@ class BusinessSelectModel extends WlModelAbstract
    * <dl>
    *   <dt>array `a_business`</dt>
    *   <dd>
-   *     List of businesses the user can access. It is an array, each value is an array with the following keys:<dl>
-   * <dt>string <var>k_business</var></dt>
-   * <dd>The key of the business.</dd>
-   * <dt>string <var>s_title</var></dt>
-   * <dd>The name of the business.</dd>
-   * <dt>bool <var>selected</var></dt>
-   * <dd>This will be true for the current business.</dd>
-   *   </dl>
+   *     List of businesses the user can access. It is an array, each value is an array with the following keys:
    *     <dl>
    *       <dt>string `k_business`</dt>
    *       <dd>The key of the business.</dd>
@@ -54,7 +47,7 @@ class BusinessSelectModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    * 
-   *   <dt>string `is_select`</dt>
+   *   <dt>bool `is_select`</dt>
    *   <dd>This will be `true` if one of the listed businesses is selected.</dd>
    * 
    *   <dt>string `name`</dt>

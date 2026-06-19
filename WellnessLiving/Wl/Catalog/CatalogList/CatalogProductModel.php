@@ -38,10 +38,7 @@ class CatalogProductModel extends WlModelAbstract
    * <dl>
    *   <dt>array `a_quick_config`</dt>
    *   <dd>
-   *     Additional data for cases where the catalog list is in Quick Buy mode. Contains: <dl>
-   *   <dt>string [`k_visit`]</dt>
-   *   <dd>The visit key used to filter quick-buy items.</dd>
-   * </dl>
+   *     Additional data for cases where the catalog list is in Quick Buy mode. Contains:
    *     <dl>
    *       <dt>string `k_visit`</dt>
    *       <dd>The visit key used to filter quick-buy items.</dd>

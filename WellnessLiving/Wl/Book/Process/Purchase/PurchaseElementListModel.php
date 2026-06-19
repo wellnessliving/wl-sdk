@@ -41,7 +41,7 @@ class PurchaseElementListModel extends WlModelAbstract
    *   <dt>string[] `a_tax`</dt>
    *   <dd>Information about taxes. The key refers to the tax key, and the value refers to the tax amount.</dd>
    * 
-   *   <dt>string `id_purchase_item`</dt>
+   *   <dt>int `id_purchase_item`</dt>
    *   <dd>The ID of purchase item type. One of {@link WlPurchaseItemSid} constants.</dd>
    * 
    *   <dt>string `k_id`</dt>

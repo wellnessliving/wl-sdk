@@ -51,13 +51,6 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dt>array[] `a_vaccination_status`</dt>
    *       <dd>
    *         Information about users vaccination status.
-   *    <dl>
-   *  <dt>string `sid_vaccination_status`</dt>
-   *  <dd>Vaccination status sid.</dd>
-   * 
-   *  <dt>string `text_vaccination_status`</dt>
-   *  <dd>Vaccination status.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `sid_vaccination_status`</dt>
    *           <dd>
@@ -72,13 +65,6 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dt>array[] `a_note`</dt>
    *       <dd>
    *         List of client's notes. Every element has keys:
-   *    <dl>
-   *  <dt>string <var>html_note</var></dt>
-   *  <dd>HTML text ready to be pasted in browser.</dd>
-   * 
-   *  <dt>bool <var>is_flag</var></dt>
-   *  <dd><tt>true</tt> if this note has a flag; <tt>false</tt> otherwise.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `html_note`</dt>
    *           <dd>HTML text ready to be pasted in browser.</dd>
@@ -182,19 +168,6 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dt>array `a_photo`</dt>
    *   <dd>
    *     Information about the user's photo. The information returned has the following structure:
-   * <dl>
-   *   <dt>int `i_height`</dt>
-   *   <dd>The height of the photo.</dd>
-   * 
-   *   <dt>int `i_width`</dt>
-   *   <dd>The width of the photo.</dd>
-   * 
-   *   <dt>string `is_empty`</dt>
-   *   <dd>This will be `true` if a photo hasn't been set yet.</dd>
-   * 
-   *   <dt>string `s_url`</dt>
-   *   <dd>The URL of the photo.</dd>
-   * </dl>
    *     <dl>
    *       <dt>int `i_height`</dt>
    *       <dd>The height of the photo.</dd>
@@ -202,7 +175,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dt>int `i_width`</dt>
    *       <dd>The width of the photo.</dd>
    * 
-   *       <dt>string `is_empty`</dt>
+   *       <dt>bool `is_empty`</dt>
    *       <dd>This will be `true` if a photo hasn't been set yet.</dd>
    * 
    *       <dt>string `s_url`</dt>
@@ -263,19 +236,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    * 
    *   <dt>array[] `a_resource`</dt>
    *   <dd>
-   *     A list of information for any associated resources for this visit. Each element: <dl>
-   *   <dt>int `i_index`</dt>
-   *   <dd>Index of the resource among multiple assets. `0` if the resource was booked from the wait list.</dd>
-   * 
-   *   <dt>string `k_resource`</dt>
-   *   <dd>Resource key. 
-   * 
-   *   <dt>string `text_alias`</dt>
-   *   <dd>Resource layout alias.</dd>
-   * 
-   *   <dt>string `text_title`</dt>
-   *   <dd>Resource title.</dd>
-   * </dl>
+   *     A list of information for any associated resources for this visit. Each element:
    *     <dl>
    *       <dt>int `i_index`</dt>
    *       <dd>Index of the resource among multiple assets. `0` if the resource was booked from the wait list.</dd>
@@ -294,13 +255,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dt>array `a_wait_confirm`</dt>
    *   <dd>
    *     The date and time when the client transitioned from the wait list to the active list, in human-readable
-   * format. Empty array if the visit is not awaiting confirmation. Each element: <dl>
-   *   <dt>string `s_day`</dt>
-   *   <dd>The formatted date string (for example, "Monday, Nov 08, 2021").</dd>
-   * 
-   *   <dt>string `s_time`</dt>
-   *   <dd>The formatted time string (for example, "10:00 AM").</dd>
-   * </dl>
+   * format. Empty array if the visit is not awaiting confirmation. Each element:
    *     <dl>
    *       <dt>string `s_day`</dt>
    *       <dd>The formatted date string (for example, "Monday, Nov 08, 2021").</dd>
@@ -565,13 +520,6 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dt>array[] `a_vaccination_status`</dt>
    *       <dd>
    *         Information about users vaccination status.
-   *    <dl>
-   *  <dt>string `sid_vaccination_status`</dt>
-   *  <dd>Vaccination status sid.</dd>
-   * 
-   *  <dt>string `text_vaccination_status`</dt>
-   *  <dd>Vaccination status.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `sid_vaccination_status`</dt>
    *           <dd>
@@ -586,13 +534,6 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dt>array[] `a_note`</dt>
    *       <dd>
    *         List of client's notes. Every element has keys:
-   *    <dl>
-   *  <dt>string <var>html_note</var></dt>
-   *  <dd>HTML text ready to be pasted in browser.</dd>
-   * 
-   *  <dt>bool <var>is_flag</var></dt>
-   *  <dd><tt>true</tt> if this note has a flag; <tt>false</tt> otherwise.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `html_note`</dt>
    *           <dd>HTML text ready to be pasted in browser.</dd>
@@ -696,19 +637,6 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dt>array `a_photo`</dt>
    *   <dd>
    *     Information about the user's photo. The information returned has the following structure:
-   * <dl>
-   *   <dt>int `i_height`</dt>
-   *   <dd>The height of the photo.</dd>
-   * 
-   *   <dt>int `i_width`</dt>
-   *   <dd>The width of the photo.</dd>
-   * 
-   *   <dt>string `is_empty`</dt>
-   *   <dd>This will be `true` if a photo hasn't been set yet.</dd>
-   * 
-   *   <dt>string `s_url`</dt>
-   *   <dd>The URL of the photo.</dd>
-   * </dl>
    *     <dl>
    *       <dt>int `i_height`</dt>
    *       <dd>The height of the photo.</dd>
@@ -716,7 +644,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dt>int `i_width`</dt>
    *       <dd>The width of the photo.</dd>
    * 
-   *       <dt>string `is_empty`</dt>
+   *       <dt>bool `is_empty`</dt>
    *       <dd>This will be `true` if a photo hasn't been set yet.</dd>
    * 
    *       <dt>string `s_url`</dt>
@@ -777,19 +705,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    * 
    *   <dt>array[] `a_resource`</dt>
    *   <dd>
-   *     A list of information for any associated resources for this visit. Each element: <dl>
-   *   <dt>int `i_index`</dt>
-   *   <dd>Index of the resource among multiple assets. `0` if the resource was booked from the wait list.</dd>
-   * 
-   *   <dt>string `k_resource`</dt>
-   *   <dd>Resource key. 
-   * 
-   *   <dt>string `text_alias`</dt>
-   *   <dd>Resource layout alias.</dd>
-   * 
-   *   <dt>string `text_title`</dt>
-   *   <dd>Resource title.</dd>
-   * </dl>
+   *     A list of information for any associated resources for this visit. Each element:
    *     <dl>
    *       <dt>int `i_index`</dt>
    *       <dd>Index of the resource among multiple assets. `0` if the resource was booked from the wait list.</dd>
@@ -808,13 +724,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dt>array `a_wait_confirm`</dt>
    *   <dd>
    *     The date and time when the client transitioned from the wait list to the active list, in human-readable
-   * format. Empty array if the visit is not awaiting confirmation. Each element: <dl>
-   *   <dt>string `s_day`</dt>
-   *   <dd>The formatted date string (for example, "Monday, Nov 08, 2021").</dd>
-   * 
-   *   <dt>string `s_time`</dt>
-   *   <dd>The formatted time string (for example, "10:00 AM").</dd>
-   * </dl>
+   * format. Empty array if the visit is not awaiting confirmation. Each element:
    *     <dl>
    *       <dt>string `s_day`</dt>
    *       <dd>The formatted date string (for example, "Monday, Nov 08, 2021").</dd>
@@ -1079,13 +989,6 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dt>array[] `a_vaccination_status`</dt>
    *       <dd>
    *         Information about users vaccination status.
-   *    <dl>
-   *  <dt>string `sid_vaccination_status`</dt>
-   *  <dd>Vaccination status sid.</dd>
-   * 
-   *  <dt>string `text_vaccination_status`</dt>
-   *  <dd>Vaccination status.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `sid_vaccination_status`</dt>
    *           <dd>
@@ -1100,13 +1003,6 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dt>array[] `a_note`</dt>
    *       <dd>
    *         List of client's notes. Every element has keys:
-   *    <dl>
-   *  <dt>string <var>html_note</var></dt>
-   *  <dd>HTML text ready to be pasted in browser.</dd>
-   * 
-   *  <dt>bool <var>is_flag</var></dt>
-   *  <dd><tt>true</tt> if this note has a flag; <tt>false</tt> otherwise.</dd>
-   *    </dl>
    *         <dl>
    *           <dt>string `html_note`</dt>
    *           <dd>HTML text ready to be pasted in browser.</dd>
@@ -1210,19 +1106,6 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dt>array `a_photo`</dt>
    *   <dd>
    *     Information about the user's photo. The information returned has the following structure:
-   * <dl>
-   *   <dt>int `i_height`</dt>
-   *   <dd>The height of the photo.</dd>
-   * 
-   *   <dt>int `i_width`</dt>
-   *   <dd>The width of the photo.</dd>
-   * 
-   *   <dt>string `is_empty`</dt>
-   *   <dd>This will be `true` if a photo hasn't been set yet.</dd>
-   * 
-   *   <dt>string `s_url`</dt>
-   *   <dd>The URL of the photo.</dd>
-   * </dl>
    *     <dl>
    *       <dt>int `i_height`</dt>
    *       <dd>The height of the photo.</dd>
@@ -1230,7 +1113,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dt>int `i_width`</dt>
    *       <dd>The width of the photo.</dd>
    * 
-   *       <dt>string `is_empty`</dt>
+   *       <dt>bool `is_empty`</dt>
    *       <dd>This will be `true` if a photo hasn't been set yet.</dd>
    * 
    *       <dt>string `s_url`</dt>
@@ -1291,19 +1174,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    * 
    *   <dt>array[] `a_resource`</dt>
    *   <dd>
-   *     A list of information for any associated resources for this visit. Each element: <dl>
-   *   <dt>int `i_index`</dt>
-   *   <dd>Index of the resource among multiple assets. `0` if the resource was booked from the wait list.</dd>
-   * 
-   *   <dt>string `k_resource`</dt>
-   *   <dd>Resource key. 
-   * 
-   *   <dt>string `text_alias`</dt>
-   *   <dd>Resource layout alias.</dd>
-   * 
-   *   <dt>string `text_title`</dt>
-   *   <dd>Resource title.</dd>
-   * </dl>
+   *     A list of information for any associated resources for this visit. Each element:
    *     <dl>
    *       <dt>int `i_index`</dt>
    *       <dd>Index of the resource among multiple assets. `0` if the resource was booked from the wait list.</dd>
@@ -1322,13 +1193,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dt>array `a_wait_confirm`</dt>
    *   <dd>
    *     The date and time when the client transitioned from the wait list to the active list, in human-readable
-   * format. Empty array if the visit is not awaiting confirmation. Each element: <dl>
-   *   <dt>string `s_day`</dt>
-   *   <dd>The formatted date string (for example, "Monday, Nov 08, 2021").</dd>
-   * 
-   *   <dt>string `s_time`</dt>
-   *   <dd>The formatted time string (for example, "10:00 AM").</dd>
-   * </dl>
+   * format. Empty array if the visit is not awaiting confirmation. Each element:
    *     <dl>
    *       <dt>string `s_day`</dt>
    *       <dd>The formatted date string (for example, "Monday, Nov 08, 2021").</dd>

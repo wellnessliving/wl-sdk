@@ -18,12 +18,6 @@ class RegionModel extends WlModelAbstract
    *   <dt>string[] `a_region`</dt>
    *   <dd>
    *     A list of regions in the country. Every element has the next keys:
-   * <dl>
-   *   <dt>string <var>k_geo</var></dt>
-   *   <dd>The region key.</dd>
-   *   <dt>string <var>s_title</var></dt>
-   *   <dd>The name of the region.</dd>
-   * </dl>
    *     <dl>
    *       <dt>string `k_geo`</dt>
    *       <dd>The region key.</dd>

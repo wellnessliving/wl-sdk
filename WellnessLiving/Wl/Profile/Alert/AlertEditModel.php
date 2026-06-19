@@ -24,19 +24,6 @@ class AlertEditModel extends WlModelAbstract
    *   <dt>array `a_location`</dt>
    *   <dd>
    *     List of locations the note applies to. Each element:
-   * <dl>
-   *   <dt>string `html_title`</dt>
-   *   <dd>HTML-escaped location title.</dd>
-   * 
-   *   <dt>bool `is_select`</dt>
-   *   <dd>`true` if this location is selected for the flag; `false` otherwise.</dd>
-   * 
-   *   <dt>string `k_id`</dt>
-   *   <dd>Location key. 
-   * 
-   *   <dt>string `text_title`</dt>
-   *   <dd>Location title.</dd>
-   * </dl>
    *     <dl>
    *       <dt>string `html_title`</dt>
    *       <dd>HTML-escaped location title.</dd>

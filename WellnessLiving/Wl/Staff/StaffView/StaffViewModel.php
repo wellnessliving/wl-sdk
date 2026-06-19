@@ -25,16 +25,6 @@ class StaffViewModel extends WlModelAbstract
    *   <dt>array `a_class_period`</dt>
    *   <dd>
    *     A list of sessions in the day:
-   * <dl>
-   *   <dt>string <var>dt_time</var></dt>
-   *   <dd>The session start time in MySQL format.</dd>
-   *   <dt>int <var>i_duration</var></dt>
-   *   <dd>The session duration in seconds.</dd>
-   *   <dt>string <var>s_title</var></dt>
-   *   <dd>The class name.</dd>
-   *   <dt>string <var>url_book</var></dt>
-   *   <dd>Direct book URL of this class.</dd>
-   * </dl>
    *     <dl>
    *       <dt>string `dt_time`</dt>
    *       <dd>The session start time in MySQL format.</dd>
@@ -70,16 +60,6 @@ class StaffViewModel extends WlModelAbstract
    *       <dt>array `a_class_period`</dt>
    *       <dd>
    *         A list of sessions in the day:
-   * <dl>
-   *   <dt>string <var>dt_time</var></dt>
-   *   <dd>The session start time in MySQL format.</dd>
-   *   <dt>int <var>i_duration</var></dt>
-   *   <dd>The session duration in seconds.</dd>
-   *   <dt>string <var>s_title</var></dt>
-   *   <dd>The class name.</dd>
-   *   <dt>string <var>url_book</var></dt>
-   *   <dd>Direct book URL of this class.</dd>
-   * </dl>
    *         <dl>
    *           <dt>string `dt_time`</dt>
    *           <dd>The session start time in MySQL format.</dd>

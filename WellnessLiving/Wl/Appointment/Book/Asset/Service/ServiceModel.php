@@ -39,22 +39,6 @@ class ServiceModel extends WlModelAbstract
    *   <dt>array[] `a_resource`</dt>
    *   <dd>
    *     A list of resources. Every element has the following keys:
-   * <dl>
-   *   <dt>array <var>a_image</var></dt>
-   *   <dd>The asset's image data. 
-   * 
-   *   <dt>int <var>i_quantity</var></dt>
-   *   <dd>Asset quantity.</dd>
-   * 
-   *   <dt>bool <var>is_available</var></dt>
-   *   <dd>Whether this asset has at least one free unit.</dd>
-   * 
-   *   <dt>string <var>k_resource</var></dt>
-   *   <dd>The asset key. 
-   * 
-   *   <dt>string <var>s_resource</var></dt>
-   *   <dd>The asset title.</dd>
-   * </dl>
    *     <dl>
    *       <dt>array `a_image`</dt>
    *       <dd>
@@ -107,7 +91,7 @@ class ServiceModel extends WlModelAbstract
    *           <dt>bool `is_empty`</dt>
    *           <dd>Whether is empty.</dd>
    * 
-   *           <dt>int `k_resource`</dt>
+   *           <dt>string `k_resource`</dt>
    *           <dd>Resource key.</dd>
    * 
    *           <dt>string `sid_image`</dt>

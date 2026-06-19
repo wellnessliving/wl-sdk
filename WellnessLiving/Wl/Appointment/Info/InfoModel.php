@@ -143,10 +143,6 @@ class InfoModel extends WlModelAbstract
    *   <dt>string[] `a_login_product`</dt>
    *   <dd>
    *     List of purchased product keys. Empty if no products were purchased. Each element:
-   * <dl>
-   *   <dt>string `k_login_product`</dt>
-   *   <dd>Purchased product key. 
-   * </dl>
    *     <dl>
    *       <dt>string `k_login_product`</dt>
    *       <dd>Purchased product key. 

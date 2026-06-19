@@ -24,19 +24,12 @@ class ListModel extends WlModelAbstract
    * return location information for multiple businesses. Keys refer to location keys. Values refer to nested arrays with the next keys:
    *
    * <dl>
-   *   <dt>int `a_directories`</dt>
+   *   <dt>int[] `a_directories`</dt>
    *   <dd>List of directories from {@link WlProjectSid}, where location is published.</dd>
    * 
    *   <dt>array `a_timezone`</dt>
    *   <dd>
-   *     Information about location timezone: <dl>
-   *   <dt>string `k_timezone`</dt>
-   *   <dd>Timezone key. 
-   *   <dt>string `text_abbr`</dt>
-   *   <dd>User-friendly short timezone abbreviation, for example 'EST' or 'PST'.</dd>
-   *   <dt>string `text_name`</dt>
-   *   <dd>Full timezone name, for example 'America/New_York'.</dd>
-   * </dl>
+   *     Information about location timezone:
    *     <dl>
    *       <dt>string `k_timezone`</dt>
    *       <dd>Timezone key. 

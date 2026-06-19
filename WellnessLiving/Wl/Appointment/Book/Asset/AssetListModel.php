@@ -23,24 +23,6 @@ class AssetListModel extends WlModelAbstract
    *     Information about age restrictions for this event.
    * 
    * This will be an empty array if there aren't any age restrictions.
-   * 
-   * <dl>
-   *   <dt>int|null `i_age_from`</dt>
-   *   <dd>
-   *     The minimum age permitted for the event. This will be `null` if a minimum age isn't set or available.
-   *   </dd>
-   * 
-   *   <dt>int|null `i_age_to`</dt>
-   *   <dd>
-   *     The maximum age permitted for the event. This will be `null` if a maximum age isn't set or available.
-   *   </dd>
-   * 
-   *   <dt>bool `is_age_public`</dt>
-   *   <dd>
-   *     This will be `true` if age restrictions are public and available. Otherwise, this will be `false` if they're hidden.
-   *     When restrictions are hidden and current user isn't a staff member, the age range will be empty.
-   *   </dd>
-   * </dl>
    *     <dl>
    *       <dt>int|null `i_age_from`</dt>
    *       <dd>The minimum age permitted for the event. This will be `null` if a minimum age isn't set or available.</dd>
@@ -67,13 +49,6 @@ class AssetListModel extends WlModelAbstract
    * The system needs to know what tab is associated with the booking. Therefore, there needs to be one link
    * per tab.
    * Each element has two values:
-   * <dl>
-   *   <dt>string `k_class_tab`</dt>
-   *   <dd>The key of the book now tab.</dd>
-   * 
-   *   <dt>string `url_tab`</dt>
-   *   <dd>The direct booking URL. This will open the booking wizard under the related booking tab.</dd>
-   * </dl>
    *     <dl>
    *       <dt>string `k_class_tab`</dt>
    *       <dd>The key of the book now tab.</dd>
@@ -86,26 +61,6 @@ class AssetListModel extends WlModelAbstract
    *   <dt>array[] `a_image`</dt>
    *   <dd>
    *     Information about the asset logo:
-   * <dl>
-   *   <dt>int `i_angle`</dt>
-   *   <dd>The angle of the shape rotation. This is set only if the image is one of the default shapes.</dd>
-   * 
-   *   <dt>bool `is_empty`</dt>
-   *   <dd>Determines if the asset logo is empty.</dd>
-   * 
-   *   <dt>string `sid_image_icon`</dt>
-   *   <dd>
-   *     The icon name. String representation of one of the {@link ImageIconSid} constants. This is only set if the image kind equals to `image`.
-   *   </dd>
-   * 
-   *   <dt>string `sid_image_shape`</dt>
-   *   <dd>
-   *     The shape name. String representation of one of the {@link ImageShapeSid} constants. This is set only if the image kind equals to `shape`.
-   *   </dd>
-   * 
-   *   <dt>string `url`</dt>
-   *   <dd>The asset logo URL.</dd>
-   * </dl>
    *     <dl>
    *       <dt>int `i_angle`</dt>
    *       <dd>The angle of the shape rotation. This is set only if the image is one of the default shapes.</dd>
@@ -131,22 +86,6 @@ class AssetListModel extends WlModelAbstract
    *   <dt>array[] `a_period`</dt>
    *   <dd>
    *     A list of asset periods with the following information:
-   * <dl>
-   *   <dt>string `html_duration`</dt>
-   *   <dd>The HTML code used to display the asset duration.</dd>
-   * 
-   *   <dt>string `html_price`</dt>
-   *   <dd>The HTML code used to display the formatted price.</dd>
-   * 
-   *   <dt>int `i_duration`</dt>
-   *   <dd>The asset duration in minutes.</dd>
-   * 
-   *   <dt>int `id_price`</dt>
-   *   <dd>The asset period price type. One of {@link ServicePriceSid} constants.</dd>
-   * 
-   *   <dt>string `m_price`</dt>
-   *   <dd>The asset period price.</dd>
-   * </dl>
    *     <dl>
    *       <dt>string `html_duration`</dt>
    *       <dd>The HTML code used to display the asset duration.</dd>

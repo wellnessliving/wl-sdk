@@ -27,14 +27,6 @@ class InventoryCountModel extends WlModelAbstract
    *   <dt>array `a_image`</dt>
    *   <dd>
    *     Information about the product option image:
-   * <dl>
-   *   <dt>int <var>i_height</var></dt>
-   *   <dd>The image height.</dd>
-   *   <dt>int <var>i_width</var></dt>
-   *   <dd>The image width.</dd>
-   *   <dt>string <var>url</var></dt>
-   *   <dd>The image URL.</dd>
-   * </dl>
    *     <dl>
    *       <dt>int `i_height`</dt>
    *       <dd>The image height.</dd>

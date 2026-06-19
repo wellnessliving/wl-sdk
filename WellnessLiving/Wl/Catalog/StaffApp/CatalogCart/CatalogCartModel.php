@@ -40,100 +40,10 @@ class CatalogCartModel extends WlModelAbstract
    *   <dt>array `a_config`</dt>
    *   <dd>
    *     The list of purchase item additional options:
-   * <dl>
-   *   <dt>string [`a_tuition_component`]</dt>
-   *   <dd>
-   *       List of tuition components:
-   *       <dl>
-   *          <dt>string `m_price`</dt>
-   *          <dd>
-   *              Price of the component within the tuition.
-   *              `null` if price should be taken from the setup.
-   *          </dd>
-   *           <dt>string `k_class`</dt>
-   *           <dd>
-   *               Key of the event class within the tuition which should be granted to the client.
-   *               `null` if this component represents tuition fees only.
-   *           </dd>
-   * 
-   *           <dt>string `uid`</dt>
-   *           <dd>Key of the client for which component should be granted.</dd>
-   *       </dl>
-   *   </dd>
-   * 
-   *   <dt>string [`f_price`]</dt>
-   *   <dd>The custom price.</dd>
-   * 
-   *   <dt>string [`dt_prorate`]</dt>
-   *   <dd>The prorate date. This should be passed when `is_prorate`=`true`.</dd>
-   * 
-   *   <dt>string [`dt_start`]</dt>
-   *   <dd>The promotion start date.</dd>
-   * 
-   *   <dt>bool [`is_prorate`]</dt>
-   *   <dd>Determines whether to prorate the first payment.</dd>
-   * 
-   *   <dt>bool [`is_prorate_fix`]</dt>
-   *   <dd>Determines if the client should pay for the first period now.</dd>
-   * 
-   *   <dt>bool [`is_prorate_only`]</dt>
-   *   <dd>
-   *     Determines whether the selected option 'pay prorate amount only' should only include the prorate amount.
-   *   </dd>
-   * 
-   *   <dt>string [`m_custom`]</dt>
-   *   <dd>The custom price of the gift card.</dd>
-   * 
-   *   <dt>string [`dt_send_local`]</dt>
-   *   <dd>The date when the gift card email must be sent.</dd>
-   * 
-   *   <dt>bool `is_mail`</dt>
-   *   <dd>
-   *     If `true`, the gift card will be sent via email. Otherwise, `false` if the gift card will be printed.
-   *   </dd>
-   * 
-   *   <dt>string [`s_mail`]</dt>
-   *   <dd>The recipient's email.</dd>
-   * 
-   *   <dt>string [`s_message`]</dt>
-   *   <dd>The message.</dd>
-   * 
-   *   <dt>string `s_recipient`</dt>
-   *   <dd>The recipient's name.</dd>
-   * 
-   *   <dt>string `s_sender`</dt>
-   *   <dd>The sender's name.</dd>
-   * 
-   *   <dt>string `m_prorate_custom`</dt>
-   *   <dd>
-   *     The amount of money for the prorate period. This should only be passed in the case of manual entry.
-   *   </dd>
-   * 
-   *   <dt>string `k_coupon`</dt>
-   *   <dd>The coupon key.</dd>
-   * 
-   *   <dt>string `k_coupon_amount`</dt>
-   *   <dd>The coupon amount key.</dd>
-   * </dl>
    *     <dl>
-   *       <dt>string `a_tuition_component`</dt>
+   *       <dt>array `a_tuition_component`</dt>
    *       <dd>
    *         List of tuition components:
-   *   <dl>
-   *      <dt>string `m_price`</dt>
-   *      <dd>
-   *          Price of the component within the tuition.
-   *          `null` if price should be taken from the setup.
-   *      </dd>
-   *       <dt>string `k_class`</dt>
-   *       <dd>
-   *           Key of the event class within the tuition which should be granted to the client.
-   *           `null` if this component represents tuition fees only.
-   *       </dd>
-   * 
-   *       <dt>string `uid`</dt>
-   *       <dd>Key of the client for which component should be granted.</dd>
-   *   </dl>
    *         <dl>
    *           <dt>string `m_price`</dt>
    *           <dd>Price of the component within the tuition.
@@ -204,13 +114,6 @@ class CatalogCartModel extends WlModelAbstract
    *   <dd>
    *     Information about taxes. If not passed, no custom taxes have been applied to the sale item.
    * If a record is present, the tax is custom using the next structure:
-   * <dl>
-   *   <dt>string `f_tax`</dt>
-   *   <dd>The tax amount.</dd>
-   * 
-   *   <dt>string `k_tax`</dt>
-   *   <dd>The tax keys. 
-   * </dl>
    *     <dl>
    *       <dt>string `f_tax`</dt>
    *       <dd>The tax amount.</dd>
@@ -220,7 +123,7 @@ class CatalogCartModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    * 
-   *   <dt>int `f_discount_percent`</dt>
+   *   <dt>float `f_discount_percent`</dt>
    *   <dd>The discount percentage, applied to the current item.</dd>
    * 
    *   <dt>int `i_quantity`</dt>

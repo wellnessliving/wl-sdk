@@ -14,7 +14,7 @@ class PurchaseElementGroupModel extends WlModelAbstract
    * A list of purchase items. Each item is an associative array with the following keys:
    *
    * <dl>
-   *   <dt>int `i_session = 1`</dt>
+   *   <dt>int `i_session`</dt>
    *   <dd>
    *     Number of sessions which are booked simultaneously.
    *      Make sense only when `id_purchase_

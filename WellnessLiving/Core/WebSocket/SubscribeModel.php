@@ -372,16 +372,6 @@ class SubscribeModel extends WlModelAbstract
    *       <dt>array `message`</dt>
    *       <dd>
    *         Message information:
-   * <dl>
-   *     <dt>string `id`</dt>
-   *     <dd>Message key.</dd>
-   * 
-   *     <dt>string `message`</dt>
-   *     <dd>Message text.</dd>
-   * 
-   *     <dt>string `updated_at`</dt>
-   *     <dd>Date/time when the message has been posted.</dd>
-   * </dl>
    *         <dl>
    *           <dt>string `id`</dt>
    *           <dd>Message key.</dd>
@@ -396,22 +386,7 @@ class SubscribeModel extends WlModelAbstract
    * 
    *       <dt>array `user_profile`</dt>
    *       <dd>
-   *         User's information: <dl>
-   *   <dt>int `id_gender`</dt>
-   *   <dd>User gender.</dd>
-   * 
-   *   <dt>string `s_first_name`</dt>
-   *   <dd>User first name.</dd>
-   * 
-   *   <dt>string `s_last_name`</dt>
-   *   <dd>User last name.</dd>
-   * 
-   *   <dt>string `uid`</dt>
-   *   <dd>User key. 
-   * 
-   *   <dt>string `url_photo`</dt>
-   *   <dd>URL of the user's profile photo.</dd>
-   * </dl>
+   *         User's information:
    *         <dl>
    *           <dt>int `id_gender`</dt>
    *           <dd>User gender.</dd>
@@ -892,7 +867,7 @@ class SubscribeModel extends WlModelAbstract
    *   <dd>
    *     List of users for which address verification failed.
    *     <dl>
-   *       <dt>string `a_address`</dt>
+   *       <dt>array `a_address`</dt>
    *       <dd>
    *         Address information. *         <dl>
    *           <dt>string `text_address`</dt>
@@ -945,7 +920,7 @@ class SubscribeModel extends WlModelAbstract
    *   <dd>
    *     List of users for which address verification succeed.
    *     <dl>
-   *       <dt>string `a_address`</dt>
+   *       <dt>array `a_address`</dt>
    *       <dd>
    *         Address information. *         <dl>
    *           <dt>string `text_address`</dt>
