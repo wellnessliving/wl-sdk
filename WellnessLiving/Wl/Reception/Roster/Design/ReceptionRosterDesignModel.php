@@ -35,7 +35,7 @@ class ReceptionRosterDesignModel extends WlModelAbstract
    * 
    *   <dt>bool `is-resize`</dt>
    *   <dd>Whether image was resized to satisfy specified
-   *  <var>i_width</var> int <var>i_height</var>.</dd>
+   *  <var>i_width</var> and <var>i_height</var>.</dd>
    * 
    *   <dt>string `url-thumbnail`</dt>
    *   <dd>Url to requested image.</dd>

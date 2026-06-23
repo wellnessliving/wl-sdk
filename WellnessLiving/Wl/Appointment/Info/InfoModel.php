@@ -149,7 +149,7 @@ class InfoModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    * 
-   *   <dt>null `k_login_product`</dt>
+   *   <dt>string `k_login_product`</dt>
    *   <dd>Deprecated, always `null`.</dd>
    * 
    *   <dt>string `k_shop_product`</dt>

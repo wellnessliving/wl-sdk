@@ -28,7 +28,7 @@ class ElementModel extends WlModelAbstract
    *           <dd>A count of the periods specified in <var>id_repeat</var>.</dd>
    * 
    *           <dt>int `id_repeat`</dt>
-   *           <dd>The measuring unit int <var>i_repeat</var>.
+   *           <dd>The measuring unit of <var>i_repeat</var>.
    * One of {@link ADurationSid} constants.</dd>
    *         </dl>
    *       </dd>

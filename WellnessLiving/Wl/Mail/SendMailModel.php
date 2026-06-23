@@ -78,6 +78,7 @@ class SendMailModel extends WlModelAbstract
    *
    * @post post
    * @var string
+   * @deprecated Planned to delete.
    */
   public $z_html = '';
 }

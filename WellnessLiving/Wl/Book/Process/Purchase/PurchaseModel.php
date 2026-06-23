@@ -265,7 +265,7 @@ class PurchaseModel extends WlModelAbstract
    * 
    *   <dt>string `html_payment_period`</dt>
    *   <dd>
-   *     This is only set for Purchase Options with the 'membership' program type. The measurement unit int <var>i_payment_period</var> in short form.
+   *     This is only set for Purchase Options with the 'membership' program type. The measurement unit of <var>i_payment_period</var> in short form.
    *   </dd>
    * 
    *   <dt>string `html_description`</dt>
@@ -326,7 +326,7 @@ class PurchaseModel extends WlModelAbstract
    * 
    *   <dt>string `s_payment_duration`</dt>
    *   <dd>
-   *     This is only set for Purchase Options with the 'membership' program type. The measurement unit int <var>i_payment_period</var>.
+   *     This is only set for Purchase Options with the 'membership' program type. The measurement unit of <var>i_payment_period</var>.
    *   </dd>
    * 
    *   <dt>string `s_promotion_convert`</dt>

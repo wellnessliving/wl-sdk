@@ -138,7 +138,7 @@ class PromotionIndexModel extends WlModelAbstract
    * The values are:
    *     <dl>
    *       <dt>int `i_limit`</dt>
-   *       <dd>The quantity of sessions int <var>i_period</var>.</dd>
+   *       <dd>The quantity of sessions every <var>i_period</var>.</dd>
    * 
    *       <dt>int `i_period`</dt>
    *       <dd>The duration of the time period. This depends on a key of <var>a_visit_limit</var> array.</dd>
@@ -151,7 +151,7 @@ class PromotionIndexModel extends WlModelAbstract
    * 
    *       <dt>int `id_roll_over_expire`</dt>
    *       <dd>
-   *         The type int <var>i_roll_over_expire</var>.
+   *         The type of <var>i_roll_over_expire</var>.
    * One of {@link ADurationSid} contantant.
    * This can only be: <ul>
    *     <li>{@link ADurationSid::DAY}</li>
@@ -206,7 +206,7 @@ class PromotionIndexModel extends WlModelAbstract
    * 
    *   <dt>int `id_limit_duration`</dt>
    *   <dd>
-   *     The type int <var>i_limit_duration</var>.
+   *     The type of <var>i_limit_duration</var>.
    * One of {@link ADurationSid} contantant.
    * This can only be: <ul>
    *     <li>{@link ADurationSid::MINUTE}</li>

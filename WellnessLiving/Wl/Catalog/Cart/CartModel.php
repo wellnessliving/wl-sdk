@@ -42,7 +42,7 @@ class CartModel extends WlModelAbstract
    *          option will be used automatically.
    *   </dd>
    * 
-   *   <dt>?string `k_login_prize`</dt>
+   *   <dt>string `k_login_prize`</dt>
    *   <dd>Key of login prize used on item. </dd>
    * 
    *   <dt>string `k_shop_product_option`</dt>
