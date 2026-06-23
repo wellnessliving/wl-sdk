@@ -3,9 +3,12 @@
 namespace WellnessLiving\Studio\Microservice\Service;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Checks instance activity.
+ *
+ * @method WlModelRequest post() Checks activity status of microservice instances.  Queries DynamoDB for each provided instance ID and returns active, test, and existence flags  for each instance.
  */
 class InstanceActiveCheckModel extends WlModelAbstract
 {

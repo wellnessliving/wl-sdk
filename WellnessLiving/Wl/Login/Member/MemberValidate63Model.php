@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Login\Member;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Field\WlFieldGeneralSid;
 
 /**
  * Checking whether there is something that prevents the user from using the business.
+ *
+ * @method WlModelRequest get() Checks whether anything prevents the user from using the business and returns details about missing required fields.  Extends the base validation by additionally returning separate lists of missing profile fields grouped by their required context: booking and purchase, self-registration, or general requirement.
  */
 class MemberValidate63Model extends WlModelAbstract
 {

@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Location;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Location\View\ViewModel;
 use WellnessLiving\Wl\WlProjectSid;
 
@@ -12,6 +13,8 @@ use WellnessLiving\Wl\WlProjectSid;
  * This can be used to get all locations from all businesses. When using this endpoint, note that it will return
  * a list of all locations in the system, potentially using substantial system resources. Using this endpoint can
  * potentially result in larger API calls than average calls made for other endpoints.
+ *
+ * @method WlModelRequest get() Gets location lists for a bulk of businesses.  Accepts a JSON-encoded list of business keys, a JSON-encoded list of location keys, or both, and returns short-form location data alongside full location detail objects. Optionally filters results to only locations that have a specific directory integration enabled.
  */
 class ListBulkModel extends WlModelAbstract
 {

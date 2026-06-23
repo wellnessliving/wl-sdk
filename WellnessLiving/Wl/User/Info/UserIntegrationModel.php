@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\User\Info;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * An endpoint that return the information about the integrations the user is connected to.
+ *
+ * @method WlModelRequest get() Retrieves information about the user belongs to certain integrations.  Returns which third-party booking integrations (Classpass, Gympass, Reserve With Google) the user is currently connected to within the given business context. Returns `null` when the user has no active integration memberships.
  */
 class UserIntegrationModel extends WlModelAbstract
 {

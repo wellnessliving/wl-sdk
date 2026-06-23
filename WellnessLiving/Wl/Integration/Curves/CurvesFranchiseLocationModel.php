@@ -4,9 +4,12 @@ namespace WellnessLiving\Wl\Integration\Curves;
 
 use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Gets information for enterprise locations.
+ *
+ * @method WlModelRequest get() Returns country, region, state, city and location lists of the franchisor. This method returns all the information from the parent {@link \Wl\Business\Franchise\Location\BusinessFranchiseLocationApi::get()} and the Curves territory ID.  Extends the parent location list with the Curves-specific territory ID (`k_territory_id`) for each franchisee location by joining against the Curves franchisee integration table.
  */
 class CurvesFranchiseLocationModel extends WlModelAbstract
 {

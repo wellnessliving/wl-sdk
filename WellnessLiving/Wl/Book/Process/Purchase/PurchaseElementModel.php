@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Book\Process\Purchase;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * A model of the purchase item.
+ *
+ * @method WlModelRequest get() Builds a single-item purchase list from the scalar input fields and delegates to the parent for price calculation.  Constructs a one-element `a_purchase_item` array from the individual scalar GET fields (purchase item type, item key, session count, prize keys, and installment template), then delegates to {@link \Wl\Book\Process\Purchase\PurchaseElementGroupApi::get()} to compute the price breakdown for that item.
  */
 class PurchaseElementModel extends WlModelAbstract
 {

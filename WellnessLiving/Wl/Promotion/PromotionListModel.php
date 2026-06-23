@@ -3,11 +3,14 @@
 namespace WellnessLiving\Wl\Promotion;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlProgramSid;
 use WellnessLiving\Wl\WlProgramTypeSid;
 
 /**
  * Gets a promotion list of the specified business.
+ *
+ * @method WlModelRequest get() Returns promotion list of the specified business.  Returns all active promotions for the given business, with optional inclusion of Enterprise Location promotions when the business is a franchisor and `is_franchise` is set to `true`.
  */
 class PromotionListModel extends WlModelAbstract
 {

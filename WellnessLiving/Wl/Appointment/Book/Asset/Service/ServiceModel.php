@@ -3,12 +3,15 @@
 namespace WellnessLiving\Wl\Appointment\Book\Asset\Service;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Resource\Image\ImageIconSid;
 use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
 
 /**
  * Retrieves assets that are required for a service booking.
+ *
+ * @method WlModelRequest get() Retrieves assets required for a service booking at the given date and time, including availability and busy status.  Returns the asset categories and individual assets linked to the service at the given location.  Each asset includes its availability flag for the requested time slot. The response also includes  {@link \Wl\Appointment\Book\Asset\Service\ServiceApi::$a_resource_busy} with currently reserved asset slots and a flag indicating  whether the current user is allowed to book unavailable assets.
  */
 class ServiceModel extends WlModelAbstract
 {

@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Reception\Application;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Service\ServiceSid;
 use WellnessLiving\Wl\WlProgramTypeSid;
 
@@ -10,6 +11,9 @@ use WellnessLiving\Wl\WlProgramTypeSid;
  * Shows the schedule for the check-in process.
  *
  * Returns the HTML code that is normally presented for the check-in process.
+ *
+ * @method WlModelRequest get() Returns the schedule and HTML for the Self Check-In Web App for the given user.  Returns the rendered schedule HTML, a structured list of upcoming sessions, and a map of service type HTML classes for the authenticated user at the given location.
+ * @method WlModelRequest post() Performs check-in for the given user and returns the confirmation HTML and data.  Books or checks the user into the specified class period or appointment, then returns confirmation HTML and structured data including payment info, assigned assets, and visit counts.
  */
 class ReceptionScheduleModel extends WlModelAbstract
 {

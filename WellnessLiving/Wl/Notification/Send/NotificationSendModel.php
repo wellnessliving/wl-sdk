@@ -3,12 +3,15 @@
 namespace WellnessLiving\Wl\Notification\Send;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * An endpoint that allows to send notifications to users of the certain business or location.
  *
  * This endpoint is available only for user with a special privilege. If you want to use this endpoint, contact
  * with WellnessLiving support first.
+ *
+ * @method WlModelRequest post() Schedules or immediately sends a notification to clients of the specified business or location.  Validates the business, optional location, and notification ID, then either dispatches the notification immediately or schedules it at the UTC date and time provided in `$dtu_send` (must be within 7 days). Optionally restricts recipients to specific UIDs via `$s_uid`. Requires the `rs.profile` privilege.
  */
 class NotificationSendModel extends WlModelAbstract
 {

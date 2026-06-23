@@ -3,9 +3,14 @@
 namespace WellnessLiving\Studio\Ip\Bot;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Allows to create, edit and delete bots.
+ *
+ * @method WlModelRequest delete() Deletes a bot.  Removes the bot record and schedules service updates for all services the bot had access to.
+ * @method WlModelRequest get() Returns information about a bot.  Returns the bot name, network, password, update rules, and active status.
+ * @method WlModelRequest post() Saves a bot.  Creates or updates a bot record. When update rules are provided, the network is derived from them.
  */
 class EditModel extends WlModelAbstract
 {

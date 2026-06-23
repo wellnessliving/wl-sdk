@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Google\Login;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * An endpoint that performs authorization actions with Google.
+ *
+ * @method WlModelRequest post() Performs Google authorization within the context of the specified business.  Validates that the given business is active, sets it as the current frontend context, and then delegates to the parent Google login flow to authenticate the user.
  */
 class GoogleLoginModel extends WlModelAbstract
 {

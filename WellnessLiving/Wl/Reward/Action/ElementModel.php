@@ -3,9 +3,13 @@
 namespace WellnessLiving\Wl\Reward\Action;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves information about reward action item.
+ *
+ * @method WlModelRequest get() Retrieves information about reward action item.  Returns the point value, score type, description, and whether the user has already submitted a points request for the specified reward action.
+ * @method WlModelRequest post() Requests points earning.  Submits a custom reward points request for the specified action on behalf of the given user and records the pending approval request.
  */
 class ElementModel extends WlModelAbstract
 {

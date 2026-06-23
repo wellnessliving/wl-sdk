@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Collector;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
  * Returns a list of payments for debts added within the previous day.
+ *
+ * @method WlModelRequest get() Returns a list of debt payment transactions for the specified business within the given date range.  Used by the Collections module to audit payments made against debts. The default date range covers the previous day relative to the business timezone. Requires an active Collections subscription and either the business privilege or emulation access.
  */
 class DebtTransactionModel extends WlModelAbstract
 {

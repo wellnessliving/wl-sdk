@@ -4,11 +4,14 @@ namespace WellnessLiving\Wl\Classes\ClassView;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\Config\BusinessConfigModel;
 use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
 
 /**
  * Retrieves information about a class element.
+ *
+ * @method WlModelRequest get() Returns class information including schedules, images, and booking settings for the specified business.  Used by import tools to read the full class catalog for a business. Returns a map of all classes (or a single class) with the information needed to replicate class data in an external system: schedules, images, booking constraints, and descriptions.
  */
 class ElementModel extends WlModelAbstract
 {

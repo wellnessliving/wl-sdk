@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Reward\Action;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Information about reward actions of given type in business.
+ *
+ * @method WlModelRequest get() Retrieves information about reward actions.  Returns all reward action records of the specified score type for the business, including the point value configured for each action.
  */
 class ActionTypeModel extends WlModelAbstract
 {

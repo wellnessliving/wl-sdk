@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Quiz;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlDurationTypeSid;
 
@@ -11,6 +12,11 @@ use WellnessLiving\Wl\WlDurationTypeSid;
  * Manages a single quiz.
  *
  * @deprecated Use {@link QuizElement72Model} instead.
+ *
+ * @method WlModelRequest delete() Deletes the quiz with the given key.  Permanently removes the quiz and all associated elements.
+ * @method WlModelRequest get() Returns quiz element data including settings, elements, and access information for the given quiz.  Loads the quiz configuration, element list, and access log for the specified business and user context, applying franchise and privilege checks before returning the result.
+ * @method WlModelRequest post() Creates or updates a quiz with the given elements and settings.  When no quiz key is provided, a new quiz is created; when a key is given, the existing quiz is updated in place. Element list and configuration are saved in a single transaction.
+ * @method WlModelRequest put() Updates the active status of the given quiz.  Toggles whether the quiz is available for respondents to fill out. Inactive quizzes are hidden from the booking and profile flows but their existing responses are preserved.
  */
 class QuizElementModel extends WlModelAbstract
 {

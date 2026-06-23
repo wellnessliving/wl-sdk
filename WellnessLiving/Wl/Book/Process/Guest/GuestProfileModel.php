@@ -3,11 +3,15 @@
 namespace WellnessLiving\Wl\Book\Process\Guest;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Service\ServiceSid;
 
 /**
  * Endpoint for guest account creation during "Book on behalf of guest" process.
+ *
+ * @method WlModelRequest get() Check if user exists.  Looks up a guest by email within the specified business and service context. Returns the user key if an existing member is found whose email, birthday (when required), and location eligibility all pass validation.
+ * @method WlModelRequest post() Creates new user.  Creates a new guest profile (or reuses an existing non-member account) for the specified business and service, applying birthday and virtual-account rules, and returns the UID of the created or matched user.
  */
 class GuestProfileModel extends WlModelAbstract
 {

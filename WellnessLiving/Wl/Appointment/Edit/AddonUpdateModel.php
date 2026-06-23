@@ -3,11 +3,15 @@
 namespace WellnessLiving\Wl\Appointment\Edit;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Updates add-ons for an appointment.
  *
  * This endpoint can be used to update add-ons for existing appointments.
+ *
+ * @method WlModelRequest get() Return data about appointment's add-ons.  Returns the current list of add-ons attached to the specified appointment along with the full  catalog of available add-ons for the service. The caller must have view access to the appointment.
+ * @method WlModelRequest put() Replaces the add-ons for the appointment with the provided list, optionally updating the appointment duration.  Removes all existing add-ons from the appointment and attaches the provided set in their place.  When add-ons with a duration are included, the appointment end time is recalculated accordingly.  The operation runs inside a database transaction to ensure consistency.
  */
 class AddonUpdateModel extends WlModelAbstract
 {

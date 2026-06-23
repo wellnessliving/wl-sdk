@@ -3,6 +3,7 @@
 namespace WellnessLiving\Core\Request\Api;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Gets a secret key for request signing.
@@ -10,6 +11,8 @@ use WellnessLiving\WlModelAbstract;
  *
  * A request to this point must be signed as an ordinary request from the SDK using transient and persistent cookies.
  * There must be no CORS (don't send from a browser).
+ *
+ * @method WlModelRequest get() Gets a secret key for signing.  Accepts a CSRF code, a session key, and the client origin URL, validates the session key against the current application, and returns a secret key that the client uses to sign subsequent CORS requests. This endpoint must not be called directly from a browser.
  */
 class KeySecretModel extends WlModelAbstract
 {

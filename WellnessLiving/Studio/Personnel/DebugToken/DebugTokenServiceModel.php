@@ -3,9 +3,12 @@
 namespace WellnessLiving\Studio\Personnel\DebugToken;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Allows checking the validity of a debug token.
+ *
+ * @method WlModelRequest post() Return information is the debug token is valid.  Validates token expiration, the requesting bot login, and personnel access before confirming.
  */
 class DebugTokenServiceModel extends WlModelAbstract
 {

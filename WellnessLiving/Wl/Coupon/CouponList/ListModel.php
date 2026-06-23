@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Coupon\CouponList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Coupon\WlTypeSid;
 
 /**
  * Retrieves a list of gift cards.
+ *
+ * @method WlModelRequest get() Gets list of coupons.  Used to populate the gift card picker in the store and booking flows. Returns all gift card types offered by the business. In franchise mode, gift cards from all franchise locations are included.
  */
 class ListModel extends WlModelAbstract
 {

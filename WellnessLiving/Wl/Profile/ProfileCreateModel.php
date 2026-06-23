@@ -3,11 +3,14 @@
 namespace WellnessLiving\Wl\Profile;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Login\Member\MemberIntentsSid;
 use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Creates user profile with minimum fields.
+ *
+ * @method WlModelRequest post() Creates a new client profile with the provided personal details in the specified business.  Creates or retrieves a user account by email or phone, saves personal details such as name,  address, phones, birthday, gender, and vaccination status, registers the user in the  business, and optionally adds them to the lead report and sets intents.
  */
 class ProfileCreateModel extends WlModelAbstract
 {

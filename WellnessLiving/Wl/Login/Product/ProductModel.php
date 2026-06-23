@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Login\Product;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
  * Return information about products purchased by client.
+ *
+ * @method WlModelRequest get() Returns information about products purchased by client.  Accepts filters for business, user, location, payment method, product option, price range, and date range, then returns a paginated list of product purchases with quantity, unit price, total amount, product name, and purchase location.
  */
 class ProductModel extends WlModelAbstract
 {

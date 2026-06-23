@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Catalog\Cart;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * Displays information about the cart in the catalog.
+ *
+ * @method WlModelRequest get() Gets purchase cost data.  Used in the client-facing checkout flow to show a live price summary before the client submits payment. Calculates the full breakdown - subtotal, taxes, applied discounts, reward redemptions, and tips - so the client can review the total before confirming.
  */
 class CartModel extends WlModelAbstract
 {

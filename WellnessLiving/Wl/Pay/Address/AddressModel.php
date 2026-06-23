@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Pay\Address;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlPayOwnerSid;
 
 /**
  * Gets information about a user's payment addresses.
+ *
+ * @method WlModelRequest get() Gets user's payment addresses information.  Returns the list of saved payment addresses for the specified owner type and key, including address fields, country and region details, and the currently selected address. Returns `null` if the current user cannot edit bank accounts for the owner.
  */
 class AddressModel extends WlModelAbstract
 {

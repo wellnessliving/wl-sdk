@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260623145040
+  version: 1.1.20260623154133
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-06-23 14:50:40
+    Last updated at: 2026-06-23 15:41:33
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -14999,6 +14999,43 @@ paths:
                         description: 'The referrer''s user key.'
       tags:
         - Referrer-Referrer
+  '/Wl/User/Referrer/ReferralInfo.json':
+    get:
+      summary: 'Returns referral count, total referral points, and shareable referral link for the given user. Computes result fields for the referrer identified: - number of invited referrals; - reward points earned for referral registrations; - the shareable invite link with the referrer''s encrypted user key.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'User key of the referrer whose statistics are being requested.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      i_point:
+                        type: number
+                        format: int32
+                        description: 'Total reward points earned by this user for referral registration ({@link \RsRewardScoreSid::REFER_REGISTER}).'
+                      i_referral:
+                        type: number
+                        format: int32
+                        description: 'Number of invited referrals.'
+                      url_referral:
+                        type: string
+                        description: 'Shareable invite link for the referrer. Navigates to the business registration page with the referrer''s encrypted user key as the `s_referral` parameter. When a new client registers through this link, the "Referred By" field is pre-filled with this user.'
+      tags:
+        - Referrer-ReferralInfo
   '/Wl/Video/Category/CategoryElement.json':
     delete:
       summary: 'Deletes the specified video category. Permanently removes the video category and its localized CMS records. Cannot be deleted if the category is currently configured as the cloud recording destination for the business.'
@@ -22278,7 +22315,7 @@ paths:
                         description: 'A list of the client''s login promotions that can be applied to a given service. Each element has the following fields: <dl> <dt>array `a_login_promotion_info`</dt> <dd> Information about the Purchase Option with the following information: <dl> <dt>int `i_limit`</dt> <dd>The number of visits the Purchase Option allows the client to make.</dd> <dt>int|null `i_limit_duration`</dt> <dd>The maximum number of minutes the Purchase Option can be used for.</dd> <dt>int `i_remain`</dt> <dd>The number of the remaining visits the Purchase Option has left.</dd> <dt>int|null `i_remain_duration`</dt> <dd>The number of minutes left in the Purchase Option.</dd> </dl> </dd> <dt>string[] `a_uid_share`</dt> <dd> List of UIDs of users who share this promotion. List of those passed in the {@link \Wl\Book\Process\Purchase\PurchaseApi::$a_login_promotion_group} array. </dd> <dt>string[] `a_visit_limit`</dt> <dd>The list of calendar restrictions of the promotion (for example, 4 per week).</dd> <dt>array `a_restrict`</dt> <dd> Data about the shortest restriction period: <dl> <dt>int `i_limit`</dt> <dd>The limit of visits for the shortest restriction period.</dd> <dt>int `i_remain`</dt> <dd>The number of remaining visits for the shortest restriction period.</dd> <dt>string `text_restriction`</dt> <dd>The description of the shortest restriction period (for example "this week" or "for a 4 day period").</dd> </dl> </dd> <dt>array[] `a_restrict_data`</dt> <dd> Data about all restriction periods given as an array, where each record has the following structure: <dl> <dt>int `i_book`</dt> <dd>The number of future sessions paid using this Purchase Option.</dd> <dt>int `i_limit`</dt> <dd>The limit of visits for the restriction period.</dd> <dt>int `i_remain`</dt> <dd>The number of remaining visits for the restriction period.</dd> <dt>int `i_use`</dt> <dd>The Purchase Option''s usage count.</dd> <dt>int `i_visit_past`</dt> <dd> The number of attended sessions before the last renewal. This will be `0` if there aren''t any sessions before the last renewal or the Purchase Option doesn''t auto-renew. </dd> <dt>string `text_restriction`</dt> <dd>The description of restriction period (for example "this week" or "for a 4 day period").</dd> </dl> </dd> <dt>int `i_limit`</dt> <dd>The number of visits the Purchase Option allows the client to make.</dd> <dt>int|null `i_limit_duration`</dt> <dd>The maximum number of minutes the Purchase Option can be used for.</dd> <dt>int `i_promotion_priority`</dt> <dd> Priority of this promotion. Result of {@link \Wl\Promotion\Priority\PromotionPrioritySid::priorityGet()} method. </dd> <dt>int `id_program`</dt> <dd>The program ID for Purchase Options. One of the {@link \RsProgramSid} constants.</dd> <dt>bool `is_convert`</dt> <dd>If `true`, the promotion converts to another instance upon expiration. Otherwise, this will be `false`.</dd> <dt>bool `is_shared`</dt> <dd>`true` if the promotion is shared with the client, `false` if the client is owner of the promotion.</dd> <dt>string `k_login_promotion`</dt> <dd>The login promotion key. <i>Primary key in {@link \RsLoginPromotionSql} table.</i></dd> <dt>string `s_class_include`</dt> <dd>The list of services provided by this Purchase Option.</dd> <dt>string `s_description`</dt> <dd>The Purchase Option description.</dd> <dt>string `s_duration`</dt> <dd>The Purchase Option duration.</dd> <dt>string `s_promotion_convert`</dt> <dd> This is only set if <var>is_convert</var> is `true`. The title to use for the new promotion instance upon auto-renewal. </dd> <dt>string `s_title`</dt> <dd>The Purchase Option name.</dd> <dt>string `text_package_item`</dt> <dd>If this promotion is a package, this field will contain a list of Purchase Options contained in the package.</dd> </dl>'
                       a_purchase:
                         type: array
-                        description: 'A list of Purchase Options that are available for the session(s) being booked. Keys refer to unique string IDs, and values refer arrays with the next fields: <dl> <dt>array[] `a_installment_template`</dt> <dd> A list of installment plans. Every element has the next keys: <dl> <dt>int `i_count`</dt> <dd>The number of payments.</dd> <dt>int `id_duration`</dt> <dd>The duration of a single period. One of the {@link \ADurationSid} constants.</dd> <dt>int `i_period`</dt> <dd>The number of periods specified by <var>id_period</var> between individual payments.</dd> <dt>string `k_currency`</dt> <dd>The payment currency key.</dd> <dt>string `k_pay_installment_template`</dt> <dd> The key of the installment plan template. <i>Primary key in {@link \Thoth\WlPay\Installment\Template\Sql} table.</i> </dd> <dt>string `m_amount`</dt> <dd>The amount of the installment plan.</dd> <dt>string `s_duration`</dt> <dd>The title of the installment plan.</dd> </dl> </dd> <dt>array[] `a_visit_limit`</dt> <dd> This is only set for Purchase Options. A list of limits on booking by the Purchase Option. Every element has the next keys: <dl> <dt>string `s_title`</dt> <dd>The limit description.</dd> </dl> </dd> <dt>string `dl_client_prorate`</dt> <dd>The client prorate date.</dd> <dt>string `f_price`</dt> <dd>The price.</dd> <dt>string `f_price_early`</dt> <dd>The price for early bookings.</dd> <dt>string `html_payment_period`</dt> <dd> This is only set for Purchase Options with the ''membership'' program type. The measurement unit int <var>i_payment_period</var> in short form. </dd> <dt>string `html_description`</dt> <dd>The description, ready to paste in a browser.</dd> <dt>int `i_limit`</dt> <dd>The limit of sessions that can be booked by Purchase Options.</dd> <dt>int `i_payment_period`</dt> <dd> This is only set for Purchase Options with the ''membership'' program type. The duration of the regular payment interval. </dd> <dt>int `i_session`</dt> <dd>This is only set for purchases of single sessions. The number of sessions booked simultaneously.</dd> <dt>int `id_program_category`</dt> <dd> This is only set for promotions. The ID of the promotion program category. One of the {@link \RsProgramCategorySid} constants. </dd> <dt>int `id_program_type`</dt> <dd> This is only set for promotions. The ID of the promotion program type. One of the {@link \RsProgramTypeSid} constants. </dd> <dt>int `id_purchase_item`</dt> <dd>The ID of Purchase Option type. One of the {@link \RsPurchaseItemSid} constants.</dd> <dt>bool `is_contract`</dt> <dd>If `true`, the Purchase Option requires a contract assignment. Otherwise, this will be `false`.</dd> <dt>bool `is_convert`</dt> <dd>If `true`, the Purchase Option converts to another instance upon expiration. Otherwise, this will be `false`.</dd> <dt>bool `is_renew`</dt> <dd>If `true`, the Purchase Option is renewable. Otherwise, this will be `false`.</dd> <dt>bool `is_renew_check`</dt> <dd> If `true`, the Purchase Option is renewable and the "auto-renew" option is turned on by default. Otherwise, this will be `false`. </dd> <dt>string `k_id`</dt> <dd>The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.</dd> <dt>string `k_login_prize`</dt> <dd>The key of the user''s prize that can be used instead a Purchase Option to book the session.</dd> <dt>string `k_reward_prize`</dt> <dd>The key of the reward prize that can be used instead a Purchase Option to book the session.</dd> <dt>string `m_prorate`</dt> <dd>Payment for membership prorate. Not empty only if prorate payment is required.</dd> <dt>string `s_contract`</dt> <dd>The contract of the Purchase Option. This is only set if <var>is_contract</var> is `true`.</dd> <dt>string `s_payment_duration`</dt> <dd> This is only set for Purchase Options with the ''membership'' program type. The measurement unit int <var>i_payment_period</var>. </dd> <dt>string `s_promotion_convert`</dt> <dd> This is only set if <var>is_convert</var> is `true`. The title to use for the new Purchase Option instance upon auto-renewal. </dd> <dt>string `s_title`</dt> <dd>The title.</dd> <dt>string `s_value`</dt> <dd>The unique identifier.</dd> </dl>'
+                        description: 'A list of Purchase Options that are available for the session(s) being booked. Keys refer to unique string IDs, and values refer arrays with the next fields: <dl> <dt>array[] `a_installment_template`</dt> <dd> A list of installment plans. Every element has the next keys: <dl> <dt>int `i_count`</dt> <dd>The number of payments.</dd> <dt>int `id_duration`</dt> <dd>The duration of a single period. One of the {@link \ADurationSid} constants.</dd> <dt>int `i_period`</dt> <dd>The number of periods specified by <var>id_period</var> between individual payments.</dd> <dt>string `k_currency`</dt> <dd>The payment currency key.</dd> <dt>string `k_pay_installment_template`</dt> <dd> The key of the installment plan template. <i>Primary key in {@link \Thoth\WlPay\Installment\Template\Sql} table.</i> </dd> <dt>string `m_amount`</dt> <dd>The amount of the installment plan.</dd> <dt>string `s_duration`</dt> <dd>The title of the installment plan.</dd> </dl> </dd> <dt>array[] `a_visit_limit`</dt> <dd> This is only set for Purchase Options. A list of limits on booking by the Purchase Option. Every element has the next keys: <dl> <dt>string `s_title`</dt> <dd>The limit description.</dd> </dl> </dd> <dt>string `dl_client_prorate`</dt> <dd>The client prorate date.</dd> <dt>string `f_price`</dt> <dd>The price.</dd> <dt>string `f_price_early`</dt> <dd>The price for early bookings.</dd> <dt>string `html_payment_period`</dt> <dd> This is only set for Purchase Options with the ''membership'' program type. The measurement unit of <var>i_payment_period</var> in short form. </dd> <dt>string `html_description`</dt> <dd>The description, ready to paste in a browser.</dd> <dt>int `i_limit`</dt> <dd>The limit of sessions that can be booked by Purchase Options.</dd> <dt>int `i_payment_period`</dt> <dd> This is only set for Purchase Options with the ''membership'' program type. The duration of the regular payment interval. </dd> <dt>int `i_session`</dt> <dd>This is only set for purchases of single sessions. The number of sessions booked simultaneously.</dd> <dt>int `id_program_category`</dt> <dd> This is only set for promotions. The ID of the promotion program category. One of the {@link \RsProgramCategorySid} constants. </dd> <dt>int `id_program_type`</dt> <dd> This is only set for promotions. The ID of the promotion program type. One of the {@link \RsProgramTypeSid} constants. </dd> <dt>int `id_purchase_item`</dt> <dd>The ID of Purchase Option type. One of the {@link \RsPurchaseItemSid} constants.</dd> <dt>bool `is_contract`</dt> <dd>If `true`, the Purchase Option requires a contract assignment. Otherwise, this will be `false`.</dd> <dt>bool `is_convert`</dt> <dd>If `true`, the Purchase Option converts to another instance upon expiration. Otherwise, this will be `false`.</dd> <dt>bool `is_renew`</dt> <dd>If `true`, the Purchase Option is renewable. Otherwise, this will be `false`.</dd> <dt>bool `is_renew_check`</dt> <dd> If `true`, the Purchase Option is renewable and the "auto-renew" option is turned on by default. Otherwise, this will be `false`. </dd> <dt>string `k_id`</dt> <dd>The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.</dd> <dt>string `k_login_prize`</dt> <dd>The key of the user''s prize that can be used instead a Purchase Option to book the session.</dd> <dt>string `k_reward_prize`</dt> <dd>The key of the reward prize that can be used instead a Purchase Option to book the session.</dd> <dt>string `m_prorate`</dt> <dd>Payment for membership prorate. Not empty only if prorate payment is required.</dd> <dt>string `s_contract`</dt> <dd>The contract of the Purchase Option. This is only set if <var>is_contract</var> is `true`.</dd> <dt>string `s_payment_duration`</dt> <dd> This is only set for Purchase Options with the ''membership'' program type. The measurement unit of <var>i_payment_period</var>. </dd> <dt>string `s_promotion_convert`</dt> <dd> This is only set if <var>is_convert</var> is `true`. The title to use for the new Purchase Option instance upon auto-renewal. </dd> <dt>string `s_title`</dt> <dd>The title.</dd> <dt>string `s_value`</dt> <dd>The unique identifier.</dd> </dl>'
                       a_reward_prize:
                         type: array
                         description: 'List of redeemable prizes which can be used to pay for service. Each element has the following fields: <dl> <dt>string `f_price`</dt> <dd>The price, always ''0''.</dd> <dt>int `i_limit`</dt> <dd>The limit of sessions that can be booked with reward prize.</dd> <dt>int `i_score`</dt> <dd>Prize price in points.</dd> <dt>int `id_purchase_item`</dt> <dd>The ID of Purchase Option type. One of the {@link \RsPurchaseItemSid} constants.</dd> <dt>string `k_id`</dt> <dd>The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.</dd> <dt>string `k_reward_prize`</dt> <dd>Key of redeemable prize. <i>Primary key in {@link \RsRewardPrizeSql}.</i></dd> <dt>string `s_value`</dt> <dd>The unique identifier.</dd> <dt>string `text_title`</dt> <dd>User-friendly prize description.</dd> </dl>'
@@ -25795,43 +25832,6 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Count-InventoryCount
-  '/Wl/User/Referrer/ReferralInfo.json':
-    get:
-      summary: 'Returns referral count, total referral points, and shareable referral link for the given user. Computes result fields for the referrer identified: - number of invited referrals; - reward points earned for referral registrations; - the shareable invite link with the referrer''s encrypted user key.'
-      parameters:
-        - name: k_business
-          in: query
-          description: 'Business key.'
-          schema:
-            type: string
-        - name: uid
-          in: query
-          description: 'User key of the referrer whose statistics are being requested.'
-          schema:
-            type: string
-      responses:
-        200:
-          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - type: object
-                    description: 'Successful response.'
-                    properties:
-                      i_point:
-                        type: number
-                        format: int32
-                        description: 'Total reward points earned by this user for referral registration ({@link \RsRewardScoreSid::REFER_REGISTER}).'
-                      i_referral:
-                        type: number
-                        format: int32
-                        description: 'Number of invited referrals.'
-                      url_referral:
-                        type: string
-                        description: 'Shareable invite link for the referrer. Navigates to the business registration page with the referrer''s encrypted user key as the `s_referral` parameter. When a new client registers through this link, the "Referred By" field is pre-filled with this user.'
-      tags:
-        - Referrer-ReferralInfo
 tags:
   -
     name: Account-Account

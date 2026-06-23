@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Profile\Purchase;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlSaleSid;
 
@@ -10,6 +11,8 @@ use WellnessLiving\Wl\WlSaleSid;
  * An endpoint that gets a list of purchases for a user.
  *
  * @deprecated Use {@link \WellnessLiving\Wl\Profile\PurchaseList\PurchaseListModel} instead.
+ *
+ * @method WlModelRequest get() Retrieves a list of user's purchase items to show in user profile.  Returns the complete purchase history for the client in the given business, covering all  item types such as memberships, redemption codes, enrollments, products, appointments, and  gift cards. Package components are resolved and included inline beside their parent item.
  */
 class PurchaseListModel extends WlModelAbstract
 {

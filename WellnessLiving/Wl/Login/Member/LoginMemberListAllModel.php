@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Login\Member;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Displays list of active members in a business.
+ *
+ * @method WlModelRequest get() Returns a paginated list of active member user keys for the specified business.  Accepts a business key, an optional page size, and an optional last-seen user key for cursor-based pagination, then returns an ordered array of user keys for all active members of that business.
  */
 class LoginMemberListAllModel extends WlModelAbstract
 {

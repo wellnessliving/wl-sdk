@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Reward\Action;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves a list of available reward actions.
+ *
+ * @method WlModelRequest get() Retrieves a list of available reward actions.  Returns all reward actions visible to the specified user in the given business, optionally filtered by category, including the score value and request status for each action.
  */
 class ActionModel extends WlModelAbstract
 {

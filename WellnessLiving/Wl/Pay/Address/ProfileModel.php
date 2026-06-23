@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Pay\Address;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves a client’s physical address from their profile.
+ *
+ * @method WlModelRequest get() Returns default payment address data that is retrieved from user profile.  Loads the user's profile for the given business and returns address fields (name, phone, street, city, postal code, country, region) to pre-populate a payment address form.
  */
 class ProfileModel extends WlModelAbstract
 {

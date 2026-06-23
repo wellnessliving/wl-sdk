@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Book\Process\Resource;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Book\Process\ProcessSpaSid;
 use WellnessLiving\Wl\Resource\Image\ImageIconSid;
 use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
@@ -13,6 +14,9 @@ use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
  * Selects assets when making a booking.
  *
  * Take note of the {@link ProcessSpaSid::QUIZ} step.
+ *
+ * @method WlModelRequest get() Returns available assets for the booking, decoding the JSON-encoded session input before delegating to the parent.  Deserializes the JSON-encoded session selection into `a_session` and then delegates to {@link \Wl\Book\Process\Resource\ResourceApi::get()} to return the available asset categories and items for the booking.
+ * @method WlModelRequest post() Processes the asset selection step of the booking wizard, decoding the JSON-encoded session input before delegating to the parent.  Deserializes the JSON-encoded session selection into `a_session` and then delegates to {@link \Wl\Book\Process\Resource\ResourceApi::post()} to save the selected assets and advance the booking wizard.
  */
 class Resource54Model extends WlModelAbstract
 {

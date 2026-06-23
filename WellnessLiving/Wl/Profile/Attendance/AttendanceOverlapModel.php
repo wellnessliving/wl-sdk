@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Profile\Attendance;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves a list of visits that overlap with the specified service/class/resource/time data.
+ *
+ * @method WlModelRequest get() Returns a list of visits that overlap with the specified service, class, resource, or time data.  Checks whether the specified user has any existing bookings that overlap with a given time  range or service. Used before scheduling to detect conflicts and prompt staff or the client  with a warning.
  */
 class AttendanceOverlapModel extends WlModelAbstract
 {

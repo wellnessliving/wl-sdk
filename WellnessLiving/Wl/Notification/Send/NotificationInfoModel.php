@@ -3,12 +3,15 @@
 namespace WellnessLiving\Wl\Notification\Send;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * An endpoint that allows to send notifications to users of the certain business or location.
  *
  * This endpoint is available only for user with a special privilege. If you want to use this endpoint, contact
  * with WellnessLiving support first.
+ *
+ * @method WlModelRequest get() Returns configuration information about the specified notification for the given business.  Validates the business key and notification ID, then returns the notification configuration including mail template settings and channel availability for the given business. Requires the `rs.profile` privilege.
  */
 class NotificationInfoModel extends WlModelAbstract
 {

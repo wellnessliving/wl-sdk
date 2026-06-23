@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Appointment\Book\Product;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Shop\Product\PurchaseRestrictionSid;
 
 /**
  * Returns information about service add-ons.
+ *
+ * @method WlModelRequest get() Retrieves list of available service add-ons.  Returns active add-on products for the specified service and location, filtered by the given  client's login type when a UID is provided. Products with a purchase restriction that does not  match the client type are excluded from the result.
  */
 class Product62Model extends WlModelAbstract
 {

@@ -4,10 +4,13 @@ namespace WellnessLiving\Wl\Schedule;
 
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
 
 /**
  * Retrieves the nearest class session available for booking.
+ *
+ * @method WlModelRequest get() Finds the nearest class session that can be booked by the current user.  Looks no further than {@link \Wl\Schedule\ScheduleAvailableDateApi::PERIOD_LIMIT} seconds ahead from the start date.
  */
 class ScheduleAvailableDateModel extends WlModelAbstract
 {

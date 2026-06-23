@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Member\Progress\Field;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Performs ajax requests for progress fields edit page.
+ *
+ * @method WlModelRequest put() Changes states of field.  Updates one or more state flags (`is_active`, `is_public`, `is_require`, `is_require_staff`) for the specified progress field and returns the new values. At least one flag must be provided; the field must be active to change its required state.
  */
 class StateModel extends WlModelAbstract
 {

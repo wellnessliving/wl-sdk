@@ -4,10 +4,14 @@ namespace WellnessLiving\Wl\Login\Promotion\GuestPass;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlProgramSid;
 
 /**
  * API for managing guest passes.
+ *
+ * @method WlModelRequest get() Retrieves guest pass information for a client's membership.  Returns the guest pass configuration and remaining usage count for the specified login promotion.
+ * @method WlModelRequest put() Updates the guest pass remaining usages for a client's membership.  Adjusts the remaining guest pass count to the specified value and logs the change. Requires  staff-level edit access for the login promotion.
  */
 class GuestPassModel extends WlModelAbstract
 {

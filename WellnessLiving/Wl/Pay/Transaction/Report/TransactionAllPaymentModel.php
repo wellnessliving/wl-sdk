@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Pay\Transaction\Report;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
  * Can retrieve information from the All Transactions Report.
+ *
+ * @method WlModelRequest get() Returns All Transactions Report data for the specified date range.  Provides access to the All Transactions Report used for revenue reconciliation and export. The report is generated asynchronously and cached; check `$id_report_status` to determine whether generation is still in progress. Set `$is_refresh` to request regeneration and use `$i_page` to paginate through up to {@link \Thoth\WlPay\Transaction\Report\TransactionAllPaymentApi::LIMIT} rows per request.
  */
 class TransactionAllPaymentModel extends WlModelAbstract
 {

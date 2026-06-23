@@ -5,11 +5,14 @@ namespace WellnessLiving\Core\Drive\ImageUpload;
 use WellnessLiving\Core\Drive\DriveTypeSid;
 use WellnessLiving\WlFile;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Uploads a raw image to a server.
  *
  * You must save an image by using {@link ImageUploadModel}.
+ *
+ * @method WlModelRequest post() Saves new uploaded image.  First step of the two-step image upload flow. Stores the uploaded file in temporary drive storage and returns preview URLs and dimension metadata so the user can review or crop the image before it is permanently saved. Call {@link \Core\Drive\ImageUpload\ImageUploadApi} to commit the temporary image to the entity.
  */
 class ImageUploadTemporaryModel extends WlModelAbstract
 {

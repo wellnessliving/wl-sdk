@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Tax;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves a list of taxes for a business.
+ *
+ * @method WlModelRequest get() Returns taxes of the specified business.  Returns all active taxes configured for the business, including each tax's title, rate, and type. Used to populate tax pickers when creating products, promotions, or invoices.
  */
 class TaxListModel extends WlModelAbstract
 {

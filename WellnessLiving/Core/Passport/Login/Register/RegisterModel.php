@@ -3,6 +3,7 @@
 namespace WellnessLiving\Core\Passport\Login\Register;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Lead\LeadModel;
 use WellnessLiving\Wl\Mode\ModeSid;
 
@@ -11,6 +12,8 @@ use WellnessLiving\Wl\Mode\ModeSid;
  *
  * The {@link LeadModel} endpoint is recommended for registering new users. However, this endpoint isn't enabled by default.
  * To enable this endpoint, use the contact form in the developer portal.
+ *
+ * @method WlModelRequest post() Validates the new user's data and sends a confirmation email to complete registration.  Accepts the new user's name, email, and password, validates each field, stores the pending registration, and sends a confirmation email with a link to complete registration via {@link \Core\Passport\Login\Register\RegisterConfirmApi}. An optional application ID and custom confirmation URL may be provided.
  */
 class RegisterModel extends WlModelAbstract
 {

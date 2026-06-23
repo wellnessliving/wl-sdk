@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Staff\StaffView;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Staff\StaffList\StaffListModel;
 
 /**
@@ -14,6 +15,8 @@ use WellnessLiving\Wl\Staff\StaffList\StaffListModel;
  * {@link StaffViewModel::$a_staff_list} but not both (an exception would be thrown).
  *
  * @deprecated Use {@link StaffView74Model}
+ *
+ * @method WlModelRequest get() Retrieves information about staff.  This method can accept or one staff key {@link \Wl\Staff\StaffView\StaffViewApi::$k_staff} or staff list {@link \Wl\Staff\StaffView\StaffViewApi::$a_staff_list} but not both (exception would be thrown).
  */
 class StaffViewModel extends WlModelAbstract
 {

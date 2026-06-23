@@ -3,9 +3,12 @@
 namespace WellnessLiving\Studio\Deploy\Cluster;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Manage `Studio Deploy Cluster`.
+ *
+ * @method WlModelRequest post() Create new `Deploy Cluster`.  Validates SSH keys, Amazon security group configuration, and repository paths. Creates a new cluster record linked to the specified deployment instance.
  */
 class ClusterModel extends WlModelAbstract
 {

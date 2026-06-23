@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Login\Promotion;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Manages or retrieves information about holds on Purchase Options.
@@ -11,6 +12,11 @@ use WellnessLiving\WlModelAbstract;
  * The GET method only returns information about active holds.
  * The POST method can create or edit a hold.
  * The PUT method can edit a hold.
+ *
+ * @method WlModelRequest delete() Deletes specified promotion payment pause.  Validates access and then permanently removes the hold period identified by `k_promotion_pay_pause`, also cancelling any associated expiry reminder notification task.
+ * @method WlModelRequest get() Returns promotion payment pause data: all hold periods when {@link \Wl\Login\Promotion\PromotionPayPauseApi::$is_list} is `true`,  the specified hold period when {@link \Wl\Login\Promotion\PromotionPayPauseApi::$k_promotion_pay_pause} is provided, or the currently  active hold period otherwise.  Also returns notification settings (email, push, SMS flags and email pattern key) and the date the last notification was sent for the hold period, if a hold notification template is configured for the business.
+ * @method WlModelRequest post() Adds or updates a payment pause period for promotion.  Creates a new hold period for the purchased promotion if no `k_promotion_pay_pause` is provided, or updates an existing one. Optionally schedules or sends a hold notification via email, push, or SMS based on the provided flags and the business notification template.
+ * @method WlModelRequest put() Updates a promotion payment pause period.  Requires an existing `k_promotion_pay_pause` key and delegates to {@link \Wl\Login\Promotion\PromotionPayPauseApi::post()} to apply the updated start date, end date, note, and notification settings. Returns an error if no existing hold key is provided.
  */
 class PromotionPayPauseModel extends WlModelAbstract
 {

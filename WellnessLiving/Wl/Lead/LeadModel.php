@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Lead;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Field\WlFieldGeneralSid;
 use WellnessLiving\Wl\Field\WlFieldTypeSid;
 use WellnessLiving\Wl\Mode\ModeSid;
@@ -17,6 +18,9 @@ use WellnessLiving\Wl\Mode\ModeSid;
  * This endpoint using captcha check.
  *  To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
  *  For this API an action is {@link LeadCaptcha::CID}.
+ *
+ * @method WlModelRequest get() Gets information necessary to display "Lead capture" widget.  Returns the list of profile fields configured for the widget, skin styling data, captcha URL if required, and whether a free promotion can be applied when a new lead is created.
+ * @method WlModelRequest post() Saves new user via "Lead capture".  Creates a new user account from the submitted lead capture form data, optionally signs in the new user, and associates the lead with a lead source. Returns an error code in `text_sign_in_error` if sign-in was requested but could not be completed.
  */
 class LeadModel extends WlModelAbstract
 {

@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Reception\Design;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Api endpoint to get information about Self Check-In Kiosk settings.
+ *
+ * @method WlModelRequest get() Returns information about settings for Check In Web Application.  This method does not require any access checks, because this is public information.
  */
 class ReceptionDesignModel extends WlModelAbstract
 {

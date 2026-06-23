@@ -3,12 +3,15 @@
 namespace WellnessLiving\Wl\Skin\Application\Resource;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Saves text metadata for a white-label application build.
  *
  * Used by the App Build Automation (n8n) to programmatically submit the Client App Materials form
  * (text fields only). File assets are submitted separately via {@link ApplicationResourceUploadModel}.
+ *
+ * @method WlModelRequest post() Saves text metadata for the given business application.  Persists all text fields of the Client App Materials form (store listing copy, contact details, privacy policy URL, etc.) for the specified business. File assets such as icons and screenshots are submitted separately via {@link \Wl\Skin\Application\Resource\ApplicationResourceUploadApi}. Requires the App Build Automation edit privilege.
  */
 class ApplicationResourceMaterialModel extends WlModelAbstract
 {

@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Schedule\Tab;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
 
 /**
@@ -10,6 +11,8 @@ use WellnessLiving\Wl\Classes\Tab\TabSid;
  *
  * The names and contents of these tabs can be customized by the business. For example, a business may have tabs named
  * ‘Appointments’, ‘Group Appointments’, and ‘Room Rentals’.
+ *
+ * @method WlModelRequest get() Gets information about tabs for page "Book now".  Returns the set of service booking tabs configured by the business, filtered for the specified location and user. Used to populate the tab strip on the "Book Now" page or embedded widget. Tabs may represent classes, appointments, events, or other bookable services.
  */
 class TabModel extends WlModelAbstract
 {

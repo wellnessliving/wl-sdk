@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Purchase;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlProgramCategorySid;
 use WellnessLiving\Wl\WlProgramSid;
@@ -12,6 +13,8 @@ use WellnessLiving\Wl\WlProgramTypeSid;
 /**
  * Retrieves information about Purchase Options that can be used to pay for an appointment
  * during creating new or rescheduling existing appointment.
+ *
+ * @method WlModelRequest get() Retrieves a list of information about available purchase options.  Extends {@link \Wl\Appointment\Book\Purchase\PurchaseApi::get()} to also support rescheduling an existing appointment by  accepting an optional appointment key. When a key is provided, the existing appointment is  validated and its current Purchase Option usage is taken into account when calculating  eligibility for available options.
  */
 class Purchase72Model extends WlModelAbstract
 {

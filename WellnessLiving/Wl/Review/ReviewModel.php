@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Review;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Adds a review for a location. The review consists of a rating from 1 to 5 stars and text.
@@ -11,6 +12,8 @@ use WellnessLiving\WlModelAbstract;
  * This endpoint using captcha check.
  * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
  * For this API an action is {@link ReviewCaptcha::CID}.
+ *
+ * @method WlModelRequest post() Submits user's review.  Validates the captcha, saves the review rating and text for the specified location, and returns reward score information if the business awards points for leaving a review.
  */
 class ReviewModel extends WlModelAbstract
 {

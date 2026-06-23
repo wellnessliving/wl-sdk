@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Sms\Phone;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * API endpoint to get phone number of a business.
+ *
+ * @method WlModelRequest get() Gets the phone number associated with a specific business.  Returns the dedicated sender phone number configured for the business's 2-Way SMS feature. Requires the `wl.business.phone` API privilege. Returns `null` or an empty value if the business has not configured a 2-Way SMS number.
  */
 class BusinessPhoneModel extends WlModelAbstract
 {

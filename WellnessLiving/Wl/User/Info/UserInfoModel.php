@@ -4,9 +4,12 @@ namespace WellnessLiving\Wl\User\Info;
 
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves information about a WellnessLiving user.
+ *
+ * @method WlModelRequest get() Retrieves information about user.  Returns profile data for a WellnessLiving user, including name, email, phone, photo, gender, login type, custom profile fields, member groups, and calendar integration status. Supports single-user mode and batch mode for loading multiple profiles in one request.
  */
 class UserInfoModel extends WlModelAbstract
 {

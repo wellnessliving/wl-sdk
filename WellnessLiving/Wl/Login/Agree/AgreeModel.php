@@ -3,9 +3,13 @@
 namespace WellnessLiving\Wl\Login\Agree;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Saves the user's agreement to the online waiver.
+ *
+ * @method WlModelRequest get() Returns text of business liability release if business has liability release and if user did not agree to this liability release.  Accepts the business key and the user key, validates both, and returns the rendered HTML of the liability release contract if one is configured and the user has not yet agreed to it. If the user has already agreed, the response will have an empty `html_contract` field.
+ * @method WlModelRequest post() Saves the user's agreement to the online waiver.  Accepts the user's base64-encoded signature image and an optional electronic-signature consent flag, validates both, records the agreement date and signature in the database, and sends a waiver confirmation notification.
  */
 class AgreeModel extends WlModelAbstract
 {

@@ -3,11 +3,15 @@
 namespace WellnessLiving\Wl\Profile\Setting;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves the user’s notification settings.
  *
  * Alternatively, this endpoint can be used to change a user’s notification settings.
+ *
+ * @method WlModelRequest get() Retrieves a list of user settings and other additional information for the settings page.  Returns the user's current notification preferences for the business, covering account  activity, news, and schedule reminders across email and SMS channels, along with the  user's current language setting.
+ * @method WlModelRequest post() Saves the user's notification settings for the specified business.  Saves the user's notification preferences for the business, updating email and SMS opt-in  settings for account activity, news, and schedule reminders.
  */
 class SettingModel extends WlModelAbstract
 {

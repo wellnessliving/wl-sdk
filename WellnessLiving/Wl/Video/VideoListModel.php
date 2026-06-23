@@ -4,10 +4,14 @@ namespace WellnessLiving\Wl\Video;
 
 use WellnessLiving\Core\Sid\SortOrderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Video\Catalog\Filter\Sort\FilterSortSid;
 
 /**
  * Returns a list of videos.
+ *
+ * @method WlModelRequest get() Returns the list of videos for the specified business.  Returns videos for the business video library with optional filtering by category, tag, difficulty level, staff, location, calorie range, and duration. Supports sorting and pagination for large libraries. In frontend mode, results are restricted to videos the current user is allowed to watch based on their membership and login type.
+ * @method WlModelRequest put() Updates the custom sort order of videos for the specified business.  Reorders the video library according to the provided list. Only takes effect when the library is configured to use the custom sort order. Requires backend access with the video library management privilege.
  */
 class VideoListModel extends WlModelAbstract
 {

@@ -3,9 +3,14 @@
 namespace WellnessLiving\Social\Microsoft;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Performs preliminary authorization actions with Microsoft.
+ *
+ * @method WlModelRequest delete() Removes the association between a website client and a Microsoft account.  Accepts the user's UID, verifies that the caller is the account owner, and unlinks the Microsoft account from the user's profile.
+ * @method WlModelRequest get() Collects data for the Microsoft login button.  Called when rendering the "Sign in with Microsoft" button. Generates the OAuth 2.0 authorization URL the button must link to. When a UID is provided, also reports whether that user already has a Microsoft account linked, so the frontend can show "Link" or "Unlink" instead of the default sign-in label.
+ * @method WlModelRequest post() Signs a user in with Microsoft.  Accepts the Microsoft authorization code, an optional state parameter for CSRF verification, and an optional redirect URI. Validates the state, exchanges the code for user identity, and signs the user in or creates a new account.
  */
 class LoginModel extends WlModelAbstract
 {

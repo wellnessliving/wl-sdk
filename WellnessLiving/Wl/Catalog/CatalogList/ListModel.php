@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Catalog\CatalogList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * Displays information about store items.
+ *
+ * @method WlModelRequest get() Retrieves a list of all sale items.  Used to render the full client-facing store catalog for a business. Returns all purchasable items - promotions, products, events, and coupons - merged across the business's categories. The separate de-duplicated list and category list support both the flat and category-tabbed views.
  */
 class ListModel extends WlModelAbstract
 {

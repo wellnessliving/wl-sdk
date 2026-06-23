@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Appointment\Book\Service;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves information about service categories.
+ *
+ * @method WlModelRequest get() Retrieves a list of information about service categories on the appointment booking page.  Returns all service categories available at the given location, optionally filtered by book now tab.  Each category includes its title and the list of available services. Supports both frontend and  backend modes; in backend mode access is verified against the business.
  */
 class CategoryModel extends WlModelAbstract
 {

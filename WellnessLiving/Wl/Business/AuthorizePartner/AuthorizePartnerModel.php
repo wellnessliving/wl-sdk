@@ -3,12 +3,15 @@
 namespace WellnessLiving\Wl\Business\AuthorizePartner;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Gives members of a franchisor access to a franchisee.
  *
  * To grant a user access, the "Manage Franchise Location" staff permission is required.
  * Access will be granted for 24 hours.
+ *
+ * @method WlModelRequest get() Grants or denies access to business location for a partner.  Allows a franchisor staff member to temporarily let another user into a franchisee location. Requires the "Manage Franchise Location" privilege. Granted access expires after 24 hours; revoking schedules removal within 15 minutes.
  */
 class AuthorizePartnerModel extends WlModelAbstract
 {

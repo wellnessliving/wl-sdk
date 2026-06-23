@@ -3,9 +3,12 @@
 namespace WellnessLiving\Thoth\DriveMs\Api;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns contents of a specified file.
+ *
+ * @method WlModelRequest post() Returns generic metadata for each of the given file links.  Low-level metadata fetch used by the drive client library before performing operations that depend on file attributes such as privacy flag, dimensions, or SHA1 hash. Results are returned as serialized rows to keep the payload compact. Use {@link \Thoth\DriveMs\Api\DriveFileApi} for structured file info instead.
  */
 class DriveGenericInfoModel extends WlModelAbstract
 {

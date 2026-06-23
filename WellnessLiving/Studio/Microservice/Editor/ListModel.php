@@ -4,9 +4,12 @@ namespace WellnessLiving\Studio\Microservice\Editor;
 
 use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns a list of microservices.
+ *
+ * @method WlModelRequest get() Gets a list of microservices.  Returns microservices accessible to the current user based on project roles and privileges.
  */
 class ListModel extends WlModelAbstract
 {

@@ -4,9 +4,12 @@ namespace WellnessLiving\Wl\Announcement;
 
 use WellnessLiving\Core\Sid\SortOrderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves a list of announcements.
+ *
+ * @method WlModelRequest get() Returns a list of announcements for the given business and location.  Retrieves published announcements visible to the current user, optionally filtered to a single location.  In backend mode the caller can also sort the results by column and direction, and the chosen sort  preference is persisted per user so the backend grid remembers  it across requests. Access is validated against announcement editor permissions for the business.
  */
 class AnnouncementListModel extends WlModelAbstract
 {

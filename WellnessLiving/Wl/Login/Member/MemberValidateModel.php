@@ -3,11 +3,14 @@
 namespace WellnessLiving\Wl\Login\Member;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Checking whether there is something that prevents the user from using the business.
  *
  * @deprecated Use instead {@link MemberValidate63Model}.
+ *
+ * @method WlModelRequest get() Checks whether anything prevents the user from using the business and returns any blocking conditions found.  Returns flags indicating whether the user has an outstanding waiver, an unconfirmed contract, pending registration quizzes, a required credit card on file, and lists of missing required profile fields for booking and registration.
  */
 class MemberValidateModel extends WlModelAbstract
 {

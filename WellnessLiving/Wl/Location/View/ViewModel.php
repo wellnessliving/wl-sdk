@@ -3,12 +3,15 @@
 namespace WellnessLiving\Wl\Location\View;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlAgeSid;
 use WellnessLiving\Wl\WlFacilitySid;
 use WellnessLiving\Wl\WlHomeTourSid;
 
 /**
  * Returns information on a specified location.
+ *
+ * @method WlModelRequest get() Returns detailed information about the specified location.  Returns the full profile of a location, including address, coordinates, timezone, contact information, business hours, logo, slide images, amenities, social media links, and a description.
  */
 class ViewModel extends WlModelAbstract
 {

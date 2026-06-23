@@ -4,11 +4,14 @@ namespace WellnessLiving\Wl\Location\WorkTime;
 
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Saves working hours for a specified location.
  *
  * Note that to run this endpoint, an authenticated user with specified permissions is required.
+ *
+ * @method WlModelRequest post() Saves working hours of the location.  Accepts a list of day-and-time-range entries representing the weekly schedule and replaces all existing working hours for the location. Days not present in the list are treated as non-working days.
  */
 class LocationWorkTimeModel extends WlModelAbstract
 {

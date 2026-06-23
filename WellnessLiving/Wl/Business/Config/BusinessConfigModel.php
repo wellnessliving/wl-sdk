@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Business\Config;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\Policy\BlameSid;
 use WellnessLiving\Wl\Business\Policy\ChargeSid;
 use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
@@ -11,6 +12,8 @@ use WellnessLiving\Wl\Service\ServiceSid;
 
 /**
  * Manages business configurations for clients, bookings, payments, and related things.
+ *
+ * @method WlModelRequest get() Gets information about a business config.  Used by the booking widget and checkout flow to know the rules governing client interactions: which family member relations are allowed, whether clients or staff must select a location at checkout, what cancellation penalties apply, and whether white-label mode is active.
  */
 class BusinessConfigModel extends WlModelAbstract
 {

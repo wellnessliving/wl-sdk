@@ -4,11 +4,16 @@ namespace WellnessLiving\Wl\Promotion;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlDurationTypeSid;
 use WellnessLiving\Wl\WlProgramSid;
 
 /**
  * Gets promotions for the specified business and promotion keys.
+ *
+ * @method WlModelRequest delete() Soft-deletes the specified promotion if it has no associated sales.  Validates staff privileges and checks that the promotion has not been sold before marking it as removed.
+ * @method WlModelRequest get() Returns promotion by the specified business and promotion keys.  Returns full promotion details including access restrictions, image, pricing, duration, tags, locations, and guest pass settings if applicable. {@inheritdoc}
+ * @method WlModelRequest post() Saves promotion data.  Accepts the full promotion configuration including title, description, access rules, duration, tags, and guest pass settings, then validates and persists the changes.
  */
 class PromotionModel extends WlModelAbstract
 {

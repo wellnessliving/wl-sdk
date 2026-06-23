@@ -5,12 +5,15 @@ namespace WellnessLiving\Wl\Appointment\Book\Schedule;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves a list of all calendar days in a specified month with
  * available and unavailable appointment bookings in the schedule.
  *
  * @deprecated Use {@link Calendar73Api}
+ *
+ * @method WlModelRequest get() Retrieves a list with all calendar days in specified period with available and unavailable appointment booking schedule.  Returns each day in the requested month marked as available or unavailable for booking the given  service at the given location. Availability is determined by the business schedule, holidays,  and staff availability for the selected date range.
  */
 class CalendarModel extends WlModelAbstract
 {

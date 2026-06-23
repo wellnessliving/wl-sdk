@@ -4,11 +4,14 @@ namespace WellnessLiving\Wl\Appointment\Book\Schedule;
 
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves a list of information about the booking schedule for available appointments.
  *
  * @deprecated Use {@link DayTime73Api}
+ *
+ * @method WlModelRequest get() Retrieves a list of available appointment booking schedule.  Returns available time slots for the specified service, location, staff member, and date range.  Each slot includes the start time, duration, available capacity, and staff information. Supports  both frontend and backend modes, as well as asset bookings and back-to-back scheduling.
  */
 class DayTimeModel extends WlModelAbstract
 {

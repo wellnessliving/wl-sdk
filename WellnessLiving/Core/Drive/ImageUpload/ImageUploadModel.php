@@ -5,6 +5,10 @@ namespace WellnessLiving\Core\Drive\ImageUpload;
 /**
  * An endpoint that performs the final action to an uploaded image.
  * Images are uploaded using {@link ImageUploadTemporaryModel}.
+ *
+ * @method WlModelRequest get() Returns information about the image.  Used to initialize an image upload widget for an existing entity. Returns thumbnail and full-size URLs, upload endpoint, dimension constraints, and whether deletion is allowed, so the frontend can render the current image and offer upload or delete actions.
+ * @method WlModelRequest post() Loads image information for a list of IDs. The POST method is used instead of the GET method because the maximum permitted URI length is restricted.  Bulk variant of the GET method for pages that must display many images at once. Accepts a JSON-encoded list of entity IDs and returns the same metadata as the single-item GET, loading all images in one round-trip to avoid N+1 requests.
+ * @method WlModelRequest put() Updates the image.  Applies a command (such as delete or replace) to a previously uploaded image, then returns the refreshed image metadata so the frontend can update the widget state without a separate GET call.
  */
 class ImageUploadModel extends \WellnessLiving\Custom\Core\Drive\ImageUpload\ImageUploadModel
 {

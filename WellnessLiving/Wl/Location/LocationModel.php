@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Location;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Creates a new location in the business or edits a specified location.
@@ -13,6 +14,8 @@ use WellnessLiving\WlModelAbstract;
  * Other fields are optionally if the location should be edited. This means if a field is not specified it is not be changed.
  * If <tt>k_location</tt> is not specified that new location will be created. In this case <tt>k_city</tt>,
  * <tt>text_address</tt> and <tt>text_title</tt> are required.
+ *
+ * @method WlModelRequest post() Creates new location or edits the existing location.  When {@link \Wl\Location\LocationApi::$k_location} is omitted, creates a new location requiring {@link \Wl\Location\LocationApi::$k_city},  {@link \Wl\Location\LocationApi::$text_address}, and {@link \Wl\Location\LocationApi::$text_title}. When {@link \Wl\Location\LocationApi::$k_location} is provided, updates only the supplied fields of the existing location.  Returns the key of the created or updated location.
  */
 class LocationModel extends WlModelAbstract
 {

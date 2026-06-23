@@ -4,9 +4,12 @@ namespace WellnessLiving\Wl\Event\Book\EventList;
 
 use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves a list of events for a given class tab.
+ *
+ * @method WlModelRequest get() Retrieves a list of events.  Used to populate the events tab on the client-facing booking page. Returns all events offered in the business (or filtered to a specific tab), together with availability flags so the UI can show which events still have open spots.
  */
 class ListModel extends WlModelAbstract
 {

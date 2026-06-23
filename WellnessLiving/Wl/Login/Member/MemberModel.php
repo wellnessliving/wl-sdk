@@ -3,9 +3,13 @@
 namespace WellnessLiving\Wl\Login\Member;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Displays information about members of businesses.
+ *
+ * @method WlModelRequest get() Returns the list of businesses where the specified user is an active member.  Accepts a user key and returns all active businesses where that user has a membership, including franchise relationship flags, business title, and whether the user is allowed to sign in to each business. Forwards the request to other data centers in multi-region deployments and merges the results.
+ * @method WlModelRequest post() Adds a user into a business.  Validates that the current user has profile access, then registers the specified user as a member of the given business without sending a registration email.
  */
 class MemberModel extends WlModelAbstract
 {

@@ -4,10 +4,13 @@ namespace WellnessLiving\Wl\Catalog\CatalogList;
 
 use WellnessLiving\Core\Sid\SortOrderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * Returns a list of products.
+ *
+ * @method WlModelRequest get() Gets store products by shop category.  Used to populate a specific product category tab in the client-facing store. Supports pagination so large categories can be loaded incrementally. Returns the products together with the sort order configured for the category and a cache key for client-side caching.
  */
 class CatalogProductModel extends WlModelAbstract
 {

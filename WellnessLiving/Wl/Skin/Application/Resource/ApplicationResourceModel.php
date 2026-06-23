@@ -4,6 +4,8 @@ namespace WellnessLiving\Wl\Skin\Application\Resource;
 
 /**
  * Returns information used to generate application sources.
+ *
+ * @method WlModelRequest get() Gets application resources.  Returns image resource groups, version information, and Google OAuth credentials for one or all White Label mobile applications. Called by the build pipeline to gather the data needed to generate application source bundles. Pass a business key to restrict results to a single app.
  */
 class ApplicationResourceModel extends \WellnessLiving\Custom\Wl\Skin\Application\Resource\ApplicationResourceModel
 {

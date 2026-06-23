@@ -3,11 +3,14 @@
 namespace WellnessLiving\Wl\Appointment\Book\Product;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns information about service add-ons.
  *
  * If you need to filter products by client type/group, use {@link Product62Model}.
+ *
+ * @method WlModelRequest get() Retrieves list of available service add-ons.  Returns all active add-on products available for the specified service, including title, image,  price, and quantity information. Results are not filtered by client type; use {@link \Wl\Appointment\Book\Product\Product62Api}  when filtering by client login type is required.
  */
 class ProductModel extends WlModelAbstract
 {

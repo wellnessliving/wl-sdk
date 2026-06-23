@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Resource\ResourceList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Asset list by business.
+ *
+ * @method WlModelRequest get() Returns assets list in the business.  Returns all assets if <tt>$id_category</tt> is not specified or only certain category assets. Includes   main information about assets.
  */
 class ListModel extends WlModelAbstract
 {

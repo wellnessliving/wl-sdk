@@ -5,12 +5,16 @@ namespace WellnessLiving\Wl\Book\Process\Quiz;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Manages quizzes and a selected Purchase Option for a class or event during the booking process.
  *
  * Note that the terms "Purchase Option" and "promotion" are used interchangeably.
+ *
+ * @method WlModelRequest get() Defines list of required quizzes.  Merges the quizzes required by the booking itself with quizzes tied to the selected purchase options, filters out internal (staff-only) quizzes for non-backend requests, and returns the unified list in `a_quiz`.
+ * @method WlModelRequest post() Finished booking process and save quiz responses (if quiz step is the last in booking wizard).  Validates session selection and asset requirements, stores quiz responses in the booking process context, and attempts to complete the booking without payment when no payment step is needed. Returns visit keys, activity keys, and a flag indicating whether additional wizard steps are still required.
  */
 class QuizModel extends WlModelAbstract
 {

@@ -5,6 +5,7 @@ namespace WellnessLiving\Core\WebSocket;
 use WellnessLiving\Thoth\PayProcessor\Nuvei\Code\CSResponseSid;
 use WellnessLiving\Thoth\ReportCore\Generator\ReportGeneratorStatusSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
 use WellnessLiving\Wl\Report\WlReportSid;
 use WellnessLiving\Wl\Visit\WlVisitSid;
@@ -13,6 +14,8 @@ use WellnessLiving\Wl\Visit\WlVisitSid;
  * Checks whether a listener can subscribe to specified channel.
  *
  * If yes, subscribes it.
+ *
+ * @method WlModelRequest post() Checks whether a listener can subscribe to specified channel. Subscribes in a case of positive result.  Called by the WebSocket client immediately after a connection is established, to register interest in a specific channel (identified by CID and key fields). If the current user is not permitted to receive events on that channel, the subscription is rejected. On success, any messages already queued for the channel are returned so the client does not miss events that arrived before the subscription was set up.
  */
 class SubscribeModel extends WlModelAbstract
 {

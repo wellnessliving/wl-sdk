@@ -4,10 +4,13 @@ namespace WellnessLiving\Wl\Login\Promotion\GuestPass;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlProgramSid;
 
 /**
  * API for managing guest passes of specific client.
+ *
+ * @method WlModelRequest get() Retrieves guest passes for a specific client.  Returns all guest passes assigned to the given user, optionally filtered by class and location.
  */
 class GuestPassListModel extends WlModelAbstract
 {

@@ -3,9 +3,13 @@
 namespace WellnessLiving\Wl\Skin\Application;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves customized skin settings for the client view.
+ *
+ * @method WlModelRequest delete() Reset customisation form of client application.  Resets the Achieve app customization skin to default values for the given business. If billing is required for the reset, a confirmation flag must be provided, and a customization fee may be scheduled.
+ * @method WlModelRequest get() Returns the application customisation skin data for the given business.  Returns the full set of White Label Achieve app customization settings (colors, logos, fonts, and other branding options) for the given business, along with a flag indicating whether the business account has an active paid customization subscription.
  */
 class SkinModel extends WlModelAbstract
 {

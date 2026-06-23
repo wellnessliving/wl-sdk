@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Reception\Roster;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Book a class for a client and mark as attended using the Attendance Kiosk.
+ *
+ * @method WlModelRequest post() Books a class for the client and marks the visit as attended via the Attendance Kiosk.  Validates the Attendance Kiosk secret, books the specified class period for the client, and immediately marks the resulting visit as attended.
  */
 class AttendanceListAttendModel extends WlModelAbstract
 {

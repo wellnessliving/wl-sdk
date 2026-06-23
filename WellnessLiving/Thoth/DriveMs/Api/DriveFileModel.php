@@ -4,9 +4,12 @@ namespace WellnessLiving\Thoth\DriveMs\Api;
 
 use WellnessLiving\Core\Drive\DriveTypeSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns contents of a specified file.
+ *
+ * @method WlModelRequest post() Returns file information for each of the given links.  Batch lookup for file metadata by drive link. Used when a page or component needs to display details (such as name, dimensions, or type) for several files at once. The JSON input variant exists to avoid hitting POST body size limits when the list is large.
  */
 class DriveFileModel extends WlModelAbstract
 {

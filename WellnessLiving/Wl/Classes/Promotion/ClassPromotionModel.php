@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Classes\Promotion;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlProgramSid;
 
 /**
  * Returns a list of promotions that can pay for a business's classes or events.
+ *
+ * @method WlModelRequest get() Returns list of promotions that can be used to pay for the class / event.  Used in the booking flow to show clients which of their existing passes or memberships cover the selected class. Also returns the default promotion to pre-select so the client does not have to choose manually when there is an obvious match.
  */
 class ClassPromotionModel extends WlModelAbstract
 {

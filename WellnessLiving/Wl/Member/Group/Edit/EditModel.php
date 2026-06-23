@@ -3,10 +3,15 @@
 namespace WellnessLiving\Wl\Member\Group\Edit;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlPrivilegeRoleSid;
 
 /**
  * Point to add or change a client group.
+ *
+ * @method WlModelRequest get() Returns data for group edit form.  Gets full information about a client group.
+ * @method WlModelRequest post() Adds or changes a client group.  Use to update existing client group or create a new one.
+ * @method WlModelRequest put() Adds or edit client group Query.  Use to update existing client group search query or create a new one. Member group should be already created.
  */
 class EditModel extends WlModelAbstract
 {

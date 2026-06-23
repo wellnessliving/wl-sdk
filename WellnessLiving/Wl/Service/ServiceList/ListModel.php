@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Service\ServiceList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * List of appointment types of the business.
+ *
+ * @method WlModelRequest get() Returns list of appointment type in the business.  Gets key of the business and returns all available appointment types with their names and categories.
  */
 class ListModel extends WlModelAbstract
 {

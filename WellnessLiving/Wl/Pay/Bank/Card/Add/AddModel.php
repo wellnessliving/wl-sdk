@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Pay\Bank\Card\Add;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
 use WellnessLiving\Wl\Pay\Owner\OwnerModel;
 
@@ -15,6 +16,10 @@ use WellnessLiving\Wl\Pay\Owner\OwnerModel;
  * This endpoint using captcha check.
  * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
  * For this API an action is {@link BusinessPaymentCaptcha::CID}.
+ *
+ * @method WlModelRequest delete() Deletes saved card.  Removes the payment card identified by `$k_pay_bank` from the specified business, permanently deleting the stored card record.
+ * @method WlModelRequest get() Gets code of bank card widget.  Returns an HTML snippet containing the card entry form rendered by the server-side widget for the given payment owner. This method is deprecated; prefer building the card widget on the client side.
+ * @method WlModelRequest post() Saves new bank card.  Validates the payment owner and business, then saves the new card details provided in `$a_card_detail` and optionally sets the card as the default recurring payment source.
  */
 class AddModel extends WlModelAbstract
 {

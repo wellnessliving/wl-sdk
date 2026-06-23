@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Profile\Edit;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Model to change user's password.
+ *
+ * @method WlModelRequest post() Saves new password for user.  Changes the user's password after verifying the current one, enforcing complexity and  length rules, and sends a password-change notification email. The old password check can  be skipped by staff with the appropriate access level.
  */
 class EditPasswordModel extends WlModelAbstract
 {

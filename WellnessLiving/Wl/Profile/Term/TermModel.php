@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Profile\Term;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Displays information about online waiver.
+ *
+ * @method WlModelRequest get() Returns online waiver information for the specified user and business.  Returns the rendered online waiver text for the business along with the client's current  agreement status. Used to display the waiver page and show whether the client has already  signed, including their signature image and the confirmation timestamp.
  */
 class TermModel extends WlModelAbstract
 {

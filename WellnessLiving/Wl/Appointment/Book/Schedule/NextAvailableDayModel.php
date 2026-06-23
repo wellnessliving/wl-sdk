@@ -4,9 +4,12 @@ namespace WellnessLiving\Wl\Appointment\Book\Schedule;
 
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns next day with available.
+ *
+ * @method WlModelRequest get() Finds and returns the next available date for appointment booking starting from the given date.  Searches forward from the specified start date until it finds a day with at least one available  time slot for the given service, location, and optional staff member. Returns the first available  date so the client side can pre-select it in the booking calendar. This request may take longer  than usual on production and uses an extended execution time limit.
  */
 class NextAvailableDayModel extends WlModelAbstract
 {

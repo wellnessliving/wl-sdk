@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Login\Attendance;
 use WellnessLiving\Core\Quiz\ResponseStatusSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Member\Progress\Field\MeasurementSid;
 use WellnessLiving\Wl\Member\Progress\Field\ProgressFieldSid;
 use WellnessLiving\Wl\Member\Progress\Field\TypeSid;
@@ -15,6 +16,8 @@ use WellnessLiving\Wl\WlProgramSid;
 /**
  * An endpoint that displays attendance list data.
  * Version of {@link AttendanceListModel} for access validation by security token.
+ *
+ * @method WlModelRequest get() Returns the attendance list for a class period or appointment session.  Accepts either a class period key with a local date or an appointment key, validates access and date, and returns the active list, wait list, and confirmed list of attending clients, along with session capacity, wait list limit, and per-client details such as purchase option, visit status, wearables, and quiz responses.
  */
 class AttendanceListByTokenModel extends WlModelAbstract
 {

@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Book\Process\Purchase;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * API point to get information about a list of purchase options wile booking process.
+ *
+ * @method WlModelRequest get() Returns the pricing breakdown (totals, taxes, and discounts) for the given list of purchase items.  Validates each item in `a_purchase_item` (type, key, installment eligibility, and prize applicability), applies discount codes, login-type discounts, and installment adjustments, then accumulates price, subtotal, discount, tax, and cost totals across all items and returns them as result fields.
  */
 class PurchaseElementGroupModel extends WlModelAbstract
 {

@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Book\Process\Payment;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
@@ -14,6 +15,8 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
  * This endpoint using captcha check.
  * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
  * For this API an action is {@link BusinessPaymentCaptcha::CID}.
+ *
+ * @method WlModelRequest post() Processes purchases and books sessions on the "Pay/Billing info" step of the booking wizard.  Accepts the selected purchase items, payment form, optional discount code, and installment template, then collects payment, applies discounts and prizes, and creates the booking records. Returns visit keys, activity keys, and purchase activity key upon success.
  */
 class PaymentModel extends WlModelAbstract
 {

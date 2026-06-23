@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Review;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlReviewStatusSid;
 
 /**
  * Adds a review reply.
+ *
+ * @method WlModelRequest post() Saves the reply text and optional status update for the given review.  Validates edit access for the current user, persists the reply text and optional review status change, and records the replying staff or admin user.
  */
 class ReviewReplyModel extends WlModelAbstract
 {

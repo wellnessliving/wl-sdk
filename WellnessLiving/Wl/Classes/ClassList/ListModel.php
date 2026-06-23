@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Classes\ClassList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
 
 /**
  * List of classes and events.
+ *
+ * @method WlModelRequest get() Returns list of classes and events in the business.  Used by import and integration tools to enumerate all classes and events offered by a business. In franchise mode, classes from all franchisee locations are included. Results are sorted by title and start date.
  */
 class ListModel extends WlModelAbstract
 {

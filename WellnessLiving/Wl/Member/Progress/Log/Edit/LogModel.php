@@ -3,12 +3,16 @@
 namespace WellnessLiving\Wl\Member\Progress\Log\Edit;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Member\Progress\Field\MeasurementSid;
 use WellnessLiving\Wl\Member\Progress\Field\ProgressFieldSid;
 use WellnessLiving\Wl\Member\Progress\Field\TypeSid;
 
 /**
  * Progress log api.
+ *
+ * @method WlModelRequest get() Returns progress log data.  Loads field values recorded for the specified user on the given date (defaulting to the business's current local date), and also returns the last date the user entered progress data and whether the viewer is staff.
+ * @method WlModelRequest post() Saves progress fields log.  Validates and persists the field values for the specified user and date, enforcing access rules (clients cannot edit verified entries), and logs the change when data is modified.
  */
 class LogModel extends WlModelAbstract
 {

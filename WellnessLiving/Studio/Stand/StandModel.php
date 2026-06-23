@@ -3,9 +3,15 @@
 namespace WellnessLiving\Studio\Stand;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Prepare creation a new stand.
+ *
+ * @method WlModelRequest delete() Marks a stand as deleted.  Renames the stand record with a removal timestamp suffix to prevent name conflicts, and sets  the removal date. Called by the build server after stand servers are removed.
+ * @method WlModelRequest get() Returns stand data by name.  Retrieves stand status and deserialized stand data for the specified stand name. Verifies that the current user has access to the stand's project.
+ * @method WlModelRequest post() Registers a new stand and generates a URL for its creation.  Validates the microservice environment configuration, creates a stand record, and returns a  build URL to trigger stand creation.
+ * @method WlModelRequest put() Updates stand status and stand data.  Updates `id_stand_status` or `a_stand_data` for the specified stand. When the stand becomes  ready and both data centers are configured, triggers builds on each.
  */
 class StandModel extends WlModelAbstract
 {

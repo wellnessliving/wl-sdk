@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Profile\Edit\Email;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Profile\Edit\EditModel;
 
 /**
@@ -16,6 +17,9 @@ use WellnessLiving\Wl\Profile\Edit\EditModel;
  *   with {@link EditModel} endpoint.
  *
  * @deprecated Use {@link EditEmail67Model} instead.
+ *
+ * @method WlModelRequest get() Checks if specified email address is busy.  Looks up whether the given email is already registered and returns user info, membership  status, staff flags, and password status if found; guest requests are subject to a per-IP  rate limit.
+ * @method WlModelRequest post() Adds user to business.  Registers the found user as a member of the specified business. If required profile fields  are missing, grants temporary access until the profile is completed. Sends a welcome  notification once the user is fully registered.
  */
 class EditEmailModel extends WlModelAbstract
 {

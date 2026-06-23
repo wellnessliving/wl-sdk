@@ -3,9 +3,13 @@
 namespace WellnessLiving\Thoth\DriveMs\Api;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Registers variants.
+ *
+ * @method WlModelRequest get() Registers file variants for the given link (deprecated GET compatibility endpoint).  Reads variant and link values from the raw GET parameters and delegates to the POST method. This endpoint exists only for backward compatibility; use {@link \Thoth\DriveMs\Api\DriveRegisterVariantsApi::post()} instead.
+ * @method WlModelRequest post() Registers file variants for the given link.  Accepts a drive link and a list of variant file paths keyed by descriptor (either as an array or as a JSON-encoded string), and associates the given variants with the specified link in the drive storage.
  */
 class DriveRegisterVariantsModel extends WlModelAbstract
 {

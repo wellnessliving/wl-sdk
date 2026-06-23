@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Location\Flag;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves information if a user is flagged in a location.
+ *
+ * @method WlModelRequest get() Checks if user {@link \Wl\Location\Flag\FlagApi::$uid} is flagged in location {@link \Wl\Location\Flag\FlagApi::$k_location} or each of users {@link \Wl\Location\Flag\FlagApi::$a_uid} is flagged in location {@link \Wl\Location\Flag\FlagApi::$k_location}.  Accepts either a single user key (`uid`) or an array of user keys (`a_uid`) and returns the flag status for each, including whether the flagged user is restricted from booking or purchasing at the location.
  */
 class FlagModel extends WlModelAbstract
 {

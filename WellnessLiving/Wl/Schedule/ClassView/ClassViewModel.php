@@ -3,12 +3,16 @@
 namespace WellnessLiving\Wl\Schedule\ClassView;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Schedule\ClassList\ClassListModel;
 
 /**
  * Gets information about a specified class session.
  *
  * A class listing can be retrieved from the {@link ClassListModel} endpoint.
+ *
+ * @method WlModelRequest get() Retrieves information about class.  Returns detailed information about one or more class sessions, including staff, location, assigned assets, virtual location links, visit counts, and booking availability. Supports single-session mode for one class period or multi-session mode for batch lookups.
+ * @method WlModelRequest post() Retrieves information about classes.  A POST-method alternative to {@link \Wl\Schedule\ClassView\ClassViewApi::get()} for multi-session batch lookups where the session list is too long to encode in a GET query string. The session list is provided as a JSON-encoded string in the request body.
  */
 class ClassViewModel extends WlModelAbstract
 {

@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Appointment\Book\Payment;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
@@ -18,6 +19,9 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
  * This endpoint uses a CAPTCHA check.
  * To pass the CAPTCHA, you'll need to study the documentation of the CAPTCHA base class. In the documentation, you'll
  * find that you need to send a CAPTCHA for a specific action. For this API, the action is {@link BusinessPaymentCaptcha::CID}.
+ *
+ * @method WlModelRequest get() Calculates pricing information for a batch of appointment bookings, including taxes, discounts, surcharges, and per-provider totals.  Returns the full pricing breakdown for all providers specified in the booking data, including  available Purchase Options, applicable discount codes, surcharge amounts, and the final total  for each provider. Intended to be called before submitting payment so the client side can  display a pricing summary.
+ * @method WlModelRequest post() Allows to pay an appointment or appointment purchase option for the client.  Accepts payment method and multi-provider booking data, charges the client for all appointments  or selected Purchase Options in the batch, and records the transactions. Requires the client  to be authenticated and each provider entry to include a valid service or asset key with date.
  */
 class PaymentMultipleModel extends WlModelAbstract
 {

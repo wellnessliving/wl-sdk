@@ -3,9 +3,13 @@
 namespace WellnessLiving\Wl\Business\User\Subscribe;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Manages a user`s subscription in a business.
+ *
+ * @method WlModelRequest get() Retrieves information about if user is subscribed on specified business or not.  Used to pre-populate the notification preferences toggle in a client's profile page. Shows whether the client has opted in to email and SMS communications from the business.
+ * @method WlModelRequest put() Subscribes or unsubscribes user on specified business.  Called when a client changes their notification preferences. Controls whether the business can contact the client by email and by SMS.
  */
 class SubscribeModel extends WlModelAbstract
 {

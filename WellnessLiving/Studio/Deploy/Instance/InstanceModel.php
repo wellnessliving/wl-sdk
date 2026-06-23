@@ -3,9 +3,13 @@
 namespace WellnessLiving\Studio\Deploy\Instance;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Manage `Studio Deploy Instance`.
+ *
+ * @method WlModelRequest delete() Delete an instance from database. For now only `stand` instances can be deleted physically.  Validates that the instance exists and is a stand instance before deleting the record.
+ * @method WlModelRequest post() Creates new `Deploy Instance`  Validates repository paths, variables, project, and optional account, role, and tag assignments.
  */
 class InstanceModel extends WlModelAbstract
 {

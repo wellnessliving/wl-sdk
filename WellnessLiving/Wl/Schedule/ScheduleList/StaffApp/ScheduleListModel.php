@@ -4,12 +4,15 @@ namespace WellnessLiving\Wl\Schedule\ScheduleList\StaffApp;
 
 use WellnessLiving\Core\Quiz\ResponseStatusSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Schedule\Design\OptionSid;
 use WellnessLiving\Wl\Visit\WlVisitSid;
 use WellnessLiving\Wl\WlServiceSid;
 
 /**
  * Gets information about sessions (both classes and appointments) at a business on a given day.
+ *
+ * @method WlModelRequest get() Gets schedule of business {@link \Wl\Schedule\ScheduleList\StaffApp\ScheduleListApi::$k_business} for day {@link \Wl\Schedule\ScheduleList\StaffApp\ScheduleListApi::$dt_date}.  Returns all classes and appointments scheduled for the given business on the specified date, sorted chronologically. Supports both single-day and date-range modes, and includes full session details such as staff, visit counts, assets, and class images.
  */
 class ScheduleListModel extends WlModelAbstract
 {

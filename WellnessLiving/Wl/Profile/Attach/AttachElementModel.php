@@ -3,9 +3,14 @@
 namespace WellnessLiving\Wl\Profile\Attach;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Endpoint for upload and manage attachments.
+ *
+ * @method WlModelRequest delete() Deletes the attachment.  Permanently removes the specified attachment from the client profile and logs the deletion  action in the business audit trail.
+ * @method WlModelRequest get() Gets the data for the attachment editing form.  Returns attachment metadata including filename, description, filesize, file type, creation  and edit timestamps, download URL, preview URL, and a flag indicating whether the current  user has permission to delete the attachment.
+ * @method WlModelRequest post() In case the attachment key is not specified, it adds a new attachment. In case the attachment key is specified, edits the attachment.  When {@link \Wl\Profile\Attach\AttachElementApi::$k_attach} is empty, uploads a new file to the client profile; when set, updates the  attachment metadata, file content, or visibility flag depending on the provided fields.
  */
 class AttachElementModel extends WlModelAbstract
 {

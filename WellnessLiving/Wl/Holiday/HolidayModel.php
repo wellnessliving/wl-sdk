@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Holiday;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * An endpoint displaying information about locations' business holidays.
+ *
+ * @method WlModelRequest get() Returns information about holiday day of business/locations.  For the specified business and date, returns whether that date is a business-wide closed day, the closed day title if applicable, and a map of location keys to their closed day titles for any locations also closed on that date.
  */
 class HolidayModel extends WlModelAbstract
 {

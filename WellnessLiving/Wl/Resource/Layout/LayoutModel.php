@@ -3,11 +3,14 @@
 namespace WellnessLiving\Wl\Resource\Layout;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Resource\Image\ImageIconSid;
 use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
 
 /**
  * Displays information about an asset layout.
+ *
+ * @method WlModelRequest get() Returns information about the specified asset layout, including assets and custom shapes.  Returns the full layout configuration including the asset list with positions and images, custom shapes with coordinates and colors, and display settings such as grid dimensions and number visibility.
  */
 class LayoutModel extends WlModelAbstract
 {

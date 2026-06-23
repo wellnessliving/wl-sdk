@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Profile\Attendance\Schedule\Frontend;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns a list with totals of lifetime visits.
+ *
+ * @method WlModelRequest get() Retrieves lifetime visit totals.  Returns aggregated lifetime attendance statistics for the specified user in the given  business. Used to display summary visit counts and related metrics on the client profile  schedule page.
  */
 class LifetimeTotalsModel extends WlModelAbstract
 {

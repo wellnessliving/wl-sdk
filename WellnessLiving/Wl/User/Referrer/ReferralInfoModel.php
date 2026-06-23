@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\User\Referrer;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns referral statistics for a user within a business.
@@ -10,6 +11,8 @@ use WellnessLiving\WlModelAbstract;
  * Provides the count of referred users, total reward points earned from referrals, and
  * a shareable invite link. The link encodes the referrer's user key so that when a new
  * client registers via the link, the "Referred By" field is pre-filled.
+ *
+ * @method WlModelRequest get() Returns referral count, total referral points, and shareable referral link for the given user.  Computes result fields for the referrer identified:  - number of invited referrals;  - reward points earned for referral registrations;  - the shareable invite link with the referrer's encrypted user key.
  */
 class ReferralInfoModel extends WlModelAbstract
 {

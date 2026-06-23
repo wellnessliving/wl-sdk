@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Catalog\Payment;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
 use WellnessLiving\Wl\Insurance\Catalog\ProgramListModel;
 use WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel;
@@ -17,6 +18,8 @@ use WellnessLiving\Wl\WlSaleSid;
  * The documentation specifies that a captcha must be sent for a specific action.
  *
  * For this API an action is {@link BusinessPaymentCaptcha::CID}.
+ *
+ * @method WlModelRequest post() Allows to pay items for the client.  The checkout endpoint that finalizes a purchase in the client-facing store. Charges the client's selected payment method, applies any discounts and tips, and creates the purchase record. Returns the resulting purchase key so the frontend can redirect to the confirmation page.
  */
 class PaymentModel extends WlModelAbstract
 {

@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Mail;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Can be used to send email messages.
+ *
+ * @method WlModelRequest post() Sends email.  Validates the recipient address, business email, subject, and HTML content, then saves the email pattern and dispatches the message to the specified recipient. Rate limiting is applied per hour and per minute.
  */
 class SendMailModel extends WlModelAbstract
 {

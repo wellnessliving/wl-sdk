@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Appointment\Info;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 
 /**
  * Appointment information.
+ *
+ * @method WlModelRequest get() Gets information about appointment.  Returns detailed information about the specified appointment, including service details, staff member,  date and time in the location's timezone, booking status, client information, and any associated  assets or add-ons. Access is validated against the current user's permissions.
  */
 class InfoModel extends WlModelAbstract
 {

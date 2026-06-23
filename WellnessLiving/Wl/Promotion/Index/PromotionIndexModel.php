@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Promotion\Index;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Event\EventListModel;
 use WellnessLiving\Wl\Promotion\Edit\Limit\Cycle\Sid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
@@ -14,6 +15,8 @@ use WellnessLiving\Wl\WlProgramTypeSid;
 
 /**
  * Gets a list of introductory promotion offers of a specified type available at a given location.
+ *
+ * @method WlModelRequest get() Gets a list of packages/passes/memberships.  Returns introductory promotion offers available at the specified location, optionally filtered by program type, including pricing, duration, visit limits, and access information for each item.
  */
 class PromotionIndexModel extends WlModelAbstract
 {

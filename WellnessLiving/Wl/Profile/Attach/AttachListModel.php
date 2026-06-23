@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Profile\Attach;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Manages client attachment list.
+ *
+ * @method WlModelRequest get() Returns the list of file attachments for the specified client in the given business.  Returns all file attachments uploaded to the client's profile. In backend mode the result  also includes private attachments that are hidden from the client-facing view, with  additional metadata such as source, description, and a delete permission flag.
  */
 class AttachListModel extends WlModelAbstract
 {

@@ -5,11 +5,14 @@ namespace WellnessLiving\Wl\Book\Process\Store;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Book\Process\Purchase\Purchase56Model;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Manages the "Purchase Options" page of the booking wizard.
+ *
+ * @method WlModelRequest post() Processes the "Purchase Options" step of the booking wizard, validates selections, and books the session when possible.  Stores the selected purchase option (existing login promotion or new purchasable item) and session data in the booking process context, validates availability and eligibility, and attempts to complete the booking immediately when no payment or quiz step is needed. Returns visit keys, activity keys, and a flag indicating whether further wizard steps are required.
  */
 class StoreModel extends WlModelAbstract
 {

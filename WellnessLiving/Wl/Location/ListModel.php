@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Location;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlProjectSid;
 
 /**
  * Returns information for all locations belonging to a business.
+ *
+ * @method WlModelRequest get() Retrieves a list of locations for the given business.  Accepts a single business key, a JSON-encoded list of business keys, or an array of business keys, and returns location details including coordinates, address, timezone, directories, and logo URLs. For franchisor businesses, automatically expands to include all franchisee locations.
  */
 class ListModel extends WlModelAbstract
 {

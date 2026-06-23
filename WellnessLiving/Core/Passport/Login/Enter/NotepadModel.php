@@ -8,6 +8,8 @@ use WellnessLiving\Wl\WlRegionSid;
  * An endpoint that retrieves the notepad value from the server that is used to sign someone in to the SDK.
  *
  * @link http://en.wikipedia.org/wiki/Cryptographic_nonce
+ *
+ * @method WlModelRequest get() Generates notepad for user sign in form.  Generates a cryptographic nonce (one-time random string) and stores it in the session so that the client can hash the user's password with it before sending it to {@link \Core\Passport\Login\Enter\EnterApi}. This prevents replay attacks and avoids transmitting passwords in plain text.
  */
 class NotepadModel extends \WellnessLiving\Custom\Core\Passport\Login\Enter\NotepadModel
 {

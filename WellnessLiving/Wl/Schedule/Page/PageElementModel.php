@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Schedule\Page;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Resource\Image\ImageIconSid;
 use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
 use WellnessLiving\Wl\Virtual\VirtualProviderSid;
@@ -10,6 +11,8 @@ use WellnessLiving\Wl\Visit\WlVisitSid;
 
 /**
  * Returns information about a specified visit.
+ *
+ * @method WlModelRequest get() Retrieves information about one element of schedule.  Returns full details for a single visit, including staff, location, timing, assigned assets, virtual join URL, and class-specific or appointment-specific information. Used to render the visit detail page in the client's schedule view.
  */
 class PageElementModel extends WlModelAbstract
 {

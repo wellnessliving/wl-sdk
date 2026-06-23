@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Reward\Prize;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves a list of available redeemable prizes.
+ *
+ * @method WlModelRequest get() Retrieves a list of redeemable prizes.  Returns all active redeemable prizes for the specified business, ordered by point cost, including the prize key and required score for each item.
  */
 class PrizeModel extends WlModelAbstract
 {

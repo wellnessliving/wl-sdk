@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\User\Referrer;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Searches for a referrer using a string.
+ *
+ * @method WlModelRequest get() Searches for a referrer by the given search string and returns their profile information.  Searches for a matching client by member ID, email address, phone number, or encrypted user key, and returns their name, email, phone, and photo. Returns empty or `null` fields when no matching client is found. Search is rate-limited for guest and client callers.
  */
 class ReferrerModel extends WlModelAbstract
 {

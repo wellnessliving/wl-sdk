@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Reward\Board;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves information about reward board item.
+ *
+ * @method WlModelRequest get() Retrieves information about reward board item.  In single-user mode returns the user's score, name, and avatar on the specified board; in multi-user mode accepts a list of UIDs and returns an array of score, name, and avatar entries for all of them.
  */
 class ElementModel extends WlModelAbstract
 {

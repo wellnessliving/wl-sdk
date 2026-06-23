@@ -4,10 +4,13 @@ namespace WellnessLiving\Wl\Schedule\ClassList;
 
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
 
 /**
  * Retrieves a list of classes and class information for a Class Tab.
+ *
+ * @method WlModelRequest post() This method is a modified Get method {@link \Wl\Schedule\ClassList\ClassListApi::get()}. The difference is as follows:   - Some data for filtering is now transmitted by the post method. Because the addition of the filters creates a scenario where we can easily reach the maximum URL length of GET requests and the browser refuse to send the request (situations with long class ID, event ID or staff ID lists).   - Added generation of a separate 'Quick filter'. This generation is enabled using the flag {@link \Wl\Schedule\ClassList\ClassList68Api::$show_quick_filter}.   - Added a filter list of events {@link \Wl\Schedule\ClassList\ClassList68Api::$a_event}.  - Added a filter ID of tab {@link \Wl\Schedule\ClassList\ClassList68Api::$id_class_tab}.
  */
 class ClassList68Model extends WlModelAbstract
 {

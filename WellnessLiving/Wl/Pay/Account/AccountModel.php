@@ -4,9 +4,12 @@ namespace WellnessLiving\Wl\Pay\Account;
 
 use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Displays information about user's accounts.
+ *
+ * @method WlModelRequest get() Retrieves information about accounts of given user in given business.  Returns the list of existing accounts and accounts not yet created for the user within the specified business, including balance, currency, and payment method details. When {@link \Thoth\WlPay\Account\AccountApi::$is_owner} is `true`, resolves the money owner and includes the debtor status.
  */
 class AccountModel extends WlModelAbstract
 {

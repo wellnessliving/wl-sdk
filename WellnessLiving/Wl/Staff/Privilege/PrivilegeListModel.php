@@ -3,12 +3,15 @@
 namespace WellnessLiving\Wl\Staff\Privilege;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlPrivilegeSid;
 
 /**
  * Can return list of admin or staff privileges of the current user.
  *
  * Cannot be used to check privileges of another user.
+ *
+ * @method WlModelRequest get() Returns the list of privileges for the current user in the given business.  Returns the complete access profile of the signed-in user for the given business: staff privileges by ID, named admin privileges, and a flag indicating super-admin status. Can only be called for the currently authenticated user, not on behalf of another user.
  */
 class PrivilegeListModel extends WlModelAbstract
 {

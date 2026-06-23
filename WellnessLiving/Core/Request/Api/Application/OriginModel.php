@@ -3,6 +3,7 @@
 namespace WellnessLiving\Core\Request\Api\Application;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Gets, deletes, and adds origins for the application.
@@ -15,6 +16,10 @@ use WellnessLiving\WlModelAbstract;
  *
  * It's important to understand that the application can add allowed sites only for itself and can't add sites for another application.
  * This means that you need to call this endpoint using only the application that you're using on the sites.
+ *
+ * @method WlModelRequest delete() Restricts access to API for all sites, which are given in the list.  Accepts a list of origin URLs (with optional API domain overrides), validates each URL, and removes the matching entries from the allowed origins for the current application, then clears the origin cache.
+ * @method WlModelRequest get() Gets list of all sites, where usage of the API is allowed for the current application.  Returns the list of allowed CORS origins for the current API application, where each key is an origin URL and each value is an optional API domain used to proxy requests from that origin.
+ * @method WlModelRequest put() Allows access to API for all sites, which are given in the list.  Accepts a list of origin URLs (with optional API domain overrides), validates each URL and domain, inserts or updates the entries in the allowed origins for the current application, then clears the origin cache.
  */
 class OriginModel extends WlModelAbstract
 {

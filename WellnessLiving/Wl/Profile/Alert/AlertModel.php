@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Profile\Alert;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlProfileNoteSid;
 
 /**
  * Retrieves information about client alert messages.
+ *
+ * @method WlModelRequest get() Retrieves a list of notices to show in user's profile.  Returns `a_alert` (system alerts including unconfirmed contracts) and `a_warning` (login notes  and flags with author and editor information) for the specified user in the given business.
  */
 class AlertModel extends WlModelAbstract
 {

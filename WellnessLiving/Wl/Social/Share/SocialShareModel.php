@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Social\Share;
 
 use WellnessLiving\Core\ASocialSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Saves data about share post to database.
@@ -25,6 +26,8 @@ use WellnessLiving\WlModelAbstract;
  *     // and by using s_secret we will get a link to only those purchases we want to share.
  *     $url_facebook_share = 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode($url_link . '&s_secret=' . $o_api->s_secret);
  * </code>
+ *
+ * @method WlModelRequest post() Saves the share post data and returns the secret key for the shared object.  Records that the user has shared the specified objects (purchases, bookings, locations, or reviews) to a social network, and returns a secret token that can be appended to the destination URL to deep-link directly to the shared items.
  */
 class SocialShareModel extends WlModelAbstract
 {

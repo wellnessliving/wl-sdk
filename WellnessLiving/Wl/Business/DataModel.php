@@ -5,12 +5,15 @@ namespace WellnessLiving\Wl\Business;
 use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Service\ServiceSid;
 use WellnessLiving\Wl\WlRankTypeSid;
 use WellnessLiving\Wl\WlRegionSid;
 
 /**
  * Displays information for a specified business.
+ *
+ * @method WlModelRequest get() Returns detailed information about the specified business, including locale, franchise status, services, tips, social URLs, and logo.  Used to bootstrap client-facing pages and widgets that need to know the full business profile: which services are enabled, tip and progress log settings, franchise relationship, social media links, and deep links to the schedule, catalog, and sign-up pages. Accepts either a business key or a location request token for widget contexts where the key is not available.
  */
 class DataModel extends WlModelAbstract
 {

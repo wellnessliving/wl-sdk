@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Purchase;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlProgramCategorySid;
@@ -14,6 +15,8 @@ use WellnessLiving\Wl\WlProgramTypeSid;
  * Retrieves information about Purchase Options that can be used to pay for an appointment.
  *
  * @deprecated Use {@link Purchase72Model} instead.
+ *
+ * @method WlModelRequest get() Retrieves a list of information about available purchase options.  Returns all Purchase Options (memberships, packages, passes) the given client can use to pay for  the specified appointment at the given location, including pricing details and eligibility status.  Also returns options that can be purchased on the spot during booking.
  */
 class PurchaseModel extends WlModelAbstract
 {

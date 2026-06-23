@@ -3,9 +3,14 @@
 namespace WellnessLiving\Wl\Member\Group\GroupList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Member groups list.
+ *
+ * @method WlModelRequest delete() Removes groups.  Deletes specified groups and associated search templates.
+ * @method WlModelRequest get() Returns all member groups list in the business if <var>$a_member_group_select</var> is empty, otherwise filters result according to <var>$a_member_group_select</var>.  If <var>is_return_members</var> is `true` includes in the result list of members of each groups.
+ * @method WlModelRequest put() Updates the order of groups in a list.  Saves the display order of member groups for the business using the positions supplied in `$a_member_group_order`, verifying that all specified group keys belong to the business before writing.
  */
 class ListModel extends WlModelAbstract
 {

@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Passport\Login;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Gets the user ID for the current user and a password reset URL.
+ *
+ * @method WlModelRequest get() Returns the current user's login information and password reset URL for the specified business.  Validates the business key, applies any business-specific redemption settings, then delegates to the parent implementation to return the current user ID and password reset URL.
  */
 class InfoModel extends WlModelAbstract
 {

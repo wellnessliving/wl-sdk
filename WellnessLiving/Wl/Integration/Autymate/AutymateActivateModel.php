@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Integration\Autymate;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Checks or changes the status of Autymate enrollments.
+ *
+ * @method WlModelRequest get() Returns or changes the Autymate enrollment status for the specified business. Autymate specifically requested this method be a get.  Authenticates the request using the business GUID, then either reads or updates the enrollment status depending on the mode and the supplied `id_status` value. When activating enrollment, also provisions a Professional subscription for the business if one is not already active.
  */
 class AutymateActivateModel extends WlModelAbstract
 {

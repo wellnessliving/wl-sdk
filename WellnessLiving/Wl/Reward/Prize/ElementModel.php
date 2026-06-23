@@ -3,9 +3,13 @@
 namespace WellnessLiving\Wl\Reward\Prize;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves information about redeemable prize.
+ *
+ * @method WlModelRequest get() Retrieves information about redeemable prize item.  Returns the point cost and description for the specified redeemable prize in the given business.
+ * @method WlModelRequest post() Redeems selected prize.  Deducts the required points from the user's reward balance and records the redemption, returning the key of the created login prize record.
  */
 class ElementModel extends WlModelAbstract
 {

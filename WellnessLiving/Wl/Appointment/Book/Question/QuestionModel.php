@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Appointment\Book\Question;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves questions for a selected service.
+ *
+ * @method WlModelRequest get() Retrieves questions for the current service.  Returns the list of intake questions defined for the specified service that the client must  answer before completing an appointment booking. Each question includes its text, a stable  hash key for matching answers, and input size metadata.
  */
 class QuestionModel extends WlModelAbstract
 {

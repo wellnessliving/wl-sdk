@@ -5,9 +5,12 @@ namespace WellnessLiving\Wl\Reception\Roster\Design;
 use WellnessLiving\Core\Drive\DriveTypeSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Api endpoint to get information about Attendance Kiosk settings.
+ *
+ * @method WlModelRequest get() Returns configuration for the Attendance Kiosk.  Returns kiosk display settings including custom image, logo, direction mode, background color, and business name for the specified business.
  */
 class ReceptionRosterDesignModel extends WlModelAbstract
 {

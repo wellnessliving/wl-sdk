@@ -4,12 +4,15 @@ namespace WellnessLiving\Wl\Purchase\Receipt;
 
 use WellnessLiving\Core\a\ACardSystemSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlProgramSid;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * Returns receipt data of certain purchase.
+ *
+ * @method WlModelRequest get() Gets purchase information.  Returns full receipt data for the specified purchase, including business details, customer information, itemized purchase items, payment methods, pricing summary, and print URLs.
  */
 class PurchaseReceiptModel extends WlModelAbstract
 {

@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Classes\ClassList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Service\BookableSid;
 
 /**
  * An endpoint to get all the classes for a location.
+ *
+ * @method WlModelRequest get() Gets a list of classes which take place in the specified location.  Used to build the booking page for a location, displaying all classes that clients can sign up for. Returns the full class details needed for display: schedules, assigned staff, booking links, pricing, and category tabs.
  */
 class BookListModel extends WlModelAbstract
 {

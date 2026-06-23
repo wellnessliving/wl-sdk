@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Integration\Autymate;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
@@ -10,6 +11,8 @@ use WellnessLiving\Wl\WlPayMethodSid;
  *
  * This endpoint is a streamlined interface and adds additional columns to the report for Autymate.
  * Autymate will have one user to access all businesses, this user will require the wl.integration.autymate.report privilege.
+ *
+ * @method WlModelRequest get() Gets the daily transaction data.  Authenticates the request using the business GUID, runs the All Transactions report for the specified date, and returns paginated rows augmented with Autymate-specific columns such as tax details, location address, batch number, and payment method information.
  */
 class ReportModel extends WlModelAbstract
 {

@@ -3,9 +3,14 @@
 namespace WellnessLiving\Wl\Reward\Score;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * API endpoint designed to manage points which are earned for certain activity.
+ *
+ * @method WlModelRequest get() Returns the total reward points for the specified activity list or user.  If `a_login_activity` is provided, returns the total points earned across those activities; otherwise returns the current point balance for the specified user in the given business.
+ * @method WlModelRequest post() Gives user reward points for sharing of certain activity into Facebook.  Validates the activity list, determines the appropriate reward score type per activity category, and schedules reward point additions for each shareable activity.
+ * @method WlModelRequest put() Manually adjusts the reward points balance for the specified user.  Requires the reward point reset privilege, creates a manual activity log entry, and applies the signed point adjustment to the user's reward balance within a transaction.
  */
 class ScoreModel extends WlModelAbstract
 {

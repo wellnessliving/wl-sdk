@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Review\ReviewList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns a list of review IDs for all reviews for a location. If location is not specified, returns
@@ -10,6 +11,8 @@ use WellnessLiving\WlModelAbstract;
  *
  * Reviews in WellnessLiving apply to specific locations. This endpoint can be used to get the IDs for all reviews or
  * to get a listing that includes all the review data if the `i_page parameter` is set.
+ *
+ * @method WlModelRequest get() Retrieves a list of reviews.  Returns reviews for the specified location, or all reviews for the business if no location is given, with support for filtering by user, ordering, and pagination.
  */
 class ReviewListModel extends WlModelAbstract
 {

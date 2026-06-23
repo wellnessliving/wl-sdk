@@ -5,12 +5,16 @@ namespace WellnessLiving\Wl\Book\Process\Info;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Offers functionality for the class booking wizard on the "Class and Location" page.
  *
  * @deprecated Use {@link Info54Model} instead.
+ *
+ * @method WlModelRequest get() Returns class session details and booking information for the "Class and Location" step of the booking wizard.  Loads session data, staff, location, contract, capacity, wait-list state, pricing, special instructions, and recurring booking availability for the given class period and date. For events it also returns the list of individually selectable sessions together with their free-session eligibility.
+ * @method WlModelRequest post() Processes the "Class and Location" step of the booking wizard, optionally recording the waiver agreement and booking the session.  Accepts the selected sessions, asset assignments, recurring configuration, and waiver signature, then attempts to book the session immediately when no further payment or resource steps are needed. Returns booking keys, activity keys, and flags indicating whether additional wizard steps are required.
  */
 class InfoModel extends WlModelAbstract
 {

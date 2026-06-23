@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Profile\Edit;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
 use WellnessLiving\Wl\Field\WlFieldGeneralSid;
 use WellnessLiving\Wl\Field\WlFieldTypeSid;
@@ -13,6 +14,10 @@ use WellnessLiving\Wl\Profile\RegisterSourceSid;
 /**
  * An endpoint that displays client profile information.
  * Version of {@link EditModel} for access validation by security token.
+ *
+ * @method WlModelRequest get() Returns current user profile information.  Returns the profile field definitions and current values for the specified user, or an empty  structure when creating a new account. Used to populate the profile edit form with the  correct fields, validation rules, and inheritance options for the business.
+ * @method WlModelRequest post() Creates a new user.  Registers a new user in the business using the submitted profile field values, enforces  IP-based registration rate limiting, and handles family relations and phone or address  inheritance. Returns the identifier of the newly created account.
+ * @method WlModelRequest put() Updates values of profile fields.  Saves the updated profile field values for the existing user, propagates phone and address  inheritance changes, triggers relevant notifications, and re-indexes the user for search.
  */
 class EditByTokenModel extends WlModelAbstract
 {

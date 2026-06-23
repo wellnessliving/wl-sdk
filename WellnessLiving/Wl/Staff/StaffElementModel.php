@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Staff;
 
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\BusinessModel;
 use WellnessLiving\Wl\WlPrivilegeRoleSid;
 
@@ -12,6 +13,8 @@ use WellnessLiving\Wl\WlPrivilegeRoleSid;
  *
  * You can also use this endpoint to get information about a staff member's activity in another business when using
  * the {@link BusinessModel} endpoint.
+ *
+ * @method WlModelRequest post() Update or create staff.  Creates a new staff member or updates an existing one in the business. When creating, a new user account is provisioned if no matching email exists. When updating, the target staff member must already belong to the business. Role, location, contact details, employment dates, and custom profile fields can all be set in a single call.
  */
 class StaffElementModel extends WlModelAbstract
 {

@@ -4,9 +4,12 @@ namespace WellnessLiving\Wl\Appointment\Book\Staff;
 
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves information about staff members for the current service.
+ *
+ * @method WlModelRequest get() Retrieves an information about staff members for the current service.  Returns the list of staff members who can perform the specified service at the given location  on the specified date and time. Each entry includes the staff member's name, image, gender,  and availability. An 'any staff' option is included when the service allows random staff assignment.
  */
 class ListModel extends WlModelAbstract
 {

@@ -5,12 +5,15 @@ namespace WellnessLiving\Wl\Staff\StaffView;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns information about a specified staff member.
  *
  * This method can accept one staff UID {@link StaffView74Model::$uid_staff} or a staff UID list
  * {@link StaffView74Model::$a_uid_staff_list} but not both an exception would be thrown.
+ *
+ * @method WlModelRequest get() Retrieves information about staff.  This method can accept or one staff key {@link \Wl\Staff\StaffView\StaffViewApi::$k_staff} or staff list {@link \Wl\Staff\StaffView\StaffViewApi::$a_staff_list} but not both (exception would be thrown).
  */
 class StaffView74Model extends WlModelAbstract
 {

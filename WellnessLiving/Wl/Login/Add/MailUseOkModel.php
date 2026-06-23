@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Login\Add;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Registers an existing user in the specified Enterprise Headquarters account.
@@ -13,6 +14,8 @@ use WellnessLiving\WlModelAbstract;
  *
  * For Enterprise Cloud in WellnessLiving, clients can only be members in one Enterprise Location.
  * In all other Enterprise Locations, they'll be treated as travelers in the system.
+ *
+ * @method WlModelRequest post() Checks required profile fields and, if complete, registers the existing user in the specified business.  Validates the user's profile for any missing required fields and, if all fields are complete, adds the user as a member of the business. Returns a status code and a list of any fields that still need to be filled in.
  */
 class MailUseOkModel extends WlModelAbstract
 {

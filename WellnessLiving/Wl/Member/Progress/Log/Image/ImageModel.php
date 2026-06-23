@@ -3,9 +3,14 @@
 namespace WellnessLiving\Wl\Member\Progress\Log\Image;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Progress image api.
+ *
+ * @method WlModelRequest delete() Deletes progress image.  Removes the progress picture for the specified user and date from storage and deletes the corresponding progress log record from the database, then logs the change.
+ * @method WlModelRequest get() Returns progress picture data.  Loads the progress picture for the specified user and date, returning image storage data, thumbnail dimensions, the upload URL, and a direct link to the image.
+ * @method WlModelRequest post() Saves progress picture.  Applies the image command from `$s_command` to the progress picture for the specified user and date, persists the result in storage, and writes or updates the corresponding progress log record in the database.
  */
 class ImageModel extends WlModelAbstract
 {

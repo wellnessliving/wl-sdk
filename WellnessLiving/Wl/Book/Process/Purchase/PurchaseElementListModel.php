@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Book\Process\Purchase;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Displays a list of purchase items.
+ *
+ * @method WlModelRequest get() Returns the pricing breakdown for a list of purchase items, applying applicable discounts and taxes.  Validates the business, location, and user, then for each item in `a_purchase_item_request` computes the price, applicable discount code reduction, login-type discount, and taxes, and returns per-item cost, discount, price, tax, and subtotal amounts in `a_purchase_item_result`.
  */
 class PurchaseElementListModel extends WlModelAbstract
 {

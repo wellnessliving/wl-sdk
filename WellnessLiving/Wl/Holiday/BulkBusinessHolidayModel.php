@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Holiday;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * An endpoint displaying information about all location/business holidays for a given business.
+ *
+ * @method WlModelRequest get() Returns all holiday records for all locations of the specified business.  Retrieves the complete list of holidays across all date ranges for every location belonging to the given business, including both business-level and location-level closed days.
  */
 class BulkBusinessHolidayModel extends WlModelAbstract
 {

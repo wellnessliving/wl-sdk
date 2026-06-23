@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Discount\Code;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Discount codes API point.
+ *
+ * @method WlModelRequest get() Returns discount codes of the specified business.  Used in the backend discount management UI to show the full list of discount codes for a business so the staff member can select one to view or edit.
  */
 class DiscountCodeModel extends WlModelAbstract
 {

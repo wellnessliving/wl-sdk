@@ -3,12 +3,17 @@
 namespace WellnessLiving\Wl\Skin;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\RsSkinSid;
 
 /**
  * Allows to create, update and remove foreign widgets.
  *
  * Requires a special privilege for the application. Contact WellnessLiving support to get it.
+ *
+ * @method WlModelRequest delete() Deletes the existing widget.  Permanently removes a widget skin and its foreign ID mapping from the business. Used by external integrators to clean up a widget that is no longer needed.
+ * @method WlModelRequest post() Creates a new widget.  Creates a new widget skin for the business and links it to an external identifier provided by the integrator. The foreign ID must be unique within the business; attempting to create a duplicate triggers an error directing the caller to use PUT instead.
+ * @method WlModelRequest put() Updates the existing widget.  Updates the configuration of an existing widget skin identified by the business and external foreign ID. Throws an error if no matching foreign ID is found, directing the caller to use POST instead.
  */
 class SkinForeignModel extends WlModelAbstract
 {

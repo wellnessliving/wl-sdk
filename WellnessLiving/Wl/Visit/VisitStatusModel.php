@@ -3,10 +3,14 @@
 namespace WellnessLiving\Wl\Visit;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Views or changes the visit status.
+ *
+ * @method WlModelRequest get() Gets visit status.  Returns full details for the specified visit, including date, duration, staff, location, virtual service join URL, assigned resources, downloadable calendar data, and whether the visit can still be cancelled. Handles class, appointment, and gym visit types. Used to render the visit detail view and action buttons in the client portal.
+ * @method WlModelRequest post() Changes visit status.  Applies a status transition to the specified visit (for example, check-in, no-show, or cancellation). Supports optimistic concurrency via an expected-from status, optional late-cancel fee charging, and client notification flags. Requires backend access or appropriate staff privileges.
  */
 class VisitStatusModel extends WlModelAbstract
 {

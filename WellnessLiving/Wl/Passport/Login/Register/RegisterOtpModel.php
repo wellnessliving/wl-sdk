@@ -3,9 +3,13 @@
 namespace WellnessLiving\Wl\Passport\Login\Register;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Entry point to verify user authorization by email and phone number via sending and checking otp code.
+ *
+ * @method WlModelRequest get() Sends an OTP code to the user's email or phone number to initiate authorization.  Checks the OTP rate limit, generates a new code for the given user, and dispatches it via email, SMS, or both depending on `$is_mail` and `$is_phone`. The user must not be already signed in and must not be an admin.
+ * @method WlModelRequest post() Verifies the submitted OTP code and establishes an authorized session for the user.  Validates the OTP code for the given user, signs in the session, fires the post-login event, completes business registration if applicable, and returns the redirect URL for the business frontend.
  */
 class RegisterOtpModel extends WlModelAbstract
 {

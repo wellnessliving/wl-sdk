@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Insurance\Enrollment\Field;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves and validates a list of insurance partner fields.
@@ -10,6 +11,9 @@ use WellnessLiving\WlModelAbstract;
  * Use the GET method to load a list of required fields.
  *
  * Use the POST method to validate the fields before sending them to the payment API.
+ *
+ * @method WlModelRequest get() Returns the list of required partner fields for the specified wellness program.  Returns enrollment fields defined by the insurance partner along with reimbursement account fields if the program requires reimbursement. Each field includes validation rules, display labels, and configuration options for rendering the enrollment form.
+ * @method WlModelRequest post() Validates the list of fields filled in by the user for enrollment.  Accepts the values submitted by the user for the wellness program enrollment form and validates them against the partner's field rules before passing them to the payment API.
  */
 class EnrollmentFieldListModel extends WlModelAbstract
 {

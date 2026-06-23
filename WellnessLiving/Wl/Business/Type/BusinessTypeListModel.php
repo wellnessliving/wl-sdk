@@ -3,11 +3,14 @@
 namespace WellnessLiving\Wl\Business\Type;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\BusinessCategorySid;
 use WellnessLiving\Wl\WlHomeTourSid;
 
 /**
  * Retrieves a list of business types.
+ *
+ * @method WlModelRequest get() Returns the list of available business types with their categories and images.  Used during the new business signup flow so the prospective client can select the type of business they are opening (e.g., yoga studio, gym, spa). The list drives both the type picker UI and the selection of the appropriate demo tour to show on the marketing site.
  */
 class BusinessTypeListModel extends WlModelAbstract
 {

@@ -3,9 +3,14 @@
 namespace WellnessLiving\Wl\Profile\Alert;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Allows to create, read, update and delete login notes.
+ *
+ * @method WlModelRequest delete() Deletes existing note.  Permanently removes the login note specified by `k_login_note` from the business, requiring  backend access for the current user.
+ * @method WlModelRequest get() Retrieves login note data.  Loads a single login note for editing, including its text, access type, flag settings,  booking and purchase restrictions, and location flags. Used to populate the edit form before  saving changes.
+ * @method WlModelRequest post() Creates new text note or updates the existing one.  Creates or updates a login note on the client's profile, setting its text, access  restrictions, booking and purchase flags, and the locations where the note applies. Used by  staff to attach internal notes or warnings that appear on check-in and booking flows.
  */
 class AlertEditModel extends WlModelAbstract
 {

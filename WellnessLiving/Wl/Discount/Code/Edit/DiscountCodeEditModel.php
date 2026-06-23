@@ -4,11 +4,16 @@ namespace WellnessLiving\Wl\Discount\Code\Edit;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlDurationTypeSid;
 
 /**
  * API point for read, create and edit existing discount code.
+ *
+ * @method WlModelRequest get() Gets information about discount.  Used to load the discount code editor form. Returns the full configuration of an existing discount code so the staff member can review or modify it: value, date range, usage limit, which items it applies to, client type restrictions, and whether it is currently active.
+ * @method WlModelRequest post() Saves information about discount code or create new.  Used to create a new discount code or update an existing one from the backend editor. Pass no discount code key to create; pass an existing key to update. Returns the key of the saved code.
+ * @method WlModelRequest put() Duplicates an existing discount code.  Used in the backend when a staff member wants to create a similar discount code without re-entering all settings manually. Creates an exact copy with a new unique code string.
  */
 class DiscountCodeEditModel extends WlModelAbstract
 {

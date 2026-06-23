@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Reward\Action\CategoryList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves a list with reward action categories.
+ *
+ * @method WlModelRequest get() Retrieves all reward action categories for business specified in {@link \Wl\Reward\Action\CategoryList\CategoryListApi::$k_business}.  Returns the list of reward action categories including category type ID, database key, and title for the given business.
  */
 class CategoryListModel extends WlModelAbstract
 {

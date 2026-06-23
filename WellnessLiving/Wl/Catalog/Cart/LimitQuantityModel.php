@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Catalog\Cart;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * Displays information about the quantity limit when a promotion (Purchase Option) is added to the cart.
+ *
+ * @method WlModelRequest get() Checks limit quantity and whether a promotion can be added to the cart.  Used in the checkout flow to prevent a client from purchasing more passes than the promotion allows. Returns the limit, how many the client has already bought, and how many are currently in the cart so the UI can display a clear message if the limit would be exceeded.
  */
 class LimitQuantityModel extends WlModelAbstract
 {

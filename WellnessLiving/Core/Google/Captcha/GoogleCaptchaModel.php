@@ -3,6 +3,7 @@
 namespace WellnessLiving\Core\Google\Captcha;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Stores the user token CAPTCHA.
@@ -14,6 +15,8 @@ use WellnessLiving\WlModelAbstract;
  * * Version 3:
  *  * Demo/Staging - {@link GoogleCaptchaKeys::CAPTCHA_V3_SITE_KEY_SANDBOX}
  *  * Production - {@link GoogleCaptchaKeys::CAPTCHA_V3_SITE_KEY_PRODUCTION}
+ *
+ * @method WlModelRequest put() Saves the user CAPTCHA token for the current session.  Accepts the CAPTCHA version, the action name, and the user token obtained from the Google reCAPTCHA widget, and stores them in the session so that subsequent API requests requiring CAPTCHA verification can use them.
  */
 class GoogleCaptchaModel extends WlModelAbstract
 {

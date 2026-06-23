@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Insurance\Catalog;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves a list of programs' information.
+ *
+ * @method WlModelRequest get() Returns a list of active insurance programs for the specified promotion.  Requires backend access and an active Wellness Program feature for the business. Returns all available insurance programs with pricing, organization name, partner name, and a link to the insurance detail page.
  */
 class ProgramListModel extends WlModelAbstract
 {

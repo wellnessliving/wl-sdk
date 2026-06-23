@@ -4,9 +4,12 @@ namespace WellnessLiving\Wl\Reward\Action;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Point for modify the reward action.
+ *
+ * @method WlModelRequest post() Updates configuration fields for the specified reward action.  Accepts changes to fields such as auto-renewal flag, point cap, point value, and linked promotions, and persists only the provided fields while logging the changes.
  */
 class ActionWriteModel extends WlModelAbstract
 {

@@ -4,9 +4,12 @@ namespace WellnessLiving\Social\Google\Plus;
 
 use WellnessLiving\Core\Request\Api\Application\Credential\CredentialModel;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Authorizes a user with Google.
+ *
+ * @method WlModelRequest post() Authorizes user with Google.  Accepts a Google server authorization code and an optional application ID, loads the configured Google credential for the application, and completes the OAuth 2.0 flow to sign the user in or create a new account.
  */
 class LoginModel extends WlModelAbstract
 {

@@ -4,9 +4,12 @@ namespace WellnessLiving\Wl\Pay\Bank\Card;
 
 use WellnessLiving\Core\a\ACardSystemSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Gets information about any payment cards belonging to a user.
+ *
+ * @method WlModelRequest get() Retrieves information about user's bank cards.  Returns the list of saved payment cards for the specified user and business, including card number fragment, expiry date, card system, holder name, and default status. Also returns whether new cards can be added.
  */
 class ListModel extends WlModelAbstract
 {

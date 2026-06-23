@@ -3,9 +3,12 @@
 namespace WellnessLiving\Core\Captcha;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Checks if a CAPTCHA is required.
+ *
+ * @method WlModelRequest get() Checks if a CAPTCHA is required for the given captcha type.  Used before rendering a form that may include a CAPTCHA widget. The caller supplies the captcha type (identified by CID) and any constructor arguments it needs; the response tells the frontend whether to show the challenge at all and which reCAPTCHA version is active.
  */
 class CaptchaRequireModel extends WlModelAbstract
 {

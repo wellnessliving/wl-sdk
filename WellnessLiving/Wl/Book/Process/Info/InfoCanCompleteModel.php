@@ -3,9 +3,13 @@
 namespace WellnessLiving\Wl\Book\Process\Info;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Checks for `next` and `complete` buttons in the booking process.
+ *
+ * @method WlModelRequest get() Checks whether the user can complete booking wizard without additional steps.  Copies the GET session selection into the POST field and delegates to {@link \Wl\Book\Process\Info\InfoCanCompleteApi::post()}. Prefer the POST variant when the session list may be large, as the query string has length limitations.
+ * @method WlModelRequest post() Checks whether the user can complete booking wizard without additional steps.  Performs a dry-run booking attempt for the given class period, date, and session selection to determine whether the client can finalize the booking directly from the info step without proceeding to the payment or purchase-option steps.
  */
 class InfoCanCompleteModel extends WlModelAbstract
 {

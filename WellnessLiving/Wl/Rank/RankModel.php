@@ -3,11 +3,14 @@
 namespace WellnessLiving\Wl\Rank;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves information about belts in a business.
  *
  * This information can be used to figure out totals in the Belts Report.
+ *
+ * @method WlModelRequest get() Gets belts list of a business.  Returns all belts for the specified business, optionally filtered by belt category keys, including each belt's title and its parent category title.
  */
 class RankModel extends WlModelAbstract
 {

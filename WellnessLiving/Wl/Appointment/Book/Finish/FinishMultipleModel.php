@@ -6,6 +6,7 @@ use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Appointment\Book\Question\QuestionModel;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
@@ -15,6 +16,8 @@ use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
  * Pays for an appointment or appointment Purchase Option for a client.
+ *
+ * @method WlModelRequest post() Completes the appointment booking for one or more providers, optionally creating a new client.  Accepts booking details for one or more providers in {@link \Wl\Appointment\Book\Finish\FinishMultipleApi::$a_book_data},  processes payment using the selected Purchase Option, creates appointment records, and sends  booking confirmation notifications. A new client account can be created by supplying user  details in {@link \Wl\Appointment\Book\Finish\FinishMultipleApi::$a_user} when no UID is provided.
  */
 class FinishMultipleModel extends WlModelAbstract
 {

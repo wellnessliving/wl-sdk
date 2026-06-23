@@ -3,9 +3,13 @@
 namespace WellnessLiving\Wl\Schedule;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Cancels either an appointment, class, or event session for the client.
+ *
+ * @method WlModelRequest get() Cancels session for the client.  Cancels the specified appointment or class period for the given user. Staff and admin users may cancel on behalf of any client; regular clients may only cancel their own bookings if the visit is still in a cancellable state. Clears cached schedule data after a successful class period cancellation.
+ * @method WlModelRequest post() Cancels session for the client. This method is an alias for partners using the API or SDK.  Identical in behavior to {@link \Wl\Schedule\CancelApi::get()}; exists as a POST alias for partner integrations that cannot issue GET requests.
  */
 class CancelModel extends WlModelAbstract
 {

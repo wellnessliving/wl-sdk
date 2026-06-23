@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Business\Waiver;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Information about business waiver.
+ *
+ * @method WlModelRequest get() Returns the business waiver text rendered as HTML with user-specific variables substituted.  Used to display the waiver agreement to a client before they complete a purchase or check in. Renders the waiver template with the client's name filled in. If the business has no waiver configured, `has_waiver` is `false` and the waiver modal should not be shown.
  */
 class WaiverModel extends WlModelAbstract
 {

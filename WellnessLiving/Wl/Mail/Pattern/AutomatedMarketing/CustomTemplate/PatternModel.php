@@ -3,9 +3,13 @@
 namespace WellnessLiving\Wl\Mail\Pattern\AutomatedMarketing\CustomTemplate;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Gets and saves custom template pattern data.
+ *
+ * @method WlModelRequest get() Gets custom pattern data.  Loads the saved notification template for the given business and mail type together with the  default template, the reply-to business contact data and the list of variables available for  substitution. When a list is requested, also loads all custom templates for the mail form.
+ * @method WlModelRequest post() Saves custom pattern.  Validates and stores the submitted notification template (email, push or SMS) for the given  business. A system template edited under a business is copied into that business instead of  modifying the original. The saved mail pattern key is returned in  {@link \Wl\Mail\Pattern\AutomatedMarketing\CustomTemplate\PatternApi::$k_mail_pattern}.
  */
 class PatternModel extends WlModelAbstract
 {

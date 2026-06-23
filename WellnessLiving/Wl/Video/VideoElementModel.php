@@ -4,9 +4,15 @@ namespace WellnessLiving\Wl\Video;
 
 use WellnessLiving\Core\Sid\YesNoSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns a list of video categories.
+ *
+ * @method WlModelRequest delete() Deletes the specified video.  Permanently removes the video, its localized CMS records, and all category associations from the business library. Also deletes the video file and thumbnail from storage. Requires backend access with the video library management privilege.
+ * @method WlModelRequest get() Returns the data for the specified video.  Returns detailed information about a single video, including title, description, duration, categories, tags, difficulty level, assigned staff, virtual session settings, and playback progress for the current user. In frontend mode, access is restricted to videos the current user is allowed to watch based on their membership and login type.
+ * @method WlModelRequest post() Creates or updates a video for the specified business.  Saves a video record with its title, description, categories, tags, difficulty level, staff assignments, and access settings. When no video key is provided, a new record is created; otherwise the existing record is updated. Requires backend access with the video library management privilege and an active video subscription.
+ * @method WlModelRequest put() Validates video embed code.  Checks that the provided embed snippet conforms to the supported embed code format. Throws if the snippet is malformed or uses an unsupported source. Call this before saving to give the user an immediate validation error without persisting the video record.
  */
 class VideoElementModel extends WlModelAbstract
 {

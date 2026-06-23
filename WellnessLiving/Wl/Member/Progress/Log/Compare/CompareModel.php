@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Member\Progress\Log\Compare;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Member progress log compare data.
+ *
+ * @method WlModelRequest get() Returns list of dates where client logged his progress.  Retrieves all distinct dates on which the given user recorded progress entries for the business, excluding the most recent date (since it cannot be compared with itself). Returns an empty array when fewer than two entries exist.
  */
 class CompareModel extends WlModelAbstract
 {

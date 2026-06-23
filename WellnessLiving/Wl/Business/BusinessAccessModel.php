@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Business;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlRegionSid;
 
 /**
  * Returns information about a given staff member's business.
+ *
+ * @method WlModelRequest get() Gets information about businesses where given user is a staff member.  Used during staff login to determine which businesses the user can access. Accepts identity via UID or any supported social login identifier, then returns the matching list of businesses to display on the business selection screen. In backend mode, franchisee locations and IP access restrictions are also evaluated.
  */
 class BusinessAccessModel extends WlModelAbstract
 {

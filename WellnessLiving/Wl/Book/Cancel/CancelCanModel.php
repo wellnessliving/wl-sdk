@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Book\Cancel;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Visit\WlVisitSid;
 
 /**
@@ -10,6 +11,8 @@ use WellnessLiving\Wl\Visit\WlVisitSid;
  * consequences the cancellation would have.
  *
  * This API performs a dry run only — no actual cancellation is performed.
+ *
+ * @method WlModelRequest get() Returns information about whether the given user can cancel the booking and the expected consequences.  Accepts a business key and a visit key, validates access, and performs a dry-run cancellation to determine whether the visit can be cancelled online, whether a late-cancel penalty applies, and whether the purchase option credit would be refunded.
  */
 class CancelCanModel extends WlModelAbstract
 {

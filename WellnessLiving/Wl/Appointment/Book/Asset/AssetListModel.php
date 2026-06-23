@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Appointment\Book\Asset;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Resource\Image\ImageIconSid;
 use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
@@ -11,6 +12,8 @@ use WellnessLiving\Wl\Service\ServiceRequireSid;
 
 /**
  * Retrieves information about assets in the current asset category.
+ *
+ * @method WlModelRequest get() Retrieves information about assets in the current asset category.  Returns the list of bookable assets at the given location, optionally filtered by category and book now tab.  When a date and time are provided, only assets available at that time are included and busy asset slots  are returned in {@link \Wl\Appointment\Book\Asset\AssetListApi::$a_asset_busy}. Supports both frontend and backend modes.
  */
 class AssetListModel extends WlModelAbstract
 {

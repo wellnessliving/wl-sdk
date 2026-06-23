@@ -3,12 +3,15 @@
 namespace WellnessLiving\Wl\Login\Type;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves information about login types.
  *
  * A login type is basically a client type.
  * This information can be used to filter clients by their client type in the All Clients Report.
+ *
+ * @method WlModelRequest get() Gets a login types list of a business.  Returns all client types configured for the specified business, each with its key, title, client type ID, and a deprecated membership flag. If `is_franchisor` is `true`, returns the combined login types of all franchisees under the franchisor business.
  */
 class LoginTypeModel extends WlModelAbstract
 {

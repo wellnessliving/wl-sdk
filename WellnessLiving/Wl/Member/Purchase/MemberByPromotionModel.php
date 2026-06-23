@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Member\Purchase;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns a list of active clients with the given Purchase Options.
@@ -10,6 +11,8 @@ use WellnessLiving\WlModelAbstract;
  * This endpoint returns only active clients using active Purchase Options from the given list.
  *
  * Does not return clients, to which currently signed-in user does not have access to.
+ *
+ * @method WlModelRequest get() Returns active clients holding at least one active Purchase Option from the specified list.  Accepts a comma-separated list of Purchase Option keys, validates them against the business, and returns all active clients who hold at least one non-expired, non-limited Purchase Option from that list. Clients to which the currently signed-in user has no profile access are excluded from the result.
  */
 class MemberByPromotionModel extends WlModelAbstract
 {

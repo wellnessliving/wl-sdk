@@ -5,12 +5,15 @@ namespace WellnessLiving\Wl\Book\Process\Store;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Book\Process\Purchase\Purchase56Model;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Performs preliminary checks and distribution of selected purchase options between the client who is currently logged
  * in and his relatives.
+ *
+ * @method WlModelRequest post() Validates and distributes selected purchase options across all clients in the booking group.  For each client in the group, validates session selection, resource requirements, recurring booking configuration, and purchase item eligibility. When all clients pass validation, attempts to assign or share promotions across the group and returns per-client distribution results with any error details in `a_purchase_item_distribute`.
  */
 class StoreGroupModel extends WlModelAbstract
 {

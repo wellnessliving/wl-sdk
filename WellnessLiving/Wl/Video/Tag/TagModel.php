@@ -3,9 +3,14 @@
 namespace WellnessLiving\Wl\Video\Tag;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves, changes, or deletes a video tag.
+ *
+ * @method WlModelRequest delete() Deletes the specified video tag.  Permanently removes the video tag from the business library. If any videos are currently assigned to this tag, a confirmation flag must be set; otherwise the API throws a confirmation-required error so the caller can prompt the user before proceeding.
+ * @method WlModelRequest post() Creates a new video tag.  Adds a new content tag to the business video library for use when categorizing videos. Requires backend access and an active video subscription with at least the basic plan.
+ * @method WlModelRequest put() Updates the specified video tag.  Renames an existing content tag in the business video library. Requires backend access and an active video subscription with at least the basic plan.
  */
 class TagModel extends WlModelAbstract
 {

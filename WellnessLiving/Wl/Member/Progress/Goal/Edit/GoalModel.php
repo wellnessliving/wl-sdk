@@ -3,12 +3,16 @@
 namespace WellnessLiving\Wl\Member\Progress\Goal\Edit;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Member\Progress\Field\MeasurementSid;
 use WellnessLiving\Wl\Member\Progress\Field\ProgressFieldSid;
 use WellnessLiving\Wl\Member\Progress\Field\TypeSid;
 
 /**
  * Progress goal api.
+ *
+ * @method WlModelRequest get() Returns progress goal log data.  Loads the current goal values for all configured progress fields for the specified user and business, and also returns whether the current viewer is a staff member.
+ * @method WlModelRequest post() Saves progress goal fields log.  Validates and persists the goal values provided in `$a_field_goal` for the specified user and business, then returns the updated field list in `$a_field_list`.
  */
 class GoalModel extends WlModelAbstract
 {

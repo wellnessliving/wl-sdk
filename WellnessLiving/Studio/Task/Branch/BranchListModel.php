@@ -3,9 +3,12 @@
 namespace WellnessLiving\Studio\Task\Branch;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Runs a build for creation a new branch or delete an existing branch for the specified task.
+ *
+ * @method WlModelRequest get() Returns a list of branches for accessible projects.  Lists all active branches in projects where the current user has the branch view privilege.
  */
 class BranchListModel extends WlModelAbstract
 {

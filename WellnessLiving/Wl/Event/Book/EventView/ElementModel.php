@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Event\Book\EventView;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\Config\BusinessConfigModel;
 use WellnessLiving\Wl\Classes\RequirePaySid;
 use WellnessLiving\Wl\Service\ServiceSid;
@@ -12,6 +13,8 @@ use WellnessLiving\Wl\Virtual\VirtualProviderSid;
 
 /**
  * Retrieves information about an event element.
+ *
+ * @method WlModelRequest get() Retrieves information about event item.  Used to render the event detail page or event card in the booking flow. Returns everything needed to display the event to a prospective client: schedule, pricing, booking availability, assigned staff with photos, and available installment payment options.
  */
 class ElementModel extends WlModelAbstract
 {

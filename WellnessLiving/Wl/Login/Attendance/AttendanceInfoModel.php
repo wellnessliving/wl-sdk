@@ -3,12 +3,15 @@
 namespace WellnessLiving\Wl\Login\Attendance;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Schedule\Page\WlVisitNoteSid;
 use WellnessLiving\Wl\WlSaleSid;
 use WellnessLiving\Wl\WlServiceSid;
 
 /**
  * Attendance list information.
+ *
+ * @method WlModelRequest get() Returns detailed information about a single class period, appointment, or asset session.  Accepts either a class period key with a local date or an appointment key, validates access, and returns scheduling details including title, start and end times, location, staff, assets, service type, and default purchase option information.
  */
 class AttendanceInfoModel extends WlModelAbstract
 {

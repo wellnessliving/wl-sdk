@@ -8,6 +8,8 @@ namespace WellnessLiving\Wl\Report;
  * There are two All Clients Reports that can be used to find user IDs. The results from each report can be filtered by different
  * fields. The two reports are similar, but not exactly the same. The `LOGIN_LIST` (ID 22) report requires filters to be set to
  * retrieve information. The `LOGIN_LIST_ALL` (ID 33) doesn’t require any filters to be set when specifying a date range.
+ *
+ * @method WlModelRequest get() Gets data of required report.  Loads the specified report for the given business, applying filter, sort, and pagination parameters, and returns the report rows and totals.
  */
 class DataModel extends \WellnessLiving\Custom\Wl\Report\DataModel
 {

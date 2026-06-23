@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Business\Select;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Provides the list of business that a staff member may access.
+ *
+ * @method WlModelRequest get() Performs checks and generates a list of businesses according to a given configuration.  Populates the business-select dropdown widget shown in the backend. Used wherever staff need to switch between businesses they have access to. The returned structure drives the widget directly and includes selection state, visibility flags, and display configuration.
  */
 class BusinessSelectModel extends WlModelAbstract
 {

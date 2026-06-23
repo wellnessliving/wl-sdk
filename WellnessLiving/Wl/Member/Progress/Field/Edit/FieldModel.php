@@ -3,12 +3,16 @@
 namespace WellnessLiving\Wl\Member\Progress\Field\Edit;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Member\Progress\Field\MeasurementSid;
 use WellnessLiving\Wl\Member\Progress\Field\ProgressFieldSid;
 use WellnessLiving\Wl\Member\Progress\Field\TypeSid;
 
 /**
  * Manages progress field data.
+ *
+ * @method WlModelRequest get() Returns field data.  Loads the configuration of the specified progress field for the given business, including its type, measurement unit, visibility settings, and title, and populates the result properties accordingly.
+ * @method WlModelRequest post() Saves field data.  Updates the configuration of the specified progress field, validating measurement unit, type, and title constraints before persisting the changes. Logs the change when the field data is modified.
  */
 class FieldModel extends WlModelAbstract
 {

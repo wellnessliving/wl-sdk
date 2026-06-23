@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Classes\Period\Modify;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\WlClassModifyActionSid;
 use WellnessLiving\Wl\WlClassModifyModeSid;
@@ -10,6 +11,9 @@ use WellnessLiving\Wl\WlClassModifyStepSid;
 
 /**
  * Modifies the master model.
+ *
+ * @method WlModelRequest get() Gets data for step in wizard.  Used by the class modification wizard (edit, cancel, reschedule) to load the data for a specific wizard step. Each step has a different data shape driven by `id_step`; the response feeds directly into the step's form.
+ * @method WlModelRequest post() Makes step in wizard.  Used by the class modification wizard to submit a completed step and advance to the next. The wizard tracks state server-side; this call validates the step input, persists it, and returns the next step the UI should render.
  */
 class ModifyModel extends WlModelAbstract
 {

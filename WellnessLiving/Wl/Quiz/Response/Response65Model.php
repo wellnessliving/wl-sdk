@@ -3,10 +3,16 @@
 namespace WellnessLiving\Wl\Quiz\Response;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Endpoint to work with quiz responses.
+ *
+ * @method WlModelRequest delete() Deletes the specified quiz response or list of responses for the given business.  Validates access privileges and removes the specified response records, updating any related search indexes and activity logs.
+ * @method WlModelRequest get() Returns quiz response data including element answers, dates, and access information.  Loads the response for the specified quiz and user, resolving answers, formatted dates, and access flags such as amendment availability and PDF generation support.
+ * @method WlModelRequest post() Saves a quiz response with the given element answers.  Validates the submitted answers and persists the response record in a transaction. If {@link \Core\Quiz\QuizResponseApi::$is_validate_only} is set, only validation runs and no record is created. Pass {@link \Core\Quiz\QuizResponseApi::$is_skip} to bypass validation for pre-confirmed responses.
+ * @method WlModelRequest put() Validates, updates and reindex response information for associated user.  Used to amend an already-submitted response, for example when a business allows clients to edit their quiz answers after submission. Re-links the response to its owner and triggers downstream reindexing so search and reporting stay consistent.
  */
 class Response65Model extends WlModelAbstract
 {

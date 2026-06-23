@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Facebook\Login;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * An endpoint that performs authorization actions with Facebook.
+ *
+ * @method WlModelRequest post() Performs Facebook authorization within the context of the specified business.  Validates that the given business is active, sets it as the current frontend context, and then delegates to the parent Facebook login flow to authenticate the user.
  */
 class FacebookLoginModel extends WlModelAbstract
 {

@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Appointment\Book\Service;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Service\ServiceBookFlowSid;
 use WellnessLiving\Wl\Service\ServicePriceSid;
 use WellnessLiving\Wl\Service\ServiceRequireSid;
@@ -11,6 +12,8 @@ use WellnessLiving\Wl\Service\ServiceRequireSid;
  * Retrieves information about services in the current service category.
  *
  * @deprecated New version {@link ServiceList52Model} should be used instead.
+ *
+ * @method WlModelRequest get() Retrieves information about services in the current service category.  Returns all services available for booking at the given location, optionally filtered by service  category, book now tab, and client. Each service entry includes title, description, image, pricing,  duration, staff availability, and age restriction details. Supports both frontend and backend modes.
  */
 class ServiceListModel extends WlModelAbstract
 {

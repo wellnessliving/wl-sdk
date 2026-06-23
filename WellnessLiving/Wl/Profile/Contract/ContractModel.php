@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Profile\Contract;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
@@ -10,6 +11,9 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
  *
  * The POST method will complete a sale of a Purchase Option requiring a contract.
  * The method that WellnessLiving uses to encode a signature into a string isn't currently available in the SDK.
+ *
+ * @method WlModelRequest get() Returns contract information for the specified purchase option.  Renders the contract text for the specified purchase option, applying any applicable  discounts, and returns the content needed to display the contract acceptance modal to the  client.
+ * @method WlModelRequest post() Completes a sale of a Purchase Option requiring a contract by submitting the signed contract.  Accepts an encoded client signature and agreement flag, decodes the signature, and records  the signed contract for the specified purchase item.
  */
 class ContractModel extends WlModelAbstract
 {

@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Business\Design;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Provides business design information.
+ *
+ * @method WlModelRequest get() API method to get business design data.  Used to render the client-facing schedule and booking widget with the business's custom branding. Returns the color theme, header layout, logo style, capacity display preferences, and analytics tracking IDs (Google Analytics, Google Tag Manager, Facebook Pixel). Pass no business key to get the system default design.
  */
 class BusinessDesignModel extends WlModelAbstract
 {

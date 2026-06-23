@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Book\Process;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
 
 /**
@@ -12,6 +13,8 @@ use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
  *
  * This endpoint includes changes to the list of steps if the service is already booked for the currently selected client,
  * and if {@link ProcessModel::$is_family_relation_book} is set to `true`.
+ *
+ * @method WlModelRequest get() Returns the booking wizard steps, adjusting the path when the service is already booked for a family member.  Delegates to the parent implementation and then, when family-relation booking is enabled and the service is already booked for the selected relative, trims the wizard path down to only the relation and detail steps.
  */
 class Process59Model extends WlModelAbstract
 {

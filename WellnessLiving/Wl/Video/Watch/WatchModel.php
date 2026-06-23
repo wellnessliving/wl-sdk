@@ -3,9 +3,13 @@
 namespace WellnessLiving\Wl\Video\Watch;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Saves information about a watched video.
+ *
+ * @method WlModelRequest post() Records the start of a video watch session for the current user.  Creates a new watch record for the user and video, verifying that the user has access to the video under their current membership. Returns the watch key that the client must use for subsequent progress updates via {@link \Wl\Video\Watch\WatchApi::put()}. Admin users are silently skipped - no record is created for them.
+ * @method WlModelRequest put() Updates the watch progress (current position and total watched time) for an existing watch record.  Advances the stored playback position and accumulated watch time for the given watch record. The total watched time can only increase; updates that report a smaller value than what is already stored are silently ignored to handle out-of-order requests.
  */
 class WatchModel extends WlModelAbstract
 {

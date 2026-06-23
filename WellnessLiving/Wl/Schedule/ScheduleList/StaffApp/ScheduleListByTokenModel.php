@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Schedule\ScheduleList\StaffApp;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Schedule\Design\OptionSid;
 use WellnessLiving\Wl\Visit\WlVisitSid;
 use WellnessLiving\Wl\WlServiceSid;
@@ -10,6 +11,8 @@ use WellnessLiving\Wl\WlServiceSid;
 /**
  * An endpoint that returns information about a business schedule for a specified date.
  * Version of {@link ScheduleListModel} for access validation by security token.
+ *
+ * @method WlModelRequest get() Gets schedule of business {@link \Wl\Schedule\ScheduleList\StaffApp\ScheduleListApi::$k_business} for day {@link \Wl\Schedule\ScheduleList\StaffApp\ScheduleListApi::$dt_date}.  Returns all classes and appointments scheduled for the given business on the specified date, sorted chronologically. Supports both single-day and date-range modes, and includes full session details such as staff, visit counts, assets, and class images.
  */
 class ScheduleListByTokenModel extends WlModelAbstract
 {

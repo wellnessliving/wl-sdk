@@ -3,9 +3,13 @@
 namespace WellnessLiving\Wl\Shop\Product\Option\Inventory\Count;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Used to retrieve and change inventory quantities and notes for product options in the store.
+ *
+ * @method WlModelRequest get() Returns information about product options. Works in two modes: review and search. In review mode, the method returns products with changed inventory quantities and notes. In search mode, the method returns one product and its options (the result of searching by product barcode).  Returns product option details including the current inventory quantity, last change date, and notes. In barcode search mode, returns matching products; in review mode, returns only options whose inventory or notes have been modified via the pending quantity or note maps.
+ * @method WlModelRequest post() Saves changes of product inventory quantities and notes.  Persists updated inventory counts and per-option notes for the specified product options. Requires backend access with the store management privilege. Creates an inventory transaction record for audit trail purposes.
  */
 class InventoryCountModel extends WlModelAbstract
 {

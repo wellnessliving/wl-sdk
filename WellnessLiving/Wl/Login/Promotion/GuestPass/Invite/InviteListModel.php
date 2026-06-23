@@ -3,9 +3,13 @@
 namespace WellnessLiving\Wl\Login\Promotion\GuestPass\Invite;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * API to manage guest pass invitations within a client's membership or client's profile.
+ *
+ * @method WlModelRequest get() Returns a list of guest pass invitations for the given membership or user.  Supports filtering by host membership, guest user, host user, date range, and whether expired  or revoked invitations are included.
+ * @method WlModelRequest post() Sends a guest pass invitation to a user.  Creates a new invitation for the specified guest pass and sends a notification. The guest can be identified by user key or by contact details when no account exists.
  */
 class InviteListModel extends WlModelAbstract
 {

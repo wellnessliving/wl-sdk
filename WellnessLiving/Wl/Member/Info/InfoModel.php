@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Member\Info;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves information about a member.
+ *
+ * @method WlModelRequest get() Returns information about specified member.  Supports both single-user and batch modes: when `$a_uid` is provided, returns a keyed list of user data in `$a_result_list`; otherwise returns data for the single user identified by `$uid`. When `$is_full` is `true`, additional profile details, group membership, visit history, and lifetime value are included.
  */
 class InfoModel extends WlModelAbstract
 {

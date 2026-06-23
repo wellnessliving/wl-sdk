@@ -4,9 +4,13 @@ namespace WellnessLiving\Wl\Business;
 
 use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Creates a new business.
+ *
+ * @method WlModelRequest post() Creates new business.  Used during the self-onboarding flow when a new client signs up for WellnessLiving. Creates the business with its default integrations, optional first location, default service categories, and an optional owner staff account - all in a single transaction. Rate-limited per IP and globally to prevent abuse.
+ * @method WlModelRequest put() Claims business.  Used when a prospective client claims an existing unclaimed business record during onboarding. Activates trial features, updates the location contact details, and optionally creates an owner staff account. The business must not already be claimed and the location must belong to it.
  */
 class BusinessModel extends WlModelAbstract
 {

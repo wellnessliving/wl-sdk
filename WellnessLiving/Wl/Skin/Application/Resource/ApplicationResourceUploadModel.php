@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Skin\Application\Resource;
 
 use WellnessLiving\WlFile;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Uploads image and file assets for a white-label application build.
@@ -14,6 +15,8 @@ use WellnessLiving\WlModelAbstract;
  * - A `google_services_json` file field for the Firebase Android config file.
  *
  * Text metadata is submitted separately via {@link ApplicationResourceMaterialModel}.
+ *
+ * @method WlModelRequest post() Uploads image and file assets for the given business application.  Each image must be submitted as `a_image_upload[{key}]`, where `{key}` is the image ID. The `google-services.json` file must be submitted as `google_services_json`.
  */
 class ApplicationResourceUploadModel extends WlModelAbstract
 {

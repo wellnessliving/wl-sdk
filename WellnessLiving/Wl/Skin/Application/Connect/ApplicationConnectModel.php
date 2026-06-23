@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Skin\Application\Connect;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Creates or updates third-party integration credentials for a white-label application.
@@ -10,6 +11,8 @@ use WellnessLiving\WlModelAbstract;
  * Used by the App Build Automation (n8n) to programmatically submit the Client App Connect form.
  * Automatically finds the existing record for the given business
  * or creates a new one if none exists.
+ *
+ * @method WlModelRequest post() Creates or updates the integration credentials for the given business application.  If a record already exists for `k_business`, it is updated in place. Otherwise, a new record is created and linked to the business.
  */
 class ApplicationConnectModel extends WlModelAbstract
 {

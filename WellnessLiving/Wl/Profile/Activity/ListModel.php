@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Profile\Activity;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns a list of client activities.
+ *
+ * @method WlModelRequest get() Retrieves a list of activity items to show in user profile.  Returns the client's activity history for the specified business, filtered by an optional  date range. Requires profile-view access and respects activity-type visibility rules for the  requesting user.
  */
 class ListModel extends WlModelAbstract
 {

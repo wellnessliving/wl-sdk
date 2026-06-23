@@ -3,10 +3,15 @@
 namespace WellnessLiving\Wl\Lead\Source;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Retrieves Lead Source element.
+ *
+ * @method WlModelRequest delete() Deletes custom source lead.  Removes the specified custom lead source from the business. If a replacement lead source key is provided, all users currently assigned to the deleted source are reassigned to it before deletion.
+ * @method WlModelRequest post() Creates or edits a custom source lead.  Accepts a list of lead source records and applies bulk create or update operations: new entries without a key are inserted, and existing entries are updated with a new sort order or title.
+ * @method WlModelRequest put() Adds one lead source.  Creates a single new custom lead source with the given title for the specified business, assigns it the next available sort position, and returns the generated lead source key.
  */
 class LeadSourceElementModel extends WlModelAbstract
 {

@@ -3,12 +3,15 @@
 namespace WellnessLiving\Thoth\ReportCore\Generator;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns content of a report as a table.
  *
  * If report is not yet generated, it gets generated.
  * If the report is being generated now, partial content may be returned.
+ *
+ * @method WlModelRequest post() Returns contents of a report as a table.  If the report is not yet generated, it gets generated. If the report is being generated now, partial content may be returned.
  */
 class QueryModel extends WlModelAbstract
 {

@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Reception\Application;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Performs authorization from the Check In web application.
@@ -13,6 +14,8 @@ use WellnessLiving\WlModelAbstract;
  * That is why it can not require password. But also can require - this depends on the location settings.
  *
  * It also requires special secret string, which connects request to the certain Check In web application session.
+ *
+ * @method WlModelRequest post() Performs authorization based on the given authorization value and business settings.  Looks up clients by member ID, email address, or phone number and returns matching user records for selection in the Self Check-In Web App.
  */
 class ReceptionAuthorizeModel extends WlModelAbstract
 {

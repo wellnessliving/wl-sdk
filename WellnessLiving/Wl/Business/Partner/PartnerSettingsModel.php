@@ -3,12 +3,15 @@
 namespace WellnessLiving\Wl\Business\Partner;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlHomeTourSid;
 
 /**
  * Works with partner settings of the business.
  * This information is entered by a staff member when a client enrolls into Partner Program and uses a custom landing page, which
  * is available by special business URL.
+ *
+ * @method WlModelRequest get() Returns partner settings for the business identified by the given partner code.  Used when rendering the Partner Program landing page. Resolves the partner code to a business and returns the business key and the home tour type so the landing page can show the appropriate demo tour. A daily failed-request limit per IP prevents brute-force enumeration of partner codes.
  */
 class PartnerSettingsModel extends WlModelAbstract
 {

@@ -4,10 +4,13 @@ namespace WellnessLiving\Core\Geo\Region;
 
 use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Gets a list of regions for a specified country or all countries.
  * A region refers to a jurisdiction like a state, province, or territory.
+ *
+ * @method WlModelRequest get() Retrieves information about countries and regions.  Populates country and region dropdowns in address forms. Returns one or all countries together with their subordinate regions (states, provinces, territories). Pass a locale to get only the country relevant to a given market, or set `$is_locale_all` to retrieve the full list for multi-country UIs.
  */
 class RegionModel extends WlModelAbstract
 {

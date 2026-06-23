@@ -3,9 +3,12 @@
 namespace WellnessLiving\Thoth\DriveMs\Api;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Copy file between two links.
+ *
+ * @method WlModelRequest get() Copies a file from the source link to the destination link.  Accepts the source and destination drive links and optional copy parameters, validates their lengths, and copies the physical file referenced by the source link to the destination link in the drive storage.
  */
 class DriveCopyModel extends WlModelAbstract
 {

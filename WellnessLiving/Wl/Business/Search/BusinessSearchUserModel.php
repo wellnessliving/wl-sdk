@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Business\Search;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * API to search business keys by given name and given user email.
@@ -10,6 +11,8 @@ use WellnessLiving\WlModelAbstract;
  * This endpoint uses captcha check.
  * To pass a captcha you need to study the captcha API documentation, there you will find that you need to send a captcha for a specific action.
  * In this API the action is {@link BusinessSearchCaptcha::CID}.
+ *
+ * @method WlModelRequest get() Searches for businesses by name and email address and returns matching business keys.  Used to locate a specific business for a given client, for example during a password reset or membership lookup. Returns only businesses where the email belongs to a registered member, so a match confirms the client actually has an account at that business.
  */
 class BusinessSearchUserModel extends WlModelAbstract
 {

@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Login\Member\DynamicId;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * API to get member dynamic ID information.
+ *
+ * @method WlModelRequest get() Returns the member's barcode and its expiry time for the specified business and user.  If the business uses dynamic barcodes, generates or refreshes a time-limited barcode and returns its value, expiry countdown, and an image URL. If the business uses static barcodes, returns the member's static ID with a zero expiry.
  */
 class DynamicIdModel extends WlModelAbstract
 {

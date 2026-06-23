@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Book\Process;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Classes\RequirePaySid;
 use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
 use WellnessLiving\Wl\Mode\ModeSid;
@@ -13,6 +14,8 @@ use WellnessLiving\Wl\Mode\ModeSid;
  * Performs the booking wizard steps.
  *
  * @deprecated Use {@link Process54Model} instead.
+ *
+ * @method WlModelRequest get() Returns the ordered list of booking wizard steps for the given session and client.  Evaluates the session, user profile, payment requirements, asset selection, and subscription state to build an ordered list of steps the client must complete to finish the booking. The first step in the list is marked as current, and additional flags about event type, wait-list availability, and payment options are returned.
  */
 class ProcessModel extends WlModelAbstract
 {

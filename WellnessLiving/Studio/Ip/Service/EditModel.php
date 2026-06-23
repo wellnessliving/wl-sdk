@@ -3,9 +3,14 @@
 namespace WellnessLiving\Studio\Ip\Service;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Allows to create, edit and delete IP services.
+ *
+ * @method WlModelRequest delete() Deletes an IP service.  Removes the service record from the database.
+ * @method WlModelRequest get() Returns information about an IP service.  Returns the service name, group, type, timeout, update rules, and auto-restriction flag.
+ * @method WlModelRequest post() Saves an IP service.  Creates or updates a service record. When update rules are provided, the service IP list is updated.
  */
 class EditModel extends WlModelAbstract
 {

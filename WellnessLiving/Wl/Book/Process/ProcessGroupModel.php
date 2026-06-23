@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Book\Process;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
@@ -12,6 +13,8 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
  * API for group booking process.
  *
  * This API allows to book a class/event for multiple clients at once.
+ *
+ * @method WlModelRequest post() Processes the group booking: validates input, collects payment, books sessions, and sends confirmation emails.  Accepts a list of clients with their purchase items, resources, sessions, and quiz responses, then validates capacity and eligibility, processes payment for all clients at once, creates booking records, and dispatches confirmation emails. Returns visit keys, activity keys, and purchase activity key upon success.
  */
 class ProcessGroupModel extends WlModelAbstract
 {

@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Appointment\Book\Asset;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves information about asset categories.
+ *
+ * @method WlModelRequest get() Retrieves a list of information about asset categories for the appointment booking page.  Returns all asset categories available at the given location, optionally filtered by book now tab.  Each category includes its title and a flag indicating whether all its assets are hidden in  the White Label mobile application. Supports both frontend and backend modes.
  */
 class CategoryModel extends WlModelAbstract
 {

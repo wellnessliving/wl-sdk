@@ -3,12 +3,15 @@
 namespace WellnessLiving\Wl\Schedule\Page;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Visit\WlVisitSid;
 
 /**
  * Returns a list of either previous or upcoming visits for a specific user.
  *
  * A visit can be for an appointment, class, or an event.
+ *
+ * @method WlModelRequest get() Retrieves items of schedule for the client.  Returns the client's upcoming or past visits for a given business, ordered by date. Supports optional date range boundaries to retrieve visits within a specific window. Used to populate the schedule history and upcoming bookings pages in the client portal.
  */
 class PageListModel extends WlModelAbstract
 {

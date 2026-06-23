@@ -3,10 +3,13 @@
 namespace WellnessLiving\Thoth\ExplorerSearch\ClassSession;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlHomeTourSid;
 
 /**
  * Handles searching of class sessions.
+ *
+ * @method WlModelRequest get() Gets list of class sessions based on search criteria.  Returns sessions matching the given geographic area, date range, and optional filters for business, location, staff, experience type, home tour type, price, and location rating. Only sessions within their current booking window are included in the result.
  */
 class ClassSessionSearchModel extends WlModelAbstract
 {

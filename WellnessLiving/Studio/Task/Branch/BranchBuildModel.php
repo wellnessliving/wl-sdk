@@ -3,12 +3,17 @@
 namespace WellnessLiving\Studio\Task\Branch;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Changes branch information during build.
  *
  * This API is designed to use only from builds (`BranchCreate`, `BranchDelete`) and is not expected that this API is
  *   called from other places.
+ *
+ * @method WlModelRequest delete() Deletes a branch from the database.  <tt>BranchDelete</tt> build calls at the end of the executing.
+ * @method WlModelRequest post() Sets build that creates a branch and information about paths into which catalogs are cloned.  <tt>BranchCreate</tt> build calls at the start of the executing.
+ * @method WlModelRequest put() Changes branch status as {@link \Studio\Task\Branch\BranchStatusSid::READY}.  <tt>BranchCreate</tt>&gt; build calls at the end of the executing.
  */
 class BranchBuildModel extends WlModelAbstract
 {

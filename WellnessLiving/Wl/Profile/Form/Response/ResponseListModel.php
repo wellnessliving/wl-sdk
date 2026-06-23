@@ -4,10 +4,13 @@ namespace WellnessLiving\Wl\Profile\Form\Response;
 
 use WellnessLiving\Core\Quiz\ResponseStatusSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Quiz\Response\SourceSid;
 
 /**
  * Retrieves a list of a user's quiz responses.
+ *
+ * @method WlModelRequest get() Returns the lists of completed and pending quiz responses for the specified user and business.  Returns the client's completed, draft, and pending form responses for the business, sorted  newest first. Also provides permission flags that control which actions the current user may  perform on each response.
  */
 class ResponseListModel extends WlModelAbstract
 {

@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Pay\Method;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
  * An endpoint containing a model to get the list of payment methods.                                                        .
+ *
+ * @method WlModelRequest get() Returns list of active payment methods data.  Returns the system-level payment methods enabled for the business combined with any custom payment methods configured for the business and accessible to the given user based on their role. When `$is_active` is `false`, inactive custom methods are included as well.
  */
 class ListModel extends WlModelAbstract
 {

@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Book\Process\Resource;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Resource\Image\ImageIconSid;
 use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
 
@@ -12,6 +13,9 @@ use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
  * Selects assets for making a booking.
  *
  * @deprecated Use {@link Resource54Model} instead.
+ *
+ * @method WlModelRequest get() Returns the list of available assets for the booking session, grouped by asset category.  Loads all asset categories and their items available for the given class period or selected sessions, strips shared resources that clients should not choose individually, attaches image data and occupancy information, and returns the result as `a_resource_all`.
+ * @method WlModelRequest post() Saves the asset selection for the booking and attempts to book the session if no further steps are required.  Validates and stores the selected assets and session data in the booking process context, then, when no quiz step is needed and payment is not required, attempts to complete the booking immediately. Returns visit keys, activity keys, and a flag indicating whether further wizard steps are needed.
  */
 class ResourceModel extends WlModelAbstract
 {

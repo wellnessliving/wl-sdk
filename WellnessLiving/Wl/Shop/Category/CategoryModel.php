@@ -3,9 +3,13 @@
 namespace WellnessLiving\Wl\Shop\Category;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns a list of all categories in a business’s store.
+ *
+ * @method WlModelRequest get() Returns the list of shop categories available for the given business.  Returns all store categories that the current user is allowed to access, including their titles, descriptions, and display order. Guest and client users see only public categories; staff and admin users may see additional categories based on their access level.
+ * @method WlModelRequest post() Creates new shop category.  Creates a new product category in the business store with the given title. Requires backend access with the appropriate store management privilege.
  */
 class CategoryModel extends WlModelAbstract
 {

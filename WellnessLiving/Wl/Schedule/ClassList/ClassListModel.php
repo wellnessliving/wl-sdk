@@ -4,11 +4,14 @@ namespace WellnessLiving\Wl\Schedule\ClassList;
 
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves a list of classes and class information for a Class Tab.
  *
  * @deprecated Use {@link ClassList68Model} instead.
+ *
+ * @method WlModelRequest get() Retrieves a list of classes and class information for the given business and date range.  Returns upcoming class sessions for a business, with optional filtering by location, day of week, time of day, staff member, and virtual or in-person mode. The result includes per-session details such as staff, capacity, booking counts, and virtual locations, as well as a calendar map indicating which dates have at least one scheduled session.
  */
 class ClassListModel extends WlModelAbstract
 {

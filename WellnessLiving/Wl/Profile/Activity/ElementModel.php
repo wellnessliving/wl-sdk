@@ -3,11 +3,14 @@
 namespace WellnessLiving\Wl\Profile\Activity;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Login\WlLoginActivityTypeSid;
 use WellnessLiving\Wl\WlDesignIconSid;
 
 /**
  * Returns detailed information about a single client activity.
+ *
+ * @method WlModelRequest get() Retrieves information about activity item.  Loads a single activity record by `k_login_activity`, validates access via profile privileges,  and returns the activity message, icon, type, reward and credit scores, activity dates in UTC  and local time, spend amount, and a share URL.
  */
 class ElementModel extends WlModelAbstract
 {

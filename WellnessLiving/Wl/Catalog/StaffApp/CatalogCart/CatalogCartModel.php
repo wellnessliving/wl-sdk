@@ -3,12 +3,15 @@
 namespace WellnessLiving\Wl\Catalog\StaffApp\CatalogCart;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * Calculates price data for a sale item.
  *
  * Note that the terms "promotion" and "Purchase Option" refer to the same thing.
+ *
+ * @method WlModelRequest get() Calculates amount of cart.  Used in the staff app checkout flow to show a live price summary before the staff member processes a client's payment. Returns the full breakdown so the staff member can confirm the total with the client before charging.
  */
 class CatalogCartModel extends WlModelAbstract
 {

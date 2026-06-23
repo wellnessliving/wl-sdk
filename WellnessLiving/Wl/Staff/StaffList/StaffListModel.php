@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Staff\StaffList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlPrivilegeSid;
 
 /**
  * Returns a list of all staff members working for a business.
+ *
+ * @method WlModelRequest get() Returns the list of staff members for the given business.  Returns all active (or optionally inactive) staff members for the business, including their name, role, assigned services, contact details, and location assignments. Can be filtered to only staff who have a specific privilege, and whether access-level checks should be applied when building the result.
  */
 class StaffListModel extends WlModelAbstract
 {

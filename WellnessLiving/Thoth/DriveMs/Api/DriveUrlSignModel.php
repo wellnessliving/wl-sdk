@@ -4,9 +4,12 @@ namespace WellnessLiving\Thoth\DriveMs\Api;
 
 use WellnessLiving\Core\Drive\DriveTypeSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns a pre-signed URL to download a file with restricted access rights.
+ *
+ * @method WlModelRequest get() Returns a pre-signed URL to download the specified private file.  Accepts file metadata (including the file name and privacy flag) and an optional download name, and generates a time-limited signed URL that grants temporary access to a private file in the drive storage.
  */
 class DriveUrlSignModel extends WlModelAbstract
 {

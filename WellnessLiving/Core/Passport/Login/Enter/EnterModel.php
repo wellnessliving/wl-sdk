@@ -3,9 +3,12 @@
 namespace WellnessLiving\Core\Passport\Login\Enter;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Signs a user in.
+ *
+ * @method WlModelRequest post() Signs the user in using their login and hashed password.  Accepts the user login, a password hash derived using the notepad obtained from {@link \Core\Passport\Login\Enter\NotepadApi}, and an optional remember preference. Validates credentials, enforces CAPTCHA when too many failed attempts have occurred, starts a session for the user, and returns a redirect URL if applicable.
  */
 class EnterModel extends WlModelAbstract
 {

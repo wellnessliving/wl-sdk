@@ -3,6 +3,7 @@
 namespace WellnessLiving\Core\Passport\ChangePassword;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Finishes the password change procedure for a user.
@@ -16,6 +17,8 @@ use WellnessLiving\WlModelAbstract;
  * Use <tt>text_mail</tt> as the value for {@link ChangePasswordApplyModel::$text_login} and
  * {@link ChangePasswordApplyModel::$text_mail},
  * and <tt>text_code</tt> as the value for {@link ChangePasswordApplyModel::$text_code}.
+ *
+ * @method WlModelRequest post() Saves for user new password.  Accepts the login, email, verification code (from the reset password link), and the new password, validates each against the stored state, and updates the user's password. If the user is not already signed in, a new session is started for them.
  */
 class ChangePasswordApplyModel extends WlModelAbstract
 {

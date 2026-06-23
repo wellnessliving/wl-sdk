@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Login\Attendance\Add;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Login\Attendance\AddOptionSid;
 use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Visit\WlVisitSid;
@@ -10,6 +11,9 @@ use WellnessLiving\Wl\Visit\WlVisitSid;
 /**
  * Adds a client to an attendance list.
  * This endpoint can also be used to get a list of Purchase Options suitable to pay for the session in question.
+ *
+ * @method WlModelRequest get() Gets information about ability of user to pay for given session in any ways.  Returns available Purchase Options and session passes that can be used to pay for the specified class session, along with the session price, the client's account balance, and whether the session is free.
+ * @method WlModelRequest post() Adds client to attendance list.  Books the specified client into the given class session using the chosen payment option (debit, Purchase Option, session pass, or unpaid), and returns the resulting visit key, visit status, and a store URL if payment is still required.
  */
 class AddModel extends WlModelAbstract
 {

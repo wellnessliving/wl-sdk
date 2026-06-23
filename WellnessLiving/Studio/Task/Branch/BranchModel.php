@@ -4,9 +4,15 @@ namespace WellnessLiving\Studio\Task\Branch;
 
 use WellnessLiving\Studio\Stand\StandStatusSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Runs a build for creation a new branch or delete an existing branch for the specified task.
+ *
+ * @method WlModelRequest delete() Changes a status of the branch for the specified task in the database and runs build for deleting a branch.  Sets branch status to deleting and starts the `BranchDelete` build on the deployment instance. Returns the build log URL on success.
+ * @method WlModelRequest get() Returns branch status and data for a task.  Retrieves `id_branch_status`, `id_stand_status`, and additional branch data for the specified task.
+ * @method WlModelRequest post() Registers a new branch for the specified task in the database and runs a build for creating a branch.  Validates the task, deployment instance, and microservice, then creates a branch record and starts the  `BranchCreate` build. Returns the build log URL on success.
+ * @method WlModelRequest put() Updates branch data for a task.  Saves additional branch data (`a_branch_data`) for the branch of the specified task.
  */
 class BranchModel extends WlModelAbstract
 {

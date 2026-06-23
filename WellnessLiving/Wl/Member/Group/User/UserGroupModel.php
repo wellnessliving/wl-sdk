@@ -3,9 +3,14 @@
 namespace WellnessLiving\Wl\Member\Group\User;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * API to see client's groups and add/remove the client to the group.
+ *
+ * @method WlModelRequest delete() Deletes the user from the group.  Removes the specified user from the given member group within the business after verifying access rights and that the group key is valid.
+ * @method WlModelRequest get() Gets information about all groups to which the specified user belongs.  Returns the list of member group keys for the given user within the specified business, populating `$a_group_info` with those keys after access validation.
+ * @method WlModelRequest post() Adds a user to a group.  Assigns the specified user to the given member group within the business after verifying access rights and that the group key is valid.
  */
 class UserGroupModel extends WlModelAbstract
 {

@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Report;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Checks access of the current user to the certain report int the given business.
+ *
+ * @method WlModelRequest get() Checks access to given report.  Accepts either {@link \Wl\Report\AccessApi::$id_report} (first-generation reports) or {@link \Wl\Report\AccessApi::$cid_report} (second-generation reports), but not both, and returns `has_access` indicating whether the current user may view the report in the given business.
  */
 class AccessModel extends WlModelAbstract
 {

@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Gym\Visit;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * An endpoint for adding a gym visit.
+ *
+ * @method WlModelRequest post() Records a gym visit for the specified client at the given date and time.  Validates access and input, creates a visit record for the client at the specified location, optionally applies a membership promotion if payment is required, and returns the catalog URL if no promotion was found and payment was requested.
  */
 class VisitAddModel extends WlModelAbstract
 {

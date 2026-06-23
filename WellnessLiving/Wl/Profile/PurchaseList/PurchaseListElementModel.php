@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Profile\PurchaseList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlActivationSid;
 use WellnessLiving\Wl\WlCommissionTypeSid;
@@ -15,6 +16,8 @@ use WellnessLiving\Wl\WlSaleSid;
  *
  * This endpoint may require different IDs to be specified for different types of purchases. The IDs required for a
  * specific item will be the same IDs returned from the {@link PurchaseListModel} endpoint.
+ *
+ * @method WlModelRequest get() Retrieves information about 1 purchase item.  Loads the full details of a single purchase item for display on the client profile, including  pricing, discounts, taxes, refunds, and current status. The item can be identified by  purchase item key, redemption code, or login promotion key.
  */
 class PurchaseListElementModel extends WlModelAbstract
 {

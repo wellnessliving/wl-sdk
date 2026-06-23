@@ -3,12 +3,15 @@
 namespace WellnessLiving\Wl\Catalog\StaffApp\CatalogView;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Catalog\StaffApp\CatalogList\CatalogListModel;
 use WellnessLiving\Wl\Tax\WlTaxSid;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
  * Returns information about an item’s price after taxes.
+ *
+ * @method WlModelRequest get() Calculates price information about sale item.  Used in the staff app checkout to show the real-time price of a single line item as the staff member configures it (adjusting quantity, custom price, or proration). Returns the full tax breakdown so the staff member sees exactly what the client will be charged.
  */
 class CatalogViewModel extends WlModelAbstract
 {

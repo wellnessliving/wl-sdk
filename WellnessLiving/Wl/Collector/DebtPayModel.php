@@ -4,10 +4,13 @@ namespace WellnessLiving\Wl\Collector;
 
 use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
  * Registers a debt payment that was performed beyond Wellnessliving, with a specified credit amount applied to a client's account balance.
+ *
+ * @method WlModelRequest post() Registers a debt payment made outside WellnessLiving and applies a credit to the client's account balance.  Used by collectors to record cash or external payments against outstanding debts. The specified amount is credited to the client's account and the debt status is updated accordingly. Requires an active Collections subscription and the business privilege or emulation access.
  */
 class DebtPayModel extends WlModelAbstract
 {

@@ -5,10 +5,13 @@ namespace WellnessLiving\Wl\Book\Process\Frequency;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * For recurrent class booking returns list of visits to be created for the given settings.
+ *
+ * @method WlModelRequest get() Returns the list of visits to be created for the given recurring booking settings.  Accepts the class period, date, user, recurrence configuration (interval, end condition, and days of week), and returns a list of individual visit slots with availability and alert information for each occurrence, together with the computed date range and visit count.
  */
 class RepeatModel extends WlModelAbstract
 {

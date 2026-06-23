@@ -3,11 +3,14 @@
 namespace WellnessLiving\Studio\Service\Cid;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Allows to register a new CID class.
  *
  * This API endpoint is only available for Studio personnel and bots.
+ *
+ * @method WlModelRequest post() Registers a new CID.  If class is registered already, returns its CID.
  */
 class StudioCid_RegisterModel extends WlModelAbstract
 {

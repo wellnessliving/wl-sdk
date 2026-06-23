@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Catalog\StaffApp\CatalogList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Catalog\Payment\PaymentModel;
 use WellnessLiving\Wl\Insurance\Catalog\ProgramListModel;
 use WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel;
@@ -13,6 +14,8 @@ use WellnessLiving\Wl\WlSaleSid;
 /**
  * Returns a list of all products available from a business’s shop.
  * If a location is specified, only products available at that location are included.
+ *
+ * @method WlModelRequest get() Returns all sale items available in the business for staff, optionally filtered by location and visit.  Used in the staff app to populate the add-item picker during checkout. Returns the products and services the staff member is allowed to sell at the current location. When a visit key is provided, the list is filtered to items that are relevant to that visit.
  */
 class CatalogListModel extends WlModelAbstract
 {

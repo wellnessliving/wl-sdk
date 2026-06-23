@@ -6,6 +6,7 @@ use WellnessLiving\Core\Drive\DriveTypeSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Catalog\PurchaseOptionViewSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\Service\ServiceSid;
@@ -17,6 +18,8 @@ use WellnessLiving\Wl\WlSaleSid;
  * Displays information about a certain item in the store.
  *
  * When using this endpoint, note that the terms "promotion" and "Purchase Option" refer to the same thing.
+ *
+ * @method WlModelRequest get() Retrieves an information about current sale item.  Used to render the detail view of a single store item (promotion, product, event, or coupon) in the client-facing catalog. Returns everything needed to display the item: price, taxes, images, description, booking restrictions, and available purchase options.
  */
 class ElementModel extends WlModelAbstract
 {

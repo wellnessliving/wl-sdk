@@ -4,12 +4,16 @@ namespace WellnessLiving\Wl\Login;
 
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns the profile information for a specific user.
  *
  * This endpoint can be used to return public information about a staff member or a user`s image. To obtain the
  * user's full information, you'll need access to the requested user.
+ *
+ * @method WlModelRequest get() Retrieves information about user.  Returns name, gender, photo URL, email, and staff details for the specified user within the given business. Public staff information is returned even without profile access; full client details require access to the user's profile.
+ * @method WlModelRequest post() Retrieves information about a list of users. This is done via "post" method because only "post" allows large requests.  Accepts a JSON-encoded array of user keys, validates each one, resolves staff and client roles, and returns name, gender, photo URL, email, and staff details for every user in the list, respecting per-user profile access rules.
  */
 class LoginModel extends WlModelAbstract
 {

@@ -6,10 +6,14 @@ use WellnessLiving\Core\Sid\YesNoSid;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlScheduleTimeSid;
 
 /**
  * Retrieves a list of events that fit the given filter parameters.
+ *
+ * @method WlModelRequest get() Returns the list of events matching the specified filter parameters.  Used to display the event schedule on business and location pages. Supports filtering by location, date range, staff, and booking status. Results are cached per business and user context; the cache is invalidated automatically when events are modified.
+ * @method WlModelRequest put() Resets the event list cache for the specified business and user.  Call this after modifying event data to force the next request to rebuild the schedule from the database. Can also conditionally reset without parameters if the caller determines a reset is needed.
  */
 class EventListModel extends WlModelAbstract
 {

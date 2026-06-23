@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Login\Promotion\Convert;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Promotion\Convert\PromotionConvertSid;
 use WellnessLiving\Wl\WlProgramSid;
 
@@ -12,6 +13,10 @@ use WellnessLiving\Wl\WlProgramSid;
  * The DELETE method will remove the conversion and reset the date.
  * The GET method will return a list of promotions available at the business.
  * The POST method can be used to change what the Purchase Option should convert to and when to convert it.
+ *
+ * @method WlModelRequest delete() Removes conversion and reset the after expiration setting to previous state.  Validates access, removes the scheduled conversion record for the given purchased promotion, restores the previous auto-renew state, and reschedules the payment if the promotion is a membership type.
+ * @method WlModelRequest get() Returns the current conversion configuration and the list of promotions available to convert to.  Returns the current conversion type, scheduled date, target promotion, hold period dates, next payment date, expiration date, and the list of promotions available as conversion targets for the given purchased promotion.
+ * @method WlModelRequest post() Creates or updates conversion form data for the login promotion. Performs all necessary checks and apply changes.  Validates access, the target promotion key, conversion type, conversion timing, and the optional scheduled date, then saves the conversion settings. Returns an error if the user is a debtor.
  */
 class ConvertModel extends WlModelAbstract
 {

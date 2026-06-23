@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Family\Relation;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns business' enabled relationship types.
+ *
+ * @method WlModelRequest get() Gets relationships list.  Returns all relationship types enabled for the given business, or all system-defined relationship types if no business key is provided.
  */
 class FamilyRelationModel extends WlModelAbstract
 {

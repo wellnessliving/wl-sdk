@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Lead\Source;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Retrieves a list of Lead Sources.
+ *
+ * @method WlModelRequest get() Gets list of Lead Sources.  Returns all lead sources configured for the specified business, including system-defined and custom sources, with sort order, title, associated skin, and flags indicating whether each source is currently in use. This is public endpoint, which is available for non-signed-in users. But if the user is not signed in, the list will be filtered to contain only those sources that are available for the user and with limited information.
  */
 class LeadSourceListModel extends WlModelAbstract
 {

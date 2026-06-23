@@ -6,6 +6,7 @@ use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Appointment\Book\Question\QuestionModel;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
@@ -15,6 +16,9 @@ use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
  * Completes an appointment booking.
+ *
+ * @method WlModelRequest get() Loads data to prepare client side to complete booking.  Returns notification settings (email, push, SMS) for the appointment creation confirmation  so the client side can display the appropriate notification options before finalizing the booking.
+ * @method WlModelRequest post() Completes the appointment booking and logs variable counts for diagnostic purposes.  Delegates to the parent {@link \Wl\Appointment\Book\Finish\FinishApi::post()} implementation after logging the total variable counts  from GET, POST, and the booking data array. The logging is temporary and intended to diagnose  "Too many variables" errors in production.
  */
 class Finish47Model extends WlModelAbstract
 {

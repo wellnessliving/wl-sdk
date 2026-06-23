@@ -4,11 +4,14 @@ namespace WellnessLiving\Thoth\DriveMs\Api;
 
 use WellnessLiving\WlFile;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Saves the uploaded file.
  *
  * @deprecated Use {@link DriveSave74Model} instead.
+ *
+ * @method WlModelRequest post() Saves the uploaded file content to the specified link.  Bridges the legacy {@link \Thoth\DriveMs\Api\DriveSaveApi::$s_content} field into the fields expected by the  parent implementation: writes the raw content to a temporary file and sets  {@link \Thoth\DriveMs\Api\DriveSave74Api::$a_file_content} for regular uploads, or copies the value directly  into {@link \Thoth\DriveMs\Api\DriveSave74Api::$s_file_key} for multipart uploads.
  */
 class DriveSaveModel extends WlModelAbstract
 {

@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Pay\Account\Charge;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
 use WellnessLiving\Wl\Mode\ModeSid;
 
@@ -12,6 +13,8 @@ use WellnessLiving\Wl\Mode\ModeSid;
  * This endpoint uses a CAPTCHA check.
  * To pass the CAPTCHA, review the CAPTCHA API doumentation. where you'll find that you must send a CAPTCHA for a specific action.
  * For this endpoint, the action is {@link BusinessPaymentCaptcha::CID}.
+ *
+ * @method WlModelRequest post() Refills the user account balance by the specified payment amount or adjusts it manually.  Accepts the payment amount, account key or user-and-business identifiers, charge mode, and payment form data. Processes the payment through the configured payment environment and returns the purchase key when a new purchase is created (for the automatic charge mode).
  */
 class ChargeModel extends WlModelAbstract
 {

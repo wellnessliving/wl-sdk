@@ -3,9 +3,14 @@
 namespace WellnessLiving\Wl\Video\Category;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Saves video categories.
+ *
+ * @method WlModelRequest delete() Deletes the specified video category.  Permanently removes the video category and its localized CMS records. Cannot be deleted if the category is currently configured as the cloud recording destination for the business.
+ * @method WlModelRequest get() Returns the data for the specified video category.  Returns the title, sort order, access restriction flags (by login type and member group), and whether this category is designated as the cloud recording destination for the business.
+ * @method WlModelRequest put() Creates or updates a video category.  Saves the category title and access restriction settings. When no category key is supplied, a new category is created; when an existing key is supplied, that category is updated. Requires backend access with the video library management privilege.
  */
 class CategoryElementModel extends WlModelAbstract
 {

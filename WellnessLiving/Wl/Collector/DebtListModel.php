@@ -4,9 +4,12 @@ namespace WellnessLiving\Wl\Collector;
 
 use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns list of debts added within the previous month.
+ *
+ * @method WlModelRequest get() Returns a list of client debts for the specified business within the given date range.  Used by the Collections module to display outstanding debts to the collector. Requires an active Collections subscription and either the business privilege or emulation access. The default date range covers the previous month relative to the business timezone.
  */
 class DebtListModel extends WlModelAbstract
 {

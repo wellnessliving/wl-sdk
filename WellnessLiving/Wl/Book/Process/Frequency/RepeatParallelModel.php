@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Book\Process\Frequency;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Extension of {@link RepeatModel} that adds control over whether parallel class period series
@@ -13,6 +14,8 @@ use WellnessLiving\WlModelAbstract;
  * When `is_include_parallel` is `false` (default), only the originally selected class period's
  * series (parent and its reschedules) is returned. When `true`, all parallel series are also
  * included and can be reviewed or individually ignored by the client.
+ *
+ * @method WlModelRequest get() Returns the list of visits to be created for the given recurring booking settings.  Accepts the class period, date, user, recurrence configuration (interval, end condition, and days of week), and returns a list of individual visit slots with availability and alert information for each occurrence, together with the computed date range and visit count.
  */
 class RepeatParallelModel extends WlModelAbstract
 {

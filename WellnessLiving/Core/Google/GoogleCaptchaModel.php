@@ -3,11 +3,14 @@
 namespace WellnessLiving\Core\Google;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Stores the user token CAPTCHA.
  *
  * @deprecated Use {@link \WellnessLiving\Core\Google\Captcha\GoogleCaptchaModel} instead of this.
+ *
+ * @method WlModelRequest put() Saves the user CAPTCHA token for the current session.  Accepts the CAPTCHA version, the action name, and the user token obtained from the Google reCAPTCHA widget, and stores them in the session so that subsequent API requests requiring CAPTCHA verification can use them.
  */
 class GoogleCaptchaModel extends WlModelAbstract
 {

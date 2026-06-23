@@ -3,9 +3,13 @@
 namespace WellnessLiving\Wl\Video\Level;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Changes the order of video levels.
+ *
+ * @method WlModelRequest get() Returns the list of video levels for the business.  Returns all difficulty levels configured for the business video library, sorted by their current display order. Used to populate level pickers when creating or editing videos.
+ * @method WlModelRequest put() Updates the order of video levels.  Reorders the difficulty levels for the business video library according to the provided list. Requires backend access with the video library management privilege.
  */
 class LevelListModel extends WlModelAbstract
 {

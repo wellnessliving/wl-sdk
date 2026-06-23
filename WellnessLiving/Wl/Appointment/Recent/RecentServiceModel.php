@@ -3,11 +3,14 @@
 namespace WellnessLiving\Wl\Appointment\Recent;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Service\ServiceSid;
 
 /**
  * Returns list of client's last booked services. Only unique services are returned, i.e. if a client
  * booked the same service several times, only last of these bookings is returned in the list.
+ *
+ * @method WlModelRequest get() Gets list of client's last booked services.  Returns the most recently booked unique services for the given client at the given business,  filtered by service type (appointment or bookable asset). Duplicate services are collapsed so  only the most recent booking per service is included, up to {@link \Wl\Appointment\Recent\RecentServiceApi::MAX_SERVICE_COUNT}.
  */
 class RecentServiceModel extends WlModelAbstract
 {

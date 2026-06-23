@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Login\Coupon;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves information about a gift card (also referred to as the coupon code).
+ *
+ * @method WlModelRequest get() Retrieves the key and balance of a gift card by its code for the specified business.  Validates the gift card code against the specified business, enforces a per-IP rate limit, and checks that the card is active, not already redeemed, not expired, and in the correct currency before returning its key and remaining balance.
  */
 class CouponModel extends WlModelAbstract
 {

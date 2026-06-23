@@ -4,9 +4,12 @@ namespace WellnessLiving\Wl\Business\Franchise\Location;
 
 use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Manages franchisor locations.
+ *
+ * @method WlModelRequest get() Returns country, region, state, city and location lists of the franchisor.  Used on the franchisor's website location finder to display all franchisee locations on a map or list, grouped by country, state, and city. Results can be filtered to only locations assigned to a specific franchise region or to exclude churned locations. Results are cached for 3 minutes.
  */
 class BusinessFranchiseLocationModel extends WlModelAbstract
 {

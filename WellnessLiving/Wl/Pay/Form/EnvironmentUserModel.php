@@ -4,11 +4,14 @@ namespace WellnessLiving\Wl\Pay\Form;
 
 use WellnessLiving\Core\a\ACardSystemSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlPayMethodSid;
 use WellnessLiving\Wl\WlPayProcessorSid;
 
 /**
  * Gets information about payment environments for the user.
+ *
+ * @method WlModelRequest get() Returns information about payment environment.  Called before rendering a payment form to determine which payment methods and card types are available for a given business and location, what surcharges apply, and how the form should behave (tip prompt, optional card save). This endpoint is deprecated; use {@link \Thoth\WlPay\Form\EnvironmentUserApi}  for new integrations.
  */
 class EnvironmentUserModel extends WlModelAbstract
 {

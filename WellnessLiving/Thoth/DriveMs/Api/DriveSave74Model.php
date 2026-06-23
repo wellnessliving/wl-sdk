@@ -4,9 +4,12 @@ namespace WellnessLiving\Thoth\DriveMs\Api;
 
 use WellnessLiving\WlFile;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Saves the uploaded file.
+ *
+ * @method WlModelRequest post() Saves the uploaded file content to the specified link.  Accepts the raw file content (or an S3 multipart key when `is_multipart` is set in  {@link \Thoth\DriveMs\Api\DriveSaveApi::$a_param}), a drive link, and an optional file name. Writes the content to the drive storage and returns the saved file metadata.
  */
 class DriveSave74Model extends WlModelAbstract
 {

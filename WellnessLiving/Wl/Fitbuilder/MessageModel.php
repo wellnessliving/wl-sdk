@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Fitbuilder;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Point to get messenger information from Fitbuilder.
+ *
+ * @method WlModelRequest post() Notifies messengers with new information.  Accepts a channel key and a data payload, then dispatches a notification to the Fitbuilder messenger channel associated with that key. Requires the `notify` API privilege.
  */
 class MessageModel extends WlModelAbstract
 {

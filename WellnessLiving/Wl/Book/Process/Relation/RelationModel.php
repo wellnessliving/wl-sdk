@@ -3,12 +3,16 @@
 namespace WellnessLiving\Wl\Book\Process\Relation;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Book\Process\ProcessCheckSid;
 use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
 use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Adds a relative during the booking process.
+ *
+ * @method WlModelRequest get() Checks if user can book specified session.  Validates the date, business, class period, and user, verifies the session is not already booked, then runs the full booking eligibility check (credit card, waiver, age, overlap, outstanding balance) and throws a descriptive user-facing error if any requirement is not met.
+ * @method WlModelRequest post() Added new relative.  Creates a new family member profile for the specified business and links it as a relative of `uid_from`, applying birthday validation, email-inheritance rules, and payment responsibility settings. Returns the UID of the newly created user in `uid_create`.
  */
 class RelationModel extends WlModelAbstract
 {

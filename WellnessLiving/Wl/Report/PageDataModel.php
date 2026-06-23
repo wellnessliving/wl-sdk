@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Report;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns collection of the reports.
+ *
+ * @method WlModelRequest get() Gets data of required report collection.  Loads all reports belonging to the specified report page collection for the given business, applying shared filter, sort, group, and view parameters, and returns the data for each report keyed by report ID.
  */
 class PageDataModel extends WlModelAbstract
 {

@@ -4,9 +4,12 @@ namespace WellnessLiving\Wl\Business\Account\Subscription;
 
 use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Entry point to retrieve information about business subscription.
+ *
+ * @method WlModelRequest get() Gets information about subscription.  Used in the backend settings UI to read the current state of a business subscription (e.g., Achieve or another product). Returns whether the subscription is active, the current plan tier, and the business locale. Requires backend access to the business.
  */
 class SubscriptionInfoModel extends WlModelAbstract
 {

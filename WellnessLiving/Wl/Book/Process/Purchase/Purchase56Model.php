@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Book\Process\Purchase;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlProgramCategorySid;
 use WellnessLiving\Wl\WlProgramSid;
@@ -14,6 +15,8 @@ use WellnessLiving\Wl\WlProgramTypeSid;
  * Displays information about Purchase Options that can book specified session(s).
  *
  * Note that the terms "Purchase Option" and "promotion" are used interchangeably.
+ *
+ * @method WlModelRequest get() Returns available purchase options for the specified session, decoding JSON-encoded group promotion and session inputs.  Deserializes the JSON-encoded group login-promotion list and session selection, then delegates to the parent to return the purchase options available for the current client and session.
  */
 class Purchase56Model extends WlModelAbstract
 {
@@ -262,7 +265,7 @@ class Purchase56Model extends WlModelAbstract
    * 
    *   <dt>string `html_payment_period`</dt>
    *   <dd>
-   *     This is only set for Purchase Options with the 'membership' program type. The measurement unit int <var>i_payment_period</var> in short form.
+   *     This is only set for Purchase Options with the 'membership' program type. The measurement unit of <var>i_payment_period</var> in short form.
    *   </dd>
    * 
    *   <dt>string `html_description`</dt>
@@ -323,7 +326,7 @@ class Purchase56Model extends WlModelAbstract
    * 
    *   <dt>string `s_payment_duration`</dt>
    *   <dd>
-   *     This is only set for Purchase Options with the 'membership' program type. The measurement unit int <var>i_payment_period</var>.
+   *     This is only set for Purchase Options with the 'membership' program type. The measurement unit of <var>i_payment_period</var>.
    *   </dd>
    * 
    *   <dt>string `s_promotion_convert`</dt>

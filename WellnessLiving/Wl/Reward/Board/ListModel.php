@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Reward\Board;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Retrieves a list of items to show in user profile.
+ *
+ * @method WlModelRequest get() Retrieves a list of reward board items to show.  Returns an ordered list of user IDs ranked by points for the specified reward board, up to the configured maximum number of entries.
  */
 class ListModel extends WlModelAbstract
 {

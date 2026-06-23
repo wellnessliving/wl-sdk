@@ -3,10 +3,15 @@
 namespace WellnessLiving\Wl\Family\Relation;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Returns data about a user's relationships.
+ *
+ * @method WlModelRequest delete() Deletes family relation between 2 users.  Removes the relationship between the user identified by `uid` and the user identified by `uid_delete` within the given business, then returns the updated list of relationships for `uid`.
+ * @method WlModelRequest get() Gets relative list.  Returns the list of all family relationships for the specified user within the given business, including relationship type, reverse relationship type, name, and photo information for each related user.
+ * @method WlModelRequest post() Adds to user {@link \Wl\Family\Relation\RelationApi::$uid} relative {@link \Wl\Family\Relation\RelationApi::$a_new}.  Creates a bidirectional family relationship between the user identified by `uid` and the user specified in `a_new`, then returns the updated list of relationships for `uid`.
  */
 class RelationModel extends WlModelAbstract
 {

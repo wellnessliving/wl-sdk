@@ -6,6 +6,7 @@ use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Appointment\Book\Question\QuestionModel;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
@@ -21,6 +22,9 @@ use WellnessLiving\Wl\WlPayMethodSid;
  * This endpoint can be accessed anonymously without authentication, but only when creating clients.
  *
  * @deprecated Use {@link Finish47Model} instead.
+ *
+ * @method WlModelRequest get() Loads data to prepare client side to complete booking.  Returns notification settings (email, push, SMS) for the appointment creation confirmation  so the client side can display the appropriate notification options before finalizing the booking.
+ * @method WlModelRequest post() Completes the appointment booking and processes payment for the client.  Delegates to {@link \Wl\Appointment\Book\Finish\FinishMultipleApi::post()} to handle a single appointment booking, mapping  the legacy single-provider request fields to the multi-provider format. Creates an appointment  record, applies the selected Purchase Option, and sends the booking confirmation notification.
  */
 class FinishModel extends WlModelAbstract
 {

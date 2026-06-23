@@ -3,10 +3,13 @@
 namespace WellnessLiving\Wl\Reception\Application;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Member\Info\InfoModel;
 
 /**
  * Returns information about user for self check in application.
+ *
+ * @method WlModelRequest get() Returns member information and notification items for the Self Check-In Web App.  Returns the user's profile data along with any notification items (such as expiring memberships, required waivers, or outstanding balances) that should be displayed during the self check-in flow.
  */
 class MemberInfoModel extends WlModelAbstract
 {

@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Book\Process\Purchase;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlProgramCategorySid;
 use WellnessLiving\Wl\WlProgramSid;
@@ -17,6 +18,8 @@ use WellnessLiving\Wl\WlProgramTypeSid;
  * used in WellnessLiving). Both these terms have been used for various variable names.
  *
  * @deprecated Use {@link Purchase56Model} instead.
+ *
+ * @method WlModelRequest get() Returns available purchase options, existing client promotions, session passes, and prizes for the specified session.  Loads all purchase options that can be used to book the specified class period for the given user, including existing login promotions with remaining session counts, new purchasable options, reward prizes, and login prizes. Returns pricing, image, program category, and availability data for each option.
  */
 class PurchaseModel extends WlModelAbstract
 {

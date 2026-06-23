@@ -3,9 +3,12 @@
 namespace WellnessLiving\Wl\Login\Search\StaffApp;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Gets a list of clients whose names match a search string.
+ *
+ * @method WlModelRequest get() Performs access checks and returns a list of users, depending on the search query.  When a search string is provided, returns clients whose name or email matches the query within the specified business. When the search string is empty, returns recently viewed clients. Each result includes the client's name, email, phone, member ID, and user key.
  */
 class ListModel extends WlModelAbstract
 {

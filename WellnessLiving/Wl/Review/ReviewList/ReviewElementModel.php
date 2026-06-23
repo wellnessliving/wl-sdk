@@ -3,10 +3,14 @@
 namespace WellnessLiving\Wl\Review\ReviewList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlReviewStatusSid;
 
 /**
  * Returns information about a review.
+ *
+ * @method WlModelRequest delete() Deletes a review.  Checks that the caller has the required permission, removes the review, and recomputes the best reviews for the associated business location.
+ * @method WlModelRequest get() Retrieves information about review item.  Returns the review rating, text, date, author information, reply, and featured status for the specified review.
  */
 class ReviewElementModel extends WlModelAbstract
 {

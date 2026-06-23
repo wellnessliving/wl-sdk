@@ -3,9 +3,13 @@
 namespace WellnessLiving\Wl\Video\Category;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
 
 /**
  * Returns a list of video categories.
+ *
+ * @method WlModelRequest get() Returns the list of video categories for the business.  Returns all video categories for the business with their titles, video counts, and cloud recording assignment. In frontend mode, only categories accessible to the current user are included. Results can be filtered by name and optionally limited to non-empty categories.
+ * @method WlModelRequest put() Updates the order of video categories.  Reorders the video library categories for the business according to the provided list. Requires backend access with the video library management privilege.
  */
 class CategoryListModel extends WlModelAbstract
 {
