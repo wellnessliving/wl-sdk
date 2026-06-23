@@ -24,10 +24,10 @@ class RankModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_rank`</dt>
-   *   <dd>A belt key. 
+   *   <dd>A belt key. </dd>
    * 
    *   <dt>string `k_rank_category`</dt>
-   *   <dd>A belt category key. 
+   *   <dd>A belt category key. </dd>
    * 
    *   <dt>string `text_rank`</dt>
    *   <dd>Belt title.</dd>

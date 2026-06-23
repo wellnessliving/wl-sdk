@@ -25,7 +25,7 @@ class PurchaseModel extends WlModelAbstract
    *   <dd>Login prize remaining quantity.</dd>
    * 
    *   <dt>string `k_login_prize`</dt>
-   *   <dd>Key of login prize. 
+   *   <dd>Key of login prize. </dd>
    * 
    *   <dt>string `text_description`</dt>
    *   <dd>User friendly login prize description.</dd>
@@ -123,7 +123,7 @@ class PurchaseModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string `k_login_promotion`</dt>
-   *   <dd>The Purchase Option login key. 
+   *   <dd>The Purchase Option login key. </dd>
    * 
    *   <dt>string `s_class_include`</dt>
    *   <dd>The list of services provided by this Purchase Option.</dd>
@@ -318,7 +318,7 @@ class PurchaseModel extends WlModelAbstract
    *   <dd>Prize price in points.</dd>
    * 
    *   <dt>string `k_reward_prize`</dt>
-   *   <dd>Key of redeemable prize. 
+   *   <dd>Key of redeemable prize. </dd>
    * 
    *   <dt>string `text_description`</dt>
    *   <dd>User friendly prize description.</dd>
@@ -364,7 +364,8 @@ class PurchaseModel extends WlModelAbstract
    * 
    *   <dt>string|null `k_login_prize`</dt>
    *   <dd>
-   *     Login prize key. *    `null` if no login prize used to pay for this service.
+   *     Login prize key. 
+   *    `null` if no login prize used to pay for this service.
    *   </dd>
    * 
    *   <dt>string|null `k_login_promotion`</dt>
@@ -372,7 +373,7 @@ class PurchaseModel extends WlModelAbstract
    *    Should be set if login promotion selected for this service.</dd>
    * 
    *   <dt>string `k_service`</dt>
-   *   <dd>Service key. 
+   *   <dd>Service key. </dd>
    * 
    *   <dt>string `k_timezone`</dt>
    *   <dd>
@@ -380,7 +381,8 @@ class PurchaseModel extends WlModelAbstract
    * 
    *    Can be `null` if timezone is not selected.
    *    If not selected, the default client timezone will be used.
-   *    * 
+   *    
+   * 
    *    In any case, the timezone will be used if the business allows client timezones.
    *   </dd>
    * </dl>
@@ -399,7 +401,7 @@ class PurchaseModel extends WlModelAbstract
    *   <dd>Number of remaining visits on session pass.</dd>
    * 
    *   <dt>string `k_session_pass`</dt>
-   *   <dd>Session pass key. 
+   *   <dd>Session pass key. </dd>
    * 
    *   <dt>int `id_purchase_item`</dt>
    *   <dd>Type of the session pass purchase. One of {@link WlPurchaseItemSid} constants.</dd>
@@ -541,7 +543,7 @@ class PurchaseModel extends WlModelAbstract
    *
    * Can be `null` if timezone is not selected.
    * If not selected, the default client timezone will be used.
-   * 
+   *
    * In any case, the timezone will be used if the business allows client timezones.
    *
    * @get get

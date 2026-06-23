@@ -26,7 +26,7 @@ class DiscountCodeEditModel extends WlModelAbstract
    * <p>Special Notes:</p>
    * <ul>
    *   <li>Zero means that all elements of this type are available.</li>
-   *   <li>For `id_purchase_</li>
+   *   <li>For `id_purchase_item`={@link WlPurchaseItemSid::CLASS_PERIOD} we store .`k_class` in the `k_id` field.</li>
    * </ul>
    *   </dd>
    * 
@@ -225,7 +225,7 @@ class DiscountCodeEditModel extends WlModelAbstract
    * List of product and purchase options that are effected with this discount code.
    * Each element has the next format: <var>id_purchase_item</var>:<var>k_id</var>, where <tt>id_purchase_item</tt> -
    * one of {@link WlPurchaseItemSid}, <tt>k_id</tt> is key of certain purchase item.
-   * 
+   *
    * @get result
    * @post post
    * @var string

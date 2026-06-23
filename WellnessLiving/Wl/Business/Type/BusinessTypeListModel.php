@@ -61,7 +61,7 @@ class BusinessTypeListModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string `k_business_type`</dt>
-   *   <dd>The key of business type. 
+   *   <dd>The key of business type. </dd>
    * 
    *   <dt>string `text_category`</dt>
    *   <dd>The title of the business category.</dd>

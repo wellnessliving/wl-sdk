@@ -24,7 +24,7 @@ class InfoCanCompleteModel extends WlModelAbstract
    *   <dd>`true` if this session should be booked, `false` otherwise.</dd>
    * 
    *   <dt>string `k_class_period`</dt>
-   *   <dd>The class period key. 
+   *   <dd>The class period key. </dd>
    * </dl>
    * @get get
    * @var array[]
@@ -45,7 +45,7 @@ class InfoCanCompleteModel extends WlModelAbstract
    *   <dd>`true` if this session should be booked, `false` otherwise.</dd>
    * 
    *   <dt>string `k_class_period`</dt>
-   *   <dd>The class period key. 
+   *   <dd>The class period key. </dd>
    * </dl>
    * @post post
    * @var array[]

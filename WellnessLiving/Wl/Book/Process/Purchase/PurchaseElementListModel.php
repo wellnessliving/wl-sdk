@@ -26,7 +26,7 @@ class PurchaseElementListModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string `k_login_prize`</dt>
-   *   <dd>The key of the user's prize. 
+   *   <dd>The key of the user's prize. </dd>
    * </dl>
    * @get get
    * @var array[]

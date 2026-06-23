@@ -21,7 +21,7 @@ class ProductModel extends WlModelAbstract
    *   <dd>Quantity of the product purchased.</dd>
    * 
    *   <dt>string `k_shop_product_option`</dt>
-   *   <dd>Key of product. 
+   *   <dd>Key of product. </dd>
    * 
    *   <dt>string `m_price`</dt>
    *   <dd>Price per unit of the product.</dd>

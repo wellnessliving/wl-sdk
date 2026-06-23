@@ -98,12 +98,14 @@ class ServiceList52Model extends WlModelAbstract
    * 
    *   <dt>string[] `a_login_type_restriction`</dt>
    *   <dd>
-   *     Keys are login type keys. * Values - List of login types' titles for current service. Clients that have one of these types can book service.
+   *     Keys are login type keys. 
+   * Values - List of login types' titles for current service. Clients that have one of these types can book service.
    *   </dd>
    * 
    *   <dt>string[] `a_member_group_restriction`</dt>
    *   <dd>
-   *     Keys are member group keys. * Values - list of member groups' titles for current service. Clients that belongs to these groups can book service.
+   *     Keys are member group keys. 
+   * Values - list of member groups' titles for current service. Clients that belongs to these groups can book service.
    *   </dd>
    * 
    *   <dt>string `f_deposit`</dt>
@@ -198,10 +200,10 @@ class ServiceList52Model extends WlModelAbstract
    *   <dd>`true` if the service is virtual. Otherwise, this will be `false`.</dd>
    * 
    *   <dt>string `k_service`</dt>
-   *   <dd>The appointment primary key. 
+   *   <dd>The appointment primary key. </dd>
    * 
    *   <dt>string `k_service_category`</dt>
-   *   <dd>The service category primary key. 
+   *   <dd>The service category primary key. </dd>
    * 
    *   <dt>string `s_duration`</dt>
    *   <dd>The appointment duration in a human-readable format.</dd>

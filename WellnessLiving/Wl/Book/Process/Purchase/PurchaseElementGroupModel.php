@@ -17,7 +17,7 @@ class PurchaseElementGroupModel extends WlModelAbstract
    *   <dt>int `i_session`</dt>
    *   <dd>
    *     Number of sessions which are booked simultaneously.
-   *      Make sense only when `id_purchase_
+   *      Make sense only when `id_purchase_item` = {@link WlPurchaseItemSid::CLASS_PERIOD}.
    *   </dd>
    * 
    *   <dt>int `id_purchase_item`</dt>
@@ -32,8 +32,10 @@ class PurchaseElementGroupModel extends WlModelAbstract
    * 
    *   <dt>string|null `k_pay_installment_template`</dt>
    *   <dd>
-   *     Installment template key. *  This property is optional.
-   *  * can only be set for the purchase option which supports installment plan. *  * `null` if installment plan doesn't exist for bought item;
+   *     Installment template key. 
+   *  This property is optional.
+   *  * can only be set for the purchase option which supports installment plan. 
+   *  * `null` if installment plan doesn't exist for bought item;
    *  * `0` if installment plan doesn't selected for bought item from the list of installment plans.
    *  NOTE:
    *  * Calculations of discounts and taxes for installment plans are for demonstration purposes only!

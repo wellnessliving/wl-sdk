@@ -25,7 +25,7 @@ class AddonUpdateModel extends WlModelAbstract
    *   <dd>The add-on use count. Max value is 255. Not set means same value as add-on count.</dd>
    * 
    *   <dt>string `k_shop_product_option`</dt>
-   *   <dd>The add-on key. 
+   *   <dd>The add-on key. </dd>
    * </dl>
    * @put post
    * @var string[]|array[]
@@ -39,7 +39,8 @@ class AddonUpdateModel extends WlModelAbstract
    *   <dt>array[] `a_addon`</dt>
    *   <dd>
    *     Data about appointment add-ons.
-   * *     <dl>
+   * 
+   *     <dl>
    *       <dt>string `html_amount`</dt>
    *       <dd>Formatted HTML price of the addon.</dd>
    * 
@@ -72,7 +73,8 @@ class AddonUpdateModel extends WlModelAbstract
    *   <dt>array[] `a_addon_buy`</dt>
    *   <dd>
    *     Add-ons available for purchase: zero quantity, zero usage quantity, and zero banked quantity.
-   *  *     <dl>
+   *  
+   *     <dl>
    *       <dt>string `html_amount`</dt>
    *       <dd>Formatted HTML price of the addon.</dd>
    * 
@@ -105,7 +107,8 @@ class AddonUpdateModel extends WlModelAbstract
    *   <dt>array[] `a_addon_own`</dt>
    *   <dd>
    *     Add-ons already owned but not selected: zero quantity, zero usage quantity, non-zero banked quantity.
-   *  *     <dl>
+   *  
+   *     <dl>
    *       <dt>string `html_amount`</dt>
    *       <dd>Formatted HTML price of the addon.</dd>
    * 
@@ -138,7 +141,8 @@ class AddonUpdateModel extends WlModelAbstract
    *   <dt>array[] `a_addon_select`</dt>
    *   <dd>
    *     Add-ons selected for this appointment: non-zero quantity or non-zero usage quantity.
-   *  *     <dl>
+   *  
+   *     <dl>
    *       <dt>string `html_amount`</dt>
    *       <dd>Formatted HTML price of the addon.</dd>
    * 
@@ -194,7 +198,7 @@ class AddonUpdateModel extends WlModelAbstract
 
   /**
    * Determines whether the appointment duration needs to be updated.
-   * 
+   *
    * @put post
    * @var bool
    */

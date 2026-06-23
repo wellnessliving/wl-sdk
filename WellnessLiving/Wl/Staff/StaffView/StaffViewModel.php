@@ -55,7 +55,7 @@ class StaffViewModel extends WlModelAbstract
    *   <dt>array[] `a_class_day`</dt>
    *   <dd>
    *     Contains a schedule of classes per day.
-   *
+   * Each element has a structure like in {@link StaffViewModel::$a_class_day} property.
    *     <dl>
    *       <dt>array `a_class_period`</dt>
    *       <dd>
@@ -83,17 +83,19 @@ class StaffViewModel extends WlModelAbstract
    *   <dt>array[] `a_staff`</dt>
    *   <dd>
    *     Staff information.
-   *
+   * Each element has a structure like in {@link StaffViewModel::$a_staff} property.
    *     <dl>
    *       <dt>string[] `a_location_work`</dt>
-   *       <dd>A list of locations keys where staff works. 
+   *       <dd>A list of locations keys where staff works. </dd>
    * 
    *       <dt>array `a_photo`</dt>
    *       <dd>
-   *         Staff's photo. *         <dl>
+   *         Staff's photo. 
+   *         <dl>
    *           <dt>array `a_image`</dt>
    *           <dd>
-   *             Image data. *             <dl>
+   *             Image data. 
+   *             <dl>
    *               <dt>int `i_height`</dt>
    *               <dd>Actual height of thumbnail image.</dd>
    * 
@@ -143,7 +145,7 @@ class StaffViewModel extends WlModelAbstract
    *           <dd>Staff key.</dd>
    * 
    *           <dt>string `s_url`</dt>
-   *           <dd>Path to image. 
+   *           <dd>Path to image. </dd>
    * 
    *           <dt>string `text_name`</dt>
    *           <dd>Staff name.</dd>
@@ -179,10 +181,10 @@ class StaffViewModel extends WlModelAbstract
    *       <dd>`true` in case when for schedule exists for staff, `false` otherwise.</dd>
    * 
    *       <dt>string `k_location`</dt>
-   *       <dd>Staff's current location. 
+   *       <dd>Staff's current location. </dd>
    * 
    *       <dt>string `k_staff`</dt>
-   *       <dd>Staff key. eprecated</b>, use `uid_staff` instead.</dd>
+   *       <dd>Staff key.  <b>Deprecated</b>, use `uid_staff` instead.</dd>
    * 
    *       <dt>string `s_biography`</dt>
    *       <dd>
@@ -216,7 +218,7 @@ class StaffViewModel extends WlModelAbstract
    *       </dd>
    * 
    *       <dt>string `uid_staff`</dt>
-   *       <dd>The staff user ID. 
+   *       <dd>The staff user ID. </dd>
    * 
    *       <dt>string `url_schedule`</dt>
    *       <dd>URL to the schedule with this staff.</dd>
@@ -233,14 +235,16 @@ class StaffViewModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string[] `a_location_work`</dt>
-   *   <dd>A list of locations keys where staff works. 
+   *   <dd>A list of locations keys where staff works. </dd>
    * 
    *   <dt>array `a_photo`</dt>
    *   <dd>
-   *     Staff's photo. *     <dl>
+   *     Staff's photo. 
+   *     <dl>
    *       <dt>array `a_image`</dt>
    *       <dd>
-   *         Image data. *         <dl>
+   *         Image data. 
+   *         <dl>
    *           <dt>int `i_height`</dt>
    *           <dd>Actual height of thumbnail image.</dd>
    * 
@@ -290,7 +294,7 @@ class StaffViewModel extends WlModelAbstract
    *       <dd>Staff key.</dd>
    * 
    *       <dt>string `s_url`</dt>
-   *       <dd>Path to image. 
+   *       <dd>Path to image. </dd>
    * 
    *       <dt>string `text_name`</dt>
    *       <dd>Staff name.</dd>
@@ -326,10 +330,10 @@ class StaffViewModel extends WlModelAbstract
    *   <dd>`true` in case when for schedule exists for staff, `false` otherwise.</dd>
    * 
    *   <dt>string `k_location`</dt>
-   *   <dd>Staff's current location. 
+   *   <dd>Staff's current location. </dd>
    * 
    *   <dt>string `k_staff`</dt>
-   *   <dd>Staff key. eprecated</b>, use `uid_staff` instead.</dd>
+   *   <dd>Staff key.  <b>Deprecated</b>, use `uid_staff` instead.</dd>
    * 
    *   <dt>string `s_biography`</dt>
    *   <dd>
@@ -363,7 +367,7 @@ class StaffViewModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string `uid_staff`</dt>
-   *   <dd>The staff user ID. 
+   *   <dd>The staff user ID. </dd>
    * 
    *   <dt>string `url_schedule`</dt>
    *   <dd>URL to the schedule with this staff.</dd>

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * A list of payment methods.
  *
- * * Last used ID: 13.
+ * Last used ID: 13.
  */
 abstract class WlPayMethodSid
 {

@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Business;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\WlRegionSid;
 
 /**
  * Returns information about a given staff member's business.
@@ -24,11 +25,11 @@ class BusinessAccessModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_region`</dt>
    *   <dd>
-   *     The business region. This will be `null` if no regions are currently set.
+   *     The business region. One of the {@link WlRegionSid} constants. This will be `null` if no regions are currently set.
    *   </dd>
    * 
    *   <dt>string `k_business`</dt>
-   *   <dd>The business key. 
+   *   <dd>The business key. </dd>
    * 
    *   <dt>string `text_office_address`</dt>
    *   <dd>The business address.</dd>

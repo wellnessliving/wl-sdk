@@ -8,13 +8,15 @@ namespace WellnessLiving\Wl\Skin\Application\Resource;
 class ApplicationResourceModel extends \WellnessLiving\Custom\Wl\Skin\Application\Resource\ApplicationResourceModel
 {
   /**
-   * The application data. Key is the business key. * Value is application resource data for that business.
+   * The application data. Key is the business key. 
+   * Value is application resource data for that business.
    * Each element: 
    *
    * <dl>
    *   <dt>array `a_resource`</dt>
    *   <dd>
-   *     List of resource groups for image generation. *     <dl>
+   *     List of resource groups for image generation. 
+   *     <dl>
    *       <dt>array[] `a_group`</dt>
    *       <dd>
    *         Groups of images, such as icons, loading screens or screenshots. One element of this array is an array that
@@ -68,7 +70,7 @@ class ApplicationResourceModel extends \WellnessLiving\Custom\Wl\Skin\Applicatio
    *   <dd>Application version number.</dd>
    * 
    *   <dt>string `k_business`</dt>
-   *   <dd>Business key. 
+   *   <dd>Business key. </dd>
    * 
    *   <dt>string `s_google_id`</dt>
    *   <dd>Google OAuth client ID for this application.</dd>

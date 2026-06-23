@@ -15,7 +15,7 @@ class UserInfoModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_field`</dt>
-   *   <dd>Field key. 
+   *   <dd>Field key. </dd>
    * 
    *   <dt>string `text_title`</dt>
    *   <dd>Name of the field. Will be <tt>null</tt> for general fields. Their titles are static.</dd>
@@ -66,7 +66,7 @@ class UserInfoModel extends WlModelAbstract
    *     List of the custom user fields. Each value is:
    *     <dl>
    *       <dt>string `k_field`</dt>
-   *       <dd>Field key. 
+   *       <dd>Field key. </dd>
    * 
    *       <dt>string `text_title`</dt>
    *       <dd>Name of the field. Will be <tt>null</tt> for general fields. Their titles are static.</dd>
@@ -79,7 +79,8 @@ class UserInfoModel extends WlModelAbstract
    *   <dt>string[] `a_member_group`</dt>
    *   <dd>
    *     List of member groups that the user belongs to.
-   *    *   </dd>
+   *    
+   *   </dd>
    * 
    *   <dt>array `a_photo`</dt>
    *   <dd>

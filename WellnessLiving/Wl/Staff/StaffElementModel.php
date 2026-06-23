@@ -148,7 +148,7 @@ class StaffElementModel extends WlModelAbstract
    * returned in API result for compatibility.
    *
    * Passing `k_staff` in request payload is not supported and causes an error.
-   * 
+   *
    * @post get,result
    * @var string|null
    */

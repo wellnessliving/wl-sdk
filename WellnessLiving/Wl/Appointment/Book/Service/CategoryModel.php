@@ -18,11 +18,11 @@ class CategoryModel extends WlModelAbstract
    *     <tt>true</tt> - all services are hidden in this category for White Label mobile application. <tt>false</tt> - otherwise.
    *   </dd>
    * 
-   *   <dt>bool `i_sort`</dt>
+   *   <dt>int `i_sort`</dt>
    *   <dd>Sort key for category. Used to sort categories on category list page.</dd>
    * 
    *   <dt>string `k_service_category`</dt>
-   *   <dd>Service category key. 
+   *   <dd>Service category key. </dd>
    * 
    *   <dt>string `s_title`</dt>
    *   <dd>Service category title.</dd>

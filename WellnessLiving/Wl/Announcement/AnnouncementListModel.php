@@ -15,7 +15,7 @@ class AnnouncementListModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string[] `a_location`</dt>
-   *   <dd>Location keys where the announcement is published. 
+   *   <dd>Location keys where the announcement is published. </dd>
    * 
    *   <dt>string `dtl_create`</dt>
    *   <dd>Creation date in local MySQL format.</dd>
@@ -42,10 +42,10 @@ class AnnouncementListModel extends WlModelAbstract
    *   <dd>`true` if the announcement is pinned, `false` otherwise.</dd>
    * 
    *   <dt>string `k_announcement`</dt>
-   *   <dd>Announcement key. 
+   *   <dd>Announcement key. </dd>
    * 
    *   <dt>string `k_business`</dt>
-   *   <dd>Business key. 
+   *   <dd>Business key. </dd>
    * 
    *   <dt>string `text_create_date`</dt>
    *   <dd>Formatted creation date.</dd>
@@ -63,7 +63,7 @@ class AnnouncementListModel extends WlModelAbstract
    *   <dd>Formatted unpublish date.</dd>
    * 
    *   <dt>string `uid_create`</dt>
-   *   <dd>Key of the user who created the announcement. 
+   *   <dd>Key of the user who created the announcement. </dd>
    * 
    *   <dt>string `url_detail`</dt>
    *   <dd>URL of the announcement detail page.</dd>

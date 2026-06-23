@@ -366,7 +366,7 @@ class PurchaseListElementModel extends WlModelAbstract
   /**
    * The type of duration for the promotion. This is used only for membership-type promotions. This determines
    * whether the promotion lasts indefinitely, has a fixed duration, or ends on a specific date. The measurement unit
-   * for key <var>i_payment_period</var>. One of the {@link WlDurationTypeSid} constants.
+   * for int <var>i_payment_period</var>. One of the {@link WlDurationTypeSid} constants.
    *
    * @get result
    * @var int
@@ -375,7 +375,7 @@ class PurchaseListElementModel extends WlModelAbstract
 
   /**
    * The ID of the promotion program. This is used only for promotions.
-   * The measurement unit for key <var>i_payment_period</var>. The ID of promotion program type.
+   * The measurement unit for int <var>i_payment_period</var>. The ID of promotion program type.
    * One of the {@link WlProgramTypeSid} constants.
    *
    * @get result
@@ -384,7 +384,7 @@ class PurchaseListElementModel extends WlModelAbstract
   public $id_program_type;
 
   /**
-   * The ID of the purchase item type. The measurement unit for key <var>i_payment_period</var>.
+   * The ID of the purchase item type. The measurement unit for int <var>i_payment_period</var>.
    * The ID of purchase item type. One of the {@link WlPurchaseItemSid} constants.
    *
    * @get result

@@ -67,7 +67,7 @@ class BusinessClaimModel extends WlModelAbstract
 
   /**
    * Location microsite URL.
-   * *
+   *
    * @post result
    * @var string|null
    */

@@ -16,7 +16,7 @@ class DiscountCodeModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_discount_code`</dt>
-   *   <dd>Discount code key. 
+   *   <dd>Discount code key. </dd>
    * 
    *   <dt>string `text_discount_code`</dt>
    *   <dd>Discount code title.</dd>

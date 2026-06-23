@@ -42,10 +42,12 @@ class ServiceModel extends WlModelAbstract
    *     <dl>
    *       <dt>array `a_image`</dt>
    *       <dd>
-   *         The asset's image data. *         <dl>
+   *         The asset's image data. 
+   *         <dl>
    *           <dt>array `a_image`</dt>
    *           <dd>
-   *             Image data. *             <dl>
+   *             Image data. 
+   *             <dl>
    *               <dt>int `i_height`</dt>
    *               <dd>Actual height of thumbnail image.</dd>
    * 
@@ -110,7 +112,7 @@ class ServiceModel extends WlModelAbstract
    *           </dd>
    * 
    *           <dt>string `url`</dt>
-   *           <dd>Path to image. 
+   *           <dd>Path to image. </dd>
    *         </dl>
    *       </dd>
    * 
@@ -121,7 +123,7 @@ class ServiceModel extends WlModelAbstract
    *       <dd>Whether this asset has at least one free unit.</dd>
    * 
    *       <dt>string `k_resource`</dt>
-   *       <dd>The asset key. 
+   *       <dd>The asset key. </dd>
    * 
    *       <dt>string `s_resource`</dt>
    *       <dd>The asset title.</dd>
@@ -130,7 +132,7 @@ class ServiceModel extends WlModelAbstract
    * 
    *   <dt>string|null `k_resource_layout`</dt>
    *   <dd>
-   *     The asset's layout key.  will be `null` if the asset category has no layout.
+   *     The asset's layout key.  This will be `null` if the asset category has no layout.
    *   </dd>
    * 
    *   <dt>string `s_resource_type`</dt>

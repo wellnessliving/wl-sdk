@@ -17,7 +17,7 @@ class ListModel extends WlModelAbstract
    *   <dt>string `k_reward_board`</dt>
    *   <dd>Reward board key.
    * `0` for the all-time system board.
-   * 
+   * </dd>
    * 
    *   <dt>string `s_title`</dt>
    *   <dd>Board title.</dd>

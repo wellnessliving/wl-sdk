@@ -33,7 +33,7 @@ class LeadModel extends WlModelAbstract
    *   <dd>Address.</dd>
    * 
    *   <dt>string `k_city`</dt>
-   *   <dd>City key. 
+   *   <dd>City key. </dd>
    * 
    *   <dt>string `text_postal`</dt>
    *   <dd>Postal code.</dd>
@@ -73,7 +73,7 @@ class LeadModel extends WlModelAbstract
    *   <dd>If `true`, then the field is mandatory. If `false`, then the field isn't mandatory.</dd>
    * 
    *   <dt>string `k_field`</dt>
-   *   <dd>The field key. 
+   *   <dd>The field key. </dd>
    * 
    *   <dt>string `text_field`</dt>
    *   <dd>The field title.</dd>

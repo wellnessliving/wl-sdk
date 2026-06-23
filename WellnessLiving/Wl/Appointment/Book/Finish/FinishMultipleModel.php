@@ -34,7 +34,7 @@ class FinishMultipleModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_appointment`</dt>
-   *   <dd>The appointment key. 
+   *   <dd>The appointment key. </dd>
    * </dl>
    * @post result
    * @var array[]
@@ -69,14 +69,14 @@ class FinishMultipleModel extends WlModelAbstract
    *           <dd>Solution type.</dd>
    * 
    *           <dt>string `k_resource`</dt>
-   *           <dd>New asset. 
+   *           <dd>New asset. </dd>
    * 
    *           <dt>string|null `k_staff`</dt>
-   *           <dd>New staff member. l` in a case of asset booking.</dd>
+   *           <dd>New staff member.  `null` in a case of asset booking.</dd>
    * 
    *           <dt>string|null `uid_staff`</dt>
    *           <dd>
-   *             New staff member. l` in a case of asset booking.
+   *             New staff member.  `null` in a case of asset booking.
    *           </dd>
    *         </dl>
    *       </dd>
@@ -84,7 +84,7 @@ class FinishMultipleModel extends WlModelAbstract
    *       <dt>array `a_product`</dt>
    *       <dd>
    *         Add-ons to the appointment. Specified for appointment bookings only.
-   * The old format used array keys. e the new format has each element as an array:
+   * The old format used array keys.  While the new format has each element as an array:
    *         <dl>
    *           <dt>int `i_count`</dt>
    *           <dd>The add-on buy count.</dd>
@@ -93,7 +93,7 @@ class FinishMultipleModel extends WlModelAbstract
    *           <dd>The add-on use count. If not set, then use count is equals to buy count.</dd>
    * 
    *           <dt>string `k_shop_product_option`</dt>
-   *           <dd>The add-on key. 
+   *           <dd>The add-on key. </dd>
    *         </dl>
    *       </dd>
    * 
@@ -146,7 +146,7 @@ class FinishMultipleModel extends WlModelAbstract
    *           <dd>The asset index on the layout. This is only specified if the asset category has a layout.</dd>
    * 
    *           <dt>string `k_resource`</dt>
-   *           <dd>The asset. 
+   *           <dd>The asset. </dd>
    *         </dl>
    *       </dd>
    * 
@@ -181,42 +181,48 @@ class FinishMultipleModel extends WlModelAbstract
    * 
    *       <dt>string `k_login_prize`</dt>
    *       <dd>The user's prize.
-   * 
+   * </dd>
    * 
    *       <dt>string `k_login_promotion`</dt>
    *       <dd>
    *         The user's Purchase Option.
    * Specify this if you want to use a specific Purchase Option to pay for the booking.
-   * *       </dd>
+   * 
+   *       </dd>
    * 
    *       <dt>string `k_resource`</dt>
    *       <dd>
    *         The asset booking. Specify this for separate asset bookings only.
-   * *       </dd>
+   * 
+   *       </dd>
    * 
    *       <dt>string `k_service`</dt>
    *       <dd>
    *         The appointment booking. Specify this for appointment bookings only.
-   * *       </dd>
+   * 
+   *       </dd>
    * 
    *       <dt>string `k_session_pass`</dt>
    *       <dd>
    *         The user's pass (for example, a membership or a package).
    * Specify this if you want to set the pass to use to pay for the booking.
-   * *       </dd>
+   * 
+   *       </dd>
    * 
    *       <dt>string `k_staff`</dt>
    *       <dd>
    *         The staff member conducting the appointment.
    * Specify this for appointment bookings only.
    * deprecated Use <var>uid_staff</var>. Available for legacy allow-list only.
-   * *       </dd>
+   * 
+   *       </dd>
    * 
    *       <dt>string `uid_staff`</dt>
    *       <dd>
    *         The staff member conducting the appointment.
    * Specify this for appointment bookings only.
-   * *       </dd>
+   * 
+   *       </dd>
    * 
    *       <dt>string `k_staff_date`</dt>
    *       <dd>
@@ -224,7 +230,8 @@ class FinishMultipleModel extends WlModelAbstract
    * The difference between this and <var>k_staff</var> is that this value must be set only in cases
    * when you want to add customer to an appointment that already exists.
    * Specify this for appointment bookings only.
-   * *       </dd>
+   * 
+   *       </dd>
    * 
    *       <dt>string `uid_staff_date`</dt>
    *       <dd>
@@ -232,7 +239,8 @@ class FinishMultipleModel extends WlModelAbstract
    * The difference between this and <var>uid_staff</var> is that this value must be set only in cases
    * when you want to add customer to an appointment that already exists.
    * Specify this for appointment bookings only.
-   * *       </dd>
+   * 
+   *       </dd>
    * 
    *       <dt>string `m_tip_appointment`</dt>
    *       <dd>The amount of selected tips.</dd>
@@ -242,7 +250,8 @@ class FinishMultipleModel extends WlModelAbstract
    * 
    *       <dt>string `uid`</dt>
    *       <dd>
-   *         User key. * Specify only in a case of booking for a lof of different users.
+   *         User key. 
+   * Specify only in a case of booking for a lof of different users.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -312,14 +321,14 @@ class FinishMultipleModel extends WlModelAbstract
    * 
    *   <dt>bool `is_hide`</dt>
    *   <dd>Whether this payment method is hidden.
-   *  
+   *  </dd>
    * 
    *   <dt>bool `is_success`</dt>
    *   <dd>Whether this source was successfully charged.</dd>
    * 
    *   <dt>string `m_fee`</dt>
    *   <dd>Fee amount for this payment source.
-   *   
+   *   </dd>
    * 
    *   <dt>string `m_surcharge`</dt>
    *   <dd>Surcharge amount for this payment source.</dd>
@@ -386,7 +395,7 @@ class FinishMultipleModel extends WlModelAbstract
    *   <dd>The promotion or appointment key, depending on <var>id_purchase_item</var> in this array.</dd>
    * 
    *   <dt>string `k_login_promotion`</dt>
-   *   <dd>The login promotion key. 
+   *   <dd>The login promotion key. </dd>
    * 
    *   <dt>string `text_discount_code`</dt>
    *   <dd>The discount code.</dd>

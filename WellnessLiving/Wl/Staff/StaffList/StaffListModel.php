@@ -37,10 +37,10 @@ class StaffListModel extends WlModelAbstract
    * Each element is an array with structure:
    *     <dl>
    *       <dt>string `k_service`</dt>
-   *       <dd>Service key. 
+   *       <dd>Service key. </dd>
    * 
    *       <dt>string `k_staff_pay`</dt>
-   *       <dd>Staff pay key for this service. 
+   *       <dd>Staff pay key for this service. </dd>
    *     </dl>
    *   </dd>
    * 
@@ -61,7 +61,8 @@ class StaffListModel extends WlModelAbstract
    * 
    *   <dt>string `k_staff`</dt>
    *   <dd>
-   *     The staff key. * deprecated Use `uid_staff` instead. Returned only for backward-compatible applications.
+   *     The staff key. 
+   * deprecated Use `uid_staff` instead. Returned only for backward-compatible applications.
    *   </dd>
    * 
    *   <dt>string `s_name`</dt>
@@ -90,10 +91,11 @@ class StaffListModel extends WlModelAbstract
    *     The user key.
    * Each staff member in WellnessLiving can also access the system as a client of their business.
    * This is the key used to represent the staff member as a client.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string `uid_staff`</dt>
-   *   <dd>The staff member user key. 
+   *   <dd>The staff member user key. </dd>
    * 
    *   <dt>string `url_image`</dt>
    *   <dd>Url link to user photo, or empty string, if photo is not loaded.</dd>

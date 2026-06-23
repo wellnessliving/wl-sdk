@@ -23,7 +23,7 @@ class VisitStatusModel extends WlModelAbstract
    *       <dd>`true` in a case of flat penalty type; `false` in a case of percentage penalty type.</dd>
    * 
    *       <dt>string `k_currency`</dt>
-   *       <dd>Currency >
+   *       <dd>Currency .</dd>
    * 
    *       <dt>string `m_amount`</dt>
    *       <dd>Penalty amount.</dd>
@@ -53,7 +53,10 @@ class VisitStatusModel extends WlModelAbstract
   /**
    * An array of service resources.
    *
-   * The key refers to the `k_resource_type`.  The value is an array with the following key: `k_resource`. * The array element contains a nested array with `i_index` and `i_quantity`. *
+   * The key refers to the `k_resource_type`. 
+   * The value is an array with the following key: `k_resource`. .
+   * The array element contains a nested array with `i_index` and `i_quantity`. .
+   *
    * This will be empty if not set yet.
    *
    * @get result
@@ -70,10 +73,10 @@ class VisitStatusModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_resource`</dt>
-   *   <dd>Resource >
+   *   <dd>Resource .</dd>
    * 
    *   <dt>string `k_resource_type`</dt>
-   *   <dd>Resource type >
+   *   <dd>Resource type .</dd>
    * 
    *   <dt>int `i_index`</dt>
    *   <dd>Index of the resource on the layout.</dd>
@@ -302,7 +305,7 @@ class VisitStatusModel extends WlModelAbstract
    * The time zone key.
    *
    * `null` if not set then use default timezone client.
-   * 
+   *
    * @get get
    * @var null|string
    */

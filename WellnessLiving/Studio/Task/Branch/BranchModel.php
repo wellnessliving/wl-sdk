@@ -37,6 +37,7 @@ class BranchModel extends WlModelAbstract
    *
    * @delete get
    * @var int
+   * @see BranchDeleteModeSid
    */
   public $id_build_mode = 1;
 

@@ -66,7 +66,7 @@ class ClassListModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string[] `a_class_tab`</dt>
-   *   <dd>Keys of class tab. 
+   *   <dd>Keys of class tab. </dd>
    * 
    *   <dt>string[] `a_image`</dt>
    *   <dd>The class image. Empty array if there is no image.</dd>
@@ -77,20 +77,22 @@ class ClassListModel extends WlModelAbstract
    *   <dt>string[] `a_staff`</dt>
    *   <dd>
    *     The list of staff keys for the staff member conducting the session.
-   * For legacy third-party apps listed in {@link Wl\Schedule\ClassList\ClassListApi::APPS_USE_OLD_K_STAFF},
-   * contains taff` for backward compatibility.
+   * For legacy third-party apps listed in {@link \Wl\Schedule\ClassList\ClassListApi::APPS_USE_OLD_K_STAFF},
+   * contains  `k_staff` for backward compatibility.
    * Empty for all other applications. Use `a_staff_uid` instead.
    *   </dd>
    * 
    *   <dt>string[] `a_staff_uid`</dt>
    *   <dd>
    *     The list of staff user keys for the staff member conducting the session.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string[] `a_virtual_location`</dt>
    *   <dd>
    *     The list of virtual locations keys. Each value is a location key.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string `dt_date`</dt>
    *   <dd>The date/time of the session start in UTC.</dd>
@@ -145,13 +147,13 @@ class ClassListModel extends WlModelAbstract
    *   <dd>This will be `true` if user is only on the wait-list. Otherwise, this will be `false`.</dd>
    * 
    *   <dt>string `k_class`</dt>
-   *   <dd>The class key. 
+   *   <dd>The class key. </dd>
    * 
    *   <dt>string `k_class_period`</dt>
-   *   <dd>The class period key. 
+   *   <dd>The class period key. </dd>
    * 
    *   <dt>string `k_location`</dt>
-   *   <dd>The key of the session's location. 
+   *   <dd>The key of the session's location. </dd>
    * 
    *   <dt>string `s_title`</dt>
    *   <dd>The title of the session.</dd>
@@ -174,10 +176,10 @@ class ClassListModel extends WlModelAbstract
    * Empty array means no filtering.
    *
    * <dl>
-   *   <dt>string `tl_start`</dt>
+   *   <dt>int `tl_start`</dt>
    *   <dd>Time when the session starts. Example: value `'06:00'`.</dd>
    * 
-   *   <dt>string `tl_end`</dt>
+   *   <dt>int `tl_end`</dt>
    *   <dd>Time when the session ends. Example: value `'14:00'`.</dd>
    * </dl>
    * @get get
@@ -195,7 +197,7 @@ class ClassListModel extends WlModelAbstract
 
   /**
    * The list end date in UTC and in MySQL format.
-   * 
+   *
    * @get get
    * @var string
    */

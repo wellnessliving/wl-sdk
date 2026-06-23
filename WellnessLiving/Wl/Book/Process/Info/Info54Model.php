@@ -77,7 +77,7 @@ class Info54Model extends WlModelAbstract
    *   <dt>int `id_duration`</dt>
    *   <dd>
    *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   *
+   * Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
    *   </dd>
    * 
    *   <dt>int `id_period`</dt>
@@ -99,7 +99,7 @@ class Info54Model extends WlModelAbstract
    *   <dd>Order number of the asset (maybe from 1 to asset quantity).</dd>
    * 
    *   <dt>string `k_resource`</dt>
-   *   <dd>The key of asset. 
+   *   <dd>The key of asset. </dd>
    * </dl>
    * @post post
    * @var array[]
@@ -145,10 +145,10 @@ class Info54Model extends WlModelAbstract
    *   <dd>Allow clients to join the wait list unpaid.</dd>
    * 
    *   <dt>string `k_class_period`</dt>
-   *   <dd>The key of the session. 
+   *   <dd>The key of the session. </dd>
    * 
    *   <dt>string `k_location`</dt>
-   *   <dd>Location key. 
+   *   <dd>Location key. </dd>
    * 
    *   <dt>string `m_price`</dt>
    *   <dd>Price of the session.</dd>
@@ -163,7 +163,8 @@ class Info54Model extends WlModelAbstract
    *   <dt>string `text_duration`</dt>
    *   <dd>
    *     String representation of session duration.
-   * *   </dd>
+   * 
+   *   </dd>
    * </dl>
    * @get result
    * @var array[]
@@ -192,7 +193,8 @@ class Info54Model extends WlModelAbstract
   /**
    * The selected sessions.
    *
-   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
+   * Keys are class period keys. 
+   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
    * @var string[]
@@ -202,7 +204,8 @@ class Info54Model extends WlModelAbstract
   /**
    * Selected sessions on the waiting list without pay.
    *
-   * Keys are class period keys.  Values are index arrays of dates/time strings when the session occurred, in MySQL format and in GMT.
+   * Keys are class period keys. 
+   * Values are index arrays of dates/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
    * @var string[]
@@ -235,7 +238,7 @@ class Info54Model extends WlModelAbstract
    *   <dd>The staff member's name.</dd>
    * 
    *   <dt>string `uid_staff`</dt>
-   *   <dd>UID of the staff member. 
+   *   <dd>UID of the staff member. </dd>
    * 
    *   <dt>string `uid`</dt>
    *   <dd>Alias of `uid_staff` for backward compatibility.</dd>
@@ -260,14 +263,17 @@ class Info54Model extends WlModelAbstract
    *   <dt>bool `is_free`</dt>
    *   <dd>`true` if the visit is free; `false` otherwise.</dd>
    * 
+   *   <dt>bool `is_waitlist`</dt>
+   *   <dd>`true` whether the booked slot was waitlisted; `false` otherwise.</dd>
+   * 
    *   <dt>string `k_login_promotion`</dt>
-   *   <dd>Applied user's purchase option. 
+   *   <dd>Applied user's purchase option. </dd>
    * 
    *   <dt>string `k_promotion`</dt>
-   *   <dd>Purchase option. 
+   *   <dd>Purchase option. </dd>
    * 
    *   <dt>string `k_session_pass`</dt>
-   *   <dd>Applied session pass. 
+   *   <dd>Applied session pass. </dd>
    * 
    *   <dt>string `text_promotion`</dt>
    *   <dd>Purchase option title.</dd>
@@ -671,6 +677,7 @@ class Info54Model extends WlModelAbstract
   /**
    * `true` if class capacity should be shown,
    * `false` to use business setting. 
+   *
    * @get get
    * @var bool
    */

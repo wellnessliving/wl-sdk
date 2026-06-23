@@ -18,7 +18,7 @@ class MemberValidate63Model extends WlModelAbstract
    *   <dd>The general field ID. One of {@link WlFieldGeneralSid} constants.</dd>
    * 
    *   <dt>string `k_field`</dt>
-   *   <dd>Profile field key. 
+   *   <dd>Profile field key. </dd>
    * 
    *   <dt>string `text_field_title`</dt>
    *   <dd>Human-readable field title describing what value is missing.</dd>
@@ -36,7 +36,7 @@ class MemberValidate63Model extends WlModelAbstract
    *   <dd>The general field ID. One of {@link WlFieldGeneralSid} constants.</dd>
    * 
    *   <dt>string `k_field`</dt>
-   *   <dd>Profile field key. 
+   *   <dd>Profile field key. </dd>
    * 
    *   <dt>string `text_field_title`</dt>
    *   <dd>Human-readable field title describing what value is missing.</dd>
@@ -54,7 +54,7 @@ class MemberValidate63Model extends WlModelAbstract
    *   <dd>The general field ID. One of {@link WlFieldGeneralSid} constants.</dd>
    * 
    *   <dt>string `k_field`</dt>
-   *   <dd>Profile field key. 
+   *   <dd>Profile field key. </dd>
    * 
    *   <dt>string `text_field_title`</dt>
    *   <dd>Human-readable field title describing what value is missing.</dd>

@@ -60,13 +60,13 @@ class VideoListModel extends WlModelAbstract
    *     List of staff members associated with the video.
    *     <dl>
    *       <dt>string `uid_staff`</dt>
-   *       <dd>UID of the staff. 
+   *       <dd>UID of the staff. </dd>
    * 
    *       <dt>string `text_name`</dt>
    *       <dd>Full name of the staff.</dd>
    * 
    *       <dt>string `k_staff`</dt>
-   *       <dd>Staff key. Only for legacy apps. 
+   *       <dd>Staff key. Only for legacy apps. </dd>
    *     </dl>
    *   </dd>
    * 
@@ -75,7 +75,7 @@ class VideoListModel extends WlModelAbstract
    *     List of video categories.
    *     <dl>
    *       <dt>string `k_video_category`</dt>
-   *       <dd>Video category key. 
+   *       <dd>Video category key. </dd>
    * 
    *       <dt>string `text_title`</dt>
    *       <dd>Category name.</dd>
@@ -87,7 +87,7 @@ class VideoListModel extends WlModelAbstract
    *     List of video tags.
    *     <dl>
    *       <dt>string `k_video_tag`</dt>
-   *       <dd>Video tag key. 
+   *       <dd>Video tag key. </dd>
    * 
    *       <dt>string `text_title`</dt>
    *       <dd>Tag name.</dd>
@@ -137,17 +137,17 @@ class VideoListModel extends WlModelAbstract
    *   <dd>`true` if a difficulty level is assigned to this video; `false` otherwise.</dd>
    * 
    *   <dt>string `k_business`</dt>
-   *   <dd>Business key. 
+   *   <dd>Business key. </dd>
    * 
    *   <dt>string `k_video`</dt>
-   *   <dd>Video key. 
+   *   <dd>Video key. </dd>
    * 
    *   <dt>string `k_video_binary`</dt>
-   *   <dd>Binary video key. 
+   *   <dd>Binary video key. </dd>
    * 
    *   <dt>string|null `k_video_level`</dt>
    *   <dd>Video level key. `null` if no level assigned.
-   * 
+   * </dd>
    * 
    *   <dt>bool `show_calorie`</dt>
    *   <dd>`true` if calorie count should be displayed; `false` otherwise.</dd>
@@ -170,7 +170,7 @@ class VideoListModel extends WlModelAbstract
    *   <dt>string|null `url_video`</dt>
    *   <dd>
    *     URL of the video file (HLS stream). `null` if not available.
-   *
+   * See {@link VideoElementModel::$url_video} for details about the video URL.
    *   </dd>
    * </dl>
    * @get result
@@ -195,9 +195,9 @@ class VideoListModel extends WlModelAbstract
   public $a_order = [];
 
   /**
-   * Pagination data. Empty array if pagination is not active (total video count is within
-   * Otherwise contains a list of page entries as
-   * Each element: 
+   * Pagination data.
+   *
+   * Otherwise contains a list of page entries as: 
    *
    * <dl>
    *   <dt>bool `is-next`</dt>
@@ -230,7 +230,7 @@ class VideoListModel extends WlModelAbstract
 
   /**
    * A list of staff members who appear in videos.
-   * 
+   *
    * @get get
    * @var string[]
    * @deprecated This property will be removed in the future. Use {@link VideoListModel::$a_staff_uid} instead.

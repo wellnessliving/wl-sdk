@@ -46,7 +46,7 @@ class PurchaseListModel extends WlModelAbstract
    *   <dd>If `true`, then the purchase item is a package, `false` otherwise.</dd>
    * 
    *   <dt>string `k_appointment`</dt>
-   *   <dd>Appointment key. 
+   *   <dd>Appointment key. </dd>
    * 
    *   <dt>string `k_code`</dt>
    *   <dd>
@@ -86,20 +86,21 @@ class PurchaseListModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string `k_service`</dt>
-   *   <dd>Service key. 
+   *   <dd>Service key. </dd>
    * 
    *   <dt>string `k_session_pass`</dt>
    *   <dd>
    *     In certain cases a session can be canceled and makeup sessions can be granted to a client in lieu of
    * other compensation. This is the key of one of the makeup sessions used to attend an event. This is also
    * present for a repeat purchase of an event.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string `s_title`</dt>
    *   <dd>The name of the purchase item.</dd>
    * 
    *   <dt>string `uid`</dt>
-   *   <dd>The ID of the purchase owner. 
+   *   <dd>The ID of the purchase owner. </dd>
    * </dl>
    * @get result
    * @var array[]

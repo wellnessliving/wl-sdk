@@ -4,6 +4,8 @@ namespace WellnessLiving\Wl\Catalog\Payment;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
+use WellnessLiving\Wl\Insurance\Catalog\ProgramListModel;
+use WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel;
 use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlSaleSid;
@@ -23,11 +25,11 @@ class PaymentModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `uid_staff`</dt>
-   *   <dd>The staff user ID. 
+   *   <dd>The staff user ID. </dd>
    * 
    *   <dt>string `k_staff`</dt>
    *   <dd><b>Deprecated!</b>
-   *   Staff key. 
+   *   Staff key. </dd>
    * 
    *   <dt>string `k_staff_pay`</dt>
    *   <dd>The payment schema key.</dd>
@@ -75,12 +77,13 @@ class PaymentModel extends WlModelAbstract
    *       <dd>
    *         "Wellness Program" fields.
    * <var>k_wellness_program</var> must be passed along with this array. See the description below.
-   *
+   * 
+   * It's recommended to validate the fields using the POST method of the {@link EnrollmentFieldListModel} model.
    *         <dl>
    *           <dt>array `a_account`</dt>
    *           <dd>
    *             The list of reimbursement account field values.
-   * Corresponds to the `a_
+   * Corresponds to the `a_account` list in {@link EnrollmentFieldListModel::$a_field_list}.
    * Each element:
    *             <dl>
    *               <dt>string `k_field`</dt>
@@ -94,7 +97,7 @@ class PaymentModel extends WlModelAbstract
    *           <dt>array `a_field`</dt>
    *           <dd>
    *             The list of wellness program field values.
-   * Corresponds to the `a_
+   * Corresponds to the `a_field` list in {@link EnrollmentFieldListModel::$a_field_list}.
    * Each element:
    *             <dl>
    *               <dt>string `k_field`</dt>
@@ -152,7 +155,8 @@ class PaymentModel extends WlModelAbstract
    *       <dd>
    *         <b>Deprecated!</b>
    *  The staff member key, used only for appointment tips.
-   *  *       </dd>
+   *  
+   *       </dd>
    * 
    *       <dt>string `k_wellness_program`</dt>
    *       <dd>
@@ -160,8 +164,8 @@ class PaymentModel extends WlModelAbstract
    * <var>a_wellness_program</var> array must be passed along with the key. See the array description above.
    * <p>Use the following models to work with this type of promotion:</p>
    * <ul>
-   *   <li></li>
-   *   <li></li>
+   *   <li>{@link ProgramListModel} to obtain list of active programs.</li>
+   *   <li>{@link EnrollmentFieldListModel} to get and validate fields for a given program.</li>
    * </ul>
    *       </dd>
    * 
@@ -189,6 +193,9 @@ class PaymentModel extends WlModelAbstract
    * 
    *       <dt>string `uid_staff`</dt>
    *       <dd>The staff member user ID, used only for appointment tips.</dd>
+   * 
+   *       <dt>string `uid_to`</dt>
+   *       <dd>Specifies the recipient of a transfer Purchase Option.</dd>
    *     </dl>
    *   </dd>
    * 
@@ -221,6 +228,9 @@ class PaymentModel extends WlModelAbstract
    * 
    *   <dt>string `m_price_custom`</dt>
    *   <dd>The custom price (optional).</dd>
+   * 
+   *   <dt>string `s_signature`</dt>
+   *   <dd>The client signature, used for items that require a signed contract.</dd>
    * </dl>
    * @post post
    * @var array[]
@@ -242,9 +252,7 @@ class PaymentModel extends WlModelAbstract
    *         The payment address:
    *         <dl>
    *           <dt>bool `is_new`</dt>
-   *           <dd>
-   *             Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
-   *           </dd>
+   *           <dd>Set this value to `1` to add a new payment address or to `0` to use a saved payment address.</dd>
    * 
    *           <dt>string `k_geo_country`</dt>
    *           <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
@@ -285,7 +293,7 @@ class PaymentModel extends WlModelAbstract
    *       <dd>The credit card expiration year. Specify this to add a new card.</dd>
    * 
    *       <dt>bool `is_new`</dt>
-   *       <dd>Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.</dd>
+   *       <dd>Specify `1` to add a new card, or `0` to use a saved card.</dd>
    * 
    *       <dt>string `k_pay_bank`</dt>
    *       <dd>The key of the credit card. Specify this to use saved card.</dd>
@@ -302,10 +310,10 @@ class PaymentModel extends WlModelAbstract
    *   <dd>The amount of money to withdraw with this payment source.</dd>
    * 
    *   <dt>bool `is_hide`</dt>
-   *   <dd>Whether payment method should be saved to user's account.</dd>
+   *   <dd>Determines whether this payment method is hidden.</dd>
    * 
    *   <dt>bool `is_save`</dt>
-   *   <dd>Determines whether this payment method is hidden.</dd>
+   *   <dd>Whether payment method should be saved to user's account.</dd>
    * 
    *   <dt>bool `is_success`</dt>
    *   <dd>Identifies whether this source was successfully charged.</dd>
@@ -326,7 +334,8 @@ class PaymentModel extends WlModelAbstract
 
   /**
    * The list of quiz response keys.
-   * Keys refer to quiz keys.  And values refer to responses.
+   * Keys refer to quiz keys. 
+   * And values refer to responses. 
    *
    * @post post
    * @var string[]

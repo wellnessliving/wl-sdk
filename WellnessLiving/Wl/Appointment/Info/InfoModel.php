@@ -27,7 +27,7 @@ class InfoModel extends WlModelAbstract
    *   <dd>`true` if employees (staff) can view this appointment, `false` otherwise.</dd>
    * 
    *   <dt>string `k_appointment`</dt>
-   *   <dd>Next appointment key. 
+   *   <dd>Next appointment key. </dd>
    * 
    *   <dt>string `k_visit`</dt>
    *   <dd>Visit key of next appointment.</dd>
@@ -60,7 +60,7 @@ class InfoModel extends WlModelAbstract
    *   <dd>`true` if employees (staff) can view this appointment, `false` otherwise.</dd>
    * 
    *   <dt>string `k_appointment`</dt>
-   *   <dd>Previous appointment key. 
+   *   <dd>Previous appointment key. </dd>
    * 
    *   <dt>string `k_visit`</dt>
    *   <dd>Visit key of previous appointment.</dd>
@@ -117,10 +117,10 @@ class InfoModel extends WlModelAbstract
    *   <dd>`true` if the asset was removed from the booking, `false` otherwise.</dd>
    * 
    *   <dt>string `k_resource`</dt>
-   *   <dd>Asset key. 
+   *   <dd>Asset key. </dd>
    * 
    *   <dt>string `k_resource_type`</dt>
-   *   <dd>Asset category key. 
+   *   <dd>Asset category key. </dd>
    * 
    *   <dt>string `s_resource`</dt>
    *   <dd>Asset name.</dd>
@@ -145,7 +145,7 @@ class InfoModel extends WlModelAbstract
    *     List of purchased product keys. Empty if no products were purchased. Each element:
    *     <dl>
    *       <dt>string `k_login_product`</dt>
-   *       <dd>Purchased product key. 
+   *       <dd>Purchased product key. </dd>
    *     </dl>
    *   </dd>
    * 
@@ -156,7 +156,7 @@ class InfoModel extends WlModelAbstract
    *   <dd>Primary key of add-on.</dd>
    * 
    *   <dt>string `k_shop_product_option`</dt>
-   *   <dd>Add-on option. 
+   *   <dd>Add-on option. </dd>
    * 
    *   <dt>string `m_amount`</dt>
    *   <dd>Price that it adds to an appointment.</dd>

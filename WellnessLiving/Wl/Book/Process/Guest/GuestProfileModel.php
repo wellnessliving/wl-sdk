@@ -52,9 +52,9 @@ class GuestProfileModel extends WlModelAbstract
    * Key of service to book.
    * Depending on {@link GuestProfileModel::$id_service} value:,
    * <ul>
-   *     <li>{@link ServiceSid::CLASSES} - class key. 
-   *     <li>{@link ServiceSid::APPOINTMENT} - service key.
-   *     <li>{@link ServiceSid::BOOKABLE_ASSET} - resource key.
+   *     <li>{@link ServiceSid::CLASSES} - class key. </li>
+   *     <li>{@link ServiceSid::APPOINTMENT} - service key.</li>
+   *     <li>{@link ServiceSid::BOOKABLE_ASSET} - resource key.</li>
    * </ul>
    *
    * @get get

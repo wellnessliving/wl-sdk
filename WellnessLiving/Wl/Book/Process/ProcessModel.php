@@ -33,7 +33,7 @@ class ProcessModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>int `id_book_process`</dt>
-   *   <dd>The step ID.</dd>
+   *   <dd>The step ID. One of the {@link ProcessSpaSid} constants.</dd>
    * 
    *   <dt>bool `is_current`</dt>
    *   <dd><tt>true</tt> - this item is current.
@@ -89,7 +89,7 @@ class ProcessModel extends WlModelAbstract
    *   <dt>int `id_duration`</dt>
    *   <dd>
    *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   *
+   * Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
    *   </dd>
    * 
    *   <dt>int `id_period`</dt>

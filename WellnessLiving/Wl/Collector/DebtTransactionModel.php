@@ -29,7 +29,7 @@ class DebtTransactionModel extends WlModelAbstract
    *   <dd>
    *     Defines whether the payment was performed via a third party service.
    * `true` if the payment was performed via a third party service and this transaction is
-   * responsible for an account credit transaction for that payment.
+   * responsible for an account credit transaction for that payment. See {@link DebtPayModel}.
    * `false` if the payment was performed within the Wellnessliving system.
    *   </dd>
    * 

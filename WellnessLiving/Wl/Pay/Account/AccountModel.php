@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Pay\Account;
 
+use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -17,19 +18,20 @@ class AccountModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>int `id_currency`</dt>
-   *   <dd>Currency ID.</dd>
+   *   <dd>Currency ID. One of {@link CurrencySid} constant.</dd>
    * 
    *   <dt>string `k_currency`</dt>
-   *   <dd>Key of account currency. 
+   *   <dd>Key of account currency. </dd>
    * 
    *   <dt>string|null `k_pay_account`</dt>
    *   <dd>
-   *     ID of payment account. null</tt> if this is a user account based on system payment method.
+   *     ID of payment account.  <tt>null</tt> if this is a user account based on system payment method.
    *   </dd>
    * 
    *   <dt>string|null `k_pay_method`</dt>
    *   <dd>
-   *     ID of custom payment method. <tt>null</tt> if this is a user account based on system payment method. *   </dd>
+   *     ID of custom payment method. <tt>null</tt> if this is a user account based on system payment method. 
+   *   </dd>
    * 
    *   <dt>string `m_rest`</dt>
    *   <dd>Account balance.</dd>
@@ -52,10 +54,10 @@ class AccountModel extends WlModelAbstract
    *   <dd>`true` if the account is allowed to have a negative balance, `false` otherwise.</dd>
    * 
    *   <dt>int `id_currency`</dt>
-   *   <dd>Currency ID.</dd>
+   *   <dd>Currency ID. One of {@link CurrencySid} constants.</dd>
    * 
    *   <dt>string `k_currency`</dt>
-   *   <dd>Currency key. 
+   *   <dd>Currency key. </dd>
    * 
    *   <dt>string|null `k_pay_account`</dt>
    *   <dd>Payment account key. `null` for accounts not yet created.</dd>
@@ -63,7 +65,8 @@ class AccountModel extends WlModelAbstract
    *   <dt>string|null `k_pay_method`</dt>
    *   <dd>
    *     Custom payment method key. `null` for accounts based on the system payment method.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string `m_rest`</dt>
    *   <dd>Account balance. Always `'0.00'` for accounts not yet created.</dd>

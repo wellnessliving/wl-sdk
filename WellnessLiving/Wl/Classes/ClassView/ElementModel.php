@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Classes\ClassView;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Business\Config\BusinessConfigModel;
 use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
 
 /**
@@ -27,7 +28,7 @@ class ElementModel extends WlModelAbstract
    *           <dd>A count of the periods specified in <var>id_repeat</var>.</dd>
    * 
    *           <dt>int `id_repeat`</dt>
-   *           <dd>The measuring unit of <var>i_repeat</var>.
+   *           <dd>The measuring unit int <var>i_repeat</var>.
    * One of {@link ADurationSid} constants.</dd>
    *         </dl>
    *       </dd>
@@ -75,7 +76,7 @@ class ElementModel extends WlModelAbstract
    *   <dt>array|null `a_config`</dt>
    *   <dd>
    *     Class-specific business policies overriding the business defaults.
-   *
+   * Has the same structure as {@link BusinessConfigModel::$a_business_policy}.
    * `null` when the class uses the default business policy without overrides.
    *     <dl>
    *       <dt>string[] `a_family_relation`</dt>
@@ -83,7 +84,8 @@ class ElementModel extends WlModelAbstract
    *         List of allowed relation types specific to a given business.
    *  Key is ID. One of {@link WlFamilyRelationSid} constant.
    *  Value is SID.
-   *  *       </dd>
+   *  
+   *       </dd>
    * 
    *       <dt>int[] `a_family_relation_login_allow`</dt>
    *       <dd>
@@ -96,9 +98,10 @@ class ElementModel extends WlModelAbstract
    *   <dt>array[] `a_search_tag`</dt>
    *   <dd>
    *     Tags for quick search.
-   * *     <dl>
+   * 
+   *     <dl>
    *       <dt>string `k_search_tag`</dt>
-   *       <dd>Search tag key. 
+   *       <dd>Search tag key. </dd>
    * 
    *       <dt>string `text_title`</dt>
    *       <dd>Name of the tag.</dd>
@@ -108,7 +111,8 @@ class ElementModel extends WlModelAbstract
    *   <dt>array `a_visits_required`</dt>
    *   <dd>
    *     Information about visits that should be reviewed prior to visiting this class/event.
-   * *     <dl>
+   * 
+   *     <dl>
    *       <dt>int `i_count`</dt>
    *       <dd>Number of visits.</dd>
    * 

@@ -21,7 +21,7 @@ class CategoryModel extends WlModelAbstract
    *   <dd>The display order for the category.</dd>
    * 
    *   <dt>string `k_shop_category`</dt>
-   *   <dd>The shop category key. 
+   *   <dd>The shop category key. </dd>
    * 
    *   <dt>string `text_description`</dt>
    *   <dd>The category description.</dd>

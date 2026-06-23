@@ -30,9 +30,7 @@ class ChargeModel extends WlModelAbstract
    *         The payment address:
    *         <dl>
    *           <dt>bool `is_new`</dt>
-   *           <dd>
-   *             Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
-   *           </dd>
+   *           <dd>Set this value to `1` to add a new payment address or to `0` to use a saved payment address.</dd>
    * 
    *           <dt>string `k_geo_country`</dt>
    *           <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
@@ -73,7 +71,7 @@ class ChargeModel extends WlModelAbstract
    *       <dd>The credit card expiration year. Specify this to add a new card.</dd>
    * 
    *       <dt>bool `is_new`</dt>
-   *       <dd>Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.</dd>
+   *       <dd>Specify `1` to add a new card, or `0` to use a saved card.</dd>
    * 
    *       <dt>string `k_pay_bank`</dt>
    *       <dd>The key of the credit card. Specify this to use saved card.</dd>
@@ -90,10 +88,10 @@ class ChargeModel extends WlModelAbstract
    *   <dd>The amount of money to withdraw with this payment source.</dd>
    * 
    *   <dt>bool `is_hide`</dt>
-   *   <dd>Whether payment method should be saved to user's account.</dd>
+   *   <dd>Determines whether this payment method is hidden.</dd>
    * 
    *   <dt>bool `is_save`</dt>
-   *   <dd>Determines whether this payment method is hidden.</dd>
+   *   <dd>Whether payment method should be saved to user's account.</dd>
    * 
    *   <dt>bool `is_success`</dt>
    *   <dd>Identifies whether this source was successfully charged.</dd>

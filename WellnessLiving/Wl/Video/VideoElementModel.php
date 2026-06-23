@@ -21,7 +21,7 @@ class VideoElementModel extends WlModelAbstract
 
   /**
    * The keys of the user staff members who are on the video.
-   * 
+   *
    * @get result
    * @post post
    * @var string[]
@@ -34,13 +34,13 @@ class VideoElementModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_staff`</dt>
-   *   <dd><b>Deprecated</b> The staff member key. 
+   *   <dd><b>Deprecated</b> The staff member key. </dd>
    * 
    *   <dt>string `text_name`</dt>
    *   <dd>The staff member's full name.</dd>
    * 
    *   <dt>string `uid_staff`</dt>
-   *   <dd>The staff user ID. 
+   *   <dd>The staff user ID. </dd>
    * </dl>
    * @get result
    * @var array
@@ -161,7 +161,6 @@ class VideoElementModel extends WlModelAbstract
    *
    * If the file will be uploaded in parts, its size will be set.
    *
-   * 
    * @post post
    * @var int
    */
@@ -288,7 +287,9 @@ class VideoElementModel extends WlModelAbstract
    *
    * *Be careful, when use this property in code, use {@link VideoElementModel::$k_video_binary} instead.*
    * In this property can be key in next format:
-   * * [Deprecated] String key in old format.  * String key in new format. 
+   * * [Deprecated] String key in old format. 
+   * * String key in new format. 
+   *
    * @delete get
    * @get get
    * @post get,result
@@ -336,7 +337,7 @@ class VideoElementModel extends WlModelAbstract
    * If the file will be uploaded in parts, upload ID will be set.
    *
    * In this case, the file will not be uploaded to this API.
-   * 
+   *
    * @post post
    * @var string
    */

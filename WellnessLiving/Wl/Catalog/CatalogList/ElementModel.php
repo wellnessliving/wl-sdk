@@ -8,6 +8,7 @@ use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Catalog\PurchaseOptionViewSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\Service\ServiceSid;
 use WellnessLiving\Wl\Tax\WlTaxSid;
 use WellnessLiving\Wl\WlProgramSid;
 use WellnessLiving\Wl\WlSaleSid;
@@ -57,12 +58,12 @@ class ElementModel extends WlModelAbstract
    *   <dt>int[] `a_service_access`</dt>
    *   <dd>
    *     Access to services for a purchase option.
-   * Keys are one of the {@link Wl\Service\ServiceSid} constants, values are one of the {@link AFlagSid}
+   * Keys are one of the {@link ServiceSid} constants, values are one of the {@link AFlagSid}
    * constants. Set only for relevant purchase option service category.
-   *
-   * It can be set only for classes and events.
-   * It can be set only for classes and events.
-   *
+   * {@link AFlagSid::ON} access to some services.
+   * {@link AFlagSid::OFF} no access to services. It can be set only for classes and events.
+   * {@link AFlagSid::ALL} access to all services. It can be set only for classes and events.
+   * For purchase options with appointments and assets service category status is always {@link AFlagSid::ON}.
    *   </dd>
    * 
    *   <dt>bool `is_renew_public`</dt>
@@ -98,10 +99,10 @@ class ElementModel extends WlModelAbstract
    *     This applies to enrollment/event items. Staff list for class periods. Each element contains:
    *     <dl>
    *       <dt>string `k_staff`</dt>
-   *       <dd>@deprecated Legacy staff key. ecated, use `uid_staff`.</dd>
+   *       <dd>@deprecated Legacy staff key.  Deprecated, use `uid_staff`.</dd>
    * 
    *       <dt>string `uid_staff`</dt>
-   *       <dd>Staff user key. 
+   *       <dd>Staff user key. </dd>
    * 
    *       <dt>string `text_family`</dt>
    *       <dd>Staff last name.</dd>
@@ -231,7 +232,8 @@ class ElementModel extends WlModelAbstract
    * 
    *   <dt>string `k_pay_installment_template`</dt>
    *   <dd>
-   *     The key of the installment plan template. *   </dd>
+   *     The key of the installment plan template. 
+   *   </dd>
    * 
    *   <dt>string `m_amount`</dt>
    *   <dd>The amount of the installment plan.</dd>
@@ -252,7 +254,8 @@ class ElementModel extends WlModelAbstract
    *   <dd>
    *     Contains additional data for the sale item.
    * For Package, it contains also the following key:
-   *
+   * 
+   * The same structure as {@link ElementModel::$a_data} has.
    *     <dl>
    *       <dt>bool `is_price_breakdown`</dt>
    *       <dd>
@@ -316,7 +319,8 @@ class ElementModel extends WlModelAbstract
    *   <dt>array[] `a_tax`</dt>
    *   <dd>
    *     Contains information about taxes.
-   * *     <dl>
+   * 
+   *     <dl>
    *       <dt>float `f_tax`</dt>
    *       <dd>The calculated tax amount applied by this rule.</dd>
    * 
@@ -333,7 +337,7 @@ class ElementModel extends WlModelAbstract
    *       <dd>The tax type. One of {@link WlTaxSid} constants.</dd>
    * 
    *       <dt>string `k_tax`</dt>
-   *       <dd>The tax key. 
+   *       <dd>The tax key. </dd>
    * 
    *       <dt>string `s_tax`</dt>
    *       <dd>The tax name.</dd>
@@ -341,7 +345,7 @@ class ElementModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>int `id_purchase_option_view`</dt>
-   *   <dd>The Purchase Option view type.</dd>
+   *   <dd>The Purchase Option view type. One of the {@link PurchaseOptionViewSid} constants.</dd>
    * 
    *   <dt>string `m_discount_code`</dt>
    *   <dd>The discount code amount.</dd>
@@ -379,7 +383,8 @@ class ElementModel extends WlModelAbstract
    * 
    *   <dt>string `k_shop_product_option`</dt>
    *   <dd>
-   *     The product option or <tt>0</tt> for any other cases. *   </dd>
+   *     The product option or <tt>0</tt> for any other cases. 
+   *   </dd>
    * </dl>
    * @get get
    * @var array[]
@@ -407,7 +412,7 @@ class ElementModel extends WlModelAbstract
    *   <dd>The tax type. One of {@link WlTaxSid} constants.</dd>
    * 
    *   <dt>string `k_tax`</dt>
-   *   <dd>The tax key. 
+   *   <dd>The tax key. </dd>
    * 
    *   <dt>string `s_tax`</dt>
    *   <dd>The tax name.</dd>

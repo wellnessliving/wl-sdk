@@ -59,7 +59,6 @@ class ReceptionAuthorizeModel extends WlModelAbstract
   /**
    * Key of the Check In application.
    *
-   * 
    * @post get
    * @var string
    */

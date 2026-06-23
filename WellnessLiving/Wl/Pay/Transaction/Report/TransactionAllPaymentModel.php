@@ -37,7 +37,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
    *       <dd>Payment method ID. One of {@link WlPayMethodSid} constants.</dd>
    * 
    *       <dt>string `k_pay_transaction`</dt>
-   *       <dd>Pay transaction key. 
+   *       <dd>Pay transaction key. </dd>
    * 
    *       <dt>string `m_amount`</dt>
    *       <dd>Amount paid.</dd>
@@ -54,7 +54,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
    *   <dd>Start date and time of the purchase in UTC.</dd>
    * 
    *   <dt>string `k_purchase`</dt>
-   *   <dd>Purchase key. 
+   *   <dd>Purchase key. </dd>
    * 
    *   <dt>string `m_net_sale`</dt>
    *   <dd>Net sales amount.</dd>
@@ -72,7 +72,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
    *   <dd>Full name of the client.</dd>
    * 
    *   <dt>string `o_location.k_location`</dt>
-   *   <dd>Location key. 
+   *   <dd>Location key. </dd>
    * 
    *   <dt>string `s_batch_number`</dt>
    *   <dd>Batch number of the first transaction in the row.</dd>

@@ -22,14 +22,14 @@ class ClassViewModel extends WlModelAbstract
    *   <dt>int `i_index`</dt>
    *   <dd>Asset index.</dd>
    * 
-   *   <dt>string `id_category`</dt>
+   *   <dt>int `id_category`</dt>
    *   <dd>Type of the asset: Asset or Off-Site Location.</dd>
    * 
    *   <dt>string `k_city`</dt>
    *   <dd>City of the asset, if this is Off-Site Location.</dd>
    * 
    *   <dt>string `k_resource`</dt>
-   *   <dd>Resource key. 
+   *   <dd>Resource key. </dd>
    * 
    *   <dt>string `text_address`</dt>
    *   <dd>Address of the asset, if this is Off-Site Location.</dd>
@@ -62,7 +62,9 @@ class ClassViewModel extends WlModelAbstract
    * <dl>
    *   <dt>string[] `a_class_tab`</dt>
    *   <dd>
-   *     Keys are class key. *   Values are class tab key. *   </dd>
+   *     Keys are class key. 
+   *   Values are class tab key. 
+   *   </dd>
    * 
    *   <dt>array `a_image`</dt>
    *   <dd>
@@ -87,7 +89,7 @@ class ClassViewModel extends WlModelAbstract
    *     List of search tags.
    *     <dl>
    *       <dt>string `k_search_tag`</dt>
-   *       <dd>Search tag key. 
+   *       <dd>Search tag key. </dd>
    * 
    *       <dt>string `text_title`</dt>
    *       <dd>Search tag name.</dd>
@@ -140,7 +142,7 @@ class ClassViewModel extends WlModelAbstract
    *   <dd>Limit of wait list. <tt>null</tt> if limit is not set.</dd>
    * 
    *   <dt>int `id_deny_reason`</dt>
-   *   <dd>ID of deny reason.</dd>
+   *   <dd>ID of deny reason. One of {@link DenyReasonSid} constants.</dd>
    * 
    *   <dt>bool `is_book`</dt>
    *   <dd>Whether current class was booked by current client.</dd>
@@ -207,7 +209,7 @@ class ClassViewModel extends WlModelAbstract
    *   <dd>Location rating. From 1 to 5.</dd>
    * 
    *   <dt>string `k_location`</dt>
-   *   <dd>Location key. 
+   *   <dd>Location key. </dd>
    * 
    *   <dt>string `s_address`</dt>
    *   <dd>Location address.</dd>
@@ -237,7 +239,7 @@ class ClassViewModel extends WlModelAbstract
    *   <dd>The date/time of the session in UTC.</dd>
    * 
    *   <dt>string `k_class_period`</dt>
-   *   <dd>The session key. 
+   *   <dd>The session key. </dd>
    * </dl>
    * @get get
    * @post get
@@ -251,21 +253,22 @@ class ClassViewModel extends WlModelAbstract
    * <dl>
    *   <dt>array `a_asset`</dt>
    *   <dd>
-   *     Array of asset. *     <dl>
+   *     Array of asset. 
+   *     <dl>
    *       <dt>int `i_count`</dt>
    *       <dd>Number of sessions.</dd>
    * 
    *       <dt>int `i_index`</dt>
    *       <dd>Asset index.</dd>
    * 
-   *       <dt>string `id_category`</dt>
+   *       <dt>int `id_category`</dt>
    *       <dd>Type of the asset: Asset or Off-Site Location.</dd>
    * 
    *       <dt>string `k_city`</dt>
    *       <dd>City of the asset, if this is Off-Site Location.</dd>
    * 
    *       <dt>string `k_resource`</dt>
-   *       <dd>Resource key. 
+   *       <dd>Resource key. </dd>
    * 
    *       <dt>string `text_address`</dt>
    *       <dd>Address of the asset, if this is Off-Site Location.</dd>
@@ -288,10 +291,13 @@ class ClassViewModel extends WlModelAbstract
    * 
    *   <dt>array `a_class`</dt>
    *   <dd>
-   *     Class information. *     <dl>
+   *     Class information. 
+   *     <dl>
    *       <dt>string[] `a_class_tab`</dt>
    *       <dd>
-   *         Keys are class key. *   Values are class tab key. *       </dd>
+   *         Keys are class key. 
+   *   Values are class tab key. 
+   *       </dd>
    * 
    *       <dt>array `a_image`</dt>
    *       <dd>
@@ -316,7 +322,7 @@ class ClassViewModel extends WlModelAbstract
    *         List of search tags.
    *         <dl>
    *           <dt>string `k_search_tag`</dt>
-   *           <dd>Search tag key. 
+   *           <dd>Search tag key. </dd>
    * 
    *           <dt>string `text_title`</dt>
    *           <dd>Search tag name.</dd>
@@ -369,7 +375,7 @@ class ClassViewModel extends WlModelAbstract
    *       <dd>Limit of wait list. <tt>null</tt> if limit is not set.</dd>
    * 
    *       <dt>int `id_deny_reason`</dt>
-   *       <dd>ID of deny reason.</dd>
+   *       <dd>ID of deny reason. One of {@link DenyReasonSid} constants.</dd>
    * 
    *       <dt>bool `is_book`</dt>
    *       <dd>Whether current class was booked by current client.</dd>
@@ -418,7 +424,8 @@ class ClassViewModel extends WlModelAbstract
    * 
    *   <dt>array `a_location`</dt>
    *   <dd>
-   *     Location info. *     <dl>
+   *     Location info. 
+   *     <dl>
    *       <dt>float `f_latitude`</dt>
    *       <dd>Location latitude.</dd>
    * 
@@ -429,7 +436,7 @@ class ClassViewModel extends WlModelAbstract
    *       <dd>Location rating. From 1 to 5.</dd>
    * 
    *       <dt>string `k_location`</dt>
-   *       <dd>Location key. 
+   *       <dd>Location key. </dd>
    * 
    *       <dt>string `s_address`</dt>
    *       <dd>Location address.</dd>
@@ -447,7 +454,8 @@ class ClassViewModel extends WlModelAbstract
    * 
    *   <dt>array[] `a_staff`</dt>
    *   <dd>
-   *     Staff list. *     <dl>
+   *     Staff list. 
+   *     <dl>
    *       <dt>array `a_logo`</dt>
    *       <dd>
    *         Information about staff photo:
@@ -471,11 +479,13 @@ class ClassViewModel extends WlModelAbstract
    * 
    *       <dt>string `k_staff`</dt>
    *       <dd>
-   *         * Deprecated use `uid_staff` instead.
-   * *       </dd>
+   *         
+   * Deprecated use `uid_staff` instead.
+   * 
+   *       </dd>
    * 
    *       <dt>string `uid_staff`</dt>
-   *       <dd>Staff user key. 
+   *       <dd>Staff user key. </dd>
    * 
    *       <dt>string `s_family`</dt>
    *       <dd>1st letter of surname of staff member.</dd>
@@ -494,7 +504,8 @@ class ClassViewModel extends WlModelAbstract
    *   <dt>array[] `a_visits_required`</dt>
    *   <dd>
    *     List of classes and events, which client should visit before this one.
-   * *     <dl>
+   * 
+   *     <dl>
    *       <dt>int `i_count`</dt>
    *       <dd>Number of visits.</dd>
    * 
@@ -544,11 +555,13 @@ class ClassViewModel extends WlModelAbstract
    * 
    *   <dt>string `k_staff`</dt>
    *   <dd>
-   *     * Deprecated use `uid_staff` instead.
-   * *   </dd>
+   *     
+   * Deprecated use `uid_staff` instead.
+   * 
+   *   </dd>
    * 
    *   <dt>string `uid_staff`</dt>
-   *   <dd>Staff user key. 
+   *   <dd>Staff user key. </dd>
    * 
    *   <dt>string `s_family`</dt>
    *   <dd>1st letter of surname of staff member.</dd>

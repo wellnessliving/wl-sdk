@@ -19,7 +19,8 @@ class Product62Model extends WlModelAbstract
    *   <dt>array `a_logo`</dt>
    *   <dd>
    *     Information about first image connected to the product.
-   * *     <dl>
+   * 
+   *     <dl>
    *       <dt>int `i_height`</dt>
    *       <dd>Height of the image.</dd>
    * 

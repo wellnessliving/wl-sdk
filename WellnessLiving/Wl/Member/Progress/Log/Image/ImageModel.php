@@ -16,7 +16,8 @@ class ImageModel extends WlModelAbstract
    *   <dt>array `a_image`</dt>
    *   <dd>
    *     Image storage data.
-   * *     <dl>
+   * 
+   *     <dl>
    *       <dt>int `i_height`</dt>
    *       <dd>Actual height of thumbnail image.</dd>
    * 

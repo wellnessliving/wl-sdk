@@ -18,7 +18,7 @@ class Relation72Model extends WlModelAbstract
    *   <dd>The relationship type. One of the {@link WlFamilyRelationSid} constants.</dd>
    * 
    *   <dt>string `uid`</dt>
-   *   <dd>The related user's key. 
+   *   <dd>The related user's key. </dd>
    * </dl>
    * @post post
    * @var array
@@ -42,7 +42,7 @@ class Relation72Model extends WlModelAbstract
    *   <dd>The first name of the relation.</dd>
    * 
    *   <dt>string `uid`</dt>
-   *   <dd>The key of the related user. 
+   *   <dd>The key of the related user. </dd>
    * </dl>
    * @delete result
    * @get result

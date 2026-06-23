@@ -186,7 +186,8 @@ class PurchaseReceiptModel extends WlModelAbstract
    *   <dd>
    *     List of visit keys. Only available if the purchase item is a class period,
    * enrollment, enrollment deposit, or enrollment discount. Each element is a string visit key.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>int `i_count`</dt>
    *   <dd>The number of items in the purchase.</dd>
@@ -211,8 +212,9 @@ class PurchaseReceiptModel extends WlModelAbstract
    *   <dt>string `k_shop_product`</dt>
    *   <dd>
    *     Product key.
-   * Set only if `id_purchase_
-   * *   </dd>
+   * Set only if `id_purchase_item`is {@link WlPurchaseItemSid::PRODUCT}.
+   * 
+   *   </dd>
    * 
    *   <dt>string `m_price`</dt>
    *   <dd>The price of the single item.</dd>

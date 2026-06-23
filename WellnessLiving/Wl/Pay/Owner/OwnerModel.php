@@ -50,7 +50,6 @@ class OwnerModel extends WlModelAbstract
   /**
    * Key of the money owner.
    *
-   * 
    * @get result
    * @var string
    */

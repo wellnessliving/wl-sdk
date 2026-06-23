@@ -28,7 +28,6 @@ abstract class WlPurchaseItemSid
    *
    * Key of appointment.
    *
-   * 
    * A purchased item that is created during the online booking process {@link WlPurchaseItemSid::SERVICE}.
    */
   const APPOINTMENT = 8;
@@ -38,14 +37,12 @@ abstract class WlPurchaseItemSid
    *
    * This purchase created when client books a single appointment reservation with deposit amount,
    * to do so appointment should be managed with deposit.
-   *
-   * /
+   */
   const APPOINTMENT_DEPOSIT = 18;
 
   /**
    * Tips for the appointment.
    *
-   * 
    * A purchased item that is created during the online booking process {@link WlPurchaseItemSid::SERVICE}.
    */
   const APPOINTMENT_TIP = 22;
@@ -83,14 +80,12 @@ abstract class WlPurchaseItemSid
 
   /**
    * Gift Cards.
-   *
-   * /
+   */
   const COUPON = 10;
 
   /**
    * Events and enrollments. Client can not book only one class, he needs to book the whole enrollment.
-   *
-   * /
+   */
   const ENROLLMENT = 4;
 
   /**
@@ -98,16 +93,14 @@ abstract class WlPurchaseItemSid
    *
    * This purchase created when client books an enrollment reservation with deposit amount,
    * to do so enrollment should be managed with deposit.
-   *
-   * /
+   */
   const ENROLLMENT_DEPOSIT = 19;
 
   /**
    * Enrollment reservation with a discount.
    *
    * This purchase created when client books an enrollment reservation with early bird price.
-   *
-   * /
+   */
   const ENROLLMENT_DISCOUNT = 21;
 
   /**
@@ -127,8 +120,7 @@ abstract class WlPurchaseItemSid
 
   /**
    * Promotions.
-   *
-   * /
+   */
   const PROMOTION = 1;
 
   /**
@@ -156,7 +148,6 @@ abstract class WlPurchaseItemSid
    *
    * This purchase item is created during the online booking process.
    *
-   * 
    * Purchase that is created when a staff adds payment for an appointment at POS {@link WlPurchaseItemSid::APPOINTMENT}.
    */
   const SERVICE = 6;

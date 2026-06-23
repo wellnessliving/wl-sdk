@@ -13,9 +13,25 @@ class EditModel extends WlModelAbstract
   /**
    * Entity in array format.
    *
+   * <dl>
+   *   <dt>int `cid_search_criteria`</dt>
+   *   <dd>Search criteria CID.</dd>
+   * 
+   *   <dt>int `id_operation`</dt>
+   *   <dd>ID of selected operation.</dd>
+   * 
+   *   <dt>string `s_id`</dt>
+   *   <dd>
+   *     Unique criteria key.
+   *  
+   *   </dd>
+   * 
+   *   <dt>mixed `x_value`</dt>
+   *   <dd>Operation data value.</dd>
+   * </dl>
    * @post post
    * @put post
-   * @var array
+   * @var array[]
    * @deprecated Use {@link SearchTemplatePanelApiTrait::$json_criteria} to prevent number of variables more than
    *  can be transferred to server via HTTP.
    */
@@ -47,7 +63,7 @@ class EditModel extends WlModelAbstract
    *   <dd>ID of privilege role. Constant from {@link WlPrivilegeRoleSid}.</dd>
    * 
    *   <dt>string `k_business_role`</dt>
-   *   <dd>Key of the business role.</dd>
+   *   <dd>Key of the business role. </dd>
    * </dl>
    * @post post
    * @put post
@@ -126,9 +142,9 @@ class EditModel extends WlModelAbstract
    *
    * @post post
    * @put post
-   * @var array
+   * @var string
    */
-  public $json_criteria = [];
+  public $json_criteria = '[]';
 
   /**
    * The business key.
@@ -142,6 +158,8 @@ class EditModel extends WlModelAbstract
   public $k_business = null;
 
   /**
+   * Member group key.
+   *
    * @get get
    * @post get,result
    * @put get

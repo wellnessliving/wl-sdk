@@ -40,7 +40,7 @@ class PurchaseModel extends WlModelAbstract
    *   <dd>The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.</dd>
    * 
    *   <dt>string `k_login_prize`</dt>
-   *   <dd>Key of login prize. 
+   *   <dd>Key of login prize. </dd>
    * 
    *   <dt>string `s_value`</dt>
    *   <dd>The unique identifier.</dd>
@@ -79,7 +79,7 @@ class PurchaseModel extends WlModelAbstract
    *   <dt>string[] `a_uid_share`</dt>
    *   <dd>
    *     List of UIDs of users who share this promotion.
-   *
+   * List of those passed in the {@link PurchaseModel::$a_login_promotion_group} array.
    *   </dd>
    * 
    *   <dt>string[] `a_visit_limit`</dt>
@@ -148,7 +148,7 @@ class PurchaseModel extends WlModelAbstract
    *   <dd>`true` if the promotion is shared with the client, `false` if the client is owner of the promotion.</dd>
    * 
    *   <dt>string `k_login_promotion`</dt>
-   *   <dd>The login promotion key. 
+   *   <dd>The login promotion key. </dd>
    * 
    *   <dt>string `s_class_include`</dt>
    *   <dd>The list of services provided by this Purchase Option.</dd>
@@ -194,11 +194,17 @@ class PurchaseModel extends WlModelAbstract
    * Each element has the following structure:
    *
    * <dl>
+   *   <dt>int `i_session`</dt>
+   *   <dd>
+   *     Number of paid sessions of the same class|event that were selected for the previous user.
+   *   This number should not include free or waitlist unpaid sessions.
+   *   </dd>
+   * 
    *   <dt>string `k_login_promotion`</dt>
-   *   <dd>Selected purchase option. 
+   *   <dd>Selected purchase option. </dd>
    * 
    *   <dt>string `uid`</dt>
-   *   <dd>UID of the previous user. 
+   *   <dd>UID of the previous user. </dd>
    * </dl>
    * @get get
    * @var array[]
@@ -228,7 +234,8 @@ class PurchaseModel extends WlModelAbstract
    * 
    *       <dt>string `k_pay_installment_template`</dt>
    *       <dd>
-   *         The key of the installment plan template. *       </dd>
+   *         The key of the installment plan template. 
+   *       </dd>
    * 
    *       <dt>string `m_amount`</dt>
    *       <dd>The amount of the installment plan.</dd>
@@ -258,7 +265,7 @@ class PurchaseModel extends WlModelAbstract
    * 
    *   <dt>string `html_payment_period`</dt>
    *   <dd>
-   *     This is only set for Purchase Options with the 'membership' program type. The measurement unit of <var>i_payment_period</var> in short form.
+   *     This is only set for Purchase Options with the 'membership' program type. The measurement unit int <var>i_payment_period</var> in short form.
    *   </dd>
    * 
    *   <dt>string `html_description`</dt>
@@ -319,7 +326,7 @@ class PurchaseModel extends WlModelAbstract
    * 
    *   <dt>string `s_payment_duration`</dt>
    *   <dd>
-   *     This is only set for Purchase Options with the 'membership' program type. The measurement unit of <var>i_payment_period</var>.
+   *     This is only set for Purchase Options with the 'membership' program type. The measurement unit int <var>i_payment_period</var>.
    *   </dd>
    * 
    *   <dt>string `s_promotion_convert`</dt>
@@ -383,7 +390,7 @@ class PurchaseModel extends WlModelAbstract
    *   <dt>int `id_duration`</dt>
    *   <dd>
    *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   *
+   * Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
    *   </dd>
    * 
    *   <dt>int `id_period`</dt>
@@ -418,7 +425,7 @@ class PurchaseModel extends WlModelAbstract
    *   <dd>The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.</dd>
    * 
    *   <dt>string `k_reward_prize`</dt>
-   *   <dd>Key of redeemable prize. 
+   *   <dd>Key of redeemable prize. </dd>
    * 
    *   <dt>string `s_value`</dt>
    *   <dd>The unique identifier.</dd>
@@ -434,7 +441,8 @@ class PurchaseModel extends WlModelAbstract
   /**
    * The list of sessions being booked.
    *
-   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
+   * Keys are class period keys. 
+   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @get get
    * @var string[]
@@ -450,7 +458,7 @@ class PurchaseModel extends WlModelAbstract
    *   <dd>Number of remaining visits on session pass.</dd>
    * 
    *   <dt>string `k_session_pass`</dt>
-   *   <dd>Session pass key. 
+   *   <dd>Session pass key. </dd>
    * 
    *   <dt>int `id_purchase_item`</dt>
    *   <dd>Type of the session pass purchase. One of {@link WlPurchaseItemSid} constants.</dd>
@@ -466,7 +474,8 @@ class PurchaseModel extends WlModelAbstract
   /**
    * The selected sessions on the wait list that are unpaid.
    *
-   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
+   * Keys are class period keys. 
+   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @get get
    * @var string[]

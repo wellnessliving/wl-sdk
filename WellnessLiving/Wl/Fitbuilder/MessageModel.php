@@ -17,7 +17,7 @@ class MessageModel extends WlModelAbstract
    *   <dd>
    *     Message information:
    *     <dl>
-   *       <dt>string `id`</dt>
+   *       <dt>int `id`</dt>
    *       <dd>Message key.</dd>
    * 
    *       <dt>string `message`</dt>
@@ -42,7 +42,7 @@ class MessageModel extends WlModelAbstract
    *       <dd>User last name.</dd>
    * 
    *       <dt>string `uid`</dt>
-   *       <dd>User key. 
+   *       <dd>User key. </dd>
    * 
    *       <dt>string `url_photo`</dt>
    *       <dd>URL of the user's profile photo.</dd>

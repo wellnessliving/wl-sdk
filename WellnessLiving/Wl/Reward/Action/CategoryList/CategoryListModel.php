@@ -18,7 +18,7 @@ class CategoryListModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string `k_reward_action_category`</dt>
-   *   <dd>ID of reward actions category in database. 
+   *   <dd>ID of reward actions category in database. </dd>
    * 
    *   <dt>string `s_title`</dt>
    *   <dd>Title of the reward action.</dd>

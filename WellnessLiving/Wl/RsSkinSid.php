@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * A list of skin types.
  *
- * * Last used ID: 21.
+ * Last used ID: 21.
  */
 abstract class RsSkinSid
 {

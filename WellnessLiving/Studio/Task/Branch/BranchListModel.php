@@ -16,17 +16,17 @@ class BranchListModel extends WlModelAbstract
    *   <dt>string[] `a_path`</dt>
    *   <dd>
    *     Information about paths into which catalogs are cloned/copied.
-   *
+   *    
    *   </dd>
    * 
    *   <dt>string `dtu_create`</dt>
    *   <dd>Date when branch was created.</dd>
    * 
    *   <dt>string `k_deploy_instance`</dt>
-   *   <dd>Key of deployment instance.</dd>
+   *   <dd>Key of deployment instance. </dd>
    * 
    *   <dt>string `k_task`</dt>
-   *   <dd>Task key.</dd>
+   *   <dd>Task key. </dd>
    * 
    *   <dt>string `text_create`</dt>
    *   <dd>Formatted time interval when branch was created.</dd>

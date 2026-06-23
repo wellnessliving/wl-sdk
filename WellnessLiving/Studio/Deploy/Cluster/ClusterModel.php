@@ -21,7 +21,7 @@ class ClusterModel extends WlModelAbstract
    * Whether this deployment cluster is active.
    *
    * @post post
-   * @var int|null
+   * @var bool|null
    */
   public $is_active = null;
 

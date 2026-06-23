@@ -32,7 +32,7 @@ class ListModel extends WlModelAbstract
    *     Information about location timezone:
    *     <dl>
    *       <dt>string `k_timezone`</dt>
-   *       <dd>Timezone key. 
+   *       <dd>Timezone key. </dd>
    * 
    *       <dt>string `text_abbr`</dt>
    *       <dd>User-friendly short timezone abbreviation, for example 'EST' or 'PST'.</dd>
@@ -55,13 +55,13 @@ class ListModel extends WlModelAbstract
    *   <dd>The business key.</dd>
    * 
    *   <dt>string `k_country`</dt>
-   *   <dd>Country key. 
+   *   <dd>Country key. </dd>
    * 
    *   <dt>string `k_location`</dt>
    *   <dd>The location key.</dd>
    * 
    *   <dt>string `k_region`</dt>
-   *   <dd>Region key. 
+   *   <dd>Region key. </dd>
    * 
    *   <dt>string `s_mail`</dt>
    *   <dd>The location email address.</dd>

@@ -28,7 +28,7 @@ class RegionModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>int `id_locale`</dt>
-   *   <dd>The locale ID of the country.</dd>
+   *   <dd>The locale ID of the country. One of the {@link LocaleSid} constants.</dd>
    * 
    *   <dt>string `k_geo_country`</dt>
    *   <dd>The country key.</dd>

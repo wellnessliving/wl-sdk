@@ -31,7 +31,11 @@ class SocialShareModel extends WlModelAbstract
   /**
    * The primary keys of the shared objects. Depends on {@link SocialShareModel::$id_share_object}.
    * If {@link SocialShareModel::$id_share_object} is:
-   * * {@link ShareObjectSid::BOOK} - each value is key of the visit.  * {@link ShareObjectSid::LOCATION} - each value is key of the location.  * {@link ShareObjectSid::PURCHASE} - each value is key of the purchase.  * {@link ShareObjectSid::REVIEW} - each value is key of the review. 
+   * * {@link ShareObjectSid::BOOK} - each value is key of the visit. 
+   * * {@link ShareObjectSid::LOCATION} - each value is key of the location. 
+   * * {@link ShareObjectSid::PURCHASE} - each value is key of the purchase. 
+   * * {@link ShareObjectSid::REVIEW} - each value is key of the review. 
+   *
    * @post post
    * @var string[]
    */

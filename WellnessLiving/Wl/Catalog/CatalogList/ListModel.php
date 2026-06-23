@@ -22,7 +22,7 @@ class ListModel extends WlModelAbstract
    *   <dd>
    *     `true` if `k_id` value is product key, `false` if `k_id` value is product option key.
    *      Optional. Default value is `false`.
-   *      Used for `id_
+   *      Used for `id_sale` === {@link WlSaleSid::PRODUCT} only.
    *   </dd>
    * 
    *   <dt>string `k_id`</dt>
@@ -40,11 +40,12 @@ class ListModel extends WlModelAbstract
    *   <dt>string[] `a_location`</dt>
    *   <dd>
    *     The list of location keys where the sale item is available.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string[] `a_shop_category`</dt>
    *   <dd>Shop category keys the item belongs to.
-   * 
+   * </dd>
    * 
    *   <dt>string `dtu_create`</dt>
    *   <dd>UTC creation date of the item in MySQL format.</dd>
@@ -70,7 +71,8 @@ class ListModel extends WlModelAbstract
    *   <dt>string `k_shop_category`</dt>
    *   <dd>
    *     The primary shop category key for this item entry.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string `s_key`</dt>
    *   <dd>The unique string key identifying the item (product key combined with its DB SID).</dd>
@@ -96,11 +98,12 @@ class ListModel extends WlModelAbstract
    *   <dt>string[] `a_location`</dt>
    *   <dd>
    *     The list of location keys where the sale item is available.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string[] `a_shop_category`</dt>
    *   <dd>Shop category keys the item belongs to.
-   * 
+   * </dd>
    * 
    *   <dt>string `dtu_create`</dt>
    *   <dd>UTC creation date of the item in MySQL format.</dd>
@@ -126,7 +129,8 @@ class ListModel extends WlModelAbstract
    *   <dt>string `k_shop_category`</dt>
    *   <dd>
    *     The primary shop category key for this item entry.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string `s_key`</dt>
    *   <dd>The unique string key identifying the item (product key combined with its DB SID).</dd>

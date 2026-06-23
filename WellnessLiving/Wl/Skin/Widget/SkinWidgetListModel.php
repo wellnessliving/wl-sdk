@@ -21,7 +21,7 @@ class SkinWidgetListModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_skin`</dt>
-   *   <dd>Skin key. 
+   *   <dd>Skin key. </dd>
    * 
    *   <dt>string `text_widget_name`</dt>
    *   <dd>Widget name.</dd>

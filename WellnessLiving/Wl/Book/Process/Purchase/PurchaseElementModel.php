@@ -86,7 +86,8 @@ class PurchaseElementModel extends WlModelAbstract
    * This property is optional.
    *
    * * can only be set for the purchase option which supports installment plan.
-   *    * `null` if installment plan doesn't exist for bought item;
+   *   
+   * * `null` if installment plan doesn't exist for bought item;
    * * `0` if installment plan doesn't selected for bought item from the list of installment plans.
    *
    * NOTE:

@@ -50,28 +50,28 @@ class CatalogProductModel extends WlModelAbstract
    * Each value is a constant of {@link WlSaleSid}.</dd>
    * 
    *   <dt>string[] `a_shop_category`</dt>
-   *   <dd>Shop category keys to filter by. 
+   *   <dd>Shop category keys to filter by. </dd>
    * 
    *   <dt>int `i_last`</dt>
    *   <dd>The last shown product index for pagination.</dd>
    * 
    *   <dt>int `id_order`</dt>
-   *   <dd>The sort order ID.</dd>
+   *   <dd>The sort order ID. One of the {@link SortOrderSid} constants.</dd>
    * 
    *   <dt>int `id_sort`</dt>
    *   <dd>The sort field ID.</dd>
    * 
    *   <dt>string `k_business`</dt>
-   *   <dd>The business key. 
+   *   <dd>The business key. </dd>
    * 
    *   <dt>string `k_location`</dt>
-   *   <dd>The location key. 
+   *   <dd>The location key. </dd>
    * 
    *   <dt>string `s_title`</dt>
    *   <dd>A title fragment to filter products by name.</dd>
    * 
    *   <dt>string `uid`</dt>
-   *   <dd>The user key. 
+   *   <dd>The user key. </dd>
    * </dl>
    * @get get
    * @var array
@@ -95,7 +95,7 @@ class CatalogProductModel extends WlModelAbstract
    *   <dd>The product key.</dd>
    * 
    *   <dt>string `k_shop_category`</dt>
-   *   <dd>The shop category key. 
+   *   <dd>The shop category key. </dd>
    * 
    *   <dt>string `s_title`</dt>
    *   <dd>The product title.</dd>

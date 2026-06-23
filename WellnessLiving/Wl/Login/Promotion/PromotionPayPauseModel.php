@@ -39,7 +39,7 @@ class PromotionPayPauseModel extends WlModelAbstract
    *   <dd>Whether the hold is in past.</dd>
    * 
    *   <dt>string `k_promotion_pay_pause`</dt>
-   *   <dd>Key of the hold period. 
+   *   <dd>Key of the hold period. </dd>
    * 
    *   <dt>string|null `text_note`</dt>
    *   <dd>Additional notes.</dd>

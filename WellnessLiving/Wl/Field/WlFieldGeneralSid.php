@@ -13,7 +13,7 @@ use WellnessLiving\Wl\Login\Type\SystemSid;
  * Manual fields have only constant in this sid. They have no associated class and processed separately in view, e.g.
  * user email/password field that has its own widget.
  *
- * * Last used ID: 16.
+ * Last used ID: 16.
  */
 class WlFieldGeneralSid
 {

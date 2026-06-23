@@ -19,7 +19,8 @@ class BulkBusinessHolidayModel extends WlModelAbstract
    *   <dd>
    *     List of effected classes, keys are class keys.
    * Values always `true`.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>true[] `a_class_only`</dt>
    *   <dd>List of effected classes, keys are class keys.
@@ -37,26 +38,26 @@ class BulkBusinessHolidayModel extends WlModelAbstract
    *   <dt>string `dt_start`</dt>
    *   <dd>Date of the start of the holiday.</dd>
    * 
-   *   <dt>int `is_class_all`</dt>
+   *   <dt>bool `is_class_all`</dt>
    *   <dd>`1` if all classes are selected to cancel, `0` - otherwise.</dd>
    * 
-   *   <dt>int `is_event_all`</dt>
+   *   <dt>bool `is_event_all`</dt>
    *   <dd>`1` if all events are selected to cancel, `0` - otherwise.</dd>
    * 
-   *   <dt>int `is_service_all`</dt>
+   *   <dt>bool `is_service_all`</dt>
    *   <dd>`1` if all services are selected to cancel, `0` - otherwise.</dd>
    * 
    *   <dt>string `k_business`</dt>
-   *   <dd>Business key. 
+   *   <dd>Business key. </dd>
    * 
    *   <dt>string `k_holiday`</dt>
-   *   <dd>Holiday key. 
+   *   <dd>Holiday key. </dd>
    * 
    *   <dt>string `k_location`</dt>
-   *   <dd>Location key. 
+   *   <dd>Location key. </dd>
    * 
    *   <dt>string `k_market`</dt>
-   *   <dd>The market key. 
+   *   <dd>The market key. </dd>
    * 
    *   <dt>string `s_title`</dt>
    *   <dd>Name of the holiday.</dd>

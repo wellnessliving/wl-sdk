@@ -19,7 +19,6 @@ class EnrollmentFieldListModel extends WlModelAbstract
    * Keys - field name.
    * Values - value entered by user.
    *
-   * 
    * @post post
    * @put post
    * @var string[]
@@ -29,9 +28,9 @@ class EnrollmentFieldListModel extends WlModelAbstract
   /**
    * List of fields that the user has filled in for enrollment.
    *
-   * Keys refer specifically to field keys.  Values refer specifically to values entered by the user.
+   * Keys refer specifically to field keys. 
+   * Values refer specifically to values entered by the user.
    *
-   * 
    * @post post
    * @put post
    * @var string[]
@@ -110,7 +109,7 @@ class EnrollmentFieldListModel extends WlModelAbstract
    *       <dd>`true` if the field is required.</dd>
    * 
    *       <dt>string `k_field`</dt>
-   *       <dd>The field key. 
+   *       <dd>The field key. </dd>
    * 
    *       <dt>string `s_regular`</dt>
    *       <dd>Regular expression for client-side validation. Empty string if no validation pattern.</dd>

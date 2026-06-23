@@ -41,7 +41,9 @@ class AssetListModel extends WlModelAbstract
    *   <dt>string[] `a_class_tab`</dt>
    *   <dd>
    *     The key of service.
-   *   Keys are service key. *   Values are class tab key. *   </dd>
+   *   Keys are service key. 
+   *   Values are class tab key. 
+   *   </dd>
    * 
    *   <dt>array[] `a_direct_link`</dt>
    *   <dd>
@@ -126,13 +128,13 @@ class AssetListModel extends WlModelAbstract
    *   <dd>Determines whether this service can't be booked due to age restrictions.</dd>
    * 
    *   <dt>string `k_class_tab`</dt>
-   *   <dd>Quick book tab key. 
+   *   <dd>Quick book tab key. </dd>
    * 
    *   <dt>string `k_resource`</dt>
-   *   <dd>The resource key. 
+   *   <dd>The resource key. </dd>
    * 
    *   <dt>string `k_resource_category`</dt>
-   *   <dd>The resource category key. 
+   *   <dd>The resource category key. </dd>
    * </dl>
    * @get result
    * @var array[]

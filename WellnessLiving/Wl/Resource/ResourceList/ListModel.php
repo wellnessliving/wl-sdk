@@ -83,6 +83,8 @@ class ListModel extends WlModelAbstract
   public $is_franchise = false;
 
   /**
+   * Business key.
+   *
    * @get get
    * @var string
    */

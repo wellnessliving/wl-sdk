@@ -61,7 +61,7 @@ class ElementModel extends WlModelAbstract
 
   /**
    * Total amount of account credits user got for {@link ElementModel::$k_login_activity}.
-   * 
+   *
    * @get result
    * @var int
    */

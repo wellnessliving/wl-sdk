@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Payment;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
+use WellnessLiving\Wl\Classes\Tab\TabSid;
 use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
@@ -32,11 +33,13 @@ class PaymentMultipleModel extends WlModelAbstract
    *     <dl>
    *       <dt>array `a_product`</dt>
    *       <dd>
-   *         The add-on list. Keys are add-on option keys. * Values are quantities:
+   *         The add-on list. Keys are add-on option keys. 
+   * Values are quantities:
    *         <dl>
    *           <dt>string `k_shop_product_option`</dt>
    *           <dd>
-   *             Add-on option key (used as array key). *           </dd>
+   *             Add-on option key (used as array key). 
+   *           </dd>
    * 
    *           <dt>int `i_count`</dt>
    *           <dd>Quantity of the add-on to purchase (used as array value).</dd>
@@ -102,13 +105,14 @@ class PaymentMultipleModel extends WlModelAbstract
    * 
    *       <dt>string `uid`</dt>
    *       <dd>
-   *         User's key. * Specify only in a case of booking for a lof of different users.
+   *         User's key. 
+   * Specify only in a case of booking for a lof of different users.
    *       </dd>
    *     </dl>
    *   </dd>
    * 
    *   <dt>int `id_class_tab`</dt>
-   *   <dd>The "Book now" tab.</dd>
+   *   <dd>The "Book now" tab. One of the {@link TabSid} constants.</dd>
    * 
    *   <dt>string `m_tip_appointment`</dt>
    *   <dd>The tips amount.</dd>
@@ -129,11 +133,13 @@ class PaymentMultipleModel extends WlModelAbstract
    *     <dl>
    *       <dt>array `a_product`</dt>
    *       <dd>
-   *         The add-on list. Keys are add-on option keys. * Values are quantities:
+   *         The add-on list. Keys are add-on option keys. 
+   * Values are quantities:
    *         <dl>
    *           <dt>string `k_shop_product_option`</dt>
    *           <dd>
-   *             Add-on option key (used as array key). *           </dd>
+   *             Add-on option key (used as array key). 
+   *           </dd>
    * 
    *           <dt>int `i_count`</dt>
    *           <dd>Quantity of the add-on to purchase (used as array value).</dd>
@@ -199,13 +205,14 @@ class PaymentMultipleModel extends WlModelAbstract
    * 
    *       <dt>string `uid`</dt>
    *       <dd>
-   *         User's key. * Specify only in a case of booking for a lof of different users.
+   *         User's key. 
+   * Specify only in a case of booking for a lof of different users.
    *       </dd>
    *     </dl>
    *   </dd>
    * 
    *   <dt>int `id_class_tab`</dt>
-   *   <dd>The "Book now" tab.</dd>
+   *   <dd>The "Book now" tab. One of the {@link TabSid} constants.</dd>
    * 
    *   <dt>string `m_tip_appointment`</dt>
    *   <dd>The tips amount.</dd>
@@ -246,9 +253,7 @@ class PaymentMultipleModel extends WlModelAbstract
    *         The payment address:
    *         <dl>
    *           <dt>bool `is_new`</dt>
-   *           <dd>
-   *             Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
-   *           </dd>
+   *           <dd>Set this value to `1` to add a new payment address or to `0` to use a saved payment address.</dd>
    * 
    *           <dt>string `k_geo_country`</dt>
    *           <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
@@ -289,7 +294,7 @@ class PaymentMultipleModel extends WlModelAbstract
    *       <dd>The credit card expiration year. Specify this to add a new card.</dd>
    * 
    *       <dt>bool `is_new`</dt>
-   *       <dd>Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.</dd>
+   *       <dd>Specify `1` to add a new card, or `0` to use a saved card.</dd>
    * 
    *       <dt>string `k_pay_bank`</dt>
    *       <dd>The key of the credit card. Specify this to use saved card.</dd>
@@ -306,10 +311,10 @@ class PaymentMultipleModel extends WlModelAbstract
    *   <dd>The amount of money to withdraw with this payment source.</dd>
    * 
    *   <dt>bool `is_hide`</dt>
-   *   <dd>Whether payment method should be saved to user's account.</dd>
+   *   <dd>Determines whether this payment method is hidden.</dd>
    * 
    *   <dt>bool `is_save`</dt>
-   *   <dd>Determines whether this payment method is hidden.</dd>
+   *   <dd>Whether payment method should be saved to user's account.</dd>
    * 
    *   <dt>bool `is_success`</dt>
    *   <dd>Identifies whether this source was successfully charged.</dd>
@@ -399,7 +404,9 @@ class PaymentMultipleModel extends WlModelAbstract
 
   /**
    * List of quiz response keys.
-   * Keys are quiz keys.  Values are quiz response keys. 
+   * Keys are quiz keys. 
+   * Values are quiz response keys. 
+   *
    * @post post
    * @var string[]
    */

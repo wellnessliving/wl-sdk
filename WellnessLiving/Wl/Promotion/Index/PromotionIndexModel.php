@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Promotion\Index;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Event\EventListModel;
 use WellnessLiving\Wl\Promotion\Edit\Limit\Cycle\Sid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlDurationTypeSid;
@@ -90,17 +91,18 @@ class PromotionIndexModel extends WlModelAbstract
    *         The type of the component.
    *  One of {@link WlPurchaseItemSid} constants.
    *  This can only be: <ul>
-   *      <li>{@link RsPurchaseItemSid::ENROLLMENT}</li>
-   *      <li>{@link RsPurchaseItemSid::PROMOTION}</li>
-   *      <li>{@link RsPurchaseItemSid::PRODUCT}</li>
+   *      <li>{@link WlPurchaseItemSid::ENROLLMENT}</li>
+   *      <li>{@link WlPurchaseItemSid::PROMOTION}</li>
+   *      <li>{@link WlPurchaseItemSid::PRODUCT}</li>
    *  </ul>
    *       </dd>
    * 
    *       <dt>string `k_id`</dt>
    *       <dd>
    *         The primary key of the component in the related table. This depends on the type of the component.
-   * The key of the event for {@link RsPurchaseItemSid::ENROLLMENT}, the key of the Purchase Option for the
-   *
+   * The key of the event for {@link WlPurchaseItemSid::ENROLLMENT}, the key of the Purchase Option for the
+   * {@link WlPurchaseItemSid::PROMOTION}, the key of the product option for the {@link WlPurchaseItemSid::PRODUCT}.
+   * Full information about events can be taken from the {@link EventListModel}. Purchase Options from the {@link PromotionIndexModel}.
    * Full information about products are not available at this moment though API.
    *       </dd>
    * 
@@ -117,10 +119,10 @@ class PromotionIndexModel extends WlModelAbstract
    *     This will be an empty array if the Purchase Option doesn't have image.
    * Otherwise, this will display the following information about the Purchase Option image:
    *     <dl>
-   *       <dt>string `i_height`</dt>
+   *       <dt>int `i_height`</dt>
    *       <dd>The height of the image.</dd>
    * 
-   *       <dt>string `i_width`</dt>
+   *       <dt>int `i_width`</dt>
    *       <dd>The width of the image.</dd>
    * 
    *       <dt>string `url-thumbnail`</dt>
@@ -132,11 +134,11 @@ class PromotionIndexModel extends WlModelAbstract
    *   <dd>
    *     Attendance restrictions, if available. If unavailable, this will be an empty array. Every element has a key, which is a type of
    * the time period {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH},
-   *
+   * {@link ADurationSid::YEAR}.
    * The values are:
    *     <dl>
    *       <dt>int `i_limit`</dt>
-   *       <dd>The quantity of sessions every <var>i_period</var>.</dd>
+   *       <dd>The quantity of sessions int <var>i_period</var>.</dd>
    * 
    *       <dt>int `i_period`</dt>
    *       <dd>The duration of the time period. This depends on a key of <var>a_visit_limit</var> array.</dd>
@@ -149,7 +151,7 @@ class PromotionIndexModel extends WlModelAbstract
    * 
    *       <dt>int `id_roll_over_expire`</dt>
    *       <dd>
-   *         The type of <var>i_roll_over_expire</var>.
+   *         The type int <var>i_roll_over_expire</var>.
    * One of {@link ADurationSid} contantant.
    * This can only be: <ul>
    *     <li>{@link ADurationSid::DAY}</li>
@@ -204,7 +206,7 @@ class PromotionIndexModel extends WlModelAbstract
    * 
    *   <dt>int `id_limit_duration`</dt>
    *   <dd>
-   *     The type of <var>i_limit_duration</var>.
+   *     The type int <var>i_limit_duration</var>.
    * One of {@link ADurationSid} contantant.
    * This can only be: <ul>
    *     <li>{@link ADurationSid::MINUTE}</li>
@@ -260,7 +262,7 @@ class PromotionIndexModel extends WlModelAbstract
    *   <dd>If `true` this promotion is available for online purchase. Otherwise, this will be `false`.</dd>
    * 
    *   <dt>string `k_promotion`</dt>
-   *   <dd>The promotion key. 
+   *   <dd>The promotion key. </dd>
    * 
    *   <dt>string `m_price`</dt>
    *   <dd>The price.</dd>
@@ -268,7 +270,7 @@ class PromotionIndexModel extends WlModelAbstract
    *   <dt>string `text_description`</dt>
    *   <dd>The description.</dd>
    * 
-   *   <dt>int `text_program`</dt>
+   *   <dt>string `text_program`</dt>
    *   <dd>The localized promotion program name corresponding to the value of <var>id_program</var>.</dd>
    * 
    *   <dt>string `text_title`</dt>

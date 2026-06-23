@@ -196,7 +196,7 @@ class QueryModel extends WlModelAbstract
    * Filters that should be applied to the report.
    *
    * In this array, key is name of a filter field.
-   * 
+   *
    * @post post
    * @var string
    */
@@ -235,7 +235,6 @@ class QueryModel extends WlModelAbstract
    * To sort by a cell field, specify name of a report field and name of the cell field.
    * Separate with a dot. For example: <tt>o_account.m_amount</tt>.
    *
-   * 
    * Example value: <tt>s_first,+s_last,-o_account.m_amount,o_address</tt>.
    *
    * Means the following:

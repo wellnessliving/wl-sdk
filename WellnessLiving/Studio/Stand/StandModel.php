@@ -11,7 +11,6 @@ class StandModel extends WlModelAbstract
 {
   /**
    * Information about entities necessary for the functioning of the stand.
-   * Structure of an array is identical to the <var>z_stand_data</var>
    *
    * `string` if it needs to set an empty value.
    * `null` will not change.

@@ -21,7 +21,7 @@ class LoginModel extends WlModelAbstract
    *   <dd>User's gender. One of {@link AGenderSid} constants.</dd>
    * 
    *   <dt>string `k_staff`</dt>
-   *   <dd>User's key as staff member. 
+   *   <dd>User's key as staff member. </dd>
    * 
    *   <dt>string `s_first_name`</dt>
    *   <dd>User first name.</dd>
@@ -48,7 +48,8 @@ class LoginModel extends WlModelAbstract
    *   <dd>
    *     Full client name. User login is returned in a case neither first name, nor last name specified.
    * An empty string is returned in a case neither first name, nor last name specified, nor login.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string `text_name_full_staff`</dt>
    *   <dd>
@@ -59,7 +60,7 @@ class LoginModel extends WlModelAbstract
    *   <dd>Staff`s last name.</dd>
    * 
    *   <dt>string `uid_staff`</dt>
-   *   <dd>The user's UID as a staff member. 
+   *   <dd>The user's UID as a staff member. </dd>
    * 
    *   <dt>string `url_photo`</dt>
    *   <dd>User photo URL.</dd>

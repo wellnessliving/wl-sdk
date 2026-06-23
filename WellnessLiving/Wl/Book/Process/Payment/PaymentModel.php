@@ -34,12 +34,12 @@ class PaymentModel extends WlModelAbstract
    * 
    *   <dt>string `k_login_prize`</dt>
    *   <dd>
-   *     Key of user's prize. `0` only if user is paying book by prize.
+   *     Key of user's prize.  Not `0` only if user is paying book by prize.
    *   </dd>
    * 
    *   <dt>string `k_reward_prize`</dt>
    *   <dd>
-   *     Key of reward prize. `0` only if user wants to redeem prize and use it to pay for visit.
+   *     Key of reward prize.  Not `0` only if user wants to redeem prize and use it to pay for visit.
    *   </dd>
    * 
    *   <dt>string `s_signature`</dt>
@@ -76,9 +76,7 @@ class PaymentModel extends WlModelAbstract
    *         The payment address:
    *         <dl>
    *           <dt>bool `is_new`</dt>
-   *           <dd>
-   *             Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
-   *           </dd>
+   *           <dd>Set this value to `1` to add a new payment address or to `0` to use a saved payment address.</dd>
    * 
    *           <dt>string `k_geo_country`</dt>
    *           <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
@@ -119,7 +117,7 @@ class PaymentModel extends WlModelAbstract
    *       <dd>The credit card expiration year. Specify this to add a new card.</dd>
    * 
    *       <dt>bool `is_new`</dt>
-   *       <dd>Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.</dd>
+   *       <dd>Specify `1` to add a new card, or `0` to use a saved card.</dd>
    * 
    *       <dt>string `k_pay_bank`</dt>
    *       <dd>The key of the credit card. Specify this to use saved card.</dd>
@@ -136,10 +134,10 @@ class PaymentModel extends WlModelAbstract
    *   <dd>The amount of money to withdraw with this payment source.</dd>
    * 
    *   <dt>bool `is_hide`</dt>
-   *   <dd>Whether payment method should be saved to user's account.</dd>
+   *   <dd>Determines whether this payment method is hidden.</dd>
    * 
    *   <dt>bool `is_save`</dt>
-   *   <dd>Determines whether this payment method is hidden.</dd>
+   *   <dd>Whether payment method should be saved to user's account.</dd>
    * 
    *   <dt>bool `is_success`</dt>
    *   <dd>Identifies whether this source was successfully charged.</dd>
@@ -161,7 +159,8 @@ class PaymentModel extends WlModelAbstract
   /**
    * List of quiz response keys.
    *
-   * Keys are quiz keys.  Values are response keys.
+   * Keys are quiz keys. 
+   * Values are response keys. 
    *
    * @post post
    * @var string[]
@@ -213,7 +212,7 @@ class PaymentModel extends WlModelAbstract
    *   <dt>int `id_duration`</dt>
    *   <dd>
    *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   *
+   * Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
    *   </dd>
    * 
    *   <dt>int `id_period`</dt>
@@ -235,7 +234,7 @@ class PaymentModel extends WlModelAbstract
    *   <dd>The number of asset(s). The actual number is returned for assets with a quantity greater than <tt>1</tt>.</dd>
    * 
    *   <dt>string `k_resource`</dt>
-   *   <dd>The key of the asset. 
+   *   <dd>The key of the asset. </dd>
    * </dl>
    * @post post
    * @var array
@@ -245,7 +244,8 @@ class PaymentModel extends WlModelAbstract
   /**
    * A list of sessions being booked.
    *
-   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
+   * Keys are class period keys. 
+   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
    * @var string[]
@@ -255,7 +255,8 @@ class PaymentModel extends WlModelAbstract
   /**
    * Selected sessions on the waiting list without pay.
    *
-   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT
+   * Keys are class period keys. 
+   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT
    *
    * @post post
    * @var string[]
@@ -269,6 +270,33 @@ class PaymentModel extends WlModelAbstract
    * @var string[]
    */
   public $a_visit;
+
+  /**
+   * Values are arrays with next keys:
+   *
+   * <dl>
+   *   <dt>bool `is_free`</dt>
+   *   <dd>`true` if the visit is free; `false` otherwise.</dd>
+   * 
+   *   <dt>bool `is_waitlist`</dt>
+   *   <dd>`true` whether the booked slot was waitlisted; `false` otherwise.</dd>
+   * 
+   *   <dt>string `k_login_promotion`</dt>
+   *   <dd>Applied user's purchase option. </dd>
+   * 
+   *   <dt>string `k_promotion`</dt>
+   *   <dd>Purchase option. </dd>
+   * 
+   *   <dt>string `k_session_pass`</dt>
+   *   <dd>Applied session pass. </dd>
+   * 
+   *   <dt>string `text_promotion`</dt>
+   *   <dd>Purchase option title.</dd>
+   * </dl>
+   * @post result
+   * @var array[]
+   */
+  public $a_visit_payment;
 
   /**
    * Determines whether the class/event can be booked at this step or not.

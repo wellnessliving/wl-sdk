@@ -20,7 +20,7 @@ class ConvertModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_promotion`</dt>
-   *   <dd>The promotion key. 
+   *   <dd>The promotion key. </dd>
    * 
    *   <dt>string `text_title`</dt>
    *   <dd>The title of the promotion.</dd>

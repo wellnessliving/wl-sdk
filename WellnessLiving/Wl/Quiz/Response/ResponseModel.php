@@ -22,7 +22,7 @@ class ResponseModel extends WlModelAbstract
    *   <dd>Date and time of the quiz changes.</dd>
    * 
    *   <dt>string `uid_actor`</dt>
-   *   <dd>User's key. 
+   *   <dd>User's key. </dd>
    * 
    *   <dt>int `id_activity`</dt>
    *
@@ -1240,13 +1240,13 @@ class ResponseModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string `k_appointment`</dt>
-   *   <dd>Appointment key to pay for. 
+   *   <dd>Appointment key to pay for. </dd>
    * 
    *   <dt>string `k_id`</dt>
    *   <dd>Item key within <var>id_table</var> table that Quick Buy performed for.</dd>
    * 
    *   <dt>string `k_visit`</dt>
-   *   <dd>Visit key to pay for. 
+   *   <dd>Visit key to pay for. </dd>
    * 
    *   <dt>string `uid`</dt>
    *   <dd>User that Quick Buy performed for.</dd>

@@ -14,7 +14,7 @@ class ListModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_member_group`</dt>
-   *   <dd>The key of the member group. 
+   *   <dd>The key of the member group. </dd>
    * 
    *   <dt>string `text_title`</dt>
    *   <dd>The name of the member group.</dd>

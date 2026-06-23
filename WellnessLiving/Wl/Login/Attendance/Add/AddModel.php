@@ -21,7 +21,8 @@ class AddModel extends WlModelAbstract
    *   <dt>string `k_login_promotion`</dt>
    *   <dd>
    *     The login promotion key, available to pay for the session.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string `text_title`</dt>
    *   <dd>The title of the login promotion.</dd>
@@ -39,7 +40,8 @@ class AddModel extends WlModelAbstract
    *   <dt>string `k_session_pass`</dt>
    *   <dd>
    *     The session pass key, available to pay for the session.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string `text_title`</dt>
    *   <dd>The title of the session pass.</dd>

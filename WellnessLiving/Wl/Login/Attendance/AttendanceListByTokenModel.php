@@ -2,11 +2,14 @@
 
 namespace WellnessLiving\Wl\Login\Attendance;
 
+use WellnessLiving\Core\Quiz\ResponseStatusSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Member\Progress\Field\MeasurementSid;
 use WellnessLiving\Wl\Member\Progress\Field\ProgressFieldSid;
 use WellnessLiving\Wl\Member\Progress\Field\TypeSid;
+use WellnessLiving\Wl\Profile\PurchaseList\PurchaseListElementModel;
+use WellnessLiving\Wl\Visit\WlVisitSid;
 use WellnessLiving\Wl\WlProgramSid;
 
 /**
@@ -23,11 +26,13 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dt>array `a_info`</dt>
    *   <dd>
    *     Information about member.
-   * *     <dl>
+   * 
+   *     <dl>
    *       <dt>array[] `a_icon`</dt>
    *       <dd>
    *         List of icons with additional information about business member.
-   *    *         <dl>
+   *    
+   *         <dl>
    *           <dt>string `s_color_background`</dt>
    *           <dd>Color of background.</dd>
    * 
@@ -115,7 +120,8 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dt>string `k_currency`</dt>
    *       <dd>
    *         Currency of business <var>$k_business</var>.
-   *    *    It is currency of amount <var>m_credit</var>.
+   *    
+   *    It is currency of amount <var>m_credit</var>.
    *       </dd>
    * 
    *       <dt>string `m_credit`</dt>
@@ -197,7 +203,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dd>Field type ID. One of the {@link TypeSid} constants.</dd>
    * 
    *       <dt>string `k_field`</dt>
-   *       <dd>Field key. 
+   *       <dd>Field key. </dd>
    * 
    *       <dt>mixed `x_value`</dt>
    *       <dd>Progress field log value.</dd>
@@ -210,9 +216,10 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dt>array[] `a_quiz`</dt>
    *   <dd>
    *     Quiz information that concerns current visit.
-   *   *     <dl>
-   *       <dt>bool `id_status`</dt>
-   *       <dd>Response status ID.</dd>
+   *   
+   *     <dl>
+   *       <dt>int `id_status`</dt>
+   *       <dd>Response status ID. One of {@link ResponseStatusSid} constants.</dd>
    * 
    *       <dt>bool `is_hide`</dt>
    *       <dd>Whether it's hidden. `true` quiz is hidden, `false` otherwise.</dd>
@@ -221,13 +228,13 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dd>Whether it's required. `true` quiz is required, `false` otherwise.</dd>
    * 
    *       <dt>string `k_quiz`</dt>
-   *       <dd>Quiz key. 
+   *       <dd>Quiz key. </dd>
    * 
    *       <dt>string `k_quiz_login`</dt>
-   *       <dd>Quiz login key. 
+   *       <dd>Quiz login key. </dd>
    * 
    *       <dt>string `k_quiz_response`</dt>
-   *       <dd>Quiz response key. 
+   *       <dd>Quiz response key. </dd>
    * 
    *       <dt>string `text_title`</dt>
    *       <dd>Quiz title.</dd>
@@ -242,7 +249,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dd>Index of the resource among multiple assets. `0` if the resource was booked from the wait list.</dd>
    * 
    *       <dt>string `k_resource`</dt>
-   *       <dd>Resource key. 
+   *       <dd>Resource key. </dd>
    * 
    *       <dt>string `text_alias`</dt>
    *       <dd>Resource layout alias.</dd>
@@ -282,7 +289,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dd>Device name.</dd>
    * 
    *       <dt>string `uid`</dt>
-   *       <dd>User key. 
+   *       <dd>User key. </dd>
    *     </dl>
    *   </dd>
    * 
@@ -343,7 +350,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dd>The program ID of the Purchase Option. One of the {@link WlProgramSid} constants.</dd>
    * 
    *   <dt>int `id_visit`</dt>
-   *   <dd>The status of the visit.</dd>
+   *   <dd>The status of the visit. One of the {@link WlVisitSid} constants.</dd>
    * 
    *   <dt>bool `is_attend`</dt>
    *   <dd>This will be `true` if the client has attended the visit.</dd>
@@ -404,7 +411,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    * 
    *   <dt>object|null `o_purchase_item`</dt>
    *   <dd>
-   *     The purchase used to pay for the session.
+   *     The purchase used to pay for the session. Instance of {@link PurchaseListElementModel}.
    * `null` if the visit has no associated purchase or access is denied. Only present when
    * `is_purchase_info_return` is `true`.
    *   </dd>
@@ -492,11 +499,13 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dt>array `a_info`</dt>
    *   <dd>
    *     Information about member.
-   * *     <dl>
+   * 
+   *     <dl>
    *       <dt>array[] `a_icon`</dt>
    *       <dd>
    *         List of icons with additional information about business member.
-   *    *         <dl>
+   *    
+   *         <dl>
    *           <dt>string `s_color_background`</dt>
    *           <dd>Color of background.</dd>
    * 
@@ -584,7 +593,8 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dt>string `k_currency`</dt>
    *       <dd>
    *         Currency of business <var>$k_business</var>.
-   *    *    It is currency of amount <var>m_credit</var>.
+   *    
+   *    It is currency of amount <var>m_credit</var>.
    *       </dd>
    * 
    *       <dt>string `m_credit`</dt>
@@ -666,7 +676,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dd>Field type ID. One of the {@link TypeSid} constants.</dd>
    * 
    *       <dt>string `k_field`</dt>
-   *       <dd>Field key. 
+   *       <dd>Field key. </dd>
    * 
    *       <dt>mixed `x_value`</dt>
    *       <dd>Progress field log value.</dd>
@@ -679,9 +689,10 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dt>array[] `a_quiz`</dt>
    *   <dd>
    *     Quiz information that concerns current visit.
-   *   *     <dl>
-   *       <dt>bool `id_status`</dt>
-   *       <dd>Response status ID.</dd>
+   *   
+   *     <dl>
+   *       <dt>int `id_status`</dt>
+   *       <dd>Response status ID. One of {@link ResponseStatusSid} constants.</dd>
    * 
    *       <dt>bool `is_hide`</dt>
    *       <dd>Whether it's hidden. `true` quiz is hidden, `false` otherwise.</dd>
@@ -690,13 +701,13 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dd>Whether it's required. `true` quiz is required, `false` otherwise.</dd>
    * 
    *       <dt>string `k_quiz`</dt>
-   *       <dd>Quiz key. 
+   *       <dd>Quiz key. </dd>
    * 
    *       <dt>string `k_quiz_login`</dt>
-   *       <dd>Quiz login key. 
+   *       <dd>Quiz login key. </dd>
    * 
    *       <dt>string `k_quiz_response`</dt>
-   *       <dd>Quiz response key. 
+   *       <dd>Quiz response key. </dd>
    * 
    *       <dt>string `text_title`</dt>
    *       <dd>Quiz title.</dd>
@@ -711,7 +722,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dd>Index of the resource among multiple assets. `0` if the resource was booked from the wait list.</dd>
    * 
    *       <dt>string `k_resource`</dt>
-   *       <dd>Resource key. 
+   *       <dd>Resource key. </dd>
    * 
    *       <dt>string `text_alias`</dt>
    *       <dd>Resource layout alias.</dd>
@@ -751,7 +762,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dd>Device name.</dd>
    * 
    *       <dt>string `uid`</dt>
-   *       <dd>User key. 
+   *       <dd>User key. </dd>
    *     </dl>
    *   </dd>
    * 
@@ -812,7 +823,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dd>The program ID of the Purchase Option. One of the {@link WlProgramSid} constants.</dd>
    * 
    *   <dt>int `id_visit`</dt>
-   *   <dd>The status of the visit.</dd>
+   *   <dd>The status of the visit. One of the {@link WlVisitSid} constants.</dd>
    * 
    *   <dt>bool `is_attend`</dt>
    *   <dd>This will be `true` if the client has attended the visit.</dd>
@@ -873,7 +884,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    * 
    *   <dt>object|null `o_purchase_item`</dt>
    *   <dd>
-   *     The purchase used to pay for the session.
+   *     The purchase used to pay for the session. Instance of {@link PurchaseListElementModel}.
    * `null` if the visit has no associated purchase or access is denied. Only present when
    * `is_purchase_info_return` is `true`.
    *   </dd>
@@ -961,11 +972,13 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dt>array `a_info`</dt>
    *   <dd>
    *     Information about member.
-   * *     <dl>
+   * 
+   *     <dl>
    *       <dt>array[] `a_icon`</dt>
    *       <dd>
    *         List of icons with additional information about business member.
-   *    *         <dl>
+   *    
+   *         <dl>
    *           <dt>string `s_color_background`</dt>
    *           <dd>Color of background.</dd>
    * 
@@ -1053,7 +1066,8 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dt>string `k_currency`</dt>
    *       <dd>
    *         Currency of business <var>$k_business</var>.
-   *    *    It is currency of amount <var>m_credit</var>.
+   *    
+   *    It is currency of amount <var>m_credit</var>.
    *       </dd>
    * 
    *       <dt>string `m_credit`</dt>
@@ -1135,7 +1149,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dd>Field type ID. One of the {@link TypeSid} constants.</dd>
    * 
    *       <dt>string `k_field`</dt>
-   *       <dd>Field key. 
+   *       <dd>Field key. </dd>
    * 
    *       <dt>mixed `x_value`</dt>
    *       <dd>Progress field log value.</dd>
@@ -1148,9 +1162,10 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dt>array[] `a_quiz`</dt>
    *   <dd>
    *     Quiz information that concerns current visit.
-   *   *     <dl>
-   *       <dt>bool `id_status`</dt>
-   *       <dd>Response status ID.</dd>
+   *   
+   *     <dl>
+   *       <dt>int `id_status`</dt>
+   *       <dd>Response status ID. One of {@link ResponseStatusSid} constants.</dd>
    * 
    *       <dt>bool `is_hide`</dt>
    *       <dd>Whether it's hidden. `true` quiz is hidden, `false` otherwise.</dd>
@@ -1159,13 +1174,13 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dd>Whether it's required. `true` quiz is required, `false` otherwise.</dd>
    * 
    *       <dt>string `k_quiz`</dt>
-   *       <dd>Quiz key. 
+   *       <dd>Quiz key. </dd>
    * 
    *       <dt>string `k_quiz_login`</dt>
-   *       <dd>Quiz login key. 
+   *       <dd>Quiz login key. </dd>
    * 
    *       <dt>string `k_quiz_response`</dt>
-   *       <dd>Quiz response key. 
+   *       <dd>Quiz response key. </dd>
    * 
    *       <dt>string `text_title`</dt>
    *       <dd>Quiz title.</dd>
@@ -1180,7 +1195,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dd>Index of the resource among multiple assets. `0` if the resource was booked from the wait list.</dd>
    * 
    *       <dt>string `k_resource`</dt>
-   *       <dd>Resource key. 
+   *       <dd>Resource key. </dd>
    * 
    *       <dt>string `text_alias`</dt>
    *       <dd>Resource layout alias.</dd>
@@ -1220,7 +1235,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *       <dd>Device name.</dd>
    * 
    *       <dt>string `uid`</dt>
-   *       <dd>User key. 
+   *       <dd>User key. </dd>
    *     </dl>
    *   </dd>
    * 
@@ -1281,7 +1296,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *   <dd>The program ID of the Purchase Option. One of the {@link WlProgramSid} constants.</dd>
    * 
    *   <dt>int `id_visit`</dt>
-   *   <dd>The status of the visit.</dd>
+   *   <dd>The status of the visit. One of the {@link WlVisitSid} constants.</dd>
    * 
    *   <dt>bool `is_attend`</dt>
    *   <dd>This will be `true` if the client has attended the visit.</dd>
@@ -1342,7 +1357,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    * 
    *   <dt>object|null `o_purchase_item`</dt>
    *   <dd>
-   *     The purchase used to pay for the session.
+   *     The purchase used to pay for the session. Instance of {@link PurchaseListElementModel}.
    * `null` if the visit has no associated purchase or access is denied. Only present when
    * `is_purchase_info_return` is `true`.
    *   </dd>

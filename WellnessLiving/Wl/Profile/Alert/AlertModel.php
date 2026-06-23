@@ -27,10 +27,10 @@ class AlertModel extends WlModelAbstract
    *   <dd>ID of alert type. One of {@link WlProfileNoteSid} constants.</dd>
    * 
    *   <dt>string `k_pay_account`</dt>
-   *   <dd>The key of the client's account. 
+   *   <dd>The key of the client's account. </dd>
    * 
    *   <dt>string `k_purchase_item`</dt>
-   *   <dd>The key of the purchase item. 
+   *   <dd>The key of the purchase item. </dd>
    * 
    *   <dt>string `s_text`</dt>
    *   <dd>The alert's text.</dd>
@@ -45,7 +45,7 @@ class AlertModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string[] `a_location_flag`</dt>
-   *   <dd>The list of location keys where this note is flagged. 
+   *   <dd>The list of location keys where this note is flagged. </dd>
    * 
    *   <dt>bool `dt_create`</dt>
    *   <dd>The date and time in MySQL format in local time when the warning was created.</dd>

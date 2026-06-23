@@ -26,7 +26,7 @@ class LogModel extends WlModelAbstract
    *   <dd>Field type ID. One of the {@link TypeSid} constants.</dd>
    * 
    *   <dt>string `k_field`</dt>
-   *   <dd>Field key. 
+   *   <dd>Field key. </dd>
    * 
    *   <dt>mixed `x_value`</dt>
    *   <dd>Progress field log value.</dd>

@@ -17,7 +17,8 @@ class InfoModel extends WlModelAbstract
    *   <dt>array[] `a_icon`</dt>
    *   <dd>
    *     List of icons with additional information about business member.
-   *    *     <dl>
+   *    
+   *     <dl>
    *       <dt>string `s_color_background`</dt>
    *       <dd>Color of background.</dd>
    * 
@@ -105,7 +106,8 @@ class InfoModel extends WlModelAbstract
    *   <dt>string `k_currency`</dt>
    *   <dd>
    *     Currency of business <var>$k_business</var>.
-   *    *    It is currency of amount <var>m_credit</var>.
+   *    
+   *    It is currency of amount <var>m_credit</var>.
    *   </dd>
    * 
    *   <dt>string `m_credit`</dt>
@@ -160,7 +162,7 @@ class InfoModel extends WlModelAbstract
 
   /**
    * List of users data.
-   * Keys - users primary keys.
+   * Keys - users primary keys. Values - users data. 
    * Keys refer to clients' primary keys, and values refer to clients' data.
    * If `null`, data for a single client is being requested.
    *
@@ -172,7 +174,8 @@ class InfoModel extends WlModelAbstract
    *       <dt>array[] `a_icon`</dt>
    *       <dd>
    *         List of icons with additional information about business member.
-   *    *         <dl>
+   *    
+   *         <dl>
    *           <dt>string `s_color_background`</dt>
    *           <dd>Color of background.</dd>
    * 
@@ -260,7 +263,8 @@ class InfoModel extends WlModelAbstract
    *       <dt>string `k_currency`</dt>
    *       <dd>
    *         Currency of business <var>$k_business</var>.
-   *    *    It is currency of amount <var>m_credit</var>.
+   *    
+   *    It is currency of amount <var>m_credit</var>.
    *       </dd>
    * 
    *       <dt>string `m_credit`</dt>
@@ -361,16 +365,18 @@ class InfoModel extends WlModelAbstract
    * 
    *   <dt>string|null `k_appointment`</dt>
    *   <dd>
-   *     Appointment key. * `null` if it is not service or asset session.
+   *     Appointment key. 
+   * `null` if it is not service or asset session.
    *   </dd>
    * 
    *   <dt>string|null `k_class_period`</dt>
    *   <dd>
-   *     Class period key. * `null` if it is not class or event session.
+   *     Class period key. 
+   * `null` if it is not class or event session.
    *   </dd>
    * 
    *   <dt>string `k_location`</dt>
-   *   <dd>Location key. 
+   *   <dd>Location key. </dd>
    * </dl>
    * @get result
    * @var array
@@ -386,16 +392,18 @@ class InfoModel extends WlModelAbstract
    * 
    *   <dt>string|null `k_appointment`</dt>
    *   <dd>
-   *     Appointment key. * `null` if it is not service or asset session.
+   *     Appointment key. 
+   * `null` if it is not service or asset session.
    *   </dd>
    * 
    *   <dt>string|null `k_class_period`</dt>
    *   <dd>
-   *     Class period key. * `null` if it is not class or event session.
+   *     Class period key. 
+   * `null` if it is not class or event session.
    *   </dd>
    * 
    *   <dt>string `k_location`</dt>
-   *   <dd>Location key. 
+   *   <dd>Location key. </dd>
    * </dl>
    * @get result
    * @var array

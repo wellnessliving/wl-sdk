@@ -2,7 +2,9 @@
 
 namespace WellnessLiving\Wl\Profile\Form\Response;
 
+use WellnessLiving\Core\Quiz\ResponseStatusSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Quiz\Response\SourceSid;
 
 /**
  * Retrieves a list of a user's quiz responses.
@@ -16,7 +18,8 @@ class ResponseListModel extends WlModelAbstract
    *   <dt>string[] `a_visit`</dt>
    *   <dd>
    *     List of visit keys associated with uncompleted response.
-   *    Key is visit key. *    Value is date of visit.
+   *    Key is visit key. 
+   *    Value is date of visit.
    *   </dd>
    * 
    *   <dt>string `dtl_date`</dt>
@@ -24,7 +27,7 @@ class ResponseListModel extends WlModelAbstract
    * 
    *   <dt>int `id_source`</dt>
    *   <dd>
-   *     The place where the request to fill out a quiz form occurred.
+   *     The place where the request to fill out a quiz form occurred. One of the {@link SourceSid} constants.
    *   </dd>
    * 
    *   <dt>bool `is_private`</dt>
@@ -35,14 +38,15 @@ class ResponseListModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string `k_quiz`</dt>
-   *   <dd>The quiz key. 
+   *   <dd>The quiz key. </dd>
    * 
    *   <dt>string `k_quiz_login`</dt>
-   *   <dd>The key of the request. 
+   *   <dd>The key of the request. </dd>
    * 
    *   <dt>string|null `k_quiz_response`</dt>
    *   <dd>
-   *     Key of the response. *    Not `null` in case when response in draft status.
+   *     Key of the response. 
+   *    Not `null` in case when response in draft status.
    *   </dd>
    * 
    *   <dt>string `text_title`</dt>
@@ -60,7 +64,8 @@ class ResponseListModel extends WlModelAbstract
    *   <dt>string[] `a_visit`</dt>
    *   <dd>
    *     List of visit keys associated with uncompleted response.
-   *    Key is visit key. *    Value is date of visit.
+   *    Key is visit key. 
+   *    Value is date of visit.
    *   </dd>
    * 
    *   <dt>string `dtl_date`</dt>
@@ -68,11 +73,11 @@ class ResponseListModel extends WlModelAbstract
    * 
    *   <dt>int `id_source`</dt>
    *   <dd>
-   *     The place where the request to fill out the quiz form occurred.
+   *     The place where the request to fill out the quiz form occurred. One of the {@link SourceSid} constants.
    *   </dd>
    * 
    *   <dt>int `id_status`</dt>
-   *   <dd>Status of the response.</dd>
+   *   <dd>Status of the response. One of {@link ResponseStatusSid} constants.</dd>
    * 
    *   <dt>bool `is_private`</dt>
    *   <dd>
@@ -82,10 +87,10 @@ class ResponseListModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string `k_quiz`</dt>
-   *   <dd>The quiz key. 
+   *   <dd>The quiz key. </dd>
    * 
    *   <dt>string `k_quiz_login`</dt>
-   *   <dd>The quiz response key. 
+   *   <dd>The quiz response key. </dd>
    * 
    *   <dt>string|null `text_amend_date`</dt>
    *   <dd>Date when response amended.

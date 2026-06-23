@@ -33,7 +33,7 @@ class Finish47Model extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_appointment`</dt>
-   *   <dd>The appointment key. 
+   *   <dd>The appointment key. </dd>
    * </dl>
    * @post result
    * @var array[]
@@ -61,17 +61,18 @@ class Finish47Model extends WlModelAbstract
    *       <dd>Solution type.</dd>
    * 
    *       <dt>string `k_resource`</dt>
-   *       <dd>New asset. 
+   *       <dd>New asset. </dd>
    * 
    *       <dt>string|null `k_staff`</dt>
-   *       <dd>New staff member. l` in a case of asset booking.</dd>
+   *       <dd>New staff member.  `null` in a case of asset booking.</dd>
    *     </dl>
    *   </dd>
    * 
    *   <dt>array `a_product`</dt>
    *   <dd>
    *     Add-ons to the appointment. Specify this for appointment bookings only.
-   * Old format: array keys refer to primary keys. * New format: each element is an array:
+   * Old format: array keys refer to primary keys. 
+   * New format: each element is an array:
    *     <dl>
    *       <dt>int `i_count`</dt>
    *       <dd>The add-on count</dd>
@@ -80,7 +81,7 @@ class Finish47Model extends WlModelAbstract
    *       <dd>The add-on use count.</dd>
    * 
    *       <dt>string `k_shop_product_option`</dt>
-   *       <dd>The key of add-on. 
+   *       <dd>The key of add-on. </dd>
    *     </dl>
    *   </dd>
    * 
@@ -125,7 +126,7 @@ class Finish47Model extends WlModelAbstract
    *   <dt>array `a_resource`</dt>
    *   <dd>
    *     A list of assets for the appointment booking.
-   * Keys refer to asset categories. es refer to arrays with the next keys:
+   * Keys refer to asset categories.  Values refer to arrays with the next keys:
    * 
    * Specify this only for the appointment booking.
    *     <dl>
@@ -133,7 +134,7 @@ class Finish47Model extends WlModelAbstract
    *       <dd>The asset index on the layout. Specify this only if the asset category has a layout.</dd>
    * 
    *       <dt>string `k_resource`</dt>
-   *       <dd>The asset. 
+   *       <dd>The asset. </dd>
    *     </dl>
    *   </dd>
    * 
@@ -163,32 +164,36 @@ class Finish47Model extends WlModelAbstract
    * 
    *   <dt>string `k_login_prize`</dt>
    *   <dd>The user's prize.
-   * 
+   * </dd>
    * 
    *   <dt>string `k_login_promotion`</dt>
    *   <dd>
    *     The user's pass (for example, a membership or a package).
    * Specify this if you want to set the pass to use to pay for the booking.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string `k_resource`</dt>
    *   <dd>
    *     The asset booking. Specify this for separate asset bookings only.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string `k_service`</dt>
    *   <dd>
    *     The appointment booking. Specify this for appointment bookings only.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string `k_session_pass`</dt>
-   *   <dd>The user's pass. 
+   *   <dd>The user's pass. </dd>
    * 
    *   <dt>string `k_staff`</dt>
    *   <dd>
    *     The staff member conducting the appointment.
    * Specify this for appointment bookings only.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string `k_staff_date`</dt>
    *   <dd>
@@ -196,7 +201,8 @@ class Finish47Model extends WlModelAbstract
    * The difference between this an <var>k_staff</var> is that this value must be set only in cases
    * when you want to add a customer to an appointment that already exists.
    * Specify this for appointment bookings only.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string `m_tip_appointment`</dt>
    *   <dd>The amount of selected tips.</dd>
@@ -245,14 +251,14 @@ class Finish47Model extends WlModelAbstract
    * 
    *   <dt>bool `is_hide`</dt>
    *   <dd>Whether this payment method is hidden.
-   *  
+   *  </dd>
    * 
    *   <dt>bool `is_success`</dt>
    *   <dd>Whether this source was successfully charged.</dd>
    * 
    *   <dt>string `m_fee`</dt>
    *   <dd>Fee amount for this payment source.
-   *   
+   *   </dd>
    * 
    *   <dt>string `m_surcharge`</dt>
    *   <dd>Surcharge amount for this payment source.</dd>
@@ -319,10 +325,10 @@ class Finish47Model extends WlModelAbstract
    *   <dd>Promotion key or appointment key. Depends on <var>id_purchase_item</var> of this array.</dd>
    * 
    *   <dt>string `k_login_promotion`</dt>
-   *   <dd>Login promotion key. 
+   *   <dd>Login promotion key. </dd>
    * 
    *   <dt>string `k_session_pass`</dt>
-   *   <dd>Session pass key. 
+   *   <dd>Session pass key. </dd>
    * 
    *   <dt>string `text_discount_code`</dt>
    *   <dd>Discount code.</dd>
@@ -402,14 +408,17 @@ class Finish47Model extends WlModelAbstract
    *   <dt>bool `is_free`</dt>
    *   <dd>`true` if the visit is free; `false` otherwise.</dd>
    * 
+   *   <dt>bool `is_waitlist`</dt>
+   *   <dd>`true` whether the booked slot was waitlisted; `false` otherwise.</dd>
+   * 
    *   <dt>string `k_login_promotion`</dt>
-   *   <dd>Applied user's purchase option. 
+   *   <dd>Applied user's purchase option. </dd>
    * 
    *   <dt>string `k_promotion`</dt>
-   *   <dd>Purchase option. 
+   *   <dd>Purchase option. </dd>
    * 
    *   <dt>string `k_session_pass`</dt>
-   *   <dd>Applied session pass. 
+   *   <dd>Applied session pass. </dd>
    * 
    *   <dt>string `text_promotion`</dt>
    *   <dd>Purchase option title.</dd>
@@ -493,7 +502,7 @@ class Finish47Model extends WlModelAbstract
    * Key of timezone.
    *
    * `null` if not set then use default timezone client.
-   * 
+   *
    * @post get
    * @var null|string
    */

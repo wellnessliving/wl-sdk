@@ -29,9 +29,10 @@ class SkinForeignModel extends WlModelAbstract
    *   <dt>string `k_promotion`</dt>
    *   <dd>
    *     Key of the purchase option to be granted to each added lead for free.
-   *   *   </dd>
+   *   
+   *   </dd>
    * 
-   *   <dt>string `is_redirect_self`</dt>
+   *   <dt>bool `is_redirect_self`</dt>
    *   <dd>`true` if redirection after lead is captured should be done in the same tab, `false` - in a new tab.</dd>
    * 
    *   <dt>string `url_redirect`</dt>
@@ -50,8 +51,8 @@ class SkinForeignModel extends WlModelAbstract
    * Profile fields, which should be shown on the widget and if they are required or optional.
    *
    * <dl>
-   *   <dt>bool `k_field`</dt>
-   *   <dd>Field key. 
+   *   <dt>string `k_field`</dt>
+   *   <dd>Field key. </dd>
    * 
    *   <dt>bool `is_required`</dt>
    *   <dd>`true` if field should be required, `false` - optional.</dd>

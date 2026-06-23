@@ -60,7 +60,8 @@ class EditByTokenModel extends WlModelAbstract
    *   <dt>string `uid_from`</dt>
    *   <dd>
    *     User key of the relative (must be the currently logged-in user).
-   * *   </dd>
+   * 
+   *   </dd>
    * </dl>
    * @post post
    * @var array|null
@@ -130,7 +131,7 @@ class EditByTokenModel extends WlModelAbstract
    *   <dt>int `id_field_general`</dt>
    *   <dd>
    *     The ID of a system field. One of the {@link WlFieldGeneralSid} constants.
-   * This value is only defined if <var>id_field_type</var>
+   * This value is only defined if <var>id_field_type</var>={@link WlFieldTypeSid::GENERAL}.
    *   </dd>
    * 
    *   <dt>bool `is_require`</dt>
@@ -181,7 +182,6 @@ class EditByTokenModel extends WlModelAbstract
    * * If the client is already authorized, the field value will not be used.
    * * If the client is not authorized and no value is set, {@link RegisterSourceSid::SELF} will be used.
    *
-   * 
    * @get get
    * @post get
    * @put get

@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Classes\ClassList;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Service\BookableSid;
 
 /**
  * An endpoint to get all the classes for a location.
@@ -16,15 +17,16 @@ class BookListModel extends WlModelAbstract
    *   <dt>string[] `a_class_tab`</dt>
    *   <dd>
    *     The list of class tab keys for the class.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string[] `a_login_type`</dt>
    *   <dd>List of login types for current class.
-   * 
+   * </dd>
    * 
    *   <dt>string[] `a_member_group`</dt>
    *   <dd>List of member groups for current class.
-   * 
+   * </dd>
    * 
    *   <dt>string[] `a_url_book`</dt>
    *   <dd>The list of URL to book this class.</dd>
@@ -36,7 +38,7 @@ class BookListModel extends WlModelAbstract
    *   <dd>Class capacity.</dd>
    * 
    *   <dt>int `id_bookable`</dt>
-   *   <dd>Bookable type ID.</dd>
+   *   <dd>Bookable type ID. One of {@link BookableSid} constants.</dd>
    * 
    *   <dt>bool `is_active`</dt>
    *   <dd>This will be `true` if the class is active. Otherwise, this will be `false`.</dd>
@@ -51,10 +53,10 @@ class BookListModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string `k_class`</dt>
-   *   <dd>The class key. 
+   *   <dd>The class key. </dd>
    * 
    *   <dt>string `k_enrollment_block`</dt>
-   *   <dd>The enrollment block key. 
+   *   <dd>The enrollment block key. </dd>
    * 
    *   <dt>string `m_price_total`</dt>
    *   <dd>The total price for an event.</dd>

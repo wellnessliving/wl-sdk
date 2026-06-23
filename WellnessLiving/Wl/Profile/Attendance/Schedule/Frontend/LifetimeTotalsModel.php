@@ -20,7 +20,7 @@ class LifetimeTotalsModel extends WlModelAbstract
    *   <dt>string `text_title`</dt>
    *   <dd>Total title.</dd>
    * 
-   *   <dt>int `s_value`</dt>
+   *   <dt>string `s_value`</dt>
    *   <dd>Total value.</dd>
    * </dl>
    * @get result

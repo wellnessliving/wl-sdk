@@ -13,16 +13,16 @@ class ActionModel extends WlModelAbstract
    * A list reward actions. Every element has next keys:
    *
    * <dl>
-   *   <dt>int|bool `id_reward_action_category`</dt>
+   *   <dt>int `id_reward_action_category`</dt>
    *   <dd>
    *     ID of reward actions category type. <tt>false</tt> for custom reward actions categories.
    *   </dd>
    * 
    *   <dt>string `k_reward_action`</dt>
-   *   <dd>ID of reward action. 
+   *   <dd>ID of reward action. </dd>
    * 
    *   <dt>string `k_reward_action_category`</dt>
-   *   <dd>ID of reward action category in database. 
+   *   <dd>ID of reward action category in database. </dd>
    * </dl>
    * @get result
    * @var string[]

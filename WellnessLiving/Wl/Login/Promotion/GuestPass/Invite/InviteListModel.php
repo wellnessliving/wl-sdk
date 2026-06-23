@@ -50,7 +50,8 @@ class InviteListModel extends WlModelAbstract
    * 
    *       <dt>string|null `uid`</dt>
    *       <dd>
-   *         Guest user key. * `null` if the guest did not have an account when the invitation was sent.
+   *         Guest user key. 
+   * `null` if the guest did not have an account when the invitation was sent.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -122,21 +123,23 @@ class InviteListModel extends WlModelAbstract
    *   <dt>string|null `k_login_promotion_guest`</dt>
    *   <dd>
    *     Login promotion key granted to the guest upon acceptance.
-   * * `null` if the invitation has not been accepted.
+   * 
+   * `null` if the invitation has not been accepted.
    *   </dd>
    * 
    *   <dt>string `k_login_promotion_host`</dt>
    *   <dd>Login promotion key of the host membership.
-   * 
+   * </dd>
    * 
    *   <dt>string `k_promotion`</dt>
    *   <dd>Guest promotion key.
-   * 
+   * </dd>
    * 
    *   <dt>string|null `k_visit`</dt>
    *   <dd>
    *     Visit key redeemed with this guest pass.
-   * * `null` if no visit is associated.
+   * 
+   * `null` if no visit is associated.
    *   </dd>
    * 
    *   <dt>string `s_secret`</dt>
@@ -162,7 +165,8 @@ class InviteListModel extends WlModelAbstract
    *   <dt>string|null `uid_host`</dt>
    *   <dd>
    *     User key of the host who sent the invitation.
-   * * `null` if the host could not be resolved.
+   * 
+   * `null` if the host could not be resolved.
    *   </dd>
    * 
    *   <dt>string `url_service`</dt>

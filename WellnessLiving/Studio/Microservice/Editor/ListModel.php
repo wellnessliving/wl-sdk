@@ -20,11 +20,11 @@ class ListModel extends WlModelAbstract
    *   <dt>string `json_path`</dt>
    *   <dd>
    *     A list of repositories and paths of this microservice.
-   *
+   * 
    *   </dd>
    * 
    *   <dt>string `k_project`</dt>
-   *   <dd>Project key.</dd>
+   *   <dd>Project key. </dd>
    * 
    *   <dt>string `s_file`</dt>
    *   <dd>File name.</dd>
@@ -32,13 +32,13 @@ class ListModel extends WlModelAbstract
    *   <dt>string `s_group`</dt>
    *   <dd>
    *     The group to which the microservice belongs.
-   *   See details in the <var>s_group</var>
+   *   
    *   </dd>
    * 
    *   <dt>string `s_variable`</dt>
    *   <dd>
    *     Microservice-specific variables. A set of pairs key=value, separated by newlines.
-   *
+   * 
    *   </dd>
    * 
    *   <dt>string `text_project`</dt>

@@ -21,10 +21,10 @@ class PageListModel extends WlModelAbstract
    * 
    *   <dt>string `k_business`</dt>
    *   <dd>Key of the business in which this visit was made.
-   * 
+   * </dd>
    * 
    *   <dt>string `k_visit`</dt>
-   *   <dd>Key of a book/visit. 
+   *   <dd>Key of a book/visit. </dd>
    * 
    *   <dt>int `id_visit`</dt>
    *   <dd>Visit status ID. One of {@link WlVisitSid} constants.</dd>

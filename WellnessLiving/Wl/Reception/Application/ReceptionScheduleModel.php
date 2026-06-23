@@ -48,7 +48,7 @@ class ReceptionScheduleModel extends WlModelAbstract
    *   <dd>The session duration in minutes.</dd>
    * 
    *   <dt>int `id_service`</dt>
-   *   <dd>Service ID.</dd>
+   *   <dd>Service ID. One of the {@link ServiceSid} constants.</dd>
    * 
    *   <dt>bool `is_auto`</dt>
    *   <dd>If `true`, the session can be checked in automatically. Otherwise, this will be `false`.</dd>
@@ -100,7 +100,7 @@ class ReceptionScheduleModel extends WlModelAbstract
    *           <dt>int `i_remain`</dt>
    *           <dd>The count of remaining visits.</dd>
    * 
-   *           <dt>bool `s_date`</dt>
+   *           <dt>string `s_date`</dt>
    *           <dd>The calendar period name.</dd>
    *         </dl>
    *       </dd>
@@ -117,7 +117,7 @@ class ReceptionScheduleModel extends WlModelAbstract
    *       <dt>int `i_book_duration`</dt>
    *       <dd>
    *         Number of minutes used for upcoming visits.
-   *
+   *   Has sense only for promotions of program type {@link WlProgramTypeSid::DURATION}.
    *       </dd>
    * 
    *       <dt>int `i_limit`</dt>
@@ -129,7 +129,7 @@ class ReceptionScheduleModel extends WlModelAbstract
    *       <dt>int `i_remain_duration`</dt>
    *       <dd>
    *         Number of minutes left in this promotion.
-   *
+   *   Has sense only for promotions of program type {@link WlProgramTypeSid::DURATION}.
    *       </dd>
    * 
    *       <dt>int `i_use`</dt>
@@ -138,7 +138,7 @@ class ReceptionScheduleModel extends WlModelAbstract
    *       <dt>int `i_use_duration`</dt>
    *       <dd>
    *         Number of minutes used for past visits by this promotion.
-   *
+   *   Has sense only for promotions of program type {@link WlProgramTypeSid::DURATION}.
    *       </dd>
    * 
    *       <dt>int `i_visit_past`</dt>
@@ -160,7 +160,7 @@ class ReceptionScheduleModel extends WlModelAbstract
    *       <dd>If `true`, there's more than one calendar restriction on the pass. Otherwise, this will be `false`.</dd>
    * 
    *       <dt>string `k_login_promotion`</dt>
-   *       <dd>The login promotion key. 
+   *       <dd>The login promotion key. </dd>
    * 
    *       <dt>string `s_remain_measure`</dt>
    *       <dd>The formatted remaining duration on the promotion.</dd>
@@ -200,7 +200,7 @@ class ReceptionScheduleModel extends WlModelAbstract
    *   <dt>string `s_renew`</dt>
    *   <dd>The short format of the promotion renewal date.</dd>
    * 
-   *   <dt>string `show_visits`</dt>
+   *   <dt>bool `show_visits`</dt>
    *   <dd>Determines whether to show the client's total workouts attended on the confirmation screen.</dd>
    * </dl>
    * @post result
@@ -290,7 +290,6 @@ class ReceptionScheduleModel extends WlModelAbstract
   /**
    * The key of the Self Check-In Web App.
    *
-   * 
    * @get get
    * @post get
    * @var string

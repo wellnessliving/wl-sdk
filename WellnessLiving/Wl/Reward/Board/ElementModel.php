@@ -21,7 +21,7 @@ class ElementModel extends WlModelAbstract
    *   <dd>Reward name.</dd>
    * 
    *   <dt>string `uid`</dt>
-   *   <dd>User key. 
+   *   <dd>User key. </dd>
    * 
    *   <dt>string `url_logo`</dt>
    *   <dd>URL to the user logo image.</dd>

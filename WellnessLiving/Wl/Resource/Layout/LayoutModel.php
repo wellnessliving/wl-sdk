@@ -18,10 +18,12 @@ class LayoutModel extends WlModelAbstract
    *   <dt>array `a_image`</dt>
    *   <dd>
    *     The asset's appearance information.
-   * *     <dl>
+   * 
+   *     <dl>
    *       <dt>array `a_image`</dt>
    *       <dd>
-   *         Image data. *         <dl>
+   *         Image data. 
+   *         <dl>
    *           <dt>int `i_height`</dt>
    *           <dd>Actual height of thumbnail image.</dd>
    * 
@@ -86,7 +88,7 @@ class LayoutModel extends WlModelAbstract
    *       </dd>
    * 
    *       <dt>string `url`</dt>
-   *       <dd>Path to image. 
+   *       <dd>Path to image. </dd>
    *     </dl>
    *   </dd>
    * 
@@ -106,7 +108,7 @@ class LayoutModel extends WlModelAbstract
    *   <dd>Asset number.</dd>
    * 
    *   <dt>string `k_resource`</dt>
-   *   <dd>The asset key. 
+   *   <dd>The asset key. </dd>
    * 
    *   <dt>string `s_name`</dt>
    *   <dd>Asset name.</dd>
@@ -124,24 +126,24 @@ class LayoutModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>float `f_height`</dt>
-   *   <dd> Empty for other shapes.</dd>
+   *   <dd>The height for the shape {@link LayoutShapeSid::RECTANGLE}. Empty for other shapes.</dd>
    * 
    *   <dt>float `f_width`</dt>
-   *   <dd> Empty for other shapes.</dd>
+   *   <dd>The width for the shape {@link LayoutShapeSid::RECTANGLE}. Empty for other shapes.</dd>
    * 
    *   <dt>int `i_degree_from`</dt>
-   *   <dd> Empty for other shapes.</dd>
+   *   <dd>The start angle for the shape {@link LayoutShapeSid::PIE}. Empty for other shapes.</dd>
    * 
    *   <dt>int `i_degree_to`</dt>
-   *   <dd> Empty for other shapes.</dd>
+   *   <dd>The start angle for shape {@link LayoutShapeSid::PIE}. Empty for other shapes.</dd>
    * 
    *   <dt>int `i_left`</dt>
    *   <dd>The position of the shape by horizontal axis.</dd>
    * 
    *   <dt>int `i_radius`</dt>
    *   <dd>
-   *     The radius for shapes {@link Wl\Resource\Layout\Shape\LayoutShapeSid::PIE} and
-   * Empty for other shapes.
+   *     The radius for shapes {@link LayoutShapeSid::PIE} and
+   * {@link LayoutShapeSid::CIRCLE}. Empty for other shapes.
    *   </dd>
    * 
    *   <dt>int `i_top`</dt>
@@ -151,7 +153,7 @@ class LayoutModel extends WlModelAbstract
    *   <dd>The shape type ID. One of the {@link LayoutShapeSid} constants.</dd>
    * 
    *   <dt>string `k_resource_layout_shape`</dt>
-   *   <dd>The shape key. 
+   *   <dd>The shape key. </dd>
    * 
    *   <dt>string `s_color_background`</dt>
    *   <dd>The shape's background color.</dd>
@@ -184,7 +186,7 @@ class LayoutModel extends WlModelAbstract
    *   <dd>The vertical position in pixels. Empty if grid is turned on.</dd>
    * 
    *   <dt>int `id_shape_icon`</dt>
-   *   <dd>The icon ID.</dd>
+   *   <dd>The icon ID. One of the {@link ImageIconSid} constants.</dd>
    * </dl>
    * @get result
    * @var array[]

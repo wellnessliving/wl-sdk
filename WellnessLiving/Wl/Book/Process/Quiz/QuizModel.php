@@ -47,7 +47,7 @@ class QuizModel extends WlModelAbstract
    *   <dd>Determines whether the quiz is required.</dd>
    * 
    *   <dt>string `k_quiz`</dt>
-   *   <dd>The quiz key. 
+   *   <dd>The quiz key. </dd>
    * </dl>
    * @get result
    * @var array[]
@@ -57,7 +57,8 @@ class QuizModel extends WlModelAbstract
   /**
    * The list of quiz response keys.
    *
-   * Keys are quiz keys.  Values are response keys.
+   * Keys are quiz keys. 
+   * Values are response keys. 
    *
    * @post post
    * @var string[]
@@ -109,7 +110,7 @@ class QuizModel extends WlModelAbstract
    *   <dt>int `id_duration`</dt>
    *   <dd>
    *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   *
+   * Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
    *   </dd>
    * 
    *   <dt>int `id_period`</dt>
@@ -133,7 +134,7 @@ class QuizModel extends WlModelAbstract
    *   <dd>The order number of the asset (could be from 1 to the asset quantity).</dd>
    * 
    *   <dt>string `k_resource`</dt>
-   *   <dd>The asset key. 
+   *   <dd>The asset key. </dd>
    * </dl>
    * @post post
    * @var array[]
@@ -143,7 +144,8 @@ class QuizModel extends WlModelAbstract
   /**
    * The selected sessions.
    *
-   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
+   * Keys are class period keys. 
+   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
    * @var string[]
@@ -153,7 +155,8 @@ class QuizModel extends WlModelAbstract
   /**
    * The selected sessions on the wait list that are unpaid.
    *
-   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
+   * Keys are class period keys. 
+   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
    * @var string[]

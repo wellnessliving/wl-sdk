@@ -21,10 +21,10 @@ class LocationWorkTimeModel extends WlModelAbstract
    *   <dt>int `i_day`</dt>
    *   <dd>The day of the week, from Monday (1) to Sunday (7). One of the{@link ADateWeekSid} constants.</dd>
    * 
-   *   <dt>string `t_end`</dt>
+   *   <dt>int `t_end`</dt>
    *   <dd>The end time of work, formatted as HH:MM.</dd>
    * 
-   *   <dt>string `t_start`</dt>
+   *   <dt>int `t_start`</dt>
    *   <dd>The start time of work, formatted as HH:MM</dd>
    * </dl>
    * @post post

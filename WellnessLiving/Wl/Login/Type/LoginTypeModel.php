@@ -16,7 +16,7 @@ class LoginTypeModel extends WlModelAbstract
    * A list of login types, keys, and information. Each element is an array with the following information:
    *
    * <dl>
-   *   <dt>bool `id_client_type`</dt>
+   *   <dt>int `id_client_type`</dt>
    *   <dd>Client Type ID.</dd>
    * 
    *   <dt>bool `is_member`</dt>

@@ -22,7 +22,7 @@ class QuizElementModel extends WlModelAbstract
    *   <dd>Date and time of the quiz changes.</dd>
    * 
    *   <dt>string `uid_actor`</dt>
-   *   <dd>User's key. 
+   *   <dd>User's key. </dd>
    * 
    *   <dt>int `id_activity`</dt>
    *
@@ -1205,7 +1205,7 @@ class QuizElementModel extends WlModelAbstract
 
   /**
    * Quiz settings.
-   * *
+   *
    * <dl>
    *   <dt>string[] `a_notify_additional`</dt>
    *   <dd>
@@ -1229,7 +1229,8 @@ class QuizElementModel extends WlModelAbstract
    *     Number of periods email reminders should be sent for incomplete forms after. Type of a period is specified by
    *
    * 
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>int `id_book_request_type`</dt>
    *   <dd>
@@ -1253,9 +1254,9 @@ class QuizElementModel extends WlModelAbstract
    *   <dd>
    *
    * * Related to options:
-   * * * {@link Wl\Quiz\QuizSetting::$is_service_all}
-   * * * {@link Wl\Quiz\QuizSetting::$is_book_before}
-   * * * {@link Wl\Quiz\QuizSetting::$id_book_request_type}
+   * * * {@link \Wl\Quiz\QuizSetting::$is_service_all}
+   * * * {@link \Wl\Quiz\QuizSetting::$is_book_before}
+   * * * {@link \Wl\Quiz\QuizSetting::$id_book_request_type}
    *   </dd>
    * 
    *   <dt>bool `is_book_before`</dt>
@@ -1305,9 +1306,9 @@ class QuizElementModel extends WlModelAbstract
    *   <dd>
    *
    * Related to options:
-   * * {@link Wl\Quiz\QuizSetting::$is_purchase_all}
-   * * {@link Wl\Quiz\QuizSetting::$is_purchase_before}
-   * * {@link Wl\Quiz\QuizSetting::$id_purchase_request_type}
+   * * {@link \Wl\Quiz\QuizSetting::$is_purchase_all}
+   * * {@link \Wl\Quiz\QuizSetting::$is_purchase_before}
+   * * {@link \Wl\Quiz\QuizSetting::$id_purchase_request_type}
    *   </dd>
    * 
    *   <dt>bool `is_purchase_all`</dt>

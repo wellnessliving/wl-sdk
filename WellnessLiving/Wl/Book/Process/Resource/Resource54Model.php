@@ -70,7 +70,7 @@ class Resource54Model extends WlModelAbstract
    *   <dt>int `id_duration`</dt>
    *   <dd>
    *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   *
+   * Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
    *   </dd>
    * 
    *   <dt>int `id_period`</dt>
@@ -91,7 +91,8 @@ class Resource54Model extends WlModelAbstract
    *   <dt>bool[][] `a_client`</dt>
    *   <dd>
    *     A list of clients who have already occupied assets for this session.
-   * 1st level keys are asset keys. * 2nd level keys are asset index numbers (starting from 1).
+   * 1st level keys are asset keys. 
+   * 2nd level keys are asset index numbers (starting from 1).
    * Values are `true` if the asset spot is occupied.
    * For example, to check if asset spot 10 with key '125' is occupied,
    * check `a_client['125']['10']`.
@@ -111,7 +112,8 @@ class Resource54Model extends WlModelAbstract
    *       <dt>array `a_image`</dt>
    *       <dd>
    *         Asset image data.
-   * *         <dl>
+   * 
+   *         <dl>
    *           <dt>int `i_angle`</dt>
    *           <dd>Angle of shape rotation. Set only when `sid_image` equals 'shape'.</dd>
    * 
@@ -161,7 +163,7 @@ class Resource54Model extends WlModelAbstract
    * 
    *       <dt>string `k_resource`</dt>
    *       <dd>The key of the asset in database.
-   * 
+   * </dd>
    * 
    *       <dt>string `s_resource`</dt>
    *       <dd>The title of the asset.</dd>
@@ -196,10 +198,10 @@ class Resource54Model extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string `k_resource_layout`</dt>
-   *   <dd>The key of the asset layout. 
+   *   <dd>The key of the asset layout. </dd>
    * 
    *   <dt>string `k_resource_type`</dt>
-   *   <dd>The key of the asset category. 
+   *   <dd>The key of the asset category. </dd>
    * 
    *   <dt>string `s_resource_type`</dt>
    *   <dd>The title of the asset category.</dd>
@@ -217,7 +219,7 @@ class Resource54Model extends WlModelAbstract
    *   <dd>The asset number. Applies only for assets with a quantity greater than <tt>1</tt>.</dd>
    * 
    *   <dt>string `k_resource`</dt>
-   *   <dd>The asset key. 
+   *   <dd>The asset key. </dd>
    * </dl>
    * @post post
    * @var array
@@ -229,7 +231,8 @@ class Resource54Model extends WlModelAbstract
    * Only makes sense for session events.
    * Optional parameter for GET request: if not passed, all available sessions will be used.
    *
-   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
+   * Keys are class period keys. 
+   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @get get
    * @post get
@@ -240,7 +243,8 @@ class Resource54Model extends WlModelAbstract
   /**
    * The selected sessions on the wait list that are unpaid.
    *
-   * Keys are class period keys.  Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
+   * Keys are class period keys. 
+   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
    * @var string[]

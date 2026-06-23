@@ -18,7 +18,8 @@ class ProcessGroupModel extends WlModelAbstract
   /**
    * List of errors that occurred during booking.
    *
-   * Keys are user keys. * Each value has the next structure: 
+   * Keys are user keys. 
+   * Each value has the next structure: 
    *
    * <dl>
    *   <dt>string `text_code`</dt>
@@ -46,7 +47,7 @@ class ProcessGroupModel extends WlModelAbstract
    *       <dd>Session date/time.</dd>
    * 
    *       <dt>string `k_class_period`</dt>
-   *       <dd>Session key. 
+   *       <dd>Session key. </dd>
    *     </dl>
    *   </dd>
    * 
@@ -77,16 +78,19 @@ class ProcessGroupModel extends WlModelAbstract
    *       </dd>
    * 
    *       <dt>string `k_id`</dt>
-   *       <dd>*          Specify only if you want to purchase a new option.</dd>
+   *       <dd>
+   *          Specify only if you want to purchase a new option.</dd>
    * 
    *       <dt>string `k_login_prize`</dt>
    *       <dd>
-   *         *          Specify if you want to pay by user's prize.
+   *         
+   *          Specify if you want to pay by user's prize.
    *       </dd>
    * 
    *       <dt>string `k_reward_prize`</dt>
    *       <dd>
-   *         *          Specify if you want to redeem a prize for payment.
+   *         
+   *          Specify if you want to redeem a prize for payment.
    *       </dd>
    * 
    *       <dt>string `s_signature`</dt>
@@ -101,7 +105,9 @@ class ProcessGroupModel extends WlModelAbstract
    *   <dd>
    *     Answers for questions.
    *     Required if the service requires answers for questions.
-   *     Keys are quiz keys. *     Values are response keys. *
+   *     Keys are quiz keys. 
+   *     Values are response keys. 
+   *
    *   </dd>
    * 
    *   <dt>array `a_repeat`</dt>
@@ -137,7 +143,7 @@ class ProcessGroupModel extends WlModelAbstract
    *       <dt>int `id_duration`</dt>
    *       <dd>
    *         The measurement unit of `i_duration`. One of the {@link ADurationSid} constants.
-   *
+   *     Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
    *       </dd>
    * 
    *       <dt>int `id_repeat_end`</dt>
@@ -153,7 +159,7 @@ class ProcessGroupModel extends WlModelAbstract
    *       <dd>Order number of the asset.</dd>
    * 
    *       <dt>string `k_resource`</dt>
-   *       <dd>Asset key. 
+   *       <dd>Asset key. </dd>
    *     </dl>
    *   </dd>
    * 
@@ -161,20 +167,22 @@ class ProcessGroupModel extends WlModelAbstract
    *   <dd>
    *     Login promotion key.
    *     Specify only if you want to pay by already purchased option.
-   *     *   </dd>
+   *     
+   *   </dd>
    * 
    *   <dt>string `k_login_promotion_guest_pass`</dt>
    *   <dd>
    *     Guest pass login promotion key.
    *     Specify only if you want to pay with guest pass granted by this login promotion.
-   *     *   </dd>
+   *     
+   *   </dd>
    * 
    *   <dt>string `k_session_pass`</dt>
    *   <dd>Session pass to be used to book a session.
-   *     
+   *     </dd>
    * 
    *   <dt>string `uid`</dt>
-   *   <dd>User key. 
+   *   <dd>User key. </dd>
    * </dl>
    * @post post
    * @var array[]
@@ -204,9 +212,7 @@ class ProcessGroupModel extends WlModelAbstract
    *         The payment address:
    *         <dl>
    *           <dt>bool `is_new`</dt>
-   *           <dd>
-   *             Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
-   *           </dd>
+   *           <dd>Set this value to `1` to add a new payment address or to `0` to use a saved payment address.</dd>
    * 
    *           <dt>string `k_geo_country`</dt>
    *           <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
@@ -247,7 +253,7 @@ class ProcessGroupModel extends WlModelAbstract
    *       <dd>The credit card expiration year. Specify this to add a new card.</dd>
    * 
    *       <dt>bool `is_new`</dt>
-   *       <dd>Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.</dd>
+   *       <dd>Specify `1` to add a new card, or `0` to use a saved card.</dd>
    * 
    *       <dt>string `k_pay_bank`</dt>
    *       <dd>The key of the credit card. Specify this to use saved card.</dd>
@@ -264,10 +270,10 @@ class ProcessGroupModel extends WlModelAbstract
    *   <dd>The amount of money to withdraw with this payment source.</dd>
    * 
    *   <dt>bool `is_hide`</dt>
-   *   <dd>Whether payment method should be saved to user's account.</dd>
+   *   <dd>Determines whether this payment method is hidden.</dd>
    * 
    *   <dt>bool `is_save`</dt>
-   *   <dd>Determines whether this payment method is hidden.</dd>
+   *   <dd>Whether payment method should be saved to user's account.</dd>
    * 
    *   <dt>bool `is_success`</dt>
    *   <dd>Identifies whether this source was successfully charged.</dd>

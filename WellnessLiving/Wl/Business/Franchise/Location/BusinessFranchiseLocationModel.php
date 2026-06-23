@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Business\Franchise\Location;
 
+use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\WlModelAbstract;
 
 /**
@@ -14,13 +15,13 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_city`</dt>
-   *   <dd>City key. 
+   *   <dd>City key. </dd>
    * 
    *   <dt>string `k_country`</dt>
-   *   <dd>Country key. 
+   *   <dd>Country key. </dd>
    * 
    *   <dt>string `k_state`</dt>
-   *   <dd>State key. 
+   *   <dd>State key. </dd>
    * 
    *   <dt>string `text_title`</dt>
    *   <dd>City title.</dd>
@@ -35,7 +36,7 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_country`</dt>
-   *   <dd>Country key. 
+   *   <dd>Country key. </dd>
    * 
    *   <dt>string `text_title`</dt>
    *   <dd>Country title.</dd>
@@ -50,22 +51,22 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>int `id_currency`</dt>
-   *   <dd>Currency ID.</dd>
+   *   <dd>Currency ID. One of {@link CurrencySid} constants.</dd>
    * 
    *   <dt>string `k_city`</dt>
-   *   <dd>City key. 
+   *   <dd>City key. </dd>
    * 
    *   <dt>string `k_country`</dt>
-   *   <dd>Country key. 
+   *   <dd>Country key. </dd>
    * 
    *   <dt>string `k_location`</dt>
-   *   <dd>Location key. 
+   *   <dd>Location key. </dd>
    * 
    *   <dt>string `k_region`</dt>
-   *   <dd>Franchise region key. 
+   *   <dd>Franchise region key. </dd>
    * 
    *   <dt>string `k_state`</dt>
-   *   <dd>State key. 
+   *   <dd>State key. </dd>
    * 
    *   <dt>string `text_title`</dt>
    *   <dd>Location title.</dd>
@@ -80,7 +81,7 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_region`</dt>
-   *   <dd>Franchise region key. 
+   *   <dd>Franchise region key. </dd>
    * 
    *   <dt>string `text_title`</dt>
    *   <dd>Franchise region title.</dd>
@@ -95,10 +96,10 @@ class BusinessFranchiseLocationModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_country`</dt>
-   *   <dd>Country key. 
+   *   <dd>Country key. </dd>
    * 
    *   <dt>string `k_state`</dt>
-   *   <dd>State key. 
+   *   <dd>State key. </dd>
    * 
    *   <dt>string `text_title`</dt>
    *   <dd>State title.</dd>

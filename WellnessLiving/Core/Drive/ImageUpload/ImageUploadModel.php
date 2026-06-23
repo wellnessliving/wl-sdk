@@ -25,7 +25,8 @@ class ImageUploadModel extends \WellnessLiving\Custom\Core\Drive\ImageUpload\Ima
    *   <dt>array `a_text_empty`</dt>
    *   <dd>
    *     Information about the text on the empty upload image.
-   * *     <dl>
+   * 
+   *     <dl>
    *       <dt>string `s_class`</dt>
    *       <dd>Class to change view of the upload form.</dd>
    * 
@@ -42,11 +43,11 @@ class ImageUploadModel extends \WellnessLiving\Custom\Core\Drive\ImageUpload\Ima
    * 
    *   <dt>int `i_thumbnail_height`</dt>
    *   <dd>The height of the thumbnail image.
-   * 
+   * </dd>
    * 
    *   <dt>int `i_thumbnail_width`</dt>
    *   <dd>The width of thumbnail image.
-   * 
+   * </dd>
    * 
    *   <dt>int `i_width_max`</dt>
    *   <dd>The maximum width of image.</dd>

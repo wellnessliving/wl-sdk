@@ -11,7 +11,7 @@ class CredentialModel extends WlModelAbstract
 {
   /**
    * The CID of the credential.
-   * 
+   *
    * @delete get
    * @get get
    * @put get

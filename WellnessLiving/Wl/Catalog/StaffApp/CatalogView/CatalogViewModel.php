@@ -71,7 +71,7 @@ class CatalogViewModel extends WlModelAbstract
    *   <dd>The tax type. One of {@link WlTaxSid} constants.</dd>
    * 
    *   <dt>string `k_tax`</dt>
-   *   <dd>The tax key. 
+   *   <dd>The tax key. </dd>
    * 
    *   <dt>string `s_tax`</dt>
    *   <dd>The tax name.</dd>

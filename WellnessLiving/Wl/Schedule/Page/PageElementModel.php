@@ -18,7 +18,7 @@ class PageElementModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>int `id_visit`</dt>
-   *   <dd>Visit status.</dd>
+   *   <dd>Visit status. One of {@link WlVisitSid} constants.</dd>
    * 
    *   <dt>bool `is_confirmed`</dt>
    *   <dd>`true` means that appointment was requested and confirmed by the staff.</dd>
@@ -49,7 +49,7 @@ class PageElementModel extends WlModelAbstract
    *     Asset title that consists of the asset title itself concatenated with its index (in case of multiple assets) by '#'.
    *   </dd>
    * 
-   *   <dt>string `i_count`</dt>
+   *   <dt>int `i_count`</dt>
    *   <dd>Number of sessions.</dd>
    * </dl>
    * @get result
@@ -85,7 +85,8 @@ class PageElementModel extends WlModelAbstract
    * <dl>
    *   <dt>array `a_image`</dt>
    *   <dd>
-   *     Image data. *     <dl>
+   *     Image data. 
+   *     <dl>
    *       <dt>int `i_height`</dt>
    *       <dd>Actual height of thumbnail image.</dd>
    * 
@@ -148,7 +149,7 @@ class PageElementModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string `url`</dt>
-   *   <dd>Path to image. 
+   *   <dd>Path to image. </dd>
    * </dl>
    * @get result
    * @var array|null
@@ -161,7 +162,7 @@ class PageElementModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_staff`</dt>
-   *   <dd>The staff member key. 
+   *   <dd>The staff member key. </dd>
    * 
    *   <dt>string `s_family`</dt>
    *   <dd>The surname of the staff member.</dd>

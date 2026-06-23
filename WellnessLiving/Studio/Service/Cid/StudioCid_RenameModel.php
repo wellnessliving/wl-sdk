@@ -15,7 +15,7 @@ class StudioCid_RenameModel extends WlModelAbstract
    * CID of the class to rename.
    *
    * @put get
-   * @var string
+   * @var int
    */
   public $cid;
 

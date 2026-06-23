@@ -23,7 +23,7 @@ class CancelCanModel extends WlModelAbstract
    *   <dd>`true` in a case of flat penalty type; `false` in a case of percentage penalty type.</dd>
    * 
    *   <dt>string `k_currency`</dt>
-   *   <dd>Currency key. 
+   *   <dd>Currency key. </dd>
    * 
    *   <dt>string `m_amount`</dt>
    *   <dd>Penalty amount.</dd>

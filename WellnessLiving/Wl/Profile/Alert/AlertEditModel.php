@@ -32,7 +32,7 @@ class AlertEditModel extends WlModelAbstract
    *       <dd>`true` if this location is selected for the flag; `false` otherwise.</dd>
    * 
    *       <dt>string `k_id`</dt>
-   *       <dd>Location key. 
+   *       <dd>Location key. </dd>
    * 
    *       <dt>string `text_title`</dt>
    *       <dd>Location title.</dd>
@@ -77,10 +77,10 @@ class AlertEditModel extends WlModelAbstract
    *   <dd>`true` if the note is marked for removal; `false` otherwise.</dd>
    * 
    *   <dt>string `k_business`</dt>
-   *   <dd>Business key. 
+   *   <dd>Business key. </dd>
    * 
    *   <dt>string `k_login_note`</dt>
-   *   <dd>Login note key. 
+   *   <dd>Login note key. </dd>
    * 
    *   <dt>string `s_text`</dt>
    *   <dd>Note text content.</dd>
@@ -92,7 +92,7 @@ class AlertEditModel extends WlModelAbstract
    *   <dd>Text explaining how to disable the automated flag. Empty string if the flag is manual.</dd>
    * 
    *   <dt>string `uid`</dt>
-   *   <dd>User key of the flagged client. 
+   *   <dd>User key of the flagged client. </dd>
    * 
    *   <dt>string `url_action`</dt>
    *   <dd>URL to submit the login note edit form.</dd>

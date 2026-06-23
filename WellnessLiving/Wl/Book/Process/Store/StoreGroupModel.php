@@ -5,6 +5,8 @@ namespace WellnessLiving\Wl\Book\Process\Store;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Book\Process\Purchase\Purchase56Model;
+use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
  * Performs preliminary checks and distribution of selected purchase options between the client who is currently logged
@@ -36,17 +38,17 @@ class StoreGroupModel extends WlModelAbstract
    *   <dt>int `i_session`</dt>
    *   <dd>
    *     The number of sessions that this item can cover.
-   *
+   *   This only applies to items of type {@link WlPurchaseItemSid::CLASS_PERIOD}.
    *   </dd>
    * 
-   *   <dt>int `s_value`</dt>
+   *   <dt>string `s_value`</dt>
    *   <dd>
    *     The unique identifier of the item being checked.
    * This corresponds to one of the following values:
    * <ul>
-   *   <li>{@link Wl\Book\Process\Purchase\Purchase56Api::$a_purchase}`["s_value"]`</li>
-   *   <li>{@link Wl\Book\Process\Purchase\Purchase56Api::$a_reward_prize}`["s_value"]`</li>
-   *   <li>{@link Wl\Book\Process\Purchase\Purchase56Api::$a_login_prize}`["s_value"]`</li>
+   *   <li>{@link Purchase56Model::$a_purchase}`["s_value"]`</li>
+   *   <li>{@link Purchase56Model::$a_reward_prize}`["s_value"]`</li>
+   *   <li>{@link Purchase56Model::$a_login_prize}`["s_value"]`</li>
    * </ul>
    *   </dd>
    * </dl>
@@ -66,31 +68,34 @@ class StoreGroupModel extends WlModelAbstract
    *     List of UIDs of owners who will share this promotion with this client.
    *   If empty, this client is the owner of the promotion.
    *   This only applies to the new promotions.
-   *   *   </dd>
+   *   
+   *   </dd>
    * 
    *   <dt>int `i_session`</dt>
    *   <dd>
    *     The number of sessions that this item can cover.
-   *
+   *   The same as in {@link StoreGroupModel::$a_purchase_item_check}.
    *   `0` if not applicable.
    *   </dd>
    * 
    *   <dt>string|null `k_login_promotion`</dt>
    *   <dd>
-   *     Login promotion key. *
+   *     Login promotion key. 
+   *   The same as in {@link StoreGroupModel::$a_login_promotion}.
    *   `null` if not applicable.
    *   </dd>
    * 
    *   <dt>string|null `k_session_pass`</dt>
    *   <dd>
-   *     Session pass key. *
+   *     Session pass key. 
+   *   The same as in {@link StoreGroupModel::$a_session_pass}.
    *   `null` if not applicable.
    *   </dd>
    * 
    *   <dt>string|null `s_value`</dt>
    *   <dd>
    *     The unique identifier of the purchase item.
-   *
+   *   The same as in {@link StoreGroupModel::$a_purchase_item_check}.
    *   `null` if not applicable.
    *   </dd>
    * 
@@ -140,7 +145,7 @@ class StoreGroupModel extends WlModelAbstract
    *   <dt>int `id_duration`</dt>
    *   <dd>
    *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   *
+   * Available duration units are: {@link ADurationSid::DAY}, {@link ADurationSid::WEEK}, {@link ADurationSid::MONTH}.
    *   </dd>
    * 
    *   <dt>int `id_repeat_end`</dt>
@@ -161,7 +166,7 @@ class StoreGroupModel extends WlModelAbstract
    *   <dd>The order number of the asset (from 1 to the asset quantity).</dd>
    * 
    *   <dt>string `k_resource`</dt>
-   *   <dd>The asset key. 
+   *   <dd>The asset key. </dd>
    * </dl>
    * @post post
    * @var array[]

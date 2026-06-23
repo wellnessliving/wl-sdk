@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Core\WebSocket;
 
+use WellnessLiving\Thoth\PayProcessor\Nuvei\Code\CSResponseSid;
 use WellnessLiving\Thoth\ReportCore\Generator\ReportGeneratorStatusSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
@@ -101,7 +102,8 @@ class SubscribeModel extends WlModelAbstract
    *   <dd>
    *     Key of a report to subscribe to.
    * 
-   * *   </dd>
+   * 
+   *   </dd>
    * </dl>
    * 
    * Parameters for `1005`:
@@ -373,7 +375,7 @@ class SubscribeModel extends WlModelAbstract
    *       <dd>
    *         Message information:
    *         <dl>
-   *           <dt>string `id`</dt>
+   *           <dt>int `id`</dt>
    *           <dd>Message key.</dd>
    * 
    *           <dt>string `message`</dt>
@@ -398,7 +400,7 @@ class SubscribeModel extends WlModelAbstract
    *           <dd>User last name.</dd>
    * 
    *           <dt>string `uid`</dt>
-   *           <dd>User key. 
+   *           <dd>User key. </dd>
    * 
    *           <dt>string `url_photo`</dt>
    *           <dd>URL of the user's profile photo.</dd>
@@ -463,7 +465,8 @@ class SubscribeModel extends WlModelAbstract
    * This number is changed every time content of the report gets updated.
    * If this number is not changed, the content is not updated.
    * 
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>int `id_report_status`</dt>
    *   <dd>Status of this report.
@@ -594,7 +597,7 @@ class SubscribeModel extends WlModelAbstract
    *       <dd><tt>true</tt> if book was canceled; <tt>false</tt> otherwise.</dd>
    * 
    *       <dt>string `s_key`</dt>
-   *       <dd>Book key. 
+   *       <dd>Book key. </dd>
    * 
    *       <dt>string `text_address`</dt>
    *       <dd>Address of location.</dd>
@@ -641,7 +644,8 @@ class SubscribeModel extends WlModelAbstract
    *   <dt>bool|null `is_booking_in_progress`</dt>
    *   <dd>
    *     Whether booking is in progress.
-   * *   </dd>
+   * 
+   *   </dd>
    * </dl>
    * 
    * Parameters for `16`:
@@ -668,7 +672,7 @@ class SubscribeModel extends WlModelAbstract
    *   <dd>
    *     Status of mail verification.
    *
-   * Or {@link Wl\Business\Config\Option\MailVerifyStatusOption::DEFAULT_VALUE} if option "Enable Custom Reply To Emails" in Business -&gt; Feature is disabled.
+   * Or {@link \Wl\Business\Config\Option\MailVerifyStatusOption::DEFAULT_VALUE} if option "Enable Custom Reply To Emails" in Business -&gt; Feature is disabled.
    *   </dd>
    * 
    *   <dt>string `text_email`</dt>
@@ -733,7 +737,7 @@ class SubscribeModel extends WlModelAbstract
    *   <dd>
    *     Card type ID.
    * 
-   * Not `null` when {@link Thoth\PayProcessor\DirectConnect\Ticket\DirectConnectTicketStatusChannel::$id_ticket_status}
+   * Not `null` when {@link \Thoth\PayProcessor\DirectConnect\Ticket\DirectConnectTicketStatusChannel::$id_ticket_status}
    *
    *   </dd>
    * 
@@ -754,7 +758,7 @@ class SubscribeModel extends WlModelAbstract
    *   <dd>
    *     Cardholder name.
    * 
-   * Not `null` when {@link Thoth\PayProcessor\DirectConnect\Ticket\DirectConnectTicketStatusChannel::$id_ticket_status}
+   * Not `null` when {@link \Thoth\PayProcessor\DirectConnect\Ticket\DirectConnectTicketStatusChannel::$id_ticket_status}
    *
    *   </dd>
    * 
@@ -762,7 +766,7 @@ class SubscribeModel extends WlModelAbstract
    *   <dd>
    *     Card expiration date.
    * 
-   * Not `null` when {@link Thoth\PayProcessor\DirectConnect\Ticket\DirectConnectTicketStatusChannel::$id_ticket_status}
+   * Not `null` when {@link \Thoth\PayProcessor\DirectConnect\Ticket\DirectConnectTicketStatusChannel::$id_ticket_status}
    *
    *   </dd>
    * 
@@ -770,7 +774,7 @@ class SubscribeModel extends WlModelAbstract
    *   <dd>
    *     Last four digits of the card number.
    * 
-   * Not `null` when {@link Thoth\PayProcessor\DirectConnect\Ticket\DirectConnectTicketStatusChannel::$id_ticket_status}
+   * Not `null` when {@link \Thoth\PayProcessor\DirectConnect\Ticket\DirectConnectTicketStatusChannel::$id_ticket_status}
    *
    *   </dd>
    * 
@@ -796,7 +800,7 @@ class SubscribeModel extends WlModelAbstract
    *       <dd><tt>true</tt> if book was canceled; <tt>false</tt> otherwise.</dd>
    * 
    *       <dt>string `s_key`</dt>
-   *       <dd>Book key. 
+   *       <dd>Book key. </dd>
    * 
    *       <dt>string `text_location`</dt>
    *       <dd>Title of location.</dd>
@@ -869,7 +873,8 @@ class SubscribeModel extends WlModelAbstract
    *     <dl>
    *       <dt>array `a_address`</dt>
    *       <dd>
-   *         Address information. *         <dl>
+   *         Address information. 
+   *         <dl>
    *           <dt>string `text_address`</dt>
    *           <dd>Address string.</dd>
    * 
@@ -922,7 +927,8 @@ class SubscribeModel extends WlModelAbstract
    *     <dl>
    *       <dt>array `a_address`</dt>
    *       <dd>
-   *         Address information. *         <dl>
+   *         Address information. 
+   *         <dl>
    *           <dt>string `text_address`</dt>
    *           <dd>Address string.</dd>
    * 
@@ -976,8 +982,8 @@ class SubscribeModel extends WlModelAbstract
    *   <dd>
    *     Card type ID.
    * 
-   * Not `null` when {@link Thoth\PayProcessor\Nuvei\Terminal\OMNIChannelApi\PaymentStatusChannel::$id_payment_status}
-   *
+   * Not `null` when {@link \Thoth\PayProcessor\Nuvei\Terminal\OMNIChannelApi\PaymentStatusChannel::$id_payment_status}
+   * is equal {@link CSResponseSid::APPROVED}.
    *   </dd>
    * 
    *   <dt>int|null `id_card_type`</dt>
@@ -1006,16 +1012,16 @@ class SubscribeModel extends WlModelAbstract
    *   <dd>
    *     Last four digits of the card number.
    * 
-   * Not `null` when {@link Thoth\PayProcessor\Nuvei\Terminal\OMNIChannelApi\PaymentStatusChannel::$id_payment_status}
-   *
+   * Not `null` when {@link \Thoth\PayProcessor\Nuvei\Terminal\OMNIChannelApi\PaymentStatusChannel::$id_payment_status}
+   * is equal {@link CSResponseSid::APPROVED}.
    *   </dd>
    * 
    *   <dt>string|null `text_card_holder`</dt>
    *   <dd>
    *     Cardholder name.
    * 
-   * Not `null` when {@link Thoth\PayProcessor\Nuvei\Terminal\OMNIChannelApi\PaymentStatusChannel::$id_payment_status}
-   *
+   * Not `null` when {@link \Thoth\PayProcessor\Nuvei\Terminal\OMNIChannelApi\PaymentStatusChannel::$id_payment_status}
+   * is equal {@link CSResponseSid::APPROVED}.
    *   </dd>
    * 
    *   <dt>string|null `text_message`</dt>
@@ -1046,7 +1052,7 @@ class SubscribeModel extends WlModelAbstract
    *       <dd><tt>true</tt> if staff member sent SMS, <tt>false</tt> - if the client sent the SMS.</dd>
    * 
    *       <dt>string `k_sms_history`</dt>
-   *       <dd>The key of SMS history. 
+   *       <dd>The key of SMS history. </dd>
    * 
    *       <dt>string `sid_sms_status`</dt>
    *       <dd>Sid of the SMS status.</dd>
@@ -1099,7 +1105,7 @@ class SubscribeModel extends WlModelAbstract
    *       <dd>The text of last sms.</dd>
    * 
    *       <dt>string `uid`</dt>
-   *       <dd>The UID of the client. 
+   *       <dd>The UID of the client. </dd>
    *     </dl>
    *   </dd>
    * 

@@ -42,15 +42,16 @@ class AttachListModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string `k_attach`</dt>
-   *   <dd>Attachment key. 
+   *   <dd>Attachment key. </dd>
    * 
    *   <dt>string `k_business`</dt>
-   *   <dd>Business key. 
+   *   <dd>Business key. </dd>
    * 
    *   <dt>string|null `k_quiz_response`</dt>
    *   <dd>
    *     Quiz response key. `null` if the attachment is not from a quiz response.
-   * * Only present in backend mode.
+   * 
+   * Only present in backend mode.
    *   </dd>
    * 
    *   <dt>string|null `text_description`</dt>

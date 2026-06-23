@@ -67,7 +67,7 @@ class PageDataModel extends WlModelAbstract
 
   /**
    * Filter settings in encoded format.
-   * 
+   *
    * @get get
    * @var string
    */

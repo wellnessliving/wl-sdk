@@ -37,17 +37,19 @@ class CartModel extends WlModelAbstract
    *   <dd>
    *     The sale item key.
    *   Note:
-   *      *      You need to specify the product option key in the `k_shop_product_option` field or the first available
+   *      
+   *      You need to specify the product option key in the `k_shop_product_option` field or the first available
    *          option will be used automatically.
    *   </dd>
    * 
    *   <dt>?string `k_login_prize`</dt>
-   *   <dd>Key of login prize used on item. 
+   *   <dd>Key of login prize used on item. </dd>
    * 
    *   <dt>string `k_shop_product_option`</dt>
    *   <dd>
-   *     *   Note:
-   *      Used for products only `id_
+   *     
+   *   Note:
+   *      Used for products only `id_sale` = {@link WlSaleSid::PRODUCT}.
    *      If empty the first available option will be used automatically.
    *   </dd>
    * </dl>
@@ -64,7 +66,7 @@ class CartModel extends WlModelAbstract
    *   <dd>Amount of points needed to redeem the prize.</dd>
    * 
    *   <dt>string `k_reward_prize`</dt>
-   *   <dd>Reward prize key. 
+   *   <dd>Reward prize key. </dd>
    * 
    *   <dt>string `text_discount`</dt>
    *   <dd>Reward prize discount, e.g. '.00 off', '10% off'.</dd>
@@ -108,7 +110,7 @@ class CartModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_login_prize`</dt>
-   *   <dd>Login prize key. 
+   *   <dd>Login prize key. </dd>
    * 
    *   <dt>string `text_discount`</dt>
    *   <dd>Reward prize discount, e.g. '.00 off', '10% off'.</dd>

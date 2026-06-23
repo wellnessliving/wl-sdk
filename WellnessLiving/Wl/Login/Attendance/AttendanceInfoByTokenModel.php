@@ -61,7 +61,8 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    * 
    *   <dt>string|null `k_id`</dt>
    *   <dd>
-   *     The default Purchase Option key. * This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
+   *     The default Purchase Option key. 
+   * This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
    *   </dd>
    * 
    *   <dt>bool `is_single_default`</dt>
@@ -88,7 +89,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    *   <dd>
    *     List of clients who occupy assets of class.
    * It is a double nesting array.
-   * Keys - keys - asset index.
+   * Keys -  Sub keys - asset index.
    * Values - sub array with keys:
    *     <dl>
    *       <dt>string `text_client`</dt>
@@ -100,10 +101,10 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string[] `a_resource_available`</dt>
-   *   <dd>Key of asset. 
+   *   <dd>Key of asset. </dd>
    * 
    *   <dt>string `k_resource_layout`</dt>
-   *   <dd>Key of layout. 
+   *   <dd>Key of layout. </dd>
    * 
    *   <dt>string `text_resource_type`</dt>
    *   <dd>Title of asset category.</dd>
@@ -136,7 +137,7 @@ class AttendanceInfoByTokenModel extends WlModelAbstract
    *   <dd>deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
    * 
    *   <dt>string `uid_staff`</dt>
-   *   <dd>Staff user key. 
+   *   <dd>Staff user key. </dd>
    * 
    *   <dt>string `html_firstname`</dt>
    *   <dd>Staff member's first name.</dd>

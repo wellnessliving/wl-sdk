@@ -28,16 +28,16 @@ class PurchaseElementModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_enrollment_book`</dt>
-   *   <dd>Key of enrollment book. 
+   *   <dd>Key of enrollment book. </dd>
    * 
    *   <dt>string `k_login_product`</dt>
-   *   <dd>Key of product. 
+   *   <dd>Key of product. </dd>
    * 
    *   <dt>string `k_login_promotion`</dt>
-   *   <dd>Key of promotion. 
+   *   <dd>Key of promotion. </dd>
    * 
    *   <dt>string `k_session_pass`</dt>
-   *   <dd>Session key. 
+   *   <dd>Session key. </dd>
    * </dl>
    * @get result
    * @var array[]
@@ -233,7 +233,7 @@ class PurchaseElementModel extends WlModelAbstract
   public $i_limit;
 
   /**
-   * The duration of the regular payments interval. This is used only for “membership” type promotions.
+   * The duration of the regular payments interval. This is used only for "membership" type promotions.
    *
    * @get result
    * @var int
@@ -292,7 +292,7 @@ class PurchaseElementModel extends WlModelAbstract
   public $id_discount_commission_type;
 
   /**
-   * The type of duration for the promotion. This is used only for “membership” type promotions.
+   * The type of duration for the promotion. This is used only for "membership" type promotions.
    * This determines whether the promotion lasts indefinitely, has a fixed duration, or ends on a specific date.
    * One of the {@link WlDurationTypeSid} constants.
    *

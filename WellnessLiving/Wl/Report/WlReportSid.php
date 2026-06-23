@@ -7,7 +7,6 @@ namespace WellnessLiving\Wl\Report;
  *
  * Do not add new reports here. Use New Report Generation instead.
  *
- * 
  * Last used ID: 268. -- See comments above.
  */
 abstract class WlReportSid
@@ -650,7 +649,7 @@ abstract class WlReportSid
    * Shows a list of all system transactions. Contains a list of special totals.
    *
    * This report is available only for administrators with special privilege.
-   * */
+   */
   const PAY_TRANSACTION_SYSTEM_ALL = 79;
 
   /**
@@ -666,14 +665,14 @@ abstract class WlReportSid
    * Shows a list of refund and void system transactions.
    *
    * This report is available only for administrators with special privilege.
-   * */
+   */
   const PAY_TRANSACTION_SYSTEM_REFUND = 106;
 
   /**
    * Sum of all transactions from businesses to system merchants.
    *
    * This report is available only for administrators with special privilege.
-   * */
+   */
   const PAY_TRANSACTION_SYSTEM_SUMMARY = 143;
 
   /**

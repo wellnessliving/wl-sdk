@@ -93,7 +93,6 @@ class DataModel extends \WellnessLiving\Custom\Wl\Report\DataModel
   /**
    * Filter settings in encoded format.
    *
-   * 
    * @get get
    * @var string
    */

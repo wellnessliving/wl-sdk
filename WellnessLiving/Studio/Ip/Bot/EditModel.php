@@ -14,7 +14,7 @@ class EditModel extends WlModelAbstract
    *
    * @get result
    * @post post
-   * @var string
+   * @var bool
    */
   public $is_active;
 
@@ -42,6 +42,8 @@ class EditModel extends WlModelAbstract
 
   /**
    * Network of the bot.
+   *
+   * Note that value sent here is ignored in a case {@link EditModel::$text_update} is not empty.
    *
    * @get result
    * @post post

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Sources of system notes.
  *
- * * Last used ID: 12.
+ * Last used ID: 12.
  */
 abstract class WlProfileNoteSid
 {

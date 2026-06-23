@@ -257,7 +257,7 @@ abstract class WlPrivilegeSid
 
   /**
    * Add, remove and edit discount codes.
-   * /
+   */
   const DISCOUNT_CODE = 76;
 
   /**
@@ -317,26 +317,26 @@ abstract class WlPrivilegeSid
 
   /**
    * Allows to manage leaderboard in the `FitBuilder` addon.
-   * 
+   *
    * @deprecated Use {@link WlPrivilegeSid::FITBUILDER_WORKOUT_MANAGE} instead.
    */
   const FITBUILDER_LEADERBOARD = 190;
 
   /**
    * Allows to subscribe to `FitBuilder` subscription addon.
-   * /
+   */
   const FITBUILDER_SUBSCRIPTION = 189;
 
   /**
    * Allows to assign workouts from the `FitBuilder` addon to different services.
-   * 
+   *
    * @deprecated Use {@link WlPrivilegeSid::FITBUILDER_WORKOUT_MANAGE} instead.
    */
   const FITBUILDER_WORKOUT_ASSIGN = 188;
 
   /**
    * Allows to add, edit and remove workouts in the `FitBuilder` addon.
-   * /
+   */
   const FITBUILDER_WORKOUT_MANAGE = 187;
 
   /**

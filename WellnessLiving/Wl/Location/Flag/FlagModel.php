@@ -15,7 +15,7 @@ class FlagModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `uid`</dt>
-   *   <dd>Key is passport login ID. 
+   *   <dd>Key is passport login ID. </dd>
    * 
    *   <dt>bool `is_flag`</dt>
    *   <dd>Value: <tt>true</tt> if user is flagged; <tt>false</tt> otherwise.</dd>
@@ -32,6 +32,7 @@ class FlagModel extends WlModelAbstract
    *
    * This field is set, if API gets {@link FlagModel::$a_uid} and not {@link FlagModel::$uid} properties.
    *
+   * Keys are user keys. 
    * Values are flag restriction arrays: 
    *
    * <dl>

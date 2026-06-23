@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Location;
 
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Location\View\ViewModel;
 use WellnessLiving\Wl\WlProjectSid;
 
 /**
@@ -131,7 +132,9 @@ class ListBulkModel extends WlModelAbstract
    *   <dd>The full description of the location.</dd>
    * 
    *   <dt>string `html_description_preview`</dt>
-   *   <dd>A shorter description of the location.</dd>
+   *   <dd>
+   *     A shorter description of the location. A preview of {@link ViewModel::$html_description_full}.
+   *   </dd>
    * 
    *   <dt>int `i_logo_height`</dt>
    *   <dd>Maximum location image height.</dd>

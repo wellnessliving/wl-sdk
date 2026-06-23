@@ -22,12 +22,14 @@ class ListModel extends WlModelAbstract
    * <dl>
    *   <dt>string[] `a_class_tab`</dt>
    *   <dd>
-   *     List of class book now tabs, where this class is presented. Each element is *  or `null` if class is presented in default system tab Classes. Events can also be added in class tabs.
+   *     List of class book now tabs, where this class is presented. Each element is 
+   *  or `null` if class is presented in default system tab Classes. Events can also be added in class tabs.
    *   </dd>
    * 
    *   <dt>string[] `a_event_tab`</dt>
    *   <dd>
-   *     List of event book now tabs, where this event is presented. Each element is *   or `null` if event is presented in default system tab Enrollments. Classes cannot be added in event tabs.
+   *     List of event book now tabs, where this event is presented. Each element is 
+   *   or `null` if event is presented in default system tab Enrollments. Classes cannot be added in event tabs.
    *   </dd>
    * 
    *   <dt>string `dl_end`</dt>
@@ -47,10 +49,10 @@ class ListModel extends WlModelAbstract
    *   <dd>Whether class/event is removed.</dd>
    * 
    *   <dt>string `k_class`</dt>
-   *   <dd>Class/event identifier. 
+   *   <dd>Class/event identifier. </dd>
    * 
    *   <dt>string `k_enrollment_block`</dt>
-   *   <dd>Event Block ID. 
+   *   <dd>Event Block ID. </dd>
    * 
    *   <dt>string `text_title`</dt>
    *   <dd>Class/event name.</dd>

@@ -20,7 +20,7 @@ class CatalogCartModel extends WlModelAbstract
    *   <dd>`true` if this code is selected currently, `false` otherwise.</dd>
    * 
    *   <dt>string `k_discount_code`</dt>
-   *   <dd>Discount code key. 
+   *   <dd>Discount code key. </dd>
    * 
    *   <dt>string `text_discount_code`</dt>
    *   <dd>Value of the code that can be used to get discount.</dd>
@@ -119,7 +119,7 @@ class CatalogCartModel extends WlModelAbstract
    *       <dd>The tax amount.</dd>
    * 
    *       <dt>string `k_tax`</dt>
-   *       <dd>The tax keys. 
+   *       <dd>The tax keys. </dd>
    *     </dl>
    *   </dd>
    * 
@@ -138,7 +138,8 @@ class CatalogCartModel extends WlModelAbstract
    *   <dt>string `k_shop_product_option`</dt>
    *   <dd>
    *     The store product option key. This will be `null` if the sale item has no options.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string `m_discount_fix`</dt>
    *   <dd>The fixed price discount, applied to the current item.</dd>

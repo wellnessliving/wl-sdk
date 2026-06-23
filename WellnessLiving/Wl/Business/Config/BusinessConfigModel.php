@@ -4,6 +4,8 @@ namespace WellnessLiving\Wl\Business\Config;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
+use WellnessLiving\Wl\Business\Policy\BlameSid;
+use WellnessLiving\Wl\Business\Policy\ChargeSid;
 use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
 use WellnessLiving\Wl\Service\ServiceSid;
 
@@ -73,7 +75,7 @@ class BusinessConfigModel extends WlModelAbstract
    * to book sessions within their current paid period, `false` - during purchase option's duration.
    *   </dd>
    * 
-   *   <dt>int `is_disable_promotion`</dt>
+   *   <dt>bool `is_disable_promotion`</dt>
    *   <dd>
    *     1 if a client's automatic payment fails, their account should not be
    * debited and their purchase option becomes inactive, 0 - otherwise. Default 0.
@@ -88,7 +90,7 @@ class BusinessConfigModel extends WlModelAbstract
    *   <dt>bool `is_enable_staff_ip_restriction`</dt>
    *   <dd>Whether to restrict which IP addresses staff can login from.</dd>
    * 
-   *   <dt>int `is_prevent_booking`</dt>
+   *   <dt>bool `is_prevent_booking`</dt>
    *   <dd>1 if booking for a client with negative balance is disabled, 0 - otherwise. Default 0.</dd>
    * 
    *   <dt>bool `is_staff_restrict`</dt>
@@ -114,7 +116,8 @@ class BusinessConfigModel extends WlModelAbstract
    *     List of allowed relation types specific to a given business.
    *  Key is ID. One of {@link WlFamilyRelationSid} constant.
    *  Value is SID.
-   *  *   </dd>
+   *  
+   *   </dd>
    * 
    *   <dt>int[] `a_family_relation_login_allow`</dt>
    *   <dd>
@@ -133,21 +136,22 @@ class BusinessConfigModel extends WlModelAbstract
    * <dl>
    *   <dt>string[] `a_class_period`</dt>
    *   <dd>List of class period keys.
-   * 
+   * </dd>
    * 
    *   <dt>string[] `a_login_type`</dt>
    *   <dd>
    *     List of client type keys.
-   * * Empty array means all active login types at concrete business.
+   * 
+   * Empty array means all active login types at concrete business.
    *   </dd>
    * 
    *   <dt>string[] `a_resource`</dt>
    *   <dd>List of resources keys.
-   * 
+   * </dd>
    * 
    *   <dt>string[] `a_service`</dt>
    *   <dd>List of services keys.
-   * 
+   * </dd>
    * 
    *   <dt>int `i_blame`</dt>
    *   <dd>Number of blamed visits.</dd>
@@ -159,13 +163,13 @@ class BusinessConfigModel extends WlModelAbstract
    *   <dd>Count of applied penalty.</dd>
    * 
    *   <dt>int `id_blame`</dt>
-   *
+   *   <dd>One of {@link BlameSid} constants.</dd>
    * 
    *   <dt>int `id_cancel_period`</dt>
    *   <dd>Duration ID. One of {@link ADurationSid} constants.</dd>
    * 
    *   <dt>int `id_charge`</dt>
-   *
+   *   <dd>One of {@link ChargeSid} constants.</dd>
    * 
    *   <dt>int `id_charge_measure`</dt>
    *   <dd>Charge measure type. `0` for percent, `1` for money amount.</dd>

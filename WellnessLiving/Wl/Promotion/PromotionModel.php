@@ -77,10 +77,10 @@ class PromotionModel extends WlModelAbstract
    *     Information about Purchase Option image.
    * This will be an empty array if the Purchase Option doesn't have an image.
    *     <dl>
-   *       <dt>string `i_height`</dt>
+   *       <dt>int `i_height`</dt>
    *       <dd>The height of the image.</dd>
    * 
-   *       <dt>string `i_width`</dt>
+   *       <dt>int `i_width`</dt>
    *       <dd>The width of the image.</dd>
    * 
    *       <dt>string `url-thumbnail`</dt>
@@ -91,20 +91,23 @@ class PromotionModel extends WlModelAbstract
    *   <dt>string[] `a_location`</dt>
    *   <dd>
    *     A list of locations where this promotion is available.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string[] `a_login_type`</dt>
    *   <dd>
    *     A list of login types linked with this promotion.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string[] `a_member_group`</dt>
    *   <dd>
    *     A list of login types linked with this promotion.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string[] `a_tag`</dt>
-   *   <dd>List of selected tags. 
+   *   <dd>List of selected tags. </dd>
    * 
    *   <dt>string `dl_expire`</dt>
    *   <dd>
@@ -117,7 +120,7 @@ class PromotionModel extends WlModelAbstract
    * 
    *   <dt>string `f_revenue_single`</dt>
    *   <dd>Approximate revenue per session value.
-   * 
+   * </dd>
    * 
    *   <dt>int `i_duration`</dt>
    *   <dd>
@@ -152,12 +155,13 @@ class PromotionModel extends WlModelAbstract
    *
    * 
    *   <dt>bool `is_active`</dt>
-   *   <dd>Whether this promotion is active. 
+   *   <dd>Whether this promotion is active. </dd>
    * 
    *   <dt>bool `is_business_wide`</dt>
    *   <dd>
    *     Whether this promotion is available for all locations of the business.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>bool `is_introductory`</dt>
    *   <dd>If `true`, this promotion is for introductory clients. Otherwise, this will be `false`.</dd>
@@ -168,21 +172,23 @@ class PromotionModel extends WlModelAbstract
    *   <dt>bool `is_payroll`</dt>
    *   <dd>
    *     Whether clients who purchase this item excluded from payroll calculations.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>bool `is_revenue_single`</dt>
    *   <dd>
    *     If `true` need to add approximate revenue per session value.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>bool `is_use`</dt>
    *   <dd>Whether promotion can be used for booking. `null` if there is no termination.</dd>
    * 
    *   <dt>string `k_promotion`</dt>
-   *   <dd>The key of the promotion. 
+   *   <dd>The key of the promotion. </dd>
    * 
    *   <dt>string `k_tag_primary`</dt>
-   *   <dd>Primary tag. 
+   *   <dd>Primary tag. </dd>
    * 
    *   <dt>string `m_price`</dt>
    *   <dd>The price.</dd>

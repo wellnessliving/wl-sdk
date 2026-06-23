@@ -16,35 +16,35 @@ class AttendanceOverlapModel extends WlModelAbstract
    *   <dt>string `dtu_date`</dt>
    *   <dd>Date and time of the visit.</dd>
    * 
-   *   <dt>string `i_duration`</dt>
+   *   <dt>int `i_duration`</dt>
    *   <dd>Duration of a service.</dd>
    * 
-   *   <dt>string `i_end`</dt>
+   *   <dt>int `i_end`</dt>
    *   <dd>End datetime of the visit in unix format.</dd>
    * 
-   *   <dt>string `i_end_local`</dt>
+   *   <dt>int `i_end_local`</dt>
    *   <dd>Local end datetime of the visit in unix format.</dd>
    * 
-   *   <dt>string `i_start`</dt>
+   *   <dt>int `i_start`</dt>
    *   <dd>Start datetime of the visit in unix format.</dd>
    * 
-   *   <dt>string `i_start_local`</dt>
+   *   <dt>int `i_start_local`</dt>
    *   <dd>Local start datetime of the visit in unix format.</dd>
    * 
    *   <dt>string `k_appointment`</dt>
-   *   <dd>Appointment key. 
+   *   <dd>Appointment key. </dd>
    * 
    *   <dt>string `k_business`</dt>
-   *   <dd>Business key. 
+   *   <dd>Business key. </dd>
    * 
    *   <dt>string `k_class_period`</dt>
-   *   <dd>Class period key. 
+   *   <dd>Class period key. </dd>
    * 
    *   <dt>string `k_enrollment_book`</dt>
-   *   <dd>Enrollment book key. 
+   *   <dd>Enrollment book key. </dd>
    * 
    *   <dt>string `k_location`</dt>
-   *   <dd>Location key. 
+   *   <dd>Location key. </dd>
    * 
    *   <dt>string `text_title`</dt>
    *   <dd>Title of a service</dd>
@@ -123,7 +123,7 @@ class AttendanceOverlapModel extends WlModelAbstract
    * Key of timezone.
    *
    * `null` if not set then use default timezone client.
-   * *
+   *
    * @get get
    * @var string
    */

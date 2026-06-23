@@ -26,7 +26,8 @@ class CatalogListModel extends WlModelAbstract
    *   <dd>
    *     The list of location keys where the current sale item is available.
    * Each value is a location key.
-   * *   </dd>
+   * 
+   *   </dd>
    * 
    *   <dt>string[] `a_login_type`</dt>
    *   <dd>
@@ -37,16 +38,17 @@ class CatalogListModel extends WlModelAbstract
    *   <dt>string[] `a_member_group`</dt>
    *   <dd>
    *     The list of member groups available to purchase the sale item.
-   * * Empty list means that the sale item is available to all member groups.
+   * 
+   * Empty list means that the sale item is available to all member groups.
    *   </dd>
    * 
    *   <dt>string[] `a_shop_category`</dt>
-   *   <dd>A list of online store category keys. 
+   *   <dd>A list of online store category keys. </dd>
    * 
    *   <dt>int `id_program`</dt>
    *   <dd>
    *     The program ID, set for promotions. One of the {@link WlProgramSid} constants.
-   *  <p>If `id_program` is {@link RsProgramSid::INSURANCE_MEMBERSHIP}, then use:</p>
+   *  <p>If `id_program` is {@link WlProgramSid::INSURANCE_MEMBERSHIP}, then use:</p>
    *  <ul>
    *    <li>{@link ProgramListModel} to obtain a list of active programs.</li>
    *    <li>{@link EnrollmentFieldListModel} to get and validate fields for a given program.</li>
@@ -65,9 +67,9 @@ class CatalogListModel extends WlModelAbstract
    * 
    *   <dt>bool `is_visit`</dt>
    *   <dd>
-   *     This will be <tt>true</tt>
+   *     This will be <tt>true</tt> if this Purchase Option is suitable to pay for the visit {@link CatalogListModel::$k_visit}.
    * Otherwise, this will be <tt>false</tt>.
-   *
+   * If {@link CatalogListModel::$k_visit} is empty, this will always be `false`.
    *   </dd>
    * 
    *   <dt>string `k_id`</dt>

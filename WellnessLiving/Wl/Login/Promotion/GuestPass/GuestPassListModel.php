@@ -135,15 +135,15 @@ class GuestPassListModel extends WlModelAbstract
    * 
    *   <dt>string `k_business`</dt>
    *   <dd>Business key.
-   * 
+   * </dd>
    * 
    *   <dt>string `k_login_promotion`</dt>
    *   <dd>Login promotion key of the host membership.
-   * 
+   * </dd>
    * 
    *   <dt>string `k_promotion`</dt>
    *   <dd>Guest promotion key.
-   * 
+   * </dd>
    * 
    *   <dt>string `text_location`</dt>
    *   <dd>
@@ -172,7 +172,7 @@ class GuestPassListModel extends WlModelAbstract
    * 
    *   <dt>string `uid_owner`</dt>
    *   <dd>User key of the membership owner.
-   * 
+   * </dd>
    * </dl>
    * @get result
    * @var array[]

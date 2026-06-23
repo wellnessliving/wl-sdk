@@ -55,7 +55,7 @@ class ElementModel extends WlModelAbstract
    *   <dd>Date/time when the session starts. In UTC.</dd>
    * 
    *   <dt>string `k_class_period`</dt>
-   *   <dd>Class session primary keys. 
+   *   <dd>Class session primary keys. </dd>
    * </dl>
    * @get result
    * @var array[]
@@ -128,7 +128,7 @@ class ElementModel extends WlModelAbstract
    * to book sessions within their current paid period, `false` - during purchase option's duration.
    *   </dd>
    * 
-   *   <dt>int `is_disable_promotion`</dt>
+   *   <dt>bool `is_disable_promotion`</dt>
    *   <dd>
    *     1 if a client's automatic payment fails, their account should not be
    * debited and their purchase option becomes inactive, 0 - otherwise. Default 0.
@@ -143,7 +143,7 @@ class ElementModel extends WlModelAbstract
    *   <dt>bool `is_enable_staff_ip_restriction`</dt>
    *   <dd>Whether to restrict which IP addresses staff can login from.</dd>
    * 
-   *   <dt>int `is_prevent_booking`</dt>
+   *   <dt>bool `is_prevent_booking`</dt>
    *   <dd>1 if booking for a client with negative balance is disabled, 0 - otherwise. Default 0.</dd>
    * 
    *   <dt>bool `is_staff_restrict`</dt>
@@ -204,25 +204,25 @@ class ElementModel extends WlModelAbstract
    *
    * Received only if {@link ElementModel::$s_event} has been specified. In this case, other fields are not populated.
    *
-   * Key is the event class key. *
+   * Key is the event class key. 
    *
    * <dl>
    *   <dt>array[] `a_book_available`</dt>
    *   <dd>
    *     List of sessions available for booking.
-   *
+   * See {@link ElementModel::$a_book_available}.
    *     <dl>
    *       <dt>string `dt_date`</dt>
    *       <dd>Date/time when the session starts. In UTC.</dd>
    * 
    *       <dt>string `k_class_period`</dt>
-   *       <dd>Class session primary keys. 
+   *       <dd>Class session primary keys. </dd>
    *     </dl>
    *   </dd>
    * 
    *   <dt>array `a_class_logo`</dt>
    *   <dd>
-   *     Image of event.
+   *     Image of event. See {@link ElementModel::$a_class_logo}.
    *     <dl>
    *       <dt>int `i_height`</dt>
    *       <dd>Is returned only if staff has a photo. Image height.</dd>
@@ -241,11 +241,11 @@ class ElementModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string[] `a_class_tab`</dt>
-   *   <dd>Class tab keys.</dd>
+   *   <dd>Class tab keys. See {@link ElementModel::$a_class_tab}.</dd>
    * 
    *   <dt>array[] `a_installment_template`</dt>
    *   <dd>
-   *     List of installment plans.
+   *     List of installment plans. See {@link ElementModel::$a_installment_template}.
    *     <dl>
    *       <dt>int `i_count`</dt>
    *       <dd>The number of payments.</dd>
@@ -261,7 +261,8 @@ class ElementModel extends WlModelAbstract
    * 
    *       <dt>string `k_pay_installment_template`</dt>
    *       <dd>
-   *         The key of the installment plan template. *       </dd>
+   *         The key of the installment plan template. 
+   *       </dd>
    * 
    *       <dt>string `m_amount`</dt>
    *       <dd>The amount of the installment plan.</dd>
@@ -273,7 +274,7 @@ class ElementModel extends WlModelAbstract
    * 
    *   <dt>array[] `a_schedule`</dt>
    *   <dd>
-   *     Schedule of event sessions.
+   *     Schedule of event sessions. See {@link ElementModel::$a_schedule}.
    *     <dl>
    *       <dt>true[] `a_day`</dt>
    *       <dd>
@@ -308,12 +309,12 @@ class ElementModel extends WlModelAbstract
    *           <dd>The first letter of staff member's surname.</dd>
    * 
    *           <dt>string `uid_staff`</dt>
-   *           <dd>The user key of the staff member. 
+   *           <dd>The user key of the staff member. </dd>
    *         </dl>
    *       </dd>
    * 
    *       <dt>string[] `a_virtual_location`</dt>
-   *       <dd>List of virtual locations. 
+   *       <dd>List of virtual locations. </dd>
    * 
    *       <dt>string `dt_end`</dt>
    *       <dd>The end date of the session.
@@ -349,6 +350,9 @@ class ElementModel extends WlModelAbstract
    *       <dt>string `k_location`</dt>
    *       <dd>The key of the location where the session is held.</dd>
    * 
+   *       <dt>string `k_resource_location`</dt>
+   *       <dd>Structured off-site location data used by the calendar attachment.</dd>
+   * 
    *       <dt>string `s_location`</dt>
    *       <dd>The location title.</dd>
    * 
@@ -367,11 +371,11 @@ class ElementModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string[] `a_shop_category`</dt>
-   *   <dd>IDs of online store category. 
+   *   <dd>IDs of online store category. </dd>
    * 
    *   <dt>array `a_staff_logo`</dt>
    *   <dd>
-   *     Photos of staff.
+   *     Photos of staff. See {@link ElementModel::$a_staff_logo}.
    *     <dl>
    *       <dt>int `i_height`</dt>
    *       <dd>Image height.</dd>
@@ -380,7 +384,7 @@ class ElementModel extends WlModelAbstract
    *       <dd>Image width.</dd>
    * 
    *       <dt>string `uid`</dt>
-   *       <dd>Key of the user. 
+   *       <dd>Key of the user. </dd>
    * 
    *       <dt>string `url_logo`</dt>
    *       <dd>URL to image.</dd>
@@ -434,14 +438,14 @@ class ElementModel extends WlModelAbstract
    * 
    *   <dt>bool `is_policy_custom`</dt>
    *   <dd>
-   *     `true` {@link Wl\Event\Book\EventView\ElementApi::$a_business_policy} contains the custom policies from the event; `false` otherwise.
+   *     `true` {@link ElementModel::$a_business_policy} contains the custom policies from the event; `false` otherwise.
    *   </dd>
    * 
    *   <dt>bool `is_virtual`</dt>
    *   <dd>`true` if event is virtual; `false` otherwise.</dd>
    * 
    *   <dt>string `k_book_class_period`</dt>
-   *   <dd>Key of first event session. 
+   *   <dd>Key of first event session. </dd>
    * 
    *   <dt>string `m_price`</dt>
    *   <dd>Price of the event session.</dd>
@@ -484,7 +488,8 @@ class ElementModel extends WlModelAbstract
    * 
    *   <dt>string `k_pay_installment_template`</dt>
    *   <dd>
-   *     The key of the installment plan template. *   </dd>
+   *     The key of the installment plan template. 
+   *   </dd>
    * 
    *   <dt>string `m_amount`</dt>
    *   <dd>The amount of the installment plan.</dd>
@@ -534,12 +539,12 @@ class ElementModel extends WlModelAbstract
    *       <dd>The first letter of staff member's surname.</dd>
    * 
    *       <dt>string `uid_staff`</dt>
-   *       <dd>The user key of the staff member. 
+   *       <dd>The user key of the staff member. </dd>
    *     </dl>
    *   </dd>
    * 
    *   <dt>string[] `a_virtual_location`</dt>
-   *   <dd>List of virtual locations. 
+   *   <dd>List of virtual locations. </dd>
    * 
    *   <dt>string `dt_end`</dt>
    *   <dd>The end date of the session.
@@ -572,6 +577,9 @@ class ElementModel extends WlModelAbstract
    * 
    *   <dt>string `k_location`</dt>
    *   <dd>The key of the location where the session is held.</dd>
+   * 
+   *   <dt>string `k_resource_location`</dt>
+   *   <dd>Structured off-site location data used by the calendar attachment.</dd>
    * 
    *   <dt>string `s_location`</dt>
    *   <dd>The location title.</dd>
@@ -612,7 +620,7 @@ class ElementModel extends WlModelAbstract
    *   <dd>Image width.</dd>
    * 
    *   <dt>string `uid`</dt>
-   *   <dd>Key of the user. 
+   *   <dd>Key of the user. </dd>
    * 
    *   <dt>string `url_logo`</dt>
    *   <dd>URL to image.</dd>

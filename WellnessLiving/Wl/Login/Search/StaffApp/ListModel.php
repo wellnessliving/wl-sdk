@@ -34,7 +34,7 @@ class ListModel extends WlModelAbstract
    *   <dd>The client name.</dd>
    * 
    *   <dt>string `uid`</dt>
-   *   <dd>The client key. 
+   *   <dd>The client key. </dd>
    * </dl>
    * @get result
    * @var array[]
