@@ -4,6 +4,8 @@ namespace WellnessLiving\Wl\Login\Attendance\Add;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Login\Attendance\AddOptionSid;
+use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Visit\WlVisitSid;
 
 /**
@@ -64,6 +66,7 @@ class AddModel extends WlModelAbstract
 
   /**
    * Determines how the payment was handled for the session.
+   * One of the {@link AddOptionSid} constants.
    *
    * @post post
    * @var int
@@ -72,7 +75,7 @@ class AddModel extends WlModelAbstract
 
   /**
    * Determines how the session was booked.
-   *
+   * One of the {@link ModeSid} constants.
    * We recommend using the `WEB_BACKEND` value.
    *
    * @post post

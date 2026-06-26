@@ -35,7 +35,7 @@ class Process59Model extends WlModelAbstract
    *
    * <dl>
    *   <dt>int `id_book_process`</dt>
-   *   <dd>The step ID.</dd>
+   *   <dd>The step ID. One of the {@link ProcessSpaSid} constants.</dd>
    * 
    *   <dt>bool `is_current`</dt>
    *   <dd><tt>true</tt> - this item is current.

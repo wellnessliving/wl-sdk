@@ -4,6 +4,9 @@ namespace WellnessLiving\Wl\Resource\Layout;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Resource\Image\ImageIconSid;
+use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
+use WellnessLiving\Wl\Resource\Image\ImageSid;
 
 /**
  * Displays information about an asset layout.
@@ -74,17 +77,17 @@ class LayoutModel extends WlModelAbstract
    *       <dd>Resource key.</dd>
    * 
    *       <dt>string `sid_image`</dt>
-   *       <dd>Image kind.</dd>
+   *       <dd>Image kind. String representation of one of {@link ImageSid} constants.</dd>
    * 
    *       <dt>string `sid_image_icon`</dt>
    *       <dd>
-   *         Icon name.
+   *         Icon name.String representation of one of {@link ImageIconSid} constants.
    * Is set only if <var>sid_image</var> equals to <tt>image</tt>.
    *       </dd>
    * 
    *       <dt>string `sid_image_shape`</dt>
    *       <dd>
-   *         Shape name.
+   *         Shape name. String representation of one of {@link ImageShapeSid} constants.
    * Is set only if <var>sid_image</var> equals to <tt>shape</tt>.
    *       </dd>
    * 
@@ -187,7 +190,7 @@ class LayoutModel extends WlModelAbstract
    *   <dd>The vertical position in pixels. Empty if grid is turned on.</dd>
    * 
    *   <dt>int `id_shape_icon`</dt>
-   *   <dd>The icon ID.</dd>
+   *   <dd>The icon ID. One of the {@link ImageIconSid} constants.</dd>
    * </dl>
    * @get result
    * @var array[]

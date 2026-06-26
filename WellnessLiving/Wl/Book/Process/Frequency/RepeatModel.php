@@ -6,6 +6,7 @@ use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * For recurrent class booking returns list of visits to be created for the given settings.
@@ -132,6 +133,8 @@ class RepeatModel extends WlModelAbstract
   public $id_duration = 0;
 
   /**
+   * WellnessLiving mode, one of {@link ModeSid} constants.
+   *
    * @get get
    * @var int
    */

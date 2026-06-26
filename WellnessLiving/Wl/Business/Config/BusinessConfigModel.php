@@ -8,6 +8,7 @@ use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\Policy\BlameSid;
 use WellnessLiving\Wl\Business\Policy\ChargeSid;
 use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
+use WellnessLiving\Wl\Service\ServiceSid;
 
 /**
  * Manages business configurations for clients, bookings, payments, and related things.
@@ -26,7 +27,7 @@ class BusinessConfigModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>bool[] `a_wait_service`</dt>
-   *
+   *   <dd>Keys are list of IDs from {@link ServiceSid}, and values are flags whether wait list is allowed.</dd>
    * 
    *   <dt>int `i_book_before`</dt>
    *   <dd>Minimum hours|days|months before class should be booked.</dd>

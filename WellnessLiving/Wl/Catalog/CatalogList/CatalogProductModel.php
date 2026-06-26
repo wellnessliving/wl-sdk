@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Catalog\CatalogList;
 
+use WellnessLiving\Core\Sid\SortOrderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlSaleSid;
@@ -24,7 +25,7 @@ class CatalogProductModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>int `id_order`</dt>
-   *   <dd>The sort order.</dd>
+   *   <dd>The sort order. One of the {@link SortOrderSid} constants.</dd>
    * 
    *   <dt>int `id_sort`</dt>
    *   <dd>The sort field ID.</dd>
@@ -58,7 +59,7 @@ class CatalogProductModel extends WlModelAbstract
    *   <dd>The last shown product index for pagination.</dd>
    * 
    *   <dt>int `id_order`</dt>
-   *   <dd>The sort order ID.</dd>
+   *   <dd>The sort order ID. One of the {@link SortOrderSid} constants.</dd>
    * 
    *   <dt>int `id_sort`</dt>
    *   <dd>The sort field ID.</dd>

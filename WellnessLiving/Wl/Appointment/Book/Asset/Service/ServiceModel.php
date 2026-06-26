@@ -4,6 +4,10 @@ namespace WellnessLiving\Wl\Appointment\Book\Asset\Service;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Resource\Image\ImageIconSid;
+use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
+use WellnessLiving\Wl\Resource\Image\ImageSid;
 
 /**
  * Retrieves assets that are required for a service booking.
@@ -97,17 +101,17 @@ class ServiceModel extends WlModelAbstract
    *           <dd>Resource key.</dd>
    * 
    *           <dt>string `sid_image`</dt>
-   *           <dd>Image kind.</dd>
+   *           <dd>Image kind. String representation of one of {@link ImageSid} constants.</dd>
    * 
    *           <dt>string `sid_image_icon`</dt>
    *           <dd>
-   *             Icon name.
+   *             Icon name.String representation of one of {@link ImageIconSid} constants.
    * Is set only if <var>sid_image</var> equals to <tt>image</tt>.
    *           </dd>
    * 
    *           <dt>string `sid_image_shape`</dt>
    *           <dd>
-   *             Shape name.
+   *             Shape name. String representation of one of {@link ImageShapeSid} constants.
    * Is set only if <var>sid_image</var> equals to <tt>shape</tt>.
    *           </dd>
    * 
@@ -160,6 +164,8 @@ class ServiceModel extends WlModelAbstract
   public $dt_start = '';
 
   /**
+   * Mode type, one of {@link ModeSid} constants.
+   *
    * @get get
    * @var int
    */

@@ -2,11 +2,14 @@
 
 namespace WellnessLiving\Wl\Catalog\CatalogList;
 
+use WellnessLiving\Core\Drive\DriveTypeSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Catalog\PurchaseOptionViewSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\Service\ServiceSid;
 use WellnessLiving\Wl\Tax\WlTaxSid;
 use WellnessLiving\Wl\WlProgramSid;
 use WellnessLiving\Wl\WlSaleSid;
@@ -58,7 +61,7 @@ class ElementModel extends WlModelAbstract
    *   <dt>int[] `a_service_access`</dt>
    *   <dd>
    *     Access to services for a purchase option.
-   * Keys are one of the {@link \Wl\Service\ServiceSid} constants, values are one of the {@link AFlagSid}
+   * Keys are one of the {@link ServiceSid} constants, values are one of the {@link AFlagSid}
    * constants. Set only for relevant purchase option service category.
    * {@link AFlagSid::ON} access to some services.
    * {@link AFlagSid::OFF} no access to services. It can be set only for classes and events.
@@ -289,7 +292,7 @@ class ElementModel extends WlModelAbstract
    *           <dd>Width of the original image.</dd>
    * 
    *           <dt>int `id_type_src`</dt>
-   *           <dd>Type ID of the image.</dd>
+   *           <dd>Type ID of the image. Constant from {@link DriveTypeSid}.</dd>
    * 
    *           <dt>bool `is-resize`</dt>
    *           <dd>`true` if the variant differs from the original, `false` - otherwise.</dd>
@@ -345,7 +348,7 @@ class ElementModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>int `id_purchase_option_view`</dt>
-   *   <dd>The Purchase Option view type.</dd>
+   *   <dd>The Purchase Option view type. One of the {@link PurchaseOptionViewSid} constants.</dd>
    * 
    *   <dt>string `m_discount_code`</dt>
    *   <dd>The discount code amount.</dd>
@@ -534,7 +537,7 @@ class ElementModel extends WlModelAbstract
   public $id_purchase_item;
 
   /**
-   * The ID of the item view category.
+   * The ID of the item view category. One of the {@link PurchaseOptionViewSid} constants.
    *
    * @get result
    * @var int

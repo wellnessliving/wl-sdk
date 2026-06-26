@@ -4,6 +4,10 @@ namespace WellnessLiving\Wl\Appointment\Book\Asset;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Resource\Image\ImageIconSid;
+use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
+use WellnessLiving\Wl\Schedule\ClassView\DenyReasonSid;
 use WellnessLiving\Wl\Service\ServicePriceSid;
 use WellnessLiving\Wl\Service\ServiceRequireSid;
 
@@ -72,12 +76,12 @@ class AssetListModel extends WlModelAbstract
    * 
    *       <dt>string `sid_image_icon`</dt>
    *       <dd>
-   *         The icon name. This is only set if the image kind equals to `image`.
+   *         The icon name. String representation of one of the {@link ImageIconSid} constants. This is only set if the image kind equals to `image`.
    *       </dd>
    * 
    *       <dt>string `sid_image_shape`</dt>
    *       <dd>
-   *         The shape name. This is set only if the image kind equals to `shape`.
+   *         The shape name. String representation of one of the {@link ImageShapeSid} constants. This is set only if the image kind equals to `shape`.
    *       </dd>
    * 
    *       <dt>string `url`</dt>
@@ -127,7 +131,7 @@ class AssetListModel extends WlModelAbstract
    *   <dt>int|null `id_deny_reason`</dt>
    *   <dd>
    *     The ID of the reason why the client cannot book this asset.
-   * `null` if there is no deny reason.
+   * One of {@link DenyReasonSid} constants. `null` if there is no deny reason.
    *   </dd>
    * 
    *   <dt>int `id_service_require`</dt>
@@ -199,6 +203,8 @@ class AssetListModel extends WlModelAbstract
   public $i_image_width = 0;
 
   /**
+   * Mode type, one of {@link ModeSid} constants.
+   *
    * @get get
    * @var int
    */

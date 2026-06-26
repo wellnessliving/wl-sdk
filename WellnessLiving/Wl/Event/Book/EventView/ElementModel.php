@@ -7,6 +7,9 @@ use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\Config\BusinessConfigModel;
+use WellnessLiving\Wl\Classes\RequirePaySid;
+use WellnessLiving\Wl\Service\ServiceSid;
+use WellnessLiving\Wl\Virtual\VirtualProviderSid;
 
 /**
  * Retrieves information about an event element.
@@ -77,7 +80,7 @@ class ElementModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>bool[] `a_wait_service`</dt>
-   *
+   *   <dd>Keys are list of IDs from {@link ServiceSid}, and values are flags whether wait list is allowed.</dd>
    * 
    *   <dt>int `i_book_before`</dt>
    *   <dd>Minimum hours|days|months before class should be booked.</dd>
@@ -828,6 +831,7 @@ class ElementModel extends WlModelAbstract
 
   /**
    * The purchase rule ID.
+   * One of the {@link RequirePaySid} constants.
    *
    * @get result
    * @var int
@@ -836,16 +840,18 @@ class ElementModel extends WlModelAbstract
 
   /**
    * Default required value for {@link RequirePaySid::ADVANCE} payment mode,
+   *  one of {@link RequirePaySid::ONLINE} or {@link RequirePaySid::VISIT}.
    *
    * `null` means default value not selected.
    *
    * @get result
    * @var int|null
+   * @see RequirePaySid
    */
   public $id_pay_require_option;
 
   /**
-   * The virtual provider ID.
+   * The virtual provider ID. One of the {@link VirtualProviderSid} constants.
    *
    * `null` if an in-person event.
    *

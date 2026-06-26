@@ -10,6 +10,7 @@ use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Appointment\Book\Question\QuestionModel;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
+use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlPayMethodSid;
 
@@ -485,7 +486,7 @@ class FinishMultipleModel extends WlModelAbstract
   public $a_visit_provider = [];
 
   /**
-   * The mode type.
+   * The mode type. One of the {@link ModeSid} constants.
    *
    * @post post
    * @var int

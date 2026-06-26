@@ -10,6 +10,7 @@ use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Appointment\Book\Question\QuestionModel;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
+use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlPayMethodSid;
 
@@ -432,7 +433,7 @@ class Finish47Model extends WlModelAbstract
   public $a_visit_payment;
 
   /**
-   * The booking mode ID.
+   * The booking mode ID. One of the {@link ModeSid} constants.
    *
    * @post post
    * @var int

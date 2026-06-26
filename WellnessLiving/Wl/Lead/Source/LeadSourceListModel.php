@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Lead\Source;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Retrieves a list of Lead Sources.
@@ -24,7 +25,7 @@ class LeadSourceListModel extends WlModelAbstract
    * 
    *   <dt>int|null `id_lead_source`</dt>
    *   <dd>
-   *     System-defined Lead Source ID.
+   *     System-defined Lead Source ID. One of the {@link ModeSid} constants.
    * `null` if it is a custom Lead Source.
    *   </dd>
    * 

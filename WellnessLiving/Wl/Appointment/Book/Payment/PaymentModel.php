@@ -7,6 +7,7 @@ use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
+use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\Service\ServicePriceSid;
 
@@ -271,7 +272,7 @@ class PaymentModel extends WlModelAbstract
   public $a_uid = [];
 
   /**
-   * The key of source mode.
+   * The key of source mode. A constant of {@link ModeSid}.
    *
    * @get get
    * @post get

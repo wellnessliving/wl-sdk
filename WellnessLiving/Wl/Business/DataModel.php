@@ -3,8 +3,10 @@
 namespace WellnessLiving\Wl\Business;
 
 use WellnessLiving\Core\Locale\CurrencySid;
+use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Service\ServiceSid;
 use WellnessLiving\Wl\WlRankTypeSid;
 use WellnessLiving\Wl\WlRegionSid;
 
@@ -17,7 +19,7 @@ class DataModel extends WlModelAbstract
 {
   /**
    * A list of all business services and their availability data.
-   *
+   * This is presented as an array, where keys are SIDs from {@link ServiceSid} and values are Boolean.
    * If `true`, at least one service is enabled in the business. Otherwise, this will be `false`.
    *
    * @get result
@@ -80,6 +82,7 @@ class DataModel extends WlModelAbstract
    *
    * @get result
    * @var int
+   * @see LocaleSid
    */
   public $id_locale;
 

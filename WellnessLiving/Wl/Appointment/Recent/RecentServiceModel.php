@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Appointment\Recent;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Service\ServiceSid;
 
 /**
  * Returns list of client's last booked services. Only unique services are returned, i.e. if a client
@@ -30,7 +31,7 @@ class RecentServiceModel extends WlModelAbstract
   public $i_visit = 5;
 
   /**
-   * Type of service to return.
+   * Type of service to return. One of {@link ServiceSid} constants.
    *
    * @get get
    * @var int

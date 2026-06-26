@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Pay\Account\Charge;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Fills a user account with a specified payment.
@@ -113,7 +114,7 @@ class ChargeModel extends WlModelAbstract
   public $a_pay_form = [];
 
   /**
-   * The source mode key.
+   * The source mode key. One of the {@link ModeSid} constants.
    *
    * @post post
    * @var int

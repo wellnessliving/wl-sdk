@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Profile\Form\Response;
 use WellnessLiving\Core\Quiz\ResponseStatusSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Quiz\Response\SourceSid;
 
 /**
  * Retrieves a list of a user's quiz responses.
@@ -29,7 +30,7 @@ class ResponseListModel extends WlModelAbstract
    * 
    *   <dt>int `id_source`</dt>
    *   <dd>
-   *     The place where the request to fill out a quiz form occurred.
+   *     The place where the request to fill out a quiz form occurred. One of the {@link SourceSid} constants.
    *   </dd>
    * 
    *   <dt>bool `is_private`</dt>
@@ -75,7 +76,7 @@ class ResponseListModel extends WlModelAbstract
    * 
    *   <dt>int `id_source`</dt>
    *   <dd>
-   *     The place where the request to fill out the quiz form occurred.
+   *     The place where the request to fill out the quiz form occurred. One of the {@link SourceSid} constants.
    *   </dd>
    * 
    *   <dt>int `id_status`</dt>

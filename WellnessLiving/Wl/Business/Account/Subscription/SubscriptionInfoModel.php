@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Business\Account\Subscription;
 
+use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
@@ -25,6 +26,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    *
    * @get result
    * @var int
+   * @see LocaleSid
    */
   public $id_locale = 0;
 

@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Event;
 
+use WellnessLiving\Core\Sid\YesNoSid;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
@@ -85,7 +86,8 @@ class EventListModel extends WlModelAbstract
 
   /**
    * List of IDs to include/exclude virtual events.
-   *
+   * If the only ID is {@link YesNoSid::YES}, only virtual events are included.
+   * If the only ID is {@link YesNoSid::NO}, only in-person events are included.
    * Otherwise, no filtering is done.
    *
    * @get get

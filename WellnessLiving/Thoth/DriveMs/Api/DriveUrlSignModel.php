@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Thoth\DriveMs\Api;
 
+use WellnessLiving\Core\Drive\DriveTypeSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
@@ -24,7 +25,7 @@ class DriveUrlSignModel extends WlModelAbstract
    * 
    *   <dt>int `id_type`</dt>
    *   <dd>Image type code. Only present if the file is an image.
-   *</dd>
+   * One of {@link DriveTypeSid} constants.</dd>
    * 
    *   <dt>bool `is_private`</dt>
    *   <dd>Whether the link is private.</dd>

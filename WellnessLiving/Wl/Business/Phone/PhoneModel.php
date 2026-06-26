@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Business\Phone;
 
+use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
@@ -16,7 +17,7 @@ use WellnessLiving\WlModelRequest;
 class PhoneModel extends WlModelAbstract
 {
   /**
-   * Locale corresponding to the business' address country.
+   * Locale corresponding to the business' address country. One of {@link LocaleSid} constants.
    * Note that this may not be the same as the business' locale, if the business is misconfigured and has an address
    * country that is outside its locale.
    *

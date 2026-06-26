@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Family\Relation;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Returns data about a user's relationships.
@@ -67,6 +68,7 @@ class RelationModel extends WlModelAbstract
 
   /**
    * ID of source mode.
+   * One of {@link ModeSid} constants.
    *
    * @delete post
    * @post post

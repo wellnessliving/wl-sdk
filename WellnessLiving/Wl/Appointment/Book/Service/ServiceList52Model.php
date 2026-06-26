@@ -4,6 +4,8 @@ namespace WellnessLiving\Wl\Appointment\Book\Service;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Schedule\ClassView\DenyReasonSid;
+use WellnessLiving\Wl\Service\ServiceBookFlowSid;
 use WellnessLiving\Wl\Service\ServicePriceSid;
 use WellnessLiving\Wl\Service\ServiceRequireSid;
 
@@ -144,11 +146,11 @@ class ServiceList52Model extends WlModelAbstract
    *   <dd>The appointment duration in minutes.</dd>
    * 
    *   <dt>int `id_book_flow`</dt>
-   *   <dd>The type of client booking flow.</dd>
+   *   <dd>The type of client booking flow. One of {@link ServiceBookFlowSid} constants.</dd>
    * 
    *   <dt>int|null `id_deny_reason`</dt>
    *   <dd>
-   *     The ID of the reason why the client cannot book this service.
+   *     The ID of the reason why the client cannot book this service. One of {@link DenyReasonSid} constants.
    * `null` if there is no deny reason.
    *   </dd>
    * 

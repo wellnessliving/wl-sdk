@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Reception\Application;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Service\ServiceSid;
 use WellnessLiving\Wl\WlProgramTypeSid;
 
 /**
@@ -51,7 +52,7 @@ class ReceptionScheduleModel extends WlModelAbstract
    *   <dd>The session duration in minutes.</dd>
    * 
    *   <dt>int `id_service`</dt>
-   *   <dd>Service ID.</dd>
+   *   <dd>Service ID. One of the {@link ServiceSid} constants.</dd>
    * 
    *   <dt>bool `is_auto`</dt>
    *   <dd>If `true`, the session can be checked in automatically. Otherwise, this will be `false`.</dd>
@@ -213,7 +214,7 @@ class ReceptionScheduleModel extends WlModelAbstract
 
   /**
    * All types of services that appear in the schedule.
-   * Values are the HTML classes associated with that service.
+   * Keys are constants from {@link ServiceSid}. Values are the HTML classes associated with that service.
    *
    * @get result
    * @var array

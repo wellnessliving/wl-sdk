@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Thoth\DriveMs\Api;
 
+use WellnessLiving\Core\Drive\DriveTypeSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
@@ -24,7 +25,7 @@ class DriveFileModel extends WlModelAbstract
    * 
    *   <dt>int|null `id_type`</dt>
    *   <dd>Image type ID.
-   *
+   * One of {@link DriveTypeSid} constants.
    * `null` if file not image.</dd>
    * 
    *   <dt>bool `is_private`</dt>

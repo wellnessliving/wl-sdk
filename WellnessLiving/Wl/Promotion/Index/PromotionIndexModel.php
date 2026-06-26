@@ -6,6 +6,7 @@ use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Event\EventListModel;
+use WellnessLiving\Wl\Promotion\Edit\Limit\Cycle\Sid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlDurationTypeSid;
 use WellnessLiving\Wl\WlProgramCategorySid;
@@ -164,7 +165,7 @@ class PromotionIndexModel extends WlModelAbstract
    *       </dd>
    * 
    *       <dt>int `id_limit_cycle`</dt>
-   *
+   *       <dd>The type of the limit cycle {@link Sid}.</dd>
    * 
    *       <dt>bool `is_reconcile_visit`</dt>
    *       <dd>Determines whether to reconcile unpaid sessions on restrictions reset.</dd>

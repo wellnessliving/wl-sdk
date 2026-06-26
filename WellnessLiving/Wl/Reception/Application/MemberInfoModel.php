@@ -171,13 +171,13 @@ class MemberInfoModel extends WlModelAbstract
    *   <dt>int `id_color`</dt>
    *   <dd>
    *     ID of color the notice is displayed in.
-   *
+   * One of {@link MemberInfoColorSid} constants.
    *   </dd>
    * 
    *   <dt>int `id_icon`</dt>
    *   <dd>
    *     ID of icon that accompanies the message.
-   *
+   * One of {@link MemberInfoIconSid} constants.
    *   </dd>
    * 
    *   <dt>string `text_class`</dt>

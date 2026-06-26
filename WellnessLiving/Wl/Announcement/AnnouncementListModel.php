@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Announcement;
 
+use WellnessLiving\Core\Sid\SortOrderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
@@ -90,6 +91,7 @@ class AnnouncementListModel extends WlModelAbstract
    *
    * @get get,result
    * @var int|null
+   * @see SortOrderSid
    */
   public $id_order = null;
 

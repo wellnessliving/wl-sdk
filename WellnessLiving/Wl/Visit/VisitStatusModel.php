@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Visit;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Views or changes the visit status.
@@ -149,7 +150,7 @@ class VisitStatusModel extends WlModelAbstract
 
   /**
    * The source of the visit or the visit change.
-   *
+   * One of the {@link ModeSid} constants.
    * If you're unsure about the value to use, keep the default value.
    *
    * @get result

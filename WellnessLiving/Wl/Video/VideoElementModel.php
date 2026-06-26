@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Video;
 
+use WellnessLiving\Core\Sid\YesNoSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
@@ -191,9 +192,13 @@ class VideoElementModel extends WlModelAbstract
   public $id_embed_source = null;
 
   /**
+   * {@link YesNoSid::NO} if the video is available in all locations.
+   * {@link YesNoSid::YES} if the video is available only in certain locations.
+   *
    * @get result
    * @post post
    * @var int
+   * @see YesNoSid
    */
   public $id_location_select;
 

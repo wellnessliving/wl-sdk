@@ -7,6 +7,7 @@ use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
 use WellnessLiving\Wl\Insurance\Catalog\ProgramListModel;
 use WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel;
+use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\WlSaleSid;
 
@@ -353,7 +354,7 @@ class PaymentModel extends WlModelAbstract
   public $f_discount_percent = 0;
 
   /**
-   * The WellnessLiving mode type (required).
+   * The WellnessLiving mode type (required). One of the {@link ModeSid} constants.
    *
    * @post get
    * @var int

@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Core\Geo\Region;
 
+use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
@@ -30,7 +31,7 @@ class RegionModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>int `id_locale`</dt>
-   *   <dd>The locale ID of the country.</dd>
+   *   <dd>The locale ID of the country. One of the {@link LocaleSid} constants.</dd>
    * 
    *   <dt>string `k_geo_country`</dt>
    *   <dd>The country key.</dd>
@@ -47,7 +48,7 @@ class RegionModel extends WlModelAbstract
   public $a_region;
 
   /**
-   * The locale ID to find regions for.
+   * The locale ID to find regions for. One of the {@link LocaleSid} constants.
    *
    * @get get
    * @var int

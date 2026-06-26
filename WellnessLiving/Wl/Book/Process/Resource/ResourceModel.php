@@ -6,6 +6,9 @@ use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Resource\Image\ImageIconSid;
+use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
+use WellnessLiving\Wl\Resource\Image\ImageSid;
 
 /**
  * Selects assets for making a booking.
@@ -128,17 +131,17 @@ class ResourceModel extends WlModelAbstract
    *           <dd>`true` if no image was uploaded, `false` otherwise.</dd>
    * 
    *           <dt>string `sid_image`</dt>
-   *           <dd>Image kind.</dd>
+   *           <dd>Image kind. One of {@link ImageSid} string constants.</dd>
    * 
    *           <dt>string `sid_image_icon`</dt>
    *           <dd>
-   *             Icon name.
+   *             Icon name. One of {@link ImageIconSid} string constants.
    * Set only when `sid_image` equals 'icon'.
    *           </dd>
    * 
    *           <dt>string `sid_image_shape`</dt>
    *           <dd>
-   *             Shape name.
+   *             Shape name. One of {@link ImageShapeSid} string constants.
    * Set only when `sid_image` equals 'shape'.
    *           </dd>
    * 

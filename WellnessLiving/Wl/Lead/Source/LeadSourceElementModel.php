@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Lead\Source;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Retrieves Lead Source element.
@@ -23,7 +24,7 @@ class LeadSourceElementModel extends WlModelAbstract
    * 
    *   <dt>int|null `id_lead_source`</dt>
    *   <dd>
-   *     System-defined Lead Source ID.
+   *     System-defined Lead Source ID. One of {@link ModeSid} constants.
    * `null` if it is a custom Lead Source.
    *   </dd>
    * 
@@ -33,7 +34,7 @@ class LeadSourceElementModel extends WlModelAbstract
    *   <dt>string `k_skin`</dt>
    *   <dd>
    *     Key of the lead skin. 
-   * Will be set only in case if <var>id_lead_source</var> is {@link \Wl\Mode\ModeSid::WIDGET} and
+   * Will be set only in case if <var>id_lead_source</var> is {@link ModeSid::WIDGET} and
    * widget can't be used for "Add Lead" form. `false` - otherwise.
    *   </dd>
    * 

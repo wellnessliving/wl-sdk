@@ -5,6 +5,7 @@ namespace WellnessLiving\Core\Passport\Login\Register;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Lead\LeadModel;
+use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Allows new clients to be registered.
@@ -40,6 +41,7 @@ class RegisterModel extends WlModelAbstract
   /**
    * ID of source mode.
    *
+   * One of {@link ModeSid} constants.
    * `null` if not initialized or the api is not called in the Wellnessliving project.
    *
    * @post post

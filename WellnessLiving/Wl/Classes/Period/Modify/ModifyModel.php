@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Classes\Period\Modify;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\WlClassModifyActionSid;
 use WellnessLiving\Wl\WlClassModifyModeSid;
 use WellnessLiving\Wl\WlClassModifyStepSid;
@@ -117,7 +118,7 @@ class ModifyModel extends WlModelAbstract
   public $id_class_modify_mode = 0;
 
   /**
-   * The mode type.
+   * The mode type. One of the {@link ModeSid} constants.
    *
    * @post get
    * @var int

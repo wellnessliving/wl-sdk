@@ -11,6 +11,8 @@ use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
 /**
  * Performs the booking wizard steps.
  *
+ * Include the {@link ProcessSpaSid::QUIZ} step, if needed.
+ *
  * @deprecated Use {@link Process59Model} instead.
  *
  * @method WlModelRequest get() Returns the ordered list of booking wizard steps, including the quiz step when required.  Delegates to the parent implementation and then appends the quiz (or document) step when the class or event requires it, adds the detail step for Client Web App flows, and re-sorts the path into the correct wizard order.
@@ -34,7 +36,7 @@ class Process54Model extends WlModelAbstract
    *
    * <dl>
    *   <dt>int `id_book_process`</dt>
-   *   <dd>The step ID.</dd>
+   *   <dd>The step ID. One of the {@link ProcessSpaSid} constants.</dd>
    * 
    *   <dt>bool `is_current`</dt>
    *   <dd><tt>true</tt> - this item is current.

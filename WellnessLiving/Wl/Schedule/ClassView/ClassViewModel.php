@@ -146,7 +146,7 @@ class ClassViewModel extends WlModelAbstract
    *   <dd>Limit of wait list. <tt>null</tt> if limit is not set.</dd>
    * 
    *   <dt>int `id_deny_reason`</dt>
-   *   <dd>ID of deny reason.</dd>
+   *   <dd>ID of deny reason. One of {@link DenyReasonSid} constants.</dd>
    * 
    *   <dt>bool `is_book`</dt>
    *   <dd>Whether current class was booked by current client.</dd>
@@ -379,7 +379,7 @@ class ClassViewModel extends WlModelAbstract
    *       <dd>Limit of wait list. <tt>null</tt> if limit is not set.</dd>
    * 
    *       <dt>int `id_deny_reason`</dt>
-   *       <dd>ID of deny reason.</dd>
+   *       <dd>ID of deny reason. One of {@link DenyReasonSid} constants.</dd>
    * 
    *       <dt>bool `is_book`</dt>
    *       <dd>Whether current class was booked by current client.</dd>
