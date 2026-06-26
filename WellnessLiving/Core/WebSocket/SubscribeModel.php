@@ -675,7 +675,6 @@ class SubscribeModel extends WlModelAbstract
    *   <dd>
    *     Status of mail verification.
    *
-   * Or {@link \Wl\Business\Config\Option\MailVerifyStatusOption::DEFAULT_VALUE} if option "Enable Custom Reply To Emails" in Business -&gt; Feature is disabled.
    *   </dd>
    * 
    *   <dt>string `text_email`</dt>

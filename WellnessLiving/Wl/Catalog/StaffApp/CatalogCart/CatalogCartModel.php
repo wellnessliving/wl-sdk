@@ -44,18 +44,35 @@ class CatalogCartModel extends WlModelAbstract
    *   <dd>
    *     The list of purchase item additional options:
    *     <dl>
-   *       <dt>array `a_tuition_component`</dt>
+   *       <dt>array `a_event_list`</dt>
    *       <dd>
    *         List of tuition components:
    *         <dl>
-   *           <dt>string `m_price`</dt>
-   *           <dd>Price of the component within the tuition.
-   *      `null` if price should be taken from the setup.</dd>
+   *           <dt>array `a_tax`</dt>
+   *           <dd>
+   *             Calculated tax amounts for the event enrollment component.
+   *
+   *      Populated in the response; not required in the request.
+   *           </dd>
+   * 
+   *           <dt>array `a_tax_fee`</dt>
+   *           <dd>
+   *             Calculated tax amounts for the fee component.
+   *
+   *      Populated in the response; not required in the request.
+   *           </dd>
    * 
    *           <dt>string `k_class`</dt>
+   *           <dd>Key of the event class within the tuition which should be granted to the client.</dd>
+   * 
+   *           <dt>string `m_fee`</dt>
+   *           <dd>Additional fee amount for the component (bcmath string).
+   *      `'0.00'` if no additional fee.</dd>
+   * 
+   *           <dt>string `m_price`</dt>
    *           <dd>
-   *             Key of the event class within the tuition which should be granted to the client.
-   *       `null` if this component represents tuition fees only.
+   *             Override price of the event component within the tuition.
+   *      `null` if price should be taken from the class setup.
    *           </dd>
    * 
    *           <dt>string `uid`</dt>
@@ -150,7 +167,7 @@ class CatalogCartModel extends WlModelAbstract
    *   <dt>string `m_price_custom`</dt>
    *   <dd>The custom price of the sale item. If not passed, no custom price has been applied to the sale item.</dd>
    * </dl>
-   * @get get
+   * @get get,result
    * @var array[]
    */
   public $a_item = [];

@@ -18,6 +18,9 @@ class TaxListModel extends WlModelAbstract
    * Each element has the following structure:
    *
    * <dl>
+   *   <dt>string[] `a_location`</dt>
+   *   <dd>The locations where the tax is applicable.</dd>
+   * 
    *   <dt>float `f_value`</dt>
    *   <dd>The amount of the tax.</dd>
    * 

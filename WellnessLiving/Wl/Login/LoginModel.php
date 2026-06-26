@@ -34,16 +34,10 @@ class LoginModel extends WlModelAbstract
    *   <dd>First letter of user last name.</dd>
    * 
    *   <dt>string `text_mail_client`</dt>
-   *   <dd>
-   *     Client`s mail.
-   *   &lt;/dd&gt;
+   *   <dd>Client`s mail.</dd>
    * 
-   *   &lt;dt&gt;
-   * string &lt;var&gt;text_mail_staff&lt;/var&gt;
-   *   &lt;/dt&gt;
-   *   &lt;dd&gt;
-   * Staff`s mail.
-   *   </dd>
+   *   <dt>string `text_mail_staff`</dt>
+   *   <dd>Staff`s mail.</dd>
    * 
    *   <dt>string `text_name_first_staff`</dt>
    *   <dd>Staff's first name.</dd>

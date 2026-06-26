@@ -157,6 +157,12 @@ abstract class WlPurchaseItemSid
    * Used when client purchases tuition for an event list.
    */
   const TUITION = 26;
+
+  /**
+   * Tuition fee purchase item.
+   * Used when client purchases tuition for an event list.
+   */
+  const TUITION_FEE = 27;
 }
 
 ?>

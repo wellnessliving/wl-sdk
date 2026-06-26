@@ -48,7 +48,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
    *       <dt>string `m_surcharge`</dt>
    *       <dd>Surcharge amount from store settings.</dd>
    * 
-   *       <dt>string|int `s_batch_number`</dt>
+   *       <dt>string `s_batch_number`</dt>
    *       <dd>Batch number for this transaction.</dd>
    *     </dl>
    *   </dd>

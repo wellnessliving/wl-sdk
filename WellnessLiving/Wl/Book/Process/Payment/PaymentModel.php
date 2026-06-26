@@ -407,6 +407,15 @@ class PaymentModel extends WlModelAbstract
   public $k_login_promotion = '';
 
   /**
+   * Host login promotion key that grants the guest pass used to pay for the guest's visit.
+   * Empty string if the booking is not paid with a guest pass.
+   *
+   * @post post
+   * @var string
+   */
+  public $k_login_promotion_guest_pass = '';
+
+  /**
    * The installment template key.
    * This property is optional, and it will be `null` if an installment plan doesn't exist for the purchased item.
    * This will be `0` if an installment plan isn't selected for the purchased item from the list of installment plans.

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Schedule\ClassView;
 /**
  * Reasons why the client can't book this class.
  *
- * Last used ID: 24
+ * Last used ID: 26
  */
 class DenyReasonSid
 {
@@ -77,6 +77,11 @@ class DenyReasonSid
    * Class is canceled.
    */
   const CLASS_CANCELED = 11;
+
+  /**
+   * Class is finished.
+   */
+  const CLASS_FINISHED = 26;
 
   /**
    * Class is full.

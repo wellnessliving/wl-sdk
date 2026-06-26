@@ -18,7 +18,7 @@ class CaptchaRequireModel extends WlModelAbstract
    * Parameters for `1064`:
    * <dl>
    *   <dt>string|null `k_business`</dt>
-   *   <dd>Business key. <tt>null</tt> if system business.</dd>
+   *   <dd>Business key. `null` if system business.</dd>
    * </dl>
    * 
    * Parameters for `1066`:

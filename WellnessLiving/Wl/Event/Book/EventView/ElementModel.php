@@ -79,7 +79,7 @@ class ElementModel extends WlModelAbstract
    *     List of not allowed decline reasons to payment reattempt.
    *   </dd>
    * 
-   *   <dt>int `a_wait_service`</dt>
+   *   <dt>bool[] `a_wait_service`</dt>
    *   <dd>Keys are list of IDs from {@link ServiceSid}, and values are flags whether wait list is allowed.</dd>
    * 
    *   <dt>int `i_book_before`</dt>

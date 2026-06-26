@@ -101,7 +101,7 @@ class PatternModel extends WlModelAbstract
    *   <dd>JSON content of the email for Unlayer editor.</dd>
    * 
    *   <dt>string `text_preview`</dt>
-   *   <dd>&gt;Preview text of the email.</dd>
+   *   <dd>>Preview text of the email.</dd>
    * 
    *   <dt>string `text_push`</dt>
    *   <dd>Content of the push notification.</dd>
@@ -158,7 +158,7 @@ class PatternModel extends WlModelAbstract
    *   <dd>JSON content of the email for Unlayer editor.</dd>
    * 
    *   <dt>string `text_preview`</dt>
-   *   <dd>&gt;Preview text of the email.</dd>
+   *   <dd>>Preview text of the email.</dd>
    * 
    *   <dt>string `text_push`</dt>
    *   <dd>Content of the push notification.</dd>

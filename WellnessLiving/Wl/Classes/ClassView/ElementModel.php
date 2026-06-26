@@ -133,7 +133,7 @@ class ElementModel extends WlModelAbstract
    *   <dt>bool|null `has_own_image`</dt>
    *   <dd>
    *     This field will be `true` if the image used for the class is an image uploaded in the class setup.
-   * If an image isn't uploaded in the class setup, but there's at least one image in Setup-&gt;Locations image slider,
+   * If an image isn't uploaded in the class setup, but there's at least one image in Setup->Locations image slider,
    * this field will be `false`.
    * This field will be `null` if the class image isn't uploaded, and there are no images in location slider.
    * In such cases, an empty image is used.

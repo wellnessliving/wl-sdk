@@ -374,6 +374,15 @@ class ProcessGroupModel extends WlModelAbstract
   public $k_login_activity_purchase;
 
   /**
+   * Host login promotion key that grants the guest pass used to pay for the guest's visit.
+   * Empty string if the booking is not paid with a guest pass.
+   *
+   * @post post
+   * @var string
+   */
+  public $k_login_promotion_guest_pass = '';
+
+  /**
    * The installment template primary key.
    * `null` to not use installment template.
    *

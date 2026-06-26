@@ -669,6 +669,15 @@ class Purchase56Model extends WlModelAbstract
   public $k_login_promotion = '';
 
   /**
+   * Host login promotion key that grants the guest pass used to pay for the guest's visit.
+   * Empty string if the booking is not paid with a guest pass.
+   *
+   * @post post
+   * @var string
+   */
+  public $k_login_promotion_guest_pass = '';
+
+  /**
    * The default Purchase Option key.
    * This will be empty if the class has no default Purchase Option.
    *

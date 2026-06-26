@@ -30,6 +30,18 @@ class StoreGroupModel extends WlModelAbstract
   public $a_login_promotion = [];
 
   /**
+   * A list of host guest passes which are selected by a group of clients to pay for the guests visits.
+   *
+   * These guest passes will be checked to determine if they can be applied to the current class or event.
+   *
+   * Keys are UIDs of clients, values are host login promotion keys that grant the guest passes.
+   *
+   * @post post
+   * @var string[]
+   */
+  public $a_login_promotion_guest_pass = [];
+
+  /**
    * A list of new purchase items which are selected by a group of clients.
    *
    * This new purchase items will be checked to determine if it can be applied to the current class or event before
@@ -85,6 +97,12 @@ class StoreGroupModel extends WlModelAbstract
    *   <dd>
    *     Login promotion key. 
    *   The same as in {@link StoreGroupModel::$a_login_promotion}.
+   *   `null` if not applicable.
+   *   </dd>
+   * 
+   *   <dt>string|null `k_login_promotion_guest_pass`</dt>
+   *   <dd>
+   *     Host login promotion key that grants the guest pass. 
    *   `null` if not applicable.
    *   </dd>
    * 
@@ -270,6 +288,15 @@ class StoreGroupModel extends WlModelAbstract
    * @var string
    */
   public $k_class_period = '0';
+
+  /**
+   * Host login promotion key that grants the guest pass used to pay for the guest's visit.
+   * Empty string if the booking is not paid with a guest pass.
+   *
+   * @post post
+   * @var string
+   */
+  public $k_login_promotion_guest_pass = '';
 }
 
 ?>

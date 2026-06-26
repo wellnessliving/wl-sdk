@@ -85,30 +85,28 @@ class AttendanceListModel extends WlModelAbstract
    *       <dd>Amount the client owns to the business.</dd>
    * 
    *       <dt>string `html_note`</dt>
-   *       <dd>
-   *         User`s login notes.&lt;/dd&gt;
+   *       <dd>User`s login notes.</dd>
    * 
-   *  &lt;dt&gt;int &lt;var&gt;i_visit_credit&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;Count of unpaid visits if client has at least one.&lt;/dd&gt;
+   *       <dt>int `i_visit_credit`</dt>
+   *       <dd>Count of unpaid visits if client has at least one.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_account_positive&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;If the user has a positive balance on his account.&lt;/dd&gt;
+   *       <dt>bool `is_account_positive`</dt>
+   *       <dd>If the user has a positive balance on his account.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_birthday&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;If a user has a birthday today.&lt;/dd&gt;
+   *       <dt>bool `is_birthday`</dt>
+   *       <dd>If a user has a birthday today.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_contract&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;&lt;tt&gt;true&lt;/tt&gt; if client has some contracts that he should agree.&lt;/dd&gt;
+   *       <dt>bool `is_contract`</dt>
+   *       <dd><tt>true</tt> if client has some contracts that he should agree.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_family_payer&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;`true` if the user makes payments for a family member, `false` otherwise.&lt;/dd&gt;
+   *       <dt>bool `is_family_payer`</dt>
+   *       <dd>`true` if the user makes payments for a family member, `false` otherwise.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_first&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;&lt;tt&gt;true&lt;/tt&gt; if this is a first visit of the client.&lt;/dd&gt;
+   *       <dt>bool `is_first`</dt>
+   *       <dd><tt>true</tt> if this is a first visit of the client.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_form&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;`true` if the client has uncompleted one or more forms.
-   *       </dd>
+   *       <dt>bool `is_form`</dt>
+   *       <dd>`true` if the client has uncompleted one or more forms.</dd>
    * 
    *       <dt>bool `is_task_active`</dt>
    *       <dd><tt>true</tt> if for user exists not completed tasks.</dd>
@@ -558,30 +556,28 @@ class AttendanceListModel extends WlModelAbstract
    *       <dd>Amount the client owns to the business.</dd>
    * 
    *       <dt>string `html_note`</dt>
-   *       <dd>
-   *         User`s login notes.&lt;/dd&gt;
+   *       <dd>User`s login notes.</dd>
    * 
-   *  &lt;dt&gt;int &lt;var&gt;i_visit_credit&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;Count of unpaid visits if client has at least one.&lt;/dd&gt;
+   *       <dt>int `i_visit_credit`</dt>
+   *       <dd>Count of unpaid visits if client has at least one.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_account_positive&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;If the user has a positive balance on his account.&lt;/dd&gt;
+   *       <dt>bool `is_account_positive`</dt>
+   *       <dd>If the user has a positive balance on his account.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_birthday&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;If a user has a birthday today.&lt;/dd&gt;
+   *       <dt>bool `is_birthday`</dt>
+   *       <dd>If a user has a birthday today.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_contract&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;&lt;tt&gt;true&lt;/tt&gt; if client has some contracts that he should agree.&lt;/dd&gt;
+   *       <dt>bool `is_contract`</dt>
+   *       <dd><tt>true</tt> if client has some contracts that he should agree.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_family_payer&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;`true` if the user makes payments for a family member, `false` otherwise.&lt;/dd&gt;
+   *       <dt>bool `is_family_payer`</dt>
+   *       <dd>`true` if the user makes payments for a family member, `false` otherwise.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_first&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;&lt;tt&gt;true&lt;/tt&gt; if this is a first visit of the client.&lt;/dd&gt;
+   *       <dt>bool `is_first`</dt>
+   *       <dd><tt>true</tt> if this is a first visit of the client.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_form&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;`true` if the client has uncompleted one or more forms.
-   *       </dd>
+   *       <dt>bool `is_form`</dt>
+   *       <dd>`true` if the client has uncompleted one or more forms.</dd>
    * 
    *       <dt>bool `is_task_active`</dt>
    *       <dd><tt>true</tt> if for user exists not completed tasks.</dd>
@@ -1031,30 +1027,28 @@ class AttendanceListModel extends WlModelAbstract
    *       <dd>Amount the client owns to the business.</dd>
    * 
    *       <dt>string `html_note`</dt>
-   *       <dd>
-   *         User`s login notes.&lt;/dd&gt;
+   *       <dd>User`s login notes.</dd>
    * 
-   *  &lt;dt&gt;int &lt;var&gt;i_visit_credit&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;Count of unpaid visits if client has at least one.&lt;/dd&gt;
+   *       <dt>int `i_visit_credit`</dt>
+   *       <dd>Count of unpaid visits if client has at least one.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_account_positive&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;If the user has a positive balance on his account.&lt;/dd&gt;
+   *       <dt>bool `is_account_positive`</dt>
+   *       <dd>If the user has a positive balance on his account.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_birthday&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;If a user has a birthday today.&lt;/dd&gt;
+   *       <dt>bool `is_birthday`</dt>
+   *       <dd>If a user has a birthday today.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_contract&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;&lt;tt&gt;true&lt;/tt&gt; if client has some contracts that he should agree.&lt;/dd&gt;
+   *       <dt>bool `is_contract`</dt>
+   *       <dd><tt>true</tt> if client has some contracts that he should agree.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_family_payer&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;`true` if the user makes payments for a family member, `false` otherwise.&lt;/dd&gt;
+   *       <dt>bool `is_family_payer`</dt>
+   *       <dd>`true` if the user makes payments for a family member, `false` otherwise.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_first&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;&lt;tt&gt;true&lt;/tt&gt; if this is a first visit of the client.&lt;/dd&gt;
+   *       <dt>bool `is_first`</dt>
+   *       <dd><tt>true</tt> if this is a first visit of the client.</dd>
    * 
-   *  &lt;dt&gt;bool &lt;var&gt;is_form&lt;/var&gt;&lt;/dt&gt;
-   *  &lt;dd&gt;`true` if the client has uncompleted one or more forms.
-   *       </dd>
+   *       <dt>bool `is_form`</dt>
+   *       <dd>`true` if the client has uncompleted one or more forms.</dd>
    * 
    *       <dt>bool `is_task_active`</dt>
    *       <dd><tt>true</tt> if for user exists not completed tasks.</dd>

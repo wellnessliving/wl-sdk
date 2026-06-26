@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Service;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Schedule\ClassView\DenyReasonSid;
 use WellnessLiving\Wl\Service\ServiceBookFlowSid;
 use WellnessLiving\Wl\Service\ServicePriceSid;
 use WellnessLiving\Wl\Service\ServiceRequireSid;
@@ -128,6 +129,9 @@ class ServiceListModel extends WlModelAbstract
    *  `true` means that service won't be displayed. Otherwise, this will be `false`.
    *   </dd>
    * 
+   *   <dt>string `html_deny_reason`</dt>
+   *   <dd>Human-readable reason why the client cannot book this service. Empty string if there is no deny reason.</dd>
+   * 
    *   <dt>int `i_age_from`</dt>
    *   <dd>The required minimum client age to book an appointment.</dd>
    * 
@@ -142,6 +146,12 @@ class ServiceListModel extends WlModelAbstract
    * 
    *   <dt>int `id_book_flow`</dt>
    *   <dd>The type of client booking flow. One of {@link ServiceBookFlowSid} constants.</dd>
+   * 
+   *   <dt>int|null `id_deny_reason`</dt>
+   *   <dd>
+   *     The ID of the reason why the client cannot book this service. One of {@link DenyReasonSid} constants.
+   * `null` if there is no deny reason.
+   *   </dd>
    * 
    *   <dt>int `id_service_require`</dt>
    *   <dd>The required payment type ID. One of {@link ServiceRequireSid} constants.</dd>
@@ -165,35 +175,28 @@ class ServiceListModel extends WlModelAbstract
    *   <dd>`true` if appointment bookings default to weekly recurring with no end date, `false` otherwise.</dd>
    * 
    *   <dt>bool `is_deposit_percent`</dt>
-   *   <dd>
-   *     `true` if <var>f_deposit</var> is a percentage. Otherwise, this will be `false` if <var>f_deposit</var> is an amount of
-   * money.
-   *   </dd>
+   *   <dd>`true` if `f_deposit` is a percentage. `false` if `f_deposit` is an amount of money.</dd>
    * 
    *   <dt>bool `is_gender_select`</dt>
    *   <dd>`true` if clients can select the staff member's gender. Otherwise, this will be `false`.</dd>
    * 
    *   <dt>bool `is_online_sell`</dt>
-   *   <dd>
-   *     `true` if clients can buy this appointment. Otherwise, this will be `false` if only staff members can sell it.
-   *   </dd>
+   *   <dd>`true` if clients can buy this appointment. `false` if only staff members can sell it.</dd>
    * 
    *   <dt>bool `is_resource_type`</dt>
    *   <dd>`true` if the service requires assets. Otherwise, this will be `false`.</dd>
    * 
    *   <dt>bool `is_single_buy`</dt>
    *   <dd>
-   *     `true` if the appointment can be booked without a Purchase Option. Otherwise, this will be `false` if it's necessary to
-   * buy a Purchase Option.
+   *     `true` if the appointment can be booked without a Purchase Option.
+   * `false` if it's necessary to buy a Purchase Option.
    *   </dd>
    * 
    *   <dt>bool `is_staff_confirm`</dt>
-   *   <dd>`true` if the appointment must be confirmed by a staff member after booking. Otherwise, this will be `false`.</dd>
+   *   <dd>`true` if the appointment must be confirmed by a staff member after booking. Otherwise, `false`.</dd>
    * 
    *   <dt>bool `is_staff_skip`</dt>
-   *   <dd>
-   *     `true` if clients can select a staff member for the appointment. Otherwise, this will be `false` if otherwise.
-   *   </dd>
+   *   <dd>`true` if clients can select a staff member for the appointment. Otherwise, `false`.</dd>
    * 
    *   <dt>bool `is_question`</dt>
    *   <dd>Determines whether the service will ask for questions or not.</dd>
@@ -213,6 +216,9 @@ class ServiceListModel extends WlModelAbstract
    *   <dt>string `s_service`</dt>
    *   <dd>The appointment title.</dd>
    * 
+   *   <dt>string|null `sid_deny_reason`</dt>
+   *   <dd>String representation of the deny reason. `null` if no deny reason.</dd>
+   * 
    *   <dt>string `text_age_restriction`</dt>
    *   <dd>Age restriction header.</dd>
    * 
@@ -228,7 +234,7 @@ class ServiceListModel extends WlModelAbstract
    * @get result
    * @var array
    */
-  public $a_service = null;
+  public $a_service = [];
 
   /**
    * List of staff members to filter a result.

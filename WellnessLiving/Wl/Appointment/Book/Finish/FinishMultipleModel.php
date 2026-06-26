@@ -446,8 +446,8 @@ class FinishMultipleModel extends WlModelAbstract
    * The data must contain the next keys:
    *
    * <dl>
-   *   <dt>string[] `a_note`</dt>
-   *   <dd>The list of notes to add to the new user's profile.</dd>
+   *   <dt>string|string[] `a_note`</dt>
+   *   <dd>The note or list of notes to add to the new user's profile.</dd>
    * 
    *   <dt>string `text_mail`</dt>
    *   <dd>The new user's email address.</dd>

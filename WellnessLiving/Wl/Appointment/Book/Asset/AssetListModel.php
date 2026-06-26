@@ -7,6 +7,7 @@ use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Resource\Image\ImageIconSid;
 use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
+use WellnessLiving\Wl\Schedule\ClassView\DenyReasonSid;
 use WellnessLiving\Wl\Service\ServicePriceSid;
 use WellnessLiving\Wl\Service\ServiceRequireSid;
 
@@ -121,8 +122,17 @@ class AssetListModel extends WlModelAbstract
    *   <dt>string `html_age_restriction`</dt>
    *   <dd>The resource age restriction</dd>
    * 
+   *   <dt>string `html_deny_reason`</dt>
+   *   <dd>Human-readable reason why the client cannot book this asset. Empty string if there is no deny reason.</dd>
+   * 
    *   <dt>string `html_title`</dt>
    *   <dd>The resource name.</dd>
+   * 
+   *   <dt>int|null `id_deny_reason`</dt>
+   *   <dd>
+   *     The ID of the reason why the client cannot book this asset.
+   * One of {@link DenyReasonSid} constants. `null` if there is no deny reason.
+   *   </dd>
    * 
    *   <dt>int `id_service_require`</dt>
    *   <dd>The purchase rule. One of the {@link ServiceRequireSid} constants.</dd>
@@ -138,11 +148,14 @@ class AssetListModel extends WlModelAbstract
    * 
    *   <dt>string `k_resource_category`</dt>
    *   <dd>The resource category key. </dd>
+   * 
+   *   <dt>string|null `sid_deny_reason`</dt>
+   *   <dd>String representation of the deny reason. `null` if no deny reason.</dd>
    * </dl>
    * @get result
    * @var array[]
    */
-  public $a_asset;
+  public $a_asset = [];
 
   /**
    * A list of reserved assets.
