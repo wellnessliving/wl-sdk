@@ -1,0 +1,89 @@
+<?php
+
+namespace WellnessLiving\Wl\Video\Category;
+
+use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
+
+/**
+ * Returns a list of video categories.
+ *
+ * @method WlModelRequest get() Returns the list of video categories for the business.  Returns all video categories for the business with their titles, video counts, and cloud recording assignment. In frontend mode, only categories accessible to the current user are included. Results can be filtered by name and optionally limited to non-empty categories.
+ * @method WlModelRequest put() Updates the order of video categories.  Reorders the video library categories for the business according to the provided list. Requires backend access with the video library management privilege.
+ */
+class CategoryListModel extends WlModelAbstract
+{
+  /**
+   * A list of shared video category keys displayed in the order to be saved.
+   *
+   * Values can be:
+   * * <b>[Deprecated]</b> String keys in old format. 
+   * * String keys in new format. 
+   *
+   * @put post
+   * @var string[]
+   */
+  public $a_order;
+
+  /**
+   * The business video library categories as found in {@link CategoryListModel::$k_business}.
+   *
+   * Each element has the following structure: 
+   *
+   * <dl>
+   *   <dt>bool `can_delete`</dt>
+   *   <dd>Determines whether the video category can be deleted.</dd>
+   * 
+   *   <dt>int `i_video`</dt>
+   *   <dd>The number of videos.</dd>
+   * 
+   *   <dt>string `k_video_category`</dt>
+   *   <dd>The key of the video category.</dd>
+   * 
+   *   <dt>string `k_video_category_full`</dt>
+   *   <dd>The string key of the video category.</dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>The title of the category.</dd>
+   * </dl>
+   * @get result
+   * @var array[]
+   */
+  public $a_video_category;
+
+  /**
+   * If `true`, the API is being used from backend. Otherwise, this will be `false`.
+   *
+   * @get get
+   * @put get
+   * @var bool
+   */
+  public $is_backend = false;
+
+  /**
+   * If `true`, groups that are missing videos won't be displayed. Otherwise, this will be `false`.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_skip_empty_group;
+
+  /**
+   * The business key.
+   *
+   * @get get
+   * @put get
+   * @var string
+   */
+  public $k_business;
+
+  /**
+   * The filter phrase used to filter categories by name.
+   *
+   * @get get
+   * @var string
+   */
+  public $text_filter;
+}
+
+?>

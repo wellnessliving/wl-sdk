@@ -6,6 +6,7 @@ use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Business\Config\BusinessConfigModel;
 
 /**
  * Retrieves information about an event element.
@@ -63,6 +64,8 @@ class ElementModel extends WlModelAbstract
 
   /**
    * Business policies connected to clients and bookings.
+   *
+   * Contains the same structure as {@link BusinessConfigModel::$a_business_policy}.
    *
    * If the event has custom overrides, those policies are used; otherwise, the default
    *  business policies are returned.
@@ -163,6 +166,7 @@ class ElementModel extends WlModelAbstract
    * </dl>
    * @get result
    * @var array
+   * @see BusinessConfigModel::$a_business_policy
    */
   public $a_business_policy;
 

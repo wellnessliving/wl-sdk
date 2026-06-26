@@ -1,0 +1,420 @@
+<?php
+
+namespace WellnessLiving\Wl\Visit;
+
+use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
+
+/**
+ * Views or changes the visit status.
+ *
+ * @method WlModelRequest get() Gets visit status.  Returns full details for the specified visit, including date, duration, staff, location, virtual service join URL, assigned resources, downloadable calendar data, and whether the visit can still be cancelled. Handles class, appointment, and gym visit types. Used to render the visit detail view and action buttons in the client portal.
+ * @method WlModelRequest post() Changes visit status.  Applies a status transition to the specified visit (for example, check-in, no-show, or cancellation). Supports optimistic concurrency via an expected-from status, optional late-cancel fee charging, and client notification flags. Requires backend access or appropriate staff privileges.
+ */
+class VisitStatusModel extends WlModelAbstract
+{
+  /**
+   * Information about whether the given user can cancel an online booking and what
+   * consequences the cancellation would have:
+   *
+   * <dl>
+   *   <dt>array|null `a_penalty`</dt>
+   *   <dd>
+   *     `null` if penalty must be not applied.
+   *     <dl>
+   *       <dt>bool `is_flat`</dt>
+   *       <dd>`true` in a case of flat penalty type; `false` in a case of percentage penalty type.</dd>
+   * 
+   *       <dt>string `k_currency`</dt>
+   *       <dd>Currency .</dd>
+   * 
+   *       <dt>string `m_amount`</dt>
+   *       <dd>Penalty amount.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>bool `can_cancel`</dt>
+   *   <dd>`true` if the booking can be canceled online by the specified user, `false` otherwise.</dd>
+   * 
+   *   <dt>bool `is_flag`</dt>
+   *   <dd>`true` if the client's account will be flagged instead of charging a monetary fee, `false` otherwise.</dd>
+   * 
+   *   <dt>bool `is_late`</dt>
+   *   <dd>`true` if the cancellation would be considered a late cancel, `false` otherwise.</dd>
+   * 
+   *   <dt>bool `is_refund`</dt>
+   *   <dd>
+   *     `true` if the visit credit (from the purchase option used to book) will be returned
+   *    to the user's profile after cancellation, `false` otherwise.
+   *   </dd>
+   * </dl>
+   * @get result
+   * @var array
+   */
+  public $a_cancel;
+
+  /**
+   * An array of service resources.
+   *
+   * The key refers to the `k_resource_type`. 
+   * The value is an array with the following key: `k_resource`. .
+   * The array element contains a nested array with `i_index` and `i_quantity`. .
+   *
+   * This will be empty if not set yet.
+   *
+   * @get result
+   * @var string[]|null
+   */
+  public $a_resource = [];
+
+  /**
+   * An array of service resources.
+   *
+   * Contains an extended data set, as well as a different format than {@link VisitStatusModel::$a_resource}.
+   *
+   * Each element contains the following set of data:
+   *
+   * <dl>
+   *   <dt>string `k_resource`</dt>
+   *   <dd>Resource .</dd>
+   * 
+   *   <dt>string `k_resource_type`</dt>
+   *   <dd>Resource type .</dd>
+   * 
+   *   <dt>int `i_index`</dt>
+   *   <dd>Index of the resource on the layout.</dd>
+   * 
+   *   <dt>int `i_quantity`</dt>
+   *   <dd>Quantity of the resource on the layout.</dd>
+   * 
+   *   <dt>string `text_alias`</dt>
+   *   <dd>Resource's custom name (alias) on the layout.</dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>Resource's title.</dd>
+   * </dl>
+   * @get result
+   * @var array[]|null
+   */
+  public $a_resource_alias = [];
+
+  /**
+   * The list of keys of staff members that conduct the class.
+   *
+   * @get result
+   * @var string[]
+   * @deprecated This field is deprecated. Use {@link VisitStatusModel::$a_uid_staff} instead.
+   */
+  public $a_staff = [];
+
+  /**
+   * The list of user IDs of staff members that conduct the class.
+   *
+   * @get result
+   * @var string[]
+   */
+  public $a_uid_staff = [];
+
+  /**
+   * The visit date and time in UTC and in MySQL format.
+   *
+   * @get result
+   * @var string
+   */
+  public $dt_date = '';
+
+  /**
+   * The visit date in the location's time zone and in MySQL format.
+   *
+   * @get result
+   * @var string
+   */
+  public $dtl_date = '';
+
+  /**
+   * The service duration (in minutes).
+   *
+   * @get result
+   * @var int
+   */
+  public $i_duration = 0;
+
+  /**
+   * The client's place in a waiting list.
+   *
+   * @get result
+   * @var int
+   */
+  public $i_wait_spot = 0;
+
+  /**
+   * The source of the visit or the visit change.
+   *
+   * If you're unsure about the value to use, keep the default value.
+   *
+   * @get result
+   * @post post
+   * @var int
+   */
+  public $id_mode = 0;
+
+  /**
+   * The status of the visit.
+   * One of the {@link WlVisitSid} constants.
+   *
+   * @get result
+   * @post post
+   * @var int
+   */
+  public $id_visit = 0;
+
+  /**
+   * The status of the visit from which the transition is made. One of the {@link WlVisitSid} constants.
+   *
+   * If the visit status is passed, it will be used to check with the actual status in the database.
+   * If `null`, the visit hasn't yet passed.
+   *
+   * If the status of this parameter is out of date, the API call will refresh it.
+   *
+   * @post post,error
+   * @var int|null
+   */
+  public $id_visit_from = null;
+
+  /**
+   * The staff decision to charge (or not charge) a penalty when a client meets late cancel/no-show requirements.
+   *
+   * If `true`, a late cancel fee should be charged. Otherwise, this will be `false`.
+   *
+   * @post get
+   * @var bool
+   */
+  public $is_charge_fee = true;
+
+  /**
+   * Determines whether the visit is from an event.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_event = false;
+
+  /**
+   * Whether to send email notification.
+   *
+   * `true` - email notification will be sent.
+   * `false` - email notification will not be sent.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_mail = false;
+
+  /**
+   * Whether to send push notification.
+   *
+   * `true` - push notification will be sent.
+   * `false` - push notification will not be sent.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_push = false;
+
+  /**
+   * Whether this visit is requested and requires staff confirmation.
+   *
+   * * `true` - visit is requested.
+   * * `false` - visit is confirmed or denied or this is a system request.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_request = false;
+
+  /**
+   * Whether to send sms notification.
+   *
+   * `true` - sms notification will be sent.
+   * `false` - sms notification will not be sent.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_sms = false;
+
+  /**
+   * The business key.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
+  public $k_business = '0';
+
+  /**
+   * The class key.
+   *
+   * @get result
+   * @var string
+   */
+  public $k_class = '';
+
+  /**
+   * The class period key.
+   *
+   * @get result
+   * @var string
+   */
+  public $k_class_period = '';
+
+  /**
+   * The key of the location where visit provides.
+   *
+   * @get result
+   * @var string
+   */
+  public $k_location = '';
+
+  /**
+   * The email pattern key.
+   * If `null`, the live email pattern shouldn't be used.
+   *
+   * @post get
+   * @var string|null
+   */
+  public $k_mail_pattern_live = null;
+
+  /**
+   * The service key.
+   * If 'null', the visit isn't from an appointment.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $k_service = null;
+
+  /**
+   * The key of the staff providing the appointment.
+   * If `null`, the visit isn't from an appointment (for example, the visit is from an asset).
+   *
+   * @get result
+   * @var string|null
+   * @deprecated This field is deprecated. Use {@link VisitStatusModel::$uid_staff} instead.
+   */
+  public $k_staff = null;
+
+  /**
+   * The time zone key.
+   *
+   * `null` if not set then use default timezone client.
+   *
+   * @get get
+   * @var null|string
+   */
+  public $k_timezone = null;
+
+  /**
+   * The visit key.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
+  public $k_visit = '0';
+
+  /**
+   * The .ics file for adding the service to a phone calendar.
+   *
+   * @get result
+   * @var string
+   */
+  public $s_calendar_file_content = '';
+
+  /**
+   * The text abbreviation of the time zone.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_abbr_timezone = '';
+
+  /**
+   * The full address of the location for the visit (not the name of the location).
+   *
+   * @get result
+   * @var string
+   */
+  public $text_location = '';
+
+  /**
+   * The reason the visit was canceled.
+   *
+   * @post get
+   * @var string
+   */
+  public $text_reason = '';
+
+  /**
+   * The full name of the staff member who conducts this visit.
+   * If there are several staff members conducting the visit, their names will all be listed and separated by commas.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_staff = '';
+
+  /**
+   * The service title.
+   *
+   * @get result
+   * @var string
+   */
+  public $text_title = '';
+
+  /**
+   * User key who made a visit.
+   * `null` for a guest visit.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $uid;
+
+  /**
+   * The ID of the user who is the staff providing the appointment.
+   * If `null`, the visit isn't from an appointment (for example, the visit is from an asset).
+   *
+   * @get result
+   * @var string|null
+   */
+  public $uid_staff = null;
+
+  /**
+   * The direct link to start class/event booking on the WellnessLiving website.
+   * `null` for appointments/events/gym visits.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $url_book_referral = null;
+
+  /**
+   * The shortened direct link to start class/event booking on the WellnessLiving website.
+   * `null` for appointments/events/gym visits.
+   *
+   * @get result
+   * @var string|null
+   */
+  public $url_book_referral_short = null;
+
+  /**
+   * URL of virtual service. Empty if the visit is not virtual.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_virtual_service = '';
+}
+
+?>

@@ -1,0 +1,57 @@
+<?php
+
+namespace WellnessLiving\Wl\Appointment\Recent;
+
+use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
+
+/**
+ * Returns list of client's last booked services. Only unique services are returned, i.e. if a client
+ * booked the same service several times, only last of these bookings is returned in the list.
+ *
+ * @method WlModelRequest get() Gets list of client's last booked services.  Returns the most recently booked unique services for the given client at the given business,  filtered by service type (appointment or bookable asset). Duplicate services are collapsed so  only the most recent booking per service is included, up to {@link \Wl\Appointment\Recent\RecentServiceApi::MAX_SERVICE_COUNT}.
+ */
+class RecentServiceModel extends WlModelAbstract
+{
+  /**
+   * List of last booked services.
+   *
+   * @get result
+   * @var string[]
+   */
+  public $a_service_last = [];
+
+  /**
+   * Count of last booked services to return. Default value is 5.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_visit = 5;
+
+  /**
+   * Type of service to return.
+   *
+   * @get get
+   * @var int
+   */
+  public $id_service = 0;
+
+  /**
+   * The key of the business.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_business = '';
+
+  /**
+   * The key of the user.
+   *
+   * @get get
+   * @var string
+   */
+  public $uid = '';
+}
+
+?>
