@@ -1,0 +1,147 @@
+<?php
+
+namespace WellnessLiving\Wl\Schedule\ClassView;
+
+/**
+ * Reasons why the client can't book this class.
+ *
+ * Last used ID: 26
+ */
+class DenyReasonSid
+{
+  /**
+   * User is trying to book on behalf of another client, but does not have permission to do so.
+   */
+  const ACCESS_DENIED = 1;
+
+  /**
+   * Manual restriction to book business, location or a certain class.
+   * Right now is not available in UI.
+   */
+  const ACCESS_LIMITED = 2;
+
+  /**
+   * The business can not take one more client because of business subscription limitations.
+   * Right now there is no such subscriptions, but it can appear in the future.
+   */
+  const ACCOUNT_LIMIT = 3;
+
+  /**
+   * Class is not available for certain age.
+   */
+  const AGE_RESTRICTION = 4;
+
+  /**
+   * Liability Release needs to be agreed.
+   */
+  const AGREE_NX = 5;
+
+  /**
+   * Client has unpaid fees.
+   */
+  const BALANCE_NEGATIVE = 22;
+
+  /**
+   * Client is already booked for this session.
+   *
+   * @titile Client is already booked for this session
+   */
+  const BOOKED_ALREADY = 6;
+
+  /**
+   * It's too early to book a class.
+   */
+  const BOOK_EARLY = 7;
+
+  /**
+   * It's too late to book a class.
+   */
+  const BOOK_LATE = 8;
+
+  /**
+   * User's visit overlaps with another visit.
+   */
+  const BOOK_OVERLAP = 25;
+
+  /**
+   * User's pricing options do not allow booking another visit within a certain period because of pricing option limitations.
+   */
+  const BOOK_RESTRICT = 9;
+
+  /**
+   * Business is inactive.
+   */
+  const BUSINESS_INACTIVE = 10;
+
+  /**
+   * Class is canceled.
+   */
+  const CLASS_CANCELED = 11;
+
+  /**
+   * Class is finished.
+   */
+  const CLASS_FINISHED = 26;
+
+  /**
+   * Class is full.
+   */
+  const CLASS_FULL = 14;
+
+  /**
+   * Class does not exist anymore.
+   */
+  const CLASS_NOT_AVAILABLE_ANYMORE = 15;
+
+  /**
+   * Client is flagged at location.
+   */
+  const CLIENT_FLAGGED = 12;
+
+  /**
+   * Credit card is required for booking services.
+   */
+  const CREDIT_CARD_REQUIRE = 13;
+
+  /**
+   * Business is closed.
+   */
+  const HOLIDAY = 16;
+
+  /**
+   * Login is required.
+   */
+  const LOGIN_REQUIRED = 17;
+
+  /**
+   * Online booking is disabled for the class.
+   */
+  const NOT_BOOKABLE = 18;
+
+  /**
+   * Online booking is disabled for this type of client.
+   */
+  const NOT_BOOKABLE_BY_TYPE = 24;
+
+  /**
+   * Required personal details missing.
+   */
+  const USER_INFO_MISSING = 19;
+
+  /**
+   * Visit to another class is required first.
+   */
+  const VISIT_BEFORE = 20;
+
+  /**
+   * The wait list is full.
+   */
+  const WAIT_LIST_LIMIT_MAX = 21;
+
+  /**
+   * Client has unsigned waiver.
+   */
+  const WAIVER_NX = 23;
+}
+
+?>
