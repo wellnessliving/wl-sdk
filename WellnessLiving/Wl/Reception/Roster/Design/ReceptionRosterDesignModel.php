@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Wl\Reception\Roster\Design;
 
-use WellnessLiving\Core\Drive\DriveTypeSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
@@ -32,7 +31,7 @@ class ReceptionRosterDesignModel extends WlModelAbstract
    * 
    *   <dt>int `id_type_src`</dt>
    *   <dd>
-   *     Image type ID. One of {@link DriveTypeSid} constants.
+   *     Image type ID.
    *  Will be present only for \Core\Drive\Drive images.
    *   </dd>
    * 

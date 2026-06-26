@@ -1326,7 +1326,7 @@ class Response65Model extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * Response source. One of {@link SourceSid} constants.
+   * Response source.
    *
    * @get result
    * @post post

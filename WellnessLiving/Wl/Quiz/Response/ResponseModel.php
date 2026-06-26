@@ -5,7 +5,6 @@ namespace WellnessLiving\Wl\Quiz\Response;
 use WellnessLiving\Core\Quiz\ResponseStatusSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
@@ -1322,7 +1321,7 @@ class ResponseModel extends WlModelAbstract
   public $dtu_response;
 
   /**
-   * The mode type. One of the {@link ModeSid} constants.
+   * The mode type.
    *
    * @delete get
    * @var int
@@ -1330,7 +1329,7 @@ class ResponseModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * Response source. One of {@link SourceSid} constants.
+   * Response source.
    *
    * @get result
    * @post post

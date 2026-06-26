@@ -5,7 +5,6 @@ namespace WellnessLiving\Wl\Profile;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Login\Member\MemberIntentsSid;
-use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
  * Creates user profile with minimum fields.
@@ -45,7 +44,6 @@ class ProfileCreateModel extends WlModelAbstract
   /**
    * Lead source ID.
    *
-   * One of the {@link ModeSid} constants.
    * `0` if not specified.
    *
    * @post post

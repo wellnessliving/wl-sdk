@@ -4,7 +4,6 @@ namespace WellnessLiving\Wl\Classes\ClassList;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\Classes\Tab\TabSid;
 
 /**
  * List of classes and events.
@@ -77,8 +76,8 @@ class ListModel extends WlModelAbstract
   public $a_class_tab = null;
 
   /**
-   * ID of book now tab. One of {@link TabSid} constants.
-   * Only {@link TabSid::TRAINING} and {@link TabSid::ENROLLMENT} book now tab are supported.
+   * ID of book now tab.
+   *
    * Filtering by Book Now Tab is not supported if {@link ListModel::$is_franchise} is `true`.
    *
    * `null` if no filtering by Book Now Tab is required.
