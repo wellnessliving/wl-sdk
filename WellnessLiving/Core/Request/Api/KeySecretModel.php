@@ -37,7 +37,6 @@ class KeySecretModel extends WlModelAbstract
    *
    * @get get
    * @var string
-   * @see KeySessionModel
    */
   public $s_key_session;
 

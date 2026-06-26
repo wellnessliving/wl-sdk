@@ -6,7 +6,6 @@ use WellnessLiving\Core\Quiz\ResponseStatusSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\Appointment\WaitList\AppointmentWaitListModel;
 use WellnessLiving\Wl\Member\Progress\Field\MeasurementSid;
 use WellnessLiving\Wl\Member\Progress\Field\ProgressFieldSid;
 use WellnessLiving\Wl\Member\Progress\Field\TypeSid;
@@ -1461,7 +1460,6 @@ class AttendanceListModel extends WlModelAbstract
 
   /**
    * The maximum number of clients on wait list of the class or event session.
-   * `0` for appointments, use {@link AppointmentWaitListModel} instead.
    *
    * @get result
    * @var int
@@ -1479,7 +1477,7 @@ class AttendanceListModel extends WlModelAbstract
 
   /**
    * `true` to use class/event specific wait list limit, `false` to use the limit from default policies.
-   * `false` for appointments. Use {@link AppointmentWaitListModel} instead.
+   * `false` for appointments.
    *
    * @get result
    * @var bool
