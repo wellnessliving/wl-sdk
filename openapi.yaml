@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260626175410
+  version: 1.1.20260627141446
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-06-26 17:54:10
+    Last updated at: 2026-06-27 14:14:46
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -19193,6 +19193,39 @@ paths:
                         description: 'List of tuition enrollments.'
       tags:
         - Enrollment-TuitionEnrollmentList
+  '/Wl/Tuition/Enrollment/TuitionEnrollmentCancel.json':
+    put:
+      summary: 'Allows canceling certain event enrollments within tuition. Send all users and events, which should be canceled to reduce tuition payment, cancel visits, and deactivate even pass. * @throws Api\UserException In case of wrong input data.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_event_cancel:
+                  type: array
+                  description: 'Optional field. List of users and events to be canceled. Each element has two keys: `uid` and `k_class`.'
+                is_cancel_visits:
+                  type: boolean
+                  description: 'Whether upcoming visits should be canceled or not.'
+                is_pass_deactivate:
+                  type: boolean
+                  description: 'Whether even pass should be deactivated or not.'
+                k_purchase_item_tuition:
+                  type: string
+                  description: 'Key of the tuition purchase item. This is enrollment key, which can be got from {@link TuitionEnrollmentListApi}.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Enrollment-TuitionEnrollmentCancel
   '/Thoth/WlPay/Bank/Card/List.json':
     get:
       summary: 'Retrieves information about user''s bank cards. Returns the list of saved payment cards for the specified user and business, including card number fragment, expiry date, card system, holder name, and default status. Also returns whether new cards can be added.'
@@ -29011,6 +29044,9 @@ tags:
   -
     name: Email-EmailExist
     description: 'Checks if the email address exists in the system.'
+  -
+    name: Enrollment-TuitionEnrollmentCancel
+    description: 'Model to get list of tuition, which gives access to a certain event from the microservice.'
   -
     name: Enrollment-TuitionEnrollmentList
     description: 'Model to get list of tuition, which gives access to a certain event from the microservice.'
