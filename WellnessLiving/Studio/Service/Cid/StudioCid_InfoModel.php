@@ -12,7 +12,7 @@ use WellnessLiving\WlModelRequest;
  *
  * @method WlModelRequest get() Returns information about a CID.  Retrieves the class name registered for the given CID value.
  */
-class InfoModel extends WlModelAbstract
+class StudioCid_InfoModel extends WlModelAbstract
 {
   /**
    * CID of the class to retrieve information for.

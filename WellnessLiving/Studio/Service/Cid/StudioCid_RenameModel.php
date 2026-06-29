@@ -12,7 +12,7 @@ use WellnessLiving\WlModelRequest;
  *
  * @method WlModelRequest put() Allows to rename a class associated with a CID.  The CID must already be registered. Validates the new class name format before updating.
  */
-class RenameModel extends WlModelAbstract
+class StudioCid_RenameModel extends WlModelAbstract
 {
   /**
    * CID of the class to rename.

@@ -12,7 +12,7 @@ use WellnessLiving\WlModelRequest;
  *
  * @method WlModelRequest post() Registers a new CID.  If class is registered already, returns its CID.
  */
-class RegisterModel extends WlModelAbstract
+class StudioCid_RegisterModel extends WlModelAbstract
 {
   /**
    * CID of requested class.
