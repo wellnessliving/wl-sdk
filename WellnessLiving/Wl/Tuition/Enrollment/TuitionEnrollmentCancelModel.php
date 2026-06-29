@@ -17,8 +17,15 @@ class TuitionEnrollmentCancelModel extends WlModelAbstract
    *
    * Each element has two keys: `uid` and `k_class`.
    *
+   * <dl>
+   *   <dt>string `k_class`</dt>
+   *   <dd>Enrolled event ID.</dd>
+   * 
+   *   <dt>string `uid`</dt>
+   *   <dd>Enrolled user ID.</dd>
+   * </dl>
    * @put post
-   * @var array
+   * @var array[]
    */
   public $a_event_cancel = [];
 
@@ -39,7 +46,7 @@ class TuitionEnrollmentCancelModel extends WlModelAbstract
   public $is_pass_deactivate = false;
 
   /**
-   * Key of the tuition purchase item. This is enrollment key, which can be got from {@link TuitionEnrollmentListModel}.
+   * Key of the tuition purchase item.
    *
    * @put post
    * @var string
