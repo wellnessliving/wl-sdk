@@ -3,6 +3,7 @@
 namespace WellnessLiving\Core\Drive\ImageUpload;
 
 use WellnessLiving\Core\Drive\DriveTypeSid;
+use WellnessLiving\WlFile;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
@@ -19,7 +20,7 @@ class ImageUploadTemporaryModel extends WlModelAbstract
    * The image to be uploaded.
    *
    * @post post
-   * @var -var \WellnessLiving\WlFile
+   * @var WlFile
    */
   public $f_image;
 
