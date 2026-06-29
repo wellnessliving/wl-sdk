@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Thoth\DriveMs\Api;
 
-use WellnessLiving\WlFile;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
@@ -38,7 +37,7 @@ class DriveSaveModel extends WlModelAbstract
    * `null` if a multipart S3 upload is used instead.
    *
    * @post post
-   * @var WlFile|null
+   * @var -var \WellnessLiving\WlFile|null
    */
   public $a_file_content = null;
 

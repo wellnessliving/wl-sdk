@@ -18,8 +18,240 @@ class QueryModel extends WlModelAbstract
   /**
    * A list of dynamic fields in this report.
    *
+   * <dl>
+   *   <dt>Thoth\ReportCore\Generator\ReportGeneratorFieldInfo[] `a_cell`</dt>
+   *   <dd>
+   *     Fields of the complex cell.
+   *
+   *   </dd>
+   * 
+   *   <dt>array[] `a_customization_element`</dt>
+   *   <dd>
+   *     Elements of a customization from that are required by this filter field.
+   * Keys are names of required form elements; values are classes of this elements.
+   *   </dd>
+   * 
+   *   <dt>array `a_type`</dt>
+   *   <dd>
+   *     A list of scalar types of values that this field can get.
+   * 
+   * Only scalar types are listed here.
+   *
+   * 
+   * Key is name of a scalar type. Value is always `true`.
+   * 
+   * The following scalar types are possible:
+   * 
+   * * `string`
+   * * `int`
+   * * `float`
+   * * `bool`
+   * * `array` (only allowed for values of {@link \Thoth\ReportCore\Generator\ReportGeneratorCellAbstract}, not for report
+   *    fields.)
+   * 
+   * Empty array if scalar types are not acceptable.
+   *
+   *   </dd>
+   * 
+   *   <dt>bool `is_dynamic`</dt>
+   *   <dd>
+   *     Whether this field is dynamic or static.
+   * 
+   * `true` if this field is generated dynamically by
+   *
+   * 
+   * `false` if this field corresponds to a property of a subclass of
+   * {@link \Thoth\ReportCore\Generator\ReportGeneratorRowAbstract} or
+   *
+   *   </dd>
+   * 
+   *   <dt>bool|null `is_export`</dt>
+   *   <dd>
+   *     Whether this field is used for export.
+   * 
+   * <tt>true</tt> if this field is used for export.
+   * 
+   * <tt>false</tt> if this field is only used for rendering of the report.
+   * 
+   * Fields that should be exported are marked wih &#64;`export-yes` tag.
+   * Fields that should not be exported are marked with &#64;`export-no` tag.
+   *
+   *   </dd>
+   * 
+   *   <dt>bool `is_hide_by_default`</dt>
+   *   <dd>
+   *     Whether this field should be hidden by default. It can later be shown by using the customization form.
+   * 
+   * `true` if this field should be hidden by default.
+   * 
+   * `false` if this field should be shown by default.
+   *   </dd>
+   * 
+   *   <dt>bool `is_hide_if_empty`</dt>
+   *   <dd>
+   *     Whether this field should be hidden if the entire column is empty.
+   * 
+   * <b>Note: Currently only implemented in the export. If you need this to affect the HTML report, you will need to
+   * implement that!</b>
+   * 
+   * `true` if this field should be hidden if the entire column is empty.
+   * `false` if this field should be shown if the entire column is empty.
+   *   </dd>
+   * 
+   *   <dt>bool `is_null`</dt>
+   *   <dd>
+   *     Whether this field is nullable.
+   * 
+   * `true` if `null` is an allowed value for this field.
+   * 
+   * `false` if `null` is not allowed.
+   *   </dd>
+   * 
+   *   <dt>bool|null `is_order`</dt>
+   *   <dd>
+   *     Whether the ordering by this field is available.
+   * 
+   * <tt>null</tt> means that value is not initialized.
+   *
+   * For dynamic fields should be set manually.
+   *   </dd>
+   * 
+   *   <dt>bool `is_show`</dt>
+   *   <dd>
+   *     Whether this field should be shown during report render.
+   * 
+   * `true` if this field should be shown during report render.
+   * 
+   * `false` if this field should not be shown during report render.
+   * 
+   * By default, all fields are shown.
+   * To not to show a field, it should be marked with &#64;`show-no` tag.
+   *   </dd>
+   * 
+   *   <dt>bool `is_store`</dt>
+   *   <dd>
+   *     Whether this field is stored in the report storage.
+   * 
+   * `true` if this field is stored in the report storage.
+   *
+   * 
+   * `false` if this field should not be stored in the report storage.
+   *
+   * 
+   * By default, all fields are stored.
+   * To not to store a field, it should be marked with &#64;`store-no` tag.
+   *   </dd>
+   * 
+   *   <dt>string|null `s_cast`</dt>
+   *   <dd>
+   *     Argument for the MySQL function `cast()`.
+   * 
+   * Allows treating value of the field as certain type, which is required for proper ordering.
+   * For example, keys can be string and can be numbers.
+   * If key is a number, it should have cast value as `unsigned`.
+   * If key is a string, cast can be left null, because string will be used by default.
+   * 
+   * `null` value should be determined based on the prefix.
+   *   </dd>
+   * 
+   *   <dt>class-string<Thoth\ReportCore\Generator\ReportGeneratorCellAbstract>|null `s_class`</dt>
+   *   <dd>
+   *     Name of a subclass of {@link \Thoth\ReportCore\Generator\ReportGeneratorCellAbstract} which objects can be used as a value
+   * for this report field.
+   * 
+   * `null` if complex types are not acceptable (in this case
+   *
+   *   </dd>
+   * 
+   *   <dt>string `s_class_css`</dt>
+   *   <dd>CSS class that is used for formatting of this field.
+   * This class will be added to the column header.</dd>
+   * 
+   *   <dt>string|null `s_format`</dt>
+   *   <dd>
+   *     Name of formatting method that is used for formatting of this field during export.
+   *
+   * In this case formatting methods may be specified for individual properties of that class.
+   * 
+   * `null` if no additional formatting should be performed during export.
+   * 
+   * See <tt>namespace.Wl/Report/Generator/doc/report-export-format.md</tt> for details.
+   *   </dd>
+   * 
+   *   <dt>string `s_name`</dt>
+   *   <dd>
+   *     Name of a public property in which value of this field is stored.
+   * 
+   * This value corresponds name of a public property in a subclass of
+   *
+   *   </dd>
+   * 
+   *   <dt>string `s_sort`</dt>
+   *   <dd>
+   *     A string by which report columns are sorted.
+   * 
+   * Sorting is only considered for report fields, but not for fields of a report cell.
+   * 
+   * It is a strong requirement that sorting values be unique among all static and all dynamic fields of a report.
+   * This is due to that this sorting influences indexes under which data is stored in
+   *
+   * Having different order leads to that all indexes are changed.
+   *   </dd>
+   * 
+   *   <dt>string `s_type`</dt>
+   *   <dd>
+   *     Type of this field, as specified in its PHP doc.
+   * 
+   * Copy of value of &#64;`var` tag of the field.
+   * 
+   * This value may not be specified for dynamic columns.
+   *   </dd>
+   * 
+   *   <dt>string|null `text_title`</dt>
+   *   <dd>
+   *     Data to derive title of a column which values are represented by this report field.
+   * 
+   * Do not use this property to get title of the column.
+   * This column does not contain title of a column. It only contains data based on which title should be derived.
+   *
+   * 
+   * If {@link \Thoth\ReportCore\Generator\ReportGeneratorFieldInfo::$is_dynamic} is `true`, this property contains a string
+   * that should be directly shown to the user. Otherwise, this property contains a part of the source of a translated
+   * message.
+   * 
+   * Copy of &#64;`title` tag of the field.
+   * 
+   * If &#64;`title` tag is not specified,
+   *
+   * If that constant is not set also, source for translated message is generated based on
+   *
+   * 
+   * For dynamic columns, it is required that this title be set.
+   * In this case this is not a source for a translated message.
+   * 
+   * `null` for cell properties, because cells properties are not shown as individual columns in the report.
+   *
+   *   </dd>
+   * 
+   *   <dt>string|null `text_title_export`</dt>
+   *   <dd>
+   *     Title of this field that is used during export.
+   * 
+   * Copy of &#64;`title-export` tag.
+   * If &#64;`title-export` tag is not provided, this property contains copy of
+   *
+   * 
+   * For report cells, if &#64;`title-export` tag is not set, source for translated message for this property is based
+   * on concatenation of {@link \Thoth\ReportCore\Generator\ReportGeneratorFieldInfo::$s_name} for report row field and report
+   * cell field.
+   *
+   *   </dd>
+   * 
+   *   <dt>string|null `text_title_info`</dt>
+   *   <dd>Text of the cell info tooltip.</dd>
+   * </dl>
    * @post result
-   * @var ReportGeneratorFieldInfo[]
+   * @var array[]
    */
   public $a_dynamic;
 

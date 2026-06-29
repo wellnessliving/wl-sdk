@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Wl\Skin\Application\Resource;
 
-use WellnessLiving\WlFile;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
@@ -33,7 +32,7 @@ class ApplicationResourceUploadModel extends WlModelAbstract
    *   <dd>The temporary filename of the file in which the uploaded file was stored on the server.</dd>
    * </dl>
    * @post post
-   * @var WlFile[]
+   * @var -var \WellnessLiving\WlFile[]
    */
   public $a_image_upload = [];
 
@@ -41,7 +40,7 @@ class ApplicationResourceUploadModel extends WlModelAbstract
    * Firebase Android config file (`google-services.json`).
    *
    * @post post
-   * @var WlFile
+   * @var -var \WellnessLiving\WlFile
    */
   public $f_google_services_json = [];
 

@@ -35,8 +35,7 @@ class DriveSave74Model extends WlModelAbstract
    * `null` if a multipart S3 upload is used instead.
    *
    * @post post
-   * @sdk-php-var \WellnessLiving\WlFile|null
-   * @var array|null
+   * @var -var \WellnessLiving\WlFile|null
    */
   public $a_file_content = null;
 

@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Wl\Event;
 
-use WellnessLiving\Core\Drive\DriveTypeSid;
 use WellnessLiving\Core\Sid\YesNoSid;
 use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\AFlagSid;
@@ -85,61 +84,7 @@ class EventListModel extends WlModelAbstract
    *   <dd>List of book now tags connected to this event.</dd>
    * 
    *   <dt>array `a_logo`</dt>
-   *   <dd>
-   *     Data about logo of the event.
-   *     <dl>
-   *       <dt>int `i_height`</dt>
-   *       <dd>Thumbnail height in pixels.</dd>
-   * 
-   *       <dt>int `i_width`</dt>
-   *       <dd>Thumbnail width in pixels.</dd>
-   * 
-   *       <dt>bool `is_old`</dt>
-   *       <dd>`false` for the new wide-rectangle format; `true` for the legacy square format.</dd>
-   * 
-   *       <dt>string `s_url`</dt>
-   *       <dd>Thumbnail URL.</dd>
-   *     </dl>
-   *     <dl>
-   *       <dt>int `i_height_src`</dt>
-   *       <dd>Original image height in pixels.</dd>
-   * 
-   *       <dt>int `i_rotate`</dt>
-   *       <dd>Rotation angle applied relative to the original.</dd>
-   * 
-   *       <dt>int `i_width_src`</dt>
-   *       <dd>Original image width in pixels.</dd>
-   * 
-   *       <dt>int `id_type_src`</dt>
-   *       <dd>Image type identifier.
-   * One of {@link DriveTypeSid} constants.</dd>
-   * 
-   *       <dt>bool `is-resize`</dt>
-   *       <dd>`true` if the image was resized; `false` if `url-thumbnail` equals `url-view`.</dd>
-   * 
-   *       <dt>string `url-thumbnail`</dt>
-   *       <dd>URL of the resized thumbnail image.</dd>
-   * 
-   *       <dt>string `url-view`</dt>
-   *       <dd>URL of the original image in file storage.</dd>
-   *     </dl>
-   *     <dl>
-   *       <dt>bool `is_empty`</dt>
-   *       <dd>`true` if a placeholder is shown instead of an actual logo.</dd>
-   * 
-   *       <dt>bool|null `is_own`</dt>
-   *       <dd>
-   *         `true` if the logo belongs to this class, `false` if inherited from the location,
-   * `null` if the image is empty.
-   *       </dd>
-   * 
-   *       <dt>string `k_business`</dt>
-   *       <dd>Business key.</dd>
-   * 
-   *       <dt>string `k_class`</dt>
-   *       <dd>Class key.</dd>
-   *     </dl>
-   *   </dd>
+   *   <dd>Data about logo of the event.</dd>
    * 
    *   <dt>Wl\Event\EventListItemScheduleEntity[] `a_schedule`</dt>
    *   <dd>
@@ -211,16 +156,7 @@ class EventListModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>array[] `a_search_tag`</dt>
-   *   <dd>
-   *     List of search tags connected to this event.
-   *     <dl>
-   *       <dt>string `k_search_tag`</dt>
-   *       <dd>Search tag key. </dd>
-   * 
-   *       <dt>string `text_title`</dt>
-   *       <dd>Name of the tag.</dd>
-   *     </dl>
-   *   </dd>
+   *   <dd>List of search tags connected to this event.</dd>
    * 
    *   <dt>bool `can_book`</dt>
    *   <dd>

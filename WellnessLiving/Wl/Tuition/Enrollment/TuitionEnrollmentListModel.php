@@ -17,7 +17,28 @@ class TuitionEnrollmentListModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>Wl\Tuition\Enrollment\TuitionEnrollmentEventEntity[] `a_events`</dt>
-   *   <dd>Events for this enrollment.</dd>
+   *   <dd>
+   *     Events for this enrollment.
+   *     <dl>
+   *       <dt>bool `is_cancelled`</dt>
+   *       <dd>Whether this enrollment is cancelled or not.</dd>
+   * 
+   *       <dt>string `k_class`</dt>
+   *       <dd>Event ID.</dd>
+   * 
+   *       <dt>string `m_event_discount`</dt>
+   *       <dd>Login type and shopping cart discounts.</dd>
+   * 
+   *       <dt>string `m_event_subtotal`</dt>
+   *       <dd>Price of the event before login type and shopping cart discounts.</dd>
+   * 
+   *       <dt>string `m_event_tax`</dt>
+   *       <dd>Taxes amount.</dd>
+   * 
+   *       <dt>string `uid`</dt>
+   *       <dd>Enrolled client.</dd>
+   *     </dl>
+   *   </dd>
    * 
    *   <dt>string `dtl_enrollment`</dt>
    *   <dd>Date and time of the enrollment in local business timezone.</dd>
