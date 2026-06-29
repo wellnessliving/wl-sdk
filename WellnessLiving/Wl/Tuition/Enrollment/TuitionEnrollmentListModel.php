@@ -16,7 +16,7 @@ class TuitionEnrollmentListModel extends WlModelAbstract
    * List of tuition enrollments.
    *
    * <dl>
-   *   <dt>Wl\Tuition\Enrollment\TuitionEnrollmentEventEntity[] `a_events`</dt>
+   *   <dt>array[] `a_events`</dt>
    *   <dd>
    *     Events for this enrollment.
    *     <dl>

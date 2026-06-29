@@ -86,14 +86,14 @@ class EventListModel extends WlModelAbstract
    *   <dt>array `a_logo`</dt>
    *   <dd>Data about logo of the event.</dd>
    * 
-   *   <dt>Wl\Event\EventListItemScheduleEntity[] `a_schedule`</dt>
+   *   <dt>array[] `a_schedule`</dt>
    *   <dd>
    *     List of scheduled sessions of the event.
    *     <dl>
    *       <dt>int[] `a_day`</dt>
    *       <dd>List of weekday numbers when event occur.</dd>
    * 
-   *       <dt>Wl\Event\EventListItemStaffEntity[] `a_staff_member`</dt>
+   *       <dt>array[] `a_staff_member`</dt>
    *       <dd>
    *         List of staff members providing event session.
    *         <dl>
