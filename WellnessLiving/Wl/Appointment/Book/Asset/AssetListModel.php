@@ -1,0 +1,305 @@
+<?php
+
+namespace WellnessLiving\Wl\Appointment\Book\Asset;
+
+use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\Resource\Image\ImageIconSid;
+use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
+use WellnessLiving\Wl\Schedule\ClassView\DenyReasonSid;
+use WellnessLiving\Wl\Service\ServicePriceSid;
+use WellnessLiving\Wl\Service\ServiceRequireSid;
+
+/**
+ * Retrieves information about assets in the current asset category.
+ *
+ * @method WlModelRequest get() Retrieves information about assets in the current asset category.  Returns the list of bookable assets at the given location, optionally filtered by category and book now tab.  When a date and time are provided, only assets available at that time are included and busy asset slots  are returned in {@link \Wl\Appointment\Book\Asset\AssetListApi::$a_asset_busy}. Supports both frontend and backend modes.
+ */
+class AssetListModel extends WlModelAbstract
+{
+  /**
+   * A list of information about assets:
+   *
+   * <dl>
+   *   <dt>array `a_age_restrictions`</dt>
+   *   <dd>
+   *     Information about age restrictions for this event.
+   * 
+   * This will be an empty array if there aren't any age restrictions.
+   *     <dl>
+   *       <dt>int|null `i_age_from`</dt>
+   *       <dd>The minimum age permitted for the event. This will be `null` if a minimum age isn't set or available.</dd>
+   * 
+   *       <dt>int|null `i_age_to`</dt>
+   *       <dd>The maximum age permitted for the event. This will be `null` if a maximum age isn't set or available.</dd>
+   * 
+   *       <dt>bool `is_age_public`</dt>
+   *       <dd>
+   *         This will be `true` if age restrictions are public and available. Otherwise, this will be `false` if they're hidden.
+   * When restrictions are hidden and current user isn't a staff member, the age range will be empty.
+   *       </dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>string[] `a_class_tab`</dt>
+   *   <dd>
+   *     The key of service.
+   *   Keys are service key. 
+   *   Values are class tab key. 
+   *   </dd>
+   * 
+   *   <dt>array[] `a_direct_link`</dt>
+   *   <dd>
+   *     A list of links to create a booking from a direct link (direct booking URL).
+   * The system needs to know what tab is associated with the booking. Therefore, there needs to be one link
+   * per tab.
+   * Each element has two values:
+   *     <dl>
+   *       <dt>string `k_class_tab`</dt>
+   *       <dd>The key of the book now tab.</dd>
+   * 
+   *       <dt>string `url_tab`</dt>
+   *       <dd>The direct booking URL. This will open the booking wizard under the related booking tab.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>array[] `a_image`</dt>
+   *   <dd>
+   *     Information about the asset logo:
+   *     <dl>
+   *       <dt>int `i_angle`</dt>
+   *       <dd>The angle of the shape rotation. This is set only if the image is one of the default shapes.</dd>
+   * 
+   *       <dt>bool `is_empty`</dt>
+   *       <dd>Determines if the asset logo is empty.</dd>
+   * 
+   *       <dt>string `sid_image_icon`</dt>
+   *       <dd>
+   *         The icon name. String representation of one of the {@link ImageIconSid} constants. This is only set if the image kind equals to `image`.
+   *       </dd>
+   * 
+   *       <dt>string `sid_image_shape`</dt>
+   *       <dd>
+   *         The shape name. String representation of one of the {@link ImageShapeSid} constants. This is set only if the image kind equals to `shape`.
+   *       </dd>
+   * 
+   *       <dt>string `url`</dt>
+   *       <dd>The asset logo URL.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>array[] `a_period`</dt>
+   *   <dd>
+   *     A list of asset periods with the following information:
+   *     <dl>
+   *       <dt>string `html_duration`</dt>
+   *       <dd>The HTML code used to display the asset duration.</dd>
+   * 
+   *       <dt>string `html_price`</dt>
+   *       <dd>The HTML code used to display the formatted price.</dd>
+   * 
+   *       <dt>int `i_duration`</dt>
+   *       <dd>The asset duration in minutes.</dd>
+   * 
+   *       <dt>int `id_price`</dt>
+   *       <dd>The asset period price type. One of {@link ServicePriceSid} constants.</dd>
+   * 
+   *       <dt>string `m_price`</dt>
+   *       <dd>The asset period price.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>string[] `a_search_tag`</dt>
+   *   <dd>QUICK Search tag keys.</dd>
+   * 
+   *   <dt>bool `hide_application`</dt>
+   *   <dd>
+   *     Determines whether the asset will be hidden in the White Label mobile apps.
+   * If `true`, the asset won't be displayed. Otherwise, this will be `false`.
+   *   </dd>
+   * 
+   *   <dt>string `html_age_restriction`</dt>
+   *   <dd>The resource age restriction</dd>
+   * 
+   *   <dt>string `html_deny_reason`</dt>
+   *   <dd>Human-readable reason why the client cannot book this asset. Empty string if there is no deny reason.</dd>
+   * 
+   *   <dt>string `html_title`</dt>
+   *   <dd>The resource name.</dd>
+   * 
+   *   <dt>int|null `id_deny_reason`</dt>
+   *   <dd>
+   *     The ID of the reason why the client cannot book this asset.
+   * One of {@link DenyReasonSid} constants. `null` if there is no deny reason.
+   *   </dd>
+   * 
+   *   <dt>int `id_service_require`</dt>
+   *   <dd>The purchase rule. One of the {@link ServiceRequireSid} constants.</dd>
+   * 
+   *   <dt>bool `is_age_restricted`</dt>
+   *   <dd>Determines whether this service can't be booked due to age restrictions.</dd>
+   * 
+   *   <dt>string `k_class_tab`</dt>
+   *   <dd>Quick book tab key. </dd>
+   * 
+   *   <dt>string `k_resource`</dt>
+   *   <dd>The resource key. </dd>
+   * 
+   *   <dt>string `k_resource_category`</dt>
+   *   <dd>The resource category key. </dd>
+   * 
+   *   <dt>string|null `sid_deny_reason`</dt>
+   *   <dd>String representation of the deny reason. `null` if no deny reason.</dd>
+   * </dl>
+   * @get result
+   * @var array[]
+   */
+  public $a_asset = [];
+
+  /**
+   * A list of reserved assets.
+   *
+   * 1st level keys refer to asset keys.
+   * 2nd level keys refer to asset numbers.
+   * Values are keys of appointment bookings that reserve the asset, or `true` if the asset is reserved by a class or event.
+   *
+   * For example, if you want to check if the 10th asset with the key of '15' is reserved,
+   * you can check if `a_resource_busy['15']['10']` is free.
+   *
+   * If you're rebooking an appointment, check the value of `a_resource_busy['15']['10']`.
+   * If it's equal to the key of your current appointment booking, you can assume the asset is available.
+   *
+   * @get result
+   * @var array<string, array<int, string|true>>
+   */
+  public $a_asset_busy = [];
+
+  /**
+   * The selected date and time of the asset booking. It is used in cases when the business booking policy allows
+   * clients to select a date and time, and then the available asset.
+   *
+   * @get get
+   * @var string
+   */
+  public $dtl_date = false;
+
+  /**
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default size.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_image_width = 0;
+
+  /**
+   * Mode type, one of {@link ModeSid} constants.
+   *
+   * @get get
+   * @var int
+   */
+  public $id_mode = 0;
+
+  /**
+   * This is `true` if asset categories are loaded for back-end mode. Otherwise, this will be `false` for front-end mode.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_backend = false;
+
+  /**
+   * `true` - search in all tabs.
+   * `false` - search only for the selected book tab.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_tab_all = false;
+
+  /**
+   * Key of the appointment, if we reschedule existing appointment.
+   * It should be sent to ignore it when we get availability hours for the asset.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_appointment = '0';
+
+  /**
+   * Business key.
+   *
+   * If not set, location's business will be used.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_business = '0';
+
+  /**
+   * The class tab key used to filter assets.
+   *
+   * This will be `null` if not set yet or if elements with no specified class tab are selected.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_class_tab = '0';
+
+  /**
+   * The location key.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_location = '0';
+
+  /**
+   * The asset category key to show information for.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_resource_category = '0';
+
+  /**
+   * The asset layout key.
+   * May be empty if asset category has no layout.
+   *
+   * @get result
+   * @var string
+   */
+  public $k_resource_layout;
+
+  /**
+   * Timezone of date and time of asset booking.
+   *
+   * Empty if {@link AssetListModel::$dtl_date} not set or client can't change in which timezone dates should be shown.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_timezone = '';
+
+  /**
+   * Client to get information for.
+   *
+   * If client not set, returns full asset list without client restrictions.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $uid = null;
+}
+
+?>

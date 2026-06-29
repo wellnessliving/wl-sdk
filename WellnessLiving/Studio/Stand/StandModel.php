@@ -1,0 +1,106 @@
+<?php
+
+namespace WellnessLiving\Studio\Stand;
+
+use WellnessLiving\WlModelAbstract;
+use WellnessLiving\WlModelRequest;
+
+/**
+ * Prepare creation a new stand.
+ *
+ * @method WlModelRequest delete() Marks a stand as deleted.  Renames the stand record with a removal timestamp suffix to prevent name conflicts, and sets  the removal date. Called by the build server after stand servers are removed.
+ * @method WlModelRequest get() Returns stand data by name.  Retrieves stand status and deserialized stand data for the specified stand name. Verifies that the current user has access to the stand's project.
+ * @method WlModelRequest post() Registers a new stand and generates a URL for its creation.  Validates the microservice environment configuration, creates a stand record, and returns a  build URL to trigger stand creation.
+ * @method WlModelRequest put() Updates stand status and stand data.  Updates `id_stand_status` or `a_stand_data` for the specified stand. When the stand becomes  ready and both data centers are configured, triggers builds on each.
+ */
+class StandModel extends WlModelAbstract
+{
+  /**
+   * Information about entities necessary for the functioning of the stand.
+   *
+   * `string` if it needs to set an empty value.
+   * `null` will not change.
+   *
+   * @get result
+   * @post post
+   * @put post
+   * @var array|string|null
+   */
+  public $a_stand_data = null;
+
+  /**
+   * Stand status, one of {@link StandStatusSid}.
+   *
+   * `null` if not initialized and will be ignored.
+   *
+   * @get result
+   * @put get
+   * @var int|null
+   */
+  public $id_stand_status = null;
+
+  /**
+   * A microservice environment for create stand. Each element of the array contains 
+   * `null` if the value is not defined. If the information is not provided as a request parameter, the stand will not be created.
+   *
+   * <dl>
+   *   <dt>string `k_microservice`</dt>
+   *   <dd>Microservice key.</dd>
+   * 
+   *   <dt>string `s_environment`</dt>
+   *   <dd>Environment name.</dd>
+   * </dl>
+   * @post post
+   * @var string|null
+   */
+  public $json_stand_environment = null;
+
+  /**
+   * Primary microservice for the stand.
+   * The main microservice from which the stand is created; other microservices can be added
+   * if they are compatible with the primary one, see {@link StandModel::$json_stand_environment}.
+   * `null` if value is not defined. If the information is not provided as a request parameter, the stand will not be created.
+   *
+   * @post get
+   * @var string|null
+   */
+  public $k_microservice_primary = null;
+
+  /**
+   * Task key within which a stand should be created.
+   *
+   * `null` if not defined, in this case the stand name must be specified manually in {@link StandModel::$s_stand}.
+   *
+   * @post get
+   * @var string|null
+   */
+  public $k_task = null;
+
+  /**
+   * Stand name.
+   *
+   * If a task is specified when creating a stand (the {@link StandModel::$k_task} field),
+   * then the name of the new stand is determined from the branch of this task and is linked to this task.
+   * In all other cases, the stand name must be specified explicitly.
+   * `null` if the value is not defined. If the stand name is not specified, stand management is not possible.
+   *   When creating a stand, the stand name can also be obtained from the task key {@link StandModel::$k_task}.
+   *   If neither the stand name nor the task key is specified, the stand cannot be created.
+   *
+   * @delete get
+   * @get get
+   * @post get
+   * @put get
+   * @var string|null
+   */
+  public $s_stand = null;
+
+  /**
+   * Link to redirect for stand creation.
+   *
+   * @post result
+   * @var string
+   */
+  public $url_redirect;
+}
+
+?>

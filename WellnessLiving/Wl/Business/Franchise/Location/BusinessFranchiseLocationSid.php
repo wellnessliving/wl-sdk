@@ -4,6 +4,8 @@ namespace WellnessLiving\Wl\Business\Franchise\Location;
 
 /**
  * Types of the location.
+ *
+ * Used in the {@link BusinessFranchiseLocationModel}.
  */
 class BusinessFranchiseLocationSid
 {
