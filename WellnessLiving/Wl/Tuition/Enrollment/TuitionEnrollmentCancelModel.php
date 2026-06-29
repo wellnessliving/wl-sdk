@@ -13,7 +13,7 @@ use WellnessLiving\WlModelRequest;
 class TuitionEnrollmentCancelModel extends WlModelAbstract
 {
   /**
-   * Optional field. List of users and events to be canceled.
+   * List of users and events to be canceled.
    *
    * Each element has two keys: `uid` and `k_class`.
    *

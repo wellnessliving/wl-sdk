@@ -15,8 +15,37 @@ class TuitionEnrollmentListModel extends WlModelAbstract
   /**
    * List of tuition enrollments.
    *
+   * <dl>
+   *   <dt>Wl\Tuition\Enrollment\TuitionEnrollmentEventEntity[] `a_events`</dt>
+   *   <dd>Events for this enrollment.</dd>
+   * 
+   *   <dt>string `dtl_enrollment`</dt>
+   *   <dd>Date and time of the enrollment in local business timezone.</dd>
+   * 
+   *   <dt>int `i_payments_left`</dt>
+   *   <dd>Number of payments left.</dd>
+   * 
+   *   <dt>string `k_purchase_item_tuition`</dt>
+   *   <dd>
+   *     Key of the tuition purchase item. This is enrollment key, which can be used to modify and cancel the enrollment.
+   *   </dd>
+   * 
+   *   <dt>string `m_payment`</dt>
+   *   <dd>One payment amount.</dd>
+   * 
+   *   <dt>string `m_rest`</dt>
+   *   <dd>Rest amount to be paid.</dd>
+   * 
+   *   <dt>string `m_total`</dt>
+   *   <dd>Total initial amount to be paid.</dd>
+   * 
+   *   <dt>string `uid_payer`</dt>
+   *   <dd>Payer for this enrollment.
+   * 
+   * This user can be enrolled or not, but he pays for the entire enrollment.</dd>
+   * </dl>
    * @get result
-   * @var TuitionEnrollmentEntity[]
+   * @var array[]
    */
   public $a_enrollment = [];
 

@@ -213,9 +213,6 @@ class FinishModel extends WlModelAbstract
    * Specify this for appointment bookings only.
    * 
    *   </dd>
-   * 
-   *   <dt>string `m_tip_appointment`</dt>
-   *   <dd>The amount of selected tips.</dd>
    * </dl>
    * @post get
    * @var array
@@ -325,23 +322,11 @@ class FinishModel extends WlModelAbstract
   public $a_pay_form = [];
 
   /**
-   * Data required for payment. Has next structure:
+   * Data required for payment. Has next structure: 
    *
    * <dl>
    *   <dt>int `id_purchase_item`</dt>
    *   <dd>Type of the purchase item. One of the {@link WlPurchaseItemSid} constants.</dd>
-   * 
-   *   <dt>string `k_id`</dt>
-   *   <dd>Promotion key or appointment key. Depends on <var>id_purchase_item</var> of this array.</dd>
-   * 
-   *   <dt>string `k_login_promotion`</dt>
-   *   <dd>Login promotion key. </dd>
-   * 
-   *   <dt>string `k_session_pass`</dt>
-   *   <dd>Session pass key. </dd>
-   * 
-   *   <dt>string `text_discount_code`</dt>
-   *   <dd>Discount code.</dd>
    * </dl>
    * @post post
    * @var array
@@ -447,10 +432,15 @@ class FinishModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * The payment type ID for the appointment. One of the {@link WlAppointmentPaySid} constants.
+   * The payment type ID for the service.
+   *
+   * One of the {@link WlAppointmentPaySid} constants.
    *
    * @post get
    * @var int
+   *
+   * @deprecated Payment type is calculated and verified automatically from booking data.
+   *  The field is left for compatibility with old code and to control the new algorithm.
    */
   public $id_pay = 0;
 
@@ -519,10 +509,19 @@ class FinishModel extends WlModelAbstract
   public $k_timezone = null;
 
   /**
-   * The sum paid for a deposit.
+   * The sum paid without tax.
+   *
+   * Only used for the following types of purchases:
+   * * {@link WlPurchaseItemSid::SERVICE}
+   * * {@link WlPurchaseItemSid::RESOURCE}
+   * * {@link WlPurchaseItemSid::RESOURCE_DEPOSIT}
+   * * {@link WlPurchaseItemSid::APPOINTMENT_DEPOSIT}
    *
    * @post post
    * @var string
+   *
+   * @deprecated Paid amount is calculated and verified automatically from booking data.
+   *  The field is left for compatibility with old code and to control the new algorithm.
    */
   public $m_pay = '0';
 

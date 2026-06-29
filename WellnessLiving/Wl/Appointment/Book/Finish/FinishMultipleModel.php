@@ -7,6 +7,9 @@ use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Appointment\Book\Payment\PaymentModel;
+use WellnessLiving\Wl\Appointment\Book\Payment\PaymentMultipleModel;
+use WellnessLiving\Wl\Appointment\Book\Payment\PaymentPostModel;
 use WellnessLiving\Wl\Appointment\Book\Question\QuestionModel;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
@@ -245,9 +248,6 @@ class FinishMultipleModel extends WlModelAbstract
    * 
    *       </dd>
    * 
-   *       <dt>string `m_tip_appointment`</dt>
-   *       <dd>The amount of selected tips.</dd>
-   * 
    *       <dt>string `k_timezone`</dt>
    *       <dd>The time zone key. This will be 'null' if the time zone used matches the time zone of the location.</dd>
    * 
@@ -291,22 +291,40 @@ class FinishMultipleModel extends WlModelAbstract
   public $a_notification = [];
 
   /**
-   * The sum paid.
+   * The sum paid without tax for each provider.
    *
-   * Keys refer to provider indexes.
+   * * Keys refer to provider indexes.
+   * * Values are the paid amounts without tax.
+   *
+   * Only used for the following types of purchases:
+   * * {@link WlPurchaseItemSid::SERVICE}
+   * * {@link WlPurchaseItemSid::RESOURCE}
+   * * {@link WlPurchaseItemSid::RESOURCE_DEPOSIT}
+   * * {@link WlPurchaseItemSid::APPOINTMENT_DEPOSIT}
+   *
+   * This is a multi-provider equivalent of {@link FinishModel::$m_pay}.
    *
    * @post post
    * @var string[]
+   *
+   * @deprecated Paid amount is calculated and verified automatically from booking data.
+   *  The field is left for compatibility with old code and to control the new algorithm.
    */
   public $a_paid = [];
 
   /**
-   * The payment type for the appointment. One of the {@link WlAppointmentPaySid} constants.
+   * The payment type ID for each provider.
    *
-   * Keys refer to provider indexes.
+   * * Keys refer to provider indexes.
+   * * Values are one of the {@link WlAppointmentPaySid} constants.
+   *
+   * This is a multi-provider equivalent of {@link FinishModel::$id_pay}.
    *
    * @post get
    * @var int[]
+   *
+   * @deprecated Payment type is calculated and verified automatically from booking data.
+   *  The field is left for compatibility with old code and to control the new algorithm.
    */
   public $a_pay = [];
 
@@ -388,23 +406,17 @@ class FinishMultipleModel extends WlModelAbstract
   public $a_pay_form = [];
 
   /**
-   * Data required for payment with the next structure:
+   * Payment is not processed by this API.
    *
-   * <dl>
-   *   <dt>int `id_purchase_item`</dt>
-   *   <dd>The purchase item type. One of the {@link WlPurchaseItemSid} constants.</dd>
-   * 
-   *   <dt>string `k_id`</dt>
-   *   <dd>The promotion or appointment key, depending on <var>id_purchase_item</var> in this array.</dd>
-   * 
-   *   <dt>string `k_login_promotion`</dt>
-   *   <dd>The login promotion key. </dd>
-   * 
-   *   <dt>string `text_discount_code`</dt>
-   *   <dd>The discount code.</dd>
-   * </dl>
+   * Use the following APIs for payment:
+   * * {@link PaymentModel}
+   * * {@link PaymentPostModel}
+   * * {@link PaymentMultipleModel}
+   *
    * @post post
    * @var array
+   *
+   * @deprecated Not used. See documentation.
    */
   public $a_payment_data = [];
 
