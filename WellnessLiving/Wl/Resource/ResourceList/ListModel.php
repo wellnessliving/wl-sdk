@@ -47,6 +47,12 @@ class ListModel extends WlModelAbstract
    * Empty string if the resource does not have an off-site address.
    *   </dd>
    * 
+   *   <dt>string `text_city`</dt>
+   *   <dd>
+   *     Name of the city with region and country for off-site locations.
+   * Empty string if the resource does not have an off-site address.
+   *   </dd>
+   * 
    *   <dt>string `text_guide`</dt>
    *   <dd>Additional directions or access tips for reaching an off-site location.
    * Empty string if not specified.</dd>

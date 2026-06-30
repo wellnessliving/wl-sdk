@@ -142,6 +142,9 @@ class ClassViewModel extends WlModelAbstract
    *   <dt>int `i_duration`</dt>
    *   <dd>Class duration. In number of minutes.</dd>
    * 
+   *   <dt>int `i_visit`</dt>
+   *   <dd>Number of usages of promotion required to pay for a single class session.</dd>
+   * 
    *   <dt>int|null `i_wait_limit`</dt>
    *   <dd>Limit of wait list. <tt>null</tt> if limit is not set.</dd>
    * 
@@ -374,6 +377,9 @@ class ClassViewModel extends WlModelAbstract
    * 
    *       <dt>int `i_duration`</dt>
    *       <dd>Class duration. In number of minutes.</dd>
+   * 
+   *       <dt>int `i_visit`</dt>
+   *       <dd>Number of usages of promotion required to pay for a single class session.</dd>
    * 
    *       <dt>int|null `i_wait_limit`</dt>
    *       <dd>Limit of wait list. <tt>null</tt> if limit is not set.</dd>
