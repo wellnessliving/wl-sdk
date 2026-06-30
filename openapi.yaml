@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260630130603
+  version: 1.1.20260630132457
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-06-30 13:06:03
+    Last updated at: 2026-06-30 13:24:57
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -16620,7 +16620,7 @@ paths:
                     properties:
                       a_enrollment:
                         type: array
-                        description: 'List of tuition enrollments. <dl> <dt>array[] `a_events`</dt> <dd> Events for this enrollment. <dl> <dt>bool `is_cancelled`</dt> <dd>Whether this enrollment is cancelled or not.</dd> <dt>string `k_class`</dt> <dd>Event ID.</dd> <dt>string `m_event_discount`</dt> <dd>Login type and shopping cart discounts.</dd> <dt>string `m_event_subtotal`</dt> <dd>Price of the event before login type and shopping cart discounts.</dd> <dt>string `m_event_tax`</dt> <dd>Taxes amount.</dd> <dt>string `uid`</dt> <dd>Enrolled client.</dd> </dl> </dd> <dt>string `dtl_enrollment`</dt> <dd>Date and time of the enrollment in local business timezone.</dd> <dt>int `i_payments_left`</dt> <dd>Number of payments left.</dd> <dt>string `k_purchase_item_tuition`</dt> <dd> Key of the tuition purchase item. This is enrollment key, which can be used to modify and cancel the enrollment. </dd> <dt>string `m_payment`</dt> <dd>One payment amount.</dd> <dt>string `m_rest`</dt> <dd>Rest amount to be paid.</dd> <dt>string `m_total`</dt> <dd>Total initial amount to be paid.</dd> <dt>string `uid_payer`</dt> <dd>Payer for this enrollment. This user can be enrolled or not, but he pays for the entire enrollment.</dd> </dl>'
+                        description: 'List of tuition enrollments. <dl> <dt>array[] `a_events`</dt> <dd> Events for this enrollment. <dl> <dt>bool `is_cancelled`</dt> <dd>Whether this enrollment is cancelled or not.</dd> <dt>string `k_class`</dt> <dd>Event ID.</dd> <dt>string `m_event_discount`</dt> <dd>Login type and shopping cart discounts.</dd> <dt>string `m_event_subtotal`</dt> <dd>Price of the event before login type and shopping cart discounts.</dd> <dt>string `m_event_tax`</dt> <dd>Taxes amount.</dd> <dt>string `uid`</dt> <dd>Enrolled client.</dd> </dl> </dd> <dt>string `dl_next`</dt> <dd>Next payment date in local business timezone and MySQL format.</dd> <dt>string `dtl_enrollment`</dt> <dd>Date and time of the enrollment in local business timezone.</dd> <dt>int `i_payments_left`</dt> <dd>Number of payments left.</dd> <dt>int `id_installment_status`</dt> <dd>Installment plan status.</dd> <dt>string `k_purchase_item_tuition`</dt> <dd> Key of the tuition purchase item. This is enrollment key, which can be used to modify and cancel the enrollment. </dd> <dt>string `m_payment`</dt> <dd>One payment amount.</dd> <dt>string `m_rest`</dt> <dd>Rest amount to be paid.</dd> <dt>string `m_total`</dt> <dd>Total initial amount to be paid.</dd> <dt>string `uid_payer`</dt> <dd>Payer for this enrollment. This user can be enrolled or not, but he pays for the entire enrollment.</dd> </dl>'
       tags:
         - Enrollment-TuitionEnrollmentList
   '/Wl/Tuition/Enrollment/TuitionEnrollmentCancel.json':

@@ -40,11 +40,17 @@ class TuitionEnrollmentListModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    * 
+   *   <dt>string `dl_next`</dt>
+   *   <dd>Next payment date in local business timezone and MySQL format.</dd>
+   * 
    *   <dt>string `dtl_enrollment`</dt>
    *   <dd>Date and time of the enrollment in local business timezone.</dd>
    * 
    *   <dt>int `i_payments_left`</dt>
    *   <dd>Number of payments left.</dd>
+   * 
+   *   <dt>int `id_installment_status`</dt>
+   *   <dd>Installment plan status.</dd>
    * 
    *   <dt>string `k_purchase_item_tuition`</dt>
    *   <dd>
