@@ -45,6 +45,36 @@ class CartModel extends WlModelAbstract
    *          option will be used automatically.
    *   </dd>
    * 
+   *   <dt>array `a_config`</dt>
+   *   <dd>
+   *     Additional configuration. Used only for `id_sale` = {@link WlSaleSid::TUITION}.
+   *     <dl>
+   *       <dt>array `a_event_list`</dt>
+   *       <dd>
+   *         List of tuition events.
+   * Each entry has the next structure:
+   *         <dl>
+   *           <dt>string `k_class`</dt>
+   *           <dd>Key of the event class. </dd>
+   * 
+   *           <dt>string `uid`</dt>
+   *           <dd>Key of the tuition participant. </dd>
+   *         </dl>
+   *       </dd>
+   * 
+   *       <dt>array `a_registration_fee_list`</dt>
+   *       <dd>
+   *         Registration fees for tuition participants.
+   * Keys are participant keys. 
+   * Each value has the next structure:
+   *         <dl>
+   *           <dt>string `m_amount_fee`</dt>
+   *           <dd>Registration fee amount for the tuition participant.</dd>
+   *         </dl>
+   *       </dd>
+   *     </dl>
+   *   </dd>
+   * 
    *   <dt>string `k_login_prize`</dt>
    *   <dd>Key of login prize used on item. </dd>
    * 

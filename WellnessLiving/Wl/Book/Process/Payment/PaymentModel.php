@@ -24,6 +24,25 @@ class PaymentModel extends WlModelAbstract
    * A list of items to be bought. Every element has the next keys: 
    *
    * <dl>
+   *   <dt>array `a_config`</dt>
+   *   <dd>
+   *     Additional configuration. Used only for `id_purchase_item` = {@link WlPurchaseItemSid::TUITION}.
+   *     <dl>
+   *       <dt>array `a_event_list`</dt>
+   *       <dd>
+   *         List of tuition events.
+   * Each entry has the next structure:
+   *         <dl>
+   *           <dt>string `k_class`</dt>
+   *           <dd>Key of the event class. </dd>
+   * 
+   *           <dt>string `uid`</dt>
+   *           <dd>Key of the tuition participant. </dd>
+   *         </dl>
+   *       </dd>
+   *     </dl>
+   *   </dd>
+   * 
    *   <dt>int `id_purchase_item`</dt>
    *   <dd>The ID of purchase item type. One of {@link WlPurchaseItemSid} constants.</dd>
    * 

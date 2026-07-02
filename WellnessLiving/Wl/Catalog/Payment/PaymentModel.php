@@ -54,6 +54,47 @@ class PaymentModel extends WlModelAbstract
    *   <dd>
    *     Additional configuration information. This may contain the next keys:
    *     <dl>
+   *       <dt>array `a_event_list`</dt>
+   *       <dd>
+   *         List of tuition events. Used only for {@link WlSaleSid::TUITION}.
+   * Each entry has the next structure:
+   *         <dl>
+   *           <dt>array `a_discount`</dt>
+   *           <dd>
+   *             Discount applied to the event price.
+   * Staff-only: ignored when sent by a client.
+   *             <dl>
+   *               <dt>string `m_discount`</dt>
+   *               <dd>Discount amount.</dd>
+   * 
+   *               <dt>string `text_discount`</dt>
+   *               <dd>Discount title.</dd>
+   *             </dl>
+   *           </dd>
+   * 
+   *           <dt>array `a_tax`</dt>
+   *           <dd>
+   *             List of taxes to be applied to the event price.
+   * Keys are tax keys. 
+   * Values are tax amounts. If not specified, taxes are calculated based on class setup.
+   * Staff-only: ignored when sent by a client.
+   *           </dd>
+   * 
+   *           <dt>string `k_class`</dt>
+   *           <dd>Key of the event class. </dd>
+   * 
+   *           <dt>string `m_price`</dt>
+   *           <dd>
+   *             Price of the event for the tuition participant.
+   * If not specified, price is calculated based on class setup.
+   * Staff-only: ignored when sent by a client.
+   *           </dd>
+   * 
+   *           <dt>string `uid`</dt>
+   *           <dd>Key of the tuition participant. </dd>
+   *         </dl>
+   *       </dd>
+   * 
    *       <dt>array `a_quick_gift`</dt>
    *       <dd>
    *         A list of components to be added to the client. For quick gift cards only:
@@ -70,6 +111,25 @@ class PaymentModel extends WlModelAbstract
    * Pay attention that if you add a product into gift card, there must be specified not product key but product option key.
    * Do not specify separate field `k_shop_product_option`.
    *           </dd>
+   *         </dl>
+   *       </dd>
+   * 
+   *       <dt>array `a_registration_fee_list`</dt>
+   *       <dd>
+   *         Registration fees for tuition participants. Used only for `id_sale` = {@link WlSaleSid::TUITION}.
+   * Keys are participant keys. 
+   * Staff-only: ignored when sent by a client.
+   * Each value has the next structure:
+   *         <dl>
+   *           <dt>array `a_tax_fee`</dt>
+   *           <dd>
+   *             List of taxes to be applied to the registration fee.
+   * Keys are tax keys. 
+   * Values are tax amounts.
+   *           </dd>
+   * 
+   *           <dt>string `m_amount_fee`</dt>
+   *           <dd>Registration fee amount for the tuition participant.</dd>
    *         </dl>
    *       </dd>
    * 
@@ -174,7 +234,7 @@ class PaymentModel extends WlModelAbstract
    * 
    *       <dt>string `m_prorate_custom`</dt>
    *       <dd>
-   *         The custom prorate price, used only memberships only. This is only used if <var>is_prorate_fix</var> is <tt>true</tt>.
+   *         The custom prorate price, used only for memberships. This is only used if <var>is_prorate_fix</var> is <tt>true</tt>.
    *       </dd>
    * 
    *       <dt>string `s_code`</dt>

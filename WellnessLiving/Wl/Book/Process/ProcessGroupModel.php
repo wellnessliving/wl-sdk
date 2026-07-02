@@ -61,6 +61,32 @@ class ProcessGroupModel extends WlModelAbstract
    *       <dt>int `i_count`</dt>
    *       <dd>Number of options to purchase. Specify only if you want to pay a class booking by Drop-In.</dd>
    * 
+   *       <dt>array `a_config`</dt>
+   *       <dd>
+   *         Additional configuration data. Required when `id_purchase_item` is
+   *          {@link WlPurchaseItemSid::TUITION}. Has the following keys:
+   *         <dl>
+   *           <dt>array[] `a_event_list`</dt>
+   *           <dd>
+   *             List of events to register for as part of this tuition.
+   *          Each element is an array with the following keys:
+   *             <dl>
+   *               <dt>string `k_class`</dt>
+   *               <dd>
+   *                 Event class key to be booked as part of this tuition.
+   *          
+   *               </dd>
+   * 
+   *               <dt>string `uid`</dt>
+   *               <dd>
+   *                 Key of the user for whom this event should be booked.
+   *          
+   *               </dd>
+   *             </dl>
+   *           </dd>
+   *         </dl>
+   *       </dd>
+   * 
    *       <dt>int `id_purchase_item`</dt>
    *       <dd>
    *         Kind of option to purchase. One of {@link WlPurchaseItemSid} constants.

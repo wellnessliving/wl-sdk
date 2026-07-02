@@ -31,10 +31,28 @@ class StoreModel extends WlModelAbstract
    * being purchased.
    *
    * <dl>
+   *   <dt>array `a_config`</dt>
+   *   <dd>
+   *     Additional configuration. Used only for `id_purchase_item` = {@link WlPurchaseItemSid::TUITION}.
+   *     <dl>
+   *       <dt>array `a_event_list`</dt>
+   *       <dd>
+   *         List of tuition events. Each entry has the next structure:
+   *         <dl>
+   *           <dt>string `k_class`</dt>
+   *           <dd>Key of the event class. </dd>
+   * 
+   *           <dt>string `uid`</dt>
+   *           <dd>Key of the tuition participant. </dd>
+   *         </dl>
+   *       </dd>
+   *     </dl>
+   *   </dd>
+   * 
    *   <dt>int `i_session`</dt>
    *   <dd>
    *     The number of sessions that this item can cover.
-   *   This only applies to items of type {@link WlPurchaseItemSid::CLASS_PERIOD}.
+   * This only applies to items of type {@link WlPurchaseItemSid::CLASS_PERIOD}.
    *   </dd>
    * 
    *   <dt>string `s_value`</dt>

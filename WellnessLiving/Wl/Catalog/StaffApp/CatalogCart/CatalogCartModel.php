@@ -46,39 +46,57 @@ class CatalogCartModel extends WlModelAbstract
    *     <dl>
    *       <dt>array `a_event_list`</dt>
    *       <dd>
-   *         List of tuition components:
+   *         List of tuition events for tuition participant. Each record has the next structure:
    *         <dl>
-   *           <dt>string[] `a_tax`</dt>
+   *           <dt>array `a_discount`</dt>
    *           <dd>
-   *             Calculated tax amounts for the event enrollment component.
-   *      Key is a tax key. 
-   *      Value is the calculated tax amount (bcmath string).
-   *      Populated in the response; not required in the request.
+   *             Discount applied to the event price:
+   *             <dl>
+   *               <dt>string `m_discount`</dt>
+   *               <dd>Discount amount.</dd>
+   * 
+   *               <dt>string `text_discount`</dt>
+   *               <dd>Discount title.</dd>
+   *             </dl>
    *           </dd>
    * 
-   *           <dt>string[] `a_tax_fee`</dt>
+   *           <dt>array `a_tax`</dt>
    *           <dd>
-   *             Calculated tax amounts for the fee component.
-   *      Key is a tax key. 
-   *      Value is the calculated tax amount (bcmath string).
-   *      Populated in the response; not required in the request.
+   *             List of taxes to be applied to the event price:
+   *      Keys are internal system tax keys. 
+   *      Values are amount of taxes to be applied to the event price.
+   *      If not specified or `null`, taxes will be calculated based on the class setup.
    *           </dd>
    * 
    *           <dt>string `k_class`</dt>
    *           <dd>Key of the event class within the tuition which should be granted to the client.</dd>
    * 
-   *           <dt>string `m_fee`</dt>
-   *           <dd>Additional fee amount for the component (bcmath string).
-   *      `'0.00'` if no additional fee.</dd>
-   * 
    *           <dt>string `m_price`</dt>
    *           <dd>
-   *             Override price of the event component within the tuition.
-   *      `null` if price should be taken from the class setup.
+   *             Price of the event for the tuition participant.
+   *      If not specified or `null`, price will be calculated based on the class setup.
    *           </dd>
    * 
    *           <dt>string `uid`</dt>
-   *           <dd>Key of the client for which component should be granted.</dd>
+   *           <dd>Key of the tuition participant.</dd>
+   *         </dl>
+   *       </dd>
+   * 
+   *       <dt>array `a_registration_fee_list`</dt>
+   *       <dd>
+   *         Registration fees for tuition participants.
+   *   Keys are participant keys. 
+   *   Each value has the next structure:
+   *         <dl>
+   *           <dt>array `a_tax_fee`</dt>
+   *           <dd>
+   *             List of taxes to be applied to the registration fee:
+   *      Keys are internal system tax keys. 
+   *      Values are amount of taxes to be applied to the registration fee.
+   *           </dd>
+   * 
+   *           <dt>string `m_amount_fee`</dt>
+   *           <dd>Registration fee amount for the tuition participant.</dd>
    *         </dl>
    *       </dd>
    * 

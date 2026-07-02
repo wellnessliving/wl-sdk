@@ -14,6 +14,31 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 class PurchaseElementModel extends WlModelAbstract
 {
   /**
+   * Additional configuration for the purchase item.
+   * Depending on purchase item type different configuration parameters can be passed.
+   *
+   * For purchase items with {@link WlPurchaseItemSid::TUITION} type next structure expected:
+   *
+   * <dl>
+   *   <dt>array `a_event_list`</dt>
+   *   <dd>
+   *     List of tuition events.
+   * Each entry has the next structure:
+   *     <dl>
+   *       <dt>string `k_class`</dt>
+   *       <dd>Key of the event class. </dd>
+   * 
+   *       <dt>string `uid`</dt>
+   *       <dd>Key of the tuition participant. </dd>
+   *     </dl>
+   *   </dd>
+   * </dl>
+   * @get get
+   * @var array
+   */
+  public $a_config = [];
+
+  /**
    * A list of taxes for the given purchase options.
    * Keys - tax keys, values - tax amounts.
    *

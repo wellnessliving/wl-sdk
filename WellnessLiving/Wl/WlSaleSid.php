@@ -78,6 +78,11 @@ abstract class WlSaleSid
    * Tuition.
    */
   const TUITION = 14;
+
+  /**
+   * Tuition fees.
+   */
+  const TUITION_FEE = 15;
 }
 
 ?>

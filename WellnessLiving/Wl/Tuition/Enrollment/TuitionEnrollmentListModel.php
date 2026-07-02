@@ -77,6 +77,42 @@ class TuitionEnrollmentListModel extends WlModelAbstract
   public $a_enrollment = [];
 
   /**
+   * Filters.
+   *
+   * List includes enrollments to the tuition. And enrollments to the tuition include enrollment to the event.
+   * If any part of the enrollment to the tuition is valid, according to the given filter, full enrollment is included.
+   *
+   * For example.
+   * Client A is payer for two tuition enrollments. One is for client B and events E1, E2. Another for clients C and D.
+   * Both for E1. And Client W pays for one tuition enrollment - for client X.
+   *
+   * If we filter list by enrolled client D, for example. List will return two tuition enrollments. Both paid with Client A.
+   * Because we think that these enrollments are combined in single family and should both be returned.
+   *
+   * All filters are optional. And added as AND. If you send certain events and certain statues, both conditions should be met.
+   *
+   * <dl>
+   *   <dt>string[] `a_event`</dt>
+   *   <dd>Leave only enrollments with the given events enrolled.</dd>
+   * 
+   *   <dt>string[] `a_uid_any`</dt>
+   *   <dd>Leave only enrollments with the given payers or enrolled clients.</dd>
+   * 
+   *   <dt>string[] `a_uid_enrolled`</dt>
+   *   <dd>Leave only enrollments with the given enrolled clients.</dd>
+   * 
+   *   <dt>string[] `a_uid_payer`</dt>
+   *   <dd>Leave only enrollments with the given payers.</dd>
+   * 
+   *   <dt>int[] `a_statuses`</dt>
+   *   <dd>List of tuition statuses.</dd>
+   * </dl>
+   * @get get
+   * @var array
+   */
+  public $a_filter = [];
+
+  /**
    * Business key.
    *
    * @get get

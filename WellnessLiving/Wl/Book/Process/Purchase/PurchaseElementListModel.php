@@ -17,6 +17,25 @@ class PurchaseElementListModel extends WlModelAbstract
    * A list of purchase items to get information for. Every element has the next keys:
    *
    * <dl>
+   *   <dt>array `a_config`</dt>
+   *   <dd>
+   *     Additional configuration.
+   *     <dl>
+   *       <dt>array `a_event_list`</dt>
+   *       <dd>
+   *         List of tuition events. 
+   * Each entry has the next structure:
+   *         <dl>
+   *           <dt>string `k_class`</dt>
+   *           <dd>Key of the event class. </dd>
+   * 
+   *           <dt>string `uid`</dt>
+   *           <dd>Key of the tuition participant. </dd>
+   *         </dl>
+   *       </dd>
+   *     </dl>
+   *   </dd>
+   * 
    *   <dt>int `i_session`</dt>
    *   <dd>The number of sessions booked simultaneously.</dd>
    * 
