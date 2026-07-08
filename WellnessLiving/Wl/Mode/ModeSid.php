@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Mode;
 /**
  * The source of a visit.
  *
- * Last used ID: 30.
+ * Last used ID: 31.
  */
 class ModeSid
 {
@@ -18,6 +18,11 @@ class ModeSid
    * Registered through <tt>Azure</tt>.
    */
   const AZURE = 21;
+
+  /**
+   * Visit has been checked-in by Brivo Door Access.
+   */
+  const BRIVO_DOOR_ACCESS = 31;
 
   /**
    * Visit has been created by <tt>CENTRED</tt>.

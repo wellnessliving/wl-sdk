@@ -8,15 +8,7 @@ use WellnessLiving\WlModelRequest;
 /**
  * Stores the user token CAPTCHA.
  *
- * Site keys for initialize Google reCAPTCHA:
- * * Version 2 (invisible):
- *   * Demo/Staging - {@link GoogleCaptchaKeys::CAPTCHA_V2_SITE_KEY_SANDBOX}
- *   * Production - {@link GoogleCaptchaKeys::CAPTCHA_V2_SITE_KEY_PRODUCTION}
- * * Version 3:
- *  * Demo/Staging - {@link GoogleCaptchaKeys::CAPTCHA_V3_SITE_KEY_SANDBOX}
- *  * Production - {@link GoogleCaptchaKeys::CAPTCHA_V3_SITE_KEY_PRODUCTION}
- *
- * @method WlModelRequest put() Saves the user CAPTCHA token for the current session.  Accepts the CAPTCHA version, the action name, and the user token obtained from the Google reCAPTCHA widget, and stores them in the session so that subsequent API requests requiring CAPTCHA verification can use them.
+ * @method WlModelRequest put() Saves the user CAPTCHA token for the current session.  Accepts the CAPTCHA version, the action name, and the user token obtained from the Google reCAPTCHA widget, and stores them in the session so that subsequent API requests requiring CAPTCHA verification can use them.  Site keys for initialize Google reCAPTCHA: * Version 2 (invisible):   * Demo/Staging - {@link \Core\Google\Captcha\GoogleCaptchaKeys::CAPTCHA_V2_SITE_KEY_SANDBOX}   * Production - {@link \Core\Google\Captcha\GoogleCaptchaKeys::CAPTCHA_V2_SITE_KEY_PRODUCTION} * Version 3:   * Demo/Staging - {@link \Core\Google\Captcha\GoogleCaptchaKeys::CAPTCHA_V3_SITE_KEY_SANDBOX}   * Production - {@link \Core\Google\Captcha\GoogleCaptchaKeys::CAPTCHA_V3_SITE_KEY_PRODUCTION}
  */
 class GoogleCaptchaModel extends WlModelAbstract
 {

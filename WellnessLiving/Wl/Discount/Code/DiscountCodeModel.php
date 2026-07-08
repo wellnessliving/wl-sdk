@@ -13,11 +13,15 @@ use WellnessLiving\WlModelRequest;
 class DiscountCodeModel extends WlModelAbstract
 {
   /**
-   * Discount codes list.
-   *
-   * Each element has next structure:
+   * Discount codes list. Each element has the following structure: 
    *
    * <dl>
+   *   <dt>bool `is_active`</dt>
+   *   <dd>`true` if the discount code is active, `false` otherwise.</dd>
+   * 
+   *   <dt>bool `is_remove`</dt>
+   *   <dd>`true` if the discount code is removed, `false` otherwise.</dd>
+   * 
    *   <dt>string `k_discount_code`</dt>
    *   <dd>Discount code key. </dd>
    * 

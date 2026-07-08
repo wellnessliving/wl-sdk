@@ -115,6 +115,17 @@ class EditModel extends WlModelAbstract
   public $is_brivo_active = false;
 
   /**
+   * Whether automatic check-in on Brivo access granted is enabled for the group.
+   * When enabled, a successful Brivo door access reported for a client of this group triggers an automatic
+   *  check-in attempt in WellnessLiving. When disabled, Brivo access events for these clients are ignored.
+   *
+   * @get result
+   * @post post
+   * @var bool
+   */
+  public $is_brivo_checkin_active = false;
+
+  /**
    * Whether Brivo invitation feature enabled for the group.
    *
    * @get result
@@ -124,7 +135,7 @@ class EditModel extends WlModelAbstract
   public $is_brivo_invitation_active = false;
 
   /**
-   * <tt>true</tt> to enable group icon. <tt>false</tt> to disable.
+   * `true` to enable group icon. `false` to disable.
    *
    * @get result
    * @post post

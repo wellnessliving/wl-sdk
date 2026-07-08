@@ -133,7 +133,7 @@ class ClassListModel extends WlModelAbstract
    *   <dt>bool `is_book_for_guest`</dt>
    *   <dd>
    *     Allow clients to book on behalf of a guest.
-   *      `true` if clients can book on behalf of a guest.
+   *  `true` if clients can book on behalf of a guest.
    *  `false` otherwise.
    *   </dd>
    * 
@@ -273,6 +273,16 @@ class ClassListModel extends WlModelAbstract
    * @var string
    */
   public $k_class_tab = '0';
+
+  /**
+   * Key of timezone.
+   *
+   * If not set then use default client timezone.
+   *
+   * @get get
+   * @var null|string
+   */
+  public $k_timezone = null;
 
   /**
    * The list of staff members to filter.

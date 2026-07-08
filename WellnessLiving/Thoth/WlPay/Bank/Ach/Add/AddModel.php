@@ -181,19 +181,21 @@ class AddModel extends WlModelAbstract
   public $html_widget = '';
 
   /**
-   * Locale ID. One of {@link LocaleSid} constants.
+   * Locale ID.
    * `null` - if it is not set.
    *
    * @get get
    * @var int|null
+   * @see LocaleSid
    */
   public $id_locale = null;
 
   /**
-   * Transaction processor id. One of {@link WlPayProcessorSid} constants.
+   * Transaction processor ID.
    *
    * @get result
    * @var int
+   * @see WlPayProcessorSid
    */
   public $id_pay_processor = 0;
 

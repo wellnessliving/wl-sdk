@@ -91,10 +91,11 @@ class WidgetSelectModel extends WlModelAbstract
   public $a_pay_card;
 
   /**
-   * Payment method. One of {@link WlPayMethodSid} constants.
+   * Payment method.
    *
    * @get get
    * @var int
+   * @see WlPayMethodSid
    */
   public $id_pay_method = 0;
 

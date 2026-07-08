@@ -49,6 +49,9 @@ class TuitionEnrollmentListModel extends WlModelAbstract
    *   <dt>int `i_payments_left`</dt>
    *   <dd>Number of payments left.</dd>
    * 
+   *   <dt>int `i_payments_total`</dt>
+   *   <dd>Number of payments total at the moment of enrollment.</dd>
+   * 
    *   <dt>int `id_installment_status`</dt>
    *   <dd>Installment plan status.</dd>
    * 
@@ -95,6 +98,9 @@ class TuitionEnrollmentListModel extends WlModelAbstract
    *   <dt>string[] `a_event`</dt>
    *   <dd>Leave only enrollments with the given events enrolled.</dd>
    * 
+   *   <dt>int[] `a_statuses`</dt>
+   *   <dd>List of tuition statuses.</dd>
+   * 
    *   <dt>string[] `a_uid_any`</dt>
    *   <dd>Leave only enrollments with the given payers or enrolled clients.</dd>
    * 
@@ -103,9 +109,6 @@ class TuitionEnrollmentListModel extends WlModelAbstract
    * 
    *   <dt>string[] `a_uid_payer`</dt>
    *   <dd>Leave only enrollments with the given payers.</dd>
-   * 
-   *   <dt>int[] `a_statuses`</dt>
-   *   <dd>List of tuition statuses.</dd>
    * </dl>
    * @get get
    * @var array

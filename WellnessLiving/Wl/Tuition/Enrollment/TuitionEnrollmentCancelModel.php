@@ -46,6 +46,14 @@ class TuitionEnrollmentCancelModel extends WlModelAbstract
   public $is_pass_deactivate = false;
 
   /**
+   * Key of the business.
+   *
+   * @put post
+   * @var string
+   */
+  public $k_business = '';
+
+  /**
    * Key of the tuition purchase item. This is enrollment key, which can be got from {@link TuitionEnrollmentListModel}.
    *
    * @put post

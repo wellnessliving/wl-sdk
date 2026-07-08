@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 244.
+ * Last Used ID: 245.
  */
 abstract class WlPrivilegeSid
 {
@@ -690,6 +690,11 @@ abstract class WlPrivilegeSid
    * Access to Payment Processing.
    */
   const PAYMENT_PROCESSING = 166;
+
+  /**
+   * Allows the staff member to initiate bulk billing of multiple clients in one batch.
+   */
+  const PERFORM_BULK_BILLING = 245;
 
   /**
    * Permission to perform Physical Inventory Count.

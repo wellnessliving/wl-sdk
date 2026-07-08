@@ -19,24 +19,6 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 class ProcessGroupModel extends WlModelAbstract
 {
   /**
-   * List of errors that occurred during booking.
-   *
-   * Keys are user keys. 
-   * Each value has the next structure: 
-   *
-   * <dl>
-   *   <dt>string `text_code`</dt>
-   *   <dd>Error code identifying the type of error that occurred.</dd>
-   * 
-   *   <dt>string `text_message`</dt>
-   *   <dd>Human-readable error message describing the booking failure.</dd>
-   * </dl>
-   * @post result
-   * @var array[]
-   */
-  public $a_book_error = [];
-
-  /**
    * List of clients to book.
    * Each value is an array with next keys:
    *

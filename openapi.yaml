@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260702134031
+  version: 1.1.20260708092035
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-07-02 13:40:31
+    Last updated at: 2026-07-08 09:20:35
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -293,7 +293,7 @@ paths:
         - Captcha-CaptchaRequire
   '/Core/Google/GoogleCaptcha.json':
     put:
-      summary: 'Saves the user CAPTCHA token for the current session. Accepts the CAPTCHA version, the action name, and the user token obtained from the Google reCAPTCHA widget, and stores them in the session so that subsequent API requests requiring CAPTCHA verification can use them.'
+      summary: 'Saves the user CAPTCHA token for the current session. Accepts the CAPTCHA version, the action name, and the user token obtained from the Google reCAPTCHA widget, and stores them in the session so that subsequent API requests requiring CAPTCHA verification can use them. Site keys for initialize Google reCAPTCHA: * Version 2 (invisible): * Demo/Staging - {@link GoogleCaptchaKeys::CAPTCHA_V2_SITE_KEY_SANDBOX} * Production - {@link GoogleCaptchaKeys::CAPTCHA_V2_SITE_KEY_PRODUCTION} * Version 3: * Demo/Staging - {@link GoogleCaptchaKeys::CAPTCHA_V3_SITE_KEY_SANDBOX} * Production - {@link GoogleCaptchaKeys::CAPTCHA_V3_SITE_KEY_PRODUCTION}'
       requestBody:
         required: true
         content:
@@ -601,6 +601,36 @@ paths:
                         description: 'The status of the visit from which the transition is made. One of the {@link VisitSid} constants. If the visit status is passed, it will be used to check with the actual status in the database. If `null`, the visit hasn''t yet passed. If the status of this parameter is out of date, the API call will refresh it.'
       tags:
         - Visit-VisitStatus
+  '/Wl/Visit/VisitTotalCount.json':
+    get:
+      summary: 'Returns the total visit count for the user at the business. Sums the number of attended visits with the historical visit count carried over for the user, so that visits recorded before the account existed in the system are also counted.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'User key.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      i_visit_total:
+                        type: number
+                        format: int32
+                        description: 'Total number of visits. Sum of attended visits and historical visits. <i> Attended visits - {@link \RsVisitSql}. Historical visits - {@link VisitHistoricalCountSql}. </i>'
+      tags:
+        - Visit-VisitTotalCount
   '/Wl/Event/EventCancelWhole.json':
     post:
       summary: 'Cancels book of event {@link EventCancelWholeApi::$k_class}. Used when a client wants to drop out of a multi-session event entirely. Cancels all remaining upcoming sessions at once, including any waitlisted spots, without requiring the client to cancel each session individually.'
@@ -2601,6 +2631,66 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Review-ReviewReply
+  '/Wl/Skin/Skin.json':
+    get:
+      summary: 'Gets skin data. Returns the skin settings and the main widget page URL for the given skin key.'
+      parameters:
+        - name: k_skin
+          in: query
+          description: 'Skin key.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_skin:
+                        type: array
+                        description: 'Skin data. <i>Result of the {@link \RsSkinData::skin()} method.</i>'
+                      id_skin:
+                        type: number
+                        format: int32
+                        description: 'Skin type, one of {@link \RsSkinSid} constants.'
+                      url_skin:
+                        type: string
+                        description: 'URL to the main page of the widget.'
+      tags:
+        - Skin-Skin
+    post:
+      summary: 'Saves the specified skin fields. Applies the given field values to the skin data and logs the change when any field value has actually changed.'
+      parameters:
+        - name: k_skin
+          in: query
+          description: 'Skin key.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_field:
+                  type: array
+                  description: 'Skin fields to save. Key is full name of the skin field, it is separated string containing field name and element name. <i>Element name from {@link \Wl\Skin\Application\Application::field_list()}.</i> Value is new field value.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Skin-Skin
   '/Wl/Skin/SkinForeign.json':
     delete:
       summary: 'Deletes the existing widget. Permanently removes a widget skin and its foreign ID mapping from the business. Used by external integrators to clean up a widget that is no longer needed.'
@@ -3611,6 +3701,40 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Promotion-Promotion
+  '/Wl/Lead/LeadCheck.json':
+    post:
+      summary: 'Checks if user with specified email already registered for specified business. Looks up an existing account by the given email address. If no account with that email exists, the user is reported as neither a member nor a lead. If an account exists, the response reports whether that user is already a member of the specified business, and whether that user is already registered as a lead for the specified business.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                k_business:
+                  type: string
+                  description: 'The key of business to which the new user must be captured.'
+                s_mail:
+                  type: string
+                  description: 'User email.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      is_lead:
+                        type: boolean
+                        description: '`true` if user with specified email is lead of a specified business, `false` - otherwise.'
+                      is_member:
+                        type: boolean
+                        description: '`true` if user with specified email is a member of a specified business, `false` - otherwise.'
+      tags:
+        - Lead-LeadCheck
   '/Wl/Lead/Lead.json':
     get:
       summary: 'Gets information necessary to display "Lead capture" widget. Returns the list of profile fields configured for the widget, skin styling data, captcha URL if required, and whether a free promotion can be applied when a new lead is created.'
@@ -3718,6 +3842,187 @@ paths:
                         description: 'The key of the new user. Typing is not added because the variable is an integer. Specifying typing may break third party integration.'
       tags:
         - Lead-Lead
+  '/Wl/Session/Environment.json':
+    get:
+      summary: 'Returns current session environment. Determines the current business, location, and user for the session, taking into account the application type, franchise settings, and multi-datacenter routing, and returns the resulting environment data used to bootstrap the client application.'
+      parameters:
+        - name: s_application_id
+          in: query
+          description: 'Application ID.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_business:
+                        type: [array, "null"]
+                        description: 'List of businesses which are available in given application. <tt>null</tt> for default application.'
+                      a_business_franchise_all:
+                        type: [array, "null"]
+                        description: 'List of businesses keys, which are connected to franchise. <tt>null</tt> if current business is not part of franchise.'
+                      a_business_franchisee:
+                        type: [array, "null"]
+                        description: 'List of business franchisee keys. Can be limited by levels to which a user can view/access in frontend. See {@link FranchiseSwitchSid}. <tt>null</tt> if current business is not part of franchise or if ''Allow clients to switch between franchise locations'' is OFF.'
+                      a_payment_alert:
+                        type: [array, "null"]
+                        description: 'Payment alert data. `null` if user is not logged or none businesses are available for user, or if it''s not backend. Otherwise, contains data: <dl> <dt>int `i_duration`</dt> <dd> Time left in seconds. <var>null</var> if business account is not created or if service interruption dates aren''t specified. </dd> <dt>bool `is_alert`</dt> <dd>Determines whether to show an alert. Alert should be shown only once per session.</dd> <dt>bool `is_churn`</dt> <dd>Determines whether the business is churned.</dd> <dt>string `url_billing`</dt> <dd>Link to business billing page on the web.</dd> </dl>'
+                      a_splash_screen:
+                        type: [array, "null"]
+                        description: 'Settings of splash screen customization for business: <tt>null</tt> if splash screen in not customized for business. <dl> <dt>array `a_background`</dt> <dd> Background image. <dl> <dt>int `i_height`</dt> <dd>Actual height of thumbnail image.</dd> <dt>int `i_height_src`</dt> <dd>Height of original image.</dd> <dt>int `i_rotate`</dt> <dd>Angle on which image was rotated compared to the original.</dd> <dt>int `i_width`</dt> <dd>Actual width of thumbnail image.</dd> <dt>int `i_width_src`</dt> <dd>Width of original image.</dd> <dt>bool `is-resize`</dt> <dd>Whether thumbnail is a resized variant of original image. If `false`, `url-thumbnail` equals `url-view`.</dd> <dt>string `url-view`</dt> <dd>URL to original image in file storage.</dd> <dt>string `url-thumbnail`</dt> <dd> URL to resized and rotated image in file storage. If the original is larger than the specified dimensions, a thumbnail is created and its link is returned. Otherwise, the link to the original image is returned here. </dd> </dl> </dd> <dt>array `a_gradient`</dt> <dd> Background color. <dl> <dt>int `i_height`</dt> <dd>Actual height of thumbnail image.</dd> <dt>int `i_height_src`</dt> <dd>Height of original image.</dd> <dt>int `i_rotate`</dt> <dd>Angle on which image was rotated compared to the original.</dd> <dt>int `i_width`</dt> <dd>Actual width of thumbnail image.</dd> <dt>int `i_width_src`</dt> <dd>Width of original image.</dd> <dt>bool `is-resize`</dt> <dd>Whether thumbnail is a resized variant of original image. If `false`, `url-thumbnail` equals `url-view`.</dd> <dt>string `url-view`</dt> <dd>URL to original image in file storage.</dd> <dt>string `url-thumbnail`</dt> <dd> URL to resized and rotated image in file storage. If the original is larger than the specified dimensions, a thumbnail is created and its link is returned. Otherwise, the link to the original image is returned here. </dd> </dl> </dd> <dt>array `a_image`</dt> <dd> Logo image. <dl> <dt>int `i_height`</dt> <dd>Actual height of thumbnail image.</dd> <dt>int `i_height_src`</dt> <dd>Height of original image.</dd> <dt>int `i_rotate`</dt> <dd>Angle on which image was rotated compared to the original.</dd> <dt>int `i_width`</dt> <dd>Actual width of thumbnail image.</dd> <dt>int `i_width_src`</dt> <dd>Width of original image.</dd> <dt>bool `is-resize`</dt> <dd>Whether thumbnail is a resized variant of original image. If `false`, `url-thumbnail` equals `url-view`.</dd> <dt>string `url-view`</dt> <dd>URL to original image in file storage.</dd> <dt>string `url-thumbnail`</dt> <dd> URL to resized and rotated image in file storage. If the original is larger than the specified dimensions, a thumbnail is created and its link is returned. Otherwise, the link to the original image is returned here. </dd> </dl> </dd> </dl>'
+                      dtl_now:
+                        type: string
+                        description: 'Local date with time now in current location {@link EnvironmentApi::$k_location}.'
+                      has_form_quiz:
+                        type: boolean
+                        description: 'Whether exists form to confirm during registration process.'
+                      has_merchant:
+                        type: boolean
+                        description: 'Whether the merchant is configured for the client''s home location or for business {@link EnvironmentApi::$k_business}.'
+                      id_currency:
+                        type: string
+                        description: 'Currency ID. One of {@link \RsCurrencySid} constants.'
+                      id_locale:
+                        type: number
+                        format: int32
+                        description: 'Business locale. One of {@link LocaleSid} constants.'
+                      id_place:
+                        type: number
+                        format: int32
+                        description: 'Current place ID. One of {@link \RsPlaceSid} constants. For the Application is determined by the template. For the Web version of the site is determined by the current session.'
+                      id_plan_achieve:
+                        type: number
+                        format: int32
+                        description: 'Achieve subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Achieve\AchieveSubscriptionSid} constants.'
+                      id_plan_base:
+                        type: number
+                        format: int32
+                        description: 'Base subscription plan ID.'
+                      id_plan_marketing:
+                        type: number
+                        format: int32
+                        description: 'Marketing subscription plan ID.'
+                      id_travel_mode:
+                        type: [number, "null"]
+                        description: 'Current travel mode ID in business. `null` if travel mode is disabled.'
+                      is_aiagent_chat:
+                        type: boolean
+                        description: 'Whether AI agent chat (CAASI) is available for current business. * `true` if chat is available * `false` if chat is not available'
+                      is_application_custom:
+                        type: boolean
+                        description: 'Determines current business has custom application. If <tt>true</tt> application has custom application, <tt>false</tt> otherwise.'
+                      is_billing_required:
+                        type: boolean
+                        description: '<tt>true</tt> if user must be redirected to billing page to enter credit card; <tt>false</tt> otherwise.'
+                      is_booking_appointment_authorize:
+                        type: boolean
+                        description: '<tt>true</tt> if clients must sign in to book an appointment; <tt>false</tt> otherwise.'
+                      is_booking_required_billing:
+                        type: boolean
+                        description: '<tt>true</tt> if user must be redirected from booking page to billing page to enter credit card; <tt>false</tt> otherwise.'
+                      is_business_location_multiple:
+                        type: boolean
+                        description: 'Determines if a business has multiple locations. <i>See {@link \rs_business_location_multiple()}.</i>'
+                      is_client_profile_share:
+                        type: [boolean, "null"]
+                        description: '`true` id profile details can be shared with the new location while adding a client that already has an existing profile in franchise, `false` - otherwise. * `null` if not franchise.'
+                      is_client_select_date_asset:
+                        type: boolean
+                        description: 'If clients are allowed to select a date and time, then the available asset while asset booking.'
+                      is_contract:
+                        type: boolean
+                        description: '<tt>true</tt> - user has unassigned contract(s); <tt>false</tt> - otherwise.'
+                      is_family_relation_display_client:
+                        type: boolean
+                        description: '`true` is allowed relationship to display, `false` - otherwise.'
+                      is_franchisor:
+                        type: boolean
+                        description: '<tt>true</tt> - if business is franchisor; <tt>false</tt> - otherwise.'
+                      is_location_geo:
+                        type: boolean
+                        description: '<tt>true</tt> to use page of geographical search of locations (possible for franchise case only); <tt>false</tt> to use simple select of locations from list.'
+                      is_location_redirect:
+                        type: boolean
+                        description: '<tt>true</tt> - in backend application user must be redirected to location selection; <tt>false</tt> - otherwise.'
+                      is_profile_required:
+                        type: boolean
+                        description: '<tt>true</tt> if user must be redirected to profile page to enter mandatory fields; <tt>false</tt> otherwise.'
+                      is_request_required_information:
+                        type: boolean
+                        description: 'Indicates whether to obtain customer required information such as required profile data and waiver. Mostly used for selenium tests running purposes to avoid creating profile filled with required information. If <tt>true</tt> all required information must be obtained before client will be allowed to use application, <tt>false</tt> otherwise.'
+                      is_traveller:
+                        type: boolean
+                        description: '<tt>true</tt> if user is traveler; <tt>false</tt> otherwise.'
+                      is_waiver_required:
+                        type: boolean
+                        description: '<tt>true</tt> if it is required to sign online waiver, <tt>false</tt> otherwise.'
+                      k_business:
+                        type: string
+                        description: 'Key of business to be set as current.'
+                      k_business_franchisor:
+                        type: [string, "null"]
+                        description: 'Not <tt>null</tt> for franchise application only.'
+                      k_currency:
+                        type: string
+                        description: 'Currency key.'
+                      k_location:
+                        type: string
+                        description: 'Key of location to be set as current.'
+                      text_country_code:
+                        type: string
+                        description: 'Country code for business locale {@link LocaleSid} constants.'
+                      uid:
+                        type: [string, "null"]
+                        description: 'Current user key. <tt>null</tt> if user is not signed in.'
+                      url_login:
+                        type: [string, "null"]
+                        description: 'Business login URL. `null` if user is not logged in or none businesses are available for user.'
+      tags:
+        - Session-Environment
+    put:
+      summary: 'Saves current location of business for current user. Switches the current business and location for the session, forwarding the request to another data center when the target business is hosted elsewhere.'
+      parameters:
+        - name: s_application_id
+          in: query
+          description: 'Application ID.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                is_staff:
+                  type: boolean
+                  description: '`true` if you want the API to switch to staff back office; `false` otherwise.'
+                k_business:
+                  type: string
+                  description: 'Key of business to be set as current.'
+                k_location:
+                  type: string
+                  description: 'Key of location to be set as current.'
+                s_business_change:
+                  type: string
+                  description: 'Key to check session in a case of business change.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Session-Environment
   '/Wl/Tag/TagList.json':
     get:
       summary: 'Returns tags of the specified business. Returns all client tags configured for the business in display order, along with flags indicating whether the business has configured a penalty fee for failed automatic payments and whether surcharges are enabled. Used to populate tag pickers and client profile forms.'
@@ -3832,6 +4137,221 @@ paths:
                         description: 'The tax title.'
       tags:
         - Tax-Tax
+  '/Wl/Drive/ProductImageUpload.json':
+    get:
+      summary: 'Returns information about the image. Used to initialize an image upload widget for an existing entity. Returns thumbnail and full-size URLs, upload endpoint, dimension constraints, and whether deletion is allowed, so the frontend can render the current image and offer upload or delete actions.'
+      parameters:
+        - name: a_config
+          in: query
+          description: 'Allows to give custom parameters which can be required for different types of images.'
+          schema:
+            type: array
+        - name: is_temporary
+          in: query
+          description: 'If `true`, the temporary image will be retrieved. Otherwise, this will be `false`.'
+          schema:
+            type: boolean
+        - name: k_id
+          in: query
+          description: 'The image ID set in {@link \Core\Drive\ImageUpload\ImageUploadApi::$s_class}.'
+          schema:
+            type: string
+        - name: s_class
+          in: query
+          description: 'The name of the class that manages this image.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_text_empty:
+                        type: [array, "null"]
+                        description: 'Information about the text for an empty image upload. <dl> <dt>string `s_class`</dt> <dd>Class to change view of the upload form.</dd> <dt>string `s_text`</dt> <dd>Text to replacing.</dd> </dl>'
+                      html_image_hint:
+                        type: string
+                        description: 'An HTML string to use for the image recommendation.'
+                      i_height_max:
+                        type: [number, "null"]
+                        description: 'The maximum height of image.'
+                      i_height_min:
+                        type: [number, "null"]
+                        description: 'The minimum height of image.'
+                      i_thumbnail_height:
+                        type: [number, "null"]
+                        description: 'The height of the thumbnail image. This will be `null` until it''s loaded from the server.'
+                      i_thumbnail_width:
+                        type: [number, "null"]
+                        description: 'The width of the thumbnail image. This will be `null` until it''s loaded from the server.'
+                      i_width_max:
+                        type: [number, "null"]
+                        description: 'The maximum width of the image.'
+                      i_width_min:
+                        type: [number, "null"]
+                        description: 'The minimum width of the image.'
+                      is_circular:
+                        type: [boolean, "null"]
+                        description: 'If `true`, the image is treated as circular. Otherwise, this will be `false`.'
+                      is_delete_allow:
+                        type: [boolean, "null"]
+                        description: 'If `true`, image deletion is permitted. Otherwise, this will be `false`. This will be `null` until it''s loaded from the server.'
+                      s_code:
+                        type: [string, "null"]
+                        description: 'The link protection code.'
+                      s_link:
+                        type: [string, "null"]
+                        description: 'The image link.'
+                      url_empty:
+                        type: [string, "null"]
+                        description: 'The image URL that should be displayed in cases where no image is uploaded. This will be `null` until it''s loaded from the server.'
+                      url_thumbnail:
+                        type: [string, "null"]
+                        description: 'The thumbnail URL of the image. This will be `null` until it''s loaded from the server.'
+                      url_upload:
+                        type: [string, "null"]
+                        description: 'The script URL where new image should be uploaded from.'
+                      url_view:
+                        type: [string, "null"]
+                        description: 'The URL of the full image.'
+      tags:
+        - Drive-ProductImageUpload
+    post:
+      summary: 'Loads image information for a list of IDs. The POST method is used instead of the GET method because the maximum permitted URI length is restricted. Bulk variant of the GET method for pages that must display many images at once. Accepts a JSON-encoded list of entity IDs and returns the same metadata as the single-item GET, loading all images in one round-trip to avoid N+1 requests.'
+      parameters:
+        - name: a_config
+          in: query
+          description: 'Allows to give custom parameters which can be required for different types of images.'
+          schema:
+            type: array
+        - name: s_class
+          in: query
+          description: 'The name of the class that manages this image.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                text_id:
+                  type: [string, "null"]
+                  description: 'A list of image IDs set in {@link \Core\Drive\ImageUpload\ImageUploadApi::$s_class}, serialized using JSON. This will be `null` if there''s no data being sent by the client.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_image:
+                        type: array
+                        description: 'Image information for every ID. <i>Every element contains values such as the {@link ImageUploadApi::_get()} result.</i> <dl> <dt>array `a_text_empty`</dt> <dd> Information about the text on the empty upload image. <i>See: {@link \AImageUpload::textEmpty()}.</i> <dl> <dt>string `s_class`</dt> <dd>Class to change view of the upload form.</dd> <dt>string `s_text`</dt> <dd>Text to replacing.</dd> </dl> </dd> <dt>int `i_height_max`</dt> <dd>The maximum height of the image.</dd> <dt>int `i_height_min`</dt> <dd>The minimum height of the image.</dd> <dt>int `i_thumbnail_height`</dt> <dd>The height of the thumbnail image. <i>A copy of {@link \AImageUpload::THUMBNAIL_HEIGHT}.</i></dd> <dt>int `i_thumbnail_width`</dt> <dd>The width of thumbnail image. <i>A copy of {@link \AImageUpload::THUMBNAIL_WIDTH}.</i></dd> <dt>int `i_width_max`</dt> <dd>The maximum width of image.</dd> <dt>int `i_width_min`</dt> <dd>The minimum width of image.</dd> <dt>bool `is_circular`</dt> <dd><tt>true</tt> if image is treated as circular; <tt>false</tt> otherwise.</dd> <dt>bool `is_delete_allow`</dt> <dd><tt>true</tt> if image deleting is allowed; <tt>false</tt> otherwise.</dd> <dt>string `s_link`</dt> <dd>The image link.</dd> <dt>string `url_empty`</dt> <dd>The URL of the image that should be shown in a case image is not uploaded.</dd> <dt>string|null `url_thumbnail`</dt> <dd>The URL of thumbnail of the image. <tt>null</tt> if image is not uploaded.</dd> <dt>string `url_upload`</dt> <dd>The URL the script where new image should be uploaded.</dd> <dt>string|null `url_view`</dt> <dd>The URL of the full image. <tt>null</tt> if image is not uploaded.</dd> </dl>'
+      tags:
+        - Drive-ProductImageUpload
+    put:
+      summary: 'Updates the image. Applies a command (such as delete or replace) to a previously uploaded image, then returns the refreshed image metadata so the frontend can update the widget state without a separate GET call.'
+      parameters:
+        - name: a_config
+          in: query
+          description: 'Allows to give custom parameters which can be required for different types of images.'
+          schema:
+            type: array
+        - name: is_temporary
+          in: query
+          description: 'If `true`, the temporary image will be retrieved. Otherwise, this will be `false`.'
+          schema:
+            type: boolean
+        - name: k_id
+          in: query
+          description: 'The image ID set in {@link \Core\Drive\ImageUpload\ImageUploadApi::$s_class}.'
+          schema:
+            type: string
+        - name: s_class
+          in: query
+          description: 'The name of the class that manages this image.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                s_command:
+                  type: string
+                  description: 'The action that must be performed to the image.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_text_empty:
+                        type: [array, "null"]
+                        description: 'Information about the text for an empty image upload. <dl> <dt>string `s_class`</dt> <dd>Class to change view of the upload form.</dd> <dt>string `s_text`</dt> <dd>Text to replacing.</dd> </dl>'
+                      html_image_hint:
+                        type: string
+                        description: 'An HTML string to use for the image recommendation.'
+                      i_height_max:
+                        type: [number, "null"]
+                        description: 'The maximum height of image.'
+                      i_height_min:
+                        type: [number, "null"]
+                        description: 'The minimum height of image.'
+                      i_thumbnail_height:
+                        type: [number, "null"]
+                        description: 'The height of the thumbnail image. This will be `null` until it''s loaded from the server.'
+                      i_thumbnail_width:
+                        type: [number, "null"]
+                        description: 'The width of the thumbnail image. This will be `null` until it''s loaded from the server.'
+                      i_width_max:
+                        type: [number, "null"]
+                        description: 'The maximum width of the image.'
+                      i_width_min:
+                        type: [number, "null"]
+                        description: 'The minimum width of the image.'
+                      is_circular:
+                        type: [boolean, "null"]
+                        description: 'If `true`, the image is treated as circular. Otherwise, this will be `false`.'
+                      is_delete_allow:
+                        type: [boolean, "null"]
+                        description: 'If `true`, image deletion is permitted. Otherwise, this will be `false`. This will be `null` until it''s loaded from the server.'
+                      s_code:
+                        type: [string, "null"]
+                        description: 'The link protection code.'
+                      s_link:
+                        type: [string, "null"]
+                        description: 'The image link.'
+                      url_empty:
+                        type: [string, "null"]
+                        description: 'The image URL that should be displayed in cases where no image is uploaded. This will be `null` until it''s loaded from the server.'
+                      url_thumbnail:
+                        type: [string, "null"]
+                        description: 'The thumbnail URL of the image. This will be `null` until it''s loaded from the server.'
+                      url_upload:
+                        type: [string, "null"]
+                        description: 'The script URL where new image should be uploaded from.'
+                      url_view:
+                        type: [string, "null"]
+                        description: 'The URL of the full image.'
+      tags:
+        - Drive-ProductImageUpload
   '/Wl/Announcement/AnnouncementList.json':
     get:
       summary: 'Returns a list of announcements for the given business and location. Retrieves published announcements visible to the current user, optionally filtered to a single location. In backend mode the caller can also sort the results by column and direction, and the chosen sort preference is persisted per user so the backend grid remembers it across requests. Access is validated against announcement editor permissions for the business.'
@@ -3989,6 +4509,608 @@ paths:
                         description: 'List of found class sessions. Each item is an associative array with the following structure: <dl> <dt>string|null `dtu_book_begin`</dt> <dd>Date and time when booking for this session starts in UTC. `null` if there is no "too early" limitation.</dd> <dt>string|null `dtu_book_end`</dt> <dd>Date and time when booking for this session ends in UTC. `null` if there is no "too late" limitation.</dd> <dt>string `dtu_session`</dt> <dd>Date and time of the session in UTC.</dd> <dt>string `k_class`</dt> <dd>Class key. <i>Primary key in {@link \RsClassSql}.</i></dd> <dt>string `k_class_period`</dt> <dd>Class period key. <i>Primary key in {@link \RsClassPeriodSql}.</i></dd> <dt>string `k_class_period_session`</dt> <dd>Class session key. <i>Primary key in {@link \Thoth\ExplorerSearch\ClassSession\ClassPeriodSessionSql}.</i></dd> </dl>'
       tags:
         - ClassSession-ClassSessionSearch
+  '/Thoth/PayProcessor/Nuvei/NuveiOpenOrder.json':
+    post:
+      summary: 'Opens a `Nuvei` order for the payment transaction. Authenticates the merchant credentials, starts a payment transaction, and requests `Nuvei` to open an order for the requested amount, returning the order and session identifiers needed to continue the payer authentication flow.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id_currency:
+                  type: [number, "null"]
+                  description: 'ID of the currency. One of {@link \Core\Locale\CurrencySid} constants. `null` in case when not initialized yet.'
+                id_pay_actor:
+                  type: [number, "null"]
+                  description: 'ID of the actor. One of {@link \RsPayActorSid} constants. `null` in case when not initialized yet.'
+                id_pay_method:
+                  type: [number, "null"]
+                  description: 'ID of pay method. One of {@link \RsPayMethodSid} constants. `null` in case when not initialized yet.'
+                is_authorize:
+                  type: boolean
+                  description: 'Whether authorization or capture should be performed. `true` (or anything that is not empty) to perform authorization. `false` (or anything that is empty, or do not pass this value) to charge the payment amount.'
+                k_business:
+                  type: [string, "null"]
+                  description: 'Key of the business which receives the payment. `null` in case when not initialized yet.'
+                k_business_merchant:
+                  type: [string, "null"]
+                  description: 'Key of the business merchant that should be used to perform the request. `null` in case when not initialized yet.'
+                k_pay_method:
+                  type: [string, "null"]
+                  description: 'Key of a custom payment method. `null` in case when not initialized yet or empty if payment is performed with a standard payment method.'
+                m_amount:
+                  type: [string, "null"]
+                  description: 'Payment amount. `null` in case when not initialized yet.'
+                m_surcharge:
+                  type: [string, "null"]
+                  description: 'Surcharge amount. `null` in case when not initialized yet, empty string or null for zero surcharge amount.'
+                uid_purchase:
+                  type: [string, "null"]
+                  description: 'Payment owner user key. `null` in case when not initialized yet or if pay owner is anonymous.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      k_pay_transaction:
+                        type: [string, "null"]
+                        description: 'Key of payment transaction that was created. `null` in case when not initialized yet.'
+                      s_nuvei_order:
+                        type: [string, "null"]
+                        description: 'The order ID provided by Nuvei. `null` in case of errors.'
+                      s_nuvei_session:
+                        type: [string, "null"]
+                        description: 'The session identifier to be used by the request that processes the newly opened order. `null` in case of errors.'
+                      text_message:
+                        type: [string, "null"]
+                        description: 'Error message. `null` in case response has not received yet or request is not failed.'
+      tags:
+        - Nuvei-NuveiOpenOrder
+  '/Thoth/PayProcessor/Nuvei/NuveiTransactionOnAuthSuccess.json':
+    post:
+      summary: 'Finalizes the `Nuvei` transaction after successful payer authentication. Validates the payer authentication session and encrypted card token, then updates the payment transaction created by {@link NuveiOpenOrderApi} with the gateway transaction ID and card data.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                is_authorize:
+                  type: boolean
+                  description: 'Whether authorization or capture should be performed. `true` (or anything that is not empty) to perform authorization. `false` (or anything that is empty, or do not pass this value) to charge the payment amount.'
+                k_business:
+                  type: [string, "null"]
+                  description: 'Key of the business which receives the payment. `null` in case when not initialized yet.'
+                k_business_merchant:
+                  type: [string, "null"]
+                  description: 'Key of the business merchant that should be used to perform the request. `null` in case when not initialized yet.'
+                k_pay_bank:
+                  type: [string, "null"]
+                  description: 'Key of a selected payment source. `null` in case when an existed payment source is not used.'
+                k_pay_method:
+                  type: [string, "null"]
+                  description: 'Key of a custom payment method. `null` in case when not initialized yet or empty if payment is performed with a standard payment method.'
+                k_pay_transaction:
+                  type: [string, "null"]
+                  description: 'Key of payment transaction that was previously created with {@link \Thoth\PayProcessor\Nuvei\NuveiOpenOrderApi}. `null` in case when not initialized yet.'
+                m_amount:
+                  type: [string, "null"]
+                  description: 'Payment amount. `null` in case when not initialized yet.'
+                m_surcharge:
+                  type: [string, "null"]
+                  description: 'Surcharge amount. `null` in case when not initialized yet, empty string or null for zero surcharge amount.'
+                s_encrypt:
+                  type: [string, "null"]
+                  description: 'Contents of the encrypted token. `null` in case when not initialized yet.'
+                s_nuvei_order:
+                  type: [string, "null"]
+                  description: 'The order ID provided by Nuvei. `null` in case when not initialized yet.'
+                s_nuvei_session:
+                  type: [string, "null"]
+                  description: 'The session identifier to be used by the request that processes the newly opened order. `null` in case when not initialized yet.'
+                s_response:
+                  type: [string, "null"]
+                  description: 'Payment gateway-specific response object.'
+                s_transaction:
+                  type: [string, "null"]
+                  description: 'The Gateway transaction ID.'
+                uid_purchase:
+                  type: [string, "null"]
+                  description: 'Payment owner user key. `null` in case when not initialized yet or if pay owner is anonymous.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Nuvei-NuveiTransactionOnAuthSuccess
+  '/Thoth/PayProcessor/Nuvei/NuveiTransactionCancel.json':
+    post:
+      summary: 'Cancels the `Nuvei` transaction. Voids the payer authentication session opened by {@link NuveiOpenOrderApi} and schedules the underlying payment transaction to be voided.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                k_business:
+                  type: [string, "null"]
+                  description: 'Key of the business which receives the payment. `null` in case when not initialized yet.'
+                k_pay_transaction:
+                  type: [string, "null"]
+                  description: 'Key of payment transaction that was created in {@link NuveiOpenOrderApi}. This will be `null` if not loaded yet.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Nuvei-NuveiTransactionCancel
+  '/Thoth/PayProcessor/Nuvei/NuveiUpdateOrder.json':
+    post:
+      summary: 'Updates the amount of a previously opened `Nuvei` order. Validates the payer authentication session, then requests `Nuvei` to update the amount of the order opened by {@link NuveiOpenOrderApi} and adjusts the payment transaction accordingly.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id_currency:
+                  type: [number, "null"]
+                  description: 'ID of the currency. One of {@link \Core\Locale\CurrencySid} constants. `null` in case when not initialized yet.'
+                id_pay_actor:
+                  type: [number, "null"]
+                  description: 'ID of the actor. One of {@link \RsPayActorSid} constants. `null` in case when not initialized yet.'
+                id_pay_method:
+                  type: [number, "null"]
+                  description: 'ID of pay method. One of {@link \RsPayMethodSid} constants. `null` in case when not initialized yet.'
+                is_authorize:
+                  type: boolean
+                  description: 'Whether authorization or capture should be performed. `true` (or anything that is not empty) to perform authorization. `false` (or anything that is empty, or do not pass this value) to charge the payment amount.'
+                k_business:
+                  type: [string, "null"]
+                  description: 'Key of the business which receives the payment. `null` in case when not initialized yet.'
+                k_business_merchant:
+                  type: [string, "null"]
+                  description: 'Key of the business merchant that should be used to perform the request. `null` in case when not initialized yet.'
+                k_pay_method:
+                  type: [string, "null"]
+                  description: 'Key of a custom payment method. `null` in case when not initialized yet or empty if payment is performed with a standard payment method.'
+                k_pay_transaction:
+                  type: [string, "null"]
+                  description: 'Key of payment transaction that was created in {@link NuveiOpenOrderApi}. This will be `null` if not loaded yet.'
+                m_amount:
+                  type: [string, "null"]
+                  description: 'Payment amount. `null` in case when not initialized yet.'
+                m_surcharge:
+                  type: [string, "null"]
+                  description: 'Surcharge amount. `null` in case when not initialized yet, empty string or null for zero surcharge amount.'
+                s_nuvei_order:
+                  type: [string, "null"]
+                  description: 'The order ID that was created in {@link NuveiOpenOrderApi}. This will be `null` if not loaded yet.'
+                s_nuvei_session:
+                  type: [string, "null"]
+                  description: 'The session identifier in which order was created. This will be `null` if not loaded yet.'
+                uid_purchase:
+                  type: [string, "null"]
+                  description: 'Payment owner user key. `null` in case when not initialized yet or if pay owner is anonymous.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      text_message:
+                        type: [string, "null"]
+                        description: 'Error message. `null` in case response has not received yet or request is not failed.'
+      tags:
+        - Nuvei-NuveiUpdateOrder
+  '/Thoth/PayProcessor/StripeCom/PaymentIntentUpdate.json':
+    post:
+      summary: 'Updates a `Stripe` Payment Intent. Adjusts the amount and surcharge of the Payment Intent created for the Stripe Payment Element form when the cart contents change, keeping the underlying payment transaction in sync.'
+      parameters:
+        - name: id_pay_actor
+          in: query
+          description: 'ID of the actor. One of {@link \RsPayActorSid} constants.'
+          schema:
+            type: number
+            format: int32
+        - name: k_business
+          in: query
+          description: 'Key of the business to update Payment Intent for.'
+          schema:
+            type: string
+        - name: k_business_merchant
+          in: query
+          description: 'Key of the business merchant to update Payment Intent for.'
+          schema:
+            type: string
+        - name: k_pay_transaction
+          in: query
+          description: 'Key of the payment transaction to update. Required.'
+          schema:
+            type: string
+        - name: s_payment_intent
+          in: query
+          description: 'Payment intent ID to update. Required.'
+          schema:
+            type: string
+        - name: uid_purchase
+          in: query
+          description: 'Payment owner user key. `null` if pay owner is anonymous.'
+          schema:
+            type: [string, "null"]
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id_currency:
+                  type: number
+                  format: int32
+                  description: 'ID of the currency. Required.'
+                m_amount:
+                  type: string
+                  description: 'Payment amount to set. Required.'
+                m_surcharge:
+                  type: string
+                  description: 'Surcharge amount to set. Required.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - StripeCom-PaymentIntentUpdate
+  '/Thoth/PayProcessor/StripeCom/StripeComKey.json':
+    post:
+      summary: 'Gets the `Stripe` public key for a merchant. Returns the publishable key configured for the business merchant, so it can be used by the frontend to initialize `Stripe` payment elements.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id_pay_actor:
+                  type: number
+                  format: int32
+                  description: 'ID of the actor.'
+                k_business:
+                  type: string
+                  description: 'Key of the business.'
+                k_business_merchant:
+                  type: string
+                  description: 'Key of the business merchant to get the public key for.'
+                uid_purchase:
+                  type: string
+                  description: 'Payment owner user key.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      s_public:
+                        type: [string, "null"]
+                        description: 'Merchant public key. `null` before the key is set. It is set by {@link \Thoth\PayProcessor\StripeCom\StripeComKeyApi::post()}.'
+      tags:
+        - StripeCom-StripeComKey
+  '/Thoth/PayProcessor/StripeCom/StripeComPayInit.json':
+    post:
+      summary: 'Initializes a `Stripe` payment. Starts a payment transaction and creates a not-captured Payment Intent at `stripe.com`, returning its status and client secret to continue the payment flow on the frontend.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_card:
+                  type: [array, "null"]
+                  description: 'Credit card data. Contents of the payment source as it presents on the payment form. Supplied in case payment source is card. `null` if payment source is other than card or payment is initialized before card data is known. <dl> <dt>array `a_pay_address`</dt> <dd> Payment address for address edit widget. Used only if `is_new` is `true`: <dl> <dt>bool `is_new`</dt> <dd>`true` if user has chosen to add new address, `false` otherwise.</dd> <dt>string `k_geo_country`</dt> <dd>Key of the country. <i>Primary key in {@link \AGeoSql}.</i> Used only if `is_new` is `true`.</dd> <dt>string `k_geo_region`</dt> <dd>Key of the region. <i>Primary key in {@link \AGeoSql}.</i> Used only if `is_new` is `true`.</dd> <dt>string|null `k_pay_address`</dt> <dd> Chosen payment address key. <i>Primary key in {@link \RsPayAddressSql} table.</i> Set even if user decided to add new address. </dd> <dt>string `s_city`</dt> <dd>City name. Used only if `is_new` is `true`.</dd> <dt>string `s_name`</dt> <dd>User''s full name.</dd> <dt>string `s_phone`</dt> <dd>Phone number. Used only if `is_new` is `true`.</dd> <dt>string `s_postal`</dt> <dd>Postal code. Used only if `is_new` is `true`.</dd> <dt>string `s_street1`</dt> <dd>First address line. Used only if `is_new` is `true`.</dd> <dt>string `s_street2`</dt> <dd>Second address line. Used only if `is_new` is `true`.</dd> <dt>string|null `text_mail`</dt> <dd>User''s email. `null` if not specified. Used only if `is_new` is `true`.</dd> </dl> </dd> <dt>int `i_csc`</dt> <dd>Card CSC code. Used only if `is_new` is `true`.</dd> <dt>int `i_month`</dt> <dd>Card expiration month. Used only if `is_new` is `true`.</dd> <dt>int `i_year`</dt> <dd>Card expiration year. Used only if `is_new` is `true`.</dd> <dt>int `id_card_type`</dt> <dd> Card type. One of {@link \Thoth\WlPay\Bank\Card\CardTypeEnum} constants as int. Used only if `is_new` is `true`. </dd> <dt>bool `is_default`</dt> <dd>If the card should be made the default payment method. Used only if `is_new` is `true`.</dd> <dt>bool `is_new`</dt> <dd>Whether a new card is being added instead of an existing one being selected.</dd> <dt>bool `is_save`</dt> <dd>If the card information should be saved for future transactions. Used only if `is_new` is `true`.</dd> <dt>string `k_pay_bank`</dt> <dd>Selected payment card key. Used only if `is_new` is `false`. `0` if no existing card is selected.</dd> <dt>string `s_name`</dt> <dd>Card nickname. Used only if `is_new` is `true`.</dd> <dt>string `s_number`</dt> <dd>Card number. Used only if `is_new` is `true`.</dd> </dl>'
+                id_currency:
+                  type: [number, "null"]
+                  description: 'ID of the currency. One of {@link \Core\Locale\CurrencySid} constants. `null` in case when not initialized yet.'
+                id_pay_actor:
+                  type: [number, "null"]
+                  description: 'ID of the actor. One of {@link \RsPayActorSid} constants. `null` in case when not initialized yet.'
+                id_pay_method:
+                  type: [number, "null"]
+                  description: 'ID of pay method. One of {@link \RsPayMethodSid} constants. `null` in case when not initialized yet.'
+                is_authorize:
+                  type: boolean
+                  description: 'Whether authorization or capture should be performed. `true` (or anything that is not empty) to perform authorization. `false` (or anything that is empty, or do not pass this value) to charge the payment amount.'
+                is_pos:
+                  type: boolean
+                  description: '`true` if card swiper is used, `false` otherwise.'
+                is_stripe_elements:
+                  type: boolean
+                  description: '`true` if Stripe Payment Element form (@link https://stripe.com/docs/payments/elements) is used, `false` otherwise.'
+                k_business:
+                  type: [string, "null"]
+                  description: 'Key of the business which receives the payment. `null` in case when not initialized yet.'
+                k_business_merchant:
+                  type: [string, "null"]
+                  description: 'Key of the business merchant that should be used to perform the request. `null` in case when not initialized yet.'
+                k_pay_method:
+                  type: [string, "null"]
+                  description: 'Key of a custom payment method. `null` in case when not initialized yet or empty if payment is performed with a standard payment method.'
+                m_amount:
+                  type: [string, "null"]
+                  description: 'Payment amount. `null` in case when not initialized yet.'
+                m_surcharge:
+                  type: [string, "null"]
+                  description: 'Surcharge amount. `null` in case when not initialized yet, empty string or null for zero surcharge amount.'
+                s_payment_method:
+                  type: [string, "null"]
+                  description: 'Payment method ID. `null` if Payment intent must be created without existing Payment method. <i> This is the case for card swiper or Stripe Payment Element ({@link https://stripe.com/docs/payments/elements}) - create payment intent first, then create payment method. And vice versa in case of virtual terminal. </i>'
+                uid_purchase:
+                  type: [string, "null"]
+                  description: 'Payment owner user key. `null` in case when not initialized yet or if pay owner is anonymous.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      id_status:
+                        type: number
+                        format: int32
+                        description: 'Status of this Payment Intent.'
+                      k_pay_transaction:
+                        type: [string, "null"]
+                        description: 'Key of payment transaction that was created. `null` in case when not initialized yet.'
+                      s_client_secret:
+                        type: string
+                        description: 'Payment Intent client secret key.'
+                      s_payment_intent:
+                        type: string
+                        description: 'Payment intent ID.'
+                      text_message:
+                        type: [string, "null"]
+                        description: 'Error message. `null` in case response has not received yet or request is not failed.'
+      tags:
+        - StripeCom-StripeComPayInit
+  '/Thoth/PayProcessor/StripeCom/StripeComPaymentIntentCancel.json':
+    post:
+      summary: 'Cancels a `Stripe` Payment Intent. Verifies that the Payment Intent belongs to the current payer authentication session, then refunds the associated payment transaction to release the reserved amount.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id_pay_actor:
+                  type: number
+                  format: int32
+                  description: 'ID of the actor.'
+                k_business:
+                  type: string
+                  description: 'Key of the business.'
+                k_business_merchant:
+                  type: string
+                  description: 'Key of the business merchant, that processes payment.'
+                k_pay_transaction:
+                  type: string
+                  description: 'Pay transaction key, which was used to create payment intent.'
+                s_payment_intent:
+                  type: string
+                  description: 'Payment intent ID.'
+                uid_purchase:
+                  type: string
+                  description: 'Payment owner user key.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - StripeCom-StripeComPaymentIntentCancel
+  '/Thoth/PayProcessor/CyberSource/CsCaptureContext.json':
+    post:
+      summary: 'Generates a capture context for `CyberSource` Flex Microform. Returns a capture context and key ID that the client uses to encrypt the card number before sending it in the follow-on Tokenize Card request. 1) it requires interaction with the user in the browser; 2) Cyber Source requires that we have `localhost` as a domain which is incompatible with our testing cluster configuration.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                k_business:
+                  type: string
+                  description: 'Key of the business.'
+                k_business_merchant:
+                  type: string
+                  description: 'Key of the business merchant that should be used to perform the request.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      s_client_library_integrity:
+                        type: [string, "null"]
+                        description: 'Microform Integration JavaScript library integrity property value. `null` until generated.'
+                      s_key:
+                        type: [string, "null"]
+                        description: 'Contents of the key. `null` until generated.'
+                      s_key_id:
+                        type: [string, "null"]
+                        description: 'ID of the key. `null` until generated.'
+                      url_client_library:
+                        type: [string, "null"]
+                        description: 'Microform Integration JavaScript library url. `null` until generated.'
+      tags:
+        - CyberSource-CsCaptureContext
+  '/Thoth/PayProcessor/CyberSource/CsPaEnrollment.json':
+    post:
+      summary: 'Checks `CyberSource` Payer Authentication enrollment. Verifies whether the payer must complete additional authentication steps for the transaction started by {@link CsPaSetupApi}, returning a JWT and interaction URL when a challenge is required.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_device_info:
+                  type: array
+                  description: 'User device info: <dl> <dt>int `i_browser_screen_height`</dt> <dd>User browser screen height.</dd> <dt>int `i_browser_screen_width`</dt> <dd>User browser screen width.</dd> </dl>'
+                k_pay_transaction:
+                  type: string
+                  description: 'Key of payment transaction that was previously created with {@link \Thoth\PayProcessor\CyberSource\CsPaSetupApi}.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      s_jwt:
+                        type: [string, "null"]
+                        description: 'JSON Web Token to include into the request to the second frame.'
+                      url_interact:
+                        type: [string, "null"]
+                        description: 'URL for frontend interaction. This normally means that payer needs to make further steps for the authentication. `null` if no interaction required, and we should proceed with the withdrawal. This normally means that payer is authenticated. If payer is not authenticated, or there is an error occurred during check of the enrollment, this API returns an exception.'
+      tags:
+        - CyberSource-CsPaEnrollment
+  '/Thoth/PayProcessor/CyberSource/CsPaSetup.json':
+    post:
+      summary: 'Starts `CyberSource` Payer Authentication setup. Validates the payment request and card data, starts a payment transaction, and requests `CyberSource` to set up payer authentication, returning the JWT and device collection URL needed to continue the flow.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_card:
+                  type: array
+                  description: 'Credit card data. Contents of the payment source as it presents on the payment form. <dl> <dt>array `a_pay_address`</dt> <dd> Payment address for address edit widget. Used only if `is_new` is `true`: <dl> <dt>bool `is_new`</dt> <dd>`true` if user has chosen to add new address, `false` otherwise.</dd> <dt>string `k_geo_country`</dt> <dd>Key of the country. <i>Primary key in {@link \AGeoSql}.</i> Used only if `is_new` is `true`.</dd> <dt>string `k_geo_region`</dt> <dd>Key of the region. <i>Primary key in {@link \AGeoSql}.</i> Used only if `is_new` is `true`.</dd> <dt>string|null `k_pay_address`</dt> <dd> Chosen payment address key. <i>Primary key in {@link \RsPayAddressSql} table.</i> Set even if user decided to add new address. </dd> <dt>string `s_city`</dt> <dd>City name. Used only if `is_new` is `true`.</dd> <dt>string `s_name`</dt> <dd>User''s full name.</dd> <dt>string `s_phone`</dt> <dd>Phone number. Used only if `is_new` is `true`.</dd> <dt>string `s_postal`</dt> <dd>Postal code. Used only if `is_new` is `true`.</dd> <dt>string `s_street1`</dt> <dd>First address line. Used only if `is_new` is `true`.</dd> <dt>string `s_street2`</dt> <dd>Second address line. Used only if `is_new` is `true`.</dd> <dt>string|null `text_mail`</dt> <dd>User''s email. `null` if not specified. Used only if `is_new` is `true`.</dd> </dl> </dd> <dt>int `i_csc`</dt> <dd>Card CSC code. Used only if `is_new` is `true`.</dd> <dt>int `i_month`</dt> <dd>Card expiration month. Used only if `is_new` is `true`.</dd> <dt>int `i_year`</dt> <dd>Card expiration year. Used only if `is_new` is `true`.</dd> <dt>int `id_card_type`</dt> <dd> Card type. One of {@link \Thoth\WlPay\Bank\Card\CardTypeEnum} constants as int. Used only if `is_new` is `true`. </dd> <dt>bool `is_default`</dt> <dd>If the card should be made the default payment method. Used only if `is_new` is `true`.</dd> <dt>bool `is_new`</dt> <dd>Whether a new card is being added instead of an existing one being selected.</dd> <dt>bool `is_save`</dt> <dd>If the card information should be saved for future transactions. Used only if `is_new` is `true`.</dd> <dt>string `k_pay_bank`</dt> <dd>Selected payment card key. Used only if `is_new` is `false`. `0` if no existing card is selected.</dd> <dt>string `s_name`</dt> <dd>Card nickname. Used only if `is_new` is `true`.</dd> <dt>string `s_number`</dt> <dd>Card number. Used only if `is_new` is `true`.</dd> </dl>'
+                id_pay_actor:
+                  type: number
+                  format: int32
+                  description: 'ID of the actor.'
+                is_authorize:
+                  type: boolean
+                  description: 'Whether authorization or capture should be performed. `true` (or anything that is not empty) to perform authorization and void immediately. `false` (or anything that is empty, or do not pass this value) to capture the payment amount.'
+                k_business:
+                  type: string
+                  description: 'Key of the business which receives the payment.'
+                k_business_merchant:
+                  type: string
+                  description: 'Key of the business merchant that should be used to perform the request.'
+                k_pay_method:
+                  type: [string, "null"]
+                  description: 'Key of a custom payment method. `null` or an empty string if payment is performed with a standard payment method. Only payment methods based on {@link \RsPayMethodSid::ECOMMERCE} are accepted.'
+                m_amount:
+                  type: string
+                  description: 'Payment amount.'
+                m_surcharge:
+                  type: string
+                  description: 'Surcharge amount. Empty string or null for zero surcharge amount.'
+                uid_pay_owner:
+                  type: string
+                  description: 'UID of the payment owner.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      k_pay_transaction:
+                        type: string
+                        description: 'Key of payment transaction that was created.'
+                      s_jwt:
+                        type: string
+                        description: 'JWT token, as returned by Cyber Source.'
+                      s_reference:
+                        type: string
+                        description: 'Reference ID, as returned by Cyber Source.'
+                      url_collection:
+                        type: string
+                        description: 'Device collection URL, as returned by Cyber Source.'
+      tags:
+        - CyberSource-CsPaSetup
+  '/Thoth/PayProcessor/CyberSource/CsPaValidate.json':
+    post:
+      summary: 'Validates the `CyberSource` Payer Authentication result. Retrieves the authentication result for the transaction validated by {@link CsPaEnrollmentApi} and confirms whether the payer authentication succeeded, allowing the merchant to proceed with processing the payment. 1) it requires interaction with the user in the browser; 2) Cyber Source requires that we have `localhost` as a domain which is incompatible with out testing cluster configuration.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                k_pay_transaction:
+                  type: string
+                  description: 'Key of payment transaction that was previously created with {@link \Thoth\PayProcessor\CyberSource\CsPaSetupApi}.'
+                s_transaction:
+                  type: string
+                  description: 'Payer authentication transaction ID.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - CyberSource-CsPaValidate
   '/Thoth/ReportCore/Generator/Query.json':
     post:
       summary: 'Returns contents of a report as a table. If the report is not yet generated, it gets generated. If the report is being generated now, partial content may be returned.'
@@ -5633,6 +6755,60 @@ paths:
                         description: 'The PIN code.'
       tags:
         - Token-TokenPin
+  '/Core/Spa/Application/SpaApplication.json':
+    get:
+      summary: 'Gets information of application. Returns which sign-in methods (Apple, Facebook, Google, Microsoft, TJX) are enabled for the application, along with the social sign-in and registration restrictions and the corresponding authorization links.'
+      parameters:
+        - name: s_application
+          in: query
+          description: 'Unique ID of application.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      is_apple:
+                        type: boolean
+                        description: '`true` - enable for this application sign in with Apple; `false` - disable.'
+                      is_facebook:
+                        type: boolean
+                        description: '`true` - enable for this application sign in with Facebook; `false` - disable.'
+                      is_facebook_android:
+                        type: boolean
+                        description: '`true` - enable for this application sign in with Facebook for Android; `false` - disable.'
+                      is_google:
+                        type: boolean
+                        description: '`true` - enable for this application sign in with Google; `false` - disable.'
+                      is_microsoft:
+                        type: boolean
+                        description: '`true` - enable for this application sign in with Microsoft; `false` - disable.'
+                      is_register_deny:
+                        type: boolean
+                        description: '`true` - registration of new user is denied in application; `false` - registration of new user is allowed.'
+                      is_social:
+                        type: boolean
+                        description: '`true` if sign in via social networks is allowed; `false` otherwise.'
+                      is_tjx:
+                        type: boolean
+                        description: '`true` if sign in via TJX Azure is allowed; `false` otherwise.'
+                      text_tjx_button_name:
+                        type: string
+                        description: 'Tjx button name.'
+                      url_facebook:
+                        type: string
+                        description: 'Facebook authorization link.'
+                      url_tjx:
+                        type: string
+                        description: 'Tjx link.'
+      tags:
+        - Application-SpaApplication
   '/Core/Passport/Login/Info.json':
     get:
       summary: 'Returns information about user that is currently signed in. Used to bootstrap the login widget: determines whether a session is active and provides the URLs needed to redirect an unauthenticated visitor to the password reset or registration flows without hard-coding those URLs on the frontend.'
@@ -6050,7 +7226,7 @@ paths:
         - ImageUpload-ImageUploadTemporary
   '/Core/Google/Captcha/GoogleCaptcha.json':
     put:
-      summary: 'Saves the user CAPTCHA token for the current session. Accepts the CAPTCHA version, the action name, and the user token obtained from the Google reCAPTCHA widget, and stores them in the session so that subsequent API requests requiring CAPTCHA verification can use them.'
+      summary: 'Saves the user CAPTCHA token for the current session. Accepts the CAPTCHA version, the action name, and the user token obtained from the Google reCAPTCHA widget, and stores them in the session so that subsequent API requests requiring CAPTCHA verification can use them. Site keys for initialize Google reCAPTCHA: * Version 2 (invisible): * Demo/Staging - {@link GoogleCaptchaKeys::CAPTCHA_V2_SITE_KEY_SANDBOX} * Production - {@link GoogleCaptchaKeys::CAPTCHA_V2_SITE_KEY_PRODUCTION} * Version 3: * Demo/Staging - {@link GoogleCaptchaKeys::CAPTCHA_V3_SITE_KEY_SANDBOX} * Production - {@link GoogleCaptchaKeys::CAPTCHA_V3_SITE_KEY_PRODUCTION}'
       requestBody:
         required: true
         content:
@@ -6782,6 +7958,40 @@ paths:
                         description: 'The purchase key created during payment.'
       tags:
         - Payment-Payment
+  '/Wl/Catalog/Quiz/Quiz.json':
+    get:
+      summary: 'Gets quizzes for the selected purchase options. Resolves the quizzes required or available for the services behind the given purchase items, taking into account quizzes already completed by the specified user, and returns them so the client can collect answers before booking is finished.'
+      parameters:
+        - name: a_purchase_item
+          in: query
+          description: 'List of purchase items. Each element has format <tt>[id_purchase_item]::[k_id]</tt>, where Empty if no purchases are made for booking. <dl> <dt>int `id_purchase_item`</dt> <dd>ID of the purchase item. One of {@link \RsPurchaseItemSid}.</dd> <dt>string `k_id`</dt> <dd>Key of the item. Depends on <var>id_purchase_item</var> of this array.</dd> </dl>'
+          schema:
+            type: array
+        - name: k_business
+          in: query
+          description: 'Key of a business.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'Key of a user who is making a purchase. `null` in case when quizzes requested for guest.'
+          schema:
+            type: [string, "null"]
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_quiz:
+                        type: object
+                        description: 'List of quizzes. Each element has next structure: <dl> <dt>bool `is_require`</dt> <dd>Whether the quiz is required and can not be skipped.</dd> <dt>string `k_quiz`</dt> <dd>Quiz key. <i>Primary key from {@link \Core\Quiz\QuizSql} table.</i></dd> <dt>string `text_title`</dt> <dd>Quiz title.</dd> </dl> is_require: bool, k_quiz: string, text_title: string }'
+      tags:
+        - Quiz-Quiz
   '/Wl/Classes/ClassList/BookList.json':
     get:
       summary: 'Gets a list of classes which take place in the specified location. Used to build the booking page for a location, displaying all classes that clients can sign up for. Returns the full class details needed for display: schedules, assigned staff, booking links, pricing, and category tabs.'
@@ -6918,6 +8128,41 @@ paths:
                         description: 'Displays information about the class schedule(s). Each element has the next structure: <dl> <dt>array `a_schedule`</dt> <dd> A list of class schedules. Each element has the next structure: <dl> <dt>array `a_repeat`</dt> <dd> Schedule repeat options: <dl> <dt>int `i_repeat`</dt> <dd>A count of the periods specified in <var>id_repeat</var>.</dd> <dt>int `id_repeat`</dt> <dd>The measuring unit of <var>i_repeat</var>. One of {@link \ADurationSid} constants.</dd> </dl> </dd> <dt>string[] `a_staff_key`</dt> <dd>A list of staff member keys that provide sessions for this schedule.</dd> <dt>string[] `a_uid_staff_key`</dt> <dd>A list of staff member keys UID that provide sessions for this schedule.</dd> <dt>string `dl_end`</dt> <dd> The end date of the schedule in the location''s time zone. This will be empty or zero if the schedule is ongoing. </dd> <dt>string `dl_start`</dt> <dd>The start date of the schedule in location''s time zone.</dd> <dt>int `i_day`</dt> <dd> The day of the week, where the class schedule exists, starting with 1 for Monday and ending with 7 for Sunday. </dd> <dt>int `i_duration`</dt> <dd>The duration of the schedule sessions in minutes.</dd> <dt>bool `is_cancel`</dt> <dd>Defines whether the schedule canceled or not.</dd> <dt>string `k_location`</dt> <dd>The location key of the schedule.</dd> <dt>string `m_price`</dt> <dd>The price of a single session of the schedule.</dd> <dt>string `text_room`</dt> <dd>The room of the class period.</dd> <dt>string `text_time`</dt> <dd>The time of the session in the following format: `[start_time] - [end_time]` in the locale''s time zone.</dd> </dl> </dd> <dt>array|null `a_config`</dt> <dd> Class-specific business policies overriding the business defaults. Has the same structure as {@link \Wl\Business\Config\BusinessConfigApi::$a_business_policy}. `null` when the class uses the default business policy without overrides. <dl> <dt>string[] `a_family_relation`</dt> <dd> List of allowed relation types specific to a given business. Key is ID. One of {@link \RsFamilyRelationSid} constant. Value is SID. <i>Result of {@link \RsFamilyRelationSid::allByBusiness()} method.</i> </dd> <dt>int[] `a_family_relation_login_allow`</dt> <dd> List of allowed relation types specific to a given business. Each value constant from {@link \RsFamilyRelationSid} class. </dd> </dl> </dd> <dt>array[] `a_search_tag`</dt> <dd> Tags for quick search. <i>Result of {@link \Wl\Classes\ClassesInfo::$a_search_tag} property.</i> <dl> <dt>string `k_search_tag`</dt> <dd>Search tag key. <i>Primary key in {@link \RsSearchTagSql} table.</i></dd> <dt>string `text_title`</dt> <dd>Name of the tag.</dd> </dl> </dd> <dt>array `a_visits_required`</dt> <dd> Information about visits that should be reviewed prior to visiting this class/event. <i>Result of {@link \Wl\Schedule\ClassView\ClassViewApi::visitsRequiredInfo()} method.</i> <dl> <dt>int `i_count`</dt> <dd>Number of visits.</dd> <dt>bool `is_event`</dt> <dd>`true` if this is an event, `false` if this is a class.</dd> <dt>string `k_class`</dt> <dd>Key of the class or event.</dd> <dt>string `text_title`</dt> <dd>Name of the class or event.</dd> </dl> </dd> <dt>bool|null `has_own_image`</dt> <dd> This field will be `true` if the image used for the class is an image uploaded in the class setup. If an image isn''t uploaded in the class setup, but there''s at least one image in Setup->Locations image slider, this field will be `false`. This field will be `null` if the class image isn''t uploaded, and there are no images in location slider. In such cases, an empty image is used. </dd> <dt>string `html_description`</dt> <dd>The browser-safe description.</dd> <dt>string `html_special_instruction`</dt> <dd>Special instructions safe to be inserted to a browser.</dd> <dt>int `i_age_from`</dt> <dd>The minimum age restriction.</dd> <dt>int `i_age_to`</dt> <dd>The maximum age restriction.</dd> <dt>bool `is_age_public`</dt> <dd>Determines whether age restriction exist and should be taken into account prior to booking this class/event.</dd> <dt>bool `is_bookable`</dt> <dd>Determines whether clients can book the class or event online.</dd> <dt>bool `is_online_private`</dt> <dd>`true` - show classes only for clients who can book online. `false` - show classes for all clients.</dd> <dt>bool `is_promotion_client`</dt> <dd>Determines whether clients of the business can see a list of applicable Purchase Options.</dd> <dt>bool `is_promotion_only`</dt> <dd>Determines whether the item can be booked only using promotions.</dd> <dt>bool `is_promotion_staff`</dt> <dd>Determines whether staff members of the business can see a list of applicable Purchase Options.</dd> <dt>bool `is_single_buy`</dt> <dd> Determines whether the item can be paid with Drop In or not. If it can be paid with Drop In, then `m_price` shows the price for one visit. If this is `0`, it means the class is free. </dd> <dt>bool `is_virtual`</dt> <dd>Determines whether the item is virtual.</dd> <dt>bool `is_event`</dt> <dd> Determines whether the item is an event or class instance. If `true`, the item is an event instance. Otherwise, this will be `false`. </dd> <dt>string `k_class`</dt> <dd>The class key.</dd> <dt>string `k_promotion_default`</dt> <dd>Promotion key of the default promotion to use when paying for the class. `null` if no promotion is selected.</dd> <dt>string `m_price`</dt> <dd>Drop In price, if the class allows payment for one visit.</dd> <dt>bool `show_special_instructions`</dt> <dd> This will be `true` if special instructions can be public. Otherwise, this will be `false` if they should only be shown to the clients who booked the class. </dd> <dt>string `xml_description`</dt> <dd>The item description.</dd> <dt>string `xml_special_instruction`</dt> <dd>The item''s special instructions.</dd> <dt>string `url_image`</dt> <dd>The URL link to the item image.</dd> </dl>'
       tags:
         - ClassView-Element
+  '/Wl/Classes/Info/Info.json':
+    get:
+      summary: 'Gets information about class. Returns the class title, service logo, and whether the class is actually an event, based on the given business and class keys.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Key of the business in which the class resides.'
+          schema:
+            type: string
+        - name: k_class
+          in: query
+          description: 'Class identifier to get information for.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_logo:
+                        type: array
+                        description: 'Service logo information: <dl> <dt>bool `is_empty`</dt> <dd>Whether service image is empty.</dd> <dt>string `s_url`</dt> <dd>Url link to image.</dd> </dl>'
+                      is_event:
+                        type: boolean
+                        description: '<tt>true</tt> means event, <tt>false</tt> means class.'
+                      text_title:
+                        type: string
+                        description: 'Title of the class.'
+      tags:
+        - Info-Info
   '/Wl/Classes/Promotion/ClassPromotion.json':
     get:
       summary: 'Returns list of promotions that can be used to pay for the class / event. Used in the booking flow to show clients which of their existing passes or memberships cover the selected class. Also returns the default promotion to pre-select so the client does not have to choose manually when there is an obvious match.'
@@ -6986,7 +8231,7 @@ paths:
                     properties:
                       a_list:
                         type: array
-                        description: 'Discount codes list. Each element has next structure: <dl> <dt>string `k_discount_code`</dt> <dd>Discount code key. <i>Primary key in the {@link \Wl\Discount\Code\Sql} table.</i></dd> <dt>string `text_discount_code`</dt> <dd>Discount code title.</dd> </dl>'
+                        description: 'Discount codes list. Each element has the following structure: <dl> <dt>bool `is_active`</dt> <dd>`true` if the discount code is active, `false` otherwise.</dd> <dt>bool `is_remove`</dt> <dd>`true` if the discount code is removed, `false` otherwise.</dd> <dt>string `k_discount_code`</dt> <dd>Discount code key. <i>Primary key in the {@link \Wl\Discount\Code\Sql} table.</i></dd> <dt>string `text_discount_code`</dt> <dd>Discount code title.</dd> </dl>'
       tags:
         - Code-DiscountCode
   '/Wl/Reward/Action/Action.json':
@@ -7501,6 +8746,11 @@ paths:
           description: 'The category tab key. This will be `null` if not set yet. This will be ignored if {@link ClassListApi::$is_tab_all} is `true`.'
           schema:
             type: string
+        - name: k_timezone
+          in: query
+          description: 'Key of timezone. If not set then use default client timezone. <i>See {@link ProfileTimezone::createInBusiness()}.</i>'
+          schema:
+            type: ["null", string]
         - name: s_staff
           in: query
           description: 'The list of staff members to filter. A comma separated list of staff keys.'
@@ -7607,6 +8857,9 @@ paths:
                 k_class_tab:
                   type: string
                   description: 'The tab key. This will be ignored if {@link ClassList68Api::$is_tab_all} is `true`.'
+                k_timezone:
+                  type: ["null", string]
+                  description: 'Key of timezone. If not set then use default client timezone. <i>See {@link ProfileTimezone::createInBusiness()}.</i>'
                 s_staff:
                   type: string
                   description: 'The list of staff members to filter. A comma separated list of staff keys.'
@@ -10154,6 +11407,68 @@ paths:
                         description: 'An array listing client activities, where each activity is provided as an ID number. The order of items in this array is the order in which the elements should be displayed.'
       tags:
         - Activity-List
+  '/Wl/Profile/Timezone/ProfileTimezone.json':
+    get:
+      summary: 'Gets a list of timezones with currently selected user''s timezone and the business policy adjustment whether clients are allowed to adjust timezone. Includes the timezone abbreviation, UTC shift, and display order for each entry, and falls back to the business-configured guest timezone when no member is signed in.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Key of the business, in which user selected timezone.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_timezone:
+                        type: array
+                        description: 'List of timezones. Keys - timezone keys; <i>Primary keys in {@link \AGeoTimezoneSql} table.</i> Values - sub array with next keys: <dl> <dt>string `k_geo_timezone`</dt> <dd>Timezone key. <i>Primary key in {@link \AGeoTimezoneSql} table.</i></dd> <dt>int `i_shift`</dt> <dd>Shift time zone.</dd> <dt>string `s_file`</dt> <dd>File name.</dd> <dt>int `i_order`</dt> <dd>Order.</dd> <dt>string `text_abbr`</dt> <dd>Timezone abbreviation.</dd> <dt>string `s_title`</dt> <dd>Timezone title.</dd> <dt>string `k_timezone`</dt> <dd>Timezone key.</dd> </dl>'
+                      is_profile_timezone:
+                        type: boolean
+                        description: 'Whether clients are allowed to adjust timezone. `true` if allowed, `false` - otherwise.'
+                      k_timezone_select:
+                        type: string
+                        description: 'Key of the timezone which is currently selected.'
+      tags:
+        - Timezone-ProfileTimezone
+    put:
+      summary: 'Updates selected timezone for the site visitor in the given business. Validates the requested timezone against the business timezone deprecation policy, then saves it either to the member''s profile field or, for a guest, to the guest-scoped timezone selection.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Key of the business, in which user selected timezone.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                is_deprecate_restrict:
+                  type: boolean
+                  description: 'If a timezone deprecation validation is needed. `true` if required, `false` - otherwise.'
+                k_timezone:
+                  type: string
+                  description: 'Key of the timezone, which user selected to see site in.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Timezone-ProfileTimezone
   '/Wl/Purchase/Receipt/PurchaseReceipt.json':
     get:
       summary: 'Gets purchase information. Returns full receipt data for the specified purchase, including business details, customer information, itemized purchase items, payment methods, pricing summary, and print URLs.'
@@ -10919,9 +12234,6 @@ paths:
                   - type: object
                     description: 'Successful response.'
                     properties:
-                      a_book_error:
-                        type: array
-                        description: 'List of errors that occurred during booking. Keys are user keys. <i>Primary key from the {@link \PassportLoginSql} table.</i> Each value has the next structure: <dl> <dt>string `text_code`</dt> <dd>Error code identifying the type of error that occurred.</dd> <dt>string `text_message`</dt> <dd>Human-readable error message describing the booking failure.</dd> </dl>'
                       a_login_activity_book:
                         type: array
                         description: 'Primary keys of users'' activity that correspond to bookings made.'
@@ -11649,7 +12961,7 @@ paths:
       parameters:
         - name: id_business_franchise_location
           in: query
-          description: 'Determines which locations should be returned. One of the {@link BusinessFranchiseLocationSid} constants. If `null`, {@link BusinessFranchiseLocationSid::ALL} is used.'
+          description: 'Determines which locations should be returned. If `null`, {@link BusinessFranchiseLocationSid::ALL} is used.'
           schema:
             type: number
             format: int32
@@ -14520,9 +15832,38 @@ paths:
                     properties:
                       a_service:
                         type: array
-                        description: 'Appointment types list: <dl> <dt>bool `hide_application`</dt> <dd> Whether service will be hidden in the White Label mobile application. <tt>true</tt> means that service will not be displayed, <tt>false</tt> otherwise. </dd> <dt>string `k_service`</dt> <dd>Appointment type identifier, primary key.</dd> <dt>string `k_service_category`</dt> <dd>Appointment type category identifier, primary key.</dd> <dt>string `text_category`</dt> <dd>Appointment type category name.</dd> <dt>string `text_service`</dt> <dd>Appointment type name.</dd> </dl>'
+                        description: 'Appointment types list: <dl> <dt>bool `hide_application`</dt> <dd> Whether service will be hidden in the White Label mobile application. <tt>true</tt> means that service will not be displayed, <tt>false</tt> otherwise. </dd> <dt>bool `is_active`</dt> <dd>Whether appointment type is active.</dd> <dt>string `k_service`</dt> <dd>Appointment type identifier, primary key.</dd> <dt>string `k_service_category`</dt> <dd>Appointment type category identifier, primary key.</dd> <dt>string `text_category`</dt> <dd>Appointment type category name.</dd> <dt>string `text_service`</dt> <dd>Appointment type name.</dd> </dl>'
       tags:
         - ServiceList-List
+  '/Wl/Service/ServiceList/List75.json':
+    get:
+      summary: 'Returns list of appointment type in the business. Gets key of the business and returns all available appointment types with their names and categories.'
+      parameters:
+        - name: is_franchise
+          in: query
+          description: 'Whether to return franchisee-created appointment types (if business is franchisor). <tt>true</tt> to include franchisee-created appointment types.'
+          schema:
+            type: boolean
+        - name: k_business
+          in: query
+          description: 'Business key, primary key.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_service:
+                        type: array
+                        description: 'Appointment types list: <dl> <dt>bool `hide_application`</dt> <dd> Whether service will be hidden in the White Label mobile application. <tt>true</tt> means that service will not be displayed, <tt>false</tt> otherwise. </dd> <dt>bool `is_active`</dt> <dd>Whether appointment type is active.</dd> <dt>string `k_service`</dt> <dd>Appointment type identifier, primary key.</dd> <dt>string `k_service_category`</dt> <dd>Appointment type category identifier, primary key.</dd> <dt>string `text_category`</dt> <dd>Appointment type category name.</dd> <dt>string `text_service`</dt> <dd>Appointment type name.</dd> </dl>'
+      tags:
+        - ServiceList-List75
   '/Wl/Skin/Application/Skin.json':
     delete:
       summary: 'Reset customisation form of client application. Resets the Achieve app customization skin to default values for the given business. If billing is required for the reset, a confirmation flag must be provided, and a customization fee may be scheduled.'
@@ -15837,6 +17178,38 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - WorkTime-LocationWorkTime
+  '/Wl/Location/LocationRate/LocationRate.json':
+    get:
+      summary: 'Retrieves information about location rate. Returns the average rating and review count for the location, along with whether rating is enabled for the business type the location belongs to.'
+      parameters:
+        - name: k_location
+          in: query
+          description: 'ID of a location to show rate for.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      f_rate:
+                        type: number
+                        format: float
+                        description: 'Location rate.'
+                      i_review:
+                        type: number
+                        format: int32
+                        description: 'Review count.'
+                      is_rate:
+                        type: boolean
+                        description: 'Determines that the rate type exists in the current business type.'
+      tags:
+        - LocationRate-LocationRate
   '/Wl/Location/Facility/FacilitySid.json':
     get:
       summary: 'Returns the list of all items for the given Sid class. Populates enumeration dropdowns and lookup tables on the frontend. <i> Given any class that extends {@link CoreSid}, returns every defined constant with its numeric ID, string identifier, and human-readable title so the client does not need to hard-code enum values. </i>'
@@ -16331,6 +17704,31 @@ paths:
                         description: 'Key of the lead source.'
       tags:
         - Source-LeadSourceElement
+  '/Wl/DoorAccess/Brivo/Webhook.json':
+    post:
+      summary: 'Receives a Brivo door-access event. Authenticates the request by the per-business webhook secret, then decodes the Brivo `AUDIT` event payload and store the access fact and, when enabled, trigger an automatic check-in. Access-denied and unrecognized events are ignored.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business the webhook belongs to. Taken from the webhook URL.'
+          schema:
+            type: string
+        - name: s_token
+          in: query
+          description: 'Secret token from the webhook URL used to authenticate the Brivo request.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Brivo-Webhook
   '/Wl/Gym/Visit/VisitAdd.json':
     post:
       summary: 'Records a gym visit for the specified client at the given date and time. Validates access and input, creates a visit record for the client at the specified location, optionally applies a membership promotion if payment is required, and returns the catalog URL if no promotion was found and payment was requested.'
@@ -16597,7 +17995,7 @@ paths:
       parameters:
         - name: a_filter
           in: query
-          description: 'Filters. List includes enrollments to the tuition. And enrollments to the tuition include enrollment to the event. If any part of the enrollment to the tuition is valid, according to the given filter, full enrollment is included. For example. Client A is payer for two tuition enrollments. One is for client B and events E1, E2. Another for clients C and D. Both for E1. And Client W pays for one tuition enrollment - for client X. If we filter list by enrolled client D, for example. List will return two tuition enrollments. Both paid with Client A. Because we think that these enrollments are combined in single family and should both be returned. All filters are optional. And added as AND. If you send certain events and certain statues, both conditions should be met. <dl> <dt>string[] `a_event`</dt> <dd>Leave only enrollments with the given events enrolled.</dd> <dt>string[] `a_uid_any`</dt> <dd>Leave only enrollments with the given payers or enrolled clients.</dd> <dt>string[] `a_uid_enrolled`</dt> <dd>Leave only enrollments with the given enrolled clients.</dd> <dt>string[] `a_uid_payer`</dt> <dd>Leave only enrollments with the given payers.</dd> <dt>int[] `a_statuses`</dt> <dd>List of tuition statuses.</dd> </dl>'
+          description: 'Filters. List includes enrollments to the tuition. And enrollments to the tuition include enrollment to the event. If any part of the enrollment to the tuition is valid, according to the given filter, full enrollment is included. For example. Client A is payer for two tuition enrollments. One is for client B and events E1, E2. Another for clients C and D. Both for E1. And Client W pays for one tuition enrollment - for client X. If we filter list by enrolled client D, for example. List will return two tuition enrollments. Both paid with Client A. Because we think that these enrollments are combined in single family and should both be returned. All filters are optional. And added as AND. If you send certain events and certain statues, both conditions should be met. <dl> <dt>string[] `a_event`</dt> <dd>Leave only enrollments with the given events enrolled.</dd> <dt>int[] `a_statuses`</dt> <dd>List of tuition statuses.</dd> <dt>string[] `a_uid_any`</dt> <dd>Leave only enrollments with the given payers or enrolled clients.</dd> <dt>string[] `a_uid_enrolled`</dt> <dd>Leave only enrollments with the given enrolled clients.</dd> <dt>string[] `a_uid_payer`</dt> <dd>Leave only enrollments with the given payers.</dd> </dl>'
           schema:
             type: array
         - name: k_business
@@ -16622,7 +18020,7 @@ paths:
                     properties:
                       a_enrollment:
                         type: array
-                        description: 'List of tuition enrollments. <dl> <dt>array[] `a_events`</dt> <dd> Events for this enrollment. <dl> <dt>bool `is_cancelled`</dt> <dd>Whether this enrollment is cancelled or not.</dd> <dt>string `k_class`</dt> <dd>Event ID.</dd> <dt>string `m_event_discount`</dt> <dd>Login type and shopping cart discounts.</dd> <dt>string `m_event_subtotal`</dt> <dd>Price of the event before login type and shopping cart discounts.</dd> <dt>string `m_event_tax`</dt> <dd>Taxes amount.</dd> <dt>string `uid`</dt> <dd>Enrolled client.</dd> </dl> </dd> <dt>string `dl_next`</dt> <dd>Next payment date in local business timezone and MySQL format.</dd> <dt>string `dtl_enrollment`</dt> <dd>Date and time of the enrollment in local business timezone.</dd> <dt>int `i_payments_left`</dt> <dd>Number of payments left.</dd> <dt>int `id_installment_status`</dt> <dd>Installment plan status.</dd> <dt>string `k_purchase_item_tuition`</dt> <dd> Key of the tuition purchase item. This is enrollment key, which can be used to modify and cancel the enrollment. </dd> <dt>string `m_payment`</dt> <dd>One payment amount.</dd> <dt>string `m_rest`</dt> <dd>Rest amount to be paid.</dd> <dt>string `m_total`</dt> <dd>Total initial amount to be paid.</dd> <dt>string `uid_payer`</dt> <dd>Payer for this enrollment. This user can be enrolled or not, but he pays for the entire enrollment.</dd> </dl>'
+                        description: 'List of tuition enrollments. <dl> <dt>array[] `a_events`</dt> <dd> Events for this enrollment. <dl> <dt>bool `is_cancelled`</dt> <dd>Whether this enrollment is cancelled or not.</dd> <dt>string `k_class`</dt> <dd>Event ID.</dd> <dt>string `m_event_discount`</dt> <dd>Login type and shopping cart discounts.</dd> <dt>string `m_event_subtotal`</dt> <dd>Price of the event before login type and shopping cart discounts.</dd> <dt>string `m_event_tax`</dt> <dd>Taxes amount.</dd> <dt>string `uid`</dt> <dd>Enrolled client.</dd> </dl> </dd> <dt>string `dl_next`</dt> <dd>Next payment date in local business timezone and MySQL format.</dd> <dt>string `dtl_enrollment`</dt> <dd>Date and time of the enrollment in local business timezone.</dd> <dt>int `i_payments_left`</dt> <dd>Number of payments left.</dd> <dt>int `i_payments_total`</dt> <dd>Number of payments total at the moment of enrollment.</dd> <dt>int `id_installment_status`</dt> <dd>Installment plan status.</dd> <dt>string `k_purchase_item_tuition`</dt> <dd> Key of the tuition purchase item. This is enrollment key, which can be used to modify and cancel the enrollment. </dd> <dt>string `m_payment`</dt> <dd>One payment amount.</dd> <dt>string `m_rest`</dt> <dd>Rest amount to be paid.</dd> <dt>string `m_total`</dt> <dd>Total initial amount to be paid.</dd> <dt>string `uid_payer`</dt> <dd>Payer for this enrollment. This user can be enrolled or not, but he pays for the entire enrollment.</dd> </dl>'
       tags:
         - Enrollment-TuitionEnrollmentList
   '/Wl/Tuition/Enrollment/TuitionEnrollmentCancel.json':
@@ -16644,6 +18042,9 @@ paths:
                 is_pass_deactivate:
                   type: boolean
                   description: 'Whether even pass should be deactivated or not.'
+                k_business:
+                  type: string
+                  description: 'Key of the business.'
                 k_purchase_item_tuition:
                   type: string
                   description: 'Key of the tuition purchase item. This is enrollment key, which can be got from {@link TuitionEnrollmentListApi}.'
@@ -16796,7 +18197,7 @@ paths:
                       id_report_status:
                         type: number
                         format: int32
-                        description: 'The report status. One of {@link \Wl\Report\Generator\ReportGeneratorStatusSid} constants.'
+                        description: 'The report status.'
                       is_more:
                         type: boolean
                         description: 'Determines whether to show more rows in the report. If `true`, there are more report rows to get. Otherwise, `false` to indicate that all rows in the report have already been retrieved.'
@@ -18274,6 +19675,137 @@ paths:
                         description: '<tt>true</tt> - If the business has at least one virtual service, <tt>false</tt> - otherwise.'
       tags:
         - StaffApp-ScheduleListByToken
+  '/Wl/Profile/Attendance/Schedule/PaymentMultiple.json':
+    get:
+      summary: 'Loads unpaid appointments data for the multiple payment panel. Loads unpaid appointments together with their addons, applicable purchase options, and purchase options already owned by the client. Appointments are loaded either for a client and their relatives on a specific day, or for an explicit list of appointments specified in {@link PaymentMultipleApi::$a_appointment}.'
+      parameters:
+        - name: a_appointment
+          in: query
+          description: 'List of appointment keys for which to load unpaid data. When specified, appointments are looked up directly by these keys, instead of by all unpaid appointments booked for {@link PaymentMultipleApi::$uid} on the day specified in {@link PaymentMultipleApi::$dtl_date}.'
+          schema:
+            type: array
+        - name: dtl_date
+          in: query
+          description: 'Local date and time for which visit is booked in MySQL format.'
+          schema:
+            type: string
+        - name: is_simple
+          in: query
+          description: 'When set to `true` it''s mean that need load full information about unpaid visits: * List of available/existing POs. * List of unpaid addons. When set to `false` loaded only general information about visits on passed day.'
+          schema:
+            type: boolean
+        - name: k_business
+          in: query
+          description: 'The business key.'
+          schema:
+            type: string
+        - name: k_location
+          in: query
+          description: 'The location key.'
+          schema:
+            type: string
+        - name: k_visit
+          in: query
+          description: 'Last booked visit key.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'The user''s key.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_client:
+                        type: array
+                        description: 'Clients'' data. Clients with unpaid appointments data, each element has next structure: <dl> <dt>array|null `a_relation`</dt> <dd> Information about relation. `null` if there is no relation, in particular when appointments are loaded by {@link \Wl\Profile\Attendance\Schedule\PaymentMultipleApi::$a_appointment}. <dl> <dt>int `id_family_relation`</dt> <dd>Family relation ID. One of {@link \RsFamilyRelationSid} constants.</dd> <dt>string `uid_payer`</dt> <dd>Payer UID.</dd> </dl> </dd> <dt>array[] `a_service`</dt> <dd> Unpaid appointments data. <i>Result returned {@link \Wl\Profile\Attendance\Schedule\PaymentMultipleApi::_getServices()} method.</i> <dl> <dt>array `a_addon`</dt> <dd> List of add-ons: <dl> <dt>int `i_count`</dt> <dd>Number of the product.</dd> <dt>bool `is_paid`</dt> <dd>`true` if the product is paid, otherwise `false`.</dd> <dt>string `html_price`</dt> <dd>Formatted product price</dd> <dt>string `m_price`</dt> <dd>Product price.</dd> <dt>string `text_title`</dt> <dd>Product title.</dd> </dl> </dd> <dt>array `a_promotion_applicable`</dt> <dd> Promotions that can be used to pay for appointment: <dl> <dt>string `m_price`</dt> <dd>Promotion price.</dd> <dt>int `i_order`</dt> <dd>Sort order.</dd> <dt>string `text_key`</dt> <dd>Promotion key.</dd> <dt>string `text_price`</dt> <dd>Promotion price.</dd> <dt>string `text_title`</dt> <dd>Promotion title.</dd> </dl> </dd> <dt>array `a_promotion_owned`</dt> <dd> Promotions owned by the client, which can be used to pay for appointment: <dl> <dt>int `i_limit`</dt> <dd>Limit of visits.</dd> <dt>int `i_order`</dt> <dd>Sort order.</dd> <dt>int `i_remain`</dt> <dd>The number of the remaining visits.</dd> <dt>string `text_key`</dt> <dd>Promotion key.</dd> <dt>string `text_price`</dt> <dd>Promotion price.</dd> <dt>string `text_title`</dt> <dd>Promotion title.</dd> <dt>string `text_title_remain`</dt> <dd>Promotion title with number of remaining sessions.</dd> </dl> </dd> <dt>bool `has_unpaid_addon`</dt> <dd>`true` if appointment has unpaid add-ons, otherwise `false`.</dd> <dt>bool `is_pay_need`</dt> <dd>`true` if the appointment is not free and not paid, otherwise `false`.</dd> <dt>bool `is_required`</dt> <dd>`true` if the payment is required, otherwise `false`.</dd> <dt>string `k_appointment`</dt> <dd>Appointment key. <i>Primary key in {@link \RsAppointmentSql} table.</i></dd> <dt>string `text_date`</dt> <dd>Appointment date.</dd> <dt>string `text_service`</dt> <dd>Appointment title.</dd> <dt>string|null `text_staff`</dt> <dd>Name of the staff leading the appointment. `null` for asset.</dd> <dt>string `text_time`</dt> <dd>Appointment time.</dd> <dt>string `text_timezone_abbr`</dt> <dd>Appointment timezone abbreviation.</dd> <dt>string `uid_staff`</dt> <dd>Appointment user key. <i>Primary key in {@link \PassportLoginSql} table.</i></dd> </dl> </dd> <dt>string `uid`</dt> <dd>The user for whom the appointment is booked. <i>Primary key in {@link \PassportLoginSql} table.</i></dd> </dl>'
+                      a_staff_list:
+                        type: array
+                        description: 'List of available staff members for tips. <dl> <dt>string `k_staff`</dt> <dd>Staff key. <i>Primary keys in {@link \RsStaffSql} table.</i></dd> <dt>string `text_name`</dt> <dd>Name of the staff.</dd> </dl> <dl> <dt>string `text_name`</dt> <dd>Staff full name.</dd> <dt>string `uid_staff`</dt> <dd>Staff user key. <i>Primary key in {@link \PassportLoginSql} table.</i></dd> </dl>'
+                      i_unpaid_number:
+                        type: number
+                        format: int32
+                        description: 'Total number of unpaid appointments.'
+                      is_tip:
+                        type: boolean
+                        description: 'Whether tips are accepted.'
+      tags:
+        - Schedule-PaymentMultiple
+    post:
+      summary: 'Applies existing purchase options for appointments pay and generates a link for payment in the store. Applies purchase options and session passes already owned by the client to the selected visits. Redirects to the store cart or checkout page so the client can complete payment for any remaining unpaid addons or newly purchased purchase options.'
+      parameters:
+        - name: a_visit_pay
+          in: query
+          description: 'Visits payment data. Visits payment data to apply: <dl> <dt>string[] `a_shop_product_option`</dt> <dd>Selected for payment products options keys. <i>Primary keys in {@link \RsShopProductOptionSql} table.</i></dd> <dt>string `k_visit`</dt> <dd>The visit key. <i>Primary key in {@link \RsVisitSql} table.</i></dd> <dt>string `text_key`</dt> <dd>Selected pay option to apply. The key has structure {@link \Wl\Visit\Pay\PayChangeApi::$text_key}.</dd> <dt>string `uid`</dt> <dd>The user key. <i>Primary key in {@link \PassportLoginSql} table.</i></dd> </dl>'
+          schema:
+            type: array
+        - name: is_checkout
+          in: query
+          description: 'Determines for which store page the redirection url should be generated. `true` if to the checkout page. `false` if to the cart page.'
+          schema:
+            type: boolean
+        - name: k_business
+          in: query
+          description: 'The business key.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'The user''s key.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      url_redirect:
+                        type: string
+                        description: 'Url for redirect after applying existing purchase options.'
+      tags:
+        - Schedule-PaymentMultiple
+  '/Wl/Profile/Contract/ContractAll/ContractAll.json':
+    get:
+      summary: 'Gets list of contracts. Returns every contract the user has subscribed to or is required to agree to for the given business, including the agreement date, signature link, and contract text.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business to get information for.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'User to get information for.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_contract:
+                        type: array
+                        description: 'List of contacts. Every element has next keys: <dl> <dt>string `dt_agree_local`</dt> <dd>Agreement date in business timezone.</dd> <dt>string `dt_agree_utc`</dt> <dd>Agreement date in UTC.</dd> <dt>string `html_contract`</dt> <dd>Contract text.</dd> <dt>string `html_title`</dt> <dd>Purchase item title.</dd> <dt>string `ip_agree`</dt> <dd>IP address from which agreement was done.</dd> <dt>string `k_purchase_item`</dt> <dd>Purchase item key. <i>Primary key in {@link \RsPurchaseItemSql} table.</i></dd> <dt>string `text_title`</dt> <dd>Purchase item title.</dd> <dt>string `url_signature`</dt> <dd>URL to agreement signature.</dd> </dl>'
+      tags:
+        - ContractAll-ContractAll
   '/Wl/Profile/Form/Response/ResponseList.json':
     get:
       summary: 'Returns the lists of completed and pending quiz responses for the specified user and business. Returns the client''s completed, draft, and pending form responses for the business, sorted newest first. Also provides permission flags that control which actions the current user may perform on each response.'
@@ -23235,7 +24767,7 @@ paths:
       parameters:
         - name: id_business_franchise_location
           in: query
-          description: 'Determines which locations should be returned. One of the {@link BusinessFranchiseLocationSid} constants. If `null`, {@link BusinessFranchiseLocationSid::ALL} is used.'
+          description: 'Determines which locations should be returned. If `null`, {@link BusinessFranchiseLocationSid::ALL} is used.'
           schema:
             type: number
             format: int32
@@ -23281,6 +24813,30 @@ paths:
                         description: 'The state list. Each element has the next structure: <dl> <dt>string `k_country`</dt> <dd>Country key. <i>Primary key in the {@link \AGeoSql} table.</i></dd> <dt>string `k_state`</dt> <dd>State key. <i>Primary key in the {@link \AGeoSql} table.</i></dd> <dt>string `text_title`</dt> <dd>State title.</dd> </dl>'
       tags:
         - Location-BusinessFranchiseLocation
+  '/Wl/Business/Config/Option/BusinessConfigOption.json':
+    get:
+      summary: 'Returns config option values for specified business. Loads every registered business configuration option for the given business and returns its current value, keyed by the config option class CID.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Key of business.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_option:
+                        type: object
+                        description: 'List of config option values. Key - config option class CID. Values - config option value.'
+      tags:
+        - Option-BusinessConfigOption
   '/Wl/Business/AuthorizeSupport/Response/Response.json':
     get:
       summary: 'Grants or denies access to business location for staff member. Used to respond to a support access request: a business owner accepts or rejects temporary entry for a WellnessLiving support agent. Requires the Manage Business permission. Granting access triggers an email notification and expires after 24 hours; the result is broadcast in real time to the requesting staff member.'
@@ -24094,12 +25650,15 @@ paths:
                       is_brivo_active:
                         type: boolean
                         description: 'Whether Facility Access enabled for group.'
+                      is_brivo_checkin_active:
+                        type: boolean
+                        description: 'Whether automatic check-in on Brivo access granted is enabled for the group. When enabled, a successful Brivo door access reported for a client of this group triggers an automatic check-in attempt in WellnessLiving. When disabled, Brivo access events for these clients are ignored.'
                       is_brivo_invitation_active:
                         type: boolean
                         description: 'Whether Brivo invitation feature enabled for the group.'
                       is_icon:
                         type: boolean
-                        description: '<tt>true</tt> to enable group icon. <tt>false</tt> to disable.'
+                        description: '`true` to enable group icon. `false` to disable.'
                       is_update:
                         type: boolean
                         description: 'Whether auto-update enabled for group.'
@@ -24180,12 +25739,15 @@ paths:
                 is_brivo_active:
                   type: boolean
                   description: 'Whether Facility Access enabled for group.'
+                is_brivo_checkin_active:
+                  type: boolean
+                  description: 'Whether automatic check-in on Brivo access granted is enabled for the group. When enabled, a successful Brivo door access reported for a client of this group triggers an automatic check-in attempt in WellnessLiving. When disabled, Brivo access events for these clients are ignored.'
                 is_brivo_invitation_active:
                   type: boolean
                   description: 'Whether Brivo invitation feature enabled for the group.'
                 is_icon:
                   type: boolean
-                  description: '<tt>true</tt> to enable group icon. <tt>false</tt> to disable.'
+                  description: '`true` to enable group icon. `false` to disable.'
                 is_update:
                   type: boolean
                   description: 'Whether auto-update enabled for group.'
@@ -24281,7 +25843,7 @@ paths:
                   description: 'Type of share option. One of {@link ShareSid} constants.'
                 is_icon:
                   type: boolean
-                  description: '<tt>true</tt> to enable group icon. <tt>false</tt> to disable.'
+                  description: '`true` to enable group icon. `false` to disable.'
                 json_criteria:
                   type: string
                   description: 'Entity in array format. Alternative of {@link SearchTemplatePanelApiTrait::$a_criteria} to transfer data via HTTP as one variable. <i>For more information about the format, see {@link SearchCriteriaList::createArray()} method.</i>'
@@ -24967,7 +26529,7 @@ paths:
       parameters:
         - name: id_locale
           in: query
-          description: 'Locale ID. One of {@link LocaleSid} constants. `null` - if it is not set.'
+          description: 'Locale ID. `null` - if it is not set.'
           schema:
             type: [number, "null"]
         - name: is_new
@@ -25006,7 +26568,7 @@ paths:
                       id_pay_processor:
                         type: number
                         format: int32
-                        description: 'Transaction processor id. One of {@link PayProcessorSid} constants.'
+                        description: 'Transaction processor ID.'
       tags:
         - Add-Add
     post:
@@ -25155,13 +26717,13 @@ paths:
       parameters:
         - name: id_pay_method
           in: query
-          description: 'Payment method. One of {@link \RsPayMethodSid} constants.'
+          description: 'Payment method.'
           schema:
             type: number
             format: int32
         - name: id_pay_mode
           in: query
-          description: 'Payment mode. One of {@link \RsPayModeSid} constants.'
+          description: 'Payment mode.'
           schema:
             type: number
             format: int32
@@ -26191,20 +27753,6 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Count-InventoryCount
-  '/Wl/DoorAccess/Brivo/Webhook.json':
-    post:
-      summary: ''
-      responses:
-        200:
-          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - type: object
-                    description: 'Successful response. Full description is not available yet.'
-      tags:
-        - Brivo-Webhook
 tags:
   -
     name: Account-Account
@@ -26312,6 +27860,9 @@ tags:
     name: Application-Skin
     description: 'Retrieves customized skin settings for the client view.'
   -
+    name: Application-SpaApplication
+    description: 'Information of application.'
+  -
     name: Apply-Apply
     description: 'Endpoint designed to pay for a visit with guest pass options attached to specific promotion. If visit is paid already then old payment option will be revoked without penalties.'
   -
@@ -26397,7 +27948,7 @@ tags:
     description: 'Endpoint for validating and overriding the score for {@link CaptchaVersionSid::V3} captcha.'
   -
     name: Captcha-GoogleCaptcha
-    description: 'Stores the user token CAPTCHA. Site keys for initialize Google reCAPTCHA: * Version 2 (invisible): * Demo/Staging - {@link GoogleCaptchaKeys::CAPTCHA_V2_SITE_KEY_SANDBOX} * Production - {@link GoogleCaptchaKeys::CAPTCHA_V2_SITE_KEY_PRODUCTION} * Version 3: * Demo/Staging - {@link GoogleCaptchaKeys::CAPTCHA_V3_SITE_KEY_SANDBOX} * Production - {@link GoogleCaptchaKeys::CAPTCHA_V3_SITE_KEY_PRODUCTION}'
+    description: 'Stores the user token CAPTCHA.'
   -
     name: Card-List
     description: 'Gets information about any payment cards belonging to a user.'
@@ -26516,6 +28067,9 @@ tags:
     name: Contract-Contract
     description: 'Gets information about a session pass or membership with a contract. The POST method will complete a sale of a Purchase Option requiring a contract. The method that WellnessLiving uses to encode a signature into a string isn''t currently available in the SDK.'
   -
+    name: ContractAll-ContractAll
+    description: 'Entry point to get list of subscribed or required contracts of user.'
+  -
     name: Convert-Convert
     description: 'Receives convertable Purchase Option data and promotion conversions. The DELETE method will remove the conversion and reset the date. The GET method will return a list of promotions available at the business. The POST method can be used to change what the Purchase Option should convert to and when to convert it.'
   -
@@ -26543,6 +28097,18 @@ tags:
     name: CustomTemplate-Pattern
     description: 'Gets and saves custom template pattern data.'
   -
+    name: CyberSource-CsCaptureContext
+    description: 'Generate a capture context data and key ID to encrypt the card number in the follow-on Tokenize Card request.'
+  -
+    name: CyberSource-CsPaEnrollment
+    description: 'Allows to Check Payer Authentication Enrollment request.'
+  -
+    name: CyberSource-CsPaSetup
+    description: 'Allows to perform Payer Authentication Setup request.'
+  -
+    name: CyberSource-CsPaValidate
+    description: 'This call retrieves and validates the authentication results from issuer and allows the merchant to proceed with processing the payment'
+  -
     name: DebugToken-DebugTokenService
     description: 'Allows checking the validity of a debug token.'
   -
@@ -26557,6 +28123,9 @@ tags:
   -
     name: DragonFly-Access
     description: 'Checks if a user can access a physical location.'
+  -
+    name: Drive-ProductImageUpload
+    description: 'Overwrites core functionality of the {@link ImageUploadApi} based on the product specification.'
   -
     name: DynamicId-DynamicId
     description: 'API to get member dynamic ID information.'
@@ -26741,6 +28310,9 @@ tags:
     name: Lead-Lead
     description: 'Gets information from the Lead Capture widget and saves a new user’s information. A user can be added to a second business by adding them first as a lead. If your business uses Enterprise Cloud, there may be a restriction where clients can only be members in one enterprise location (travellers in all other enterprise locations). This endpoint using captcha check. To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action. For this API an action is {@link LeadCaptcha::CID}.'
   -
+    name: Lead-LeadCheck
+    description: 'Checks if user with specified email already belongs to specified business.'
+  -
     name: Level-Level
     description: 'Retrieves, changes, or deletes a video level.'
   -
@@ -26761,6 +28333,9 @@ tags:
   -
     name: Location-Location
     description: 'Creates a new location in the business or edits a specified location. Access to this endpoint is logged with specified permissions. It can also be accessed by guests during the registration process for new businesses. See {@link \Wl\Business\BusinessApi::sessionKey()}. Field <tt>k_business</tt> is required. Other fields are optionally if the location should be edited. This means if a field is not specified it is not be changed. If <tt>k_location</tt> is not specified that new location will be created. In this case <tt>k_city</tt>, <tt>text_address</tt> and <tt>text_title</tt> are required.'
+  -
+    name: LocationRate-LocationRate
+    description: 'Retrieves information about location rate.'
   -
     name: Log-Verify
     description: 'Performs ajax requests for verify client''s progress log.'
@@ -26815,6 +28390,21 @@ tags:
   -
     name: Modify-Modify
     description: 'Modifies the master model.'
+  -
+    name: Nuvei-NuveiOpenOrder
+    description: 'Authenticates `Nuvei` merchant credentials and sets up an order in the `Nuvei` system.'
+  -
+    name: Nuvei-NuveiTransactionCancel
+    description: 'Cancels `Nuvei` transaction.'
+  -
+    name: Nuvei-NuveiTransactionOnAuthSuccess
+    description: 'Updates `Nuvei` transaction with the gateway transaction ID.'
+  -
+    name: Nuvei-NuveiUpdateOrder
+    description: 'Allow modifying the amount of a previously opened order {@link NuveiOpenOrderApi}.'
+  -
+    name: Option-BusinessConfigOption
+    description: 'Retrieves business config options.'
   -
     name: Otp-PhoneOtp
     description: 'Entry point to verify access to the phone number via sending and checking otp code. This endpoint is available only for user with a special privilege. If you want to use this endpoint, contact with WellnessLiving support first.'
@@ -27059,6 +28649,9 @@ tags:
     name: Schedule-NextAvailableDay
     description: 'Returns next day with available.'
   -
+    name: Schedule-PaymentMultiple
+    description: 'Manages multiple payments for unpaid appointments on the same calendar date, or for a specific list of appointments.'
+  -
     name: Schedule-ScheduleAvailableDate
     description: 'Retrieves the nearest class session available for booking.'
   -
@@ -27107,6 +28700,12 @@ tags:
     name: ServiceList-List
     description: 'List of appointment types of the business.'
   -
+    name: ServiceList-List75
+    description: 'Versioned list of appointment types with support for loading all services.'
+  -
+    name: Session-Environment
+    description: 'Returns information about current session environment (business ID, user information, etc.).'
+  -
     name: Setting-Setting
     description: 'Retrieves the user’s notification settings. Alternatively, this endpoint can be used to change a user’s notification settings.'
   -
@@ -27121,6 +28720,9 @@ tags:
   -
     name: SignOut-SignOut
     description: 'Signs user out.'
+  -
+    name: Skin-Skin
+    description: 'Retrieves skin settings for customisation of client application.'
   -
     name: Skin-SkinForeign
     description: 'Allows to create, update and remove foreign widgets. Requires a special privilege for the application. Contact WellnessLiving support to get it.'
@@ -27164,6 +28766,18 @@ tags:
     name: Store-StoreGroup
     description: 'Performs preliminary checks and distribution of selected purchase options between the client who is currently logged in and his relatives.'
   -
+    name: StripeCom-PaymentIntentUpdate
+    description: 'Updates created Payment Intent. WARNING: Can be used for Stripe Payment Element only. Currently this API is used to update Payment Intent, that is created to show Stripe Payment Element form, in case of cart changes. To use for other cases, please consider extending code of this API.'
+  -
+    name: StripeCom-StripeComKey
+    description: 'Get Stripe public key for a merchant.'
+  -
+    name: StripeCom-StripeComPayInit
+    description: 'Creates not captured Payment Intent, returns its status and secret key to use on frontend.'
+  -
+    name: StripeCom-StripeComPaymentIntentCancel
+    description: 'Cancels existing Payment Intent.'
+  -
     name: Subscribe-Subscribe
     description: 'Manages a user`s subscription in a business.'
   -
@@ -27191,6 +28805,9 @@ tags:
     name: Term-Term
     description: 'Displays information about online waiver.'
   -
+    name: Timezone-ProfileTimezone
+    description: 'Allows to get and update timezone in user''s profile.'
+  -
     name: Token-TokenPin
     description: 'Creates a one-time PIN code. This code must be used for generating a security token.'
   -
@@ -27217,6 +28834,9 @@ tags:
   -
     name: Visit-VisitStatus
     description: 'Views or changes the visit status.'
+  -
+    name: Visit-VisitTotalCount
+    description: 'Returns the total number of visits for a user at a business. Total is the sum of attended visits in {@link \RsVisitSql} and historical visits in {@link VisitHistoricalCountSql}.'
   -
     name: Waiver-Waiver
     description: 'Information about business waiver.'

@@ -337,6 +337,16 @@ class ClassList68Model extends WlModelAbstract
   public $k_class_tab = '0';
 
   /**
+   * Key of timezone.
+   *
+   * If not set then use default client timezone.
+   *
+   * @post post
+   * @var null|string
+   */
+  public $k_timezone = null;
+
+  /**
    * The list of staff members to filter.
    * A comma separated list of staff keys.
    *
