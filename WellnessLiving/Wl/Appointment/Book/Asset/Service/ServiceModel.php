@@ -30,7 +30,7 @@ class ServiceModel extends WlModelAbstract
    * If it's equal to the key of your current appointment booking, you can assume the asset is available.
    *
    * @get result
-   * @var array<string, array<int, string>>
+   * @var array<string, array<int, string|true>>
    */
   public $a_resource_busy;
 

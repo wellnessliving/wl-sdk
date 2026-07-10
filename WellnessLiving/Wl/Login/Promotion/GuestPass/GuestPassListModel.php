@@ -183,6 +183,14 @@ class GuestPassListModel extends WlModelAbstract
   public $a_list = [];
 
   /**
+   * Local calendar date for which guest pass availability should be calculated.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $dl_date = null;
+
+  /**
    * Business key.
    *
    * @get get

@@ -68,7 +68,7 @@ class CartModel extends WlModelAbstract
    * Keys are participant keys. 
    * Each value has the next structure:
    *         <dl>
-   *           <dt>string `m_amount_fee`</dt>
+   *           <dt>string `m_amount`</dt>
    *           <dd>Registration fee amount for the tuition participant.</dd>
    *         </dl>
    *       </dd>

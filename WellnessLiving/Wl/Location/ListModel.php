@@ -87,7 +87,7 @@ class ListModel extends WlModelAbstract
    *   <dd>The location logo's URL. This will only be set if the location has a logo and contains full uploaded image.</dd>
    * </dl>
    * @get result
-   * @var array[]
+   * @var array<string, array>
    */
   public $a_location;
 

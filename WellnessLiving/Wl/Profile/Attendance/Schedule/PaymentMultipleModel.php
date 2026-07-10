@@ -207,10 +207,12 @@ class PaymentMultipleModel extends WlModelAbstract
   /**
    * Local date and time for which visit is booked in MySQL format.
    *
+   * Can be `null` in case when {@link PaymentMultipleModel::$a_appointment} passed.
+   *
    * @get get
-   * @var string
+   * @var string|null
    */
-  public $dtl_date = '';
+  public $dtl_date = null;
 
   /**
    * Total number of unpaid appointments.
@@ -261,10 +263,12 @@ class PaymentMultipleModel extends WlModelAbstract
   /**
    * The location key.
    *
+   * Can be `null` in case when {@link PaymentMultipleModel::$a_appointment} passed.
+   *
    * @get get
-   * @var string
+   * @var string|null
    */
-  public $k_location = '';
+  public $k_location = null;
 
   /**
    * Last booked visit key.

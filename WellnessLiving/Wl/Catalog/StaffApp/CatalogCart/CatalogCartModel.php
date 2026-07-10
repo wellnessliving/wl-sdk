@@ -88,14 +88,26 @@ class CatalogCartModel extends WlModelAbstract
    *   Keys are participant keys. 
    *   Each value has the next structure:
    *         <dl>
-   *           <dt>array `a_tax_fee`</dt>
+   *           <dt>array `a_discount`</dt>
+   *           <dd>
+   *             Manual discount applied to the registration fee:
+   *             <dl>
+   *               <dt>string `m_discount`</dt>
+   *               <dd>Discount amount.</dd>
+   * 
+   *               <dt>string `text_discount`</dt>
+   *               <dd>Discount title.</dd>
+   *             </dl>
+   *           </dd>
+   * 
+   *           <dt>array `a_tax`</dt>
    *           <dd>
    *             List of taxes to be applied to the registration fee:
    *      Keys are internal system tax keys. 
    *      Values are amount of taxes to be applied to the registration fee.
    *           </dd>
    * 
-   *           <dt>string `m_amount_fee`</dt>
+   *           <dt>string `m_amount`</dt>
    *           <dd>Registration fee amount for the tuition participant.</dd>
    *         </dl>
    *       </dd>

@@ -132,8 +132,10 @@ class LoginModel extends WlModelAbstract
   /**
    * The user's staff key for the specified business.
    *
+   * `null` if staff key not available for this application.
+   *
    * @get result
-   * @var string
+   * @var string|null
    */
   public $k_staff;
 

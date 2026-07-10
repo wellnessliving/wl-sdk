@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 245.
+ * Last Used ID: 246.
  */
 abstract class WlPrivilegeSid
 {
@@ -229,6 +229,12 @@ abstract class WlPrivilegeSid
    * @deprecated Use instead {@link WlPrivilegeSid::SCHEDULE_FUTURE_CLASS} and {@link WlPrivilegeSid::SCHEDULE_PAST_CLASS}.
    */
   const CLASS_PERIOD = 5;
+
+  /**
+   * Allows a staff member to see other staff members' class sessions on the schedule in read-only mode
+   *  while the Classes scope is set to only their own schedules.
+   */
+  const CLASS_SCHEDULE_VIEW = 246;
 
   /**
    * Add and view client's contact logs.

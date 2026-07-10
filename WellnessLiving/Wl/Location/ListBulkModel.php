@@ -52,7 +52,7 @@ class ListBulkModel extends WlModelAbstract
    *   <dd>The location logo.</dd>
    * </dl>
    * @get result
-   * @var array
+   * @var array<string, array>
    */
   public $a_location;
 
@@ -247,7 +247,7 @@ class ListBulkModel extends WlModelAbstract
    *   <dd>The YouTube URL of the location.</dd>
    * </dl>
    * @get result
-   * @var array[]
+   * @var array<string, array>
    */
   public $a_location_full = [];
 

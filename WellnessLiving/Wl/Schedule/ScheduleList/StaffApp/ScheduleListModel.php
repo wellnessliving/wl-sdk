@@ -208,6 +208,13 @@ class ScheduleListModel extends WlModelAbstract
    * For classes always <tt>null</tt>.
    *   </dd>
    * 
+   *   <dt>bool `is_class_view`</dt>
+   *   <dd>
+   *     `true` if this class session is visible only through the "View other staff schedules"
+   * permission and must be shown read-only (no attendance roster, no booked client identities,
+   * and no edit, cancel, reschedule, or booking actions); `false` otherwise.
+   *   </dd>
+   * 
    *   <dt>bool `is_pay`</dt>
    *   <dd>
    *     For appointments: <tt>true</tt> if appointment is paid; <tt>false</tt> otherwise.
