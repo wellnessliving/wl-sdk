@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260710140052
+  version: 1.1.20260711123719
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-07-10 14:00:52
+    Last updated at: 2026-07-11 12:37:19
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -27181,6 +27181,11 @@ paths:
           description: 'Mail pattern key.'
           schema:
             type: string
+        - name: k_service
+          in: query
+          description: 'Key of the service being booked. Used to prefer a service-specific custom notification template, when one is configured, over the business-level template. `null` when no single service is in context (e.g. several services are selected at once), in which case the business-level template is returned.'
+          schema:
+            type: [string, "null"]
         - name: sid_mail_form
           in: query
           description: 'SID of the mail form. String representation of one from {@link \RsMailFormSid} class constants.'
@@ -27876,6 +27881,35 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Customization-ReportQueryCustomizationForm
+  '/Wl/Tuition/Enrollment/TuitionClientsSummary.json':
+    get:
+      summary: 'Returns summary of clients and events enrolled for the given tuitions. For each requested tuition, returns the number of unique clients enrolled in at least one not cancelled event, the number of unique events with at least one not cancelled enrollment, and the total number of not cancelled event enrollments.'
+      parameters:
+        - name: a_tuition_id
+          in: query
+          description: 'Keys of the tuitions in the tuition microservice to get summary for.'
+          schema:
+            type: array
+        - name: k_business
+          in: query
+          description: 'Business key.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_summary:
+                        type: array
+                        description: 'Summary of clients and events enrolled, per tuition. Keys - tuition IDs from {@link $a_tuition_id}. Values - summary information: <dl> <dt>int `i_clients_enrolled`</dt> <dd>Number of unique clients having at least one not cancelled enrolled event.</dd> <dt>int `i_enrolled_total`</dt> <dd>Total number of not cancelled event enrollments.</dd> <dt>int `i_events_unique`</dt> <dd>Number of unique events having at least one not cancelled enrollment.</dd> </dl>'
+      tags:
+        - Enrollment-TuitionClientsSummary
 tags:
   -
     name: Account-Account
@@ -28294,6 +28328,9 @@ tags:
   -
     name: Email-EmailExist
     description: 'Checks if the email address exists in the system.'
+  -
+    name: Enrollment-TuitionClientsSummary
+    description: 'Model to get summary of clients and events enrolled for the given tuitions from the microservice.'
   -
     name: Enrollment-TuitionEnrollmentCancel
     description: 'Model to get list of tuition, which gives access to a certain event from the microservice.'

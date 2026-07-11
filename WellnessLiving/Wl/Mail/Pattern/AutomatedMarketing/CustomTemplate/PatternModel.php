@@ -283,6 +283,18 @@ class PatternModel extends WlModelAbstract
   public $k_mail_pattern = '0';
 
   /**
+   * Key of the service being booked.
+   *
+   * Used to prefer a service-specific custom notification template, when one is configured,
+   * over the business-level template. `null` when no single service is in context
+   * (e.g. several services are selected at once), in which case the business-level template is returned.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $k_service = null;
+
+  /**
    * SID of the mail form.
    *
    * @get get
