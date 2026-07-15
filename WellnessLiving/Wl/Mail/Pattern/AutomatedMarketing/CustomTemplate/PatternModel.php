@@ -286,8 +286,10 @@ class PatternModel extends WlModelAbstract
    * Key of the service being booked.
    *
    * Used to prefer a service-specific custom notification template, when one is configured,
-   * over the business-level template. `null` when no single service is in context
-   * (e.g. several services are selected at once), in which case the business-level template is returned.
+   * over the business-level template.
+   *
+   * `null` when no single service is in context (e.g. several services are selected at once),
+   * in which case the business-level template is returned.
    *
    * @get get
    * @var string|null

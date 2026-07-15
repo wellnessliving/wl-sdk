@@ -47,14 +47,14 @@ class ModifyModel extends WlModelAbstract
    *   <dd>
    *     Selected instructors. Used in {@link WlClassModifyStepSid::FORM}:
    *     <dl>
+   *       <dt>bool `is_quick_substitute`</dt>
+   *       <dd>Whether this staff member is a quick substitute. Optional.</dd>
+   * 
    *       <dt>string `k_staff`</dt>
-   *       <dd>@deprecated Staff key. </dd>
+   *       <dd><b>Deprecated.</b> Staff key. </dd>
    * 
    *       <dt>string `uid_staff`</dt>
    *       <dd>Staff user key.  Optional.</dd>
-   * 
-   *       <dt>string `k_staff_pay`</dt>
-   *       <dd>Staff pay rate ID. </dd>
    *     </dl>
    *   </dd>
    * 

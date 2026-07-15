@@ -200,6 +200,14 @@ class EnvironmentModel extends WlModelAbstract
   public $has_form_quiz;
 
   /**
+   * `true` if the "home" page is turned on for the current business; `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
+  public $has_home;
+
+  /**
    * Whether the merchant is configured for the client's home location or for business {@link EnvironmentModel::$k_business}.
    *
    * @get result

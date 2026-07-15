@@ -60,14 +60,6 @@ class CatalogCartModel extends WlModelAbstract
    *             </dl>
    *           </dd>
    * 
-   *           <dt>array `a_tax`</dt>
-   *           <dd>
-   *             List of taxes to be applied to the event price:
-   *      Keys are internal system tax keys. 
-   *      Values are amount of taxes to be applied to the event price.
-   *      If not specified or `null`, taxes will be calculated based on the class setup.
-   *           </dd>
-   * 
    *           <dt>string `k_class`</dt>
    *           <dd>Key of the event class within the tuition which should be granted to the client.</dd>
    * 
@@ -98,13 +90,6 @@ class CatalogCartModel extends WlModelAbstract
    *               <dt>string `text_discount`</dt>
    *               <dd>Discount title.</dd>
    *             </dl>
-   *           </dd>
-   * 
-   *           <dt>array `a_tax`</dt>
-   *           <dd>
-   *             List of taxes to be applied to the registration fee:
-   *      Keys are internal system tax keys. 
-   *      Values are amount of taxes to be applied to the registration fee.
    *           </dd>
    * 
    *           <dt>string `m_amount`</dt>
