@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260715082447
+  version: 1.1.20260716121345
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-07-15 08:24:47
+    Last updated at: 2026-07-16 12:13:45
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -18067,7 +18067,7 @@ paths:
       parameters:
         - name: a_filter
           in: query
-          description: 'Filters. List includes enrollments to the tuition. And enrollments to the tuition include enrollment to the event. If any part of the enrollment to the tuition is valid, according to the given filter, full enrollment is included. For example. Client A is payer for two tuition enrollments. One is for client B and events E1, E2. Another for clients C and D. Both for E1. And Client W pays for one tuition enrollment - for client X. If we filter list by enrolled client D, for example. List will return two tuition enrollments. Both paid with Client A. Because we think that these enrollments are combined in single family and should both be returned. All filters are optional. And added as AND. If you send certain events and certain statues, both conditions should be met. <dl> <dt>string[] `a_event`</dt> <dd>Leave only enrollments with the given events enrolled.</dd> <dt>int[] `a_statuses`</dt> <dd>List of tuition statuses.</dd> <dt>string[] `a_uid_any`</dt> <dd>Leave only enrollments with the given payers or enrolled clients.</dd> <dt>string[] `a_uid_enrolled`</dt> <dd>Leave only enrollments with the given enrolled clients.</dd> <dt>string[] `a_uid_payer`</dt> <dd>Leave only enrollments with the given payers.</dd> </dl>'
+          description: 'Filters. List includes enrollments to the tuition. And enrollments to the tuition include enrollment to the event. If any part of the enrollment to the tuition is valid, according to the given filter, full enrollment is included. For example. Client A is payer for two tuition enrollments. One is for client B and events E1, E2. Another for clients C and D. Both for E1. And Client W pays for one tuition enrollment - for client X. If we filter list by enrolled client D, for example. List will return two tuition enrollments. Both paid with Client A. Because we think that these enrollments are combined in single family and should both be returned. All filters are optional. And added as AND. If you send certain events and certain statues, both conditions should be met. <dl> <dt>string[] `a_event`</dt> <dd>Leave only enrollments with the given events enrolled.</dd> <dt>int[] `a_statuses`</dt> <dd>List of tuition statuses.</dd> <dt>string[] `a_purchase_item_tuition`</dt> <dd>List of tuition enrollments ids to leave only.</dd> <dt>string[] `a_uid_any`</dt> <dd>Leave only enrollments with the given payers or enrolled clients.</dd> <dt>string[] `a_uid_enrolled`</dt> <dd>Leave only enrollments with the given enrolled clients.</dd> <dt>string[] `a_uid_payer`</dt> <dd>Leave only enrollments with the given payers.</dd> </dl>'
           schema:
             type: array
         - name: k_business
@@ -18092,7 +18092,7 @@ paths:
                     properties:
                       a_enrollment:
                         type: array
-                        description: 'List of tuition enrollments. <dl> <dt>array[] `a_events`</dt> <dd> Events for this enrollment. <dl> <dt>bool `is_cancelled`</dt> <dd>Whether this enrollment is cancelled or not.</dd> <dt>string `k_class`</dt> <dd>Event ID.</dd> <dt>string `m_event_discount`</dt> <dd>Login type and shopping cart discounts.</dd> <dt>string `m_event_subtotal`</dt> <dd>Price of the event before login type and shopping cart discounts.</dd> <dt>string `m_event_tax`</dt> <dd>Taxes amount.</dd> <dt>string `uid`</dt> <dd>Enrolled client.</dd> </dl> </dd> <dt>string `dl_next`</dt> <dd>Next payment date in local business timezone and MySQL format.</dd> <dt>string `dtl_enrollment`</dt> <dd>Date and time of the enrollment in local business timezone.</dd> <dt>int `i_payments_left`</dt> <dd>Number of payments left.</dd> <dt>int `i_payments_total`</dt> <dd>Number of payments total at the moment of enrollment.</dd> <dt>int `id_installment_status`</dt> <dd>Installment plan status.</dd> <dt>string `k_purchase_item_tuition`</dt> <dd> Key of the tuition purchase item. This is enrollment key, which can be used to modify and cancel the enrollment. </dd> <dt>string `m_payment`</dt> <dd>One payment amount.</dd> <dt>string `m_rest`</dt> <dd>Rest amount to be paid.</dd> <dt>string `m_total`</dt> <dd>Total initial amount to be paid.</dd> <dt>string `uid_payer`</dt> <dd>Payer for this enrollment. This user can be enrolled or not, but he pays for the entire enrollment.</dd> </dl>'
+                        description: 'List of tuition enrollments. <dl> <dt>array[] `a_events`</dt> <dd> Events for this enrollment. <dl> <dt>bool `is_cancelled`</dt> <dd>Whether this enrollment is cancelled or not.</dd> <dt>string `k_class`</dt> <dd>Event ID.</dd> <dt>string `m_event_discount`</dt> <dd>Login type and shopping cart discounts.</dd> <dt>string `m_event_subtotal`</dt> <dd>Price of the event before login type and shopping cart discounts.</dd> <dt>string `m_event_tax`</dt> <dd>Taxes amount.</dd> <dt>string `uid`</dt> <dd>Enrolled client.</dd> </dl> </dd> <dt>string `dl_next`</dt> <dd>Next payment date in local business timezone and MySQL format.</dd> <dt>string `dtl_enrollment`</dt> <dd>Date and time of the enrollment in local business timezone.</dd> <dt>int `i_payments_left`</dt> <dd>Number of payments left.</dd> <dt>int `i_payments_total`</dt> <dd>Number of payments total at the moment of enrollment.</dd> <dt>int|null `id_installment_status`</dt> <dd>Installment plan status. `null` if tuition paid in full without installment.</dd> <dt>string `k_purchase_item_tuition`</dt> <dd> Key of the tuition purchase item. This is enrollment key, which can be used to modify and cancel the enrollment. </dd> <dt>string `m_payment`</dt> <dd>One payment amount.</dd> <dt>string `m_rest`</dt> <dd>Rest amount to be paid.</dd> <dt>string `m_total`</dt> <dd>Total initial amount to be paid.</dd> <dt>string `uid_payer`</dt> <dd>Payer for this enrollment. This user can be enrolled or not, but he pays for the entire enrollment.</dd> </dl>'
       tags:
         - Enrollment-TuitionEnrollmentList
   '/Wl/Tuition/Enrollment/TuitionEnrollmentCancel.json':
@@ -18228,13 +18228,16 @@ paths:
                     properties:
                       a_bank_card:
                         type: array
-                        description: 'A list of bank cards. The array keys are the card `k_pay_bank` IDs. Each element has the following keys: <dl> <dt>int `i_month`</dt> <dd>The month when the payment card expires, represented by a number (1=January and 12=December).</dd> <dt>int `i_year`</dt> <dd>The last two digits of the year when the payment card expires.</dd> <dt>int `id_card_system`</dt> <dd>The card system ID. This is one of the {@link \ACardSystemSid} constants.</dd> <dt>bool `is_default`</dt> <dd>If `true`, then this card is the user default card. If `false`, then this isn''t the user default card.</dd> <dt>string `k_pay_address`</dt> <dd>The payment address ID. This refers to a physical address associated with a payment card.</dd> <dt>string `k_pay_bank`</dt> <dd>The payment method ID. Each payment card for each user will have its own ID.</dd> <dt>string `text_name_card`</dt> <dd> The payment card descriptor. This is typically the company name and the last 4 digits of the card (for example, visa-5903). </dd> <dt>string `text_name_holder`</dt> <dd>The name of the card owner as it appears on the card.</dd> <dt>string `text_number`</dt> <dd> A portion of the payment card number, used to identify the card. This is typically the last 4 digits of the card number. </dd> </dl>'
+                        description: 'A list of bank cards. The array keys are the card `k_pay_bank` IDs. Each element has the following keys: <dl> <dt>int `i_month`</dt> <dd>The month when the payment card expires, represented by a number (1=January and 12=December).</dd> <dt>int `i_year`</dt> <dd>The last two digits of the year when the payment card expires.</dd> <dt>int `id_card_system`</dt> <dd>The card system ID. This is one of the {@link \ACardSystemSid} constants.</dd> <dt>bool `is_autopay`</dt> <dd> If `true`, this card backs at least one active autopay membership or package. If `false`, no active autopay membership or package is pinned to this card. </dd> <dt>bool `is_default`</dt> <dd>If `true`, then this card is the user default card. If `false`, then this isn''t the user default card.</dd> <dt>string `k_pay_address`</dt> <dd>The payment address ID. This refers to a physical address associated with a payment card.</dd> <dt>string `k_pay_bank`</dt> <dd>The payment method ID. Each payment card for each user will have its own ID.</dd> <dt>string `text_name_card`</dt> <dd> The payment card descriptor. This is typically the company name and the last 4 digits of the card (for example, visa-5903). </dd> <dt>string `text_name_holder`</dt> <dd>The name of the card owner as it appears on the card.</dd> <dt>string `text_number`</dt> <dd> A portion of the payment card number, used to identify the card. This is typically the last 4 digits of the card number. </dd> </dl>'
                       a_list:
                         type: array
-                        description: 'List of bank cards. Duplicate of {@link \Thoth\WlPay\Bank\Card\ListApi::$a_bank_card} as a flat indexed array. <dl> <dt>int `i_month`</dt> <dd>The month when the payment card expires, represented by a number (1=January and 12=December).</dd> <dt>int `i_year`</dt> <dd>The last two digits of the year when the payment card expires.</dd> <dt>int `id_card_system`</dt> <dd>The card system ID. This is one of the {@link \ACardSystemSid} constants.</dd> <dt>bool `is_default`</dt> <dd>If `true`, then this card is the user default card. If `false`, then this isn''t the user default card.</dd> <dt>string `k_pay_address`</dt> <dd>The payment address ID. This refers to a physical address associated with a payment card.</dd> <dt>string `k_pay_bank`</dt> <dd>The payment method ID. Each payment card for each user will have its own ID.</dd> <dt>string `text_name_card`</dt> <dd> The payment card descriptor. This is typically the company name and the last 4 digits of the card (for example, visa-5903). </dd> <dt>string `text_name_holder`</dt> <dd>The name of the card owner as it appears on the card.</dd> <dt>string `text_number`</dt> <dd> A portion of the payment card number, used to identify the card. This is typically the last 4 digits of the card number. </dd> </dl>'
+                        description: 'List of bank cards. Duplicate of {@link \Thoth\WlPay\Bank\Card\ListApi::$a_bank_card} as a flat indexed array. <dl> <dt>int `i_month`</dt> <dd>The month when the payment card expires, represented by a number (1=January and 12=December).</dd> <dt>int `i_year`</dt> <dd>The last two digits of the year when the payment card expires.</dd> <dt>int `id_card_system`</dt> <dd>The card system ID. This is one of the {@link \ACardSystemSid} constants.</dd> <dt>bool `is_autopay`</dt> <dd> If `true`, this card backs at least one active autopay membership or package. If `false`, no active autopay membership or package is pinned to this card. </dd> <dt>bool `is_default`</dt> <dd>If `true`, then this card is the user default card. If `false`, then this isn''t the user default card.</dd> <dt>string `k_pay_address`</dt> <dd>The payment address ID. This refers to a physical address associated with a payment card.</dd> <dt>string `k_pay_bank`</dt> <dd>The payment method ID. Each payment card for each user will have its own ID.</dd> <dt>string `text_name_card`</dt> <dd> The payment card descriptor. This is typically the company name and the last 4 digits of the card (for example, visa-5903). </dd> <dt>string `text_name_holder`</dt> <dd>The name of the card owner as it appears on the card.</dd> <dt>string `text_number`</dt> <dd> A portion of the payment card number, used to identify the card. This is typically the last 4 digits of the card number. </dd> </dl>'
                       can_add:
                         type: boolean
                         description: 'Whether new card can be added. `true` if new cards can be added. `false` if new cards can not be added.'
+                      can_remove_self:
+                        type: boolean
+                        description: 'Whether the client is allowed to remove their own saved credit cards. `true` if the client can remove their own saved credit cards. `false` if the client must contact the business to remove a saved credit card.'
       tags:
         - Card-List
   '/Thoth/WlPay/Transaction/Report/TransactionAllPayment.json':
@@ -20160,12 +20163,12 @@ paths:
       parameters:
         - name: k_business
           in: query
-          description: 'Business to retrieve relationship information. Primary key in {@link \RsBusinessSql}.'
+          description: 'Business to retrieve relationship information. <i>Primary key in {@link \RsBusinessSql}.</i>'
           schema:
             type: string
         - name: uid
           in: query
-          description: 'UID to retrieve relationship information. Primary key in {@link \PassportLoginSql}.'
+          description: 'UID to retrieve relationship information. <i>Primary key in {@link \PassportLoginSql}.</i>'
           schema:
             type: string
       responses:
@@ -20180,7 +20183,7 @@ paths:
                     properties:
                       a_user:
                         type: array
-                        description: 'Array with information about current user and his relationship with sub accounts.'
+                        description: 'Array with information about current user and his relationship with sub accounts. <dl> <dt>string `id_family_relation`</dt> <dd>ID of relationship between current user and sub account.</dd> <dt>string `s_name`</dt> <dd>Name of sub account.</dd> <dt>string `uid`</dt> <dd>UID of sub account.</dd> </dl>'
       tags:
         - Select-Select
     post:
@@ -20188,12 +20191,12 @@ paths:
       parameters:
         - name: k_business
           in: query
-          description: 'Business to retrieve relationship information. Primary key in {@link \RsBusinessSql}.'
+          description: 'Business to retrieve relationship information. <i>Primary key in {@link \RsBusinessSql}.</i>'
           schema:
             type: string
         - name: uid
           in: query
-          description: 'UID to retrieve relationship information. Primary key in {@link \PassportLoginSql}.'
+          description: 'UID to retrieve relationship information. <i>Primary key in {@link \PassportLoginSql}.</i>'
           schema:
             type: string
       requestBody:
@@ -20205,7 +20208,7 @@ paths:
               properties:
                 uid_in:
                   type: string
-                  description: 'ID of relative to sign in. Primary key in {@link \PassportLoginSql}.'
+                  description: 'ID of relative to sign in. <i>Primary key in {@link \PassportLoginSql}.</i>'
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -28038,6 +28041,72 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Count-InventoryCount
+  '/Core/Testing/Automation/CacheFlush.json':
+    get:
+      summary: 'Flushes all application caches.'
+      parameters:
+        - name: s_action
+          in: query
+          description: 'Name of the action to perform within this endpoint.'
+          schema:
+            type: string
+        - name: s_token
+          in: query
+          description: 'Request authentication token. A hex-encoded `sha256` signature that proves the caller knows the shared secret. See {@link AutomationTestAbstractApi::checkAccess()} for the expected formula.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Automation-CacheFlush
+  '/Wl/Widget/Analytics/WidgetAnalyticsEvent.json':
+    post:
+      summary: 'Accepts a Widget analytics event. Validates the event envelope and payload, stores the event, and schedules asynchronous processing.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_payload:
+                  type: array
+                  description: 'Event-specific payload. <dl> <dt>array[] `a_item`</dt> <dd> Selected checkout items. Each entry has the following structure: <dl> <dt>int `id_item`</dt> <dd> Item type. A {@link \RsPurchaseItemSid} constant for store checkout or a {@link \Wl\Service\ServiceSid} constant for booking. </dd> <dt>string `k_item`</dt> <dd>Selected item key.</dd> <dt>string `k_item_extra`</dt> <dd>Event enrollment block key, or an empty string.</dd> </dl> </dd> <dt>int `id_checkout_type`</dt> <dd>Checkout type. One of {@link \Wl\Widget\Analytics\WidgetAnalyticsCheckoutTypeSid} constants.</dd> <dt>string `k_location`</dt> <dd>Location key.</dd> <dt>string|null `k_skin`</dt> <dd>Widget skin key, or `null` if the Widget does not use a registered skin.</dd> <dt>string `m_total`</dt> <dd>Checkout total.</dd> <dt>string `s_funnel_step`</dt> <dd>Last funnel step reached.</dd> <dt>string `s_session_id`</dt> <dd>Widget checkout session identifier.</dd> <dt>string `s_utm_campaign`</dt> <dd>UTM campaign value.</dd> <dt>string `s_utm_medium`</dt> <dd>UTM medium value.</dd> <dt>string `s_utm_source`</dt> <dd>UTM source value.</dd> <dt>string `uid`</dt> <dd>User key.</dd> <dt>string `url_continue`</dt> <dd>Continuation URL.</dd> </dl>'
+                i_event_version:
+                  type: number
+                  format: int32
+                  description: 'Event schema version.'
+                k_business:
+                  type: string
+                  description: 'Business key used for shard and datacenter routing.'
+                s_event_id:
+                  type: string
+                  description: 'Client-generated idempotency identifier. A retry of the same logical event must use the same value.'
+                s_event_name:
+                  type: string
+                  description: 'Event name. Initially only `abandoned_checkout` is supported.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      is_accepted:
+                        type: boolean
+                        description: 'Whether the event was durably accepted for asynchronous processing.'
+      tags:
+        - Analytics-WidgetAnalyticsEvent
 tags:
   -
     name: Account-Account
@@ -28093,6 +28162,9 @@ tags:
   -
     name: AmazonRegion-AmazonRegion
     description: 'An endpoint for retrieve region ID for businesses.'
+  -
+    name: Analytics-WidgetAnalyticsEvent
+    description: 'Receives versioned analytics events from React Widgets and SDK applications.'
   -
     name: Announcement-AnnouncementList
     description: 'Retrieves a list of announcements.'
@@ -28180,6 +28252,9 @@ tags:
   -
     name: AuthorizePartner-AuthorizePartner
     description: 'Gives members of a franchisor access to a franchisee. To grant a user access, the "Manage Franchise Location" staff permission is required. Access will be granted for 24 hours.'
+  -
+    name: Automation-CacheFlush
+    description: 'Automation test API endpoint that flushes all application caches.'
   -
     name: Autymate-AutymateActivate
     description: 'Checks or changes the status of Autymate enrollments.'

@@ -16,6 +16,16 @@ class SelectModel extends WlModelAbstract
   /**
    * Array with information about current user and his relationship with sub accounts.
    *
+   * <dl>
+   *   <dt>string `id_family_relation`</dt>
+   *   <dd>ID of relationship between current user and sub account.</dd>
+   * 
+   *   <dt>string `s_name`</dt>
+   *   <dd>Name of sub account.</dd>
+   * 
+   *   <dt>string `uid`</dt>
+   *   <dd>UID of sub account.</dd>
+   * </dl>
    * @get result
    * @var array
    */

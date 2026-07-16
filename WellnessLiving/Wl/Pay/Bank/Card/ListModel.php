@@ -28,6 +28,12 @@ class ListModel extends WlModelAbstract
    *   <dt>int `id_card_system`</dt>
    *   <dd>The card system ID. This is one of the {@link ACardSystemSid} constants.</dd>
    * 
+   *   <dt>bool `is_autopay`</dt>
+   *   <dd>
+   *     If `true`, this card backs at least one active autopay membership or package.
+   * If `false`, no active autopay membership or package is pinned to this card.
+   *   </dd>
+   * 
    *   <dt>bool `is_default`</dt>
    *   <dd>If `true`, then this card is the user default card.
    * If `false`, then this isn't the user default card.</dd>
@@ -72,6 +78,12 @@ class ListModel extends WlModelAbstract
    *   <dt>int `id_card_system`</dt>
    *   <dd>The card system ID. This is one of the {@link ACardSystemSid} constants.</dd>
    * 
+   *   <dt>bool `is_autopay`</dt>
+   *   <dd>
+   *     If `true`, this card backs at least one active autopay membership or package.
+   * If `false`, no active autopay membership or package is pinned to this card.
+   *   </dd>
+   * 
    *   <dt>bool `is_default`</dt>
    *   <dd>If `true`, then this card is the user default card.
    * If `false`, then this isn't the user default card.</dd>
@@ -112,6 +124,17 @@ class ListModel extends WlModelAbstract
    * @var bool
    */
   public $can_add = false;
+
+  /**
+   * Whether the client is allowed to remove their own saved credit cards.
+   *
+   * `true` if the client can remove their own saved credit cards.
+   * `false` if the client must contact the business to remove a saved credit card.
+   *
+   * @get result
+   * @var bool
+   */
+  public $can_remove_self = false;
 
   /**
    * ID of current business.

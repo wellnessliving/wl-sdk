@@ -52,8 +52,10 @@ class TuitionEnrollmentListModel extends WlModelAbstract
    *   <dt>int `i_payments_total`</dt>
    *   <dd>Number of payments total at the moment of enrollment.</dd>
    * 
-   *   <dt>int `id_installment_status`</dt>
-   *   <dd>Installment plan status.</dd>
+   *   <dt>int|null `id_installment_status`</dt>
+   *   <dd>Installment plan status.
+   * 
+   * `null` if tuition paid in full without installment.</dd>
    * 
    *   <dt>string `k_purchase_item_tuition`</dt>
    *   <dd>
@@ -100,6 +102,9 @@ class TuitionEnrollmentListModel extends WlModelAbstract
    * 
    *   <dt>int[] `a_statuses`</dt>
    *   <dd>List of tuition statuses.</dd>
+   * 
+   *   <dt>string[] `a_purchase_item_tuition`</dt>
+   *   <dd>List of tuition enrollments ids to leave only.</dd>
    * 
    *   <dt>string[] `a_uid_any`</dt>
    *   <dd>Leave only enrollments with the given payers or enrolled clients.</dd>
