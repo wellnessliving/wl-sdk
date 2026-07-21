@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 246.
+ * Last Used ID: 247.
  */
 abstract class WlPrivilegeSid
 {
@@ -315,6 +315,12 @@ abstract class WlPrivilegeSid
    * Lock search bar on enrollment attendance list.
    */
   const ENROLLMENT_LOCK_SEARCH = 153;
+
+  /**
+   * Allows a staff member to see other staff members' event sessions on the schedule in read-only mode
+   *  while the Events scope is set to only their own schedules.
+   */
+  const ENROLLMENT_SCHEDULE_VIEW = 247;
 
   /**
    * Manage Enterprise Cloud Fees.

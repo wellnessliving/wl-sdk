@@ -1,26 +1,17 @@
 <?php
 
-namespace WellnessLiving\Thoth\ReportCore\QueryEngine\Report\Customization;
+namespace WellnessLiving\Wl\Report\Customization;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\Report\Customization\CustomizationFormModel;
 
 /**
- * Loads and saves customization form data scoped to a specific SQL query report.
+ * API endpoint to load and save data for a report customization form.
  *
- * Extends {@link CustomizationFormModel} to add {@link ReportQueryCustomizationFormModel::$k_report_query}, which isolates
- *  customization settings (visible buttons, date range, report generation mode) per SQL query
- *  instead of sharing them across all SQL reports for the same business and user.
- *
- * When {@link ReportQueryCustomizationFormModel::$k_report_query} is set, the per-query customization row is loaded first;
- *  if no per-query row exists, the generic shared row is used as a fallback so existing
- *  settings are preserved after the first deployment.
- *
- * @method WlModelRequest get()
- * @method WlModelRequest post()
+ * @method WlModelRequest get() Loads customization data of the customization form that corresponds to specified report / report page.  Populates {@link \Wl\Report\Customization\CustomizationFormApi::$a_customization_form} with the customization data of the requested report or report page, optionally converted to the reports listed in {@link \Wl\Report\Customization\CustomizationFormApi::$s_report}.
+ * @method WlModelRequest post() Saves given data of a customization form into database.  Stores the customization data supplied in {@link \Wl\Report\Customization\CustomizationFormApi::$a_customization_form} for the requested report or report page and resets the related report configuration cache.
  */
-class ReportQueryCustomizationFormModel extends WlModelAbstract
+class CustomizationFormModel extends WlModelAbstract
 {
   /**
    * Customization form data keyed by report or page CID. Each value has the following structure: 
@@ -88,18 +79,6 @@ class ReportQueryCustomizationFormModel extends WlModelAbstract
    * @var string
    */
   public $k_business = '0';
-
-  /**
-   * SQL query primary key.
-   *
-   * Scopes the customization record to a specific SQL query.
-   * `null` loads the generic shared row as a backward-compatible fallback.
-   *
-   * @get get
-   * @post get
-   * @var string|null
-   */
-  public $k_report_query = null;
 
   /**
    * Primary key of a saved report.

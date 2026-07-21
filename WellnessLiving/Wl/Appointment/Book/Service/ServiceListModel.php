@@ -204,6 +204,9 @@ class ServiceListModel extends WlModelAbstract
    *   <dt>bool `is_virtual`</dt>
    *   <dd>`true` if the service is virtual. Otherwise, this will be `false`.</dd>
    * 
+   *   <dt>string `k_resource_location`</dt>
+   *   <dd>Off-site location if service requires such type of asset.</dd>
+   * 
    *   <dt>string `k_service`</dt>
    *   <dd>The appointment primary key. </dd>
    * 

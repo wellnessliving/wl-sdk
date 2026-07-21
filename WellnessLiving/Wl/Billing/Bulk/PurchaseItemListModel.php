@@ -16,48 +16,107 @@ use WellnessLiving\Wl\WlProgramTypeSid;
  *  location availability.
  *
  * @method WlModelRequest get() Gets the list of promotions and products available at the location.  Validates access to the business, then loads promotions with their prices and products expanded into  their options, keeping only the items available at the requested location.
- * @method WlModelRequest post() Prepares the bulk billing review: the per-client totals and the list of clients that will be billed.  Validates access to the business, calculates the per-client subtotal, tax and total for the selected purchase  items, and collects each client contact data and payment method label. The list of clients skipped due to  restrictions is returned separately and is empty for now.
+ * @method WlModelRequest post() Prepares the bulk billing review: the per-client totals and the list of clients that will be billed.  Validates access to the business, calculates the per-client subtotal, tax and total for the selected purchase  items, and collects each client contact data and payment method label. Clients that a selected item is not  available to (by their client type or member group) are removed from billing and returned in  {@link \Wl\Billing\Bulk\PurchaseItemListApi::$a_client_restrict}. Clients that are not eligible for the selected introductory  items are flagged with `is_warning` and described in {@link \Wl\Billing\Bulk\PurchaseItemListApi::$a_client_bill} (`a_warning`  key).
  */
 class PurchaseItemListModel extends WlModelAbstract
 {
   /**
-   * The list of clients that will be billed. Each element has the following structure: 
+   * The result of preparing the clients to bill. Has the following structure: 
    *
    * <dl>
-   *   <dt>string `text_mail`</dt>
-   *   <dd>The client email address. Empty string if the client has no email.</dd>
-   * 
-   *   <dt>string `text_name`</dt>
-   *   <dd>The client full name.</dd>
-   * 
-   *   <dt>string `text_pay_method`</dt>
+   *   <dt>array[] `a_warning`</dt>
    *   <dd>
-   *     The payment method label for this client. `Account` when billing to the client account; otherwise the
-   * default stored card label (for example, `Visa ****1234`), the default ACH account label when no card is on
-   * file, or an account fallback when neither is on file.
+   *     The inventory and introductory-eligibility warnings produced while preparing the bill. Each
+   * element has the following structure:
+   *     <dl>
+   *       <dt>string `text_message`</dt>
+   *       <dd>The user-facing warning message.</dd>
+   *     </dl>
    *   </dd>
    * 
-   *   <dt>string `text_phone`</dt>
-   *   <dd>The client cell phone number. Empty string if the client has no cell phone.</dd>
+   *   <dt>array[] `a_client`</dt>
+   *   <dd>
+   *     The list of clients that will be billed. Each element has the following structure:
+   *     <dl>
+   *       <dt>bool `is_warning`</dt>
+   *       <dd>
+   *         `true` if the client has no default payment method on file, has no email on file while a receipt is
+   * to be sent, or is not eligible for at least one of the selected introductory items; `false`
+   * otherwise.
+   *       </dd>
    * 
-   *   <dt>string `uid`</dt>
-   *   <dd>The client user key. </dd>
+   *       <dt>string `text_mail`</dt>
+   *       <dd>The client email address. Empty string if the client has no email.</dd>
+   * 
+   *       <dt>string `text_name`</dt>
+   *       <dd>The client full name.</dd>
+   * 
+   *       <dt>string `text_pay_method`</dt>
+   *       <dd>
+   *         The payment method label for this client. `Account` when billing to the client account; otherwise the
+   * default stored card label (for example, `Visa ****1234`), the default ACH account label when no card
+   * is on file, or an account fallback when neither is on file.
+   *       </dd>
+   * 
+   *       <dt>string `text_phone`</dt>
+   *       <dd>The client cell phone number. Empty string if the client has no cell phone.</dd>
+   * 
+   *       <dt>string `uid`</dt>
+   *       <dd>The client user key. </dd>
+   *     </dl>
+   *   </dd>
    * </dl>
    * @post result
-   * @var array[]
+   * @var array
    */
   public $a_client_bill = [];
 
   /**
-   * The list of clients that will be skipped due to restrictions. Each element has the same structure as an
-   *  element of {@link PurchaseItemListModel::$a_client_bill}.
+   * The clients removed from the bulk billing because a selected item is not available to their client type or
+   *  member group, together with the warnings that explain why. Has the following structure: 
    *
-   * This list is always empty for now and will be populated once the restriction checks are implemented.
-   *
+   * <dl>
+   *   <dt>array[] `a_client`</dt>
+   *   <dd>
+   *     The clients that fail at least one restriction. Each element has the following structure:
+   *     <dl>
+   *       <dt>string `text_login_type`</dt>
+   *       <dd>The client login type title.</dd>
+   * 
+   *       <dt>string `text_mail`</dt>
+   *       <dd>The client email address. Empty string if the client has no email.</dd>
+   * 
+   *       <dt>string `text_member_group`</dt>
+   *       <dd>Comma-separated titles of the member groups the client belongs to.</dd>
+   * 
+   *       <dt>string `text_name`</dt>
+   *       <dd>The client full name.</dd>
+   * 
+   *       <dt>string `uid`</dt>
+   *       <dd>The client user key. </dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>array[] `a_warning`</dt>
+   *   <dd>
+   *     One warning per restricted item that at least one client fails to satisfy. Each element has the
+   * following structure:
+   *     <dl>
+   *       <dt>string `text_message`</dt>
+   *       <dd>The user-facing warning message.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>bool `has_client_group_restrict`</dt>
+   *   <dd>`true` if at least one client fails a member group restriction, `false` otherwise.</dd>
+   * 
+   *   <dt>bool `has_client_type_restrict`</dt>
+   *   <dd>`true` if at least one client fails a login type restriction, `false` otherwise.</dd>
+   * </dl>
    * @post result
-   * @var array[]
+   * @var array
    */
-  public $a_client_ignore = [];
+  public $a_client_restrict = [];
 
   /**
    * The list of products available at the location. Each element has the following structure: 
@@ -65,11 +124,8 @@ class PurchaseItemListModel extends WlModelAbstract
    * <dl>
    *   <dt>array[] `a_option`</dt>
    *   <dd>
-   *     The list of product options available at the location. Each element has the following structure:
+   *     The options of the product available at the location. Each element has the following structure:
    *     <dl>
-   *       <dt>bool `is_inventory`</dt>
-   *       <dd>`true` if the product tracks inventory, `false` otherwise.</dd>
-   * 
    *       <dt>string `k_shop_product_option`</dt>
    *       <dd>The product option key. </dd>
    * 
@@ -150,6 +206,14 @@ class PurchaseItemListModel extends WlModelAbstract
    * @var bool
    */
   public $is_payment_method_default = false;
+
+  /**
+   * Whether to send a receipt to the client email address after billing.
+   *
+   * @post post
+   * @var bool
+   */
+  public $is_receipt_send = false;
 
   /**
    * Whether to include the pre-configured taxes into the totals.

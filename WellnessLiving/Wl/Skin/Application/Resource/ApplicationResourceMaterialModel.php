@@ -58,6 +58,14 @@ class ApplicationResourceMaterialModel extends WlModelAbstract
   public $s_firebase_ios = '';
 
   /**
+   * Android splash screen background color in hex format.
+   *
+   * @post post
+   * @var string
+   */
+  public $s_splash_color_android = '';
+
+  /**
    * Version name for the App Store and Google Play builds.
    *
    * @post post

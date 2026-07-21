@@ -316,6 +316,14 @@ class PromotionIndexModel extends WlModelAbstract
   public $id_program_type = 0;
 
   /**
+   * The business key.
+   *
+   * @get get
+   * @var string|null
+   */
+  public $k_business = null;
+
+  /**
    * The location key.
    *
    * @get get

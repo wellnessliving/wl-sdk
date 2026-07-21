@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
 /**
- * Versioned list of appointment types with support for loading all services.
+ * Versioned list of appointment types with support for loading all (active and inactive) services.
  *
  * @method WlModelRequest get() Returns list of appointment type in the business.  Gets key of the business and returns all available appointment types with their names and categories.
  */
@@ -40,7 +40,7 @@ class List75Model extends WlModelAbstract
    * @get result
    * @var array[]
    */
-  public $a_service = null;
+  public $a_service;
 
   /**
    * Whether to return franchisee-created appointment types (if business is franchisor).

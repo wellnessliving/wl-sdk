@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260716121345
+  version: 1.1.20260721173452
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-07-16 12:13:45
+    Last updated at: 2026-07-21 17:34:52
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -5255,10 +5255,10 @@ paths:
                         description: 'A list of all payment methods that can be used within this business. This array is sorted in the order in which payment methods should be shown to the user. Each element of the array has the following structure: <dl> <dt>int `id_pay_method`</dt> <dd>The ID of type of payment method. One of {@link \RsPayMethodSid} constants.</dd> <dt>bool `is_client`</dt> <dd> Determines whether this method is available for clients. This field is only returned for custom payment methods. </dd> <dt>string|null `k_pay_method`</dt> <dd> The key of the custom payment method. This will be `null` if this payment method isn''t customized. <i>Primary key in {@link \Thoth\WlPay\Method\MethodSql} table.</i> </dd> <dt>string `s_method`</dt> <dd>The name of payment method. This field is only returned for custom payment methods.</dd> </dl>'
                       a_mobile_config:
                         type: [array, "null"]
-                        description: 'The configuration array that''s sent to mobile card reader plugin. The structure of this array depends on the payment processor being used. `null` when mobile card readers are not supported, or when actor has no access to them.'
+                        description: 'The configuration array that''s sent to mobile card reader plugin. The structure of this array depends on the payment processor being used. `null` when mobile card readers are not supported, or when actor has no access to them. Nuvei: <dl> <dt>array `a_terminal_location`</dt> <dd> Terminal configuration keyed by location key. <i>Primary key in {@link \RsLocationSql} table.</i> Present only when at least one location has an active merchant configured. Each value: <dl> <dt>array `a_terminal`</dt> <dd> Terminal lists grouped by connection type. Both lists contain identical entries - the same terminal appears in both. <dl> <dt>array[] `a_terminal_elevate`</dt> <dd> Elevate-model terminals. Each element: <dl> <dt>bool `can_cancel_swipe_from_pos`</dt> <dd>Whether swipe can be cancelled from the POS terminal.</dd> <dt>int `id_model`</dt> <dd>Terminal model. One of {@link \Thoth\PayProcessor\Nuvei\Terminal\NuveiTerminalTypeSid} constants.</dd> <dt>int `id_status`</dt> <dd>Terminal status. One of {@link \Thoth\PayProcessor\Terminal\TerminalStatusSid} constants.</dd> <dt>int `id_type`</dt> <dd>Terminal type. One of {@link \Thoth\PayProcessor\Nuvei\Terminal\NuveiTerminalTypeSid} constants.</dd> <dt>string `k_terminal`</dt> <dd>Terminal key. <i>Primary key in {@link \Thoth\PayProcessor\Terminal\TerminalSql}.</i></dd> <dt>string `text_id`</dt> <dd>Terminal ID assigned by the gateway.</dd> <dt>string `text_name`</dt> <dd>Human-readable terminal label.</dd> </dl> </dd> <dt>array[] `a_terminal_web`</dt> <dd> Ethernet terminals, plus one synthetic `MagTek` USB entry appended last when {@link \Thoth\PayProcessor\Nuvei\Terminal\NuveiTerminalTypeSid::supportsMagTekUsb()} returns `true`. Each element: <dl> <dt>bool `can_cancel_swipe_from_pos`</dt> <dd>Whether swipe can be cancelled from the POS terminal.</dd> <dt>int|null `id_model`</dt> <dd> Terminal model. One of {@link \Thoth\PayProcessor\Nuvei\Terminal\NuveiTerminalTypeSid} constants. `null` for the synthetic `MagTek` USB entry. </dd> <dt>int `id_status`</dt> <dd>Terminal status. One of {@link \Thoth\PayProcessor\Terminal\TerminalStatusSid} constants.</dd> <dt>int `id_type`</dt> <dd> Terminal type. One of {@link \Thoth\PayProcessor\Nuvei\Terminal\NuveiTerminalTypeSid} constants, or {@link \Thoth\PayProcessor\Terminal\TerminalTypeSid::MAGTEK_USB} for the synthetic `MagTek` USB entry. </dd> <dt>string|null `k_terminal`</dt> <dd> Terminal key. <i>Primary key in {@link \Thoth\PayProcessor\Terminal\TerminalSql}.</i> `null` for the synthetic `MagTek` USB entry. </dd> <dt>string|null `s_serial_number`</dt> <dd>Always `null`. Present only in the synthetic `MagTek` USB entry.</dd> <dt>string `text_id`</dt> <dd>Terminal ID assigned by the gateway, or `id_type_N` for the synthetic `MagTek` USB entry.</dd> <dt>string `text_name`</dt> <dd>Human-readable terminal label.</dd> </dl> </dd> </dl> </dd> <dt>string `text_location_name`</dt> <dd>Display name of the location.</dd> </dl> </dd> <dt>bool `can_cancel_swipe_from_pos`</dt> <dd>Whether card swipe can be cancelled from the POS terminal.</dd> <dt>bool `has_expire_date`</dt> <dd>Whether the card expiry date entry is required.</dd> <dt>bool `has_readers_selection`</dt> <dd>Whether the card reader selection UI is shown.</dd> <dt>bool `is_support_magtek`</dt> <dd>Whether `MagTek` USB reader is supported.</dd> </dl> DirectConnect: <dl> <dt>array[] `a_terminal_location`</dt> <dd> Terminal configuration keyed by location key. <i>Primary key in {@link \RsLocationSql} table.</i> Empty array if no terminals are configured. Each value: <dl> <dt>array[] `a_terminal`</dt> <dd> Terminal lists grouped by connection type: <dl> <dt>array[] `a_terminal_elevate`</dt> <dd> Elevate-model terminals. Each element: <dl> <dt>bool `can_cancel_swipe_from_pos`</dt> <dd>Whether swipe can be cancelled from the POS terminal.</dd> <dt>int `id_model`</dt> <dd> Terminal model. One of {@link \Thoth\PayProcessor\DirectConnect\Terminal\DirectConnectReaderModelSid} constants. </dd> <dt>int `id_status`</dt> <dd>Terminal status. One of {@link \Thoth\PayProcessor\Terminal\TerminalStatusSid} constants.</dd> <dt>string `k_terminal`</dt> <dd>Terminal key. <i>Primary key in {@link \Thoth\PayProcessor\Terminal\TerminalSql}.</i></dd> <dt>string `s_serial_number`</dt> <dd>Terminal serial number.</dd> <dt>string `text_id`</dt> <dd>Terminal ID assigned by the gateway.</dd> <dt>string `text_name`</dt> <dd>Human-readable terminal label.</dd> </dl> </dd> <dt>array[] `a_terminal_web`</dt> <dd> Ethernet and USB terminals. Always includes one synthetic `MagTek` USB entry appended last. Each element: <dl> <dt>bool `can_cancel_swipe_from_pos`</dt> <dd>Whether swipe can be cancelled from the POS terminal.</dd> <dt>int|null `id_model`</dt> <dd> Terminal model. One of {@link \Thoth\PayProcessor\DirectConnect\Terminal\DirectConnectReaderModelSid} constants. `null` for the synthetic `MagTek` USB entry. </dd> <dt>int `id_status`</dt> <dd>Terminal status. One of {@link \Thoth\PayProcessor\Terminal\TerminalStatusSid} constants.</dd> <dt>int `id_type`</dt> <dd>Terminal type. One of {@link \Thoth\PayProcessor\Terminal\TerminalTypeSid} constants.</dd> <dt>string|null `k_terminal`</dt> <dd> Terminal key. <i>Primary key in {@link \Thoth\PayProcessor\Terminal\TerminalSql}.</i> `null` for the synthetic `MagTek` USB entry. </dd> <dt>string|null `s_serial_number`</dt> <dd>Terminal serial number. `null` for the synthetic `MagTek` USB entry.</dd> <dt>string `text_id`</dt> <dd>Terminal ID assigned by the gateway, or `id_type_N` for the synthetic `MagTek` USB entry.</dd> <dt>string `text_name`</dt> <dd>Human-readable terminal label.</dd> </dl> </dd> </dl> </dd> <dt>string `text_location_name`</dt> <dd>Display name of the location.</dd> </dl> </dd> <dt>bool `can_cancel_swipe_from_pos`</dt> <dd>Whether card swipe can be cancelled from the POS terminal.</dd> <dt>bool `has_expire_date`</dt> <dd>Whether the card expiry date entry is required.</dd> <dt>bool `has_readers_selection`</dt> <dd>Whether the card reader selection UI is shown.</dd> <dt>int `id_device`</dt> <dd>Device type identifier. One of {@link \Thoth\WlPay\Cordova\CordovaCcrDeviceSid} constants.</dd> <dt>bool `is_support_magtek`</dt> <dd>Whether `MagTek` USB reader is supported.</dd> </dl> StripeCom: <dl> <dt>array `a_terminal_location`</dt> <dd> Terminal configuration keyed by location key. <i>Primary key in {@link \RsLocationSql} table.</i> Empty array if no terminals are configured. Each value: <dl> <dt>array `a_terminal`</dt> <dd> Terminal lists grouped by connection type: <dl> <dt>array[] `a_terminal_elevate`</dt> <dd> Elevate-model terminals. Each element: <dl> <dt>bool `can_cancel_swipe_from_pos`</dt> <dd>Whether swipe can be cancelled from the POS terminal.</dd> <dt>int `id_model`</dt> <dd> Terminal model. One of {@link \Thoth\PayProcessor\StripeCom\Terminal\StripeReaderModelSid} constants. </dd> <dt>int `id_status`</dt> <dd>Terminal status. One of {@link \Thoth\PayProcessor\Terminal\TerminalStatusSid} constants.</dd> <dt>string `k_terminal`</dt> <dd>Terminal key. <i>Primary key in {@link \Thoth\PayProcessor\Terminal\TerminalSql}.</i></dd> <dt>string `s_serial_number`</dt> <dd>Terminal serial number.</dd> <dt>string `text_id`</dt> <dd>Terminal ID assigned by the gateway.</dd> <dt>string `text_name`</dt> <dd>Human-readable terminal label.</dd> </dl> </dd> <dt>array[] `a_terminal_web`</dt> <dd> Ethernet terminals. Each element: <dl> <dt>bool `can_cancel_swipe_from_pos`</dt> <dd>Whether swipe can be cancelled from the POS terminal.</dd> <dt>int `id_model`</dt> <dd> Terminal model. One of {@link \Thoth\PayProcessor\StripeCom\Terminal\StripeReaderModelSid} constants. </dd> <dt>int `id_status`</dt> <dd>Terminal status. One of {@link \Thoth\PayProcessor\Terminal\TerminalStatusSid} constants.</dd> <dt>int `id_type`</dt> <dd> Terminal type. One of {@link \Thoth\PayProcessor\StripeCom\Terminal\StripeTerminalTypeSid} constants. </dd> <dt>string `k_terminal`</dt> <dd>Terminal key. <i>Primary key in {@link \Thoth\PayProcessor\Terminal\TerminalSql}.</i></dd> <dt>string `s_serial_number`</dt> <dd>Terminal serial number.</dd> <dt>string `text_id`</dt> <dd>Terminal ID assigned by the gateway.</dd> <dt>string `text_name`</dt> <dd>Human-readable terminal label.</dd> </dl> </dd> </dl> </dd> <dt>string `s_location_id`</dt> <dd>Stripe location ID assigned by the gateway.</dd> <dt>string `text_location_name`</dt> <dd>Display name of the location.</dd> </dl> </dd> <dt>bool `has_expire_date`</dt> <dd>Whether the card expiry date entry is required.</dd> <dt>bool `has_readers_selection`</dt> <dd>Whether the card reader selection UI is shown.</dd> <dt>bool `is_support_magtek`</dt> <dd>Whether `MagTek` USB reader is supported.</dd> </dl> Nmi: <dl> <dt>int `id_device`</dt> <dd>Device type identifier. One of {@link \Thoth\WlPay\Cordova\CordovaCcrDeviceSid} constants.</dd> <dt>string `s_key`</dt> <dd>NMI SDK key for the card reader plugin.</dd> </dl>'
                       a_pay_processor:
                         type: [array, "null"]
-                        description: 'Represents information about payment processors. Keys are payment methods IDs, one of {@link \RsPayMethodSid} constants. Value is the following array: `null` if no processors are set up. <dl> <dt>array|null `a_public_keys`</dt> <dd> Public keys configured for this payment processor. <i>Copy of result of {@link \Thoth\PayProcessor\ProcessorInterface\PayProcessorPublicKeysInterface::publicKeys()}.</i> `null` if this payment processor does not support public keys. </dd> <dt>array|null `a_public_info`</dt> <dd> Public info configured for this payment processor. <i>Copy of result of {@link \Thoth\PayProcessor\ProcessorInterface\PayProcessorPublicInfoInterface::publicInfo()}.</i> `null` if this payment processor does not support public info. </dd> <dt>bool `hide_save_source`</dt> <dd>Whether `save payment method` option should be hidden. `true` if hidden, `false` - otherwise.</dd> <dt>int `id_pay_processor`</dt> <dd>ID of the payment processor. One of {@link \Thoth\PayProcessor\PayProcessorSid} constants.</dd> <dt>null|bool `is_enabled_3ds`</dt> <dd> `true` if 3DS should be performed, `false` if 3DS should not be performed. `null` if this is not defined for payment processor. Only for {@link \Thoth\PayProcessor\PayProcessorSid::NUVEI} </dd> <dt>bool|null `is_test`</dt> <dd> `true` if the merchant is in a test mode, `false` otherwise. `null` if this is not defined for payment processor. </dd> <dt>string `k_business_merchant`</dt> <dd>Key of the business merchant. <i>Primary key in {@link \RsBusinessMerchantSql}.</i></dd> </dl>'
+                        description: 'Represents information about payment processors. Keys are payment methods IDs, one of {@link \RsPayMethodSid} constants. Value is the following array: `null` if no processors are set up. <dl> <dt>array|null `a_public_keys`</dt> <dd> Public keys configured for this payment processor. <i>Copy of result of {@link \Thoth\PayProcessor\ProcessorInterface\PayProcessorPublicKeysInterface::publicKeys()}.</i> `null` if this payment processor does not support public keys. <dl> <dt>string|null `s_checkout`</dt> <dd>Checkout SDK public key. `null` if 3DS is disabled for this merchant.</dd> </dl> </dd> <dt>array|null `a_public_info`</dt> <dd> Public info configured for this payment processor. <i>Copy of result of {@link \Thoth\PayProcessor\ProcessorInterface\PayProcessorPublicInfoInterface::publicInfo()}.</i> `null` if this payment processor does not support public info. <dl> <dt>string `s_merchant_site`</dt> <dd>Merchant site identifier assigned by Nuvei.</dd> <dt>string `s_nuvei_id`</dt> <dd>Nuvei merchant identifier.</dd> </dl> </dd> <dt>bool `hide_save_source`</dt> <dd>Whether `save payment method` option should be hidden. `true` if hidden, `false` - otherwise.</dd> <dt>int `id_pay_processor`</dt> <dd>ID of the payment processor. One of {@link \Thoth\PayProcessor\PayProcessorSid} constants.</dd> <dt>null|bool `is_enabled_3ds`</dt> <dd> `true` if 3DS should be performed, `false` if 3DS should not be performed. `null` if this is not defined for payment processor. Only for {@link \Thoth\PayProcessor\PayProcessorSid::NUVEI} </dd> <dt>bool|null `is_test`</dt> <dd> `true` if the merchant is in a test mode, `false` otherwise. `null` if this is not defined for payment processor. </dd> <dt>string `k_business_merchant`</dt> <dd>Key of the business merchant. <i>Primary key in {@link \RsBusinessMerchantSql}.</i></dd> </dl>'
                       dl_now:
                         type: string
                         description: 'Current local date in current location {@link EnvironmentApi::$k_location} or business {@link EnvironmentApi::$k_business} if not set location.'
@@ -5333,10 +5333,10 @@ paths:
                         description: 'A list of all payment methods that can be used within this business. This array is sorted in the order in which payment methods should be shown to the user. Each element of the array has the following structure: <dl> <dt>int `id_pay_method`</dt> <dd>The ID of type of payment method. One of {@link \RsPayMethodSid} constants.</dd> <dt>bool `is_client`</dt> <dd> Determines whether this method is available for clients. This field is only returned for custom payment methods. </dd> <dt>string|null `k_pay_method`</dt> <dd> The key of the custom payment method. This will be `null` if this payment method isn''t customized. <i>Primary key in {@link \Thoth\WlPay\Method\MethodSql} table.</i> </dd> <dt>string `s_method`</dt> <dd>The name of payment method. This field is only returned for custom payment methods.</dd> </dl>'
                       a_mobile_config:
                         type: [array, "null"]
-                        description: 'The configuration array that''s sent to mobile card reader plugin. The structure of this array depends on the payment processor being used. `null` when mobile card readers are not supported, or when actor has no access to them.'
+                        description: 'The configuration array that''s sent to mobile card reader plugin. The structure of this array depends on the payment processor being used. `null` when mobile card readers are not supported, or when actor has no access to them. Nuvei: <dl> <dt>array `a_terminal_location`</dt> <dd> Terminal configuration keyed by location key. <i>Primary key in {@link \RsLocationSql} table.</i> Present only when at least one location has an active merchant configured. Each value: <dl> <dt>array `a_terminal`</dt> <dd> Terminal lists grouped by connection type. Both lists contain identical entries - the same terminal appears in both. <dl> <dt>array[] `a_terminal_elevate`</dt> <dd> Elevate-model terminals. Each element: <dl> <dt>bool `can_cancel_swipe_from_pos`</dt> <dd>Whether swipe can be cancelled from the POS terminal.</dd> <dt>int `id_model`</dt> <dd>Terminal model. One of {@link \Thoth\PayProcessor\Nuvei\Terminal\NuveiTerminalTypeSid} constants.</dd> <dt>int `id_status`</dt> <dd>Terminal status. One of {@link \Thoth\PayProcessor\Terminal\TerminalStatusSid} constants.</dd> <dt>int `id_type`</dt> <dd>Terminal type. One of {@link \Thoth\PayProcessor\Nuvei\Terminal\NuveiTerminalTypeSid} constants.</dd> <dt>string `k_terminal`</dt> <dd>Terminal key. <i>Primary key in {@link \Thoth\PayProcessor\Terminal\TerminalSql}.</i></dd> <dt>string `text_id`</dt> <dd>Terminal ID assigned by the gateway.</dd> <dt>string `text_name`</dt> <dd>Human-readable terminal label.</dd> </dl> </dd> <dt>array[] `a_terminal_web`</dt> <dd> Ethernet terminals, plus one synthetic `MagTek` USB entry appended last when {@link \Thoth\PayProcessor\Nuvei\Terminal\NuveiTerminalTypeSid::supportsMagTekUsb()} returns `true`. Each element: <dl> <dt>bool `can_cancel_swipe_from_pos`</dt> <dd>Whether swipe can be cancelled from the POS terminal.</dd> <dt>int|null `id_model`</dt> <dd> Terminal model. One of {@link \Thoth\PayProcessor\Nuvei\Terminal\NuveiTerminalTypeSid} constants. `null` for the synthetic `MagTek` USB entry. </dd> <dt>int `id_status`</dt> <dd>Terminal status. One of {@link \Thoth\PayProcessor\Terminal\TerminalStatusSid} constants.</dd> <dt>int `id_type`</dt> <dd> Terminal type. One of {@link \Thoth\PayProcessor\Nuvei\Terminal\NuveiTerminalTypeSid} constants, or {@link \Thoth\PayProcessor\Terminal\TerminalTypeSid::MAGTEK_USB} for the synthetic `MagTek` USB entry. </dd> <dt>string|null `k_terminal`</dt> <dd> Terminal key. <i>Primary key in {@link \Thoth\PayProcessor\Terminal\TerminalSql}.</i> `null` for the synthetic `MagTek` USB entry. </dd> <dt>string|null `s_serial_number`</dt> <dd>Always `null`. Present only in the synthetic `MagTek` USB entry.</dd> <dt>string `text_id`</dt> <dd>Terminal ID assigned by the gateway, or `id_type_N` for the synthetic `MagTek` USB entry.</dd> <dt>string `text_name`</dt> <dd>Human-readable terminal label.</dd> </dl> </dd> </dl> </dd> <dt>string `text_location_name`</dt> <dd>Display name of the location.</dd> </dl> </dd> <dt>bool `can_cancel_swipe_from_pos`</dt> <dd>Whether card swipe can be cancelled from the POS terminal.</dd> <dt>bool `has_expire_date`</dt> <dd>Whether the card expiry date entry is required.</dd> <dt>bool `has_readers_selection`</dt> <dd>Whether the card reader selection UI is shown.</dd> <dt>bool `is_support_magtek`</dt> <dd>Whether `MagTek` USB reader is supported.</dd> </dl> DirectConnect: <dl> <dt>array[] `a_terminal_location`</dt> <dd> Terminal configuration keyed by location key. <i>Primary key in {@link \RsLocationSql} table.</i> Empty array if no terminals are configured. Each value: <dl> <dt>array[] `a_terminal`</dt> <dd> Terminal lists grouped by connection type: <dl> <dt>array[] `a_terminal_elevate`</dt> <dd> Elevate-model terminals. Each element: <dl> <dt>bool `can_cancel_swipe_from_pos`</dt> <dd>Whether swipe can be cancelled from the POS terminal.</dd> <dt>int `id_model`</dt> <dd> Terminal model. One of {@link \Thoth\PayProcessor\DirectConnect\Terminal\DirectConnectReaderModelSid} constants. </dd> <dt>int `id_status`</dt> <dd>Terminal status. One of {@link \Thoth\PayProcessor\Terminal\TerminalStatusSid} constants.</dd> <dt>string `k_terminal`</dt> <dd>Terminal key. <i>Primary key in {@link \Thoth\PayProcessor\Terminal\TerminalSql}.</i></dd> <dt>string `s_serial_number`</dt> <dd>Terminal serial number.</dd> <dt>string `text_id`</dt> <dd>Terminal ID assigned by the gateway.</dd> <dt>string `text_name`</dt> <dd>Human-readable terminal label.</dd> </dl> </dd> <dt>array[] `a_terminal_web`</dt> <dd> Ethernet and USB terminals. Always includes one synthetic `MagTek` USB entry appended last. Each element: <dl> <dt>bool `can_cancel_swipe_from_pos`</dt> <dd>Whether swipe can be cancelled from the POS terminal.</dd> <dt>int|null `id_model`</dt> <dd> Terminal model. One of {@link \Thoth\PayProcessor\DirectConnect\Terminal\DirectConnectReaderModelSid} constants. `null` for the synthetic `MagTek` USB entry. </dd> <dt>int `id_status`</dt> <dd>Terminal status. One of {@link \Thoth\PayProcessor\Terminal\TerminalStatusSid} constants.</dd> <dt>int `id_type`</dt> <dd>Terminal type. One of {@link \Thoth\PayProcessor\Terminal\TerminalTypeSid} constants.</dd> <dt>string|null `k_terminal`</dt> <dd> Terminal key. <i>Primary key in {@link \Thoth\PayProcessor\Terminal\TerminalSql}.</i> `null` for the synthetic `MagTek` USB entry. </dd> <dt>string|null `s_serial_number`</dt> <dd>Terminal serial number. `null` for the synthetic `MagTek` USB entry.</dd> <dt>string `text_id`</dt> <dd>Terminal ID assigned by the gateway, or `id_type_N` for the synthetic `MagTek` USB entry.</dd> <dt>string `text_name`</dt> <dd>Human-readable terminal label.</dd> </dl> </dd> </dl> </dd> <dt>string `text_location_name`</dt> <dd>Display name of the location.</dd> </dl> </dd> <dt>bool `can_cancel_swipe_from_pos`</dt> <dd>Whether card swipe can be cancelled from the POS terminal.</dd> <dt>bool `has_expire_date`</dt> <dd>Whether the card expiry date entry is required.</dd> <dt>bool `has_readers_selection`</dt> <dd>Whether the card reader selection UI is shown.</dd> <dt>int `id_device`</dt> <dd>Device type identifier. One of {@link \Thoth\WlPay\Cordova\CordovaCcrDeviceSid} constants.</dd> <dt>bool `is_support_magtek`</dt> <dd>Whether `MagTek` USB reader is supported.</dd> </dl> StripeCom: <dl> <dt>array `a_terminal_location`</dt> <dd> Terminal configuration keyed by location key. <i>Primary key in {@link \RsLocationSql} table.</i> Empty array if no terminals are configured. Each value: <dl> <dt>array `a_terminal`</dt> <dd> Terminal lists grouped by connection type: <dl> <dt>array[] `a_terminal_elevate`</dt> <dd> Elevate-model terminals. Each element: <dl> <dt>bool `can_cancel_swipe_from_pos`</dt> <dd>Whether swipe can be cancelled from the POS terminal.</dd> <dt>int `id_model`</dt> <dd> Terminal model. One of {@link \Thoth\PayProcessor\StripeCom\Terminal\StripeReaderModelSid} constants. </dd> <dt>int `id_status`</dt> <dd>Terminal status. One of {@link \Thoth\PayProcessor\Terminal\TerminalStatusSid} constants.</dd> <dt>string `k_terminal`</dt> <dd>Terminal key. <i>Primary key in {@link \Thoth\PayProcessor\Terminal\TerminalSql}.</i></dd> <dt>string `s_serial_number`</dt> <dd>Terminal serial number.</dd> <dt>string `text_id`</dt> <dd>Terminal ID assigned by the gateway.</dd> <dt>string `text_name`</dt> <dd>Human-readable terminal label.</dd> </dl> </dd> <dt>array[] `a_terminal_web`</dt> <dd> Ethernet terminals. Each element: <dl> <dt>bool `can_cancel_swipe_from_pos`</dt> <dd>Whether swipe can be cancelled from the POS terminal.</dd> <dt>int `id_model`</dt> <dd> Terminal model. One of {@link \Thoth\PayProcessor\StripeCom\Terminal\StripeReaderModelSid} constants. </dd> <dt>int `id_status`</dt> <dd>Terminal status. One of {@link \Thoth\PayProcessor\Terminal\TerminalStatusSid} constants.</dd> <dt>int `id_type`</dt> <dd> Terminal type. One of {@link \Thoth\PayProcessor\StripeCom\Terminal\StripeTerminalTypeSid} constants. </dd> <dt>string `k_terminal`</dt> <dd>Terminal key. <i>Primary key in {@link \Thoth\PayProcessor\Terminal\TerminalSql}.</i></dd> <dt>string `s_serial_number`</dt> <dd>Terminal serial number.</dd> <dt>string `text_id`</dt> <dd>Terminal ID assigned by the gateway.</dd> <dt>string `text_name`</dt> <dd>Human-readable terminal label.</dd> </dl> </dd> </dl> </dd> <dt>string `s_location_id`</dt> <dd>Stripe location ID assigned by the gateway.</dd> <dt>string `text_location_name`</dt> <dd>Display name of the location.</dd> </dl> </dd> <dt>bool `has_expire_date`</dt> <dd>Whether the card expiry date entry is required.</dd> <dt>bool `has_readers_selection`</dt> <dd>Whether the card reader selection UI is shown.</dd> <dt>bool `is_support_magtek`</dt> <dd>Whether `MagTek` USB reader is supported.</dd> </dl> Nmi: <dl> <dt>int `id_device`</dt> <dd>Device type identifier. One of {@link \Thoth\WlPay\Cordova\CordovaCcrDeviceSid} constants.</dd> <dt>string `s_key`</dt> <dd>NMI SDK key for the card reader plugin.</dd> </dl>'
                       a_pay_processor:
                         type: [array, "null"]
-                        description: 'Represents information about payment processors. Keys are payment methods IDs, one of {@link \RsPayMethodSid} constants. Value is the following array: `null` if no processors are set up. <dl> <dt>array|null `a_public_keys`</dt> <dd> Public keys configured for this payment processor. <i>Copy of result of {@link \Thoth\PayProcessor\ProcessorInterface\PayProcessorPublicKeysInterface::publicKeys()}.</i> `null` if this payment processor does not support public keys. </dd> <dt>array|null `a_public_info`</dt> <dd> Public info configured for this payment processor. <i>Copy of result of {@link \Thoth\PayProcessor\ProcessorInterface\PayProcessorPublicInfoInterface::publicInfo()}.</i> `null` if this payment processor does not support public info. </dd> <dt>bool `hide_save_source`</dt> <dd>Whether `save payment method` option should be hidden. `true` if hidden, `false` - otherwise.</dd> <dt>int `id_pay_processor`</dt> <dd>ID of the payment processor. One of {@link \Thoth\PayProcessor\PayProcessorSid} constants.</dd> <dt>null|bool `is_enabled_3ds`</dt> <dd> `true` if 3DS should be performed, `false` if 3DS should not be performed. `null` if this is not defined for payment processor. Only for {@link \Thoth\PayProcessor\PayProcessorSid::NUVEI} </dd> <dt>bool|null `is_test`</dt> <dd> `true` if the merchant is in a test mode, `false` otherwise. `null` if this is not defined for payment processor. </dd> <dt>string `k_business_merchant`</dt> <dd>Key of the business merchant. <i>Primary key in {@link \RsBusinessMerchantSql}.</i></dd> </dl>'
+                        description: 'Represents information about payment processors. Keys are payment methods IDs, one of {@link \RsPayMethodSid} constants. Value is the following array: `null` if no processors are set up. <dl> <dt>array|null `a_public_keys`</dt> <dd> Public keys configured for this payment processor. <i>Copy of result of {@link \Thoth\PayProcessor\ProcessorInterface\PayProcessorPublicKeysInterface::publicKeys()}.</i> `null` if this payment processor does not support public keys. <dl> <dt>string|null `s_checkout`</dt> <dd>Checkout SDK public key. `null` if 3DS is disabled for this merchant.</dd> </dl> </dd> <dt>array|null `a_public_info`</dt> <dd> Public info configured for this payment processor. <i>Copy of result of {@link \Thoth\PayProcessor\ProcessorInterface\PayProcessorPublicInfoInterface::publicInfo()}.</i> `null` if this payment processor does not support public info. <dl> <dt>string `s_merchant_site`</dt> <dd>Merchant site identifier assigned by Nuvei.</dd> <dt>string `s_nuvei_id`</dt> <dd>Nuvei merchant identifier.</dd> </dl> </dd> <dt>bool `hide_save_source`</dt> <dd>Whether `save payment method` option should be hidden. `true` if hidden, `false` - otherwise.</dd> <dt>int `id_pay_processor`</dt> <dd>ID of the payment processor. One of {@link \Thoth\PayProcessor\PayProcessorSid} constants.</dd> <dt>null|bool `is_enabled_3ds`</dt> <dd> `true` if 3DS should be performed, `false` if 3DS should not be performed. `null` if this is not defined for payment processor. Only for {@link \Thoth\PayProcessor\PayProcessorSid::NUVEI} </dd> <dt>bool|null `is_test`</dt> <dd> `true` if the merchant is in a test mode, `false` otherwise. `null` if this is not defined for payment processor. </dd> <dt>string `k_business_merchant`</dt> <dd>Key of the business merchant. <i>Primary key in {@link \RsBusinessMerchantSql}.</i></dd> </dl>'
                       dl_now:
                         type: string
                         description: 'Current local date in current location {@link EnvironmentApi::$k_location} or business {@link EnvironmentApi::$k_business} if not set location.'
@@ -6758,6 +6758,31 @@ paths:
                         description: 'The PIN code.'
       tags:
         - Token-TokenPin
+  '/Core/Testing/Automation/CacheFlush.json':
+    get:
+      summary: 'Flushes all application caches.'
+      parameters:
+        - name: s_action
+          in: query
+          description: 'Name of the action to perform within this endpoint.'
+          schema:
+            type: string
+        - name: s_token
+          in: query
+          description: 'Request authentication token. A hex-encoded `sha256` signature that proves the caller knows the shared secret. See {@link AutomationTestAbstractApi::checkAccess()} for the expected formula.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Automation-CacheFlush
   '/Core/Spa/Application/SpaApplication.json':
     get:
       summary: 'Gets information of application. Returns which sign-in methods (Apple, Facebook, Google, Microsoft, TJX) are enabled for the application, along with the social sign-in and registration restrictions and the corresponding authorization links.'
@@ -8234,7 +8259,7 @@ paths:
                     properties:
                       a_list:
                         type: array
-                        description: 'Discount codes list. Each element has the following structure: <dl> <dt>bool `is_active`</dt> <dd>`true` if the discount code is active, `false` otherwise.</dd> <dt>bool `is_remove`</dt> <dd>`true` if the discount code is removed, `false` otherwise.</dd> <dt>string `k_discount_code`</dt> <dd>Discount code key. <i>Primary key in the {@link \Wl\Discount\Code\Sql} table.</i></dd> <dt>string `text_discount_code`</dt> <dd>Discount code title.</dd> </dl>'
+                        description: 'Discount codes list. Each element has the following structure: <dl> <dt>bool `is_active`</dt> <dd>`true` if the discount code is active, `false` otherwise.</dd> <dt>bool `is_remove`</dt> <dd>`true` if the discount code is removed, `false` otherwise.</dd> <dt>string `k_discount_code`</dt> <dd>Discount code key. <i>Primary key in the {@link \Wl\Discount\Code\Sql} table.</i></dd> <dt>string `s_code`</dt> <dd>Actual discount code string.</dd> <dt>string `text_discount_code`</dt> <dd>Discount code title.</dd> </dl>'
       tags:
         - Code-DiscountCode
   '/Wl/Reward/Action/Action.json':
@@ -11599,6 +11624,490 @@ paths:
                         description: 'The URL to the sharing page.'
       tags:
         - Share-PurchaseShare
+  '/Wl/Report/Customization/CustomizationForm.json':
+    get:
+      summary: 'Loads customization data of the customization form that corresponds to specified report / report page. Populates {@link CustomizationFormApi::$a_customization_form} with the customization data of the requested report or report page, optionally converted to the reports listed in {@link CustomizationFormApi::$s_report}.'
+      parameters:
+        - name: cid_page
+          in: query
+          description: 'Report page CID.'
+          schema:
+            type: number
+            format: int32
+        - name: cid_report
+          in: query
+          description: 'Report CID.'
+          schema:
+            type: number
+            format: int32
+        - name: k_business
+          in: query
+          description: 'Business primary key.'
+          schema:
+            type: string
+        - name: k_report_save
+          in: query
+          description: 'Primary key of a saved report. `null` means that report is not saved.'
+          schema:
+            type: [string, "null"]
+        - name: s_report
+          in: query
+          description: 'Report CID list to that page customization form must be converted. String separated with `,`. May be specified only if {@link CustomizationFormApi::$cid_page} in not empty.'
+          schema:
+            type: string
+        - name: uid_actor
+          in: query
+          description: 'Current user''s primary key.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_customization_form:
+                        type: array
+                        description: 'Customization form data keyed by report or page CID. Each value has the following structure: <dl> <dt>array `a_element`</dt> <dd> Form elements keyed by element name. Each element has the following structure: <dl> <dt>array `a_field`</dt> <dd> Element fields keyed by field alias. Each field has the following structure: <dl> <dt>string `text_title`</dt> <dd>Localized field title.</dd> <dt>string `x_value`</dt> <dd>Current field value.</dd> </dl> </dd> <dt>int[] `a_report`</dt> <dd>Report CID list the element applies to.</dd> <dt>string `html_title`</dt> <dd>Localized element title.</dd> <dt>string `html_title_tooltip`</dt> <dd>Localized element tooltip.</dd> </dl> </dd> <dt>string `s_form`</dt> <dd>Form class identifier.</dd> </dl>'
+      tags:
+        - Customization-CustomizationForm
+    post:
+      summary: 'Saves given data of a customization form into database. Stores the customization data supplied in {@link CustomizationFormApi::$a_customization_form} for the requested report or report page and resets the related report configuration cache.'
+      parameters:
+        - name: cid_page
+          in: query
+          description: 'Report page CID.'
+          schema:
+            type: number
+            format: int32
+        - name: cid_report
+          in: query
+          description: 'Report CID.'
+          schema:
+            type: number
+            format: int32
+        - name: k_business
+          in: query
+          description: 'Business primary key.'
+          schema:
+            type: string
+        - name: k_report_save
+          in: query
+          description: 'Primary key of a saved report. `null` means that report is not saved.'
+          schema:
+            type: [string, "null"]
+        - name: uid_actor
+          in: query
+          description: 'Current user''s primary key.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_customization_form:
+                  type: array
+                  description: 'Customization form data keyed by report or page CID. Each value has the following structure: <dl> <dt>array `a_element`</dt> <dd> Form elements keyed by element name. Each element has the following structure: <dl> <dt>array `a_field`</dt> <dd> Element fields keyed by field alias. Each field has the following structure: <dl> <dt>string `text_title`</dt> <dd>Localized field title.</dd> <dt>string `x_value`</dt> <dd>Current field value.</dd> </dl> </dd> <dt>int[] `a_report`</dt> <dd>Report CID list the element applies to.</dd> <dt>string `html_title`</dt> <dd>Localized element title.</dd> <dt>string `html_title_tooltip`</dt> <dd>Localized element tooltip.</dd> </dl> </dd> <dt>string `s_form`</dt> <dd>Form class identifier.</dd> </dl>'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Customization-CustomizationForm
+  '/Wl/Report/Dashboard/ReportDashboard.json':
+    post:
+      summary: 'Adds new report to a dashboard. Creates a saved report from the specified title, description, filters and view widget settings and attaches it as a widget to the dashboard identified by {@link ReportDashboardApi::$k_report_dashboard}.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key of the report.'
+          schema:
+            type: string
+        - name: uid_actor
+          in: query
+          description: 'UID user''s key of the actor.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_filter:
+                  type: object
+                  description: 'Filter raw data of the report. Keys are filter field names, values are the raw filter values. This variable do not get empty values of filters from HTML forms.'
+                a_settings:
+                  type: object
+                  description: 'View widget settings raw data of the saved report. Keys are widget setting names, values are the raw setting values.'
+                cid_controller:
+                  type: number
+                  format: int32
+                  description: 'CID of the controller class. Subclass of {@link ReportViewControllerAbstract}.'
+                json_filter:
+                  type: string
+                  description: 'Filter raw data of the saved report. Uses to save empty filter values, actual when empty filter is the same as all values are chosen. Use this value instead of {@link ReportDashboardApi::$a_filter}. In this array, key is name of a filter field. <i> A filter field is a property of a {@link \Wl\Report\Generator\ReportFilterAbstract} subclass. Name of the property of that subclass corresponds key in this array. </i>'
+                k_report_dashboard:
+                  type: string
+                  description: 'Report dashboard key to which report should be added.'
+                text_description:
+                  type: string
+                  description: 'Description of the report.'
+                text_title:
+                  type: string
+                  description: 'Title of the report.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Dashboard-ReportDashboard
+    put:
+      summary: 'Updates added report to a dashboard. Rewrites the title, description, filters and view widget settings of the dashboard report identified by {@link ReportDashboardApi::$k_report_save} within the current business.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key of the report.'
+          schema:
+            type: string
+        - name: k_report_save
+          in: query
+          description: 'Report save key.'
+          schema:
+            type: string
+        - name: uid_actor
+          in: query
+          description: 'UID user''s key of the actor.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_filter:
+                  type: object
+                  description: 'Filter raw data of the report. Keys are filter field names, values are the raw filter values. This variable do not get empty values of filters from HTML forms.'
+                a_settings:
+                  type: object
+                  description: 'View widget settings raw data of the saved report. Keys are widget setting names, values are the raw setting values.'
+                cid_controller:
+                  type: number
+                  format: int32
+                  description: 'CID of the controller class. Subclass of {@link ReportViewControllerAbstract}.'
+                json_filter:
+                  type: string
+                  description: 'Filter raw data of the saved report. Uses to save empty filter values, actual when empty filter is the same as all values are chosen. Use this value instead of {@link ReportDashboardApi::$a_filter}. In this array, key is name of a filter field. <i> A filter field is a property of a {@link \Wl\Report\Generator\ReportFilterAbstract} subclass. Name of the property of that subclass corresponds key in this array. </i>'
+                k_report_dashboard:
+                  type: string
+                  description: 'Report dashboard key to which report should be added.'
+                text_description:
+                  type: string
+                  description: 'Description of the report.'
+                text_title:
+                  type: string
+                  description: 'Title of the report.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Dashboard-ReportDashboard
+  '/Wl/Report/Favorite/ReportFavorite.json':
+    delete:
+      summary: 'Removes report controller from favorites. Deletes the favorite record for the current user that matches either the specified saved report or the report controller within the current business. See {@link \RsReportFavorite::check()}.'
+      parameters:
+        - name: cid_controller
+          in: query
+          description: 'CID of the controller.'
+          schema:
+            type: number
+            format: int32
+        - name: k_business
+          in: query
+          description: 'Business key within which request is performed.'
+          schema:
+            type: string
+        - name: k_report_save
+          in: query
+          description: 'Saved report key to manage.'
+          schema:
+            type: string
+        - name: uid_actor
+          in: query
+          description: 'UID user''s key of the actor.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Favorite-ReportFavorite
+    get:
+      summary: 'Returns information whether passed report controller (saved report controller) is favorite for the specified user within specified business. Populates {@link ReportFavoriteApi::$is_favorite} with the current favorite state for the specified saved report or report controller. See {@link \RsReportFavorite::check()}.'
+      parameters:
+        - name: cid_controller
+          in: query
+          description: 'CID of the controller.'
+          schema:
+            type: number
+            format: int32
+        - name: k_business
+          in: query
+          description: 'Business key within which request is performed.'
+          schema:
+            type: string
+        - name: k_report_save
+          in: query
+          description: 'Saved report key to manage.'
+          schema:
+            type: string
+        - name: uid_actor
+          in: query
+          description: 'UID user''s key of the actor.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      is_favorite:
+                        type: boolean
+                        description: 'Whether report is favorite.'
+      tags:
+        - Favorite-ReportFavorite
+    post:
+      summary: 'Adds report controller to favorites. Creates a favorite record for the current user that references either the specified saved report or the report controller within the current business. See {@link \RsReportFavorite::check()}.'
+      parameters:
+        - name: cid_controller
+          in: query
+          description: 'CID of the controller.'
+          schema:
+            type: number
+            format: int32
+        - name: k_business
+          in: query
+          description: 'Business key within which request is performed.'
+          schema:
+            type: string
+        - name: k_report_save
+          in: query
+          description: 'Saved report key to manage.'
+          schema:
+            type: string
+        - name: uid_actor
+          in: query
+          description: 'UID user''s key of the actor.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Favorite-ReportFavorite
+  '/Wl/Report/Save/ReportSave.json':
+    get:
+      summary: 'Returns information about saved report. Loads the title, description, category and stored filters of the saved report identified by {@link ReportSaveApi::$k_report_save} within the current business.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key of the saved report.'
+          schema:
+            type: string
+        - name: k_report_save
+          in: query
+          description: 'Report save key.'
+          schema:
+            type: string
+        - name: uid_actor
+          in: query
+          description: 'UID user''s key of the actor.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_filter:
+                        type: object
+                        description: 'Filter raw data of the saved report. Keys are filter field names, values are the raw filter values. This variable do not get empty values of filters from HTML forms.'
+                      id_report_category:
+                        type: number
+                        format: int32
+                        description: 'Report category of the saved report. One of the {@link \RsReportCategorySid} constants.'
+                      text_description:
+                        type: string
+                        description: 'Description of the saved report.'
+                      text_title:
+                        type: string
+                        description: 'Title of the saved report.'
+      tags:
+        - Save-ReportSave
+    post:
+      summary: 'Saves new saved report. Creates a new saved report for the current business from the specified title, description, category, filters and view widget settings, and stores the related customization for the report controller.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key of the saved report.'
+          schema:
+            type: string
+        - name: uid_actor
+          in: query
+          description: 'UID user''s key of the actor.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_filter:
+                  type: object
+                  description: 'Filter raw data of the saved report. Keys are filter field names, values are the raw filter values. This variable do not get empty values of filters from HTML forms.'
+                a_settings:
+                  type: object
+                  description: 'View widget settings raw data of the saved report. Keys are widget setting names, values are the raw setting values.'
+                cid_controller:
+                  type: number
+                  format: int32
+                  description: 'CID of the controller class.'
+                id_report_category:
+                  type: number
+                  format: int32
+                  description: 'Report category of the saved report. One of the {@link \RsReportCategorySid} constants.'
+                json_filter:
+                  type: string
+                  description: 'Filter raw data of the saved report. Uses to save empty filter values, actual when empty filter is the same as all values are chosen. Use this value instead of {@link \Wl\Report\Save\ReportSaveApi::$a_filter}. In this array, key is name of a filter field. <i> A filter field is a property of a {@link \Wl\Report\Generator\ReportFilterAbstract} subclass. Name of the property of that subclass corresponds key in this array. </i>'
+                k_report_config:
+                  type: string
+                  description: 'Report save key used as a base configuration when saving a new report.'
+                text_description:
+                  type: string
+                  description: 'Description of the saved report.'
+                text_title:
+                  type: string
+                  description: 'Title of the saved report.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Save-ReportSave
+    put:
+      summary: 'Updates existing saved report. Rewrites the title, description, category, filters and view widget settings of the saved report identified by {@link ReportSaveApi::$k_report_save} within the current business.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key of the saved report.'
+          schema:
+            type: string
+        - name: k_report_save
+          in: query
+          description: 'Report save key.'
+          schema:
+            type: string
+        - name: uid_actor
+          in: query
+          description: 'UID user''s key of the actor.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_filter:
+                  type: object
+                  description: 'Filter raw data of the saved report. Keys are filter field names, values are the raw filter values. This variable do not get empty values of filters from HTML forms.'
+                a_settings:
+                  type: object
+                  description: 'View widget settings raw data of the saved report. Keys are widget setting names, values are the raw setting values.'
+                cid_controller:
+                  type: number
+                  format: int32
+                  description: 'CID of the controller class.'
+                id_report_category:
+                  type: number
+                  format: int32
+                  description: 'Report category of the saved report. One of the {@link \RsReportCategorySid} constants.'
+                json_filter:
+                  type: string
+                  description: 'Filter raw data of the saved report. Uses to save empty filter values, actual when empty filter is the same as all values are chosen. Use this value instead of {@link \Wl\Report\Save\ReportSaveApi::$a_filter}. In this array, key is name of a filter field. <i> A filter field is a property of a {@link \Wl\Report\Generator\ReportFilterAbstract} subclass. Name of the property of that subclass corresponds key in this array. </i>'
+                text_description:
+                  type: string
+                  description: 'Description of the saved report.'
+                text_title:
+                  type: string
+                  description: 'Title of the saved report.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Save-ReportSave
   '/Wl/Resource/Layout/Layout.json':
     get:
       summary: 'Returns information about the specified asset layout, including assets and custom shapes. Returns the full layout configuration including the asset list with positions and images, custom shapes with coordinates and colors, and display settings such as grid dimensions and number visibility.'
@@ -15835,7 +16344,7 @@ paths:
                     properties:
                       a_service:
                         type: array
-                        description: 'Appointment types list: <dl> <dt>bool `hide_application`</dt> <dd> Whether service will be hidden in the White Label mobile application. <tt>true</tt> means that service will not be displayed, <tt>false</tt> otherwise. </dd> <dt>bool `is_active`</dt> <dd>Whether appointment type is active.</dd> <dt>string `k_service`</dt> <dd>Appointment type identifier, primary key.</dd> <dt>string `k_service_category`</dt> <dd>Appointment type category identifier, primary key.</dd> <dt>string `text_category`</dt> <dd>Appointment type category name.</dd> <dt>string `text_service`</dt> <dd>Appointment type name.</dd> </dl>'
+                        description: 'Appointment types list: <dl> <dt>bool `hide_application`</dt> <dd> Whether service will be hidden in the White Label mobile application. <tt>true</tt> means that service will not be displayed, <tt>false</tt> otherwise. </dd> <dt>string `k_service`</dt> <dd>Appointment type identifier, primary key.</dd> <dt>string `k_service_category`</dt> <dd>Appointment type category identifier, primary key.</dd> <dt>string `text_category`</dt> <dd>Appointment type category name.</dd> <dt>string `text_service`</dt> <dd>Appointment type name.</dd> </dl>'
       tags:
         - ServiceList-List
   '/Wl/Service/ServiceList/List75.json':
@@ -17259,6 +17768,11 @@ paths:
           schema:
             type: number
             format: int32
+        - name: k_business
+          in: query
+          description: 'The business key.'
+          schema:
+            type: [string, "null"]
         - name: k_location
           in: query
           description: 'The location key.'
@@ -17993,14 +18507,14 @@ paths:
                     properties:
                       a_product:
                         type: array
-                        description: 'The list of products available at the location. Each element has the following structure: <dl> <dt>array[] `a_option`</dt> <dd> The list of product options available at the location. Each element has the following structure: <dl> <dt>bool `is_inventory`</dt> <dd>`true` if the product tracks inventory, `false` otherwise.</dd> <dt>string `k_shop_product_option`</dt> <dd>The product option key. <i>Primary key in the {@link \RsShopProductOptionSql} table.</i></dd> <dt>string `m_price`</dt> <dd>The regular price of the option.</dd> <dt>string `text_title`</dt> <dd>The product option title.</dd> </dl> </dd> <dt>bool `is_tax_free`</dt> <dd>`true` if no taxes should be applied to the product, `false` otherwise.</dd> <dt>string `k_shop_product`</dt> <dd>The product key. <i>Primary key in the {@link \RsShopProductSql} table.</i></dd> <dt>string `text_title`</dt> <dd>The product title.</dd> </dl>'
+                        description: 'The list of products available at the location. Each element has the following structure: <dl> <dt>array[] `a_option`</dt> <dd> The options of the product available at the location. Each element has the following structure: <dl> <dt>string `k_shop_product_option`</dt> <dd>The product option key. <i>Primary key in the {@link \RsShopProductOptionSql} table.</i></dd> <dt>string `m_price`</dt> <dd>The regular price of the option.</dd> <dt>string `text_title`</dt> <dd>The product option title.</dd> </dl> </dd> <dt>bool `is_tax_free`</dt> <dd>`true` if no taxes should be applied to the product, `false` otherwise.</dd> <dt>string `k_shop_product`</dt> <dd>The product key. <i>Primary key in the {@link \RsShopProductSql} table.</i></dd> <dt>string `text_title`</dt> <dd>The product title.</dd> </dl>'
                       a_promotion:
                         type: array
                         description: 'The list of promotions available at the location. Each element has the following structure: <dl> <dt>int `id_program`</dt> <dd>The promotion program. One of the {@link \RsProgramSid} constants.</dd> <dt>int `id_program_type`</dt> <dd>The promotion program type. One of the {@link \RsProgramTypeSid} constants.</dd> <dt>bool `is_tax_free`</dt> <dd>`true` if no taxes should be applied to the promotion, `false` otherwise.</dd> <dt>string `k_promotion`</dt> <dd>The promotion key. <i>Primary key in the {@link \RsPromotionSql} table.</i></dd> <dt>string `m_price`</dt> <dd>The promotion price, excluding taxes.</dd> <dt>string `text_title`</dt> <dd>The promotion title.</dd> <dt>string `text_payment_period`</dt> <dd>Payment period of the promotion.</dd> </dl>'
       tags:
         - Bulk-PurchaseItemList
     post:
-      summary: 'Prepares the bulk billing review: the per-client totals and the list of clients that will be billed. Validates access to the business, calculates the per-client subtotal, tax and total for the selected purchase items, and collects each client contact data and payment method label. The list of clients skipped due to restrictions is returned separately and is empty for now. selected.'
+      summary: 'Prepares the bulk billing review: the per-client totals and the list of clients that will be billed. Validates access to the business, calculates the per-client subtotal, tax and total for the selected purchase items, and collects each client contact data and payment method label. Clients that a selected item is not available to (by their client type or member group) are removed from billing and returned in {@link PurchaseItemListApi::$a_client_restrict}. Clients that are not eligible for the selected introductory items are flagged with `is_warning` and described in {@link PurchaseItemListApi::$a_client_bill} (`a_warning` key). selected.'
       parameters:
         - name: k_business
           in: query
@@ -18028,6 +18542,9 @@ paths:
                 is_payment_method_default:
                   type: boolean
                   description: 'Whether to charge the client default payment method (`true`) or bill the client account (`false`).'
+                is_receipt_send:
+                  type: boolean
+                  description: 'Whether to send a receipt to the client email address after billing.'
                 is_tax:
                   type: boolean
                   description: 'Whether to include the pre-configured taxes into the totals.'
@@ -18043,10 +18560,10 @@ paths:
                     properties:
                       a_client_bill:
                         type: array
-                        description: 'The list of clients that will be billed. Each element has the following structure: <dl> <dt>string `text_mail`</dt> <dd>The client email address. Empty string if the client has no email.</dd> <dt>string `text_name`</dt> <dd>The client full name.</dd> <dt>string `text_pay_method`</dt> <dd> The payment method label for this client. `Account` when billing to the client account; otherwise the default stored card label (for example, `Visa ****1234`), the default ACH account label when no card is on file, or an account fallback when neither is on file. </dd> <dt>string `text_phone`</dt> <dd>The client cell phone number. Empty string if the client has no cell phone.</dd> <dt>string `uid`</dt> <dd>The client user key. <i>Primary key in the {@link \PassportLoginSql} table.</i></dd> </dl>'
-                      a_client_ignore:
+                        description: 'The result of preparing the clients to bill. Has the following structure: <dl> <dt>array[] `a_warning`</dt> <dd> The inventory and introductory-eligibility warnings produced while preparing the bill. Each element has the following structure: <dl> <dt>string `text_message`</dt> <dd>The user-facing warning message.</dd> </dl> </dd> <dt>array[] `a_client`</dt> <dd> The list of clients that will be billed. Each element has the following structure: <dl> <dt>bool `is_warning`</dt> <dd> `true` if the client has no default payment method on file, has no email on file while a receipt is to be sent, or is not eligible for at least one of the selected introductory items; `false` otherwise. </dd> <dt>string `text_mail`</dt> <dd>The client email address. Empty string if the client has no email.</dd> <dt>string `text_name`</dt> <dd>The client full name.</dd> <dt>string `text_pay_method`</dt> <dd> The payment method label for this client. `Account` when billing to the client account; otherwise the default stored card label (for example, `Visa ****1234`), the default ACH account label when no card is on file, or an account fallback when neither is on file. </dd> <dt>string `text_phone`</dt> <dd>The client cell phone number. Empty string if the client has no cell phone.</dd> <dt>string `uid`</dt> <dd>The client user key. <i>Primary key in the {@link \PassportLoginSql} table.</i></dd> </dl> </dd> </dl>'
+                      a_client_restrict:
                         type: array
-                        description: 'The list of clients that will be skipped due to restrictions. Each element has the same structure as an element of {@link PurchaseItemListApi::$a_client_bill}. This list is always empty for now and will be populated once the restriction checks are implemented.'
+                        description: 'The clients removed from the bulk billing because a selected item is not available to their client type or member group, together with the warnings that explain why. Has the following structure: <dl> <dt>array[] `a_client`</dt> <dd> The clients that fail at least one restriction. Each element has the following structure: <dl> <dt>string `text_login_type`</dt> <dd>The client login type title.</dd> <dt>string `text_mail`</dt> <dd>The client email address. Empty string if the client has no email.</dd> <dt>string `text_member_group`</dt> <dd>Comma-separated titles of the member groups the client belongs to.</dd> <dt>string `text_name`</dt> <dd>The client full name.</dd> <dt>string `uid`</dt> <dd>The client user key. <i>Primary key in the {@link \PassportLoginSql} table.</i></dd> </dl> </dd> <dt>array[] `a_warning`</dt> <dd> One warning per restricted item that at least one client fails to satisfy. Each element has the following structure: <dl> <dt>string `text_message`</dt> <dd>The user-facing warning message.</dd> </dl> </dd> <dt>bool `has_client_group_restrict`</dt> <dd>`true` if at least one client fails a member group restriction, `false` otherwise.</dd> <dt>bool `has_client_type_restrict`</dt> <dd>`true` if at least one client fails a login type restriction, `false` otherwise.</dd> </dl>'
                       m_batch:
                         type: string
                         description: 'The total amount charged across every client that will be billed (per-client total multiplied by the number of billed clients). Excludes taxes when {@link PurchaseItemListApi::$is_tax} is `false`.'
@@ -18061,6 +18578,47 @@ paths:
                         description: 'The total per client (subtotal plus tax).'
       tags:
         - Bulk-PurchaseItemList
+  '/Wl/Widget/Analytics/WidgetAnalyticsEvent.json':
+    post:
+      summary: 'Accepts a Widget analytics event. Validates the event envelope and payload, stores the event, and schedules asynchronous processing.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_payload:
+                  type: array
+                  description: 'Event-specific payload. <dl> <dt>array[] `a_item`</dt> <dd> Selected checkout items. <dl> <dt>int|null `id_purchase_item`</dt> <dd>Purchase item ID. A {@link \RsPurchaseItemSid} constant for store checkout.</dd> <dt>int|null `id_service`</dt> <dd>Service ID. A {@link \Wl\Service\ServiceSid} constant for booking.</dd> <dt>string `k_enrollment_block`</dt> <dd>Enrollment block key for an event item. Empty for all other item types.</dd> <dt>string `k_item`</dt> <dd>Selected item key. The referenced table depends on checkout type and item type.</dd> </dl> </dd> <dt>int `id_checkout_type`</dt> <dd>Checkout type. One of {@link \Wl\Widget\Analytics\WidgetAnalyticsCheckoutTypeSid} constants.</dd> <dt>string `k_location`</dt> <dd>Location key.</dd> <dt>string|null `k_skin`</dt> <dd>Widget skin key. `null` if the Widget does not use a registered skin.</dd> <dt>string `m_total`</dt> <dd>Checkout total in the location currency.</dd> <dt>string `s_funnel_step`</dt> <dd>Last funnel step reached by the client. Empty if it is unavailable.</dd> <dt>string `s_session_id`</dt> <dd> Widget checkout session identifier. Empty if it is unavailable. It is used only for diagnostics and continuation context, not for idempotency. </dd> <dt>string `s_utm_campaign`</dt> <dd>UTM campaign value. Empty if it is unavailable.</dd> <dt>string `s_utm_medium`</dt> <dd>UTM medium value. Empty if it is unavailable.</dd> <dt>string `s_utm_source`</dt> <dd>UTM source value. Empty if it is unavailable.</dd> <dt>string `uid`</dt> <dd>User key for whom checkout was abandoned.</dd> <dt>string `url_continue`</dt> <dd>URL that restores the booking or purchase flow with the selected items.</dd> </dl>'
+                i_event_version:
+                  type: number
+                  format: int32
+                  description: 'Event schema version.'
+                k_business:
+                  type: string
+                  description: 'Business key used for shard and datacenter routing.'
+                s_event_id:
+                  type: string
+                  description: 'Client-generated idempotency identifier. A retry of the same logical event must use the same value.'
+                s_event_name:
+                  type: string
+                  description: 'Event name. Initially only `abandoned_checkout` is supported.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      is_accepted:
+                        type: boolean
+                        description: 'Whether the event was durably accepted for asynchronous processing.'
+      tags:
+        - Analytics-WidgetAnalyticsEvent
   '/Wl/Tuition/Enrollment/TuitionEnrollmentList.json':
     get:
       summary: 'Returns list of enrollments for the tuition. Get a full list of users who purchased the tuition. For each enrollment, returns the list of events and the users have been enrolled in.'
@@ -19716,7 +20274,7 @@ paths:
                     properties:
                       a_schedule:
                         type: array
-                        description: 'The sessions present on the business schedule. These are sorted chronologically in ascending order. Every element has the following keys: <dl> <dt>string[] `a_note`</dt> <dd>List of notes.</dd> <dt>array[]|null `a_quiz`</dt> <dd> List of quizzes. Has next structure: `null` if no quizzes for schedule item. <dl> <dt>int `id_status`</dt> <dd>Response status ID. One of {@link \Core\Quiz\Response\ResponseStatusSid} constants.</dd> <dt>bool `is_hide`</dt> <dd>Whether it''s hidden. `true` quiz is hidden, `false` otherwise.</dd> <dt>bool `is_require`</dt> <dd>Whether it''s required. `true` quiz is required, `false` otherwise.</dd> <dt>string `k_quiz`</dt> <dd>Quiz key, <i>primary key in {@link \Core\Quiz\QuizSql} table.</i></dd> <dt>string `k_quiz_login`</dt> <dd>Quiz login key, <i>primary key in {@link \Wl\Quiz\Login\QuizLoginSql} table.</i></dd> <dt>string `k_quiz_response`</dt> <dd>Quiz response key, <i>primary key in {@link \Wl\Quiz\Response\ResponseSql} table.</i></dd> <dt>string `text_title`</dt> <dd>Quiz title.</dd> </dl> </dd> <dt>array `a_appointment_visit_info`</dt> <dd> Additional visit information about this appointment. Empty array if it''s a class. <dl> <dt>int `id_visit`</dt> <dd>Visit id. One of {@link \Wl\Visit\VisitSid} constants.</dd> <dt>bool `is_confirmed`</dt> <dd>`true` means that appointment was requested and confirmed by the staff.</dd> <dt>bool `is_deny`</dt> <dd>`true` means that appointment was requested and denied by the staff.</dd> <dt>bool `is_notify_request_accept`</dt> <dd>`true` means that the client will receive a notification, if appointment will be confirmed by the staff.</dd> <dt>bool `is_notify_request_deny`</dt> <dd>`true` means that the client will receive a notification, if appointment will be denied by the staff.</dd> <dt>bool `is_request`</dt> <dd>`true` means that appointment was requested, but not confirmed by the staff.</dd> </dl> </dd> <dt>string[] `a_resource`</dt> <dd>A list of assets involved in the session. <i>Primary keys in {@link \RsResourceSql} table.</i></dd> <dt>string[] `a_resource_removed`</dt> <dd>List of removed assets involved in the session. <i>Primary keys in {@link \RsResourceSql} table.</i></dd> <dt>string[] `a_staff`</dt> <dd> A list of staff members who will conduct the session. <i>Primary keys in {@link \RsStaffSql} table.</i> Deprecated. Returned only for applications in the `APPS_USE_OLD_K_STAFF` allow-list. New applications should use `a_uid_staff` instead. </dd> <dt>string[] `a_uid_staff`</dt> <dd> A list of staff members who will conduct the session. <i>Primary keys in {@link \PassportLoginSql} table.</i> </dd> <dt>array `a_staff_info`</dt> <dd> Information about staff members who conduct this session. For applications in the `APPS_USE_OLD_K_STAFF` allow-list, keys are <i>primary keys in {@link \RsStaffSql} table</i>. For other applications, keys are <i>primary keys in {@link \PassportLoginSql} table</i>. Values are array with data: <dl> <dt>string `text_staff`</dt> <dd>Staff full name.</dd> <dt>bool `is_staff_change`</dt> <dd>`true` means staff is substituted, `false` simple staff member.</dd> <dt>string `k_staff`</dt> <dd> Staff key. <i>Primary key in {@link \RsStaffSql} table.</i> Returned only for applications in the `APPS_USE_OLD_K_STAFF` allow-list. </dd> <dt>string `uid_staff`</dt> <dd>Staff user key. <i>Primary key in {@link \PassportLoginSql} table.</i></dd> </dl> </dd> <dt>string[] `a_user`</dt> <dd>For appointments, this is a list of the names of users who are scheduled to attend the session.</dd> <dt>string[] `a_virtual_location`</dt> <dd>List of virtual locations. Each value is <i>primary key in {@link \RsLocationSql} table</i>.</dd> <dt>string `dt_date`</dt> <dd>The date/time of the session in UTC.</dd> <dt>string `dt_date_cancel`</dt> <dd>The date/time when the session was canceled in UTC. Only used for appointments.</dd> <dt>string `dt_date_local`</dt> <dd>The date/time of the session in local time.</dd> <dt>bool `has_quiz_uncompleted`</dt> <dd>`true` if has uncompleted quizzes, `false` otherwise.</dd> <dt>int `i_addon`</dt> <dd>The number of addons for the current appointment. Set only if the current session is an appointment.</dd> <dt>int `i_book`</dt> <dd>The number of clients booked into the session.</dd> <dt>int `i_capacity`</dt> <dd>The maximum capacity of the session.</dd> <dt>int `i_duration`</dt> <dd>The duration of the session in minutes.</dd> <dt>int `i_padding_after`</dt> <dd>The padding time after the session in minutes. Only used for appointments.</dd> <dt>int `i_padding_before`</dt> <dd>The padding time before the session in minutes. Only used for appointments.</dd> <dt>int `i_start`</dt> <dd> The start time in minutes after midnight. For example, a class starting at 10:30 in the morning local time will have an `i_start` value of 630. </dd> <dt>int `i_wait`</dt> <dd>Count clients on waitlist.</dd> <dt>int `id_option`</dt> <dd> Appointment title display style. Set only for appointments, for others it will be equal to 0. Constants from {@link \Wl\Schedule\Design\OptionSid}. </dd> <dt>int `id_service`</dt> <dd>The ID of the service type. One of {@link \RsServiceSid} constants.</dd> <dt>bool `is_arrive`</dt> <dd> For appointments: <tt>true</tt> if user has checked-in; <tt>false</tt> otherwise. For classes always <tt>null</tt>. </dd> <dt>bool `is_class_view`</dt> <dd> `true` if this class session is visible only through the "View other staff schedules" permission and must be shown read-only (no attendance roster, no booked client identities, and no edit, cancel, reschedule, or booking actions); `false` otherwise. </dd> <dt>bool `is_pay`</dt> <dd> For appointments: <tt>true</tt> if appointment is paid; <tt>false</tt> otherwise. For classes always <tt>null</tt>. </dd> <dt>bool `is_repeat`</dt> <dd> For appointments: <tt>true</tt> if appointment is recurring; <tt>false</tt> otherwise. For classes always <tt>null</tt>. </dd> <dt>string `k_appointment`</dt> <dd> The appointment key. <i>Primary key in {@link \RsAppointmentSql} table.</i> If the session isn''t an appointment, this will be `0`. </dd> <dt>string `dt_confirm`</dt> <dd> Confirmation date for appointment in MySQL format. Will be zero date + time in case appointment is not yet confirmed by client. </dd> <dt>string `k_class`</dt> <dd> The class key. <i>Primary key in {@link \RsClassSql} table.</i> If the session isn''t a class, this will be `0`. </dd> <dt>string `k_class_period`</dt> <dd> The class period key. <i>Primary key in {@link \RsClassPeriodSql} table.</i> If the session isn''t a class, this will be `0`. </dd> <dt>string `k_location`</dt> <dd>The location key for where the session takes place. <i>Primary key in {@link \RsLocationSql} table.</i></dd> <dt>string `k_service`</dt> <dd> This is the key of the appointment type, while `k_appointment` is the specific instance. <i>Primary key in {@link \RsServiceSql} table.</i> For other cases, this will be `0`. </dd> <dt>string `s_title`</dt> <dd>The name of the session.</dd> <dt>bool `show_quiz_icon`</dt> <dd>`true` when need show quiz icon, `false` otherwise.</dd> <dt>int `t_business_start`</dt> <dd>The earliest time the business where the session takes place, opens. In Unix format.</dd> <dt>int `t_business_end`</dt> <dd>The latest time the business where the session takes place, closes. In Unix format.</dd> <dt>string `text_alert`</dt> <dd>Alert message.</dd> <dt>string `text_color_background`</dt> <dd>The background color in hex representation as used on WellnessLiving.</dd> <dt>string `text_color_border`</dt> <dd>The border color in hex representation as used on WellnessLiving.</dd> <dt>string `text_quiz_title`</dt> <dd>Title for quiz icon.</dd> <dt>bool `is_virtual_service`</dt> <dd><tt>true</tt> - If the business has at least one virtual service, <tt>false</tt> - otherwise.</dd> <dt>string `url_image`</dt> <dd>URL to image. Empty if image not exist.</dd> </dl>'
+                        description: 'The sessions present on the business schedule. These are sorted chronologically in ascending order. Every element has the following keys: <dl> <dt>string[] `a_note`</dt> <dd>List of notes.</dd> <dt>array[]|null `a_quiz`</dt> <dd> List of quizzes. Has next structure: `null` if no quizzes for schedule item. <dl> <dt>int `id_status`</dt> <dd>Response status ID. One of {@link \Core\Quiz\Response\ResponseStatusSid} constants.</dd> <dt>bool `is_hide`</dt> <dd>Whether it''s hidden. `true` quiz is hidden, `false` otherwise.</dd> <dt>bool `is_require`</dt> <dd>Whether it''s required. `true` quiz is required, `false` otherwise.</dd> <dt>string `k_quiz`</dt> <dd>Quiz key, <i>primary key in {@link \Core\Quiz\QuizSql} table.</i></dd> <dt>string `k_quiz_login`</dt> <dd>Quiz login key, <i>primary key in {@link \Wl\Quiz\Login\QuizLoginSql} table.</i></dd> <dt>string `k_quiz_response`</dt> <dd>Quiz response key, <i>primary key in {@link \Wl\Quiz\Response\ResponseSql} table.</i></dd> <dt>string `text_title`</dt> <dd>Quiz title.</dd> </dl> </dd> <dt>array `a_appointment_visit_info`</dt> <dd> Additional visit information about this appointment. Empty array if it''s a class. <dl> <dt>int `id_visit`</dt> <dd>Visit id. One of {@link \Wl\Visit\VisitSid} constants.</dd> <dt>bool `is_confirmed`</dt> <dd>`true` means that appointment was requested and confirmed by the staff.</dd> <dt>bool `is_deny`</dt> <dd>`true` means that appointment was requested and denied by the staff.</dd> <dt>bool `is_notify_request_accept`</dt> <dd>`true` means that the client will receive a notification, if appointment will be confirmed by the staff.</dd> <dt>bool `is_notify_request_deny`</dt> <dd>`true` means that the client will receive a notification, if appointment will be denied by the staff.</dd> <dt>bool `is_request`</dt> <dd>`true` means that appointment was requested, but not confirmed by the staff.</dd> </dl> </dd> <dt>string[] `a_resource`</dt> <dd>A list of assets involved in the session. <i>Primary keys in {@link \RsResourceSql} table.</i></dd> <dt>string[] `a_resource_removed`</dt> <dd>List of removed assets involved in the session. <i>Primary keys in {@link \RsResourceSql} table.</i></dd> <dt>string[] `a_staff`</dt> <dd> A list of staff members who will conduct the session. <i>Primary keys in {@link \RsStaffSql} table.</i> Deprecated. Returned only for applications in the `APPS_USE_OLD_K_STAFF` allow-list. New applications should use `a_uid_staff` instead. </dd> <dt>string[] `a_uid_staff`</dt> <dd> A list of staff members who will conduct the session. <i>Primary keys in {@link \PassportLoginSql} table.</i> </dd> <dt>array `a_staff_info`</dt> <dd> Information about staff members who conduct this session. For applications in the `APPS_USE_OLD_K_STAFF` allow-list, keys are <i>primary keys in {@link \RsStaffSql} table</i>. For other applications, keys are <i>primary keys in {@link \PassportLoginSql} table</i>. Values are array with data: <dl> <dt>string `text_staff`</dt> <dd>Staff full name.</dd> <dt>bool `is_staff_change`</dt> <dd>`true` means staff is substituted, `false` simple staff member.</dd> <dt>string `k_staff`</dt> <dd> Staff key. <i>Primary key in {@link \RsStaffSql} table.</i> Returned only for applications in the `APPS_USE_OLD_K_STAFF` allow-list. </dd> <dt>string `uid_staff`</dt> <dd>Staff user key. <i>Primary key in {@link \PassportLoginSql} table.</i></dd> </dl> </dd> <dt>string[] `a_user`</dt> <dd>For appointments, this is a list of the names of users who are scheduled to attend the session.</dd> <dt>string[] `a_virtual_location`</dt> <dd>List of virtual locations. Each value is <i>primary key in {@link \RsLocationSql} table</i>.</dd> <dt>string `dt_date`</dt> <dd>The date/time of the session in UTC.</dd> <dt>string `dt_date_cancel`</dt> <dd>The date/time when the session was canceled in UTC. Only used for appointments.</dd> <dt>string `dt_date_local`</dt> <dd>The date/time of the session in local time.</dd> <dt>bool `has_quiz_uncompleted`</dt> <dd>`true` if has uncompleted quizzes, `false` otherwise.</dd> <dt>int `i_addon`</dt> <dd>The number of addons for the current appointment. Set only if the current session is an appointment.</dd> <dt>int `i_book`</dt> <dd>The number of clients booked into the session.</dd> <dt>int `i_capacity`</dt> <dd>The maximum capacity of the session.</dd> <dt>int `i_duration`</dt> <dd>The duration of the session in minutes.</dd> <dt>int `i_padding_after`</dt> <dd>The padding time after the session in minutes. Only used for appointments.</dd> <dt>int `i_padding_before`</dt> <dd>The padding time before the session in minutes. Only used for appointments.</dd> <dt>int `i_start`</dt> <dd> The start time in minutes after midnight. For example, a class starting at 10:30 in the morning local time will have an `i_start` value of 630. </dd> <dt>int `i_wait`</dt> <dd>Count clients on waitlist.</dd> <dt>int `id_option`</dt> <dd> Appointment title display style. Set only for appointments, for others it will be equal to 0. Constants from {@link \Wl\Schedule\Design\OptionSid}. </dd> <dt>int `id_service`</dt> <dd>The ID of the service type. One of {@link \RsServiceSid} constants.</dd> <dt>bool `is_arrive`</dt> <dd> For appointments: <tt>true</tt> if user has checked-in; <tt>false</tt> otherwise. For classes always <tt>null</tt>. </dd> <dt>bool `is_class_view`</dt> <dd> `true` if this class or event session is visible only through the "View other staff schedules" permission and must be shown read-only (no attendance roster, no booked client identities, and no edit, cancel, reschedule, or booking actions); `false` otherwise. </dd> <dt>bool `is_pay`</dt> <dd> For appointments: <tt>true</tt> if appointment is paid; <tt>false</tt> otherwise. For classes always <tt>null</tt>. </dd> <dt>bool `is_repeat`</dt> <dd> For appointments: <tt>true</tt> if appointment is recurring; <tt>false</tt> otherwise. For classes always <tt>null</tt>. </dd> <dt>string `k_appointment`</dt> <dd> The appointment key. <i>Primary key in {@link \RsAppointmentSql} table.</i> If the session isn''t an appointment, this will be `0`. </dd> <dt>string `dt_confirm`</dt> <dd> Confirmation date for appointment in MySQL format. Will be zero date + time in case appointment is not yet confirmed by client. </dd> <dt>string `k_class`</dt> <dd> The class key. <i>Primary key in {@link \RsClassSql} table.</i> If the session isn''t a class, this will be `0`. </dd> <dt>string `k_class_period`</dt> <dd> The class period key. <i>Primary key in {@link \RsClassPeriodSql} table.</i> If the session isn''t a class, this will be `0`. </dd> <dt>string `k_location`</dt> <dd>The location key for where the session takes place. <i>Primary key in {@link \RsLocationSql} table.</i></dd> <dt>string `k_service`</dt> <dd> This is the key of the appointment type, while `k_appointment` is the specific instance. <i>Primary key in {@link \RsServiceSql} table.</i> For other cases, this will be `0`. </dd> <dt>string `s_title`</dt> <dd>The name of the session.</dd> <dt>bool `show_quiz_icon`</dt> <dd>`true` when need show quiz icon, `false` otherwise.</dd> <dt>int `t_business_start`</dt> <dd>The earliest time the business where the session takes place, opens. In Unix format.</dd> <dt>int `t_business_end`</dt> <dd>The latest time the business where the session takes place, closes. In Unix format.</dd> <dt>string `text_alert`</dt> <dd>Alert message.</dd> <dt>string `text_color_background`</dt> <dd>The background color in hex representation as used on WellnessLiving.</dd> <dt>string `text_color_border`</dt> <dd>The border color in hex representation as used on WellnessLiving.</dd> <dt>string `text_quiz_title`</dt> <dd>Title for quiz icon.</dd> <dt>bool `is_virtual_service`</dt> <dd><tt>true</tt> - If the business has at least one virtual service, <tt>false</tt> - otherwise.</dd> <dt>string `url_image`</dt> <dd>URL to image. Empty if image not exist.</dd> </dl>'
                       is_virtual_service:
                         type: boolean
                         description: '<tt>true</tt> - If the business has at least one virtual service, <tt>false</tt> - otherwise.'
@@ -20183,7 +20741,7 @@ paths:
                     properties:
                       a_user:
                         type: array
-                        description: 'Array with information about current user and his relationship with sub accounts. <dl> <dt>string `id_family_relation`</dt> <dd>ID of relationship between current user and sub account.</dd> <dt>string `s_name`</dt> <dd>Name of sub account.</dd> <dt>string `uid`</dt> <dd>UID of sub account.</dd> </dl>'
+                        description: 'Array with information about current user and his relationship with sub accounts. <dl> <dt>int `id_family_relation`</dt> <dd>ID of relationship between current user and sub account.</dd> <dt>string `s_name`</dt> <dd>Name of sub account.</dd> <dt>string `uid`</dt> <dd>UID of sub account.</dd> </dl>'
       tags:
         - Select-Select
     post:
@@ -20930,7 +21488,7 @@ paths:
                     properties:
                       a_service:
                         type: array
-                        description: 'A list of services with information about them. <b>Key</b> - the service key. <b>Value</b> - an array, with every element consisting of the next keys: <dl> <dt>string[] `a_class_tab`</dt> <dd>The list of tab keys for the service.</dd> <dt>array[] `a_direct_link`</dt> <dd> A list of links to start booking from a direct link. This can''t be one link, as the same appointment can be available in several booking tabs. Therefore, each booking tab has its own direct booking link. Each element has two values: <dl> <dt>string `k_class_tab`</dt> <dd>The key of the book now tab.</dd> <dt>string `url_tab`</dt> <dd>The booking URL. This will open the booking wizard under the related booking tab.</dd> </dl> </dd> <dt>array|null `a_config`</dt> <dd> Appointment-specific business policy overrides. `null` when the service uses the general business policy. When not `null`, contains a subset of business config fields, including: <dl> <dt>bool `is_back_to_back`</dt> <dd>`true` if this service supports back-to-back booking.</dd> <dt>bool `is_book_repeat_client`</dt> <dd>`true` if clients can book this service on a recurring basis.</dd> <dt>bool `is_book_repeat_no_end_date_appointment`</dt> <dd>`true` if appointment bookings for this service default to weekly recurring with no end date.</dd> <dt>bool `is_multiple_booking`</dt> <dd>`true` if multiple bookings are allowed for this service.</dd> <dt>bool `is_wait_list_unpaid`</dt> <dd>`true` if clients on the wait list do not have to pay upfront.</dd> </dl> </dd> <dt>array `a_image`</dt> <dd> Information about the appointment image. An array with the following values: <dl> <dt>int `i_height`</dt> <dd>The height of the image.</dd> <dt>int `i_width`</dt> <dd>The width of the image.</dd> <dt>bool `is_empty`</dt> <dd>This will be `true` if the image is not set.</dd> <dt>string `k_service`</dt> <dd>The service key.</dd> <dt>string `s_service`</dt> <dd>The name of the service.</dd> <dt>string `s_url`</dt> <dd>The URL to the image.</dd> </dl> </dd> <dt>string[] `a_login_type_restriction`</dt> <dd> Keys are login type keys. <i>Primary keys in {@link \Wl\Login\Type\Sql} table.</i> Values - List of login types'' titles for current service. Clients that have one of these types can book service. </dd> <dt>string[] `a_member_group_restriction`</dt> <dd> Keys are member group keys. <i>Primary keys in {@link \Wl\Member\Group\Sql} table.</i> Values - list of member groups'' titles for current service. Clients that belongs to these groups can book service. </dd> <dt>string `f_deposit`</dt> <dd>The amount of deposit required.</dd> <dt>string `f_offline_max`</dt> <dd>The maximum offline price.</dd> <dt>string `f_offline_min`</dt> <dd>The minimum offline price.</dd> <dt>string `f_online`</dt> <dd>The online price.</dd> <dt>bool `hide_application`</dt> <dd> Determines whether the service will be hidden in the White Label mobile application. `true` means that service won''t be displayed. Otherwise, this will be `false`. </dd> <dt>string `html_deny_reason`</dt> <dd>Human-readable reason why the client cannot book this service. Empty string if there is no deny reason.</dd> <dt>int `i_age_from`</dt> <dd>The required minimum client age to book an appointment.</dd> <dt>int `i_age_to`</dt> <dd>The required maximum client age to book an appointment.</dd> <dt>int `i_price`</dt> <dd>The price type ID. One of {@link \RsServicePriceSid} constants.</dd> <dt>int `i_duration`</dt> <dd>The appointment duration in minutes.</dd> <dt>int `id_book_flow`</dt> <dd>The type of client booking flow. One of {@link \Wl\Service\ServiceBookFlowSid} constants.</dd> <dt>int|null `id_deny_reason`</dt> <dd> The ID of the reason why the client cannot book this service. One of {@link \Wl\Schedule\ClassView\DenyReasonSid} constants. `null` if there is no deny reason. </dd> <dt>int `id_service_require`</dt> <dd>The required payment type ID. One of {@link \RsServiceRequireSid} constants.</dd> <dt>bool `is_age_public`</dt> <dd>`true` if age restrictions are public. Otherwise, `false` if they should be hidden from clients.</dd> <dt>bool `is_age_restricted`</dt> <dd>Determines whether this service can''t be booked due to age restrictions.</dd> <dt>bool `is_back_to_back`</dt> <dd>Determines whether this service supports back-to-back booking.</dd> <dt>bool `is_bookable`</dt> <dd>Whether this appointment can be booked online.</dd> <dt>bool `is_book_repeat_client`</dt> <dd>`true` if clients can book classes and appointments on a recurring basis. Otherwise, this `false`.</dd> <dt>bool `is_book_repeat_no_end_date_appointment`</dt> <dd>`true` if appointment bookings default to weekly recurring with no end date, `false` otherwise.</dd> <dt>bool `is_deposit_percent`</dt> <dd>`true` if `f_deposit` is a percentage. `false` if `f_deposit` is an amount of money.</dd> <dt>bool `is_gender_select`</dt> <dd>`true` if clients can select the staff member''s gender. Otherwise, this will be `false`.</dd> <dt>bool `is_online_sell`</dt> <dd>`true` if clients can buy this appointment. `false` if only staff members can sell it.</dd> <dt>bool `is_resource_type`</dt> <dd>`true` if the service requires assets. Otherwise, this will be `false`.</dd> <dt>bool `is_single_buy`</dt> <dd> `true` if the appointment can be booked without a Purchase Option. `false` if it''s necessary to buy a Purchase Option. </dd> <dt>bool `is_staff_confirm`</dt> <dd>`true` if the appointment must be confirmed by a staff member after booking. Otherwise, `false`.</dd> <dt>bool `is_staff_skip`</dt> <dd>`true` if clients can select a staff member for the appointment. Otherwise, `false`.</dd> <dt>bool `is_question`</dt> <dd>Determines whether the service will ask for questions or not.</dd> <dt>bool `is_virtual`</dt> <dd>`true` if the service is virtual. Otherwise, this will be `false`.</dd> <dt>string `k_service`</dt> <dd>The appointment primary key. <i>Primary key in {@link \RsServiceSql} table.</i></dd> <dt>string `k_service_category`</dt> <dd>The service category primary key. <i>Primary key in {@link \RsServiceCategorySql} table.</i></dd> <dt>string `s_duration`</dt> <dd>The appointment duration in a human-readable format.</dd> <dt>string `s_service`</dt> <dd>The appointment title.</dd> <dt>string|null `sid_deny_reason`</dt> <dd>String representation of the deny reason. `null` if no deny reason.</dd> <dt>string `text_age_restriction`</dt> <dd>Age restriction header.</dd> <dt>string `xml_description`</dt> <dd>Appointment description (deprecated, use `html_description`).</dd> <dt>string `xml_description_short`</dt> <dd>Appointment short description (deprecated, use `html_description_short`).</dd> <dt>string `xml_special`</dt> <dd>Special instructions (deprecated, use `html_special`).</dd> </dl>'
+                        description: 'A list of services with information about them. <b>Key</b> - the service key. <b>Value</b> - an array, with every element consisting of the next keys: <dl> <dt>string[] `a_class_tab`</dt> <dd>The list of tab keys for the service.</dd> <dt>array[] `a_direct_link`</dt> <dd> A list of links to start booking from a direct link. This can''t be one link, as the same appointment can be available in several booking tabs. Therefore, each booking tab has its own direct booking link. Each element has two values: <dl> <dt>string `k_class_tab`</dt> <dd>The key of the book now tab.</dd> <dt>string `url_tab`</dt> <dd>The booking URL. This will open the booking wizard under the related booking tab.</dd> </dl> </dd> <dt>array|null `a_config`</dt> <dd> Appointment-specific business policy overrides. `null` when the service uses the general business policy. When not `null`, contains a subset of business config fields, including: <dl> <dt>bool `is_back_to_back`</dt> <dd>`true` if this service supports back-to-back booking.</dd> <dt>bool `is_book_repeat_client`</dt> <dd>`true` if clients can book this service on a recurring basis.</dd> <dt>bool `is_book_repeat_no_end_date_appointment`</dt> <dd>`true` if appointment bookings for this service default to weekly recurring with no end date.</dd> <dt>bool `is_multiple_booking`</dt> <dd>`true` if multiple bookings are allowed for this service.</dd> <dt>bool `is_wait_list_unpaid`</dt> <dd>`true` if clients on the wait list do not have to pay upfront.</dd> </dl> </dd> <dt>array `a_image`</dt> <dd> Information about the appointment image. An array with the following values: <dl> <dt>int `i_height`</dt> <dd>The height of the image.</dd> <dt>int `i_width`</dt> <dd>The width of the image.</dd> <dt>bool `is_empty`</dt> <dd>This will be `true` if the image is not set.</dd> <dt>string `k_service`</dt> <dd>The service key.</dd> <dt>string `s_service`</dt> <dd>The name of the service.</dd> <dt>string `s_url`</dt> <dd>The URL to the image.</dd> </dl> </dd> <dt>string[] `a_login_type_restriction`</dt> <dd> Keys are login type keys. <i>Primary keys in {@link \Wl\Login\Type\Sql} table.</i> Values - List of login types'' titles for current service. Clients that have one of these types can book service. </dd> <dt>string[] `a_member_group_restriction`</dt> <dd> Keys are member group keys. <i>Primary keys in {@link \Wl\Member\Group\Sql} table.</i> Values - list of member groups'' titles for current service. Clients that belongs to these groups can book service. </dd> <dt>string `f_deposit`</dt> <dd>The amount of deposit required.</dd> <dt>string `f_offline_max`</dt> <dd>The maximum offline price.</dd> <dt>string `f_offline_min`</dt> <dd>The minimum offline price.</dd> <dt>string `f_online`</dt> <dd>The online price.</dd> <dt>bool `hide_application`</dt> <dd> Determines whether the service will be hidden in the White Label mobile application. `true` means that service won''t be displayed. Otherwise, this will be `false`. </dd> <dt>string `html_deny_reason`</dt> <dd>Human-readable reason why the client cannot book this service. Empty string if there is no deny reason.</dd> <dt>int `i_age_from`</dt> <dd>The required minimum client age to book an appointment.</dd> <dt>int `i_age_to`</dt> <dd>The required maximum client age to book an appointment.</dd> <dt>int `i_price`</dt> <dd>The price type ID. One of {@link \RsServicePriceSid} constants.</dd> <dt>int `i_duration`</dt> <dd>The appointment duration in minutes.</dd> <dt>int `id_book_flow`</dt> <dd>The type of client booking flow. One of {@link \Wl\Service\ServiceBookFlowSid} constants.</dd> <dt>int|null `id_deny_reason`</dt> <dd> The ID of the reason why the client cannot book this service. One of {@link \Wl\Schedule\ClassView\DenyReasonSid} constants. `null` if there is no deny reason. </dd> <dt>int `id_service_require`</dt> <dd>The required payment type ID. One of {@link \RsServiceRequireSid} constants.</dd> <dt>bool `is_age_public`</dt> <dd>`true` if age restrictions are public. Otherwise, `false` if they should be hidden from clients.</dd> <dt>bool `is_age_restricted`</dt> <dd>Determines whether this service can''t be booked due to age restrictions.</dd> <dt>bool `is_back_to_back`</dt> <dd>Determines whether this service supports back-to-back booking.</dd> <dt>bool `is_bookable`</dt> <dd>Whether this appointment can be booked online.</dd> <dt>bool `is_book_repeat_client`</dt> <dd>`true` if clients can book classes and appointments on a recurring basis. Otherwise, this `false`.</dd> <dt>bool `is_book_repeat_no_end_date_appointment`</dt> <dd>`true` if appointment bookings default to weekly recurring with no end date, `false` otherwise.</dd> <dt>bool `is_deposit_percent`</dt> <dd>`true` if `f_deposit` is a percentage. `false` if `f_deposit` is an amount of money.</dd> <dt>bool `is_gender_select`</dt> <dd>`true` if clients can select the staff member''s gender. Otherwise, this will be `false`.</dd> <dt>bool `is_online_sell`</dt> <dd>`true` if clients can buy this appointment. `false` if only staff members can sell it.</dd> <dt>bool `is_resource_type`</dt> <dd>`true` if the service requires assets. Otherwise, this will be `false`.</dd> <dt>bool `is_single_buy`</dt> <dd> `true` if the appointment can be booked without a Purchase Option. `false` if it''s necessary to buy a Purchase Option. </dd> <dt>bool `is_staff_confirm`</dt> <dd>`true` if the appointment must be confirmed by a staff member after booking. Otherwise, `false`.</dd> <dt>bool `is_staff_skip`</dt> <dd>`true` if clients can select a staff member for the appointment. Otherwise, `false`.</dd> <dt>bool `is_question`</dt> <dd>Determines whether the service will ask for questions or not.</dd> <dt>bool `is_virtual`</dt> <dd>`true` if the service is virtual. Otherwise, this will be `false`.</dd> <dt>string `k_resource_location`</dt> <dd>Off-site location if service requires such type of asset.</dd> <dt>string `k_service`</dt> <dd>The appointment primary key. <i>Primary key in {@link \RsServiceSql} table.</i></dd> <dt>string `k_service_category`</dt> <dd>The service category primary key. <i>Primary key in {@link \RsServiceCategorySql} table.</i></dd> <dt>string `s_duration`</dt> <dd>The appointment duration in a human-readable format.</dd> <dt>string `s_service`</dt> <dd>The appointment title.</dd> <dt>string|null `sid_deny_reason`</dt> <dd>String representation of the deny reason. `null` if no deny reason.</dd> <dt>string `text_age_restriction`</dt> <dd>Age restriction header.</dd> <dt>string `xml_description`</dt> <dd>Appointment description (deprecated, use `html_description`).</dd> <dt>string `xml_description_short`</dt> <dd>Appointment short description (deprecated, use `html_description_short`).</dd> <dt>string `xml_special`</dt> <dd>Special instructions (deprecated, use `html_special`).</dd> </dl>'
                       is_multiple_booking:
                         type: boolean
                         description: 'Whether services allow multiple appointment booking.'
@@ -21015,7 +21573,7 @@ paths:
                     properties:
                       a_service:
                         type: array
-                        description: 'A list of services with information about them. <b>Key</b> - the service key. <b>Value</b> - an array, with every element consisting of the next keys: <dl> <dt>string[] `a_class_tab`</dt> <dd>The list of tab keys for the service.</dd> <dt>array[] `a_direct_link`</dt> <dd> A list of links to start booking from a direct link. This can''t be one link, as the same appointment can be available in several booking tabs. Therefore, each booking tab has its own direct booking link. Each element has two values: <dl> <dt>string `k_class_tab`</dt> <dd>The key of the book now tab.</dd> <dt>string `url_tab`</dt> <dd>The booking URL. This will open the booking wizard under the related booking tab.</dd> </dl> </dd> <dt>array|null `a_config`</dt> <dd> Appointment-specific business policy overrides. `null` when the service uses the general business policy. When not `null`, contains a subset of business config fields, including: <dl> <dt>bool `is_back_to_back`</dt> <dd>`true` if this service supports back-to-back booking.</dd> <dt>bool `is_book_repeat_client`</dt> <dd>`true` if clients can book this service on a recurring basis.</dd> <dt>bool `is_book_repeat_no_end_date_appointment`</dt> <dd>`true` if appointment bookings for this service default to weekly recurring with no end date.</dd> <dt>bool `is_multiple_booking`</dt> <dd>`true` if multiple bookings are allowed for this service.</dd> <dt>bool `is_wait_list_unpaid`</dt> <dd>`true` if clients on the wait list do not have to pay upfront.</dd> </dl> </dd> <dt>array `a_image`</dt> <dd> Information about the appointment image. An array with the following values: <dl> <dt>int `i_height`</dt> <dd>The height of the image.</dd> <dt>int `i_width`</dt> <dd>The width of the image.</dd> <dt>bool `is_empty`</dt> <dd>This will be `true` if the image is not set.</dd> <dt>string `k_service`</dt> <dd>The service key.</dd> <dt>string `s_service`</dt> <dd>The name of the service.</dd> <dt>string `s_url`</dt> <dd>The URL to the image.</dd> </dl> </dd> <dt>string[] `a_login_type_restriction`</dt> <dd> Keys are login type keys. <i>Primary keys in {@link \Wl\Login\Type\Sql} table.</i> Values - List of login types'' titles for current service. Clients that have one of these types can book service. </dd> <dt>string[] `a_member_group_restriction`</dt> <dd> Keys are member group keys. <i>Primary keys in {@link \Wl\Member\Group\Sql} table.</i> Values - list of member groups'' titles for current service. Clients that belongs to these groups can book service. </dd> <dt>string `f_deposit`</dt> <dd>The amount of deposit required.</dd> <dt>string `f_offline_max`</dt> <dd>The maximum offline price.</dd> <dt>string `f_offline_min`</dt> <dd>The minimum offline price.</dd> <dt>string `f_online`</dt> <dd>The online price.</dd> <dt>bool `hide_application`</dt> <dd> Determines whether the service will be hidden in the White Label mobile application. `true` means that service won''t be displayed. Otherwise, this will be `false`. </dd> <dt>string `html_deny_reason`</dt> <dd>Human-readable reason why the client cannot book this service. Empty string if there is no deny reason.</dd> <dt>int `i_age_from`</dt> <dd>The required minimum client age to book an appointment.</dd> <dt>int `i_age_to`</dt> <dd>The required maximum client age to book an appointment.</dd> <dt>int `i_price`</dt> <dd>The price type ID. One of {@link \RsServicePriceSid} constants.</dd> <dt>int `i_duration`</dt> <dd>The appointment duration in minutes.</dd> <dt>int `id_book_flow`</dt> <dd>The type of client booking flow. One of {@link \Wl\Service\ServiceBookFlowSid} constants.</dd> <dt>int|null `id_deny_reason`</dt> <dd> The ID of the reason why the client cannot book this service. One of {@link \Wl\Schedule\ClassView\DenyReasonSid} constants. `null` if there is no deny reason. </dd> <dt>int `id_service_require`</dt> <dd>The required payment type ID. One of {@link \RsServiceRequireSid} constants.</dd> <dt>bool `is_age_public`</dt> <dd>`true` if age restrictions are public. Otherwise, `false` if they should be hidden from clients.</dd> <dt>bool `is_age_restricted`</dt> <dd>Determines whether this service can''t be booked due to age restrictions.</dd> <dt>bool `is_back_to_back`</dt> <dd>Determines whether this service supports back-to-back booking.</dd> <dt>bool `is_bookable`</dt> <dd>Whether this appointment can be booked online.</dd> <dt>bool `is_book_repeat_client`</dt> <dd>`true` if clients can book classes and appointments on a recurring basis. Otherwise, this `false`.</dd> <dt>bool `is_book_repeat_no_end_date_appointment`</dt> <dd>`true` if appointment bookings default to weekly recurring with no end date, `false` otherwise.</dd> <dt>bool `is_deposit_percent`</dt> <dd>`true` if `f_deposit` is a percentage. `false` if `f_deposit` is an amount of money.</dd> <dt>bool `is_gender_select`</dt> <dd>`true` if clients can select the staff member''s gender. Otherwise, this will be `false`.</dd> <dt>bool `is_online_sell`</dt> <dd>`true` if clients can buy this appointment. `false` if only staff members can sell it.</dd> <dt>bool `is_resource_type`</dt> <dd>`true` if the service requires assets. Otherwise, this will be `false`.</dd> <dt>bool `is_single_buy`</dt> <dd> `true` if the appointment can be booked without a Purchase Option. `false` if it''s necessary to buy a Purchase Option. </dd> <dt>bool `is_staff_confirm`</dt> <dd>`true` if the appointment must be confirmed by a staff member after booking. Otherwise, `false`.</dd> <dt>bool `is_staff_skip`</dt> <dd>`true` if clients can select a staff member for the appointment. Otherwise, `false`.</dd> <dt>bool `is_question`</dt> <dd>Determines whether the service will ask for questions or not.</dd> <dt>bool `is_virtual`</dt> <dd>`true` if the service is virtual. Otherwise, this will be `false`.</dd> <dt>string `k_service`</dt> <dd>The appointment primary key. <i>Primary key in {@link \RsServiceSql} table.</i></dd> <dt>string `k_service_category`</dt> <dd>The service category primary key. <i>Primary key in {@link \RsServiceCategorySql} table.</i></dd> <dt>string `s_duration`</dt> <dd>The appointment duration in a human-readable format.</dd> <dt>string `s_service`</dt> <dd>The appointment title.</dd> <dt>string|null `sid_deny_reason`</dt> <dd>String representation of the deny reason. `null` if no deny reason.</dd> <dt>string `text_age_restriction`</dt> <dd>Age restriction header.</dd> <dt>string `xml_description`</dt> <dd>Appointment description (deprecated, use `html_description`).</dd> <dt>string `xml_description_short`</dt> <dd>Appointment short description (deprecated, use `html_description_short`).</dd> <dt>string `xml_special`</dt> <dd>Special instructions (deprecated, use `html_special`).</dd> </dl>'
+                        description: 'A list of services with information about them. <b>Key</b> - the service key. <b>Value</b> - an array, with every element consisting of the next keys: <dl> <dt>string[] `a_class_tab`</dt> <dd>The list of tab keys for the service.</dd> <dt>array[] `a_direct_link`</dt> <dd> A list of links to start booking from a direct link. This can''t be one link, as the same appointment can be available in several booking tabs. Therefore, each booking tab has its own direct booking link. Each element has two values: <dl> <dt>string `k_class_tab`</dt> <dd>The key of the book now tab.</dd> <dt>string `url_tab`</dt> <dd>The booking URL. This will open the booking wizard under the related booking tab.</dd> </dl> </dd> <dt>array|null `a_config`</dt> <dd> Appointment-specific business policy overrides. `null` when the service uses the general business policy. When not `null`, contains a subset of business config fields, including: <dl> <dt>bool `is_back_to_back`</dt> <dd>`true` if this service supports back-to-back booking.</dd> <dt>bool `is_book_repeat_client`</dt> <dd>`true` if clients can book this service on a recurring basis.</dd> <dt>bool `is_book_repeat_no_end_date_appointment`</dt> <dd>`true` if appointment bookings for this service default to weekly recurring with no end date.</dd> <dt>bool `is_multiple_booking`</dt> <dd>`true` if multiple bookings are allowed for this service.</dd> <dt>bool `is_wait_list_unpaid`</dt> <dd>`true` if clients on the wait list do not have to pay upfront.</dd> </dl> </dd> <dt>array `a_image`</dt> <dd> Information about the appointment image. An array with the following values: <dl> <dt>int `i_height`</dt> <dd>The height of the image.</dd> <dt>int `i_width`</dt> <dd>The width of the image.</dd> <dt>bool `is_empty`</dt> <dd>This will be `true` if the image is not set.</dd> <dt>string `k_service`</dt> <dd>The service key.</dd> <dt>string `s_service`</dt> <dd>The name of the service.</dd> <dt>string `s_url`</dt> <dd>The URL to the image.</dd> </dl> </dd> <dt>string[] `a_login_type_restriction`</dt> <dd> Keys are login type keys. <i>Primary keys in {@link \Wl\Login\Type\Sql} table.</i> Values - List of login types'' titles for current service. Clients that have one of these types can book service. </dd> <dt>string[] `a_member_group_restriction`</dt> <dd> Keys are member group keys. <i>Primary keys in {@link \Wl\Member\Group\Sql} table.</i> Values - list of member groups'' titles for current service. Clients that belongs to these groups can book service. </dd> <dt>string `f_deposit`</dt> <dd>The amount of deposit required.</dd> <dt>string `f_offline_max`</dt> <dd>The maximum offline price.</dd> <dt>string `f_offline_min`</dt> <dd>The minimum offline price.</dd> <dt>string `f_online`</dt> <dd>The online price.</dd> <dt>bool `hide_application`</dt> <dd> Determines whether the service will be hidden in the White Label mobile application. `true` means that service won''t be displayed. Otherwise, this will be `false`. </dd> <dt>string `html_deny_reason`</dt> <dd>Human-readable reason why the client cannot book this service. Empty string if there is no deny reason.</dd> <dt>int `i_age_from`</dt> <dd>The required minimum client age to book an appointment.</dd> <dt>int `i_age_to`</dt> <dd>The required maximum client age to book an appointment.</dd> <dt>int `i_price`</dt> <dd>The price type ID. One of {@link \RsServicePriceSid} constants.</dd> <dt>int `i_duration`</dt> <dd>The appointment duration in minutes.</dd> <dt>int `id_book_flow`</dt> <dd>The type of client booking flow. One of {@link \Wl\Service\ServiceBookFlowSid} constants.</dd> <dt>int|null `id_deny_reason`</dt> <dd> The ID of the reason why the client cannot book this service. One of {@link \Wl\Schedule\ClassView\DenyReasonSid} constants. `null` if there is no deny reason. </dd> <dt>int `id_service_require`</dt> <dd>The required payment type ID. One of {@link \RsServiceRequireSid} constants.</dd> <dt>bool `is_age_public`</dt> <dd>`true` if age restrictions are public. Otherwise, `false` if they should be hidden from clients.</dd> <dt>bool `is_age_restricted`</dt> <dd>Determines whether this service can''t be booked due to age restrictions.</dd> <dt>bool `is_back_to_back`</dt> <dd>Determines whether this service supports back-to-back booking.</dd> <dt>bool `is_bookable`</dt> <dd>Whether this appointment can be booked online.</dd> <dt>bool `is_book_repeat_client`</dt> <dd>`true` if clients can book classes and appointments on a recurring basis. Otherwise, this `false`.</dd> <dt>bool `is_book_repeat_no_end_date_appointment`</dt> <dd>`true` if appointment bookings default to weekly recurring with no end date, `false` otherwise.</dd> <dt>bool `is_deposit_percent`</dt> <dd>`true` if `f_deposit` is a percentage. `false` if `f_deposit` is an amount of money.</dd> <dt>bool `is_gender_select`</dt> <dd>`true` if clients can select the staff member''s gender. Otherwise, this will be `false`.</dd> <dt>bool `is_online_sell`</dt> <dd>`true` if clients can buy this appointment. `false` if only staff members can sell it.</dd> <dt>bool `is_resource_type`</dt> <dd>`true` if the service requires assets. Otherwise, this will be `false`.</dd> <dt>bool `is_single_buy`</dt> <dd> `true` if the appointment can be booked without a Purchase Option. `false` if it''s necessary to buy a Purchase Option. </dd> <dt>bool `is_staff_confirm`</dt> <dd>`true` if the appointment must be confirmed by a staff member after booking. Otherwise, `false`.</dd> <dt>bool `is_staff_skip`</dt> <dd>`true` if clients can select a staff member for the appointment. Otherwise, `false`.</dd> <dt>bool `is_question`</dt> <dd>Determines whether the service will ask for questions or not.</dd> <dt>bool `is_virtual`</dt> <dd>`true` if the service is virtual. Otherwise, this will be `false`.</dd> <dt>string `k_resource_location`</dt> <dd>Off-site location if service requires such type of asset.</dd> <dt>string `k_service`</dt> <dd>The appointment primary key. <i>Primary key in {@link \RsServiceSql} table.</i></dd> <dt>string `k_service_category`</dt> <dd>The service category primary key. <i>Primary key in {@link \RsServiceCategorySql} table.</i></dd> <dt>string `s_duration`</dt> <dd>The appointment duration in a human-readable format.</dd> <dt>string `s_service`</dt> <dd>The appointment title.</dd> <dt>string|null `sid_deny_reason`</dt> <dd>String representation of the deny reason. `null` if no deny reason.</dd> <dt>string `text_age_restriction`</dt> <dd>Age restriction header.</dd> <dt>string `xml_description`</dt> <dd>Appointment description (deprecated, use `html_description`).</dd> <dt>string `xml_description_short`</dt> <dd>Appointment short description (deprecated, use `html_description_short`).</dd> <dt>string `xml_special`</dt> <dd>Special instructions (deprecated, use `html_special`).</dd> </dl>'
                       is_multiple_booking:
                         type: boolean
                         description: 'Whether services allow multiple appointment booking.'
@@ -26423,6 +26981,9 @@ paths:
                 s_firebase_ios:
                   type: string
                   description: 'Reversed client ID of the iOS application on Firebase.'
+                s_splash_color_android:
+                  type: string
+                  description: 'Android splash screen background color in hex format.'
                 s_version_name:
                   type: string
                   description: 'Version name for the App Store and Google Play builds.'
@@ -26682,13 +27243,13 @@ paths:
             format: int32
         - name: cid_report
           in: query
-          description: 'Page CID.'
+          description: 'Report CID.'
           schema:
             type: number
             format: int32
         - name: k_business
           in: query
-          description: 'Business primary key in {@link \RsBusinessSql} table.'
+          description: 'Business primary key.'
           schema:
             type: string
         - name: k_report_query
@@ -26698,17 +27259,17 @@ paths:
             type: [string, "null"]
         - name: k_report_save
           in: query
-          description: 'Primary key of a saved report in {@link \RsReportSaveSql} table. <tt>null</tt> means that report is not saved.'
+          description: 'Primary key of a saved report. `null` means that report is not saved.'
           schema:
             type: [string, "null"]
         - name: s_report
           in: query
-          description: 'Report CID list to that page customization form must be converted. String separated with <tt>,</tt>. May be specified only if {@link CustomizationFormApi::$cid_page} in not empty.'
+          description: 'Report CID list to that page customization form must be converted. String separated with `,`. May be specified only if {@link CustomizationFormApi::$cid_page} in not empty.'
           schema:
             type: string
         - name: uid_actor
           in: query
-          description: 'Current user''s primary key in {@link \Core\Passport\Login\PassportLoginAr} table.'
+          description: 'Current user''s primary key.'
           schema:
             type: string
       responses:
@@ -26723,7 +27284,7 @@ paths:
                     properties:
                       a_customization_form:
                         type: array
-                        description: 'Customization form data. See {@link CustomizationFormAbstract::toArray()} for details.'
+                        description: 'Customization form data keyed by report or page CID. Each value has the following structure: <dl> <dt>array `a_element`</dt> <dd> Form elements keyed by element name. Each element has the following structure: <dl> <dt>array `a_field`</dt> <dd> Element fields keyed by field alias. Each field has the following structure: <dl> <dt>string `text_title`</dt> <dd>Localized field title.</dd> <dt>string `x_value`</dt> <dd>Current field value.</dd> </dl> </dd> <dt>int[] `a_report`</dt> <dd>Report CID list the element applies to.</dd> <dt>string `html_title`</dt> <dd>Localized element title.</dd> <dt>string `html_title_tooltip`</dt> <dd>Localized element tooltip.</dd> </dl> </dd> <dt>string `s_form`</dt> <dd>Form class identifier.</dd> </dl>'
       tags:
         - Customization-ReportQueryCustomizationForm
     post:
@@ -26737,13 +27298,13 @@ paths:
             format: int32
         - name: cid_report
           in: query
-          description: 'Page CID.'
+          description: 'Report CID.'
           schema:
             type: number
             format: int32
         - name: k_business
           in: query
-          description: 'Business primary key in {@link \RsBusinessSql} table.'
+          description: 'Business primary key.'
           schema:
             type: string
         - name: k_report_query
@@ -26753,12 +27314,12 @@ paths:
             type: [string, "null"]
         - name: k_report_save
           in: query
-          description: 'Primary key of a saved report in {@link \RsReportSaveSql} table. <tt>null</tt> means that report is not saved.'
+          description: 'Primary key of a saved report. `null` means that report is not saved.'
           schema:
             type: [string, "null"]
         - name: uid_actor
           in: query
-          description: 'Current user''s primary key in {@link \Core\Passport\Login\PassportLoginAr} table.'
+          description: 'Current user''s primary key.'
           schema:
             type: string
       requestBody:
@@ -26770,7 +27331,7 @@ paths:
               properties:
                 a_customization_form:
                   type: array
-                  description: 'Customization form data. See {@link CustomizationFormAbstract::toArray()} for details.'
+                  description: 'Customization form data keyed by report or page CID. Each value has the following structure: <dl> <dt>array `a_element`</dt> <dd> Form elements keyed by element name. Each element has the following structure: <dl> <dt>array `a_field`</dt> <dd> Element fields keyed by field alias. Each field has the following structure: <dl> <dt>string `text_title`</dt> <dd>Localized field title.</dd> <dt>string `x_value`</dt> <dd>Current field value.</dd> </dl> </dd> <dt>int[] `a_report`</dt> <dd>Report CID list the element applies to.</dd> <dt>string `html_title`</dt> <dd>Localized element title.</dd> <dt>string `html_title_tooltip`</dt> <dd>Localized element tooltip.</dd> </dl> </dd> <dt>string `s_form`</dt> <dd>Form class identifier.</dd> </dl>'
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -28041,72 +28602,6 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Count-InventoryCount
-  '/Core/Testing/Automation/CacheFlush.json':
-    get:
-      summary: 'Flushes all application caches.'
-      parameters:
-        - name: s_action
-          in: query
-          description: 'Name of the action to perform within this endpoint.'
-          schema:
-            type: string
-        - name: s_token
-          in: query
-          description: 'Request authentication token. A hex-encoded `sha256` signature that proves the caller knows the shared secret. See {@link AutomationTestAbstractApi::checkAccess()} for the expected formula.'
-          schema:
-            type: string
-      responses:
-        200:
-          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - type: object
-                    description: 'Successful response. Full description is not available yet.'
-      tags:
-        - Automation-CacheFlush
-  '/Wl/Widget/Analytics/WidgetAnalyticsEvent.json':
-    post:
-      summary: 'Accepts a Widget analytics event. Validates the event envelope and payload, stores the event, and schedules asynchronous processing.'
-      requestBody:
-        required: true
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              type: object
-              properties:
-                a_payload:
-                  type: array
-                  description: 'Event-specific payload. <dl> <dt>array[] `a_item`</dt> <dd> Selected checkout items. Each entry has the following structure: <dl> <dt>int `id_item`</dt> <dd> Item type. A {@link \RsPurchaseItemSid} constant for store checkout or a {@link \Wl\Service\ServiceSid} constant for booking. </dd> <dt>string `k_item`</dt> <dd>Selected item key.</dd> <dt>string `k_item_extra`</dt> <dd>Event enrollment block key, or an empty string.</dd> </dl> </dd> <dt>int `id_checkout_type`</dt> <dd>Checkout type. One of {@link \Wl\Widget\Analytics\WidgetAnalyticsCheckoutTypeSid} constants.</dd> <dt>string `k_location`</dt> <dd>Location key.</dd> <dt>string|null `k_skin`</dt> <dd>Widget skin key, or `null` if the Widget does not use a registered skin.</dd> <dt>string `m_total`</dt> <dd>Checkout total.</dd> <dt>string `s_funnel_step`</dt> <dd>Last funnel step reached.</dd> <dt>string `s_session_id`</dt> <dd>Widget checkout session identifier.</dd> <dt>string `s_utm_campaign`</dt> <dd>UTM campaign value.</dd> <dt>string `s_utm_medium`</dt> <dd>UTM medium value.</dd> <dt>string `s_utm_source`</dt> <dd>UTM source value.</dd> <dt>string `uid`</dt> <dd>User key.</dd> <dt>string `url_continue`</dt> <dd>Continuation URL.</dd> </dl>'
-                i_event_version:
-                  type: number
-                  format: int32
-                  description: 'Event schema version.'
-                k_business:
-                  type: string
-                  description: 'Business key used for shard and datacenter routing.'
-                s_event_id:
-                  type: string
-                  description: 'Client-generated idempotency identifier. A retry of the same logical event must use the same value.'
-                s_event_name:
-                  type: string
-                  description: 'Event name. Initially only `abandoned_checkout` is supported.'
-      responses:
-        200:
-          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - type: object
-                    description: 'Successful response.'
-                    properties:
-                      is_accepted:
-                        type: boolean
-                        description: 'Whether the event was durably accepted for asynchronous processing.'
-      tags:
-        - Analytics-WidgetAnalyticsEvent
 tags:
   -
     name: Account-Account
@@ -28457,6 +28952,9 @@ tags:
     name: CustomTemplate-Pattern
     description: 'Gets and saves custom template pattern data.'
   -
+    name: Customization-CustomizationForm
+    description: 'API endpoint to load and save data for a report customization form.'
+  -
     name: Customization-ReportQueryCustomizationForm
     description: 'Loads and saves customization form data scoped to a specific SQL query report. Extends {@link CustomizationFormApi} to add {@link ReportQueryCustomizationFormApi::$k_report_query}, which isolates customization settings (visible buttons, date range, report generation mode) per SQL query instead of sharing them across all SQL reports for the same business and user. When {@link ReportQueryCustomizationFormApi::$k_report_query} is set, the per-query customization row is loaded first; if no per-query row exists, the generic shared row is used as a fallback so existing settings are preserved after the first deployment.'
   -
@@ -28471,6 +28969,9 @@ tags:
   -
     name: CyberSource-CsPaValidate
     description: 'This call retrieves and validates the authentication results from issuer and allows the merchant to proceed with processing the payment'
+  -
+    name: Dashboard-ReportDashboard
+    description: 'API endpoint to manage reports added to a dashboard. <b>Note</b>. Old context and context from {@link ReportSaveApi} is used here because: - reason to use ''rs.report.save'' context: messages should be the same in both implementations (old and new); - reason to use context from {@link ReportSaveApi}: saving and adding to a dashboard in the old implementation uses the same module.'
   -
     name: DebugToken-DebugTokenService
     description: 'Allows checking the validity of a debug token.'
@@ -28564,6 +29065,9 @@ tags:
   -
     name: Facility-FacilitySid
     description: 'API to get list of additional information about IDs from {@link \RsFacilitySid} class. Property {@link FacilitySidApi::$s_class_name} can be left empty in this class. It will use predefined class name.'
+  -
+    name: Favorite-ReportFavorite
+    description: 'API endpoint to manage favorite reports.'
   -
     name: Field-EnrollmentFieldList
     description: 'Retrieves and validates a list of insurance partner fields. Use the GET method to load a list of required fields. Use the POST method to validate the fields before sending them to the payment API.'
@@ -29003,6 +29507,9 @@ tags:
     name: Saml-SamlUserDeactivation
     description: 'Retrieves user statuses in the business.'
   -
+    name: Save-ReportSave
+    description: 'API endpoint to manage saved reports.'
+  -
     name: Schedule-Calendar
     description: 'Retrieves a list of all calendar days in a specified month with available and unavailable appointment bookings in the schedule.'
   -
@@ -29070,7 +29577,7 @@ tags:
     description: 'List of appointment types of the business.'
   -
     name: ServiceList-List75
-    description: 'Versioned list of appointment types with support for loading all services.'
+    description: 'Versioned list of appointment types with support for loading all (active and inactive) services.'
   -
     name: Session-Environment
     description: 'Returns information about current session environment (business ID, user information, etc.).'

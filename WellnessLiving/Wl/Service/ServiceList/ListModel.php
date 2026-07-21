@@ -22,9 +22,6 @@ class ListModel extends WlModelAbstract
    *  <tt>true</tt> means that service will not be displayed, <tt>false</tt> otherwise.
    *   </dd>
    * 
-   *   <dt>bool `is_active`</dt>
-   *   <dd>Whether appointment type is active.</dd>
-   * 
    *   <dt>string `k_service`</dt>
    *   <dd>Appointment type identifier, primary key.</dd>
    * 

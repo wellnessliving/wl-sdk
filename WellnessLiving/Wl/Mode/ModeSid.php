@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Mode;
 /**
  * The source of a visit.
  *
- * Last used ID: 31.
+ * Last used ID: 32.
  */
 class ModeSid
 {
@@ -100,6 +100,11 @@ class ModeSid
    * Client booked session on My Presence Site.
    */
   const MY_PRESENCE_SITE = 13;
+
+  /**
+   * Visit has been created by <tt>Passport Door Access</tt>.
+   */
+  const PASSPORT_DOOR_ACCESS = 32;
 
   /**
    * Action made via SMS.

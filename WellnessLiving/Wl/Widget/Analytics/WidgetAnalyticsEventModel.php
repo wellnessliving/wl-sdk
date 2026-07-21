@@ -20,53 +20,67 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    * <dl>
    *   <dt>array[] `a_item`</dt>
    *   <dd>
-   *     Selected checkout items. Each entry has the following structure:
+   *     Selected checkout items.
    *     <dl>
-   *       <dt>int `id_item`</dt>
-   *       <dd>
-   *         Item type. A {@link WlPurchaseItemSid} constant for store checkout or a {@link ServiceSid} constant for booking.
-   *       </dd>
+   *       <dt>int|null `id_purchase_item`</dt>
+   *       <dd>Purchase item ID.
+   * A {@link WlPurchaseItemSid} constant for store checkout.</dd>
+   * 
+   *       <dt>int|null `id_service`</dt>
+   *       <dd>Service ID.
+   * A {@link ServiceSid} constant for booking.</dd>
+   * 
+   *       <dt>string `k_enrollment_block`</dt>
+   *       <dd>Enrollment block key for an event item.
+   * Empty for all other item types.</dd>
    * 
    *       <dt>string `k_item`</dt>
-   *       <dd>Selected item key.</dd>
-   * 
-   *       <dt>string `k_item_extra`</dt>
-   *       <dd>Event enrollment block key, or an empty string.</dd>
+   *       <dd>Selected item key.
+   * The referenced table depends on checkout type and item type.</dd>
    *     </dl>
    *   </dd>
    * 
    *   <dt>int `id_checkout_type`</dt>
-   *   <dd>Checkout type.</dd>
+   *   <dd>Checkout type.
+   *</dd>
    * 
    *   <dt>string `k_location`</dt>
    *   <dd>Location key.</dd>
    * 
    *   <dt>string|null `k_skin`</dt>
-   *   <dd>Widget skin key, or `null` if the Widget does not use a registered skin.</dd>
+   *   <dd>Widget skin key.
+   * `null` if the Widget does not use a registered skin.</dd>
    * 
    *   <dt>string `m_total`</dt>
-   *   <dd>Checkout total.</dd>
+   *   <dd>Checkout total in the location currency.</dd>
    * 
    *   <dt>string `s_funnel_step`</dt>
-   *   <dd>Last funnel step reached.</dd>
+   *   <dd>Last funnel step reached by the client.
+   * Empty if it is unavailable.</dd>
    * 
    *   <dt>string `s_session_id`</dt>
-   *   <dd>Widget checkout session identifier.</dd>
+   *   <dd>
+   *     Widget checkout session identifier.
+   * Empty if it is unavailable. It is used only for diagnostics and continuation context, not for idempotency.
+   *   </dd>
    * 
    *   <dt>string `s_utm_campaign`</dt>
-   *   <dd>UTM campaign value.</dd>
+   *   <dd>UTM campaign value.
+   * Empty if it is unavailable.</dd>
    * 
    *   <dt>string `s_utm_medium`</dt>
-   *   <dd>UTM medium value.</dd>
+   *   <dd>UTM medium value.
+   * Empty if it is unavailable.</dd>
    * 
    *   <dt>string `s_utm_source`</dt>
-   *   <dd>UTM source value.</dd>
+   *   <dd>UTM source value.
+   * Empty if it is unavailable.</dd>
    * 
    *   <dt>string `uid`</dt>
-   *   <dd>User key.</dd>
+   *   <dd>User key for whom checkout was abandoned.</dd>
    * 
    *   <dt>string `url_continue`</dt>
-   *   <dd>Continuation URL.</dd>
+   *   <dd>URL that restores the booking or purchase flow with the selected items.</dd>
    * </dl>
    * @field payload
    * @post post
