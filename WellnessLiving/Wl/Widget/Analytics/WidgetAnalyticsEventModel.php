@@ -23,26 +23,54 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    *     Selected checkout items.
    *     <dl>
    *       <dt>int|null `id_purchase_item`</dt>
-   *       <dd>Purchase item ID.
-   * A {@link WlPurchaseItemSid} constant for store checkout.</dd>
+   *       <dd>
+   *         Purchase item ID.
+   * 
+   * Required when the parent checkout type is
+   * {@link \Wl\Widget\Analytics\WidgetAnalyticsCheckoutTypeSid::STORE_PURCHASE}; `null` for
+   *
+   *       </dd>
    * 
    *       <dt>int|null `id_service`</dt>
-   *       <dd>Service ID.
-   * A {@link ServiceSid} constant for booking.</dd>
+   *       <dd>
+   *         Service ID.
    * 
-   *       <dt>string `k_enrollment_block`</dt>
-   *       <dd>Enrollment block key for an event item.
-   * Empty for all other item types.</dd>
+   * Required when checkout type is
+   * {@link \Wl\Widget\Analytics\WidgetAnalyticsCheckoutTypeSid::BOOKING}; `null` for
+   *
+   *       </dd>
+   * 
+   *       <dt>string|null `k_enrollment_block`</dt>
+   *       <dd>
+   *         Enrollment block key for an event item.
+   * Empty for all other item types.
+   * 
+   * Required when checkout type is
+   * {@link \Wl\Widget\Analytics\WidgetAnalyticsCheckoutTypeSid::BOOKING} and the item type is
+   * {@link ServiceSid::EVENT}; `null` for all other item types.
+   *       </dd>
    * 
    *       <dt>string `k_item`</dt>
-   *       <dd>Selected item key.
-   * The referenced table depends on checkout type and item type.</dd>
+   *       <dd>
+   *         Selected item key.
+   * 
+   * When {@link \Wl\Widget\Analytics\AbandonedCheckout\AbandonedCheckoutItemEntity::$id_purchase_item} is:
+   * - {@link WlPurchaseItemSid::COUPON}, this is a coupon key. Primary key in {@link \RsCouponSql}.
+   * - {@link WlPurchaseItemSid::ENROLLMENT}, this is an event class key. Primary key in {@link \RsClassSql}.
+   * - {@link WlPurchaseItemSid::PRODUCT}, this is a product key. Primary key in {@link \RsShopProductSql}.
+   * - {@link WlPurchaseItemSid::PROMOTION}, this is a Purchase Option key. Primary key in {@link \RsPromotionSql}.
+   * 
+   * When {@link \Wl\Widget\Analytics\AbandonedCheckout\AbandonedCheckoutItemEntity::$id_service} is:
+   * - {@link ServiceSid::APPOINTMENT}, this is a service key. Primary key in {@link \RsServiceSql}.
+   * - {@link ServiceSid::BOOKABLE_ASSET}, this is an asset key. Primary key in {@link \RsResourceSql}.
+   * - {@link ServiceSid::CLASSES} or {@link ServiceSid::EVENT}, this is a class key. Primary key in
+   *
+   *       </dd>
    *     </dl>
    *   </dd>
    * 
    *   <dt>int `id_checkout_type`</dt>
-   *   <dd>Checkout type.
-   *</dd>
+   *   <dd>Checkout type.</dd>
    * 
    *   <dt>string `k_location`</dt>
    *   <dd>Location key.</dd>
@@ -82,7 +110,6 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    *   <dt>string `url_continue`</dt>
    *   <dd>URL that restores the booking or purchase flow with the selected items.</dd>
    * </dl>
-   * @field payload
    * @post post
    * @var array
    */
@@ -91,19 +118,18 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
   /**
    * Event schema version.
    *
-   * @field event_version
    * @post post
    * @var int
    */
   public $i_event_version = 1;
 
   /**
-   * Whether the event was durably accepted for asynchronous processing.
+   * Event name. Initially only {@link WidgetAnalyticsEventSid::ABANDONED_CHECKOUT} is supported.
    *
-   * @post result
-   * @var bool
+   * @post post
+   * @var int
    */
-  public $is_accepted = false;
+  public $id_event_name = 0;
 
   /**
    * Business key used for shard and datacenter routing.
@@ -117,20 +143,10 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    * Client-generated idempotency identifier.
    * A retry of the same logical event must use the same value.
    *
-   * @field event_id
    * @post post
    * @var string
    */
   public $s_event_id = '';
-
-  /**
-   * Event name. Initially only `abandoned_checkout` is supported.
-   *
-   * @field event_name
-   * @post post
-   * @var string
-   */
-  public $s_event_name = '';
 }
 
 ?>

@@ -264,6 +264,9 @@ class EventListModel extends WlModelAbstract
    *   <dt>bool `is_booked`</dt>
    *   <dd>Whether event is already booked.</dd>
    * 
+   *   <dt>bool `is_cancellation_enabled`</dt>
+   *   <dd>`true` if clients can cancel this event. Otherwise, this will be `false`.</dd>
+   * 
    *   <dt>bool `is_closed`</dt>
    *   <dd>
    *     Whether booking of the event is closed already.

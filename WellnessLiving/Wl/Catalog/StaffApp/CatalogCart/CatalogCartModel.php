@@ -63,6 +63,14 @@ class CatalogCartModel extends WlModelAbstract
    *           <dt>string `k_class`</dt>
    *           <dd>Key of the event class within the tuition which should be granted to the client.</dd>
    * 
+   *           <dt>string `m_checkout`</dt>
+   *           <dd>
+   *             The amount that will be charged for this event when the tuition is purchased.
+   *      Calculated based on the payment schedule (full amount or the prorated part due now).
+   *      Can be overridden manually. If not specified or `null`, the amount will be calculated
+   *      automatically.
+   *           </dd>
+   * 
    *           <dt>string `m_price`</dt>
    *           <dd>
    *             Price of the event for the tuition participant.

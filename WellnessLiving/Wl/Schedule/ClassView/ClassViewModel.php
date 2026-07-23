@@ -164,6 +164,9 @@ class ClassViewModel extends WlModelAbstract
    *   <dt>bool `is_cancel`</dt>
    *   <dd>`true` if class period was cancelled; `false` otherwise.</dd>
    * 
+   *   <dt>bool `is_cancellation_enabled`</dt>
+   *   <dd>`true` if clients can cancel this session. Otherwise, this will be `false`.</dd>
+   * 
    *   <dt>bool `is_event`</dt>
    *   <dd>`true` if it is event; `false` if it is class.</dd>
    * 
@@ -399,6 +402,9 @@ class ClassViewModel extends WlModelAbstract
    * 
    *       <dt>bool `is_cancel`</dt>
    *       <dd>`true` if class period was cancelled; `false` otherwise.</dd>
+   * 
+   *       <dt>bool `is_cancellation_enabled`</dt>
+   *       <dd>`true` if clients can cancel this session. Otherwise, this will be `false`.</dd>
    * 
    *       <dt>bool `is_event`</dt>
    *       <dd>`true` if it is event; `false` if it is class.</dd>

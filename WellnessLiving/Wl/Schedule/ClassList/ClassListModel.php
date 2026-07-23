@@ -140,6 +140,9 @@ class ClassListModel extends WlModelAbstract
    *   <dt>bool `is_cancel`</dt>
    *   <dd>If `true`, this class period was canceled. Otherwise, this will be `false`.</dd>
    * 
+   *   <dt>bool `is_cancellation_enabled`</dt>
+   *   <dd>`true` if clients can cancel this session. Otherwise, this will be `false`.</dd>
+   * 
    *   <dt>bool `is_event`</dt>
    *   <dd>If `true`, this is an event. Otherwise, this will be `false`.</dd>
    * 

@@ -9,11 +9,14 @@ use WellnessLiving\Wl\WlProgramSid;
 use WellnessLiving\Wl\WlProgramTypeSid;
 
 /**
- * Returns the list of promotions and products of a business that are available at a specific location.
+ * Lists the promotions and products available for bulk billing, and reviews a bulk billing before it is scheduled.
  *
- * Intended for backend staff scenarios (for example, the "Bulk bill" popup).
- * Promotions are returned with their prices; products are expanded into their options, each with its own price and
- *  location availability.
+ * Use the GET request to list the promotions and products of a business available at a location, with their prices.
+ * Products are expanded into their options, each with its own price.
+ *
+ * Use the POST request to review a bulk billing: it returns the per-client totals, the clients that will be billed,
+ *  and the clients excluded because a selected item is not available to them. The review also returns an id that is
+ *  passed to {@link BulkBillingModel} to schedule the billing without sending the clients and items again.
  *
  * @method WlModelRequest get() Gets the list of promotions and products available at the location.  Validates access to the business, then loads promotions with their prices and products expanded into  their options, keeping only the items available at the requested location.
  * @method WlModelRequest post() Prepares the bulk billing review: the per-client totals and the list of clients that will be billed.  Validates access to the business, calculates the per-client subtotal, tax and total for the selected purchase  items, and collects each client contact data and payment method label. Clients that a selected item is not  available to (by their client type or member group) are removed from billing and returned in  {@link \Wl\Billing\Bulk\PurchaseItemListApi::$a_client_restrict}. Clients that are not eligible for the selected introductory  items are flagged with `is_warning` and described in {@link \Wl\Billing\Bulk\PurchaseItemListApi::$a_client_bill} (`a_warning`  key).
@@ -192,14 +195,6 @@ class PurchaseItemListModel extends WlModelAbstract
   public $a_purchase_item = [];
 
   /**
-   * The list of client user keys to bill.
-   *
-   * @post post
-   * @var string[]
-   */
-  public $a_uid = [];
-
-  /**
    * Whether to charge the client default payment method (`true`) or bill the client account (`false`).
    *
    * @post post
@@ -273,6 +268,31 @@ class PurchaseItemListModel extends WlModelAbstract
    * @var string
    */
   public $m_total = '0';
+
+  /**
+   * The review id that identifies this prepared bulk billing. Pass it to {@link BulkBillingModel} to schedule the
+   *  billing without sending the clients and items again.
+   *
+   * @post result
+   * @var string
+   */
+  public $s_id;
+
+  /**
+   * List of client user keys to bill joined with comma.
+   *
+   * @post post
+   * @var string
+   */
+  public $s_uid = '';
+
+  /**
+   * A note to store with each client purchase and to show on the receipt. Empty string for no note.
+   *
+   * @post post
+   * @var string
+   */
+  public $text_note = '';
 }
 
 ?>
