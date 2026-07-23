@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260723095432
+  version: 1.1.20260723114015
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-07-23 09:54:32
+    Last updated at: 2026-07-23 11:40:15
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -14763,6 +14763,36 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Agree-Agree
+  '/Wl/Login/Rank/LoginRankElement.json':
+    delete:
+      summary: 'Deletes a rank record for a user.'
+      parameters:
+        - name: is_rank_category
+          in: query
+          description: 'To delete entire rank category from this user.'
+          schema:
+            type: boolean
+        - name: k_business
+          in: query
+          description: 'Business key.'
+          schema:
+            type: string
+        - name: k_login_rank
+          in: query
+          description: 'Login rank key. Primary key in {@link \RsLoginRankSql} table.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Rank-LoginRankElement
   '/Wl/Login/Coupon/Coupon.json':
     get:
       summary: 'Retrieves the key and balance of a gift card by its code for the specified business. Validates the gift card code against the specified business, enforces a per-IP rate limit, and checks that the card is active, not already redeemed, not expired, and in the correct currency before returning its key and remaining balance.'
@@ -29441,6 +29471,9 @@ tags:
   -
     name: Quiz-QuizElement72
     description: 'Manages a single quiz.'
+  -
+    name: Rank-LoginRankElement
+    description: 'API to delete a rank record for a user.'
   -
     name: Rank-Rank
     description: 'Retrieves information about belts in a business. This information can be used to figure out totals in the Belts Report.'
