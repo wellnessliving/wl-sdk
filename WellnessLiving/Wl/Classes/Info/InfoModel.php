@@ -52,6 +52,16 @@ class InfoModel extends WlModelAbstract
   public $k_class = '0';
 
   /**
+   * Key of the group of events, which are different instances of the same event.
+   *
+   * Is always <tt>0</tt> for classes.
+   *
+   * @get result
+   * @var string
+   */
+  public $k_enrollment_block = '0';
+
+  /**
    * Title of the class.
    *
    * @get result

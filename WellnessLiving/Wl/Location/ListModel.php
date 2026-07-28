@@ -78,6 +78,9 @@ class ListModel extends WlModelAbstract
    *   <dt>string `text_address`</dt>
    *   <dd>The location's full address.</dd>
    * 
+   *   <dt>string `text_region_code`</dt>
+   *   <dd>The location's region abbreviation.</dd>
+   * 
    *   <dt>string `url_logo`</dt>
    *   <dd>
    *     The location logo's URL. This will only be set if the location has a logo and contains small thumbnail of the image.

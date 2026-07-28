@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Profile\Account\Select;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
 
 /**
  * Retrieves information about current user and his relationship with sub accounts.
@@ -18,7 +19,7 @@ class SelectModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>int `id_family_relation`</dt>
-   *   <dd>ID of relationship between current user and sub account.</dd>
+   *   <dd>ID of relationship between current user and sub account from {@link WlFamilyRelationSid}.</dd>
    * 
    *   <dt>string `s_name`</dt>
    *   <dd>Name of sub account.</dd>

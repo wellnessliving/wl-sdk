@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Appointment\Info;
 
+use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
@@ -104,6 +105,34 @@ class InfoModel extends WlModelAbstract
   public $a_question = [];
 
   /**
+   * Repeat settings for appointment reschedule.
+   *
+   * Empty array for non-recurring appointment.
+   *
+   * Has next keys:
+   *
+   * <dl>
+   *   <dt>int[] `a_day`</dt>
+   *   <dd>Days of week to repeat appointment. Constants from {@link ADateWeekSid}.</dd>
+   * 
+   *   <dt>string `dl_date`</dt>
+   *   <dd>Current appointment date in location timezone in MySQL date format.</dd>
+   * 
+   *   <dt>string `dl_edit_from`</dt>
+   *   <dd>Start date for range edit in location timezone in MySQL date format.</dd>
+   * 
+   *   <dt>string `dl_edit_to`</dt>
+   *   <dd>End date for range edit in location timezone in MySQL date format.</dd>
+   * 
+   *   <dt>string `s_time`</dt>
+   *   <dd>Current appointment local start time in MySQL time format.</dd>
+   * </dl>
+   * @get result
+   * @var array
+   */
+  public $a_repeat = [];
+
+  /**
    * List of assets used by this appointment. Each element contains: 
    *
    * <dl>
@@ -202,7 +231,7 @@ class InfoModel extends WlModelAbstract
   public $id_appointment_pay;
 
   /**
-   * Class identifier to get information for.
+   * Appointment key to get information for.
    *
    * @get get
    * @var string

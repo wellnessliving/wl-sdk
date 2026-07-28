@@ -117,10 +117,12 @@ class ApplicationResourceMaterialModel extends WlModelAbstract
   /**
    * Support email address shown in the store listing.
    *
+   * `null` to not change exists email.
+   *
    * @post post
-   * @var string
+   * @var string|null
    */
-  public $text_email = '';
+  public $text_email = null;
 
   /**
    * Additional information about the application build.

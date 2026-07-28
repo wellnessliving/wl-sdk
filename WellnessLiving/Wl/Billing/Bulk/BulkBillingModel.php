@@ -6,13 +6,23 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
 /**
- * Schedules a bulk billing that charges the same set of purchase items to many clients at once.
+ * Manages a bulk billing that charges the same set of purchase items to many clients at once.
  *
- * Call {@link PurchaseItemListModel} first to review the clients and items and to obtain the review id. Then call this
- * endpoint with that review id to schedule the billing, either immediately or on a chosen date and time. The set of
- * clients and items reviewed earlier is billed without having to send it again.
+ * Covers the whole life cycle of a scheduled bulk billing: <ul>
+ *   <li>
+ *     Schedules the billing, either immediately or on a chosen date and time. Call {@link PurchaseItemListModel} first
+ *     to review the clients and items and to obtain the review id, then schedule the billing with that review id. The
+ *     set of clients and items reviewed earlier is billed without having to send it again.
+ *   </li>
+ *   <li>Reschedules a still-scheduled billing to a new date and time.</li>
+ *   <li>Cancels a still-scheduled billing so that it is never billed.</li>
+ * </ul>
  *
+ * Only a billing that has not started yet can be rescheduled or cancelled.
+ *
+ * @method WlModelRequest delete() Cancels a scheduled bulk billing so that it is never billed.  Only a batch that has not started billing yet can be cancelled.
  * @method WlModelRequest post() Schedules the bulk billing.  Reads the prepared data from the temporary session by the review id and schedules the billing. The eligibility and restriction checks were already done during preparation, so they are not repeated here.
+ * @method WlModelRequest put() Reschedules a previously scheduled bulk billing to a new date and time.  A reschedule always targets an explicit date and time. Only a batch that has not started billing yet can be rescheduled.
  */
 class BulkBillingModel extends WlModelAbstract
 {
@@ -30,6 +40,7 @@ class BulkBillingModel extends WlModelAbstract
    *   <dd>Whether hours and minutes AM or PM. `true` if AM.</dd>
    * </dl>
    * @post post
+   * @put post
    * @var array|null
    */
   public $a_schedule_time = null;
@@ -39,6 +50,7 @@ class BulkBillingModel extends WlModelAbstract
    * When empty, the billing runs immediately.
    *
    * @post post
+   * @put post
    * @var string|null
    */
   public $dl_schedule = null;
@@ -46,15 +58,19 @@ class BulkBillingModel extends WlModelAbstract
   /**
    * The business key.
    *
+   * @delete post
    * @post post
+   * @put post
    * @var string
    */
   public $k_business = '';
 
   /**
-   * The key of the created purchase batch.
+   * The purchase batch key.
    *
+   * @delete post
    * @post result
+   * @put post
    * @var string
    */
   public $k_purchase_batch = '';

@@ -8,7 +8,7 @@ use WellnessLiving\WlModelRequest;
 /**
  * API to delete a rank record for a user.
  *
- * @method WlModelRequest delete() Deletes a rank record for a user.
+ * @method WlModelRequest delete() Deletes a rank record for a user.  Removes the rank record from the database and logs the action in the belt history.
  */
 class LoginRankElementModel extends WlModelAbstract
 {

@@ -30,16 +30,38 @@ class ElementModel extends WlModelAbstract
    * or when age restriction are public.
    *
    * <dl>
-   *   <dt>int|null `i_age_from`</dt>
-   *   <dd>The minimum age permitted for the event. This will be `null` if a minimum age isn't set or available.</dd>
+   *   <dt>int `i_age_from`</dt>
+   *   <dd>Minimum age for service (years part).</dd>
    * 
-   *   <dt>int|null `i_age_to`</dt>
-   *   <dd>The maximum age permitted for the event. This will be `null` if a maximum age isn't set or available.</dd>
+   *   <dt>int `i_age_from_month`</dt>
+   *   <dd>Minimum age for service (months part).</dd>
+   * 
+   *   <dt>int `i_age_from_year`</dt>
+   *   <dd>Minimum age for service (years part).</dd>
+   * 
+   *   <dt>int `i_age_to`</dt>
+   *   <dd>Maximum age for service (years part).</dd>
+   * 
+   *   <dt>int `i_age_to_month`</dt>
+   *   <dd>Maximum age for service (months part).</dd>
+   * 
+   *   <dt>int `i_age_to_year`</dt>
+   *   <dd>Maximum age for service (years part).</dd>
    * 
    *   <dt>bool `is_age_public`</dt>
    *   <dd>
-   *     If `true`, age restrictions are public and available. Otherwise, this will be `false` if they're hidden.
-   * When restrictions are hidden and the current user isn't a staff member, the age range will be empty.
+   *     Is service public even if user does not meet age requirements or not?
+   * 
+   * `true` - to show service to everyone.
+   * `false` - to show service only to users who meet age requirements.
+   *   </dd>
+   * 
+   *   <dt>bool `is_month_enabled`</dt>
+   *   <dd>
+   *     Whether months are enabled for age restrictions.
+   * 
+   * `true` - age restrictions can include number of months.
+   * `false` - age restrictions can include only years.
    *   </dd>
    * </dl>
    * @get result

@@ -22,9 +22,17 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    *   <dd>
    *     Selected checkout items.
    *     <dl>
+   *       <dt>string|null `dtu_session`</dt>
+   *       <dd>Selected booking session datetime.
+   * `null` if not available.</dd>
+   * 
+   *       <dt>int `i_order`</dt>
+   *       <dd>Zero-based item order in the checkout list.</dd>
+   * 
    *       <dt>int|null `id_purchase_item`</dt>
    *       <dd>
    *         Purchase item ID.
+   * See {@link WlPurchaseItemSid}.
    * 
    * Required when the parent checkout type is
    * {@link \Wl\Widget\Analytics\WidgetAnalyticsCheckoutTypeSid::STORE_PURCHASE}; `null` for
@@ -34,6 +42,7 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    *       <dt>int|null `id_service`</dt>
    *       <dd>
    *         Service ID.
+   * See {@link ServiceSid}.
    * 
    * Required when checkout type is
    * {@link \Wl\Widget\Analytics\WidgetAnalyticsCheckoutTypeSid::BOOKING}; `null` for
@@ -41,43 +50,40 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    *       </dd>
    * 
    *       <dt>string|null `k_enrollment_block`</dt>
-   *       <dd>
-   *         Enrollment block key for an event item.
-   * Empty for all other item types.
-   * 
-   * Required when checkout type is
-   * {@link \Wl\Widget\Analytics\WidgetAnalyticsCheckoutTypeSid::BOOKING} and the item type is
-   * {@link ServiceSid::EVENT}; `null` for all other item types.
-   *       </dd>
+   *       <dd>Optional enrollment block key for an event item.
+   * `''` when an enrollment block is not available.</dd>
    * 
    *       <dt>string `k_item`</dt>
    *       <dd>
    *         Selected item key.
    * 
    * When {@link \Wl\Widget\Analytics\AbandonedCheckout\AbandonedCheckoutItemEntity::$id_purchase_item} is:
-   * - {@link WlPurchaseItemSid::COUPON}, this is a coupon key. Primary key in {@link \RsCouponSql}.
-   * - {@link WlPurchaseItemSid::ENROLLMENT}, this is an event class key. Primary key in {@link \RsClassSql}.
-   * - {@link WlPurchaseItemSid::PRODUCT}, this is a product key. Primary key in {@link \RsShopProductSql}.
-   * - {@link WlPurchaseItemSid::PROMOTION}, this is a Purchase Option key. Primary key in {@link \RsPromotionSql}.
+   * - {@link WlPurchaseItemSid::COUPON}, this is a coupon key.
+   * - {@link WlPurchaseItemSid::ENROLLMENT}, this is an event class key.
+   * - {@link WlPurchaseItemSid::PRODUCT}, this is a product key.
+   * - {@link WlPurchaseItemSid::PROMOTION}, this is a Purchase Option key.
    * 
    * When {@link \Wl\Widget\Analytics\AbandonedCheckout\AbandonedCheckoutItemEntity::$id_service} is:
-   * - {@link ServiceSid::APPOINTMENT}, this is a service key. Primary key in {@link \RsServiceSql}.
-   * - {@link ServiceSid::BOOKABLE_ASSET}, this is an asset key. Primary key in {@link \RsResourceSql}.
-   * - {@link ServiceSid::CLASSES} or {@link ServiceSid::EVENT}, this is a class key. Primary key in
-   *
+   * - {@link ServiceSid::APPOINTMENT}, this is a service key.
+   * - {@link ServiceSid::BOOKABLE_ASSET}, this is an asset key.
+   * - {@link ServiceSid::CLASSES} or {@link ServiceSid::EVENT}, this is a class key.
    *       </dd>
+   * 
+   *       <dt>string|null `m_price`</dt>
+   *       <dd>Checkout item price in the location currency.
+   * `null` if not available.</dd>
+   * 
+   *       <dt>string `text_service_name`</dt>
+   *       <dd>Item name snapshot from checkout.</dd>
    *     </dl>
    *   </dd>
    * 
    *   <dt>int `id_checkout_type`</dt>
-   *   <dd>Checkout type.</dd>
+   *   <dd>Checkout type.
+   *</dd>
    * 
    *   <dt>string `k_location`</dt>
    *   <dd>Location key.</dd>
-   * 
-   *   <dt>string|null `k_skin`</dt>
-   *   <dd>Widget skin key.
-   * `null` if the Widget does not use a registered skin.</dd>
    * 
    *   <dt>string `m_total`</dt>
    *   <dd>Checkout total in the location currency.</dd>
@@ -87,10 +93,8 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    * Empty if it is unavailable.</dd>
    * 
    *   <dt>string `s_session_id`</dt>
-   *   <dd>
-   *     Widget checkout session identifier.
-   * Empty if it is unavailable. It is used only for diagnostics and continuation context, not for idempotency.
-   *   </dd>
+   *   <dd>Widget checkout session identifier.
+   * Used for diagnostics and continuation context, not for idempotency.</dd>
    * 
    *   <dt>string `s_utm_campaign`</dt>
    *   <dd>UTM campaign value.
@@ -116,20 +120,20 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
   public $a_payload = [];
 
   /**
-   * Event schema version.
-   *
-   * @post post
-   * @var int
-   */
-  public $i_event_version = 1;
-
-  /**
-   * Event name. Initially only {@link WidgetAnalyticsEventSid::ABANDONED_CHECKOUT} is supported.
+   * Event name.
    *
    * @post post
    * @var int
    */
   public $id_event_name = 0;
+
+  /**
+   * Event schema version. Currently only {@link WidgetAnalyticsEventVersionSid::V1} is supported.
+   *
+   * @post post
+   * @var int
+   */
+  public $id_event_version = 1;
 
   /**
    * Business key used for shard and datacenter routing.

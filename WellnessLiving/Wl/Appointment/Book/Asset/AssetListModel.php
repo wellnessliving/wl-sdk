@@ -29,10 +29,24 @@ class AssetListModel extends WlModelAbstract
    * This will be an empty array if there aren't any age restrictions.
    *     <dl>
    *       <dt>int|null `i_age_from`</dt>
-   *       <dd>The minimum age permitted for the event. This will be `null` if a minimum age isn't set or available.</dd>
+   *       <dd>
+   *         The minimum age permitted for the event (years part). This will be `null` if a minimum age isn't set or available.
+   *       </dd>
+   * 
+   *       <dt>int|null `i_age_from_month`</dt>
+   *       <dd>
+   *         The minimum age permitted for the event (month part). This will be `null` if a minimum age isn't set or available.
+   *       </dd>
    * 
    *       <dt>int|null `i_age_to`</dt>
-   *       <dd>The maximum age permitted for the event. This will be `null` if a maximum age isn't set or available.</dd>
+   *       <dd>
+   *         The maximum age permitted for the event (years part). This will be `null` if a maximum age isn't set or available.
+   *       </dd>
+   * 
+   *       <dt>int|null `i_age_to_month`</dt>
+   *       <dd>
+   *         The maximum age permitted for the event (month part). This will be `null` if a maximum age isn't set or available.
+   *       </dd>
    * 
    *       <dt>bool `is_age_public`</dt>
    *       <dd>

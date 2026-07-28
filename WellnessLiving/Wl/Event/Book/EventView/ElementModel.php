@@ -21,25 +21,41 @@ class ElementModel extends WlModelAbstract
   /**
    * Displays information about age restrictions for this event.
    *
-   * An empty array if there are no age restrictions.
+   * Will be empty array if there are no age restrictions.
    *
    * <dl>
-   *   <dt>int|null `i_age_from`</dt>
-   *   <dd>
-   *     The minimum age for participation in the event.
-   * `null` if there's no minimum age set or information isn't available.
-   *   </dd>
+   *   <dt>int `i_age_from`</dt>
+   *   <dd>Minimum age for service (years part).</dd>
    * 
-   *   <dt>int|null `i_age_to`</dt>
-   *   <dd>
-   *     The age limit for participation in the event.
-   *    `null` if there's no age limit set or information isn't available.
-   *   </dd>
+   *   <dt>int `i_age_from_month`</dt>
+   *   <dd>Minimum age for service (months part).</dd>
+   * 
+   *   <dt>int `i_age_from_year`</dt>
+   *   <dd>Minimum age for service (years part).</dd>
+   * 
+   *   <dt>int `i_age_to`</dt>
+   *   <dd>Maximum age for service (years part).</dd>
+   * 
+   *   <dt>int `i_age_to_month`</dt>
+   *   <dd>Maximum age for service (months part).</dd>
+   * 
+   *   <dt>int `i_age_to_year`</dt>
+   *   <dd>Maximum age for service (years part).</dd>
    * 
    *   <dt>bool `is_age_public`</dt>
    *   <dd>
-   *     `true` if age restrictions are public and available, `false` if they're hidden.
-   * When restrictions are hidden and the current user isn't a staff member, the age range will be empty.
+   *     Is service public even if user does not meet age requirements or not?
+   * 
+   * `true` - to show service to everyone.
+   * `false` - to show service only to users who meet age requirements.
+   *   </dd>
+   * 
+   *   <dt>bool `is_month_enabled`</dt>
+   *   <dd>
+   *     Whether months are enabled for age restrictions.
+   * 
+   * `true` - age restrictions can include number of months.
+   * `false` - age restrictions can include only years.
    *   </dd>
    * </dl>
    * @get result
@@ -275,6 +291,9 @@ class ElementModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    * 
+   *   <dt>array[] `a_makeup_class`</dt>
+   *   <dd>Classes selected for make-up sessions. See {@link ElementModel::$a_makeup_class}.</dd>
+   * 
    *   <dt>array[] `a_schedule`</dt>
    *   <dd>
    *     Schedule of event sessions. See {@link ElementModel::$a_schedule}.
@@ -418,6 +437,12 @@ class ElementModel extends WlModelAbstract
    *   <dt>string `html_special`</dt>
    *   <dd>Special instruction for event.</dd>
    * 
+   *   <dt>int `i_makeup_cap`</dt>
+   *   <dd>
+   *     Number of allowed make-up sessions for event.
+   * `0` if make-up sessions are disabled for event or all missed sessions are available for make-up.
+   *   </dd>
+   * 
    *   <dt>int `i_session`</dt>
    *   <dd>Session count in event.</dd>
    * 
@@ -504,6 +529,23 @@ class ElementModel extends WlModelAbstract
    * @var array[]
    */
   public $a_installment_template;
+
+  /**
+   * Class selected for make-up sessions.
+   *
+   * Every element has the following keys: 
+   *
+   * <dl>
+   *   <dt>string `k_class`</dt>
+   *   <dd>Class key.</dd>
+   * 
+   *   <dt>string|null `s_title`</dt>
+   *   <dd>Class title. `null` if title is unavailable for the selected language.</dd>
+   * </dl>
+   * @get result
+   * @var array[]
+   */
+  public $a_makeup_class = [];
 
   /**
    * A list of event sessions. Every element has the following next keys:
@@ -794,6 +836,16 @@ class ElementModel extends WlModelAbstract
    * @var int
    */
   public $i_image_width = 0;
+
+  /**
+   * Number of allowed make-up sessions for event.
+   *
+   * `0` if make-up sessions are disabled for event or all missed sessions are available for make-up.
+   *
+   * @get result
+   * @var int
+   */
+  public $i_makeup_cap = 0;
 
   /**
    * The session count.

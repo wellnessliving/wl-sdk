@@ -60,6 +60,14 @@ class SendMailModel extends WlModelAbstract
   public $text_action = '';
 
   /**
+   * URL suffix for the link. Optional.
+   *
+   * @post get
+   * @var string
+   */
+  public $text_url_suffix = '';
+
+  /**
    * User ID. Required.
    *
    * @post get
