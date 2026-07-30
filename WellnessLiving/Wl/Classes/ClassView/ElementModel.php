@@ -146,10 +146,22 @@ class ElementModel extends WlModelAbstract
    *   <dd>Special instructions safe to be inserted to a browser.</dd>
    * 
    *   <dt>int `i_age_from`</dt>
-   *   <dd>The minimum age restriction.</dd>
+   *   <dd>The minimum age restriction. Deprecated and is left only for back compatibility.</dd>
+   * 
+   *   <dt>int `i_age_from_month`</dt>
+   *   <dd>The minimum age restriction (months).</dd>
+   * 
+   *   <dt>int `i_age_from_year`</dt>
+   *   <dd>The minimum age restriction (years).</dd>
    * 
    *   <dt>int `i_age_to`</dt>
-   *   <dd>The maximum age restriction.</dd>
+   *   <dd>The maximum age restriction. Deprecated and is left only for back compatibility.</dd>
+   * 
+   *   <dt>int `i_age_to_month`</dt>
+   *   <dd>The maximum age restriction (months).</dd>
+   * 
+   *   <dt>int `i_age_to_year`</dt>
+   *   <dd>The maximum age restriction (years).</dd>
    * 
    *   <dt>bool `is_age_public`</dt>
    *   <dd>Determines whether age restriction exist and should be taken into account prior to booking this class/event.</dd>

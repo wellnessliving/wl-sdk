@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Billing\Bulk;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\WlPayMethodSid;
 use WellnessLiving\Wl\WlProgramSid;
 use WellnessLiving\Wl\WlProgramTypeSid;
 
@@ -41,6 +42,15 @@ class PurchaseItemListModel extends WlModelAbstract
    *   <dd>
    *     The list of clients that will be billed. Each element has the following structure:
    *     <dl>
+   *       <dt>int `id_pay_method`</dt>
+   *       <dd>
+   *         The payment method this client is charged with, which decides whether the client is surcharged and
+   * which surcharge applies. One of the {@link WlPayMethodSid} constants:
+   * {@link WlPayMethodSid::ECOMMERCE} for a stored card, {@link WlPayMethodSid::ACH} for a stored bank
+   * account, and {@link WlPayMethodSid::ACCOUNT} when the client account is billed, which is never
+   * surcharged.
+   *       </dd>
+   * 
    *       <dt>bool `is_warning`</dt>
    *       <dd>
    *         `true` if the client has no default payment method on file, has no email on file while a receipt is
@@ -195,6 +205,65 @@ class PurchaseItemListModel extends WlModelAbstract
   public $a_purchase_item = [];
 
   /**
+   * The totals of the bulk billing: the price of the selected items for a single client, and what the whole batch
+   *  adds up to once the client type discount of every client is applied. All amounts are money strings in the
+   *  currency of the business. Has the following structure: 
+   *
+   * <dl>
+   *   <dt>array[] `a_discount_list`</dt>
+   *   <dd>
+   *     One entry per client type that discounts at least one of the selected items for at least one of the
+   * clients. Empty when no client type discount applies. Each element has the following structure:
+   *     <dl>
+   *       <dt>int `i_user`</dt>
+   *       <dd>The number of clients that get this discount.</dd>
+   * 
+   *       <dt>string `k_login_type`</dt>
+   *       <dd>The client type that gives the discount.
+   * </dd>
+   * 
+   *       <dt>string `m_discount`</dt>
+   *       <dd>The discount this client type gives, summed over all its clients and all the selected items.</dd>
+   * 
+   *       <dt>string `text_title`</dt>
+   *       <dd>The client type title.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>string `m_subtotal_after_discount`</dt>
+   *   <dd>The price of the selected items for all the clients, with the client type discounts applied.</dd>
+   * 
+   *   <dt>string `m_subtotal_before_discount`</dt>
+   *   <dd>The price of the selected items for all the clients, before any discount.</dd>
+   * 
+   *   <dt>string `m_subtotal_per_client`</dt>
+   *   <dd>
+   *     The price of the selected items for one client, before any discount. It is the same for every client,
+   * because a discount depends on the client type.
+   *   </dd>
+   * 
+   *   <dt>string `m_total_batch`</dt>
+   *   <dd>
+   *     The amount the whole batch charges, with the client type discounts applied, the taxes accounted and
+   * surcharges added.
+   *   </dd>
+   * 
+   *   <dt>string `m_total_surcharge`</dt>
+   *   <dd>
+   *     The surcharges of all the clients, each derived from the amount that single client is charged. Only the
+   * clients whose payment method the business surcharges are counted in. Zero when the client accounts are
+   * billed, or when neither `is_surcharge_ach` nor `is_surcharge_ecommerce` is requested.
+   *   </dd>
+   * 
+   *   <dt>string `m_total_tax`</dt>
+   *   <dd>The taxes of the selected items for all the clients. Zero when `is_tax` is `false`.</dd>
+   * </dl>
+   * @post result
+   * @var array
+   */
+  public $a_total = [];
+
+  /**
    * Whether to charge the client default payment method (`true`) or bill the client account (`false`).
    *
    * @post post
@@ -209,6 +278,24 @@ class PurchaseItemListModel extends WlModelAbstract
    * @var bool
    */
   public $is_receipt_send = false;
+
+  /**
+   * Whether to apply the ACH surcharge.
+   *
+   * @get result
+   * @post post
+   * @var bool
+   */
+  public $is_surcharge_ach = false;
+
+  /**
+   * Whether to apply the e-commerce surcharge.
+   *
+   * @get result
+   * @post post
+   * @var bool
+   */
+  public $is_surcharge_ecommerce = false;
 
   /**
    * Whether to include the pre-configured taxes into the totals.
@@ -235,39 +322,6 @@ class PurchaseItemListModel extends WlModelAbstract
    * @var string
    */
   public $k_location = '';
-
-  /**
-   * The total amount charged across every client that will be billed (per-client total multiplied by the number
-   *  of billed clients). Excludes taxes when {@link PurchaseItemListModel::$is_tax} is `false`.
-   *
-   * @post result
-   * @var string
-   */
-  public $m_batch = '0';
-
-  /**
-   * The subtotal per client (sum of the selected purchase item prices, excluding taxes).
-   *
-   * @post result
-   * @var string
-   */
-  public $m_subtotal = '0';
-
-  /**
-   * The tax amount per client. Always `0` when {@link PurchaseItemListModel::$is_tax} is `false`.
-   *
-   * @post result
-   * @var string
-   */
-  public $m_tax = '0';
-
-  /**
-   * The total per client (subtotal plus tax).
-   *
-   * @post result
-   * @var string
-   */
-  public $m_total = '0';
 
   /**
    * The review id that identifies this prepared bulk billing. Pass it to {@link BulkBillingModel} to schedule the

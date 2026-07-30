@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Appointment\Info;
 
 use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
@@ -115,17 +116,51 @@ class InfoModel extends WlModelAbstract
    *   <dt>int[] `a_day`</dt>
    *   <dd>Days of week to repeat appointment. Constants from {@link ADateWeekSid}.</dd>
    * 
-   *   <dt>string `dl_date`</dt>
-   *   <dd>Current appointment date in location timezone in MySQL date format.</dd>
-   * 
    *   <dt>string `dl_edit_from`</dt>
-   *   <dd>Start date for range edit in location timezone in MySQL date format.</dd>
+   *   <dd>Start date for range edit in location timezone.
+   *   This is a current appointment date.</dd>
    * 
    *   <dt>string `dl_edit_to`</dt>
-   *   <dd>End date for range edit in location timezone in MySQL date format.</dd>
+   *   <dd>
+   *     End date for range edit in location timezone.
+   *   This is a date of last created appointment in repeatable group.
+   *   </dd>
+   * 
+   *   <dt>string `dl_repeat_end`</dt>
+   *   <dd>
+   *     Date when the repeat cycle stops, in location timezone.
+   * Empty if the repeat cycle does not stop at a certain date.
+   *   </dd>
+   * 
+   *   <dt>int `i_repeat_count`</dt>
+   *   <dd>
+   *     Number of occurrences after that the repeat cycle stops.
+   * `0` if the repeat cycle does not stop after a certain number of occurrences.
+   *   </dd>
+   * 
+   *   <dt>int `i_repeat_period`</dt>
+   *   <dd>Frequency of the repeats. For example, `2` for every second week.</dd>
+   * 
+   *   <dt>int `id_repeat_duration`</dt>
+   *   <dd>Measurement unit of `i_repeat_period`. One of {@link ADurationSid} constants.</dd>
+   * 
+   *   <dt>int `id_repeat_end`</dt>
+   *   <dd>Type of repeat cycle end.</dd>
+   * 
+   *   <dt>bool `is_month`</dt>
+   *   <dd>
+   *     `true` if the appointment repeats monthly at the same date.
+   * `false` if the appointment repeats monthly at the same week day or does not repeat monthly.
+   *   </dd>
    * 
    *   <dt>string `s_time`</dt>
-   *   <dd>Current appointment local start time in MySQL time format.</dd>
+   *   <dd>
+   *     Current appointment local start time in MySQL time format.
+   *  This time is intended to be used to fill in empty fields on the form.
+   *  <p><b>WARNING!</b></p>
+   *  <p>If the session you are starting the reschedule with was previously changed, its time may NOT match
+   *  the time of the remaining sessions.</p>
+   *   </dd>
    * </dl>
    * @get result
    * @var array

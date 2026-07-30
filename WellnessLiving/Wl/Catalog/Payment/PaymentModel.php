@@ -83,6 +83,14 @@ class PaymentModel extends WlModelAbstract
    *           <dt>string `k_class`</dt>
    *           <dd>Key of the event class. </dd>
    * 
+   *           <dt>string `m_checkout`</dt>
+   *           <dd>
+   *             The amount charged for this event at checkout. Staff-only: ignored when sent by a client.
+   * When provided for all events in the list, per-event amounts are used as-is without
+   * aggregate redistribution, allowing a non-uniform distribution across events (Mode 2).
+   * If omitted for any event, falls back to item-level `m_checkout` redistribution.
+   *           </dd>
+   * 
    *           <dt>string `m_price`</dt>
    *           <dd>
    *             Price of the event for the tuition participant.
@@ -242,6 +250,15 @@ class PaymentModel extends WlModelAbstract
    *   <li>{@link ProgramListModel} to obtain list of active programs.</li>
    *   <li>{@link EnrollmentFieldListModel} to get and validate fields for a given program.</li>
    * </ul>
+   *       </dd>
+   * 
+   *       <dt>string `m_checkout`</dt>
+   *       <dd>
+   *         Staff-only: ignored when sent by a client.
+   * Total amount to charge for the tuition item at checkout (Mode 1). Distributed
+   * proportionally across `a_event_list` entries based on their own final cost.
+   * Ignored when all entries in `a_event_list` already contain `m_checkout` values (Mode 2).
+   * 
    *       </dd>
    * 
    *       <dt>string `m_prorate_custom`</dt>

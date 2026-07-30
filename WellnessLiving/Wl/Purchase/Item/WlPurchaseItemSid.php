@@ -163,6 +163,14 @@ abstract class WlPurchaseItemSid
    * Used when client purchases tuition for an event list.
    */
   const TUITION_FEE = 27;
+
+  /**
+   * Tuition prorate purchase item.
+   *
+   * Represents the amount due right now for a tuition purchase (the part not deferred to the
+   * installment plan).
+   */
+  const TUITION_PRORATE = 28;
 }
 
 ?>

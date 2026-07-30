@@ -22,6 +22,9 @@ class DayTimeModel extends WlModelAbstract
    *   <dt>string `dt_date`</dt>
    *   <dd>Date of the calendar.</dd>
    * 
+   *   <dt>string `dtu_date`</dt>
+   *   <dd>Same moment as `dt_date`, converted to real UTC date and time, in MySQL format.</dd>
+   * 
    *   <dt>int `i_count`</dt>
    *   <dd>The count of clients that have already booked this appointment.</dd>
    * 

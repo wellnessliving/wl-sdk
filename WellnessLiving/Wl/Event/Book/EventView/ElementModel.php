@@ -292,7 +292,16 @@ class ElementModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>array[] `a_makeup_class`</dt>
-   *   <dd>Classes selected for make-up sessions. See {@link ElementModel::$a_makeup_class}.</dd>
+   *   <dd>
+   *     Classes selected for make-up sessions. Every element has the following keys:
+   *     <dl>
+   *       <dt>string `k_class`</dt>
+   *       <dd>Class key. </dd>
+   * 
+   *       <dt>string|null `s_title`</dt>
+   *       <dd>Class title. `null` if title is unavailable for the selected language.</dd>
+   *     </dl>
+   *   </dd>
    * 
    *   <dt>array[] `a_schedule`</dt>
    *   <dd>
@@ -537,7 +546,7 @@ class ElementModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_class`</dt>
-   *   <dd>Class key.</dd>
+   *   <dd>Class key. </dd>
    * 
    *   <dt>string|null `s_title`</dt>
    *   <dd>Class title. `null` if title is unavailable for the selected language.</dd>

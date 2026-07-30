@@ -105,6 +105,9 @@ class CatalogCartModel extends WlModelAbstract
    *         </dl>
    *       </dd>
    * 
+   *       <dt>string `m_checkout`</dt>
+   *       <dd>The total amount that will be charged for the tuition item during purchase.</dd>
+   * 
    *       <dt>string `f_price`</dt>
    *       <dd>The custom price.</dd>
    * 

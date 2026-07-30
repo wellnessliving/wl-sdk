@@ -35,8 +35,8 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    * See {@link WlPurchaseItemSid}.
    * 
    * Required when the parent checkout type is
-   * {@link \Wl\Widget\Analytics\WidgetAnalyticsCheckoutTypeSid::STORE_PURCHASE}; `null` for
-   *
+   * {@link WidgetAnalyticsCheckoutTypeSid::STORE_PURCHASE}; `null` for
+   * {@link WidgetAnalyticsCheckoutTypeSid::BOOKING}.
    *       </dd>
    * 
    *       <dt>int|null `id_service`</dt>
@@ -45,8 +45,8 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    * See {@link ServiceSid}.
    * 
    * Required when checkout type is
-   * {@link \Wl\Widget\Analytics\WidgetAnalyticsCheckoutTypeSid::BOOKING}; `null` for
-   *
+   * {@link WidgetAnalyticsCheckoutTypeSid::BOOKING}; `null` for
+   * {@link WidgetAnalyticsCheckoutTypeSid::STORE_PURCHASE}.
    *       </dd>
    * 
    *       <dt>string|null `k_enrollment_block`</dt>
@@ -80,7 +80,7 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    * 
    *   <dt>int `id_checkout_type`</dt>
    *   <dd>Checkout type.
-   *</dd>
+   * See {@link WidgetAnalyticsCheckoutTypeSid}.</dd>
    * 
    *   <dt>string `k_location`</dt>
    *   <dd>Location key.</dd>
@@ -110,9 +110,6 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    * 
    *   <dt>string `uid`</dt>
    *   <dd>User key for whom checkout was abandoned.</dd>
-   * 
-   *   <dt>string `url_continue`</dt>
-   *   <dd>URL that restores the booking or purchase flow with the selected items.</dd>
    * </dl>
    * @post post
    * @var array

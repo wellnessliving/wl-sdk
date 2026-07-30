@@ -318,6 +318,8 @@ class PromotionIndexModel extends WlModelAbstract
   /**
    * The business key.
    *
+   * `null` to get a business from location.
+   *
    * @get get
    * @var string|null
    */

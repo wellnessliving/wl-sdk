@@ -124,11 +124,23 @@ class ClassViewModel extends WlModelAbstract
    *   <dt>string `text_timezone`</dt>
    *   <dd>Timezone title.</dd>
    * 
-   *   <dt>int|null `i_age_from`</dt>
-   *   <dd>Age from that class is allowed. <tt>null</tt> if information is not available.</dd>
+   *   <dt>int `i_age_from`</dt>
+   *   <dd>The minimum age restriction. Deprecated and is left only for back compatibility.</dd>
    * 
-   *   <dt>int|null `i_age_to`</dt>
-   *   <dd>Age to that class is allowed. <tt>null</tt> if information is not available.</dd>
+   *   <dt>int `i_age_from_month`</dt>
+   *   <dd>The minimum age restriction (months).</dd>
+   * 
+   *   <dt>int `i_age_from_year`</dt>
+   *   <dd>The minimum age restriction (years).</dd>
+   * 
+   *   <dt>int `i_age_to`</dt>
+   *   <dd>The maximum age restriction. Deprecated and is left only for back compatibility.</dd>
+   * 
+   *   <dt>int `i_age_to_month`</dt>
+   *   <dd>The maximum age restriction (months).</dd>
+   * 
+   *   <dt>int `i_age_to_year`</dt>
+   *   <dd>The maximum age restriction (years).</dd>
    * 
    *   <dt>int `i_book`</dt>
    *   <dd>A total number of booked visits in the class, including all lists: active and waitlist.</dd>
@@ -363,11 +375,23 @@ class ClassViewModel extends WlModelAbstract
    *       <dt>string `text_timezone`</dt>
    *       <dd>Timezone title.</dd>
    * 
-   *       <dt>int|null `i_age_from`</dt>
-   *       <dd>Age from that class is allowed. <tt>null</tt> if information is not available.</dd>
+   *       <dt>int `i_age_from`</dt>
+   *       <dd>The minimum age restriction. Deprecated and is left only for back compatibility.</dd>
    * 
-   *       <dt>int|null `i_age_to`</dt>
-   *       <dd>Age to that class is allowed. <tt>null</tt> if information is not available.</dd>
+   *       <dt>int `i_age_from_month`</dt>
+   *       <dd>The minimum age restriction (months).</dd>
+   * 
+   *       <dt>int `i_age_from_year`</dt>
+   *       <dd>The minimum age restriction (years).</dd>
+   * 
+   *       <dt>int `i_age_to`</dt>
+   *       <dd>The maximum age restriction. Deprecated and is left only for back compatibility.</dd>
+   * 
+   *       <dt>int `i_age_to_month`</dt>
+   *       <dd>The maximum age restriction (months).</dd>
+   * 
+   *       <dt>int `i_age_to_year`</dt>
+   *       <dd>The maximum age restriction (years).</dd>
    * 
    *       <dt>int `i_book`</dt>
    *       <dd>A total number of booked visits in the class, including all lists: active and waitlist.</dd>

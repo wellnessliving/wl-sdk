@@ -72,6 +72,9 @@ class CartModel extends WlModelAbstract
    *           <dd>Registration fee amount for the tuition participant.</dd>
    *         </dl>
    *       </dd>
+   * 
+   *       <dt>string `m_checkout`</dt>
+   *       <dd>The total amount that will be charged for the tuition item when during purchase.</dd>
    *     </dl>
    *   </dd>
    * 

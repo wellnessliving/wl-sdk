@@ -403,7 +403,8 @@ class PageElementModel extends WlModelAbstract
   public $s_title;
 
   /**
-   * Location title.
+   * Location title. If the visit is assigned a resource whose category is {@link ResourceCategoryEnum::LOCATION},
+   * this is that resource's title instead of the actual location's title.
    *
    * @get result
    * @var string

@@ -46,8 +46,8 @@ class BulkBillingModel extends WlModelAbstract
   public $a_schedule_time = null;
 
   /**
-   * The scheduled billing date in `Y-m-d` format (business local time).
-   * When empty, the billing runs immediately.
+   * The scheduled billing date (business local time).
+   * When `null` the billing runs immediately.
    *
    * @post post
    * @put post
