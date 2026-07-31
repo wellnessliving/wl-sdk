@@ -40,14 +40,21 @@ class TuitionEnrollmentListModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    * 
-   *   <dt>string `dl_next`</dt>
-   *   <dd>Next payment date in local business timezone and MySQL format.</dd>
+   *   <dt>string|null `dl_next`</dt>
+   *   <dd>Next payment date in local business timezone and MySQL format.
+   * 
+   * `null` for membership-based tuition.</dd>
    * 
    *   <dt>string `dtl_enrollment`</dt>
    *   <dd>Date and time of the enrollment in local business timezone.</dd>
    * 
-   *   <dt>int `i_payments_left`</dt>
-   *   <dd>Number of payments left.</dd>
+   *   <dt>int `i_payments_done`</dt>
+   *   <dd>Number of payments done.</dd>
+   * 
+   *   <dt>int|null `i_payments_left`</dt>
+   *   <dd>Number of payments left.
+   * 
+   * `null` for membership-based tuition.</dd>
    * 
    *   <dt>int `i_payments_total`</dt>
    *   <dd>Number of payments total at the moment of enrollment.</dd>
@@ -62,14 +69,21 @@ class TuitionEnrollmentListModel extends WlModelAbstract
    *     Key of the tuition purchase item. This is enrollment key, which can be used to modify and cancel the enrollment.
    *   </dd>
    * 
+   *   <dt>string `m_paid`</dt>
+   *   <dd>Rest amount has been already paid.</dd>
+   * 
    *   <dt>string `m_payment`</dt>
    *   <dd>One payment amount.</dd>
    * 
-   *   <dt>string `m_rest`</dt>
-   *   <dd>Rest amount to be paid.</dd>
+   *   <dt>string|null `m_rest`</dt>
+   *   <dd>Rest amount to be paid.
    * 
-   *   <dt>string `m_total`</dt>
-   *   <dd>Total initial amount to be paid.</dd>
+   * `null` for membership-based tuition.</dd>
+   * 
+   *   <dt>string|null `m_total`</dt>
+   *   <dd>Total initial amount to be paid.
+   * 
+   * `null` for membership-based tuition.</dd>
    * 
    *   <dt>string `uid_payer`</dt>
    *   <dd>Payer for this enrollment.

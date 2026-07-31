@@ -113,7 +113,7 @@ class InfoModel extends WlModelAbstract
    * Has next keys:
    *
    * <dl>
-   *   <dt>int[] `a_day`</dt>
+   *   <dt>int[] `a_week`</dt>
    *   <dd>Days of week to repeat appointment. Constants from {@link ADateWeekSid}.</dd>
    * 
    *   <dt>string `dl_edit_from`</dt>
@@ -126,26 +126,26 @@ class InfoModel extends WlModelAbstract
    *   This is a date of last created appointment in repeatable group.
    *   </dd>
    * 
-   *   <dt>string `dl_repeat_end`</dt>
+   *   <dt>string `dl_end`</dt>
    *   <dd>
    *     Date when the repeat cycle stops, in location timezone.
    * Empty if the repeat cycle does not stop at a certain date.
    *   </dd>
    * 
-   *   <dt>int `i_repeat_count`</dt>
+   *   <dt>int `i_occurrence`</dt>
    *   <dd>
    *     Number of occurrences after that the repeat cycle stops.
    * `0` if the repeat cycle does not stop after a certain number of occurrences.
    *   </dd>
    * 
-   *   <dt>int `i_repeat_period`</dt>
+   *   <dt>int `i_period`</dt>
    *   <dd>Frequency of the repeats. For example, `2` for every second week.</dd>
    * 
-   *   <dt>int `id_repeat_duration`</dt>
-   *   <dd>Measurement unit of `i_repeat_period`. One of {@link ADurationSid} constants.</dd>
-   * 
-   *   <dt>int `id_repeat_end`</dt>
+   *   <dt>int `id_end`</dt>
    *   <dd>Type of repeat cycle end.</dd>
+   * 
+   *   <dt>int `id_period`</dt>
+   *   <dd>Measurement unit of `i_period`. One of {@link ADurationSid} constants.</dd>
    * 
    *   <dt>bool `is_month`</dt>
    *   <dd>

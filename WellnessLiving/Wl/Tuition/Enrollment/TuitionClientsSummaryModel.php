@@ -15,7 +15,7 @@ class TuitionClientsSummaryModel extends WlModelAbstract
   /**
    * Summary of clients and events enrolled, per tuition.
    *
-   * Values - summary information:
+   * Keys - tuition IDs from {@link TuitionClientsSummaryModel::$a_tuition_id}. Values - summary information:
    *
    * <dl>
    *   <dt>int `i_clients_enrolled`</dt>

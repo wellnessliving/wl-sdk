@@ -369,6 +369,7 @@ class EventListModel extends WlModelAbstract
    *
    * @get get
    * @var string[]|null
+   * @deprecated Use {@link EventListModel::$a_uid_staff} instead.
    */
   public $a_staff = null;
 
@@ -379,6 +380,16 @@ class EventListModel extends WlModelAbstract
    * @var string[]|null
    */
   public $a_time = null;
+
+  /**
+   * List of staff UIDs applied by filter.
+   *
+   * Cannot be specified together with {@link EventListModel::$a_staff}.
+   *
+   * @get get
+   * @var string[]|null
+   */
+  public $a_uid_staff = null;
 
   /**
    * List of IDs to include/exclude virtual events.
