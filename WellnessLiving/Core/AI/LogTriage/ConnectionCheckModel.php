@@ -6,14 +6,14 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
 /**
- * Checks that Studio can connect to the monolith and returns selected log findings.
+ * Checks that Studio can connect to the monolith and returns selected findings.
  *
- * @method WlModelRequest get() Returns a fixed connection value and, when requested, selected log findings.
+ * @method WlModelRequest get() Returns a fixed connection value and, when requested, selected findings.
  */
 class ConnectionCheckModel extends WlModelAbstract
 {
   /**
-   * Grouped log findings.
+   * Grouped findings.
    *
    * One element contains:
    *
@@ -21,22 +21,37 @@ class ConnectionCheckModel extends WlModelAbstract
    *   <dt>int `i_occurrence_count`</dt>
    *   <dd>Number of matching records.</dd>
    * 
-   *   <dt>string `s_first_seen`</dt>
-   *   <dd>Date of the first matching record.</dd>
+   *   <dt>int `id_source`</dt>
+   *
    * 
-   *   <dt>string `s_last_seen`</dt>
-   *   <dd>Date of the last matching record.</dd>
+   *   <dt>string `text_message`</dt>
+   *   <dd>Log message. Present for log sources.</dd>
    * 
-   *   <dt>string `s_message`</dt>
-   *   <dd>Log message.</dd>
+   *   <dt>string `dtu_first_seen`</dt>
+   *   <dd>UTC date/time of the first matching log record.</dd>
    * 
-   *   <dt>string `s_source`</dt>
-   *   <dd>Log source: <tt>error</tt> or <tt>slow</tt>.</dd>
+   *   <dt>string `dtu_last_seen`</dt>
+   *   <dd>UTC date/time of the last matching log record.</dd>
+   * 
+   *   <dt>string `s_object`</dt>
+   *   <dd> Present for this source.</dd>
+   * 
+   *   <dt>string `dl_first_seen`</dt>
+   *
+   * 
+   *   <dt>string `dl_last_seen`</dt>
+   *
    * </dl>
    * @get result
    * @var array[]
    */
-  public $a_log = [];
+  public $a_finding = [];
+
+  /**
+   * @get get
+   * @var int[]
+   */
+  public $a_id_source = [];
 
   /**
    * Connection check value.
@@ -47,12 +62,12 @@ class ConnectionCheckModel extends WlModelAbstract
   public $i_result = 0;
 
   /**
-   * Whether log findings must be returned.
+   * Whether findings must be returned.
    *
    * @get get
    * @var bool
    */
-  public $is_log = false;
+  public $is_finding = false;
 
   /**
    * Empty string selects the current UTC date.
@@ -68,15 +83,7 @@ class ConnectionCheckModel extends WlModelAbstract
    * @get get
    * @var string
    */
-  public $s_search = '';
-
-  /**
-   * Log source: <tt>all</tt>, <tt>error</tt>, or <tt>slow</tt>.
-   *
-   * @get get
-   * @var string
-   */
-  public $s_source = 'all';
+  public $text_search = '';
 }
 
 ?>

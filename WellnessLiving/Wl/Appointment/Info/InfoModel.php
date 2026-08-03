@@ -155,8 +155,7 @@ class InfoModel extends WlModelAbstract
    * 
    *   <dt>string `s_time`</dt>
    *   <dd>
-   *     Current appointment local start time in MySQL time format.
-   *  This time is intended to be used to fill in empty fields on the form.
+   *     Current appointment local start time in MySQL time format (`HH:MM:SS`).
    *  <p><b>WARNING!</b></p>
    *  <p>If the session you are starting the reschedule with was previously changed, its time may NOT match
    *  the time of the remaining sessions.</p>

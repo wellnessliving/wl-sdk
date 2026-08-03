@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Promotion;
 
 use WellnessLiving\Core\a\ADurationSid;
+use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlDurationTypeSid;
@@ -61,11 +62,21 @@ class PromotionModel extends WlModelAbstract
    *         </dl>
    *       </dd>
    * 
+   *       <dt>int `id_class_access`</dt>
+   *       <dd>
+   *         Class access flag, one of {@link AFlagSid} constants.
+   * {@link AFlagSid::ALL} if any class in the business can be visited with this Purchase Option,
+   * including classes created later.
+   * {@link AFlagSid::ON} if only selected classes can be visited with this Purchase Option.
+   * Selected classes can be found in the list of available classes and events.
+   *       </dd>
+   * 
    *       <dt>bool `is_class_all`</dt>
    *       <dd>
    *         This will be `true` if any class in the business can be visited with this Purchase Option.
    * Otherwise, this will be `false` if only selected classes can be visited with this Purchase Option.
    * Selected classes can be found in the list of available classes and events.
+   * Equivalent to <var>id_class_access</var> being {@link AFlagSid::ALL}.
    *       </dd>
    * 
    *       <dt>bool `is_event_all`</dt>

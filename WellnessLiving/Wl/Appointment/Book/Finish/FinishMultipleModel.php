@@ -276,14 +276,41 @@ class FinishMultipleModel extends WlModelAbstract
    * Information for sending an appointment notification.
    *
    * <dl>
+   *   <dt>bool `is_attach`</dt>
+   *   <dd>`true` to attach calendar file, `false` to not attach calendar file.</dd>
+   * 
+   *   <dt>bool `is_campaign`</dt>
+   *   <dd>Whether mail should track as a part of campaign. `true` if yes, `false` if no.</dd>
+   * 
    *   <dt>bool `is_mail`</dt>
    *   <dd>`true` to send mail; `false` to not send.</dd>
+   * 
+   *   <dt>bool `is_push`</dt>
+   *   <dd>`true` to send push notification; `false` to not send.</dd>
    * 
    *   <dt>bool `is_sms`</dt>
    *   <dd>`true` to send SMS; `false` to not send.</dd>
    * 
-   *   <dt>bool `is_push`</dt>
-   *   <dd>`true` to send push notification; `false` to not send.</dd>
+   *   <dt>string `text_business_name`</dt>
+   *   <dd>Business name.</dd>
+   * 
+   *   <dt>string `text_business_reply`</dt>
+   *   <dd>Reply email address.</dd>
+   * 
+   *   <dt>string `text_campaign`</dt>
+   *   <dd>Campaign name.</dd>
+   * 
+   *   <dt>string `text_content_mail`</dt>
+   *   <dd>Email content.</dd>
+   * 
+   *   <dt>string `text_push`</dt>
+   *   <dd>Push notification content.</dd>
+   * 
+   *   <dt>string `text_sms`</dt>
+   *   <dd>SMS content.</dd>
+   * 
+   *   <dt>string `text_subject`</dt>
+   *   <dd>Email subject.</dd>
    * </dl>
    * @post post
    * @var array

@@ -55,6 +55,23 @@ class VideoListModel extends WlModelAbstract
   public $a_level = [];
 
   /**
+   * All levels to offer in the level filter of the video catalog.
+   *
+   * Empty array if levels are not shown in this business. Each element: 
+   *
+   * <dl>
+   *   <dt>string `k_video_level`</dt>
+   *   <dd>Level key. </dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>Level name.</dd>
+   * </dl>
+   * @get result
+   * @var array[]
+   */
+  public $a_level_filter = [];
+
+  /**
    * A list of videos.
    * Each element: 
    *
@@ -242,6 +259,26 @@ class VideoListModel extends WlModelAbstract
   public $a_staff = [];
 
   /**
+   * All staff members to offer in the staff filter of the video catalog.
+   *
+   * Each element: 
+   *
+   * <dl>
+   *   <dt>string `text_name`</dt>
+   *   <dd>Full name of the staff member.</dd>
+   * 
+   *   <dt>string `uid_staff`</dt>
+   *   <dd>User key of the staff member. </dd>
+   * 
+   *   <dt>string `k_staff`</dt>
+   *   <dd>Staff member key. Only for legacy applications. </dd>
+   * </dl>
+   * @get result
+   * @var array[]
+   */
+  public $a_staff_filter = [];
+
+  /**
    * A list of staff members who appear in videos.
    *
    * @get get
@@ -264,6 +301,23 @@ class VideoListModel extends WlModelAbstract
    * @var string[]
    */
   public $a_video_tag = [];
+
+  /**
+   * All tags to offer in the tag filter of the video catalog.
+   *
+   * Each element: 
+   *
+   * <dl>
+   *   <dt>string `k_video_tag`</dt>
+   *   <dd>Tag key. </dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>Tag name.</dd>
+   * </dl>
+   * @get result
+   * @var array[]
+   */
+  public $a_video_tag_filter = [];
 
   /**
    * Page to return.

@@ -10,7 +10,7 @@ use WellnessLiving\Wl\Service\ServiceSid;
 /**
  * Receives versioned analytics events from React Widgets and SDK applications.
  *
- * @method WlModelRequest post() Accepts a Widget analytics event.  Validates the event envelope and payload, stores the event, and schedules asynchronous processing.
+ * @method WlModelRequest post() Accepts a Widget analytics event.  Validates the event envelope and payload. An `abandoned_checkout` event is stored and scheduled for asynchronous processing. A `purchase` event marks any pending abandoned checkout event for the same client and checkout type as checkout-complete, so the "Abandoned checkout" trigger stops enrolling the client for it.
  */
 class WidgetAnalyticsEventModel extends WlModelAbstract
 {
@@ -28,6 +28,9 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    * 
    *       <dt>int `i_order`</dt>
    *       <dd>Zero-based item order in the checkout list.</dd>
+   * 
+   *       <dt>int `i_quantity`</dt>
+   *       <dd>Quantity of selected items.</dd>
    * 
    *       <dt>int|null `id_purchase_item`</dt>
    *       <dd>
@@ -49,6 +52,12 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    * {@link WidgetAnalyticsCheckoutTypeSid::STORE_PURCHASE}.
    *       </dd>
    * 
+   *       <dt>string|null `k_class_period`</dt>
+   *       <dd>
+   *         Selected class period key for classes/events booking items.
+   * `null` if class period is not specified or not applicable.
+   *       </dd>
+   * 
    *       <dt>string|null `k_enrollment_block`</dt>
    *       <dd>Optional enrollment block key for an event item.
    * `''` when an enrollment block is not available.</dd>
@@ -57,13 +66,13 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    *       <dd>
    *         Selected item key.
    * 
-   * When {@link \Wl\Widget\Analytics\AbandonedCheckout\AbandonedCheckoutItemEntity::$id_purchase_item} is:
+   * When {@link \Wl\Widget\Analytics\CheckoutSnapshotItemEntity::$id_purchase_item} is:
    * - {@link WlPurchaseItemSid::COUPON}, this is a coupon key.
    * - {@link WlPurchaseItemSid::ENROLLMENT}, this is an event class key.
-   * - {@link WlPurchaseItemSid::PRODUCT}, this is a product key.
+   * - {@link WlPurchaseItemSid::PRODUCT}, this is a product option key.
    * - {@link WlPurchaseItemSid::PROMOTION}, this is a Purchase Option key.
    * 
-   * When {@link \Wl\Widget\Analytics\AbandonedCheckout\AbandonedCheckoutItemEntity::$id_service} is:
+   * When {@link \Wl\Widget\Analytics\CheckoutSnapshotItemEntity::$id_service} is:
    * - {@link ServiceSid::APPOINTMENT}, this is a service key.
    * - {@link ServiceSid::BOOKABLE_ASSET}, this is an asset key.
    * - {@link ServiceSid::CLASSES} or {@link ServiceSid::EVENT}, this is a class key.
@@ -75,6 +84,10 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    * 
    *       <dt>string `text_service_name`</dt>
    *       <dd>Item name snapshot from checkout.</dd>
+   * 
+   *       <dt>string `uid_staff`</dt>
+   *       <dd>Selected staff user key.
+   * Empty if staff was not selected.</dd>
    *     </dl>
    *   </dd>
    * 

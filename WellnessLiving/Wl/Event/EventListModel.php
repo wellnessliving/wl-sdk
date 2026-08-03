@@ -384,6 +384,8 @@ class EventListModel extends WlModelAbstract
   /**
    * List of staff UIDs applied by filter.
    *
+   * `null` if the filter by staff is not applied.
+   *
    * Cannot be specified together with {@link EventListModel::$a_staff}.
    *
    * @get get
