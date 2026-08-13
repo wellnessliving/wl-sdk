@@ -194,7 +194,10 @@ class PaymentMultipleModel extends WlModelAbstract
    *   <dd>The visit key. </dd>
    * 
    *   <dt>string `text_key`</dt>
-   *   <dd>Selected pay option to apply.</dd>
+   *   <dd>
+   *     Selected pay option to apply. The key has structure {@link \Wl\Visit\Pay\PayChangeApi::$text_key}, plus an
+   *  extra `k_promotion:0` (Drop-in) and `k_appointment_deposit:[k_appointment]` (deposit-only).
+   *   </dd>
    * 
    *   <dt>string `uid`</dt>
    *   <dd>The user key. </dd>
@@ -280,6 +283,9 @@ class PaymentMultipleModel extends WlModelAbstract
 
   /**
    * The user's key.
+   *
+   * Can be empty when the payment is for one or more walk-in visits, in which case
+   *    {@link PaymentMultipleModel::$a_appointment} must be passed instead.
    *
    * @get get
    * @post get

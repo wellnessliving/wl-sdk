@@ -20,6 +20,18 @@ class TuitionEnrollmentListModel extends WlModelAbstract
    *   <dd>
    *     Events for this enrollment.
    *     <dl>
+   *       <dt>int|null `id_enrollment_status`</dt>
+   *       <dd>
+   *         Enrollment status. Active user is enrolled into the event, and there are upcoming sessions.
+   * Canceled, if enrollment is canceled.
+   * Completed, if all event sessions are in the past and enrollment is not canceled.
+   *       </dd>
+   * 
+   *       <dt>int|null `id_membership_status`</dt>
+   *       <dd>Membership status.
+   * 
+   * `null` if tuition paid in full with installment.</dd>
+   * 
    *       <dt>bool `is_cancelled`</dt>
    *       <dd>Whether this enrollment is cancelled or not.</dd>
    * 

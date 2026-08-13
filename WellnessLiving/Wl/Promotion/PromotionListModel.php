@@ -30,6 +30,9 @@ class PromotionListModel extends WlModelAbstract
    *   <dt>bool `is_component`</dt>
    *   <dd>Whether the promotion is a component.</dd>
    * 
+   *   <dt>bool `is_expired`</dt>
+   *   <dd>Whether the promotion is expired.</dd>
+   * 
    *   <dt>string `k_promotion`</dt>
    *   <dd>The key of the promotion. </dd>
    * 

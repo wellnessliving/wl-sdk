@@ -10,7 +10,7 @@ use WellnessLiving\Wl\Service\ServiceSid;
 /**
  * Receives versioned analytics events from React Widgets and SDK applications.
  *
- * @method WlModelRequest post() Accepts a Widget analytics event.  Validates the event envelope and payload. An `abandoned_checkout` event is stored and scheduled for asynchronous processing. A `purchase` event marks any pending abandoned checkout event for the same client and checkout type as checkout-complete, so the "Abandoned checkout" trigger stops enrolling the client for it.
+ * @method WlModelRequest post() Accepts a Widget analytics event.  Validates the event envelope and payload. `begin_checkout` and `abandoned_checkout` events are stored and scheduled for asynchronous processing. A `purchase` event marks pending checkout events for the same client and checkout type as checkout-complete, so the "Abandoned checkout" trigger stops enrolling the client for them.
  */
 class WidgetAnalyticsEventModel extends WlModelAbstract
 {
@@ -57,10 +57,6 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    *         Selected class period key for classes/events booking items.
    * `null` if class period is not specified or not applicable.
    *       </dd>
-   * 
-   *       <dt>string|null `k_enrollment_block`</dt>
-   *       <dd>Optional enrollment block key for an event item.
-   * `''` when an enrollment block is not available.</dd>
    * 
    *       <dt>string `k_item`</dt>
    *       <dd>

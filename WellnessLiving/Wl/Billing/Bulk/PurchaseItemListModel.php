@@ -230,6 +230,18 @@ class PurchaseItemListModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    * 
+   *   <dt>int `i_pay_account`</dt>
+   *   <dd>The number of clients that paid by account.</dd>
+   * 
+   *   <dt>int `i_pay_card`</dt>
+   *   <dd>The number of clients that paid by card or ACH.</dd>
+   * 
+   *   <dt>string `m_pay_account`</dt>
+   *   <dd>The total amount paid by account.</dd>
+   * 
+   *   <dt>string `m_pay_card`</dt>
+   *   <dd>The total amount paid by card or ACH.</dd>
+   * 
    *   <dt>string `m_subtotal_after_discount`</dt>
    *   <dd>The price of the selected items for all the clients, with the client type discounts applied.</dd>
    * 

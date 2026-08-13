@@ -9,11 +9,9 @@ use WellnessLiving\WlModelRequest;
 /**
  * Retrieves information about staff members for the current service.
  *
- * @deprecated Use {@link StaffListModel} instead.
- *
  * @method WlModelRequest get() Retrieves an information about staff members for the current service.  Returns the list of staff members who can perform the specified service at the given location  on the specified date and time. Each entry includes the staff member's name, image, gender,  and availability. An 'any staff' option is included when the service allows random staff assignment.
  */
-class ListModel extends WlModelAbstract
+class StaffListModel extends WlModelAbstract
 {
   /**
    * A list of staff members with information about them.
@@ -86,6 +84,16 @@ class ListModel extends WlModelAbstract
    * @var bool
    */
   public $has_staff;
+
+  /**
+   * Count of clients on the appointment.
+   *
+   * Default value is 1.
+   *
+   * @get get
+   * @var int
+   */
+  public $i_client = 1;
 
   /**
    * Custom appointment duration in minutes.

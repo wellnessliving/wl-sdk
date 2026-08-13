@@ -152,6 +152,18 @@ class ServiceList52Model extends WlModelAbstract
    *   <dt>int `i_duration`</dt>
    *   <dd>The appointment duration in minutes.</dd>
    * 
+   *   <dt>int `i_padding_after`</dt>
+   *   <dd>
+   *     Padding time after the end of the appointment, in minutes. Used to detect when a staff member is
+   *   busy after this appointment when booking back-to-back appointments.
+   *   </dd>
+   * 
+   *   <dt>int `i_padding_before`</dt>
+   *   <dd>
+   *     Padding time before the beginning of the appointment, in minutes. Used to detect when a staff member is
+   *   busy before this appointment when booking back-to-back appointments.
+   *   </dd>
+   * 
    *   <dt>int `id_book_flow`</dt>
    *   <dd>The type of client booking flow. One of {@link ServiceBookFlowSid} constants.</dd>
    * 

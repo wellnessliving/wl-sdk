@@ -26,7 +26,13 @@ class VideoElementModel extends WlModelAbstract
   public $a_location;
 
   /**
-   * The keys of the user staff members who are on the video.
+   * The legacy staff keys associated with the video.
+   *
+   * For GET requests, this field is populated only for applications listed in
+   * {@link VideoElementApi::APPS_USE_OLD_K_STAFF}; otherwise it is empty.
+   * An empty value outside the allow-list does not indicate that no staff members are assigned; use
+   * {@link VideoElementModel::$a_staff_uid} as the authoritative list.
+   * For POST requests, applications outside the allow-list must use {@link VideoElementModel::$a_staff_uid}.
    *
    * @get result
    * @post post
@@ -40,7 +46,9 @@ class VideoElementModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>string `k_staff`</dt>
-   *   <dd><b>Deprecated</b> The staff member key. </dd>
+   *   <dd>
+   *     <b>Deprecated</b> The optional staff member key returned only to legacy applications. 
+   *   </dd>
    * 
    *   <dt>string `text_name`</dt>
    *   <dd>The staff member's full name.</dd>
@@ -55,6 +63,7 @@ class VideoElementModel extends WlModelAbstract
 
   /**
    * The user IDs of the staff members who are on the video (authoritative list for who is assigned to the video).
+   * Use this field instead of {@link VideoElementModel::$a_staff} in POST requests.
    *
    * @get result
    * @post post

@@ -25,22 +25,22 @@ class ConnectionCheckModel extends WlModelAbstract
    *
    * 
    *   <dt>string `text_message`</dt>
-   *   <dd>Log message. Present for log sources.</dd>
+   *   <dd>Log message or task description. Present for log and task sources.</dd>
    * 
    *   <dt>string `dtu_first_seen`</dt>
-   *   <dd>UTC date/time of the first matching log record.</dd>
+   *   <dd>UTC date/time of the first matching log or async-task record. Empty for background tasks.</dd>
    * 
    *   <dt>string `dtu_last_seen`</dt>
-   *   <dd>UTC date/time of the last matching log record.</dd>
+   *   <dd>UTC date/time of the last matching log or async-task record. Empty for background tasks.</dd>
    * 
    *   <dt>string `s_object`</dt>
-   *   <dd> Present for this source.</dd>
+   *   <dd>Usage-statistics object. Present for the usage-statistics source.</dd>
    * 
    *   <dt>string `dl_first_seen`</dt>
-   *
+   *   <dd>Local date of the first usage-statistics record.</dd>
    * 
    *   <dt>string `dl_last_seen`</dt>
-   *
+   *   <dd>Local date of the last usage-statistics record.</dd>
    * </dl>
    * @get result
    * @var array[]

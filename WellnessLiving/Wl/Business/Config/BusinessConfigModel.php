@@ -174,11 +174,11 @@ class BusinessConfigModel extends WlModelAbstract
    *   <dt>int `id_charge`</dt>
    *   <dd>One of {@link ChargeSid} constants.</dd>
    * 
-   *   <dt>int `id_charge_measure`</dt>
-   *   <dd>Charge measure type. `0` for percent, `1` for money amount.</dd>
-   * 
    *   <dt>bool `is_appointment_all`</dt>
    *   <dd>`1` if all classes are selected, `0` - otherwise.</dd>
+   * 
+   *   <dt>bool `is_charge_measure_money`</dt>
+   *   <dd>`true` for a fixed money amount, `false` for a percentage.</dd>
    * 
    *   <dt>bool `is_class_all`</dt>
    *   <dd>`1` if all classes are selected, `0` - otherwise.</dd>

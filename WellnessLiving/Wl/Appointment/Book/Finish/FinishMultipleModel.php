@@ -15,7 +15,6 @@ use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
 use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
-use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
  * Pays for an appointment or appointment Purchase Option for a client.
@@ -356,79 +355,17 @@ class FinishMultipleModel extends WlModelAbstract
   public $a_pay = [];
 
   /**
-   * A list of payment sources to pay with.
+   * Payment is not processed by this API.
    *
-   * Each source contains: 
+   * Use the following APIs for payment:
+   * * {@link PaymentModel}
+   * * {@link PaymentPostModel}
+   * * {@link PaymentMultipleModel}
    *
-   * <dl>
-   *   <dt>float `f_amount`</dt>
-   *   <dd>Amount of money to withdraw with this payment source.</dd>
-   * 
-   *   <dt>int `id_pay_method`</dt>
-   *   <dd>Payment method. One of {@link WlPayMethodSid} constants.</dd>
-   * 
-   *   <dt>bool `is_hide`</dt>
-   *   <dd>Whether this payment method is hidden.
-   *  </dd>
-   * 
-   *   <dt>bool `is_success`</dt>
-   *   <dd>Whether this source was successfully charged.</dd>
-   * 
-   *   <dt>string `m_fee`</dt>
-   *   <dd>Fee amount for this payment source.
-   *   </dd>
-   * 
-   *   <dt>string `m_surcharge`</dt>
-   *   <dd>Surcharge amount for this payment source.</dd>
-   * 
-   *   <dt>array `pa`</dt>
-   *   <dd>
-   *     Payer authentication data. Element may not present for payment sources that do not support payer authentication,
-   *  or payer authentication is not implemented by this payment processor.
-   * 
-   *  This array is represented by
-   *  <tt>namespace.Wl/Pay/Processor/ProcessorInterface/PayerAuthenticationForm.xml</tt>
-   *  at browser side.
-   * 
-   *  Structure of the array:
-   *     <dl>
-   *       <dt>string `json_data`</dt>
-   *       <dd>
-   *         Additional payer authentication data.
-   * 
-   *  Copy of value set with
-   *  <tt>Wl_Pay_Processor_ProcessorInterface_Abstract.paDataSet()</tt>.
-   * 
-   *  An empty string (or element not passed) if this payment processor does not provide additional payer
-   *  authentication data, or payer authentication was not performed.
-   *       </dd>
-   * 
-   *       <dt>string `m_amount`</dt>
-   *       <dd>
-   *         Authenticated payment amount.
-   * 
-   *  Copy of value set with
-   *  <tt>Wl_Pay_Processor_ProcessorInterface_Abstract.paAmountSet()</tt>.
-   * 
-   *  An empty string (or element not passed) if payer authentication was not performed.
-   *       </dd>
-   * 
-   *       <dt>string `k_pay_transaction`</dt>
-   *       <dd>
-   *         Key of the payment transaction that was created during payer authentication.
-   *  In this case, payment transaction should be attached to this transaction.
-   * 
-   *  An empty string (or element not passed) if transaction was not created during payer authentication, or payer
-   *  authentication was not executed.
-   *       </dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>string `s_index`</dt>
-   *   <dd>Index of this form. This corresponds the key this item is written in this array with.</dd>
-   * </dl>
    * @post post
-   * @var array[]
+   * @var array
+   *
+   * @deprecated Not used. See documentation.
    */
   public $a_pay_form = [];
 
@@ -448,11 +385,12 @@ class FinishMultipleModel extends WlModelAbstract
   public $a_payment_data = [];
 
   /**
-   * The purchase items keys.
-   * This will be empty if no purchases have been made for the appointment booking.
+   * The keys of purchased items.
    *
-   * Keys refer to provider indexes.
-   * Value is array of item keys.
+   * The first level of the array is the list of providers from the batch.
+   * The second level of the array is the list of purchased items for this booking.
+   *
+   * If a purchased item was transferred, the transferred purchase item key is returned instead of the original one.
    *
    * @post post
    * @var string[][]

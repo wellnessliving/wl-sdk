@@ -9,7 +9,7 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 /**
  * Displays a list of purchase items.
  *
- * @method WlModelRequest get() Returns the pricing breakdown for a list of purchase items, applying applicable discounts and taxes.  Validates the business, location, and user, then for each item in `a_purchase_item_request` computes the price, applicable discount code reduction, login-type discount, and taxes, and returns per-item cost, discount, price, tax, and subtotal amounts in `a_purchase_item_result`.
+ * @method WlModelRequest get() Returns the pricing breakdown for a list of purchase items, applying applicable discounts and taxes.  Validates the business, location, and user, then for each item in `a_purchase_item_request` computes the price, applicable discount code reduction, login-type discount, and taxes, and returns per-item cost, discount, price, tax, and subtotal amounts in `a_purchase_item_result`. For a tuition the amounts cover the full cost, and the split between what is charged right now and what is deferred is added to the same row.
  */
 class PurchaseElementListModel extends WlModelAbstract
 {
@@ -60,6 +60,21 @@ class PurchaseElementListModel extends WlModelAbstract
    * Every element has the next keys:
    *
    * <dl>
+   *   <dt>array[] `a_event_list`</dt>
+   *   <dd>
+   *     Tuition events with calculated amounts.
+   * 
+   * 
+   *   </dd>
+   * 
+   *   <dt>array[] `a_registration_fee_list`</dt>
+   *   <dd>
+   *     Registration fees with calculated amounts, keyed by participant key.
+   * 
+   * 
+   * 
+   *   </dd>
+   * 
    *   <dt>string[] `a_tax`</dt>
    *   <dd>Information about taxes. The key refers to the tax key, and the value refers to the tax amount.</dd>
    * 
@@ -68,6 +83,23 @@ class PurchaseElementListModel extends WlModelAbstract
    * 
    *   <dt>string `k_id`</dt>
    *   <dd>The key of the purchase item in the database.</dd>
+   * 
+   *   <dt>string `m_checkout`</dt>
+   *   <dd>
+   *     The amount that has to be charged for the tuition right now, including tax. The other
+   * amounts of this row cover the full cost, including whatever is deferred to an installment
+   * plan or to a membership schedule.
+   * 
+   *   </dd>
+   * 
+   *   <dt>string `m_deferred`</dt>
+   *   <dd>
+   *     The part of the tuition cost that is not charged right now, including tax. Equals
+   * `m_cost` minus `m_checkout`. Rows for everything else are always paid for in full at once,
+   * so the amount to charge for the whole list is the sum of `m_cost` minus the sum of
+   * `m_deferred`.
+   * 
+   *   </dd>
    * 
    *   <dt>string `m_cost`</dt>
    *   <dd>The cost of the purchase item (with taxes).</dd>

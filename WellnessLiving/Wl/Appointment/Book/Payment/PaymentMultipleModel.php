@@ -365,7 +365,16 @@ class PaymentMultipleModel extends WlModelAbstract
   public $a_promotion_data;
 
   /**
-   * Fields refer to strings in the format <tt>id_purchase_item-k_id</tt>. Values refer to an array with the next stricture:
+   * List of purchase options to be purchased.
+   *
+   * <b>Warning:</b>
+   * * This field contains incorrect data for multiple bookings. Use {@link PaymentMultipleModel::$a_purchase_provider} instead.
+   * * This field can be safely used for a single booking.
+   * * This field can contain valid data for the {@link WlPurchaseItemSid::APPOINTMENT_TIP} purchase that does not belong to any provider.
+   *
+   * Array structure:
+   * * Keys refer to strings in the format `id_purchase_item-k_id`.
+   * * Values refer to an array with the next stricture:
    *
    * <dl>
    *   <dt>array `a_tax`</dt>
@@ -398,6 +407,10 @@ class PaymentMultipleModel extends WlModelAbstract
    * </dl>
    * @get result
    * @var array
+   * @deprecated This field contains incorrect data for multiple bookings.
+   *  Use {@link PaymentMultipleModel::$a_purchase_provider} instead.
+   *  However, this field can still return valid data for an Appointment Tip purchase that does not belong
+   *  to any provider, and the field can still be used for a single booking.
    */
   public $a_purchase;
 
@@ -407,10 +420,54 @@ class PaymentMultipleModel extends WlModelAbstract
    * The first level of the array is the list of appointments from the batch.
    * The second level of the array is the list of items purchased for this appointment.
    *
+   * If a purchased item was transferred, the key of the transferred purchase item will be returned instead of the
+   * key of the purchased one. Otherwise the original purchase item is kept.
+   *
    * @post result
    * @var string[][]|null
    */
   public $a_purchase_item;
+
+  /**
+   * A list of purchase options grouped by provider.
+   *
+   * * The first level keys are provider indexes from {@link PaymentMultipleModel::$a_book_data} field.
+   * * The second level keys are strings in the format `id_purchase_item-k_id`.
+   * * Each value has the same structure as {@link PaymentMultipleModel::$a_purchase}.
+   *
+   * <dl>
+   *   <dt>array `a_tax`</dt>
+   *   <dd>
+   *     A list of taxes to apply containing information about taxes.
+   * The array keys are <tt>k_tax</tt> keys. Each element contains the following fields:
+   *     <dl>
+   *       <dt>string `m_tax`</dt>
+   *       <dd>The tax rate.</dd>
+   * 
+   *       <dt>string `text_title`</dt>
+   *       <dd>The name of the tax.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>int `id_purchase_item`</dt>
+   *   <dd>The purchase item ID. One of the {@link WlPurchaseItemSid} constants.</dd>
+   * 
+   *   <dt>string `k_id`</dt>
+   *   <dd>The value of the discount used for the purchase.</dd>
+   * 
+   *   <dt>string `m_discount`</dt>
+   *   <dd>The value of the discount used for the purchase.</dd>
+   * 
+   *   <dt>string `m_pay`</dt>
+   *   <dd>The payment for the promotion (or single visit) without taxes.</dd>
+   * 
+   *   <dt>string `m_price`</dt>
+   *   <dd>The price of the promotion (or single visit).</dd>
+   * </dl>
+   * @get result
+   * @var array[][]
+   */
+  public $a_purchase_provider;
 
   /**
    * List of quiz response keys.
@@ -424,6 +481,9 @@ class PaymentMultipleModel extends WlModelAbstract
 
   /**
    * The list of amounts to pay for appointments from the batch, with taxes and without surcharges.
+   *
+   * * Keys are provider indexes from {@link PaymentMultipleModel::$a_book_data}.
+   * * Values are the total amount for the corresponding provider, or `0.00` if the provider has nothing to pay.
    *
    * @get result
    * @var string[]

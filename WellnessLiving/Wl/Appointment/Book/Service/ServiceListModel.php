@@ -8,6 +8,7 @@ use WellnessLiving\Wl\Schedule\ClassView\DenyReasonSid;
 use WellnessLiving\Wl\Service\ServiceBookFlowSid;
 use WellnessLiving\Wl\Service\ServicePriceSid;
 use WellnessLiving\Wl\Service\ServiceRequireSid;
+use WellnessLiving\Wl\Virtual\VirtualProviderSid;
 
 /**
  * Retrieves information about services in the current service category.
@@ -133,16 +134,34 @@ class ServiceListModel extends WlModelAbstract
    *   <dd>Human-readable reason why the client cannot book this service. Empty string if there is no deny reason.</dd>
    * 
    *   <dt>int `i_age_from`</dt>
-   *   <dd>The required minimum client age to book an appointment.</dd>
+   *   <dd>The required minimum client age to book an appointment (years part).</dd>
+   * 
+   *   <dt>int `i_age_from_month`</dt>
+   *   <dd>The required minimum client age to book an appointment (months part).</dd>
    * 
    *   <dt>int `i_age_to`</dt>
-   *   <dd>The required maximum client age to book an appointment.</dd>
+   *   <dd>The required maximum client age to book an appointment (years part).</dd>
+   * 
+   *   <dt>int `i_age_to_month`</dt>
+   *   <dd>The required maximum client age to book an appointment (months part).</dd>
    * 
    *   <dt>int `i_price`</dt>
    *   <dd>The price type ID. One of {@link ServicePriceSid} constants.</dd>
    * 
    *   <dt>int `i_duration`</dt>
    *   <dd>The appointment duration in minutes.</dd>
+   * 
+   *   <dt>int `i_padding_after`</dt>
+   *   <dd>
+   *     Padding time after the end of the appointment, in minutes. Used to detect when a staff member is
+   *   busy after this appointment when booking back-to-back appointments.
+   *   </dd>
+   * 
+   *   <dt>int `i_padding_before`</dt>
+   *   <dd>
+   *     Padding time before the beginning of the appointment, in minutes. Used to detect when a staff member is
+   *   busy before this appointment when booking back-to-back appointments.
+   *   </dd>
    * 
    *   <dt>int `id_book_flow`</dt>
    *   <dd>The type of client booking flow. One of {@link ServiceBookFlowSid} constants.</dd>
@@ -155,6 +174,11 @@ class ServiceListModel extends WlModelAbstract
    * 
    *   <dt>int `id_service_require`</dt>
    *   <dd>The required payment type ID. One of {@link ServiceRequireSid} constants.</dd>
+   * 
+   *   <dt>int|null `id_virtual_provider`</dt>
+   *   <dd>
+   *     Virtual provider ID. One of {@link VirtualProviderSid} constants. `null` for non-virtual services.
+   *   </dd>
    * 
    *   <dt>bool `is_age_public`</dt>
    *   <dd>`true` if age restrictions are public. Otherwise, `false` if they should be hidden from clients.</dd>

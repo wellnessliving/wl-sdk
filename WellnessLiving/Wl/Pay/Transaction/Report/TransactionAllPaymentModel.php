@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Pay\Transaction\Report;
 
+use WellnessLiving\Thoth\ReportCore\Generator\ReportGeneratorStatusSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlPayMethodSid;
@@ -176,6 +177,7 @@ class TransactionAllPaymentModel extends WlModelAbstract
    *
    * @get result
    * @var int
+   * @see ReportGeneratorStatusSid
    */
   public $id_report_status = 0;
 

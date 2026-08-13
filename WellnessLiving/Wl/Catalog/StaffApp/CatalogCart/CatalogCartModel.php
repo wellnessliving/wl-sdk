@@ -108,6 +108,12 @@ class CatalogCartModel extends WlModelAbstract
    *       <dt>string `m_checkout`</dt>
    *       <dd>The total amount that will be charged for the tuition item during purchase.</dd>
    * 
+   *       <dt>string `m_deferred`</dt>
+   *       <dd>
+   *         The part of the tuition cost that is not charged during purchase.
+   *   
+   *       </dd>
+   * 
    *       <dt>string `f_price`</dt>
    *       <dd>The custom price.</dd>
    * 
@@ -258,6 +264,20 @@ class CatalogCartModel extends WlModelAbstract
    * @var string
    */
   public $k_location = '';
+
+  /**
+   * The amount that has to be charged right now for the cart.
+   *
+   * Equals {@link CatalogCartModel::$m_total} for everything that is paid for in full at once. A
+   * tuition defers a part of its cost to an installment plan or to a membership schedule, and
+   * `m_total` covers the full cost regardless, so this is the amount to put into the payment form.
+   * It is `m_total` minus `a_config.m_deferred` of every tuition item in
+   * {@link CatalogCartModel::$a_item}.
+   *
+   * @get result
+   * @var string
+   */
+  public $m_checkout = '0.00';
 
   /**
    * The discount amount in dollars, excluding tax.

@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Event;
 
 use WellnessLiving\Core\Sid\YesNoSid;
 use WellnessLiving\Core\a\ADateWeekSid;
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
@@ -92,6 +93,18 @@ class EventListModel extends WlModelAbstract
    *     <dl>
    *       <dt>int[] `a_day`</dt>
    *       <dd>List of weekday numbers when event occur.</dd>
+   * 
+   *       <dt>array `a_repeat`</dt>
+   *       <dd>
+   *         Information about event repeating.
+   *         <dl>
+   *           <dt>int `i_repeat`</dt>
+   *           <dd>Count of the periods which are specified in <var>id_repeat</var>.</dd>
+   * 
+   *           <dt>int `id_repeat`</dt>
+   *           <dd>Measuring unit of <var>i_repeat</var> (week, month, year) from {@link ADurationSid}.</dd>
+   *         </dl>
+   *       </dd>
    * 
    *       <dt>array[] `a_staff_member`</dt>
    *       <dd>

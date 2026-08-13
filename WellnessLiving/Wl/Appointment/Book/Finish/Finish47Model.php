@@ -7,12 +7,13 @@ use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Appointment\Book\Payment\PaymentModel;
+use WellnessLiving\Wl\Appointment\Book\Payment\PaymentMultipleModel;
+use WellnessLiving\Wl\Appointment\Book\Payment\PaymentPostModel;
 use WellnessLiving\Wl\Appointment\Book\Question\QuestionModel;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
-use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
-use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
  * Completes an appointment booking.
@@ -225,14 +226,41 @@ class Finish47Model extends WlModelAbstract
    * Information for sending an appointment notification.
    *
    * <dl>
+   *   <dt>bool `is_attach`</dt>
+   *   <dd>`true` to attach calendar file, `false` to not attach calendar file.</dd>
+   * 
+   *   <dt>bool `is_campaign`</dt>
+   *   <dd>Whether mail should track as a part of campaign. `true` if yes, `false` if no.</dd>
+   * 
    *   <dt>bool `is_mail`</dt>
    *   <dd>`true` to send mail; `false` to not send.</dd>
+   * 
+   *   <dt>bool `is_push`</dt>
+   *   <dd>`true` to send push notification; `false` to not send.</dd>
    * 
    *   <dt>bool `is_sms`</dt>
    *   <dd>`true` to send SMS; `false` to not send.</dd>
    * 
-   *   <dt>bool `is_push`</dt>
-   *   <dd>`true` to send push notification; `false` to not send.</dd>
+   *   <dt>string `text_business_name`</dt>
+   *   <dd>Business name.</dd>
+   * 
+   *   <dt>string `text_business_reply`</dt>
+   *   <dd>Reply email address.</dd>
+   * 
+   *   <dt>string `text_campaign`</dt>
+   *   <dd>Campaign name.</dd>
+   * 
+   *   <dt>string `text_content_mail`</dt>
+   *   <dd>Email content.</dd>
+   * 
+   *   <dt>string `text_push`</dt>
+   *   <dd>Push notification content.</dd>
+   * 
+   *   <dt>string `text_sms`</dt>
+   *   <dd>SMS content.</dd>
+   * 
+   *   <dt>string `text_subject`</dt>
+   *   <dd>Email subject.</dd>
    * </dl>
    * @get result
    * @post post
@@ -241,77 +269,17 @@ class Finish47Model extends WlModelAbstract
   public $a_notification = [];
 
   /**
-   * A list of payment sources to pay with.
+   * Payment is not processed by this API.
    *
-   * <dl>
-   *   <dt>float `f_amount`</dt>
-   *   <dd>Amount of money to withdraw with this payment source.</dd>
-   * 
-   *   <dt>int `id_pay_method`</dt>
-   *   <dd>Payment method. One of {@link WlPayMethodSid} constants.</dd>
-   * 
-   *   <dt>bool `is_hide`</dt>
-   *   <dd>Whether this payment method is hidden.
-   *  </dd>
-   * 
-   *   <dt>bool `is_success`</dt>
-   *   <dd>Whether this source was successfully charged.</dd>
-   * 
-   *   <dt>string `m_fee`</dt>
-   *   <dd>Fee amount for this payment source.
-   *   </dd>
-   * 
-   *   <dt>string `m_surcharge`</dt>
-   *   <dd>Surcharge amount for this payment source.</dd>
-   * 
-   *   <dt>array `pa`</dt>
-   *   <dd>
-   *     Payer authentication data. Element may not present for payment sources that do not support payer authentication,
-   *  or payer authentication is not implemented by this payment processor.
-   * 
-   *  This array is represented by
-   *  <tt>namespace.Wl/Pay/Processor/ProcessorInterface/PayerAuthenticationForm.xml</tt>
-   *  at browser side.
-   * 
-   *  Structure of the array:
-   *     <dl>
-   *       <dt>string `json_data`</dt>
-   *       <dd>
-   *         Additional payer authentication data.
-   * 
-   *  Copy of value set with
-   *  <tt>Wl_Pay_Processor_ProcessorInterface_Abstract.paDataSet()</tt>.
-   * 
-   *  An empty string (or element not passed) if this payment processor does not provide additional payer
-   *  authentication data, or payer authentication was not performed.
-   *       </dd>
-   * 
-   *       <dt>string `m_amount`</dt>
-   *       <dd>
-   *         Authenticated payment amount.
-   * 
-   *  Copy of value set with
-   *  <tt>Wl_Pay_Processor_ProcessorInterface_Abstract.paAmountSet()</tt>.
-   * 
-   *  An empty string (or element not passed) if payer authentication was not performed.
-   *       </dd>
-   * 
-   *       <dt>string `k_pay_transaction`</dt>
-   *       <dd>
-   *         Key of the payment transaction that was created during payer authentication.
-   *  In this case, payment transaction should be attached to this transaction.
-   * 
-   *  An empty string (or element not passed) if transaction was not created during payer authentication, or payer
-   *  authentication was not executed.
-   *       </dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>string `s_index`</dt>
-   *   <dd>Index of this form. This corresponds the key this item is written in this array with.</dd>
-   * </dl>
+   * Use the following APIs for payment:
+   * * {@link PaymentModel}
+   * * {@link PaymentPostModel}
+   * * {@link PaymentMultipleModel}
+   *
    * @post post
-   * @var array[]
+   * @var array
+   *
+   * @deprecated Not used. See documentation.
    */
   public $a_pay_form = [];
 
@@ -418,7 +386,7 @@ class Finish47Model extends WlModelAbstract
   public $a_visit_payment;
 
   /**
-   * The booking mode ID. One of the {@link ModeSid} constants.
+   * The booking mode ID.
    *
    * @post post
    * @var int

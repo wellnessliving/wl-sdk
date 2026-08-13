@@ -165,14 +165,22 @@ class PageElementModel extends WlModelAbstract
    * Each element is an array with the following elements:
    *
    * <dl>
+   *   <dt>string `uid_staff`</dt>
+   *   <dd>The staff user key. </dd>
+   * 
    *   <dt>string `k_staff`</dt>
-   *   <dd>The staff member key. </dd>
+   *   <dd>
+   *     Deprecated staff key.
+   *   </dd>
    * 
    *   <dt>string `s_family`</dt>
    *   <dd>The surname of the staff member.</dd>
    * 
    *   <dt>string `s_name`</dt>
    *   <dd>The first name of the staff member.</dd>
+   * 
+   *   <dt>string `s_name_full`</dt>
+   *   <dd>The full name of the staff member.</dd>
    * </dl>
    * @get result
    * @var array[]
