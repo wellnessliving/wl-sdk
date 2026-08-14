@@ -18,7 +18,7 @@ class WaiverModel extends WlModelAbstract
    * @get result
    * @var bool
    */
-  public $has_waiver;
+  public $has_waiver = false;
 
   /**
    * Text of the current waiver with the substituted variables.
@@ -26,7 +26,7 @@ class WaiverModel extends WlModelAbstract
    * @get result
    * @var string
    */
-  public $html_waiver;
+  public $html_waiver = '';
 
   /**
    * ID of business to get waiver for.
@@ -55,6 +55,16 @@ class WaiverModel extends WlModelAbstract
    * @var string
    */
   public $uid = '';
+
+  /**
+   * URL to the waiver page.
+   *
+   * This page is only available to logged-in clients.
+   *
+   * @get result
+   * @var string
+   */
+  public $url_waiver = '';
 }
 
 ?>

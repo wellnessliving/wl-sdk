@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260813131739
+  version: 1.1.20260814133011
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-08-13 13:17:39
+    Last updated at: 2026-08-14 13:30:11
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -13221,6 +13221,9 @@ paths:
                       html_waiver:
                         type: string
                         description: 'Text of the current waiver with the substituted variables.'
+                      url_waiver:
+                        type: string
+                        description: 'URL to the waiver page. This page is only available to logged-in clients.'
       tags:
         - Waiver-Waiver
   '/Wl/Business/Design/BusinessDesign.json':
