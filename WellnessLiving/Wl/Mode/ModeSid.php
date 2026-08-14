@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Mode;
 /**
  * The source of a visit.
  *
- * Last used ID: 32.
+ * Last used ID: 33.
  */
 class ModeSid
 {
@@ -23,6 +23,11 @@ class ModeSid
    * Visit has been checked-in by Brivo Door Access.
    */
   const BRIVO_DOOR_ACCESS = 31;
+
+  /**
+   * Purchase created by a bulk billing batch charge.
+   */
+  const BULK_BILLING = 33;
 
   /**
    * Visit has been created by <tt>CENTRED</tt>.
