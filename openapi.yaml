@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260817095943
+  version: 1.1.20260817120204
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-08-17 09:59:43
+    Last updated at: 2026-08-17 12:02:04
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -29059,6 +29059,35 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Count-InventoryCount
+  '/Wl/Event/EventEnrollment.json':
+    get:
+      summary: 'Returns a list of clients enrolled in the specified event classes. An enrollment is considered to exist for any client that has an active (not canceled, not missed) visit, past or future, for one of the specified classes.'
+      parameters:
+        - name: a_class
+          in: query
+          description: 'List of event classes for which enrollment must be retrieved.'
+          schema:
+            type: array
+        - name: k_business
+          in: query
+          description: 'Key of the business to which the event classes belong.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_enrollments:
+                        type: array
+                        description: 'A list of clients enrolled in the specified event classes. Key is the class key. Primary key in {@link \RsClassSql} table. Value is a list of clients enrolled in that class. Each element contains: <dl> <dt>bool `is_enrolled_full`</dt> <dd> <tt>true</tt> if the client has a block event enrollment record set for this class (booked the whole event); <tt>false</tt> otherwise. </dd> <dt>string `uid`</dt> <dd>Key of the client who attended or will attend the event. Primary key in {@link \PassportLoginSql} table.</dd> </dl>'
+      tags:
+        - Event-EventEnrollment
 tags:
   -
     name: Account-Account
@@ -29516,6 +29545,9 @@ tags:
   -
     name: Event-EventCancelWhole
     description: 'Cancels a whole event booked by a client.'
+  -
+    name: Event-EventEnrollment
+    description: 'Retrieves a list of clients enrolled in the specified event instances.'
   -
     name: Event-EventList
     description: 'Retrieves a list of events that fit the given filter parameters.'
