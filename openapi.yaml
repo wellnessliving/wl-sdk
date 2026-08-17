@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260814133011
+  version: 1.1.20260817095943
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-08-14 13:30:11
+    Last updated at: 2026-08-17 09:59:43
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -726,6 +726,11 @@ paths:
           description: 'Determines whether the endpoint is used for backend mode.'
           schema:
             type: boolean
+        - name: is_cache_reset
+          in: query
+          description: 'Model cache reset flag.'
+          schema:
+            type: boolean
         - name: is_ignore_requirement
           in: query
           description: '`true` to show even event restricted by booking policies; `false` to show available events only.'
@@ -792,6 +797,11 @@ paths:
     put:
       summary: 'Resets the event list cache for the specified business and user. Call this after modifying event data to force the next request to rebuild the schedule from the database. Can also conditionally reset without parameters if the caller determines a reset is needed.'
       parameters:
+        - name: is_cache_reset
+          in: query
+          description: 'Model cache reset flag.'
+          schema:
+            type: boolean
         - name: k_business
           in: query
           description: 'The event business key to retrieve a list of all event sessions in business. `null` to retrieve events from {@link EventListApi::$k_location}.'
@@ -802,16 +812,6 @@ paths:
           description: 'The user key. Required to apply specific user rules such as age restrictions.'
           schema:
             type: [string, "null"]
-      requestBody:
-        required: true
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              type: object
-              properties:
-                is_cache_reset:
-                  type: boolean
-                  description: 'Model cache reset flag.'
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -3003,7 +3003,7 @@ paths:
                         description: 'The keys of the locations where this video is available.'
                       a_staff:
                         type: array
-                        description: 'The legacy staff keys associated with the video. For GET requests, this field is populated only for applications listed in {@link VideoElementApi::APPS_USE_OLD_K_STAFF}; otherwise it is empty. An empty value outside the allow-list does not indicate that no staff members are assigned; use {@link VideoElementApi::$a_staff_uid} as the authoritative list. For POST requests, applications outside the allow-list must use {@link VideoElementApi::$a_staff_uid}.'
+                        description: 'The legacy staff keys associated with the video. For GET requests, this field is populated only for applications listed in {@link VideoElementApi::APPS_USE_OLD_K_STAFF}; otherwise it is not returned. For POST requests, applications outside the allow-list must use {@link VideoElementApi::$a_staff_uid}.'
                       a_staff_info:
                         type: array
                         description: 'A list of staff members associated with the video. Every item has the following structure: <dl> <dt>string `k_staff`</dt> <dd> <b>Deprecated</b> The optional staff member key returned only to legacy applications. <i>Primary key in {@link \RsStaffSql} table.</i> </dd> <dt>string `text_name`</dt> <dd>The staff member''s full name.</dd> <dt>string `uid_staff`</dt> <dd>The staff user ID. <i>Primary key in {@link \PassportLoginSql}.`uid`.</i></dd> </dl>'
@@ -3153,7 +3153,7 @@ paths:
                   description: 'The keys of the locations where this video is available.'
                 a_staff:
                   type: array
-                  description: 'The legacy staff keys associated with the video. For GET requests, this field is populated only for applications listed in {@link VideoElementApi::APPS_USE_OLD_K_STAFF}; otherwise it is empty. An empty value outside the allow-list does not indicate that no staff members are assigned; use {@link VideoElementApi::$a_staff_uid} as the authoritative list. For POST requests, applications outside the allow-list must use {@link VideoElementApi::$a_staff_uid}.'
+                  description: 'The legacy staff keys associated with the video. For GET requests, this field is populated only for applications listed in {@link VideoElementApi::APPS_USE_OLD_K_STAFF}; otherwise it is not returned. For POST requests, applications outside the allow-list must use {@link VideoElementApi::$a_staff_uid}.'
                 a_staff_uid:
                   type: array
                   description: 'The user IDs of the staff members who are on the video (authoritative list for who is assigned to the video). Use this field instead of {@link VideoElementApi::$a_staff} in POST requests.'
@@ -26555,7 +26555,7 @@ paths:
         - Convert-Convert
   '/Wl/Login/Promotion/GuestPass/GuestPassList.json':
     get:
-      summary: 'Retrieves guest passes for a specific client. Returns all guest passes assigned to the given user, optionally filtered by class and location.'
+      summary: 'Retrieves guest passes for a specific client. Returns all guest passes assigned to the given user, optionally filtered by class and location. Guest passes are not applicable to events, so an empty list is returned when the specified class is an event.'
       parameters:
         - name: dl_date
           in: query

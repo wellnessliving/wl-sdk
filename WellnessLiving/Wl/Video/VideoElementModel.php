@@ -29,9 +29,7 @@ class VideoElementModel extends WlModelAbstract
    * The legacy staff keys associated with the video.
    *
    * For GET requests, this field is populated only for applications listed in
-   * {@link VideoElementApi::APPS_USE_OLD_K_STAFF}; otherwise it is empty.
-   * An empty value outside the allow-list does not indicate that no staff members are assigned; use
-   * {@link VideoElementModel::$a_staff_uid} as the authoritative list.
+   * {@link VideoElementApi::APPS_USE_OLD_K_STAFF}; otherwise it is not returned.
    * For POST requests, applications outside the allow-list must use {@link VideoElementModel::$a_staff_uid}.
    *
    * @get result

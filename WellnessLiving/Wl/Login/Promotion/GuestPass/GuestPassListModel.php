@@ -10,7 +10,7 @@ use WellnessLiving\Wl\WlProgramSid;
 /**
  * API for managing guest passes of specific client.
  *
- * @method WlModelRequest get() Retrieves guest passes for a specific client.  Returns all guest passes assigned to the given user, optionally filtered by class and location.
+ * @method WlModelRequest get() Retrieves guest passes for a specific client.  Returns all guest passes assigned to the given user, optionally filtered by class and location.  Guest passes are not applicable to events, so an empty list is returned when the specified class is an event.
  */
 class GuestPassListModel extends WlModelAbstract
 {

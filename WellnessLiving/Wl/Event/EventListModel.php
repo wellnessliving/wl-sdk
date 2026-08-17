@@ -462,7 +462,8 @@ class EventListModel extends WlModelAbstract
   /**
    * Model cache reset flag.
    *
-   * @put post
+   * @get get
+   * @put get
    * @var bool
    */
   public $is_cache_reset = false;
