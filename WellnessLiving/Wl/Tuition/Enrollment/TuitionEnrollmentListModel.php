@@ -108,6 +108,23 @@ class TuitionEnrollmentListModel extends WlModelAbstract
   public $a_enrollment = [];
 
   /**
+   * List of users who has paid or are scheduled to pay tuition fee.
+   *
+   * Keys are user ids. Values are payment information.
+   *
+   * <dl>
+   *   <dt>string `is_paid`</dt>
+   *   <dd>
+   *     If `true`, user has paid tuition fee. If `false`, user is scheduled to pay tuition fee.
+   *     If a user did not pay and does not have a scheduled payment, the key is not present.
+   *   </dd>
+   * </dl>
+   * @get result
+   * @var array
+   */
+  public $a_enrollment_fee = [];
+
+  /**
    * Filters.
    *
    * List includes enrollments to the tuition. And enrollments to the tuition include enrollment to the event.

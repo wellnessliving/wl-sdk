@@ -23,7 +23,7 @@ class EventEnrollmentModel extends WlModelAbstract
   /**
    * A list of clients enrolled in the specified event classes.
    *
-   * Key is the class key.
+   * Key is the class key. 
    *
    * Value is a list of clients enrolled in that class. Each element contains:
    *
@@ -35,7 +35,10 @@ class EventEnrollmentModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string `uid`</dt>
-   *   <dd>Key of the client who attended or will attend the event.</dd>
+   *   <dd>
+   *     Key of the client who attended or will attend the event.
+   * 
+   *   </dd>
    * </dl>
    * @get result
    * @var array[][]
