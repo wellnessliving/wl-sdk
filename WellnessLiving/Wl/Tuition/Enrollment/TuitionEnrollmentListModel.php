@@ -113,7 +113,7 @@ class TuitionEnrollmentListModel extends WlModelAbstract
    * Keys are user ids. Values are payment information.
    *
    * <dl>
-   *   <dt>string `is_paid`</dt>
+   *   <dt>bool `is_paid`</dt>
    *   <dd>
    *     If `true`, user has paid tuition fee. If `false`, user is scheduled to pay tuition fee.
    *     If a user did not pay and does not have a scheduled payment, the key is not present.

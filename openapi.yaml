@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260818080607
+  version: 1.1.20260818081147
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-08-18 08:06:07
+    Last updated at: 2026-08-18 08:11:47
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -18899,7 +18899,7 @@ paths:
                         description: 'List of tuition enrollments. <dl> <dt>array[] `a_events`</dt> <dd> Events for this enrollment. <dl> <dt>int|null `id_enrollment_status`</dt> <dd> Enrollment status. Active user is enrolled into the event, and there are upcoming sessions. Canceled, if enrollment is canceled. Completed, if all event sessions are in the past and enrollment is not canceled. </dd> <dt>int|null `id_membership_status`</dt> <dd>Membership status. `null` if tuition paid in full with installment.</dd> <dt>bool `is_cancelled`</dt> <dd>Whether this enrollment is cancelled or not.</dd> <dt>string `k_class`</dt> <dd>Event ID.</dd> <dt>string `m_event_discount`</dt> <dd>Login type and shopping cart discounts.</dd> <dt>string `m_event_subtotal`</dt> <dd>Price of the event before login type and shopping cart discounts.</dd> <dt>string `m_event_tax`</dt> <dd>Taxes amount.</dd> <dt>string `uid`</dt> <dd>Enrolled client.</dd> </dl> </dd> <dt>string|null `dl_next`</dt> <dd>Next payment date in local business timezone and MySQL format. `null` for membership-based tuition.</dd> <dt>string `dtl_enrollment`</dt> <dd>Date and time of the enrollment in local business timezone.</dd> <dt>int `i_payments_done`</dt> <dd>Number of payments done.</dd> <dt>int|null `i_payments_left`</dt> <dd>Number of payments left. `null` for membership-based tuition.</dd> <dt>int `i_payments_total`</dt> <dd>Number of payments total at the moment of enrollment.</dd> <dt>int|null `id_installment_status`</dt> <dd>Installment plan status. `null` if tuition paid in full without installment.</dd> <dt>string `k_purchase_item_tuition`</dt> <dd> Key of the tuition purchase item. This is enrollment key, which can be used to modify and cancel the enrollment. </dd> <dt>string `m_paid`</dt> <dd>Rest amount has been already paid.</dd> <dt>string `m_payment`</dt> <dd>One payment amount.</dd> <dt>string|null `m_rest`</dt> <dd>Rest amount to be paid. `null` for membership-based tuition.</dd> <dt>string|null `m_total`</dt> <dd>Total initial amount to be paid. `null` for membership-based tuition.</dd> <dt>string `uid_payer`</dt> <dd>Payer for this enrollment. This user can be enrolled or not, but he pays for the entire enrollment.</dd> </dl>'
                       a_enrollment_fee:
                         type: array
-                        description: 'List of users who has paid or are scheduled to pay tuition fee. Keys are user ids. Values are payment information. <dl> <dt>string `is_paid`</dt> <dd> If `true`, user has paid tuition fee. If `false`, user is scheduled to pay tuition fee. If a user did not pay and does not have a scheduled payment, the key is not present. </dd> </dl>'
+                        description: 'List of users who has paid or are scheduled to pay tuition fee. Keys are user ids. Values are payment information. <dl> <dt>bool `is_paid`</dt> <dd> If `true`, user has paid tuition fee. If `false`, user is scheduled to pay tuition fee. If a user did not pay and does not have a scheduled payment, the key is not present. </dd> </dl>'
       tags:
         - Enrollment-TuitionEnrollmentList
   '/Wl/Tuition/Enrollment/TuitionEnrollmentCancel.json':
