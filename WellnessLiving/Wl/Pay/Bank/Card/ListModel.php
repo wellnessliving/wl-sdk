@@ -137,6 +137,17 @@ class ListModel extends WlModelAbstract
   public $can_remove_self = false;
 
   /**
+   * Whether the feature "client is allowed to remove their own saved credit cards" has been released.
+   *
+   * `true` if the feature has been released.
+   * `false` if the feature has not been released.
+   *
+   * @get result
+   * @var bool
+   */
+  public $has_remove_self = false;
+
+  /**
    * ID of current business.
    *
    * @get get

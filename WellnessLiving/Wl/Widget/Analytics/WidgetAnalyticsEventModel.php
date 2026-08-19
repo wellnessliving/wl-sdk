@@ -88,8 +88,7 @@ class WidgetAnalyticsEventModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>int `id_checkout_type`</dt>
-   *   <dd>Checkout type.
-   * See {@link WidgetAnalyticsCheckoutTypeSid}.</dd>
+   *   <dd>Checkout type.</dd>
    * 
    *   <dt>string `k_location`</dt>
    *   <dd>Location key.</dd>

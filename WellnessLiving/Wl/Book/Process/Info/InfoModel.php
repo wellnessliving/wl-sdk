@@ -393,6 +393,17 @@ class InfoModel extends WlModelAbstract
   public $i_duration;
 
   /**
+   * Total number of sessions.
+   *
+   * For classes this value is always `1`.
+   * For events this value includes both past and future sessions.
+   *
+   * @get result
+   * @var int
+   */
+  public $i_session_all = 1;
+
+  /**
    * Total number of clients on the wait list.
    *
    * @get result

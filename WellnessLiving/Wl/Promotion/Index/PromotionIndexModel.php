@@ -316,6 +316,15 @@ class PromotionIndexModel extends WlModelAbstract
   public $id_program_type = 0;
 
   /**
+   * If `true`, purchase options are loaded for backend mode. Otherwise, this will be `false` if purchase options
+   * are loaded for frontend mode.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_backend = false;
+
+  /**
    * The business key.
    *
    * `null` to get a business from location.

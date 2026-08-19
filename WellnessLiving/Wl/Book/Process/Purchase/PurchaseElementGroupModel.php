@@ -9,7 +9,7 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 /**
  * API point to get information about a list of purchase options wile booking process.
  *
- * @method WlModelRequest get() Returns the pricing breakdown (totals, taxes, and discounts) for the given list of purchase items.  Validates each item in `a_purchase_item` (type, key, installment eligibility, and prize applicability), applies discount codes, login-type discounts, and installment adjustments, then accumulates price, subtotal, discount, tax, and cost totals across all items and returns them as result fields. For tuition items the totals cover the full cost, so the amount that has to be charged right now is reported separately in {@link \Wl\Book\Process\Purchase\PurchaseElementGroupApi::$m_checkout}, and its per-component split is written back into `a_config` of the item it belongs to.
+ * @method WlModelRequest get() Returns the pricing breakdown (totals, taxes, and discounts) for the given list of purchase items.  Validates each item in `a_purchase_item` (type, key, installment eligibility, and prize applicability), applies discount codes, login-type discounts, and installment adjustments, then accumulates price, subtotal, discount, tax, and cost totals across all items and returns them as result fields. For tuition items the totals cover the full cost, so the amount that has to be charged right now, and the tax portion of it, are reported separately in {@link \Wl\Book\Process\Purchase\PurchaseElementGroupApi::$m_checkout} and {@link \Wl\Book\Process\Purchase\PurchaseElementGroupApi::$m_checkout_tax}, and the per-component split is written back into `a_config` of the item it belongs to.
  */
 class PurchaseElementGroupModel extends WlModelAbstract
 {
@@ -221,6 +221,18 @@ class PurchaseElementGroupModel extends WlModelAbstract
    * @var string
    */
   public $m_checkout;
+
+  /**
+   * The tax portion of {@link PurchaseElementGroupModel::$m_checkout}.
+   *
+   * Equals {@link PurchaseElementGroupModel::$m_tax} for everything that is paid for in full at
+   * once. A tuition defers a part of its tax to an installment plan along with the rest of its
+   * cost, so this is the tax on the amount actually charged right now, not on the full cost.
+   *
+   * @get result
+   * @var string
+   */
+  public $m_checkout_tax;
 
   /**
    * The total cost of the given purchase options.

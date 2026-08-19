@@ -455,6 +455,9 @@ class ElementModel extends WlModelAbstract
    *   <dt>int `i_session`</dt>
    *   <dd>Session count in event.</dd>
    * 
+   *   <dt>int `i_session_all`</dt>
+   *   <dd>Total number of sessions including both past and future sessions.</dd>
+   * 
    *   <dt>int `i_session_remain`</dt>
    *   <dd>Remaining session count in event.</dd>
    * 
@@ -863,6 +866,14 @@ class ElementModel extends WlModelAbstract
    * @var int
    */
   public $i_session;
+
+  /**
+   * Total number of sessions including both past and future sessions.
+   *
+   * @get result
+   * @var int
+   */
+  public $i_session_all;
 
   /**
    * The remaining session count.
