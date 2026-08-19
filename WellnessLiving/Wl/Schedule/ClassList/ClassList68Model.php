@@ -6,6 +6,8 @@ use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
+use WellnessLiving\Wl\Schedule\ClassView\ClassViewModel;
+use WellnessLiving\Wl\Schedule\ClassView\DenyReasonSid;
 
 /**
  * Retrieves a list of classes and class information for a Class Tab.
@@ -138,6 +140,12 @@ class ClassList68Model extends WlModelAbstract
    * Empty for all other applications. Use `a_staff_uid` instead.
    *   </dd>
    * 
+   *   <dt>bool[] `a_staff_quick_substitute`</dt>
+   *   <dd>
+   *     Whether staff or pay rate changed due quick substitution, for each staff member.
+   * Aligned by index with <var>a_staff_uid</var>.
+   *   </dd>
+   * 
    *   <dt>string[] `a_staff_uid`</dt>
    *   <dd>The list of staff user keys for the staff member conducting the session.</dd>
    * 
@@ -145,6 +153,12 @@ class ClassList68Model extends WlModelAbstract
    *   <dd>
    *     The list of virtual locations keys. Each value is a location key.
    * 
+   *   </dd>
+   * 
+   *   <dt>bool|null `can_book`</dt>
+   *   <dd>
+   *     Whether current client can book class. Only present if {@link ClassList68Model::$show_book_status} is `true`.
+   * `null` if not requested.
    *   </dd>
    * 
    *   <dt>string `dt_date`</dt>
@@ -165,6 +179,30 @@ class ClassList68Model extends WlModelAbstract
    *   <dt>string `html_description`</dt>
    *   <dd>The class description.</dd>
    * 
+   *   <dt>int|null `i_age_from`</dt>
+   *   <dd>
+   *     The minimum age restriction. Deprecated and is left only for back compatibility. `null` if
+   * {@link ClassList68Model::$a_session}'s <var>is_age_public</var> is `false` or age is not restricted.
+   *   </dd>
+   * 
+   *   <dt>int|null `i_age_from_month`</dt>
+   *   <dd>The minimum age restriction (months). `null` if <var>is_age_public</var> is `false` or age is not restricted.</dd>
+   * 
+   *   <dt>int|null `i_age_from_year`</dt>
+   *   <dd>The minimum age restriction (years). `null` if <var>is_age_public</var> is `false` or age is not restricted.</dd>
+   * 
+   *   <dt>int|null `i_age_to`</dt>
+   *   <dd>
+   *     The maximum age restriction. Deprecated and is left only for back compatibility. `null` if
+   * <var>is_age_public</var> is `false` or age is not restricted.
+   *   </dd>
+   * 
+   *   <dt>int|null `i_age_to_month`</dt>
+   *   <dd>The maximum age restriction (months). `null` if <var>is_age_public</var> is `false` or age is not restricted.</dd>
+   * 
+   *   <dt>int|null `i_age_to_year`</dt>
+   *   <dd>The maximum age restriction (years). `null` if <var>is_age_public</var> is `false` or age is not restricted.</dd>
+   * 
    *   <dt>int `i_book`</dt>
    *   <dd>Count of visits on this class.</dd>
    * 
@@ -179,6 +217,30 @@ class ClassList68Model extends WlModelAbstract
    * 
    *   <dt>int `i_wait`</dt>
    *   <dd>Number of clients in wait list.</dd>
+   * 
+   *   <dt>int|null `i_wait_limit`</dt>
+   *   <dd>Limit of wait list. `null` if limit is not set.</dd>
+   * 
+   *   <dt>int `i_wait_spot`</dt>
+   *   <dd>
+   *     Position of the current client (<var>uid</var>) in the wait list for this session. `0` if the client is not
+   * on the wait list, or if the business hides wait list position (fastest-response wait list promotion).
+   *   </dd>
+   * 
+   *   <dt>int|null `id_deny_reason`</dt>
+   *   <dd>
+   *     ID of deny reason. One of {@link DenyReasonSid} constants. Only present if
+   * {@link ClassList68Model::$show_book_status} is `true`. `null` if not requested.
+   *   </dd>
+   * 
+   *   <dt>bool|null `is_book`</dt>
+   *   <dd>
+   *     Whether current class was booked by current client. Only present if
+   * {@link ClassList68Model::$show_book_status} is `true`. `null` if not requested.
+   *   </dd>
+   * 
+   *   <dt>bool `is_age_public`</dt>
+   *   <dd>Whether the age restriction of the class is shown to clients.</dd>
    * 
    *   <dt>bool `is_book_for_guest`</dt>
    *   <dd>
@@ -196,8 +258,23 @@ class ClassList68Model extends WlModelAbstract
    *   <dt>bool `is_event`</dt>
    *   <dd>If `true`, this is an event. Otherwise, this will be `false`.</dd>
    * 
+   *   <dt>bool `is_special_instructions`</dt>
+   *   <dd>
+   *     Whether special instructions are configured for this session and are visible to the current client.
+   * The content itself (`html_special` in {@link ClassViewModel}) is not returned here.
+   *   </dd>
+   * 
    *   <dt>bool `is_virtual`</dt>
    *   <dd>If `true`, this class is virtual. Otherwise, this will be `false`.</dd>
+   * 
+   *   <dt>bool `is_wait`</dt>
+   *   <dd>`true` if the current client (<var>uid</var>) is on the wait list for this session; `false` otherwise.</dd>
+   * 
+   *   <dt>bool|null `is_wait_list`</dt>
+   *   <dd>
+   *     `true` if the current client can only take a place on the wait list; `false` otherwise. Only present if
+   * {@link ClassList68Model::$show_book_status} is `true`. `null` if not requested.
+   *   </dd>
    * 
    *   <dt>bool `is_wait_list_enabled`</dt>
    *   <dd>This will be `true` if user is only on the wait-list. Otherwise, this will be `false`.</dd>
@@ -217,8 +294,17 @@ class ClassList68Model extends WlModelAbstract
    *   <dt>string `s_title`</dt>
    *   <dd>The title of the session.</dd>
    * 
+   *   <dt>string `text_room`</dt>
+   *   <dd>Class room. Empty string if not set.</dd>
+   * 
    *   <dt>string `url_book`</dt>
    *   <dd>The direct link to start booking on the WellnessLiving website.</dd>
+   * 
+   *   <dt>string `url_virtual_join`</dt>
+   *   <dd>
+   *     Link to virtual service. Empty string if the class isn't virtual, or if the current client
+   * (<var>uid</var>) has not booked/waitlisted this session, or joining isn't available yet.
+   *   </dd>
    * </dl>
    * @post result
    * @var array[]
@@ -367,6 +453,21 @@ class ClassList68Model extends WlModelAbstract
    * @var string
    */
   public $s_staff_uid = '';
+
+  /**
+   * Whether to compute and add the per-session booking status fields to each element of
+   * {@link ClassList68Model::$a_session}: <var>can_book</var>, <var>is_book</var>, <var>is_wait_list</var>,
+   * <var>id_deny_reason</var>.
+   *
+   *  It requires evaluating the full
+   * booking policy (promotions, family accounts, resource availability, etc.) for every returned session, which
+   * is significantly more expensive than the rest of this API. Defaults to `false` so that regular schedule
+   * listing calls are not slowed down; enable it only when the caller actually needs these fields.
+   *
+   * @post post
+   * @var bool
+   */
+  public $show_book_status = false;
 
   /**
    * If `true`, canceled sessions will be returned. If `false`, canceled sessions won't be returned.

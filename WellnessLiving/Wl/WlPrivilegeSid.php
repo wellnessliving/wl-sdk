@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 247.
+ * Last Used ID: 248.
  */
 abstract class WlPrivilegeSid
 {
@@ -657,6 +657,11 @@ abstract class WlPrivilegeSid
    * Receive Membership or Purchase Options Query notification.
    */
   const NOTIFICATION_MEMBERSHIP_QUERY = 223;
+
+  /**
+   * Receive CAASI Phone Call Received (AI Agent) notification.
+   */
+  const NOTIFICATION_PHONE_AGENT_CALL_RECEIVED = 248;
 
   /**
    * Staff with this role will receive emails about reward prizes.
