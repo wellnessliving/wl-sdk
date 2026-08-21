@@ -102,6 +102,9 @@ class CatalogCartModel extends WlModelAbstract
    * 
    *           <dt>string `m_amount`</dt>
    *           <dd>Registration fee amount for the tuition participant.</dd>
+   * 
+   *           <dt>string `m_discount`</dt>
+   *           <dd>Total discount amount actually applied to the registration fee.</dd>
    *         </dl>
    *       </dd>
    * 

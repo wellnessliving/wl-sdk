@@ -53,9 +53,12 @@ class TuitionEnrollmentListModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string|null `dl_next`</dt>
-   *   <dd>Next payment date in local business timezone and MySQL format.
+   *   <dd>
+   *     Next payment date in local business timezone and MySQL format.
+   * It will be the closest date to the current date for membership tuition.
    * 
-   * `null` for membership-based tuition.</dd>
+   * `null` if we cannot define next payment date.
+   *   </dd>
    * 
    *   <dt>string `dtl_enrollment`</dt>
    *   <dd>Date and time of the enrollment in local business timezone.</dd>
