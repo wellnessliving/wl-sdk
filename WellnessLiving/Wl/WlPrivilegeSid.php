@@ -709,7 +709,7 @@ abstract class WlPrivilegeSid
   const PAYMENT_PROCESSING = 166;
 
   /**
-   * Allows the staff member to initiate bulk billing of multiple clients in one batch.
+   * Allows staff to select multiple clients and post a single bulk transaction for a store item.
    */
   const PERFORM_BULK_BILLING = 245;
 

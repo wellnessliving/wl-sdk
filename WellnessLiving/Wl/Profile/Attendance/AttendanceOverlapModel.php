@@ -49,6 +49,12 @@ class AttendanceOverlapModel extends WlModelAbstract
    *   <dt>string `k_location`</dt>
    *   <dd>Location key. </dd>
    * 
+   *   <dt>string `text_time_end`</dt>
+   *   <dd>Local end time of the visit, formatted according to the business locale.</dd>
+   * 
+   *   <dt>string `text_time_start`</dt>
+   *   <dd>Local start time of the visit, formatted according to the business locale.</dd>
+   * 
    *   <dt>string `text_title`</dt>
    *   <dd>Title of a service</dd>
    * </dl>

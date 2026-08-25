@@ -88,6 +88,13 @@ class PromotionModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    * 
+   *   <dt>string[] `a_franchise_region`</dt>
+   *   <dd>
+   *     A list of franchise regions where a guest may redeem this Guest Pass, in addition to the location that
+   * sold it. Only meaningful when <var>is_regional_access</var> is `true` and <var>is_regional</var> is `true`.
+   * 
+   *   </dd>
+   * 
    *   <dt>array `a_image`</dt>
    *   <dd>
    *     Information about Purchase Option image.
@@ -135,8 +142,7 @@ class PromotionModel extends WlModelAbstract
    *   <dd>Date when promotion should be terminated. `null` if there is no terminate date.</dd>
    * 
    *   <dt>string `f_revenue_single`</dt>
-   *   <dd>Approximate revenue per session value.
-   * </dd>
+   *   <dd>Approximate revenue per session value. </dd>
    * 
    *   <dt>int `i_duration`</dt>
    *   <dd>
@@ -149,6 +155,9 @@ class PromotionModel extends WlModelAbstract
    *     The number of visits that the owner can use for the Purchase Option.
    * This will be `0` if the Purchase Option allows for unlimited visits.
    *   </dd>
+   * 
+   *   <dt>int `i_payment_period`</dt>
+   *   <dd>The number of `id_duration` periods between payments for memberships.</dd>
    * 
    *   <dt>int `id_duration`</dt>
    *   <dd>
@@ -164,8 +173,7 @@ class PromotionModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>int `id_program`</dt>
-   *   <dd>The Purchase Option type.
-   * For more information, see {@link WlProgramSid}.</dd>
+   *   <dd>The Purchase Option type. For more information, see {@link WlProgramSid}.</dd>
    * 
    *   <dt>int `id_restriction`</dt>
    *
@@ -189,6 +197,26 @@ class PromotionModel extends WlModelAbstract
    *   <dd>
    *     Whether clients who purchase this item excluded from payroll calculations.
    * 
+   *   </dd>
+   * 
+   *   <dt>bool `is_regional`</dt>
+   *   <dd>
+   *     Whether a guest may redeem this Guest Pass at other locations within the regions listed in
+   * <var>a_franchise_region</var>, in addition to the location that sold it. `false` means the pass can only be
+   * redeemed at the location that sold it. Only meaningful when <var>is_regional_access</var> is `true`.
+   *   </dd>
+   * 
+   *   <dt>bool `is_regional_access`</dt>
+   *   <dd>
+   *     Whether the regional access setting can be configured for this promotion and business at all.
+   * `false` if the business does not take part in a franchise region, in which case <var>is_regional</var>
+   * and <var>a_franchise_region</var> should be ignored.
+   *   </dd>
+   * 
+   *   <dt>bool `is_regional_access_readonly`</dt>
+   *   <dd>
+   *     Whether the regional access setting is read-only for this business. `true` for a franchisee location,
+   * which can only view the regions selected by the franchisor.
    *   </dd>
    * 
    *   <dt>bool `is_revenue_single`</dt>
@@ -225,7 +253,7 @@ class PromotionModel extends WlModelAbstract
    * @post post
    * @var array[]
    */
-  public $a_promotion;
+  public $a_promotion = [];
 
   /**
    * The key of the business.

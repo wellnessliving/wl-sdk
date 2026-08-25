@@ -450,13 +450,13 @@ class UrlEncode
     $a_date = []; // date => numerical representation of the date (a link to $a_number)
     foreach($this->a_dictionary as $s_value => $v)
     {
-      if(preg_match('~^[0-9]{1,10}$~',$s_value)&&$s_value<=2147483647)
+      if(preg_match('~^[0-9]{1,10}$~', $s_value) && $s_value <= 2147483647 && $s_value === (int)$s_value)
       {
         $a_number[$s_value] = true;
         continue;
       }
 
-      if(preg_match('~^[0-9]{10,20}$~',$s_value))
+      if (preg_match('~^[1-9][0-9]{9,19}$~', $s_value))
       {
         $a_number_large[] = (string)$s_value;
         continue;

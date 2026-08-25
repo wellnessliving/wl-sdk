@@ -207,6 +207,9 @@ class PromotionIndexModel extends WlModelAbstract
    *     The maximum number of minutes or hours depending on <var>id_limit_duration</var> that the current promotion can be used in.
    *   </dd>
    * 
+   *   <dt>int `i_payment_period`</dt>
+   *   <dd>The number of `id_duration` periods between payments for memberships.</dd>
+   * 
    *   <dt>int `id_limit_duration`</dt>
    *   <dd>
    *     The type of <var>i_limit_duration</var>.

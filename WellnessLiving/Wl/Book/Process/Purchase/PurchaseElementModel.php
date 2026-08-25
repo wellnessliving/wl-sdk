@@ -240,6 +240,18 @@ class PurchaseElementModel extends WlModelAbstract
   public $m_checkout;
 
   /**
+   * The tax portion of {@link PurchaseElementGroupModel::$m_checkout}.
+   *
+   * Equals {@link PurchaseElementGroupModel::$m_tax} for everything that is paid for in full at
+   * once. A tuition defers a part of its tax to an installment plan along with the rest of its
+   * cost, so this is the tax on the amount actually charged right now, not on the full cost.
+   *
+   * @get result
+   * @var string
+   */
+  public $m_checkout_tax;
+
+  /**
    * The total cost of the given purchase options.
    *
    * For a tuition this is the full cost, including whatever is deferred to an installment plan or

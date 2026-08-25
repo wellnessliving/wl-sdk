@@ -20,6 +20,13 @@ class StaffListModel extends WlModelAbstract
    *   <dt>int `id_gender`</dt>
    *   <dd>Staff member's gender. One of {@link AGenderSid} constants.</dd>
    * 
+   *   <dt>int|null `i_free_spot`</dt>
+   *   <dd>
+   *     How many clients can still be booked with the staff member at the requested time.
+   * <p>If {@link ListModel::$dt_date} is not passed, this value is `null`.</p>
+   * <p>If {@link ListModel::$dt_date} is passed, this is calculated for the specific staff member at that time.</p>
+   *   </dd>
+   * 
    *   <dt>bool `is_available`</dt>
    *   <dd>
    *     Whether staff member is available for booking. Note, if staff member reached daily limits, this field
