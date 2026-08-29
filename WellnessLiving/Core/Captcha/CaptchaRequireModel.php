@@ -21,13 +21,13 @@ class CaptchaRequireModel extends WlModelAbstract
    *   <dd>Business key. `null` if system business.</dd>
    * </dl>
    * 
-   * Parameters for `1066`:
+   * Parameters for `1072`:
    * <dl>
    *   <dt>string|null `k_business`</dt>
    *   <dd>Business key. `null` if is system business.</dd>
    * </dl>
    * 
-   * Parameters for `1072`:
+   * Parameters for `1066`:
    * <dl>
    *   <dt>string|null `k_business`</dt>
    *   <dd>Business key. `null` if is system business.</dd>

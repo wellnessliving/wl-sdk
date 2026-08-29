@@ -75,15 +75,6 @@ class SendMailModel extends WlModelAbstract
    * @var string
    */
   public $s_subject = '';
-
-  /**
-   * The message content.
-   *
-   * @post post
-   * @var string
-   * @deprecated Planned to delete.
-   */
-  public $z_html = '';
 }
 
 ?>

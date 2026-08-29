@@ -64,7 +64,53 @@ class PurchaseElementListModel extends WlModelAbstract
    *   <dd>
    *     Tuition events with calculated amounts.
    * 
+   * Each entry has the next structure:
+   *     <dl>
+   *       <dt>array[]|null `a_discount`</dt>
+   *       <dd>
+   *         Discounts applied to the event, `null` if there are none. Every row has the next keys:
+   *         <dl>
+   *           <dt>int `id_discount_rule`</dt>
+   *           <dd>Discount rule type.</dd>
    * 
+   *           <dt>string `m_discount`</dt>
+   *           <dd>Discount amount of this rule.</dd>
+   * 
+   *           <dt>string `text_discount`</dt>
+   *           <dd>Discount title.</dd>
+   *         </dl>
+   *       </dd>
+   * 
+   *       <dt>string[]|null `a_tax`</dt>
+   *       <dd>
+   *         Taxes of the event. Keys are tax keys, values are tax amounts.
+   * 
+   *       </dd>
+   * 
+   *       <dt>string `k_class`</dt>
+   *       <dd>Key of the event class. </dd>
+   * 
+   *       <dt>string|null `m_checkout`</dt>
+   *       <dd>
+   *         The amount charged for this event right now, including tax. `0.00` when every
+   * installment payment is still ahead. `null` when the amount is not calculated yet.
+   *       </dd>
+   * 
+   *       <dt>string `m_deferred`</dt>
+   *       <dd>
+   *         The part of the event cost that is not charged right now, including tax. Goes to the
+   * installment plan or to the membership schedule, depending on the tuition billing mode.
+   *       </dd>
+   * 
+   *       <dt>string `m_discount`</dt>
+   *       <dd>Total discount amount applied to the event, `0.00` if there is none.</dd>
+   * 
+   *       <dt>string|null `m_price`</dt>
+   *       <dd>Price of the event within the tuition, before discount and tax.</dd>
+   * 
+   *       <dt>string `uid`</dt>
+   *       <dd>Key of the tuition participant. </dd>
+   *     </dl>
    *   </dd>
    * 
    *   <dt>array[] `a_registration_fee_list`</dt>
@@ -72,7 +118,41 @@ class PurchaseElementListModel extends WlModelAbstract
    *     Registration fees with calculated amounts, keyed by participant key.
    * 
    * 
+   * Each value has the next structure:
+   *     <dl>
+   *       <dt>array[]|null `a_discount`</dt>
+   *       <dd>
+   *         Discounts applied to the fee, `null` if there are none. Every row has the next keys:
+   *         <dl>
+   *           <dt>int `id_discount_rule`</dt>
+   *           <dd>Discount rule type.</dd>
    * 
+   *           <dt>string `m_discount`</dt>
+   *           <dd>Discount amount of this rule.</dd>
+   * 
+   *           <dt>string `text_discount`</dt>
+   *           <dd>Discount title.</dd>
+   *         </dl>
+   *       </dd>
+   * 
+   *       <dt>string[] `a_tax`</dt>
+   *       <dd>
+   *         Taxes of the fee. Keys are tax keys, values are tax amounts.
+   * 
+   *       </dd>
+   * 
+   *       <dt>string `m_amount`</dt>
+   *       <dd>Registration fee amount for the participant, before discount and tax.</dd>
+   * 
+   *       <dt>string|null `m_checkout`</dt>
+   *       <dd>
+   *         The amount charged for this fee right now, including tax. A fee is either charged in
+   * full or deferred entirely, so `null` means the whole fee is deferred.
+   *       </dd>
+   * 
+   *       <dt>string `m_deferred`</dt>
+   *       <dd>The whole fee amount if the fee is deferred, `0.00` if it is charged right now.</dd>
+   *     </dl>
    *   </dd>
    * 
    *   <dt>string[] `a_tax`</dt>

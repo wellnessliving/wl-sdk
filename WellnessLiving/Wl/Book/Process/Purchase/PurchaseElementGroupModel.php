@@ -23,9 +23,9 @@ class PurchaseElementGroupModel extends WlModelAbstract
    *       Only `a_event_list` is
    *      expected in the request, and only `k_class` and `uid` are accepted in every its entry.
    *      Prices, discounts, and taxes can not be overridden here: this booking flow is never
-   *      authenticated as a staff member, so {@link \Wl\Purchase\Item\Tuition::verifyObjectFromSource()} strips
-   *      such fields. In the response `a_event_list` comes back recomputed, and
-   *      `a_registration_fee_list`, `m_checkout`, and `m_deferred` are added.
+   *      authenticated as a staff member, so such fields are stripped from the input. In the
+   *      response `a_event_list` comes back recomputed, and `a_registration_fee_list`,
+   *      `m_checkout`, and `m_deferred` are added.
    *     <dl>
    *       <dt>array[] `a_event_list`</dt>
    *       <dd>
@@ -90,8 +90,18 @@ class PurchaseElementGroupModel extends WlModelAbstract
    *         <dl>
    *           <dt>array[]|null `a_discount`</dt>
    *           <dd>
-   *             Discounts applied to the fee, `null` if there are none. Rows have the same
-   *      keys as in `a_event_list`.
+   *             Discounts applied to the fee, `null` if there are none. Every row has the
+   *      next keys:
+   *             <dl>
+   *               <dt>int `id_discount_rule`</dt>
+   *               <dd>Discount rule type.</dd>
+   * 
+   *               <dt>string `m_discount`</dt>
+   *               <dd>Discount amount of this rule.</dd>
+   * 
+   *               <dt>string `text_discount`</dt>
+   *               <dd>Discount title.</dd>
+   *             </dl>
    *           </dd>
    * 
    *           <dt>string[] `a_tax`</dt>

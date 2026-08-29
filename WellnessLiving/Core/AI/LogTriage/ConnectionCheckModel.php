@@ -41,6 +41,15 @@ class ConnectionCheckModel extends WlModelAbstract
    * 
    *   <dt>string `dl_last_seen`</dt>
    *   <dd>Local date of the last usage-statistics record.</dd>
+   * 
+   *   <dt>int `i_variant_count`</dt>
+   *   <dd>Number of original usage-statistics objects merged into a normalized finding.</dd>
+   * 
+   *   <dt>string[] `a_object_example`</dt>
+   *   <dd>Bounded original usage-statistics object examples.</dd>
+   * 
+   *   <dt>bool `is_identity_incomplete`</dt>
+   *   <dd>Whether the stored object reached its length limit and was therefore kept exact.</dd>
    * </dl>
    * @get result
    * @var array[]

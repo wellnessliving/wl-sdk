@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 248.
+ * Last Used ID: 249.
  */
 abstract class WlPrivilegeSid
 {
@@ -832,6 +832,11 @@ abstract class WlPrivilegeSid
    * Access to view client purchases (passes and memberships).
    */
   const PURCHASE_VIEW = 92;
+
+  /**
+   * Access to set up and change quickbooks integration.
+   */
+  const QUICKBOOKS = 249;
 
   /**
    * Allow to see alerts.

@@ -100,7 +100,11 @@ class ScheduleAvailableDateModel extends WlModelAbstract
   public $dtu_start = '';
 
   /**
-   * "Book now" tab ID. One of {@link TabSid} constants.
+   * Optional "Book now" tab ID filter. One of {@link TabSid} constants.
+   *
+   * `0` means this filter is not set.
+   * If both {@link ScheduleAvailableDateModel::$id_class_tab} and
+   * {@link ScheduleAvailableDateModel::$k_class_tab} are not set, all tabs are used.
    *
    * @get get
    * @var int
@@ -140,6 +144,18 @@ class ScheduleAvailableDateModel extends WlModelAbstract
    * @var string
    */
   public $k_business = '';
+
+  /**
+   * Optional book now tab key filter.
+   *
+   * Empty string means this filter is not set.
+   * If both {@link ScheduleAvailableDateModel::$k_class_tab} and
+   * {@link ScheduleAvailableDateModel::$id_class_tab} are not set, all tabs are used.
+   *
+   * @get get
+   * @var string
+   */
+  public $k_class_tab = '';
 
   /**
    * Timezone key.

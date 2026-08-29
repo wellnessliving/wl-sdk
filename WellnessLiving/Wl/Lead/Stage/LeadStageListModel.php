@@ -19,6 +19,12 @@ class LeadStageListModel extends WlModelAbstract
    *   <dt>int `i_order`</dt>
    *   <dd>Sequence number of the stage in the list.</dd>
    * 
+   *   <dt>int `i_automation`</dt>
+   *   <dd>
+   *     Number of automations used this stage.
+   * Only set in a case {@link LeadStageListModel::$is_statistic} is `true`.
+   *   </dd>
+   * 
    *   <dt>int `i_user`</dt>
    *   <dd>
    *     Number of clients who are in this stage.
@@ -26,12 +32,18 @@ class LeadStageListModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>int `id_lead_stage_shape`</dt>
-   *   <dd>Shape of the stage icon.</dd>
+   *   <dd>Shape of the stage icon. One of {@link LeadStageShapeSid} constants.</dd>
    * 
    *   <dt>int|null `id_lead_stage_system`</dt>
    *   <dd>
-   *     System-defined lead stage.
+   *     System-defined lead stage. One of {@link LeadStageSystemSid} constants.
    * `null` for a custom stage created by the business.
+   *   </dd>
+   * 
+   *   <dt>int `id_lead_stage_type`</dt>
+   *   <dd>
+   *     Type of the stage.
+   * The type is set when the stage is created and can not be changed afterwards.
    *   </dd>
    * 
    *   <dt>string `k_lead_stage`</dt>

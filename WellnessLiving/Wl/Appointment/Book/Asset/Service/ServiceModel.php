@@ -86,7 +86,7 @@ class ServiceModel extends WlModelAbstract
    *           </dd>
    * 
    *           <dt>int `i_angle`</dt>
-   *           <dd>Angle of shape rotation. Is set only if <var>sid_image</var> equals to <tt>shape</tt>.</dd>
+   *           <dd>Angle of shape rotation. Is set only if `sid_image` equals to `shape`.</dd>
    * 
    *           <dt>int `i_height`</dt>
    *           <dd>Height of image.</dd>
@@ -105,14 +105,14 @@ class ServiceModel extends WlModelAbstract
    * 
    *           <dt>string `sid_image_icon`</dt>
    *           <dd>
-   *             Icon name.String representation of one of {@link ImageIconSid} constants.
-   * Is set only if <var>sid_image</var> equals to <tt>image</tt>.
+   *             Icon name. String representation of one of {@link ImageIconSid} constants.
+   * Is set only if `sid_image` equals to `image`.
    *           </dd>
    * 
    *           <dt>string `sid_image_shape`</dt>
    *           <dd>
    *             Shape name. String representation of one of {@link ImageShapeSid} constants.
-   * Is set only if <var>sid_image</var> equals to <tt>shape</tt>.
+   * Is set only if `sid_image` equals to `shape`.
    *           </dd>
    * 
    *           <dt>string `url`</dt>

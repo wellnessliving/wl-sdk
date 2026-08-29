@@ -69,19 +69,18 @@ class EnvironmentUserModel extends WlModelAbstract
    * The structure of this array depends on the payment processor being used.
    * `null` when mobile card readers are not supported, or when actor has no access to them.
    *
-   * Nuvei:
+   * StripeCom:
    * <dl>
    *   <dt>array `a_terminal_location`</dt>
    *   <dd>
    *     Terminal configuration keyed by location key.
    * 
-   * Present only when at least one location has an active merchant configured.
+   * Empty array if no terminals are configured.
    * Each value:
    *     <dl>
    *       <dt>array `a_terminal`</dt>
    *       <dd>
-   *         Terminal lists grouped by connection type.
-   * Both lists contain identical entries - the same terminal appears in both.
+   *         Terminal lists grouped by connection type:
    *         <dl>
    *           <dt>array[] `a_terminal_elevate`</dt>
    *           <dd>
@@ -91,16 +90,18 @@ class EnvironmentUserModel extends WlModelAbstract
    *               <dd>Whether swipe can be cancelled from the POS terminal.</dd>
    * 
    *               <dt>int `id_model`</dt>
-   *               <dd>Terminal model.</dd>
+   *               <dd>
+   *                 Terminal model.
+   *               </dd>
    * 
    *               <dt>int `id_status`</dt>
    *               <dd>Terminal status.</dd>
    * 
-   *               <dt>int `id_type`</dt>
-   *               <dd>Terminal type.</dd>
-   * 
    *               <dt>string `k_terminal`</dt>
    *               <dd>Terminal key. </dd>
+   * 
+   *               <dt>string `s_serial_number`</dt>
+   *               <dd>Terminal serial number.</dd>
    * 
    *               <dt>string `text_id`</dt>
    *               <dd>Terminal ID assigned by the gateway.</dd>
@@ -112,17 +113,14 @@ class EnvironmentUserModel extends WlModelAbstract
    * 
    *           <dt>array[] `a_terminal_web`</dt>
    *           <dd>
-   *             Ethernet terminals, plus one synthetic `MagTek` USB entry appended last when
-   *
-   * Each element:
+   *             Ethernet terminals. Each element:
    *             <dl>
    *               <dt>bool `can_cancel_swipe_from_pos`</dt>
    *               <dd>Whether swipe can be cancelled from the POS terminal.</dd>
    * 
-   *               <dt>int|null `id_model`</dt>
+   *               <dt>int `id_model`</dt>
    *               <dd>
    *                 Terminal model.
-   * `null` for the synthetic `MagTek` USB entry.
    *               </dd>
    * 
    *               <dt>int `id_status`</dt>
@@ -130,21 +128,17 @@ class EnvironmentUserModel extends WlModelAbstract
    * 
    *               <dt>int `id_type`</dt>
    *               <dd>
-   *                 Terminal type. One of {@link \Thoth\PayProcessor\Nuvei\Terminal\NuveiTerminalTypeSid} constants, or
-   *
+   *                 Terminal type.
    *               </dd>
    * 
-   *               <dt>string|null `k_terminal`</dt>
-   *               <dd>
-   *                 Terminal key. 
-   * `null` for the synthetic `MagTek` USB entry.
-   *               </dd>
+   *               <dt>string `k_terminal`</dt>
+   *               <dd>Terminal key. </dd>
    * 
-   *               <dt>string|null `s_serial_number`</dt>
-   *               <dd>Always `null`. Present only in the synthetic `MagTek` USB entry.</dd>
+   *               <dt>string `s_serial_number`</dt>
+   *               <dd>Terminal serial number.</dd>
    * 
    *               <dt>string `text_id`</dt>
-   *               <dd>Terminal ID assigned by the gateway, or `id_type_N` for the synthetic `MagTek` USB entry.</dd>
+   *               <dd>Terminal ID assigned by the gateway.</dd>
    * 
    *               <dt>string `text_name`</dt>
    *               <dd>Human-readable terminal label.</dd>
@@ -153,13 +147,13 @@ class EnvironmentUserModel extends WlModelAbstract
    *         </dl>
    *       </dd>
    * 
+   *       <dt>string `s_location_id`</dt>
+   *       <dd>Stripe location ID assigned by the gateway.</dd>
+   * 
    *       <dt>string `text_location_name`</dt>
    *       <dd>Display name of the location.</dd>
    *     </dl>
    *   </dd>
-   * 
-   *   <dt>bool `can_cancel_swipe_from_pos`</dt>
-   *   <dd>Whether card swipe can be cancelled from the POS terminal.</dd>
    * 
    *   <dt>bool `has_expire_date`</dt>
    *   <dd>Whether the card expiry date entry is required.</dd>
@@ -169,6 +163,15 @@ class EnvironmentUserModel extends WlModelAbstract
    * 
    *   <dt>bool `is_support_magtek`</dt>
    *   <dd>Whether `MagTek` USB reader is supported.</dd>
+   * </dl>
+   * 
+   * Nmi:
+   * <dl>
+   *   <dt>int `id_device`</dt>
+   *   <dd>Device type identifier.</dd>
+   * 
+   *   <dt>string `s_key`</dt>
+   *   <dd>NMI SDK key for the card reader plugin.</dd>
    * </dl>
    * 
    * DirectConnect:
@@ -273,18 +276,19 @@ class EnvironmentUserModel extends WlModelAbstract
    *   <dd>Whether `MagTek` USB reader is supported.</dd>
    * </dl>
    * 
-   * StripeCom:
+   * Nuvei:
    * <dl>
    *   <dt>array `a_terminal_location`</dt>
    *   <dd>
    *     Terminal configuration keyed by location key.
    * 
-   * Empty array if no terminals are configured.
+   * Present only when at least one location has an active merchant configured.
    * Each value:
    *     <dl>
    *       <dt>array `a_terminal`</dt>
    *       <dd>
-   *         Terminal lists grouped by connection type:
+   *         Terminal lists grouped by connection type.
+   * Both lists contain identical entries - the same terminal appears in both.
    *         <dl>
    *           <dt>array[] `a_terminal_elevate`</dt>
    *           <dd>
@@ -294,18 +298,16 @@ class EnvironmentUserModel extends WlModelAbstract
    *               <dd>Whether swipe can be cancelled from the POS terminal.</dd>
    * 
    *               <dt>int `id_model`</dt>
-   *               <dd>
-   *                 Terminal model.
-   *               </dd>
+   *               <dd>Terminal model.</dd>
    * 
    *               <dt>int `id_status`</dt>
    *               <dd>Terminal status.</dd>
    * 
+   *               <dt>int `id_type`</dt>
+   *               <dd>Terminal type.</dd>
+   * 
    *               <dt>string `k_terminal`</dt>
    *               <dd>Terminal key. </dd>
-   * 
-   *               <dt>string `s_serial_number`</dt>
-   *               <dd>Terminal serial number.</dd>
    * 
    *               <dt>string `text_id`</dt>
    *               <dd>Terminal ID assigned by the gateway.</dd>
@@ -317,14 +319,17 @@ class EnvironmentUserModel extends WlModelAbstract
    * 
    *           <dt>array[] `a_terminal_web`</dt>
    *           <dd>
-   *             Ethernet terminals. Each element:
+   *             Ethernet terminals, plus one synthetic `MagTek` USB entry appended last when
+   *
+   * Each element:
    *             <dl>
    *               <dt>bool `can_cancel_swipe_from_pos`</dt>
    *               <dd>Whether swipe can be cancelled from the POS terminal.</dd>
    * 
-   *               <dt>int `id_model`</dt>
+   *               <dt>int|null `id_model`</dt>
    *               <dd>
    *                 Terminal model.
+   * `null` for the synthetic `MagTek` USB entry.
    *               </dd>
    * 
    *               <dt>int `id_status`</dt>
@@ -332,17 +337,21 @@ class EnvironmentUserModel extends WlModelAbstract
    * 
    *               <dt>int `id_type`</dt>
    *               <dd>
-   *                 Terminal type.
+   *                 Terminal type. One of {@link \Thoth\PayProcessor\Nuvei\Terminal\NuveiTerminalTypeSid} constants, or
+   *
    *               </dd>
    * 
-   *               <dt>string `k_terminal`</dt>
-   *               <dd>Terminal key. </dd>
+   *               <dt>string|null `k_terminal`</dt>
+   *               <dd>
+   *                 Terminal key. 
+   * `null` for the synthetic `MagTek` USB entry.
+   *               </dd>
    * 
-   *               <dt>string `s_serial_number`</dt>
-   *               <dd>Terminal serial number.</dd>
+   *               <dt>string|null `s_serial_number`</dt>
+   *               <dd>Always `null`. Present only in the synthetic `MagTek` USB entry.</dd>
    * 
    *               <dt>string `text_id`</dt>
-   *               <dd>Terminal ID assigned by the gateway.</dd>
+   *               <dd>Terminal ID assigned by the gateway, or `id_type_N` for the synthetic `MagTek` USB entry.</dd>
    * 
    *               <dt>string `text_name`</dt>
    *               <dd>Human-readable terminal label.</dd>
@@ -351,13 +360,13 @@ class EnvironmentUserModel extends WlModelAbstract
    *         </dl>
    *       </dd>
    * 
-   *       <dt>string `s_location_id`</dt>
-   *       <dd>Stripe location ID assigned by the gateway.</dd>
-   * 
    *       <dt>string `text_location_name`</dt>
    *       <dd>Display name of the location.</dd>
    *     </dl>
    *   </dd>
+   * 
+   *   <dt>bool `can_cancel_swipe_from_pos`</dt>
+   *   <dd>Whether card swipe can be cancelled from the POS terminal.</dd>
    * 
    *   <dt>bool `has_expire_date`</dt>
    *   <dd>Whether the card expiry date entry is required.</dd>
@@ -367,15 +376,6 @@ class EnvironmentUserModel extends WlModelAbstract
    * 
    *   <dt>bool `is_support_magtek`</dt>
    *   <dd>Whether `MagTek` USB reader is supported.</dd>
-   * </dl>
-   * 
-   * Nmi:
-   * <dl>
-   *   <dt>int `id_device`</dt>
-   *   <dd>Device type identifier.</dd>
-   * 
-   *   <dt>string `s_key`</dt>
-   *   <dd>NMI SDK key for the card reader plugin.</dd>
    * </dl>
    * @get result
    * @var array|null
