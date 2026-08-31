@@ -13,6 +13,20 @@ use WellnessLiving\WlModelRequest;
 class DiscountCodeModel extends WlModelAbstract
 {
   /**
+   * List of event keys to filter the discount codes by.
+   *
+   * A discount code is returned if it applies to any of the given events, to any of the memberships in
+   * {@link DiscountCodeModel::$a_promotion_filter}, or to all purchase items.
+   *
+   * If both {@link DiscountCodeModel::$a_event_filter} and {@link DiscountCodeModel::$a_promotion_filter} are empty,
+   * discount codes are not filtered by applicability.
+   *
+   * @get get
+   * @var string[]
+   */
+  public $a_event_filter = [];
+
+  /**
    * Discount codes list. Each element has the following structure: 
    *
    * <dl>
@@ -35,6 +49,20 @@ class DiscountCodeModel extends WlModelAbstract
    * @var array[]
    */
   public $a_list;
+
+  /**
+   * List of membership and passes keys to filter the discount codes by.
+   *
+   * A discount code is returned if it applies to any of the given memberships, to any of the events in
+   * {@link DiscountCodeModel::$a_event_filter}, or to all purchase items.
+   *
+   * If both {@link DiscountCodeModel::$a_event_filter} and {@link DiscountCodeModel::$a_promotion_filter} are empty,
+   * discount codes are not filtered by applicability.
+   *
+   * @get get
+   * @var string[]
+   */
+  public $a_promotion_filter = [];
 
   /**
    * Business key of the discount codes.

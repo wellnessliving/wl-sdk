@@ -434,6 +434,11 @@ abstract class WlPrivilegeSid
   const INTEGRATION_BRIVO = 179;
 
   /**
+   * Access to set up and change quickbooks integration.
+   */
+  const INTEGRATION_QUICKBOOKS = 249;
+
+  /**
    * Enroll into and manage the WellnessLiving Achieve App. These settings are located under Setup > Achieve Client App.
    */
   const INTERFACE_ACHIEVE_APP = 87;
@@ -832,11 +837,6 @@ abstract class WlPrivilegeSid
    * Access to view client purchases (passes and memberships).
    */
   const PURCHASE_VIEW = 92;
-
-  /**
-   * Access to set up and change quickbooks integration.
-   */
-  const QUICKBOOKS = 249;
 
   /**
    * Allow to see alerts.

@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260829111839
+  version: 1.1.20260831090236
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-08-29 11:18:39
+    Last updated at: 2026-08-31 09:02:36
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -412,7 +412,7 @@ paths:
         - Microsoft-Login
   '/Wl/Tag/Tag.json':
     delete:
-      summary: 'Removes the tag.'
+      summary: 'Removes the tag. Deletes the revenue category from the business. The deletion fails if the tag is currently set as the primary revenue category for any linked asset, class, coupon, promotion, service, or product (promotions that have already been removed are ignored). On success, notifies listeners about the affected linked objects and invalidates the cached tag list of the business.'
       parameters:
         - name: k_business
           in: query
@@ -460,7 +460,7 @@ paths:
                     properties:
                       a_tag:
                         type: array
-                        description: 'The revenue categories (tags) of the business. Keys refer to tag keys ({@link \RsTagSql}). Values have the next structure: <dl> <dt>array[] `a_asset`</dt> <dd> Bookable assets assigned to the tag. Each element has the next structure: <dl> <dt>string `k_id`</dt> <dd>The resource key. <i>Primary key in the {@link \RsResourceSql} table.</i></dd> <dt>bool `is_primary`</dt> <dd>Whether the tag is the primary revenue category for the resource.</dd> </dl> </dd> <dt>array[] `a_class`</dt> <dd> Classes and events assigned to the tag. Each element has the next structure: <dl> <dt>string `k_id`</dt> <dd>The class key. <i>Primary key in the {@link \RsClassSql} table.</i></dd> <dt>bool `is_primary`</dt> <dd>Whether the tag is the primary revenue category for the class.</dd> </dl> </dd> <dt>array[] `a_coupon`</dt> <dd> Gift cards assigned to the tag. Each element has the next structure: <dl> <dt>string `k_id`</dt> <dd>The coupon key. <i>Primary key in the {@link \RsCouponSql} table.</i></dd> <dt>bool `is_primary`</dt> <dd>Whether the tag is the primary revenue category for the coupon.</dd> </dl> </dd> <dt>array[] `a_promotion`</dt> <dd> Purchase options (passes and memberships) assigned to the tag. Each element has the next structure: <dl> <dt>string `k_id`</dt> <dd>The promotion key. <i>Primary key in the {@link \RsPromotionSql} table.</i></dd> <dt>bool `is_primary`</dt> <dd>Whether the tag is the primary revenue category for the promotion.</dd> </dl> </dd> <dt>array[] `a_service`</dt> <dd> Appointment types assigned to the tag. Each element has the next structure: <dl> <dt>string `k_id`</dt> <dd>The service key. <i>Primary key in the {@link \RsServiceSql} table.</i></dd> <dt>bool `is_primary`</dt> <dd>Whether the tag is the primary revenue category for the service.</dd> </dl> </dd> <dt>array[] `a_product`</dt> <dd> Store products assigned to the tag. Each element has the next structure: <dl> <dt>string `k_id`</dt> <dd>The product key. <i>Primary key in the {@link \RsShopProductSql} table.</i></dd> <dt>bool `is_primary`</dt> <dd>Whether the tag is the primary revenue category for the product.</dd> </dl> </dd> <dt>int `i_sort`</dt> <dd>The sort order of the tag.</dd> <dt>string `text_title`</dt> <dd>The tag title.</dd> </dl>'
+                        description: 'The revenue categories (tags) of the business. Keys refer to tag keys <i>({@link \RsTagSql})</i>. Values have the next structure: <dl> <dt>array[] `a_asset`</dt> <dd> Bookable assets assigned to the tag. Each element has the next structure: <dl> <dt>string `k_id`</dt> <dd>The resource key. <i>Primary key in the {@link \RsResourceSql} table.</i></dd> <dt>bool `is_primary`</dt> <dd>Whether the tag is the primary revenue category for the resource.</dd> </dl> </dd> <dt>array[] `a_class`</dt> <dd> Classes and events assigned to the tag. Each element has the next structure: <dl> <dt>string `k_id`</dt> <dd>The class key. <i>Primary key in the {@link \RsClassSql} table.</i></dd> <dt>bool `is_primary`</dt> <dd>Whether the tag is the primary revenue category for the class.</dd> </dl> </dd> <dt>array[] `a_coupon`</dt> <dd> Gift cards assigned to the tag. Each element has the next structure: <dl> <dt>string `k_id`</dt> <dd>The coupon key. <i>Primary key in the {@link \RsCouponSql} table.</i></dd> <dt>bool `is_primary`</dt> <dd>Whether the tag is the primary revenue category for the coupon.</dd> </dl> </dd> <dt>array[] `a_promotion`</dt> <dd> Purchase options (passes and memberships) assigned to the tag. Each element has the next structure: <dl> <dt>string `k_id`</dt> <dd>The promotion key. <i>Primary key in the {@link \RsPromotionSql} table.</i></dd> <dt>bool `is_primary`</dt> <dd>Whether the tag is the primary revenue category for the promotion.</dd> </dl> </dd> <dt>array[] `a_service`</dt> <dd> Appointment types assigned to the tag. Each element has the next structure: <dl> <dt>string `k_id`</dt> <dd>The service key. <i>Primary key in the {@link \RsServiceSql} table.</i></dd> <dt>bool `is_primary`</dt> <dd>Whether the tag is the primary revenue category for the service.</dd> </dl> </dd> <dt>array[] `a_product`</dt> <dd> Store products assigned to the tag. Each element has the next structure: <dl> <dt>string `k_id`</dt> <dd>The product key. <i>Primary key in the {@link \RsShopProductSql} table.</i></dd> <dt>bool `is_primary`</dt> <dd>Whether the tag is the primary revenue category for the product.</dd> </dl> </dd> <dt>int `i_sort`</dt> <dd>The sort order of the tag.</dd> <dt>string `text_title`</dt> <dd>The tag title.</dd> </dl>'
       tags:
         - Tag-Tag
   '/Wl/Tag/TagList.json':
@@ -7039,7 +7039,7 @@ paths:
             type: array
         - name: is_finding
           in: query
-          description: 'Whether findings must be returned.'
+          description: '`true` returns findings; otherwise `false` performs only the connection check.'
           schema:
             type: boolean
         - name: s_date_mask
@@ -7064,7 +7064,7 @@ paths:
                     properties:
                       a_finding:
                         type: array
-                        description: 'Grouped findings. One element contains: <dl> <dt>int `i_occurrence_count`</dt> <dd>Number of matching records.</dd> <dt>int `id_source`</dt> <dd>Finding source from {@link \Core\AI\LogTriage\TriageSourceSid}.</dd> <dt>string `text_message`</dt> <dd>Log message or task description. Present for log and task sources.</dd> <dt>string `dtu_first_seen`</dt> <dd>UTC date/time of the first matching log or async-task record. Empty for background tasks.</dd> <dt>string `dtu_last_seen`</dt> <dd>UTC date/time of the last matching log or async-task record. Empty for background tasks.</dd> <dt>string `s_object`</dt> <dd>Usage-statistics object. Present for the usage-statistics source.</dd> <dt>string `dl_first_seen`</dt> <dd>Local date of the first usage-statistics record.</dd> <dt>string `dl_last_seen`</dt> <dd>Local date of the last usage-statistics record.</dd> <dt>int `i_variant_count`</dt> <dd>Number of original usage-statistics objects merged into a normalized finding.</dd> <dt>string[] `a_object_example`</dt> <dd>Bounded original usage-statistics object examples.</dd> <dt>bool `is_identity_incomplete`</dt> <dd>Whether the stored object reached its length limit and was therefore kept exact.</dd> </dl>'
+                        description: 'Grouped findings. One element contains: <dl> <dt>string `dl_first_seen`</dt> <dd>Local date of the first usage-statistics record.</dd> <dt>string `dl_last_seen`</dt> <dd>Local date of the last usage-statistics record.</dd> <dt>string `dtu_first_seen`</dt> <dd>UTC date/time of the first matching log or async-task record. Empty for background tasks.</dd> <dt>string `dtu_last_seen`</dt> <dd>UTC date/time of the last matching log or async-task record. Empty for background tasks.</dd> <dt>int `i_occurrence_count`</dt> <dd>Number of matching records.</dd> <dt>int `id_source`</dt> <dd>Finding source from {@link \Core\AI\LogTriage\TriageSourceSid}.</dd> <dt>string `s_object`</dt> <dd>Usage-statistics object. Present for the usage-statistics source.</dd> <dt>string `text_message`</dt> <dd>Log message or task description. Present for log and task sources.</dd> </dl>'
                       i_result:
                         type: number
                         format: int32
@@ -13547,6 +13547,16 @@ paths:
     get:
       summary: 'Returns discount codes of the specified business. Used in the backend discount management UI to show the full list of discount codes for a business so the staff member can select one to view or edit.'
       parameters:
+        - name: a_event_filter
+          in: query
+          description: 'List of event keys to filter the discount codes by. A discount code is returned if it applies to any of the given events, to any of the memberships in {@link DiscountCodeApi::$a_promotion_filter}, or to all purchase items. If both {@link DiscountCodeApi::$a_event_filter} and {@link DiscountCodeApi::$a_promotion_filter} are empty, discount codes are not filtered by applicability.'
+          schema:
+            type: array
+        - name: a_promotion_filter
+          in: query
+          description: 'List of membership and passes keys to filter the discount codes by. A discount code is returned if it applies to any of the given memberships, to any of the events in {@link DiscountCodeApi::$a_event_filter}, or to all purchase items. If both {@link DiscountCodeApi::$a_event_filter} and {@link DiscountCodeApi::$a_promotion_filter} are empty, discount codes are not filtered by applicability.'
+          schema:
+            type: array
         - name: k_business
           in: query
           description: 'Business key of the discount codes.'

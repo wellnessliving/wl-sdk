@@ -18,14 +18,11 @@ class ConnectionCheckModel extends WlModelAbstract
    * One element contains:
    *
    * <dl>
-   *   <dt>int `i_occurrence_count`</dt>
-   *   <dd>Number of matching records.</dd>
+   *   <dt>string `dl_first_seen`</dt>
+   *   <dd>Local date of the first usage-statistics record.</dd>
    * 
-   *   <dt>int `id_source`</dt>
-   *
-   * 
-   *   <dt>string `text_message`</dt>
-   *   <dd>Log message or task description. Present for log and task sources.</dd>
+   *   <dt>string `dl_last_seen`</dt>
+   *   <dd>Local date of the last usage-statistics record.</dd>
    * 
    *   <dt>string `dtu_first_seen`</dt>
    *   <dd>UTC date/time of the first matching log or async-task record. Empty for background tasks.</dd>
@@ -33,23 +30,17 @@ class ConnectionCheckModel extends WlModelAbstract
    *   <dt>string `dtu_last_seen`</dt>
    *   <dd>UTC date/time of the last matching log or async-task record. Empty for background tasks.</dd>
    * 
+   *   <dt>int `i_occurrence_count`</dt>
+   *   <dd>Number of matching records.</dd>
+   * 
+   *   <dt>int `id_source`</dt>
+   *
+   * 
    *   <dt>string `s_object`</dt>
    *   <dd>Usage-statistics object. Present for the usage-statistics source.</dd>
    * 
-   *   <dt>string `dl_first_seen`</dt>
-   *   <dd>Local date of the first usage-statistics record.</dd>
-   * 
-   *   <dt>string `dl_last_seen`</dt>
-   *   <dd>Local date of the last usage-statistics record.</dd>
-   * 
-   *   <dt>int `i_variant_count`</dt>
-   *   <dd>Number of original usage-statistics objects merged into a normalized finding.</dd>
-   * 
-   *   <dt>string[] `a_object_example`</dt>
-   *   <dd>Bounded original usage-statistics object examples.</dd>
-   * 
-   *   <dt>bool `is_identity_incomplete`</dt>
-   *   <dd>Whether the stored object reached its length limit and was therefore kept exact.</dd>
+   *   <dt>string `text_message`</dt>
+   *   <dd>Log message or task description. Present for log and task sources.</dd>
    * </dl>
    * @get result
    * @var array[]
@@ -71,7 +62,7 @@ class ConnectionCheckModel extends WlModelAbstract
   public $i_result = 0;
 
   /**
-   * Whether findings must be returned.
+   * `true` returns findings; otherwise `false` performs only the connection check.
    *
    * @get get
    * @var bool

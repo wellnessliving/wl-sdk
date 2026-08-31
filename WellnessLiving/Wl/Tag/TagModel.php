@@ -8,7 +8,7 @@ use WellnessLiving\WlModelRequest;
 /**
  * Gets and removes revenue categories (tags) of the business.
  *
- * @method WlModelRequest delete() Removes the tag.
+ * @method WlModelRequest delete() Removes the tag.  Deletes the revenue category from the business. The deletion fails if the tag is currently set as the primary revenue category for any linked asset, class, coupon, promotion, service, or product (promotions that have already been removed are ignored). On success, notifies listeners about the affected linked objects and invalidates the cached tag list of the business.
  * @method WlModelRequest get() Returns revenue categories (tags) of the business.  Returns tags along with the bookable assets, classes, coupons, promotions, services, and products assigned to each one.
  */
 class TagModel extends WlModelAbstract
@@ -16,7 +16,7 @@ class TagModel extends WlModelAbstract
   /**
    * The revenue categories (tags) of the business.
    *
-   * Values have the next structure:
+   * Keys refer to tag keys . Values have the next structure:
    *
    * <dl>
    *   <dt>array[] `a_asset`</dt>
