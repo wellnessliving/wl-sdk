@@ -21,6 +21,12 @@ class TuitionClientsSummaryModel extends WlModelAbstract
    *   <dt>int `i_clients_enrolled`</dt>
    *   <dd>Number of unique clients having at least one not cancelled enrolled event.</dd>
    * 
+   *   <dt>int `i_enrollments_active`</dt>
+   *   <dd>Total number of group enrollments with at least one not cancelled enrolled client in the group.</dd>
+   * 
+   *   <dt>int `i_enrollments_total`</dt>
+   *   <dd>Total number of group enrollments.</dd>
+   * 
    *   <dt>int `i_enrolled_total`</dt>
    *   <dd>Total number of not cancelled event enrollments.</dd>
    * 
