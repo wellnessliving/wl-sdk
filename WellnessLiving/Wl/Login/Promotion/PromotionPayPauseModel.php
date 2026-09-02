@@ -62,6 +62,14 @@ class PromotionPayPauseModel extends WlModelAbstract
   public $a_pay_pause_list = null;
 
   /**
+   * List of all upcoming payments for the give pricing option. Just dates in local timezone.
+   *
+   * @get result
+   * @var string[]
+   */
+  public $a_payment_schedule = [];
+
+  /**
    * The end date of the current hold, in the local time zone.
    *
    * `null` if it shouldn't be updated.

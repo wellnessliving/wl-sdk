@@ -28,6 +28,9 @@ class TagModel extends WlModelAbstract
    * 
    *       <dt>bool `is_primary`</dt>
    *       <dd>Whether the tag is the primary revenue category for the resource.</dd>
+   * 
+   *       <dt>string `text_title`</dt>
+   *       <dd>The resource title.</dd>
    *     </dl>
    *   </dd>
    * 
@@ -40,6 +43,9 @@ class TagModel extends WlModelAbstract
    * 
    *       <dt>bool `is_primary`</dt>
    *       <dd>Whether the tag is the primary revenue category for the class.</dd>
+   * 
+   *       <dt>string `text_title`</dt>
+   *       <dd>The class title.</dd>
    *     </dl>
    *   </dd>
    * 
@@ -52,6 +58,9 @@ class TagModel extends WlModelAbstract
    * 
    *       <dt>bool `is_primary`</dt>
    *       <dd>Whether the tag is the primary revenue category for the coupon.</dd>
+   * 
+   *       <dt>string `text_title`</dt>
+   *       <dd>The coupon title.</dd>
    *     </dl>
    *   </dd>
    * 
@@ -64,6 +73,9 @@ class TagModel extends WlModelAbstract
    * 
    *       <dt>bool `is_primary`</dt>
    *       <dd>Whether the tag is the primary revenue category for the promotion.</dd>
+   * 
+   *       <dt>string `text_title`</dt>
+   *       <dd>The promotion title.</dd>
    *     </dl>
    *   </dd>
    * 
@@ -76,6 +88,9 @@ class TagModel extends WlModelAbstract
    * 
    *       <dt>bool `is_primary`</dt>
    *       <dd>Whether the tag is the primary revenue category for the service.</dd>
+   * 
+   *       <dt>string `text_title`</dt>
+   *       <dd>The service title.</dd>
    *     </dl>
    *   </dd>
    * 
@@ -88,6 +103,9 @@ class TagModel extends WlModelAbstract
    * 
    *       <dt>bool `is_primary`</dt>
    *       <dd>Whether the tag is the primary revenue category for the product.</dd>
+   * 
+   *       <dt>string `text_title`</dt>
+   *       <dd>The product title.</dd>
    *     </dl>
    *   </dd>
    * 

@@ -208,7 +208,7 @@ class PromotionModel extends WlModelAbstract
    * 
    *   <dt>bool `is_regional_access`</dt>
    *   <dd>
-   *     Whether the regional access setting can be configured for this promotion and business at all.
+   *     Whether the regional access setting can be configured for this Guest Pass promotion and business at all.
    * `false` if the business does not take part in a franchise region, in which case <var>is_regional</var>
    * and <var>a_franchise_region</var> should be ignored.
    *   </dd>

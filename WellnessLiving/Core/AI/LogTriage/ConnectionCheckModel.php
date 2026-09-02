@@ -33,11 +33,20 @@ class ConnectionCheckModel extends WlModelAbstract
    *   <dt>int `i_occurrence_count`</dt>
    *   <dd>Number of matching records.</dd>
    * 
+   *   <dt>int `i_priority_multiplier`</dt>
+   *   <dd>Usage-statistics priority multiplier. Present for the usage-statistics source.</dd>
+   * 
    *   <dt>int `id_source`</dt>
    *
    * 
    *   <dt>string `s_object`</dt>
    *   <dd>Usage-statistics object. Present for the usage-statistics source.</dd>
+   * 
+   *   <dt>string `s_period`</dt>
+   *   <dd>Usage-statistics aggregation period. Present for the usage-statistics source.</dd>
+   * 
+   *   <dt>string `s_priority`</dt>
+   *   <dd>Usage-statistics priority. Present for the usage-statistics source.</dd>
    * 
    *   <dt>string `text_message`</dt>
    *   <dd>Log message or task description. Present for log and task sources.</dd>

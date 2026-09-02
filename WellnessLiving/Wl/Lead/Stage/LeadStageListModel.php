@@ -13,7 +13,7 @@ use WellnessLiving\WlModelRequest;
 class LeadStageListModel extends WlModelAbstract
 {
   /**
-   * List of lead stages of the business. Ordered by <var>i_order</var>.
+   * List of lead stages of the business. Ordered by `i_order`.
    *
    * <dl>
    *   <dt>int `i_order`</dt>
@@ -60,6 +60,12 @@ class LeadStageListModel extends WlModelAbstract
    * 
    *   <dt>string `text_title`</dt>
    *   <dd>Name of the stage.</dd>
+   * 
+   *   <dt>string `url_member_report`</dt>
+   *   <dd>
+   *     URL of the report of clients who are in this stage.
+   *  Only set in a case {@link LeadStageListModel::$is_statistic} is `true` and the stage contains clients.
+   *   </dd>
    * </dl>
    * @get result
    * @var array[]
@@ -69,7 +75,7 @@ class LeadStageListModel extends WlModelAbstract
   /**
    * Determines whether statistics of the stages must be returned.
    *
-   * `true` to return the number of clients of every stage in <var>i_user</var>,
+   * `true` to return the number of clients of every stage in `i_user`,
    * `false` to not return the statistics.
    *
    * @get get

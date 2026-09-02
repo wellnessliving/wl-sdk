@@ -89,6 +89,14 @@ class AttendanceOverlapModel extends WlModelAbstract
   public $is_appointment = false;
 
   /**
+   * Whether at least one overlap exists.
+   *
+   * @get result
+   * @var bool
+   */
+  public $is_overlap = false;
+
+  /**
    * Primary key of the business to add the user into.
    *
    * @get get

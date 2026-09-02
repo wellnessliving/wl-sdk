@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Book\Process\Purchase;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Discount\DiscountRuleSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 
 /**
@@ -38,13 +39,13 @@ class PurchaseElementGroupModel extends WlModelAbstract
    *      next keys:
    *             <dl>
    *               <dt>int `id_discount_rule`</dt>
-   *               <dd>Discount rule type.</dd>
+   *               <dd>Discount rule type. One of {@link DiscountRuleSid} constants.</dd>
    * 
    *               <dt>string `m_discount`</dt>
    *               <dd>Discount amount of this rule.</dd>
    * 
    *               <dt>string `text_discount`</dt>
-   *               <dd>Discount title.</dd>
+   *               <dd>Discount title. Only for {@link DiscountRuleSid::MANUAL}.</dd>
    *             </dl>
    *           </dd>
    * 
@@ -94,13 +95,13 @@ class PurchaseElementGroupModel extends WlModelAbstract
    *      next keys:
    *             <dl>
    *               <dt>int `id_discount_rule`</dt>
-   *               <dd>Discount rule type.</dd>
+   *               <dd>Discount rule type. One of {@link DiscountRuleSid} constants.</dd>
    * 
    *               <dt>string `m_discount`</dt>
    *               <dd>Discount amount of this rule.</dd>
    * 
    *               <dt>string `text_discount`</dt>
-   *               <dd>Discount title.</dd>
+   *               <dd>Discount title. Only for {@link DiscountRuleSid::MANUAL}.</dd>
    *             </dl>
    *           </dd>
    * 
