@@ -121,6 +121,13 @@ class InviteListModel extends WlModelAbstract
    * `null` if no guest pass settings are configured for the promotion.
    *   </dd>
    * 
+   *   <dt>bool `is_visit_business_other`</dt>
+   *   <dd>
+   *     `true` if the visit was redeemed at a sibling franchisee business rather than the business that
+   * issued the guest pass (regional redemption). `false` if no visit is associated or it was
+   * redeemed at the issuing business.
+   *   </dd>
+   * 
    *   <dt>bool `is_visit_future`</dt>
    *   <dd>`true` if associated visit in future, `false` otherwise.</dd>
    * 
@@ -158,6 +165,12 @@ class InviteListModel extends WlModelAbstract
    * 
    *   <dt>string `text_promotion_host`</dt>
    *   <dd>Title of the host promotion.</dd>
+   * 
+   *   <dt>string|null `text_location`</dt>
+   *   <dd>
+   *     Title of the location the visit was redeemed at - may be a sibling franchisee's location when the
+   * guest pass has regional access. `null` if no visit is associated.
+   *   </dd>
    * 
    *   <dt>string|null `text_service_title`</dt>
    *   <dd>Title of the service booked with the guest pass.

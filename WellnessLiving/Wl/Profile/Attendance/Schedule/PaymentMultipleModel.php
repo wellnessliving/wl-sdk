@@ -236,6 +236,14 @@ class PaymentMultipleModel extends WlModelAbstract
   public $is_checkout = false;
 
   /**
+   * `true` to all appointments are related to the same user, `false` if appointments can be related to different users.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_relationship = true;
+
+  /**
    * When set to `true` it's mean that need load full information about unpaid visits:
    *  * List of available/existing POs.
    *  * List of unpaid addons.
@@ -253,6 +261,14 @@ class PaymentMultipleModel extends WlModelAbstract
    * @var bool
    */
   public $is_tip = false;
+
+  /**
+   * `true` to get only unpaid appointments, `false` to get all appointments.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_unpaid = true;
 
   /**
    * The business key.

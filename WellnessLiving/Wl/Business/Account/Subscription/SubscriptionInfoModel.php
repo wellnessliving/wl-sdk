@@ -37,7 +37,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     QuickBooks subscription plan ID.
+   *     QuickBooks Online subscription plan ID.
    *   </dd>
    * </dl>
    * 

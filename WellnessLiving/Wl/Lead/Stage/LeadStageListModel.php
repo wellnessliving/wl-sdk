@@ -25,6 +25,13 @@ class LeadStageListModel extends WlModelAbstract
    * Only set in a case {@link LeadStageListModel::$is_statistic} is `true`.
    *   </dd>
    * 
+   *   <dt>int `i_member_group`</dt>
+   *   <dd>
+   *     Number of client groups which convert their clients into this stage. Such a group depends on the stage: the stage
+   * may only be deleted with a replacement stage for the groups.
+   * Only set in a case {@link LeadStageListModel::$is_statistic} is `true`.
+   *   </dd>
+   * 
    *   <dt>int `i_user`</dt>
    *   <dd>
    *     Number of clients who are in this stage.
@@ -60,6 +67,12 @@ class LeadStageListModel extends WlModelAbstract
    * 
    *   <dt>string `text_title`</dt>
    *   <dd>Name of the stage.</dd>
+   * 
+   *   <dt>string `url_automation_list`</dt>
+   *   <dd>
+   *     URL of the list of automations which use this stage.
+   *  Only set in a case {@link LeadStageListModel::$is_statistic} is `true` and the stage is used in automations.
+   *   </dd>
    * 
    *   <dt>string `url_member_report`</dt>
    *   <dd>

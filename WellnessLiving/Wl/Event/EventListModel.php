@@ -210,6 +210,23 @@ class EventListModel extends WlModelAbstract
    *
    *   </dd>
    * 
+   *   <dt>int `i_book_active`</dt>
+   *   <dd>
+   *     Number of clients in the active list.
+   * 
+   * For non-block events, this is the sum across all future sessions of the event (same aggregation as used
+   * For block events, this is the count for the whole block.
+   *   </dd>
+   * 
+   *   <dt>int `i_capacity`</dt>
+   *   <dd>
+   *     Capacity of the active list.
+   * 
+   * For non-block events, this is {@link \Wl\Event\EventListItemEntity::$i_session_future} multiplied by the capacity of
+   * For block events,
+   *  this is the capacity of the whole block.
+   *   </dd>
+   * 
    *   <dt>int `i_session_all`</dt>
    *   <dd>Number of all sessions in the event.</dd>
    * 
@@ -218,6 +235,21 @@ class EventListModel extends WlModelAbstract
    * 
    *   <dt>int `i_session_past`</dt>
    *   <dd>Number of past sessions in the event.</dd>
+   * 
+   *   <dt>int `i_wait`</dt>
+   *   <dd>
+   *     Number of clients in the wait list.
+   * 
+   * For non-block events, this is the sum across all future sessions of the event. For block events, this is
+   *  the count for the whole block.
+   *   </dd>
+   * 
+   *   <dt>int|null `i_wait_limit`</dt>
+   *   <dd>
+   *     Wait list limit of the event.
+   * 
+   * `null` if wait list is not enabled for this event, or if it is enabled without a limit.
+   *   </dd>
    * 
    *   <dt>int `id_reason`</dt>
    *   <dd>ID of deny reason.</dd>
@@ -315,8 +347,19 @@ class EventListModel extends WlModelAbstract
    *   <dt>bool `is_single_buy`</dt>
    *   <dd>Whether class/event can be paid with single session.</dd>
    * 
+   *   <dt>bool `is_user_booked`</dt>
+   *   <dd>
+   *     Whether current user is booked or on the wait list.
+   * 
+   * Unlike {@link \Wl\Event\EventListItemEntity::$is_booked}, this field is also `true` when the user is on the wait
+   *  list, not only when actually booked into the active list.
+   *   </dd>
+   * 
    *   <dt>bool `is_virtual`</dt>
    *   <dd>Whether event is virtual.</dd>
+   * 
+   *   <dt>bool `is_wait_list_enabled`</dt>
+   *   <dd>Whether wait list is enabled for this event.</dd>
    * 
    *   <dt>string `k_class`</dt>
    *   <dd>Class key.</dd>

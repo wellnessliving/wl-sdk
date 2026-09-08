@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Tuition\Enrollment;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Login\Promotion\LoginPromotionStatusSid;
 
 /**
  * Model to get summary of clients and events enrolled for the given tuitions from the microservice.
@@ -22,7 +23,12 @@ class TuitionClientsSummaryModel extends WlModelAbstract
    *   <dd>Number of unique clients having at least one not cancelled enrolled event.</dd>
    * 
    *   <dt>int `i_enrollments_active`</dt>
-   *   <dd>Total number of group enrollments with at least one not cancelled enrolled client in the group.</dd>
+   *   <dd>
+   *     Total number of group enrollments with at least one not cancelled enrolled client in the group and
+   *     an active payment plan - `id_installment_status` equal to {@link \Wl\Pay\Installment\InstallmentStatusSid::ACTIVE} for
+   *     installment-based tuition plans, or at least one `id_promotion_status` equal to
+   *     {@link LoginPromotionStatusSid::ACTIVE} among the group's memberships for membership-based tuitions.
+   *   </dd>
    * 
    *   <dt>int `i_enrollments_total`</dt>
    *   <dd>Total number of group enrollments.</dd>

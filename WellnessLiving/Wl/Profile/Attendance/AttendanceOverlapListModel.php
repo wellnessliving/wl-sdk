@@ -21,8 +21,8 @@ class AttendanceOverlapListModel extends WlModelAbstract
    *   <dd>
    *     List of visits that overlap with the checked session. Same structure as
    * {@link AttendanceOverlapModel::$a_visit_list}. Present only if the current user has full access to the
-   * target user's visits (the target user itself or a family relative). Each element has the following
-   * keys: List of overlapped booked visits. Each element has the following keys:
+   * target user's visits (the target user itself or a family relative).
+   * Each element has the following keys:
    * 
    * Empty for guest-level access, to avoid exposing another member's visit details.
    *     <dl>

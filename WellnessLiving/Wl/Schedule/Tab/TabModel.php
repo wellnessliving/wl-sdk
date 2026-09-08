@@ -48,6 +48,14 @@ class TabModel extends WlModelAbstract
   public $a_tab;
 
   /**
+   * Whether to return all tabs or only the tabs for which sessions are available.
+   *
+   * @get get
+   * @var bool
+   */
+  public $is_full_list = false;
+
+  /**
    * Whether we are inside the widget or not.
    *
    * @get get

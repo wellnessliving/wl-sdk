@@ -264,6 +264,17 @@ class ServiceListModel extends WlModelAbstract
   public $a_service = [];
 
   /**
+   * List of services to filter a result.
+   *
+   * Each element is a service key.
+   * Empty if the filtering is not necessary.
+   *
+   * @get get
+   * @var string[]
+   */
+  public $a_service_filter = [];
+
+  /**
    * List of staff members to filter a result.
    *
    * Empty if the filtering is not necessary.

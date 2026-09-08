@@ -15,12 +15,12 @@ use WellnessLiving\WlModelRequest;
 class AlertModel extends WlModelAbstract
 {
   /**
-   * Business key.
+   * CID of the alert to be fired.
    *
    * @post post
-   * @var string
+   * @var int
    */
-  public $cid_alert = '';
+  public $cid_alert = 0;
 
   /**
    * Business key.

@@ -93,6 +93,12 @@ class GuestPassModel extends WlModelAbstract
    *   <dt>bool `has_service`</dt>
    *   <dd>`true` if the guest pass is service-type (not invite-type). Inverse of `can_invite`.</dd>
    * 
+   *   <dt>bool `is_regional`</dt>
+   *   <dd>
+   *     `true` if regional access is enabled for the guest pass, i.e. it may be redeemed at other
+   * businesses within the franchise region, not only the business that granted it.
+   *   </dd>
+   * 
    *   <dt>int|null `i_cap_day`</dt>
    *   <dd>Maximum guest passes that can be sent per day. `null` if there is no daily cap.</dd>
    * 

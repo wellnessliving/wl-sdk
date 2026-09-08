@@ -291,6 +291,9 @@ class PaymentModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    * 
+   *   <dt>array `a_signature`</dt>
+   *   <dd>Signatures for an item that requires agreement to several distinct contracts at once.</dd>
+   * 
    *   <dt>array[] `a_tax_custom`</dt>
    *   <dd>
    *     Customer taxes (optional). Every element must contain the following keys:
@@ -322,7 +325,7 @@ class PaymentModel extends WlModelAbstract
    *   <dd>The custom price (optional).</dd>
    * 
    *   <dt>string `s_signature`</dt>
-   *   <dd>The client signature, used for items that require a signed contract.</dd>
+   *   <dd>The client signature, used for an item that requires agreement to a single contract.</dd>
    * </dl>
    * @post post
    * @var array[]
