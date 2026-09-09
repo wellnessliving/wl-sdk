@@ -1,0 +1,119 @@
+<?php
+
+namespace WellnessLiving\Wl;
+
+use WellnessLiving\Core\Locale\CurrencySid;
+
+/**
+ * A list of currency codes.
+ *
+ * When you add a currency, add also the following:<ul>
+ *   <li>Image in <tt>rs.pay/html/img/pay-amount-input-*.png</tt></li>
+ *   <li>Currency in <tt>rs.pay.amount.input.less</tt></li>
+ * </ul>
+ *
+ * @deprecated Use {@link CurrencySid} instead.
+ */
+abstract class RsCurrencySid
+{
+  /**
+   * United Arab Emirates dirham.
+   */
+  const AED = 11;
+
+  /**
+   * Australian dollar.
+   */
+  const AUD = 6;
+
+  /**
+   * Bermudian Dollar.
+   */
+  const BMD = 18;
+
+  /**
+   * Bahamian dollar.
+   */
+  const BSD = 19;
+
+  /**
+   * Canadian dollar.
+   */
+  const CAD = 4;
+
+  /**
+   * Egypt Pound.
+   */
+  const EGP = 8;
+
+  /**
+   * Euro.
+   */
+  const EUR = 13;
+
+  /**
+   * British pound.
+   */
+  const GBP = 3;
+
+  /**
+   * Kuwaiti dinar.
+   */
+  const KWD = 14;
+
+  /**
+   * Cayman Islands dollar.
+   */
+  const KYD = 5;
+
+  /**
+   * Mauritian Rupee.
+   */
+  const MUR = 16;
+
+  /**
+   * New Zealand Dollar.
+   */
+  const NZD = 10;
+
+  /**
+   * Philippines Pesco.
+   */
+  const PHP = 12;
+
+  /**
+   * Saudi Riyal.
+   */
+  const SAR = 15;
+
+  /**
+   * Singapore dollar.
+   */
+  const SGD = 20;
+
+  /**
+   * Unknown code.
+   *
+   * Used when currency is not specified or is not known.
+   */
+  const UNKNOWN = 2;
+
+  /**
+   * US dollars.
+   */
+  const USD = 1;
+
+  /**
+   * West African CFA franc.
+   *
+   * Is used in Senegal.
+   */
+  const XOF = 17;
+
+  /**
+   * South African rand.
+   */
+  const ZAR = 7;
+}
+
+?>

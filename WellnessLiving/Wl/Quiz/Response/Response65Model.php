@@ -4,7 +4,9 @@ namespace WellnessLiving\Wl\Quiz\Response;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Catalog\QuickPurchaseTypeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\Quiz\Activity\ActivitySid;
 
 /**
  * Endpoint to work with quiz responses.
@@ -27,7 +29,7 @@ class Response65Model extends WlModelAbstract
    *   <dd>User's key. </dd>
    * 
    *   <dt>int `id_activity`</dt>
-   *
+   *   <dd>One of {@link ActivitySid} constants.</dd>
    * 
    *   <dt>string `text_activity`</dt>
    *   <dd>Title of the activity</dd>
@@ -1234,7 +1236,7 @@ class Response65Model extends WlModelAbstract
    * <dl>
    *   <dt>int `id_table`</dt>
    *   <dd>Quick purchase type.
-   *</dd>
+   * One of {@link QuickPurchaseTypeSid} constant.</dd>
    * 
    *   <dt>bool `is_quick_buy`</dt>
    *   <dd>

@@ -6,10 +6,13 @@ use WellnessLiving\Core\Quiz\ResponseStatusSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Login\Type\ShapeSid;
 use WellnessLiving\Wl\Member\Progress\Field\MeasurementSid;
 use WellnessLiving\Wl\Member\Progress\Field\ProgressFieldSid;
 use WellnessLiving\Wl\Member\Progress\Field\TypeSid;
 use WellnessLiving\Wl\Profile\PurchaseList\PurchaseListElementModel;
+use WellnessLiving\Wl\Profile\Sensor\SensorTypesSid;
+use WellnessLiving\Wl\Visit\PassProspectSid;
 use WellnessLiving\Wl\Visit\WlVisitSid;
 use WellnessLiving\Wl\WlProgramSid;
 
@@ -52,7 +55,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *           <dd>Title.</dd>
    * 
    *           <dt>string `sid_shape`</dt>
-   *           <dd>SID of the icon type shape.</dd>
+   *           <dd>SID of the icon type shape. Constant from {@link ShapeSid}.</dd>
    *         </dl>
    *       </dd>
    * 
@@ -278,7 +281,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *     A list of information pertaining to the client's wearables.
    *     <dl>
    *       <dt>int `id_type`</dt>
-   *       <dd>Device type ID.</dd>
+   *       <dd>Device type ID. One of {@link SensorTypesSid} constants.</dd>
    * 
    *       <dt>bool `is_remove`</dt>
    *       <dd>`true` if the device has been removed.</dd>
@@ -344,7 +347,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    * 
    *   <dt>int `id_pass_prospect`</dt>
    *   <dd>
-   *     If this visit was paid for by an external system, this ID will be set. Otherwise, it will be `0`.
+   *     If this visit was paid for by an external system, this ID will be set. Otherwise, it will be `0`. One of {@link PassProspectSid} constants.
    *   </dd>
    * 
    *   <dt>int `id_program`</dt>
@@ -523,7 +526,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *           <dd>Title.</dd>
    * 
    *           <dt>string `sid_shape`</dt>
-   *           <dd>SID of the icon type shape.</dd>
+   *           <dd>SID of the icon type shape. Constant from {@link ShapeSid}.</dd>
    *         </dl>
    *       </dd>
    * 
@@ -749,7 +752,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *     A list of information pertaining to the client's wearables.
    *     <dl>
    *       <dt>int `id_type`</dt>
-   *       <dd>Device type ID.</dd>
+   *       <dd>Device type ID. One of {@link SensorTypesSid} constants.</dd>
    * 
    *       <dt>bool `is_remove`</dt>
    *       <dd>`true` if the device has been removed.</dd>
@@ -815,7 +818,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    * 
    *   <dt>int `id_pass_prospect`</dt>
    *   <dd>
-   *     If this visit was paid for by an external system, this ID will be set. Otherwise, it will be `0`.
+   *     If this visit was paid for by an external system, this ID will be set. Otherwise, it will be `0`. One of {@link PassProspectSid} constants.
    *   </dd>
    * 
    *   <dt>int `id_program`</dt>
@@ -994,7 +997,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *           <dd>Title.</dd>
    * 
    *           <dt>string `sid_shape`</dt>
-   *           <dd>SID of the icon type shape.</dd>
+   *           <dd>SID of the icon type shape. Constant from {@link ShapeSid}.</dd>
    *         </dl>
    *       </dd>
    * 
@@ -1220,7 +1223,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    *     A list of information pertaining to the client's wearables.
    *     <dl>
    *       <dt>int `id_type`</dt>
-   *       <dd>Device type ID.</dd>
+   *       <dd>Device type ID. One of {@link SensorTypesSid} constants.</dd>
    * 
    *       <dt>bool `is_remove`</dt>
    *       <dd>`true` if the device has been removed.</dd>
@@ -1286,7 +1289,7 @@ class AttendanceListByTokenModel extends WlModelAbstract
    * 
    *   <dt>int `id_pass_prospect`</dt>
    *   <dd>
-   *     If this visit was paid for by an external system, this ID will be set. Otherwise, it will be `0`.
+   *     If this visit was paid for by an external system, this ID will be set. Otherwise, it will be `0`. One of {@link PassProspectSid} constants.
    *   </dd>
    * 
    *   <dt>int `id_program`</dt>

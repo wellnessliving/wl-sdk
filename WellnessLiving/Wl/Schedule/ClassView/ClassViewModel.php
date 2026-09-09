@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Schedule\ClassView;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Gender\GenderSid;
 use WellnessLiving\Wl\Resource\ResourceCategoryEnum;
 use WellnessLiving\Wl\Schedule\ClassList\ClassListModel;
 
@@ -502,7 +503,7 @@ class ClassViewModel extends WlModelAbstract
    *         Information about staff photo:
    *         <dl>
    *           <dt>int `id_gender`</dt>
-   *           <dd>ID of gender.</dd>
+   *           <dd>ID of gender. One of {@link GenderSid} constants.</dd>
    * 
    *           <dt>bool `is_empty`</dt>
    *           <dd>`true` - staff has photo; `false` - has no photo.</dd>
@@ -578,7 +579,7 @@ class ClassViewModel extends WlModelAbstract
    *     Information about staff photo:
    *     <dl>
    *       <dt>int `id_gender`</dt>
-   *       <dd>ID of gender.</dd>
+   *       <dd>ID of gender. One of {@link GenderSid} constants.</dd>
    * 
    *       <dt>bool `is_empty`</dt>
    *       <dd>`true` - staff has photo; `false` - has no photo.</dd>

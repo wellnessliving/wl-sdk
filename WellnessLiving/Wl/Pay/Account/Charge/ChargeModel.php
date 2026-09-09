@@ -6,6 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
 use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\RsPayAccountChargeSid;
 
 /**
  * Fills a user account with a specified payment.
@@ -124,6 +125,8 @@ class ChargeModel extends WlModelAbstract
   /**
    * The account charge mode.
    *
+   * One of the {@link RsPayAccountChargeSid} constants.
+   *
    * @post get
    * @var int
    */
@@ -166,7 +169,7 @@ class ChargeModel extends WlModelAbstract
   /**
    * The ID of the purchase that was created during payment.
    * This value is only returned in cases where a purchase was created.
-   * A new purchase is created when {@link ChargeModel::$id_pay_account_charge} equals {@link \RsPayAccountChargeSid::AUTO}.
+   * A new purchase is created when {@link ChargeModel::$id_pay_account_charge} equals {@link RsPayAccountChargeSid::AUTO}.
    *
    * @post result
    * @var string

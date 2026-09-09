@@ -2,8 +2,10 @@
 
 namespace WellnessLiving\Thoth\WlPay\Bank\Card\Widget;
 
+use WellnessLiving\Thoth\WlPay\Bank\Card\CardTypeEnum;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Card\CardSystemSid;
 use WellnessLiving\Wl\RsPayModeSid;
 use WellnessLiving\Wl\WlPayMethodSid;
 use WellnessLiving\Wl\WlPayOwnerSid;
@@ -30,10 +32,10 @@ class WidgetSelectModel extends WlModelAbstract
    *   <dd>Card expiration year.</dd>
    * 
    *   <dt>int `id_card_system`</dt>
-   *   <dd>Card system ID.</dd>
+   *   <dd>Card system ID. One of {@link CardSystemSid} constants.</dd>
    * 
    *   <dt>int `id_card_type`</dt>
-   *   <dd>Payment card type ID.</dd>
+   *   <dd>Payment card type ID. One of {@link CardTypeEnum} constants as int.</dd>
    * 
    *   <dt>int `id_pay_processor`</dt>
    *   <dd>Payment processor ID. One of {@link WlPayProcessorSid} constants.</dd>
@@ -60,7 +62,7 @@ class WidgetSelectModel extends WlModelAbstract
    *   <dd>Partial card number.</dd>
    * 
    *   <dt>string `sid_card_system`</dt>
-   *   <dd>Card system SID.</dd>
+   *   <dd>Card system SID. One of {@link CardSystemSid} constants as string.</dd>
    * 
    *   <dt>string `text_city`</dt>
    *   <dd>Billing city.</dd>

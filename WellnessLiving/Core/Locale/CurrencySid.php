@@ -7,9 +7,9 @@ namespace WellnessLiving\Core\Locale;
  *
  * Currency constant names must comply with the standard `ISO 4217` for correct integration with other services.
  *
- * @link https://docs.1010data.com/1010dataReferenceManual/DataTypesAndFormats/currencyUnitCodes.html
- *
  * Last used ID: 20
+ *
+ * @link https://docs.1010data.com/1010dataReferenceManual/DataTypesAndFormats/currencyUnitCodes.html
  */
 abstract class CurrencySid
 {

@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Pay\Transaction;
 
+use WellnessLiving\Thoth\WlPay\Transaction\Status\PayTransactionStatusSid;
 use WellnessLiving\Wl\RsPurchaseStatusSid;
 
 /**
@@ -9,7 +10,7 @@ use WellnessLiving\Wl\RsPurchaseStatusSid;
  *
  * Last used ID: 15.
  *
- * @
+ * @deprecated Use {@link PayTransactionStatusSid} instead.
  */
 abstract class WlPayTransactionStatusSid
 {

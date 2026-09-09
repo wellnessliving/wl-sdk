@@ -7,6 +7,8 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
 use WellnessLiving\Wl\RsPayActorSid;
+use WellnessLiving\Wl\RsPayBankAchHolderSid;
+use WellnessLiving\Wl\RsPayBankAchSecSid;
 use WellnessLiving\Wl\RsPayBankAchTypeSid;
 use WellnessLiving\Wl\RsPayBankSid;
 use WellnessLiving\Wl\WlPayProcessorSid;
@@ -68,10 +70,10 @@ class AddModel extends WlModelAbstract
    *   <dd>Pay actor id. One of {@link RsPayActorSid} constants.</dd>
    * 
    *   <dt>int `id_pay_bank_ach_holder`</dt>
-   *   <dd>Account holder type.</dd>
+   *   <dd>Account holder type. One of {@link RsPayBankAchHolderSid} constants.</dd>
    * 
    *   <dt>int `id_pay_bank_ach_sec`</dt>
-   *   <dd>SEC code.</dd>
+   *   <dd>SEC code. One of {@link RsPayBankAchSecSid} constants.</dd>
    * 
    *   <dt>int `id_pay_bank_ach_type`</dt>
    *   <dd>Account type. One of {@link RsPayBankAchTypeSid} constants.</dd>
@@ -120,7 +122,7 @@ class AddModel extends WlModelAbstract
    *   <dd>Type of recurrent payment token. One of {@link RsPayBankSid} constants.</dd>
    * 
    *   <dt>int `id_pay_bank_ach_holder`</dt>
-   *   <dd>Type of account holder.</dd>
+   *   <dd>Type of account holder. One of {@link RsPayBankAchHolderSid} constants.</dd>
    * 
    *   <dt>int `id_pay_bank_ach_type`</dt>
    *   <dd>Type of account. One of {@link RsPayBankAchTypeSid} constants.</dd>

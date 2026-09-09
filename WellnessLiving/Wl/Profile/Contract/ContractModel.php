@@ -12,11 +12,48 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
  * The POST method will complete a sale of a Purchase Option requiring a contract.
  * The method that WellnessLiving uses to encode a signature into a string isn't currently available in the SDK.
  *
- * @method WlModelRequest get() Returns contract information for the specified purchase option.  Renders the contract text for the specified purchase option, applying any applicable  discounts, and returns the content needed to display the contract acceptance modal to the  client.
+ * @method WlModelRequest get() Returns contract information for the specified purchase option.  Renders the contract text for the specified purchase option, applying any applicable  discounts, and returns the content needed to display the contract acceptance modal to the  client. If the purchase option requires agreement to several distinct contracts at once,  returns them through {@link \Wl\Profile\Contract\ContractApi::$a_contract_list} instead, each rendered the same  way as a single contract, using the discount already resolved for that specific contract -  {@link \Wl\Profile\Contract\ContractApi::$f_manual_discount}, {@link \Wl\Profile\Contract\ContractApi::$m_discount_flat}, and  {@link \Wl\Profile\Contract\ContractApi::$s_discount_code} are not supported in that case.
  * @method WlModelRequest post() Completes a sale of a Purchase Option requiring a contract by submitting the signed contract.  Accepts an encoded client signature and agreement flag, decodes the signature, and records  the signed contract for the specified purchase item.
  */
 class ContractModel extends WlModelAbstract
 {
+  /**
+   * Additional configuration for the item that might influence contracts.
+   *
+   * When {@link ContractModel::$id_purchase_item} is {@link WlPurchaseItemSid::TUITION}.
+   * Use next structure:
+   *
+   * <dl>
+   *   <dt>array `a_event_list`</dt>
+   *   <dd>The tuition class schedule selected for the participant.</dd>
+   * 
+   *   <dt>array `a_registration_fee_list`</dt>
+   *   <dd>Registration fees to charge together with the tuition, keyed by participant key.</dd>
+   * </dl>
+   * @get get
+   * @var array
+   */
+  public $a_config = [];
+
+  /**
+   * List of contracts required at once, if the purchase option requires agreement to several
+   *  distinct contracts (for example, one per Tuition visitor). Keyed the same way as
+   *  `a_signature` used to submit signatures for such a purchase option. Empty if the purchase
+   *  option requires at most one contract - use {@link ContractModel::$html_contract} instead in
+   *  that case. Value has the following structure:
+   *
+   * <dl>
+   *   <dt>string `html_contract`</dt>
+   *   <dd>The text of this specific contract.</dd>
+   * 
+   *   <dt>string `uid`</dt>
+   *   <dd>Key of the visitor this contract applies to.</dd>
+   * </dl>
+   * @get result
+   * @var array
+   */
+  public $a_contract_list = [];
+
   /**
    * The start date of the contract.
    *
@@ -27,6 +64,9 @@ class ContractModel extends WlModelAbstract
 
   /**
    * The percentage discount for the item.
+   *
+   * Not supported when the purchase option requires several distinct contracts at once - see
+   *  {@link ContractModel::$a_contract_list}.
    *
    * @get get
    * @var float
@@ -106,6 +146,9 @@ class ContractModel extends WlModelAbstract
   /**
    * Amount of a flat manual discount.
    *
+   * Not supported when the purchase option requires several distinct contracts at once - see
+   *   {@link ContractModel::$a_contract_list}.
+   *
    * @get get
    * @var string
    */
@@ -114,6 +157,9 @@ class ContractModel extends WlModelAbstract
   /**
    * The custom price of the item.
    *
+   * Not supported when the purchase option requires several distinct contracts at once - see
+   *   {@link ContractModel::$a_contract_list}.
+   *
    * @get get
    * @var string
    */
@@ -121,6 +167,9 @@ class ContractModel extends WlModelAbstract
 
   /**
    * The discount code used for the item.
+   *
+   * Not supported when the purchase option requires several distinct contracts at once - see
+   *  {@link ContractModel::$a_contract_list}.
    *
    * @get get
    * @var string

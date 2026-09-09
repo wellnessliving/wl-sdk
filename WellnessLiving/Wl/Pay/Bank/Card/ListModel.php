@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Wl\Pay\Bank\Card;
 
-use WellnessLiving\Core\a\ACardSystemSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
@@ -26,7 +25,7 @@ class ListModel extends WlModelAbstract
    *   <dd>The last two digits of the year when the payment card expires.</dd>
    * 
    *   <dt>int `id_card_system`</dt>
-   *   <dd>The card system ID. This is one of the {@link ACardSystemSid} constants.</dd>
+   *   <dd>The card system ID.</dd>
    * 
    *   <dt>bool `is_autopay`</dt>
    *   <dd>
@@ -76,7 +75,7 @@ class ListModel extends WlModelAbstract
    *   <dd>The last two digits of the year when the payment card expires.</dd>
    * 
    *   <dt>int `id_card_system`</dt>
-   *   <dd>The card system ID. This is one of the {@link ACardSystemSid} constants.</dd>
+   *   <dd>The card system ID.</dd>
    * 
    *   <dt>bool `is_autopay`</dt>
    *   <dd>

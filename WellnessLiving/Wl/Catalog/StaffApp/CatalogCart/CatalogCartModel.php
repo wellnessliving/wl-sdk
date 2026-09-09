@@ -283,50 +283,6 @@ class CatalogCartModel extends WlModelAbstract
   public $m_checkout = '0.00';
 
   /**
-   * The subtotal amount that has to be charged right now for the cart, before discount.
-   *
-   * Equals {@link CatalogCartModel::$m_subtotal} for everything that is paid for in full at once. See
-   * {@link CatalogCartModel::$m_checkout} for how a tuition's deferred cost is excluded.
-   *
-   * @get result
-   * @var string
-   */
-  public $m_checkout_before_discount = '0.00';
-
-  /**
-   * The amount that has to be charged right now for the cart, after discount but before tax.
-   *
-   * Equals {@link CatalogCartModel::$m_checkout_before_discount} minus
-   * {@link CatalogCartModel::$m_checkout_discount}.
-   *
-   * @get result
-   * @var string
-   */
-  public $m_checkout_before_tax = '0.00';
-
-  /**
-   * The discount amount that applies to the part of the cart charged right now, excluding tax.
-   *
-   * Equals {@link CatalogCartModel::$m_discount_total} for everything that is paid for in full at once. See
-   * {@link CatalogCartModel::$m_checkout} for how a tuition's deferred cost is excluded.
-   *
-   * @get result
-   * @var string
-   */
-  public $m_checkout_discount = '0.00';
-
-  /**
-   * The amount of tax that applies to the part of the cart charged right now.
-   *
-   * Equals {@link CatalogCartModel::$m_tax} for everything that is paid for in full at once. See
-   * {@link CatalogCartModel::$m_checkout} for how a tuition's deferred cost is excluded.
-   *
-   * @get result
-   * @var string
-   */
-  public $m_checkout_tax = '0.00';
-
-  /**
    * The discount amount in dollars, excluding tax.
    *
    * @get result

@@ -3,6 +3,7 @@
 namespace WellnessLiving\Thoth\PayProcessor\StripeCom;
 
 use WellnessLiving\Core\Locale\CurrencySid;
+use WellnessLiving\Thoth\WlPay\Bank\Card\CardTypeEnum;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\RsPayActorSid;
@@ -77,7 +78,7 @@ class StripeComPayInitModel extends WlModelAbstract
    * 
    *   <dt>int `id_card_type`</dt>
    *   <dd>
-   *     Card type. Used only if `is_new` is `true`.
+   *     Card type. One of {@link CardTypeEnum} constants as int. Used only if `is_new` is `true`.
    *   </dd>
    * 
    *   <dt>bool `is_default`</dt>

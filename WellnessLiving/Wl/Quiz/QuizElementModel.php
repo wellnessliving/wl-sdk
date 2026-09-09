@@ -6,6 +6,8 @@ use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\Quiz\Activity\ActivitySid;
+use WellnessLiving\Wl\Quiz\Service\ServiceSid;
 use WellnessLiving\Wl\WlDurationTypeSid;
 
 /**
@@ -31,7 +33,7 @@ class QuizElementModel extends WlModelAbstract
    *   <dd>User's key. </dd>
    * 
    *   <dt>int `id_activity`</dt>
-   *
+   *   <dd>One of {@link ActivitySid} constants.</dd>
    * 
    *   <dt>string `text_activity`</dt>
    *   <dd>Title of the activity</dd>
@@ -1223,7 +1225,7 @@ class QuizElementModel extends WlModelAbstract
    *   <dd>
    *     List of services grouped by service ID.
    * 
-   * Key is service ID.
+   * Key is service ID. One of {@link ServiceSid} constants.
    * Values is list of services.
    *   </dd>
    * 

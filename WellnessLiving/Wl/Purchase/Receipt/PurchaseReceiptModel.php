@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Wl\Purchase\Receipt;
 
-use WellnessLiving\Core\a\ACardSystemSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
@@ -81,7 +80,7 @@ class PurchaseReceiptModel extends WlModelAbstract
    *   <dd>The card or account number.</dd>
    * 
    *   <dt>string `text_card_system`</dt>
-   *   <dd>The card system name from {@link ACardSystemSid}.</dd>
+   *
    * 
    *   <dt>string `text_title`</dt>
    *   <dd>The payment account title. This will be 'Account number' for ACH, 'Card' for all other cases.</dd>

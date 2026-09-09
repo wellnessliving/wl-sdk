@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Lead\Stage;
 
 use WellnessLiving\Wl\Lead\Conversion\LeadConversionTypeSid;
+use WellnessLiving\Wl\RsLeadStatusSid;
 
 /**
  * System-defined lead stages.
@@ -30,6 +31,7 @@ class LeadStageSystemSid
   /**
    * A lead which is being actively worked with and is close to a purchase.
    *
+   * Replaces {@link RsLeadStatusSid::ACTIVE}.
    * Type of the stage is {@link LeadStageTypeSid::OPEN}.
    *
    * @title Hot
@@ -49,6 +51,7 @@ class LeadStageSystemSid
   /**
    * A newly captured lead. This stage is set to a client when they are added as a lead.
    *
+   * Replaces {@link RsLeadStatusSid::NEWCOMER}.
    * Type of the stage is {@link LeadStageTypeSid::OPEN}.
    *
    * @title New Inquiries
@@ -58,6 +61,7 @@ class LeadStageSystemSid
   /**
    * A lead which has shown some interest, but is not ready to purchase yet.
    *
+   * Replaces {@link RsLeadStatusSid::LEAVE}.
    * Type of the stage is {@link LeadStageTypeSid::OPEN}.
    *
    * @title Warm

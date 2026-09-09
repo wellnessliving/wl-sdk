@@ -2,9 +2,12 @@
 
 namespace WellnessLiving\Studio\Ip\Service;
 
+use WellnessLiving\Studio\Ip\TimeoutSid;
+
 /**
  * Time during which access by IP address is granted to personnel.
  *
+ * This timeout is used in conjunction with value set by {@link TimeoutSid}.
  * Minimum between two values is used.
  */
 abstract class ServiceTimeoutSid

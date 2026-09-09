@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Family\Relation;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Mode\ModeSid;
+use WellnessLiving\Wl\User\Tracking\FlowSid;
 
 /**
  * Returns data about a user's relationships.
@@ -58,6 +59,7 @@ class RelationModel extends WlModelAbstract
 
   /**
    * ID of the user behavior flow.
+   * One of {@link FlowSid} constants.
    *
    * @delete get
    * @get get
