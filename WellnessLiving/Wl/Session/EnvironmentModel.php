@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Session;
 use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Business\Account\Subscription\Achieve\AchieveSubscriptionSid;
 
 /**
  * Returns information about current session environment (business ID, user information, etc.).
@@ -241,6 +242,8 @@ class EnvironmentModel extends WlModelAbstract
 
   /**
    * Achieve subscription plan ID.
+   *
+   * One of {@link AchieveSubscriptionSid} constants.
    *
    * @get result
    * @var int

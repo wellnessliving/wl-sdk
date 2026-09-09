@@ -5,6 +5,7 @@ namespace WellnessLiving\Thoth\PayProcessor\StripeCom;
 use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\RsPayActorSid;
 
 /**
  * Updates created Payment Intent.
@@ -29,7 +30,7 @@ class PaymentIntentUpdateModel extends WlModelAbstract
   public $id_currency = 0;
 
   /**
-   * ID of the actor.
+   * ID of the actor. One of {@link RsPayActorSid} constants.
    *
    * @post get
    * @var int

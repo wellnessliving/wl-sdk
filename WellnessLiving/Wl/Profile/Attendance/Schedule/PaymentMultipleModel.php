@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Profile\Attendance\Schedule;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
+use WellnessLiving\Wl\Visit\Pay\PayChangeModel;
 
 /**
  * Manages multiple payments for unpaid appointments on the same calendar date, or for a specific
@@ -195,7 +196,7 @@ class PaymentMultipleModel extends WlModelAbstract
    * 
    *   <dt>string `text_key`</dt>
    *   <dd>
-   *     Selected pay option to apply. The key has structure {@link \Wl\Visit\Pay\PayChangeApi::$text_key}, plus an
+   *     Selected pay option to apply. The key has structure {@link PayChangeModel::$text_key}, plus an
    *  extra `k_promotion:0` (Drop-in) and `k_appointment_deposit:[k_appointment]` (deposit-only).
    *   </dd>
    * 

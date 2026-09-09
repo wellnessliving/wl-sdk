@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Event\Book\EventView;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\Core\a\AGenderSid;
+use WellnessLiving\Thoth\WlPay\PayExceptionSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\Config\BusinessConfigModel;
@@ -92,7 +93,7 @@ class ElementModel extends WlModelAbstract
    * <dl>
    *   <dt>int[] `a_payment_reattempt_not_decline_reason`</dt>
    *   <dd>
-   *     List of not allowed decline reasons to payment reattempt.
+   *     List of not allowed decline reasons to payment reattempt. Each element is one of {@link PayExceptionSid} constants.
    *   </dd>
    * 
    *   <dt>bool[] `a_wait_service`</dt>

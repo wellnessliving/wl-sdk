@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Member\Group\Edit;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Lead\Conversion\LeadConversionTypeSid;
 use WellnessLiving\Wl\WlPrivilegeRoleSid;
 
 /**
@@ -83,6 +84,7 @@ class EditModel extends WlModelAbstract
    * @get result
    * @post post
    * @var int|null
+   * @see LeadConversionTypeSid
    */
   public $id_conversion_type = null;
 

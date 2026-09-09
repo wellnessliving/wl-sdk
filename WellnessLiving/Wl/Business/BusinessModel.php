@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Business;
 use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\RsMailSid;
 
 /**
  * Creates a new business.
@@ -56,6 +57,9 @@ class BusinessModel extends WlModelAbstract
   public $is_location_create = false;
 
   /**
+   * `true` to send {@link RsMailSid::BUSINESS_CREATE} mail when creating a staff member.
+   * Otherwise send {@link RsMailSid::LOGIN_WELCOME} mail.
+   *
    * @post post
    * @put post
    * @var bool

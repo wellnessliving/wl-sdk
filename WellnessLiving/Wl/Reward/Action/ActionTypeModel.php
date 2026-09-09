@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Reward\Action;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\RsRewardScoreSid;
 
 /**
  * Information about reward actions of given type in business.
@@ -25,7 +26,7 @@ class ActionTypeModel extends WlModelAbstract
   public $a_reward_action;
 
   /**
-   * ID of type of reward action.
+   * ID of type of reward action. One of {@link RsRewardScoreSid} constants.
    *
    * @get get
    * @var int

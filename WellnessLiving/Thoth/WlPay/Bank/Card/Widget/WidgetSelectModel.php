@@ -4,6 +4,7 @@ namespace WellnessLiving\Thoth\WlPay\Bank\Card\Widget;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\RsPayModeSid;
 use WellnessLiving\Wl\WlPayMethodSid;
 use WellnessLiving\Wl\WlPayOwnerSid;
 use WellnessLiving\Wl\WlPayProcessorSid;
@@ -104,6 +105,7 @@ class WidgetSelectModel extends WlModelAbstract
    *
    * @get get
    * @var int
+   * @see RsPayModeSid
    */
   public $id_pay_mode = 0;
 

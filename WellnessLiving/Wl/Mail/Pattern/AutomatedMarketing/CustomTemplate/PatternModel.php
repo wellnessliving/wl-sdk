@@ -4,6 +4,8 @@ namespace WellnessLiving\Wl\Mail\Pattern\AutomatedMarketing\CustomTemplate;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\RsMailFormSid;
+use WellnessLiving\Wl\RsMailSid;
 
 /**
  * Gets and saves custom template pattern data.
@@ -83,7 +85,7 @@ class PatternModel extends WlModelAbstract
    *   <dd>Is SMS enabled.</dd>
    * 
    *   <dt>int `id_mail`</dt>
-   *   <dd>ID of the notification.</dd>
+   *   <dd>ID of the notification. One of {@link RsMailSid} constants.</dd>
    * 
    *   <dt>string `k_business`</dt>
    *   <dd>Business key. </dd>
@@ -140,7 +142,7 @@ class PatternModel extends WlModelAbstract
    *   <dd>Is SMS enabled.</dd>
    * 
    *   <dt>int `id_mail`</dt>
-   *   <dd>ID of the notification.</dd>
+   *   <dd>ID of the notification. One of {@link RsMailSid} constants.</dd>
    * 
    *   <dt>string `k_business`</dt>
    *   <dd>Business key. </dd>
@@ -197,7 +199,7 @@ class PatternModel extends WlModelAbstract
    *   <dd>Is SMS enabled.</dd>
    * 
    *   <dt>int `id_mail`</dt>
-   *   <dd>ID of the notification.</dd>
+   *   <dd>ID of the notification. One of {@link RsMailSid} constants.</dd>
    * 
    *   <dt>string|null `k_business`</dt>
    *   <dd>Business key. </dd>
@@ -238,7 +240,7 @@ class PatternModel extends WlModelAbstract
   public $a_pattern_save = [];
 
   /**
-   * ID of the notification. `0` for empty template.
+   * ID of the notification. One of {@link RsMailSid} constants. `0` for empty template.
    *
    * @get get
    * @post get
@@ -297,7 +299,7 @@ class PatternModel extends WlModelAbstract
   public $k_service = null;
 
   /**
-   * SID of the mail form.
+   * SID of the mail form. String representation of one from {@link RsMailFormSid} class constants.
    *
    * @get get
    * @var string

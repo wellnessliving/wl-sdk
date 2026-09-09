@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Insurance\Enrollment\Field;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\RsPayBankAchTypeSid;
 
 /**
  * Retrieves and validates a list of insurance partner fields.
@@ -54,7 +55,7 @@ class EnrollmentFieldListModel extends WlModelAbstract
    *       <dt>string[] `a_config`</dt>
    *       <dd>
    *         Additional configuration for the field.
-   *
+   * For the account type field, keys are account type titles and values are {@link RsPayBankAchTypeSid} constants.
    * Empty array for other fields.
    *       </dd>
    * 

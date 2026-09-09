@@ -5,6 +5,8 @@ namespace WellnessLiving\Wl\Business\Account\Subscription;
 use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Business\Account\Subscription\Achieve\AchieveSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Asset\AssetSubscriptionSid;
 
 /**
  * Entry point to retrieve information about business subscription.
@@ -101,7 +103,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Achieve White Label App subscription plan ID.
+   *     Achieve White Label App subscription plan ID. One of {@link AchieveSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -245,7 +247,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Book-a-Spot subscription plan ID.
+   *     Book-a-Spot subscription plan ID. One of {@link AssetSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * @get result

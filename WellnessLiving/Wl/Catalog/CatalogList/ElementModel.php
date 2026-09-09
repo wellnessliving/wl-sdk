@@ -8,6 +8,7 @@ use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Catalog\PurchaseOptionViewSid;
+use WellnessLiving\Wl\Coupon\Edit\DurationTypeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\Service\ServiceSid;
 use WellnessLiving\Wl\Tax\WlTaxSid;
@@ -159,7 +160,7 @@ class ElementModel extends WlModelAbstract
    *   <dd>Duration of a period. A constant from {@link ADurationSid}.</dd>
    * 
    *   <dt>int `id_duration_type`</dt>
-   *   <dd>A way to specify a duration.</dd>
+   *   <dd>A way to specify a duration. One of {@link DurationTypeSid} constants.</dd>
    * </dl>
    * @get result
    * @var array

@@ -4,6 +4,7 @@ namespace WellnessLiving\Thoth\WlPay\Bank\Ach;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\RsPayBankAchTypeSid;
 
 /**
  * List of user's ACH accounts.
@@ -20,7 +21,7 @@ class ListModel extends WlModelAbstract
    *   <dd>Type of account holder.</dd>
    * 
    *   <dt>int `id_pay_bank_ach_type`</dt>
-   *   <dd>Type of account.</dd>
+   *   <dd>Type of account. One of {@link RsPayBankAchTypeSid} constants.</dd>
    * 
    *   <dt>bool `is_default`</dt>
    *   <dd><tt>true</tt> - this account is default payment method; <tt>false</tt> - otherwise.</dd>

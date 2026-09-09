@@ -2,6 +2,8 @@
 
 namespace WellnessLiving\Wl\Pay\Transaction;
 
+use WellnessLiving\Wl\RsPurchaseStatusSid;
+
 /**
  * Transaction statuses.
  *
@@ -38,6 +40,7 @@ abstract class WlPayTransactionStatusSid
 
   /**
    * Transaction is completed successfully, but the purchase wasn't finished (failed by a temporary error).
+   * The purchase was stuck in {@link RsPurchaseStatusSid::PAY} state.
    *
    * **Important note** Used only for indexation data for the reports.
    */

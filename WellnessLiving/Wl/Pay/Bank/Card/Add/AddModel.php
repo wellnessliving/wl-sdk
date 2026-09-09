@@ -6,6 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
 use WellnessLiving\Wl\Pay\Owner\OwnerModel;
+use WellnessLiving\Wl\RsPayActorSid;
 
 /**
  * Adds a payment card to a user’s account.
@@ -73,7 +74,7 @@ class AddModel extends WlModelAbstract
    *   <dd>The last two digits of the year when the payment card expires.</dd>
    * 
    *   <dt>int `id_pay_actor`</dt>
-   *   <dd>Pay actor id.</dd>
+   *   <dd>Pay actor id. One of {@link RsPayActorSid} constants.</dd>
    * 
    *   <dt>string `k_pay_bank`</dt>
    *   <dd>

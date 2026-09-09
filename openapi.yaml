@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260909122225
+  version: 1.1.20260909131940
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-09-09 12:22:25
+    Last updated at: 2026-09-09 13:19:40
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -15219,6 +15219,88 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Alert-Alert
+  '/Wl/Visit/Pay/PayChange.json':
+    get:
+      summary: 'Returns data to change visit pay option.'
+      parameters:
+        - name: is_pay_now
+          in: query
+          description: 'Defines whether ''pay now'' option should be present.'
+          schema:
+            type: boolean
+        - name: k_business
+          in: query
+          description: 'Business key. Empty value means not set.'
+          schema:
+            type: string
+        - name: k_visit
+          in: query
+          description: 'Class period key. Empty value means not set.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'Current user ID. Empty value means not set.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_list:
+                        type: array
+                        description: 'List of purchase options that can be applied to pay for visit: <dl> <dt>array `a_logo`</dt> <dd>Promotion logo, see result of {@link \RsPromotionImageLogo::data()}. Empty array for not paid option.</dd> <dt>bool `is_select`</dt> <dd>Whether current element selected in the list.</dd> <dt>string `s_key`</dt> <dd> <tt>0</tt> means ''Single buy'', <tt>-1</tt> means ''Not paid''. Otherwise key with next structure: <tt>k_login_promotion:[k_login_promotion]</tt> or <tt>k_session_pass:[k_session_pass]</tt>. </dd> <dt>string `text_title`</dt> <dd>Title of select option.</dd> </dl>'
+      tags:
+        - Pay-PayChange
+    post:
+      summary: 'Saves user''s promotion for certain attendance.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key. Empty value means not set.'
+          schema:
+            type: string
+        - name: k_visit
+          in: query
+          description: 'Class period key. Empty value means not set.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'Current user ID. Empty value means not set.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                text_key:
+                  type: string
+                  description: 'Selected pay option to save. The value with one of next structures: * <tt>k_login_promotion</tt>:<tt>[k_login_promotion]</tt> * <tt>k_session_pass</tt>:<tt>[k_session_pass]</tt>'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      is_change:
+                        type: boolean
+                        description: 'Whether changes applied to visit (if user selected the same promotion, we should do nothing).'
+      tags:
+        - Pay-PayChange
   '/Wl/Catalog/Cart/Cart.json':
     get:
       summary: 'Gets purchase cost data. Used in the client-facing checkout flow to show a live price summary before the client submits payment. Calculates the full breakdown - subtotal, taxes, applied discounts, reward redemptions, and tips - so the client can review the total before confirming.'
@@ -25061,6 +25143,295 @@ paths:
                         description: 'An array with a schedule of available appointment booking times. Each record contains availability data of one staff and have next structure: <dl> <dt>string[][] `a_availability`</dt> <dd>Availability data of the staff. Keys are dates and values are lists of available appointment start times.</dd> <dt>string `text_name`</dt> <dd>Staff name.</dd> <dt>string `uid_staff`</dt> <dd>Staff user key.</dd> </dl>'
       tags:
         - Schedule-ServiceAvailability
+  '/Wl/Appointment/Book/Schedule/Calendar73.json':
+    get:
+      summary: 'Retrieves a list with all calendar days in specified period with available and unavailable appointment booking schedule. Returns each day in the requested month marked as available or unavailable for booking the given service at the given location. Availability is determined by the business schedule, holidays, and staff availability for the selected date range.'
+      parameters:
+        - name: a_uid
+          in: query
+          description: 'List of user keys to book appointments. There may be empty values in this list, which means that this is a walk-in.'
+          schema:
+            type: array
+        - name: dt_date
+          in: query
+          description: 'The date to show the available appointment booking schedule.'
+          schema:
+            type: string
+        - name: i_duration
+          in: query
+          description: 'The duration of the asset booking or custom appointment duration in minutes. Zero in case of service predefined duration. In case of back-to-back booking - custom duration of first appointment.'
+          schema:
+            type: number
+            format: int32
+        - name: i_index
+          in: query
+          description: 'An index of the selected asset. `0` for booking of service or if asset is not on layout.'
+          schema:
+            type: number
+            format: int32
+        - name: id_gender_staff
+          in: query
+          description: 'The ID of the staff member''s gender. In case of back-to-back booking - staff gender of first appointment. One of the {@link \AGenderSid} constants. `0` means no limitations on staff gender.'
+          schema:
+            type: number
+            format: int32
+        - name: is_back_to_back
+          in: query
+          description: 'Determines whether multiple appointments are booked in back-to-back mode.'
+          schema:
+            type: boolean
+        - name: is_month_view
+          in: query
+          description: 'If calendar should be displayed in month view mode.'
+          schema:
+            type: boolean
+        - name: is_staff
+          in: query
+          description: '`true` if the request is made by staff member; in this case booking policy restrictions are ignored. `false` if the request is made by client; booking policy restrictions are applied.'
+          schema:
+            type: boolean
+        - name: is_tab_all
+          in: query
+          description: '`true` - search in all tabs. `false` - search only for the selected bookable tab. Cannot be set simultaneously with {DayTimeApi::$k_class_tab}.'
+          schema:
+            type: boolean
+        - name: is_unavailable
+          in: query
+          description: '`true` - return service categories that have no staff members able to conduct them. `false` - return only service categories that have staff members able to conduct them.'
+          schema:
+            type: boolean
+        - name: is_walk_in
+          in: query
+          description: 'If `true`, the client is a walk-in. Otherwise, this will be `false`.'
+          schema:
+            type: boolean
+        - name: k_class_tab
+          in: query
+          description: 'Current booking tab. Only used for asset booking with "Allow clients to select a date and time, then the available asset" booking policy enabled. Cannot be set simultaneously with {DayTimeApi::$is_tab_all}.'
+          schema:
+            type: [string, "null"]
+        - name: k_location
+          in: query
+          description: 'Location to show available appointment booking schedule.'
+          schema:
+            type: string
+        - name: k_resource
+          in: query
+          description: 'The resource key to show which days are available for booking. Should be `0` in case of back-to-back booking.'
+          schema:
+            type: string
+        - name: k_service
+          in: query
+          description: 'The service key used for showing the available appointment booking schedule. In case of back-to-back booking - service key of first appointment.'
+          schema:
+            type: string
+        - name: k_timezone
+          in: query
+          description: 'Key of timezone. `null` if not set to use client''s profile timezone.'
+          schema:
+            type: [string, "null"]
+        - name: s_appointment
+          in: query
+          description: 'The staff key to show what days are available for booking. For back-to-back booking ({@link DayTimeApi::$is_back_to_back} == `true`): array of appointments for back-to-back booking. Converted to JSON string to be usable as model key. Each item is an array with next structure: <dl> <dt>array `a_addon`</dt> <dd>Array of appointment addons. Each value is primary key in {@link \RsShopProductSql} table.</dd> <dt>int `i_duration`</dt> <dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd> <dt>int `id_gender_staff`</dt> <dd>Staff gender. One of {@link \AGenderSid} constants. Zero mean no limitations on staff gender.</dd> <dt>string `k_service`</dt> <dd>Service key. <i>Primary key in {@link \RsServiceSql} table.</i></dd> <dt>string `k_staff`</dt> <dd>@deprecated Staff key. Zero means any available staff. <i>Primary key in {@link \RsStaffSql} table.</i></dd> <dt>string `uid_staff`</dt> <dd>Staff user key. Zero means any available staff. <i>Primary key in {@link \PassportLoginSql} table.</i></dd> </dl> <dl> <dt>string `dtl_date`</dt> <dd>Local date and time of appointment start in MySQL format.</dd> <dt>int `i_duration`</dt> <dd>Duration of the appointment in minutes.</dd> <dt>string `k_service`</dt> <dd>Service key. <i>Primary key in {@link \RsServiceSql} table.</i></dd> <dt>string `uid_staff`</dt> <dd>Staff user key. Zero means any available staff. <i>Primary key in {@link \PassportLoginSql} table.</i></dd> </dl>'
+          schema:
+            type: string
+        - name: s_product
+          in: query
+          description: 'A list of service add-ons keys(encoded as JSON string). In case of back-to-back booking - add-ons of first appointment.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here.'
+          schema:
+            type: string
+        - name: uid_staff
+          in: query
+          description: 'The staff user key used for showing the available appointment booking schedule. In case of back-to-back booking - staff user key of first appointment. `0` means any available staff.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_date:
+                        type: array
+                        description: 'A list with all calendar days in the specified month with available and unavailable appointment bookings in the schedule. <dl> <dt>string `dt_date`</dt> <dd>Date item of the calendar.</dd> <dt>int `i_week`</dt> <dd>Number of day in week.</dd> <dt>bool `is_available`</dt> <dd>Whether booking is available for this day.</dd> <dt>bool `is_current`</dt> <dd>Whether date is current.</dd> <dt>bool `is_out`</dt> <dd>Whether date is out of current month or it''s business/location closed date.</dd> <dt>bool `is_waitlist_only`</dt> <dd>Whether booking for this day available only in wait list.</dd> <dt>bool `is_week_end`</dt> <dd>Whether date is last day of the week.</dd> <dt>bool `is_week_start`</dt> <dd>Whether date is first day of the week.</dd> <dt>string `s_day`</dt> <dd>String representation of day number with leading zeroes.</dd> <dt>string `s_week`</dt> <dd>String representation of week day (one letter, i.e. "F").</dd> </dl>'
+                      a_time:
+                        type: array
+                        description: 'An array with a schedule of available appointment booking times. <dl> <dt>string `dt_date`</dt> <dd>Date of the calendar.</dd> <dt>string `dtu_date`</dt> <dd>Same moment as `dt_date`, converted to real UTC date and time, in MySQL format.</dd> <dt>int `i_count`</dt> <dd>The count of clients that have already booked this appointment.</dd> <dt>int `i_time`</dt> <dd>Integer representation of appointment schedule time.</dd> <dt>int `i_wait`</dt> <dd>The count of clients on the waiting list for this appointment.</dd> <dt>bool `is_waitlist`</dt> <dd>Whether the appointment can be booked only in a wait list.</dd> <dt>string `k_staff`</dt> <dd> this key contains key of staff member. <i>Primary key in {@link \RsStaffSql} table.</i> Otherwise - `0`. </dd> <dt>string `uid_staff`</dt> <dd> If this time is already occupied by any client and staff member (but service capacity is not exhausted), this key contains user key of staff member. <i>Primary key in {@link \PassportLoginSql} table.</i> Otherwise - `0`. </dd> <dt>string `s_title`</dt> <dd>String representation of appointment schedule time.</dd> </dl>'
+                      a_timezone_data:
+                        type: array
+                        description: 'Information about timezone. <dl> <dt>array|null `a_timezone`</dt> <dd> `null` if business settings doesn''t allow client to adjust timezone, otherwise list of timezones: <dl> <dt>int `i_order`</dt> <dd>Timezone order.</dd> <dt>int `i_shift`</dt> <dd>Timezone shift from UTC in hours.</dd> <dt>bool `is_select`</dt> <dd> `true` for selected timezone - from {@link \Wl\Appointment\Book\Schedule\CalendarApi::$k_timezone} param or client''s default timezone when param not set. </dd> <dt>string `k_timezone`</dt> <dd>Timezone key.</dd> <dt>string `s_title`</dt> <dd>Timezone name.</dd> <dt>string `text_abbr`</dt> <dd>Timezone abbreviation.</dd> </dl> </dd> <dt>string|null `name`</dt> <dd>`null` if business settings doesn''t allow client to adjust timezone, otherwise timezone input name.</dd> </dl>'
+                      a_week_name:
+                        type: array
+                        description: 'Array with short week day''s names (2 letters, i.e. ''Fr'') for calendar month view. Week days order according to business''s settings. <dl> <dt>int `i_day`</dt> <dd>Week day, one of the {@link \ADateWeekSid} constants.</dd> <dt>string `html_week_day`</dt> <dd>Short week day''s name (2 letters, i.e. ''Fr'').</dd> </dl>'
+                      can_backwards:
+                        type: boolean
+                        description: 'Whether previous calendar period can be shown (start of shown period later than current date).'
+                      dt_date:
+                        type: string
+                        description: 'The date to show the available appointment booking schedule.'
+                      i_capacity:
+                        type: [number, "null"]
+                        description: 'Maximum number of clients that can simultaneously book this service. `null` for asset bookings where this limit does not apply.'
+                      i_capacity_waitlist:
+                        type: [number, "null"]
+                        description: 'Maximum number of clients that can be placed on the waitlist for this service. `null` if waitlist is disabled, the waitlist has no capacity limit, or for asset bookings.'
+                      i_week_end:
+                        type: number
+                        format: int32
+                        description: 'Last day of the week. One of {@link \ADateWeekSid} constants.'
+                      i_week_start:
+                        type: number
+                        format: int32
+                        description: 'First day of the week. One of {@link \ADateWeekSid} constants.'
+                      is_waitlist:
+                        type: boolean
+                        description: 'Whether list of available times contains slots with only waitlist booking available.'
+                      k_location:
+                        type: string
+                        description: 'Location to show available appointment booking schedule.'
+      tags:
+        - Schedule-Calendar73
+  '/Wl/Appointment/Book/Schedule/DayTime73.json':
+    get:
+      summary: 'Retrieves a list of available appointment booking schedule. Returns available time slots for the specified service, location, staff member, and date range. Each slot includes the start time, duration, available capacity, and staff information. Supports both frontend and backend modes, as well as asset bookings and back-to-back scheduling.'
+      parameters:
+        - name: a_uid
+          in: query
+          description: 'List of user keys to book appointments. There may be empty values in this list, which means that this is a walk-in.'
+          schema:
+            type: array
+        - name: dt_date
+          in: query
+          description: 'The date to show the available appointment booking schedule.'
+          schema:
+            type: string
+        - name: i_duration
+          in: query
+          description: 'The duration of the asset booking or custom appointment duration in minutes. Zero in case of service predefined duration. In case of back-to-back booking - custom duration of first appointment.'
+          schema:
+            type: number
+            format: int32
+        - name: i_index
+          in: query
+          description: 'An index of the selected asset. `0` for booking of service or if asset is not on layout.'
+          schema:
+            type: number
+            format: int32
+        - name: id_gender_staff
+          in: query
+          description: 'The ID of the staff member''s gender. In case of back-to-back booking - staff gender of first appointment. One of the {@link \AGenderSid} constants. `0` means no limitations on staff gender.'
+          schema:
+            type: number
+            format: int32
+        - name: is_back_to_back
+          in: query
+          description: 'Determines whether multiple appointments are booked in back-to-back mode.'
+          schema:
+            type: boolean
+        - name: is_staff
+          in: query
+          description: '`true` if the request is made by staff member; in this case booking policy restrictions are ignored. `false` if the request is made by client; booking policy restrictions are applied.'
+          schema:
+            type: boolean
+        - name: is_tab_all
+          in: query
+          description: '`true` - search in all tabs. `false` - search only for the selected bookable tab. Cannot be set simultaneously with {DayTimeApi::$k_class_tab}.'
+          schema:
+            type: boolean
+        - name: is_unavailable
+          in: query
+          description: '`true` - return service categories that have no staff members able to conduct them. `false` - return only service categories that have staff members able to conduct them.'
+          schema:
+            type: boolean
+        - name: is_walk_in
+          in: query
+          description: 'If `true`, the client is a walk-in. Otherwise, this will be `false`.'
+          schema:
+            type: boolean
+        - name: k_class_tab
+          in: query
+          description: 'Current booking tab. Only used for asset booking with "Allow clients to select a date and time, then the available asset" booking policy enabled. Cannot be set simultaneously with {DayTimeApi::$is_tab_all}.'
+          schema:
+            type: [string, "null"]
+        - name: k_location
+          in: query
+          description: 'Location to show available appointment booking schedule.'
+          schema:
+            type: string
+        - name: k_resource
+          in: query
+          description: 'The resource key to show which days are available for booking. Should be `0` in case of back-to-back booking.'
+          schema:
+            type: string
+        - name: k_service
+          in: query
+          description: 'The service key used for showing the available appointment booking schedule. In case of back-to-back booking - service key of first appointment.'
+          schema:
+            type: string
+        - name: k_timezone
+          in: query
+          description: 'Key of timezone. `null` if not set then use default timezone client. <i>See {@link ProfileTimezone::createInBusiness()}.</i>'
+          schema:
+            type: ["null", string]
+        - name: s_appointment
+          in: query
+          description: 'The staff key to show what days are available for booking. For back-to-back booking ({@link DayTimeApi::$is_back_to_back} == `true`): array of appointments for back-to-back booking. Converted to JSON string to be usable as model key. Each item is an array with next structure: <dl> <dt>array `a_addon`</dt> <dd>Array of appointment addons. Each value is primary key in {@link \RsShopProductSql} table.</dd> <dt>int `i_duration`</dt> <dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd> <dt>int `id_gender_staff`</dt> <dd>Staff gender. One of {@link \AGenderSid} constants. Zero mean no limitations on staff gender.</dd> <dt>string `k_service`</dt> <dd>Service key. <i>Primary key in {@link \RsServiceSql} table.</i></dd> <dt>string `k_staff`</dt> <dd>@deprecated Staff key. Zero means any available staff. <i>Primary key in {@link \RsStaffSql} table.</i></dd> <dt>string `uid_staff`</dt> <dd>Staff user key. Zero means any available staff. <i>Primary key in {@link \PassportLoginSql} table.</i></dd> </dl> <dl> <dt>string `dtl_date`</dt> <dd>Local date and time of appointment start in MySQL format.</dd> <dt>int `i_duration`</dt> <dd>Duration of the appointment in minutes.</dd> <dt>string `k_service`</dt> <dd>Service key. <i>Primary key in {@link \RsServiceSql} table.</i></dd> <dt>string `uid_staff`</dt> <dd>Staff user key. Zero means any available staff. <i>Primary key in {@link \PassportLoginSql} table.</i></dd> </dl>'
+          schema:
+            type: string
+        - name: s_product
+          in: query
+          description: 'A list of service add-ons keys(encoded as JSON string). In case of back-to-back booking - add-ons of first appointment.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here.'
+          schema:
+            type: string
+        - name: uid_staff
+          in: query
+          description: 'The staff user key used for showing the available appointment booking schedule. In case of back-to-back booking - staff user key of first appointment. `0` means any available staff.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_time:
+                        type: array
+                        description: 'An array with a schedule of available appointment booking times. <dl> <dt>string `dt_date`</dt> <dd>Date of the calendar.</dd> <dt>string `dtu_date`</dt> <dd>Same moment as `dt_date`, converted to real UTC date and time, in MySQL format.</dd> <dt>int `i_count`</dt> <dd>The count of clients that have already booked this appointment.</dd> <dt>int `i_time`</dt> <dd>Integer representation of appointment schedule time.</dd> <dt>int `i_wait`</dt> <dd>The count of clients on the waiting list for this appointment.</dd> <dt>bool `is_waitlist`</dt> <dd>Whether the appointment can be booked only in a wait list.</dd> <dt>string `k_staff`</dt> <dd> this key contains key of staff member. <i>Primary key in {@link \RsStaffSql} table.</i> Otherwise - `0`. </dd> <dt>string `uid_staff`</dt> <dd> If this time is already occupied by any client and staff member (but service capacity is not exhausted), this key contains user key of staff member. <i>Primary key in {@link \PassportLoginSql} table.</i> Otherwise - `0`. </dd> <dt>string `s_title`</dt> <dd>String representation of appointment schedule time.</dd> </dl>'
+                      dt_date:
+                        type: string
+                        description: 'The date to show the available appointment booking schedule.'
+                      i_capacity:
+                        type: [number, "null"]
+                        description: 'Maximum number of clients that can simultaneously book this service. `null` for asset bookings where this limit does not apply.'
+                      i_capacity_waitlist:
+                        type: [number, "null"]
+                        description: 'Maximum number of clients that can be placed on the waitlist for this service. `null` if waitlist is disabled, the waitlist has no capacity limit, or for asset bookings.'
+                      is_waitlist:
+                        type: boolean
+                        description: 'Whether list of available times contains slots with only waitlist booking available.'
+                      k_location:
+                        type: string
+                        description: 'Location to show available appointment booking schedule.'
+      tags:
+        - Schedule-DayTime73
   '/Wl/Appointment/Book/Schedule/Calendar.json':
     get:
       summary: 'Retrieves a list with all calendar days in specified period with available and unavailable appointment booking schedule. Returns each day in the requested month marked as available or unavailable for booking the given service at the given location. Availability is determined by the business schedule, holidays, and staff availability for the selected date range.'
@@ -30349,6 +30720,9 @@ tags:
     name: Partner-PartnerSettings
     description: 'Works with partner settings of the business. This information is entered by a staff member when a client enrolls into Partner Program and uses a custom landing page, which is available by special business URL.'
   -
+    name: Pay-PayChange
+    description: 'Manages changing purchase option to pay for visit.'
+  -
     name: Payment-Payment
     description: 'An endpoint that displays information about payments for an appointment. The POST method for this endpoint is implemented as a separate endpoint (see {@link PaymentPostApi}). This endpoint using captcha check. To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action. For this API an action is {@link BusinessPaymentCaptcha::CID}.'
   -
@@ -30577,10 +30951,16 @@ tags:
     name: Schedule-Calendar
     description: 'Retrieves a list of all calendar days in a specified month with available and unavailable appointment bookings in the schedule.'
   -
+    name: Schedule-Calendar73
+    description: 'Retrieves a list of all calendar days in a specified month with available and unavailable appointment bookings in the schedule.'
+  -
     name: Schedule-Cancel
     description: 'Cancels either an appointment, class, or event session for the client.'
   -
     name: Schedule-DayTime
+    description: 'Retrieves a list of information about the booking schedule for available appointments.'
+  -
+    name: Schedule-DayTime73
     description: 'Retrieves a list of information about the booking schedule for available appointments.'
   -
     name: Schedule-NextAvailableDay
