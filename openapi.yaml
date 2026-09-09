@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260908183017
+  version: 1.1.20260909105143
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-09-08 18:30:17
+    Last updated at: 2026-09-09 10:51:43
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'

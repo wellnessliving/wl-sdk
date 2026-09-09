@@ -5,6 +5,33 @@ namespace WellnessLiving\Wl\Business\Account\Subscription;
 use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Business\Account\Subscription\Achieve\AchieveSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\AiAgent\AiAgentSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Api\ApiSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Asset\AssetSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Base\BaseSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\BusinessCoach\BusinessCoachSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Collections\CollectionsSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Door\DoorSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Email\EmailSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Eml\ConstantContactSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Eml\MailchimpSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Finance\FinanceSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Fitbuilder\FitbuilderSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Fitlive\FitliveSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Fitvid\FitvidSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Fitzone\FitzoneSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\GoHighLevel\GoHighLevelSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\MarketingSuite\MarketingSuiteSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Postcard\PostcardSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\QuickBooks\QuickBooksSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Quiz\QuizSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Review\ReviewSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Reward\RewardSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Sms\SmsSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Website\WebsiteSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Zapier\ZapierSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Zoom\ZoomSubscriptionSid;
 
 /**
  * Entry point to retrieve information about business subscription.
@@ -33,11 +60,13 @@ class SubscriptionInfoModel extends WlModelAbstract
   /**
    * Currently active plan ID for requested subscription.
    *
+   * Depending on subscription type constant from one of {@link PlanSid} inheritors.
+   *
    * Plans for `2331`:
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     QuickBooks Online subscription plan ID.
+   *     QuickBooks Online subscription plan ID. One of {@link QuickBooksSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -45,7 +74,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     CAASI subscription plan ID.
+   *     CAASI subscription plan ID. One of {@link AiAgentSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -53,7 +82,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Collections subscription plan ID.
+   *     Collections subscription plan ID. One of {@link CollectionsSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -61,7 +90,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Mailchimp / Constant Contact subscription plan ID.
+   *     Mailchimp / Constant Contact subscription plan ID. One of {@link EmailSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -69,7 +98,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Constant Contact Integration subscription plan ID.
+   *     Constant Contact Integration subscription plan ID. One of {@link ConstantContactSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -77,7 +106,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Mailchimp Integration subscription plan ID.
+   *     Mailchimp Integration subscription plan ID. One of {@link MailchimpSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -85,7 +114,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Marketing Suite subscription plan ID.
+   *     Marketing Suite subscription plan ID. One of {@link MarketingSuiteSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -93,7 +122,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Message Center subscription plan ID.
+   *     Message Center subscription plan ID. One of {@link SmsSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -101,7 +130,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Achieve White Label App subscription plan ID.
+   *     Achieve White Label App subscription plan ID. One of {@link AchieveSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -109,7 +138,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Subscription Plan subscription plan ID.
+   *     Subscription Plan subscription plan ID. One of {@link BaseSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -117,7 +146,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Finance subscription plan ID.
+   *     Finance subscription plan ID. One of {@link FinanceSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -125,7 +154,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Go High Level subscription plan ID.
+   *     Go High Level subscription plan ID. One of {@link GoHighLevelSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -133,7 +162,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Zapier Integration subscription plan ID.
+   *     Zapier Integration subscription plan ID. One of {@link ZapierSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -141,7 +170,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     FitLIVE subscription plan ID.
+   *     FitLIVE subscription plan ID. One of {@link FitliveSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -149,7 +178,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Direct Mail subscription plan ID.
+   *     Direct Mail subscription plan ID. One of {@link PostcardSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -157,7 +186,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Business Success Coaching subscription plan ID.
+   *     Business Success Coaching subscription plan ID. One of {@link BusinessCoachSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -165,7 +194,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Door Access subscription plan ID.
+   *     Door Access subscription plan ID. One of {@link DoorSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -173,7 +202,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     FitBUILDER subscription plan ID.
+   *     FitBUILDER subscription plan ID. One of {@link FitbuilderSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -181,7 +210,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Rewards & Loyalty subscription plan ID.
+   *     Rewards & Loyalty subscription plan ID. One of {@link RewardSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -189,7 +218,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     API Access subscription plan ID.
+   *     API Access subscription plan ID. One of {@link ApiSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -197,7 +226,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     FitVID on Demand subscription plan ID.
+   *     FitVID on Demand subscription plan ID. One of {@link FitvidSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -205,7 +234,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Forms subscription plan ID.
+   *     Forms subscription plan ID. One of {@link QuizSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -213,7 +242,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Presence subscription plan ID.
+   *     Presence subscription plan ID. One of {@link WebsiteSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -221,7 +250,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Zoom subscription plan ID.
+   *     Zoom subscription plan ID. One of {@link ZoomSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -229,7 +258,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     FitZONE subscription plan ID.
+   *     FitZONE subscription plan ID. One of {@link FitzoneSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -237,7 +266,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Customer Review Manager subscription plan ID.
+   *     Customer Review Manager subscription plan ID. One of {@link ReviewSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * 
@@ -245,7 +274,7 @@ class SubscriptionInfoModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_plan`</dt>
    *   <dd>
-   *     Book-a-Spot subscription plan ID.
+   *     Book-a-Spot subscription plan ID. One of {@link AssetSubscriptionSid} constants.
    *   </dd>
    * </dl>
    * @get result

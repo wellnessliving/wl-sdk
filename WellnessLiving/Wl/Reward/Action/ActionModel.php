@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Reward\Action;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\RsRewardActionCategorySid;
 
 /**
  * Retrieves a list of available reward actions.
@@ -18,7 +19,7 @@ class ActionModel extends WlModelAbstract
    * <dl>
    *   <dt>int `id_reward_action_category`</dt>
    *   <dd>
-   *     ID of reward actions category type. <tt>false</tt> for custom reward actions categories.
+   *     ID of reward actions category type. One of {@link RsRewardActionCategorySid} constants. <tt>false</tt> for custom reward actions categories.
    *   </dd>
    * 
    *   <dt>string `k_reward_action`</dt>

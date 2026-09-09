@@ -20,7 +20,7 @@ class LoginTypeModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>int `id_client_type`</dt>
-   *   <dd>Client Type ID.</dd>
+   *   <dd>Client Type ID. One of {@link ClientTypeSid} constants.</dd>
    * 
    *   <dt>bool `is_member`</dt>
    *   <dd>

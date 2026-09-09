@@ -9,7 +9,7 @@ class RequirePaySid
 {
   /**
    * Clients can pay online or pay when they visit.
-   * If set "pay when visit" then it has additional options.
+   * If set "pay when visit" then it has additional options. See {@link RequirePayVisitOptionSid}.
    */
   const ADVANCE = 3;
 
@@ -25,6 +25,7 @@ class RequirePaySid
 
   /**
    * Clients can only pay when they visit. Online payment is not available.
+   * It has additional options {@link RequirePayVisitOptionSid}.
    */
   const VISIT = 2;
 }

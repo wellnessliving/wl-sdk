@@ -24,6 +24,7 @@ class LanguageSwitchModel extends WlModelAbstract
    *
    * @post post
    * @var int
+   * @see LocaleLanguageSid
    */
   public $id_language = 0;
 }

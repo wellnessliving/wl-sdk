@@ -15,6 +15,7 @@ use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
 use WellnessLiving\Wl\Mode\ModeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\RsAppointmentEditConflictSid;
 
 /**
  * Completes the booking process for a service.
@@ -70,7 +71,7 @@ class FinishModel extends WlModelAbstract
    *       <dd>New asset index.</dd>
    * 
    *       <dt>int `id_conflict`</dt>
-   *       <dd>Solution type.</dd>
+   *       <dd>Solution type. One of {@link RsAppointmentEditConflictSid} constants.</dd>
    * 
    *       <dt>string `k_resource`</dt>
    *       <dd>New asset. </dd>

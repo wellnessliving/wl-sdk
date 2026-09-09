@@ -8,6 +8,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Book\Process\Purchase\Purchase56Model;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
+use WellnessLiving\Wl\RsRepeatEndSid;
 
 /**
  * Manages the "Purchase Options" page of the booking wizard.
@@ -91,17 +92,17 @@ class StoreModel extends WlModelAbstract
    * 
    *   <dt>string `dt_from`</dt>
    *   <dd>Date to start recurring booking.
-   * Expected for `id_repeat_</dd>
+   * Expected for `id_repeat_end` = {@link RsRepeatEndSid::DATE}.</dd>
    * 
    *   <dt>string `dt_to`</dt>
    *   <dd>Date to complete recurring booking.
-   * Expected for `id_repeat_</dd>
+   * Expected for `id_repeat_end` = {@link RsRepeatEndSid::DATE}.</dd>
    * 
    *   <dt>int `i_count`</dt>
    *   <dd>
    *     The number of occurrences after which the appointment's repeat cycle stops.
    *  Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *  Expected for `id_repeat_
+   *  Expected for `id_repeat_end` = {@link RsRepeatEndSid::COUNT}.
    *   </dd>
    * 
    *   <dt>int `i_duration`</dt>
@@ -123,7 +124,7 @@ class StoreModel extends WlModelAbstract
    *   <dd>Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.</dd>
    * 
    *   <dt>int `id_repeat_end`</dt>
-   *   <dd>Possible ways to stop repeatable events.</dd>
+   *   <dd>Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.</dd>
    * </dl>
    * @post post
    * @var array|null

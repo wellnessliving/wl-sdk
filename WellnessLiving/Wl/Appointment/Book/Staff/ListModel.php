@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Appointment\Book\Staff;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Login\LoginRoleSid;
 
 /**
  * Retrieves information about staff members for the current service.
@@ -110,6 +111,7 @@ class ListModel extends WlModelAbstract
    *
    * @get get
    * @var int
+   * @see LoginRoleSid
    */
   public $id_role = 2;
 

@@ -104,6 +104,7 @@ class AnnouncementListModel extends WlModelAbstract
    *
    * @get get,result
    * @var int|null
+   * @see SortFieldSid
    */
   public $id_sort_field = null;
 

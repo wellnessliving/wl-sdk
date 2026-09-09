@@ -5,6 +5,13 @@ namespace WellnessLiving\Wl\Session;
 use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Business\Account\Subscription\Achieve\AchieveSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\Base\BaseSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\MarketingSuite\MarketingSuiteSubscriptionSid;
+use WellnessLiving\Wl\Business\Franchise\FranchiseSwitchSid;
+use WellnessLiving\Wl\Business\Franchise\Travel\TravelModeSid;
+use WellnessLiving\Wl\RsCurrencySid;
+use WellnessLiving\Wl\RsPlaceSid;
 
 /**
  * Returns information about current session environment (business ID, user information, etc.).
@@ -34,7 +41,7 @@ class EnvironmentModel extends WlModelAbstract
 
   /**
    * List of business franchisee keys.
-   * Can be limited by levels to which a user can view/access in frontend.
+   * Can be limited by levels to which a user can view/access in frontend. See {@link FranchiseSwitchSid}.
    * <tt>null</tt> if current business is not part of franchise or if 'Allow clients to switch between franchise locations' is OFF.
    *
    * @get result
@@ -216,7 +223,7 @@ class EnvironmentModel extends WlModelAbstract
   public $has_merchant;
 
   /**
-   * Currency ID.
+   * Currency ID. One of {@link RsCurrencySid} constants.
    *
    * @get result
    * @var string
@@ -232,7 +239,7 @@ class EnvironmentModel extends WlModelAbstract
   public $id_locale;
 
   /**
-   * Current place ID. For the Web version of the site is determined by the current session.
+   * Current place ID. One of {@link RsPlaceSid} constants. For the Application is determined by the template. For the Web version of the site is determined by the current session.
    *
    * @get result
    * @var int
@@ -241,6 +248,8 @@ class EnvironmentModel extends WlModelAbstract
 
   /**
    * Achieve subscription plan ID.
+   *
+   * One of {@link AchieveSubscriptionSid} constants.
    *
    * @get result
    * @var int
@@ -252,6 +261,7 @@ class EnvironmentModel extends WlModelAbstract
    *
    * @get result
    * @var int
+   * @see BaseSubscriptionSid
    */
   public $id_plan_base;
 
@@ -260,6 +270,7 @@ class EnvironmentModel extends WlModelAbstract
    *
    * @get result
    * @var int
+   * @see MarketingSuiteSubscriptionSid
    */
   public $id_plan_marketing;
 
@@ -270,6 +281,7 @@ class EnvironmentModel extends WlModelAbstract
    *
    * @get result
    * @var int|null
+   * @see TravelModeSid
    */
   public $id_travel_mode = null;
 

@@ -2,12 +2,15 @@
 
 namespace WellnessLiving\Wl\Pay\Transaction;
 
+use WellnessLiving\Thoth\WlPay\Transaction\Status\PayTransactionStatusSid;
+use WellnessLiving\Wl\RsPurchaseStatusSid;
+
 /**
  * Transaction statuses.
  *
  * Last used ID: 15.
  *
- * @
+ * @deprecated Use {@link PayTransactionStatusSid} instead.
  */
 abstract class WlPayTransactionStatusSid
 {
@@ -38,6 +41,7 @@ abstract class WlPayTransactionStatusSid
 
   /**
    * Transaction is completed successfully, but the purchase wasn't finished (failed by a temporary error).
+   * The purchase was stuck in {@link RsPurchaseStatusSid::PAY} state.
    *
    * **Important note** Used only for indexation data for the reports.
    */

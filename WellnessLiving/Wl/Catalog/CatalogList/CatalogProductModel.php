@@ -5,6 +5,7 @@ namespace WellnessLiving\Wl\Catalog\CatalogList;
 use WellnessLiving\Core\Sid\SortOrderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Shop\Category\ShopCategorySortSid;
 use WellnessLiving\Wl\WlSaleSid;
 
 /**
@@ -20,7 +21,7 @@ class CatalogProductModel extends WlModelAbstract
    * <dl>
    *   <dt>int[] `a_order`</dt>
    *   <dd>
-   *
+   *     The order of the products by category if {@link ShopCategorySortSid::CUSTOM} is selected.
    * Each element is a product key string, ordered as desired.
    *   </dd>
    * 
@@ -28,7 +29,7 @@ class CatalogProductModel extends WlModelAbstract
    *   <dd>The sort order. One of the {@link SortOrderSid} constants.</dd>
    * 
    *   <dt>int `id_sort`</dt>
-   *   <dd>The sort field ID.</dd>
+   *   <dd>The sort field ID. One of the {@link ShopCategorySortSid} constants.</dd>
    * </dl>
    * @get result
    * @var array[]
@@ -62,7 +63,7 @@ class CatalogProductModel extends WlModelAbstract
    *   <dd>The sort order ID. One of the {@link SortOrderSid} constants.</dd>
    * 
    *   <dt>int `id_sort`</dt>
-   *   <dd>The sort field ID.</dd>
+   *   <dd>The sort field ID. One of the {@link ShopCategorySortSid} constants.</dd>
    * 
    *   <dt>string `k_business`</dt>
    *   <dd>The business key. </dd>

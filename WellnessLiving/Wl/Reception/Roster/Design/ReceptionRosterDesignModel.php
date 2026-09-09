@@ -6,6 +6,7 @@ use WellnessLiving\Core\Drive\DriveTypeSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Reception\Roster\DirectSid;
 
 /**
  * Api endpoint to get information about Attendance Kiosk settings.
@@ -94,6 +95,7 @@ class ReceptionRosterDesignModel extends WlModelAbstract
 
   /**
    * ID of the action to take when automatically redirecting.
+   * One of {@link DirectSid} constants.
    *
    * @get result
    * @var int
