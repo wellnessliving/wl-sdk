@@ -19,6 +19,7 @@ class CallReceivedModel extends WlModelAbstract
    *
    * @post get
    * @var int
+   * @see CallOutcomeEnum
    */
   public $id_call_outcome = 0;
 

@@ -7,6 +7,7 @@ use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Resource\Image\ImageIconSid;
 use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
 use WellnessLiving\Wl\Resource\Image\ImageSid;
+use WellnessLiving\Wl\Resource\ResourceCategoryEnum;
 use WellnessLiving\Wl\Virtual\VirtualProviderSid;
 use WellnessLiving\Wl\Visit\WlVisitSid;
 

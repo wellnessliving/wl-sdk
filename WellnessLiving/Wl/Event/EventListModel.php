@@ -8,6 +8,7 @@ use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\Core\a\AFlagSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Resource\ResourceCategoryEnum;
 use WellnessLiving\Wl\WlScheduleTimeSid;
 
 /**
@@ -150,7 +151,7 @@ class EventListModel extends WlModelAbstract
    * 
    *       <dt>string `k_resource_location`</dt>
    *       <dd>
-   *
+   *         Resource key, which has category {@link ResourceCategoryEnum::LOCATION}.
    * Only one such resource can be selected for a schedule.
    * 
    * Empty string, if no off-site location is used.

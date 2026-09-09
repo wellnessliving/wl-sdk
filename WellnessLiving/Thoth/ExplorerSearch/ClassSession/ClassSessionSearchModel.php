@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Thoth\ExplorerSearch\ClassSession;
 
+use WellnessLiving\Thoth\ExplorerSearch\ClassSession\SearchWord\ClassSessionExperienceTypeEnum;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlHomeTourSid;
@@ -53,7 +54,7 @@ class ClassSessionSearchModel extends WlModelAbstract
   public $a_class_session;
 
   /**
-   * List of experience types to search by.
+   * List of experience types to search by. Each value is one of {@link ClassSessionExperienceTypeEnum} case values.
    *
    * Empty array to not filter by experience type.
    *

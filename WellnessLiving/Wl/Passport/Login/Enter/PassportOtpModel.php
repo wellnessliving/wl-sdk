@@ -22,6 +22,8 @@ class PassportOtpModel extends WlModelAbstract
   public $i_attempt_left = 0;
 
   /**
+   * Type of delivery strategy from {@link OtpDeliveryStrategyEnum}.
+   *
    * @get get
    * @var int|null
    */

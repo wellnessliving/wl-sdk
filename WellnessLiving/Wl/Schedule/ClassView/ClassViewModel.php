@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Schedule\ClassView;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Resource\ResourceCategoryEnum;
 use WellnessLiving\Wl\Schedule\ClassList\ClassListModel;
 
 /**
@@ -27,7 +28,7 @@ class ClassViewModel extends WlModelAbstract
    *   <dd>Asset index.</dd>
    * 
    *   <dt>int `id_category`</dt>
-   *   <dd>Type of the asset: Asset or Off-Site Location.</dd>
+   *   <dd>Type of the asset: Asset or Off-Site Location. One of {@link ResourceCategoryEnum} constant.</dd>
    * 
    *   <dt>string `k_city`</dt>
    *   <dd>City of the asset, if this is Off-Site Location.</dd>
@@ -284,7 +285,7 @@ class ClassViewModel extends WlModelAbstract
    *       <dd>Asset index.</dd>
    * 
    *       <dt>int `id_category`</dt>
-   *       <dd>Type of the asset: Asset or Off-Site Location.</dd>
+   *       <dd>Type of the asset: Asset or Off-Site Location. One of {@link ResourceCategoryEnum} constant.</dd>
    * 
    *       <dt>string `k_city`</dt>
    *       <dd>City of the asset, if this is Off-Site Location.</dd>

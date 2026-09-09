@@ -10,6 +10,7 @@ use WellnessLiving\Wl\Book\Process\ProcessSpaSid;
 use WellnessLiving\Wl\Resource\Image\ImageIconSid;
 use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
 use WellnessLiving\Wl\Resource\Image\ImageSid;
+use WellnessLiving\Wl\Resource\ResourceCategoryEnum;
 
 /**
  * Selects assets when making a booking.
@@ -188,7 +189,7 @@ class Resource54Model extends WlModelAbstract
    *   <dd><tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise.</dd>
    * 
    *   <dt>int `id_category`</dt>
-   *   <dd>Type of the asset category.</dd>
+   *   <dd>Type of the asset category. One of {@link ResourceCategoryEnum} constants.</dd>
    * 
    *   <dt>bool `is_client_select`</dt>
    *   <dd><tt>true</tt> - the client selected the resource from the current group; <tt>false</tt> otherwise.</dd>

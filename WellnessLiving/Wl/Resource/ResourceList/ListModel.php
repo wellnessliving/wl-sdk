@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Resource\ResourceList;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Resource\ResourceCategoryEnum;
 
 /**
  * Asset list by business.
@@ -79,6 +80,7 @@ class ListModel extends WlModelAbstract
    *
    * @get get
    * @var int
+   * @see ResourceCategoryEnum
    */
   public $id_category = 0;
 

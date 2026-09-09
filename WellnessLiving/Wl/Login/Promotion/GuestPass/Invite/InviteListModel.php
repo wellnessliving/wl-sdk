@@ -113,7 +113,7 @@ class InviteListModel extends WlModelAbstract
    * `null` if the invitation has not been rejected.</dd>
    * 
    *   <dt>int `id_status`</dt>
-   *   <dd>Invitation lifecycle status.</dd>
+   *   <dd>Invitation lifecycle status. One of {@link InviteStatusEnum} values.</dd>
    * 
    *   <dt>bool|null `is_checkin`</dt>
    *   <dd>
