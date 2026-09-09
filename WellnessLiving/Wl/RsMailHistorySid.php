@@ -2,6 +2,8 @@
 
 namespace WellnessLiving\Wl;
 
+use WellnessLiving\Core\Notification\FailSid;
+
 /**
  * Class to manage statuses of history sent emails.
  *
@@ -16,6 +18,7 @@ abstract class RsMailHistorySid
 
   /**
    * Set this email history status when message was failed to send.
+   * Possible fail reason are listed in {@link FailSid}.
    */
   const FAIL = 5;
 

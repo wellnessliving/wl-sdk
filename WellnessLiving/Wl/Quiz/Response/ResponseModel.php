@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Quiz\Response;
 
+use WellnessLiving\Core\Quiz\Element\ElementSid;
 use WellnessLiving\Core\Quiz\ResponseStatusSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
@@ -99,7 +100,7 @@ class ResponseModel extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -176,7 +177,7 @@ class ResponseModel extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -254,7 +255,7 @@ class ResponseModel extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -339,7 +340,7 @@ class ResponseModel extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -426,7 +427,7 @@ class ResponseModel extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -529,7 +530,7 @@ class ResponseModel extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -606,7 +607,7 @@ class ResponseModel extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -677,7 +678,7 @@ class ResponseModel extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -743,7 +744,7 @@ class ResponseModel extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -828,7 +829,7 @@ class ResponseModel extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -912,7 +913,7 @@ class ResponseModel extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -1013,7 +1014,7 @@ class ResponseModel extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -1090,7 +1091,7 @@ class ResponseModel extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -1162,7 +1163,7 @@ class ResponseModel extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>

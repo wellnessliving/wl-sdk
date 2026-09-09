@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Quiz;
 
+use WellnessLiving\Core\Quiz\Element\ElementSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
@@ -102,7 +103,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -179,7 +180,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -257,7 +258,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -342,7 +343,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -429,7 +430,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -532,7 +533,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -609,7 +610,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -680,7 +681,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -746,7 +747,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -831,7 +832,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -915,7 +916,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -1016,7 +1017,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -1093,7 +1094,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -1165,7 +1166,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID.
+   *     Element ID. One of {@link ElementSid} constants.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>

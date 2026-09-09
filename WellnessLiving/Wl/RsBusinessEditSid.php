@@ -19,6 +19,8 @@ abstract class RsBusinessEditSid
    * EML stands for Electronic Mailing Lists.
    *
    * There are different EML managers.
+   *
+   * @see RsEmlSid
    */
   const EML = 10;
 
