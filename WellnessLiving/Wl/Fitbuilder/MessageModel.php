@@ -4,7 +4,6 @@ namespace WellnessLiving\Wl\Fitbuilder;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\Gender\GenderSid;
 
 /**
  * Point to get messenger information from Fitbuilder.
@@ -37,7 +36,7 @@ class MessageModel extends WlModelAbstract
    *     User's information:
    *     <dl>
    *       <dt>int `id_gender`</dt>
-   *       <dd>User gender. One of {@link GenderSid} constants.</dd>
+   *       <dd>User gender.</dd>
    * 
    *       <dt>string `s_first_name`</dt>
    *       <dd>User first name.</dd>

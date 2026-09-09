@@ -4,7 +4,6 @@ namespace WellnessLiving\Wl\Report\Save;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\RsReportCategorySid;
 
 /**
  * API endpoint to manage saved reports.
@@ -52,8 +51,6 @@ class ReportSaveModel extends WlModelAbstract
 
   /**
    * Report category of the saved report.
-   *
-   * One of the {@link RsReportCategorySid} constants.
    *
    * @get result
    * @post post

@@ -4,9 +4,6 @@ namespace WellnessLiving\Wl\Member\Group\Edit;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\Lead\Conversion\LeadConversionTypeSid;
-use WellnessLiving\Wl\Member\Group\ShapeSid;
-use WellnessLiving\Wl\Search\SearchOperationSid;
 use WellnessLiving\Wl\WlPrivilegeRoleSid;
 
 /**
@@ -26,7 +23,7 @@ class EditModel extends WlModelAbstract
    *   <dd>Search criteria CID.</dd>
    * 
    *   <dt>int `id_operation`</dt>
-   *   <dd>ID of selected operation. Constant from {@link SearchOperationSid}.</dd>
+   *   <dd>ID of selected operation.</dd>
    * 
    *   <dt>string `s_id`</dt>
    *   <dd>
@@ -86,12 +83,11 @@ class EditModel extends WlModelAbstract
    * @get result
    * @post post
    * @var int|null
-   * @see LeadConversionTypeSid
    */
   public $id_conversion_type = null;
 
   /**
-   * Shape of icon. One of {@link ShapeSid} constants.
+   * Shape of icon.
    *
    * @get result
    * @post post

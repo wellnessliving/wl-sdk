@@ -4,9 +4,7 @@ namespace WellnessLiving\Wl\Profile;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\Gender\GenderSid;
 use WellnessLiving\Wl\Login\Member\MemberIntentsSid;
-use WellnessLiving\Wl\Login\Member\VaccinationStatus\VaccinationStatusSid;
 use WellnessLiving\Wl\Mode\ModeSid;
 
 /**
@@ -36,7 +34,6 @@ class ProfileCreateModel extends WlModelAbstract
 
   /**
    * Gender ID.
-   * One of the {@link GenderSid} constants.
    *
    * `0` if not specified.
    *
@@ -58,8 +55,6 @@ class ProfileCreateModel extends WlModelAbstract
 
   /**
    * Vaccination status ID.
-   *
-   * One of the {@link VaccinationStatusSid} constants.
    *
    * `0` if not specified.
    *

@@ -6,7 +6,6 @@ use WellnessLiving\Core\a\ADateWeekSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\Gender\GenderSid;
 
 /**
  * Returns information about a specified staff member.
@@ -137,7 +136,7 @@ class StaffView74Model extends WlModelAbstract
    *           <dd>Width of image.</dd>
    * 
    *           <dt>int `id_gender`</dt>
-   *           <dd>One of {@link GenderSid}.</dd>
+   *
    * 
    *           <dt>bool `is_empty`</dt>
    *           <dd>Whether is empty.</dd>
@@ -286,7 +285,7 @@ class StaffView74Model extends WlModelAbstract
    *       <dd>Width of image.</dd>
    * 
    *       <dt>int `id_gender`</dt>
-   *       <dd>One of {@link GenderSid}.</dd>
+   *
    * 
    *       <dt>bool `is_empty`</dt>
    *       <dd>Whether is empty.</dd>

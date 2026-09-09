@@ -2,7 +2,6 @@
 
 namespace WellnessLiving\Wl\Field;
 
-use WellnessLiving\Wl\Login\Member\VaccinationStatus\VaccinationStatusSid;
 use WellnessLiving\Wl\Login\Type\SystemSid;
 
 /**
@@ -94,7 +93,7 @@ class WlFieldGeneralSid
   const TIMEZONE = 15;
 
   /**
-   * Vaccination status. See {@link VaccinationStatusSid}.
+   * Vaccination status.
    */
   const VACCINATION_STATUS = 16;
 }

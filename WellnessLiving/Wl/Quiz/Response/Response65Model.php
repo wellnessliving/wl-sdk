@@ -2,12 +2,9 @@
 
 namespace WellnessLiving\Wl\Quiz\Response;
 
-use WellnessLiving\Core\Quiz\Element\ElementSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\Catalog\QuickPurchaseTypeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
-use WellnessLiving\Wl\Quiz\Activity\ActivitySid;
 
 /**
  * Endpoint to work with quiz responses.
@@ -30,7 +27,7 @@ class Response65Model extends WlModelAbstract
    *   <dd>User's key. </dd>
    * 
    *   <dt>int `id_activity`</dt>
-   *   <dd>One of {@link ActivitySid} constants.</dd>
+   *
    * 
    *   <dt>string `text_activity`</dt>
    *   <dd>Title of the activity</dd>
@@ -96,7 +93,7 @@ class Response65Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -173,7 +170,7 @@ class Response65Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -251,7 +248,7 @@ class Response65Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -336,7 +333,7 @@ class Response65Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -423,7 +420,7 @@ class Response65Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -526,7 +523,7 @@ class Response65Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -603,7 +600,7 @@ class Response65Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -674,7 +671,7 @@ class Response65Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -740,7 +737,7 @@ class Response65Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -825,7 +822,7 @@ class Response65Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -909,7 +906,7 @@ class Response65Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -1010,7 +1007,7 @@ class Response65Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -1087,7 +1084,7 @@ class Response65Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -1159,7 +1156,7 @@ class Response65Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -1237,7 +1234,7 @@ class Response65Model extends WlModelAbstract
    * <dl>
    *   <dt>int `id_table`</dt>
    *   <dd>Quick purchase type.
-   * One of {@link QuickPurchaseTypeSid} constant.</dd>
+   *</dd>
    * 
    *   <dt>bool `is_quick_buy`</dt>
    *   <dd>

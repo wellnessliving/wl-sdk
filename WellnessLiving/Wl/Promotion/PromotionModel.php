@@ -176,7 +176,7 @@ class PromotionModel extends WlModelAbstract
    *   <dd>The Purchase Option type. For more information, see {@link WlProgramSid}.</dd>
    * 
    *   <dt>int `id_restriction`</dt>
-   *   <dd>Purchase restriction for this product, one of {@link PurchaseRestrictionSid} constants.</dd>
+   *
    * 
    *   <dt>bool `is_active`</dt>
    *   <dd>Whether this promotion is active. </dd>

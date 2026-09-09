@@ -4,7 +4,6 @@ namespace WellnessLiving\Wl\Notification\Send;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\RsMailSid;
 
 /**
  * An endpoint that allows to send notifications to users of the certain business or location.
@@ -25,7 +24,7 @@ class NotificationInfoModel extends WlModelAbstract
   public $a_info;
 
   /**
-   * ID of the notification. See {@link RsMailSid}.
+   * ID of the notification.
    *
    * @get get
    * @var int

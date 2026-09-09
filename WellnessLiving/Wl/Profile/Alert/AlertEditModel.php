@@ -4,8 +4,6 @@ namespace WellnessLiving\Wl\Profile\Alert;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\RsLoginNoteAccessSid;
-use WellnessLiving\Wl\RsLoginNoteFlagSid;
 
 /**
  * Allows to create, read, update and delete login notes.
@@ -50,10 +48,10 @@ class AlertEditModel extends WlModelAbstract
    *   <dd>`true` if the current user can flag the client; `false` otherwise.</dd>
    * 
    *   <dt>int `id_login_note_access`</dt>
-   *   <dd>Login note access type. One of {@link RsLoginNoteAccessSid} constants.</dd>
+   *   <dd>Login note access type.</dd>
    * 
    *   <dt>int `id_login_note_flag`</dt>
-   *   <dd>Login note flag type. One of {@link RsLoginNoteFlagSid} constants.</dd>
+   *   <dd>Login note flag type.</dd>
    * 
    *   <dt>int|null `id_source`</dt>
    *   <dd>
@@ -114,7 +112,6 @@ class AlertEditModel extends WlModelAbstract
    *
    * @post post
    * @var int
-   * @see RsLoginNoteAccessSid
    */
   public $id_login_note_access = 0;
 

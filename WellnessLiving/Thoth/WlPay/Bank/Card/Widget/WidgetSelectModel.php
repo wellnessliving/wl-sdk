@@ -4,8 +4,6 @@ namespace WellnessLiving\Thoth\WlPay\Bank\Card\Widget;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\Card\CardSystemSid;
-use WellnessLiving\Wl\RsPayModeSid;
 use WellnessLiving\Wl\WlPayMethodSid;
 use WellnessLiving\Wl\WlPayOwnerSid;
 use WellnessLiving\Wl\WlPayProcessorSid;
@@ -31,7 +29,7 @@ class WidgetSelectModel extends WlModelAbstract
    *   <dd>Card expiration year.</dd>
    * 
    *   <dt>int `id_card_system`</dt>
-   *   <dd>Card system ID. One of {@link CardSystemSid} constants.</dd>
+   *   <dd>Card system ID.</dd>
    * 
    *   <dt>int `id_card_type`</dt>
    *   <dd>Payment card type ID.</dd>
@@ -61,7 +59,7 @@ class WidgetSelectModel extends WlModelAbstract
    *   <dd>Partial card number.</dd>
    * 
    *   <dt>string `sid_card_system`</dt>
-   *   <dd>Card system SID. One of {@link CardSystemSid} constants as string.</dd>
+   *   <dd>Card system SID.</dd>
    * 
    *   <dt>string `text_city`</dt>
    *   <dd>Billing city.</dd>
@@ -106,7 +104,6 @@ class WidgetSelectModel extends WlModelAbstract
    *
    * @get get
    * @var int
-   * @see RsPayModeSid
    */
   public $id_pay_mode = 0;
 

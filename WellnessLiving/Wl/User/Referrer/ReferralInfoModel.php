@@ -4,7 +4,6 @@ namespace WellnessLiving\Wl\User\Referrer;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\RsRewardScoreSid;
 
 /**
  * Returns referral statistics for a user within a business.
@@ -18,8 +17,6 @@ use WellnessLiving\Wl\RsRewardScoreSid;
 class ReferralInfoModel extends WlModelAbstract
 {
   /**
-   * Total reward points earned by this user for referral registration ({@link RsRewardScoreSid::REFER_REGISTER}).
-   *
    * @get result
    * @var int
    */

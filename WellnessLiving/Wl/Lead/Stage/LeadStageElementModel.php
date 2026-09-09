@@ -26,7 +26,7 @@ class LeadStageElementModel extends WlModelAbstract
   public $id_lead_stage_shape = 0;
 
   /**
-   * Type of the stage. One of {@link LeadStageTypeSid} constants.
+   * Type of the stage.
    *
    * Only used to create a stage. Type of an existing stage can not be changed.
    *
@@ -62,7 +62,6 @@ class LeadStageElementModel extends WlModelAbstract
    * Key of the lead stage to move leads and clients of the deleted stage to.
    *
    * Required if the stage being deleted has leads or clients assigned to it. Ignored otherwise.
-   * The replacement stage must be of the same {@link LeadStageTypeSid} as the deleted one.
    *
    * @delete get
    * @var string

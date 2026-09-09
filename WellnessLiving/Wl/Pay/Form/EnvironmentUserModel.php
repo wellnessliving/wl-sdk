@@ -3,13 +3,6 @@
 namespace WellnessLiving\Wl\Pay\Form;
 
 use WellnessLiving\Core\a\ACardSystemSid;
-use WellnessLiving\Thoth\PayProcessor\DirectConnect\Terminal\DirectConnectReaderModelSid;
-use WellnessLiving\Thoth\PayProcessor\Nuvei\Terminal\NuveiTerminalTypeSid;
-use WellnessLiving\Thoth\PayProcessor\StripeCom\Terminal\StripeReaderModelSid;
-use WellnessLiving\Thoth\PayProcessor\StripeCom\Terminal\StripeTerminalTypeSid;
-use WellnessLiving\Thoth\PayProcessor\Terminal\TerminalStatusSid;
-use WellnessLiving\Thoth\PayProcessor\Terminal\TerminalTypeSid;
-use WellnessLiving\Thoth\WlPay\Cordova\CordovaCcrDeviceSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\WlPayMethodSid;
@@ -98,11 +91,11 @@ class EnvironmentUserModel extends WlModelAbstract
    * 
    *               <dt>int `id_model`</dt>
    *               <dd>
-   *                 Terminal model. One of {@link StripeReaderModelSid} constants.
+   *                 Terminal model.
    *               </dd>
    * 
    *               <dt>int `id_status`</dt>
-   *               <dd>Terminal status. One of {@link TerminalStatusSid} constants.</dd>
+   *               <dd>Terminal status.</dd>
    * 
    *               <dt>string `k_terminal`</dt>
    *               <dd>Terminal key. </dd>
@@ -127,15 +120,15 @@ class EnvironmentUserModel extends WlModelAbstract
    * 
    *               <dt>int `id_model`</dt>
    *               <dd>
-   *                 Terminal model. One of {@link StripeReaderModelSid} constants.
+   *                 Terminal model.
    *               </dd>
    * 
    *               <dt>int `id_status`</dt>
-   *               <dd>Terminal status. One of {@link TerminalStatusSid} constants.</dd>
+   *               <dd>Terminal status.</dd>
    * 
    *               <dt>int `id_type`</dt>
    *               <dd>
-   *                 Terminal type. One of {@link StripeTerminalTypeSid} constants.
+   *                 Terminal type.
    *               </dd>
    * 
    *               <dt>string `k_terminal`</dt>
@@ -175,7 +168,7 @@ class EnvironmentUserModel extends WlModelAbstract
    * Nmi:
    * <dl>
    *   <dt>int `id_device`</dt>
-   *   <dd>Device type identifier. One of {@link CordovaCcrDeviceSid} constants.</dd>
+   *   <dd>Device type identifier.</dd>
    * 
    *   <dt>string `s_key`</dt>
    *   <dd>NMI SDK key for the card reader plugin.</dd>
@@ -203,11 +196,11 @@ class EnvironmentUserModel extends WlModelAbstract
    * 
    *               <dt>int `id_model`</dt>
    *               <dd>
-   *                 Terminal model. One of {@link DirectConnectReaderModelSid} constants.
+   *                 Terminal model.
    *               </dd>
    * 
    *               <dt>int `id_status`</dt>
-   *               <dd>Terminal status. One of {@link TerminalStatusSid} constants.</dd>
+   *               <dd>Terminal status.</dd>
    * 
    *               <dt>string `k_terminal`</dt>
    *               <dd>Terminal key. </dd>
@@ -233,15 +226,15 @@ class EnvironmentUserModel extends WlModelAbstract
    * 
    *               <dt>int|null `id_model`</dt>
    *               <dd>
-   *                 Terminal model. One of {@link DirectConnectReaderModelSid} constants.
+   *                 Terminal model.
    * `null` for the synthetic `MagTek` USB entry.
    *               </dd>
    * 
    *               <dt>int `id_status`</dt>
-   *               <dd>Terminal status. One of {@link TerminalStatusSid} constants.</dd>
+   *               <dd>Terminal status.</dd>
    * 
    *               <dt>int `id_type`</dt>
-   *               <dd>Terminal type. One of {@link TerminalTypeSid} constants.</dd>
+   *               <dd>Terminal type.</dd>
    * 
    *               <dt>string|null `k_terminal`</dt>
    *               <dd>
@@ -277,7 +270,7 @@ class EnvironmentUserModel extends WlModelAbstract
    *   <dd>Whether the card reader selection UI is shown.</dd>
    * 
    *   <dt>int `id_device`</dt>
-   *   <dd>Device type identifier. One of {@link CordovaCcrDeviceSid} constants.</dd>
+   *   <dd>Device type identifier.</dd>
    * 
    *   <dt>bool `is_support_magtek`</dt>
    *   <dd>Whether `MagTek` USB reader is supported.</dd>
@@ -305,13 +298,13 @@ class EnvironmentUserModel extends WlModelAbstract
    *               <dd>Whether swipe can be cancelled from the POS terminal.</dd>
    * 
    *               <dt>int `id_model`</dt>
-   *               <dd>Terminal model. One of {@link NuveiTerminalTypeSid} constants.</dd>
+   *               <dd>Terminal model.</dd>
    * 
    *               <dt>int `id_status`</dt>
-   *               <dd>Terminal status. One of {@link TerminalStatusSid} constants.</dd>
+   *               <dd>Terminal status.</dd>
    * 
    *               <dt>int `id_type`</dt>
-   *               <dd>Terminal type. One of {@link NuveiTerminalTypeSid} constants.</dd>
+   *               <dd>Terminal type.</dd>
    * 
    *               <dt>string `k_terminal`</dt>
    *               <dd>Terminal key. </dd>
@@ -335,17 +328,17 @@ class EnvironmentUserModel extends WlModelAbstract
    * 
    *               <dt>int|null `id_model`</dt>
    *               <dd>
-   *                 Terminal model. One of {@link NuveiTerminalTypeSid} constants.
+   *                 Terminal model.
    * `null` for the synthetic `MagTek` USB entry.
    *               </dd>
    * 
    *               <dt>int `id_status`</dt>
-   *               <dd>Terminal status. One of {@link TerminalStatusSid} constants.</dd>
+   *               <dd>Terminal status.</dd>
    * 
    *               <dt>int `id_type`</dt>
    *               <dd>
-   *                 Terminal type. One of {@link NuveiTerminalTypeSid} constants, or
-   * {@link TerminalTypeSid::MAGTEK_USB} for the synthetic `MagTek` USB entry.
+   *                 Terminal type. One of {@link \Thoth\PayProcessor\Nuvei\Terminal\NuveiTerminalTypeSid} constants, or
+   *
    *               </dd>
    * 
    *               <dt>string|null `k_terminal`</dt>

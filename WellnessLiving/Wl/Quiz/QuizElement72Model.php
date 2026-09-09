@@ -2,13 +2,10 @@
 
 namespace WellnessLiving\Wl\Quiz;
 
-use WellnessLiving\Core\Quiz\Element\ElementSid;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
-use WellnessLiving\Wl\Quiz\Activity\ActivitySid;
-use WellnessLiving\Wl\Quiz\Service\ServiceSid;
 use WellnessLiving\Wl\WlDurationTypeSid;
 
 /**
@@ -32,7 +29,7 @@ class QuizElement72Model extends WlModelAbstract
    *   <dd>User's key. </dd>
    * 
    *   <dt>int `id_activity`</dt>
-   *   <dd>One of {@link ActivitySid} constants.</dd>
+   *
    * 
    *   <dt>string `text_activity`</dt>
    *   <dd>Title of the activity</dd>
@@ -103,7 +100,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -180,7 +177,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -258,7 +255,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -343,7 +340,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -430,7 +427,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -533,7 +530,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -610,7 +607,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -681,7 +678,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -747,7 +744,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -832,7 +829,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -916,7 +913,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -1017,7 +1014,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -1094,7 +1091,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -1166,7 +1163,7 @@ class QuizElement72Model extends WlModelAbstract
    * 
    *   <dt>int `id_element`</dt>
    *   <dd>
-   *     Element ID. One of {@link ElementSid} constants.
+   *     Element ID.
    * 
    * Defined automatically according to the name of the class.
    *   </dd>
@@ -1224,7 +1221,7 @@ class QuizElement72Model extends WlModelAbstract
    *   <dd>
    *     List of services grouped by service ID.
    * 
-   * Key is service ID. One of {@link ServiceSid} constants.
+   * Key is service ID.
    * Values is list of services.
    *   </dd>
    * 

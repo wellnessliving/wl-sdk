@@ -4,7 +4,6 @@ namespace WellnessLiving\Thoth\PayProcessor\StripeCom;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\RsPayActorSid;
 
 /**
  * Cancels existing Payment Intent.
@@ -18,7 +17,6 @@ class StripeComPaymentIntentCancelModel extends WlModelAbstract
    *
    * @post post
    * @var int
-   * @see RsPayActorSid
    */
   public $id_pay_actor;
 

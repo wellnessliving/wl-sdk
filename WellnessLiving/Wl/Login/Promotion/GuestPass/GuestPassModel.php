@@ -5,7 +5,6 @@ namespace WellnessLiving\Wl\Login\Promotion\GuestPass;
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\Promotion\Guest\Pass\GuestPassResetTypeSid;
 use WellnessLiving\Wl\WlProgramSid;
 
 /**
@@ -134,7 +133,7 @@ class GuestPassModel extends WlModelAbstract
    * One of {@link WlProgramSid} constants.</dd>
    * 
    *   <dt>int `id_reset_type_guest`</dt>
-   *   <dd>Reset type of the host promotion. One of {@link GuestPassResetTypeSid} constants.</dd>
+   *   <dd>Reset type of the host promotion.</dd>
    * 
    *   <dt>bool `is_expire_note`</dt>
    *   <dd>`true` if the pass is close enough to its reset or expiry date that the UI should

@@ -37,7 +37,7 @@ class ConnectionCheckModel extends WlModelAbstract
    *   <dd>Usage-statistics priority multiplier. Present for the usage-statistics source.</dd>
    * 
    *   <dt>int `id_source`</dt>
-   *   <dd>Finding source from {@link TriageSourceSid}.</dd>
+   *
    * 
    *   <dt>string `s_object`</dt>
    *   <dd>Usage-statistics object. Present for the usage-statistics source.</dd>
@@ -57,8 +57,6 @@ class ConnectionCheckModel extends WlModelAbstract
   public $a_finding = [];
 
   /**
-   * IDs of finding sources from {@link TriageSourceSid}.
-   *
    * @get get
    * @var int[]
    */

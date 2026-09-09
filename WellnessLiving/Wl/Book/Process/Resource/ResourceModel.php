@@ -9,7 +9,6 @@ use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Resource\Image\ImageIconSid;
 use WellnessLiving\Wl\Resource\Image\ImageShapeSid;
 use WellnessLiving\Wl\Resource\Image\ImageSid;
-use WellnessLiving\Wl\RsRepeatEndSid;
 
 /**
  * Selects assets for making a booking.
@@ -50,17 +49,17 @@ class ResourceModel extends WlModelAbstract
    * 
    *   <dt>string `dt_from`</dt>
    *   <dd>Date to start recurring booking.
-   * Expected for `id_repeat_end` = {@link RsRepeatEndSid::DATE}.</dd>
+   * Expected for `id_repeat_</dd>
    * 
    *   <dt>string `dt_to`</dt>
    *   <dd>Date to complete recurring booking.
-   * Expected for `id_repeat_end` = {@link RsRepeatEndSid::DATE}.</dd>
+   * Expected for `id_repeat_</dd>
    * 
    *   <dt>int `i_count`</dt>
    *   <dd>
    *     The number of occurrences after which the appointment's repeat cycle stops.
    *  Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *  Expected for `id_repeat_end` = {@link RsRepeatEndSid::COUNT}.
+   *  Expected for `id_repeat_
    *   </dd>
    * 
    *   <dt>int `i_duration`</dt>
@@ -82,7 +81,7 @@ class ResourceModel extends WlModelAbstract
    *   <dd>Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.</dd>
    * 
    *   <dt>int `id_repeat_end`</dt>
-   *   <dd>Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.</dd>
+   *   <dd>Possible ways to stop repeatable events.</dd>
    * </dl>
    * @post post
    * @var array|null

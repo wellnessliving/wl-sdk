@@ -36,7 +36,7 @@ class AttachListModel extends WlModelAbstract
    *   <dd>Image width in pixels. `null` if not an image or dimensions are unavailable.</dd>
    * 
    *   <dt>int `id_preview`</dt>
-   *   <dd>Preview type identifier. One of {@link AttachPreviewSid} constants.</dd>
+   *   <dd>Preview type identifier.</dd>
    * 
    *   <dt>bool `is_private`</dt>
    *   <dd>

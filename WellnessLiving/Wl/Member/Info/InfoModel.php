@@ -4,7 +4,6 @@ namespace WellnessLiving\Wl\Member\Info;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\Login\Type\ShapeSid;
 
 /**
  * Retrieves information about a member.
@@ -39,7 +38,7 @@ class InfoModel extends WlModelAbstract
    *       <dd>Title.</dd>
    * 
    *       <dt>string `sid_shape`</dt>
-   *       <dd>SID of the icon type shape. Constant from {@link ShapeSid}.</dd>
+   *       <dd>SID of the icon type shape.</dd>
    *     </dl>
    *   </dd>
    * 
@@ -194,7 +193,7 @@ class InfoModel extends WlModelAbstract
    *           <dd>Title.</dd>
    * 
    *           <dt>string `sid_shape`</dt>
-   *           <dd>SID of the icon type shape. Constant from {@link ShapeSid}.</dd>
+   *           <dd>SID of the icon type shape.</dd>
    *         </dl>
    *       </dd>
    * 

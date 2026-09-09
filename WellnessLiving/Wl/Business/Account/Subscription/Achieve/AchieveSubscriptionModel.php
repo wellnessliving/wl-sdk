@@ -17,7 +17,6 @@ class AchieveSubscriptionModel extends WlModelAbstract
    *
    * @get result
    * @var bool
-   * @see AchieveSubscriptionSid::FREE
    */
   public $is_free = false;
 
@@ -26,7 +25,6 @@ class AchieveSubscriptionModel extends WlModelAbstract
    *
    * @get result
    * @var bool
-   * @see AchieveSubscriptionSid::WHITE
    */
   public $is_white_label = false;
 

@@ -189,7 +189,6 @@ class VideoElementModel extends WlModelAbstract
 
   /**
    * Embedded video source.
-   * One of {@link VideoEmbedSourceSid} constants.
    *
    * `null` if video is uploaded.
    *
@@ -212,8 +211,6 @@ class VideoElementModel extends WlModelAbstract
 
   /**
    * Source of the video.
-   *
-   * One of {@link VideoSourceSid} constants.
    *
    * @get result
    * @post post

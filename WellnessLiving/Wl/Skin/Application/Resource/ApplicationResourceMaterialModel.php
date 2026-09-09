@@ -25,7 +25,7 @@ class ApplicationResourceMaterialModel extends WlModelAbstract
 
   /**
    * Application category in the store.
-   * One of {@link ApplicationCategorySid} constants.
+   *
    * `0` if no category is selected.
    *
    * @post post

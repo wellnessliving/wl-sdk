@@ -6,7 +6,6 @@ use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\Business\Claim\BusinessClaimStatusSid;
 use WellnessLiving\Wl\Service\ServiceSid;
 use WellnessLiving\Wl\WlRankTypeSid;
 use WellnessLiving\Wl\WlRegionSid;
@@ -63,8 +62,6 @@ class DataModel extends WlModelAbstract
 
   /**
    * Business status for managing claim request behavior.
-   *
-   * Constant from {@link BusinessClaimStatusSid}.
    *
    * @get result
    * @var int

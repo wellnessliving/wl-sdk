@@ -655,8 +655,6 @@ abstract class WlPrivilegeSid
 
   /**
    * Staff with this role will receive the membership cancel mails.
-   *
-   * @see RsMailSid::PROMOTION_MEMBERSHIP_CANCEL_STAFF
    */
   const NOTIFICATION_MEMBERSHIP_CANCEL = 214;
 
@@ -672,15 +670,11 @@ abstract class WlPrivilegeSid
 
   /**
    * Staff with this role will receive emails about reward prizes.
-   *
-   * @see RsMailSid::REWARD_PRIZE_STAFF
    */
   const NOTIFICATION_PRIZE_REDEMPTION = 90;
 
   /**
    * Staff with this role will receive the inventory mails.
-   *
-   * @see RsMailSid::PURCHASE_PRODUCT_INVENTORY
    */
   const NOTIFICATION_PRODUCT_INVENTORY = 77;
 
@@ -696,8 +690,6 @@ abstract class WlPrivilegeSid
 
   /**
    * Staff with this role will receive the sale receipts mails.
-   *
-   * @see RsMailSid::SALE_STAFF
    */
   const NOTIFICATION_SALE_STAFF = 136;
 

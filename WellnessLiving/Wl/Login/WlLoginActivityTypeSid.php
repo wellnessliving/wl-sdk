@@ -2,8 +2,6 @@
 
 namespace WellnessLiving\Wl\Login;
 
-use WellnessLiving\Wl\RsRewardScoreSid;
-
 /**
  * Manages identifiers of user activity.
  *
@@ -277,8 +275,6 @@ abstract class WlLoginActivityTypeSid
 
   /**
    * Client attended several visits.
-   *
-   * @see RsRewardScoreSid::VISIT
    */
   const SUMMARY_VISIT = 35;
 

@@ -4,7 +4,6 @@ namespace WellnessLiving\Wl\Reward\Action;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\RsRewardScoreSid;
 
 /**
  * Retrieves information about reward action item.
@@ -27,7 +26,6 @@ class ElementModel extends WlModelAbstract
    *
    * @get result
    * @var int|null
-   * @see RsRewardScoreSid
    */
   public $id_reward_score;
 

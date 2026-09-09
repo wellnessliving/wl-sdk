@@ -2,19 +2,12 @@
 
 namespace WellnessLiving\Core\WebSocket;
 
-use WellnessLiving\Thoth\PayProcessor\DirectConnect\Ticket\DirectConnectTicketStatusSid;
 use WellnessLiving\Thoth\PayProcessor\Nuvei\Code\CSResponseSid;
 use WellnessLiving\Thoth\ReportCore\Generator\ReportGeneratorStatusSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Classes\Tab\TabSid;
-use WellnessLiving\Wl\Gender\GenderSid;
-use WellnessLiving\Wl\Import\Custom\CustomSid;
-use WellnessLiving\Wl\Mail\Domain\DomainTokenTypeSid;
-use WellnessLiving\Wl\Mail\Domain\DomainVerifyStatusSid;
-use WellnessLiving\Wl\Mail\Verify\MailVerifyStatusSid;
 use WellnessLiving\Wl\Report\WlReportSid;
-use WellnessLiving\Wl\Task\TaskStatusSid;
 use WellnessLiving\Wl\Visit\WlVisitSid;
 
 /**
@@ -178,7 +171,7 @@ class SubscribeModel extends WlModelAbstract
    * Parameters for `1850`:
    * <dl>
    *   <dt>int `id_import_custom`</dt>
-   *   <dd>ID of custom import process. One of {@link CustomSid} constants.</dd>
+   *   <dd>ID of custom import process.</dd>
    * 
    *   <dt>string `k_business`</dt>
    *   <dd>Business key within which import is progressing.</dd>
@@ -421,7 +414,7 @@ class SubscribeModel extends WlModelAbstract
    *         User's information:
    *         <dl>
    *           <dt>int `id_gender`</dt>
-   *           <dd>User gender. One of {@link GenderSid} constants.</dd>
+   *           <dd>User gender.</dd>
    * 
    *           <dt>string `s_first_name`</dt>
    *           <dd>User first name.</dd>
@@ -460,7 +453,7 @@ class SubscribeModel extends WlModelAbstract
    *   <dt>int `id_task_status`</dt>
    *   <dd>New task status of the changed task.
    * 
-   * One of {@link TaskStatusSid}.</dd>
+   *</dd>
    * 
    *   <dt>string `k_task`</dt>
    *   <dd>Key of the changed task.</dd>
@@ -685,7 +678,7 @@ class SubscribeModel extends WlModelAbstract
    * Empty array if the business does not have a mail domain set up.
    *     <dl>
    *       <dt>int `id_status`</dt>
-   *       <dd>Status of the token. One of {@link DomainVerifyStatusSid} constants.</dd>
+   *       <dd>Status of the token.</dd>
    * 
    *       <dt>string `text_host`</dt>
    *       <dd>Host part of the token, which should be added to the DNS records.</dd>
@@ -697,7 +690,7 @@ class SubscribeModel extends WlModelAbstract
    *       <dd>Text representation of the token status.</dd>
    * 
    *       <dt>string `text_type`</dt>
-   *       <dd>Type of the token. One of {@link DomainTokenTypeSid} constants in text representation.</dd>
+   *       <dd>Type of the token.</dd>
    * 
    *       <dt>string `text_value`</dt>
    *       <dd>Value of the token, which should be added to the DNS records.</dd>
@@ -722,7 +715,6 @@ class SubscribeModel extends WlModelAbstract
    *   <dt>int `id_mail_verify_status`</dt>
    *   <dd>
    *     Status of mail verification.
-   * One of the {@link MailVerifyStatusSid} constants.
    *
    *   </dd>
    * 
@@ -748,7 +740,7 @@ class SubscribeModel extends WlModelAbstract
    *     Card type ID.
    * 
    * Not `null` when {@link \Thoth\PayProcessor\DirectConnect\Ticket\DirectConnectTicketStatusChannel::$id_ticket_status}
-   * is equal {@link DirectConnectTicketStatusSid::COMPLETE}.
+   *
    *   </dd>
    * 
    *   <dt>int|null `id_pay_exception`</dt>
@@ -769,7 +761,7 @@ class SubscribeModel extends WlModelAbstract
    *     Cardholder name.
    * 
    * Not `null` when {@link \Thoth\PayProcessor\DirectConnect\Ticket\DirectConnectTicketStatusChannel::$id_ticket_status}
-   * is equal {@link DirectConnectTicketStatusSid::COMPLETE}.
+   *
    *   </dd>
    * 
    *   <dt>string|null `s_expire`</dt>
@@ -777,7 +769,7 @@ class SubscribeModel extends WlModelAbstract
    *     Card expiration date.
    * 
    * Not `null` when {@link \Thoth\PayProcessor\DirectConnect\Ticket\DirectConnectTicketStatusChannel::$id_ticket_status}
-   * is equal {@link DirectConnectTicketStatusSid::COMPLETE}.
+   *
    *   </dd>
    * 
    *   <dt>string|null `s_last4`</dt>
@@ -785,7 +777,7 @@ class SubscribeModel extends WlModelAbstract
    *     Last four digits of the card number.
    * 
    * Not `null` when {@link \Thoth\PayProcessor\DirectConnect\Ticket\DirectConnectTicketStatusChannel::$id_ticket_status}
-   * is equal {@link DirectConnectTicketStatusSid::COMPLETE}.
+   *
    *   </dd>
    * 
    *   <dt>string|null `text_message`</dt>

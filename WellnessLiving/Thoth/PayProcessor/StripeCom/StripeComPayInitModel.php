@@ -5,7 +5,6 @@ namespace WellnessLiving\Thoth\PayProcessor\StripeCom;
 use WellnessLiving\Core\Locale\CurrencySid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\RsPayActorSid;
 use WellnessLiving\Wl\WlPayMethodSid;
 
 /**
@@ -118,8 +117,6 @@ class StripeComPayInitModel extends WlModelAbstract
   /**
    * ID of the actor.
    *
-   * One of {@link RsPayActorSid} constants.
-   *
    * `null` in case when not initialized yet.
    *
    * @post post
@@ -144,7 +141,6 @@ class StripeComPayInitModel extends WlModelAbstract
    *
    * @post result
    * @var int
-   * @see PaymentIntentStatusSid
    */
   public $id_status;
 

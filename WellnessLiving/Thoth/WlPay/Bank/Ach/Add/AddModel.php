@@ -6,11 +6,6 @@ use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
-use WellnessLiving\Wl\RsPayActorSid;
-use WellnessLiving\Wl\RsPayBankAchHolderSid;
-use WellnessLiving\Wl\RsPayBankAchSecSid;
-use WellnessLiving\Wl\RsPayBankAchTypeSid;
-use WellnessLiving\Wl\RsPayBankSid;
 use WellnessLiving\Wl\WlPayProcessorSid;
 
 /**
@@ -67,16 +62,16 @@ class AddModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>int `id_pay_actor`</dt>
-   *   <dd>Pay actor id. One of {@link RsPayActorSid} constants.</dd>
+   *   <dd>Pay actor id.</dd>
    * 
    *   <dt>int `id_pay_bank_ach_holder`</dt>
-   *   <dd>Account holder type. One of {@link RsPayBankAchHolderSid} constants.</dd>
+   *   <dd>Account holder type.</dd>
    * 
    *   <dt>int `id_pay_bank_ach_sec`</dt>
-   *   <dd>SEC code. One of {@link RsPayBankAchSecSid} constants.</dd>
+   *   <dd>SEC code.</dd>
    * 
    *   <dt>int `id_pay_bank_ach_type`</dt>
-   *   <dd>Account type. One of {@link RsPayBankAchTypeSid} constants.</dd>
+   *   <dd>Account type.</dd>
    * 
    *   <dt>bool `is_default`</dt>
    *   <dd><tt>true</tt> - if a payment method is set as default, <tt>false</tt> - otherwise.</dd>
@@ -119,13 +114,13 @@ class AddModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>int `id_pay_bank`</dt>
-   *   <dd>Type of recurrent payment token. One of {@link RsPayBankSid} constants.</dd>
+   *   <dd>Type of recurrent payment token.</dd>
    * 
    *   <dt>int `id_pay_bank_ach_holder`</dt>
-   *   <dd>Type of account holder. One of {@link RsPayBankAchHolderSid} constants.</dd>
+   *   <dd>Type of account holder.</dd>
    * 
    *   <dt>int `id_pay_bank_ach_type`</dt>
-   *   <dd>Type of account. One of {@link RsPayBankAchTypeSid} constants.</dd>
+   *   <dd>Type of account.</dd>
    * 
    *   <dt>bool `is_default`</dt>
    *   <dd>`true` - this account is default payment method; `false` - otherwise.</dd>

@@ -7,7 +7,6 @@ use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Mode\ModeSid;
-use WellnessLiving\Wl\RsRepeatEndSid;
 
 /**
  * For recurrent class booking returns list of visits to be created for the given settings.
@@ -94,7 +93,7 @@ class RepeatModel extends WlModelAbstract
   public $dt_date = '';
 
   /**
-   * Date to start recurring booking. Not empty only when {@link RepeatModel::$id_repeat_end} == {@link RsRepeatEndSid::DATE}.
+   * Date to start recurring booking. Not empty only when {@link RepeatModel::$id_repeat_end} == {@link \RsRepeatEndSid::DATE}.
    *
    * @get get,result
    * @var string
@@ -102,7 +101,7 @@ class RepeatModel extends WlModelAbstract
   public $dt_from = '';
 
   /**
-   * Date to finish recurring booking. Not empty only when {@link RepeatModel::$id_repeat_end} == {@link RsRepeatEndSid::DATE}.
+   * Date to finish recurring booking. Not empty only when {@link RepeatModel::$id_repeat_end} == {@link \RsRepeatEndSid::DATE}.
    *
    * @get get,result
    * @var string
@@ -110,7 +109,7 @@ class RepeatModel extends WlModelAbstract
   public $dt_to = '';
 
   /**
-   * Count of the visits to be created. Not empty only when {@link RepeatModel::$id_repeat_end} == {@link RsRepeatEndSid::COUNT}.
+   * Count of the visits to be created. Not empty only when {@link RepeatModel::$id_repeat_end} == {@link \RsRepeatEndSid::COUNT}.
    *
    * @get get,result
    * @var int
@@ -142,8 +141,6 @@ class RepeatModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
-   * Type of repeating, one of {@link RsRepeatEndSid} constants.
-   *
    * @get get
    * @var int
    */

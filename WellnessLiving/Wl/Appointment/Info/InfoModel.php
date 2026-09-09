@@ -7,7 +7,6 @@ use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
-use WellnessLiving\Wl\RsRepeatEndSid;
 
 /**
  * Appointment information.
@@ -143,7 +142,7 @@ class InfoModel extends WlModelAbstract
    *   <dd>Frequency of the repeats. For example, `2` for every second week.</dd>
    * 
    *   <dt>int `id_end`</dt>
-   *   <dd>Type of repeat cycle end. One of {@link RsRepeatEndSid} constants.</dd>
+   *   <dd>Type of repeat cycle end.</dd>
    * 
    *   <dt>int `id_period`</dt>
    *   <dd>Measurement unit of `i_period`. One of {@link ADurationSid} constants.</dd>

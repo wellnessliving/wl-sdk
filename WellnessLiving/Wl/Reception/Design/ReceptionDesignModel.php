@@ -71,7 +71,6 @@ class ReceptionDesignModel extends WlModelAbstract
    *
    * @get result
    * @var int
-   * @see CheckInSoundSid
    */
   public $id_failed_sound;
 
@@ -80,7 +79,6 @@ class ReceptionDesignModel extends WlModelAbstract
    *
    * @get result
    * @var int
-   * @see CheckInSoundSid
    */
   public $id_success_sound;
 

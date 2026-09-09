@@ -143,7 +143,7 @@ class VideoListModel extends WlModelAbstract
    *   <dd>Total number of views.</dd>
    * 
    *   <dt>int `id_source`</dt>
-   *   <dd>Video source. One of {@link VideoSourceSid} constants.</dd>
+   *   <dd>Video source.</dd>
    * 
    *   <dt>bool `is_calorie`</dt>
    *   <dd>`true` if calorie information is enabled for this video; `false` otherwise.</dd>
@@ -246,7 +246,6 @@ class VideoListModel extends WlModelAbstract
    *
    * @get get
    * @var string[]
-   * @see VideoSourceSid
    */
   public $a_source = [];
 
@@ -332,7 +331,6 @@ class VideoListModel extends WlModelAbstract
 
   /**
    * Embedded video source.
-   * One of {@link VideoEmbedSourceSid} constants.
    *
    * `null` if video is uploaded.
    *

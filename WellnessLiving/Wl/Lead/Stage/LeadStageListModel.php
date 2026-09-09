@@ -49,7 +49,7 @@ class LeadStageListModel extends WlModelAbstract
    * 
    *   <dt>int `id_lead_stage_type`</dt>
    *   <dd>
-   *     Type of the stage. One of {@link LeadStageTypeSid} constants.
+   *     Type of the stage.
    * The type is set when the stage is created and can not be changed afterwards.
    *   </dd>
    * 
