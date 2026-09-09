@@ -31,11 +31,6 @@ class WlPayInstallmentStatusSid
    * Installment plan is successfully completed.
    */
   const COMPLETE = 3;
-
-  /**
-   * @inheritDoc
-   */
-  const _TRANSLATION_CONTEXT = 'Wl.Pay.Installment.InstallmentStatusSid';
 }
 
 ?>

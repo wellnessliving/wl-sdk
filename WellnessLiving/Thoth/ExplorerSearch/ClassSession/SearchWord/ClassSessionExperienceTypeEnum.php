@@ -9,6 +9,15 @@ namespace WellnessLiving\Thoth\ExplorerSearch\ClassSession\SearchWord;
  */
 class ClassSessionExperienceTypeEnum
 {
-  }
+  /**
+   * In-person session at a physical location.
+   */
+  const IN_PERSON = 1;
+
+  /**
+   * Virtual session conducted through a virtual provider.
+   */
+  const VIRTUAL = 2;
+}
 
 ?>

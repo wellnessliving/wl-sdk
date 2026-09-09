@@ -4,7 +4,6 @@ namespace WellnessLiving\Wl\Profile\Alert;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\Location\Flag\FlagSourceEnum;
 
 /**
  * Allows to create, read, update and delete login notes.
@@ -57,7 +56,7 @@ class AlertEditModel extends WlModelAbstract
    *   <dt>int|null `id_source`</dt>
    *   <dd>
    *     Flag source identifier.
-   * One of {@link FlagSourceEnum} constant.
+   *
    * `null` if the flag was created manually.
    *   </dd>
    * 

@@ -44,11 +44,6 @@ class CSExchangeActionSid
    * Check the terminal status.
    */
   const STATUS_CHECK = 7;
-
-  /**
-   * @inheritDoc
-   */
-  const _TRANSLATION_CONTEXT = 'Wl.Pay.Processor.Nuvei.Code.CSExchangeActionSid';
 }
 
 ?>

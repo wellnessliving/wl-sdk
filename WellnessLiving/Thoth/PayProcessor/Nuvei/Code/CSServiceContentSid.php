@@ -39,11 +39,6 @@ class CSServiceContentSid
    * The terminal sends a response to a reversal request.
    */
   const FINANCIAL_REVERSAL_RESPONSE = 3;
-
-  /**
-   * @inheritDoc
-   */
-  const _TRANSLATION_CONTEXT = 'Wl.Pay.Processor.Nuvei.Code.CSServiceContentSid';
 }
 
 ?>

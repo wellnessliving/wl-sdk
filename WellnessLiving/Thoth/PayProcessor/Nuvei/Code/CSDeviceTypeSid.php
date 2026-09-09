@@ -19,11 +19,6 @@ class CSDeviceTypeSid
    * Indicate communication is initialed from terminal end.
    */
   const TERMINAL_INDENTIFICATION = 2;
-
-  /**
-   * @inheritDoc
-   */
-  const _TRANSLATION_CONTEXT = 'Wl.Pay.Processor.Nuvei.Code.CSDeviceTypeSid';
 }
 
 ?>

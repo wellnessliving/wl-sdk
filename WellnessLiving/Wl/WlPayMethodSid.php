@@ -15,15 +15,6 @@ abstract class WlPayMethodSid
   const ACCOUNT = 7;
 
   /**
-   * Payment with personal user account.
-   * Special payment method to indicate payments related only to manual adjustment of user account balance.
-   * This payment method actually does not exist and used only for filtering purpose.
-   *
-   * @deprecated
-   */
-  const ACCOUNT_MANUAL = 13;
-
-  /**
    * ACH system (USA-specific direct banking transactions).
    *
    * @link http://en.wikipedia.org/wiki/Automated_Clearing_House
@@ -39,11 +30,6 @@ abstract class WlPayMethodSid
    * Payment with a cheque.
    */
   const CHEQUE = 5;
-
-  /**
-   * Payment by clear balance.
-   */
-  const CLEAR_BALANCE = 12;
 
   /**
    * Payment with a coupon.

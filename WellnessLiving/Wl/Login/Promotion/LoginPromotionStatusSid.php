@@ -31,13 +31,6 @@ class LoginPromotionStatusSid
    * passed after expiration of promotion.
    */
   const EXPIRE = 1;
-
-  /**
-   * Old promotions for which status is not stored in the database.
-   *
-   * System should behave using old rules: try to derive status of promotion based on data from other sources.
-   */
-  const UNDEFINED = 0;
 }
 
 ?>

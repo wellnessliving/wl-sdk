@@ -59,11 +59,6 @@ class CSExchangeTypeSid
    * Transaction not found.
    */
   const TRANSACTION_NOT_FOUND = 10;
-
-  /**
-   * @inheritDoc
-   */
-  const _TRANSLATION_CONTEXT = 'Wl.Pay.Processor.Nuvei.Code.CSExchangeTypeSid';
 }
 
 ?>

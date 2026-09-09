@@ -80,11 +80,6 @@ class MeasurementSid
   const MMHG = 8;
 
   /**
-   * No measurement.
-   */
-  const NO_MEASUREMENT = 0;
-
-  /**
    * Value in percentages.
    *
    * @title Percentages

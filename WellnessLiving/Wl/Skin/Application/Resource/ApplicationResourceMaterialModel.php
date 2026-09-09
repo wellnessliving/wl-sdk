@@ -4,7 +4,6 @@ namespace WellnessLiving\Wl\Skin\Application\Resource;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
-use WellnessLiving\Wl\Skin\Application\Upgrade\AppUpdateTypeEnum;
 
 /**
  * Saves text metadata for a white-label application build.
@@ -36,7 +35,6 @@ class ApplicationResourceMaterialModel extends WlModelAbstract
 
   /**
    * Type of application update.
-   * One of {@link AppUpdateTypeEnum} constants.
    *
    * @post post
    * @var int

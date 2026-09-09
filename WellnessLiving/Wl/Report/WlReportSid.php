@@ -524,14 +524,6 @@ abstract class WlReportSid
   const LOGIN_RISK = 261;
 
   /**
-   * Report with client's attendance history.
-   *
-   * @deprecated Has been replaced with {@link WlReportSid::PROFILE_ATTENDANCE_SCHEDULE_HISTORY}. Kept only to retain
-   * compatibility with old saved reports.
-   */
-  const LOGIN_VISIT = 52;
-
-  /**
    * Count of sent mail and sms per business.
    */
   const MAIL_BUSINESS_LIST = 46;

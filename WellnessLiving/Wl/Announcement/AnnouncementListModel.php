@@ -39,7 +39,7 @@ class AnnouncementListModel extends WlModelAbstract
    *   <dd>Sort order. `null` if the announcement is not pinned.</dd>
    * 
    *   <dt>int `id_status`</dt>
-   *   <dd>Announcement status ID. One of {@link AnnouncementStatusEnum} constants.</dd>
+   *   <dd>Announcement status ID.</dd>
    * 
    *   <dt>bool `is_pin`</dt>
    *   <dd>`true` if the announcement is pinned, `false` otherwise.</dd>

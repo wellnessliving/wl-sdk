@@ -44,11 +44,6 @@ class CSTransactionTypeSid
    * Outstanding Reservation transactions.
    */
   const RESERVATION = 6;
-
-  /**
-   * @inheritDoc
-   */
-  const _TRANSLATION_CONTEXT = 'Wl.Pay.Processor.Nuvei.Code.CSTransactionTypeSid';
 }
 
 ?>

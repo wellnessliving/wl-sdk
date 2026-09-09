@@ -111,11 +111,6 @@ class CSResponseSid
    * Transaction with unadjusted tip.
    */
   const UN_ADJUSTED_TIP = 20;
-
-  /**
-   * @inheritDoc
-   */
-  const _TRANSLATION_CONTEXT = 'Wl.Pay.Processor.Nuvei.Code.CSResponseSid';
 }
 
 ?>

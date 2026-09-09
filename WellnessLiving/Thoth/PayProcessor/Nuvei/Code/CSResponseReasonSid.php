@@ -97,11 +97,6 @@ class CSResponseReasonSid
    * The user has entered the PIN on the PED keyboard and the verification fails.
    */
   const WRONG_PIN = 16;
-
-  /**
-   * @inheritDoc
-   */
-  const _TRANSLATION_CONTEXT = 'Wl.Pay.Processor.Nuvei.Code.CSResponseReasonSid';
 }
 
 ?>

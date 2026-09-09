@@ -184,11 +184,6 @@ class CSMessageFunctionSid
    * Only for Tip adjustment on terminal end from register.
    */
   const TIP_ADJUSTMENT_SYNC_RESPONSE = 23;
-
-  /**
-   * @inheritDoc
-   */
-  const _TRANSLATION_CONTEXT = 'Wl.Pay.Processor.Nuvei.Code.CSMessageFunctionSid';
 }
 
 ?>
