@@ -109,6 +109,12 @@ class UserInfoModel extends WlModelAbstract
    *   <dt>int `id_gender`</dt>
    *   <dd>The ID of the user's gender. One of the {@link AGenderSid} constants.</dd>
    * 
+   *   <dt>int `id_language`</dt>
+   *   <dd>
+   *     The ID of the language that is effective for the user.
+   *
+   *   </dd>
+   * 
    *   <dt>bool `is_customer_new`</dt>
    *   <dd>
    *     This will be `true` if the user has never made purchases or reservations in this business.
@@ -217,6 +223,14 @@ class UserInfoModel extends WlModelAbstract
    * @var int
    */
   public $id_gender;
+
+  /**
+   * The ID of the language that is currently effective for the user.
+   *
+   * @get result
+   * @var int
+   */
+  public $id_language;
 
   /**
    * This will be `true` if the user has Google Calendar linked to their account; otherwise, `false`.

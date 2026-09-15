@@ -25,6 +25,11 @@ abstract class RsSkinSid
   const APPOINTMENT = 7;
 
   /**
+   * Appointment booking wizard built by microservice widget team.
+   */
+  const APPOINTMENT_FOREIGN = 22;
+
+  /**
    * Online store widget.
    */
   const CATALOG_FOREIGN = 21;

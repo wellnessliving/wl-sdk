@@ -141,7 +141,7 @@ class PaymentModel extends WlModelAbstract
    *             </dl>
    *           </dd>
    * 
-   *           <dt>array `a_tax`</dt>
+   *           <dt>array<string, string> `a_tax`</dt>
    *           <dd>
    *             List of taxes to be applied to the registration fee.
    * Keys are tax keys. 

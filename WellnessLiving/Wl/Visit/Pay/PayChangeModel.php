@@ -8,8 +8,8 @@ use WellnessLiving\WlModelRequest;
 /**
  * Manages changing purchase option to pay for visit.
  *
- * @method WlModelRequest get() Returns data to change visit pay option.
- * @method WlModelRequest post() Saves user's promotion for certain attendance.
+ * @method WlModelRequest get() Returns data to change visit pay option.  Loads the visit and returns the list of purchase options available for it, marking the  option that is currently applied. Guest visits without a client have no purchase options.
+ * @method WlModelRequest post() Saves user's promotion for certain attendance.  Applies the selected promotion or session pass to the visit. Does nothing if the selected  option is already applied to the visit. Verifies that the caller has access to the visit  and that the selected promotion belongs to the visit's client before saving the change.
  */
 class PayChangeModel extends WlModelAbstract
 {
@@ -18,7 +18,19 @@ class PayChangeModel extends WlModelAbstract
    *
    * <dl>
    *   <dt>array `a_logo`</dt>
-   *   <dd> Empty array for not paid option.</dd>
+   *   <dd>
+   *     Promotion logo. Empty array for not paid option.
+   *     <dl>
+   *       <dt>int `i_height`</dt>
+   *       <dd>Image height.</dd>
+   * 
+   *       <dt>int `i_width`</dt>
+   *       <dd>Image width.</dd>
+   * 
+   *       <dt>string `url-thumbnail`</dt>
+   *       <dd>Thumbnail url.</dd>
+   *     </dl>
+   *   </dd>
    * 
    *   <dt>bool `is_select`</dt>
    *   <dd>Whether current element selected in the list.</dd>

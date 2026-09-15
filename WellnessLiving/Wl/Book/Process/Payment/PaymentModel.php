@@ -44,8 +44,12 @@ class PaymentModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    * 
-   *   <dt>array `a_signature`</dt>
-   *   <dd>Signatures for an item that requires agreement to several distinct contracts at once.</dd>
+   *   <dt>array<string, string> `a_signature`</dt>
+   *   <dd>
+   *     Signatures for an item that requires agreement to several distinct contracts at once.
+   * Keys are internal contract identifiers tied to this specific item and participant.
+   * Values are the signature of the matching contract.
+   *   </dd>
    * 
    *   <dt>int `id_purchase_item`</dt>
    *   <dd>The ID of purchase item type. One of {@link WlPurchaseItemSid} constants.</dd>

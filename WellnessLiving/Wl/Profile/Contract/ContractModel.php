@@ -24,11 +24,27 @@ class ContractModel extends WlModelAbstract
    * Use next structure:
    *
    * <dl>
-   *   <dt>array `a_event_list`</dt>
-   *   <dd>The tuition class schedule selected for the participant.</dd>
+   *   <dt>array[] `a_event_list`</dt>
+   *   <dd>
+   *     The tuition class schedule selected for the participant. Each element has the next keys:
+   *     <dl>
+   *       <dt>string `k_class`</dt>
+   *       <dd>Key of the event class. </dd>
    * 
-   *   <dt>array `a_registration_fee_list`</dt>
-   *   <dd>Registration fees to charge together with the tuition, keyed by participant key.</dd>
+   *       <dt>string `uid`</dt>
+   *       <dd>Key of the tuition participant. </dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>array[] `a_registration_fee_list`</dt>
+   *   <dd>
+   *     Registration fees to charge together with the tuition, keyed by participant key.
+   *  Each value has the next keys:
+   *     <dl>
+   *       <dt>string `m_amount`</dt>
+   *       <dd>Registration fee amount for the tuition participant.</dd>
+   *     </dl>
+   *   </dd>
    * </dl>
    * @get get
    * @var array
@@ -47,7 +63,7 @@ class ContractModel extends WlModelAbstract
    *   <dd>The text of this specific contract.</dd>
    * 
    *   <dt>string `uid`</dt>
-   *   <dd>Key of the visitor this contract applies to.</dd>
+   *   <dd>Key of the visitor this contract applies to. </dd>
    * </dl>
    * @get result
    * @var array

@@ -81,6 +81,14 @@ class DataModel extends WlModelAbstract
   public $id_currency;
 
   /**
+   * Default language of the business.
+   *
+   * @get result
+   * @var int
+   */
+  public $id_language;
+
+  /**
    * The Locale ID, used to search geo items.
    *
    * @get result

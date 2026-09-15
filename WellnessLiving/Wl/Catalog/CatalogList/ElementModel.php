@@ -10,9 +10,9 @@ use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Catalog\PurchaseOptionViewSid;
 use WellnessLiving\Wl\Coupon\Edit\ActivationSid;
 use WellnessLiving\Wl\Coupon\Edit\DurationTypeSid;
+use WellnessLiving\Wl\Promotion\Guest\Pass\GuestPassResetTypeSid;
 use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 use WellnessLiving\Wl\Service\ServiceSid;
-use WellnessLiving\Wl\Tax\WlTaxSid;
 use WellnessLiving\Wl\WlProgramSid;
 use WellnessLiving\Wl\WlSaleSid;
 
@@ -29,7 +29,7 @@ class ElementModel extends WlModelAbstract
    * The age restriction configuration.
    *
    * Age restrictions for an item apply when they're configured for a specific item and the API is requested from the backend
-   * or when age restriction are public.
+   * or when age restriction are public. `null` if age restrictions are not set for the item.
    *
    * <dl>
    *   <dt>int `i_age_from`</dt>
@@ -67,7 +67,7 @@ class ElementModel extends WlModelAbstract
    *   </dd>
    * </dl>
    * @get result
-   * @var array
+   * @var array|null
    */
   public $a_age_restriction;
 
@@ -162,6 +162,9 @@ class ElementModel extends WlModelAbstract
    * 
    *   <dt>int `id_duration_type`</dt>
    *   <dd>A way to specify a duration. One of {@link DurationTypeSid} constants.</dd>
+   * 
+   *   <dt>bool `is_price_breakdown`</dt>
+   *   <dd>Whether to display individual prices for each item in the package.</dd>
    * </dl>
    * @get result
    * @var array
@@ -175,7 +178,7 @@ class ElementModel extends WlModelAbstract
    *   <dt>string `f_amount`</dt>
    *   <dd>The fixed amount of the discount.</dd>
    * 
-   *   <dt>float `f_percent`</dt>
+   *   <dt>string `f_percent`</dt>
    *   <dd>The percentage amount of the discount.</dd>
    * 
    *   <dt>int `i_limit`</dt>
@@ -191,6 +194,45 @@ class ElementModel extends WlModelAbstract
    * @var array
    */
   public $a_discount_code = [];
+
+  /**
+   * Information about promotion guest pass. Empty array if promotion does not have guest pass or
+   * guest pass is not enabled.
+   *
+   * <dl>
+   *   <dt>int|null `i_limit`</dt>
+   *   <dd>Number of times guest pass can be used per period. `null` for unlimited guest pass.</dd>
+   * 
+   *   <dt>int|null `i_limit_daily`</dt>
+   *   <dd>Number of times guest pass can be used per day. `null` for limited guest pass.</dd>
+   * 
+   *   <dt>int|null `i_period`</dt>
+   *   <dd>Number of periods after which guest pass limits are reset. `null` for unlimited guest pass.</dd>
+   * 
+   *   <dt>int|null `id_period`</dt>
+   *   <dd>
+   *     Period type by which guest pass limits are reset. One of the {@link ADurationSid} constants. `null` for unlimited guest pass.
+   *   </dd>
+   * 
+   *   <dt>int|null `id_reset_type`</dt>
+   *   <dd>
+   *     Type by which guest pass limits are reset. One of {@link GuestPassResetTypeSid} constants.
+   *     `null` for unlimited guest pass.
+   *   </dd>
+   * 
+   *   <dt>string `k_promotion_guest`</dt>
+   *   <dd>Guest pass promotion key.</dd>
+   * 
+   *   <dt>string `text_limit`</dt>
+   *   <dd>Formatted guest pass limits.</dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>Guest pass promotion title.</dd>
+   * </dl>
+   * @get result
+   * @var array
+   */
+  public $a_guest_pass = [];
 
   /**
    * Image information:
@@ -220,7 +262,8 @@ class ElementModel extends WlModelAbstract
 
   /**
    * List of images.
-   * Keys are index and value is below information: 
+   *
+   * Keys are index and each element has the same structure as {@link ElementModel::$a_image} field.
    *
    * <dl>
    *   <dt>int `i_height`</dt>
@@ -230,8 +273,10 @@ class ElementModel extends WlModelAbstract
    *   <dd>The width in pixels.</dd>
    * 
    *   <dt>bool `is_empty`</dt>
-   *   <dd>`true` - item has no image (in this case ignore other keys of this array).
-   * `false` - item has an image.</dd>
+   *   <dd>
+   *     `true` - the item has no image (in this case, ignore the other keys of this array).
+   * `false` - the item has an image.
+   *   </dd>
    * 
    *   <dt>string `s_url`</dt>
    *   <dd>The image URL.</dd>
@@ -252,7 +297,7 @@ class ElementModel extends WlModelAbstract
    *   <dd>The duration of a single period. One of the {@link ADurationSid} constants.</dd>
    * 
    *   <dt>int `i_period`</dt>
-   *   <dd>The number of periods specified by <var>id_period</var> between individual payments.</dd>
+   *   <dd>The number of periods specified by `id_period` between individual payments.</dd>
    * 
    *   <dt>string `k_currency`</dt>
    *   <dd>The payment currency Key.</dd>
@@ -279,17 +324,126 @@ class ElementModel extends WlModelAbstract
    * <dl>
    *   <dt>array `a_data`</dt>
    *   <dd>
-   *     Contains additional data for the sale item.
-   * For Package, it contains also the following key:
-   * 
-   * The same structure as {@link ElementModel::$a_data} has.
+   *     Contains additional data for the sale item. The same structure as {@link ElementModel::$a_data} has.
    *     <dl>
-   *       <dt>bool `is_price_breakdown`</dt>
+   *       <dt>int[] `a_service_access`</dt>
    *       <dd>
-   *         Whether to display individual prices for each item in the package.
-   * `true` display individual prices for each item in the package,
-   * `false` display a single total price for the package.
+   *         Access to services for a purchase option.
+   * Keys are one of the {@link ServiceSid} constants, values are one of the {@link AFlagSid}
+   * constants. Set only for relevant purchase option service category.
+   * {@link AFlagSid::ON} access to some services.
+   * {@link AFlagSid::OFF} no access to services. It can be set only for classes and events.
+   * {@link AFlagSid::ALL} access to all services. It can be set only for classes and events.
+   * For purchase options with appointments and assets service category status is always {@link AFlagSid::ON}.
    *       </dd>
+   * 
+   *       <dt>bool `is_renew_public`</dt>
+   *       <dd>
+   *         This applies only for promotions.
+   * `true` - clients can set promotion auto-renew.
+   * `false` - clients can't set promotion auto-renew.
+   *       </dd>
+   * 
+   *       <dt>array[] `a_component`</dt>
+   *       <dd>
+   *         This applies only for coupons. Coupon components information. Each element will contain the following keys:
+   *         <dl>
+   *           <dt>int `id_program`</dt>
+   *           <dd>Program ID. One of {@link WlProgramSid} ID's. Only applies to promotions.</dd>
+   * 
+   *           <dt>int `id_purchase_item`</dt>
+   *           <dd>Purchase item ID. One of {@link WlPurchaseItemSid} ID's.</dd>
+   * 
+   *           <dt>int `id_sale`</dt>
+   *           <dd>Sale ID. One of {@link WlSaleSid} ID's.</dd>
+   * 
+   *           <dt>string `k_id`</dt>
+   *           <dd>The identifier of the item.</dd>
+   * 
+   *           <dt>string `text_title`</dt>
+   *           <dd>The title of the item.</dd>
+   *         </dl>
+   *       </dd>
+   * 
+   *       <dt>array[] `a_staff`</dt>
+   *       <dd>
+   *         This applies to enrollment/event items. Staff list for class periods. Each element contains:
+   *         <dl>
+   *           <dt>string `k_staff`</dt>
+   *           <dd>@deprecated Legacy staff key.  Deprecated, use `uid_staff`.</dd>
+   * 
+   *           <dt>string `uid_staff`</dt>
+   *           <dd>Staff user key. </dd>
+   * 
+   *           <dt>string `text_family`</dt>
+   *           <dd>Staff last name.</dd>
+   * 
+   *           <dt>string `text_staff`</dt>
+   *           <dd>Staff display name.</dd>
+   *         </dl>
+   *       </dd>
+   * 
+   *       <dt>string `dl_expire`</dt>
+   *       <dd>Date of expiration of coupon, local date in MySQL format.</dd>
+   * 
+   *       <dt>string `dl_now`</dt>
+   *       <dd>Current date, local date in MySQL format.</dd>
+   * 
+   *       <dt>string `dl_start`</dt>
+   *       <dd>
+   *         Date to activate the coupon on, local date in MySQL format.
+   *   When `id_activation`=FIXED, this field contains a custom date to activate the coupon on, local date in MySQL format.
+   *       </dd>
+   * 
+   *       <dt>int `i_duration`</dt>
+   *       <dd>Number of periods the coupon is active. Type of a period is specified by `id_duration`.</dd>
+   * 
+   *       <dt>int `id_activation`</dt>
+   *       <dd>Type of a coupon activation date specification. One of {@link ActivationSid} constants.</dd>
+   * 
+   *       <dt>int `id_duration`</dt>
+   *       <dd>Duration of a period. A constant from {@link ADurationSid}.</dd>
+   * 
+   *       <dt>int `id_duration_type`</dt>
+   *       <dd>A way to specify a duration. One of {@link DurationTypeSid} constants.</dd>
+   * 
+   *       <dt>bool `is_price_breakdown`</dt>
+   *       <dd>Whether to display individual prices for each item in the package.</dd>
+   *     </dl>
+   *   </dd>
+   * 
+   *   <dt>array `a_guest_pass`</dt>
+   *   <dd>
+   *     Information about promotion guest pass. The same structure as {@link ElementModel::$a_guest_pass} has.
+   *     <dl>
+   *       <dt>int|null `i_limit`</dt>
+   *       <dd>Number of times guest pass can be used per period. `null` for unlimited guest pass.</dd>
+   * 
+   *       <dt>int|null `i_limit_daily`</dt>
+   *       <dd>Number of times guest pass can be used per day. `null` for limited guest pass.</dd>
+   * 
+   *       <dt>int|null `i_period`</dt>
+   *       <dd>Number of periods after which guest pass limits are reset. `null` for unlimited guest pass.</dd>
+   * 
+   *       <dt>int|null `id_period`</dt>
+   *       <dd>
+   *         Period type by which guest pass limits are reset. One of the {@link ADurationSid} constants. `null` for unlimited guest pass.
+   *       </dd>
+   * 
+   *       <dt>int|null `id_reset_type`</dt>
+   *       <dd>
+   *         Type by which guest pass limits are reset. One of {@link GuestPassResetTypeSid} constants.
+   *     `null` for unlimited guest pass.
+   *       </dd>
+   * 
+   *       <dt>string `k_promotion_guest`</dt>
+   *       <dd>Guest pass promotion key.</dd>
+   * 
+   *       <dt>string `text_limit`</dt>
+   *       <dd>Formatted guest pass limits.</dd>
+   * 
+   *       <dt>string `text_title`</dt>
+   *       <dd>Guest pass promotion title.</dd>
    *     </dl>
    *   </dd>
    * 
@@ -343,33 +497,8 @@ class ElementModel extends WlModelAbstract
    *     </dl>
    *   </dd>
    * 
-   *   <dt>array[] `a_tax`</dt>
-   *   <dd>
-   *     Contains information about taxes.
-   * 
-   *     <dl>
-   *       <dt>float `f_tax`</dt>
-   *       <dd>The calculated tax amount applied by this rule.</dd>
-   * 
-   *       <dt>string `f_tax_discount`</dt>
-   *       <dd>The tax amount after applying all discounts.</dd>
-   * 
-   *       <dt>string `f_tax_discount_login`</dt>
-   *       <dd>The tax amount after applying the client type discount only.</dd>
-   * 
-   *       <dt>float `f_value`</dt>
-   *       <dd>The tax rate. Its meaning depends on `id_tax`.</dd>
-   * 
-   *       <dt>int `id_tax`</dt>
-   *       <dd>The tax type. One of {@link WlTaxSid} constants.</dd>
-   * 
-   *       <dt>string `k_tax`</dt>
-   *       <dd>The tax key. </dd>
-   * 
-   *       <dt>string `s_tax`</dt>
-   *       <dd>The tax name.</dd>
-   *     </dl>
-   *   </dd>
+   *   <dt>string[] `a_tax`</dt>
+   *   <dd>Tax amounts keyed by tax key. The same structure as {@link ElementModel::$a_tax} has.</dd>
    * 
    *   <dt>int `id_purchase_option_view`</dt>
    *   <dd>The Purchase Option view type. One of the {@link PurchaseOptionViewSid} constants.</dd>
@@ -410,7 +539,7 @@ class ElementModel extends WlModelAbstract
    * 
    *   <dt>string `k_shop_product_option`</dt>
    *   <dd>
-   *     The product option or <tt>0</tt> for any other cases. 
+   *     The product option key or `0` for any other cases. 
    *   </dd>
    * </dl>
    * @get get
@@ -420,32 +549,10 @@ class ElementModel extends WlModelAbstract
 
   /**
    * A list of the item's taxes.
-   * Keys refer tax keys, and values refer to the amount of tax.
+   * Keys are tax keys, and values are tax amounts.
    *
-   * <dl>
-   *   <dt>float `f_tax`</dt>
-   *   <dd>The calculated tax amount applied by this rule.</dd>
-   * 
-   *   <dt>string `f_tax_discount`</dt>
-   *   <dd>The tax amount after applying all discounts.</dd>
-   * 
-   *   <dt>string `f_tax_discount_login`</dt>
-   *   <dd>The tax amount after applying the client type discount only.</dd>
-   * 
-   *   <dt>float `f_value`</dt>
-   *   <dd>The tax rate. Its meaning depends on `id_tax`.</dd>
-   * 
-   *   <dt>int `id_tax`</dt>
-   *   <dd>The tax type. One of {@link WlTaxSid} constants.</dd>
-   * 
-   *   <dt>string `k_tax`</dt>
-   *   <dd>The tax key. </dd>
-   * 
-   *   <dt>string `s_tax`</dt>
-   *   <dd>The tax name.</dd>
-   * </dl>
    * @get result
-   * @var array[]
+   * @var string[]
    */
   public $a_tax;
 
@@ -720,7 +827,7 @@ class ElementModel extends WlModelAbstract
    *   <dd>The item key.</dd>
    * 
    *   <dt>string `k_shop_product_option`</dt>
-   *   <dd>The product option key. This will be <tt>0</tt> if the item isn't a product.</dd>
+   *   <dd>The product option key. This will be `0` if the item isn't a product.</dd>
    * </dl>
    * @get get
    * @var string|null

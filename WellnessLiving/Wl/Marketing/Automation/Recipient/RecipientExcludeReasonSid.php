@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Marketing\Automation\Recipient;
 /**
  * List of recipient exclude reasons.
  *
- * Last used ID: 20.
+ * Last used ID: 21.
  */
 class RecipientExcludeReasonSid
 {
@@ -23,6 +23,11 @@ class RecipientExcludeReasonSid
    * Excluded by gender (audience filter).
    */
   const GENDER = 20;
+
+  /**
+   * Excluded by lead stage (audience filter).
+   */
+  const LEAD_STAGE = 21;
 
   /**
    * Excluded by home location (audience filter).

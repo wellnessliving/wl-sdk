@@ -88,8 +88,12 @@ class InviteListModel extends WlModelAbstract
    *   </dd>
    * 
    *   <dt>string|null `dtl_visit`</dt>
-   *   <dd>Visit date and time in MySQL datetime format.
-   * `null` if no visit is associated.</dd>
+   *   <dd>
+   *     Visit date and time in MySQL datetime format, in the timezone of the location the visit took
+   * place at - not necessarily the same as `text_timezone` below, when the guest pass was redeemed
+   * at a sibling franchisee business via regional access.
+   * `null` if no visit is associated.
+   *   </dd>
    * 
    *   <dt>string|null `dtu_accept`</dt>
    *   <dd>Acceptance date and time in UTC in MySQL datetime format.
