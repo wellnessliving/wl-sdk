@@ -17,161 +17,161 @@ use WellnessLiving\Wl\Skin\Application\Upgrade\AppUpdateTypeEnum;
 class ApplicationResourceMaterialModel extends WlModelAbstract
 {
   /**
-   * Code version.
-   *
-   * @post post
-   * @var int
-   */
+ * Code version.
+ *
+ * @post post
+ * @var int
+ */
   public $i_version = 1;
 
   /**
-   * Application category in the store.
-   * One of {@link ApplicationCategorySid} constants.
-   * `0` if no category is selected.
-   *
-   * @post post
-   * @var int
-   */
+ * Application category in the store.
+ * One of {@link ApplicationCategorySid} constants.
+ * `0` if no category is selected.
+ *
+ * @post post
+ * @var int
+ */
   public $id_category = 0;
 
   /**
-   * Type of application update.
-   * One of {@link AppUpdateTypeEnum} constants.
-   *
-   * @post post
-   * @var int
-   */
+ * Type of application update.
+ * One of {@link AppUpdateTypeEnum} constants.
+ *
+ * @post post
+ * @var int
+ */
   public $id_version_change = 1;
 
   /**
-   * Business key.
-   *
-   * @post post
-   * @var string
-   */
+ * Business key.
+ *
+ * @post post
+ * @var string
+ */
   public $k_business = '0';
 
   /**
-   * Reversed client ID of the iOS application on Firebase.
-   *
-   * @post post
-   * @var string
-   */
+ * Reversed client ID of the iOS application on Firebase.
+ *
+ * @post post
+ * @var string
+ */
   public $s_firebase_ios = '';
 
   /**
-   * Android splash screen background color in hex format.
-   *
-   * @post post
-   * @var string
-   */
+ * Android splash screen background color in hex format.
+ *
+ * @post post
+ * @var string
+ */
   public $s_splash_color_android = '';
 
   /**
-   * Version name for the App Store and Google Play builds.
-   *
-   * @post post
-   * @var string
-   */
+ * Version name for the App Store and Google Play builds.
+ *
+ * @post post
+ * @var string
+ */
   public $s_version_name = '2.0.1';
 
   /**
-   * Short application description in the store (up to 80 characters).
-   *
-   * @post post
-   * @var string
-   */
+ * Short application description in the store (up to 80 characters).
+ *
+ * @post post
+ * @var string
+ */
   public $text_annotation = '';
 
   /**
-   * Available countries for application distribution (comma-separated list).
-   *
-   * @post post
-   * @var string
-   */
+ * Available countries for application distribution (comma-separated list).
+ *
+ * @post post
+ * @var string
+ */
   public $text_country = '';
 
   /**
-   * Full application description in the store.
-   *
-   * @post post
-   * @var string
-   */
+ * Full application description in the store.
+ *
+ * @post post
+ * @var string
+ */
   public $text_description = '';
 
   /**
-   * Full application description specific to Google Play.
-   * If empty, `text_description` is used for Google Play as well.
-   *
-   * @post post
-   * @var string
-   */
+ * Full application description specific to Google Play.
+ * If empty, `text_description` is used for Google Play as well.
+ *
+ * @post post
+ * @var string
+ */
   public $text_description_google = '';
 
   /**
-   * Bundle ID / package name (e.g. `com.fitness.studio`).
-   *
-   * @post post
-   * @var string
-   */
+ * Bundle ID / package name (e.g. `com.fitness.studio`).
+ *
+ * @post post
+ * @var string
+ */
   public $text_domain = '';
 
   /**
-   * Support email address shown in the store listing.
-   *
-   * `null` to not change exists email.
-   *
-   * @post post
-   * @var string|null
-   */
+ * Support email address shown in the store listing.
+ *
+ * `null` to not change exists email.
+ *
+ * @post post
+ * @var string|null
+ */
   public $text_email = null;
 
   /**
-   * Additional information about the application build.
-   *
-   * @post post
-   * @var string
-   */
+ * Additional information about the application build.
+ *
+ * @post post
+ * @var string
+ */
   public $text_information = '';
 
   /**
-   * App Store search keywords (comma-separated).
-   *
-   * @post post
-   * @var string
-   */
+ * App Store search keywords (comma-separated).
+ *
+ * @post post
+ * @var string
+ */
   public $text_keyword = '';
 
   /**
-   * Application name shown on the device home screen.
-   *
-   * @post post
-   * @var string
-   */
+ * Application name shown on the device home screen.
+ *
+ * @post post
+ * @var string
+ */
   public $text_name = '';
 
   /**
-   * Support phone number shown in the store listing.
-   *
-   * @post post
-   * @var string
-   */
+ * Support phone number shown in the store listing.
+ *
+ * @post post
+ * @var string
+ */
   public $text_phone = '';
 
   /**
-   * Application title in the App Store listing.
-   *
-   * @post post
-   * @var string
-   */
+ * Application title in the App Store listing.
+ *
+ * @post post
+ * @var string
+ */
   public $text_title = '';
 
   /**
-   * Support website URL shown in the store listing.
-   *
-   * @post post
-   * @var string
-   */
+ * Support website URL shown in the store listing.
+ *
+ * @post post
+ * @var string
+ */
   public $text_website = '';
 }
 

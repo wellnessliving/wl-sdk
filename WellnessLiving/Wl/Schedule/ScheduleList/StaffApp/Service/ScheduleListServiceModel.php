@@ -13,33 +13,33 @@ use WellnessLiving\WlModelRequest;
 class ScheduleListServiceModel extends WlModelAbstract
 {
   /**
-   * List of appointment services. Keys - service IDs; primary key in the `rs_service` table. Values - service title.
-   *
-   * @get result
-   * @var array<string, string>
-   */
+ * List of appointment services. Keys - service IDs; primary key in the `rs_service` table. Values - service title.
+ *
+ * @get result
+ * @var array<string, string>
+ */
   public $a_service;
 
   /**
-   * Business key.
-   *
-   * @delete get
-   * @get get
-   * @post get
-   * @put get
-   * @var string
-   */
+ * Business key.
+ *
+ * @delete get
+ * @get get
+ * @post get
+ * @put get
+ * @var string
+ */
   public $k_business = null;
 
   /**
-   * User key.
-   *
-   * @delete get
-   * @get get
-   * @post get
-   * @put get
-   * @var string
-   */
+ * User key.
+ *
+ * @delete get
+ * @get get
+ * @post get
+ * @put get
+ * @var string
+ */
   public $uid = null;
 }
 

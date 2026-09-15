@@ -18,47 +18,47 @@ use WellnessLiving\Wl\RsRewardScoreSid;
 class ReferralInfoModel extends WlModelAbstract
 {
   /**
-   * Total reward points earned by this user for referral registration ({@link RsRewardScoreSid::REFER_REGISTER}).
-   *
-   * @get result
-   * @var int
-   */
+ * Total reward points earned by this user for referral registration ({@link RsRewardScoreSid::REFER_REGISTER}).
+ *
+ * @get result
+ * @var int
+ */
   public $i_point = 0;
 
   /**
-   * Number of invited referrals.
-   *
-   * @get result
-   * @var int
-   */
+ * Number of invited referrals.
+ *
+ * @get result
+ * @var int
+ */
   public $i_referral = 0;
 
   /**
-   * Business key.
-   *
-   * @get get
-   * @var string
-   */
+ * Business key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * User key of the referrer whose statistics are being requested.
-   *
-   * @get get
-   * @var string
-   */
+ * User key of the referrer whose statistics are being requested.
+ *
+ * @get get
+ * @var string
+ */
   public $uid = '';
 
   /**
-   * Shareable invite link for the referrer.
-   *
-   * Navigates to the business registration page with the referrer's encrypted user key as the
-   *  `s_referral` parameter. When a new client registers through this link, the "Referred By"
-   *  field is pre-filled with this user.
-   *
-   * @get result
-   * @var string
-   */
+ * Shareable invite link for the referrer.
+ *
+ * Navigates to the business registration page with the referrer's encrypted user key as the
+ *  `s_referral` parameter. When a new client registers through this link, the "Referred By"
+ *  field is pre-filled with this user.
+ *
+ * @get result
+ * @var string
+ */
   public $url_referral = '';
 }
 

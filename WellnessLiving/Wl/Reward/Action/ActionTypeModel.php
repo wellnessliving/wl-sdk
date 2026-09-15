@@ -14,31 +14,31 @@ use WellnessLiving\Wl\RsRewardScoreSid;
 class ActionTypeModel extends WlModelAbstract
 {
   /**
-   * Information about reward actions. Every element has next keys:
-   *
-   * <dl>
-   *   <dt>int `i_score`</dt>
-   *   <dd>Number of points for this reward action.</dd>
-   * </dl>
-   * @get result
-   * @var array[]
-   */
+ * Information about reward actions. Every element has next keys:
+ *
+ * <dl>
+ *   <dt>int `i_score`</dt>
+ *   <dd>Number of points for this reward action.</dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
   public $a_reward_action;
 
   /**
-   * ID of type of reward action. One of {@link RsRewardScoreSid} constants.
-   *
-   * @get get
-   * @var int
-   */
+ * ID of type of reward action. One of {@link RsRewardScoreSid} constants.
+ *
+ * @get get
+ * @var int
+ */
   public $id_reward_score = 0;
 
   /**
-   * Key of a business to show information for.
-   *
-   * @get get
-   * @var string
-   */
+ * Key of a business to show information for.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '0';
 }
 

@@ -20,104 +20,105 @@ use WellnessLiving\Wl\Report\Save\ReportSaveModel;
 class ReportDashboardModel extends WlModelAbstract
 {
   /**
-   * Filter raw data of the report.
-   *
-   * Keys are filter field names, values are the raw filter values.
-   *
-   * @post post
-   * @put post
-   * @var array<string, string>
-   *
-   * @deprecated Use {@link ReportDashboardModel::$json_filter}.
-   * This variable do not get empty values of filters from HTML forms.
-   */
+ * Filter raw data of the report.
+ *
+ * Keys are filter field names, values are the raw filter values.
+ *
+ * @post post
+ * @put post
+ * @var array<string, string>
+ * @deprecated Use {@link ReportDashboardModel::$json_filter}.
+ * This variable do not get empty values of filters from HTML forms.
+ */
   public $a_filter;
 
   /**
-   * View widget settings raw data of the saved report.
-   *
-   * Keys are widget setting names, values are the raw setting values.
-   *
-   * @post post
-   * @put post
-   * @var array<string, string>
-   */
+ * View widget settings raw data of the saved report.
+ *
+ * Keys are widget setting names, values are the raw setting values.
+ *
+ * @post post
+ * @put post
+ * @var array<string, string>
+ */
   public $a_settings;
 
   /**
-   * CID of the controller class.
-   *
-   * @post post
-   * @put post
-   * @var int
-   */
+ * CID of the controller class.
+ *
+ * @post post
+ * @put post
+ * @var int
+ */
   public $cid_controller;
 
   /**
-   * Filter raw data of the saved report. Uses to save empty filter values, actual when empty filter is the same as all
-   * values are chosen.
-   *
-   * Use this value instead of {@link ReportDashboardModel::$a_filter}.
-   *
-   * In this array, key is name of a filter field.
-   *
-   * @post post
-   * @put post
-   * @var string
-   */
+ * Filter raw data of the saved report. Uses to save empty filter values, actual when empty filter is the same as all
+ * values are chosen.
+ *
+ * Use this value instead of {@link ReportDashboardModel::$a_filter}.
+ *
+ * In this array, key is name of a filter field.
+ *
+ * @post post
+ * @put post
+ * @var string
+ */
   public $json_filter = '[]';
 
   /**
-   * Business key of the report.
-   *
-   * @post get
-   * @put get
-   * @var string
-   */
+ * Business key of the report.
+ *
+ * @post get
+ * @put get
+ * @var string
+ */
   public $k_business;
 
   /**
-   * Report dashboard key to which report should be added.
-   *
-   * @post post
-   * @put post
-   * @var string
-   */
+ * Report dashboard key to which report should be added.
+ *
+ * @post post
+ * @put post
+ * @var string
+ */
   public $k_report_dashboard;
 
   /**
-   * Report save key.
-   *
-   * @put get
-   * @var string
-   */
+ * Report save key.
+ *
+ * @put get
+ * @var string
+ */
   public $k_report_save;
 
   /**
-   * Description of the report.
-   *
-   * @post post
-   * @put post
-   * @var string
-   */
+ * Description of the report.
+ *
+ * @decorator trim
+ * @post post
+ * @put post
+ * @var string
+ */
   public $text_description;
 
   /**
-   * Title of the report.
-   *
-   * @post post
-   * @put post
-   * @var string
-   */
+ * Title of the report.
+ *
+ * @decorator trim
+ * @post post
+ * @put post
+ * @var string
+ */
   public $text_title;
 
   /**
-   * UID user's key of the actor.
-   *
-   * @post get
-   * @put get
-   * @var string
-   */
+ * UID user's key of the actor.
+ *
+ * @post get
+ * @put get
+ * @var string
+ */
   public $uid_actor;
 }
 

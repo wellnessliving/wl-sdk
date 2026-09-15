@@ -15,29 +15,29 @@ use WellnessLiving\Wl\Business\Account\Subscription\Fitbuilder\FitbuilderSubscri
 class FitbuilderSubscriptionModel extends WlModelAbstract
 {
   /**
-   * New subscription plan. One of {@link FitbuilderSubscriptionSid} constants.
-   *
-   * @post post
-   * @var int
-   */
+ * New subscription plan. One of {@link FitbuilderSubscriptionSid} constants.
+ *
+ * @post post
+ * @var int
+ */
   public $id_plan = 0;
 
   /**
-   * If Fitbuilder has free subscription plan is `true`, otherwise - `false`.
-   *
-   * @get result
-   * @var bool
-   * @see FitbuilderSubscriptionSid
-   */
+ * If Fitbuilder has free subscription plan is `true`, otherwise - `false`.
+ *
+ * @get result
+ * @var bool
+ * @see FitbuilderSubscriptionSid
+ */
   public $is_free = true;
 
   /**
-   * Business key to check Fitbuilder subscription plan.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * Business key to check Fitbuilder subscription plan.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $k_business = '0';
 }
 

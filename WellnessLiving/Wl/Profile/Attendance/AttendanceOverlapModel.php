@@ -13,151 +13,151 @@ use WellnessLiving\WlModelRequest;
 class AttendanceOverlapModel extends WlModelAbstract
 {
   /**
-   * List of visits that overlap with the specified data.
-   *
-   * <dl>
-   *   <dt>string `dtu_date`</dt>
-   *   <dd>Date and time of the visit.</dd>
-   * 
-   *   <dt>int `i_duration`</dt>
-   *   <dd>Duration of a service.</dd>
-   * 
-   *   <dt>int `i_end`</dt>
-   *   <dd>End datetime of the visit in unix format.</dd>
-   * 
-   *   <dt>int `i_end_local`</dt>
-   *   <dd>Local end datetime of the visit in unix format.</dd>
-   * 
-   *   <dt>int `i_start`</dt>
-   *   <dd>Start datetime of the visit in unix format.</dd>
-   * 
-   *   <dt>int `i_start_local`</dt>
-   *   <dd>Local start datetime of the visit in unix format.</dd>
-   * 
-   *   <dt>string `k_appointment`</dt>
-   *   <dd>Appointment key. </dd>
-   * 
-   *   <dt>string `k_business`</dt>
-   *   <dd>Business key. </dd>
-   * 
-   *   <dt>string `k_class_period`</dt>
-   *   <dd>Class period key. </dd>
-   * 
-   *   <dt>string `k_enrollment_book`</dt>
-   *   <dd>Enrollment book key. </dd>
-   * 
-   *   <dt>string `k_location`</dt>
-   *   <dd>Location key. </dd>
-   * 
-   *   <dt>string `text_date`</dt>
-   *   <dd>Local date of the visit, formatted according to the business locale.</dd>
-   * 
-   *   <dt>string `text_time_end`</dt>
-   *   <dd>Local end time of the visit, formatted according to the business locale.</dd>
-   * 
-   *   <dt>string `text_time_start`</dt>
-   *   <dd>Local start time of the visit, formatted according to the business locale.</dd>
-   * 
-   *   <dt>string `text_timezone`</dt>
-   *   <dd>Name of the timezone used to format `text_date`, `text_time_end` and `text_time_start`.</dd>
-   * 
-   *   <dt>string `text_title`</dt>
-   *   <dd>Title of a service</dd>
-   * </dl>
-   * @get result
-   * @var array[]
-   */
+ * List of visits that overlap with the specified data.
+ *
+ * <dl>
+ *   <dt>string `dtu_date`</dt>
+ *   <dd>Date and time of the visit.</dd>
+ * 
+ *   <dt>int `i_duration`</dt>
+ *   <dd>Duration of a service.</dd>
+ * 
+ *   <dt>int `i_end`</dt>
+ *   <dd>End datetime of the visit in unix format.</dd>
+ * 
+ *   <dt>int `i_end_local`</dt>
+ *   <dd>Local end datetime of the visit in unix format.</dd>
+ * 
+ *   <dt>int `i_start`</dt>
+ *   <dd>Start datetime of the visit in unix format.</dd>
+ * 
+ *   <dt>int `i_start_local`</dt>
+ *   <dd>Local start datetime of the visit in unix format.</dd>
+ * 
+ *   <dt>string `k_appointment`</dt>
+ *   <dd>Appointment key. </dd>
+ * 
+ *   <dt>string `k_business`</dt>
+ *   <dd>Business key. </dd>
+ * 
+ *   <dt>string `k_class_period`</dt>
+ *   <dd>Class period key. </dd>
+ * 
+ *   <dt>string `k_enrollment_book`</dt>
+ *   <dd>Enrollment book key. </dd>
+ * 
+ *   <dt>string `k_location`</dt>
+ *   <dd>Location key. </dd>
+ * 
+ *   <dt>string `text_date`</dt>
+ *   <dd>Local date of the visit, formatted according to the business locale.</dd>
+ * 
+ *   <dt>string `text_time_end`</dt>
+ *   <dd>Local end time of the visit, formatted according to the business locale.</dd>
+ * 
+ *   <dt>string `text_time_start`</dt>
+ *   <dd>Local start time of the visit, formatted according to the business locale.</dd>
+ * 
+ *   <dt>string `text_timezone`</dt>
+ *   <dd>Name of the timezone used to format `text_date`, `text_time_end` and `text_time_start`.</dd>
+ * 
+ *   <dt>string `text_title`</dt>
+ *   <dd>Title of a service</dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
   public $a_visit_list;
 
   /**
-   * Date of a selected service.
-   *
-   * @get get
-   * @var string|null
-   */
+ * Date of a selected service.
+ *
+ * @get get
+ * @var string|null
+ */
   public $dtu_date = null;
 
   /**
-   * Duration of a service.
-   *
-   * @get get
-   * @var int
-   */
+ * Duration of a service.
+ *
+ * @get get
+ * @var int
+ */
   public $i_duration = 0;
 
   /**
-   * Whether an asset is booking. Needed in case when a client is allowed to select a date and time, then
-   *   the available asset.
-   *
-   * @get get
-   * @var bool
-   */
+ * Whether an asset is booking. Needed in case when a client is allowed to select a date and time, then
+ *   the available asset.
+ *
+ * @get get
+ * @var bool
+ */
   public $is_appointment = false;
 
   /**
-   * Whether at least one overlap exists.
-   *
-   * @get result
-   * @var bool
-   */
+ * Whether at least one overlap exists.
+ *
+ * @get result
+ * @var bool
+ */
   public $is_overlap = false;
 
   /**
-   * Primary key of the business to add the user into.
-   *
-   * @get get
-   * @var string
-   */
+ * Primary key of the business to add the user into.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '0';
 
   /**
-   * Class period key.
-   *
-   * @get get
-   * @var string
-   */
+ * Class period key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_class_period = '0';
 
   /**
-   * Location key.
-   *
-   * @get get
-   * @var string
-   */
+ * Location key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_location = '0';
 
   /**
-   * Asset key.
-   *
-   * @get get
-   * @var string
-   */
+ * Asset key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_resource = '0';
 
   /**
-   * Service key.
-   *
-   * @get get
-   * @var string
-   */
+ * Service key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_service = '0';
 
   /**
-   * Key of timezone.
-   *
-   * `null` if not set then use default timezone client.
-   *
-   * @get get
-   * @var string
-   */
+ * Key of timezone.
+ *
+ * `null` if not set then use default timezone client.
+ *
+ * @get get
+ * @var string
+ */
   public $k_timezone = '0';
 
   /**
-   * UID of a user.
-   *
-   * @get get
-   * @var string
-   */
+ * UID of a user.
+ *
+ * @get get
+ * @var string
+ */
   public $uid = '0';
 }
 

@@ -13,27 +13,27 @@ use WellnessLiving\WlModelRequest;
 class LeadStageUserModel extends WlModelAbstract
 {
   /**
-   * Business key.
-   *
-   * @post get
-   * @var string
-   */
+ * Business key.
+ *
+ * @post get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * Key of the lead stage to move the client into.
-   *
-   * @post post
-   * @var string
-   */
+ * Key of the lead stage to move the client into.
+ *
+ * @post post
+ * @var string
+ */
   public $k_lead_stage = '';
 
   /**
-   * Key of the client whose stage is set.
-   *
-   * @post get
-   * @var string
-   */
+ * Key of the client whose stage is set.
+ *
+ * @post get
+ * @var string
+ */
   public $uid = '';
 }
 

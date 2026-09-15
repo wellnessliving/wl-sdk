@@ -13,28 +13,28 @@ use WellnessLiving\WlModelRequest;
 class ListModel extends WlModelAbstract
 {
   /**
-   * List of business staffs with the locations available to them, keyed by `uid_staff`.
-   *
-   * Each value is a list of locations available to that staff member: 
-   *
-   * <dl>
-   *   <dt>string `k_location`</dt>
-   *   <dd>Location key.</dd>
-   * 
-   *   <dt>string `text_title`</dt>
-   *   <dd>Location title.</dd>
-   * </dl>
-   * @get result
-   * @var array[]
-   */
+ * List of business staffs with the locations available to them, keyed by `uid_staff`.
+ *
+ * Each value is a list of locations available to that staff member: 
+ *
+ * <dl>
+ *   <dt>string `k_location`</dt>
+ *   <dd>Location key.</dd>
+ * 
+ *   <dt>string `text_title`</dt>
+ *   <dd>Location title.</dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
   public $a_location;
 
   /**
-   * Business key for which data will be collected.
-   *
-   * @get get
-   * @var string
-   */
+ * Business key for which data will be collected.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '0';
 }
 

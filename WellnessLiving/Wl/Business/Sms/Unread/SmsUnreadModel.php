@@ -14,21 +14,21 @@ use WellnessLiving\WlModelRequest;
 class SmsUnreadModel extends WlModelAbstract
 {
   /**
-   * Key of the business.
-   *
-   * @delete post
-   * @post post
-   * @var string
-   */
+ * Key of the business.
+ *
+ * @delete post
+ * @post post
+ * @var string
+ */
   public $k_business;
 
   /**
-   * User key with whom you want to delete unread messages.
-   *
-   * @delete post
-   * @post post
-   * @var string
-   */
+ * User key with whom you want to delete unread messages.
+ *
+ * @delete post
+ * @post post
+ * @var string
+ */
   public $uid;
 }
 

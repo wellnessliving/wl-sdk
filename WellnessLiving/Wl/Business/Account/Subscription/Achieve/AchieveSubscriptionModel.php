@@ -13,29 +13,29 @@ use WellnessLiving\WlModelRequest;
 class AchieveSubscriptionModel extends WlModelAbstract
 {
   /**
-   * If Achieve app has free subscription plan is `true`, otherwise (white label, professional) - `false`.
-   *
-   * @get result
-   * @var bool
-   * @see AchieveSubscriptionSid::FREE
-   */
+ * If Achieve app has free subscription plan is `true`, otherwise (white label, professional) - `false`.
+ *
+ * @get result
+ * @var bool
+ * @see AchieveSubscriptionSid::FREE
+ */
   public $is_free = false;
 
   /**
-   * If Achieve app has white label subscription plan is `true`, otherwise (free, professional) - `false`.
-   *
-   * @get result
-   * @var bool
-   * @see AchieveSubscriptionSid::WHITE
-   */
+ * If Achieve app has white label subscription plan is `true`, otherwise (free, professional) - `false`.
+ *
+ * @get result
+ * @var bool
+ * @see AchieveSubscriptionSid::WHITE
+ */
   public $is_white_label = false;
 
   /**
-   * Business key to check Achieve app subscription plan.
-   *
-   * @get get
-   * @var string
-   */
+ * Business key to check Achieve app subscription plan.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '0';
 }
 

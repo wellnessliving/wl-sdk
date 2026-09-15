@@ -13,30 +13,30 @@ use WellnessLiving\WlModelRequest;
 class ProfilePurchaseOptionModel extends WlModelAbstract
 {
   /**
-   * User's active purchase options data.
-   * For more details see .
-   *
-   * Serialized with JSON.
-   *
-   * @get result
-   * @var string
-   */
+ * User's active purchase options data.
+ * For more details see .
+ *
+ * Serialized with JSON.
+ *
+ * @get result
+ * @var string
+ */
   public $json_promotion_active = '';
 
   /**
-   * The key of the business.
-   *
-   * @get get
-   * @var string
-   */
+ * The key of the business.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '0';
 
   /**
-   * UID of a user.
-   *
-   * @get get
-   * @var string
-   */
+ * UID of a user.
+ *
+ * @get get
+ * @var string
+ */
   public $uid = '0';
 }
 

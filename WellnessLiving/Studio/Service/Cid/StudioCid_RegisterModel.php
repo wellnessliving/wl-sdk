@@ -15,19 +15,19 @@ use WellnessLiving\WlModelRequest;
 class StudioCid_RegisterModel extends WlModelAbstract
 {
   /**
-   * CID of requested class.
-   *
-   * @post result
-   * @var int
-   */
+ * CID of requested class.
+ *
+ * @post result
+ * @var int
+ */
   public $cid;
 
   /**
-   * Name of the class to register.
-   *
-   * @post post
-   * @var string
-   */
+ * Name of the class to register.
+ *
+ * @post post
+ * @var string
+ */
   public $s_class;
 }
 

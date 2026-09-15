@@ -20,68 +20,68 @@ use WellnessLiving\WlModelRequest;
 class MailUseOkModel extends WlModelAbstract
 {
   /**
-   * The list of fields with missing information.
-   * Each element is an array containing the following data:
-   *
-   * <dl>
-   *   <dt>string `html_message`</dt>
-   *   <dd>The error message.</dd>
-   * 
-   *   <dt>string `s_field`</dt>
-   *   <dd>The name of the field missing information.
-   * Given in the format `k_field.name`.</dd>
-   * </dl>
-   * @post result
-   * @var array
-   */
+ * The list of fields with missing information.
+ * Each element is an array containing the following data:
+ *
+ * <dl>
+ *   <dt>string `html_message`</dt>
+ *   <dd>The error message.</dd>
+ * 
+ *   <dt>string `s_field`</dt>
+ *   <dd>The name of the field missing information.
+ * Given in the format `k_field.name`.</dd>
+ * </dl>
+ * @post result
+ * @var array
+ */
   public $a_error_list;
 
   /**
-   * This value is `true` if this user is a lead. `false` if otherwise.
-   *
-   * @post post
-   * @var bool
-   */
+ * This value is `true` if this user is a lead. `false` if otherwise.
+ *
+ * @post post
+ * @var bool
+ */
   public $is_lead = false;
 
   /**
-   * The business key used internally by WellnessLiving.
-   *
-   * @post post
-   * @var string
-   */
+ * The business key used internally by WellnessLiving.
+ *
+ * @post post
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * The Lead Capture Widget skin key. This is used only if a lead was added.
-   *
-   * @post post
-   * @var string
-   */
+ * The Lead Capture Widget skin key. This is used only if a lead was added.
+ *
+ * @post post
+ * @var string
+ */
   public $k_skin = '';
 
   /**
-   * The result code of the request.
-   *
-   * @post result
-   * @var string
-   */
+ * The result code of the request.
+ *
+ * @post result
+ * @var string
+ */
   public $s_code;
 
   /**
-   * The result message of the request.
-   *
-   * @post result
-   * @var string
-   */
+ * The result message of the request.
+ *
+ * @post result
+ * @var string
+ */
   public $text_message;
 
   /**
-   * The user key.
-   *
-   * @post post
-   * @var string
-   */
+ * The user key.
+ *
+ * @post post
+ * @var string
+ */
   public $uid = '';
 }
 

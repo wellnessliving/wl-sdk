@@ -14,28 +14,28 @@ use WellnessLiving\Wl\RsMailSid;
 class SendMailModel extends WlModelAbstract
 {
   /**
-   * ID of the email.
-   *
-   * @post get
-   * @var int
-   * @see RsMailSid
-   */
+ * ID of the email.
+ *
+ * @post get
+ * @var int
+ * @see RsMailSid
+ */
   public $id_mail = 0;
 
   /**
-   * Business key.
-   *
-   * @post get
-   * @var string
-   */
+ * Business key.
+ *
+ * @post get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * UID of a user for whom an email should be sent.
-   *
-   * @post get
-   * @var string
-   */
+ * UID of a user for whom an email should be sent.
+ *
+ * @post get
+ * @var string
+ */
   public $uid = '';
 }
 

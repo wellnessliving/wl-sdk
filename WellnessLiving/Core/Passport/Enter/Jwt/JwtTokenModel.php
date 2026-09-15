@@ -13,11 +13,11 @@ use WellnessLiving\WlModelRequest;
 class JwtTokenModel extends WlModelAbstract
 {
   /**
-   * Jwt token that allows to authenticate user.
-   *
-   * @get result
-   * @var string
-   */
+ * Jwt token that allows to authenticate user.
+ *
+ * @get result
+ * @var string
+ */
   public $s_token = '';
 }
 

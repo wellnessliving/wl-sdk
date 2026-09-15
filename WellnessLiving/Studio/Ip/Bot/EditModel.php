@@ -15,63 +15,71 @@ use WellnessLiving\WlModelRequest;
 class EditModel extends WlModelAbstract
 {
   /**
-   * Whether this bot is active.
-   *
-   * @get result
-   * @post post
-   * @var bool
-   */
+ * Whether this bot is active.
+ *
+ * @get result
+ * @post post
+ * @var bool
+ */
   public $is_active;
 
   /**
-   * If a bot is edited, its key is stored here.
-   *
-   * <tt>null</tt> if a new bot should be created.
-   * This value is required for create and delete operations.
-   *
-   * @delete get
-   * @get get
-   * @post get,result
-   * @var string|null
-   */
+ * If a bot is edited, its key is stored here.
+ *
+ * <tt>null</tt> if a new bot should be created.
+ * This value is required for create and delete operations.
+ *
+ * @delete get
+ * @get get
+ * @post get,result
+ * @var string|null
+ */
   public $k_ip_bot = null;
 
   /**
-   * Name of the bot.
-   *
-   * @get result
-   * @post post
-   * @var string
-   */
+ * Name of the bot.
+ *
+ * @decorator trim
+ * @get result
+ * @post post
+ * @rule length-max 128
+ * @rule length-min 1
+ * @var string
+ */
   public $text_bot;
 
   /**
-   * Network of the bot.
-   *
-   * Note that value sent here is ignored in a case {@link EditModel::$text_update} is not empty.
-   *
-   * @get result
-   * @post post
-   * @var string
-   */
+ * Network of the bot.
+ *
+ * Note that value sent here is ignored in a case {@link EditModel::$text_update} is not empty.
+ *
+ * @decorator trim
+ * @get result
+ * @post post
+ * @rule length-max 16384
+ * @var string
+ */
   public $text_network;
 
   /**
-   * Update password.
-   *
-   * @get result
-   * @post post
-   * @var string
-   */
+ * Update password.
+ *
+ * @decorator trim
+ * @get result
+ * @post post
+ * @rule length-max 128
+ * @var string
+ */
   public $text_password = '';
 
   /**
-   * Network update rules.
-   *
-   * @get result
-   * @post post
-   * @var string
-   */
+ * Network update rules.
+ *
+ * @get result
+ * @post post
+ * @rule length-max 16384
+ * @var string
+ */
   public $text_update = '';
 }
 

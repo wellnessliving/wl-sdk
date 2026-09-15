@@ -13,11 +13,11 @@ use WellnessLiving\WlModelRequest;
 class PrimaryModel extends WlModelAbstract
 {
   /**
-   * ID of pay bank.
-   *
-   * @put post
-   * @var string
-   */
+ * ID of pay bank.
+ *
+ * @put post
+ * @var string
+ */
   public $k_pay_bank;
 }
 

@@ -15,27 +15,27 @@ use WellnessLiving\WlModelRequest;
 class AlertModel extends WlModelAbstract
 {
   /**
-   * CID of the alert to be fired.
-   *
-   * @post post
-   * @var int
-   */
+ * CID of the alert to be fired.
+ *
+ * @post post
+ * @var int
+ */
   public $cid_alert = 0;
 
   /**
-   * Business key.
-   *
-   * @post get
-   * @var string
-   */
+ * Business key.
+ *
+ * @post get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * Conversation link assigned by the `AI Agent`.
-   *
-   * @post post
-   * @var string
-   */
+ * Conversation link assigned by the `AI Agent`.
+ *
+ * @post post
+ * @var string
+ */
   public $url_conversation = '';
 }
 

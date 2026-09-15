@@ -15,226 +15,226 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 class PurchaseElementListModel extends WlModelAbstract
 {
   /**
-   * A list of purchase items to get information for. Every element has the next keys:
-   *
-   * <dl>
-   *   <dt>array `a_config`</dt>
-   *   <dd>
-   *     Additional configuration.
-   *     <dl>
-   *       <dt>array `a_event_list`</dt>
-   *       <dd>
-   *         List of tuition events. 
-   * Each entry has the next structure:
-   *         <dl>
-   *           <dt>string `k_class`</dt>
-   *           <dd>Key of the event class. </dd>
-   * 
-   *           <dt>string `uid`</dt>
-   *           <dd>Key of the tuition participant. </dd>
-   *         </dl>
-   *       </dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>int `i_session`</dt>
-   *   <dd>The number of sessions booked simultaneously.</dd>
-   * 
-   *   <dt>int `id_purchase_item`</dt>
-   *   <dd>The ID of the purchase item type. One of the {@link WlPurchaseItemSid} constants.</dd>
-   * 
-   *   <dt>string `k_id`</dt>
-   *   <dd>
-   *     The key of the purchase item in the database. The name of the table in the database depends on <var>id_purchase_item</var>
-   *   </dd>
-   * 
-   *   <dt>string `k_login_prize`</dt>
-   *   <dd>The key of the user's prize. </dd>
-   * </dl>
-   * @get get
-   * @var array[]
-   */
+ * A list of purchase items to get information for. Every element has the next keys:
+ *
+ * <dl>
+ *   <dt>array `a_config`</dt>
+ *   <dd>
+ *     Additional configuration.
+ *     <dl>
+ *       <dt>array `a_event_list`</dt>
+ *       <dd>
+ *         List of tuition events. 
+ * Each entry has the next structure:
+ *         <dl>
+ *           <dt>string `k_class`</dt>
+ *           <dd>Key of the event class. </dd>
+ * 
+ *           <dt>string `uid`</dt>
+ *           <dd>Key of the tuition participant. </dd>
+ *         </dl>
+ *       </dd>
+ *     </dl>
+ *   </dd>
+ * 
+ *   <dt>int `i_session`</dt>
+ *   <dd>The number of sessions booked simultaneously.</dd>
+ * 
+ *   <dt>int `id_purchase_item`</dt>
+ *   <dd>The ID of the purchase item type. One of the {@link WlPurchaseItemSid} constants.</dd>
+ * 
+ *   <dt>string `k_id`</dt>
+ *   <dd>
+ *     The key of the purchase item in the database. The name of the table in the database depends on <var>id_purchase_item</var>
+ *   </dd>
+ * 
+ *   <dt>string `k_login_prize`</dt>
+ *   <dd>The key of the user's prize. </dd>
+ * </dl>
+ * @get get
+ * @var array[]
+ */
   public $a_purchase_item_request = [];
 
   /**
-   * Detailed information about the amounts for the purchase item list.
-   * Every element has the next keys:
-   *
-   * <dl>
-   *   <dt>array[] `a_event_list`</dt>
-   *   <dd>
-   *     Tuition events with calculated amounts.
-   * 
-   * Each entry has the next structure:
-   *     <dl>
-   *       <dt>array[]|null `a_discount`</dt>
-   *       <dd>
-   *         Discounts applied to the event, `null` if there are none. Every row has the next keys:
-   *         <dl>
-   *           <dt>int `id_discount_rule`</dt>
-   *           <dd>Discount rule type. One of {@link DiscountRuleSid} constants.</dd>
-   * 
-   *           <dt>string `m_discount`</dt>
-   *           <dd>Discount amount of this rule.</dd>
-   * 
-   *           <dt>string `text_discount`</dt>
-   *           <dd>Discount title. Only for {@link DiscountRuleSid::MANUAL}.</dd>
-   *         </dl>
-   *       </dd>
-   * 
-   *       <dt>string[]|null `a_tax`</dt>
-   *       <dd>
-   *         Taxes of the event. Keys are tax keys, values are tax amounts.
-   * 
-   *       </dd>
-   * 
-   *       <dt>string `k_class`</dt>
-   *       <dd>Key of the event class. </dd>
-   * 
-   *       <dt>string|null `m_checkout`</dt>
-   *       <dd>
-   *         The amount charged for this event right now, including tax. `0.00` when every
-   * installment payment is still ahead. `null` when the amount is not calculated yet.
-   *       </dd>
-   * 
-   *       <dt>string `m_deferred`</dt>
-   *       <dd>
-   *         The part of the event cost that is not charged right now, including tax. Goes to the
-   * installment plan or to the membership schedule, depending on the tuition billing mode.
-   *       </dd>
-   * 
-   *       <dt>string `m_discount`</dt>
-   *       <dd>Total discount amount applied to the event, `0.00` if there is none.</dd>
-   * 
-   *       <dt>string|null `m_price`</dt>
-   *       <dd>Price of the event within the tuition, before discount and tax.</dd>
-   * 
-   *       <dt>string `uid`</dt>
-   *       <dd>Key of the tuition participant. </dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>array[] `a_registration_fee_list`</dt>
-   *   <dd>
-   *     Registration fees with calculated amounts, keyed by participant key.
-   * 
-   * 
-   * Each value has the next structure:
-   *     <dl>
-   *       <dt>array[]|null `a_discount`</dt>
-   *       <dd>
-   *         Discounts applied to the fee, `null` if there are none. Every row has the next keys:
-   *         <dl>
-   *           <dt>int `id_discount_rule`</dt>
-   *           <dd>Discount rule type. One of {@link DiscountRuleSid} constants.</dd>
-   * 
-   *           <dt>string `m_discount`</dt>
-   *           <dd>Discount amount of this rule.</dd>
-   * 
-   *           <dt>string `text_discount`</dt>
-   *           <dd>Discount title. Only for {@link DiscountRuleSid::MANUAL}.</dd>
-   *         </dl>
-   *       </dd>
-   * 
-   *       <dt>string[] `a_tax`</dt>
-   *       <dd>
-   *         Taxes of the fee. Keys are tax keys, values are tax amounts.
-   * 
-   *       </dd>
-   * 
-   *       <dt>string `m_amount`</dt>
-   *       <dd>Registration fee amount for the participant, before discount and tax.</dd>
-   * 
-   *       <dt>string|null `m_checkout`</dt>
-   *       <dd>
-   *         The amount charged for this fee right now, including tax. A fee is either charged in
-   * full or deferred entirely, so `null` means the whole fee is deferred.
-   *       </dd>
-   * 
-   *       <dt>string `m_deferred`</dt>
-   *       <dd>The whole fee amount if the fee is deferred, `0.00` if it is charged right now.</dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>string[] `a_tax`</dt>
-   *   <dd>Information about taxes. The key refers to the tax key, and the value refers to the tax amount.</dd>
-   * 
-   *   <dt>int `id_purchase_item`</dt>
-   *   <dd>The ID of purchase item type. One of {@link WlPurchaseItemSid} constants.</dd>
-   * 
-   *   <dt>string `k_id`</dt>
-   *   <dd>The key of the purchase item in the database.</dd>
-   * 
-   *   <dt>string `m_checkout`</dt>
-   *   <dd>
-   *     The amount that has to be charged for the tuition right now, including tax. The other
-   * amounts of this row cover the full cost, including whatever is deferred to an installment
-   * plan or to a membership schedule.
-   * 
-   *   </dd>
-   * 
-   *   <dt>string `m_deferred`</dt>
-   *   <dd>
-   *     The part of the tuition cost that is not charged right now, including tax. Equals
-   * `m_cost` minus `m_checkout`. Rows for everything else are always paid for in full at once,
-   * so the amount to charge for the whole list is the sum of `m_cost` minus the sum of
-   * `m_deferred`.
-   * 
-   *   </dd>
-   * 
-   *   <dt>string `m_cost`</dt>
-   *   <dd>The cost of the purchase item (with taxes).</dd>
-   * 
-   *   <dt>string `m_discount`</dt>
-   *   <dd>The amount of the whole discount.</dd>
-   * 
-   *   <dt>string `m_discount_login`</dt>
-   *   <dd>The amount of the discount for the client type.</dd>
-   * 
-   *   <dt>string `m_price`</dt>
-   *   <dd>The price of the purchase item (with or without taxes, depending on regional standards).</dd>
-   * 
-   *   <dt>string `m_tax`</dt>
-   *   <dd>The amount of taxes for the purchase item.</dd>
-   * </dl>
-   * @get result
-   * @var array[]
-   */
+ * Detailed information about the amounts for the purchase item list.
+ * Every element has the next keys:
+ *
+ * <dl>
+ *   <dt>array[] `a_event_list`</dt>
+ *   <dd>
+ *     Tuition events with calculated amounts.
+ * 
+ * Each entry has the next structure:
+ *     <dl>
+ *       <dt>array[]|null `a_discount`</dt>
+ *       <dd>
+ *         Discounts applied to the event, `null` if there are none. Every row has the next keys:
+ *         <dl>
+ *           <dt>int `id_discount_rule`</dt>
+ *           <dd>Discount rule type. One of {@link DiscountRuleSid} constants.</dd>
+ * 
+ *           <dt>string `m_discount`</dt>
+ *           <dd>Discount amount of this rule.</dd>
+ * 
+ *           <dt>string `text_discount`</dt>
+ *           <dd>Discount title. Only for {@link DiscountRuleSid::MANUAL}.</dd>
+ *         </dl>
+ *       </dd>
+ * 
+ *       <dt>string[]|null `a_tax`</dt>
+ *       <dd>
+ *         Taxes of the event. Keys are tax keys, values are tax amounts.
+ * 
+ *       </dd>
+ * 
+ *       <dt>string `k_class`</dt>
+ *       <dd>Key of the event class. </dd>
+ * 
+ *       <dt>string|null `m_checkout`</dt>
+ *       <dd>
+ *         The amount charged for this event right now, including tax. `0.00` when every
+ * installment payment is still ahead. `null` when the amount is not calculated yet.
+ *       </dd>
+ * 
+ *       <dt>string `m_deferred`</dt>
+ *       <dd>
+ *         The part of the event cost that is not charged right now, including tax. Goes to the
+ * installment plan or to the membership schedule, depending on the tuition billing mode.
+ *       </dd>
+ * 
+ *       <dt>string `m_discount`</dt>
+ *       <dd>Total discount amount applied to the event, `0.00` if there is none.</dd>
+ * 
+ *       <dt>string|null `m_price`</dt>
+ *       <dd>Price of the event within the tuition, before discount and tax.</dd>
+ * 
+ *       <dt>string `uid`</dt>
+ *       <dd>Key of the tuition participant. </dd>
+ *     </dl>
+ *   </dd>
+ * 
+ *   <dt>array[] `a_registration_fee_list`</dt>
+ *   <dd>
+ *     Registration fees with calculated amounts, keyed by participant key.
+ * 
+ * 
+ * Each value has the next structure:
+ *     <dl>
+ *       <dt>array[]|null `a_discount`</dt>
+ *       <dd>
+ *         Discounts applied to the fee, `null` if there are none. Every row has the next keys:
+ *         <dl>
+ *           <dt>int `id_discount_rule`</dt>
+ *           <dd>Discount rule type. One of {@link DiscountRuleSid} constants.</dd>
+ * 
+ *           <dt>string `m_discount`</dt>
+ *           <dd>Discount amount of this rule.</dd>
+ * 
+ *           <dt>string `text_discount`</dt>
+ *           <dd>Discount title. Only for {@link DiscountRuleSid::MANUAL}.</dd>
+ *         </dl>
+ *       </dd>
+ * 
+ *       <dt>string[] `a_tax`</dt>
+ *       <dd>
+ *         Taxes of the fee. Keys are tax keys, values are tax amounts.
+ * 
+ *       </dd>
+ * 
+ *       <dt>string `m_amount`</dt>
+ *       <dd>Registration fee amount for the participant, before discount and tax.</dd>
+ * 
+ *       <dt>string|null `m_checkout`</dt>
+ *       <dd>
+ *         The amount charged for this fee right now, including tax. A fee is either charged in
+ * full or deferred entirely, so `null` means the whole fee is deferred.
+ *       </dd>
+ * 
+ *       <dt>string `m_deferred`</dt>
+ *       <dd>The whole fee amount if the fee is deferred, `0.00` if it is charged right now.</dd>
+ *     </dl>
+ *   </dd>
+ * 
+ *   <dt>string[] `a_tax`</dt>
+ *   <dd>Information about taxes. The key refers to the tax key, and the value refers to the tax amount.</dd>
+ * 
+ *   <dt>int `id_purchase_item`</dt>
+ *   <dd>The ID of purchase item type. One of {@link WlPurchaseItemSid} constants.</dd>
+ * 
+ *   <dt>string `k_id`</dt>
+ *   <dd>The key of the purchase item in the database.</dd>
+ * 
+ *   <dt>string `m_checkout`</dt>
+ *   <dd>
+ *     The amount that has to be charged for the tuition right now, including tax. The other
+ * amounts of this row cover the full cost, including whatever is deferred to an installment
+ * plan or to a membership schedule.
+ * 
+ *   </dd>
+ * 
+ *   <dt>string `m_deferred`</dt>
+ *   <dd>
+ *     The part of the tuition cost that is not charged right now, including tax. Equals
+ * `m_cost` minus `m_checkout`. Rows for everything else are always paid for in full at once,
+ * so the amount to charge for the whole list is the sum of `m_cost` minus the sum of
+ * `m_deferred`.
+ * 
+ *   </dd>
+ * 
+ *   <dt>string `m_cost`</dt>
+ *   <dd>The cost of the purchase item (with taxes).</dd>
+ * 
+ *   <dt>string `m_discount`</dt>
+ *   <dd>The amount of the whole discount.</dd>
+ * 
+ *   <dt>string `m_discount_login`</dt>
+ *   <dd>The amount of the discount for the client type.</dd>
+ * 
+ *   <dt>string `m_price`</dt>
+ *   <dd>The price of the purchase item (with or without taxes, depending on regional standards).</dd>
+ * 
+ *   <dt>string `m_tax`</dt>
+ *   <dd>The amount of taxes for the purchase item.</dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
   public $a_purchase_item_result;
 
   /**
-   * The key of the business in which the purchase is made.
-   *
-   * @get get
-   * @var string
-   */
+ * The key of the business in which the purchase is made.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business;
 
   /**
-   * The key of the location in which the purchase is made.
-   * This is also the booking process location.
-   *
-   * This will be `null` if not set yet or if the location can't be defined for some reason.
-   *
-   * @get get
-   * @var string|null
-   */
+ * The key of the location in which the purchase is made.
+ * This is also the booking process location.
+ *
+ * This will be `null` if not set yet or if the location can't be defined for some reason.
+ *
+ * @get get
+ * @var string|null
+ */
   public $k_location = null;
 
   /**
-   * The discount code.
-   *
-   * @get get
-   * @var string
-   */
+ * The discount code.
+ *
+ * @get get
+ * @var string
+ */
   public $text_discount_code = '';
 
   /**
-   * The key of the user making the purchase.
-   *
-   * @get get
-   * @var string
-   */
+ * The key of the user making the purchase.
+ *
+ * @get get
+ * @var string
+ */
   public $uid;
 }
 

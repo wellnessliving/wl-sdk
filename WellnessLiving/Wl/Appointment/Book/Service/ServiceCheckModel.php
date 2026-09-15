@@ -13,43 +13,43 @@ use WellnessLiving\WlModelRequest;
 class ServiceCheckModel extends WlModelAbstract
 {
   /**
-   * Date of booking in MySQL format.
-   *
-   * @get get
-   * @var string
-   */
+ * Date of booking in MySQL format.
+ *
+ * @get get
+ * @var string
+ */
   public $dt_date = '';
 
   /**
-   * The business key.
-   *
-   * @get get
-   * @var string
-   */
+ * The business key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * The location key.
-   *
-   * @get get
-   * @var string
-   */
+ * The location key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_location = '';
 
   /**
-   * The service key.
-   *
-   * @get get
-   * @var string
-   */
+ * The service key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_service = '';
 
   /**
-   * The user key.
-   *
-   * @get get
-   * @var string
-   */
+ * The user key.
+ *
+ * @get get
+ * @var string
+ */
   public $uid = '';
 }
 

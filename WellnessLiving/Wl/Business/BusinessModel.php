@@ -16,173 +16,189 @@ use WellnessLiving\Wl\RsMailSid;
 class BusinessModel extends WlModelAbstract
 {
   /**
-   * Empty array means to not create a staff member.
-   * Otherwise, information about staff member to be created in the business.
-   *
-   * <dl>
-   *   <dt>bool `is_enter`</dt>
-   *   <dd>Should created staff member be automatically signed in or not.</dd>
-   * 
-   *   <dt>string `text_mail`</dt>
-   *   <dd>Email address to be used to sign in.</dd>
-   * 
-   *   <dt>string `text_name_first`</dt>
-   *   <dd>The first name of the staff member.</dd>
-   * 
-   *   <dt>string `text_name_last`</dt>
-   *   <dd>The last name of the staff member.</dd>
-   * </dl>
-   * @post post
-   * @put post
-   * @var array
-   */
+ * Empty array means to not create a staff member.
+ * Otherwise, information about staff member to be created in the business.
+ *
+ * <dl>
+ *   <dt>bool `is_enter`</dt>
+ *   <dd>Should created staff member be automatically signed in or not.</dd>
+ * 
+ *   <dt>string `text_mail`</dt>
+ *   <dd>Email address to be used to sign in.</dd>
+ * 
+ *   <dt>string `text_name_first`</dt>
+ *   <dd>The first name of the staff member.</dd>
+ * 
+ *   <dt>string `text_name_last`</dt>
+ *   <dd>The last name of the staff member.</dd>
+ * </dl>
+ * @post post
+ * @put post
+ * @var array
+ */
   public $a_staff_member = [];
 
   /**
-   * The business locale.
-   *
-   * @post post
-   * @var int
-   * @see LocaleSid
-   */
+ * The business locale.
+ *
+ * @post post
+ * @var int
+ * @see LocaleSid
+ */
   public $id_locale = 0;
 
   /**
-   * `true` if location should be also created for the business.
-   * `false` if otherwise.
-   *
-   * @post post
-   * @var bool
-   */
+ * `true` if location should be also created for the business.
+ * `false` if otherwise.
+ *
+ * @post post
+ * @var bool
+ */
   public $is_location_create = false;
 
   /**
-   * `true` to send {@link RsMailSid::BUSINESS_CREATE} mail when creating a staff member.
-   * Otherwise send {@link RsMailSid::LOGIN_WELCOME} mail.
-   *
-   * @post post
-   * @put post
-   * @var bool
-   */
+ * `true` to send {@link RsMailSid::BUSINESS_CREATE} mail when creating a staff member.
+ * Otherwise send {@link RsMailSid::LOGIN_WELCOME} mail.
+ *
+ * @post post
+ * @put post
+ * @var bool
+ */
   public $is_mail_send = false;
 
   /**
-   * The key of the business.
-   *
-   * @post result
-   * @put post,result
-   * @var string
-   */
+ * The key of the business.
+ *
+ * @post result
+ * @put post,result
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * The key of the business type.
-   *
-   * @post post
-   * @var string
-   */
+ * The key of the business type.
+ *
+ * @post post
+ * @var string
+ */
   public $k_business_type = '';
 
   /**
-   * The key of the location for update or after creating.
-   * `null` if location is not created.
-   *
-   * @post result
-   * @put post,result
-   * @var string|null
-   */
+ * The key of the location for update or after creating.
+ * `null` if location is not created.
+ *
+ * @post result
+ * @put post,result
+ * @var string|null
+ */
   public $k_location = null;
 
   /**
-   * The city key of the business.
-   * Optional.
-   *
-   * @post post
-   * @var string
-   */
+ * The city key of the business.
+ * Optional.
+ *
+ * @post post
+ * @var string
+ */
   public $k_office_city = '0';
 
   /**
-   * Microsoft Clarity session ID associated with the business claim session.
-   *
-   * @post post
-   * @put post
-   * @var string
-   */
+ * Microsoft Clarity session ID associated with the business claim session.
+ *
+ * @decorator trim
+ * @post post
+ * @put post
+ * @rule length-max 255
+ * @var string
+ */
   public $s_clarity_session_id = '';
 
   /**
-   * The email address of the location.
-   * Optional.
-   *
-   * @post post
-   * @put post
-   * @var string
-   */
+ * The email address of the location.
+ * Optional.
+ *
+ * @decorator trim
+ * @post post
+ * @put post
+ * @rule length-max RS_LOCATION_EMAIL_LENGTH
+ * @var string
+ */
   public $text_mail = '';
 
   /**
-   * The address of the business.
-   * Optional.
-   *
-   * @post post
-   * @var string
-   */
+ * The address of the business.
+ * Optional.
+ *
+ * @decorator trim
+ * @post post
+ * @rule length-max RS_BUSINESS_ADDRESS_LENGTH
+ * @var string
+ */
   public $text_office_address = '';
 
   /**
-   * The postal code of the business.
-   * Optional.
-   *
-   * @post post
-   * @var string
-   */
+ * The postal code of the business.
+ * Optional.
+ *
+ * @decorator trim
+ * @post post
+ * @rule length-max RS_BUSINESS_POSTAL_LENGTH
+ * @var string
+ */
   public $text_office_postal = '';
 
   /**
-   * The phone number of the business, staff and location.
-   *
-   * @post post
-   * @put post
-   * @var string
-   */
+ * The phone number of the business, staff and location.
+ *
+ * @decorator trim
+ * @post post
+ * @put post
+ * @rule length-max RS_BUSINESS_PHONE_LENGTH
+ * @rule length-min 1
+ * @var string
+ */
   public $text_phone = '';
 
   /**
-   * The title of the business.
-   *
-   * @post post
-   * @var string
-   */
+ * The title of the business.
+ *
+ * @decorator trim
+ * @post post
+ * @rule length-max RS_BUSINESS_TITLE_LENGTH
+ * @rule length-min 1
+ * @var string
+ */
   public $text_title = '';
 
   /**
-   * The UID of the created staff member or `null` if no staff member should be created.
-   *
-   * @post result
-   * @put result
-   * @var string|null
-   */
+ * The UID of the created staff member or `null` if no staff member should be created.
+ *
+ * @post result
+ * @put result
+ * @var string|null
+ */
   public $uid = null;
 
   /**
-   * Url for password change page.
-   *
-   * Filled only when creating staff member, otherwise `null`.
-   *
-   * @post result
-   * @put result
-   * @var string|null
-   */
+ * Url for password change page.
+ *
+ * Filled only when creating staff member, otherwise `null`.
+ *
+ * @post result
+ * @put result
+ * @var string|null
+ */
   public $url_password_change = null;
 
   /**
-   * The URL of the business website.
-   * Optional.
-   *
-   * @post post
-   * @var string
-   */
+ * The URL of the business website.
+ * Optional.
+ *
+ * @decorator trim
+ * @post post
+ * @rule length-max RS_BUSINESS_URL_LENGTH
+ * @var string
+ */
   public $url_site = '';
 }
 

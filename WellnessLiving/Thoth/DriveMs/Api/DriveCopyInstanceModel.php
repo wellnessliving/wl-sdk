@@ -13,19 +13,19 @@ use WellnessLiving\WlModelRequest;
 class DriveCopyInstanceModel extends WlModelAbstract
 {
   /**
-   * Instance ID from which links must be copied.
-   *
-   * @post get
-   * @var string
-   */
+ * Instance ID from which links must be copied.
+ *
+ * @post get
+ * @var string
+ */
   public $s_instance_destination = '';
 
   /**
-   * Instance ID from which links must be copied.
-   *
-   * @post get
-   * @var string
-   */
+ * Instance ID from which links must be copied.
+ *
+ * @post get
+ * @var string
+ */
   public $s_instance_source = '';
 }
 

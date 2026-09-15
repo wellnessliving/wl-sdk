@@ -16,27 +16,27 @@ use WellnessLiving\WlModelRequest;
 class BulkBillingUserModel extends WlModelAbstract
 {
   /**
-   * The business key.
-   *
-   * @delete get
-   * @var string
-   */
+ * The business key.
+ *
+ * @delete get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * The purchase batch key.
-   *
-   * @delete get
-   * @var string
-   */
+ * The purchase batch key.
+ *
+ * @delete get
+ * @var string
+ */
   public $k_purchase_batch = '';
 
   /**
-   * The user key of the client to remove from the batch.
-   *
-   * @delete get
-   * @var string
-   */
+ * The user key of the client to remove from the batch.
+ *
+ * @delete get
+ * @var string
+ */
   public $uid = '';
 }
 

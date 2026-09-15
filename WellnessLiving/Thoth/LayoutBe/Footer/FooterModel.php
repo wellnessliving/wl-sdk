@@ -13,20 +13,20 @@ use WellnessLiving\WlModelRequest;
 class FooterModel extends WlModelAbstract
 {
   /**
-   * Business key to get footer data for.
-   *
-   * @get get
-   * @var string
-   */
+ * Business key to get footer data for.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '0';
 
   /**
-   * `true` to show the "Powered by WellnessLiving" branding and Terms & Conditions links in the footer;
-   * `false` for white-label businesses, which must not display WellnessLiving branding.
-   *
-   * @get result
-   * @var bool
-   */
+ * `true` to show the "Powered by WellnessLiving" branding and Terms & Conditions links in the footer;
+ * `false` for white-label businesses, which must not display WellnessLiving branding.
+ *
+ * @get result
+ * @var bool
+ */
   public $show_term = false;
 }
 

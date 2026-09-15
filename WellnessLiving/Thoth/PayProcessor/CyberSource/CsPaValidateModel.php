@@ -14,19 +14,19 @@ use WellnessLiving\WlModelRequest;
 class CsPaValidateModel extends WlModelAbstract
 {
   /**
-   * Key of payment transaction that was previously created with {@link CsPaSetupModel}.
-   *
-   * @post post
-   * @var string
-   */
+ * Key of payment transaction that was previously created with {@link CsPaSetupModel}.
+ *
+ * @post post
+ * @var string
+ */
   public $k_pay_transaction;
 
   /**
-   * Payer authentication transaction ID.
-   *
-   * @post post
-   * @var string
-   */
+ * Payer authentication transaction ID.
+ *
+ * @post post
+ * @var string
+ */
   public $s_transaction;
 }
 

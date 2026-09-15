@@ -14,21 +14,21 @@ use WellnessLiving\WlModelRequest;
 class SmsPinModel extends WlModelAbstract
 {
   /**
-   * The business key.
-   *
-   * @delete post
-   * @post post
-   * @var string
-   */
+ * The business key.
+ *
+ * @delete post
+ * @post post
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * User key with whom you want to pin/unpin messages.
-   *
-   * @delete post
-   * @post post
-   * @var string
-   */
+ * User key with whom you want to pin/unpin messages.
+ *
+ * @delete post
+ * @post post
+ * @var string
+ */
   public $uid = '';
 }
 

@@ -15,154 +15,154 @@ use WellnessLiving\Wl\Classes\Tab\TabSid;
 class ScheduleAvailableDateModel extends WlModelAbstract
 {
   /**
-   * Class keys to filter.
-   *
-   * Empty to search for all classes.
-   *
-   * @get get
-   * @var string[]
-   */
+ * Class keys to filter.
+ *
+ * Empty to search for all classes.
+ *
+ * @get get
+ * @var string[]
+ */
   public $a_class = [];
 
   /**
-   * IDs of week days from {@link ADateWeekSid} class.
-   *
-   * Empty to search for all week days.
-   *
-   * @get get
-   * @var int[]
-   */
+ * IDs of week days from {@link ADateWeekSid} class.
+ *
+ * Empty to search for all week days.
+ *
+ * @get get
+ * @var int[]
+ */
   public $a_day = [];
 
   /**
-   * Event keys to filter.
-   *
-   * Empty to search for all events.
-   *
-   * @get get
-   * @var string[]
-   */
+ * Event keys to filter.
+ *
+ * Empty to search for all events.
+ *
+ * @get get
+ * @var string[]
+ */
   public $a_event = [];
 
   /**
-   * Location keys to filter.
-   *
-   * Empty to search in all locations.
-   *
-   * @get get
-   * @var string[]
-   */
+ * Location keys to filter.
+ *
+ * Empty to search in all locations.
+ *
+ * @get get
+ * @var string[]
+ */
   public $a_location = [];
 
   /**
-   * Staff member keys to filter.
-   *
-   * Empty to search for all staff members.
-   *
-   * @get get
-   * @var string[]
-   */
+ * Staff member keys to filter.
+ *
+ * Empty to search for all staff members.
+ *
+ * @get get
+ * @var string[]
+ */
   public $a_staff = [];
 
   /**
-   * Time interval:
-   *
-   * Empty to search for all time.
-   *
-   * <dl>
-   *   <dt>int `tl_end`</dt>
-   *   <dd>End time.</dd>
-   * 
-   *   <dt>int `tl_start`</dt>
-   *   <dd>Start time.</dd>
-   * </dl>
-   * @get get
-   * @var array
-   */
+ * Time interval:
+ *
+ * Empty to search for all time.
+ *
+ * <dl>
+ *   <dt>int `tl_end`</dt>
+ *   <dd>End time.</dd>
+ * 
+ *   <dt>int `tl_start`</dt>
+ *   <dd>Start time.</dd>
+ * </dl>
+ * @get get
+ * @var array
+ */
   public $a_time = [];
 
   /**
-   * Nearest session date available for booking in user's or business timezone.
-   *
-   * `null` if there is no suitable session found.
-   *
-   * @get result
-   * @var string|null
-   */
+ * Nearest session date available for booking in user's or business timezone.
+ *
+ * `null` if there is no suitable session found.
+ *
+ * @get result
+ * @var string|null
+ */
   public $dl_next_available;
 
   /**
-   * The date/time to start from in UTC.
-   *
-   * @get get
-   * @var string
-   */
+ * The date/time to start from in UTC.
+ *
+ * @get get
+ * @var string
+ */
   public $dtu_start = '';
 
   /**
-   * Optional "Book now" tab ID filter. One of {@link TabSid} constants.
-   *
-   * `0` means this filter is not set.
-   * If both {@link ScheduleAvailableDateModel::$id_class_tab} and
-   * {@link ScheduleAvailableDateModel::$k_class_tab} are not set, all tabs are used.
-   *
-   * @get get
-   * @var int
-   */
+ * Optional "Book now" tab ID filter. One of {@link TabSid} constants.
+ *
+ * `0` means this filter is not set.
+ * If both {@link ScheduleAvailableDateModel::$id_class_tab} and
+ * {@link ScheduleAvailableDateModel::$k_class_tab} are not set, all tabs are used.
+ *
+ * @get get
+ * @var int
+ */
   public $id_class_tab = 0;
 
   /**
-   * `true` to include classes; `false` to exclude.
-   *
-   * @get get
-   * @var bool
-   */
+ * `true` to include classes; `false` to exclude.
+ *
+ * @get get
+ * @var bool
+ */
   public $is_class = false;
 
   /**
-   * `true` to include events; `false` to exclude.
-   *
-   * @get get
-   * @var bool
-   */
+ * `true` to include events; `false` to exclude.
+ *
+ * @get get
+ * @var bool
+ */
   public $is_event = false;
 
   /**
-   * `true` to include only virtual classes;
-   * `false` to include only in-person;
-   * `null` to no filtering.
-   *
-   * @get get
-   * @var bool
-   */
+ * `true` to include only virtual classes;
+ * `false` to include only in-person;
+ * `null` to no filtering.
+ *
+ * @get get
+ * @var bool
+ */
   public $is_virtual = null;
 
   /**
-   * Business key.
-   *
-   * @get get
-   * @var string
-   */
+ * Business key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * Optional book now tab key filter.
-   *
-   * Empty string means this filter is not set.
-   * If both {@link ScheduleAvailableDateModel::$k_class_tab} and
-   * {@link ScheduleAvailableDateModel::$id_class_tab} are not set, all tabs are used.
-   *
-   * @get get
-   * @var string
-   */
+ * Optional book now tab key filter.
+ *
+ * Empty string means this filter is not set.
+ * If both {@link ScheduleAvailableDateModel::$k_class_tab} and
+ * {@link ScheduleAvailableDateModel::$id_class_tab} are not set, all tabs are used.
+ *
+ * @get get
+ * @var string
+ */
   public $k_class_tab = '';
 
   /**
-   * Timezone key.
-   *
-   * @get get
-   * @var string
-   */
+ * Timezone key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_timezone = '';
 }
 

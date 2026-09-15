@@ -24,17 +24,17 @@ use WellnessLiving\WlModelRequest;
 class OriginModel extends WlModelAbstract
 {
   /**
-   * A list of origins.
-   *
-   * An associative array where the key is the origin URL of the site where API calls can be made,
-   *  and the value is the additional API domain used to make API requests to the WellnessLiving server.
-   * `null` if not yet initialized.
-   *
-   * @delete post
-   * @get result
-   * @put post
-   * @var string[]|null
-   */
+ * A list of origins.
+ *
+ * An associative array where the key is the origin URL of the site where API calls can be made,
+ *  and the value is the additional API domain used to make API requests to the WellnessLiving server.
+ * `null` if not yet initialized.
+ *
+ * @delete post
+ * @get result
+ * @put post
+ * @var string[]|null
+ */
   public $a_list;
 }
 

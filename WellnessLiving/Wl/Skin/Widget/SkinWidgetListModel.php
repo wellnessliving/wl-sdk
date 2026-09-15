@@ -14,32 +14,32 @@ use WellnessLiving\Wl\RsSkinSid;
 class SkinWidgetListModel extends WlModelAbstract
 {
   /**
-   * List of Widget skins grouped by widget type.
-   *
-   * Skin type, one of {@link RsSkinSid} constants.
-   *
-   * The array structure:
-   * Keys - Skin type, one of {@link RsSkinSid} constants.
-   * Values - arrays with next keys:
-   *
-   * <dl>
-   *   <dt>string `k_skin`</dt>
-   *   <dd>Skin key. </dd>
-   * 
-   *   <dt>string `text_widget_name`</dt>
-   *   <dd>Widget name.</dd>
-   * </dl>
-   * @get result
-   * @var array[][]
-   */
+ * List of Widget skins grouped by widget type.
+ *
+ * Skin type, one of {@link RsSkinSid} constants.
+ *
+ * The array structure:
+ * Keys - Skin type, one of {@link RsSkinSid} constants.
+ * Values - arrays with next keys:
+ *
+ * <dl>
+ *   <dt>string `k_skin`</dt>
+ *   <dd>Skin key. </dd>
+ * 
+ *   <dt>string `text_widget_name`</dt>
+ *   <dd>Widget name.</dd>
+ * </dl>
+ * @get result
+ * @var array[][]
+ */
   public $a_widget_skin = [];
 
   /**
-   * Business key.
-   *
-   * @get get
-   * @var string
-   */
+ * Business key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '';
 }
 

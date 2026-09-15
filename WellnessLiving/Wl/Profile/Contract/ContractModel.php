@@ -18,204 +18,204 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 class ContractModel extends WlModelAbstract
 {
   /**
-   * Additional configuration for the item that might influence contracts.
-   *
-   * When {@link ContractModel::$id_purchase_item} is {@link WlPurchaseItemSid::TUITION}.
-   * Use next structure:
-   *
-   * <dl>
-   *   <dt>array[] `a_event_list`</dt>
-   *   <dd>
-   *     The tuition class schedule selected for the participant. Each element has the next keys:
-   *     <dl>
-   *       <dt>string `k_class`</dt>
-   *       <dd>Key of the event class. </dd>
-   * 
-   *       <dt>string `uid`</dt>
-   *       <dd>Key of the tuition participant. </dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>array[] `a_registration_fee_list`</dt>
-   *   <dd>
-   *     Registration fees to charge together with the tuition, keyed by participant key.
-   *  Each value has the next keys:
-   *     <dl>
-   *       <dt>string `m_amount`</dt>
-   *       <dd>Registration fee amount for the tuition participant.</dd>
-   *     </dl>
-   *   </dd>
-   * </dl>
-   * @get get
-   * @var array
-   */
+ * Additional configuration for the item that might influence contracts.
+ *
+ * When {@link ContractModel::$id_purchase_item} is {@link WlPurchaseItemSid::TUITION}.
+ * Use next structure:
+ *
+ * <dl>
+ *   <dt>array[] `a_event_list`</dt>
+ *   <dd>
+ *     The tuition class schedule selected for the participant. Each element has the next keys:
+ *     <dl>
+ *       <dt>string `k_class`</dt>
+ *       <dd>Key of the event class. </dd>
+ * 
+ *       <dt>string `uid`</dt>
+ *       <dd>Key of the tuition participant. </dd>
+ *     </dl>
+ *   </dd>
+ * 
+ *   <dt>array[] `a_registration_fee_list`</dt>
+ *   <dd>
+ *     Registration fees to charge together with the tuition, keyed by participant key.
+ *  Each value has the next keys:
+ *     <dl>
+ *       <dt>string `m_amount`</dt>
+ *       <dd>Registration fee amount for the tuition participant.</dd>
+ *     </dl>
+ *   </dd>
+ * </dl>
+ * @get get
+ * @var array
+ */
   public $a_config = [];
 
   /**
-   * List of contracts required at once, if the purchase option requires agreement to several
-   *  distinct contracts (for example, one per Tuition visitor). Keyed the same way as
-   *  `a_signature` used to submit signatures for such a purchase option. Empty if the purchase
-   *  option requires at most one contract - use {@link ContractModel::$html_contract} instead in
-   *  that case. Value has the following structure:
-   *
-   * <dl>
-   *   <dt>string `html_contract`</dt>
-   *   <dd>The text of this specific contract.</dd>
-   * 
-   *   <dt>string `uid`</dt>
-   *   <dd>Key of the visitor this contract applies to. </dd>
-   * </dl>
-   * @get result
-   * @var array
-   */
+ * List of contracts required at once, if the purchase option requires agreement to several
+ *  distinct contracts (for example, one per Tuition visitor). Keyed the same way as
+ *  `a_signature` used to submit signatures for such a purchase option. Empty if the purchase
+ *  option requires at most one contract - use {@link ContractModel::$html_contract} instead in
+ *  that case. Value has the following structure:
+ *
+ * <dl>
+ *   <dt>string `html_contract`</dt>
+ *   <dd>The text of this specific contract.</dd>
+ * 
+ *   <dt>string `uid`</dt>
+ *   <dd>Key of the visitor this contract applies to. </dd>
+ * </dl>
+ * @get result
+ * @var array
+ */
   public $a_contract_list = [];
 
   /**
-   * The start date of the contract.
-   *
-   * @get get
-   * @var string
-   */
+ * The start date of the contract.
+ *
+ * @get get
+ * @var string
+ */
   public $dt_start = '';
 
   /**
-   * The percentage discount for the item.
-   *
-   * Not supported when the purchase option requires several distinct contracts at once - see
-   *  {@link ContractModel::$a_contract_list}.
-   *
-   * @get get
-   * @var float
-   */
+ * The percentage discount for the item.
+ *
+ * Not supported when the purchase option requires several distinct contracts at once - see
+ *  {@link ContractModel::$a_contract_list}.
+ *
+ * @get get
+ * @var float
+ */
   public $f_manual_discount = 0;
 
   /**
-   * The text of the contract.
-   *
-   * @get result
-   * @var string
-   */
+ * The text of the contract.
+ *
+ * @get result
+ * @var string
+ */
   public $html_contract;
 
   /**
-   * Age of minor which documents can be signed by parent or legal guardian.
-   *
-   * @get result
-   * @var int
-   */
+ * Age of minor which documents can be signed by parent or legal guardian.
+ *
+ * @get result
+ * @var int
+ */
   public $i_minor_age;
 
   /**
-   * The type of purchase item. This is one of the {@link WlPurchaseItemSid} constants.
-   * Optional if {@link ContractModel::$k_purchase_item} is not empty.
-   *
-   * @get get
-   * @var int
-   */
+ * The type of purchase item. This is one of the {@link WlPurchaseItemSid} constants.
+ * Optional if {@link ContractModel::$k_purchase_item} is not empty.
+ *
+ * @get get
+ * @var int
+ */
   public $id_purchase_item = 0;
 
   /**
-   * <tt>false</tt> if user has not agreed to use Electronic Signatures,
-   * <tt>true</tt> if user has agreed to use Electronic Signatures,
-   * <tt>null</tt> otherwise.
-   *
-   * @post post
-   * @var bool|null
-   */
+ * <tt>false</tt> if user has not agreed to use Electronic Signatures,
+ * <tt>true</tt> if user has agreed to use Electronic Signatures,
+ * <tt>null</tt> otherwise.
+ *
+ * @post post
+ * @var bool|null
+ */
   public $is_agree = null;
 
   /**
-   * The key of the business to show information for.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * The key of the business to show information for.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $k_business = '0';
 
   /**
-   * The key of the purchase item in the database.
-   * The item key. Depends on {@link ContractModel::$id_purchase_item} property.
-   *
-   * @get get
-   * @var string
-   */
+ * The key of the purchase item in the database.
+ * The item key. Depends on {@link ContractModel::$id_purchase_item} property.
+ *
+ * @get get
+ * @var string
+ */
   public $k_id = '0';
 
   /**
-   * The key of the selected location.
-   *
-   * @get get
-   * @var string
-   */
+ * The key of the selected location.
+ *
+ * @get get
+ * @var string
+ */
   public $k_location = '0';
 
   /**
-   * The key of the selected purchase item.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * The key of the selected purchase item.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $k_purchase_item = '0';
 
   /**
-   * Amount of a flat manual discount.
-   *
-   * Not supported when the purchase option requires several distinct contracts at once - see
-   *   {@link ContractModel::$a_contract_list}.
-   *
-   * @get get
-   * @var string
-   */
+ * Amount of a flat manual discount.
+ *
+ * Not supported when the purchase option requires several distinct contracts at once - see
+ *   {@link ContractModel::$a_contract_list}.
+ *
+ * @get get
+ * @var string
+ */
   public $m_discount_flat = '0';
 
   /**
-   * The custom price of the item.
-   *
-   * Not supported when the purchase option requires several distinct contracts at once - see
-   *   {@link ContractModel::$a_contract_list}.
-   *
-   * @get get
-   * @var string
-   */
+ * The custom price of the item.
+ *
+ * Not supported when the purchase option requires several distinct contracts at once - see
+ *   {@link ContractModel::$a_contract_list}.
+ *
+ * @get get
+ * @var string
+ */
   public $m_price_custom = '';
 
   /**
-   * The discount code used for the item.
-   *
-   * Not supported when the purchase option requires several distinct contracts at once - see
-   *  {@link ContractModel::$a_contract_list}.
-   *
-   * @get get
-   * @var string
-   */
+ * The discount code used for the item.
+ *
+ * Not supported when the purchase option requires several distinct contracts at once - see
+ *  {@link ContractModel::$a_contract_list}.
+ *
+ * @get get
+ * @var string
+ */
   public $s_discount_code = '';
 
   /**
-   * An encoded version of the client signature.
-   * This is different from the signature needed to communicate with an endpoint.
-   *
-   * @post post
-   * @var string
-   */
+ * An encoded version of the client signature.
+ * This is different from the signature needed to communicate with an endpoint.
+ *
+ * @post post
+ * @var string
+ */
   public $s_signature = '';
 
   /**
-   * Title of purchase option.
-   *
-   * @get result
-   * @var string
-   */
+ * Title of purchase option.
+ *
+ * @get result
+ * @var string
+ */
   public $text_title;
 
   /**
-   * The key of the current user.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * The key of the current user.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $uid = '0';
 }
 

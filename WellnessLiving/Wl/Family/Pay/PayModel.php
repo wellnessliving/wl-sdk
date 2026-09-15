@@ -14,32 +14,32 @@ use WellnessLiving\WlModelRequest;
 class PayModel extends WlModelAbstract
 {
   /**
-   * ID of business to get information for.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * ID of business to get information for.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $k_business;
 
   /**
-   * ID of user to get information for.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * ID of user to get information for.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $uid;
 
   /**
-   * ID of user who will pay for user {@link PayModel::$uid}.
-   * 
-   * Empty if {@link PayModel::$uid} will pay for self.
-   *
-   * @get result
-   * @post post
-   * @var string
-   */
+ * ID of user who will pay for user {@link PayModel::$uid}.
+ * 
+ * Empty if {@link PayModel::$uid} will pay for self.
+ *
+ * @get result
+ * @post post
+ * @var string
+ */
   public $uid_payer;
 }
 

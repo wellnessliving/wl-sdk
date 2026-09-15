@@ -13,19 +13,19 @@ use WellnessLiving\WlModelRequest;
 class SmsReadsModel extends WlModelAbstract
 {
   /**
-   * The business key.
-   *
-   * @post post
-   * @var string|null
-   */
+ * The business key.
+ *
+ * @post post
+ * @var string|null
+ */
   public $k_business = null;
 
   /**
-   * User key with whom you want to read messages.
-   *
-   * @post post
-   * @var string|null
-   */
+ * User key with whom you want to read messages.
+ *
+ * @post post
+ * @var string|null
+ */
   public $uid = null;
 }
 

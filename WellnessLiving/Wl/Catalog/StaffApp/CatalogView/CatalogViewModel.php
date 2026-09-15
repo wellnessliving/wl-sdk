@@ -16,163 +16,163 @@ use WellnessLiving\Wl\WlSaleSid;
 class CatalogViewModel extends WlModelAbstract
 {
   /**
-   * Configuration information about the item, which can specify prorated amounts.
-   *
-   * If set, these values will change the values returned by the endpoint call.
-   *
-   * <dl>
-   *   <dt>float `f_promote`</dt>
-   *   <dd>The amount to prorate the item by.</dd>
-   * 
-   *   <dt>bool `is_prorate`</dt>
-   *   <dd>If <tt>true</tt>, this item is prorated.</dd>
-   * 
-   *   <dt>string `m_prorate_custom`</dt>
-   *   <dd>The custom prorate amount.</dd>
-   * </dl>
-   * @get get
-   * @var array
-   */
+ * Configuration information about the item, which can specify prorated amounts.
+ *
+ * If set, these values will change the values returned by the endpoint call.
+ *
+ * <dl>
+ *   <dt>float `f_promote`</dt>
+ *   <dd>The amount to prorate the item by.</dd>
+ * 
+ *   <dt>bool `is_prorate`</dt>
+ *   <dd>If <tt>true</tt>, this item is prorated.</dd>
+ * 
+ *   <dt>string `m_prorate_custom`</dt>
+ *   <dd>The custom prorate amount.</dd>
+ * </dl>
+ * @get get
+ * @var array
+ */
   public $a_config = [];
 
   /**
-   * Contains information about edited taxes.
-   *
-   * This will be `null` if not set yet or default taxes are used.
-   *
-   * The key is the tax identifier, where the value is:
-   *
-   * <dl>
-   *   <dt>string `k_tax`</dt>
-   *   <dd>The tax ID.</dd>
-   * 
-   *   <dt>string `m_tax_custom`</dt>
-   *   <dd>The amount of custom tax.</dd>
-   * </dl>
-   * @get get
-   * @var array
-   */
+ * Contains information about edited taxes.
+ *
+ * This will be `null` if not set yet or default taxes are used.
+ *
+ * The key is the tax identifier, where the value is:
+ *
+ * <dl>
+ *   <dt>string `k_tax`</dt>
+ *   <dd>The tax ID.</dd>
+ * 
+ *   <dt>string `m_tax_custom`</dt>
+ *   <dd>The amount of custom tax.</dd>
+ * </dl>
+ * @get get
+ * @var array
+ */
   public $a_tax = [];
 
   /**
-   * Contains information about calculated taxes.
-   *
-   * <dl>
-   *   <dt>float `f_tax`</dt>
-   *   <dd>The calculated tax amount applied by this rule.</dd>
-   * 
-   *   <dt>string `f_tax_discount`</dt>
-   *   <dd>The tax amount after applying all discounts.</dd>
-   * 
-   *   <dt>string `f_tax_discount_login`</dt>
-   *   <dd>The tax amount after applying the client type discount only.</dd>
-   * 
-   *   <dt>float `f_value`</dt>
-   *   <dd>The tax rate. Its meaning depends on `id_tax`.</dd>
-   * 
-   *   <dt>int `id_tax`</dt>
-   *   <dd>The tax type. One of {@link WlTaxSid} constants.</dd>
-   * 
-   *   <dt>string `k_tax`</dt>
-   *   <dd>The tax key. </dd>
-   * 
-   *   <dt>string `s_tax`</dt>
-   *   <dd>The tax name.</dd>
-   * </dl>
-   * @get result
-   * @var array
-   */
+ * Contains information about calculated taxes.
+ *
+ * <dl>
+ *   <dt>float `f_tax`</dt>
+ *   <dd>The calculated tax amount applied by this rule.</dd>
+ * 
+ *   <dt>string `f_tax_discount`</dt>
+ *   <dd>The tax amount after applying all discounts.</dd>
+ * 
+ *   <dt>string `f_tax_discount_login`</dt>
+ *   <dd>The tax amount after applying the client type discount only.</dd>
+ * 
+ *   <dt>float `f_value`</dt>
+ *   <dd>The tax rate. Its meaning depends on `id_tax`.</dd>
+ * 
+ *   <dt>int `id_tax`</dt>
+ *   <dd>The tax type. One of {@link WlTaxSid} constants.</dd>
+ * 
+ *   <dt>string `k_tax`</dt>
+ *   <dd>The tax key. </dd>
+ * 
+ *   <dt>string `s_tax`</dt>
+ *   <dd>The tax name.</dd>
+ * </dl>
+ * @get result
+ * @var array
+ */
   public $a_tax_data;
 
   /**
-   * The quantity of items.
-   *
-   * @get get
-   * @var int
-   */
+ * The quantity of items.
+ *
+ * @get get
+ * @var int
+ */
   public $i_quantity = '';
 
   /**
-   * The ID of the sale category. One of the {@link WlSaleSid} constants.
-   *
-   * @get get
-   * @var int
-   */
+ * The ID of the sale category. One of the {@link WlSaleSid} constants.
+ *
+ * @get get
+ * @var int
+ */
   public $id_sale = 0;
 
   /**
-   * The business key.
-   * This will be `null` for the system business.
-   *
-   * @get get
-   * @var string
-   */
+ * The business key.
+ * This will be `null` for the system business.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * The key of the sale item.
-   * This can be retrieved with the {@link CatalogListModel} endpoint (see the
-   * <var>a_shop_product</var> parameter).
-   *
-   * @get get
-   * @var string
-   */
+ * The key of the sale item.
+ * This can be retrieved with the {@link CatalogListModel} endpoint (see the
+ * <var>a_shop_product</var> parameter).
+ *
+ * @get get
+ * @var string
+ */
   public $k_id = '';
 
   /**
-   * The product option key.
-   *
-   * @get get
-   * @var string
-   */
+ * The product option key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_shop_product_option = '';
 
   /**
-   * The custom price of the sale item.
-   *
-   * @get get
-   * @var string
-   */
+ * The custom price of the sale item.
+ *
+ * @get get
+ * @var string
+ */
   public $m_price = '';
 
   /**
-   * The prorated amount.
-   *
-   * @get result
-   * @var string
-   */
+ * The prorated amount.
+ *
+ * @get result
+ * @var string
+ */
   public $m_prorate;
 
   /**
-   * The amount of the sale item, excluding taxes.
-   *
-   * @get result
-   * @var string
-   */
+ * The amount of the sale item, excluding taxes.
+ *
+ * @get result
+ * @var string
+ */
   public $m_subtotal;
 
   /**
-   * The calculated amount of tax.
-   *
-   * @get result
-   * @var string
-   */
+ * The calculated amount of tax.
+ *
+ * @get result
+ * @var string
+ */
   public $m_tax;
 
   /**
-   * The calculated amount of the sale item, including taxes.
-   *
-   * @get result
-   * @var string
-   */
+ * The calculated amount of the sale item, including taxes.
+ *
+ * @get result
+ * @var string
+ */
   public $m_total;
 
   /**
-   * The ID of the user who performed the actions.
-   *
-   * @get get
-   * @var string
-   */
+ * The ID of the user who performed the actions.
+ *
+ * @get get
+ * @var string
+ */
   public $uid = '';
 }
 

@@ -13,11 +13,11 @@ use WellnessLiving\WlModelRequest;
 class AuthorizeSupportEnterModel extends WlModelAbstract
 {
   /**
-   * The location key.
-   *
-   * @get get
-   * @var string
-   */
+ * The location key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_location = '0';
 }
 

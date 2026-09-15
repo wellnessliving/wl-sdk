@@ -15,40 +15,40 @@ use WellnessLiving\WlModelRequest;
 class RankModel extends WlModelAbstract
 {
   /**
-   * Rank category keys. Used to filter belts by belt categories.
-   *
-   * @get get
-   * @var string[]
-   */
+ * Rank category keys. Used to filter belts by belt categories.
+ *
+ * @get get
+ * @var string[]
+ */
   public $a_rank_category = [];
 
   /**
-   * A list of belts, keys, and information. Each element is an array with the following information:
-   *
-   * <dl>
-   *   <dt>string `k_rank`</dt>
-   *   <dd>A belt key. </dd>
-   * 
-   *   <dt>string `k_rank_category`</dt>
-   *   <dd>A belt category key. </dd>
-   * 
-   *   <dt>string `text_rank`</dt>
-   *   <dd>Belt title.</dd>
-   * 
-   *   <dt>string `text_rank_category`</dt>
-   *   <dd>Belt category title.</dd>
-   * </dl>
-   * @get result
-   * @var array[]
-   */
+ * A list of belts, keys, and information. Each element is an array with the following information:
+ *
+ * <dl>
+ *   <dt>string `k_rank`</dt>
+ *   <dd>A belt key. </dd>
+ * 
+ *   <dt>string `k_rank_category`</dt>
+ *   <dd>A belt category key. </dd>
+ * 
+ *   <dt>string `text_rank`</dt>
+ *   <dd>Belt title.</dd>
+ * 
+ *   <dt>string `text_rank_category`</dt>
+ *   <dd>Belt category title.</dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
   public $a_rank_list = [];
 
   /**
-   * Business key.
-   *
-   * @get get
-   * @var string
-   */
+ * Business key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '';
 }
 

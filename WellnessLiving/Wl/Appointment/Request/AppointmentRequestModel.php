@@ -14,45 +14,45 @@ use WellnessLiving\Wl\RsPlaceSid;
 class AppointmentRequestModel extends WlModelAbstract
 {
   /**
-   * From where request comes. One of {@link RsPlaceSid}.
-   *
-   * @post get
-   * @var int
-   */
+ * From where request comes. One of {@link RsPlaceSid}.
+ *
+ * @post get
+ * @var int
+ */
   public $id_place = 1;
 
   /**
-   * Whether to deny the appointment.
-   * `true` to deny appointment or `false` to confirm.
-   *
-   * @post get
-   * @var bool
-   */
+ * Whether to deny the appointment.
+ * `true` to deny appointment or `false` to confirm.
+ *
+ * @post get
+ * @var bool
+ */
   public $is_deny = false;
 
   /**
-   * Whether all instances of recurring appointment should be denied or approved.
-   * `true` if all instances, `false` for only current appointment.
-   *
-   * @post get
-   * @var bool
-   */
+ * Whether all instances of recurring appointment should be denied or approved.
+ * `true` if all instances, `false` for only current appointment.
+ *
+ * @post get
+ * @var bool
+ */
   public $is_repeat = false;
 
   /**
-   * Appointment key.
-   *
-   * @post get
-   * @var string
-   */
+ * Appointment key.
+ *
+ * @post get
+ * @var string
+ */
   public $k_appointment = '0';
 
   /**
-   * Business key.
-   *
-   * @post get
-   * @var string
-   */
+ * Business key.
+ *
+ * @post get
+ * @var string
+ */
   public $k_business = '0';
 }
 

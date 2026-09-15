@@ -13,52 +13,52 @@ use WellnessLiving\WlModelRequest;
 class TuitionEnrollmentCancelModel extends WlModelAbstract
 {
   /**
-   * List of users and events to be canceled.
-   *
-   * Each element has two keys: `uid` and `k_class`.
-   *
-   * <dl>
-   *   <dt>string `k_class`</dt>
-   *   <dd>Enrolled event ID.</dd>
-   * 
-   *   <dt>string `uid`</dt>
-   *   <dd>Enrolled user ID.</dd>
-   * </dl>
-   * @put post
-   * @var array[]
-   */
+ * List of users and events to be canceled.
+ *
+ * Each element has two keys: `uid` and `k_class`.
+ *
+ * <dl>
+ *   <dt>string `k_class`</dt>
+ *   <dd>Enrolled event ID.</dd>
+ * 
+ *   <dt>string `uid`</dt>
+ *   <dd>Enrolled user ID.</dd>
+ * </dl>
+ * @put post
+ * @var array[]
+ */
   public $a_event_cancel = [];
 
   /**
-   * Whether upcoming visits should be canceled or not.
-   *
-   * @put post
-   * @var bool
-   */
+ * Whether upcoming visits should be canceled or not.
+ *
+ * @put post
+ * @var bool
+ */
   public $is_cancel_visits = false;
 
   /**
-   * Whether even pass should be deactivated or not.
-   *
-   * @put post
-   * @var bool
-   */
+ * Whether even pass should be deactivated or not.
+ *
+ * @put post
+ * @var bool
+ */
   public $is_pass_deactivate = false;
 
   /**
-   * Key of the business.
-   *
-   * @put post
-   * @var string
-   */
+ * Key of the business.
+ *
+ * @put post
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * Key of the tuition purchase item. This is enrollment key, which can be got from {@link TuitionEnrollmentListModel}.
-   *
-   * @put post
-   * @var string
-   */
+ * Key of the tuition purchase item. This is enrollment key, which can be got from {@link TuitionEnrollmentListModel}.
+ *
+ * @put post
+ * @var string
+ */
   public $k_purchase_item_tuition = '';
 }
 

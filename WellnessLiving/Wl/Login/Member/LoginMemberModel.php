@@ -14,38 +14,38 @@ use WellnessLiving\WlModelRequest;
 class LoginMemberModel extends WlModelAbstract
 {
   /**
-   * The date when client became a member.
-   *
-   * @post result
-   * @var string
-   */
+ * The date when client became a member.
+ *
+ * @post result
+ * @var string
+ */
   public $dt_member = '';
 
   /**
-   * The business key.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * The business key.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * The user's ID to get/set.
-   *
-   * @get result
-   * @post get
-   * @var string
-   */
+ * The user's ID to get/set.
+ *
+ * @get result
+ * @post get
+ * @var string
+ */
   public $s_member = '';
 
   /**
-   * The user's key.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * The user's key.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $uid = '';
 }
 

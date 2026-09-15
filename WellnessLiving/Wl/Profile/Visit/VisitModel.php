@@ -13,11 +13,11 @@ use WellnessLiving\WlModelRequest;
 class VisitModel extends WlModelAbstract
 {
   /**
-   * UID of the user that is visited by current user.
-   *
-   * @post post
-   * @var string
-   */
+ * UID of the user that is visited by current user.
+ *
+ * @post post
+ * @var string
+ */
   public $uid_profile = '0';
 }
 

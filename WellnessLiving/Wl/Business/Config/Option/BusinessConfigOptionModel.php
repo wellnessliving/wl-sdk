@@ -13,21 +13,21 @@ use WellnessLiving\WlModelRequest;
 class BusinessConfigOptionModel extends WlModelAbstract
 {
   /**
-   * List of config option values.
-   * Key - config option class CID.
-   * Values - config option value.
-   *
-   * @get result
-   * @var array<int, mixed>
-   */
+ * List of config option values.
+ * Key - config option class CID.
+ * Values - config option value.
+ *
+ * @get result
+ * @var array<int, mixed>
+ */
   public $a_option;
 
   /**
-   * Key of business.
-   *
-   * @get get
-   * @var string
-   */
+ * Key of business.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '';
 }
 

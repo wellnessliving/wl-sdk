@@ -15,19 +15,19 @@ use WellnessLiving\WlModelRequest;
 class StudioCid_InfoModel extends WlModelAbstract
 {
   /**
-   * CID of the class to retrieve information for.
-   *
-   * @get get
-   * @var int
-   */
+ * CID of the class to retrieve information for.
+ *
+ * @get get
+ * @var int
+ */
   public $cid;
 
   /**
-   * Name of the class associated with specified CID.
-   *
-   * @get result
-   * @var string
-   */
+ * Name of the class associated with specified CID.
+ *
+ * @get result
+ * @var string
+ */
   public $s_class;
 }
 

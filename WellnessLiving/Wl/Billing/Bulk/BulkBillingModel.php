@@ -27,61 +27,61 @@ use WellnessLiving\WlModelRequest;
 class BulkBillingModel extends WlModelAbstract
 {
   /**
-   * The scheduled billing time: 
-   *
-   * <dl>
-   *   <dt>int `i_hour`</dt>
-   *   <dd>Number of hours. Value between 1 and 12.</dd>
-   * 
-   *   <dt>int `i_minute`</dt>
-   *   <dd>Number of minutes. Value between 0 and 59.</dd>
-   * 
-   *   <dt>bool `is_am`</dt>
-   *   <dd>Whether hours and minutes AM or PM. `true` if AM.</dd>
-   * </dl>
-   * @post post
-   * @put post
-   * @var array|null
-   */
+ * The scheduled billing time: 
+ *
+ * <dl>
+ *   <dt>int `i_hour`</dt>
+ *   <dd>Number of hours. Value between 1 and 12.</dd>
+ * 
+ *   <dt>int `i_minute`</dt>
+ *   <dd>Number of minutes. Value between 0 and 59.</dd>
+ * 
+ *   <dt>bool `is_am`</dt>
+ *   <dd>Whether hours and minutes AM or PM. `true` if AM.</dd>
+ * </dl>
+ * @post post
+ * @put post
+ * @var array|null
+ */
   public $a_schedule_time = null;
 
   /**
-   * The scheduled billing date (business local time).
-   * When `null` the billing runs immediately.
-   *
-   * @post post
-   * @put post
-   * @var string|null
-   */
+ * The scheduled billing date (business local time).
+ * When `null` the billing runs immediately.
+ *
+ * @post post
+ * @put post
+ * @var string|null
+ */
   public $dl_schedule = null;
 
   /**
-   * The business key.
-   *
-   * @delete post
-   * @post post
-   * @put post
-   * @var string
-   */
+ * The business key.
+ *
+ * @delete post
+ * @post post
+ * @put post
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * The purchase batch key.
-   *
-   * @delete post
-   * @post result
-   * @put post
-   * @var string
-   */
+ * The purchase batch key.
+ *
+ * @delete post
+ * @post result
+ * @put post
+ * @var string
+ */
   public $k_purchase_batch = '';
 
   /**
-   * The unique review id returned by {@link PurchaseItemListModel} that identifies the prepared bulk billing
-   *  data in the temporary session.
-   *
-   * @post post
-   * @var string
-   */
+ * The unique review id returned by {@link PurchaseItemListModel} that identifies the prepared bulk billing
+ *  data in the temporary session.
+ *
+ * @post post
+ * @var string
+ */
   public $s_id = '';
 }
 

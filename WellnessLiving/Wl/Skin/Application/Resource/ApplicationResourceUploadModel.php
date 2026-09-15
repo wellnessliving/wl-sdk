@@ -21,36 +21,36 @@ use WellnessLiving\WlModelRequest;
 class ApplicationResourceUploadModel extends WlModelAbstract
 {
   /**
-   * Image assets keyed by image ID:
-   *
-   * Each value contains array with keys that are the sanitized asset file paths (e.g. `icon_ios_Icon_60_3x_png`).
-   *
-   * <dl>
-   *   <dt>int[] `error`</dt>
-   *   <dd>An error code representing the success or failure status.</dd>
-   * 
-   *   <dt>string[] `tmp_name`</dt>
-   *   <dd>The temporary filename of the file in which the uploaded file was stored on the server.</dd>
-   * </dl>
-   * @post post
-   * @var WlFile[]
-   */
+ * Image assets keyed by image ID:
+ *
+ * Each value contains array with keys that are the sanitized asset file paths (e.g. `icon_ios_Icon_60_3x_png`).
+ *
+ * <dl>
+ *   <dt>int[] `error`</dt>
+ *   <dd>An error code representing the success or failure status.</dd>
+ * 
+ *   <dt>string[] `tmp_name`</dt>
+ *   <dd>The temporary filename of the file in which the uploaded file was stored on the server.</dd>
+ * </dl>
+ * @post post
+ * @var WlFile[]
+ */
   public $a_image_upload = [];
 
   /**
-   * Firebase Android config file (`google-services.json`).
-   *
-   * @post post
-   * @var WlFile
-   */
+ * Firebase Android config file (`google-services.json`).
+ *
+ * @post post
+ * @var WlFile
+ */
   public $f_google_services_json = [];
 
   /**
-   * Business key.
-   *
-   * @post post
-   * @var string
-   */
+ * Business key.
+ *
+ * @post post
+ * @var string
+ */
   public $k_business = '0';
 }
 

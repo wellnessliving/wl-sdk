@@ -16,28 +16,28 @@ use WellnessLiving\WlModelRequest;
 class CoreSidModel extends WlModelAbstract
 {
   /**
-   * List of items. Keys are IDs, values are arrays with additional information:
-   *
-   * <dl>
-   *   <dt>int `sid`</dt>
-   *   <dd>String ID.</dd>
-   * 
-   *   <dt>string `text_title`</dt>
-   *   <dd>Title of the ID.</dd>
-   * </dl>
-   * @get result
-   * @var array
-   */
+ * List of items. Keys are IDs, values are arrays with additional information:
+ *
+ * <dl>
+ *   <dt>int `sid`</dt>
+ *   <dd>String ID.</dd>
+ * 
+ *   <dt>string `text_title`</dt>
+ *   <dd>Title of the ID.</dd>
+ * </dl>
+ * @get result
+ * @var array
+ */
   public $a_list;
 
   /**
-   * Name of the Sid class to get list from.
-   *
-   * Should be a fully qualified class name.
-   *
-   * @get get
-   * @var string
-   */
+ * Name of the Sid class to get list from.
+ *
+ * Should be a fully qualified class name.
+ *
+ * @get get
+ * @var string
+ */
   public $s_class_name = '';
 }
 

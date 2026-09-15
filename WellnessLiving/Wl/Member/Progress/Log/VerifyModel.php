@@ -13,27 +13,27 @@ use WellnessLiving\WlModelRequest;
 class VerifyModel extends WlModelAbstract
 {
   /**
-   * Local date without time of the progress log.
-   *
-   * @put get
-   * @var string
-   */
+ * Local date without time of the progress log.
+ *
+ * @put get
+ * @var string
+ */
   public $dt_date;
 
   /**
-   * Business key.
-   *
-   * @put get
-   * @var string
-   */
+ * Business key.
+ *
+ * @put get
+ * @var string
+ */
   public $k_business;
 
   /**
-   * User key.
-   *
-   * @put get
-   * @var string
-   */
+ * User key.
+ *
+ * @put get
+ * @var string
+ */
   public $uid;
 }
 

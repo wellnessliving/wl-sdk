@@ -32,58 +32,58 @@ use WellnessLiving\WlModelRequest;
 class SocialShareModel extends WlModelAbstract
 {
   /**
-   * The primary keys of the shared objects. Depends on {@link SocialShareModel::$id_share_object}.
-   * If {@link SocialShareModel::$id_share_object} is:
-   * * {@link ShareObjectSid::BOOK} - each value is key of the visit. 
-   * * {@link ShareObjectSid::LOCATION} - each value is key of the location. 
-   * * {@link ShareObjectSid::PURCHASE} - each value is key of the purchase. 
-   * * {@link ShareObjectSid::REVIEW} - each value is key of the review. 
-   *
-   * @post post
-   * @var string[]
-   */
+ * The primary keys of the shared objects. Depends on {@link SocialShareModel::$id_share_object}.
+ * If {@link SocialShareModel::$id_share_object} is:
+ * * {@link ShareObjectSid::BOOK} - each value is key of the visit. 
+ * * {@link ShareObjectSid::LOCATION} - each value is key of the location. 
+ * * {@link ShareObjectSid::PURCHASE} - each value is key of the purchase. 
+ * * {@link ShareObjectSid::REVIEW} - each value is key of the review. 
+ *
+ * @post post
+ * @var string[]
+ */
   public $a_key;
 
   /**
-   * The id of the social network.
-   *
-   * @post post
-   * @var int
-   * @see ASocialSid
-   */
+ * The id of the social network.
+ *
+ * @post post
+ * @var int
+ * @see ASocialSid
+ */
   public $id_share_destination;
 
   /**
-   * The id of type object for share post to social network.
-   *
-   * @post post
-   * @var int
-   * @see ShareObjectSid
-   */
+ * The id of type object for share post to social network.
+ *
+ * @post post
+ * @var int
+ * @see ShareObjectSid
+ */
   public $id_share_object;
 
   /**
-   * Business key.
-   *
-   * @post post
-   * @var string
-   */
+ * Business key.
+ *
+ * @post post
+ * @var string
+ */
   public $k_business;
 
   /**
-   * Secret key for access shared object.
-   *
-   * @post result
-   * @var string
-   */
+ * Secret key for access shared object.
+ *
+ * @post result
+ * @var string
+ */
   public $s_secret;
 
   /**
-   * User key.
-   *
-   * @post post
-   * @var string
-   */
+ * User key.
+ *
+ * @post post
+ * @var string
+ */
   public $uid;
 }
 

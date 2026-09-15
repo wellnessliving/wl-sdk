@@ -13,35 +13,35 @@ use WellnessLiving\WlModelRequest;
 class CatalogCouponModel extends WlModelAbstract
 {
   /**
-   * Business key.
-   *
-   * @get get
-   * @var string
-   */
+ * Business key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * Coupon ID.
-   *
-   * @get get
-   * @var string
-   */
+ * Coupon ID.
+ *
+ * @get get
+ * @var string
+ */
   public $k_coupon = '';
 
   /**
-   * Coupon amount ID.
-   *
-   * @get get
-   * @var string
-   */
+ * Coupon amount ID.
+ *
+ * @get get
+ * @var string
+ */
   public $k_coupon_amount = '';
 
   /**
-   * Custom coupon code.
-   *
-   * @get get
-   * @var string
-   */
+ * Custom coupon code.
+ *
+ * @get get
+ * @var string
+ */
   public $s_code = '';
 }
 

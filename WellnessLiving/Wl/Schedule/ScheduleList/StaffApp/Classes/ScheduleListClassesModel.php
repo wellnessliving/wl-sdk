@@ -13,43 +13,43 @@ use WellnessLiving\WlModelRequest;
 class ScheduleListClassesModel extends WlModelAbstract
 {
   /**
-   * List of classes/events.
-   * Keys - class/event IDs. 
-   * Values - class/event titles.
-   *
-   * @get result
-   * @var string[]
-   */
+ * List of classes/events.
+ * Keys - class/event IDs. 
+ * Values - class/event titles.
+ *
+ * @get result
+ * @var string[]
+ */
   public $a_class;
 
   /**
-   * <tt>true</tt> - to return events; <tt>false</tt> - to return classes.
-   *
-   * @get get
-   * @var bool
-   */
+ * <tt>true</tt> - to return events; <tt>false</tt> - to return classes.
+ *
+ * @get get
+ * @var bool
+ */
   public $is_event;
 
   /**
-   * Business key.
-   *
-   * @delete get
-   * @get get
-   * @post get
-   * @put get
-   * @var string
-   */
+ * Business key.
+ *
+ * @delete get
+ * @get get
+ * @post get
+ * @put get
+ * @var string
+ */
   public $k_business = null;
 
   /**
-   * User key.
-   *
-   * @delete get
-   * @get get
-   * @post get
-   * @put get
-   * @var string
-   */
+ * User key.
+ *
+ * @delete get
+ * @get get
+ * @post get
+ * @put get
+ * @var string
+ */
   public $uid = null;
 }
 

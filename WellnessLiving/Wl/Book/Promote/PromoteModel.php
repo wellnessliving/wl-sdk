@@ -14,37 +14,37 @@ use WellnessLiving\Wl\Mode\ModeSid;
 class PromoteModel extends WlModelAbstract
 {
   /**
-   * ID of the source where a visit was promoted, one of {@link ModeSid} constants.
-   *
-   * `null` if not initialized yet.
-   *
-   * @post post
-   * @var int|null
-   */
+ * ID of the source where a visit was promoted, one of {@link ModeSid} constants.
+ *
+ * `null` if not initialized yet.
+ *
+ * @post post
+ * @var int|null
+ */
   public $id_mode = null;
 
   /**
-   * The business key.
-   *
-   * @post post
-   * @var string
-   */
+ * The business key.
+ *
+ * @post post
+ * @var string
+ */
   public $k_business = '0';
 
   /**
-   * The visit key to promote.
-   *
-   * @post post
-   * @var string
-   */
+ * The visit key to promote.
+ *
+ * @post post
+ * @var string
+ */
   public $k_visit = '0';
 
   /**
-   * Message about successful promote.
-   *
-   * @post result
-   * @var string
-   */
+ * Message about successful promote.
+ *
+ * @post result
+ * @var string
+ */
   public $text_message;
 }
 

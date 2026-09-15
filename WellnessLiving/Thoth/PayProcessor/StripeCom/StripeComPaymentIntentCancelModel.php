@@ -14,52 +14,52 @@ use WellnessLiving\Wl\RsPayActorSid;
 class StripeComPaymentIntentCancelModel extends WlModelAbstract
 {
   /**
-   * ID of the actor.
-   *
-   * @post post
-   * @var int
-   * @see RsPayActorSid
-   */
+ * ID of the actor.
+ *
+ * @post post
+ * @var int
+ * @see RsPayActorSid
+ */
   public $id_pay_actor;
 
   /**
-   * Key of the business.
-   *
-   * @post post
-   * @var string
-   */
+ * Key of the business.
+ *
+ * @post post
+ * @var string
+ */
   public $k_business;
 
   /**
-   * Key of the business merchant, that processes payment.
-   *
-   * @post post
-   * @var string
-   */
+ * Key of the business merchant, that processes payment.
+ *
+ * @post post
+ * @var string
+ */
   public $k_business_merchant;
 
   /**
-   * Pay transaction key, which was used to create payment intent.
-   *
-   * @post post
-   * @var string
-   */
+ * Pay transaction key, which was used to create payment intent.
+ *
+ * @post post
+ * @var string
+ */
   public $k_pay_transaction;
 
   /**
-   * Payment intent ID.
-   *
-   * @post post
-   * @var string
-   */
+ * Payment intent ID.
+ *
+ * @post post
+ * @var string
+ */
   public $s_payment_intent;
 
   /**
-   * Payment owner user key.
-   *
-   * @post post
-   * @var string
-   */
+ * Payment owner user key.
+ *
+ * @post post
+ * @var string
+ */
   public $uid_purchase;
 }
 

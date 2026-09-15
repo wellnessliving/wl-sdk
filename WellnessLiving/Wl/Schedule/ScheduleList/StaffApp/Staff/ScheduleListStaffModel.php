@@ -13,44 +13,44 @@ use WellnessLiving\WlModelRequest;
 class ScheduleListStaffModel extends WlModelAbstract
 {
   /**
-   * IDs of staff members which must be represented of business schedule. Primary keys in the `rs_staff` table.
-   *
-   * Returned only for applications in the `APPS_USE_OLD_K_STAFF` allow-list.
-   *
-   * @get result
-   * @var string[]
-   * @deprecated Use {@link ScheduleListStaffModel::$a_uid_staff} instead.
-   */
+ * IDs of staff members which must be represented of business schedule. Primary keys in the `rs_staff` table.
+ *
+ * Returned only for applications in the `APPS_USE_OLD_K_STAFF` allow-list.
+ *
+ * @get result
+ * @var string[]
+ * @deprecated Use {@link ScheduleListStaffModel::$a_uid_staff} instead.
+ */
   public $a_staff;
 
   /**
-   * IDs of staff members which must be represented of business schedule. Primary keys in the `passport_login` table.
-   *
-   * @get result
-   * @var string[]
-   */
+ * IDs of staff members which must be represented of business schedule. Primary keys in the `passport_login` table.
+ *
+ * @get result
+ * @var string[]
+ */
   public $a_uid_staff;
 
   /**
-   * Business key.
-   *
-   * @delete get
-   * @get get
-   * @post get
-   * @put get
-   * @var string
-   */
+ * Business key.
+ *
+ * @delete get
+ * @get get
+ * @post get
+ * @put get
+ * @var string
+ */
   public $k_business = null;
 
   /**
-   * User key.
-   *
-   * @delete get
-   * @get get
-   * @post get
-   * @put get
-   * @var string
-   */
+ * User key.
+ *
+ * @delete get
+ * @get get
+ * @post get
+ * @put get
+ * @var string
+ */
   public $uid = null;
 }
 

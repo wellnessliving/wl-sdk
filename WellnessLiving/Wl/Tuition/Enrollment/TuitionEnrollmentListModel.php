@@ -13,173 +13,173 @@ use WellnessLiving\WlModelRequest;
 class TuitionEnrollmentListModel extends WlModelAbstract
 {
   /**
-   * List of tuition enrollments.
-   *
-   * <dl>
-   *   <dt>array[] `a_events`</dt>
-   *   <dd>
-   *     Events for this enrollment.
-   *     <dl>
-   *       <dt>int|null `id_enrollment_status`</dt>
-   *       <dd>
-   *         Enrollment status. Active user is enrolled into the event, and there are upcoming sessions.
-   * Canceled, if enrollment is canceled.
-   * Completed, if all event sessions are in the past and enrollment is not canceled.
-   *       </dd>
-   * 
-   *       <dt>int|null `id_membership_status`</dt>
-   *       <dd>Membership status.
-   * 
-   * `null` if tuition paid in full with installment.</dd>
-   * 
-   *       <dt>bool `is_cancelled`</dt>
-   *       <dd>Whether this enrollment is cancelled or not.</dd>
-   * 
-   *       <dt>string `k_class`</dt>
-   *       <dd>Event ID.</dd>
-   * 
-   *       <dt>string `m_event_discount`</dt>
-   *       <dd>Login type and shopping cart discounts.</dd>
-   * 
-   *       <dt>string `m_event_subtotal`</dt>
-   *       <dd>Price of the event before login type and shopping cart discounts.</dd>
-   * 
-   *       <dt>string `m_event_tax`</dt>
-   *       <dd>Taxes amount.</dd>
-   * 
-   *       <dt>string `uid`</dt>
-   *       <dd>Enrolled client.</dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>string|null `dl_next`</dt>
-   *   <dd>
-   *     Next payment date in local business timezone and MySQL format.
-   * It will be the closest date to the current date for membership tuition.
-   * 
-   * `null` if we cannot define next payment date.
-   *   </dd>
-   * 
-   *   <dt>string `dtl_enrollment`</dt>
-   *   <dd>Date and time of the enrollment in local business timezone.</dd>
-   * 
-   *   <dt>int `i_payments_done`</dt>
-   *   <dd>Number of payments done.</dd>
-   * 
-   *   <dt>int|null `i_payments_left`</dt>
-   *   <dd>Number of payments left.
-   * 
-   * `null` for membership-based tuition.</dd>
-   * 
-   *   <dt>int `i_payments_total`</dt>
-   *   <dd>Number of payments total at the moment of enrollment.</dd>
-   * 
-   *   <dt>int|null `id_installment_status`</dt>
-   *   <dd>Installment plan status.
-   * 
-   * `null` if tuition paid in full without installment.</dd>
-   * 
-   *   <dt>string `k_purchase_item_tuition`</dt>
-   *   <dd>
-   *     Key of the tuition purchase item. This is enrollment key, which can be used to modify and cancel the enrollment.
-   *   </dd>
-   * 
-   *   <dt>string `m_paid`</dt>
-   *   <dd>Rest amount has been already paid.</dd>
-   * 
-   *   <dt>string `m_payment`</dt>
-   *   <dd>One payment amount.</dd>
-   * 
-   *   <dt>string|null `m_rest`</dt>
-   *   <dd>Rest amount to be paid.
-   * 
-   * `null` for membership-based tuition.</dd>
-   * 
-   *   <dt>string|null `m_total`</dt>
-   *   <dd>Total initial amount to be paid.
-   * 
-   * `null` for membership-based tuition.</dd>
-   * 
-   *   <dt>string `uid_payer`</dt>
-   *   <dd>Payer for this enrollment.
-   * 
-   * This user can be enrolled or not, but he pays for the entire enrollment.</dd>
-   * </dl>
-   * @get result
-   * @var array[]
-   */
+ * List of tuition enrollments.
+ *
+ * <dl>
+ *   <dt>array[] `a_events`</dt>
+ *   <dd>
+ *     Events for this enrollment.
+ *     <dl>
+ *       <dt>int|null `id_enrollment_status`</dt>
+ *       <dd>
+ *         Enrollment status. Active user is enrolled into the event, and there are upcoming sessions.
+ * Canceled, if enrollment is canceled.
+ * Completed, if all event sessions are in the past and enrollment is not canceled.
+ *       </dd>
+ * 
+ *       <dt>int|null `id_membership_status`</dt>
+ *       <dd>Membership status.
+ * 
+ * `null` if tuition paid in full with installment.</dd>
+ * 
+ *       <dt>bool `is_cancelled`</dt>
+ *       <dd>Whether this enrollment is cancelled or not.</dd>
+ * 
+ *       <dt>string `k_class`</dt>
+ *       <dd>Event ID.</dd>
+ * 
+ *       <dt>string `m_event_discount`</dt>
+ *       <dd>Login type and shopping cart discounts.</dd>
+ * 
+ *       <dt>string `m_event_subtotal`</dt>
+ *       <dd>Price of the event before login type and shopping cart discounts.</dd>
+ * 
+ *       <dt>string `m_event_tax`</dt>
+ *       <dd>Taxes amount.</dd>
+ * 
+ *       <dt>string `uid`</dt>
+ *       <dd>Enrolled client.</dd>
+ *     </dl>
+ *   </dd>
+ * 
+ *   <dt>string|null `dl_next`</dt>
+ *   <dd>
+ *     Next payment date in local business timezone and MySQL format.
+ * It will be the closest date to the current date for membership tuition.
+ * 
+ * `null` if we cannot define next payment date.
+ *   </dd>
+ * 
+ *   <dt>string `dtl_enrollment`</dt>
+ *   <dd>Date and time of the enrollment in local business timezone.</dd>
+ * 
+ *   <dt>int `i_payments_done`</dt>
+ *   <dd>Number of payments done.</dd>
+ * 
+ *   <dt>int|null `i_payments_left`</dt>
+ *   <dd>Number of payments left.
+ * 
+ * `null` for membership-based tuition.</dd>
+ * 
+ *   <dt>int `i_payments_total`</dt>
+ *   <dd>Number of payments total at the moment of enrollment.</dd>
+ * 
+ *   <dt>int|null `id_installment_status`</dt>
+ *   <dd>Installment plan status.
+ * 
+ * `null` if tuition paid in full without installment.</dd>
+ * 
+ *   <dt>string `k_purchase_item_tuition`</dt>
+ *   <dd>
+ *     Key of the tuition purchase item. This is enrollment key, which can be used to modify and cancel the enrollment.
+ *   </dd>
+ * 
+ *   <dt>string `m_paid`</dt>
+ *   <dd>Rest amount has been already paid.</dd>
+ * 
+ *   <dt>string `m_payment`</dt>
+ *   <dd>One payment amount.</dd>
+ * 
+ *   <dt>string|null `m_rest`</dt>
+ *   <dd>Rest amount to be paid.
+ * 
+ * `null` for membership-based tuition.</dd>
+ * 
+ *   <dt>string|null `m_total`</dt>
+ *   <dd>Total initial amount to be paid.
+ * 
+ * `null` for membership-based tuition.</dd>
+ * 
+ *   <dt>string `uid_payer`</dt>
+ *   <dd>Payer for this enrollment.
+ * 
+ * This user can be enrolled or not, but he pays for the entire enrollment.</dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
   public $a_enrollment = [];
 
   /**
-   * List of users who has paid or are scheduled to pay tuition fee.
-   *
-   * Keys are user ids. Values are payment information.
-   *
-   * <dl>
-   *   <dt>bool `is_paid`</dt>
-   *   <dd>
-   *     If `true`, user has paid tuition fee. If `false`, user is scheduled to pay tuition fee.
-   *     If a user did not pay and does not have a scheduled payment, the key is not present.
-   *   </dd>
-   * </dl>
-   * @get result
-   * @var array
-   */
+ * List of users who has paid or are scheduled to pay tuition fee.
+ *
+ * Keys are user ids. Values are payment information.
+ *
+ * <dl>
+ *   <dt>bool `is_paid`</dt>
+ *   <dd>
+ *     If `true`, user has paid tuition fee. If `false`, user is scheduled to pay tuition fee.
+ *     If a user did not pay and does not have a scheduled payment, the key is not present.
+ *   </dd>
+ * </dl>
+ * @get result
+ * @var array
+ */
   public $a_enrollment_fee = [];
 
   /**
-   * Filters.
-   *
-   * List includes enrollments to the tuition. And enrollments to the tuition include enrollment to the event.
-   * If any part of the enrollment to the tuition is valid, according to the given filter, full enrollment is included.
-   *
-   * For example.
-   * Client A is payer for two tuition enrollments. One is for client B and events E1, E2. Another for clients C and D.
-   * Both for E1. And Client W pays for one tuition enrollment - for client X.
-   *
-   * If we filter list by enrolled client D, for example. List will return two tuition enrollments. Both paid with Client A.
-   * Because we think that these enrollments are combined in single family and should both be returned.
-   *
-   * All filters are optional. And added as AND. If you send certain events and certain statues, both conditions should be met.
-   *
-   * <dl>
-   *   <dt>string[] `a_event`</dt>
-   *   <dd>Leave only enrollments with the given events enrolled.</dd>
-   * 
-   *   <dt>int[] `a_statuses`</dt>
-   *   <dd>List of tuition statuses.</dd>
-   * 
-   *   <dt>string[] `a_purchase_item_tuition`</dt>
-   *   <dd>List of tuition enrollments ids to leave only.</dd>
-   * 
-   *   <dt>string[] `a_uid_any`</dt>
-   *   <dd>Leave only enrollments with the given payers or enrolled clients.</dd>
-   * 
-   *   <dt>string[] `a_uid_enrolled`</dt>
-   *   <dd>Leave only enrollments with the given enrolled clients.</dd>
-   * 
-   *   <dt>string[] `a_uid_payer`</dt>
-   *   <dd>Leave only enrollments with the given payers.</dd>
-   * </dl>
-   * @get get
-   * @var array
-   */
+ * Filters.
+ *
+ * List includes enrollments to the tuition. And enrollments to the tuition include enrollment to the event.
+ * If any part of the enrollment to the tuition is valid, according to the given filter, full enrollment is included.
+ *
+ * For example.
+ * Client A is payer for two tuition enrollments. One is for client B and events E1, E2. Another for clients C and D.
+ * Both for E1. And Client W pays for one tuition enrollment - for client X.
+ *
+ * If we filter list by enrolled client D, for example. List will return two tuition enrollments. Both paid with Client A.
+ * Because we think that these enrollments are combined in single family and should both be returned.
+ *
+ * All filters are optional. And added as AND. If you send certain events and certain statues, both conditions should be met.
+ *
+ * <dl>
+ *   <dt>string[] `a_event`</dt>
+ *   <dd>Leave only enrollments with the given events enrolled.</dd>
+ * 
+ *   <dt>int[] `a_statuses`</dt>
+ *   <dd>List of tuition statuses.</dd>
+ * 
+ *   <dt>string[] `a_purchase_item_tuition`</dt>
+ *   <dd>List of tuition enrollments ids to leave only.</dd>
+ * 
+ *   <dt>string[] `a_uid_any`</dt>
+ *   <dd>Leave only enrollments with the given payers or enrolled clients.</dd>
+ * 
+ *   <dt>string[] `a_uid_enrolled`</dt>
+ *   <dd>Leave only enrollments with the given enrolled clients.</dd>
+ * 
+ *   <dt>string[] `a_uid_payer`</dt>
+ *   <dd>Leave only enrollments with the given payers.</dd>
+ * </dl>
+ * @get get
+ * @var array
+ */
   public $a_filter = [];
 
   /**
-   * Business key.
-   *
-   * @get get
-   * @var string
-   */
+ * Business key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * Key of the tuition in tuition microservice.
-   *
-   * @get get
-   * @var string
-   */
+ * Key of the tuition in tuition microservice.
+ *
+ * @get get
+ * @var string
+ */
   public $s_tuition_id = '';
 }
 

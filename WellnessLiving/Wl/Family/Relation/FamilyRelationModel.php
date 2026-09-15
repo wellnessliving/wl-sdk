@@ -13,22 +13,22 @@ use WellnessLiving\WlModelRequest;
 class FamilyRelationModel extends WlModelAbstract
 {
   /**
-   * The relationship types in the business.
-   *
-   * Key is ID, value is SID.
-   *
-   * @get result
-   * @var array
-   * @see WlFamilyRelationSid
-   */
+ * The relationship types in the business.
+ *
+ * Key is ID, value is SID.
+ *
+ * @get result
+ * @var array
+ * @see WlFamilyRelationSid
+ */
   public $a_business_relationships = [];
 
   /**
-   * The business key.
-   *
-   * @get get
-   * @var string
-   */
+ * The business key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '';
 }
 

@@ -15,43 +15,43 @@ use WellnessLiving\Wl\Service\ServiceSid;
 class RecentServiceModel extends WlModelAbstract
 {
   /**
-   * List of last booked services.
-   *
-   * @get result
-   * @var string[]
-   */
+ * List of last booked services.
+ *
+ * @get result
+ * @var string[]
+ */
   public $a_service_last = [];
 
   /**
-   * Count of last booked services to return. Default value is 5.
-   *
-   * @get get
-   * @var int
-   */
+ * Count of last booked services to return. Default value is 5.
+ *
+ * @get get
+ * @var int
+ */
   public $i_visit = 5;
 
   /**
-   * Type of service to return. One of {@link ServiceSid} constants.
-   *
-   * @get get
-   * @var int
-   */
+ * Type of service to return. One of {@link ServiceSid} constants.
+ *
+ * @get get
+ * @var int
+ */
   public $id_service = 0;
 
   /**
-   * The key of the business.
-   *
-   * @get get
-   * @var string
-   */
+ * The key of the business.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * The key of the user.
-   *
-   * @get get
-   * @var string
-   */
+ * The key of the user.
+ *
+ * @get get
+ * @var string
+ */
   public $uid = '';
 }
 

@@ -20,1177 +20,1177 @@ use WellnessLiving\Wl\Virtual\VirtualProviderSid;
 class ElementModel extends WlModelAbstract
 {
   /**
-   * Displays information about age restrictions for this event.
-   *
-   * Will be empty array if there are no age restrictions.
-   *
-   * <dl>
-   *   <dt>int `i_age_from`</dt>
-   *   <dd>Minimum age for service (years part).</dd>
-   * 
-   *   <dt>int `i_age_from_month`</dt>
-   *   <dd>Minimum age for service (months part).</dd>
-   * 
-   *   <dt>int `i_age_from_year`</dt>
-   *   <dd>Minimum age for service (years part).</dd>
-   * 
-   *   <dt>int `i_age_to`</dt>
-   *   <dd>Maximum age for service (years part).</dd>
-   * 
-   *   <dt>int `i_age_to_month`</dt>
-   *   <dd>Maximum age for service (months part).</dd>
-   * 
-   *   <dt>int `i_age_to_year`</dt>
-   *   <dd>Maximum age for service (years part).</dd>
-   * 
-   *   <dt>bool `is_age_public`</dt>
-   *   <dd>
-   *     Is service public even if user does not meet age requirements or not?
-   * 
-   * `true` - to show service to everyone.
-   * `false` - to show service only to users who meet age requirements.
-   *   </dd>
-   * 
-   *   <dt>bool `is_month_enabled`</dt>
-   *   <dd>
-   *     Whether months are enabled for age restrictions.
-   * 
-   * `true` - age restrictions can include number of months.
-   * `false` - age restrictions can include only years.
-   *   </dd>
-   * </dl>
-   * @get result
-   * @var array
-   */
+ * Displays information about age restrictions for this event.
+ *
+ * Will be empty array if there are no age restrictions.
+ *
+ * <dl>
+ *   <dt>int `i_age_from`</dt>
+ *   <dd>Minimum age for service (years part).</dd>
+ * 
+ *   <dt>int `i_age_from_month`</dt>
+ *   <dd>Minimum age for service (months part).</dd>
+ * 
+ *   <dt>int `i_age_from_year`</dt>
+ *   <dd>Minimum age for service (years part).</dd>
+ * 
+ *   <dt>int `i_age_to`</dt>
+ *   <dd>Maximum age for service (years part).</dd>
+ * 
+ *   <dt>int `i_age_to_month`</dt>
+ *   <dd>Maximum age for service (months part).</dd>
+ * 
+ *   <dt>int `i_age_to_year`</dt>
+ *   <dd>Maximum age for service (years part).</dd>
+ * 
+ *   <dt>bool `is_age_public`</dt>
+ *   <dd>
+ *     Is service public even if user does not meet age requirements or not?
+ * 
+ * `true` - to show service to everyone.
+ * `false` - to show service only to users who meet age requirements.
+ *   </dd>
+ * 
+ *   <dt>bool `is_month_enabled`</dt>
+ *   <dd>
+ *     Whether months are enabled for age restrictions.
+ * 
+ * `true` - age restrictions can include number of months.
+ * `false` - age restrictions can include only years.
+ *   </dd>
+ * </dl>
+ * @get result
+ * @var array
+ */
   public $a_age_restrictions = [];
 
   /**
-   * Retrieves information about an event item.
-   *
-   * Received only if {@link ElementModel::$k_event} has been specified.
-   * In this case, other fields aren't receivers.
-   *
-   * <dl>
-   *   <dt>string `dt_date`</dt>
-   *   <dd>Date/time when the session starts. In UTC.</dd>
-   * 
-   *   <dt>string `k_class_period`</dt>
-   *   <dd>Class session primary keys. </dd>
-   * </dl>
-   * @get result
-   * @var array[]
-   */
+ * Retrieves information about an event item.
+ *
+ * Received only if {@link ElementModel::$k_event} has been specified.
+ * In this case, other fields aren't receivers.
+ *
+ * <dl>
+ *   <dt>string `dt_date`</dt>
+ *   <dd>Date/time when the session starts. In UTC.</dd>
+ * 
+ *   <dt>string `k_class_period`</dt>
+ *   <dd>Class session primary keys. </dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
   public $a_book_available;
 
   /**
-   * Business policies connected to clients and bookings.
-   *
-   * Contains the same structure as {@link BusinessConfigModel::$a_business_policy}.
-   *
-   * If the event has custom overrides, those policies are used; otherwise, the default
-   *  business policies are returned.
-   *
-   * <dl>
-   *   <dt>int[] `a_payment_reattempt_not_decline_reason`</dt>
-   *   <dd>
-   *     List of not allowed decline reasons to payment reattempt. Each element is one of {@link PayExceptionSid} constants.
-   *   </dd>
-   * 
-   *   <dt>bool[] `a_wait_service`</dt>
-   *   <dd>Keys are list of IDs from {@link ServiceSid}, and values are flags whether wait list is allowed.</dd>
-   * 
-   *   <dt>int `i_book_before`</dt>
-   *   <dd>Minimum hours|days|months before class should be booked.</dd>
-   * 
-   *   <dt>int `i_book_future`</dt>
-   *   <dd>Maximum hours|days|months after class can be booked.</dd>
-   * 
-   *   <dt>int `i_cancel`</dt>
-   *   <dd>Minimum hours|days|months before class should be canceled without penalty.</dd>
-   * 
-   *   <dt>int `i_promote`</dt>
-   *   <dd>Minimum hours|days|months before class should be promoted from wait list.</dd>
-   * 
-   *   <dt>int `i_promote_fastest_response`</dt>
-   *   <dd>
-   *     Minimum hours|days|months the notifications which are sent for client confirmation required should be sent to all clients on the wait list at the same time up to the cut off time.
-   *   </dd>
-   * 
-   *   <dt>int `i_promote_require_confirm`</dt>
-   *   <dd>
-   *     Minimum hours|days|months the notifications which are sent for client confirmation must confirm their a promote from the waiting list to the active list.
-   *   </dd>
-   * 
-   *   <dt>int `i_reattempt_count`</dt>
-   *   <dd>Number of failed auto-payments reattempts.</dd>
-   * 
-   *   <dt>int `id_book_before`</dt>
-   *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
-   * 
-   *   <dt>int `id_book_future`</dt>
-   *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
-   * 
-   *   <dt>int `id_cancel`</dt>
-   *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
-   * 
-   *   <dt>int `id_promote`</dt>
-   *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
-   * 
-   *   <dt>int `id_promote_fastest_response`</dt>
-   *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
-   * 
-   *   <dt>int `id_promote_require_confirm`</dt>
-   *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
-   * 
-   *   <dt>bool `is_book_inside_active_pay_period`</dt>
-   *   <dd>
-   *     if `true` - clients with purchase options are only allowed
-   * to book sessions within their current paid period, `false` - during purchase option's duration.
-   *   </dd>
-   * 
-   *   <dt>bool `is_disable_promotion`</dt>
-   *   <dd>
-   *     1 if a client's automatic payment fails, their account should not be
-   * debited and their purchase option becomes inactive, 0 - otherwise. Default 0.
-   *   </dd>
-   * 
-   *   <dt>bool `is_enable_payment_penalty`</dt>
-   *   <dd>Whether to charge penalty after final auto-payment attempt.</dd>
-   * 
-   *   <dt>bool `is_enable_payment_reattempt`</dt>
-   *   <dd>Whether to reattempt failed auto-payments.</dd>
-   * 
-   *   <dt>bool `is_enable_staff_ip_restriction`</dt>
-   *   <dd>Whether to restrict which IP addresses staff can login from.</dd>
-   * 
-   *   <dt>bool `is_prevent_booking`</dt>
-   *   <dd>1 if booking for a client with negative balance is disabled, 0 - otherwise. Default 0.</dd>
-   * 
-   *   <dt>bool `is_staff_restrict`</dt>
-   *   <dd>If true, client can not choose provider while appointment wizard.</dd>
-   * 
-   *   <dt>bool `is_wait`</dt>
-   *   <dd>Enable\disable wait list.</dd>
-   * 
-   *   <dt>string `k_currency`</dt>
-   *   <dd>Currency from rs.currency table.</dd>
-   * 
-   *   <dt>string `k_timezone`</dt>
-   *   <dd>Timezone from get.timezone table.</dd>
-   * 
-   *   <dt>string `m_payment_penalty`</dt>
-   *   <dd>Penalty amount to charge after final auto-payment attempt.</dd>
-   * 
-   *   <dt>string `url_custom`</dt>
-   *   <dd>Custom Url of a business</dd>
-   * </dl>
-   * @get result
-   * @var array
-   * @see BusinessConfigModel::$a_business_policy
-   */
+ * Business policies connected to clients and bookings.
+ *
+ * Contains the same structure as {@link BusinessConfigModel::$a_business_policy}.
+ *
+ * If the event has custom overrides, those policies are used; otherwise, the default
+ *  business policies are returned.
+ *
+ * <dl>
+ *   <dt>int[] `a_payment_reattempt_not_decline_reason`</dt>
+ *   <dd>
+ *     List of not allowed decline reasons to payment reattempt. Each element is one of {@link PayExceptionSid} constants.
+ *   </dd>
+ * 
+ *   <dt>bool[] `a_wait_service`</dt>
+ *   <dd>Keys are list of IDs from {@link ServiceSid}, and values are flags whether wait list is allowed.</dd>
+ * 
+ *   <dt>int `i_book_before`</dt>
+ *   <dd>Minimum hours|days|months before class should be booked.</dd>
+ * 
+ *   <dt>int `i_book_future`</dt>
+ *   <dd>Maximum hours|days|months after class can be booked.</dd>
+ * 
+ *   <dt>int `i_cancel`</dt>
+ *   <dd>Minimum hours|days|months before class should be canceled without penalty.</dd>
+ * 
+ *   <dt>int `i_promote`</dt>
+ *   <dd>Minimum hours|days|months before class should be promoted from wait list.</dd>
+ * 
+ *   <dt>int `i_promote_fastest_response`</dt>
+ *   <dd>
+ *     Minimum hours|days|months the notifications which are sent for client confirmation required should be sent to all clients on the wait list at the same time up to the cut off time.
+ *   </dd>
+ * 
+ *   <dt>int `i_promote_require_confirm`</dt>
+ *   <dd>
+ *     Minimum hours|days|months the notifications which are sent for client confirmation must confirm their a promote from the waiting list to the active list.
+ *   </dd>
+ * 
+ *   <dt>int `i_reattempt_count`</dt>
+ *   <dd>Number of failed auto-payments reattempts.</dd>
+ * 
+ *   <dt>int `id_book_before`</dt>
+ *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
+ * 
+ *   <dt>int `id_book_future`</dt>
+ *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
+ * 
+ *   <dt>int `id_cancel`</dt>
+ *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
+ * 
+ *   <dt>int `id_promote`</dt>
+ *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
+ * 
+ *   <dt>int `id_promote_fastest_response`</dt>
+ *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
+ * 
+ *   <dt>int `id_promote_require_confirm`</dt>
+ *   <dd>Hours|days|months from {@link ADurationSid}.</dd>
+ * 
+ *   <dt>bool `is_book_inside_active_pay_period`</dt>
+ *   <dd>
+ *     if `true` - clients with purchase options are only allowed
+ * to book sessions within their current paid period, `false` - during purchase option's duration.
+ *   </dd>
+ * 
+ *   <dt>bool `is_disable_promotion`</dt>
+ *   <dd>
+ *     1 if a client's automatic payment fails, their account should not be
+ * debited and their purchase option becomes inactive, 0 - otherwise. Default 0.
+ *   </dd>
+ * 
+ *   <dt>bool `is_enable_payment_penalty`</dt>
+ *   <dd>Whether to charge penalty after final auto-payment attempt.</dd>
+ * 
+ *   <dt>bool `is_enable_payment_reattempt`</dt>
+ *   <dd>Whether to reattempt failed auto-payments.</dd>
+ * 
+ *   <dt>bool `is_enable_staff_ip_restriction`</dt>
+ *   <dd>Whether to restrict which IP addresses staff can login from.</dd>
+ * 
+ *   <dt>bool `is_prevent_booking`</dt>
+ *   <dd>1 if booking for a client with negative balance is disabled, 0 - otherwise. Default 0.</dd>
+ * 
+ *   <dt>bool `is_staff_restrict`</dt>
+ *   <dd>If true, client can not choose provider while appointment wizard.</dd>
+ * 
+ *   <dt>bool `is_wait`</dt>
+ *   <dd>Enable\disable wait list.</dd>
+ * 
+ *   <dt>string `k_currency`</dt>
+ *   <dd>Currency from rs.currency table.</dd>
+ * 
+ *   <dt>string `k_timezone`</dt>
+ *   <dd>Timezone from get.timezone table.</dd>
+ * 
+ *   <dt>string `m_payment_penalty`</dt>
+ *   <dd>Penalty amount to charge after final auto-payment attempt.</dd>
+ * 
+ *   <dt>string `url_custom`</dt>
+ *   <dd>Custom Url of a business</dd>
+ * </dl>
+ * @get result
+ * @var array
+ * @see BusinessConfigModel::$a_business_policy
+ */
   public $a_business_policy;
 
   /**
-   * The logo of event.
-   *
-   * <dl>
-   *   <dt>int `i_height`</dt>
-   *   <dd>Is returned only if staff has a photo. Image height.</dd>
-   * 
-   *   <dt>int `i_width`</dt>
-   *   <dd>Is returned only if staff has a photo. Image width.</dd>
-   * 
-   *   <dt>int `id_gender`</dt>
-   *   <dd>Is returned only if staff does not have a photo. ID of staff gender. One of {@link AGenderSid} constants.</dd>
-   * 
-   *   <dt>string `url_logo`</dt>
-   *   <dd>Is returned only if staff has a photo. URL to image.</dd>
-   * </dl>
-   * @get result
-   * @var array
-   */
+ * The logo of event.
+ *
+ * <dl>
+ *   <dt>int `i_height`</dt>
+ *   <dd>Is returned only if staff has a photo. Image height.</dd>
+ * 
+ *   <dt>int `i_width`</dt>
+ *   <dd>Is returned only if staff has a photo. Image width.</dd>
+ * 
+ *   <dt>int `id_gender`</dt>
+ *   <dd>Is returned only if staff does not have a photo. ID of staff gender. One of {@link AGenderSid} constants.</dd>
+ * 
+ *   <dt>string `url_logo`</dt>
+ *   <dd>Is returned only if staff has a photo. URL to image.</dd>
+ * </dl>
+ * @get result
+ * @var array
+ */
   public $a_class_logo;
 
   /**
-   * The list of keys from class tab.
-   *
-   * @get result
-   * @var string[]
-   */
+ * The list of keys from class tab.
+ *
+ * @get result
+ * @var string[]
+ */
   public $a_class_tab;
 
   /**
-   * Information for a large number of events.
-   *
-   * Received only if {@link ElementModel::$s_event} has been specified. In this case, other fields are not populated.
-   *
-   * Key is the event class key. 
-   *
-   * <dl>
-   *   <dt>array[] `a_book_available`</dt>
-   *   <dd>
-   *     List of sessions available for booking.
-   * See {@link ElementModel::$a_book_available}.
-   *     <dl>
-   *       <dt>string `dt_date`</dt>
-   *       <dd>Date/time when the session starts. In UTC.</dd>
-   * 
-   *       <dt>string `k_class_period`</dt>
-   *       <dd>Class session primary keys. </dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>array `a_class_logo`</dt>
-   *   <dd>
-   *     Image of event. See {@link ElementModel::$a_class_logo}.
-   *     <dl>
-   *       <dt>int `i_height`</dt>
-   *       <dd>Is returned only if staff has a photo. Image height.</dd>
-   * 
-   *       <dt>int `i_width`</dt>
-   *       <dd>Is returned only if staff has a photo. Image width.</dd>
-   * 
-   *       <dt>int `id_gender`</dt>
-   *       <dd>
-   *         Is returned only if staff does not have a photo. ID of staff gender. One of {@link AGenderSid} constants.
-   *       </dd>
-   * 
-   *       <dt>string `url_logo`</dt>
-   *       <dd>Is returned only if staff has a photo. URL to image.</dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>string[] `a_class_tab`</dt>
-   *   <dd>Class tab keys. See {@link ElementModel::$a_class_tab}.</dd>
-   * 
-   *   <dt>array[] `a_installment_template`</dt>
-   *   <dd>
-   *     List of installment plans. See {@link ElementModel::$a_installment_template}.
-   *     <dl>
-   *       <dt>int `i_count`</dt>
-   *       <dd>The number of payments.</dd>
-   * 
-   *       <dt>int `id_duration`</dt>
-   *       <dd>The duration of a single period. One of the {@link ADurationSid} constants.</dd>
-   * 
-   *       <dt>int `i_period`</dt>
-   *       <dd>The number of periods specified by `id_period` between individual payments.</dd>
-   * 
-   *       <dt>string `k_currency`</dt>
-   *       <dd>The payment currency Key.</dd>
-   * 
-   *       <dt>string `k_pay_installment_template`</dt>
-   *       <dd>
-   *         The key of the installment plan template. 
-   *       </dd>
-   * 
-   *       <dt>string `m_amount`</dt>
-   *       <dd>The amount of the installment plan.</dd>
-   * 
-   *       <dt>string `s_duration`</dt>
-   *       <dd>The title of the installment plan.</dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>array[] `a_makeup_class`</dt>
-   *   <dd>
-   *     Classes selected for make-up sessions. Every element has the following keys:
-   *     <dl>
-   *       <dt>string `k_class`</dt>
-   *       <dd>Class key. </dd>
-   * 
-   *       <dt>string|null `s_title`</dt>
-   *       <dd>Class title. `null` if title is unavailable for the selected language.</dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>array[] `a_schedule`</dt>
-   *   <dd>
-   *     Schedule of event sessions. See {@link ElementModel::$a_schedule}.
-   *     <dl>
-   *       <dt>true[] `a_day`</dt>
-   *       <dd>
-   *         Days of the week when the session occurs.
-   * Keys are weekday numbers (1 = Monday, 7 = Sunday),
-   * values are always `true`.
-   *       </dd>
-   * 
-   *       <dt>array `a_repeat`</dt>
-   *       <dd>
-   *         Repeat periodicity instructions.
-   *         <dl>
-   *           <dt>int `i_repeat`</dt>
-   *           <dd>Count of the periods which specified in `id_repeat`.</dd>
-   * 
-   *           <dt>int `id_repeat`</dt>
-   *           <dd>Measuring unit of `i_repeat` (week, month, year). One of {@link ADurationSid} constants.</dd>
-   *         </dl>
-   *       </dd>
-   * 
-   *       <dt>array[] `a_staff`</dt>
-   *       <dd>
-   *         A list of staff members who conduct the session. Every element has the following next keys:
-   *         <dl>
-   *           <dt>string `k_staff`</dt>
-   *           <dd>@deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
-   * 
-   *           <dt>string `s_name`</dt>
-   *           <dd>The staff member name.</dd>
-   * 
-   *           <dt>string `s_surname`</dt>
-   *           <dd>The first letter of staff member's surname.</dd>
-   * 
-   *           <dt>string `uid_staff`</dt>
-   *           <dd>The user key of the staff member. </dd>
-   *         </dl>
-   *       </dd>
-   * 
-   *       <dt>string[] `a_virtual_location`</dt>
-   *       <dd>List of virtual locations. </dd>
-   * 
-   *       <dt>string `dt_end`</dt>
-   *       <dd>The end date of the session.
-   * The local date without time.</dd>
-   * 
-   *       <dt>string `dt_start`</dt>
-   *       <dd>The start date of the session.
-   * The local date without time.</dd>
-   * 
-   *       <dt>bool `hide_location`</dt>
-   *       <dd>
-   *         `true` if the location should be hidden in the event details. Hide if the event is virtual or if the business
-   * only has one location. `false` otherwise.
-   *       </dd>
-   * 
-   *       <dt>int `i_capacity`</dt>
-   *       <dd>The class capacity.</dd>
-   * 
-   *       <dt>int `i_duration`</dt>
-   *       <dd>The duration of the class in seconds.</dd>
-   * 
-   *       <dt>bool `is_virtual`</dt>
-   *       <dd>
-   *         This will be `true` if the session is not held in person but offered remotely. It will be `false` otherwise.
-   *       </dd>
-   * 
-   *       <dt>string `f_price`</dt>
-   *       <dd>The price of the session, if it can be purchased separately.</dd>
-   * 
-   *       <dt>string `k_class_period`</dt>
-   *       <dd>The key of the class period.</dd>
-   * 
-   *       <dt>string `k_location`</dt>
-   *       <dd>The key of the location where the session is held.</dd>
-   * 
-   *       <dt>string `k_resource_location`</dt>
-   *       <dd>Structured off-site location data used by the calendar attachment.</dd>
-   * 
-   *       <dt>string `s_location`</dt>
-   *       <dd>The location title.</dd>
-   * 
-   *       <dt>string `s_time`</dt>
-   *       <dd>
-   *         The time when session occurred.
-   * A textual representation of the start and end time of a session. Example: `10:00 am - 11:00 am`
-   *       </dd>
-   * 
-   *       <dt>string `s_timezone`</dt>
-   *       <dd>The name of the timezone in which the session is held.</dd>
-   * 
-   *       <dt>string `text_room`</dt>
-   *       <dd>The room of the event.</dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>string[] `a_shop_category`</dt>
-   *   <dd>IDs of online store category. </dd>
-   * 
-   *   <dt>array `a_staff_logo`</dt>
-   *   <dd>
-   *     Photos of staff. See {@link ElementModel::$a_staff_logo}.
-   *     <dl>
-   *       <dt>int `i_height`</dt>
-   *       <dd>Image height.</dd>
-   * 
-   *       <dt>int `i_width`</dt>
-   *       <dd>Image width.</dd>
-   * 
-   *       <dt>string `uid`</dt>
-   *       <dd>Key of the user. </dd>
-   * 
-   *       <dt>string `url_logo`</dt>
-   *       <dd>URL to image.</dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>string `dt_book_date`</dt>
-   *   <dd>Date/time of first event session.</dd>
-   * 
-   *   <dt>string `dt_early`</dt>
-   *   <dd>Early date of event purchase.</dd>
-   * 
-   *   <dt>string `dt_end`</dt>
-   *   <dd>End date of the event instance.</dd>
-   * 
-   *   <dt>string `dt_start`</dt>
-   *   <dd>Date of first event session.</dd>
-   * 
-   *   <dt>string `html_end`</dt>
-   *   <dd>Html End date of the event instance.</dd>
-   * 
-   *   <dt>string `html_start`</dt>
-   *   <dd>Html Date of first event session.</dd>
-   * 
-   *   <dt>bool `hide_application`</dt>
-   *   <dd>Whether event will be hidden in the White Label mobile application.</dd>
-   * 
-   *   <dt>string `html_special`</dt>
-   *   <dd>Special instruction for event.</dd>
-   * 
-   *   <dt>int `i_makeup_cap`</dt>
-   *   <dd>
-   *     Number of allowed make-up sessions for event.
-   * `0` if make-up sessions are disabled for event or all missed sessions are available for make-up.
-   *   </dd>
-   * 
-   *   <dt>int `i_session`</dt>
-   *   <dd>Session count in event.</dd>
-   * 
-   *   <dt>int `i_session_all`</dt>
-   *   <dd>Total number of sessions including both past and future sessions.</dd>
-   * 
-   *   <dt>int `i_session_remain`</dt>
-   *   <dd>Remaining session count in event.</dd>
-   * 
-   *   <dt>bool `is_availability_checked`</dt>
-   *   <dd>Whether event availability was checked.</dd>
-   * 
-   *   <dt>bool `is_book`</dt>
-   *   <dd>Whether event is booked already</dd>
-   * 
-   *   <dt>bool `is_full`</dt>
-   *   <dd>`true` if there are no free spots in the event and booking is available only into wait list.</dd>
-   * 
-   *   <dt>bool `is_makeup`</dt>
-   *   <dd>`true` if the selected session can be a make up session; `false` otherwise.</dd>
-   * 
-   *   <dt>bool `is_past`</dt>
-   *   <dd>`true` if the event session has already started or ended and is not available to book.</dd>
-   * 
-   *   <dt>bool `is_policy_custom`</dt>
-   *   <dd>
-   *     `true` {@link ElementModel::$a_business_policy} contains the custom policies from the event; `false` otherwise.
-   *   </dd>
-   * 
-   *   <dt>bool `is_virtual`</dt>
-   *   <dd>`true` if event is virtual; `false` otherwise.</dd>
-   * 
-   *   <dt>string `k_book_class_period`</dt>
-   *   <dd>Key of first event session. </dd>
-   * 
-   *   <dt>string `m_price`</dt>
-   *   <dd>Price of the event session.</dd>
-   * 
-   *   <dt>string `m_price_total`</dt>
-   *   <dd>Price of the full event.</dd>
-   * 
-   *   <dt>string `m_price_total_early`</dt>
-   *   <dd>Price of the full event, should be used as full price while `dt_early` is actual.</dd>
-   * 
-   *   <dt>string `s_deny_reason`</dt>
-   *   <dd>Reason of booking restriction. For example if exception has been thrown.</dd>
-   * 
-   *   <dt>string `s_title`</dt>
-   *   <dd>Event title.</dd>
-   * 
-   *   <dt>string `xml_description`</dt>
-   *   <dd>Description of event. Ready to put into browser.</dd>
-   * </dl>
-   * @get result
-   * @var array[]
-   */
+ * Information for a large number of events.
+ *
+ * Received only if {@link ElementModel::$s_event} has been specified. In this case, other fields are not populated.
+ *
+ * Key is the event class key. 
+ *
+ * <dl>
+ *   <dt>array[] `a_book_available`</dt>
+ *   <dd>
+ *     List of sessions available for booking.
+ * See {@link ElementModel::$a_book_available}.
+ *     <dl>
+ *       <dt>string `dt_date`</dt>
+ *       <dd>Date/time when the session starts. In UTC.</dd>
+ * 
+ *       <dt>string `k_class_period`</dt>
+ *       <dd>Class session primary keys. </dd>
+ *     </dl>
+ *   </dd>
+ * 
+ *   <dt>array `a_class_logo`</dt>
+ *   <dd>
+ *     Image of event. See {@link ElementModel::$a_class_logo}.
+ *     <dl>
+ *       <dt>int `i_height`</dt>
+ *       <dd>Is returned only if staff has a photo. Image height.</dd>
+ * 
+ *       <dt>int `i_width`</dt>
+ *       <dd>Is returned only if staff has a photo. Image width.</dd>
+ * 
+ *       <dt>int `id_gender`</dt>
+ *       <dd>
+ *         Is returned only if staff does not have a photo. ID of staff gender. One of {@link AGenderSid} constants.
+ *       </dd>
+ * 
+ *       <dt>string `url_logo`</dt>
+ *       <dd>Is returned only if staff has a photo. URL to image.</dd>
+ *     </dl>
+ *   </dd>
+ * 
+ *   <dt>string[] `a_class_tab`</dt>
+ *   <dd>Class tab keys. See {@link ElementModel::$a_class_tab}.</dd>
+ * 
+ *   <dt>array[] `a_installment_template`</dt>
+ *   <dd>
+ *     List of installment plans. See {@link ElementModel::$a_installment_template}.
+ *     <dl>
+ *       <dt>int `i_count`</dt>
+ *       <dd>The number of payments.</dd>
+ * 
+ *       <dt>int `id_duration`</dt>
+ *       <dd>The duration of a single period. One of the {@link ADurationSid} constants.</dd>
+ * 
+ *       <dt>int `i_period`</dt>
+ *       <dd>The number of periods specified by `id_period` between individual payments.</dd>
+ * 
+ *       <dt>string `k_currency`</dt>
+ *       <dd>The payment currency Key.</dd>
+ * 
+ *       <dt>string `k_pay_installment_template`</dt>
+ *       <dd>
+ *         The key of the installment plan template. 
+ *       </dd>
+ * 
+ *       <dt>string `m_amount`</dt>
+ *       <dd>The amount of the installment plan.</dd>
+ * 
+ *       <dt>string `s_duration`</dt>
+ *       <dd>The title of the installment plan.</dd>
+ *     </dl>
+ *   </dd>
+ * 
+ *   <dt>array[] `a_makeup_class`</dt>
+ *   <dd>
+ *     Classes selected for make-up sessions. Every element has the following keys:
+ *     <dl>
+ *       <dt>string `k_class`</dt>
+ *       <dd>Class key. </dd>
+ * 
+ *       <dt>string|null `s_title`</dt>
+ *       <dd>Class title. `null` if title is unavailable for the selected language.</dd>
+ *     </dl>
+ *   </dd>
+ * 
+ *   <dt>array[] `a_schedule`</dt>
+ *   <dd>
+ *     Schedule of event sessions. See {@link ElementModel::$a_schedule}.
+ *     <dl>
+ *       <dt>true[] `a_day`</dt>
+ *       <dd>
+ *         Days of the week when the session occurs.
+ * Keys are weekday numbers (1 = Monday, 7 = Sunday),
+ * values are always `true`.
+ *       </dd>
+ * 
+ *       <dt>array `a_repeat`</dt>
+ *       <dd>
+ *         Repeat periodicity instructions.
+ *         <dl>
+ *           <dt>int `i_repeat`</dt>
+ *           <dd>Count of the periods which specified in `id_repeat`.</dd>
+ * 
+ *           <dt>int `id_repeat`</dt>
+ *           <dd>Measuring unit of `i_repeat` (week, month, year). One of {@link ADurationSid} constants.</dd>
+ *         </dl>
+ *       </dd>
+ * 
+ *       <dt>array[] `a_staff`</dt>
+ *       <dd>
+ *         A list of staff members who conduct the session. Every element has the following next keys:
+ *         <dl>
+ *           <dt>string `k_staff`</dt>
+ *           <dd>@deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
+ * 
+ *           <dt>string `s_name`</dt>
+ *           <dd>The staff member name.</dd>
+ * 
+ *           <dt>string `s_surname`</dt>
+ *           <dd>The first letter of staff member's surname.</dd>
+ * 
+ *           <dt>string `uid_staff`</dt>
+ *           <dd>The user key of the staff member. </dd>
+ *         </dl>
+ *       </dd>
+ * 
+ *       <dt>string[] `a_virtual_location`</dt>
+ *       <dd>List of virtual locations. </dd>
+ * 
+ *       <dt>string `dt_end`</dt>
+ *       <dd>The end date of the session.
+ * The local date without time.</dd>
+ * 
+ *       <dt>string `dt_start`</dt>
+ *       <dd>The start date of the session.
+ * The local date without time.</dd>
+ * 
+ *       <dt>bool `hide_location`</dt>
+ *       <dd>
+ *         `true` if the location should be hidden in the event details. Hide if the event is virtual or if the business
+ * only has one location. `false` otherwise.
+ *       </dd>
+ * 
+ *       <dt>int `i_capacity`</dt>
+ *       <dd>The class capacity.</dd>
+ * 
+ *       <dt>int `i_duration`</dt>
+ *       <dd>The duration of the class in seconds.</dd>
+ * 
+ *       <dt>bool `is_virtual`</dt>
+ *       <dd>
+ *         This will be `true` if the session is not held in person but offered remotely. It will be `false` otherwise.
+ *       </dd>
+ * 
+ *       <dt>string `f_price`</dt>
+ *       <dd>The price of the session, if it can be purchased separately.</dd>
+ * 
+ *       <dt>string `k_class_period`</dt>
+ *       <dd>The key of the class period.</dd>
+ * 
+ *       <dt>string `k_location`</dt>
+ *       <dd>The key of the location where the session is held.</dd>
+ * 
+ *       <dt>string `k_resource_location`</dt>
+ *       <dd>Structured off-site location data used by the calendar attachment.</dd>
+ * 
+ *       <dt>string `s_location`</dt>
+ *       <dd>The location title.</dd>
+ * 
+ *       <dt>string `s_time`</dt>
+ *       <dd>
+ *         The time when session occurred.
+ * A textual representation of the start and end time of a session. Example: `10:00 am - 11:00 am`
+ *       </dd>
+ * 
+ *       <dt>string `s_timezone`</dt>
+ *       <dd>The name of the timezone in which the session is held.</dd>
+ * 
+ *       <dt>string `text_room`</dt>
+ *       <dd>The room of the event.</dd>
+ *     </dl>
+ *   </dd>
+ * 
+ *   <dt>string[] `a_shop_category`</dt>
+ *   <dd>IDs of online store category. </dd>
+ * 
+ *   <dt>array `a_staff_logo`</dt>
+ *   <dd>
+ *     Photos of staff. See {@link ElementModel::$a_staff_logo}.
+ *     <dl>
+ *       <dt>int `i_height`</dt>
+ *       <dd>Image height.</dd>
+ * 
+ *       <dt>int `i_width`</dt>
+ *       <dd>Image width.</dd>
+ * 
+ *       <dt>string `uid`</dt>
+ *       <dd>Key of the user. </dd>
+ * 
+ *       <dt>string `url_logo`</dt>
+ *       <dd>URL to image.</dd>
+ *     </dl>
+ *   </dd>
+ * 
+ *   <dt>string `dt_book_date`</dt>
+ *   <dd>Date/time of first event session.</dd>
+ * 
+ *   <dt>string `dt_early`</dt>
+ *   <dd>Early date of event purchase.</dd>
+ * 
+ *   <dt>string `dt_end`</dt>
+ *   <dd>End date of the event instance.</dd>
+ * 
+ *   <dt>string `dt_start`</dt>
+ *   <dd>Date of first event session.</dd>
+ * 
+ *   <dt>string `html_end`</dt>
+ *   <dd>Html End date of the event instance.</dd>
+ * 
+ *   <dt>string `html_start`</dt>
+ *   <dd>Html Date of first event session.</dd>
+ * 
+ *   <dt>bool `hide_application`</dt>
+ *   <dd>Whether event will be hidden in the White Label mobile application.</dd>
+ * 
+ *   <dt>string `html_special`</dt>
+ *   <dd>Special instruction for event.</dd>
+ * 
+ *   <dt>int `i_makeup_cap`</dt>
+ *   <dd>
+ *     Number of allowed make-up sessions for event.
+ * `0` if make-up sessions are disabled for event or all missed sessions are available for make-up.
+ *   </dd>
+ * 
+ *   <dt>int `i_session`</dt>
+ *   <dd>Session count in event.</dd>
+ * 
+ *   <dt>int `i_session_all`</dt>
+ *   <dd>Total number of sessions including both past and future sessions.</dd>
+ * 
+ *   <dt>int `i_session_remain`</dt>
+ *   <dd>Remaining session count in event.</dd>
+ * 
+ *   <dt>bool `is_availability_checked`</dt>
+ *   <dd>Whether event availability was checked.</dd>
+ * 
+ *   <dt>bool `is_book`</dt>
+ *   <dd>Whether event is booked already</dd>
+ * 
+ *   <dt>bool `is_full`</dt>
+ *   <dd>`true` if there are no free spots in the event and booking is available only into wait list.</dd>
+ * 
+ *   <dt>bool `is_makeup`</dt>
+ *   <dd>`true` if the selected session can be a make up session; `false` otherwise.</dd>
+ * 
+ *   <dt>bool `is_past`</dt>
+ *   <dd>`true` if the event session has already started or ended and is not available to book.</dd>
+ * 
+ *   <dt>bool `is_policy_custom`</dt>
+ *   <dd>
+ *     `true` {@link ElementModel::$a_business_policy} contains the custom policies from the event; `false` otherwise.
+ *   </dd>
+ * 
+ *   <dt>bool `is_virtual`</dt>
+ *   <dd>`true` if event is virtual; `false` otherwise.</dd>
+ * 
+ *   <dt>string `k_book_class_period`</dt>
+ *   <dd>Key of first event session. </dd>
+ * 
+ *   <dt>string `m_price`</dt>
+ *   <dd>Price of the event session.</dd>
+ * 
+ *   <dt>string `m_price_total`</dt>
+ *   <dd>Price of the full event.</dd>
+ * 
+ *   <dt>string `m_price_total_early`</dt>
+ *   <dd>Price of the full event, should be used as full price while `dt_early` is actual.</dd>
+ * 
+ *   <dt>string `s_deny_reason`</dt>
+ *   <dd>Reason of booking restriction. For example if exception has been thrown.</dd>
+ * 
+ *   <dt>string `s_title`</dt>
+ *   <dd>Event title.</dd>
+ * 
+ *   <dt>string `xml_description`</dt>
+ *   <dd>Description of event. Ready to put into browser.</dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
   public $a_event;
 
   /**
-   * A list of installment plans. Each element has the following next keys:
-   *
-   * <dl>
-   *   <dt>int `i_count`</dt>
-   *   <dd>The number of payments.</dd>
-   * 
-   *   <dt>int `id_duration`</dt>
-   *   <dd>The duration of a single period. One of the {@link ADurationSid} constants.</dd>
-   * 
-   *   <dt>int `i_period`</dt>
-   *   <dd>The number of periods specified by `id_period` between individual payments.</dd>
-   * 
-   *   <dt>string `k_currency`</dt>
-   *   <dd>The payment currency Key.</dd>
-   * 
-   *   <dt>string `k_pay_installment_template`</dt>
-   *   <dd>
-   *     The key of the installment plan template. 
-   *   </dd>
-   * 
-   *   <dt>string `m_amount`</dt>
-   *   <dd>The amount of the installment plan.</dd>
-   * 
-   *   <dt>string `s_duration`</dt>
-   *   <dd>The title of the installment plan.</dd>
-   * </dl>
-   * @get result
-   * @var array[]
-   */
+ * A list of installment plans. Each element has the following next keys:
+ *
+ * <dl>
+ *   <dt>int `i_count`</dt>
+ *   <dd>The number of payments.</dd>
+ * 
+ *   <dt>int `id_duration`</dt>
+ *   <dd>The duration of a single period. One of the {@link ADurationSid} constants.</dd>
+ * 
+ *   <dt>int `i_period`</dt>
+ *   <dd>The number of periods specified by `id_period` between individual payments.</dd>
+ * 
+ *   <dt>string `k_currency`</dt>
+ *   <dd>The payment currency Key.</dd>
+ * 
+ *   <dt>string `k_pay_installment_template`</dt>
+ *   <dd>
+ *     The key of the installment plan template. 
+ *   </dd>
+ * 
+ *   <dt>string `m_amount`</dt>
+ *   <dd>The amount of the installment plan.</dd>
+ * 
+ *   <dt>string `s_duration`</dt>
+ *   <dd>The title of the installment plan.</dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
   public $a_installment_template;
 
   /**
-   * Class selected for make-up sessions.
-   *
-   * Every element has the following keys: 
-   *
-   * <dl>
-   *   <dt>string `k_class`</dt>
-   *   <dd>Class key. </dd>
-   * 
-   *   <dt>string|null `s_title`</dt>
-   *   <dd>Class title. `null` if title is unavailable for the selected language.</dd>
-   * </dl>
-   * @get result
-   * @var array[]
-   */
+ * Class selected for make-up sessions.
+ *
+ * Every element has the following keys: 
+ *
+ * <dl>
+ *   <dt>string `k_class`</dt>
+ *   <dd>Class key. </dd>
+ * 
+ *   <dt>string|null `s_title`</dt>
+ *   <dd>Class title. `null` if title is unavailable for the selected language.</dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
   public $a_makeup_class = [];
 
   /**
-   * A list of event sessions. Every element has the following next keys:
-   *
-   * <dl>
-   *   <dt>true[] `a_day`</dt>
-   *   <dd>
-   *     Days of the week when the session occurs.
-   * Keys are weekday numbers (1 = Monday, 7 = Sunday),
-   * values are always `true`.
-   *   </dd>
-   * 
-   *   <dt>array `a_repeat`</dt>
-   *   <dd>
-   *     Repeat periodicity instructions.
-   *     <dl>
-   *       <dt>int `i_repeat`</dt>
-   *       <dd>Count of the periods which specified in `id_repeat`.</dd>
-   * 
-   *       <dt>int `id_repeat`</dt>
-   *       <dd>Measuring unit of `i_repeat` (week, month, year). One of {@link ADurationSid} constants.</dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>array[] `a_staff`</dt>
-   *   <dd>
-   *     A list of staff members who conduct the session. Every element has the following next keys:
-   *     <dl>
-   *       <dt>string `k_staff`</dt>
-   *       <dd>@deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
-   * 
-   *       <dt>string `s_name`</dt>
-   *       <dd>The staff member name.</dd>
-   * 
-   *       <dt>string `s_surname`</dt>
-   *       <dd>The first letter of staff member's surname.</dd>
-   * 
-   *       <dt>string `uid_staff`</dt>
-   *       <dd>The user key of the staff member. </dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>string[] `a_virtual_location`</dt>
-   *   <dd>List of virtual locations. </dd>
-   * 
-   *   <dt>string `dt_end`</dt>
-   *   <dd>The end date of the session.
-   * The local date without time.</dd>
-   * 
-   *   <dt>string `dt_start`</dt>
-   *   <dd>The start date of the session.
-   * The local date without time.</dd>
-   * 
-   *   <dt>bool `hide_location`</dt>
-   *   <dd>
-   *     `true` if the location should be hidden in the event details. Hide if the event is virtual or if the business
-   * only has one location. `false` otherwise.
-   *   </dd>
-   * 
-   *   <dt>int `i_capacity`</dt>
-   *   <dd>The class capacity.</dd>
-   * 
-   *   <dt>int `i_duration`</dt>
-   *   <dd>The duration of the class in seconds.</dd>
-   * 
-   *   <dt>bool `is_virtual`</dt>
-   *   <dd>This will be `true` if the session is not held in person but offered remotely. It will be `false` otherwise.</dd>
-   * 
-   *   <dt>string `f_price`</dt>
-   *   <dd>The price of the session, if it can be purchased separately.</dd>
-   * 
-   *   <dt>string `k_class_period`</dt>
-   *   <dd>The key of the class period.</dd>
-   * 
-   *   <dt>string `k_location`</dt>
-   *   <dd>The key of the location where the session is held.</dd>
-   * 
-   *   <dt>string `k_resource_location`</dt>
-   *   <dd>Structured off-site location data used by the calendar attachment.</dd>
-   * 
-   *   <dt>string `s_location`</dt>
-   *   <dd>The location title.</dd>
-   * 
-   *   <dt>string `s_time`</dt>
-   *   <dd>
-   *     The time when session occurred.
-   * A textual representation of the start and end time of a session. Example: `10:00 am - 11:00 am`
-   *   </dd>
-   * 
-   *   <dt>string `s_timezone`</dt>
-   *   <dd>The name of the timezone in which the session is held.</dd>
-   * 
-   *   <dt>string `text_room`</dt>
-   *   <dd>The room of the event.</dd>
-   * </dl>
-   * @get result
-   * @var array[]
-   */
+ * A list of event sessions. Every element has the following next keys:
+ *
+ * <dl>
+ *   <dt>true[] `a_day`</dt>
+ *   <dd>
+ *     Days of the week when the session occurs.
+ * Keys are weekday numbers (1 = Monday, 7 = Sunday),
+ * values are always `true`.
+ *   </dd>
+ * 
+ *   <dt>array `a_repeat`</dt>
+ *   <dd>
+ *     Repeat periodicity instructions.
+ *     <dl>
+ *       <dt>int `i_repeat`</dt>
+ *       <dd>Count of the periods which specified in `id_repeat`.</dd>
+ * 
+ *       <dt>int `id_repeat`</dt>
+ *       <dd>Measuring unit of `i_repeat` (week, month, year). One of {@link ADurationSid} constants.</dd>
+ *     </dl>
+ *   </dd>
+ * 
+ *   <dt>array[] `a_staff`</dt>
+ *   <dd>
+ *     A list of staff members who conduct the session. Every element has the following next keys:
+ *     <dl>
+ *       <dt>string `k_staff`</dt>
+ *       <dd>@deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
+ * 
+ *       <dt>string `s_name`</dt>
+ *       <dd>The staff member name.</dd>
+ * 
+ *       <dt>string `s_surname`</dt>
+ *       <dd>The first letter of staff member's surname.</dd>
+ * 
+ *       <dt>string `uid_staff`</dt>
+ *       <dd>The user key of the staff member. </dd>
+ *     </dl>
+ *   </dd>
+ * 
+ *   <dt>string[] `a_virtual_location`</dt>
+ *   <dd>List of virtual locations. </dd>
+ * 
+ *   <dt>string `dt_end`</dt>
+ *   <dd>The end date of the session.
+ * The local date without time.</dd>
+ * 
+ *   <dt>string `dt_start`</dt>
+ *   <dd>The start date of the session.
+ * The local date without time.</dd>
+ * 
+ *   <dt>bool `hide_location`</dt>
+ *   <dd>
+ *     `true` if the location should be hidden in the event details. Hide if the event is virtual or if the business
+ * only has one location. `false` otherwise.
+ *   </dd>
+ * 
+ *   <dt>int `i_capacity`</dt>
+ *   <dd>The class capacity.</dd>
+ * 
+ *   <dt>int `i_duration`</dt>
+ *   <dd>The duration of the class in seconds.</dd>
+ * 
+ *   <dt>bool `is_virtual`</dt>
+ *   <dd>This will be `true` if the session is not held in person but offered remotely. It will be `false` otherwise.</dd>
+ * 
+ *   <dt>string `f_price`</dt>
+ *   <dd>The price of the session, if it can be purchased separately.</dd>
+ * 
+ *   <dt>string `k_class_period`</dt>
+ *   <dd>The key of the class period.</dd>
+ * 
+ *   <dt>string `k_location`</dt>
+ *   <dd>The key of the location where the session is held.</dd>
+ * 
+ *   <dt>string `k_resource_location`</dt>
+ *   <dd>Structured off-site location data used by the calendar attachment.</dd>
+ * 
+ *   <dt>string `s_location`</dt>
+ *   <dd>The location title.</dd>
+ * 
+ *   <dt>string `s_time`</dt>
+ *   <dd>
+ *     The time when session occurred.
+ * A textual representation of the start and end time of a session. Example: `10:00 am - 11:00 am`
+ *   </dd>
+ * 
+ *   <dt>string `s_timezone`</dt>
+ *   <dd>The name of the timezone in which the session is held.</dd>
+ * 
+ *   <dt>string `text_room`</dt>
+ *   <dd>The room of the event.</dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
   public $a_schedule;
 
   /**
-   * IDs of online store category.
-   *
-   * @get result
-   * @var string[]
-   */
+ * IDs of online store category.
+ *
+ * @get result
+ * @var string[]
+ */
   public $a_shop_category;
 
   /**
-   * Photos of staff members. Keys are the keys of staff members. The values are the following:
-   *
-   * <dl>
-   *   <dt>int `i_height`</dt>
-   *   <dd>Image height.</dd>
-   * 
-   *   <dt>int `i_width`</dt>
-   *   <dd>Image width.</dd>
-   * 
-   *   <dt>string `uid`</dt>
-   *   <dd>Key of the user. </dd>
-   * 
-   *   <dt>string `url_logo`</dt>
-   *   <dd>URL to image.</dd>
-   * </dl>
-   * @get result
-   * @var array
-   */
+ * Photos of staff members. Keys are the keys of staff members. The values are the following:
+ *
+ * <dl>
+ *   <dt>int `i_height`</dt>
+ *   <dd>Image height.</dd>
+ * 
+ *   <dt>int `i_width`</dt>
+ *   <dd>Image width.</dd>
+ * 
+ *   <dt>string `uid`</dt>
+ *   <dd>Key of the user. </dd>
+ * 
+ *   <dt>string `url_logo`</dt>
+ *   <dd>URL to image.</dd>
+ * </dl>
+ * @get result
+ * @var array
+ */
   public $a_staff_logo;
 
   /**
-   * Timezone information for all timezones used in the event schedule.
-   *
-   * Key is the timezone key. Primary key in the `a_geo_timezone` table.
-   * Value contains timezone information from the geo timezone registry: 
-   *
-   * <dl>
-   *   <dt>int `i_shift`</dt>
-   *   <dd>UTC offset in hours for this timezone.</dd>
-   * 
-   *   <dt>string `s_file`</dt>
-   *   <dd>Timezone identifier string (e.g. `America/New_York`).</dd>
-   * 
-   *   <dt>string|null `text_abbr`</dt>
-   *   <dd>Timezone abbreviation (e.g. `EST`). `null` if not set.</dd>
-   * </dl>
-   * @get result
-   * @var array[]
-   */
+ * Timezone information for all timezones used in the event schedule.
+ *
+ * Key is the timezone key. Primary key in the `a_geo_timezone` table.
+ * Value contains timezone information from the geo timezone registry: 
+ *
+ * <dl>
+ *   <dt>int `i_shift`</dt>
+ *   <dd>UTC offset in hours for this timezone.</dd>
+ * 
+ *   <dt>string `s_file`</dt>
+ *   <dd>Timezone identifier string (e.g. `America/New_York`).</dd>
+ * 
+ *   <dt>string|null `text_abbr`</dt>
+ *   <dd>Timezone abbreviation (e.g. `EST`). `null` if not set.</dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
   public $a_timezone_info = [];
 
   /**
-   * A list of classes and events that clients should attend before this one.
-   *
-   * <dl>
-   *   <dt>int `i_count`</dt>
-   *   <dd>The number of visits required.</dd>
-   * 
-   *   <dt>int `i_has`</dt>
-   *   <dd>The number of visits the client has already attended.</dd>
-   * 
-   *   <dt>bool `is_event`</dt>
-   *   <dd>`true` if this is an event, `false` if this is a class.</dd>
-   * 
-   *   <dt>string `k_class`</dt>
-   *   <dd>The key of the class or event.</dd>
-   * 
-   *   <dt>string `text_title`</dt>
-   *   <dd>The name of the class or event.</dd>
-   * </dl>
-   * @get result
-   * @var array[]
-   */
+ * A list of classes and events that clients should attend before this one.
+ *
+ * <dl>
+ *   <dt>int `i_count`</dt>
+ *   <dd>The number of visits required.</dd>
+ * 
+ *   <dt>int `i_has`</dt>
+ *   <dd>The number of visits the client has already attended.</dd>
+ * 
+ *   <dt>bool `is_event`</dt>
+ *   <dd>`true` if this is an event, `false` if this is a class.</dd>
+ * 
+ *   <dt>string `k_class`</dt>
+ *   <dd>The key of the class or event.</dd>
+ * 
+ *   <dt>string `text_title`</dt>
+ *   <dd>The name of the class or event.</dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
   public $a_visits_required;
 
   /**
-   * The last available date for booking.
-   * If this is set and {@link ElementModel::$dl_book_available_start} is a set list of
-   *   sessions available for booking, {@link ElementModel::$a_book_available}
-   *   should match given date range.
-   *
-   * @get get
-   * @var string|null
-   */
+ * The last available date for booking.
+ * If this is set and {@link ElementModel::$dl_book_available_start} is a set list of
+ *   sessions available for booking, {@link ElementModel::$a_book_available}
+ *   should match given date range.
+ *
+ * @get get
+ * @var string|null
+ */
   public $dl_book_available_end = null;
 
   /**
-   * The first available date for booking.
-   * If this is set and {@link ElementModel::$dl_book_available_end} is a set list of
-   *   sessions available for booking {@link ElementModel::$a_book_available}
-   *   should match given date range.
-   *
-   * @get get
-   * @var string|null
-   */
+ * The first available date for booking.
+ * If this is set and {@link ElementModel::$dl_book_available_end} is a set list of
+ *   sessions available for booking {@link ElementModel::$a_book_available}
+ *   should match given date range.
+ *
+ * @get get
+ * @var string|null
+ */
   public $dl_book_available_start = null;
 
   /**
-   * That date that should be used to go to the booking wizard.
-   *
-   * @get result
-   * @var string|null
-   */
+ * That date that should be used to go to the booking wizard.
+ *
+ * @get result
+ * @var string|null
+ */
   public $dt_book_date;
 
   /**
-   * The early registration date of the event.
-   *
-   * @get result
-   * @var string|null
-   */
+ * The early registration date of the event.
+ *
+ * @get result
+ * @var string|null
+ */
   public $dt_early;
 
   /**
-   * The end date of the event.
-   *
-   * @get result
-   * @var string
-   */
+ * The end date of the event.
+ *
+ * @get result
+ * @var string
+ */
   public $dt_end;
 
   /**
-   * The start date of the event.
-   *
-   * @get result
-   * @var string
-   */
+ * The start date of the event.
+ *
+ * @get result
+ * @var string
+ */
   public $dt_start;
 
   /**
-   * Datetime of the session.
-   * Is not `null` only if we need to get information for an event with a specific class period and datetime.
-   * If this is `null`, then the {@link ElementModel::$k_class_period} should be `null` too.
-   *
-   * @get get
-   * @var string|null
-   */
+ * Datetime of the session.
+ * Is not `null` only if we need to get information for an event with a specific class period and datetime.
+ * If this is `null`, then the {@link ElementModel::$k_class_period} should be `null` too.
+ *
+ * @get get
+ * @var string|null
+ */
   public $dtu_session = null;
 
   /**
-   * Whether event will be hidden in the White Label mobile application.
-   * `true` means that event will not be displayed, `false` otherwise.
-   *
-   * @get result
-   * @var bool
-   */
+ * Whether event will be hidden in the White Label mobile application.
+ * `true` means that event will not be displayed, `false` otherwise.
+ *
+ * @get result
+ * @var bool
+ */
   public $hide_application;
 
   /**
-   * The description of the event.
-   *
-   * @get result
-   * @var string|null
-   */
+ * The description of the event.
+ *
+ * @get result
+ * @var string|null
+ */
   public $html_description;
 
   /**
-   * Special instruction for the event.
-   *
-   * @get result
-   * @var string
-   */
+ * Special instruction for the event.
+ *
+ * @get result
+ * @var string
+ */
   public $html_special;
 
   /**
-   * Class capacity.
-   *
-   * `null` if no set.
-   *
-   * @get result
-   * @var int|null
-   */
+ * Class capacity.
+ *
+ * `null` if no set.
+ *
+ * @get result
+ * @var int|null
+ */
   public $i_capacity = null;
 
   /**
-   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified, the returned image will have the default thumbnail size.
-   *
-   * @get get
-   * @var int
-   */
+ * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+ * In case this value is not specified, the returned image will have the default thumbnail size.
+ *
+ * @get get
+ * @var int
+ */
   public $i_image_height = 0;
 
   /**
-   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified, the returned image will have the default thumbnail size.
-   *
-   * @get get
-   * @var int
-   */
+ * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+ * In case this value is not specified, the returned image will have the default thumbnail size.
+ *
+ * @get get
+ * @var int
+ */
   public $i_image_width = 0;
 
   /**
-   * Number of allowed make-up sessions for event.
-   *
-   * `0` if make-up sessions are disabled for event or all missed sessions are available for make-up.
-   *
-   * @get result
-   * @var int
-   */
+ * Number of allowed make-up sessions for event.
+ *
+ * `0` if make-up sessions are disabled for event or all missed sessions are available for make-up.
+ *
+ * @get result
+ * @var int
+ */
   public $i_makeup_cap = 0;
 
   /**
-   * The session count.
-   *
-   * @get result
-   * @var int
-   */
+ * The session count.
+ *
+ * @get result
+ * @var int
+ */
   public $i_session;
 
   /**
-   * Total number of sessions including both past and future sessions.
-   *
-   * @get result
-   * @var int
-   */
+ * Total number of sessions including both past and future sessions.
+ *
+ * @get result
+ * @var int
+ */
   public $i_session_all;
 
   /**
-   * The remaining session count.
-   *
-   * @get result
-   * @var int
-   */
+ * The remaining session count.
+ *
+ * @get result
+ * @var int
+ */
   public $i_session_remain;
 
   /**
-   * Staff image height in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified, the returned image will have the default thumbnail size.
-   *
-   * @get get
-   * @var int
-   */
+ * Staff image height in pixels. Please specify this value if you need image to be returned in specific size.
+ * In case this value is not specified, the returned image will have the default thumbnail size.
+ *
+ * @get get
+ * @var int
+ */
   public $i_staff_image_height = 0;
 
   /**
-   * Staff image width in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified, the returned image will have the default thumbnail size.
-   *
-   * @get get
-   * @var int
-   */
+ * Staff image width in pixels. Please specify this value if you need image to be returned in specific size.
+ * In case this value is not specified, the returned image will have the default thumbnail size.
+ *
+ * @get get
+ * @var int
+ */
   public $i_staff_image_width = 0;
 
   /**
-   * The purchase rule ID.
-   * One of the {@link RequirePaySid} constants.
-   *
-   * @get result
-   * @var int
-   */
+ * The purchase rule ID.
+ * One of the {@link RequirePaySid} constants.
+ *
+ * @get result
+ * @var int
+ */
   public $id_pay_require;
 
   /**
-   * Default required value for {@link RequirePaySid::ADVANCE} payment mode,
-   *  one of {@link RequirePaySid::ONLINE} or {@link RequirePaySid::VISIT}.
-   *
-   * `null` means default value not selected.
-   *
-   * @get result
-   * @var int|null
-   * @see RequirePaySid
-   */
+ * Default required value for {@link RequirePaySid::ADVANCE} payment mode,
+ *  one of {@link RequirePaySid::ONLINE} or {@link RequirePaySid::VISIT}.
+ *
+ * `null` means default value not selected.
+ *
+ * @get result
+ * @var int|null
+ * @see RequirePaySid
+ */
   public $id_pay_require_option;
 
   /**
-   * The virtual provider ID. One of the {@link VirtualProviderSid} constants.
-   *
-   * `null` if an in-person event.
-   *
-   * @get result
-   * @var int|null
-   */
+ * The virtual provider ID. One of the {@link VirtualProviderSid} constants.
+ *
+ * `null` if an in-person event.
+ *
+ * @get result
+ * @var int|null
+ */
   public $id_virtual_provider;
 
   /**
-   * Whether the event is age restricted.
-   * `true` if the event is age restricted, `false` if the event is not.
-   *
-   * @get result
-   * @var bool
-   */
+ * Whether the event is age restricted.
+ * `true` if the event is age restricted, `false` if the event is not.
+ *
+ * @get result
+ * @var bool
+ */
   public $is_age_restrict = false;
 
   /**
-   * `true` if the event availability was checked; `false` if the event has too many sessions, and calculating
-   *  the availability of each one takes a lot of time.
-   *
-   * @get result
-   * @var bool
-   */
+ * `true` if the event availability was checked; `false` if the event has too many sessions, and calculating
+ *  the availability of each one takes a lot of time.
+ *
+ * @get result
+ * @var bool
+ */
   public $is_availability_checked;
 
   /**
-   * `true` if the event is already booked; `false` if the event isn't booked.
-   *
-   * @get result
-   * @var bool
-   */
+ * `true` if the event is already booked; `false` if the event isn't booked.
+ *
+ * @get result
+ * @var bool
+ */
   public $is_book;
 
   /**
-   * `true` If the event is bookable; `false` if the event isn't bookable.
-   *
-   * @get result
-   * @var bool
-   */
+ * `true` If the event is bookable; `false` if the event isn't bookable.
+ *
+ * @get result
+ * @var bool
+ */
   public $is_bookable;
 
   /**
-   * `true` if there are no free spots in the event; booking is available only into the wait list.
-   * `false` otherwise.
-   *
-   * @get result
-   * @var bool
-   */
+ * `true` if there are no free spots in the event; booking is available only into the wait list.
+ * `false` otherwise.
+ *
+ * @get result
+ * @var bool
+ */
   public $is_full;
 
   /**
-   * `true` if the selected session can be a make up session.
-   * `false` otherwise.
-   *
-   * @get result
-   * @var bool
-   */
+ * `true` if the selected session can be a make up session.
+ * `false` otherwise.
+ *
+ * @get result
+ * @var bool
+ */
   public $is_makeup = false;
 
   /**
-   * `true` if the selected session has already started and do not available to book.
-   * `false` otherwise.
-   *
-   * @get result
-   * @var bool
-   */
+ * `true` if the selected session has already started and do not available to book.
+ * `false` otherwise.
+ *
+ * @get result
+ * @var bool
+ */
   public $is_past = false;
 
   /**
-   * `true` if the {@link ElementModel::$a_business_policy} contains the custom policies from the event.
-   * `false` otherwise.
-   *
-   * @get result
-   * @var bool
-   */
+ * `true` if the {@link ElementModel::$a_business_policy} contains the custom policies from the event.
+ * `false` otherwise.
+ *
+ * @get result
+ * @var bool
+ */
   public $is_policy_custom = false;
 
   /**
-   * `true` if the event can be paid with a Purchase Option only.
-   * `false` if full event purchases or single session purchases are permitted.
-   *
-   * @get result
-   * @var bool
-   */
+ * `true` if the event can be paid with a Purchase Option only.
+ * `false` if full event purchases or single session purchases are permitted.
+ *
+ * @get result
+ * @var bool
+ */
   public $is_promotion_only;
 
   /**
-   * `true` if clients, when they book event, which has been started, can pay only for the sessions in the future.
-   * `false` if clients, when they book event, have to pay for the entire event and the number of lefts in the future sessions
-   * does not matter.
-   *
-   * @get result
-   * @var bool
-   */
+ * `true` if clients, when they book event, which has been started, can pay only for the sessions in the future.
+ * `false` if clients, when they book event, have to pay for the entire event and the number of lefts in the future sessions
+ * does not matter.
+ *
+ * @get result
+ * @var bool
+ */
   public $is_prorate;
 
   /**
-   * `true` if schedule should be grouped by location time and staff,
-   * `false` if all schedule elements should be independent.
-   *
-   * @get get
-   * @var bool
-   */
+ * `true` if schedule should be grouped by location time and staff,
+ * `false` if all schedule elements should be independent.
+ *
+ * @get get
+ * @var bool
+ */
   public $is_schedule_group = false;
 
   /**
-   * Determines whether this event allows paying for a single session.
-   *
-   * @get result
-   * @var bool
-   */
+ * Determines whether this event allows paying for a single session.
+ *
+ * @get result
+ * @var bool
+ */
   public $is_single_session_buy;
 
   /**
-   * `true` if event is virtual; `false` otherwise.
-   *
-   * @get result
-   * @var bool
-   */
+ * `true` if event is virtual; `false` otherwise.
+ *
+ * @get result
+ * @var bool
+ */
   public $is_virtual;
 
   /**
-   * The ID of the session which should be used to go to the booking wizard.
-   *
-   * @get result
-   * @var string
-   */
+ * The ID of the session which should be used to go to the booking wizard.
+ *
+ * @get result
+ * @var string
+ */
   public $k_book_class_period;
 
   /**
-   * Key of a business to which the requested event(s) belong.
-   *
-   * @get get
-   * @var string|null
-   */
+ * Key of a business to which the requested event(s) belong.
+ *
+ * @get get
+ * @var string|null
+ */
   public $k_business = null;
 
   /**
-   * Key of a class period to show information for.
-   *
-   * Is not `null` only if we need to get information for an event with a specific class period and datetime.
-   * If this is `null`, then the {@link ElementModel::$dtu_session} should be `null` too.
-   *
-   * @get get
-   * @var string|null
-   */
+ * Key of a class period to show information for.
+ *
+ * Is not `null` only if we need to get information for an event with a specific class period and datetime.
+ * If this is `null`, then the {@link ElementModel::$dtu_session} should be `null` too.
+ *
+ * @get get
+ * @var string|null
+ */
   public $k_class_period = null;
 
   /**
-   * The event key.
-   * You can specify {@link ElementModel::$s_event} instead to get information for a large number of events.
-   *
-   * @get get
-   * @var string
-   */
+ * The event key.
+ * You can specify {@link ElementModel::$s_event} instead to get information for a large number of events.
+ *
+ * @get get
+ * @var string
+ */
   public $k_event = '0';
 
   /**
-   * The price of a single session of the event.
-   *
-   * @get result
-   * @var string
-   */
+ * The price of a single session of the event.
+ *
+ * @get result
+ * @var string
+ */
   public $m_price;
 
   /**
-   * The price of the all sessions of the event.
-   *
-   * @get result
-   * @var string
-   */
+ * The price of the all sessions of the event.
+ *
+ * @get result
+ * @var string
+ */
   public $m_price_total;
 
   /**
-   * Price of the full event should be used as full price while {@link ElementModel::$dt_early} is actual.
-   *
-   * @get result
-   * @var string|null
-   */
+ * Price of the full event should be used as full price while {@link ElementModel::$dt_early} is actual.
+ *
+ * @get result
+ * @var string|null
+ */
   public $m_price_total_early;
 
   /**
-   * The reason why the event can't be booked.
-   * Empty if {@link ElementModel::$k_book_class_period} isn't empty.
-   *
-   * @get result
-   * @var string
-   */
+ * The reason why the event can't be booked.
+ * Empty if {@link ElementModel::$k_book_class_period} isn't empty.
+ *
+ * @get result
+ * @var string
+ */
   public $s_deny_reason;
 
   /**
-   * A list of event keys serialized with JSON.
-   * Specify instead of {@link ElementModel::$k_event} to get information for a large number of events.
-   *
-   * @get get
-   * @var string
-   */
+ * A list of event keys serialized with JSON.
+ * Specify instead of {@link ElementModel::$k_event} to get information for a large number of events.
+ *
+ * @get get
+ * @var string
+ */
   public $s_event = '';
 
   /**
-   * The title of the event.
-   *
-   * @get result
-   * @var string|null
-   */
+ * The title of the event.
+ *
+ * @get result
+ * @var string|null
+ */
   public $s_title;
 
   /**
-   * `true` if special instructions can be public,
-   * `false` if they should be shown only to the clients, who booked the class.
-   *
-   * @get result
-   * @var bool
-   */
+ * `true` if special instructions can be public,
+ * `false` if they should be shown only to the clients, who booked the class.
+ *
+ * @get result
+ * @var bool
+ */
   public $show_special_instructions = false;
 
   /**
-   * `true` to show schedule, which is not published yet.
-   * `false` to show only published schedule.
-   *
-   * @get get
-   * @var bool
-   */
+ * `true` to show schedule, which is not published yet.
+ * `false` to show only published schedule.
+ *
+ * @get get
+ * @var bool
+ */
   public $show_unpublished = false;
 
   /**
-   * End date of the event in user-friendly format.
-   *
-   * @get result
-   * @var string
-   */
+ * End date of the event in user-friendly format.
+ *
+ * @get result
+ * @var string
+ */
   public $text_end;
 
   /**
-   * Start date of the event in user-friendly format.
-   *
-   * @get result
-   * @var string
-   */
+ * Start date of the event in user-friendly format.
+ *
+ * @get result
+ * @var string
+ */
   public $text_start;
 
   /**
-   * The user key.
-   *
-   * @get get
-   * @var string
-   */
+ * The user key.
+ *
+ * @get get
+ * @var string
+ */
   public $uid = '0';
 
   /**
-   * Link to the start of the booking wizard to book the closed session from this event or the entire event.
-   *
-   * Can be `null` if there is no available for booking sessions.
-   *
-   * @get result
-   * @var string|null
-   */
+ * Link to the start of the booking wizard to book the closed session from this event or the entire event.
+ *
+ * Can be `null` if there is no available for booking sessions.
+ *
+ * @get result
+ * @var string|null
+ */
   public $url_book = null;
 
   /**
-   * The description of the event.
-   *
-   * @get result
-   * @var string|null
-   */
+ * The description of the event.
+ *
+ * @get result
+ * @var string|null
+ */
   public $xml_description;
 }
 

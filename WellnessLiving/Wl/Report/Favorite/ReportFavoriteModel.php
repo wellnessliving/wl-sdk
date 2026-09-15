@@ -15,51 +15,51 @@ use WellnessLiving\WlModelRequest;
 class ReportFavoriteModel extends WlModelAbstract
 {
   /**
-   * CID of the controller.
-   *
-   * @delete get
-   * @get get
-   * @post get
-   * @var int
-   */
+ * CID of the controller.
+ *
+ * @delete get
+ * @get get
+ * @post get
+ * @var int
+ */
   public $cid_controller;
 
   /**
-   * Whether report is favorite.
-   *
-   * @get result
-   * @var bool
-   */
+ * Whether report is favorite.
+ *
+ * @get result
+ * @var bool
+ */
   public $is_favorite;
 
   /**
-   * Business key within which request is performed.
-   *
-   * @delete get
-   * @get get
-   * @post get
-   * @var string
-   */
+ * Business key within which request is performed.
+ *
+ * @delete get
+ * @get get
+ * @post get
+ * @var string
+ */
   public $k_business;
 
   /**
-   * Saved report key to manage.
-   *
-   * @delete get
-   * @get get
-   * @post get
-   * @var string
-   */
+ * Saved report key to manage.
+ *
+ * @delete get
+ * @get get
+ * @post get
+ * @var string
+ */
   public $k_report_save;
 
   /**
-   * UID user's key of the actor.
-   *
-   * @delete get
-   * @get get
-   * @post get
-   * @var string
-   */
+ * UID user's key of the actor.
+ *
+ * @delete get
+ * @get get
+ * @post get
+ * @var string
+ */
   public $uid_actor;
 }
 

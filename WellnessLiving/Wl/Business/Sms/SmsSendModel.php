@@ -13,59 +13,65 @@ use WellnessLiving\WlModelRequest;
 class SmsSendModel extends WlModelAbstract
 {
   /**
-   * Local date with time when sms sent successfully (or failed) in MySQL format.
-   *
-   * If business is not specified, will not be returned.
-   *
-   * @post result,error
-   * @var string
-   */
+ * Local date with time when sms sent successfully (or failed) in MySQL format.
+ *
+ * If business is not specified, will not be returned.
+ *
+ * @post result,error
+ * @var string
+ */
   public $dtl_send;
 
   /**
-   * Key of the business.
-   *
-   * @post post
-   * @var string
-   */
+ * Key of the business.
+ *
+ * @post post
+ * @var string
+ */
   public $k_business;
 
   /**
-   * The unique key of the sent SMS.
-   *
-   * @post post
-   * @var string
-   */
+ * The unique key of the sent SMS.
+ *
+ * @decorator trim
+ * @post post
+ * @rule length-max KEY_LENGTH
+ * @rule length-min KEY_LENGTH
+ * @var string
+ */
   public $s_key = '';
 
   /**
-   * The body of the sms.
-   *
-   * @post post
-   * @var string
-   */
+ * The body of the sms.
+ *
+ * @decorator trim
+ * @post post
+ * @rule length-max SMS_LENGTH_MAX
+ * @rule length-min 1
+ * @var string
+ */
   public $text_sms_body = '';
 
   /**
-   * The body of the SMS that is actually sent to the client - the same text as
-   * {@link SmsSendModel::$text_sms_body}, but with every link replaced by a short link.
-   *
-   * The client side uses this value to refresh the message that is already shown in the chat, so the staff member
-   * sees exactly the same text that the client receives.
-   *
-   * Equals to the text that was posted if it contains no links, or if none of the links could be shortened.
-   *
-   * @post result
-   * @var string
-   */
+ * The body of the SMS that is actually sent to the client - the same text as
+ * {@link SmsSendModel::$text_sms_body}, but with every link replaced by a short link.
+ *
+ * The client side uses this value to refresh the message that is already shown in the chat, so the staff member
+ * sees exactly the same text that the client receives.
+ *
+ * Equals to the text that was posted if it contains no links, or if none of the links could be shortened.
+ *
+ * @post result
+ * @var string
+ */
   public $text_sms_body_short = '';
 
   /**
-   * User key for which need to send the sms.
-   *
-   * @post post
-   * @var string
-   */
+ * User key for which need to send the sms.
+ *
+ * @post post
+ * @var string
+ */
   public $uid;
 }
 

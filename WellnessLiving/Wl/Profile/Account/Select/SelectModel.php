@@ -15,47 +15,47 @@ use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
 class SelectModel extends WlModelAbstract
 {
   /**
-   * Array with information about current user and his relationship with sub accounts.
-   *
-   * <dl>
-   *   <dt>int `id_family_relation`</dt>
-   *   <dd>ID of relationship between current user and sub account from {@link WlFamilyRelationSid}.</dd>
-   * 
-   *   <dt>string `s_name`</dt>
-   *   <dd>Name of sub account.</dd>
-   * 
-   *   <dt>string `uid`</dt>
-   *   <dd>UID of sub account.</dd>
-   * </dl>
-   * @get result
-   * @var array
-   */
+ * Array with information about current user and his relationship with sub accounts.
+ *
+ * <dl>
+ *   <dt>int `id_family_relation`</dt>
+ *   <dd>ID of relationship between current user and sub account from {@link WlFamilyRelationSid}.</dd>
+ * 
+ *   <dt>string `s_name`</dt>
+ *   <dd>Name of sub account.</dd>
+ * 
+ *   <dt>string `uid`</dt>
+ *   <dd>UID of sub account.</dd>
+ * </dl>
+ * @get result
+ * @var array
+ */
   public $a_user = [];
 
   /**
-   * Business to retrieve relationship information.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * Business to retrieve relationship information.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * UID to retrieve relationship information.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * UID to retrieve relationship information.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $uid = '';
 
   /**
-   * ID of relative to sign in.
-   *
-   * @post post
-   * @var string
-   */
+ * ID of relative to sign in.
+ *
+ * @post post
+ * @var string
+ */
   public $uid_in = '';
 }
 

@@ -14,29 +14,29 @@ use WellnessLiving\WlModelRequest;
 class RequestModel extends WlModelAbstract
 {
   /**
-   * <tt>true</tt> - support must wait permission from franchisee. <tt>false</tt> - no need to wait; authorisation is already done.
-   *
-   * @get result
-   * @var bool
-   */
+ * <tt>true</tt> - support must wait permission from franchisee. <tt>false</tt> - no need to wait; authorisation is already done.
+ *
+ * @get result
+ * @var bool
+ */
   public $is_pending;
 
   /**
-   * Location key.
-   *
-   * @delete get
-   * @get get
-   * @var string
-   */
+ * Location key.
+ *
+ * @delete get
+ * @get get
+ * @var string
+ */
   public $k_location = '0';
 
   /**
-   * User key.
-   *
-   * @delete get
-   * @get get
-   * @var string
-   */
+ * User key.
+ *
+ * @delete get
+ * @get get
+ * @var string
+ */
   public $uid = '0';
 }
 

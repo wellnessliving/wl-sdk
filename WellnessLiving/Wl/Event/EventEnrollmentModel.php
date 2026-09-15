@@ -13,44 +13,44 @@ use WellnessLiving\WlModelRequest;
 class EventEnrollmentModel extends WlModelAbstract
 {
   /**
-   * List of event classes for which enrollment must be retrieved.
-   *
-   * @get get
-   * @var string[]
-   */
+ * List of event classes for which enrollment must be retrieved.
+ *
+ * @get get
+ * @var string[]
+ */
   public $a_class = [];
 
   /**
-   * A list of clients enrolled in the specified event classes.
-   *
-   * Key is the class key. 
-   *
-   * Value is a list of clients enrolled in that class. Each element contains:
-   *
-   * <dl>
-   *   <dt>bool `is_enrolled_full`</dt>
-   *   <dd>
-   *     <tt>true</tt> if the client has a block event enrollment record set for this class
-   *   (booked the whole event); <tt>false</tt> otherwise.
-   *   </dd>
-   * 
-   *   <dt>string `uid`</dt>
-   *   <dd>
-   *     Key of the client who attended or will attend the event.
-   * 
-   *   </dd>
-   * </dl>
-   * @get result
-   * @var array[][]
-   */
+ * A list of clients enrolled in the specified event classes.
+ *
+ * Key is the class key. 
+ *
+ * Value is a list of clients enrolled in that class. Each element contains:
+ *
+ * <dl>
+ *   <dt>bool `is_enrolled_full`</dt>
+ *   <dd>
+ *     <tt>true</tt> if the client has a block event enrollment record set for this class
+ *   (booked the whole event); <tt>false</tt> otherwise.
+ *   </dd>
+ * 
+ *   <dt>string `uid`</dt>
+ *   <dd>
+ *     Key of the client who attended or will attend the event.
+ * 
+ *   </dd>
+ * </dl>
+ * @get result
+ * @var array[][]
+ */
   public $a_enrollments = [];
 
   /**
-   * Key of the business to which the event classes belong.
-   *
-   * @get get
-   * @var string
-   */
+ * Key of the business to which the event classes belong.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '';
 }
 

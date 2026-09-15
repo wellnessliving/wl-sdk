@@ -17,20 +17,20 @@ use WellnessLiving\WlModelRequest;
 class PhoneOtpModel extends WlModelAbstract
 {
   /**
-   * Otp code integer that user entered on the form. Will be compared with otp code, which was sent previously.
-   *
-   * @post post
-   * @var string
-   */
+ * Otp code integer that user entered on the form. Will be compared with otp code, which was sent previously.
+ *
+ * @post post
+ * @var string
+ */
   public $s_otp_code = '';
 
   /**
-   * Phone number to be validated.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * Phone number to be validated.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $text_phone = '';
 }
 

@@ -14,21 +14,21 @@ use WellnessLiving\WlModelRequest;
 class RewardConfigModel extends WlModelAbstract
 {
   /**
-   * <tt>true</tt> Reward program is disabled, <tt>false</tt> - otherwise.
-   *
-   * @get result
-   * @post post
-   * @var bool
-   */
+ * <tt>true</tt> Reward program is disabled, <tt>false</tt> - otherwise.
+ *
+ * @get result
+ * @post post
+ * @var bool
+ */
   public $is_disabled_reward_program;
 
   /**
-   * Business key.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * Business key.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $k_business;
 }
 

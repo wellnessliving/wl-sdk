@@ -17,65 +17,65 @@ use WellnessLiving\WlModelRequest;
 class MemberByPromotionModel extends WlModelAbstract
 {
   /**
-   * The list of active clients with the given Purchase Options.
-   *
-   * <dl>
-   *   <dt>array[] `a_purchase_options`</dt>
-   *   <dd>
-   *     The list of active Purchase Options. Each element has:
-   *     <dl>
-   *       <dt>string|null `dl_end`</dt>
-   *       <dd>
-   *         The date in the location time zone when the Purchase Option expires.
-   *   This will be `null` if the Purchase Option doesn't expire.
-   *       </dd>
-   * 
-   *       <dt>string `dtu_purchase`</dt>
-   *       <dd>The global date and time when the Purchase Option was sold.</dd>
-   * 
-   *       <dt>string|null `dl_start`</dt>
-   *       <dd>
-   *         The date in location's time zone when the Purchase Option starts.
-   *   This will be `null` if not defined yet. For example, if the starting date is the date of the first visit
-   *   and there haven't been any visits yet.
-   *       </dd>
-   * 
-   *       <dt>string|null `dl_terminate`</dt>
-   *       <dd>
-   *         The date in location time zone when the Purchase Option will be terminated.
-   *   This will be `null` if the Purchase Option isn't scheduled to be terminated.
-   *       </dd>
-   * 
-   *       <dt>string `k_promotion`</dt>
-   *       <dd>The key of the Purchase Option.</dd>
-   *     </dl>
-   *   </dd>
-   * 
-   *   <dt>string `uid`</dt>
-   *   <dd>The key of the client.</dd>
-   * </dl>
-   * @get result
-   * @var array[]
-   */
+ * The list of active clients with the given Purchase Options.
+ *
+ * <dl>
+ *   <dt>array[] `a_purchase_options`</dt>
+ *   <dd>
+ *     The list of active Purchase Options. Each element has:
+ *     <dl>
+ *       <dt>string|null `dl_end`</dt>
+ *       <dd>
+ *         The date in the location time zone when the Purchase Option expires.
+ *   This will be `null` if the Purchase Option doesn't expire.
+ *       </dd>
+ * 
+ *       <dt>string `dtu_purchase`</dt>
+ *       <dd>The global date and time when the Purchase Option was sold.</dd>
+ * 
+ *       <dt>string|null `dl_start`</dt>
+ *       <dd>
+ *         The date in location's time zone when the Purchase Option starts.
+ *   This will be `null` if not defined yet. For example, if the starting date is the date of the first visit
+ *   and there haven't been any visits yet.
+ *       </dd>
+ * 
+ *       <dt>string|null `dl_terminate`</dt>
+ *       <dd>
+ *         The date in location time zone when the Purchase Option will be terminated.
+ *   This will be `null` if the Purchase Option isn't scheduled to be terminated.
+ *       </dd>
+ * 
+ *       <dt>string `k_promotion`</dt>
+ *       <dd>The key of the Purchase Option.</dd>
+ *     </dl>
+ *   </dd>
+ * 
+ *   <dt>string `uid`</dt>
+ *   <dd>The key of the client.</dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
   public $a_clients = [];
 
   /**
-   * The key of the business for which to get a list of clients.
-   *
-   * @get get
-   * @var string
-   */
+ * The key of the business for which to get a list of clients.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * The comma-separated list of the Purchase Option keys.
-   * Only active clients with at least one active Purchase Option from this list will be returned.
-   *
-   * For example: '324,123,11,556'
-   *
-   * @get get
-   * @var string
-   */
+ * The comma-separated list of the Purchase Option keys.
+ * Only active clients with at least one active Purchase Option from this list will be returned.
+ *
+ * For example: '324,123,11,556'
+ *
+ * @get get
+ * @var string
+ */
   public $s_promotion_keys = '';
 }
 

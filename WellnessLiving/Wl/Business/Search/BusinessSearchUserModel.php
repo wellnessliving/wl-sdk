@@ -17,35 +17,35 @@ use WellnessLiving\WlModelRequest;
 class BusinessSearchUserModel extends WlModelAbstract
 {
   /**
-   * Array with business keys that contain given name in their title.
-   *
-   * @get result
-   * @var string[]
-   */
+ * Array with business keys that contain given name in their title.
+ *
+ * @get result
+ * @var string[]
+ */
   public $a_result = [];
 
   /**
-   * If `true`, the return only active customers, `false` - all business.
-   *
-   * @get get
-   * @var bool
-   */
+ * If `true`, the return only active customers, `false` - all business.
+ *
+ * @get get
+ * @var bool
+ */
   public $is_customer = true;
 
   /**
-   * User email to search business keys.
-   *
-   * @get get
-   * @var string
-   */
+ * User email to search business keys.
+ *
+ * @get get
+ * @var string
+ */
   public $text_mail = '';
 
   /**
-   * Given business name to search by.
-   *
-   * @get get
-   * @var string
-   */
+ * Given business name to search by.
+ *
+ * @get get
+ * @var string
+ */
   public $text_name = '';
 }
 

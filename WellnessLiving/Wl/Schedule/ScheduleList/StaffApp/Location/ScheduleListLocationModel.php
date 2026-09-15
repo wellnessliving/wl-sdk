@@ -13,33 +13,33 @@ use WellnessLiving\WlModelRequest;
 class ScheduleListLocationModel extends WlModelAbstract
 {
   /**
-   * Location IDs.
-   *
-   * @get result
-   * @var string[]
-   */
+ * Location IDs.
+ *
+ * @get result
+ * @var string[]
+ */
   public $a_location;
 
   /**
-   * Business key.
-   *
-   * @delete get
-   * @get get
-   * @post get
-   * @put get
-   * @var string
-   */
+ * Business key.
+ *
+ * @delete get
+ * @get get
+ * @post get
+ * @put get
+ * @var string
+ */
   public $k_business = null;
 
   /**
-   * User key.
-   *
-   * @delete get
-   * @get get
-   * @post get
-   * @put get
-   * @var string
-   */
+ * User key.
+ *
+ * @delete get
+ * @get get
+ * @post get
+ * @put get
+ * @var string
+ */
   public $uid = null;
 }
 

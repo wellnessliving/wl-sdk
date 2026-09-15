@@ -14,87 +14,87 @@ use WellnessLiving\Wl\Purchase\Item\WlPurchaseItemSid;
 class QuizModel extends WlModelAbstract
 {
   /**
-   * List of required quizzes.
-   *
-   * <dl>
-   *   <dt>bool `is_require`</dt>
-   *   <dd>Whether the quiz is required.</dd>
-   * 
-   *   <dt>string `k_quiz`</dt>
-   *   <dd>Quiz key. </dd>
-   * 
-   *   <dt>string `text_title`</dt>
-   *   <dd>Quiz title.</dd>
-   * </dl>
-   * @get result
-   * @var array[]
-   */
+ * List of required quizzes.
+ *
+ * <dl>
+ *   <dt>bool `is_require`</dt>
+ *   <dd>Whether the quiz is required.</dd>
+ * 
+ *   <dt>string `k_quiz`</dt>
+ *   <dd>Quiz key. </dd>
+ * 
+ *   <dt>string `text_title`</dt>
+ *   <dd>Quiz title.</dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
   public $a_quiz = [];
 
   /**
-   * Purchase item ID.
-   *
-   * @get get
-   * @var int|null
-   * @see WlPurchaseItemSid
-   */
+ * Purchase item ID.
+ *
+ * @get get
+ * @var int|null
+ * @see WlPurchaseItemSid
+ */
   public $id_purchase_item = null;
 
   /**
-   * `true` to return both optional and required forms; `false` to return only required forms.
-   *
-   * @get get
-   * @var bool
-   */
+ * `true` to return both optional and required forms; `false` to return only required forms.
+ *
+ * @get get
+ * @var bool
+ */
   public $is_all = false;
 
   /**
-   * List of add-ons keys.
-   *
-   * @get get
-   * @var string
-   */
+ * List of add-ons keys.
+ *
+ * @get get
+ * @var string
+ */
   public $json_shop_product_option = '[]';
 
   /**
-   * Business key.
-   *
-   * @get get
-   * @var string
-   */
+ * Business key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '0';
 
   /**
-   * Promotion key or appointment key. Depends on {@link QuizModel::$id_purchase_item}.
-   *
-   * @get get
-   * @var string|null
-   */
+ * Promotion key or appointment key. Depends on {@link QuizModel::$id_purchase_item}.
+ *
+ * @get get
+ * @var string|null
+ */
   public $k_id = null;
 
   /**
-   * Resource key.
-   *
-   * @get get
-   * @var string|null
-   */
+ * Resource key.
+ *
+ * @get get
+ * @var string|null
+ */
   public $k_resource = null;
 
   /**
-   * Service key.
-   *
-   * @get get
-   * @var string|null
-   */
+ * Service key.
+ *
+ * @get get
+ * @var string|null
+ */
   public $k_service = null;
 
   /**
-   * User key.
-   * Empty if guest.
-   *
-   * @get get
-   * @var string|null
-   */
+ * User key.
+ * Empty if guest.
+ *
+ * @get get
+ * @var string|null
+ */
   public $uid = null;
 }
 

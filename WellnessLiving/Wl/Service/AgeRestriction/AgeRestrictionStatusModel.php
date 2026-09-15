@@ -13,37 +13,37 @@ use WellnessLiving\WlModelRequest;
 class AgeRestrictionStatusModel extends WlModelAbstract
 {
   /**
-   * Whether a client can book class.
-   *
-   * @get result
-   * @var bool
-   */
+ * Whether a client can book class.
+ *
+ * @get result
+ * @var bool
+ */
   public $can_book;
 
   /**
-   * Whether a client can book class.
-   *
-   * @get get
-   * @var string
-   */
+ * Whether a client can book class.
+ *
+ * @get get
+ * @var string
+ */
   public $dtu_date = '';
 
   /**
-   * Class period key.
-   *
-   * Empty value means not set.
-   *
-   * @get get
-   * @var string
-   */
+ * Class period key.
+ *
+ * Empty value means not set.
+ *
+ * @get get
+ * @var string
+ */
   public $k_class_period = '';
 
   /**
-   * User key.
-   *
-   * @get get
-   * @var string
-   */
+ * User key.
+ *
+ * @get get
+ * @var string
+ */
   public $uid = '';
 }
 

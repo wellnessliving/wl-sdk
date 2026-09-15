@@ -13,34 +13,34 @@ use WellnessLiving\WlModelRequest;
 class ViewStoreModel extends WlModelAbstract
 {
   /**
-   * List of amounts that must be paid. Each element contains keys:
-   *
-   * <dl>
-   *   <dt>string `m_price`</dt>
-   *   <dd>Item price.</dd>
-   * 
-   *   <dt>string `text_title`</dt>
-   *   <dd>Item title.</dd>
-   * </dl>
-   * @get result
-   * @var array[]
-   */
+ * List of amounts that must be paid. Each element contains keys:
+ *
+ * <dl>
+ *   <dt>string `m_price`</dt>
+ *   <dd>Item price.</dd>
+ * 
+ *   <dt>string `text_title`</dt>
+ *   <dd>Item title.</dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
   public $a_item;
 
   /**
-   * Appointment key.
-   *
-   * @get get
-   * @var string
-   */
+ * Appointment key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_appointment = '0';
 
   /**
-   * Business key.
-   *
-   * @get get
-   * @var string
-   */
+ * Business key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '0';
 }
 

@@ -14,21 +14,21 @@ use WellnessLiving\WlModelRequest;
 class AccessModel extends WlModelAbstract
 {
   /**
-   * Key of a bot which access should be changed.
-   *
-   * @delete get
-   * @put get
-   * @var string
-   */
+ * Key of a bot which access should be changed.
+ *
+ * @delete get
+ * @put get
+ * @var string
+ */
   public $k_ip_bot;
 
   /**
-   * Key of a service which access should be changed.
-   *
-   * @delete get
-   * @put get
-   * @var string
-   */
+ * Key of a service which access should be changed.
+ *
+ * @delete get
+ * @put get
+ * @var string
+ */
   public $k_ip_service;
 }
 

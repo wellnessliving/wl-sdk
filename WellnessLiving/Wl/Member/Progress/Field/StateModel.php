@@ -13,67 +13,67 @@ use WellnessLiving\WlModelRequest;
 class StateModel extends WlModelAbstract
 {
   /**
-   * Field ID. One of the {@link ProgressFieldSid} constant.
-   *
-   * @put result
-   * @var int|null
-   */
+ * Field ID. One of the {@link ProgressFieldSid} constant.
+ *
+ * @put result
+ * @var int|null
+ */
   public $id_field;
 
   /**
-   * Whether field is active and should be displayed on page.
-   *
-   * @put post,result
-   * @var bool|null
-   */
+ * Whether field is active and should be displayed on page.
+ *
+ * @put post,result
+ * @var bool|null
+ */
   public $is_active;
 
   /**
-   * Whether this field is public. If this field is set to <tt>false</tt>, this field is not visible to clients.
-   *
-   * @put post,result
-   * @var bool|null
-   */
+ * Whether this field is public. If this field is set to <tt>false</tt>, this field is not visible to clients.
+ *
+ * @put post,result
+ * @var bool|null
+ */
   public $is_public;
 
   /**
-   * Whether field value is required for clients.
-   *
-   * @put post,result
-   * @var bool|null
-   */
+ * Whether field value is required for clients.
+ *
+ * @put post,result
+ * @var bool|null
+ */
   public $is_require;
 
   /**
-   * Whether field value is required for staffs.
-   *
-   * @put post,result
-   * @var bool|null
-   */
+ * Whether field value is required for staffs.
+ *
+ * @put post,result
+ * @var bool|null
+ */
   public $is_require_staff;
 
   /**
-   * Business key.
-   *
-   * @put get
-   * @var string
-   */
+ * Business key.
+ *
+ * @put get
+ * @var string
+ */
   public $k_business;
 
   /**
-   * Field key.
-   *
-   * @put get
-   * @var string
-   */
+ * Field key.
+ *
+ * @put get
+ * @var string
+ */
   public $k_field;
 
   /**
-   * Field title.
-   *
-   * @put result
-   * @var string|null
-   */
+ * Field title.
+ *
+ * @put result
+ * @var string|null
+ */
   public $text_title;
 }
 

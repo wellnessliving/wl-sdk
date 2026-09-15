@@ -20,11 +20,11 @@ use WellnessLiving\WlModelRequest;
 class LanguageSwitchModel extends WlModelAbstract
 {
   /**
-   * Language to switch to.
-   *
-   * @post post
-   * @var int
-   */
+ * Language to switch to.
+ *
+ * @post post
+ * @var int
+ */
   public $id_language = 0;
 }
 

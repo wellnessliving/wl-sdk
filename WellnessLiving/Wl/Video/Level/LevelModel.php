@@ -15,42 +15,45 @@ use WellnessLiving\WlModelRequest;
 class LevelModel extends WlModelAbstract
 {
   /**
-   * If `true`, confirmation is required to delete videos. Otherwise, this will be `false`.
-   *
-   * @delete get
-   * @var bool
-   */
+ * If `true`, confirmation is required to delete videos. Otherwise, this will be `false`.
+ *
+ * @delete get
+ * @var bool
+ */
   public $is_delete_confirm;
 
   /**
-   * The business key.
-   *
-   * @delete get
-   * @get get
-   * @post get
-   * @put get
-   * @var string
-   */
+ * The business key.
+ *
+ * @delete get
+ * @get get
+ * @post get
+ * @put get
+ * @var string
+ */
   public $k_business;
 
   /**
-   * The video level key.
-   *
-   * @delete get
-   * @get get
-   * @post get,result
-   * @put get
-   * @var string
-   */
+ * The video level key.
+ *
+ * @delete get
+ * @get get
+ * @post get,result
+ * @put get
+ * @var string
+ */
   public $k_video_level;
 
   /**
-   * The video level title.
-   *
-   * @post post
-   * @put post
-   * @var string
-   */
+ * The video level title.
+ *
+ * @decorator trim
+ * @post post
+ * @put post
+ * @rule length-max TITLE_LENGTH_MAX
+ * @rule length-min 1
+ * @var string
+ */
   public $text_title;
 }
 

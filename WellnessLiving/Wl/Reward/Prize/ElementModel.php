@@ -14,54 +14,54 @@ use WellnessLiving\WlModelRequest;
 class ElementModel extends WlModelAbstract
 {
   /**
-   * Prize price in wellnessliving points.
-   *
-   * @get result
-   * @var int
-   */
+ * Prize price in wellnessliving points.
+ *
+ * @get result
+ * @var int
+ */
   public $i_score;
 
   /**
-   * Business to show information for.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * Business to show information for.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $k_business = '0';
 
   /**
-   * Key of login prize.
-   *
-   * @post result
-   * @var string
-   */
+ * Key of login prize.
+ *
+ * @post result
+ * @var string
+ */
   public $k_login_prize = '0';
 
   /**
-   * Key of redeemable prize.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * Key of redeemable prize.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $k_reward_prize = '0';
 
   /**
-   * User friendly prize description.
-   *
-   * @get result
-   * @var string
-   */
+ * User friendly prize description.
+ *
+ * @get result
+ * @var string
+ */
   public $s_description;
 
   /**
-   * User to retrieve information about.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * User to retrieve information about.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $uid = '0';
 }
 

@@ -13,27 +13,27 @@ use WellnessLiving\WlModelRequest;
 class CompareModel extends WlModelAbstract
 {
   /**
-   * List of local dates of the progress log.
-   *
-   * @get result
-   * @var string[]
-   */
+ * List of local dates of the progress log.
+ *
+ * @get result
+ * @var string[]
+ */
   public $a_date;
 
   /**
-   * Key of business to get information for.
-   *
-   * @get get
-   * @var string
-   */
+ * Key of business to get information for.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '0';
 
   /**
-   * User key to search dates for.
-   *
-   * @get get
-   * @var string
-   */
+ * User key to search dates for.
+ *
+ * @get get
+ * @var string
+ */
   public $uid = '0';
 }
 

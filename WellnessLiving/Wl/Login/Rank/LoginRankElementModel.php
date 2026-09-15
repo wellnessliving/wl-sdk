@@ -13,27 +13,27 @@ use WellnessLiving\WlModelRequest;
 class LoginRankElementModel extends WlModelAbstract
 {
   /**
-   *  To delete entire rank category from this user.
-   *
-   * @delete get
-   * @var bool
-   */
+ * To delete entire rank category from this user.
+ *
+ * @delete get
+ * @var bool
+ */
   public $is_rank_category;
 
   /**
-   * Business key.
-   *
-   * @delete get
-   * @var string
-   */
+ * Business key.
+ *
+ * @delete get
+ * @var string
+ */
   public $k_business;
 
   /**
-   * Login rank key.
-   *
-   * @delete get
-   * @var string
-   */
+ * Login rank key.
+ *
+ * @delete get
+ * @var string
+ */
   public $k_login_rank;
 }
 

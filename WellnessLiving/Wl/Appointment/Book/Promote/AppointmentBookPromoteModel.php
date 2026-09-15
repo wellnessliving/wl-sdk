@@ -14,37 +14,37 @@ use WellnessLiving\Wl\Mode\ModeSid;
 class AppointmentBookPromoteModel extends WlModelAbstract
 {
   /**
-   * ID of the source where a visit was promoted, one of {@link ModeSid} constants.
-   *
-   * `null` if not initialized yet.
-   *
-   * @post post
-   * @var int|null
-   */
+ * ID of the source where a visit was promoted, one of {@link ModeSid} constants.
+ *
+ * `null` if not initialized yet.
+ *
+ * @post post
+ * @var int|null
+ */
   public $id_mode = null;
 
   /**
-   * Whether is awaiting for user confirmation.
-   *
-   * @post result
-   * @var bool
-   */
+ * Whether is awaiting for user confirmation.
+ *
+ * @post result
+ * @var bool
+ */
   public $is_wait_confirm = false;
 
   /**
-   * Business key.
-   *
-   * @post post
-   * @var string
-   */
+ * Business key.
+ *
+ * @post post
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * Visit key.
-   *
-   * @post post
-   * @var string
-   */
+ * Visit key.
+ *
+ * @post post
+ * @var string
+ */
   public $k_visit = '';
 }
 

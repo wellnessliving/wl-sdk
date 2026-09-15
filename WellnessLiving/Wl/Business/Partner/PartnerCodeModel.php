@@ -14,28 +14,28 @@ use WellnessLiving\WlModelRequest;
 class PartnerCodeModel extends WlModelAbstract
 {
   /**
-   * Business key.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * Business key.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * Unique code that business can give other businesses to tell them about system.
-   *
-   * @post post
-   * @var string
-   */
+ * Unique code that business can give other businesses to tell them about system.
+ *
+ * @post post
+ * @var string
+ */
   public $text_code = '';
 
   /**
-   * Link to the landing campaign
-   *
-   * @get result
-   * @var string
-   */
+ * Link to the landing campaign
+ *
+ * @get result
+ * @var string
+ */
   public $url_partner = '';
 }
 

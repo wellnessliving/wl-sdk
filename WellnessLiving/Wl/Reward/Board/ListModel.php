@@ -13,27 +13,27 @@ use WellnessLiving\WlModelRequest;
 class ListModel extends WlModelAbstract
 {
   /**
-   * A list of UID items.
-   *
-   * @get result
-   * @var int[]
-   */
+ * A list of UID items.
+ *
+ * @get result
+ * @var int[]
+ */
   public $a_uid;
 
   /**
-   * ID of a business to show information for.
-   *
-   * @get get
-   * @var string
-   */
+ * ID of a business to show information for.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '0';
 
   /**
-   * ID of reward board to show information for.
-   *
-   * @get get
-   * @var string
-   */
+ * ID of reward board to show information for.
+ *
+ * @get get
+ * @var string
+ */
   public $k_reward_board = '0';
 }
 

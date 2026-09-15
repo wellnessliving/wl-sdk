@@ -13,27 +13,27 @@ use WellnessLiving\WlModelRequest;
 class ChangeModel extends WlModelAbstract
 {
   /**
-   * Index of asset to be set.
-   *
-   * @put post
-   * @var int
-   */
+ * Index of asset to be set.
+ *
+ * @put post
+ * @var int
+ */
   public $i_index;
 
   /**
-   * Key of asset to be set.
-   *
-   * @put post
-   * @var string
-   */
+ * Key of asset to be set.
+ *
+ * @put post
+ * @var string
+ */
   public $k_resource;
 
   /**
-   * Key of visit.
-   *
-   * @put post
-   * @var string
-   */
+ * Key of visit.
+ *
+ * @put post
+ * @var string
+ */
   public $k_visit;
 }
 

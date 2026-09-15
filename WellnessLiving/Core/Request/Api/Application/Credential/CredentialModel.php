@@ -15,22 +15,22 @@ use WellnessLiving\WlModelRequest;
 class CredentialModel extends WlModelAbstract
 {
   /**
-   * The CID of the credential.
-   *
-   * @delete get
-   * @get get
-   * @put get
-   * @var int
-   */
+ * The CID of the credential.
+ *
+ * @delete get
+ * @get get
+ * @put get
+ * @var int
+ */
   public $cid_credential;
 
   /**
-   * An array with the credential.
-   *
-   * @get result
-   * @put post
-   * @var string
-   */
+ * An array with the credential.
+ *
+ * @get result
+ * @put post
+ * @var string
+ */
   public $json_credential = '[]';
 }
 

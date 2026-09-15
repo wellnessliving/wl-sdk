@@ -15,42 +15,45 @@ use WellnessLiving\WlModelRequest;
 class TagModel extends WlModelAbstract
 {
   /**
-   * If `true`, confirmation is required to delete videos. Otherwise, this will be `false`.
-   *
-   * @delete get
-   * @var bool
-   */
+ * If `true`, confirmation is required to delete videos. Otherwise, this will be `false`.
+ *
+ * @delete get
+ * @var bool
+ */
   public $is_delete_confirm;
 
   /**
-   * The business key.
-   *
-   * @delete get
-   * @get get
-   * @post get
-   * @put get
-   * @var string
-   */
+ * The business key.
+ *
+ * @delete get
+ * @get get
+ * @post get
+ * @put get
+ * @var string
+ */
   public $k_business;
 
   /**
-   * The video tag key.
-   *
-   * @delete get
-   * @get get
-   * @post get,result
-   * @put get
-   * @var string
-   */
+ * The video tag key.
+ *
+ * @delete get
+ * @get get
+ * @post get,result
+ * @put get
+ * @var string
+ */
   public $k_video_tag;
 
   /**
-   * The video tag title.
-   *
-   * @post post
-   * @put post
-   * @var string
-   */
+ * The video tag title.
+ *
+ * @decorator trim
+ * @post post
+ * @put post
+ * @rule length-max TITLE_LENGTH_MAX
+ * @rule length-min 1
+ * @var string
+ */
   public $text_title;
 }
 

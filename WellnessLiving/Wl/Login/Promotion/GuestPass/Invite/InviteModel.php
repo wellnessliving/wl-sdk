@@ -14,21 +14,21 @@ use WellnessLiving\WlModelRequest;
 class InviteModel extends WlModelAbstract
 {
   /**
-   * Business key.
-   *
-   * @delete get
-   * @put get
-   * @var string
-   */
+ * Business key.
+ *
+ * @delete get
+ * @put get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * Secret of the invitation.
-   *
-   * @delete get
-   * @put get
-   * @var string
-   */
+ * Secret of the invitation.
+ *
+ * @delete get
+ * @put get
+ * @var string
+ */
   public $s_secret = '';
 }
 

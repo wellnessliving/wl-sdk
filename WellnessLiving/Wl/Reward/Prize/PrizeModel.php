@@ -13,27 +13,27 @@ use WellnessLiving\WlModelRequest;
 class PrizeModel extends WlModelAbstract
 {
   /**
-   * Array of prize keys.
-   *
-   * @get result
-   * @var string[]
-   */
+ * Array of prize keys.
+ *
+ * @get result
+ * @var string[]
+ */
   public $a_prize;
 
   /**
-   * Array of prize scores.
-   *
-   * @get result
-   * @var int[]
-   */
+ * Array of prize scores.
+ *
+ * @get result
+ * @var int[]
+ */
   public $a_score;
 
   /**
-   * Key of current business.
-   *
-   * @get get
-   * @var string
-   */
+ * Key of current business.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '0';
 }
 

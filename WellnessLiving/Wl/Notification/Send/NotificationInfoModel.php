@@ -17,27 +17,27 @@ use WellnessLiving\Wl\RsMailSid;
 class NotificationInfoModel extends WlModelAbstract
 {
   /**
-   * Information about mail.
-   *
-   * @get result
-   * @var array
-   */
+ * Information about mail.
+ *
+ * @get result
+ * @var array
+ */
   public $a_info;
 
   /**
-   * ID of the notification. See {@link RsMailSid}.
-   *
-   * @get get
-   * @var int
-   */
+ * ID of the notification. See {@link RsMailSid}.
+ *
+ * @get get
+ * @var int
+ */
   public $id_notification = 0;
 
   /**
-   * Key of the business where information about notification should be retrieved.
-   *
-   * @get get
-   * @var string
-   */
+ * Key of the business where information about notification should be retrieved.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '0';
 }
 

@@ -16,99 +16,99 @@ use WellnessLiving\Wl\Service\ServiceSid;
 class GuestProfileModel extends WlModelAbstract
 {
   /**
-   * Guest's birthday in MySQL format. Empty if service not restricted by age.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * Guest's birthday in MySQL format. Empty if service not restricted by age.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $dl_birthday = '';
 
   /**
-   * The mode type used to determine the Lead Source for the created guest.
-   * One of the {@link ModeSid} constants. Default is {@link ModeSid::API}.
-   *
-   * @post post
-   * @var int
-   */
+ * The mode type used to determine the Lead Source for the created guest.
+ * One of the {@link ModeSid} constants. Default is {@link ModeSid::API}.
+ *
+ * @post post
+ * @var int
+ */
   public $id_mode = 0;
 
   /**
-   * Type of the service to book.
-   *
-   * @get get
-   * @post get
-   * @var int
-   * @see ServiceSid
-   */
+ * Type of the service to book.
+ *
+ * @get get
+ * @post get
+ * @var int
+ * @see ServiceSid
+ */
   public $id_service = 0;
 
   /**
-   * Business key.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * Business key.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * Key of service to book.
-   * Depending on {@link GuestProfileModel::$id_service} value:,
-   * <ul>
-   *     <li>{@link ServiceSid::CLASSES} - class key. </li>
-   *     <li>{@link ServiceSid::APPOINTMENT} - service key.</li>
-   *     <li>{@link ServiceSid::BOOKABLE_ASSET} - resource key.</li>
-   * </ul>
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * Key of service to book.
+ * Depending on {@link GuestProfileModel::$id_service} value:,
+ * <ul>
+ *     <li>{@link ServiceSid::CLASSES} - class key. </li>
+ *     <li>{@link ServiceSid::APPOINTMENT} - service key.</li>
+ *     <li>{@link ServiceSid::BOOKABLE_ASSET} - resource key.</li>
+ * </ul>
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $k_id = '';
 
   /**
-   * Location key.
-   *
-   * @get get
-   * @var string
-   */
+ * Location key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_location = '';
 
   /**
-   * Guest's first name.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * Guest's first name.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $text_first_name = '';
 
   /**
-   * Guest's last name.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * Guest's last name.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $text_last_name = '';
 
   /**
-   * Guest's email.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * Guest's email.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $text_mail = '';
 
   /**
-   * UID of found or created user.
-   *
-   * @get result
-   * @post result
-   * @var string
-   */
+ * UID of found or created user.
+ *
+ * @get result
+ * @post result
+ * @var string
+ */
   public $uid = '';
 }
 

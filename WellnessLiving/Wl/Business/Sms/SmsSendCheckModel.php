@@ -13,19 +13,19 @@ use WellnessLiving\WlModelRequest;
 class SmsSendCheckModel extends WlModelAbstract
 {
   /**
-   * The business key.
-   *
-   * @post post
-   * @var string
-   */
+ * The business key.
+ *
+ * @post post
+ * @var string
+ */
   public $k_business;
 
   /**
-   * The user key for which need to send the SMS.
-   *
-   * @post post
-   * @var string
-   */
+ * The user key for which need to send the SMS.
+ *
+ * @post post
+ * @var string
+ */
   public $uid;
 }
 

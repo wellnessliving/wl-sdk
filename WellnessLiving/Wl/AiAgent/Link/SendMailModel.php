@@ -17,62 +17,62 @@ use WellnessLiving\Wl\WlServiceSid;
 class SendMailModel extends WlModelAbstract
 {
   /**
-   * Purchase item ID. Required if {@link SendMailModel::$text_action} is 'purchase'.
-   *
-   * One of the {@link WlPurchaseItemSid} constants.
-   *
-   * @post get
-   * @var int
-   */
+ * Purchase item ID. Required if {@link SendMailModel::$text_action} is 'purchase'.
+ *
+ * One of the {@link WlPurchaseItemSid} constants.
+ *
+ * @post get
+ * @var int
+ */
   public $id_purchase_item = 0;
 
   /**
-   * Service ID. Required if {@link SendMailModel::$text_action} is 'booking'.
-   *
-   * @post get
-   * @var int
-   * @see WlServiceSid
-   */
+ * Service ID. Required if {@link SendMailModel::$text_action} is 'booking'.
+ *
+ * @post get
+ * @var int
+ * @see WlServiceSid
+ */
   public $id_service = 0;
 
   /**
-   * Business key. Required.
-   *
-   * @post get
-   * @var string
-   */
+ * Business key. Required.
+ *
+ * @post get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * Unique identifier for the link.
-   *
-   * @post get
-   * @var string
-   */
+ * Unique identifier for the link.
+ *
+ * @post get
+ * @var string
+ */
   public $k_id = '';
 
   /**
-   * Action type. Must be 'purchase' or 'booking'.
-   *
-   * @post get
-   * @var string
-   */
+ * Action type. Must be 'purchase' or 'booking'.
+ *
+ * @post get
+ * @var string
+ */
   public $text_action = '';
 
   /**
-   * URL suffix for the link. Optional.
-   *
-   * @post get
-   * @var string
-   */
+ * URL suffix for the link. Optional.
+ *
+ * @post get
+ * @var string
+ */
   public $text_url_suffix = '';
 
   /**
-   * User ID. Required.
-   *
-   * @post get
-   * @var string
-   */
+ * User ID. Required.
+ *
+ * @post get
+ * @var string
+ */
   public $uid = '';
 }
 

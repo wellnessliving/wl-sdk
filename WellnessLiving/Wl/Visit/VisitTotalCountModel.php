@@ -15,29 +15,29 @@ use WellnessLiving\WlModelRequest;
 class VisitTotalCountModel extends WlModelAbstract
 {
   /**
-   * Total number of visits.
-   *
-   * Sum of attended visits and historical visits.
-   *
-   * @get result
-   * @var int
-   */
+ * Total number of visits.
+ *
+ * Sum of attended visits and historical visits.
+ *
+ * @get result
+ * @var int
+ */
   public $i_visit_total = 0;
 
   /**
-   * Business key.
-   *
-   * @get get
-   * @var string
-   */
+ * Business key.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * User key.
-   *
-   * @get get
-   * @var string
-   */
+ * User key.
+ *
+ * @get get
+ * @var string
+ */
   public $uid = '';
 }
 

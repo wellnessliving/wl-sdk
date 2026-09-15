@@ -16,99 +16,100 @@ use WellnessLiving\WlModelRequest;
 class LeadStageElementModel extends WlModelAbstract
 {
   /**
-   * Shape of the stage icon. One of {@link LeadStageShapeSid} constants.
-   *
-   * @get result
-   * @post post
-   * @put post
-   * @var int
-   */
+ * Shape of the stage icon. One of {@link LeadStageShapeSid} constants.
+ *
+ * @get result
+ * @post post
+ * @put post
+ * @var int
+ */
   public $id_lead_stage_shape = 0;
 
   /**
-   * Type of the stage. One of {@link LeadStageTypeSid} constants.
-   *
-   * Only used to create a stage. Type of an existing stage can not be changed.
-   *
-   * @get result
-   * @put post
-   * @var int
-   */
+ * Type of the stage. One of {@link LeadStageTypeSid} constants.
+ *
+ * Only used to create a stage. Type of an existing stage can not be changed.
+ *
+ * @get result
+ * @put post
+ * @var int
+ */
   public $id_lead_stage_type = 0;
 
   /**
-   * Business key.
-   *
-   * @delete get
-   * @get get
-   * @post get
-   * @put get
-   * @var string
-   */
+ * Business key.
+ *
+ * @delete get
+ * @get get
+ * @post get
+ * @put get
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * Key of the lead stage.
-   *
-   * @delete get
-   * @get get
-   * @post get
-   * @put result
-   * @var string
-   */
+ * Key of the lead stage.
+ *
+ * @delete get
+ * @get get
+ * @post get
+ * @put result
+ * @var string
+ */
   public $k_lead_stage = '';
 
   /**
-   * Key of the lead stage to move leads and clients of the deleted stage to.
-   *
-   * Required if the stage being deleted has leads or clients assigned to it. Ignored otherwise.
-   * The replacement stage must be of the same {@link LeadStageTypeSid} as the deleted one.
-   *
-   * @delete get
-   * @var string
-   */
+ * Key of the lead stage to move leads and clients of the deleted stage to.
+ *
+ * Required if the stage being deleted has leads or clients assigned to it. Ignored otherwise.
+ * The replacement stage must be of the same {@link LeadStageTypeSid} as the deleted one.
+ *
+ * @delete get
+ * @var string
+ */
   public $k_lead_stage_replace = '';
 
   /**
-   * Background color of the icon. Hexadecimal color.
-   *
-   * @get result
-   * @post post
-   * @put post
-   * @var string
-   */
+ * Background color of the icon. Hexadecimal color.
+ *
+ * @get result
+ * @post post
+ * @put post
+ * @var string
+ */
   public $s_color_background = '';
 
   /**
-   * Color of characters on the icon. Hexadecimal color.
-   *
-   * @get result
-   * @post post
-   * @put post
-   * @var string
-   */
+ * Color of characters on the icon. Hexadecimal color.
+ *
+ * @get result
+ * @post post
+ * @put post
+ * @var string
+ */
   public $s_color_foreground = '';
 
   /**
-   * Characters on the icon.
-   *
-   * Allowed length depends on {@link LeadStageElementModel::$id_lead_stage_shape},
-   *
-   * @get result
-   * @post post
-   * @put post
-   * @var string
-   */
+ * Characters on the icon.
+ *
+ * Allowed length depends on {@link LeadStageElementModel::$id_lead_stage_shape},
+ *
+ * @get result
+ * @post post
+ * @put post
+ * @var string
+ */
   public $s_icon = '';
 
   /**
-   * Name of the stage.
-   *
-   * @get result
-   * @post post
-   * @put post
-   * @var string
-   */
+ * Name of the stage.
+ *
+ * @decorator trim
+ * @get result
+ * @post post
+ * @put post
+ * @var string
+ */
   public $text_title = '';
 }
 

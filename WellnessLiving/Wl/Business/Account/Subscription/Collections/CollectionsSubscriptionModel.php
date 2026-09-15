@@ -13,19 +13,19 @@ use WellnessLiving\WlModelRequest;
 class CollectionsSubscriptionModel extends WlModelAbstract
 {
   /**
-   * If the business has active subscription.
-   *
-   * @get result
-   * @var bool
-   */
+ * If the business has active subscription.
+ *
+ * @get result
+ * @var bool
+ */
   public $is_active = false;
 
   /**
-   * Business key to check subscription plan.
-   *
-   * @get get
-   * @var string
-   */
+ * Business key to check subscription plan.
+ *
+ * @get get
+ * @var string
+ */
   public $k_business = '0';
 }
 

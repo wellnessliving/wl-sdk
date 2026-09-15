@@ -13,11 +13,11 @@ use WellnessLiving\WlModelRequest;
 class DriveDeleteModel extends WlModelAbstract
 {
   /**
-   * Link to the file.
-   *
-   * @get get
-   * @var string
-   */
+ * Link to the file.
+ *
+ * @get get
+ * @var string
+ */
   public $s_link = '';
 }
 

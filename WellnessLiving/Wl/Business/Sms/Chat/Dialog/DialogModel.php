@@ -14,79 +14,79 @@ use WellnessLiving\WlModelRequest;
 class DialogModel extends WlModelAbstract
 {
   /**
-   * `true` if chat can be marked as archive.
-   * `false` - otherwise.
-   *
-   * @get result
-   * @var bool
-   */
+ * `true` if chat can be marked as archive.
+ * `false` - otherwise.
+ *
+ * @get result
+ * @var bool
+ */
   public $can_archive = false;
 
   /**
-   * `true` if conversation can be marked as pinned.
-   * `false` - otherwise.
-   *
-   * @get result
-   * @var bool
-   */
+ * `true` if conversation can be marked as pinned.
+ * `false` - otherwise.
+ *
+ * @get result
+ * @var bool
+ */
   public $can_pin = false;
 
   /**
-   * `true` if the last message in the chat is from client and chat can be marked read.
-   * `false` - otherwise.
-   *
-   * @get result
-   * @var bool
-   */
+ * `true` if the last message in the chat is from client and chat can be marked read.
+ * `false` - otherwise.
+ *
+ * @get result
+ * @var bool
+ */
   public $can_read = false;
 
   /**
-   * `true` if the last message in the chat is from client and chat can be marked unread.
-   * `false` - otherwise.
-   *
-   * @get result
-   * @var bool
-   */
+ * `true` if the last message in the chat is from client and chat can be marked unread.
+ * `false` - otherwise.
+ *
+ * @get result
+ * @var bool
+ */
   public $can_unread = false;
 
   /**
-   * `true` if chat should be hidden on the list of chats.
-   * `false` - otherwise.
-   * `null` - do not change current status.
-   *
-   * @get result
-   * @post post
-   * @var bool|null
-   */
+ * `true` if chat should be hidden on the list of chats.
+ * `false` - otherwise.
+ * `null` - do not change current status.
+ *
+ * @get result
+ * @post post
+ * @var bool|null
+ */
   public $is_archive;
 
   /**
-   * `true` if chat should be muted and all new messages should not fire notifications to staff members.
-   * `false` - otherwise.
-   * `null` - do not change current status.
-   *
-   * @get result
-   * @post post
-   * @var bool|null
-   */
+ * `true` if chat should be muted and all new messages should not fire notifications to staff members.
+ * `false` - otherwise.
+ * `null` - do not change current status.
+ *
+ * @get result
+ * @post post
+ * @var bool|null
+ */
   public $is_mute;
 
   /**
-   * The business key this SMS chat is connected to.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * The business key this SMS chat is connected to.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $k_business;
 
   /**
-   * The key of the user this SMS chat is related to.
-   *
-   * @get get
-   * @post get
-   * @var string
-   */
+ * The key of the user this SMS chat is related to.
+ *
+ * @get get
+ * @post get
+ * @var string
+ */
   public $uid;
 }
 

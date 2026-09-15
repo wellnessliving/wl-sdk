@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Google\Login;
 
+use WellnessLiving\Core\Request\Api\Application\Credential\CredentialModel;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
@@ -13,31 +14,33 @@ use WellnessLiving\WlModelRequest;
 class GoogleLoginModel extends WlModelAbstract
 {
   /**
-   * Business in which authorization is performed.
-   *
-   * @post post
-   * @var string
-   */
+ * Business in which authorization is performed.
+ *
+ * @post post
+ * @var string
+ */
   public $k_business = '';
 
   /**
-   * The application id.
-   *
-   * When application not passed, credential loaded from the application, which makes the request,
-   *
-   * When application passed, the credential loaded by application id.
-   *
-   * @post post
-   * @var string|null
-   */
+ * The application id.
+ *
+ * When application not passed, credential loaded from the application, which makes the request,
+ *
+ * For set credential need used {@link CredentialModel} and set {@link CredentialModel::$cid_credential} to {@link \Core\Request\Api\Application\Credential\GoogleCredential::CID}.
+ *
+ * When application passed, the credential loaded by application id.
+ *
+ * @post post
+ * @var string|null
+ */
   public $s_application = null;
 
   /**
-   * The Google server authorization code.
-   *
-   * @post post
-   * @var string
-   */
+ * The Google server authorization code.
+ *
+ * @post post
+ * @var string
+ */
   public $s_code = '';
 }
 
