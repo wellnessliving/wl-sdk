@@ -47,7 +47,7 @@ class AppointmentWaitListModel extends WlModelAbstract
   public $a_appointment = [];
 
   /**
- * List of visits in wait list. Each element has next structure:
+ * List of visits in wait list.
  *
  * <dl>
  *   <dt>array `a_addon`</dt>
@@ -55,7 +55,7 @@ class AppointmentWaitListModel extends WlModelAbstract
  *     A list of addons. Each element has next structure:
  *     <dl>
  *       <dt>string `k_shop_product_options`</dt>
- *       <dd>Key of the shop product option. Primary key from  table.</dd>
+ *       <dd>Key of the shop product option. </dd>
  * 
  *       <dt>string `text_title`</dt>
  *       <dd>Title of the product.</dd>
@@ -112,7 +112,7 @@ class AppointmentWaitListModel extends WlModelAbstract
  *       <dd>User phone. Empty string if the user has no phone or current user has not access to this information.</dd>
  * 
  *       <dt>string `uid`</dt>
- *       <dd>User key. Primary key in the  table.</dd>
+ *       <dd>User key. </dd>
  * 
  *       <dt>string `url_logo`</dt>
  *       <dd>Link to user logo.</dd>
@@ -141,7 +141,7 @@ class AppointmentWaitListModel extends WlModelAbstract
  *   <dd>Whether is awaiting for user confirmation.</dd>
  * 
  *   <dt>string `k_visit`</dt>
- *   <dd>Visit key. Primary key in the  table.</dd>
+ *   <dd>Visit key.  table.</dd>
  * </dl>
  * @get result
  * @var array[]

@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Quiz\Response;
 
 use WellnessLiving\Core\Quiz\Element\ElementSid;
+use WellnessLiving\Core\Quiz\ResponseStatusSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Catalog\QuickPurchaseTypeSid;
@@ -1343,6 +1344,7 @@ class Response65Model extends WlModelAbstract
  *
  * @get result
  * @var int
+ * @see ResponseStatusSid
  */
   public $id_status = 0;
 

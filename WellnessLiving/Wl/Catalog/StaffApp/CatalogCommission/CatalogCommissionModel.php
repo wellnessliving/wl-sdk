@@ -18,13 +18,13 @@ class CatalogCommissionModel extends WlModelAbstract
  *
  * <dl>
  *   <dt>string `k_staff`</dt>
- *   <dd>@deprecated Staff key. Primary key of  table.</dd>
+ *   <dd><b>Deprecated.</b> Staff key. </dd>
  * 
  *   <dt>string `k_staff_pay`</dt>
- *   <dd>Staff pay key. Primary key of  table.</dd>
+ *   <dd>Staff pay key. </dd>
  * 
  *   <dt>string `uid_staff`</dt>
- *   <dd>User key of staff. Primary key of  table.</dd>
+ *   <dd>User key of staff. </dd>
  * </dl>
  * @get result
  * @var array[]
@@ -52,18 +52,21 @@ class CatalogCommissionModel extends WlModelAbstract
  *       <dd>Title of the commission.</dd>
  * 
  *       <dt>string `k_staff_pay`</dt>
- *       <dd>Staff pay key. Primary key of  table.</dd>
+ *       <dd>Staff pay key.  table.</dd>
  *     </dl>
  *   </dd>
  * 
  *   <dt>string `k_staff`</dt>
- *   <dd>@deprecated Staff key. Primary key of  table. It's use `uid` instead of this field.</dd>
+ *   <dd>
+ *     [Deprecated]Staff key.
+ *     table. It's use `uid` instead of this field.
+ *   </dd>
  * 
  *   <dt>string `html_name`</dt>
  *   <dd>Name of staff.</dd>
  * 
  *   <dt>string `uid`</dt>
- *   <dd>User key. Primary key of  table.</dd>
+ *   <dd>User key.  table.</dd>
  * </dl>
  * @get result
  * @var array[]

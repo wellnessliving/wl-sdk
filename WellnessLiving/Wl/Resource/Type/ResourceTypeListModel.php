@@ -29,7 +29,7 @@ class ResourceTypeListModel extends WlModelAbstract
  *   <dd>Whether resource type is active.</dd>
  * 
  *   <dt>string `k_resource_type`</dt>
- *   <dd>Resource type key, primary key in the  table.</dd>
+ *   <dd>Resource type key. </dd>
  * 
  *   <dt>string `text_title`</dt>
  *   <dd>Resource type title.</dd>

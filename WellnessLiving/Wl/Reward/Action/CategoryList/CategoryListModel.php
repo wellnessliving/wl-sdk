@@ -14,6 +14,7 @@ use WellnessLiving\Wl\RsRewardActionCategorySid;
 class CategoryListModel extends WlModelAbstract
 {
   /**
+ * List of reward categories.
  *
  * <dl>
  *   <dt>int|null `id_reward_action_category`</dt>

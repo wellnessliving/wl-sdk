@@ -14,16 +14,16 @@ use WellnessLiving\WlModelRequest;
 class LoginRankListModel extends WlModelAbstract
 {
   /**
- * List of users with information about their ranks in the business. Each element: 
+ * List of users with information about their ranks in the business.
  *
  * <dl>
  *   <dt>array `a_rank_category`</dt>
  *   <dd>
- *     List of rank categories with rank details for the user. Each element:
+ *     List of rank categories with rank details for the user.
  *     <dl>
  *       <dt>array `a_available`</dt>
  *       <dd>
- *         List of ranks available for the category. Each element:
+ *         List of ranks available for the category.
  *         <dl>
  *           <dt>string `html_condition`</dt>
  *           <dd>Time and class belt conditions.</dd>
@@ -38,7 +38,7 @@ class LoginRankListModel extends WlModelAbstract
  *           <dd>Time and class belt conditions in JSON format.</dd>
  * 
  *           <dt>string `k_rank`</dt>
- *           <dd>Rank key. Primary key from  table.</dd>
+ *           <dd>Rank key. </dd>
  * 
  *           <dt>string `text_rank`</dt>
  *           <dd>Rank title.</dd>
@@ -47,13 +47,14 @@ class LoginRankListModel extends WlModelAbstract
  * 
  *       <dt>array `a_current`</dt>
  *       <dd>
- *         Data of the user's current rank in the category, merged with promotion condition data. Contains
- *   only `html_condition` (the belt condition of the first available rank) when the user does not
- *   have a current rank yet. When the user has a current rank, also contains:
+ *         Data of the user's current rank in the category, merged with promotion condition data.
+ * Contains only `html_condition` (the belt condition of the first available rank) when the user does not
+ * have a current rank yet.
+ * When the user has a current rank, also contains additional information.
  *         <dl>
  *           <dt>array `a_logo`</dt>
  *           <dd>
- *             Rank logo thumbnail data:
+ *             Rank logo thumbnail data.
  *             <dl>
  *               <dt>int `i_height`</dt>
  *               <dd>Actual thumbnail height.</dd>
@@ -70,10 +71,10 @@ class LoginRankListModel extends WlModelAbstract
  *           </dd>
  * 
  *           <dt>string `k_login_rank`</dt>
- *           <dd>Login rank key. Primary key from  table.</dd>
+ *           <dd>Login rank key. </dd>
  * 
  *           <dt>string `k_rank`</dt>
- *           <dd>Rank key. Primary key from  table.</dd>
+ *           <dd>Rank key. </dd>
  * 
  *           <dt>string `text_attendance_at_rank`</dt>
  *           <dd>Class attendance in the current rank.</dd>
@@ -90,7 +91,7 @@ class LoginRankListModel extends WlModelAbstract
  *       </dd>
  * 
  *       <dt>string `k_rank_category`</dt>
- *       <dd>Rank category key. Primary key from  table.</dd>
+ *       <dd>Rank category key. </dd>
  * 
  *       <dt>string `text_rank_category`</dt>
  *       <dd>Rank category title.</dd>
@@ -99,16 +100,17 @@ class LoginRankListModel extends WlModelAbstract
  * 
  *   <dt>array `a_user_info`</dt>
  *   <dd>
- *     User info:
+ *     User information.
  *     <dl>
  *       <dt>string `html_info`</dt>
- *       <dd>Result of  function.</dd>
+ *       <dd>HTML information about user.
+ * </dd>
  * 
  *       <dt>string `text_name`</dt>
  *       <dd>Full user name.</dd>
  * 
  *       <dt>string `uid`</dt>
- *       <dd>User key. Primary key in the  table.</dd>
+ *       <dd>User key. </dd>
  *     </dl>
  *   </dd>
  * </dl>
@@ -138,8 +140,7 @@ class LoginRankListModel extends WlModelAbstract
   public $k_class = null;
 
   /**
- * UIDs of users encoded by Javascript analogue of the 
- * method.
+ * Encoded list of UIDs.
  *
  * @get get
  * @var string
@@ -147,10 +148,7 @@ class LoginRankListModel extends WlModelAbstract
   public $s_user_key;
 
   /**
- * Users with rank categories encoded by Javascript analogue of the
- *  method. This logic was selected, because there is
- * a possibility to promote belts of too many users. In this case
- * URI is too long.
+ * Encoded users with rank categories.
  *
  * <tt>null</tt> if not initialized.
  *
@@ -160,8 +158,7 @@ class LoginRankListModel extends WlModelAbstract
   public $s_user_rank_category = null;
 
   /**
- * Users with rank categories and ranks that need to be saved encoded by Javascript analogue of the
- *  method.
+ * Users with rank categories and ranks that need to be saved.
  *
  * <tt>null</tt> if not initialized.
  *

@@ -31,19 +31,22 @@ class ListModel extends WlModelAbstract
  * 
  *   <dt>string `k_location`</dt>
  *   <dd>
- *     Location key. Primary key from . This is a location where pay rate can be used for a staff staff load. If empty then pay rate can be used in any location. Used only for pay
+ *     Location key.
+ * 
+ * This is a location where pay rate can be used for a staff staff load.
+ * If empty then pay rate can be used in any location. Used only for pay
  * rates with <var>id_staff_pay</var>={@link RsStaffPaySid::HOUR} and <var>is_report</var>=1.
  *   </dd>
  * 
  *   <dt>string `k_staff`</dt>
  *   <dd>
  *     
- * Staff key, primary key in .
- * deprecated Returned only for applications from legacy allow-list. Use <var>uid_staff</var>.
+ * Staff key. 
+ * <b>Deprecated</b> Returned only for applications from legacy allow-list. Use <var>uid_staff</var>.
  *   </dd>
  * 
  *   <dt>string `k_staff_pay`</dt>
- *   <dd>Pay rate identifier, primary key in .</dd>
+ *   <dd>Pay rate key. </dd>
  * 
  *   <dt>string `text_staff`</dt>
  *   <dd>Name of staff member.</dd>
@@ -52,7 +55,7 @@ class ListModel extends WlModelAbstract
  *   <dd>Pay rate title.</dd>
  * 
  *   <dt>string `uid_staff`</dt>
- *   <dd>Staff user ID. Primary key in .</dd>
+ *   <dd>Staff user key. </dd>
  * </dl>
  * @get result
  * @var array[]

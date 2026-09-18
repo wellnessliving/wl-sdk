@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Catalog\Payment;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Appointment\Book\Question\QuestionModel;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
 use WellnessLiving\Wl\Insurance\Catalog\ProgramListModel;
 use WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel;
@@ -23,6 +24,17 @@ use WellnessLiving\Wl\WlSaleSid;
  */
 class PaymentModel extends WlModelAbstract
 {
+  /**
+ * The list of answers for questions.
+ *
+ * * Key is a question hash from {@link QuestionModel::$a_question}.
+ * * Value is the answer text for that question.
+ *
+ * @post post
+ * @var string[]
+ */
+  public $a_answer = [];
+
   /**
  * The staff commission earned for this purchase. If this isn't empty, it has the next fields: 
  *

@@ -65,6 +65,15 @@ class SubscribeModel extends WlModelAbstract
  *   <dd>Key of the user.</dd>
  * </dl>
  * 
+ * Parameters for `1869`:
+ * <dl>
+ *   <dt>string `k_business`</dt>
+ *   <dd>Business key.</dd>
+ * 
+ *   <dt>string `uid_receiver`</dt>
+ *   <dd>User key who will receive message.</dd>
+ * </dl>
+ * 
  * Parameters for `1583`:
  * <dl>
  *   <dt>string `k_channel`</dt>
@@ -92,15 +101,6 @@ class SubscribeModel extends WlModelAbstract
  *   <dd>Visit secret key.</dd>
  * </dl>
  * 
- * Parameters for `1869`:
- * <dl>
- *   <dt>string `k_business`</dt>
- *   <dd>Business key.</dd>
- * 
- *   <dt>string `uid_receiver`</dt>
- *   <dd>User key who will receive message.</dd>
- * </dl>
- * 
  * Parameters for `735`:
  * <dl>
  *   <dt>string|null `k_business`</dt>
@@ -116,6 +116,12 @@ class SubscribeModel extends WlModelAbstract
  *   </dd>
  * </dl>
  * 
+ * Parameters for `19`:
+ * <dl>
+ *   <dt>string `k_business`</dt>
+ *   <dd>Business key.</dd>
+ * </dl>
+ * 
  * Parameters for `1105`:
  * <dl>
  *   <dt>string `uid`</dt>
@@ -128,33 +134,6 @@ class SubscribeModel extends WlModelAbstract
  *   <dd>Microservice key.
  * 
  * `null` if the value is not set</dd>
- * </dl>
- * 
- * Parameters for `19`:
- * <dl>
- *   <dt>string `k_business`</dt>
- *   <dd>Business key.</dd>
- * </dl>
- * 
- * Parameters for `305`:
- * <dl>
- *   <dt>string `k_location`</dt>
- *   <dd>Location where session booked or cancelled.</dd>
- * </dl>
- * 
- * Parameters for `298`:
- * <dl>
- *   <dt>string `k_business`</dt>
- *   <dd>Business key.</dd>
- * </dl>
- * 
- * Parameters for `1163`:
- * <dl>
- *   <dt>string `k_business`</dt>
- *   <dd>Key of the business.</dd>
- * 
- *   <dt>string `uid_actor`</dt>
- *   <dd>Key of the actor.</dd>
  * </dl>
  * 
  * Parameters for `1660`:
@@ -175,13 +154,58 @@ class SubscribeModel extends WlModelAbstract
  *   <dd>User key.</dd>
  * </dl>
  * 
- * Parameters for `1850`:
+ * Parameters for `977`:
  * <dl>
- *   <dt>int `id_import_custom`</dt>
- *   <dd>ID of custom import process. One of {@link CustomSid} constants.</dd>
- * 
  *   <dt>string `k_business`</dt>
- *   <dd>Business key within which import is progressing.</dd>
+ *   <dd>Key of the business.</dd>
+ * 
+ *   <dt>string `uid`</dt>
+ *   <dd>UID of the client for which failed to send SMS.</dd>
+ * </dl>
+ * 
+ * Parameters for `16`:
+ * <dl>
+ *   <dt>string `k_business`</dt>
+ *   <dd>Business key.</dd>
+ * </dl>
+ * 
+ * Parameters for `305`:
+ * <dl>
+ *   <dt>string `k_location`</dt>
+ *   <dd>Location where session booked or cancelled.</dd>
+ * </dl>
+ * 
+ * Parameters for `298`:
+ * <dl>
+ *   <dt>string `k_business`</dt>
+ *   <dd>Business key.</dd>
+ * </dl>
+ * 
+ * Parameters for `1834`:
+ * <dl>
+ *   <dt>string `k_business`</dt>
+ *   <dd>Business key.</dd>
+ * </dl>
+ * 
+ * Parameters for `677`:
+ * <dl>
+ *   <dt>string `k_business`</dt>
+ *   <dd>Business key.</dd>
+ * </dl>
+ * 
+ * Parameters for `1163`:
+ * <dl>
+ *   <dt>string `k_business`</dt>
+ *   <dd>Key of the business.</dd>
+ * 
+ *   <dt>string `uid_actor`</dt>
+ *   <dd>Key of the actor.</dd>
+ * </dl>
+ * 
+ * Parameters for `1820`:
+ * <dl>
+ *   <dt>string `k_business`</dt>
+ *   <dd>Key of a business.</dd>
  * </dl>
  * 
  * Parameters for `842`:
@@ -202,43 +226,19 @@ class SubscribeModel extends WlModelAbstract
  *   <dd>Business key in which the report was monitoring.</dd>
  * </dl>
  * 
- * Parameters for `977`:
- * <dl>
- *   <dt>string `k_business`</dt>
- *   <dd>Key of the business.</dd>
- * 
- *   <dt>string `uid`</dt>
- *   <dd>UID of the client for which failed to send SMS.</dd>
- * </dl>
- * 
- * Parameters for `16`:
- * <dl>
- *   <dt>string `k_business`</dt>
- *   <dd>Business key.</dd>
- * </dl>
- * 
- * Parameters for `1834`:
- * <dl>
- *   <dt>string `k_business`</dt>
- *   <dd>Business key.</dd>
- * </dl>
- * 
- * Parameters for `677`:
- * <dl>
- *   <dt>string `k_business`</dt>
- *   <dd>Business key.</dd>
- * </dl>
- * 
- * Parameters for `1820`:
- * <dl>
- *   <dt>string `k_business`</dt>
- *   <dd>Key of a business.</dd>
- * </dl>
- * 
  * Parameters for `1657`:
  * <dl>
  *   <dt>string `k_business`</dt>
  *   <dd>Key of the business.</dd>
+ * </dl>
+ * 
+ * Parameters for `1850`:
+ * <dl>
+ *   <dt>int `id_import_custom`</dt>
+ *   <dd>ID of custom import process. One of {@link CustomSid} constants.</dd>
+ * 
+ *   <dt>string `k_business`</dt>
+ *   <dd>Business key within which import is progressing.</dd>
  * </dl>
  * 
  * Parameters for `1421`:
@@ -254,15 +254,6 @@ class SubscribeModel extends WlModelAbstract
  * 
  *   <dt>string `s_ticket_id`</dt>
  *   <dd>Gateway Ticket ID.</dd>
- * </dl>
- * 
- * Parameters for `523`:
- * <dl>
- *   <dt>string `k_business`</dt>
- *   <dd>Business key.</dd>
- * 
- *   <dt>string `uid`</dt>
- *   <dd>User key.</dd>
  * </dl>
  * 
  * Parameters for `960`:
@@ -300,6 +291,15 @@ class SubscribeModel extends WlModelAbstract
  *   <dd>Key of user who requested access to location.</dd>
  * </dl>
  * 
+ * Parameters for `523`:
+ * <dl>
+ *   <dt>string `k_business`</dt>
+ *   <dd>Business key.</dd>
+ * 
+ *   <dt>string `uid`</dt>
+ *   <dd>User key.</dd>
+ * </dl>
+ * 
  * Parameters for `828`:
  * <dl>
  *   <dt>string `k_business`</dt>
@@ -324,12 +324,6 @@ class SubscribeModel extends WlModelAbstract
  *   <dd>Gateway exchange identification.</dd>
  * </dl>
  * 
- * Parameters for `549`:
- * <dl>
- *   <dt>string `k_business`</dt>
- *   <dd>Business key.</dd>
- * </dl>
- * 
  * Parameters for `963`:
  * <dl>
  *   <dt>string `k_business`</dt>
@@ -346,6 +340,12 @@ class SubscribeModel extends WlModelAbstract
  * 
  *   <dt>string `uid`</dt>
  *   <dd>UID of the client.</dd>
+ * </dl>
+ * 
+ * Parameters for `549`:
+ * <dl>
+ *   <dt>string `k_business`</dt>
+ *   <dd>Business key.</dd>
  * </dl>
  * @post post
  * @var array
@@ -393,6 +393,20 @@ class SubscribeModel extends WlModelAbstract
  *   <dd>Key of the alert that was just sent.
  * 
  * <tt>null</tt> means alert was read.</dd>
+ * </dl>
+ * 
+ * Parameters for `1869`:
+ * <dl>
+ *   <dt>int `i_overdue`</dt>
+ *   <dd>Number of overdue tasks.</dd>
+ * 
+ *   <dt>int `id_task_status`</dt>
+ *   <dd>New task status of the changed task.
+ * 
+ * One of {@link TaskStatusSid}.</dd>
+ * 
+ *   <dt>string `k_task`</dt>
+ *   <dd>Key of the changed task.</dd>
  * </dl>
  * 
  * Parameters for `1583`:
@@ -452,20 +466,6 @@ class SubscribeModel extends WlModelAbstract
  *   <dd>Url link to redirect to join virtual meeting.</dd>
  * </dl>
  * 
- * Parameters for `1869`:
- * <dl>
- *   <dt>int `i_overdue`</dt>
- *   <dd>Number of overdue tasks.</dd>
- * 
- *   <dt>int `id_task_status`</dt>
- *   <dd>New task status of the changed task.
- * 
- * One of {@link TaskStatusSid}.</dd>
- * 
- *   <dt>string `k_task`</dt>
- *   <dd>Key of the changed task.</dd>
- * </dl>
- * 
  * Parameters for `735`:
  * <dl>
  *   <dt>int `i_cas_change`</dt>
@@ -482,6 +482,12 @@ class SubscribeModel extends WlModelAbstract
  *   <dd>Status of this report.
  * 
  * One of {@link ReportGeneratorStatusSid} constants.</dd>
+ * </dl>
+ * 
+ * Parameters for `19`:
+ * <dl>
+ *   <dt>string `text_title`</dt>
+ *   <dd>New title of the business.</dd>
  * </dl>
  * 
  * Parameters for `1105`:
@@ -517,7 +523,55 @@ class SubscribeModel extends WlModelAbstract
  *   </dd>
  * </dl>
  * 
- * Parameters for `19`:
+ * Parameters for `510`:
+ * <dl>
+ *   <dt>array `a_visit`</dt>
+ *   <dd>
+ *     New data of changes schedule item:
+ *     <dl>
+ *       <dt>string `dtl_end`</dt>
+ *       <dd>Date/time of end.</dd>
+ * 
+ *       <dt>string `dtl_start`</dt>
+ *       <dd>Date/time of start.</dd>
+ * 
+ *       <dt>bool `is_cancel`</dt>
+ *       <dd><tt>true</tt> if book was canceled; <tt>false</tt> otherwise.</dd>
+ * 
+ *       <dt>string `s_key`</dt>
+ *       <dd>Book key. </dd>
+ * 
+ *       <dt>string `text_address`</dt>
+ *       <dd>Address of location.</dd>
+ * 
+ *       <dt>string `text_location`</dt>
+ *       <dd>Title of location.</dd>
+ * 
+ *       <dt>string `text_note`</dt>
+ *       <dd>Description of event.</dd>
+ * 
+ *       <dt>string `text_title`</dt>
+ *       <dd>Title of event.</dd>
+ * 
+ *       <dt>string `url`</dt>
+ *       <dd>URL of virtual service. Empty if the visit is not virtual.</dd>
+ *     </dl>
+ *   </dd>
+ * </dl>
+ * 
+ * Parameters for `977`:
+ * <dl>
+ *   <dt>string `html_error_message`</dt>
+ *   <dd>The text of the error.</dd>
+ * 
+ *   <dt>string `s_key`</dt>
+ *   <dd>The unique key of the sent SMS.</dd>
+ * 
+ *   <dt>int `tl_send`</dt>
+ *   <dd>The time in UNIX format when socket message was sent.</dd>
+ * </dl>
+ * 
+ * Parameters for `16`:
  * <dl>
  *   <dt>string `text_title`</dt>
  *   <dd>New title of the business.</dd>
@@ -571,109 +625,6 @@ class SubscribeModel extends WlModelAbstract
  * 
  * <tt>null</tt> means system default tab.
  *   </dd>
- * </dl>
- * 
- * Parameters for `1163`:
- * <dl>
- *   <dt>bool `is_active`</dt>
- *   <dd>Whether message is active. This is needed to avoid showing previous messages on page reload.</dd>
- * 
- *   <dt>bool|null `is_booking_in_progress`</dt>
- *   <dd>
- *     Whether booking is in progress.
- * 
- *   </dd>
- * </dl>
- * 
- * Parameters for `510`:
- * <dl>
- *   <dt>array `a_visit`</dt>
- *   <dd>
- *     New data of changes schedule item:
- *     <dl>
- *       <dt>string `dtl_end`</dt>
- *       <dd>Date/time of end.</dd>
- * 
- *       <dt>string `dtl_start`</dt>
- *       <dd>Date/time of start.</dd>
- * 
- *       <dt>bool `is_cancel`</dt>
- *       <dd><tt>true</tt> if book was canceled; <tt>false</tt> otherwise.</dd>
- * 
- *       <dt>string `s_key`</dt>
- *       <dd>Book key. </dd>
- * 
- *       <dt>string `text_address`</dt>
- *       <dd>Address of location.</dd>
- * 
- *       <dt>string `text_location`</dt>
- *       <dd>Title of location.</dd>
- * 
- *       <dt>string `text_note`</dt>
- *       <dd>Description of event.</dd>
- * 
- *       <dt>string `text_title`</dt>
- *       <dd>Title of event.</dd>
- * 
- *       <dt>string `url`</dt>
- *       <dd>URL of virtual service. Empty if the visit is not virtual.</dd>
- *     </dl>
- *   </dd>
- * </dl>
- * 
- * Parameters for `1850`:
- * <dl>
- *   <dt>int `i_complete`</dt>
- *   <dd>Number of successfully processed items.</dd>
- * 
- *   <dt>int `i_fail`</dt>
- *   <dd>Number of failed items.</dd>
- * 
- *   <dt>int `i_left`</dt>
- *   <dd>Number of items left to process.</dd>
- * 
- *   <dt>string `k_import`</dt>
- *   <dd>Key of the import being processing.</dd>
- * 
- *   <dt>string `url_log`</dt>
- *   <dd>Url link to download log file with import progress.</dd>
- * </dl>
- * 
- * Parameters for `842`:
- * <dl>
- *   <dt>int `i_generation`</dt>
- *   <dd>Duration of the generation of the report in seconds.</dd>
- * 
- *   <dt>int `id_report`</dt>
- *   <dd>ID of the report that was generated.
- * One of the {@link WlReportSid} constants.</dd>
- * 
- *   <dt>bool `is_need_show`</dt>
- *   <dd>Whether need to display a message about report generation, regardless of the generation time.</dd>
- * 
- *   <dt>string `k_report_accumulation`</dt>
- *   <dd>Report accumulation.</dd>
- * 
- *   <dt>string `text_report`</dt>
- *   <dd>Title of the report that was generated.</dd>
- * </dl>
- * 
- * Parameters for `977`:
- * <dl>
- *   <dt>string `html_error_message`</dt>
- *   <dd>The text of the error.</dd>
- * 
- *   <dt>string `s_key`</dt>
- *   <dd>The unique key of the sent SMS.</dd>
- * 
- *   <dt>int `tl_send`</dt>
- *   <dd>The time in UNIX format when socket message was sent.</dd>
- * </dl>
- * 
- * Parameters for `16`:
- * <dl>
- *   <dt>string `text_title`</dt>
- *   <dd>New title of the business.</dd>
  * </dl>
  * 
  * Parameters for `1834`:
@@ -730,6 +681,18 @@ class SubscribeModel extends WlModelAbstract
  *   <dd>Email address to check.</dd>
  * </dl>
  * 
+ * Parameters for `1163`:
+ * <dl>
+ *   <dt>bool `is_active`</dt>
+ *   <dd>Whether message is active. This is needed to avoid showing previous messages on page reload.</dd>
+ * 
+ *   <dt>bool|null `is_booking_in_progress`</dt>
+ *   <dd>
+ *     Whether booking is in progress.
+ * 
+ *   </dd>
+ * </dl>
+ * 
  * Parameters for `1820`:
  * <dl>
  *   <dt>string|null `k_login_type`</dt>
@@ -739,6 +702,43 @@ class SubscribeModel extends WlModelAbstract
  * 
  *   <dt>string `uid`</dt>
  *   <dd>Key of the user.</dd>
+ * </dl>
+ * 
+ * Parameters for `842`:
+ * <dl>
+ *   <dt>int `i_generation`</dt>
+ *   <dd>Duration of the generation of the report in seconds.</dd>
+ * 
+ *   <dt>int `id_report`</dt>
+ *   <dd>ID of the report that was generated.
+ * One of the {@link WlReportSid} constants.</dd>
+ * 
+ *   <dt>bool `is_need_show`</dt>
+ *   <dd>Whether need to display a message about report generation, regardless of the generation time.</dd>
+ * 
+ *   <dt>string `k_report_accumulation`</dt>
+ *   <dd>Report accumulation.</dd>
+ * 
+ *   <dt>string `text_report`</dt>
+ *   <dd>Title of the report that was generated.</dd>
+ * </dl>
+ * 
+ * Parameters for `1850`:
+ * <dl>
+ *   <dt>int `i_complete`</dt>
+ *   <dd>Number of successfully processed items.</dd>
+ * 
+ *   <dt>int `i_fail`</dt>
+ *   <dd>Number of failed items.</dd>
+ * 
+ *   <dt>int `i_left`</dt>
+ *   <dd>Number of items left to process.</dd>
+ * 
+ *   <dt>string `k_import`</dt>
+ *   <dd>Key of the import being processing.</dd>
+ * 
+ *   <dt>string `url_log`</dt>
+ *   <dd>Url link to download log file with import progress.</dd>
  * </dl>
  * 
  * Parameters for `1421`:
@@ -794,39 +794,6 @@ class SubscribeModel extends WlModelAbstract
  * `null` until initialized.</dd>
  * </dl>
  * 
- * Parameters for `523`:
- * <dl>
- *   <dt>array `a_visit`</dt>
- *   <dd>
- *     New data of changes schedule item:
- *     <dl>
- *       <dt>string `dtl_end`</dt>
- *       <dd>Date/time of end.</dd>
- * 
- *       <dt>string `dtl_start`</dt>
- *       <dd>Date/time of start.</dd>
- * 
- *       <dt>bool `is_cancel`</dt>
- *       <dd><tt>true</tt> if book was canceled; <tt>false</tt> otherwise.</dd>
- * 
- *       <dt>string `s_key`</dt>
- *       <dd>Book key. </dd>
- * 
- *       <dt>string `text_location`</dt>
- *       <dd>Title of location.</dd>
- * 
- *       <dt>string `text_note`</dt>
- *       <dd>Description of event.</dd>
- * 
- *       <dt>string `text_title`</dt>
- *       <dd>Title of event.</dd>
- * 
- *       <dt>string `url`</dt>
- *       <dd>URL of virtual service. Empty if the visit is not virtual.</dd>
- *     </dl>
- *   </dd>
- * </dl>
- * 
  * Parameters for `960`:
  * <dl>
  *   <dt>int `i_unread_sms`</dt>
@@ -872,6 +839,39 @@ class SubscribeModel extends WlModelAbstract
  *   <dd>
  *     `true` if a new assess request has been sent (question window must be not closed);
  * `false` otherwise (question window must be closed).
+ *   </dd>
+ * </dl>
+ * 
+ * Parameters for `523`:
+ * <dl>
+ *   <dt>array `a_visit`</dt>
+ *   <dd>
+ *     New data of changes schedule item:
+ *     <dl>
+ *       <dt>string `dtl_end`</dt>
+ *       <dd>Date/time of end.</dd>
+ * 
+ *       <dt>string `dtl_start`</dt>
+ *       <dd>Date/time of start.</dd>
+ * 
+ *       <dt>bool `is_cancel`</dt>
+ *       <dd><tt>true</tt> if book was canceled; <tt>false</tt> otherwise.</dd>
+ * 
+ *       <dt>string `s_key`</dt>
+ *       <dd>Book key. </dd>
+ * 
+ *       <dt>string `text_location`</dt>
+ *       <dd>Title of location.</dd>
+ * 
+ *       <dt>string `text_note`</dt>
+ *       <dd>Description of event.</dd>
+ * 
+ *       <dt>string `text_title`</dt>
+ *       <dd>Title of event.</dd>
+ * 
+ *       <dt>string `url`</dt>
+ *       <dd>URL of virtual service. Empty if the visit is not virtual.</dd>
+ *     </dl>
  *   </dd>
  * </dl>
  * 
@@ -1040,12 +1040,6 @@ class SubscribeModel extends WlModelAbstract
  * `null` until initialized.</dd>
  * </dl>
  * 
- * Parameters for `549`:
- * <dl>
- *   <dt>float `f_progress`</dt>
- *   <dd>Accumulation process progress.</dd>
- * </dl>
- * 
  * Parameters for `963`:
  * <dl>
  *   <dt>array `a_info`</dt>
@@ -1121,6 +1115,12 @@ class SubscribeModel extends WlModelAbstract
  *   <dd>
  *     The unique key of sent SMS from 2-way SMS chat. The key need to update SMS information in the chat after sent SMS to client.
  *   </dd>
+ * </dl>
+ * 
+ * Parameters for `549`:
+ * <dl>
+ *   <dt>float `f_progress`</dt>
+ *   <dd>Accumulation process progress.</dd>
  * </dl>
  * @post result
  * @var array[]

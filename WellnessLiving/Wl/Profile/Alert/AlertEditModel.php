@@ -136,6 +136,16 @@ class AlertEditModel extends WlModelAbstract
   public $is_flag = false;
 
   /**
+ * Whether note icon should be shown on appointment in Schedule.
+ *
+ * `null` means default value (`true`) on note adding and not changing on note editing.
+ *
+ * @post post
+ * @var ?bool
+ */
+  public $is_icon = null;
+
+  /**
  * Whether flagged user can make purchases. Does not matter if {@link AlertEditModel::$is_flag} is `false`.
  *
  * @post post

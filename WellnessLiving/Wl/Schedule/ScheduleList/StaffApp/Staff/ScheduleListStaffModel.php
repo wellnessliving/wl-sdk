@@ -13,7 +13,7 @@ use WellnessLiving\WlModelRequest;
 class ScheduleListStaffModel extends WlModelAbstract
 {
   /**
- * IDs of staff members which must be represented of business schedule. Primary keys in the `rs_staff` table.
+ * IDs of staff members which must be represented of business schedule.
  *
  * Returned only for applications in the `APPS_USE_OLD_K_STAFF` allow-list.
  *

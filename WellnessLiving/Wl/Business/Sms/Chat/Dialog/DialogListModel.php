@@ -29,7 +29,7 @@ class DialogListModel extends WlModelAbstract
  *   <dd>The text of the last SMS from the client.</dd>
  * 
  *   <dt>string `uid`</dt>
- *   <dd>UID of the client. Primary key in  table.</dd>
+ *   <dd>UID of the client.  table.</dd>
  * 
  *   <dt>string `url_profile_logo`</dt>
  *   <dd>The link to logo the client.</dd>

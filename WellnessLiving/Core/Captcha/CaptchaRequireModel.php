@@ -15,16 +15,16 @@ class CaptchaRequireModel extends WlModelAbstract
   /**
  * Arguments for creating CAPTCHA object.
  *
- * Parameters for `1064`:
- * <dl>
- *   <dt>string|null `k_business`</dt>
- *   <dd>Business key. `null` if system business.</dd>
- * </dl>
- * 
  * Parameters for `1072`:
  * <dl>
  *   <dt>string|null `k_business`</dt>
  *   <dd>Business key. `null` if is system business.</dd>
+ * </dl>
+ * 
+ * Parameters for `1064`:
+ * <dl>
+ *   <dt>string|null `k_business`</dt>
+ *   <dd>Business key. `null` if system business.</dd>
  * </dl>
  * 
  * Parameters for `1066`:

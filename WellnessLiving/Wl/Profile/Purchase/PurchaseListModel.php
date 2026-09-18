@@ -108,7 +108,7 @@ class PurchaseListModel extends WlModelAbstract
  * @get result
  * @var array[]
  */
-  public $a_purchase = null;
+  public $a_purchase;
 
   /**
  * The key of a business to show information for.

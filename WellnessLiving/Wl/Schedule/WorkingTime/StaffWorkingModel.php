@@ -26,7 +26,7 @@ class StaffWorkingModel extends WlModelAbstract
  *         <dl>
  *           <dt>string[]|null `a_service`</dt>
  *           <dd>
- *             Services that affect this hours. Primary keys in  table.
+ *             Services that affect this hours. 
  * <tt>null</tt> if affects all services.
  *           </dd>
  * 
@@ -40,7 +40,7 @@ class StaffWorkingModel extends WlModelAbstract
  *           <dd>Start time. In seconds.</dd>
  * 
  *           <dt>string `k_location`</dt>
- *           <dd>Primary key of location in  table.</dd>
+ *           <dd>Location key. </dd>
  * 
  *           <dt>string `text_note`</dt>
  *           <dd>Note to available/unavailable time.</dd>
@@ -70,7 +70,7 @@ class StaffWorkingModel extends WlModelAbstract
  *           <dd>Start time. In seconds.</dd>
  * 
  *           <dt>string `k_location`</dt>
- *           <dd>Primary key of location in  table.</dd>
+ *           <dd>Location key. </dd>
  * 
  *           <dt>string `text_note`</dt>
  *           <dd>Note to available/unavailable time.</dd>

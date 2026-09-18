@@ -39,7 +39,7 @@ class UserListInfoModel extends WlModelAbstract
  *   <dd>Whether phones of a user are inherited from a relative `true` - inherited, `false` - otherwise.</dd>
  * 
  *   <dt>string `k_city`</dt>
- *   <dd>City key. Primary key in the  table.</dd>
+ *   <dd>City key. </dd>
  * 
  *   <dt>string `text_address`</dt>
  *   <dd>User's address.</dd>
@@ -55,8 +55,11 @@ class UserListInfoModel extends WlModelAbstract
  * 
  *   <dt>string `text_business_uid_key`</dt>
  *   <dd>
- *     Compound key delimited wit a colon. First part is business key. Primary key in  table. Second part - uid of a user.
- * Primary key in  table.
+ *     Compound key delimited wit a colon.
+ * First part is business key.
+ * 
+ * Second part - uid of a user.
+ * 
  *   </dd>
  * 
  *   <dt>string `text_home_phone`</dt>

@@ -17,7 +17,7 @@ use WellnessLiving\Wl\RsStaffPaySid;
 class LoadModel extends WlModelAbstract
 {
   /**
- * Staff pay rates info. See .
+ * Staff pay rates info.
  *
  * <dl>
  *   <dt>array `a_data`</dt>
@@ -40,12 +40,14 @@ class LoadModel extends WlModelAbstract
  * 
  *   <dt>string `k_location`</dt>
  *   <dd>
- *     Location key. Primary key from . This is a location where pay rate can be used for a staff load. If empty then pay rate can be used in any location. Used only for pay
+ *     Location key. 
+ * This is a location where pay rate can be used for a staff load.
+ * If empty then pay rate can be used in any location. Used only for pay
  * rates with `id_staff_pay` {@link RsStaffPaySid::HOUR} and `is_report`.
  *   </dd>
  * 
  *   <dt>string `k_staff_pay`</dt>
- *   <dd>Pay rate identifier, primary key in </dd>
+ *   <dd>Pay rate key. </dd>
  * 
  *   <dt>string `s_title`</dt>
  *   <dd>Name of the rate.</dd>
@@ -56,8 +58,8 @@ class LoadModel extends WlModelAbstract
   public $a_pay_rate = [];
 
   /**
- * Staff work information. See `rs_staff_load_check_work_trx()`. Empty array if the staff
- *  member is currently clocked out. Structure: 
+ * Staff work information.
+ * Empty array if the staff member is currently clocked out.
  *
  * <dl>
  *   <dt>string `dt_start`</dt>

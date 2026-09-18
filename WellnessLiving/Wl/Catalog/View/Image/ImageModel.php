@@ -15,12 +15,12 @@ use WellnessLiving\Wl\WlSaleSid;
 class ImageModel extends WlModelAbstract
 {
   /**
- * Contains a list of images for the current product. Each element has the structure
- *  described in .
+ * Contains a list of images for the current product.
  *
  * <dl>
  *   <dt>array `a_image`</dt>
  *   <dd>
+ *     Information about the image.
  *     <dl>
  *       <dt>int `i_height`</dt>
  *       <dd>Height of the variant image.</dd>

@@ -67,10 +67,9 @@ class QuizListModel extends WlModelAbstract
 
   /**
  * List of quiz keys, needed for registration.
- * Each element is a primary key in the `wl_quiz` table.
  *
  * @get result
- * @var array<string>
+ * @var string[]
  */
   public $a_quiz_register = [];
 

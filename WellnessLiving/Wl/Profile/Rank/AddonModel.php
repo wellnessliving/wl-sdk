@@ -16,17 +16,16 @@ class AddonModel extends WlModelAbstract
   /**
  * Full list of ranks owned by the client.
  * The key of the array is a category rank key.
- * Primary key in the  table.
  *
  * <dl>
  *   <dt>string `dt_add`</dt>
  *   <dd>Date, when rank has been added.</dd>
  * 
  *   <dt>string `k_rank`</dt>
- *   <dd>Rank key. Primary key in the  table.</dd>
+ *   <dd>Rank key. </dd>
  * 
  *   <dt>string `k_rank_category`</dt>
- *   <dd>Category rank key. Primary key in the  table.</dd>
+ *   <dd>Category rank key. </dd>
  * 
  *   <dt>string `s_rank`</dt>
  *   <dd>Rank name.</dd>
@@ -35,7 +34,7 @@ class AddonModel extends WlModelAbstract
  *   <dd>Rank category name.</dd>
  * 
  *   <dt>string `uid`</dt>
- *   <dd>User's key. Primary key in  table.</dd>
+ *   <dd>User's key. </dd>
  * 
  *   <dt>string `z_addon`</dt>
  *   <dd>Compressed and serialised list of addons, that client has.</dd>

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business\Custom\Terms;
 /**
  * Preset options for the {@link CustomTermSid::STAFF} custom term.
  *
- * Last used ID: 26.
+ * Last used ID: 27.
  */
 class StaffTermOptionSid
 {
@@ -310,6 +310,21 @@ class StaffTermOptionSid
   const SPECIALIST = 20;
 
   /**
+   * Staff.
+   *
+   * @title Staff
+   * @title-lower staff
+   * @title-lower-plural staff
+   * @title-lower-plural-possessive staff'
+   * @title-lower-possessive staff's
+   * @title-plural Staff
+   * @title-plural-possessive Staff'
+   * @title-possessive Staff's
+   * @vowel-sound false
+   */
+  const STAFF = 21;
+
+  /**
    * Stylist.
    *
    * @title Stylist
@@ -322,7 +337,7 @@ class StaffTermOptionSid
    * @title-possessive Stylist's
    * @vowel-sound false
    */
-  const STYLIST = 21;
+  const STYLIST = 22;
 
   /**
    * Teacher.
@@ -337,7 +352,7 @@ class StaffTermOptionSid
    * @title-possessive Teacher's
    * @vowel-sound false
    */
-  const TEACHER = 22;
+  const TEACHER = 23;
 
   /**
    * Team Member.
@@ -352,7 +367,7 @@ class StaffTermOptionSid
    * @title-possessive Team Member's
    * @vowel-sound false
    */
-  const TEAM_MEMBER = 23;
+  const TEAM_MEMBER = 24;
 
   /**
    * Technician.
@@ -367,7 +382,7 @@ class StaffTermOptionSid
    * @title-possessive Technician's
    * @vowel-sound false
    */
-  const TECHNICIAN = 24;
+  const TECHNICIAN = 25;
 
   /**
    * Therapist.
@@ -382,7 +397,7 @@ class StaffTermOptionSid
    * @title-possessive Therapist's
    * @vowel-sound false
    */
-  const THERAPIST = 25;
+  const THERAPIST = 26;
 
   /**
    * Trainer.
@@ -397,7 +412,7 @@ class StaffTermOptionSid
    * @title-possessive Trainer's
    * @vowel-sound false
    */
-  const TRAINER = 26;
+  const TRAINER = 27;
 }
 
 ?>

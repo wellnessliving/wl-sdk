@@ -19,27 +19,34 @@ class ScheduleListFilterEditModel extends WlModelAbstract
  *
  * <dl>
  *   <dt>string[] `a_class`</dt>
- *   <dd>List of classes which must be selected in filter. Primary keys in  table.</dd>
+ *   <dd>List of classes which must be selected in filter.
+ * </dd>
  * 
  *   <dt>string[] `a_event`</dt>
- *   <dd>List of events which must be selected in filter. Primary keys in  table.</dd>
+ *   <dd>List of events which must be selected in filter.
+ * </dd>
  * 
  *   <dt>string[] `a_location`</dt>
- *   <dd>List of locations which must be selected in filter. Primary keys in  table.</dd>
+ *   <dd>List of locations which must be selected in filter.
+ * </dd>
  * 
  *   <dt>string[] `a_resource`</dt>
- *   <dd>List of assets which must be selected in filter. Primary keys in  table.</dd>
+ *   <dd>List of assets which must be selected in filter.
+ * </dd>
  * 
  *   <dt>string[] `a_service`</dt>
  *   <dd>
- *     List of appointment services which must be selected in filter. Primary keys in  table.
+ *     List of appointment services which must be selected in filter.
+ * 
  *   </dd>
  * 
  *   <dt>string[] `a_staff`</dt>
- *   <dd>List of staff members which must be selected in filter. Primary keys in  table.</dd>
+ *   <dd>List of staff members which must be selected in filter.
+ * </dd>
  * 
  *   <dt>int[] `a_type`</dt>
- *   <dd>List of service types which must be selected in filter. Constants of {@link WlServiceSid} class.</dd>
+ *   <dd>List of service types which must be selected in filter.
+ * Constants of {@link WlServiceSid} class.</dd>
  * 
  *   <dt>bool `is_staff_all`</dt>
  *   <dd>

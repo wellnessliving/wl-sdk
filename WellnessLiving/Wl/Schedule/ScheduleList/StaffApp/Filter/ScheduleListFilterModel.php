@@ -14,7 +14,9 @@ use WellnessLiving\Wl\WlServiceSid;
 class ScheduleListFilterModel extends WlModelAbstract
 {
   /**
- * List of schedule filters. Keys - filters IDs; primary key in the `rs_schedule_config` table. Values - sub arrays with next keys:
+ * List of schedule filters.
+ * Keys - filters IDs; 
+ * Values - sub arrays with next keys:
  *
  * <dl>
  *   <dt>array `a_config`</dt>
@@ -22,22 +24,22 @@ class ScheduleListFilterModel extends WlModelAbstract
  *     Configurations of filter chapters. If configuration of filter chapter is empty, there are no limits from this chapter.
  *     <dl>
  *       <dt>string[] `a_class`</dt>
- *       <dd>Classes. Primary keys in  table.</dd>
+ *       <dd>Classes. </dd>
  * 
  *       <dt>string[] `a_event`</dt>
- *       <dd>Events. Primary keys in  table.</dd>
+ *       <dd>Events. </dd>
  * 
  *       <dt>string[] `a_location`</dt>
- *       <dd>Locations. Primary keys in  table.</dd>
+ *       <dd>Locations. </dd>
  * 
  *       <dt>string[] `a_resource`</dt>
- *       <dd>Assets. Primary keys in  table.</dd>
+ *       <dd>Assets. </dd>
  * 
  *       <dt>string[] `a_service`</dt>
- *       <dd>Appointment services. Primary keys in  table.</dd>
+ *       <dd>Appointment services. </dd>
  * 
  *       <dt>string[] `a_staff`</dt>
- *       <dd>Staff members. Primary keys in  table.</dd>
+ *       <dd>Staff members. </dd>
  * 
  *       <dt>int[] `a_type`</dt>
  *       <dd>Service types. Constants of {@link WlServiceSid} class (excluding {@link WlServiceSid::VISIT}).</dd>

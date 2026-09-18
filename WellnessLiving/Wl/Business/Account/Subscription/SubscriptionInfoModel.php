@@ -62,6 +62,30 @@ class SubscriptionInfoModel extends WlModelAbstract
  *
  * Depending on subscription type constant from one of {@link PlanSid} inheritors.
  *
+ * Plans for `1250`:
+ * <dl>
+ *   <dt>int `id_plan`</dt>
+ *   <dd>
+ *     Collections subscription plan ID. One of {@link CollectionsSubscriptionSid} constants.
+ *   </dd>
+ * </dl>
+ * 
+ * Plans for `858`:
+ * <dl>
+ *   <dt>int `id_plan`</dt>
+ *   <dd>
+ *     Achieve White Label App subscription plan ID. One of {@link AchieveSubscriptionSid} constants.
+ *   </dd>
+ * </dl>
+ * 
+ * Plans for `882`:
+ * <dl>
+ *   <dt>int `id_plan`</dt>
+ *   <dd>
+ *     Book-a-Spot subscription plan ID. One of {@link AssetSubscriptionSid} constants.
+ *   </dd>
+ * </dl>
+ * 
  * Plans for `2331`:
  * <dl>
  *   <dt>int `id_plan`</dt>
@@ -75,14 +99,6 @@ class SubscriptionInfoModel extends WlModelAbstract
  *   <dt>int `id_plan`</dt>
  *   <dd>
  *     CAASI subscription plan ID. One of {@link AiAgentSubscriptionSid} constants.
- *   </dd>
- * </dl>
- * 
- * Plans for `1250`:
- * <dl>
- *   <dt>int `id_plan`</dt>
- *   <dd>
- *     Collections subscription plan ID. One of {@link CollectionsSubscriptionSid} constants.
  *   </dd>
  * </dl>
  * 
@@ -123,14 +139,6 @@ class SubscriptionInfoModel extends WlModelAbstract
  *   <dt>int `id_plan`</dt>
  *   <dd>
  *     Message Center subscription plan ID. One of {@link SmsSubscriptionSid} constants.
- *   </dd>
- * </dl>
- * 
- * Plans for `858`:
- * <dl>
- *   <dt>int `id_plan`</dt>
- *   <dd>
- *     Achieve White Label App subscription plan ID. One of {@link AchieveSubscriptionSid} constants.
  *   </dd>
  * </dl>
  * 
@@ -267,14 +275,6 @@ class SubscriptionInfoModel extends WlModelAbstract
  *   <dt>int `id_plan`</dt>
  *   <dd>
  *     Customer Review Manager subscription plan ID. One of {@link ReviewSubscriptionSid} constants.
- *   </dd>
- * </dl>
- * 
- * Plans for `882`:
- * <dl>
- *   <dt>int `id_plan`</dt>
- *   <dd>
- *     Book-a-Spot subscription plan ID. One of {@link AssetSubscriptionSid} constants.
  *   </dd>
  * </dl>
  * @get result

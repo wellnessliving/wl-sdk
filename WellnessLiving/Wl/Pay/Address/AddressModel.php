@@ -28,7 +28,7 @@ class AddressModel extends WlModelAbstract
  *   <dd>Country geo key. `null` if the country cannot be determined.</dd>
  * 
  *   <dt>string `k_pay_address`</dt>
- *   <dd>Payment address key. Primary key in the `rs_pay_address` table.</dd>
+ *   <dd>Payment address key. </dd>
  * 
  *   <dt>string `k_region`</dt>
  *   <dd>Region geo key.</dd>

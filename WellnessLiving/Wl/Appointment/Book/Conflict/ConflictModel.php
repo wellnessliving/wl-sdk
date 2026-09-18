@@ -20,9 +20,6 @@ class ConflictModel extends WlModelAbstract
   /**
  * List of appointment booking conflicts.
  *
- * Based on the result of , with
- *  additional entries for client age restriction conflicts. Each element: 
- *
  * <dl>
  *   <dt>string[] `a_resource`</dt>
  *   <dd>Titles of assets that cause the conflict. Not empty only if the conflict is caused by assets.</dd>
@@ -110,7 +107,7 @@ class ConflictModel extends WlModelAbstract
   public $a_repeat = null;
 
   /**
- * List of assets. Every element has next keys:
+ * List of assets.
  *
  * May be specified for service booking only.
  *
@@ -119,7 +116,7 @@ class ConflictModel extends WlModelAbstract
  *   <dd>Asset index in layout.</dd>
  * 
  *   <dt>string `k_resource`</dt>
- *   <dd>Asset primary key in  table.</dd>
+ *   <dd>Asset key. </dd>
  * </dl>
  * @get get
  * @var array[]

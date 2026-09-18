@@ -4,6 +4,7 @@ namespace WellnessLiving\Wl\Login\Promotion;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Promotion\Pay\PromotionPayHoldSid;
 
 /**
  * Manages or retrieves information about holds on Purchase Options.
@@ -62,6 +63,24 @@ class PromotionPayPauseModel extends WlModelAbstract
   public $a_pay_pause_list = null;
 
   /**
+ * List of all payment periods for the give pricing option. Just dates in local timezone.
+ *
+ * <dl>
+ *   <dt>string `dt_end`</dt>
+ *   <dd>End date of the period in local timezone.</dd>
+ * 
+ *   <dt>string `dl_payment`</dt>
+ *   <dd>Date, when this period should be paid.</dd>
+ * 
+ *   <dt>string `dt_start`</dt>
+ *   <dd>Start date of the period in local timezone.</dd>
+ * </dl>
+ * @get result
+ * @var string[]
+ */
+  public $a_payment_periods = [];
+
+  /**
  * List of all upcoming payments for the give pricing option. Just dates in local timezone.
  *
  * @get result
@@ -102,6 +121,15 @@ class PromotionPayPauseModel extends WlModelAbstract
  * @var string|null
  */
   public $dtu_date_notification = null;
+
+  /**
+ * Type of the hold.
+ *
+ * @get result
+ * @var int
+ * @see PromotionPayHoldSid
+ */
+  public $id_hold = 0;
 
   /**
  * Whether need to get all pause periods for the login promotion.

@@ -35,7 +35,10 @@ class ModifyModel extends WlModelAbstract
  *   <dd>Modify all future sessions. Used in {@link WlClassModifyStepSid::PERIOD}.</dd>
  * 
  *   <dt>string[] `a_period`</dt>
- *   <dd>Selected session keys (). Used in {@link WlClassModifyStepSid::ITEM}.</dd>
+ *   <dd>
+ *     Selected session keys. .
+ * Used in {@link WlClassModifyStepSid::ITEM}.
+ *   </dd>
  * 
  *   <dt>string[] `a_edit`</dt>
  *   <dd>

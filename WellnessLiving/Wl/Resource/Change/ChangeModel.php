@@ -8,7 +8,7 @@ use WellnessLiving\WlModelRequest;
 /**
  * Point to change an asset occupied by specified visit.
  *
- * @method WlModelRequest put() Changes an asset occupied by specified visit.  Validates that the specified resource and visit belong to the same business and that the  resource is available for the visit's session, then checks that the current user has  attendance privileges for the class location. When the visit belongs to a block event, the  new asset is applied to all sessions of that event for the same visitor. The change runs  inside a transaction that updates or inserts the corresponding `rs_resource_busy` records,  and fails when the target asset is already occupied for the affected time slot.
+ * @method WlModelRequest put() Changes an asset occupied by specified visit.  Validates that the specified resource and visit belong to the same business and that the  resource is available for the visit's session, then checks that the current user has  attendance privileges for the class location. When the visit belongs to a block event, the  new asset is applied to all sessions of that event for the same visitor.
  */
 class ChangeModel extends WlModelAbstract
 {

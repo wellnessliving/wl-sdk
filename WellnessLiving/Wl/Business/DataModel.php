@@ -3,6 +3,7 @@
 namespace WellnessLiving\Wl\Business;
 
 use WellnessLiving\Core\Locale\CurrencySid;
+use WellnessLiving\Core\Locale\Language\LocaleLanguageSid;
 use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
@@ -85,6 +86,7 @@ class DataModel extends WlModelAbstract
  *
  * @get result
  * @var int
+ * @see LocaleLanguageSid
  */
   public $id_language;
 

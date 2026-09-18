@@ -24,7 +24,7 @@ class AddModel extends WlModelAbstract
   public $a_day = [];
 
   /**
- * Services list, each element is a primary key in .
+ * Services list key.
  *
  * Empty list means all services.
  * <tt>null</tt> means not set.
@@ -36,7 +36,6 @@ class AddModel extends WlModelAbstract
 
   /**
  * Staff period key.
- * Primary key from .
  *
  * @post result
  * @var string[]

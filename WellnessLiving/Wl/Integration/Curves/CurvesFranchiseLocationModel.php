@@ -120,6 +120,7 @@ class CurvesFranchiseLocationModel extends WlModelAbstract
  *
  * @get get
  * @var int
+ * @see BusinessFranchiseLocationSid
  */
   public $id_business_franchise_location = null;
 

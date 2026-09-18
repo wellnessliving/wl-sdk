@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Core\Google;
 
+use WellnessLiving\Core\Google\Captcha\CaptchaVersionSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
@@ -19,6 +20,7 @@ class GoogleCaptchaModel extends WlModelAbstract
  *
  * @put post
  * @var int
+ * @see CaptchaVersionSid
  */
   public $id_version = 1;
 

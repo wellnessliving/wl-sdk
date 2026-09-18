@@ -13,7 +13,7 @@ use WellnessLiving\WlModelRequest;
 class LeadStageListModel extends WlModelAbstract
 {
   /**
- * List of lead stages of the business. Ordered by `i_order`.
+ * List of lead stages of the business.
  *
  * <dl>
  *   <dt>int `i_order`</dt>

@@ -66,7 +66,7 @@ class CordovaCalendarStaffModel extends WlModelAbstract
 
   /**
  * Books/visits that are already synchronized in client's calendar.
- * Serialized list of pairs [[visit key () => visit hash], ...].
+ * Serialized list of pairs [[visit key  => visit hash], ...].
  *
  * @post post
  * @var string

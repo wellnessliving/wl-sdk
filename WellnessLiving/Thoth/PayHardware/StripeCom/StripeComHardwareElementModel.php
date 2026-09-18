@@ -3,6 +3,7 @@
 namespace WellnessLiving\Thoth\PayHardware\StripeCom;
 
 use WellnessLiving\Thoth\PayProcessor\StripeCom\Terminal\StripeReaderModelSid;
+use WellnessLiving\Thoth\PayProcessor\Terminal\TerminalStatusSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
@@ -31,6 +32,7 @@ class StripeComHardwareElementModel extends WlModelAbstract
  * @get result
  * @post post
  * @var int
+ * @see TerminalStatusSid
  */
   public $id_status = 3;
 

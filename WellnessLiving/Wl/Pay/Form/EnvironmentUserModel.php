@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Pay\Form;
 
+use WellnessLiving\Core\Locale\LocaleSid;
 use WellnessLiving\Thoth\PayProcessor\DirectConnect\Terminal\DirectConnectReaderModelSid;
 use WellnessLiving\Thoth\PayProcessor\Nuvei\Terminal\NuveiTerminalTypeSid;
 use WellnessLiving\Thoth\PayProcessor\StripeCom\Terminal\StripeReaderModelSid;
@@ -74,6 +75,108 @@ class EnvironmentUserModel extends WlModelAbstract
  * The structure of this array depends on the payment processor being used.
  * `null` when mobile card readers are not supported, or when actor has no access to them.
  *
+ * Nuvei:
+ * <dl>
+ *   <dt>array `a_terminal_location`</dt>
+ *   <dd>
+ *     Terminal configuration keyed by location key.
+ * 
+ * Present only when at least one location has an active merchant configured.
+ * Each value:
+ *     <dl>
+ *       <dt>array `a_terminal`</dt>
+ *       <dd>
+ *         Terminal lists grouped by connection type.
+ * Both lists contain identical entries - the same terminal appears in both.
+ *         <dl>
+ *           <dt>array[] `a_terminal_elevate`</dt>
+ *           <dd>
+ *             Elevate-model terminals. Each element:
+ *             <dl>
+ *               <dt>bool `can_cancel_swipe_from_pos`</dt>
+ *               <dd>Whether swipe can be cancelled from the POS terminal.</dd>
+ * 
+ *               <dt>int `id_model`</dt>
+ *               <dd>Terminal model. One of {@link NuveiTerminalTypeSid} constants.</dd>
+ * 
+ *               <dt>int `id_status`</dt>
+ *               <dd>Terminal status. One of {@link TerminalStatusSid} constants.</dd>
+ * 
+ *               <dt>int `id_type`</dt>
+ *               <dd>Terminal type. One of {@link NuveiTerminalTypeSid} constants.</dd>
+ * 
+ *               <dt>string `k_terminal`</dt>
+ *               <dd>Terminal key. </dd>
+ * 
+ *               <dt>string `text_id`</dt>
+ *               <dd>Terminal ID assigned by the gateway.</dd>
+ * 
+ *               <dt>string `text_name`</dt>
+ *               <dd>Human-readable terminal label.</dd>
+ *             </dl>
+ *           </dd>
+ * 
+ *           <dt>array[] `a_terminal_web`</dt>
+ *           <dd>
+ *             Ethernet terminals, plus one synthetic `MagTek` USB entry appended last when
+ *
+ * Each element:
+ *             <dl>
+ *               <dt>bool `can_cancel_swipe_from_pos`</dt>
+ *               <dd>Whether swipe can be cancelled from the POS terminal.</dd>
+ * 
+ *               <dt>int|null `id_model`</dt>
+ *               <dd>
+ *                 Terminal model. One of {@link NuveiTerminalTypeSid} constants.
+ * `null` for the synthetic `MagTek` USB entry.
+ *               </dd>
+ * 
+ *               <dt>int `id_status`</dt>
+ *               <dd>Terminal status. One of {@link TerminalStatusSid} constants.</dd>
+ * 
+ *               <dt>int `id_type`</dt>
+ *               <dd>
+ *                 Terminal type. One of {@link NuveiTerminalTypeSid} constants, or
+ * {@link TerminalTypeSid::MAGTEK_USB} for the synthetic `MagTek` USB entry.
+ *               </dd>
+ * 
+ *               <dt>string|null `k_terminal`</dt>
+ *               <dd>
+ *                 Terminal key. 
+ * `null` for the synthetic `MagTek` USB entry.
+ *               </dd>
+ * 
+ *               <dt>string|null `s_serial_number`</dt>
+ *               <dd>Always `null`. Present only in the synthetic `MagTek` USB entry.</dd>
+ * 
+ *               <dt>string `text_id`</dt>
+ *               <dd>Terminal ID assigned by the gateway, or `id_type_N` for the synthetic `MagTek` USB entry.</dd>
+ * 
+ *               <dt>string `text_name`</dt>
+ *               <dd>Human-readable terminal label.</dd>
+ *             </dl>
+ *           </dd>
+ *         </dl>
+ *       </dd>
+ * 
+ *       <dt>string `text_location_name`</dt>
+ *       <dd>Display name of the location.</dd>
+ *     </dl>
+ *   </dd>
+ * 
+ *   <dt>bool `can_cancel_swipe_from_pos`</dt>
+ *   <dd>Whether card swipe can be cancelled from the POS terminal.</dd>
+ * 
+ *   <dt>bool `has_expire_date`</dt>
+ *   <dd>Whether the card expiry date entry is required.</dd>
+ * 
+ *   <dt>bool `has_readers_selection`</dt>
+ *   <dd>Whether the card reader selection UI is shown.</dd>
+ * 
+ *   <dt>bool `is_support_magtek`</dt>
+ *   <dd>Whether `MagTek` USB reader is supported.</dd>
+ * </dl>
+ * 
  * StripeCom:
  * <dl>
  *   <dt>array `a_terminal_location`</dt>
@@ -168,15 +271,6 @@ class EnvironmentUserModel extends WlModelAbstract
  * 
  *   <dt>bool `is_support_magtek`</dt>
  *   <dd>Whether `MagTek` USB reader is supported.</dd>
- * </dl>
- * 
- * Nmi:
- * <dl>
- *   <dt>int `id_device`</dt>
- *   <dd>Device type identifier. One of {@link CordovaCcrDeviceSid} constants.</dd>
- * 
- *   <dt>string `s_key`</dt>
- *   <dd>NMI SDK key for the card reader plugin.</dd>
  * </dl>
  * 
  * DirectConnect:
@@ -281,106 +375,13 @@ class EnvironmentUserModel extends WlModelAbstract
  *   <dd>Whether `MagTek` USB reader is supported.</dd>
  * </dl>
  * 
- * Nuvei:
+ * Nmi:
  * <dl>
- *   <dt>array `a_terminal_location`</dt>
- *   <dd>
- *     Terminal configuration keyed by location key.
+ *   <dt>int `id_device`</dt>
+ *   <dd>Device type identifier. One of {@link CordovaCcrDeviceSid} constants.</dd>
  * 
- * Present only when at least one location has an active merchant configured.
- * Each value:
- *     <dl>
- *       <dt>array `a_terminal`</dt>
- *       <dd>
- *         Terminal lists grouped by connection type.
- * Both lists contain identical entries - the same terminal appears in both.
- *         <dl>
- *           <dt>array[] `a_terminal_elevate`</dt>
- *           <dd>
- *             Elevate-model terminals. Each element:
- *             <dl>
- *               <dt>bool `can_cancel_swipe_from_pos`</dt>
- *               <dd>Whether swipe can be cancelled from the POS terminal.</dd>
- * 
- *               <dt>int `id_model`</dt>
- *               <dd>Terminal model. One of {@link NuveiTerminalTypeSid} constants.</dd>
- * 
- *               <dt>int `id_status`</dt>
- *               <dd>Terminal status. One of {@link TerminalStatusSid} constants.</dd>
- * 
- *               <dt>int `id_type`</dt>
- *               <dd>Terminal type. One of {@link NuveiTerminalTypeSid} constants.</dd>
- * 
- *               <dt>string `k_terminal`</dt>
- *               <dd>Terminal key. </dd>
- * 
- *               <dt>string `text_id`</dt>
- *               <dd>Terminal ID assigned by the gateway.</dd>
- * 
- *               <dt>string `text_name`</dt>
- *               <dd>Human-readable terminal label.</dd>
- *             </dl>
- *           </dd>
- * 
- *           <dt>array[] `a_terminal_web`</dt>
- *           <dd>
- *             Ethernet terminals, plus one synthetic `MagTek` USB entry appended last when
- *
- * Each element:
- *             <dl>
- *               <dt>bool `can_cancel_swipe_from_pos`</dt>
- *               <dd>Whether swipe can be cancelled from the POS terminal.</dd>
- * 
- *               <dt>int|null `id_model`</dt>
- *               <dd>
- *                 Terminal model. One of {@link NuveiTerminalTypeSid} constants.
- * `null` for the synthetic `MagTek` USB entry.
- *               </dd>
- * 
- *               <dt>int `id_status`</dt>
- *               <dd>Terminal status. One of {@link TerminalStatusSid} constants.</dd>
- * 
- *               <dt>int `id_type`</dt>
- *               <dd>
- *                 Terminal type. One of {@link NuveiTerminalTypeSid} constants, or
- * {@link TerminalTypeSid::MAGTEK_USB} for the synthetic `MagTek` USB entry.
- *               </dd>
- * 
- *               <dt>string|null `k_terminal`</dt>
- *               <dd>
- *                 Terminal key. 
- * `null` for the synthetic `MagTek` USB entry.
- *               </dd>
- * 
- *               <dt>string|null `s_serial_number`</dt>
- *               <dd>Always `null`. Present only in the synthetic `MagTek` USB entry.</dd>
- * 
- *               <dt>string `text_id`</dt>
- *               <dd>Terminal ID assigned by the gateway, or `id_type_N` for the synthetic `MagTek` USB entry.</dd>
- * 
- *               <dt>string `text_name`</dt>
- *               <dd>Human-readable terminal label.</dd>
- *             </dl>
- *           </dd>
- *         </dl>
- *       </dd>
- * 
- *       <dt>string `text_location_name`</dt>
- *       <dd>Display name of the location.</dd>
- *     </dl>
- *   </dd>
- * 
- *   <dt>bool `can_cancel_swipe_from_pos`</dt>
- *   <dd>Whether card swipe can be cancelled from the POS terminal.</dd>
- * 
- *   <dt>bool `has_expire_date`</dt>
- *   <dd>Whether the card expiry date entry is required.</dd>
- * 
- *   <dt>bool `has_readers_selection`</dt>
- *   <dd>Whether the card reader selection UI is shown.</dd>
- * 
- *   <dt>bool `is_support_magtek`</dt>
- *   <dd>Whether `MagTek` USB reader is supported.</dd>
+ *   <dt>string `s_key`</dt>
+ *   <dd>NMI SDK key for the card reader plugin.</dd>
  * </dl>
  * @get result
  * @var array|null
@@ -482,6 +483,7 @@ class EnvironmentUserModel extends WlModelAbstract
  *
  * @get result
  * @var int|null
+ * @see LocaleSid
  */
   public $id_locale = null;
 

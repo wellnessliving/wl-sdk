@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\User\Info;
 
+use WellnessLiving\Core\Locale\Language\LocaleLanguageSid;
 use WellnessLiving\Core\a\AGenderSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
@@ -112,7 +113,7 @@ class UserInfoModel extends WlModelAbstract
  *   <dt>int `id_language`</dt>
  *   <dd>
  *     The ID of the language that is effective for the user.
- *
+ *   One of the {@link LocaleLanguageSid} constants.
  *   </dd>
  * 
  *   <dt>bool `is_customer_new`</dt>
@@ -229,6 +230,7 @@ class UserInfoModel extends WlModelAbstract
  *
  * @get result
  * @var int
+ * @see LocaleLanguageSid
  */
   public $id_language;
 

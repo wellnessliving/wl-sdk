@@ -24,7 +24,7 @@ class StaffPeriodModel extends WlModelAbstract
  *     <dl>
  *       <dt>string[]|null `a_service`</dt>
  *       <dd>
- *         Services affected by the period. Primary keys in  table.
+ *         Services affected by the period. 
  *  `null` if the period affects all services.
  *       </dd>
  * 
@@ -38,7 +38,7 @@ class StaffPeriodModel extends WlModelAbstract
  *       <dd>Start time, in seconds.</dd>
  * 
  *       <dt>string `k_location`</dt>
- *       <dd>Primary key of location in  table.</dd>
+ *       <dd>Location key. </dd>
  * 
  *       <dt>string `text_note`</dt>
  *       <dd>Note about available or unavailable time.</dd>
@@ -54,7 +54,7 @@ class StaffPeriodModel extends WlModelAbstract
  *     <dl>
  *       <dt>string[]|null `a_service`</dt>
  *       <dd>
- *         Services affected by the period. Primary keys in  table.
+ *         Services affected by the period. 
  *  `null` if the period affects all services.
  *       </dd>
  * 
@@ -68,7 +68,7 @@ class StaffPeriodModel extends WlModelAbstract
  *       <dd>Start time, in seconds.</dd>
  * 
  *       <dt>string `k_location`</dt>
- *       <dd>Primary key of location in  table.</dd>
+ *       <dd>Location key. </dd>
  * 
  *       <dt>string `text_note`</dt>
  *       <dd>Note about available or unavailable time.</dd>
@@ -93,8 +93,7 @@ class StaffPeriodModel extends WlModelAbstract
   public $dt_date = '';
 
   /**
- * ID of business for which working hours are required.
- * Primary key in the `rs_business` table.
+ * Key of business for which working hours are required.
  *
  * @get get
  * @var string

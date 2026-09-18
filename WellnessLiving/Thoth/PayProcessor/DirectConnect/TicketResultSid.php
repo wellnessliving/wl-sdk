@@ -8,6 +8,15 @@ namespace WellnessLiving\Thoth\PayProcessor\DirectConnect;
 class TicketResultSid
 {
   /**
+   * Invalid account number.
+   *
+   * Request was rejected by the Paragon platform. For a ticket, Paragon returns this code without a description when
+   * the card number did not pass the MOD10 check before the request is sent to the card network. For example, when the
+   * card was not read correctly.
+   */
+  const ACCOUNT_INVALID = 23;
+
+  /**
    * Communication Error.
    */
   const COMMUNICATION_ERROR = 6001;

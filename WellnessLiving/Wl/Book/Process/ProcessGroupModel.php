@@ -105,10 +105,12 @@ class ProcessGroupModel extends WlModelAbstract
  *          Specify if you want to redeem a prize for payment.
  *       </dd>
  * 
- *       <dt>array `a_signature`</dt>
+ *       <dt>string[] `a_signature`</dt>
  *       <dd>
  *         Signatures for a purchase option that requires agreement to several distinct
- *          contracts at once (for example, one per Tuition visitor). Keyed by string `{uid}-{id_purchase_item}-{k_id}`.
+ *          contracts at once (for example, one per Tuition visitor).
+ *          Keys are contract keys in `{uid}-{id_purchase_item}-{k_id}` format.
+ *          Values are signatures of the client in base64 format.
  *       </dd>
  * 
  *       <dt>string `s_signature`</dt>

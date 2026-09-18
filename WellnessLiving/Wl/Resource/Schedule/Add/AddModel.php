@@ -24,8 +24,7 @@ class AddModel extends WlModelAbstract
   public $a_day = [];
 
   /**
- * Resource period key.
- * Primary key from the `rs_resource_period` table.
+ * Resource period keys.
  *
  * @post result
  * @var string[]
@@ -123,7 +122,7 @@ class AddModel extends WlModelAbstract
   public $k_location = '';
 
   /**
- * Resource key. Primary key in the `rs_resource` table.
+ * Resource key.
  *
  * @post post
  * @var string

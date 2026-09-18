@@ -67,7 +67,8 @@ class EditModel extends WlModelAbstract
  *   <dd>Local date and time the note was last edited. Empty string if the note was never edited.</dd>
  * 
  *   <dt>string `k_visit_note`</dt>
- *   <dd>Visit note key, primary key in . `0` if the note does not exist yet.</dd>
+ *   <dd>Visit note key. 
+ * `0` if the note does not exist yet.</dd>
  * 
  *   <dt>string `k_visit_previous`</dt>
  *   <dd>Key of the visit that has a previous note. `0` if a previous note does not exist.</dd>

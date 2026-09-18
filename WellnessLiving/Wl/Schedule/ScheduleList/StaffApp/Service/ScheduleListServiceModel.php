@@ -13,7 +13,8 @@ use WellnessLiving\WlModelRequest;
 class ScheduleListServiceModel extends WlModelAbstract
 {
   /**
- * List of appointment services. Keys - service IDs; primary key in the `rs_service` table. Values - service title.
+ * List of appointment services.
+ * Keys - service keys. Values - service title.
  *
  * @get result
  * @var array<string, string>

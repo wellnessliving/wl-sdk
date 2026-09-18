@@ -26,7 +26,7 @@ class MessageHistoryModel extends WlModelAbstract
  *   <dd><tt>true</tt> if staff member sent SMS, <tt>false</tt> - if the client sent the SMS.</dd>
  * 
  *   <dt>string `k_sms_history`</dt>
- *   <dd>The key of SMS history. Primary key in  table.</dd>
+ *   <dd>The key of SMS history.  table.</dd>
  * 
  *   <dt>string `text_date`</dt>
  *   <dd>The day when SMS messages were sent.</dd>

@@ -453,6 +453,7 @@ class ElementModel extends WlModelAbstract
  *     <dl>
  *       <dt>array `a_image`</dt>
  *       <dd>
+ *         Information about the image.
  *         <dl>
  *           <dt>int `i_height`</dt>
  *           <dd>Height of the variant image.</dd>
