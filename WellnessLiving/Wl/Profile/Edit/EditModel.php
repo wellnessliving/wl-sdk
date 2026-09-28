@@ -6,6 +6,7 @@ use WellnessLiving\Core\Geo\ComboboxModel;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Family\Relation\WlFamilyRelationSid;
+use WellnessLiving\Wl\Field\FieldLevelEnum;
 use WellnessLiving\Wl\Field\WlFieldGeneralSid;
 use WellnessLiving\Wl\Field\WlFieldTypeSid;
 use WellnessLiving\Wl\Login\Member\MemberIntentsSid;
@@ -163,19 +164,36 @@ class EditModel extends WlModelAbstract
  *   <dt>int `id_field_general`</dt>
  *   <dd>
  *     The ID of a system field. One of the {@link WlFieldGeneralSid} constants.
- * This value is only defined if <var>id_field_type</var>={@link WlFieldTypeSid::GENERAL}.
+ * This value is only defined if `id_field_type`={@link WlFieldTypeSid::GENERAL}.
  *   </dd>
+ * 
+ *   <dt>int `id_level_booking`</dt>
+ *   <dd>Requirement for a case when a client books a service. One of {@link FieldLevelEnum} members.</dd>
+ * 
+ *   <dt>int `id_level_guest`</dt>
+ *   <dd>Requirement for a case when a guest books or buys. One of {@link FieldLevelEnum} members.</dd>
+ * 
+ *   <dt>int `id_level_purchase`</dt>
+ *   <dd>Requirement for a case when a client makes a purchase. One of {@link FieldLevelEnum} members.</dd>
+ * 
+ *   <dt>int `id_level_relationship`</dt>
+ *   <dd>Requirement for a case when a client adds a relationship. One of {@link FieldLevelEnum} members.</dd>
+ * 
+ *   <dt>int `id_level_signup`</dt>
+ *   <dd>Requirement for a case when a client signs up. One of {@link FieldLevelEnum} members.</dd>
  * 
  *   <dt>bool `is_require`</dt>
  *   <dd>
  *     Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional.
+ *   **Deprecated. Use `id_level_booking`, `id_level_guest`, `id_level_purchase`, `id_level_relationship` or
+ *       `id_level_signup` instead.**
  *   </dd>
  * 
  *   <dt>int `id_field_type`</dt>
  *   <dd>The type of field. One of the {@link WlFieldTypeSid} constants.</dd>
  * 
  *   <dt>string `k_field`</dt>
- *   <dd>The field ID (<var>k_field</var>). A copy of the key of this array element.</dd>
+ *   <dd>The field ID (`k_field`). A copy of the key of this array element.</dd>
  * 
  *   <dt>string `s_title`</dt>
  *   <dd>The title of the field.</dd>
@@ -197,6 +215,15 @@ class EditModel extends WlModelAbstract
  * @var bool
  */
   public $can_password_change = false;
+
+  /**
+ * Family role for a new user. One of {@link WlFamilyRelationSid} constants.
+ * Not `null` only for a case of relative registration.
+ *
+ * @get get
+ * @var int|null
+ */
+  public $id_family_relation = null;
 
   /**
  * ID of source mode. One of {@link ModeSid} constants.

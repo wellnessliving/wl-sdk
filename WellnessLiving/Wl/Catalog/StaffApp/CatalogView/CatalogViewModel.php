@@ -101,6 +101,16 @@ class CatalogViewModel extends WlModelAbstract
   public $id_sale = 0;
 
   /**
+ * `true` if the sale item is a ticketed event, `false` otherwise.
+ *
+ * Always `false` for sale items other than {@link WlSaleSid::ENROLLMENT}.
+ *
+ * @get result
+ * @var bool
+ */
+  public $is_ticket = false;
+
+  /**
  * The business key.
  * This will be `null` for the system business.
  *

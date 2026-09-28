@@ -13,6 +13,11 @@ class ExitCriteriaCategoryEnum
   const CLIENT_ACTIVITY = 1;
 
   /**
+   * Lead pipeline criteria: moving to a different stage.
+   */
+  const LEAD_PIPELINE = 3;
+
+  /**
    * Purchase-related criteria: making a purchase, purchase option status changes.
    */
   const PURCHASE_OPTIONS = 2;

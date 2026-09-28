@@ -482,6 +482,9 @@ class ElementModel extends WlModelAbstract
  *     `true` {@link ElementModel::$a_business_policy} contains the custom policies from the event; `false` otherwise.
  *   </dd>
  * 
+ *   <dt>bool `is_ticket`</dt>
+ *   <dd>`true` if the event is a ticketed event; `false` otherwise.</dd>
+ * 
  *   <dt>bool `is_virtual`</dt>
  *   <dd>`true` if event is virtual; `false` otherwise.</dd>
  * 
@@ -1038,6 +1041,14 @@ class ElementModel extends WlModelAbstract
  * @var bool
  */
   public $is_single_session_buy;
+
+  /**
+ * `true` if this event is a ticketed event, `false` otherwise.
+ *
+ * @get result
+ * @var bool
+ */
+  public $is_ticket;
 
   /**
  * `true` if event is virtual; `false` otherwise.

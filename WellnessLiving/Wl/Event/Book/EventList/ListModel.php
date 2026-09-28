@@ -33,9 +33,20 @@ class ListModel extends WlModelAbstract
  * Value is `true` if the event is available for booking, `false` if it is unavailable.
  *
  * @get result
- * @var bool[]
+ * @var array<string, bool>
  */
   public $a_event_available = [];
+
+  /**
+ * Ticketed event map.
+ *
+ * Key is the event class key. 
+ * Value is `true` if the event is a ticketed event, `false` otherwise.
+ *
+ * @get result
+ * @var array<string, bool>
+ */
+  public $a_event_ticket = [];
 
   /**
  * Defines how the event availability flag filter should be applied.

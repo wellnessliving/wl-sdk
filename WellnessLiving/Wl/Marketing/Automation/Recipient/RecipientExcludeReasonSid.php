@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Marketing\Automation\Recipient;
 /**
  * List of recipient exclude reasons.
  *
- * Last used ID: 21.
+ * Last used ID: 22.
  */
 class RecipientExcludeReasonSid
 {
@@ -18,6 +18,16 @@ class RecipientExcludeReasonSid
    * Excluded by client type (audience filter).
    */
   const CLIENT_TYPE = 3;
+
+  /**
+   * Exited after the lead stage of the client changed (exit criteria).
+   *
+   * The recipient is not filtered out: they leave the automation because their stage stopped being the one
+   * they entered it with, or became one of the stages the automation watches. Always paired with
+   * {@link RecipientStatusSid::CRITERIA_EXIT}.
+   * The entry and current stage state detected before the next step is kept on the recipient record, see
+   */
+  const EXITED_LEAD_STAGE_CHANGED = 22;
 
   /**
    * Excluded by gender (audience filter).

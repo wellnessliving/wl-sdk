@@ -9,7 +9,7 @@ use WellnessLiving\WlModelRequest;
  * Retrieves questions for a selected service.
  *
  * @method WlModelRequest get() Retrieves questions for the current service.  Returns the list of intake questions defined for the specified service that the client must  answer before completing an appointment booking. Each question includes its text, a stable  hash key for matching answers, and input size metadata.
- * @method WlModelRequest post() Saves answers for an existing appointment.
+ * @method WlModelRequest post() Saves answers for an existing appointment.  Matches submitted answers to the service's questions by hash key, and saves them to the specified appointment.
  */
 class QuestionModel extends WlModelAbstract
 {

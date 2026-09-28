@@ -68,6 +68,12 @@ class ListModel extends WlModelAbstract
  *   <dt>bool `is_introductory`</dt>
  *   <dd>`true` if the item is an introductory offer, `false` otherwise.</dd>
  * 
+ *   <dt>bool `is_ticket`</dt>
+ *   <dd>
+ *     `true` if the item is a ticketed event, `false` otherwise.
+ * Returned for items with `id_sale` equal to {@link WlSaleSid::ENROLLMENT} only.
+ *   </dd>
+ * 
  *   <dt>string `k_id`</dt>
  *   <dd>The item key.</dd>
  * 
@@ -125,6 +131,12 @@ class ListModel extends WlModelAbstract
  * 
  *   <dt>bool `is_introductory`</dt>
  *   <dd>`true` if the item is an introductory offer, `false` otherwise.</dd>
+ * 
+ *   <dt>bool `is_ticket`</dt>
+ *   <dd>
+ *     `true` if the item is a ticketed event, `false` otherwise.
+ * Returned for items with `id_sale` equal to {@link WlSaleSid::ENROLLMENT} only.
+ *   </dd>
  * 
  *   <dt>string `k_id`</dt>
  *   <dd>The item key.</dd>

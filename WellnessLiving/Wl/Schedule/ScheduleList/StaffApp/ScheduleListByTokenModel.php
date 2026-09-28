@@ -82,8 +82,9 @@ class ScheduleListByTokenModel extends WlModelAbstract
  * 
  *   <dt>array `a_staff_info`</dt>
  *   <dd>
- *     Information about staff members who conduct this session. The keys are .
- * Values are array with data:
+ *     Information about staff members who conduct this session. The keys are staff keys.
+ * 
+ * Every value is an array with the following data.
  *     <dl>
  *       <dt>string `text_staff`</dt>
  *       <dd>Staff full name.</dd>
@@ -100,7 +101,8 @@ class ScheduleListByTokenModel extends WlModelAbstract
  *   <dd>For appointments, this is a list of the names of users who are scheduled to attend the session.</dd>
  * 
  *   <dt>string[] `a_virtual_location`</dt>
- *   <dd>List of virtual locations. Each value is .</dd>
+ *   <dd>List of virtual locations.
+ * </dd>
  * 
  *   <dt>string `dt_date`</dt>
  *   <dd>The date/time of the session in UTC.</dd>
@@ -161,6 +163,12 @@ class ScheduleListByTokenModel extends WlModelAbstract
  *   <dd>
  *     For appointments: <tt>true</tt> if appointment is recurring; <tt>false</tt> otherwise.
  * For classes always <tt>null</tt>.
+ *   </dd>
+ * 
+ *   <dt>bool `is_ticket`</dt>
+ *   <dd>
+ *     `true` if the session belongs to a ticketed event, `false` otherwise.
+ * Always `false` for classes, appointments, assets and events that are not ticketed.
  *   </dd>
  * 
  *   <dt>string `k_appointment`</dt>

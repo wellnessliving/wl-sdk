@@ -59,6 +59,13 @@ class CatalogListModel extends WlModelAbstract
  *  </ul>
  *   </dd>
  * 
+ *   <dt>int `i_ticket_left`</dt>
+ *   <dd>
+ *     The number of tickets that can still be sold for the event instance.
+ * Never negative, even when the capacity was lowered below the number of tickets already sold.
+ * Returned for ticket items only, that is when `is_ticket` is `true`.
+ *   </dd>
+ * 
  *   <dt>int `id_restriction`</dt>
  *   <dd>The restriction ID. One of the {@link PurchaseRestrictionSid} constants.</dd>
  * 
@@ -67,6 +74,22 @@ class CatalogListModel extends WlModelAbstract
  * 
  *   <dt>bool `is_online_sell`</dt>
  *   <dd>Determines whether the sale item can be purchased by the client.</dd>
+ * 
+ *   <dt>bool `is_sold_out`</dt>
+ *   <dd>
+ *     `true` if all tickets of the event instance are sold and no more can be sold, `false` otherwise.
+ * A sold out instance is still returned, so that staff can see it.
+ * Returned for ticket items only, that is when `is_ticket` is `true`.
+ *   </dd>
+ * 
+ *   <dt>bool `is_ticket`</dt>
+ *   <dd>
+ *     `true` if the sale item is one instance of a ticketed event, `false` otherwise.
+ * Returned for items with `id_sale` equal to {@link WlSaleSid::ENROLLMENT} only.
+ * A ticket item is never accompanied by an ordinary event item for the same instance, and the start
+ * and the end of the instance are returned in `a_data` so that two shows of one event can be told
+ * apart. Staff who may not sell from the store receive no ticket items at all.
+ *   </dd>
  * 
  *   <dt>bool `is_visit`</dt>
  *   <dd>

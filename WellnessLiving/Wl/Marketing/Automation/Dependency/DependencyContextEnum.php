@@ -5,10 +5,15 @@ namespace WellnessLiving\Wl\Marketing\Automation\Dependency;
 /**
  * List of dependency contexts.
  *
- * Last ID: 13.
+ * Last ID: 14.
  */
 class DependencyContextEnum
 {
+  /**
+   * Used in exit criteria (lead stage is changed).
+   */
+  const EXIT_CRITERIA_LEAD_STAGE_CHANGE = 14;
+
   /**
    * Used in exit criteria (purchase option is cancelled).
    */

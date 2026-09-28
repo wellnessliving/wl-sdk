@@ -42,6 +42,12 @@ class PurchaseItemListModel extends WlModelAbstract
  *   <dd>
  *     The list of clients that will be billed. Each element has the following structure:
  *     <dl>
+ *       <dt>int|null `id_card_system`</dt>
+ *       <dd>
+ *         The card system ({@link \ACardSystemSid}) of the client's default payment method when it is a card,
+ * `null` for a stored bank account or when `text_pay_method` is `Account`.
+ *       </dd>
+ * 
  *       <dt>int `id_pay_method`</dt>
  *       <dd>
  *         The payment method this client is charged with, which decides whether the client is surcharged and
@@ -58,6 +64,12 @@ class PurchaseItemListModel extends WlModelAbstract
  * otherwise.
  *       </dd>
  * 
+ *       <dt>string|null `s_number`</dt>
+ *       <dd>
+ *         The masked card or account number of the client's default payment method, or `null` when
+ * `text_pay_method` is `Account`.
+ *       </dd>
+ * 
  *       <dt>string `text_mail`</dt>
  *       <dd>The client email address. Empty string if the client has no email.</dd>
  * 
@@ -67,7 +79,7 @@ class PurchaseItemListModel extends WlModelAbstract
  *       <dt>string `text_pay_method`</dt>
  *       <dd>
  *         The payment method label for this client. `Account` when billing to the client account; otherwise the
- * default stored card label (for example, `Visa ****1234`), the default ACH account label when no card
+ * default stored card label (for example, `Visa-1234`), the default ACH account label when no card
  * is on file, or an account fallback when neither is on file.
  *       </dd>
  * 
@@ -228,6 +240,12 @@ class PurchaseItemListModel extends WlModelAbstract
  *       <dt>string `text_title`</dt>
  *       <dd>The client type title.</dd>
  *     </dl>
+ *   </dd>
+ * 
+ *   <dt>string[] `a_tax_by_name`</dt>
+ *   <dd>
+ *     The same total as `m_total_tax` below, split by `k_tax` instead of collapsed into one aggregate.
+ * 
  *   </dd>
  * 
  *   <dt>int `i_pay_account`</dt>

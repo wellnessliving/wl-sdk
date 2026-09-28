@@ -1,6 +1,6 @@
 <?php
 
-namespace WellnessLiving\Wl\N8n;
+namespace WellnessLiving\Wl\N8n\Subscription;
 
 /**
  * List of know events.

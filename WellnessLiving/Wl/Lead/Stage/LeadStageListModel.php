@@ -19,9 +19,16 @@ class LeadStageListModel extends WlModelAbstract
  *   <dt>int `i_order`</dt>
  *   <dd>Sequence number of the stage in the list.</dd>
  * 
- *   <dt>int `i_automation`</dt>
+ *   <dt>int `i_automation_active`</dt>
  *   <dd>
- *     Number of automations used this stage.
+ *     Number of active automations which use this stage.
+ * Only set in a case {@link LeadStageListModel::$is_statistic} is `true`.
+ *   </dd>
+ * 
+ *   <dt>int `i_automation_inactive`</dt>
+ *   <dd>
+ *     Number of inactive automations which use this stage. Such an automation still refers the stage, so it
+ * still makes a replacement stage mandatory when the stage is deleted.
  * Only set in a case {@link LeadStageListModel::$is_statistic} is `true`.
  *   </dd>
  * 
@@ -70,8 +77,9 @@ class LeadStageListModel extends WlModelAbstract
  * 
  *   <dt>string `url_automation_list`</dt>
  *   <dd>
- *     URL of the list of automations which use this stage.
- *  Only set in a case {@link LeadStageListModel::$is_statistic} is `true` and the stage is used in automations.
+ *     URL of the list of the active automations which use this stage.
+ *  Only set in a case {@link LeadStageListModel::$is_statistic} is `true` and the stage is used by at least
+ *  one active automation.
  *   </dd>
  * 
  *   <dt>string `url_member_report`</dt>

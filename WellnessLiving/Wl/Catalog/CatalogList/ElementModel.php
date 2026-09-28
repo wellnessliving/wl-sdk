@@ -165,6 +165,10 @@ class ElementModel extends WlModelAbstract
  * 
  *   <dt>bool `is_price_breakdown`</dt>
  *   <dd>Whether to display individual prices for each item in the package.</dd>
+ * 
+ *   <dt>bool `is_ticket`</dt>
+ *   <dd>This applies to enrollment/event items.
+ * `true` if the item is a ticketed event, `false` otherwise.</dd>
  * </dl>
  * @get result
  * @var array
@@ -409,6 +413,10 @@ class ElementModel extends WlModelAbstract
  * 
  *       <dt>bool `is_price_breakdown`</dt>
  *       <dd>Whether to display individual prices for each item in the package.</dd>
+ * 
+ *       <dt>bool `is_ticket`</dt>
+ *       <dd>This applies to enrollment/event items.
+ * `true` if the item is a ticketed event, `false` otherwise.</dd>
  *     </dl>
  *   </dd>
  * 

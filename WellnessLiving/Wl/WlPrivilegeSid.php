@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 249.
+ * Last Used ID: 251.
  */
 abstract class WlPrivilegeSid
 {
@@ -427,6 +427,16 @@ abstract class WlPrivilegeSid
    * Set up and modify Autymate integration.
    */
   const INTEGRATION_AUTYMATE = 163;
+
+  /**
+   * Access to view Bridge Athletic integration.
+   */
+  const INTEGRATION_BRIDGE_ATHLETIC_ACCESS = 251;
+
+  /**
+   * Access to set up and change Bridge Athletic integration.
+   */
+  const INTEGRATION_BRIDGE_ATHLETIC_MANAGE = 250;
 
   /**
    * Set up and modify Brivo integration.
