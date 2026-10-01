@@ -1,27 +1,27 @@
 <?php
 
-namespace WellnessLiving\Wl\Event\Editor;
+namespace WellnessLiving\Wl\Classes\Editor;
 
 use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
 /**
- * Data of the event setup page that the client cannot work out itself.
+ * Data of the class setup page that the client cannot work out itself.
  *
  * Carries the lists the pickers of the form are filled from, the settings of the business the form depends on, the
  * addresses of the pages the form links to and the markup of the blocks that have no template on the client.
  *
- * @method WlModelRequest get() Returns everything the event setup form needs besides the event itself.  The form is rendered by the client, so this endpoint answers with data: the lists the Book Now Tab, the quick search tag and the store category pickers are filled from, the business policies the Business policies section starts with, the send rules of the client reminder, the currency sign, whether the Administration section may be shown, the addresses of the pages the form links to and the markup of the blocks that have no template on the client.
+ * @method WlModelRequest get() Returns everything the class setup form needs besides the class itself.  The form is rendered by the client, so this endpoint answers with data: the lists the Book Now Tab, the quick search tag and the store category pickers are filled from, the business policies the Business policies section starts with, the send rules of the client reminder, the currency sign, whether the Administration section may be shown, the addresses of the pages the form links to and the markup of the blocks that have no template on the client.
  */
 class SetupModel extends WlModelAbstract
 {
   /**
- * Book Now Tabs the event may be shown in. Every element is an array: 
+ * Book Now Tabs the class may be shown in. Every element is an array: 
  *
  * <dl>
  *   <dt>bool `is_selected`</dt>
- *   <dd>`true` if the event is shown in this tab, `false` otherwise.</dd>
+ *   <dd>`true` if the class is shown in this tab, `false` otherwise.</dd>
  * 
  *   <dt>string `s_key`</dt>
  *   <dd>
@@ -126,10 +126,10 @@ class SetupModel extends WlModelAbstract
  *   <dd>Client notifications.</dd>
  * 
  *   <dt>string `url_notification_confirmation`</dt>
- *   <dd>Client confirmation notification of an event.</dd>
+ *   <dd>Client confirmation notification of a class.</dd>
  * 
  *   <dt>string `url_notification_reminder`</dt>
- *   <dd>Client reminder notification of an event.</dd>
+ *   <dd>Client reminder notification of a class.</dd>
  * 
  *   <dt>string `url_notification_staff`</dt>
  *   <dd>Staff notifications.</dd>
@@ -227,10 +227,10 @@ class SetupModel extends WlModelAbstract
   public $k_business = '';
 
   /**
- * Event key.
+ * Class key.
  *
- * `0` while a new event is created, so the key of the model of the client has a value. The key is only checked
- * when it points at an event.
+ * `0` while a new class is created, so the key of the model of the client has a value. The key is only checked
+ * when it points at a class.
  *
  * @get get
  * @var string

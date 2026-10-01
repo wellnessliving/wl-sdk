@@ -84,6 +84,16 @@ class BusinessDesignModel extends WlModelAbstract
  *   <dt>string `s_color_submenu_press`</dt>
  *   <dd>Press color of submenu in front end menu.</dd>
  * 
+ *   <dt>string `s_fb_capi_access_token`</dt>
+ *   <dd>
+ *     Meta Conversion API Access Token. Empty string if CAPI not used or application that made request does not have access to it.
+ *   </dd>
+ * 
+ *   <dt>string `s_fb_capi_test_event_code`</dt>
+ *   <dd>
+ *     Meta Conversion API Test Event Code. Optional, used for QA in Meta Events Manager. Empty string if not used or application that made request does not have access to it.
+ *   </dd>
+ * 
  *   <dt>string `s_fb_pixel_id`</dt>
  *   <dd>Facebook Pixel ID. Used for Facebook analytics tracking. Empty string if tracking is disabled.</dd>
  * 

@@ -1,11 +1,11 @@
 <?php
 
-namespace WellnessLiving\Wl\N8n\Subscription;
+namespace WellnessLiving\Wl\N8N\Subscription;
 
 /**
  * List of know events.
  */
-class N8nEventSid
+class N8NEventSid
 {
   /**
    * Subscription configuration edited event.

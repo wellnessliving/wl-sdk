@@ -8,6 +8,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Appointment\WlAppointmentPaySid;
 use WellnessLiving\Wl\RsRepeatEndSid;
+use WellnessLiving\Wl\Virtual\VirtualProviderSid;
 
 /**
  * Appointment information.
@@ -242,6 +243,26 @@ class InfoModel extends WlModelAbstract
   public $dt_date_local;
 
   /**
+ * Background color of the appointment on the schedule (RGB).
+ *
+ * Uses the service color, or the asset color for a booking with no service.
+ *
+ * @get result
+ * @var int
+ */
+  public $i_color_background = 0;
+
+  /**
+ * Border color of the appointment on the schedule (RGB).
+ *
+ * Uses the service color, or the asset color for a booking with no service.
+ *
+ * @get result
+ * @var int
+ */
+  public $i_color_border = 0;
+
+  /**
  * Appointment duration (in minutes).
  *
  * @get result
@@ -264,6 +285,27 @@ class InfoModel extends WlModelAbstract
  * @var int
  */
   public $id_appointment_pay;
+
+  /**
+ * Virtual provider ID.
+ *
+ * `null` for non-virtual services.
+ *
+ * @get result
+ * @var int|null
+ * @see VirtualProviderSid
+ */
+  public $id_virtual_provider;
+
+  /**
+ * Whether the service is virtual.
+ *
+ * `null` for non-virtual services.
+ *
+ * @get result
+ * @var bool
+ */
+  public $is_virtual;
 
   /**
  * Appointment key to get information for.
@@ -336,9 +378,9 @@ class InfoModel extends WlModelAbstract
  * Use `uid_staff` instead.
  *
  * @get result
- * @var string
+ * @var string|null
  */
-  public $k_staff;
+  public $k_staff = null;
 
   /**
  * Title of the appointment.

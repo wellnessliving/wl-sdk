@@ -6,7 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
 /**
- * Checks that Studio can connect to the monolith and returns selected findings.
+ * Checks that Studio can connect to the Monolith and returns selected findings.
  *
  * @method WlModelRequest get() Collects findings for the requested calendar date.  Searches every registered problem source using the requested date and optional text filter.
  */
@@ -36,7 +36,7 @@ class ConnectionCheckModel extends WlModelAbstract
  *   <dt>int `i_priority_multiplier`</dt>
  *   <dd>Usage-statistics priority multiplier. Present for the usage-statistics source.</dd>
  * 
- *   <dt>int `cid_source`</dt>
+ *   <dt>int `cid_problem`</dt>
  *
  * 
  *   <dt>string `s_object`</dt>

@@ -429,6 +429,16 @@ abstract class RsPrivilegeSid
   const INTEGRATION_AUTYMATE = 163;
 
   /**
+   * Access to view Bridge Athletic integration.
+   */
+  const INTEGRATION_BRIDGE_ATHLETIC_ACCESS = 251;
+
+  /**
+   * Access to set up and change Bridge Athletic integration.
+   */
+  const INTEGRATION_BRIDGE_ATHLETIC_MANAGE = 250;
+
+  /**
    * Set up and modify Brivo integration.
    */
   const INTEGRATION_BRIVO = 179;

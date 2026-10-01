@@ -39,6 +39,44 @@ class ConfirmModel extends WlModelAbstract
   public $a_appointment_list = null;
 
   /**
+ * Information for sending an appointment cancellation notification.
+ *
+ * All keys are optional. A key that is not provided keeps the template's value.
+ *
+ * <dl>
+ *   <dt>bool `is_attach`</dt>
+ *   <dd>`true` to attach calendar file, `false` to not attach calendar file.</dd>
+ * 
+ *   <dt>bool `is_campaign`</dt>
+ *   <dd>Whether mail should track as a part of campaign. `true` if yes, `false` if no.</dd>
+ * 
+ *   <dt>string `text_business_name`</dt>
+ *   <dd>Business name.</dd>
+ * 
+ *   <dt>string `text_business_reply`</dt>
+ *   <dd>Reply email address.</dd>
+ * 
+ *   <dt>string `text_campaign`</dt>
+ *   <dd>Campaign name.</dd>
+ * 
+ *   <dt>string `text_content_mail`</dt>
+ *   <dd>Email content.</dd>
+ * 
+ *   <dt>string `text_push`</dt>
+ *   <dd>Push notification content.</dd>
+ * 
+ *   <dt>string `text_sms`</dt>
+ *   <dd>SMS content.</dd>
+ * 
+ *   <dt>string `text_subject`</dt>
+ *   <dd>Email subject.</dd>
+ * </dl>
+ * @post post
+ * @var array
+ */
+  public $a_notification = [];
+
+  /**
  * End date of period for appointments cancellation.
  *
  * `null` in case of cancellation of single appointment.

@@ -10,6 +10,7 @@ use WellnessLiving\Wl\Business\Account\Subscription\AiAgent\AiAgentSubscriptionS
 use WellnessLiving\Wl\Business\Account\Subscription\Api\ApiSubscriptionSid;
 use WellnessLiving\Wl\Business\Account\Subscription\Asset\AssetSubscriptionSid;
 use WellnessLiving\Wl\Business\Account\Subscription\Base\BaseSubscriptionSid;
+use WellnessLiving\Wl\Business\Account\Subscription\BridgeAthletic\BridgeAthleticSubscriptionSid;
 use WellnessLiving\Wl\Business\Account\Subscription\BusinessCoach\BusinessCoachSubscriptionSid;
 use WellnessLiving\Wl\Business\Account\Subscription\Collections\CollectionsSubscriptionSid;
 use WellnessLiving\Wl\Business\Account\Subscription\Door\DoorSubscriptionSid;
@@ -275,6 +276,14 @@ class SubscriptionInfoModel extends WlModelAbstract
  *   <dt>int `id_plan`</dt>
  *   <dd>
  *     Customer Review Manager subscription plan ID. One of {@link ReviewSubscriptionSid} constants.
+ *   </dd>
+ * </dl>
+ * 
+ * Plans for `2366`:
+ * <dl>
+ *   <dt>int `id_plan`</dt>
+ *   <dd>
+ *     Bridge Athletic subscription plan ID. One of {@link BridgeAthleticSubscriptionSid} constants.
  *   </dd>
  * </dl>
  * @get result

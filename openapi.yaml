@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: 'WellnessLiving public API'
-  version: 1.1.20260928132723
+  version: 1.1.20261001113108
   description: |
     WellnessLiving API is a RESTful way to access and manage your business data.
-    Last updated at: 2026-09-28 13:27:23
+    Last updated at: 2026-10-01 11:31:08
 servers:
   - url: https://us.wellnessliving.com
     description: 'WellnessLiving server for businesses served from the United States data center'
@@ -2996,7 +2996,7 @@ paths:
                         description: 'List of available enrollment blocks matching the requested parameters. Key is the enrollment block key. <i>Primary key in the {@link \RsEnrollmentBlockSql} table.</i> Value is the title of the first event found in that enrollment block.'
                       a_event_list:
                         type: array
-                        description: 'A list of events corresponding to requested parameters. <dl> <dt>array `a_age_restriction`</dt> <dd> Information about age restrictions for this event, has the following structure: <dl> <dt>int|null `i_age_from`</dt> <dd> The minimum age for participation in the event. `null` if there''s no minimum age set or information isn''t available. </dd> <dt>int|null `i_age_to`</dt> <dd> The age limit for participation in the event. `null` if there''s no age limit set or information isn''t available. </dd> <dt>bool `is_age_public`</dt> <dd> `true` if age restrictions are public and available, `false` if they''re hidden. When restrictions are hidden and the current user isn''t a staff member, the age range will be empty. </dd> </dl> </dd> <dt>string[] `a_class_tab`</dt> <dd>List of book now tags connected to this event.</dd> <dt>array `a_logo`</dt> <dd> Data about logo of the event. <dl> <dt>int `i_height`</dt> <dd>Thumbnail height in pixels.</dd> <dt>int `i_width`</dt> <dd>Thumbnail width in pixels.</dd> <dt>bool `is_old`</dt> <dd>`false` for the new wide-rectangle format; `true` for the legacy square format.</dd> <dt>string `s_url`</dt> <dd>Thumbnail URL.</dd> </dl> <dl> <dt>int `i_height_src`</dt> <dd>Original image height in pixels.</dd> <dt>int `i_rotate`</dt> <dd>Rotation angle applied relative to the original.</dd> <dt>int `i_width_src`</dt> <dd>Original image width in pixels.</dd> <dt>int `id_type_src`</dt> <dd>Image type identifier. One of {@link \Core\Drive\DriveTypeSid} constants.</dd> <dt>bool `is-resize`</dt> <dd>`true` if the image was resized; `false` if `url-thumbnail` equals `url-view`.</dd> <dt>string `url-thumbnail`</dt> <dd>URL of the resized thumbnail image.</dd> <dt>string `url-view`</dt> <dd>URL of the original image in file storage.</dd> </dl> <dl> <dt>bool `is_empty`</dt> <dd>`true` if a placeholder is shown instead of an actual logo.</dd> <dt>bool|null `is_own`</dt> <dd> `true` if the logo belongs to this class, `false` if inherited from the location, `null` if the image is empty. </dd> <dt>string `k_business`</dt> <dd>Business key.</dd> <dt>string `k_class`</dt> <dd>Class key.</dd> </dl> </dd> <dt>array[] `a_schedule`</dt> <dd> List of scheduled sessions of the event. <dl> <dt>int[] `a_day`</dt> <dd>List of weekday numbers when event occur.</dd> <dt>array `a_repeat`</dt> <dd> Information about event repeating. <dl> <dt>int `i_repeat`</dt> <dd>Count of the periods which are specified in <var>id_repeat</var>.</dd> <dt>int `id_repeat`</dt> <dd>Measuring unit of <var>i_repeat</var> (week, month, year) from {@link \ADurationSid}.</dd> </dl> </dd> <dt>array[] `a_staff_member`</dt> <dd> List of staff members providing event session. <dl> <dt>string `k_staff_member`</dt> <dd>Staff member key.</dd> <dt>string `text_business_role`</dt> <dd>Staff member role title.</dd> <dt>string `text_mail`</dt> <dd>Staff member email address.</dd> <dt>string `text_name_first`</dt> <dd>Staff member first name.</dd> <dt>string `text_name_full`</dt> <dd>Staff member full name.</dd> <dt>string `text_name_last`</dt> <dd>Staff member last name.</dd> <dt>string `uid`</dt> <dd>Staff member uid.</dd> </dl> </dd> <dt>string `dl_end`</dt> <dd>End date of the schedule in <tt>MySql</tt> format.</dd> <dt>string `dl_start`</dt> <dd>Start date of the schedule in <tt>MySql</tt> format.</dd> <dt>bool `is_day`</dt> <dd>Whether this is a single day schedule (start and end dates of the schedule are the same).</dd> <dt>string `k_class_period`</dt> <dd>Class period key.</dd> <dt>string `k_location`</dt> <dd>Location key.</dd> <dt>string `k_resource_location`</dt> <dd> Resource key, which has category {@link \Wl\Resource\ResourceCategoryEnum::LOCATION}. Only one such resource can be selected for a schedule. Empty string, if no off-site location is used. `null` if field is not loaded. </dd> <dt>string `text_location`</dt> <dd>Location title.</dd> <dt>string `text_room`</dt> <dd>Room where the session takes place.</dd> <dt>string `text_time`</dt> <dd>Start and end time of the scheduled sessions in human readable format.</dd> </dl> </dd> <dt>array[] `a_search_tag`</dt> <dd> List of search tags connected to this event. <dl> <dt>string `k_search_tag`</dt> <dd>Search tag key. <i>Primary key in {@link \RsSearchTagSql} table.</i></dd> <dt>string `text_title`</dt> <dd>Name of the tag.</dd> </dl> </dd> <dt>bool `can_book`</dt> <dd> Whether event can be booked or not. * `true` - there are no restrictions to book this event in general. * `false` - for some reason event cannot be booked. The reason can be found in the following fields: * {@link \Wl\Event\EventListItemEntity::$html_reason} * {@link \Wl\Event\EventListItemEntity::$id_reason} * {@link \Wl\Event\EventListItemEntity::$sid_reason} This field can be used instead of {@link \Wl\Event\EventListItemEntity::$is_bookable} and covers a significant number of checks under its value. </dd> <dt>bool `can_cancel`</dt> <dd>Whether current user can cancel already booked event.</dd> <dt>string `dl_early`</dt> <dd>End date, when early bird price ends in <tt>MySql</tt> format.</dd> <dt>string `dl_end`</dt> <dd>End date of the scheduled session in <tt>MySql</tt> format.</dd> <dt>string `dl_session`</dt> <dd>Local date of the closest session of the event.</dd> <dt>string `dl_start`</dt> <dd>Start date of the scheduled sessions in <tt>MySql</tt> format.</dd> <dt>string `dtu_session`</dt> <dd>Date of the closest session of the event.</dd> <dt>string `html_reason`</dt> <dd> Reason why session can not be booked. Not empty only if {@link \Wl\Event\EventListItemEntity::$is_bookable} is `false`. </dd> <dt>int `i_book_active`</dt> <dd> Number of clients in the active list. For non-block events, this is the sum across all future sessions of the event (same aggregation as used for {@link \Wl\Event\EventListItemEntity::$is_full}). For block events, this is the count for the whole block. </dd> <dt>int `i_capacity`</dt> <dd> Capacity of the active list. For non-block events, this is {@link \Wl\Event\EventListItemEntity::$i_session_future} multiplied by the capacity of a single session (same aggregation as used for {@link \Wl\Event\EventListItemEntity::$is_full}). For block events, this is the capacity of the whole block. </dd> <dt>int `i_session_all`</dt> <dd>Number of all sessions in the event.</dd> <dt>int `i_session_future`</dt> <dd>Number of future sessions in the event.</dd> <dt>int `i_session_past`</dt> <dd>Number of past sessions in the event.</dd> <dt>int `i_wait`</dt> <dd> Number of clients in the wait list. For non-block events, this is the sum across all future sessions of the event. For block events, this is the count for the whole block. </dd> <dt>int|null `i_wait_limit`</dt> <dd> Wait list limit of the event. `null` if wait list is not enabled for this event, or if it is enabled without a limit. </dd> <dt>int `id_reason`</dt> <dd>ID of deny reason.</dd> <dt>bool `is_age_restrict`</dt> <dd>Whether booking of this event restricted because of age rules for {@link \Wl\Event\EventListApi}.</dd> <dt>bool `is_age_restrict_only`</dt> <dd>`true` if this event booking is restricted and restricted because of client''s age only. `false` otherwise.</dd> <dt>bool|null `is_available`</dt> <dd> Whether the event is available for booking or not. The flag refers to the Available/Unavailable filter. `null` if the field is not initialized. </dd> <dt>bool `is_block`</dt> <dd> Whether single sessions of the event can be booked. Depending on current backend/fronted status. <i> Contains one of values: * {@link \RsClassSql::$is_block} - if frontend. * {@link \RsClassSql::$is_block_staff} - if backend. </i> <tt>true</tt> - booking single sessions are not allowed. <tt>false</tt> - booking single sessions are allowed. </dd> <dt>bool `is_book_for_guest`</dt> <dd> Allow clients to book on behalf of a guest. `true` if clients can book on behalf of a guest. `false` otherwise. </dd> <dt>bool `is_bookable`</dt> <dd> Whether event is bookable. * `true` - there are no restrictions to book this event in general. * `false` - for some reason event cannot be booked. <b>Attention!!!</b> Historically, the value of this field may not cover all expected checks, and may be confusing to someone. It is properly used in combination with a number of other flags. If you need a flag that covers most of the checks please use {@link \Wl\Event\EventListItemEntity::$can_book} field. </dd> <dt>bool `is_booked`</dt> <dd>Whether event is already booked.</dd> <dt>bool `is_cancellation_enabled`</dt> <dd>`true` if clients can cancel this event. Otherwise, this will be `false`.</dd> <dt>bool `is_closed`</dt> <dd> Whether booking of the event is closed already. Means that in general it is bookable but currently booking is closed. </dd> <dt>bool `is_full`</dt> <dd>Whether event is full already.</dd> <dt>bool `is_online`</dt> <dd>`true` if this class can be booked by any client; `false` otherwise.</dd> <dt>bool `is_online_private`</dt> <dd> `true` means to show class only for clients who can book online, `false` means to show class for all clients. </dd> <dt>bool `is_open`</dt> <dd>Whether event sessions can be booked after event has started.</dd> <dt>bool `is_promotion_only`</dt> <dd> Whether clients of the business can pay for the event with purchase option only. `true` if event can be paid with purchase option only. `false` if full event purchase or single session purchase are allowed. </dd> <dt>bool `is_prorate`</dt> <dd>Whether event sessions can be booked partially.</dd> <dt>bool `is_single_buy`</dt> <dd>Whether class/event can be paid with single session.</dd> <dt>bool `is_ticket`</dt> <dd>`true` if the event is a ticketed event, `false` otherwise.</dd> <dt>bool `is_user_booked`</dt> <dd> Whether current user is booked or on the wait list. Unlike {@link \Wl\Event\EventListItemEntity::$is_booked}, this field is also `true` when the user is on the wait list, not only when actually booked into the active list. </dd> <dt>bool `is_virtual`</dt> <dd>Whether event is virtual.</dd> <dt>bool `is_wait_list_enabled`</dt> <dd>Whether wait list is enabled for this event.</dd> <dt>string `k_class`</dt> <dd>Class key.</dd> <dt>string `k_class_period`</dt> <dd>Class period key of the closest session of the event.</dd> <dt>string `k_enrollment_block`</dt> <dd>Key of enrollment block that corresponds to current row.</dd> <dt>string `k_location`</dt> <dd>Location key of the closest session of the event.</dd> <dt>string `m_price_max`</dt> <dd>Maximum price per session in the event.</dd> <dt>string `m_price_min`</dt> <dd>Minimum price per session in the event.</dd> <dt>string `m_price_total`</dt> <dd>Price of the entire event.</dd> <dt>string `m_price_total_early`</dt> <dd>Early bird price of the entire event.</dd> <dt>string `sid_reason`</dt> <dd> Code of {@link \Wl\Event\EventListItemEntity::$html_reason}. Is used for testing purposes. Not empty only if {@link \Wl\Event\EventListItemEntity::$is_bookable} is `false`. </dd> <dt>bool `text_age_restrict`</dt> <dd>Text message of the restriction based on age rules.</dd> <dt>string `text_title`</dt> <dd>Title of the event.</dd> <dt>string|null `url_book`</dt> <dd> Link to the start of the booking wizard to book the closed session from this event or the entire event. Can be `null` if there is no available for booking sessions. </dd> <dt>string `xml_description`</dt> <dd>Description of the event.</dd> </dl>'
+                        description: 'A list of events corresponding to requested parameters. <dl> <dt>array `a_age_restriction`</dt> <dd> Information about age restrictions for this event, has the following structure: <dl> <dt>int|null `i_age_from`</dt> <dd> The minimum age for participation in the event. `null` if there''s no minimum age set or information isn''t available. </dd> <dt>int|null `i_age_to`</dt> <dd> The age limit for participation in the event. `null` if there''s no age limit set or information isn''t available. </dd> <dt>bool `is_age_public`</dt> <dd> `true` if age restrictions are public and available, `false` if they''re hidden. When restrictions are hidden and the current user isn''t a staff member, the age range will be empty. </dd> </dl> </dd> <dt>string[] `a_class_tab`</dt> <dd>List of book now tags connected to this event.</dd> <dt>array `a_logo`</dt> <dd> Data about logo of the event. <dl> <dt>int `i_height`</dt> <dd>Thumbnail height in pixels.</dd> <dt>int `i_width`</dt> <dd>Thumbnail width in pixels.</dd> <dt>bool `is_old`</dt> <dd>`false` for the new wide-rectangle format; `true` for the legacy square format.</dd> <dt>string `s_url`</dt> <dd>Thumbnail URL.</dd> </dl> <dl> <dt>int `i_height_src`</dt> <dd>Original image height in pixels.</dd> <dt>int `i_rotate`</dt> <dd>Rotation angle applied relative to the original.</dd> <dt>int `i_width_src`</dt> <dd>Original image width in pixels.</dd> <dt>int `id_type_src`</dt> <dd>Image type identifier. One of {@link \Core\Drive\DriveTypeSid} constants.</dd> <dt>bool `is-resize`</dt> <dd>`true` if the image was resized; `false` if `url-thumbnail` equals `url-view`.</dd> <dt>string `url-thumbnail`</dt> <dd>URL of the resized thumbnail image.</dd> <dt>string `url-view`</dt> <dd>URL of the original image in file storage.</dd> </dl> <dl> <dt>bool `is_empty`</dt> <dd>`true` if a placeholder is shown instead of an actual logo.</dd> <dt>bool|null `is_own`</dt> <dd> `true` if the logo belongs to this class, `false` if inherited from the location, `null` if the image is empty. </dd> <dt>string `k_business`</dt> <dd>Business key.</dd> <dt>string `k_class`</dt> <dd>Class key.</dd> </dl> </dd> <dt>array[] `a_schedule`</dt> <dd> List of scheduled sessions of the event. <dl> <dt>int[] `a_day`</dt> <dd>List of weekday numbers when event occur.</dd> <dt>array `a_repeat`</dt> <dd> Information about event repeating. <dl> <dt>int `i_repeat`</dt> <dd>Count of the periods which are specified in <var>id_repeat</var>.</dd> <dt>int `id_repeat`</dt> <dd>Measuring unit of <var>i_repeat</var> (week, month, year) from {@link \ADurationSid}.</dd> </dl> </dd> <dt>array[] `a_staff_member`</dt> <dd> List of staff members providing event session. <dl> <dt>string `k_staff_member`</dt> <dd>Staff member key.</dd> <dt>string `text_business_role`</dt> <dd>Staff member role title.</dd> <dt>string `text_mail`</dt> <dd>Staff member email address.</dd> <dt>string `text_name_first`</dt> <dd>Staff member first name.</dd> <dt>string `text_name_full`</dt> <dd>Staff member full name.</dd> <dt>string `text_name_last`</dt> <dd>Staff member last name.</dd> <dt>string `uid`</dt> <dd>Staff member uid.</dd> </dl> </dd> <dt>string[] `a_virtual_location`</dt> <dd> List of location keys where the virtual service can be booked from other locations. Empty array if the setting is off or no locations are selected. </dd> <dt>string `dl_end`</dt> <dd>End date of the schedule in <tt>MySql</tt> format.</dd> <dt>string `dl_start`</dt> <dd>Start date of the schedule in <tt>MySql</tt> format.</dd> <dt>bool `is_day`</dt> <dd>Whether this is a single day schedule (start and end dates of the schedule are the same).</dd> <dt>string `k_class_period`</dt> <dd>Class period key.</dd> <dt>string `k_location`</dt> <dd>Location key.</dd> <dt>string `k_resource_location`</dt> <dd> Resource key, which has category {@link \Wl\Resource\ResourceCategoryEnum::LOCATION}. Only one such resource can be selected for a schedule. Empty string, if no off-site location is used. `null` if field is not loaded. </dd> <dt>string `text_location`</dt> <dd>Location title.</dd> <dt>string `text_room`</dt> <dd>Room where the session takes place.</dd> <dt>string `text_time`</dt> <dd>Start and end time of the scheduled sessions in human readable format.</dd> </dl> </dd> <dt>array[] `a_search_tag`</dt> <dd> List of search tags connected to this event. <dl> <dt>string `k_search_tag`</dt> <dd>Search tag key. <i>Primary key in {@link \RsSearchTagSql} table.</i></dd> <dt>string `text_title`</dt> <dd>Name of the tag.</dd> </dl> </dd> <dt>bool `can_book`</dt> <dd> Whether event can be booked or not. * `true` - there are no restrictions to book this event in general. * `false` - for some reason event cannot be booked. The reason can be found in the following fields: * {@link \Wl\Event\EventListItemEntity::$html_reason} * {@link \Wl\Event\EventListItemEntity::$id_reason} * {@link \Wl\Event\EventListItemEntity::$sid_reason} This field can be used instead of {@link \Wl\Event\EventListItemEntity::$is_bookable} and covers a significant number of checks under its value. </dd> <dt>bool `can_cancel`</dt> <dd>Whether current user can cancel already booked event.</dd> <dt>string `dl_early`</dt> <dd>End date, when early bird price ends in <tt>MySql</tt> format.</dd> <dt>string `dl_end`</dt> <dd>End date of the scheduled session in <tt>MySql</tt> format.</dd> <dt>string `dl_session`</dt> <dd>Local date of the closest session of the event.</dd> <dt>string `dl_start`</dt> <dd>Start date of the scheduled sessions in <tt>MySql</tt> format.</dd> <dt>string `dtu_session`</dt> <dd>Date of the closest session of the event.</dd> <dt>string `html_reason`</dt> <dd> Reason why session can not be booked. Not empty only if {@link \Wl\Event\EventListItemEntity::$is_bookable} is `false`. </dd> <dt>int `i_book_active`</dt> <dd> Number of clients in the active list. For non-block events, this is the sum across all future sessions of the event (same aggregation as used for {@link \Wl\Event\EventListItemEntity::$is_full}). For block events, this is the count for the whole block. </dd> <dt>int `i_capacity`</dt> <dd> Capacity of the active list. For non-block events, this is {@link \Wl\Event\EventListItemEntity::$i_session_future} multiplied by the capacity of a single session (same aggregation as used for {@link \Wl\Event\EventListItemEntity::$is_full}). For block events, this is the capacity of the whole block. </dd> <dt>int `i_session_all`</dt> <dd>Number of all sessions in the event.</dd> <dt>int `i_session_future`</dt> <dd>Number of future sessions in the event.</dd> <dt>int `i_session_past`</dt> <dd>Number of past sessions in the event.</dd> <dt>int `i_wait`</dt> <dd> Number of clients in the wait list. For non-block events, this is the sum across all future sessions of the event. For block events, this is the count for the whole block. </dd> <dt>int|null `i_wait_limit`</dt> <dd> Wait list limit of the event. `null` if wait list is not enabled for this event, or if it is enabled without a limit. </dd> <dt>int `id_reason`</dt> <dd>ID of deny reason.</dd> <dt>bool `is_age_restrict`</dt> <dd>Whether booking of this event restricted because of age rules for {@link \Wl\Event\EventListApi}.</dd> <dt>bool `is_age_restrict_only`</dt> <dd>`true` if this event booking is restricted and restricted because of client''s age only. `false` otherwise.</dd> <dt>bool|null `is_available`</dt> <dd> Whether the event is available for booking or not. The flag refers to the Available/Unavailable filter. `null` if the field is not initialized. </dd> <dt>bool `is_block`</dt> <dd> Whether single sessions of the event can be booked. Depending on current backend/fronted status. <i> Contains one of values: * {@link \RsClassSql::$is_block} - if frontend. * {@link \RsClassSql::$is_block_staff} - if backend. </i> <tt>true</tt> - booking single sessions are not allowed. <tt>false</tt> - booking single sessions are allowed. </dd> <dt>bool `is_book_for_guest`</dt> <dd> Allow clients to book on behalf of a guest. `true` if clients can book on behalf of a guest. `false` otherwise. </dd> <dt>bool `is_bookable`</dt> <dd> Whether event is bookable. * `true` - there are no restrictions to book this event in general. * `false` - for some reason event cannot be booked. <b>Attention!!!</b> Historically, the value of this field may not cover all expected checks, and may be confusing to someone. It is properly used in combination with a number of other flags. If you need a flag that covers most of the checks please use {@link \Wl\Event\EventListItemEntity::$can_book} field. </dd> <dt>bool `is_booked`</dt> <dd>Whether event is already booked.</dd> <dt>bool `is_cancellation_enabled`</dt> <dd>`true` if clients can cancel this event. Otherwise, this will be `false`.</dd> <dt>bool `is_closed`</dt> <dd> Whether booking of the event is closed already. Means that in general it is bookable but currently booking is closed. </dd> <dt>bool `is_full`</dt> <dd>Whether event is full already.</dd> <dt>bool `is_online`</dt> <dd>`true` if this class can be booked by any client; `false` otherwise.</dd> <dt>bool `is_online_private`</dt> <dd> `true` means to show class only for clients who can book online, `false` means to show class for all clients. </dd> <dt>bool `is_open`</dt> <dd>Whether event sessions can be booked after event has started.</dd> <dt>bool `is_promotion_only`</dt> <dd> Whether clients of the business can pay for the event with purchase option only. `true` if event can be paid with purchase option only. `false` if full event purchase or single session purchase are allowed. </dd> <dt>bool `is_prorate`</dt> <dd>Whether event sessions can be booked partially.</dd> <dt>bool `is_single_buy`</dt> <dd>Whether class/event can be paid with single session.</dd> <dt>bool `is_ticket`</dt> <dd>`true` if the event is a ticketed event, `false` otherwise.</dd> <dt>bool `is_user_booked`</dt> <dd> Whether current user is booked or on the wait list. Unlike {@link \Wl\Event\EventListItemEntity::$is_booked}, this field is also `true` when the user is on the wait list, not only when actually booked into the active list. </dd> <dt>bool `is_virtual`</dt> <dd>Whether event is virtual.</dd> <dt>bool `is_wait_list_enabled`</dt> <dd>Whether wait list is enabled for this event.</dd> <dt>string `k_class`</dt> <dd>Class key.</dd> <dt>string `k_class_period`</dt> <dd>Class period key of the closest session of the event.</dd> <dt>string `k_enrollment_block`</dt> <dd>Key of enrollment block that corresponds to current row.</dd> <dt>string `k_location`</dt> <dd>Location key of the closest session of the event.</dd> <dt>string `m_price_max`</dt> <dd>Maximum price per session in the event.</dd> <dt>string `m_price_min`</dt> <dd>Minimum price per session in the event.</dd> <dt>string `m_price_total`</dt> <dd>Price of the entire event.</dd> <dt>string `m_price_total_early`</dt> <dd>Early bird price of the entire event.</dd> <dt>string `sid_reason`</dt> <dd> Code of {@link \Wl\Event\EventListItemEntity::$html_reason}. Is used for testing purposes. Not empty only if {@link \Wl\Event\EventListItemEntity::$is_bookable} is `false`. </dd> <dt>bool `text_age_restrict`</dt> <dd>Text message of the restriction based on age rules.</dd> <dt>string `text_title`</dt> <dd>Title of the event.</dd> <dt>string|null `url_book`</dt> <dd> Link to the start of the booking wizard to book the closed session from this event or the entire event. Can be `null` if there is no available for booking sessions. </dd> <dt>string `xml_description`</dt> <dd>Description of the event.</dd> </dl>'
       tags:
         - Event-EventList
     put:
@@ -6753,7 +6753,7 @@ paths:
                     properties:
                       a_finding:
                         type: array
-                        description: 'Grouped findings. One element contains: <dl> <dt>string `dl_first_seen`</dt> <dd>Date of the first usage-statistics record.</dd> <dt>string `dl_last_seen`</dt> <dd>Date of the last usage-statistics record.</dd> <dt>string `dtu_first_seen`</dt> <dd>UTC date/time of the first matching log or async-task record. Empty for background tasks.</dd> <dt>string `dtu_last_seen`</dt> <dd>UTC date/time of the last matching log or async-task record. Empty for background tasks.</dd> <dt>int `i_occurrence_count`</dt> <dd>Number of matching records.</dd> <dt>int `i_priority_multiplier`</dt> <dd>Usage-statistics priority multiplier. Present for the usage-statistics source.</dd> <dt>int `cid_source`</dt> <dd>CID of a {@link \Core\AI\LogTriage\TriageProblemAbstract} subclass.</dd> <dt>string `s_object`</dt> <dd>Usage-statistics object. Present for the usage-statistics source.</dd> <dt>string `s_period`</dt> <dd>Usage-statistics aggregation period. Present for the usage-statistics source.</dd> <dt>string `s_priority`</dt> <dd>Usage-statistics priority. Present for the usage-statistics source.</dd> <dt>string `text_message`</dt> <dd>Log message or task description. Present for log and task sources.</dd> </dl>'
+                        description: 'Grouped findings. One element contains: <dl> <dt>string `dl_first_seen`</dt> <dd>Date of the first usage-statistics record.</dd> <dt>string `dl_last_seen`</dt> <dd>Date of the last usage-statistics record.</dd> <dt>string `dtu_first_seen`</dt> <dd>UTC date/time of the first matching log or async-task record. Empty for background tasks.</dd> <dt>string `dtu_last_seen`</dt> <dd>UTC date/time of the last matching log or async-task record. Empty for background tasks.</dd> <dt>int `i_occurrence_count`</dt> <dd>Number of matching records.</dd> <dt>int `i_priority_multiplier`</dt> <dd>Usage-statistics priority multiplier. Present for the usage-statistics source.</dd> <dt>int `cid_problem`</dt> <dd>CID of a {@link \Core\AI\LogTriage\TriageProblemAbstract} subclass.</dd> <dt>string `s_object`</dt> <dd>Usage-statistics object. Present for the usage-statistics source.</dd> <dt>string `s_period`</dt> <dd>Usage-statistics aggregation period. Present for the usage-statistics source.</dd> <dt>string `s_priority`</dt> <dd>Usage-statistics priority. Present for the usage-statistics source.</dd> <dt>string `text_message`</dt> <dd>Log message or task description. Present for log and task sources.</dd> </dl>'
       tags:
         - LogTriage-ConnectionCheck
   '/Core/Request/Api/KeySecret.json':
@@ -6846,6 +6846,158 @@ paths:
                         description: 'The URL to the registration page.'
       tags:
         - Login-Info
+  '/Core/Passport/Passkey/PasskeyEnter.json':
+    get:
+      summary: 'Starts the authentication ceremony. Issues an authentication challenge with an empty `allowCredentials` list, so the browser or OS surfaces a picker of every passkey registered for this `rpId` without the caller identifying a user first. The options are also stashed in session so {@link PasskeyEnterApi::post()} can verify the same challenge when finishing the ceremony.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      json_options:
+                        type: string
+                        description: 'JSON-encoded `PublicKeyCredentialRequestOptions` to pass to `navigator.credentials.get()`. Filled in when starting the ceremony.'
+      tags:
+        - Passkey-PasskeyEnter
+    post:
+      summary: 'Finishes the authentication ceremony. Looks up the credential by the ID carried in the assertion, verifies the assertion against it and the challenge issued by {@link PasskeyEnterApi::get()}, then signs the credential''s owner in the same way a successful password login would. Fails if the caller is already signed in, the credential is unknown or revoked, or the assertion does not verify.'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                json_credential:
+                  type: string
+                  description: 'JSON-encoded `PublicKeyCredential` produced by `navigator.credentials.get()`, sent back to finish the authentication ceremony. Empty when starting the ceremony.'
+                url_return:
+                  type: string
+                  description: 'Url of previous page if the user was redirected to the login page. Only used to finish the ceremony.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      url_redirect:
+                        type: [string, "null"]
+                        description: 'An optional URL for redirection after the user has signed in. Only used to finish the ceremony.'
+      tags:
+        - Passkey-PasskeyEnter
+  '/Core/Passport/Passkey/PasskeyRegister.json':
+    get:
+      summary: 'Starts the registration ceremony. Issues a challenge for creating a new credential, scoped to the signed-in user and excluding their already-registered active credentials so the same authenticator cannot register a duplicate one. The `rp.name` field is omitted from the result - clients whose implementation requires a non-empty name should substitute one locally. The options are also stashed in session so {@link PasskeyRegisterApi::post()} can verify the same challenge when finishing the ceremony.'
+      parameters:
+        - name: json_context
+          in: query
+          description: 'JSON-encoded structure with any additional information required by the project-specific passkey configuration class, for example `k_business` in `Wl`. Empty if no additional information is required.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      json_options:
+                        type: string
+                        description: 'JSON-encoded challenge and options to use when creating a new credential. Filled in when starting the ceremony.'
+      tags:
+        - Passkey-PasskeyRegister
+    post:
+      summary: 'Finishes the registration ceremony. Verifies the attestation response against the challenge issued by {@link PasskeyRegisterApi::get()}, then stores the new credential under the signed-in user. Fails if the ceremony was never started or has expired, or if the response does not match the expected origin, `rpId`, or challenge.'
+      parameters:
+        - name: json_context
+          in: query
+          description: 'JSON-encoded structure with any additional information required by the project-specific passkey configuration class, for example `k_business` in `Wl`. Empty if no additional information is required.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                json_credential:
+                  type: string
+                  description: 'JSON-encoded credential produced by the authenticator, sent back to finish the registration ceremony. Empty when starting the ceremony.'
+                text_device:
+                  type: string
+                  description: 'User-supplied friendly label of the passkey being registered, for example `"MacBook Touch ID"`. Only used to finish the ceremony.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Passkey-PasskeyRegister
+  '/Core/Passport/Passkey/PasskeyCredential.json':
+    delete:
+      summary: 'Revokes one of the signed-in user''s passkey credentials. Marks the credential as revoked rather than deleting the row. <i>Its immutable identity data remains available for audit purposes.</i> A credential owned by another user can not be revoked.'
+      parameters:
+        - name: k_passkey_credential
+          in: query
+          description: 'Key of the credential to revoke. Only used to revoke a credential.'
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'Key of the user whose passkey credentials to manage. `''0''` or empty string to use the currently signed-in user.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Passkey-PasskeyCredential
+    get:
+      summary: 'Lists the user''s registered passkey credentials. Includes revoked credentials.'
+      parameters:
+        - name: uid
+          in: query
+          description: 'Key of the user whose passkey credentials to manage. `''0''` or empty string to use the currently signed-in user.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_credential:
+                        type: array
+                        description: 'List of the signed-in user''s registered passkey credentials. <dl> <dt>string `dtu_create`</dt> <dd>Date and time when this credential was registered.</dd> <dt>string|null `dtu_last_use`</dt> <dd>Date and time when this credential was last used to sign in, or `null` if never used.</dd> <dt>int `id_device_type`</dt> <dd>One of {@link \Core\Passport\Passkey\PasskeyDeviceTypeEnum} values.</dd> <dt>int `id_status`</dt> <dd>One of {@link \Core\Passport\Passkey\PasskeyCredentialStatusEnum} values.</dd> <dt>bool `is_backed_up`</dt> <dd>`true` if the credential is currently backed up.</dd> <dt>string `k_passkey_credential`</dt> <dd>Credential key. <i>Primary key in {@link \Core\Passport\Passkey\PasskeyCredentialSql}.</i></dd> <dt>string `text_device`</dt> <dd>User-supplied friendly label of this credential.</dd> </dl>'
+      tags:
+        - Passkey-PasskeyCredential
   '/Core/Passport/ChangePassword/ChangePasswordApply.json':
     post:
       summary: 'Saves for user new password. Accepts the login, email, verification code (from the reset password link), and the new password, validates each against the stored state, and updates the user''s password. If the user is not already signed in, a new session is started for them.'
@@ -9869,6 +10021,11 @@ paths:
     get:
       summary: 'Returns current user profile information. Returns the profile field definitions and current values for the specified user, or an empty structure when creating a new account. Used to populate the profile edit form with the correct fields, validation rules, and inheritance options for the business.'
       parameters:
+        - name: id_family_relation
+          in: query
+          description: 'Family role for a new user. One of {@link \RsFamilyRelationSid} constants. Not `null` only for a case of relative registration.'
+          schema:
+            type: [number, "null"]
         - name: id_register_source
           in: query
           description: 'Registration source ID. One of {@link \Wl\Profile\RegisterSourceSid} constants. Used only to register new clients. * If the client is already authorized, the field value will not be used. * If the client is not authorized and no value is set, {@link \Wl\Profile\RegisterSourceSid::SELF} will be used. <i> Use the {@link \Wl\Profile\Edit\EditApi::_registerSourceGet()} method to get the value required for the field list object, for method {@link \Wl\Profile\Field\FieldList::registerSourceSet()}. </i>'
@@ -9912,7 +10069,7 @@ paths:
                         description: 'An array contained with information about phone inheritance. The array has the following structure: <dl> <dt>bool `is_phone_inherit`</dt> <dd> Indicates weather to inherit phone numbers from relative or not. `1` if phone inheritance is needed, ''0'' otherwise. </dd> <dt>string `text_relative`</dt> <dd>Relative''s name.</dd> <dt>string `uid_relative`</dt> <dd>User key of relative.</dd> </dl>'
                       a_structure:
                         type: array
-                        description: 'The values and structure of all fields. Array keys are field IDs (`k_field`). Array values are the field values. The array has the following structure: <dl> <dt>int `id_field_general`</dt> <dd> The ID of a system field. One of the {@link \RsFieldGeneralSid} constants. This value is only defined if <var>id_field_type</var>={@link \RsFieldTypeSid::GENERAL}. </dd> <dt>bool `is_require`</dt> <dd> Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional. </dd> <dt>int `id_field_type`</dt> <dd>The type of field. One of the {@link \RsFieldTypeSid} constants.</dd> <dt>string `k_field`</dt> <dd>The field ID (<var>k_field</var>). A copy of the key of this array element.</dd> <dt>string `s_title`</dt> <dd>The title of the field.</dd> <dt>mixed `x_value`</dt> <dd>The value of the field. This value is defined by individual fields.</dd> </dl>'
+                        description: 'The values and structure of all fields. Array keys are field IDs (`k_field`). Array values are the field values. The array has the following structure: <dl> <dt>int `id_field_general`</dt> <dd> The ID of a system field. One of the {@link \RsFieldGeneralSid} constants. This value is only defined if `id_field_type`={@link \RsFieldTypeSid::GENERAL}. </dd> <dt>int `id_level_booking`</dt> <dd>Requirement for a case when a client books a service. One of {@link \Wl\Field\FieldLevelEnum} members.</dd> <dt>int `id_level_guest`</dt> <dd>Requirement for a case when a guest books or buys. One of {@link \Wl\Field\FieldLevelEnum} members.</dd> <dt>int `id_level_purchase`</dt> <dd>Requirement for a case when a client makes a purchase. One of {@link \Wl\Field\FieldLevelEnum} members.</dd> <dt>int `id_level_relationship`</dt> <dd>Requirement for a case when a client adds a relationship. One of {@link \Wl\Field\FieldLevelEnum} members.</dd> <dt>int `id_level_signup`</dt> <dd>Requirement for a case when a client signs up. One of {@link \Wl\Field\FieldLevelEnum} members.</dd> <dt>bool `is_require`</dt> <dd> Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional. **Deprecated. Use `id_level_booking`, `id_level_guest`, `id_level_purchase`, `id_level_relationship` or `id_level_signup` instead.** </dd> <dt>int `id_field_type`</dt> <dd>The type of field. One of the {@link \RsFieldTypeSid} constants.</dd> <dt>string `k_field`</dt> <dd>The field ID (`k_field`). A copy of the key of this array element.</dd> <dt>string `s_title`</dt> <dd>The title of the field.</dd> <dt>mixed `x_value`</dt> <dd>The value of the field. This value is defined by individual fields.</dd> </dl>'
                       can_password_change:
                         type: boolean
                         description: 'Whether current user can change password of the given user or not. If client is part of multiple businesses, then staff of the business can only request reset of the password, but cannot change it.'
@@ -11448,7 +11605,7 @@ paths:
                     properties:
                       a_data:
                         type: array
-                        description: 'Design data for a business. Contains the following keys: <dl> <dt>bool `hide_past_days`</dt> <dd>Clients only see today''s and upcoming sessions.</dd> <dt>int `id_layout`</dt> <dd>Layout ID. For more details, see {@link \RsPageFrontendHeaderLayoutSid}.</dd> <dt>int `id_logo_position`</dt> <dd>Logo position ID. For more details, see {@link \RsBusinessDesignLogoPositionSid}.</dd> <dt>int `id_logo_style`</dt> <dd>Logo style ID. For more details, see {@link \RsBusinessDesignLogoStyleSid}.</dd> <dt>bool `is_attend_self`</dt> <dd>If <tt>true</tt> clients can check-in using the Client Web App and Achieve Web App.</dd> <dt>bool `is_appointment_capacity`</dt> <dd>If <tt>true</tt> the capacity and number of clients signed up to the appointment will be shown.</dd> <dt>bool `is_class_capacity`</dt> <dd>If <tt>true</tt> the capacity and number of clients signed up to the class will be shown.</dd> <dt>bool `is_class_quick`</dt> <dd>If <tt>true</tt>, the quick class filter will be shown.</dd> <dt>bool `is_class_spot_only`</dt> <dd> `true` to display only available spots (e.g., "3 spots left"); `false` to display both available spots and total capacity (e.g., "3 spots left of 10"). </dd> <dt>bool `is_show_name`</dt> <dd>If <tt>true</tt>, the business name will be shown.</dd> <dt>string `s_color_background`</dt> <dd>Background color of frontend.</dd> <dt>string `s_color_header`</dt> <dd>Header color of frontend menu.</dd> <dt>string `s_color_menu_border`</dt> <dd>Border color of frontend menu.</dd> <dt>string `s_color_menu_element`</dt> <dd>Menu element color</dd> <dt>string `s_color_menu_hover`</dt> <dd>Hover colour of front end menu.</dd> <dt>string `s_color_menu_hover_background`</dt> <dd>Background hover color of front end menu.</dd> <dt>string `s_color_menu_press`</dt> <dd>Press colour of front end menu.</dd> <dt>string `s_color_submenu`</dt> <dd>Submenu colour of front end menu.</dd> <dt>string `s_color_submenu_element`</dt> <dd>Submenu element color of front end menu.</dd> <dt>string `s_color_submenu_hover`</dt> <dd>Hover color of submenu of front end menu</dd> <dt>string `s_color_submenu_press`</dt> <dd>Press color of submenu in front end menu.</dd> <dt>string `s_fb_pixel_id`</dt> <dd>Facebook Pixel ID. Used for Facebook analytics tracking. Empty string if tracking is disabled.</dd> <dt>string `s_ga_tracking_id`</dt> <dd>Google Analytics Tracking ID. Used for Google Analytics tracking. Empty string if tracking is disabled.</dd> <dt>string `s_gtm_container_id`</dt> <dd>Google Tag Manager Container ID. Used for Google Analytics tracking. Empty string if tracking is disabled.</dd> <dt>string `s_url_background`</dt> <dd>Path to the background image.</dd> </dl>'
+                        description: 'Design data for a business. Contains the following keys: <dl> <dt>bool `hide_past_days`</dt> <dd>Clients only see today''s and upcoming sessions.</dd> <dt>int `id_layout`</dt> <dd>Layout ID. For more details, see {@link \RsPageFrontendHeaderLayoutSid}.</dd> <dt>int `id_logo_position`</dt> <dd>Logo position ID. For more details, see {@link \RsBusinessDesignLogoPositionSid}.</dd> <dt>int `id_logo_style`</dt> <dd>Logo style ID. For more details, see {@link \RsBusinessDesignLogoStyleSid}.</dd> <dt>bool `is_attend_self`</dt> <dd>If <tt>true</tt> clients can check-in using the Client Web App and Achieve Web App.</dd> <dt>bool `is_appointment_capacity`</dt> <dd>If <tt>true</tt> the capacity and number of clients signed up to the appointment will be shown.</dd> <dt>bool `is_class_capacity`</dt> <dd>If <tt>true</tt> the capacity and number of clients signed up to the class will be shown.</dd> <dt>bool `is_class_quick`</dt> <dd>If <tt>true</tt>, the quick class filter will be shown.</dd> <dt>bool `is_class_spot_only`</dt> <dd> `true` to display only available spots (e.g., "3 spots left"); `false` to display both available spots and total capacity (e.g., "3 spots left of 10"). </dd> <dt>bool `is_show_name`</dt> <dd>If <tt>true</tt>, the business name will be shown.</dd> <dt>string `s_color_background`</dt> <dd>Background color of frontend.</dd> <dt>string `s_color_header`</dt> <dd>Header color of frontend menu.</dd> <dt>string `s_color_menu_border`</dt> <dd>Border color of frontend menu.</dd> <dt>string `s_color_menu_element`</dt> <dd>Menu element color</dd> <dt>string `s_color_menu_hover`</dt> <dd>Hover colour of front end menu.</dd> <dt>string `s_color_menu_hover_background`</dt> <dd>Background hover color of front end menu.</dd> <dt>string `s_color_menu_press`</dt> <dd>Press colour of front end menu.</dd> <dt>string `s_color_submenu`</dt> <dd>Submenu colour of front end menu.</dd> <dt>string `s_color_submenu_element`</dt> <dd>Submenu element color of front end menu.</dd> <dt>string `s_color_submenu_hover`</dt> <dd>Hover color of submenu of front end menu</dd> <dt>string `s_color_submenu_press`</dt> <dd>Press color of submenu in front end menu.</dd> <dt>string `s_fb_capi_access_token`</dt> <dd> Meta Conversion API Access Token. Empty string if CAPI not used or application that made request does not have access to it. </dd> <dt>string `s_fb_capi_test_event_code`</dt> <dd> Meta Conversion API Test Event Code. Optional, used for QA in Meta Events Manager. Empty string if not used or application that made request does not have access to it. </dd> <dt>string `s_fb_pixel_id`</dt> <dd>Facebook Pixel ID. Used for Facebook analytics tracking. Empty string if tracking is disabled.</dd> <dt>string `s_ga_tracking_id`</dt> <dd>Google Analytics Tracking ID. Used for Google Analytics tracking. Empty string if tracking is disabled.</dd> <dt>string `s_gtm_container_id`</dt> <dd>Google Tag Manager Container ID. Used for Google Analytics tracking. Empty string if tracking is disabled.</dd> <dt>string `s_url_background`</dt> <dd>Path to the background image.</dd> </dl>'
       tags:
         - Design-BusinessDesign
   '/Wl/Business/Type/BusinessTypeList.json':
@@ -11929,6 +12086,16 @@ paths:
           description: 'Cancelling reason.'
           schema:
             type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                a_notification:
+                  type: array
+                  description: 'Information for sending an appointment cancellation notification. All keys are optional. A key that is not provided keeps the template''s value. <dl> <dt>bool `is_attach`</dt> <dd>`true` to attach calendar file, `false` to not attach calendar file.</dd> <dt>bool `is_campaign`</dt> <dd>Whether mail should track as a part of campaign. `true` if yes, `false` if no.</dd> <dt>string `text_business_name`</dt> <dd>Business name.</dd> <dt>string `text_business_reply`</dt> <dd>Reply email address.</dd> <dt>string `text_campaign`</dt> <dd>Campaign name.</dd> <dt>string `text_content_mail`</dt> <dd>Email content.</dd> <dt>string `text_push`</dt> <dd>Push notification content.</dd> <dt>string `text_sms`</dt> <dd>SMS content.</dd> <dt>string `text_subject`</dt> <dd>Email subject.</dd> </dl>'
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -12235,6 +12402,14 @@ paths:
                       dt_date_local:
                         type: string
                         description: 'Date/time of appointment in location timezone.'
+                      i_color_background:
+                        type: number
+                        format: int32
+                        description: 'Background color of the appointment on the schedule (RGB). Uses the service color, or the asset color for a booking with no service.'
+                      i_color_border:
+                        type: number
+                        format: int32
+                        description: 'Border color of the appointment on the schedule (RGB). Uses the service color, or the asset color for a booking with no service.'
                       i_duration:
                         type: [number, "null"]
                         description: 'Appointment duration (in minutes).'
@@ -12245,6 +12420,12 @@ paths:
                         type: number
                         format: int32
                         description: 'Status of appointment payment. One of {@link \RsAppointmentPaySid} constants.'
+                      id_virtual_provider:
+                        type: [number, "null"]
+                        description: 'Virtual provider ID. `null` for non-virtual services.'
+                      is_virtual:
+                        type: boolean
+                        description: 'Whether the service is virtual. `null` for non-virtual services.'
                       k_location:
                         type: string
                         description: 'Location key.'
@@ -12267,7 +12448,7 @@ paths:
                         type: [string, "null"]
                         description: 'Purchased drop-in which provides this appointment.'
                       k_staff:
-                        type: string
+                        type: [string, "null"]
                         description: 'Staff member who conducts this appointment. Deprecated: returned only for a limited list of third-party apps to keep backward compatibility. Use `uid_staff` instead.'
                       text_title:
                         type: string
@@ -12629,6 +12810,214 @@ paths:
           description: 'The UID of a customer (user) for whom the purchase is made. This is used in the backend to calculate discounts.'
           schema:
             type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_age_restriction:
+                        type: [array, "null"]
+                        description: 'The age restriction configuration. Age restrictions for an item apply when they''re configured for a specific item and the API is requested from the backend or when age restriction are public. `null` if age restrictions are not set for the item. <dl> <dt>int `i_age_from`</dt> <dd>Minimum age for service (years part).</dd> <dt>int `i_age_from_month`</dt> <dd>Minimum age for service (months part).</dd> <dt>int `i_age_from_year`</dt> <dd>Minimum age for service (years part).</dd> <dt>int `i_age_to`</dt> <dd>Maximum age for service (years part).</dd> <dt>int `i_age_to_month`</dt> <dd>Maximum age for service (months part).</dd> <dt>int `i_age_to_year`</dt> <dd>Maximum age for service (years part).</dd> <dt>bool `is_age_public`</dt> <dd> Is service public even if user does not meet age requirements or not? `true` - to show service to everyone. `false` - to show service only to users who meet age requirements. </dd> <dt>bool `is_month_enabled`</dt> <dd> Whether months are enabled for age restrictions. `true` - age restrictions can include number of months. `false` - age restrictions can include only years. </dd> </dl>'
+                      a_data:
+                        type: array
+                        description: 'Additional information specific for the item. The structure may be different depending on the item category. Consider the following examples: * For a product, this contains inventory information. * For a gift card, this contains possible amounts. * For a session pass/membership/package, this contains information about start and stop dates. <dl> <dt>int[] `a_service_access`</dt> <dd> Access to services for a purchase option. Keys are one of the {@link \Wl\Service\ServiceSid} constants, values are one of the {@link \AFlagSid} constants. Set only for relevant purchase option service category. {@link \AFlagSid::ON} access to some services. {@link \AFlagSid::OFF} no access to services. It can be set only for classes and events. {@link \AFlagSid::ALL} access to all services. It can be set only for classes and events. For purchase options with appointments and assets service category status is always {@link \AFlagSid::ON}. </dd> <dt>bool `is_renew_public`</dt> <dd> This applies only for promotions. `true` - clients can set promotion auto-renew. `false` - clients can''t set promotion auto-renew. </dd> <dt>array[] `a_component`</dt> <dd> This applies only for coupons. Coupon components information. Each element will contain the following keys: <dl> <dt>int `id_program`</dt> <dd>Program ID. One of {@link \RsProgramSid} ID''s. Only applies to promotions.</dd> <dt>int `id_purchase_item`</dt> <dd>Purchase item ID. One of {@link \RsPurchaseItemSid} ID''s.</dd> <dt>int `id_sale`</dt> <dd>Sale ID. One of {@link \RsSaleSid} ID''s.</dd> <dt>string `k_id`</dt> <dd>The identifier of the item.</dd> <dt>string `text_title`</dt> <dd>The title of the item.</dd> </dl> </dd> <dt>array[] `a_staff`</dt> <dd> This applies to enrollment/event items. Staff list for class periods. Each element contains: <dl> <dt>string `k_staff`</dt> <dd>@deprecated Legacy staff key. <i>Primary key in {@link \RsStaffSql}.</i> Deprecated, use `uid_staff`.</dd> <dt>string `uid_staff`</dt> <dd>Staff user key. <i>Primary key in {@link \PassportLoginSql}.</i></dd> <dt>string `text_family`</dt> <dd>Staff last name.</dd> <dt>string `text_staff`</dt> <dd>Staff display name.</dd> </dl> </dd> <dt>string `dl_expire`</dt> <dd>Date of expiration of coupon, local date in MySQL format.</dd> <dt>string `dl_now`</dt> <dd>Current date, local date in MySQL format.</dd> <dt>string `dl_start`</dt> <dd> Date to activate the coupon on, local date in MySQL format. When `id_activation`=FIXED, this field contains a custom date to activate the coupon on, local date in MySQL format. </dd> <dt>int `i_duration`</dt> <dd>Number of periods the coupon is active. Type of a period is specified by `id_duration`.</dd> <dt>int `id_activation`</dt> <dd>Type of a coupon activation date specification. One of {@link \Wl\Coupon\Edit\ActivationSid} constants.</dd> <dt>int `id_duration`</dt> <dd>Duration of a period. A constant from {@link \ADurationSid}.</dd> <dt>int `id_duration_type`</dt> <dd>A way to specify a duration. One of {@link \Wl\Coupon\Edit\DurationTypeSid} constants.</dd> <dt>bool `is_price_breakdown`</dt> <dd>Whether to display individual prices for each item in the package.</dd> <dt>bool `is_ticket`</dt> <dd>This applies to enrollment/event items. `true` if the item is a ticketed event, `false` otherwise.</dd> </dl>'
+                      a_guest_pass:
+                        type: array
+                        description: 'Information about promotion guest pass. Empty array if promotion does not have guest pass or guest pass is not enabled. <dl> <dt>int|null `i_limit`</dt> <dd>Number of times guest pass can be used per period. `null` for unlimited guest pass.</dd> <dt>int|null `i_limit_daily`</dt> <dd>Number of times guest pass can be used per day. `null` for limited guest pass.</dd> <dt>int|null `i_period`</dt> <dd>Number of periods after which guest pass limits are reset. `null` for unlimited guest pass.</dd> <dt>int|null `id_period`</dt> <dd> Period type by which guest pass limits are reset. One of the {@link \ADurationSid} constants. `null` for unlimited guest pass. </dd> <dt>int|null `id_reset_type`</dt> <dd> Type by which guest pass limits are reset. One of {@link \Wl\Promotion\Guest\Pass\GuestPassResetTypeSid} constants. `null` for unlimited guest pass. </dd> <dt>string `k_promotion_guest`</dt> <dd>Guest pass promotion key.</dd> <dt>string `text_limit`</dt> <dd>Formatted guest pass limits.</dd> <dt>string `text_title`</dt> <dd>Guest pass promotion title.</dd> </dl>'
+                      a_image:
+                        type: array
+                        description: 'Image information: <dl> <dt>int `i_height`</dt> <dd>The height in pixels.</dd> <dt>int `i_width`</dt> <dd>The width in pixels.</dd> <dt>bool `is_empty`</dt> <dd> `true` - the item has no image (in this case, ignore the other keys of this array). `false` - the item has an image. </dd> <dt>string `s_url`</dt> <dd>The image URL.</dd> </dl> Use {@link \Wl\Catalog\CatalogList\ElementApi::$a_image_list} instead.'
+                      a_image_list:
+                        type: array
+                        description: 'List of images. Keys are index and each element has the same structure as {@link \Wl\Catalog\CatalogList\ElementApi::$a_image} field. <dl> <dt>int `i_height`</dt> <dd>The height in pixels.</dd> <dt>int `i_width`</dt> <dd>The width in pixels.</dd> <dt>bool `is_empty`</dt> <dd> `true` - the item has no image (in this case, ignore the other keys of this array). `false` - the item has an image. </dd> <dt>string `s_url`</dt> <dd>The image URL.</dd> </dl>'
+                      a_installment_template:
+                        type: array
+                        description: 'A list of installment plans. Each element has the following next keys: <dl> <dt>int `i_count`</dt> <dd>The number of payments.</dd> <dt>int `id_duration`</dt> <dd>The duration of a single period. One of the {@link \ADurationSid} constants.</dd> <dt>int `i_period`</dt> <dd>The number of periods specified by `id_period` between individual payments.</dd> <dt>string `k_currency`</dt> <dd>The payment currency Key.</dd> <dt>string `k_pay_installment_template`</dt> <dd> The key of the installment plan template. <i>Primary key in {@link \Thoth\WlPay\Installment\Template\Sql}.</i> </dd> <dt>string `m_amount`</dt> <dd>The amount of the installment plan.</dd> <dt>string `s_duration`</dt> <dd>The title of the installment plan.</dd> </dl>'
+                      a_item:
+                        type: array
+                        description: 'The list of information pertaining to the specified item. <dl> <dt>array `a_data`</dt> <dd> Contains additional data for the sale item. The same structure as {@link \Wl\Catalog\CatalogList\ElementApi::$a_data} has. <dl> <dt>int[] `a_service_access`</dt> <dd> Access to services for a purchase option. Keys are one of the {@link \Wl\Service\ServiceSid} constants, values are one of the {@link \AFlagSid} constants. Set only for relevant purchase option service category. {@link \AFlagSid::ON} access to some services. {@link \AFlagSid::OFF} no access to services. It can be set only for classes and events. {@link \AFlagSid::ALL} access to all services. It can be set only for classes and events. For purchase options with appointments and assets service category status is always {@link \AFlagSid::ON}. </dd> <dt>bool `is_renew_public`</dt> <dd> This applies only for promotions. `true` - clients can set promotion auto-renew. `false` - clients can''t set promotion auto-renew. </dd> <dt>array[] `a_component`</dt> <dd> This applies only for coupons. Coupon components information. Each element will contain the following keys: <dl> <dt>int `id_program`</dt> <dd>Program ID. One of {@link \RsProgramSid} ID''s. Only applies to promotions.</dd> <dt>int `id_purchase_item`</dt> <dd>Purchase item ID. One of {@link \RsPurchaseItemSid} ID''s.</dd> <dt>int `id_sale`</dt> <dd>Sale ID. One of {@link \RsSaleSid} ID''s.</dd> <dt>string `k_id`</dt> <dd>The identifier of the item.</dd> <dt>string `text_title`</dt> <dd>The title of the item.</dd> </dl> </dd> <dt>array[] `a_staff`</dt> <dd> This applies to enrollment/event items. Staff list for class periods. Each element contains: <dl> <dt>string `k_staff`</dt> <dd>@deprecated Legacy staff key. <i>Primary key in {@link \RsStaffSql}.</i> Deprecated, use `uid_staff`.</dd> <dt>string `uid_staff`</dt> <dd>Staff user key. <i>Primary key in {@link \PassportLoginSql}.</i></dd> <dt>string `text_family`</dt> <dd>Staff last name.</dd> <dt>string `text_staff`</dt> <dd>Staff display name.</dd> </dl> </dd> <dt>string `dl_expire`</dt> <dd>Date of expiration of coupon, local date in MySQL format.</dd> <dt>string `dl_now`</dt> <dd>Current date, local date in MySQL format.</dd> <dt>string `dl_start`</dt> <dd> Date to activate the coupon on, local date in MySQL format. When `id_activation`=FIXED, this field contains a custom date to activate the coupon on, local date in MySQL format. </dd> <dt>int `i_duration`</dt> <dd>Number of periods the coupon is active. Type of a period is specified by `id_duration`.</dd> <dt>int `id_activation`</dt> <dd>Type of a coupon activation date specification. One of {@link \Wl\Coupon\Edit\ActivationSid} constants.</dd> <dt>int `id_duration`</dt> <dd>Duration of a period. A constant from {@link \ADurationSid}.</dd> <dt>int `id_duration_type`</dt> <dd>A way to specify a duration. One of {@link \Wl\Coupon\Edit\DurationTypeSid} constants.</dd> <dt>bool `is_price_breakdown`</dt> <dd>Whether to display individual prices for each item in the package.</dd> <dt>bool `is_ticket`</dt> <dd>This applies to enrollment/event items. `true` if the item is a ticketed event, `false` otherwise.</dd> </dl> </dd> <dt>array `a_guest_pass`</dt> <dd> Information about promotion guest pass. The same structure as {@link \Wl\Catalog\CatalogList\ElementApi::$a_guest_pass} has. <dl> <dt>int|null `i_limit`</dt> <dd>Number of times guest pass can be used per period. `null` for unlimited guest pass.</dd> <dt>int|null `i_limit_daily`</dt> <dd>Number of times guest pass can be used per day. `null` for limited guest pass.</dd> <dt>int|null `i_period`</dt> <dd>Number of periods after which guest pass limits are reset. `null` for unlimited guest pass.</dd> <dt>int|null `id_period`</dt> <dd> Period type by which guest pass limits are reset. One of the {@link \ADurationSid} constants. `null` for unlimited guest pass. </dd> <dt>int|null `id_reset_type`</dt> <dd> Type by which guest pass limits are reset. One of {@link \Wl\Promotion\Guest\Pass\GuestPassResetTypeSid} constants. `null` for unlimited guest pass. </dd> <dt>string `k_promotion_guest`</dt> <dd>Guest pass promotion key.</dd> <dt>string `text_limit`</dt> <dd>Formatted guest pass limits.</dd> <dt>string `text_title`</dt> <dd>Guest pass promotion title.</dd> </dl> </dd> <dt>array `a_image`</dt> <dd> Contains information about one image connected to a sale item. <dl> <dt>array `a_image`</dt> <dd> Information about the image. <dl> <dt>int `i_height`</dt> <dd>Height of the variant image.</dd> <dt>int `i_height_src`</dt> <dd>Height of the original image.</dd> <dt>int `i_rotate`</dt> <dd>Rotate.</dd> <dt>int `i_width`</dt> <dd>Width of the variant image.</dd> <dt>int `i_width_src`</dt> <dd>Width of the original image.</dd> <dt>int `id_type_src`</dt> <dd>Type ID of the image. Constant from {@link \Core\Drive\DriveTypeSid}.</dd> <dt>bool `is-resize`</dt> <dd>`true` if the variant differs from the original, `false` - otherwise.</dd> <dt>string `url-thumbnail`</dt> <dd>URL to download variant (thumbnail) file.</dd> <dt>string `url-view`</dt> <dd>URL to download original file.</dd> </dl> </dd> <dt>int `i_height`</dt> <dd>Height of the variant image.</dd> <dt>int `i_width`</dt> <dd>Width of the variant image.</dd> <dt>bool `is_empty`</dt> <dd>`true` if the image file does not exist, `false` - otherwise.</dd> <dt>string `s_url`</dt> <dd>Link to the variant file.</dd> </dl> </dd> <dt>string[] `a_tax`</dt> <dd>Tax amounts keyed by tax key. The same structure as {@link \Wl\Catalog\CatalogList\ElementApi::$a_tax} has.</dd> <dt>int `id_purchase_option_view`</dt> <dd>The Purchase Option view type. One of the {@link \Wl\Catalog\PurchaseOptionViewSid} constants.</dd> <dt>string `m_discount_code`</dt> <dd>The discount code amount.</dd> <dt>string `m_discount_login`</dt> <dd>The discount amount for the client type.</dd> <dt>string `s_comment`</dt> <dd>Additional information about the sale item. For example, information about ''introductory offer''.</dd> <dt>string `s_price`</dt> <dd>The price of the sale item in a human-readable format.</dd> <dt>string `s_sale`</dt> <dd>The category title of the sale item.</dd> <dt>string `s_title`</dt> <dd>The title of the sale item.</dd> </dl>'
+                      a_tax:
+                        type: array
+                        description: 'A list of the item''s taxes. Keys are tax keys, and values are tax amounts.'
+                      f_price:
+                        type: [string, "null"]
+                        description: 'The price of the sale item.'
+                      f_price_include:
+                        type: [string, "null"]
+                        description: 'The price of the sale item, including tax.'
+                      f_price_retail_product:
+                        type: string
+                        description: 'The retail price of the product. This will be empty if this isn''t a product.'
+                      f_price_total_enrollment:
+                        type: string
+                        description: 'Full price of event. This will be empty if this isn''t an event.'
+                      f_tax:
+                        type: [string, "null"]
+                        description: 'The tax amount.'
+                      html_description:
+                        type: [string, "null"]
+                        description: 'The sale item description.'
+                      html_special:
+                        type: [string, "null"]
+                        description: 'Special instructions for the sale item.'
+                      id_purchase_item:
+                        type: number
+                        format: int32
+                        description: 'The purchase item category ID. One of the {@link \RsPurchaseItemSid} constants.'
+                      id_purchase_option_view:
+                        type: number
+                        format: int32
+                        description: 'The ID of the item view category. One of the {@link \Wl\Catalog\PurchaseOptionViewSid} constants.'
+                      id_sale:
+                        type: number
+                        format: int32
+                        description: 'The ID of item category. One of the {@link \RsSaleSid} constants.'
+                      is_contract:
+                        type: boolean
+                        description: 'If `true`, the item requires a contract. Otherwise, this will be `false`.'
+                      k_id:
+                        type: string
+                        description: 'The item key.'
+                      k_shop_product_option:
+                        type: [string, "null"]
+                        description: 'The product option key. This will be `null` if not set yet.'
+                      m_discount_code:
+                        type: string
+                        description: 'The discount amount for a discount code.'
+                      m_discount_login:
+                        type: string
+                        description: 'The discount amount for a user''s type.'
+                      m_price:
+                        type: string
+                        description: 'The price on the price tag.'
+                      m_price_include:
+                        type: string
+                        description: 'The price, including taxes.'
+                      m_tax:
+                        type: string
+                        description: 'The tax amount.'
+                      s_comment:
+                        type: string
+                        description: 'Additional comment(s). For example, information about ''introductory offer''.'
+                      s_price:
+                        type: [string, "null"]
+                        description: 'The price of the sale item in a human-readable format.'
+                      s_sale:
+                        type: [string, "null"]
+                        description: 'The category title of the sale item.'
+                      s_title:
+                        type: [string, "null"]
+                        description: 'The sale item title.'
+                      text_price:
+                        type: string
+                        description: 'The price on the price tag, with the currency sign.'
+                      text_sale:
+                        type: string
+                        description: 'The title of the item category.'
+                      text_title:
+                        type: string
+                        description: 'The item title.'
+                      xml_description:
+                        type: [string, "null"]
+                        description: 'A detailed description.'
+                      xml_special:
+                        type: [string, "null"]
+                        description: 'Special instructions.'
+      tags:
+        - CatalogList-Element
+    post:
+      summary: 'Displays information about a certain item in the store. Works exactly as {@link ElementApi::get()} method. This method is added so that batched item identifiers can be sent in the request body rather than as URL query parameters, avoiding URL length limits.'
+      parameters:
+        - name: a_discount_code
+          in: query
+          description: 'Information about the discount code: <dl> <dt>string `f_amount`</dt> <dd>The fixed amount of the discount.</dd> <dt>string `f_percent`</dt> <dd>The percentage amount of the discount.</dd> <dt>int `i_limit`</dt> <dd>Limitation.</dd> <dt>string `k_discount_code`</dt> <dd>The discount code key.</dd> <dt>string `s_discount_code`</dt> <dd>The discount code value.</dd> </dl>'
+          schema:
+            type: array
+        - name: a_sale_id_group
+          in: query
+          description: 'The list of items grouped by sale categories on the store page. Keys refer to sale IDs from {@link \RsSaleSid}, and values refer to data to identify an item: <dl> <dt>int `id_sale`</dt> <dd>The item category ID. One of the {@link \RsSaleSid} constants.</dd> <dt>string `k_id`</dt> <dd>The primary key of item.</dd> <dt>string `k_shop_product_option`</dt> <dd> The product option key or `0` for any other cases. <i>Primary key in {@link \RsShopProductOptionSql} table.</i> </dd> </dl>'
+          schema:
+            type: array
+        - name: dl_client_prorate
+          in: query
+          description: 'The client prorate date. This will be `null` in cases where the client prorate date hasn''t passed.'
+          schema:
+            type: [string, "null"]
+        - name: i_image_height
+          in: query
+          description: 'The image height in pixels. Specify this value if you need the image to be returned in a specific size. The returned image will have default thumbnail size if this value isn''t specified.'
+          schema:
+            type: number
+            format: int32
+        - name: i_image_width
+          in: query
+          description: 'The image width in pixels. Specify this value if you need the image to be returned in a specific size. The returned image will have default thumbnail size if this value isn''t specified.'
+          schema:
+            type: number
+            format: int32
+        - name: i_promotion_image_height
+          in: query
+          description: 'The promotion image height in pixels. Specify this value if you need the image to be returned in a specific size. The returned image will have default thumbnail size if this value isn''t specified.'
+          schema:
+            type: number
+            format: int32
+        - name: i_promotion_image_width
+          in: query
+          description: 'The promotion image width in pixels. Specify this value if you need the image to be returned in a specific size. The returned image will have default thumbnail size if this value isn''t specified.'
+          schema:
+            type: number
+            format: int32
+        - name: id_sale
+          in: query
+          description: 'The ID of item category. One of the {@link \RsSaleSid} constants.'
+          schema:
+            type: number
+            format: int32
+        - name: is_backend
+          in: query
+          description: 'Determines whether the API is called in the backend mode.'
+          schema:
+            type: boolean
+        - name: k_business
+          in: query
+          description: 'The business key.'
+          schema:
+            type: string
+        - name: k_id
+          in: query
+          description: 'The item key.'
+          schema:
+            type: string
+        - name: k_location
+          in: query
+          description: 'The location key.'
+          schema:
+            type: string
+        - name: k_shop_product_option
+          in: query
+          description: 'The product option key. This will be `null` if not set yet.'
+          schema:
+            type: [string, "null"]
+        - name: uid_customer
+          in: query
+          description: 'The UID of a customer (user) for whom the purchase is made. This is used in the backend to calculate discounts.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                text_item_post:
+                  type: [string, "null"]
+                  description: 'A list of goods to get information for. Same as {@link \Wl\Catalog\CatalogList\ElementApi::$text_item}, but for POST requests. Note that this must be serialized via JSON. This will be `null` to get information for only one item.'
       responses:
         200:
           description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
@@ -16883,6 +17272,68 @@ paths:
                         description: 'The default promotion key. This will be `null` if `k_class` wasn''t provided, or if the class has no default promotion.'
       tags:
         - Promotion-ClassPromotion
+  '/Wl/Classes/Editor/Setup.json':
+    get:
+      summary: 'Returns everything the class setup form needs besides the class itself. The form is rendered by the client, so this endpoint answers with data: the lists the Book Now Tab, the quick search tag and the store category pickers are filled from, the business policies the Business policies section starts with, the send rules of the client reminder, the currency sign, whether the Administration section may be shown, the addresses of the pages the form links to and the markup of the blocks that have no template on the client.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key.'
+          schema:
+            type: string
+        - name: k_class
+          in: query
+          description: 'Class key. `0` while a new class is created, so the key of the model of the client has a value. The key is only checked when it points at a class.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_class_tab:
+                        type: array
+                        description: 'Book Now Tabs the class may be shown in. Every element is an array: <dl> <dt>bool `is_selected`</dt> <dd>`true` if the class is shown in this tab, `false` otherwise.</dd> <dt>string `s_key`</dt> <dd> Key of the tab: the ID of the tab object and the key of the tab joined with a hyphen. The key of a system tab is `0`. </dd> <dt>string `text_title`</dt> <dd>Title of the tab.</dd> </dl>'
+                      a_reminder_info:
+                        type: array
+                        description: 'Send rules of the client reminder. Keys are: <dl> <dt>array[] `a_config`</dt> <dd> Times the reminder is sent at, the earliest one first. Every element is an array: <dl> <dt>int `i_before`</dt> <dd>Number of the units of time the reminder is sent before the session.</dd> <dt>int `id_duration_delay`</dt> <dd>Unit of time the reminder is sent before the session. One of {@link \ADurationSid} constants.</dd> <dt>string `text_time`</dt> <dd>Title of the unit of time.</dd> </dl> </dd> <dt>int `i_login_type`</dt> <dd>Number of the client types the reminder is sent to.</dd> <dt>int `i_login_type_all`</dt> <dd>Number of the client types of the business.</dd> <dt>int `i_member_group`</dt> <dd>Number of the client groups the reminder is sent to.</dd> <dt>int `i_member_group_all`</dt> <dd>Number of the client groups of the business.</dd> <dt>bool `is_login_type`</dt> <dd>`true` if the reminder is sent to certain client types only, `false` otherwise.</dd> <dt>bool `is_login_type_all`</dt> <dd>`true` if every client type of the business is selected, `false` otherwise.</dd> <dt>bool `is_member_group`</dt> <dd>`true` if the reminder is sent to certain client groups only, `false` otherwise.</dd> <dt>bool `is_member_group_all`</dt> <dd>`true` if every client group of the business is selected, `false` otherwise.</dd> </dl>'
+                      a_search_tag:
+                        type: array
+                        description: 'Quick search tags of the category of the business. Every element is an array: <dl> <dt>string `k_search_tag`</dt> <dd>Key of the tag. <i>Primary key in the `rs_search_tag` table.</i></dd> <dt>string `text_title`</dt> <dd>Title of the tag.</dd> </dl>'
+                      a_shop_category:
+                        type: array
+                        description: 'Store categories of the business. Every element is an array: <dl> <dt>string `k_shop_category`</dt> <dd>Key of the category. <i>Primary key in the {@link \RsShopCategorySql} table.</i></dd> <dt>string `text_title`</dt> <dd>Title of the category.</dd> </dl>'
+                      a_url:
+                        type: array
+                        description: 'Addresses of the pages the form links to: <dl> <dt>string `url_category_manage`</dt> <dd>List of store categories.</dd> <dt>string `url_notification_client`</dt> <dd>Client notifications.</dd> <dt>string `url_notification_confirmation`</dt> <dd>Client confirmation notification of a class.</dd> <dt>string `url_notification_reminder`</dt> <dd>Client reminder notification of a class.</dd> <dt>string `url_notification_staff`</dt> <dd>Staff notifications.</dd> <dt>string `url_policy_manage`</dt> <dd>Default business policies.</dd> <dt>string `url_product_manage`</dt> <dd>List of products.</dd> <dt>string `url_resource_manage`</dt> <dd>List of Book-a-Spot assets.</dd> <dt>string `url_ticket_card`</dt> <dd>Store settings that require a card at sign-up.</dd> <dt>string `url_ticket_waiver`</dt> <dd>Online waiver settings.</dd> </dl>'
+                      html_policy:
+                        type: string
+                        description: 'Markup of the Business policies block of the form. The block is the form of the policy rules of the business. There is no template of this form on the client, so the block is rendered here and the client only moves the markup into the section it belongs to.'
+                      html_prerequisite:
+                        type: string
+                        description: 'Markup of the Prerequisites block of the form. The block is a picker of the services of the business. There is no template of this picker on the client, so the block is rendered here and the client only moves the markup into the section it belongs to.'
+                      html_promotion:
+                        type: string
+                        description: 'Markup of the Purchase Options block of the form. The block is a picker of the Purchase Options of the business, followed by the list of the picked ones. There is no template of either of them on the client, so the block is rendered here and the client only moves the markup into the section it belongs to.'
+                      html_quick_buy:
+                        type: string
+                        description: 'Markup of the Quick Buy block of the form. The block is a picker of the products of the business. There is no template of this picker on the client, so the block is rendered here and the client only moves the markup into the section it belongs to.'
+                      html_tax:
+                        type: string
+                        description: 'Markup of the Taxes block of the form. The block is a selector of the taxes of the business. There is no template of this select on the client, so the block is rendered here and the client only moves the markup into the section it belongs to.'
+                      is_admin:
+                        type: boolean
+                        description: '`true` if the Administration section may be shown, `false` otherwise.'
+                      text_currency:
+                        type: string
+                        description: 'Currency sign of the business.'
+      tags:
+        - Editor-Setup
   '/Wl/Coupon/CouponList/List.json':
     get:
       summary: 'Gets list of coupons. Used to populate the gift card picker in the store and booking flows. Returns all gift card types offered by the business. In franchise mode, gift cards from all franchise locations are included.'
@@ -17249,6 +17700,162 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Bulk-BulkBillingUser
+  '/Wl/Billing/Code/BillingCode.json':
+    delete:
+      summary: 'Removes a custom billing code from the central list of the business. The code is not deleted - it stays on every receipt and invoice it has already been used on, and it keeps its value occupied. Adding the same value again brings this very code back, see {@link BillingCodeApi::put()}. Removing a code that is removed already does nothing.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key.'
+          schema:
+            type: string
+        - name: k_code
+          in: query
+          description: 'Key of the custom billing code.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Code-BillingCode
+    get:
+      summary: 'Returns a single custom billing code of the business. A removed code is returned as well, with {@link BillingCodeApi::$is_remove} set - it is still shown on the receipts it has been applied to.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key.'
+          schema:
+            type: string
+        - name: k_code
+          in: query
+          description: 'Key of the custom billing code.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      is_remove:
+                        type: boolean
+                        description: 'Whether the code is removed from the central list of the business. `true` for a code that is not offered for selection anymore, `false` otherwise.'
+                      text_code:
+                        type: string
+                        description: 'Code value, as it is printed on receipts and invoices.'
+                      text_description:
+                        type: string
+                        description: 'Description of the code.'
+      tags:
+        - Code-BillingCode
+    post:
+      summary: 'Edits the value and the description of a custom billing code of the business. The new value applies going forward only - every receipt and invoice that has already been generated with the old value keeps it.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key.'
+          schema:
+            type: string
+        - name: k_code
+          in: query
+          description: 'Key of the custom billing code.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                text_code:
+                  type: string
+                  description: 'Code value, as it is printed on receipts and invoices.'
+                text_description:
+                  type: string
+                  description: 'Description of the code.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response. Full description is not available yet.'
+      tags:
+        - Code-BillingCode
+    put:
+      summary: 'Adds a custom billing code to the central list of the business. If the business has removed a code with this value before, that code is brought back with the new description instead of a second code with the same value being created, and {@link BillingCodeApi::$k_code} returns the key of that very code.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key.'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                text_code:
+                  type: string
+                  description: 'Code value, as it is printed on receipts and invoices.'
+                text_description:
+                  type: string
+                  description: 'Description of the code.'
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      k_code:
+                        type: string
+                        description: 'Key of the custom billing code.'
+      tags:
+        - Code-BillingCode
+  '/Wl/Billing/Code/BillingCodeList.json':
+    get:
+      summary: 'Gets the billing code list of the business. The list contains the custom codes of the business for now, and is meant to become the single place a client asks for codes, with the diagnostic codes of the read-only ICD-10-CM reference library to be returned from here as well.'
+      parameters:
+        - name: k_business
+          in: query
+          description: 'Business key.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: 'Successful response.'
+                    properties:
+                      a_code:
+                        type: array
+                        description: 'Billing codes of the business. Contains the custom codes of the business for now. The system codes of the ICD-10-CM reference library are to be returned here too, and a row is then to tell the two types apart. Removed codes are not returned - they are not offered for selection anymore, they only stay on the receipts and invoices they have already been applied to. The list is not sorted - sorting and filtering of the list is a matter of the page that shows it. <dl> <dt>string `k_code`</dt> <dd>Key of the code. <i>Primary key in the {@link \Wl\Billing\Code\BillingCodeCustomSql} table.</i></dd> <dt>string `text_code`</dt> <dd>Code value, as it is printed on receipts and invoices.</dd> <dt>string `text_description`</dt> <dd>Description of the code the business typed in.</dd> </dl>'
+      tags:
+        - Code-BillingCodeList
   '/Wl/Calendar/Cordova/CordovaCalendarStaff.json':
     post:
       summary: 'Gets schedule for calendar synchronisation. POST method is used instead GET because the `$s_visit_synced` field value may be more than allowed for GET.'
@@ -23433,7 +24040,7 @@ paths:
                       id_plan:
                         type: number
                         format: int32
-                        description: 'Currently active plan ID for requested subscription. Depending on subscription type constant from one of {@link \Wl\Business\Account\Subscription\PlanSid} inheritors. Plans for `1250`: <dl> <dt>int `id_plan`</dt> <dd> Collections subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Collections\CollectionsSubscriptionSid} constants. </dd> </dl> Plans for `858`: <dl> <dt>int `id_plan`</dt> <dd> Achieve White Label App subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Achieve\AchieveSubscriptionSid} constants. </dd> </dl> Plans for `882`: <dl> <dt>int `id_plan`</dt> <dd> Book-a-Spot subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Asset\AssetSubscriptionSid} constants. </dd> </dl> Plans for `2331`: <dl> <dt>int `id_plan`</dt> <dd> QuickBooks Online subscription plan ID. One of {@link \Wl\Business\Account\Subscription\QuickBooks\QuickBooksSubscriptionSid} constants. </dd> </dl> Plans for `1868`: <dl> <dt>int `id_plan`</dt> <dd> CAASI subscription plan ID. One of {@link \Wl\Business\Account\Subscription\AiAgent\AiAgentSubscriptionSid} constants. </dd> </dl> Plans for `1965`: <dl> <dt>int `id_plan`</dt> <dd> Mailchimp / Constant Contact subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Email\EmailSubscriptionSid} constants. </dd> </dl> Plans for `2166`: <dl> <dt>int `id_plan`</dt> <dd> Constant Contact Integration subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Eml\ConstantContactSubscriptionSid} constants. </dd> </dl> Plans for `2165`: <dl> <dt>int `id_plan`</dt> <dd> Mailchimp Integration subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Eml\MailchimpSubscriptionSid} constants. </dd> </dl> Plans for `1838`: <dl> <dt>int `id_plan`</dt> <dd> Marketing Suite subscription plan ID. One of {@link \Wl\Business\Account\Subscription\MarketingSuite\MarketingSuiteSubscriptionSid} constants. </dd> </dl> Plans for `857`: <dl> <dt>int `id_plan`</dt> <dd> Message Center subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Sms\SmsSubscriptionSid} constants. </dd> </dl> Plans for `861`: <dl> <dt>int `id_plan`</dt> <dd> Subscription Plan subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Base\BaseSubscriptionSid} constants. </dd> </dl> Plans for `1225`: <dl> <dt>int `id_plan`</dt> <dd> Finance subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Finance\FinanceSubscriptionSid} constants. </dd> </dl> Plans for `1964`: <dl> <dt>int `id_plan`</dt> <dd> Go High Level subscription plan ID. One of {@link \Wl\Business\Account\Subscription\GoHighLevel\GoHighLevelSubscriptionSid} constants. </dd> </dl> Plans for `1349`: <dl> <dt>int `id_plan`</dt> <dd> Zapier Integration subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Zapier\ZapierSubscriptionSid} constants. </dd> </dl> Plans for `986`: <dl> <dt>int `id_plan`</dt> <dd> FitLIVE subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Fitlive\FitliveSubscriptionSid} constants. </dd> </dl> Plans for `862`: <dl> <dt>int `id_plan`</dt> <dd> Direct Mail subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Postcard\PostcardSubscriptionSid} constants. </dd> </dl> Plans for `2225`: <dl> <dt>int `id_plan`</dt> <dd> Business Success Coaching subscription plan ID. One of {@link \Wl\Business\Account\Subscription\BusinessCoach\BusinessCoachSubscriptionSid} constants. </dd> </dl> Plans for `1370`: <dl> <dt>int `id_plan`</dt> <dd> Door Access subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Door\DoorSubscriptionSid} constants. </dd> </dl> Plans for `883`: <dl> <dt>int `id_plan`</dt> <dd> FitBUILDER subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Fitbuilder\FitbuilderSubscriptionSid} constants. </dd> </dl> Plans for `886`: <dl> <dt>int `id_plan`</dt> <dd> Rewards & Loyalty subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Reward\RewardSubscriptionSid} constants. </dd> </dl> Plans for `1266`: <dl> <dt>int `id_plan`</dt> <dd> API Access subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Api\ApiSubscriptionSid} constants. </dd> </dl> Plans for `875`: <dl> <dt>int `id_plan`</dt> <dd> FitVID on Demand subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Fitvid\FitvidSubscriptionSid} constants. </dd> </dl> Plans for `1133`: <dl> <dt>int `id_plan`</dt> <dd> Forms subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Quiz\QuizSubscriptionSid} constants. </dd> </dl> Plans for `863`: <dl> <dt>int `id_plan`</dt> <dd> Presence subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Website\WebsiteSubscriptionSid} constants. </dd> </dl> Plans for `864`: <dl> <dt>int `id_plan`</dt> <dd> Zoom subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Zoom\ZoomSubscriptionSid} constants. </dd> </dl> Plans for `884`: <dl> <dt>int `id_plan`</dt> <dd> FitZONE subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Fitzone\FitzoneSubscriptionSid} constants. </dd> </dl> Plans for `885`: <dl> <dt>int `id_plan`</dt> <dd> Customer Review Manager subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Review\ReviewSubscriptionSid} constants. </dd> </dl>'
+                        description: 'Currently active plan ID for requested subscription. Depending on subscription type constant from one of {@link \Wl\Business\Account\Subscription\PlanSid} inheritors. Plans for `1250`: <dl> <dt>int `id_plan`</dt> <dd> Collections subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Collections\CollectionsSubscriptionSid} constants. </dd> </dl> Plans for `858`: <dl> <dt>int `id_plan`</dt> <dd> Achieve White Label App subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Achieve\AchieveSubscriptionSid} constants. </dd> </dl> Plans for `882`: <dl> <dt>int `id_plan`</dt> <dd> Book-a-Spot subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Asset\AssetSubscriptionSid} constants. </dd> </dl> Plans for `2331`: <dl> <dt>int `id_plan`</dt> <dd> QuickBooks Online subscription plan ID. One of {@link \Wl\Business\Account\Subscription\QuickBooks\QuickBooksSubscriptionSid} constants. </dd> </dl> Plans for `1868`: <dl> <dt>int `id_plan`</dt> <dd> CAASI subscription plan ID. One of {@link \Wl\Business\Account\Subscription\AiAgent\AiAgentSubscriptionSid} constants. </dd> </dl> Plans for `1965`: <dl> <dt>int `id_plan`</dt> <dd> Mailchimp / Constant Contact subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Email\EmailSubscriptionSid} constants. </dd> </dl> Plans for `2166`: <dl> <dt>int `id_plan`</dt> <dd> Constant Contact Integration subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Eml\ConstantContactSubscriptionSid} constants. </dd> </dl> Plans for `2165`: <dl> <dt>int `id_plan`</dt> <dd> Mailchimp Integration subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Eml\MailchimpSubscriptionSid} constants. </dd> </dl> Plans for `1838`: <dl> <dt>int `id_plan`</dt> <dd> Marketing Suite subscription plan ID. One of {@link \Wl\Business\Account\Subscription\MarketingSuite\MarketingSuiteSubscriptionSid} constants. </dd> </dl> Plans for `857`: <dl> <dt>int `id_plan`</dt> <dd> Message Center subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Sms\SmsSubscriptionSid} constants. </dd> </dl> Plans for `861`: <dl> <dt>int `id_plan`</dt> <dd> Subscription Plan subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Base\BaseSubscriptionSid} constants. </dd> </dl> Plans for `1225`: <dl> <dt>int `id_plan`</dt> <dd> Finance subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Finance\FinanceSubscriptionSid} constants. </dd> </dl> Plans for `1964`: <dl> <dt>int `id_plan`</dt> <dd> Go High Level subscription plan ID. One of {@link \Wl\Business\Account\Subscription\GoHighLevel\GoHighLevelSubscriptionSid} constants. </dd> </dl> Plans for `1349`: <dl> <dt>int `id_plan`</dt> <dd> Zapier Integration subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Zapier\ZapierSubscriptionSid} constants. </dd> </dl> Plans for `986`: <dl> <dt>int `id_plan`</dt> <dd> FitLIVE subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Fitlive\FitliveSubscriptionSid} constants. </dd> </dl> Plans for `862`: <dl> <dt>int `id_plan`</dt> <dd> Direct Mail subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Postcard\PostcardSubscriptionSid} constants. </dd> </dl> Plans for `2225`: <dl> <dt>int `id_plan`</dt> <dd> Business Success Coaching subscription plan ID. One of {@link \Wl\Business\Account\Subscription\BusinessCoach\BusinessCoachSubscriptionSid} constants. </dd> </dl> Plans for `1370`: <dl> <dt>int `id_plan`</dt> <dd> Door Access subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Door\DoorSubscriptionSid} constants. </dd> </dl> Plans for `883`: <dl> <dt>int `id_plan`</dt> <dd> FitBUILDER subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Fitbuilder\FitbuilderSubscriptionSid} constants. </dd> </dl> Plans for `886`: <dl> <dt>int `id_plan`</dt> <dd> Rewards & Loyalty subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Reward\RewardSubscriptionSid} constants. </dd> </dl> Plans for `1266`: <dl> <dt>int `id_plan`</dt> <dd> API Access subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Api\ApiSubscriptionSid} constants. </dd> </dl> Plans for `875`: <dl> <dt>int `id_plan`</dt> <dd> FitVID on Demand subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Fitvid\FitvidSubscriptionSid} constants. </dd> </dl> Plans for `1133`: <dl> <dt>int `id_plan`</dt> <dd> Forms subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Quiz\QuizSubscriptionSid} constants. </dd> </dl> Plans for `863`: <dl> <dt>int `id_plan`</dt> <dd> Presence subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Website\WebsiteSubscriptionSid} constants. </dd> </dl> Plans for `864`: <dl> <dt>int `id_plan`</dt> <dd> Zoom subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Zoom\ZoomSubscriptionSid} constants. </dd> </dl> Plans for `884`: <dl> <dt>int `id_plan`</dt> <dd> FitZONE subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Fitzone\FitzoneSubscriptionSid} constants. </dd> </dl> Plans for `885`: <dl> <dt>int `id_plan`</dt> <dd> Customer Review Manager subscription plan ID. One of {@link \Wl\Business\Account\Subscription\Review\ReviewSubscriptionSid} constants. </dd> </dl> Plans for `2366`: <dl> <dt>int `id_plan`</dt> <dd> Bridge Athletic subscription plan ID. One of {@link \Wl\Business\Account\Subscription\BridgeAthletic\BridgeAthleticSubscriptionSid} constants. </dd> </dl>'
                       is_active:
                         type: boolean
                         description: 'Whether subscription is active. `true` if subscription is active, `false` otherwise.'
@@ -34476,68 +35083,6 @@ paths:
                     description: 'Successful response. Full description is not available yet.'
       tags:
         - Count-InventoryCount
-  '/Wl/Event/Editor/Setup.json':
-    get:
-      summary: 'Returns everything the event setup form needs besides the event itself. The form is rendered by the client, so this endpoint answers with data: the lists the Book Now Tab, the quick search tag and the store category pickers are filled from, the business policies the Business policies section starts with, the send rules of the client reminder, the currency sign, whether the Administration section may be shown, the addresses of the pages the form links to and the markup of the blocks that have no template on the client.'
-      parameters:
-        - name: k_business
-          in: query
-          description: 'Business key.'
-          schema:
-            type: string
-        - name: k_class
-          in: query
-          description: 'Event key. `0` while a new event is created, so the key of the model of the client has a value. The key is only checked when it points at an event.'
-          schema:
-            type: string
-      responses:
-        200:
-          description: 'Response always comes with status 200. Inspect the rest of the response body to determine the result.'
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - type: object
-                    description: 'Successful response.'
-                    properties:
-                      a_class_tab:
-                        type: array
-                        description: 'Book Now Tabs the event may be shown in. Every element is an array: <dl> <dt>bool `is_selected`</dt> <dd>`true` if the event is shown in this tab, `false` otherwise.</dd> <dt>string `s_key`</dt> <dd> Key of the tab: the ID of the tab object and the key of the tab joined with a hyphen. The key of a system tab is `0`. </dd> <dt>string `text_title`</dt> <dd>Title of the tab.</dd> </dl>'
-                      a_reminder_info:
-                        type: array
-                        description: 'Send rules of the client reminder. Keys are: <dl> <dt>array[] `a_config`</dt> <dd> Times the reminder is sent at, the earliest one first. Every element is an array: <dl> <dt>int `i_before`</dt> <dd>Number of the units of time the reminder is sent before the session.</dd> <dt>int `id_duration_delay`</dt> <dd>Unit of time the reminder is sent before the session. One of {@link \ADurationSid} constants.</dd> <dt>string `text_time`</dt> <dd>Title of the unit of time.</dd> </dl> </dd> <dt>int `i_login_type`</dt> <dd>Number of the client types the reminder is sent to.</dd> <dt>int `i_login_type_all`</dt> <dd>Number of the client types of the business.</dd> <dt>int `i_member_group`</dt> <dd>Number of the client groups the reminder is sent to.</dd> <dt>int `i_member_group_all`</dt> <dd>Number of the client groups of the business.</dd> <dt>bool `is_login_type`</dt> <dd>`true` if the reminder is sent to certain client types only, `false` otherwise.</dd> <dt>bool `is_login_type_all`</dt> <dd>`true` if every client type of the business is selected, `false` otherwise.</dd> <dt>bool `is_member_group`</dt> <dd>`true` if the reminder is sent to certain client groups only, `false` otherwise.</dd> <dt>bool `is_member_group_all`</dt> <dd>`true` if every client group of the business is selected, `false` otherwise.</dd> </dl>'
-                      a_search_tag:
-                        type: array
-                        description: 'Quick search tags of the category of the business. Every element is an array: <dl> <dt>string `k_search_tag`</dt> <dd>Key of the tag. <i>Primary key in the `rs_search_tag` table.</i></dd> <dt>string `text_title`</dt> <dd>Title of the tag.</dd> </dl>'
-                      a_shop_category:
-                        type: array
-                        description: 'Store categories of the business. Every element is an array: <dl> <dt>string `k_shop_category`</dt> <dd>Key of the category. <i>Primary key in the {@link \RsShopCategorySql} table.</i></dd> <dt>string `text_title`</dt> <dd>Title of the category.</dd> </dl>'
-                      a_url:
-                        type: array
-                        description: 'Addresses of the pages the form links to: <dl> <dt>string `url_category_manage`</dt> <dd>List of store categories.</dd> <dt>string `url_notification_client`</dt> <dd>Client notifications.</dd> <dt>string `url_notification_confirmation`</dt> <dd>Client confirmation notification of an event.</dd> <dt>string `url_notification_reminder`</dt> <dd>Client reminder notification of an event.</dd> <dt>string `url_notification_staff`</dt> <dd>Staff notifications.</dd> <dt>string `url_policy_manage`</dt> <dd>Default business policies.</dd> <dt>string `url_product_manage`</dt> <dd>List of products.</dd> <dt>string `url_resource_manage`</dt> <dd>List of Book-a-Spot assets.</dd> <dt>string `url_ticket_card`</dt> <dd>Store settings that require a card at sign-up.</dd> <dt>string `url_ticket_waiver`</dt> <dd>Online waiver settings.</dd> </dl>'
-                      html_policy:
-                        type: string
-                        description: 'Markup of the Business policies block of the form. The block is the form of the policy rules of the business. There is no template of this form on the client, so the block is rendered here and the client only moves the markup into the section it belongs to.'
-                      html_prerequisite:
-                        type: string
-                        description: 'Markup of the Prerequisites block of the form. The block is a picker of the services of the business. There is no template of this picker on the client, so the block is rendered here and the client only moves the markup into the section it belongs to.'
-                      html_promotion:
-                        type: string
-                        description: 'Markup of the Purchase Options block of the form. The block is a picker of the Purchase Options of the business, followed by the list of the picked ones. There is no template of either of them on the client, so the block is rendered here and the client only moves the markup into the section it belongs to.'
-                      html_quick_buy:
-                        type: string
-                        description: 'Markup of the Quick Buy block of the form. The block is a picker of the products of the business. There is no template of this picker on the client, so the block is rendered here and the client only moves the markup into the section it belongs to.'
-                      html_tax:
-                        type: string
-                        description: 'Markup of the Taxes block of the form. The block is a selector of the taxes of the business. There is no template of this select on the client, so the block is rendered here and the client only moves the markup into the section it belongs to.'
-                      is_admin:
-                        type: boolean
-                        description: '`true` if the Administration section may be shown, `false` otherwise.'
-                      text_currency:
-                        type: string
-                        description: 'Currency sign of the business.'
-      tags:
-        - Editor-Setup
 tags:
   -
     name: Access-Access
@@ -34879,6 +35424,12 @@ tags:
     name: Cluster-Cluster
     description: 'Manage `Studio Deploy Cluster`.'
   -
+    name: Code-BillingCode
+    description: 'Adds, reads, edits and removes a single custom billing code of a business. Every method of this model works with the custom codes of the business only - the codes the business owns and maintains itself in its central billing code list. A custom code is freely editable by staff with the configuration permission. System (diagnostic) codes are not reachable through this model. The central list itself is read by {@link BillingCodeListApi}. Removing a code does not delete it: the code stays intact on every appointment, receipt and invoice it has already been applied to, it is only not offered for selection anymore.'
+  -
+    name: Code-BillingCodeList
+    description: 'Retrieves the billing code list of a business. For now the list contains the custom codes of the business only, so it is not named after a code type: it is meant to become the single place a client asks for codes, and the system (diagnostic) codes of the read-only ICD-10-CM reference library are to be returned from here as well. A single custom code is added, read, edited and removed by {@link BillingCodeApi}.'
+  -
     name: Code-Code
     description: 'Methods to accept redemption code or number of gift card.'
   -
@@ -35042,7 +35593,7 @@ tags:
     description: 'Returns a list of microservices.'
   -
     name: Editor-Setup
-    description: 'Data of the event setup page that the client cannot work out itself. Carries the lists the pickers of the form are filled from, the settings of the business the form depends on, the addresses of the pages the form links to and the markup of the blocks that have no template on the client.'
+    description: 'Data of the class setup page that the client cannot work out itself. Carries the lists the pickers of the form are filled from, the settings of the business the form depends on, the addresses of the pages the form links to and the markup of the blocks that have no template on the client.'
   -
     name: Email-EditEmail
     description: 'Checks if a user''s email address is already used or changes a user’s login email address. This endpoint is rate limited. If the rate limit is exceeded, it won''t return user information. While `get` request allows to check, whether user with the given email exists on the site, `post` allows to add it to the certain business, if it''s not added yet. If client has all required by this business fields filled, it will be added right away. Otherwise it will add temporary access to this client, and you need to send all necessary fields with {@link EditApi} endpoint.'
@@ -35264,7 +35815,7 @@ tags:
     description: 'Performs ajax requests for verify client''s progress log.'
   -
     name: LogTriage-ConnectionCheck
-    description: 'Checks that Studio can connect to the monolith and returns selected findings.'
+    description: 'Checks that Studio can connect to the Monolith and returns selected findings.'
   -
     name: Login-AppleLogin
     description: 'Authorizes a user with Apple.'
@@ -35367,6 +35918,15 @@ tags:
   -
     name: Partner-PartnerSettings
     description: 'Works with partner settings of the business. This information is entered by a staff member when a client enrolls into Partner Program and uses a custom landing page, which is available by special business URL.'
+  -
+    name: Passkey-PasskeyCredential
+    description: 'Manages the signed-in staff member''s own passkey credentials, for the account-settings UI.'
+  -
+    name: Passkey-PasskeyEnter
+    description: 'Signs a staff member in using a previously registered passkey. Covers both halves of the `WebAuthn` authentication ceremony: {@link PasskeyEnterApi::get()} starts it by issuing a challenge, {@link PasskeyEnterApi::post()} finishes it by verifying the assertion and signing the user in. Username-less by default - {@link PasskeyEnterApi::get()} does not accept a login, so the browser/OS surfaces a discoverable-credential picker instead of the caller identifying the user upfront.'
+  -
+    name: Passkey-PasskeyRegister
+    description: 'Enrolls a new passkey for the signed-in staff member. Covers both halves of the `WebAuthn` registration ceremony: {@link PasskeyRegisterApi::get()} starts it by issuing a challenge, {@link PasskeyRegisterApi::post()} finishes it by verifying the attestation response and storing the new credential.'
   -
     name: Pay-Pay
     description: 'Entry point to get and set data about "who pays for who".'

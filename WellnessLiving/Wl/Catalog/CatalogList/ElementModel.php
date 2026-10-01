@@ -22,6 +22,7 @@ use WellnessLiving\Wl\WlSaleSid;
  * When using this endpoint, note that the terms "promotion" and "Purchase Option" refer to the same thing.
  *
  * @method WlModelRequest get() Retrieves an information about current sale item.  Used to render the detail view of a single store item (promotion, product, event, or coupon) in the client-facing catalog. Returns everything needed to display the item: price, taxes, images, description, booking restrictions, and available purchase options.
+ * @method WlModelRequest post() Displays information about a certain item in the store.  Works exactly as {@link \Wl\Catalog\CatalogList\ElementApi::get()} method. This method is added so that batched item identifiers can be sent in the request body rather than as URL query parameters, avoiding URL length limits.
  */
 class ElementModel extends WlModelAbstract
 {
@@ -67,6 +68,7 @@ class ElementModel extends WlModelAbstract
  *   </dd>
  * </dl>
  * @get result
+ * @post result
  * @var array|null
  */
   public $a_age_restriction;
@@ -171,6 +173,7 @@ class ElementModel extends WlModelAbstract
  * `true` if the item is a ticketed event, `false` otherwise.</dd>
  * </dl>
  * @get result
+ * @post result
  * @var array
  */
   public $a_data;
@@ -195,6 +198,7 @@ class ElementModel extends WlModelAbstract
  *   <dd>The discount code value.</dd>
  * </dl>
  * @get get
+ * @post get
  * @var array
  */
   public $a_discount_code = [];
@@ -234,6 +238,7 @@ class ElementModel extends WlModelAbstract
  *   <dd>Guest pass promotion title.</dd>
  * </dl>
  * @get result
+ * @post result
  * @var array
  */
   public $a_guest_pass = [];
@@ -258,6 +263,7 @@ class ElementModel extends WlModelAbstract
  *   <dd>The image URL.</dd>
  * </dl>
  * @get result
+ * @post result
  * @var array
  * @deprecated This property is deprecated as it does not support multiple images.
  *  Use {@link ElementModel::$a_image_list} instead.
@@ -286,6 +292,7 @@ class ElementModel extends WlModelAbstract
  *   <dd>The image URL.</dd>
  * </dl>
  * @get result
+ * @post result
  * @var array[]
  */
   public $a_image_list = [];
@@ -318,6 +325,7 @@ class ElementModel extends WlModelAbstract
  *   <dd>The title of the installment plan.</dd>
  * </dl>
  * @get result
+ * @post result
  * @var array[]
  */
   public $a_installment_template;
@@ -531,6 +539,7 @@ class ElementModel extends WlModelAbstract
  *   <dd>The title of the sale item.</dd>
  * </dl>
  * @get result
+ * @post result
  * @var array[]
  */
   public $a_item;
@@ -552,6 +561,7 @@ class ElementModel extends WlModelAbstract
  *   </dd>
  * </dl>
  * @get get
+ * @post get
  * @var array[]
  */
   public $a_sale_id_group = [];
@@ -561,6 +571,7 @@ class ElementModel extends WlModelAbstract
  * Keys are tax keys, and values are tax amounts.
  *
  * @get result
+ * @post result
  * @var string[]
  */
   public $a_tax;
@@ -571,6 +582,7 @@ class ElementModel extends WlModelAbstract
  * This will be `null` in cases where the client prorate date hasn't passed.
  *
  * @get get
+ * @post get
  * @var string|null
  */
   public $dl_client_prorate = null;
@@ -579,6 +591,7 @@ class ElementModel extends WlModelAbstract
  * The price of the sale item.
  *
  * @get result
+ * @post result
  * @var string|null
  */
   public $f_price;
@@ -587,6 +600,7 @@ class ElementModel extends WlModelAbstract
  * The price of the sale item, including tax.
  *
  * @get result
+ * @post result
  * @var string|null
  */
   public $f_price_include;
@@ -595,6 +609,7 @@ class ElementModel extends WlModelAbstract
  * The retail price of the product. This will be empty if this isn't a product.
  *
  * @get result
+ * @post result
  * @var string
  */
   public $f_price_retail_product = '';
@@ -603,6 +618,7 @@ class ElementModel extends WlModelAbstract
  * Full price of event. This will be empty if this isn't an event.
  *
  * @get result
+ * @post result
  * @var string
  */
   public $f_price_total_enrollment = '';
@@ -611,6 +627,7 @@ class ElementModel extends WlModelAbstract
  * The tax amount.
  *
  * @get result
+ * @post result
  * @var string|null
  */
   public $f_tax;
@@ -619,6 +636,7 @@ class ElementModel extends WlModelAbstract
  * The sale item description.
  *
  * @get result
+ * @post result
  * @var string|null
  */
   public $html_description;
@@ -627,6 +645,7 @@ class ElementModel extends WlModelAbstract
  * Special instructions for the sale item.
  *
  * @get result
+ * @post result
  * @var string|null
  */
   public $html_special;
@@ -636,6 +655,7 @@ class ElementModel extends WlModelAbstract
  * The returned image will have default thumbnail size if this value isn't specified.
  *
  * @get get
+ * @post get
  * @var int
  */
   public $i_image_height = 0;
@@ -645,6 +665,7 @@ class ElementModel extends WlModelAbstract
  * The returned image will have default thumbnail size if this value isn't specified.
  *
  * @get get
+ * @post get
  * @var int
  */
   public $i_image_width = 0;
@@ -654,6 +675,7 @@ class ElementModel extends WlModelAbstract
  * The returned image will have default thumbnail size if this value isn't specified.
  *
  * @get get
+ * @post get
  * @var int
  */
   public $i_promotion_image_height = 0;
@@ -663,6 +685,7 @@ class ElementModel extends WlModelAbstract
  * The returned image will have default thumbnail size if this value isn't specified.
  *
  * @get get
+ * @post get
  * @var int
  */
   public $i_promotion_image_width = 0;
@@ -672,6 +695,7 @@ class ElementModel extends WlModelAbstract
  * One of the {@link WlPurchaseItemSid} constants.
  *
  * @get result
+ * @post result
  * @var int
  */
   public $id_purchase_item;
@@ -680,6 +704,7 @@ class ElementModel extends WlModelAbstract
  * The ID of the item view category. One of the {@link PurchaseOptionViewSid} constants.
  *
  * @get result
+ * @post result
  * @var int
  */
   public $id_purchase_option_view;
@@ -689,6 +714,7 @@ class ElementModel extends WlModelAbstract
  * One of the {@link WlSaleSid} constants.
  *
  * @get get,result
+ * @post get,result
  * @var int
  */
   public $id_sale = 0;
@@ -697,6 +723,7 @@ class ElementModel extends WlModelAbstract
  * Determines whether the API is called in the backend mode.
  *
  * @get get
+ * @post get
  * @var bool
  */
   public $is_backend = false;
@@ -705,6 +732,7 @@ class ElementModel extends WlModelAbstract
  * If `true`, the item requires a contract. Otherwise, this will be `false`.
  *
  * @get result
+ * @post result
  * @var bool
  */
   public $is_contract;
@@ -713,6 +741,7 @@ class ElementModel extends WlModelAbstract
  * The business key.
  *
  * @get get
+ * @post get
  * @var string
  */
   public $k_business = '0';
@@ -721,6 +750,7 @@ class ElementModel extends WlModelAbstract
  * The item key.
  *
  * @get get,result
+ * @post get,result
  * @var string
  */
   public $k_id = 0;
@@ -729,6 +759,7 @@ class ElementModel extends WlModelAbstract
  * The location key.
  *
  * @get get
+ * @post get
  * @var string
  */
   public $k_location = '0';
@@ -739,6 +770,7 @@ class ElementModel extends WlModelAbstract
  * This will be `null` if not set yet.
  *
  * @get get,result
+ * @post get,result
  * @var string|null
  */
   public $k_shop_product_option = '';
@@ -747,6 +779,7 @@ class ElementModel extends WlModelAbstract
  * The discount amount for a discount code.
  *
  * @get result
+ * @post result
  * @var string
  */
   public $m_discount_code;
@@ -755,6 +788,7 @@ class ElementModel extends WlModelAbstract
  * The discount amount for a user's type.
  *
  * @get result
+ * @post result
  * @var string
  */
   public $m_discount_login;
@@ -763,6 +797,7 @@ class ElementModel extends WlModelAbstract
  * The price on the price tag.
  *
  * @get result
+ * @post result
  * @var string
  */
   public $m_price;
@@ -771,6 +806,7 @@ class ElementModel extends WlModelAbstract
  * The price, including taxes.
  *
  * @get result
+ * @post result
  * @var string
  */
   public $m_price_include;
@@ -779,6 +815,7 @@ class ElementModel extends WlModelAbstract
  * The tax amount.
  *
  * @get result
+ * @post result
  * @var string
  */
   public $m_tax;
@@ -788,6 +825,7 @@ class ElementModel extends WlModelAbstract
  * For example, information about 'introductory offer'.
  *
  * @get result
+ * @post result
  * @var string
  */
   public $s_comment;
@@ -796,6 +834,7 @@ class ElementModel extends WlModelAbstract
  * The price of the sale item in a human-readable format.
  *
  * @get result
+ * @post result
  * @var string|null
  */
   public $s_price;
@@ -804,6 +843,7 @@ class ElementModel extends WlModelAbstract
  * The category title of the sale item.
  *
  * @get result
+ * @post result
  * @var string|null
  */
   public $s_sale;
@@ -812,6 +852,7 @@ class ElementModel extends WlModelAbstract
  * The sale item title.
  *
  * @get result
+ * @post result
  * @var string|null
  */
   public $s_title;
@@ -844,9 +885,21 @@ class ElementModel extends WlModelAbstract
   public $text_item = null;
 
   /**
+ * A list of goods to get information for.
+ * Same as {@link ElementModel::$text_item}, but for POST requests. Note that this must be serialized via JSON.
+ *
+ * This will be `null` to get information for only one item.
+ *
+ * @post post
+ * @var string|null
+ */
+  public $text_item_post = null;
+
+  /**
  * The price on the price tag, with the currency sign.
  *
  * @get result
+ * @post result
  * @var string
  */
   public $text_price;
@@ -855,6 +908,7 @@ class ElementModel extends WlModelAbstract
  * The title of the item category.
  *
  * @get result
+ * @post result
  * @var string
  */
   public $text_sale;
@@ -863,6 +917,7 @@ class ElementModel extends WlModelAbstract
  * The item title.
  *
  * @get result
+ * @post result
  * @var string
  */
   public $text_title;
@@ -871,6 +926,7 @@ class ElementModel extends WlModelAbstract
  * The UID of a customer (user) for whom the purchase is made. This is used in the backend to calculate discounts.
  *
  * @get get
+ * @post get
  * @var string
  */
   public $uid_customer = '';
@@ -879,6 +935,7 @@ class ElementModel extends WlModelAbstract
  * A detailed description.
  *
  * @get result
+ * @post result
  * @var string|null
  * @deprecated Use `html_description`.
  */
@@ -888,6 +945,7 @@ class ElementModel extends WlModelAbstract
  * Special instructions.
  *
  * @get result
+ * @post result
  * @var string|null
  * @deprecated Use `html_special`.
  */

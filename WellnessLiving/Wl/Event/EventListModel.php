@@ -189,6 +189,13 @@ class EventListModel extends WlModelAbstract
  *         </dl>
  *       </dd>
  * 
+ *       <dt>string[] `a_virtual_location`</dt>
+ *       <dd>
+ *         List of location keys where the virtual service can be booked from other locations.
+ * 
+ * Empty array if the setting is off or no locations are selected.
+ *       </dd>
+ * 
  *       <dt>string `dl_end`</dt>
  *       <dd>End date of the schedule in <tt>MySql</tt> format.</dd>
  * 

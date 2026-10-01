@@ -33,15 +33,17 @@ class StatementBadgeEnum
    * transaction may turn this into {@link StatementBadgeEnum::AUTO_PAYMENT_FAILED_RECOVERED} or
    * {@link StatementBadgeEnum::AUTO_PAYMENT_FAILED_ACCOUNT_CHARGE}.
    *
-   * For a Purchase Option membership renewal or a Duration/Limit/Pass renewal, whose reattempt chain
-   * {@link StatementBadgeState} can follow in full (both go through the same purchase pool and the
-   * same retry scheduler), this case in practice only appears when a writer has not yet marked the
-   * compensating debit (see {@link StatementAccountDebitMarker}) - every other transaction of such a
-   * chain resolves to one of the two cases above, {@link StatementBadgeEnum::REATTEMPTED} or
-   * {@link StatementBadgeEnum::REATTEMPT_SCHEDULED}. A payment plan installment or a bulk billing
-   * run - neither of which {@link StatementBadgeState} treats as a followable reattempt chain, an
-   * installment's siblings being every purchase of the whole plan across every due date rather than
-   * a retry chain - keeps using this case for every attempt but the last.
+   * For an attempt the monolith wrote a `wl_purchase_attempt_chain` row for (a Purchase Option
+   * membership renewal, a Duration/Limit/Pass renewal, or a bulk billing charge, see WL-96094),
+   * whose reattempt chain {@link StatementBadgeState} can follow in full, this case in practice only
+   * appears when a writer has not yet marked the compensating debit (see
+   * {@link StatementAccountDebitMarker}) - every other transaction of such a chain resolves to one of
+   * the two cases above, {@link StatementBadgeEnum::REATTEMPTED} or
+   * {@link StatementBadgeEnum::REATTEMPT_SCHEDULED}. A payment plan installment - which
+   * {@link StatementBadgeState} never treats as a followable reattempt chain, its siblings being
+   * every purchase of the whole plan across every due date rather than a retry chain - keeps using
+   * this case for every attempt but the last, and so does an attempt with no attempt-chain row at
+   * all (most likely a bulk-billing purchase made before WL-96094 shipped).
    */
   const AUTO_PAYMENT_FAILED = 10;
 
