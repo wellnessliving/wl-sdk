@@ -76,6 +76,9 @@ class PaymentModel extends WlModelAbstract
  *             Discount applied to the event price.
  * Staff-only: ignored when sent by a client.
  *             <dl>
+ *               <dt>bool `is_recurrent`</dt>
+ *               <dd>Whether the discount should also apply to the recurring membership payments.</dd>
+ * 
  *               <dt>string `m_discount`</dt>
  *               <dd>Discount amount.</dd>
  * 
