@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl;
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 251.
+ * Last Used ID: 252.
  */
 abstract class WlPrivilegeSid
 {
@@ -72,6 +72,16 @@ abstract class WlPrivilegeSid
    * View appointment.
    */
   const APPOINTMENT_VIEW = 52;
+
+  /**
+   * Ability to assign billing and diagnostic codes to appointments.
+   *
+   * Allows to select codes of the central billing code list and to search and apply ICD diagnostic codes. Adding a
+   * new code to the central list is configuring it, so it requires {@link WlPrivilegeSid::BUSINESS_POLICY} instead.
+   *
+   * @title Can assign billing and diagnostic codes to appointments
+   */
+  const BILLING_CODE_ASSIGN = 252;
 
   /**
    * Ability to book clients outside their current paid period.

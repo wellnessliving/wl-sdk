@@ -153,6 +153,11 @@ abstract class WlPurchaseItemSid
   const SERVICE = 6;
 
   /**
+   * Ticket purchase item.
+   */
+  const TICKET = 29;
+
+  /**
    * Tuition purchase item.
    * Used when client purchases tuition for an event list.
    */

@@ -3,10 +3,24 @@
 namespace WellnessLiving\Wl\Business\Account\Subscription\AiAgent;
 
 /**
- * Last used ID: 5.
+ * Last used ID: 9.
  */
 abstract class AiAgentSubscriptionSid
 {
+  /**
+   * @price-month 49.00
+   * @rate 1
+   * @title Chat Agent (Bundle)
+   */
+  const CHAT_AGENT_BUNDLE = 8;
+
+  /**
+   * @price-month 0
+   * @rate 1
+   * @title Chat Agent (Bundle) Trial
+   */
+  const CHAT_AGENT_BUNDLE_TRIAL = 9;
+
   /**
    * @price-month 499.00
    * @rate 10

@@ -85,6 +85,17 @@ class CatalogViewModel extends WlModelAbstract
   public $a_tax_data;
 
   /**
+ * List of ticket options available for booking the event. Empty if the sale item is not a
+ * ticketed event.
+ *
+ * Always empty for sale items other than {@link WlSaleSid::ENROLLMENT}.
+ *
+ * @get result
+ * @var array[]
+ */
+  public $a_tickets = [];
+
+  /**
  * The quantity of items.
  *
  * @get get

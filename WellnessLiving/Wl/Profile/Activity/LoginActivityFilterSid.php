@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Profile\Activity;
 /**
  * Manages identifiers of user activity filter.
  *
- * Last ID: 18.
+ * Last ID: 19.
  */
 abstract class LoginActivityFilterSid
 {
@@ -68,6 +68,11 @@ abstract class LoginActivityFilterSid
    * Filter visible gym visit attended logs
    */
   const GYM_VISIT_ATTENDED = 11;
+
+  /**
+   * Filter visible lead stage change logs.
+   */
+  const LEAD_STAGE_CHANGES = 19;
 
   /**
    * Filter visible purchases logs

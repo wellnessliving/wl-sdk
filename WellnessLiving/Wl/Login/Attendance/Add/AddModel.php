@@ -18,6 +18,29 @@ use WellnessLiving\Wl\Visit\WlVisitSid;
 class AddModel extends WlModelAbstract
 {
   /**
+ * A list of sessions that are being booked asynchronously in the background.
+ *
+ * When a multi-session block event booking is processed, the first session is booked synchronously
+ * and the remaining sessions are queued for background processing.
+ *
+ * `null` if there are no background sessions (single session booking or all sessions were booked synchronously).
+ *
+ * Each element is an array with the following keys:
+ *
+ * <dl>
+ *   <dt>string `dt_date`</dt>
+ *   <dd>The date and time of the session in UTC.</dd>
+ * 
+ *   <dt>string `k_class_period`</dt>
+ *   <dd>The class period key.
+ * </dd>
+ * </dl>
+ * @post result
+ * @var array[]|null
+ */
+  public $a_book_background;
+
+  /**
  * Any of the client memberships that can be used to pay for the session.
  * Every element is an array with the following keys:
  *

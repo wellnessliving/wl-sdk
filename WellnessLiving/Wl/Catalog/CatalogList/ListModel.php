@@ -50,6 +50,12 @@ class ListModel extends WlModelAbstract
  *   <dd>Shop category keys the item belongs to.
  * </dd>
  * 
+ *   <dt>array[] `a_tickets`</dt>
+ *   <dd>
+ *     List of ticket options available for booking the event. Empty if the item is not a
+ * ticketed event. .
+ *   </dd>
+ * 
  *   <dt>string `dtu_create`</dt>
  *   <dd>UTC creation date of the item in MySQL format.</dd>
  * 
@@ -113,6 +119,12 @@ class ListModel extends WlModelAbstract
  *   <dt>string[] `a_shop_category`</dt>
  *   <dd>Shop category keys the item belongs to.
  * </dd>
+ * 
+ *   <dt>array[] `a_tickets`</dt>
+ *   <dd>
+ *     List of ticket options available for booking the event. Empty if the item is not a
+ * ticketed event. .
+ *   </dd>
  * 
  *   <dt>string `dtu_create`</dt>
  *   <dd>UTC creation date of the item in MySQL format.</dd>

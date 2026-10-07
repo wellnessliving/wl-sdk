@@ -75,6 +75,11 @@ abstract class WlSaleSid
   const QUICK_BUY = 10;
 
   /**
+   * Ticket for a ticketed event.
+   */
+  const TICKET = 16;
+
+  /**
    * Tuition.
    */
   const TUITION = 14;

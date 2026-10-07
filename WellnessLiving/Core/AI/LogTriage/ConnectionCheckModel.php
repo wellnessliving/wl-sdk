@@ -40,13 +40,22 @@ class ConnectionCheckModel extends WlModelAbstract
  *
  * 
  *   <dt>string `s_object`</dt>
- *   <dd>Usage-statistics object. Present for the usage-statistics source.</dd>
+ *   <dd>
+ *     Usage-statistics object: a slash-delimited category and resource identifier, for example
+ *   `'memcache/get/10.0.0.5'` or `'sql/select core_business'`. Present for the usage-statistics source.
+ *   </dd>
  * 
- *   <dt>string `s_period`</dt>
- *   <dd>Usage-statistics aggregation period. Present for the usage-statistics source.</dd>
+ *   <dt>int `eid_period`</dt>
+ *   <dd>
+ *     Usage-statistics aggregation period. One of {@link \Core\AI\LogTriage\TriageWatchUsagePeriodEnum}
+ *   cases. Present for the usage-statistics source.
+ *   </dd>
  * 
- *   <dt>string `s_priority`</dt>
- *   <dd>Usage-statistics priority. Present for the usage-statistics source.</dd>
+ *   <dt>int `eid_urgency`</dt>
+ *   <dd>
+ *     Usage-statistics urgency. Present for
+ *   the usage-statistics source.
+ *   </dd>
  * 
  *   <dt>string `text_message`</dt>
  *   <dd>Log message or task description. Present for log and task sources.</dd>

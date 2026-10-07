@@ -10,7 +10,8 @@ use WellnessLiving\WlModelRequest;
  *
  * Every method of this model works with the custom codes of the business only - the codes the business owns and
  * maintains itself in its central billing code list. A custom code is freely editable by staff with
- * the configuration permission.
+ * the configuration permission: adding, editing and removing a code is configuring the central list, so it requires
+ * the access to the business policies. Reading a code does not.
  * System (diagnostic) codes are not reachable through this model.
  *
  * The central list itself is read by {@link BillingCodeListModel}.

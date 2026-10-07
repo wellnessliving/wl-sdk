@@ -49,6 +49,18 @@ class ListModel extends WlModelAbstract
   public $a_event_ticket = [];
 
   /**
+ * Ticket option map.
+ *
+ * Key is the event class key. 
+ * Value is the list of ticket options available for booking the event. Empty if the event is not
+ * a ticketed event.
+ *
+ * @get result
+ * @var array<string, array[]>
+ */
+  public $a_event_ticket_option = [];
+
+  /**
  * Defines how the event availability flag filter should be applied.
  *
  * One of {@link AFlagSid} constants.

@@ -171,6 +171,12 @@ class ElementModel extends WlModelAbstract
  *   <dt>bool `is_ticket`</dt>
  *   <dd>This applies to enrollment/event items.
  * `true` if the item is a ticketed event, `false` otherwise.</dd>
+ * 
+ *   <dt>array[] `a_tickets`</dt>
+ *   <dd>
+ *     List of ticket options available for booking the event. Empty if the item is not a
+ * ticketed event. .
+ *   </dd>
  * </dl>
  * @get result
  * @post result
@@ -425,6 +431,12 @@ class ElementModel extends WlModelAbstract
  *       <dt>bool `is_ticket`</dt>
  *       <dd>This applies to enrollment/event items.
  * `true` if the item is a ticketed event, `false` otherwise.</dd>
+ * 
+ *       <dt>array[] `a_tickets`</dt>
+ *       <dd>
+ *         List of ticket options available for booking the event. Empty if the item is not a
+ * ticketed event. .
+ *       </dd>
  *     </dl>
  *   </dd>
  * 

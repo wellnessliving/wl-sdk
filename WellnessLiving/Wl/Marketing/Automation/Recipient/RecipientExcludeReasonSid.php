@@ -25,7 +25,8 @@ class RecipientExcludeReasonSid
    * The recipient is not filtered out: they leave the automation because their stage stopped being the one
    * they entered it with, or became one of the stages the automation watches. Always paired with
    * {@link RecipientStatusSid::CRITERIA_EXIT}.
-   * The entry and current stage state detected before the next step is kept on the recipient record, see
+   * The enrollment stage is stored in {@link AutomationRecipientLeadStageSql}; the current stage is read
+   * when displaying the reason.
    */
   const EXITED_LEAD_STAGE_CHANGED = 22;
 

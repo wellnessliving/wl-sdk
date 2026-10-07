@@ -243,6 +243,10 @@ class EventListModel extends WlModelAbstract
  *     </dl>
  *   </dd>
  * 
+ *   <dt>array[] `a_tickets`</dt>
+ *   <dd>List of ticket options available for booking the event. Empty if the event is not a ticketed
+ * event.</dd>
+ * 
  *   <dt>bool `can_book`</dt>
  *   <dd>
  *     Whether event can be booked or not.

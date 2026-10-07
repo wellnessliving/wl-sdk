@@ -7,7 +7,7 @@ use WellnessLiving\Wl\RsRewardScoreSid;
 /**
  * Manages identifiers of user activity.
  *
- * Last ID: 56.
+ * Last ID: 63.
  */
 abstract class WlLoginActivityTypeSid
 {
@@ -180,6 +180,41 @@ abstract class WlLoginActivityTypeSid
    * Client sent an invite.
    */
   const INVITE_SEND = 14;
+
+  /**
+   * Lead stage was changed by an automation step.
+   */
+  const LEAD_STAGE_AUTOMATION = 57;
+
+  /**
+   * Lead stage was changed when a client met an automation exit criterion.
+   */
+  const LEAD_STAGE_AUTOMATION_EXIT = 58;
+
+  /**
+   * Lead stage was changed when a client completed an automation.
+   */
+  const LEAD_STAGE_AUTOMATION_FINISH = 59;
+
+  /**
+   * Lead stage was set when the lead was created.
+   */
+  const LEAD_STAGE_CREATED = 60;
+
+  /**
+   * Lead stage was changed because the previous stage was deleted.
+   */
+  const LEAD_STAGE_DELETE = 61;
+
+  /**
+   * Lead stage was changed manually by a staff member.
+   */
+  const LEAD_STAGE_MANUAL = 62;
+
+  /**
+   * Lead stage was changed when the client joined a client group.
+   */
+  const LEAD_STAGE_MEMBER_GROUP = 63;
 
   /**
    * The user shared location item into Facebook

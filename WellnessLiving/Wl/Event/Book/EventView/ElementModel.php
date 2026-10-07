@@ -423,6 +423,12 @@ class ElementModel extends WlModelAbstract
  *     </dl>
  *   </dd>
  * 
+ *   <dt>array[] `a_tickets`</dt>
+ *   <dd>
+ *     List of ticket options available for booking the event. Empty if the event is not a
+ * ticketed event. .
+ *   </dd>
+ * 
  *   <dt>string `dt_book_date`</dt>
  *   <dd>Date/time of first event session.</dd>
  * 
@@ -690,6 +696,15 @@ class ElementModel extends WlModelAbstract
  * @var array
  */
   public $a_staff_logo;
+
+  /**
+ * List of ticket options available for booking the event. Empty if the event is not a ticketed
+ * event.
+ *
+ * @get result
+ * @var array[]
+ */
+  public $a_tickets = [];
 
   /**
  * Timezone information for all timezones used in the event schedule.

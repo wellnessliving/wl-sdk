@@ -154,6 +154,13 @@ class AssetListModel extends WlModelAbstract
  *   <dt>bool `is_age_restricted`</dt>
  *   <dd>Determines whether this service can't be booked due to age restrictions.</dd>
  * 
+ *   <dt>bool `is_book_for_guest`</dt>
+ *   <dd>
+ *     Whether clients can book this asset on behalf of a guest.
+ * If the asset has a service-specific booking policy, that value is used.
+ * Otherwise, the business-level booking policy applies.
+ *   </dd>
+ * 
  *   <dt>string `k_class_tab`</dt>
  *   <dd>Quick book tab key. </dd>
  * 
