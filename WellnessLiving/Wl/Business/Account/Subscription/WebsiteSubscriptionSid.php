@@ -26,6 +26,34 @@ abstract class WebsiteSubscriptionSid
   const BASIC_LARGE = 6;
 
   /**
+   * @price-month 50.00
+   * @rate 1
+   * @title Presence (Bundle add-on)
+   */
+  const BUNDLE_ADDON = 9;
+
+  /**
+   * @price-month 0.00
+   * @rate 1
+   * @title Presence (Bundle add-on) Trial
+   */
+  const BUNDLE_ADDON_TRIAL = 10;
+
+  /**
+   * @price-month 100.00
+   * @rate 1
+   * @title Presence (Bundle)
+   */
+  const BUNDLE_FULL = 8;
+
+  /**
+   * @price-month 0.00
+   * @rate 1
+   * @title Presence (Bundle) Trial
+   */
+  const BUNDLE_FULL_TRIAL = 11;
+
+  /**
    * @price-alarm 99.00
    * @price-month 299.00
    * @rate 6

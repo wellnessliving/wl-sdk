@@ -57,24 +57,38 @@ abstract class RsReportDateRangeSid
   const LAST_YEAR = 9;
 
   /**
-   * Range with last 30 days including current day.
+   * Range with last 14 days, not including current day.
+   *
+   * @title Last 14 days
+   */
+  const PREVIOUS_14 = 15;
+
+  /**
+   * Range with last 30 days, not including current day.
    */
   const PREVIOUS_MONTH = 3;
 
   /**
-   * Range with last 90 days including current day.
+   * Range with last 90 days, not including current day.
    */
   const PREVIOUS_QUARTER = 2;
 
   /**
-   * Range with last 7 days including current day.
+   * Range with last 7 days, not including current day.
    */
   const PREVIOUS_WEEK = 4;
 
   /**
-   * Range with last 365 days including current day.
+   * Range with last 365 days, not including current day.
    */
   const PREVIOUS_YEAR = 1;
+
+  /**
+   * Range with only one date which is the day before current day.
+   *
+   * @title Yesterday
+   */
+  const YESTERDAY = 14;
 }
 
 ?>

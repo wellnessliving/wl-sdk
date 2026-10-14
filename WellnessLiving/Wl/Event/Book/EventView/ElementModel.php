@@ -397,6 +397,13 @@ class ElementModel extends WlModelAbstract
  *       <dt>string `s_timezone`</dt>
  *       <dd>The name of the timezone in which the session is held.</dd>
  * 
+ *       <dt>string `s_timezone_location`</dt>
+ *       <dd>
+ *         Identifier of the timezone of the location of the session (for example `America/New_York`). Unlike
+ * `s_timezone`, it never depends on the timezone of the client. Use it to find out whether the early bird
+ * price is still applied, see {@link ElementModel::$dt_early}.
+ *       </dd>
+ * 
  *       <dt>string `text_room`</dt>
  *       <dd>The room of the event.</dd>
  *     </dl>
@@ -423,17 +430,56 @@ class ElementModel extends WlModelAbstract
  *     </dl>
  *   </dd>
  * 
+ *   <dt>array `a_ticket_inventory`</dt>
+ *   <dd>
+ *     How many tickets can be sold for the event and how many of those are still available. Empty if the
+ * event is not a ticketed event. .
+ *     <dl>
+ *       <dt>int `i_capacity`</dt>
+ *       <dd>Total number of tickets that can be sold for the event.</dd>
+ * 
+ *       <dt>int `i_order_limit`</dt>
+ *       <dd>Maximum number of tickets that can be ordered in one purchase. `0` if there is no limit.</dd>
+ * 
+ *       <dt>int `i_remain`</dt>
+ *       <dd>Number of tickets still available to sell. `0` if the event is sold out.</dd>
+ *     </dl>
+ *   </dd>
+ * 
  *   <dt>array[] `a_tickets`</dt>
  *   <dd>
  *     List of ticket options available for booking the event. Empty if the event is not a
  * ticketed event. .
+ * Each element contains the following keys:
+ *     <dl>
+ *       <dt>string `k_ticket_option`</dt>
+ *       <dd>
+ *         Globally unique identifier of the ticket option. 
+ *       </dd>
+ * 
+ *       <dt>string `m_price`</dt>
+ *       <dd>One ticket price.</dd>
+ * 
+ *       <dt>float|null `m_price_early`</dt>
+ *       <dd>
+ *         One ticket price with the early bird applied, taken from the settings of the event. `null` if the
+ * event has no early bird. It is returned even when the early bird period is over: the client decides
+ * whether to apply it, see `dt_early` and `s_timezone_location` of the schedule.
+ *       </dd>
+ * 
+ *       <dt>string `text_title`</dt>
+ *       <dd>Ticket option name.</dd>
+ *     </dl>
  *   </dd>
  * 
  *   <dt>string `dt_book_date`</dt>
  *   <dd>Date/time of first event session.</dd>
  * 
- *   <dt>string `dt_early`</dt>
- *   <dd>Early date of event purchase.</dd>
+ *   <dt>string|null `dt_early`</dt>
+ *   <dd>
+ *     The last date when the early bird price is applied, the date itself included. `null` if the event has
+ * no early bird. See {@link ElementModel::$dt_early}.
+ *   </dd>
  * 
  *   <dt>string `dt_end`</dt>
  *   <dd>End date of the event instance.</dd>
@@ -491,6 +537,15 @@ class ElementModel extends WlModelAbstract
  *   <dt>bool `is_ticket`</dt>
  *   <dd>`true` if the event is a ticketed event; `false` otherwise.</dd>
  * 
+ *   <dt>bool `is_ticket_guest_allowed`</dt>
+ *   <dd>`true` if a client can buy tickets without creating an account; `false` otherwise.</dd>
+ * 
+ *   <dt>bool `is_ticket_terms`</dt>
+ *   <dd>`true` if a client must accept the terms and conditions before buying a ticket; `false` otherwise.</dd>
+ * 
+ *   <dt>bool `is_ticket_unpaid_allowed`</dt>
+ *   <dd>`true` if a client can reserve tickets without payment and pay at the door; `false` otherwise.</dd>
+ * 
  *   <dt>bool `is_virtual`</dt>
  *   <dd>`true` if event is virtual; `false` otherwise.</dd>
  * 
@@ -514,6 +569,9 @@ class ElementModel extends WlModelAbstract
  * 
  *   <dt>string `xml_description`</dt>
  *   <dd>Description of event. Ready to put into browser.</dd>
+ * 
+ *   <dt>string `xml_ticket_terms`</dt>
+ *   <dd>Terms and conditions of a ticketed event as HTML. Empty if there are none.</dd>
  * </dl>
  * @get result
  * @var array[]
@@ -660,6 +718,13 @@ class ElementModel extends WlModelAbstract
  *   <dt>string `s_timezone`</dt>
  *   <dd>The name of the timezone in which the session is held.</dd>
  * 
+ *   <dt>string `s_timezone_location`</dt>
+ *   <dd>
+ *     Identifier of the timezone of the location of the session (for example `America/New_York`). Unlike
+ * `s_timezone`, it never depends on the timezone of the client. Use it to find out whether the early bird
+ * price is still applied, see {@link ElementModel::$dt_early}.
+ *   </dd>
+ * 
  *   <dt>string `text_room`</dt>
  *   <dd>The room of the event.</dd>
  * </dl>
@@ -698,9 +763,37 @@ class ElementModel extends WlModelAbstract
   public $a_staff_logo;
 
   /**
+ * How many tickets can be sold for the ticketed event and how many of those are still available.
+ * Empty if the event is not a ticketed event.
+ *
+ * @get result
+ * @var array
+ */
+  public $a_ticket_inventory = [];
+
+  /**
  * List of ticket options available for booking the event. Empty if the event is not a ticketed
  * event.
  *
+ * <dl>
+ *   <dt>string `k_ticket_option`</dt>
+ *   <dd>
+ *     Globally unique identifier of the ticket option. 
+ *   </dd>
+ * 
+ *   <dt>string `m_price`</dt>
+ *   <dd>One ticket price.</dd>
+ * 
+ *   <dt>float|null `m_price_early`</dt>
+ *   <dd>
+ *     One ticket price with the early bird applied, taken from the settings of the event. `null` if the event
+ * has no early bird. The end of the early bird period is not taken into account, so the client decides
+ * whether to apply this price.
+ *   </dd>
+ * 
+ *   <dt>string `text_title`</dt>
+ *   <dd>Ticket option name.</dd>
+ * </dl>
  * @get result
  * @var array[]
  */
@@ -782,7 +875,12 @@ class ElementModel extends WlModelAbstract
   public $dt_book_date;
 
   /**
- * The early registration date of the event.
+ * The last date when the early bird price is applied, in MySQL date format. `null` if the event has no early bird.
+ *
+ * The early bird price applies while the current date in the timezone of the location of the session
+ * (`s_timezone_location` of the {@link ElementModel::$a_schedule} item) is not later than this date,
+ * the date itself included. This is the same rule that is used when the event is purchased.
+ * Applies to {@link ElementModel::$m_price_total_early} and to `m_price_early` of {@link ElementModel::$a_tickets}.
  *
  * @get result
  * @var string|null
@@ -1066,6 +1164,33 @@ class ElementModel extends WlModelAbstract
   public $is_ticket;
 
   /**
+ * `true` if a client can buy tickets without creating an account. `false` if the event is not
+ * a ticketed event.
+ *
+ * @get result
+ * @var bool
+ */
+  public $is_ticket_guest_allowed = false;
+
+  /**
+ * `true` if a client must accept terms and conditions before buying a ticket, see
+ * {@link ElementModel::$xml_ticket_terms}. `false` if the event is not a ticketed event.
+ *
+ * @get result
+ * @var bool
+ */
+  public $is_ticket_terms = false;
+
+  /**
+ * `true` if a client can reserve tickets without payment and pay at the door. `false` if the event
+ * is not a ticketed event.
+ *
+ * @get result
+ * @var bool
+ */
+  public $is_ticket_unpaid_allowed = false;
+
+  /**
  * `true` if event is virtual; `false` otherwise.
  *
  * @get result
@@ -1218,6 +1343,15 @@ class ElementModel extends WlModelAbstract
  * @var string|null
  */
   public $xml_description;
+
+  /**
+ * Terms and conditions as HTML that a client must accept before buying a ticket. Empty if the event
+ * is not a ticketed event or does not require the client to accept anything.
+ *
+ * @get result
+ * @var string
+ */
+  public $xml_ticket_terms = '';
 }
 
 ?>

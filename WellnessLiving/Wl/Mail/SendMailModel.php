@@ -75,6 +75,15 @@ class SendMailModel extends WlModelAbstract
  * @var string
  */
   public $s_subject = '';
+
+  /**
+ * The receiver user key.
+ * `null` if the email should not be linked to a specific user's contact history.
+ *
+ * @post post
+ * @var string|null
+ */
+  public $uid = null;
 }
 
 ?>

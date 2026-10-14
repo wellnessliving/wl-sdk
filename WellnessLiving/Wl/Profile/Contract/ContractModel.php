@@ -90,6 +90,15 @@ class ContractModel extends WlModelAbstract
   public $f_manual_discount = 0;
 
   /**
+ * Whether the agreement requires a signature.
+ * `false` for a simple agreement without a signature, e.g. terms and conditions of a ticket.
+ *
+ * @get result
+ * @var bool
+ */
+  public $has_signature = true;
+
+  /**
  * The text of the contract.
  *
  * @get result

@@ -47,7 +47,7 @@ class TicketListModel extends WlModelAbstract
  *       <dd>Number of not cancelled tickets of this type in the order.</dd>
  * 
  *       <dt>string `k_ticket_option`</dt>
- *       <dd>Key of the ticket type. Key of the ticket type.</dd>
+ *       <dd>Key of the ticket type.</dd>
  * 
  *       <dt>string `text_title`</dt>
  *       <dd>Name of the ticket type.</dd>
@@ -118,7 +118,27 @@ class TicketListModel extends WlModelAbstract
  *   <dd>Key of the ticket, the one {@link TicketScanModel} takes.</dd>
  * 
  *   <dt>string `k_ticket_option`</dt>
- *   <dd>Key of the ticket type. Key of the ticket type.</dd>
+ *   <dd>Key of the ticket type.</dd>
+ * 
+ *   <dt>string `m_refund`</dt>
+ *   <dd>
+ *     Amount refunded for this ticket. The refunds of the purchase item of the ticket. If several tickets share
+ * one purchase item, the refunds of the item are split equally between its cancelled tickets. `0` if nothing
+ * was refunded. Decimal string, in the currency {@link TicketListModel::$k_currency}.
+ *   </dd>
+ * 
+ *   <dt>string `m_price`</dt>
+ *   <dd>
+ *     Price of the ticket: how much was paid for it, not net of refunds. Decimal string, in the currency
+ * {@link TicketListModel::$k_currency}. The paid amount of the purchase item of the ticket divided by the number
+ * of tickets bought with it.
+ *   </dd>
+ * 
+ *   <dt>string `text_holder`</dt>
+ *   <dd>
+ *     Full name of the holder of the ticket: the person who has claimed it. Empty if nobody has claimed the
+ * ticket.
+ *   </dd>
  * 
  *   <dt>string `text_ticket_code`</dt>
  *   <dd>

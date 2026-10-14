@@ -321,6 +321,47 @@ class ProcessGroupModel extends WlModelAbstract
   public $a_visit;
 
   /**
+ * Values are arrays with next keys:
+ *
+ * <dl>
+ *   <dt>bool `is_free`</dt>
+ *   <dd>`true` if the visit is free; `false` otherwise.</dd>
+ * 
+ *   <dt>bool `is_pay_required`</dt>
+ *   <dd>
+ *     `true` if the booking triggered the payment flow: the visit is booked, is not paid, and the client must
+ *   pay for it by the link in `text_payment_link`, otherwise the visit is cancelled automatically.
+ *   `false` otherwise: the visit is paid, free, waitlisted, cancelled, or the application is allowed to book
+ *   without paying at all.
+ *   </dd>
+ * 
+ *   <dt>bool `is_waitlist`</dt>
+ *   <dd>`true` whether the booked slot was waitlisted; `false` otherwise.</dd>
+ * 
+ *   <dt>string `k_login_promotion`</dt>
+ *   <dd>Applied user's purchase option. </dd>
+ * 
+ *   <dt>string `k_promotion`</dt>
+ *   <dd>Purchase option. </dd>
+ * 
+ *   <dt>string `k_session_pass`</dt>
+ *   <dd>Applied session pass. </dd>
+ * 
+ *   <dt>string|null `text_payment_link`</dt>
+ *   <dd>
+ *     Link to complete the payment, the same one the client receives by email.
+ *   `null` if `is_pay_required` is `false`.
+ *   </dd>
+ * 
+ *   <dt>string `text_promotion`</dt>
+ *   <dd>Purchase option title.</dd>
+ * </dl>
+ * @post result
+ * @var array[]
+ */
+  public $a_visit_payment;
+
+  /**
  * Date/time to which session is booked.
  *
  * @get get

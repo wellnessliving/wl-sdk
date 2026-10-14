@@ -49,6 +49,14 @@ class DayTime73Model extends WlModelAbstract
  * 
  *   <dt>string `s_title`</dt>
  *   <dd>String representation of appointment schedule time.</dd>
+ * 
+ *   <dt>string `uid_staff_suggest`</dt>
+ *   <dd>
+ *     User key of the staff member the system would assign for this time if the client booked with any staff member.
+ * Populated only when no specific staff member is requested and the booking is not back-to-back.
+ * 
+ * `'0'` when not applicable or for asset bookings.
+ *   </dd>
  * </dl>
  * @get result
  * @var array

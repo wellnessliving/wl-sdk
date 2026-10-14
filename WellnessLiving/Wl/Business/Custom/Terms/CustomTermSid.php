@@ -36,7 +36,7 @@ class CustomTermSid
   /**
    * Client.
    *
-   * @description People with an account at your business
+   * @description The people you serve
    * @title Client
    */
   const CLIENT = 4;

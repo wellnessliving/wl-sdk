@@ -12,6 +12,7 @@ use WellnessLiving\Thoth\PayProcessor\Terminal\TerminalTypeSid;
 use WellnessLiving\Thoth\WlPay\Cordova\CordovaCcrDeviceSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\Pay\Form\Surcharge\SurchargeTenderModel;
 use WellnessLiving\Wl\WlPayMethodSid;
 use WellnessLiving\Wl\WlPayProcessorSid;
 
@@ -504,6 +505,36 @@ class EnvironmentUserModel extends WlModelAbstract
  * @var bool
  */
   public $is_save_source = null;
+
+  /**
+ * Whether a card-present (POS) source at this business can never carry a surcharge (SAL-1314, FR-007): the
+ * business's processor implements the card-type contract and card-present surcharge is out of the rule's
+ * scope for it. `false` on a build whose monolith part is not live yet, or whenever surcharges are not
+ * configured for POS at all - both read the same as "nothing to suppress".
+ *
+ * The browser uses this to hide the surcharge row for a POS source outright, without calling
+ * {@link SurchargeTenderModel}: a card-present decision never depends on the BIN or
+ * the saved card, only on the business and the pay method.
+ *
+ * @get result
+ * @var bool
+ */
+  public $is_surcharge_card_present_blocked = false;
+
+  /**
+ * Whether the business's ECOMMERCE processor implements the SAL-1314 card-type contract.
+ *
+ * `false` on a build whose monolith part is not live yet, same as a processor that never implements it.
+ *
+ * The browser uses this to decide whether it is worth calling
+ * {@link SurchargeTenderModel} at all for a typed card number or a saved-card
+ * switch - calling it when this is `false` would always get `is_allowed=true` back, so the hooks stay
+ * inactive instead.
+ *
+ * @get result
+ * @var bool
+ */
+  public $is_surcharge_tender_contract = false;
 
   /**
  * Whether tips are accepted.

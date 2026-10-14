@@ -16,7 +16,7 @@ use WellnessLiving\Wl\Pay\Transaction\WlPayTransactionStatusSid;
  *
  * Pay attention that all <tt>\MailPrioritySid</tt> must start with backslash.
  *
- * Last used ID: 224.
+ * Last used ID: 225.
  */
 abstract class RsMailSid
 {
@@ -1238,6 +1238,13 @@ abstract class RsMailSid
    * Send a copy of waiver.
    */
   const TERM_COPY = 99;
+
+  /**
+   * Sent after a ticketed event is purchased.
+   *
+   * Contains the order summary and QR codes of the tickets. Is sent to a buyer with or without an account.
+   */
+  const TICKET_PURCHASE = 225;
 
   /**
    * Global email campaigns allows to send email to all clients, business owners, admins, etc.

@@ -1252,7 +1252,7 @@ class ResponseModel extends WlModelAbstract
  *   <dd>Appointment key to pay for. </dd>
  * 
  *   <dt>string `k_id`</dt>
- *   <dd>Item key within <var>id_table</var> table that Quick Buy performed for.</dd>
+ *   <dd>Item key within `id_table` table that Quick Buy performed for.</dd>
  * 
  *   <dt>string `k_visit`</dt>
  *   <dd>Visit key to pay for. </dd>

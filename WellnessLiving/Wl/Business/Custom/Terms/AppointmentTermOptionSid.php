@@ -23,7 +23,7 @@ class AppointmentTermOptionSid
    *
    * @title Consultation
    * @title-plural Consultations
-   * @vowel-sound true
+   * @vowel-sound false
    */
   const CONSULTATION = 5;
 

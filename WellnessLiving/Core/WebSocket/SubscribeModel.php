@@ -34,6 +34,12 @@ class SubscribeModel extends WlModelAbstract
  *
  * Subscriber will only receive notifications about events in which all these values equal values specified here.
  *
+ * Parameters for `2389`:
+ * <dl>
+ *   <dt>string `uid`</dt>
+ *   <dd>The user whose access has changed.</dd>
+ * </dl>
+ * 
  * Parameters for `60`:
  * <dl>
  *   <dt>string `k_personnel`</dt>
@@ -72,6 +78,18 @@ class SubscribeModel extends WlModelAbstract
  * 
  *   <dt>string `uid_receiver`</dt>
  *   <dd>User key who will receive message.</dd>
+ * </dl>
+ * 
+ * Parameters for `2382`:
+ * <dl>
+ *   <dt>string `dtu_start`</dt>
+ *   <dd>Start of the session, in UTC and MySQL format.</dd>
+ * 
+ *   <dt>string `k_business`</dt>
+ *   <dd>Business key.</dd>
+ * 
+ *   <dt>string `k_class_period`</dt>
+ *   <dd>Key of the class period the session belongs to.</dd>
  * </dl>
  * 
  * Parameters for `1583`:
@@ -134,6 +152,12 @@ class SubscribeModel extends WlModelAbstract
  *   <dd>Microservice key.
  * 
  * `null` if the value is not set</dd>
+ * </dl>
+ * 
+ * Parameters for `2390`:
+ * <dl>
+ *   <dt>string `uid`</dt>
+ *   <dd>The administrator.</dd>
  * </dl>
  * 
  * Parameters for `1660`:
@@ -409,6 +433,24 @@ class SubscribeModel extends WlModelAbstract
  *   <dd>Key of the changed task.</dd>
  * </dl>
  * 
+ * Parameters for `2382`:
+ * <dl>
+ *   <dt>string|null `dtu_attend`</dt>
+ *   <dd>Time when the ticket has been checked in, in UTC and MySQL format.</dd>
+ * 
+ *   <dt>int `i_attend`</dt>
+ *   <dd>Number of the tickets checked in for the session, including this one.</dd>
+ * 
+ *   <dt>int `i_sold`</dt>
+ *   <dd>Number of the tickets sold for the session.</dd>
+ * 
+ *   <dt>int `id_visit`</dt>
+ *   <dd>Status of the visit of the ticket after the check-in. One of {@link WlVisitSid}.</dd>
+ * 
+ *   <dt>string `k_ticket_item`</dt>
+ *   <dd>Key of the ticket that has been checked in.</dd>
+ * </dl>
+ * 
  * Parameters for `1583`:
  * <dl>
  *   <dt>array `a_data`</dt>
@@ -520,6 +562,14 @@ class SubscribeModel extends WlModelAbstract
  * Text of the log item that was just added.
  * 
  * `null` if this message does not contain information about newly added log item.
+ *   </dd>
+ * </dl>
+ * 
+ * Parameters for `2390`:
+ * <dl>
+ *   <dt>int `i_request`</dt>
+ *   <dd>
+ *
  *   </dd>
  * </dl>
  * 

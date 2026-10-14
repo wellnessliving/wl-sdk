@@ -12,6 +12,12 @@ use WellnessLiving\Wl\Mode\ModeSid;
  * The ticket is given either by its full key or by a short numbers-only code, and is checked against the session
  * the staff member has opened. Any problem with the ticket is reported with {@link UserException}, the code of the
  * exception tells the client what has happened:<dl>
+ *   <dt>`access`</dt>
+ *   <dd>The staff member has no attendance privilege for the class of the session.</dd>
+ *   <dt>`access-backend`</dt>
+ *   <dd>No staff session, or no access to the business.</dd>
+ *   <dt>`class-period-nx`</dt>
+ *   <dd>The session does not exist in the business.</dd>
  *   <dt>`ticket-code-invalid`</dt>
  *   <dd>The value is neither a ticket key nor a valid short code.</dd>
  *   <dt>`ticket-nx`</dt>

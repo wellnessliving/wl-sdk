@@ -176,6 +176,19 @@ class ElementModel extends WlModelAbstract
  *   <dd>
  *     List of ticket options available for booking the event. Empty if the item is not a
  * ticketed event. .
+ * Each element contains the following keys:
+ *     <dl>
+ *       <dt>string `k_ticket_option`</dt>
+ *       <dd>
+ *         Globally unique identifier of the ticket option. 
+ *       </dd>
+ * 
+ *       <dt>string `m_price`</dt>
+ *       <dd>One ticket price.</dd>
+ * 
+ *       <dt>string `text_title`</dt>
+ *       <dd>Ticket option name.</dd>
+ *     </dl>
  *   </dd>
  * </dl>
  * @get result
@@ -436,6 +449,19 @@ class ElementModel extends WlModelAbstract
  *       <dd>
  *         List of ticket options available for booking the event. Empty if the item is not a
  * ticketed event. .
+ * Each element contains the following keys:
+ *         <dl>
+ *           <dt>string `k_ticket_option`</dt>
+ *           <dd>
+ *             Globally unique identifier of the ticket option. 
+ *           </dd>
+ * 
+ *           <dt>string `m_price`</dt>
+ *           <dd>One ticket price.</dd>
+ * 
+ *           <dt>string `text_title`</dt>
+ *           <dd>Ticket option name.</dd>
+ *         </dl>
  *       </dd>
  *     </dl>
  *   </dd>
@@ -526,6 +552,21 @@ class ElementModel extends WlModelAbstract
  *     </dl>
  *   </dd>
  * 
+ *   <dt>array[] `a_purchase_error`</dt>
+ *   <dd>
+ *     Purchase errors for this item. The same structure as {@link ElementModel::$a_purchase_error} has.
+ *     <dl>
+ *       <dt>string `text_code`</dt>
+ *       <dd>A machine-readable error code identifying the restriction type.</dd>
+ * 
+ *       <dt>string `text_field`</dt>
+ *       <dd>The field associated with the error. Empty string if not applicable.</dd>
+ * 
+ *       <dt>string `text_message`</dt>
+ *       <dd>A human-readable error message describing the restriction.</dd>
+ *     </dl>
+ *   </dd>
+ * 
  *   <dt>string[] `a_tax`</dt>
  *   <dd>Tax amounts keyed by tax key. The same structure as {@link ElementModel::$a_tax} has.</dd>
  * 
@@ -555,6 +596,28 @@ class ElementModel extends WlModelAbstract
  * @var array[]
  */
   public $a_item;
+
+  /**
+ * A list of purchase errors that would prevent this item from being purchased by the current user.
+ *
+ * Each element represents a server-side validation error. Empty if there are no purchase restrictions
+ * or if the request is unauthenticated. Each element has the following structure:
+ *
+ * <dl>
+ *   <dt>string `text_code`</dt>
+ *   <dd>A machine-readable error code identifying the restriction type.</dd>
+ * 
+ *   <dt>string `text_field`</dt>
+ *   <dd>The field associated with the error. Empty string if not applicable.</dd>
+ * 
+ *   <dt>string `text_message`</dt>
+ *   <dd>A human-readable error message describing the restriction.</dd>
+ * </dl>
+ * @get result
+ * @post result
+ * @var array[]
+ */
+  public $a_purchase_error = [];
 
   /**
  * The list of items grouped by sale categories on the store page.

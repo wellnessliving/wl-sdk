@@ -33,9 +33,6 @@ class ConnectionCheckModel extends WlModelAbstract
  *   <dt>int `i_occurrence_count`</dt>
  *   <dd>Number of matching records.</dd>
  * 
- *   <dt>int `i_priority_multiplier`</dt>
- *   <dd>Usage-statistics priority multiplier. Present for the usage-statistics source.</dd>
- * 
  *   <dt>int `cid_problem`</dt>
  *
  * 

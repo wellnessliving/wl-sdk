@@ -105,6 +105,15 @@ class ClassViewModel extends WlModelAbstract
  *   <dt>int[] `a_tag`</dt>
  *   <dd>List of tags.</dd>
  * 
+ *   <dt>array[] `a_tickets`</dt>
+ *   <dd>
+ *     Ticket options available for booking the event. Empty if the event is not a ticketed event.
+ * 
+ * Each element has `k_ticket_option`, `m_price`, `m_price_early` and `text_title` keys. `m_price_early` is
+ * taken from the settings of the event, and is returned even when the early bird period is over:
+ * the client decides whether to apply it, see <var>dt_early</var> and <var>s_timezone_location</var>.
+ *   </dd>
+ * 
  *   <dt>bool `can_book`</dt>
  *   <dd>Whether current client can book class.</dd>
  * 
@@ -113,6 +122,13 @@ class ClassViewModel extends WlModelAbstract
  * 
  *   <dt>string `dt_date_local`</dt>
  *   <dd>Start date in local time.</dd>
+ * 
+ *   <dt>string|null `dt_early`</dt>
+ *   <dd>
+ *     The last date when the early bird price is applied, in MySQL date format, the date itself included. `null`
+ * if the event has no early bird. The early bird price applies while the current date in the timezone
+ * <var>s_timezone_location</var> is not later than this date.
+ *   </dd>
  * 
  *   <dt>string `html_deny_reason`</dt>
  *   <dd>Reason why client can not book class. Not empty only if <var>can_book</var> is `false`.</dd>
@@ -165,6 +181,12 @@ class ClassViewModel extends WlModelAbstract
  *   <dt>int `id_deny_reason`</dt>
  *   <dd>ID of deny reason. One of {@link DenyReasonSid} constants.</dd>
  * 
+ *   <dt>bool `is_block`</dt>
+ *   <dd>
+ *     `true` if the event is a block event: all its sessions are booked together. `false` for a non-block event
+ * and for a class. Makes sense only if <var>is_event</var> is `true`.
+ *   </dd>
+ * 
  *   <dt>bool `is_book`</dt>
  *   <dd>Whether current class was booked by current client.</dd>
  * 
@@ -187,6 +209,9 @@ class ClassViewModel extends WlModelAbstract
  *   <dt>bool `is_promotion_only`</dt>
  *   <dd>`true` if this class can be paid with promotion only; `false` otherwise.</dd>
  * 
+ *   <dt>bool `is_ticket`</dt>
+ *   <dd>`true` if the event is a ticketed event; `false` otherwise.</dd>
+ * 
  *   <dt>bool `is_virtual`</dt>
  *   <dd>`true` if class is virtual, `false` otherwise.</dd>
  * 
@@ -204,6 +229,13 @@ class ClassViewModel extends WlModelAbstract
  * 
  *   <dt>string `s_duration`</dt>
  *   <dd>Class duration. In human readable format.</dd>
+ * 
+ *   <dt>string `s_timezone_location`</dt>
+ *   <dd>
+ *     Identifier of the timezone of the location of the session (for example `America/New_York`). Unlike
+ * <var>text_timezone</var>, it never depends on the timezone of the client. Use it to find out whether the
+ * early bird price is still applied, see <var>dt_early</var>.
+ *   </dd>
  * 
  *   <dt>string `s_title`</dt>
  *   <dd>Class name.</dd>
@@ -356,6 +388,15 @@ class ClassViewModel extends WlModelAbstract
  *       <dt>int[] `a_tag`</dt>
  *       <dd>List of tags.</dd>
  * 
+ *       <dt>array[] `a_tickets`</dt>
+ *       <dd>
+ *         Ticket options available for booking the event. Empty if the event is not a ticketed event.
+ * 
+ * Each element has `k_ticket_option`, `m_price`, `m_price_early` and `text_title` keys. `m_price_early` is
+ * taken from the settings of the event, and is returned even when the early bird period is over:
+ * the client decides whether to apply it, see <var>dt_early</var> and <var>s_timezone_location</var>.
+ *       </dd>
+ * 
  *       <dt>bool `can_book`</dt>
  *       <dd>Whether current client can book class.</dd>
  * 
@@ -364,6 +405,13 @@ class ClassViewModel extends WlModelAbstract
  * 
  *       <dt>string `dt_date_local`</dt>
  *       <dd>Start date in local time.</dd>
+ * 
+ *       <dt>string|null `dt_early`</dt>
+ *       <dd>
+ *         The last date when the early bird price is applied, in MySQL date format, the date itself included. `null`
+ * if the event has no early bird. The early bird price applies while the current date in the timezone
+ * <var>s_timezone_location</var> is not later than this date.
+ *       </dd>
  * 
  *       <dt>string `html_deny_reason`</dt>
  *       <dd>Reason why client can not book class. Not empty only if <var>can_book</var> is `false`.</dd>
@@ -416,6 +464,12 @@ class ClassViewModel extends WlModelAbstract
  *       <dt>int `id_deny_reason`</dt>
  *       <dd>ID of deny reason. One of {@link DenyReasonSid} constants.</dd>
  * 
+ *       <dt>bool `is_block`</dt>
+ *       <dd>
+ *         `true` if the event is a block event: all its sessions are booked together. `false` for a non-block event
+ * and for a class. Makes sense only if <var>is_event</var> is `true`.
+ *       </dd>
+ * 
  *       <dt>bool `is_book`</dt>
  *       <dd>Whether current class was booked by current client.</dd>
  * 
@@ -438,6 +492,9 @@ class ClassViewModel extends WlModelAbstract
  *       <dt>bool `is_promotion_only`</dt>
  *       <dd>`true` if this class can be paid with promotion only; `false` otherwise.</dd>
  * 
+ *       <dt>bool `is_ticket`</dt>
+ *       <dd>`true` if the event is a ticketed event; `false` otherwise.</dd>
+ * 
  *       <dt>bool `is_virtual`</dt>
  *       <dd>`true` if class is virtual, `false` otherwise.</dd>
  * 
@@ -455,6 +512,13 @@ class ClassViewModel extends WlModelAbstract
  * 
  *       <dt>string `s_duration`</dt>
  *       <dd>Class duration. In human readable format.</dd>
+ * 
+ *       <dt>string `s_timezone_location`</dt>
+ *       <dd>
+ *         Identifier of the timezone of the location of the session (for example `America/New_York`). Unlike
+ * <var>text_timezone</var>, it never depends on the timezone of the client. Use it to find out whether the
+ * early bird price is still applied, see <var>dt_early</var>.
+ *       </dd>
  * 
  *       <dt>string `s_title`</dt>
  *       <dd>Class name.</dd>

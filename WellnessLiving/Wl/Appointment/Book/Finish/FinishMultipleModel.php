@@ -256,6 +256,13 @@ class FinishMultipleModel extends WlModelAbstract
  *         User key. 
  * Specify only in a case of booking for a lof of different users.
  *       </dd>
+ * 
+ *       <dt>string `url_virtual`</dt>
+ *       <dd>
+ *         The meeting link for a non-integrated virtual service.
+ * Specify this for appointment bookings only when the service uses a non-integrated virtual provider.
+ * When provided, saved as both join and host link for the appointment.
+ *       </dd>
  *     </dl>
  *   </dd>
  * </dl>

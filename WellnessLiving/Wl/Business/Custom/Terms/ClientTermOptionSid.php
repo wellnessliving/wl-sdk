@@ -23,7 +23,7 @@ class ClientTermOptionSid
    *
    * @title Cadet
    * @title-plural Cadets
-   * @vowel-sound true
+   * @vowel-sound false
    */
   const CADET = 2;
 

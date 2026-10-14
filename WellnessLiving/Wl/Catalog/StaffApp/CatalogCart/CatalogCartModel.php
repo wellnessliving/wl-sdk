@@ -48,6 +48,25 @@ class CatalogCartModel extends WlModelAbstract
  *       <dd>
  *         List of tuition events for tuition participant. Each record has the next structure:
  *         <dl>
+ *           <dt>array|null `a_checkout`</dt>
+ *           <dd>
+ *             Output only. Additional information about how `m_checkout` was calculated when
+ *      the first membership payment is prorated, `null` otherwise:
+ *             <dl>
+ *               <dt>int|null `i_days_prorate`</dt>
+ *               <dd>Number of days the first payment is charged for. `null` if prorated by sessions.</dd>
+ * 
+ *               <dt>int|null `i_days_total`</dt>
+ *               <dd>Number of days in the billing cycle. `null` if prorated by sessions.</dd>
+ * 
+ *               <dt>int|null `i_sessions_prorate`</dt>
+ *               <dd>Number of sessions the first payment is charged for. `null` if prorated by days.</dd>
+ * 
+ *               <dt>int|null `i_sessions_total`</dt>
+ *               <dd>Number of sessions in the billing cycle. `null` if prorated by days.</dd>
+ *             </dl>
+ *           </dd>
+ * 
  *           <dt>array `a_discount`</dt>
  *           <dd>
  *             Discount applied to the event price:

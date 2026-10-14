@@ -25,7 +25,6 @@ class ListModel extends WlModelAbstract
  *   <dd>
  *     `true` if `k_id` value is product key, `false` if `k_id` value is product option key.
  *      Optional. Default value is `false`.
- *      Used for `id_sale` === {@link WlSaleSid::PRODUCT} only.
  *   </dd>
  * 
  *   <dt>string `k_id`</dt>
@@ -54,6 +53,19 @@ class ListModel extends WlModelAbstract
  *   <dd>
  *     List of ticket options available for booking the event. Empty if the item is not a
  * ticketed event. .
+ * Each element contains the following keys:
+ *     <dl>
+ *       <dt>string `k_ticket_option`</dt>
+ *       <dd>
+ *         Globally unique identifier of the ticket option. 
+ *       </dd>
+ * 
+ *       <dt>string `m_price`</dt>
+ *       <dd>One ticket price.</dd>
+ * 
+ *       <dt>string `text_title`</dt>
+ *       <dd>Ticket option name.</dd>
+ *     </dl>
  *   </dd>
  * 
  *   <dt>string `dtu_create`</dt>
@@ -124,6 +136,19 @@ class ListModel extends WlModelAbstract
  *   <dd>
  *     List of ticket options available for booking the event. Empty if the item is not a
  * ticketed event. .
+ * Each element contains the following keys:
+ *     <dl>
+ *       <dt>string `k_ticket_option`</dt>
+ *       <dd>
+ *         Globally unique identifier of the ticket option. 
+ *       </dd>
+ * 
+ *       <dt>string `m_price`</dt>
+ *       <dd>One ticket price.</dd>
+ * 
+ *       <dt>string `text_title`</dt>
+ *       <dd>Ticket option name.</dd>
+ *     </dl>
  *   </dd>
  * 
  *   <dt>string `dtu_create`</dt>

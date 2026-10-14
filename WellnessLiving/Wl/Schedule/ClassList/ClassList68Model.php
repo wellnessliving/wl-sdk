@@ -233,6 +233,12 @@ class ClassList68Model extends WlModelAbstract
  * {@link ClassList68Model::$show_book_status} is `true`. `null` if not requested.
  *   </dd>
  * 
+ *   <dt>bool `is_block`</dt>
+ *   <dd>
+ *     `true` if the event is a block event: all its sessions are booked together. `false` for a non-block event
+ * and for a class. Makes sense only if <var>is_event</var> is `true`.
+ *   </dd>
+ * 
  *   <dt>bool|null `is_book`</dt>
  *   <dd>
  *     Whether current class was booked by current client. Only present if
@@ -262,6 +268,13 @@ class ClassList68Model extends WlModelAbstract
  *   <dd>
  *     Whether special instructions are configured for this session and are visible to the current client.
  * The content itself (`html_special` in {@link ClassViewModel}) is not returned here.
+ *   </dd>
+ * 
+ *   <dt>bool `is_ticket`</dt>
+ *   <dd>
+ *     `true` if the event is a ticketed event; `false` otherwise.
+ * Tickets are booked into the same capacity as regular bookings, so <var>i_capacity</var> and <var>i_book</var>
+ * show how many tickets are sold and whether the event is sold out.
  *   </dd>
  * 
  *   <dt>bool `is_virtual`</dt>

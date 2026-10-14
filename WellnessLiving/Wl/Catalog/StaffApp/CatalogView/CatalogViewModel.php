@@ -90,6 +90,25 @@ class CatalogViewModel extends WlModelAbstract
  *
  * Always empty for sale items other than {@link WlSaleSid::ENROLLMENT}.
  *
+ * <dl>
+ *   <dt>string `k_ticket_option`</dt>
+ *   <dd>
+ *     Globally unique identifier of the ticket option. 
+ *   </dd>
+ * 
+ *   <dt>string `m_price`</dt>
+ *   <dd>One ticket price.</dd>
+ * 
+ *   <dt>float|null `m_price_early`</dt>
+ *   <dd>
+ *     One ticket price with the early bird applied, taken from the settings of the event. `null` if the event
+ * has no early bird. The end of the early bird period is not taken into account, so the client decides
+ * whether to apply this price.
+ *   </dd>
+ * 
+ *   <dt>string `text_title`</dt>
+ *   <dd>Ticket option name.</dd>
+ * </dl>
  * @get result
  * @var array[]
  */

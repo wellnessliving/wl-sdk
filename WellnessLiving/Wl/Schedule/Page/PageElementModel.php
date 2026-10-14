@@ -326,6 +326,15 @@ class PageElementModel extends WlModelAbstract
   public $is_in_progress;
 
   /**
+ * `true` if the visit has been paid for (via a purchase option, session pass, or single purchase).
+ * `false` if the visit is unpaid.
+ *
+ * @get result
+ * @var bool
+ */
+  public $is_paid;
+
+  /**
  * <tt>true</tt> - service is virtual; <tt>false</tt> - otherwise.
  *
  * @get result

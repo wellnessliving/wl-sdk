@@ -220,6 +220,14 @@ class EventListModel extends WlModelAbstract
  * `null` if field is not loaded.
  *       </dd>
  * 
+ *       <dt>string `s_timezone_location`</dt>
+ *       <dd>
+ *         Identifier of the timezone of the location of the session (for example `America/New_York`).
+ * 
+ * It never depends on the timezone of the client. Use it to find out whether the early bird price is still
+ *
+ *       </dd>
+ * 
  *       <dt>string `text_location`</dt>
  *       <dd>Location title.</dd>
  * 
@@ -243,9 +251,48 @@ class EventListModel extends WlModelAbstract
  *     </dl>
  *   </dd>
  * 
+ *   <dt>array|null `a_ticket_inventory`</dt>
+ *   <dd>
+ *     Returns how many tickets can be sold for the ticketed event the class belongs to, and how
+ *  many of those are still available to sell. 
+ * 
+ *  `null` if the class is not a ticketed event.
+ *     <dl>
+ *       <dt>int `i_capacity`</dt>
+ *       <dd>Total number of tickets that can be sold for the event.</dd>
+ * 
+ *       <dt>int `i_remain`</dt>
+ *       <dd>Number of tickets still available to sell.</dd>
+ * 
+ *       <dt>int `i_order_limit`</dt>
+ *       <dd>Maximum number of tickets that can be ordered for the event in one purchase. `0` if there is no limit.</dd>
+ *     </dl>
+ *   </dd>
+ * 
  *   <dt>array[] `a_tickets`</dt>
- *   <dd>List of ticket options available for booking the event. Empty if the event is not a ticketed
- * event.</dd>
+ *   <dd>
+ *     List of ticket options available for booking the event. Empty if the event is not a ticketed
+ * event.
+ *     <dl>
+ *       <dt>string `k_ticket_option`</dt>
+ *       <dd>
+ *         Globally unique identifier of the ticket option. 
+ *       </dd>
+ * 
+ *       <dt>string `m_price`</dt>
+ *       <dd>One ticket price.</dd>
+ * 
+ *       <dt>float|null `m_price_early`</dt>
+ *       <dd>
+ *         One ticket price with the early bird applied, taken from the settings of the event. `null` if the event
+ * has no early bird. The end of the early bird period is not taken into account, so the client decides
+ * whether to apply this price.
+ *       </dd>
+ * 
+ *       <dt>string `text_title`</dt>
+ *       <dd>Ticket option name.</dd>
+ *     </dl>
+ *   </dd>
  * 
  *   <dt>bool `can_book`</dt>
  *   <dd>
@@ -265,8 +312,17 @@ class EventListModel extends WlModelAbstract
  *   <dt>bool `can_cancel`</dt>
  *   <dd>Whether current user can cancel already booked event.</dd>
  * 
- *   <dt>string `dl_early`</dt>
- *   <dd>End date, when early bird price ends in <tt>MySql</tt> format.</dd>
+ *   <dt>string|null `dl_early`</dt>
+ *   <dd>
+ *     The last date when the early bird price is applied, in <tt>MySql</tt> date format. `null` if the event has
+ * no early bird.
+ * 
+ * The early bird price applies while the current date in the timezone of the location of the session
+ * ({@link \Wl\Event\EventListItemScheduleEntity::$s_timezone_location}) is not later than this date, the date itself
+ * included. This is the same rule that is used when the event is purchased.
+ * Applies to {@link \Wl\Event\EventListItemEntity::$m_price_total_early} and to `m_price_early` of
+ *
+ *   </dd>
  * 
  *   <dt>string `dl_end`</dt>
  *   <dd>End date of the scheduled session in <tt>MySql</tt> format.</dd>
