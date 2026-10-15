@@ -244,6 +244,16 @@ class AttendanceInfoModel extends WlModelAbstract
   public $is_start_virtual_service = false;
 
   /**
+ * Whether the session belongs to a ticketed event.
+ *
+ * `false` for classes, appointments, assets and events that are not ticketed.
+ *
+ * @get result
+ * @var bool
+ */
+  public $is_ticket = false;
+
+  /**
  * ID of appointment to get information for.
  *
  * @get get

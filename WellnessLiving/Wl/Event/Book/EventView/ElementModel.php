@@ -332,7 +332,9 @@ class ElementModel extends WlModelAbstract
  *         A list of staff members who conduct the session. Every element has the following next keys:
  *         <dl>
  *           <dt>string `k_staff`</dt>
- *           <dd>@deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
+ *           <dd>
+ *             <b style="color: red">Deprecated.</b> Legacy staff key. Returned only for applications from allow-list.
+ *           </dd>
  * 
  *           <dt>string `s_name`</dt>
  *           <dd>The staff member name.</dd>
@@ -433,7 +435,7 @@ class ElementModel extends WlModelAbstract
  *   <dt>array `a_ticket_inventory`</dt>
  *   <dd>
  *     How many tickets can be sold for the event and how many of those are still available. Empty if the
- * event is not a ticketed event. .
+ * event is not a ticketed event. 
  *     <dl>
  *       <dt>int `i_capacity`</dt>
  *       <dd>Total number of tickets that can be sold for the event.</dd>
@@ -449,7 +451,7 @@ class ElementModel extends WlModelAbstract
  *   <dt>array[] `a_tickets`</dt>
  *   <dd>
  *     List of ticket options available for booking the event. Empty if the event is not a
- * ticketed event. .
+ * ticketed event. 
  * Each element contains the following keys:
  *     <dl>
  *       <dt>string `k_ticket_option`</dt>
@@ -460,7 +462,7 @@ class ElementModel extends WlModelAbstract
  *       <dt>string `m_price`</dt>
  *       <dd>One ticket price.</dd>
  * 
- *       <dt>float|null `m_price_early`</dt>
+ *       <dt>string|null `m_price_early`</dt>
  *       <dd>
  *         One ticket price with the early bird applied, taken from the settings of the event. `null` if the
  * event has no early bird. It is returned even when the early bird period is over: the client decides
@@ -655,7 +657,7 @@ class ElementModel extends WlModelAbstract
  *     A list of staff members who conduct the session. Every element has the following next keys:
  *     <dl>
  *       <dt>string `k_staff`</dt>
- *       <dd>@deprecated Legacy staff key. Returned only for applications from allow-list.</dd>
+ *       <dd><b style="color: red">Deprecated.</b> Legacy staff key. Returned only for applications from allow-list.</dd>
  * 
  *       <dt>string `s_name`</dt>
  *       <dd>The staff member name.</dd>
@@ -766,6 +768,16 @@ class ElementModel extends WlModelAbstract
  * How many tickets can be sold for the ticketed event and how many of those are still available.
  * Empty if the event is not a ticketed event.
  *
+ * <dl>
+ *   <dt>int `i_capacity`</dt>
+ *   <dd>Total number of tickets that can be sold for the event.</dd>
+ * 
+ *   <dt>int `i_remain`</dt>
+ *   <dd>Number of tickets still available to sell.</dd>
+ * 
+ *   <dt>int `i_order_limit`</dt>
+ *   <dd>Maximum number of tickets that can be ordered for the event in one purchase. `0` if there is no limit.</dd>
+ * </dl>
  * @get result
  * @var array
  */
@@ -784,7 +796,7 @@ class ElementModel extends WlModelAbstract
  *   <dt>string `m_price`</dt>
  *   <dd>One ticket price.</dd>
  * 
- *   <dt>float|null `m_price_early`</dt>
+ *   <dt>string|null `m_price_early`</dt>
  *   <dd>
  *     One ticket price with the early bird applied, taken from the settings of the event. `null` if the event
  * has no early bird. The end of the early bird period is not taken into account, so the client decides

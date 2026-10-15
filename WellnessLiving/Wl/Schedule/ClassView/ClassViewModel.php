@@ -112,6 +112,25 @@ class ClassViewModel extends WlModelAbstract
  * Each element has `k_ticket_option`, `m_price`, `m_price_early` and `text_title` keys. `m_price_early` is
  * taken from the settings of the event, and is returned even when the early bird period is over:
  * the client decides whether to apply it, see <var>dt_early</var> and <var>s_timezone_location</var>.
+ *     <dl>
+ *       <dt>string `k_ticket_option`</dt>
+ *       <dd>
+ *         Globally unique identifier of the ticket option. 
+ *       </dd>
+ * 
+ *       <dt>string `m_price`</dt>
+ *       <dd>One ticket price.</dd>
+ * 
+ *       <dt>string|null `m_price_early`</dt>
+ *       <dd>
+ *         One ticket price with the early bird applied, taken from the settings of the event. `null` if the event
+ * has no early bird. The end of the early bird period is not taken into account, so the client decides
+ * whether to apply this price.
+ *       </dd>
+ * 
+ *       <dt>string `text_title`</dt>
+ *       <dd>Ticket option name.</dd>
+ *     </dl>
  *   </dd>
  * 
  *   <dt>bool `can_book`</dt>
@@ -395,6 +414,25 @@ class ClassViewModel extends WlModelAbstract
  * Each element has `k_ticket_option`, `m_price`, `m_price_early` and `text_title` keys. `m_price_early` is
  * taken from the settings of the event, and is returned even when the early bird period is over:
  * the client decides whether to apply it, see <var>dt_early</var> and <var>s_timezone_location</var>.
+ *         <dl>
+ *           <dt>string `k_ticket_option`</dt>
+ *           <dd>
+ *             Globally unique identifier of the ticket option. 
+ *           </dd>
+ * 
+ *           <dt>string `m_price`</dt>
+ *           <dd>One ticket price.</dd>
+ * 
+ *           <dt>string|null `m_price_early`</dt>
+ *           <dd>
+ *             One ticket price with the early bird applied, taken from the settings of the event. `null` if the event
+ * has no early bird. The end of the early bird period is not taken into account, so the client decides
+ * whether to apply this price.
+ *           </dd>
+ * 
+ *           <dt>string `text_title`</dt>
+ *           <dd>Ticket option name.</dd>
+ *         </dl>
  *       </dd>
  * 
  *       <dt>bool `can_book`</dt>

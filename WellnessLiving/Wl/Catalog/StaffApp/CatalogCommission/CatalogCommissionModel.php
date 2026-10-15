@@ -46,27 +46,27 @@ class CatalogCommissionModel extends WlModelAbstract
  *       <dd>One of {@link WlCommissionTypeSid} constants.</dd>
  * 
  *       <dt>bool `is_default`</dt>
- *       <dd><tt>true</tt> - if it is default commission for the staff,<tt>false</tt> - otherwise.</dd>
+ *       <dd>`true` - if it is default commission for the staff, `false` - otherwise.</dd>
  * 
  *       <dt>string `html_commission`</dt>
  *       <dd>Title of the commission.</dd>
  * 
  *       <dt>string `k_staff_pay`</dt>
- *       <dd>Staff pay key.  table.</dd>
+ *       <dd>Staff pay key. </dd>
  *     </dl>
  *   </dd>
  * 
  *   <dt>string `k_staff`</dt>
  *   <dd>
- *     [Deprecated]Staff key.
- *     table. It's use `uid` instead of this field.
+ *     <b style="color: red">Deprecated</b> Staff key. 
+ * Use `uid` instead of this field.
  *   </dd>
  * 
  *   <dt>string `html_name`</dt>
  *   <dd>Name of staff.</dd>
  * 
  *   <dt>string `uid`</dt>
- *   <dd>User key.  table.</dd>
+ *   <dd>User key. </dd>
  * </dl>
  * @get result
  * @var array[]

@@ -6,6 +6,11 @@ namespace WellnessLiving\Wl\Marketing\Automation\Dependency;
  * List of dependency contexts.
  *
  * Last ID: 17.
+ *
+ * ID 15 is retired: it was `EXIT_CRITERIA_MOVE_STAGE_LEAD_STAGE_CHANGE`, the target lead stage of a
+ *  stage move on the "Lead stage changes" exit criterion, removed per updates in WL-94261
+ *  (the criterion has no stage move). Do not reuse 15 for a new context, to avoid confusion with the
+ *  retired one in old code or documentation.
  */
 class DependencyContextEnum
 {
@@ -13,14 +18,6 @@ class DependencyContextEnum
    * Used in exit criteria (lead stage is changed).
    */
   const EXIT_CRITERIA_LEAD_STAGE_CHANGE = 14;
-
-  /**
-   * Target lead stage of the exit criterion "lead stage changes".
-   *
-   * {@link DependencyContextEnum::EXIT_CRITERIA_LEAD_STAGE_CHANGE} cannot be used for it: it already stores the
-   *  lead stages that trigger the exit in the same table, so the two would be mixed.
-   */
-  const EXIT_CRITERIA_MOVE_STAGE_LEAD_STAGE_CHANGE = 15;
 
   /**
    * Target lead stage of the exit criterion "client responds to marketing SMS".

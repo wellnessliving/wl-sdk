@@ -54,12 +54,6 @@ class StatementBadgeEnum
   const AUTO_PAYMENT_FAILED_ACCOUNT_CHARGE = 9;
 
   /**
-   * A staff member manually changed the status of an automatic payment to `Failed`. There were no
-   * reattempts and nothing was charged to the account balance.
-   */
-  const AUTO_PAYMENT_FAILED_MANUAL = 7;
-
-  /**
    * An automatic payment initially failed, but a later reattempt for the same purchase, installment
    * or bulk billing batch succeeded.
    */
@@ -81,12 +75,6 @@ class StatementBadgeEnum
    * The purchase failed at checkout and was not complete.
    */
   const PURCHASE_FAILED_CANCELED = 5;
-
-  /**
-   * A staff member manually changed the status of a purchase to `Failed`. There were no reattempts
-   * and nothing was charged to the account balance.
-   */
-  const PURCHASE_FAILED_MANUAL = 3;
 
   /**
    * A purchase payment first failed but got resolved after a retry.

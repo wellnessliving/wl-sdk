@@ -44,7 +44,9 @@ class ListModel extends WlModelAbstract
  *   <dd>Whether staff member available only for wait list booking.</dd>
  * 
  *   <dt>string `k_staff`</dt>
- *   <dd>@deprecated Legacy staff key.  Returned only for allow-listed apps.</dd>
+ *   <dd>
+ *     <b style="color: red">Deprecated.</b> Legacy staff key.  Returned only for allow-listed apps.
+ *   </dd>
  * 
  *   <dt>string `s_position`</dt>
  *   <dd>Position of the staff member in the business.</dd>

@@ -52,7 +52,7 @@ class ListModel extends WlModelAbstract
  *   <dt>array[] `a_tickets`</dt>
  *   <dd>
  *     List of ticket options available for booking the event. Empty if the item is not a
- * ticketed event. .
+ * ticketed event. 
  * Each element contains the following keys:
  *     <dl>
  *       <dt>string `k_ticket_option`</dt>
@@ -135,7 +135,7 @@ class ListModel extends WlModelAbstract
  *   <dt>array[] `a_tickets`</dt>
  *   <dd>
  *     List of ticket options available for booking the event. Empty if the item is not a
- * ticketed event. .
+ * ticketed event. 
  * Each element contains the following keys:
  *     <dl>
  *       <dt>string `k_ticket_option`</dt>

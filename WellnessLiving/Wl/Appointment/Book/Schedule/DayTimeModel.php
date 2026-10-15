@@ -39,8 +39,9 @@ class DayTimeModel extends WlModelAbstract
  * 
  *   <dt>string `k_staff`</dt>
  *   <dd>
- *     @deprecated If this time is already occupied by any client and staff member (but service capacity is not exhausted),
- *   this key contains key of staff member.  Otherwise - `0`.
+ *     <b style="color: red">Deprecated.</b> If this time is already occupied by any client and staff member
+ * (but service capacity is not exhausted), this key contains key of staff member.
+ *  Otherwise - `0`.
  *   </dd>
  * 
  *   <dt>string `uid_staff`</dt>
@@ -261,7 +262,10 @@ class DayTimeModel extends WlModelAbstract
  *   <dd>Service key. </dd>
  * 
  *   <dt>string `k_staff`</dt>
- *   <dd>@deprecated Staff key. Zero means any available staff. </dd>
+ *   <dd>
+ *     <b style="color: red">Deprecated.</b> Staff key. Zero means any available staff.
+ * 
+ *   </dd>
  * 
  *   <dt>string `uid_staff`</dt>
  *   <dd>Staff user key. Zero means any available staff. </dd>

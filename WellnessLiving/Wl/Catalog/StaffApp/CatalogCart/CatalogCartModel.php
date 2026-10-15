@@ -64,6 +64,9 @@ class CatalogCartModel extends WlModelAbstract
  * 
  *               <dt>int|null `i_sessions_total`</dt>
  *               <dd>Number of sessions in the billing cycle. `null` if prorated by days.</dd>
+ * 
+ *               <dt>string `m_calculated`</dt>
+ *               <dd>Prorated amount as calculated by the system, before any manual override of `m_checkout`.</dd>
  *             </dl>
  *           </dd>
  * 

@@ -141,7 +141,7 @@ class AppointmentWaitListModel extends WlModelAbstract
  *   <dd>Whether is awaiting for user confirmation.</dd>
  * 
  *   <dt>string `k_visit`</dt>
- *   <dd>Visit key.  table.</dd>
+ *   <dd>Visit key. </dd>
  * </dl>
  * @get result
  * @var array[]

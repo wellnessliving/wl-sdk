@@ -25,13 +25,13 @@ class ListModel extends WlModelAbstract
  * <dl>
  *   <dt>string[] `a_class_tab`</dt>
  *   <dd>
- *     List of class book now tabs, where this class is presented. Each element is 
+ *     List of class book now tabs, where this class is presented. Each element is class tab key 
  *  or `null` if class is presented in default system tab Classes. Events can also be added in class tabs.
  *   </dd>
  * 
  *   <dt>string[] `a_event_tab`</dt>
  *   <dd>
- *     List of event book now tabs, where this event is presented. Each element is 
+ *     List of event book now tabs, where this event is presented. Each element is class tab key 
  *   or `null` if event is presented in default system tab Enrollments. Classes cannot be added in event tabs.
  *   </dd>
  * 

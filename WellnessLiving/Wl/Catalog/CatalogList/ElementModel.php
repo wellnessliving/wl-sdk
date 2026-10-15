@@ -128,7 +128,10 @@ class ElementModel extends WlModelAbstract
  *     This applies to enrollment/event items. Staff list for class periods. Each element contains:
  *     <dl>
  *       <dt>string `k_staff`</dt>
- *       <dd>@deprecated Legacy staff key.  Deprecated, use `uid_staff`.</dd>
+ *       <dd>
+ *         <b style="color: red">Deprecated.</b> Legacy staff key.
+ * Use `uid_staff` instead.
+ *       </dd>
  * 
  *       <dt>string `uid_staff`</dt>
  *       <dd>Staff user key. </dd>
@@ -175,7 +178,7 @@ class ElementModel extends WlModelAbstract
  *   <dt>array[] `a_tickets`</dt>
  *   <dd>
  *     List of ticket options available for booking the event. Empty if the item is not a
- * ticketed event. .
+ * ticketed event. 
  * Each element contains the following keys:
  *     <dl>
  *       <dt>string `k_ticket_option`</dt>
@@ -401,7 +404,10 @@ class ElementModel extends WlModelAbstract
  *         This applies to enrollment/event items. Staff list for class periods. Each element contains:
  *         <dl>
  *           <dt>string `k_staff`</dt>
- *           <dd>@deprecated Legacy staff key.  Deprecated, use `uid_staff`.</dd>
+ *           <dd>
+ *             <b style="color: red">Deprecated.</b> Legacy staff key.
+ * Use `uid_staff` instead.
+ *           </dd>
  * 
  *           <dt>string `uid_staff`</dt>
  *           <dd>Staff user key. </dd>
@@ -448,7 +454,7 @@ class ElementModel extends WlModelAbstract
  *       <dt>array[] `a_tickets`</dt>
  *       <dd>
  *         List of ticket options available for booking the event. Empty if the item is not a
- * ticketed event. .
+ * ticketed event. 
  * Each element contains the following keys:
  *         <dl>
  *           <dt>string `k_ticket_option`</dt>

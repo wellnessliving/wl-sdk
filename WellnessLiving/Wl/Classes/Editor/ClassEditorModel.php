@@ -7,6 +7,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Classes\Edit\EarlyAmountEnum;
 use WellnessLiving\Wl\Classes\Edit\EarlyPeriodEnum;
+use WellnessLiving\Wl\Classes\Edit\EventTypeEnum;
 use WellnessLiving\Wl\Classes\RequirePaySid;
 use WellnessLiving\Wl\Service\BookableSid;
 
@@ -383,6 +384,13 @@ class ClassEditorModel extends WlModelAbstract
  * 
  *       <dt>int `id_early_period`</dt>
  *       <dd>Way the end of the early bird period is specified.</dd>
+ * 
+ *       <dt>int `id_enroll_time`</dt>
+ *       <dd>
+ *         Whether a client may enroll into a block event that is already in progress, and how much they pay for it.
+ * 
+ * Only taken into account while the event is a block event: {@link EventTypeEnum::BLOCK}.
+ *       </dd>
  * 
  *       <dt>int `id_pay_require`</dt>
  *       <dd>Way a client pays for the class.</dd>
