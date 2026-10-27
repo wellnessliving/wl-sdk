@@ -45,80 +45,80 @@ use WellnessLiving\Wl\Mode\ModeSid;
 class TicketScanListModel extends WlModelAbstract
 {
   /**
- * Outcome of every ticket of the request, in the order of {@link TicketScanListModel::$a_ticket_item} without
- * repeated keys. Every item has the next structure: 
- *
- * <dl>
- *   <dt>string `sid_outcome`</dt>
- *   <dd>Outcome of the ticket, see the description of the class.</dd>
- * 
- *   <dt>string `k_ticket_item`</dt>
- *   <dd>Key of the ticket, as it was sent.</dd>
- * </dl>
- * @post result
- * @var array[]
- */
+   * Outcome of every ticket of the request, in the order of {@link TicketScanListModel::$a_ticket_item} without
+   * repeated keys. Every item has the next structure: 
+   *
+   * <dl>
+   *   <dt>string `sid_outcome`</dt>
+   *   <dd>Outcome of the ticket, see the description of the class.</dd>
+   * 
+   *   <dt>string `k_ticket_item`</dt>
+   *   <dd>Key of the ticket, as it was sent.</dd>
+   * </dl>
+   * @post result
+   * @var array[]
+   */
   public $a_result = [];
 
   /**
- * Keys of the tickets to check in, as {@link TicketListModel} returns them.
- *
- * A key that is repeated is checked in once.
- *
- * @post post
- * @var string[]
- */
+   * Keys of the tickets to check in, as {@link TicketListModel} returns them.
+   *
+   * A key that is repeated is checked in once.
+   *
+   * @post post
+   * @var string[]
+   */
   public $a_ticket_item = [];
 
   /**
- * Start of the session being checked in, in UTC and MySQL format.
- *
- * @post post
- * @var string
- */
+   * Start of the session being checked in, in UTC and MySQL format.
+   *
+   * @post post
+   * @var string
+   */
   public $dtu_start = '';
 
   /**
- * Number of the tickets already checked in for the session, after the call. Returned once for the whole call.
- *
- * @post result
- * @var int
- */
+   * Number of the tickets already checked in for the session, after the call. Returned once for the whole call.
+   *
+   * @post result
+   * @var int
+   */
   public $i_attend = 0;
 
   /**
- * Number of the tickets sold for the session, after the call: not cancelled ones, including those whose holders
- * have not come. Returned once for the whole call.
- *
- * @post result
- * @var int
- */
+   * Number of the tickets sold for the session, after the call: not cancelled ones, including those whose holders
+   * have not come. Returned once for the whole call.
+   *
+   * @post result
+   * @var int
+   */
   public $i_sold = 0;
 
   /**
- * Source of the check-in. One of {@link ModeSid}.
- *
- * `0` if not specified, in this case the source is detected from the current request.
- *
- * @post post
- * @var int
- */
+   * Source of the check-in. One of {@link ModeSid}.
+   *
+   * `0` if not specified, in this case the source is detected from the current request.
+   *
+   * @post post
+   * @var int
+   */
   public $id_mode = 0;
 
   /**
- * Business key.
- *
- * @post post
- * @var string
- */
+   * Business key.
+   *
+   * @post post
+   * @var string
+   */
   public $k_business = '';
 
   /**
- * Key of the class period the session being checked in belongs to.
- *
- * @post post
- * @var string
- */
+   * Key of the class period the session being checked in belongs to.
+   *
+   * @post post
+   * @var string
+   */
   public $k_class_period = '';
 }
 

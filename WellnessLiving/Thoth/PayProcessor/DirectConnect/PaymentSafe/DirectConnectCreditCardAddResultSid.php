@@ -26,7 +26,7 @@ class DirectConnectCreditCardAddResultSid
    * Host Not Available.
    *
    * DC Gateway unable to communicate with processor.
-    */
+   */
   const PROCESSOR_HOST = 106;
 }
 

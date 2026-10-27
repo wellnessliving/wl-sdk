@@ -13,103 +13,103 @@ use WellnessLiving\WlModelRequest;
 class LeadStageListModel extends WlModelAbstract
 {
   /**
- * List of lead stages of the business.
- *
- * <dl>
- *   <dt>int `i_order`</dt>
- *   <dd>Sequence number of the stage in the list.</dd>
- * 
- *   <dt>int `i_automation_active`</dt>
- *   <dd>
- *     Number of active automations which use this stage.
- * Only set in a case {@link LeadStageListModel::$is_statistic} is `true`.
- *   </dd>
- * 
- *   <dt>int `i_automation_inactive`</dt>
- *   <dd>
- *     Number of inactive automations which use this stage. Such an automation still refers the stage, so it
- * still makes a replacement stage mandatory when the stage is deleted.
- * Only set in a case {@link LeadStageListModel::$is_statistic} is `true`.
- *   </dd>
- * 
- *   <dt>int `i_member_group`</dt>
- *   <dd>
- *     Number of client groups which convert their clients into this stage. Such a group depends on the stage: the stage
- * may only be deleted with a replacement stage for the groups.
- * Only set in a case {@link LeadStageListModel::$is_statistic} is `true`.
- *   </dd>
- * 
- *   <dt>int `i_user`</dt>
- *   <dd>
- *     Number of clients who are in this stage.
- * Only set in a case {@link LeadStageListModel::$is_statistic} is `true`.
- *   </dd>
- * 
- *   <dt>int `id_lead_stage_shape`</dt>
- *   <dd>Shape of the stage icon. One of {@link LeadStageShapeSid} constants.</dd>
- * 
- *   <dt>int|null `id_lead_stage_system`</dt>
- *   <dd>
- *     System-defined lead stage. One of {@link LeadStageSystemSid} constants.
- * `null` for a custom stage created by the business.
- *   </dd>
- * 
- *   <dt>int `id_lead_stage_type`</dt>
- *   <dd>
- *     Type of the stage. One of {@link LeadStageTypeSid} constants.
- * The type is set when the stage is created and can not be changed afterwards.
- *   </dd>
- * 
- *   <dt>string `k_lead_stage`</dt>
- *   <dd>Key of the stage. </dd>
- * 
- *   <dt>string `s_color_background`</dt>
- *   <dd>Background color of the icon. Hexadecimal color.</dd>
- * 
- *   <dt>string `s_color_foreground`</dt>
- *   <dd>Color of characters on the icon. Hexadecimal color.</dd>
- * 
- *   <dt>string `s_icon`</dt>
- *   <dd>Characters on the icon.</dd>
- * 
- *   <dt>string `text_title`</dt>
- *   <dd>Name of the stage.</dd>
- * 
- *   <dt>string `url_automation_list`</dt>
- *   <dd>
- *     URL of the list of the active automations which use this stage.
- *  Only set in a case {@link LeadStageListModel::$is_statistic} is `true` and the stage is used by at least
- *  one active automation.
- *   </dd>
- * 
- *   <dt>string `url_member_report`</dt>
- *   <dd>
- *     URL of the report of clients who are in this stage.
- *  Only set in a case {@link LeadStageListModel::$is_statistic} is `true` and the stage contains clients.
- *   </dd>
- * </dl>
- * @get result
- * @var array[]
- */
+   * List of lead stages of the business.
+   *
+   * <dl>
+   *   <dt>int `i_order`</dt>
+   *   <dd>Sequence number of the stage in the list.</dd>
+   * 
+   *   <dt>int `i_automation_active`</dt>
+   *   <dd>
+   *     Number of active automations which use this stage.
+   * Only set in a case {@link LeadStageListModel::$is_statistic} is `true`.
+   *   </dd>
+   * 
+   *   <dt>int `i_automation_inactive`</dt>
+   *   <dd>
+   *     Number of inactive automations which use this stage. Such an automation still refers the stage, so it
+   * still makes a replacement stage mandatory when the stage is deleted.
+   * Only set in a case {@link LeadStageListModel::$is_statistic} is `true`.
+   *   </dd>
+   * 
+   *   <dt>int `i_member_group`</dt>
+   *   <dd>
+   *     Number of client groups which convert their clients into this stage. Such a group depends on the stage: the stage
+   * may only be deleted with a replacement stage for the groups.
+   * Only set in a case {@link LeadStageListModel::$is_statistic} is `true`.
+   *   </dd>
+   * 
+   *   <dt>int `i_user`</dt>
+   *   <dd>
+   *     Number of clients who are in this stage.
+   * Only set in a case {@link LeadStageListModel::$is_statistic} is `true`.
+   *   </dd>
+   * 
+   *   <dt>int `id_lead_stage_shape`</dt>
+   *   <dd>Shape of the stage icon. One of {@link LeadStageShapeSid} constants.</dd>
+   * 
+   *   <dt>int|null `id_lead_stage_system`</dt>
+   *   <dd>
+   *     System-defined lead stage. One of {@link LeadStageSystemSid} constants.
+   * `null` for a custom stage created by the business.
+   *   </dd>
+   * 
+   *   <dt>int `id_lead_stage_type`</dt>
+   *   <dd>
+   *     Type of the stage. One of {@link LeadStageTypeSid} constants.
+   * The type is set when the stage is created and can not be changed afterwards.
+   *   </dd>
+   * 
+   *   <dt>string `k_lead_stage`</dt>
+   *   <dd>Key of the stage. </dd>
+   * 
+   *   <dt>string `s_color_background`</dt>
+   *   <dd>Background color of the icon. Hexadecimal color.</dd>
+   * 
+   *   <dt>string `s_color_foreground`</dt>
+   *   <dd>Color of characters on the icon. Hexadecimal color.</dd>
+   * 
+   *   <dt>string `s_icon`</dt>
+   *   <dd>Characters on the icon.</dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>Name of the stage.</dd>
+   * 
+   *   <dt>string `url_automation_list`</dt>
+   *   <dd>
+   *     URL of the list of the active automations which use this stage.
+   *  Only set in a case {@link LeadStageListModel::$is_statistic} is `true` and the stage is used by at least
+   *  one active automation.
+   *   </dd>
+   * 
+   *   <dt>string `url_member_report`</dt>
+   *   <dd>
+   *     URL of the report of clients who are in this stage.
+   *  Only set in a case {@link LeadStageListModel::$is_statistic} is `true` and the stage contains clients.
+   *   </dd>
+   * </dl>
+   * @get result
+   * @var array[]
+   */
   public $a_lead_stage = [];
 
   /**
- * Determines whether statistics of the stages must be returned.
- *
- * `true` to return the number of clients of every stage in `i_user`,
- * `false` to not return the statistics.
- *
- * @get get
- * @var bool
- */
+   * Determines whether statistics of the stages must be returned.
+   *
+   * `true` to return the number of clients of every stage in `i_user`,
+   * `false` to not return the statistics.
+   *
+   * @get get
+   * @var bool
+   */
   public $is_statistic = false;
 
   /**
- * Business key.
- *
- * @get get
- * @var string
- */
+   * Business key.
+   *
+   * @get get
+   * @var string
+   */
   public $k_business = '';
 }
 

@@ -18,47 +18,46 @@ use WellnessLiving\WlModelRequest;
 class PasskeyRegisterModel extends WlModelAbstract
 {
   /**
- * JSON-encoded structure with any additional information required by the project-specific
- * passkey configuration class, for example `k_business` in `Wl`.
- *
- * Empty if no additional information is required.
- *
- * @get get
- * @post get
- * @var string
- */
+   * JSON-encoded structure with any additional information required by the project-specific
+   * passkey configuration class, for example `k_business` in `Wl`.
+   *
+   * Empty if no additional information is required.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
   public $json_context = '';
 
   /**
- * JSON-encoded credential produced by the authenticator, sent back to finish the registration
- * ceremony.
- *
- * Empty when starting the ceremony.
- *
- * @post post
- * @var string
- */
+   * JSON-encoded credential produced by the authenticator, sent back to finish the registration
+   * ceremony.
+   *
+   * Empty when starting the ceremony.
+   *
+   * @post post
+   * @var string
+   */
   public $json_credential = '';
 
   /**
- * JSON-encoded challenge and options to use when creating a new credential.
- *
- * Filled in when starting the ceremony.
- *
- * @get result
- * @var string
- */
+   * JSON-encoded challenge and options to use when creating a new credential.
+   *
+   * Filled in when starting the ceremony.
+   *
+   * @get result
+   * @var string
+   */
   public $json_options = '';
 
   /**
- * User-supplied friendly label of the passkey being registered, for example `"MacBook Touch ID"`.
- *
- * Only used to finish the ceremony.
- *
- * @decorator trim
- * @post post
- * @var string
- */
+   * User-supplied friendly label of the passkey being registered, for example `"MacBook Touch ID"`.
+   *
+   * Only used to finish the ceremony.
+   *
+   * @post post
+   * @var string
+   */
   public $text_device = '';
 }
 

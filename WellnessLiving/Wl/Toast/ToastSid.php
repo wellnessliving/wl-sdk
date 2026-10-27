@@ -16,7 +16,7 @@ class ToastSid
 
   /**
    * Info type.
-    */
+   */
   const INFO = 2;
 
   /**

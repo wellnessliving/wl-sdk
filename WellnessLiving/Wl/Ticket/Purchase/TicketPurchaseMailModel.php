@@ -37,21 +37,21 @@ use WellnessLiving\Wl\RsMailSid;
 class TicketPurchaseMailModel extends WlModelAbstract
 {
   /**
- * The key of the purchase of tickets.
- *
- * @post post
- * @var string
- */
+   * The key of the purchase of tickets.
+   *
+   * @post post
+   * @var string
+   */
   public $k_purchase = '';
 
   /**
- * Email to send the tickets to instead of the email of the buyer.
- *
- * Empty to send the email to the buyer.
- *
- * @post post
- * @var string
- */
+   * Email to send the tickets to instead of the email of the buyer.
+   *
+   * Empty to send the email to the buyer.
+   *
+   * @post post
+   * @var string
+   */
   public $text_mail = '';
 }
 

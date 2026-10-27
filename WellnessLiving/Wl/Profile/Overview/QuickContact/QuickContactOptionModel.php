@@ -16,58 +16,58 @@ use WellnessLiving\WlModelRequest;
 class QuickContactOptionModel extends WlModelAbstract
 {
   /**
- * Whether the Brivo mobile pass invitation action is available for this client.
- * `true` if Brivo invitation is available, `false` otherwise.
- *
- * @get result
- * @var bool
- */
+   * Whether the Brivo mobile pass invitation action is available for this client.
+   * `true` if Brivo invitation is available, `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
   public $is_brivo = false;
 
   /**
- * Whether the Password Reset email action is available for this client.
- * `true` if the password reset template is enabled, the client login is not disabled
- * and the client is not a virtual user, `false` otherwise.
- *
- * @get result
- * @var bool
- */
+   * Whether the Password Reset email action is available for this client.
+   * `true` if the password reset template is enabled, the client login is not disabled
+   * and the client is not a virtual user, `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
   public $is_password_reset = false;
 
   /**
- * Whether the Welcome email action is available for this client.
- * `true` if the Welcome email template is enabled for this business and the client has
- * an email address, `false` otherwise.
- *
- * @get result
- * @var bool
- */
+   * Whether the Welcome email action is available for this client.
+   * `true` if the Welcome email template is enabled for this business and the client has
+   * an email address, `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
   public $is_welcome = false;
 
   /**
- * Whether the Welcome email has already been sent to this client.
- * `true` if a Welcome email was sent previously, `false` otherwise.
- * Only meaningful when {@link QuickContactOptionModel::$is_welcome} is `true`.
- *
- * @get result
- * @var bool
- */
+   * Whether the Welcome email has already been sent to this client.
+   * `true` if a Welcome email was sent previously, `false` otherwise.
+   * Only meaningful when {@link QuickContactOptionModel::$is_welcome} is `true`.
+   *
+   * @get result
+   * @var bool
+   */
   public $is_welcome_sent = false;
 
   /**
- * Business key.
- *
- * @get get
- * @var string
- */
+   * Business key.
+   *
+   * @get get
+   * @var string
+   */
   public $k_business = '';
 
   /**
- * Client user key.
- *
- * @get get
- * @var string
- */
+   * Client user key.
+   *
+   * @get get
+   * @var string
+   */
   public $uid = '';
 }
 

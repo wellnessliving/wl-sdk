@@ -14,39 +14,39 @@ use WellnessLiving\WlModelRequest;
 class BrivoUserInvitationModel extends WlModelAbstract
 {
   /**
- * Whether the client has a Brivo invitation, and is present in the client's group with Brivo invitation enabled.
- * `true` if the client has a Brivo invitation, `false` otherwise.
- *
- * @get result
- * @var bool
- */
+   * Whether the client has a Brivo invitation, and is present in the client's group with Brivo invitation enabled.
+   * `true` if the client has a Brivo invitation, `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
   public $has_brivo_invitation = false;
 
   /**
- * This will be `true` an invitation is redeemed see {@link BrivoInvitationStatusEnum}, `false` otherwise.
- *
- * @get result
- * @post result
- * @var bool
- */
+   * This will be `true` an invitation is redeemed see {@link BrivoInvitationStatusEnum}, `false` otherwise.
+   *
+   * @get result
+   * @post result
+   * @var bool
+   */
   public $is_redeem = false;
 
   /**
- * Business key.
- *
- * @get get
- * @post get
- * @var string
- */
+   * Business key.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
   public $k_business = '';
 
   /**
- * UID of a user for whom an invitation should be sent.
- *
- * @get get
- * @post get
- * @var string
- */
+   * UID of a user for whom an invitation should be sent.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
   public $uid = '';
 }
 

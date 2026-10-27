@@ -183,8 +183,7 @@ class FeatureSid
 
   /**
    * Toast notifications.
-   *
-    */
+   */
   const TOAST_MESSAGE = 24;
 
   /**

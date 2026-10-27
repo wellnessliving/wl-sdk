@@ -14,100 +14,100 @@ use WellnessLiving\WlModelRequest;
 class ListModel extends WlModelAbstract
 {
   /**
- * A list of event identifiers.
- *
- * The order of items in this array matches the order in which elements should be displayed.
- *
- * @get result
- * @var string[]
- */
+   * A list of event identifiers.
+   *
+   * The order of items in this array matches the order in which elements should be displayed.
+   *
+   * @get result
+   * @var string[]
+   */
   public $a_event;
 
   /**
- * Event availability map.
- *
- * Unavailable events are those that cannot be booked,
- *  but they can be shown to the client (for example, under the "not available" filter).
- *
- * Key is the event class key. 
- * Value is `true` if the event is available for booking, `false` if it is unavailable.
- *
- * @get result
- * @var array<string, bool>
- */
+   * Event availability map.
+   *
+   * Unavailable events are those that cannot be booked,
+   *  but they can be shown to the client (for example, under the "not available" filter).
+   *
+   * Key is the event class key. 
+   * Value is `true` if the event is available for booking, `false` if it is unavailable.
+   *
+   * @get result
+   * @var array<string, bool>
+   */
   public $a_event_available = [];
 
   /**
- * Ticketed event map.
- *
- * Key is the event class key. 
- * Value is `true` if the event is a ticketed event, `false` otherwise.
- *
- * @get result
- * @var array<string, bool>
- */
+   * Ticketed event map.
+   *
+   * Key is the event class key. 
+   * Value is `true` if the event is a ticketed event, `false` otherwise.
+   *
+   * @get result
+   * @var array<string, bool>
+   */
   public $a_event_ticket = [];
 
   /**
- * Ticket option map.
- *
- * Key is the event class key. 
- * Value is the list of ticket options available for booking the event. Empty if the event is not
- * a ticketed event.
- *
- * @get result
- * @var array<string, array[]>
- */
+   * Ticket option map.
+   *
+   * Key is the event class key. 
+   * Value is the list of ticket options available for booking the event. Empty if the event is not
+   * a ticketed event.
+   *
+   * @get result
+   * @var array<string, array[]>
+   */
   public $a_event_ticket_option = [];
 
   /**
- * Defines how the event availability flag filter should be applied.
- *
- * One of {@link AFlagSid} constants.
- *
- * * {@link AFlagSid::ON} to show only available events.
- * * {@link AFlagSid::OFF} to show only unavailable events.
- * * {@link AFlagSid::ALL} to show all events (available and unavailable).
- *
- * @get get
- * @var int
- */
+   * Defines how the event availability flag filter should be applied.
+   *
+   * One of {@link AFlagSid} constants.
+   *
+   * * {@link AFlagSid::ON} to show only available events.
+   * * {@link AFlagSid::OFF} to show only unavailable events.
+   * * {@link AFlagSid::ALL} to show all events (available and unavailable).
+   *
+   * @get get
+   * @var int
+   */
   public $id_status = 3;
 
   /**
- * <tt>true</tt> if exist at least one virtual event
- * by specific {@link ListModel::$k_business} and
- * {@link ListModel::$k_class_tab},
- * <tt>false</tt> otherwise.
- *
- * @get result
- * @var bool
- */
+   * <tt>true</tt> if exist at least one virtual event
+   * by specific {@link ListModel::$k_business} and
+   * {@link ListModel::$k_class_tab},
+   * <tt>false</tt> otherwise.
+   *
+   * @get result
+   * @var bool
+   */
   public $is_virtual_service;
 
   /**
- * The key of the business to show information for.
- *
- * @get get
- * @var string
- */
+   * The key of the business to show information for.
+   *
+   * @get get
+   * @var string
+   */
   public $k_business = '0';
 
   /**
- * The key of the category tab.
- * If empty, select only elements with not specified book tab.
- *
- * @get get
- * @var string
- */
+   * The key of the category tab.
+   * If empty, select only elements with not specified book tab.
+   *
+   * @get get
+   * @var string
+   */
   public $k_class_tab = '0';
 
   /**
- * The user's key.
- *
- * @get get
- * @var string
- */
+   * The user's key.
+   *
+   * @get get
+   * @var string
+   */
   public $uid = '0';
 }
 

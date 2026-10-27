@@ -20,44 +20,44 @@ use WellnessLiving\WlModelRequest;
 class PasskeyEnterModel extends WlModelAbstract
 {
   /**
- * JSON-encoded `PublicKeyCredential` produced by `navigator.credentials.get()`, sent back to
- * finish the authentication ceremony.
- *
- * Empty when starting the ceremony.
- *
- * @post post
- * @var string
- */
+   * JSON-encoded `PublicKeyCredential` produced by `navigator.credentials.get()`, sent back to
+   * finish the authentication ceremony.
+   *
+   * Empty when starting the ceremony.
+   *
+   * @post post
+   * @var string
+   */
   public $json_credential = '';
 
   /**
- * JSON-encoded `PublicKeyCredentialRequestOptions` to pass to `navigator.credentials.get()`.
- *
- * Filled in when starting the ceremony.
- *
- * @get result
- * @var string
- */
+   * JSON-encoded `PublicKeyCredentialRequestOptions` to pass to `navigator.credentials.get()`.
+   *
+   * Filled in when starting the ceremony.
+   *
+   * @get result
+   * @var string
+   */
   public $json_options = '';
 
   /**
- * An optional URL for redirection after the user has signed in.
- *
- * Only used to finish the ceremony.
- *
- * @post result
- * @var string|null
- */
+   * An optional URL for redirection after the user has signed in.
+   *
+   * Only used to finish the ceremony.
+   *
+   * @post result
+   * @var string|null
+   */
   public $url_redirect;
 
   /**
- * Url of previous page if the user was redirected to the login page.
- *
- * Only used to finish the ceremony.
- *
- * @post post
- * @var string
- */
+   * Url of previous page if the user was redirected to the login page.
+   *
+   * Only used to finish the ceremony.
+   *
+   * @post post
+   * @var string
+   */
   public $url_return = '';
 }
 

@@ -13,33 +13,33 @@ use WellnessLiving\WlModelRequest;
 class CategoryModel extends WlModelAbstract
 {
   /**
- * Categories in online store for business {@link \WellnessLiving\Wl\Shop\Category\CategoryModel::$k_business}, with next keys:
- *
- * <dl>
- *   <dt>int `i_order`</dt>
- *   <dd>Shop category order.</dd>
- * 
- *   <dt>string `k_shop_category`</dt>
- *   <dd>Shop category key.
- * </dd>
- * 
- *   <dt>string `text_description`</dt>
- *   <dd>Category description.</dd>
- * 
- *   <dt>string `text_title`</dt>
- *   <dd>Category title.</dd>
- * </dl>
- * @get result
- * @var array
- */
+   * Categories in online store for business {@link \WellnessLiving\Wl\Shop\Category\CategoryModel::$k_business}, with next keys:
+   *
+   * <dl>
+   *   <dt>int `i_order`</dt>
+   *   <dd>Shop category order.</dd>
+   * 
+   *   <dt>string `k_shop_category`</dt>
+   *   <dd>Shop category key.
+   * </dd>
+   * 
+   *   <dt>string `text_description`</dt>
+   *   <dd>Category description.</dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>Category title.</dd>
+   * </dl>
+   * @get result
+   * @var array
+   */
   public $a_shop_category;
 
   /**
- * Key of business to get categories for.
- *
- * @get get
- * @var string
- */
+   * Key of business to get categories for.
+   *
+   * @get get
+   * @var string
+   */
   public $k_business = '0';
 }
 

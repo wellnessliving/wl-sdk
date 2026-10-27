@@ -16,25 +16,25 @@ use WellnessLiving\WlModelRequest;
 class CacheFlushModel extends WlModelAbstract
 {
   /**
- * Name of the action to perform within this endpoint.
- *
- * @get get
- * @var string
- */
+   * Name of the action to perform within this endpoint.
+   *
+   * @get get
+   * @var string
+   */
   public $s_action = '';
 
   /**
- * Request authentication token.
- *
- * A hex-encoded `sha256` signature that proves the caller knows the shared secret.
- * See `checkAccess()` for the expected formula.
- *
- * The token comes from the URL for a request of the method `POST` as well: the body of such a request carries the
- *
- * @get get
- * @post get
- * @var string
- */
+   * Request authentication token.
+   *
+   * A hex-encoded `sha256` signature that proves the caller knows the shared secret.
+   * See `checkAccess()` for the expected formula.
+   *
+   * The token comes from the URL for a request of the method `POST` as well: the body of such a request carries the
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
   public $s_token = '';
 }
 

@@ -13,19 +13,19 @@ use WellnessLiving\WlModelRequest;
 class BisectListModel extends WlModelAbstract
 {
   /**
- * The names of the tests that the build runs, sorted: the names that the filter of a test run takes.
- *
- * @get result
- * @var string[]
- */
+   * The names of the tests that the build runs, sorted: the names that the filter of a test run takes.
+   *
+   * @get result
+   * @var string[]
+   */
   public $a_test = [];
 
   /**
- * The build that asks for its list: a build of the bisection, or its rerun.
- *
- * @get get
- * @var string
- */
+   * The build that asks for its list: a build of the bisection, or its rerun.
+   *
+   * @get get
+   * @var string
+   */
   public $k_build = '';
 }
 

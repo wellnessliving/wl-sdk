@@ -39,51 +39,51 @@ use WellnessLiving\WlModelRequest;
 class TicketUndoModel extends WlModelAbstract
 {
   /**
- * Start of the session, in UTC and MySQL format.
- *
- * @post post
- * @var string
- */
+   * Start of the session, in UTC and MySQL format.
+   *
+   * @post post
+   * @var string
+   */
   public $dtu_start = '';
 
   /**
- * Number of the tickets checked in for the session after the call.
- *
- * @post result
- * @var int
- */
+   * Number of the tickets checked in for the session after the call.
+   *
+   * @post result
+   * @var int
+   */
   public $i_attend = 0;
 
   /**
- * Number of the tickets sold for the session: not cancelled ones, including those whose holders have not come.
- *
- * @post result
- * @var int
- */
+   * Number of the tickets sold for the session: not cancelled ones, including those whose holders have not come.
+   *
+   * @post result
+   * @var int
+   */
   public $i_sold = 0;
 
   /**
- * Business key.
- *
- * @post post
- * @var string
- */
+   * Business key.
+   *
+   * @post post
+   * @var string
+   */
   public $k_business = '';
 
   /**
- * Key of the class period the session belongs to.
- *
- * @post post
- * @var string
- */
+   * Key of the class period the session belongs to.
+   *
+   * @post post
+   * @var string
+   */
   public $k_class_period = '';
 
   /**
- * Key of the ticket to undo the check-in of.
- *
- * @post post
- * @var string
- */
+   * Key of the ticket to undo the check-in of.
+   *
+   * @post post
+   * @var string
+   */
   public $k_ticket_item = '';
 }
 

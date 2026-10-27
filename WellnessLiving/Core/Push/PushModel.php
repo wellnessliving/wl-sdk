@@ -14,36 +14,36 @@ use WellnessLiving\WlModelRequest;
 class PushModel extends WlModelAbstract
 {
   /**
- * Application ID. For example 'com.wellnessliving.com'.
- *
- * @post get
- * @var string
- */
+   * Application ID. For example 'com.wellnessliving.com'.
+   *
+   * @post get
+   * @var string
+   */
   public $s_application_id = '';
 
   /**
- * Device ID.
- *
- * @post get
- * @var string
- */
+   * Device ID.
+   *
+   * @post get
+   * @var string
+   */
   public $s_id = '';
 
   /**
- * OS name.
- * String version of {@link APushOsSid} constants.
- *
- * @post get
- * @var string
- */
+   * OS name.
+   * String version of {@link APushOsSid} constants.
+   *
+   * @post get
+   * @var string
+   */
   public $sid_system = '';
 
   /**
- * User key.
- *
- * @post get
- * @var string
- */
+   * User key.
+   *
+   * @post get
+   * @var string
+   */
   public $uid = '0';
 }
 

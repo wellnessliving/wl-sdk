@@ -20,81 +20,81 @@ use WellnessLiving\Wl\RsPlaceSid;
 class TermsModel extends WlModelAbstract
 {
   /**
- * Cart items to apply the action to. Every element has next fields:
- *
- * <dl>
- *   <dt>int `id_purchase_item`</dt>
- *   <dd>Purchase item ID, one of {@link WlPurchaseItemSid} constants.</dd>
- * 
- *   <dt>string `k_id`</dt>
- *   <dd>Product ID.</dd>
- * 
- *   <dt>string `s_item_key`</dt>
- *   <dd>Cart item key.</dd>
- * </dl>
- * @post post
- * @var array[]
- */
+   * Cart items to apply the action to. Every element has next fields:
+   *
+   * <dl>
+   *   <dt>int `id_purchase_item`</dt>
+   *   <dd>Purchase item ID, one of {@link WlPurchaseItemSid} constants.</dd>
+   * 
+   *   <dt>string `k_id`</dt>
+   *   <dd>Product ID.</dd>
+   * 
+   *   <dt>string `s_item_key`</dt>
+   *   <dd>Cart item key.</dd>
+   * </dl>
+   * @post post
+   * @var array[]
+   */
   public $a_item = [];
 
   /**
- * Data for Quick Buy. Empty if the purchase is not in Quick Buy mode. Structure of the array:
- *
- * <dl>
- *   <dt>int `id_table`</dt>
- *   <dd>Quick purchase type. One of {@link QuickPurchaseTypeSid}.</dd>
- * 
- *   <dt>bool `is_quick_buy`</dt>
- *   <dd>Whether Quick Buy mode is used.</dd>
- * 
- *   <dt>string `k_appointment`</dt>
- *   <dd>Appointment key to pay for.</dd>
- * 
- *   <dt>string `k_id`</dt>
- *   <dd>Key of the item within the `id_table` table that Quick Buy is performed for.</dd>
- * 
- *   <dt>string `k_visit`</dt>
- *   <dd>Visit key to pay for.</dd>
- * 
- *   <dt>string `uid`</dt>
- *   <dd>User that Quick Buy is performed for.</dd>
- * </dl>
- * @post post
- * @var array
- */
+   * Data for Quick Buy. Empty if the purchase is not in Quick Buy mode. Structure of the array:
+   *
+   * <dl>
+   *   <dt>int `id_table`</dt>
+   *   <dd>Quick purchase type. One of {@link QuickPurchaseTypeSid}.</dd>
+   * 
+   *   <dt>bool `is_quick_buy`</dt>
+   *   <dd>Whether Quick Buy mode is used.</dd>
+   * 
+   *   <dt>string `k_appointment`</dt>
+   *   <dd>Appointment key to pay for.</dd>
+   * 
+   *   <dt>string `k_id`</dt>
+   *   <dd>Key of the item within the `id_table` table that Quick Buy is performed for.</dd>
+   * 
+   *   <dt>string `k_visit`</dt>
+   *   <dd>Visit key to pay for.</dd>
+   * 
+   *   <dt>string `uid`</dt>
+   *   <dd>User that Quick Buy is performed for.</dd>
+   * </dl>
+   * @post post
+   * @var array
+   */
   public $a_quick_config = [];
 
   /**
- * From where request comes. One of {@link RsPlaceSid}.
- *
- * @post get
- * @var int
- */
+   * From where request comes. One of {@link RsPlaceSid}.
+   *
+   * @post get
+   * @var int
+   */
   public $id_place = 1;
 
   /**
- * Action to perform. One of {@link TermsActionSid}.
- *
- * @post post
- * @var int
- */
+   * Action to perform. One of {@link TermsActionSid}.
+   *
+   * @post post
+   * @var int
+   */
   public $id_terms_action = 0;
 
   /**
- * Business the cart belongs to.
- *
- * @post post
- * @var string
- */
+   * Business the cart belongs to.
+   *
+   * @post post
+   * @var string
+   */
   public $k_business = '0';
 
   /**
- * Link to the catalog list. Set only if the cart became empty after
- * {@link TermsActionSid::DECLINE}, an empty string otherwise.
- *
- * @post result
- * @var string
- */
+   * Link to the catalog list. Set only if the cart became empty after
+   * {@link TermsActionSid::DECLINE}, an empty string otherwise.
+   *
+   * @post result
+   * @var string
+   */
   public $url_list = '';
 }
 

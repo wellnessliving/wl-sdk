@@ -14,34 +14,34 @@ use WellnessLiving\WlModelRequest;
 class CustomTermsModel extends WlModelAbstract
 {
   /**
- * Current value of every term slot. Returned by {@link \Wl\Business\Custom\Terms\CustomTermsApi::get()}, posted to
- *
- * <dl>
- *   <dt>int `id_term`</dt>
- *   <dd>Term. One of {@link CustomTermSid} constants.</dd>
- * 
- *   <dt>int|null `id_term_option`</dt>
- *   <dd>
- *     Selected custom term option. Sid class depends on {@link \Wl\Business\Custom\Terms\CustomTermEntity::$id_term}
- * (e.g. for {@link CustomTermSid::CLIENT}, this is one of {@link ClientTermOptionSid} constants).
- * 
- * `null` if the slot has no customization - the business-type default, or the system default
- * if the business type has none either, applies.
- *   </dd>
- * </dl>
- * @get result
- * @post post
- * @var array[]
- */
+   * Current value of every term slot. Returned by {@link \Wl\Business\Custom\Terms\CustomTermsApi::get()}, posted to
+   *
+   * <dl>
+   *   <dt>int `id_term`</dt>
+   *   <dd>Term. One of {@link CustomTermSid} constants.</dd>
+   * 
+   *   <dt>int|null `id_term_option`</dt>
+   *   <dd>
+   *     Selected custom term option. Sid class depends on {@link \Wl\Business\Custom\Terms\CustomTermEntity::$id_term}
+   * (e.g. for {@link CustomTermSid::CLIENT}, this is one of {@link ClientTermOptionSid} constants).
+   * 
+   * `null` if the slot has no customization - the business-type default, or the system default
+   * if the business type has none either, applies.
+   *   </dd>
+   * </dl>
+   * @get result
+   * @post post
+   * @var array[]
+   */
   public $a_term_option = [];
 
   /**
- * Business key.
- *
- * @get get
- * @post get
- * @var string
- */
+   * Business key.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
   public $k_business = '';
 }
 

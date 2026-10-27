@@ -27,57 +27,55 @@ use WellnessLiving\WlModelRequest;
 class BillingCodeModel extends WlModelAbstract
 {
   /**
- * Whether the code is removed from the central list of the business.
- *
- * `true` for a code that is not offered for selection anymore, `false` otherwise.
- *
- * @get result
- * @var bool
- */
+   * Whether the code is removed from the central list of the business.
+   *
+   * `true` for a code that is not offered for selection anymore, `false` otherwise.
+   *
+   * @get result
+   * @var bool
+   */
   public $is_remove = false;
 
   /**
- * Business key.
- *
- * @delete get
- * @get get
- * @post get
- * @put get
- * @var string
- */
+   * Business key.
+   *
+   * @delete get
+   * @get get
+   * @post get
+   * @put get
+   * @var string
+   */
   public $k_business = '';
 
   /**
- * Key of the custom billing code.
- *
- * @delete get
- * @get get
- * @post get
- * @put result
- * @var string
- */
+   * Key of the custom billing code.
+   *
+   * @delete get
+   * @get get
+   * @post get
+   * @put result
+   * @var string
+   */
   public $k_code = '';
 
   /**
- * Code value, as it is printed on receipts and invoices.
- *
- * @decorator trim
- * @get result
- * @post post
- * @put post
- * @var string
- */
+   * Code value, as it is printed on receipts and invoices.
+   *
+   * @get result
+   * @post post
+   * @put post
+   * @var string
+   */
   public $text_code = '';
 
   /**
- * Description of the code.
- *
- * @decorator trim
- * @get result
- * @post post
- * @put post
- * @var string
- */
+   * Description of the code.
+   *
+   * @get result
+   * @post post
+   * @put post
+   * @var string
+   */
   public $text_description = '';
 }
 

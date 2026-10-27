@@ -17,66 +17,66 @@ use WellnessLiving\WlModelRequest;
 class ServiceListBusinessModel extends WlModelAbstract
 {
   /**
- * A list of service categories of the business.
- *
- * Each element has the following structure:
- *
- * <dl>
- *   <dt>string[] `a_location`</dt>
- *   <dd>
- *     List of location keys where this category has at least one active service.
- * 
- *   </dd>
- * 
- *   <dt>int `i_sort`</dt>
- *   <dd>Sort order of the category.</dd>
- * 
- *   <dt>string `k_service_category`</dt>
- *   <dd>Service category key. </dd>
- * 
- *   <dt>string `s_title`</dt>
- *   <dd>Service category title.</dd>
- * </dl>
- * @get result
- * @var array[]
- */
+   * A list of service categories of the business.
+   *
+   * Each element has the following structure:
+   *
+   * <dl>
+   *   <dt>string[] `a_location`</dt>
+   *   <dd>
+   *     List of location keys where this category has at least one active service.
+   * 
+   *   </dd>
+   * 
+   *   <dt>int `i_sort`</dt>
+   *   <dd>Sort order of the category.</dd>
+   * 
+   *   <dt>string `k_service_category`</dt>
+   *   <dd>Service category key. </dd>
+   * 
+   *   <dt>string `s_title`</dt>
+   *   <dd>Service category title.</dd>
+   * </dl>
+   * @get result
+   * @var array[]
+   */
   public $a_category = [];
 
   /**
- * A list of appointment services of the business.
- *
- * Each element has the following structure:
- *
- * <dl>
- *   <dt>string[] `a_location`</dt>
- *   <dd>
- *     List of location keys where this service is available.
- * 
- *   </dd>
- * 
- *   <dt>int `i_sort`</dt>
- *   <dd>Sort order of the service within its category.</dd>
- * 
- *   <dt>string `k_service`</dt>
- *   <dd>Service key. </dd>
- * 
- *   <dt>string `k_service_category`</dt>
- *   <dd>Service category key. </dd>
- * 
- *   <dt>string `s_service`</dt>
- *   <dd>Service title.</dd>
- * </dl>
- * @get result
- * @var array[]
- */
+   * A list of appointment services of the business.
+   *
+   * Each element has the following structure:
+   *
+   * <dl>
+   *   <dt>string[] `a_location`</dt>
+   *   <dd>
+   *     List of location keys where this service is available.
+   * 
+   *   </dd>
+   * 
+   *   <dt>int `i_sort`</dt>
+   *   <dd>Sort order of the service within its category.</dd>
+   * 
+   *   <dt>string `k_service`</dt>
+   *   <dd>Service key. </dd>
+   * 
+   *   <dt>string `k_service_category`</dt>
+   *   <dd>Service category key. </dd>
+   * 
+   *   <dt>string `s_service`</dt>
+   *   <dd>Service title.</dd>
+   * </dl>
+   * @get result
+   * @var array[]
+   */
   public $a_service = [];
 
   /**
- * The business key.
- *
- * @get get
- * @var string
- */
+   * The business key.
+   *
+   * @get get
+   * @var string
+   */
   public $k_business = '';
 }
 

@@ -15,70 +15,70 @@ use WellnessLiving\WlModelRequest;
 class ApplyModel extends WlModelAbstract
 {
   /**
- * A list of login promotions with available guest passes for the given visit.
- *
- * Each element is an array with the following keys:
- *
- * <dl>
- *   <dt>string `k_login_promotion`</dt>
- *   <dd>Login promotion key. </dd>
- * 
- *   <dt>string `text_description`</dt>
- *   <dd>Remaining guest pass balance description for this login promotion.</dd>
- * 
- *   <dt>string `text_title`</dt>
- *   <dd>Name of the host member who owns this guest pass.</dd>
- * 
- *   <dt>string `uid`</dt>
- *   <dd>Key of the host member who owns this guest pass. </dd>
- * </dl>
- * @get result
- * @var array[]
- */
+   * A list of login promotions with available guest passes for the given visit.
+   *
+   * Each element is an array with the following keys:
+   *
+   * <dl>
+   *   <dt>string `k_login_promotion`</dt>
+   *   <dd>Login promotion key. </dd>
+   * 
+   *   <dt>string `text_description`</dt>
+   *   <dd>Remaining guest pass balance description for this login promotion.</dd>
+   * 
+   *   <dt>string `text_title`</dt>
+   *   <dd>Name of the host member who owns this guest pass.</dd>
+   * 
+   *   <dt>string `uid`</dt>
+   *   <dd>Key of the host member who owns this guest pass. </dd>
+   * </dl>
+   * @get result
+   * @var array[]
+   */
   public $a_login_promotion = [];
 
   /**
- * Business key.
- *
- * @get get
- * @post get
- * @var string
- */
+   * Business key.
+   *
+   * @get get
+   * @post get
+   * @var string
+   */
   public $k_business = '';
 
   /**
- * Login promotion key of the host member's class membership whose guest pass
- * balance will be used.
- *
- * @post post
- * @var string
- */
+   * Login promotion key of the host member's class membership whose guest pass
+   * balance will be used.
+   *
+   * @post post
+   * @var string
+   */
   public $k_login_promotion = '';
 
   /**
- * Visit key of the attendee to whom the guest pass is applied.
- *
- * @post post
- * @var string
- */
+   * Visit key of the attendee to whom the guest pass is applied.
+   *
+   * @post post
+   * @var string
+   */
   public $k_visit = '';
 
   /**
- * Visit key of the attendee for whom the list of guest passes is requested.
- *
- * @get get
- * @var string
- */
+   * Visit key of the attendee for whom the list of guest passes is requested.
+   *
+   * @get get
+   * @var string
+   */
   public $k_visit_search = '';
 
   /**
- * Text to search guest pass hosts by (for example, a member name).
- *
- * Empty string means no search.
- *
- * @get get
- * @var string
- */
+   * Text to search guest pass hosts by (for example, a member name).
+   *
+   * Empty string means no search.
+   *
+   * @get get
+   * @var string
+   */
   public $text_search = '';
 }
 
