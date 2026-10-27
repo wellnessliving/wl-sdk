@@ -188,8 +188,8 @@ class StoreModel extends WlModelAbstract
  *   <dd>
  *     `true` if the booking triggered the payment flow: the visit is booked, is not paid, and the client must
  *   pay for it by the link in `text_payment_link`, otherwise the visit is cancelled automatically.
- *   `false` otherwise: the visit is paid, free, waitlisted, cancelled, or the application is allowed to book
- *   without paying at all.
+ *   `false` otherwise: the visit is paid, free, waitlisted, cancelled, or the payment is optional
+ *   (pay later, or the application is allowed to book without paying).
  *   </dd>
  * 
  *   <dt>bool `is_waitlist`</dt>

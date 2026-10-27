@@ -332,9 +332,7 @@ class ElementModel extends WlModelAbstract
  *         A list of staff members who conduct the session. Every element has the following next keys:
  *         <dl>
  *           <dt>string `k_staff`</dt>
- *           <dd>
- *             <b style="color: red">Deprecated.</b> Legacy staff key. Returned only for applications from allow-list.
- *           </dd>
+ *           <dd>**DEPRECATED** Legacy staff key. Returned only for applications from allow-list.</dd>
  * 
  *           <dt>string `s_name`</dt>
  *           <dd>The staff member name.</dd>
@@ -657,7 +655,7 @@ class ElementModel extends WlModelAbstract
  *     A list of staff members who conduct the session. Every element has the following next keys:
  *     <dl>
  *       <dt>string `k_staff`</dt>
- *       <dd><b style="color: red">Deprecated.</b> Legacy staff key. Returned only for applications from allow-list.</dd>
+ *       <dd>**DEPRECATED** Legacy staff key. Returned only for applications from allow-list.</dd>
  * 
  *       <dt>string `s_name`</dt>
  *       <dd>The staff member name.</dd>

@@ -106,10 +106,7 @@ class NuveiTerminalTransactionStartModel extends WlModelAbstract
   /**
  * Payment amount.
  *
- * `null` in case when not initialized yet. A subclass under the SAL-1314 rule
- * ({@link \Thoth\WlPay\Form\Surcharge\SurchargeCardTypeRule}) may correct this to exclude a surcharge the
- * caller was not allowed to post, so a stale client that still posts one gets the corrected total back (D7)
- * instead of a rejected request.
+ * `null` in case when not initialized yet.
  *
  * @post post,result
  * @var string|null

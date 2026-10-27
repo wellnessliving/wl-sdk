@@ -45,7 +45,7 @@ class ListModel extends WlModelAbstract
  * 
  *   <dt>string `k_staff`</dt>
  *   <dd>
- *     <b style="color: red">Deprecated.</b> Legacy staff key.  Returned only for allow-listed apps.
+ *   **DEPRECATED** Legacy staff key.  Returned only for allow-listed apps.
  *   </dd>
  * 
  *   <dt>string `s_position`</dt>

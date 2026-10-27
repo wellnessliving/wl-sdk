@@ -15,6 +15,7 @@ use WellnessLiving\Wl\Profile\PurchaseList\PurchaseListElementModel;
 use WellnessLiving\Wl\Profile\Sensor\SensorTypesSid;
 use WellnessLiving\Wl\Visit\PassProspectSid;
 use WellnessLiving\Wl\Visit\WlVisitSid;
+use WellnessLiving\Wl\WlPrivilegeSid;
 use WellnessLiving\Wl\WlProgramSid;
 
 /**
@@ -34,6 +35,8 @@ class AttendanceListByTokenModel extends WlModelAbstract
  *   <dd>
  *     Information about member.
  * 
+ * Fields `text_address`, `text_mail`, `text_phone_cell`, `text_phone_home` and `text_phone_work`
+ * are returned only if the current user has the {@link WlPrivilegeSid::PROFILE_DETAIL} privilege.
  *     <dl>
  *       <dt>array[] `a_icon`</dt>
  *       <dd>
@@ -375,6 +378,12 @@ class AttendanceListByTokenModel extends WlModelAbstract
  *   <dt>bool `is_free`</dt>
  *   <dd>This will be `true` if the visit is free.</dd>
  * 
+ *   <dt>bool `is_guest`</dt>
+ *   <dd>
+ *     `true` if this visit is paid with a guest pass.
+ * When `true`, `text_promotion` contains the formatted guest label instead of the Purchase Option title.
+ *   </dd>
+ * 
  *   <dt>bool `is_hidden`</dt>
  *   <dd>This will be `true` if details on this visit should be hidden from staff members.</dd>
  * 
@@ -452,7 +461,11 @@ class AttendanceListByTokenModel extends WlModelAbstract
  *   <dd>Title of purchase option usages of that was returned to user.</dd>
  * 
  *   <dt>string `text_promotion`</dt>
- *   <dd>The description of the type of Purchase Option.</dd>
+ *   <dd>
+ *     The description of the type of Purchase Option.
+ * When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]"
+ * instead of the raw Purchase Option title.
+ *   </dd>
  * 
  *   <dt>string `text_restrict_title`</dt>
  *   <dd>
@@ -505,6 +518,8 @@ class AttendanceListByTokenModel extends WlModelAbstract
  *   <dd>
  *     Information about member.
  * 
+ * Fields `text_address`, `text_mail`, `text_phone_cell`, `text_phone_home` and `text_phone_work`
+ * are returned only if the current user has the {@link WlPrivilegeSid::PROFILE_DETAIL} privilege.
  *     <dl>
  *       <dt>array[] `a_icon`</dt>
  *       <dd>
@@ -846,6 +861,12 @@ class AttendanceListByTokenModel extends WlModelAbstract
  *   <dt>bool `is_free`</dt>
  *   <dd>This will be `true` if the visit is free.</dd>
  * 
+ *   <dt>bool `is_guest`</dt>
+ *   <dd>
+ *     `true` if this visit is paid with a guest pass.
+ * When `true`, `text_promotion` contains the formatted guest label instead of the Purchase Option title.
+ *   </dd>
+ * 
  *   <dt>bool `is_hidden`</dt>
  *   <dd>This will be `true` if details on this visit should be hidden from staff members.</dd>
  * 
@@ -923,7 +944,11 @@ class AttendanceListByTokenModel extends WlModelAbstract
  *   <dd>Title of purchase option usages of that was returned to user.</dd>
  * 
  *   <dt>string `text_promotion`</dt>
- *   <dd>The description of the type of Purchase Option.</dd>
+ *   <dd>
+ *     The description of the type of Purchase Option.
+ * When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]"
+ * instead of the raw Purchase Option title.
+ *   </dd>
  * 
  *   <dt>string `text_restrict_title`</dt>
  *   <dd>
@@ -976,6 +1001,8 @@ class AttendanceListByTokenModel extends WlModelAbstract
  *   <dd>
  *     Information about member.
  * 
+ * Fields `text_address`, `text_mail`, `text_phone_cell`, `text_phone_home` and `text_phone_work`
+ * are returned only if the current user has the {@link WlPrivilegeSid::PROFILE_DETAIL} privilege.
  *     <dl>
  *       <dt>array[] `a_icon`</dt>
  *       <dd>
@@ -1317,6 +1344,12 @@ class AttendanceListByTokenModel extends WlModelAbstract
  *   <dt>bool `is_free`</dt>
  *   <dd>This will be `true` if the visit is free.</dd>
  * 
+ *   <dt>bool `is_guest`</dt>
+ *   <dd>
+ *     `true` if this visit is paid with a guest pass.
+ * When `true`, `text_promotion` contains the formatted guest label instead of the Purchase Option title.
+ *   </dd>
+ * 
  *   <dt>bool `is_hidden`</dt>
  *   <dd>This will be `true` if details on this visit should be hidden from staff members.</dd>
  * 
@@ -1394,7 +1427,11 @@ class AttendanceListByTokenModel extends WlModelAbstract
  *   <dd>Title of purchase option usages of that was returned to user.</dd>
  * 
  *   <dt>string `text_promotion`</dt>
- *   <dd>The description of the type of Purchase Option.</dd>
+ *   <dd>
+ *     The description of the type of Purchase Option.
+ * When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]"
+ * instead of the raw Purchase Option title.
+ *   </dd>
  * 
  *   <dt>string `text_restrict_title`</dt>
  *   <dd>

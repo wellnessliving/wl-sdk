@@ -116,6 +116,17 @@ class TicketScanModel extends WlModelAbstract
   public $id_mode = 0;
 
   /**
+ * Whether the ticket is paid.
+ *
+ * `false` if the ticket was reserved to be paid at the door: the session pass of the ticket is not tied to a
+ * purchase item. The client offers to collect the payment in this case.
+ *
+ * @post result
+ * @var bool
+ */
+  public $is_paid = true;
+
+  /**
  * Whether it is allowed to check in a ticket after its session has ended.
  *
  * `false` to answer with an error in this case.

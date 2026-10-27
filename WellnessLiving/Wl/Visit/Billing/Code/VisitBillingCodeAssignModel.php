@@ -43,7 +43,8 @@ class VisitBillingCodeAssignModel extends WlModelAbstract
 
   /**
  * History of the changes of the billing codes of the visit, the latest change first: a record per added or removed
- * code.
+ * code, per "Codes applied by default" batch, per "Signed & locked billing codes" lock and per void of the codes
+ * on a cancel or a no-show.
  *
  * Empty for a staff member who can not assign billing codes.
  *
@@ -65,7 +66,8 @@ class VisitBillingCodeAssignModel extends WlModelAbstract
  * 
  *   <dt>string|null `uid_staff`</dt>
  *   <dd>
- *     Key of the staff member who made the change. `null` if the user is deleted.
+ *     Key of the staff member who made the change. `null` if the user is deleted, for the codes applied by
+ * default, and for a void made not by a user.
  * 
  *   </dd>
  * </dl>
@@ -87,6 +89,79 @@ class VisitBillingCodeAssignModel extends WlModelAbstract
  * @var string[]
  */
   public $a_text_code = [];
+
+  /**
+ * Voided billing codes of the visit.
+ *
+ * A visit gets voided codes when it is cancelled, late-cancelled or marked as a no-show: the codes are kept for
+ * the record but become read-only. The slide-out of the appointment shows them in a separate read-only section.
+ * A staff member who can not assign billing codes gets the voided custom codes only.
+ * Empty while the visit has no voided codes, and empty while the visit is live: if a cancelled visit is restored,
+ * its voided codes stay in the database but are not returned any more, the history has the record of the voiding.
+ *
+ * <dl>
+ *   <dt>bool `is_custom`</dt>
+ *   <dd>
+ *     `true` for a custom code of the business or a temporary code for this visit only, `false` for an ICD-10-CM
+ * diagnostic code.
+ *   </dd>
+ * 
+ *   <dt>string `text_code`</dt>
+ *   <dd>Code value, as it was printed on receipts and invoices.</dd>
+ * 
+ *   <dt>string|null `text_description`</dt>
+ *   <dd>Description of the code as it was when the code was applied. `null` for a temporary code.</dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
+  public $a_void = [];
+
+  /**
+ * Date and time the diagnostic codes of the visit were locked, in UTC.
+ * `null` when the diagnostic codes are not locked.
+ *
+ * @get result
+ * @var string|null
+ */
+  public $dtu_lock = null;
+
+  /**
+ * `true` when the diagnostic codes of the visit are locked by a staff member who signed, `false` otherwise.
+ *
+ * A locked save that adds or removes any code requires a short reason, and a save that adds or removes a
+ * diagnostic code requires a new signature, which re-locks the codes under the new signer.
+ *
+ * @get result
+ * @var bool
+ */
+  public $is_locked = false;
+
+  /**
+ * `true` when a receipt for this visit has been generated at least once.
+ *
+ * While it is `true`, a save that adds or removes any code requires a short reason.
+ *
+ * @get result
+ * @var bool
+ */
+  public $is_receipt_sent = false;
+
+  /**
+ * `true` if the business requires a signature when diagnostic codes of a visit are saved, `false` otherwise.
+ *
+ * @get result
+ * @var bool
+ */
+  public $is_signature = false;
+
+  /**
+ * `true` if the business has the diagnostic codes turned on, `false` otherwise.
+ *
+ * @get result
+ * @var bool
+ */
+  public $is_system = false;
 
   /**
  * Business key.
@@ -144,6 +219,28 @@ class VisitBillingCodeAssignModel extends WlModelAbstract
  * @var string
  */
   public $text_signature = '';
+
+  /**
+ * Full name of the staff member who signed and locked the diagnostic codes of the visit, as it is at the moment
+ * of the request.
+ *
+ * `null` when the diagnostic codes are not locked or when the user is deleted; the lock itself stays, so the
+ * diagnostic codes are kept frozen.
+ *
+ * @get result
+ * @var string|null
+ */
+  public $text_staff_name_lock = null;
+
+  /**
+ * Key of the staff member who signed and locked the diagnostic codes of the visit.
+ *
+ * `null` when the diagnostic codes are not locked or when the user is deleted.
+ *
+ * @get result
+ * @var string|null
+ */
+  public $uid_staff_lock = null;
 }
 
 ?>

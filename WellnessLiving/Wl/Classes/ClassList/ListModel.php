@@ -77,6 +77,23 @@ class ListModel extends WlModelAbstract
   public $a_class_tab = null;
 
   /**
+ * Direct booking link parameters.
+ *
+ * When provided, the event identified by `k_class` is treated as accessed via a direct booking URL.
+ * This grants the caller the ability to view and book the event even when it is restricted to direct-link-only access.
+ *
+ * An empty array when no direct link is used.
+ *
+ * <dl>
+ *   <dt>string `k_class`</dt>
+ *   <dd>The class/event key. </dd>
+ * </dl>
+ * @get get
+ * @var array
+ */
+  public $a_direct_link = [];
+
+  /**
  * ID of book now tab. One of {@link TabSid} constants.
  * Only {@link TabSid::TRAINING} and {@link TabSid::ENROLLMENT} book now tab are supported.
  * Filtering by Book Now Tab is not supported if {@link ListModel::$is_franchise} is `true`.

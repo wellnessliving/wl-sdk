@@ -54,7 +54,7 @@ class ModifyModel extends WlModelAbstract
  *       <dd>Whether this staff member is a quick substitute. Optional.</dd>
  * 
  *       <dt>string `k_staff`</dt>
- *       <dd><b>Deprecated.</b> Staff key. </dd>
+ *       <dd>**DEPRECATED** Staff key. </dd>
  * 
  *       <dt>string `uid_staff`</dt>
  *       <dd>Staff user key.  Optional.</dd>

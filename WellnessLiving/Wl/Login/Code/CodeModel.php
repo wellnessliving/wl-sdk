@@ -9,7 +9,7 @@ use WellnessLiving\Wl\Mode\ModeSid;
 /**
  * Methods to accept redemption code or number of gift card.
  *
- * @method WlModelRequest post() Applies login code.  Validates the source mode, business, redemption code, and that the current user has access to  the target profile. Attempts to redeem the code as a coupon first; if the code is not a coupon,  falls back to checking it as another type of redemption code, for example a gift card number,  and logs the change.
+ * @method WlModelRequest post() Applies login code.  Validates the source mode, business, redemption code, and that the current user has access to  the target profile. Attempts to redeem the code as a coupon first; if the code is not a coupon,  falls back to checking it as another type of redemption code, for example a gift card number,  and logs the change.  Failed attempts are limited per session, per IP address and per profile, so that codes can not be guessed.  A successful redemption is not counted.
  */
 class CodeModel extends WlModelAbstract
 {

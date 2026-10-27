@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Core\Push;
 
+use WellnessLiving\Core\a\APushOsSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 
@@ -30,6 +31,7 @@ class PushModel extends WlModelAbstract
 
   /**
  * OS name.
+ * String version of {@link APushOsSid} constants.
  *
  * @post get
  * @var string

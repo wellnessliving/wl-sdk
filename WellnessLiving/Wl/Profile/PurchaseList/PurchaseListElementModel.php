@@ -852,6 +852,16 @@ class PurchaseListElementModel extends WlModelAbstract
   public $text_guest_pass = '';
 
   /**
+ * The full name of the user who pays for this purchase option instead of the default payer of its holder.
+ * `null` if the item is not a purchase option, the purchase option is billed to the default payer,
+ * or the payer cannot be resolved.
+ *
+ * @get result
+ * @var string|null
+ */
+  public $text_promotion_payer = null;
+
+  /**
  * The key of the user who paid for this purchase.
  * `null` in a case when there was no money transaction.
  *
@@ -859,6 +869,15 @@ class PurchaseListElementModel extends WlModelAbstract
  * @var string|null
  */
   public $uid_payer;
+
+  /**
+ * The key of the user who pays for this purchase option instead of the default payer of its holder.
+ * `null` under the same conditions as {@link PurchaseListElementModel::$text_promotion_payer}.
+ *
+ * @get result
+ * @var string|null
+ */
+  public $uid_promotion_payer = null;
 
   /**
  * The key of the user who paid for this purchase.

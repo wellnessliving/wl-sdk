@@ -197,7 +197,8 @@ class NextAvailableDayModel extends WlModelAbstract
  *   <dd>Service key. </dd>
  * 
  *   <dt>string `k_staff`</dt>
- *   <dd>@deprecated Staff key. Zero means any available staff. </dd>
+ *   <dd>**DEPRECATED** Staff key. Zero means any available staff.
+ * </dd>
  * 
  *   <dt>string `uid_staff`</dt>
  *   <dd>Staff user key. Zero means any available staff. </dd>

@@ -105,6 +105,27 @@ class StripeComPayInitModel extends WlModelAbstract
   public $a_card;
 
   /**
+ * Items of the sale for the Checkout Session. Every element: 
+ *
+ * The total of the items must equal {@link StripeComPayInitModel::$m_amount}.
+ * Empty to send one item for the whole amount. Used only if the payment runs on a Checkout Session.
+ *
+ * <dl>
+ *   <dt>int `i_quantity`</dt>
+ *   <dd>Quantity, at least `1`. An integer, or a string of digits: the values of an API request are strings.</dd>
+ * 
+ *   <dt>string `m_amount`</dt>
+ *   <dd>Unit amount. Not negative: a discount is a smaller amount.</dd>
+ * 
+ *   <dt>string `text_name`</dt>
+ *   <dd>Name of the item.</dd>
+ * </dl>
+ * @post post
+ * @var array[]
+ */
+  public $a_line_item = [];
+
+  /**
  * ID of the currency.
  *
  * One of {@link CurrencySid} constants.
@@ -160,6 +181,20 @@ class StripeComPayInitModel extends WlModelAbstract
  * @var bool
  */
   public $is_authorize = false;
+
+  /**
+ * `true` if the client card form can run on a Checkout Session, `false` otherwise.
+ *
+ * Only the card form of the web sets it. API clients and the mobile apps do not: the mobile Payment Sheet takes
+ * the client secret of a Payment Intent only. A session is created only if this flag is set, the Stripe Payment
+ * Element is used ({@link StripeComPayInitModel::$is_stripe_elements}) and the environment allows it. The answer
+ * tells which one was created:
+ * {@link StripeComPayInitModel::$s_checkout_session}.
+ *
+ * @post post
+ * @var bool
+ */
+  public $is_checkout_session = false;
 
   /**
  * `true` if card swiper is used, `false` otherwise.
@@ -220,10 +255,7 @@ class StripeComPayInitModel extends WlModelAbstract
   /**
  * Payment amount.
  *
- * `null` in case when not initialized yet. A subclass under the SAL-1314 rule
- * ({@link \Thoth\WlPay\Form\Surcharge\SurchargeCardTypeRule}) may correct this to exclude a surcharge the
- * caller was not allowed to post, so a stale client that still posts one gets the corrected total back (D7)
- * instead of a rejected request.
+ * `null` in case when not initialized yet.
  *
  * @post post,result
  * @var string|null
@@ -239,6 +271,18 @@ class StripeComPayInitModel extends WlModelAbstract
  * @var string|null
  */
   public $m_surcharge = null;
+
+  /**
+ * ID of the Checkout Session when the client card form runs on a Checkout Session.
+ *
+ * `null` if the form runs on a Payment Intent. In that case {@link StripeComPayInitModel::$s_client_secret} is the
+ * client secret of the session, and {@link StripeComPayInitModel::$s_payment_intent} is empty: Stripe creates the
+ * Payment Intent when the client confirms the session.
+ *
+ * @post result
+ * @var string|null
+ */
+  public $s_checkout_session = null;
 
   /**
  * Payment Intent client secret key.
@@ -265,6 +309,19 @@ class StripeComPayInitModel extends WlModelAbstract
  * @var string|null
  */
   public $s_payment_method;
+
+  /**
+ * Email of the payer from the profile, for the client card form that runs on a Checkout Session.
+ *
+ * Stripe needs an email to complete a session. The client passes it to `confirm` of the session, because the
+ * Stripe customer of the payer is created without an email.
+ *
+ * `null` if the card form does not run on a Checkout Session, or the payer has no email in the profile.
+ *
+ * @post result
+ * @var string|null
+ */
+  public $text_mail_payer = null;
 
   /**
  * Error message.

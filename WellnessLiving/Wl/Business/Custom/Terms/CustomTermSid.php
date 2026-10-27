@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business\Custom\Terms;
 /**
  * Term slots available on the Custom Terms settings page.
  *
- * Last used ID: 5.
+ * Last used ID: 7.
  */
 class CustomTermSid
 {
@@ -40,6 +40,22 @@ class CustomTermSid
    * @title Client
    */
   const CLIENT = 4;
+
+  /**
+   * Drop-in.
+   *
+   * @description A one-time purchase for a single booking
+   * @title Drop-in
+   */
+  const DROP_IN = 6;
+
+  /**
+   * Purchase Option.
+   *
+   * @description What clients buy to book your services
+   * @title Purchase option
+   */
+  const PURCHASE_OPTION = 7;
 
   /**
    * Staff.

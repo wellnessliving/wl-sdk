@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business\Custom\Terms;
 /**
  * Preset options for the {@link CustomTermSid::CLIENT} custom term.
  *
- * Last used ID: 17.
+ * Last used ID: 18.
  */
 class ClientTermOptionSid
 {
@@ -35,15 +35,6 @@ class ClientTermOptionSid
    * @vowel-sound false
    */
   const CAMPER = 3;
-
-  /**
-   * Care Recipient.
-   *
-   * @title Care Recipient
-   * @title-plural Care Recipients
-   * @vowel-sound false
-   */
-  const CARE_RECIPIENT = 4;
 
   /**
    * Child.
@@ -161,6 +152,15 @@ class ClientTermOptionSid
    * @vowel-sound false
    */
   const STUDENT = 17;
+
+  /**
+   * Swimmer.
+   *
+   * @title Swimmer
+   * @title-plural Swimmers
+   * @vowel-sound false
+   */
+  const SWIMMER = 18;
 }
 
 ?>

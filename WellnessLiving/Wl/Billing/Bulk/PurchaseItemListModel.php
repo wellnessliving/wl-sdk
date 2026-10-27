@@ -363,7 +363,7 @@ class PurchaseItemListModel extends WlModelAbstract
   public $s_id;
 
   /**
- * List of client user keys to bill joined with comma.
+ * List of client user keys to bill joined with comma. Every key must be a client of the business.
  *
  * @post post
  * @var string

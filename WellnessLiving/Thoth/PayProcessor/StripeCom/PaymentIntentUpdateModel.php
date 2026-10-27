@@ -8,7 +8,10 @@ use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\RsPayActorSid;
 
 /**
- * Updates created Payment Intent.
+ * Updates created Payment Intent, or the line items of an open Checkout Session.
+ *
+ * The client card form that runs on a Checkout Session passes the ID of the session instead of the ID of a Payment
+ * Intent, see {@link StripeComPayInitModel::$s_checkout_session}.
  *
  * WARNING: Can be used for Stripe Payment Element only.
  * Currently this API is used to update Payment Intent, that is created to show Stripe Payment Element form, in case of cart
@@ -19,6 +22,29 @@ use WellnessLiving\Wl\RsPayActorSid;
  */
 class PaymentIntentUpdateModel extends WlModelAbstract
 {
+  /**
+ * Items of the sale to set in the Checkout Session. Every element: 
+ *
+ * The whole list is sent, the items of the session that are not in it are removed. The total of the items must
+ * equal {@link PaymentIntentUpdateModel::$m_amount}.
+ * Empty to replace the items of the session with one item for {@link PaymentIntentUpdateModel::$m_amount}.
+ * Used only with {@link PaymentIntentUpdateModel::$s_checkout_session}.
+ *
+ * <dl>
+ *   <dt>int `i_quantity`</dt>
+ *   <dd>Quantity, at least `1`. An integer, or a string of digits: the values of an API request are strings.</dd>
+ * 
+ *   <dt>string `m_amount`</dt>
+ *   <dd>Unit amount. Not negative: a discount is a smaller amount.</dd>
+ * 
+ *   <dt>string `text_name`</dt>
+ *   <dd>Name of the item.</dd>
+ * </dl>
+ * @post post
+ * @var array[]
+ */
+  public $a_line_item = [];
+
   /**
  * ID of the currency.
  * Required.
@@ -81,8 +107,17 @@ class PaymentIntentUpdateModel extends WlModelAbstract
   public $m_surcharge = '0.00';
 
   /**
+ * ID of the Checkout Session to update.
+ * Required if {@link PaymentIntentUpdateModel::$s_payment_intent} is empty.
+ *
+ * @post get
+ * @var string
+ */
+  public $s_checkout_session = '';
+
+  /**
  * Payment intent ID to update.
- * Required.
+ * Required if {@link PaymentIntentUpdateModel::$s_checkout_session} is empty.
  *
  * @post get
  * @var string

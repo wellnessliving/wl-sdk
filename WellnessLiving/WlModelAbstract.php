@@ -330,6 +330,32 @@ class WlModelAbstract
   }
 
   /**
+   * Returns the value of a field to send to the server.
+   *
+   * The class {@link WlModelControllerAbstract} overrides this method, because the fields of its models are not properties.
+   *
+   * @param string $s_field Name of the field.
+   * @return mixed Value of the field. <tt>null</tt> if the field has no value and must not be sent.
+   */
+  protected function fieldValue($s_field)
+  {
+    return $this->$s_field;
+  }
+
+  /**
+   * Sets the value of a field that the server returned.
+   *
+   * The class {@link WlModelControllerAbstract} overrides this method, because the fields of its models are not properties.
+   *
+   * @param string $s_field Name of the field.
+   * @param mixed $x_value Value from the response of the server. <tt>null</tt> if the response has no such field.
+   */
+  protected function fieldValueSet($s_field,$x_value)
+  {
+    $this->$s_field=$x_value;
+  }
+
+  /**
    * Performs request with GET method.
    *
    * @return WlModelRequest Object with complete request data.
@@ -430,11 +456,12 @@ class WlModelAbstract
    * Performs a request.
    *
    * @param string $s_method Request method. One of <tt>'get'</tt>, <tt>'post'</tt>, <tt>'put'</tt>, <tt>'delete'</tt>.
+   * The class {@link WlModelControllerAbstract} also uses <tt>'patch'</tt>.
    * @return WlModelRequest Object with complete request data.
    * @throws WlAssertException In a case of an assertion.
    * @throws WlUserException In a case of a user-level error.
    */
-  private function request($s_method)
+  protected function request($s_method)
   {
     $a_request = $this->requestPrepare($s_method);
     $call_request_do = function() use($s_method, $a_request) {
@@ -467,7 +494,7 @@ class WlModelAbstract
     {
       if(empty($a_method[$s_method])||empty($a_method[$s_method]['get']))
         continue;
-      $x_value=$this->$s_field;
+      $x_value=$this->fieldValue($s_field);
       if($x_value===null)
         continue;
 
@@ -534,7 +561,7 @@ class WlModelAbstract
     {
       if(empty($a_method[$s_method]))
         continue;
-      $x_value=$this->$s_field;
+      $x_value=$this->fieldValue($s_field);
       if($x_value===null)
         continue;
 
@@ -592,7 +619,7 @@ class WlModelAbstract
     }
 
     $s_post='';
-    if($s_method==='put'||$s_method==='delete')
+    if($s_method==='put'||$s_method==='delete'||$s_method==='patch')
     {
       curl_setopt($r_curl,CURLOPT_CUSTOMREQUEST,strtoupper($s_method));
       if(count($a_post))
@@ -752,9 +779,9 @@ class WlModelAbstract
           continue;
 
         if(array_key_exists($s_field,$o_request->a_result))
-          $this->$s_field=$o_request->a_result[$s_field];
+          $this->fieldValueSet($s_field,$o_request->a_result[$s_field]);
         else
-          $this->$s_field=null;
+          $this->fieldValueSet($s_field,null);
       }
 
       throw $o_request->o_config->exceptionCreate($o_request);
@@ -768,9 +795,9 @@ class WlModelAbstract
         continue;
 
       if(array_key_exists($s_field,$o_request->a_result))
-        $this->$s_field=$o_request->a_result[$s_field];
+        $this->fieldValueSet($s_field,$o_request->a_result[$s_field]);
       else
-        $this->$s_field=null;
+        $this->fieldValueSet($s_field,null);
     }
 
     return $o_request;

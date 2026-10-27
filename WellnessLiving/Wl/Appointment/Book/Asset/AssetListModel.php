@@ -2,6 +2,7 @@
 
 namespace WellnessLiving\Wl\Appointment\Book\Asset;
 
+use WellnessLiving\Core\a\ADurationSid;
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Mode\ModeSid;
@@ -53,6 +54,42 @@ class AssetListModel extends WlModelAbstract
  *         This will be `true` if age restrictions are public and available. Otherwise, this will be `false` if they're hidden.
  * When restrictions are hidden and current user isn't a staff member, the age range will be empty.
  *       </dd>
+ *     </dl>
+ *   </dd>
+ * 
+ *   <dt>array `a_config`</dt>
+ *   <dd>
+ *     The asset's effective booking window policy.
+ * When the asset has its own booking policy, these values come from that policy.
+ * Otherwise, the business-level policy values are used.
+ *     <dl>
+ *       <dt>array `a_member_group_book_window`</dt>
+ *       <dd>
+ *         Member group overrides for the advance booking window, keyed by member group key.
+ * Each value has the following structure:
+ * 
+ * 
+ * Empty array if no member group overrides are set.
+ *         <dl>
+ *           <dt>int `i_book_future`</dt>
+ *           <dd>The advance booking window duration for this member group.</dd>
+ * 
+ *           <dt>int `id_book_future`</dt>
+ *           <dd>The duration type for the advance booking window. One of {@link ADurationSid} constants.</dd>
+ *         </dl>
+ *       </dd>
+ * 
+ *       <dt>int `i_book_before`</dt>
+ *       <dd>The minimum time before a session starts that a booking can be made.</dd>
+ * 
+ *       <dt>int `i_book_future`</dt>
+ *       <dd>The maximum advance booking window duration.</dd>
+ * 
+ *       <dt>int `id_book_before`</dt>
+ *       <dd>The duration type for the minimum booking time. One of {@link ADurationSid} constants.</dd>
+ * 
+ *       <dt>int `id_book_future`</dt>
+ *       <dd>The duration type for the advance booking window. One of {@link ADurationSid} constants.</dd>
  *     </dl>
  *   </dd>
  * 

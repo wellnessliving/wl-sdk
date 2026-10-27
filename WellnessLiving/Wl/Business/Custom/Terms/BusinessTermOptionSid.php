@@ -8,7 +8,7 @@ namespace WellnessLiving\Wl\Business\Custom\Terms;
  * `@group` references a {@link BusinessTermOptionGroupSid} sid string — the heading each option
  * is grouped under in the type-ahead list.
  *
- * Last used ID: 31.
+ * Last used ID: 34.
  */
 class BusinessTermOptionSid
 {
@@ -213,6 +213,26 @@ class BusinessTermOptionSid
   const MED_SPA = 10;
 
   /**
+   * Music School.
+   *
+   * @group childcare-education
+   * @title Music School
+   * @title-plural Music Schools
+   * @vowel-sound false
+   */
+  const MUSIC_SCHOOL = 33;
+
+  /**
+   * Nail Salon.
+   *
+   * @group beauty
+   * @title Nail Salon
+   * @title-plural Nail Salons
+   * @vowel-sound false
+   */
+  const NAIL_SALON = 32;
+
+  /**
    * Office.
    *
    * @group other
@@ -291,6 +311,16 @@ class BusinessTermOptionSid
    * @vowel-sound false
    */
   const STUDIO = 8;
+
+  /**
+   * Swim School.
+   *
+   * @group childcare-education
+   * @title Swim School
+   * @title-plural Swim Schools
+   * @vowel-sound false
+   */
+  const SWIM_SCHOOL = 34;
 
   /**
    * Training Center.

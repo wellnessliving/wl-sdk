@@ -4,6 +4,7 @@ namespace WellnessLiving\Studio\Task\Branch;
 
 use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
+use WellnessLiving\Wl\StudioRepositoryServerTypeSid;
 
 /**
  * Changes branch information during build.
@@ -29,7 +30,7 @@ class BranchBuildModel extends WlModelAbstract
  *
  * <dl>
  *   <dt>int `id_repository_server_type`</dt>
- *   <dd>Repository service type ID.</dd>
+ *   <dd>Repository service type ID. One of {@link StudioRepositoryServerTypeSid} constants.</dd>
  * 
  *   <dt>string `s_destination`</dt>
  *   <dd>Path into which original catalog is cloned/copied.</dd>

@@ -29,8 +29,8 @@ class SurchargeTenderModel extends WlModelAbstract
   public $id_pay_method = 0;
 
   /**
- * Whether a surcharge is allowed for the card identified by {@link SurchargeTenderModel::$s_bin} or
- * {@link SurchargeTenderModel::$k_pay_bank}.
+ * Whether a surcharge is allowed for the card identified by
+ * {@link SurchargeTenderModel::$s_bin} or {@link SurchargeTenderModel::$k_pay_bank}.
  *
  * `true` whenever the business's processor is not subject to the rule, or the rule does not apply to this
  * country/pay method - exactly the same meaning as "do not suppress", never a stand-in for "lookup failed".

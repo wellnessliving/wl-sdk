@@ -48,6 +48,9 @@ class BusinessDesignModel extends WlModelAbstract
  *  `false` to display both available spots and total capacity (e.g., "3 spots left of 10").
  *   </dd>
  * 
+ *   <dt>bool `is_fb_capi_access_token`</dt>
+ *   <dd>Whether Meta Conversion API Access Token is set.</dd>
+ * 
  *   <dt>bool `is_show_name`</dt>
  *   <dd>If <tt>true</tt>, the business name will be shown.</dd>
  * 
@@ -95,7 +98,7 @@ class BusinessDesignModel extends WlModelAbstract
  *   </dd>
  * 
  *   <dt>string `s_fb_pixel_id`</dt>
- *   <dd>Facebook Pixel ID. Used for Facebook analytics tracking. Empty string if tracking is disabled.</dd>
+ *   <dd>Meta Pixel ID. Used for Meta analytics tracking. Empty string if tracking is disabled.</dd>
  * 
  *   <dt>string `s_ga_tracking_id`</dt>
  *   <dd>Google Analytics Tracking ID. Used for Google Analytics tracking. Empty string if tracking is disabled.</dd>

@@ -99,7 +99,7 @@ class CatalogViewModel extends WlModelAbstract
  *   <dt>string `m_price`</dt>
  *   <dd>One ticket price.</dd>
  * 
- *   <dt>float|null `m_price_early`</dt>
+ *   <dt>string|null `m_price_early`</dt>
  *   <dd>
  *     One ticket price with the early bird applied, taken from the settings of the event. `null` if the event
  * has no early bird. The end of the early bird period is not taken into account, so the client decides

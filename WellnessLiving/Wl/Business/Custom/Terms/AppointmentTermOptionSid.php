@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business\Custom\Terms;
 /**
  * Preset options for the {@link CustomTermSid::APPOINTMENT} custom term.
  *
- * Last used ID: 8.
+ * Last used ID: 9.
  */
 class AppointmentTermOptionSid
 {
@@ -26,6 +26,15 @@ class AppointmentTermOptionSid
    * @vowel-sound false
    */
   const CONSULTATION = 5;
+
+  /**
+   * Exam.
+   *
+   * @title Exam
+   * @title-plural Exams
+   * @vowel-sound true
+   */
+  const EXAM = 9;
 
   /**
    * Lesson.

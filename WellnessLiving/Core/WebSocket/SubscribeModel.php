@@ -40,15 +40,6 @@ class SubscribeModel extends WlModelAbstract
  *   <dd>The user whose access has changed.</dd>
  * </dl>
  * 
- * Parameters for `60`:
- * <dl>
- *   <dt>string `k_personnel`</dt>
- *   <dd>Key of a staff member.</dd>
- * 
- *   <dt>string `kip`</dt>
- *   <dd>Key of IP address from which this staff member accesses the system.</dd>
- * </dl>
- * 
  * Parameters for `1921`:
  * <dl>
  *   <dt>int `id_visit`</dt>
@@ -138,26 +129,6 @@ class SubscribeModel extends WlModelAbstract
  * <dl>
  *   <dt>string `k_business`</dt>
  *   <dd>Business key.</dd>
- * </dl>
- * 
- * Parameters for `1105`:
- * <dl>
- *   <dt>string `uid`</dt>
- *   <dd>Current user key.</dd>
- * </dl>
- * 
- * Parameters for `1005`:
- * <dl>
- *   <dt>string|null `k_microservice`</dt>
- *   <dd>Microservice key.
- * 
- * `null` if the value is not set</dd>
- * </dl>
- * 
- * Parameters for `2390`:
- * <dl>
- *   <dt>string `uid`</dt>
- *   <dd>The administrator.</dd>
  * </dl>
  * 
  * Parameters for `1660`:
@@ -382,17 +353,6 @@ class SubscribeModel extends WlModelAbstract
  * When a client is initially subscribed for a WebSocket channel, entire message queue is sent to the client.
  * This is needed to send message that were generated before a client has subscribed.
  *
- * Parameters for `60`:
- * <dl>
- *   <dt>string|null `dt_remove`</dt>
- *   <dd>Date/time when access to specified service will be revoked.
- * 
- * <tt>null</tt> if access is revoked.</dd>
- * 
- *   <dt>string `k_ip_service`</dt>
- *   <dd>Key of a service that is changed.</dd>
- * </dl>
- * 
  * Parameters for `1921`:
  * <dl>
  *   <dt>string `k_visit`</dt>
@@ -532,47 +492,6 @@ class SubscribeModel extends WlModelAbstract
  *   <dd>New title of the business.</dd>
  * </dl>
  * 
- * Parameters for `1105`:
- * <dl>
- *   <dt>string `s_code`</dt>
- *   <dd>Code for authorization.</dd>
- * 
- *   <dt>int `text_time`</dt>
- *   <dd>Unique string for get code.</dd>
- * </dl>
- * 
- * Parameters for `1005`:
- * <dl>
- *   <dt>string[] `a_op`</dt>
- *   <dd>
- *     Names of operation that were executed.
- * 
- * Operation names are defined by <tt>OP_*</tt>
- *   </dd>
- * 
- *   <dt>string|null `s_step`</dt>
- *   <dd>Name of the step that was set.
- * 
- * `null` if step has not changed.</dd>
- * 
- *   <dt>string|null `text_log`</dt>
- *   <dd>
- *     A new log item was added during execution of a script.
- * 
- * Text of the log item that was just added.
- * 
- * `null` if this message does not contain information about newly added log item.
- *   </dd>
- * </dl>
- * 
- * Parameters for `2390`:
- * <dl>
- *   <dt>int `i_request`</dt>
- *   <dd>
- *
- *   </dd>
- * </dl>
- * 
  * Parameters for `510`:
  * <dl>
  *   <dt>array `a_visit`</dt>
@@ -703,6 +622,14 @@ class SubscribeModel extends WlModelAbstract
  *       <dt>string `text_value`</dt>
  *       <dd>Value of the token, which should be added to the DNS records.</dd>
  *     </dl>
+ *   </dd>
+ * 
+ *   <dt>int `i_reset_month`</dt>
+ *   <dd>
+ *     Number of resets of the domain that the staff of the business made in its current calendar month.
+ * 
+ * 
+ * `0` if the domain is not verified.
  *   </dd>
  * 
  *   <dt>int|null `id_domain_status`</dt>

@@ -20,14 +20,14 @@ class FieldAppliesToEnum
   const ALL = 1;
 
   /**
-   * The field applies only to profiles linked as a child.
+   * The field applies only to profiles linked as a child or a care receiver.
    *
    * @title Child profiles only
    */
   const CHILD = 2;
 
   /**
-   * The field applies only to profiles linked as a parent.
+   * The field applies only to profiles linked as a parent or a guardian.
    *
    * @title Parent profiles only
    */

@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Business\Custom\Terms;
 /**
  * Preset options for the {@link CustomTermSid::STAFF} custom term.
  *
- * Last used ID: 27.
+ * Last used ID: 31.
  */
 class StaffTermOptionSid
 {
@@ -46,6 +46,15 @@ class StaffTermOptionSid
   const CAREGIVER = 4;
 
   /**
+   * Chiropractor.
+   *
+   * @title Chiropractor
+   * @title-plural Chiropractors
+   * @vowel-sound false
+   */
+  const CHIROPRACTOR = 28;
+
+  /**
    * Clinician.
    *
    * @title Clinician
@@ -80,6 +89,24 @@ class StaffTermOptionSid
    * @vowel-sound false
    */
   const DENTIST = 8;
+
+  /**
+   * Dietitian.
+   *
+   * @title Dietitian
+   * @title-plural Dietitians
+   * @vowel-sound false
+   */
+  const DIETITIAN = 29;
+
+  /**
+   * Doctor.
+   *
+   * @title Doctor
+   * @title-plural Doctors
+   * @vowel-sound false
+   */
+  const DOCTOR = 30;
 
   /**
    * Educator.
@@ -152,6 +179,15 @@ class StaffTermOptionSid
    * @vowel-sound false
    */
   const NURSE_PRACTITIONER = 16;
+
+  /**
+   * Physiotherapist.
+   *
+   * @title Physiotherapist
+   * @title-plural Physiotherapists
+   * @vowel-sound false
+   */
+  const PHYSIOTHERAPIST = 31;
 
   /**
    * Practitioner.

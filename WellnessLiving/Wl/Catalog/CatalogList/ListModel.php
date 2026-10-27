@@ -49,6 +49,23 @@ class ListModel extends WlModelAbstract
  *   <dd>Shop category keys the item belongs to.
  * </dd>
  * 
+ *   <dt>array `a_ticket_inventory`</dt>
+ *   <dd>
+ *     How many tickets can be sold for the event and how many of those are still available. Empty if the
+ * item is not a ticketed event. 
+ * Returned for items with `id_sale` equal to {@link WlSaleSid::ENROLLMENT} only.
+ *     <dl>
+ *       <dt>int `i_capacity`</dt>
+ *       <dd>Total number of tickets that can be sold for the event.</dd>
+ * 
+ *       <dt>int `i_order_limit`</dt>
+ *       <dd>Maximum number of tickets that can be ordered in one purchase. `0` if there is no limit.</dd>
+ * 
+ *       <dt>int `i_remain`</dt>
+ *       <dd>Number of tickets still available to sell. `0` if the event is sold out.</dd>
+ *     </dl>
+ *   </dd>
+ * 
  *   <dt>array[] `a_tickets`</dt>
  *   <dd>
  *     List of ticket options available for booking the event. Empty if the item is not a
@@ -92,6 +109,13 @@ class ListModel extends WlModelAbstract
  * Returned for items with `id_sale` equal to {@link WlSaleSid::ENROLLMENT} only.
  *   </dd>
  * 
+ *   <dt>bool `is_ticket_guest_allowed`</dt>
+ *   <dd>
+ *     `true` if a client can buy tickets without creating an account. `false` if the item is not a
+ * ticketed event.
+ * Returned for items with `id_sale` equal to {@link WlSaleSid::ENROLLMENT} only.
+ *   </dd>
+ * 
  *   <dt>string `k_id`</dt>
  *   <dd>The item key.</dd>
  * 
@@ -131,6 +155,23 @@ class ListModel extends WlModelAbstract
  *   <dt>string[] `a_shop_category`</dt>
  *   <dd>Shop category keys the item belongs to.
  * </dd>
+ * 
+ *   <dt>array `a_ticket_inventory`</dt>
+ *   <dd>
+ *     How many tickets can be sold for the event and how many of those are still available. Empty if the
+ * item is not a ticketed event. 
+ * Returned for items with `id_sale` equal to {@link WlSaleSid::ENROLLMENT} only.
+ *     <dl>
+ *       <dt>int `i_capacity`</dt>
+ *       <dd>Total number of tickets that can be sold for the event.</dd>
+ * 
+ *       <dt>int `i_order_limit`</dt>
+ *       <dd>Maximum number of tickets that can be ordered in one purchase. `0` if there is no limit.</dd>
+ * 
+ *       <dt>int `i_remain`</dt>
+ *       <dd>Number of tickets still available to sell. `0` if the event is sold out.</dd>
+ *     </dl>
+ *   </dd>
  * 
  *   <dt>array[] `a_tickets`</dt>
  *   <dd>
@@ -172,6 +213,13 @@ class ListModel extends WlModelAbstract
  *   <dt>bool `is_ticket`</dt>
  *   <dd>
  *     `true` if the item is a ticketed event, `false` otherwise.
+ * Returned for items with `id_sale` equal to {@link WlSaleSid::ENROLLMENT} only.
+ *   </dd>
+ * 
+ *   <dt>bool `is_ticket_guest_allowed`</dt>
+ *   <dd>
+ *     `true` if a client can buy tickets without creating an account. `false` if the item is not a
+ * ticketed event.
  * Returned for items with `id_sale` equal to {@link WlSaleSid::ENROLLMENT} only.
  *   </dd>
  * 

@@ -10,15 +10,12 @@ namespace WellnessLiving\Wl\Purchase\AttemptChain;
 class AttemptChainSourceSid
 {
   /**
-   * `k_
-   *
    * @title Bulk billing
    */
   const BULK_BILLING = 3;
 
   /**
    * The chain groups the reattempts of a membership renewal - `RsPurchaseItemMembership`.
-   * `k_
    *
    * @title Membership
    */
@@ -26,7 +23,6 @@ class AttemptChainSourceSid
 
   /**
    * The chain groups the reattempts of a Duration, Limit or Pass PO renewal - `RsPurchaseItemPromotionRenew`.
-   * `k_
    *
    * @title Purchase Option renewal
    */

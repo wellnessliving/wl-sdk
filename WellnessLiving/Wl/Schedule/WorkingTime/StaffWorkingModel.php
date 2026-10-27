@@ -56,7 +56,7 @@ class StaffWorkingModel extends WlModelAbstract
  *         <dl>
  *           <dt>string[]|null `a_service`</dt>
  *           <dd>
- *             Services that affect this hours. Primary keys in  table.
+ *             Services that affect this hours. 
  * <tt>null</tt> if affects all services.
  *           </dd>
  * 

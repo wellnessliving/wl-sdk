@@ -215,6 +215,14 @@ class ClassList68Model extends WlModelAbstract
  *   <dt>int `i_duration`</dt>
  *   <dd>The duration of the session in minutes.</dd>
  * 
+ *   <dt>int|null `i_ticket_attend`</dt>
+ *   <dd>
+ *     Number of the tickets of the session that are checked in. `null` if the session is not a session of a
+ * ticketed event (see <var>is_ticket</var>).
+ * A visit checked in without a ticket is not counted. The same rule is used by the ticket check-in scanner,
+ *
+ *   </dd>
+ * 
  *   <dt>int `i_wait`</dt>
  *   <dd>Number of clients in wait list.</dd>
  * 
@@ -514,6 +522,18 @@ class ClassList68Model extends WlModelAbstract
  * @var bool
  */
   public $show_quick_filter = false;
+
+  /**
+ * If `true`, ticketed events are also returned, even if {@link ClassList68Model::$show_event} is `false`.
+ * If `false`, ticketed events are returned only as a part of all events, see {@link ClassList68Model::$show_event}.
+ *
+ * To get only ticketed events, set {@link ClassList68Model::$show_class} and {@link ClassList68Model::$show_event}
+ * to `false`, and this flag to `true`.
+ *
+ * @post post
+ * @var bool
+ */
+  public $show_ticket = false;
 
   /**
  * The user key.

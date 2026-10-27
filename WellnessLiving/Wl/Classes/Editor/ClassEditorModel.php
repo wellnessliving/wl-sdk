@@ -153,6 +153,14 @@ class ClassEditorModel extends WlModelAbstract
  *   <dd>
  *     Settings of the way the class is attended.
  *     <dl>
+ *       <dt>string[] `a_replace`</dt>
+ *       <dd>
+ *         Classes and events a client may transfer a missed session of this one to as a make-up.
+ * 
+ * Only taken into account while {@link \Wl\Classes\Editor\Entity\ClassAttendanceEntity::$is_replace} is `true`, and then may not be
+ * empty.
+ *       </dd>
+ * 
  *       <dt>array[] `a_resource_type`</dt>
  *       <dd>
  *         Book-a-Spot asset categories the class requires.
@@ -184,7 +192,10 @@ class ClassEditorModel extends WlModelAbstract
  *       <dd>`true` if staff may sell products from the attendance list of the class, `false` otherwise.</dd>
  * 
  *       <dt>bool `is_replace`</dt>
- *       <dd>`true` if the number of the make-up sessions of the class is limited, `false` otherwise.</dd>
+ *       <dd>
+ *         `true` if a client may transfer a missed session of this class to an eligible make-up class or event, `false`
+ * otherwise.
+ *       </dd>
  * 
  *       <dt>bool `is_resource_type`</dt>
  *       <dd>`true` if the class requires Book-a-Spot assets, `false` otherwise.</dd>
@@ -427,6 +438,15 @@ class ClassEditorModel extends WlModelAbstract
  *       <dt>bool `is_early`</dt>
  *       <dd>`true` if the class has an early bird discount, `false` otherwise.</dd>
  * 
+ *       <dt>bool `is_early_ended`</dt>
+ *       <dd>
+ *
+ * 
+ * Only taken into account while {@link \Wl\Classes\Editor\Entity\ClassPriceEntity::$id_early_period} is {@link EarlyPeriodEnum::DATE}. A
+ * date that has ended does not block saving and does not clear {@link \Wl\Classes\Editor\Entity\ClassPriceEntity::$is_early}: only the
+ * server sets this field, and a value posted by the client is ignored.
+ *       </dd>
+ * 
  *       <dt>bool `is_early_percent`</dt>
  *       <dd>
  *         `true` if {@link \Wl\Classes\Editor\Entity\ClassPriceEntity::$f_early} is a percent of the price of the class, `false` if it is an amount
@@ -487,11 +507,6 @@ class ClassEditorModel extends WlModelAbstract
  * 
  *       <dt>bool `is_account_require`</dt>
  *       <dd>`true` if a buyer of a ticket must have an account, `false` if a name and an email address are enough.</dd>
- * 
- *       <dt>bool `is_door_pay`</dt>
- *       <dd>
- *         `true` if a buyer may reserve a ticket and pay for it at the door, `false` if a ticket is paid for at once.
- *       </dd>
  * 
  *       <dt>bool `is_terms`</dt>
  *       <dd>`true` if a buyer of a ticket must agree to terms and conditions, `false` otherwise.</dd>
@@ -592,6 +607,38 @@ class ClassEditorModel extends WlModelAbstract
  * @var array
  */
   public $a_reminder_info = [];
+
+  /**
+ * Classes and events of the business that a client may use a make-up session on, grouped by service.
+ *
+ * Every element is an array: 
+ *
+ * <dl>
+ *   <dt>array[] `a_list`</dt>
+ *   <dd>
+ *     Classes or events of the group. Every element is an array:
+ *     <dl>
+ *       <dt>string `k_id`</dt>
+ *       <dd>Key of the class or event. </dd>
+ * 
+ *       <dt>string `text_title`</dt>
+ *       <dd>Title of the class or event.</dd>
+ *     </dl>
+ *   </dd>
+ * 
+ *   <dt>int `i_level`</dt>
+ *   <dd>Level of the group. Always `1`, there is only one level of groups.</dd>
+ * 
+ *   <dt>string `text_group_key`</dt>
+ *   <dd>Key of the group.</dd>
+ * 
+ *   <dt>string `text_title`</dt>
+ *   <dd>Title of the group.</dd>
+ * </dl>
+ * @get result
+ * @var array[]
+ */
+  public $a_replace_available = [];
 
   /**
  * Quick search tags of the category of the business. Every element is an array: 
@@ -719,12 +766,20 @@ class ClassEditorModel extends WlModelAbstract
   public $html_tax = '';
 
   /**
- * Maximum length of description.
+ * Maximum length of the description of a class that is not virtual.
  *
  * @get result
  * @var int
  */
   public $i_description_limit = 0;
+
+  /**
+ * Maximum length of the description of a virtual class.
+ *
+ * @get result
+ * @var int
+ */
+  public $i_description_limit_virtual = 0;
 
   /**
  * `true` if the Administration section may be shown, `false` otherwise.

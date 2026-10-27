@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Profile\Purchase\Report\Data\PurchaseItemAction;
 /**
  * Represent action item list.
  *
- * Last used ID: 28.
+ * Last used ID: 29.
  */
 class PurchaseItemActionSid
 {
@@ -148,6 +148,11 @@ class PurchaseItemActionSid
    * 'View Details' action.
    */
   const VIEW_DETAILS = 19;
+
+  /**
+   * 'View ticket' action. Opens the tickets of the order in a panel.
+   */
+  const VIEW_TICKETS = 29;
 }
 
 ?>

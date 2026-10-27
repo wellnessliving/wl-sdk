@@ -1524,6 +1524,16 @@ class QuizElement72Model extends WlModelAbstract
   public $k_quiz_login = '';
 
   /**
+ * Secret key of the quiz request given in {@link QuizElement72Model::$k_quiz_login}.
+ *
+ * Required when the quiz request is opened by a user who is not signed in, empty otherwise.
+ *
+ * @get get
+ * @var string
+ */
+  public $s_secret = '';
+
+  /**
  * Whether to show numbering of the form elements that supports numbering.
  *
  * `true` to show numbering on the form for elements that supports numbering.

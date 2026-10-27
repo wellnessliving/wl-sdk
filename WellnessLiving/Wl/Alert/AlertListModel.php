@@ -30,10 +30,10 @@ class AlertListModel extends WlModelAbstract
  *   <dd>Determines whether the alert was read by the user.</dd>
  * 
  *   <dt>string `k_alert`</dt>
- *   <dd>Alert key.  table.</dd>
+ *   <dd>Alert key. </dd>
  * 
  *   <dt>string `k_business`</dt>
- *   <dd>Business key.  table.</dd>
+ *   <dd>Business key. </dd>
  * 
  *   <dt>string `s_icon_class`</dt>
  *   <dd>Icon class.</dd>
@@ -46,8 +46,7 @@ class AlertListModel extends WlModelAbstract
  * 
  *   <dt>string|null `uid_client`</dt>
  *   <dd>
- *     User key associated with this alert.
- *    .
+ *     User key associated with this alert. 
  *    `null` if user is walk-in.
  *   </dd>
  * 

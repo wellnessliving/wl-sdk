@@ -18,7 +18,7 @@ class CatalogCommissionModel extends WlModelAbstract
  *
  * <dl>
  *   <dt>string `k_staff`</dt>
- *   <dd><b>Deprecated.</b> Staff key. </dd>
+ *   <dd>**DEPRECATED** Staff key. </dd>
  * 
  *   <dt>string `k_staff_pay`</dt>
  *   <dd>Staff pay key. </dd>
@@ -57,10 +57,8 @@ class CatalogCommissionModel extends WlModelAbstract
  *   </dd>
  * 
  *   <dt>string `k_staff`</dt>
- *   <dd>
- *     <b style="color: red">Deprecated</b> Staff key. 
- * Use `uid` instead of this field.
- *   </dd>
+ *   <dd>**DEPRECATED** Staff key. 
+ * Use `uid` instead of this field.</dd>
  * 
  *   <dt>string `html_name`</dt>
  *   <dd>Name of staff.</dd>

@@ -21,6 +21,9 @@ class CategoryModel extends WlModelAbstract
  *     <tt>true</tt> - all resources are hidden in this category for White Label mobile application. <tt>false</tt> - otherwise.
  *   </dd>
  * 
+ *   <dt>string|null `k_resource_layout`</dt>
+ *   <dd>Layout key of the category at the location. `null` if the category has no layout.</dd>
+ * 
  *   <dt>string `k_resource_type`</dt>
  *   <dd>Resource type ID.</dd>
  * 

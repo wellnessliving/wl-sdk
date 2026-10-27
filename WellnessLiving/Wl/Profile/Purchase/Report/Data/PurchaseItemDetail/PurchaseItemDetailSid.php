@@ -5,7 +5,7 @@ namespace WellnessLiving\Wl\Profile\Purchase\Report\Data\PurchaseItemDetail;
 /**
  * Represent detail item list.
  *
- * Last used ID: 15.
+ * Last used ID: 16.
  */
 class PurchaseItemDetailSid
 {
@@ -68,6 +68,11 @@ class PurchaseItemDetailSid
    * 'Shared' detail.
    */
   const SHARE = 6;
+
+  /**
+   * 'Ticket' detail. Shows the status of a ticket, for example whether it is paid.
+   */
+  const TICKET = 16;
 
   /**
    * 'Transferred' detail.

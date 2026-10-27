@@ -6,6 +6,7 @@ use WellnessLiving\WlModelAbstract;
 use WellnessLiving\WlModelRequest;
 use WellnessLiving\Wl\Appointment\Book\Question\QuestionModel;
 use WellnessLiving\Wl\Business\BusinessPaymentCaptcha;
+use WellnessLiving\Wl\Catalog\Terms\TermsActionSid;
 use WellnessLiving\Wl\Insurance\Catalog\ProgramListModel;
 use WellnessLiving\Wl\Insurance\Enrollment\Field\EnrollmentFieldListModel;
 use WellnessLiving\Wl\Mode\ModeSid;
@@ -298,6 +299,18 @@ class PaymentModel extends WlModelAbstract
  *       <dt>string `s_sender`</dt>
  *       <dd>The gift card sender name. This is required for gift cards.</dd>
  * 
+ *       <dt>string `text_guest_mail`</dt>
+ *       <dd>
+ *         The email of the guest who buys the ticket. Used only for tickets. Specify it when the payment
+ * owner is an anonymous user ({@link PaymentModel::$is_guest}). It is saved in the ticket order.
+ *       </dd>
+ * 
+ *       <dt>string `text_guest_name`</dt>
+ *       <dd>
+ *         The name of the guest who buys the ticket. Used only for tickets. Specify it when the payment
+ * owner is an anonymous user ({@link PaymentModel::$is_guest}).
+ *       </dd>
+ * 
  *       <dt>string `uid_staff`</dt>
  *       <dd>The staff member user ID, used only for appointment tips.</dd>
  * 
@@ -330,6 +343,13 @@ class PaymentModel extends WlModelAbstract
  * 
  *   <dt>int `id_sale`</dt>
  *   <dd>The item type ID. One of the {@link WlSaleSid} constants.</dd>
+ * 
+ *   <dt>int `id_terms_action`</dt>
+ *   <dd>
+ *     The decision on the terms and conditions of the ticket, used only for tickets.
+ * {@link TermsActionSid::AGREE} if the client agreed to them, {@link TermsActionSid::SKIP} if staff skipped them
+ * to let the client agree later. Not set if there is no decision.
+ *   </dd>
  * 
  *   <dt>string `k_id`</dt>
  *   <dd>The item key.</dd>

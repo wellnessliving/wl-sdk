@@ -88,7 +88,7 @@ abstract class WlPrivilegeSid
    * The code exists for that booking only: it shows up on the receipt, but is not saved to the central billing code
    * list. Adding a code to the central list requires {@link WlPrivilegeSid::BUSINESS_POLICY} instead.
    *
-   * @title Can create temporary custom codes at checkout
+   * @title Can create one-time custom codes on appointments
    */
   const BILLING_CODE_TEMPORARY = 253;
 
